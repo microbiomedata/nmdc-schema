@@ -5,3 +5,10 @@ venv/
 docs/*md
 docs/types/
 */my_schema.*
+.env
+.ipynb_checkpoints/ # jupyter backups
+.DS_Store
+.idea/ 	# PyCharm project confifg
+*.old
+*~ # emacs backup files
+
