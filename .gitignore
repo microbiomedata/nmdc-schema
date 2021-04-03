@@ -1,4 +1,3 @@
-Pipfile
 target/
 site/
 venv/
@@ -11,4 +10,3 @@ docs/types/
 .idea/ 	# PyCharm project confifg
 *.old
 *~ # emacs backup files
-
