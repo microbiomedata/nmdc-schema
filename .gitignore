@@ -5,6 +5,7 @@ docs/*md
 docs/types/
 */my_schema.*
 .env
+.venv
 .ipynb_checkpoints/ # jupyter backups
 .DS_Store
 .idea/ 	# PyCharm project confifg
