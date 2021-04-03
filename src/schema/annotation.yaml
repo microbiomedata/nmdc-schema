@@ -1,0 +1,274 @@
+id: https://microbiomedata/schema/annotation
+name: NMDC-Annotation
+title: Annotation Module for NMDC Schema
+description: >-
+  This module in the schema is for representing annotations including functional annotations of proteins and other gene products,
+  as well as controlled terms for describing things like metabolites
+  
+see_also:
+  - https://github.com/microbiomedata/nmdc-metadata/issues/176
+
+prefixes:
+  biolinkml: https://w3id.org/biolink/biolinkml/
+  biolink: https://w3id.org/biolink/vocab/
+  
+imports:
+  - biolinkml:types
+  - core
+  - prov
+
+classes:
+
+  genome feature:
+    description: >-
+      A feature localized to an interval along a genome
+    comments:
+      - corresponds to an entry in GFF3
+    see_also:
+      - https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md
+    slot_usage:
+      seqid:
+        description: The ID of the landmark used to establish the coordinate system for the current feature.
+        range: string ## make this an object
+        required: true
+      type:
+        range: ontology class
+        description: >-
+          A type from the sequence ontology
+        slot_uri: rdf:type
+      start:
+        is_a: gff coordinate
+        description: The start of the feature in positive 1-based integer coordinates
+        required: true
+        close_mappings:
+          - biolink:start_interbase_coordinate
+      end:
+        is_a: gff coordinate
+        description: The end of the feature in positive 1-based integer coordinates
+        comments: >-
+          - "constraint: end > start"
+          - "For features that cross the origin of a circular feature,  end = the position of the end + the length of the landmark feature."
+        required: true
+        close_mappings:
+          - biolink:end_interbase_coordinate
+      strand:
+        ## TODO: enum
+        description: >-
+          The strand on which a feature is located. Has a value of '+' (sense strand or forward strand) or '-' (anti-sense strand or reverse strand).
+        exact_mappings:
+          - biolink:strand
+      phase:
+        range: integer
+        minimum_value: 0
+        maximum_value: 0
+        description: >-
+          The phase for a coding sequence entity. For example, phase of a CDS as represented in a GFF3 with a value of 0, 1 or 2.
+        exact_mappings:
+          - biolink:phase
+      encodes:
+        range: gene product
+        description: >-
+          The gene product encoded by this feature.
+          Typically this is used for a CDS feature or gene feature which will encode a protein.
+          It can also be used by a nc transcript ot gene feature that encoded a ncRNA
+        required: false
+      feature type:
+        description: >-
+            TODO: Yuri to write
+  
+  functional annotation term:
+    aliases:
+      - function
+      - functional annotation
+    is_a: ontology class
+    description: >-
+      Abstract grouping class for any term/descriptor that can be applied to a functional unit of a genome (protein, ncRNA, complex).
+    abstract: true
+    todos:
+      - decide if this should be used for product naming
+
+  pathway:
+    aliases:
+      - biological process
+      - metabolic pathway
+      - signaling pathway
+    is_a: functional annotation term
+    description: >-
+      A pathway is a sequence of steps/reactions carried out by an organism or community of organisms
+    slot_usage:
+      has_part:
+        range: reaction
+        multivalued: true
+        description: >-
+          A pathway can be broken down to a series of reaction step
+    id_prefixes:
+      - KEGG.PATHWAY
+      - COG
+    exact_mappings:
+      - biolink:Pathway
+    
+  reaction:
+    is_a: functional annotation term
+    description: >-
+      An individual biochemical transformation carried out by a functional unit of an organism, in which a collection of substrates are transformed into a collection of products.
+      Can also represent transporters
+    slot_usage:
+      left participants:
+        is_a: has participants
+        multivalued: true
+        range: reaction participant
+      right participants:
+        is_a: has participants
+        multivalued: true
+        range: reaction participant
+      direction:
+        description: >-
+          One of l->r, r->l, bidirectional, neutral
+      smarts string:
+        range: string
+      is diastereoselective:
+        range: boolean
+      is stereo:
+        range: boolean
+      is balanced:
+        range: boolean
+      is transport:
+        range: boolean
+      is fully characterized:
+        range: boolean
+        description: >-
+          False if includes R-groups
+    id_prefixes:
+      - KEGG.REACTION
+      - RHEA
+      - MetaCyc
+      - EC
+      - GO
+      - MetaNetX
+      - SEED
+      - RetroRules
+    exact_mappings:
+      - biolink:MolecularActivity
+    
+  reaction participant:
+    description: >-
+      Instances of this link a reaction to a chemical entity participant
+    slot_usage:
+      chemical:
+        range: chemical entity
+      stoichiometry:
+        range: integer
+        
+  orthology group:
+    is_a: functional annotation term
+    description: >-
+      A set of genes or gene products in which all members are orthologous
+    id_prefixes:
+      - KEGG.ORTHOLOGY  ## KO number
+      - EGGNOG
+      - PFAM
+      - TIGRFAM
+      - SUPFAM
+      - CATH
+      - PANTHER.FAMILY
+    exact_mappings:
+      - biolink:GeneFamily
+      
+  chemical entity:
+    aliases:
+      - metabolite
+      - chemical substance
+      - chemical compound
+      - chemical
+    is_a: ontology class
+    description: >-
+      An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs.
+      There may be different terms for distinct acid-base forms, protonation states
+    slot_usage:
+      inchi:
+        key: false
+        multivalued: false
+        range: string
+      inchi key:
+        key: false # rare; Pletnev I, Erin A, McNaught A, Blinov K, Tchekhovskoi D, Heller S (2012) InChIKey collision resistance: an experimental testing. J Cheminform. 4:12
+        multivalued: false
+        range: string
+      smiles:
+        description: >-
+          A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.
+        multivalued: true
+        range: string
+      chemical formula:
+        description: >-
+          A generic grouping for miolecular formulae and empirican formulae
+        multivalued: false
+        key: false
+        range: string
+    see_also:
+      - https://bioconductor.org/packages/devel/data/annotation/vignettes/metaboliteIDmapping/inst/doc/metaboliteIDmapping.html
+    id_prefixes:
+      - KEGG.COMPOUND
+      - CHEBI
+      - CHEMBL.COMPOUND
+      - DRUGBANK
+      - PUBCHEM.COMPOUND
+      - CAS
+      - HMDB
+      - MESH
+    exact_mappings:
+      - biolink:ChemicalSubstance
+    
+  gene product:
+    is_a: named thing
+    description: >-
+      A molecule encoded by a gene that has an evolved function
+    comments:
+      - we may include a more general gene product class in future to allow for ncRNA annotation
+    id_prefixes:
+      - UniProtKB
+      - gtpo
+      - PR
+    exact_mappings:
+      - biolink:GeneProduct
+
+  functional annotation:
+    description: >-
+      An assignment of a function term (e.g. reaction or pathway) that is executed by a gene product, or which the gene product plays an active role in.
+      Functional annotations can be assigned manually by curators, or automatically in workflows. In the context of NMDC, all function annotation is performed
+      automatically, typically using HMM or Blast type methods
+    see_also:
+      - https://img.jgi.doe.gov/docs/functional-annotation.pdf
+      - https://github.com/microbiomedata/mg_annotation/blob/master/functional-annotation.wdl
+    slots:
+      - type
+      - was generated by
+      - subject
+      - has function
+    slot_usage:
+      was generated by:
+        description: >-
+          provenance for the annotation.
+        range: metagenome annotation activity
+        notes:
+          - Note to be consistent with the rest of the NMDC schema we use the PROV annotation model, rather than GPAD
+    narrow_mappings:
+      - biolink:GeneToGoTermAssociation
+    
+slots:
+  subject:
+    range: gene product
+
+  has function:
+    range: functional annotation term
+          
+  has participants:
+    abstract: true
+    exact_mappings:
+      - RO:0000057
+
+  gff coordinate:
+    range: integer
+    minimum_value: 1
+    description: A positive 1-based integer coordinate indicating start or end
+    comments:
+      - "For features that cross the origin of a circular feature (e.g. most bacterial genomes, plasmids, and some viral genomes), the requirement for start to be less than or equal to end is satisfied by making end = the position of the end + the length of the landmark feature."
