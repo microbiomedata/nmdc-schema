@@ -27,7 +27,6 @@ classes:
     slots:
       - id
       - name
-      - type
       - started at time
       - ended at time
       - was informed by
