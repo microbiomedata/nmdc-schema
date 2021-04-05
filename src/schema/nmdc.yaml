@@ -419,6 +419,7 @@ classes:
       - texture_meth      
       - tillage
       - tidal_stage
+      - tot_carb
       - tot_depth_water_col
       - tot_diss_nitro
       - tot_org_carb
