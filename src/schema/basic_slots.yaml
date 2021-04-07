@@ -1,0 +1,52 @@
+id: https://microbiomedata/schema/core
+name: NMDC-BASIC-SLOTS
+title: NMDC Schema Basic Slots
+description: >-
+  Basic Linkml slots that are used across the Schema for National Microbiome Data Collaborative (NMDC).
+  Examples include "id", "name", "description". These slots have primitive data types (e.g., sting) as ranges.
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+prefixes:
+  nmdc: https://microbiomedata/meta/
+  linkml: https://w3id.org/linkml/
+    
+default_prefix: nmdc
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+
+imports:
+  - linkml:types
+
+slots:
+
+  id:
+    identifier: true
+    multivalued: false
+    description: >-
+      A unique identifier for a thing.
+      Must be either a CURIE shorthand for a URI or a complete URI
+    #required: false # for now we setting this to false until we develop an id template
+
+  name:
+    multivalued: false
+    range: string
+    description: >-
+      A human readable label for an entity
+
+  description:
+    range: string
+    multivalued: false
+    description: >-
+      a human-readable description of a thing
+    slot_uri: dcterms:description
+
+  alternate identifiers:
+    aliases: ['mappings', 'alt ids', 'xrefs']
+    description: >-
+      Non-primary identifiers
+    multivalued: true
+    range: string
+    required: false 
