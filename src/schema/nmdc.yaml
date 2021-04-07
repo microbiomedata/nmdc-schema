@@ -24,6 +24,7 @@ prefixes:
   qud: http://qudt.org/1.1/schema/qudt#
   dcterms: http://purl.org/dc/terms/
   biolinkml: https://w3id.org/biolink/biolinkml/
+  linkml: https://w3id.org/linkml/
   MS: http://purl.obolibrary.org/obo/MS_
   OBI: http://purl.obolibrary.org/obo/OBI_
   NCIT: http://purl.obolibrary.org/obo/NCIT_
@@ -46,7 +47,7 @@ emit_prefixes:
 # It brings in the mixs schema plus a schemaa
 # of core types
 imports:
-  - biolinkml:types
+  - linkml:types
   - mixs
   - core
   - prov
