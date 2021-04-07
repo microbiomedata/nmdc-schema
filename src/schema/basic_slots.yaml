@@ -1,4 +1,4 @@
-id: https://microbiomedata/schema/core
+id: https://microbiomedata/schema/basic_slots
 name: NMDC-BASIC-SLOTS
 title: NMDC Schema Basic Slots
 description: >-
@@ -9,6 +9,7 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   nmdc: https://microbiomedata/meta/
   linkml: https://w3id.org/linkml/
+  dcterms: http://purl.org/dc/terms/
     
 default_prefix: nmdc
 default_range: string
