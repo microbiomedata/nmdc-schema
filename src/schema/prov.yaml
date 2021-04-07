@@ -8,8 +8,7 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   nmdc: https://microbiomedata/meta/
   prov: http://www.w3.org/ns/prov#
-  biolinkml: https://w3id.org/biolink/biolinkml/
-  
+  linkml: https://w3id.org/linkml/
 default_prefix: nmdc
 default_range: string
 
@@ -18,7 +17,9 @@ default_curi_maps:
   - idot_context
 
 imports:
-  - biolinkml:types
+  - linkml:types
+  - linkml:slots  
+  
 
 classes:
 
