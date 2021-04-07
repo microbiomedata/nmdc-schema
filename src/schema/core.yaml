@@ -14,8 +14,8 @@ prefixes:
   schema: http://schema.org/
   MS: http://purl.obolibrary.org/obo/MS_
   igsnvoc: https://igsn.org/voc/v1/
-  biolinkml: https://w3id.org/biolink/biolinkml/
-  
+  linkml: https://w3id.org/linkml/
+    
 default_prefix: nmdc
 default_range: string
 
@@ -24,7 +24,7 @@ default_curi_maps:
   - idot_context
 
 imports:
-  - biolinkml:types
+  - linkml:types
   - prov
 
 subsets:
