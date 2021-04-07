@@ -9,6 +9,7 @@ prefixes:
   nmdc: https://microbiomedata/meta/
   prov: http://www.w3.org/ns/prov#
   linkml: https://w3id.org/linkml/
+  
 default_prefix: nmdc
 default_range: string
 
@@ -18,9 +19,7 @@ default_curi_maps:
 
 imports:
   - linkml:types
-  - linkml:slots  
-  
-
+  - basic_slots
 classes:
 
   activity:
