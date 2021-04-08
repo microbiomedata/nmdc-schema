@@ -20,10 +20,6 @@
             "started_at_time": {
                "type": "string"
             },
-            "type": {
-               "description": "An optional string that species the type object.  This is used to allow for searches for different kinds of objects.",
-               "type": "string"
-            },
             "used": {
                "type": "string"
             },
@@ -981,7 +977,7 @@
                "type": "string"
             },
             "type": {
-               "description": "An optional string that species the type object.  This is used to allow for searches for different kinds of objects.",
+               "description": "TODO",
                "type": "string"
             },
             "was_generated_by": {
@@ -1794,7 +1790,7 @@
                "type": "string"
             },
             "instrument_name": {
-               "description": "The name of the instrument that was used for processing the sample.",
+               "description": "The name of the instrument that was used for processing the sample.\n   ",
                "type": "string"
             },
             "mod_date": {
