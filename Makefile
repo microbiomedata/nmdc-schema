@@ -14,7 +14,7 @@ all: gen stage
 gen: $(patsubst %,gen-%,$(TGTS))
 clean:
 	rm -rf target/
-	rm -rf docs/
+	rm -f docs/*.md
 
 t:
 	echo $(SCHEMA_NAMES)
