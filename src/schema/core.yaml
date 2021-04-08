@@ -81,7 +81,13 @@ classes:
       - name
       - description
       - alternate identifiers
-      
+  
+  ontology class:
+    is_a: named thing
+
+  environmental material term:
+    is_a: ontology class
+
   attribute value:
     description: >-
       The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic
@@ -94,7 +100,6 @@ classes:
         description: >-
           An optional string that specified the type of object.
         required: false
-
     
   quantity value:
     is_a: attribute value
@@ -131,7 +136,202 @@ classes:
         description: >-
           the full name of the Investgator in format FIRST LAST
           
+  person:
+    is_a: named thing
+    description: >-
+      represents a person, such as a researcher
+    comments:
+      - "not yet in use"
+    slot_usage:
+      id:
+        description: >-
+          Should be an ORCID. Specify in CURIE format. E.g ORCID:0000-1111-...
+  
+  MAG bin:
+    slots:
+       - type  # custom slot that specifies object type
+    attributes:
+      bin name:
+        range: string
+      number of contig:
+        range: integer
+      completeness:
+        range: float
+      contamination:
+        range: float
+      gene count:
+        range: integer
+      bin quality:
+        range: string
+      num 16s:
+        range: integer
+      num 5s:
+        range: integer
+      num 23s:
+        range: integer
+      num tRNA:
+        range: integer
+      gtdbtk domain:
+        required: false
+        range: string
+      gtdbtk phylum:
+        required: false
+        range: string
+      gtdbtk class:
+        required: false
+        range: string
+      gtdbtk order:
+        required: false
+        range: string
+      gtdbtk family:
+        required: false
+        range: string
+      gtdbtk genus:
+        required: false
+        range: string
+      gtdbtk species:
+        required: false
+        range: string
+
+  instrument:
+    is_a: named thing
+    aliases:
+      - device
+    description: >-
+      A material entity that is designed to perform a function in a scientific investigation, but is not a reagent[OBI].
+    exact_mappings:
+      - OBI:0000485
+
+  metabolite quantification:
+    description: >-
+      This is used to link a metabolomics analysis workflow to a specific metabolite
+    slot_usage:
+      metabolite quantified:
+        description: >-
+          the specific metabolite identifier
+        range: chemical entity
+      highest similarity score:
+        description: >-
+          TODO: Yuri to fill in
+        range: float
+      alternate_identifiers:
+        multivalued: true
+        description: >-
+          TODO
+          
+  peptide quantification:
+    description: >-
+      This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information
+    slot_usage:
+      peptide sequence:
+        range: string
+      best protein:
+        description: >-
+          the specific protein identifier most correctly associated with the peptide sequence
+        range: gene product
+      all proteins:
+        description: >-
+          the list of protein identifiers that are associated with the peptide sequence
+        range: gene product
+        multivalued: true
+      min_q_value:
+        description: >-
+          smallest Q-Value associated with the peptide sequence as provided by MSGFPlus tool
+        range: float
+        see_also:
+          - OBI:0001442
+      peptide_spectral_count:
+        description: >-
+          sum of filter passing MS2 spectra associated with the peptide sequence within a given LC-MS/MS data file
+        range: integer
+      peptide_sum_masic_abundance:
+        description: >-
+          combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the peptide sequence from a given LC-MS/MS data file using the MASIC tool
+        range: integer
+  
+  protein quantification:
+    description: >-
+      This is used to link a metaproteomics analysis workflow to a specific protein
+    slot_usage:
+      best protein:
+        description: >-
+          the specific protein identifier most correctly grouped to its associated peptide sequences
+        range: gene product
+      all proteins:
+        description: >-
+          the grouped list of protein identifiers associated with the peptide sequences that were grouped to a best protein
+        range: gene product
+        multivalued: true
+      peptide_sequence_count:
+        description: >-
+          count of peptide sequences grouped to the best_protein
+        range: integer
+      protein_spectral_count:
+        description: >-
+          sum of filter passing MS2 spectra associated with the best protein within a given LC-MS/MS data file
+        range: integer
+      protein_sum_masic_abundance:
+        description: >-
+          combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the best protein from a given LC-MS/MS data file using the MASIC tool
+        range: integer
+
+  chemical entity:
+    aliases:
+      - metabolite
+      - chemical substance
+      - chemical compound
+      - chemical
+    is_a: ontology class
+    description: >-
+      An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs.
+      There may be different terms for distinct acid-base forms, protonation states
+    slot_usage:
+      inchi:
+        key: false
+        multivalued: false
+        range: string
+      inchi key:
+        key: false # rare; Pletnev I, Erin A, McNaught A, Blinov K, Tchekhovskoi D, Heller S (2012) InChIKey collision resistance: an experimental testing. J Cheminform. 4:12
+        multivalued: false
+        range: string
+      smiles:
+        description: >-
+          A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.
+        multivalued: true
+        range: string
+      chemical formula:
+        description: >-
+          A generic grouping for miolecular formulae and empirican formulae
+        multivalued: false
+        key: false
+        range: string
+    see_also:
+      - https://bioconductor.org/packages/devel/data/annotation/vignettes/metaboliteIDmapping/inst/doc/metaboliteIDmapping.html
+    id_prefixes:
+      - KEGG.COMPOUND
+      - CHEBI
+      - CHEMBL.COMPOUND
+      - DRUGBANK
+      - PUBCHEM.COMPOUND
+      - CAS
+      - HMDB
+      - MESH
+    exact_mappings:
+      - biolink:ChemicalSubstance
       
+  gene product:
+    is_a: named thing
+    description: >-
+      A molecule encoded by a gene that has an evolved function
+    comments:
+      - we may include a more general gene product class in future to allow for ncRNA annotation
+    id_prefixes:
+      - UniProtKB
+      - gtpo
+      - PR
+    exact_mappings:
+      - biolink:GeneProduct
+
   text value:
     is_a: attribute value
     description: >-
@@ -153,7 +353,6 @@ classes:
     #  - month
     #  - day
 
-      
   integer value:
     is_a: attribute value
     description: >-
@@ -190,12 +389,6 @@ classes:
         # to_str: {latitude} {longitude}
     mappings:
       - schema:GeoCoordinates
-
-  ontology class:
-    is_a: named thing
-
-  environmental material term:
-    is_a: ontology class
 
 slots:
     
@@ -273,3 +466,58 @@ slots:
   orcid:
     domain: person value
     range: string
+
+  has input:
+    aliases: ['input']
+    domain: named thing
+    range: named thing    
+    multivalued: true
+    description: >-
+      An input to a process.
+    
+  has output:
+    aliases: ['output']
+    domain: named thing
+    range: named thing
+    multivalued: true
+    description: >-
+      An output biosample to a processing step
+
+  part of:
+    aliases: ['is part of']
+    range: named thing
+    domain: named thing
+    multivalued: true
+    slot_uri: dcterms:isPartOf
+    description: >-
+      Links a resource to another resource that either logically or physically includes it.
+  
+  execution resource:
+    is_a: attribute
+    description: >-
+      Example: NERSC-Cori
+      
+  url:
+    is_a: attribute
+    range: string
+    notes:
+      - See issue 207 - this clashes with the mixs field
+      
+  git url:
+    is_a: attribute
+    range: string
+    description: >-
+      Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1
+      
+  file size bytes:
+    is_a: attribute
+    range: bytes
+    description: >-
+      Size of the file in bytes
+  
+  md5 checksum:
+    is_a: attribute
+    range: string
+    description: >-
+      MD5 checksum of file (pre-compressed)
+
