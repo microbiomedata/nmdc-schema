@@ -1,0 +1,377 @@
+id: https://microbiomedata/schema/workflow_execution_activity
+name: NMDC-Workflow-Exectution
+title: Workflow Exectution Activities module for NMDC Schema 
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+  
+prefixes:
+  nmdc: https://microbiomedata/meta/
+  linkml: https://w3id.org/linkml/
+  
+imports:
+  - prov
+  - core
+
+subsets:
+  workflow subset:
+    description: >-
+      Subset consisting of just the workflow exectution activities
+
+classes:
+
+  workflow execution activity:
+    is_a: activity
+    in_subset: 
+      - workflow subset
+    description: >-
+      Represents an instance of an execution of a particular workflow
+    slots:
+      - execution resource
+      - git url
+      - has input
+      - has output
+      - type  # custom slot that specifies object type
+    slot_usage:
+      was associated with:
+        required: false
+        description: >-
+          the agent/entity associated with the generation of the file
+        range: workflow execution activity
+        inlined: false # allow for strings of IDs
+
+  metagenome assembly:
+    is_a: workflow execution activity
+    in_subset: 
+      - workflow subset
+    slots:
+      - asm_score
+      - scaffolds
+      - scaf_logsum
+      - scaf_powsum
+      - scaf_max
+      - scaf_bp
+      - scaf_N50
+      - scaf_N90
+      - scaf_L50
+      - scaf_L90
+      - scaf_n_gt50K
+      - scaf_l_gt50K
+      - scaf_pct_gt50K
+      - contigs
+      - contig_bp
+      - ctg_N50
+      - ctg_L50
+      - ctg_N90
+      - ctg_L90
+      - ctg_logsum
+      - ctg_powsum
+      - ctg_max
+      - gap_pct
+      - gc_std
+      - gc_avg
+      - num_input_reads
+      - num_aligned_reads
+
+  metagenome annotation activity:
+    is_a: workflow execution activity
+    in_subset: 
+      - workflow subset
+
+  MAGs analysis activity:
+    is_a: workflow execution activity
+    in_subset: 
+      - workflow subset
+    slots:
+      - input contig num
+      - binned contig num
+      - too short contig num 
+      - lowDepth contig num
+      - unbinned contig num
+      - mags list
+
+  read QC analysis activity:
+    is_a: workflow execution activity
+    in_subset: 
+      - workflow subset
+    slots:
+      - input read count
+      - input base count
+      - output read count
+      - output base count
+    slot_usage:
+      input_read_bases:
+        range: float
+        description: >-
+          TODO
+      output_read_bases:
+        range: float
+        description: >-
+          TODO
+      has input:
+        inlined: false
+      has output:
+        inlined: false
+        
+  read based analysis activity:
+    is_a: workflow execution activity
+    in_subset:
+      - workflow subset    
+        
+  metabolomics analysis activity:
+    is_a: workflow execution activity
+    in_subset: 
+      - workflow subset
+    slot_usage:
+      used:
+        range: instrument
+        multivalued: false
+        description: >-
+          The instrument used to collect the data used in the analysis
+      has metabolite quantifications:
+        range: metabolite quantification
+        multivalued: true
+      has calibration:
+        description: >-
+          TODO: Yuri to fill in
+    
+  metaproteomics analysis activity:
+    is_a: workflow execution activity
+    in_subset: 
+      - workflow subset
+    slot_usage:
+      used:
+        range: instrument
+        multivalued: false
+        description: >-
+          The instrument used to collect the data used in the analysis
+      has peptide quantifications:
+        range: peptide quantification
+        multivalued: true
+
+  nom analysis activity:
+    is_a: workflow execution activity
+    in_subset: 
+      - workflow subset
+    slot_usage:
+      used:
+        range: instrument
+        multivalued: false
+        description: >-
+          The instrument used to collect the data used in the analysis
+      has calibration:
+        range: string
+        description: >-
+            A reference to a file that holds calibration information.
+
+slots:
+  ## Workflow specific slots
+  metagenome assembly parameter: {}
+
+  asm_score:
+    is_a: metagenome assembly parameter
+    description: >-
+      A score for comparing metagenomic assembly quality from same sample.
+    range: float
+
+  scaffolds:
+    is_a: metagenome assembly parameter
+    description: >-
+      Total sequence count of all scaffolds.
+    range: float
+
+  scaf_logsum:
+    is_a: metagenome assembly parameter
+    description: >-
+      The sum of the (length*log(length)) of all scaffolds, times some constant.  Increase the contiguity, the score will increase
+    range: float
+
+  scaf_powsum:
+    is_a: metagenome assembly parameter
+    description: >-
+      Powersum of all scaffolds is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25).
+    range: float 
+
+  scaf_max:
+    is_a: metagenome assembly parameter
+    description: >-
+      Maximum scaffold length.
+    range: float
+      
+  scaf_bp:
+    is_a: metagenome assembly parameter
+    description: >-
+      Total size in bp of all scaffolds.
+    range: float
+
+  scaf_N50:
+    is_a: metagenome assembly parameter
+    description: >-
+      Given a set of scaffolds, each with its own length, the L50 count is defined as the smallest number of scaffolds whose length sum makes up half of genome size.
+    range: float
+      
+  scaf_N90:
+    is_a: metagenome assembly parameter
+    description: >-
+      Given a set of scaffolds, each with its own length, the L90 count is defined as the smallest number of scaffolds whose length sum makes up 90% of genome size.
+    range: float
+
+  scaf_L50:
+    is_a: metagenome assembly parameter
+    description: >-
+      Given a set of scaffolds, the N50 is defined as the sequence length of the shortest scaffold at 50% of the total genome length.
+    range: float
+
+  scaf_L90:
+    is_a: metagenome assembly parameter
+    description: >-
+      The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all scaffolds of that length or longer contains at least 90% of the sum of the lengths of all scaffolds.
+    range: float
+
+  scaf_n_gt50K:
+    is_a: metagenome assembly parameter
+    description: >-
+      Total sequence count of scaffolds greater than 50 KB.
+    range: float
+
+  scaf_l_gt50K:
+    is_a: metagenome assembly parameter
+    description: >-
+      Total size in bp of all scaffolds greater than 50 KB.
+    range: float
+
+  scaf_pct_gt50K:
+    is_a: metagenome assembly parameter
+    description: >-
+      Total sequence size percentage of scaffolds greater than 50 KB.
+    range: float
+      
+  contigs:
+    is_a: metagenome assembly parameter
+    description: >-
+      The sum of the (length*log(length)) of all contigs, times some constant.  Increase the contiguity, the score will increase
+    range: float
+
+  contig_bp:
+    is_a: metagenome assembly parameter
+    description: >-
+      Total size in bp of all contigs.
+    range: float
+      
+  ctg_N50:
+    is_a: metagenome assembly parameter
+    description: >-
+      Given a set of contigs, each with its own length, the L50 count is defined as the smallest number of contigs whose length sum makes up half of genome size.
+    range: float
+
+  ctg_L50:
+    is_a: metagenome assembly parameter
+    description: >-
+      Given a set of contigs, the N50 is defined as the sequence length of the shortest contig at 50% of the total genome length.
+    range: float
+
+  ctg_N90:
+    is_a: metagenome assembly parameter
+    description: >-
+      Given a set of contigs, each with its own length, the L90 count is defined as the smallest number of contigs whose length sum makes up 90% of genome size.
+    range: float
+
+  ctg_L90:
+    is_a: metagenome assembly parameter
+    description: >-
+      The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all contigs of that length or longer contains at least 90% of the sum of the lengths of all contigs.
+    range: float
+
+  ctg_logsum:
+    is_a: metagenome assembly parameter
+    description: >-
+      Maximum contig length.
+    range: float
+
+  ctg_powsum:
+    is_a: metagenome assembly parameter
+    description: >-
+      Powersum of all contigs is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25).
+    range: float 
+
+  ctg_max:
+    is_a: metagenome assembly parameter
+    description: >-
+      Maximum contig length.
+    range: float
+      
+  gap_pct:
+    is_a: metagenome assembly parameter
+    description: >-
+      The gap size percentage of all scaffolds.
+    range: float
+      
+  gc_std:
+    is_a: metagenome assembly parameter
+    description: >-
+      Standard deviation of GC content of all contigs.
+    range: float
+
+  gc_avg:
+    is_a: metagenome assembly parameter
+    description: >-
+      Average of GC content of all contigs.
+    range: float
+
+  num_input_reads:
+    is_a: metagenome assembly parameter
+    description: >-
+      The sequence count number of input reads for assembly.
+    range: float
+
+  num_aligned_reads:
+    is_a: metagenome assembly parameter
+    description: >-
+      The sequence count number of input reads aligned to assembled contigs.
+    range: float
+      
+  read QC analysis statistic: {}
+
+  mags list:
+    range: MAG bin
+    multivalued: true
+
+  too short contig num:
+    range: integer
+
+  binned contig num:
+    range: integer
+
+  input contig num:
+    range: integer
+
+  unbinned contig num:
+    range: integer
+
+  lowDepth contig num:
+    range: integer
+      
+  input read count:
+    is_a: read QC analysis statistic
+    description: >-
+      The sequence count number of input reads for QC analysis.
+    range: float
+    
+  input base count:
+    is_a: read QC analysis statistic
+    description: >-
+      The nucleotide base count number of input reads for QC analysis.
+    range: float
+
+  output read count:
+    is_a: read QC analysis statistic
+    description: >-
+      After QC analysis sequence count number. 
+    range: float
+
+  output base count:
+    is_a: read QC analysis statistic
+    description: >-
+      After QC analysis nucleotide base count number.
+    range: float
