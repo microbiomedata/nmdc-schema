@@ -8,14 +8,19 @@ description: >-
 see_also:
   - https://github.com/microbiomedata/nmdc-metadata/issues/176
 
+default_curi_maps:
+  - obo_context
+  - idot_context
+
 prefixes:
-  biolinkml: https://w3id.org/biolink/biolinkml/
   biolink: https://w3id.org/biolink/vocab/
-  
+  linkml: https://w3id.org/linkml/
+
 imports:
-  - biolinkml:types
-  - core
+  - linkml:types
   - prov
+  - core
+  - workflow_execution_activity
 
 classes:
 
@@ -173,64 +178,7 @@ classes:
       - PANTHER.FAMILY
     exact_mappings:
       - biolink:GeneFamily
-      
-  chemical entity:
-    aliases:
-      - metabolite
-      - chemical substance
-      - chemical compound
-      - chemical
-    is_a: ontology class
-    description: >-
-      An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs.
-      There may be different terms for distinct acid-base forms, protonation states
-    slot_usage:
-      inchi:
-        key: false
-        multivalued: false
-        range: string
-      inchi key:
-        key: false # rare; Pletnev I, Erin A, McNaught A, Blinov K, Tchekhovskoi D, Heller S (2012) InChIKey collision resistance: an experimental testing. J Cheminform. 4:12
-        multivalued: false
-        range: string
-      smiles:
-        description: >-
-          A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.
-        multivalued: true
-        range: string
-      chemical formula:
-        description: >-
-          A generic grouping for miolecular formulae and empirican formulae
-        multivalued: false
-        key: false
-        range: string
-    see_also:
-      - https://bioconductor.org/packages/devel/data/annotation/vignettes/metaboliteIDmapping/inst/doc/metaboliteIDmapping.html
-    id_prefixes:
-      - KEGG.COMPOUND
-      - CHEBI
-      - CHEMBL.COMPOUND
-      - DRUGBANK
-      - PUBCHEM.COMPOUND
-      - CAS
-      - HMDB
-      - MESH
-    exact_mappings:
-      - biolink:ChemicalSubstance
     
-  gene product:
-    is_a: named thing
-    description: >-
-      A molecule encoded by a gene that has an evolved function
-    comments:
-      - we may include a more general gene product class in future to allow for ncRNA annotation
-    id_prefixes:
-      - UniProtKB
-      - gtpo
-      - PR
-    exact_mappings:
-      - biolink:GeneProduct
-
   functional annotation:
     description: >-
       An assignment of a function term (e.g. reaction or pathway) that is executed by a gene product, or which the gene product plays an active role in.
