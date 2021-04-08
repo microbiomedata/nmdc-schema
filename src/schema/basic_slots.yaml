@@ -1,6 +1,6 @@
 id: https://microbiomedata/schema/basic_slots
-name: NMDC-BASIC-SLOTS
-title: NMDC Schema Basic Slots
+name: NMDC-Basic-Slots
+title: Basic Slots for NMDC Schema
 description: >-
   Basic Linkml slots that are used across the Schema for National Microbiome Data Collaborative (NMDC).
   Examples include "id", "name", "description". These slots have primitive data types (e.g., sting) as ranges.
@@ -51,3 +51,12 @@ slots:
     multivalued: true
     range: string
     required: false 
+  
+  type:
+    range: string
+    description: >-
+      An optional string that species the type object. 
+      This is used to allow for searches for different kinds of objects.
+    examples:
+      - value: nmdc:Biosample
+      - value: nmdc:Study
