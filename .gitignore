@@ -6,8 +6,16 @@ docs/types/
 */my_schema.*
 .env
 .venv
-.ipynb_checkpoints/ # jupyter backups
+
+# jupyter backups
+.ipynb_checkpoints/
+
 .DS_Store
-.idea/ 	# PyCharm project confifg
+
+# PyCharm project config
+.idea/
+
 *.old
-*~ # emacs backup files
+
+# emacs backup files
+*~
