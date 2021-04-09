@@ -89,6 +89,7 @@ classes:
     is_a: ontology class
 
   attribute value:
+    abstract: true
     description: >-
       The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic
       value and the structured value

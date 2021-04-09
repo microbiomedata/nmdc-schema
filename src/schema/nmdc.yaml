@@ -550,7 +550,7 @@ slots:
 
   doi:
     is_a: attribute
-    range: attribute value
+    range: text value
 
   add_date:
     range: string
