@@ -19,3 +19,10 @@ docs/types/
 
 # emacs backup files
 *~
+
+# ignore files needed for distribute to pypi
+__pycache__/
+build/
+dist/
+*.egg-info/
+*.egg
