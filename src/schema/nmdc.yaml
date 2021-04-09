@@ -277,11 +277,6 @@ classes:
     description: >-
       A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.  
     slots:
-      - ecosystem
-      - ecosystem_category
-      - ecosystem_type
-      - ecosystem_subtype
-      - specific_ecosystem
       - principal investigator name
       - doi
       - type  # custom slot that specifies object type
