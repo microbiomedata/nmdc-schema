@@ -2,3 +2,4 @@ linkml
 mkdocs
 twine
 build
+wheel
