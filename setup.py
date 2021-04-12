@@ -23,7 +23,7 @@ setup(
     long_description_content_type="text/markdown",
     classifiers=[
         "Development Status :: 3 - Alpha",
-        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.7",
         "Intended Audience :: Developers",
         "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
     ],
