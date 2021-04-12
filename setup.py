@@ -10,7 +10,7 @@ with open("README.md") as f:
     long_description = f.read()
 
 setup(
-    name="nmdc-schema",
+    name="nmdc_schema",
     url="https://github.com/microbiomedata/nmdc-schema",
     # packages=find_packages(),
     packages=["python", "jsonschema"],
