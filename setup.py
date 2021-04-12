@@ -12,8 +12,8 @@ with open("README.md") as f:
 setup(
     name="nmdc_schema",
     url="https://github.com/microbiomedata/nmdc-schema",
-    # packages=find_packages(),
-    packages=["python", "jsonschema"],
+    packages=find_packages(),
+    # packages=["python", "jsonschema"],
     use_scm_version=True,
     setup_requires=["setuptools_scm"],
     author="Bill Duncan",
