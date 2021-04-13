@@ -107,3 +107,25 @@ docserve:
 
 gh-deploy:
 	mkdocs gh-deploy
+
+.PHONY: clean-package build-package deploy-pypi
+clean-package:
+	rm -rf dist && echo 'dist removed'
+	rm -rf nmdc_schema.egg-info && echo 'egg-info removed'
+	rm -r nmdc_schema/*
+
+build-package: clean-package
+	cp python/*.py nmdc_schema/
+	python setup.py bdist_wheel sdist
+
+deploy-pypi:
+# deploys package to pypi
+# note: you need to have a pypi account properly
+# configures .pypirc file
+	twine upload dist/* --verbose
+
+deploy-testpypi:
+# deploys package to test pypi
+# note: you need to have a pypi account properly
+# configures .pypirc file
+	twine upload -r testpypi dist/* --verbose
