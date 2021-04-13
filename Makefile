@@ -55,7 +55,9 @@ stage-docs: gen-docs
 gen-python: $(patsubst %, target/python/%.py, $(SCHEMA_NAMES))
 .PHONY: gen-python
 target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
-	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
+# --no-mergeimports was causing an import error
+#	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
+	gen-py-classes --mergeimports $(GEN_OPTS) $< > $@
 
 ###  -- MARKDOWN DOCS --
 # TODO: modularize imports. For now imports are merged.
