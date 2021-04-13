@@ -120,12 +120,12 @@ build-package: clean-package
 
 deploy-pypi:
 # deploys package to pypi
-# note: you need to have a pypi account properly
-# configures .pypirc file
+# note: you need to have a pypi account
+# properly configured .pypirc file
 	twine upload dist/* --verbose
 
 deploy-testpypi:
-# deploys package to test pypi
-# note: you need to have a pypi account properly
-# configures .pypirc file
+# deploys package to testpypi
+# note: you need to have a testpypi account 
+# or properly configured .pypirc file
 	twine upload -r testpypi dist/* --verbose
