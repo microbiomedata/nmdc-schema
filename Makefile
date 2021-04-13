@@ -117,7 +117,8 @@ clean-package:
 	rm -r nmdc_schema/*
 
 build-package: clean-package
-	cp python/*.py nmdc_schema/
+	cp python/*.py nmdc_schema/ # copy python files
+	cp jsonschema/nmdc.schema.json nmdc_schema/ # copy nmdc json schema
 	python setup.py bdist_wheel sdist
 
 deploy-pypi:
