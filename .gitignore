@@ -7,6 +7,9 @@ docs/types/
 .env
 .venv
 
+# directory that hold the nmdc_schema pypi package
+nmdc_schema/
+
 # jupyter backups
 .ipynb_checkpoints/
 
@@ -20,7 +23,7 @@ docs/types/
 # emacs backup files
 *~
 
-# ignore files needed for distribute to pypi
+# ignore files needed for pypi distribution
 __pycache__/
 build/
 dist/
