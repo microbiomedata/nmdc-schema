@@ -28,7 +28,7 @@ jobs:
       run: |
         make build-package
         
-    - name: Build and publish
+    - name: Publish pypi
       env:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.nmdc_schema_pypi_token }}
