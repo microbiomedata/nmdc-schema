@@ -114,11 +114,14 @@ gh-deploy:
 clean-package:
 	rm -rf dist && echo 'dist removed'
 	rm -rf nmdc_schema.egg-info && echo 'egg-info removed'
-	rm -r nmdc_schema/*
+	rm -f nmdc_schema/*.py
+	rm -f nmdc_schema/*.json
+	rm -f nmdc_schema/*.tsv
 
 build-package: clean-package
 	cp python/*.py nmdc_schema/ # copy python files
 	cp jsonschema/nmdc.schema.json nmdc_schema/ # copy nmdc json schema
+	cp sssom/gold-to-mixs.sssom.tsv nmdc_schema/ # copy sssom mapping
 	python setup.py bdist_wheel sdist
 
 deploy-pypi:
