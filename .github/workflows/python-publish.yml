@@ -28,11 +28,11 @@ jobs:
       run: |
         make build-package
         
-    - name: Publish distribution 📦 to PyPI
-      run: |
-        # python setup.py sdist bdist_wheel
-        # twine upload dist/*
-        echo 'deploy package'
+#     - name: Publish distribution 📦 to PyPI
+#       run: |
+#         # python setup.py sdist bdist_wheel
+#         # twine upload dist/*
+#         echo 'deploy package'
 #       with:
 #         user: __token__
 #         password: ${{ secrets.nmdc_schema_pypi_token }}
