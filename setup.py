@@ -12,7 +12,7 @@ setup(
     packages=["nmdc_schema"],
     include_package_data=True,
     package_data={"nmdc_schema": ["nmdc.schema.json"]},
-    version="2021.04.13rc11",
+    # version="2021.04.13rc11",
     author="Bill Duncan",
     author_email="wdduncan@gmail.com",
     description="National Microbiome Data Collaborative (NMDC) Schema",
