@@ -26,7 +26,10 @@ jobs:
         
     - name: Build package
       run: |
-        make build-package
+        # make build-package
+        cp python/*.py nmdc_schema/ # copy python files
+        cp jsonschema/nmdc.schema.json nmdc_schema/ # copy nmdc json schema
+        python setup.py bdist_wheel sdist
         
 #     - name: Publish distribution 📦 to PyPI
 #       run: |
