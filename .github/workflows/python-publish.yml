@@ -31,11 +31,7 @@ jobs:
         cp jsonschema/nmdc.schema.json nmdc_schema/ # copy nmdc json schema
         python setup.py bdist_wheel sdist
         
-#     - name: Publish distribution 📦 to PyPI
-#       run: |
-#         # python setup.py sdist bdist_wheel
-#         # twine upload dist/*
-#         echo 'deploy package'
-#       with:
-#         user: __token__
-#         password: ${{ secrets.nmdc_schema_pypi_token }}
+    - name: Publish distribution 📦 to PyPI
+      with:
+        user: __token__
+        password: ${{ secrets.nmdc_schema_pypi_token }}
