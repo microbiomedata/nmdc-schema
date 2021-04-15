@@ -2490,7 +2490,113 @@
       "type": "object"
     }
   },
-  "properties": {},
+  "properties": {
+    "activity_set": {
+      "description": "This property links a database object to the set of workflow activities.",
+      "items": {
+        "$ref": "#/definitions/WorkflowExecutionActivity"
+      },
+      "type": "array"
+    },
+    "biosample_set": {
+      "description": "This property links a database object to the set of samples within it.",
+      "items": {
+        "$ref": "#/definitions/Biosample"
+      },
+      "type": "array"
+    },
+    "data_object_set": {
+      "description": "This property links a database object to the set of data objects within it.",
+      "items": {
+        "$ref": "#/definitions/DataObject"
+      },
+      "type": "array"
+    },
+    "functional_annotation_set": {
+      "description": "This property links a database object to the set of all functional annotations",
+      "items": {
+        "$ref": "#/definitions/FunctionalAnnotation"
+      },
+      "type": "array"
+    },
+    "genome_feature_set": {
+      "description": "This property links a database object to the set of all features",
+      "items": {
+        "$ref": "#/definitions/GenomeFeature"
+      },
+      "type": "array"
+    },
+    "mags_activity_set": {
+      "description": "This property links a database object to the set of MAGs analysis activities.",
+      "items": {
+        "$ref": "#/definitions/MAGsAnalysisActivity"
+      },
+      "type": "array"
+    },
+    "metabolomics_analysis_activity_set": {
+      "description": "This property links a database object to the set of metabolomics analysis activities.",
+      "items": {
+        "$ref": "#/definitions/MetabolomicsAnalysisActivity"
+      },
+      "type": "array"
+    },
+    "metagenome_annotation_activity_set": {
+      "description": "This property links a database object to the set of metaproteomics analysis activities.",
+      "items": {
+        "$ref": "#/definitions/MetagenomeAnnotationActivity"
+      },
+      "type": "array"
+    },
+    "metagenome_assembly_set": {
+      "description": "This property links a database object to the set of metaproteomics analysis activities.\n  ",
+      "items": {
+        "$ref": "#/definitions/MetagenomeAssembly"
+      },
+      "type": "array"
+    },
+    "metaproteomics_analysis_activity_set": {
+      "description": "This property links a database object to the set of metaproteomics analysis activities.",
+      "items": {
+        "$ref": "#/definitions/MetaproteomicsAnalysisActivity"
+      },
+      "type": "array"
+    },
+    "nom_analysis_activity_set": {
+      "description": "This property links a database object to the set of natural organic matter (NOM) analysis activities.",
+      "items": {
+        "$ref": "#/definitions/NomAnalysisActivity"
+      },
+      "type": "array"
+    },
+    "omics_processing_set": {
+      "description": "This property links a database object to the set of omics processings within it.",
+      "items": {
+        "$ref": "#/definitions/OmicsProcessing"
+      },
+      "type": "array"
+    },
+    "read_QC_analysis_activity_set": {
+      "description": "This property links a database object to the set of read QC analysis activities.",
+      "items": {
+        "$ref": "#/definitions/ReadQCAnalysisActivity"
+      },
+      "type": "array"
+    },
+    "read_based_analysis_activity_set": {
+      "description": "This property links a database object to the set of read based analysis activities.\n  ",
+      "items": {
+        "$ref": "#/definitions/ReadBasedAnalysisActivity"
+      },
+      "type": "array"
+    },
+    "study_set": {
+      "description": "This property links a database object to the set of studies within it.",
+      "items": {
+        "$ref": "#/definitions/Study"
+      },
+      "type": "array"
+    }
+  },
   "title": "NMDC",
   "type": "object",
   "additionalProperties": false
