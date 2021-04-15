@@ -69,7 +69,7 @@ target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
 # TODO: modularize imports. For now imports are merged.
 gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json
 target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
-	gen-json-schema $(GEN_OPTS) -t transaction $< > $@
+	gen-json-schema $(GEN_OPTS) -t database $< > $@
 
 # This is temporary fix to apply additionalProperties: false gloabally
 # see: https://github.com/linkml/linkml/issues/106
