@@ -71,6 +71,10 @@ gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json
 target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
 	gen-json-schema $(GEN_OPTS) -t transaction $< > $@
 
+# This is temporary fix to apply additionalProperties: false gloabally
+# see: https://github.com/linkml/linkml/issues/106
+	jq '. += {"additionalProperties": false}' $@ > $@.tmp && mv $@.tmp $@
+
 ###  -- Shex --
 # one file per module
 gen-shex: $(patsubst %, target/shex/%.shex, $(SCHEMA_NAMES))
