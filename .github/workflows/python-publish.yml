@@ -7,7 +7,6 @@ on:
   release:
     types:
       - created
-      - updated
 
 jobs:
   deploy:
