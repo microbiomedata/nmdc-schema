@@ -1,5 +1,7 @@
 linkml
+jq
 mkdocs
 twine
 build
 wheel
+nmdc-schema
