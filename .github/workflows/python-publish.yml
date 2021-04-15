@@ -32,6 +32,7 @@ jobs:
         python setup.py bdist_wheel sdist
         
     - name: Publish distribution 📦 to PyPI
+      uses: pypa/gh-action-pypi-publish@v1.2.2
       with:
         user: __token__
         password: ${{ secrets.nmdc_schema_pypi_token }}
