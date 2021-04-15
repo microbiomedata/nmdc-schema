@@ -126,6 +126,7 @@ build-package: clean-package
 	cp python/*.py nmdc_schema/ # copy python files
 	cp jsonschema/nmdc.schema.json nmdc_schema/ # copy nmdc json schema
 	cp sssom/gold-to-mixs.sssom.tsv nmdc_schema/ # copy sssom mapping
+	cp util/validate_nmdc_json.py nmdc_schema/ # copy command-line tool
 	python setup.py bdist_wheel sdist
 
 deploy-pypi:
