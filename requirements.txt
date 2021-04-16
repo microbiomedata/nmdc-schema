@@ -1,6 +1,5 @@
 linkml
 jq
-yaml
 mkdocs
 twine
 build
