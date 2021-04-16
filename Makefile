@@ -123,6 +123,7 @@ clean-package:
 	rm -f nmdc_schema/*.tsv
 
 build-package: clean-package
+	cp src/schema/nmdc.yaml nmdc_schema/ # copy nmdc yaml file
 	cp python/*.py nmdc_schema/ # copy python files
 	cp jsonschema/nmdc.schema.json nmdc_schema/ # copy nmdc json schema
 	cp sssom/gold-to-mixs.sssom.tsv nmdc_schema/ # copy sssom mapping

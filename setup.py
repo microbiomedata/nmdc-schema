@@ -12,7 +12,9 @@ setup(
     use_scm_version=True,
     setup_requires=["setuptools_scm"],
     packages=["nmdc_schema"],  # set package manually
-    package_data={"nmdc_schema": ["nmdc.schema.json", "gold-to-mixs.sssom.tsv"]},
+    package_data={
+        "nmdc_schema": ["nmdc.schema.json", "gold-to-mixs.sssom.tsv", "nmdc.yaml"]
+    },
     author="Bill Duncan",
     author_email="wdduncan@gmail.com",
     license="CC0 1.0 Universal",
