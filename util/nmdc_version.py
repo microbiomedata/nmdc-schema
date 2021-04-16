@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import pkgutil, pkg_resources, io, click, yaml
+from linkml.utils.rawloader import load_raw_schema
 
 
 def get_nmdc_dict() -> dict:
@@ -44,8 +45,23 @@ def get_nmdc_schema_version() -> str:
     str
         The version in the nmdc.yaml file.
     """
-    nmdc_dict = get_nmdc_dict()
-    return nmdc_dict["version"]
+    nmdc_yaml = io.BytesIO(pkgutil.get_data("nmdc_schema", "nmdc.yaml"))
+    nmdc_schema = load_raw_schema(nmdc_yaml)
+    return nmdc_schema.version
+
+
+def get_nmdc_schema_metamodel_version() -> str:
+    """
+    Returns the metamodel version specified in the nmdc.yaml file.
+
+    Returns
+    -------
+    str
+        The metamodel version in the nmdc.yaml file.
+    """
+    nmdc_yaml = io.BytesIO(pkgutil.get_data("nmdc_schema", "nmdc.yaml"))
+    nmdc_schema = load_raw_schema(nmdc_yaml)
+    return nmdc_schema.metamodel_version
 
 
 ##### CLI interface #####
@@ -58,17 +74,38 @@ def get_nmdc_schema_version() -> str:
     help="specifies if nmdc schema version is printed",
 )
 @click.option(
+    "--meta/--no-meta",
+    "-m/-nm",
+    default=False,
+    show_default=True,
+    help="specifies if nmdc schema metamodel version is printed",
+)
+@click.option(
     "--package/--no-package",
     "-pk/-npk",
     default=False,
     show_default=True,
-    help="specifies if nmdc_schema package version is printed; default false",
+    help="specifies if nmdc_schema package version is printed",
 )
-def cli(schema, package):
-    if schema == True:
+@click.option(
+    "--all/--no-all",
+    "-a/-na",
+    default=False,
+    show_default=True,
+    help="specifies if all version information is printed",
+)
+def cli(schema, meta, package, all):
+    if all == True:
         click.echo(get_nmdc_schema_version())
-    if package == True:
+        click.echo(get_nmdc_schema_metamodel_version())
         click.echo(get_nmdc_schema_package_version())
+    else:
+        if meta == True:
+            click.echo(get_nmdc_schema_metamodel_version())
+        elif package == True:
+            click.echo(get_nmdc_schema_package_version())
+        else:
+            click.echo(get_nmdc_schema_version())
 
 
 if __name__ == "__main__":

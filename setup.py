@@ -7,7 +7,7 @@ setup(
     name="nmdc_schema",
     url="https://github.com/microbiomedata/nmdc-schema",
     # set version manually when testing
-    # version="2021.04.15a2",
+    # version="2021.04.16a1",
     # use use_scm_version when version is set by github release action
     use_scm_version=True,
     setup_requires=["setuptools_scm"],
