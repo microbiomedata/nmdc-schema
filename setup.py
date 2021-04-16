@@ -7,7 +7,7 @@ setup(
     name="nmdc_schema",
     url="https://github.com/microbiomedata/nmdc-schema",
     # set version manually when testing
-    # version="2021.04.15a1",
+    # version="2021.04.15a2",
     # use use_scm_version when version is set by github release action
     use_scm_version=True,
     setup_requires=["setuptools_scm"],
@@ -20,7 +20,10 @@ setup(
     license="CC0 1.0 Universal",
     description="Schema resources for the National Microbiome Data Collaborative (NMDC)",
     entry_points={
-        "console_scripts": ["validate-nmdc-json=nmdc_schema.validate_nmdc_json:cli"]
+        "console_scripts": [
+            "validate-nmdc-json=nmdc_schema.validate_nmdc_json:cli",
+            "nmdc-version=nmdc_schema.nmdc_version:cli",
+        ]
     },
     # long_description=long_description,
     # long_description_content_type="text/markdown",
