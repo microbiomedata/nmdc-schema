@@ -1,4 +1,4 @@
-SRC_DIR = src
+bSRC_DIR = src
 SCHEMA_DIR = $(SRC_DIR)/schema
 SOURCE_FILES := $(shell find $(SCHEMA_DIR) -name '*.yaml')
 SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
@@ -114,6 +114,9 @@ docserve:
 gh-deploy:
 	mkdocs gh-deploy
 
+###  -- PYPI TARGETS
+# Use the build-package target to build a PYPI package locally
+# This is usefule for testing
 .PHONY: clean-package build-package deploy-pypi
 clean-package:
 	rm -rf dist && echo 'dist removed'
