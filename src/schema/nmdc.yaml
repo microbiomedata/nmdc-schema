@@ -88,6 +88,16 @@ classes:
       - omics processing set
       - functional annotation set
       - genome feature set
+    slot_usage:
+      nmdc schema version:
+        description: >-
+            TODO
+      date created:
+        description: >-
+            TODO
+      etl software version:
+        description: >-
+            TODO
   
   data object:
     is_a: named thing
