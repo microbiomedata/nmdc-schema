@@ -29,7 +29,11 @@ jobs:
       - run: pip install linkml
         
       # generate markdown files
-      - run: gen-markdown --dir docs src/schema/nmdc.yaml
+      #- run: gen-markdown --dir docs src/schema/nmdc.yaml
+      - run: gen-markdown --dir docs src/schema/nmdc.yaml        
 
       # deploy documentation (note: requires documentation is in docs dir)
-      - run: mkdocs gh-deploy --remote-branch gh-pages --force --theme readthedocs
+      # use make command to deploy
+      - run: make gh-deploy
+        
+      # - run: mkdocs gh-deploy --remote-branch gh-pages --force --theme readthedocs
