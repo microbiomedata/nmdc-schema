@@ -1,4 +1,4 @@
-bSRC_DIR = src
+SRC_DIR = src
 SCHEMA_DIR = $(SRC_DIR)/schema
 SOURCE_FILES := $(shell find $(SCHEMA_DIR) -name '*.yaml')
 SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
