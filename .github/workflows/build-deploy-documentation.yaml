@@ -36,5 +36,3 @@ jobs:
       # deploy documentation (note: requires documentation is in docs dir)
       # use make command to deploy
       - run: make gh-deploy
-        
-      # - run: mkdocs gh-deploy --remote-branch gh-pages --force --theme readthedocs
