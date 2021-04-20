@@ -1,7 +1,7 @@
 site_name: "NMDC Metadata Documentation"
 theme: readthedocs
 nav:
-#  - Home: home.md
+  - Home: home.md
 #  - Index: index.md
 #  - Credits: credits.md
   - NMDC Metadata Standards Documentation: custom/Metadata_Documentation_Overview.md 
