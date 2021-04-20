@@ -1,0 +1,37 @@
+name: Check Pull Request
+
+# Controls when the action will run. Triggers the workflow on pull requests.
+on:
+  pull_request:
+    branches:
+      - main
+  repository_dispatch:
+    types: trigger-check-pull-request
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE
+    - name: Checkout
+      uses: actions/checkout@v2
+
+
+    - name: Setup Python Environment
+      uses: actions/setup-python@v2
+      with:
+        # Version range or exact version of a Python version to use, using SemVer's version range syntax.
+        python-version: 3.7
+        # The target architecture (x86, x64) of the Python interpreter.
+        # architecture: x64 # optional
+
+    # Excute the Makefile to build generated artifacts
+    - name: Make Artifacts
+      run: |
+        make stage-jsonschema
+        make stage-python
