@@ -9,6 +9,7 @@ on:
       - 'mkdocs.yml'
       - 'src/schema/*.yaml'
       - 'src/docs/*'
+      - 'src/docs/custom/*'      
 
   repository_dispatch:
     types: trigger-build-deploy-documentation
