@@ -232,6 +232,6 @@ Please check this section later
 
 We produce a JSON-LD context with the schema:
 
- * [schema/nmdc.context.jsonld](schema/nmdc.context.jsonld)
+ * [jsonschema/nmdc.context.jsonld](jsonschema/nmdc.context.jsonld)
 
 When this is combined with schema-conformant JSON, RDF can be automatically created using the intended URIs
