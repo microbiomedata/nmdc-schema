@@ -29,9 +29,9 @@ jobs:
 
       # Install dependencies
     - name: Install Dependencies
-      - run: |
-          pip install --upgrade pip
-          pip install linkml
+      run: |
+        pip install --upgrade pip
+        pip install linkml
 
     # Excute the Makefile to build generated artifacts
     - name: Make Artifacts
