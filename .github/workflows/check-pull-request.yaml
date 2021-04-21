@@ -19,19 +19,13 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE
     - name: Checkout
-      uses: actions/setup-python@v2
-      with:
-        # Version range or exact version of a Python version to use, using SemVer's version range syntax.
-        python-version: 3.7
+      uses: actions/checkout@v2
 
-        # The target architecture (x86, x64) of the Python interpreter.
-        # architecture: x64 # optional
-
-      # Install dependencies
+    # Install dependencies
     - name: Install Dependencies
-      - run: |
-          pip install --upgrade pip
-          pip install linkml
+      run: |
+        pip install --upgrade pip
+        pip install linkml
 
     # Excute the Makefile to build generated artifacts
     - name: Make Artifacts
