@@ -9,7 +9,7 @@ on:
       - 'mkdocs.yml'
       - 'src/schema/*.yaml'
       - 'src/docs/*'
-      - 'src/docs/custom/*'      
+      # - 'src/docs/custom/*'      
 
   repository_dispatch:
     types: trigger-build-deploy-documentation
@@ -30,8 +30,8 @@ jobs:
       - run: pip install linkml
         
       # generate markdown files
-      #- run: gen-markdown --dir docs src/schema/nmdc.yaml
-      - run: gen-markdown --dir docs src/schema/nmdc.yaml        
+      - run: make stage-docs
+      # - run: gen-markdown --dir docs src/schema/nmdc.yaml        
 
       # deploy documentation (note: requires documentation is in docs dir)
       # use make command to deploy
