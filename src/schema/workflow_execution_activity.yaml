@@ -208,19 +208,19 @@ slots:
   scaf_N50:
     is_a: metagenome assembly parameter
     description: >-
-      Given a set of scaffolds, each with its own length, the L50 count is defined as the smallest number of scaffolds whose length sum makes up half of genome size.
+      Given a set of scaffolds, each with its own length, the N50 count is defined as the smallest number of scaffolds whose length sum makes up half of genome size.
     range: float
       
   scaf_N90:
     is_a: metagenome assembly parameter
     description: >-
-      Given a set of scaffolds, each with its own length, the L90 count is defined as the smallest number of scaffolds whose length sum makes up 90% of genome size.
+      Given a set of scaffolds, each with its own length, the N90 count is defined as the smallest number of scaffolds whose length sum makes up 90% of genome size.
     range: float
 
   scaf_L50:
     is_a: metagenome assembly parameter
     description: >-
-      Given a set of scaffolds, the N50 is defined as the sequence length of the shortest scaffold at 50% of the total genome length.
+      Given a set of scaffolds, the L50 is defined as the sequence length of the shortest scaffold at 50% of the total genome length.
     range: float
 
   scaf_L90:
@@ -262,19 +262,19 @@ slots:
   ctg_N50:
     is_a: metagenome assembly parameter
     description: >-
-      Given a set of contigs, each with its own length, the L50 count is defined as the smallest number of contigs whose length sum makes up half of genome size.
+      Given a set of contigs, each with its own length, the N50 count is defined as the smallest number of contigs whose length sum makes up half of genome size.
     range: float
 
   ctg_L50:
     is_a: metagenome assembly parameter
     description: >-
-      Given a set of contigs, the N50 is defined as the sequence length of the shortest contig at 50% of the total genome length.
+      Given a set of contigs, the L50 is defined as the sequence length of the shortest contig at 50% of the total genome length.
     range: float
 
   ctg_N90:
     is_a: metagenome assembly parameter
     description: >-
-      Given a set of contigs, each with its own length, the L90 count is defined as the smallest number of contigs whose length sum makes up 90% of genome size.
+      Given a set of contigs, each with its own length, the N90 count is defined as the smallest number of contigs whose length sum makes up 90% of genome size.
     range: float
 
   ctg_L90:
