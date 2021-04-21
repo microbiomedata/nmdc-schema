@@ -2,7 +2,7 @@ name: Build and Deploy Static Mkdocs Documentation
 
 # Controls when the action will run. Triggers the workflow on pull request
 on:
-  pull_request:
+  push:
     branches:
       - main
     paths:
