@@ -1,10 +1,13 @@
 site_name: "NMDC Metadata Documentation"
-theme: readthedocs
+theme:
+  name: readthedocs
+  features:
+    - navigation.instant
 nav:
-  - Home: index.md
-  - Index: index.md
-  - Credits: credits.md
-  - NMDC Metadata Standards Documentation: custom/Metadata_Documentation_Overview.md 
+  - Home: home.md
+  - NMDC Schema: index.md
+  - NMDC Metadata Standards Documentation:  Metadata_Documentation_Overview.md 
   - NMDC Schema Validation: schema-validation.md
   - Identifiers in NMDC: identifiers.md
   - MIxS Soil Package: NMDC_MIxS_Soil_documentation.md
+  - Credits: credits.md    
