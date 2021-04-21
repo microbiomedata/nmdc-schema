@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-04-15 17:36
+# Generation date: 2021-04-21 13:16
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -247,6 +247,9 @@ class Database(YAMLRoot):
     omics_processing_set: Optional[Union[Dict[Union[str, OmicsProcessingId], Union[dict, "OmicsProcessing"]], List[Union[dict, "OmicsProcessing"]]]] = empty_dict()
     functional_annotation_set: Optional[Union[Union[dict, "FunctionalAnnotation"], List[Union[dict, "FunctionalAnnotation"]]]] = empty_list()
     genome_feature_set: Optional[Union[Union[dict, "GenomeFeature"], List[Union[dict, "GenomeFeature"]]]] = empty_list()
+    nmdc_schema_version: Optional[str] = None
+    date_created: Optional[str] = None
+    etl_software_version: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.biosample_set is None:
@@ -338,6 +341,15 @@ class Database(YAMLRoot):
         if not isinstance(self.genome_feature_set, list):
             self.genome_feature_set = [self.genome_feature_set]
         self._normalize_inlined_slot(slot_name="genome_feature_set", slot_type=GenomeFeature, key_name="seqid", inlined_as_list=True, keyed=False)
+
+        if self.nmdc_schema_version is not None and not isinstance(self.nmdc_schema_version, str):
+            self.nmdc_schema_version = str(self.nmdc_schema_version)
+
+        if self.date_created is not None and not isinstance(self.date_created, str):
+            self.date_created = str(self.date_created)
+
+        if self.etl_software_version is not None and not isinstance(self.etl_software_version, str):
+            self.etl_software_version = str(self.etl_software_version)
 
         super().__post_init__(**kwargs)
 
@@ -5055,6 +5067,15 @@ slots.mAGBin__gtdbtk_genus = Slot(uri=NMDC.gtdbtk_genus, name="mAGBin__gtdbtk_ge
 slots.mAGBin__gtdbtk_species = Slot(uri=NMDC.gtdbtk_species, name="mAGBin__gtdbtk_species", curie=NMDC.curie('gtdbtk_species'),
                    model_uri=NMDC.mAGBin__gtdbtk_species, domain=None, range=Optional[str])
 
+slots.nmdc_schema_version = Slot(uri=NMDC.nmdc_schema_version, name="nmdc schema version", curie=NMDC.curie('nmdc_schema_version'),
+                   model_uri=NMDC.nmdc_schema_version, domain=None, range=Optional[str])
+
+slots.date_created = Slot(uri=NMDC.date_created, name="date created", curie=NMDC.curie('date_created'),
+                   model_uri=NMDC.date_created, domain=None, range=Optional[str])
+
+slots.etl_software_version = Slot(uri=NMDC.etl_software_version, name="etl software version", curie=NMDC.curie('etl_software_version'),
+                   model_uri=NMDC.etl_software_version, domain=None, range=Optional[str])
+
 slots.metabolite_quantified = Slot(uri=NMDC.metabolite_quantified, name="metabolite quantified", curie=NMDC.curie('metabolite_quantified'),
                    model_uri=NMDC.metabolite_quantified, domain=None, range=Optional[Union[str, ChemicalEntityId]])
 
@@ -5174,6 +5195,15 @@ slots.chemical = Slot(uri=NMDC.chemical, name="chemical", curie=NMDC.curie('chem
 
 slots.stoichiometry = Slot(uri=NMDC.stoichiometry, name="stoichiometry", curie=NMDC.curie('stoichiometry'),
                    model_uri=NMDC.stoichiometry, domain=None, range=Optional[int])
+
+slots.database_nmdc_schema_version = Slot(uri=NMDC.nmdc_schema_version, name="database_nmdc schema version", curie=NMDC.curie('nmdc_schema_version'),
+                   model_uri=NMDC.database_nmdc_schema_version, domain=Database, range=Optional[str])
+
+slots.database_date_created = Slot(uri=NMDC.date_created, name="database_date created", curie=NMDC.curie('date_created'),
+                   model_uri=NMDC.database_date_created, domain=Database, range=Optional[str])
+
+slots.database_etl_software_version = Slot(uri=NMDC.etl_software_version, name="database_etl software version", curie=NMDC.curie('etl_software_version'),
+                   model_uri=NMDC.database_etl_software_version, domain=Database, range=Optional[str])
 
 slots.biosample_lat_lon = Slot(uri=NMDC.lat_lon, name="biosample_lat_lon", curie=NMDC.curie('lat_lon'),
                    model_uri=NMDC.biosample_lat_lon, domain=Biosample, range=Optional[Union[dict, "GeolocationValue"]],
