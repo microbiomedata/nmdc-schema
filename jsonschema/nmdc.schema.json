@@ -847,6 +847,14 @@
           },
           "type": "array"
         },
+        "date_created": {
+          "description": "TODO",
+          "type": "string"
+        },
+        "etl_software_version": {
+          "description": "TODO",
+          "type": "string"
+        },
         "functional_annotation_set": {
           "description": "This property links a database object to the set of all functional annotations",
           "items": {
@@ -895,6 +903,10 @@
             "$ref": "#/definitions/MetaproteomicsAnalysisActivity"
           },
           "type": "array"
+        },
+        "nmdc_schema_version": {
+          "description": "TODO",
+          "type": "string"
         },
         "nom_analysis_activity_set": {
           "description": "This property links a database object to the set of natural organic matter (NOM) analysis activities.",
@@ -1466,7 +1478,7 @@
           "type": "number"
         },
         "ctg_L50": {
-          "description": "Given a set of contigs, the N50 is defined as the sequence length of the shortest contig at 50% of the total genome length.",
+          "description": "Given a set of contigs, the L50 is defined as the sequence length of the shortest contig at 50% of the total genome length.",
           "type": "number"
         },
         "ctg_L90": {
@@ -1474,11 +1486,11 @@
           "type": "number"
         },
         "ctg_N50": {
-          "description": "Given a set of contigs, each with its own length, the L50 count is defined as the smallest number of contigs whose length sum makes up half of genome size.",
+          "description": "Given a set of contigs, each with its own length, the N50 count is defined as the smallest number of contigs whose length sum makes up half of genome size.",
           "type": "number"
         },
         "ctg_N90": {
-          "description": "Given a set of contigs, each with its own length, the L90 count is defined as the smallest number of contigs whose length sum makes up 90% of genome size.",
+          "description": "Given a set of contigs, each with its own length, the N90 count is defined as the smallest number of contigs whose length sum makes up 90% of genome size.",
           "type": "number"
         },
         "ctg_logsum": {
@@ -1547,7 +1559,7 @@
           "type": "number"
         },
         "scaf_L50": {
-          "description": "Given a set of scaffolds, the N50 is defined as the sequence length of the shortest scaffold at 50% of the total genome length.",
+          "description": "Given a set of scaffolds, the L50 is defined as the sequence length of the shortest scaffold at 50% of the total genome length.",
           "type": "number"
         },
         "scaf_L90": {
@@ -1555,11 +1567,11 @@
           "type": "number"
         },
         "scaf_N50": {
-          "description": "Given a set of scaffolds, each with its own length, the L50 count is defined as the smallest number of scaffolds whose length sum makes up half of genome size.",
+          "description": "Given a set of scaffolds, each with its own length, the N50 count is defined as the smallest number of scaffolds whose length sum makes up half of genome size.",
           "type": "number"
         },
         "scaf_N90": {
-          "description": "Given a set of scaffolds, each with its own length, the L90 count is defined as the smallest number of scaffolds whose length sum makes up 90% of genome size.",
+          "description": "Given a set of scaffolds, each with its own length, the N90 count is defined as the smallest number of scaffolds whose length sum makes up 90% of genome size.",
           "type": "number"
         },
         "scaf_bp": {
@@ -2512,6 +2524,14 @@
       },
       "type": "array"
     },
+    "date_created": {
+      "description": "TODO",
+      "type": "string"
+    },
+    "etl_software_version": {
+      "description": "TODO",
+      "type": "string"
+    },
     "functional_annotation_set": {
       "description": "This property links a database object to the set of all functional annotations",
       "items": {
@@ -2560,6 +2580,10 @@
         "$ref": "#/definitions/MetaproteomicsAnalysisActivity"
       },
       "type": "array"
+    },
+    "nmdc_schema_version": {
+      "description": "TODO",
+      "type": "string"
     },
     "nom_analysis_activity_set": {
       "description": "This property links a database object to the set of natural organic matter (NOM) analysis activities.",
