@@ -28,7 +28,7 @@ If you are not using this, you should
 
 ## Schema validation
 
-The JSON-Schema for NMDC is maintained in this github repo, under [schema/nmdc.schema.json](../schema/nmdc.schema.json)
+The JSON-Schema for NMDC is maintained in this github repo, under [jsonschema/nmdc.schema.json](../jsonschema/nmdc.schema.json)
 
 Note that the JSON-Schema is generated from a higher level YAML
 representation, using a modeling framework called linkML. See the
@@ -47,7 +47,7 @@ pip install jsonschema
 Assume you have a file MYFILE that is json intended to conform
 
 ```bash
-jsonschema -i /PATH/TO/MYFILE.json schema/nmdc.schema.json
+jsonschema -i /PATH/TO/MYFILE.json jsonschema/nmdc.schema.json
 ```
 
 If the json is valid, there will be no output and the script will pass. If there are problems these will be reported.
@@ -55,7 +55,7 @@ If the json is valid, there will be no output and the script will pass. If there
 You can try this with some ready-made examples in this repo:
 
 ```bash
-jsonschema -i examples/nmdc-01.json schema/nmdc.schema.json
+jsonschema -i examples/nmdc-01.json jsonschema/nmdc.schema.json
 ```
 
 Note: nmdc.schema.json describes each model object, its required attributes and attribute types.  The examples themselves use JSON notation to allow multiple instances of the objects in the JSON schema, to be submitted in one file.
