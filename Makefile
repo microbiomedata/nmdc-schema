@@ -163,8 +163,7 @@ SHEMA_TEST_EXAMPLES := \
 	invalid_study_test
 
 .PHONY: test-jsonschema
-test-jsonschema: $(patsubt %, validate-%, $(SHEMA_TEST_EXAMPLES))
-#test-jsonschema: $(foreach example, $(SHEMA_TEST_EXAMPLES), validate-$(example))
+test-jsonschema: $(foreach example, $(SHEMA_TEST_EXAMPLES), validate-$(example))
 
 validate-%: test/data/%.json
 	util/validate_nmdc_json.py -i $<
