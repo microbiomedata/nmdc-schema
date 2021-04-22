@@ -146,3 +146,25 @@ deploy-testpypi:
 # note: you need to have a testpypi account 
 # or properly configured .pypirc file
 	twine upload -r testpypi dist/* --verbose
+
+##  -- TEST/VALIDATE JSONSCHEMA
+
+# datasets used test/validate the schema
+SHEMA_TEST_EXAMPLES := \
+	biosample_test \
+	gold_project_test \
+	img_mg_annotation_objects \
+	nmdc_example_database \
+	MAGs_activity \
+	mg_assembly_activities_test \
+	mg_assembly_data_objects_test \
+	nmdc_example_database \
+	study_test \
+	invalid_study_test
+
+.PHONY: test-jsonschema
+test-jsonschema: $(patsubt %, validate-%, $(SHEMA_TEST_EXAMPLES))
+#test-jsonschema: $(foreach example, $(SHEMA_TEST_EXAMPLES), validate-$(example))
+
+validate-%: test/data/%.json
+	util/validate_nmdc_json.py -i $<

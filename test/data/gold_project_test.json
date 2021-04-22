@@ -1,0 +1,67 @@
+{
+  "omics_processing_set": [
+    {
+      "id": "gold:Gp0108335",
+      "name": "Thawing permafrost microbial communities from the Arctic, studying carbon transformations - Permafrost 712P3D",
+      "has_input": [
+        "gold:Gb0108335"
+      ],
+      "add_date": "30-OCT-14 12.00.00.000000000 AM",
+      "mod_date": "22-MAY-20 06.13.12.927000000 PM",
+      "has_output": [
+        "jgi:551a20d30d878525404e90d5"
+      ],
+      "ncbi_project_name": "Thawing permafrost microbial communities from the Arctic, studying carbon transformations - Permafrost 712P3D",
+      "omics_type": {
+        "has_raw_value": "Metagenome"
+      },
+      "part_of": [
+        "gold:Gs0112340"
+      ],
+      "processing_institution": "Joint Genome Institute",
+      "type": "nmdc:OmicsProcessing"
+    },
+    {
+      "id": "gold:Gp0108340",
+      "name": "Thawing permafrost microbial communities from the Arctic, studying carbon transformations - Permafrost 612S3M",
+      "has_input": [
+        "gold:Gb0108340"
+      ],
+      "add_date": "30-OCT-14 12.00.00.000000000 AM",
+      "mod_date": "22-MAY-20 06.10.59.590000000 PM",
+      "has_output": [
+        "jgi:551a20d50d878525404e90d7"
+      ],
+      "ncbi_project_name": "Thawing permafrost microbial communities from the Arctic, studying carbon transformations - Permafrost 612S3M",
+      "omics_type": {
+        "has_raw_value": "Metagenome"
+      },
+      "part_of": [
+        "gold:Gs0112340"
+      ],
+      "processing_institution": "Joint Genome Institute",
+      "type": "nmdc:OmicsProcessing"
+    },
+    {
+      "id": "gold:Gp0108341",
+      "name": "Thawing permafrost microbial communities from the Arctic, studying carbon transformations - Permafrost 712S3S",
+      "has_input": [
+        "gold:Gb0108341"
+      ],
+      "add_date": "30-OCT-14 12.00.00.000000000 AM",
+      "mod_date": "22-MAY-20 06.09.46.171000000 PM",
+      "has_output": [
+        "jgi:551a20d90d878525404e90e1"
+      ],
+      "ncbi_project_name": "Thawing permafrost microbial communities from the Arctic, studying carbon transformations - Permafrost 712S3S",
+      "omics_type": {
+        "has_raw_value": "Metagenome"
+      },
+      "part_of": [
+        "gold:Gs0112340"
+      ],
+      "processing_institution": "Joint Genome Institute",
+      "type": "nmdc:OmicsProcessing"
+    }
+  ]
+}

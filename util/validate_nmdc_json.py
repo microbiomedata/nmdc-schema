@@ -51,9 +51,9 @@ def is_valid_json(json_file: str) -> bool:
 )
 def cli(input: str):
     if is_valid_json(input):
-        click.echo("The JSON data is VALID for NMDC schema.")
+        click.echo("%s: The JSON data is VALID for NMDC schema." % input)
     else:
-        click.echo("The JSON data is ** NOT ** valid for NMDC schema.")
+        click.echo("%s: The JSON data is ** NOT ** valid for NMDC schema." % input)
 
 
 if __name__ == "__main__":
