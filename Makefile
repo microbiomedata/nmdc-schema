@@ -10,20 +10,6 @@ TGTS = graphql jsonschema docs shex owl csv graphql python
 #GEN_OPTS = --no-mergeimports
 GEN_OPTS = 
 
-# datasets used test/validate the schema
-TEST_DATA := \
-	biosample_test \
-	gold_project_test \
-	img_mg_annotation_objects \
-	nmdc_example_database \
-	MAGs_activity \
-	mg_assembly_activities_test \
-	mg_assembly_data_objects_test \
-	nmdc_example_database \
-	study_test \
-	invalid_study_test
-
-
 all: gen stage
 gen: $(patsubst %,gen-%,$(TGTS))
 clean:
@@ -162,20 +148,23 @@ deploy-testpypi:
 	twine upload -r testpypi dist/* --verbose
 
 ##  -- TEST/VALIDATE JSONSCHEMA
-#test/data/biosample_test.json test/data/study_test.json
-#$(patsubt %, test/data/%, $(TEST_DATA))
+
+# datasets used test/validate the schema
+SHEMA_TEST_EXAMPLES := \
+	biosample_test \
+	gold_project_test \
+	img_mg_annotation_objects \
+	nmdc_example_database \
+	MAGs_activity \
+	mg_assembly_activities_test \
+	mg_assembly_data_objects_test \
+	nmdc_example_database \
+	study_test \
+	invalid_study_test
 
 .PHONY: test-jsonschema
-test-jsonschema: $(patsubt %, test-jsonschema-%, $(TEST_DATA))
-test-jsonschema-%: test/data/%.json
-	echo $@
+test-jsonschema: $(patsubt %, validate-%, $(SHEMA_TEST_EXAMPLES))
+#test-jsonschema: $(foreach example, $(SHEMA_TEST_EXAMPLES), validate-$(example))
 
-#	util/validate_nmdc_json.py $<
-
-test/data/%.test: test/data/%.json
-	echo $@
-
-#@echo $(TEST_DATA)
-#test-jsonschema: $(patsubt %, test/data/%.test, $(TEST_DATA))
-
-
+validate-%: test/data/%.json
+	util/validate_nmdc_json.py -i $<
