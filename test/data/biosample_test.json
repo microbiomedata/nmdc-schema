@@ -1,0 +1,109 @@
+{
+  "biosample_set": [
+    {
+      "id": "gold:Gb0101224",
+      "name": "Lithgow State Coal Mine Calcium nutrients (early)",
+      "description": "Bulk Aqueous phase filtered water",
+      "type": "nmdc:Biosample",
+      "env_broad_scale": {
+        "has_raw_value": "ENVO:00002030"
+      },
+      "env_local_scale": {
+        "has_raw_value": "ENVO:00002169"
+      },
+      "env_medium": {
+        "has_raw_value": "ENVO:00005792"
+      },
+      "geo_loc_name": {
+        "has_raw_value": "Lithgow"
+      },
+      "lat_lon": {
+        "has_raw_value": "-33.460524 150.168149",
+        "latitude": -33.460524,
+        "longitude": 150.168149
+      },
+      "ecosystem": "Environmental",
+      "ecosystem_category": "Aquatic",
+      "ecosystem_type": "Freshwater",
+      "ecosystem_subtype": "Groundwater",
+      "specific_ecosystem": "Coalbed water",
+      "add_date": "28-JUL-14 12.00.00.000000000 AM",
+      "community": "microbial communities",
+      "habitat": "Coalbed water",
+      "location": "from the Lithgow State Coal Mine, New South Wales, Australia",
+      "mod_date": "26-AUG-16 01.50.27.000000000 PM",
+      "ncbi_taxonomy_name": "coal metagenome",
+      "sample_collection_site": "Lithgow State Coal Mine"
+    },
+    {
+      "id": "gold:Gb0101225",
+      "name": "Lithgow State Coal Mine Calcium nutrients Extra",
+      "description": "Bulk Aqueous phase filtered water",
+      "type": "nmdc:Biosample",
+      "env_broad_scale": {
+        "has_raw_value": "ENVO:00002030"
+      },
+      "env_local_scale": {
+        "has_raw_value": "ENVO:00002169"
+      },
+      "env_medium": {
+        "has_raw_value": "ENVO:00005792"
+      },
+      "geo_loc_name": {
+        "has_raw_value": "Lithgow"
+      },
+      "lat_lon": {
+        "has_raw_value": "-33.460524 150.168149",
+        "latitude": -33.460524,
+        "longitude": 150.168149
+      },
+      "ecosystem": "Environmental",
+      "ecosystem_category": "Aquatic",
+      "ecosystem_type": "Freshwater",
+      "ecosystem_subtype": "Groundwater",
+      "specific_ecosystem": "Coalbed water",
+      "add_date": "28-JUL-14 12.00.00.000000000 AM",
+      "community": "microbial communities",
+      "habitat": "Coalbed water",
+      "location": "from the Lithgow State Coal Mine, New South Wales, Australia",
+      "mod_date": "26-AUG-16 01.50.27.000000000 PM",
+      "ncbi_taxonomy_name": "coal metagenome",
+      "sample_collection_site": "Lithgow State Coal Mine"
+    },
+    {
+      "id": "gold:Gb0101226",
+      "name": "Lithgow State Coal Mine Calcium nutrients",
+      "description": "Bulk Aqueous phase filtered water",
+      "type": "nmdc:Biosample",
+      "env_broad_scale": {
+        "has_raw_value": "ENVO:00002030"
+      },
+      "env_local_scale": {
+        "has_raw_value": "ENVO:00002169"
+      },
+      "env_medium": {
+        "has_raw_value": "ENVO:00005792"
+      },
+      "geo_loc_name": {
+        "has_raw_value": "Lithgow"
+      },
+      "lat_lon": {
+        "has_raw_value": "-33.460524 150.168149",
+        "latitude": -33.460524,
+        "longitude": 150.168149
+      },
+      "ecosystem": "Environmental",
+      "ecosystem_category": "Aquatic",
+      "ecosystem_type": "Freshwater",
+      "ecosystem_subtype": "Groundwater",
+      "specific_ecosystem": "Coalbed water",
+      "add_date": "28-JUL-14 12.00.00.000000000 AM",
+      "community": "microbial communities",
+      "habitat": "Coalbed water",
+      "location": "from the Lithgow State Coal Mine, New South Wales, Australia",
+      "mod_date": "26-AUG-16 01.50.27.000000000 PM",
+      "ncbi_taxonomy_name": "coal metagenome",
+      "sample_collection_site": "Lithgow State Coal Mine"
+    }
+  ]
+}

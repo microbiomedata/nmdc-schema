@@ -1,0 +1,266 @@
+{
+  "study_set": [
+    {
+      "id": "gold:Gs0128849",
+      "name": "Permafrost microbial communities from Stordalen Mire, Sweden",
+      "description": "Thawing permafrost is one of the largest soil carbon pools on the planet. The goal of this project is to study microbial communities that participate in the soil carbon cycle.",
+      "ecosystem": "Environmental",
+      "ecosystem_category": "Terrestrial",
+      "ecosystem_type": "Soil",
+      "ecosystem_subtype": "Wetlands",
+      "specific_ecosystem": "Permafrost",
+      "principal_investigator_name": {
+        "has_raw_value": "Virginia Rich"
+      },
+      "doi": {
+        "has_raw_value": "10.25585/1488217"
+      },
+      "type": "nmdc:Study"
+    },
+    {
+      "id": "gold:Gs0130354",
+      "name": "Forest soil microbial communities from Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United States",
+      "description": "The goal of this study is to learn the molecular mechanisms underlying changes in the temperature sensitive respiration response of forest soils to long-term experimental warming",
+      "ecosystem": "Environmental",
+      "ecosystem_category": "Terrestrial",
+      "ecosystem_type": "Soil",
+      "ecosystem_subtype": "Unclassified",
+      "specific_ecosystem": "Forest Soil",
+      "principal_investigator_name": {
+        "has_raw_value": "Jeffrey Blanchard"
+      },
+      "doi": {
+        "has_raw_value": "10.25585/1488215"
+      },
+      "type": "nmdc:Study"
+    },
+    {
+      "id": "gold:Gs0134277",
+      "name": "Rhizosphere microbial communities from Carex aquatilis grown in University of Washington, Seatle, WA, United States",
+      "description": "The goal of this study is to advance understanding of the response of methane production and methane oxidation to changes in plant productivity so that modeled representations of these processes and interactions can be improved.",
+      "ecosystem": "Host-associated",
+      "ecosystem_category": "Plants",
+      "ecosystem_type": "Roots",
+      "ecosystem_subtype": "Rhizosphere",
+      "specific_ecosystem": "Soil",
+      "principal_investigator_name": {
+        "has_raw_value": "Rebecca Neumann"
+      },
+      "doi": {
+        "has_raw_value": "10.25585/1488209"
+      },
+      "type": "nmdc:Study"
+    }
+  ],
+  "omics_processing_set": [
+    {
+      "id": "gold:Gp0225767",
+      "name": "Forest soil microbial communities from Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O",
+      "description": "Forest soil from Barre Woods Harvard Forest LTER site was incubated at 10C with heavy water. Sample is from a control plot at ambient soil temperature, organic horizon - top 4cm of soil",
+      "has_input": [
+        "gold:Gb0157174"
+      ],
+      "add_date": "17-AUG-17 05.08.38.451000000 PM",
+      "mod_date": "16-OCT-20 02.04.01.374000000 AM",
+      "has_output": [
+        "jgi:599c3a117ded5e41edd7da77"
+      ],
+      "ncbi_project_name": "Forest soil microbial communities from Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O",
+      "omics_type": {
+        "has_raw_value": "Metagenome"
+      },
+      "part_of": [
+        "gold:Gs0130354"
+      ],
+      "processing_institution": "Joint Genome Institute",
+      "type": "nmdc:OmicsProcessing"
+    },
+    {
+      "id": "gold:Gp0208560",
+      "name": "Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG",
+      "description": "Permafrost microbial communities from Stordalen Mire, Sweden",
+      "has_input": [
+        "gold:Gb0150408"
+      ],
+      "add_date": "17-MAR-17 04.55.44.822000000 PM",
+      "mod_date": "22-MAY-20 06.38.19.576000000 PM",
+      "has_output": [
+        "jgi:58b653757ded5e7a2af951c4"
+      ],
+      "ncbi_project_name": "Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG",
+      "omics_type": {
+        "has_raw_value": "Metagenome"
+      },
+      "part_of": [
+        "gold:Gs0128849"
+      ],
+      "processing_institution": "Joint Genome Institute",
+      "type": "nmdc:OmicsProcessing"
+    },
+    {
+      "id": "gold:Gp0306221",
+      "name": "Rhizosphere microbial communities from Carex aquatilis grown in University of Washington, Seatle, WA, United States - 4-1-23 metaG",
+      "description": "Rhizosphere microbial communities from Carex aquatilis grown in submerged peat from a thermokarst bog, University of Washington, Seatle, WA, United States",
+      "has_input": [
+        "gold:Gb0188037"
+      ],
+      "add_date": "29-MAR-18 01.27.30.036000000 PM",
+      "mod_date": "04-APR-20 08.26.35.067000000 AM",
+      "has_output": [
+        "jgi:5baa816646d1e63f764deb37"
+      ],
+      "ncbi_project_name": "Rhizosphere microbial communities from Carex aquatilis grown in University of Washington, Seatle, WA, United States - 4-1-23 metaG",
+      "omics_type": {
+        "has_raw_value": "Metagenome"
+      },
+      "part_of": [
+        "gold:Gs0134277"
+      ],
+      "processing_institution": "Joint Genome Institute",
+      "type": "nmdc:OmicsProcessing"
+    }
+  ],
+  "biosample_set": [
+    {
+      "id": "gold:Gb0150408",
+      "name": "Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG",
+      "description": "Permafrost microbial communities from Stordalen Mire, Sweden",
+      "type": "nmdc:Biosample",
+      "collection_date": {
+        "has_raw_value": "2011-06-15"
+      },
+      "env_broad_scale": {
+        "has_raw_value": "ENVO:00000446"
+      },
+      "env_local_scale": {
+        "has_raw_value": "ENVO:00000232"
+      },
+      "env_medium": {
+        "has_raw_value": "ENVO:00000134"
+      },
+      "geo_loc_name": {
+        "has_raw_value": "Sweden: Stordalen"
+      },
+      "lat_lon": {
+        "has_raw_value": "68.35 19.05",
+        "latitude": 68.35,
+        "longitude": 19.05
+      },
+      "ecosystem": "Environmental",
+      "ecosystem_category": "Terrestrial",
+      "ecosystem_type": "Soil",
+      "ecosystem_subtype": "Wetlands",
+      "specific_ecosystem": "Permafrost",
+      "add_date": "17-MAR-17 04.55.54.717000000 PM",
+      "community": "microbial communities",
+      "habitat": "Fen",
+      "identifier": "611E1M metaG",
+      "location": "Stordalen Mire, Sweden",
+      "mod_date": "08-JAN-20 02.49.23.000000000 PM",
+      "ncbi_taxonomy_name": "permafrost metagenome",
+      "sample_collection_site": "Mire fen"
+    },
+    {
+      "id": "gold:Gb0157174",
+      "name": "Forest soil microbial communities from Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O",
+      "description": "Forest soil from Barre Woods Harvard Forest LTER site was incubated at 10C with heavy water. Sample is from a control plot at ambient soil temperature, organic horizon - top 4cm of soil",
+      "type": "nmdc:Biosample",
+      "collection_date": {
+        "has_raw_value": "2017-05-24"
+      },
+      "env_broad_scale": {
+        "has_raw_value": "ENVO:01000174"
+      },
+      "env_local_scale": {
+        "has_raw_value": "ENVO:01000159"
+      },
+      "env_medium": {
+        "has_raw_value": "ENVO:00002261"
+      },
+      "geo_loc_name": {
+        "has_raw_value": "USA: Massachusetts"
+      },
+      "lat_lon": {
+        "has_raw_value": "42.481016 -72.178343",
+        "latitude": 42.481016,
+        "longitude": -72.178343
+      },
+      "ecosystem": "Environmental",
+      "ecosystem_category": "Terrestrial",
+      "ecosystem_type": "Soil",
+      "ecosystem_subtype": "Unclassified",
+      "specific_ecosystem": "Forest Soil",
+      "add_date": "17-AUG-17 05.38.34.719000000 PM",
+      "community": "microbial communities",
+      "habitat": "soil",
+      "identifier": "Inc-BW-C-14-O",
+      "location": "Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United States",
+      "mod_date": "08-JAN-20 02.49.23.000000000 PM",
+      "ncbi_taxonomy_name": "soil metagenome",
+      "sample_collection_site": "forest soil"
+    },
+    {
+      "id": "gold:Gb0188037",
+      "name": "Rhizosphere microbial communities from Carex aquatilis grown in University of Washington, Seatle, WA, United States - 4-1-23 metaG",
+      "description": "Rhizosphere microbial communities from Carex aquatilis grown in submerged peat from a thermokarst bog, University of Washington, Seatle, WA, United States",
+      "type": "nmdc:Biosample",
+      "collection_date": {
+        "has_raw_value": "2018-01-29"
+      },
+      "env_broad_scale": {
+        "has_raw_value": "ENVO:00000446"
+      },
+      "env_local_scale": {
+        "has_raw_value": "ENVO:00005801"
+      },
+      "env_medium": {
+        "has_raw_value": "ENVO:00005774"
+      },
+      "geo_loc_name": {
+        "has_raw_value": "USA: Seattle, Washington"
+      },
+      "lat_lon": {
+        "has_raw_value": "47.6516 -122.3045",
+        "latitude": 47.6516,
+        "longitude": -122.3045
+      },
+      "ecosystem": "Host-associated",
+      "ecosystem_category": "Plants",
+      "ecosystem_type": "Rhizosphere",
+      "ecosystem_subtype": "Soil",
+      "specific_ecosystem": "Unclassified",
+      "add_date": "29-MAR-18 01.27.40.709000000 PM",
+      "community": "microbial communities",
+      "habitat": "rhizosphere",
+      "host_name": "Carex aquatilis",
+      "identifier": "4-1-23 metaG",
+      "location": "University of Washington, Seatle, WA, United States",
+      "mod_date": "08-JAN-20 02.49.25.000000000 PM",
+      "ncbi_taxonomy_name": "rhizosphere metagenome",
+      "sample_collection_site": "Peat Soil"
+    }
+  ],
+  "data_object_set": [
+    {
+      "id": "jgi:58b653757ded5e7a2af951c4",
+      "name": "11340.8.202049.GTCTCCT-AAGGAGA.fastq.gz",
+      "description": "Raw sequencer read data",
+      "file_size_bytes": 9208349052.0,
+      "type": "nmdc:DataObject"
+    },
+    {
+      "id": "jgi:599c3a117ded5e41edd7da77",
+      "name": "11839.4.222578.GAGCTCA-TTGAGCT.fastq.gz",
+      "description": "Raw sequencer read data",
+      "file_size_bytes": 34243309819.0,
+      "type": "nmdc:DataObject"
+    },
+    {
+      "id": "jgi:5baa816646d1e63f764deb37",
+      "name": "12660.4.274923.GATCGTAC-GTACGATC.fastq.gz",
+      "description": "Raw sequencer read data",
+      "file_size_bytes": 7580035314.0,
+      "type": "nmdc:DataObject"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "study_set": [
+    {
+      "id": "gold:Gs0110115",
+      "name": "Avena fatua rhizosphere microbial communities from Hopland, California, USA, for root-enhanced decomposition of organic matter studies",
+      "description": "Using analytical expertise at both the JGI and EMSL, we plan to follow successional patterns of protein expression by root-associated microorganisms. This work builds on foundational research we are conducting with the common California grassland plant, Avena fatua, grown in Hopland, CA soil (FOA DE-PS02-09ER09-25). Using our 16-chamber 13C labeling facility at UC Berkeley, we have shown that elevated CO2 increased the amount of C allocated belowground, and increased the yield of root biomass. The rhizosphere microbial community undergoes a succession as the root grows, senesces, and dies. In elevated CO2 treatments, we also detect a greater amount of root-derived 13C in the mineral-associated heavy fraction of the soil, which is commonly assumed to reflect longer term stabilization. \\n \\nIn our JGI-EMSL project, we will follow over time how roots impact the functional capacity of the rhizosphere microbiome to enzymatically mediate decomposition processes. We hypothesize that root-exudate stimulation of soil microbial populations results in elevated expression of biomolecules (transcripts, enzymes, metabolites) for the decomposition of macromolecular C compounds.",
+      "ecosystem": "Host-associated",
+      "ecosystem_category": "Plants",
+      "ecosystem_type": "Rhizosphere",
+      "ecosystem_subtype": "Soil",
+      "specific_ecosystem": "Unclassified",
+      "principal_investigator_name": {
+        "has_raw_value": "Mary Firestone"
+      },
+      "doi": {
+        "has_raw_value": "10.25585/1487760"
+      },
+      "type": "nmdc:Study"
+    },
+    {
+      "id": "gold:Gs0110132",
+      "name": "Cyanobacterial communities from the Joint Genome Institute, California, USA",
+      "description": "We propose to utilize the unique resources at EMSL and the JGI to obtain a better understanding of the phylogenetic and functional diversity of cyanobacteria that have been collected from DOE mission relevant environments (e.g. alkaline and acidic hot springs, and hypersaline terrestrial and water habitats) and deposited in a culture collection that contains &gt;1,200 strains. The Cyanobacteria are one of the most metabolically and morphologically diverse bacterial phyla and it has been hypothesized that they are the origin of oxygenic photosynthesis. The project proposed here would complement and utilize the genomic information that was generated during JGI\u2019s GEBA Cyano project to add valuable insights about the metabolic processes that are active in members of this phylum and that have been - and still are - key factors in shaping our planet. In contrast to the GEBA Cyano project, the project proposed here include mixed cultures of organisms that are recalcitrant to separation. A comprehensive omics approach of these simple consortia will allow us to develop tools for Systems Microbiology and for analyzing microbe-microbe and microbe-climate interactions and the single-cell and whole system level. Phylogenomics: We will request 16S rRNA data from our culture collections to classify phenotypes that are most promising for addressing questions related to carbon and nitrogen cycling and developing new chassis for biofuel production strains. To obtain a complete 16S rRNA-based inventory of the Cyanobacteria collection we would request ~40 Gb of iTag data from the JGI. In addition, we would request Fluorescence in situ hybridization (FISH) microscopy from EMSL for selected samples that contain more than one phylotype, to obtain a better understanding of the special organization within mixed populations. We will request an additional ~10 Gb of iTag data to monitor phylogenetic changes in mixed cultures with phenotypes that are in particular relevant to carbon and nitrogen cycling.   Single Cell Genomics and Metagenomics: We will request sorting of mixed cultures targeting ~100 single cells and genomic sequencing of the obtained isolates using JGI's PacBio pipeline (total of ~50 Gb genomic data). For mixed cultured from which no ? or only a fraction of the community - can be isolated as single cell, we will request a total of ~50 Gb of metagenomics data. This will provide us with the genomic data that will be necessary to reconstruct metabolic pathways of hitherto uncultured cyanobacteria and to identify the key factors that make the individual members of these mixed cultures recalcitrant to cultivation under axenic conditions. Physiology and chemistry: To determine the physical and chemical changes that occur during Cyanobacteria mediated carbon and nitrogen cycling, we will request access to cryo-transmission electron microscopy, scanning electron microscopy coupled with focused ion beam, X ray spectroscopy and electron diffraction analyses, confocal microscopy, Raman spectroscopy, synchrotron-based computed x-ray microtomography, nano secondary ion mass spectrometry, and high field Fourier transform ion cyclotron resonance mass spectrometry at EMSL.   Functional dynamics: To determine the dynamics of the genetic modules that are being transcribed into mRNA during Cyanobacteria mediated carbon and nitrogen cycling, we propose to generate expression profiles from 10 selected axenic and 10 mixed cultures. We will request a total of ~10 Gb and ~50 Gb of transcriptome and metatranscriptomic data from the JGI, respectively. To determine the dynamics of genetic modules being translated and converted into proteins and metabolites during Cyanobacteria mediated carbon and nitrogen cycling, we will generate metaproteomic and metametabolomic data from 10 selected axenic and 10 mixed cultures. We will request access and support to and with mass spectrometry, NMR spectrometry, and computation time on Chinook from EMSL.",
+      "ecosystem": "Host-associated",
+      "ecosystem_category": "Microbial",
+      "ecosystem_type": "Bacteria",
+      "ecosystem_subtype": "Unclassified",
+      "specific_ecosystem": "Unclassified",
+      "principal_investigator_name": {
+        "has_raw_value": "Matthias Hess"
+      },
+      "doi": {
+        "has_raw_value": "10.25585/1487758"
+      },
+      "type": "nmdc:Study"
+    },
+    {
+      "id": "gold:Gs0112340",
+      "name": "Thawing permafrost microbial communities from the Arctic, studying carbon transformations",
+      "description": "A fundamental challenge of microbial environmental science is to understand how earth systems will respond to climate change. A parallel challenge in biology is to unverstand how information encoded in organismal genes manifests as biogeochemical processes at ecosystem-to-global scales. These grand challenges intersect in the need to understand the glocal carbon (C) cycle, which is both mediated by biological processes and a key driver of climate through the greenhouse gases carbon dioxide (CO2) and methane (CH4). A key aspect of these challenges is the C cycle implications of the predicted dramatic shrinkage in northern permafrost in the coming century.  ",
+      "ecosystem": "Environmental",
+      "ecosystem_category": "Terrestrial",
+      "ecosystem_type": "Soil",
+      "ecosystem_subtype": "Wetlands",
+      "specific_ecosystem": "Permafrost",
+      "principal_investigator_name": {
+        "has_raw_value": "Virginia Rich"
+      },
+      "doi": {
+        "has_raw_value": "10.25585/1487764"
+      },
+      "type": "nmdc:Study"
+    }
+  ]
+}

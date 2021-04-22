@@ -1,0 +1,132 @@
+{"mags_activity_set":
+[
+  {
+    "id": "nmdc:f2fc8f5aade3092ea97769f0a892d2a9",
+    "name": "MAGs activiity 1781_86101",
+    "was_informed_by": "gold:Gp0115663",
+    "started_at_time": "2021-01-10",
+    "ended_at_time": "2021-01-10",
+    "type": "nmdc:MAGsAnalysisActivity",
+    "execution_resource": "NERSC - Cori",
+    "git_url": "https://img.jgi.doe.gov",
+    "has_input": [
+      "nmdc:0a3d00715d01ad7b8f3aee59b674dfe9",
+      "nmdc:668d207be5ea844f988fbfb2813564cc",
+      "nmdc:b7e9c8d0bffdd13ace6f862a61fa87d2"
+    ],
+    "has_output": [
+      "nmdc:818f5a47d1371295f9313909ea12eb50",
+      "nmdc:e0b7421514f976cb7ad8c343cf3077a9",
+      "nmdc:a755bb87aded36aefbd8022506a793c7",
+      "nmdc:1346fe25b6ff22180eb3a51204e0b1fc"
+    ],
+    "input_contig_num": 169782,
+    "too_short_contig_num": 159810,
+    "lowDepth_contig_num": 0,
+    "unbinned_contig_num": 9483,
+    "binned_contig_num": 489,
+    "mags_list": [
+      {
+        "bin_name": "bins.1",
+        "number_of_contig": 52,
+        "completeness": 11.42,
+        "contamination": 0.21,
+        "gene_count": 250,
+        "bin_quality": "LQ",
+        "num_16s": 0,
+        "num_5s": 1,
+        "num_23s": 0,
+        "num_tRNA": 1
+      },
+      {
+        "bin_name": "bins.2",
+        "number_of_contig": 426,
+        "completeness": 51.25,
+        "contamination": 10.34,
+        "gene_count": 2548,
+        "bin_quality": "LQ",
+        "num_16s": 0,
+        "num_5s": 1,
+        "num_23s": 0,
+        "num_tRNA": 26
+      },
+      {
+        "bin_name": "bins.3",
+        "number_of_contig": 11,
+        "completeness": 2,
+        "contamination": 0,
+        "gene_count": 294,
+        "bin_quality": "LQ",
+        "num_16s": 0,
+        "num_5s": 0,
+        "num_23s": 0,
+        "num_tRNA": 1
+      }
+    ]
+  },
+  {
+    "id": "nmdc:a0ca0743a49e4bf12db9b5d933c4e76a",
+    "name": "MAGs activiity 1781_86089",
+    "was_informed_by": "gold:Gp0115664",
+    "started_at_time": "2021-01-10",
+    "ended_at_time": "2021-01-10",
+    "type": "nmdc:MAGsAnalysisActivity",
+    "execution_resource": "NERSC - Cori",
+    "git_url": "https://img.jgi.doe.gov",
+    "has_input": [
+      "nmdc:b78f599c21fb31b00d3f8a3c56daeb88",
+      "nmdc:662dc676b0b5a486248357f5b887c18b",
+      "nmdc:bc034c7024043ea88b44d0897bb5bece"
+    ],
+    "has_output": [
+      "nmdc:c24915651cfdfc91f3e6b5bac679c3af",
+      "nmdc:e8ec230bfe68a272b34540e7f5ab5b2b",
+      "nmdc:474fa29bd39452fa80f5a32e9e6be6f4",
+      "nmdc:9800add41d26829494265ba81a100c53"
+    ],
+    "input_contig_num": 78376,
+    "too_short_contig_num": 75364,
+    "lowDepth_contig_num": 0,
+    "unbinned_contig_num": 2806,
+    "binned_contig_num": 206,
+    "mags_list": [
+      {
+        "bin_name": "bins.1",
+        "number_of_contig": 74,
+        "completeness": 25.86,
+        "contamination": 0,
+        "gene_count": 401,
+        "bin_quality": "LQ",
+        "num_16s": 0,
+        "num_5s": 0,
+        "num_23s": 0,
+        "num_tRNA": 4
+      },
+      {
+        "bin_name": "bins.2",
+        "number_of_contig": 74,
+        "completeness": 0,
+        "contamination": 0,
+        "gene_count": 383,
+        "bin_quality": "LQ",
+        "num_16s": 0,
+        "num_5s": 0,
+        "num_23s": 0,
+        "num_tRNA": 5
+      },
+      {
+        "bin_name": "bins.3",
+        "number_of_contig": 58,
+        "completeness": 17.61,
+        "contamination": 0,
+        "gene_count": 313,
+        "bin_quality": "LQ",
+        "num_16s": 0,
+        "num_5s": 0,
+        "num_23s": 0,
+        "num_tRNA": 7
+      }
+    ]
+  }
+]
+}
