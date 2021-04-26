@@ -228,6 +228,7 @@ classes:
       - sodium
       - soil_type
       - soil_type_meth
+      - source_mat_id
       - store_cond
       - sulfate
       - sulfide
