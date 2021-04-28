@@ -74,7 +74,45 @@ classes:
       - num_input_reads
       - num_aligned_reads
 
+  metatranscriptome assembly:
+    is_a: workflow execution activity
+    in_subset: 
+      - workflow subset
+    slots:
+      - asm_score
+      - scaffolds
+      - scaf_logsum
+      - scaf_powsum
+      - scaf_max
+      - scaf_bp
+      - scaf_N50
+      - scaf_N90
+      - scaf_L50
+      - scaf_L90
+      - scaf_n_gt50K
+      - scaf_l_gt50K
+      - scaf_pct_gt50K
+      - contigs
+      - contig_bp
+      - ctg_N50
+      - ctg_L50
+      - ctg_N90
+      - ctg_L90
+      - ctg_logsum
+      - ctg_powsum
+      - ctg_max
+      - gap_pct
+      - gc_std
+      - gc_avg
+      - num_input_reads
+      - num_aligned_reads
+
   metagenome annotation activity:
+    is_a: workflow execution activity
+    in_subset: 
+      - workflow subset
+
+  metatranscriptome annotation activity:
     is_a: workflow execution activity
     in_subset: 
       - workflow subset
