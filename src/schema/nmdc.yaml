@@ -273,6 +273,11 @@ classes:
         required: false
         description: >-
           This is currently a required field but it's not clear if this should be required for human hosts
+      part of:
+        required: false
+        range: study
+        description: >-
+          Relates the biosample to the study for which the sample was collected.
     id_prefixes:
       - GOLD
     exact_mappings:
