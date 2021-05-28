@@ -278,6 +278,12 @@ classes:
         range: study
         description: >-
           Relates the biosample to the study for which the sample was collected.
+      env_broad_scale:
+        required: true
+      env_local_scale:
+        required: true
+      env_medium:
+        required: true
     id_prefixes:
       - GOLD
     exact_mappings:
