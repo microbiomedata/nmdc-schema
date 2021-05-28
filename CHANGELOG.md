@@ -1,5 +1,14 @@
 # Change Log
 Changes to the schema are documented in this file.
+## [Current changes]
+### Added
+  - N/A
+### Fixed
+  - N/A
+### Changed
+  - Make MIxS triad properties required for biosamples (cf. issue 45)
+### Removed
+  - N/A
 
 ## [2021.04.28rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.04.28rc1)
 ### Added
