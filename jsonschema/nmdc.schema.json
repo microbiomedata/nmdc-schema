@@ -250,16 +250,13 @@
           "description": "\"Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit\""
         },
         "env_broad_scale": {
-          "$ref": "#/definitions/ControlledTermValue",
-          "description": "\"In this field, report which major environmental system your sample or specimen came from. The systems identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. were you in the desert or a rainforest?). We recommend using subclasses of ENVOUs biome class: http://purl.obolibrary.org/obo/ENVO_00000428. Format (one term): termLabel [termID], Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a water sample from the photic zone in middle of the Atlantic Ocean, consider: oceanic epipelagic zone biome [ENVO:01000033]. Example: Annotating a sample from the Amazon rainforest consider: tropical moist broadleaf forest biome [ENVO:01000228]. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html\""
+          "$ref": "#/definitions/ControlledTermValue"
         },
         "env_local_scale": {
-          "$ref": "#/definitions/ControlledTermValue",
-          "description": "\"In this field, report the entity or entities which are in your sample or specimenUs local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale. Format (one term): termLabel [termID]; Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a pooled sample taken from various vegetation layers in a forest consider: canopy [ENVO:00000047]|herb and fern layer [ENVO:01000337]|litter layer [ENVO:01000338]|understory [01000335]|shrub layer [ENVO:01000336]. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html\""
+          "$ref": "#/definitions/ControlledTermValue"
         },
         "env_medium": {
-          "$ref": "#/definitions/ControlledTermValue",
-          "description": "\"In this field, report which environmental material or materials (pipe separated) immediately surrounded your sample or specimen prior to sampling, using one or more subclasses of ENVOUs environmental material class: http://purl.obolibrary.org/obo/ENVO_00010483. Format (one term): termLabel [termID]; Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a fish swimming in the upper 100 m of the Atlantic Ocean, consider: ocean water [ENVO:00002151]. Example: Annotating a duck on a pond consider: pond water [ENVO:00002228]|air ENVO_00002005. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html\""
+          "$ref": "#/definitions/ControlledTermValue"
         },
         "env_package": {
           "$ref": "#/definitions/TextValue",
@@ -407,6 +404,13 @@
         "oxy_stat_samp": {
           "$ref": "#/definitions/TextValue",
           "description": "Oxygenation status of sample"
+        },
+        "part_of": {
+          "description": "Relates the biosample to the study for which the sample was collected.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         },
         "part_org_carb": {
           "$ref": "#/definitions/QuantityValue",
@@ -630,7 +634,10 @@
         }
       },
       "required": [
-        "id"
+        "id",
+        "env_broad_scale",
+        "env_local_scale",
+        "env_medium"
       ],
       "title": "Biosample",
       "type": "object"
@@ -1696,6 +1703,236 @@
         "id"
       ],
       "title": "MetaproteomicsAnalysisActivity",
+      "type": "object"
+    },
+    "MetatranscriptomeAnnotationActivity": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "ended_at_time": {
+          "type": "string"
+        },
+        "execution_resource": {
+          "description": "Example: NERSC-Cori",
+          "type": "string"
+        },
+        "git_url": {
+          "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
+          "type": "string"
+        },
+        "has_input": {
+          "description": "An input to a process.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "has_output": {
+          "description": "An output biosample to a processing step",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "id": {
+          "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+          "type": "string"
+        },
+        "name": {
+          "description": "A human readable label for an entity",
+          "type": "string"
+        },
+        "started_at_time": {
+          "type": "string"
+        },
+        "type": {
+          "description": "An optional string that species the type object.  This is used to allow for searches for different kinds of objects.",
+          "type": "string"
+        },
+        "used": {
+          "type": "string"
+        },
+        "was_associated_with": {
+          "description": "the agent/entity associated with the generation of the file",
+          "type": "string"
+        },
+        "was_informed_by": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "title": "MetatranscriptomeAnnotationActivity",
+      "type": "object"
+    },
+    "MetatranscriptomeAssembly": {
+      "additionalProperties": false,
+      "description": "",
+      "properties": {
+        "asm_score": {
+          "description": "A score for comparing metagenomic assembly quality from same sample.",
+          "type": "number"
+        },
+        "contig_bp": {
+          "description": "Total size in bp of all contigs.",
+          "type": "number"
+        },
+        "contigs": {
+          "description": "The sum of the (length*log(length)) of all contigs, times some constant.  Increase the contiguity, the score will increase",
+          "type": "number"
+        },
+        "ctg_L50": {
+          "description": "Given a set of contigs, the L50 is defined as the sequence length of the shortest contig at 50% of the total genome length.",
+          "type": "number"
+        },
+        "ctg_L90": {
+          "description": "The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all contigs of that length or longer contains at least 90% of the sum of the lengths of all contigs.",
+          "type": "number"
+        },
+        "ctg_N50": {
+          "description": "Given a set of contigs, each with its own length, the N50 count is defined as the smallest number of contigs whose length sum makes up half of genome size.",
+          "type": "number"
+        },
+        "ctg_N90": {
+          "description": "Given a set of contigs, each with its own length, the N90 count is defined as the smallest number of contigs whose length sum makes up 90% of genome size.",
+          "type": "number"
+        },
+        "ctg_logsum": {
+          "description": "Maximum contig length.",
+          "type": "number"
+        },
+        "ctg_max": {
+          "description": "Maximum contig length.",
+          "type": "number"
+        },
+        "ctg_powsum": {
+          "description": "Powersum of all contigs is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25).",
+          "type": "number"
+        },
+        "ended_at_time": {
+          "type": "string"
+        },
+        "execution_resource": {
+          "description": "Example: NERSC-Cori",
+          "type": "string"
+        },
+        "gap_pct": {
+          "description": "The gap size percentage of all scaffolds.",
+          "type": "number"
+        },
+        "gc_avg": {
+          "description": "Average of GC content of all contigs.",
+          "type": "number"
+        },
+        "gc_std": {
+          "description": "Standard deviation of GC content of all contigs.",
+          "type": "number"
+        },
+        "git_url": {
+          "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
+          "type": "string"
+        },
+        "has_input": {
+          "description": "An input to a process.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "has_output": {
+          "description": "An output biosample to a processing step",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "id": {
+          "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+          "type": "string"
+        },
+        "name": {
+          "description": "A human readable label for an entity",
+          "type": "string"
+        },
+        "num_aligned_reads": {
+          "description": "The sequence count number of input reads aligned to assembled contigs.",
+          "type": "number"
+        },
+        "num_input_reads": {
+          "description": "The sequence count number of input reads for assembly.",
+          "type": "number"
+        },
+        "scaf_L50": {
+          "description": "Given a set of scaffolds, the L50 is defined as the sequence length of the shortest scaffold at 50% of the total genome length.",
+          "type": "number"
+        },
+        "scaf_L90": {
+          "description": "The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all scaffolds of that length or longer contains at least 90% of the sum of the lengths of all scaffolds.",
+          "type": "number"
+        },
+        "scaf_N50": {
+          "description": "Given a set of scaffolds, each with its own length, the N50 count is defined as the smallest number of scaffolds whose length sum makes up half of genome size.",
+          "type": "number"
+        },
+        "scaf_N90": {
+          "description": "Given a set of scaffolds, each with its own length, the N90 count is defined as the smallest number of scaffolds whose length sum makes up 90% of genome size.",
+          "type": "number"
+        },
+        "scaf_bp": {
+          "description": "Total size in bp of all scaffolds.",
+          "type": "number"
+        },
+        "scaf_l_gt50K": {
+          "description": "Total size in bp of all scaffolds greater than 50 KB.",
+          "type": "number"
+        },
+        "scaf_logsum": {
+          "description": "The sum of the (length*log(length)) of all scaffolds, times some constant.  Increase the contiguity, the score will increase",
+          "type": "number"
+        },
+        "scaf_max": {
+          "description": "Maximum scaffold length.",
+          "type": "number"
+        },
+        "scaf_n_gt50K": {
+          "description": "Total sequence count of scaffolds greater than 50 KB.",
+          "type": "number"
+        },
+        "scaf_pct_gt50K": {
+          "description": "Total sequence size percentage of scaffolds greater than 50 KB.",
+          "type": "number"
+        },
+        "scaf_powsum": {
+          "description": "Powersum of all scaffolds is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25).",
+          "type": "number"
+        },
+        "scaffolds": {
+          "description": "Total sequence count of all scaffolds.",
+          "type": "number"
+        },
+        "started_at_time": {
+          "type": "string"
+        },
+        "type": {
+          "description": "An optional string that species the type object.  This is used to allow for searches for different kinds of objects.",
+          "type": "string"
+        },
+        "used": {
+          "type": "string"
+        },
+        "was_associated_with": {
+          "description": "the agent/entity associated with the generation of the file",
+          "type": "string"
+        },
+        "was_informed_by": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "title": "MetatranscriptomeAssembly",
       "type": "object"
     },
     "NomAnalysisActivity": {

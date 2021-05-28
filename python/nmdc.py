@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-04-21 13:16
+# Generation date: 2021-05-28 17:52
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -14,18 +14,20 @@ import sys
 import re
 from typing import Optional, List, Union, Dict, ClassVar, Any
 from dataclasses import dataclass
-from linkml_model.meta import EnumDefinition, PermissibleValue, PvFormulaOptions
+from biolinkml.meta import EnumDefinition, PermissibleValue, PvFormulaOptions
 
-from linkml.utils.slot import Slot
-from linkml.utils.metamodelcore import empty_list, empty_dict, bnode
-from linkml.utils.yamlutils import YAMLRoot, extended_str, extended_float, extended_int
-from linkml.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
-from linkml.utils.formatutils import camelcase, underscore, sfx
-from linkml.utils.enumerations import EnumDefinitionImpl
+from biolinkml.utils.slot import Slot
+from biolinkml.utils.metamodelcore import empty_list, empty_dict, bnode
+from biolinkml.utils.yamlutils import YAMLRoot, extended_str, extended_float, extended_int
+if sys.version_info < (3, 7, 6):
+    from biolinkml.utils.dataclass_extensions_375 import dataclasses_init_fn_with_kwargs
+else:
+    from biolinkml.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
+from biolinkml.utils.formatutils import camelcase, underscore, sfx
+from biolinkml.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
-from linkml.utils.curienamespace import CurieNamespace
-from linkml.utils.metamodelcore import Bool
-from linkml_model.types import Boolean, Double, Float, Integer, String
+from biolinkml.utils.curienamespace import CurieNamespace
+from biolinkml.utils.metamodelcore import Bool, Decimal, ElementIdentifier, NCName, NodeIdentifier, URI, URIorCURIE, XSDDate, XSDDateTime, XSDTime
 
 metamodel_version = "1.7.0"
 
@@ -75,6 +77,7 @@ QUD = CurieNamespace('qud', 'http://qudt.org/1.1/schema/qudt#')
 RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
 RDFS = CurieNamespace('rdfs', 'http://example.org/UNKNOWN/rdfs/')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
+SHEX = CurieNamespace('shex', 'http://www.w3.org/ns/shex#')
 SKOS = CurieNamespace('skos', 'http://example.org/UNKNOWN/skos/')
 WGS = CurieNamespace('wgs', 'http://www.w3.org/2003/01/geo/wgs84_pos')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
@@ -82,6 +85,118 @@ DEFAULT_ = NMDC
 
 
 # Types
+class String(str):
+    """ A character string """
+    type_class_uri = XSD.string
+    type_class_curie = "xsd:string"
+    type_name = "string"
+    type_model_uri = NMDC.String
+
+
+class Integer(int):
+    """ An integer """
+    type_class_uri = XSD.integer
+    type_class_curie = "xsd:integer"
+    type_name = "integer"
+    type_model_uri = NMDC.Integer
+
+
+class Boolean(Bool):
+    """ A binary (true or false) value """
+    type_class_uri = XSD.boolean
+    type_class_curie = "xsd:boolean"
+    type_name = "boolean"
+    type_model_uri = NMDC.Boolean
+
+
+class Float(float):
+    """ A real number that conforms to the xsd:float specification """
+    type_class_uri = XSD.float
+    type_class_curie = "xsd:float"
+    type_name = "float"
+    type_model_uri = NMDC.Float
+
+
+class Double(float):
+    """ A real number that conforms to the xsd:double specification """
+    type_class_uri = XSD.double
+    type_class_curie = "xsd:double"
+    type_name = "double"
+    type_model_uri = NMDC.Double
+
+
+class Decimal(Decimal):
+    """ A real number with arbitrary precision that conforms to the xsd:decimal specification """
+    type_class_uri = XSD.decimal
+    type_class_curie = "xsd:decimal"
+    type_name = "decimal"
+    type_model_uri = NMDC.Decimal
+
+
+class Time(XSDTime):
+    """ A time object represents a (local) time of day, independent of any particular day """
+    type_class_uri = XSD.dateTime
+    type_class_curie = "xsd:dateTime"
+    type_name = "time"
+    type_model_uri = NMDC.Time
+
+
+class Date(XSDDate):
+    """ a date (year, month and day) in an idealized calendar """
+    type_class_uri = XSD.date
+    type_class_curie = "xsd:date"
+    type_name = "date"
+    type_model_uri = NMDC.Date
+
+
+class Datetime(XSDDateTime):
+    """ The combination of a date and time """
+    type_class_uri = XSD.dateTime
+    type_class_curie = "xsd:dateTime"
+    type_name = "datetime"
+    type_model_uri = NMDC.Datetime
+
+
+class Uriorcurie(URIorCURIE):
+    """ a URI or a CURIE """
+    type_class_uri = XSD.anyURI
+    type_class_curie = "xsd:anyURI"
+    type_name = "uriorcurie"
+    type_model_uri = NMDC.Uriorcurie
+
+
+class Uri(URI):
+    """ a complete URI """
+    type_class_uri = XSD.anyURI
+    type_class_curie = "xsd:anyURI"
+    type_name = "uri"
+    type_model_uri = NMDC.Uri
+
+
+class Ncname(NCName):
+    """ Prefix part of CURIE """
+    type_class_uri = XSD.string
+    type_class_curie = "xsd:string"
+    type_name = "ncname"
+    type_model_uri = NMDC.Ncname
+
+
+class Objectidentifier(ElementIdentifier):
+    """ A URI or CURIE that represents an object in the model. """
+    type_class_uri = SHEX.iri
+    type_class_curie = "shex:iri"
+    type_name = "objectidentifier"
+    type_model_uri = NMDC.Objectidentifier
+
+
+class Nodeidentifier(NodeIdentifier):
+    """ A URI, CURIE or BNODE that represents a node in a model. """
+    type_class_uri = SHEX.nonLiteral
+    type_class_curie = "shex:nonLiteral"
+    type_name = "nodeidentifier"
+    type_model_uri = NMDC.Nodeidentifier
+
+
 class Bytes(int):
     """ An integer value that corresponds to a size in bytes """
     type_class_uri = XSD.int
@@ -174,7 +289,15 @@ class MetagenomeAssemblyId(WorkflowExecutionActivityId):
     pass
 
 
+class MetatranscriptomeAssemblyId(WorkflowExecutionActivityId):
+    pass
+
+
 class MetagenomeAnnotationActivityId(WorkflowExecutionActivityId):
+    pass
+
+
+class MetatranscriptomeAnnotationActivityId(WorkflowExecutionActivityId):
     pass
 
 
@@ -458,6 +581,9 @@ class Biosample(NamedThing):
     class_model_uri: ClassVar[URIRef] = NMDC.Biosample
 
     id: Union[str, BiosampleId] = None
+    env_broad_scale: Union[dict, "ControlledTermValue"] = None
+    env_local_scale: Union[dict, "ControlledTermValue"] = None
+    env_medium: Union[dict, "ControlledTermValue"] = None
     type: Optional[str] = None
     agrochem_addition: Optional[Union[dict, "QuantityValue"]] = None
     alkalinity: Optional[Union[dict, "QuantityValue"]] = None
@@ -495,9 +621,6 @@ class Biosample(NamedThing):
     drainage_class: Optional[Union[dict, "TextValue"]] = None
     elev: Optional[Union[dict, "QuantityValue"]] = None
     env_package: Optional[Union[dict, "TextValue"]] = None
-    env_broad_scale: Optional[Union[dict, "ControlledTermValue"]] = None
-    env_local_scale: Optional[Union[dict, "ControlledTermValue"]] = None
-    env_medium: Optional[Union[dict, "ControlledTermValue"]] = None
     extreme_event: Optional[Union[dict, "TimestampValue"]] = None
     fao_class: Optional[Union[dict, "TextValue"]] = None
     fire: Optional[Union[dict, "TimestampValue"]] = None
@@ -594,12 +717,28 @@ class Biosample(NamedThing):
     sample_collection_site: Optional[str] = None
     soluble_iron_micromol: Optional[str] = None
     subsurface_depth: Optional[Union[dict, "QuantityValue"]] = None
+    part_of: Optional[Union[Union[str, StudyId], List[Union[str, StudyId]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.id is None:
             raise ValueError("id must be supplied")
         if not isinstance(self.id, BiosampleId):
             self.id = BiosampleId(self.id)
+
+        if self.env_broad_scale is None:
+            raise ValueError("env_broad_scale must be supplied")
+        if not isinstance(self.env_broad_scale, ControlledTermValue):
+            self.env_broad_scale = ControlledTermValue(**self.env_broad_scale)
+
+        if self.env_local_scale is None:
+            raise ValueError("env_local_scale must be supplied")
+        if not isinstance(self.env_local_scale, ControlledTermValue):
+            self.env_local_scale = ControlledTermValue(**self.env_local_scale)
+
+        if self.env_medium is None:
+            raise ValueError("env_medium must be supplied")
+        if not isinstance(self.env_medium, ControlledTermValue):
+            self.env_medium = ControlledTermValue(**self.env_medium)
 
         if self.type is not None and not isinstance(self.type, str):
             self.type = str(self.type)
@@ -711,15 +850,6 @@ class Biosample(NamedThing):
 
         if self.env_package is not None and not isinstance(self.env_package, TextValue):
             self.env_package = TextValue(**self.env_package)
-
-        if self.env_broad_scale is not None and not isinstance(self.env_broad_scale, ControlledTermValue):
-            self.env_broad_scale = ControlledTermValue(**self.env_broad_scale)
-
-        if self.env_local_scale is not None and not isinstance(self.env_local_scale, ControlledTermValue):
-            self.env_local_scale = ControlledTermValue(**self.env_local_scale)
-
-        if self.env_medium is not None and not isinstance(self.env_medium, ControlledTermValue):
-            self.env_medium = ControlledTermValue(**self.env_medium)
 
         if self.extreme_event is not None and not isinstance(self.extreme_event, TimestampValue):
             self.extreme_event = TimestampValue(**self.extreme_event)
@@ -1008,6 +1138,12 @@ class Biosample(NamedThing):
 
         if self.subsurface_depth is not None and not isinstance(self.subsurface_depth, QuantityValue):
             self.subsurface_depth = QuantityValue(**self.subsurface_depth)
+
+        if self.part_of is None:
+            self.part_of = []
+        if not isinstance(self.part_of, list):
+            self.part_of = [self.part_of]
+        self.part_of = [v if isinstance(v, StudyId) else StudyId(v) for v in self.part_of]
 
         super().__post_init__(**kwargs)
 
@@ -2004,6 +2140,134 @@ class MetagenomeAssembly(WorkflowExecutionActivity):
 
 
 @dataclass
+class MetatranscriptomeAssembly(WorkflowExecutionActivity):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://microbiomedata/schema/workflow_execution_activity/MetatranscriptomeAssembly")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "metatranscriptome assembly"
+    class_model_uri: ClassVar[URIRef] = NMDC.MetatranscriptomeAssembly
+
+    id: Union[str, MetatranscriptomeAssemblyId] = None
+    asm_score: Optional[float] = None
+    scaffolds: Optional[float] = None
+    scaf_logsum: Optional[float] = None
+    scaf_powsum: Optional[float] = None
+    scaf_max: Optional[float] = None
+    scaf_bp: Optional[float] = None
+    scaf_N50: Optional[float] = None
+    scaf_N90: Optional[float] = None
+    scaf_L50: Optional[float] = None
+    scaf_L90: Optional[float] = None
+    scaf_n_gt50K: Optional[float] = None
+    scaf_l_gt50K: Optional[float] = None
+    scaf_pct_gt50K: Optional[float] = None
+    contigs: Optional[float] = None
+    contig_bp: Optional[float] = None
+    ctg_N50: Optional[float] = None
+    ctg_L50: Optional[float] = None
+    ctg_N90: Optional[float] = None
+    ctg_L90: Optional[float] = None
+    ctg_logsum: Optional[float] = None
+    ctg_powsum: Optional[float] = None
+    ctg_max: Optional[float] = None
+    gap_pct: Optional[float] = None
+    gc_std: Optional[float] = None
+    gc_avg: Optional[float] = None
+    num_input_reads: Optional[float] = None
+    num_aligned_reads: Optional[float] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.id is None:
+            raise ValueError("id must be supplied")
+        if not isinstance(self.id, MetatranscriptomeAssemblyId):
+            self.id = MetatranscriptomeAssemblyId(self.id)
+
+        if self.asm_score is not None and not isinstance(self.asm_score, float):
+            self.asm_score = float(self.asm_score)
+
+        if self.scaffolds is not None and not isinstance(self.scaffolds, float):
+            self.scaffolds = float(self.scaffolds)
+
+        if self.scaf_logsum is not None and not isinstance(self.scaf_logsum, float):
+            self.scaf_logsum = float(self.scaf_logsum)
+
+        if self.scaf_powsum is not None and not isinstance(self.scaf_powsum, float):
+            self.scaf_powsum = float(self.scaf_powsum)
+
+        if self.scaf_max is not None and not isinstance(self.scaf_max, float):
+            self.scaf_max = float(self.scaf_max)
+
+        if self.scaf_bp is not None and not isinstance(self.scaf_bp, float):
+            self.scaf_bp = float(self.scaf_bp)
+
+        if self.scaf_N50 is not None and not isinstance(self.scaf_N50, float):
+            self.scaf_N50 = float(self.scaf_N50)
+
+        if self.scaf_N90 is not None and not isinstance(self.scaf_N90, float):
+            self.scaf_N90 = float(self.scaf_N90)
+
+        if self.scaf_L50 is not None and not isinstance(self.scaf_L50, float):
+            self.scaf_L50 = float(self.scaf_L50)
+
+        if self.scaf_L90 is not None and not isinstance(self.scaf_L90, float):
+            self.scaf_L90 = float(self.scaf_L90)
+
+        if self.scaf_n_gt50K is not None and not isinstance(self.scaf_n_gt50K, float):
+            self.scaf_n_gt50K = float(self.scaf_n_gt50K)
+
+        if self.scaf_l_gt50K is not None and not isinstance(self.scaf_l_gt50K, float):
+            self.scaf_l_gt50K = float(self.scaf_l_gt50K)
+
+        if self.scaf_pct_gt50K is not None and not isinstance(self.scaf_pct_gt50K, float):
+            self.scaf_pct_gt50K = float(self.scaf_pct_gt50K)
+
+        if self.contigs is not None and not isinstance(self.contigs, float):
+            self.contigs = float(self.contigs)
+
+        if self.contig_bp is not None and not isinstance(self.contig_bp, float):
+            self.contig_bp = float(self.contig_bp)
+
+        if self.ctg_N50 is not None and not isinstance(self.ctg_N50, float):
+            self.ctg_N50 = float(self.ctg_N50)
+
+        if self.ctg_L50 is not None and not isinstance(self.ctg_L50, float):
+            self.ctg_L50 = float(self.ctg_L50)
+
+        if self.ctg_N90 is not None and not isinstance(self.ctg_N90, float):
+            self.ctg_N90 = float(self.ctg_N90)
+
+        if self.ctg_L90 is not None and not isinstance(self.ctg_L90, float):
+            self.ctg_L90 = float(self.ctg_L90)
+
+        if self.ctg_logsum is not None and not isinstance(self.ctg_logsum, float):
+            self.ctg_logsum = float(self.ctg_logsum)
+
+        if self.ctg_powsum is not None and not isinstance(self.ctg_powsum, float):
+            self.ctg_powsum = float(self.ctg_powsum)
+
+        if self.ctg_max is not None and not isinstance(self.ctg_max, float):
+            self.ctg_max = float(self.ctg_max)
+
+        if self.gap_pct is not None and not isinstance(self.gap_pct, float):
+            self.gap_pct = float(self.gap_pct)
+
+        if self.gc_std is not None and not isinstance(self.gc_std, float):
+            self.gc_std = float(self.gc_std)
+
+        if self.gc_avg is not None and not isinstance(self.gc_avg, float):
+            self.gc_avg = float(self.gc_avg)
+
+        if self.num_input_reads is not None and not isinstance(self.num_input_reads, float):
+            self.num_input_reads = float(self.num_input_reads)
+
+        if self.num_aligned_reads is not None and not isinstance(self.num_aligned_reads, float):
+            self.num_aligned_reads = float(self.num_aligned_reads)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class MetagenomeAnnotationActivity(WorkflowExecutionActivity):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -2019,6 +2283,26 @@ class MetagenomeAnnotationActivity(WorkflowExecutionActivity):
             raise ValueError("id must be supplied")
         if not isinstance(self.id, MetagenomeAnnotationActivityId):
             self.id = MetagenomeAnnotationActivityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class MetatranscriptomeAnnotationActivity(WorkflowExecutionActivity):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://microbiomedata/schema/workflow_execution_activity/MetatranscriptomeAnnotationActivity")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "metatranscriptome annotation activity"
+    class_model_uri: ClassVar[URIRef] = NMDC.MetatranscriptomeAnnotationActivity
+
+    id: Union[str, MetatranscriptomeAnnotationActivityId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.id is None:
+            raise ValueError("id must be supplied")
+        if not isinstance(self.id, MetatranscriptomeAnnotationActivityId):
+            self.id = MetatranscriptomeAnnotationActivityId(self.id)
 
         super().__post_init__(**kwargs)
 
@@ -5208,6 +5492,21 @@ slots.database_etl_software_version = Slot(uri=NMDC.etl_software_version, name="
 slots.biosample_lat_lon = Slot(uri=NMDC.lat_lon, name="biosample_lat_lon", curie=NMDC.curie('lat_lon'),
                    model_uri=NMDC.biosample_lat_lon, domain=Biosample, range=Optional[Union[dict, "GeolocationValue"]],
                    pattern=re.compile(r'\d+[.\d+] \d+[.\d+]'))
+
+slots.biosample_part_of = Slot(uri=NMDC.part_of, name="biosample_part of", curie=NMDC.curie('part_of'),
+                   model_uri=NMDC.biosample_part_of, domain=Biosample, range=Optional[Union[Union[str, StudyId], List[Union[str, StudyId]]]])
+
+slots.biosample_env_broad_scale = Slot(uri=NMDC.env_broad_scale, name="biosample_env_broad_scale", curie=NMDC.curie('env_broad_scale'),
+                   model_uri=NMDC.biosample_env_broad_scale, domain=Biosample, range=Union[dict, "ControlledTermValue"],
+                   pattern=re.compile(r'.* \S+:\S+'))
+
+slots.biosample_env_local_scale = Slot(uri=NMDC.env_local_scale, name="biosample_env_local_scale", curie=NMDC.curie('env_local_scale'),
+                   model_uri=NMDC.biosample_env_local_scale, domain=Biosample, range=Union[dict, "ControlledTermValue"],
+                   pattern=re.compile(r'.* \S+:\S+'))
+
+slots.biosample_env_medium = Slot(uri=NMDC.env_medium, name="biosample_env_medium", curie=NMDC.curie('env_medium'),
+                   model_uri=NMDC.biosample_env_medium, domain=Biosample, range=Union[dict, "ControlledTermValue"],
+                   pattern=re.compile(r'.* \S+:\S+'))
 
 slots.biosample_processing_has_input = Slot(uri=NMDC.has_input, name="biosample processing_has input", curie=NMDC.curie('has_input'),
                    model_uri=NMDC.biosample_processing_has_input, domain=BiosampleProcessing, range=Optional[Union[Union[str, BiosampleId], List[Union[str, BiosampleId]]]])
