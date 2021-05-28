@@ -521,3 +521,9 @@ slots:
     description: >-
       MD5 checksum of file (pre-compressed)
 
+  crc32 checksum:
+    is_a: attribute
+    range: string
+    description: >-
+      CRC32 checksum of file (pre-compressed)
+    required: true
