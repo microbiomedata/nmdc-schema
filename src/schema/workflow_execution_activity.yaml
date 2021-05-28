@@ -40,6 +40,11 @@ classes:
           the agent/entity associated with the generation of the file
         range: workflow execution activity
         inlined: false # allow for strings of IDs
+      started at time:
+        required: true
+      ended at time:
+        required: true
+
 
   metagenome assembly:
     is_a: workflow execution activity
