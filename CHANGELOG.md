@@ -1,6 +1,6 @@
 # Change Log
 Changes to the schema are documented in this file.
-## [Current changes]
+## Current status
 ### Added
   - N/A
 ### Fixed
