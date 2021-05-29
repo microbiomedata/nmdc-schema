@@ -6,7 +6,8 @@ Changes to the schema are documented in this file.
 ### Fixed
   - N/A
 ### Changed
-  - Make MIxS triad properties required for biosamples (cf. issue 45)
+  - MIxS triad properties required for biosamples (cf. issue 45)
+  - `started at time` and `ended at time` properties required for workflow execution activities (cf. issue 44)
 ### Removed
   - N/A
 

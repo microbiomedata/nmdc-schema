@@ -1306,7 +1306,9 @@
         }
       },
       "required": [
-        "id"
+        "id",
+        "started_at_time",
+        "ended_at_time"
       ],
       "title": "MAGsAnalysisActivity",
       "type": "object"
@@ -1402,7 +1404,9 @@
         }
       },
       "required": [
-        "id"
+        "id",
+        "started_at_time",
+        "ended_at_time"
       ],
       "title": "MetabolomicsAnalysisActivity",
       "type": "object"
@@ -1463,7 +1467,9 @@
         }
       },
       "required": [
-        "id"
+        "id",
+        "started_at_time",
+        "ended_at_time"
       ],
       "title": "MetagenomeAnnotationActivity",
       "type": "object"
@@ -1632,7 +1638,9 @@
         }
       },
       "required": [
-        "id"
+        "id",
+        "started_at_time",
+        "ended_at_time"
       ],
       "title": "MetagenomeAssembly",
       "type": "object"
@@ -1700,7 +1708,9 @@
         }
       },
       "required": [
-        "id"
+        "id",
+        "started_at_time",
+        "ended_at_time"
       ],
       "title": "MetaproteomicsAnalysisActivity",
       "type": "object"
@@ -1761,7 +1771,9 @@
         }
       },
       "required": [
-        "id"
+        "id",
+        "started_at_time",
+        "ended_at_time"
       ],
       "title": "MetatranscriptomeAnnotationActivity",
       "type": "object"
@@ -1930,7 +1942,9 @@
         }
       },
       "required": [
-        "id"
+        "id",
+        "started_at_time",
+        "ended_at_time"
       ],
       "title": "MetatranscriptomeAssembly",
       "type": "object"
@@ -1996,7 +2010,9 @@
         }
       },
       "required": [
-        "id"
+        "id",
+        "started_at_time",
+        "ended_at_time"
       ],
       "title": "NomAnalysisActivity",
       "type": "object"
@@ -2464,7 +2480,9 @@
         }
       },
       "required": [
-        "id"
+        "id",
+        "started_at_time",
+        "ended_at_time"
       ],
       "title": "ReadBasedAnalysisActivity",
       "type": "object"
@@ -2547,7 +2565,9 @@
         }
       },
       "required": [
-        "id"
+        "id",
+        "started_at_time",
+        "ended_at_time"
       ],
       "title": "ReadQCAnalysisActivity",
       "type": "object"
@@ -2733,7 +2753,9 @@
         }
       },
       "required": [
-        "id"
+        "id",
+        "started_at_time",
+        "ended_at_time"
       ],
       "title": "WorkflowExecutionActivity",
       "type": "object"

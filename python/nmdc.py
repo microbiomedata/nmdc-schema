@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-05-28 17:52
+# Generation date: 2021-05-28 19:48
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -1971,6 +1971,8 @@ class WorkflowExecutionActivity(Activity):
     class_model_uri: ClassVar[URIRef] = NMDC.WorkflowExecutionActivity
 
     id: Union[str, WorkflowExecutionActivityId] = None
+    started_at_time: str = None
+    ended_at_time: str = None
     execution_resource: Optional[str] = None
     git_url: Optional[str] = None
     has_input: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
@@ -1983,6 +1985,16 @@ class WorkflowExecutionActivity(Activity):
             raise ValueError("id must be supplied")
         if not isinstance(self.id, WorkflowExecutionActivityId):
             self.id = WorkflowExecutionActivityId(self.id)
+
+        if self.started_at_time is None:
+            raise ValueError("started_at_time must be supplied")
+        if not isinstance(self.started_at_time, str):
+            self.started_at_time = str(self.started_at_time)
+
+        if self.ended_at_time is None:
+            raise ValueError("ended_at_time must be supplied")
+        if not isinstance(self.ended_at_time, str):
+            self.ended_at_time = str(self.ended_at_time)
 
         if self.execution_resource is not None and not isinstance(self.execution_resource, str):
             self.execution_resource = str(self.execution_resource)
@@ -2021,6 +2033,8 @@ class MetagenomeAssembly(WorkflowExecutionActivity):
     class_model_uri: ClassVar[URIRef] = NMDC.MetagenomeAssembly
 
     id: Union[str, MetagenomeAssemblyId] = None
+    started_at_time: str = None
+    ended_at_time: str = None
     asm_score: Optional[float] = None
     scaffolds: Optional[float] = None
     scaf_logsum: Optional[float] = None
@@ -2149,6 +2163,8 @@ class MetatranscriptomeAssembly(WorkflowExecutionActivity):
     class_model_uri: ClassVar[URIRef] = NMDC.MetatranscriptomeAssembly
 
     id: Union[str, MetatranscriptomeAssemblyId] = None
+    started_at_time: str = None
+    ended_at_time: str = None
     asm_score: Optional[float] = None
     scaffolds: Optional[float] = None
     scaf_logsum: Optional[float] = None
@@ -2277,6 +2293,8 @@ class MetagenomeAnnotationActivity(WorkflowExecutionActivity):
     class_model_uri: ClassVar[URIRef] = NMDC.MetagenomeAnnotationActivity
 
     id: Union[str, MetagenomeAnnotationActivityId] = None
+    started_at_time: str = None
+    ended_at_time: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.id is None:
@@ -2297,6 +2315,8 @@ class MetatranscriptomeAnnotationActivity(WorkflowExecutionActivity):
     class_model_uri: ClassVar[URIRef] = NMDC.MetatranscriptomeAnnotationActivity
 
     id: Union[str, MetatranscriptomeAnnotationActivityId] = None
+    started_at_time: str = None
+    ended_at_time: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.id is None:
@@ -2317,6 +2337,8 @@ class MAGsAnalysisActivity(WorkflowExecutionActivity):
     class_model_uri: ClassVar[URIRef] = NMDC.MAGsAnalysisActivity
 
     id: Union[str, MAGsAnalysisActivityId] = None
+    started_at_time: str = None
+    ended_at_time: str = None
     input_contig_num: Optional[int] = None
     binned_contig_num: Optional[int] = None
     too_short_contig_num: Optional[int] = None
@@ -2364,6 +2386,8 @@ class ReadQCAnalysisActivity(WorkflowExecutionActivity):
     class_model_uri: ClassVar[URIRef] = NMDC.ReadQCAnalysisActivity
 
     id: Union[str, ReadQCAnalysisActivityId] = None
+    started_at_time: str = None
+    ended_at_time: str = None
     input_read_count: Optional[float] = None
     input_base_count: Optional[float] = None
     output_read_count: Optional[float] = None
@@ -2422,6 +2446,8 @@ class ReadBasedAnalysisActivity(WorkflowExecutionActivity):
     class_model_uri: ClassVar[URIRef] = NMDC.ReadBasedAnalysisActivity
 
     id: Union[str, ReadBasedAnalysisActivityId] = None
+    started_at_time: str = None
+    ended_at_time: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.id is None:
@@ -2442,6 +2468,8 @@ class MetabolomicsAnalysisActivity(WorkflowExecutionActivity):
     class_model_uri: ClassVar[URIRef] = NMDC.MetabolomicsAnalysisActivity
 
     id: Union[str, MetabolomicsAnalysisActivityId] = None
+    started_at_time: str = None
+    ended_at_time: str = None
     used: Optional[Union[str, InstrumentId]] = None
     has_metabolite_quantifications: Optional[Union[Union[dict, MetaboliteQuantification], List[Union[dict, MetaboliteQuantification]]]] = empty_list()
     has_calibration: Optional[str] = None
@@ -2477,6 +2505,8 @@ class MetaproteomicsAnalysisActivity(WorkflowExecutionActivity):
     class_model_uri: ClassVar[URIRef] = NMDC.MetaproteomicsAnalysisActivity
 
     id: Union[str, MetaproteomicsAnalysisActivityId] = None
+    started_at_time: str = None
+    ended_at_time: str = None
     used: Optional[Union[str, InstrumentId]] = None
     has_peptide_quantifications: Optional[Union[Union[dict, PeptideQuantification], List[Union[dict, PeptideQuantification]]]] = empty_list()
 
@@ -2508,6 +2538,8 @@ class NomAnalysisActivity(WorkflowExecutionActivity):
     class_model_uri: ClassVar[URIRef] = NMDC.NomAnalysisActivity
 
     id: Union[str, NomAnalysisActivityId] = None
+    started_at_time: str = None
+    ended_at_time: str = None
     used: Optional[Union[str, InstrumentId]] = None
     has_calibration: Optional[str] = None
 
@@ -5588,6 +5620,12 @@ slots.geolocation_value_has_raw_value = Slot(uri=NMDC.has_raw_value, name="geolo
 
 slots.workflow_execution_activity_was_associated_with = Slot(uri=NMDC.was_associated_with, name="workflow execution activity_was associated with", curie=NMDC.curie('was_associated_with'),
                    model_uri=NMDC.workflow_execution_activity_was_associated_with, domain=WorkflowExecutionActivity, range=Optional[Union[str, WorkflowExecutionActivityId]])
+
+slots.workflow_execution_activity_started_at_time = Slot(uri=NMDC.started_at_time, name="workflow execution activity_started at time", curie=NMDC.curie('started_at_time'),
+                   model_uri=NMDC.workflow_execution_activity_started_at_time, domain=WorkflowExecutionActivity, range=str)
+
+slots.workflow_execution_activity_ended_at_time = Slot(uri=NMDC.ended_at_time, name="workflow execution activity_ended at time", curie=NMDC.curie('ended_at_time'),
+                   model_uri=NMDC.workflow_execution_activity_ended_at_time, domain=WorkflowExecutionActivity, range=str)
 
 slots.read_QC_analysis_activity_input_read_bases = Slot(uri=NMDC.input_read_bases, name="read QC analysis activity_input_read_bases", curie=NMDC.curie('input_read_bases'),
                    model_uri=NMDC.read_QC_analysis_activity_input_read_bases, domain=ReadQCAnalysisActivity, range=Optional[float])
