@@ -1,6 +1,6 @@
 # Change Log
 Changes to the schema are documented in this file.
-## 2021.06.01rc1
+## [2021.06.01rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.06.01rc1)
 ### Added
   - N/A
 ### Fixed
