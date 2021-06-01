@@ -1,5 +1,17 @@
 # Change Log
 Changes to the schema are documented in this file.
+## [2021.06.01rc2](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.06.01rc2)
+### Added
+  - N/A
+### Fixed
+  - N/A
+### Changed
+  - `part of`, `has input`, `has ouput` slots are required for `omics processing` objects (cf. issue 50)
+  - `name`, `description` sltos required for `data object` objects (cf. issue 50)
+  - `git url`, `has input`, `has ouput`, `was informed by`, `execution resource`, `type` slots required for `workflow execution activity` objects (cf. issue 50)
+### Removed
+  - N/A
+
 ## [2021.06.01rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.06.01rc1)
 ### Added
   - N/A
