@@ -793,7 +793,6 @@
           "description": "The type of data object"
         },
         "description": {
-          "description": "a human-readable description of a thing",
           "type": "string"
         },
         "file_size_bytes": {
@@ -809,7 +808,6 @@
           "type": "string"
         },
         "name": {
-          "description": "A human readable label for an entity",
           "type": "string"
         },
         "type": {
@@ -824,7 +822,9 @@
         }
       },
       "required": [
-        "id"
+        "id",
+        "name",
+        "description"
       ],
       "title": "DataObject",
       "type": "object"
@@ -1240,22 +1240,18 @@
           "type": "string"
         },
         "execution_resource": {
-          "description": "Example: NERSC-Cori",
           "type": "string"
         },
         "git_url": {
-          "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
           "type": "string"
         },
         "has_input": {
-          "description": "An input to a process.",
           "items": {
             "type": "string"
           },
           "type": "array"
         },
         "has_output": {
-          "description": "An output biosample to a processing step",
           "items": {
             "type": "string"
           },
@@ -1288,7 +1284,6 @@
           "type": "integer"
         },
         "type": {
-          "description": "An optional string that species the type object.  This is used to allow for searches for different kinds of objects.",
           "type": "string"
         },
         "unbinned_contig_num": {
@@ -1307,8 +1302,14 @@
       },
       "required": [
         "id",
+        "execution_resource",
+        "git_url",
+        "has_input",
+        "has_output",
+        "type",
         "started_at_time",
-        "ended_at_time"
+        "ended_at_time",
+        "was_informed_by"
       ],
       "title": "MAGsAnalysisActivity",
       "type": "object"
@@ -1345,11 +1346,9 @@
           "type": "string"
         },
         "execution_resource": {
-          "description": "Example: NERSC-Cori",
           "type": "string"
         },
         "git_url": {
-          "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
           "type": "string"
         },
         "has_calibration": {
@@ -1357,7 +1356,6 @@
           "type": "string"
         },
         "has_input": {
-          "description": "An input to a process.",
           "items": {
             "type": "string"
           },
@@ -1370,7 +1368,6 @@
           "type": "array"
         },
         "has_output": {
-          "description": "An output biosample to a processing step",
           "items": {
             "type": "string"
           },
@@ -1388,7 +1385,6 @@
           "type": "string"
         },
         "type": {
-          "description": "An optional string that species the type object.  This is used to allow for searches for different kinds of objects.",
           "type": "string"
         },
         "used": {
@@ -1405,8 +1401,14 @@
       },
       "required": [
         "id",
+        "execution_resource",
+        "git_url",
+        "has_input",
+        "has_output",
+        "type",
         "started_at_time",
-        "ended_at_time"
+        "ended_at_time",
+        "was_informed_by"
       ],
       "title": "MetabolomicsAnalysisActivity",
       "type": "object"
@@ -1419,22 +1421,18 @@
           "type": "string"
         },
         "execution_resource": {
-          "description": "Example: NERSC-Cori",
           "type": "string"
         },
         "git_url": {
-          "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
           "type": "string"
         },
         "has_input": {
-          "description": "An input to a process.",
           "items": {
             "type": "string"
           },
           "type": "array"
         },
         "has_output": {
-          "description": "An output biosample to a processing step",
           "items": {
             "type": "string"
           },
@@ -1452,7 +1450,6 @@
           "type": "string"
         },
         "type": {
-          "description": "An optional string that species the type object.  This is used to allow for searches for different kinds of objects.",
           "type": "string"
         },
         "used": {
@@ -1468,8 +1465,14 @@
       },
       "required": [
         "id",
+        "execution_resource",
+        "git_url",
+        "has_input",
+        "has_output",
+        "type",
         "started_at_time",
-        "ended_at_time"
+        "ended_at_time",
+        "was_informed_by"
       ],
       "title": "MetagenomeAnnotationActivity",
       "type": "object"
@@ -1522,7 +1525,6 @@
           "type": "string"
         },
         "execution_resource": {
-          "description": "Example: NERSC-Cori",
           "type": "string"
         },
         "gap_pct": {
@@ -1538,18 +1540,15 @@
           "type": "number"
         },
         "git_url": {
-          "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
           "type": "string"
         },
         "has_input": {
-          "description": "An input to a process.",
           "items": {
             "type": "string"
           },
           "type": "array"
         },
         "has_output": {
-          "description": "An output biosample to a processing step",
           "items": {
             "type": "string"
           },
@@ -1623,7 +1622,6 @@
           "type": "string"
         },
         "type": {
-          "description": "An optional string that species the type object.  This is used to allow for searches for different kinds of objects.",
           "type": "string"
         },
         "used": {
@@ -1639,8 +1637,14 @@
       },
       "required": [
         "id",
+        "execution_resource",
+        "git_url",
+        "has_input",
+        "has_output",
+        "type",
         "started_at_time",
-        "ended_at_time"
+        "ended_at_time",
+        "was_informed_by"
       ],
       "title": "MetagenomeAssembly",
       "type": "object"
@@ -1653,22 +1657,18 @@
           "type": "string"
         },
         "execution_resource": {
-          "description": "Example: NERSC-Cori",
           "type": "string"
         },
         "git_url": {
-          "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
           "type": "string"
         },
         "has_input": {
-          "description": "An input to a process.",
           "items": {
             "type": "string"
           },
           "type": "array"
         },
         "has_output": {
-          "description": "An output biosample to a processing step",
           "items": {
             "type": "string"
           },
@@ -1692,7 +1692,6 @@
           "type": "string"
         },
         "type": {
-          "description": "An optional string that species the type object.  This is used to allow for searches for different kinds of objects.",
           "type": "string"
         },
         "used": {
@@ -1709,8 +1708,14 @@
       },
       "required": [
         "id",
+        "execution_resource",
+        "git_url",
+        "has_input",
+        "has_output",
+        "type",
         "started_at_time",
-        "ended_at_time"
+        "ended_at_time",
+        "was_informed_by"
       ],
       "title": "MetaproteomicsAnalysisActivity",
       "type": "object"
@@ -1723,22 +1728,18 @@
           "type": "string"
         },
         "execution_resource": {
-          "description": "Example: NERSC-Cori",
           "type": "string"
         },
         "git_url": {
-          "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
           "type": "string"
         },
         "has_input": {
-          "description": "An input to a process.",
           "items": {
             "type": "string"
           },
           "type": "array"
         },
         "has_output": {
-          "description": "An output biosample to a processing step",
           "items": {
             "type": "string"
           },
@@ -1756,7 +1757,6 @@
           "type": "string"
         },
         "type": {
-          "description": "An optional string that species the type object.  This is used to allow for searches for different kinds of objects.",
           "type": "string"
         },
         "used": {
@@ -1772,8 +1772,14 @@
       },
       "required": [
         "id",
+        "execution_resource",
+        "git_url",
+        "has_input",
+        "has_output",
+        "type",
         "started_at_time",
-        "ended_at_time"
+        "ended_at_time",
+        "was_informed_by"
       ],
       "title": "MetatranscriptomeAnnotationActivity",
       "type": "object"
@@ -1826,7 +1832,6 @@
           "type": "string"
         },
         "execution_resource": {
-          "description": "Example: NERSC-Cori",
           "type": "string"
         },
         "gap_pct": {
@@ -1842,18 +1847,15 @@
           "type": "number"
         },
         "git_url": {
-          "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
           "type": "string"
         },
         "has_input": {
-          "description": "An input to a process.",
           "items": {
             "type": "string"
           },
           "type": "array"
         },
         "has_output": {
-          "description": "An output biosample to a processing step",
           "items": {
             "type": "string"
           },
@@ -1927,7 +1929,6 @@
           "type": "string"
         },
         "type": {
-          "description": "An optional string that species the type object.  This is used to allow for searches for different kinds of objects.",
           "type": "string"
         },
         "used": {
@@ -1943,8 +1944,14 @@
       },
       "required": [
         "id",
+        "execution_resource",
+        "git_url",
+        "has_input",
+        "has_output",
+        "type",
         "started_at_time",
-        "ended_at_time"
+        "ended_at_time",
+        "was_informed_by"
       ],
       "title": "MetatranscriptomeAssembly",
       "type": "object"
@@ -1957,11 +1964,9 @@
           "type": "string"
         },
         "execution_resource": {
-          "description": "Example: NERSC-Cori",
           "type": "string"
         },
         "git_url": {
-          "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
           "type": "string"
         },
         "has_calibration": {
@@ -1969,14 +1974,12 @@
           "type": "string"
         },
         "has_input": {
-          "description": "An input to a process.",
           "items": {
             "type": "string"
           },
           "type": "array"
         },
         "has_output": {
-          "description": "An output biosample to a processing step",
           "items": {
             "type": "string"
           },
@@ -1994,7 +1997,6 @@
           "type": "string"
         },
         "type": {
-          "description": "An optional string that species the type object.  This is used to allow for searches for different kinds of objects.",
           "type": "string"
         },
         "used": {
@@ -2011,8 +2013,14 @@
       },
       "required": [
         "id",
+        "execution_resource",
+        "git_url",
+        "has_input",
+        "has_output",
+        "type",
         "started_at_time",
-        "ended_at_time"
+        "ended_at_time",
+        "was_informed_by"
       ],
       "title": "NomAnalysisActivity",
       "type": "object"
@@ -2044,7 +2052,6 @@
           "type": "array"
         },
         "has_output": {
-          "description": "An output biosample to a processing step",
           "items": {
             "type": "string"
           },
@@ -2074,7 +2081,6 @@
           "description": "The type of omics data"
         },
         "part_of": {
-          "description": "Links a resource to another resource that either logically or physically includes it.",
           "items": {
             "type": "string"
           },
@@ -2094,7 +2100,9 @@
         }
       },
       "required": [
-        "id"
+        "id",
+        "has_output",
+        "part_of"
       ],
       "title": "OmicsProcessing",
       "type": "object"
@@ -2432,22 +2440,18 @@
           "type": "string"
         },
         "execution_resource": {
-          "description": "Example: NERSC-Cori",
           "type": "string"
         },
         "git_url": {
-          "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
           "type": "string"
         },
         "has_input": {
-          "description": "An input to a process.",
           "items": {
             "type": "string"
           },
           "type": "array"
         },
         "has_output": {
-          "description": "An output biosample to a processing step",
           "items": {
             "type": "string"
           },
@@ -2465,7 +2469,6 @@
           "type": "string"
         },
         "type": {
-          "description": "An optional string that species the type object.  This is used to allow for searches for different kinds of objects.",
           "type": "string"
         },
         "used": {
@@ -2481,8 +2484,14 @@
       },
       "required": [
         "id",
+        "execution_resource",
+        "git_url",
+        "has_input",
+        "has_output",
+        "type",
         "started_at_time",
-        "ended_at_time"
+        "ended_at_time",
+        "was_informed_by"
       ],
       "title": "ReadBasedAnalysisActivity",
       "type": "object"
@@ -2495,11 +2504,9 @@
           "type": "string"
         },
         "execution_resource": {
-          "description": "Example: NERSC-Cori",
           "type": "string"
         },
         "git_url": {
-          "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
           "type": "string"
         },
         "has_input": {
@@ -2550,7 +2557,6 @@
           "type": "string"
         },
         "type": {
-          "description": "An optional string that species the type object.  This is used to allow for searches for different kinds of objects.",
           "type": "string"
         },
         "used": {
@@ -2566,8 +2572,14 @@
       },
       "required": [
         "id",
+        "execution_resource",
+        "git_url",
+        "type",
         "started_at_time",
-        "ended_at_time"
+        "ended_at_time",
+        "was_informed_by",
+        "has_input",
+        "has_output"
       ],
       "title": "ReadQCAnalysisActivity",
       "type": "object"
@@ -2705,22 +2717,18 @@
           "type": "string"
         },
         "execution_resource": {
-          "description": "Example: NERSC-Cori",
           "type": "string"
         },
         "git_url": {
-          "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
           "type": "string"
         },
         "has_input": {
-          "description": "An input to a process.",
           "items": {
             "type": "string"
           },
           "type": "array"
         },
         "has_output": {
-          "description": "An output biosample to a processing step",
           "items": {
             "type": "string"
           },
@@ -2738,7 +2746,6 @@
           "type": "string"
         },
         "type": {
-          "description": "An optional string that species the type object.  This is used to allow for searches for different kinds of objects.",
           "type": "string"
         },
         "used": {
@@ -2754,8 +2761,14 @@
       },
       "required": [
         "id",
+        "execution_resource",
+        "git_url",
+        "has_input",
+        "has_output",
+        "type",
         "started_at_time",
-        "ended_at_time"
+        "ended_at_time",
+        "was_informed_by"
       ],
       "title": "WorkflowExecutionActivity",
       "type": "object"

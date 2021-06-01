@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-05-28 19:48
+# Generation date: 2021-06-01 16:09
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -529,6 +529,8 @@ class DataObject(NamedThing):
     class_model_uri: ClassVar[URIRef] = NMDC.DataObject
 
     id: Union[str, DataObjectId] = None
+    name: str = None
+    description: str = None
     file_size_bytes: Optional[int] = None
     md5_checksum: Optional[str] = None
     data_object_type: Optional[Union[dict, "ControlledTermValue"]] = None
@@ -542,6 +544,16 @@ class DataObject(NamedThing):
             raise ValueError("id must be supplied")
         if not isinstance(self.id, DataObjectId):
             self.id = DataObjectId(self.id)
+
+        if self.name is None:
+            raise ValueError("name must be supplied")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.description is None:
+            raise ValueError("description must be supplied")
+        if not isinstance(self.description, str):
+            self.description = str(self.description)
 
         if self.file_size_bytes is not None and not isinstance(self.file_size_bytes, int):
             self.file_size_bytes = int(self.file_size_bytes)
@@ -1248,14 +1260,14 @@ class OmicsProcessing(BiosampleProcessing):
     class_model_uri: ClassVar[URIRef] = NMDC.OmicsProcessing
 
     id: Union[str, OmicsProcessingId] = None
+    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    part_of: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     add_date: Optional[str] = None
     mod_date: Optional[str] = None
     has_input: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
-    has_output: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
     instrument_name: Optional[str] = None
     ncbi_project_name: Optional[str] = None
     omics_type: Optional[Union[dict, "ControlledTermValue"]] = None
-    part_of: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
     principal_investigator_name: Optional[Union[dict, "PersonValue"]] = None
     processing_institution: Optional[str] = None
     type: Optional[str] = None
@@ -1265,6 +1277,30 @@ class OmicsProcessing(BiosampleProcessing):
             raise ValueError("id must be supplied")
         if not isinstance(self.id, OmicsProcessingId):
             self.id = OmicsProcessingId(self.id)
+
+        if self.has_output is None:
+            raise ValueError("has_output must be supplied")
+        elif not isinstance(self.has_output, list):
+            self.has_output = [self.has_output]
+        elif len(self.has_output) == 0:
+            raise ValueError(f"has_output must be a non-empty list")
+        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
+
+        if self.part_of is None:
+            raise ValueError("part_of must be supplied")
+        elif not isinstance(self.part_of, list):
+            self.part_of = [self.part_of]
+        elif len(self.part_of) == 0:
+            raise ValueError(f"part_of must be a non-empty list")
+        self.part_of = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.part_of]
+
+        if self.has_input is None:
+            raise ValueError("has_input must be supplied")
+        elif not isinstance(self.has_input, list):
+            self.has_input = [self.has_input]
+        elif len(self.has_input) == 0:
+            raise ValueError(f"has_input must be a non-empty list")
+        self.has_input = [v if isinstance(v, BiosampleId) else BiosampleId(v) for v in self.has_input]
 
         if self.add_date is not None and not isinstance(self.add_date, str):
             self.add_date = str(self.add_date)
@@ -1278,12 +1314,6 @@ class OmicsProcessing(BiosampleProcessing):
             self.has_input = [self.has_input]
         self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
 
-        if self.has_output is None:
-            self.has_output = []
-        if not isinstance(self.has_output, list):
-            self.has_output = [self.has_output]
-        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
-
         if self.instrument_name is not None and not isinstance(self.instrument_name, str):
             self.instrument_name = str(self.instrument_name)
 
@@ -1292,12 +1322,6 @@ class OmicsProcessing(BiosampleProcessing):
 
         if self.omics_type is not None and not isinstance(self.omics_type, ControlledTermValue):
             self.omics_type = ControlledTermValue(**self.omics_type)
-
-        if self.part_of is None:
-            self.part_of = []
-        if not isinstance(self.part_of, list):
-            self.part_of = [self.part_of]
-        self.part_of = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.part_of]
 
         if self.principal_investigator_name is not None and not isinstance(self.principal_investigator_name, PersonValue):
             self.principal_investigator_name = PersonValue(**self.principal_investigator_name)
@@ -1971,13 +1995,14 @@ class WorkflowExecutionActivity(Activity):
     class_model_uri: ClassVar[URIRef] = NMDC.WorkflowExecutionActivity
 
     id: Union[str, WorkflowExecutionActivityId] = None
+    execution_resource: str = None
+    git_url: str = None
+    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    type: str = None
     started_at_time: str = None
     ended_at_time: str = None
-    execution_resource: Optional[str] = None
-    git_url: Optional[str] = None
-    has_input: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
-    has_output: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
-    type: Optional[str] = None
+    was_informed_by: Union[str, ActivityId] = None
     was_associated_with: Optional[Union[str, WorkflowExecutionActivityId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -1985,6 +2010,37 @@ class WorkflowExecutionActivity(Activity):
             raise ValueError("id must be supplied")
         if not isinstance(self.id, WorkflowExecutionActivityId):
             self.id = WorkflowExecutionActivityId(self.id)
+
+        if self.execution_resource is None:
+            raise ValueError("execution_resource must be supplied")
+        if not isinstance(self.execution_resource, str):
+            self.execution_resource = str(self.execution_resource)
+
+        if self.git_url is None:
+            raise ValueError("git_url must be supplied")
+        if not isinstance(self.git_url, str):
+            self.git_url = str(self.git_url)
+
+        if self.has_input is None:
+            raise ValueError("has_input must be supplied")
+        elif not isinstance(self.has_input, list):
+            self.has_input = [self.has_input]
+        elif len(self.has_input) == 0:
+            raise ValueError(f"has_input must be a non-empty list")
+        self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
+
+        if self.has_output is None:
+            raise ValueError("has_output must be supplied")
+        elif not isinstance(self.has_output, list):
+            self.has_output = [self.has_output]
+        elif len(self.has_output) == 0:
+            raise ValueError(f"has_output must be a non-empty list")
+        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
+
+        if self.type is None:
+            raise ValueError("type must be supplied")
+        if not isinstance(self.type, str):
+            self.type = str(self.type)
 
         if self.started_at_time is None:
             raise ValueError("started_at_time must be supplied")
@@ -1996,26 +2052,10 @@ class WorkflowExecutionActivity(Activity):
         if not isinstance(self.ended_at_time, str):
             self.ended_at_time = str(self.ended_at_time)
 
-        if self.execution_resource is not None and not isinstance(self.execution_resource, str):
-            self.execution_resource = str(self.execution_resource)
-
-        if self.git_url is not None and not isinstance(self.git_url, str):
-            self.git_url = str(self.git_url)
-
-        if self.has_input is None:
-            self.has_input = []
-        if not isinstance(self.has_input, list):
-            self.has_input = [self.has_input]
-        self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
-
-        if self.has_output is None:
-            self.has_output = []
-        if not isinstance(self.has_output, list):
-            self.has_output = [self.has_output]
-        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
-
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
+        if self.was_informed_by is None:
+            raise ValueError("was_informed_by must be supplied")
+        if not isinstance(self.was_informed_by, ActivityId):
+            self.was_informed_by = ActivityId(self.was_informed_by)
 
         if self.was_associated_with is not None and not isinstance(self.was_associated_with, WorkflowExecutionActivityId):
             self.was_associated_with = WorkflowExecutionActivityId(self.was_associated_with)
@@ -2033,8 +2073,14 @@ class MetagenomeAssembly(WorkflowExecutionActivity):
     class_model_uri: ClassVar[URIRef] = NMDC.MetagenomeAssembly
 
     id: Union[str, MetagenomeAssemblyId] = None
+    execution_resource: str = None
+    git_url: str = None
+    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    type: str = None
     started_at_time: str = None
     ended_at_time: str = None
+    was_informed_by: Union[str, ActivityId] = None
     asm_score: Optional[float] = None
     scaffolds: Optional[float] = None
     scaf_logsum: Optional[float] = None
@@ -2163,8 +2209,14 @@ class MetatranscriptomeAssembly(WorkflowExecutionActivity):
     class_model_uri: ClassVar[URIRef] = NMDC.MetatranscriptomeAssembly
 
     id: Union[str, MetatranscriptomeAssemblyId] = None
+    execution_resource: str = None
+    git_url: str = None
+    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    type: str = None
     started_at_time: str = None
     ended_at_time: str = None
+    was_informed_by: Union[str, ActivityId] = None
     asm_score: Optional[float] = None
     scaffolds: Optional[float] = None
     scaf_logsum: Optional[float] = None
@@ -2293,8 +2345,14 @@ class MetagenomeAnnotationActivity(WorkflowExecutionActivity):
     class_model_uri: ClassVar[URIRef] = NMDC.MetagenomeAnnotationActivity
 
     id: Union[str, MetagenomeAnnotationActivityId] = None
+    execution_resource: str = None
+    git_url: str = None
+    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    type: str = None
     started_at_time: str = None
     ended_at_time: str = None
+    was_informed_by: Union[str, ActivityId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.id is None:
@@ -2315,8 +2373,14 @@ class MetatranscriptomeAnnotationActivity(WorkflowExecutionActivity):
     class_model_uri: ClassVar[URIRef] = NMDC.MetatranscriptomeAnnotationActivity
 
     id: Union[str, MetatranscriptomeAnnotationActivityId] = None
+    execution_resource: str = None
+    git_url: str = None
+    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    type: str = None
     started_at_time: str = None
     ended_at_time: str = None
+    was_informed_by: Union[str, ActivityId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.id is None:
@@ -2337,8 +2401,14 @@ class MAGsAnalysisActivity(WorkflowExecutionActivity):
     class_model_uri: ClassVar[URIRef] = NMDC.MAGsAnalysisActivity
 
     id: Union[str, MAGsAnalysisActivityId] = None
+    execution_resource: str = None
+    git_url: str = None
+    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    type: str = None
     started_at_time: str = None
     ended_at_time: str = None
+    was_informed_by: Union[str, ActivityId] = None
     input_contig_num: Optional[int] = None
     binned_contig_num: Optional[int] = None
     too_short_contig_num: Optional[int] = None
@@ -2386,22 +2456,42 @@ class ReadQCAnalysisActivity(WorkflowExecutionActivity):
     class_model_uri: ClassVar[URIRef] = NMDC.ReadQCAnalysisActivity
 
     id: Union[str, ReadQCAnalysisActivityId] = None
+    execution_resource: str = None
+    git_url: str = None
+    type: str = None
     started_at_time: str = None
     ended_at_time: str = None
+    was_informed_by: Union[str, ActivityId] = None
+    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     input_read_count: Optional[float] = None
     input_base_count: Optional[float] = None
     output_read_count: Optional[float] = None
     output_base_count: Optional[float] = None
     input_read_bases: Optional[float] = None
     output_read_bases: Optional[float] = None
-    has_input: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
-    has_output: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.id is None:
             raise ValueError("id must be supplied")
         if not isinstance(self.id, ReadQCAnalysisActivityId):
             self.id = ReadQCAnalysisActivityId(self.id)
+
+        if self.has_input is None:
+            raise ValueError("has_input must be supplied")
+        elif not isinstance(self.has_input, list):
+            self.has_input = [self.has_input]
+        elif len(self.has_input) == 0:
+            raise ValueError(f"has_input must be a non-empty list")
+        self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
+
+        if self.has_output is None:
+            raise ValueError("has_output must be supplied")
+        elif not isinstance(self.has_output, list):
+            self.has_output = [self.has_output]
+        elif len(self.has_output) == 0:
+            raise ValueError(f"has_output must be a non-empty list")
+        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
 
         if self.input_read_count is not None and not isinstance(self.input_read_count, float):
             self.input_read_count = float(self.input_read_count)
@@ -2421,18 +2511,6 @@ class ReadQCAnalysisActivity(WorkflowExecutionActivity):
         if self.output_read_bases is not None and not isinstance(self.output_read_bases, float):
             self.output_read_bases = float(self.output_read_bases)
 
-        if self.has_input is None:
-            self.has_input = []
-        if not isinstance(self.has_input, list):
-            self.has_input = [self.has_input]
-        self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
-
-        if self.has_output is None:
-            self.has_output = []
-        if not isinstance(self.has_output, list):
-            self.has_output = [self.has_output]
-        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
-
         super().__post_init__(**kwargs)
 
 
@@ -2446,8 +2524,14 @@ class ReadBasedAnalysisActivity(WorkflowExecutionActivity):
     class_model_uri: ClassVar[URIRef] = NMDC.ReadBasedAnalysisActivity
 
     id: Union[str, ReadBasedAnalysisActivityId] = None
+    execution_resource: str = None
+    git_url: str = None
+    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    type: str = None
     started_at_time: str = None
     ended_at_time: str = None
+    was_informed_by: Union[str, ActivityId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.id is None:
@@ -2468,8 +2552,14 @@ class MetabolomicsAnalysisActivity(WorkflowExecutionActivity):
     class_model_uri: ClassVar[URIRef] = NMDC.MetabolomicsAnalysisActivity
 
     id: Union[str, MetabolomicsAnalysisActivityId] = None
+    execution_resource: str = None
+    git_url: str = None
+    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    type: str = None
     started_at_time: str = None
     ended_at_time: str = None
+    was_informed_by: Union[str, ActivityId] = None
     used: Optional[Union[str, InstrumentId]] = None
     has_metabolite_quantifications: Optional[Union[Union[dict, MetaboliteQuantification], List[Union[dict, MetaboliteQuantification]]]] = empty_list()
     has_calibration: Optional[str] = None
@@ -2505,8 +2595,14 @@ class MetaproteomicsAnalysisActivity(WorkflowExecutionActivity):
     class_model_uri: ClassVar[URIRef] = NMDC.MetaproteomicsAnalysisActivity
 
     id: Union[str, MetaproteomicsAnalysisActivityId] = None
+    execution_resource: str = None
+    git_url: str = None
+    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    type: str = None
     started_at_time: str = None
     ended_at_time: str = None
+    was_informed_by: Union[str, ActivityId] = None
     used: Optional[Union[str, InstrumentId]] = None
     has_peptide_quantifications: Optional[Union[Union[dict, PeptideQuantification], List[Union[dict, PeptideQuantification]]]] = empty_list()
 
@@ -2538,8 +2634,14 @@ class NomAnalysisActivity(WorkflowExecutionActivity):
     class_model_uri: ClassVar[URIRef] = NMDC.NomAnalysisActivity
 
     id: Union[str, NomAnalysisActivityId] = None
+    execution_resource: str = None
+    git_url: str = None
+    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    type: str = None
     started_at_time: str = None
     ended_at_time: str = None
+    was_informed_by: Union[str, ActivityId] = None
     used: Optional[Union[str, InstrumentId]] = None
     has_calibration: Optional[str] = None
 
@@ -5521,6 +5623,12 @@ slots.database_date_created = Slot(uri=NMDC.date_created, name="database_date cr
 slots.database_etl_software_version = Slot(uri=NMDC.etl_software_version, name="database_etl software version", curie=NMDC.curie('etl_software_version'),
                    model_uri=NMDC.database_etl_software_version, domain=Database, range=Optional[str])
 
+slots.data_object_name = Slot(uri=NMDC.name, name="data object_name", curie=NMDC.curie('name'),
+                   model_uri=NMDC.data_object_name, domain=DataObject, range=str)
+
+slots.data_object_description = Slot(uri=NMDC.description, name="data object_description", curie=NMDC.curie('description'),
+                   model_uri=NMDC.data_object_description, domain=DataObject, range=str)
+
 slots.biosample_lat_lon = Slot(uri=NMDC.lat_lon, name="biosample_lat_lon", curie=NMDC.curie('lat_lon'),
                    model_uri=NMDC.biosample_lat_lon, domain=Biosample, range=Optional[Union[dict, "GeolocationValue"]],
                    pattern=re.compile(r'\d+[.\d+] \d+[.\d+]'))
@@ -5542,6 +5650,15 @@ slots.biosample_env_medium = Slot(uri=NMDC.env_medium, name="biosample_env_mediu
 
 slots.biosample_processing_has_input = Slot(uri=NMDC.has_input, name="biosample processing_has input", curie=NMDC.curie('has_input'),
                    model_uri=NMDC.biosample_processing_has_input, domain=BiosampleProcessing, range=Optional[Union[Union[str, BiosampleId], List[Union[str, BiosampleId]]]])
+
+slots.omics_processing_has_input = Slot(uri=NMDC.has_input, name="omics processing_has input", curie=NMDC.curie('has_input'),
+                   model_uri=NMDC.omics_processing_has_input, domain=OmicsProcessing, range=Union[Union[str, BiosampleId], List[Union[str, BiosampleId]]])
+
+slots.omics_processing_has_output = Slot(uri=NMDC.has_output, name="omics processing_has output", curie=NMDC.curie('has_output'),
+                   model_uri=NMDC.omics_processing_has_output, domain=OmicsProcessing, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
+
+slots.omics_processing_part_of = Slot(uri=NMDC.part_of, name="omics processing_part of", curie=NMDC.curie('part_of'),
+                   model_uri=NMDC.omics_processing_part_of, domain=OmicsProcessing, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
 
 slots.attribute_value_type = Slot(uri=NMDC.type, name="attribute value_type", curie=NMDC.curie('type'),
                    model_uri=NMDC.attribute_value_type, domain=AttributeValue, range=Optional[str])
@@ -5627,6 +5744,24 @@ slots.workflow_execution_activity_started_at_time = Slot(uri=NMDC.started_at_tim
 slots.workflow_execution_activity_ended_at_time = Slot(uri=NMDC.ended_at_time, name="workflow execution activity_ended at time", curie=NMDC.curie('ended_at_time'),
                    model_uri=NMDC.workflow_execution_activity_ended_at_time, domain=WorkflowExecutionActivity, range=str)
 
+slots.workflow_execution_activity_git_url = Slot(uri=NMDC.git_url, name="workflow execution activity_git url", curie=NMDC.curie('git_url'),
+                   model_uri=NMDC.workflow_execution_activity_git_url, domain=WorkflowExecutionActivity, range=str)
+
+slots.workflow_execution_activity_has_input = Slot(uri=NMDC.has_input, name="workflow execution activity_has input", curie=NMDC.curie('has_input'),
+                   model_uri=NMDC.workflow_execution_activity_has_input, domain=WorkflowExecutionActivity, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
+
+slots.workflow_execution_activity_has_output = Slot(uri=NMDC.has_output, name="workflow execution activity_has output", curie=NMDC.curie('has_output'),
+                   model_uri=NMDC.workflow_execution_activity_has_output, domain=WorkflowExecutionActivity, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
+
+slots.workflow_execution_activity_was_informed_by = Slot(uri=NMDC.was_informed_by, name="workflow execution activity_was informed by", curie=NMDC.curie('was_informed_by'),
+                   model_uri=NMDC.workflow_execution_activity_was_informed_by, domain=WorkflowExecutionActivity, range=Union[str, ActivityId])
+
+slots.workflow_execution_activity_execution_resource = Slot(uri=NMDC.execution_resource, name="workflow execution activity_execution resource", curie=NMDC.curie('execution_resource'),
+                   model_uri=NMDC.workflow_execution_activity_execution_resource, domain=WorkflowExecutionActivity, range=str)
+
+slots.workflow_execution_activity_type = Slot(uri=NMDC.type, name="workflow execution activity_type", curie=NMDC.curie('type'),
+                   model_uri=NMDC.workflow_execution_activity_type, domain=WorkflowExecutionActivity, range=str)
+
 slots.read_QC_analysis_activity_input_read_bases = Slot(uri=NMDC.input_read_bases, name="read QC analysis activity_input_read_bases", curie=NMDC.curie('input_read_bases'),
                    model_uri=NMDC.read_QC_analysis_activity_input_read_bases, domain=ReadQCAnalysisActivity, range=Optional[float])
 
@@ -5634,10 +5769,10 @@ slots.read_QC_analysis_activity_output_read_bases = Slot(uri=NMDC.output_read_ba
                    model_uri=NMDC.read_QC_analysis_activity_output_read_bases, domain=ReadQCAnalysisActivity, range=Optional[float])
 
 slots.read_QC_analysis_activity_has_input = Slot(uri=NMDC.has_input, name="read QC analysis activity_has input", curie=NMDC.curie('has_input'),
-                   model_uri=NMDC.read_QC_analysis_activity_has_input, domain=ReadQCAnalysisActivity, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
+                   model_uri=NMDC.read_QC_analysis_activity_has_input, domain=ReadQCAnalysisActivity, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
 
 slots.read_QC_analysis_activity_has_output = Slot(uri=NMDC.has_output, name="read QC analysis activity_has output", curie=NMDC.curie('has_output'),
-                   model_uri=NMDC.read_QC_analysis_activity_has_output, domain=ReadQCAnalysisActivity, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
+                   model_uri=NMDC.read_QC_analysis_activity_has_output, domain=ReadQCAnalysisActivity, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
 
 slots.metabolomics_analysis_activity_used = Slot(uri=NMDC.used, name="metabolomics analysis activity_used", curie=NMDC.curie('used'),
                    model_uri=NMDC.metabolomics_analysis_activity_used, domain=MetabolomicsAnalysisActivity, range=Optional[Union[str, InstrumentId]])
