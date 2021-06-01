@@ -44,6 +44,18 @@ classes:
         required: true
       ended at time:
         required: true
+      git url:
+        required: true
+      has input:
+        required: true
+      has output:
+        required: true
+      was informed by:
+        required: true
+      execution resource:
+        required: true
+      type:
+        required: true
 
 
   metagenome assembly:
