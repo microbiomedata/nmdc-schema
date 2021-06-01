@@ -6,9 +6,9 @@ Changes to the schema are documented in this file.
 ### Fixed
   - N/A
 ### Changed
-  - `part of`, `has input`, `has ouput` slots are required for `omics processing` objects (cf. issue 50)
-  - `name`, `description` sltos required for `data object` objects (cf. issue 50)
-  - `git url`, `has input`, `has ouput`, `was informed by`, `execution resource`, `type` slots required for `workflow execution activity` objects (cf. issue 50)
+  - `part of`, `has input`, `has output` slots are required for `omics processing` objects (cf. issue 50)
+  - `name`, `description` slots required for `data object` objects (cf. issue 50)
+  - `git url`, `has input`, `has output`, `was informed by`, `execution resource`, `type` slots required for `workflow execution activity` objects (cf. issue 50)
 ### Removed
   - N/A
 
