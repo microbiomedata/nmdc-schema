@@ -3,6 +3,8 @@ This directory holds [SSSOM](https://github.com/mapping-commons/SSSOM) files use
 
 ### Some recently added files are per-sample mappings and not actually in the SSSOM format.
 _Might require moving to a better location._
+- `biosample_env_package_normalizastion.tsv`
+    - Counts all of the `env_package` values submitted to NCBI Biosample Metadata and provides mappings to `EnvPackage` from https://www.ncbi.nlm.nih.gov/biosample/docs/packages/?format=xml where possible. Lot of overlap with `env_package.pattern` from `mixs.yaml`, but not identical. `EnvPackageDisplay` may actually provide better overlap.
 - `per_biosample_scoped_ebs_mapping_results.tsv`
     - This file accounts for the fact that biosamples can be annotated with a pipe-delimited list of terms in MIxS triad columns like `env_broad_scale`. See https://www.ncbi.nlm.nih.gov/biosample/?term=SAMN13905271
     - Otherwise, it is just a merger of `biosample_ebs_water_packages_unclassified_taxa_sssom.tsv` with the NCBI Biosaple metadata

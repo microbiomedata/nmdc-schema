@@ -1,0 +1,93 @@
+env_package	count	lhs	rhs	extract	remaining_string	remaining_tidied	rt_override	EnvPackage	is_canonical
+	14083847								True
+host-associated	49254		host-associated		host-associated	host associated	host associated	host-associated	True
+human-gut	47921		human-gut		human-gut	human gut	human gut	human-gut	True
+water	16367		water		water	water	water	water	True
+human-skin	13706		human-skin		human-skin	human skin	human skin	human-skin	True
+built environment	12391		built environment		built environment	built environment	built	built	True
+soil	11974		soil		soil	soil	soil	soil	True
+misc environment	11715		misc environment		misc environment	misc environment	miscellaneous	miscellaneous	True
+missing	8453		missing		missing	missing	no environmental package	No environmental package	True
+human-oral	7882		human-oral		human-oral	human oral	human oral	human-oral	True
+sediment	5969		sediment		sediment	sediment	sediment	sediment	True
+MIGS/MIMS/MIMARKS.soil	3784	MIGS/MIMS/MIMARKS	soil		soil	soil	soil	soil	True
+human-associated	3167		human-associated		human-associated	human associated	human associated	human-associated	True
+MIGS/MIMS/MIMARKS.host-associated	2985	MIGS/MIMS/MIMARKS	host-associated		host-associated	host associated	host associated	host-associated	True
+MIGS/MIMS/MIMARKS.human-gut	2499	MIGS/MIMS/MIMARKS	human-gut		human-gut	human gut	human gut	human-gut	True
+microbial mat/biofilm	2129		microbial mat/biofilm		microbial mat/biofilm	microbial mat biofilm	microbial	microbial	True
+plant-associated	2076		plant-associated		plant-associated	plant associated	plant associated	plant-associated	True
+MIGS/MIMS/MIMARKS.water	1763	MIGS/MIMS/MIMARKS	water		water	water	water	water	True
+MIGS/MIMS/MIMARKS.human-associated	1417	MIGS/MIMS/MIMARKS	human-associated		human-associated	human associated	human associated	human-associated	True
+MIGS/MIMS/MIMARKS.sediment	1177	MIGS/MIMS/MIMARKS	sediment		sediment	sediment	sediment	sediment	True
+MIGS/MIMS/MIMARKS.human-oral	1154	MIGS/MIMS/MIMARKS	human-oral		human-oral	human oral	human oral	human-oral	True
+human-vaginal	1077		human-vaginal		human-vaginal	human vaginal	human vaginal	human-vaginal	True
+MIGS/MIMS/MIMARKS.plant-associated	1063	MIGS/MIMS/MIMARKS	plant-associated		plant-associated	plant associated	plant associated	plant-associated	True
+MIGS/MIMS/MIMARKS.microbial	732	MIGS/MIMS/MIMARKS	microbial		microbial	microbial	microbial	microbial	True
+miscellaneous natural or artificial environment	611		miscellaneous natural or artificial environment		miscellaneous natural or artificial environment	miscellaneous natural or artificial environment	miscellaneous natural or artificial environment		False
+MIGS/MIMS/MIMARKS.miscellaneous	525	MIGS/MIMS/MIMARKS	miscellaneous		miscellaneous	miscellaneous	miscellaneous	miscellaneous	True
+mimarks	479		mimarks		mimarks	mimarks	mimarks		False
+wastewater|sludge	417		wastewater|sludge		wastewater|sludge	wastewater sludge	wastewater	wastewater	True
+mouse-gut	406		mouse-gut		mouse-gut	mouse gut	mouse gut		False
+MIGS/MIMS/MIMARKS.wastewater	385	MIGS/MIMS/MIMARKS	wastewater		wastewater	wastewater	wastewater	wastewater	True
+wastewater/sludge	357		wastewater/sludge		wastewater/sludge	wastewater sludge	wastewater	wastewater	True
+unknown	283		unknown		unknown	unknown	no environmental package	No environmental package	True
+Human-associated	212		Human-associated		Human-associated	human associated	human associated	human-associated	True
+MIGS/MIMS/MIMARKS.air	205	MIGS/MIMS/MIMARKS	air		air	air	air	air	True
+Human-oral	201		Human-oral		Human-oral	human oral	human oral	human-oral	True
+gut	172		gut		gut	gut	gut		False
+host_associated	171		host_associated		host_associated	host associated	host associated	host-associated	True
+air	152		air		air	air	air	air	True
+MIGS/MIMS/MIMARKS.human-skin	135	MIGS/MIMS/MIMARKS	human-skin		human-skin	human skin	human skin	human-skin	True
+biofilm	114		biofilm		biofilm	biofilm	biofilm		False
+Human-gut	111		Human-gut		Human-gut	human gut	human gut	human-gut	True
+human-not providedsopharyngeal	107		human-not providedsopharyngeal		human-not providedsopharyngeal	human not providedsopharyngeal	human not providedsopharyngeal		False
+wastewater sludge	90		wastewater sludge		wastewater sludge	wastewater sludge	wastewater	wastewater	True
+mice gut	87		mice gut		mice gut	mice gut	mice gut		False
+built	61		built		built	built	built	built	True
+CV	60		CV		CV	cv	cv		False
+Human_Gut	59		Human_Gut		Human_Gut	human gut	human gut	human-gut	True
+human gut	59		human gut		human gut	human gut	human gut	human-gut	True
+default	51		default		default	default	no environmental package	No environmental package	True
+microbial mat|biofilm	48		microbial mat|biofilm		microbial mat|biofilm	microbial mat biofilm	microbial	microbial	True
+home, outdoor environment	44		home, outdoor environment		home, outdoor environment	home outdoor environment	home outdoor environment		False
+Unspecified	42		Unspecified		Unspecified	unspecified	no environmental package	No environmental package	True
+fermentation-associated	42		fermentation-associated		fermentation-associated	fermentation associated	fermentation associated		False
+not applicable	41		not applicable		not applicable	not applicable	not applicable		False
+soil-associated	36		soil-associated		soil-associated	soil associated	soil associated		False
+sterile water	35		sterile water		sterile water	sterile water	sterile water		False
+miscellaneous	33		miscellaneous		miscellaneous	miscellaneous	miscellaneous	miscellaneous	True
+Human-vaginal	28		Human-vaginal		Human-vaginal	human vaginal	human vaginal	human-vaginal	True
+human_skin	28		human_skin		human_skin	human skin	human skin	human-skin	True
+Mouse_Gut	27		Mouse_Gut		Mouse_Gut	mouse gut	mouse gut		False
+fresh water	27		fresh water		fresh water	fresh water	fresh water		False
+Soil	19		Soil		Soil	soil	soil	soil	True
+wastewater	14		wastewater		wastewater	wastewater	wastewater	wastewater	True
+rock	12		rock		rock	rock	rock		False
+arctic	10		arctic		arctic	arctic	arctic		False
+MIGS/MIMS/MIMARKS.human-vaginal	9	MIGS/MIMS/MIMARKS	human-vaginal		human-vaginal	human vaginal	human vaginal	human-vaginal	True
+freshwater sediment	9		freshwater sediment		freshwater sediment	freshwater sediment	freshwater sediment		False
+seawater	9		seawater		seawater	seawater	seawater		False
+misc-environment	7		misc-environment		misc-environment	misc environment	miscellaneous	miscellaneous	True
+MIENS_16S	6		MIENS_16S		MIENS_16S	miens 16s	miens 16s		False
+MIMARKS_water	6		MIMARKS_water		MIMARKS_water	mimarks water	mimarks water		False
+cave	5		cave		cave	cave	cave		False
+Not available	4		Not available		Not available	not available	no environmental package	No environmental package	True
+Host-associated	3		Host-associated		Host-associated	host associated	host associated	host-associated	True
+MIGS.plant-associated	3	MIGS	plant-associated		plant-associated	plant associated	plant associated	plant-associated	True
+Water	3		Water		Water	water	water	water	True
+not collected	3		not collected		not collected	not collected	no environmental package	No environmental package	True
+plant	3		plant		plant	plant	plant		False
+host associated	2		host associated		host associated	host associated	host associated	host-associated	True
+sea water	2		sea water		sea water	sea water	sea water		False
+Coastal water body (ENVO:02000049)	1		Coastal water body (ENVO:02000049)	ENVO:02000049	Coastal water body ()	coastal water body	coastal water body		False
+Deep-sea water	1		Deep-sea water		Deep-sea water	deep sea water	deep sea water		False
+ENVO:00000016	1		ENVO:00000016	ENVO:00000016					True
+MIMARKS_16S	1		MIMARKS_16S		MIMARKS_16S	mimarks 16s	mimarks 16s		False
+Sea water	1		Sea water		Sea water	sea water	sea water		False
+Sediment	1		Sediment		Sediment	sediment	sediment	sediment	True
+Unknown	1		Unknown		Unknown	unknown	no environmental package	No environmental package	True
+env_package	1		env_package		env_package	env package	env package		False
+gut microbiome	1		gut microbiome		gut microbiome	gut microbiome	gut microbiome		False
+marine sediment (ENVO:00002113)	1		marine sediment (ENVO:00002113)	ENVO:00002113	marine sediment ()	marine sediment	marine sediment		False
+saliva	1		saliva		saliva	saliva	saliva		False
+sea water, [ENVO:00002149]	1		sea water, [ENVO:00002149]	ENVO:00002149	sea water, 	sea water	sea water		False
