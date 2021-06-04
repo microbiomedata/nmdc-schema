@@ -103,5 +103,3 @@ But this is not very interesting as it is a toy schema
  - [ ] GitHub actions
  - [ ] Making separate modules for each import
 
-_MAM 202106041353ET_
-
