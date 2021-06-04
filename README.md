@@ -1,4 +1,6 @@
 # National Microbiome Data Collaborative Schema
+# Template for LinkML schema repos
+
 ![PyPI - License](https://img.shields.io/pypi/l/nmdc-schema)
 ![GitHub last commit](https://img.shields.io/github/last-commit/microbiomedata/nmdc-schema?branch=main&kill_cache=1)
 
@@ -9,7 +11,6 @@
 ![Deploy Documentation](https://github.com/microbiomedata/nmdc-schema/workflows/Build%20and%20Deploy%20Static%20Mkdocs%20Documentation/badge.svg?branch=main)
 
 ## What is this?
-
 This is a GitHub template for a [LinkML](https://github.com/biolink/biolinkml/) project.
 
 It allows you to create a project for your schema as quickly as
