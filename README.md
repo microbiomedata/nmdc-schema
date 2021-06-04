@@ -1,5 +1,4 @@
 # National Microbiome Data Collaborative Schema
-# Template for LinkML schema repos
 
 ![PyPI - License](https://img.shields.io/pypi/l/nmdc-schema)
 
