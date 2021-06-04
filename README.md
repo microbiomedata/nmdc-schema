@@ -1,4 +1,4 @@
-# National Microbiome Data Collaborative Shema
+# National Microbiome Data Collaborative Schema
 ![PyPI - License](https://img.shields.io/pypi/l/nmdc-schema)
 ![GitHub last commit](https://img.shields.io/github/last-commit/microbiomedata/nmdc-schema?branch=main&kill_cache=1)
 
@@ -31,7 +31,7 @@ site, as well as downstream artefacts, including:
  4. Rename the schema file in [src/schema](src/schema). Keep the `.yaml` suffix
  5. Modify the schema, add your own classes and slots.
  6. Type `make install all` to build your downstream artefacts (jsonschema, owl, etc)
- 7. Type `make gh-deploy` to make a github pages website
+ 7. Type `make gh-deploy` to make a GitHub pages website
 
 Minor tweak: for now you must pass in the name of your schema on the command line, e.g.
 
