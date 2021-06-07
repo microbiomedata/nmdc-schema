@@ -13,9 +13,10 @@ https://github.com/microbiomedata/nmdc-schema/commits)
 The purpose of this repository is to manage metadata for the [National Microbiome Data Collaborative (NMDC)](https://microbiomedata.org/). The NMDC is a multi-organizational effort to enable integrated microbiome data across diverse areas in medicine, agriculture, bioenergy, and the environment. This integrated platform facilitates comprehensive discovery of and access to multidisciplinary microbiome data in order to unlock new possibilities with microbiome data science. 
 
 Tasks managed by the repository are:
-* Generating the [schema](https://github.com/microbiomedata/nmdc-metadata/tree/master/schema)
+* Generating the schema
 * Deploying the [documentation](https://microbiomedata.github.io/nmdc-metadata/) 
-* [Integrating](./metadata-translation/notebooks) metadata from multiple environmental data repositories
+* Integrating metadata from multiple environmental data repositories
+    * _was ./metadata-translation/notebooks_
 
 ## Background
 
