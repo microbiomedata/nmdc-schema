@@ -10,7 +10,7 @@ https://github.com/microbiomedata/nmdc-schema/commits)
 ![Deploy Documentation](https://github.com/microbiomedata/nmdc-schema/workflows/Build%20and%20Deploy%20Static%20Mkdocs%20Documentation/badge.svg?branch=main)
 
 
-This repository defines a linkml schema for managing metadata for the [National Microbiome Data Collaborative (NMDC)](https://microbiomedata.org/). The NMDC is a multi-organizational effort to enable integrated microbiome data across diverse areas in medicine, agriculture, bioenergy, and the environment. This integrated platform facilitates comprehensive discovery of and access to multidisciplinary microbiome data in order to unlock new possibilities with microbiome data science. 
+This repository defines a linkml schema for managing metadata from the [National Microbiome Data Collaborative (NMDC)](https://microbiomedata.org/). The NMDC is a multi-organizational effort to enable integrated microbiome data across diverse areas in medicine, agriculture, bioenergy, and the environment. This integrated platform facilitates comprehensive discovery of and access to multidisciplinary microbiome data in order to unlock new possibilities with microbiome data science. 
 
 Tasks managed by the repository are:
 * Generating the schema
@@ -31,7 +31,7 @@ The [NMDC schema](./schema) is used during the [translation process](./metadata-
 - broken
 
 ![img](https://raw.githubusercontent.com/microbiomedata/nmdc-metadata/master/schema/nmdc_schema_uml.png)
-- broken, beter alternatives exist
+- broken, better alternatives exist
 
 The schema is also available as:
 
