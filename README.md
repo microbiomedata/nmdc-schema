@@ -9,7 +9,48 @@ https://github.com/microbiomedata/nmdc-schema/commits)
 
 ![Deploy Documentation](https://github.com/microbiomedata/nmdc-schema/workflows/Build%20and%20Deploy%20Static%20Mkdocs%20Documentation/badge.svg?branch=main)
 
-## What is this?
+
+The purpose of this repository is to manage metadata for the [National Microbiome Data Collaborative (NMDC)](https://microbiomedata.org/). The NMDC is a multi-organizational effort to enable integrated microbiome data across diverse areas in medicine, agriculture, bioenergy, and the environment. This integrated platform facilitates comprehensive discovery of and access to multidisciplinary microbiome data in order to unlock new possibilities with microbiome data science. 
+
+Tasks managed by the repository are:
+* Generating the [schema](https://github.com/microbiomedata/nmdc-metadata/tree/master/schema)
+* Deploying the [documentation](https://microbiomedata.github.io/nmdc-metadata/) 
+* [Integrating](./metadata-translation/notebooks) metadata from multiple environmental data repositories
+
+## Background
+
+The NMDC [Introduction to metadata and ontologies](https://microbiomedata.org/introduction-to-metadata-and-ontologies/) primer describes the context for this project.
+
+## Schema
+
+See the [slides](https://microbiomedata.github.io/nmdc-metadata/docs/schema-slides) describing the schema
+
+The [NMDC schema](./schema) is used during the [translation process](./metadata-translation/notebooks) to specify how metadata elements are related.
+
+![img](https://raw.githubusercontent.com/microbiomedata/nmdc-metadata/master/schema/nmdc_schema_uml.png)
+
+The schema is also available as:
+
+ * [JSON Schema](schema/nmdc.schema.json)
+ * [Protobuf](schema/nmdc.proto)
+ * [GraphQL](schema/nmdc.graphql)
+ * [OWL](schema/nmdc.owl)
+ * [ShEx](schema/nmdc.shex)
+
+## Documentation
+[Documentation](https://microbiomedata.github.io/nmdc-metadata/) for the [NMDC schema](./schema) can be browsed here:
+* https://microbiomedata.github.io/nmdc-metadata/
+
+
+----
+
+
+## Under Construction! A proper README will appear soon. 
+What you see now comes from the template used to bootstrap this repo.
+
+There are several other repositories that may be of interest:
+- https://github.com/microbiomedata/nmdc-metadata
+
 This is a GitHub template for a [LinkML](https://github.com/biolink/biolinkml/) project.
 
 It allows you to create a project for your schema as quickly as
