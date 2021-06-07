@@ -39,6 +39,9 @@ The schema is also available as:
 
 -   [JSON-Schema](jsonschema/nmdc.schema.json)
 
+- markdown docs
+- json ld for FAIRness
+
 
 -   [Protobuf](schema/nmdc.proto)
     -   fodler missing
