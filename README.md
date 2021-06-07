@@ -25,13 +25,13 @@ The NMDC [Introduction to metadata and ontologies](https://microbiomedata.org/in
 ## Schema
 
 See the [slides](https://microbiomedata.github.io/nmdc-metadata/docs/schema-slides) describing the schema
-- broken
+- this and other relevant docs are available at https://github.com/microbiomedata/nmdc-metadata/tree/master/docs
 
 The [NMDC schema](./schema) is used during the [translation process](./metadata-translation/notebooks) to specify how metadata elements are related.
 - broken
 
 ![img](https://raw.githubusercontent.com/microbiomedata/nmdc-metadata/master/schema/nmdc_schema_uml.png)
-- broken
+- broken, beter alternatives exist
 
 The schema is also available as:
 
