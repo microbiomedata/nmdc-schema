@@ -50,8 +50,9 @@ The schema is also available as:
     * folder present but no shex file
 
 ## Documentation
-[Documentation](https://microbiomedata.github.io/nmdc-metadata/) for the [NMDC schema](./schema) can be browsed here:
+[Documentation](https://microbiomedata.github.io/nmdc-metadata/) for the NMDC schema can be browsed here:
 * https://microbiomedata.github.io/nmdc-metadata/
+    * redundant links. from seperate repo.
 
 
 ----
