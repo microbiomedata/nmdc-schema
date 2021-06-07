@@ -10,7 +10,7 @@ https://github.com/microbiomedata/nmdc-schema/commits)
 ![Deploy Documentation](https://github.com/microbiomedata/nmdc-schema/workflows/Build%20and%20Deploy%20Static%20Mkdocs%20Documentation/badge.svg?branch=main)
 
 
-This repository defines a linkml schema for managing metadata from the [National Microbiome Data Collaborative (NMDC)](https://microbiomedata.org/). The NMDC is a multi-organizational effort to enable integrated microbiome data across diverse areas in medicine, agriculture, bioenergy, and the environment. This integrated platform facilitates comprehensive discovery of and access to multidisciplinary microbiome data in order to unlock new possibilities with microbiome data science. 
+This repository defines a linkml https://github.com/linkml/linkml schema for managing metadata from the [National Microbiome Data Collaborative (NMDC)](https://microbiomedata.org/). The NMDC is a multi-organizational effort to enable integrated microbiome data across diverse areas in medicine, agriculture, bioenergy, and the environment. This integrated platform facilitates comprehensive discovery of and access to multidisciplinary microbiome data in order to unlock new possibilities with microbiome data science. 
 
 Tasks managed by the repository are:
 * Generating the schema
@@ -35,7 +35,7 @@ The [NMDC schema](./schema) is used during the [translation process](./metadata-
 
 The schema is also available as:
 
- * [JSON Schema](jsonschema/nmdc.schema.json)
+ * [JSON-Schema](jsonschema/nmdc.schema.json)
  
 
 * [Protobuf](schema/nmdc.proto)
@@ -46,8 +46,14 @@ The schema is also available as:
     * folder present but no owl file
 * [RDF](placeholder)
     * folder present but no rdf file
+    * template says "(direct mapping)"
 * [ShEx](schema/nmdc.shex)
     * folder present but no shex file
+
+The template also promises
+ * SQL DDL (TODO)
+ * TSV/CSV reports
+
 
 ## Documentation
 [Documentation](https://microbiomedata.github.io/nmdc-metadata/) for the NMDC schema can be browsed here:
@@ -64,18 +70,11 @@ What you see now comes from the template used to bootstrap this repo.
 There are several other repositories that may be of interest:
 - https://github.com/microbiomedata/nmdc-metadata
 
-This is a GitHub template for a [LinkML](https://github.com/biolink/biolinkml/) project.
-
-It allows you to create a project for your schema as quickly as
+Template ... It allows you to create a project for your schema as quickly as
 possible. It takes care of generating a beautiful readthedocs themed
 site, as well as downstream artefacts, including:
 
- * JSON-Schema
- * ShEx
- * OWL
- * RDF (direct mapping)
- * SQL DDL (TODO)
- * TSV/CSV reports
+
 
 ## Quickstart
 
