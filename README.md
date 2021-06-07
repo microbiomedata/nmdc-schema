@@ -35,11 +35,19 @@ The [NMDC schema](./schema) is used during the [translation process](./metadata-
 
 The schema is also available as:
 
- * [JSON Schema](schema/nmdc.schema.json)
- * [Protobuf](schema/nmdc.proto)
- * [GraphQL](schema/nmdc.graphql)
- * [OWL](schema/nmdc.owl)
- * [ShEx](schema/nmdc.shex)
+ * [JSON Schema](jsonschema/nmdc.schema.json)
+ 
+
+* [Protobuf](schema/nmdc.proto)
+    * fodler missing
+* [GraphQL](schema/nmdc.graphql)
+    * folder present but no graphql file
+* [OWL](schema/nmdc.owl)
+    * folder present but no owl file
+* [RDF](placeholder)
+    * folder present but no rdf file
+* [ShEx](schema/nmdc.shex)
+    * folder present but no shex file
 
 ## Documentation
 [Documentation](https://microbiomedata.github.io/nmdc-metadata/) for the [NMDC schema](./schema) can be browsed here:
