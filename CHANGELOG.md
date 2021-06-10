@@ -1,5 +1,6 @@
 # Change Log
 Changes to the schema are documented in this file.
+<<<<<<< HEAD
 ## Current changes
 ### Added
   - `title` slot as attribute of `nmdc:study` (cf. issue 51)
@@ -13,6 +14,15 @@ Changes to the schema are documented in this file.
   - 
   - 
   - 
+=======
+## [2021.06.10rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.06.10rc1)
+### Added
+  - `abstract` slot for use with `study` (cf. issue 60)
+### Fixed
+  - N/A
+### Changed
+  - N/A
+>>>>>>> main
 ### Removed
   - N/A
 

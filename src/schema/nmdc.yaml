@@ -14,7 +14,7 @@ description: >-
    * the NMDC schema itself
   
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: 2021.06.01rc2
+version: 2021.06.10rc1
 
 prefixes:
   nmdc: https://microbiomedata/meta/
@@ -310,10 +310,14 @@ classes:
       - specific_ecosystem
       - principal investigator name
       - doi
+<<<<<<< HEAD
       - title
       - alternative titles
       - alternative descriptions
       - alternative names
+=======
+      - abstract
+>>>>>>> main
       - type  # custom slot that specifies object type
     todos:
       - determine how to get data values for submitted_to_insdc, investigation_type, experimental_factor
