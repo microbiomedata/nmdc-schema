@@ -521,3 +521,48 @@ slots:
     description: >-
       MD5 checksum of file (pre-compressed)
 
+  title:
+    domain: named thing
+    range: string
+    multivalued: false
+    description: >-
+      A name given to the entity that differs from the name/label programatically assigned to it.
+      For example, when extracting study information for GOLD, the GOLD system has assigned a name/label.
+      However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.
+    exact_mappings:
+      - dcterms:title
+
+  alternative titles:
+    domain: named thing
+    range: string
+    multivalued: true
+    description: >-
+      A list of alternative titles for the entity.
+      The distinction between title and alternative titles is application-specific.
+    exact_mappings:
+      - dcterms:alternative
+  
+  alternative names:
+    domain: named thing
+    range: string
+    multivalued: true
+    description: >-
+      A list of alternative names used to refer to the entity.
+      The distinction between name and alternative names is application-specific.
+    exact_mappings:
+      - dcterms:alternative
+
+  alternative descriptions:
+    domain: named thing
+    range: string
+    multivalued: true
+    description: >-
+      A list of alternative descriptions for the entity.
+      The distinction between desciption and alternative descriptions is application-specific.
+  
+  keywords:
+    domain: named thing
+    range: string
+    multivalued: true
+    description: >-
+      A list of keywords that used to associate the entity.
