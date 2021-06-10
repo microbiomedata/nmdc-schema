@@ -1,5 +1,15 @@
 # Change Log
 Changes to the schema are documented in this file.
+## [2021.06.10rc2](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.06.10rc1)
+### Added
+  - `abstract` slot for use with `study` (cf. issue 60)
+### Fixed
+  - N/A
+### Changed
+  - N/A
+### Removed
+  - N/A
+
 ## [2021.06.01rc2](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.06.01rc2)
 ### Added
   - N/A
