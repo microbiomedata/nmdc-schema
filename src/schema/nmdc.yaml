@@ -310,14 +310,14 @@ classes:
       - specific_ecosystem
       - principal investigator name
       - doi
-<<<<<<< HEAD
       - title
       - alternative titles
       - alternative descriptions
       - alternative names
-=======
       - abstract
->>>>>>> main
+      - objective
+      - websites
+      - publications
       - type  # custom slot that specifies object type
     todos:
       - determine how to get data values for submitted_to_insdc, investigation_type, experimental_factor
