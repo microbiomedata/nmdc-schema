@@ -1,20 +1,21 @@
 # Change Log
 Changes to the schema are documented in this file.
-<<<<<<< HEAD
-## Current changes
+
+## [2021.06.11rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.06.11rc1)
 ### Added
   - `title` slot as attribute of `nmdc:study` (cf. issue 51)
-  - `alternative titles` slot as attribute of `nmdc:study`
-  - `alternative dscriptiions` slot as attribute of `named study`
-  - `alternative names` lot as attribute of `named study`
-  - `keywords` lot as attribute of `named study`
+  - `objective` slot as attribute of `nmdc:study` (cf. issue 51)
+  - `alternative titles` slot as attribute of `nmdc:study` (cf. issue 51)
+  - `alternative dscriptiions` slot as attribute of `nmdc:study` (cf. issue 51)
+  - `alternative names` slot as attribute of `nmdc:study` (cf. issue 51)
+  - `keywords` slot as attribute of `nmdc:study` (cf. issue 51)
+  - `websites` slot as attribute of `nmdc:study` (cf. issue 51)
+  - `publications` slot as attribute of `nmdc:study` (cf. issue 51)
 ### Fixed
   - N/A
-### Changed
-  - 
-  - 
-  - 
-=======
+### Changed 
+  - N/A
+
 ## [2021.06.10rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.06.10rc1)
 ### Added
   - `abstract` slot for use with `study` (cf. issue 60)
@@ -22,7 +23,6 @@ Changes to the schema are documented in this file.
   - N/A
 ### Changed
   - N/A
->>>>>>> main
 ### Removed
   - N/A
 
