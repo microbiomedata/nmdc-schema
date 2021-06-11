@@ -1,7 +1,6 @@
-linkml
+linkml >= 1.0.0
 jq
 mkdocs
 twine
 build
 wheel
-nmdc-schema
