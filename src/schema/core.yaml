@@ -573,7 +573,7 @@ slots:
     mappings:
       - dcterms:subject
   
-  objectives:
+  objective:
     range: string
     multivalued: false
     description: >-
