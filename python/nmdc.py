@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-06-10 12:37
+# Generation date: 2021-06-11 13:43
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -75,6 +75,7 @@ QUD = CurieNamespace('qud', 'http://qudt.org/1.1/schema/qudt#')
 RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
 RDFS = CurieNamespace('rdfs', 'http://example.org/UNKNOWN/rdfs/')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
+SIO = CurieNamespace('sio', 'http://semanticscience.org/resource/SIO_')
 SKOS = CurieNamespace('skos', 'http://example.org/UNKNOWN/skos/')
 WGS = CurieNamespace('wgs', 'http://www.w3.org/2003/01/geo/wgs84_pos')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
@@ -1066,7 +1067,14 @@ class Study(NamedThing):
     specific_ecosystem: Optional[str] = None
     principal_investigator_name: Optional[Union[dict, "PersonValue"]] = None
     doi: Optional[Union[dict, "AttributeValue"]] = None
+    title: Optional[str] = None
+    alternative_titles: Optional[Union[str, List[str]]] = empty_list()
+    alternative_descriptions: Optional[Union[str, List[str]]] = empty_list()
+    alternative_names: Optional[Union[str, List[str]]] = empty_list()
     abstract: Optional[str] = None
+    objective: Optional[str] = None
+    websites: Optional[Union[str, List[str]]] = empty_list()
+    publications: Optional[Union[str, List[str]]] = empty_list()
     type: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -1096,8 +1104,44 @@ class Study(NamedThing):
         if self.doi is not None and not isinstance(self.doi, AttributeValue):
             self.doi = AttributeValue(**self.doi)
 
+        if self.title is not None and not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if self.alternative_titles is None:
+            self.alternative_titles = []
+        if not isinstance(self.alternative_titles, list):
+            self.alternative_titles = [self.alternative_titles]
+        self.alternative_titles = [v if isinstance(v, str) else str(v) for v in self.alternative_titles]
+
+        if self.alternative_descriptions is None:
+            self.alternative_descriptions = []
+        if not isinstance(self.alternative_descriptions, list):
+            self.alternative_descriptions = [self.alternative_descriptions]
+        self.alternative_descriptions = [v if isinstance(v, str) else str(v) for v in self.alternative_descriptions]
+
+        if self.alternative_names is None:
+            self.alternative_names = []
+        if not isinstance(self.alternative_names, list):
+            self.alternative_names = [self.alternative_names]
+        self.alternative_names = [v if isinstance(v, str) else str(v) for v in self.alternative_names]
+
         if self.abstract is not None and not isinstance(self.abstract, str):
             self.abstract = str(self.abstract)
+
+        if self.objective is not None and not isinstance(self.objective, str):
+            self.objective = str(self.objective)
+
+        if self.websites is None:
+            self.websites = []
+        if not isinstance(self.websites, list):
+            self.websites = [self.websites]
+        self.websites = [v if isinstance(v, str) else str(v) for v in self.websites]
+
+        if self.publications is None:
+            self.publications = []
+        if not isinstance(self.publications, list):
+            self.publications = [self.publications]
+        self.publications = [v if isinstance(v, str) else str(v) for v in self.publications]
 
         if self.type is not None and not isinstance(self.type, str):
             self.type = str(self.type)
@@ -5160,6 +5204,30 @@ slots.md5_checksum = Slot(uri=NMDC.md5_checksum, name="md5 checksum", curie=NMDC
 
 slots.abstract = Slot(uri=NMDC.abstract, name="abstract", curie=NMDC.curie('abstract'),
                    model_uri=NMDC.abstract, domain=None, range=Optional[str])
+
+slots.title = Slot(uri=NMDC.title, name="title", curie=NMDC.curie('title'),
+                   model_uri=NMDC.title, domain=None, range=Optional[str])
+
+slots.alternative_titles = Slot(uri=NMDC.alternative_titles, name="alternative titles", curie=NMDC.curie('alternative_titles'),
+                   model_uri=NMDC.alternative_titles, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.alternative_names = Slot(uri=NMDC.alternative_names, name="alternative names", curie=NMDC.curie('alternative_names'),
+                   model_uri=NMDC.alternative_names, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.alternative_descriptions = Slot(uri=NMDC.alternative_descriptions, name="alternative descriptions", curie=NMDC.curie('alternative_descriptions'),
+                   model_uri=NMDC.alternative_descriptions, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.keywords = Slot(uri=NMDC.keywords, name="keywords", curie=NMDC.curie('keywords'),
+                   model_uri=NMDC.keywords, domain=None, range=Optional[Union[str, List[str]]], mappings = [DCTERMS.subject])
+
+slots.objective = Slot(uri=NMDC.objective, name="objective", curie=NMDC.curie('objective'),
+                   model_uri=NMDC.objective, domain=None, range=Optional[str], mappings = [SIO["000337"]])
+
+slots.websites = Slot(uri=NMDC.websites, name="websites", curie=NMDC.curie('websites'),
+                   model_uri=NMDC.websites, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.publications = Slot(uri=NMDC.publications, name="publications", curie=NMDC.curie('publications'),
+                   model_uri=NMDC.publications, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.started_at_time = Slot(uri=NMDC.started_at_time, name="started at time", curie=NMDC.curie('started_at_time'),
                    model_uri=NMDC.started_at_time, domain=None, range=Optional[str], mappings = [PROV.startedAtTime])
