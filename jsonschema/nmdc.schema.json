@@ -789,8 +789,8 @@
           "type": "string"
         },
         "data_object_type": {
-          "$ref": "#/definitions/ControlledTermValue",
-          "description": "The type of data object"
+          "description": "The type of file represented by the data object.",
+          "type": "string"
         },
         "description": {
           "type": "string"
