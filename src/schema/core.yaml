@@ -579,7 +579,7 @@ slots:
     description: >-
       The scientific objectives associated with the entity.
       It SHOULD correspond to scientific norms for objectives field in a structured abstract.
-    mapppings:
+    mappings:
       - sio:000337
 
   websites:
