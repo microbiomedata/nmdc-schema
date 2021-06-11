@@ -528,3 +528,9 @@ slots:
     exact_mappings:
       - dcterms:abstract
 
+  crc32 checksum:
+    is_a: attribute
+    range: string
+    description: >-
+      CRC32 checksum of file (pre-compressed)
+    required: true
