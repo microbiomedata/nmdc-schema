@@ -369,7 +369,41 @@ classes:
         required: true
     broad_mappings:
       - OBI:0000070 ## assay: https://github.com/microbiomedata/nmdc-metadata/issues/171
-
+  
+  
+enums:
+  file type enum:
+    permissible_values:
+      assembly_contigs.fna: 
+        description: Final assembly contigs fasta.
+      assembly_scaffolds.fna:
+        description: Final assembly scaffolds fasta.
+      assembly.agp:
+        description: An AGP format file describes the assembly.
+      filterStats.txt:
+        description: Reads QC summary statistics
+      filtered.fastq.gz:
+        description: Reads QC result fastq (clean data)
+      mapping_stats.txt :
+        description: Assembled contigs coverage information 
+      pairedMapped_sorted.bam:
+        description: Sorted bam file of reads mapping back to the final assembly.
+      KO TSV:
+        description: Tab delimited file for KO annotation.
+      EC TSV:
+        description: Tab delimited file for EC annotation.
+      Protein FAA:
+        description: FASTA amino acid file for annotated proteins.
+      MSGFjobs_MASIC_resultant.tsv:
+        description: Tab delimited file of unfiltered metaproteomics results, both identifications and abundances.
+      Peptide_Report.tsv:
+        description: Tab delimited file of peptide results filtered to ~5% FDR, including protein and abundance information.
+      Protein_Report.tsv:
+        description: Tab delimited file of protein results derived from ~5% FDR filtered peptide data, including aggregated abundance information.
+      QC_metrics.tsv:
+        description: Tab delimited file of aggregate statistics derived from workflow results.
+      
+      
 slots:
 
   object set:
@@ -527,11 +561,12 @@ slots:
       - value: metagenome
   
   data object type:
-    range: controlled term value
+    range: file type enum
     description: >-
-      The type of data object
+      The type of file represented by the data object.
     examples:
-      - value: metagenome_assembly
+      - value: assembly_contigs.fna
+      - value: assembly.agp
       
   compression type:
     range: string
