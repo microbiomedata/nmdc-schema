@@ -571,7 +571,7 @@ slots:
       A list of keywords that used to associate the entity.
       Keywords SHOULD come from controlled vocabularies, including MESH, ENVO.
     mappings:
-      - decterms:subject
+      - dcterms:subject
   
   objectives:
     range: string
