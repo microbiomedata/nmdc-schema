@@ -17,6 +17,7 @@ prefixes:
   linkml: https://w3id.org/linkml/
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   sio: http://semanticscience.org/resource/SIO_
+  skos: http://www.w3.org/2004/02/skos/core#
 
 default_prefix: nmdc
 default_range: string
@@ -556,6 +557,7 @@ slots:
       The distinction between name and alternative names is application-specific.
     exact_mappings:
       - dcterms:alternative
+      - skos:altLabel
 
   alternative descriptions:
     range: string
