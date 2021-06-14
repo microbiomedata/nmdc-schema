@@ -357,7 +357,6 @@ classes:
       - ncbi_project_name
       - omics type
       - part of
-      - principal investigator name
       - processing_institution
       - type  # custom slot that specifies object type
     slot_usage:
