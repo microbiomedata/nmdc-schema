@@ -11,6 +11,7 @@ Changes to the schema are documented in this file.
   - `keywords` slot as attribute of `nmdc:study` (cf. issue 51)
   - `websites` slot as attribute of `nmdc:study` (cf. issue 51)
   - `publications` slot as attribute of `nmdc:study` (cf. issue 51)
+  - `skos` prefix to `core` and mapping for `alternative names` to `skos:altLabel`
 ### Fixed
   - N/A
 ### Changed 
