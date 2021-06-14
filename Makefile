@@ -159,11 +159,12 @@ SHEMA_TEST_EXAMPLES := \
 	mg_assembly_activities_test \
 	mg_assembly_data_objects_test \
 	nmdc_example_database \
-	study_test \
-	invalid_study_test
+	study_test
+# invalid_study_test # this is used to make sure invalid data is caught!
 
 .PHONY: test-jsonschema
 test-jsonschema: $(foreach example, $(SHEMA_TEST_EXAMPLES), validate-$(example))
 
-validate-%: test/data/%.json
-	util/validate_nmdc_json.py -i $<
+validate-%: test/data/%.json jsonschema/nmdc.schema.json
+# util/validate_nmdc_json.py -i $< # example of validating data using the cli
+	jsonschema -i $< $(word 2, $^)
