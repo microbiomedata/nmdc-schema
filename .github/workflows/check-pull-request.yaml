@@ -32,3 +32,8 @@ jobs:
       run: |
         make stage-jsonschema
         make stage-python
+        
+    # Validate json schema aganst test data
+    - name: Validate JSON Schema
+      run: |
+        make test-jsonschema
