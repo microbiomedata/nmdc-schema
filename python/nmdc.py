@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-06-11 19:54
+# Generation date: 2021-06-14 15:03
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -77,7 +77,7 @@ RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
 RDFS = CurieNamespace('rdfs', 'http://example.org/UNKNOWN/rdfs/')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
 SIO = CurieNamespace('sio', 'http://semanticscience.org/resource/SIO_')
-SKOS = CurieNamespace('skos', 'http://example.org/UNKNOWN/skos/')
+SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
 WGS = CurieNamespace('wgs', 'http://www.w3.org/2003/01/geo/wgs84_pos')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
 DEFAULT_ = NMDC
