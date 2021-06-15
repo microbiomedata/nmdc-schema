@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-06-14 15:03
+# Generation date: 2021-06-14 21:24
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -506,6 +506,7 @@ class Biosample(NamedThing):
     salinity: Optional[Union[dict, "QuantityValue"]] = None
     salinity_meth: Optional[Union[dict, "TextValue"]] = None
     samp_collect_device: Optional[Union[dict, "TextValue"]] = None
+    samp_mat_process: Optional[Union[dict, "ControlledTermValue"]] = None
     samp_store_dur: Optional[Union[dict, "TextValue"]] = None
     samp_store_loc: Optional[Union[dict, "TextValue"]] = None
     samp_store_temp: Optional[Union[dict, "QuantityValue"]] = None
@@ -827,6 +828,9 @@ class Biosample(NamedThing):
 
         if self.samp_collect_device is not None and not isinstance(self.samp_collect_device, TextValue):
             self.samp_collect_device = TextValue(**self.samp_collect_device)
+
+        if self.samp_mat_process is not None and not isinstance(self.samp_mat_process, ControlledTermValue):
+            self.samp_mat_process = ControlledTermValue(**self.samp_mat_process)
 
         if self.samp_store_dur is not None and not isinstance(self.samp_store_dur, TextValue):
             self.samp_store_dur = TextValue(**self.samp_store_dur)
