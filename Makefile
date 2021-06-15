@@ -22,7 +22,7 @@ t:
 echo:
 	echo $(patsubst %,gen-%,$(TGTS))
 
-test: all
+test: all test-jsonschema
 
 install:
 	. environment.sh
