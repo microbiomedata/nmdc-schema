@@ -219,6 +219,7 @@ classes:
       - salinity
       - salinity_meth
       - samp_collect_device
+      - samp_mat_process
       - samp_store_dur
       - samp_store_loc
       - samp_store_temp     
