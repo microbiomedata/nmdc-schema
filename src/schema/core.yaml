@@ -416,7 +416,14 @@ classes:
       - schema:GeoCoordinates
 
 slots:
-    
+
+  data object type:
+    range: controlled term value
+    description: >-
+      The type of data object
+    examples:
+      - value: metagenome_assembly
+
   language:
     range: language code
     description: >-
