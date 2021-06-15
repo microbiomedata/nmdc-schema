@@ -37,6 +37,9 @@ subsets:
   nucleic acid sequence source: {}
   sequencing: {}
   soil: {}
+  data object subset:
+    description: >-
+      Subset consisting of the data objects that either inputs or outputs of processes or workflows.
 
 types:
 

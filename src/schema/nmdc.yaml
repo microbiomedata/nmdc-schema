@@ -58,10 +58,6 @@ subsets:
     description: >-
       Subset consisting of entities linked to the processing of samples. 
       Currently, this subset consists of study, omics process, and biosample.
-  
-  data object subset:
-    description: >-
-      Subset consisting of the data objects that either inputs or outputs of processes or workflows.
 
 classes:
 
