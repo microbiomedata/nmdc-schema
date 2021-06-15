@@ -12,6 +12,7 @@ Changes to the schema are documented in this file.
   - `websites` slot as attribute of `nmdc:study` (cf. issue 51)
   - `publications` slot as attribute of `nmdc:study` (cf. issue 51)
   - `skos` prefix to `core` and mapping for `alternative names` to `skos:altLabel`
+  - `samp_mat_process` slot as attribute of `nmdc:biosample` (cf. issue 67)
 ### Fixed
   - N/A
 ### Changed 
