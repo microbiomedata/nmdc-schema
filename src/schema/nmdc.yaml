@@ -502,15 +502,6 @@ slots:
     examples:
       - value: metatranscriptome
       - value: metagenome
-      
-  compression type:
-    range: string
-    description: >-
-      If provided, specifies the compression type
-    examples:
-      - value: gzip
-    todos:
-      - consider enum
           
   instrument_name:
     description: >-
