@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-06-11 13:21
+# Generation date: 2021-06-16 13:33
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -77,7 +77,7 @@ RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
 RDFS = CurieNamespace('rdfs', 'http://example.org/UNKNOWN/rdfs/')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
 SIO = CurieNamespace('sio', 'http://semanticscience.org/resource/SIO_')
-SKOS = CurieNamespace('skos', 'http://example.org/UNKNOWN/skos/')
+SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
 WGS = CurieNamespace('wgs', 'http://www.w3.org/2003/01/geo/wgs84_pos')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
 DEFAULT_ = NMDC
@@ -360,7 +360,7 @@ class DataObject(NamedThing):
     description: str = None
     file_size_bytes: Optional[int] = None
     md5_checksum: Optional[str] = None
-    data_object_type: Optional[Union[dict, "ControlledTermValue"]] = None
+    data_object_type: Optional[Union[str, "FileTypeEnum"]] = None
     compression_type: Optional[str] = None
     was_generated_by: Optional[Union[str, ActivityId]] = None
     url: Optional[str] = None
@@ -388,8 +388,8 @@ class DataObject(NamedThing):
         if self.md5_checksum is not None and not isinstance(self.md5_checksum, str):
             self.md5_checksum = str(self.md5_checksum)
 
-        if self.data_object_type is not None and not isinstance(self.data_object_type, ControlledTermValue):
-            self.data_object_type = ControlledTermValue(**self.data_object_type)
+        if self.data_object_type is not None and not isinstance(self.data_object_type, FileTypeEnum):
+            self.data_object_type = FileTypeEnum(self.data_object_type)
 
         if self.compression_type is not None and not isinstance(self.compression_type, str):
             self.compression_type = str(self.compression_type)
@@ -506,6 +506,7 @@ class Biosample(NamedThing):
     salinity: Optional[Union[dict, "QuantityValue"]] = None
     salinity_meth: Optional[Union[dict, "TextValue"]] = None
     samp_collect_device: Optional[Union[dict, "TextValue"]] = None
+    samp_mat_process: Optional[Union[dict, "ControlledTermValue"]] = None
     samp_store_dur: Optional[Union[dict, "TextValue"]] = None
     samp_store_loc: Optional[Union[dict, "TextValue"]] = None
     samp_store_temp: Optional[Union[dict, "QuantityValue"]] = None
@@ -827,6 +828,9 @@ class Biosample(NamedThing):
 
         if self.samp_collect_device is not None and not isinstance(self.samp_collect_device, TextValue):
             self.samp_collect_device = TextValue(**self.samp_collect_device)
+
+        if self.samp_mat_process is not None and not isinstance(self.samp_mat_process, ControlledTermValue):
+            self.samp_mat_process = ControlledTermValue(**self.samp_mat_process)
 
         if self.samp_store_dur is not None and not isinstance(self.samp_store_dur, TextValue):
             self.samp_store_dur = TextValue(**self.samp_store_dur)
@@ -2735,7 +2739,56 @@ class FunctionalAnnotation(YAMLRoot):
 
 
 # Enumerations
+class FileTypeEnum(EnumDefinitionImpl):
 
+    _defn = EnumDefinition(
+        name="FileTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "assembly_contigs.fna",
+                PermissibleValue(text="assembly_contigs.fna",
+                                 description="Final assembly contigs fasta.") )
+        setattr(cls, "assembly_scaffolds.fna",
+                PermissibleValue(text="assembly_scaffolds.fna",
+                                 description="Final assembly scaffolds fasta.") )
+        setattr(cls, "assembly.agp",
+                PermissibleValue(text="assembly.agp",
+                                 description="An AGP format file describes the assembly.") )
+        setattr(cls, "filterStats.txt",
+                PermissibleValue(text="filterStats.txt",
+                                 description="Reads QC summary statistics") )
+        setattr(cls, "filtered.fastq.gz",
+                PermissibleValue(text="filtered.fastq.gz",
+                                 description="Reads QC result fastq (clean data)") )
+        setattr(cls, "mapping_stats.txt",
+                PermissibleValue(text="mapping_stats.txt",
+                                 description="Assembled contigs coverage information") )
+        setattr(cls, "pairedMapped_sorted.bam",
+                PermissibleValue(text="pairedMapped_sorted.bam",
+                                 description="Sorted bam file of reads mapping back to the final assembly.") )
+        setattr(cls, "KO TSV",
+                PermissibleValue(text="KO TSV",
+                                 description="Tab delimited file for KO annotation.") )
+        setattr(cls, "EC TSV",
+                PermissibleValue(text="EC TSV",
+                                 description="Tab delimited file for EC annotation.") )
+        setattr(cls, "Protein FAA",
+                PermissibleValue(text="Protein FAA",
+                                 description="FASTA amino acid file for annotated proteins.") )
+        setattr(cls, "MSGFjobs_MASIC_resultant.tsv",
+                PermissibleValue(text="MSGFjobs_MASIC_resultant.tsv",
+                                 description="Tab delimited file of unfiltered metaproteomics results, both identifications and abundances.") )
+        setattr(cls, "Peptide_Report.tsv",
+                PermissibleValue(text="Peptide_Report.tsv",
+                                 description="Tab delimited file of peptide results filtered to ~5% FDR, including protein and abundance information.") )
+        setattr(cls, "Protein_Report.tsv",
+                PermissibleValue(text="Protein_Report.tsv",
+                                 description="Tab delimited file of protein results derived from ~5% FDR filtered peptide data, including aggregated abundance information.") )
+        setattr(cls, "QC_metrics.tsv",
+                PermissibleValue(text="QC_metrics.tsv",
+                                 description="Tab delimited file of aggregate statistics derived from workflow results.") )
 
 # Slots
 class slots:
@@ -2793,7 +2846,7 @@ slots.omics_type = Slot(uri=NMDC.omics_type, name="omics type", curie=NMDC.curie
                    model_uri=NMDC.omics_type, domain=None, range=Optional[Union[dict, ControlledTermValue]])
 
 slots.data_object_type = Slot(uri=NMDC.data_object_type, name="data object type", curie=NMDC.curie('data_object_type'),
-                   model_uri=NMDC.data_object_type, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+                   model_uri=NMDC.data_object_type, domain=None, range=Optional[Union[str, "FileTypeEnum"]])
 
 slots.compression_type = Slot(uri=NMDC.compression_type, name="compression type", curie=NMDC.curie('compression_type'),
                    model_uri=NMDC.compression_type, domain=None, range=Optional[str])

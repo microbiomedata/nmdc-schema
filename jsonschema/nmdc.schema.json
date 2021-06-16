@@ -487,6 +487,10 @@
           "$ref": "#/definitions/TextValue",
           "description": "The method or device employed for collecting the sample"
         },
+        "samp_mat_process": {
+          "$ref": "#/definitions/ControlledTermValue",
+          "description": "\"Any processing applied to the sample during or after retrieving the sample from environment. This field accepts OBI, for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI\""
+        },
         "samp_store_dur": {
           "$ref": "#/definitions/TextValue",
           "description": "Duration for which the sample was stored"
@@ -789,8 +793,8 @@
           "type": "string"
         },
         "data_object_type": {
-          "$ref": "#/definitions/ControlledTermValue",
-          "description": "The type of data object"
+          "description": "The type of file represented by the data object.",
+          "type": "string"
         },
         "description": {
           "type": "string"
