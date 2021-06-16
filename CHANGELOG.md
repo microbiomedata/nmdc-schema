@@ -1,7 +1,7 @@
 # Change Log
 Changes to the schema are documented in this file.
 
-## [2021.06.11rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.06.11rc1)
+## [2021.06.16rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.06.16rc1)
 ### Added
   - `title` slot as attribute of `nmdc:study` (cf. issue 51)
   - `objective` slot as attribute of `nmdc:study` (cf. issue 51)
