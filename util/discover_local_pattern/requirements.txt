@@ -1,0 +1,5 @@
+biopython
+jupyter
+pandas
+tdda
+black
