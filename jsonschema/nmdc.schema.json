@@ -2090,7 +2090,7 @@
           },
           "type": "array"
         },
-        "principal_investigator_name": {
+        "principal_investigator": {
           "$ref": "#/definitions/PersonValue",
           "description": "represents the PI"
         },
@@ -2282,6 +2282,11 @@
           "type": "string"
         },
         "orcid": {
+          "description": "The ORICD of a person.",
+          "type": "string"
+        },
+        "profile_image_url": {
+          "description": "A url that points to an image of a persion.",
           "type": "string"
         },
         "type": {
@@ -2659,7 +2664,7 @@
           "description": "The scientific objectives associated with the entity. It SHOULD correspond to scientific norms for objectives field in a structured abstract.",
           "type": "string"
         },
-        "principal_investigator_name": {
+        "principal_investigator": {
           "$ref": "#/definitions/PersonValue",
           "description": "represents the PI"
         },
