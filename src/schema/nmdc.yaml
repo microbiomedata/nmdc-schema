@@ -309,7 +309,7 @@ classes:
       - ecosystem_type
       - ecosystem_subtype
       - specific_ecosystem
-      - principal investigator name
+      - principal investigator
       - doi
       - title
       - alternative titles
