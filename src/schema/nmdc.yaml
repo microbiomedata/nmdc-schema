@@ -616,10 +616,9 @@ slots:
       TODO
 
   ## GOLD DATABASE SPECFIC FIELDS
-  principal investigator name:
+  principal investigator:
     aliases:
       - PI
-      - principal investigator
     is_a: attribute
     range: person value
     description: >-
