@@ -9,7 +9,7 @@
       "ecosystem_type": "Soil",
       "ecosystem_subtype": "Wetlands",
       "specific_ecosystem": "Permafrost",
-      "principal_investigator_name": {
+      "principal_investigator": {
         "has_raw_value": "Virginia Rich"
       },
       "doi": {
@@ -26,7 +26,7 @@
       "ecosystem_type": "Soil",
       "ecosystem_subtype": "Unclassified",
       "specific_ecosystem": "Forest Soil",
-      "principal_investigator_name": {
+      "principal_investigator": {
         "has_raw_value": "Jeffrey Blanchard"
       },
       "doi": {
@@ -43,7 +43,7 @@
       "ecosystem_type": "Roots",
       "ecosystem_subtype": "Rhizosphere",
       "specific_ecosystem": "Soil",
-      "principal_investigator_name": {
+      "principal_investigator": {
         "has_raw_value": "Rebecca Neumann"
       },
       "doi": {

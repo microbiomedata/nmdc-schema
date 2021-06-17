@@ -9,7 +9,7 @@
       "ecosystem_type": "Rhizosphere",
       "ecosystem_subtype": "Soil",
       "specific_ecosystem": "Unclassified",
-      "principal_investigator_name": {
+      "principal_investigator": {
         "has_raw_value": "Mary Firestone"
       },
       "doi": {
@@ -26,7 +26,7 @@
       "ecosystem_type": "Bacteria",
       "ecosystem_subtype": "Unclassified",
       "specific_ecosystem": "Unclassified",
-      "principal_investigator_name": {
+      "principal_investigator": {
         "has_raw_value": "Matthias Hess"
       },
       "doi": {
@@ -43,7 +43,7 @@
       "ecosystem_type": "Soil",
       "ecosystem_subtype": "Wetlands",
       "specific_ecosystem": "Permafrost",
-      "principal_investigator_name": {
+      "principal_investigator": {
         "has_raw_value": "Virginia Rich"
       },
       "doi": {
