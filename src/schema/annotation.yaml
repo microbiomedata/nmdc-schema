@@ -169,8 +169,8 @@ classes:
     description: >-
       A set of genes or gene products in which all members are orthologous
     slot_usage:
-        id:Abstract
-            pattern: "^(KEGG.ORTHOLOGY:K\\d{5}$"
+        id:
+            pattern: "^KEGG.ORTHOLOGY:K\\d{5}$"
     id_prefixes:
       - KEGG.ORTHOLOGY  ## KO number
       - EGGNOG
