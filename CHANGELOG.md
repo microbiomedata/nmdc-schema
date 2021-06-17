@@ -4,7 +4,7 @@ Changes to the schema are documented in this file.
 ## [2021.06.17rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.06.16rc7)
 ### Added
   - `profile image url` to hold the url pointing an image of the investigator (cf. issue 19)
-  - descrpition for `orcid` slot.
+  - description for `orcid` slot.
 ### Fixed
   - N/A
 ### Changed 
