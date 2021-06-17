@@ -168,11 +168,11 @@ classes:
     is_a: functional annotation term
     description: >-
       A set of genes or gene products in which all members are orthologous
+    slot_usage:
+        id:Abstract
+            pattern: "^(KEGG.ORTHOLOGY:K\\d{5}$"
     id_prefixes:
       - KEGG.ORTHOLOGY  ## KO number
-        slot_usage:
-          id:
-            pattern: "^(KEGG.ORTHOLOGY:K\\d{5}$"
       - EGGNOG
       - PFAM
       - TIGRFAM
