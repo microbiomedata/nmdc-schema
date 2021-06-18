@@ -3,3 +3,6 @@ jupyter
 pandas
 tdda
 black
+networkx
+matplotlib
+pyyaml
