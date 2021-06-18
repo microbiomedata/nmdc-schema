@@ -168,9 +168,6 @@ classes:
     is_a: functional annotation term
     description: >-
       A set of genes or gene products in which all members are orthologous
-    slot_usage:
-        id:
-            pattern: "^KEGG.ORTHOLOGY:K\\d{5}$"
     id_prefixes:
       - KEGG.ORTHOLOGY  ## KO number
       - EGGNOG
@@ -195,6 +192,8 @@ classes:
       - subject
       - has function
     slot_usage:
+      id:
+        pattern: "KEGG\.ORTHOLOGY:K\d{5,}|EGGNOG:[a-zA-Z]+OG[a-zA-Z0-9]+|PFAM:PF\d{5,}|TIGRFAM:TIGR\d+|SUPFAM:\w+|CATH:[1-6]\.[0-9]+\.[0-9]+\.[0-9]+|PANTHER.FAMILY:PTHR\d{5}(\:SF\d{1,3})?"
       type:
         range: ontology class
         description: >-
