@@ -131,6 +131,7 @@ classes:
       An attribute value representing a person
     slots:
       - orcid
+      - profile image url
     todos:
       - add additional fields e.g for institution
     slot_usage:
@@ -466,9 +467,17 @@ slots:
     inlined: true
     
   orcid:
+    description: >-
+      The ORICD of a person.
     domain: person value
     range: string
 
+  profile image url:
+    description: >-
+      A url that points to an image of a persion.
+    domain: person value
+    range: string
+  
   has input:
     aliases: ['input']
     domain: named thing

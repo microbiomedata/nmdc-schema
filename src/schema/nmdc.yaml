@@ -309,7 +309,7 @@ classes:
       - ecosystem_type
       - ecosystem_subtype
       - specific_ecosystem
-      - principal investigator name
+      - principal investigator
       - doi
       - title
       - alternative titles
@@ -358,7 +358,7 @@ classes:
       - ncbi_project_name
       - omics type
       - part of
-      - principal investigator name
+      - principal investigator
       - processing_institution
       - type  # custom slot that specifies object type
     slot_usage:
@@ -616,10 +616,9 @@ slots:
       TODO
 
   ## GOLD DATABASE SPECFIC FIELDS
-  principal investigator name:
+  principal investigator:
     aliases:
       - PI
-      - principal investigator
     is_a: attribute
     range: person value
     description: >-
