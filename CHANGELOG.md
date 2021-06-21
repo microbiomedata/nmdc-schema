@@ -1,5 +1,36 @@
 # Change Log
 Changes to the schema are documented in this file.
+
+## [2021.06.17rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.06.16rc7)
+### Added
+  - `profile image url` to hold the url pointing an image of the investigator (cf. issue 19)
+  - description for `orcid` slot.
+### Fixed
+  - N/A
+### Changed 
+  - `principal investigator name` to simply be `principal investigator`.
+### Removed
+  - N/A
+
+## [2021.06.16rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.06.16rc1)
+### Added
+  - `title` slot as attribute of `nmdc:study` (cf. issue 51)
+  - `objective` slot as attribute of `nmdc:study` (cf. issue 51)
+  - `alternative titles` slot as attribute of `nmdc:study` (cf. issue 51)
+  - `alternative dscriptiions` slot as attribute of `nmdc:study` (cf. issue 51)
+  - `alternative names` slot as attribute of `nmdc:study` (cf. issue 51)
+  - `keywords` slot as attribute of `nmdc:study` (cf. issue 51)
+  - `websites` slot as attribute of `nmdc:study` (cf. issue 51)
+  - `publications` slot as attribute of `nmdc:study` (cf. issue 51)
+  - `skos` prefix to `core` and mapping for `alternative names` to `skos:altLabel`
+  - `samp_mat_process` slot as attribute of `nmdc:biosample` (cf. issue 67)
+### Fixed
+  - N/A
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
 ## [2021.06.10rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.06.10rc1)
 ### Added
   - `abstract` slot for use with `study` (cf. issue 60)

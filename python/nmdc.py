@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-06-10 12:37
+# Generation date: 2021-06-17 16:51
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -12,20 +12,21 @@
 import dataclasses
 import sys
 import re
+from jsonasobj2 import JsonObj
 from typing import Optional, List, Union, Dict, ClassVar, Any
 from dataclasses import dataclass
-from linkml_model.meta import EnumDefinition, PermissibleValue, PvFormulaOptions
+from linkml_runtime.linkml_model.meta import EnumDefinition, PermissibleValue, PvFormulaOptions
 
-from linkml.utils.slot import Slot
-from linkml.utils.metamodelcore import empty_list, empty_dict, bnode
-from linkml.utils.yamlutils import YAMLRoot, extended_str, extended_float, extended_int
-from linkml.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
-from linkml.utils.formatutils import camelcase, underscore, sfx
-from linkml.utils.enumerations import EnumDefinitionImpl
+from linkml_runtime.utils.slot import Slot
+from linkml_runtime.utils.metamodelcore import empty_list, empty_dict, bnode
+from linkml_runtime.utils.yamlutils import YAMLRoot, extended_str, extended_float, extended_int
+from linkml_runtime.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
+from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
+from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
-from linkml.utils.curienamespace import CurieNamespace
-from linkml.utils.metamodelcore import Bool
-from linkml_model.types import Boolean, Double, Float, Integer, String
+from linkml_runtime.utils.curienamespace import CurieNamespace
+from linkml_runtime.linkml_model.types import Boolean, Double, Float, Integer, String
+from linkml_runtime.utils.metamodelcore import Bool
 
 metamodel_version = "1.7.0"
 
@@ -75,7 +76,8 @@ QUD = CurieNamespace('qud', 'http://qudt.org/1.1/schema/qudt#')
 RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
 RDFS = CurieNamespace('rdfs', 'http://example.org/UNKNOWN/rdfs/')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
-SKOS = CurieNamespace('skos', 'http://example.org/UNKNOWN/skos/')
+SIO = CurieNamespace('sio', 'http://semanticscience.org/resource/SIO_')
+SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
 WGS = CurieNamespace('wgs', 'http://www.w3.org/2003/01/geo/wgs84_pos')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
 DEFAULT_ = NMDC
@@ -260,95 +262,37 @@ class Database(YAMLRoot):
     etl_software_version: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.biosample_set is None:
-            self.biosample_set = []
-        if not isinstance(self.biosample_set, (list, dict)):
-            self.biosample_set = [self.biosample_set]
-        self._normalize_inlined_slot(slot_name="biosample_set", slot_type=Biosample, key_name="id", inlined_as_list=None, keyed=True)
+        self._normalize_inlined_as_dict(slot_name="biosample_set", slot_type=Biosample, key_name="id", keyed=True)
 
-        if self.study_set is None:
-            self.study_set = []
-        if not isinstance(self.study_set, (list, dict)):
-            self.study_set = [self.study_set]
-        self._normalize_inlined_slot(slot_name="study_set", slot_type=Study, key_name="id", inlined_as_list=None, keyed=True)
+        self._normalize_inlined_as_dict(slot_name="study_set", slot_type=Study, key_name="id", keyed=True)
 
-        if self.data_object_set is None:
-            self.data_object_set = []
-        if not isinstance(self.data_object_set, (list, dict)):
-            self.data_object_set = [self.data_object_set]
-        self._normalize_inlined_slot(slot_name="data_object_set", slot_type=DataObject, key_name="id", inlined_as_list=None, keyed=True)
+        self._normalize_inlined_as_dict(slot_name="data_object_set", slot_type=DataObject, key_name="id", keyed=True)
 
-        if self.activity_set is None:
-            self.activity_set = []
-        if not isinstance(self.activity_set, (list, dict)):
-            self.activity_set = [self.activity_set]
-        self._normalize_inlined_slot(slot_name="activity_set", slot_type=WorkflowExecutionActivity, key_name="id", inlined_as_list=None, keyed=True)
+        self._normalize_inlined_as_dict(slot_name="activity_set", slot_type=WorkflowExecutionActivity, key_name="id", keyed=True)
 
-        if self.mags_activity_set is None:
-            self.mags_activity_set = []
-        if not isinstance(self.mags_activity_set, (list, dict)):
-            self.mags_activity_set = [self.mags_activity_set]
-        self._normalize_inlined_slot(slot_name="mags_activity_set", slot_type=MAGsAnalysisActivity, key_name="id", inlined_as_list=None, keyed=True)
+        self._normalize_inlined_as_dict(slot_name="mags_activity_set", slot_type=MAGsAnalysisActivity, key_name="id", keyed=True)
 
-        if self.metabolomics_analysis_activity_set is None:
-            self.metabolomics_analysis_activity_set = []
-        if not isinstance(self.metabolomics_analysis_activity_set, (list, dict)):
-            self.metabolomics_analysis_activity_set = [self.metabolomics_analysis_activity_set]
-        self._normalize_inlined_slot(slot_name="metabolomics_analysis_activity_set", slot_type=MetabolomicsAnalysisActivity, key_name="id", inlined_as_list=None, keyed=True)
+        self._normalize_inlined_as_dict(slot_name="metabolomics_analysis_activity_set", slot_type=MetabolomicsAnalysisActivity, key_name="id", keyed=True)
 
-        if self.metaproteomics_analysis_activity_set is None:
-            self.metaproteomics_analysis_activity_set = []
-        if not isinstance(self.metaproteomics_analysis_activity_set, (list, dict)):
-            self.metaproteomics_analysis_activity_set = [self.metaproteomics_analysis_activity_set]
-        self._normalize_inlined_slot(slot_name="metaproteomics_analysis_activity_set", slot_type=MetaproteomicsAnalysisActivity, key_name="id", inlined_as_list=None, keyed=True)
+        self._normalize_inlined_as_dict(slot_name="metaproteomics_analysis_activity_set", slot_type=MetaproteomicsAnalysisActivity, key_name="id", keyed=True)
 
-        if self.metagenome_annotation_activity_set is None:
-            self.metagenome_annotation_activity_set = []
-        if not isinstance(self.metagenome_annotation_activity_set, (list, dict)):
-            self.metagenome_annotation_activity_set = [self.metagenome_annotation_activity_set]
-        self._normalize_inlined_slot(slot_name="metagenome_annotation_activity_set", slot_type=MetagenomeAnnotationActivity, key_name="id", inlined_as_list=None, keyed=True)
+        self._normalize_inlined_as_dict(slot_name="metagenome_annotation_activity_set", slot_type=MetagenomeAnnotationActivity, key_name="id", keyed=True)
 
-        if self.metagenome_assembly_set is None:
-            self.metagenome_assembly_set = []
-        if not isinstance(self.metagenome_assembly_set, (list, dict)):
-            self.metagenome_assembly_set = [self.metagenome_assembly_set]
-        self._normalize_inlined_slot(slot_name="metagenome_assembly_set", slot_type=MetagenomeAssembly, key_name="id", inlined_as_list=None, keyed=True)
+        self._normalize_inlined_as_dict(slot_name="metagenome_assembly_set", slot_type=MetagenomeAssembly, key_name="id", keyed=True)
 
-        if self.read_QC_analysis_activity_set is None:
-            self.read_QC_analysis_activity_set = []
-        if not isinstance(self.read_QC_analysis_activity_set, (list, dict)):
-            self.read_QC_analysis_activity_set = [self.read_QC_analysis_activity_set]
-        self._normalize_inlined_slot(slot_name="read_QC_analysis_activity_set", slot_type=ReadQCAnalysisActivity, key_name="id", inlined_as_list=None, keyed=True)
+        self._normalize_inlined_as_dict(slot_name="read_QC_analysis_activity_set", slot_type=ReadQCAnalysisActivity, key_name="id", keyed=True)
 
-        if self.read_based_analysis_activity_set is None:
-            self.read_based_analysis_activity_set = []
-        if not isinstance(self.read_based_analysis_activity_set, (list, dict)):
-            self.read_based_analysis_activity_set = [self.read_based_analysis_activity_set]
-        self._normalize_inlined_slot(slot_name="read_based_analysis_activity_set", slot_type=ReadBasedAnalysisActivity, key_name="id", inlined_as_list=None, keyed=True)
+        self._normalize_inlined_as_dict(slot_name="read_based_analysis_activity_set", slot_type=ReadBasedAnalysisActivity, key_name="id", keyed=True)
 
-        if self.nom_analysis_activity_set is None:
-            self.nom_analysis_activity_set = []
-        if not isinstance(self.nom_analysis_activity_set, (list, dict)):
-            self.nom_analysis_activity_set = [self.nom_analysis_activity_set]
-        self._normalize_inlined_slot(slot_name="nom_analysis_activity_set", slot_type=NomAnalysisActivity, key_name="id", inlined_as_list=None, keyed=True)
+        self._normalize_inlined_as_dict(slot_name="nom_analysis_activity_set", slot_type=NomAnalysisActivity, key_name="id", keyed=True)
 
-        if self.omics_processing_set is None:
-            self.omics_processing_set = []
-        if not isinstance(self.omics_processing_set, (list, dict)):
-            self.omics_processing_set = [self.omics_processing_set]
-        self._normalize_inlined_slot(slot_name="omics_processing_set", slot_type=OmicsProcessing, key_name="id", inlined_as_list=None, keyed=True)
+        self._normalize_inlined_as_dict(slot_name="omics_processing_set", slot_type=OmicsProcessing, key_name="id", keyed=True)
 
-        if self.functional_annotation_set is None:
-            self.functional_annotation_set = []
         if not isinstance(self.functional_annotation_set, list):
-            self.functional_annotation_set = [self.functional_annotation_set]
+            self.functional_annotation_set = [self.functional_annotation_set] if self.functional_annotation_set is not None else []
         self.functional_annotation_set = [v if isinstance(v, FunctionalAnnotation) else FunctionalAnnotation(**v) for v in self.functional_annotation_set]
 
-        if self.genome_feature_set is None:
-            self.genome_feature_set = []
-        if not isinstance(self.genome_feature_set, list):
-            self.genome_feature_set = [self.genome_feature_set]
-        self._normalize_inlined_slot(slot_name="genome_feature_set", slot_type=GenomeFeature, key_name="seqid", inlined_as_list=True, keyed=False)
+        self._normalize_inlined_as_dict(slot_name="genome_feature_set", slot_type=GenomeFeature, key_name="seqid", keyed=False)
 
         if self.nmdc_schema_version is not None and not isinstance(self.nmdc_schema_version, str):
             self.nmdc_schema_version = str(self.nmdc_schema_version)
@@ -380,8 +324,8 @@ class NamedThing(YAMLRoot):
     alternate_identifiers: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, NamedThingId):
             self.id = NamedThingId(self.id)
 
@@ -391,10 +335,8 @@ class NamedThing(YAMLRoot):
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if self.alternate_identifiers is None:
-            self.alternate_identifiers = []
         if not isinstance(self.alternate_identifiers, list):
-            self.alternate_identifiers = [self.alternate_identifiers]
+            self.alternate_identifiers = [self.alternate_identifiers] if self.alternate_identifiers is not None else []
         self.alternate_identifiers = [v if isinstance(v, str) else str(v) for v in self.alternate_identifiers]
 
         super().__post_init__(**kwargs)
@@ -418,25 +360,25 @@ class DataObject(NamedThing):
     description: str = None
     file_size_bytes: Optional[int] = None
     md5_checksum: Optional[str] = None
-    data_object_type: Optional[Union[dict, "ControlledTermValue"]] = None
+    data_object_type: Optional[Union[str, "FileTypeEnum"]] = None
     compression_type: Optional[str] = None
     was_generated_by: Optional[Union[str, ActivityId]] = None
     url: Optional[str] = None
     type: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, DataObjectId):
             self.id = DataObjectId(self.id)
 
-        if self.name is None:
-            raise ValueError("name must be supplied")
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
         if not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.description is None:
-            raise ValueError("description must be supplied")
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
         if not isinstance(self.description, str):
             self.description = str(self.description)
 
@@ -446,8 +388,8 @@ class DataObject(NamedThing):
         if self.md5_checksum is not None and not isinstance(self.md5_checksum, str):
             self.md5_checksum = str(self.md5_checksum)
 
-        if self.data_object_type is not None and not isinstance(self.data_object_type, ControlledTermValue):
-            self.data_object_type = ControlledTermValue(**self.data_object_type)
+        if self.data_object_type is not None and not isinstance(self.data_object_type, FileTypeEnum):
+            self.data_object_type = FileTypeEnum(self.data_object_type)
 
         if self.compression_type is not None and not isinstance(self.compression_type, str):
             self.compression_type = str(self.compression_type)
@@ -564,6 +506,7 @@ class Biosample(NamedThing):
     salinity: Optional[Union[dict, "QuantityValue"]] = None
     salinity_meth: Optional[Union[dict, "TextValue"]] = None
     samp_collect_device: Optional[Union[dict, "TextValue"]] = None
+    samp_mat_process: Optional[Union[dict, "ControlledTermValue"]] = None
     samp_store_dur: Optional[Union[dict, "TextValue"]] = None
     samp_store_loc: Optional[Union[dict, "TextValue"]] = None
     samp_store_temp: Optional[Union[dict, "QuantityValue"]] = None
@@ -617,23 +560,23 @@ class Biosample(NamedThing):
     part_of: Optional[Union[Union[str, StudyId], List[Union[str, StudyId]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, BiosampleId):
             self.id = BiosampleId(self.id)
 
-        if self.env_broad_scale is None:
-            raise ValueError("env_broad_scale must be supplied")
+        if self._is_empty(self.env_broad_scale):
+            self.MissingRequiredField("env_broad_scale")
         if not isinstance(self.env_broad_scale, ControlledTermValue):
             self.env_broad_scale = ControlledTermValue(**self.env_broad_scale)
 
-        if self.env_local_scale is None:
-            raise ValueError("env_local_scale must be supplied")
+        if self._is_empty(self.env_local_scale):
+            self.MissingRequiredField("env_local_scale")
         if not isinstance(self.env_local_scale, ControlledTermValue):
             self.env_local_scale = ControlledTermValue(**self.env_local_scale)
 
-        if self.env_medium is None:
-            raise ValueError("env_medium must be supplied")
+        if self._is_empty(self.env_medium):
+            self.MissingRequiredField("env_medium")
         if not isinstance(self.env_medium, ControlledTermValue):
             self.env_medium = ControlledTermValue(**self.env_medium)
 
@@ -886,6 +829,9 @@ class Biosample(NamedThing):
         if self.samp_collect_device is not None and not isinstance(self.samp_collect_device, TextValue):
             self.samp_collect_device = TextValue(**self.samp_collect_device)
 
+        if self.samp_mat_process is not None and not isinstance(self.samp_mat_process, ControlledTermValue):
+            self.samp_mat_process = ControlledTermValue(**self.samp_mat_process)
+
         if self.samp_store_dur is not None and not isinstance(self.samp_store_dur, TextValue):
             self.samp_store_dur = TextValue(**self.samp_store_dur)
 
@@ -1036,10 +982,8 @@ class Biosample(NamedThing):
         if self.subsurface_depth is not None and not isinstance(self.subsurface_depth, QuantityValue):
             self.subsurface_depth = QuantityValue(**self.subsurface_depth)
 
-        if self.part_of is None:
-            self.part_of = []
         if not isinstance(self.part_of, list):
-            self.part_of = [self.part_of]
+            self.part_of = [self.part_of] if self.part_of is not None else []
         self.part_of = [v if isinstance(v, StudyId) else StudyId(v) for v in self.part_of]
 
         super().__post_init__(**kwargs)
@@ -1064,14 +1008,21 @@ class Study(NamedThing):
     ecosystem_type: Optional[str] = None
     ecosystem_subtype: Optional[str] = None
     specific_ecosystem: Optional[str] = None
-    principal_investigator_name: Optional[Union[dict, "PersonValue"]] = None
+    principal_investigator: Optional[Union[dict, "PersonValue"]] = None
     doi: Optional[Union[dict, "AttributeValue"]] = None
+    title: Optional[str] = None
+    alternative_titles: Optional[Union[str, List[str]]] = empty_list()
+    alternative_descriptions: Optional[Union[str, List[str]]] = empty_list()
+    alternative_names: Optional[Union[str, List[str]]] = empty_list()
     abstract: Optional[str] = None
+    objective: Optional[str] = None
+    websites: Optional[Union[str, List[str]]] = empty_list()
+    publications: Optional[Union[str, List[str]]] = empty_list()
     type: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, StudyId):
             self.id = StudyId(self.id)
 
@@ -1090,14 +1041,40 @@ class Study(NamedThing):
         if self.specific_ecosystem is not None and not isinstance(self.specific_ecosystem, str):
             self.specific_ecosystem = str(self.specific_ecosystem)
 
-        if self.principal_investigator_name is not None and not isinstance(self.principal_investigator_name, PersonValue):
-            self.principal_investigator_name = PersonValue(**self.principal_investigator_name)
+        if self.principal_investigator is not None and not isinstance(self.principal_investigator, PersonValue):
+            self.principal_investigator = PersonValue(**self.principal_investigator)
 
         if self.doi is not None and not isinstance(self.doi, AttributeValue):
             self.doi = AttributeValue(**self.doi)
 
+        if self.title is not None and not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if not isinstance(self.alternative_titles, list):
+            self.alternative_titles = [self.alternative_titles] if self.alternative_titles is not None else []
+        self.alternative_titles = [v if isinstance(v, str) else str(v) for v in self.alternative_titles]
+
+        if not isinstance(self.alternative_descriptions, list):
+            self.alternative_descriptions = [self.alternative_descriptions] if self.alternative_descriptions is not None else []
+        self.alternative_descriptions = [v if isinstance(v, str) else str(v) for v in self.alternative_descriptions]
+
+        if not isinstance(self.alternative_names, list):
+            self.alternative_names = [self.alternative_names] if self.alternative_names is not None else []
+        self.alternative_names = [v if isinstance(v, str) else str(v) for v in self.alternative_names]
+
         if self.abstract is not None and not isinstance(self.abstract, str):
             self.abstract = str(self.abstract)
+
+        if self.objective is not None and not isinstance(self.objective, str):
+            self.objective = str(self.objective)
+
+        if not isinstance(self.websites, list):
+            self.websites = [self.websites] if self.websites is not None else []
+        self.websites = [v if isinstance(v, str) else str(v) for v in self.websites]
+
+        if not isinstance(self.publications, list):
+            self.publications = [self.publications] if self.publications is not None else []
+        self.publications = [v if isinstance(v, str) else str(v) for v in self.publications]
 
         if self.type is not None and not isinstance(self.type, str):
             self.type = str(self.type)
@@ -1122,15 +1099,13 @@ class BiosampleProcessing(NamedThing):
     has_input: Optional[Union[Union[str, BiosampleId], List[Union[str, BiosampleId]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, BiosampleProcessingId):
             self.id = BiosampleProcessingId(self.id)
 
-        if self.has_input is None:
-            self.has_input = []
         if not isinstance(self.has_input, list):
-            self.has_input = [self.has_input]
+            self.has_input = [self.has_input] if self.has_input is not None else []
         self.has_input = [v if isinstance(v, BiosampleId) else BiosampleId(v) for v in self.has_input]
 
         super().__post_init__(**kwargs)
@@ -1157,38 +1132,32 @@ class OmicsProcessing(BiosampleProcessing):
     instrument_name: Optional[str] = None
     ncbi_project_name: Optional[str] = None
     omics_type: Optional[Union[dict, "ControlledTermValue"]] = None
-    principal_investigator_name: Optional[Union[dict, "PersonValue"]] = None
+    principal_investigator: Optional[Union[dict, "PersonValue"]] = None
     processing_institution: Optional[str] = None
     type: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, OmicsProcessingId):
             self.id = OmicsProcessingId(self.id)
 
-        if self.has_output is None:
-            raise ValueError("has_output must be supplied")
-        elif not isinstance(self.has_output, list):
-            self.has_output = [self.has_output]
-        elif len(self.has_output) == 0:
-            raise ValueError(f"has_output must be a non-empty list")
+        if self._is_empty(self.has_output):
+            self.MissingRequiredField("has_output")
+        if not isinstance(self.has_output, list):
+            self.has_output = [self.has_output] if self.has_output is not None else []
         self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
 
-        if self.part_of is None:
-            raise ValueError("part_of must be supplied")
-        elif not isinstance(self.part_of, list):
-            self.part_of = [self.part_of]
-        elif len(self.part_of) == 0:
-            raise ValueError(f"part_of must be a non-empty list")
+        if self._is_empty(self.part_of):
+            self.MissingRequiredField("part_of")
+        if not isinstance(self.part_of, list):
+            self.part_of = [self.part_of] if self.part_of is not None else []
         self.part_of = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.part_of]
 
-        if self.has_input is None:
-            raise ValueError("has_input must be supplied")
-        elif not isinstance(self.has_input, list):
-            self.has_input = [self.has_input]
-        elif len(self.has_input) == 0:
-            raise ValueError(f"has_input must be a non-empty list")
+        if self._is_empty(self.has_input):
+            self.MissingRequiredField("has_input")
+        if not isinstance(self.has_input, list):
+            self.has_input = [self.has_input] if self.has_input is not None else []
         self.has_input = [v if isinstance(v, BiosampleId) else BiosampleId(v) for v in self.has_input]
 
         if self.add_date is not None and not isinstance(self.add_date, str):
@@ -1197,10 +1166,8 @@ class OmicsProcessing(BiosampleProcessing):
         if self.mod_date is not None and not isinstance(self.mod_date, str):
             self.mod_date = str(self.mod_date)
 
-        if self.has_input is None:
-            self.has_input = []
         if not isinstance(self.has_input, list):
-            self.has_input = [self.has_input]
+            self.has_input = [self.has_input] if self.has_input is not None else []
         self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
 
         if self.instrument_name is not None and not isinstance(self.instrument_name, str):
@@ -1212,8 +1179,8 @@ class OmicsProcessing(BiosampleProcessing):
         if self.omics_type is not None and not isinstance(self.omics_type, ControlledTermValue):
             self.omics_type = ControlledTermValue(**self.omics_type)
 
-        if self.principal_investigator_name is not None and not isinstance(self.principal_investigator_name, PersonValue):
-            self.principal_investigator_name = PersonValue(**self.principal_investigator_name)
+        if self.principal_investigator is not None and not isinstance(self.principal_investigator, PersonValue):
+            self.principal_investigator = PersonValue(**self.principal_investigator)
 
         if self.processing_institution is not None and not isinstance(self.processing_institution, str):
             self.processing_institution = str(self.processing_institution)
@@ -1236,8 +1203,8 @@ class OntologyClass(NamedThing):
     id: Union[str, OntologyClassId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, OntologyClassId):
             self.id = OntologyClassId(self.id)
 
@@ -1256,8 +1223,8 @@ class EnvironmentalMaterialTerm(OntologyClass):
     id: Union[str, EnvironmentalMaterialTermId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, EnvironmentalMaterialTermId):
             self.id = EnvironmentalMaterialTermId(self.id)
 
@@ -1336,11 +1303,15 @@ class PersonValue(AttributeValue):
     class_model_uri: ClassVar[URIRef] = NMDC.PersonValue
 
     orcid: Optional[str] = None
+    profile_image_url: Optional[str] = None
     has_raw_value: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.orcid is not None and not isinstance(self.orcid, str):
             self.orcid = str(self.orcid)
+
+        if self.profile_image_url is not None and not isinstance(self.profile_image_url, str):
+            self.profile_image_url = str(self.profile_image_url)
 
         if self.has_raw_value is not None and not isinstance(self.has_raw_value, str):
             self.has_raw_value = str(self.has_raw_value)
@@ -1363,8 +1334,8 @@ class Person(NamedThing):
     id: Union[str, PersonId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, PersonId):
             self.id = PersonId(self.id)
 
@@ -1472,8 +1443,8 @@ class Instrument(NamedThing):
     id: Union[str, InstrumentId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, InstrumentId):
             self.id = InstrumentId(self.id)
 
@@ -1503,10 +1474,8 @@ class MetaboliteQuantification(YAMLRoot):
         if self.highest_similarity_score is not None and not isinstance(self.highest_similarity_score, float):
             self.highest_similarity_score = float(self.highest_similarity_score)
 
-        if self.alternate_identifiers is None:
-            self.alternate_identifiers = []
         if not isinstance(self.alternate_identifiers, list):
-            self.alternate_identifiers = [self.alternate_identifiers]
+            self.alternate_identifiers = [self.alternate_identifiers] if self.alternate_identifiers is not None else []
         self.alternate_identifiers = [v if isinstance(v, str) else str(v) for v in self.alternate_identifiers]
 
         super().__post_init__(**kwargs)
@@ -1538,10 +1507,8 @@ class PeptideQuantification(YAMLRoot):
         if self.best_protein is not None and not isinstance(self.best_protein, GeneProductId):
             self.best_protein = GeneProductId(self.best_protein)
 
-        if self.all_proteins is None:
-            self.all_proteins = []
         if not isinstance(self.all_proteins, list):
-            self.all_proteins = [self.all_proteins]
+            self.all_proteins = [self.all_proteins] if self.all_proteins is not None else []
         self.all_proteins = [v if isinstance(v, GeneProductId) else GeneProductId(v) for v in self.all_proteins]
 
         if self.min_q_value is not None and not isinstance(self.min_q_value, float):
@@ -1578,10 +1545,8 @@ class ProteinQuantification(YAMLRoot):
         if self.best_protein is not None and not isinstance(self.best_protein, GeneProductId):
             self.best_protein = GeneProductId(self.best_protein)
 
-        if self.all_proteins is None:
-            self.all_proteins = []
         if not isinstance(self.all_proteins, list):
-            self.all_proteins = [self.all_proteins]
+            self.all_proteins = [self.all_proteins] if self.all_proteins is not None else []
         self.all_proteins = [v if isinstance(v, GeneProductId) else GeneProductId(v) for v in self.all_proteins]
 
         if self.peptide_sequence_count is not None and not isinstance(self.peptide_sequence_count, int):
@@ -1616,8 +1581,8 @@ class ChemicalEntity(OntologyClass):
     chemical_formula: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, ChemicalEntityId):
             self.id = ChemicalEntityId(self.id)
 
@@ -1627,10 +1592,8 @@ class ChemicalEntity(OntologyClass):
         if self.inchi_key is not None and not isinstance(self.inchi_key, str):
             self.inchi_key = str(self.inchi_key)
 
-        if self.smiles is None:
-            self.smiles = []
         if not isinstance(self.smiles, list):
-            self.smiles = [self.smiles]
+            self.smiles = [self.smiles] if self.smiles is not None else []
         self.smiles = [v if isinstance(v, str) else str(v) for v in self.smiles]
 
         if self.chemical_formula is not None and not isinstance(self.chemical_formula, str):
@@ -1654,8 +1617,8 @@ class GeneProduct(NamedThing):
     id: Union[str, GeneProductId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, GeneProductId):
             self.id = GeneProductId(self.id)
 
@@ -1820,8 +1783,8 @@ class Activity(YAMLRoot):
     used: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, ActivityId):
             self.id = ActivityId(self.id)
 
@@ -1895,54 +1858,50 @@ class WorkflowExecutionActivity(Activity):
     was_associated_with: Optional[Union[str, WorkflowExecutionActivityId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, WorkflowExecutionActivityId):
             self.id = WorkflowExecutionActivityId(self.id)
 
-        if self.execution_resource is None:
-            raise ValueError("execution_resource must be supplied")
+        if self._is_empty(self.execution_resource):
+            self.MissingRequiredField("execution_resource")
         if not isinstance(self.execution_resource, str):
             self.execution_resource = str(self.execution_resource)
 
-        if self.git_url is None:
-            raise ValueError("git_url must be supplied")
+        if self._is_empty(self.git_url):
+            self.MissingRequiredField("git_url")
         if not isinstance(self.git_url, str):
             self.git_url = str(self.git_url)
 
-        if self.has_input is None:
-            raise ValueError("has_input must be supplied")
-        elif not isinstance(self.has_input, list):
-            self.has_input = [self.has_input]
-        elif len(self.has_input) == 0:
-            raise ValueError(f"has_input must be a non-empty list")
+        if self._is_empty(self.has_input):
+            self.MissingRequiredField("has_input")
+        if not isinstance(self.has_input, list):
+            self.has_input = [self.has_input] if self.has_input is not None else []
         self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
 
-        if self.has_output is None:
-            raise ValueError("has_output must be supplied")
-        elif not isinstance(self.has_output, list):
-            self.has_output = [self.has_output]
-        elif len(self.has_output) == 0:
-            raise ValueError(f"has_output must be a non-empty list")
+        if self._is_empty(self.has_output):
+            self.MissingRequiredField("has_output")
+        if not isinstance(self.has_output, list):
+            self.has_output = [self.has_output] if self.has_output is not None else []
         self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
 
-        if self.type is None:
-            raise ValueError("type must be supplied")
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
         if not isinstance(self.type, str):
             self.type = str(self.type)
 
-        if self.started_at_time is None:
-            raise ValueError("started_at_time must be supplied")
+        if self._is_empty(self.started_at_time):
+            self.MissingRequiredField("started_at_time")
         if not isinstance(self.started_at_time, str):
             self.started_at_time = str(self.started_at_time)
 
-        if self.ended_at_time is None:
-            raise ValueError("ended_at_time must be supplied")
+        if self._is_empty(self.ended_at_time):
+            self.MissingRequiredField("ended_at_time")
         if not isinstance(self.ended_at_time, str):
             self.ended_at_time = str(self.ended_at_time)
 
-        if self.was_informed_by is None:
-            raise ValueError("was_informed_by must be supplied")
+        if self._is_empty(self.was_informed_by):
+            self.MissingRequiredField("was_informed_by")
         if not isinstance(self.was_informed_by, ActivityId):
             self.was_informed_by = ActivityId(self.was_informed_by)
 
@@ -1999,8 +1958,8 @@ class MetagenomeAssembly(WorkflowExecutionActivity):
     num_aligned_reads: Optional[float] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, MetagenomeAssemblyId):
             self.id = MetagenomeAssemblyId(self.id)
 
@@ -2135,8 +2094,8 @@ class MetatranscriptomeAssembly(WorkflowExecutionActivity):
     num_aligned_reads: Optional[float] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, MetatranscriptomeAssemblyId):
             self.id = MetatranscriptomeAssemblyId(self.id)
 
@@ -2244,8 +2203,8 @@ class MetagenomeAnnotationActivity(WorkflowExecutionActivity):
     was_informed_by: Union[str, ActivityId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, MetagenomeAnnotationActivityId):
             self.id = MetagenomeAnnotationActivityId(self.id)
 
@@ -2272,8 +2231,8 @@ class MetatranscriptomeAnnotationActivity(WorkflowExecutionActivity):
     was_informed_by: Union[str, ActivityId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, MetatranscriptomeAnnotationActivityId):
             self.id = MetatranscriptomeAnnotationActivityId(self.id)
 
@@ -2306,8 +2265,8 @@ class MAGsAnalysisActivity(WorkflowExecutionActivity):
     mags_list: Optional[Union[Union[dict, MAGBin], List[Union[dict, MAGBin]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, MAGsAnalysisActivityId):
             self.id = MAGsAnalysisActivityId(self.id)
 
@@ -2326,10 +2285,8 @@ class MAGsAnalysisActivity(WorkflowExecutionActivity):
         if self.unbinned_contig_num is not None and not isinstance(self.unbinned_contig_num, int):
             self.unbinned_contig_num = int(self.unbinned_contig_num)
 
-        if self.mags_list is None:
-            self.mags_list = []
         if not isinstance(self.mags_list, list):
-            self.mags_list = [self.mags_list]
+            self.mags_list = [self.mags_list] if self.mags_list is not None else []
         self.mags_list = [v if isinstance(v, MAGBin) else MAGBin(**v) for v in self.mags_list]
 
         super().__post_init__(**kwargs)
@@ -2361,25 +2318,21 @@ class ReadQCAnalysisActivity(WorkflowExecutionActivity):
     output_read_bases: Optional[float] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, ReadQCAnalysisActivityId):
             self.id = ReadQCAnalysisActivityId(self.id)
 
-        if self.has_input is None:
-            raise ValueError("has_input must be supplied")
-        elif not isinstance(self.has_input, list):
-            self.has_input = [self.has_input]
-        elif len(self.has_input) == 0:
-            raise ValueError(f"has_input must be a non-empty list")
+        if self._is_empty(self.has_input):
+            self.MissingRequiredField("has_input")
+        if not isinstance(self.has_input, list):
+            self.has_input = [self.has_input] if self.has_input is not None else []
         self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
 
-        if self.has_output is None:
-            raise ValueError("has_output must be supplied")
-        elif not isinstance(self.has_output, list):
-            self.has_output = [self.has_output]
-        elif len(self.has_output) == 0:
-            raise ValueError(f"has_output must be a non-empty list")
+        if self._is_empty(self.has_output):
+            self.MissingRequiredField("has_output")
+        if not isinstance(self.has_output, list):
+            self.has_output = [self.has_output] if self.has_output is not None else []
         self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
 
         if self.input_read_count is not None and not isinstance(self.input_read_count, float):
@@ -2423,8 +2376,8 @@ class ReadBasedAnalysisActivity(WorkflowExecutionActivity):
     was_informed_by: Union[str, ActivityId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, ReadBasedAnalysisActivityId):
             self.id = ReadBasedAnalysisActivityId(self.id)
 
@@ -2454,18 +2407,16 @@ class MetabolomicsAnalysisActivity(WorkflowExecutionActivity):
     has_calibration: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, MetabolomicsAnalysisActivityId):
             self.id = MetabolomicsAnalysisActivityId(self.id)
 
         if self.used is not None and not isinstance(self.used, InstrumentId):
             self.used = InstrumentId(self.used)
 
-        if self.has_metabolite_quantifications is None:
-            self.has_metabolite_quantifications = []
         if not isinstance(self.has_metabolite_quantifications, list):
-            self.has_metabolite_quantifications = [self.has_metabolite_quantifications]
+            self.has_metabolite_quantifications = [self.has_metabolite_quantifications] if self.has_metabolite_quantifications is not None else []
         self.has_metabolite_quantifications = [v if isinstance(v, MetaboliteQuantification) else MetaboliteQuantification(**v) for v in self.has_metabolite_quantifications]
 
         if self.has_calibration is not None and not isinstance(self.has_calibration, str):
@@ -2496,18 +2447,16 @@ class MetaproteomicsAnalysisActivity(WorkflowExecutionActivity):
     has_peptide_quantifications: Optional[Union[Union[dict, PeptideQuantification], List[Union[dict, PeptideQuantification]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, MetaproteomicsAnalysisActivityId):
             self.id = MetaproteomicsAnalysisActivityId(self.id)
 
         if self.used is not None and not isinstance(self.used, InstrumentId):
             self.used = InstrumentId(self.used)
 
-        if self.has_peptide_quantifications is None:
-            self.has_peptide_quantifications = []
         if not isinstance(self.has_peptide_quantifications, list):
-            self.has_peptide_quantifications = [self.has_peptide_quantifications]
+            self.has_peptide_quantifications = [self.has_peptide_quantifications] if self.has_peptide_quantifications is not None else []
         self.has_peptide_quantifications = [v if isinstance(v, PeptideQuantification) else PeptideQuantification(**v) for v in self.has_peptide_quantifications]
 
         super().__post_init__(**kwargs)
@@ -2535,8 +2484,8 @@ class NomAnalysisActivity(WorkflowExecutionActivity):
     has_calibration: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, NomAnalysisActivityId):
             self.id = NomAnalysisActivityId(self.id)
 
@@ -2571,18 +2520,18 @@ class GenomeFeature(YAMLRoot):
     feature_type: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.seqid is None:
-            raise ValueError("seqid must be supplied")
+        if self._is_empty(self.seqid):
+            self.MissingRequiredField("seqid")
         if not isinstance(self.seqid, str):
             self.seqid = str(self.seqid)
 
-        if self.start is None:
-            raise ValueError("start must be supplied")
+        if self._is_empty(self.start):
+            self.MissingRequiredField("start")
         if not isinstance(self.start, int):
             self.start = int(self.start)
 
-        if self.end is None:
-            raise ValueError("end must be supplied")
+        if self._is_empty(self.end):
+            self.MissingRequiredField("end")
         if not isinstance(self.end, int):
             self.end = int(self.end)
 
@@ -2635,15 +2584,13 @@ class Pathway(FunctionalAnnotationTerm):
     has_part: Optional[Union[Union[str, ReactionId], List[Union[str, ReactionId]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, PathwayId):
             self.id = PathwayId(self.id)
 
-        if self.has_part is None:
-            self.has_part = []
         if not isinstance(self.has_part, list):
-            self.has_part = [self.has_part]
+            self.has_part = [self.has_part] if self.has_part is not None else []
         self.has_part = [v if isinstance(v, ReactionId) else ReactionId(v) for v in self.has_part]
 
         super().__post_init__(**kwargs)
@@ -2674,21 +2621,17 @@ class Reaction(FunctionalAnnotationTerm):
     is_fully_characterized: Optional[Union[bool, Bool]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, ReactionId):
             self.id = ReactionId(self.id)
 
-        if self.left_participants is None:
-            self.left_participants = []
         if not isinstance(self.left_participants, list):
-            self.left_participants = [self.left_participants]
+            self.left_participants = [self.left_participants] if self.left_participants is not None else []
         self.left_participants = [v if isinstance(v, ReactionParticipant) else ReactionParticipant(**v) for v in self.left_participants]
 
-        if self.right_participants is None:
-            self.right_participants = []
         if not isinstance(self.right_participants, list):
-            self.right_participants = [self.right_participants]
+            self.right_participants = [self.right_participants] if self.right_participants is not None else []
         self.right_participants = [v if isinstance(v, ReactionParticipant) else ReactionParticipant(**v) for v in self.right_participants]
 
         if self.direction is not None and not isinstance(self.direction, str):
@@ -2755,8 +2698,8 @@ class OrthologyGroup(FunctionalAnnotationTerm):
     id: Union[str, OrthologyGroupId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.id is None:
-            raise ValueError("id must be supplied")
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
         if not isinstance(self.id, OrthologyGroupId):
             self.id = OrthologyGroupId(self.id)
 
@@ -2800,7 +2743,56 @@ class FunctionalAnnotation(YAMLRoot):
 
 
 # Enumerations
+class FileTypeEnum(EnumDefinitionImpl):
 
+    _defn = EnumDefinition(
+        name="FileTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "assembly_contigs.fna",
+                PermissibleValue(text="assembly_contigs.fna",
+                                 description="Final assembly contigs fasta.") )
+        setattr(cls, "assembly_scaffolds.fna",
+                PermissibleValue(text="assembly_scaffolds.fna",
+                                 description="Final assembly scaffolds fasta.") )
+        setattr(cls, "assembly.agp",
+                PermissibleValue(text="assembly.agp",
+                                 description="An AGP format file describes the assembly.") )
+        setattr(cls, "filterStats.txt",
+                PermissibleValue(text="filterStats.txt",
+                                 description="Reads QC summary statistics") )
+        setattr(cls, "filtered.fastq.gz",
+                PermissibleValue(text="filtered.fastq.gz",
+                                 description="Reads QC result fastq (clean data)") )
+        setattr(cls, "mapping_stats.txt",
+                PermissibleValue(text="mapping_stats.txt",
+                                 description="Assembled contigs coverage information") )
+        setattr(cls, "pairedMapped_sorted.bam",
+                PermissibleValue(text="pairedMapped_sorted.bam",
+                                 description="Sorted bam file of reads mapping back to the final assembly.") )
+        setattr(cls, "KO TSV",
+                PermissibleValue(text="KO TSV",
+                                 description="Tab delimited file for KO annotation.") )
+        setattr(cls, "EC TSV",
+                PermissibleValue(text="EC TSV",
+                                 description="Tab delimited file for EC annotation.") )
+        setattr(cls, "Protein FAA",
+                PermissibleValue(text="Protein FAA",
+                                 description="FASTA amino acid file for annotated proteins.") )
+        setattr(cls, "MSGFjobs_MASIC_resultant.tsv",
+                PermissibleValue(text="MSGFjobs_MASIC_resultant.tsv",
+                                 description="Tab delimited file of unfiltered metaproteomics results, both identifications and abundances.") )
+        setattr(cls, "Peptide_Report.tsv",
+                PermissibleValue(text="Peptide_Report.tsv",
+                                 description="Tab delimited file of peptide results filtered to ~5% FDR, including protein and abundance information.") )
+        setattr(cls, "Protein_Report.tsv",
+                PermissibleValue(text="Protein_Report.tsv",
+                                 description="Tab delimited file of protein results derived from ~5% FDR filtered peptide data, including aggregated abundance information.") )
+        setattr(cls, "QC_metrics.tsv",
+                PermissibleValue(text="QC_metrics.tsv",
+                                 description="Tab delimited file of aggregate statistics derived from workflow results.") )
 
 # Slots
 class slots:
@@ -2858,7 +2850,7 @@ slots.omics_type = Slot(uri=NMDC.omics_type, name="omics type", curie=NMDC.curie
                    model_uri=NMDC.omics_type, domain=None, range=Optional[Union[dict, ControlledTermValue]])
 
 slots.data_object_type = Slot(uri=NMDC.data_object_type, name="data object type", curie=NMDC.curie('data_object_type'),
-                   model_uri=NMDC.data_object_type, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+                   model_uri=NMDC.data_object_type, domain=None, range=Optional[Union[str, "FileTypeEnum"]])
 
 slots.compression_type = Slot(uri=NMDC.compression_type, name="compression type", curie=NMDC.curie('compression_type'),
                    model_uri=NMDC.compression_type, domain=None, range=Optional[str])
@@ -2884,8 +2876,8 @@ slots.ecosystem_subtype = Slot(uri=NMDC.ecosystem_subtype, name="ecosystem_subty
 slots.specific_ecosystem = Slot(uri=NMDC.specific_ecosystem, name="specific_ecosystem", curie=NMDC.curie('specific_ecosystem'),
                    model_uri=NMDC.specific_ecosystem, domain=None, range=Optional[str])
 
-slots.principal_investigator_name = Slot(uri=NMDC.principal_investigator_name, name="principal investigator name", curie=NMDC.curie('principal_investigator_name'),
-                   model_uri=NMDC.principal_investigator_name, domain=None, range=Optional[Union[dict, PersonValue]])
+slots.principal_investigator = Slot(uri=NMDC.principal_investigator, name="principal investigator", curie=NMDC.curie('principal_investigator'),
+                   model_uri=NMDC.principal_investigator, domain=None, range=Optional[Union[dict, PersonValue]])
 
 slots.doi = Slot(uri=NMDC.doi, name="doi", curie=NMDC.curie('doi'),
                    model_uri=NMDC.doi, domain=None, range=Optional[Union[dict, AttributeValue]])
@@ -5134,6 +5126,9 @@ slots.term = Slot(uri=RDF.type, name="term", curie=RDF.curie('type'),
 slots.orcid = Slot(uri=NMDC.orcid, name="orcid", curie=NMDC.curie('orcid'),
                    model_uri=NMDC.orcid, domain=PersonValue, range=Optional[str])
 
+slots.profile_image_url = Slot(uri=NMDC.profile_image_url, name="profile image url", curie=NMDC.curie('profile_image_url'),
+                   model_uri=NMDC.profile_image_url, domain=PersonValue, range=Optional[str])
+
 slots.has_input = Slot(uri=NMDC.has_input, name="has input", curie=NMDC.curie('has_input'),
                    model_uri=NMDC.has_input, domain=NamedThing, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
 
@@ -5160,6 +5155,30 @@ slots.md5_checksum = Slot(uri=NMDC.md5_checksum, name="md5 checksum", curie=NMDC
 
 slots.abstract = Slot(uri=NMDC.abstract, name="abstract", curie=NMDC.curie('abstract'),
                    model_uri=NMDC.abstract, domain=None, range=Optional[str])
+
+slots.title = Slot(uri=NMDC.title, name="title", curie=NMDC.curie('title'),
+                   model_uri=NMDC.title, domain=None, range=Optional[str])
+
+slots.alternative_titles = Slot(uri=NMDC.alternative_titles, name="alternative titles", curie=NMDC.curie('alternative_titles'),
+                   model_uri=NMDC.alternative_titles, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.alternative_names = Slot(uri=NMDC.alternative_names, name="alternative names", curie=NMDC.curie('alternative_names'),
+                   model_uri=NMDC.alternative_names, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.alternative_descriptions = Slot(uri=NMDC.alternative_descriptions, name="alternative descriptions", curie=NMDC.curie('alternative_descriptions'),
+                   model_uri=NMDC.alternative_descriptions, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.keywords = Slot(uri=NMDC.keywords, name="keywords", curie=NMDC.curie('keywords'),
+                   model_uri=NMDC.keywords, domain=None, range=Optional[Union[str, List[str]]], mappings = [DCTERMS.subject])
+
+slots.objective = Slot(uri=NMDC.objective, name="objective", curie=NMDC.curie('objective'),
+                   model_uri=NMDC.objective, domain=None, range=Optional[str], mappings = [SIO["000337"]])
+
+slots.websites = Slot(uri=NMDC.websites, name="websites", curie=NMDC.curie('websites'),
+                   model_uri=NMDC.websites, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.publications = Slot(uri=NMDC.publications, name="publications", curie=NMDC.curie('publications'),
+                   model_uri=NMDC.publications, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.started_at_time = Slot(uri=NMDC.started_at_time, name="started at time", curie=NMDC.curie('started_at_time'),
                    model_uri=NMDC.started_at_time, domain=None, range=Optional[str], mappings = [PROV.startedAtTime])

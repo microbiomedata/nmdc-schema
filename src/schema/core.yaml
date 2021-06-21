@@ -16,7 +16,9 @@ prefixes:
   igsnvoc: https://igsn.org/voc/v1/
   linkml: https://w3id.org/linkml/
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
-    
+  sio: http://semanticscience.org/resource/SIO_
+  skos: http://www.w3.org/2004/02/skos/core#
+
 default_prefix: nmdc
 default_range: string
 
@@ -129,6 +131,7 @@ classes:
       An attribute value representing a person
     slots:
       - orcid
+      - profile image url
     todos:
       - add additional fields e.g for institution
     slot_usage:
@@ -464,9 +467,17 @@ slots:
     inlined: true
     
   orcid:
+    description: >-
+      The ORICD of a person.
     domain: person value
     range: string
 
+  profile image url:
+    description: >-
+      A url that points to an image of a persion.
+    domain: person value
+    range: string
+  
   has input:
     aliases: ['input']
     domain: named thing
@@ -528,3 +539,69 @@ slots:
     exact_mappings:
       - dcterms:abstract
 
+  title:
+    range: string
+    multivalued: false
+    description: >-
+      A name given to the entity that differs from the name/label programatically assigned to it.
+      For example, when extracting study information for GOLD, the GOLD system has assigned a name/label.
+      However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.
+    exact_mappings:
+      - dcterms:title
+
+  alternative titles:
+    range: string
+    multivalued: true
+    description: >-
+      A list of alternative titles for the entity.
+      The distinction between title and alternative titles is application-specific.
+    exact_mappings:
+      - dcterms:alternative
+  
+  alternative names:
+    range: string
+    multivalued: true
+    description: >-
+      A list of alternative names used to refer to the entity.
+      The distinction between name and alternative names is application-specific.
+    exact_mappings:
+      - dcterms:alternative
+      - skos:altLabel
+
+  alternative descriptions:
+    range: string
+    multivalued: true
+    description: >-
+      A list of alternative descriptions for the entity.
+      The distinction between desciption and alternative descriptions is application-specific.
+  
+  keywords:
+    range: string
+    multivalued: true
+    description: >-
+      A list of keywords that used to associate the entity.
+      Keywords SHOULD come from controlled vocabularies, including MESH, ENVO.
+    mappings:
+      - dcterms:subject
+  
+  objective:
+    range: string
+    multivalued: false
+    description: >-
+      The scientific objectives associated with the entity.
+      It SHOULD correspond to scientific norms for objectives field in a structured abstract.
+    mappings:
+      - sio:000337
+
+  websites:
+    range: string
+    multivalued: true
+    description: >-
+      A list of websites that are assocatiated with the entity.
+
+  publications:
+    range: string
+    multivalued: true
+    description: >-
+      A list of publications that are assocatiated with the entity.
+      The publicatons SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.

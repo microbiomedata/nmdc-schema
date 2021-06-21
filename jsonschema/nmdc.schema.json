@@ -487,6 +487,10 @@
           "$ref": "#/definitions/TextValue",
           "description": "The method or device employed for collecting the sample"
         },
+        "samp_mat_process": {
+          "$ref": "#/definitions/ControlledTermValue",
+          "description": "\"Any processing applied to the sample during or after retrieving the sample from environment. This field accepts OBI, for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI\""
+        },
         "samp_store_dur": {
           "$ref": "#/definitions/TextValue",
           "description": "Duration for which the sample was stored"
@@ -789,8 +793,8 @@
           "type": "string"
         },
         "data_object_type": {
-          "$ref": "#/definitions/ControlledTermValue",
-          "description": "The type of data object"
+          "description": "The type of file represented by the data object.",
+          "type": "string"
         },
         "description": {
           "type": "string"
@@ -2086,7 +2090,7 @@
           },
           "type": "array"
         },
-        "principal_investigator_name": {
+        "principal_investigator": {
           "$ref": "#/definitions/PersonValue",
           "description": "represents the PI"
         },
@@ -2278,6 +2282,11 @@
           "type": "string"
         },
         "orcid": {
+          "description": "The ORICD of a person.",
+          "type": "string"
+        },
+        "profile_image_url": {
+          "description": "A url that points to an image of a persion.",
           "type": "string"
         },
         "type": {
@@ -2599,6 +2608,27 @@
           },
           "type": "array"
         },
+        "alternative_descriptions": {
+          "description": "A list of alternative descriptions for the entity. The distinction between desciption and alternative descriptions is application-specific.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "alternative_names": {
+          "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "alternative_titles": {
+          "description": "A list of alternative titles for the entity. The distinction between title and alternative titles is application-specific.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "description": {
           "description": "a human-readable description of a thing",
           "type": "string"
@@ -2630,17 +2660,39 @@
           "description": "A human readable label for an entity",
           "type": "string"
         },
-        "principal_investigator_name": {
+        "objective": {
+          "description": "The scientific objectives associated with the entity. It SHOULD correspond to scientific norms for objectives field in a structured abstract.",
+          "type": "string"
+        },
+        "principal_investigator": {
           "$ref": "#/definitions/PersonValue",
           "description": "represents the PI"
+        },
+        "publications": {
+          "description": "A list of publications that are assocatiated with the entity. The publicatons SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         },
         "specific_ecosystem": {
           "description": "TODO",
           "type": "string"
         },
+        "title": {
+          "description": "A name given to the entity that differs from the name/label programatically assigned to it. For example, when extracting study information for GOLD, the GOLD system has assigned a name/label. However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.",
+          "type": "string"
+        },
         "type": {
           "description": "An optional string that species the type object.  This is used to allow for searches for different kinds of objects.",
           "type": "string"
+        },
+        "websites": {
+          "description": "A list of websites that are assocatiated with the entity.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         }
       },
       "required": [
