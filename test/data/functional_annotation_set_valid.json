@@ -1,0 +1,10 @@
+{
+  "functional_annotation_set": [
+    {
+      "has_function": "PFAM:PF11779"
+    },
+    {
+      "has_function": "KEGG.ORTHOLOGY:K00001"
+    }
+  ]
+}

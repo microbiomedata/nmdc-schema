@@ -159,7 +159,9 @@ SHEMA_TEST_EXAMPLES := \
 	mg_assembly_activities_test \
 	mg_assembly_data_objects_test \
 	nmdc_example_database \
-	study_test
+	study_test \
+	functional_annotation_set_valid
+
 # invalid_study_test # this is used to make sure invalid data is caught!
 
 .PHONY: test-jsonschema
