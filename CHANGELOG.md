@@ -3,7 +3,7 @@ Changes to the schema are documented in this file.
 
 ## [2021.06.23rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.06.23rc1)
 ### Added
-  - `alternative identifers` slot added to biosamples (cf. issue 75).
+  - `alternative identifiers` slot added to biosamples (cf. issue 75).
 ### Fixed
   - N/A
 ### Changed 
