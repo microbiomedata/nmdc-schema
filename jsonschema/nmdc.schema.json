@@ -114,6 +114,13 @@
           },
           "type": "array"
         },
+        "alternative_identifiers": {
+          "description": "A list of alternative identifiers for the entity.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "aminopept_act": {
           "$ref": "#/definitions/QuantityValue",
           "description": "Measurement of aminopeptidase activity"
