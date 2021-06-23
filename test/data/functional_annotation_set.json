@@ -1,0 +1,25 @@
+{
+  "functional_annotation_set": [
+    {
+      "has_function": "KEGG.ORTHOLOGY:K00001"
+    },
+    {
+      "has_function": "EGGNOG:veNOG12876"
+    },
+    {
+      "has_function": "PFAM:PF11779"
+    },
+    {
+      "has_function": "TIGRFAM:TIGR00010"
+    },
+    {
+      "has_function": "SUPFAM:SSF57615"
+    },
+    {
+      "has_function": "CATH:veNOG12876"
+    },
+    {
+      "has_function": "PANTHER.FAMILY:1.10.8.10"
+    }
+  ]
+}

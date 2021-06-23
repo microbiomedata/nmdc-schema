@@ -195,7 +195,9 @@ classes:
       - has function
     slot_usage:
       has function: # was: id
-        pattern: "^(KEGG\\.ORTHOLOGY:K\\d{5,}|EGGNOG:[a-zA-Z]+OG[a-zA-Z0-9]+|PFAM:PF\\d{5,}|TIGRFAM:TIGR\\d+|SUPFAM:\\w+|CATH:[1-6]\\.[0-9]+\\.[0-9]+\\.[0-9]+|PANTHER.FAMILY:PTHR\\d{5}(\\:SF\\d{1,3})?)$"
+        pattern: "^(KEGG\\.ORTHOLOGY:K\\d+|EGGNOG:\\w+|PFAM:PF\\d{5}|TIGRFAM:TIGR\\d+|SUPFAM:\\w+|CATH:[1-6]\\.[0-9]+\\.[0-9]+\\.[0-9]+|PANTHER.FAMILY:PTHR\\d{5}(\\:SF\\d{1,3})?)$"
+        comments:
+            - "Using bioregistry patterns, replacing those from MAM: ^(KEGG\\.ORTHOLOGY:K\\d{5,}|EGGNOG:[a-zA-Z]+OG[a-zA-Z0-9]+|PFAM:PF\\d{5,}|TIGRFAM:TIGR\\d+|SUPFAM:\\w+|CATH:[1-6]\\.[0-9]+\\.[0-9]+\\.[0-9]+|PANTHER.FAMILY:PTHR\\d{5}(\\:SF\\d{1,3})?)$"
       type:
         range: ontology class
         description: >-
