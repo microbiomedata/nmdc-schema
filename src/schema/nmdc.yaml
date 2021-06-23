@@ -132,7 +132,8 @@ classes:
       An environmental sample containing genetic material from multiple individuals is commonly referred to as a biosample.
     slots:
       - type  # custom slot that specifies object type
-      
+      - alternative identifiers
+    
       # MIXS slots
       - agrochem_addition
       - alkalinity

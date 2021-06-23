@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-06-17 16:51
+# Generation date: 2021-06-23 11:55
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -424,6 +424,7 @@ class Biosample(NamedThing):
     env_local_scale: Union[dict, "ControlledTermValue"] = None
     env_medium: Union[dict, "ControlledTermValue"] = None
     type: Optional[str] = None
+    alternative_identifiers: Optional[Union[str, List[str]]] = empty_list()
     agrochem_addition: Optional[Union[dict, "QuantityValue"]] = None
     alkalinity: Optional[Union[dict, "QuantityValue"]] = None
     alkalinity_method: Optional[Union[dict, "TextValue"]] = None
@@ -582,6 +583,10 @@ class Biosample(NamedThing):
 
         if self.type is not None and not isinstance(self.type, str):
             self.type = str(self.type)
+
+        if not isinstance(self.alternative_identifiers, list):
+            self.alternative_identifiers = [self.alternative_identifiers] if self.alternative_identifiers is not None else []
+        self.alternative_identifiers = [v if isinstance(v, str) else str(v) for v in self.alternative_identifiers]
 
         if self.agrochem_addition is not None and not isinstance(self.agrochem_addition, QuantityValue):
             self.agrochem_addition = QuantityValue(**self.agrochem_addition)
@@ -5167,6 +5172,9 @@ slots.alternative_names = Slot(uri=NMDC.alternative_names, name="alternative nam
 
 slots.alternative_descriptions = Slot(uri=NMDC.alternative_descriptions, name="alternative descriptions", curie=NMDC.curie('alternative_descriptions'),
                    model_uri=NMDC.alternative_descriptions, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.alternative_identifiers = Slot(uri=NMDC.alternative_identifiers, name="alternative identifiers", curie=NMDC.curie('alternative_identifiers'),
+                   model_uri=NMDC.alternative_identifiers, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.keywords = Slot(uri=NMDC.keywords, name="keywords", curie=NMDC.curie('keywords'),
                    model_uri=NMDC.keywords, domain=None, range=Optional[Union[str, List[str]]], mappings = [DCTERMS.subject])
