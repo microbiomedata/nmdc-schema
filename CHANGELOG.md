@@ -1,7 +1,17 @@
 # Change Log
 Changes to the schema are documented in this file.
 
-## [2021.06.17rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.06.16rc7)
+## [2021.06.23rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.06.23rc1)
+### Added
+  - `alternative identifiers` slot added to biosamples (cf. issue 75).
+### Fixed
+  - N/A
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
+## [2021.06.17rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.06.16rc1)
 ### Added
   - `profile image url` to hold the url pointing an image of the investigator (cf. issue 19)
   - description for `orcid` slot.

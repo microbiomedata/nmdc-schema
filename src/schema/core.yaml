@@ -575,6 +575,12 @@ slots:
       A list of alternative descriptions for the entity.
       The distinction between desciption and alternative descriptions is application-specific.
   
+  alternative identifiers:
+    range: string
+    multivalued: true
+    description: >-
+      A list of alternative identifiers for the entity.
+
   keywords:
     range: string
     multivalued: true
