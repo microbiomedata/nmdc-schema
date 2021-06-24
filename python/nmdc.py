@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-06-23 11:55
+# Generation date: 2021-06-24 19:48
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -547,6 +547,7 @@ class Biosample(NamedThing):
     specific_ecosystem: Optional[str] = None
     add_date: Optional[str] = None
     community: Optional[str] = None
+    depth2: Optional[Union[dict, "QuantityValue"]] = None
     habitat: Optional[str] = None
     host_name: Optional[str] = None
     identifier: Optional[str] = None
@@ -558,6 +559,7 @@ class Biosample(NamedThing):
     sample_collection_site: Optional[str] = None
     soluble_iron_micromol: Optional[str] = None
     subsurface_depth: Optional[Union[dict, "QuantityValue"]] = None
+    subsurface_depth2: Optional[Union[dict, "QuantityValue"]] = None
     part_of: Optional[Union[Union[str, StudyId], List[Union[str, StudyId]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -954,6 +956,9 @@ class Biosample(NamedThing):
         if self.community is not None and not isinstance(self.community, str):
             self.community = str(self.community)
 
+        if self.depth2 is not None and not isinstance(self.depth2, QuantityValue):
+            self.depth2 = QuantityValue(**self.depth2)
+
         if self.habitat is not None and not isinstance(self.habitat, str):
             self.habitat = str(self.habitat)
 
@@ -986,6 +991,9 @@ class Biosample(NamedThing):
 
         if self.subsurface_depth is not None and not isinstance(self.subsurface_depth, QuantityValue):
             self.subsurface_depth = QuantityValue(**self.subsurface_depth)
+
+        if self.subsurface_depth2 is not None and not isinstance(self.subsurface_depth2, QuantityValue):
+            self.subsurface_depth2 = QuantityValue(**self.subsurface_depth2)
 
         if not isinstance(self.part_of, list):
             self.part_of = [self.part_of] if self.part_of is not None else []
@@ -2941,8 +2949,14 @@ slots.soluble_iron_micromol = Slot(uri=NMDC.soluble_iron_micromol, name="soluble
 slots.host_name = Slot(uri=NMDC.host_name, name="host_name", curie=NMDC.curie('host_name'),
                    model_uri=NMDC.host_name, domain=None, range=Optional[str])
 
+slots.depth2 = Slot(uri=NMDC.depth2, name="depth2", curie=NMDC.curie('depth2'),
+                   model_uri=NMDC.depth2, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.subsurface_depth = Slot(uri=NMDC.subsurface_depth, name="subsurface_depth", curie=NMDC.curie('subsurface_depth'),
                    model_uri=NMDC.subsurface_depth, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.subsurface_depth2 = Slot(uri=NMDC.subsurface_depth2, name="subsurface_depth2", curie=NMDC.curie('subsurface_depth2'),
+                   model_uri=NMDC.subsurface_depth2, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.proport_woa_temperature = Slot(uri=NMDC.proport_woa_temperature, name="proport_woa_temperature", curie=NMDC.curie('proport_woa_temperature'),
                    model_uri=NMDC.proport_woa_temperature, domain=None, range=Optional[str])
