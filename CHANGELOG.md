@@ -1,6 +1,16 @@
 # Change Log
 Changes to the schema are documented in this file.
 
+## [2021.06.24rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.06.24rc1)
+### Added
+  - `depth2` and `subsurface_depth2` slots added to biosamples (cf. issue 80).
+### Fixed
+  - N/A
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
 ## [2021.06.23rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.06.23rc1)
 ### Added
   - `alternative identifiers` slot added to biosamples (cf. issue 75).
