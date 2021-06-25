@@ -150,7 +150,8 @@ deploy-testpypi:
 ##  -- TEST/VALIDATE JSONSCHEMA
 
 # datasets used test/validate the schema
-SHEMA_TEST_EXAMPLES := \
+
+SCHEMA_TEST_EXAMPLES := \
 	biosample_test \
 	gold_project_test \
 	img_mg_annotation_objects \
@@ -159,12 +160,24 @@ SHEMA_TEST_EXAMPLES := \
 	mg_assembly_activities_test \
 	mg_assembly_data_objects_test \
 	nmdc_example_database \
-	study_test
-# invalid_study_test # this is used to make sure invalid data is caught!
+	study_test \
+	functional_annotation_set
+
+SCHEMA_TEST_EXAMPLES_INVALID := \
+	invalid_study_test
+
+# 	functional_annotation_set_invalid has invalid ID pattern but regex tests aren't applied yet? MAM 2021-06-24
 
 .PHONY: test-jsonschema
-test-jsonschema: $(foreach example, $(SHEMA_TEST_EXAMPLES), validate-$(example))
+test-jsonschema: $(foreach example, $(SCHEMA_TEST_EXAMPLES), validate-$(example))
+
+.PHONY: test-jsonschema_invalid
+test-jsonschema_invalid: $(foreach example, $(SCHEMA_TEST_EXAMPLES_INVALID), validate-invalid-$(example))
 
 validate-%: test/data/%.json jsonschema/nmdc.schema.json
 # util/validate_nmdc_json.py -i $< # example of validating data using the cli
 	jsonschema -i $< $(word 2, $^)
+
+validate-invalid-%: test/data/%.json jsonschema/nmdc.schema.json
+	! jsonschema -i $< $(word 2, $^)
+
