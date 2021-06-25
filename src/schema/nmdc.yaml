@@ -406,8 +406,14 @@ enums:
         description: Tab delimited file of protein results derived from ~5% FDR filtered peptide data, including aggregated abundance information.
       QC_metrics.tsv:
         description: Tab delimited file of aggregate statistics derived from workflow results.
-      
-      
+      NOM:
+        data_object_type: Natural Organic Matter Results
+        description: FT-MS high resolution molecular formula assignment results table
+      metaB:
+        data_object_type: GC-MS Metabolomics Results
+        description: GC-MS-based metabolite assignment results table
+
+
 slots:
 
   object set:
