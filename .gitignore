@@ -6,6 +6,7 @@ docs/types/
 */my_schema.*
 .env
 .venv
+/local
 
 # directory that hold the nmdc_schema pypi package
 nmdc_schema/
