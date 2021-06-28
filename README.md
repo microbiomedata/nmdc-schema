@@ -28,7 +28,7 @@ See also [these slides](https://microbiomedata.github.io/nmdc-metadata/docs/sche
 
 _If some colelctions are reported to contain 0 documents, it could be that the MongoDB is being repopulated based on new data or a new schema._
 
-**These colelction downloads are compressed in the `.bz2` format. If you click the links, must browsers will display binary garbage on your screen. Right-click "save as" will work better in most cases.**
+**These colelction downloads are compressed in the `.bz2` format. If you click the links, most browsers will display binary garbage on your screen. Right-click "save as" will work better in most cases.**
 
 
 | Collection Name                                                                                                                                                         | Documents | Avg. Document Size | Total Document Size | Notes                                                              |
