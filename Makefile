@@ -180,5 +180,6 @@ validate-%: test/data/%.json jsonschema/nmdc.schema.json
 # util/validate_nmdc_json.py -i $< # example of validating data using the cli
 	jsonschema -i $< $(word 2, $^)
 
-validate-invalid%: test/data/%.json jsonschema/nmdc.schema.json
+validate-invalid-%: test/data/%.json jsonschema/nmdc.schema.json
 	@echo $(word 2, $^)
+	! jsonschema -i $< $(word 2, $^)
