@@ -200,6 +200,9 @@
           "$ref": "#/definitions/QuantityValue",
           "description": "Please refer to the definitions of depth in the environmental packages"
         },
+        "depth2": {
+          "$ref": "#/definitions/QuantityValue"
+        },
         "description": {
           "description": "a human-readable description of a thing",
           "type": "string"
@@ -569,6 +572,9 @@
           "description": "Explain how and for how long the soil sample was stored before DNA extraction"
         },
         "subsurface_depth": {
+          "$ref": "#/definitions/QuantityValue"
+        },
+        "subsurface_depth2": {
           "$ref": "#/definitions/QuantityValue"
         },
         "sulfate": {
