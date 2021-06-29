@@ -160,10 +160,10 @@ SCHEMA_TEST_EXAMPLES := \
 	mg_assembly_data_objects_test \
 	nmdc_example_database \
 	study_test \
-	functional_annotation_set
+	functional_annotation_set 
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
-	invalid_study_test
+	invalid_study_test \
 
 # 	functional_annotation_set_invalid has invalid ID pattern but regex tests aren't applied yet? MAM 2021-06-24
 
