@@ -792,7 +792,7 @@
     },
     "DataObject": {
       "additionalProperties": false,
-      "description": "An object that primarily consists of symbols that represent information.   Files, records, and omics data are examples of data objects.",
+      "description": "An object that primarily consists of symbols that represent information. Files, records, and omics data are examples of data objects.",
       "properties": {
         "alternate_identifiers": {
           "description": "Non-primary identifiers",
@@ -908,14 +908,14 @@
           "type": "array"
         },
         "metagenome_annotation_activity_set": {
-          "description": "This property links a database object to the set of metaproteomics analysis activities.",
+          "description": "This property links a database object to the set of metagenome annotation activities.",
           "items": {
             "$ref": "#/definitions/MetagenomeAnnotationActivity"
           },
           "type": "array"
         },
         "metagenome_assembly_set": {
-          "description": "This property links a database object to the set of metaproteomics analysis activities.\n  ",
+          "description": "This property links a database object to the set of metagenome assembly activities.",
           "items": {
             "$ref": "#/definitions/MetagenomeAssembly"
           },
@@ -925,6 +925,13 @@
           "description": "This property links a database object to the set of metaproteomics analysis activities.",
           "items": {
             "$ref": "#/definitions/MetaproteomicsAnalysisActivity"
+          },
+          "type": "array"
+        },
+        "metatranscriptome_activity_set": {
+          "description": "This property links a database object to the set of metatranscriptome analysis activities.",
+          "items": {
+            "$ref": "#/definitions/MetatranscriptomeActivity"
           },
           "type": "array"
         },
@@ -1737,6 +1744,70 @@
       "title": "MetaproteomicsAnalysisActivity",
       "type": "object"
     },
+    "MetatranscriptomeActivity": {
+      "additionalProperties": false,
+      "description": "A metatranscriptome activity that e.g. pools assembly and annotation activity.",
+      "properties": {
+        "ended_at_time": {
+          "type": "string"
+        },
+        "execution_resource": {
+          "type": "string"
+        },
+        "git_url": {
+          "type": "string"
+        },
+        "has_input": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "has_output": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "id": {
+          "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+          "type": "string"
+        },
+        "name": {
+          "description": "A human readable label for an entity",
+          "type": "string"
+        },
+        "started_at_time": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "used": {
+          "type": "string"
+        },
+        "was_associated_with": {
+          "description": "the agent/entity associated with the generation of the file",
+          "type": "string"
+        },
+        "was_informed_by": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "execution_resource",
+        "git_url",
+        "has_input",
+        "has_output",
+        "type",
+        "started_at_time",
+        "ended_at_time",
+        "was_informed_by"
+      ],
+      "title": "MetatranscriptomeActivity",
+      "type": "object"
+    },
     "MetatranscriptomeAnnotationActivity": {
       "additionalProperties": false,
       "description": "",
@@ -2300,6 +2371,9 @@
         },
         "profile_image_url": {
           "description": "A url that points to an image of a persion.",
+          "type": "string"
+        },
+        "profile_image": {
           "type": "string"
         },
         "type": {
@@ -2902,14 +2976,14 @@
       "type": "array"
     },
     "metagenome_annotation_activity_set": {
-      "description": "This property links a database object to the set of metaproteomics analysis activities.",
+      "description": "This property links a database object to the set of metagenome annotation activities.",
       "items": {
         "$ref": "#/definitions/MetagenomeAnnotationActivity"
       },
       "type": "array"
     },
     "metagenome_assembly_set": {
-      "description": "This property links a database object to the set of metaproteomics analysis activities.\n  ",
+      "description": "This property links a database object to the set of metagenome assembly activities.",
       "items": {
         "$ref": "#/definitions/MetagenomeAssembly"
       },
@@ -2919,6 +2993,13 @@
       "description": "This property links a database object to the set of metaproteomics analysis activities.",
       "items": {
         "$ref": "#/definitions/MetaproteomicsAnalysisActivity"
+      },
+      "type": "array"
+    },
+    "metatranscriptome_activity_set": {
+      "description": "This property links a database object to the set of metatranscriptome analysis activities.",
+      "items": {
+        "$ref": "#/definitions/MetatranscriptomeActivity"
       },
       "type": "array"
     },
