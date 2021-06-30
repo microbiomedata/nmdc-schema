@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-06-24 19:48
+# Generation date: 2021-06-30 12:54
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -188,6 +188,10 @@ class MetatranscriptomeAnnotationActivityId(WorkflowExecutionActivityId):
     pass
 
 
+class MetatranscriptomeActivityId(WorkflowExecutionActivityId):
+    pass
+
+
 class MAGsAnalysisActivityId(WorkflowExecutionActivityId):
     pass
 
@@ -251,6 +255,7 @@ class Database(YAMLRoot):
     metaproteomics_analysis_activity_set: Optional[Union[Dict[Union[str, MetaproteomicsAnalysisActivityId], Union[dict, "MetaproteomicsAnalysisActivity"]], List[Union[dict, "MetaproteomicsAnalysisActivity"]]]] = empty_dict()
     metagenome_annotation_activity_set: Optional[Union[Dict[Union[str, MetagenomeAnnotationActivityId], Union[dict, "MetagenomeAnnotationActivity"]], List[Union[dict, "MetagenomeAnnotationActivity"]]]] = empty_dict()
     metagenome_assembly_set: Optional[Union[Dict[Union[str, MetagenomeAssemblyId], Union[dict, "MetagenomeAssembly"]], List[Union[dict, "MetagenomeAssembly"]]]] = empty_dict()
+    metatranscriptome_activity_set: Optional[Union[Dict[Union[str, MetatranscriptomeActivityId], Union[dict, "MetatranscriptomeActivity"]], List[Union[dict, "MetatranscriptomeActivity"]]]] = empty_dict()
     read_QC_analysis_activity_set: Optional[Union[Dict[Union[str, ReadQCAnalysisActivityId], Union[dict, "ReadQCAnalysisActivity"]], List[Union[dict, "ReadQCAnalysisActivity"]]]] = empty_dict()
     read_based_analysis_activity_set: Optional[Union[Dict[Union[str, ReadBasedAnalysisActivityId], Union[dict, "ReadBasedAnalysisActivity"]], List[Union[dict, "ReadBasedAnalysisActivity"]]]] = empty_dict()
     nom_analysis_activity_set: Optional[Union[Dict[Union[str, NomAnalysisActivityId], Union[dict, "NomAnalysisActivity"]], List[Union[dict, "NomAnalysisActivity"]]]] = empty_dict()
@@ -279,6 +284,8 @@ class Database(YAMLRoot):
         self._normalize_inlined_as_dict(slot_name="metagenome_annotation_activity_set", slot_type=MetagenomeAnnotationActivity, key_name="id", keyed=True)
 
         self._normalize_inlined_as_dict(slot_name="metagenome_assembly_set", slot_type=MetagenomeAssembly, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_dict(slot_name="metatranscriptome_activity_set", slot_type=MetatranscriptomeActivity, key_name="id", keyed=True)
 
         self._normalize_inlined_as_dict(slot_name="read_QC_analysis_activity_set", slot_type=ReadQCAnalysisActivity, key_name="id", keyed=True)
 
@@ -2253,6 +2260,37 @@ class MetatranscriptomeAnnotationActivity(WorkflowExecutionActivity):
 
 
 @dataclass
+class MetatranscriptomeActivity(WorkflowExecutionActivity):
+    """
+    A metatranscriptome activity that e.g. pools assembly and annotation activity.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://microbiomedata/schema/workflow_execution_activity/MetatranscriptomeActivity")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "metatranscriptome activity"
+    class_model_uri: ClassVar[URIRef] = NMDC.MetatranscriptomeActivity
+
+    id: Union[str, MetatranscriptomeActivityId] = None
+    execution_resource: str = None
+    git_url: str = None
+    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    type: str = None
+    started_at_time: str = None
+    ended_at_time: str = None
+    was_informed_by: Union[str, ActivityId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MetatranscriptomeActivityId):
+            self.id = MetatranscriptomeActivityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class MAGsAnalysisActivity(WorkflowExecutionActivity):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -2736,7 +2774,7 @@ class FunctionalAnnotation(YAMLRoot):
 
     was_generated_by: Optional[Union[str, MetagenomeAnnotationActivityId]] = None
     subject: Optional[Union[str, GeneProductId]] = None
-    has_function: Optional[Union[str, FunctionalAnnotationTermId]] = None
+    has_function: Optional[str] = None
     type: Optional[Union[str, OntologyClassId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -2746,8 +2784,8 @@ class FunctionalAnnotation(YAMLRoot):
         if self.subject is not None and not isinstance(self.subject, GeneProductId):
             self.subject = GeneProductId(self.subject)
 
-        if self.has_function is not None and not isinstance(self.has_function, FunctionalAnnotationTermId):
-            self.has_function = FunctionalAnnotationTermId(self.has_function)
+        if self.has_function is not None and not isinstance(self.has_function, str):
+            self.has_function = str(self.has_function)
 
         if self.type is not None and not isinstance(self.type, OntologyClassId):
             self.type = OntologyClassId(self.type)
@@ -2846,6 +2884,9 @@ slots.metagenome_annotation_activity_set = Slot(uri=NMDC.metagenome_annotation_a
 
 slots.metagenome_assembly_set = Slot(uri=NMDC.metagenome_assembly_set, name="metagenome assembly set", curie=NMDC.curie('metagenome_assembly_set'),
                    model_uri=NMDC.metagenome_assembly_set, domain=Database, range=Optional[Union[Dict[Union[str, MetagenomeAssemblyId], Union[dict, "MetagenomeAssembly"]], List[Union[dict, "MetagenomeAssembly"]]]])
+
+slots.metatranscriptome_activity_set = Slot(uri=NMDC.metatranscriptome_activity_set, name="metatranscriptome activity set", curie=NMDC.curie('metatranscriptome_activity_set'),
+                   model_uri=NMDC.metatranscriptome_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, MetatranscriptomeActivityId], Union[dict, "MetatranscriptomeActivity"]], List[Union[dict, "MetatranscriptomeActivity"]]]])
 
 slots.read_QC_analysis_activity_set = Slot(uri=NMDC.read_QC_analysis_activity_set, name="read QC analysis activity set", curie=NMDC.curie('read_QC_analysis_activity_set'),
                    model_uri=NMDC.read_QC_analysis_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, ReadQCAnalysisActivityId], Union[dict, "ReadQCAnalysisActivity"]], List[Union[dict, "ReadQCAnalysisActivity"]]]])
@@ -5344,7 +5385,7 @@ slots.subject = Slot(uri="str(uriorcurie)", name="subject", curie=None,
                    model_uri=NMDC.subject, domain=None, range=Optional[Union[str, GeneProductId]])
 
 slots.has_function = Slot(uri="str(uriorcurie)", name="has function", curie=None,
-                   model_uri=NMDC.has_function, domain=None, range=Optional[Union[str, FunctionalAnnotationTermId]])
+                   model_uri=NMDC.has_function, domain=None, range=Optional[str])
 
 slots.has_participants = Slot(uri="str(uriorcurie)", name="has participants", curie=None,
                    model_uri=NMDC.has_participants, domain=None, range=Optional[str])
@@ -5787,6 +5828,10 @@ slots.reaction_participant_chemical = Slot(uri=NMDC.chemical, name="reaction par
 
 slots.reaction_participant_stoichiometry = Slot(uri=NMDC.stoichiometry, name="reaction participant_stoichiometry", curie=NMDC.curie('stoichiometry'),
                    model_uri=NMDC.reaction_participant_stoichiometry, domain=ReactionParticipant, range=Optional[int])
+
+slots.functional_annotation_has_function = Slot(uri=NMDC.has_function, name="functional annotation_has function", curie=NMDC.curie('has_function'),
+                   model_uri=NMDC.functional_annotation_has_function, domain=FunctionalAnnotation, range=Optional[str],
+                   pattern=re.compile(r'^(KEGG.PATHWAY:\w{2,4}\d{5}|KEGG.REACTION:R\d+|RHEA:\d{5}|MetaCyc:[A-Za-z0-9+_.%-:]+|EC:\d{1,2}(\.\d{0,3}){0,3}|GO:\d{7}|MetaNetX:(MNXR\d+|EMPTY)|SEED:\w+|KEGG\.ORTHOLOGY:K\d+|EGGNOG:\w+|PFAM:PF\d{5}|TIGRFAM:TIGR\d+|SUPFAM:\w+|CATH:[1-6]\.[0-9]+\.[0-9]+\.[0-9]+|PANTHER.FAMILY:PTHR\d{5}(\:SF\d{1,3})?)$'))
 
 slots.functional_annotation_type = Slot(uri=NMDC.type, name="functional annotation_type", curie=NMDC.curie('type'),
                    model_uri=NMDC.functional_annotation_type, domain=FunctionalAnnotation, range=Optional[Union[str, OntologyClassId]])

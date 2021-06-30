@@ -134,6 +134,13 @@ classes:
     in_subset: 
       - workflow subset
 
+  metatranscriptome activity:
+    is_a: workflow execution activity
+    description: >-
+      A metatranscriptome activity that e.g. pools assembly and annotation activity.
+    in_subset:
+      - workflow subset
+
   MAGs analysis activity:
     is_a: workflow execution activity
     in_subset: 
