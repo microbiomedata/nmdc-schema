@@ -792,7 +792,7 @@
     },
     "DataObject": {
       "additionalProperties": false,
-      "description": "An object that primarily consists of symbols that represent information. Files, records, and omics data are examples of data objects.",
+      "description": "An object that primarily consists of symbols that represent information.   Files, records, and omics data are examples of data objects.",
       "properties": {
         "alternate_identifiers": {
           "description": "Non-primary identifiers",
@@ -2371,9 +2371,6 @@
         },
         "profile_image_url": {
           "description": "A url that points to an image of a persion.",
-          "type": "string"
-        },
-        "profile_image": {
           "type": "string"
         },
         "type": {

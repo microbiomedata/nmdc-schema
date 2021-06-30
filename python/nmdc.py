@@ -1,9 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-<<<<<<< Updated upstream
-# Generation date: 2021-06-24 19:48
-=======
-# Generation date: 2021-06-30 12:42
->>>>>>> Stashed changes
+# Generation date: 2021-06-30 12:54
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -124,6 +120,10 @@ class NamedThingId(extended_str):
     pass
 
 
+class DataObjectId(NamedThingId):
+    pass
+
+
 class BiosampleId(NamedThingId):
     pass
 
@@ -137,10 +137,6 @@ class BiosampleProcessingId(NamedThingId):
 
 
 class OmicsProcessingId(BiosampleProcessingId):
-    pass
-
-
-class DataObjectId(NamedThingId):
     pass
 
 
@@ -354,7 +350,6 @@ class NamedThing(YAMLRoot):
 
 
 @dataclass
-<<<<<<< Updated upstream
 class DataObject(NamedThing):
     """
     An object that primarily consists of symbols that represent information. Files, records, and omics data are
@@ -419,8 +414,6 @@ class DataObject(NamedThing):
 
 
 @dataclass
-=======
->>>>>>> Stashed changes
 class Biosample(NamedThing):
     """
     A material sample. It may be environmental (encompassing many organisms) or isolate or tissue. An environmental
@@ -1219,70 +1212,6 @@ class OmicsProcessing(BiosampleProcessing):
 
 
 @dataclass
-class DataObject(NamedThing):
-    """
-    An object that primarily consists of symbols that represent information. Files, records, and omics data are
-    examples of data objects.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMDC.DataObject
-    class_class_curie: ClassVar[str] = "nmdc:DataObject"
-    class_name: ClassVar[str] = "data object"
-    class_model_uri: ClassVar[URIRef] = NMDC.DataObject
-
-    id: Union[str, DataObjectId] = None
-    name: str = None
-    description: str = None
-    file_size_bytes: Optional[int] = None
-    md5_checksum: Optional[str] = None
-    data_object_type: Optional[Union[dict, "ControlledTermValue"]] = None
-    compression_type: Optional[str] = None
-    was_generated_by: Optional[Union[str, ActivityId]] = None
-    url: Optional[str] = None
-    type: Optional[str] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, DataObjectId):
-            self.id = DataObjectId(self.id)
-
-        if self._is_empty(self.name):
-            self.MissingRequiredField("name")
-        if not isinstance(self.name, str):
-            self.name = str(self.name)
-
-        if self._is_empty(self.description):
-            self.MissingRequiredField("description")
-        if not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if self.file_size_bytes is not None and not isinstance(self.file_size_bytes, int):
-            self.file_size_bytes = int(self.file_size_bytes)
-
-        if self.md5_checksum is not None and not isinstance(self.md5_checksum, str):
-            self.md5_checksum = str(self.md5_checksum)
-
-        if self.data_object_type is not None and not isinstance(self.data_object_type, ControlledTermValue):
-            self.data_object_type = ControlledTermValue(**self.data_object_type)
-
-        if self.compression_type is not None and not isinstance(self.compression_type, str):
-            self.compression_type = str(self.compression_type)
-
-        if self.was_generated_by is not None and not isinstance(self.was_generated_by, ActivityId):
-            self.was_generated_by = ActivityId(self.was_generated_by)
-
-        if self.url is not None and not isinstance(self.url, str):
-            self.url = str(self.url)
-
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
 class OntologyClass(NamedThing):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -1394,24 +1323,15 @@ class PersonValue(AttributeValue):
     class_model_uri: ClassVar[URIRef] = NMDC.PersonValue
 
     orcid: Optional[str] = None
-<<<<<<< Updated upstream
     profile_image_url: Optional[str] = None
-=======
-    profile_image: Optional[Union[str, DataObjectId]] = None
->>>>>>> Stashed changes
     has_raw_value: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.orcid is not None and not isinstance(self.orcid, str):
             self.orcid = str(self.orcid)
 
-<<<<<<< Updated upstream
         if self.profile_image_url is not None and not isinstance(self.profile_image_url, str):
             self.profile_image_url = str(self.profile_image_url)
-=======
-        if self.profile_image is not None and not isinstance(self.profile_image, DataObjectId):
-            self.profile_image = DataObjectId(self.profile_image)
->>>>>>> Stashed changes
 
         if self.has_raw_value is not None and not isinstance(self.has_raw_value, str):
             self.has_raw_value = str(self.has_raw_value)
@@ -2854,7 +2774,7 @@ class FunctionalAnnotation(YAMLRoot):
 
     was_generated_by: Optional[Union[str, MetagenomeAnnotationActivityId]] = None
     subject: Optional[Union[str, GeneProductId]] = None
-    has_function: Optional[Union[str, FunctionalAnnotationTermId]] = None
+    has_function: Optional[str] = None
     type: Optional[Union[str, OntologyClassId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -2864,8 +2784,8 @@ class FunctionalAnnotation(YAMLRoot):
         if self.subject is not None and not isinstance(self.subject, GeneProductId):
             self.subject = GeneProductId(self.subject)
 
-        if self.has_function is not None and not isinstance(self.has_function, FunctionalAnnotationTermId):
-            self.has_function = FunctionalAnnotationTermId(self.has_function)
+        if self.has_function is not None and not isinstance(self.has_function, str):
+            self.has_function = str(self.has_function)
 
         if self.type is not None and not isinstance(self.type, OntologyClassId):
             self.type = OntologyClassId(self.type)
@@ -2983,15 +2903,12 @@ slots.omics_processing_set = Slot(uri=NMDC.omics_processing_set, name="omics pro
 slots.omics_type = Slot(uri=NMDC.omics_type, name="omics type", curie=NMDC.curie('omics_type'),
                    model_uri=NMDC.omics_type, domain=None, range=Optional[Union[dict, ControlledTermValue]])
 
-<<<<<<< Updated upstream
 slots.data_object_type = Slot(uri=NMDC.data_object_type, name="data object type", curie=NMDC.curie('data_object_type'),
                    model_uri=NMDC.data_object_type, domain=None, range=Optional[Union[str, "FileTypeEnum"]])
 
 slots.compression_type = Slot(uri=NMDC.compression_type, name="compression type", curie=NMDC.curie('compression_type'),
                    model_uri=NMDC.compression_type, domain=None, range=Optional[str])
 
-=======
->>>>>>> Stashed changes
 slots.instrument_name = Slot(uri=NMDC.instrument_name, name="instrument_name", curie=NMDC.curie('instrument_name'),
                    model_uri=NMDC.instrument_name, domain=None, range=Optional[str])
 
@@ -5239,12 +5156,6 @@ slots.tot_part_carb = Slot(uri="str(uriorcurie)", name="tot_part_carb", curie=No
                    model_uri=NMDC.tot_part_carb, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.tot_part_carb],
                    pattern=re.compile(r'\d+[.\d+] \S+'))
 
-slots.data_object_type = Slot(uri=NMDC.data_object_type, name="data object type", curie=NMDC.curie('data_object_type'),
-                   model_uri=NMDC.data_object_type, domain=None, range=Optional[Union[dict, ControlledTermValue]])
-
-slots.compression_type = Slot(uri=NMDC.compression_type, name="compression type", curie=NMDC.curie('compression_type'),
-                   model_uri=NMDC.compression_type, domain=None, range=Optional[str])
-
 slots.language = Slot(uri=NMDC.language, name="language", curie=NMDC.curie('language'),
                    model_uri=NMDC.language, domain=None, range=Optional[str])
 
@@ -5331,9 +5242,6 @@ slots.websites = Slot(uri=NMDC.websites, name="websites", curie=NMDC.curie('webs
 
 slots.publications = Slot(uri=NMDC.publications, name="publications", curie=NMDC.curie('publications'),
                    model_uri=NMDC.publications, domain=None, range=Optional[Union[str, List[str]]])
-
-slots.profile_image = Slot(uri=NMDC.profile_image, name="profile image", curie=NMDC.curie('profile_image'),
-                   model_uri=NMDC.profile_image, domain=PersonValue, range=Optional[Union[str, DataObjectId]])
 
 slots.started_at_time = Slot(uri=NMDC.started_at_time, name="started at time", curie=NMDC.curie('started_at_time'),
                    model_uri=NMDC.started_at_time, domain=None, range=Optional[str], mappings = [PROV.startedAtTime])
@@ -5477,7 +5385,7 @@ slots.subject = Slot(uri="str(uriorcurie)", name="subject", curie=None,
                    model_uri=NMDC.subject, domain=None, range=Optional[Union[str, GeneProductId]])
 
 slots.has_function = Slot(uri="str(uriorcurie)", name="has function", curie=None,
-                   model_uri=NMDC.has_function, domain=None, range=Optional[Union[str, FunctionalAnnotationTermId]])
+                   model_uri=NMDC.has_function, domain=None, range=Optional[str])
 
 slots.has_participants = Slot(uri="str(uriorcurie)", name="has participants", curie=None,
                    model_uri=NMDC.has_participants, domain=None, range=Optional[str])
@@ -5689,6 +5597,12 @@ slots.database_date_created = Slot(uri=NMDC.date_created, name="database_date cr
 slots.database_etl_software_version = Slot(uri=NMDC.etl_software_version, name="database_etl software version", curie=NMDC.curie('etl_software_version'),
                    model_uri=NMDC.database_etl_software_version, domain=Database, range=Optional[str])
 
+slots.data_object_name = Slot(uri=NMDC.name, name="data object_name", curie=NMDC.curie('name'),
+                   model_uri=NMDC.data_object_name, domain=DataObject, range=str)
+
+slots.data_object_description = Slot(uri=NMDC.description, name="data object_description", curie=NMDC.curie('description'),
+                   model_uri=NMDC.data_object_description, domain=DataObject, range=str)
+
 slots.biosample_lat_lon = Slot(uri=NMDC.lat_lon, name="biosample_lat_lon", curie=NMDC.curie('lat_lon'),
                    model_uri=NMDC.biosample_lat_lon, domain=Biosample, range=Optional[Union[dict, "GeolocationValue"]],
                    pattern=re.compile(r'\d+[.\d+] \d+[.\d+]'))
@@ -5719,12 +5633,6 @@ slots.omics_processing_has_output = Slot(uri=NMDC.has_output, name="omics proces
 
 slots.omics_processing_part_of = Slot(uri=NMDC.part_of, name="omics processing_part of", curie=NMDC.curie('part_of'),
                    model_uri=NMDC.omics_processing_part_of, domain=OmicsProcessing, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
-
-slots.data_object_name = Slot(uri=NMDC.name, name="data object_name", curie=NMDC.curie('name'),
-                   model_uri=NMDC.data_object_name, domain=DataObject, range=str)
-
-slots.data_object_description = Slot(uri=NMDC.description, name="data object_description", curie=NMDC.curie('description'),
-                   model_uri=NMDC.data_object_description, domain=DataObject, range=str)
 
 slots.attribute_value_type = Slot(uri=NMDC.type, name="attribute value_type", curie=NMDC.curie('type'),
                    model_uri=NMDC.attribute_value_type, domain=AttributeValue, range=Optional[str])
@@ -5920,6 +5828,10 @@ slots.reaction_participant_chemical = Slot(uri=NMDC.chemical, name="reaction par
 
 slots.reaction_participant_stoichiometry = Slot(uri=NMDC.stoichiometry, name="reaction participant_stoichiometry", curie=NMDC.curie('stoichiometry'),
                    model_uri=NMDC.reaction_participant_stoichiometry, domain=ReactionParticipant, range=Optional[int])
+
+slots.functional_annotation_has_function = Slot(uri=NMDC.has_function, name="functional annotation_has function", curie=NMDC.curie('has_function'),
+                   model_uri=NMDC.functional_annotation_has_function, domain=FunctionalAnnotation, range=Optional[str],
+                   pattern=re.compile(r'^(KEGG.PATHWAY:\w{2,4}\d{5}|KEGG.REACTION:R\d+|RHEA:\d{5}|MetaCyc:[A-Za-z0-9+_.%-:]+|EC:\d{1,2}(\.\d{0,3}){0,3}|GO:\d{7}|MetaNetX:(MNXR\d+|EMPTY)|SEED:\w+|KEGG\.ORTHOLOGY:K\d+|EGGNOG:\w+|PFAM:PF\d{5}|TIGRFAM:TIGR\d+|SUPFAM:\w+|CATH:[1-6]\.[0-9]+\.[0-9]+\.[0-9]+|PANTHER.FAMILY:PTHR\d{5}(\:SF\d{1,3})?)$'))
 
 slots.functional_annotation_type = Slot(uri=NMDC.type, name="functional annotation_type", curie=NMDC.curie('type'),
                    model_uri=NMDC.functional_annotation_type, domain=FunctionalAnnotation, range=Optional[Union[str, OntologyClassId]])
