@@ -2718,7 +2718,8 @@
           "type": "string"
         },
         "doi": {
-          "$ref": "#/definitions/AttributeValue"
+          "$ref": "#/definitions/AttributeValue",
+          "description": "The dataset citation for this study"
         },
         "ecosystem": {
           "description": "TODO",
