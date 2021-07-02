@@ -324,6 +324,10 @@ classes:
       - websites
       - publications
       - type  # custom slot that specifies object type
+    slot_usage:
+      doi:
+        description: >-
+          The dataset citation for this study
     todos:
       - determine how to get data values for submitted_to_insdc, investigation_type, experimental_factor
       - project_name is redundant with name, so excluding it      
