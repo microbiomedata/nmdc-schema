@@ -304,7 +304,7 @@ classes:
     is_a: named thing
     in_subset: 
       - sample subset
-    aliases: ['proposal', 'research proposal', 'research study', 'investigation']
+    aliases: ['proposal', 'research proposal', 'research study', 'investigation', 'project']
     description: >-
       A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.  
     slots:
@@ -324,13 +324,29 @@ classes:
       - websites
       - publications
       - type  # custom slot that specifies object type
+      - SRA studies
+      - GOLD studies
+      - bioprojects
+      - MGnify projects
     slot_usage:
       doi:
         description: >-
           The dataset citation for this study
+    exact_mappings:
+      - SIO:001066  ## study
+      - NCIT:C63536 ## study
+      - OBI:0000066 ## investigation
+      - ISA:Study
+    closed_mappings:
+      - NCIT:C41198 ## investigation
+      - ISA:Investigation
     todos:
       - determine how to get data values for submitted_to_insdc, investigation_type, experimental_factor
-      - project_name is redundant with name, so excluding it      
+      - project_name is redundant with name, so excluding it
+    id_spaces:
+      - GOLD ## https://identifiers.org/gold:Gs0110115
+      - ena.embl ## https://www.ebi.ac.uk/ena/browser/view/PRJEB45055?
+      - mgnify ## https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757
           
   biosample processing:
     aliases:
@@ -741,3 +757,49 @@ slots:
   
   completion_date:
     range: string
+
+  external database identifiers:
+    abstract: true
+    range: external identifier
+    close_mappings:
+      - skos:closeMatch
+
+  GOLD identifiers:
+    mixin: true
+
+  SRA studies:
+    is_a: external database identifiers
+    pattern: "^ena.embl:SRP\d+$"
+    multivalued: true
+    description:
+      - identifiers for corresponding project in European SRA
+    examples:
+      - value: https://identifiers.org/ena.embl:SRP121659
+
+  GOLD studies:
+    is_a: external database identifiers
+    mixins:
+      - GOLD identifiers
+    pattern: "^GOLD:Gs\d+$"
+    multivalued: true
+    description:
+      - identifiers for corresponding project in GOLD
+    examples:
+      - value: https://identifiers.org/gold:Gs0110115
+
+  bioprojects:
+    is_a: external database identifiers
+    pattern: "^bioproject:PRJ[DEN][A-Z]\d+$"
+    description:
+      - identifiers for corresponding project in NCBI Bioproject
+    examples:
+      - value: https://identifiers.org/bioproject:PRJNA366857
+    
+  MGnify projects:
+    is_a: external database identifiers
+    pattern: "^mgnify.proj:[A-Z]+[0-9]+$"
+    description:
+      - identifiers for corresponding project in MGnify
+    examples:
+      - value: https://identifiers.org/mgnify.proj:MGYS00005757
+    
