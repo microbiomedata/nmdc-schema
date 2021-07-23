@@ -13,6 +13,7 @@ prefixes:
 imports:
   - prov
   - core
+  - external_identifiers
 
 subsets:
   workflow subset:
