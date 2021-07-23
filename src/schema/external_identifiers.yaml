@@ -9,6 +9,7 @@ prefixes:
   nmdc: https://microbiomedata/meta/
   prov: http://www.w3.org/ns/prov#
   linkml: https://w3id.org/linkml/
+  GOLD: https://identifiers.org/gold/
   
 default_prefix: nmdc
 default_range: string
@@ -19,7 +20,8 @@ default_curi_maps:
 
 imports:
   - linkml:types
-
+  - core
+  
 types:
   
   external identifier:
@@ -32,6 +34,7 @@ types:
 slots:
   
   external database identifiers:
+    is_a: alternative identifiers
     abstract: true
     multivalued: true
     description:
@@ -56,7 +59,7 @@ slots:
     mixin: true
     description: >-
       Any identifier covered by the International Nucleotide Sequence Database Collaboration
-    comment:
+    comments:
       - note that we deliberately abstract over which of the partner databases accepted the initial submission
       - the first letter of the accession indicates which partner accepted the initial submission: E for ENA, D for DDBJ, or S or N for NCBI.
     see_also:
@@ -67,7 +70,6 @@ slots:
 
   study identifiers:
     abstract: true
-    domain: study
     is_a: external database identifiers
   
   INSDC SRA ENA study identifiers:
@@ -90,10 +92,10 @@ slots:
     is_a: study identifiers
     mixins:
       - INSDC identifiers
-    pattern: "^bioproject:PRJ[DEN][A-Z]\d+$"
+    pattern: "^bioproject:PRJ[DEN][A-Z][0-9]+$"
     description:
       - identifiers for corresponding project in INSDC Bioproject
-    comment:
+    comments:
       - these are distinct IDs from INSDC SRA/ENA project identifiers, but are usually(?) one to one
     examples:
       - value: https://identifiers.org/bioproject:PRJNA366857
@@ -106,7 +108,7 @@ slots:
     is_a: study identifiers
     mixins:
       - GOLD identifiers
-    pattern: "^GOLD:Gs\d+$"
+    pattern: "^GOLD:Gs[0-9]+$"
     multivalued: true
     description:
       - identifiers for corresponding project in GOLD
@@ -127,14 +129,13 @@ slots:
 
   sample identifiers:
     abstract: true
-    domain: sample
     is_a: external database identifiers
   
   GOLD sample identifiers:
     is_a: sample identifiers
     mixins:
       - GOLD identifiers
-    pattern: "^GOLD:Gb\d+$"
+    pattern: "^GOLD:Gb[0-9]+$"
     multivalued: true
     description:
       - identifiers for corresponding sample in GOLD
@@ -145,7 +146,7 @@ slots:
     is_a: sample identifiers
     mixins:
       - INSDC identifiers
-    pattern: "^biosample:SAM[NED](\w)?\d+$"
+    pattern: "^biosample:SAM[NED]([A-Z])?[0-9]+$"
     multivalued: true
     description:
       - identifiers for corresponding sample in INSDC
@@ -177,14 +178,13 @@ slots:
 
   omics processing identifiers:
     abstract: true
-    domain: omics processing
     is_a: external database identifiers
   
   GOLD sequencing project identifiers:
     is_a: external database identifiers
     mixins:
       - GOLD identifiers
-    pattern: "^GOLD:Gp\d+$"
+    pattern: "^GOLD:Gp[0-9]+$"
     multivalued: true
     description:
       - identifiers for corresponding sequencing project in GOLD
@@ -201,14 +201,13 @@ slots:
 
   analysis identifiers:
     abstract: true
-    domain: workflow execution activity
     is_a: external database identifiers
   
   GOLD analysis project identifiers:
     is_a: analysis identifiers
     mixins:
       - GOLD identifiers
-    pattern: "^GOLD:Ga\d+$"
+    pattern: "^GOLD:Ga[0-9]+$"
     multivalued: true
     description:
       - identifiers for corresponding analysis project in GOLD
@@ -217,7 +216,7 @@ slots:
 
   INSDC analysis identifiers:
     is_a: analysis identifiers
-    comment:
+    comments:
       - in INSDC this is a run but it corresponds to a GOLD analysis
     pattern: "^insdc.sra:(E|D|S)RR[0-9]{6,}$"
     mixins:
@@ -228,7 +227,7 @@ slots:
 
   MGnify analysis identifiers:
     is_a: analysis identifiers
-    #pattern: "^mgnify:MGYA\d+$" ## TODO https://github.com/bioregistry/bioregistry/issues/109
+    #pattern: "^mgnify:MGYA[0-9]+$" ## TODO https://github.com/bioregistry/bioregistry/issues/109
     mixins:
       - MGnify identifiers
     examples:
@@ -239,11 +238,10 @@ slots:
 
   assembly identifiers:
     abstract: true
-    domain: metagenome assembly
 
   INSDC assembly identifiers:
     is_a: assembly identifiers
-    pattern: "^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$"
+    pattern: "^insdc.sra:[A-Z]+[0-9]+(\\.[0-9]+)?$"
     mixins:
       - INSDC identifiers
     

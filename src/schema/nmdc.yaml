@@ -52,7 +52,7 @@ imports:
   - prov
   - workflow_execution_activity
   - annotation
-  - external identifiers
+  - external_identifiers
 
 subsets:
   sample subset:
@@ -279,6 +279,9 @@ classes:
       - soluble_iron_micromol
       - subsurface_depth
       - subsurface_depth2
+      - GOLD sample identifiers
+      - INSDC biosample identifiers
+      - INSDC secondary sample identifiers
     slot_usage:
       lat_lon:
         required: false
@@ -325,10 +328,11 @@ classes:
       - websites
       - publications
       - type  # custom slot that specifies object type
-      - SRA studies
-      - GOLD studies
-      - bioprojects
-      - MGnify projects
+      # external IDs
+      - INSDC bioproject identifiers
+      - INSDC SRA ENA study identifiers
+      - GOLD study identifiers
+      - MGnify project identifiers
     slot_usage:
       doi:
         description: >-
@@ -338,15 +342,15 @@ classes:
       - NCIT:C63536 ## study
       - OBI:0000066 ## investigation
       - ISA:Study
-    closed_mappings:
+    close_mappings:
       - NCIT:C41198 ## investigation
       - ISA:Investigation
     todos:
       - determine how to get data values for submitted_to_insdc, investigation_type, experimental_factor
       - project_name is redundant with name, so excluding it
-    id_spaces:
+    id_prefixes:
       - GOLD ## https://identifiers.org/gold:Gs0110115
-      - ena.embl ## https://www.ebi.ac.uk/ena/browser/view/PRJEB45055?
+      - insdc.srs ## https://www.ebi.ac.uk/ena/browser/view/PRJEB45055?
       - mgnify ## https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757
           
   biosample processing:
