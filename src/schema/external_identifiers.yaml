@@ -57,6 +57,10 @@ slots:
 
   INSDC identifiers:
     mixin: true
+    aliases:
+      - EBI identifiers
+      - NCBI identifiers
+      - DDBJ identifiers
     description: >-
       Any identifier covered by the International Nucleotide Sequence Database Collaboration
     comments:
@@ -76,6 +80,10 @@ slots:
     is_a: study identifiers
     mixins:
       - INSDC identifiers
+    aliases:
+      - EBI ENA study identifiers
+      - NCBI SRA identifiers
+      - DDBJ SRA identifiers
     pattern: "^insdc.sra:(E|D|S)RP[0-9]{6,}$"
     multivalued: true
     description:
@@ -92,6 +100,9 @@ slots:
     is_a: study identifiers
     mixins:
       - INSDC identifiers
+    aliases:
+      - NCBI bioproject identifiers
+      - DDBJ bioproject identifiers
     pattern: "^bioproject:PRJ[DEN][A-Z][0-9]+$"
     description:
       - identifiers for corresponding project in INSDC Bioproject
@@ -146,6 +157,10 @@ slots:
     is_a: sample identifiers
     mixins:
       - INSDC identifiers
+    aliases:
+      - EBI biosample identifiers
+      - NCBI biosample identifiers
+      - DDBJ biosample identifiers
     pattern: "^biosample:SAM[NED]([A-Z])?[0-9]+$"
     multivalued: true
     description:
@@ -189,13 +204,14 @@ slots:
     description:
       - identifiers for corresponding sequencing project in GOLD
     examples:
-      - value: https://identifiers.org/gold:GpTODO
+      - value: https://identifiers.org/gold:Gp0108335
 
   INSDC experiment identifiers:
     is_a: external database identifiers
     pattern: "^insdc.sra:(E|D|S)RX[0-9]{6,}$"
     mixins:
       - INSDC identifiers
+    
         
   ## analysis run
 
@@ -224,6 +240,8 @@ slots:
     examples:
       - value: https://www.ebi.ac.uk/metagenomics/runs/DRR218479
         description: Illumina MiSeq paired end sequencing of SAMD00212331
+      - value: https://www.ebi.ac.uk/ena/browser/view/ERR436051
+
 
   MGnify analysis identifiers:
     is_a: analysis identifiers

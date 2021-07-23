@@ -132,6 +132,9 @@ classes:
     description: >-
       A material sample. It may be environmental (encompassing many organisms) or isolate or tissue.  
       An environmental sample containing genetic material from multiple individuals is commonly referred to as a biosample.
+    alt_descriptions:
+      embl.ena: >-
+        A sample contains information about the sequenced source material. Samples are associated with checklists, which define the fields used to annotate the samples. Samples are always associated with a taxon.
     slots:
       - type  # custom slot that specifies object type
       - alternative identifiers
@@ -279,6 +282,7 @@ classes:
       - soluble_iron_micromol
       - subsurface_depth
       - subsurface_depth2
+      # external IDs      
       - GOLD sample identifiers
       - INSDC biosample identifiers
       - INSDC secondary sample identifiers
@@ -308,9 +312,12 @@ classes:
     is_a: named thing
     in_subset: 
       - sample subset
-    aliases: ['proposal', 'research proposal', 'research study', 'investigation', 'project']
+    aliases: ['proposal', 'research proposal', 'research study', 'investigation', 'project', 'umbrella project']
     description: >-
       A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.  
+    alt_descriptions:
+      embl.ena: >-
+        A study (project) groups together data submitted to the archive and controls its release date. A study accession is typically used when citing data submitted to ENA
     slots:
       - ecosystem
       - ecosystem_category
@@ -371,11 +378,16 @@ classes:
   omics processing:
     aliases:
       - omics assay
+      - sequencing project
+      - experiment
     is_a: biosample processing
     in_subset: 
       - sample subset
     description: >-
       The methods and processes used to generate omics data from a biosample or organism.
+    alt_descriptions:
+      embl.ena: >-
+        An experiment contains information about a sequencing experiment including library and instrument details.
     comments:
       - The IDs for objects coming from GOLD will have prefixes gold:GpNNNN
     slots:
@@ -390,6 +402,9 @@ classes:
       - principal investigator
       - processing_institution
       - type  # custom slot that specifies object type
+      # external IDs
+      - GOLD sequencing project identifiers
+      - INSDC experiment identifiers
     slot_usage:
       has input:
         required: true
@@ -399,6 +414,7 @@ classes:
         required: true
     broad_mappings:
       - OBI:0000070 ## assay: https://github.com/microbiomedata/nmdc-metadata/issues/171
+      - ISA:Assay
   
   
 enums:
