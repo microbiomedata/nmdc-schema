@@ -72,11 +72,6 @@ types:
       - qud:Unit
       - UO:0000000
 
-  external identifier:
-    typeof: uriorcurie
-    description: >-
-      A CURIE representing an external identifier
-
 
     
 classes:

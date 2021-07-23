@@ -1,0 +1,251 @@
+id: https://microbiomedata/schema/external_identifiers
+name: NMDC-External-Identifiers
+title: NMDC External Identifiers
+description: >-
+  External identifiers
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+prefixes:
+  nmdc: https://microbiomedata/meta/
+  prov: http://www.w3.org/ns/prov#
+  linkml: https://w3id.org/linkml/
+  
+default_prefix: nmdc
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+
+imports:
+  - linkml:types
+
+types:
+  
+  external identifier:
+    typeof: uriorcurie
+    description: >-
+      A CURIE representing an external identifier
+    see_also:
+      - https://microbiomedata.github.io/nmdc-schema/identifiers.html
+  
+slots:
+  
+  external database identifiers:
+    abstract: true
+    multivalued: true
+    description:
+      Link to corresponding identifier in external database
+    comments:
+      The value of this field is always a registered CURIE
+    range: external identifier
+    close_mappings:
+      - skos:closeMatch
+
+  GOLD identifiers:
+    mixin: true
+    see_also:
+      - https://gold.jgi.doe.gov/
+
+  MGnify identifiers:
+    mixin: true
+    see_also:
+      - https://www.ebi.ac.uk/metagenomics/
+
+  INSDC identifiers:
+    mixin: true
+    description: >-
+      Any identifier covered by the International Nucleotide Sequence Database Collaboration
+    comment:
+      - note that we deliberately abstract over which of the partner databases accepted the initial submission
+      - the first letter of the accession indicates which partner accepted the initial submission: E for ENA, D for DDBJ, or S or N for NCBI.
+    see_also:
+      - https://www.insdc.org/
+      - https://ena-docs.readthedocs.io/en/latest/submit/general-guide/accessions.html
+
+  ## studies
+
+  study identifiers:
+    abstract: true
+    domain: study
+    is_a: external database identifiers
+  
+  INSDC SRA ENA studies:
+    is_a: study identifiers
+    mixins:
+      - INSDC identifiers
+    pattern: "^insdc.sra:(E|D|S)RP[0-9]{6,}$"
+    multivalued: true
+    description:
+      - identifiers for corresponding project in INSDC SRA / ENA
+    examples:
+      - value: https://identifiers.org/insdc.sra:SRP121659
+        description: Avena fatua rhizosphere microbial communities - H1_Rhizo_Litter_2 metatranscriptome
+    see_also:
+      - https://github.com/bioregistry/bioregistry/issues/109
+      - https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=studies
+      - https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=studies
+
+  bioprojects:
+    is_a: study identifiers
+    mixins:
+      - INSDC identifiers
+    pattern: "^bioproject:PRJ[DEN][A-Z]\d+$"
+    description:
+      - identifiers for corresponding project in INSDC Bioproject
+    comment:
+      - these are distinct IDs from INSDC SRA/ENA project identifiers, but are usually(?) one to one
+    examples:
+      - value: https://identifiers.org/bioproject:PRJNA366857
+        description: Avena fatua rhizosphere microbial communities - H1_Rhizo_Litter_2 metatranscriptome
+    see_also:
+      - https://www.ncbi.nlm.nih.gov/bioproject/
+      - https://www.ddbj.nig.ac.jp/bioproject/index-e.html
+        
+  GOLD studies:
+    is_a: study identifiers
+    mixins:
+      - GOLD identifiers
+    pattern: "^GOLD:Gs\d+$"
+    multivalued: true
+    description:
+      - identifiers for corresponding project in GOLD
+    examples:
+      - value: https://identifiers.org/gold:Gs0110115
+    see_also:
+      - https://gold.jgi.doe.gov/studies
+
+  MGnify projects:
+    is_a: study identifiers
+    pattern: "^mgnify.proj:[A-Z]+[0-9]+$"
+    description:
+      - identifiers for corresponding project in MGnify
+    examples:
+      - value: https://identifiers.org/mgnify.proj:MGYS00005757
+    
+  ## samples
+
+  sample identifiers:
+    abstract: true
+    domain: sample
+    is_a: external database identifiers
+  
+  GOLD samples:
+    is_a: sample identifiers
+    mixins:
+      - GOLD identifiers
+    pattern: "^GOLD:Gb\d+$"
+    multivalued: true
+    description:
+      - identifiers for corresponding sample in GOLD
+    examples:
+      - value: https://identifiers.org/gold:GbTODO
+
+  INSDC biosamples:
+    is_a: sample identifiers
+    mixins:
+      - INSDC identifiers
+    pattern: "^biosample:SAM[NED](\w)?\d+$"
+    multivalued: true
+    description:
+      - identifiers for corresponding sample in INSDC
+    examples:
+      - value: https://identifiers.org/biosample:SAMEA5989477
+      - value: https://identifiers.org/biosample:SAMD00212331
+        description: I13_N_5-10 sample from Soil fungal diversity along elevational gradients
+    see_also:
+      - https://github.com/bioregistry/bioregistry/issues/108
+      - https://www.ebi.ac.uk/biosamples/
+      - https://www.ncbi.nlm.nih.gov/biosample
+      - https://www.ddbj.nig.ac.jp/biosample/index-e.html
+
+  INSDC secondary sample identifiers:
+    is_a: sample identifiers
+    mixins:
+      - INSDC identifiers
+    pattern: "^biosample:(E|D|S)RS[0-9]{6,}$"
+    description:
+      - secondary identifiers for corresponding sample in INSDC
+    comments:
+      - ENA redirects these to primary IDs, e.g. https://www.ebi.ac.uk/ena/browser/view/DRS166340 -> SAMD00212331
+      - MGnify uses these as their primary sample IDs
+    examples:
+      - value: https://identifiers.org/insdc.sra:DRS166340
+        description: I13_N_5-10 sample from Soil fungal diversity along elevational gradients
+
+  ## omics processing
+
+  omics processing identifiers:
+    abstract: true
+    domain: omics processing
+    is_a: external database identifiers
+  
+  GOLD sequencing projects:
+    is_a: external database identifiers
+    mixins:
+      - GOLD identifiers
+    pattern: "^GOLD:Gp\d+$"
+    multivalued: true
+    description:
+      - identifiers for corresponding sequencing project in GOLD
+    examples:
+      - value: https://identifiers.org/gold:GpTODO
+
+  INSDC experiments:
+    is_a: external database identifiers
+    pattern: "^insdc.sra:(E|D|S)RX[0-9]{6,}$"
+    mixins:
+      - INSDC identifiers
+        
+  ## analysis run
+
+  analysis identifiers:
+    abstract: true
+    domain: workflow execution activity
+    is_a: external database identifiers
+  
+  GOLD analysis projects:
+    is_a: analysis identifiers
+    mixins:
+      - GOLD identifiers
+    pattern: "^GOLD:Ga\d+$"
+    multivalued: true
+    description:
+      - identifiers for corresponding analysis project in GOLD
+    examples:
+      - value: https://identifiers.org/gold:GaTODO
+
+  INSDC analyses:
+    is_a: analysis identifiers
+    comment:
+      - in INSDC this is a run but it corresponds to a GOLD analysis
+    pattern: "^insdc.sra:(E|D|S)RR[0-9]{6,}$"
+    mixins:
+      - INSDC identifiers
+    examples:
+      - value: https://www.ebi.ac.uk/metagenomics/runs/DRR218479
+        description: Illumina MiSeq paired end sequencing of SAMD00212331
+
+  MGnify analyses:
+    is_a: analysis identifiers
+    #pattern: "^mgnify:MGYA\d+$" ## TODO https://github.com/bioregistry/bioregistry/issues/109
+    mixins:
+      - MGnify identifiers
+    examples:
+      - value: https://www.ebi.ac.uk/metagenomics/analyses/MGYA00002270
+        description: combined analyses (taxonomic, functional) of sample ERS438107
+
+  ## assemblies
+
+  assembly identifiers:
+    abstract: true
+    domain: metagenome assembly
+
+  INSDC assembly identifiers:
+    is_a: assembly identifiers
+    pattern: "^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$"
+    mixins:
+      - INSDC identifiers
+    
+  
+  
