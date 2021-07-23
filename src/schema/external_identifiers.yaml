@@ -70,7 +70,7 @@ slots:
     domain: study
     is_a: external database identifiers
   
-  INSDC SRA ENA studies:
+  INSDC SRA ENA study identifiers:
     is_a: study identifiers
     mixins:
       - INSDC identifiers
@@ -86,7 +86,7 @@ slots:
       - https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=studies
       - https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=studies
 
-  bioprojects:
+  INSDC bioproject identifiers:
     is_a: study identifiers
     mixins:
       - INSDC identifiers
@@ -102,7 +102,7 @@ slots:
       - https://www.ncbi.nlm.nih.gov/bioproject/
       - https://www.ddbj.nig.ac.jp/bioproject/index-e.html
         
-  GOLD studies:
+  GOLD study identifiers:
     is_a: study identifiers
     mixins:
       - GOLD identifiers
@@ -115,7 +115,7 @@ slots:
     see_also:
       - https://gold.jgi.doe.gov/studies
 
-  MGnify projects:
+  MGnify project identifiers:
     is_a: study identifiers
     pattern: "^mgnify.proj:[A-Z]+[0-9]+$"
     description:
@@ -130,7 +130,7 @@ slots:
     domain: sample
     is_a: external database identifiers
   
-  GOLD samples:
+  GOLD sample identifiers:
     is_a: sample identifiers
     mixins:
       - GOLD identifiers
@@ -141,7 +141,7 @@ slots:
     examples:
       - value: https://identifiers.org/gold:GbTODO
 
-  INSDC biosamples:
+  INSDC biosample identifiers:
     is_a: sample identifiers
     mixins:
       - INSDC identifiers
@@ -180,7 +180,7 @@ slots:
     domain: omics processing
     is_a: external database identifiers
   
-  GOLD sequencing projects:
+  GOLD sequencing project identifiers:
     is_a: external database identifiers
     mixins:
       - GOLD identifiers
@@ -191,7 +191,7 @@ slots:
     examples:
       - value: https://identifiers.org/gold:GpTODO
 
-  INSDC experiments:
+  INSDC experiment identifiers:
     is_a: external database identifiers
     pattern: "^insdc.sra:(E|D|S)RX[0-9]{6,}$"
     mixins:
@@ -204,7 +204,7 @@ slots:
     domain: workflow execution activity
     is_a: external database identifiers
   
-  GOLD analysis projects:
+  GOLD analysis project identifiers:
     is_a: analysis identifiers
     mixins:
       - GOLD identifiers
@@ -215,7 +215,7 @@ slots:
     examples:
       - value: https://identifiers.org/gold:GaTODO
 
-  INSDC analyses:
+  INSDC analysis identifiers:
     is_a: analysis identifiers
     comment:
       - in INSDC this is a run but it corresponds to a GOLD analysis
@@ -226,7 +226,7 @@ slots:
       - value: https://www.ebi.ac.uk/metagenomics/runs/DRR218479
         description: Illumina MiSeq paired end sequencing of SAMD00212331
 
-  MGnify analyses:
+  MGnify analysis identifiers:
     is_a: analysis identifiers
     #pattern: "^mgnify:MGYA\d+$" ## TODO https://github.com/bioregistry/bioregistry/issues/109
     mixins:
