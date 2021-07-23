@@ -58,7 +58,6 @@ classes:
         required: true
       was informed by:
         required: true
-        range: omics processing
       execution resource:
         required: true
       type:
