@@ -164,8 +164,7 @@ SCHEMA_TEST_EXAMPLES := \
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
 	invalid_study_test \
-
-# 	functional_annotation_set_invalid has invalid ID pattern but regex tests aren't applied yet? MAM 2021-06-24
+	functional_annotation_set_invalid
 
 .PHONY: test-jsonschema
 test-jsonschema: $(foreach example, $(SCHEMA_TEST_EXAMPLES), validate-$(example))
