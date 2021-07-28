@@ -40,10 +40,10 @@
       "has_function": "SUPFAM:SSF57615"
     },
     {
-      "has_function": "CATH:veNOG12876"
+      "has_function": "CATH:1.10.10.200"
     },
     {
-      "has_function": "PANTHER.FAMILY:1.10.8.10"
+      "has_function": "PANTHER.FAMILY:PTHR12345"
     }
   ]
 }
