@@ -5,10 +5,11 @@ SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
 
 SCHEMA_NAME = nmdc
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
-TGTS = graphql jsonschema docs shex owl csv graphql python
+#TGTS = graphql jsonschema docs shex owl csv  python
+TGTS = jsonschema python docs
 
 #GEN_OPTS = --no-mergeimports
-GEN_OPTS = 
+GEN_OPTS = --closed
 
 all: gen stage
 gen: $(patsubst %,gen-%,$(TGTS))
@@ -70,11 +71,7 @@ target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
 gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json
 target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
 	gen-json-schema $(GEN_OPTS) -t database $< > $@
-
-# This is temporary fix to apply additionalProperties: false gloabally
-# see: https://github.com/linkml/linkml/issues/106
-	jq '. += {"additionalProperties": false}' $@ > $@.tmp && mv $@.tmp $@
-
+	
 ###  -- Shex --
 # one file per module
 gen-shex: $(patsubst %, target/shex/%.shex, $(SCHEMA_NAMES))
