@@ -6,7 +6,7 @@ SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
 SCHEMA_NAME = nmdc
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
 #TGTS = graphql jsonschema docs shex owl csv  python
-TGTS = jsonschema python docs
+TGTS = jsonschema jsonld-context python docs
 
 #GEN_OPTS = --no-mergeimports
 GEN_OPTS =
@@ -32,6 +32,7 @@ install:
 
 tdir-%:
 	mkdir -p target/$*
+
 docs:
 	mkdir $@
 
@@ -76,6 +77,10 @@ target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
 	pipenv run gen-json-schema $(GEN_OPTS) --closed -t database $< > $@
 
 ###  -- JSONLD Context --
+gen-jsonld-context: target/jsonld-context/$(SCHEMA_NAME).context.jsonld
+.PHONY: gen-jsonld-context
+target/jsonld-context/%.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld-context
+	pipenv run gen-jsonld-context $(GEN_OPTS) $< > $@
 
 ###  -- Shex --
 # one file per module
