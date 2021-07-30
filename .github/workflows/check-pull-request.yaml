@@ -20,7 +20,11 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE
     - name: Checkout
       uses: actions/checkout@v2
-
+    
+    # Setup Python
+    - name: Setup Python
+      uses: actions/setup-python@v2
+        
     # Install dependencies
     - name: Install Dependencies
       run: |
