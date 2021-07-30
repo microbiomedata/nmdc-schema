@@ -189,7 +189,7 @@ test-jsonschema_invalid: $(foreach example, $(SCHEMA_TEST_EXAMPLES_INVALID), val
 
 validate-%: test/data/%.json jsonschema/nmdc.schema.json
 # util/validate_nmdc_json.py -i $< # example of validating data using the cli
-	jsonschema -i $< $(word 2, $^)
+	pipenv run jsonschema -i $< $(word 2, $^)
 
 validate-invalid-%: test/data/%.json jsonschema/nmdc.schema.json
 	@echo $(word 2, $^)
