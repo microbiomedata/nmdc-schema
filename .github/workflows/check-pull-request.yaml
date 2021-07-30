@@ -25,13 +25,15 @@ jobs:
     - name: Install Dependencies
       run: |
         pip install --upgrade pip
-        pip install linkml
+        pip install pipenv
+        # pip install linkml
 
     # Excute the Makefile to build generated artifacts
     - name: Make Artifacts
       run: |
-        make stage-jsonschema
-        make stage-python
+        make all
+        # make stage-jsonschema
+        # make stage-python
         
     # Validate json schema aganst test data
     - name: Validate JSON Schema
