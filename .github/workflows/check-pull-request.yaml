@@ -32,12 +32,20 @@ jobs:
       run: python3 -m pip install pipenv
         
     # Install dependencies
-    - name: Install dependencies
-      run: pipenv install -d
+    #- name: Install dependencies
+    #  run: pipenv install -d
         # pip install --upgrade pip
         # pip install pipenv
         # pip install linkml
 
+    # Load pipenv from cache
+    # see: https://github.com/actions/cache/blob/main/examples.md#python---pipenv
+    - name: Load pipenv from cache
+      uses: actions/cache@v2
+      with:
+        path: ~/.local/share/virtualenvs
+        key: ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-pipenv-${{ hashFiles('Pipfile.lock') }}
+    
     # Excute the Makefile to build generated artifacts
     - name: Make Artifacts
       run: |
