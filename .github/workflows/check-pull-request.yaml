@@ -31,13 +31,6 @@ jobs:
     - name: Install pipenv
       run: python3 -m pip install pipenv
         
-    # Install dependencies
-    #- name: Install dependencies
-    #  run: pipenv install -d
-        # pip install --upgrade pip
-        # pip install pipenv
-        # pip install linkml
-
     # Load pipenv from cache
     # see: https://github.com/actions/cache/blob/main/examples.md#python---pipenv
     - name: Load pipenv from cache
@@ -45,7 +38,17 @@ jobs:
       with:
         path: ~/.local/share/virtualenvs
         key: ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-pipenv-${{ hashFiles('Pipfile.lock') }}
-    
+
+
+    # Install dependencies if cache was not loaded
+    - name: Install dependencies
+      if: steps.cache-pipenv.outputs.cache-hit != 'true'
+      run: pipenv install -d
+        # pip install --upgrade pip
+        # pip install pipenv
+        # pip install linkml
+
+
     # Excute the Makefile to build generated artifacts
     - name: Make Artifacts
       run: |
