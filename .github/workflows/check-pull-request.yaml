@@ -21,7 +21,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     
-    # Setup Python
     - name: Setup Python
       uses: actions/setup-python@v2
       with:
@@ -31,8 +30,8 @@ jobs:
     - name: Install pipenv
       run: python3 -m pip install pipenv
         
-    # Load pipenv from cache
-    # see: https://github.com/actions/cache/blob/main/examples.md#python---pipenv
+    # Load pipenv virtual environment from cache
+    # see: https://ianwhitestone.work/aws-serverless-deployments-with-github-actions/
     - name: Load pipenv from cache
       uses: actions/cache@v2
       with:
@@ -40,21 +39,15 @@ jobs:
         key: ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-pipenv-${{ hashFiles('Pipfile.lock') }}
 
 
-    # Install dependencies if cache was not loaded
+    # If cache was not loaded ,install dependencies
     - name: Install dependencies
       if: steps.cache-pipenv.outputs.cache-hit != 'true'
       run: pipenv install -d
-        # pip install --upgrade pip
-        # pip install pipenv
-        # pip install linkml
-
 
     # Excute the Makefile to build generated artifacts
     - name: Make Artifacts
       run: |
         make all
-        # make stage-jsonschema
-        # make stage-python
         
     # Validate json schema aganst test data
     - name: Validate JSON Schema
