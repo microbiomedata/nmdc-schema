@@ -39,7 +39,7 @@ jobs:
         key: ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-pipenv-${{ hashFiles('Pipfile.lock') }}
 
 
-    # If cache was not loaded ,install dependencies
+    # If cache was not loaded, install dependencies
     - name: Install dependencies
       if: steps.cache-pipenv.outputs.cache-hit != 'true'
       run: pipenv install -d
