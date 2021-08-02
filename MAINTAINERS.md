@@ -17,38 +17,35 @@ As you make you make changes to the NMDC Schema, it is **HIGHLY** recomended tha
 #### Removed
   - Add information about classes, slot, enums etc. removed from the schema
 
+In each of the [Change log](https://github.com/microbiomedata/nmdc-schema/blob/main/CHANGELOG.md) sections, it is often helpful if you mention the issue that the change was meant to address. For example:  
+#### Added
+  - `alternative identifiers` slot added to biosamples (cf. issue 75).
 
-## Making a release of the NMDC Schema
+See the [Change log](https://github.com/microbiomedata/nmdc-schema/blob/main/CHANGELOG.md) for other examples.
 
-The NMDC Schema is deployed to PyPI via the [pypi-publish](https://github.com/microbiomedata/nmdc-schema/blob/main/.github/workflows/pypi-publish.yml) github action.
+When the pull request is merged into the `main` branch, new documentaiton will be generated for changes to the schema.
+
+## Making a PyPI release of the NMDC Schema
+
+The NMDC Schema is deployed to [PyPI](https://pypi.org/project/nmdc-schema/) via the [pypi-publish](https://github.com/microbiomedata/nmdc-schema/blob/main/.github/workflows/pypi-publish.yml) github action.
 
 The steps for making a release are:
+1. Generate the set of artifacts by running `make all`.
+2. If **#1** succeeds and changes have been made to the schema, update the `version` in [nmdc.yaml](https://github.com/microbiomedata/nmdc-schema/blob/main/src/schema/nmdc.yaml) using the format `YYYY.MM.DD`. Note: Changes can be made to the Python package (e.g., functionality added to the CLI) that do not affect the schema. In these cases, the schema does not need to be changed.
+3. If **#1** succeeds:
+  * Make the sure the sections of the [Change log](https://github.com/microbiomedata/nmdc-schema/blob/main/CHANGELOG.md) (discussed above) have been updated appropriately.
+  * Change the `Current (update before releasing)` section of the [Change log](https://github.com/microbiomedata/nmdc-schema/blob/main/CHANGELOG.md) into a hyperlink that matches the tag you assign to the release in step **#4** below.  
+  For example if the tag assigned for the release is `2021.07.01rc1`, change the section to:  
+  ```
+  [2021.07.01rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.07.01rc1)
+  ```
+4. Create a Github release of the schema using the `Releases -> Draft new release` links. The tag of the release must conform to the format `YYYY.MM.DDrc<num>`, where `<num>` is a sequential number of the releases made for that day. For example, if two releases were made on `2021-07-01`, then the tags for that day would be `2021-07-01rc1`, `2021-07-01rc2`. The value of this tag needs to match the value you assigned to the `Current (update before releasing)` section in the [Change log](https://github.com/microbiomedata/nmdc-schema/blob/main/CHANGELOG.md) (discussed above).
+5. Name the release using the format `release-<tag>`, where tag matches the value of the tag you created in **#4**.
+6. Fill in the changes made for this release. This is most easily done by copying the information you recorded in the [Change log](https://github.com/microbiomedata/nmdc-schema/blob/main/CHANGELOG.md).
+7. Click `Publish release` button. This fires the action to update the [PyPI package](https://pypi.org/project/nmdc-schema/).
 
 
-See the instructions at the top of [Makefile](Makefile)
-
-First install the linkml python package and mkdocs:
-
-```bash
-. environment.sh
-pip install -r requirements.txt
-```
-
-Then every time you change the source schema, run:
-
-```bash
-make all
-```
-
-This will generate files in:
-
- * [docs]
- * [jsonschema]
- * [shex]
- * [owl]
- * [rdf]
-
-## Documentation
+## Maintaining the Documentation
 Do **not** git add the files in `docs`. Custom documentation is added to (or edited in) the `src/docs/` directory.
 
 The new documentation is deployed when changes are pushed to the main branch via the [build-deploy-documentation](https://github.com/microbiomedata/nmdc-schema/blob/main/.github/workflows/build-deploy-documentation.yaml) workflow.
