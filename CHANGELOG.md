@@ -1,6 +1,16 @@
 # Change Log
 Changes to the schema are documented in this file.
 
+## Current (update before releasing)
+### Added
+  - N/A
+### Fixed
+  - N/A
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
 ## [2021.07.01rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.07.01rc1)
 ### Added
   - `metatranscriptome activity` class and `metatranscriptome activity set`
