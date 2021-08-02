@@ -1,6 +1,7 @@
 {
   "$id": "https://microbiomedata/schema",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
   "definitions": {
     "Activity": {
       "additionalProperties": false,
@@ -85,7 +86,8 @@
         },
         "al_sat": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Aluminum saturation (esp. For tropical soils)"
+          "description": "Aluminum saturation (esp. For tropical soils)",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "al_sat_meth": {
           "$ref": "#/definitions/TextValue",
@@ -93,7 +95,8 @@
         },
         "alkalinity": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "\"Alkalinity, the ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate\""
+          "description": "\"Alkalinity, the ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate\"",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "alkalinity_method": {
           "$ref": "#/definitions/TextValue",
@@ -101,11 +104,13 @@
         },
         "alkyl_diethers": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Concentration of alkyl diethers "
+          "description": "Concentration of alkyl diethers ",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "alt": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "\"Altitude is a term used to identify heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earthbs surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air\""
+          "description": "\"Altitude is a term used to identify heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earthbs surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air\"",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "alternate_identifiers": {
           "description": "Non-primary identifiers",
@@ -123,39 +128,48 @@
         },
         "aminopept_act": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Measurement of aminopeptidase activity"
+          "description": "Measurement of aminopeptidase activity",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "ammonium": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Concentration of ammonium in the sample"
+          "description": "Concentration of ammonium in the sample",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "annual_precpt": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "\"The average of all annual precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. \""
+          "description": "\"The average of all annual precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. \"",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "annual_temp": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Mean annual temperature"
+          "description": "Mean annual temperature",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "bacteria_carb_prod": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Measurement of bacterial carbon production"
+          "description": "Measurement of bacterial carbon production",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "bishomohopanol": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Concentration of bishomohopanol "
+          "description": "Concentration of bishomohopanol ",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "bromide": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Concentration of bromide "
+          "description": "Concentration of bromide ",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "calcium": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Concentration of calcium in the sample"
+          "description": "Concentration of calcium in the sample",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "carb_nitro_ratio": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Ratio of amount or concentrations of carbon to nitrogen"
+          "description": "Ratio of amount or concentrations of carbon to nitrogen",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "chem_administration": {
           "$ref": "#/definitions/ControlledTermValue",
@@ -163,11 +177,13 @@
         },
         "chloride": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Concentration of chloride in the sample"
+          "description": "Concentration of chloride in the sample",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "chlorophyll": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Concentration of chlorophyll"
+          "description": "Concentration of chlorophyll",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "collection_date": {
           "$ref": "#/definitions/TimestampValue",
@@ -182,7 +198,8 @@
         },
         "cur_land_use": {
           "$ref": "#/definitions/TextValue",
-          "description": "Present state of sample site"
+          "description": "Present state of sample site",
+          "pattern": "[cities|farmstead|industrial areas|roads\\/railroads|rock|sand|gravel|mudflats|salt flats|badlands|permanent snow or ice|saline seeps|mines\\/quarries|oil waste areas|small grains|row crops|vegetable crops|horticultural plants (e.g. tulips)|marshlands (grass,sedges,rushes)|tundra (mosses,lichens)|rangeland|pastureland (grasslands used for livestock grazing)|hayland|meadows (grasses,alfalfa,fescue,bromegrass,timothy)|shrub land (e.g. mesquite,sage\\-brush,creosote bush,shrub oak,eucalyptus)|successional shrub land (tree saplings,hazels,sumacs,chokecherry,shrub dogwoods,blackberries)|shrub crops (blueberries,nursery ornamentals,filberts)|vine crops (grapes)|conifers (e.g. pine,spruce,fir,cypress)|hardwoods (e.g. oak,hickory,elm,aspen)|intermixed hardwood and conifers|tropical (e.g. mangrove,palms)|rainforest (evergreen forest receiving >406 cm annual rainfall)|swamp (permanent or semi\\-permanent water body dominated by woody plants)|crop trees (nuts,fruit,christmas trees,nursery trees)]"
         },
         "cur_vegetation": {
           "$ref": "#/definitions/TextValue",
@@ -194,7 +211,8 @@
         },
         "density": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "\"Density of the sample, which is its mass per unit volume (aka volumetric mass density)\""
+          "description": "\"Density of the sample, which is its mass per unit volume (aka volumetric mass density)\"",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "depth": {
           "$ref": "#/definitions/QuantityValue",
@@ -209,35 +227,43 @@
         },
         "diss_carb_dioxide": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Concentration of dissolved carbon dioxide in the sample or liquid portion of the sample"
+          "description": "Concentration of dissolved carbon dioxide in the sample or liquid portion of the sample",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "diss_hydrogen": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Concentration of dissolved hydrogen"
+          "description": "Concentration of dissolved hydrogen",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "diss_inorg_carb": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "\"Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter\""
+          "description": "\"Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter\"",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "diss_inorg_phosp": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Concentration of dissolved inorganic phosphorus in the sample"
+          "description": "Concentration of dissolved inorganic phosphorus in the sample",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "diss_org_carb": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "\"Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid\""
+          "description": "\"Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid\"",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "diss_org_nitro": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Dissolved organic nitrogen concentration measured as; total dissolved nitrogen - NH4 - NO3 - NO2"
+          "description": "Dissolved organic nitrogen concentration measured as; total dissolved nitrogen - NH4 - NO3 - NO2",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "diss_oxygen": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Concentration of dissolved oxygen"
+          "description": "Concentration of dissolved oxygen",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "drainage_class": {
           "$ref": "#/definitions/TextValue",
-          "description": "Drainage classification from a standard system such as the USDA system"
+          "description": "Drainage classification from a standard system such as the USDA system",
+          "pattern": "[very poorly|poorly|somewhat poorly|moderately well|well|excessively drained]"
         },
         "ecosystem": {
           "description": "TODO",
@@ -257,20 +283,25 @@
         },
         "elev": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "\"Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit\""
+          "description": "\"Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit\"",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "env_broad_scale": {
-          "$ref": "#/definitions/ControlledTermValue"
+          "$ref": "#/definitions/ControlledTermValue",
+          "pattern": ".* \\S+:\\S+"
         },
         "env_local_scale": {
-          "$ref": "#/definitions/ControlledTermValue"
+          "$ref": "#/definitions/ControlledTermValue",
+          "pattern": ".* \\S+:\\S+"
         },
         "env_medium": {
-          "$ref": "#/definitions/ControlledTermValue"
+          "$ref": "#/definitions/ControlledTermValue",
+          "pattern": ".* \\S+:\\S+"
         },
         "env_package": {
           "$ref": "#/definitions/TextValue",
-          "description": "\"MIxS extension for reporting of measurements and observations obtained from one or more of the environments where the sample was obtained. All environmental packages listed here are further defined in separate subtables. By giving the name of the environmental package, a selection of fields can be made from the subtables and can be reported\""
+          "description": "\"MIxS extension for reporting of measurements and observations obtained from one or more of the environments where the sample was obtained. All environmental packages listed here are further defined in separate subtables. By giving the name of the environmental package, a selection of fields can be made from the subtables and can be reported\"",
+          "pattern": "[air|built environment|host\\-associated|human\\-associated|human\\-skin|human\\-oral|human\\-gut|human\\-vaginal|hydrocarbon resources\\-cores|hydrocarbon resources\\-fluids\\/swabs|microbial mat\\/biofilm|misc environment|plant\\-associated|sediment|soil|wastewater\\/sludge|water]"
         },
         "extreme_event": {
           "$ref": "#/definitions/TimestampValue",
@@ -278,7 +309,8 @@
         },
         "fao_class": {
           "$ref": "#/definitions/TextValue",
-          "description": "Soil classification from the FAO World Reference Database for Soil Resources. The list can be found at http://www.fao.org/nr/land/sols/soil/wrb-soil-maps/reference-groups"
+          "description": "Soil classification from the FAO World Reference Database for Soil Resources. The list can be found at http://www.fao.org/nr/land/sols/soil/wrb-soil-maps/reference-groups",
+          "pattern": "[Acrisols|Andosols|Arenosols|Cambisols|Chernozems|Ferralsols|Fluvisols|Gleysols|Greyzems|Gypsisols|Histosols|Kastanozems|Lithosols|Luvisols|Nitosols|Phaeozems|Planosols|Podzols|Podzoluvisols|Rankers|Regosols|Rendzinas|Solonchaks|Solonetz|Vertisols|Yermosols]"
         },
         "fire": {
           "$ref": "#/definitions/TimestampValue",
@@ -294,7 +326,8 @@
         },
         "glucosidase_act": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Measurement of glucosidase activity"
+          "description": "Measurement of glucosidase activity",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "habitat": {
           "type": "string"
@@ -309,7 +342,8 @@
         },
         "horizon": {
           "$ref": "#/definitions/TextValue",
-          "description": "Specific layer in the land area which measures parallel to the soil surface and possesses physical characteristics which differ from the layers above and beneath"
+          "description": "Specific layer in the land area which measures parallel to the soil surface and possesses physical characteristics which differ from the layers above and beneath",
+          "pattern": "[O horizon|A horizon|E horizon|B horizon|C horizon|R layer|Permafrost]"
         },
         "horizon_meth": {
           "$ref": "#/definitions/TextValue",
@@ -327,7 +361,8 @@
         },
         "lat_lon": {
           "$ref": "#/definitions/GeolocationValue",
-          "description": "This is currently a required field but it's not clear if this should be required for human hosts"
+          "description": "This is currently a required field but it's not clear if this should be required for human hosts",
+          "pattern": "\\d+[.\\d+] \\d+[.\\d+]"
         },
         "link_addit_analys": {
           "$ref": "#/definitions/TextValue",
@@ -354,19 +389,23 @@
         },
         "magnesium": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Concentration of magnesium in the sample"
+          "description": "Concentration of magnesium in the sample",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "mean_frict_vel": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Measurement of mean friction velocity"
+          "description": "Measurement of mean friction velocity",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "mean_peak_frict_vel": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Measurement of mean peak friction velocity"
+          "description": "Measurement of mean peak friction velocity",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "microbial_biomass": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "\"The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units\""
+          "description": "\"The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units\"",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "microbial_biomass_meth": {
           "$ref": "#/definitions/TextValue",
@@ -393,19 +432,23 @@
         },
         "nitrate": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Concentration of nitrate in the sample"
+          "description": "Concentration of nitrate in the sample",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "nitrite": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Concentration of nitrite in the sample"
+          "description": "Concentration of nitrite in the sample",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "org_matter": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Concentration of organic matter "
+          "description": "Concentration of organic matter ",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "org_nitro": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Concentration of organic nitrogen"
+          "description": "Concentration of organic nitrogen",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "organism_count": {
           "$ref": "#/definitions/QuantityValue",
@@ -413,7 +456,8 @@
         },
         "oxy_stat_samp": {
           "$ref": "#/definitions/TextValue",
-          "description": "Oxygenation status of sample"
+          "description": "Oxygenation status of sample",
+          "pattern": "[aerobic|anaerobic|other]"
         },
         "part_of": {
           "description": "Relates the biosample to the study for which the sample was collected.",
@@ -424,7 +468,8 @@
         },
         "part_org_carb": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Concentration of particulate organic carbon"
+          "description": "Concentration of particulate organic carbon",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "perturbation": {
           "$ref": "#/definitions/TextValue",
@@ -432,11 +477,13 @@
         },
         "petroleum_hydrocarb": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Concentration of petroleum hydrocarbon"
+          "description": "Concentration of petroleum hydrocarbon",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "ph": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "\"Ph measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid\""
+          "description": "\"Ph measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid\"",
+          "pattern": "\\d+[.\\d+]"
         },
         "ph_meth": {
           "$ref": "#/definitions/TextValue",
@@ -456,11 +503,13 @@
         },
         "potassium": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Concentration of potassium in the sample"
+          "description": "Concentration of potassium in the sample",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "pressure": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "\"Pressure to which the sample is subject to, in atmospheres\""
+          "description": "\"Pressure to which the sample is subject to, in atmospheres\"",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "previous_land_use": {
           "$ref": "#/definitions/TextValue",
@@ -472,18 +521,21 @@
         },
         "profile_position": {
           "$ref": "#/definitions/TextValue",
-          "description": "Cross-sectional position in the hillslope where sample was collected.sample area position in relation to surrounding areas"
+          "description": "Cross-sectional position in the hillslope where sample was collected.sample area position in relation to surrounding areas",
+          "pattern": "[summit|shoulder|backslope|footslope|toeslope]"
         },
         "proport_woa_temperature": {
           "type": "string"
         },
         "redox_potential": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "\"Redox potential, measured relative to a hydrogen cell, indicating oxidation or reduction potential\""
+          "description": "\"Redox potential, measured relative to a hydrogen cell, indicating oxidation or reduction potential\"",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "salinity": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "\"Salinity is the total concentration of all dissolved salts in a water sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater\""
+          "description": "\"Salinity is the total concentration of all dissolved salts in a water sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater\"",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "salinity_category": {
           "description": "Categorcial description of the sample's salinity. Examples: halophile, halotolerant, hypersaline, huryhaline",
@@ -511,22 +563,26 @@
         },
         "samp_store_temp": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "\"Temperature at which sample was stored, e.g. -80 degree Celsius\""
+          "description": "\"Temperature at which sample was stored, e.g. -80 degree Celsius\"",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "samp_vol_we_dna_ext": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "\"Volume (ml), weight (g) of processed sample, or surface area swabbed from sample for DNA extraction\""
+          "description": "\"Volume (ml), weight (g) of processed sample, or surface area swabbed from sample for DNA extraction\"",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "sample_collection_site": {
           "type": "string"
         },
         "season_precpt": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "\"The average of all seasonal precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. \""
+          "description": "\"The average of all seasonal precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. \"",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "season_temp": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Mean seasonal temperature"
+          "description": "Mean seasonal temperature",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "sieving": {
           "$ref": "#/definitions/QuantityValue",
@@ -534,23 +590,28 @@
         },
         "size_frac_low": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample"
+          "description": "Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "size_frac_up": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample"
+          "description": "Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "slope_aspect": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "\"The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees); e.g., nw or 315 degrees. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.\""
+          "description": "\"The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees); e.g., nw or 315 degrees. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.\"",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "slope_gradient": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Commonly called 'slope'. The angle between ground surface and a horizontal line (in percent). This is the direction that overland water would flow. This measure is usually taken with a hand level meter or clinometer"
+          "description": "Commonly called 'slope'. The angle between ground surface and a horizontal line (in percent). This is the direction that overland water would flow. This measure is usually taken with a hand level meter or clinometer",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "sodium": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Sodium concentration in the sample"
+          "description": "Sodium concentration in the sample",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "soil_type": {
           "$ref": "#/definitions/TextValue",
@@ -579,19 +640,23 @@
         },
         "sulfate": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Concentration of sulfate in the sample"
+          "description": "Concentration of sulfate in the sample",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "sulfide": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Concentration of sulfide in the sample"
+          "description": "Concentration of sulfide in the sample",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "temp": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Temperature of the sample at the time of sampling"
+          "description": "Temperature of the sample at the time of sampling",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "texture": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "\"The relative proportion of different grain sizes of mineral particles in a soil, as described using a standard system; express as % sand (50 um to 2 mm), silt (2 um to 50 um), and clay (<2 um) with textural name (e.g., silty clay loam) optional.\""
+          "description": "\"The relative proportion of different grain sizes of mineral particles in a soil, as described using a standard system; express as % sand (50 um to 2 mm), silt (2 um to 50 um), and clay (<2 um) with textural name (e.g., silty clay loam) optional.\"",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "texture_meth": {
           "$ref": "#/definitions/TextValue",
@@ -599,27 +664,33 @@
         },
         "tidal_stage": {
           "$ref": "#/definitions/TextValue",
-          "description": "Stage of tide"
+          "description": "Stage of tide",
+          "pattern": "[low tide|ebb tide|flood tide|high tide]"
         },
         "tillage": {
           "$ref": "#/definitions/TextValue",
-          "description": "Note method(s) used for tilling"
+          "description": "Note method(s) used for tilling",
+          "pattern": "[drill|cutting disc|ridge till|strip tillage|zonal tillage|chisel|tined|mouldboard|disc plough]"
         },
         "tot_carb": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Total carbon content"
+          "description": "Total carbon content",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "tot_depth_water_col": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Measurement of total depth of water column"
+          "description": "Measurement of total depth of water column",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "tot_diss_nitro": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "\"Total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen\""
+          "description": "\"Total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen\"",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "tot_nitro_content": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Total nitrogen content of the sample"
+          "description": "Total nitrogen content of the sample",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "tot_nitro_content_meth": {
           "$ref": "#/definitions/TextValue",
@@ -631,11 +702,13 @@
         },
         "tot_org_carb": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "\"Definition for soil: total organic carbon content of the soil, definition otherwise: total organic carbon content\""
+          "description": "\"Definition for soil: total organic carbon content of the soil, definition otherwise: total organic carbon content\"",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "tot_phosp": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "\"Total phosphorus concentration in the sample, calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus\""
+          "description": "\"Total phosphorus concentration in the sample, calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus\"",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "type": {
           "description": "An optional string that species the type object.  This is used to allow for searches for different kinds of objects.",
@@ -643,7 +716,8 @@
         },
         "water_content": {
           "$ref": "#/definitions/QuantityValue",
-          "description": "Water content measurement"
+          "description": "Water content measurement",
+          "pattern": "\\d+[.\\d+] \\S+"
         },
         "water_content_soil_meth": {
           "$ref": "#/definitions/TextValue",
@@ -1014,6 +1088,7 @@
       "description": "An assignment of a function term (e.g. reaction or pathway) that is executed by a gene product, or which the gene product plays an active role in. Functional annotations can be assigned manually by curators, or automatically in workflows. In the context of NMDC, all function annotation is performed automatically, typically using HMM or Blast type methods",
       "properties": {
         "has_function": {
+          "pattern": "^(KEGG.PATHWAY:\\w{2,4}\\d{5}|KEGG.REACTION:R\\d+|RHEA:\\d{5}|MetaCyc:[A-Za-z0-9+_.%-:]+|EC:\\d{1,2}(\\.\\d{0,3}){0,3}|GO:\\d{7}|MetaNetX:(MNXR\\d+|EMPTY)|SEED:\\w+|KEGG\\.ORTHOLOGY:K\\d+|EGGNOG:\\w+|PFAM:PF\\d{5}|TIGRFAM:TIGR\\d+|SUPFAM:\\w+|CATH:[1-6]\\.[0-9]+\\.[0-9]+\\.[0-9]+|PANTHER.FAMILY:PTHR\\d{5}(\\:SF\\d{1,3})?)$",
           "type": "string"
         },
         "subject": {
@@ -3042,6 +3117,5 @@
     }
   },
   "title": "NMDC",
-  "type": "object",
-  "additionalProperties": false
+  "type": "object"
 }

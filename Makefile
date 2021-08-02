@@ -5,13 +5,15 @@ SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
 
 SCHEMA_NAME = nmdc
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
-TGTS = graphql jsonschema docs shex owl csv graphql python
+#TGTS = graphql jsonschema docs shex owl csv  python
+TGTS = jsonschema jsonld-context python docs
 
 #GEN_OPTS = --no-mergeimports
-GEN_OPTS = 
+GEN_OPTS =
 
 all: gen stage
 gen: $(patsubst %,gen-%,$(TGTS))
+.PHONY: all gen stage clean t echo test install docserve gh-deploy .FORCE
 clean:
 	rm -rf target/
 	rm -f docs/*.md
@@ -25,11 +27,12 @@ echo:
 test: all test-jsonschema
 
 install:
-	. environment.sh
-	pip install -r requirements.txt
+	#. environment.sh
+	pipenv install -r requirements.txt
 
 tdir-%:
 	mkdir -p target/$*
+
 docs:
 	mkdir $@
 
@@ -46,7 +49,7 @@ gen-docs: target/docs/index.md copy-src-docs
 copy-src-docs:
 	cp $(SRC_DIR)/docs/*md target/docs/
 target/docs/%.md: $(SCHEMA_SRC) tdir-docs
-	gen-markdown $(GEN_OPTS) --dir target/docs $<
+	pipenv run gen-markdown $(GEN_OPTS) --dir target/docs $<
 stage-docs: gen-docs
 	cp -pr target/docs .
 
@@ -57,53 +60,61 @@ gen-python: $(patsubst %, target/python/%.py, $(SCHEMA_NAMES))
 target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
 # --no-mergeimports was causing an import error
 #	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
-	gen-py-classes --mergeimports $(GEN_OPTS) $< > $@
+	pipenv run gen-py-classes --mergeimports $(GEN_OPTS) $< > $@
 
 ###  -- MARKDOWN DOCS --
 # TODO: modularize imports. For now imports are merged.
 gen-graphql:target/graphql/$(SCHEMA_NAME).graphql 
+.PHONY: gen-graphql
 target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
-	gen-graphql $(GEN_OPTS) $< > $@
+	pipenv run gen-graphql $(GEN_OPTS) $< > $@
 
 ###  -- JSON schema --
 # TODO: modularize imports. For now imports are merged.
 gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json
+.PHONY: gen-jsonschema
 target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
-	gen-json-schema $(GEN_OPTS) -t database $< > $@
+	pipenv run gen-json-schema $(GEN_OPTS) --closed -t database $< > $@
 
-# This is temporary fix to apply additionalProperties: false gloabally
-# see: https://github.com/linkml/linkml/issues/106
-	jq '. += {"additionalProperties": false}' $@ > $@.tmp && mv $@.tmp $@
+###  -- JSONLD Context --
+gen-jsonld-context: target/jsonld-context/$(SCHEMA_NAME).context.jsonld
+.PHONY: gen-jsonld-context
+target/jsonld-context/%.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld-context
+	pipenv run gen-jsonld-context $(GEN_OPTS) $< > $@
 
 ###  -- Shex --
 # one file per module
 gen-shex: $(patsubst %, target/shex/%.shex, $(SCHEMA_NAMES))
+.PHONY: gen-shex
 target/shex/%.shex: $(SCHEMA_DIR)/%.yaml tdir-shex
-	gen-shex --no-mergeimports $(GEN_OPTS) $< > $@
+	pipenv run gen-shex --no-mergeimports $(GEN_OPTS) $< > $@
 
 ###  -- CSV --
 # one file per module
 gen-csv: $(patsubst %, target/csv/%.csv, $(SCHEMA_NAMES))
+.PHONY: gen-csv
 target/csv/%.csv: $(SCHEMA_DIR)/%.yaml tdir-csv
-	gen-csv $(GEN_OPTS) $< > $@
+	pipenv run gen-csv $(GEN_OPTS) $< > $@
 
 ###  -- OWL --
 # TODO: modularize imports. For now imports are merged.
 gen-owl: target/owl/$(SCHEMA_NAME).owl.ttl
 .PHONY: gen-owl
 target/owl/%.owl.ttl: $(SCHEMA_DIR)/%.yaml tdir-owl
-	gen-owl $(GEN_OPTS) $< > $@
+	pipenv run gen-owl $(GEN_OPTS) $< > $@
 
 ###  -- RDF (direct mapping) --
 # TODO: modularize imports. For now imports are merged.
 gen-rdf: target/rdf/$(SCHEMA_NAME).ttl
+.PHONY: gen-rdf
 target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml tdir-rdf
-	gen-rdf $(GEN_OPTS) $< > $@
+	pipenv run gen-rdf $(GEN_OPTS) $< > $@
 
 ###  -- LinkML --
 # linkml (copy)
 # one file per module
 gen-linkml: target/linkml/$(SCHEMA_NAME).yaml
+.PHONY: gen-linkml
 target/linkml/%.yaml: $(SCHEMA_DIR)/%.yaml tdir-limkml
 	cp $< > $@
 
@@ -178,7 +189,7 @@ test-jsonschema_invalid: $(foreach example, $(SCHEMA_TEST_EXAMPLES_INVALID), val
 
 validate-%: test/data/%.json jsonschema/nmdc.schema.json
 # util/validate_nmdc_json.py -i $< # example of validating data using the cli
-	jsonschema -i $< $(word 2, $^)
+	pipenv run jsonschema -i $< $(word 2, $^)
 
 validate-invalid-%: test/data/%.json jsonschema/nmdc.schema.json
 	@echo $(word 2, $^)
