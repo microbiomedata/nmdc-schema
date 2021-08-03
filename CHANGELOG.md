@@ -3,7 +3,7 @@ Changes to the schema are documented in this file.
 
 ## Current (update before releasing)
 ### Added
-  - N/A
+  - `email` slot in `core.yaml`. Motivation = people (`person value`) associated with studies, but not constrained to that domain.
 ### Fixed
   - N/A
 ### Changed 
