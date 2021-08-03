@@ -133,6 +133,7 @@ classes:
     slots:
       - orcid
       - profile image url
+      - email
     todos:
       - add additional fields e.g for institution
     slot_usage:
@@ -472,6 +473,13 @@ slots:
       The ORICD of a person.
     domain: person value
     range: string
+
+  email:
+    description: >-
+      An email address for an entitity such as a person
+    range: string
+    notes: >-
+      More specific domain? Acceptable pattern? https://emailregex.com/ ?
 
   profile image url:
     description: >-
