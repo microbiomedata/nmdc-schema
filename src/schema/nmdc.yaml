@@ -307,6 +307,20 @@ classes:
     exact_mappings:
       - OBI:0000747
       - NCIT:C43412
+
+  credit record:
+    is_a: named thing
+    aliases: ['credit table', 'associated researchers']
+    description: >-
+      This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role (https://casrai.org/credit/) and for a person value
+      Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0 
+    notes: >-
+      Does this require an in_subset assertion?
+      Will each credit record instance require an id, since they're named things?
+      A study should be able to take  0..inf credit records
+    slots:
+      - applies to person
+      - has contributor role
         
   study:
     is_a: named thing
@@ -451,6 +465,37 @@ enums:
       
       
 slots:
+
+  has credit record:
+    domain: study
+    range: credit record
+    todos: >-
+      what do inlined and abstract mean?
+      should this be a mixin?
+      add examples and notes
+      add an is_a parent?
+    multivalued: true
+    description: >-
+      This slot links a study to a credit record. 
+      The credit record will be linked to a person value and to a CRediT Contributor Roles term.
+      Overall semantics: person should get credit X for their participation in the study
+
+
+  has contributor role:
+    domain: credit record
+    range: string
+    todos: >-
+      make the range an ontology term from CRediT Contributor Roles (https://casrai.org/credit/)
+    multivalued: true
+      
+
+  applies to person:
+    domain: credit record
+    range: person value
+    todos: >-
+      relate to principal investigator slot?
+    multivalued: true
+
 
   object set:
     mixin: true
