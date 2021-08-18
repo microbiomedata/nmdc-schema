@@ -308,7 +308,7 @@ classes:
       - OBI:0000747
       - NCIT:C43412
 
-  credit record:
+  study role:
     is_a: named thing
     aliases: ['credit table', 'associated researchers']
     description: >-
@@ -316,11 +316,12 @@ classes:
       Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0 
     notes: >-
       Does this require an in_subset assertion?
-      Will each credit record instance require an id, since they're named things?
-      A study should be able to take  0..inf credit records
+      Will each study role instance require an id, since they're named things?
+      A study should be able to take  0..inf study roles
     slots:
       - applies to person
       - has contributor role
+    class_uri: prov:Association
         
   study:
     is_a: named thing
@@ -466,9 +467,9 @@ enums:
       
 slots:
 
-  has credit record:
+  has study role:
     domain: study
-    range: credit record
+    range: study role
     todos: >-
       what do inlined and abstract mean?
       should this be a mixin?
@@ -476,13 +477,14 @@ slots:
       add an is_a parent?
     multivalued: true
     description: >-
-      This slot links a study to a credit record. 
-      The credit record will be linked to a person value and to a CRediT Contributor Roles term.
+      This slot links a study to a study role. 
+      The study role will be linked to a person value and to a CRediT Contributor Roles term.
       Overall semantics: person should get credit X for their participation in the study
+    slot_uri: prov:hadRole
 
 
   has contributor role:
-    domain: credit record
+    domain: study role
     range: string
     todos: >-
       make the range an ontology term from CRediT Contributor Roles (https://casrai.org/credit/)
@@ -490,11 +492,12 @@ slots:
       
 
   applies to person:
-    domain: credit record
+    domain: study role
     range: person value
     todos: >-
       relate to principal investigator slot?
     multivalued: true
+    slot_uri: Prov:Agent
 
 
   object set:
