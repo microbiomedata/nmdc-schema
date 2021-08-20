@@ -57,6 +57,7 @@ slots:
     description: >-
       An optional string that species the type object. 
       This is used to allow for searches for different kinds of objects.
+    type_designator: true
     examples:
       - value: nmdc:Biosample
       - value: nmdc:Study
