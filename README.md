@@ -24,6 +24,10 @@ The NMDC [Introduction to metadata and ontologies](https://microbiomedata.org/in
 
 See also [these slides](https://microbiomedata.github.io/nmdc-schema/docs/schema-slides) describing the schema
 
+## Maintaining the Schema
+
+See [MAINTAINERS.md](MAINTAINERS.md) for instructions on maintaining and updating the schema.
+
 ## Collections within the schema
 
 _If some colelctions are reported to contain 0 documents, it could be that the MongoDB is being repopulated based on new data or a new schema._
