@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-07-01 16:56
+# Generation date: 2021-08-31 11:53
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -12,7 +12,7 @@
 import dataclasses
 import sys
 import re
-from jsonasobj2 import JsonObj
+from jsonasobj2 import JsonObj, as_dict
 from typing import Optional, List, Union, Dict, ClassVar, Any
 from dataclasses import dataclass
 from linkml_runtime.linkml_model.meta import EnumDefinition, PermissibleValue, PvFormulaOptions
@@ -25,8 +25,8 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.linkml_model.types import Boolean, Double, Float, Integer, String
-from linkml_runtime.utils.metamodelcore import Bool
+from linkml_runtime.linkml_model.types import Boolean, Double, Float, Integer, String, Uriorcurie
+from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE
 
 metamodel_version = "1.7.0"
 
@@ -68,7 +68,9 @@ UNIPROTKB = CurieNamespace('UniProtKB', 'http://example.org/UNKNOWN/UniProtKB/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 GTPO = CurieNamespace('gtpo', 'http://example.org/UNKNOWN/gtpo/')
 IGSN = CurieNamespace('igsn', 'https://app.geosamples.org/sample/igsn/')
+INSDC_SRS = CurieNamespace('insdc_srs', 'http://example.org/UNKNOWN/insdc.srs/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
+MGNIFY = CurieNamespace('mgnify', 'http://example.org/UNKNOWN/mgnify/')
 MIXS = CurieNamespace('mixs', 'https://w3id.org/gensc/')
 NMDC = CurieNamespace('nmdc', 'https://microbiomedata/meta/')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
@@ -113,6 +115,14 @@ class Unit(str):
     type_class_curie = "xsd:string"
     type_name = "unit"
     type_model_uri = NMDC.Unit
+
+
+class ExternalIdentifier(Uriorcurie):
+    """ A CURIE representing an external identifier """
+    type_class_uri = XSD.anyURI
+    type_class_curie = "xsd:anyURI"
+    type_name = "external identifier"
+    type_model_uri = NMDC.ExternalIdentifier
 
 
 # Class references
@@ -297,7 +307,7 @@ class Database(YAMLRoot):
 
         if not isinstance(self.functional_annotation_set, list):
             self.functional_annotation_set = [self.functional_annotation_set] if self.functional_annotation_set is not None else []
-        self.functional_annotation_set = [v if isinstance(v, FunctionalAnnotation) else FunctionalAnnotation(**v) for v in self.functional_annotation_set]
+        self.functional_annotation_set = [v if isinstance(v, FunctionalAnnotation) else FunctionalAnnotation(**as_dict(v)) for v in self.functional_annotation_set]
 
         self._normalize_inlined_as_dict(slot_name="genome_feature_set", slot_type=GenomeFeature, key_name="seqid", keyed=False)
 
@@ -567,6 +577,9 @@ class Biosample(NamedThing):
     soluble_iron_micromol: Optional[str] = None
     subsurface_depth: Optional[Union[dict, "QuantityValue"]] = None
     subsurface_depth2: Optional[Union[dict, "QuantityValue"]] = None
+    GOLD_sample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    INSDC_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    INSDC_secondary_sample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     part_of: Optional[Union[Union[str, StudyId], List[Union[str, StudyId]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -578,17 +591,17 @@ class Biosample(NamedThing):
         if self._is_empty(self.env_broad_scale):
             self.MissingRequiredField("env_broad_scale")
         if not isinstance(self.env_broad_scale, ControlledTermValue):
-            self.env_broad_scale = ControlledTermValue(**self.env_broad_scale)
+            self.env_broad_scale = ControlledTermValue(**as_dict(self.env_broad_scale))
 
         if self._is_empty(self.env_local_scale):
             self.MissingRequiredField("env_local_scale")
         if not isinstance(self.env_local_scale, ControlledTermValue):
-            self.env_local_scale = ControlledTermValue(**self.env_local_scale)
+            self.env_local_scale = ControlledTermValue(**as_dict(self.env_local_scale))
 
         if self._is_empty(self.env_medium):
             self.MissingRequiredField("env_medium")
         if not isinstance(self.env_medium, ControlledTermValue):
-            self.env_medium = ControlledTermValue(**self.env_medium)
+            self.env_medium = ControlledTermValue(**as_dict(self.env_medium))
 
         if self.type is not None and not isinstance(self.type, str):
             self.type = str(self.type)
@@ -598,349 +611,349 @@ class Biosample(NamedThing):
         self.alternative_identifiers = [v if isinstance(v, str) else str(v) for v in self.alternative_identifiers]
 
         if self.agrochem_addition is not None and not isinstance(self.agrochem_addition, QuantityValue):
-            self.agrochem_addition = QuantityValue(**self.agrochem_addition)
+            self.agrochem_addition = QuantityValue(**as_dict(self.agrochem_addition))
 
         if self.alkalinity is not None and not isinstance(self.alkalinity, QuantityValue):
-            self.alkalinity = QuantityValue(**self.alkalinity)
+            self.alkalinity = QuantityValue(**as_dict(self.alkalinity))
 
         if self.alkalinity_method is not None and not isinstance(self.alkalinity_method, TextValue):
-            self.alkalinity_method = TextValue(**self.alkalinity_method)
+            self.alkalinity_method = TextValue(**as_dict(self.alkalinity_method))
 
         if self.alkyl_diethers is not None and not isinstance(self.alkyl_diethers, QuantityValue):
-            self.alkyl_diethers = QuantityValue(**self.alkyl_diethers)
+            self.alkyl_diethers = QuantityValue(**as_dict(self.alkyl_diethers))
 
         if self.alt is not None and not isinstance(self.alt, QuantityValue):
-            self.alt = QuantityValue(**self.alt)
+            self.alt = QuantityValue(**as_dict(self.alt))
 
         if self.al_sat is not None and not isinstance(self.al_sat, QuantityValue):
-            self.al_sat = QuantityValue(**self.al_sat)
+            self.al_sat = QuantityValue(**as_dict(self.al_sat))
 
         if self.al_sat_meth is not None and not isinstance(self.al_sat_meth, TextValue):
-            self.al_sat_meth = TextValue(**self.al_sat_meth)
+            self.al_sat_meth = TextValue(**as_dict(self.al_sat_meth))
 
         if self.aminopept_act is not None and not isinstance(self.aminopept_act, QuantityValue):
-            self.aminopept_act = QuantityValue(**self.aminopept_act)
+            self.aminopept_act = QuantityValue(**as_dict(self.aminopept_act))
 
         if self.ammonium is not None and not isinstance(self.ammonium, QuantityValue):
-            self.ammonium = QuantityValue(**self.ammonium)
+            self.ammonium = QuantityValue(**as_dict(self.ammonium))
 
         if self.annual_precpt is not None and not isinstance(self.annual_precpt, QuantityValue):
-            self.annual_precpt = QuantityValue(**self.annual_precpt)
+            self.annual_precpt = QuantityValue(**as_dict(self.annual_precpt))
 
         if self.annual_temp is not None and not isinstance(self.annual_temp, QuantityValue):
-            self.annual_temp = QuantityValue(**self.annual_temp)
+            self.annual_temp = QuantityValue(**as_dict(self.annual_temp))
 
         if self.bacteria_carb_prod is not None and not isinstance(self.bacteria_carb_prod, QuantityValue):
-            self.bacteria_carb_prod = QuantityValue(**self.bacteria_carb_prod)
+            self.bacteria_carb_prod = QuantityValue(**as_dict(self.bacteria_carb_prod))
 
         if self.bishomohopanol is not None and not isinstance(self.bishomohopanol, QuantityValue):
-            self.bishomohopanol = QuantityValue(**self.bishomohopanol)
+            self.bishomohopanol = QuantityValue(**as_dict(self.bishomohopanol))
 
         if self.bromide is not None and not isinstance(self.bromide, QuantityValue):
-            self.bromide = QuantityValue(**self.bromide)
+            self.bromide = QuantityValue(**as_dict(self.bromide))
 
         if self.calcium is not None and not isinstance(self.calcium, QuantityValue):
-            self.calcium = QuantityValue(**self.calcium)
+            self.calcium = QuantityValue(**as_dict(self.calcium))
 
         if self.carb_nitro_ratio is not None and not isinstance(self.carb_nitro_ratio, QuantityValue):
-            self.carb_nitro_ratio = QuantityValue(**self.carb_nitro_ratio)
+            self.carb_nitro_ratio = QuantityValue(**as_dict(self.carb_nitro_ratio))
 
         if self.chem_administration is not None and not isinstance(self.chem_administration, ControlledTermValue):
-            self.chem_administration = ControlledTermValue(**self.chem_administration)
+            self.chem_administration = ControlledTermValue(**as_dict(self.chem_administration))
 
         if self.chloride is not None and not isinstance(self.chloride, QuantityValue):
-            self.chloride = QuantityValue(**self.chloride)
+            self.chloride = QuantityValue(**as_dict(self.chloride))
 
         if self.chlorophyll is not None and not isinstance(self.chlorophyll, QuantityValue):
-            self.chlorophyll = QuantityValue(**self.chlorophyll)
+            self.chlorophyll = QuantityValue(**as_dict(self.chlorophyll))
 
         if self.collection_date is not None and not isinstance(self.collection_date, TimestampValue):
-            self.collection_date = TimestampValue(**self.collection_date)
+            self.collection_date = TimestampValue(**as_dict(self.collection_date))
 
         if self.cur_land_use is not None and not isinstance(self.cur_land_use, TextValue):
-            self.cur_land_use = TextValue(**self.cur_land_use)
+            self.cur_land_use = TextValue(**as_dict(self.cur_land_use))
 
         if self.cur_vegetation is not None and not isinstance(self.cur_vegetation, TextValue):
-            self.cur_vegetation = TextValue(**self.cur_vegetation)
+            self.cur_vegetation = TextValue(**as_dict(self.cur_vegetation))
 
         if self.cur_vegetation_meth is not None and not isinstance(self.cur_vegetation_meth, TextValue):
-            self.cur_vegetation_meth = TextValue(**self.cur_vegetation_meth)
+            self.cur_vegetation_meth = TextValue(**as_dict(self.cur_vegetation_meth))
 
         if self.crop_rotation is not None and not isinstance(self.crop_rotation, TextValue):
-            self.crop_rotation = TextValue(**self.crop_rotation)
+            self.crop_rotation = TextValue(**as_dict(self.crop_rotation))
 
         if self.density is not None and not isinstance(self.density, QuantityValue):
-            self.density = QuantityValue(**self.density)
+            self.density = QuantityValue(**as_dict(self.density))
 
         if self.depth is not None and not isinstance(self.depth, QuantityValue):
-            self.depth = QuantityValue(**self.depth)
+            self.depth = QuantityValue(**as_dict(self.depth))
 
         if self.diss_carb_dioxide is not None and not isinstance(self.diss_carb_dioxide, QuantityValue):
-            self.diss_carb_dioxide = QuantityValue(**self.diss_carb_dioxide)
+            self.diss_carb_dioxide = QuantityValue(**as_dict(self.diss_carb_dioxide))
 
         if self.diss_hydrogen is not None and not isinstance(self.diss_hydrogen, QuantityValue):
-            self.diss_hydrogen = QuantityValue(**self.diss_hydrogen)
+            self.diss_hydrogen = QuantityValue(**as_dict(self.diss_hydrogen))
 
         if self.diss_inorg_carb is not None and not isinstance(self.diss_inorg_carb, QuantityValue):
-            self.diss_inorg_carb = QuantityValue(**self.diss_inorg_carb)
+            self.diss_inorg_carb = QuantityValue(**as_dict(self.diss_inorg_carb))
 
         if self.diss_inorg_phosp is not None and not isinstance(self.diss_inorg_phosp, QuantityValue):
-            self.diss_inorg_phosp = QuantityValue(**self.diss_inorg_phosp)
+            self.diss_inorg_phosp = QuantityValue(**as_dict(self.diss_inorg_phosp))
 
         if self.diss_org_carb is not None and not isinstance(self.diss_org_carb, QuantityValue):
-            self.diss_org_carb = QuantityValue(**self.diss_org_carb)
+            self.diss_org_carb = QuantityValue(**as_dict(self.diss_org_carb))
 
         if self.diss_org_nitro is not None and not isinstance(self.diss_org_nitro, QuantityValue):
-            self.diss_org_nitro = QuantityValue(**self.diss_org_nitro)
+            self.diss_org_nitro = QuantityValue(**as_dict(self.diss_org_nitro))
 
         if self.diss_oxygen is not None and not isinstance(self.diss_oxygen, QuantityValue):
-            self.diss_oxygen = QuantityValue(**self.diss_oxygen)
+            self.diss_oxygen = QuantityValue(**as_dict(self.diss_oxygen))
 
         if self.drainage_class is not None and not isinstance(self.drainage_class, TextValue):
-            self.drainage_class = TextValue(**self.drainage_class)
+            self.drainage_class = TextValue(**as_dict(self.drainage_class))
 
         if self.elev is not None and not isinstance(self.elev, QuantityValue):
-            self.elev = QuantityValue(**self.elev)
+            self.elev = QuantityValue(**as_dict(self.elev))
 
         if self.env_package is not None and not isinstance(self.env_package, TextValue):
-            self.env_package = TextValue(**self.env_package)
+            self.env_package = TextValue(**as_dict(self.env_package))
 
         if self.extreme_event is not None and not isinstance(self.extreme_event, TimestampValue):
-            self.extreme_event = TimestampValue(**self.extreme_event)
+            self.extreme_event = TimestampValue(**as_dict(self.extreme_event))
 
         if self.fao_class is not None and not isinstance(self.fao_class, TextValue):
-            self.fao_class = TextValue(**self.fao_class)
+            self.fao_class = TextValue(**as_dict(self.fao_class))
 
         if self.fire is not None and not isinstance(self.fire, TimestampValue):
-            self.fire = TimestampValue(**self.fire)
+            self.fire = TimestampValue(**as_dict(self.fire))
 
         if self.flooding is not None and not isinstance(self.flooding, TimestampValue):
-            self.flooding = TimestampValue(**self.flooding)
+            self.flooding = TimestampValue(**as_dict(self.flooding))
 
         if self.geo_loc_name is not None and not isinstance(self.geo_loc_name, TextValue):
-            self.geo_loc_name = TextValue(**self.geo_loc_name)
+            self.geo_loc_name = TextValue(**as_dict(self.geo_loc_name))
 
         if self.glucosidase_act is not None and not isinstance(self.glucosidase_act, QuantityValue):
-            self.glucosidase_act = QuantityValue(**self.glucosidase_act)
+            self.glucosidase_act = QuantityValue(**as_dict(self.glucosidase_act))
 
         if self.heavy_metals is not None and not isinstance(self.heavy_metals, QuantityValue):
-            self.heavy_metals = QuantityValue(**self.heavy_metals)
+            self.heavy_metals = QuantityValue(**as_dict(self.heavy_metals))
 
         if self.heavy_metals_meth is not None and not isinstance(self.heavy_metals_meth, TextValue):
-            self.heavy_metals_meth = TextValue(**self.heavy_metals_meth)
+            self.heavy_metals_meth = TextValue(**as_dict(self.heavy_metals_meth))
 
         if self.horizon is not None and not isinstance(self.horizon, TextValue):
-            self.horizon = TextValue(**self.horizon)
+            self.horizon = TextValue(**as_dict(self.horizon))
 
         if self.horizon_meth is not None and not isinstance(self.horizon_meth, TextValue):
-            self.horizon_meth = TextValue(**self.horizon_meth)
+            self.horizon_meth = TextValue(**as_dict(self.horizon_meth))
 
         if self.lat_lon is not None and not isinstance(self.lat_lon, GeolocationValue):
-            self.lat_lon = GeolocationValue(**self.lat_lon)
+            self.lat_lon = GeolocationValue(**as_dict(self.lat_lon))
 
         if self.link_addit_analys is not None and not isinstance(self.link_addit_analys, TextValue):
-            self.link_addit_analys = TextValue(**self.link_addit_analys)
+            self.link_addit_analys = TextValue(**as_dict(self.link_addit_analys))
 
         if self.link_class_info is not None and not isinstance(self.link_class_info, TextValue):
-            self.link_class_info = TextValue(**self.link_class_info)
+            self.link_class_info = TextValue(**as_dict(self.link_class_info))
 
         if self.link_climate_info is not None and not isinstance(self.link_climate_info, TextValue):
-            self.link_climate_info = TextValue(**self.link_climate_info)
+            self.link_climate_info = TextValue(**as_dict(self.link_climate_info))
 
         if self.local_class is not None and not isinstance(self.local_class, TextValue):
-            self.local_class = TextValue(**self.local_class)
+            self.local_class = TextValue(**as_dict(self.local_class))
 
         if self.local_class_meth is not None and not isinstance(self.local_class_meth, TextValue):
-            self.local_class_meth = TextValue(**self.local_class_meth)
+            self.local_class_meth = TextValue(**as_dict(self.local_class_meth))
 
         if self.magnesium is not None and not isinstance(self.magnesium, QuantityValue):
-            self.magnesium = QuantityValue(**self.magnesium)
+            self.magnesium = QuantityValue(**as_dict(self.magnesium))
 
         if self.mean_frict_vel is not None and not isinstance(self.mean_frict_vel, QuantityValue):
-            self.mean_frict_vel = QuantityValue(**self.mean_frict_vel)
+            self.mean_frict_vel = QuantityValue(**as_dict(self.mean_frict_vel))
 
         if self.mean_peak_frict_vel is not None and not isinstance(self.mean_peak_frict_vel, QuantityValue):
-            self.mean_peak_frict_vel = QuantityValue(**self.mean_peak_frict_vel)
+            self.mean_peak_frict_vel = QuantityValue(**as_dict(self.mean_peak_frict_vel))
 
         if self.microbial_biomass is not None and not isinstance(self.microbial_biomass, QuantityValue):
-            self.microbial_biomass = QuantityValue(**self.microbial_biomass)
+            self.microbial_biomass = QuantityValue(**as_dict(self.microbial_biomass))
 
         if self.microbial_biomass_meth is not None and not isinstance(self.microbial_biomass_meth, TextValue):
-            self.microbial_biomass_meth = TextValue(**self.microbial_biomass_meth)
+            self.microbial_biomass_meth = TextValue(**as_dict(self.microbial_biomass_meth))
 
         if self.misc_param is not None and not isinstance(self.misc_param, QuantityValue):
-            self.misc_param = QuantityValue(**self.misc_param)
+            self.misc_param = QuantityValue(**as_dict(self.misc_param))
 
         if self.n_alkanes is not None and not isinstance(self.n_alkanes, QuantityValue):
-            self.n_alkanes = QuantityValue(**self.n_alkanes)
+            self.n_alkanes = QuantityValue(**as_dict(self.n_alkanes))
 
         if self.nitrate is not None and not isinstance(self.nitrate, QuantityValue):
-            self.nitrate = QuantityValue(**self.nitrate)
+            self.nitrate = QuantityValue(**as_dict(self.nitrate))
 
         if self.nitrite is not None and not isinstance(self.nitrite, QuantityValue):
-            self.nitrite = QuantityValue(**self.nitrite)
+            self.nitrite = QuantityValue(**as_dict(self.nitrite))
 
         if self.org_matter is not None and not isinstance(self.org_matter, QuantityValue):
-            self.org_matter = QuantityValue(**self.org_matter)
+            self.org_matter = QuantityValue(**as_dict(self.org_matter))
 
         if self.org_nitro is not None and not isinstance(self.org_nitro, QuantityValue):
-            self.org_nitro = QuantityValue(**self.org_nitro)
+            self.org_nitro = QuantityValue(**as_dict(self.org_nitro))
 
         if self.organism_count is not None and not isinstance(self.organism_count, QuantityValue):
-            self.organism_count = QuantityValue(**self.organism_count)
+            self.organism_count = QuantityValue(**as_dict(self.organism_count))
 
         if self.oxy_stat_samp is not None and not isinstance(self.oxy_stat_samp, TextValue):
-            self.oxy_stat_samp = TextValue(**self.oxy_stat_samp)
+            self.oxy_stat_samp = TextValue(**as_dict(self.oxy_stat_samp))
 
         if self.part_org_carb is not None and not isinstance(self.part_org_carb, QuantityValue):
-            self.part_org_carb = QuantityValue(**self.part_org_carb)
+            self.part_org_carb = QuantityValue(**as_dict(self.part_org_carb))
 
         if self.perturbation is not None and not isinstance(self.perturbation, TextValue):
-            self.perturbation = TextValue(**self.perturbation)
+            self.perturbation = TextValue(**as_dict(self.perturbation))
 
         if self.petroleum_hydrocarb is not None and not isinstance(self.petroleum_hydrocarb, QuantityValue):
-            self.petroleum_hydrocarb = QuantityValue(**self.petroleum_hydrocarb)
+            self.petroleum_hydrocarb = QuantityValue(**as_dict(self.petroleum_hydrocarb))
 
         if self.ph is not None and not isinstance(self.ph, QuantityValue):
-            self.ph = QuantityValue(**self.ph)
+            self.ph = QuantityValue(**as_dict(self.ph))
 
         if self.ph_meth is not None and not isinstance(self.ph_meth, TextValue):
-            self.ph_meth = TextValue(**self.ph_meth)
+            self.ph_meth = TextValue(**as_dict(self.ph_meth))
 
         if self.phaeopigments is not None and not isinstance(self.phaeopigments, QuantityValue):
-            self.phaeopigments = QuantityValue(**self.phaeopigments)
+            self.phaeopigments = QuantityValue(**as_dict(self.phaeopigments))
 
         if self.phosplipid_fatt_acid is not None and not isinstance(self.phosplipid_fatt_acid, QuantityValue):
-            self.phosplipid_fatt_acid = QuantityValue(**self.phosplipid_fatt_acid)
+            self.phosplipid_fatt_acid = QuantityValue(**as_dict(self.phosplipid_fatt_acid))
 
         if self.pool_dna_extracts is not None and not isinstance(self.pool_dna_extracts, TextValue):
-            self.pool_dna_extracts = TextValue(**self.pool_dna_extracts)
+            self.pool_dna_extracts = TextValue(**as_dict(self.pool_dna_extracts))
 
         if self.potassium is not None and not isinstance(self.potassium, QuantityValue):
-            self.potassium = QuantityValue(**self.potassium)
+            self.potassium = QuantityValue(**as_dict(self.potassium))
 
         if self.pressure is not None and not isinstance(self.pressure, QuantityValue):
-            self.pressure = QuantityValue(**self.pressure)
+            self.pressure = QuantityValue(**as_dict(self.pressure))
 
         if self.previous_land_use is not None and not isinstance(self.previous_land_use, TextValue):
-            self.previous_land_use = TextValue(**self.previous_land_use)
+            self.previous_land_use = TextValue(**as_dict(self.previous_land_use))
 
         if self.previous_land_use_meth is not None and not isinstance(self.previous_land_use_meth, TextValue):
-            self.previous_land_use_meth = TextValue(**self.previous_land_use_meth)
+            self.previous_land_use_meth = TextValue(**as_dict(self.previous_land_use_meth))
 
         if self.profile_position is not None and not isinstance(self.profile_position, TextValue):
-            self.profile_position = TextValue(**self.profile_position)
+            self.profile_position = TextValue(**as_dict(self.profile_position))
 
         if self.redox_potential is not None and not isinstance(self.redox_potential, QuantityValue):
-            self.redox_potential = QuantityValue(**self.redox_potential)
+            self.redox_potential = QuantityValue(**as_dict(self.redox_potential))
 
         if self.salinity is not None and not isinstance(self.salinity, QuantityValue):
-            self.salinity = QuantityValue(**self.salinity)
+            self.salinity = QuantityValue(**as_dict(self.salinity))
 
         if self.salinity_meth is not None and not isinstance(self.salinity_meth, TextValue):
-            self.salinity_meth = TextValue(**self.salinity_meth)
+            self.salinity_meth = TextValue(**as_dict(self.salinity_meth))
 
         if self.samp_collect_device is not None and not isinstance(self.samp_collect_device, TextValue):
-            self.samp_collect_device = TextValue(**self.samp_collect_device)
+            self.samp_collect_device = TextValue(**as_dict(self.samp_collect_device))
 
         if self.samp_mat_process is not None and not isinstance(self.samp_mat_process, ControlledTermValue):
-            self.samp_mat_process = ControlledTermValue(**self.samp_mat_process)
+            self.samp_mat_process = ControlledTermValue(**as_dict(self.samp_mat_process))
 
         if self.samp_store_dur is not None and not isinstance(self.samp_store_dur, TextValue):
-            self.samp_store_dur = TextValue(**self.samp_store_dur)
+            self.samp_store_dur = TextValue(**as_dict(self.samp_store_dur))
 
         if self.samp_store_loc is not None and not isinstance(self.samp_store_loc, TextValue):
-            self.samp_store_loc = TextValue(**self.samp_store_loc)
+            self.samp_store_loc = TextValue(**as_dict(self.samp_store_loc))
 
         if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, QuantityValue):
-            self.samp_store_temp = QuantityValue(**self.samp_store_temp)
+            self.samp_store_temp = QuantityValue(**as_dict(self.samp_store_temp))
 
         if self.samp_vol_we_dna_ext is not None and not isinstance(self.samp_vol_we_dna_ext, QuantityValue):
-            self.samp_vol_we_dna_ext = QuantityValue(**self.samp_vol_we_dna_ext)
+            self.samp_vol_we_dna_ext = QuantityValue(**as_dict(self.samp_vol_we_dna_ext))
 
         if self.season_temp is not None and not isinstance(self.season_temp, QuantityValue):
-            self.season_temp = QuantityValue(**self.season_temp)
+            self.season_temp = QuantityValue(**as_dict(self.season_temp))
 
         if self.season_precpt is not None and not isinstance(self.season_precpt, QuantityValue):
-            self.season_precpt = QuantityValue(**self.season_precpt)
+            self.season_precpt = QuantityValue(**as_dict(self.season_precpt))
 
         if self.sieving is not None and not isinstance(self.sieving, QuantityValue):
-            self.sieving = QuantityValue(**self.sieving)
+            self.sieving = QuantityValue(**as_dict(self.sieving))
 
         if self.size_frac_low is not None and not isinstance(self.size_frac_low, QuantityValue):
-            self.size_frac_low = QuantityValue(**self.size_frac_low)
+            self.size_frac_low = QuantityValue(**as_dict(self.size_frac_low))
 
         if self.size_frac_up is not None and not isinstance(self.size_frac_up, QuantityValue):
-            self.size_frac_up = QuantityValue(**self.size_frac_up)
+            self.size_frac_up = QuantityValue(**as_dict(self.size_frac_up))
 
         if self.slope_gradient is not None and not isinstance(self.slope_gradient, QuantityValue):
-            self.slope_gradient = QuantityValue(**self.slope_gradient)
+            self.slope_gradient = QuantityValue(**as_dict(self.slope_gradient))
 
         if self.slope_aspect is not None and not isinstance(self.slope_aspect, QuantityValue):
-            self.slope_aspect = QuantityValue(**self.slope_aspect)
+            self.slope_aspect = QuantityValue(**as_dict(self.slope_aspect))
 
         if self.sodium is not None and not isinstance(self.sodium, QuantityValue):
-            self.sodium = QuantityValue(**self.sodium)
+            self.sodium = QuantityValue(**as_dict(self.sodium))
 
         if self.soil_type is not None and not isinstance(self.soil_type, TextValue):
-            self.soil_type = TextValue(**self.soil_type)
+            self.soil_type = TextValue(**as_dict(self.soil_type))
 
         if self.soil_type_meth is not None and not isinstance(self.soil_type_meth, TextValue):
-            self.soil_type_meth = TextValue(**self.soil_type_meth)
+            self.soil_type_meth = TextValue(**as_dict(self.soil_type_meth))
 
         if self.store_cond is not None and not isinstance(self.store_cond, TextValue):
-            self.store_cond = TextValue(**self.store_cond)
+            self.store_cond = TextValue(**as_dict(self.store_cond))
 
         if self.sulfate is not None and not isinstance(self.sulfate, QuantityValue):
-            self.sulfate = QuantityValue(**self.sulfate)
+            self.sulfate = QuantityValue(**as_dict(self.sulfate))
 
         if self.sulfide is not None and not isinstance(self.sulfide, QuantityValue):
-            self.sulfide = QuantityValue(**self.sulfide)
+            self.sulfide = QuantityValue(**as_dict(self.sulfide))
 
         if self.temp is not None and not isinstance(self.temp, QuantityValue):
-            self.temp = QuantityValue(**self.temp)
+            self.temp = QuantityValue(**as_dict(self.temp))
 
         if self.texture is not None and not isinstance(self.texture, QuantityValue):
-            self.texture = QuantityValue(**self.texture)
+            self.texture = QuantityValue(**as_dict(self.texture))
 
         if self.texture_meth is not None and not isinstance(self.texture_meth, TextValue):
-            self.texture_meth = TextValue(**self.texture_meth)
+            self.texture_meth = TextValue(**as_dict(self.texture_meth))
 
         if self.tillage is not None and not isinstance(self.tillage, TextValue):
-            self.tillage = TextValue(**self.tillage)
+            self.tillage = TextValue(**as_dict(self.tillage))
 
         if self.tidal_stage is not None and not isinstance(self.tidal_stage, TextValue):
-            self.tidal_stage = TextValue(**self.tidal_stage)
+            self.tidal_stage = TextValue(**as_dict(self.tidal_stage))
 
         if self.tot_carb is not None and not isinstance(self.tot_carb, QuantityValue):
-            self.tot_carb = QuantityValue(**self.tot_carb)
+            self.tot_carb = QuantityValue(**as_dict(self.tot_carb))
 
         if self.tot_depth_water_col is not None and not isinstance(self.tot_depth_water_col, QuantityValue):
-            self.tot_depth_water_col = QuantityValue(**self.tot_depth_water_col)
+            self.tot_depth_water_col = QuantityValue(**as_dict(self.tot_depth_water_col))
 
         if self.tot_diss_nitro is not None and not isinstance(self.tot_diss_nitro, QuantityValue):
-            self.tot_diss_nitro = QuantityValue(**self.tot_diss_nitro)
+            self.tot_diss_nitro = QuantityValue(**as_dict(self.tot_diss_nitro))
 
         if self.tot_org_carb is not None and not isinstance(self.tot_org_carb, QuantityValue):
-            self.tot_org_carb = QuantityValue(**self.tot_org_carb)
+            self.tot_org_carb = QuantityValue(**as_dict(self.tot_org_carb))
 
         if self.tot_org_c_meth is not None and not isinstance(self.tot_org_c_meth, TextValue):
-            self.tot_org_c_meth = TextValue(**self.tot_org_c_meth)
+            self.tot_org_c_meth = TextValue(**as_dict(self.tot_org_c_meth))
 
         if self.tot_nitro_content is not None and not isinstance(self.tot_nitro_content, QuantityValue):
-            self.tot_nitro_content = QuantityValue(**self.tot_nitro_content)
+            self.tot_nitro_content = QuantityValue(**as_dict(self.tot_nitro_content))
 
         if self.tot_nitro_content_meth is not None and not isinstance(self.tot_nitro_content_meth, TextValue):
-            self.tot_nitro_content_meth = TextValue(**self.tot_nitro_content_meth)
+            self.tot_nitro_content_meth = TextValue(**as_dict(self.tot_nitro_content_meth))
 
         if self.tot_phosp is not None and not isinstance(self.tot_phosp, QuantityValue):
-            self.tot_phosp = QuantityValue(**self.tot_phosp)
+            self.tot_phosp = QuantityValue(**as_dict(self.tot_phosp))
 
         if self.water_content is not None and not isinstance(self.water_content, QuantityValue):
-            self.water_content = QuantityValue(**self.water_content)
+            self.water_content = QuantityValue(**as_dict(self.water_content))
 
         if self.water_content_soil_meth is not None and not isinstance(self.water_content_soil_meth, TextValue):
-            self.water_content_soil_meth = TextValue(**self.water_content_soil_meth)
+            self.water_content_soil_meth = TextValue(**as_dict(self.water_content_soil_meth))
 
         if self.ecosystem is not None and not isinstance(self.ecosystem, str):
             self.ecosystem = str(self.ecosystem)
@@ -964,7 +977,7 @@ class Biosample(NamedThing):
             self.community = str(self.community)
 
         if self.depth2 is not None and not isinstance(self.depth2, QuantityValue):
-            self.depth2 = QuantityValue(**self.depth2)
+            self.depth2 = QuantityValue(**as_dict(self.depth2))
 
         if self.habitat is not None and not isinstance(self.habitat, str):
             self.habitat = str(self.habitat)
@@ -997,10 +1010,22 @@ class Biosample(NamedThing):
             self.soluble_iron_micromol = str(self.soluble_iron_micromol)
 
         if self.subsurface_depth is not None and not isinstance(self.subsurface_depth, QuantityValue):
-            self.subsurface_depth = QuantityValue(**self.subsurface_depth)
+            self.subsurface_depth = QuantityValue(**as_dict(self.subsurface_depth))
 
         if self.subsurface_depth2 is not None and not isinstance(self.subsurface_depth2, QuantityValue):
-            self.subsurface_depth2 = QuantityValue(**self.subsurface_depth2)
+            self.subsurface_depth2 = QuantityValue(**as_dict(self.subsurface_depth2))
+
+        if not isinstance(self.GOLD_sample_identifiers, list):
+            self.GOLD_sample_identifiers = [self.GOLD_sample_identifiers] if self.GOLD_sample_identifiers is not None else []
+        self.GOLD_sample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.GOLD_sample_identifiers]
+
+        if not isinstance(self.INSDC_biosample_identifiers, list):
+            self.INSDC_biosample_identifiers = [self.INSDC_biosample_identifiers] if self.INSDC_biosample_identifiers is not None else []
+        self.INSDC_biosample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.INSDC_biosample_identifiers]
+
+        if not isinstance(self.INSDC_secondary_sample_identifiers, list):
+            self.INSDC_secondary_sample_identifiers = [self.INSDC_secondary_sample_identifiers] if self.INSDC_secondary_sample_identifiers is not None else []
+        self.INSDC_secondary_sample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.INSDC_secondary_sample_identifiers]
 
         if not isinstance(self.part_of, list):
             self.part_of = [self.part_of] if self.part_of is not None else []
@@ -1039,6 +1064,10 @@ class Study(NamedThing):
     websites: Optional[Union[str, List[str]]] = empty_list()
     publications: Optional[Union[str, List[str]]] = empty_list()
     type: Optional[str] = None
+    INSDC_bioproject_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    INSDC_SRA_ENA_study_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    GOLD_study_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    MGnify_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1062,10 +1091,10 @@ class Study(NamedThing):
             self.specific_ecosystem = str(self.specific_ecosystem)
 
         if self.principal_investigator is not None and not isinstance(self.principal_investigator, PersonValue):
-            self.principal_investigator = PersonValue(**self.principal_investigator)
+            self.principal_investigator = PersonValue(**as_dict(self.principal_investigator))
 
         if self.doi is not None and not isinstance(self.doi, AttributeValue):
-            self.doi = AttributeValue(**self.doi)
+            self.doi = AttributeValue(**as_dict(self.doi))
 
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
@@ -1098,6 +1127,22 @@ class Study(NamedThing):
 
         if self.type is not None and not isinstance(self.type, str):
             self.type = str(self.type)
+
+        if not isinstance(self.INSDC_bioproject_identifiers, list):
+            self.INSDC_bioproject_identifiers = [self.INSDC_bioproject_identifiers] if self.INSDC_bioproject_identifiers is not None else []
+        self.INSDC_bioproject_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.INSDC_bioproject_identifiers]
+
+        if not isinstance(self.INSDC_SRA_ENA_study_identifiers, list):
+            self.INSDC_SRA_ENA_study_identifiers = [self.INSDC_SRA_ENA_study_identifiers] if self.INSDC_SRA_ENA_study_identifiers is not None else []
+        self.INSDC_SRA_ENA_study_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.INSDC_SRA_ENA_study_identifiers]
+
+        if not isinstance(self.GOLD_study_identifiers, list):
+            self.GOLD_study_identifiers = [self.GOLD_study_identifiers] if self.GOLD_study_identifiers is not None else []
+        self.GOLD_study_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.GOLD_study_identifiers]
+
+        if not isinstance(self.MGnify_project_identifiers, list):
+            self.MGnify_project_identifiers = [self.MGnify_project_identifiers] if self.MGnify_project_identifiers is not None else []
+        self.MGnify_project_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.MGnify_project_identifiers]
 
         super().__post_init__(**kwargs)
 
@@ -1155,6 +1200,8 @@ class OmicsProcessing(BiosampleProcessing):
     principal_investigator: Optional[Union[dict, "PersonValue"]] = None
     processing_institution: Optional[str] = None
     type: Optional[str] = None
+    GOLD_sequencing_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    INSDC_experiment_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1197,16 +1244,24 @@ class OmicsProcessing(BiosampleProcessing):
             self.ncbi_project_name = str(self.ncbi_project_name)
 
         if self.omics_type is not None and not isinstance(self.omics_type, ControlledTermValue):
-            self.omics_type = ControlledTermValue(**self.omics_type)
+            self.omics_type = ControlledTermValue(**as_dict(self.omics_type))
 
         if self.principal_investigator is not None and not isinstance(self.principal_investigator, PersonValue):
-            self.principal_investigator = PersonValue(**self.principal_investigator)
+            self.principal_investigator = PersonValue(**as_dict(self.principal_investigator))
 
         if self.processing_institution is not None and not isinstance(self.processing_institution, str):
             self.processing_institution = str(self.processing_institution)
 
         if self.type is not None and not isinstance(self.type, str):
             self.type = str(self.type)
+
+        if not isinstance(self.GOLD_sequencing_project_identifiers, list):
+            self.GOLD_sequencing_project_identifiers = [self.GOLD_sequencing_project_identifiers] if self.GOLD_sequencing_project_identifiers is not None else []
+        self.GOLD_sequencing_project_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.GOLD_sequencing_project_identifiers]
+
+        if not isinstance(self.INSDC_experiment_identifiers, list):
+            self.INSDC_experiment_identifiers = [self.INSDC_experiment_identifiers] if self.INSDC_experiment_identifiers is not None else []
+        self.INSDC_experiment_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.INSDC_experiment_identifiers]
 
         super().__post_init__(**kwargs)
 
@@ -1821,7 +1876,7 @@ class Activity(YAMLRoot):
             self.was_informed_by = ActivityId(self.was_informed_by)
 
         if self.was_associated_with is not None and not isinstance(self.was_associated_with, Agent):
-            self.was_associated_with = Agent(**self.was_associated_with)
+            self.was_associated_with = Agent(**as_dict(self.was_associated_with))
 
         if self.used is not None and not isinstance(self.used, str):
             self.used = str(self.used)
@@ -1846,7 +1901,7 @@ class Agent(YAMLRoot):
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.acted_on_behalf_of is not None and not isinstance(self.acted_on_behalf_of, Agent):
-            self.acted_on_behalf_of = Agent(**self.acted_on_behalf_of)
+            self.acted_on_behalf_of = Agent(**as_dict(self.acted_on_behalf_of))
 
         if self.was_informed_by is not None and not isinstance(self.was_informed_by, ActivityId):
             self.was_informed_by = ActivityId(self.was_informed_by)
@@ -1976,6 +2031,7 @@ class MetagenomeAssembly(WorkflowExecutionActivity):
     gc_avg: Optional[float] = None
     num_input_reads: Optional[float] = None
     num_aligned_reads: Optional[float] = None
+    INSDC_assembly_identifiers: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -2064,6 +2120,9 @@ class MetagenomeAssembly(WorkflowExecutionActivity):
         if self.num_aligned_reads is not None and not isinstance(self.num_aligned_reads, float):
             self.num_aligned_reads = float(self.num_aligned_reads)
 
+        if self.INSDC_assembly_identifiers is not None and not isinstance(self.INSDC_assembly_identifiers, str):
+            self.INSDC_assembly_identifiers = str(self.INSDC_assembly_identifiers)
+
         super().__post_init__(**kwargs)
 
 
@@ -2112,6 +2171,7 @@ class MetatranscriptomeAssembly(WorkflowExecutionActivity):
     gc_avg: Optional[float] = None
     num_input_reads: Optional[float] = None
     num_aligned_reads: Optional[float] = None
+    INSDC_assembly_identifiers: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -2199,6 +2259,9 @@ class MetatranscriptomeAssembly(WorkflowExecutionActivity):
 
         if self.num_aligned_reads is not None and not isinstance(self.num_aligned_reads, float):
             self.num_aligned_reads = float(self.num_aligned_reads)
+
+        if self.INSDC_assembly_identifiers is not None and not isinstance(self.INSDC_assembly_identifiers, str):
+            self.INSDC_assembly_identifiers = str(self.INSDC_assembly_identifiers)
 
         super().__post_init__(**kwargs)
 
@@ -2338,7 +2401,7 @@ class MAGsAnalysisActivity(WorkflowExecutionActivity):
 
         if not isinstance(self.mags_list, list):
             self.mags_list = [self.mags_list] if self.mags_list is not None else []
-        self.mags_list = [v if isinstance(v, MAGBin) else MAGBin(**v) for v in self.mags_list]
+        self.mags_list = [v if isinstance(v, MAGBin) else MAGBin(**as_dict(v)) for v in self.mags_list]
 
         super().__post_init__(**kwargs)
 
@@ -2468,7 +2531,7 @@ class MetabolomicsAnalysisActivity(WorkflowExecutionActivity):
 
         if not isinstance(self.has_metabolite_quantifications, list):
             self.has_metabolite_quantifications = [self.has_metabolite_quantifications] if self.has_metabolite_quantifications is not None else []
-        self.has_metabolite_quantifications = [v if isinstance(v, MetaboliteQuantification) else MetaboliteQuantification(**v) for v in self.has_metabolite_quantifications]
+        self.has_metabolite_quantifications = [v if isinstance(v, MetaboliteQuantification) else MetaboliteQuantification(**as_dict(v)) for v in self.has_metabolite_quantifications]
 
         if self.has_calibration is not None and not isinstance(self.has_calibration, str):
             self.has_calibration = str(self.has_calibration)
@@ -2508,7 +2571,7 @@ class MetaproteomicsAnalysisActivity(WorkflowExecutionActivity):
 
         if not isinstance(self.has_peptide_quantifications, list):
             self.has_peptide_quantifications = [self.has_peptide_quantifications] if self.has_peptide_quantifications is not None else []
-        self.has_peptide_quantifications = [v if isinstance(v, PeptideQuantification) else PeptideQuantification(**v) for v in self.has_peptide_quantifications]
+        self.has_peptide_quantifications = [v if isinstance(v, PeptideQuantification) else PeptideQuantification(**as_dict(v)) for v in self.has_peptide_quantifications]
 
         super().__post_init__(**kwargs)
 
@@ -2679,11 +2742,11 @@ class Reaction(FunctionalAnnotationTerm):
 
         if not isinstance(self.left_participants, list):
             self.left_participants = [self.left_participants] if self.left_participants is not None else []
-        self.left_participants = [v if isinstance(v, ReactionParticipant) else ReactionParticipant(**v) for v in self.left_participants]
+        self.left_participants = [v if isinstance(v, ReactionParticipant) else ReactionParticipant(**as_dict(v)) for v in self.left_participants]
 
         if not isinstance(self.right_participants, list):
             self.right_participants = [self.right_participants] if self.right_participants is not None else []
-        self.right_participants = [v if isinstance(v, ReactionParticipant) else ReactionParticipant(**v) for v in self.right_participants]
+        self.right_participants = [v if isinstance(v, ReactionParticipant) else ReactionParticipant(**as_dict(v)) for v in self.right_participants]
 
         if self.direction is not None and not isinstance(self.direction, str):
             self.direction = str(self.direction)
@@ -5393,6 +5456,84 @@ slots.has_participants = Slot(uri="str(uriorcurie)", name="has participants", cu
 slots.gff_coordinate = Slot(uri="str(uriorcurie)", name="gff coordinate", curie=None,
                    model_uri=NMDC.gff_coordinate, domain=None, range=Optional[int])
 
+slots.external_database_identifiers = Slot(uri=NMDC.external_database_identifiers, name="external database identifiers", curie=NMDC.curie('external_database_identifiers'),
+                   model_uri=NMDC.external_database_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]])
+
+slots.GOLD_identifiers = Slot(uri=NMDC.GOLD_identifiers, name="GOLD identifiers", curie=NMDC.curie('GOLD_identifiers'),
+                   model_uri=NMDC.GOLD_identifiers, domain=None, range=Optional[str])
+
+slots.MGnify_identifiers = Slot(uri=NMDC.MGnify_identifiers, name="MGnify identifiers", curie=NMDC.curie('MGnify_identifiers'),
+                   model_uri=NMDC.MGnify_identifiers, domain=None, range=Optional[str])
+
+slots.INSDC_identifiers = Slot(uri=NMDC.INSDC_identifiers, name="INSDC identifiers", curie=NMDC.curie('INSDC_identifiers'),
+                   model_uri=NMDC.INSDC_identifiers, domain=None, range=Optional[str])
+
+slots.study_identifiers = Slot(uri=NMDC.study_identifiers, name="study identifiers", curie=NMDC.curie('study_identifiers'),
+                   model_uri=NMDC.study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]])
+
+slots.INSDC_SRA_ENA_study_identifiers = Slot(uri=NMDC.INSDC_SRA_ENA_study_identifiers, name="INSDC SRA ENA study identifiers", curie=NMDC.curie('INSDC_SRA_ENA_study_identifiers'),
+                   model_uri=NMDC.INSDC_SRA_ENA_study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^insdc.sra:(E|D|S)RP[0-9]{6,}$'))
+
+slots.INSDC_bioproject_identifiers = Slot(uri=NMDC.INSDC_bioproject_identifiers, name="INSDC bioproject identifiers", curie=NMDC.curie('INSDC_bioproject_identifiers'),
+                   model_uri=NMDC.INSDC_bioproject_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^bioproject:PRJ[DEN][A-Z][0-9]+$'))
+
+slots.GOLD_study_identifiers = Slot(uri=NMDC.GOLD_study_identifiers, name="GOLD study identifiers", curie=NMDC.curie('GOLD_study_identifiers'),
+                   model_uri=NMDC.GOLD_study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^GOLD:Gs[0-9]+$'))
+
+slots.MGnify_project_identifiers = Slot(uri=NMDC.MGnify_project_identifiers, name="MGnify project identifiers", curie=NMDC.curie('MGnify_project_identifiers'),
+                   model_uri=NMDC.MGnify_project_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^mgnify.proj:[A-Z]+[0-9]+$'))
+
+slots.sample_identifiers = Slot(uri=NMDC.sample_identifiers, name="sample identifiers", curie=NMDC.curie('sample_identifiers'),
+                   model_uri=NMDC.sample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]])
+
+slots.GOLD_sample_identifiers = Slot(uri=NMDC.GOLD_sample_identifiers, name="GOLD sample identifiers", curie=NMDC.curie('GOLD_sample_identifiers'),
+                   model_uri=NMDC.GOLD_sample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^GOLD:Gb[0-9]+$'))
+
+slots.INSDC_biosample_identifiers = Slot(uri=NMDC.INSDC_biosample_identifiers, name="INSDC biosample identifiers", curie=NMDC.curie('INSDC_biosample_identifiers'),
+                   model_uri=NMDC.INSDC_biosample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^biosample:SAM[NED]([A-Z])?[0-9]+$'))
+
+slots.INSDC_secondary_sample_identifiers = Slot(uri=NMDC.INSDC_secondary_sample_identifiers, name="INSDC secondary sample identifiers", curie=NMDC.curie('INSDC_secondary_sample_identifiers'),
+                   model_uri=NMDC.INSDC_secondary_sample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^biosample:(E|D|S)RS[0-9]{6,}$'))
+
+slots.omics_processing_identifiers = Slot(uri=NMDC.omics_processing_identifiers, name="omics processing identifiers", curie=NMDC.curie('omics_processing_identifiers'),
+                   model_uri=NMDC.omics_processing_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]])
+
+slots.GOLD_sequencing_project_identifiers = Slot(uri=NMDC.GOLD_sequencing_project_identifiers, name="GOLD sequencing project identifiers", curie=NMDC.curie('GOLD_sequencing_project_identifiers'),
+                   model_uri=NMDC.GOLD_sequencing_project_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^GOLD:Gp[0-9]+$'))
+
+slots.INSDC_experiment_identifiers = Slot(uri=NMDC.INSDC_experiment_identifiers, name="INSDC experiment identifiers", curie=NMDC.curie('INSDC_experiment_identifiers'),
+                   model_uri=NMDC.INSDC_experiment_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^insdc.sra:(E|D|S)RX[0-9]{6,}$'))
+
+slots.analysis_identifiers = Slot(uri=NMDC.analysis_identifiers, name="analysis identifiers", curie=NMDC.curie('analysis_identifiers'),
+                   model_uri=NMDC.analysis_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]])
+
+slots.GOLD_analysis_project_identifiers = Slot(uri=NMDC.GOLD_analysis_project_identifiers, name="GOLD analysis project identifiers", curie=NMDC.curie('GOLD_analysis_project_identifiers'),
+                   model_uri=NMDC.GOLD_analysis_project_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^GOLD:Ga[0-9]+$'))
+
+slots.INSDC_analysis_identifiers = Slot(uri=NMDC.INSDC_analysis_identifiers, name="INSDC analysis identifiers", curie=NMDC.curie('INSDC_analysis_identifiers'),
+                   model_uri=NMDC.INSDC_analysis_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^insdc.sra:(E|D|S)RR[0-9]{6,}$'))
+
+slots.MGnify_analysis_identifiers = Slot(uri=NMDC.MGnify_analysis_identifiers, name="MGnify analysis identifiers", curie=NMDC.curie('MGnify_analysis_identifiers'),
+                   model_uri=NMDC.MGnify_analysis_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]])
+
+slots.assembly_identifiers = Slot(uri=NMDC.assembly_identifiers, name="assembly identifiers", curie=NMDC.curie('assembly_identifiers'),
+                   model_uri=NMDC.assembly_identifiers, domain=None, range=Optional[str])
+
+slots.INSDC_assembly_identifiers = Slot(uri=NMDC.INSDC_assembly_identifiers, name="INSDC assembly identifiers", curie=NMDC.curie('INSDC_assembly_identifiers'),
+                   model_uri=NMDC.INSDC_assembly_identifiers, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$'))
+
 slots.id = Slot(uri=NMDC.id, name="id", curie=NMDC.curie('id'),
                    model_uri=NMDC.id, domain=None, range=URIRef)
 
@@ -5621,6 +5762,9 @@ slots.biosample_env_local_scale = Slot(uri=NMDC.env_local_scale, name="biosample
 slots.biosample_env_medium = Slot(uri=NMDC.env_medium, name="biosample_env_medium", curie=NMDC.curie('env_medium'),
                    model_uri=NMDC.biosample_env_medium, domain=Biosample, range=Union[dict, "ControlledTermValue"],
                    pattern=re.compile(r'.* \S+:\S+'))
+
+slots.study_doi = Slot(uri=NMDC.doi, name="study_doi", curie=NMDC.curie('doi'),
+                   model_uri=NMDC.study_doi, domain=Study, range=Optional[Union[dict, "AttributeValue"]])
 
 slots.biosample_processing_has_input = Slot(uri=NMDC.has_input, name="biosample processing_has input", curie=NMDC.curie('has_input'),
                    model_uri=NMDC.biosample_processing_has_input, domain=BiosampleProcessing, range=Optional[Union[Union[str, BiosampleId], List[Union[str, BiosampleId]]]])
