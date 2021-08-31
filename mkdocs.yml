@@ -1,4 +1,4 @@
-site_name: "NMDC Metadata Documentation"
+site_name: "NMDC Schema Documentation"
 theme:
   name: readthedocs
   features:
@@ -10,4 +10,5 @@ nav:
   - NMDC Schema Validation: schema-validation.md
   - Identifiers in NMDC: identifiers.md
   - MIxS Soil Package: NMDC_MIxS_Soil_documentation.md
+  - Schema Slides: schema-slides.md
   - Credits: credits.md    
