@@ -5,7 +5,7 @@ Changes to the schema are documented in this file.
 ### Added
   - N/A
 ### Fixed
-  - N/A
+  - added `name` and `title` to `mixs.yaml` (#126)
 ### Changed 
   - N/A
 ### Removed
