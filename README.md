@@ -16,7 +16,7 @@ Tasks managed by the repository are:
 -   Converting the schema from it's native LinkML/YAML format into other artifacts
     -   [JSON-Schema](jsonschema/nmdc.schema.json)
 -   Deploying the schema as a PyPI package
--   Deploying the [documentation](https://microbiomedata.github.io/nmdc-metadata/) 
+-   Deploying the [documentation](https://microbiomedata.github.io/nmdc-shema/) 
 
 ## Background
 
