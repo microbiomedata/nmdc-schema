@@ -22,11 +22,15 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: 3.x
-          
-      # install dependencies
-      - run: pip install --upgrade pip
-      - run: pip install mkdocs
-      - run: pip install linkml
+      
+      # Install pipenv
+      - name: Install pipenv
+        run: python3 -m pip install pipenv
+      
+      # install dependencies (use pipevn instead)
+      # - run: pip install --upgrade pip
+      # - run: pip install mkdocs
+      # - run: pip install linkml
         
       # generate markdown files
       - run: make stage-docs
