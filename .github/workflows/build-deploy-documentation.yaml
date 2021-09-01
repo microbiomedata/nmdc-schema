@@ -41,7 +41,7 @@ jobs:
         if: steps.cache-pipenv.outputs.cache-hit != 'true'
         run: pipenv install -d
         
-      # install dependencies (use pipevn instead)
+      # install dependencies (use pipenv instead)
       # - run: pip install --upgrade pip
       # - run: pip install mkdocs
       # - run: pip install linkml
