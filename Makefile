@@ -120,11 +120,11 @@ target/linkml/%.yaml: $(SCHEMA_DIR)/%.yaml tdir-limkml
 
 # test docs locally.
 docserve:
-	mkdocs serve
+	pipenv run mkdocs serve
 
 gh-deploy:
 # deploy documentation (note: requires documentation is in docs dir)
-	mkdocs gh-deploy --remote-branch gh-pages --force --theme readthedocs
+	pipenv run mkdocs gh-deploy --remote-branch gh-pages --force --theme readthedocs
 
 ###  -- PYPI TARGETS
 # Use the build-package target to build a PYPI package locally
