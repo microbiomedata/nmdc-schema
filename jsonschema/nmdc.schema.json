@@ -136,13 +136,6 @@
                "description": "\"Altitude is a term used to identify heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earthbs surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air\"",
                "pattern": "\\d+[.\\d+] \\S+"
             },
-            "alternate_identifiers": {
-               "description": "Non-primary identifiers",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
             "alternative_identifiers": {
                "description": "A list of alternative identifiers for the entity.",
                "items": {
@@ -735,7 +728,7 @@
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "type": {
-               "description": "An optional string that species the type object.  This is used to allow for searches for different kinds of objects.",
+               "description": "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.",
                "type": "string"
             },
             "water_content": {
@@ -761,8 +754,8 @@
          "additionalProperties": false,
          "description": "A process that takes one or more biosamples as inputs and generates one or as outputs. Examples of outputs include samples cultivated from another sample or data objects created by instruments runs.",
          "properties": {
-            "alternate_identifiers": {
-               "description": "Non-primary identifiers",
+            "alternative_identifiers": {
+               "description": "A list of alternative identifiers for the entity.",
                "items": {
                   "type": "string"
                },
@@ -821,8 +814,8 @@
          "additionalProperties": false,
          "description": "An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs. There may be different terms for distinct acid-base forms, protonation states",
          "properties": {
-            "alternate_identifiers": {
-               "description": "Non-primary identifiers",
+            "alternative_identifiers": {
+               "description": "A list of alternative identifiers for the entity.",
                "items": {
                   "type": "string"
                },
@@ -892,8 +885,8 @@
          "additionalProperties": false,
          "description": "An object that primarily consists of symbols that represent information.   Files, records, and omics data are examples of data objects.",
          "properties": {
-            "alternate_identifiers": {
-               "description": "Non-primary identifiers",
+            "alternative_identifiers": {
+               "description": "A list of alternative identifiers for the entity.",
                "items": {
                   "type": "string"
                },
@@ -904,8 +897,8 @@
                "type": "string"
             },
             "data_object_type": {
-               "description": "The type of file represented by the data object.",
-               "type": "string"
+               "$ref": "#/definitions/FileTypeEnum",
+               "description": "The type of file represented by the data object."
             },
             "description": {
                "type": "string"
@@ -926,7 +919,7 @@
                "type": "string"
             },
             "type": {
-               "description": "An optional string that species the type object.  This is used to allow for searches for different kinds of objects.",
+               "description": "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.",
                "type": "string"
             },
             "url": {
@@ -1081,8 +1074,8 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
-            "alternate_identifiers": {
-               "description": "Non-primary identifiers",
+            "alternative_identifiers": {
+               "description": "A list of alternative identifiers for the entity.",
                "items": {
                   "type": "string"
                },
@@ -1106,6 +1099,27 @@
          ],
          "title": "EnvironmentalMaterialTerm",
          "type": "object"
+      },
+      "FileTypeEnum": {
+         "description": "",
+         "enum": [
+            "assembly_contigs.fna",
+            "assembly_scaffolds.fna",
+            "assembly.agp",
+            "filterStats.txt",
+            "filtered.fastq.gz",
+            "mapping_stats.txt",
+            "pairedMapped_sorted.bam",
+            "KO TSV",
+            "EC TSV",
+            "Protein FAA",
+            "MSGFjobs_MASIC_resultant.tsv",
+            "Peptide_Report.tsv",
+            "Protein_Report.tsv",
+            "QC_metrics.tsv"
+         ],
+         "title": "FileTypeEnum",
+         "type": "string"
       },
       "FunctionalAnnotation": {
          "additionalProperties": false,
@@ -1135,8 +1149,8 @@
          "additionalProperties": false,
          "description": "A molecule encoded by a gene that has an evolved function",
          "properties": {
-            "alternate_identifiers": {
-               "description": "Non-primary identifiers",
+            "alternative_identifiers": {
+               "description": "A list of alternative identifiers for the entity.",
                "items": {
                   "type": "string"
                },
@@ -1238,8 +1252,8 @@
          "additionalProperties": false,
          "description": "A material entity that is designed to perform a function in a scientific investigation, but is not a reagent[OBI].",
          "properties": {
-            "alternate_identifiers": {
-               "description": "Non-primary identifiers",
+            "alternative_identifiers": {
+               "description": "A list of alternative identifiers for the entity.",
                "items": {
                   "type": "string"
                },
@@ -1344,7 +1358,7 @@
                "type": "integer"
             },
             "type": {
-               "description": "An optional string that species the type object.  This is used to allow for searches for different kinds of objects.",
+               "description": "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.",
                "type": "string"
             }
          },
@@ -1441,8 +1455,8 @@
          "additionalProperties": false,
          "description": "This is used to link a metabolomics analysis workflow to a specific metabolite",
          "properties": {
-            "alternate_identifiers": {
-               "description": "TODO",
+            "alternative_identifiers": {
+               "description": "A list of alternative identifiers for the entity.",
                "items": {
                   "type": "string"
                },
@@ -2243,8 +2257,8 @@
                "description": "The date on which the information was added to the database.",
                "type": "string"
             },
-            "alternate_identifiers": {
-               "description": "Non-primary identifiers",
+            "alternative_identifiers": {
+               "description": "A list of alternative identifiers for the entity.",
                "items": {
                   "type": "string"
                },
@@ -2305,7 +2319,7 @@
                "type": "string"
             },
             "type": {
-               "description": "An optional string that species the type object.  This is used to allow for searches for different kinds of objects.",
+               "description": "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.",
                "type": "string"
             }
          },
@@ -2321,8 +2335,8 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
-            "alternate_identifiers": {
-               "description": "Non-primary identifiers",
+            "alternative_identifiers": {
+               "description": "A list of alternative identifiers for the entity.",
                "items": {
                   "type": "string"
                },
@@ -2351,8 +2365,8 @@
          "additionalProperties": false,
          "description": "A set of genes or gene products in which all members are orthologous",
          "properties": {
-            "alternate_identifiers": {
-               "description": "Non-primary identifiers",
+            "alternative_identifiers": {
+               "description": "A list of alternative identifiers for the entity.",
                "items": {
                   "type": "string"
                },
@@ -2381,8 +2395,8 @@
          "additionalProperties": false,
          "description": "A pathway is a sequence of steps/reactions carried out by an organism or community of organisms",
          "properties": {
-            "alternate_identifiers": {
-               "description": "Non-primary identifiers",
+            "alternative_identifiers": {
+               "description": "A list of alternative identifiers for the entity.",
                "items": {
                   "type": "string"
                },
@@ -2453,8 +2467,8 @@
          "additionalProperties": false,
          "description": "represents a person, such as a researcher",
          "properties": {
-            "alternate_identifiers": {
-               "description": "Non-primary identifiers",
+            "alternative_identifiers": {
+               "description": "A list of alternative identifiers for the entity.",
                "items": {
                   "type": "string"
                },
@@ -2571,8 +2585,8 @@
          "additionalProperties": false,
          "description": "An individual biochemical transformation carried out by a functional unit of an organism, in which a collection of substrates are transformed into a collection of products. Can also represent transporters",
          "properties": {
-            "alternate_identifiers": {
-               "description": "Non-primary identifiers",
+            "alternative_identifiers": {
+               "description": "A list of alternative identifiers for the entity.",
                "items": {
                   "type": "string"
                },
@@ -2839,15 +2853,15 @@
                "description": "The abstract of manuscript/grant associated with the entity; i.e., a summary of the resource.",
                "type": "string"
             },
-            "alternate_identifiers": {
-               "description": "Non-primary identifiers",
+            "alternative_descriptions": {
+               "description": "A list of alternative descriptions for the entity. The distinction between desciption and alternative descriptions is application-specific.",
                "items": {
                   "type": "string"
                },
                "type": "array"
             },
-            "alternative_descriptions": {
-               "description": "A list of alternative descriptions for the entity. The distinction between desciption and alternative descriptions is application-specific.",
+            "alternative_identifiers": {
+               "description": "A list of alternative identifiers for the entity.",
                "items": {
                   "type": "string"
                },
@@ -2923,7 +2937,7 @@
                "type": "string"
             },
             "type": {
-               "description": "An optional string that species the type object.  This is used to allow for searches for different kinds of objects.",
+               "description": "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.",
                "type": "string"
             },
             "websites": {

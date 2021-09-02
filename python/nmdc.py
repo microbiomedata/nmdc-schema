@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-08-31 11:53
+# Generation date: 2021-09-02 19:18
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -45,6 +45,7 @@ EGGNOG = CurieNamespace('EGGNOG', 'http://identifiers.org/eggnog/')
 GO = CurieNamespace('GO', 'http://purl.obolibrary.org/obo/GO_')
 GOLD = CurieNamespace('GOLD', 'https://identifiers.org/gold/')
 HMDB = CurieNamespace('HMDB', 'http://identifiers.org/hmdb/')
+ISA = CurieNamespace('ISA', 'http://example.org/UNKNOWN/ISA/')
 KEGG_COMPOUND = CurieNamespace('KEGG_COMPOUND', 'http://identifiers.org/kegg.compound/')
 KEGG_ORTHOLOGY = CurieNamespace('KEGG_ORTHOLOGY', 'http://identifiers.org/kegg.orthology/')
 KEGG_PATHWAY = CurieNamespace('KEGG_PATHWAY', 'http://identifiers.org/kegg.pathway/')
@@ -60,11 +61,14 @@ PFAM = CurieNamespace('PFAM', 'http://identifiers.org/pfam/')
 PR = CurieNamespace('PR', 'http://purl.obolibrary.org/obo/PR_')
 PUBCHEM_COMPOUND = CurieNamespace('PUBCHEM_COMPOUND', 'http://identifiers.org/pubchem.compound/')
 RHEA = CurieNamespace('RHEA', 'http://identifiers.org/rhea/')
+RO = CurieNamespace('RO', 'http://purl.obolibrary.org/obo/RO_')
 RETRORULES = CurieNamespace('RetroRules', 'http://example.org/UNKNOWN/RetroRules/')
 SEED = CurieNamespace('SEED', 'http://identifiers.org/seed/')
+SIO = CurieNamespace('SIO', 'http://semanticscience.org/resource/SIO_')
 SUPFAM = CurieNamespace('SUPFAM', 'http://identifiers.org/supfam/')
 TIGRFAM = CurieNamespace('TIGRFAM', 'http://identifiers.org/tigrfam/')
 UNIPROTKB = CurieNamespace('UniProtKB', 'http://example.org/UNKNOWN/UniProtKB/')
+BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 GTPO = CurieNamespace('gtpo', 'http://example.org/UNKNOWN/gtpo/')
 IGSN = CurieNamespace('igsn', 'https://app.geosamples.org/sample/igsn/')
@@ -338,7 +342,7 @@ class NamedThing(YAMLRoot):
     id: Union[str, NamedThingId] = None
     name: Optional[str] = None
     description: Optional[str] = None
-    alternate_identifiers: Optional[Union[str, List[str]]] = empty_list()
+    alternative_identifiers: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -352,9 +356,9 @@ class NamedThing(YAMLRoot):
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if not isinstance(self.alternate_identifiers, list):
-            self.alternate_identifiers = [self.alternate_identifiers] if self.alternate_identifiers is not None else []
-        self.alternate_identifiers = [v if isinstance(v, str) else str(v) for v in self.alternate_identifiers]
+        if not isinstance(self.alternative_identifiers, list):
+            self.alternative_identifiers = [self.alternative_identifiers] if self.alternative_identifiers is not None else []
+        self.alternative_identifiers = [v if isinstance(v, str) else str(v) for v in self.alternative_identifiers]
 
         super().__post_init__(**kwargs)
 
@@ -1538,20 +1542,20 @@ class MetaboliteQuantification(YAMLRoot):
     class_name: ClassVar[str] = "metabolite quantification"
     class_model_uri: ClassVar[URIRef] = NMDC.MetaboliteQuantification
 
+    alternative_identifiers: Optional[Union[str, List[str]]] = empty_list()
     metabolite_quantified: Optional[Union[str, ChemicalEntityId]] = None
     highest_similarity_score: Optional[float] = None
-    alternate_identifiers: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if not isinstance(self.alternative_identifiers, list):
+            self.alternative_identifiers = [self.alternative_identifiers] if self.alternative_identifiers is not None else []
+        self.alternative_identifiers = [v if isinstance(v, str) else str(v) for v in self.alternative_identifiers]
+
         if self.metabolite_quantified is not None and not isinstance(self.metabolite_quantified, ChemicalEntityId):
             self.metabolite_quantified = ChemicalEntityId(self.metabolite_quantified)
 
         if self.highest_similarity_score is not None and not isinstance(self.highest_similarity_score, float):
             self.highest_similarity_score = float(self.highest_similarity_score)
-
-        if not isinstance(self.alternate_identifiers, list):
-            self.alternate_identifiers = [self.alternate_identifiers] if self.alternate_identifiers is not None else []
-        self.alternate_identifiers = [v if isinstance(v, str) else str(v) for v in self.alternate_identifiers]
 
         super().__post_init__(**kwargs)
 
@@ -1803,7 +1807,7 @@ class ControlledTermValue(AttributeValue):
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.term is not None and not isinstance(self.term, OntologyClass):
-            self.term = OntologyClass(self.term)
+            self.term = OntologyClass(**as_dict(self.term))
 
         super().__post_init__(**kwargs)
 
@@ -5279,21 +5283,6 @@ slots.md5_checksum = Slot(uri=NMDC.md5_checksum, name="md5 checksum", curie=NMDC
 slots.abstract = Slot(uri=NMDC.abstract, name="abstract", curie=NMDC.curie('abstract'),
                    model_uri=NMDC.abstract, domain=None, range=Optional[str])
 
-slots.title = Slot(uri=NMDC.title, name="title", curie=NMDC.curie('title'),
-                   model_uri=NMDC.title, domain=None, range=Optional[str])
-
-slots.alternative_titles = Slot(uri=NMDC.alternative_titles, name="alternative titles", curie=NMDC.curie('alternative_titles'),
-                   model_uri=NMDC.alternative_titles, domain=None, range=Optional[Union[str, List[str]]])
-
-slots.alternative_names = Slot(uri=NMDC.alternative_names, name="alternative names", curie=NMDC.curie('alternative_names'),
-                   model_uri=NMDC.alternative_names, domain=None, range=Optional[Union[str, List[str]]])
-
-slots.alternative_descriptions = Slot(uri=NMDC.alternative_descriptions, name="alternative descriptions", curie=NMDC.curie('alternative_descriptions'),
-                   model_uri=NMDC.alternative_descriptions, domain=None, range=Optional[Union[str, List[str]]])
-
-slots.alternative_identifiers = Slot(uri=NMDC.alternative_identifiers, name="alternative identifiers", curie=NMDC.curie('alternative_identifiers'),
-                   model_uri=NMDC.alternative_identifiers, domain=None, range=Optional[Union[str, List[str]]])
-
 slots.keywords = Slot(uri=NMDC.keywords, name="keywords", curie=NMDC.curie('keywords'),
                    model_uri=NMDC.keywords, domain=None, range=Optional[Union[str, List[str]]], mappings = [DCTERMS.subject])
 
@@ -5543,11 +5532,23 @@ slots.name = Slot(uri=NMDC.name, name="name", curie=NMDC.curie('name'),
 slots.description = Slot(uri=DCTERMS.description, name="description", curie=DCTERMS.curie('description'),
                    model_uri=NMDC.description, domain=None, range=Optional[str])
 
-slots.alternate_identifiers = Slot(uri=NMDC.alternate_identifiers, name="alternate identifiers", curie=NMDC.curie('alternate_identifiers'),
-                   model_uri=NMDC.alternate_identifiers, domain=None, range=Optional[Union[str, List[str]]])
-
 slots.type = Slot(uri=NMDC.type, name="type", curie=NMDC.curie('type'),
                    model_uri=NMDC.type, domain=None, range=Optional[str])
+
+slots.title = Slot(uri=NMDC.title, name="title", curie=NMDC.curie('title'),
+                   model_uri=NMDC.title, domain=None, range=Optional[str])
+
+slots.alternative_titles = Slot(uri=NMDC.alternative_titles, name="alternative titles", curie=NMDC.curie('alternative_titles'),
+                   model_uri=NMDC.alternative_titles, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.alternative_names = Slot(uri=NMDC.alternative_names, name="alternative names", curie=NMDC.curie('alternative_names'),
+                   model_uri=NMDC.alternative_names, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.alternative_descriptions = Slot(uri=NMDC.alternative_descriptions, name="alternative descriptions", curie=NMDC.curie('alternative_descriptions'),
+                   model_uri=NMDC.alternative_descriptions, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.alternative_identifiers = Slot(uri=NMDC.alternative_identifiers, name="alternative identifiers", curie=NMDC.curie('alternative_identifiers'),
+                   model_uri=NMDC.alternative_identifiers, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.mAGBin__bin_name = Slot(uri=NMDC.bin_name, name="mAGBin__bin_name", curie=NMDC.curie('bin_name'),
                    model_uri=NMDC.mAGBin__bin_name, domain=None, range=Optional[str])
@@ -5614,9 +5615,6 @@ slots.metabolite_quantified = Slot(uri=NMDC.metabolite_quantified, name="metabol
 
 slots.highest_similarity_score = Slot(uri=NMDC.highest_similarity_score, name="highest similarity score", curie=NMDC.curie('highest_similarity_score'),
                    model_uri=NMDC.highest_similarity_score, domain=None, range=Optional[float])
-
-slots.alternate_identifiers = Slot(uri=NMDC.alternate_identifiers, name="alternate_identifiers", curie=NMDC.curie('alternate_identifiers'),
-                   model_uri=NMDC.alternate_identifiers, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.peptide_sequence = Slot(uri=NMDC.peptide_sequence, name="peptide sequence", curie=NMDC.curie('peptide_sequence'),
                    model_uri=NMDC.peptide_sequence, domain=None, range=Optional[str])
@@ -5801,9 +5799,6 @@ slots.metabolite_quantification_metabolite_quantified = Slot(uri=NMDC.metabolite
 
 slots.metabolite_quantification_highest_similarity_score = Slot(uri=NMDC.highest_similarity_score, name="metabolite quantification_highest similarity score", curie=NMDC.curie('highest_similarity_score'),
                    model_uri=NMDC.metabolite_quantification_highest_similarity_score, domain=MetaboliteQuantification, range=Optional[float])
-
-slots.metabolite_quantification_alternate_identifiers = Slot(uri=NMDC.alternate_identifiers, name="metabolite quantification_alternate_identifiers", curie=NMDC.curie('alternate_identifiers'),
-                   model_uri=NMDC.metabolite_quantification_alternate_identifiers, domain=MetaboliteQuantification, range=Optional[Union[str, List[str]]])
 
 slots.peptide_quantification_peptide_sequence = Slot(uri=NMDC.peptide_sequence, name="peptide quantification_peptide sequence", curie=NMDC.curie('peptide_sequence'),
                    model_uri=NMDC.peptide_quantification_peptide_sequence, domain=PeptideQuantification, range=Optional[str])
