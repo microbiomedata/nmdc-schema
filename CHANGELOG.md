@@ -3,11 +3,11 @@ Changes to the schema are documented in this file.
 
 ## Current (update before releasing)
 ### Added
-  - N/A
+  - slot `type` defined using `designates_type: true`
 ### Fixed
   - N/A
 ### Changed 
-  - N/A
+  - Linkml version updated to `1.0.4`
 ### Removed
   - N/A
 
