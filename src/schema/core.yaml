@@ -209,6 +209,8 @@ classes:
   metabolite quantification:
     description: >-
       This is used to link a metabolomics analysis workflow to a specific metabolite
+    slots:
+      - alternative identifiers
     slot_usage:
       metabolite quantified:
         description: >-
@@ -218,10 +220,6 @@ classes:
         description: >-
           TODO: Yuri to fill in
         range: float
-      alternate_identifiers:
-        multivalued: true
-        description: >-
-          TODO
           
   peptide quantification:
     description: >-
