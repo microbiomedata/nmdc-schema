@@ -8,8 +8,9 @@ Changes to the schema are documented in this file.
   - added `name` and `title` to `mixs.yaml` (#126)
 ### Changed 
   - Linkml version updated to `1.0.4`
+  - `alternate identifiers` to `alternative identifiers` (#125)
 ### Removed
-  - N/A
+  - `alternate identifiers` slot (#125)
 
 ## [2021.07.01rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.07.01rc1)
 ### Added
