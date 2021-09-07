@@ -1,6 +1,6 @@
 # National Microbiome Data Collaborative Schema
 
-[![PyPI - License](https://img.shields.io/pypi/l/nmdc-schema)](https://github.com/microbiomedata/nmdc-schema/blob/mam-readme/LICENSE)
+[![PyPI - License](https://img.shields.io/pypi/l/nmdc-schema)](https://github.com/microbiomedata/nmdc-schema/blob/main/LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/microbiomedata/nmdc-schema?branch=main&kill_cache=1)](https://github.com/microbiomedata/nmdc-schema/commits)
 [![GitHub issues](https://img.shields.io/github/issues/microbiomedata/nmdc-schema?branch=master&kill_cache=1)](https://github.com/microbiomedata/nmdc-schema/issues)
 [![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/microbiomedata/nmdc-schema?branch=main&kill_cache=1)](https://github.com/microbiomedata/nmdc-schema/issues?q=is%3Aissue+is%3Aclosed)
@@ -16,13 +16,17 @@ Tasks managed by the repository are:
 -   Converting the schema from it's native LinkML/YAML format into other artifacts
     -   [JSON-Schema](jsonschema/nmdc.schema.json)
 -   Deploying the schema as a PyPI package
--   Deploying the [documentation](https://microbiomedata.github.io/nmdc-metadata/) 
+-   Deploying the [documentation](https://microbiomedata.github.io/nmdc-schema/) 
 
 ## Background
 
 The NMDC [Introduction to metadata and ontologies](https://microbiomedata.org/introduction-to-metadata-and-ontologies/) primer provides some the context for this project.
 
-See also [these slides](https://microbiomedata.github.io/nmdc-metadata/docs/schema-slides) describing the schema
+See also [these slides](https://microbiomedata.github.io/nmdc-schema/docs/schema-slides) describing the schema
+
+## Maintaining the Schema
+
+See [MAINTAINERS.md](MAINTAINERS.md) for instructions on maintaining and updating the schema.
 
 ## Collections within the schema
 

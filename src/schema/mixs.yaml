@@ -1,4 +1,6 @@
 id: https://microbiomedata/schema/mixs
+name: mixs-schema
+title: MIxS Schema
 
 imports:
   - core

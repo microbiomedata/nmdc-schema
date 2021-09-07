@@ -83,7 +83,7 @@ classes:
       - id
       - name
       - description
-      - alternate identifiers
+      - alternative identifiers
   
   ontology class:
     is_a: named thing
@@ -210,6 +210,8 @@ classes:
   metabolite quantification:
     description: >-
       This is used to link a metabolomics analysis workflow to a specific metabolite
+    slots:
+      - alternative identifiers
     slot_usage:
       metabolite quantified:
         description: >-
@@ -219,10 +221,6 @@ classes:
         description: >-
           TODO: Yuri to fill in
         range: float
-      alternate_identifiers:
-        multivalued: true
-        description: >-
-          TODO
           
   peptide quantification:
     description: >-
@@ -547,48 +545,6 @@ slots:
       The abstract of manuscript/grant associated with the entity; i.e., a summary of the resource.
     exact_mappings:
       - dcterms:abstract
-
-  title:
-    range: string
-    multivalued: false
-    description: >-
-      A name given to the entity that differs from the name/label programatically assigned to it.
-      For example, when extracting study information for GOLD, the GOLD system has assigned a name/label.
-      However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.
-    exact_mappings:
-      - dcterms:title
-
-  alternative titles:
-    range: string
-    multivalued: true
-    description: >-
-      A list of alternative titles for the entity.
-      The distinction between title and alternative titles is application-specific.
-    exact_mappings:
-      - dcterms:alternative
-  
-  alternative names:
-    range: string
-    multivalued: true
-    description: >-
-      A list of alternative names used to refer to the entity.
-      The distinction between name and alternative names is application-specific.
-    exact_mappings:
-      - dcterms:alternative
-      - skos:altLabel
-
-  alternative descriptions:
-    range: string
-    multivalued: true
-    description: >-
-      A list of alternative descriptions for the entity.
-      The distinction between desciption and alternative descriptions is application-specific.
-  
-  alternative identifiers:
-    range: string
-    multivalued: true
-    description: >-
-      A list of alternative identifiers for the entity.
 
   keywords:
     range: string

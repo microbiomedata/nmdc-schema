@@ -3,13 +3,15 @@ Changes to the schema are documented in this file.
 
 ## Current (update before releasing)
 ### Added
-  - `email` slot in `core.yaml`. Motivation = people (`person value`) associated with studies, but not constrained to that domain.
+  - `email` slot in `core.yaml`. Motivation = people (`person value`) associated with studies, but not constrained to that domain (cf. #100).
+  - slot `type` defined using `designates_type: true`
 ### Fixed
-  - N/A
+  - added `name` and `title` to `mixs.yaml` (#126)
 ### Changed 
-  - N/A
+  - Linkml version updated to `1.0.4`
+  - `alternate identifiers` to `alternative identifiers` (#125)
 ### Removed
-  - N/A
+  - `alternate identifiers` slot (#125)
 
 ## [2021.07.01rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.07.01rc1)
 ### Added
