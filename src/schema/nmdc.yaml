@@ -316,7 +316,7 @@ classes:
       Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0 
     slots:
       - applies to person
-      - has contributor role
+      - has contributor roles
     class_uri: prov:Association
         
   study:
@@ -476,11 +476,12 @@ slots:
     slot_uri: prov:hadRole
 
 
-  has contributor role:
+  has contributor roles:
     domain: study role
     range: string
+    slot_uri: prov:hadRole
     todos: >-
-      make the range an ontology term from CRediT Contributor Roles (https://casrai.org/credit/)
+      make the enums fore contibutor roles
     multivalued: true
       
 
@@ -490,7 +491,7 @@ slots:
     todos: >-
       relate to principal investigator slot?
     multivalued: true
-    slot_uri: Prov:Agent
+    slot_uri: prov:agent
 
 
   object set:
