@@ -314,10 +314,6 @@ classes:
     description: >-
       This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role (https://casrai.org/credit/) and for a person value
       Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0 
-    notes: >-
-      Does this require an in_subset assertion?
-      Will each study role instance require an id, since they're named things?
-      A study should be able to take  0..inf study roles
     slots:
       - applies to person
       - has contributor role
@@ -355,6 +351,7 @@ classes:
       - INSDC SRA ENA study identifiers
       - GOLD study identifiers
       - MGnify project identifiers
+      - has study roles
     slot_usage:
       doi:
         description: >-
@@ -467,15 +464,11 @@ enums:
       
 slots:
 
-  has study role:
+  has study roles:
     domain: study
     range: study role
-    todos: >-
-      what do inlined and abstract mean?
-      should this be a mixin?
-      add examples and notes
-      add an is_a parent?
     multivalued: true
+    inlined: true
     description: >-
       This slot links a study to a study role. 
       The study role will be linked to a person value and to a CRediT Contributor Roles term.
