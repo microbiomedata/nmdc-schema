@@ -134,13 +134,17 @@ classes:
       - orcid
       - profile image url
       - email
+      - name
     todos:
       - add additional fields e.g for institution
     slot_usage:
       has raw value:
         description: >-
           the full name of the Investgator in format FIRST LAST
-          
+      name:
+        description: >-
+          will replace has raw value?
+
   person:
     is_a: named thing
     description: >-
