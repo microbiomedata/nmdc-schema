@@ -5,7 +5,7 @@ Changes to the schema are documented in this file.
 ### Added
   - `email` slot in `core.yaml`. Motivation = people (`person value`) associated with studies, but not constrained to that domain (cf. #100).
   - slot `type` defined using `designates_type: true`
-  - name slot added to person value. Noted that has raw value could be deprecated in the future.
+  - `name` slot added to `person value`. Noted that `has raw value` could be deprecated in the future.
 ### Fixed
   - added `name` and `title` to `mixs.yaml` (#126)
 ### Changed 
