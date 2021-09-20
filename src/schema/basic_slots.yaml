@@ -44,19 +44,55 @@ slots:
       a human-readable description of a thing
     slot_uri: dcterms:description
 
-  alternate identifiers:
-    aliases: ['mappings', 'alt ids', 'xrefs']
-    description: >-
-      Non-primary identifiers
-    multivalued: true
-    range: string
-    required: false 
-  
   type:
     range: string
     description: >-
-      An optional string that species the type object. 
+      An optional string that specifies the type object. 
       This is used to allow for searches for different kinds of objects.
+    designates_type: true
     examples:
       - value: nmdc:Biosample
       - value: nmdc:Study
+
+  title:
+    range: string
+    multivalued: false
+    description: >-
+      A name given to the entity that differs from the name/label programatically assigned to it.
+      For example, when extracting study information for GOLD, the GOLD system has assigned a name/label.
+      However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.
+    exact_mappings:
+      - dcterms:title
+
+  alternative titles:
+    range: string
+    multivalued: true
+    description: >-
+      A list of alternative titles for the entity.
+      The distinction between title and alternative titles is application-specific.
+    exact_mappings:
+      - dcterms:alternative
+  
+  alternative names:
+    range: string
+    multivalued: true
+    description: >-
+      A list of alternative names used to refer to the entity.
+      The distinction between name and alternative names is application-specific.
+    exact_mappings:
+      - dcterms:alternative
+      - skos:altLabel
+
+  alternative descriptions:
+    range: string
+    multivalued: true
+    description: >-
+      A list of alternative descriptions for the entity.
+      The distinction between desciption and alternative descriptions is application-specific.
+  
+  alternative identifiers:
+    range: string
+    multivalued: true
+    description: >-
+      A list of alternative identifiers for the entity.
+

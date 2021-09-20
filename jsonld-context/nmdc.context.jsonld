@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2021-07-29 22:35\n    Schema: NMDC\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC). This schem is organized into 3 separate modules:\n  \nThis schema is organized into distinct modules:\n  \n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2021-09-02 19:18\n    Schema: NMDC\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC). This schem is organized into 3 separate modules:\n  \nThis schema is organized into distinct modules:\n  \n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "CAS": "http://identifiers.org/cas/",
       "CATH": "http://identifiers.org/cath/",
@@ -52,6 +52,10 @@
       },
       "RetroRules": "http://example.org/UNKNOWN/RetroRules/",
       "SEED": "http://identifiers.org/seed/",
+      "SIO": {
+         "@id": "http://semanticscience.org/resource/SIO_",
+         "@prefix": true
+      },
       "SUPFAM": "http://identifiers.org/supfam/",
       "TIGRFAM": "http://identifiers.org/tigrfam/",
       "UniProtKB": "http://example.org/UNKNOWN/UniProtKB/",
