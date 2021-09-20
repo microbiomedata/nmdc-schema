@@ -309,7 +309,6 @@ classes:
       - NCIT:C43412
 
   credit association:
-    is_a: named thing
     aliases: ['study role', 'credit table', 'associated researchers']
     description: >-
       This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role (https://casrai.org/credit/) and for a person value
@@ -317,6 +316,7 @@ classes:
     slots:
       - applies to person
       - applied role
+      - type
     class_uri: prov:Association
         
   study:
@@ -516,7 +516,8 @@ slots:
     slot_uri: prov:hadRole
     todos: >-
       role enums come from https://casrai.org/credit/
-    multivalued: true
+    multivalued: false
+    required: true
       
 
   applies to person:
@@ -526,6 +527,7 @@ slots:
       prov:agent takes an Agent object. Is a person value an Agent? Also try to relate to principal investigator slot?
       could include OBI:0000103 principal investigator role... do we need to define the OBI prefix?
     multivalued: true
+    required: true
     slot_uri: prov:agent
 
 

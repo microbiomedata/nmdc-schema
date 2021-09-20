@@ -1,0 +1,20 @@
+{
+  "study_set": [
+    {
+      "type": "study",
+      "id": "example:123",
+      "has_credit_association": [
+        {
+          "type": "credit association",
+          "applied_role": "Data curation",
+          "applies_to_person": [
+            {
+              "type": "PersonValue",
+              "orcid": "orcid:0000-0002-1825-00"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
