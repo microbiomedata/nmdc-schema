@@ -462,8 +462,40 @@ enums:
         description: Tab delimited file of protein results derived from ~5% FDR filtered peptide data, including aggregated abundance information.
       QC_metrics.tsv:
         description: Tab delimited file of aggregate statistics derived from workflow results.
-      
-      
+  credit enum:
+    permissible_values:
+      Conceptualization:
+        description: Conceptualization
+      Data curation:
+        description: Data curation
+      Formal Analysis:
+        description: Formal Analysis
+      Funding acquisition:
+        description: Funding acquisition
+      Investigation:
+        description: Investigation
+      Methodology:
+        description: Methodology
+      Project administration:
+        description: Project administration
+      Resources:
+        description: Resources
+      Software:
+        description: Software
+      Supervision:
+        description: Supervision
+      Validation:
+        description: Validation
+      Visualization:
+        description: Visualization
+      Writing original draft:
+        description: Writing – original draft
+      Writing review and editing:
+        description: Writing – review & editing
+      Principal Investigator:
+        description: principal investigator role
+        meaning: OBI:0000103
+
 slots:
 
   has credit association:
@@ -480,10 +512,10 @@ slots:
 
   applied role:
     domain: credit association
-    range: string
+    range: credit enum
     slot_uri: prov:hadRole
     todos: >-
-      make the enums fore contibutor roles
+      role enums come from https://casrai.org/credit/
     multivalued: true
       
 
@@ -492,6 +524,7 @@ slots:
     range: person value
     todos: >-
       prov:agent takes an Agent object. Is a person value an Agent? Also try to relate to principal investigator slot?
+      could include OBI:0000103 principal investigator role... do we need to define the OBI prefix?
     multivalued: true
     slot_uri: prov:agent
 
