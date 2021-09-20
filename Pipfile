@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-linkml = ">=1.0.4"
+linkml = ">=1.0.3"
 jq = "*"
 mkdocs = "*"
 twine = "*"
