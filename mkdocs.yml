@@ -1,4 +1,4 @@
-site_name: "NMDC Metadata Documentation"
+site_name: "NMDC Schema Documentation"
 theme:
   name: readthedocs
   features:
