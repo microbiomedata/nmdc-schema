@@ -307,6 +307,17 @@ classes:
     exact_mappings:
       - OBI:0000747
       - NCIT:C43412
+
+  credit association:
+    aliases: ['study role', 'credit table', 'associated researchers']
+    description: >-
+      This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role (https://casrai.org/credit/) and for a person value
+      Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0 
+    slots:
+      - applies to person
+      - applied role
+      - type
+    class_uri: prov:Association
         
   study:
     is_a: named thing
@@ -340,6 +351,7 @@ classes:
       - INSDC SRA ENA study identifiers
       - GOLD study identifiers
       - MGnify project identifiers
+      - has credit associations
     slot_usage:
       doi:
         description: >-
@@ -352,6 +364,8 @@ classes:
     close_mappings:
       - NCIT:C41198 ## investigation
       - ISA:Investigation
+    broad_mappings:
+      - prov:Activity
     todos:
       - determine how to get data values for submitted_to_insdc, investigation_type, experimental_factor
       - project_name is redundant with name, so excluding it
@@ -448,9 +462,74 @@ enums:
         description: Tab delimited file of protein results derived from ~5% FDR filtered peptide data, including aggregated abundance information.
       QC_metrics.tsv:
         description: Tab delimited file of aggregate statistics derived from workflow results.
-      
-      
+  credit enum:
+    permissible_values:
+      Conceptualization:
+        description: Conceptualization
+      Data curation:
+        description: Data curation
+      Formal Analysis:
+        description: Formal Analysis
+      Funding acquisition:
+        description: Funding acquisition
+      Investigation:
+        description: Investigation
+      Methodology:
+        description: Methodology
+      Project administration:
+        description: Project administration
+      Resources:
+        description: Resources
+      Software:
+        description: Software
+      Supervision:
+        description: Supervision
+      Validation:
+        description: Validation
+      Visualization:
+        description: Visualization
+      Writing original draft:
+        description: Writing – original draft
+      Writing review and editing:
+        description: Writing – review & editing
+      Principal Investigator:
+        description: principal investigator role
+        meaning: OBI:0000103
+
 slots:
+
+  has credit associations:
+    domain: study
+    range: credit association
+    multivalued: true
+    inlined: true
+    description: >-
+      This slot links a study to a credit association. 
+      The credit association will be linked to a person value and to a CRediT Contributor Roles term.
+      Overall semantics: person should get credit X for their participation in the study
+    slot_uri: prov:qualifiedAssociation
+
+
+  applied role:
+    domain: credit association
+    range: credit enum
+    slot_uri: prov:hadRole
+    todos: >-
+      role enums come from https://casrai.org/credit/
+    multivalued: false
+    required: true
+      
+
+  applies to person:
+    domain: credit association
+    range: person value
+    todos: >-
+      prov:agent takes an Agent object. Is a person value an Agent? Also try to relate to principal investigator slot?
+      could include OBI:0000103 principal investigator role... do we need to define the OBI prefix?
+    multivalued: false
+    required: true
+    slot_uri: prov:agent
+
 
   object set:
     mixin: true
