@@ -9,6 +9,7 @@ jq = "*"
 mkdocs = "*"
 twine = "*"
 build = "*"
+openpyxl = "3.0.7"
 
 [dev-packages]
 
