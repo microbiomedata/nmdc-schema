@@ -1,7 +1,7 @@
 # Change Log
 Changes to the schema are documented in this file.
 
-## Current (update before releasing)
+## Current (updates before releasing)
 ### Added
   - `CreditAssociation` class and related slots. Abstracts the roles borne by people within a strudy.
   - `email` slot in `core.yaml`. Motivation = people (`person value`) associated with studies, but not constrained to that domain (cf. #100).
