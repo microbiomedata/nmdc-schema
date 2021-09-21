@@ -478,10 +478,10 @@ slots:
 
   email:
     description: >-
-      An email address for an entitity such as a person
+      An email address for an entity such as a person
     range: string
-    notes: >-
-      More specific domain? Acceptable pattern? https://emailregex.com/ ?
+    multivalued: true
+    slot_uri: schema:email
 
   profile image url:
     description: >-

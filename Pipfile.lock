@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "71476433102655ec01788ef5855de2bf6409810c0b3b21a3fe4ab36700a5ce95"
+            "sha256": "915d1ee78dfbfdd6a45deab707936c7d9a96954ccd8beb0b59b0cc6cef3764fd"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -348,11 +348,11 @@
         },
         "linkml-runtime": {
             "hashes": [
-                "sha256:70a731f3afc9eec94e1edc2c045c059e7d7408abbbc3360b8d0beb09d0e617c7",
-                "sha256:ff73821f2d3a9a5dd3095fa907292f6650be326c4e3777243f54ae37e14af4a7"
+                "sha256:5cb6d48351326b70a5cc4e81bc9a1f89cb3ecae6c6df2fb2c2c7d6433529a448",
+                "sha256:95552555fb65675a903f7e6ebf4b72962866acedea33ac58bbaf524bc075e01d"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==1.1.0"
+            "version": "==1.1.1"
         },
         "lxml": {
             "hashes": [
@@ -518,11 +518,11 @@
         },
         "openpyxl": {
             "hashes": [
-                "sha256:4f2770348c029ce9433316ced8f91ed37d2a605e654f8bfdc93a3524561a8ce2",
-                "sha256:52150a09b660fe444af7abe2592b156c14e324526b1968a57705525547317a7f"
+                "sha256:46af4eaf201a89b610fcca177eed957635f88770a5462fb6aae4a2a52b0ff516",
+                "sha256:6456a3b472e1ef0facb1129f3c6ef00713cebf62e736cd7a75bcc3247432f251"
             ],
-            "markers": "python_version >= '3.6'",
-            "version": "==3.0.8"
+            "index": "pypi",
+            "version": "==3.0.7"
         },
         "packaging": {
             "hashes": [
@@ -593,7 +593,7 @@
                 "sha256:c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1",
                 "sha256:ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"
             ],
-            "markers": "python_version >= '2.6' and python_version not in '3.0, 3.1, 3.2'",
+            "markers": "python_version >= '2.6' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==2.4.7"
         },
         "pyrsistent": {
@@ -644,7 +644,7 @@
                 "sha256:0123cacc1627ae19ddf3c27a5de5bd67ee4586fbdd6440d9748f8abb483d3e86",
                 "sha256:961d03dc3453ebbc59dbdea9e4e11c5651520a876d0f4db161e8674aae935da9"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2'",
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==2.8.2"
         },
         "pytz": {
@@ -706,10 +706,10 @@
         },
         "rdflib-jsonld": {
             "hashes": [
-                "sha256:011afe67672353ca9978ab9a4bee964dff91f14042f2d8a28c22a573779d2f8b",
-                "sha256:107cd3019d41354c31687e64af5e3fd3c3e3fa5052ce635f5ce595fd31853a63"
+                "sha256:bcf84317e947a661bae0a3f2aee1eced697075fc4ac4db6065a3340ea0f10fc2",
+                "sha256:eda5a42a2e09f80d4da78e32b5c684bccdf275368f1541e6b7bcddfb1382a0e0"
             ],
-            "version": "==0.6.2"
+            "version": "==0.6.1"
         },
         "rdflib-pyldmod-compat": {
             "hashes": [
@@ -759,7 +759,7 @@
                 "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926",
                 "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2'",
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==1.16.0"
         },
         "snowballstemmer": {
@@ -897,10 +897,10 @@
         },
         "testfixtures": {
             "hashes": [
-                "sha256:0a6422737f6d89b45cdef1e2df5576f52ad0f507956002ce1020daa9f44211d6",
-                "sha256:486be7b01eb71326029811878a3317b7e7994324621c0ec633c8e24499d8d5b3"
+                "sha256:61c25cb0213f68d2dcd2b098d9d2e7f47afc3b4429d66e1cdeb1072be2fcb241",
+                "sha256:9c2316232de0ef6915d5446dcccaec9c4a6092751ba2ff7d30b9c14a954a90e3"
             ],
-            "version": "==6.18.1"
+            "version": "==6.18.2"
         },
         "tomli": {
             "hashes": [
