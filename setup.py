@@ -13,7 +13,7 @@ setup(
     setup_requires=["setuptools_scm"],
     packages=["nmdc_schema"],  # set package manually
     package_data={
-        "nmdc_schema": ["nmdc.schema.json", "gold-to-mixs.sssom.tsv", "nmdc.yaml"]
+        "nmdc_schema": ["nmdc.schema.json", "gold-to-mixs.sssom.tsv", "*.yaml"]
     },
     author="Bill Duncan",
     author_email="wdduncan@gmail.com",
