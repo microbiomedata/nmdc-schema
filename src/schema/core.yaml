@@ -137,13 +137,14 @@ classes:
       - name
     todos:
       - add additional fields e.g for institution
+      - deprecate "has raw value" in favor of "name"
     slot_usage:
       has raw value:
         description: >-
-          the full name of the Investgator in format FIRST LAST
+          The full name of the Investgator in format FIRST LAST. May eventually be deprecated in favor of "name".
       name:
         description: >-
-          will replace has raw value?
+          The full name of the Investgator in format FIRST LAST.
 
   person:
     is_a: named thing
