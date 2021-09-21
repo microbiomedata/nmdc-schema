@@ -220,7 +220,7 @@
                 "sha256:9a6e76c9d1afc1b977374a5dc430a1ebb0ea0488205546d4678d6e31cc5f6801",
                 "sha256:d2c132f8ba6276d794c66224c3297cec25c8079d0a4cf019c061611e0a3b94fa"
             ],
-            "markers": "python_full_version >= '3.7.0'",
+            "markers": "python_version >= '3.7'",
             "version": "==0.9.1"
         },
         "idna": {
@@ -305,7 +305,7 @@
                 "sha256:9a3d7c45e0b3636268efdb1a9d78734f0573e2a05ec4f00b6a677c69a63d1e3f",
                 "sha256:af41c05fb15b6b9881faa95191e942e1387e305574b2269ebbecb4289173395b"
             ],
-            "markers": "python_full_version >= '3.7.0'",
+            "markers": "python_version >= '3.7'",
             "version": "==0.1.7"
         },
         "jsonasobj": {
@@ -351,7 +351,7 @@
                 "sha256:5cb6d48351326b70a5cc4e81bc9a1f89cb3ecae6c6df2fb2c2c7d6433529a448",
                 "sha256:95552555fb65675a903f7e6ebf4b72962866acedea33ac58bbaf524bc075e01d"
             ],
-            "markers": "python_full_version >= '3.7.0'",
+            "markers": "python_version >= '3.7'",
             "version": "==1.1.1"
         },
         "lxml": {
@@ -636,7 +636,7 @@
                 "sha256:6f75e26dfda605c994031a72ca74b2b0079e1f7b12ab713e030078d8fa05dc3a",
                 "sha256:ad83bb2a645f64becbf946d4bd170e35fd9b903616c7ee25d5a4ed188cf2d1dd"
             ],
-            "markers": "python_full_version >= '3.7.0'",
+            "markers": "python_version >= '3.7'",
             "version": "==0.8.3"
         },
         "python-dateutil": {

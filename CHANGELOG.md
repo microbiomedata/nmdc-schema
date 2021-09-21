@@ -6,6 +6,7 @@ Changes to the schema are documented in this file.
   - `email` slot in `core.yaml`. Motivation = people (`person value`) associated with studies, but not constrained to that domain (cf. #100).
       - `email` made multivalued and assigned schema.org URI
   - slot `type` defined using `designates_type: true`
+  - `name` slot added to `person value`. Noted that `has raw value` could be deprecated in the future.
 ### Fixed
   - added `name` and `title` to `mixs.yaml` (#126)
 ### Changed 
