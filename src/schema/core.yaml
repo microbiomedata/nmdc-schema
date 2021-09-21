@@ -134,13 +134,22 @@ classes:
       - orcid
       - profile image url
       - email
+      - name
     todos:
       - add additional fields e.g for institution
+      - deprecate "has raw value" in favor of "name"
     slot_usage:
       has raw value:
         description: >-
-          the full name of the Investgator in format FIRST LAST
-          
+          The full name of the Investgator in format FIRST LAST.
+        notes: >-
+          May eventually be deprecated in favor of "name".
+      name:
+        description: >-
+          The full name of the Investgator.
+          It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
+
+
   person:
     is_a: named thing
     description: >-
@@ -474,10 +483,10 @@ slots:
 
   email:
     description: >-
-      An email address for an entitity such as a person
+      An email address for an entity such as a person
     range: string
-    notes: >-
-      More specific domain? Acceptable pattern? https://emailregex.com/ ?
+    multivalued: true
+    slot_uri: schema:email
 
   profile image url:
     description: >-
