@@ -351,7 +351,7 @@ classes:
       - INSDC SRA ENA study identifiers
       - GOLD study identifiers
       - MGnify project identifiers
-      - has credit association
+      - has credit associations
     slot_usage:
       doi:
         description: >-
@@ -498,7 +498,7 @@ enums:
 
 slots:
 
-  has credit association:
+  has credit associations:
     domain: study
     range: credit association
     multivalued: true
@@ -526,7 +526,7 @@ slots:
     todos: >-
       prov:agent takes an Agent object. Is a person value an Agent? Also try to relate to principal investigator slot?
       could include OBI:0000103 principal investigator role... do we need to define the OBI prefix?
-    multivalued: true
+    multivalued: false
     required: true
     slot_uri: prov:agent
 
