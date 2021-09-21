@@ -490,7 +490,7 @@ slots:
 
   profile image url:
     description: >-
-      A url that points to an image of a persion.
+      A url that points to an image of a person.
     domain: person value
     range: string
   
