@@ -3,11 +3,22 @@ Changes to the schema are documented in this file.
 
 ## Current (updates before releasing)
 ### Added
+  - N/A
+### Fixed
+  - N/A
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
+## [2021.09.21rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.09.21rc1)
+### Added
   - `CreditAssociation` class and related slots. Abstracts the roles borne by people within a strudy.
   - `email` slot in `core.yaml`. Motivation = people (`person value`) associated with studies, but not constrained to that domain (cf. #100).
       - `email` made multivalued and assigned schema.org URI
   - slot `type` defined using `designates_type: true`
   - `name` slot added to `person value`. Noted that `has raw value` could be deprecated in the future.
+  - All `yaml` files are included in the package data (#153)
 ### Fixed
   - added `name` and `title` to `mixs.yaml` (#126)
 ### Changed 
