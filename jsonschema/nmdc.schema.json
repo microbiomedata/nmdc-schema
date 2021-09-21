@@ -1,8 +1,5 @@
 {
-   "$id": "https://microbiomedata/schema",
-   "$schema": "http://json-schema.org/draft-07/schema#",
-   "additionalProperties": false,
-   "definitions": {
+   "$defs": {
       "Activity": {
          "additionalProperties": false,
          "description": "a provence-generating activity",
@@ -25,7 +22,7 @@
                "type": "string"
             },
             "was_associated_with": {
-               "$ref": "#/definitions/Agent"
+               "$ref": "#/$defs/Agent"
             },
             "was_informed_by": {
                "type": "string"
@@ -42,7 +39,7 @@
          "description": "a provence-generating agent",
          "properties": {
             "acted_on_behalf_of": {
-               "$ref": "#/definitions/Agent"
+               "$ref": "#/$defs/Agent"
             },
             "was_informed_by": {
                "type": "string"
@@ -105,34 +102,34 @@
                "type": "string"
             },
             "agrochem_addition": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"Addition of fertilizers, pesticides, etc. - amount and time of applications\""
             },
             "al_sat": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Aluminum saturation (esp. For tropical soils)",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "al_sat_meth": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Reference or method used in determining Al saturation"
             },
             "alkalinity": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"Alkalinity, the ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate\"",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "alkalinity_method": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Method used for alkalinity measurement"
             },
             "alkyl_diethers": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of alkyl diethers ",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "alt": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"Altitude is a term used to identify heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earthbs surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air\"",
                "pattern": "\\d+[.\\d+] \\S+"
             },
@@ -144,141 +141,141 @@
                "type": "array"
             },
             "aminopept_act": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Measurement of aminopeptidase activity",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "ammonium": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of ammonium in the sample",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "annual_precpt": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"The average of all annual precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. \"",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "annual_temp": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Mean annual temperature",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "bacteria_carb_prod": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Measurement of bacterial carbon production",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "bishomohopanol": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of bishomohopanol ",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "bromide": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of bromide ",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "calcium": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of calcium in the sample",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "carb_nitro_ratio": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Ratio of amount or concentrations of carbon to nitrogen",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "chem_administration": {
-               "$ref": "#/definitions/ControlledTermValue",
+               "$ref": "#/$defs/ControlledTermValue",
                "description": "\"List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi\""
             },
             "chloride": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of chloride in the sample",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "chlorophyll": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of chlorophyll",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "collection_date": {
-               "$ref": "#/definitions/TimestampValue",
+               "$ref": "#/$defs/TimestampValue",
                "description": "\"The time of sampling, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant\""
             },
             "community": {
                "type": "string"
             },
             "crop_rotation": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "\"Whether or not crop is rotated, and if yes, rotation schedule\""
             },
             "cur_land_use": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Present state of sample site",
                "pattern": "[cities|farmstead|industrial areas|roads\\/railroads|rock|sand|gravel|mudflats|salt flats|badlands|permanent snow or ice|saline seeps|mines\\/quarries|oil waste areas|small grains|row crops|vegetable crops|horticultural plants (e.g. tulips)|marshlands (grass,sedges,rushes)|tundra (mosses,lichens)|rangeland|pastureland (grasslands used for livestock grazing)|hayland|meadows (grasses,alfalfa,fescue,bromegrass,timothy)|shrub land (e.g. mesquite,sage\\-brush,creosote bush,shrub oak,eucalyptus)|successional shrub land (tree saplings,hazels,sumacs,chokecherry,shrub dogwoods,blackberries)|shrub crops (blueberries,nursery ornamentals,filberts)|vine crops (grapes)|conifers (e.g. pine,spruce,fir,cypress)|hardwoods (e.g. oak,hickory,elm,aspen)|intermixed hardwood and conifers|tropical (e.g. mangrove,palms)|rainforest (evergreen forest receiving >406 cm annual rainfall)|swamp (permanent or semi\\-permanent water body dominated by woody plants)|crop trees (nuts,fruit,christmas trees,nursery trees)]"
             },
             "cur_vegetation": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "\"Vegetation classification from one or more standard classification systems, or agricultural crop\""
             },
             "cur_vegetation_meth": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Reference or method used in vegetation classification "
             },
             "density": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"Density of the sample, which is its mass per unit volume (aka volumetric mass density)\"",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "depth": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Please refer to the definitions of depth in the environmental packages"
             },
             "depth2": {
-               "$ref": "#/definitions/QuantityValue"
+               "$ref": "#/$defs/QuantityValue"
             },
             "description": {
                "description": "a human-readable description of a thing",
                "type": "string"
             },
             "diss_carb_dioxide": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of dissolved carbon dioxide in the sample or liquid portion of the sample",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "diss_hydrogen": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of dissolved hydrogen",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "diss_inorg_carb": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter\"",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "diss_inorg_phosp": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of dissolved inorganic phosphorus in the sample",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "diss_org_carb": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid\"",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "diss_org_nitro": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Dissolved organic nitrogen concentration measured as; total dissolved nitrogen - NH4 - NO3 - NO2",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "diss_oxygen": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of dissolved oxygen",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "drainage_class": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Drainage classification from a standard system such as the USDA system",
                "pattern": "[very poorly|poorly|somewhat poorly|moderately well|well|excessively drained]"
             },
@@ -299,50 +296,50 @@
                "type": "string"
             },
             "elev": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit\"",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "env_broad_scale": {
-               "$ref": "#/definitions/ControlledTermValue",
+               "$ref": "#/$defs/ControlledTermValue",
                "pattern": ".* \\S+:\\S+"
             },
             "env_local_scale": {
-               "$ref": "#/definitions/ControlledTermValue",
+               "$ref": "#/$defs/ControlledTermValue",
                "pattern": ".* \\S+:\\S+"
             },
             "env_medium": {
-               "$ref": "#/definitions/ControlledTermValue",
+               "$ref": "#/$defs/ControlledTermValue",
                "pattern": ".* \\S+:\\S+"
             },
             "env_package": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "\"MIxS extension for reporting of measurements and observations obtained from one or more of the environments where the sample was obtained. All environmental packages listed here are further defined in separate subtables. By giving the name of the environmental package, a selection of fields can be made from the subtables and can be reported\"",
                "pattern": "[air|built environment|host\\-associated|human\\-associated|human\\-skin|human\\-oral|human\\-gut|human\\-vaginal|hydrocarbon resources\\-cores|hydrocarbon resources\\-fluids\\/swabs|microbial mat\\/biofilm|misc environment|plant\\-associated|sediment|soil|wastewater\\/sludge|water]"
             },
             "extreme_event": {
-               "$ref": "#/definitions/TimestampValue",
+               "$ref": "#/$defs/TimestampValue",
                "description": "Unusual physical events that may have affected microbial populations"
             },
             "fao_class": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Soil classification from the FAO World Reference Database for Soil Resources. The list can be found at http://www.fao.org/nr/land/sols/soil/wrb-soil-maps/reference-groups",
                "pattern": "[Acrisols|Andosols|Arenosols|Cambisols|Chernozems|Ferralsols|Fluvisols|Gleysols|Greyzems|Gypsisols|Histosols|Kastanozems|Lithosols|Luvisols|Nitosols|Phaeozems|Planosols|Podzols|Podzoluvisols|Rankers|Regosols|Rendzinas|Solonchaks|Solonetz|Vertisols|Yermosols]"
             },
             "fire": {
-               "$ref": "#/definitions/TimestampValue",
+               "$ref": "#/$defs/TimestampValue",
                "description": "Historical and/or physical evidence of fire"
             },
             "flooding": {
-               "$ref": "#/definitions/TimestampValue",
+               "$ref": "#/$defs/TimestampValue",
                "description": "Historical and/or physical evidence of flooding"
             },
             "geo_loc_name": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "\"The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (v 1.512) (http://purl.bioontology.org/ontology/GAZ)\""
             },
             "glucosidase_act": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Measurement of glucosidase activity",
                "pattern": "\\d+[.\\d+] \\S+"
             },
@@ -350,20 +347,20 @@
                "type": "string"
             },
             "heavy_metals": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Heavy metals present and concentrationsany drug used by subject and the frequency of usage; can include multiple heavy metals and concentrations"
             },
             "heavy_metals_meth": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Reference or method used in determining heavy metals"
             },
             "horizon": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Specific layer in the land area which measures parallel to the soil surface and possesses physical characteristics which differ from the layers above and beneath",
                "pattern": "[O horizon|A horizon|E horizon|B horizon|C horizon|R layer|Permafrost]"
             },
             "horizon_meth": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Reference or method used in determining the horizon"
             },
             "host_name": {
@@ -377,59 +374,59 @@
                "type": "string"
             },
             "lat_lon": {
-               "$ref": "#/definitions/GeolocationValue",
+               "$ref": "#/$defs/GeolocationValue",
                "description": "This is currently a required field but it's not clear if this should be required for human hosts",
                "pattern": "\\d+[.\\d+] \\d+[.\\d+]"
             },
             "link_addit_analys": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Link to additional analysis results performed on the sample"
             },
             "link_class_info": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Link to digitized soil maps or other soil classification information"
             },
             "link_climate_info": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Link to climate resource"
             },
             "local_class": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Soil classification based on local soil classification system"
             },
             "local_class_meth": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Reference or method used in determining the local soil classification "
             },
             "location": {
                "type": "string"
             },
             "magnesium": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of magnesium in the sample",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "mean_frict_vel": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Measurement of mean friction velocity",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "mean_peak_frict_vel": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Measurement of mean peak friction velocity",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "microbial_biomass": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units\"",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "microbial_biomass_meth": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Reference or method used in determining microbial biomass"
             },
             "misc_param": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"Any other measurement performed or parameter collected, that is not listed here\""
             },
             "mod_date": {
@@ -437,7 +434,7 @@
                "type": "string"
             },
             "n_alkanes": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of n-alkanes; can include multiple n-alkanes"
             },
             "name": {
@@ -448,31 +445,31 @@
                "type": "string"
             },
             "nitrate": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of nitrate in the sample",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "nitrite": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of nitrite in the sample",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "org_matter": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of organic matter ",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "org_nitro": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of organic nitrogen",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "organism_count": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"Total cell count of any organism (or group of organisms) per gram, volume or area of sample, should include name of organism followed by count. The method that was used for the enumeration (e.g. qPCR, atp, mpn, etc.) Should also be provided. (example: total prokaryotes; 3.5e7 cells per ml; qpcr)\""
             },
             "oxy_stat_samp": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Oxygenation status of sample",
                "pattern": "[aerobic|anaerobic|other]"
             },
@@ -484,60 +481,60 @@
                "type": "array"
             },
             "part_org_carb": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of particulate organic carbon",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "perturbation": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "\"Type of perturbation, e.g. chemical administration, physical disturbance, etc., coupled with perturbation regimen including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types\""
             },
             "petroleum_hydrocarb": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of petroleum hydrocarbon",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "ph": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"Ph measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid\"",
                "pattern": "\\d+[.\\d+]"
             },
             "ph_meth": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Reference or method used in determining ph"
             },
             "phaeopigments": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of phaeopigments; can include multiple phaeopigments"
             },
             "phosplipid_fatt_acid": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of phospholipid fatty acids; can include multiple values"
             },
             "pool_dna_extracts": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "\"Indicate whether multiple DNA extractions were mixed. If the answer yes, the number of extracts that were pooled should be given\""
             },
             "potassium": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of potassium in the sample",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "pressure": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"Pressure to which the sample is subject to, in atmospheres\"",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "previous_land_use": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Previous land use and dates"
             },
             "previous_land_use_meth": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Reference or method used in determining previous land use and dates"
             },
             "profile_position": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Cross-sectional position in the hillslope where sample was collected.sample area position in relation to surrounding areas",
                "pattern": "[summit|shoulder|backslope|footslope|toeslope]"
             },
@@ -545,12 +542,12 @@
                "type": "string"
             },
             "redox_potential": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"Redox potential, measured relative to a hydrogen cell, indicating oxidation or reduction potential\"",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "salinity": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"Salinity is the total concentration of all dissolved salts in a water sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater\"",
                "pattern": "\\d+[.\\d+] \\S+"
             },
@@ -559,32 +556,32 @@
                "type": "string"
             },
             "salinity_meth": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Reference or method used in determining salinity"
             },
             "samp_collect_device": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "The method or device employed for collecting the sample"
             },
             "samp_mat_process": {
-               "$ref": "#/definitions/ControlledTermValue",
+               "$ref": "#/$defs/ControlledTermValue",
                "description": "\"Any processing applied to the sample during or after retrieving the sample from environment. This field accepts OBI, for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI\""
             },
             "samp_store_dur": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Duration for which the sample was stored"
             },
             "samp_store_loc": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "\"Location at which sample was stored, usually name of a specific freezer/room\""
             },
             "samp_store_temp": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"Temperature at which sample was stored, e.g. -80 degree Celsius\"",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "samp_vol_we_dna_ext": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"Volume (ml), weight (g) of processed sample, or surface area swabbed from sample for DNA extraction\"",
                "pattern": "\\d+[.\\d+] \\S+"
             },
@@ -592,50 +589,50 @@
                "type": "string"
             },
             "season_precpt": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"The average of all seasonal precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. \"",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "season_temp": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Mean seasonal temperature",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "sieving": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Collection design of pooled samples and/or sieve size and amount of sample sieved "
             },
             "size_frac_low": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "size_frac_up": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "slope_aspect": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees); e.g., nw or 315 degrees. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.\"",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "slope_gradient": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Commonly called 'slope'. The angle between ground surface and a horizontal line (in percent). This is the direction that overland water would flow. This measure is usually taken with a hand level meter or clinometer",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "sodium": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Sodium concentration in the sample",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "soil_type": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Soil series name or other lower-level classification"
             },
             "soil_type_meth": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Reference or method used in determining soil series name or other lower-level classification"
             },
             "soluble_iron_micromol": {
@@ -646,84 +643,84 @@
                "type": "string"
             },
             "store_cond": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Explain how and for how long the soil sample was stored before DNA extraction"
             },
             "subsurface_depth": {
-               "$ref": "#/definitions/QuantityValue"
+               "$ref": "#/$defs/QuantityValue"
             },
             "subsurface_depth2": {
-               "$ref": "#/definitions/QuantityValue"
+               "$ref": "#/$defs/QuantityValue"
             },
             "sulfate": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of sulfate in the sample",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "sulfide": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of sulfide in the sample",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "temp": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Temperature of the sample at the time of sampling",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "texture": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"The relative proportion of different grain sizes of mineral particles in a soil, as described using a standard system; express as % sand (50 um to 2 mm), silt (2 um to 50 um), and clay (<2 um) with textural name (e.g., silty clay loam) optional.\"",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "texture_meth": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Reference or method used in determining soil texture"
             },
             "tidal_stage": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Stage of tide",
                "pattern": "[low tide|ebb tide|flood tide|high tide]"
             },
             "tillage": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Note method(s) used for tilling",
                "pattern": "[drill|cutting disc|ridge till|strip tillage|zonal tillage|chisel|tined|mouldboard|disc plough]"
             },
             "tot_carb": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Total carbon content",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "tot_depth_water_col": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Measurement of total depth of water column",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "tot_diss_nitro": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"Total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen\"",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "tot_nitro_content": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Total nitrogen content of the sample",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "tot_nitro_content_meth": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Reference or method used in determining the total nitrogen"
             },
             "tot_org_c_meth": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Reference or method used in determining total organic carbon"
             },
             "tot_org_carb": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"Definition for soil: total organic carbon content of the soil, definition otherwise: total organic carbon content\"",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "tot_phosp": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "\"Total phosphorus concentration in the sample, calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus\"",
                "pattern": "\\d+[.\\d+] \\S+"
             },
@@ -732,12 +729,12 @@
                "type": "string"
             },
             "water_content": {
-               "$ref": "#/definitions/QuantityValue",
+               "$ref": "#/$defs/QuantityValue",
                "description": "Water content measurement",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "water_content_soil_meth": {
-               "$ref": "#/definitions/TextValue",
+               "$ref": "#/$defs/TextValue",
                "description": "Reference or method used in determining the water content of soil"
             }
          },
@@ -866,7 +863,7 @@
                "type": "string"
             },
             "term": {
-               "$ref": "#/definitions/OntologyClass",
+               "$ref": "#/$defs/OntologyClass",
                "description": "pointer to an ontology class"
             },
             "type": {
@@ -880,6 +877,50 @@
          "required": [],
          "title": "ControlledTermValue",
          "type": "object"
+      },
+      "CreditAssociation": {
+         "additionalProperties": false,
+         "description": "This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role (https://casrai.org/credit/) and for a person value Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0",
+         "properties": {
+            "applied_role": {
+               "$ref": "#/$defs/CreditEnum"
+            },
+            "applies_to_person": {
+               "$ref": "#/$defs/PersonValue"
+            },
+            "type": {
+               "description": "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.",
+               "type": "string"
+            }
+         },
+         "required": [
+            "applies_to_person",
+            "applied_role"
+         ],
+         "title": "CreditAssociation",
+         "type": "object"
+      },
+      "CreditEnum": {
+         "description": "",
+         "enum": [
+            "Conceptualization",
+            "Data curation",
+            "Formal Analysis",
+            "Funding acquisition",
+            "Investigation",
+            "Methodology",
+            "Project administration",
+            "Resources",
+            "Software",
+            "Supervision",
+            "Validation",
+            "Visualization",
+            "Writing original draft",
+            "Writing review and editing",
+            "Principal Investigator"
+         ],
+         "title": "CreditEnum",
+         "type": "string"
       },
       "DataObject": {
          "additionalProperties": false,
@@ -897,7 +938,7 @@
                "type": "string"
             },
             "data_object_type": {
-               "$ref": "#/definitions/FileTypeEnum",
+               "$ref": "#/$defs/FileTypeEnum",
                "description": "The type of file represented by the data object."
             },
             "description": {
@@ -944,21 +985,21 @@
             "activity_set": {
                "description": "This property links a database object to the set of workflow activities.",
                "items": {
-                  "$ref": "#/definitions/WorkflowExecutionActivity"
+                  "$ref": "#/$defs/WorkflowExecutionActivity"
                },
                "type": "array"
             },
             "biosample_set": {
                "description": "This property links a database object to the set of samples within it.",
                "items": {
-                  "$ref": "#/definitions/Biosample"
+                  "$ref": "#/$defs/Biosample"
                },
                "type": "array"
             },
             "data_object_set": {
                "description": "This property links a database object to the set of data objects within it.",
                "items": {
-                  "$ref": "#/definitions/DataObject"
+                  "$ref": "#/$defs/DataObject"
                },
                "type": "array"
             },
@@ -973,56 +1014,56 @@
             "functional_annotation_set": {
                "description": "This property links a database object to the set of all functional annotations",
                "items": {
-                  "$ref": "#/definitions/FunctionalAnnotation"
+                  "$ref": "#/$defs/FunctionalAnnotation"
                },
                "type": "array"
             },
             "genome_feature_set": {
                "description": "This property links a database object to the set of all features",
                "items": {
-                  "$ref": "#/definitions/GenomeFeature"
+                  "$ref": "#/$defs/GenomeFeature"
                },
                "type": "array"
             },
             "mags_activity_set": {
                "description": "This property links a database object to the set of MAGs analysis activities.",
                "items": {
-                  "$ref": "#/definitions/MAGsAnalysisActivity"
+                  "$ref": "#/$defs/MAGsAnalysisActivity"
                },
                "type": "array"
             },
             "metabolomics_analysis_activity_set": {
                "description": "This property links a database object to the set of metabolomics analysis activities.",
                "items": {
-                  "$ref": "#/definitions/MetabolomicsAnalysisActivity"
+                  "$ref": "#/$defs/MetabolomicsAnalysisActivity"
                },
                "type": "array"
             },
             "metagenome_annotation_activity_set": {
                "description": "This property links a database object to the set of metagenome annotation activities.",
                "items": {
-                  "$ref": "#/definitions/MetagenomeAnnotationActivity"
+                  "$ref": "#/$defs/MetagenomeAnnotationActivity"
                },
                "type": "array"
             },
             "metagenome_assembly_set": {
                "description": "This property links a database object to the set of metagenome assembly activities.",
                "items": {
-                  "$ref": "#/definitions/MetagenomeAssembly"
+                  "$ref": "#/$defs/MetagenomeAssembly"
                },
                "type": "array"
             },
             "metaproteomics_analysis_activity_set": {
                "description": "This property links a database object to the set of metaproteomics analysis activities.",
                "items": {
-                  "$ref": "#/definitions/MetaproteomicsAnalysisActivity"
+                  "$ref": "#/$defs/MetaproteomicsAnalysisActivity"
                },
                "type": "array"
             },
             "metatranscriptome_activity_set": {
                "description": "This property links a database object to the set of metatranscriptome analysis activities.",
                "items": {
-                  "$ref": "#/definitions/MetatranscriptomeActivity"
+                  "$ref": "#/$defs/MetatranscriptomeActivity"
                },
                "type": "array"
             },
@@ -1033,35 +1074,35 @@
             "nom_analysis_activity_set": {
                "description": "This property links a database object to the set of natural organic matter (NOM) analysis activities.",
                "items": {
-                  "$ref": "#/definitions/NomAnalysisActivity"
+                  "$ref": "#/$defs/NomAnalysisActivity"
                },
                "type": "array"
             },
             "omics_processing_set": {
                "description": "This property links a database object to the set of omics processings within it.",
                "items": {
-                  "$ref": "#/definitions/OmicsProcessing"
+                  "$ref": "#/$defs/OmicsProcessing"
                },
                "type": "array"
             },
             "read_QC_analysis_activity_set": {
                "description": "This property links a database object to the set of read QC analysis activities.",
                "items": {
-                  "$ref": "#/definitions/ReadQCAnalysisActivity"
+                  "$ref": "#/$defs/ReadQCAnalysisActivity"
                },
                "type": "array"
             },
             "read_based_analysis_activity_set": {
                "description": "This property links a database object to the set of read based analysis activities.\n  ",
                "items": {
-                  "$ref": "#/definitions/ReadBasedAnalysisActivity"
+                  "$ref": "#/$defs/ReadBasedAnalysisActivity"
                },
                "type": "array"
             },
             "study_set": {
                "description": "This property links a database object to the set of studies within it.",
                "items": {
-                  "$ref": "#/definitions/Study"
+                  "$ref": "#/$defs/Study"
                },
                "type": "array"
             }
@@ -1406,7 +1447,7 @@
             },
             "mags_list": {
                "items": {
-                  "$ref": "#/definitions/MAGBin"
+                  "$ref": "#/$defs/MAGBin"
                },
                "type": "array"
             },
@@ -1500,7 +1541,7 @@
             },
             "has_metabolite_quantifications": {
                "items": {
-                  "$ref": "#/definitions/MetaboliteQuantification"
+                  "$ref": "#/$defs/MetaboliteQuantification"
                },
                "type": "array"
             },
@@ -1817,7 +1858,7 @@
             },
             "has_peptide_quantifications": {
                "items": {
-                  "$ref": "#/definitions/PeptideQuantification"
+                  "$ref": "#/$defs/PeptideQuantification"
                },
                "type": "array"
             },
@@ -2301,7 +2342,7 @@
                "type": "string"
             },
             "omics_type": {
-               "$ref": "#/definitions/ControlledTermValue",
+               "$ref": "#/$defs/ControlledTermValue",
                "description": "The type of omics data"
             },
             "part_of": {
@@ -2311,7 +2352,7 @@
                "type": "array"
             },
             "principal_investigator": {
-               "$ref": "#/definitions/PersonValue",
+               "$ref": "#/$defs/PersonValue",
                "description": "represents the PI"
             },
             "processing_institution": {
@@ -2497,8 +2538,19 @@
          "additionalProperties": false,
          "description": "An attribute value representing a person",
          "properties": {
+            "email": {
+               "description": "An email address for an entity such as a person",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "has_raw_value": {
-               "description": "the full name of the Investgator in format FIRST LAST",
+               "description": "The full name of the Investgator in format FIRST LAST.",
+               "type": "string"
+            },
+            "name": {
+               "description": "The full name of the Investgator. It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.",
                "type": "string"
             },
             "orcid": {
@@ -2506,7 +2558,7 @@
                "type": "string"
             },
             "profile_image_url": {
-               "description": "A url that points to an image of a persion.",
+               "description": "A url that points to an image of a person.",
                "type": "string"
             },
             "type": {
@@ -2622,7 +2674,7 @@
             },
             "left_participants": {
                "items": {
-                  "$ref": "#/definitions/ReactionParticipant"
+                  "$ref": "#/$defs/ReactionParticipant"
                },
                "type": "array"
             },
@@ -2632,7 +2684,7 @@
             },
             "right_participants": {
                "items": {
-                  "$ref": "#/definitions/ReactionParticipant"
+                  "$ref": "#/$defs/ReactionParticipant"
                },
                "type": "array"
             },
@@ -2886,7 +2938,7 @@
                "type": "string"
             },
             "doi": {
-               "$ref": "#/definitions/AttributeValue",
+               "$ref": "#/$defs/AttributeValue",
                "description": "The dataset citation for this study"
             },
             "ecosystem": {
@@ -2905,6 +2957,13 @@
                "description": "TODO",
                "type": "string"
             },
+            "has_credit_associations": {
+               "description": "This slot links a study to a credit association.  The credit association will be linked to a person value and to a CRediT Contributor Roles term. Overall semantics: person should get credit X for their participation in the study",
+               "items": {
+                  "$ref": "#/$defs/CreditAssociation"
+               },
+               "type": "array"
+            },
             "id": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                "type": "string"
@@ -2918,7 +2977,7 @@
                "type": "string"
             },
             "principal_investigator": {
-               "$ref": "#/definitions/PersonValue",
+               "$ref": "#/$defs/PersonValue",
                "description": "represents the PI"
             },
             "publications": {
@@ -3083,25 +3142,28 @@
          "type": "object"
       }
    },
+   "$id": "https://microbiomedata/schema",
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "additionalProperties": false,
    "properties": {
       "activity_set": {
          "description": "This property links a database object to the set of workflow activities.",
          "items": {
-            "$ref": "#/definitions/WorkflowExecutionActivity"
+            "$ref": "#/$defs/WorkflowExecutionActivity"
          },
          "type": "array"
       },
       "biosample_set": {
          "description": "This property links a database object to the set of samples within it.",
          "items": {
-            "$ref": "#/definitions/Biosample"
+            "$ref": "#/$defs/Biosample"
          },
          "type": "array"
       },
       "data_object_set": {
          "description": "This property links a database object to the set of data objects within it.",
          "items": {
-            "$ref": "#/definitions/DataObject"
+            "$ref": "#/$defs/DataObject"
          },
          "type": "array"
       },
@@ -3116,56 +3178,56 @@
       "functional_annotation_set": {
          "description": "This property links a database object to the set of all functional annotations",
          "items": {
-            "$ref": "#/definitions/FunctionalAnnotation"
+            "$ref": "#/$defs/FunctionalAnnotation"
          },
          "type": "array"
       },
       "genome_feature_set": {
          "description": "This property links a database object to the set of all features",
          "items": {
-            "$ref": "#/definitions/GenomeFeature"
+            "$ref": "#/$defs/GenomeFeature"
          },
          "type": "array"
       },
       "mags_activity_set": {
          "description": "This property links a database object to the set of MAGs analysis activities.",
          "items": {
-            "$ref": "#/definitions/MAGsAnalysisActivity"
+            "$ref": "#/$defs/MAGsAnalysisActivity"
          },
          "type": "array"
       },
       "metabolomics_analysis_activity_set": {
          "description": "This property links a database object to the set of metabolomics analysis activities.",
          "items": {
-            "$ref": "#/definitions/MetabolomicsAnalysisActivity"
+            "$ref": "#/$defs/MetabolomicsAnalysisActivity"
          },
          "type": "array"
       },
       "metagenome_annotation_activity_set": {
          "description": "This property links a database object to the set of metagenome annotation activities.",
          "items": {
-            "$ref": "#/definitions/MetagenomeAnnotationActivity"
+            "$ref": "#/$defs/MetagenomeAnnotationActivity"
          },
          "type": "array"
       },
       "metagenome_assembly_set": {
          "description": "This property links a database object to the set of metagenome assembly activities.",
          "items": {
-            "$ref": "#/definitions/MetagenomeAssembly"
+            "$ref": "#/$defs/MetagenomeAssembly"
          },
          "type": "array"
       },
       "metaproteomics_analysis_activity_set": {
          "description": "This property links a database object to the set of metaproteomics analysis activities.",
          "items": {
-            "$ref": "#/definitions/MetaproteomicsAnalysisActivity"
+            "$ref": "#/$defs/MetaproteomicsAnalysisActivity"
          },
          "type": "array"
       },
       "metatranscriptome_activity_set": {
          "description": "This property links a database object to the set of metatranscriptome analysis activities.",
          "items": {
-            "$ref": "#/definitions/MetatranscriptomeActivity"
+            "$ref": "#/$defs/MetatranscriptomeActivity"
          },
          "type": "array"
       },
@@ -3176,35 +3238,35 @@
       "nom_analysis_activity_set": {
          "description": "This property links a database object to the set of natural organic matter (NOM) analysis activities.",
          "items": {
-            "$ref": "#/definitions/NomAnalysisActivity"
+            "$ref": "#/$defs/NomAnalysisActivity"
          },
          "type": "array"
       },
       "omics_processing_set": {
          "description": "This property links a database object to the set of omics processings within it.",
          "items": {
-            "$ref": "#/definitions/OmicsProcessing"
+            "$ref": "#/$defs/OmicsProcessing"
          },
          "type": "array"
       },
       "read_QC_analysis_activity_set": {
          "description": "This property links a database object to the set of read QC analysis activities.",
          "items": {
-            "$ref": "#/definitions/ReadQCAnalysisActivity"
+            "$ref": "#/$defs/ReadQCAnalysisActivity"
          },
          "type": "array"
       },
       "read_based_analysis_activity_set": {
          "description": "This property links a database object to the set of read based analysis activities.\n  ",
          "items": {
-            "$ref": "#/definitions/ReadBasedAnalysisActivity"
+            "$ref": "#/$defs/ReadBasedAnalysisActivity"
          },
          "type": "array"
       },
       "study_set": {
          "description": "This property links a database object to the set of studies within it.",
          "items": {
-            "$ref": "#/definitions/Study"
+            "$ref": "#/$defs/Study"
          },
          "type": "array"
       }
