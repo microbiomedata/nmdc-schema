@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-09-02 19:18
+# Generation date: 2021-09-21 15:54
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -323,6 +323,42 @@ class Database(YAMLRoot):
 
         if self.etl_software_version is not None and not isinstance(self.etl_software_version, str):
             self.etl_software_version = str(self.etl_software_version)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class CreditAssociation(YAMLRoot):
+    """
+    This class supports binding associated researchers to studies. There will be at least a slot for a CRediT
+    Contributor Role (https://casrai.org/credit/) and for a person value Specifically see the associated researchers
+    tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at
+    https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = PROV.Association
+    class_class_curie: ClassVar[str] = "prov:Association"
+    class_name: ClassVar[str] = "credit association"
+    class_model_uri: ClassVar[URIRef] = NMDC.CreditAssociation
+
+    applies_to_person: Union[dict, "PersonValue"] = None
+    applied_role: Union[str, "CreditEnum"] = None
+    type: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.applies_to_person):
+            self.MissingRequiredField("applies_to_person")
+        if not isinstance(self.applies_to_person, PersonValue):
+            self.applies_to_person = PersonValue(**as_dict(self.applies_to_person))
+
+        if self._is_empty(self.applied_role):
+            self.MissingRequiredField("applied_role")
+        if not isinstance(self.applied_role, CreditEnum):
+            self.applied_role = CreditEnum(self.applied_role)
+
+        if self.type is not None and not isinstance(self.type, str):
+            self.type = str(self.type)
 
         super().__post_init__(**kwargs)
 
@@ -1072,6 +1108,7 @@ class Study(NamedThing):
     INSDC_SRA_ENA_study_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     GOLD_study_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     MGnify_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    has_credit_associations: Optional[Union[Union[dict, CreditAssociation], List[Union[dict, CreditAssociation]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1147,6 +1184,8 @@ class Study(NamedThing):
         if not isinstance(self.MGnify_project_identifiers, list):
             self.MGnify_project_identifiers = [self.MGnify_project_identifiers] if self.MGnify_project_identifiers is not None else []
         self.MGnify_project_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.MGnify_project_identifiers]
+
+        self._normalize_inlined_as_dict(slot_name="has_credit_associations", slot_type=CreditAssociation, key_name="applies to person", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -1383,6 +1422,8 @@ class PersonValue(AttributeValue):
 
     orcid: Optional[str] = None
     profile_image_url: Optional[str] = None
+    email: Optional[Union[str, List[str]]] = empty_list()
+    name: Optional[str] = None
     has_raw_value: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -1391,6 +1432,13 @@ class PersonValue(AttributeValue):
 
         if self.profile_image_url is not None and not isinstance(self.profile_image_url, str):
             self.profile_image_url = str(self.profile_image_url)
+
+        if not isinstance(self.email, list):
+            self.email = [self.email] if self.email is not None else []
+        self.email = [v if isinstance(v, str) else str(v) for v in self.email]
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
 
         if self.has_raw_value is not None and not isinstance(self.has_raw_value, str):
             self.has_raw_value = str(self.has_raw_value)
@@ -2912,9 +2960,66 @@ class FileTypeEnum(EnumDefinitionImpl):
                 PermissibleValue(text="QC_metrics.tsv",
                                  description="Tab delimited file of aggregate statistics derived from workflow results.") )
 
+class CreditEnum(EnumDefinitionImpl):
+
+    Conceptualization = PermissibleValue(text="Conceptualization",
+                                                         description="Conceptualization")
+    Investigation = PermissibleValue(text="Investigation",
+                                                 description="Investigation")
+    Methodology = PermissibleValue(text="Methodology",
+                                             description="Methodology")
+    Resources = PermissibleValue(text="Resources",
+                                         description="Resources")
+    Software = PermissibleValue(text="Software",
+                                       description="Software")
+    Supervision = PermissibleValue(text="Supervision",
+                                             description="Supervision")
+    Validation = PermissibleValue(text="Validation",
+                                           description="Validation")
+    Visualization = PermissibleValue(text="Visualization",
+                                                 description="Visualization")
+
+    _defn = EnumDefinition(
+        name="CreditEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Data curation",
+                PermissibleValue(text="Data curation",
+                                 description="Data curation") )
+        setattr(cls, "Formal Analysis",
+                PermissibleValue(text="Formal Analysis",
+                                 description="Formal Analysis") )
+        setattr(cls, "Funding acquisition",
+                PermissibleValue(text="Funding acquisition",
+                                 description="Funding acquisition") )
+        setattr(cls, "Project administration",
+                PermissibleValue(text="Project administration",
+                                 description="Project administration") )
+        setattr(cls, "Writing original draft",
+                PermissibleValue(text="Writing original draft",
+                                 description="Writing – original draft") )
+        setattr(cls, "Writing review and editing",
+                PermissibleValue(text="Writing review and editing",
+                                 description="Writing – review & editing") )
+        setattr(cls, "Principal Investigator",
+                PermissibleValue(text="Principal Investigator",
+                                 description="principal investigator role",
+                                 meaning=OBI["0000103"]) )
+
 # Slots
 class slots:
     pass
+
+slots.has_credit_associations = Slot(uri=PROV.qualifiedAssociation, name="has credit associations", curie=PROV.curie('qualifiedAssociation'),
+                   model_uri=NMDC.has_credit_associations, domain=Study, range=Optional[Union[Union[dict, CreditAssociation], List[Union[dict, CreditAssociation]]]])
+
+slots.applied_role = Slot(uri=PROV.hadRole, name="applied role", curie=PROV.curie('hadRole'),
+                   model_uri=NMDC.applied_role, domain=CreditAssociation, range=Union[str, "CreditEnum"])
+
+slots.applies_to_person = Slot(uri=PROV.agent, name="applies to person", curie=PROV.curie('agent'),
+                   model_uri=NMDC.applies_to_person, domain=CreditAssociation, range=Union[dict, "PersonValue"])
 
 slots.object_set = Slot(uri=NMDC.object_set, name="object set", curie=NMDC.curie('object_set'),
                    model_uri=NMDC.object_set, domain=Database, range=Optional[Union[str, List[str]]])
@@ -5253,6 +5358,9 @@ slots.term = Slot(uri=RDF.type, name="term", curie=RDF.curie('type'),
 slots.orcid = Slot(uri=NMDC.orcid, name="orcid", curie=NMDC.curie('orcid'),
                    model_uri=NMDC.orcid, domain=PersonValue, range=Optional[str])
 
+slots.email = Slot(uri=SCHEMA.email, name="email", curie=SCHEMA.curie('email'),
+                   model_uri=NMDC.email, domain=None, range=Optional[Union[str, List[str]]])
+
 slots.profile_image_url = Slot(uri=NMDC.profile_image_url, name="profile image url", curie=NMDC.curie('profile_image_url'),
                    model_uri=NMDC.profile_image_url, domain=PersonValue, range=Optional[str])
 
@@ -5790,6 +5898,9 @@ slots.quantity_value_has_numeric_value = Slot(uri=NMDC.has_numeric_value, name="
 
 slots.person_value_has_raw_value = Slot(uri=NMDC.has_raw_value, name="person value_has raw value", curie=NMDC.curie('has_raw_value'),
                    model_uri=NMDC.person_value_has_raw_value, domain=PersonValue, range=Optional[str])
+
+slots.person_value_name = Slot(uri=NMDC.name, name="person value_name", curie=NMDC.curie('name'),
+                   model_uri=NMDC.person_value_name, domain=PersonValue, range=Optional[str])
 
 slots.person_id = Slot(uri=NMDC.id, name="person_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.person_id, domain=Person, range=Union[str, PersonId])
