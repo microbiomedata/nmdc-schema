@@ -2305,6 +2305,10 @@
                },
                "type": "array"
             },
+            "chimera_check": {
+               "$ref": "#/$defs/TextValue",
+               "description": "\"A chimeric sequence, or chimera for short, is a sequence comprised of two or more phylogenetically distinct parent sequences. Chimeras are usually PCR artifacts thought to occur when a prematurely terminated amplicon reanneals to a foreign DNA strand and is copied to completion in the following PCR cycles. The point at which the chimeric sequence changes from one parent to the next is called the breakpoint or conversion point \""
+            },
             "description": {
                "description": "a human-readable description of a thing",
                "type": "string"
@@ -2341,6 +2345,14 @@
             "ncbi_project_name": {
                "type": "string"
             },
+            "nucl_acid_amp": {
+               "$ref": "#/$defs/TextValue",
+               "description": "\"A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the enzymatic amplification (PCR, TMA, NASBA) of specific nucleic acids\""
+            },
+            "nucl_acid_ext": {
+               "$ref": "#/$defs/TextValue",
+               "description": "\"A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the material separation to recover the nucleic acid fraction from a sample\""
+            },
             "omics_type": {
                "$ref": "#/$defs/ControlledTermValue",
                "description": "The type of omics data"
@@ -2351,6 +2363,15 @@
                },
                "type": "array"
             },
+            "pcr_cond": {
+               "$ref": "#/$defs/TextValue",
+               "description": "Description of reaction conditions and components of PCR in the form of  'initial denaturation:94degC_1.5min; annealing=...'",
+               "pattern": "initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final elongation:degrees_minutes;total cycles"
+            },
+            "pcr_primers": {
+               "$ref": "#/$defs/TextValue",
+               "description": "\"PCR primers that were used to amplify the sequence of the targeted gene, locus or subfragment. This field should contain all the primers used for a single PCR reaction if multiple forward or reverse primers are present in a single PCR reaction. The primer sequence should be reported in uppercase letters\""
+            },
             "principal_investigator": {
                "$ref": "#/$defs/PersonValue",
                "description": "represents the PI"
@@ -2358,6 +2379,29 @@
             "processing_institution": {
                "description": "The organization that processed the sample.",
                "type": "string"
+            },
+            "samp_vol_we_dna_ext": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "\"Volume (ml), weight (g) of processed sample, or surface area swabbed from sample for DNA extraction\"",
+               "pattern": "\\d+[.\\d+] \\S+"
+            },
+            "seq_meth": {
+               "$ref": "#/$defs/TextValue",
+               "description": "\"Sequencing method used; e.g. Sanger, pyrosequencing, ABI-solid\"",
+               "pattern": "[MinION|GridION|PromethION|454 GS|454 GS 20|454 GS FLX|454 GS FLX+|454 GS FLX Titanium|454 GS Junior|Illumina Genome Analyzer|Illumina Genome Analyzer II|Illumina Genome Analyzer IIx|Illumina HiSeq 4000|Illumina HiSeq 3000|Illumina HiSeq 2500|Illumina HiSeq 2000|Illumina HiSeq 1500|Illumina HiSeq 1000|Illumina HiScanSQ|Illumina MiSeq|Illumina HiSeq X Five|Illumina HiSeq X Ten|Illumina NextSeq 500|Illumina NextSeq 550|AB SOLiD System|AB SOLiD System 2.0|AB SOLiD System 3.0|AB SOLiD 3 Plus System|AB SOLiD 4 System|AB SOLiD 4hq System|AB SOLiD PI System|AB 5500 Genetic Analyzer|AB 5500xl Genetic Analyzer|AB 5500xl\\-W Genetic Analysis System|Ion Torrent PGM|Ion Torrent Proton|Ion Torrent S5|Ion Torrent S5 XL|PacBio RS|PacBio RS II|Sequel|AB 3730xL Genetic Analyzer|AB 3730 Genetic Analyzer|AB 3500xL Genetic Analyzer|AB 3500 Genetic Analyzer|AB 3130xL Genetic Analyzer|AB 3130 Genetic Analyzer|AB 310 Genetic Analyzer|BGISEQ\\-500]"
+            },
+            "seq_quality_check": {
+               "$ref": "#/$defs/TextValue",
+               "description": "\"Indicate if the sequence has been called by automatic systems (none) or undergone a manual editing procedure (e.g. by inspecting the raw data or chromatograms). Applied only for sequences that are not submitted to SRA,ENA or DRA\"",
+               "pattern": "[none|manually edited]"
+            },
+            "target_gene": {
+               "$ref": "#/$defs/TextValue",
+               "description": "Targeted gene or locus name for marker gene studies"
+            },
+            "target_subfragment": {
+               "$ref": "#/$defs/TextValue",
+               "description": "Name of subfragment of a gene or locus. Important to e.g. identify special regions on marker genes like V6 on 16S rRNA"
             },
             "type": {
                "description": "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.",
