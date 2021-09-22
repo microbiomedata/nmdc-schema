@@ -345,6 +345,7 @@ classes:
       - objective
       - websites
       - publications
+      - ess dive datasets
       - type  # custom slot that specifies object type
       # external IDs
       - INSDC bioproject identifiers
@@ -356,6 +357,10 @@ classes:
       doi:
         description: >-
           The dataset citation for this study
+      ess dive datasets:
+        multivalued: true
+        description: >-
+          List of ESS-DIVE dataset DOIs
     exact_mappings:
       - SIO:001066  ## study
       - NCIT:C63536 ## study
