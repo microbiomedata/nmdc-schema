@@ -346,6 +346,8 @@ classes:
       - websites
       - publications
       - type  # custom slot that specifies object type
+      - relevant protocols
+      - funding source
       # external IDs
       - INSDC bioproject identifiers
       - INSDC SRA ENA study identifiers
