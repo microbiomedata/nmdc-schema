@@ -419,6 +419,18 @@ classes:
       # external IDs
       - GOLD sequencing project identifiers
       - INSDC experiment identifiers
+      
+      # amplicon slots
+      - samp_vol_we_dna_ext
+      - nucl_acid_ext
+      - nucl_acid_amp
+      - target_gene
+      - target_subfragment
+      - pcr_primers
+      - pcr_cond
+      - seq_meth
+      - seq_quality_check
+      - chimera_check
     slot_usage:
       has input:
         required: true

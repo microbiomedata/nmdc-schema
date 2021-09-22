@@ -3,7 +3,7 @@ Changes to the schema are documented in this file.
 
 ## Current (updates before releasing)
 ### Added
-  - N/A
+  - add amplicon slots to omics processing (#139)
 ### Fixed
   - N/A
 ### Changed 
