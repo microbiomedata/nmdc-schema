@@ -357,10 +357,6 @@ classes:
       doi:
         description: >-
           The dataset citation for this study
-      ess dive datasets:
-        multivalued: true
-        description: >-
-          List of ESS-DIVE dataset DOIs
     exact_mappings:
       - SIO:001066  ## study
       - NCIT:C63536 ## study
@@ -502,6 +498,11 @@ enums:
         meaning: OBI:0000103
 
 slots:
+
+  ess dive datasets:
+    multivalued: true
+    description: >-
+      List of ESS-DIVE dataset DOIs
 
   has credit associations:
     domain: study
