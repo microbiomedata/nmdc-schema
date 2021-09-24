@@ -347,7 +347,7 @@ classes:
       - publications
       - type  # custom slot that specifies object type
       - relevant protocols
-      - funding source
+      - funding sources
       # external IDs
       - INSDC bioproject identifiers
       - INSDC SRA ENA study identifiers
@@ -521,7 +521,8 @@ slots:
     multivalued: false
     required: true
       
-
+  funding sources:
+    multivalued: true
   applies to person:
     domain: credit association
     range: person value
