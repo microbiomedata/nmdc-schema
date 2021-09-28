@@ -3,7 +3,7 @@ Changes to the schema are documented in this file.
 
 ## Current (updates before releasing)
 ### Added
-  - N/A
+  - `relevant protocols` and `funding sources` slots
 ### Fixed
   - N/A
 ### Changed 

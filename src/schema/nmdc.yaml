@@ -512,6 +512,14 @@ slots:
     slot_uri: prov:qualifiedAssociation
 
 
+  relevant protocols:
+    multivalued: true
+    range: string 
+
+  funding sources:
+    multivalued: true
+    range: string 
+
   applied role:
     domain: credit association
     range: credit enum
@@ -521,8 +529,6 @@ slots:
     multivalued: false
     required: true
       
-  funding sources:
-    multivalued: true
   applies to person:
     domain: credit association
     range: person value
