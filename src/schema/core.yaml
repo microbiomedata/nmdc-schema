@@ -485,7 +485,6 @@ slots:
     description: >-
       An email address for an entity such as a person
     range: string
-    multivalued: true
     slot_uri: schema:email
 
   profile image url:
