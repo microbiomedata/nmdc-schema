@@ -438,8 +438,6 @@ classes:
     slot_usage:
       has input:
         required: true
-      has output:
-        required: true
       part of:
         required: true
     broad_mappings:
