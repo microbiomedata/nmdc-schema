@@ -2321,6 +2321,7 @@
                "type": "array"
             },
             "has_output": {
+               "description": "An output biosample to a processing step",
                "items": {
                   "type": "string"
                },
@@ -2410,7 +2411,6 @@
          },
          "required": [
             "id",
-            "has_output",
             "part_of"
          ],
          "title": "OmicsProcessing",
@@ -2608,6 +2608,13 @@
             },
             "was_generated_by": {
                "type": "string"
+            },
+            "websites": {
+               "description": "A list of websites that are assocatiated with the entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             }
          },
          "required": [],
