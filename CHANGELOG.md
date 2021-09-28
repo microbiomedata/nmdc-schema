@@ -3,6 +3,16 @@ Changes to the schema are documented in this file.
 
 ## Current (updates before releasing)
 ### Added
+  - N/A
+### Fixed
+  - N/A
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
+## [2021.09.28rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.09.28rc1)
+### Added
   - `relevant protocols` and `funding sources` slots
   - `ess dive datasets` slot
   - amplicon slots to omics processing (#139)
