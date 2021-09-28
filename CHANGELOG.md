@@ -3,7 +3,7 @@ Changes to the schema are documented in this file.
 
 ## Current (updates before releasing)
 ### Added
-  - N/A
+  - `websites` slot to `person value`
 ### Fixed
   - N/A
 ### Changed 
