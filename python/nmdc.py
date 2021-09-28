@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-09-28 14:44
+# Generation date: 2021-09-28 15:12
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -72,6 +72,7 @@ BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 GTPO = CurieNamespace('gtpo', 'http://example.org/UNKNOWN/gtpo/')
 IGSN = CurieNamespace('igsn', 'https://app.geosamples.org/sample/igsn/')
+IMG_TAXON = CurieNamespace('img_taxon', 'http://img.jgi.doe.gov/cgi-bin/w/main.cgi?section=TaxonDetail&taxon_oid=')
 INSDC_SRS = CurieNamespace('insdc_srs', 'http://example.org/UNKNOWN/insdc.srs/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 MGNIFY = CurieNamespace('mgnify', 'http://example.org/UNKNOWN/mgnify/')
@@ -1103,6 +1104,7 @@ class Study(NamedThing):
     objective: Optional[str] = None
     websites: Optional[Union[str, List[str]]] = empty_list()
     publications: Optional[Union[str, List[str]]] = empty_list()
+    ess_dive_datasets: Optional[Union[str, List[str]]] = empty_list()
     type: Optional[str] = None
     relevant_protocols: Optional[Union[str, List[str]]] = empty_list()
     funding_sources: Optional[Union[str, List[str]]] = empty_list()
@@ -1167,6 +1169,10 @@ class Study(NamedThing):
         if not isinstance(self.publications, list):
             self.publications = [self.publications] if self.publications is not None else []
         self.publications = [v if isinstance(v, str) else str(v) for v in self.publications]
+
+        if not isinstance(self.ess_dive_datasets, list):
+            self.ess_dive_datasets = [self.ess_dive_datasets] if self.ess_dive_datasets is not None else []
+        self.ess_dive_datasets = [v if isinstance(v, str) else str(v) for v in self.ess_dive_datasets]
 
         if self.type is not None and not isinstance(self.type, str):
             self.type = str(self.type)
@@ -3061,6 +3067,9 @@ class CreditEnum(EnumDefinitionImpl):
 # Slots
 class slots:
     pass
+
+slots.ess_dive_datasets = Slot(uri=NMDC.ess_dive_datasets, name="ess dive datasets", curie=NMDC.curie('ess_dive_datasets'),
+                   model_uri=NMDC.ess_dive_datasets, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.has_credit_associations = Slot(uri=PROV.qualifiedAssociation, name="has credit associations", curie=PROV.curie('qualifiedAssociation'),
                    model_uri=NMDC.has_credit_associations, domain=Study, range=Optional[Union[Union[dict, CreditAssociation], List[Union[dict, CreditAssociation]]]])
