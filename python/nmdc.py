@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-09-28 15:12
+# Generation date: 2021-09-28 16:38
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -1478,7 +1478,7 @@ class PersonValue(AttributeValue):
 
     orcid: Optional[str] = None
     profile_image_url: Optional[str] = None
-    email: Optional[Union[str, List[str]]] = empty_list()
+    email: Optional[str] = None
     name: Optional[str] = None
     has_raw_value: Optional[str] = None
 
@@ -1489,9 +1489,8 @@ class PersonValue(AttributeValue):
         if self.profile_image_url is not None and not isinstance(self.profile_image_url, str):
             self.profile_image_url = str(self.profile_image_url)
 
-        if not isinstance(self.email, list):
-            self.email = [self.email] if self.email is not None else []
-        self.email = [v if isinstance(v, str) else str(v) for v in self.email]
+        if self.email is not None and not isinstance(self.email, str):
+            self.email = str(self.email)
 
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
@@ -5424,7 +5423,10 @@ slots.orcid = Slot(uri=NMDC.orcid, name="orcid", curie=NMDC.curie('orcid'),
                    model_uri=NMDC.orcid, domain=PersonValue, range=Optional[str])
 
 slots.email = Slot(uri=SCHEMA.email, name="email", curie=SCHEMA.curie('email'),
-                   model_uri=NMDC.email, domain=None, range=Optional[Union[str, List[str]]])
+                   model_uri=NMDC.email, domain=None, range=Optional[str])
+
+slots.alternate_emails = Slot(uri=NMDC.alternate_emails, name="alternate emails", curie=NMDC.curie('alternate_emails'),
+                   model_uri=NMDC.alternate_emails, domain=None, range=Optional[str])
 
 slots.profile_image_url = Slot(uri=NMDC.profile_image_url, name="profile image url", curie=NMDC.curie('profile_image_url'),
                    model_uri=NMDC.profile_image_url, domain=PersonValue, range=Optional[str])

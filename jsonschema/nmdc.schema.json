@@ -2583,11 +2583,8 @@
          "description": "An attribute value representing a person",
          "properties": {
             "email": {
-               "description": "An email address for an entity such as a person",
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
+               "description": "An email address for an entity such as a person. This should be the primarly email address used.",
+               "type": "string"
             },
             "has_raw_value": {
                "description": "The full name of the Investgator in format FIRST LAST.",
