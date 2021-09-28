@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-09-28 16:38
+# Generation date: 2021-09-28 17:14
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -1248,11 +1248,11 @@ class OmicsProcessing(BiosampleProcessing):
     class_model_uri: ClassVar[URIRef] = NMDC.OmicsProcessing
 
     id: Union[str, OmicsProcessingId] = None
-    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     part_of: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     add_date: Optional[str] = None
     mod_date: Optional[str] = None
     has_input: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
+    has_output: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
     instrument_name: Optional[str] = None
     ncbi_project_name: Optional[str] = None
     omics_type: Optional[Union[dict, "ControlledTermValue"]] = None
@@ -1278,12 +1278,6 @@ class OmicsProcessing(BiosampleProcessing):
         if not isinstance(self.id, OmicsProcessingId):
             self.id = OmicsProcessingId(self.id)
 
-        if self._is_empty(self.has_output):
-            self.MissingRequiredField("has_output")
-        if not isinstance(self.has_output, list):
-            self.has_output = [self.has_output] if self.has_output is not None else []
-        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
-
         if self._is_empty(self.part_of):
             self.MissingRequiredField("part_of")
         if not isinstance(self.part_of, list):
@@ -1305,6 +1299,10 @@ class OmicsProcessing(BiosampleProcessing):
         if not isinstance(self.has_input, list):
             self.has_input = [self.has_input] if self.has_input is not None else []
         self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
+
+        if not isinstance(self.has_output, list):
+            self.has_output = [self.has_output] if self.has_output is not None else []
+        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
 
         if self.instrument_name is not None and not isinstance(self.instrument_name, str):
             self.instrument_name = str(self.instrument_name)
@@ -1480,6 +1478,7 @@ class PersonValue(AttributeValue):
     profile_image_url: Optional[str] = None
     email: Optional[str] = None
     name: Optional[str] = None
+    websites: Optional[Union[str, List[str]]] = empty_list()
     has_raw_value: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -1494,6 +1493,10 @@ class PersonValue(AttributeValue):
 
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
+
+        if not isinstance(self.websites, list):
+            self.websites = [self.websites] if self.websites is not None else []
+        self.websites = [v if isinstance(v, str) else str(v) for v in self.websites]
 
         if self.has_raw_value is not None and not isinstance(self.has_raw_value, str):
             self.has_raw_value = str(self.has_raw_value)
@@ -5944,9 +5947,6 @@ slots.biosample_processing_has_input = Slot(uri=NMDC.has_input, name="biosample 
 
 slots.omics_processing_has_input = Slot(uri=NMDC.has_input, name="omics processing_has input", curie=NMDC.curie('has_input'),
                    model_uri=NMDC.omics_processing_has_input, domain=OmicsProcessing, range=Union[Union[str, BiosampleId], List[Union[str, BiosampleId]]])
-
-slots.omics_processing_has_output = Slot(uri=NMDC.has_output, name="omics processing_has output", curie=NMDC.curie('has_output'),
-                   model_uri=NMDC.omics_processing_has_output, domain=OmicsProcessing, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
 
 slots.omics_processing_part_of = Slot(uri=NMDC.part_of, name="omics processing_part of", curie=NMDC.curie('part_of'),
                    model_uri=NMDC.omics_processing_part_of, domain=OmicsProcessing, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
