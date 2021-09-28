@@ -28,6 +28,7 @@ prefixes:
   OBI: http://purl.obolibrary.org/obo/OBI_
   NCIT: http://purl.obolibrary.org/obo/NCIT_
   igsn: https://app.geosamples.org/sample/igsn/
+  img.taxon: http://img.jgi.doe.gov/cgi-bin/w/main.cgi?section=TaxonDetail&taxon_oid=
   
 default_prefix: nmdc
 default_range: string
@@ -345,6 +346,7 @@ classes:
       - objective
       - websites
       - publications
+      - ess dive datasets
       - type  # custom slot that specifies object type
       - relevant protocols
       - funding sources
@@ -511,6 +513,11 @@ enums:
         meaning: OBI:0000103
 
 slots:
+
+  ess dive datasets:
+    multivalued: true
+    description: >-
+      List of ESS-DIVE dataset DOIs
 
   has credit associations:
     domain: study
