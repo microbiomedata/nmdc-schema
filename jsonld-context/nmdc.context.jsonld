@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2021-09-22 17:07\n    Schema: NMDC\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC). This schem is organized into 3 separate modules:\n  \nThis schema is organized into distinct modules:\n  \n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2021-09-28 15:11\n    Schema: NMDC\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC). This schem is organized into 3 separate modules:\n  \nThis schema is organized into distinct modules:\n  \n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "CAS": "http://identifiers.org/cas/",
       "CATH": "http://identifiers.org/cath/",
@@ -63,6 +63,10 @@
       "dcterms": "http://purl.org/dc/terms/",
       "gtpo": "http://example.org/UNKNOWN/gtpo/",
       "igsn": "https://app.geosamples.org/sample/igsn/",
+      "img.taxon": {
+         "@id": "http://img.jgi.doe.gov/cgi-bin/w/main.cgi?section=TaxonDetail&taxon_oid=",
+         "@prefix": true
+      },
       "insdc.srs": "http://example.org/UNKNOWN/insdc.srs/",
       "linkml": "https://w3id.org/linkml/",
       "mgnify": "http://example.org/UNKNOWN/mgnify/",

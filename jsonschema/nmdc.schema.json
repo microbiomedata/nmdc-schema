@@ -3001,6 +3001,19 @@
                "description": "TODO",
                "type": "string"
             },
+            "ess_dive_datasets": {
+               "description": "List of ESS-DIVE dataset DOIs",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "funding_sources": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "has_credit_associations": {
                "description": "This slot links a study to a credit association.  The credit association will be linked to a person value and to a CRediT Contributor Roles term. Overall semantics: person should get credit X for their participation in the study",
                "items": {
@@ -3026,6 +3039,12 @@
             },
             "publications": {
                "description": "A list of publications that are assocatiated with the entity. The publicatons SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "relevant_protocols": {
                "items": {
                   "type": "string"
                },

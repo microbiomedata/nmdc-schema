@@ -14,7 +14,7 @@ description: >-
    * the NMDC schema itself
   
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: 2021.09.21
+version: 2021.09.28
 
 prefixes:
   nmdc: https://microbiomedata/meta/
@@ -28,6 +28,7 @@ prefixes:
   OBI: http://purl.obolibrary.org/obo/OBI_
   NCIT: http://purl.obolibrary.org/obo/NCIT_
   igsn: https://app.geosamples.org/sample/igsn/
+  img.taxon: http://img.jgi.doe.gov/cgi-bin/w/main.cgi?section=TaxonDetail&taxon_oid=
   
 default_prefix: nmdc
 default_range: string
@@ -345,7 +346,10 @@ classes:
       - objective
       - websites
       - publications
+      - ess dive datasets
       - type  # custom slot that specifies object type
+      - relevant protocols
+      - funding sources
       # external IDs
       - INSDC bioproject identifiers
       - INSDC SRA ENA study identifiers
@@ -510,6 +514,11 @@ enums:
 
 slots:
 
+  ess dive datasets:
+    multivalued: true
+    description: >-
+      List of ESS-DIVE dataset DOIs
+
   has credit associations:
     domain: study
     range: credit association
@@ -522,6 +531,14 @@ slots:
     slot_uri: prov:qualifiedAssociation
 
 
+  relevant protocols:
+    multivalued: true
+    range: string 
+
+  funding sources:
+    multivalued: true
+    range: string 
+
   applied role:
     domain: credit association
     range: credit enum
@@ -531,7 +548,6 @@ slots:
     multivalued: false
     required: true
       
-
   applies to person:
     domain: credit association
     range: person value
