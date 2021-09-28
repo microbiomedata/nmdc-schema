@@ -5,11 +5,12 @@ Changes to the schema are documented in this file.
 ### Added
   - `relevant protocols` and `funding sources` slots
   - `ess dive datasets` slot
-  - add amplicon slots to omics processing (#139)
+  - amplicon slots to omics processing (#139)
+  - `alternate emails` slot
 ### Fixed
   - N/A
 ### Changed 
-  - N/A
+  - `email` slot is single valued.
 ### Removed
   - N/A
 

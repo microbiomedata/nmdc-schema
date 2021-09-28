@@ -483,10 +483,16 @@ slots:
 
   email:
     description: >-
-      An email address for an entity such as a person
+      An email address for an entity such as a person.
+      This should be the primarly email address used.
     range: string
     slot_uri: schema:email
 
+  alternate emails:
+    description: >-
+      One or more other email addresses for an entity.
+    range: string
+    
   profile image url:
     description: >-
       A url that points to an image of a person.
