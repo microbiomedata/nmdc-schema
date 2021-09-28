@@ -7,7 +7,7 @@ Changes to the schema are documented in this file.
 ### Fixed
   - N/A
 ### Changed 
-  - N/A
+  - `has output` is not required for `omics processing`
 ### Removed
   - N/A
 
