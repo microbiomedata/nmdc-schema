@@ -135,6 +135,7 @@ classes:
       - profile image url
       - email
       - name
+      - websites
     todos:
       - add additional fields e.g for institution
       - deprecate "has raw value" in favor of "name"
