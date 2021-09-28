@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-09-21 15:54
+# Generation date: 2021-09-28 14:44
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -1104,6 +1104,8 @@ class Study(NamedThing):
     websites: Optional[Union[str, List[str]]] = empty_list()
     publications: Optional[Union[str, List[str]]] = empty_list()
     type: Optional[str] = None
+    relevant_protocols: Optional[Union[str, List[str]]] = empty_list()
+    funding_sources: Optional[Union[str, List[str]]] = empty_list()
     INSDC_bioproject_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     INSDC_SRA_ENA_study_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     GOLD_study_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
@@ -1168,6 +1170,14 @@ class Study(NamedThing):
 
         if self.type is not None and not isinstance(self.type, str):
             self.type = str(self.type)
+
+        if not isinstance(self.relevant_protocols, list):
+            self.relevant_protocols = [self.relevant_protocols] if self.relevant_protocols is not None else []
+        self.relevant_protocols = [v if isinstance(v, str) else str(v) for v in self.relevant_protocols]
+
+        if not isinstance(self.funding_sources, list):
+            self.funding_sources = [self.funding_sources] if self.funding_sources is not None else []
+        self.funding_sources = [v if isinstance(v, str) else str(v) for v in self.funding_sources]
 
         if not isinstance(self.INSDC_bioproject_identifiers, list):
             self.INSDC_bioproject_identifiers = [self.INSDC_bioproject_identifiers] if self.INSDC_bioproject_identifiers is not None else []
@@ -1245,6 +1255,16 @@ class OmicsProcessing(BiosampleProcessing):
     type: Optional[str] = None
     GOLD_sequencing_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     INSDC_experiment_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    samp_vol_we_dna_ext: Optional[Union[dict, "QuantityValue"]] = None
+    nucl_acid_ext: Optional[Union[dict, "TextValue"]] = None
+    nucl_acid_amp: Optional[Union[dict, "TextValue"]] = None
+    target_gene: Optional[Union[dict, "TextValue"]] = None
+    target_subfragment: Optional[Union[dict, "TextValue"]] = None
+    pcr_primers: Optional[Union[dict, "TextValue"]] = None
+    pcr_cond: Optional[Union[dict, "TextValue"]] = None
+    seq_meth: Optional[Union[dict, "TextValue"]] = None
+    seq_quality_check: Optional[Union[dict, "TextValue"]] = None
+    chimera_check: Optional[Union[dict, "TextValue"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1305,6 +1325,36 @@ class OmicsProcessing(BiosampleProcessing):
         if not isinstance(self.INSDC_experiment_identifiers, list):
             self.INSDC_experiment_identifiers = [self.INSDC_experiment_identifiers] if self.INSDC_experiment_identifiers is not None else []
         self.INSDC_experiment_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.INSDC_experiment_identifiers]
+
+        if self.samp_vol_we_dna_ext is not None and not isinstance(self.samp_vol_we_dna_ext, QuantityValue):
+            self.samp_vol_we_dna_ext = QuantityValue(**as_dict(self.samp_vol_we_dna_ext))
+
+        if self.nucl_acid_ext is not None and not isinstance(self.nucl_acid_ext, TextValue):
+            self.nucl_acid_ext = TextValue(**as_dict(self.nucl_acid_ext))
+
+        if self.nucl_acid_amp is not None and not isinstance(self.nucl_acid_amp, TextValue):
+            self.nucl_acid_amp = TextValue(**as_dict(self.nucl_acid_amp))
+
+        if self.target_gene is not None and not isinstance(self.target_gene, TextValue):
+            self.target_gene = TextValue(**as_dict(self.target_gene))
+
+        if self.target_subfragment is not None and not isinstance(self.target_subfragment, TextValue):
+            self.target_subfragment = TextValue(**as_dict(self.target_subfragment))
+
+        if self.pcr_primers is not None and not isinstance(self.pcr_primers, TextValue):
+            self.pcr_primers = TextValue(**as_dict(self.pcr_primers))
+
+        if self.pcr_cond is not None and not isinstance(self.pcr_cond, TextValue):
+            self.pcr_cond = TextValue(**as_dict(self.pcr_cond))
+
+        if self.seq_meth is not None and not isinstance(self.seq_meth, TextValue):
+            self.seq_meth = TextValue(**as_dict(self.seq_meth))
+
+        if self.seq_quality_check is not None and not isinstance(self.seq_quality_check, TextValue):
+            self.seq_quality_check = TextValue(**as_dict(self.seq_quality_check))
+
+        if self.chimera_check is not None and not isinstance(self.chimera_check, TextValue):
+            self.chimera_check = TextValue(**as_dict(self.chimera_check))
 
         super().__post_init__(**kwargs)
 
@@ -3014,6 +3064,12 @@ class slots:
 
 slots.has_credit_associations = Slot(uri=PROV.qualifiedAssociation, name="has credit associations", curie=PROV.curie('qualifiedAssociation'),
                    model_uri=NMDC.has_credit_associations, domain=Study, range=Optional[Union[Union[dict, CreditAssociation], List[Union[dict, CreditAssociation]]]])
+
+slots.relevant_protocols = Slot(uri=NMDC.relevant_protocols, name="relevant protocols", curie=NMDC.curie('relevant_protocols'),
+                   model_uri=NMDC.relevant_protocols, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.funding_sources = Slot(uri=NMDC.funding_sources, name="funding sources", curie=NMDC.curie('funding_sources'),
+                   model_uri=NMDC.funding_sources, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.applied_role = Slot(uri=PROV.hadRole, name="applied role", curie=PROV.curie('hadRole'),
                    model_uri=NMDC.applied_role, domain=CreditAssociation, range=Union[str, "CreditEnum"])

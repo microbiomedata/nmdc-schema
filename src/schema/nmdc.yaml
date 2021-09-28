@@ -348,6 +348,8 @@ classes:
       - publications
       - ess dive datasets
       - type  # custom slot that specifies object type
+      - relevant protocols
+      - funding sources
       # external IDs
       - INSDC bioproject identifiers
       - INSDC SRA ENA study identifiers
@@ -421,6 +423,18 @@ classes:
       # external IDs
       - GOLD sequencing project identifiers
       - INSDC experiment identifiers
+      
+      # amplicon slots
+      - samp_vol_we_dna_ext
+      - nucl_acid_ext
+      - nucl_acid_amp
+      - target_gene
+      - target_subfragment
+      - pcr_primers
+      - pcr_cond
+      - seq_meth
+      - seq_quality_check
+      - chimera_check
     slot_usage:
       has input:
         required: true
@@ -517,6 +531,14 @@ slots:
     slot_uri: prov:qualifiedAssociation
 
 
+  relevant protocols:
+    multivalued: true
+    range: string 
+
+  funding sources:
+    multivalued: true
+    range: string 
+
   applied role:
     domain: credit association
     range: credit enum
@@ -526,7 +548,6 @@ slots:
     multivalued: false
     required: true
       
-
   applies to person:
     domain: credit association
     range: person value
