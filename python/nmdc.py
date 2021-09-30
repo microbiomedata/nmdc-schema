@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-09-28 17:21
+# Generation date: 2021-09-30 11:17
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -483,6 +483,7 @@ class Biosample(NamedThing):
     env_medium: Union[dict, "ControlledTermValue"] = None
     type: Optional[str] = None
     alternative_identifiers: Optional[Union[str, List[str]]] = empty_list()
+    part_of: Optional[Union[Union[str, StudyId], List[Union[str, StudyId]]]] = empty_list()
     agrochem_addition: Optional[Union[dict, "QuantityValue"]] = None
     alkalinity: Optional[Union[dict, "QuantityValue"]] = None
     alkalinity_method: Optional[Union[dict, "TextValue"]] = None
@@ -621,7 +622,6 @@ class Biosample(NamedThing):
     GOLD_sample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     INSDC_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     INSDC_secondary_sample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    part_of: Optional[Union[Union[str, StudyId], List[Union[str, StudyId]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -650,6 +650,10 @@ class Biosample(NamedThing):
         if not isinstance(self.alternative_identifiers, list):
             self.alternative_identifiers = [self.alternative_identifiers] if self.alternative_identifiers is not None else []
         self.alternative_identifiers = [v if isinstance(v, str) else str(v) for v in self.alternative_identifiers]
+
+        if not isinstance(self.part_of, list):
+            self.part_of = [self.part_of] if self.part_of is not None else []
+        self.part_of = [v if isinstance(v, StudyId) else StudyId(v) for v in self.part_of]
 
         if self.agrochem_addition is not None and not isinstance(self.agrochem_addition, QuantityValue):
             self.agrochem_addition = QuantityValue(**as_dict(self.agrochem_addition))
@@ -1067,10 +1071,6 @@ class Biosample(NamedThing):
         if not isinstance(self.INSDC_secondary_sample_identifiers, list):
             self.INSDC_secondary_sample_identifiers = [self.INSDC_secondary_sample_identifiers] if self.INSDC_secondary_sample_identifiers is not None else []
         self.INSDC_secondary_sample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.INSDC_secondary_sample_identifiers]
-
-        if not isinstance(self.part_of, list):
-            self.part_of = [self.part_of] if self.part_of is not None else []
-        self.part_of = [v if isinstance(v, StudyId) else StudyId(v) for v in self.part_of]
 
         super().__post_init__(**kwargs)
 
