@@ -300,7 +300,7 @@ classes:
         required: true
       env_medium:
         required: true
-      id_prefixes:
+    id_prefixes:
       - GOLD
     exact_mappings:
       - OBI:0000747
