@@ -14,7 +14,7 @@ description: >-
    * the NMDC schema itself
   
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: 2021.09.28
+version: 2021.09.30
 
 prefixes:
   nmdc: https://microbiomedata/meta/
@@ -139,6 +139,7 @@ classes:
     slots:
       - type  # custom slot that specifies object type
       - alternative identifiers
+      - part of
     
       # MIXS slots
       - agrochem_addition
