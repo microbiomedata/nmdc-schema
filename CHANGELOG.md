@@ -11,6 +11,16 @@ Changes to the schema are documented in this file.
 ### Removed
   - N/A
 
+## [2021.09.30rc3](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.09.30rc3)
+### Added
+  - N/A
+### Fixed
+  - N/A
+### Changed 
+  - re-added `part of` constraint to `slot_usage` section of `biosample` (#163)
+### Removed
+  - N/A
+
 ## [2021.09.30rc2](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.09.30rc2)
 ### Added
   - N/A

@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-09-30 11:47
+# Generation date: 2021-09-30 16:16
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -1112,7 +1112,7 @@ class Study(NamedThing):
     INSDC_SRA_ENA_study_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     GOLD_study_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     MGnify_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    has_credit_associations: Optional[Union[Union[dict, CreditAssociation], List[Union[dict, CreditAssociation]]]] = empty_list()
+    has_credit_associations: Optional[Union[Union[dict, "CreditAssociation"], List[Union[dict, "CreditAssociation"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1248,7 +1248,6 @@ class OmicsProcessing(BiosampleProcessing):
     class_model_uri: ClassVar[URIRef] = NMDC.OmicsProcessing
 
     id: Union[str, OmicsProcessingId] = None
-    part_of: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     add_date: Optional[str] = None
     mod_date: Optional[str] = None
     has_input: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
@@ -1256,6 +1255,7 @@ class OmicsProcessing(BiosampleProcessing):
     instrument_name: Optional[str] = None
     ncbi_project_name: Optional[str] = None
     omics_type: Optional[Union[dict, "ControlledTermValue"]] = None
+    part_of: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
     principal_investigator: Optional[Union[dict, "PersonValue"]] = None
     processing_institution: Optional[str] = None
     type: Optional[str] = None
@@ -1277,12 +1277,6 @@ class OmicsProcessing(BiosampleProcessing):
             self.MissingRequiredField("id")
         if not isinstance(self.id, OmicsProcessingId):
             self.id = OmicsProcessingId(self.id)
-
-        if self._is_empty(self.part_of):
-            self.MissingRequiredField("part_of")
-        if not isinstance(self.part_of, list):
-            self.part_of = [self.part_of] if self.part_of is not None else []
-        self.part_of = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.part_of]
 
         if self._is_empty(self.has_input):
             self.MissingRequiredField("has_input")
@@ -1312,6 +1306,10 @@ class OmicsProcessing(BiosampleProcessing):
 
         if self.omics_type is not None and not isinstance(self.omics_type, ControlledTermValue):
             self.omics_type = ControlledTermValue(**as_dict(self.omics_type))
+
+        if not isinstance(self.part_of, list):
+            self.part_of = [self.part_of] if self.part_of is not None else []
+        self.part_of = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.part_of]
 
         if self.principal_investigator is not None and not isinstance(self.principal_investigator, PersonValue):
             self.principal_investigator = PersonValue(**as_dict(self.principal_investigator))
@@ -3074,7 +3072,7 @@ slots.ess_dive_datasets = Slot(uri=NMDC.ess_dive_datasets, name="ess dive datase
                    model_uri=NMDC.ess_dive_datasets, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.has_credit_associations = Slot(uri=PROV.qualifiedAssociation, name="has credit associations", curie=PROV.curie('qualifiedAssociation'),
-                   model_uri=NMDC.has_credit_associations, domain=Study, range=Optional[Union[Union[dict, CreditAssociation], List[Union[dict, CreditAssociation]]]])
+                   model_uri=NMDC.has_credit_associations, domain=Study, range=Optional[Union[Union[dict, "CreditAssociation"], List[Union[dict, "CreditAssociation"]]]])
 
 slots.relevant_protocols = Slot(uri=NMDC.relevant_protocols, name="relevant protocols", curie=NMDC.curie('relevant_protocols'),
                    model_uri=NMDC.relevant_protocols, domain=None, range=Optional[Union[str, List[str]]])
@@ -5944,9 +5942,6 @@ slots.biosample_processing_has_input = Slot(uri=NMDC.has_input, name="biosample 
 
 slots.omics_processing_has_input = Slot(uri=NMDC.has_input, name="omics processing_has input", curie=NMDC.curie('has_input'),
                    model_uri=NMDC.omics_processing_has_input, domain=OmicsProcessing, range=Union[Union[str, BiosampleId], List[Union[str, BiosampleId]]])
-
-slots.omics_processing_part_of = Slot(uri=NMDC.part_of, name="omics processing_part of", curie=NMDC.curie('part_of'),
-                   model_uri=NMDC.omics_processing_part_of, domain=OmicsProcessing, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
 
 slots.attribute_value_type = Slot(uri=NMDC.type, name="attribute value_type", curie=NMDC.curie('type'),
                    model_uri=NMDC.attribute_value_type, domain=AttributeValue, range=Optional[str])
