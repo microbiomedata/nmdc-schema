@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-09-30 11:17
+# Generation date: 2021-09-30 11:47
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -483,7 +483,7 @@ class Biosample(NamedThing):
     env_medium: Union[dict, "ControlledTermValue"] = None
     type: Optional[str] = None
     alternative_identifiers: Optional[Union[str, List[str]]] = empty_list()
-    part_of: Optional[Union[Union[str, StudyId], List[Union[str, StudyId]]]] = empty_list()
+    part_of: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
     agrochem_addition: Optional[Union[dict, "QuantityValue"]] = None
     alkalinity: Optional[Union[dict, "QuantityValue"]] = None
     alkalinity_method: Optional[Union[dict, "TextValue"]] = None
@@ -653,7 +653,7 @@ class Biosample(NamedThing):
 
         if not isinstance(self.part_of, list):
             self.part_of = [self.part_of] if self.part_of is not None else []
-        self.part_of = [v if isinstance(v, StudyId) else StudyId(v) for v in self.part_of]
+        self.part_of = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.part_of]
 
         if self.agrochem_addition is not None and not isinstance(self.agrochem_addition, QuantityValue):
             self.agrochem_addition = QuantityValue(**as_dict(self.agrochem_addition))
@@ -5923,9 +5923,6 @@ slots.data_object_description = Slot(uri=NMDC.description, name="data object_des
 slots.biosample_lat_lon = Slot(uri=NMDC.lat_lon, name="biosample_lat_lon", curie=NMDC.curie('lat_lon'),
                    model_uri=NMDC.biosample_lat_lon, domain=Biosample, range=Optional[Union[dict, "GeolocationValue"]],
                    pattern=re.compile(r'\d+[.\d+] \d+[.\d+]'))
-
-slots.biosample_part_of = Slot(uri=NMDC.part_of, name="biosample_part of", curie=NMDC.curie('part_of'),
-                   model_uri=NMDC.biosample_part_of, domain=Biosample, range=Optional[Union[Union[str, StudyId], List[Union[str, StudyId]]]])
 
 slots.biosample_env_broad_scale = Slot(uri=NMDC.env_broad_scale, name="biosample_env_broad_scale", curie=NMDC.curie('env_broad_scale'),
                    model_uri=NMDC.biosample_env_broad_scale, domain=Biosample, range=Union[dict, "ControlledTermValue"],
