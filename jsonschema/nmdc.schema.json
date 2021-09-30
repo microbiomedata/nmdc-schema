@@ -2363,6 +2363,7 @@
                "description": "The type of omics data"
             },
             "part_of": {
+               "description": "Links a resource to another resource that either logically or physically includes it.",
                "items": {
                   "type": "string"
                },
@@ -2414,8 +2415,7 @@
             }
          },
          "required": [
-            "id",
-            "part_of"
+            "id"
          ],
          "title": "OmicsProcessing",
          "type": "object"
