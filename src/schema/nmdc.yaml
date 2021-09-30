@@ -284,6 +284,7 @@ classes:
       - soluble_iron_micromol
       - subsurface_depth
       - subsurface_depth2
+
       # external IDs      
       - GOLD sample identifiers
       - INSDC biosample identifiers
@@ -299,23 +300,12 @@ classes:
         required: true
       env_medium:
         required: true
-    id_prefixes:
+      id_prefixes:
       - GOLD
     exact_mappings:
       - OBI:0000747
       - NCIT:C43412
 
-  credit association:
-    aliases: ['study role', 'credit table', 'associated researchers']
-    description: >-
-      This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role (https://casrai.org/credit/) and for a person value
-      Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0 
-    slots:
-      - applies to person
-      - applied role
-      - type
-    class_uri: prov:Association
-        
   study:
     is_a: named thing
     in_subset: 
@@ -346,6 +336,7 @@ classes:
       - type  # custom slot that specifies object type
       - relevant protocols
       - funding sources
+
       # external IDs
       - INSDC bioproject identifiers
       - INSDC SRA ENA study identifiers
@@ -416,6 +407,7 @@ classes:
       - principal investigator
       - processing_institution
       - type  # custom slot that specifies object type
+
       # external IDs
       - GOLD sequencing project identifiers
       - INSDC experiment identifiers
@@ -434,12 +426,20 @@ classes:
     slot_usage:
       has input:
         required: true
-      part of:
-        required: true
     broad_mappings:
       - OBI:0000070 ## assay: https://github.com/microbiomedata/nmdc-metadata/issues/171
       - ISA:Assay
   
+  credit association:
+    aliases: ['study role', 'credit table', 'associated researchers']
+    description: >-
+      This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role (https://casrai.org/credit/) and for a person value
+      Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0 
+    slots:
+      - applies to person
+      - applied role
+      - type
+    class_uri: prov:Association
   
 enums:
   file type enum:
