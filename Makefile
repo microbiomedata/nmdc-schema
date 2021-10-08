@@ -36,6 +36,11 @@ tdir-%:
 docs:
 	mkdir $@
 
+slides/schema-slides.html:
+# see here for demos https://pandoc.org/demos.html
+# here the pandoc manual https://pandoc.org/MANUAL.html
+	pandoc -s --webtex -i -t slidy src/slides/schema-slides.md -o $@
+
 stage: $(patsubst %,stage-%,$(TGTS))
 stage-%: gen-%
 	cp -pr target/$* .
