@@ -17,6 +17,7 @@ gen: $(patsubst %,gen-%,$(TGTS))
 clean:
 	rm -rf target/
 	rm -f docs/*.md
+	rm -f docs/images/*
 
 t:
 	echo $(SCHEMA_NAMES)
@@ -27,38 +28,46 @@ echo:
 test: all test-jsonschema
 
 install:
-	#. environment.sh
+#	. environment.sh
 	pipenv install -r requirements.txt
 
 tdir-%:
 	mkdir -p target/$*
 
 docs:
-	mkdir $@
-
-slides/schema-slides.html:
-# see here for demos https://pandoc.org/demos.html
-# here the pandoc manual https://pandoc.org/MANUAL.html
-	pandoc -s --webtex -i -t slidy src/slides/schema-slides.md -o $@
+	mkdir -p $@
+	mkdir -p $@/images
 
 stage: $(patsubst %,stage-%,$(TGTS))
 stage-%: gen-%
 	cp -pr target/$* .
 
 
-###  -- MARKDOWN DOCS --
+###  -- MARKDOWN DOCS AND SLIDES --
 # Generate documentation ready for mkdocs
 # TODO: modularize imports
-gen-docs: target/docs/index.md copy-src-docs
+gen-docs: target/docs/index.md copy-src-docs make-slides
 .PHONY: gen-docs
 copy-src-docs:
-	cp $(SRC_DIR)/docs/*md target/docs/
+	cp $(SRC_DIR)/docs/*.md target/docs/
+PHONY: copy-src-docs
 target/docs/%.md: $(SCHEMA_SRC) tdir-docs
 	pipenv run gen-markdown $(GEN_OPTS) --dir target/docs $<
 stage-docs: gen-docs
 	cp -pr target/docs .
 
-###  -- MARKDOWN DOCS --
+make-slides: target/docs/schema-slides.html copy-src-slides-images
+.PHONY: make-slides
+copy-src-slides-images:
+	mkdir -p target/docs/images
+	cp $(SRC_DIR)/slides/images/* target/docs/images/
+.PHONY: copy-src-slides-images
+target/docs/schema-slides.html: tdir-docs 
+# see here for demos https://pandoc.org/demos.html
+# here the pandoc manual https://pandoc.org/MANUAL.html
+	pandoc -s --webtex -i -t slidy src/slides/schema-slides.md -o $@
+
+###  -- PYTHON --
 # TODO: modularize imports
 gen-python: $(patsubst %, target/python/%.py, $(SCHEMA_NAMES))
 .PHONY: gen-python
@@ -67,14 +76,14 @@ target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
 #	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
 	pipenv run gen-py-classes --mergeimports $(GEN_OPTS) $< > $@
 
-###  -- MARKDOWN DOCS --
+###  -- GRAPHQL --
 # TODO: modularize imports. For now imports are merged.
 gen-graphql:target/graphql/$(SCHEMA_NAME).graphql 
 .PHONY: gen-graphql
 target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
 	pipenv run gen-graphql $(GEN_OPTS) $< > $@
 
-###  -- JSON schema --
+###  -- JSON SCHEMA --
 # TODO: modularize imports. For now imports are merged.
 gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json
 .PHONY: gen-jsonschema
@@ -87,7 +96,7 @@ gen-jsonld-context: target/jsonld-context/$(SCHEMA_NAME).context.jsonld
 target/jsonld-context/%.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld-context
 	pipenv run gen-jsonld-context $(GEN_OPTS) $< > $@
 
-###  -- Shex --
+###  -- SHEX --
 # one file per module
 gen-shex: $(patsubst %, target/shex/%.shex, $(SCHEMA_NAMES))
 .PHONY: gen-shex
@@ -115,7 +124,7 @@ gen-rdf: target/rdf/$(SCHEMA_NAME).ttl
 target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml tdir-rdf
 	pipenv run gen-rdf $(GEN_OPTS) $< > $@
 
-###  -- LinkML --
+###  -- LINKML --
 # linkml (copy)
 # one file per module
 gen-linkml: target/linkml/$(SCHEMA_NAME).yaml
