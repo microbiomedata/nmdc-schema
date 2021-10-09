@@ -25,7 +25,7 @@ jobs:
       
       # Install pipenv
       - name: Install pipenv
-        run: python3 -m pip install pipenv
+        run: python3 -m pip install --no-cache-dir pipenv
       
       # Load pipenv virtual environment from cache
       # see: https://ianwhitestone.work/aws-serverless-deployments-with-github-actions/
