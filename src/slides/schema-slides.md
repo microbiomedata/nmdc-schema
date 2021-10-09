@@ -96,7 +96,7 @@ Example
 
 
 # UML Depiction
-![](test_schema_uml.png){ width=80% }
+![](images/test_schema_uml.png){ width=80% }
 
 # Example Class Definition
 
