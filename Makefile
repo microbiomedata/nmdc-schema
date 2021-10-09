@@ -65,7 +65,7 @@ copy-src-slides-images:
 target/docs/schema-slides.html: tdir-docs 
 # see here for demos https://pandoc.org/demos.html
 # here the pandoc manual https://pandoc.org/MANUAL.html
-	pandoc -s --webtex -i -t slidy src/slides/schema-slides.md -o $@
+	pipenv run pandoc -s --webtex -i -t slidy src/slides/schema-slides.md -o $@
 
 ###  -- PYTHON --
 # TODO: modularize imports
