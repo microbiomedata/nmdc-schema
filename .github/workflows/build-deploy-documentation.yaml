@@ -39,8 +39,8 @@ jobs:
       # If cache was not loaded, install dependencies
       - name: Install dependencies
         run: |
-          - pipenv install
-          - pipenv install pandoc
+          pipenv install
+          pipenv install pandoc
 #         if: steps.cache-pipenv.outputs.cache-hit != 'true'
 #         run: pipenv install -d
         
