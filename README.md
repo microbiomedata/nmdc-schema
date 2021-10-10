@@ -24,6 +24,13 @@ The NMDC [Introduction to metadata and ontologies](https://microbiomedata.org/in
 
 See also [these slides](https://microbiomedata.github.io/nmdc-schema/schema-slides.html) ![](images/16px-External.svg.png) describing the schema.
 
+## Dependencies
+In order to make new release of the schema, you must have the following installed on your sytem:
+- [pipenv](https://pypi.org/project/pipenv/)
+- [pandoc](https://pandoc.org/installing.html)
+
+A Pipfile.lock is include in the repository, but you can rebuild the lock file by executing `pipenv install -d`.
+
 ## Maintaining the Schema
 
 See [MAINTAINERS.md](MAINTAINERS.md) for instructions on maintaining and updating the schema.
