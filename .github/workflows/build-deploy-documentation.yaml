@@ -38,7 +38,7 @@ jobs:
 
       # If cache was not loaded, install dependencies
       - name: Install dependencies
-        run: pipenv install -d
+        run: pipenv install
 #         if: steps.cache-pipenv.outputs.cache-hit != 'true'
 #         run: pipenv install -d
         
