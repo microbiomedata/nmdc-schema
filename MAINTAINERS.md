@@ -1,4 +1,11 @@
 # Maintaining the NMDC Schema
+## Dependencies
+In order to make new release of the schema, you must have the following installed on your sytem:
+- [pipenv](https://pypi.org/project/pipenv/)
+- [pandoc](https://pandoc.org/installing.html)
+
+A Pipfile.lock is include in the repository, but you can rebuild the lock file by executing `pipenv install -d`.
+
 ## Making changes to the NMDC Schema
 In order to track changes made to the NMDC Schema, it is best maintained by following these steps:
 1. Submit an [issue](https://github.com/microbiomedata/nmdc-schema/issues) detailing problem.
