@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-10-12 14:43
+# Generation date: 2021-10-12 17:23
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -2038,6 +2038,7 @@ class WorkflowExecutionActivity(Activity):
     started_at_time: str = None
     ended_at_time: str = None
     was_informed_by: Union[str, ActivityId] = None
+    part_of: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
     was_associated_with: Optional[Union[str, WorkflowExecutionActivityId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -2087,6 +2088,10 @@ class WorkflowExecutionActivity(Activity):
             self.MissingRequiredField("was_informed_by")
         if not isinstance(self.was_informed_by, ActivityId):
             self.was_informed_by = ActivityId(self.was_informed_by)
+
+        if not isinstance(self.part_of, list):
+            self.part_of = [self.part_of] if self.part_of is not None else []
+        self.part_of = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.part_of]
 
         if self.was_associated_with is not None and not isinstance(self.was_associated_with, WorkflowExecutionActivityId):
             self.was_associated_with = WorkflowExecutionActivityId(self.was_associated_with)
