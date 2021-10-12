@@ -11,6 +11,16 @@ Changes to the schema are documented in this file.
 ### Removed
   - N/A
 
+## [2021.10.12rc2](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.10.12rc2)
+### Added
+  - `part of` slot for `workflow execution activity` (#176)
+### Fixed
+  - N/A
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
 ## [2021.10.12rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.10.12rc1)
 ### Added
   - N/A
