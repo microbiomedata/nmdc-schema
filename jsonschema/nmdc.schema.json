@@ -1469,6 +1469,13 @@
                "description": "A human readable label for an entity",
                "type": "string"
             },
+            "part_of": {
+               "description": "Links a resource to another resource that either logically or physically includes it.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "started_at_time": {
                "type": "string"
             },
@@ -1578,6 +1585,13 @@
                "description": "A human readable label for an entity",
                "type": "string"
             },
+            "part_of": {
+               "description": "Links a resource to another resource that either logically or physically includes it.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "started_at_time": {
                "type": "string"
             },
@@ -1647,6 +1661,13 @@
             "name": {
                "description": "A human readable label for an entity",
                "type": "string"
+            },
+            "part_of": {
+               "description": "Links a resource to another resource that either logically or physically includes it.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "started_at_time": {
                "type": "string"
@@ -1781,6 +1802,13 @@
                "description": "The sequence count number of input reads for assembly.",
                "type": "number"
             },
+            "part_of": {
+               "description": "Links a resource to another resource that either logically or physically includes it.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "scaf_L50": {
                "description": "Given a set of scaffolds, the L50 is defined as the sequence length of the shortest scaffold at 50% of the total genome length.",
                "type": "number"
@@ -1904,6 +1932,13 @@
                "description": "A human readable label for an entity",
                "type": "string"
             },
+            "part_of": {
+               "description": "Links a resource to another resource that either logically or physically includes it.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "started_at_time": {
                "type": "string"
             },
@@ -1974,6 +2009,13 @@
                "description": "A human readable label for an entity",
                "type": "string"
             },
+            "part_of": {
+               "description": "Links a resource to another resource that either logically or physically includes it.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "started_at_time": {
                "type": "string"
             },
@@ -2042,6 +2084,13 @@
             "name": {
                "description": "A human readable label for an entity",
                "type": "string"
+            },
+            "part_of": {
+               "description": "Links a resource to another resource that either logically or physically includes it.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "started_at_time": {
                "type": "string"
@@ -2176,6 +2225,13 @@
                "description": "The sequence count number of input reads for assembly.",
                "type": "number"
             },
+            "part_of": {
+               "description": "Links a resource to another resource that either logically or physically includes it.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "scaf_L50": {
                "description": "Given a set of scaffolds, the L50 is defined as the sequence length of the shortest scaffold at 50% of the total genome length.",
                "type": "number"
@@ -2296,6 +2352,13 @@
             "name": {
                "description": "A human readable label for an entity",
                "type": "string"
+            },
+            "part_of": {
+               "description": "Links a resource to another resource that either logically or physically includes it.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "started_at_time": {
                "type": "string"
@@ -2853,6 +2916,13 @@
                "description": "A human readable label for an entity",
                "type": "string"
             },
+            "part_of": {
+               "description": "Links a resource to another resource that either logically or physically includes it.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "started_at_time": {
                "type": "string"
             },
@@ -2945,6 +3015,13 @@
             "output_read_count": {
                "description": "After QC analysis sequence count number. ",
                "type": "number"
+            },
+            "part_of": {
+               "description": "Links a resource to another resource that either logically or physically includes it.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "started_at_time": {
                "type": "string"
@@ -3245,6 +3322,13 @@
             "name": {
                "description": "A human readable label for an entity",
                "type": "string"
+            },
+            "part_of": {
+               "description": "Links a resource to another resource that either logically or physically includes it.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "started_at_time": {
                "type": "string"

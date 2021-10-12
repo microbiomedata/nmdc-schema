@@ -38,6 +38,7 @@ classes:
       - git url
       - has input
       - has output
+      - part of
       - type  # custom slot that specifies object type
     slot_usage:
       was associated with:
