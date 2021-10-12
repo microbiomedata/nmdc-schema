@@ -11,6 +11,16 @@ Changes to the schema are documented in this file.
 ### Removed
   - N/A
 
+## [2021.10.12rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.10.12rc1)
+### Added
+  - N/A
+### Fixed
+  - descriptions are inherited in induced slots (#174)
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
 ## [2021.09.30rc3](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.09.30rc3)
 ### Added
   - N/A
