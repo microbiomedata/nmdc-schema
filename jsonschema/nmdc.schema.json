@@ -302,14 +302,17 @@
             },
             "env_broad_scale": {
                "$ref": "#/$defs/ControlledTermValue",
+               "description": "\"In this field, report which major environmental system your sample or specimen came from. The systems identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. were you in the desert or a rainforest?). We recommend using subclasses of ENVOUs biome class: http://purl.obolibrary.org/obo/ENVO_00000428. Format (one term): termLabel [termID], Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a water sample from the photic zone in middle of the Atlantic Ocean, consider: oceanic epipelagic zone biome [ENVO:01000033]. Example: Annotating a sample from the Amazon rainforest consider: tropical moist broadleaf forest biome [ENVO:01000228]. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html\"",
                "pattern": ".* \\S+:\\S+"
             },
             "env_local_scale": {
                "$ref": "#/$defs/ControlledTermValue",
+               "description": "\"In this field, report the entity or entities which are in your sample or specimenUs local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale. Format (one term): termLabel [termID]; Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a pooled sample taken from various vegetation layers in a forest consider: canopy [ENVO:00000047]|herb and fern layer [ENVO:01000337]|litter layer [ENVO:01000338]|understory [01000335]|shrub layer [ENVO:01000336]. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html\"",
                "pattern": ".* \\S+:\\S+"
             },
             "env_medium": {
                "$ref": "#/$defs/ControlledTermValue",
+               "description": "\"In this field, report which environmental material or materials (pipe separated) immediately surrounded your sample or specimen prior to sampling, using one or more subclasses of ENVOUs environmental material class: http://purl.obolibrary.org/obo/ENVO_00010483. Format (one term): termLabel [termID]; Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a fish swimming in the upper 100 m of the Atlantic Ocean, consider: ocean water [ENVO:00002151]. Example: Annotating a duck on a pond consider: pond water [ENVO:00002228]|air ENVO_00002005. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html\"",
                "pattern": ".* \\S+:\\S+"
             },
             "env_package": {
@@ -763,6 +766,7 @@
                "type": "string"
             },
             "has_input": {
+               "description": "An input to a process.",
                "items": {
                   "type": "string"
                },
@@ -942,6 +946,7 @@
                "description": "The type of file represented by the data object."
             },
             "description": {
+               "description": "a human-readable description of a thing",
                "type": "string"
             },
             "file_size_bytes": {
@@ -957,6 +962,7 @@
                "type": "string"
             },
             "name": {
+               "description": "A human readable label for an entity",
                "type": "string"
             },
             "type": {
@@ -1422,18 +1428,22 @@
                "type": "string"
             },
             "execution_resource": {
+               "description": "Example: NERSC-Cori",
                "type": "string"
             },
             "git_url": {
+               "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                "type": "string"
             },
             "has_input": {
+               "description": "An input to a process.",
                "items": {
                   "type": "string"
                },
                "type": "array"
             },
             "has_output": {
+               "description": "An output biosample to a processing step",
                "items": {
                   "type": "string"
                },
@@ -1466,6 +1476,7 @@
                "type": "integer"
             },
             "type": {
+               "description": "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.",
                "type": "string"
             },
             "unbinned_contig_num": {
@@ -1528,9 +1539,11 @@
                "type": "string"
             },
             "execution_resource": {
+               "description": "Example: NERSC-Cori",
                "type": "string"
             },
             "git_url": {
+               "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                "type": "string"
             },
             "has_calibration": {
@@ -1538,6 +1551,7 @@
                "type": "string"
             },
             "has_input": {
+               "description": "An input to a process.",
                "items": {
                   "type": "string"
                },
@@ -1550,6 +1564,7 @@
                "type": "array"
             },
             "has_output": {
+               "description": "An output biosample to a processing step",
                "items": {
                   "type": "string"
                },
@@ -1567,6 +1582,7 @@
                "type": "string"
             },
             "type": {
+               "description": "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.",
                "type": "string"
             },
             "used": {
@@ -1603,18 +1619,22 @@
                "type": "string"
             },
             "execution_resource": {
+               "description": "Example: NERSC-Cori",
                "type": "string"
             },
             "git_url": {
+               "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                "type": "string"
             },
             "has_input": {
+               "description": "An input to a process.",
                "items": {
                   "type": "string"
                },
                "type": "array"
             },
             "has_output": {
+               "description": "An output biosample to a processing step",
                "items": {
                   "type": "string"
                },
@@ -1632,6 +1652,7 @@
                "type": "string"
             },
             "type": {
+               "description": "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.",
                "type": "string"
             },
             "used": {
@@ -1711,6 +1732,7 @@
                "type": "string"
             },
             "execution_resource": {
+               "description": "Example: NERSC-Cori",
                "type": "string"
             },
             "gap_pct": {
@@ -1726,15 +1748,18 @@
                "type": "number"
             },
             "git_url": {
+               "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                "type": "string"
             },
             "has_input": {
+               "description": "An input to a process.",
                "items": {
                   "type": "string"
                },
                "type": "array"
             },
             "has_output": {
+               "description": "An output biosample to a processing step",
                "items": {
                   "type": "string"
                },
@@ -1808,6 +1833,7 @@
                "type": "string"
             },
             "type": {
+               "description": "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.",
                "type": "string"
             },
             "used": {
@@ -1843,18 +1869,22 @@
                "type": "string"
             },
             "execution_resource": {
+               "description": "Example: NERSC-Cori",
                "type": "string"
             },
             "git_url": {
+               "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                "type": "string"
             },
             "has_input": {
+               "description": "An input to a process.",
                "items": {
                   "type": "string"
                },
                "type": "array"
             },
             "has_output": {
+               "description": "An output biosample to a processing step",
                "items": {
                   "type": "string"
                },
@@ -1878,6 +1908,7 @@
                "type": "string"
             },
             "type": {
+               "description": "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.",
                "type": "string"
             },
             "used": {
@@ -1914,18 +1945,22 @@
                "type": "string"
             },
             "execution_resource": {
+               "description": "Example: NERSC-Cori",
                "type": "string"
             },
             "git_url": {
+               "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                "type": "string"
             },
             "has_input": {
+               "description": "An input to a process.",
                "items": {
                   "type": "string"
                },
                "type": "array"
             },
             "has_output": {
+               "description": "An output biosample to a processing step",
                "items": {
                   "type": "string"
                },
@@ -1943,6 +1978,7 @@
                "type": "string"
             },
             "type": {
+               "description": "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.",
                "type": "string"
             },
             "used": {
@@ -1978,18 +2014,22 @@
                "type": "string"
             },
             "execution_resource": {
+               "description": "Example: NERSC-Cori",
                "type": "string"
             },
             "git_url": {
+               "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                "type": "string"
             },
             "has_input": {
+               "description": "An input to a process.",
                "items": {
                   "type": "string"
                },
                "type": "array"
             },
             "has_output": {
+               "description": "An output biosample to a processing step",
                "items": {
                   "type": "string"
                },
@@ -2007,6 +2047,7 @@
                "type": "string"
             },
             "type": {
+               "description": "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.",
                "type": "string"
             },
             "used": {
@@ -2086,6 +2127,7 @@
                "type": "string"
             },
             "execution_resource": {
+               "description": "Example: NERSC-Cori",
                "type": "string"
             },
             "gap_pct": {
@@ -2101,15 +2143,18 @@
                "type": "number"
             },
             "git_url": {
+               "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                "type": "string"
             },
             "has_input": {
+               "description": "An input to a process.",
                "items": {
                   "type": "string"
                },
                "type": "array"
             },
             "has_output": {
+               "description": "An output biosample to a processing step",
                "items": {
                   "type": "string"
                },
@@ -2183,6 +2228,7 @@
                "type": "string"
             },
             "type": {
+               "description": "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.",
                "type": "string"
             },
             "used": {
@@ -2218,9 +2264,11 @@
                "type": "string"
             },
             "execution_resource": {
+               "description": "Example: NERSC-Cori",
                "type": "string"
             },
             "git_url": {
+               "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                "type": "string"
             },
             "has_calibration": {
@@ -2228,12 +2276,14 @@
                "type": "string"
             },
             "has_input": {
+               "description": "An input to a process.",
                "items": {
                   "type": "string"
                },
                "type": "array"
             },
             "has_output": {
+               "description": "An output biosample to a processing step",
                "items": {
                   "type": "string"
                },
@@ -2251,6 +2301,7 @@
                "type": "string"
             },
             "type": {
+               "description": "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.",
                "type": "string"
             },
             "used": {
@@ -2773,18 +2824,22 @@
                "type": "string"
             },
             "execution_resource": {
+               "description": "Example: NERSC-Cori",
                "type": "string"
             },
             "git_url": {
+               "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                "type": "string"
             },
             "has_input": {
+               "description": "An input to a process.",
                "items": {
                   "type": "string"
                },
                "type": "array"
             },
             "has_output": {
+               "description": "An output biosample to a processing step",
                "items": {
                   "type": "string"
                },
@@ -2802,6 +2857,7 @@
                "type": "string"
             },
             "type": {
+               "description": "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.",
                "type": "string"
             },
             "used": {
@@ -2837,18 +2893,22 @@
                "type": "string"
             },
             "execution_resource": {
+               "description": "Example: NERSC-Cori",
                "type": "string"
             },
             "git_url": {
+               "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                "type": "string"
             },
             "has_input": {
+               "description": "An input to a process.",
                "items": {
                   "type": "string"
                },
                "type": "array"
             },
             "has_output": {
+               "description": "An output biosample to a processing step",
                "items": {
                   "type": "string"
                },
@@ -2890,6 +2950,7 @@
                "type": "string"
             },
             "type": {
+               "description": "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.",
                "type": "string"
             },
             "used": {
@@ -3156,18 +3217,22 @@
                "type": "string"
             },
             "execution_resource": {
+               "description": "Example: NERSC-Cori",
                "type": "string"
             },
             "git_url": {
+               "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                "type": "string"
             },
             "has_input": {
+               "description": "An input to a process.",
                "items": {
                   "type": "string"
                },
                "type": "array"
             },
             "has_output": {
+               "description": "An output biosample to a processing step",
                "items": {
                   "type": "string"
                },
@@ -3185,6 +3250,7 @@
                "type": "string"
             },
             "type": {
+               "description": "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.",
                "type": "string"
             },
             "used": {
