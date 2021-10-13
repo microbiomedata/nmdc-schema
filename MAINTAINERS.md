@@ -37,7 +37,7 @@ When the pull request is merged into the `main` branch, new documentaiton will b
 The NMDC Schema is deployed to [PyPI](https://pypi.org/project/nmdc-schema/) via the [pypi-publish](https://github.com/microbiomedata/nmdc-schema/blob/main/.github/workflows/pypi-publish.yml) github action.
 
 The steps for making a release are:
-1. Generate the set of artifacts by running `make all`.
+1. Generate the set of artifacts by running `make clean` followed by `make all`.
 2. If **#1** succeeds and changes have been made to the schema, update the `version` in [nmdc.yaml](https://github.com/microbiomedata/nmdc-schema/blob/main/src/schema/nmdc.yaml) using the format `YYYY.MM.DD`. Note: Changes can be made to the Python package (e.g., functionality added to the CLI) that do not affect the schema. In these cases, the schema does not need to be changed.
 3. If **#1** succeeds:
   * Make the sure the sections of the [Change log](https://github.com/microbiomedata/nmdc-schema/blob/main/CHANGELOG.md) (discussed above) have been updated appropriately.
