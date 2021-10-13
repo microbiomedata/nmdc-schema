@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-10-13 09:29
+# Generation date: 2021-10-13 09:34
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -6142,9 +6142,6 @@ slots.reaction_participant_chemical = Slot(uri=NMDC.chemical, name="reaction par
 
 slots.reaction_participant_stoichiometry = Slot(uri=NMDC.stoichiometry, name="reaction participant_stoichiometry", curie=NMDC.curie('stoichiometry'),
                    model_uri=NMDC.reaction_participant_stoichiometry, domain=ReactionParticipant, range=Optional[int])
-
-slots.functional_annotation_has_function = Slot(uri="str(uriorcurie)", name="functional annotation_has function", curie=None,
-                   model_uri=NMDC.functional_annotation_has_function, domain=FunctionalAnnotation, range=Optional[str])
 
 slots.functional_annotation_type = Slot(uri=NMDC.type, name="functional annotation_type", curie=NMDC.curie('type'),
                    model_uri=NMDC.functional_annotation_type, domain=FunctionalAnnotation, range=Optional[Union[str, OntologyClassId]])
