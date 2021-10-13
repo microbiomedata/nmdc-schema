@@ -5,7 +5,7 @@ Changes to the schema are documented in this file.
 ### Added
   - N/A
 ### Fixed
-  - broken download links in README.md
+  - N/A
 ### Changed 
   - N/A
 ### Removed
