@@ -51,6 +51,7 @@ jobs:
     # Excute the Makefile to build generated artifacts
     - name: Make Artifacts
       run: |
+        make clean-artifacts
         make all
         
     # Validate json schema aganst test data
