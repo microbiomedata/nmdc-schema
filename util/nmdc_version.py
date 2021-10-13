@@ -46,7 +46,7 @@ def get_nmdc_schema_version() -> str:
         The version in the nmdc.yaml file.
     """
     nmdc_yaml = io.BytesIO(pkgutil.get_data("nmdc_schema", "nmdc.yaml"))
-    nmdc_schema = load_raw_schema(nmdc_yaml)
+    nmdc_schema = load_raw_schema(nmdc_yaml.getvalue().decode("utf-8"))
     return nmdc_schema.version
 
 
@@ -60,7 +60,7 @@ def get_nmdc_schema_metamodel_version() -> str:
         The metamodel version in the nmdc.yaml file.
     """
     nmdc_yaml = io.BytesIO(pkgutil.get_data("nmdc_schema", "nmdc.yaml"))
-    nmdc_schema = load_raw_schema(nmdc_yaml)
+    nmdc_schema = load_raw_schema(nmdc_yaml.getvalue().decode("utf-8"))
     return nmdc_schema.metamodel_version
 
 
