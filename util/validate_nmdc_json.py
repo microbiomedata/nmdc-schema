@@ -17,6 +17,19 @@ def get_nmdc_schema() -> dict:
     return json.load(nmdc_schema)
 
 
+def get_nmdc_schema_json() -> str:
+    """
+    Returns the nmdc.schema.json package data file json.
+
+    Returns
+    -------
+    str
+        JSON string representation of the nmdc.schema.json package data file.
+    """
+    nmdc_schema = get_nmdc_schema()
+    return json.dumps(nmdc_schema, indent=2)
+
+
 def is_valid_json(json_file: str) -> bool:
     """
     Determines if the data in json_file conforms to the NMDC json schema.
