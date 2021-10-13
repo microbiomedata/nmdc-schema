@@ -13,9 +13,14 @@ GEN_OPTS =
 
 all: gen stage
 gen: $(patsubst %,gen-%,$(TGTS))
-.PHONY: all gen stage clean t echo test install docserve gh-deploy .FORCE
-clean:
+.PHONY: all gen stage clean clean-artifacts clean-docs t echo test install docserve gh-deploy .FORCE
+
+clean: clean-artifacts clean-docs
+
+clean-artifacts:
 	rm -rf target/
+
+clean-docs:
 	ls docs/*.md | egrep -v 'README.md|README.markdown' | xargs rm -f # keep readme files
 	rm -f docs/images/*
 	rm -f docs/types/*
