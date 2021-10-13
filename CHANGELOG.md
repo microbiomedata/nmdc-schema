@@ -11,6 +11,16 @@ Changes to the schema are documented in this file.
 ### Removed
   - N/A
 
+## [2021.10.13rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.10.13rc1)
+### Added
+  - N/A
+### Fixed
+  - N/A
+### Changed 
+  - N/A
+### Removed
+  - regex patterns for `has function` slot on class `function annotation` (#178)
+
 ## [2021.10.12rc2](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.10.12rc2)
 ### Added
   - `part of` slot for `workflow execution activity` (#176)
