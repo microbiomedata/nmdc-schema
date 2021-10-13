@@ -13,9 +13,9 @@ Changes to the schema are documented in this file.
 
 ## [2021.10.13rc2](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.10.13rc2)
 ### Added
-  - command line (cli) utility `fetch-nmdc-schema` for downloading the jsonschema (#183)
+  - command line utility `fetch-nmdc-schema` for downloading the jsonschema
 ### Fixed
-  - N/A
+  - `nmdc-version` command line utility (#183)
 ### Changed 
   - N/A
 ### Removed
