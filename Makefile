@@ -16,8 +16,9 @@ gen: $(patsubst %,gen-%,$(TGTS))
 .PHONY: all gen stage clean t echo test install docserve gh-deploy .FORCE
 clean:
 	rm -rf target/
-	rm -f docs/*.md
+	ls docs/*.md | egrep -v 'README.md|README.markdown' | xargs rm -f # keep readme files
 	rm -f docs/images/*
+	rm -f docs/types/*
 
 t:
 	echo $(SCHEMA_NAMES)
