@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-10-12 17:23
+# Generation date: 2021-10-13 09:29
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -6144,8 +6144,7 @@ slots.reaction_participant_stoichiometry = Slot(uri=NMDC.stoichiometry, name="re
                    model_uri=NMDC.reaction_participant_stoichiometry, domain=ReactionParticipant, range=Optional[int])
 
 slots.functional_annotation_has_function = Slot(uri="str(uriorcurie)", name="functional annotation_has function", curie=None,
-                   model_uri=NMDC.functional_annotation_has_function, domain=FunctionalAnnotation, range=Optional[str],
-                   pattern=re.compile(r'^(KEGG.PATHWAY:\w{2,4}\d{5}|KEGG.REACTION:R\d+|RHEA:\d{5}|MetaCyc:[A-Za-z0-9+_.%-:]+|EC:\d{1,2}(\.\d{0,3}){0,3}|GO:\d{7}|MetaNetX:(MNXR\d+|EMPTY)|SEED:\w+|KEGG\.ORTHOLOGY:K\d+|EGGNOG:\w+|PFAM:PF\d{5}|TIGRFAM:TIGR\d+|SUPFAM:\w+|CATH:[1-6]\.[0-9]+\.[0-9]+\.[0-9]+|PANTHER.FAMILY:PTHR\d{5}(\:SF\d{1,3})?)$'))
+                   model_uri=NMDC.functional_annotation_has_function, domain=FunctionalAnnotation, range=Optional[str])
 
 slots.functional_annotation_type = Slot(uri=NMDC.type, name="functional annotation_type", curie=NMDC.curie('type'),
                    model_uri=NMDC.functional_annotation_type, domain=FunctionalAnnotation, range=Optional[Union[str, OntologyClassId]])
