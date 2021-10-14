@@ -68,6 +68,7 @@ subsets:
 classes:
 
   database:
+    tree_root: true  ## this forms the root of the json object tree
     aliases:
       - "NMDC metadata object"
     description: >-
