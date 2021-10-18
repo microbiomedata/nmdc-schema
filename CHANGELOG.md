@@ -3,7 +3,7 @@ Changes to the schema are documented in this file.
 
 ## Current (updates before releasing)
 ### Added
-  - N/A
+  - declare `database` class as the root (i.e., `tree_root: true`)
 ### Fixed
   - N/A
 ### Changed 
