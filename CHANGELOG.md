@@ -3,6 +3,7 @@ Changes to the schema are documented in this file.
 
 ## Current (updates before releasing)
 ### Added
+  - option to specify the database set when validating data (#184)
   - declare `database` class as the root (i.e., `tree_root: true`)
 ### Fixed
   - N/A
