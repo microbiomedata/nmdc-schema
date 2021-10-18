@@ -30,7 +30,7 @@ def get_nmdc_schema_json() -> str:
     return json.dumps(nmdc_schema, indent=2)
 
 
-def is_valid_json(json_file: str) -> bool:
+def is_valid_json(json_file: str, database_set: str = "") -> bool:
     """
     Determines if the data in json_file conforms to the NMDC json schema.
 
@@ -38,6 +38,8 @@ def is_valid_json(json_file: str) -> bool:
     ----------
     json_file : str
         Path to the file containing json formatted data.
+    database_set : str, default=""
+        An optional top level database set (e.g, study_set, biosample_set) that contains the data.
 
     Returns
     -------
@@ -46,6 +48,13 @@ def is_valid_json(json_file: str) -> bool:
     """
     with open(json_file, "r") as fh:
         json_data = json.load(fh)
+
+        database_set = database_set.strip()
+        if len(database_set) > 0:
+            if type(json_data) == type([]):
+                json_data = {f"{database_set}": json_data}
+            else:
+                json_data = {f"{database_set}": [json_data]}
     try:
         jsonschema.validate(instance=json_data, schema=get_nmdc_schema())
     except jsonschema.exceptions.ValidationError as err:
@@ -62,8 +71,14 @@ def is_valid_json(json_file: str) -> bool:
     "-i",
     help="the path the file containing json formatted data.",
 )
-def cli(input: str):
-    if is_valid_json(input):
+@click.option(
+    "--database-set",
+    "-set",
+    default="",
+    help="An optional top level database set (e.g, study_set, biosample_set) that contains the data.",
+)
+def cli(input: str, database_set: str):
+    if is_valid_json(input, database_set):
         click.echo("%s: The JSON data is VALID for NMDC schema." % input)
     else:
         click.echo("%s: The JSON data is ** NOT ** valid for NMDC schema." % input)

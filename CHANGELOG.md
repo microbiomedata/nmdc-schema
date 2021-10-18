@@ -3,7 +3,7 @@ Changes to the schema are documented in this file.
 
 ## Current (updates before releasing)
 ### Added
-  - N/A
+  - option to specify the database set when validating data (#184)
 ### Fixed
   - N/A
 ### Changed 
