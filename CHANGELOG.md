@@ -3,9 +3,20 @@ Changes to the schema are documented in this file.
 
 ## Current (updates before releasing)
 ### Added
-  - N/A
+  - option to specify the database set when validating data (#184)
+  - declare `database` class as the root (i.e., `tree_root: true`)
 ### Fixed
   - N/A
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
+## [2021.10.13rc2](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.10.13rc2)
+### Added
+  - command line utility `fetch-nmdc-schema` for downloading the jsonschema
+### Fixed
+  - `nmdc-version` command line utility (#183)
 ### Changed 
   - N/A
 ### Removed

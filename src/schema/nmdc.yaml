@@ -14,7 +14,7 @@ description: >-
    * the NMDC schema itself
   
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: 2021.09.30
+version: 2021.10.13
 
 prefixes:
   nmdc: https://microbiomedata/meta/
@@ -68,6 +68,7 @@ subsets:
 classes:
 
   database:
+    tree_root: true  ## this forms the root of the json object tree
     aliases:
       - "NMDC metadata object"
     description: >-
