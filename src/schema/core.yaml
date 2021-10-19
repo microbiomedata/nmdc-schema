@@ -111,6 +111,10 @@ classes:
     slots:
       - has unit
       - has numeric value
+      - has minimum raw value
+      - has maximum raw value
+      - has minimum numeric value
+      - has maximum numeric value
     slot_usage:
       has raw value:
         description: >-
