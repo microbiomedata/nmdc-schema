@@ -424,6 +424,16 @@ slots:
     required: false
     domain: attribute value
     range: string
+
+  has minimum raw value:
+    is_a: has raw value
+    description: >-
+      The minimum value part of the raw value when the raw value repesents a range.
+  
+  has maximum raw value:
+    is_a: has raw value
+    description: >-
+      The maximum value part of the raw value when the raw value repesents a range.
     
   has unit:
     description: >-
@@ -443,7 +453,17 @@ slots:
     mappings:
       - qud:quantityValue
       - schema:value
-      
+  
+  has minimum numeric value:
+    is_a: has numeric value
+    description: >-
+      The minimum value part, expressed as number in, of the quantity value when the value covers a range.
+
+  has maximum numeric value:
+    is_a: has numeric value
+    description: >-
+      The maximum value part, expressed as number in, of the quantity value when the value covers a range.
+  
   has boolean value:
     description: >-
       Links a quantity value to a boolean
