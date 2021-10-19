@@ -37,4 +37,4 @@ See [MAINTAINERS.md](MAINTAINERS.md) for instructions on maintaining and updatin
 
 ## NMDC metadata downloads
 
-NMDC metadata collections are stored in document databases like MongDB and can be dumped to JSON. [These files](https://portal.nersc.gov/project/m3408/meta/mongoexports/2021-07/) illustrate data that adhere to the NMDC schema. We distribute them as [bzip2 archives](https://en.wikipedia.org/wiki/Bzip2) for efficient compression and relatively fast decompression.
+See https://github.com/microbiomedata/nmdc-runtime/#data-exports
