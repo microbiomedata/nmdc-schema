@@ -5,6 +5,7 @@ Changes to the schema are documented in this file.
 ### Added
   - option to specify the database set when validating data (#184)
   - declare `database` class as the root (i.e., `tree_root: true`)
+  - slots to hold minimum and maximum values (#80)
 ### Fixed
   - N/A
 ### Changed 
