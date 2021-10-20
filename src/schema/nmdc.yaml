@@ -344,6 +344,7 @@ classes:
       - GOLD study identifiers
       - MGnify project identifiers
       - has credit associations
+      - study image
     slot_usage:
       doi:
         description: >-
