@@ -2775,20 +2775,12 @@
          "description": "A simple quantity, e.g. 2cm",
          "properties": {
             "has_maximum_numeric_value": {
-               "description": "The maximum value part, expressed as number in, of the quantity value when the value covers a range.",
+               "description": "The maximum value part, expressed as number, of the quantity value when the value covers a range.",
                "type": "number"
-            },
-            "has_maximum_raw_value": {
-               "description": "The maximum value part of the raw value when the raw value repesents a range.",
-               "type": "string"
             },
             "has_minimum_numeric_value": {
-               "description": "The minimum value part, expressed as number in, of the quantity value when the value covers a range.",
+               "description": "The minimum value part, expressed as number, of the quantity value when the value covers a range.",
                "type": "number"
-            },
-            "has_minimum_raw_value": {
-               "description": "The minimum value part of the raw value when the raw value repesents a range.",
-               "type": "string"
             },
             "has_numeric_value": {
                "description": "The number part of the quantity",

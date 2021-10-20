@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-10-19 16:05
+# Generation date: 2021-10-20 12:46
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -1445,8 +1445,6 @@ class QuantityValue(AttributeValue):
 
     has_unit: Optional[str] = None
     has_numeric_value: Optional[float] = None
-    has_minimum_raw_value: Optional[str] = None
-    has_maximum_raw_value: Optional[str] = None
     has_minimum_numeric_value: Optional[float] = None
     has_maximum_numeric_value: Optional[float] = None
     has_raw_value: Optional[str] = None
@@ -1457,12 +1455,6 @@ class QuantityValue(AttributeValue):
 
         if self.has_numeric_value is not None and not isinstance(self.has_numeric_value, float):
             self.has_numeric_value = float(self.has_numeric_value)
-
-        if self.has_minimum_raw_value is not None and not isinstance(self.has_minimum_raw_value, str):
-            self.has_minimum_raw_value = str(self.has_minimum_raw_value)
-
-        if self.has_maximum_raw_value is not None and not isinstance(self.has_maximum_raw_value, str):
-            self.has_maximum_raw_value = str(self.has_maximum_raw_value)
 
         if self.has_minimum_numeric_value is not None and not isinstance(self.has_minimum_numeric_value, float):
             self.has_minimum_numeric_value = float(self.has_minimum_numeric_value)
@@ -5422,12 +5414,6 @@ slots.attribute = Slot(uri=NMDC.attribute, name="attribute", curie=NMDC.curie('a
 
 slots.has_raw_value = Slot(uri=NMDC.has_raw_value, name="has raw value", curie=NMDC.curie('has_raw_value'),
                    model_uri=NMDC.has_raw_value, domain=AttributeValue, range=Optional[str])
-
-slots.has_minimum_raw_value = Slot(uri=NMDC.has_minimum_raw_value, name="has minimum raw value", curie=NMDC.curie('has_minimum_raw_value'),
-                   model_uri=NMDC.has_minimum_raw_value, domain=AttributeValue, range=Optional[str])
-
-slots.has_maximum_raw_value = Slot(uri=NMDC.has_maximum_raw_value, name="has maximum raw value", curie=NMDC.curie('has_maximum_raw_value'),
-                   model_uri=NMDC.has_maximum_raw_value, domain=AttributeValue, range=Optional[str])
 
 slots.has_unit = Slot(uri=NMDC.has_unit, name="has unit", curie=NMDC.curie('has_unit'),
                    model_uri=NMDC.has_unit, domain=None, range=Optional[str], mappings = [QUD.unit, SCHEMA.unitCode])
