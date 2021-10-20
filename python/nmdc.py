@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-10-13 09:34
+# Generation date: 2021-10-19 21:41
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -1113,6 +1113,7 @@ class Study(NamedThing):
     GOLD_study_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     MGnify_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     has_credit_associations: Optional[Union[Union[dict, "CreditAssociation"], List[Union[dict, "CreditAssociation"]]]] = empty_list()
+    study_image: Optional[Union[Union[dict, "ImageValue"], List[Union[dict, "ImageValue"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1202,6 +1203,10 @@ class Study(NamedThing):
         self.MGnify_project_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.MGnify_project_identifiers]
 
         self._normalize_inlined_as_dict(slot_name="has_credit_associations", slot_type=CreditAssociation, key_name="applies to person", keyed=False)
+
+        if not isinstance(self.study_image, list):
+            self.study_image = [self.study_image] if self.study_image is not None else []
+        self.study_image = [v if isinstance(v, ImageValue) else ImageValue(**as_dict(v)) for v in self.study_image]
 
         super().__post_init__(**kwargs)
 
@@ -1456,6 +1461,35 @@ class QuantityValue(AttributeValue):
 
         if self.has_raw_value is not None and not isinstance(self.has_raw_value, str):
             self.has_raw_value = str(self.has_raw_value)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class ImageValue(AttributeValue):
+    """
+    An attribute value representing an image.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC.ImageValue
+    class_class_curie: ClassVar[str] = "nmdc:ImageValue"
+    class_name: ClassVar[str] = "image value"
+    class_model_uri: ClassVar[URIRef] = NMDC.ImageValue
+
+    url: Optional[str] = None
+    description: Optional[str] = None
+    display_order: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.url is not None and not isinstance(self.url, str):
+            self.url = str(self.url)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.display_order is not None and not isinstance(self.display_order, str):
+            self.display_order = str(self.display_order)
 
         super().__post_init__(**kwargs)
 
@@ -3078,6 +3112,9 @@ slots.ess_dive_datasets = Slot(uri=NMDC.ess_dive_datasets, name="ess dive datase
 
 slots.has_credit_associations = Slot(uri=PROV.qualifiedAssociation, name="has credit associations", curie=PROV.curie('qualifiedAssociation'),
                    model_uri=NMDC.has_credit_associations, domain=Study, range=Optional[Union[Union[dict, "CreditAssociation"], List[Union[dict, "CreditAssociation"]]]])
+
+slots.study_image = Slot(uri=NMDC.study_image, name="study image", curie=NMDC.curie('study_image'),
+                   model_uri=NMDC.study_image, domain=Study, range=Optional[Union[Union[dict, "ImageValue"], List[Union[dict, "ImageValue"]]]])
 
 slots.relevant_protocols = Slot(uri=NMDC.relevant_protocols, name="relevant protocols", curie=NMDC.curie('relevant_protocols'),
                    model_uri=NMDC.relevant_protocols, domain=None, range=Optional[Union[str, List[str]]])
@@ -5451,6 +5488,9 @@ slots.execution_resource = Slot(uri=NMDC.execution_resource, name="execution res
 
 slots.url = Slot(uri=NMDC.url, name="url", curie=NMDC.curie('url'),
                    model_uri=NMDC.url, domain=None, range=Optional[str])
+
+slots.display_order = Slot(uri=NMDC.display_order, name="display order", curie=NMDC.curie('display_order'),
+                   model_uri=NMDC.display_order, domain=None, range=Optional[str])
 
 slots.git_url = Slot(uri=NMDC.git_url, name="git url", curie=NMDC.curie('git_url'),
                    model_uri=NMDC.git_url, domain=None, range=Optional[str])

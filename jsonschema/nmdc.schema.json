@@ -1298,6 +1298,37 @@
          "title": "GeolocationValue",
          "type": "object"
       },
+      "ImageValue": {
+         "additionalProperties": false,
+         "description": "An attribute value representing an image.",
+         "properties": {
+            "description": {
+               "description": "a human-readable description of a thing",
+               "type": "string"
+            },
+            "display_order": {
+               "description": "When rendering information, this attribute to specify the order in which the information should be rendered.",
+               "type": "string"
+            },
+            "has_raw_value": {
+               "description": "The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"",
+               "type": "string"
+            },
+            "type": {
+               "description": "An optional string that specified the type of object.",
+               "type": "string"
+            },
+            "url": {
+               "type": "string"
+            },
+            "was_generated_by": {
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "ImageValue",
+         "type": "object"
+      },
       "Instrument": {
          "additionalProperties": false,
          "description": "A material entity that is designed to perform a function in a scientific investigation, but is not a reagent[OBI].",
@@ -3198,6 +3229,13 @@
             "specific_ecosystem": {
                "description": "TODO",
                "type": "string"
+            },
+            "study_image": {
+               "description": "Links a study to one or more images.",
+               "items": {
+                  "$ref": "#/$defs/ImageValue"
+               },
+               "type": "array"
             },
             "title": {
                "description": "A name given to the entity that differs from the name/label programatically assigned to it. For example, when extracting study information for GOLD, the GOLD system has assigned a name/label. However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.",
