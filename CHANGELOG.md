@@ -3,6 +3,16 @@ Changes to the schema are documented in this file.
 
 ## Current (updates before releasing)
 ### Added
+  - N/A
+### Fixed
+  - N/A
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
+## [2021.10.20rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.10.20rc1)
+### Added
   - option to specify the database set when validating data (#184)
   - `study image` slot (#123)
   - declare `database` class as the root (i.e., `tree_root: true`)
