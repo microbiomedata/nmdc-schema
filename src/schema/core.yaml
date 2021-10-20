@@ -111,8 +111,6 @@ classes:
     slots:
       - has unit
       - has numeric value
-      - has minimum raw value
-      - has maximum raw value
       - has minimum numeric value
       - has maximum numeric value
     slot_usage:
@@ -428,16 +426,6 @@ slots:
     required: false
     domain: attribute value
     range: string
-
-  has minimum raw value:
-    is_a: has raw value
-    description: >-
-      The minimum value part of the raw value when the raw value repesents a range.
-  
-  has maximum raw value:
-    is_a: has raw value
-    description: >-
-      The maximum value part of the raw value when the raw value repesents a range.
     
   has unit:
     description: >-
