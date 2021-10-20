@@ -528,6 +528,7 @@ slots:
 
   study image:
     domain: study
+    range: image value
     multivalued: true
     inlined: true
     description: >-
