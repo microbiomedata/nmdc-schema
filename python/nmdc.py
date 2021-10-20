@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-10-19 21:41
+# Generation date: 2021-10-20 12:46
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -1450,6 +1450,8 @@ class QuantityValue(AttributeValue):
 
     has_unit: Optional[str] = None
     has_numeric_value: Optional[float] = None
+    has_minimum_numeric_value: Optional[float] = None
+    has_maximum_numeric_value: Optional[float] = None
     has_raw_value: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -1458,6 +1460,12 @@ class QuantityValue(AttributeValue):
 
         if self.has_numeric_value is not None and not isinstance(self.has_numeric_value, float):
             self.has_numeric_value = float(self.has_numeric_value)
+
+        if self.has_minimum_numeric_value is not None and not isinstance(self.has_minimum_numeric_value, float):
+            self.has_minimum_numeric_value = float(self.has_minimum_numeric_value)
+
+        if self.has_maximum_numeric_value is not None and not isinstance(self.has_maximum_numeric_value, float):
+            self.has_maximum_numeric_value = float(self.has_maximum_numeric_value)
 
         if self.has_raw_value is not None and not isinstance(self.has_raw_value, str):
             self.has_raw_value = str(self.has_raw_value)
@@ -5449,6 +5457,12 @@ slots.has_unit = Slot(uri=NMDC.has_unit, name="has unit", curie=NMDC.curie('has_
 
 slots.has_numeric_value = Slot(uri=NMDC.has_numeric_value, name="has numeric value", curie=NMDC.curie('has_numeric_value'),
                    model_uri=NMDC.has_numeric_value, domain=None, range=Optional[float], mappings = [QUD.quantityValue, SCHEMA.value])
+
+slots.has_minimum_numeric_value = Slot(uri=NMDC.has_minimum_numeric_value, name="has minimum numeric value", curie=NMDC.curie('has_minimum_numeric_value'),
+                   model_uri=NMDC.has_minimum_numeric_value, domain=None, range=Optional[float])
+
+slots.has_maximum_numeric_value = Slot(uri=NMDC.has_maximum_numeric_value, name="has maximum numeric value", curie=NMDC.curie('has_maximum_numeric_value'),
+                   model_uri=NMDC.has_maximum_numeric_value, domain=None, range=Optional[float])
 
 slots.has_boolean_value = Slot(uri=NMDC.has_boolean_value, name="has boolean value", curie=NMDC.curie('has_boolean_value'),
                    model_uri=NMDC.has_boolean_value, domain=None, range=Optional[Union[bool, Bool]])

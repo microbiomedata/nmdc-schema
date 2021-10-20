@@ -111,6 +111,8 @@ classes:
     slots:
       - has unit
       - has numeric value
+      - has minimum numeric value
+      - has maximum numeric value
     slot_usage:
       has raw value:
         description: >-
@@ -452,7 +454,17 @@ slots:
     mappings:
       - qud:quantityValue
       - schema:value
-      
+  
+  has minimum numeric value:
+    is_a: has numeric value
+    description: >-
+      The minimum value part, expressed as number, of the quantity value when the value covers a range.
+
+  has maximum numeric value:
+    is_a: has numeric value
+    description: >-
+      The maximum value part, expressed as number, of the quantity value when the value covers a range.
+  
   has boolean value:
     description: >-
       Links a quantity value to a boolean
