@@ -461,12 +461,12 @@ slots:
   has minimum numeric value:
     is_a: has numeric value
     description: >-
-      The minimum value part, expressed as number in, of the quantity value when the value covers a range.
+      The minimum value part, expressed as number, of the quantity value when the value covers a range.
 
   has maximum numeric value:
     is_a: has numeric value
     description: >-
-      The maximum value part, expressed as number in, of the quantity value when the value covers a range.
+      The maximum value part, expressed as number, of the quantity value when the value covers a range.
   
   has boolean value:
     description: >-
