@@ -2506,6 +2506,9 @@
       "study_identifiers": {
          "@type": "@id"
       },
+      "study_image": {
+         "@type": "@id"
+      },
       "study_set": {
          "@type": "@id"
       },

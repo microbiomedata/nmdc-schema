@@ -4,6 +4,7 @@ Changes to the schema are documented in this file.
 ## Current (updates before releasing)
 ### Added
   - option to specify the database set when validating data (#184)
+  - `study image` slot (#123)
   - declare `database` class as the root (i.e., `tree_root: true`)
   - slots to hold minimum and maximum values (#80)
 ### Fixed

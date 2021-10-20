@@ -84,7 +84,7 @@ classes:
       - name
       - description
       - alternative identifiers
-  
+      
   ontology class:
     is_a: named thing
 
@@ -128,6 +128,15 @@ classes:
     mappings:
       - schema:QuantityValue
 
+  image value:
+    is_a: attribute value
+    description: >-
+      An attribute value representing an image.
+    slots:
+      - url
+      - description
+      - display order
+  
   person value:
     is_a: attribute value
     description: >-
@@ -547,7 +556,12 @@ slots:
     range: string
     notes:
       - See issue 207 - this clashes with the mixs field
-      
+  
+  display order:
+    is_a: attribute
+    description: >-
+      When rendering information, this attribute to specify the order in which the information should be rendered.
+
   git url:
     is_a: attribute
     range: string

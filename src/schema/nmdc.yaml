@@ -344,6 +344,7 @@ classes:
       - GOLD study identifiers
       - MGnify project identifiers
       - has credit associations
+      - study image
     slot_usage:
       doi:
         description: >-
@@ -525,6 +526,13 @@ slots:
       Overall semantics: person should get credit X for their participation in the study
     slot_uri: prov:qualifiedAssociation
 
+  study image:
+    domain: study
+    range: image value
+    multivalued: true
+    inlined: true
+    description: >-
+      Links a study to one or more images.
 
   relevant protocols:
     multivalued: true
