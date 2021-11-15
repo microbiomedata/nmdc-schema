@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-10-20 12:46
+# Generation date: 2021-11-15 12:56
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -3020,48 +3020,96 @@ class FileTypeEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "assembly_contigs.fna",
-                PermissibleValue(text="assembly_contigs.fna",
-                                 description="Final assembly contigs fasta.") )
-        setattr(cls, "assembly_scaffolds.fna",
-                PermissibleValue(text="assembly_scaffolds.fna",
-                                 description="Final assembly scaffolds fasta.") )
-        setattr(cls, "assembly.agp",
-                PermissibleValue(text="assembly.agp",
-                                 description="An AGP format file describes the assembly.") )
-        setattr(cls, "filterStats.txt",
-                PermissibleValue(text="filterStats.txt",
-                                 description="Reads QC summary statistics") )
-        setattr(cls, "filtered.fastq.gz",
-                PermissibleValue(text="filtered.fastq.gz",
-                                 description="Reads QC result fastq (clean data)") )
-        setattr(cls, "mapping_stats.txt",
-                PermissibleValue(text="mapping_stats.txt",
+        setattr(cls, "FT ICR-MS Analysis Results",
+                PermissibleValue(text="FT ICR-MS Analysis Results",
+                                 description="FT ICR-MS-based metabolite assignment results table") )
+        setattr(cls, "GC-MS Metabolomics Results",
+                PermissibleValue(text="GC-MS Metabolomics Results",
+                                 description="GC-MS-based metabolite assignment results table") )
+        setattr(cls, "Metaproteomics Workflow Statistics",
+                PermissibleValue(text="Metaproteomics Workflow Statistics",
+                                 description="Aggregate workflow statistics file") )
+        setattr(cls, "Protein Report",
+                PermissibleValue(text="Protein Report",
+                                 description="Filtered protein report file") )
+        setattr(cls, "Peptide Report",
+                PermissibleValue(text="Peptide Report",
+                                 description="Filtered peptide report file") )
+        setattr(cls, "Unfiltered Metaproteomics Results",
+                PermissibleValue(text="Unfiltered Metaproteomics Results",
+                                 description="MSGFjobs and MASIC output file") )
+        setattr(cls, "Read Count and RPKM",
+                PermissibleValue(text="Read Count and RPKM",
+                                 description="Annotation read count and RPKM per feature JSON") )
+        setattr(cls, "QC non-rRNA R2",
+                PermissibleValue(text="QC non-rRNA R2",
+                                 description="QC removed rRNA reads (R2) fastq") )
+        setattr(cls, "QC non-rRNA R1",
+                PermissibleValue(text="QC non-rRNA R1",
+                                 description="QC removed rRNA reads (R1) fastq") )
+        setattr(cls, "Metagenome Bins",
+                PermissibleValue(text="Metagenome Bins",
+                                 description="Metagenome bin contigs fasta") )
+        setattr(cls, "CheckM Statistics",
+                PermissibleValue(text="CheckM Statistics",
+                                 description="CheckM statistics report") )
+        setattr(cls, "GOTTCHA2 Krona Plot",
+                PermissibleValue(text="GOTTCHA2 Krona Plot",
+                                 description="GOTTCHA2 krona plot HTML file") )
+        setattr(cls, "Kraken2 Krona Plot",
+                PermissibleValue(text="Kraken2 Krona Plot",
+                                 description="Kraken2 krona plot HTML file") )
+        setattr(cls, "Centrifuge Krona Plot",
+                PermissibleValue(text="Centrifuge Krona Plot",
+                                 description="Centrifug krona plot HTML file") )
+        setattr(cls, "Kraken2 Classification Report",
+                PermissibleValue(text="Kraken2 Classification Report",
+                                 description="Kraken2 output report file") )
+        setattr(cls, "Kraken2 Taxonomic Classification",
+                PermissibleValue(text="Kraken2 Taxonomic Classification",
+                                 description="Kraken2 output read classification file") )
+        setattr(cls, "Centrifuge Classification Report",
+                PermissibleValue(text="Centrifuge Classification Report",
+                                 description="Centrifuge output report file") )
+        setattr(cls, "Centrifuge Taxonomic Classification",
+                PermissibleValue(text="Centrifuge Taxonomic Classification",
+                                 description="Centrifuge output read classification file") )
+        setattr(cls, "Structural Annotation GFF",
+                PermissibleValue(text="Structural Annotation GFF",
+                                 description="GFF3 format file with structural annotations") )
+        setattr(cls, "Functional Annotation GFF",
+                PermissibleValue(text="Functional Annotation GFF",
+                                 description="GFF3 format file with functional annotations") )
+        setattr(cls, "Annotation Amino Acid FASTA",
+                PermissibleValue(text="Annotation Amino Acid FASTA",
+                                 description="FASTA amino acid file for annotated proteins") )
+        setattr(cls, "Annotation Enzyme Commission",
+                PermissibleValue(text="Annotation Enzyme Commission",
+                                 description="Tab delimited file for EC annotation") )
+        setattr(cls, "Annotation KEGG Orthology",
+                PermissibleValue(text="Annotation KEGG Orthology",
+                                 description="Tab delimited file for KO annotation") )
+        setattr(cls, "Assembly Coverage BAM",
+                PermissibleValue(text="Assembly Coverage BAM",
+                                 description="Sorted bam file of reads mapping back to the final assembly") )
+        setattr(cls, "Assembly AGP",
+                PermissibleValue(text="Assembly AGP",
+                                 description="An AGP format file that describes the assembly") )
+        setattr(cls, "Assembly Scaffolds",
+                PermissibleValue(text="Assembly Scaffolds",
+                                 description="Final assembly scaffolds fasta") )
+        setattr(cls, "Assembly Contigs",
+                PermissibleValue(text="Assembly Contigs",
+                                 description="Final assembly contigs fasta") )
+        setattr(cls, "Assembly Coverage Stats",
+                PermissibleValue(text="Assembly Coverage Stats",
                                  description="Assembled contigs coverage information") )
-        setattr(cls, "pairedMapped_sorted.bam",
-                PermissibleValue(text="pairedMapped_sorted.bam",
-                                 description="Sorted bam file of reads mapping back to the final assembly.") )
-        setattr(cls, "KO TSV",
-                PermissibleValue(text="KO TSV",
-                                 description="Tab delimited file for KO annotation.") )
-        setattr(cls, "EC TSV",
-                PermissibleValue(text="EC TSV",
-                                 description="Tab delimited file for EC annotation.") )
-        setattr(cls, "Protein FAA",
-                PermissibleValue(text="Protein FAA",
-                                 description="FASTA amino acid file for annotated proteins.") )
-        setattr(cls, "MSGFjobs_MASIC_resultant.tsv",
-                PermissibleValue(text="MSGFjobs_MASIC_resultant.tsv",
-                                 description="Tab delimited file of unfiltered metaproteomics results, both identifications and abundances.") )
-        setattr(cls, "Peptide_Report.tsv",
-                PermissibleValue(text="Peptide_Report.tsv",
-                                 description="Tab delimited file of peptide results filtered to ~5% FDR, including protein and abundance information.") )
-        setattr(cls, "Protein_Report.tsv",
-                PermissibleValue(text="Protein_Report.tsv",
-                                 description="Tab delimited file of protein results derived from ~5% FDR filtered peptide data, including aggregated abundance information.") )
-        setattr(cls, "QC_metrics.tsv",
-                PermissibleValue(text="QC_metrics.tsv",
-                                 description="Tab delimited file of aggregate statistics derived from workflow results.") )
+        setattr(cls, "Filtered Sequencing Reads",
+                PermissibleValue(text="Filtered Sequencing Reads",
+                                 description="Reads QC result fastq (clean data)") )
+        setattr(cls, "QC Statistics",
+                PermissibleValue(text="QC Statistics",
+                                 description="Reads QC summary statistics") )
 
 class CreditEnum(EnumDefinitionImpl):
 
