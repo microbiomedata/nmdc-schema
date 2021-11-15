@@ -5,7 +5,7 @@ Changes to the schema are documented in this file.
 ### Added
   - N/A
 ### Fixed
-  - N/A
+  - updated file enums for workflows (#182)
 ### Changed 
   - N/A
 ### Removed
