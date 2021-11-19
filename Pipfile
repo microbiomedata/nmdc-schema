@@ -4,7 +4,10 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-linkml = ">=1.1.9"
+linkml-runtime = ">=1.1.6"
+
+[dev-packages]
+linkml = ">=1.1.13"
 jq = "*"
 mkdocs = "*"
 pandoc = "*"
@@ -12,8 +15,6 @@ twine = "*"
 build = "*"
 # not sure why we would need openpyxl, but 3.0.8 caused unresolvable dependcies in main
 openpyxl = "3.0.7"
-
-[dev-packages]
 
 [requires]
 python_version = "3.9"
