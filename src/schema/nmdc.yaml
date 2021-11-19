@@ -506,6 +506,30 @@ enums:
         description: Reads QC result fastq (clean data)
       QC Statistics:
         description: Reads QC summary statistics
+      TIGRFam Annotation GFF:
+        description: GFF3 format file with TIGRfam
+        annotations: 
+          file_name_pattern: "[GOLD-AP]_tigrfam.gff"
+      Clusters of Orthologous Groups (COG) Annotation GFF:
+        description: GFF3 format file with COGs
+        annotations:
+          file_name_pattern: "[GOLD-AP]_cog.gff"
+      CATH FunFams (Functional Families) Annotation GFF:
+        description: GFF3 format file with CATH FunFams
+        annotations:
+          file_name_pattern: "[GOLD-AP]_cath_funfam.gff"
+      SUPERFam Annotation GFF:
+        description: GFF3 format file with SUPERFam
+        annotations:
+          file_name_pattern: "[GOLD-AP]_supfam.gff"
+      SMART Annotation GFF:
+        description: GFF3 format file with SMART
+        annotations:
+          file_name_pattern: "[GOLD-AP]_smart.gff"
+      Pfam Annotation GFF:
+        description: GFF3 format file with Pfam
+        annotations:
+          file_name_pattern: "[GOLD-AP]_pfam.gff"
       
   credit enum:
     permissible_values:
