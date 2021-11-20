@@ -32,12 +32,11 @@ setup(
     classifiers=[
         "Development Status :: 4 - Beta",
         "Programming Language :: Python :: 3 :: Only",
-        "Programming Language :: Python :: 3.9",
         "Intended Audience :: Developers",
         "Intended Audience :: Science/Research",
         "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
     ],
     install_requires=["linkml"],
-    python_requires=">=3.9",
+    python_requires=">=3.7",
     keywords="NMDC, schema",
 )

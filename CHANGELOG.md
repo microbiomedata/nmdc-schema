@@ -11,6 +11,16 @@ Changes to the schema are documented in this file.
 ### Removed
   - N/A
 
+## [2021.11.19rc3](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.11.19rc3)
+### Added
+  - N/A
+### Fixed
+  - N/A
+### Changed 
+  - set python version in setup.py to >=3.7
+### Removed
+  - N/A
+
 ## [2021.11.19rc2](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.11.19rc2)
 ### Added
   - N/A
