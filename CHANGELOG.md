@@ -11,6 +11,17 @@ Changes to the schema are documented in this file.
 ### Removed
   - N/A
 
+## [2021.11.19rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.11.19rc1)
+### Added
+  - new file type enums for analysis output files (#207)
+  - nmdc-data util for accessing package data files
+### Fixed
+  - update examples of values for data objects (#206)
+### Changed 
+  - use ISO 8601 for schema version
+### Removed
+  - N/A
+
 ## [2021.11.15rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.11.15rc1)
 ### Added
   - N/A
