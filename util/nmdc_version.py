@@ -1,27 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
-import pkgutil, pkg_resources, io, click, yaml
-from linkml.utils.rawloader import load_raw_schema
-
-
-def get_nmdc_dict() -> dict:
-    """
-    Parses the nmdc.yaml file into a dict.
-
-    Returns
-    -------
-    dict
-        The dict of the keys and value in the nmdc.yaml file.
-    """
-    # get nmdc.yaml file from the package data
-    nmdc_yaml = io.BytesIO(pkgutil.get_data("nmdc_schema", "nmdc.yaml"))
-
-    # convert yaml to dict
-    nmdc_dict = yaml.load(nmdc_yaml, Loader=yaml.CLoader)
-
-    # return dict
-    return nmdc_dict
+"""Returns the versions of the NMDC Schema, meta model and pypi package"""
+import pkg_resources, click
+from nmdc_data import get_nmdc_schema_definition
 
 
 def get_nmdc_schema_package_version() -> str:
@@ -45,8 +26,7 @@ def get_nmdc_schema_version() -> str:
     str
         The version in the nmdc.yaml file.
     """
-    nmdc_yaml = io.BytesIO(pkgutil.get_data("nmdc_schema", "nmdc.yaml"))
-    nmdc_schema = load_raw_schema(nmdc_yaml.getvalue().decode("utf-8"))
+    nmdc_schema = get_nmdc_schema_definition()
     return nmdc_schema.version
 
 
@@ -59,8 +39,7 @@ def get_nmdc_schema_metamodel_version() -> str:
     str
         The metamodel version in the nmdc.yaml file.
     """
-    nmdc_yaml = io.BytesIO(pkgutil.get_data("nmdc_schema", "nmdc.yaml"))
-    nmdc_schema = load_raw_schema(nmdc_yaml.getvalue().decode("utf-8"))
+    nmdc_schema = get_nmdc_schema_definition()
     return nmdc_schema.metamodel_version
 
 
