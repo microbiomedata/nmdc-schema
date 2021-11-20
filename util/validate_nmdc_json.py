@@ -3,7 +3,7 @@
 """Provides CLI to validate json files against the NMDC jsonschema."""
 
 import json, jsonschema, io, click
-from nmdc_data import get_nmdc_jsonschema, get_nmdc_dict
+from .nmdc_data import get_nmdc_jsonschema, get_nmdc_dict
 from deprecated import deprecated
 
 
