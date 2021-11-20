@@ -164,6 +164,7 @@ build-package: clean-package
 	cp sssom/gold-to-mixs.sssom.tsv nmdc_schema/ # copy sssom mapping
 	cp util/validate_nmdc_json.py nmdc_schema/ # copy command-line validation tool
 	cp util/nmdc_version.py nmdc_schema/ # copy command-line version tool
+	cp util/nmdc_data.py nmdc_schema/ # copy command-line data retrieval tool
 	python setup.py bdist_wheel sdist
 
 deploy-pypi:
