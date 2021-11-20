@@ -787,8 +787,8 @@ slots:
     description: >-
       The type of file represented by the data object.
     examples:
-      - value: assembly_contigs.fna
-      - value: assembly.agp
+      - value: FT ICR-MS Analysis Results
+      - value: GC-MS Metabolomics Results
       
   compression type:
     range: string
