@@ -22,8 +22,9 @@ setup(
     entry_points={
         "console_scripts": [
             "validate-nmdc-json=nmdc_schema.validate_nmdc_json:cli",
-            "fetch-nmdc-schema=nmdc_schema.validate_nmdc_json:get_nmdc_schema_json",
-            "nmdc-version=nmdc_schema.nmdc_version:cli",
+            "fetch-nmdc-schema=nmdc_schema.nmdc_data:get_nmdc_jsonschema",
+            "fetch-nmdc-schema=nmdc_schema.nmdc_data:get_nmdc_jsonschema",
+            "nmdc-data=nmdc_schema.nmdc_data:cli",
         ]
     },
     # long_description=long_description,

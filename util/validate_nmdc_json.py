@@ -2,32 +2,36 @@
 # -*- coding: utf-8 -*-
 
 import pkgutil, json, jsonschema, io, click
+from nmdc_data import get_nmdc_jsonschema, get_nmdc_dict
+from deprecated import deprecated
 
 
+@deprecated(reason="functionality moved to nmdc_data.get_nmdc_dict()")
 def get_nmdc_schema() -> dict:
     """
     Returns the nmdc.schema.json package data file as a dict.
+    NOTE: This method is depricated. Should use nmdc_data.get_nmdc_dict()
 
     Returns
     -------
     dict
         Dict representation of the nmdc.schema.json package data file.
     """
-    nmdc_schema = io.BytesIO(pkgutil.get_data("nmdc_schema", "nmdc.schema.json"))
-    return json.load(nmdc_schema)
+    return get_nmdc_dict()
 
 
+@deprecated(reason="functionality moved to nmdc_data.get_nmdc_jsonschema()")
 def get_nmdc_schema_json() -> str:
     """
     Returns the nmdc.schema.json package data file json.
+    NOTE: This method is depricated. Should use nmdc_data.get_nmdc_jsonschema()
 
     Returns
     -------
     str
         JSON string representation of the nmdc.schema.json package data file.
     """
-    nmdc_schema = get_nmdc_schema()
-    return json.dumps(nmdc_schema, indent=2)
+    return get_nmdc_jsonschema()
 
 
 def is_valid_json(json_file: str, database_set: str = "") -> bool:
@@ -56,7 +60,7 @@ def is_valid_json(json_file: str, database_set: str = "") -> bool:
             else:
                 json_data = {f"{database_set}": [json_data]}
     try:
-        jsonschema.validate(instance=json_data, schema=get_nmdc_schema())
+        jsonschema.validate(instance=json_data, schema=get_nmdc_dict())
     except jsonschema.exceptions.ValidationError as err:
         print(err.message)
         return False
