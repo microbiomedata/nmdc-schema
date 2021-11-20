@@ -23,7 +23,7 @@ setup(
         "console_scripts": [
             "validate-nmdc-json=nmdc_schema.validate_nmdc_json:cli",
             "fetch-nmdc-schema=nmdc_schema.nmdc_data:get_nmdc_jsonschema",
-            "fetch-nmdc-schema=nmdc_schema.nmdc_data:get_nmdc_jsonschema",
+            "nmdc-version=nmdc_schema.nmdc_version:cli",
             "nmdc-data=nmdc_schema.nmdc_data:cli",
         ]
     },
