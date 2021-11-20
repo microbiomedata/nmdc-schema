@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import pkgutil, json, jsonschema, io, click
+import json, jsonschema, io, click
 from nmdc_data import get_nmdc_jsonschema, get_nmdc_dict
 from deprecated import deprecated
 
