@@ -11,6 +11,16 @@ Changes to the schema are documented in this file.
 ### Removed
   - N/A
 
+## [2021.11.19rc2](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.11.19rc2)
+### Added
+  - N/A
+### Fixed
+  - access to nmdc-data cli tool
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
 ## [2021.11.19rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.11.19rc1)
 ### Added
   - new file type enums for analysis output files (#207)
