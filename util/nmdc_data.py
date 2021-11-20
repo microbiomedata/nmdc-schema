@@ -154,6 +154,18 @@ def get_nmdc_file_type_enums_json() -> str:
     return json.dumps(file_enums, indent=2)
 
 
+def get_gold_sssom() -> str:
+    """Returns the gold-to-mixs.sssom.tsv file from package.
+
+    Returns
+    -------
+    str
+        the gold-to-mixs.sssom.tsv file
+    """
+    sssom = io.BytesIO(pkgutil.get_data("nmdc_schema", "gold-to-mixs.sssom.tsv"))
+    return sssom.getvalue().decode("utf-8")
+
+
 ##### CLI interface #####
 @click.command(context_settings=dict(help_option_names=["-h", "--help"]))
 @click.option(
@@ -170,6 +182,7 @@ def get_nmdc_file_type_enums_json() -> str:
     dict            returns the NMDC jsonschema as a dict
     schemadef       returns the SchemaDefintion created from the nmdc.yaml file
     filetypeenums   returns informaton about the NMDC file type enums as json
+    goldsssom       returns the gold-to-mixs.sssom.tsv file contents
     """,
 )
 @click.pass_context
@@ -187,6 +200,8 @@ def cli(ctx, fetch):
         click.echo(get_nmdc_schema_definition())
     elif "filetypeenums" == fetch:
         click.echo(get_nmdc_file_type_enums_json())
+    elif "goldsssom" == fetch:
+        click.echo(get_gold_sssom())
     else:
         click.echo(ctx.get_help())
 
