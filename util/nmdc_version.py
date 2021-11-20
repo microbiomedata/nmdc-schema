@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Returns the versions of the NMDC Schema, meta model and pypi package"""
+"""Provides CLI to return versions of the NMDC Schema, meta model and pypi package."""
+
 import pkg_resources, click
 from nmdc_data import get_nmdc_schema_definition
 
