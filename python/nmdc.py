@@ -1,12 +1,11 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-11-15 12:56
+# Generation date: 2021-11-22T18:20:38
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
-# description: Schema for National Microbiome Data Collaborative (NMDC). This schem is organized into 3 separate
-#              modules: This schema is organized into distinct modules: * a set of core types for representing
-#              data values * the mixs schema (auto-translated from mixs excel) * annotation schema * the NMDC
-#              schema itself
+# description: Schema for National Microbiome Data Collaborative (NMDC). This schema is organized into distinct
+#              modules: * a set of core types for representing data values * the mixs schema (auto-translated from
+#              mixs excel) * annotation schema * the NMDC schema itself
 # license: https://creativecommons.org/publicdomain/zero/1.0/
 
 import dataclasses
@@ -3110,6 +3109,24 @@ class FileTypeEnum(EnumDefinitionImpl):
         setattr(cls, "QC Statistics",
                 PermissibleValue(text="QC Statistics",
                                  description="Reads QC summary statistics") )
+        setattr(cls, "TIGRFam Annotation GFF",
+                PermissibleValue(text="TIGRFam Annotation GFF",
+                                 description="GFF3 format file with TIGRfam") )
+        setattr(cls, "Clusters of Orthologous Groups (COG) Annotation GFF",
+                PermissibleValue(text="Clusters of Orthologous Groups (COG) Annotation GFF",
+                                 description="GFF3 format file with COGs") )
+        setattr(cls, "CATH FunFams (Functional Families) Annotation GFF",
+                PermissibleValue(text="CATH FunFams (Functional Families) Annotation GFF",
+                                 description="GFF3 format file with CATH FunFams") )
+        setattr(cls, "SUPERFam Annotation GFF",
+                PermissibleValue(text="SUPERFam Annotation GFF",
+                                 description="GFF3 format file with SUPERFam") )
+        setattr(cls, "SMART Annotation GFF",
+                PermissibleValue(text="SMART Annotation GFF",
+                                 description="GFF3 format file with SMART") )
+        setattr(cls, "Pfam Annotation GFF",
+                PermissibleValue(text="Pfam Annotation GFF",
+                                 description="GFF3 format file with Pfam") )
 
 class CreditEnum(EnumDefinitionImpl):
 
@@ -6244,6 +6261,10 @@ slots.reaction_participant_chemical = Slot(uri=NMDC.chemical, name="reaction par
 
 slots.reaction_participant_stoichiometry = Slot(uri=NMDC.stoichiometry, name="reaction participant_stoichiometry", curie=NMDC.curie('stoichiometry'),
                    model_uri=NMDC.reaction_participant_stoichiometry, domain=ReactionParticipant, range=Optional[int])
+
+slots.functional_annotation_has_function = Slot(uri="str(uriorcurie)", name="functional annotation_has function", curie=None,
+                   model_uri=NMDC.functional_annotation_has_function, domain=FunctionalAnnotation, range=Optional[str],
+                   pattern=re.compile(r'^(KEGG.PATHWAY:\w{2,4}\d{5}|KEGG.REACTION:R\d+|RHEA:\d{5}|MetaCyc:[A-Za-z0-9+_.%-:]+|EC:\d{1,2}(\.\d{0,3}){0,3}|GO:\d{7}|MetaNetX:(MNXR\d+|EMPTY)|SEED:\w+|KEGG\.ORTHOLOGY:K\d+|EGGNOG:\w+|PFAM:PF\d{5}|TIGRFAM:TIGR\d+|SUPFAM:\w+|CATH:[1-6]\.[0-9]+\.[0-9]+\.[0-9]+|PANTHER.FAMILY:PTHR\d{5}(\:SF\d{1,3})?)$'))
 
 slots.functional_annotation_type = Slot(uri=NMDC.type, name="functional annotation_type", curie=NMDC.curie('type'),
                    model_uri=NMDC.functional_annotation_type, domain=FunctionalAnnotation, range=Optional[Union[str, OntologyClassId]])
