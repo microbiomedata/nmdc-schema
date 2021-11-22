@@ -3,7 +3,7 @@
 """Provides CLI to validate json files against the NMDC jsonschema."""
 
 import json, jsonschema, io, click
-from .nmdc_data import get_nmdc_jsonschema, get_nmdc_dict
+from .nmdc_data import get_nmdc_jsonschema, get_nmdc_jsonschema_dict
 from deprecated import deprecated
 
 
@@ -18,7 +18,7 @@ def get_nmdc_schema() -> dict:
     dict
         Dict representation of the nmdc.schema.json package data file.
     """
-    return get_nmdc_dict()
+    return get_nmdc_jsonschema_dict()
 
 
 @deprecated(reason="functionality moved to nmdc_data.get_nmdc_jsonschema()")
