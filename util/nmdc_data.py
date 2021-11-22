@@ -52,22 +52,53 @@ def get_nmdc_yaml_string() -> str:
     return nmdc_yaml.decode("utf-8")
 
 
-def get_nmdc_dict() -> Dict:
-    """Parses the nmdc.yaml file into a dict.
+def get_nmdc_jsonschema_bytesIO() -> io.BytesIO:
+    """Returns the nmdc.schema.json file as bytes steam.
+    This function is not intended to be used directly, but it used by other functions
+
+    Returns
+    -------
+    BytesIO
+        A bytes stream of nmdc.schema.json file.
+    """
+    # get nmdc.yaml file from the package data
+    return io.BytesIO(pkgutil.get_data("nmdc_schema", "nmdc.schema.json"))
+
+
+def get_nmdc_jsonschema_bytes() -> bytes:
+    """Retruns the nmdc.schema.json file as bytes.
+
+    Returns
+    -------
+    bytes
+        The bytes of the nmdc.schema.json file.
+    """
+    nmdc_json = get_nmdc_jsonschema_bytesIO()
+    return nmdc_json.getvalue()
+
+
+def get_nmdc_jsonschema_string() -> str:
+    """Retruns the nmdc.schema.json file as a string.
+
+    Returns
+    -------
+    str
+        A string containing the contents of nmdc.schema.json file.
+    """
+    nmdc_json = get_nmdc_jsonschema_bytes()
+    return nmdc_json.decode("utf-8")
+
+
+def get_nmdc_jsonschema_dict() -> Dict:
+    """Parses the nmdc.schema.json file into a dict.
 
     Returns
     -------
     dict
-        The dict of the keys and value in the nmdc.yaml file.
+        The dict of the keys and value in the nmdc.schema.json file.
     """
-    # get nmdc.yaml file from the package data
-    nmdc_yaml = get_nmdc_yaml_bytesIO()
-
-    # convert yaml to dict
-    nmdc_dict = yaml.load(nmdc_yaml, Loader=yaml.CLoader)
-
-    # return dict
-    return nmdc_dict
+    nmdc_json = get_nmdc_jsonschema_bytes()
+    return json.loads(nmdc_json)
 
 
 def get_nmdc_jsonschema() -> str:
@@ -79,12 +110,12 @@ def get_nmdc_jsonschema() -> str:
     str
         JSON string representation of the NMDC jsonschema (nmdc.schema.json).
     """
-    nmdc_schema = get_nmdc_dict()
+    nmdc_schema = get_nmdc_jsonschema_dict()
     return json.dumps(nmdc_schema, indent=2)
 
 
 def get_nmdc_schema_definition() -> SchemaDefinition:
-    """Returns a SchemaDefintion object created from the nmdc.yaml file.
+    """Returns a LinkML SchemaDefintion object created from the nmdc.yaml file.
 
     Returns
     -------
@@ -180,7 +211,7 @@ def get_gold_sssom() -> str:
     yaml            returns the nmdc.yaml file as a string
     jsonschema      returns the NMDC jsonschema as json
     dict            returns the NMDC jsonschema as a dict
-    schemadef       returns the SchemaDefintion created from the nmdc.yaml file
+    schemadef       returns the LinkML SchemaDefintion created from the nmdc.yaml file
     filetypeenums   returns informaton about the NMDC file type enums as json
     goldsssom       returns the gold-to-mixs.sssom.tsv file contents
     """,
@@ -195,7 +226,7 @@ def cli(ctx, fetch):
     elif "jsonschema" == fetch:
         click.echo(get_nmdc_jsonschema())
     elif "dict" == fetch:
-        click.echo(get_nmdc_dict())
+        click.echo(get_nmdc_jsonschema_dict())
     elif "schemadef" == fetch:
         click.echo(get_nmdc_schema_definition())
     elif "filetypeenums" == fetch:
