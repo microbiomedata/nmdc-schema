@@ -11,6 +11,16 @@ Changes to the schema are documented in this file.
 ### Removed
   - N/A
 
+## [2021.11.22rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.11.12rc1)
+### Added
+  - N/A
+### Fixed
+  - N/A
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
 ## [2021.11.19rc3](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.11.19rc3)
 ### Added
   - N/A
