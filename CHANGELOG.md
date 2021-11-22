@@ -15,7 +15,8 @@ Changes to the schema are documented in this file.
 ### Added
   - N/A
 ### Fixed
-  - N/A
+  - get_nmdc_jsonschema_dict not returning correct data (#214)
+  - typo in NMDC Schema description
 ### Changed 
   - N/A
 ### Removed
