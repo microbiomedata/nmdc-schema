@@ -4,7 +4,6 @@ title: NMDC Schema
 
 description: >-
   Schema for National Microbiome Data Collaborative (NMDC).
-  This schem is organized into 3 separate modules:
     
   This schema is organized into distinct modules:
     
@@ -14,7 +13,7 @@ description: >-
    * the NMDC schema itself
   
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: 2021-11-19
+version: 2021-11-22
 
 prefixes:
   nmdc: https://microbiomedata/meta/
