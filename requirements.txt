@@ -1,6 +1,7 @@
-linkml >= 1.0.0
+linkml >= 1.1.9
 jq
 mkdocs
+pandoc
 twine
 build
 wheel

@@ -1,6 +1,210 @@
 # Change Log
 Changes to the schema are documented in this file.
 
+## Current (updates before releasing)
+### Added
+  - N/A
+### Fixed
+  - N/A
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
+## [2021.11.22rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.11.12rc1)
+### Added
+  - N/A
+### Fixed
+  - get_nmdc_jsonschema_dict not returning correct data (#214)
+  - typo in NMDC Schema description
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
+## [2021.11.19rc3](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.11.19rc3)
+### Added
+  - N/A
+### Fixed
+  - N/A
+### Changed 
+  - set python version in setup.py to >=3.7
+### Removed
+  - N/A
+
+## [2021.11.19rc2](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.11.19rc2)
+### Added
+  - N/A
+### Fixed
+  - access to nmdc-data cli tool
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
+## [2021.11.19rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.11.19rc1)
+### Added
+  - new file type enums for analysis output files (#207)
+  - nmdc-data util for accessing package data files
+### Fixed
+  - update examples of values for data objects (#206)
+### Changed 
+  - use ISO 8601 for schema version
+### Removed
+  - N/A
+
+## [2021.11.15rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.11.15rc1)
+### Added
+  - N/A
+### Fixed
+  - updated file enums for workflows (#182)
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
+## [2021.10.20rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.10.20rc1)
+### Added
+  - option to specify the database set when validating data (#184)
+  - `study image` slot (#123)
+  - declare `database` class as the root (i.e., `tree_root: true`)
+  - slots to hold minimum and maximum values (#80)
+### Fixed
+  - N/A
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
+## [2021.10.13rc2](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.10.13rc2)
+### Added
+  - command line utility `fetch-nmdc-schema` for downloading the jsonschema
+### Fixed
+  - `nmdc-version` command line utility (#183)
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
+## [2021.10.13rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.10.13rc1)
+### Added
+  - N/A
+### Fixed
+  - N/A
+### Changed 
+  - N/A
+### Removed
+  - regex patterns for `has function` slot on class `function annotation` (#178)
+
+## [2021.10.12rc2](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.10.12rc2)
+### Added
+  - `part of` slot for `workflow execution activity` (#176)
+### Fixed
+  - N/A
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
+## [2021.10.12rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.10.12rc1)
+### Added
+  - N/A
+### Fixed
+  - descriptions are inherited in induced slots (#174)
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
+## [2021.09.30rc3](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.09.30rc3)
+### Added
+  - N/A
+### Fixed
+  - N/A
+### Changed 
+  - re-added `part of` constraint to `slot_usage` section of `biosample` (#163)
+### Removed
+  - N/A
+
+## [2021.09.30rc2](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.09.30rc2)
+### Added
+  - N/A
+### Fixed
+  - N/A
+### Changed 
+  - removed `part of` from `slot_usage` section of `biosample` (#163)
+### Removed
+  - N/A
+
+## [2021.09.30rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.09.30rc1)
+### Added
+  - `part of` to slot section of `biosample` (#163)
+### Fixed
+  - N/A
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
+## [2021.09.28rc2](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.09.28rc2)
+### Added
+  - `websites` slot to `person value`
+### Fixed
+  - N/A
+### Changed 
+  - `has output` is not required for `omics processing`
+### Removed
+  - N/A
+
+## [2021.09.28rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.09.28rc1)
+### Added
+  - `relevant protocols` and `funding sources` slots
+  - `ess dive datasets` slot
+  - amplicon slots to omics processing (#139)
+  - `alternate emails` slot
+### Fixed
+  - N/A
+### Changed 
+  - `email` slot is single valued.
+### Removed
+  - N/A
+
+## [2021.09.21rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.09.21rc1)
+### Added
+  - `CreditAssociation` class and related slots. Abstracts the roles borne by people within a strudy.
+  - `email` slot in `core.yaml`. Motivation = people (`person value`) associated with studies, but not constrained to that domain (cf. #100).
+      - `email` made multivalued and assigned schema.org URI
+  - slot `type` defined using `designates_type: true`
+  - `name` slot added to `person value`. Noted that `has raw value` could be deprecated in the future.
+  - All `yaml` files are included in the package data (#153)
+### Fixed
+  - added `name` and `title` to `mixs.yaml` (#126)
+### Changed 
+  - Linkml version updated to `1.0.4`
+  - `alternate identifiers` to `alternative identifiers` (#125)
+### Removed
+  - `alternate identifiers` slot (#125)
+
+## [2021.07.01rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.07.01rc1)
+### Added
+  - `metatranscriptome activity` class and `metatranscriptome activity set`
+### Fixed
+  - N/A
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
+## [2021.06.24rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.06.24rc1)
+### Added
+  - `depth2` and `subsurface_depth2` slots added to biosamples (cf. issue 80).
+### Fixed
+  - N/A
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
 ## [2021.06.23rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.06.23rc1)
 ### Added
   - `alternative identifiers` slot added to biosamples (cf. issue 75).

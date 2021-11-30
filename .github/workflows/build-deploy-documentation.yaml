@@ -21,12 +21,34 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
-          python-version: 3.x
-          
-      # install dependencies
-      - run: pip install --upgrade pip
-      - run: pip install mkdocs
-      - run: pip install linkml
+          python-version: 3.9
+      
+      # Install pandoc
+      - name: Install pandoc
+        run: sudo apt-get install pandoc
+        
+      # Install pipenv
+      - name: Install pipenv
+        run: python3 -m pip install --no-cache-dir pipenv
+      
+      # Load pipenv virtual environment from cache
+      # see: https://ianwhitestone.work/aws-serverless-deployments-with-github-actions/
+      - name: Load pipenv from cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.local/share/virtualenvs
+          key: ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-pipenv-${{ hashFiles('Pipfile.lock') }}
+
+
+      # If cache was not loaded, install dependencies
+      - name: Install dependencies
+        if: steps.cache-pipenv.outputs.cache-hit != 'true'
+        run: pipenv install -d
+        
+      # install dependencies (use pipenv instead)
+      # - run: pip install --upgrade pip
+      # - run: pip install mkdocs
+      # - run: pip install linkml
         
       # generate markdown files
       - run: make stage-docs

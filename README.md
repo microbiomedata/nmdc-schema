@@ -1,6 +1,6 @@
 # National Microbiome Data Collaborative Schema
 
-[![PyPI - License](https://img.shields.io/pypi/l/nmdc-schema)](https://github.com/microbiomedata/nmdc-schema/blob/mam-readme/LICENSE)
+[![PyPI - License](https://img.shields.io/pypi/l/nmdc-schema)](https://github.com/microbiomedata/nmdc-schema/blob/main/LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/microbiomedata/nmdc-schema?branch=main&kill_cache=1)](https://github.com/microbiomedata/nmdc-schema/commits)
 [![GitHub issues](https://img.shields.io/github/issues/microbiomedata/nmdc-schema?branch=master&kill_cache=1)](https://github.com/microbiomedata/nmdc-schema/issues)
 [![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/microbiomedata/nmdc-schema?branch=main&kill_cache=1)](https://github.com/microbiomedata/nmdc-schema/issues?q=is%3Aissue+is%3Aclosed)
@@ -17,10 +17,29 @@ Tasks managed by the repository are:
 -   Converting the schema from it's native LinkML/YAML format into other artifacts
     -   [JSON-Schema](jsonschema/nmdc.schema.json)
 -   Deploying the schema as a PyPI package
--   Deploying the [documentation](https://microbiomedata.github.io/nmdc-metadata/) 
+-   Deploying the [documentation](https://microbiomedata.github.io/nmdc-schema/) 
 
 ## Background
 
 ![2020-08-nmdc-shema-image.png](images/2020-08-nmdc-shema-image.png)
 
 The NMDC [Introduction to metadata and ontologies](https://microbiomedata.org/introduction-to-metadata-and-ontologies/) primer provides some the context for this project.
+
+
+See also [these slides](https://microbiomedata.github.io/nmdc-schema/schema-slides.html) ![](images/16px-External.svg.png) describing the schema.
+
+## Dependencies
+In order to make new release of the schema, you must have the following installed on your sytem:
+- [pipenv](https://pypi.org/project/pipenv/)
+- [pandoc](https://pandoc.org/installing.html)
+
+A Pipfile.lock is include in the repository, but you can rebuild the lock file by executing `pipenv install -d`.
+
+## Maintaining the Schema
+
+See [MAINTAINERS.md](MAINTAINERS.md) for instructions on maintaining and updating the schema.
+
+## NMDC metadata downloads
+
+See https://github.com/microbiomedata/nmdc-runtime/#data-exports
+

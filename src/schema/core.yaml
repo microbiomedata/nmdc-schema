@@ -72,6 +72,7 @@ types:
       - qud:Unit
       - UO:0000000
 
+
     
 classes:
 
@@ -82,8 +83,8 @@ classes:
       - id
       - name
       - description
-      - alternate identifiers
-  
+      - alternative identifiers
+      
   ontology class:
     is_a: named thing
 
@@ -110,6 +111,8 @@ classes:
     slots:
       - has unit
       - has numeric value
+      - has minimum numeric value
+      - has maximum numeric value
     slot_usage:
       has raw value:
         description: >-
@@ -125,6 +128,15 @@ classes:
     mappings:
       - schema:QuantityValue
 
+  image value:
+    is_a: attribute value
+    description: >-
+      An attribute value representing an image.
+    slots:
+      - url
+      - description
+      - display order
+  
   person value:
     is_a: attribute value
     description: >-
@@ -132,13 +144,24 @@ classes:
     slots:
       - orcid
       - profile image url
+      - email
+      - name
+      - websites
     todos:
       - add additional fields e.g for institution
+      - deprecate "has raw value" in favor of "name"
     slot_usage:
       has raw value:
         description: >-
-          the full name of the Investgator in format FIRST LAST
-          
+          The full name of the Investgator in format FIRST LAST.
+        notes: >-
+          May eventually be deprecated in favor of "name".
+      name:
+        description: >-
+          The full name of the Investgator.
+          It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
+
+
   person:
     is_a: named thing
     description: >-
@@ -208,6 +231,8 @@ classes:
   metabolite quantification:
     description: >-
       This is used to link a metabolomics analysis workflow to a specific metabolite
+    slots:
+      - alternative identifiers
     slot_usage:
       metabolite quantified:
         description: >-
@@ -217,10 +242,6 @@ classes:
         description: >-
           TODO: Yuri to fill in
         range: float
-      alternate_identifiers:
-        multivalued: true
-        description: >-
-          TODO
           
   peptide quantification:
     description: >-
@@ -433,7 +454,17 @@ slots:
     mappings:
       - qud:quantityValue
       - schema:value
-      
+  
+  has minimum numeric value:
+    is_a: has numeric value
+    description: >-
+      The minimum value part, expressed as number, of the quantity value when the value covers a range.
+
+  has maximum numeric value:
+    is_a: has numeric value
+    description: >-
+      The maximum value part, expressed as number, of the quantity value when the value covers a range.
+  
   has boolean value:
     description: >-
       Links a quantity value to a boolean
@@ -472,9 +503,21 @@ slots:
     domain: person value
     range: string
 
+  email:
+    description: >-
+      An email address for an entity such as a person.
+      This should be the primarly email address used.
+    range: string
+    slot_uri: schema:email
+
+  alternate emails:
+    description: >-
+      One or more other email addresses for an entity.
+    range: string
+    
   profile image url:
     description: >-
-      A url that points to an image of a persion.
+      A url that points to an image of a person.
     domain: person value
     range: string
   
@@ -513,7 +556,12 @@ slots:
     range: string
     notes:
       - See issue 207 - this clashes with the mixs field
-      
+  
+  display order:
+    is_a: attribute
+    description: >-
+      When rendering information, this attribute to specify the order in which the information should be rendered.
+
   git url:
     is_a: attribute
     range: string
@@ -538,48 +586,6 @@ slots:
       The abstract of manuscript/grant associated with the entity; i.e., a summary of the resource.
     exact_mappings:
       - dcterms:abstract
-
-  title:
-    range: string
-    multivalued: false
-    description: >-
-      A name given to the entity that differs from the name/label programatically assigned to it.
-      For example, when extracting study information for GOLD, the GOLD system has assigned a name/label.
-      However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.
-    exact_mappings:
-      - dcterms:title
-
-  alternative titles:
-    range: string
-    multivalued: true
-    description: >-
-      A list of alternative titles for the entity.
-      The distinction between title and alternative titles is application-specific.
-    exact_mappings:
-      - dcterms:alternative
-  
-  alternative names:
-    range: string
-    multivalued: true
-    description: >-
-      A list of alternative names used to refer to the entity.
-      The distinction between name and alternative names is application-specific.
-    exact_mappings:
-      - dcterms:alternative
-      - skos:altLabel
-
-  alternative descriptions:
-    range: string
-    multivalued: true
-    description: >-
-      A list of alternative descriptions for the entity.
-      The distinction between desciption and alternative descriptions is application-specific.
-  
-  alternative identifiers:
-    range: string
-    multivalued: true
-    description: >-
-      A list of alternative identifiers for the entity.
 
   keywords:
     range: string

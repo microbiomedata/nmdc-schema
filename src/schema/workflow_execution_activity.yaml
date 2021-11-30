@@ -13,6 +13,7 @@ prefixes:
 imports:
   - prov
   - core
+  - external_identifiers
 
 subsets:
   workflow subset:
@@ -22,16 +23,22 @@ subsets:
 classes:
 
   workflow execution activity:
+    aliases:
+      - analysis
     is_a: activity
     in_subset: 
       - workflow subset
     description: >-
       Represents an instance of an execution of a particular workflow
+    alt_descriptions:
+      embl.ena: >-
+        An analysis contains secondary analysis results derived from sequence reads (e.g. a genome assembly)
     slots:
       - execution resource
       - git url
       - has input
       - has output
+      - part of
       - type  # custom slot that specifies object type
     slot_usage:
       was associated with:
@@ -90,6 +97,8 @@ classes:
       - gc_avg
       - num_input_reads
       - num_aligned_reads
+      # external identifiers
+      - INSDC assembly identifiers
 
   metatranscriptome assembly:
     is_a: workflow execution activity
@@ -123,6 +132,8 @@ classes:
       - gc_avg
       - num_input_reads
       - num_aligned_reads
+      # external identifiers
+      - INSDC assembly identifiers
 
   metagenome annotation activity:
     is_a: workflow execution activity
@@ -132,6 +143,13 @@ classes:
   metatranscriptome annotation activity:
     is_a: workflow execution activity
     in_subset: 
+      - workflow subset
+
+  metatranscriptome activity:
+    is_a: workflow execution activity
+    description: >-
+      A metatranscriptome activity that e.g. pools assembly and annotation activity.
+    in_subset:
       - workflow subset
 
   MAGs analysis activity:

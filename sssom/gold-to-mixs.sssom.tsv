@@ -5,9 +5,9 @@
 #  - Jagadish Sundaramurthi									
 #  - Bill Duncan									
 #curie_map:									
-#  gold.vocab: ""https://microbiomedata/schema/ddl/"""									
-#  mixs: ""https://microbiomedata/schema/mixs#"""									
-#  skos: ""http://www.w3.org/2004/02/skos/core#"""									
+#  gold.vocab: "https://microbiomedata/schema/ddl/"									
+#  mixs: "https://microbiomedata/schema/mixs#"									
+#  skos: "http://www.w3.org/2004/02/skos/core#"									
 subject_id	subject_label	predicate_id	object_id	object_label	match_type	subject_source	object_source	confidence	comment
 gold.vocab:altitude	altitude	skos:exactMatch	mixs:alt	alt	SSSOMC:HumanCurated	gold.vocab	mixs	1	.
 gold.vocab:growth_temperature	growth_temperature	skos:exactMatch	mixs:temp	temp	SSSOMC:HumanCurated	gold.vocab	mixs	1	.
