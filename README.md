@@ -24,6 +24,3 @@ Tasks managed by the repository are:
 ![2020-08-nmdc-shema-image.png](images/2020-08-nmdc-shema-image.png)
 
 The NMDC [Introduction to metadata and ontologies](https://microbiomedata.org/introduction-to-metadata-and-ontologies/) primer provides some the context for this project.
-
-See also [these slides](https://microbiomedata.github.io/nmdc-metadata/docs/schema-slides) describing the schema
-
