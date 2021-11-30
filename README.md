@@ -7,7 +7,7 @@
 [![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/microbiomedata/nmdc-schema?branch=main&kill_cache=1)](https://github.com/microbiomedata/nmdc-schema/pulls)
 ![Deploy Documentation](https://github.com/microbiomedata/nmdc-schema/workflows/Build%20and%20Deploy%20Static%20Mkdocs%20Documentation/badge.svg?branch=main)
 
-<img src="images/nmdc_logo_long.jpeg" alt="drawing" width="200"/>
+<img src="images/nmdc_logo_long.jpeg" alt="drawing" width="500"/>
 
 ![nmdc_logo_long.jpeg](images/nmdc_logo_long.jpeg)
 
