@@ -5,7 +5,7 @@ Changes to the schema are documented in this file.
 ### Added
   - N/A
 ### Fixed
-  - N/A
+  - use `inlined_as_list` for the database sets (#219)
 ### Changed 
   - N/A
 ### Removed
