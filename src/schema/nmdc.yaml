@@ -13,7 +13,7 @@ description: >-
    * the NMDC schema itself
   
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: 2021-21-21
+version: 2021-12-21
 
 prefixes:
   nmdc: https://microbiomedata/meta/
