@@ -13,7 +13,7 @@ description: >-
    * the NMDC schema itself
   
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: 2021-11-22
+version: 2021-12-21
 
 prefixes:
   nmdc: https://microbiomedata/meta/
@@ -622,7 +622,7 @@ slots:
     mixin: true
     domain: database
     multivalued: true
-    inlined: true
+    inlined_as_list: true
     description:
       Applies to a property that links a database object to a set of objects.
       This is necessary in a json document to provide context for a list, and
@@ -633,7 +633,6 @@ slots:
     domain: database
     range: biosample
     multivalued: true
-    inlined: true
     description: >-
       This property links a database object to the set of samples within it.
 
@@ -642,7 +641,6 @@ slots:
     domain: database
     range: study
     multivalued: true
-    inlined: true
     description: >-
       This property links a database object to the set of studies within it.
 
@@ -651,7 +649,6 @@ slots:
     domain: database
     range: data object
     multivalued: true
-    inlined: true
     description: >-
       This property links a database object to the set of data objects within it.
   
@@ -660,7 +657,6 @@ slots:
     domain: database
     range: genome feature
     multivalued: true
-    inlined: true
     description: >-
       This property links a database object to the set of all features
   
@@ -669,7 +665,6 @@ slots:
     domain: database
     range: functional annotation
     multivalued: true
-    inlined: true
     description: >-
       This property links a database object to the set of all functional annotations
   
@@ -678,7 +673,6 @@ slots:
     domain: database
     range: workflow execution activity
     multivalued: true
-    inlined: true
     description: >-
       This property links a database object to the set of workflow activities.
   
@@ -687,7 +681,6 @@ slots:
     domain: database
     range: MAGs analysis activity
     multivalued: true
-    inlined: true
     description: >-
       This property links a database object to the set of MAGs analysis activities.
 
@@ -696,7 +689,6 @@ slots:
     domain: database
     range: metabolomics analysis activity
     multivalued: true
-    inlined: true
     description: >-
       This property links a database object to the set of metabolomics analysis activities.
 
@@ -705,7 +697,6 @@ slots:
     domain: database
     range: metaproteomics analysis activity
     multivalued: true
-    inlined: true
     description: >-
       This property links a database object to the set of metaproteomics analysis activities.
 
@@ -714,7 +705,6 @@ slots:
     domain: database
     range: metagenome annotation activity
     multivalued: true
-    inlined: true
     description: >-
       This property links a database object to the set of metagenome annotation activities.
 
@@ -723,7 +713,6 @@ slots:
     domain: database
     range: metagenome assembly
     multivalued: true
-    inlined: true
     description: >-
       This property links a database object to the set of metagenome assembly activities.
 
@@ -732,7 +721,6 @@ slots:
     domain: database
     range: metatranscriptome activity
     multivalued: true
-    inlined: true
     description: >-
       This property links a database object to the set of metatranscriptome analysis activities.
 
@@ -741,7 +729,6 @@ slots:
     domain: database
     range: read QC analysis activity
     multivalued: true
-    inlined: true
     description: >-
       This property links a database object to the set of read QC analysis activities.
 
@@ -750,7 +737,6 @@ slots:
     domain: database
     range: read based analysis activity
     multivalued: true
-    inlined: true
     description: >-
       This property links a database object to the set of read based analysis activities.
         
@@ -759,7 +745,6 @@ slots:
     domain: database
     range: nom analysis activity
     multivalued: true
-    inlined: true
     description: >-
       This property links a database object to the set of natural organic matter (NOM) analysis activities.
 
@@ -768,13 +753,11 @@ slots:
     domain: database
     range: omics processing
     multivalued: true
-    inlined: true
     description: >-
       This property links a database object to the set of omics processings within it.
 
   omics type:
     range: controlled term value 
-#    range: string
     description: >-
       The type of omics data
     examples:
