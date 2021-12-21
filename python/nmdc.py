@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-11-22T18:20:38
+# Generation date: 2021-12-21T13:30:13
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -281,39 +281,39 @@ class Database(YAMLRoot):
     etl_software_version: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        self._normalize_inlined_as_dict(slot_name="biosample_set", slot_type=Biosample, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="biosample_set", slot_type=Biosample, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_dict(slot_name="study_set", slot_type=Study, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="study_set", slot_type=Study, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_dict(slot_name="data_object_set", slot_type=DataObject, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="data_object_set", slot_type=DataObject, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_dict(slot_name="activity_set", slot_type=WorkflowExecutionActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="activity_set", slot_type=WorkflowExecutionActivity, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_dict(slot_name="mags_activity_set", slot_type=MAGsAnalysisActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="mags_activity_set", slot_type=MAGsAnalysisActivity, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_dict(slot_name="metabolomics_analysis_activity_set", slot_type=MetabolomicsAnalysisActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="metabolomics_analysis_activity_set", slot_type=MetabolomicsAnalysisActivity, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_dict(slot_name="metaproteomics_analysis_activity_set", slot_type=MetaproteomicsAnalysisActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="metaproteomics_analysis_activity_set", slot_type=MetaproteomicsAnalysisActivity, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_dict(slot_name="metagenome_annotation_activity_set", slot_type=MetagenomeAnnotationActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="metagenome_annotation_activity_set", slot_type=MetagenomeAnnotationActivity, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_dict(slot_name="metagenome_assembly_set", slot_type=MetagenomeAssembly, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="metagenome_assembly_set", slot_type=MetagenomeAssembly, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_dict(slot_name="metatranscriptome_activity_set", slot_type=MetatranscriptomeActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="metatranscriptome_activity_set", slot_type=MetatranscriptomeActivity, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_dict(slot_name="read_QC_analysis_activity_set", slot_type=ReadQCAnalysisActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="read_QC_analysis_activity_set", slot_type=ReadQCAnalysisActivity, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_dict(slot_name="read_based_analysis_activity_set", slot_type=ReadBasedAnalysisActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="read_based_analysis_activity_set", slot_type=ReadBasedAnalysisActivity, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_dict(slot_name="nom_analysis_activity_set", slot_type=NomAnalysisActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="nom_analysis_activity_set", slot_type=NomAnalysisActivity, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_dict(slot_name="omics_processing_set", slot_type=OmicsProcessing, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="omics_processing_set", slot_type=OmicsProcessing, key_name="id", keyed=True)
 
         if not isinstance(self.functional_annotation_set, list):
             self.functional_annotation_set = [self.functional_annotation_set] if self.functional_annotation_set is not None else []
         self.functional_annotation_set = [v if isinstance(v, FunctionalAnnotation) else FunctionalAnnotation(**as_dict(v)) for v in self.functional_annotation_set]
 
-        self._normalize_inlined_as_dict(slot_name="genome_feature_set", slot_type=GenomeFeature, key_name="seqid", keyed=False)
+        self._normalize_inlined_as_list(slot_name="genome_feature_set", slot_type=GenomeFeature, key_name="seqid", keyed=False)
 
         if self.nmdc_schema_version is not None and not isinstance(self.nmdc_schema_version, str):
             self.nmdc_schema_version = str(self.nmdc_schema_version)
