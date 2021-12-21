@@ -5,6 +5,15 @@ Changes to the schema are documented in this file.
 ### Added
   - N/A
 ### Fixed
+  - N/A
+### Changed 
+  - N/A
+### Removed
+  - N/A
+## [2021.12.21rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.12.21rc1)
+### Added
+  - N/A
+### Fixed
   - use `inlined_as_list` for the database sets (#219)
 ### Changed 
   - N/A
