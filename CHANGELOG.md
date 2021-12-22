@@ -6,6 +6,7 @@ Changes to the schema are documented in this file.
   - N/A
 ### Fixed
   - updated deprecation warning to reference "get_nmdc_jsonschema_dict"
+  - added missing image files for gh pages
 ### Changed 
   - N/A
 ### Removed
