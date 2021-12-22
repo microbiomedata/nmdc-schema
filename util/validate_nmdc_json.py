@@ -7,11 +7,11 @@ from .nmdc_data import get_nmdc_jsonschema, get_nmdc_jsonschema_dict
 from deprecated import deprecated
 
 
-@deprecated(reason="functionality moved to nmdc_data.get_nmdc_dict()")
+@deprecated(reason="functionality moved to nmdc_data.get_nmdc_jsonschema_dict()")
 def get_nmdc_schema() -> dict:
     """
     Returns the nmdc.schema.json package data file as a dict.
-    NOTE: This method is depricated. Should use nmdc_data.get_nmdc_dict()
+    NOTE: This method is depricated. Should use nmdc_data.get_nmdc_jsonschema_dict()
 
     Returns
     -------
