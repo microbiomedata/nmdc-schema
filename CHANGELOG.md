@@ -5,7 +5,7 @@ Changes to the schema are documented in this file.
 ### Added
   - N/A
 ### Fixed
-  - N/A
+  - updated deprecation warning to reference "get_nmdc_jsonschema_dict"
 ### Changed 
   - N/A
 ### Removed
