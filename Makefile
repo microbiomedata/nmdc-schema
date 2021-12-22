@@ -56,6 +56,7 @@ gen-docs: target/docs/index.md copy-src-docs make-slides
 .PHONY: gen-docs
 copy-src-docs:
 	cp $(SRC_DIR)/docs/*.md target/docs/
+	cp $(SRC_DIR)/docs/images/* target/docs/images
 PHONY: copy-src-docs
 target/docs/%.md: $(SCHEMA_SRC) tdir-docs
 	pipenv run gen-markdown $(GEN_OPTS) --dir target/docs $<
