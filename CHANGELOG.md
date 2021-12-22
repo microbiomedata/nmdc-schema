@@ -5,8 +5,18 @@ Changes to the schema are documented in this file.
 ### Added
   - N/A
 ### Fixed
+  - N/A
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
+## [2021.12.22rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2021.12.22rc1)
+### Added
+  - N/A
+### Fixed
   - updated deprecation warning to reference "get_nmdc_jsonschema_dict"
-  - added missing image files for gh pages
+  - added missing image files for gh pages (#218)
 ### Changed 
   - N/A
 ### Removed
