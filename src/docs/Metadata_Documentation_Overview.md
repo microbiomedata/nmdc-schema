@@ -13,7 +13,7 @@ Were Afraid to Ask)*
 ([<u>https://doi.org/10.25979/1607365</u>](https://doi.org/10.25979/1607365)).
 
 <div align="center">
-	<img src="../images/NMDC_metadata_img1.png" style="width:80%"/>
+	<img src="images/NMDC_metadata_img1.png" style="width:80%"/>
 </div>
 
 Figure 1: Microbiome metadata types: Information that contextualizes
@@ -112,7 +112,7 @@ schema also uses this ecosystem classification to describe sample
 environments.
 
 <div align="center">
-<img src="../images/NMDC_metadata_img2.png" style="width:100%"/>
+<img src="images/NMDC_metadata_img2.png" style="width:100%"/>
 </div>
 
 Figure 2. The GOLD five-level ecosystem classification paths
@@ -206,7 +206,7 @@ oligotrophic lake sediment sample below.
 		<p>Using <a href="http://www.ontobee.org/ontology/ENVO?iri=http://purl.obolibrary.org/obo/ENVO_00000428"><u>EnvO biome</u></a> categories, <em>aquatic</em> is appropriate. However, since the EnvO is a hierarchical system, the aquatic biome has two sub-categories: freshwater and marine biomes. The freshwater biome is further divided into freshwater lake biome and freshwater river biome. Therefore, for a lake sediment sample, <em>freshwater lake biome</em> is the appropriate EnvO biome category.</p>
 	 </td>
 	 <td>
-		<img src="../images/NMDC_metadata_img3.png" style="width:100%" />
+		<img src="images/NMDC_metadata_img3.png" style="width:100%" />
 	 </td>
 	</tr>
 	<tr class="even">
@@ -214,7 +214,7 @@ oligotrophic lake sediment sample below.
 	 <p><strong>env_local_scale (Feature)</strong></p>
 	 <p>Next, we describe the local environmental feature in the vicinity of and likely having a strong causal influence on the sample. Using the <a href="http://www.ontobee.org/ontology/ENVO?iri=http://purl.obolibrary.org/obo/ENVO_01000813"><u>EnvO astronomical body part</u></a> categories, we step through the relevant categories (see figure on the right) until we reach the EnvO term <em>oligotrophic lake</em>.</p></td>
 	<td>
-		<img src="../images/NMDC_metadata_img4.png" style="width:100%" />
+		<img src="images/NMDC_metadata_img4.png" style="width:100%" />
 	</td>
 	</tr>
 	<tr class="odd">
@@ -222,7 +222,7 @@ oligotrophic lake sediment sample below.
 	 <p><strong>env_medium (Material)</strong></p>
 	 <p>Finally, since the sample is <em>oligotrophic lake sediment</em>, the <a href="http://www.ontobee.org/ontology/ENVO?iri=http://purl.obolibrary.org/obo/ENVO_00002007"><u>EnvO environmental material</u></a> could be assigned <em>sediment</em>. But because the EnvO hierarchy provides sub-categories within <em>sediment</em>, the environmenta material will be assigned <em>lake sediment</em>.</p></td>
 	 <td>
-		 <img src="../images/NMDC_metadata_img5.png" style="width:100%" />
+		 <img src="images/NMDC_metadata_img5.png" style="width:100%" />
 	 </td>
 	</tr>
  </tbody>
@@ -251,7 +251,7 @@ The NMDC team is currently working on exploring solutions for automated
 mapping between GOLD and MIxS/EnvO.
 
 <div align="center">
-	<img src="../images/NMDC_metadata_img6.png" style="width:80%" />
+	<img src="images/NMDC_metadata_img6.png" style="width:80%" />
 </div>
 
 Figure 3: Mapping between the MIxS/EnvO triad and the GOLD ecosystem
