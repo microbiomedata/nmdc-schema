@@ -198,7 +198,12 @@ SCHEMA_TEST_EXAMPLES := \
 	study_credit_test
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
-	invalid_study_test \
+	biosample_invalid_range \
+	biosample_mismatch_regex \
+	biosample_missing_required_field \
+	biosample_single_multi_value_mixup \
+	biosample_undeclared_slot \
+	study_credit_enum_mangle
 
 # 	functional_annotation_set_invalid has invalid ID pattern but regex tests aren't applied yet? MAM 2021-06-24
 
@@ -215,6 +220,5 @@ validate-%: test/data/%.json jsonschema/nmdc.schema.json
 # util/validate_nmdc_json.py -i $< # example of validating data using the cli
 	pipenv run jsonschema -i $< $(word 2, $^)
 
-validate-invalid-%: test/data/%.json jsonschema/nmdc.schema.json
-	@echo $(word 2, $^)
-	! jsonschema -i $< $(word 2, $^)
+validate-invalid-%: test/data/invalid_schemas/%.json jsonschema/nmdc.schema.json
+	! pipenv run jsonschema -i $< $(word 2, $^)
