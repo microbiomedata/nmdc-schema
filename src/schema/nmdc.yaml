@@ -796,27 +796,27 @@ slots:
   ecosystem:
     is_a: gold_path_field
     description: >-
-      TODO
+      An ecosystem is a combination of a physical environment (abiotic factors) and all the organisms (biotic factors) that interact with this environment. The abiotic factors play a profound role on the type and composition of organisms in a given environment. The GOLD Ecosystem at the top of the five-level classification system is aimed at capturing the broader environment from which an organism or environmental sample is collected. The three broad groups under Ecosystem are Environmental, Host-associated, and Engineered. They represent samples collected from a natural environment or from another organism or from engineered environments like bioreactors respectively. See GOLD terminology at https://gold.jgi.doe.gov/help.
 
   ecosystem_category:
     is_a: gold_path_field
     description: >-
-      TODO
+      Ecosystem categories represent divisions within the ecosystem based on specific characteristics of the environment from where an organism or sample is isolated. For example, the Environmental ecosystem is divided into Air, Aquatic and Terrestrial. Ecosystem categories for Host-associated samples can be individual hosts or phyla and for engineered samples it may be manipulated environments like bioreactors, solid waste etc. See GOLD terminology at https://gold.jgi.doe.gov/help.
 
   ecosystem_type:
     is_a: gold_path_field
     description: >-
-      TODO
+      Ecosystem types represent things having common characteristics within the Ecosystem Category. These common characteristics based grouping is still broad but specific to the characteristics of a given environment. For example, the Aquatic ecosystem category may have ecosystem types like Marine or Thermal springs etc. Ecosystem category Air may have Indoor air or Outdoor air as different Ecosystem Types. In the case of Host-associated samples, ecosystem type can represent Respiratory system, Digestive system, Roots etc. See GOLD terminology at https://gold.jgi.doe.gov/help.
 
   ecosystem_subtype:
     is_a: gold_path_field
     description: >-
-      TODO
+      Ecosystem subtypes represent further subdivision of Ecosystem types into more distinct subtypes. For example, Ecosystem Type Marine (Environmental -> Aquatic -> Marine) is further divided into Intertidal zone, Coastal, Pelagic, Intertidal zone etc. in the Ecosystem subtype category. See GOLD terminology at https://gold.jgi.doe.gov/help.
 
   specific_ecosystem:
     is_a: gold_path_field
     description: >-
-      TODO
+      Specific ecosystems represent specific features of the environment like aphotic zone in an ocean or gastric mucosa within a host digestive system. They help to define samples based on very specific characteristics of an environment under the five-level classification system. See GOLD terminology at https://gold.jgi.doe.gov/help.
 
   ## GOLD DATABASE SPECFIC FIELDS
   principal investigator:
