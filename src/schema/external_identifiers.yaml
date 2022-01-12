@@ -150,8 +150,9 @@ slots:
     multivalued: true
     description:
       - identifiers for corresponding sample in GOLD
-    todos:
-      - example of https://identifiers.org/gold:GbTODO
+    examples:
+      - value: https://identifiers.org/gold:Gb0312930
+
 
   INSDC biosample identifiers:
     is_a: sample identifiers
@@ -227,8 +228,8 @@ slots:
     multivalued: true
     description:
       - identifiers for corresponding analysis project in GOLD
-    todos:
-      - example of https://identifiers.org/gold:GaTODO
+    examples:
+      - value: https://identifiers.org/gold:Ga0526289
 
   INSDC analysis identifiers:
     is_a: analysis identifiers
