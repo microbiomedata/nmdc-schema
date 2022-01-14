@@ -3,7 +3,7 @@ Changes to the schema are documented in this file.
 
 ## Current (updates before releasing)
 ### Added
-  - N/A
+  - descriptions, comments and a see_also for gold_path_fields
 ### Fixed
   - N/A
 ### Changed 
