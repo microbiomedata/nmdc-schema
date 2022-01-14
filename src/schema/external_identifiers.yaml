@@ -86,8 +86,7 @@ slots:
       - DDBJ SRA identifiers
     pattern: "^insdc.sra:(E|D|S)RP[0-9]{6,}$"
     multivalued: true
-    description:
-      - identifiers for corresponding project in INSDC SRA / ENA
+    description: identifiers for corresponding project in INSDC SRA / ENA
     examples:
       - value: https://identifiers.org/insdc.sra:SRP121659
         description: Avena fatua rhizosphere microbial communities - H1_Rhizo_Litter_2 metatranscriptome
@@ -104,8 +103,7 @@ slots:
       - NCBI bioproject identifiers
       - DDBJ bioproject identifiers
     pattern: "^bioproject:PRJ[DEN][A-Z][0-9]+$"
-    description:
-      - identifiers for corresponding project in INSDC Bioproject
+    description: identifiers for corresponding project in INSDC Bioproject
     comments:
       - these are distinct IDs from INSDC SRA/ENA project identifiers, but are usually(?) one to one
     examples:
@@ -121,8 +119,7 @@ slots:
       - GOLD identifiers
     pattern: "^GOLD:Gs[0-9]+$"
     multivalued: true
-    description:
-      - identifiers for corresponding project in GOLD
+    description: identifiers for corresponding project in GOLD
     examples:
       - value: https://identifiers.org/gold:Gs0110115
     see_also:
@@ -131,8 +128,7 @@ slots:
   MGnify project identifiers:
     is_a: study identifiers
     pattern: "^mgnify.proj:[A-Z]+[0-9]+$"
-    description:
-      - identifiers for corresponding project in MGnify
+    description: identifiers for corresponding project in MGnify
     examples:
       - value: https://identifiers.org/mgnify.proj:MGYS00005757
     
@@ -148,8 +144,7 @@ slots:
       - GOLD identifiers
     pattern: "^GOLD:Gb[0-9]+$"
     multivalued: true
-    description:
-      - identifiers for corresponding sample in GOLD
+    description: identifiers for corresponding sample in GOLD
     examples:
       - value: https://identifiers.org/gold:Gb0312930
 
@@ -164,8 +159,7 @@ slots:
       - DDBJ biosample identifiers
     pattern: "^biosample:SAM[NED]([A-Z])?[0-9]+$"
     multivalued: true
-    description:
-      - identifiers for corresponding sample in INSDC
+    description: identifiers for corresponding sample in INSDC
     examples:
       - value: https://identifiers.org/biosample:SAMEA5989477
       - value: https://identifiers.org/biosample:SAMD00212331
@@ -181,8 +175,7 @@ slots:
     mixins:
       - INSDC identifiers
     pattern: "^biosample:(E|D|S)RS[0-9]{6,}$"
-    description:
-      - secondary identifiers for corresponding sample in INSDC
+    description: secondary identifiers for corresponding sample in INSDC
     comments:
       - ENA redirects these to primary IDs, e.g. https://www.ebi.ac.uk/ena/browser/view/DRS166340 -> SAMD00212331
       - MGnify uses these as their primary sample IDs
@@ -202,8 +195,7 @@ slots:
       - GOLD identifiers
     pattern: "^GOLD:Gp[0-9]+$"
     multivalued: true
-    description:
-      - identifiers for corresponding sequencing project in GOLD
+    description: identifiers for corresponding sequencing project in GOLD
     examples:
       - value: https://identifiers.org/gold:Gp0108335
 
@@ -226,8 +218,7 @@ slots:
       - GOLD identifiers
     pattern: "^GOLD:Ga[0-9]+$"
     multivalued: true
-    description:
-      - identifiers for corresponding analysis project in GOLD
+    description: identifiers for corresponding analysis project in GOLD
     examples:
       - value: https://identifiers.org/gold:Ga0526289
 
