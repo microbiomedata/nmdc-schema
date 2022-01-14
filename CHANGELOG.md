@@ -7,7 +7,7 @@ Changes to the schema are documented in this file.
 ### Fixed
   - example IDs for GOLD biosamples and analysis projects
 ### Changed 
-  - N/A
+  - the descriptions for external identifiers are now scalars, not list items
 ### Removed
   - N/A
 
