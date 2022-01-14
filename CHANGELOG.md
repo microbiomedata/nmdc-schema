@@ -5,7 +5,7 @@ Changes to the schema are documented in this file.
 ### Added
   - descriptions, comments and a see_also for gold_path_fields
 ### Fixed
-  - N/A
+  - example IDs for GOLD biosamples and analysis projects
 ### Changed 
   - N/A
 ### Removed
