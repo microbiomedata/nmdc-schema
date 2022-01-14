@@ -529,6 +529,8 @@ enums:
         description: GFF3 format file with Pfam
         annotations:
           file_name_pattern: "[GOLD-AP]_pfam.gff"
+      Direct Infusion FT ICR-MS Raw Data:
+        description: Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance mass spectrometry raw data acquired in broadband full scan mode
       
   credit enum:
     permissible_values:

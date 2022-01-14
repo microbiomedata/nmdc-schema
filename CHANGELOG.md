@@ -3,11 +3,21 @@ Changes to the schema are documented in this file.
 
 ## Current (updates before releasing)
 ### Added
-  - descriptions, comments and a see_also for gold_path_fields
+  - N/A
 ### Fixed
-  - example IDs for GOLD biosamples and analysis projects
+  - N/A
 ### Changed 
-  - the descriptions for external identifiers are now scalars, not list items
+  - N/A
+### Removed
+  - N/A
+## [2022.01.14rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2022.01.14rc1)
+### Added
+  - descriptions, comments and a see_also for gold_path_fields (#231)
+  - Direct Infusion FT ICR-MS Raw Data file type enum (#236)
+### Fixed
+  - example IDs for GOLD biosamples and analysis projects (#233)
+### Changed 
+  - the descriptions for external identifiers are now scalars, not list items (#228)
 ### Removed
   - N/A
 

@@ -74,7 +74,7 @@
          "description": "A material sample. It may be environmental (encompassing many organisms) or isolate or tissue.   An environmental sample containing genetic material from multiple individuals is commonly referred to as a biosample.",
          "properties": {
             "GOLD_sample_identifiers": {
-               "description": "['identifiers for corresponding sample in GOLD']",
+               "description": "identifiers for corresponding sample in GOLD",
                "items": {
                   "type": "string"
                },
@@ -82,7 +82,7 @@
                "type": "array"
             },
             "INSDC_biosample_identifiers": {
-               "description": "['identifiers for corresponding sample in INSDC']",
+               "description": "identifiers for corresponding sample in INSDC",
                "items": {
                   "type": "string"
                },
@@ -90,7 +90,7 @@
                "type": "array"
             },
             "INSDC_secondary_sample_identifiers": {
-               "description": "['secondary identifiers for corresponding sample in INSDC']",
+               "description": "secondary identifiers for corresponding sample in INSDC",
                "items": {
                   "type": "string"
                },
@@ -280,19 +280,19 @@
                "pattern": "[very poorly|poorly|somewhat poorly|moderately well|well|excessively drained]"
             },
             "ecosystem": {
-               "description": "TODO",
+               "description": "An ecosystem is a combination of a physical environment (abiotic factors) and all the organisms (biotic factors) that interact with this environment. Ecosystem is in position 1/5 in a GOLD path.",
                "type": "string"
             },
             "ecosystem_category": {
-               "description": "TODO",
+               "description": "Ecosystem categories represent divisions within the ecosystem based on specific characteristics of the environment from where an organism or sample is isolated. Ecosystem category is in position 2/5 in a GOLD path.",
                "type": "string"
             },
             "ecosystem_subtype": {
-               "description": "TODO",
+               "description": "Ecosystem subtypes represent further subdivision of Ecosystem types into more distinct subtypes. Ecosystem subtype is in position 4/5 in a GOLD path.",
                "type": "string"
             },
             "ecosystem_type": {
-               "description": "TODO",
+               "description": "Ecosystem types represent things having common characteristics within the Ecosystem Category. These common characteristics based grouping is still broad but specific to the characteristics of a given environment. Ecosystem type is in position 3/5 in a GOLD path.",
                "type": "string"
             },
             "elev": {
@@ -642,7 +642,7 @@
                "type": "string"
             },
             "specific_ecosystem": {
-               "description": "TODO",
+               "description": "Specific ecosystems represent specific features of the environment like aphotic zone in an ocean or gastric mucosa within a host digestive system. Specific ecosystem is in position 5/5 in a GOLD path.",
                "type": "string"
             },
             "store_cond": {
@@ -1185,7 +1185,8 @@
             "CATH FunFams (Functional Families) Annotation GFF",
             "SUPERFam Annotation GFF",
             "SMART Annotation GFF",
-            "Pfam Annotation GFF"
+            "Pfam Annotation GFF",
+            "Direct Infusion FT ICR-MS Raw Data"
          ],
          "title": "FileTypeEnum",
          "type": "string"
@@ -2451,7 +2452,7 @@
          "description": "The methods and processes used to generate omics data from a biosample or organism.",
          "properties": {
             "GOLD_sequencing_project_identifiers": {
-               "description": "['identifiers for corresponding sequencing project in GOLD']",
+               "description": "identifiers for corresponding sequencing project in GOLD",
                "items": {
                   "type": "string"
                },
@@ -3121,7 +3122,7 @@
          "description": "A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.",
          "properties": {
             "GOLD_study_identifiers": {
-               "description": "['identifiers for corresponding project in GOLD']",
+               "description": "identifiers for corresponding project in GOLD",
                "items": {
                   "type": "string"
                },
@@ -3129,7 +3130,7 @@
                "type": "array"
             },
             "INSDC_SRA_ENA_study_identifiers": {
-               "description": "['identifiers for corresponding project in INSDC SRA / ENA']",
+               "description": "identifiers for corresponding project in INSDC SRA / ENA",
                "items": {
                   "type": "string"
                },
@@ -3137,7 +3138,7 @@
                "type": "array"
             },
             "INSDC_bioproject_identifiers": {
-               "description": "['identifiers for corresponding project in INSDC Bioproject']",
+               "description": "identifiers for corresponding project in INSDC Bioproject",
                "items": {
                   "type": "string"
                },
@@ -3145,7 +3146,7 @@
                "type": "array"
             },
             "MGnify_project_identifiers": {
-               "description": "['identifiers for corresponding project in MGnify']",
+               "description": "identifiers for corresponding project in MGnify",
                "items": {
                   "type": "string"
                },
@@ -3193,19 +3194,19 @@
                "description": "The dataset citation for this study"
             },
             "ecosystem": {
-               "description": "TODO",
+               "description": "An ecosystem is a combination of a physical environment (abiotic factors) and all the organisms (biotic factors) that interact with this environment. Ecosystem is in position 1/5 in a GOLD path.",
                "type": "string"
             },
             "ecosystem_category": {
-               "description": "TODO",
+               "description": "Ecosystem categories represent divisions within the ecosystem based on specific characteristics of the environment from where an organism or sample is isolated. Ecosystem category is in position 2/5 in a GOLD path.",
                "type": "string"
             },
             "ecosystem_subtype": {
-               "description": "TODO",
+               "description": "Ecosystem subtypes represent further subdivision of Ecosystem types into more distinct subtypes. Ecosystem subtype is in position 4/5 in a GOLD path.",
                "type": "string"
             },
             "ecosystem_type": {
-               "description": "TODO",
+               "description": "Ecosystem types represent things having common characteristics within the Ecosystem Category. These common characteristics based grouping is still broad but specific to the characteristics of a given environment. Ecosystem type is in position 3/5 in a GOLD path.",
                "type": "string"
             },
             "ess_dive_datasets": {
@@ -3258,7 +3259,7 @@
                "type": "array"
             },
             "specific_ecosystem": {
-               "description": "TODO",
+               "description": "Specific ecosystems represent specific features of the environment like aphotic zone in an ocean or gastric mucosa within a host digestive system. Specific ecosystem is in position 5/5 in a GOLD path.",
                "type": "string"
             },
             "study_image": {

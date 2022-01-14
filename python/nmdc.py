@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-12-22T17:16:50
+# Generation date: 2022-01-14T18:26:30
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -3127,6 +3127,9 @@ class FileTypeEnum(EnumDefinitionImpl):
         setattr(cls, "Pfam Annotation GFF",
                 PermissibleValue(text="Pfam Annotation GFF",
                                  description="GFF3 format file with Pfam") )
+        setattr(cls, "Direct Infusion FT ICR-MS Raw Data",
+                PermissibleValue(text="Direct Infusion FT ICR-MS Raw Data",
+                                 description="Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance mass spectrometry raw data acquired in broadband full scan mode") )
 
 class CreditEnum(EnumDefinitionImpl):
 
