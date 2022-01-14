@@ -151,7 +151,8 @@ slots:
     description:
       - identifiers for corresponding sample in GOLD
     examples:
-      - value: https://identifiers.org/gold:GbTODO
+      - value: https://identifiers.org/gold:Gb0312930
+
 
   INSDC biosample identifiers:
     is_a: sample identifiers
@@ -228,7 +229,7 @@ slots:
     description:
       - identifiers for corresponding analysis project in GOLD
     examples:
-      - value: https://identifiers.org/gold:GaTODO
+      - value: https://identifiers.org/gold:Ga0526289
 
   INSDC analysis identifiers:
     is_a: analysis identifiers
