@@ -889,6 +889,12 @@
             "applied_role": {
                "$ref": "#/$defs/CreditEnum"
             },
+            "applied_roles": {
+               "items": {
+                  "$ref": "#/$defs/CreditEnum"
+               },
+               "type": "array"
+            },
             "applies_to_person": {
                "$ref": "#/$defs/PersonValue"
             },
@@ -899,7 +905,7 @@
          },
          "required": [
             "applies_to_person",
-            "applied_role"
+            "applied_roles"
          ],
          "title": "CreditAssociation",
          "type": "object"
