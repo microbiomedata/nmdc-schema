@@ -6,7 +6,9 @@
       "has_credit_associations": [
         {
           "type": "credit association",
-          "applied_role": "Data curation",
+          "applied_roles": [
+            "Data curation"
+          ],
           "applies_to_person": {
             "type": "PersonValue",
             "orcid": "orcid:0000-0002-1825-00"
@@ -14,7 +16,9 @@
         },
         {
           "type": "credit association",
-          "applied_role": "Software",
+          "applied_roles": [
+            "Software"
+          ],
           "applies_to_person": {
             "type": "PersonValue",
             "orcid": "orcid:0000-0001-9076-6066"
