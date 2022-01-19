@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-01-14T18:26:30
+# Generation date: 2022-01-18T20:09:44
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -343,7 +343,8 @@ class CreditAssociation(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = NMDC.CreditAssociation
 
     applies_to_person: Union[dict, "PersonValue"] = None
-    applied_role: Union[str, "CreditEnum"] = None
+    applied_roles: Union[Union[str, "CreditEnum"], List[Union[str, "CreditEnum"]]] = None
+    applied_role: Optional[Union[str, "CreditEnum"]] = None
     type: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -352,9 +353,13 @@ class CreditAssociation(YAMLRoot):
         if not isinstance(self.applies_to_person, PersonValue):
             self.applies_to_person = PersonValue(**as_dict(self.applies_to_person))
 
-        if self._is_empty(self.applied_role):
-            self.MissingRequiredField("applied_role")
-        if not isinstance(self.applied_role, CreditEnum):
+        if self._is_empty(self.applied_roles):
+            self.MissingRequiredField("applied_roles")
+        if not isinstance(self.applied_roles, list):
+            self.applied_roles = [self.applied_roles] if self.applied_roles is not None else []
+        self.applied_roles = [v if isinstance(v, CreditEnum) else CreditEnum(v) for v in self.applied_roles]
+
+        if self.applied_role is not None and not isinstance(self.applied_role, CreditEnum):
             self.applied_role = CreditEnum(self.applied_role)
 
         if self.type is not None and not isinstance(self.type, str):
@@ -3199,7 +3204,10 @@ slots.funding_sources = Slot(uri=NMDC.funding_sources, name="funding sources", c
                    model_uri=NMDC.funding_sources, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.applied_role = Slot(uri=PROV.hadRole, name="applied role", curie=PROV.curie('hadRole'),
-                   model_uri=NMDC.applied_role, domain=CreditAssociation, range=Union[str, "CreditEnum"])
+                   model_uri=NMDC.applied_role, domain=CreditAssociation, range=Optional[Union[str, "CreditEnum"]])
+
+slots.applied_roles = Slot(uri=NMDC.applied_roles, name="applied roles", curie=NMDC.curie('applied_roles'),
+                   model_uri=NMDC.applied_roles, domain=CreditAssociation, range=Union[Union[str, "CreditEnum"], List[Union[str, "CreditEnum"]]])
 
 slots.applies_to_person = Slot(uri=PROV.agent, name="applies to person", curie=PROV.curie('agent'),
                    model_uri=NMDC.applies_to_person, domain=CreditAssociation, range=Union[dict, "PersonValue"])

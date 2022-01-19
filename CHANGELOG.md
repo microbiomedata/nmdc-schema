@@ -10,6 +10,16 @@ Changes to the schema are documented in this file.
   - N/A
 ### Removed
   - N/A
+
+## [2022.01.18rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2022.01.18rc1)
+### Added
+  - `applied roles` (multivalued) slot (#216)
+### Fixed
+  - N/A
+### Changed 
+  - deprectated `applied role` slot (#216)
+### Removed
+  - N/A
 ## [2022.01.14rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2022.01.14rc1)
 ### Added
   - descriptions, comments and a see_also for gold_path_fields (#231)
