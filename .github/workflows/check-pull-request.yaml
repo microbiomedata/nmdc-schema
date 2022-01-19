@@ -36,16 +36,16 @@ jobs:
         
     # Load pipenv virtual environment from cache
     # see: https://ianwhitestone.work/aws-serverless-deployments-with-github-actions/
-    - name: Load pipenv from cache
-      uses: actions/cache@v2
-      with:
-        path: ~/.local/share/virtualenvs
-        key: ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-pipenv-${{ hashFiles('Pipfile.lock') }}
+#     - name: Load pipenv from cache
+#       uses: actions/cache@v2
+#       with:
+#         path: ~/.local/share/virtualenvs
+#         key: ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-pipenv-${{ hashFiles('Pipfile.lock') }}
 
 
     # If cache was not loaded, install dependencies
     - name: Install dependencies
-      if: steps.cache-pipenv.outputs.cache-hit != 'true'
+      # if: steps.cache-pipenv.outputs.cache-hit != 'true'
       run: pipenv install -d
 
     # Excute the Makefile to build generated artifacts
