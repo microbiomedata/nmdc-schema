@@ -566,7 +566,9 @@ enums:
       Principal Investigator:
         description: principal investigator role
         meaning: OBI:0000103
-
+    comments:
+      - credit enums come from https://casrai.org/credit/
+    
 slots:
 
   ess dive datasets:
@@ -605,8 +607,6 @@ slots:
     domain: credit association
     range: credit enum
     slot_uri: prov:hadRole
-    comments:
-      - credit enums come from https://casrai.org/credit/
     deprecated: A credit association may have multiple roles. So, use the applied roles slot.
     multivalued: false
     required: false
@@ -614,8 +614,6 @@ slots:
   applied roles:
     domain: credit association
     range: credit enum
-    comments:
-      - credit enums come from https://casrai.org/credit/
     multivalued: true
     required: true
       
