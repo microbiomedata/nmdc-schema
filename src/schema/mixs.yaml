@@ -79,7 +79,7 @@ slots:
     aliases:
       - geographic location (depth)
     description: >-
-       Please refer to the definitions of depth in the environmental packages
+       Depth is defined as the vertical distance below local surface, e.g. For sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: -
