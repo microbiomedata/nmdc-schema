@@ -1198,7 +1198,7 @@ slots:
     aliases:
       - vOTU sequence comparison approach
     description: >-
-       Tool and thresholds used to compare sequences when computing ""species-level"" vOTUs
+       Tool and thresholds used to compare sequences when computing 'species-level' vOTUs
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {software};{version};{parameters}
@@ -1211,7 +1211,7 @@ slots:
     aliases:
       - vOTU database
     description: >-
-       Reference database (i.e. sequences not generated as part of the current study) used to cluster new genomes in ""species-level"" vOTUs, if any
+       Reference database (i.e. sequences not generated as part of the current study) used to cluster new genomes in 'species-level' vOTUs, if any
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {database};{version}
@@ -4345,7 +4345,7 @@ slots:
     aliases:
       - hydrocarbon resource type
     description: >-
-       Main Hydrocarbon Resource type. The term ""Hydrocarbon Resource"" HCR defined as a natural environmental feature containing large amounts of hydrocarbons at high concentrations potentially suitable for commercial exploitation.  This term should not be confused with the Hydrocarbon Occurrence term which also includes hydrocarbon-rich environments with currently limited commercial interest such as seeps, outcrops, gas hydrates etc. If ""other"" is specified, please propose entry in ""additional info"" field
+       Main Hydrocarbon Resource type. The term 'Hydrocarbon Resource' HCR defined as a natural environmental feature containing large amounts of hydrocarbons at high concentrations potentially suitable for commercial exploitation.  This term should not be confused with the Hydrocarbon Occurrence term which also includes hydrocarbon-rich environments with currently limited commercial interest such as seeps, outcrops, gas hydrates etc. If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [Oil Reservoir|Gas Reservoir|Oil Sand|Coalbed|Shale|Tight Oil Reservoir|Tight Gas Reservoir|other]
@@ -4357,7 +4357,7 @@ slots:
     aliases:
       - hydrocarbon type produced
     description: >-
-       Main hydrocarbon type produced from resource (i.e. Oil, gas, condensate, etc). If ""other"" is specified, please propose entry in ""additional info"" field
+       Main hydrocarbon type produced from resource (i.e. Oil, gas, condensate, etc). If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [Oil|Gas-Condensate|Gas|Bitumen|Coalbed Methane|other]
@@ -4479,7 +4479,7 @@ slots:
     aliases:
       - lithology
     description: >-
-       Hydrocarbon resource main lithology (Additional information: http://petrowiki.org/Lithology_and_rock_type_determination). If ""other"" is specified, please propose entry in ""additional info"" field
+       Hydrocarbon resource main lithology (Additional information: http://petrowiki.org/Lithology_and_rock_type_determination). If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [Basement|Chalk|Chert|Coal|Conglomerate|Diatomite|Dolomite|Limestone|Sandstone|Shale|Siltstone|Volcanic|other]
@@ -4491,7 +4491,7 @@ slots:
     aliases:
       - depositional environment
     description: >-
-       Main depositional environment (https://en.wikipedia.org/wiki/Depositional_environment). If ""other"" is specified, please propose entry in ""additional info"" field
+       Main depositional environment (https://en.wikipedia.org/wiki/Depositional_environment). If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [Continental - Alluvial|Continental - Aeolian|Continental - Fluvial|Continental - Lacustrine|Transitional - Deltaic|Transitional - Tidal|Transitional - Lagoonal|Transitional - Beach|Transitional - Lake|Marine - Shallow|Marine - Deep|Marine - Reef|Other - Evaporite|Other - Glacial|Other - Volcanic|other]
@@ -4503,7 +4503,7 @@ slots:
     aliases:
       - hydrocarbon resource geological age
     description: >-
-       Geological age of hydrocarbon resource (Additional info: https://en.wikipedia.org/wiki/Period_(geology)). If ""other"" is specified, please propose entry in ""additional info"" field
+       Geological age of hydrocarbon resource (Additional info: https://en.wikipedia.org/wiki/Period_(geology)). If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [Archean|Cambrian|Carboniferous|Cenozoic|Cretaceous|Devonian|Jurassic|Mesozoic|Neogene|Ordovician|Paleogene|Paleozoic|Permian|Precambrian|Proterozoic|Silurian|Triassic|other]
@@ -4567,7 +4567,7 @@ slots:
     aliases:
       - source rock kerogen type
     description: >-
-       Origin of kerogen. Type I: Algal (aquatic), Type II: planktonic and soft plant material (aquatic or terrestrial), Type III: terrestrial woody/ fibrous plant material (terrestrial), Type IV: oxidized recycled woody debris (terrestrial) (additional information: https://en.wikipedia.org/wiki/Kerogen). If ""other"" is specified, please propose entry in ""additional info"" field
+       Origin of kerogen. Type I: Algal (aquatic), Type II: planktonic and soft plant material (aquatic or terrestrial), Type III: terrestrial woody/ fibrous plant material (terrestrial), Type IV: oxidized recycled woody debris (terrestrial) (additional information: https://en.wikipedia.org/wiki/Kerogen). If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [Type I|Type II|Type III|Type IV|other]
@@ -4579,7 +4579,7 @@ slots:
     aliases:
       - source rock lithology
     description: >-
-       Lithology of source rock (https://en.wikipedia.org/wiki/Source_rock). If ""other"" is specified, please propose entry in ""additional info"" field
+       Lithology of source rock (https://en.wikipedia.org/wiki/Source_rock). If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [Clastic|Carbonate|Coal|Biosilicieous|other]
@@ -4591,7 +4591,7 @@ slots:
     aliases:
       - source rock depositional environment
     description: >-
-       Source rock depositional environment (https://en.wikipedia.org/wiki/Source_rock). If ""other"" is specified, please propose entry in ""additional info"" field
+       Source rock depositional environment (https://en.wikipedia.org/wiki/Source_rock). If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [Lacustine|Fluvioldeltaic|Fluviomarine|Marine|other]
@@ -4603,7 +4603,7 @@ slots:
     aliases:
       - source rock geological age
     description: >-
-       Geological age of source rock (Additional info: https://en.wikipedia.org/wiki/Period_(geology)). If ""other"" is specified, please propose entry in ""additional info"" field
+       Geological age of source rock (Additional info: https://en.wikipedia.org/wiki/Period_(geology)). If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [Archean|Cambrian|Carboniferous|Cenozoic|Cretaceous|Devonian|Jurassic|Mesozoic|Neogene|Ordovician|Paleogene|Paleozoic|Permian|Precambrian|Proterozoic|Silurian|Triassic|other]
@@ -4637,7 +4637,7 @@ slots:
     aliases:
       - sample type
     description: >-
-       Type of material (i.e. sample) collected. Includes types like core, rock trimmings, drill cuttings, piping section, coupon, pigging debris, solid deposit, produced fluid, produced water, injected water, swabs, etc. If ""other"" is specified, please propose entry in ""additional info"" field
+       Type of material (i.e. sample) collected. Includes types like core, rock trimmings, drill cuttings, piping section, coupon, pigging debris, solid deposit, produced fluid, produced water, injected water, swabs, etc. If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [core|rock trimmings|drill cuttings|piping section|coupon|pigging debris|solid deposit|produced fluid|produced water|injected water|water from treatment plant|fresh water|sea water|drilling fluid|procedural blank|positive control|negative control|other]
@@ -4649,7 +4649,7 @@ slots:
     aliases:
       - sample subtype
     description: >-
-       Name of sample sub-type. For example if ""sample type"" is ""Produced Water"" then subtype could be ""Oil Phase"" or ""Water Phase"". If ""other"" is specified, please propose entry in ""additional info"" field
+       Name of sample sub-type. For example if 'sample type' is 'Produced Water' then subtype could be 'Oil Phase' or 'Water Phase'. If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [oil phase|water phase|biofilm|not applicable|other]
@@ -4687,7 +4687,7 @@ slots:
     aliases:
       - sample measured depth
     description: >-
-       In non deviated well, measured depth is equal to the true vertical depth, TVD (TVD=TVDSS plus the reference or datum it refers to). In deviated wells, the MD is the length of trajectory of the borehole measured from the same reference or datum. Common datums used are ground level (GL), drilling rig floor (DF), rotary table (RT), kelly bushing (KB) and mean sea level (MSL). If ""other"" is specified, please propose entry in ""additional info"" field
+       In non deviated well, measured depth is equal to the true vertical depth, TVD (TVD=TVDSS plus the reference or datum it refers to). In deviated wells, the MD is the length of trajectory of the borehole measured from the same reference or datum. Common datums used are ground level (GL), drilling rig floor (DF), rotary table (RT), kelly bushing (KB) and mean sea level (MSL). If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit};[GL|DF|RT|KB|MSL|other]
@@ -5284,7 +5284,7 @@ slots:
     aliases:
       - secondary and tertiary recovery methods and start date
     description: >-
-       Additional (i.e. Secondary, tertiary, etc.) recovery methods deployed for increase of hydrocarbon recovery from resource and start date for each one of them. If ""other"" is specified, please propose entry in ""additional info"" field
+       Additional (i.e. Secondary, tertiary, etc.) recovery methods deployed for increase of hydrocarbon recovery from resource and start date for each one of them. If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer Addition|Surfactant Addition|Not Applicable|other];{timestamp}
@@ -5365,7 +5365,7 @@ slots:
     aliases:
       - sample collection point
     description: >-
-       Sampling  point on the asset were sample was collected (e.g. Wellhead, storage tank, separator, etc). If ""other"" is specified, please propose entry in ""additional info"" field
+       Sampling  point on the asset were sample was collected (e.g. Wellhead, storage tank, separator, etc). If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [well|test well|drilling rig|wellhead|separator|storage tank|other]
