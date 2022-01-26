@@ -447,7 +447,7 @@ enums:
   file type enum:
     permissible_values:
       FT ICR-MS Analysis Results:
-        description: FT ICR-MS-based metabolite assignment results table
+        description: FT ICR-MS-based molecular formula assignment results table
       GC-MS Metabolomics Results:
         description: GC-MS-based metabolite assignment results table
       Metaproteomics Workflow Statistics:
