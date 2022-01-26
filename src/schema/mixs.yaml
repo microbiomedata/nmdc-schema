@@ -10,7 +10,7 @@ slots:
     aliases:
       - submitted to insdc
     description: >-
-       "Depending on the study (large-scale e.g. done with next generation sequencing technology, or small-scale) sequences have to be submitted to SRA (Sequence Read Archive), DRA (DDBJ Read Archive) or via the classical Webin/Sequin systems to Genbank, ENA and DDBJ. Although this field is mandatory, it is meant as a self-test field, therefore it is not necessary to include this field in contextual data submitted to databases"
+       Depending on the study (large-scale e.g. done with next generation sequencing technology, or small-scale) sequences have to be submitted to SRA (Sequence Read Archive), DRA (DDBJ Read Archive) or via the classical Webin/Sequin systems to Genbank, ENA and DDBJ. Although this field is mandatory, it is meant as a self-test field, therefore it is not necessary to include this field in contextual data submitted to databases
     multivalued: false
     is_a: attribute
     range: boolean value  ## syntax: {boolean}
@@ -24,7 +24,7 @@ slots:
     aliases:
       - investigation type
     description: >-
-       "Nucleic Acid Sequence Report is the root element of all MIGS/MIMS compliant reports as standardized by Genomic Standards Consortium. This field is either eukaryote,bacteria,virus,plasmid,organelle, metagenome,mimarks-survey, mimarks-specimen, metatranscriptome, single amplified genome, metagenome-assembled genome, or uncultivated viral genome"
+       Nucleic Acid Sequence Report is the root element of all MIGS/MIMS compliant reports as standardized by Genomic Standards Consortium. This field is either eukaryote,bacteria,virus,plasmid,organelle, metagenome,mimarks-survey, mimarks-specimen, metatranscriptome, single amplified genome, metagenome-assembled genome, or uncultivated viral genome
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [eukaryote|bacteria_archaea|plasmid|virus|organelle|metagenome|metatranscriptome|mimarks-survey|mimarks-specimen|misag|mimag|miuvig]
@@ -51,7 +51,7 @@ slots:
     aliases:
       - experimental factor
     description: >-
-       "Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms, please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI"
+       Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms, please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI
     multivalued: false
     is_a: attribute
     range: controlled term value  ## syntax: {termLabel} {[termID]}|{text}
@@ -79,7 +79,7 @@ slots:
     aliases:
       - geographic location (depth)
     description: >-
-       Please refer to the definitions of depth in the environmental packages
+       Depth is defined as the vertical distance below local surface, e.g. For sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: -
@@ -92,7 +92,7 @@ slots:
     aliases:
       - altitude
     description: >-
-       "Altitude is a term used to identify heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earthbs surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air"
+       Altitude is a term used to identify heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earthbs surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -107,7 +107,7 @@ slots:
     aliases:
       - elevation
     description: >-
-       "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit"
+       Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -122,7 +122,7 @@ slots:
     aliases:
       - "geographic location (country and/or sea,region)"
     description: >-
-       "The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (v 1.512) (http://purl.bioontology.org/ontology/GAZ)"
+       The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (v 1.512) (http://purl.bioontology.org/ontology/GAZ)
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {term};{term};{text}
@@ -135,7 +135,7 @@ slots:
     aliases:
       - collection date
     description: >-
-       "The time of sampling, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant"
+       The time of sampling, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant
     multivalued: false
     is_a: attribute
     range: timestamp value  ## syntax: {timestamp}
@@ -148,7 +148,7 @@ slots:
     aliases:
       - broad-scale environmental context
     description: >-
-       "In this field, report which major environmental system your sample or specimen came from. The systems identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. were you in the desert or a rainforest?). We recommend using subclasses of ENVOUs biome class: http://purl.obolibrary.org/obo/ENVO_00000428. Format (one term): termLabel [termID], Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a water sample from the photic zone in middle of the Atlantic Ocean, consider: oceanic epipelagic zone biome [ENVO:01000033]. Example: Annotating a sample from the Amazon rainforest consider: tropical moist broadleaf forest biome [ENVO:01000228]. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html"
+       In this field, report which major environmental system your sample or specimen came from. The systems identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. were you in the desert or a rainforest?). We recommend using subclasses of ENVOUs biome class: http://purl.obolibrary.org/obo/ENVO_00000428. Format (one term): termLabel [termID], Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a water sample from the photic zone in middle of the Atlantic Ocean, consider: oceanic epipelagic zone biome [ENVO:01000033]. Example: Annotating a sample from the Amazon rainforest consider: tropical moist broadleaf forest biome [ENVO:01000228]. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html
     multivalued: false
     is_a: attribute
     range: controlled term value  ## syntax: {termLabel} {[termID]}
@@ -162,7 +162,7 @@ slots:
     aliases:
       - local environmental context
     description: >-
-       "In this field, report the entity or entities which are in your sample or specimenUs local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale. Format (one term): termLabel [termID]; Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a pooled sample taken from various vegetation layers in a forest consider: canopy [ENVO:00000047]|herb and fern layer [ENVO:01000337]|litter layer [ENVO:01000338]|understory [01000335]|shrub layer [ENVO:01000336]. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html"
+       In this field, report the entity or entities which are in your sample or specimenUs local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale. Format (one term): termLabel [termID]; Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a pooled sample taken from various vegetation layers in a forest consider: canopy [ENVO:00000047]|herb and fern layer [ENVO:01000337]|litter layer [ENVO:01000338]|understory [01000335]|shrub layer [ENVO:01000336]. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html
     multivalued: false
     is_a: attribute
     range: controlled term value  ## syntax: {termLabel} {[termID]}
@@ -176,7 +176,7 @@ slots:
     aliases:
       - environmental medium
     description: >-
-       "In this field, report which environmental material or materials (pipe separated) immediately surrounded your sample or specimen prior to sampling, using one or more subclasses of ENVOUs environmental material class: http://purl.obolibrary.org/obo/ENVO_00010483. Format (one term): termLabel [termID]; Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a fish swimming in the upper 100 m of the Atlantic Ocean, consider: ocean water [ENVO:00002151]. Example: Annotating a duck on a pond consider: pond water [ENVO:00002228]|air ENVO_00002005. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html"
+       In this field, report which environmental material or materials (pipe separated) immediately surrounded your sample or specimen prior to sampling, using one or more subclasses of ENVOUs environmental material class: http://purl.obolibrary.org/obo/ENVO_00010483. Format (one term): termLabel [termID]; Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a fish swimming in the upper 100 m of the Atlantic Ocean, consider: ocean water [ENVO:00002151]. Example: Annotating a duck on a pond consider: pond water [ENVO:00002228]|air ENVO_00002005. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html
     multivalued: false
     is_a: attribute
     range: controlled term value  ## syntax: {termLabel} {[termID]}
@@ -190,7 +190,7 @@ slots:
     aliases:
       - environmental package
     description: >-
-       "MIxS extension for reporting of measurements and observations obtained from one or more of the environments where the sample was obtained. All environmental packages listed here are further defined in separate subtables. By giving the name of the environmental package, a selection of fields can be made from the subtables and can be reported"
+       MIxS extension for reporting of measurements and observations obtained from one or more of the environments where the sample was obtained. All environmental packages listed here are further defined in separate subtables. By giving the name of the environmental package, a selection of fields can be made from the subtables and can be reported
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [air|built environment|host-associated|human-associated|human-skin|human-oral|human-gut|human-vaginal|hydrocarbon resources-cores|hydrocarbon resources-fluids/swabs|microbial mat/biofilm|misc environment|plant-associated|sediment|soil|wastewater/sludge|water]
@@ -204,7 +204,7 @@ slots:
     aliases:
       - subspecific genetic lineage
     description: >-
-       "This should provide further information about the genetic distinctness of the sequenced organism by recording additional information e.g. serovar, serotype, biotype, ecotype, or any relevant genetic typing schemes like Group I plasmid. It can also contain alternative taxonomic information. It should contain both the lineage name, and the lineage rank, i.e. biovar:abc123"
+       This should provide further information about the genetic distinctness of the sequenced organism by recording additional information e.g. serovar, serotype, biotype, ecotype, or any relevant genetic typing schemes like Group I plasmid. It can also contain alternative taxonomic information. It should contain both the lineage name, and the lineage rank, i.e. biovar:abc123
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {rank name}:{text}
@@ -217,7 +217,7 @@ slots:
     aliases:
       - ploidy
     description: >-
-       "The ploidy level of the genome (e.g. allopolyploid, haploid, diploid, triploid, tetraploid). It has implications for the downstream study of duplicated gene and regions of the genomes (and perhaps for difficulties in assembly). For terms, please select terms listed under class ploidy (PATO:001374) of Phenotypic Quality Ontology (PATO), and for a browser of PATO (v 2018-03-27) please refer to http://purl.bioontology.org/ontology/PATO"
+       The ploidy level of the genome (e.g. allopolyploid, haploid, diploid, triploid, tetraploid). It has implications for the downstream study of duplicated gene and regions of the genomes (and perhaps for difficulties in assembly). For terms, please select terms listed under class ploidy (PATO:001374) of Phenotypic Quality Ontology (PATO), and for a browser of PATO (v 2018-03-27) please refer to http://purl.bioontology.org/ontology/PATO
     multivalued: false
     is_a: attribute
     range: controlled term value  ## syntax: {termLabel} {[termID]}
@@ -231,7 +231,7 @@ slots:
     aliases:
       - number of replicons
     description: >-
-       "Reports the number of replicons in a nuclear genome of eukaryotes, in the genome of a bacterium or archaea or the number of segments in a segmented virus. Always applied to the haploid chromosome count of a eukaryote"
+       Reports the number of replicons in a nuclear genome of eukaryotes, in the genome of a bacterium or archaea or the number of segments in a segmented virus. Always applied to the haploid chromosome count of a eukaryote
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {integer}
@@ -270,7 +270,7 @@ slots:
     aliases:
       - reference for biomaterial
     description: >-
-       "Primary publication if isolated before genome publication; otherwise, primary genome report"
+       Primary publication if isolated before genome publication; otherwise, primary genome report
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {PMID}|{DOI}|{URL}
@@ -283,7 +283,7 @@ slots:
     aliases:
       - source material identifiers
     description: >-
-       "A unique identifier assigned to a material sample (as defined by http://rs.tdwg.org/dwc/terms/materialSampleID, and as opposed to a particular digital record of a material sample) used for extracting nucleic acids, and subsequent sequencing. The identifier can refer either to the original material collected or to any derived sub-samples. The INSDC qualifiers /specimen_voucher, /bio_material, or /culture_collection may or may not share the same value as the source_mat_id field. For instance, the /specimen_voucher qualifier and source_mat_id may both contain 'UAM:Herps:14' , referring to both the specimen voucher and sampled tissue with the same identifier. However, the /culture_collection qualifier may refer to a value from an initial culture (e.g. ATCC:11775) while source_mat_id would refer to an identifier from some derived culture from which the nucleic acids were extracted (e.g. xatc123 or ark:/2154/R2)."
+       A unique identifier assigned to a material sample (as defined by http://rs.tdwg.org/dwc/terms/materialSampleID, and as opposed to a particular digital record of a material sample) used for extracting nucleic acids, and subsequent sequencing. The identifier can refer either to the original material collected or to any derived sub-samples. The INSDC qualifiers /specimen_voucher, /bio_material, or /culture_collection may or may not share the same value as the source_mat_id field. For instance, the /specimen_voucher qualifier and source_mat_id may both contain 'UAM:Herps:14' , referring to both the specimen voucher and sampled tissue with the same identifier. However, the /culture_collection qualifier may refer to a value from an initial culture (e.g. ATCC:11775) while source_mat_id would refer to an identifier from some derived culture from which the nucleic acids were extracted (e.g. xatc123 or ark:/2154/R2).
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}
@@ -309,7 +309,7 @@ slots:
     aliases:
       - observed biotic relationship
     description: >-
-       "Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g., parasite on species X; mutualist with species Y. The target organism is the subject of the relationship, and the other organism(s) is the object"
+       Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g., parasite on species X; mutualist with species Y. The target organism is the subject of the relationship, and the other organism(s) is the object
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [free living|parasitism|commensalism|symbiotic|mutualism]
@@ -323,7 +323,7 @@ slots:
     aliases:
       - specific host
     description: >-
-       "If there is a host involved, please provide its taxid (or environmental if not actually isolated from the dead or alive host - i.e. a pathogen could be isolated from a swipe of a bench etc) and report whether it is a laboratory or natural host)"
+       If there is a host involved, please provide its taxid (or environmental if not actually isolated from the dead or alive host - i.e. a pathogen could be isolated from a swipe of a bench etc) and report whether it is a laboratory or natural host)
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {NCBI taxid}|{text}
@@ -377,7 +377,7 @@ slots:
     aliases:
       - propagation
     description: >-
-       "This field is specific to different taxa. For phages: lytic/lysogenic, for plasmids: incompatibility group, for eukaryotes: sexual/asexual (Note: there is the strong opinion to name phage propagation obligately lytic or temperate, therefore we also give this choice"
+       This field is specific to different taxa. For phages: lytic/lysogenic, for plasmids: incompatibility group, for eukaryotes: sexual/asexual (Note: there is the strong opinion to name phage propagation obligately lytic or temperate, therefore we also give this choice
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}
@@ -390,7 +390,7 @@ slots:
     aliases:
       - encoded traits
     description: >-
-       "Should include key traits like antibiotic resistance or xenobiotic degradation phenotypes for plasmids, converting genes for phage"
+       Should include key traits like antibiotic resistance or xenobiotic degradation phenotypes for plasmids, converting genes for phage
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}
@@ -403,7 +403,7 @@ slots:
     aliases:
       - relationship to oxygen
     description: >-
-       "Is this organism an aerobe, anaerobe? Please note that aerobic and anaerobic are valid descriptors for microbial environments"
+       Is this organism an aerobe, anaerobe? Please note that aerobic and anaerobic are valid descriptors for microbial environments
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [aerobe|anaerobe|facultative|microaerophilic|microanaerobe|obligate aerobe|obligate anaerobe]
@@ -417,7 +417,7 @@ slots:
     aliases:
       - isolation and growth condition
     description: >-
-       "Publication reference in the form of pubmed ID (pmid), digital object identifier (doi) or url for isolation and growth condition specifications of the organism/material"
+       Publication reference in the form of pubmed ID (pmid), digital object identifier (doi) or url for isolation and growth condition specifications of the organism/material
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {PMID}|{DOI}|{URL}
@@ -443,7 +443,7 @@ slots:
     aliases:
       - sample material processing
     description: >-
-       "Any processing applied to the sample during or after retrieving the sample from environment. This field accepts OBI, for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI"
+       Any processing applied to the sample during or after retrieving the sample from environment. This field accepts OBI, for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI
     multivalued: false
     is_a: attribute
     range: controlled term value  ## syntax: {text}|{termLabel} {[termID]}
@@ -471,7 +471,7 @@ slots:
     aliases:
       - amount or size of sample collected
     description: >-
-       "Amount or size of sample (volume, mass or area) that was collected"
+       Amount or size of sample (volume, mass or area) that was collected
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -500,7 +500,7 @@ slots:
     aliases:
       - virus enrichment approach
     description: >-
-       "List of approaches used to enrich the sample for viruses, if any"
+       List of approaches used to enrich the sample for viruses, if any
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [filtration|ultrafiltration|centrifugation|ultracentrifugation|PEG Precipitation|FeCl Precipitation|CsCl density gradient|DNAse|RNAse|targeted sequence capture|other|none]
@@ -514,7 +514,7 @@ slots:
     aliases:
       - nucleic acid extraction
     description: >-
-       "A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the material separation to recover the nucleic acid fraction from a sample"
+       A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the material separation to recover the nucleic acid fraction from a sample
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {PMID}|{DOI}|{URL}
@@ -527,7 +527,7 @@ slots:
     aliases:
       - nucleic acid amplification
     description: >-
-       "A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the enzymatic amplification (PCR, TMA, NASBA) of specific nucleic acids"
+       A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the enzymatic amplification (PCR, TMA, NASBA) of specific nucleic acids
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {PMID}|{DOI}|{URL}
@@ -566,7 +566,7 @@ slots:
     aliases:
       - library layout
     description: >-
-       "Specify whether to expect single, paired, or other configuration of reads"
+       Specify whether to expect single, paired, or other configuration of reads
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [paired|single|vector|other]
@@ -632,7 +632,7 @@ slots:
     aliases:
       - pcr primers
     description: >-
-       "PCR primers that were used to amplify the sequence of the targeted gene, locus or subfragment. This field should contain all the primers used for a single PCR reaction if multiple forward or reverse primers are present in a single PCR reaction. The primer sequence should be reported in uppercase letters"
+       PCR primers that were used to amplify the sequence of the targeted gene, locus or subfragment. This field should contain all the primers used for a single PCR reaction if multiple forward or reverse primers are present in a single PCR reaction. The primer sequence should be reported in uppercase letters
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: FWD:{dna};REV:{dna}
@@ -645,7 +645,7 @@ slots:
     aliases:
       - multiplex identifiers
     description: >-
-       "Molecular barcodes, called Multiplex Identifiers (MIDs), that are used to specifically tag unique samples in a sequencing run. Sequence should be reported in uppercase letters"
+       Molecular barcodes, called Multiplex Identifiers (MIDs), that are used to specifically tag unique samples in a sequencing run. Sequence should be reported in uppercase letters
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {dna}
@@ -685,7 +685,7 @@ slots:
     aliases:
       - sequencing method
     description: >-
-       "Sequencing method used; e.g. Sanger, pyrosequencing, ABI-solid"
+       Sequencing method used; e.g. Sanger, pyrosequencing, ABI-solid
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [MinION|GridION|PromethION|454 GS|454 GS 20|454 GS FLX|454 GS FLX+|454 GS FLX Titanium|454 GS Junior|Illumina Genome Analyzer|Illumina Genome Analyzer II|Illumina Genome Analyzer IIx|Illumina HiSeq 4000|Illumina HiSeq 3000|Illumina HiSeq 2500|Illumina HiSeq 2000|Illumina HiSeq 1500|Illumina HiSeq 1000|Illumina HiScanSQ|Illumina MiSeq|Illumina HiSeq X Five|Illumina HiSeq X Ten|Illumina NextSeq 500|Illumina NextSeq 550|AB SOLiD System|AB SOLiD System 2.0|AB SOLiD System 3.0|AB SOLiD 3 Plus System|AB SOLiD 4 System|AB SOLiD 4hq System|AB SOLiD PI System|AB 5500 Genetic Analyzer|AB 5500xl Genetic Analyzer|AB 5500xl-W Genetic Analysis System|Ion Torrent PGM|Ion Torrent Proton|Ion Torrent S5|Ion Torrent S5 XL|PacBio RS|PacBio RS II|Sequel|AB 3730xL Genetic Analyzer|AB 3730 Genetic Analyzer|AB 3500xL Genetic Analyzer|AB 3500 Genetic Analyzer|AB 3130xL Genetic Analyzer|AB 3130 Genetic Analyzer|AB 310 Genetic Analyzer|BGISEQ-500]
@@ -699,7 +699,7 @@ slots:
     aliases:
       - sequence quality check
     description: >-
-       "Indicate if the sequence has been called by automatic systems (none) or undergone a manual editing procedure (e.g. by inspecting the raw data or chromatograms). Applied only for sequences that are not submitted to SRA,ENA or DRA"
+       Indicate if the sequence has been called by automatic systems (none) or undergone a manual editing procedure (e.g. by inspecting the raw data or chromatograms). Applied only for sequences that are not submitted to SRA,ENA or DRA
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [none|manually edited]
@@ -713,7 +713,7 @@ slots:
     aliases:
       - chimera check
     description: >-
-       "A chimeric sequence, or chimera for short, is a sequence comprised of two or more phylogenetically distinct parent sequences. Chimeras are usually PCR artifacts thought to occur when a prematurely terminated amplicon reanneals to a foreign DNA strand and is copied to completion in the following PCR cycles. The point at which the chimeric sequence changes from one parent to the next is called the breakpoint or conversion point "
+       A chimeric sequence, or chimera for short, is a sequence comprised of two or more phylogenetically distinct parent sequences. Chimeras are usually PCR artifacts thought to occur when a prematurely terminated amplicon reanneals to a foreign DNA strand and is copied to completion in the following PCR cycles. The point at which the chimeric sequence changes from one parent to the next is called the breakpoint or conversion point
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {software};{version};{parameters}
@@ -740,7 +740,7 @@ slots:
     aliases:
       - assembly quality
     description: >-
-       "The assembly quality category is based on sets of criteria outlined for each assembly quality category. For MISAG/MIMAG; Finished: Single, validated, contiguous sequence per replicon without gaps or ambiguities with a consensus error rate equivalent to Q50 or better. High Quality Draft:Multiple fragments where gaps span repetitive regions. Presence of the 23S, 16S and 5S rRNA genes and at least 18 tRNAs. Medium Quality Draft:Many fragments with little to no review of assembly other than reporting of standard assembly statistics. Low Quality Draft:Many fragments with little to no review of assembly other than reporting of standard assembly statistics. Assembly statistics include, but are not limited to total assembly size, number of contigs, contig N50/L50, and maximum contig length. For MIUVIG; Finished: Single, validated, contiguous sequence per replicon without gaps or ambiguities, with extensive manual review and editing to annotate putative gene functions and transcriptional units. High-quality draft genome: One or multiple fragments, totaling 3 90% of the expected genome or replicon sequence or predicted complete. Genome fragment(s): One or multiple fragments, totalling < 90% of the expected genome or replicon sequence, or for which no genome size could be estimated"
+       The assembly quality category is based on sets of criteria outlined for each assembly quality category. For MISAG/MIMAG; Finished: Single, validated, contiguous sequence per replicon without gaps or ambiguities with a consensus error rate equivalent to Q50 or better. High Quality Draft:Multiple fragments where gaps span repetitive regions. Presence of the 23S, 16S and 5S rRNA genes and at least 18 tRNAs. Medium Quality Draft:Many fragments with little to no review of assembly other than reporting of standard assembly statistics. Low Quality Draft:Many fragments with little to no review of assembly other than reporting of standard assembly statistics. Assembly statistics include, but are not limited to total assembly size, number of contigs, contig N50/L50, and maximum contig length. For MIUVIG; Finished: Single, validated, contiguous sequence per replicon without gaps or ambiguities, with extensive manual review and editing to annotate putative gene functions and transcriptional units. High-quality draft genome: One or multiple fragments, totaling 3 90% of the expected genome or replicon sequence or predicted complete. Genome fragment(s): One or multiple fragments, totalling < 90% of the expected genome or replicon sequence, or for which no genome size could be estimated
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [Finished genome|High-quality draft genome|Medium-quality draft genome|Low-quality draft genome|Genome fragment(s)]
@@ -767,7 +767,7 @@ slots:
     aliases:
       - assembly software
     description: >-
-       "Tool(s) used for assembly, including version number and parameters"
+       Tool(s) used for assembly, including version number and parameters
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {software};{version};{parameters}
@@ -780,7 +780,7 @@ slots:
     aliases:
       - annotation
     description: >-
-       "Tool used for annotation, or for cases where annotation was provided by a community jamboree or model organism database rather than by a specific submitter"
+       Tool used for annotation, or for cases where annotation was provided by a community jamboree or model organism database rather than by a specific submitter
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}
@@ -793,7 +793,7 @@ slots:
     aliases:
       - number of contigs
     description: >-
-       "Total number of contigs in the cleaned/submitted assembly that makes up a given genome, SAG, MAG, or UViG"
+       Total number of contigs in the cleaned/submitted assembly that makes up a given genome, SAG, MAG, or UViG
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {integer}
@@ -806,7 +806,7 @@ slots:
     aliases:
       - feature prediction
     description: >-
-       "Method used to predict UViGs features such as ORFs, integration site, etc."
+       Method used to predict UViGs features such as ORFs, integration site, etc.
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {software};{version};{parameters}
@@ -819,7 +819,7 @@ slots:
     aliases:
       - reference database(s)
     description: >-
-       "List of database(s) used for ORF annotation, along with version number and reference to website or publication"
+       List of database(s) used for ORF annotation, along with version number and reference to website or publication
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {database};{version};{reference}
@@ -832,7 +832,7 @@ slots:
     aliases:
       - similarity search method
     description: >-
-       "Tool used to compare ORFs with database, along with version and cutoffs used"
+       Tool used to compare ORFs with database, along with version and cutoffs used
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {software};{version};{parameters}
@@ -845,7 +845,7 @@ slots:
     aliases:
       - taxonomic classification
     description: >-
-       "Method used for taxonomic classification, along with reference database used, classification rank, and thresholds used to classify new genomes"
+       Method used for taxonomic classification, along with reference database used, classification rank, and thresholds used to classify new genomes
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}
@@ -911,7 +911,7 @@ slots:
     aliases:
       - completeness score
     description: >-
-       "Completeness score is typically based on either the fraction of markers found as compared to a database or the percent of a genome found as compared to a closely related reference genome. High Quality Draft: >90%, Medium Quality Draft: >50%, and Low Quality Draft: < 50% should have the indicated completeness scores"
+       Completeness score is typically based on either the fraction of markers found as compared to a database or the percent of a genome found as compared to a closely related reference genome. High Quality Draft: >90%, Medium Quality Draft: >50%, and Low Quality Draft: < 50% should have the indicated completeness scores
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [high|med|low];{percentage}
@@ -924,7 +924,7 @@ slots:
     aliases:
       - completeness software
     description: >-
-       "Tools used for completion estimate, i.e. checkm, anvi'o, busco"
+       Tools used for completion estimate, i.e. checkm, anvi'o, busco
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {software};{version}
@@ -937,7 +937,7 @@ slots:
     aliases:
       - completeness approach
     description: >-
-       "The approach used to determine the completeness of a given SAG or MAG, which would typically make use of a set of conserved marker genes or a closely related reference genome. For UViG completeness, include reference genome or group used, and contig feature suggesting a complete genome"
+       The approach used to determine the completeness of a given SAG or MAG, which would typically make use of a set of conserved marker genes or a closely related reference genome. For UViG completeness, include reference genome or group used, and contig feature suggesting a complete genome
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [marker gene|reference based|other]
@@ -951,7 +951,7 @@ slots:
     aliases:
       - contamination score 
     description: >-
-       "The contamination score is based on the fraction of single-copy genes that are observed more than once in a query genome. The following scores are acceptable for; High Quality Draft: < 5%, Medium Quality Draft: < 10%, Low Quality Draft: < 10%. Contamination must be below 5% for a SAG or MAG to be deposited into any of the public databases"
+       The contamination score is based on the fraction of single-copy genes that are observed more than once in a query genome. The following scores are acceptable for; High Quality Draft: < 5%, Medium Quality Draft: < 10%, Low Quality Draft: < 10%. Contamination must be below 5% for a SAG or MAG to be deposited into any of the public databases
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {float} percentage
@@ -979,7 +979,7 @@ slots:
     aliases:
       - contamination screening parameters
     description: >-
-       "Specific parameters used in the decontamination sofware, such as reference database, coverage, and kmers. Combinations of these parameters may also be used, i.e. kmer and coverage, or reference database and kmer"
+       Specific parameters used in the decontamination sofware, such as reference database, coverage, and kmers. Combinations of these parameters may also be used, i.e. kmer and coverage, or reference database and kmer
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [ref db|kmer|coverage|combination];{text|integer}
@@ -1130,7 +1130,7 @@ slots:
     aliases:
       - viral identification software
     description: >-
-       "Tool(s) used for the identification of UViG as a viral genome, software or protocol name  including version number, parameters, and cutoffs used"
+       Tool(s) used for the identification of UViG as a viral genome, software or protocol name  including version number, parameters, and cutoffs used
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {software};{version};{parameters}
@@ -1185,7 +1185,7 @@ slots:
     aliases:
       - vOTU classification approach
     description: >-
-       "Cutoffs and approach used when clustering new UViGs in Rspecies-levelS vOTUs. Note that results from standard 95% ANI / 85% AF clustering should be provided alongside vOTUS defined from another set of thresholds, even if the latter are the ones primarily used during the analysis"
+       Cutoffs and approach used when clustering new UViGs in Rspecies-levelS vOTUs. Note that results from standard 95% ANI / 85% AF clustering should be provided alongside vOTUS defined from another set of thresholds, even if the latter are the ones primarily used during the analysis
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {ANI cutoff};{AF cutoff};{clustering method}
@@ -1198,7 +1198,7 @@ slots:
     aliases:
       - vOTU sequence comparison approach
     description: >-
-       "Tool and thresholds used to compare sequences when computing ""species-level"" vOTUs"
+       Tool and thresholds used to compare sequences when computing 'species-level' vOTUs
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {software};{version};{parameters}
@@ -1211,7 +1211,7 @@ slots:
     aliases:
       - vOTU database
     description: >-
-       "Reference database (i.e. sequences not generated as part of the current study) used to cluster new genomes in ""species-level"" vOTUs, if any"
+       Reference database (i.e. sequences not generated as part of the current study) used to cluster new genomes in 'species-level' vOTUs, if any
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {database};{version}
@@ -1238,7 +1238,7 @@ slots:
     aliases:
       - host prediction estimated accuracy
     description: >-
-       "For each tool or approach used for host prediction, estimated false discovery rates should be included, either computed de novo or from the literature"
+       For each tool or approach used for host prediction, estimated false discovery rates should be included, either computed de novo or from the literature
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}
@@ -1264,7 +1264,7 @@ slots:
     aliases:
       - relevant standard operating procedures
     description: >-
-       "Standard operating procedures used in assembly and/or annotation of genomes, metagenomes or environmental sequences"
+       Standard operating procedures used in assembly and/or annotation of genomes, metagenomes or environmental sequences
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {PMID}|{DOI}|{URL}
@@ -1316,7 +1316,7 @@ slots:
     aliases:
       - chemical administration
     description: >-
-       "List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi"
+       List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi
     multivalued: false
     is_a: attribute
     range: controlled term value  ## syntax: {termLabel} {[termID]};{timestamp}
@@ -1327,7 +1327,7 @@ slots:
     aliases:
       - humidity
     description: >-
-       "Amount of water vapour in the air, at the time of sampling"
+       Amount of water vapour in the air, at the time of sampling
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -1353,7 +1353,7 @@ slots:
     aliases:
       - miscellaneous parameter
     description: >-
-       "Any other measurement performed or parameter collected, that is not listed here"
+       Any other measurement performed or parameter collected, that is not listed here
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit}
@@ -1365,7 +1365,7 @@ slots:
     aliases:
       - organism count
     description: >-
-       "Total cell count of any organism (or group of organisms) per gram, volume or area of sample, should include name of organism followed by count. The method that was used for the enumeration (e.g. qPCR, atp, mpn, etc.) Should also be provided. (example: total prokaryotes; 3.5e7 cells per ml; qpcr)"
+       Total cell count of any organism (or group of organisms) per gram, volume or area of sample, should include name of organism followed by count. The method that was used for the enumeration (e.g. qPCR, atp, mpn, etc.) Should also be provided. (example: total prokaryotes; 3.5e7 cells per ml; qpcr)
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit};[qPCR|ATP|MPN|other]
@@ -1402,7 +1402,7 @@ slots:
     aliases:
       - perturbation
     description: >-
-       "Type of perturbation, e.g. chemical administration, physical disturbance, etc., coupled with perturbation regimen including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types"
+       Type of perturbation, e.g. chemical administration, physical disturbance, etc., coupled with perturbation regimen including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text};{Rn/start_time/end_time/duration}
@@ -1413,7 +1413,7 @@ slots:
     aliases:
       - pollutants
     description: >-
-       "Pollutant types and, amount or concentrations measured at the time of sampling; can report multiple pollutants by entering numeric values preceded by name of pollutant"
+       Pollutant types and, amount or concentrations measured at the time of sampling; can report multiple pollutants by entering numeric values preceded by name of pollutant
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit}
@@ -1425,7 +1425,7 @@ slots:
     aliases:
       - respirable particulate matter
     description: >-
-       "Concentration of substances that remain suspended in the air, and comprise mixtures of organic and inorganic substances (PM10 and PM2.5); can report multiple PM's by entering numeric values preceded by name of PM"
+       Concentration of substances that remain suspended in the air, and comprise mixtures of organic and inorganic substances (PM10 and PM2.5); can report multiple PM's by entering numeric values preceded by name of PM
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit}
@@ -1437,7 +1437,7 @@ slots:
     aliases:
       - sample salinity
     description: >-
-       "Salinity is the total concentration of all dissolved salts in a liquid or solid (in the form of an extract obtained by centrifugation) sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater"
+       Salinity is the total concentration of all dissolved salts in a liquid or solid (in the form of an extract obtained by centrifugation) sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -1461,7 +1461,7 @@ slots:
     aliases:
       - sample storage location
     description: >-
-       "Location at which sample was stored, usually name of a specific freezer/room"
+       Location at which sample was stored, usually name of a specific freezer/room
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}
@@ -1472,7 +1472,7 @@ slots:
     aliases:
       - sample storage temperature
     description: >-
-       "Temperature at which sample was stored, e.g. -80 degree Celsius"
+       Temperature at which sample was stored, e.g. -80 degree Celsius
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -1485,7 +1485,7 @@ slots:
     aliases:
       - sample volume or weight for DNA extraction
     description: >-
-       "Volume (ml), weight (g) of processed sample, or surface area swabbed from sample for DNA extraction"
+       Volume (ml), weight (g) of processed sample, or surface area swabbed from sample for DNA extraction
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -1608,7 +1608,7 @@ slots:
     aliases:
       - relative air humidity
     description: >-
-       "Partial vapor and air pressure, density of the vapor and air, or by the actual mass of the vapor and air"
+       Partial vapor and air pressure, density of the vapor and air, or by the actual mass of the vapor and air
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -1710,7 +1710,7 @@ slots:
     aliases:
       - dew point 
     description: >-
-       "The temperature to which a given parcel of humid air must be cooled, at constant barometric pressure, for water vapor to condense into water. "
+       The temperature to which a given parcel of humid air must be cooled, at constant barometric pressure, for water vapor to condense into water.
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -1723,7 +1723,7 @@ slots:
     aliases:
       - indoor space 
     description: >-
-       "A distinguishable space within a structure, the purpose for which discrete areas of a building is used"
+       A distinguishable space within a structure, the purpose for which discrete areas of a building is used
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [bedroom|office|bathroom|foyer|kitchen|locker room|hallway|elevator]
@@ -1795,7 +1795,7 @@ slots:
     aliases:
       - light type
     description: >-
-       "Application of light to achieve some practical or aesthetic effect. Lighting includes the use of both artificial light sources such as lamps and light fixtures, as well as natural illumination by capturing daylight. Can also include absence of light"
+       Application of light to achieve some practical or aesthetic effect. Lighting includes the use of both artificial light sources such as lamps and light fixtures, as well as natural illumination by capturing daylight. Can also include absence of light
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [natural light|electric light|desk lamp|flourescent lights|natural light|none]
@@ -1807,7 +1807,7 @@ slots:
     aliases:
       - sample size sorting method
     description: >-
-       "Method by which samples are sorted; open face filter collecting total suspended particles, prefilter to remove particles larger than X micrometers in diameter, where common values of X would be 10 and 2.5 full size sorting in a cascade impactor."
+       Method by which samples are sorted; open face filter collecting total suspended particles, prefilter to remove particles larger than X micrometers in diameter, where common values of X would be 10 and 2.5 full size sorting in a cascade impactor.
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}
@@ -1876,7 +1876,7 @@ slots:
     aliases:
       - adjacent rooms
     description: >-
-       "List of rooms (room number, room name) immediately adjacent to the sampling room"
+       List of rooms (room number, room name) immediately adjacent to the sampling room
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text};{integer}
@@ -1887,7 +1887,7 @@ slots:
     aliases:
       - aerospace structure
     description: >-
-       "Aerospace structures typically consist of thin plates with stiffeners for the external surfaces, bulkheads and frames to support the shape and fasteners such as welds, rivets, screws and bolts to hold the components together"
+       Aerospace structures typically consist of thin plates with stiffeners for the external surfaces, bulkheads and frames to support the shape and fasteners such as welds, rivets, screws and bolts to hold the components together
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [plane|glider]
@@ -1899,7 +1899,7 @@ slots:
     aliases:
       - amount of light
     description: >-
-       "The unit of illuminance and luminous emittance, measuring luminous flux per unit area"
+       The unit of illuminance and luminous emittance, measuring luminous flux per unit area
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -1912,7 +1912,7 @@ slots:
     aliases:
       - architectural structure
     description: >-
-       "An architectural structure is a human-made, free-standing, immobile outdoor construction "
+       An architectural structure is a human-made, free-standing, immobile outdoor construction
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [building|shed|home]
@@ -2081,7 +2081,7 @@ slots:
     aliases:
       - ceiling texture
     description: >-
-       "The feel, appearance, or consistency of a ceiling surface"
+       The feel, appearance, or consistency of a ceiling surface
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [crows feet|crows-foot stomp|double skip|hawk and trowel|knockdown|popcorn|orange peel|rosebud stomp|Santa-Fe texture|skip trowel|smooth|stomp knockdown|swirl]
@@ -2140,7 +2140,7 @@ slots:
     aliases:
       - "design, construction, and operation documents"
     description: >-
-       "The building design, construction and operation documents"
+       The building design, construction and operation documents
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [building information model|commissioning report|complaint logs|contract administration|cost estimate|janitorial schedules or logs|maintenance plans|schedule|sections|shop drawings|submittals|ventilation system|windows] 
@@ -2285,7 +2285,7 @@ slots:
     aliases:
       - drawings
     description: >-
-       "The buildings architectural drawings; if design is chosen, indicate phase-conceptual, schematic, design development, and construction documents"
+       The buildings architectural drawings; if design is chosen, indicate phase-conceptual, schematic, design development, and construction documents
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [operation|as built|construction|bid|design|building navigation map|diagram|sketch]
@@ -2404,7 +2404,7 @@ slots:
     aliases:
       - floor count
     description: >-
-       "The number of floors in the building, including basements and mechanical penthouse"
+       The number of floors in the building, including basements and mechanical penthouse
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {integer}
@@ -2606,7 +2606,7 @@ slots:
     aliases:
       - last time swept/mopped/vacuumed
     description: >-
-       "The last time the floor was cleaned (swept, mopped, vacuumed)"
+       The last time the floor was cleaned (swept, mopped, vacuumed)
     multivalued: false
     is_a: attribute
     range: timestamp value  ## syntax: {timestamp}
@@ -2770,7 +2770,7 @@ slots:
     aliases:
       - room architectural elements
     description: >-
-       "The unique details and component parts that, together, form the architecture of a distinguisahable space within a built structure"
+       The unique details and component parts that, together, form the architecture of a distinguisahable space within a built structure
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}
@@ -2804,7 +2804,7 @@ slots:
     aliases:
       - room dimensions
     description: >-
-       "The length, width and height of sampling room"
+       The length, width and height of sampling room
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {integer} {unit} x {integer} {unit} x {integer} {unit}
@@ -2933,7 +2933,7 @@ slots:
     aliases:
       - rooms that are on the same hallway
     description: >-
-       "List of room(s) (room number, room name) located in the same hallway as sampling room"
+       List of room(s) (room number, room name) located in the same hallway as sampling room
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text};{integer}
@@ -2944,7 +2944,7 @@ slots:
     aliases:
       - rooms that share a door with sampling room
     description: >-
-       "List of room(s) (room number, room name) sharing a door with the sampling room"
+       List of room(s) (room number, room name) sharing a door with the sampling room
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text};{integer}
@@ -2955,7 +2955,7 @@ slots:
     aliases:
       - rooms that share a wall with sampling room
     description: >-
-       "List of room(s) (room number, room name) sharing a wall with the sampling room"
+       List of room(s) (room number, room name) sharing a wall with the sampling room
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text};{integer}
@@ -2978,7 +2978,7 @@ slots:
     aliases:
       - sampling floor
     description: >-
-       "The floor of the building, where the sampling room is located"
+       The floor of the building, where the sampling room is located
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [lobby|basement|1st floor|2nd floor|{integer} floor]
@@ -3095,7 +3095,7 @@ slots:
     aliases:
       - specific humidity
     description: >-
-       "The mass of water vapour in a unit mass of moist air, usually expressed as grams of vapour per kilogram of air, or, in air conditioning, as grains per pound."
+       The mass of water vapour in a unit mass of moist air, usually expressed as grams of vapour per kilogram of air, or, in air conditioning, as grains per pound.
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -3108,7 +3108,7 @@ slots:
     aliases:
       - specifications
     description: >-
-       "The building specifications. If design is chosen, indicate phase: conceptual, schematic, design development, construction documents"
+       The building specifications. If design is chosen, indicate phase: conceptual, schematic, design development, construction documents
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [operation|as built|construction|bid|design|photos]
@@ -3267,7 +3267,7 @@ slots:
     aliases:
       - wall texture
     description: >-
-       "The feel, appearance, or consistency of a wall surface"
+       The feel, appearance, or consistency of a wall surface
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [crows feet|crows-foot stomp||double skip|hawk and trowel|knockdown|popcorn|orange peel|rosebud stomp|Santa-Fe texture|skip trowel|smooth|stomp knockdown|swirl]
@@ -3461,7 +3461,7 @@ slots:
     aliases:
       - ancestral data
     description: >-
-       "Information about either pedigree or other ancestral information description (e.g. parental variety in case of mutant or selection), e.g. A/3*B (meaning [(A x B) x B] x B)"
+       Information about either pedigree or other ancestral information description (e.g. parental variety in case of mutant or selection), e.g. A/3*B (meaning [(A x B) x B] x B)
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}
@@ -3484,7 +3484,7 @@ slots:
     aliases:
       - genetic modification
     description: >-
-       "Genetic modifications of the genome of an organism, which may occur naturally by spontaneous mutation, or be introduced by some experimental means, e.g. specification of a transgene or the gene knocked-out or details of transient transfection"
+       Genetic modifications of the genome of an organism, which may occur naturally by spontaneous mutation, or be introduced by some experimental means, e.g. specification of a transgene or the gene knocked-out or details of transient transfection
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {PMID}|{DOI}|{URL}|{text}
@@ -3495,7 +3495,7 @@ slots:
     aliases:
       - host common name
     description: >-
-       "Common name of the host, e.g. Human"
+       Common name of the host, e.g. Human
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}
@@ -3518,7 +3518,7 @@ slots:
     aliases:
       - sample disease stage
     description: >-
-       "Stage of the disease at the time of sample collection, e.g. inoculation, penetration, infection, growth and reproduction, dissemination of pathogen."
+       Stage of the disease at the time of sample collection, e.g. inoculation, penetration, infection, growth and reproduction, dissemination of pathogen.
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}
@@ -3529,7 +3529,7 @@ slots:
     aliases:
       - host taxid
     description: >-
-       "NCBI taxon id of the host, e.g. 9606"
+       NCBI taxon id of the host, e.g. 9606
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {NCBI taxid}
@@ -3540,7 +3540,7 @@ slots:
     aliases:
       - host subject id
     description: >-
-       "A unique identifier by which each subject can be referred to, de-identified, e.g. #131"
+       A unique identifier by which each subject can be referred to, de-identified, e.g. #131
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}
@@ -3551,7 +3551,7 @@ slots:
     aliases:
       - host age
     description: >-
-       "Age of host at the time of sampling; relevant scale depends on species and study, e.g. Could be seconds for amoebae or centuries for trees"
+       Age of host at the time of sampling; relevant scale depends on species and study, e.g. Could be seconds for amoebae or centuries for trees
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -3587,7 +3587,7 @@ slots:
     aliases:
       - host disease status
     description: >-
-       "List of diseases with which the host has been diagnosed; can include multiple diagnoses. The value of the field depends on host; for humans the terms should be chosen from do (disease ontology) at http://www.disease-ontology.org, other hosts are free text"
+       List of diseases with which the host has been diagnosed; can include multiple diagnoses. The value of the field depends on host; for humans the terms should be chosen from do (disease ontology) at http://www.disease-ontology.org, other hosts are free text
     multivalued: false
     is_a: attribute
     range: controlled term value  ## syntax: {termLabel} {[termID]}|{text}
@@ -3609,7 +3609,7 @@ slots:
     aliases:
       - host body site
     description: >-
-       "Name of body site where the sample was obtained from, such as a specific organ or tissue (tongue, lung etc...). For foundational model of anatomy ontology (fma) (v 4.11.0) or Uber-anatomy ontology (UBERON) (v releases/2014-06-15) terms, please see http://purl.bioontology.org/ontology/FMA or http://purl.bioontology.org/ontology/UBERON"
+       Name of body site where the sample was obtained from, such as a specific organ or tissue (tongue, lung etc...). For foundational model of anatomy ontology (fma) (v 4.11.0) or Uber-anatomy ontology (UBERON) (v releases/2014-06-15) terms, please see http://purl.bioontology.org/ontology/FMA or http://purl.bioontology.org/ontology/UBERON
     multivalued: false
     is_a: attribute
     range: controlled term value  ## syntax: {termLabel} {[termID]}
@@ -3621,7 +3621,7 @@ slots:
     aliases:
       - host body product
     description: >-
-       "Substance produced by the body, e.g. Stool, mucus, where the sample was obtained from. For foundational model of anatomy ontology (fma) or Uber-anatomy ontology (UBERON) terms, please see https://www.ebi.ac.uk/ols/ontologies/fma or https://www.ebi.ac.uk/ols/ontologies/uberon"
+       Substance produced by the body, e.g. Stool, mucus, where the sample was obtained from. For foundational model of anatomy ontology (fma) or Uber-anatomy ontology (UBERON) terms, please see https://www.ebi.ac.uk/ols/ontologies/fma or https://www.ebi.ac.uk/ols/ontologies/uberon
     multivalued: false
     is_a: attribute
     range: controlled term value  ## syntax: {termLabel} {[termID]}
@@ -3633,7 +3633,7 @@ slots:
     aliases:
       - host total mass
     description: >-
-       "Total mass of the host at collection, the unit depends on host"
+       Total mass of the host at collection, the unit depends on host
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -3672,7 +3672,7 @@ slots:
     aliases:
       - host diet
     description: >-
-       "Type of diet depending on the host, for animals omnivore, herbivore etc., for humans high-fat, meditteranean etc.; can include multiple diet types"
+       Type of diet depending on the host, for animals omnivore, herbivore etc., for humans high-fat, meditteranean etc.; can include multiple diet types
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}
@@ -3738,7 +3738,7 @@ slots:
     aliases:
       - host infra-specific rank
     description: >-
-       "Taxonomic rank information about the host below subspecies level, such as variety, form, rank etc."
+       Taxonomic rank information about the host below subspecies level, such as variety, form, rank etc.
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}
@@ -3760,7 +3760,7 @@ slots:
     aliases:
       - host phenotype
     description: >-
-       "Phenotype of human or other host. For phenotypic quality ontology (pato) (v 2018-03-27) terms, please see http://purl.bioontology.org/ontology/pato. For Human Phenotype Ontology (HP) (v 2018-06-13) please see http://purl.bioontology.org/ontology/HP"
+       Phenotype of human or other host. For phenotypic quality ontology (pato) (v 2018-03-27) terms, please see http://purl.bioontology.org/ontology/pato. For Human Phenotype Ontology (HP) (v 2018-06-13) please see http://purl.bioontology.org/ontology/HP
     multivalued: false
     is_a: attribute
     range: controlled term value  ## syntax: {termLabel} {[termID]}
@@ -3798,7 +3798,7 @@ slots:
     aliases:
       - host blood pressure diastolic
     description: >-
-       "Resting diastolic blood pressure, measured as mm mercury"
+       Resting diastolic blood pressure, measured as mm mercury
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -3811,7 +3811,7 @@ slots:
     aliases:
       - host blood pressure systolic
     description: >-
-       "Resting systolic blood pressure, measured as mm mercury"
+       Resting systolic blood pressure, measured as mm mercury
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -3846,7 +3846,7 @@ slots:
     aliases:
       - gravidity
     description: >-
-       "Whether or not subject is gravid, and if yes date due or date post-conception, specifying which is used"
+       Whether or not subject is gravid, and if yes date due or date post-conception, specifying which is used
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {boolean};{timestamp}
@@ -3880,7 +3880,7 @@ slots:
     aliases:
       - host HIV status
     description: >-
-       "HIV status of subject, if yes HAART initiation status should also be indicated as [YES or NO]"
+       HIV status of subject, if yes HAART initiation status should also be indicated as [YES or NO]
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {boolean};{boolean}
@@ -3903,7 +3903,7 @@ slots:
     aliases:
       - host body-mass index
     description: >-
-       "Body mass index, calculated as weight/(height)squared"
+       Body mass index, calculated as weight/(height)squared
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -3916,7 +3916,7 @@ slots:
     aliases:
       - major diet change in last six months
     description: >-
-       "Specification of major diet changes in the last six months, if yes the change should be specified"
+       Specification of major diet changes in the last six months, if yes the change should be specified
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {boolean};{text}
@@ -3927,7 +3927,7 @@ slots:
     aliases:
       - weight loss in last three months
     description: >-
-       "Specification of weight loss in the last three months, if yes should be further specified to include amount of weight loss"
+       Specification of weight loss in the last three months, if yes should be further specified to include amount of weight loss
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {boolean};{float} {unit}
@@ -3962,7 +3962,7 @@ slots:
     aliases:
       - presence of pets or farm animals
     description: >-
-       "Specification of presence of pets or farm animals in the environment of subject, if yes the animals should be specified; can include multiple animals present"
+       Specification of presence of pets or farm animals in the environment of subject, if yes the animals should be specified; can include multiple animals present
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {boolean};{text}
@@ -4008,7 +4008,7 @@ slots:
     aliases:
       - study completion status
     description: >-
-       "Specification of study completion status, if no the reason should be specified"
+       Specification of study completion status, if no the reason should be specified
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {boolean};[adverse event|non-compliance|lost to follow up|other-specify]
@@ -4053,7 +4053,7 @@ slots:
     aliases:
       - host pulse
     description: >-
-       "Resting pulse, measured as beats per minute"
+       Resting pulse, measured as beats per minute
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -4088,7 +4088,7 @@ slots:
     aliases:
       - amniotic fluid/foetal health status
     description: >-
-       "Specification of foetal health status, should also include abortion"
+       Specification of foetal health status, should also include abortion
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}
@@ -4300,7 +4300,7 @@ slots:
     aliases:
       - HRT
     description: >-
-       "Whether subject had hormone replacement theraphy, and if yes start date"
+       Whether subject had hormone replacement theraphy, and if yes start date
     multivalued: false
     is_a: attribute
     range: timestamp value  ## syntax: {timestamp}
@@ -4334,7 +4334,7 @@ slots:
     aliases:
       - urogenital disorder
     description: >-
-       "History of urogenital disorders, can include multiple disorders"
+       History of urogenital disorders, can include multiple disorders
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}
@@ -4345,7 +4345,7 @@ slots:
     aliases:
       - hydrocarbon resource type
     description: >-
-       "Main Hydrocarbon Resource type. The term ""Hydrocarbon Resource"" HCR defined as a natural environmental feature containing large amounts of hydrocarbons at high concentrations potentially suitable for commercial exploitation.  This term should not be confused with the Hydrocarbon Occurrence term which also includes hydrocarbon-rich environments with currently limited commercial interest such as seeps, outcrops, gas hydrates etc. If ""other"" is specified, please propose entry in ""additional info"" field"
+       Main Hydrocarbon Resource type. The term 'Hydrocarbon Resource' HCR defined as a natural environmental feature containing large amounts of hydrocarbons at high concentrations potentially suitable for commercial exploitation.  This term should not be confused with the Hydrocarbon Occurrence term which also includes hydrocarbon-rich environments with currently limited commercial interest such as seeps, outcrops, gas hydrates etc. If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [Oil Reservoir|Gas Reservoir|Oil Sand|Coalbed|Shale|Tight Oil Reservoir|Tight Gas Reservoir|other]
@@ -4357,7 +4357,7 @@ slots:
     aliases:
       - hydrocarbon type produced
     description: >-
-       "Main hydrocarbon type produced from resource (i.e. Oil, gas, condensate, etc). If ""other"" is specified, please propose entry in ""additional info"" field"
+       Main hydrocarbon type produced from resource (i.e. Oil, gas, condensate, etc). If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [Oil|Gas-Condensate|Gas|Bitumen|Coalbed Methane|other]
@@ -4479,7 +4479,7 @@ slots:
     aliases:
       - lithology
     description: >-
-       "Hydrocarbon resource main lithology (Additional information: http://petrowiki.org/Lithology_and_rock_type_determination). If ""other"" is specified, please propose entry in ""additional info"" field"
+       Hydrocarbon resource main lithology (Additional information: http://petrowiki.org/Lithology_and_rock_type_determination). If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [Basement|Chalk|Chert|Coal|Conglomerate|Diatomite|Dolomite|Limestone|Sandstone|Shale|Siltstone|Volcanic|other]
@@ -4491,7 +4491,7 @@ slots:
     aliases:
       - depositional environment
     description: >-
-       "Main depositional environment (https://en.wikipedia.org/wiki/Depositional_environment). If ""other"" is specified, please propose entry in ""additional info"" field"
+       Main depositional environment (https://en.wikipedia.org/wiki/Depositional_environment). If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [Continental - Alluvial|Continental - Aeolian|Continental - Fluvial|Continental - Lacustrine|Transitional - Deltaic|Transitional - Tidal|Transitional - Lagoonal|Transitional - Beach|Transitional - Lake|Marine - Shallow|Marine - Deep|Marine - Reef|Other - Evaporite|Other - Glacial|Other - Volcanic|other]
@@ -4503,7 +4503,7 @@ slots:
     aliases:
       - hydrocarbon resource geological age
     description: >-
-       "Geological age of hydrocarbon resource (Additional info: https://en.wikipedia.org/wiki/Period_(geology)). If ""other"" is specified, please propose entry in ""additional info"" field"
+       Geological age of hydrocarbon resource (Additional info: https://en.wikipedia.org/wiki/Period_(geology)). If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [Archean|Cambrian|Carboniferous|Cenozoic|Cretaceous|Devonian|Jurassic|Mesozoic|Neogene|Ordovician|Paleogene|Paleozoic|Permian|Precambrian|Proterozoic|Silurian|Triassic|other]
@@ -4567,7 +4567,7 @@ slots:
     aliases:
       - source rock kerogen type
     description: >-
-       "Origin of kerogen. Type I: Algal (aquatic), Type II: planktonic and soft plant material (aquatic or terrestrial), Type III: terrestrial woody/ fibrous plant material (terrestrial), Type IV: oxidized recycled woody debris (terrestrial) (additional information: https://en.wikipedia.org/wiki/Kerogen). If ""other"" is specified, please propose entry in ""additional info"" field"
+       Origin of kerogen. Type I: Algal (aquatic), Type II: planktonic and soft plant material (aquatic or terrestrial), Type III: terrestrial woody/ fibrous plant material (terrestrial), Type IV: oxidized recycled woody debris (terrestrial) (additional information: https://en.wikipedia.org/wiki/Kerogen). If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [Type I|Type II|Type III|Type IV|other]
@@ -4579,7 +4579,7 @@ slots:
     aliases:
       - source rock lithology
     description: >-
-       "Lithology of source rock (https://en.wikipedia.org/wiki/Source_rock). If ""other"" is specified, please propose entry in ""additional info"" field"
+       Lithology of source rock (https://en.wikipedia.org/wiki/Source_rock). If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [Clastic|Carbonate|Coal|Biosilicieous|other]
@@ -4591,7 +4591,7 @@ slots:
     aliases:
       - source rock depositional environment
     description: >-
-       "Source rock depositional environment (https://en.wikipedia.org/wiki/Source_rock). If ""other"" is specified, please propose entry in ""additional info"" field"
+       Source rock depositional environment (https://en.wikipedia.org/wiki/Source_rock). If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [Lacustine|Fluvioldeltaic|Fluviomarine|Marine|other]
@@ -4603,7 +4603,7 @@ slots:
     aliases:
       - source rock geological age
     description: >-
-       "Geological age of source rock (Additional info: https://en.wikipedia.org/wiki/Period_(geology)). If ""other"" is specified, please propose entry in ""additional info"" field"
+       Geological age of source rock (Additional info: https://en.wikipedia.org/wiki/Period_(geology)). If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [Archean|Cambrian|Carboniferous|Cenozoic|Cretaceous|Devonian|Jurassic|Mesozoic|Neogene|Ordovician|Paleogene|Paleozoic|Permian|Precambrian|Proterozoic|Silurian|Triassic|other]
@@ -4637,7 +4637,7 @@ slots:
     aliases:
       - sample type
     description: >-
-       "Type of material (i.e. sample) collected. Includes types like core, rock trimmings, drill cuttings, piping section, coupon, pigging debris, solid deposit, produced fluid, produced water, injected water, swabs, etc. If ""other"" is specified, please propose entry in ""additional info"" field"
+       Type of material (i.e. sample) collected. Includes types like core, rock trimmings, drill cuttings, piping section, coupon, pigging debris, solid deposit, produced fluid, produced water, injected water, swabs, etc. If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [core|rock trimmings|drill cuttings|piping section|coupon|pigging debris|solid deposit|produced fluid|produced water|injected water|water from treatment plant|fresh water|sea water|drilling fluid|procedural blank|positive control|negative control|other]
@@ -4649,7 +4649,7 @@ slots:
     aliases:
       - sample subtype
     description: >-
-       "Name of sample sub-type. For example if ""sample type"" is ""Produced Water"" then subtype could be ""Oil Phase"" or ""Water Phase"". If ""other"" is specified, please propose entry in ""additional info"" field"
+       Name of sample sub-type. For example if 'sample type' is 'Produced Water' then subtype could be 'Oil Phase' or 'Water Phase'. If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [oil phase|water phase|biofilm|not applicable|other]
@@ -4661,7 +4661,7 @@ slots:
     aliases:
       - pressure
     description: >-
-       "Pressure to which the sample is subject to, in atmospheres"
+       Pressure to which the sample is subject to, in atmospheres
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -4687,7 +4687,7 @@ slots:
     aliases:
       - sample measured depth
     description: >-
-       "In non deviated well, measured depth is equal to the true vertical depth, TVD (TVD=TVDSS plus the reference or datum it refers to). In deviated wells, the MD is the length of trajectory of the borehole measured from the same reference or datum. Common datums used are ground level (GL), drilling rig floor (DF), rotary table (RT), kelly bushing (KB) and mean sea level (MSL). If ""other"" is specified, please propose entry in ""additional info"" field                             "
+       In non deviated well, measured depth is equal to the true vertical depth, TVD (TVD=TVDSS plus the reference or datum it refers to). In deviated wells, the MD is the length of trajectory of the borehole measured from the same reference or datum. Common datums used are ground level (GL), drilling rig floor (DF), rotary table (RT), kelly bushing (KB) and mean sea level (MSL). If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit};[GL|DF|RT|KB|MSL|other]
@@ -4713,7 +4713,7 @@ slots:
     aliases:
       - organism count qPCR information
     description: >-
-       "If qpcr was used for the cell count, the target gene name, the primer sequence and the cycling conditions should also be provided. (Example: 16S rrna; FWD:ACGTAGCTATGACGT REV:GTGCTAGTCGAGTAC; initial denaturation:90C_5min; denaturation:90C_2min; annealing:52C_30 sec; elongation:72C_30 sec; 90 C for 1 min; final elongation:72C_5min; 30 cycles)"
+       If qpcr was used for the cell count, the target gene name, the primer sequence and the cycling conditions should also be provided. (Example: 16S rrna; FWD:ACGTAGCTATGACGT REV:GTGCTAGTCGAGTAC; initial denaturation:90C_5min; denaturation:90C_2min; annealing:52C_30 sec; elongation:72C_30 sec; 90 C for 1 min; final elongation:72C_5min; 30 cycles)
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text};FWD:{dna};REV:{dna};initial denaturation:degrees_minutes;denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final elongation:degrees_minutes; total cycles
@@ -4724,7 +4724,7 @@ slots:
     aliases:
       - pH
     description: >-
-       "Ph measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid"
+       Ph measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float}
@@ -4736,7 +4736,7 @@ slots:
     aliases:
       - alkalinity
     description: >-
-       "Alkalinity, the ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate"
+       Alkalinity, the ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -4838,7 +4838,7 @@ slots:
     aliases:
       - total nitrogen concentration
     description: >-
-       "Total nitrogen concentration of water samples, calculated by: total nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured without filtering, reported as nitrogen"
+       Total nitrogen concentration of water samples, calculated by: total nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured without filtering, reported as nitrogen
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -4942,7 +4942,7 @@ slots:
     aliases:
       - dissolved organic carbon
     description: >-
-       "Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid"
+       Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -4955,7 +4955,7 @@ slots:
     aliases:
       - dissolved inorganic carbon
     description: >-
-       "Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter"
+       Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -4981,7 +4981,7 @@ slots:
     aliases:
       - total phosphorus
     description: >-
-       "Total phosphorus concentration in the sample, calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus"
+       Total phosphorus concentration in the sample, calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -4994,7 +4994,7 @@ slots:
     aliases:
       - suspended solids
     description: >-
-       "Concentration of substances including a wide variety of material, such as silt, decaying plant and animal matter; can include multiple substances"
+       Concentration of substances including a wide variety of material, such as silt, decaying plant and animal matter; can include multiple substances
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit}
@@ -5006,7 +5006,7 @@ slots:
     aliases:
       - density
     description: >-
-       "Density of the sample, which is its mass per unit volume (aka volumetric mass density)"
+       Density of the sample, which is its mass per unit volume (aka volumetric mass density)
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -5149,7 +5149,7 @@ slots:
     aliases:
       - pour point 
     description: >-
-       "Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a highB pour pointB is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material.  (soure: https://en.wikipedia.org/wiki/pour_point)"
+       Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a highB pour pointB is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material.  (soure: https://en.wikipedia.org/wiki/pour_point)
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -5162,7 +5162,7 @@ slots:
     aliases:
       - saturates wt%
     description: >-
-       "Saturate, Aromatic, Resin and AsphalteneB (SARA) is an analysis method that dividesB crude oilB components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)"
+       Saturate, Aromatic, Resin and AsphalteneB (SARA) is an analysis method that dividesB crude oilB components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit}
@@ -5174,7 +5174,7 @@ slots:
     aliases:
       - aromatics wt%
     description: >-
-       "Saturate, Aromatic, Resin and AsphalteneB (SARA) is an analysis method that dividesB crude oilB components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)"
+       Saturate, Aromatic, Resin and AsphalteneB (SARA) is an analysis method that dividesB crude oilB components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit}
@@ -5186,7 +5186,7 @@ slots:
     aliases:
       - resins wt%
     description: >-
-       "Saturate, Aromatic, Resin and AsphalteneB (SARA) is an analysis method that dividesB crude oilB components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)"
+       Saturate, Aromatic, Resin and AsphalteneB (SARA) is an analysis method that dividesB crude oilB components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit}
@@ -5198,7 +5198,7 @@ slots:
     aliases:
       - asphaltenes wt% 
     description: >-
-       "Saturate, Aromatic, Resin and AsphalteneB (SARA) is an analysis method that dividesB crude oilB components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)"
+       Saturate, Aromatic, Resin and AsphalteneB (SARA) is an analysis method that dividesB crude oilB components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit}
@@ -5284,7 +5284,7 @@ slots:
     aliases:
       - secondary and tertiary recovery methods and start date
     description: >-
-       "Additional (i.e. Secondary, tertiary, etc.) recovery methods deployed for increase of hydrocarbon recovery from resource and start date for each one of them. If ""other"" is specified, please propose entry in ""additional info"" field"
+       Additional (i.e. Secondary, tertiary, etc.) recovery methods deployed for increase of hydrocarbon recovery from resource and start date for each one of them. If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer Addition|Surfactant Addition|Not Applicable|other];{timestamp}
@@ -5317,7 +5317,7 @@ slots:
     aliases:
       - biocide administration method
     description: >-
-       "Method of biocide administration (dose, frequency, duration, time elapsed between last biociding and sampling) (e.g. 150 mg/l; weekly; 4 hr; 3 days)"
+       Method of biocide administration (dose, frequency, duration, time elapsed between last biociding and sampling) (e.g. 150 mg/l; weekly; 4 hr; 3 days)
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit};{Rn/start_time/end_time/duration};{duration}
@@ -5329,7 +5329,7 @@ slots:
     aliases:
       - chemical treatment
     description: >-
-       "List of chemical compounds administered upstream the sampling location where sampling occurred (e.g. Glycols, H2S scavenger, corrosion and scale inhibitors, demulsifiers, and other production chemicals etc.). The commercial name of the product and name of the supplier should be provided.  The date of administration should also be included"
+       List of chemical compounds administered upstream the sampling location where sampling occurred (e.g. Glycols, H2S scavenger, corrosion and scale inhibitors, demulsifiers, and other production chemicals etc.). The commercial name of the product and name of the supplier should be provided.  The date of administration should also be included
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text};{text};{timestamp}
@@ -5340,7 +5340,7 @@ slots:
     aliases:
       - chemical treatment method
     description: >-
-       "Method of chemical administration(dose, frequency, duration, time elapsed between administration and sampling) (e.g. 50 mg/l; twice a week; 1 hr; 0 days)"
+       Method of chemical administration(dose, frequency, duration, time elapsed between administration and sampling) (e.g. 50 mg/l; twice a week; 1 hr; 0 days)
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit};{Rn/start_time/end_time/duration};{duration};{duration}
@@ -5352,7 +5352,7 @@ slots:
     aliases:
       - corrosion rate at sample location
     description: >-
-       "Metal corrosion rate is the speed of metal deterioration due to environmental conditions. As environmental conditions change corrosion rates change accordingly. Therefore, long term corrosion rates are generally more informative than short term rates and for that reason they are preferred during reporting. In the case of suspected MIC, corrosion rate measurements at the time of sampling might provide insights into the involvement of certain microbial community members in MIC as well as potential microbial interplays"
+       Metal corrosion rate is the speed of metal deterioration due to environmental conditions. As environmental conditions change corrosion rates change accordingly. Therefore, long term corrosion rates are generally more informative than short term rates and for that reason they are preferred during reporting. In the case of suspected MIC, corrosion rate measurements at the time of sampling might provide insights into the involvement of certain microbial community members in MIC as well as potential microbial interplays
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} - {float} {unit}
@@ -5365,7 +5365,7 @@ slots:
     aliases:
       - sample collection point
     description: >-
-       "Sampling  point on the asset were sample was collected (e.g. Wellhead, storage tank, separator, etc). If ""other"" is specified, please propose entry in ""additional info"" field"
+       Sampling  point on the asset were sample was collected (e.g. Wellhead, storage tank, separator, etc). If 'other' is specified, please propose entry in 'additional info' field
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [well|test well|drilling rig|wellhead|separator|storage tank|other]
@@ -5377,7 +5377,7 @@ slots:
     aliases:
       - preservative added to sample
     description: >-
-       "Preservative added to the sample (e.g. Rnalater, alcohol, formaldehyde, etc.). Where appropriate include volume added (e.g. Rnalater; 2 ml)"
+       Preservative added to the sample (e.g. Rnalater, alcohol, formaldehyde, etc.). Where appropriate include volume added (e.g. Rnalater; 2 ml)
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit}
@@ -5428,7 +5428,7 @@ slots:
     aliases:
       - biomass
     description: >-
-       "Amount of biomass; should include the name for the part of biomass measured, e.g. Microbial, total. Can include multiple measurements"
+       Amount of biomass; should include the name for the part of biomass measured, e.g. Microbial, total. Can include multiple measurements
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit}
@@ -5709,7 +5709,7 @@ slots:
     aliases:
       - redox potential
     description: >-
-       "Redox potential, measured relative to a hydrogen cell, indicating oxidation or reduction potential"
+       Redox potential, measured relative to a hydrogen cell, indicating oxidation or reduction potential
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -5722,7 +5722,7 @@ slots:
     aliases:
       - salinity
     description: >-
-       "Salinity is the total concentration of all dissolved salts in a water sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater"
+       Salinity is the total concentration of all dissolved salts in a water sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -5774,7 +5774,7 @@ slots:
     aliases:
       - total organic carbon
     description: >-
-       "Definition for soil: total organic carbon content of the soil, definition otherwise: total organic carbon content"
+       Definition for soil: total organic carbon content of the soil, definition otherwise: total organic carbon content
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -5826,7 +5826,7 @@ slots:
     aliases:
       - air temperature regimen
     description: >-
-       "Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens"
+       Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit};{Rn/start_time/end_time/duration}
@@ -5838,7 +5838,7 @@ slots:
     aliases:
       - antibiotic regimen
     description: >-
-       "Information about treatment involving antibiotic administration; should include the name of antibiotic, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple antibiotic regimens"
+       Information about treatment involving antibiotic administration; should include the name of antibiotic, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple antibiotic regimens
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit};{Rn/start_time/end_time/duration}
@@ -5850,7 +5850,7 @@ slots:
     aliases:
       - biotic regimen
     description: >-
-       "Information about treatment(s) involving use of biotic factors, such as bacteria, viruses or fungi."
+       Information about treatment(s) involving use of biotic factors, such as bacteria, viruses or fungi.
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}
@@ -5861,7 +5861,7 @@ slots:
     aliases:
       - chemical mutagen
     description: >-
-       "Treatment involving use of mutagens; should include the name of mutagen, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple mutagen regimens"
+       Treatment involving use of mutagens; should include the name of mutagen, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple mutagen regimens
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit};{Rn/start_time/end_time/duration}
@@ -5873,7 +5873,7 @@ slots:
     aliases:
       - climate environment
     description: >-
-       "Treatment involving an exposure to a particular climate; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple climates"
+       Treatment involving an exposure to a particular climate; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple climates
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text};{Rn/start_time/end_time/duration}
@@ -5884,7 +5884,7 @@ slots:
     aliases:
       - culture rooting medium 
     description: >-
-       "Name or reference for the hydroponic or in vitro culture rooting medium; can be the name of a commonly used medium or reference to a specific medium, e.g. Murashige and Skoog medium. If the medium has not been formally published, use the rooting medium descriptors."
+       Name or reference for the hydroponic or in vitro culture rooting medium; can be the name of a commonly used medium or reference to a specific medium, e.g. Murashige and Skoog medium. If the medium has not been formally published, use the rooting medium descriptors.
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}|{PMID}|{DOI}|{URL}
@@ -5895,7 +5895,7 @@ slots:
     aliases:
       - fertilizer regimen
     description: >-
-       "Information about treatment involving the use of fertilizers; should include the name of fertilizer, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fertilizer regimens"
+       Information about treatment involving the use of fertilizers; should include the name of fertilizer, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fertilizer regimens
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit};{Rn/start_time/end_time/duration}
@@ -5907,7 +5907,7 @@ slots:
     aliases:
       - fungicide regimen
     description: >-
-       "Information about treatment involving use of fungicides; should include the name of fungicide, amount administered,  treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fungicide regimens"
+       Information about treatment involving use of fungicides; should include the name of fungicide, amount administered,  treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fungicide regimens
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit};{Rn/start_time/end_time/duration}
@@ -5919,7 +5919,7 @@ slots:
     aliases:
       - gaseous environment
     description: >-
-       "Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens"
+       Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit};{Rn/start_time/end_time/duration}
@@ -5931,7 +5931,7 @@ slots:
     aliases:
       - gravity
     description: >-
-       "Information about treatment involving use of gravity factor to study various types of responses in presence, absence or modified levels of gravity; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple treatments"
+       Information about treatment involving use of gravity factor to study various types of responses in presence, absence or modified levels of gravity; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple treatments
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit};{Rn/start_time/end_time/duration}
@@ -5943,7 +5943,7 @@ slots:
     aliases:
       - growth facility
     description: >-
-       "Type of facility where the sampled plant was grown; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field. Alternatively use Crop Ontology (CO) terms, see http://www.cropontology.org/ontology/CO_715/Crop%20Research"
+       Type of facility where the sampled plant was grown; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field. Alternatively use Crop Ontology (CO) terms, see http://www.cropontology.org/ontology/CO_715/Crop%20Research
     multivalued: false
     is_a: attribute
     range: controlled term value  ## syntax: {text}|{termLabel} {[termID]}
@@ -5954,7 +5954,7 @@ slots:
     aliases:
       - growth habit
     description: >-
-       "Characteristic shape, appearance or growth form of a plant species"
+       Characteristic shape, appearance or growth form of a plant species
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [erect|semi-erect|spreading|prostrate] 
@@ -5966,7 +5966,7 @@ slots:
     aliases:
       - growth hormone regimen
     description: >-
-       "Information about treatment involving use of growth hormones; should include the name of growth hormone, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple growth hormone regimens"
+       Information about treatment involving use of growth hormones; should include the name of growth hormone, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple growth hormone regimens
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit};{Rn/start_time/end_time/duration}
@@ -5978,7 +5978,7 @@ slots:
     aliases:
       - herbicide regimen
     description: >-
-       "Information about treatment involving use of herbicides; information about treatment involving use of growth hormones; should include the name of herbicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens"
+       Information about treatment involving use of herbicides; information about treatment involving use of growth hormones; should include the name of herbicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit};{Rn/start_time/end_time/duration}
@@ -6003,7 +6003,7 @@ slots:
     aliases:
       - humidity regimen
     description: >-
-       "Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens"
+       Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit};{Rn/start_time/end_time/duration}
@@ -6015,7 +6015,7 @@ slots:
     aliases:
       - light regimen
     description: >-
-       "Information about treatment(s) involving exposure to light, including both light intensity and quality."
+       Information about treatment(s) involving exposure to light, including both light intensity and quality.
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit};{float} {unit}
@@ -6038,7 +6038,7 @@ slots:
     aliases:
       - mineral nutrient regimen
     description: >-
-       "Information about treatment involving the use of mineral supplements; should include the name of mineral nutrient, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple mineral nutrient regimens"
+       Information about treatment involving the use of mineral supplements; should include the name of mineral nutrient, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple mineral nutrient regimens
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit};{Rn/start_time/end_time/duration}
@@ -6050,7 +6050,7 @@ slots:
     aliases:
       - non-mineral nutrient regimen
     description: >-
-       "Information about treatment involving the exposure of plant to non-mineral nutrient such as oxygen, hydrogen or carbon; should include the name of non-mineral nutrient, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple non-mineral nutrient regimens"
+       Information about treatment involving the exposure of plant to non-mineral nutrient such as oxygen, hydrogen or carbon; should include the name of non-mineral nutrient, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple non-mineral nutrient regimens
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit};{Rn/start_time/end_time/duration}
@@ -6062,7 +6062,7 @@ slots:
     aliases:
       - pH regimen
     description: >-
-       "Information about treatment involving exposure of plants to varying levels of ph of the growth media, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimen"
+       Information about treatment involving exposure of plants to varying levels of ph of the growth media, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimen
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {float};{Rn/start_time/end_time/duration}
@@ -6073,7 +6073,7 @@ slots:
     aliases:
       - pesticide regimen
     description: >-
-       "Information about treatment involving use of insecticides; should include the name of pesticide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple pesticide regimens"
+       Information about treatment involving use of insecticides; should include the name of pesticide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple pesticide regimens
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit};{Rn/start_time/end_time/duration}
@@ -6085,7 +6085,7 @@ slots:
     aliases:
       - plant growth medium 
     description: >-
-       "Specification of the media for growing the plants or tissue cultured samples, e.g. soil, aeroponic, hydroponic, in vitro solid culture medium, in vitro liquid culture medium. Recommended value is a specific value from EO:plant growth medium (follow this link for terms http://purl.obolibrary.org/obo/EO_0007147) or other controlled vocabulary"
+       Specification of the media for growing the plants or tissue cultured samples, e.g. soil, aeroponic, hydroponic, in vitro solid culture medium, in vitro liquid culture medium. Recommended value is a specific value from EO:plant growth medium (follow this link for terms http://purl.obolibrary.org/obo/EO_0007147) or other controlled vocabulary
     multivalued: false
     is_a: attribute
     range: controlled term value  ## syntax: {termLabel} {[termID]}
@@ -6097,7 +6097,7 @@ slots:
     aliases:
       - plant product
     description: >-
-       "Substance produced by the plant, where the sample was obtained from"
+       Substance produced by the plant, where the sample was obtained from
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}
@@ -6108,7 +6108,7 @@ slots:
     aliases:
       - plant sex
     description: >-
-       "Sex of the reproductive parts on the whole plant, e.g. pistillate, staminate, monoecieous, hermaphrodite."
+       Sex of the reproductive parts on the whole plant, e.g. pistillate, staminate, monoecieous, hermaphrodite.
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: [Androdioecious|Androecious|Androgynous|Androgynomonoecious|Andromonoecious|Bisexual|Dichogamous|Diclinous|Dioecious|Gynodioecious|Gynoecious|Gynomonoecious|Hermaphroditic|Imperfect|Monoclinous|Monoecious|Perfect|Polygamodioecious|Polygamomonoecious|Polygamous|Protandrous|Protogynous|Subandroecious|Subdioecious|Subgynoecious|Synoecious|Trimonoecious|Trioecious|Unisexual]
@@ -6120,7 +6120,7 @@ slots:
     aliases:
       - plant structure
     description: >-
-       "Name of plant structure the sample was obtained from; for Plant Ontology (PO) (v releases/2017-12-14) terms, see http://purl.bioontology.org/ontology/PO, e.g. petiole epidermis (PO_0000051). If an individual flower is sampled, the sex of it can be recorded here."
+       Name of plant structure the sample was obtained from; for Plant Ontology (PO) (v releases/2017-12-14) terms, see http://purl.bioontology.org/ontology/PO, e.g. petiole epidermis (PO_0000051). If an individual flower is sampled, the sex of it can be recorded here.
     multivalued: false
     is_a: attribute
     range: controlled term value  ## syntax: {termLabel} {[termID]}
@@ -6132,7 +6132,7 @@ slots:
     aliases:
       - radiation regimen
     description: >-
-       "Information about treatment involving exposure of plant or a plant part to a particular radiation regimen; should include the radiation type, amount or intensity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple radiation regimens"
+       Information about treatment involving exposure of plant or a plant part to a particular radiation regimen; should include the radiation type, amount or intensity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple radiation regimens
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit};{Rn/start_time/end_time/duration}
@@ -6144,7 +6144,7 @@ slots:
     aliases:
       - rainfall regimen
     description: >-
-       "Information about treatment involving an exposure to a given amount of rainfall, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens"
+       Information about treatment involving an exposure to a given amount of rainfall, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit};{Rn/start_time/end_time/duration}
@@ -6156,7 +6156,7 @@ slots:
     aliases:
       - rooting conditions
     description: >-
-       "Relevant rooting conditions such as field plot size, sowing density, container dimensions, number of plants per container."
+       Relevant rooting conditions such as field plot size, sowing density, container dimensions, number of plants per container.
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {PMID}|{DOI}|{URL}|{text}
@@ -6179,7 +6179,7 @@ slots:
     aliases:
       - rooting medium macronutrients
     description: >-
-       "Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S); e.g. KH2PO4 (170B mg/L)."
+       Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S); e.g. KH2PO4 (170B mg/L).
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit}
@@ -6191,7 +6191,7 @@ slots:
     aliases:
       - rooting medium micronutrients
     description: >-
-       "Measurement of the culture rooting medium micronutrients (Fe, Mn, Zn, B, Cu, Mo); e.g. H3BO3 (6.2B mg/L)."
+       Measurement of the culture rooting medium micronutrients (Fe, Mn, Zn, B, Cu, Mo); e.g. H3BO3 (6.2B mg/L).
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit}
@@ -6203,7 +6203,7 @@ slots:
     aliases:
       - rooting medium organic supplements
     description: >-
-       "Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics activated charcoal; e.g. nicotinic acid (0.5B mg/L)."
+       Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics activated charcoal; e.g. nicotinic acid (0.5B mg/L).
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit}
@@ -6227,7 +6227,7 @@ slots:
     aliases:
       - rooting medium regulators 
     description: >-
-       "Growth regulators in the culture rooting medium such as cytokinins, auxins, gybberellins, abscisic acid; e.g. 0.5B mg/L NAA."
+       Growth regulators in the culture rooting medium such as cytokinins, auxins, gybberellins, abscisic acid; e.g. 0.5B mg/L NAA.
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit}
@@ -6250,7 +6250,7 @@ slots:
     aliases:
       - salt regimen
     description: >-
-       "Information about treatment involving use of salts as supplement to liquid and soil growth media; should include the name of salt, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple salt regimens"
+       Information about treatment involving use of salts as supplement to liquid and soil growth media; should include the name of salt, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple salt regimens
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit};{Rn/start_time/end_time/duration}
@@ -6262,7 +6262,7 @@ slots:
     aliases:
       - seasonal environment
     description: >-
-       "Treatment involving an exposure to a particular season (e.g. Winter, summer, rabi, rainy etc.), treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment"
+       Treatment involving an exposure to a particular season (e.g. Winter, summer, rabi, rainy etc.), treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text};{Rn/start_time/end_time/duration}
@@ -6273,7 +6273,7 @@ slots:
     aliases:
       - standing water regimen
     description: >-
-       "Treatment involving an exposure to standing water during a plant's life span, types can be flood water or standing water, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens"
+       Treatment involving an exposure to standing water during a plant's life span, types can be flood water or standing water, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text};{Rn/start_time/end_time/duration}
@@ -6295,7 +6295,7 @@ slots:
     aliases:
       - water temperature regimen
     description: >-
-       "Information about treatment involving an exposure to water with varying degree of temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens"
+       Information about treatment involving an exposure to water with varying degree of temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit};{Rn/start_time/end_time/duration}
@@ -6307,7 +6307,7 @@ slots:
     aliases:
       - watering regimen
     description: >-
-       "Information about treatment involving an exposure to watering frequencies, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens"
+       Information about treatment involving an exposure to watering frequencies, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit};{Rn/start_time/end_time/duration}
@@ -6319,7 +6319,7 @@ slots:
     aliases:
       - particle classification
     description: >-
-       "Particles are classified, based on their size, into six general categories:clay, silt, sand, gravel, cobbles, and boulders; should include amount of particle preceded by the name of the particle type; can include multiple values"
+       Particles are classified, based on their size, into six general categories:clay, silt, sand, gravel, cobbles, and boulders; should include amount of particle preceded by the name of the particle type; can include multiple values
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit}
@@ -6380,7 +6380,7 @@ slots:
     aliases:
       - current vegetation
     description: >-
-       "Vegetation classification from one or more standard classification systems, or agricultural crop"
+       Vegetation classification from one or more standard classification systems, or agricultural crop
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}
@@ -6424,7 +6424,7 @@ slots:
     aliases:
       - history/crop rotation
     description: >-
-       "Whether or not crop is rotated, and if yes, rotation schedule"
+       Whether or not crop is rotated, and if yes, rotation schedule
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {boolean};{Rn/start_time/end_time/duration}
@@ -6435,7 +6435,7 @@ slots:
     aliases:
       - history/agrochemical additions
     description: >-
-       "Addition of fertilizers, pesticides, etc. - amount and time of applications"
+       Addition of fertilizers, pesticides, etc. - amount and time of applications
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit};{timestamp}
@@ -6538,7 +6538,7 @@ slots:
     aliases:
       - pooling of DNA extracts (if done)
     description: >-
-       "Indicate whether multiple DNA extractions were mixed. If the answer yes, the number of extracts that were pooled should be given"
+       Indicate whether multiple DNA extractions were mixed. If the answer yes, the number of extracts that were pooled should be given
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {boolean};{integer}
@@ -6597,7 +6597,7 @@ slots:
     aliases:
       - mean annual precipitation
     description: >-
-       "The average of all annual precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. "
+       The average of all annual precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps.
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -6610,7 +6610,7 @@ slots:
     aliases:
       - mean seasonal precipitation
     description: >-
-       "The average of all seasonal precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. "
+       The average of all seasonal precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps.
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -6703,7 +6703,7 @@ slots:
     aliases:
       - slope aspect
     description: >-
-       "The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees); e.g., nw or 315 degrees. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration."
+       The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees); e.g., nw or 315 degrees. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -6740,7 +6740,7 @@ slots:
     aliases:
       - texture
     description: >-
-       "The relative proportion of different grain sizes of mineral particles in a soil, as described using a standard system; express as % sand (50 um to 2 mm), silt (2 um to 50 um), and clay (<2 um) with textural name (e.g., silty clay loam) optional."
+       The relative proportion of different grain sizes of mineral particles in a soil, as described using a standard system; express as % sand (50 um to 2 mm), silt (2 um to 50 um), and clay (<2 um) with textural name (e.g., silty clay loam) optional.
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -6797,7 +6797,7 @@ slots:
     aliases:
       - microbial biomass
     description: >-
-       "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units"
+       The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -6942,7 +6942,7 @@ slots:
     aliases:
       - emulsions
     description: >-
-       "Amount or concentration of substances such as paints, adhesives, mayonnaise, hair colorants, emulsified oils, etc.; can include multiple emulsion types"
+       Amount or concentration of substances such as paints, adhesives, mayonnaise, hair colorants, emulsified oils, etc.; can include multiple emulsion types
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit}
@@ -6954,7 +6954,7 @@ slots:
     aliases:
       - gaseous substances
     description: >-
-       "Amount or concentration of substances such as hydrogen sulfide, carbon dioxide, methane, etc.; can include multiple substances"
+       Amount or concentration of substances such as hydrogen sulfide, carbon dioxide, methane, etc.; can include multiple substances
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit}
@@ -6979,7 +6979,7 @@ slots:
     aliases:
       - inorganic particles
     description: >-
-       "Concentration of particles such as sand, grit, metal particles, ceramics, etc.; can include multiple particles"
+       Concentration of particles such as sand, grit, metal particles, ceramics, etc.; can include multiple particles
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit}
@@ -6991,7 +6991,7 @@ slots:
     aliases:
       - organic particles
     description: >-
-       "Concentration of particles such as faeces, hairs, food, vomit, paper fibers, plant material, humus, etc."
+       Concentration of particles such as faeces, hairs, food, vomit, paper fibers, plant material, humus, etc.
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit}
@@ -7025,7 +7025,7 @@ slots:
     aliases:
       - reactor type
     description: >-
-       "Anaerobic digesters can be designed and engineered to operate using a number of different process configurations, as batch or continuous, mesophilic, high solid or low solid, and single stage or multistage"
+       Anaerobic digesters can be designed and engineered to operate using a number of different process configurations, as batch or continuous, mesophilic, high solid or low solid, and single stage or multistage
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}
@@ -7071,7 +7071,7 @@ slots:
     aliases:
       - soluble inorganic material
     description: >-
-       "Concentration of substances such as ammonia, road-salt, sea-salt, cyanide, hydrogen sulfide, thiocyanates, thiosulfates, etc."
+       Concentration of substances such as ammonia, road-salt, sea-salt, cyanide, hydrogen sulfide, thiocyanates, thiosulfates, etc.
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit}
@@ -7083,7 +7083,7 @@ slots:
     aliases:
       - soluble organic material
     description: >-
-       "Concentration of substances such as urea, fruit sugars, soluble proteins, drugs, pharmaceuticals, etc."
+       Concentration of substances such as urea, fruit sugars, soluble proteins, drugs, pharmaceuticals, etc.
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {text};{float} {unit}
@@ -7119,7 +7119,7 @@ slots:
     aliases:
       - wastewater type
     description: >-
-       "The origin of wastewater such as human waste, rainfall, storm drains, etc."
+       The origin of wastewater such as human waste, rainfall, storm drains, etc.
     multivalued: false
     is_a: attribute
     range: text value  ## syntax: {text}
@@ -7259,7 +7259,7 @@ slots:
     aliases:
       - primary production
     description: >-
-       "Measurement of primary production, generally measured as isotope uptake"
+       Measurement of primary production, generally measured as isotope uptake
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}
@@ -7324,7 +7324,7 @@ slots:
     aliases:
       - total dissolved nitrogen
     description: >-
-       "Total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen"
+       Total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen
     multivalued: false
     is_a: attribute
     range: quantity value  ## syntax: {float} {unit}

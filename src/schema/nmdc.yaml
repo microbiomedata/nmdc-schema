@@ -845,7 +845,7 @@ slots:
     is_a: attribute
     range: person value
     description: >-
-      represents the PI
+      Principal Investigator who led the study and/or generated the dataset.
 
   doi:
     is_a: attribute
