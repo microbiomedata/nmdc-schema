@@ -12,7 +12,6 @@ Changes to the schema are documented in this file.
   - N/A
 
 ## [2022.01.26rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2022.01.26rc1)
-
 ### Added
   - add descriptions for various slots (#198)
 ### Fixed
