@@ -11,6 +11,17 @@ Changes to the schema are documented in this file.
 ### Removed
   - N/A
 
+## [2022.01.26rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2022.01.26rc1)
+
+### Added
+  - add dresciptions for various slots (#198)
+### Fixed
+  - removed double quotes surrounding MIxS descriptions
+### Changed 
+  - N/A
+### Removed
+  - N/A
+
 ## [2022.01.18rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2022.01.18rc1)
 ### Added
   - `applied roles` (multivalued) slot (#216)
