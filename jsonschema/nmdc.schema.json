@@ -103,7 +103,7 @@
             },
             "agrochem_addition": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"Addition of fertilizers, pesticides, etc. - amount and time of applications\""
+               "description": "Addition of fertilizers, pesticides, etc. - amount and time of applications"
             },
             "al_sat": {
                "$ref": "#/$defs/QuantityValue",
@@ -116,7 +116,7 @@
             },
             "alkalinity": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"Alkalinity, the ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate\"",
+               "description": "Alkalinity, the ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "alkalinity_method": {
@@ -130,7 +130,7 @@
             },
             "alt": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"Altitude is a term used to identify heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earthbs surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air\"",
+               "description": "Altitude is a term used to identify heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earthbs surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "alternative_identifiers": {
@@ -152,7 +152,7 @@
             },
             "annual_precpt": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"The average of all annual precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. \"",
+               "description": "The average of all annual precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps.",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "annual_temp": {
@@ -187,7 +187,7 @@
             },
             "chem_administration": {
                "$ref": "#/$defs/ControlledTermValue",
-               "description": "\"List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi\""
+               "description": "List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi"
             },
             "chloride": {
                "$ref": "#/$defs/QuantityValue",
@@ -201,14 +201,14 @@
             },
             "collection_date": {
                "$ref": "#/$defs/TimestampValue",
-               "description": "\"The time of sampling, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant\""
+               "description": "The time of sampling, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant"
             },
             "community": {
                "type": "string"
             },
             "crop_rotation": {
                "$ref": "#/$defs/TextValue",
-               "description": "\"Whether or not crop is rotated, and if yes, rotation schedule\""
+               "description": "Whether or not crop is rotated, and if yes, rotation schedule"
             },
             "cur_land_use": {
                "$ref": "#/$defs/TextValue",
@@ -217,7 +217,7 @@
             },
             "cur_vegetation": {
                "$ref": "#/$defs/TextValue",
-               "description": "\"Vegetation classification from one or more standard classification systems, or agricultural crop\""
+               "description": "Vegetation classification from one or more standard classification systems, or agricultural crop"
             },
             "cur_vegetation_meth": {
                "$ref": "#/$defs/TextValue",
@@ -225,12 +225,12 @@
             },
             "density": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"Density of the sample, which is its mass per unit volume (aka volumetric mass density)\"",
+               "description": "Density of the sample, which is its mass per unit volume (aka volumetric mass density)",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "depth": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Please refer to the definitions of depth in the environmental packages"
+               "description": "Depth is defined as the vertical distance below local surface, e.g. For sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples"
             },
             "depth2": {
                "$ref": "#/$defs/QuantityValue"
@@ -251,7 +251,7 @@
             },
             "diss_inorg_carb": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter\"",
+               "description": "Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "diss_inorg_phosp": {
@@ -261,7 +261,7 @@
             },
             "diss_org_carb": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid\"",
+               "description": "Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "diss_org_nitro": {
@@ -297,27 +297,27 @@
             },
             "elev": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit\"",
+               "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "env_broad_scale": {
                "$ref": "#/$defs/ControlledTermValue",
-               "description": "\"In this field, report which major environmental system your sample or specimen came from. The systems identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. were you in the desert or a rainforest?). We recommend using subclasses of ENVOUs biome class: http://purl.obolibrary.org/obo/ENVO_00000428. Format (one term): termLabel [termID], Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a water sample from the photic zone in middle of the Atlantic Ocean, consider: oceanic epipelagic zone biome [ENVO:01000033]. Example: Annotating a sample from the Amazon rainforest consider: tropical moist broadleaf forest biome [ENVO:01000228]. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html\"",
+               "description": "In this field, report which major environmental system your sample or specimen came from. The systems identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. were you in the desert or a rainforest?). We recommend using subclasses of ENVOUs biome class: http://purl.obolibrary.org/obo/ENVO_00000428. Format (one term): termLabel [termID], Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a water sample from the photic zone in middle of the Atlantic Ocean, consider: oceanic epipelagic zone biome [ENVO:01000033]. Example: Annotating a sample from the Amazon rainforest consider: tropical moist broadleaf forest biome [ENVO:01000228]. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html",
                "pattern": ".* \\S+:\\S+"
             },
             "env_local_scale": {
                "$ref": "#/$defs/ControlledTermValue",
-               "description": "\"In this field, report the entity or entities which are in your sample or specimenUs local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale. Format (one term): termLabel [termID]; Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a pooled sample taken from various vegetation layers in a forest consider: canopy [ENVO:00000047]|herb and fern layer [ENVO:01000337]|litter layer [ENVO:01000338]|understory [01000335]|shrub layer [ENVO:01000336]. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html\"",
+               "description": "In this field, report the entity or entities which are in your sample or specimenUs local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale. Format (one term): termLabel [termID]; Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a pooled sample taken from various vegetation layers in a forest consider: canopy [ENVO:00000047]|herb and fern layer [ENVO:01000337]|litter layer [ENVO:01000338]|understory [01000335]|shrub layer [ENVO:01000336]. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html",
                "pattern": ".* \\S+:\\S+"
             },
             "env_medium": {
                "$ref": "#/$defs/ControlledTermValue",
-               "description": "\"In this field, report which environmental material or materials (pipe separated) immediately surrounded your sample or specimen prior to sampling, using one or more subclasses of ENVOUs environmental material class: http://purl.obolibrary.org/obo/ENVO_00010483. Format (one term): termLabel [termID]; Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a fish swimming in the upper 100 m of the Atlantic Ocean, consider: ocean water [ENVO:00002151]. Example: Annotating a duck on a pond consider: pond water [ENVO:00002228]|air ENVO_00002005. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html\"",
+               "description": "In this field, report which environmental material or materials (pipe separated) immediately surrounded your sample or specimen prior to sampling, using one or more subclasses of ENVOUs environmental material class: http://purl.obolibrary.org/obo/ENVO_00010483. Format (one term): termLabel [termID]; Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a fish swimming in the upper 100 m of the Atlantic Ocean, consider: ocean water [ENVO:00002151]. Example: Annotating a duck on a pond consider: pond water [ENVO:00002228]|air ENVO_00002005. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html",
                "pattern": ".* \\S+:\\S+"
             },
             "env_package": {
                "$ref": "#/$defs/TextValue",
-               "description": "\"MIxS extension for reporting of measurements and observations obtained from one or more of the environments where the sample was obtained. All environmental packages listed here are further defined in separate subtables. By giving the name of the environmental package, a selection of fields can be made from the subtables and can be reported\"",
+               "description": "MIxS extension for reporting of measurements and observations obtained from one or more of the environments where the sample was obtained. All environmental packages listed here are further defined in separate subtables. By giving the name of the environmental package, a selection of fields can be made from the subtables and can be reported",
                "pattern": "[air|built environment|host\\-associated|human\\-associated|human\\-skin|human\\-oral|human\\-gut|human\\-vaginal|hydrocarbon resources\\-cores|hydrocarbon resources\\-fluids\\/swabs|microbial mat\\/biofilm|misc environment|plant\\-associated|sediment|soil|wastewater\\/sludge|water]"
             },
             "extreme_event": {
@@ -339,7 +339,7 @@
             },
             "geo_loc_name": {
                "$ref": "#/$defs/TextValue",
-               "description": "\"The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (v 1.512) (http://purl.bioontology.org/ontology/GAZ)\""
+               "description": "The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (v 1.512) (http://purl.bioontology.org/ontology/GAZ)"
             },
             "glucosidase_act": {
                "$ref": "#/$defs/QuantityValue",
@@ -421,7 +421,7 @@
             },
             "microbial_biomass": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units\"",
+               "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "microbial_biomass_meth": {
@@ -430,7 +430,7 @@
             },
             "misc_param": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"Any other measurement performed or parameter collected, that is not listed here\""
+               "description": "Any other measurement performed or parameter collected, that is not listed here"
             },
             "mod_date": {
                "description": "The last date on which the database information was modified.",
@@ -469,7 +469,7 @@
             },
             "organism_count": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"Total cell count of any organism (or group of organisms) per gram, volume or area of sample, should include name of organism followed by count. The method that was used for the enumeration (e.g. qPCR, atp, mpn, etc.) Should also be provided. (example: total prokaryotes; 3.5e7 cells per ml; qpcr)\""
+               "description": "Total cell count of any organism (or group of organisms) per gram, volume or area of sample, should include name of organism followed by count. The method that was used for the enumeration (e.g. qPCR, atp, mpn, etc.) Should also be provided. (example: total prokaryotes; 3.5e7 cells per ml; qpcr)"
             },
             "oxy_stat_samp": {
                "$ref": "#/$defs/TextValue",
@@ -490,7 +490,7 @@
             },
             "perturbation": {
                "$ref": "#/$defs/TextValue",
-               "description": "\"Type of perturbation, e.g. chemical administration, physical disturbance, etc., coupled with perturbation regimen including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types\""
+               "description": "Type of perturbation, e.g. chemical administration, physical disturbance, etc., coupled with perturbation regimen including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types"
             },
             "petroleum_hydrocarb": {
                "$ref": "#/$defs/QuantityValue",
@@ -499,7 +499,7 @@
             },
             "ph": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"Ph measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid\"",
+               "description": "Ph measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid",
                "pattern": "\\d+[.\\d+]"
             },
             "ph_meth": {
@@ -516,7 +516,7 @@
             },
             "pool_dna_extracts": {
                "$ref": "#/$defs/TextValue",
-               "description": "\"Indicate whether multiple DNA extractions were mixed. If the answer yes, the number of extracts that were pooled should be given\""
+               "description": "Indicate whether multiple DNA extractions were mixed. If the answer yes, the number of extracts that were pooled should be given"
             },
             "potassium": {
                "$ref": "#/$defs/QuantityValue",
@@ -525,7 +525,7 @@
             },
             "pressure": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"Pressure to which the sample is subject to, in atmospheres\"",
+               "description": "Pressure to which the sample is subject to, in atmospheres",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "previous_land_use": {
@@ -546,12 +546,12 @@
             },
             "redox_potential": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"Redox potential, measured relative to a hydrogen cell, indicating oxidation or reduction potential\"",
+               "description": "Redox potential, measured relative to a hydrogen cell, indicating oxidation or reduction potential",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "salinity": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"Salinity is the total concentration of all dissolved salts in a water sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater\"",
+               "description": "Salinity is the total concentration of all dissolved salts in a water sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "salinity_category": {
@@ -568,7 +568,7 @@
             },
             "samp_mat_process": {
                "$ref": "#/$defs/ControlledTermValue",
-               "description": "\"Any processing applied to the sample during or after retrieving the sample from environment. This field accepts OBI, for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI\""
+               "description": "Any processing applied to the sample during or after retrieving the sample from environment. This field accepts OBI, for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI"
             },
             "samp_store_dur": {
                "$ref": "#/$defs/TextValue",
@@ -576,16 +576,16 @@
             },
             "samp_store_loc": {
                "$ref": "#/$defs/TextValue",
-               "description": "\"Location at which sample was stored, usually name of a specific freezer/room\""
+               "description": "Location at which sample was stored, usually name of a specific freezer/room"
             },
             "samp_store_temp": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"Temperature at which sample was stored, e.g. -80 degree Celsius\"",
+               "description": "Temperature at which sample was stored, e.g. -80 degree Celsius",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "samp_vol_we_dna_ext": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"Volume (ml), weight (g) of processed sample, or surface area swabbed from sample for DNA extraction\"",
+               "description": "Volume (ml), weight (g) of processed sample, or surface area swabbed from sample for DNA extraction",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "sample_collection_site": {
@@ -593,7 +593,7 @@
             },
             "season_precpt": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"The average of all seasonal precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps. \"",
+               "description": "The average of all seasonal precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps.",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "season_temp": {
@@ -617,7 +617,7 @@
             },
             "slope_aspect": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees); e.g., nw or 315 degrees. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.\"",
+               "description": "The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees); e.g., nw or 315 degrees. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "slope_gradient": {
@@ -672,7 +672,7 @@
             },
             "texture": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"The relative proportion of different grain sizes of mineral particles in a soil, as described using a standard system; express as % sand (50 um to 2 mm), silt (2 um to 50 um), and clay (<2 um) with textural name (e.g., silty clay loam) optional.\"",
+               "description": "The relative proportion of different grain sizes of mineral particles in a soil, as described using a standard system; express as % sand (50 um to 2 mm), silt (2 um to 50 um), and clay (<2 um) with textural name (e.g., silty clay loam) optional.",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "texture_meth": {
@@ -701,7 +701,7 @@
             },
             "tot_diss_nitro": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"Total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen\"",
+               "description": "Total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "tot_nitro_content": {
@@ -719,12 +719,12 @@
             },
             "tot_org_carb": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"Definition for soil: total organic carbon content of the soil, definition otherwise: total organic carbon content\"",
+               "description": "Definition for soil: total organic carbon content of the soil, definition otherwise: total organic carbon content",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "tot_phosp": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"Total phosphorus concentration in the sample, calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus\"",
+               "description": "Total phosphorus concentration in the sample, calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "type": {
@@ -2485,7 +2485,7 @@
             },
             "chimera_check": {
                "$ref": "#/$defs/TextValue",
-               "description": "\"A chimeric sequence, or chimera for short, is a sequence comprised of two or more phylogenetically distinct parent sequences. Chimeras are usually PCR artifacts thought to occur when a prematurely terminated amplicon reanneals to a foreign DNA strand and is copied to completion in the following PCR cycles. The point at which the chimeric sequence changes from one parent to the next is called the breakpoint or conversion point \""
+               "description": "A chimeric sequence, or chimera for short, is a sequence comprised of two or more phylogenetically distinct parent sequences. Chimeras are usually PCR artifacts thought to occur when a prematurely terminated amplicon reanneals to a foreign DNA strand and is copied to completion in the following PCR cycles. The point at which the chimeric sequence changes from one parent to the next is called the breakpoint or conversion point"
             },
             "description": {
                "description": "a human-readable description of a thing",
@@ -2526,11 +2526,11 @@
             },
             "nucl_acid_amp": {
                "$ref": "#/$defs/TextValue",
-               "description": "\"A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the enzymatic amplification (PCR, TMA, NASBA) of specific nucleic acids\""
+               "description": "A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the enzymatic amplification (PCR, TMA, NASBA) of specific nucleic acids"
             },
             "nucl_acid_ext": {
                "$ref": "#/$defs/TextValue",
-               "description": "\"A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the material separation to recover the nucleic acid fraction from a sample\""
+               "description": "A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the material separation to recover the nucleic acid fraction from a sample"
             },
             "omics_type": {
                "$ref": "#/$defs/ControlledTermValue",
@@ -2550,11 +2550,11 @@
             },
             "pcr_primers": {
                "$ref": "#/$defs/TextValue",
-               "description": "\"PCR primers that were used to amplify the sequence of the targeted gene, locus or subfragment. This field should contain all the primers used for a single PCR reaction if multiple forward or reverse primers are present in a single PCR reaction. The primer sequence should be reported in uppercase letters\""
+               "description": "PCR primers that were used to amplify the sequence of the targeted gene, locus or subfragment. This field should contain all the primers used for a single PCR reaction if multiple forward or reverse primers are present in a single PCR reaction. The primer sequence should be reported in uppercase letters"
             },
             "principal_investigator": {
                "$ref": "#/$defs/PersonValue",
-               "description": "represents the PI"
+               "description": "Principal Investigator who led the study and/or generated the dataset."
             },
             "processing_institution": {
                "description": "The organization that processed the sample.",
@@ -2562,17 +2562,17 @@
             },
             "samp_vol_we_dna_ext": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "\"Volume (ml), weight (g) of processed sample, or surface area swabbed from sample for DNA extraction\"",
+               "description": "Volume (ml), weight (g) of processed sample, or surface area swabbed from sample for DNA extraction",
                "pattern": "\\d+[.\\d+] \\S+"
             },
             "seq_meth": {
                "$ref": "#/$defs/TextValue",
-               "description": "\"Sequencing method used; e.g. Sanger, pyrosequencing, ABI-solid\"",
+               "description": "Sequencing method used; e.g. Sanger, pyrosequencing, ABI-solid",
                "pattern": "[MinION|GridION|PromethION|454 GS|454 GS 20|454 GS FLX|454 GS FLX+|454 GS FLX Titanium|454 GS Junior|Illumina Genome Analyzer|Illumina Genome Analyzer II|Illumina Genome Analyzer IIx|Illumina HiSeq 4000|Illumina HiSeq 3000|Illumina HiSeq 2500|Illumina HiSeq 2000|Illumina HiSeq 1500|Illumina HiSeq 1000|Illumina HiScanSQ|Illumina MiSeq|Illumina HiSeq X Five|Illumina HiSeq X Ten|Illumina NextSeq 500|Illumina NextSeq 550|AB SOLiD System|AB SOLiD System 2.0|AB SOLiD System 3.0|AB SOLiD 3 Plus System|AB SOLiD 4 System|AB SOLiD 4hq System|AB SOLiD PI System|AB 5500 Genetic Analyzer|AB 5500xl Genetic Analyzer|AB 5500xl\\-W Genetic Analysis System|Ion Torrent PGM|Ion Torrent Proton|Ion Torrent S5|Ion Torrent S5 XL|PacBio RS|PacBio RS II|Sequel|AB 3730xL Genetic Analyzer|AB 3730 Genetic Analyzer|AB 3500xL Genetic Analyzer|AB 3500 Genetic Analyzer|AB 3130xL Genetic Analyzer|AB 3130 Genetic Analyzer|AB 310 Genetic Analyzer|BGISEQ\\-500]"
             },
             "seq_quality_check": {
                "$ref": "#/$defs/TextValue",
-               "description": "\"Indicate if the sequence has been called by automatic systems (none) or undergone a manual editing procedure (e.g. by inspecting the raw data or chromatograms). Applied only for sequences that are not submitted to SRA,ENA or DRA\"",
+               "description": "Indicate if the sequence has been called by automatic systems (none) or undergone a manual editing procedure (e.g. by inspecting the raw data or chromatograms). Applied only for sequences that are not submitted to SRA,ENA or DRA",
                "pattern": "[none|manually edited]"
             },
             "target_gene": {
@@ -3249,7 +3249,7 @@
             },
             "principal_investigator": {
                "$ref": "#/$defs/PersonValue",
-               "description": "represents the PI"
+               "description": "Principal Investigator who led the study and/or generated the dataset."
             },
             "publications": {
                "description": "A list of publications that are assocatiated with the entity. The publicatons SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.",
