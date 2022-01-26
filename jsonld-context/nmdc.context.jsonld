@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-01-18T20:09:13\n    Schema: NMDC\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC).\n  \nThis schema is organized into distinct modules:\n  \n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-01-26T15:10:03\n    Schema: NMDC\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC).\n  \nThis schema is organized into distinct modules:\n  \n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "CAS": "http://identifiers.org/cas/",
       "CATH": "http://identifiers.org/cath/",
