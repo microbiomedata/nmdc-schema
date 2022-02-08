@@ -1,10 +1,19 @@
 {
   "biosample_set": [
     {
-      "id": ["gold:Gb0101224", "gold:Gb0101225"],
+      "id": [
+        "gold:Gb0101224",
+        "gold:Gb0101225"
+      ],
       "name": "Lithgow State Coal Mine Calcium nutrients (early)",
       "description": "Bulk Aqueous phase filtered water",
-      "type": ["nmdc:Biosample", "nmdc:FunctionalAnnotation"],
+      "type": [
+        "nmdc:Biosample",
+        "nmdc:FunctionalAnnotation"
+      ],
+      "part_of": [
+        "gold:Gs0128849"
+      ],
       "env_broad_scale": {
         "has_raw_value": "ENVO:00002030"
       },
@@ -22,7 +31,7 @@
         "latitude": -33.460524,
         "longitude": 150.168149
       },
-      "ecosystem": "Environmental", 
+      "ecosystem": "Environmental",
       "ecosystem_category": "Aquatic",
       "ecosystem_type": "Freshwater",
       "ecosystem_subtype": "Groundwater",
@@ -40,6 +49,9 @@
       "name": "Lithgow State Coal Mine Calcium nutrients Extra",
       "description": "Bulk Aqueous phase filtered water",
       "type": "nmdc:Biosample",
+      "part_of": [
+        "gold:Gs0128849"
+      ],
       "env_broad_scale": {
         "has_raw_value": "ENVO:00002030"
       },
@@ -75,6 +87,9 @@
       "name": "Lithgow State Coal Mine Calcium nutrients",
       "description": "Bulk Aqueous phase filtered water",
       "type": "nmdc:Biosample",
+      "part_of": [
+        "gold:Gs0128849"
+      ],
       "env_broad_scale": {
         "has_raw_value": "ENVO:00002030"
       },

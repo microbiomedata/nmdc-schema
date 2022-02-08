@@ -5,7 +5,9 @@
       "name": "Lithgow State Coal Mine Calcium nutrients (early)",
       "description": "Bulk Aqueous phase filtered water",
       "type": "nmdc:Biosample",
-      "part_of": "gold:Gs0110115",
+      "part_of": [
+        "gold:Gs0110115"
+      ],
       "env_broad_scale": {
         "has_raw_value": "ENVO:00002030"
       },
@@ -41,7 +43,9 @@
       "name": "Lithgow State Coal Mine Calcium nutrients Extra",
       "description": "Bulk Aqueous phase filtered water",
       "type": "nmdc:Biosample",
-      "part_of": "gold:Gs0110115",
+      "part_of": [
+        "gold:Gs0110115"
+      ],
       "env_broad_scale": {
         "has_raw_value": "ENVO:00002030"
       },
@@ -77,7 +81,9 @@
       "name": "Lithgow State Coal Mine Calcium nutrients",
       "description": "Bulk Aqueous phase filtered water",
       "type": "nmdc:Biosample",
-      "part_of": "gold:Gs0110115",
+      "part_of": [
+        "gold:Gs0110115"
+      ],
       "env_broad_scale": {
         "has_raw_value": "ENVO:00002030"
       },
