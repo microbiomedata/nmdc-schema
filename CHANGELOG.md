@@ -7,6 +7,15 @@ Changes to the schema are documented in this file.
 ### Fixed
   - N/A
 ### Changed 
+  - N/A
+### Removed
+  - N/A
+## [2.0.0](https://github.com/microbiomedata/nmdc-schema/releases/tag/2.0.0)
+### Added
+  - N/A
+### Fixed
+  - N/A
+### Changed 
   - made `part of` slot required for `biosample` (#249)
 ### Removed
   - N/A
