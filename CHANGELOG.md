@@ -7,7 +7,7 @@ Changes to the schema are documented in this file.
 ### Fixed
   - N/A
 ### Changed 
-  - N/A
+  - made `part of` slot required for `biosample` (#249)
 ### Removed
   - N/A
 
