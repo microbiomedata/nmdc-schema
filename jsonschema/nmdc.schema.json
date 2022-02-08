@@ -743,6 +743,7 @@
          },
          "required": [
             "id",
+            "part_of",
             "env_broad_scale",
             "env_local_scale",
             "env_medium"
