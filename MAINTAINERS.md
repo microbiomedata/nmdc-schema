@@ -71,6 +71,8 @@ The NMDC Schema is deployed to [PyPI](https://pypi.org/project/nmdc-schema/) usi
 
 7. Click `Publish release` button. This fires the action to update the [PyPI package](https://pypi.org/project/nmdc-schema/).
 
+### Notify NMDC Schema users
+After the new version has been released on PyPI, notify the [nmdc-runtime](https://github.com/microbiomedata/nmdc-runtime) and the `metadata` channel on the NMDC slack group that the `nmdc-schema` has been updated.
 
 ## Maintaining the Documentation
 Do **not** git add the files in `docs`. Custom documentation is added to (or edited in) the `src/docs/` directory.
