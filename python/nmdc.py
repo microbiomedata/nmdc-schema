@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-01-26T15:10:35
+# Generation date: 2022-02-08T14:39:50
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -482,12 +482,12 @@ class Biosample(NamedThing):
     class_model_uri: ClassVar[URIRef] = NMDC.Biosample
 
     id: Union[str, BiosampleId] = None
+    part_of: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     env_broad_scale: Union[dict, "ControlledTermValue"] = None
     env_local_scale: Union[dict, "ControlledTermValue"] = None
     env_medium: Union[dict, "ControlledTermValue"] = None
     type: Optional[str] = None
     alternative_identifiers: Optional[Union[str, List[str]]] = empty_list()
-    part_of: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
     agrochem_addition: Optional[Union[dict, "QuantityValue"]] = None
     alkalinity: Optional[Union[dict, "QuantityValue"]] = None
     alkalinity_method: Optional[Union[dict, "TextValue"]] = None
@@ -633,6 +633,12 @@ class Biosample(NamedThing):
         if not isinstance(self.id, BiosampleId):
             self.id = BiosampleId(self.id)
 
+        if self._is_empty(self.part_of):
+            self.MissingRequiredField("part_of")
+        if not isinstance(self.part_of, list):
+            self.part_of = [self.part_of] if self.part_of is not None else []
+        self.part_of = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.part_of]
+
         if self._is_empty(self.env_broad_scale):
             self.MissingRequiredField("env_broad_scale")
         if not isinstance(self.env_broad_scale, ControlledTermValue):
@@ -654,10 +660,6 @@ class Biosample(NamedThing):
         if not isinstance(self.alternative_identifiers, list):
             self.alternative_identifiers = [self.alternative_identifiers] if self.alternative_identifiers is not None else []
         self.alternative_identifiers = [v if isinstance(v, str) else str(v) for v in self.alternative_identifiers]
-
-        if not isinstance(self.part_of, list):
-            self.part_of = [self.part_of] if self.part_of is not None else []
-        self.part_of = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.part_of]
 
         if self.agrochem_addition is not None and not isinstance(self.agrochem_addition, QuantityValue):
             self.agrochem_addition = QuantityValue(**as_dict(self.agrochem_addition))
@@ -3026,7 +3028,7 @@ class FileTypeEnum(EnumDefinitionImpl):
     def _addvals(cls):
         setattr(cls, "FT ICR-MS Analysis Results",
                 PermissibleValue(text="FT ICR-MS Analysis Results",
-                                 description="FT ICR-MS-based metabolite assignment results table") )
+                                 description="FT ICR-MS-based molecular formula assignment results table") )
         setattr(cls, "GC-MS Metabolomics Results",
                 PermissibleValue(text="GC-MS Metabolomics Results",
                                  description="GC-MS-based metabolite assignment results table") )
@@ -6068,6 +6070,9 @@ slots.biosample_env_local_scale = Slot(uri="str(uriorcurie)", name="biosample_en
 slots.biosample_env_medium = Slot(uri="str(uriorcurie)", name="biosample_env_medium", curie=None,
                    model_uri=NMDC.biosample_env_medium, domain=Biosample, range=Union[dict, "ControlledTermValue"], mappings = [MIXS.env_medium],
                    pattern=re.compile(r'.* \S+:\S+'))
+
+slots.biosample_part_of = Slot(uri=DCTERMS.isPartOf, name="biosample_part of", curie=DCTERMS.curie('isPartOf'),
+                   model_uri=NMDC.biosample_part_of, domain=Biosample, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
 
 slots.study_doi = Slot(uri=NMDC.doi, name="study_doi", curie=NMDC.curie('doi'),
                    model_uri=NMDC.study_doi, domain=Study, range=Optional[Union[dict, "AttributeValue"]])
