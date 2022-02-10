@@ -7,9 +7,10 @@ Changes to the schema are documented in this file.
 ### Fixed
   - N/A
 ### Changed 
-  - N/A
+  - range for `started at time` and `ended at time` is `datetime` (#258)
 ### Removed
   - N/A
+
 ## [2.0.0](https://github.com/microbiomedata/nmdc-schema/releases/tag/2.0.0)
 ### Added
   - N/A
