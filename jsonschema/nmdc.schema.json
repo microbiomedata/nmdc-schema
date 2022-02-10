@@ -5,6 +5,7 @@
          "description": "a provence-generating activity",
          "properties": {
             "ended_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "id": {
@@ -16,6 +17,7 @@
                "type": "string"
             },
             "started_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "used": {
@@ -1486,6 +1488,7 @@
                "type": "integer"
             },
             "ended_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "execution_resource": {
@@ -1538,6 +1541,7 @@
                "type": "array"
             },
             "started_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "too_short_contig_num": {
@@ -1604,6 +1608,7 @@
          "description": "",
          "properties": {
             "ended_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "execution_resource": {
@@ -1654,6 +1659,7 @@
                "type": "array"
             },
             "started_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "type": {
@@ -1691,6 +1697,7 @@
          "description": "",
          "properties": {
             "ended_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "execution_resource": {
@@ -1731,6 +1738,7 @@
                "type": "array"
             },
             "started_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "type": {
@@ -1811,6 +1819,7 @@
                "type": "number"
             },
             "ended_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "execution_resource": {
@@ -1919,6 +1928,7 @@
                "type": "number"
             },
             "started_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "type": {
@@ -1955,6 +1965,7 @@
          "description": "",
          "properties": {
             "ended_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "execution_resource": {
@@ -2001,6 +2012,7 @@
                "type": "array"
             },
             "started_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "type": {
@@ -2038,6 +2050,7 @@
          "description": "A metatranscriptome activity that e.g. pools assembly and annotation activity.",
          "properties": {
             "ended_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "execution_resource": {
@@ -2078,6 +2091,7 @@
                "type": "array"
             },
             "started_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "type": {
@@ -2114,6 +2128,7 @@
          "description": "",
          "properties": {
             "ended_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "execution_resource": {
@@ -2154,6 +2169,7 @@
                "type": "array"
             },
             "started_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "type": {
@@ -2234,6 +2250,7 @@
                "type": "number"
             },
             "ended_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "execution_resource": {
@@ -2342,6 +2359,7 @@
                "type": "number"
             },
             "started_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "type": {
@@ -2378,6 +2396,7 @@
          "description": "",
          "properties": {
             "ended_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "execution_resource": {
@@ -2422,6 +2441,7 @@
                "type": "array"
             },
             "started_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "type": {
@@ -2953,6 +2973,7 @@
          "description": "",
          "properties": {
             "ended_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "execution_resource": {
@@ -2993,6 +3014,7 @@
                "type": "array"
             },
             "started_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "type": {
@@ -3029,6 +3051,7 @@
          "description": "",
          "properties": {
             "ended_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "execution_resource": {
@@ -3093,6 +3116,7 @@
                "type": "array"
             },
             "started_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "type": {
@@ -3367,6 +3391,7 @@
          "description": "Represents an instance of an execution of a particular workflow",
          "properties": {
             "ended_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "execution_resource": {
@@ -3407,6 +3432,7 @@
                "type": "array"
             },
             "started_at_time": {
+               "format": "date-time",
                "type": "string"
             },
             "type": {
@@ -3442,6 +3468,7 @@
    "$id": "https://microbiomedata/schema",
    "$schema": "http://json-schema.org/draft-07/schema#",
    "additionalProperties": false,
+   "metamodel_version": "1.7.0",
    "properties": {
       "activity_set": {
          "description": "This property links a database object to the set of workflow activities.",
@@ -3570,6 +3597,7 @@
    },
    "required": [],
    "title": "NMDC",
-   "type": "object"
+   "type": "object",
+   "version": "2.0.0"
 }
 
