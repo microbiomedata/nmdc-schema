@@ -46,10 +46,12 @@ classes:
 slots:
 
   started at time:
+    range: datetime
     mappings:
       - prov:startedAtTime
 
   ended at time:
+    range: datetime
     mappings:
       - prov:endedAtTime
 
