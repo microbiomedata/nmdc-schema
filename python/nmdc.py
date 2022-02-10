@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-08T14:39:50
+# Generation date: 2022-02-10T16:57:59
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -24,10 +24,11 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.linkml_model.types import Boolean, Double, Float, Integer, String, Uriorcurie
-from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE
+from linkml_runtime.linkml_model.types import Boolean, Datetime, Double, Float, Integer, String, Uriorcurie
+from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE, XSDDateTime
 
 metamodel_version = "1.7.0"
+version = "2.0.0"
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -313,7 +314,9 @@ class Database(YAMLRoot):
             self.functional_annotation_set = [self.functional_annotation_set] if self.functional_annotation_set is not None else []
         self.functional_annotation_set = [v if isinstance(v, FunctionalAnnotation) else FunctionalAnnotation(**as_dict(v)) for v in self.functional_annotation_set]
 
-        self._normalize_inlined_as_list(slot_name="genome_feature_set", slot_type=GenomeFeature, key_name="seqid", keyed=False)
+        if not isinstance(self.genome_feature_set, list):
+            self.genome_feature_set = [self.genome_feature_set] if self.genome_feature_set is not None else []
+        self.genome_feature_set = [v if isinstance(v, GenomeFeature) else GenomeFeature(**as_dict(v)) for v in self.genome_feature_set]
 
         if self.nmdc_schema_version is not None and not isinstance(self.nmdc_schema_version, str):
             self.nmdc_schema_version = str(self.nmdc_schema_version)
@@ -2007,8 +2010,8 @@ class Activity(YAMLRoot):
 
     id: Union[str, ActivityId] = None
     name: Optional[str] = None
-    started_at_time: Optional[str] = None
-    ended_at_time: Optional[str] = None
+    started_at_time: Optional[Union[str, XSDDateTime]] = None
+    ended_at_time: Optional[Union[str, XSDDateTime]] = None
     was_informed_by: Optional[Union[str, ActivityId]] = None
     was_associated_with: Optional[Union[dict, "Agent"]] = None
     used: Optional[str] = None
@@ -2022,11 +2025,11 @@ class Activity(YAMLRoot):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.started_at_time is not None and not isinstance(self.started_at_time, str):
-            self.started_at_time = str(self.started_at_time)
+        if self.started_at_time is not None and not isinstance(self.started_at_time, XSDDateTime):
+            self.started_at_time = XSDDateTime(self.started_at_time)
 
-        if self.ended_at_time is not None and not isinstance(self.ended_at_time, str):
-            self.ended_at_time = str(self.ended_at_time)
+        if self.ended_at_time is not None and not isinstance(self.ended_at_time, XSDDateTime):
+            self.ended_at_time = XSDDateTime(self.ended_at_time)
 
         if self.was_informed_by is not None and not isinstance(self.was_informed_by, ActivityId):
             self.was_informed_by = ActivityId(self.was_informed_by)
@@ -2083,8 +2086,8 @@ class WorkflowExecutionActivity(Activity):
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     type: str = None
-    started_at_time: str = None
-    ended_at_time: str = None
+    started_at_time: Union[str, XSDDateTime] = None
+    ended_at_time: Union[str, XSDDateTime] = None
     was_informed_by: Union[str, ActivityId] = None
     part_of: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
     was_associated_with: Optional[Union[str, WorkflowExecutionActivityId]] = None
@@ -2124,13 +2127,13 @@ class WorkflowExecutionActivity(Activity):
 
         if self._is_empty(self.started_at_time):
             self.MissingRequiredField("started_at_time")
-        if not isinstance(self.started_at_time, str):
-            self.started_at_time = str(self.started_at_time)
+        if not isinstance(self.started_at_time, XSDDateTime):
+            self.started_at_time = XSDDateTime(self.started_at_time)
 
         if self._is_empty(self.ended_at_time):
             self.MissingRequiredField("ended_at_time")
-        if not isinstance(self.ended_at_time, str):
-            self.ended_at_time = str(self.ended_at_time)
+        if not isinstance(self.ended_at_time, XSDDateTime):
+            self.ended_at_time = XSDDateTime(self.ended_at_time)
 
         if self._is_empty(self.was_informed_by):
             self.MissingRequiredField("was_informed_by")
@@ -2162,8 +2165,8 @@ class MetagenomeAssembly(WorkflowExecutionActivity):
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     type: str = None
-    started_at_time: str = None
-    ended_at_time: str = None
+    started_at_time: Union[str, XSDDateTime] = None
+    ended_at_time: Union[str, XSDDateTime] = None
     was_informed_by: Union[str, ActivityId] = None
     asm_score: Optional[float] = None
     scaffolds: Optional[float] = None
@@ -2302,8 +2305,8 @@ class MetatranscriptomeAssembly(WorkflowExecutionActivity):
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     type: str = None
-    started_at_time: str = None
-    ended_at_time: str = None
+    started_at_time: Union[str, XSDDateTime] = None
+    ended_at_time: Union[str, XSDDateTime] = None
     was_informed_by: Union[str, ActivityId] = None
     asm_score: Optional[float] = None
     scaffolds: Optional[float] = None
@@ -2442,8 +2445,8 @@ class MetagenomeAnnotationActivity(WorkflowExecutionActivity):
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     type: str = None
-    started_at_time: str = None
-    ended_at_time: str = None
+    started_at_time: Union[str, XSDDateTime] = None
+    ended_at_time: Union[str, XSDDateTime] = None
     was_informed_by: Union[str, ActivityId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -2470,8 +2473,8 @@ class MetatranscriptomeAnnotationActivity(WorkflowExecutionActivity):
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     type: str = None
-    started_at_time: str = None
-    ended_at_time: str = None
+    started_at_time: Union[str, XSDDateTime] = None
+    ended_at_time: Union[str, XSDDateTime] = None
     was_informed_by: Union[str, ActivityId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -2501,8 +2504,8 @@ class MetatranscriptomeActivity(WorkflowExecutionActivity):
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     type: str = None
-    started_at_time: str = None
-    ended_at_time: str = None
+    started_at_time: Union[str, XSDDateTime] = None
+    ended_at_time: Union[str, XSDDateTime] = None
     was_informed_by: Union[str, ActivityId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -2529,8 +2532,8 @@ class MAGsAnalysisActivity(WorkflowExecutionActivity):
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     type: str = None
-    started_at_time: str = None
-    ended_at_time: str = None
+    started_at_time: Union[str, XSDDateTime] = None
+    ended_at_time: Union[str, XSDDateTime] = None
     was_informed_by: Union[str, ActivityId] = None
     input_contig_num: Optional[int] = None
     binned_contig_num: Optional[int] = None
@@ -2580,8 +2583,8 @@ class ReadQCAnalysisActivity(WorkflowExecutionActivity):
     execution_resource: str = None
     git_url: str = None
     type: str = None
-    started_at_time: str = None
-    ended_at_time: str = None
+    started_at_time: Union[str, XSDDateTime] = None
+    ended_at_time: Union[str, XSDDateTime] = None
     was_informed_by: Union[str, ActivityId] = None
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
@@ -2646,8 +2649,8 @@ class ReadBasedAnalysisActivity(WorkflowExecutionActivity):
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     type: str = None
-    started_at_time: str = None
-    ended_at_time: str = None
+    started_at_time: Union[str, XSDDateTime] = None
+    ended_at_time: Union[str, XSDDateTime] = None
     was_informed_by: Union[str, ActivityId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -2674,8 +2677,8 @@ class MetabolomicsAnalysisActivity(WorkflowExecutionActivity):
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     type: str = None
-    started_at_time: str = None
-    ended_at_time: str = None
+    started_at_time: Union[str, XSDDateTime] = None
+    ended_at_time: Union[str, XSDDateTime] = None
     was_informed_by: Union[str, ActivityId] = None
     used: Optional[Union[str, InstrumentId]] = None
     has_metabolite_quantifications: Optional[Union[Union[dict, MetaboliteQuantification], List[Union[dict, MetaboliteQuantification]]]] = empty_list()
@@ -2715,8 +2718,8 @@ class MetaproteomicsAnalysisActivity(WorkflowExecutionActivity):
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     type: str = None
-    started_at_time: str = None
-    ended_at_time: str = None
+    started_at_time: Union[str, XSDDateTime] = None
+    ended_at_time: Union[str, XSDDateTime] = None
     was_informed_by: Union[str, ActivityId] = None
     used: Optional[Union[str, InstrumentId]] = None
     has_peptide_quantifications: Optional[Union[Union[dict, PeptideQuantification], List[Union[dict, PeptideQuantification]]]] = empty_list()
@@ -2752,8 +2755,8 @@ class NomAnalysisActivity(WorkflowExecutionActivity):
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     type: str = None
-    started_at_time: str = None
-    ended_at_time: str = None
+    started_at_time: Union[str, XSDDateTime] = None
+    ended_at_time: Union[str, XSDDateTime] = None
     was_informed_by: Union[str, ActivityId] = None
     used: Optional[Union[str, InstrumentId]] = None
     has_calibration: Optional[str] = None
@@ -5609,10 +5612,10 @@ slots.publications = Slot(uri=NMDC.publications, name="publications", curie=NMDC
                    model_uri=NMDC.publications, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.started_at_time = Slot(uri=NMDC.started_at_time, name="started at time", curie=NMDC.curie('started_at_time'),
-                   model_uri=NMDC.started_at_time, domain=None, range=Optional[str], mappings = [PROV.startedAtTime])
+                   model_uri=NMDC.started_at_time, domain=None, range=Optional[Union[str, XSDDateTime]], mappings = [PROV.startedAtTime])
 
 slots.ended_at_time = Slot(uri=NMDC.ended_at_time, name="ended at time", curie=NMDC.curie('ended_at_time'),
-                   model_uri=NMDC.ended_at_time, domain=None, range=Optional[str], mappings = [PROV.endedAtTime])
+                   model_uri=NMDC.ended_at_time, domain=None, range=Optional[Union[str, XSDDateTime]], mappings = [PROV.endedAtTime])
 
 slots.was_informed_by = Slot(uri=NMDC.was_informed_by, name="was informed by", curie=NMDC.curie('was_informed_by'),
                    model_uri=NMDC.was_informed_by, domain=None, range=Optional[Union[str, ActivityId]], mappings = [PROV.wasInformedBy])
@@ -6162,10 +6165,10 @@ slots.workflow_execution_activity_was_associated_with = Slot(uri=NMDC.was_associ
                    model_uri=NMDC.workflow_execution_activity_was_associated_with, domain=WorkflowExecutionActivity, range=Optional[Union[str, WorkflowExecutionActivityId]], mappings = [PROV.wasAssociatedWith])
 
 slots.workflow_execution_activity_started_at_time = Slot(uri=NMDC.started_at_time, name="workflow execution activity_started at time", curie=NMDC.curie('started_at_time'),
-                   model_uri=NMDC.workflow_execution_activity_started_at_time, domain=WorkflowExecutionActivity, range=str, mappings = [PROV.startedAtTime])
+                   model_uri=NMDC.workflow_execution_activity_started_at_time, domain=WorkflowExecutionActivity, range=Union[str, XSDDateTime], mappings = [PROV.startedAtTime])
 
 slots.workflow_execution_activity_ended_at_time = Slot(uri=NMDC.ended_at_time, name="workflow execution activity_ended at time", curie=NMDC.curie('ended_at_time'),
-                   model_uri=NMDC.workflow_execution_activity_ended_at_time, domain=WorkflowExecutionActivity, range=str, mappings = [PROV.endedAtTime])
+                   model_uri=NMDC.workflow_execution_activity_ended_at_time, domain=WorkflowExecutionActivity, range=Union[str, XSDDateTime], mappings = [PROV.endedAtTime])
 
 slots.workflow_execution_activity_git_url = Slot(uri=NMDC.git_url, name="workflow execution activity_git url", curie=NMDC.curie('git_url'),
                    model_uri=NMDC.workflow_execution_activity_git_url, domain=WorkflowExecutionActivity, range=str)
