@@ -7,7 +7,7 @@ Changes to the schema are documented in this file.
 ### Fixed
   - N/A
 ### Changed 
-  - deprecated `type` slot (#248)
+  - deprecated `type` slot (#248); due to confusion about what values are used for this slot, it is best not to use this slot.
 ### Removed
   - `description` slot definition from basic_slots.yaml
   - `description` slot from `slots` section of `named thing` and `image value`
