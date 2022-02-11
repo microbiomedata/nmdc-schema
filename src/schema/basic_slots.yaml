@@ -37,13 +37,6 @@ slots:
     description: >-
       A human readable label for an entity
 
-  description:
-    range: string
-    multivalued: false
-    description: >-
-      a human-readable description of a thing
-    slot_uri: dcterms:description
-
   type:
     deprecated: >-
       Due to confusion about what values are used for this slot, it is best not to use this slot.
