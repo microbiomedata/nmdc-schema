@@ -18,7 +18,8 @@ Changes to the schema are documented in this file.
 ### Changed 
   - made `part of` slot required for `biosample` (#249)
 ### Removed
-  - `description` slot from basic_slots.yaml
+  - `description` slot definition from basic_slots.yaml
+  - `description` slot from `slots` section of `named thing` and `image value`
 
 ## [2022.01.26rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2022.01.26rc1)
 ### Added
