@@ -82,7 +82,6 @@ classes:
     slots:
       - id
       - name
-      - description
       - alternative identifiers
       
   ontology class:
@@ -134,7 +133,6 @@ classes:
       An attribute value representing an image.
     slots:
       - url
-      - description
       - display order
   
   person value:
