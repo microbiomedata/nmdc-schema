@@ -7,7 +7,7 @@ Changes to the schema are documented in this file.
 ### Fixed
   - N/A
 ### Changed 
-  - N/A
+  - deprecated `type` slot (#248)
 ### Removed
   - N/A
 ## [2.0.0](https://github.com/microbiomedata/nmdc-schema/releases/tag/2.0.0)
@@ -18,7 +18,7 @@ Changes to the schema are documented in this file.
 ### Changed 
   - made `part of` slot required for `biosample` (#249)
 ### Removed
-  - N/A
+  - `description` slot from basic_slots.yaml
 
 ## [2022.01.26rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2022.01.26rc1)
 ### Added
