@@ -29,7 +29,7 @@ slots:
     description: >-
       A unique identifier for a thing.
       Must be either a CURIE shorthand for a URI or a complete URI
-    #required: false # for now we setting this to false until we develop an id template
+    #required: false # for now we are setting this to false until we develop an id template
 
   name:
     multivalued: false
@@ -58,7 +58,7 @@ slots:
     range: string
     multivalued: false
     description: >-
-      A name given to the entity that differs from the name/label programatically assigned to it.
+      A name given to the entity that differs from the name/label programmatically assigned to it.
       For example, when extracting study information for GOLD, the GOLD system has assigned a name/label.
       However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.
     exact_mappings:
@@ -88,7 +88,7 @@ slots:
     multivalued: true
     description: >-
       A list of alternative descriptions for the entity.
-      The distinction between desciption and alternative descriptions is application-specific.
+      The distinction between description and alternative descriptions is application-specific.
   
   alternative identifiers:
     range: string
