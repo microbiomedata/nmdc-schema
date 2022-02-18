@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 linkml-runtime = ">=1.1.6"
+click_log = "*"
+jsonasobj2 = "*"
 
 [dev-packages]
 linkml = ">=1.1.13"
