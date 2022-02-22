@@ -4,6 +4,9 @@ id: https://microbiomedata/schema/mixs
 imports:
 - core
 default_prefix: https://microbiomedata/schema/mixs/
+subsets:
+  MIxS:
+    name: MIxS
 slots:
   submitted_to_insdc:
     name: submitted_to_insdc

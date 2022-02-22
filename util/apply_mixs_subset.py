@@ -4,7 +4,7 @@ from typing import Optional, Dict, List  # Any
 import click
 import click_log
 from linkml_runtime.dumpers import yaml_dumper
-from linkml_runtime.linkml_model.meta import SlotDefinition
+from linkml_runtime.linkml_model.meta import SlotDefinition, SubsetDefinition
 from linkml_runtime.utils.schemaview import SchemaView
 
 # import pprint
@@ -48,6 +48,7 @@ class ViewClass:
             logger.debug(i)
             current_subsets = slots[i].in_subset
             current_subsets.append(desired_subset)
+        self.view.schema.subsets[desired_subset] = SubsetDefinition(name=desired_subset)
         #     print(current_subsets)
         #     try:
         #         temp = yaml_dumper.dumps(slots[i])
