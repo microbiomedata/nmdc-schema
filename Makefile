@@ -222,3 +222,10 @@ validate-%: test/data/%.json jsonschema/nmdc.schema.json
 
 validate-invalid-%: test/data/invalid_schemas/%.json jsonschema/nmdc.schema.json
 	! pipenv run jsonschema -i $< $(word 2, $^)
+
+# https://github.com/microbiomedata/nmdc-server/issues/555
+target/mixs_with_mixs_subset.yaml: src/schema/mixs.yaml
+	pipenv run python util/apply_mixs_subset.py \
+		--model_file $< \
+		--desired_subset MIxS \
+		--yaml_output $@

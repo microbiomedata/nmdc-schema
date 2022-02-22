@@ -3468,7 +3468,6 @@
    "$id": "https://microbiomedata/schema",
    "$schema": "http://json-schema.org/draft-07/schema#",
    "additionalProperties": false,
-   "metamodel_version": "1.7.0",
    "properties": {
       "activity_set": {
          "description": "This property links a database object to the set of workflow activities.",
@@ -3597,7 +3596,6 @@
    },
    "required": [],
    "title": "NMDC",
-   "type": "object",
-   "version": "2.0.0"
+   "type": "object"
 }
 
