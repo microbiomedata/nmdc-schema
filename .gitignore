@@ -1,3 +1,21 @@
+# these are always marked as floows on my computers
+# shhould we just ignore them?
+
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+
+docs/images/
+docs/schema-slides.html
+python/annotation.py
+python/basic_slots.py
+python/core.py
+python/external_identifiers.py
+python/mixs.py
+python/prov.py
+python/workflow_execution_activity.py
+
+# maybe do an overall review of this .gitignore file vs https://github.com/github/gitignore/blob/main/Python.gitignore
+
 target/
 site/
 venv/
