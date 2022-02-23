@@ -7,7 +7,7 @@ Changes to the schema are documented in this file.
 ### Fixed
   - N/A
 ### Changed 
-  - range for `started at time` and `ended at time` is `datetime` (#258)
+  - deprecated `type` slot (#248); due to confusion about what values are used for this slot, it is best not to use this slot.
 ### Removed
   - N/A
 
@@ -20,7 +20,6 @@ Changes to the schema are documented in this file.
   - made `part of` slot required for `biosample` (#249)
 ### Removed
   - N/A
-
 ## [2022.01.26rc1](https://github.com/microbiomedata/nmdc-schema/releases/tag/2022.01.26rc1)
 ### Added
   - add descriptions for various slots (#198)

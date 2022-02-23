@@ -43,8 +43,11 @@ slots:
     description: >-
       a human-readable description of a thing
     slot_uri: dcterms:description
-
+    
   type:
+    deprecated: >-
+      Due to confusion about what values are used for this slot, it is best not to use this slot.
+      See https://github.com/microbiomedata/nmdc-schema/issues/248.
     range: string
     description: >-
       An optional string that specifies the type object. 
