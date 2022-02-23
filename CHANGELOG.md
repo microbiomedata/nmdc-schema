@@ -10,6 +10,7 @@ Changes to the schema are documented in this file.
   - deprecated `type` slot (#248); due to confusion about what values are used for this slot, it is best not to use this slot.
 ### Removed
   - N/A
+
 ## [2.0.0](https://github.com/microbiomedata/nmdc-schema/releases/tag/2.0.0)
 ### Added
   - N/A

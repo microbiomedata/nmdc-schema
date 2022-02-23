@@ -771,6 +771,9 @@
       "end": {
          "@type": "xsd:integer"
       },
+      "ended_at_time": {
+         "@type": "xsd:dateTime"
+      },
       "env_broad_scale": {
          "@type": "@id",
          "@id": "https://microbiomedata/schema/mixs/env_broad_scale"
@@ -2503,6 +2506,9 @@
       },
       "start": {
          "@type": "xsd:integer"
+      },
+      "started_at_time": {
+         "@type": "xsd:dateTime"
       },
       "stoichiometry": {
          "@type": "xsd:integer"
