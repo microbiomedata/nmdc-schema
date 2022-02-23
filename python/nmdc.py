@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-02-08T14:39:50
+# Generation date: 2022-02-23T17:10:59
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -28,6 +28,7 @@ from linkml_runtime.linkml_model.types import Boolean, Double, Float, Integer, S
 from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE
 
 metamodel_version = "1.7.0"
+version = "2.0.0"
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -313,7 +314,9 @@ class Database(YAMLRoot):
             self.functional_annotation_set = [self.functional_annotation_set] if self.functional_annotation_set is not None else []
         self.functional_annotation_set = [v if isinstance(v, FunctionalAnnotation) else FunctionalAnnotation(**as_dict(v)) for v in self.functional_annotation_set]
 
-        self._normalize_inlined_as_list(slot_name="genome_feature_set", slot_type=GenomeFeature, key_name="seqid", keyed=False)
+        if not isinstance(self.genome_feature_set, list):
+            self.genome_feature_set = [self.genome_feature_set] if self.genome_feature_set is not None else []
+        self.genome_feature_set = [v if isinstance(v, GenomeFeature) else GenomeFeature(**as_dict(v)) for v in self.genome_feature_set]
 
         if self.nmdc_schema_version is not None and not isinstance(self.nmdc_schema_version, str):
             self.nmdc_schema_version = str(self.nmdc_schema_version)

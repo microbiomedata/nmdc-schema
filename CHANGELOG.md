@@ -9,8 +9,7 @@ Changes to the schema are documented in this file.
 ### Changed 
   - deprecated `type` slot (#248); due to confusion about what values are used for this slot, it is best not to use this slot.
 ### Removed
-  - `description` slot definition from basic_slots.yaml
-  - `description` slot from `slots` section of `named thing` and `image value`
+  - N/A
 ## [2.0.0](https://github.com/microbiomedata/nmdc-schema/releases/tag/2.0.0)
 ### Added
   - N/A
