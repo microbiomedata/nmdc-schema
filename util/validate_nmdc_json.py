@@ -7,7 +7,9 @@ from .nmdc_data import get_nmdc_jsonschema, get_nmdc_jsonschema_dict
 from deprecated import deprecated
 
 
-@deprecated(reason="functionality moved to nmdc_data.get_nmdc_jsonschema_dict()")
+@deprecated(
+    reason="functionality moved to nmdc_data.get_nmdc_jsonschema_dict()"
+)
 def get_nmdc_schema() -> dict:
     """
     Returns the nmdc.schema.json package data file as a dict.
@@ -61,7 +63,9 @@ def is_valid_json(json_file: str, database_set: str = "") -> bool:
             else:
                 json_data = {f"{database_set}": [json_data]}
     try:
-        jsonschema.validate(instance=json_data, schema=get_nmdc_dict())
+        jsonschema.validate(
+            instance=json_data, schema=get_nmdc_jsonschema_dict()
+        )
     except jsonschema.exceptions.ValidationError as err:
         print(err.message)
         return False
@@ -86,7 +90,9 @@ def cli(input: str, database_set: str):
     if is_valid_json(input, database_set):
         click.echo("%s: The JSON data is VALID for NMDC schema." % input)
     else:
-        click.echo("%s: The JSON data is ** NOT ** valid for NMDC schema." % input)
+        click.echo(
+            "%s: The JSON data is ** NOT ** valid for NMDC schema." % input
+        )
 
 
 if __name__ == "__main__":
