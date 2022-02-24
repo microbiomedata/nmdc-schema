@@ -31,7 +31,11 @@ t:
 echo:
 	echo $(patsubst %,gen-%,$(TGTS))
 
-test: all test-jsonschema
+.PHONY: test
+test: all test-data
+
+.PHONY: test-data
+test-data: test-jsonschema test-jsonschema_invalid
 
 install:
 #	. environment.sh
@@ -209,9 +213,6 @@ SCHEMA_TEST_EXAMPLES_INVALID := \
 
 .PHONY: test-jsonschema
 test-jsonschema: $(foreach example, $(SCHEMA_TEST_EXAMPLES), validate-$(example))
-
-# .PHONY: test-jsonschema
-# test-jsonschema: $(foreach example, $(SCHEMA_TEST_EXAMPLES), echo $(example))
 
 .PHONY: test-jsonschema_invalid
 test-jsonschema_invalid: $(foreach example, $(SCHEMA_TEST_EXAMPLES_INVALID), validate-invalid-$(example))
