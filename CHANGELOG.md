@@ -3,7 +3,7 @@ Changes to the schema are documented in this file.
 
 ## Current (updates before releasing)
 ### Added
-  - N/A
+  - regex for checking datetime values for `started at time` and `ended at time`
 ### Fixed
   - N/A
 ### Changed 
