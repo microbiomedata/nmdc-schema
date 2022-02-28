@@ -1,0 +1,59 @@
+[tool.poetry]
+name = "nmdc_schema"
+version = "2.0.0"
+description = "Schema resources for the National Microbiome Data Collaborative (NMDC)"
+authors = [
+    "Bill Duncan <wdduncan@gmail.com>",
+    "Mark Andrew Miller <MAM@lbl.gov>",
+    "Sujay Patil <spatil@lbl.gov>"
+]
+
+readme = "README.md"
+
+homepage = "https://microbiomedata.github.io/nmdc-schema/"
+repository = "https://github.com/microbiomedata/nmdc-schema"
+documentation = "https://microbiomedata.github.io/nmdc-schema/"
+
+keywords = ["NMDC", "schema", "metadata", "microbiome"]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3 :: Only",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+]
+
+packages = [
+    { include = "nmdc_schema" }
+]
+
+include = [
+    "jsonschema/nmdc.schema.json",
+    "sssom/gold-to-mixs.sssom.tsv",
+    "src/schema/*.yaml"
+]
+
+[tool.poetry.scripts]
+validate-nmdc-json = "nmdc_schema.validate_nmdc_json:cli"
+fetch-nmdc-schema = "nmdc_schema.nmdc_data:get_nmdc_jsonschema"
+nmdc-version = "nmdc_schema.nmdc_version:cli"
+nmdc-data = "nmdc_schema.nmdc_data:cli"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+linkml = ">=1.1.13"
+linkml-runtime = ">=1.1.6"
+openpyxl = "==3.0.7"
+pandoc = "*"
+
+[tool.poetry.dev-dependencies]
+build = "*"
+jq = "*"
+mkdocs = "*"
+twine = "*"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
