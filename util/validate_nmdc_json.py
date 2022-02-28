@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 """Provides CLI to validate json files against the NMDC jsonschema."""
 
-import json, jsonschema, io, click
-from .nmdc_data import get_nmdc_jsonschema, get_nmdc_jsonschema_dict
+import json, jsonschema, click
+from nmdc_data import get_nmdc_jsonschema, get_nmdc_jsonschema_dict
 from deprecated import deprecated
 
 
