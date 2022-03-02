@@ -18,7 +18,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE
+    #----------------------------------------------
+    #       check-out repo and set-up python
+    #----------------------------------------------
     - name: Checkout
       uses: actions/checkout@v2
     
@@ -26,27 +28,25 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.9
-    
-    # Install pandoc
-    - name: Install pandoc
-      run: sudo apt-get install pandoc
 
-    # Install poetry
+    #----------------------------------------------
+    #          install & configure poetry
+    #----------------------------------------------
     - name: Install Poetry
       uses: snok/install-poetry@v1.3
       with:
         virtualenvs-create: true
         virtualenvs-in-project: true
-        
-    # Load pipenv virtual environment from cache
-    # see: https://ianwhitestone.work/aws-serverless-deployments-with-github-actions/
-#     - name: Load pipenv from cache
-#       uses: actions/cache@v2
-#       with:
-#         path: ~/.local/share/virtualenvs
-#         key: ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-pipenv-${{ hashFiles('Pipfile.lock') }}
 
-    # load cached venv if cache exists
+    #----------------------------------------------
+    #               install pandoc
+    #----------------------------------------------
+    - name: Install pandoc
+      run: sudo apt-get install pandoc
+
+    #----------------------------------------------
+    #       load cached venv if cache exists      
+    #----------------------------------------------
     - name: Load cached venv
       id: cached-poetry-dependencies
       uses: actions/cache@v2
@@ -54,18 +54,24 @@ jobs:
         path: .venv
         key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
 
-    # install dependencies if cache does not exist
+    #----------------------------------------------
+    # install dependencies if cache does not exist 
+    #----------------------------------------------
     - name: Install dependencies
       if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
       run: poetry install --no-interaction --no-root
-
-    # Excute the Makefile to build generated artifacts
+    
+    #----------------------------------------------
+    #         build generated artifacts 
+    #----------------------------------------------
     - name: Make Artifacts
       run: |
         make clean-artifacts
         make all
         
-    # Validate json schema aganst test data
+    #----------------------------------------------
+    #   validate test data against JSON Schema 
+    #----------------------------------------------
     - name: Validate JSON Schema
       run: |
         make test-jsonschema
