@@ -156,8 +156,8 @@ gh-deploy:
 
 ###  -- PYPI TARGETS
 # Use the build-package target to build a PYPI package locally
-# This is usefule for testing
-.PHONY: clean-package build-package deploy-pypi
+# This is useful for testing
+.PHONY: clean-package build-nmdc_schema build-package deploy-pypi
 clean-package:
 	rm -rf dist && echo 'dist removed'
 	rm -rf nmdc_schema.egg-info && echo 'egg-info removed'
@@ -165,7 +165,7 @@ clean-package:
 	rm -f nmdc_schema/*.json
 	rm -f nmdc_schema/*.tsv
 
-build-package: clean-package
+build-nmdc_schema: clean-package
 	cp src/schema/nmdc.yaml nmdc_schema/ # copy nmdc yaml file
 	cp python/*.py nmdc_schema/ # copy python files
 	cp jsonschema/nmdc.schema.json nmdc_schema/ # copy nmdc json schema
@@ -173,6 +173,8 @@ build-package: clean-package
 	cp util/validate_nmdc_json.py nmdc_schema/ # copy command-line validation tool
 	cp util/nmdc_version.py nmdc_schema/ # copy command-line version tool
 	cp util/nmdc_data.py nmdc_schema/ # copy command-line data retrieval tool
+
+build-package: build-nmdc_schema
 	poetry build
 
 deploy-pypi:
