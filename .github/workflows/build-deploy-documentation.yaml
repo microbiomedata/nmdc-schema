@@ -19,41 +19,57 @@ on:
 jobs:
   github-pages:
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      #----------------------------------------------
+      #       check-out repo and set-up python
+      #----------------------------------------------
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Setup Python 3.9
+        uses: actions/setup-python@v2
         with:
           python-version: 3.9
       
-      # Install pandoc
+      #----------------------------------------------
+      #          install pandoc
+      #----------------------------------------------
       - name: Install pandoc
         run: sudo apt-get install pandoc
         
-      # Install pipenv
-      - name: Install pipenv
-        run: python3 -m pip install --no-cache-dir pipenv
-      
-      # Load pipenv virtual environment from cache
-      # see: https://ianwhitestone.work/aws-serverless-deployments-with-github-actions/
-#       - name: Load pipenv from cache
-#         uses: actions/cache@v2
-#         with:
-#           path: ~/.local/share/virtualenvs
-#           key: ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-pipenv-${{ hashFiles('Pipfile.lock') }}
+      #----------------------------------------------
+      #          install & configure poetry
+      #----------------------------------------------
+      - name: Install Poetry
+        uses: snok/install-poetry@v1.3
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
 
+      #----------------------------------------------
+      #       load cached venv if cache exists      
+      #----------------------------------------------
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v2
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
 
-      # If cache was not loaded, install dependencies
+      #----------------------------------------------
+      # install dependencies if cache does not exist 
+      #----------------------------------------------
       - name: Install dependencies
-        # if: steps.cache-pipenv.outputs.cache-hit != 'true'
-        run: pipenv install -d
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction --no-root     
         
-      # install dependencies (use pipenv instead)
-      # - run: pip install --upgrade pip
-      # - run: pip install mkdocs
-      # - run: pip install linkml
-        
-      # generate markdown files
+      #----------------------------------------------
+      #             generate markdown files 
+      #----------------------------------------------
       - run: make stage-docs
 
-      # deploy documentation (note: requires documentation is in docs dir)
+      #----------------------------------------------
+      #               deploy documentation 
+      #----------------------------------------------
       - run: make gh-deploy
