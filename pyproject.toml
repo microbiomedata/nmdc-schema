@@ -41,10 +41,10 @@ nmdc-version = "nmdc_schema.nmdc_version:cli"
 nmdc-data = "nmdc_schema.nmdc_data:cli"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.9"
 
-linkml = ">=1.1.13"
-linkml-runtime = ">=1.1.6"
+linkml = ">=1.2.0rc6"
+linkml-runtime = ">=1.2.0rc6"
 openpyxl = "==3.0.7"
 pandoc = "*"
 
