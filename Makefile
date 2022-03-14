@@ -9,7 +9,7 @@ SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
 RUN=poetry run
 
 #TGTS = graphql jsonschema docs shex owl csv  python
-TGTS = jsonschema jsonld-context python docs
+TGTS = jsonschema jsonld-context python json docs
 
 #GEN_OPTS = --no-mergeimports
 GEN_OPTS =
@@ -138,13 +138,11 @@ gen-rdf: target/rdf/$(SCHEMA_NAME).ttl
 target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml tdir-rdf
 	$(RUN) gen-rdf $(GEN_OPTS) $< > $@
 
-###  -- LINKML --
-# linkml (copy)
-# one file per module
-gen-linkml: target/linkml/$(SCHEMA_NAME).yaml
-.PHONY: gen-linkml
-target/linkml/%.yaml: $(SCHEMA_DIR)/%.yaml tdir-limkml
-	cp $< > $@
+###  -- JSON --
+gen-json: target/json/$(SCHEMA_NAME).linkml.json
+.PHONY: gen-json
+target/json/%.linkml.json: $(SCHEMA_DIR)/%.yaml tdir-json
+	$(RUN) gen-linkml $(GEN_OPTS) --format json --materialize-attributes $< > $@
 
 # test docs locally.
 docserve:
