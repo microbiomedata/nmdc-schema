@@ -499,7 +499,7 @@ slots:
     
   orcid:
     description: >-
-      The ORICD of a person.
+      The ORCID of a person.
     domain: person value
     range: string
 

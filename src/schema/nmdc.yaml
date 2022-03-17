@@ -399,6 +399,12 @@ classes:
             tag: display_hint
             value: >-
               Provide the GOLD study IDs associated with samples for this study.
+      INSDC bioproject identifiers:
+        annotations:
+          display_hint:
+            tag: display_hint
+            value: >-
+              Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title.
     exact_mappings:
       - SIO:001066  ## study
       - NCIT:C63536 ## study
