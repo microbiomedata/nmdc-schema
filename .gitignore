@@ -8,9 +8,6 @@ docs/types/
 .venv
 local/
 
-# directory that hold the nmdc_schema pypi package
-nmdc_schema/
-
 # jupyter backups
 .ipynb_checkpoints/
 
