@@ -354,13 +354,51 @@ classes:
       doi:
         description: >-
           The dataset citation for this study
+        annotations:
+          display_hint:
+            tag: display_hint
+            value: >-
+              DOI associated with the data in this study. This is required when data is already generated.
       name:
         annotations:
           display_hint:
             tag: display_hint
-            value: study name slot usage display hint
+            value: Provide a name for the study your samples will belong with.
         description: >-
           Provide a name for the study your samples will belong with.
+      websites:
+        annotations:
+          display_hint:
+            tag: display_hint
+            value: >- 
+              Link to the Principal Investigator's research lab webpage 
+              or the study webpage associated with this collection of samples. 
+              Multiple links can be provided.
+      description:
+        annotations:
+          display_hint:
+            tag: display_hint
+            value: >-
+              Provide a brief description of your study.
+      notes:
+        annotations:
+          display_hint:
+            tag: display_hint
+            value: >-
+              Add any additional notes or comments about this study.
+      alternative names:
+        annotations:
+          display_hint:
+            tag: display_hint
+            value: >-
+              Project, study, or sample set names the are also associated with this submission 
+              or other names / identifiers for this study.
+      GOLD sample identifiers:
+        annotations:
+          display_hint:
+            tag: display_hint
+            value: >-
+              Provide the GOLD study IDs associated with samples for this study.
     exact_mappings:
       - SIO:001066  ## study
       - NCIT:C63536 ## study
