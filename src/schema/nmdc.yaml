@@ -4,14 +4,14 @@ title: NMDC Schema
 
 description: >-
   Schema for National Microbiome Data Collaborative (NMDC).
-    
+  
   This schema is organized into distinct modules:
-    
+  
    * a set of core types for representing data values
    * the mixs schema (auto-translated from mixs excel)
    * annotation schema
    * the NMDC schema itself
-  
+
 license: https://creativecommons.org/publicdomain/zero/1.0/
 version: 2.1.0
 
@@ -28,7 +28,7 @@ prefixes:
   NCIT: http://purl.obolibrary.org/obo/NCIT_
   igsn: https://app.geosamples.org/sample/igsn/
   img.taxon: http://img.jgi.doe.gov/cgi-bin/w/main.cgi?section=TaxonDetail&taxon_oid=
-  
+
 default_prefix: nmdc
 default_range: string
 
@@ -94,13 +94,13 @@ classes:
     slot_usage:
       nmdc schema version:
         description: >-
-            TODO
+          TODO
       date created:
         description: >-
-            TODO
+          TODO
       etl software version:
         description: >-
-            TODO
+          TODO
   
   data object:
     is_a: named thing
@@ -127,9 +127,9 @@ classes:
 
   biosample:
     is_a: named thing
-    in_subset: 
+    in_subset:
       - sample subset
-    aliases: ['sample', 'material sample', 'specimen', 'biospecimen']
+    aliases: [ 'sample', 'material sample', 'specimen', 'biospecimen' ]
     description: >-
       A material sample. It may be environmental (encompassing many organisms) or isolate or tissue.  
       An environmental sample containing genetic material from multiple individuals is commonly referred to as a biosample.
@@ -140,7 +140,7 @@ classes:
       - type  # custom slot that specifies object type
       - alternative identifiers
       - part of
-    
+
       # MIXS slots
       - agrochem_addition
       - alkalinity
@@ -151,7 +151,7 @@ classes:
       - al_sat_meth
       - aminopept_act
       - ammonium
-      - annual_precpt      
+      - annual_precpt
       - annual_temp
       - bacteria_carb_prod
       - bishomohopanol
@@ -175,25 +175,25 @@ classes:
       - diss_org_carb
       - diss_org_nitro
       - diss_oxygen
-      - drainage_class      
+      - drainage_class
       - elev
       - env_package
       - env_broad_scale
       - env_local_scale
       - env_medium
-      - extreme_event      
-      - fao_class      
+      - extreme_event
+      - fao_class
       - fire
-      - flooding  
+      - flooding
       - geo_loc_name
       - glucosidase_act
       - heavy_metals
       - heavy_metals_meth
       - horizon
-      - horizon_meth      
+      - horizon_meth
       - lat_lon
-      - link_addit_analys      
-      - link_class_info      
+      - link_addit_analys
+      - link_class_info
       - link_climate_info
       - local_class
       - local_class_meth
@@ -201,7 +201,7 @@ classes:
       - mean_frict_vel
       - mean_peak_frict_vel
       - microbial_biomass
-      - microbial_biomass_meth      
+      - microbial_biomass_meth
       - misc_param
       - n_alkanes
       - nitrate
@@ -230,10 +230,10 @@ classes:
       - samp_mat_process
       - samp_store_dur
       - samp_store_loc
-      - samp_store_temp     
+      - samp_store_temp
       - samp_vol_we_dna_ext
       - season_temp
-      - season_precpt      
+      - season_precpt
       - sieving
       - size_frac_low
       - size_frac_up
@@ -245,9 +245,9 @@ classes:
       - store_cond
       - sulfate
       - sulfide
-      - temp     
+      - temp
       - texture
-      - texture_meth      
+      - texture_meth
       - tillage
       - tidal_stage
       - tot_carb
@@ -310,9 +310,9 @@ classes:
 
   study:
     is_a: named thing
-    in_subset: 
+    in_subset:
       - sample subset
-    aliases: ['proposal', 'research proposal', 'research study', 'investigation', 'project', 'umbrella project']
+    aliases: [ 'proposal', 'research proposal', 'research study', 'investigation', 'project', 'umbrella project' ]
     description: >-
       A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.  
     alt_descriptions:
@@ -367,7 +367,7 @@ classes:
       - GOLD ## https://identifiers.org/gold:Gs0110115
       - insdc.srs ## https://www.ebi.ac.uk/ena/browser/view/PRJEB45055?
       - mgnify ## https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757
-          
+
   biosample processing:
     aliases:
       - material processing
@@ -389,7 +389,7 @@ classes:
       - sequencing project
       - experiment
     is_a: biosample processing
-    in_subset: 
+    in_subset:
       - sample subset
     description: >-
       The methods and processes used to generate omics data from a biosample or organism.
@@ -434,7 +434,7 @@ classes:
       - ISA:Assay
   
   credit association:
-    aliases: ['study role', 'credit table', 'associated researchers']
+    aliases: [ 'study role', 'credit table', 'associated researchers' ]
     description: >-
       This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role (https://casrai.org/credit/) and for a person value
       Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0 
@@ -444,7 +444,7 @@ classes:
       - applied roles
       - type
     class_uri: prov:Association
-  
+
 enums:
   file type enum:
     permissible_values:
@@ -510,7 +510,7 @@ enums:
         description: Reads QC summary statistics
       TIGRFam Annotation GFF:
         description: GFF3 format file with TIGRfam
-        annotations: 
+        annotations:
           file_name_pattern: "[GOLD-AP]_tigrfam.gff"
       Clusters of Orthologous Groups (COG) Annotation GFF:
         description: GFF3 format file with COGs
@@ -534,7 +534,7 @@ enums:
           file_name_pattern: "[GOLD-AP]_pfam.gff"
       Direct Infusion FT ICR-MS Raw Data:
         description: Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance mass spectrometry raw data acquired in broadband full scan mode
-      
+
   credit enum:
     permissible_values:
       Conceptualization:
@@ -570,7 +570,7 @@ enums:
         meaning: OBI:0000103
     comments:
       - credit enums come from https://casrai.org/credit/
-    
+
 slots:
 
   ess dive datasets:
@@ -588,6 +588,10 @@ slots:
       The credit association will be linked to a person value and to a CRediT Contributor Roles term.
       Overall semantics: person should get credit X for their participation in the study
     slot_uri: prov:qualifiedAssociation
+    annotations:
+      display_hint:
+        tag: display_hint
+        value: Other researchers associated with this study.
 
   study image:
     domain: study
@@ -599,11 +603,11 @@ slots:
 
   relevant protocols:
     multivalued: true
-    range: string 
+    range: string
 
   funding sources:
     multivalued: true
-    range: string 
+    range: string
 
   applied role:
     domain: credit association
@@ -618,7 +622,12 @@ slots:
     range: credit enum
     multivalued: true
     required: true
-      
+    annotations:
+      display_hint:
+        tag: display_hint
+        value: >-
+          Identify all CRediT roles associated with this contributor. CRediT Information: https://info.orcid.org/credit-for-research-contribution ; CRediT: https://credit.niso.org/ 
+
   applies to person:
     domain: credit association
     range: person value
@@ -751,7 +760,7 @@ slots:
     multivalued: true
     description: >-
       This property links a database object to the set of read based analysis activities.
-        
+
   nom analysis activity set:
     mixins: object set
     domain: database
@@ -769,7 +778,7 @@ slots:
       This property links a database object to the set of omics processings within it.
 
   omics type:
-    range: controlled term value 
+    range: controlled term value
     description: >-
       The type of omics data
     examples:
@@ -783,7 +792,7 @@ slots:
     examples:
       - value: FT ICR-MS Analysis Results
       - value: GC-MS Metabolomics Results
-      
+
   compression type:
     range: string
     description: >-
@@ -792,11 +801,11 @@ slots:
       - value: gzip
     todos:
       - consider enum
-          
+
   instrument_name:
     description: >-
       The name of the instrument that was used for processing the sample.
-         
+
   ## GOLD PATHS
   gold_path_field:
     is_a: attribute
@@ -804,7 +813,7 @@ slots:
     abstract: true
     description: >-
       This is a grouping for any of the gold path fields          
-    
+
   ecosystem:
     is_a: gold_path_field
     description: >-
@@ -870,13 +879,13 @@ slots:
 
   habitat:
     range: string
-    
+
   location:
     range: string
-    
+
   community:
     range: string
-    
+
   ncbi_taxonomy_name:
     range: string
 
@@ -885,25 +894,25 @@ slots:
   
   sample_collection_site:
     range: string
-    
+
   identifier:
     range: string
-    
+
   sample_collection_year:
     range: integer
-    
+
   sample_collection_month:
     range: integer
-    
+
   sample_collection_day:
     range: integer
-    
+
   sample_collection_hour:
     range: integer
-    
+
   sample_collection_minute:
     range: integer
-    
+
   salinity_category:
     description: >-
       Categorcial description of the sample's salinity.
@@ -911,10 +920,10 @@ slots:
     range: string
     see_also:
       - https://github.com/microbiomedata/nmdc-metadata/pull/297
-      
+
   soluble_iron_micromol:
     range: string
-    
+
   host_name:
     range: string
   
@@ -929,13 +938,13 @@ slots:
 
   proport_woa_temperature:
     range: string
-    
+
   biogas_temperature:
     range: string
-    
+
   soil_annual_season_temp:
     range: string
-    
+
   biogas_retention_time:
     range: string
 

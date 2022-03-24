@@ -30,14 +30,14 @@ imports:
   - linkml:types
   - basic_slots
   - prov
-  
+
 subsets:
-  environment: {}
-  investigation: {}
-  mixs extension: {}
-  nucleic acid sequence source: {}
-  sequencing: {}
-  soil: {}
+  environment: { }
+  investigation: { }
+  mixs extension: { }
+  nucleic acid sequence source: { }
+  sequencing: { }
+  soil: { }
 
 types:
 
@@ -56,7 +56,7 @@ types:
     base: float
     see_also:
       - https://en.wikipedia.org/wiki/Decimal_degrees
-      
+
   language code:
     description: >-
       A language code conforming to ISO_639-1
@@ -73,7 +73,7 @@ types:
       - UO:0000000
 
 
-    
+
 classes:
 
   named thing:
@@ -84,7 +84,7 @@ classes:
       - name
       - description
       - alternative identifiers
-      
+
   ontology class:
     is_a: named thing
 
@@ -103,7 +103,7 @@ classes:
         description: >-
           An optional string that specified the type of object.
         required: false
-    
+
   quantity value:
     is_a: attribute value
     description: >-
@@ -161,6 +161,42 @@ classes:
           The full name of the Investgator.
           It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
 
+  Principal Investigator:
+    is_a: person value
+    description: >-
+      A person value representing a Principal Investigator
+    slot_usage:
+      email:
+        annotations:
+          display_hint:
+            tag: display_hint
+            value: An email address for the Principal Investigator.
+      orcid:
+        annotations:
+          display_hint:
+            tag: display_hint
+            value: ORCID (Open Researcher and Contributor ID, https://orcid.org) of the Principal Investigator.
+      name:
+        annotations:
+          display_hint:
+            tag: display_hint
+            value: The Principal Investigator who led the study and/or generated the data.
+
+  Contributor:
+    is_a: person value
+    description: >-
+      A person value representing a Contributor
+    slot_usage:
+      orcid:
+        annotations:
+          display_hint:
+            tag: display_hint
+            value: ORCID of the contributor identified. https://orcid.org/signin
+      name:
+        annotations:
+          display_hint:
+            tag: display_hint
+            value: Contributor's name associated with this study. First name, Middle initial, Last name
 
   person:
     is_a: named thing
@@ -175,7 +211,7 @@ classes:
   
   MAG bin:
     slots:
-       - type  # custom slot that specifies object type
+      - type  # custom slot that specifies object type
     attributes:
       bin name:
         range: string
@@ -242,7 +278,7 @@ classes:
         description: >-
           TODO: Yuri to fill in
         range: float
-          
+
   peptide quantification:
     description: >-
       This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information
@@ -342,7 +378,7 @@ classes:
       - MESH
     exact_mappings:
       - biolink:ChemicalSubstance
-      
+
   gene product:
     is_a: named thing
     description: >-
@@ -362,7 +398,7 @@ classes:
       A basic string value
     slots:
       - language
-      
+
   url value:
     is_a: attribute value
     description: >-
@@ -390,7 +426,7 @@ classes:
       A value that is a boolean
     slots:
       - has boolean value
-      
+
   controlled term value:
     is_a: attribute value
     description: >-
@@ -415,19 +451,19 @@ classes:
       - schema:GeoCoordinates
 
 slots:
-    
+
   language:
     range: language code
     description: >-
       Should use ISO 639-1 code e.g. "en", "fr"
 
   attribute:
-    aliases: ['field', 'property', 'template field', 'key', 'characteristic']
+    aliases: [ 'field', 'property', 'template field', 'key', 'characteristic' ]
     abstract: true
     description: >-
       A attribute of a biosample. Examples: depth, habitat, material.
       For NMDC, attributes SHOULD be mapped to terms within a MIxS template
-    
+
   has raw value:
     description: >-
       The value that was specified for an annotation in raw form, i.e. a string. E.g. "2 cm" or "2-4 cm"
@@ -435,7 +471,7 @@ slots:
     required: false
     domain: attribute value
     range: string
-    
+
   has unit:
     description: >-
       Links a quantity value to a unit
@@ -496,7 +532,7 @@ slots:
       pointer to an ontology class
     slot_uri: rdf:type
     inlined: true
-    
+
   orcid:
     description: >-
       The ORICD of a person.
@@ -514,7 +550,7 @@ slots:
     description: >-
       One or more other email addresses for an entity.
     range: string
-    
+
   profile image url:
     description: >-
       A url that points to an image of a person.
@@ -522,15 +558,15 @@ slots:
     range: string
   
   has input:
-    aliases: ['input']
+    aliases: [ 'input' ]
     domain: named thing
-    range: named thing    
+    range: named thing
     multivalued: true
     description: >-
       An input to a process.
-    
+
   has output:
-    aliases: ['output']
+    aliases: [ 'output' ]
     domain: named thing
     range: named thing
     multivalued: true
@@ -538,7 +574,7 @@ slots:
       An output biosample to a processing step
 
   part of:
-    aliases: ['is part of']
+    aliases: [ 'is part of' ]
     range: named thing
     domain: named thing
     multivalued: true
@@ -550,7 +586,7 @@ slots:
     is_a: attribute
     description: >-
       Example: NERSC-Cori
-      
+
   url:
     is_a: attribute
     range: string
@@ -567,7 +603,7 @@ slots:
     range: string
     description: >-
       Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1
-      
+
   file size bytes:
     is_a: attribute
     range: bytes
