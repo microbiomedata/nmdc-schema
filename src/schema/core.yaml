@@ -153,12 +153,12 @@ classes:
     slot_usage:
       has raw value:
         description: >-
-          The full name of the Investgator in format FIRST LAST.
+          The full name of the Investigator in format FIRST LAST.
         notes: >-
           May eventually be deprecated in favor of "name".
       name:
         description: >-
-          The full name of the Investgator.
+          The full name of the Investigator.
           It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
 
   Principal Investigator:
@@ -535,7 +535,7 @@ slots:
 
   orcid:
     description: >-
-      The ORICD of a person.
+      The ORCID of a person.
     domain: person value
     range: string
 
@@ -645,11 +645,11 @@ slots:
     range: string
     multivalued: true
     description: >-
-      A list of websites that are assocatiated with the entity.
+      A list of websites that are associated with the entity.
 
   publications:
     range: string
     multivalued: true
     description: >-
-      A list of publications that are assocatiated with the entity.
-      The publicatons SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.
+      A list of publications that are associated with the entity.
+      The publications SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.

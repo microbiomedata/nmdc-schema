@@ -18,7 +18,7 @@ imports:
 subsets:
   workflow subset:
     description: >-
-      Subset consisting of just the workflow exectution activities
+      Subset consisting of just the workflow execution activities
 
 classes:
 
