@@ -151,6 +151,16 @@ classes:
       - add additional fields e.g for institution
       - deprecate "has raw value" in favor of "name"
     slot_usage:
+      orcid:
+        annotations:
+          display_hint:
+            tag: display_hint
+            value: Open Researcher and Contributor ID for this person. See https://orcid.org
+      email:
+        annotations:
+          display_hint:
+            tag: display_hint
+            value: Email address for this person.
       has raw value:
         description: >-
           The full name of the Investigator in format FIRST LAST.
@@ -160,43 +170,10 @@ classes:
         description: >-
           The full name of the Investigator.
           It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
-
-  Principal Investigator:
-    is_a: person value
-    description: >-
-      A person value representing a Principal Investigator
-    slot_usage:
-      email:
         annotations:
           display_hint:
             tag: display_hint
-            value: An email address for the Principal Investigator.
-      orcid:
-        annotations:
-          display_hint:
-            tag: display_hint
-            value: ORCID (Open Researcher and Contributor ID, https://orcid.org) of the Principal Investigator.
-      name:
-        annotations:
-          display_hint:
-            tag: display_hint
-            value: The Principal Investigator who led the study and/or generated the data.
-
-  Contributor:
-    is_a: person value
-    description: >-
-      A person value representing a Contributor
-    slot_usage:
-      orcid:
-        annotations:
-          display_hint:
-            tag: display_hint
-            value: ORCID of the contributor identified. https://orcid.org/signin
-      name:
-        annotations:
-          display_hint:
-            tag: display_hint
-            value: Contributor's name associated with this study. First name, Middle initial, Last name
+            value: First name, middle initial, and last name of this person.
 
   person:
     is_a: named thing

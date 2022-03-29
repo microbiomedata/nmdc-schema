@@ -309,10 +309,6 @@ classes:
       - NCIT:C43412
 
   study:
-    annotations:
-      display_hint:
-        tag: display_hint
-        value: study class display hint
     is_a: named thing
     in_subset:
       - sample subset
@@ -364,8 +360,7 @@ classes:
           display_hint:
             tag: display_hint
             value: Provide a name for the study your samples will belong with.
-        description: >-
-          Provide a name for the study your samples will belong with.
+
       websites:
         annotations:
           display_hint:
@@ -681,7 +676,7 @@ slots:
       display_hint:
         tag: display_hint
         value: >-
-          Identify all CRediT roles associated with this contributor. CRediT Information: https://info.orcid.org/credit-for-research-contribution ; CRediT: https://credit.niso.org/ 
+          Identify all CRediT roles associated with this contributor. CRediT Information: https://info.orcid.org/credit-for-research-contribution ; CRediT: https://credit.niso.org/
 
   applies to person:
     domain: credit association
