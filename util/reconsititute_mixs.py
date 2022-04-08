@@ -6,6 +6,9 @@ import pymongo
 from linkml_runtime import SchemaView
 
 import yaml
+from linkml_runtime.linkml_model import SchemaDefinition
+
+from linkml_runtime.dumpers import yaml_dumper
 
 
 class TermBroker:
@@ -58,6 +61,15 @@ class TermBroker:
         l_diff.sort()
         return l_diff
 
+    def do_reconstitution(self, view_alias: str, slot_name_list: List[str]) -> SchemaDefinition:
+        current_schema = SchemaDefinition(name='mixs_for_nmdc_biosamples',
+                                          id='http://example.com/mixs_for_nmdc_biosamples')
+        current_view = self.view_dict[view_alias]
+        for current_sn in slot_name_list:
+            current_slot = current_view.get_slot(current_sn)
+            current_schema.slots[current_sn] = current_slot
+        return current_schema
+
 
 tb = TermBroker()
 
@@ -80,8 +92,10 @@ with open("../local/secrets.yaml", 'r') as stream:
     except yaml.YAMLError as exc:
         print(exc)
 
+mongodb_suffix = "@localhost:27027/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false"
+
 myclient = pymongo.MongoClient(
-    f"mongodb://mam:{secrets['nmdc_mongodb_pw']}@localhost:27027/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false")
+    f"mongodb://{secrets['nmdc_mongodb']['username']}:{secrets['nmdc_mongodb']['password']}{mongodb_suffix}")
 
 # todo make this more general
 myquery = {"ncbi_taxonomy_name": "sediment metagenome"}
@@ -89,5 +103,22 @@ myquery = {"ncbi_taxonomy_name": "sediment metagenome"}
 mongodb_biosample_slot_names = tb.get_mongodb_coll_slot_names(mongo_client=myclient, db_name="nmdc",
                                                               coll_name="biosample_set", query=myquery)
 
-sample_diff = tb.list_diff(mongodb_biosample_slot_names, mixs_6_slot_names)
-pprint.pprint(sample_diff)
+nmdc_mixs_5_mixs_6_shared_slot_names = list(set(nmdc_mixs_5_slot_names).intersection(set(mixs_6_slot_names)))
+nmdc_mixs_5_mixs_6_shared_slot_names.sort()
+pprint.pprint(nmdc_mixs_5_mixs_6_shared_slot_names)
+
+lost_mixs_slots = tb.list_diff(nmdc_mixs_5_slot_names, mixs_6_slot_names)
+pprint.pprint(lost_mixs_slots)
+
+lost_biosample_mixs_slots = list(set(lost_mixs_slots).intersection(set(nmdc_biosample_slot_names)))
+lost_biosample_mixs_slots.sort()
+pprint.pprint(lost_biosample_mixs_slots)
+
+lost_biosample_mixs_mongodb_slots = list(set(lost_biosample_mixs_slots).intersection(set(mongodb_biosample_slot_names)))
+lost_biosample_mixs_mongodb_slots.sort()
+pprint.pprint(lost_biosample_mixs_mongodb_slots)
+
+reconstituted = tb.do_reconstitution(view_alias="mixs6", slot_name_list=nmdc_mixs_5_mixs_6_shared_slot_names)
+# recon_text = yaml_dumper.dumps(reconstituted)
+# print(recon_text)
+yaml_dumper.dump(reconstituted, "../src/schema/mixs_6_for_nmdc.yaml")
