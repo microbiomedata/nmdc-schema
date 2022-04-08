@@ -48,6 +48,7 @@ linkml-runtime = "*"
 openpyxl = "==3.0.7"
 pandoc = "*"
 black = "^22.3.0"
+pymongo = "^4.1.0"
 
 [tool.poetry.dev-dependencies]
 build = "*"
