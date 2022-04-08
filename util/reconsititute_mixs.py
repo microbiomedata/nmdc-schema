@@ -69,6 +69,7 @@ class TermBroker:
         for current_sn in slot_name_list:
             current_slot = current_view.get_slot(current_sn)
             current_schema.slots[current_sn] = current_slot
+        current_schema.enums = current_view.all_enums()
         return current_schema
 
 
