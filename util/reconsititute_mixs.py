@@ -65,10 +65,10 @@ class TermBroker:
         current_schema = SchemaDefinition(name='mixs_for_nmdc_biosamples',
                                           id='http://example.com/mixs_for_nmdc_biosamples')
         current_view = self.view_dict[view_alias]
-        static_slot_imports = ['core field', 'sequencing field', 'environment field',
-                               'nucleic acid sequence source field', 'investigation field']
-        # static_class_imports = ['core field']
-        all_slots = slot_name_list + static_slot_imports
+        static_parent_imports = ['core field', 'sequencing field', 'environment field',
+                                 'nucleic acid sequence source field', 'investigation field']
+        static_renamed_imports = ['tot_nitro_cont_meth', "water_cont_soil_meth"]
+        all_slots = slot_name_list + static_parent_imports + static_renamed_imports
         all_slots.sort()
         for current_sn in all_slots:
             print(current_sn)

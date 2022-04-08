@@ -14034,6 +14034,27 @@ slots:
     slot_uri: MIXS:0000102
     multivalued: false
     range: quantity value
+  tot_nitro_cont_meth:
+    name: tot_nitro_cont_meth
+    aliases:
+    - total nitrogen content method
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID,DOI or url
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Reference or method used in determining the total nitrogen
+    title: total nitrogen content method
+    examples:
+    - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    is_a: core field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: MIXS:0000338
+    multivalued: false
+    range: string
   tot_nitro_content:
     name: tot_nitro_content
     aliases:
@@ -14897,6 +14918,27 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000353
+    multivalued: false
+    range: string
+  water_cont_soil_meth:
+    name: water_cont_soil_meth
+    aliases:
+    - water content method
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID,DOI or url
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Reference or method used in determining the water content of soil
+    title: water content method
+    examples:
+    - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    is_a: core field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: MIXS:0000323
     multivalued: false
     range: string
   water_content:
