@@ -1,5 +1,7 @@
 name: mixs_for_nmdc_biosamples
 id: http://example.com/mixs_for_nmdc_biosamples
+imports:
+- core
 default_prefix: http://example.com/mixs_for_nmdc_biosamples/
 slots:
   abs_air_humidity:

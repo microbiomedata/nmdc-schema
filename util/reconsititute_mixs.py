@@ -64,6 +64,7 @@ class TermBroker:
     def do_reconstitution(self, view_alias: str, slot_name_list: List[str]) -> SchemaDefinition:
         current_schema = SchemaDefinition(name='mixs_for_nmdc_biosamples',
                                           id='http://example.com/mixs_for_nmdc_biosamples')
+        current_schema.imports.append('core')
         current_view = self.view_dict[view_alias]
         for current_sn in slot_name_list:
             current_slot = current_view.get_slot(current_sn)
