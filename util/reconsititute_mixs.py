@@ -64,12 +64,21 @@ class TermBroker:
     def do_reconstitution(self, view_alias: str, slot_name_list: List[str]) -> SchemaDefinition:
         current_schema = SchemaDefinition(name='mixs_for_nmdc_biosamples',
                                           id='http://example.com/mixs_for_nmdc_biosamples')
-        current_schema.imports.append('core')
         current_view = self.view_dict[view_alias]
-        for current_sn in slot_name_list:
+        static_slot_imports = ['core field', 'sequencing field', 'environment field',
+                               'nucleic acid sequence source field', 'investigation field']
+        # static_class_imports = ['core field']
+        all_slots = slot_name_list + static_slot_imports
+        all_slots.sort()
+        for current_sn in all_slots:
+            print(current_sn)
             current_slot = current_view.get_slot(current_sn)
             current_schema.slots[current_sn] = current_slot
+
+        # todo why aren't I using my dependency resolver?!
+        current_schema.imports.append('core')
         current_schema.enums = current_view.all_enums()
+
         return current_schema
 
 
@@ -110,15 +119,15 @@ nmdc_mixs_5_mixs_6_shared_slot_names.sort()
 pprint.pprint(nmdc_mixs_5_mixs_6_shared_slot_names)
 
 lost_mixs_slots = tb.list_diff(nmdc_mixs_5_slot_names, mixs_6_slot_names)
-pprint.pprint(lost_mixs_slots)
+# pprint.pprint(lost_mixs_slots)
 
 lost_biosample_mixs_slots = list(set(lost_mixs_slots).intersection(set(nmdc_biosample_slot_names)))
 lost_biosample_mixs_slots.sort()
-pprint.pprint(lost_biosample_mixs_slots)
+# pprint.pprint(lost_biosample_mixs_slots)
 
 lost_biosample_mixs_mongodb_slots = list(set(lost_biosample_mixs_slots).intersection(set(mongodb_biosample_slot_names)))
 lost_biosample_mixs_mongodb_slots.sort()
-pprint.pprint(lost_biosample_mixs_mongodb_slots)
+# pprint.pprint(lost_biosample_mixs_mongodb_slots)
 
 reconstituted = tb.do_reconstitution(view_alias="mixs6", slot_name_list=nmdc_mixs_5_mixs_6_shared_slot_names)
 # recon_text = yaml_dumper.dumps(reconstituted)

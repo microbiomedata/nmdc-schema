@@ -4874,6 +4874,11 @@ slots:
     slot_uri: MIXS:0000785
     multivalued: false
     range: integer
+  core field:
+    name: core field
+    description: basic fields
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
   crop_rotation:
     name: crop_rotation
     aliases:
@@ -5968,6 +5973,11 @@ slots:
     slot_uri: MIXS:0000014
     multivalued: false
     range: string
+  environment field:
+    name: environment field
+    description: field describing environmental aspect of a sample
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
   escalator:
     name: escalator
     aliases:
@@ -8364,6 +8374,12 @@ slots:
     slot_uri: MIXS:0000813
     multivalued: false
     range: int_wall_cond_enum
+  investigation field:
+    name: investigation field
+    description: field describing aspect of the investigation/study to which the sample
+      belongs
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
   isol_growth_condt:
     name: isol_growth_condt
     aliases:
@@ -9358,6 +9374,10 @@ slots:
     slot_uri: MIXS:0000037
     multivalued: false
     range: string
+  nucleic acid sequence source field:
+    name: nucleic acid sequence source field
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
   num_replicons:
     name: num_replicons
     aliases:
@@ -12348,6 +12368,10 @@ slots:
     slot_uri: MIXS:0000051
     multivalued: false
     range: string
+  sequencing field:
+    name: sequencing field
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
   sewage_type:
     name: sewage_type
     aliases:
