@@ -87,6 +87,10 @@ tb = TermBroker()
 tb.add_view_from_file(view_alias="nmdc_mixs_5", schema_file="../src/schema/mixs.yaml")
 tb.add_view_from_file(view_alias="nmdc_root", schema_file="../src/schema/nmdc.yaml")
 tb.add_view_from_file(view_alias="mixs6", schema_file="../mixs/model/schema/mixs.yaml")
+tb.add_view_from_file(view_alias="nmdc_dh",
+                      schema_file="https://raw.githubusercontent.com/microbiomedata/sheets_and_friends/issue-100-netlify-linkml-datastructure/artifacts/nmdc_dh.yaml")
+
+# print(tb.view_dict['nmdc_dh'].schema.name)
 
 nmdc_mixs_5_slot_names = tb.get_schema_slot_names(view_alias="nmdc_mixs_5", incl_imports=False)
 # pprint.pprint(nmdc_mixs_5_slot_names)
@@ -116,7 +120,7 @@ mongodb_biosample_slot_names = tb.get_mongodb_coll_slot_names(mongo_client=mycli
 
 nmdc_mixs_5_mixs_6_shared_slot_names = list(set(nmdc_mixs_5_slot_names).intersection(set(mixs_6_slot_names)))
 nmdc_mixs_5_mixs_6_shared_slot_names.sort()
-pprint.pprint(nmdc_mixs_5_mixs_6_shared_slot_names)
+# pprint.pprint(nmdc_mixs_5_mixs_6_shared_slot_names)
 
 lost_mixs_slots = tb.list_diff(nmdc_mixs_5_slot_names, mixs_6_slot_names)
 # pprint.pprint(lost_mixs_slots)
@@ -129,7 +133,12 @@ lost_biosample_mixs_mongodb_slots = list(set(lost_biosample_mixs_slots).intersec
 lost_biosample_mixs_mongodb_slots.sort()
 # pprint.pprint(lost_biosample_mixs_mongodb_slots)
 
-reconstituted = tb.do_reconstitution(view_alias="mixs6", slot_name_list=nmdc_mixs_5_mixs_6_shared_slot_names)
+nmdc_dh_mixs_6_slotnames = tb.get_schema_slot_names(view_alias="nmdc_dh", incl_imports=True)
+
+unwieldly = list(set(nmdc_mixs_5_mixs_6_shared_slot_names).intersection(set(nmdc_dh_mixs_6_slotnames)))
+unwieldly.sort()
+
+reconstituted = tb.do_reconstitution(view_alias="mixs6", slot_name_list=unwieldly)
 # recon_text = yaml_dumper.dumps(reconstituted)
 # print(recon_text)
 yaml_dumper.dump(reconstituted, "../src/schema/mixs_6_for_nmdc.yaml")

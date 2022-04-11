@@ -2834,26 +2834,6 @@ slots:
     slot_uri: MIXS:0000122
     multivalued: false
     range: quantity value
-  adapters:
-    name: adapters
-    aliases:
-    - adapters
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: adapter A and B sequence
-    description: Adapters provide priming sequences for both amplification and sequencing
-      of the sample-library fragments. Both adapters should be reported; in uppercase
-      letters
-    title: adapters
-    examples:
-    - value: AATGATACGGCGACCACCGAGATCTACACGCT;CAAGCAGAAGACGGCATACGAGAT
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{dna};{dna}'
-    slot_uri: MIXS:0000048
-    multivalued: false
-    range: string
   add_recov_method:
     name: add_recov_method
     aliases:
@@ -3221,27 +3201,6 @@ slots:
     slot_uri: MIXS:0000427
     multivalued: false
     range: quantity value
-  amniotic_fluid_color:
-    name: amniotic_fluid_color
-    aliases:
-    - amniotic fluid/color
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: color
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Specification of the color of the amniotic fluid sample
-    title: amniotic fluid/color
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000276
-    multivalued: false
-    range: string
   amount_light:
     name: amount_light
     aliases:
@@ -3287,26 +3246,6 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000247
-    multivalued: false
-    range: string
-  annot:
-    name: annot
-    aliases:
-    - annotation
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: name of tool or pipeline used, or annotation source description
-    description: Tool used for annotation, or for cases where annotation was provided
-      by a community jamboree or model organism database rather than by a specific
-      submitter
-    title: annotation
-    examples:
-    - value: prokka
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000059
     multivalued: false
     range: string
   annual_precpt:
@@ -3484,76 +3423,6 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000135
-    multivalued: false
-    range: string
-  assembly_name:
-    name: assembly_name
-    aliases:
-    - assembly name
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: name and version of assembly
-    description: Name/version of the assembly provided by the submitter that is used
-      in the genome browsers and in the community
-    title: assembly name
-    examples:
-    - value: HuRef, JCVI_ISG_i3_1.0
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{text} {text}'
-    slot_uri: MIXS:0000057
-    multivalued: false
-    range: string
-  assembly_qual:
-    name: assembly_qual
-    aliases:
-    - assembly quality
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration
-    description: 'The assembly quality category is based on sets of criteria outlined
-      for each assembly quality category. For MISAG/MIMAG; Finished: Single, validated,
-      contiguous sequence per replicon without gaps or ambiguities with a consensus
-      error rate equivalent to Q50 or better. High Quality Draft:Multiple fragments
-      where gaps span repetitive regions. Presence of the 23S, 16S and 5S rRNA genes
-      and at least 18 tRNAs. Medium Quality Draft:Many fragments with little to no
-      review of assembly other than reporting of standard assembly statistics. Low
-      Quality Draft:Many fragments with little to no review of assembly other than
-      reporting of standard assembly statistics. Assembly statistics include, but
-      are not limited to total assembly size, number of contigs, contig N50/L50, and
-      maximum contig length. For MIUVIG; Finished: Single, validated, contiguous sequence
-      per replicon without gaps or ambiguities, with extensive manual review and editing
-      to annotate putative gene functions and transcriptional units. High-quality
-      draft genome: One or multiple fragments, totaling ≥ 90% of the expected genome
-      or replicon sequence or predicted complete. Genome fragment(s): One or multiple
-      fragments, totalling < 90% of the expected genome or replicon sequence, or for
-      which no genome size could be estimated'
-    title: assembly quality
-    examples:
-    - value: High-quality draft genome
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    slot_uri: MIXS:0000056
-    multivalued: false
-    range: assembly_qual_enum
-  assembly_software:
-    name: assembly_software
-    aliases:
-    - assembly software
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: name and version of software, parameters used
-    description: Tool(s) used for assembly, including version number and parameters
-    title: assembly software
-    examples:
-    - value: metaSPAdes;3.11.0;kmer set 21,33,55,77,99,121, default parameters otherwise
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{software};{version};{parameters}'
-    slot_uri: MIXS:0000058
     multivalued: false
     range: string
   atmospheric_data:
@@ -3823,43 +3692,6 @@ slots:
     slot_uri: MIXS:0000153
     multivalued: false
     range: quantity value
-  bin_param:
-    name: bin_param
-    aliases:
-    - binning parameters
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration
-    description: The parameters that have been applied during the extraction of genomes
-      from metagenomic datasets
-    title: binning parameters
-    examples:
-    - value: coverage and kmer
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    slot_uri: MIXS:0000077
-    multivalued: false
-    range: bin_param_enum
-  bin_software:
-    name: bin_software
-    aliases:
-    - binning software
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: names and versions of software(s) used
-    description: Tool(s) used for the extraction of genomes from metagenomic datasets,
-      where possible include a product ID (PID) of the tool(s) used.
-    title: binning software
-    examples:
-    - value: MetaCluster-TA (RRID:SCR_004599), MaxBin (biotools:maxbin)
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{software};{version}{PID}'
-    slot_uri: MIXS:0000078
-    multivalued: false
-    range: string
   biochem_oxygen_dem:
     name: biochem_oxygen_dem
     aliases:
@@ -4020,27 +3852,6 @@ slots:
     slot_uri: MIXS:0000028
     multivalued: false
     range: biotic_relationship_enum
-  birth_control:
-    name: birth_control
-    aliases:
-    - birth control
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: medication name
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Specification of birth control medication used
-    title: birth control
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000286
-    multivalued: false
-    range: string
   bishomohopanol:
     name: bishomohopanol
     aliases:
@@ -4064,29 +3875,6 @@ slots:
     slot_uri: MIXS:0000175
     multivalued: false
     range: quantity value
-  blood_blood_disord:
-    name: blood_blood_disord
-    aliases:
-    - blood/blood disorder
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: disorder name
-      occurrence:
-        tag: occurrence
-        value: m
-    description: History of blood disorders; can include multiple disorders.  The
-      terms should be chosen from the DO (Human Disease Ontology) at http://www.disease-ontology.org,
-      hematopoietic system disease (https://disease-ontology.org/?id=DOID:74).
-    title: blood/blood disorder
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000271
-    multivalued: true
-    range: string
   bromide:
     name: bromide
     aliases:
@@ -4600,26 +4388,6 @@ slots:
     slot_uri: MIXS:0001012
     multivalued: false
     range: string
-  chimera_check:
-    name: chimera_check
-    aliases:
-    - chimera check software
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: name and version of software, parameters used
-    description: Tool(s) used for chimera checking, including version number and parameters,
-      to discover and remove chimeric sequences. A chimeric sequence is comprised
-      of two or more phylogenetically distinct parent sequences.
-    title: chimera check software
-    examples:
-    - value: uchime;v4.1;default parameters
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{software};{version};{parameters}'
-    slot_uri: MIXS:0000052
-    multivalued: false
-    range: string
   chloride:
     name: chloride
     aliases:
@@ -4710,67 +4478,6 @@ slots:
     slot_uri: MIXS:0000011
     multivalued: false
     range: date
-  compl_appr:
-    name: compl_appr
-    aliases:
-    - completeness approach
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: text
-    description: The approach used to determine the completeness of a given genomic
-      assembly, which would typically make use of a set of conserved marker genes
-      or a closely related reference genome. For UViG completeness, include reference
-      genome or group used, and contig feature suggesting a complete genome
-    title: completeness approach
-    examples:
-    - value: 'other: UViG length compared to the average length of reference genomes
-        from the P22virus genus (NCBI RefSeq v83)'
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    slot_uri: MIXS:0000071
-    multivalued: false
-    range: compl_appr_enum
-  compl_score:
-    name: compl_score
-    aliases:
-    - completeness score
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: quality;percent completeness
-    description: 'Completeness score is typically based on either the fraction of
-      markers found as compared to a database or the percent of a genome found as
-      compared to a closely related reference genome. High Quality Draft: >90%, Medium
-      Quality Draft: >50%, and Low Quality Draft: < 50% should have the indicated
-      completeness scores'
-    title: completeness score
-    examples:
-    - value: med;60%
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    slot_uri: MIXS:0000069
-    multivalued: false
-    range: string
-    pattern: ^(high|med|low);(0|([0-9]{1,2})|100)%$
-  compl_software:
-    name: compl_software
-    aliases:
-    - completeness software
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: names and versions of software(s) used
-    description: Tools used for completion estimate, i.e. checkm, anvi'o, busco
-    title: completeness software
-    examples:
-    - value: checkm
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{software};{version}'
-    slot_uri: MIXS:0000070
-    multivalued: false
-    range: string
   conduc:
     name: conduc
     aliases:
@@ -4794,66 +4501,6 @@ slots:
     slot_uri: MIXS:0000692
     multivalued: false
     range: quantity value
-  contam_score:
-    name: contam_score
-    aliases:
-    - contamination score
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: value
-    description: 'The contamination score is based on the fraction of single-copy
-      genes that are observed more than once in a query genome. The following scores
-      are acceptable for; High Quality Draft: < 5%, Medium Quality Draft: < 10%, Low
-      Quality Draft: < 10%. Contamination must be below 5% for a SAG or MAG to be
-      deposited into any of the public databases'
-    title: contamination score
-    examples:
-    - value: 1%
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{float} percentage'
-    slot_uri: MIXS:0000072
-    multivalued: false
-    range: string
-  contam_screen_input:
-    name: contam_screen_input
-    aliases:
-    - contamination screening input
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration
-    description: The type of sequence data used as input
-    title: contamination screening input
-    examples:
-    - value: contigs
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '[reads| contigs]'
-    slot_uri: MIXS:0000005
-    multivalued: false
-    range: string
-  contam_screen_param:
-    name: contam_screen_param
-    aliases:
-    - contamination screening parameters
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration;value or name
-    description: Specific parameters used in the decontamination sofware, such as
-      reference database, coverage, and kmers. Combinations of these parameters may
-      also be used, i.e. kmer and coverage, or reference database and kmer
-    title: contamination screening parameters
-    examples:
-    - value: kmer
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    slot_uri: MIXS:0000073
-    multivalued: false
-    range: string
-    pattern: ^(ref db|kmer|coverage|combination);.+
   cool_syst_id:
     name: cool_syst_id
     aliases:
@@ -5007,23 +4654,6 @@ slots:
     slot_uri: MIXS:0000786
     multivalued: false
     range: date
-  decontam_software:
-    name: decontam_software
-    aliases:
-    - decontamination software
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration
-    description: Tool(s) used in contamination screening
-    title: decontamination software
-    examples:
-    - value: anvi'o
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    slot_uri: MIXS:0000074
-    multivalued: false
-    range: decontam_software_enum
   density:
     name: density
     aliases:
@@ -5088,47 +4718,6 @@ slots:
     slot_uri: MIXS:0000018
     multivalued: false
     range: quantity value
-  dermatology_disord:
-    name: dermatology_disord
-    aliases:
-    - dermatology disorder
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: disorder name
-      occurrence:
-        tag: occurrence
-        value: m
-    description: History of dermatology disorders; can include multiple disorders.
-      The terms should be chosen from the DO (Human Disease Ontology) at http://www.disease-ontology.org,
-      skin disease (https://disease-ontology.org/?id=DOID:37).
-    title: dermatology disorder
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000284
-    multivalued: true
-    range: string
-  detec_type:
-    name: detec_type
-    aliases:
-    - detection type
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration
-    description: Type of UViG detection
-    title: detection type
-    examples:
-    - value: independent sequence (UViG)
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '[independent sequence (UViG)|provirus (UpViG)]'
-    slot_uri: MIXS:0000084
-    multivalued: false
-    range: string
   dew_point:
     name: dew_point
     aliases:
@@ -5153,28 +4742,6 @@ slots:
     slot_uri: MIXS:0000129
     multivalued: false
     range: quantity value
-  diet_last_six_month:
-    name: diet_last_six_month
-    aliases:
-    - major diet change in last six months
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: diet change;current diet
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Specification of major diet changes in the last six months, if yes
-      the change should be specified
-    title: major diet change in last six months
-    examples:
-    - value: yes;vegetarian diet
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{boolean};{text}'
-    slot_uri: MIXS:0000266
-    multivalued: false
-    range: string
   diether_lipids:
     name: diether_lipids
     aliases:
@@ -5435,26 +5002,6 @@ slots:
     slot_uri: MIXS:0000438
     multivalued: false
     range: quantity value
-  dominant_hand:
-    name: dominant_hand
-    aliases:
-    - dominant hand
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Dominant hand of the subject
-    title: dominant hand
-    examples:
-    - value: right
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    slot_uri: MIXS:0000944
-    multivalued: false
-    range: dominant_hand_enum
   door_comp_type:
     name: door_comp_type
     aliases:
@@ -5679,26 +5226,6 @@ slots:
     slot_uri: MIXS:0000793
     multivalued: false
     range: string
-  douche:
-    name: douche
-    aliases:
-    - douche
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: timestamp
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Date of most recent douche
-    title: douche
-    examples:
-    - value: '2018-05-11'
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    slot_uri: MIXS:0000967
-    multivalued: false
-    range: date
   down_par:
     name: down_par
     aliases:
@@ -5765,27 +5292,6 @@ slots:
     slot_uri: MIXS:0000798
     multivalued: false
     range: drawings_enum
-  drug_usage:
-    name: drug_usage
-    aliases:
-    - drug usage
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: drug name;frequency
-      occurrence:
-        tag: occurrence
-        value: m
-    description: Any drug used by subject and the frequency of usage; can include
-      multiple drugs used
-    title: drug usage
-    examples:
-    - value: Lipitor;2/day
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    slot_uri: MIXS:0000894
-    multivalued: true
-    range: drug_usage_enum
   efficiency_percent:
     name: efficiency_percent
     aliases:
@@ -5874,25 +5380,6 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000660
     multivalued: true
-    range: string
-  encoded_traits:
-    name: encoded_traits
-    aliases:
-    - encoded traits
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: 'for plasmid: antibiotic resistance; for phage: converting genes'
-    description: Should include key traits like antibiotic resistance or xenobiotic
-      degradation phenotypes for plasmids, converting genes for phage
-    title: encoded traits
-    examples:
-    - value: beta-lactamase class A
-    from_schema: http://w3id.org/mixs/terms
-    is_a: nucleic acid sequence source field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000034
-    multivalued: false
     range: string
   env_broad_scale:
     name: env_broad_scale
@@ -5998,26 +5485,6 @@ slots:
     slot_uri: MIXS:0000800
     multivalued: false
     range: integer
-  estimated_size:
-    name: estimated_size
-    aliases:
-    - estimated size
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: number of base pairs
-    description: The estimated size of the genome prior to sequencing. Of particular
-      importance in the sequencing of (eukaryotic) genome which could remain in draft
-      form for a long or unspecified period.
-    title: estimated size
-    examples:
-    - value: 300000 bp
-    from_schema: http://w3id.org/mixs/terms
-    is_a: nucleic acid sequence source field
-    string_serialization: '{integer} bp'
-    slot_uri: MIXS:0000024
-    multivalued: false
-    range: string
   ethylbenzene:
     name: ethylbenzene
     aliases:
@@ -6167,25 +5634,6 @@ slots:
     slot_uri: MIXS:0000818
     multivalued: false
     range: ext_window_orient_enum
-  extrachrom_elements:
-    name: extrachrom_elements
-    aliases:
-    - extrachromosomal elements
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: number of extrachromosmal elements
-    description: Do plasmids exist of significant phenotypic consequence (e.g. ones
-      that determine virulence or antibiotic resistance). Megaplasmids? Other plasmids
-      (borrelia has 15+ plasmids)
-    title: extrachromosomal elements
-    examples:
-    - value: '5'
-    from_schema: http://w3id.org/mixs/terms
-    is_a: nucleic acid sequence source field
-    slot_uri: MIXS:0000023
-    multivalued: false
-    range: integer
   extreme_event:
     name: extreme_event
     aliases:
@@ -6227,25 +5675,6 @@ slots:
     slot_uri: MIXS:0001083
     multivalued: false
     range: fao_class_enum
-  feat_pred:
-    name: feat_pred
-    aliases:
-    - feature prediction
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: names and versions of software(s), parameters used
-    description: Method used to predict UViGs features such as ORFs, integration site,
-      etc.
-    title: feature prediction
-    examples:
-    - value: Prodigal;2.6.3;default parameters
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{software};{version};{parameters}'
-    slot_uri: MIXS:0000061
-    multivalued: false
-    range: string
   fertilizer_regm:
     name: fertilizer_regm
     aliases:
@@ -6571,27 +6000,6 @@ slots:
     slot_uri: MIXS:0000704
     multivalued: false
     range: quantity value
-  foetal_health_stat:
-    name: foetal_health_stat
-    aliases:
-    - amniotic fluid/foetal health status
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: health status
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Specification of foetal health status, should also include abortion
-    title: amniotic fluid/foetal health status
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000275
-    multivalued: false
-    range: string
   freq_clean:
     name: freq_clean
     aliases:
@@ -6732,30 +6140,6 @@ slots:
     slot_uri: MIXS:0000661
     multivalued: true
     range: string
-  gastrointest_disord:
-    name: gastrointest_disord
-    aliases:
-    - gastrointestinal tract disorder
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: disorder name
-      occurrence:
-        tag: occurrence
-        value: m
-    description: History of gastrointestinal tract disorders; can include multiple
-      disorders. History of blood disorders; can include multiple disorders.  The
-      terms should be chosen from the DO (Human Disease Ontology) at http://www.disease-ontology.org,
-      gastrointestinal system disease (https://disease-ontology.org/?id=DOID:77).
-    title: gastrointestinal tract disorder
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000280
-    multivalued: true
-    range: string
   gender_restroom:
     name: gender_restroom
     aliases:
@@ -6820,27 +6204,6 @@ slots:
     is_a: environment field
     string_serialization: '{term}: {term}, {text}'
     slot_uri: MIXS:0000010
-    multivalued: false
-    range: string
-  gestation_state:
-    name: gestation_state
-    aliases:
-    - amniotic fluid/gestation state
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: gestation state
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Specification of the gestation state
-    title: amniotic fluid/gestation state
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000272
     multivalued: false
     range: string
   glucosidase_act:
@@ -6985,29 +6348,6 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000560
-    multivalued: true
-    range: string
-  gynecologic_disord:
-    name: gynecologic_disord
-    aliases:
-    - gynecological disorder
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: gynecological disorder
-      occurrence:
-        tag: occurrence
-        value: m
-    description: History of gynecological disorders; can include multiple disorders.
-      The terms should be chosen from the DO (Human Disease Ontology) at http://www.disease-ontology.org,
-      female reproductive system disease (https://disease-ontology.org/?id=DOID:229).
-    title: gynecological disorder
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000288
     multivalued: true
     range: string
   hall_count:
@@ -7347,28 +6687,6 @@ slots:
     slot_uri: MIXS:0000561
     multivalued: true
     range: string
-  horizon:
-    name: horizon
-    aliases:
-    - horizon
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Specific layer in the land area which measures parallel to the soil
-      surface and possesses physical characteristics which differ from the layers
-      above and beneath
-    title: horizon
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    slot_uri: MIXS:0001082
-    multivalued: false
-    range: horizon_enum
   horizon_meth:
     name: horizon_meth
     aliases:
@@ -7435,29 +6753,6 @@ slots:
     slot_uri: MIXS:0000866
     multivalued: false
     range: string
-  host_body_mass_index:
-    name: host_body_mass_index
-    aliases:
-    - host body-mass index
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: measurement value
-      preferred_unit:
-        tag: preferred_unit
-        value: kilogram per square meter
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Body mass index, calculated as weight/(height)squared
-    title: host body-mass index
-    examples:
-    - value: 22 kilogram per square meter
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    slot_uri: MIXS:0000317
-    multivalued: false
-    range: quantity value
   host_body_product:
     name: host_body_product
     aliases:
@@ -7593,27 +6888,6 @@ slots:
     slot_uri: MIXS:0000869
     multivalued: true
     range: string
-  host_disease_stat:
-    name: host_disease_stat
-    aliases:
-    - host disease status
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: disease name or Disease Ontology term
-    description: List of diseases with which the host has been diagnosed; can include
-      multiple diagnoses. The value of the field depends on host; for humans the terms
-      should be chosen from the DO (Human Disease Ontology) at https://www.disease-ontology.org,
-      non-human host diseases are free text
-    title: host disease status
-    examples:
-    - value: rabies [DOID:11260]
-    from_schema: http://w3id.org/mixs/terms
-    is_a: nucleic acid sequence source field
-    string_serialization: '{termLabel} {[termID]}|{text}'
-    slot_uri: MIXS:0000031
-    multivalued: false
-    range: string
   host_dry_mass:
     name: host_dry_mass
     aliases:
@@ -7637,29 +6911,6 @@ slots:
     slot_uri: MIXS:0000257
     multivalued: false
     range: quantity value
-  host_family_relationship:
-    name: host_family_relationship
-    aliases:
-    - host family relationship
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: Relationships to other symbiotic organisms (host od samples) in the
-          same study; relationship type;arbitrary identifier
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Relationships to other hosts in the same study; can include multiple
-      relationships.
-    title: host family relationship
-    examples:
-    - value: clone;P15
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{text};{text}'
-    slot_uri: MIXS:0000872
-    multivalued: false
-    range: string
   host_genotype:
     name: host_genotype
     aliases:
@@ -7725,71 +6976,6 @@ slots:
     slot_uri: MIXS:0000264
     multivalued: false
     range: quantity value
-  host_hiv_stat:
-    name: host_hiv_stat
-    aliases:
-    - host HIV status
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: HIV status;HAART initiation status
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: HIV status of subject, if yes HAART initiation status should also
-      be indicated as [YES or NO]
-    title: host HIV status
-    examples:
-    - value: yes;yes
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{boolean};{boolean}'
-    slot_uri: MIXS:0000265
-    multivalued: false
-    range: string
-  host_infra_specific_name:
-    name: host_infra_specific_name
-    aliases:
-    - host infra-specific name
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: name of the symbiotic organism (host of the samples)
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Taxonomic information about the host below subspecies level.
-    title: host infra-specific name
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000253
-    multivalued: false
-    range: string
-  host_infra_specific_rank:
-    name: host_infra_specific_rank
-    aliases:
-    - host infra-specific rank
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: rank of the symbiotic organism (host of the samples)
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Taxonomic rank information about the host below subspecies level,
-      such as variety, form, rank etc.
-    title: host infra-specific rank
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000254
-    multivalued: false
-    range: string
   host_last_meal:
     name: host_last_meal
     aliases:
@@ -7856,26 +7042,6 @@ slots:
     slot_uri: MIXS:0000251
     multivalued: false
     range: string
-  host_occupation:
-    name: host_occupation
-    aliases:
-    - host occupation
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: IHMC code
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Most frequent job performed by subject
-    title: host occupation
-    examples:
-    - value: veterinary
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    slot_uri: MIXS:0000896
-    multivalued: false
-    range: integer
   host_phenotype:
     name: host_phenotype
     aliases:
@@ -7899,66 +7065,6 @@ slots:
     slot_uri: MIXS:0000874
     multivalued: false
     range: string
-  host_pred_appr:
-    name: host_pred_appr
-    aliases:
-    - host prediction approach
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration
-    description: Tool or approach used for host prediction
-    title: host prediction approach
-    examples:
-    - value: CRISPR spacer match
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    slot_uri: MIXS:0000088
-    multivalued: false
-    range: host_pred_appr_enum
-  host_pred_est_acc:
-    name: host_pred_est_acc
-    aliases:
-    - host prediction estimated accuracy
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: false discovery rate
-    description: For each tool or approach used for host prediction, estimated false
-      discovery rates should be included, either computed de novo or from the literature
-    title: host prediction estimated accuracy
-    examples:
-    - value: 'CRISPR spacer match: 0 or 1 mismatches, estimated 8% FDR at the host
-        genus rank (Edwards et al. 2016 doi:10.1093/femsre/fuv048)'
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000089
-    multivalued: false
-    range: string
-  host_pulse:
-    name: host_pulse
-    aliases:
-    - host pulse
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: measurement value
-      preferred_unit:
-        tag: preferred_unit
-        value: beats per minute
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Resting pulse, measured as beats per minute
-    title: host pulse
-    examples:
-    - value: 65 beats per minute
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    slot_uri: MIXS:0000333
-    multivalued: false
-    range: quantity value
   host_sex:
     name: host_sex
     aliases:
@@ -8000,24 +7106,6 @@ slots:
     slot_uri: MIXS:0000261
     multivalued: false
     range: string
-  host_spec_range:
-    name: host_spec_range
-    aliases:
-    - host specificity or range
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: NCBI taxid
-    description: The range and diversity of host species that an organism is capable
-      of infecting, defined by NCBI taxonomy identifier.
-    title: host specificity or range
-    examples:
-    - value: '9606'
-    from_schema: http://w3id.org/mixs/terms
-    is_a: nucleic acid sequence source field
-    slot_uri: MIXS:0000030
-    multivalued: false
-    range: integer
   host_subject_id:
     name: host_subject_id
     aliases:
@@ -8127,27 +7215,6 @@ slots:
     slot_uri: MIXS:0000567
     multivalued: false
     range: quantity value
-  hrt:
-    name: hrt
-    aliases:
-    - HRT
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: timestamp
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Whether subject had hormone replacement theraphy, and if yes start
-      date
-    title: HRT
-    examples:
-    - value: '2018-05-11'
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    slot_uri: MIXS:0000969
-    multivalued: false
-    range: date
   humidity:
     name: humidity
     aliases:
@@ -8199,47 +7266,6 @@ slots:
     slot_uri: MIXS:0000568
     multivalued: true
     range: string
-  hysterectomy:
-    name: hysterectomy
-    aliases:
-    - hysterectomy
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: hysterectomy status
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Specification of whether hysterectomy was performed
-    title: hysterectomy
-    examples:
-    - value: 'no'
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{boolean}'
-    slot_uri: MIXS:0000287
-    multivalued: false
-    range: string
-  ihmc_medication_code:
-    name: ihmc_medication_code
-    aliases:
-    - IHMC medication code
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: IHMC code
-      occurrence:
-        tag: occurrence
-        value: m
-    description: Can include multiple medication codes
-    title: IHMC medication code
-    examples:
-    - value: '810'
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    slot_uri: MIXS:0000884
-    multivalued: true
-    range: integer
   indoor_space:
     name: indoor_space
     aliases:
@@ -8380,26 +7406,6 @@ slots:
       belongs
     from_schema: http://w3id.org/mixs/terms
     abstract: true
-  isol_growth_condt:
-    name: isol_growth_condt
-    aliases:
-    - isolation and growth condition
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: PMID,DOI or URL
-    description: Publication reference in the form of pubmed ID (pmid), digital object
-      identifier (doi) or url for isolation and growth condition specifications of
-      the organism/material
-    title: isolation and growth condition
-    examples:
-    - value: 'doi: 10.1016/j.syapm.2018.01.009'
-    from_schema: http://w3id.org/mixs/terms
-    is_a: nucleic acid sequence source field
-    string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000003
-    multivalued: false
-    range: string
   iw_bt_date_well:
     name: iw_bt_date_well
     aliases:
@@ -8445,29 +7451,6 @@ slots:
     slot_uri: MIXS:0000455
     multivalued: false
     range: quantity value
-  kidney_disord:
-    name: kidney_disord
-    aliases:
-    - urine/kidney disorder
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: disorder name
-      occurrence:
-        tag: occurrence
-        value: m
-    description: History of kidney disorders; can include multiple disorders. The
-      terms should be chosen from the DO (Human Disease Ontology) at http://www.disease-ontology.org,
-      kidney disease (https://disease-ontology.org/?id=DOID:557).
-    title: urine/kidney disorder
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000277
-    multivalued: true
-    range: string
   last_clean:
     name: last_clean
     aliases:
@@ -8505,95 +7488,6 @@ slots:
     is_a: environment field
     string_serialization: '{float} {float}'
     slot_uri: MIXS:0000009
-    multivalued: false
-    range: string
-  lib_layout:
-    name: lib_layout
-    aliases:
-    - library layout
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration
-    description: Specify whether to expect single, paired, or other configuration
-      of reads
-    title: library layout
-    examples:
-    - value: paired
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    slot_uri: MIXS:0000041
-    multivalued: false
-    range: lib_layout_enum
-  lib_reads_seqd:
-    name: lib_reads_seqd
-    aliases:
-    - library reads sequenced
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: number of reads sequenced
-    description: Total number of clones sequenced from the library
-    title: library reads sequenced
-    examples:
-    - value: '20'
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    slot_uri: MIXS:0000040
-    multivalued: false
-    range: integer
-  lib_screen:
-    name: lib_screen
-    aliases:
-    - library screening strategy
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: screening strategy name
-    description: Specific enrichment or screening methods applied before and/or after
-      creating libraries
-    title: library screening strategy
-    examples:
-    - value: enriched, screened, normalized
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000043
-    multivalued: false
-    range: string
-  lib_size:
-    name: lib_size
-    aliases:
-    - library size
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: number of clones
-    description: Total number of clones in the library prepared for the project
-    title: library size
-    examples:
-    - value: '50'
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    slot_uri: MIXS:0000039
-    multivalued: false
-    range: integer
-  lib_vector:
-    name: lib_vector
-    aliases:
-    - library vector
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: vector
-    description: Cloning vector type(s) used in construction of libraries
-    title: library vector
-    examples:
-    - value: Bacteriophage P1
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000042
     multivalued: false
     range: string
   light_intensity:
@@ -8667,27 +7561,6 @@ slots:
     slot_uri: MIXS:0000769
     multivalued: true
     range: light_type_enum
-  link_addit_analys:
-    name: link_addit_analys
-    aliases:
-    - links to additional analysis
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: PMID,DOI or url
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Link to additional analysis results performed on the sample
-    title: links to additional analysis
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000340
-    multivalued: false
-    range: string
   link_class_info:
     name: link_class_info
     aliases:
@@ -8751,29 +7624,6 @@ slots:
     slot_uri: MIXS:0000990
     multivalued: false
     range: lithology_enum
-  liver_disord:
-    name: liver_disord
-    aliases:
-    - liver disorder
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: disorder name
-      occurrence:
-        tag: occurrence
-        value: m
-    description: History of liver disorders; can include multiple disorders. The terms
-      should be chosen from the DO (Human Disease Ontology) at http://www.disease-ontology.org,
-      liver disease (https://disease-ontology.org/?id=DOID:409).
-    title: liver disorder
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000282
-    multivalued: true
-    range: string
   local_class:
     name: local_class
     aliases:
@@ -8816,24 +7666,6 @@ slots:
     slot_uri: MIXS:0000331
     multivalued: false
     range: string
-  mag_cov_software:
-    name: mag_cov_software
-    aliases:
-    - MAG coverage software
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration
-    description: Tool(s) used to determine the genome coverage if coverage is used
-      as a binning parameter in the extraction of genomes from metagenomic datasets
-    title: MAG coverage software
-    examples:
-    - value: bbmap
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    slot_uri: MIXS:0000080
-    multivalued: false
-    range: mag_cov_software_enum
   magnesium:
     name: magnesium
     aliases:
@@ -8858,27 +7690,6 @@ slots:
     slot_uri: MIXS:0000431
     multivalued: false
     range: quantity value
-  maternal_health_stat:
-    name: maternal_health_stat
-    aliases:
-    - amniotic fluid/maternal health status
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: health status
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Specification of the maternal health status
-    title: amniotic fluid/maternal health status
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000273
-    multivalued: false
-    range: string
   max_occup:
     name: max_occup
     aliases:
@@ -8987,67 +7798,6 @@ slots:
     slot_uri: MIXS:0001052
     multivalued: true
     range: string
-  medic_hist_perform:
-    name: medic_hist_perform
-    aliases:
-    - medical history performed
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: true or false
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Whether full medical history was collected
-    title: medical history performed
-    examples:
-    - value: 'TRUE'
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{boolean}'
-    slot_uri: MIXS:0000897
-    multivalued: false
-    range: string
-  menarche:
-    name: menarche
-    aliases:
-    - menarche
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: timestamp
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Date of most recent menstruation
-    title: menarche
-    examples:
-    - value: '2018-05-11'
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    slot_uri: MIXS:0000965
-    multivalued: false
-    range: date
-  menopause:
-    name: menopause
-    aliases:
-    - menopause
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: timestamp
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Date of onset of menopause
-    title: menopause
-    examples:
-    - value: '2018-05-11'
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    slot_uri: MIXS:0000968
-    multivalued: false
-    range: date
   methane:
     name: methane
     aliases:
@@ -9096,47 +7846,6 @@ slots:
     slot_uri: MIXS:0000650
     multivalued: false
     range: quantity value
-  microbial_biomass_meth:
-    name: microbial_biomass_meth
-    aliases:
-    - microbial biomass method
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: PMID,DOI or url
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Reference or method used in determining microbial biomass
-    title: microbial biomass method
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{PMID|DOI|URL}'
-    slot_uri: MIXS:0000339
-    multivalued: false
-    range: string
-  mid:
-    name: mid
-    aliases:
-    - multiplex identifiers
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: multiplex identifier sequence
-    description: Molecular barcodes, called Multiplex Identifiers (MIDs), that are
-      used to specifically tag unique samples in a sequencing run. Sequence should
-      be reported in uppercase letters
-    title: multiplex identifiers
-    examples:
-    - value: GTGAATAT
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{dna}'
-    slot_uri: MIXS:0000047
-    multivalued: false
-    range: string
   mineral_nutr_regm:
     name: mineral_nutr_regm
     aliases:
@@ -9281,141 +7990,10 @@ slots:
     slot_uri: MIXS:0000504
     multivalued: false
     range: quantity value
-  non_mineral_nutr_regm:
-    name: non_mineral_nutr_regm
-    aliases:
-    - non-mineral nutrient regimen
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: non-mineral nutrient name;non-mineral nutrient amount;treatment duration;interval;experimental
-          duration
-      preferred_unit:
-        tag: preferred_unit
-        value: gram, mole per liter, milligram per liter
-      occurrence:
-        tag: occurrence
-        value: m
-    description: Information about treatment involving the exposure of plant to non-mineral
-      nutrient such as oxygen, hydrogen or carbon; should include the name of non-mineral
-      nutrient, amount administered, treatment regimen including how many times the
-      treatment was repeated, how long each treatment lasted, and the start and end
-      time of the entire treatment; can include multiple non-mineral nutrient regimens
-    title: non-mineral nutrient regimen
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{text};{float} {unit};{period};{interval};{period}'
-    slot_uri: MIXS:0000571
-    multivalued: true
-    range: string
-  nose_throat_disord:
-    name: nose_throat_disord
-    aliases:
-    - lung/nose-throat disorder
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: disorder name
-      occurrence:
-        tag: occurrence
-        value: m
-    description: History of nose-throat disorders; can include multiple disorders,  The
-      terms should be chosen from the DO (Human Disease Ontology) at http://www.disease-ontology.org,
-      lung disease (https://disease-ontology.org/?id=DOID:850), upper respiratory
-      tract disease (https://disease-ontology.org/?id=DOID:974).
-    title: lung/nose-throat disorder
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000270
-    multivalued: true
-    range: string
-  nucl_acid_amp:
-    name: nucl_acid_amp
-    aliases:
-    - nucleic acid amplification
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: PMID, DOI or URL
-    description: A link to a literature reference, electronic resource or a standard
-      operating procedure (SOP), that describes the enzymatic amplification (PCR,
-      TMA, NASBA) of specific nucleic acids
-    title: nucleic acid amplification
-    examples:
-    - value: https://phylogenomics.me/protocols/16s-pcr-protocol/
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000038
-    multivalued: false
-    range: string
-  nucl_acid_ext:
-    name: nucl_acid_ext
-    aliases:
-    - nucleic acid extraction
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: PMID, DOI or URL
-    description: A link to a literature reference, electronic resource or a standard
-      operating procedure (SOP), that describes the material separation to recover
-      the nucleic acid fraction from a sample
-    title: nucleic acid extraction
-    examples:
-    - value: https://mobio.com/media/wysiwyg/pdfs/protocols/12888.pdf
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000037
-    multivalued: false
-    range: string
   nucleic acid sequence source field:
     name: nucleic acid sequence source field
     from_schema: http://w3id.org/mixs/terms
     abstract: true
-  num_replicons:
-    name: num_replicons
-    aliases:
-    - number of replicons
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: 'for eukaryotes and bacteria: chromosomes (haploid count); for viruses:
-          segments'
-    description: Reports the number of replicons in a nuclear genome of eukaryotes,
-      in the genome of a bacterium or archaea or the number of segments in a segmented
-      virus. Always applied to the haploid chromosome count of a eukaryote
-    title: number of replicons
-    examples:
-    - value: '2'
-    from_schema: http://w3id.org/mixs/terms
-    is_a: nucleic acid sequence source field
-    slot_uri: MIXS:0000022
-    multivalued: false
-    range: integer
-  number_contig:
-    name: number_contig
-    aliases:
-    - number of contigs
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: value
-    description: Total number of contigs in the cleaned/submitted assembly that makes
-      up a given genome, SAG, MAG, or UViG
-    title: number of contigs
-    examples:
-    - value: '40'
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    slot_uri: MIXS:0000060
-    multivalued: false
-    range: integer
   number_pets:
     name: number_pets
     aliases:
@@ -9795,66 +8373,6 @@ slots:
     slot_uri: MIXS:0000206
     multivalued: true
     range: string
-  pathogenicity:
-    name: pathogenicity
-    aliases:
-    - known pathogenicity
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: names of organisms that the entity is pathogenic to
-    description: To what is the entity pathogenic
-    title: known pathogenicity
-    examples:
-    - value: human, animal, plant, fungi, bacteria
-    from_schema: http://w3id.org/mixs/terms
-    is_a: nucleic acid sequence source field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000027
-    multivalued: false
-    range: string
-  pcr_cond:
-    name: pcr_cond
-    aliases:
-    - pcr conditions
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
-          elongation:degrees_minutes;total cycles
-    description: Description of reaction conditions and components of PCR in the form
-      of 'initial denaturation:94degC_1.5min; annealing=...'
-    title: pcr conditions
-    examples:
-    - value: initial denaturation:94_3;annealing:50_1;elongation:72_1.5;final elongation:72_10;35
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
-      elongation:degrees_minutes;total cycles
-    slot_uri: MIXS:0000049
-    multivalued: false
-    range: string
-  pcr_primers:
-    name: pcr_primers
-    aliases:
-    - pcr primers
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: 'FWD: forward primer sequence;REV:reverse primer sequence'
-    description: PCR primers that were used to amplify the sequence of the targeted
-      gene, locus or subfragment. This field should contain all the primers used for
-      a single PCR reaction if multiple forward or reverse primers are present in
-      a single PCR reaction. The primer sequence should be reported in uppercase letters
-    title: pcr primers
-    examples:
-    - value: FWD:GTGCCAGCMGCCGCGGTAA;REV:GGACTACHVGGGTWTCTAAT
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: FWD:{dna};REV:{dna}
-    slot_uri: MIXS:0000046
-    multivalued: false
-    range: string
   permeability:
     name: permeability
     aliases:
@@ -9930,29 +8448,6 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000573
-    multivalued: true
-    range: string
-  pet_farm_animal:
-    name: pet_farm_animal
-    aliases:
-    - presence of pets or farm animals
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: presence status;type of animal or pet
-      occurrence:
-        tag: occurrence
-        value: m
-    description: Specification of presence of pets or farm animals in the environment
-      of subject, if yes the animals should be specified; can include multiple animals
-      present
-    title: presence of pets or farm animals
-    examples:
-    - value: yes; 5 cats
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{boolean};{text}'
-    slot_uri: MIXS:0000267
     multivalued: true
     range: string
   petroleum_hydrocarb:
@@ -10228,29 +8723,6 @@ slots:
     slot_uri: MIXS:0001060
     multivalued: false
     range: string
-  ploidy:
-    name: ploidy
-    aliases:
-    - ploidy
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: PATO
-    description: The ploidy level of the genome (e.g. allopolyploid, haploid, diploid,
-      triploid, tetraploid). It has implications for the downstream study of duplicated
-      gene and regions of the genomes (and perhaps for difficulties in assembly).
-      For terms, please select terms listed under class ploidy (PATO:001374) of Phenotypic
-      Quality Ontology (PATO), and for a browser of PATO (v 2018-03-27) please refer
-      to http://purl.bioontology.org/ontology/PATO
-    title: ploidy
-    examples:
-    - value: allopolyploidy [PATO:0001379]
-    from_schema: http://w3id.org/mixs/terms
-    is_a: nucleic acid sequence source field
-    string_serialization: '{termLabel} {[termID]}'
-    slot_uri: MIXS:0000021
-    multivalued: false
-    range: string
   pollutants:
     name: pollutants
     aliases:
@@ -10276,28 +8748,6 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000107
     multivalued: true
-    range: string
-  pool_dna_extracts:
-    name: pool_dna_extracts
-    aliases:
-    - pooling of DNA extracts (if done)
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: pooling status;number of pooled extracts
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Indicate whether multiple DNA extractions were mixed. If the answer
-      yes, the number of extracts that were pooled should be given
-    title: pooling of DNA extracts (if done)
-    examples:
-    - value: yes;5
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{boolean};{integer}'
-    slot_uri: MIXS:0000325
-    multivalued: false
     range: string
   porosity:
     name: porosity
@@ -10395,60 +8845,6 @@ slots:
     slot_uri: MIXS:0000348
     multivalued: false
     range: string
-  pred_genome_struc:
-    name: pred_genome_struc
-    aliases:
-    - predicted genome structure
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration
-    description: Expected structure of the viral genome
-    title: predicted genome structure
-    examples:
-    - value: non-segmented
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    slot_uri: MIXS:0000083
-    multivalued: false
-    range: pred_genome_struc_enum
-  pred_genome_type:
-    name: pred_genome_type
-    aliases:
-    - predicted genome type
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration
-    description: Type of genome predicted for the UViG
-    title: predicted genome type
-    examples:
-    - value: dsDNA
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    slot_uri: MIXS:0000082
-    multivalued: false
-    range: pred_genome_type_enum
-  pregnancy:
-    name: pregnancy
-    aliases:
-    - pregnancy
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: timestamp
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Date due of pregnancy
-    title: pregnancy
-    examples:
-    - value: '2018-05-11'
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    slot_uri: MIXS:0000966
-    multivalued: false
-    range: date
   pressure:
     name: pressure
     aliases:
@@ -10491,27 +8887,6 @@ slots:
     is_a: core field
     string_serialization: '{text};{timestamp}'
     slot_uri: MIXS:0000315
-    multivalued: false
-    range: string
-  previous_land_use_meth:
-    name: previous_land_use_meth
-    aliases:
-    - history/previous land use method
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: PMID,DOI or url
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Reference or method used in determining previous land use and dates
-    title: history/previous land use method
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{PMID|DOI|URL}'
-    slot_uri: MIXS:0000316
     multivalued: false
     range: string
   primary_prod:
@@ -10625,65 +9000,6 @@ slots:
     slot_uri: MIXS:0001084
     multivalued: false
     range: profile_position_enum
-  project_name:
-    name: project_name
-    aliases:
-    - project name
-    description: Name of the project within which the sequencing was organized
-    title: project name
-    examples:
-    - value: Forest soil metagenome
-    from_schema: http://w3id.org/mixs/terms
-    is_a: investigation field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000092
-    multivalued: false
-    range: string
-  propagation:
-    name: propagation
-    aliases:
-    - propagation
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: 'for virus: lytic, lysogenic, temperate, obligately lytic; for plasmid:
-          incompatibility group; for eukaryote: asexual, sexual; other more specific
-          values (e.g., incompatibility group) are allowed'
-    description: 'The type of reproduction from the parent stock. Values for this
-      field is specific to different taxa. For phage or virus: lytic/lysogenic/temperate/obligately
-      lytic. For plasmids: incompatibility group. For eukaryotes: sexual/asexual.'
-    title: propagation
-    examples:
-    - value: lytic
-    from_schema: http://w3id.org/mixs/terms
-    is_a: nucleic acid sequence source field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000033
-    multivalued: false
-    range: string
-  pulmonary_disord:
-    name: pulmonary_disord
-    aliases:
-    - lung/pulmonary disorder
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: disorder name
-      occurrence:
-        tag: occurrence
-        value: m
-    description: History of pulmonary disorders; can include multiple disorders. The
-      terms should be chosen from the DO (Human Disease Ontology) at http://www.disease-ontology.org,
-      lung disease (https://disease-ontology.org/?id=DOID:850).
-    title: lung/pulmonary disorder
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000269
-    multivalued: true
-    range: string
   quad_pos:
     name: quad_pos
     aliases:
@@ -10782,25 +9098,6 @@ slots:
     slot_uri: MIXS:0000350
     multivalued: false
     range: string
-  reassembly_bin:
-    name: reassembly_bin
-    aliases:
-    - reassembly post binning
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: boolean
-    description: Has an assembly been performed on a genome bin extracted from a metagenomic
-      assembly?
-    title: reassembly post binning
-    examples:
-    - value: 'no'
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{boolean}'
-    slot_uri: MIXS:0000079
-    multivalued: false
-    range: string
   redox_potential:
     name: redox_potential
     aliases:
@@ -10825,45 +9122,6 @@ slots:
     slot_uri: MIXS:0000182
     multivalued: false
     range: quantity value
-  ref_biomaterial:
-    name: ref_biomaterial
-    aliases:
-    - reference for biomaterial
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: PMID, DOI or URL
-    description: Primary publication if isolated before genome publication; otherwise,
-      primary genome report.
-    title: reference for biomaterial
-    examples:
-    - value: doi:10.1016/j.syapm.2018.01.009
-    from_schema: http://w3id.org/mixs/terms
-    is_a: nucleic acid sequence source field
-    string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000025
-    multivalued: false
-    range: string
-  ref_db:
-    name: ref_db
-    aliases:
-    - reference database(s)
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: names, versions, and references of databases
-    description: List of database(s) used for ORF annotation, along with version number
-      and reference to website or publication
-    title: reference database(s)
-    examples:
-    - value: pVOGs;5;http://dmk-brain.ecn.uiowa.edu/pVOGs/ Grazziotin et al. 2017
-        doi:10.1093/nar/gkw975
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{database};{version};{reference}'
-    slot_uri: MIXS:0000062
-    multivalued: false
-    range: string
   rel_air_humidity:
     name: rel_air_humidity
     aliases:
@@ -11633,29 +9891,6 @@ slots:
     slot_uri: MIXS:0000860
     multivalued: false
     range: samp_capt_status_enum
-  samp_collect_device:
-    name: samp_collect_device
-    aliases:
-    - sample collection device
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: device name
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: The device used to collect an environmental sample. This field accepts
-      terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO).
-      This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094).
-    title: sample collection device
-    examples:
-    - value: swab, biopsy, niskin bottle, push core, drag swab [GENEPIO:0002713]
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{termLabel} {[termID]}|{text}'
-    slot_uri: MIXS:0000002
-    multivalued: false
-    range: string
   samp_dis_stage:
     name: samp_dis_stage
     aliases:
@@ -11821,34 +10056,6 @@ slots:
     slot_uri: MIXS:0000244
     multivalued: false
     range: integer
-  samp_salinity:
-    name: samp_salinity
-    aliases:
-    - sample salinity
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: measurement value
-      preferred_unit:
-        tag: preferred_unit
-        value: milligram per liter, practical salinity unit, percentage
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Salinity is the total concentration of all dissolved salts in a liquid
-      or solid (in the form of an extract obtained by centrifugation) sample. While
-      salinity can be measured by a complete chemical analysis, this method is difficult
-      and time consuming. More often, it is instead derived from the conductivity
-      measurement. This is known as practical salinity. These derivations compare
-      the specific conductance of the sample to a salinity standard such as seawater
-    title: sample salinity
-    examples:
-    - value: 1 milligram per liter
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    slot_uri: MIXS:0000109
-    multivalued: false
-    range: quantity value
   samp_size:
     name: samp_size
     aliases:
@@ -12081,28 +10288,6 @@ slots:
     slot_uri: MIXS:0000998
     multivalued: false
     range: string
-  samp_vol_we_dna_ext:
-    name: samp_vol_we_dna_ext
-    aliases:
-    - sample volume or weight for DNA extraction
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: measurement value
-      preferred_unit:
-        tag: preferred_unit
-        value: millliter, gram, milligram, square centimeter
-    description: 'Volume (ml) or mass (g) of total collected sample processed for
-      DNA extraction. Note: total sample collected should be entered under the term
-      Sample Size (MIXS:0000001).'
-    title: sample volume or weight for DNA extraction
-    examples:
-    - value: 1500 milliliter
-    from_schema: http://w3id.org/mixs/terms
-    is_a: nucleic acid sequence source field
-    slot_uri: MIXS:0000111
-    multivalued: false
-    range: quantity value
   samp_weather:
     name: samp_weather
     aliases:
@@ -12328,46 +10513,6 @@ slots:
     slot_uri: MIXS:0001078
     multivalued: false
     range: sediment_type_enum
-  seq_meth:
-    name: seq_meth
-    aliases:
-    - sequencing method
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: Text or OBI
-    description: Sequencing machine used. Where possible the term should be taken
-      from the OBI list of DNA sequencers (http://purl.obolibrary.org/obo/OBI_0400103).
-    title: sequencing method
-    examples:
-    - value: 454 Genome Sequencer FLX [OBI:0000702]
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{termLabel} {[termID]}|{text}'
-    slot_uri: MIXS:0000050
-    multivalued: false
-    range: string
-  seq_quality_check:
-    name: seq_quality_check
-    aliases:
-    - sequence quality check
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: none or manually edited
-    description: Indicate if the sequence has been called by automatic systems (none)
-      or undergone a manual editing procedure (e.g. by inspecting the raw data or
-      chromatograms). Applied only for sequences that are not submitted to SRA,ENA
-      or DRA
-    title: sequence quality check
-    examples:
-    - value: none
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '[none|manually edited]'
-    slot_uri: MIXS:0000051
-    multivalued: false
-    range: string
   sequencing field:
     name: sequencing field
     from_schema: http://w3id.org/mixs/terms
@@ -12391,27 +10536,6 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000215
-    multivalued: false
-    range: string
-  sexual_act:
-    name: sexual_act
-    aliases:
-    - sexual activity
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: partner sex;frequency
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Current sexual partner and frequency of sex
-    title: sexual activity
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000285
     multivalued: false
     range: string
   shading_device_cond:
@@ -12541,61 +10665,6 @@ slots:
     slot_uri: MIXS:0000184
     multivalued: false
     range: quantity value
-  sim_search_meth:
-    name: sim_search_meth
-    aliases:
-    - similarity search method
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: names and versions of software(s), parameters used
-    description: Tool used to compare ORFs with database, along with version and cutoffs
-      used
-    title: similarity search method
-    examples:
-    - value: HMMER3;3.1b2;hmmsearch, cutoff of 50 on score
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{software};{version};{parameters}'
-    slot_uri: MIXS:0000063
-    multivalued: false
-    range: string
-  single_cell_lysis_appr:
-    name: single_cell_lysis_appr
-    aliases:
-    - single cell or viral particle lysis approach
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration
-    description: Method used to free DNA from interior of the cell(s) or particle(s)
-    title: single cell or viral particle lysis approach
-    examples:
-    - value: enzymatic
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    slot_uri: MIXS:0000076
-    multivalued: false
-    range: single_cell_lysis_appr_enum
-  single_cell_lysis_prot:
-    name: single_cell_lysis_prot
-    aliases:
-    - single cell or viral particle lysis kit protocol
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: kit, protocol name
-    description: Name of the kit or standard protocol used for cell(s) or particle(s)
-      lysis
-    title: single cell or viral particle lysis kit protocol
-    examples:
-    - value: ambion single cell lysis kit
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000054
-    multivalued: false
-    range: string
   size_frac:
     name: size_frac
     aliases:
@@ -12736,27 +10805,6 @@ slots:
     slot_uri: MIXS:0000669
     multivalued: false
     range: quantity value
-  smoker:
-    name: smoker
-    aliases:
-    - smoker
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: smoking status
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Specification of smoking status
-    title: smoker
-    examples:
-    - value: 'yes'
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{boolean}'
-    slot_uri: MIXS:0000262
-    multivalued: false
-    range: string
   sodium:
     name: sodium
     aliases:
@@ -12923,42 +10971,6 @@ slots:
     slot_uri: MIXS:0000738
     multivalued: false
     range: quantity value
-  sop:
-    name: sop
-    aliases:
-    - relevant standard operating procedures
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: reference to SOP
-    description: Standard operating procedures used in assembly and/or annotation
-      of genomes, metagenomes or environmental sequences
-    title: relevant standard operating procedures
-    examples:
-    - value: http://press.igsb.anl.gov/earthmicrobiome/protocols-and-standards/its/
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000090
-    multivalued: false
-    range: string
-  sort_tech:
-    name: sort_tech
-    aliases:
-    - sorting technology
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration
-    description: Method used to sort/isolate cells or particles of interest
-    title: sorting technology
-    examples:
-    - value: optical manipulation
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    slot_uri: MIXS:0000075
-    multivalued: false
-    range: sort_tech_enum
   source_mat_id:
     name: source_mat_id
     aliases:
@@ -12989,23 +11001,6 @@ slots:
     slot_uri: MIXS:0000026
     multivalued: false
     range: string
-  source_uvig:
-    name: source_uvig
-    aliases:
-    - source of UViGs
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration
-    description: Type of dataset from which the UViG was obtained
-    title: source of UViGs
-    examples:
-    - value: viral fraction metagenome (virome)
-    from_schema: http://w3id.org/mixs/terms
-    is_a: nucleic acid sequence source field
-    slot_uri: MIXS:0000035
-    multivalued: false
-    range: source_uvig_enum
   space_typ_state:
     name: space_typ_state
     aliases:
@@ -13027,26 +11022,6 @@ slots:
     slot_uri: MIXS:0000770
     multivalued: false
     range: string
-  special_diet:
-    name: special_diet
-    aliases:
-    - special diet
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration
-      occurrence:
-        tag: occurrence
-        value: m
-    description: Specification of special diet; can include multiple special diets
-    title: special diet
-    examples:
-    - value: other:vegan
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    slot_uri: MIXS:0000905
-    multivalued: true
-    range: special_diet_enum
   specific:
     name: specific
     aliases:
@@ -13068,24 +11043,6 @@ slots:
     slot_uri: MIXS:0000836
     multivalued: false
     range: specific_enum
-  specific_host:
-    name: specific_host
-    aliases:
-    - host scientific name
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: host scientific name, taxonomy ID
-    description: Report the host's taxonomic name and/or NCBI taxonomy ID.
-    title: host scientific name
-    examples:
-    - value: Homo sapiens and/or 9606
-    from_schema: http://w3id.org/mixs/terms
-    is_a: nucleic acid sequence source field
-    string_serialization: '{text}|{NCBI taxid}'
-    slot_uri: MIXS:0000029
-    multivalued: false
-    range: string
   specific_humidity:
     name: specific_humidity
     aliases:
@@ -13242,51 +11199,6 @@ slots:
     is_a: core field
     string_serialization: '{text};{duration}'
     slot_uri: MIXS:0000327
-    multivalued: false
-    range: string
-  study_complt_stat:
-    name: study_complt_stat
-    aliases:
-    - study completion status
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: YES or NO due to (1)adverse event (2) non-compliance (3) lost to follow
-          up (4)other-specify
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Specification of study completion status, if no the reason should
-      be specified
-    title: study completion status
-    examples:
-    - value: no;non-compliance
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    slot_uri: MIXS:0000898
-    multivalued: false
-    range: study_complt_stat_enum
-  subspecf_gen_lin:
-    name: subspecf_gen_lin
-    aliases:
-    - subspecific genetic lineage
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: Genetic lineage below lowest rank of NCBI taxonomy, which is subspecies,
-          e.g. serovar, biotype, ecotype, variety, cultivar.
-    description: Information about the genetic distinctness of the sequenced organism
-      below the subspecies level, e.g., serovar, serotype, biotype, ecotype, or any
-      relevant genetic typing schemes like Group I plasmid. Subspecies should not
-      be recorded in this term, but in the NCBI taxonomy. Supply both the lineage
-      name and the lineage rank separated by a colon, e.g., biovar:abc123.
-    title: subspecific genetic lineage
-    examples:
-    - value: serovar:Newport
-    from_schema: http://w3id.org/mixs/terms
-    is_a: nucleic acid sequence source field
-    string_serialization: '{rank name}:{text}'
-    slot_uri: MIXS:0000020
     multivalued: false
     range: string
   substructure_type:
@@ -13583,81 +11495,6 @@ slots:
     slot_uri: MIXS:0000120
     multivalued: false
     range: quantity value
-  target_gene:
-    name: target_gene
-    aliases:
-    - target gene
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: gene name
-    description: Targeted gene or locus name for marker gene studies
-    title: target gene
-    examples:
-    - value: 16S rRNA, 18S rRNA, nif, amoA, rpo
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000044
-    multivalued: false
-    range: string
-  target_subfragment:
-    name: target_subfragment
-    aliases:
-    - target subfragment
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: gene fragment name
-    description: Name of subfragment of a gene or locus. Important to e.g. identify
-      special regions on marker genes like V6 on 16S rRNA
-    title: target subfragment
-    examples:
-    - value: V6, V9, ITS
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000045
-    multivalued: false
-    range: string
-  tax_class:
-    name: tax_class
-    aliases:
-    - taxonomic classification
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: classification method, database name, and other parameters
-    description: Method used for taxonomic classification, along with reference database
-      used, classification rank, and thresholds used to classify new genomes
-    title: taxonomic classification
-    examples:
-    - value: vConTACT vContact2 (references from NCBI RefSeq v83, genus rank classification,
-        default parameters)
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000064
-    multivalued: false
-    range: string
-  tax_ident:
-    name: tax_ident
-    aliases:
-    - taxonomic identity marker
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration
-    description: The phylogenetic marker(s) used to assign an organism name to the
-      SAG or MAG
-    title: taxonomic identity marker
-    examples:
-    - value: 'other: rpoB gene'
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    slot_uri: MIXS:0000053
-    multivalued: false
-    range: tax_ident_enum
   temp:
     name: temp
     aliases:
@@ -13723,50 +11560,6 @@ slots:
     slot_uri: MIXS:0000352
     multivalued: false
     range: string
-  texture:
-    name: texture
-    aliases:
-    - texture
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: measurement value
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: The relative proportion of different grain sizes of mineral particles
-      in a soil, as described using a standard system; express as % sand (50 um to
-      2 mm), silt (2 um to 50 um), and clay (<2 um) with textural name (e.g., silty
-      clay loam) optional.
-    title: texture
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    slot_uri: MIXS:0000335
-    multivalued: false
-    range: quantity value
-  texture_meth:
-    name: texture_meth
-    aliases:
-    - texture method
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: PMID,DOI or url
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Reference or method used in determining soil texture.
-    title: texture method
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000336
-    multivalued: false
-    range: string
   tidal_stage:
     name: tidal_stage
     aliases:
@@ -13807,48 +11600,6 @@ slots:
     slot_uri: MIXS:0001081
     multivalued: true
     range: tillage_enum
-  time_last_toothbrush:
-    name: time_last_toothbrush
-    aliases:
-    - time since last toothbrushing
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: duration
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Specification of the time since last toothbrushing
-    title: time since last toothbrushing
-    examples:
-    - value: P2H45M
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{duration}'
-    slot_uri: MIXS:0000924
-    multivalued: false
-    range: string
-  time_since_last_wash:
-    name: time_since_last_wash
-    aliases:
-    - time since last wash
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: duration
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Specification of the time since last wash
-    title: time since last wash
-    examples:
-    - value: P1D
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{duration}'
-    slot_uri: MIXS:0000943
-    multivalued: false
-    range: string
   tiss_cult_growth_med:
     name: tiss_cult_growth_med
     aliases:
@@ -14276,81 +12027,6 @@ slots:
     slot_uri: MIXS:0000839
     multivalued: false
     range: train_stop_loc_enum
-  travel_out_six_month:
-    name: travel_out_six_month
-    aliases:
-    - travel outside the country in last six months
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: country name
-      occurrence:
-        tag: occurrence
-        value: m
-    description: Specification of the countries travelled in the last six months;
-      can include multiple travels
-    title: travel outside the country in last six months
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000268
-    multivalued: true
-    range: string
-  trna_ext_software:
-    name: trna_ext_software
-    aliases:
-    - tRNA extraction software
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: names and versions of software(s), parameters used
-    description: Tools used for tRNA identification
-    title: tRNA extraction software
-    examples:
-    - value: infernal;v2;default parameters
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{software};{version};{parameters}'
-    slot_uri: MIXS:0000068
-    multivalued: false
-    range: string
-  trnas:
-    name: trnas
-    aliases:
-    - number of standard tRNAs extracted
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: value from 0-21
-    description: The total number of tRNAs identified from the SAG or MAG
-    title: number of standard tRNAs extracted
-    examples:
-    - value: '18'
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    slot_uri: MIXS:0000067
-    multivalued: false
-    range: integer
-  trophic_level:
-    name: trophic_level
-    aliases:
-    - trophic level
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration
-    description: Trophic levels are the feeding position in a food chain. Microbes
-      can be a range of producers (e.g. chemolithotroph)
-    title: trophic level
-    examples:
-    - value: heterotroph
-    from_schema: http://w3id.org/mixs/terms
-    is_a: nucleic acid sequence source field
-    slot_uri: MIXS:0000032
-    multivalued: false
-    range: trophic_level_enum
   turbidity:
     name: turbidity
     aliases:
@@ -14399,27 +12075,6 @@ slots:
     slot_uri: MIXS:0000394
     multivalued: false
     range: quantity value
-  twin_sibling:
-    name: twin_sibling
-    aliases:
-    - twin sibling presence
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: presence status
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Specification of twin sibling presence
-    title: twin sibling presence
-    examples:
-    - value: 'yes'
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{boolean}'
-    slot_uri: MIXS:0000326
-    multivalued: false
-    range: string
   typ_occup_density:
     name: typ_occup_density
     aliases:
@@ -14440,74 +12095,6 @@ slots:
     slot_uri: MIXS:0000771
     multivalued: false
     range: double
-  urine_collect_meth:
-    name: urine_collect_meth
-    aliases:
-    - urine/collection method
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Specification of urine collection method
-    title: urine/collection method
-    examples:
-    - value: catheter
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '[clean catch|catheter]'
-    slot_uri: MIXS:0000899
-    multivalued: false
-    range: string
-  urogenit_disord:
-    name: urogenit_disord
-    aliases:
-    - urogenital disorder
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: disorder name
-      occurrence:
-        tag: occurrence
-        value: m
-    description: History of urogenital disorders, can include multiple disorders.
-      The terms should be chosen from the DO (Human Disease Ontology) at http://www.disease-ontology.org,
-      reproductive system disease (https://disease-ontology.org/?id=DOID:15) or urinary
-      system disease (https://disease-ontology.org/?id=DOID:18).
-    title: urogenital disorder
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000289
-    multivalued: true
-    range: string
-  urogenit_tract_disor:
-    name: urogenit_tract_disor
-    aliases:
-    - urine/urogenital tract disorder
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: disorder name
-      occurrence:
-        tag: occurrence
-        value: m
-    description: History of urogenital tract disorders; can include multiple disorders.
-      The terms should be chosen from the DO (Human Disease Ontology) at http://www.disease-ontology.org,
-      urinary system disease (https://disease-ontology.org/?id=DOID:18).
-    title: urine/urogenital tract disorder
-    examples:
-    - value: ''
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000278
-    multivalued: true
-    range: string
   ventilation_rate:
     name: ventilation_rate
     aliases:
@@ -14598,42 +12185,6 @@ slots:
     slot_uri: MIXS:0000408
     multivalued: false
     range: quantity value
-  vir_ident_software:
-    name: vir_ident_software
-    aliases:
-    - viral identification software
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: software name, version and relevant parameters
-    description: Tool(s) used for the identification of UViG as a viral genome, software
-      or protocol name including version number, parameters, and cutoffs used
-    title: viral identification software
-    examples:
-    - value: VirSorter; 1.0.4; Virome database, category 2
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{software};{version};{parameters}'
-    slot_uri: MIXS:0000081
-    multivalued: false
-    range: string
-  virus_enrich_appr:
-    name: virus_enrich_appr
-    aliases:
-    - virus enrichment approach
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration
-    description: List of approaches used to enrich the sample for viruses, if any
-    title: virus enrichment approach
-    examples:
-    - value: filtration + FeCl Precipitation + ultracentrifugation + DNAse
-    from_schema: http://w3id.org/mixs/terms
-    is_a: nucleic acid sequence source field
-    slot_uri: MIXS:0000036
-    multivalued: false
-    range: virus_enrich_appr_enum
   vis_media:
     name: vis_media
     aliases:
@@ -15128,67 +12679,6 @@ slots:
     slot_uri: MIXS:0000848
     multivalued: false
     range: weekday_enum
-  weight_loss_3_month:
-    name: weight_loss_3_month
-    aliases:
-    - weight loss in last three months
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: weight loss specification;measurement value
-      preferred_unit:
-        tag: preferred_unit
-        value: kilogram, gram
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Specification of weight loss in the last three months, if yes should
-      be further specified to include amount of weight loss
-    title: weight loss in last three months
-    examples:
-    - value: yes;5 kilogram
-    from_schema: http://w3id.org/mixs/terms
-    is_a: core field
-    string_serialization: '{boolean};{float} {unit}'
-    slot_uri: MIXS:0000295
-    multivalued: false
-    range: string
-  wga_amp_appr:
-    name: wga_amp_appr
-    aliases:
-    - WGA amplification approach
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration
-    description: Method used to amplify genomic DNA in preparation for sequencing
-    title: WGA amplification approach
-    examples:
-    - value: mda based
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '[pcr based|mda based]'
-    slot_uri: MIXS:0000055
-    multivalued: false
-    range: string
-  wga_amp_kit:
-    name: wga_amp_kit
-    aliases:
-    - WGA amplification kit
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: kit name
-    description: Kit used to amplify genomic DNA in preparation for sequencing
-    title: WGA amplification kit
-    examples:
-    - value: qiagen repli-g
-    from_schema: http://w3id.org/mixs/terms
-    is_a: sequencing field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000006
-    multivalued: false
-    range: string
   win:
     name: win
     aliases:
