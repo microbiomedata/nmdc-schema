@@ -214,7 +214,8 @@ SCHEMA_TEST_EXAMPLES_INVALID := \
 	biosample_missing_required_field \
 	biosample_single_multi_value_mixup \
 	biosample_undeclared_slot \
-	study_credit_enum_mangle
+	study_credit_enum_mangle \
+	depth_unit_required
 
 # 	functional_annotation_set_invalid has invalid ID pattern but regex tests aren't applied yet? MAM 2021-06-24
 
