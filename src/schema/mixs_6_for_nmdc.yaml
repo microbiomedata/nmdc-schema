@@ -11973,7 +11973,7 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      MIxS 5 name: tot_nitro_content_meth
+      MIxS_5_name: tot_nitro_content_meth
     description: Reference or method used in determining the total nitrogen
     title: total nitrogen content method
     from_schema: http://w3id.org/mixs/terms
@@ -12663,7 +12663,7 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      MIxS 5 name: water_content_soil_meth
+      MIxS_5_name: water_content_soil_meth
     description: Reference or method used in determining the water content of soil
     title: water content method
     from_schema: http://w3id.org/mixs/terms

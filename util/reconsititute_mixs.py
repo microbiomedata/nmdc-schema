@@ -100,7 +100,7 @@ class TermBroker:
             print(current_sn)
             current_slot = current_view.get_slot(current_sn)
             if current_sn in self.static_renamed_imports:
-                current_slot.annotations["MIxS 5 name"] = self.static_renamed_imports[
+                current_slot.annotations["MIxS_5_name"] = self.static_renamed_imports[
                     current_sn
                 ]
                 # cs_yd = yaml_dumper.dumps(current_slot)
