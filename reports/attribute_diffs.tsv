@@ -1,0 +1,867 @@
+slot	attribute	old_val	new_val
+abs_air_humidity	is_a	attribute	core field
+add_recov_method	description	Additional (i.e. Secondary, tertiary, etc.) recovery methods deployed for increase of hydrocarbon recovery from resource and start date for each one of them. If 'other' is specified, please propose entry in 'additional info' field	"Additional (i.e. Secondary, tertiary, etc.) recovery methods deployed for increase of hydrocarbon recovery from resource and start date for each one of them. If ""other"" is specified, please propose entry in ""additional info"" field"
+add_recov_method	is_a	attribute	core field
+add_recov_method	range	text value	string
+additional_info	is_a	attribute	core field
+additional_info	range	text value	string
+address	is_a	attribute	core field
+address	range	text value	string
+adj_room	is_a	attribute	core field
+adj_room	range	text value	string
+aero_struc	is_a	attribute	core field
+aero_struc	range	text value	string
+agrochem_addition	is_a	attribute	core field
+agrochem_addition	multivalued	False	True
+agrochem_addition	range	quantity value	string
+air_temp	is_a	attribute	core field
+air_temp_regm	is_a	attribute	core field
+air_temp_regm	multivalued	False	True
+air_temp_regm	range	quantity value	string
+al_sat	is_a	attribute	core field
+al_sat_meth	is_a	attribute	core field
+al_sat_meth	range	text value	string
+alkalinity	is_a	attribute	core field
+alkalinity_method	is_a	attribute	core field
+alkalinity_method	range	text value	string
+alkyl_diethers	description	Concentration of alkyl diethers 	Concentration of alkyl diethers
+alkyl_diethers	is_a	attribute	core field
+alt	description	Altitude is a term used to identify heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earthbs surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air	Altitude is a term used to identify heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earth's surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air
+alt	is_a	attribute	environment field
+aminopept_act	is_a	attribute	core field
+ammonium	is_a	attribute	core field
+amount_light	is_a	attribute	core field
+ances_data	is_a	attribute	core field
+ances_data	range	text value	string
+annual_precpt	is_a	attribute	core field
+annual_temp	is_a	attribute	core field
+antibiotic_regm	is_a	attribute	core field
+antibiotic_regm	multivalued	False	True
+antibiotic_regm	range	quantity value	string
+api	description	API gravity is a measure of how heavy or light a petroleum liquid is compared to water (source: https://en.wikipedia.org/wiki/API_gravity) (e.g. 31.1B0 API) 	API gravity is a measure of how heavy or light a petroleum liquid is compared to water (source: https://en.wikipedia.org/wiki/API_gravity) (e.g. 31.1¬∞ API)
+api	is_a	attribute	core field
+arch_struc	is_a	attribute	core field
+arch_struc	range	text value	arch_struc_enum
+aromatics_pc	description	Saturate, Aromatic, Resin and AsphalteneB (SARA) is an analysis method that dividesB crude oilB components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)	Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis method that divides¬†crude oil¬†components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)
+aromatics_pc	is_a	attribute	core field
+aromatics_pc	range	quantity value	string
+asphaltenes_pc	description	Saturate, Aromatic, Resin and AsphalteneB (SARA) is an analysis method that dividesB crude oilB components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)	Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis method that divides¬†crude oil¬†components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)
+asphaltenes_pc	is_a	attribute	core field
+asphaltenes_pc	range	quantity value	string
+atmospheric_data	is_a	attribute	core field
+atmospheric_data	multivalued	False	True
+atmospheric_data	range	quantity value	string
+avg_dew_point	is_a	attribute	core field
+avg_occup	description	Daily average  occupancy of room	Daily average occupancy of room. Indicate the number of person(s) daily occupying the sampling room.
+avg_occup	is_a	attribute	core field
+avg_occup	range	text value	double
+avg_temp	is_a	attribute	core field
+bac_prod	is_a	attribute	core field
+bac_resp	is_a	attribute	core field
+bacteria_carb_prod	is_a	attribute	core field
+barometric_press	is_a	attribute	core field
+basin	is_a	attribute	core field
+basin	range	text value	string
+bathroom_count	is_a	attribute	core field
+bathroom_count	range	text value	integer
+bedroom_count	is_a	attribute	core field
+bedroom_count	range	text value	integer
+benzene	is_a	attribute	core field
+biochem_oxygen_dem	is_a	attribute	core field
+biocide	is_a	attribute	core field
+biocide	range	text value	string
+biocide_admin_method	is_a	attribute	core field
+biocide_admin_method	range	quantity value	string
+biol_stat	description	The level of genome modification	The level of genome modification.
+biol_stat	is_a	attribute	core field
+biol_stat	range	text value	biol_stat_enum
+biomass	is_a	attribute	core field
+biomass	multivalued	False	True
+biomass	range	quantity value	string
+biotic_regm	is_a	attribute	core field
+biotic_regm	range	text value	string
+biotic_relationship	is_a	attribute	nucleic acid sequence source field
+biotic_relationship	range	text value	biotic_relationship_enum
+bishomohopanol	description	Concentration of bishomohopanol 	Concentration of bishomohopanol
+bishomohopanol	is_a	attribute	core field
+bromide	description	Concentration of bromide 	Concentration of bromide
+bromide	is_a	attribute	core field
+build_docs	is_a	attribute	core field
+build_docs	range	text value	build_docs_enum
+build_occup_type	is_a	attribute	core field
+build_occup_type	multivalued	False	True
+build_occup_type	range	text value	build_occup_type_enum
+building_setting	is_a	attribute	core field
+building_setting	range	text value	building_setting_enum
+built_struc_age	is_a	attribute	core field
+built_struc_set	is_a	attribute	core field
+built_struc_set	range	text value	string
+built_struc_type	is_a	attribute	core field
+built_struc_type	range	text value	string
+calcium	is_a	attribute	core field
+carb_dioxide	is_a	attribute	core field
+carb_monoxide	is_a	attribute	core field
+carb_nitro_ratio	is_a	attribute	core field
+ceil_area	is_a	attribute	core field
+ceil_cond	is_a	attribute	core field
+ceil_cond	range	text value	ceil_cond_enum
+ceil_finish_mat	is_a	attribute	core field
+ceil_finish_mat	range	text value	ceil_finish_mat_enum
+ceil_struc	is_a	attribute	core field
+ceil_struc	range	text value	string
+ceil_texture	is_a	attribute	core field
+ceil_texture	range	text value	ceil_texture_enum
+ceil_thermal_mass	is_a	attribute	core field
+ceil_type	is_a	attribute	core field
+ceil_type	range	text value	ceil_type_enum
+ceil_water_mold	is_a	attribute	core field
+ceil_water_mold	range	text value	string
+chem_administration	is_a	attribute	core field
+chem_administration	multivalued	False	True
+chem_administration	range	controlled term value	string
+chem_mutagen	is_a	attribute	core field
+chem_mutagen	multivalued	False	True
+chem_mutagen	range	quantity value	string
+chem_oxygen_dem	is_a	attribute	core field
+chem_treatment	description	List of chemical compounds administered upstream the sampling location where sampling occurred (e.g. Glycols, H2S scavenger, corrosion and scale inhibitors, demulsifiers, and other production chemicals etc.). The commercial name of the product and name of the supplier should be provided.  The date of administration should also be included	List of chemical compounds administered upstream the sampling location where sampling occurred (e.g. Glycols, H2S scavenger, corrosion and scale inhibitors, demulsifiers, and other production chemicals etc.). The commercial name of the product and name of the supplier should be provided. The date of administration should also be included
+chem_treatment	is_a	attribute	core field
+chem_treatment	range	text value	string
+chloride	is_a	attribute	core field
+chlorophyll	is_a	attribute	core field
+climate_environment	is_a	attribute	core field
+climate_environment	multivalued	False	True
+climate_environment	range	text value	string
+collection_date	is_a	attribute	environment field
+collection_date	range	timestamp value	date
+conduc	is_a	attribute	core field
+cool_syst_id	is_a	attribute	core field
+cool_syst_id	range	text value	integer
+crop_rotation	is_a	attribute	core field
+crop_rotation	range	text value	string
+cult_root_med	is_a	attribute	core field
+cult_root_med	range	text value	string
+cur_land_use	is_a	attribute	core field
+cur_land_use	range	text value	cur_land_use_enum
+cur_vegetation	is_a	attribute	core field
+cur_vegetation	range	text value	string
+cur_vegetation_meth	description	Reference or method used in vegetation classification 	Reference or method used in vegetation classification
+cur_vegetation_meth	is_a	attribute	core field
+cur_vegetation_meth	range	text value	string
+date_last_rain	is_a	attribute	core field
+date_last_rain	range	timestamp value	date
+density	is_a	attribute	core field
+depos_env	description	Main depositional environment (https://en.wikipedia.org/wiki/Depositional_environment). If 'other' is specified, please propose entry in 'additional info' field	"Main depositional environment (https://en.wikipedia.org/wiki/Depositional_environment). If ""other"" is specified, please propose entry in ""additional info"" field"
+depos_env	is_a	attribute	core field
+depos_env	range	text value	depos_env_enum
+depth	description	Depth is defined as the vertical distance below local surface, e.g. For sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples	The vertical distance below local surface, e.g. for sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples.
+depth	is_a	attribute	environment field
+dew_point	is_a	attribute	core field
+diether_lipids	is_a	attribute	core field
+diether_lipids	multivalued	False	True
+diether_lipids	range	quantity value	string
+diss_carb_dioxide	is_a	attribute	core field
+diss_hydrogen	is_a	attribute	core field
+diss_inorg_carb	is_a	attribute	core field
+diss_inorg_nitro	description	Concentration of dissolved inorganic nitrogen 	Concentration of dissolved inorganic nitrogen
+diss_inorg_nitro	is_a	attribute	core field
+diss_inorg_phosp	is_a	attribute	core field
+diss_iron	is_a	attribute	core field
+diss_org_carb	is_a	attribute	core field
+diss_org_nitro	is_a	attribute	core field
+diss_oxygen	is_a	attribute	core field
+diss_oxygen_fluid	is_a	attribute	core field
+door_comp_type	is_a	attribute	core field
+door_comp_type	range	text value	door_comp_type_enum
+door_cond	is_a	attribute	core field
+door_cond	range	text value	door_cond_enum
+door_direct	is_a	attribute	core field
+door_direct	range	text value	door_direct_enum
+door_loc	is_a	attribute	core field
+door_loc	range	text value	door_loc_enum
+door_mat	is_a	attribute	core field
+door_mat	range	text value	door_mat_enum
+door_move	is_a	attribute	core field
+door_move	range	text value	door_move_enum
+door_size	is_a	attribute	core field
+door_type	is_a	attribute	core field
+door_type	range	text value	door_type_enum
+door_type_metal	is_a	attribute	core field
+door_type_metal	range	text value	door_type_metal_enum
+door_type_wood	is_a	attribute	core field
+door_type_wood	range	text value	door_type_wood_enum
+door_water_mold	is_a	attribute	core field
+door_water_mold	range	text value	string
+down_par	is_a	attribute	core field
+drainage_class	is_a	attribute	core field
+drainage_class	range	text value	drainage_class_enum
+drawings	is_a	attribute	core field
+drawings	range	text value	drawings_enum
+efficiency_percent	is_a	attribute	core field
+elev	description	Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit	Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit.
+elev	is_a	attribute	environment field
+elevator	is_a	attribute	core field
+elevator	range	text value	integer
+emulsions	is_a	attribute	core field
+emulsions	multivalued	False	True
+emulsions	range	quantity value	string
+env_broad_scale	description	In this field, report which major environmental system your sample or specimen came from. The systems identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. were you in the desert or a rainforest?). We recommend using subclasses of ENVOUs biome class: http://purl.obolibrary.org/obo/ENVO_00000428. Format (one term): termLabel [termID], Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a water sample from the photic zone in middle of the Atlantic Ocean, consider: oceanic epipelagic zone biome [ENVO:01000033]. Example: Annotating a sample from the Amazon rainforest consider: tropical moist broadleaf forest biome [ENVO:01000228]. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html	Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO’s biome class:  http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS
+env_broad_scale	is_a	attribute	environment field
+env_broad_scale	range	controlled term value	string
+env_local_scale	description	In this field, report the entity or entities which are in your sample or specimenUs local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale. Format (one term): termLabel [termID]; Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a pooled sample taken from various vegetation layers in a forest consider: canopy [ENVO:00000047]|herb and fern layer [ENVO:01000337]|litter layer [ENVO:01000338]|understory [01000335]|shrub layer [ENVO:01000336]. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html	Report the entity or entities which are in the sample or specimen’s local vicinity and which you believe have significant causal influences on your sample or specimen. We recommend using EnvO terms which are of smaller spatial grain than your entry for env_broad_scale. Terms, such as anatomical sites, from other OBO Library ontologies which interoperate with EnvO (e.g. UBERON) are accepted in this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.
+env_local_scale	is_a	attribute	environment field
+env_local_scale	range	controlled term value	string
+env_medium	description	In this field, report which environmental material or materials (pipe separated) immediately surrounded your sample or specimen prior to sampling, using one or more subclasses of ENVOUs environmental material class: http://purl.obolibrary.org/obo/ENVO_00010483. Format (one term): termLabel [termID]; Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a fish swimming in the upper 100 m of the Atlantic Ocean, consider: ocean water [ENVO:00002151]. Example: Annotating a duck on a pond consider: pond water [ENVO:00002228]|air ENVO_00002005. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html	Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top).
+env_medium	is_a	attribute	environment field
+env_medium	range	controlled term value	string
+escalator	is_a	attribute	core field
+escalator	range	text value	integer
+ethylbenzene	is_a	attribute	core field
+exp_duct	is_a	attribute	core field
+exp_pipe	is_a	attribute	core field
+exp_pipe	range	quantity value	integer
+experimental_factor	is_a	attribute	investigation field
+experimental_factor	range	controlled term value	string
+ext_door	is_a	attribute	core field
+ext_door	range	text value	integer
+ext_wall_orient	is_a	attribute	core field
+ext_wall_orient	range	text value	ext_wall_orient_enum
+ext_window_orient	is_a	attribute	core field
+ext_window_orient	range	text value	ext_window_orient_enum
+extreme_event	is_a	attribute	core field
+extreme_event	range	timestamp value	date
+fao_class	is_a	attribute	core field
+fao_class	range	text value	fao_class_enum
+fertilizer_regm	is_a	attribute	core field
+fertilizer_regm	multivalued	False	True
+fertilizer_regm	range	quantity value	string
+field	is_a	attribute	core field
+field	range	text value	string
+filter_type	is_a	attribute	core field
+filter_type	multivalued	False	True
+filter_type	range	text value	filter_type_enum
+fire	is_a	attribute	core field
+fire	range	timestamp value	date
+fireplace_type	is_a	attribute	core field
+fireplace_type	range	text value	string
+flooding	is_a	attribute	core field
+flooding	range	timestamp value	date
+floor_age	is_a	attribute	core field
+floor_area	is_a	attribute	core field
+floor_cond	is_a	attribute	core field
+floor_cond	range	text value	floor_cond_enum
+floor_count	is_a	attribute	core field
+floor_count	range	text value	integer
+floor_finish_mat	is_a	attribute	core field
+floor_finish_mat	range	text value	floor_finish_mat_enum
+floor_struc	is_a	attribute	core field
+floor_struc	range	text value	floor_struc_enum
+floor_thermal_mass	is_a	attribute	core field
+floor_water_mold	is_a	attribute	core field
+floor_water_mold	range	text value	floor_water_mold_enum
+fluor	is_a	attribute	core field
+freq_clean	description	The number of times the building is cleaned per week	The number of times the sample location is cleaned. Frequency of cleaning might be on a Daily basis, Weekly, Monthly, Quarterly or Annually.
+freq_clean	is_a	attribute	core field
+freq_clean	range	quantity value	freq_clean_enum
+freq_cook	is_a	attribute	core field
+freq_cook	range	quantity value	integer
+fungicide_regm	description	Information about treatment involving use of fungicides; should include the name of fungicide, amount administered,  treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fungicide regimens	Information about treatment involving use of fungicides; should include the name of fungicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fungicide regimens
+fungicide_regm	is_a	attribute	core field
+fungicide_regm	multivalued	False	True
+fungicide_regm	range	quantity value	string
+furniture	is_a	attribute	core field
+furniture	range	text value	furniture_enum
+gaseous_environment	is_a	attribute	core field
+gaseous_environment	multivalued	False	True
+gaseous_environment	range	quantity value	string
+gaseous_substances	is_a	attribute	core field
+gaseous_substances	multivalued	False	True
+gaseous_substances	range	quantity value	string
+gender_restroom	is_a	attribute	core field
+gender_restroom	range	text value	gender_restroom_enum
+genetic_mod	is_a	attribute	core field
+genetic_mod	range	text value	string
+geo_loc_name	description	The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (v 1.512) (http://purl.bioontology.org/ontology/GAZ)	The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)
+geo_loc_name	is_a	attribute	environment field
+geo_loc_name	range	text value	string
+glucosidase_act	is_a	attribute	core field
+gravidity	is_a	attribute	core field
+gravidity	range	text value	string
+gravity	is_a	attribute	core field
+gravity	multivalued	False	True
+gravity	range	quantity value	string
+growth_facil	is_a	attribute	core field
+growth_facil	range	controlled term value	string
+growth_habit	is_a	attribute	core field
+growth_habit	range	text value	growth_habit_enum
+growth_hormone_regm	is_a	attribute	core field
+growth_hormone_regm	multivalued	False	True
+growth_hormone_regm	range	quantity value	string
+hall_count	is_a	attribute	core field
+hall_count	range	text value	integer
+handidness	is_a	attribute	core field
+handidness	range	text value	handidness_enum
+hc_produced	description	Main hydrocarbon type produced from resource (i.e. Oil, gas, condensate, etc). If 'other' is specified, please propose entry in 'additional info' field	"Main hydrocarbon type produced from resource (i.e. Oil, gas, condensate, etc). If ""other"" is specified, please propose entry in ""additional info"" field"
+hc_produced	is_a	attribute	core field
+hc_produced	range	text value	hc_produced_enum
+hcr	description	Main Hydrocarbon Resource type. The term 'Hydrocarbon Resource' HCR defined as a natural environmental feature containing large amounts of hydrocarbons at high concentrations potentially suitable for commercial exploitation.  This term should not be confused with the Hydrocarbon Occurrence term which also includes hydrocarbon-rich environments with currently limited commercial interest such as seeps, outcrops, gas hydrates etc. If 'other' is specified, please propose entry in 'additional info' field	"Main Hydrocarbon Resource type. The term ""Hydrocarbon Resource"" HCR defined as a natural environmental feature containing large amounts of hydrocarbons at high concentrations potentially suitable for commercial exploitation. This term should not be confused with the Hydrocarbon Occurrence term which also includes hydrocarbon-rich environments with currently limited commercial interest such as seeps, outcrops, gas hydrates etc. If ""other"" is specified, please propose entry in ""additional info"" field"
+hcr	is_a	attribute	core field
+hcr	range	text value	hcr_enum
+hcr_fw_salinity	is_a	attribute	core field
+hcr_geol_age	description	Geological age of hydrocarbon resource (Additional info: https://en.wikipedia.org/wiki/Period_(geology)). If 'other' is specified, please propose entry in 'additional info' field	"Geological age of hydrocarbon resource (Additional info: https://en.wikipedia.org/wiki/Period_(geology)). If ""other"" is specified, please propose entry in ""additional info"" field"
+hcr_geol_age	is_a	attribute	core field
+hcr_geol_age	range	text value	hcr_geol_age_enum
+hcr_pressure	description	Original pressure of the hydrocarbon resource 	Original pressure of the hydrocarbon resource
+hcr_pressure	is_a	attribute	core field
+hcr_pressure	range	quantity value	string
+hcr_temp	is_a	attribute	core field
+hcr_temp	range	quantity value	string
+heat_cool_type	is_a	attribute	core field
+heat_cool_type	multivalued	False	True
+heat_cool_type	range	text value	heat_cool_type_enum
+heat_deliv_loc	is_a	attribute	core field
+heat_deliv_loc	range	text value	heat_deliv_loc_enum
+heat_system_id	is_a	attribute	core field
+heat_system_id	range	text value	integer
+heavy_metals	description	Heavy metals present and concentrationsany drug used by subject and the frequency of usage; can include multiple heavy metals and concentrations	Heavy metals present in the sequenced sample and their concentrations. For multiple heavy metals and concentrations, add multiple copies of this field.
+heavy_metals	is_a	attribute	core field
+heavy_metals	multivalued	False	True
+heavy_metals	range	quantity value	string
+heavy_metals_meth	is_a	attribute	core field
+heavy_metals_meth	range	text value	string
+height_carper_fiber	is_a	attribute	core field
+herbicide_regm	is_a	attribute	core field
+herbicide_regm	multivalued	False	True
+herbicide_regm	range	quantity value	string
+horizon_meth	is_a	attribute	core field
+horizon_meth	range	text value	string
+host_age	is_a	attribute	core field
+host_body_habitat	is_a	attribute	core field
+host_body_habitat	range	text value	string
+host_body_product	is_a	attribute	core field
+host_body_product	range	controlled term value	string
+host_body_site	is_a	attribute	core field
+host_body_site	range	controlled term value	string
+host_body_temp	is_a	attribute	core field
+host_color	is_a	attribute	core field
+host_color	range	text value	string
+host_common_name	description	Common name of the host, e.g. Human	Common name of the host.
+host_common_name	is_a	attribute	core field
+host_common_name	range	text value	string
+host_diet	is_a	attribute	core field
+host_diet	multivalued	False	True
+host_diet	range	text value	string
+host_dry_mass	is_a	attribute	core field
+host_genotype	is_a	attribute	core field
+host_genotype	range	text value	string
+host_growth_cond	is_a	attribute	core field
+host_growth_cond	range	text value	string
+host_height	is_a	attribute	core field
+host_last_meal	is_a	attribute	core field
+host_last_meal	multivalued	False	True
+host_last_meal	range	text value	string
+host_length	is_a	attribute	core field
+host_life_stage	is_a	attribute	core field
+host_life_stage	range	text value	string
+host_phenotype	is_a	attribute	core field
+host_phenotype	range	controlled term value	string
+host_sex	description	Physical sex of the host	Gender or physical sex of the host.
+host_sex	is_a	attribute	core field
+host_sex	range	text value	host_sex_enum
+host_shape	description	Morphological shape of host 	Morphological shape of host
+host_shape	is_a	attribute	core field
+host_shape	range	text value	string
+host_subject_id	description	A unique identifier by which each subject can be referred to, de-identified, e.g. #131	A unique identifier by which each subject can be referred to, de-identified.
+host_subject_id	is_a	attribute	core field
+host_subject_id	range	text value	string
+host_substrate	description	The growth substrate of the host 	The growth substrate of the host.
+host_substrate	is_a	attribute	core field
+host_substrate	range	text value	string
+host_taxid	is_a	attribute	core field
+host_taxid	range	text value	string
+host_tot_mass	is_a	attribute	core field
+host_wet_mass	is_a	attribute	core field
+humidity	is_a	attribute	core field
+humidity_regm	is_a	attribute	core field
+humidity_regm	multivalued	False	True
+humidity_regm	range	quantity value	string
+indoor_space	is_a	attribute	core field
+indoor_space	range	text value	indoor_space_enum
+indoor_surf	is_a	attribute	core field
+indoor_surf	range	text value	indoor_surf_enum
+indust_eff_percent	is_a	attribute	core field
+inorg_particles	is_a	attribute	core field
+inorg_particles	multivalued	False	True
+inorg_particles	range	quantity value	string
+inside_lux	is_a	attribute	core field
+int_wall_cond	is_a	attribute	core field
+int_wall_cond	range	text value	int_wall_cond_enum
+iw_bt_date_well	description	Injection water breakthrough date per well following a  secondary and/or tertiary recovery	Injection water breakthrough date per well following a secondary and/or tertiary recovery
+iw_bt_date_well	is_a	attribute	core field
+iw_bt_date_well	range	timestamp value	date
+iwf	is_a	attribute	core field
+last_clean	is_a	attribute	core field
+last_clean	range	timestamp value	date
+lat_lon	is_a	attribute	environment field
+lat_lon	range	geolocation value	string
+light_intensity	is_a	attribute	core field
+light_regm	is_a	attribute	core field
+light_regm	range	quantity value	string
+light_type	is_a	attribute	core field
+light_type	multivalued	False	True
+light_type	range	text value	light_type_enum
+link_class_info	is_a	attribute	core field
+link_class_info	range	text value	string
+link_climate_info	is_a	attribute	core field
+link_climate_info	range	text value	string
+lithology	description	Hydrocarbon resource main lithology (Additional information: http://petrowiki.org/Lithology_and_rock_type_determination). If 'other' is specified, please propose entry in 'additional info' field	"Hydrocarbon resource main lithology (Additional information: http://petrowiki.org/Lithology_and_rock_type_determination). If ""other"" is specified, please propose entry in ""additional info"" field"
+lithology	is_a	attribute	core field
+lithology	range	text value	lithology_enum
+local_class	is_a	attribute	core field
+local_class	range	text value	string
+local_class_meth	description	Reference or method used in determining the local soil classification 	Reference or method used in determining the local soil classification
+local_class_meth	is_a	attribute	core field
+local_class_meth	range	text value	string
+magnesium	is_a	attribute	core field
+max_occup	is_a	attribute	core field
+max_occup	range	quantity value	integer
+mean_frict_vel	is_a	attribute	core field
+mean_peak_frict_vel	is_a	attribute	core field
+mech_struc	is_a	attribute	core field
+mech_struc	range	text value	mech_struc_enum
+mechanical_damage	is_a	attribute	core field
+mechanical_damage	multivalued	False	True
+mechanical_damage	range	text value	string
+methane	is_a	attribute	core field
+microbial_biomass	is_a	attribute	core field
+mineral_nutr_regm	is_a	attribute	core field
+mineral_nutr_regm	multivalued	False	True
+mineral_nutr_regm	range	quantity value	string
+misc_param	is_a	attribute	core field
+misc_param	multivalued	False	True
+misc_param	range	quantity value	string
+n_alkanes	is_a	attribute	core field
+n_alkanes	multivalued	False	True
+n_alkanes	range	quantity value	string
+nitrate	is_a	attribute	core field
+nitrite	is_a	attribute	core field
+nitro	is_a	attribute	core field
+number_pets	is_a	attribute	core field
+number_pets	range	quantity value	integer
+number_plants	is_a	attribute	core field
+number_plants	range	quantity value	integer
+number_resident	is_a	attribute	core field
+number_resident	range	quantity value	integer
+occup_density_samp	is_a	attribute	core field
+occup_density_samp	range	quantity value	double
+occup_document	is_a	attribute	core field
+occup_document	range	text value	occup_document_enum
+occup_samp	is_a	attribute	core field
+occup_samp	range	quantity value	integer
+org_carb	is_a	attribute	core field
+org_matter	description	Concentration of organic matter 	Concentration of organic matter
+org_matter	is_a	attribute	core field
+org_nitro	is_a	attribute	core field
+org_particles	is_a	attribute	core field
+org_particles	multivalued	False	True
+org_particles	range	quantity value	string
+organism_count	is_a	attribute	core field
+organism_count	multivalued	False	True
+organism_count	range	quantity value	organism_count_enum
+owc_tvdss	is_a	attribute	core field
+oxy_stat_samp	is_a	attribute	core field
+oxy_stat_samp	range	text value	oxy_stat_samp_enum
+oxygen	is_a	attribute	core field
+part_org_carb	is_a	attribute	core field
+part_org_nitro	is_a	attribute	core field
+particle_class	is_a	attribute	core field
+particle_class	multivalued	False	True
+particle_class	range	quantity value	string
+permeability	is_a	attribute	core field
+permeability	range	quantity value	string
+perturbation	is_a	attribute	core field
+perturbation	multivalued	False	True
+perturbation	range	text value	string
+pesticide_regm	is_a	attribute	core field
+pesticide_regm	multivalued	False	True
+pesticide_regm	range	quantity value	string
+petroleum_hydrocarb	is_a	attribute	core field
+ph	is_a	attribute	core field
+ph	range	quantity value	double
+ph_meth	is_a	attribute	core field
+ph_meth	range	text value	string
+ph_regm	is_a	attribute	core field
+ph_regm	multivalued	False	True
+ph_regm	range	text value	string
+phaeopigments	is_a	attribute	core field
+phaeopigments	multivalued	False	True
+phaeopigments	range	quantity value	string
+phosphate	is_a	attribute	core field
+phosplipid_fatt_acid	is_a	attribute	core field
+phosplipid_fatt_acid	multivalued	False	True
+phosplipid_fatt_acid	range	quantity value	string
+photon_flux	is_a	attribute	core field
+plant_growth_med	is_a	attribute	core field
+plant_growth_med	range	controlled term value	plant_growth_med_enum
+plant_product	is_a	attribute	core field
+plant_product	range	text value	string
+plant_sex	is_a	attribute	core field
+plant_sex	range	text value	plant_sex_enum
+plant_struc	is_a	attribute	core field
+plant_struc	range	controlled term value	string
+pollutants	is_a	attribute	core field
+pollutants	multivalued	False	True
+pollutants	range	quantity value	string
+porosity	is_a	attribute	core field
+porosity	range	quantity value	string
+potassium	is_a	attribute	core field
+pour_point	description	Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a highB pour pointB is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material.  (soure: https://en.wikipedia.org/wiki/pour_point)	Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a high¬†pour point¬†is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material. (soure: https://en.wikipedia.org/wiki/pour_point)
+pour_point	is_a	attribute	core field
+pre_treatment	is_a	attribute	core field
+pre_treatment	range	text value	string
+pressure	is_a	attribute	core field
+previous_land_use	is_a	attribute	core field
+previous_land_use	range	text value	string
+primary_prod	is_a	attribute	core field
+primary_treatment	is_a	attribute	core field
+primary_treatment	range	text value	string
+prod_rate	is_a	attribute	core field
+prod_start_date	is_a	attribute	core field
+prod_start_date	range	timestamp value	date
+profile_position	is_a	attribute	core field
+profile_position	range	text value	profile_position_enum
+quad_pos	is_a	attribute	core field
+quad_pos	range	text value	quad_pos_enum
+radiation_regm	is_a	attribute	core field
+radiation_regm	multivalued	False	True
+radiation_regm	range	quantity value	string
+rainfall_regm	is_a	attribute	core field
+rainfall_regm	multivalued	False	True
+rainfall_regm	range	quantity value	string
+reactor_type	is_a	attribute	core field
+reactor_type	range	text value	string
+redox_potential	is_a	attribute	core field
+rel_air_humidity	is_a	attribute	core field
+rel_humidity_out	is_a	attribute	core field
+rel_samp_loc	is_a	attribute	core field
+rel_samp_loc	range	text value	rel_samp_loc_enum
+rel_to_oxygen	is_a	attribute	nucleic acid sequence source field
+rel_to_oxygen	range	text value	rel_to_oxygen_enum
+reservoir	is_a	attribute	core field
+reservoir	range	text value	string
+resins_pc	description	Saturate, Aromatic, Resin and AsphalteneB (SARA) is an analysis method that dividesB crude oilB components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)	Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis method that divides¬†crude oil¬†components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)
+resins_pc	is_a	attribute	core field
+resins_pc	range	quantity value	string
+room_air_exch_rate	is_a	attribute	core field
+room_condt	is_a	attribute	core field
+room_condt	range	text value	room_condt_enum
+room_connected	is_a	attribute	core field
+room_connected	range	text value	room_connected_enum
+room_count	is_a	attribute	core field
+room_count	range	text value	integer
+room_dim	is_a	attribute	core field
+room_dim	range	quantity value	string
+room_door_dist	is_a	attribute	core field
+room_door_dist	range	quantity value	string
+room_door_share	is_a	attribute	core field
+room_door_share	range	text value	string
+room_hallway	is_a	attribute	core field
+room_hallway	range	text value	string
+room_loc	is_a	attribute	core field
+room_loc	range	text value	room_loc_enum
+room_net_area	is_a	attribute	core field
+room_net_area	range	quantity value	string
+room_occup	is_a	attribute	core field
+room_occup	range	quantity value	integer
+room_samp_pos	is_a	attribute	core field
+room_samp_pos	range	text value	room_samp_pos_enum
+room_type	is_a	attribute	core field
+room_type	range	text value	room_type_enum
+room_vol	is_a	attribute	core field
+room_vol	range	quantity value	string
+room_wall_share	is_a	attribute	core field
+room_wall_share	range	text value	string
+room_window_count	is_a	attribute	core field
+room_window_count	range	text value	integer
+root_cond	is_a	attribute	core field
+root_cond	range	text value	string
+root_med_carbon	is_a	attribute	core field
+root_med_carbon	range	quantity value	string
+root_med_macronutr	description	Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S); e.g. KH2PO4 (170B mg/L).	Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S); e.g. KH2PO4 (170¬†mg/L).
+root_med_macronutr	is_a	attribute	core field
+root_med_macronutr	range	quantity value	string
+root_med_micronutr	description	Measurement of the culture rooting medium micronutrients (Fe, Mn, Zn, B, Cu, Mo); e.g. H3BO3 (6.2B mg/L).	Measurement of the culture rooting medium micronutrients (Fe, Mn, Zn, B, Cu, Mo); e.g. H3BO3 (6.2¬†mg/L).
+root_med_micronutr	is_a	attribute	core field
+root_med_micronutr	range	quantity value	string
+root_med_ph	is_a	attribute	core field
+root_med_ph	range	quantity value	double
+root_med_regl	description	Growth regulators in the culture rooting medium such as cytokinins, auxins, gybberellins, abscisic acid; e.g. 0.5B mg/L NAA.	Growth regulators in the culture rooting medium such as cytokinins, auxins, gybberellins, abscisic acid; e.g. 0.5¬†mg/L NAA.
+root_med_regl	is_a	attribute	core field
+root_med_regl	range	quantity value	string
+root_med_solid	is_a	attribute	core field
+root_med_solid	range	text value	string
+root_med_suppl	description	Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics activated charcoal; e.g. nicotinic acid (0.5B mg/L).	Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics activated charcoal; e.g. nicotinic acid (0.5¬†mg/L).
+root_med_suppl	is_a	attribute	core field
+root_med_suppl	range	quantity value	string
+salinity	description	Salinity is the total concentration of all dissolved salts in a water sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater	The total concentration of all dissolved salts in a liquid or solid sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater.
+salinity	is_a	attribute	core field
+salinity_meth	is_a	attribute	core field
+salinity_meth	range	text value	string
+salt_regm	is_a	attribute	core field
+salt_regm	multivalued	False	True
+salt_regm	range	quantity value	string
+samp_capt_status	is_a	attribute	core field
+samp_capt_status	range	text value	samp_capt_status_enum
+samp_dis_stage	is_a	attribute	core field
+samp_dis_stage	range	text value	samp_dis_stage_enum
+samp_floor	is_a	attribute	core field
+samp_floor	range	text value	samp_floor_enum
+samp_loc_corr_rate	is_a	attribute	core field
+samp_loc_corr_rate	range	quantity value	string
+samp_mat_process	description	Any processing applied to the sample during or after retrieving the sample from environment. This field accepts OBI, for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI	A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed.
+samp_mat_process	is_a	attribute	nucleic acid sequence source field
+samp_mat_process	range	controlled term value	string
+samp_md	description	In non deviated well, measured depth is equal to the true vertical depth, TVD (TVD=TVDSS plus the reference or datum it refers to). In deviated wells, the MD is the length of trajectory of the borehole measured from the same reference or datum. Common datums used are ground level (GL), drilling rig floor (DF), rotary table (RT), kelly bushing (KB) and mean sea level (MSL). If 'other' is specified, please propose entry in 'additional info' field	"In non deviated well, measured depth is equal to the true vertical depth, TVD (TVD=TVDSS plus the reference or datum it refers to). In deviated wells, the MD is the length of trajectory of the borehole measured from the same reference or datum. Common datums used are ground level (GL), drilling rig floor (DF), rotary table (RT), kelly bushing (KB) and mean sea level (MSL). If ""other"" is specified, please propose entry in ""additional info"" field"
+samp_md	is_a	attribute	core field
+samp_md	range	quantity value	samp_md_enum
+samp_preserv	is_a	attribute	core field
+samp_preserv	range	quantity value	string
+samp_room_id	is_a	attribute	core field
+samp_room_id	range	text value	integer
+samp_size	description	Amount or size of sample (volume, mass or area) that was collected	The total amount or size (volume (ml), mass (g) or area (m2) ) of sample collected.
+samp_size	is_a	attribute	nucleic acid sequence source field
+samp_sort_meth	is_a	attribute	core field
+samp_sort_meth	multivalued	False	True
+samp_sort_meth	range	text value	string
+samp_store_dur	is_a	attribute	core field
+samp_store_dur	range	text value	string
+samp_store_loc	is_a	attribute	core field
+samp_store_loc	range	text value	string
+samp_store_temp	is_a	attribute	core field
+samp_subtype	description	Name of sample sub-type. For example if 'sample type' is 'Produced Water' then subtype could be 'Oil Phase' or 'Water Phase'. If 'other' is specified, please propose entry in 'additional info' field	"Name of sample sub-type. For example if ""sample type"" is ""Produced Water"" then subtype could be ""Oil Phase"" or ""Water Phase"". If ""other"" is specified, please propose entry in ""additional info"" field"
+samp_subtype	is_a	attribute	core field
+samp_subtype	range	text value	samp_subtype_enum
+samp_time_out	is_a	attribute	core field
+samp_time_out	range	text value	double
+samp_transport_cond	description	Sample transport duration (in days or hrs) and temperature the sample was exposed to (e.g. 5.5 days; 20 B0C)	Sample transport duration (in days or hrs) and temperature the sample was exposed to (e.g. 5.5 days; 20 ¬∞C)
+samp_transport_cond	is_a	attribute	core field
+samp_transport_cond	range	quantity value	string
+samp_tvdss	is_a	attribute	core field
+samp_tvdss	range	quantity value	string
+samp_type	description	Type of material (i.e. sample) collected. Includes types like core, rock trimmings, drill cuttings, piping section, coupon, pigging debris, solid deposit, produced fluid, produced water, injected water, swabs, etc. If 'other' is specified, please propose entry in 'additional info' field	The type of material from which the sample was obtained. For the Hydrocarbon package, samples include types like core, rock trimmings, drill cuttings, piping section, coupon, pigging debris, solid deposit, produced fluid, produced water, injected water, swabs, etc. For the Food Package, samples are usually categorized as food, body products or tissues, or environmental material. This field accepts terms listed under environmental specimen (http://purl.obolibrary.org/obo/GENEPIO_0001246).
+samp_type	is_a	attribute	core field
+samp_type	range	text value	string
+samp_weather	is_a	attribute	core field
+samp_weather	range	text value	samp_weather_enum
+samp_well_name	is_a	attribute	core field
+samp_well_name	range	text value	string
+saturates_pc	description	Saturate, Aromatic, Resin and AsphalteneB (SARA) is an analysis method that dividesB crude oilB components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)	Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis method that divides¬†crude oil¬†components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)
+saturates_pc	is_a	attribute	core field
+saturates_pc	range	quantity value	string
+season	description	The season when sampling occurred	The season when sampling occurred. Any of the four periods into which the year is divided by the equinoxes and solstices. This field accepts terms listed under season (http://purl.obolibrary.org/obo/NCIT_C94729).
+season	is_a	attribute	core field
+season	range	text value	string
+season_environment	is_a	attribute	core field
+season_environment	multivalued	False	True
+season_environment	range	text value	string
+season_precpt	is_a	attribute	core field
+season_temp	is_a	attribute	core field
+season_use	is_a	attribute	core field
+season_use	range	text value	season_use_enum
+secondary_treatment	description	The process for substantially degrading the biological content of the sewage 	The process for substantially degrading the biological content of the sewage
+secondary_treatment	is_a	attribute	core field
+secondary_treatment	range	text value	string
+sediment_type	is_a	attribute	core field
+sediment_type	range	text value	sediment_type_enum
+sewage_type	is_a	attribute	core field
+sewage_type	range	text value	string
+shading_device_cond	is_a	attribute	core field
+shading_device_cond	range	text value	shading_device_cond_enum
+shading_device_loc	is_a	attribute	core field
+shading_device_loc	range	text value	string
+shading_device_mat	is_a	attribute	core field
+shading_device_mat	range	text value	string
+shading_device_type	is_a	attribute	core field
+shading_device_type	range	text value	shading_device_type_enum
+sieving	description	Collection design of pooled samples and/or sieve size and amount of sample sieved 	Collection design of pooled samples and/or sieve size and amount of sample sieved
+sieving	is_a	attribute	core field
+sieving	range	quantity value	string
+silicate	is_a	attribute	core field
+size_frac	is_a	attribute	nucleic acid sequence source field
+size_frac	range	quantity value	string
+size_frac_low	is_a	attribute	core field
+size_frac_up	is_a	attribute	core field
+slope_aspect	is_a	attribute	core field
+slope_gradient	is_a	attribute	core field
+sludge_retent_time	is_a	attribute	core field
+sodium	is_a	attribute	core field
+soil_type	description	Soil series name or other lower-level classification	Description of the soil type or classification. This field accepts terms under soil (http://purl.obolibrary.org/obo/ENVO_00001998).  Multiple terms can be separated by pipes.
+soil_type	is_a	attribute	core field
+soil_type	range	text value	string
+soil_type_meth	is_a	attribute	core field
+soil_type_meth	range	text value	string
+solar_irradiance	is_a	attribute	core field
+soluble_inorg_mat	is_a	attribute	core field
+soluble_inorg_mat	multivalued	False	True
+soluble_inorg_mat	range	quantity value	string
+soluble_org_mat	is_a	attribute	core field
+soluble_org_mat	multivalued	False	True
+soluble_org_mat	range	quantity value	string
+soluble_react_phosp	is_a	attribute	core field
+source_mat_id	is_a	attribute	nucleic acid sequence source field
+source_mat_id	range	text value	string
+space_typ_state	is_a	attribute	core field
+space_typ_state	range	text value	string
+specific	is_a	attribute	core field
+specific	range	text value	specific_enum
+specific_humidity	is_a	attribute	core field
+sr_dep_env	description	Source rock depositional environment (https://en.wikipedia.org/wiki/Source_rock). If 'other' is specified, please propose entry in 'additional info' field	"Source rock depositional environment (https://en.wikipedia.org/wiki/Source_rock). If ""other"" is specified, please propose entry in ""additional info"" field"
+sr_dep_env	is_a	attribute	core field
+sr_dep_env	range	text value	sr_dep_env_enum
+sr_geol_age	description	Geological age of source rock (Additional info: https://en.wikipedia.org/wiki/Period_(geology)). If 'other' is specified, please propose entry in 'additional info' field	"Geological age of source rock (Additional info: https://en.wikipedia.org/wiki/Period_(geology)). If ""other"" is specified, please propose entry in ""additional info"" field"
+sr_geol_age	is_a	attribute	core field
+sr_geol_age	range	text value	sr_geol_age_enum
+sr_kerog_type	description	Origin of kerogen. Type I: Algal (aquatic), Type II: planktonic and soft plant material (aquatic or terrestrial), Type III: terrestrial woody/ fibrous plant material (terrestrial), Type IV: oxidized recycled woody debris (terrestrial) (additional information: https://en.wikipedia.org/wiki/Kerogen). If 'other' is specified, please propose entry in 'additional info' field	"Origin of kerogen. Type I: Algal (aquatic), Type II: planktonic and soft plant material (aquatic or terrestrial), Type III: terrestrial woody/ fibrous plant material (terrestrial), Type IV: oxidized recycled woody debris (terrestrial) (additional information: https://en.wikipedia.org/wiki/Kerogen). If ""other"" is specified, please propose entry in ""additional info"" field"
+sr_kerog_type	is_a	attribute	core field
+sr_kerog_type	range	text value	sr_kerog_type_enum
+sr_lithology	description	Lithology of source rock (https://en.wikipedia.org/wiki/Source_rock). If 'other' is specified, please propose entry in 'additional info' field	"Lithology of source rock (https://en.wikipedia.org/wiki/Source_rock). If ""other"" is specified, please propose entry in ""additional info"" field"
+sr_lithology	is_a	attribute	core field
+sr_lithology	range	text value	sr_lithology_enum
+standing_water_regm	is_a	attribute	core field
+standing_water_regm	multivalued	False	True
+standing_water_regm	range	text value	string
+store_cond	description	Explain how and for how long the soil sample was stored before DNA extraction	Explain how and for how long the soil sample was stored before DNA extraction (fresh/frozen/other).
+store_cond	is_a	attribute	core field
+store_cond	range	text value	string
+substructure_type	is_a	attribute	core field
+substructure_type	multivalued	False	True
+substructure_type	range	text value	substructure_type_enum
+sulfate	is_a	attribute	core field
+sulfate_fw	is_a	attribute	core field
+sulfide	is_a	attribute	core field
+surf_air_cont	is_a	attribute	core field
+surf_air_cont	multivalued	False	True
+surf_air_cont	range	text value	surf_air_cont_enum
+surf_humidity	is_a	attribute	core field
+surf_material	is_a	attribute	core field
+surf_material	range	text value	surf_material_enum
+surf_moisture	is_a	attribute	core field
+surf_moisture_ph	is_a	attribute	core field
+surf_moisture_ph	range	quantity value	double
+surf_temp	is_a	attribute	core field
+suspend_part_matter	is_a	attribute	core field
+suspend_solids	is_a	attribute	core field
+suspend_solids	multivalued	False	True
+suspend_solids	range	quantity value	string
+tan	description	Total Acid NumberB (TAN) is a measurement of acidity that is determined by the amount ofB potassium hydroxideB in milligrams that is needed to neutralize the acids in one gram of oil.B It is an important quality measurement ofB crude oil. (source: https://en.wikipedia.org/wiki/Total_acid_number)	Total Acid Number¬†(TAN) is a measurement of acidity that is determined by the amount of¬†potassium hydroxide¬†in milligrams that is needed to neutralize the acids in one gram of oil.¬†It is an important quality measurement of¬†crude oil. (source: https://en.wikipedia.org/wiki/Total_acid_number)
+tan	is_a	attribute	core field
+temp	description	Temperature of the sample at the time of sampling	Temperature of the sample at the time of sampling.
+temp	is_a	attribute	environment field
+temp_out	is_a	attribute	core field
+tertiary_treatment	is_a	attribute	core field
+tertiary_treatment	range	text value	string
+tidal_stage	is_a	attribute	core field
+tidal_stage	range	text value	tidal_stage_enum
+tillage	is_a	attribute	core field
+tillage	multivalued	False	True
+tillage	range	text value	tillage_enum
+tiss_cult_growth_med	is_a	attribute	core field
+tiss_cult_growth_med	range	text value	string
+toluene	is_a	attribute	core field
+tot_carb	is_a	attribute	core field
+tot_depth_water_col	is_a	attribute	core field
+tot_diss_nitro	is_a	attribute	core field
+tot_inorg_nitro	is_a	attribute	core field
+tot_iron	is_a	attribute	core field
+tot_nitro	is_a	attribute	core field
+tot_nitro_content	is_a	attribute	core field
+tot_org_c_meth	is_a	attribute	core field
+tot_org_c_meth	range	text value	string
+tot_org_carb	is_a	attribute	core field
+tot_part_carb	is_a	attribute	core field
+tot_phosp	is_a	attribute	core field
+tot_phosphate	is_a	attribute	core field
+tot_sulfur	is_a	attribute	core field
+train_line	is_a	attribute	core field
+train_line	range	text value	train_line_enum
+train_stat_loc	is_a	attribute	core field
+train_stat_loc	range	text value	train_stat_loc_enum
+train_stop_loc	is_a	attribute	core field
+train_stop_loc	range	text value	train_stop_loc_enum
+turbidity	is_a	attribute	core field
+tvdss_of_hcr_temp	description	True vertical depth subsea (TVDSS) of the hydrocarbon resource where the original temperature was measured (e.g. 1345 m)	True vertical depth subsea (TVDSS) of the hydrocarbon resource where the original temperature was measured (e.g. 1345 m).
+tvdss_of_hcr_temp	is_a	attribute	core field
+typ_occup_density	is_a	attribute	core field
+typ_occup_density	range	quantity value	double
+ventilation_rate	is_a	attribute	core field
+ventilation_type	is_a	attribute	core field
+ventilation_type	range	text value	string
+vfa	is_a	attribute	core field
+vfa_fw	is_a	attribute	core field
+vis_media	is_a	attribute	core field
+vis_media	range	text value	vis_media_enum
+viscosity	description	A measure of oil's resistanceB to gradual deformation byB shear stressB orB tensile stress (e.g. 3.5 cp;  100 B0C)	A measure of oil's resistance¬†to gradual deformation by¬†shear stress¬†or¬†tensile stress (e.g. 3.5 cp; 100 ¬∞C)
+viscosity	is_a	attribute	core field
+viscosity	range	quantity value	string
+volatile_org_comp	is_a	attribute	core field
+volatile_org_comp	multivalued	False	True
+volatile_org_comp	range	quantity value	string
+wall_area	is_a	attribute	core field
+wall_const_type	is_a	attribute	core field
+wall_const_type	range	text value	wall_const_type_enum
+wall_finish_mat	description	The material utilized to finish the outer most layer of the wall 	The material utilized to finish the outer most layer of the wall
+wall_finish_mat	is_a	attribute	core field
+wall_finish_mat	range	text value	wall_finish_mat_enum
+wall_height	is_a	attribute	core field
+wall_loc	is_a	attribute	core field
+wall_loc	range	text value	wall_loc_enum
+wall_surf_treatment	is_a	attribute	core field
+wall_surf_treatment	range	text value	wall_surf_treatment_enum
+wall_texture	is_a	attribute	core field
+wall_texture	range	text value	wall_texture_enum
+wall_thermal_mass	is_a	attribute	core field
+wall_water_mold	is_a	attribute	core field
+wall_water_mold	range	text value	string
+wastewater_type	is_a	attribute	core field
+wastewater_type	range	text value	string
+water_content	is_a	attribute	core field
+water_current	is_a	attribute	core field
+water_cut	is_a	attribute	core field
+water_feat_size	is_a	attribute	core field
+water_feat_type	is_a	attribute	core field
+water_feat_type	range	text value	water_feat_type_enum
+water_temp_regm	is_a	attribute	core field
+water_temp_regm	multivalued	False	True
+water_temp_regm	range	quantity value	string
+watering_regm	is_a	attribute	core field
+watering_regm	multivalued	False	True
+watering_regm	range	quantity value	string
+weekday	is_a	attribute	core field
+weekday	range	text value	weekday_enum
+win	is_a	attribute	core field
+win	range	text value	string
+wind_direction	is_a	attribute	core field
+wind_direction	range	text value	string
+wind_speed	is_a	attribute	core field
+window_cond	is_a	attribute	core field
+window_cond	range	text value	window_cond_enum
+window_cover	is_a	attribute	core field
+window_cover	range	text value	window_cover_enum
+window_horiz_pos	is_a	attribute	core field
+window_horiz_pos	range	text value	window_horiz_pos_enum
+window_loc	is_a	attribute	core field
+window_loc	range	text value	window_loc_enum
+window_mat	is_a	attribute	core field
+window_mat	range	text value	window_mat_enum
+window_open_freq	is_a	attribute	core field
+window_open_freq	range	text value	integer
+window_size	is_a	attribute	core field
+window_size	range	quantity value	string
+window_status	is_a	attribute	core field
+window_status	range	text value	string
+window_type	is_a	attribute	core field
+window_type	range	text value	window_type_enum
+window_vert_pos	is_a	attribute	core field
+window_vert_pos	range	text value	window_vert_pos_enum
+window_water_mold	is_a	attribute	core field
+window_water_mold	range	text value	string
+xylene	is_a	attribute	core field
