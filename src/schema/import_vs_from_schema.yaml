@@ -1,0 +1,7 @@
+name: import_vs_from_schema
+id: http://example.com/import_vs_from_schema
+imports:
+- mixs_6_for_nmdc
+prefixes:
+  nmdc: https://microbiomedata/meta/
+default_prefix: nmdc
