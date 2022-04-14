@@ -1,11 +1,15 @@
-import pprint
-
 import pandas as pd
 import yaml
 from deepdiff import DeepDiff
 
 old_file = "../src/schema/mixs.yaml"
 new_file = "../src/schema/mixs_6_for_nmdc.yaml"
+
+tsv_out = "../reports/slot.tsv"
+
+anno_tsv_out = "../reports/slot_annotations_diffs.tsv"
+
+slot_diff_yaml_out = "../reports/slot_diffs.yaml"
 
 
 def y_file_to_dict(y_file_name):
@@ -26,17 +30,19 @@ def get_slots_diff(deep_diff_obj, delta_type):
         current_path = current_dds.path(output_format="list")
         # print(current_path)
         if (
-            len(current_path) == 3
-            and current_path[0] == "slots"
-            and current_path[2] == "name"
+                len(current_path) == 3
+                and current_path[0] == "slots"
+                and current_path[2] == "name"
         ):
             slots_diff.add(current_path[1])
         if len(current_path) == 2 and current_path[0] == "slots":
             slots_diff.add(current_path[1])
+    slots_diff = list(slots_diff)
+    slots_diff.sort()
     return slots_diff
 
 
-def get_is_a_diff(deep_diff_obj, tsv_file_name):
+def get_anno_diffs(deep_diff_obj, tsv_file_name):
     lod = []
     vc = deep_diff_obj["values_changed"]
     for current_vc in vc:
@@ -64,9 +70,12 @@ mixs_diff = DeepDiff(old_dict, new_dict, view="tree")
 # # dict_keys(['dictionary_item_removed', 'dictionary_item_added', 'values_changed'])
 
 added_diff = get_slots_diff(mixs_diff, "added")
-pprint.pprint(added_diff)
 
 removed_diff = get_slots_diff(mixs_diff, "removed")
-pprint.pprint(removed_diff)
 
-get_is_a_diff(mixs_diff, "../reports/attribute_diffs.tsv")
+slots_diff = {"added": added_diff, "removed": removed_diff}
+
+with open(slot_diff_yaml_out, "w") as outfile:
+    yaml.dump(slots_diff, outfile, default_flow_style=False)
+
+get_anno_diffs(mixs_diff, anno_tsv_out)
