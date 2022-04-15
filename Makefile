@@ -230,3 +230,7 @@ validate-%: test/data/%.json jsonschema/nmdc.schema.json
 
 validate-invalid-%: test/data/invalid_schemas/%.json jsonschema/nmdc.schema.json
 	! $(RUN) jsonschema -i $< $(word 2, $^)
+
+SHEETSPEC = src/sheets/export_spec.tsv
+sheets/nmdc.sheets.tsv: src/schema/nmdc.yaml $(SHEETSPEC)
+	$(RUN) linkml2sheets -s $< $(SHEETSPEC) -o $@ 

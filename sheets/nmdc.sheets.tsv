@@ -1,0 +1,943 @@
+Class	Field	Description	Range
+	ess dive datasets	List of ESS-DIVE dataset DOIs	
+	has credit associations	This slot links a study to a credit association.  The credit association will be linked to a person value and to a CRediT Contributor Roles term. Overall semantics: person should get credit X for their participation in the study	credit association
+	study image	Links a study to one or more images.	image value
+	relevant protocols		string
+	funding sources		string
+	applied role		credit enum
+	applied roles		credit enum
+	applies to person		person value
+	object set	Applies to a property that links a database object to a set of objects. This is necessary in a json document to provide context for a list, and to allow for a single json object that combines multiple object types	
+	biosample set	This property links a database object to the set of samples within it.	biosample
+	study set	This property links a database object to the set of studies within it.	study
+	data object set	This property links a database object to the set of data objects within it.	data object
+	genome feature set	This property links a database object to the set of all features	genome feature
+	functional annotation set	This property links a database object to the set of all functional annotations	functional annotation
+	activity set	This property links a database object to the set of workflow activities.	workflow execution activity
+	mags activity set	This property links a database object to the set of MAGs analysis activities.	MAGs analysis activity
+	metabolomics analysis activity set	This property links a database object to the set of metabolomics analysis activities.	metabolomics analysis activity
+	metaproteomics analysis activity set	This property links a database object to the set of metaproteomics analysis activities.	metaproteomics analysis activity
+	metagenome annotation activity set	This property links a database object to the set of metagenome annotation activities.	metagenome annotation activity
+	metagenome assembly set	This property links a database object to the set of metagenome assembly activities.	metagenome assembly
+	metatranscriptome activity set	This property links a database object to the set of metatranscriptome analysis activities.	metatranscriptome activity
+	read QC analysis activity set	This property links a database object to the set of read QC analysis activities.	read QC analysis activity
+	read based analysis activity set	"This property links a database object to the set of read based analysis activities.
+  "	read based analysis activity
+	nom analysis activity set	This property links a database object to the set of natural organic matter (NOM) analysis activities.	nom analysis activity
+	omics processing set	This property links a database object to the set of omics processings within it.	omics processing
+	omics type	The type of omics data	controlled term value
+	data object type	The type of file represented by the data object.	file type enum
+	compression type	If provided, specifies the compression type	string
+	instrument_name	"The name of the instrument that was used for processing the sample.
+   "	
+	gold_path_field	This is a grouping for any of the gold path fields          	string
+	ecosystem	An ecosystem is a combination of a physical environment (abiotic factors) and all the organisms (biotic factors) that interact with this environment. Ecosystem is in position 1/5 in a GOLD path.	
+	ecosystem_category	Ecosystem categories represent divisions within the ecosystem based on specific characteristics of the environment from where an organism or sample is isolated. Ecosystem category is in position 2/5 in a GOLD path.	
+	ecosystem_type	Ecosystem types represent things having common characteristics within the Ecosystem Category. These common characteristics based grouping is still broad but specific to the characteristics of a given environment. Ecosystem type is in position 3/5 in a GOLD path.	
+	ecosystem_subtype	Ecosystem subtypes represent further subdivision of Ecosystem types into more distinct subtypes. Ecosystem subtype is in position 4/5 in a GOLD path.	
+	specific_ecosystem	Specific ecosystems represent specific features of the environment like aphotic zone in an ocean or gastric mucosa within a host digestive system. Specific ecosystem is in position 5/5 in a GOLD path.	
+	principal investigator	Principal Investigator who led the study and/or generated the dataset.	person value
+	doi		attribute value
+	add_date	The date on which the information was added to the database.	string
+	mod_date	The last date on which the database information was modified.	string
+	ecosystem_path_id	A unique id representing the GOLD classifers associated with a sample.	string
+	habitat		string
+	location		string
+	community		string
+	ncbi_taxonomy_name		string
+	ncbi_project_name		string
+	sample_collection_site		string
+	identifier		string
+	sample_collection_year		integer
+	sample_collection_month		integer
+	sample_collection_day		integer
+	sample_collection_hour		integer
+	sample_collection_minute		integer
+	salinity_category	Categorcial description of the sample's salinity. Examples: halophile, halotolerant, hypersaline, huryhaline	string
+	soluble_iron_micromol		string
+	host_name		string
+	depth2		quantity value
+	subsurface_depth		quantity value
+	subsurface_depth2		quantity value
+	proport_woa_temperature		string
+	biogas_temperature		string
+	soil_annual_season_temp		string
+	biogas_retention_time		string
+	processing_institution	The organization that processed the sample.	string
+	omics_type		string
+	completion_date		string
+	external database identifiers	Link to corresponding identifier in external database	external identifier
+	GOLD identifiers		
+	MGnify identifiers		
+	INSDC identifiers	Any identifier covered by the International Nucleotide Sequence Database Collaboration	
+	study identifiers		
+	INSDC SRA ENA study identifiers	identifiers for corresponding project in INSDC SRA / ENA	
+	INSDC bioproject identifiers	identifiers for corresponding project in INSDC Bioproject	
+	GOLD study identifiers	identifiers for corresponding project in GOLD	
+	MGnify project identifiers	identifiers for corresponding project in MGnify	
+	sample identifiers		
+	GOLD sample identifiers	identifiers for corresponding sample in GOLD	
+	INSDC biosample identifiers	identifiers for corresponding sample in INSDC	
+	INSDC secondary sample identifiers	secondary identifiers for corresponding sample in INSDC	
+	omics processing identifiers		
+	GOLD sequencing project identifiers	identifiers for corresponding sequencing project in GOLD	
+	INSDC experiment identifiers		
+	analysis identifiers		
+	GOLD analysis project identifiers	identifiers for corresponding analysis project in GOLD	
+	INSDC analysis identifiers		
+	MGnify analysis identifiers		
+	assembly identifiers		
+	INSDC assembly identifiers		
+	language	"Should use ISO 639-1 code e.g. ""en"", ""fr"""	language code
+	attribute	A attribute of a biosample. Examples: depth, habitat, material. For NMDC, attributes SHOULD be mapped to terms within a MIxS template	
+	has raw value	"The value that was specified for an annotation in raw form, i.e. a string. E.g. ""2 cm"" or ""2-4 cm"""	string
+	has unit	Links a quantity value to a unit	unit
+	has numeric value	Links a quantity value to a number	float
+	has minimum numeric value	The minimum value part, expressed as number, of the quantity value when the value covers a range.	
+	has maximum numeric value	The maximum value part, expressed as number, of the quantity value when the value covers a range.	
+	has boolean value	Links a quantity value to a boolean	boolean
+	latitude	latitude	decimal degree
+	longitude	longitude	decimal degree
+	term	pointer to an ontology class	ontology class
+	orcid	The ORICD of a person.	string
+	email	An email address for an entity such as a person. This should be the primarly email address used.	string
+	alternate emails	One or more other email addresses for an entity.	string
+	profile image url	A url that points to an image of a person.	string
+	has input	An input to a process.	named thing
+	has output	An output biosample to a processing step	named thing
+	part of	Links a resource to another resource that either logically or physically includes it.	named thing
+	execution resource	Example: NERSC-Cori	
+	url		string
+	display order	When rendering information, this attribute to specify the order in which the information should be rendered.	
+	git url	Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1	string
+	file size bytes	Size of the file in bytes	bytes
+	md5 checksum	MD5 checksum of file (pre-compressed)	string
+	abstract	The abstract of manuscript/grant associated with the entity; i.e., a summary of the resource.	string
+	keywords	A list of keywords that used to associate the entity. Keywords SHOULD come from controlled vocabularies, including MESH, ENVO.	string
+	objective	The scientific objectives associated with the entity. It SHOULD correspond to scientific norms for objectives field in a structured abstract.	string
+	websites	A list of websites that are assocatiated with the entity.	string
+	publications	A list of publications that are assocatiated with the entity. The publicatons SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.	string
+	started at time		datetime
+	ended at time		datetime
+	was informed by		activity
+	was associated with		agent
+	acted on behalf of		agent
+	was generated by		activity
+	used		
+	id	A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI	
+	name	A human readable label for an entity	string
+	description	a human-readable description of a thing	string
+	type	An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.	string
+	title	A name given to the entity that differs from the name/label programatically assigned to it. For example, when extracting study information for GOLD, the GOLD system has assigned a name/label. However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.	string
+	alternative titles	A list of alternative titles for the entity. The distinction between title and alternative titles is application-specific.	string
+	alternative names	A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.	string
+	alternative descriptions	A list of alternative descriptions for the entity. The distinction between desciption and alternative descriptions is application-specific.	string
+	alternative identifiers	A list of alternative identifiers for the entity.	string
+	subject		gene product
+	has function		string
+	has participants		
+	gff coordinate	A positive 1-based integer coordinate indicating start or end	integer
+	metagenome assembly parameter		
+	asm_score	A score for comparing metagenomic assembly quality from same sample.	float
+	scaffolds	Total sequence count of all scaffolds.	float
+	scaf_logsum	The sum of the (length*log(length)) of all scaffolds, times some constant.  Increase the contiguity, the score will increase	float
+	scaf_powsum	Powersum of all scaffolds is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25).	float
+	scaf_max	Maximum scaffold length.	float
+	scaf_bp	Total size in bp of all scaffolds.	float
+	scaf_N50	Given a set of scaffolds, each with its own length, the N50 count is defined as the smallest number of scaffolds whose length sum makes up half of genome size.	float
+	scaf_N90	Given a set of scaffolds, each with its own length, the N90 count is defined as the smallest number of scaffolds whose length sum makes up 90% of genome size.	float
+	scaf_L50	Given a set of scaffolds, the L50 is defined as the sequence length of the shortest scaffold at 50% of the total genome length.	float
+	scaf_L90	The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all scaffolds of that length or longer contains at least 90% of the sum of the lengths of all scaffolds.	float
+	scaf_n_gt50K	Total sequence count of scaffolds greater than 50 KB.	float
+	scaf_l_gt50K	Total size in bp of all scaffolds greater than 50 KB.	float
+	scaf_pct_gt50K	Total sequence size percentage of scaffolds greater than 50 KB.	float
+	contigs	The sum of the (length*log(length)) of all contigs, times some constant.  Increase the contiguity, the score will increase	float
+	contig_bp	Total size in bp of all contigs.	float
+	ctg_N50	Given a set of contigs, each with its own length, the N50 count is defined as the smallest number of contigs whose length sum makes up half of genome size.	float
+	ctg_L50	Given a set of contigs, the L50 is defined as the sequence length of the shortest contig at 50% of the total genome length.	float
+	ctg_N90	Given a set of contigs, each with its own length, the N90 count is defined as the smallest number of contigs whose length sum makes up 90% of genome size.	float
+	ctg_L90	The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all contigs of that length or longer contains at least 90% of the sum of the lengths of all contigs.	float
+	ctg_logsum	Maximum contig length.	float
+	ctg_powsum	Powersum of all contigs is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25).	float
+	ctg_max	Maximum contig length.	float
+	gap_pct	The gap size percentage of all scaffolds.	float
+	gc_std	Standard deviation of GC content of all contigs.	float
+	gc_avg	Average of GC content of all contigs.	float
+	num_input_reads	The sequence count number of input reads for assembly.	float
+	num_aligned_reads	The sequence count number of input reads aligned to assembled contigs.	float
+	read QC analysis statistic		
+	mags list		MAG bin
+	too short contig num		integer
+	binned contig num		integer
+	input contig num		integer
+	unbinned contig num		integer
+	lowDepth contig num		integer
+	input read count	The sequence count number of input reads for QC analysis.	float
+	input base count	The nucleotide base count number of input reads for QC analysis.	float
+	output read count	After QC analysis sequence count number. 	float
+	output base count	After QC analysis nucleotide base count number.	float
+	submitted_to_insdc	Depending on the study (large-scale e.g. done with next generation sequencing technology, or small-scale) sequences have to be submitted to SRA (Sequence Read Archive), DRA (DDBJ Read Archive) or via the classical Webin/Sequin systems to Genbank, ENA and DDBJ. Although this field is mandatory, it is meant as a self-test field, therefore it is not necessary to include this field in contextual data submitted to databases	boolean value
+	investigation_type	Nucleic Acid Sequence Report is the root element of all MIGS/MIMS compliant reports as standardized by Genomic Standards Consortium. This field is either eukaryote,bacteria,virus,plasmid,organelle, metagenome,mimarks-survey, mimarks-specimen, metatranscriptome, single amplified genome, metagenome-assembled genome, or uncultivated viral genome	text value
+	project_name	Name of the project within which the sequencing was organized	text value
+	experimental_factor	Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms, please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI	controlled term value
+	lat_lon	The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees and in WGS84 system	geolocation value
+	depth	Depth is defined as the vertical distance below local surface, e.g. For sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples	quantity value
+	alt	Altitude is a term used to identify heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earthbs surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air	quantity value
+	elev	Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit	quantity value
+	geo_loc_name	The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (v 1.512) (http://purl.bioontology.org/ontology/GAZ)	text value
+	collection_date	The time of sampling, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant	timestamp value
+	env_broad_scale	In this field, report which major environmental system your sample or specimen came from. The systems identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. were you in the desert or a rainforest?). We recommend using subclasses of ENVOUs biome class: http://purl.obolibrary.org/obo/ENVO_00000428. Format (one term): termLabel [termID], Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a water sample from the photic zone in middle of the Atlantic Ocean, consider: oceanic epipelagic zone biome [ENVO:01000033]. Example: Annotating a sample from the Amazon rainforest consider: tropical moist broadleaf forest biome [ENVO:01000228]. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html	controlled term value
+	env_local_scale	In this field, report the entity or entities which are in your sample or specimenUs local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale. Format (one term): termLabel [termID]; Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a pooled sample taken from various vegetation layers in a forest consider: canopy [ENVO:00000047]|herb and fern layer [ENVO:01000337]|litter layer [ENVO:01000338]|understory [01000335]|shrub layer [ENVO:01000336]. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html	controlled term value
+	env_medium	In this field, report which environmental material or materials (pipe separated) immediately surrounded your sample or specimen prior to sampling, using one or more subclasses of ENVOUs environmental material class: http://purl.obolibrary.org/obo/ENVO_00010483. Format (one term): termLabel [termID]; Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a fish swimming in the upper 100 m of the Atlantic Ocean, consider: ocean water [ENVO:00002151]. Example: Annotating a duck on a pond consider: pond water [ENVO:00002228]|air ENVO_00002005. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html	controlled term value
+	env_package	MIxS extension for reporting of measurements and observations obtained from one or more of the environments where the sample was obtained. All environmental packages listed here are further defined in separate subtables. By giving the name of the environmental package, a selection of fields can be made from the subtables and can be reported	text value
+	subspecf_gen_lin	This should provide further information about the genetic distinctness of the sequenced organism by recording additional information e.g. serovar, serotype, biotype, ecotype, or any relevant genetic typing schemes like Group I plasmid. It can also contain alternative taxonomic information. It should contain both the lineage name, and the lineage rank, i.e. biovar:abc123	text value
+	ploidy	The ploidy level of the genome (e.g. allopolyploid, haploid, diploid, triploid, tetraploid). It has implications for the downstream study of duplicated gene and regions of the genomes (and perhaps for difficulties in assembly). For terms, please select terms listed under class ploidy (PATO:001374) of Phenotypic Quality Ontology (PATO), and for a browser of PATO (v 2018-03-27) please refer to http://purl.bioontology.org/ontology/PATO	controlled term value
+	num_replicons	Reports the number of replicons in a nuclear genome of eukaryotes, in the genome of a bacterium or archaea or the number of segments in a segmented virus. Always applied to the haploid chromosome count of a eukaryote	text value
+	extrachrom_elements	Do plasmids exist of significant phenotypic consequence (e.g. ones that determine virulence or antibiotic resistance). Megaplasmids? Other plasmids (borrelia has 15+ plasmids)	text value
+	estimated_size	The estimated size of the genome prior to sequencing. Of particular importance in the sequencing of (eukaryotic) genome which could remain in draft form for a long or unspecified period.	text value
+	ref_biomaterial	Primary publication if isolated before genome publication; otherwise, primary genome report	text value
+	source_mat_id	A unique identifier assigned to a material sample (as defined by http://rs.tdwg.org/dwc/terms/materialSampleID, and as opposed to a particular digital record of a material sample) used for extracting nucleic acids, and subsequent sequencing. The identifier can refer either to the original material collected or to any derived sub-samples. The INSDC qualifiers /specimen_voucher, /bio_material, or /culture_collection may or may not share the same value as the source_mat_id field. For instance, the /specimen_voucher qualifier and source_mat_id may both contain 'UAM:Herps:14' , referring to both the specimen voucher and sampled tissue with the same identifier. However, the /culture_collection qualifier may refer to a value from an initial culture (e.g. ATCC:11775) while source_mat_id would refer to an identifier from some derived culture from which the nucleic acids were extracted (e.g. xatc123 or ark:/2154/R2).	text value
+	pathogenicity	To what is the entity pathogenic	text value
+	biotic_relationship	Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g., parasite on species X; mutualist with species Y. The target organism is the subject of the relationship, and the other organism(s) is the object	text value
+	specific_host	If there is a host involved, please provide its taxid (or environmental if not actually isolated from the dead or alive host - i.e. a pathogen could be isolated from a swipe of a bench etc) and report whether it is a laboratory or natural host)	text value
+	host_spec_range	The NCBI taxonomy identifier of the specific host if it is known	text value
+	health_disease_stat	Health or disease status of specific host at time of collection	text value
+	trophic_level	Trophic levels are the feeding position in a food chain. Microbes can be a range of producers (e.g. chemolithotroph)	text value
+	propagation	This field is specific to different taxa. For phages: lytic/lysogenic, for plasmids: incompatibility group, for eukaryotes: sexual/asexual (Note: there is the strong opinion to name phage propagation obligately lytic or temperate, therefore we also give this choice	text value
+	encoded_traits	Should include key traits like antibiotic resistance or xenobiotic degradation phenotypes for plasmids, converting genes for phage	text value
+	rel_to_oxygen	Is this organism an aerobe, anaerobe? Please note that aerobic and anaerobic are valid descriptors for microbial environments	text value
+	isol_growth_condt	Publication reference in the form of pubmed ID (pmid), digital object identifier (doi) or url for isolation and growth condition specifications of the organism/material	text value
+	samp_collect_device	The method or device employed for collecting the sample	text value
+	samp_mat_process	Any processing applied to the sample during or after retrieving the sample from environment. This field accepts OBI, for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI	controlled term value
+	size_frac	Filtering pore size used in sample preparation	quantity value
+	samp_size	Amount or size of sample (volume, mass or area) that was collected	quantity value
+	source_uvig	Type of dataset from which the UViG was obtained	text value
+	virus_enrich_appr	List of approaches used to enrich the sample for viruses, if any	text value
+	nucl_acid_ext	A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the material separation to recover the nucleic acid fraction from a sample	text value
+	nucl_acid_amp	A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the enzymatic amplification (PCR, TMA, NASBA) of specific nucleic acids	text value
+	lib_size	Total number of clones in the library prepared for the project	text value
+	lib_reads_seqd	Total number of clones sequenced from the library	text value
+	lib_layout	Specify whether to expect single, paired, or other configuration of reads	text value
+	lib_vector	Cloning vector type(s) used in construction of libraries	text value
+	lib_screen	Specific enrichment or screening methods applied before and/or after creating libraries	text value
+	target_gene	Targeted gene or locus name for marker gene studies	text value
+	target_subfragment	Name of subfragment of a gene or locus. Important to e.g. identify special regions on marker genes like V6 on 16S rRNA	text value
+	pcr_primers	PCR primers that were used to amplify the sequence of the targeted gene, locus or subfragment. This field should contain all the primers used for a single PCR reaction if multiple forward or reverse primers are present in a single PCR reaction. The primer sequence should be reported in uppercase letters	text value
+	mid	Molecular barcodes, called Multiplex Identifiers (MIDs), that are used to specifically tag unique samples in a sequencing run. Sequence should be reported in uppercase letters	text value
+	adapters	Adapters provide priming sequences for both amplification and sequencing of the sample-library fragments. Both adapters should be reported; in uppercase letters	text value
+	pcr_cond	Description of reaction conditions and components of PCR in the form of  'initial denaturation:94degC_1.5min; annealing=...'	text value
+	seq_meth	Sequencing method used; e.g. Sanger, pyrosequencing, ABI-solid	text value
+	seq_quality_check	Indicate if the sequence has been called by automatic systems (none) or undergone a manual editing procedure (e.g. by inspecting the raw data or chromatograms). Applied only for sequences that are not submitted to SRA,ENA or DRA	text value
+	chimera_check	A chimeric sequence, or chimera for short, is a sequence comprised of two or more phylogenetically distinct parent sequences. Chimeras are usually PCR artifacts thought to occur when a prematurely terminated amplicon reanneals to a foreign DNA strand and is copied to completion in the following PCR cycles. The point at which the chimeric sequence changes from one parent to the next is called the breakpoint or conversion point	text value
+	tax_ident	The phylogenetic marker(s) used to assign an organism name to the SAG or MAG	text value
+	assembly_qual	The assembly quality category is based on sets of criteria outlined for each assembly quality category. For MISAG/MIMAG; Finished: Single, validated, contiguous sequence per replicon without gaps or ambiguities with a consensus error rate equivalent to Q50 or better. High Quality Draft:Multiple fragments where gaps span repetitive regions. Presence of the 23S, 16S and 5S rRNA genes and at least 18 tRNAs. Medium Quality Draft:Many fragments with little to no review of assembly other than reporting of standard assembly statistics. Low Quality Draft:Many fragments with little to no review of assembly other than reporting of standard assembly statistics. Assembly statistics include, but are not limited to total assembly size, number of contigs, contig N50/L50, and maximum contig length. For MIUVIG; Finished: Single, validated, contiguous sequence per replicon without gaps or ambiguities, with extensive manual review and editing to annotate putative gene functions and transcriptional units. High-quality draft genome: One or multiple fragments, totaling 3 90% of the expected genome or replicon sequence or predicted complete. Genome fragment(s): One or multiple fragments, totalling < 90% of the expected genome or replicon sequence, or for which no genome size could be estimated	text value
+	assembly_name	Name/version of the assembly provided by the submitter that is used in the genome browsers and in the community	text value
+	assembly_software	Tool(s) used for assembly, including version number and parameters	text value
+	annot	Tool used for annotation, or for cases where annotation was provided by a community jamboree or model organism database rather than by a specific submitter	text value
+	number_contig	Total number of contigs in the cleaned/submitted assembly that makes up a given genome, SAG, MAG, or UViG	text value
+	feat_pred	Method used to predict UViGs features such as ORFs, integration site, etc.	text value
+	ref_db	List of database(s) used for ORF annotation, along with version number and reference to website or publication	text value
+	sim_search_meth	Tool used to compare ORFs with database, along with version and cutoffs used	text value
+	tax_class	Method used for taxonomic classification, along with reference database used, classification rank, and thresholds used to classify new genomes	text value
+	_16s_recover	Can a 16S gene be recovered from the submitted SAG or MAG?	boolean value
+	_16s_recover_software	Tools used for 16S rRNA gene extraction	text value
+	trnas	The total number of tRNAs identified from the SAG or MAG	text value
+	trna_ext_software	Tools used for tRNA identification	text value
+	compl_score	Completeness score is typically based on either the fraction of markers found as compared to a database or the percent of a genome found as compared to a closely related reference genome. High Quality Draft: >90%, Medium Quality Draft: >50%, and Low Quality Draft: < 50% should have the indicated completeness scores	text value
+	compl_software	Tools used for completion estimate, i.e. checkm, anvi'o, busco	text value
+	compl_appr	The approach used to determine the completeness of a given SAG or MAG, which would typically make use of a set of conserved marker genes or a closely related reference genome. For UViG completeness, include reference genome or group used, and contig feature suggesting a complete genome	text value
+	contam_score	The contamination score is based on the fraction of single-copy genes that are observed more than once in a query genome. The following scores are acceptable for; High Quality Draft: < 5%, Medium Quality Draft: < 10%, Low Quality Draft: < 10%. Contamination must be below 5% for a SAG or MAG to be deposited into any of the public databases	text value
+	contam_screen_input	The type of sequence data used as input	text value
+	contam_screen_param	Specific parameters used in the decontamination sofware, such as reference database, coverage, and kmers. Combinations of these parameters may also be used, i.e. kmer and coverage, or reference database and kmer	text value
+	decontam_software	Tool(s) used in contamination screening	text value
+	sort_tech	Method used to sort/isolate cells or particles of interest	text value
+	single_cell_lysis_appr	Method used to free DNA from interior of the cell(s) or particle(s)	text value
+	single_cell_lysis_prot	Name of the kit or standard protocol used for cell(s) or particle(s) lysis	text value
+	wga_amp_appr	Method used to amplify genomic DNA in preparation for sequencing	text value
+	wga_amp_kit	Kit used to amplify genomic DNA in preparation for sequencing	text value
+	bin_param	The parameters that have been applied during the extraction of genomes from metagenomic datasets	text value
+	bin_software	Tool(s) used for the extraction of genomes from metagenomic datasets	text value
+	reassembly_bin	Has an assembly been performed on a genome bin extracted from a metagenomic assembly?	boolean value
+	mag_cov_software	Tool(s) used to determine the genome coverage if coverage is used as a binning parameter in the extraction of genomes from metagenomic datasets	text value
+	vir_ident_software	Tool(s) used for the identification of UViG as a viral genome, software or protocol name  including version number, parameters, and cutoffs used	text value
+	pred_genome_type	Type of genome predicted for the UViG	text value
+	pred_genome_struc	Expected structure of the viral genome	text value
+	detec_type	Type of UViG detection	text value
+	votu_class_appr	Cutoffs and approach used when clustering new UViGs in Rspecies-levelS vOTUs. Note that results from standard 95% ANI / 85% AF clustering should be provided alongside vOTUS defined from another set of thresholds, even if the latter are the ones primarily used during the analysis	text value
+	votu_seq_comp_appr	Tool and thresholds used to compare sequences when computing 'species-level' vOTUs	text value
+	votu_db	Reference database (i.e. sequences not generated as part of the current study) used to cluster new genomes in 'species-level' vOTUs, if any	text value
+	host_pred_appr	Tool or approach used for host prediction	text value
+	host_pred_est_acc	For each tool or approach used for host prediction, estimated false discovery rates should be included, either computed de novo or from the literature	text value
+	mixs_url		text value
+	sop	Standard operating procedures used in assembly and/or annotation of genomes, metagenomes or environmental sequences	text value
+	barometric_press	Force per unit area exerted against a surface by the weight of air above that surface	quantity value
+	carb_dioxide	Carbon dioxide (gas) amount or concentration at the time of sampling	quantity value
+	carb_monoxide	Carbon monoxide (gas) amount or concentration at the time of sampling	quantity value
+	chem_administration	List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi	controlled term value
+	humidity	Amount of water vapour in the air, at the time of sampling	quantity value
+	methane	Methane (gas) amount or concentration at the time of sampling	quantity value
+	misc_param	Any other measurement performed or parameter collected, that is not listed here	quantity value
+	organism_count	Total cell count of any organism (or group of organisms) per gram, volume or area of sample, should include name of organism followed by count. The method that was used for the enumeration (e.g. qPCR, atp, mpn, etc.) Should also be provided. (example: total prokaryotes; 3.5e7 cells per ml; qpcr)	quantity value
+	oxygen	Oxygen (gas) amount or concentration at the time of sampling	quantity value
+	oxy_stat_samp	Oxygenation status of sample	text value
+	perturbation	Type of perturbation, e.g. chemical administration, physical disturbance, etc., coupled with perturbation regimen including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types	text value
+	pollutants	Pollutant types and, amount or concentrations measured at the time of sampling; can report multiple pollutants by entering numeric values preceded by name of pollutant	quantity value
+	resp_part_matter	Concentration of substances that remain suspended in the air, and comprise mixtures of organic and inorganic substances (PM10 and PM2.5); can report multiple PM's by entering numeric values preceded by name of PM	quantity value
+	samp_salinity	Salinity is the total concentration of all dissolved salts in a liquid or solid (in the form of an extract obtained by centrifugation) sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater	quantity value
+	samp_store_dur	Duration for which the sample was stored	text value
+	samp_store_loc	Location at which sample was stored, usually name of a specific freezer/room	text value
+	samp_store_temp	Temperature at which sample was stored, e.g. -80 degree Celsius	quantity value
+	samp_vol_we_dna_ext	Volume (ml), weight (g) of processed sample, or surface area swabbed from sample for DNA extraction	quantity value
+	solar_irradiance	The amount of solar energy that arrives at a specific area of a surface during a specific time interval	quantity value
+	temp	Temperature of the sample at the time of sampling	quantity value
+	ventilation_rate	Ventilation rate of the system in the sampled premises	quantity value
+	ventilation_type	Ventilation system used in the sampled premises	text value
+	volatile_org_comp	Concentration of carbon-based chemicals that easily evaporate at room temperature; can report multiple volatile organic compounds by entering numeric values preceded by name of compound	quantity value
+	wind_direction	Wind direction is the direction from which a wind originates	text value
+	wind_speed	Speed of wind measured at the time of sampling	quantity value
+	surf_material	Surface materials at the point of sampling	text value
+	surf_air_cont	Contaminant identified on surface	text value
+	rel_air_humidity	Partial vapor and air pressure, density of the vapor and air, or by the actual mass of the vapor and air	quantity value
+	abs_air_humidity	Actual mass of water vapor - mh20 - present in the air water vapor mixture	quantity value
+	surf_humidity	Surfaces: water activity as a function of air and material moisture	quantity value
+	air_temp	Temperature of the air at the time of sampling	quantity value
+	surf_temp	Temperature of the surface at the time of sampling	quantity value
+	surf_moisture_ph	ph measurement of surface	quantity value
+	build_occup_type	The primary function for which a building or discrete part of a building is intended to be used	text value
+	surf_moisture	Water held on a surface	quantity value
+	dew_point	The temperature to which a given parcel of humid air must be cooled, at constant barometric pressure, for water vapor to condense into water.	quantity value
+	indoor_space	A distinguishable space within a structure, the purpose for which discrete areas of a building is used	text value
+	indoor_surf	Type of indoor surface	text value
+	filter_type	A device which removes solid particulates or airborne molecular contaminants	text value
+	heat_cool_type	Methods of conditioning or heating a room or building	text value
+	substructure_type	The substructure or under building is that largely hidden section of the building which is built off the foundations to the ground floor level	text value
+	building_setting	A location (geography) where a building is set	text value
+	light_type	Application of light to achieve some practical or aesthetic effect. Lighting includes the use of both artificial light sources such as lamps and light fixtures, as well as natural illumination by capturing daylight. Can also include absence of light	text value
+	samp_sort_meth	Method by which samples are sorted; open face filter collecting total suspended particles, prefilter to remove particles larger than X micrometers in diameter, where common values of X would be 10 and 2.5 full size sorting in a cascade impactor.	text value
+	space_typ_state	Customary or normal state of the space	text value
+	typ_occup_density	Customary or normal density of occupants	quantity value
+	occup_samp	Number of occupants present at time of sample within the given space	quantity value
+	occup_density_samp	Average number of occupants at time of sampling per square footage	quantity value
+	address	The street name and building number where the sampling occurred.	text value
+	adj_room	List of rooms (room number, room name) immediately adjacent to the sampling room	text value
+	aero_struc	Aerospace structures typically consist of thin plates with stiffeners for the external surfaces, bulkheads and frames to support the shape and fasteners such as welds, rivets, screws and bolts to hold the components together	text value
+	amount_light	The unit of illuminance and luminous emittance, measuring luminous flux per unit area	quantity value
+	arch_struc	An architectural structure is a human-made, free-standing, immobile outdoor construction	text value
+	avg_occup	Daily average  occupancy of room	text value
+	avg_dew_point	The average of dew point measures taken at the beginning of every hour over a 24 hour period on the sampling day	quantity value
+	avg_temp	The average of temperatures taken at the beginning of every hour over a 24 hour period on the sampling day	quantity value
+	bathroom_count	The number of bathrooms in the building	text value
+	bedroom_count	The number of bedrooms in the building	text value
+	built_struc_age	The age of the built structure since construction	quantity value
+	built_struc_set	The characterization of the location of the built structure as high or low human density	text value
+	built_struc_type	A physical structure that is a body or assemblage of bodies in space to form a system capable of supporting loads	text value
+	ceil_area	The area of the ceiling space within the room	quantity value
+	ceil_cond	The physical condition of the ceiling at the time of sampling; photos or video preferred; use drawings to indicate location of damaged areas	text value
+	ceil_finish_mat	The type of material used to finish a ceiling	text value
+	ceil_water_mold	Signs of the presence of mold or mildew on the ceiling	text value
+	ceil_struc	The construction format of the ceiling	text value
+	ceil_texture	The feel, appearance, or consistency of a ceiling surface	text value
+	ceil_thermal_mass	The ability of the ceiling to provide inertia against temperature fluctuations. Generally this means concrete that is exposed. A metal deck that supports a concrete slab will act thermally as long as it is exposed to room air flow	quantity value
+	ceil_type	The type of ceiling according to the ceiling's appearance or construction	text value
+	cool_syst_id	The cooling system identifier	text value
+	date_last_rain	The date of the last time it rained	timestamp value
+	build_docs	The building design, construction and operation documents	text value
+	door_size	The size of the door	quantity value
+	door_cond	The phsical condition of the door	text value
+	door_direct	The direction the door opens	text value
+	door_loc	The relative location of the door in the room	text value
+	door_mat	The material the door is composed of	text value
+	door_move	The type of movement of the door	text value
+	door_water_mold	Signs of the presence of mold or mildew on a door	text value
+	door_type	The type of door material	text value
+	door_comp_type	The composite type of the door	text value
+	door_type_metal	The type of metal door	text value
+	door_type_wood	The type of wood door	text value
+	drawings	The buildings architectural drawings; if design is chosen, indicate phase-conceptual, schematic, design development, and construction documents	text value
+	elevator	The number of elevators within the built structure	text value
+	escalator	The number of escalators within the built structure	text value
+	exp_duct	The amount of exposed ductwork in the room	quantity value
+	exp_pipe	The number of exposed pipes in the room	quantity value
+	ext_door	The number of exterior doors in the built structure	text value
+	fireplace_type	A firebox with chimney	text value
+	floor_age	The time period since installment of the carpet or flooring	quantity value
+	floor_area	The area of the floor space within the room	quantity value
+	floor_cond	The physical condition of the floor at the time of sampling; photos or video preferred; use drawings to indicate location of damaged areas	text value
+	floor_count	The number of floors in the building, including basements and mechanical penthouse	text value
+	floor_finish_mat	The floor covering type; the finished surface that is walked on	text value
+	floor_water_mold	Signs of the presence of mold or mildew in a room	text value
+	floor_struc	Refers to the structural elements and subfloor upon which the finish flooring is installed	text value
+	floor_thermal_mass	The ability of the floor to provide inertia against temperature fluctuations	quantity value
+	freq_clean	The number of times the building is cleaned per week	quantity value
+	freq_cook	The number of times a meal is cooked per week	quantity value
+	furniture	The types of furniture present in the sampled room	text value
+	gender_restroom	The gender type of the restroom	text value
+	hall_count	The total count of hallways and cooridors in the built structure	text value
+	handidness	The handidness of the individual sampled	text value
+	heat_deliv_loc	The location of heat delivery within the room	text value
+	heat_system_deliv_meth	The method by which the heat is delivered through the system	text value
+	heat_system_id	The heating system identifier	text value
+	height_carper_fiber	The average carpet fiber height in the indoor environment	quantity value
+	inside_lux	The recorded value at sampling time (power density)	quantity value
+	int_wall_cond	The physical condition of the wall at the time of sampling; photos or video preferred; use drawings to indicate location of damaged areas	text value
+	last_clean	The last time the floor was cleaned (swept, mopped, vacuumed)	timestamp value
+	max_occup	The maximum amount of people allowed in the indoor environment	quantity value
+	mech_struc	mechanical structure: a moving structure	text value
+	number_plants	The number of plant(s) in the sampling space	quantity value
+	number_pets	The number of pets residing in the sampled space	quantity value
+	number_resident	The number of individuals currently occupying in the sampling location	quantity value
+	occup_document	The type of documentation of occupancy	text value
+	ext_wall_orient	The orientation of the exterior wall	text value
+	ext_window_orient	The compass direction the exterior window of the room is facing	text value
+	rel_humidity_out	The recorded outside relative humidity value at the time of sampling	quantity value
+	pres_animal	The number and type of animals present in the sampling space	text value
+	quad_pos	The quadrant position of the sampling room within the building	text value
+	rel_samp_loc	The sampling location within the train car	text value
+	room_air_exch_rate	The rate at which outside air replaces indoor air in a given space	quantity value
+	room_architec_element	The unique details and component parts that, together, form the architecture of a distinguisahable space within a built structure	text value
+	room_condt	The condition of the room at the time of sampling	text value
+	room_count	The total count of rooms in the built structure including all room types	text value
+	room_dim	The length, width and height of sampling room	quantity value
+	room_door_dist	Distance between doors (meters) in the hallway between the sampling room and adjacent rooms	quantity value
+	room_loc	The position of the room within the building	text value
+	room_moist_damage_hist	The history of moisture damage or mold in the past 12 months. Number of events of moisture damage or mold observed	text value
+	room_net_area	The net floor area of sampling room. Net area excludes wall thicknesses	quantity value
+	room_occup	Count of room occupancy at time of sampling	quantity value
+	room_samp_pos	The horizontal sampling position in the room relative to architectural elements	text value
+	room_type	The main purpose or activity of the sampling room. A room is any distinguishable space within a structure	text value
+	room_vol	Volume of sampling room	quantity value
+	room_window_count	Number of windows in the room	text value
+	room_connected	List of rooms connected to the sampling room by a doorway	text value
+	room_hallway	List of room(s) (room number, room name) located in the same hallway as sampling room	text value
+	room_door_share	List of room(s) (room number, room name) sharing a door with the sampling room	text value
+	room_wall_share	List of room(s) (room number, room name) sharing a wall with the sampling room	text value
+	samp_weather	The weather on the sampling day	text value
+	samp_floor	The floor of the building, where the sampling room is located	text value
+	samp_room_id	Sampling room number. This ID should be consistent with the designations on the building floor plans	text value
+	samp_time_out	The recent and long term history of outside sampling	text value
+	season	The season when sampling occurred	text value
+	season_use	The seasons the space is occupied	text value
+	shading_device_cond	The physical condition of the shading device at the time of sampling	text value
+	shading_device_loc	The location of the shading device in relation to the built structure	text value
+	shading_device_mat	The material the shading device is composed of	text value
+	shading_device_water_mold	Signs of the presence of mold or mildew on the shading device	text value
+	shading_device_type	The type of shading device	text value
+	specific_humidity	The mass of water vapour in a unit mass of moist air, usually expressed as grams of vapour per kilogram of air, or, in air conditioning, as grains per pound.	quantity value
+	specific	The building specifications. If design is chosen, indicate phase: conceptual, schematic, design development, construction documents	text value
+	temp_out	The recorded temperature value at sampling time outside	quantity value
+	train_line	The subway line name	text value
+	train_stat_loc	The train station collection location	text value
+	train_stop_loc	The train stop collection location	text value
+	vis_media	The building visual media	text value
+	wall_area	The total area of the sampled room's walls	quantity value
+	wall_const_type	The building class of the wall defined by the composition of the building elements and fire-resistance rating.	text value
+	wall_finish_mat	The material utilized to finish the outer most layer of the wall 	text value
+	wall_height	The average height of the walls in the sampled room	quantity value
+	wall_loc	The relative location of the wall within the room	text value
+	wall_water_mold	Signs of the presence of mold or mildew on a wall	text value
+	wall_surf_treatment	The surface treatment of interior wall	text value
+	wall_texture	The feel, appearance, or consistency of a wall surface	text value
+	wall_thermal_mass	The ability of the wall to provide inertia against temperature fluctuations. Generally this means concrete or concrete block that is either exposed or covered only with paint	quantity value
+	water_feat_size	The size of the water feature	quantity value
+	water_feat_type	The type of water feature present within the building being sampled	text value
+	weekday	The day of the week when sampling occurred	text value
+	window_size	The window's length and width	quantity value
+	window_cond	The physical condition of the window at the time of sampling	text value
+	window_cover	The type of window covering	text value
+	window_horiz_pos	The horizontal position of the window on the wall	text value
+	window_loc	The relative location of the window within the room	text value
+	window_mat	The type of material used to finish a window	text value
+	window_open_freq	The number of times windows are opened per week	text value
+	window_water_mold	Signs of the presence of mold or mildew on the window.	text value
+	window_status	Defines whether the windows were open or closed during environmental testing	text value
+	window_type	The type of windows	text value
+	window_vert_pos	The vertical position of the window on the wall	text value
+	ances_data	Information about either pedigree or other ancestral information description (e.g. parental variety in case of mutant or selection), e.g. A/3*B (meaning [(A x B) x B] x B)	text value
+	biol_stat	The level of genome modification	text value
+	genetic_mod	Genetic modifications of the genome of an organism, which may occur naturally by spontaneous mutation, or be introduced by some experimental means, e.g. specification of a transgene or the gene knocked-out or details of transient transfection	text value
+	host_common_name	Common name of the host, e.g. Human	text value
+	samp_capt_status	Reason for the sample	text value
+	samp_dis_stage	Stage of the disease at the time of sample collection, e.g. inoculation, penetration, infection, growth and reproduction, dissemination of pathogen.	text value
+	host_taxid	NCBI taxon id of the host, e.g. 9606	text value
+	host_subject_id	A unique identifier by which each subject can be referred to, de-identified, e.g. #131	text value
+	host_age	Age of host at the time of sampling; relevant scale depends on species and study, e.g. Could be seconds for amoebae or centuries for trees	quantity value
+	host_life_stage	Description of life stage of host	text value
+	host_sex	Physical sex of the host	text value
+	host_disease_stat	List of diseases with which the host has been diagnosed; can include multiple diagnoses. The value of the field depends on host; for humans the terms should be chosen from do (disease ontology) at http://www.disease-ontology.org, other hosts are free text	controlled term value
+	host_body_habitat	Original body habitat where the sample was obtained from	text value
+	host_body_site	Name of body site where the sample was obtained from, such as a specific organ or tissue (tongue, lung etc...). For foundational model of anatomy ontology (fma) (v 4.11.0) or Uber-anatomy ontology (UBERON) (v releases/2014-06-15) terms, please see http://purl.bioontology.org/ontology/FMA or http://purl.bioontology.org/ontology/UBERON	controlled term value
+	host_body_product	Substance produced by the body, e.g. Stool, mucus, where the sample was obtained from. For foundational model of anatomy ontology (fma) or Uber-anatomy ontology (UBERON) terms, please see https://www.ebi.ac.uk/ols/ontologies/fma or https://www.ebi.ac.uk/ols/ontologies/uberon	controlled term value
+	host_tot_mass	Total mass of the host at collection, the unit depends on host	quantity value
+	host_height	The height of subject	quantity value
+	host_length	The length of subject	quantity value
+	host_diet	Type of diet depending on the host, for animals omnivore, herbivore etc., for humans high-fat, meditteranean etc.; can include multiple diet types	text value
+	host_last_meal	Content of last meal and time since feeding; can include multiple values	text value
+	host_growth_cond	Literature reference giving growth conditions of the host	text value
+	host_substrate	The growth substrate of the host 	text value
+	host_family_relationship	Relationships to other hosts in the same study; can include multiple relationships	text value
+	host_infra_specific_name	Taxonomic information about the host below subspecies level	text value
+	host_infra_specific_rank	Taxonomic rank information about the host below subspecies level, such as variety, form, rank etc.	text value
+	host_genotype	Observed genotype	text value
+	host_phenotype	Phenotype of human or other host. For phenotypic quality ontology (pato) (v 2018-03-27) terms, please see http://purl.bioontology.org/ontology/pato. For Human Phenotype Ontology (HP) (v 2018-06-13) please see http://purl.bioontology.org/ontology/HP	controlled term value
+	host_body_temp	Core body temperature of the host when sample was collected	quantity value
+	host_dry_mass	Measurement of dry mass	quantity value
+	host_blood_press_diast	Resting diastolic blood pressure, measured as mm mercury	quantity value
+	host_blood_press_syst	Resting systolic blood pressure, measured as mm mercury	quantity value
+	host_color	The color of host	text value
+	host_shape	Morphological shape of host 	text value
+	gravidity	Whether or not subject is gravid, and if yes date due or date post-conception, specifying which is used	text value
+	ihmc_medication_code	Can include multiple medication codes	text value
+	smoker	Specification of smoking status	boolean value
+	host_hiv_stat	HIV status of subject, if yes HAART initiation status should also be indicated as [YES or NO]	text value
+	drug_usage	Any drug used by subject and the frequency of usage; can include multiple drugs used	text value
+	host_body_mass_index	Body mass index, calculated as weight/(height)squared	quantity value
+	diet_last_six_month	Specification of major diet changes in the last six months, if yes the change should be specified	text value
+	weight_loss_3_month	Specification of weight loss in the last three months, if yes should be further specified to include amount of weight loss	quantity value
+	ihmc_ethnicity	Ethnicity of the subject	text value
+	host_occupation	Most frequent job performed by subject	text value
+	pet_farm_animal	Specification of presence of pets or farm animals in the environment of subject, if yes the animals should be specified; can include multiple animals present	text value
+	travel_out_six_month	Specification of the countries travelled in the last six months; can include multiple travels	text value
+	twin_sibling	Specification of twin sibling presence	boolean value
+	medic_hist_perform	Whether full medical history was collected	boolean value
+	study_complt_stat	Specification of study completion status, if no the reason should be specified	text value
+	pulmonary_disord	History of pulmonary disorders; can include multiple disorders	text value
+	nose_throat_disord	History of nose-throat disorders; can include multiple disorders	text value
+	blood_blood_disord	History of blood disorders; can include multiple disorders	text value
+	host_pulse	Resting pulse, measured as beats per minute	quantity value
+	gestation_state	Specification of the gestation state	text value
+	maternal_health_stat	Specification of the maternal health status	text value
+	foetal_health_stat	Specification of foetal health status, should also include abortion	text value
+	amniotic_fluid_color	Specification of the color of the amniotic fluid sample	text value
+	kidney_disord	History of kidney disorders; can include multiple disorders	text value
+	urogenit_tract_disor	History of urogenitaltract disorders; can include multiple disorders	text value
+	urine_collect_meth	Specification of urine collection method	text value
+	gastrointest_disord	History of gastrointestinal tract disorders; can include multiple disorders 	text value
+	liver_disord	History of liver disorders; can include multiple disorders	text value
+	special_diet	Specification of special diet; can include multiple special diets	text value
+	nose_mouth_teeth_throat_disord	History of nose/mouth/teeth/throat disorders; can include multiple disorders	text value
+	time_last_toothbrush	Specification of the time since last toothbrushing	text value
+	dermatology_disord	History of dermatology disorders; can include multiple disorders	text value
+	time_since_last_wash	Specification of the time since last wash	text value
+	dominant_hand	Dominant hand of the subject	text value
+	menarche	Date of most recent menstruation	timestamp value
+	sexual_act	Current sexual partner and frequency of sex	text value
+	pregnancy	Date due of pregnancy	timestamp value
+	douche	Date of most recent douche	timestamp value
+	birth_control	Specification of birth control medication used	text value
+	menopause	Date of onset of menopause	timestamp value
+	hrt	Whether subject had hormone replacement theraphy, and if yes start date	timestamp value
+	hysterectomy	Specification of whether hysterectomy was performed	boolean value
+	gynecologic_disord	History of gynecological disorders; can include multiple disorders	text value
+	urogenit_disord	History of urogenital disorders, can include multiple disorders	text value
+	hcr	Main Hydrocarbon Resource type. The term 'Hydrocarbon Resource' HCR defined as a natural environmental feature containing large amounts of hydrocarbons at high concentrations potentially suitable for commercial exploitation.  This term should not be confused with the Hydrocarbon Occurrence term which also includes hydrocarbon-rich environments with currently limited commercial interest such as seeps, outcrops, gas hydrates etc. If 'other' is specified, please propose entry in 'additional info' field	text value
+	hc_produced	Main hydrocarbon type produced from resource (i.e. Oil, gas, condensate, etc). If 'other' is specified, please propose entry in 'additional info' field	text value
+	basin	Name of the basin (e.g. Campos)	text value
+	field	Name of the hydrocarbon field (e.g. Albacora)	text value
+	reservoir	Name of the reservoir (e.g. Carapebus)	text value
+	hcr_temp	Original temperature of the hydrocarbon resource	quantity value
+	tvdss_of_hcr_temp	True vertical depth subsea (TVDSS) of the hydrocarbon resource where the original temperature was measured (e.g. 1345 m)	quantity value
+	hcr_pressure	Original pressure of the hydrocarbon resource 	quantity value
+	tvdss_of_hcr_pressure	True vertical depth subsea (TVDSS) of the hydrocarbon resource where the original pressure was measured (e.g. 1578 m )	quantity value
+	permeability	Measure of the ability of a hydrocarbon resource to allow fluids to pass through it. (Additional information: https://en.wikipedia.org/wiki/Permeability_(earth_sciences))	quantity value
+	porosity	Porosity of deposited sediment is volume of voids divided by the total volume of sample	quantity value
+	lithology	Hydrocarbon resource main lithology (Additional information: http://petrowiki.org/Lithology_and_rock_type_determination). If 'other' is specified, please propose entry in 'additional info' field	text value
+	depos_env	Main depositional environment (https://en.wikipedia.org/wiki/Depositional_environment). If 'other' is specified, please propose entry in 'additional info' field	text value
+	hcr_geol_age	Geological age of hydrocarbon resource (Additional info: https://en.wikipedia.org/wiki/Period_(geology)). If 'other' is specified, please propose entry in 'additional info' field	text value
+	owc_tvdss	Depth of the original oil water contact (OWC) zone (average) (m TVDSS)	quantity value
+	hcr_fw_salinity	Original formation water salinity (prior to secondary recovery e.g. Waterflooding) expressed as TDS	quantity value
+	sulfate_fw	Original sulfate concentration in the hydrocarbon resource	quantity value
+	vfa_fw	Original volatile fatty acid concentration in the hydrocarbon resource	quantity value
+	sr_kerog_type	Origin of kerogen. Type I: Algal (aquatic), Type II: planktonic and soft plant material (aquatic or terrestrial), Type III: terrestrial woody/ fibrous plant material (terrestrial), Type IV: oxidized recycled woody debris (terrestrial) (additional information: https://en.wikipedia.org/wiki/Kerogen). If 'other' is specified, please propose entry in 'additional info' field	text value
+	sr_lithology	Lithology of source rock (https://en.wikipedia.org/wiki/Source_rock). If 'other' is specified, please propose entry in 'additional info' field	text value
+	sr_dep_env	Source rock depositional environment (https://en.wikipedia.org/wiki/Source_rock). If 'other' is specified, please propose entry in 'additional info' field	text value
+	sr_geol_age	Geological age of source rock (Additional info: https://en.wikipedia.org/wiki/Period_(geology)). If 'other' is specified, please propose entry in 'additional info' field	text value
+	samp_well_name	Name of the well (e.g. BXA1123) where sample was taken	text value
+	win	A unique identifier of a well or wellbore. This is part of the Global Framework for Well Identification initiative which is compiled by the Professional Petroleum Data Management Association (PPDM) in an effort to improve well identification systems. (Supporting information: https://ppdm.org/ and http://dl.ppdm.org/dl/690)	text value
+	samp_type	Type of material (i.e. sample) collected. Includes types like core, rock trimmings, drill cuttings, piping section, coupon, pigging debris, solid deposit, produced fluid, produced water, injected water, swabs, etc. If 'other' is specified, please propose entry in 'additional info' field	text value
+	samp_subtype	Name of sample sub-type. For example if 'sample type' is 'Produced Water' then subtype could be 'Oil Phase' or 'Water Phase'. If 'other' is specified, please propose entry in 'additional info' field	text value
+	pressure	Pressure to which the sample is subject to, in atmospheres	quantity value
+	samp_tvdss	Depth of the sample i.e. The vertical distance between the sea level and the sampled position in the subsurface. Depth can be reported as an interval for subsurface samples e.g. 1325.75-1362.25 m	quantity value
+	samp_md	In non deviated well, measured depth is equal to the true vertical depth, TVD (TVD=TVDSS plus the reference or datum it refers to). In deviated wells, the MD is the length of trajectory of the borehole measured from the same reference or datum. Common datums used are ground level (GL), drilling rig floor (DF), rotary table (RT), kelly bushing (KB) and mean sea level (MSL). If 'other' is specified, please propose entry in 'additional info' field	quantity value
+	samp_transport_cond	Sample transport duration (in days or hrs) and temperature the sample was exposed to (e.g. 5.5 days; 20 B0C)	quantity value
+	organism_count_qpcr_info	If qpcr was used for the cell count, the target gene name, the primer sequence and the cycling conditions should also be provided. (Example: 16S rrna; FWD:ACGTAGCTATGACGT REV:GTGCTAGTCGAGTAC; initial denaturation:90C_5min; denaturation:90C_2min; annealing:52C_30 sec; elongation:72C_30 sec; 90 C for 1 min; final elongation:72C_5min; 30 cycles)	text value
+	ph	Ph measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid	quantity value
+	alkalinity	Alkalinity, the ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate	quantity value
+	alkalinity_method	Method used for alkalinity measurement	text value
+	sulfate	Concentration of sulfate in the sample	quantity value
+	sulfide	Concentration of sulfide in the sample	quantity value
+	tot_sulfur	Concentration of total sulfur in the sample	quantity value
+	nitrate	Concentration of nitrate in the sample	quantity value
+	nitrite	Concentration of nitrite in the sample	quantity value
+	ammonium	Concentration of ammonium in the sample	quantity value
+	tot_nitro	Total nitrogen concentration of water samples, calculated by: total nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured without filtering, reported as nitrogen	quantity value
+	diss_iron	Concentration of dissolved iron in the sample	quantity value
+	sodium	Sodium concentration in the sample	quantity value
+	chloride	Concentration of chloride in the sample	quantity value
+	potassium	Concentration of potassium in the sample	quantity value
+	magnesium	Concentration of magnesium in the sample	quantity value
+	calcium	Concentration of calcium in the sample	quantity value
+	tot_iron	Concentration of total iron in the sample	quantity value
+	diss_org_carb	Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid	quantity value
+	diss_inorg_carb	Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter	quantity value
+	diss_inorg_phosp	Concentration of dissolved inorganic phosphorus in the sample	quantity value
+	tot_phosp	Total phosphorus concentration in the sample, calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus	quantity value
+	suspend_solids	Concentration of substances including a wide variety of material, such as silt, decaying plant and animal matter; can include multiple substances	quantity value
+	density	Density of the sample, which is its mass per unit volume (aka volumetric mass density)	quantity value
+	diss_carb_dioxide	Concentration of dissolved carbon dioxide in the sample or liquid portion of the sample	quantity value
+	diss_oxygen_fluid	Concentration of dissolved oxygen in the oil field produced fluids as it contributes to oxgen-corrosion and microbial activity (e.g. Mic).	quantity value
+	vfa	Concentration of Volatile Fatty Acids in the sample	quantity value
+	benzene	Concentration of benzene in the sample	quantity value
+	toluene	Concentration of toluene in the sample	quantity value
+	ethylbenzene	Concentration of ethylbenzene in the sample	quantity value
+	xylene	Concentration of xylene in the sample	quantity value
+	api	API gravity is a measure of how heavy or light a petroleum liquid is compared to water (source: https://en.wikipedia.org/wiki/API_gravity) (e.g. 31.1B0 API) 	quantity value
+	tan	Total Acid NumberB (TAN) is a measurement of acidity that is determined by the amount ofB potassium hydroxideB in milligrams that is needed to neutralize the acids in one gram of oil.B It is an important quality measurement ofB crude oil. (source: https://en.wikipedia.org/wiki/Total_acid_number)	quantity value
+	viscosity	A measure of oil's resistanceB to gradual deformation byB shear stressB orB tensile stress (e.g. 3.5 cp;  100 B0C)	quantity value
+	pour_point	Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a highB pour pointB is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material.  (soure: https://en.wikipedia.org/wiki/pour_point)	quantity value
+	saturates_pc	Saturate, Aromatic, Resin and AsphalteneB (SARA) is an analysis method that dividesB crude oilB components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)	quantity value
+	aromatics_pc	Saturate, Aromatic, Resin and AsphalteneB (SARA) is an analysis method that dividesB crude oilB components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)	quantity value
+	resins_pc	Saturate, Aromatic, Resin and AsphalteneB (SARA) is an analysis method that dividesB crude oilB components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)	quantity value
+	asphaltenes_pc	Saturate, Aromatic, Resin and AsphalteneB (SARA) is an analysis method that dividesB crude oilB components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)	quantity value
+	additional_info	Information that doesn't fit anywhere else. Can also be used to propose new entries for fields with controlled vocabulary	text value
+	prod_start_date	Date of field's first production	timestamp value
+	prod_rate	Oil and/or gas production rates per well (e.g. 524 m3 / day)	quantity value
+	water_production_rate	Water production rates per well (e.g. 987 m3 / day)	quantity value
+	water_cut	Current amount of water (%) in a produced fluid stream; or the average of the combined streams	quantity value
+	iwf	Proportion of the produced fluids derived from injected water at the time of sampling. (e.g. 87%)	quantity value
+	add_recov_method	Additional (i.e. Secondary, tertiary, etc.) recovery methods deployed for increase of hydrocarbon recovery from resource and start date for each one of them. If 'other' is specified, please propose entry in 'additional info' field	text value
+	iw_bt_date_well	Injection water breakthrough date per well following a  secondary and/or tertiary recovery	timestamp value
+	biocide	List of biocides (commercial name of product and supplier) and date of administration	text value
+	biocide_admin_method	Method of biocide administration (dose, frequency, duration, time elapsed between last biociding and sampling) (e.g. 150 mg/l; weekly; 4 hr; 3 days)	quantity value
+	chem_treatment	List of chemical compounds administered upstream the sampling location where sampling occurred (e.g. Glycols, H2S scavenger, corrosion and scale inhibitors, demulsifiers, and other production chemicals etc.). The commercial name of the product and name of the supplier should be provided.  The date of administration should also be included	text value
+	chem_treatment_method	Method of chemical administration(dose, frequency, duration, time elapsed between administration and sampling) (e.g. 50 mg/l; twice a week; 1 hr; 0 days)	quantity value
+	samp_loc_corr_rate	Metal corrosion rate is the speed of metal deterioration due to environmental conditions. As environmental conditions change corrosion rates change accordingly. Therefore, long term corrosion rates are generally more informative than short term rates and for that reason they are preferred during reporting. In the case of suspected MIC, corrosion rate measurements at the time of sampling might provide insights into the involvement of certain microbial community members in MIC as well as potential microbial interplays	quantity value
+	samp_collection_point	Sampling  point on the asset were sample was collected (e.g. Wellhead, storage tank, separator, etc). If 'other' is specified, please propose entry in 'additional info' field	text value
+	samp_preserv	Preservative added to the sample (e.g. Rnalater, alcohol, formaldehyde, etc.). Where appropriate include volume added (e.g. Rnalater; 2 ml)	quantity value
+	alkyl_diethers	Concentration of alkyl diethers 	quantity value
+	aminopept_act	Measurement of aminopeptidase activity	quantity value
+	bacteria_carb_prod	Measurement of bacterial carbon production	quantity value
+	biomass	Amount of biomass; should include the name for the part of biomass measured, e.g. Microbial, total. Can include multiple measurements	quantity value
+	bishomohopanol	Concentration of bishomohopanol 	quantity value
+	bromide	Concentration of bromide 	quantity value
+	carb_nitro_ratio	Ratio of amount or concentrations of carbon to nitrogen	quantity value
+	chlorophyll	Concentration of chlorophyll	quantity value
+	diether_lipids	Concentration of diether lipids; can include multiple types of diether lipids	quantity value
+	diss_hydrogen	Concentration of dissolved hydrogen	quantity value
+	diss_org_nitro	Dissolved organic nitrogen concentration measured as; total dissolved nitrogen - NH4 - NO3 - NO2	quantity value
+	diss_oxygen	Concentration of dissolved oxygen	quantity value
+	glucosidase_act	Measurement of glucosidase activity	quantity value
+	mean_frict_vel	Measurement of mean friction velocity	quantity value
+	mean_peak_frict_vel	Measurement of mean peak friction velocity	quantity value
+	n_alkanes	Concentration of n-alkanes; can include multiple n-alkanes	quantity value
+	nitro	Concentration of nitrogen (total)	quantity value
+	org_carb	Concentration of organic carbon	quantity value
+	org_matter	Concentration of organic matter 	quantity value
+	org_nitro	Concentration of organic nitrogen	quantity value
+	part_org_carb	Concentration of particulate organic carbon	quantity value
+	petroleum_hydrocarb	Concentration of petroleum hydrocarbon	quantity value
+	phaeopigments	Concentration of phaeopigments; can include multiple phaeopigments	quantity value
+	phosphate	Concentration of phosphate	quantity value
+	phosplipid_fatt_acid	Concentration of phospholipid fatty acids; can include multiple values	quantity value
+	redox_potential	Redox potential, measured relative to a hydrogen cell, indicating oxidation or reduction potential	quantity value
+	salinity	Salinity is the total concentration of all dissolved salts in a water sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater	quantity value
+	silicate	Concentration of silicate	quantity value
+	tot_carb	Total carbon content	quantity value
+	tot_nitro_content	Total nitrogen content of the sample	quantity value
+	tot_org_carb	Definition for soil: total organic carbon content of the soil, definition otherwise: total organic carbon content	quantity value
+	turbidity	Measure of the amount of cloudiness or haziness in water caused by individual particles	quantity value
+	water_content	Water content measurement	quantity value
+	water_current	Measurement of magnitude and direction of flow within a fluid	quantity value
+	air_temp_regm	Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens	quantity value
+	antibiotic_regm	Information about treatment involving antibiotic administration; should include the name of antibiotic, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple antibiotic regimens	quantity value
+	biotic_regm	Information about treatment(s) involving use of biotic factors, such as bacteria, viruses or fungi.	text value
+	chem_mutagen	Treatment involving use of mutagens; should include the name of mutagen, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple mutagen regimens	quantity value
+	climate_environment	Treatment involving an exposure to a particular climate; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple climates	text value
+	cult_root_med	Name or reference for the hydroponic or in vitro culture rooting medium; can be the name of a commonly used medium or reference to a specific medium, e.g. Murashige and Skoog medium. If the medium has not been formally published, use the rooting medium descriptors.	text value
+	fertilizer_regm	Information about treatment involving the use of fertilizers; should include the name of fertilizer, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fertilizer regimens	quantity value
+	fungicide_regm	Information about treatment involving use of fungicides; should include the name of fungicide, amount administered,  treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fungicide regimens	quantity value
+	gaseous_environment	Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens	quantity value
+	gravity	Information about treatment involving use of gravity factor to study various types of responses in presence, absence or modified levels of gravity; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple treatments	quantity value
+	growth_facil	Type of facility where the sampled plant was grown; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field. Alternatively use Crop Ontology (CO) terms, see http://www.cropontology.org/ontology/CO_715/Crop%20Research	controlled term value
+	growth_habit	Characteristic shape, appearance or growth form of a plant species	text value
+	growth_hormone_regm	Information about treatment involving use of growth hormones; should include the name of growth hormone, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple growth hormone regimens	quantity value
+	herbicide_regm	Information about treatment involving use of herbicides; information about treatment involving use of growth hormones; should include the name of herbicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens	quantity value
+	host_wet_mass	Measurement of wet mass	quantity value
+	humidity_regm	Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens	quantity value
+	light_regm	Information about treatment(s) involving exposure to light, including both light intensity and quality.	quantity value
+	mechanical_damage	Information about any mechanical damage exerted on the plant; can include multiple damages and sites	text value
+	mineral_nutr_regm	Information about treatment involving the use of mineral supplements; should include the name of mineral nutrient, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple mineral nutrient regimens	quantity value
+	non_mineral_nutr_regm	Information about treatment involving the exposure of plant to non-mineral nutrient such as oxygen, hydrogen or carbon; should include the name of non-mineral nutrient, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple non-mineral nutrient regimens	quantity value
+	ph_regm	Information about treatment involving exposure of plants to varying levels of ph of the growth media, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimen	text value
+	pesticide_regm	Information about treatment involving use of insecticides; should include the name of pesticide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple pesticide regimens	quantity value
+	plant_growth_med	Specification of the media for growing the plants or tissue cultured samples, e.g. soil, aeroponic, hydroponic, in vitro solid culture medium, in vitro liquid culture medium. Recommended value is a specific value from EO:plant growth medium (follow this link for terms http://purl.obolibrary.org/obo/EO_0007147) or other controlled vocabulary	controlled term value
+	plant_product	Substance produced by the plant, where the sample was obtained from	text value
+	plant_sex	Sex of the reproductive parts on the whole plant, e.g. pistillate, staminate, monoecieous, hermaphrodite.	text value
+	plant_struc	Name of plant structure the sample was obtained from; for Plant Ontology (PO) (v releases/2017-12-14) terms, see http://purl.bioontology.org/ontology/PO, e.g. petiole epidermis (PO_0000051). If an individual flower is sampled, the sex of it can be recorded here.	controlled term value
+	radiation_regm	Information about treatment involving exposure of plant or a plant part to a particular radiation regimen; should include the radiation type, amount or intensity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple radiation regimens	quantity value
+	rainfall_regm	Information about treatment involving an exposure to a given amount of rainfall, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens	quantity value
+	root_cond	Relevant rooting conditions such as field plot size, sowing density, container dimensions, number of plants per container.	text value
+	root_med_carbon	Source of organic carbon in the culture rooting medium; e.g. sucrose.	quantity value
+	root_med_macronutr	Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S); e.g. KH2PO4 (170B mg/L).	quantity value
+	root_med_micronutr	Measurement of the culture rooting medium micronutrients (Fe, Mn, Zn, B, Cu, Mo); e.g. H3BO3 (6.2B mg/L).	quantity value
+	root_med_suppl	Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics activated charcoal; e.g. nicotinic acid (0.5B mg/L).	quantity value
+	root_med_ph	pH measurement of the culture rooting medium; e.g. 5.5.	quantity value
+	root_med_regl	Growth regulators in the culture rooting medium such as cytokinins, auxins, gybberellins, abscisic acid; e.g. 0.5B mg/L NAA.	quantity value
+	root_med_solid	Specification of the solidifying agent in the culture rooting medium; e.g. agar.	text value
+	salt_regm	Information about treatment involving use of salts as supplement to liquid and soil growth media; should include the name of salt, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple salt regimens	quantity value
+	season_environment	Treatment involving an exposure to a particular season (e.g. Winter, summer, rabi, rainy etc.), treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment	text value
+	standing_water_regm	Treatment involving an exposure to standing water during a plant's life span, types can be flood water or standing water, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens	text value
+	tiss_cult_growth_med	Description of plant tissue culture growth media used	text value
+	water_temp_regm	Information about treatment involving an exposure to water with varying degree of temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens	quantity value
+	watering_regm	Information about treatment involving an exposure to watering frequencies, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens	quantity value
+	particle_class	Particles are classified, based on their size, into six general categories:clay, silt, sand, gravel, cobbles, and boulders; should include amount of particle preceded by the name of the particle type; can include multiple values	quantity value
+	sediment_type	Information about the sediment type based on major constituents	text value
+	tidal_stage	Stage of tide	text value
+	tot_depth_water_col	Measurement of total depth of water column	quantity value
+	cur_land_use	Present state of sample site	text value
+	cur_vegetation	Vegetation classification from one or more standard classification systems, or agricultural crop	text value
+	cur_vegetation_meth	Reference or method used in vegetation classification 	text value
+	previous_land_use	Previous land use and dates	text value
+	previous_land_use_meth	Reference or method used in determining previous land use and dates	text value
+	crop_rotation	Whether or not crop is rotated, and if yes, rotation schedule	text value
+	agrochem_addition	Addition of fertilizers, pesticides, etc. - amount and time of applications	quantity value
+	tillage	Note method(s) used for tilling	text value
+	fire	Historical and/or physical evidence of fire	timestamp value
+	flooding	Historical and/or physical evidence of flooding	timestamp value
+	extreme_event	Unusual physical events that may have affected microbial populations	timestamp value
+	horizon	Specific layer in the land area which measures parallel to the soil surface and possesses physical characteristics which differ from the layers above and beneath	text value
+	horizon_meth	Reference or method used in determining the horizon	text value
+	sieving	Collection design of pooled samples and/or sieve size and amount of sample sieved 	quantity value
+	water_content_soil_meth	Reference or method used in determining the water content of soil	text value
+	pool_dna_extracts	Indicate whether multiple DNA extractions were mixed. If the answer yes, the number of extracts that were pooled should be given	text value
+	store_cond	Explain how and for how long the soil sample was stored before DNA extraction	text value
+	link_climate_info	Link to climate resource	text value
+	annual_temp	Mean annual temperature	quantity value
+	season_temp	Mean seasonal temperature	quantity value
+	annual_precpt	The average of all annual precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps.	quantity value
+	season_precpt	The average of all seasonal precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps.	quantity value
+	link_class_info	Link to digitized soil maps or other soil classification information	text value
+	fao_class	Soil classification from the FAO World Reference Database for Soil Resources. The list can be found at http://www.fao.org/nr/land/sols/soil/wrb-soil-maps/reference-groups	text value
+	local_class	Soil classification based on local soil classification system	text value
+	local_class_meth	Reference or method used in determining the local soil classification 	text value
+	soil_type	Soil series name or other lower-level classification	text value
+	soil_type_meth	Reference or method used in determining soil series name or other lower-level classification	text value
+	slope_gradient	Commonly called 'slope'. The angle between ground surface and a horizontal line (in percent). This is the direction that overland water would flow. This measure is usually taken with a hand level meter or clinometer	quantity value
+	slope_aspect	The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees); e.g., nw or 315 degrees. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.	quantity value
+	profile_position	Cross-sectional position in the hillslope where sample was collected.sample area position in relation to surrounding areas	text value
+	drainage_class	Drainage classification from a standard system such as the USDA system	text value
+	texture	The relative proportion of different grain sizes of mineral particles in a soil, as described using a standard system; express as % sand (50 um to 2 mm), silt (2 um to 50 um), and clay (<2 um) with textural name (e.g., silty clay loam) optional.	quantity value
+	texture_meth	Reference or method used in determining soil texture	text value
+	ph_meth	Reference or method used in determining ph	text value
+	tot_org_c_meth	Reference or method used in determining total organic carbon	text value
+	tot_nitro_content_meth	Reference or method used in determining the total nitrogen	text value
+	microbial_biomass	The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units	quantity value
+	microbial_biomass_meth	Reference or method used in determining microbial biomass	text value
+	link_addit_analys	Link to additional analysis results performed on the sample	text value
+	extreme_salinity	Measured salinity 	quantity value
+	salinity_meth	Reference or method used in determining salinity	text value
+	heavy_metals	Heavy metals present and concentrationsany drug used by subject and the frequency of usage; can include multiple heavy metals and concentrations	quantity value
+	heavy_metals_meth	Reference or method used in determining heavy metals	text value
+	al_sat	Aluminum saturation (esp. For tropical soils)	quantity value
+	al_sat_meth	Reference or method used in determining Al saturation	text value
+	biochem_oxygen_dem	Amount of dissolved oxygen needed by aerobic biological organisms in a body of water to break down organic material present in a given water sample at certain temperature over a specific time period	quantity value
+	chem_oxygen_dem	A measure of the capacity of water to consume oxygen during the decomposition of organic matter and the oxidation of inorganic chemicals such as ammonia and nitrite	quantity value
+	efficiency_percent	Percentage of volatile solids removed from the anaerobic digestor	quantity value
+	emulsions	Amount or concentration of substances such as paints, adhesives, mayonnaise, hair colorants, emulsified oils, etc.; can include multiple emulsion types	quantity value
+	gaseous_substances	Amount or concentration of substances such as hydrogen sulfide, carbon dioxide, methane, etc.; can include multiple substances	quantity value
+	indust_eff_percent	Percentage of industrial effluents received by wastewater treatment plant	quantity value
+	inorg_particles	Concentration of particles such as sand, grit, metal particles, ceramics, etc.; can include multiple particles	quantity value
+	org_particles	Concentration of particles such as faeces, hairs, food, vomit, paper fibers, plant material, humus, etc.	quantity value
+	pre_treatment	The process of pre-treatment removes materials that can be easily collected from the raw wastewater	text value
+	primary_treatment	The process to produce both a generally homogeneous liquid capable of being treated biologically and a sludge that can be separately treated or processed	text value
+	reactor_type	Anaerobic digesters can be designed and engineered to operate using a number of different process configurations, as batch or continuous, mesophilic, high solid or low solid, and single stage or multistage	text value
+	secondary_treatment	The process for substantially degrading the biological content of the sewage 	text value
+	sewage_type	Type of wastewater treatment plant as municipial or industrial	text value
+	sludge_retent_time	The time activated sludge remains in reactor	quantity value
+	soluble_inorg_mat	Concentration of substances such as ammonia, road-salt, sea-salt, cyanide, hydrogen sulfide, thiocyanates, thiosulfates, etc.	quantity value
+	soluble_org_mat	Concentration of substances such as urea, fruit sugars, soluble proteins, drugs, pharmaceuticals, etc.	quantity value
+	tertiary_treatment	The process providing a final treatment stage to raise the effluent quality before it is discharged to the receiving environment	text value
+	tot_phosphate	Total amount or concentration of phosphate	quantity value
+	wastewater_type	The origin of wastewater such as human waste, rainfall, storm drains, etc.	text value
+	atmospheric_data	Measurement of atmospheric data; can include multiple data	quantity value
+	bac_prod	Bacterial production in the water column measured by isotope uptake	quantity value
+	bac_resp	Measurement of bacterial respiration in the water column	quantity value
+	conduc	Electrical conductivity of water	quantity value
+	diss_inorg_nitro	Concentration of dissolved inorganic nitrogen 	quantity value
+	down_par	Visible waveband radiance and irradiance measurements in the water column	quantity value
+	fluor	Raw or converted fluorescence of water	quantity value
+	light_intensity	Measurement of light intensity	quantity value
+	part_org_nitro	Concentration of particulate organic nitrogen	quantity value
+	photon_flux	Measurement of photon flux	quantity value
+	primary_prod	Measurement of primary production, generally measured as isotope uptake	quantity value
+	size_frac_low	Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample	quantity value
+	size_frac_up	Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample	quantity value
+	soluble_react_phosp	Concentration of soluble reactive phosphorus	quantity value
+	suspend_part_matter	Concentration of suspended particulate matter	quantity value
+	tot_diss_nitro	Total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen	quantity value
+	tot_inorg_nitro	Total inorganic nitrogen content	quantity value
+	tot_part_carb	Total particulate carbon content	quantity value
+	bin name		string
+	number of contig		integer
+	completeness		float
+	contamination		float
+	gene count		integer
+	bin quality		string
+	num 16s		integer
+	num 5s		integer
+	num 23s		integer
+	num tRNA		integer
+	gtdbtk domain		string
+	gtdbtk phylum		string
+	gtdbtk class		string
+	gtdbtk order		string
+	gtdbtk family		string
+	gtdbtk genus		string
+	gtdbtk species		string
+database		An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed databse top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest	
+database	nmdc schema version	TODO	
+database	date created	TODO	
+database	etl software version	TODO	
+data object		An object that primarily consists of symbols that represent information.   Files, records, and omics data are examples of data objects. 	
+data object	name		
+data object	description		
+biosample		A material sample. It may be environmental (encompassing many organisms) or isolate or tissue.   An environmental sample containing genetic material from multiple individuals is commonly referred to as a biosample.	
+biosample	lat_lon	This is currently a required field but it's not clear if this should be required for human hosts	
+biosample	env_broad_scale		
+biosample	env_local_scale		
+biosample	env_medium		
+biosample	part of		
+study		A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.  	
+study	doi	The dataset citation for this study	
+biosample processing		A process that takes one or more biosamples as inputs and generates one or as outputs. Examples of outputs include samples cultivated from another sample or data objects created by instruments runs.	
+biosample processing	has input		biosample
+omics processing		The methods and processes used to generate omics data from a biosample or organism.	
+omics processing	has input		
+credit association		This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role (https://casrai.org/credit/) and for a person value Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0 	
+named thing		a databased entity or concept/class	
+ontology class			
+environmental material term			
+attribute value		The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic value and the structured value	
+attribute value	type	An optional string that specified the type of object.	
+quantity value		A simple quantity, e.g. 2cm	
+quantity value	has raw value	Unnormalized atomic string representation, should in syntax {number} {unit}	
+quantity value	has unit	The unit of the quantity	
+quantity value	has numeric value	The number part of the quantity	double
+image value		An attribute value representing an image.	
+person value		An attribute value representing a person	
+person value	has raw value	The full name of the Investgator in format FIRST LAST.	
+person value	name	The full name of the Investgator. It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.	
+person		represents a person, such as a researcher	
+person	id	Should be an ORCID. Specify in CURIE format. E.g ORCID:0000-1111-...	
+MAG bin			
+MAG bin	bin name		string
+MAG bin	number of contig		integer
+MAG bin	completeness		float
+MAG bin	contamination		float
+MAG bin	gene count		integer
+MAG bin	bin quality		string
+MAG bin	num 16s		integer
+MAG bin	num 5s		integer
+MAG bin	num 23s		integer
+MAG bin	num tRNA		integer
+MAG bin	gtdbtk domain		string
+MAG bin	gtdbtk phylum		string
+MAG bin	gtdbtk class		string
+MAG bin	gtdbtk order		string
+MAG bin	gtdbtk family		string
+MAG bin	gtdbtk genus		string
+MAG bin	gtdbtk species		string
+instrument		A material entity that is designed to perform a function in a scientific investigation, but is not a reagent[OBI].	
+metabolite quantification		This is used to link a metabolomics analysis workflow to a specific metabolite	
+metabolite quantification	metabolite quantified	the specific metabolite identifier	chemical entity
+metabolite quantification	highest similarity score	TODO: Yuri to fill in	float
+peptide quantification		This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information	
+peptide quantification	peptide sequence		string
+peptide quantification	best protein	the specific protein identifier most correctly associated with the peptide sequence	gene product
+peptide quantification	all proteins	the list of protein identifiers that are associated with the peptide sequence	gene product
+peptide quantification	min_q_value	smallest Q-Value associated with the peptide sequence as provided by MSGFPlus tool	float
+peptide quantification	peptide_spectral_count	sum of filter passing MS2 spectra associated with the peptide sequence within a given LC-MS/MS data file	integer
+peptide quantification	peptide_sum_masic_abundance	combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the peptide sequence from a given LC-MS/MS data file using the MASIC tool	integer
+protein quantification		This is used to link a metaproteomics analysis workflow to a specific protein	
+protein quantification	best protein	the specific protein identifier most correctly grouped to its associated peptide sequences	gene product
+protein quantification	all proteins	the grouped list of protein identifiers associated with the peptide sequences that were grouped to a best protein	gene product
+protein quantification	peptide_sequence_count	count of peptide sequences grouped to the best_protein	integer
+protein quantification	protein_spectral_count	sum of filter passing MS2 spectra associated with the best protein within a given LC-MS/MS data file	integer
+protein quantification	protein_sum_masic_abundance	combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the best protein from a given LC-MS/MS data file using the MASIC tool	integer
+chemical entity		An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs. There may be different terms for distinct acid-base forms, protonation states	
+chemical entity	inchi		string
+chemical entity	inchi key		string
+chemical entity	smiles	A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.	string
+chemical entity	chemical formula	A generic grouping for miolecular formulae and empirican formulae	string
+gene product		A molecule encoded by a gene that has an evolved function	
+text value		A basic string value	
+url value		A value that is a string that conforms to URL syntax	
+timestamp value		A value that is a timestamp. The range should be ISO-8601	
+integer value		A value that is an integer	
+boolean value		A value that is a boolean	
+controlled term value		A controlled term or class from an ontology	
+geolocation value		A normalized value for a location on the earth's surface	
+geolocation value	has raw value	The raw value for a  geolocation should follow {lat} {long}	
+activity		a provence-generating activity	
+agent		a provence-generating agent	
+genome feature		A feature localized to an interval along a genome	
+genome feature	seqid	The ID of the landmark used to establish the coordinate system for the current feature.	string
+genome feature	type	A type from the sequence ontology	ontology class
+genome feature	start	The start of the feature in positive 1-based integer coordinates	
+genome feature	end	The end of the feature in positive 1-based integer coordinates	
+genome feature	strand	The strand on which a feature is located. Has a value of '+' (sense strand or forward strand) or '-' (anti-sense strand or reverse strand).	
+genome feature	phase	The phase for a coding sequence entity. For example, phase of a CDS as represented in a GFF3 with a value of 0, 1 or 2.	integer
+genome feature	encodes	The gene product encoded by this feature. Typically this is used for a CDS feature or gene feature which will encode a protein. It can also be used by a nc transcript ot gene feature that encoded a ncRNA	gene product
+genome feature	feature type	TODO: Yuri to write	
+functional annotation term		Abstract grouping class for any term/descriptor that can be applied to a functional unit of a genome (protein, ncRNA, complex).	
+pathway		A pathway is a sequence of steps/reactions carried out by an organism or community of organisms	
+pathway	has_part	A pathway can be broken down to a series of reaction step	reaction
+reaction		An individual biochemical transformation carried out by a functional unit of an organism, in which a collection of substrates are transformed into a collection of products. Can also represent transporters	
+reaction	left participants		reaction participant
+reaction	right participants		reaction participant
+reaction	direction	One of l->r, r->l, bidirectional, neutral	
+reaction	smarts string		string
+reaction	is diastereoselective		boolean
+reaction	is stereo		boolean
+reaction	is balanced		boolean
+reaction	is transport		boolean
+reaction	is fully characterized	False if includes R-groups	boolean
+reaction participant		Instances of this link a reaction to a chemical entity participant	
+reaction participant	chemical		chemical entity
+reaction participant	stoichiometry		integer
+orthology group		A set of genes or gene products in which all members are orthologous	
+functional annotation		An assignment of a function term (e.g. reaction or pathway) that is executed by a gene product, or which the gene product plays an active role in. Functional annotations can be assigned manually by curators, or automatically in workflows. In the context of NMDC, all function annotation is performed automatically, typically using HMM or Blast type methods	
+functional annotation	has function		
+functional annotation	type	TODO	ontology class
+functional annotation	was generated by	provenance for the annotation.	metagenome annotation activity
+workflow execution activity		Represents an instance of an execution of a particular workflow	
+workflow execution activity	was associated with	the agent/entity associated with the generation of the file	workflow execution activity
+workflow execution activity	started at time		
+workflow execution activity	ended at time		
+workflow execution activity	git url		
+workflow execution activity	has input		
+workflow execution activity	has output		
+workflow execution activity	was informed by		
+workflow execution activity	execution resource		
+workflow execution activity	type		
+metagenome assembly			
+metatranscriptome assembly			
+metagenome annotation activity			
+metatranscriptome annotation activity			
+metatranscriptome activity		A metatranscriptome activity that e.g. pools assembly and annotation activity.	
+MAGs analysis activity			
+read QC analysis activity			
+read QC analysis activity	input_read_bases	TODO	float
+read QC analysis activity	output_read_bases	TODO	float
+read QC analysis activity	has input		
+read QC analysis activity	has output		
+read based analysis activity			
+metabolomics analysis activity			
+metabolomics analysis activity	used	The instrument used to collect the data used in the analysis	instrument
+metabolomics analysis activity	has metabolite quantifications		metabolite quantification
+metabolomics analysis activity	has calibration	TODO: Yuri to fill in	
+metaproteomics analysis activity			
+metaproteomics analysis activity	used	The instrument used to collect the data used in the analysis	instrument
+metaproteomics analysis activity	has peptide quantifications		peptide quantification
+nom analysis activity			
+nom analysis activity	used	The instrument used to collect the data used in the analysis	instrument
+nom analysis activity	has calibration	A reference to a file that holds calibration information.	string
