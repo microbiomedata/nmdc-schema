@@ -135,6 +135,8 @@ lost_biosample_mixs_mongodb_slots.sort()
 
 nmdc_dh_mixs_6_slotnames = tb.get_schema_slot_names(view_alias="nmdc_dh", incl_imports=True)
 
+pprint.pprint(nmdc_dh_mixs_6_slotnames)
+
 unwieldly = list(set(nmdc_mixs_5_mixs_6_shared_slot_names).intersection(set(nmdc_dh_mixs_6_slotnames)))
 unwieldly.sort()
 
