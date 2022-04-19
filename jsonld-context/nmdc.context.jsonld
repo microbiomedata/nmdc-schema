@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-02-28T12:57:42\n    Schema: NMDC\n    metamodel version: 1.7.0\n    model version: 2.1.0\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC).\n  \nThis schema is organized into distinct modules:\n  \n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-04-19T19:21:01\n    Schema: NMDC\n    metamodel version: 1.7.0\n    model version: 2.1.0\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC).\n  \nThis schema is organized into distinct modules:\n  \n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "CAS": "http://identifiers.org/cas/",
       "CATH": "http://identifiers.org/cath/",
@@ -24,6 +24,7 @@
       "KEGG.PATHWAY": "http://identifiers.org/kegg.pathway/",
       "KEGG.REACTION": "http://identifiers.org/kegg.reaction/",
       "MESH": "http://identifiers.org/mesh/",
+      "MIXS": "https://w3id.org/gensc/",
       "MS": {
          "@id": "http://purl.obolibrary.org/obo/MS_",
          "@prefix": true
@@ -88,17 +89,9 @@
       },
       "xsd": "http://www.w3.org/2001/XMLSchema#",
       "@vocab": "https://microbiomedata/meta/",
-      "_16s_recover": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/_16s_recover"
-      },
-      "_16s_recover_software": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/_16s_recover_software"
-      },
       "abs_air_humidity": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/abs_air_humidity"
+         "@id": "MIXS:0000122"
       },
       "acted_on_behalf_of": {
          "@type": "@id"
@@ -106,111 +99,99 @@
       "activity_set": {
          "@type": "@id"
       },
-      "adapters": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/adapters"
-      },
       "add_recov_method": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/add_recov_method"
+         "@id": "MIXS:0001009"
       },
       "additional_info": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/additional_info"
+         "@id": "MIXS:0000300"
       },
       "address": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/address"
+         "@id": "MIXS:0000218"
       },
       "adj_room": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/adj_room"
+         "@id": "MIXS:0000219"
       },
       "aero_struc": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/aero_struc"
+         "@id": "MIXS:0000773"
       },
       "agrochem_addition": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/agrochem_addition"
+         "@id": "MIXS:0000639"
       },
       "air_temp": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/air_temp"
+         "@id": "MIXS:0000124"
       },
       "air_temp_regm": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/air_temp_regm"
+         "@id": "MIXS:0000551"
       },
       "al_sat": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/al_sat"
+         "@id": "MIXS:0000607"
       },
       "al_sat_meth": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/al_sat_meth"
+         "@id": "MIXS:0000324"
       },
       "alkalinity": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/alkalinity"
+         "@id": "MIXS:0000421"
       },
       "alkalinity_method": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/alkalinity_method"
+         "@id": "MIXS:0000298"
       },
       "alkyl_diethers": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/alkyl_diethers"
+         "@id": "MIXS:0000490"
       },
       "all_proteins": {
          "@type": "@id"
       },
       "alt": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/alt"
+         "@id": "MIXS:0000094"
       },
       "aminopept_act": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/aminopept_act"
+         "@id": "MIXS:0000172"
       },
       "ammonium": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ammonium"
-      },
-      "amniotic_fluid_color": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/amniotic_fluid_color"
+         "@id": "MIXS:0000427"
       },
       "amount_light": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/amount_light"
+         "@id": "MIXS:0000140"
       },
       "analysis_identifiers": {
          "@type": "@id"
       },
       "ances_data": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ances_data"
-      },
-      "annot": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/annot"
+         "@id": "MIXS:0000247"
       },
       "annual_precpt": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/annual_precpt"
+         "@id": "MIXS:0000644"
       },
       "annual_temp": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/annual_temp"
+         "@id": "MIXS:0000642"
       },
       "antibiotic_regm": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/antibiotic_regm"
+         "@id": "MIXS:0000553"
       },
       "api": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/api"
+         "@id": "MIXS:0000157"
       },
       "applied_role": {
          "@context": {
@@ -235,11 +216,11 @@
       },
       "arch_struc": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/arch_struc"
+         "@id": "MIXS:0000774"
       },
       "aromatics_pc": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/aromatics_pc"
+         "@id": "MIXS:0000133"
       },
       "asm_score": {
          "@type": "xsd:float",
@@ -247,78 +228,58 @@
       },
       "asphaltenes_pc": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/asphaltenes_pc"
-      },
-      "assembly_name": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/assembly_name"
-      },
-      "assembly_qual": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/assembly_qual"
-      },
-      "assembly_software": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/assembly_software"
+         "@id": "MIXS:0000135"
       },
       "atmospheric_data": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/atmospheric_data"
+         "@id": "MIXS:0001097"
       },
       "avg_dew_point": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/avg_dew_point"
+         "@id": "MIXS:0000141"
       },
       "avg_occup": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/avg_occup"
+         "@id": "MIXS:0000775"
       },
       "avg_temp": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/avg_temp"
+         "@id": "MIXS:0000142"
       },
       "bac_prod": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/bac_prod"
+         "@id": "MIXS:0000683"
       },
       "bac_resp": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/bac_resp"
+         "@id": "MIXS:0000684"
       },
       "bacteria_carb_prod": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/bacteria_carb_prod"
+         "@id": "MIXS:0000173"
       },
       "barometric_press": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/barometric_press"
+         "@id": "MIXS:0000096"
       },
       "basin": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/basin"
+         "@id": "MIXS:0000290"
       },
       "bathroom_count": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/bathroom_count"
+         "@id": "MIXS:0000776"
       },
       "bedroom_count": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/bedroom_count"
+         "@id": "MIXS:0000777"
       },
       "benzene": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/benzene"
+         "@id": "MIXS:0000153"
       },
       "best_protein": {
          "@type": "@id"
-      },
-      "bin_param": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/bin_param"
-      },
-      "bin_software": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/bin_software"
       },
       "binned_contig_num": {
          "@type": "xsd:integer",
@@ -326,193 +287,157 @@
       },
       "biochem_oxygen_dem": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/biochem_oxygen_dem"
+         "@id": "MIXS:0000653"
       },
       "biocide": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/biocide"
+         "@id": "MIXS:0001011"
       },
       "biocide_admin_method": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/biocide_admin_method"
+         "@id": "MIXS:0000456"
       },
       "biol_stat": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/biol_stat"
+         "@id": "MIXS:0000858"
       },
       "biomass": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/biomass"
+         "@id": "MIXS:0000174"
       },
       "biosample_set": {
          "@type": "@id"
       },
       "biotic_regm": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/biotic_regm"
+         "@id": "MIXS:0001038"
       },
       "biotic_relationship": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/biotic_relationship"
-      },
-      "birth_control": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/birth_control"
+         "@id": "MIXS:0000028"
       },
       "bishomohopanol": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/bishomohopanol"
-      },
-      "blood_blood_disord": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/blood_blood_disord"
+         "@id": "MIXS:0000175"
       },
       "bromide": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/bromide"
+         "@id": "MIXS:0000176"
       },
       "build_docs": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/build_docs"
+         "@id": "MIXS:0000787"
       },
       "build_occup_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/build_occup_type"
+         "@id": "MIXS:0000761"
       },
       "building_setting": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/building_setting"
+         "@id": "MIXS:0000768"
       },
       "built_struc_age": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/built_struc_age"
+         "@id": "MIXS:0000145"
       },
       "built_struc_set": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/built_struc_set"
+         "@id": "MIXS:0000778"
       },
       "built_struc_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/built_struc_type"
+         "@id": "MIXS:0000721"
       },
       "calcium": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/calcium"
+         "@id": "MIXS:0000432"
       },
       "carb_dioxide": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/carb_dioxide"
+         "@id": "MIXS:0000097"
       },
       "carb_monoxide": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/carb_monoxide"
+         "@id": "MIXS:0000098"
       },
       "carb_nitro_ratio": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/carb_nitro_ratio"
+         "@id": "MIXS:0000310"
       },
       "ceil_area": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ceil_area"
+         "@id": "MIXS:0000148"
       },
       "ceil_cond": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ceil_cond"
+         "@id": "MIXS:0000779"
       },
       "ceil_finish_mat": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ceil_finish_mat"
+         "@id": "MIXS:0000780"
       },
       "ceil_struc": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ceil_struc"
+         "@id": "MIXS:0000782"
       },
       "ceil_texture": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ceil_texture"
+         "@id": "MIXS:0000783"
       },
       "ceil_thermal_mass": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ceil_thermal_mass"
+         "@id": "MIXS:0000143"
       },
       "ceil_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ceil_type"
+         "@id": "MIXS:0000784"
       },
       "ceil_water_mold": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ceil_water_mold"
+         "@id": "MIXS:0000781"
       },
       "chem_administration": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/chem_administration"
+         "@id": "MIXS:0000751"
       },
       "chem_mutagen": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/chem_mutagen"
+         "@id": "MIXS:0000555"
       },
       "chem_oxygen_dem": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/chem_oxygen_dem"
+         "@id": "MIXS:0000656"
       },
       "chem_treatment": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/chem_treatment"
-      },
-      "chem_treatment_method": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/chem_treatment_method"
+         "@id": "MIXS:0001012"
       },
       "chemical": {
          "@type": "@id"
       },
       "chimera_check": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/chimera_check"
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/chimera_check"
       },
       "chloride": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/chloride"
+         "@id": "MIXS:0000429"
       },
       "chlorophyll": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/chlorophyll"
+         "@id": "MIXS:0000177"
       },
       "climate_environment": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/climate_environment"
+         "@id": "MIXS:0001040"
       },
       "collection_date": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/collection_date"
-      },
-      "compl_appr": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/compl_appr"
-      },
-      "compl_score": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/compl_score"
-      },
-      "compl_software": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/compl_software"
+         "@id": "MIXS:0000011"
       },
       "conduc": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/conduc"
-      },
-      "contam_score": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/contam_score"
-      },
-      "contam_screen_input": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/contam_screen_input"
-      },
-      "contam_screen_param": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/contam_screen_param"
+         "@id": "MIXS:0000692"
       },
       "contig_bp": {
          "@type": "xsd:float",
@@ -524,11 +449,14 @@
       },
       "cool_syst_id": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/cool_syst_id"
+         "@id": "MIXS:0000785"
+      },
+      "core_field": {
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/core_field"
       },
       "crop_rotation": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/crop_rotation"
+         "@id": "MIXS:0000318"
       },
       "ctg_L50": {
          "@type": "xsd:float",
@@ -560,19 +488,19 @@
       },
       "cult_root_med": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/cult_root_med"
+         "@id": "MIXS:0001041"
       },
       "cur_land_use": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/cur_land_use"
+         "@id": "MIXS:0001080"
       },
       "cur_vegetation": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/cur_vegetation"
+         "@id": "MIXS:0000312"
       },
       "cur_vegetation_meth": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/cur_vegetation_meth"
+         "@id": "MIXS:0000314"
       },
       "data_object_set": {
          "@type": "@id"
@@ -587,183 +515,151 @@
       },
       "date_last_rain": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/date_last_rain"
-      },
-      "decontam_software": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/decontam_software"
+         "@id": "MIXS:0000786"
       },
       "density": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/density"
+         "@id": "MIXS:0000435"
       },
       "depos_env": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/depos_env"
+         "@id": "MIXS:0000992"
       },
       "depth": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/depth"
+         "@id": "MIXS:0000018"
       },
       "depth2": {
          "@type": "@id"
       },
-      "dermatology_disord": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/dermatology_disord"
-      },
       "description": {
          "@id": "dcterms:description"
       },
-      "detec_type": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/detec_type"
-      },
       "dew_point": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/dew_point"
-      },
-      "diet_last_six_month": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/diet_last_six_month"
+         "@id": "MIXS:0000129"
       },
       "diether_lipids": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/diether_lipids"
+         "@id": "MIXS:0000178"
       },
       "diss_carb_dioxide": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/diss_carb_dioxide"
+         "@id": "MIXS:0000436"
       },
       "diss_hydrogen": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/diss_hydrogen"
+         "@id": "MIXS:0000179"
       },
       "diss_inorg_carb": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/diss_inorg_carb"
+         "@id": "MIXS:0000434"
       },
       "diss_inorg_nitro": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/diss_inorg_nitro"
+         "@id": "MIXS:0000698"
       },
       "diss_inorg_phosp": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/diss_inorg_phosp"
+         "@id": "MIXS:0000106"
       },
       "diss_iron": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/diss_iron"
+         "@id": "MIXS:0000139"
       },
       "diss_org_carb": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/diss_org_carb"
+         "@id": "MIXS:0000433"
       },
       "diss_org_nitro": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/diss_org_nitro"
+         "@id": "MIXS:0000162"
       },
       "diss_oxygen": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/diss_oxygen"
+         "@id": "MIXS:0000119"
       },
       "diss_oxygen_fluid": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/diss_oxygen_fluid"
+         "@id": "MIXS:0000438"
       },
       "doi": {
          "@type": "@id"
       },
-      "dominant_hand": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/dominant_hand"
-      },
       "door_comp_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/door_comp_type"
+         "@id": "MIXS:0000795"
       },
       "door_cond": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/door_cond"
+         "@id": "MIXS:0000788"
       },
       "door_direct": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/door_direct"
+         "@id": "MIXS:0000789"
       },
       "door_loc": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/door_loc"
+         "@id": "MIXS:0000790"
       },
       "door_mat": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/door_mat"
+         "@id": "MIXS:0000791"
       },
       "door_move": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/door_move"
+         "@id": "MIXS:0000792"
       },
       "door_size": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/door_size"
+         "@id": "MIXS:0000158"
       },
       "door_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/door_type"
+         "@id": "MIXS:0000794"
       },
       "door_type_metal": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/door_type_metal"
+         "@id": "MIXS:0000796"
       },
       "door_type_wood": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/door_type_wood"
+         "@id": "MIXS:0000797"
       },
       "door_water_mold": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/door_water_mold"
-      },
-      "douche": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/douche"
+         "@id": "MIXS:0000793"
       },
       "down_par": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/down_par"
+         "@id": "MIXS:0000703"
       },
       "drainage_class": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/drainage_class"
+         "@id": "MIXS:0001085"
       },
       "drawings": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/drawings"
-      },
-      "drug_usage": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/drug_usage"
+         "@id": "MIXS:0000798"
       },
       "efficiency_percent": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/efficiency_percent"
+         "@id": "MIXS:0000657"
       },
       "elev": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/elev"
+         "@id": "MIXS:0000093"
       },
       "elevator": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/elevator"
+         "@id": "MIXS:0000799"
       },
       "email": {
          "@id": "schema:email"
       },
       "emulsions": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/emulsions"
-      },
-      "encoded_traits": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/encoded_traits"
+         "@id": "MIXS:0000660"
       },
       "encodes": {
          "@type": "@id"
@@ -776,164 +672,147 @@
       },
       "env_broad_scale": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/env_broad_scale"
+         "@id": "MIXS:0000012"
       },
       "env_local_scale": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/env_local_scale"
+         "@id": "MIXS:0000013"
       },
       "env_medium": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/env_medium"
+         "@id": "MIXS:0000014"
       },
       "env_package": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/env_package"
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/env_package"
+      },
+      "environment_field": {
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/environment_field"
       },
       "escalator": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/escalator"
-      },
-      "estimated_size": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/estimated_size"
+         "@id": "MIXS:0000800"
       },
       "ethylbenzene": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ethylbenzene"
+         "@id": "MIXS:0000155"
       },
       "exp_duct": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/exp_duct"
+         "@id": "MIXS:0000144"
       },
       "exp_pipe": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/exp_pipe"
+         "@id": "MIXS:0000220"
       },
       "experimental_factor": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/experimental_factor"
+         "@id": "MIXS:0000008"
       },
       "ext_door": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ext_door"
+         "@id": "MIXS:0000170"
       },
       "ext_wall_orient": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ext_wall_orient"
+         "@id": "MIXS:0000817"
       },
       "ext_window_orient": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ext_window_orient"
+         "@id": "MIXS:0000818"
       },
       "external_database_identifiers": {
          "@type": "@id"
       },
-      "extrachrom_elements": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/extrachrom_elements"
-      },
       "extreme_event": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/extreme_event"
-      },
-      "extreme_salinity": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/extreme_salinity"
+         "@id": "MIXS:0000320"
       },
       "fao_class": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/fao_class"
-      },
-      "feat_pred": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/feat_pred"
+         "@id": "MIXS:0001083"
       },
       "fertilizer_regm": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/fertilizer_regm"
+         "@id": "MIXS:0000556"
       },
       "field": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/field"
+         "@id": "MIXS:0000291"
       },
       "file_size_bytes": {
          "@type": "xsd:int"
       },
       "filter_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/filter_type"
+         "@id": "MIXS:0000765"
       },
       "fire": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/fire"
+         "@id": "MIXS:0001086"
       },
       "fireplace_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/fireplace_type"
+         "@id": "MIXS:0000802"
       },
       "flooding": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/flooding"
+         "@id": "MIXS:0000319"
       },
       "floor_age": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/floor_age"
+         "@id": "MIXS:0000164"
       },
       "floor_area": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/floor_area"
+         "@id": "MIXS:0000165"
       },
       "floor_cond": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/floor_cond"
+         "@id": "MIXS:0000803"
       },
       "floor_count": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/floor_count"
+         "@id": "MIXS:0000225"
       },
       "floor_finish_mat": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/floor_finish_mat"
+         "@id": "MIXS:0000804"
       },
       "floor_struc": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/floor_struc"
+         "@id": "MIXS:0000806"
       },
       "floor_thermal_mass": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/floor_thermal_mass"
+         "@id": "MIXS:0000166"
       },
       "floor_water_mold": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/floor_water_mold"
+         "@id": "MIXS:0000805"
       },
       "fluor": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/fluor"
-      },
-      "foetal_health_stat": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/foetal_health_stat"
+         "@id": "MIXS:0000704"
       },
       "freq_clean": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/freq_clean"
+         "@id": "MIXS:0000226"
       },
       "freq_cook": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/freq_cook"
+         "@id": "MIXS:0000227"
       },
       "functional_annotation_set": {
          "@type": "@id"
       },
       "fungicide_regm": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/fungicide_regm"
+         "@id": "MIXS:0000557"
       },
       "furniture": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/furniture"
+         "@id": "MIXS:0000807"
       },
       "gap_pct": {
          "@type": "xsd:float",
@@ -941,15 +820,11 @@
       },
       "gaseous_environment": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/gaseous_environment"
+         "@id": "MIXS:0000558"
       },
       "gaseous_substances": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/gaseous_substances"
-      },
-      "gastrointest_disord": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/gastrointest_disord"
+         "@id": "MIXS:0000661"
       },
       "gc_avg": {
          "@type": "xsd:float",
@@ -961,22 +836,18 @@
       },
       "gender_restroom": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/gender_restroom"
+         "@id": "MIXS:0000808"
       },
       "genetic_mod": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/genetic_mod"
+         "@id": "MIXS:0000859"
       },
       "genome_feature_set": {
          "@type": "@id"
       },
       "geo_loc_name": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/geo_loc_name"
-      },
-      "gestation_state": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/gestation_state"
+         "@id": "MIXS:0000010"
       },
       "gff_coordinate": {
          "@type": "xsd:integer",
@@ -984,7 +855,7 @@
       },
       "glucosidase_act": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/glucosidase_act"
+         "@id": "MIXS:0000137"
       },
       "GOLD_analysis_project_identifiers": {
          "@type": "@id"
@@ -1000,35 +871,31 @@
       },
       "gravidity": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/gravidity"
+         "@id": "MIXS:0000875"
       },
       "gravity": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/gravity"
+         "@id": "MIXS:0000559"
       },
       "growth_facil": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/growth_facil"
+         "@id": "MIXS:0001043"
       },
       "growth_habit": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/growth_habit"
+         "@id": "MIXS:0001044"
       },
       "growth_hormone_regm": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/growth_hormone_regm"
-      },
-      "gynecologic_disord": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/gynecologic_disord"
+         "@id": "MIXS:0000560"
       },
       "hall_count": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/hall_count"
+         "@id": "MIXS:0000228"
       },
       "handidness": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/handidness"
+         "@id": "MIXS:0000809"
       },
       "has_boolean_value": {
          "@type": "xsd:boolean"
@@ -1069,259 +936,183 @@
       },
       "hc_produced": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/hc_produced"
+         "@id": "MIXS:0000989"
       },
       "hcr": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/hcr"
+         "@id": "MIXS:0000988"
       },
       "hcr_fw_salinity": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/hcr_fw_salinity"
+         "@id": "MIXS:0000406"
       },
       "hcr_geol_age": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/hcr_geol_age"
+         "@id": "MIXS:0000993"
       },
       "hcr_pressure": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/hcr_pressure"
+         "@id": "MIXS:0000395"
       },
       "hcr_temp": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/hcr_temp"
-      },
-      "health_disease_stat": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/health_disease_stat"
+         "@id": "MIXS:0000393"
       },
       "heat_cool_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/heat_cool_type"
+         "@id": "MIXS:0000766"
       },
       "heat_deliv_loc": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/heat_deliv_loc"
-      },
-      "heat_system_deliv_meth": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/heat_system_deliv_meth"
+         "@id": "MIXS:0000810"
       },
       "heat_system_id": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/heat_system_id"
+         "@id": "MIXS:0000833"
       },
       "heavy_metals": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/heavy_metals"
+         "@id": "MIXS:0000652"
       },
       "heavy_metals_meth": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/heavy_metals_meth"
+         "@id": "MIXS:0000343"
       },
       "height_carper_fiber": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/height_carper_fiber"
+         "@id": "MIXS:0000167"
       },
       "herbicide_regm": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/herbicide_regm"
+         "@id": "MIXS:0000561"
       },
       "highest_similarity_score": {
          "@type": "xsd:float"
       },
       "horizon": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/horizon"
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/horizon"
       },
       "horizon_meth": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/horizon_meth"
+         "@id": "MIXS:0000321"
       },
       "host_age": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_age"
-      },
-      "host_blood_press_diast": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_blood_press_diast"
-      },
-      "host_blood_press_syst": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_blood_press_syst"
+         "@id": "MIXS:0000255"
       },
       "host_body_habitat": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_body_habitat"
-      },
-      "host_body_mass_index": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_body_mass_index"
+         "@id": "MIXS:0000866"
       },
       "host_body_product": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_body_product"
+         "@id": "MIXS:0000888"
       },
       "host_body_site": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_body_site"
+         "@id": "MIXS:0000867"
       },
       "host_body_temp": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_body_temp"
+         "@id": "MIXS:0000274"
       },
       "host_color": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_color"
+         "@id": "MIXS:0000260"
       },
       "host_common_name": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_common_name"
+         "@id": "MIXS:0000248"
       },
       "host_diet": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_diet"
-      },
-      "host_disease_stat": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_disease_stat"
+         "@id": "MIXS:0000869"
       },
       "host_dry_mass": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_dry_mass"
-      },
-      "host_family_relationship": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_family_relationship"
+         "@id": "MIXS:0000257"
       },
       "host_genotype": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_genotype"
+         "@id": "MIXS:0000365"
       },
       "host_growth_cond": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_growth_cond"
+         "@id": "MIXS:0000871"
       },
       "host_height": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_height"
-      },
-      "host_hiv_stat": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_hiv_stat"
-      },
-      "host_infra_specific_name": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_infra_specific_name"
-      },
-      "host_infra_specific_rank": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_infra_specific_rank"
+         "@id": "MIXS:0000264"
       },
       "host_last_meal": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_last_meal"
+         "@id": "MIXS:0000870"
       },
       "host_length": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_length"
+         "@id": "MIXS:0000256"
       },
       "host_life_stage": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_life_stage"
-      },
-      "host_occupation": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_occupation"
+         "@id": "MIXS:0000251"
       },
       "host_phenotype": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_phenotype"
-      },
-      "host_pred_appr": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_pred_appr"
-      },
-      "host_pred_est_acc": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_pred_est_acc"
-      },
-      "host_pulse": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_pulse"
+         "@id": "MIXS:0000874"
       },
       "host_sex": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_sex"
+         "@id": "MIXS:0000811"
       },
       "host_shape": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_shape"
-      },
-      "host_spec_range": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_spec_range"
+         "@id": "MIXS:0000261"
       },
       "host_subject_id": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_subject_id"
+         "@id": "MIXS:0000861"
       },
       "host_substrate": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_substrate"
+         "@id": "MIXS:0000252"
       },
       "host_taxid": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_taxid"
+         "@id": "MIXS:0000250"
       },
       "host_tot_mass": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_tot_mass"
+         "@id": "MIXS:0000263"
       },
       "host_wet_mass": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/host_wet_mass"
-      },
-      "hrt": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/hrt"
+         "@id": "MIXS:0000567"
       },
       "humidity": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/humidity"
+         "@id": "MIXS:0000100"
       },
       "humidity_regm": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/humidity_regm"
-      },
-      "hysterectomy": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/hysterectomy"
+         "@id": "MIXS:0000568"
       },
       "id": "@id",
-      "ihmc_ethnicity": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ihmc_ethnicity"
-      },
-      "ihmc_medication_code": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ihmc_medication_code"
-      },
       "indoor_space": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/indoor_space"
+         "@id": "MIXS:0000763"
       },
       "indoor_surf": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/indoor_surf"
+         "@id": "MIXS:0000764"
       },
       "indust_eff_percent": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/indust_eff_percent"
+         "@id": "MIXS:0000662"
       },
       "inorg_particles": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/inorg_particles"
+         "@id": "MIXS:0000664"
       },
       "input_base_count": {
          "@type": "xsd:float",
@@ -1358,15 +1149,14 @@
       },
       "inside_lux": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/inside_lux"
+         "@id": "MIXS:0000168"
       },
       "int_wall_cond": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/int_wall_cond"
+         "@id": "MIXS:0000813"
       },
-      "investigation_type": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/investigation_type"
+      "investigation_field": {
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/investigation_field"
       },
       "is_balanced": {
          "@type": "xsd:boolean"
@@ -1383,32 +1173,24 @@
       "is_transport": {
          "@type": "xsd:boolean"
       },
-      "isol_growth_condt": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/isol_growth_condt"
-      },
       "iw_bt_date_well": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/iw_bt_date_well"
+         "@id": "MIXS:0001010"
       },
       "iwf": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/iwf"
-      },
-      "kidney_disord": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/kidney_disord"
+         "@id": "MIXS:0000455"
       },
       "language": {
          "@type": "xsd:language"
       },
       "last_clean": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/last_clean"
+         "@id": "MIXS:0000814"
       },
       "lat_lon": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/lat_lon"
+         "@id": "MIXS:0000009"
       },
       "latitude": {
          "@type": "xsd:decimal",
@@ -1417,65 +1199,41 @@
       "left_participants": {
          "@type": "@id"
       },
-      "lib_layout": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/lib_layout"
-      },
-      "lib_reads_seqd": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/lib_reads_seqd"
-      },
-      "lib_screen": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/lib_screen"
-      },
-      "lib_size": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/lib_size"
-      },
-      "lib_vector": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/lib_vector"
-      },
       "light_intensity": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/light_intensity"
+         "@id": "MIXS:0000706"
       },
       "light_regm": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/light_regm"
+         "@id": "MIXS:0000569"
       },
       "light_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/light_type"
+         "@id": "MIXS:0000769"
       },
       "link_addit_analys": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/link_addit_analys"
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/link_addit_analys"
       },
       "link_class_info": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/link_class_info"
+         "@id": "MIXS:0000329"
       },
       "link_climate_info": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/link_climate_info"
+         "@id": "MIXS:0000328"
       },
       "lithology": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/lithology"
-      },
-      "liver_disord": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/liver_disord"
+         "@id": "MIXS:0000990"
       },
       "local_class": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/local_class"
+         "@id": "MIXS:0000330"
       },
       "local_class_meth": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/local_class_meth"
+         "@id": "MIXS:0000331"
       },
       "longitude": {
          "@type": "xsd:decimal",
@@ -1484,10 +1242,6 @@
       "lowDepth_contig_num": {
          "@type": "xsd:integer",
          "@id": "https://microbiomedata/schema/workflow_execution_activity/lowDepth_contig_num"
-      },
-      "mag_cov_software": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/mag_cov_software"
       },
       "completeness": {
          "@type": "xsd:float"
@@ -1515,7 +1269,7 @@
       },
       "magnesium": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/magnesium"
+         "@id": "MIXS:0000431"
       },
       "mags_activity_set": {
          "@type": "@id"
@@ -1524,41 +1278,25 @@
          "@type": "@id",
          "@id": "https://microbiomedata/schema/workflow_execution_activity/mags_list"
       },
-      "maternal_health_stat": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/maternal_health_stat"
-      },
       "max_occup": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/max_occup"
+         "@id": "MIXS:0000229"
       },
       "mean_frict_vel": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/mean_frict_vel"
+         "@id": "MIXS:0000498"
       },
       "mean_peak_frict_vel": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/mean_peak_frict_vel"
+         "@id": "MIXS:0000502"
       },
       "mech_struc": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/mech_struc"
+         "@id": "MIXS:0000815"
       },
       "mechanical_damage": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/mechanical_damage"
-      },
-      "medic_hist_perform": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/medic_hist_perform"
-      },
-      "menarche": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/menarche"
-      },
-      "menopause": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/menopause"
+         "@id": "MIXS:0001052"
       },
       "metabolite_quantified": {
          "@type": "@id"
@@ -1583,7 +1321,7 @@
       },
       "methane": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/methane"
+         "@id": "MIXS:0000101"
       },
       "MGnify_analysis_identifiers": {
          "@type": "@id"
@@ -1593,69 +1331,52 @@
       },
       "microbial_biomass": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/microbial_biomass"
+         "@id": "MIXS:0000650"
       },
       "microbial_biomass_meth": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/microbial_biomass_meth"
-      },
-      "mid": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/mid"
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/microbial_biomass_meth"
       },
       "min_q_value": {
          "@type": "xsd:float"
       },
       "mineral_nutr_regm": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/mineral_nutr_regm"
+         "@id": "MIXS:0000570"
       },
       "misc_param": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/misc_param"
-      },
-      "mixs_url": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/mixs_url"
+         "@id": "MIXS:0000752"
       },
       "n_alkanes": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/n_alkanes"
+         "@id": "MIXS:0000503"
       },
       "nitrate": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/nitrate"
+         "@id": "MIXS:0000425"
       },
       "nitrite": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/nitrite"
+         "@id": "MIXS:0000426"
       },
       "nitro": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/nitro"
+         "@id": "MIXS:0000504"
       },
       "nom_analysis_activity_set": {
          "@type": "@id"
       },
-      "non_mineral_nutr_regm": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/non_mineral_nutr_regm"
-      },
-      "nose_mouth_teeth_throat_disord": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/nose_mouth_teeth_throat_disord"
-      },
-      "nose_throat_disord": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/nose_throat_disord"
-      },
       "nucl_acid_amp": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/nucl_acid_amp"
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/nucl_acid_amp"
       },
       "nucl_acid_ext": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/nucl_acid_ext"
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/nucl_acid_ext"
+      },
+      "nucleic_acid_sequence_source_field": {
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/nucleic_acid_sequence_source_field"
       },
       "num_aligned_reads": {
          "@type": "xsd:float",
@@ -1665,37 +1386,29 @@
          "@type": "xsd:float",
          "@id": "https://microbiomedata/schema/workflow_execution_activity/num_input_reads"
       },
-      "num_replicons": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/num_replicons"
-      },
-      "number_contig": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/number_contig"
-      },
       "number_pets": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/number_pets"
+         "@id": "MIXS:0000231"
       },
       "number_plants": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/number_plants"
+         "@id": "MIXS:0000230"
       },
       "number_resident": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/number_resident"
+         "@id": "MIXS:0000232"
       },
       "occup_density_samp": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/occup_density_samp"
+         "@id": "MIXS:0000217"
       },
       "occup_document": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/occup_document"
+         "@id": "MIXS:0000816"
       },
       "occup_samp": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/occup_samp"
+         "@id": "MIXS:0000772"
       },
       "omics_processing_identifiers": {
          "@type": "@id"
@@ -1708,27 +1421,23 @@
       },
       "org_carb": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/org_carb"
+         "@id": "MIXS:0000508"
       },
       "org_matter": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/org_matter"
+         "@id": "MIXS:0000204"
       },
       "org_nitro": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/org_nitro"
+         "@id": "MIXS:0000205"
       },
       "org_particles": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/org_particles"
+         "@id": "MIXS:0000665"
       },
       "organism_count": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/organism_count"
-      },
-      "organism_count_qpcr_info": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/organism_count_qpcr_info"
+         "@id": "MIXS:0000103"
       },
       "output_base_count": {
          "@type": "xsd:float",
@@ -1743,15 +1452,15 @@
       },
       "owc_tvdss": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/owc_tvdss"
+         "@id": "MIXS:0000405"
       },
       "oxy_stat_samp": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/oxy_stat_samp"
+         "@id": "MIXS:0000753"
       },
       "oxygen": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/oxygen"
+         "@id": "MIXS:0000104"
       },
       "part_of": {
          "@type": "@id",
@@ -1759,27 +1468,23 @@
       },
       "part_org_carb": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/part_org_carb"
+         "@id": "MIXS:0000515"
       },
       "part_org_nitro": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/part_org_nitro"
+         "@id": "MIXS:0000719"
       },
       "particle_class": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/particle_class"
-      },
-      "pathogenicity": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/pathogenicity"
+         "@id": "MIXS:0000206"
       },
       "pcr_cond": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/pcr_cond"
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/pcr_cond"
       },
       "pcr_primers": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/pcr_primers"
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/pcr_primers"
       },
       "peptide_sequence_count": {
          "@type": "xsd:integer"
@@ -1792,157 +1497,125 @@
       },
       "permeability": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/permeability"
+         "@id": "MIXS:0000404"
       },
       "perturbation": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/perturbation"
+         "@id": "MIXS:0000754"
       },
       "pesticide_regm": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/pesticide_regm"
-      },
-      "pet_farm_animal": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/pet_farm_animal"
+         "@id": "MIXS:0000573"
       },
       "petroleum_hydrocarb": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/petroleum_hydrocarb"
+         "@id": "MIXS:0000516"
       },
       "ph": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ph"
+         "@id": "MIXS:0001001"
       },
       "ph_meth": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ph_meth"
+         "@id": "MIXS:0001106"
       },
       "ph_regm": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ph_regm"
+         "@id": "MIXS:0001056"
       },
       "phaeopigments": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/phaeopigments"
+         "@id": "MIXS:0000180"
       },
       "phase": {
          "@type": "xsd:integer"
       },
       "phosphate": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/phosphate"
+         "@id": "MIXS:0000505"
       },
       "phosplipid_fatt_acid": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/phosplipid_fatt_acid"
+         "@id": "MIXS:0000181"
       },
       "photon_flux": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/photon_flux"
+         "@id": "MIXS:0000725"
       },
       "plant_growth_med": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/plant_growth_med"
+         "@id": "MIXS:0001057"
       },
       "plant_product": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/plant_product"
+         "@id": "MIXS:0001058"
       },
       "plant_sex": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/plant_sex"
+         "@id": "MIXS:0001059"
       },
       "plant_struc": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/plant_struc"
-      },
-      "ploidy": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ploidy"
+         "@id": "MIXS:0001060"
       },
       "pollutants": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/pollutants"
+         "@id": "MIXS:0000107"
       },
       "pool_dna_extracts": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/pool_dna_extracts"
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/pool_dna_extracts"
       },
       "porosity": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/porosity"
+         "@id": "MIXS:0000211"
       },
       "potassium": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/potassium"
+         "@id": "MIXS:0000430"
       },
       "pour_point": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/pour_point"
+         "@id": "MIXS:0000127"
       },
       "pre_treatment": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/pre_treatment"
-      },
-      "pred_genome_struc": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/pred_genome_struc"
-      },
-      "pred_genome_type": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/pred_genome_type"
-      },
-      "pregnancy": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/pregnancy"
-      },
-      "pres_animal": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/pres_animal"
+         "@id": "MIXS:0000348"
       },
       "pressure": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/pressure"
+         "@id": "MIXS:0000412"
       },
       "previous_land_use": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/previous_land_use"
+         "@id": "MIXS:0000315"
       },
       "previous_land_use_meth": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/previous_land_use_meth"
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/previous_land_use_meth"
       },
       "primary_prod": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/primary_prod"
+         "@id": "MIXS:0000728"
       },
       "primary_treatment": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/primary_treatment"
+         "@id": "MIXS:0000349"
       },
       "principal_investigator": {
          "@type": "@id"
       },
       "prod_rate": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/prod_rate"
+         "@id": "MIXS:0000452"
       },
       "prod_start_date": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/prod_start_date"
+         "@id": "MIXS:0001008"
       },
       "profile_position": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/profile_position"
-      },
-      "project_name": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/project_name"
-      },
-      "propagation": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/propagation"
+         "@id": "MIXS:0001084"
       },
       "protein_spectral_count": {
          "@type": "xsd:integer"
@@ -1950,25 +1623,21 @@
       "protein_sum_masic_abundance": {
          "@type": "xsd:integer"
       },
-      "pulmonary_disord": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/pulmonary_disord"
-      },
       "quad_pos": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/quad_pos"
+         "@id": "MIXS:0000820"
       },
       "radiation_regm": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/radiation_regm"
+         "@id": "MIXS:0000575"
       },
       "rainfall_regm": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/rainfall_regm"
+         "@id": "MIXS:0000576"
       },
       "reactor_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/reactor_type"
+         "@id": "MIXS:0000350"
       },
       "read_based_analysis_activity_set": {
          "@type": "@id"
@@ -1979,264 +1648,232 @@
       "read_QC_analysis_statistic": {
          "@id": "https://microbiomedata/schema/workflow_execution_activity/read_QC_analysis_statistic"
       },
-      "reassembly_bin": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/reassembly_bin"
-      },
       "redox_potential": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/redox_potential"
-      },
-      "ref_biomaterial": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ref_biomaterial"
-      },
-      "ref_db": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ref_db"
+         "@id": "MIXS:0000182"
       },
       "rel_air_humidity": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/rel_air_humidity"
+         "@id": "MIXS:0000121"
       },
       "rel_humidity_out": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/rel_humidity_out"
+         "@id": "MIXS:0000188"
       },
       "rel_samp_loc": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/rel_samp_loc"
+         "@id": "MIXS:0000821"
       },
       "rel_to_oxygen": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/rel_to_oxygen"
+         "@id": "MIXS:0000015"
       },
       "reservoir": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/reservoir"
+         "@id": "MIXS:0000303"
       },
       "resins_pc": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/resins_pc"
-      },
-      "resp_part_matter": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/resp_part_matter"
+         "@id": "MIXS:0000134"
       },
       "right_participants": {
          "@type": "@id"
       },
       "room_air_exch_rate": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/room_air_exch_rate"
-      },
-      "room_architec_element": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/room_architec_element"
+         "@id": "MIXS:0000169"
       },
       "room_condt": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/room_condt"
+         "@id": "MIXS:0000822"
       },
       "room_connected": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/room_connected"
+         "@id": "MIXS:0000826"
       },
       "room_count": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/room_count"
+         "@id": "MIXS:0000234"
       },
       "room_dim": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/room_dim"
+         "@id": "MIXS:0000192"
       },
       "room_door_dist": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/room_door_dist"
+         "@id": "MIXS:0000193"
       },
       "room_door_share": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/room_door_share"
+         "@id": "MIXS:0000242"
       },
       "room_hallway": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/room_hallway"
+         "@id": "MIXS:0000238"
       },
       "room_loc": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/room_loc"
-      },
-      "room_moist_damage_hist": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/room_moist_damage_hist"
+         "@id": "MIXS:0000823"
       },
       "room_net_area": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/room_net_area"
+         "@id": "MIXS:0000194"
       },
       "room_occup": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/room_occup"
+         "@id": "MIXS:0000236"
       },
       "room_samp_pos": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/room_samp_pos"
+         "@id": "MIXS:0000824"
       },
       "room_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/room_type"
+         "@id": "MIXS:0000825"
       },
       "room_vol": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/room_vol"
+         "@id": "MIXS:0000195"
       },
       "room_wall_share": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/room_wall_share"
+         "@id": "MIXS:0000243"
       },
       "room_window_count": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/room_window_count"
+         "@id": "MIXS:0000237"
       },
       "root_cond": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/root_cond"
+         "@id": "MIXS:0001061"
       },
       "root_med_carbon": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/root_med_carbon"
+         "@id": "MIXS:0000577"
       },
       "root_med_macronutr": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/root_med_macronutr"
+         "@id": "MIXS:0000578"
       },
       "root_med_micronutr": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/root_med_micronutr"
+         "@id": "MIXS:0000579"
       },
       "root_med_ph": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/root_med_ph"
+         "@id": "MIXS:0001062"
       },
       "root_med_regl": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/root_med_regl"
+         "@id": "MIXS:0000581"
       },
       "root_med_solid": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/root_med_solid"
+         "@id": "MIXS:0001063"
       },
       "root_med_suppl": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/root_med_suppl"
+         "@id": "MIXS:0000580"
       },
       "salinity": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/salinity"
+         "@id": "MIXS:0000183"
       },
       "salinity_meth": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/salinity_meth"
+         "@id": "MIXS:0000341"
       },
       "salt_regm": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/salt_regm"
+         "@id": "MIXS:0000582"
       },
       "samp_capt_status": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_capt_status"
+         "@id": "MIXS:0000860"
       },
       "samp_collect_device": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_collect_device"
-      },
-      "samp_collection_point": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_collection_point"
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/samp_collect_device"
       },
       "samp_dis_stage": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_dis_stage"
+         "@id": "MIXS:0000249"
       },
       "samp_floor": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_floor"
+         "@id": "MIXS:0000828"
       },
       "samp_loc_corr_rate": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_loc_corr_rate"
+         "@id": "MIXS:0000136"
       },
       "samp_mat_process": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_mat_process"
+         "@id": "MIXS:0000016"
       },
       "samp_md": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_md"
+         "@id": "MIXS:0000413"
       },
       "samp_preserv": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_preserv"
+         "@id": "MIXS:0000463"
       },
       "samp_room_id": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_room_id"
-      },
-      "samp_salinity": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_salinity"
+         "@id": "MIXS:0000244"
       },
       "samp_size": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_size"
+         "@id": "MIXS:0000001"
       },
       "samp_sort_meth": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_sort_meth"
+         "@id": "MIXS:0000216"
       },
       "samp_store_dur": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_store_dur"
+         "@id": "MIXS:0000116"
       },
       "samp_store_loc": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_store_loc"
+         "@id": "MIXS:0000755"
       },
       "samp_store_temp": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_store_temp"
+         "@id": "MIXS:0000110"
       },
       "samp_subtype": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_subtype"
+         "@id": "MIXS:0000999"
       },
       "samp_time_out": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_time_out"
+         "@id": "MIXS:0000196"
       },
       "samp_transport_cond": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_transport_cond"
+         "@id": "MIXS:0000410"
       },
       "samp_tvdss": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_tvdss"
+         "@id": "MIXS:0000409"
       },
       "samp_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_type"
+         "@id": "MIXS:0000998"
       },
       "samp_vol_we_dna_ext": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_vol_we_dna_ext"
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/samp_vol_we_dna_ext"
       },
       "samp_weather": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_weather"
+         "@id": "MIXS:0000827"
       },
       "samp_well_name": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/samp_well_name"
+         "@id": "MIXS:0000296"
       },
       "sample_identifiers": {
          "@type": "@id"
@@ -2258,7 +1895,7 @@
       },
       "saturates_pc": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/saturates_pc"
+         "@id": "MIXS:0000131"
       },
       "scaf_bp": {
          "@type": "xsd:float",
@@ -2310,199 +1947,158 @@
       },
       "season": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/season"
+         "@id": "MIXS:0000829"
       },
       "season_environment": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/season_environment"
+         "@id": "MIXS:0001068"
       },
       "season_precpt": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/season_precpt"
+         "@id": "MIXS:0000645"
       },
       "season_temp": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/season_temp"
+         "@id": "MIXS:0000643"
       },
       "season_use": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/season_use"
+         "@id": "MIXS:0000830"
       },
       "secondary_treatment": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/secondary_treatment"
+         "@id": "MIXS:0000351"
       },
       "sediment_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/sediment_type"
+         "@id": "MIXS:0001078"
       },
       "seq_meth": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/seq_meth"
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/seq_meth"
       },
       "seq_quality_check": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/seq_quality_check"
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/seq_quality_check"
+      },
+      "sequencing_field": {
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/sequencing_field"
       },
       "sewage_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/sewage_type"
-      },
-      "sexual_act": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/sexual_act"
+         "@id": "MIXS:0000215"
       },
       "shading_device_cond": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/shading_device_cond"
+         "@id": "MIXS:0000831"
       },
       "shading_device_loc": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/shading_device_loc"
+         "@id": "MIXS:0000832"
       },
       "shading_device_mat": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/shading_device_mat"
+         "@id": "MIXS:0000245"
       },
       "shading_device_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/shading_device_type"
-      },
-      "shading_device_water_mold": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/shading_device_water_mold"
+         "@id": "MIXS:0000835"
       },
       "sieving": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/sieving"
+         "@id": "MIXS:0000322"
       },
       "silicate": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/silicate"
-      },
-      "sim_search_meth": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/sim_search_meth"
-      },
-      "single_cell_lysis_appr": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/single_cell_lysis_appr"
-      },
-      "single_cell_lysis_prot": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/single_cell_lysis_prot"
+         "@id": "MIXS:0000184"
       },
       "size_frac": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/size_frac"
+         "@id": "MIXS:0000017"
       },
       "size_frac_low": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/size_frac_low"
+         "@id": "MIXS:0000735"
       },
       "size_frac_up": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/size_frac_up"
+         "@id": "MIXS:0000736"
       },
       "slope_aspect": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/slope_aspect"
+         "@id": "MIXS:0000647"
       },
       "slope_gradient": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/slope_gradient"
+         "@id": "MIXS:0000646"
       },
       "sludge_retent_time": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/sludge_retent_time"
-      },
-      "smoker": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/smoker"
+         "@id": "MIXS:0000669"
       },
       "sodium": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/sodium"
+         "@id": "MIXS:0000428"
       },
       "soil_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/soil_type"
+         "@id": "MIXS:0000332"
       },
       "soil_type_meth": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/soil_type_meth"
+         "@id": "MIXS:0000334"
       },
       "solar_irradiance": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/solar_irradiance"
+         "@id": "MIXS:0000112"
       },
       "soluble_inorg_mat": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/soluble_inorg_mat"
+         "@id": "MIXS:0000672"
       },
       "soluble_org_mat": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/soluble_org_mat"
+         "@id": "MIXS:0000673"
       },
       "soluble_react_phosp": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/soluble_react_phosp"
-      },
-      "sop": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/sop"
-      },
-      "sort_tech": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/sort_tech"
+         "@id": "MIXS:0000738"
       },
       "source_mat_id": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/source_mat_id"
-      },
-      "source_uvig": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/source_uvig"
+         "@id": "MIXS:0000026"
       },
       "space_typ_state": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/space_typ_state"
-      },
-      "special_diet": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/special_diet"
+         "@id": "MIXS:0000770"
       },
       "specific": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/specific"
-      },
-      "specific_host": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/specific_host"
+         "@id": "MIXS:0000836"
       },
       "specific_humidity": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/specific_humidity"
+         "@id": "MIXS:0000214"
       },
       "sr_dep_env": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/sr_dep_env"
+         "@id": "MIXS:0000996"
       },
       "sr_geol_age": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/sr_geol_age"
+         "@id": "MIXS:0000997"
       },
       "sr_kerog_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/sr_kerog_type"
+         "@id": "MIXS:0000994"
       },
       "sr_lithology": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/sr_lithology"
+         "@id": "MIXS:0000995"
       },
       "standing_water_regm": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/standing_water_regm"
+         "@id": "MIXS:0001069"
       },
       "start": {
          "@type": "xsd:integer"
@@ -2515,7 +2111,7 @@
       },
       "store_cond": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/store_cond"
+         "@id": "MIXS:0000327"
       },
       "study_identifiers": {
          "@type": "@id"
@@ -2526,25 +2122,13 @@
       "study_set": {
          "@type": "@id"
       },
-      "study_complt_stat": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/study_complt_stat"
-      },
       "subject": {
          "@type": "@id",
          "@id": "https://microbiomedata/schema/annotation/subject"
       },
-      "submitted_to_insdc": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/submitted_to_insdc"
-      },
-      "subspecf_gen_lin": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/subspecf_gen_lin"
-      },
       "substructure_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/substructure_type"
+         "@id": "MIXS:0000767"
       },
       "subsurface_depth": {
          "@type": "@id"
@@ -2554,75 +2138,67 @@
       },
       "sulfate": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/sulfate"
+         "@id": "MIXS:0000423"
       },
       "sulfate_fw": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/sulfate_fw"
+         "@id": "MIXS:0000407"
       },
       "sulfide": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/sulfide"
+         "@id": "MIXS:0000424"
       },
       "surf_air_cont": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/surf_air_cont"
+         "@id": "MIXS:0000759"
       },
       "surf_humidity": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/surf_humidity"
+         "@id": "MIXS:0000123"
       },
       "surf_material": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/surf_material"
+         "@id": "MIXS:0000758"
       },
       "surf_moisture": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/surf_moisture"
+         "@id": "MIXS:0000128"
       },
       "surf_moisture_ph": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/surf_moisture_ph"
+         "@id": "MIXS:0000760"
       },
       "surf_temp": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/surf_temp"
+         "@id": "MIXS:0000125"
       },
       "suspend_part_matter": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/suspend_part_matter"
+         "@id": "MIXS:0000741"
       },
       "suspend_solids": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/suspend_solids"
+         "@id": "MIXS:0000150"
       },
       "tan": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tan"
+         "@id": "MIXS:0000120"
       },
       "target_gene": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/target_gene"
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/target_gene"
       },
       "target_subfragment": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/target_subfragment"
-      },
-      "tax_class": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tax_class"
-      },
-      "tax_ident": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tax_ident"
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/target_subfragment"
       },
       "temp": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/temp"
+         "@id": "MIXS:0000113"
       },
       "temp_out": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/temp_out"
+         "@id": "MIXS:0000197"
       },
       "term": {
          "@type": "@id",
@@ -2630,39 +2206,31 @@
       },
       "tertiary_treatment": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tertiary_treatment"
+         "@id": "MIXS:0000352"
       },
       "texture": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/texture"
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/texture"
       },
       "texture_meth": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/texture_meth"
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/texture_meth"
       },
       "tidal_stage": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tidal_stage"
+         "@id": "MIXS:0000750"
       },
       "tillage": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tillage"
-      },
-      "time_last_toothbrush": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/time_last_toothbrush"
-      },
-      "time_since_last_wash": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/time_since_last_wash"
+         "@id": "MIXS:0001081"
       },
       "tiss_cult_growth_med": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tiss_cult_growth_med"
+         "@id": "MIXS:0001070"
       },
       "toluene": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/toluene"
+         "@id": "MIXS:0000154"
       },
       "too_short_contig_num": {
          "@type": "xsd:integer",
@@ -2670,207 +2238,154 @@
       },
       "tot_carb": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tot_carb"
+         "@id": "MIXS:0000525"
       },
       "tot_depth_water_col": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tot_depth_water_col"
+         "@id": "MIXS:0000634"
       },
       "tot_diss_nitro": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tot_diss_nitro"
+         "@id": "MIXS:0000744"
       },
       "tot_inorg_nitro": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tot_inorg_nitro"
+         "@id": "MIXS:0000745"
       },
       "tot_iron": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tot_iron"
+         "@id": "MIXS:0000105"
       },
       "tot_nitro": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tot_nitro"
+         "@id": "MIXS:0000102"
+      },
+      "tot_nitro_cont_meth": {
+         "@id": "MIXS:0000338"
       },
       "tot_nitro_content": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tot_nitro_content"
+         "@id": "MIXS:0000530"
       },
       "tot_nitro_content_meth": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tot_nitro_content_meth"
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/tot_nitro_content_meth"
       },
       "tot_org_c_meth": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tot_org_c_meth"
+         "@id": "MIXS:0000337"
       },
       "tot_org_carb": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tot_org_carb"
+         "@id": "MIXS:0000533"
       },
       "tot_part_carb": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tot_part_carb"
+         "@id": "MIXS:0000747"
       },
       "tot_phosp": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tot_phosp"
+         "@id": "MIXS:0000117"
       },
       "tot_phosphate": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tot_phosphate"
+         "@id": "MIXS:0000689"
       },
       "tot_sulfur": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tot_sulfur"
+         "@id": "MIXS:0000419"
       },
       "train_line": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/train_line"
+         "@id": "MIXS:0000837"
       },
       "train_stat_loc": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/train_stat_loc"
+         "@id": "MIXS:0000838"
       },
       "train_stop_loc": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/train_stop_loc"
-      },
-      "travel_out_six_month": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/travel_out_six_month"
-      },
-      "trna_ext_software": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/trna_ext_software"
-      },
-      "trnas": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/trnas"
-      },
-      "trophic_level": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/trophic_level"
+         "@id": "MIXS:0000839"
       },
       "turbidity": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/turbidity"
-      },
-      "tvdss_of_hcr_pressure": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tvdss_of_hcr_pressure"
+         "@id": "MIXS:0000191"
       },
       "tvdss_of_hcr_temp": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/tvdss_of_hcr_temp"
-      },
-      "twin_sibling": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/twin_sibling"
+         "@id": "MIXS:0000394"
       },
       "typ_occup_density": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/typ_occup_density"
+         "@id": "MIXS:0000771"
       },
       "unbinned_contig_num": {
          "@type": "xsd:integer",
          "@id": "https://microbiomedata/schema/workflow_execution_activity/unbinned_contig_num"
       },
-      "urine_collect_meth": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/urine_collect_meth"
-      },
-      "urogenit_disord": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/urogenit_disord"
-      },
-      "urogenit_tract_disor": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/urogenit_tract_disor"
-      },
       "ventilation_rate": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ventilation_rate"
+         "@id": "MIXS:0000114"
       },
       "ventilation_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/ventilation_type"
+         "@id": "MIXS:0000756"
       },
       "vfa": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/vfa"
+         "@id": "MIXS:0000152"
       },
       "vfa_fw": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/vfa_fw"
-      },
-      "vir_ident_software": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/vir_ident_software"
-      },
-      "virus_enrich_appr": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/virus_enrich_appr"
+         "@id": "MIXS:0000408"
       },
       "vis_media": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/vis_media"
+         "@id": "MIXS:0000840"
       },
       "viscosity": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/viscosity"
+         "@id": "MIXS:0000126"
       },
       "volatile_org_comp": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/volatile_org_comp"
-      },
-      "votu_class_appr": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/votu_class_appr"
-      },
-      "votu_db": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/votu_db"
-      },
-      "votu_seq_comp_appr": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/votu_seq_comp_appr"
+         "@id": "MIXS:0000115"
       },
       "wall_area": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/wall_area"
+         "@id": "MIXS:0000198"
       },
       "wall_const_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/wall_const_type"
+         "@id": "MIXS:0000841"
       },
       "wall_finish_mat": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/wall_finish_mat"
+         "@id": "MIXS:0000842"
       },
       "wall_height": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/wall_height"
+         "@id": "MIXS:0000221"
       },
       "wall_loc": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/wall_loc"
+         "@id": "MIXS:0000843"
       },
       "wall_surf_treatment": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/wall_surf_treatment"
+         "@id": "MIXS:0000845"
       },
       "wall_texture": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/wall_texture"
+         "@id": "MIXS:0000846"
       },
       "wall_thermal_mass": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/wall_thermal_mass"
+         "@id": "MIXS:0000222"
       },
       "wall_water_mold": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/wall_water_mold"
+         "@id": "MIXS:0000844"
       },
       "was_associated_with": {
          "@type": "@id"
@@ -2883,119 +2398,106 @@
       },
       "wastewater_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/wastewater_type"
+         "@id": "MIXS:0000353"
+      },
+      "water_cont_soil_meth": {
+         "@id": "MIXS:0000323"
       },
       "water_content": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/water_content"
+         "@id": "MIXS:0000185"
       },
       "water_content_soil_meth": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/water_content_soil_meth"
+         "@id": "http://example.com/mixs_for_nmdc_biosamples/water_content_soil_meth"
       },
       "water_current": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/water_current"
+         "@id": "MIXS:0000203"
       },
       "water_cut": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/water_cut"
+         "@id": "MIXS:0000454"
       },
       "water_feat_size": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/water_feat_size"
+         "@id": "MIXS:0000223"
       },
       "water_feat_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/water_feat_type"
-      },
-      "water_production_rate": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/water_production_rate"
+         "@id": "MIXS:0000847"
       },
       "water_temp_regm": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/water_temp_regm"
+         "@id": "MIXS:0000590"
       },
       "watering_regm": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/watering_regm"
+         "@id": "MIXS:0000591"
       },
       "weekday": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/weekday"
-      },
-      "weight_loss_3_month": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/weight_loss_3_month"
-      },
-      "wga_amp_appr": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/wga_amp_appr"
-      },
-      "wga_amp_kit": {
-         "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/wga_amp_kit"
+         "@id": "MIXS:0000848"
       },
       "win": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/win"
+         "@id": "MIXS:0000297"
       },
       "wind_direction": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/wind_direction"
+         "@id": "MIXS:0000757"
       },
       "wind_speed": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/wind_speed"
+         "@id": "MIXS:0000118"
       },
       "window_cond": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/window_cond"
+         "@id": "MIXS:0000849"
       },
       "window_cover": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/window_cover"
+         "@id": "MIXS:0000850"
       },
       "window_horiz_pos": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/window_horiz_pos"
+         "@id": "MIXS:0000851"
       },
       "window_loc": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/window_loc"
+         "@id": "MIXS:0000852"
       },
       "window_mat": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/window_mat"
+         "@id": "MIXS:0000853"
       },
       "window_open_freq": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/window_open_freq"
+         "@id": "MIXS:0000246"
       },
       "window_size": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/window_size"
+         "@id": "MIXS:0000224"
       },
       "window_status": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/window_status"
+         "@id": "MIXS:0000855"
       },
       "window_type": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/window_type"
+         "@id": "MIXS:0000856"
       },
       "window_vert_pos": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/window_vert_pos"
+         "@id": "MIXS:0000857"
       },
       "window_water_mold": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/window_water_mold"
+         "@id": "MIXS:0000854"
       },
       "xylene": {
          "@type": "@id",
-         "@id": "https://microbiomedata/schema/mixs/xylene"
+         "@id": "MIXS:0000156"
       },
       "CreditAssociation": {
          "@id": "prov:Association"

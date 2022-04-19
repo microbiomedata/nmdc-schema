@@ -9,6 +9,11 @@ from linkml_runtime.dumpers import yaml_dumper
 from linkml_runtime.linkml_model import SchemaDefinition
 
 
+# id: https://microbiomedata/schema/mixs
+# name: mixs-schema
+# title: MIxS Schema
+
+
 class TermBroker:
     recon_schema_name = "mixs_for_nmdc_biosamples"
     recon_schema_prefix = "http://example.com/"
@@ -22,7 +27,6 @@ class TermBroker:
         "investigation field",
         "nucleic acid sequence source field",
         "sequencing field",
-        "horizon",
     ]
     static_renamed_imports = {
         "tot_nitro_cont_meth": "tot_nitro_content_meth",
@@ -30,7 +34,29 @@ class TermBroker:
     }
 
     # todo refactor
-    non_mixs_6_slots = {"env_package": "nmdc_mixs_5"}
+    non_mixs_6_slots = {
+        "env_package": "nmdc_mixs_5",
+        "horizon": "nmdc_mixs_5",
+        "link_addit_analys": "nmdc_mixs_5",
+        "microbial_biomass_meth": "nmdc_mixs_5",
+        "pool_dna_extracts": "nmdc_mixs_5",
+        "previous_land_use_meth": "nmdc_mixs_5",
+        "samp_collect_device": "nmdc_mixs_5",
+        "samp_vol_we_dna_ext": "nmdc_mixs_5",
+        "texture": "nmdc_mixs_5",
+        "texture_meth": "nmdc_mixs_5",
+        "tot_nitro_content_meth": "nmdc_mixs_5",
+        "water_content_soil_meth": "nmdc_mixs_5",
+        "nucl_acid_ext": "nmdc_mixs_5",
+        "nucl_acid_amp": "nmdc_mixs_5",
+        "target_gene": "nmdc_mixs_5",
+        "target_subfragment": "nmdc_mixs_5",
+        "pcr_primers": "nmdc_mixs_5",
+        "pcr_cond": "nmdc_mixs_5",
+        "seq_meth": "nmdc_mixs_5",
+        "seq_quality_check": "nmdc_mixs_5",
+        "chimera_check": "nmdc_mixs_5",
+    }
 
     def __init__(self):
         self.term_dol: Optional[Dict[str, List[str]]] = {}
@@ -54,6 +80,8 @@ class TermBroker:
 
     def get_class_slot_names(self, view_alias: str, class_name: str) -> List[str]:
         current_view = self.view_dict[view_alias]
+        # print(current_view.schema.name)
+        # print(class_name)
         cis = current_view.class_induced_slots(class_name)
         current_slot_names = [i.name for i in cis]
         current_slot_names.sort()
@@ -85,12 +113,14 @@ class TermBroker:
         return l_diff
 
     def do_reconstitution(
-        self, view_alias: str, slot_name_list: List[str]
+        self, view_alias: str, legacy_alias: str, slot_name_list: List[str]
     ) -> SchemaDefinition:
         current_schema = SchemaDefinition(
             name=self.recon_schema_name, id=self.recon_schema_id
         )
         current_view = self.view_dict[view_alias]
+
+        legacy_view = self.view_dict[legacy_alias]
 
         all_slots = (
             slot_name_list
@@ -111,6 +141,16 @@ class TermBroker:
                 if len(current_slot.examples) == 1:
                     if current_slot.examples[0].value == "":
                         current_slot.examples = None
+
+            # todo use old range at least through April 22 release
+            legacy_slot = legacy_view.get_slot(current_sn)
+            if legacy_slot:
+                current_slot.range = legacy_slot.range
+                current_slot.is_a = legacy_slot.is_a
+                current_slot.multivalued = legacy_slot.multivalued
+                current_slot.see_also.append(
+                    "https://docs.google.com/document/d/1Vf8wHrElpvk01rMIdnNDt02bE4L2TyfTVR4QR5i7uEo"
+                )
 
             current_slot.source = current_slot.from_schema
             current_schema.slots[current_sn] = current_slot
@@ -154,6 +194,8 @@ mixs_6_slot_names = tb.get_schema_slot_names(view_alias="mixs6", incl_imports=Tr
 nmdc_biosample_slot_names = tb.get_class_slot_names(
     view_alias="nmdc_root", class_name="biosample"
 )
+# # ValueError: No such slot: link_addit_analys and no attribute by that name in ancestors of biosample
+# # when importing mixs_new into nmdc
 # pprint.pprint(nmdc_biosample_slot_names)
 
 with open("../local/secrets.yaml", "r") as stream:
@@ -210,7 +252,10 @@ unwieldly = list(
 
 unwieldly.sort()
 
-reconstituted = tb.do_reconstitution(view_alias="mixs6", slot_name_list=unwieldly)
+reconstituted = tb.do_reconstitution(
+    view_alias="mixs6", legacy_alias="nmdc_mixs_5", slot_name_list=unwieldly
+)
 # recon_text = yaml_dumper.dumps(reconstituted)
 # print(recon_text)
-yaml_dumper.dump(reconstituted, "../src/schema/mixs_6_for_nmdc.yaml")
+
+yaml_dumper.dump(reconstituted, "../src/schema/mixs_new.yaml")

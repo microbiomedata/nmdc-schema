@@ -47,7 +47,7 @@ emit_prefixes:
 # of core types
 imports:
   - linkml:types
-  - mixs
+  - mixs_new
   - core
   - prov
   - workflow_execution_activity

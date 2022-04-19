@@ -11,9 +11,9 @@ shingle_size = 2
 cosine_obj = Cosine(shingle_size)
 
 old_file = "../src/schema/mixs.yaml"
-new_file = "../src/schema/mixs_6_for_nmdc.yaml"
+new_file = "../src/schema/mixs_new.yaml"
 
-tsv_out = "../reports/slot.tsv"
+# tsv_out = "../reports/slot.tsv"
 
 anno_tsv_out = "../reports/slot_annotations_diffs.tsv"
 
@@ -65,19 +65,22 @@ def get_anno_diffs(deep_diff_obj, tsv_file_name, incl_descrs=False):
             to_append = {
                 "slot": current_path[1],
                 "attribute": current_path[2],
-                "old_val": current_vc.t1,
-                "new_val": current_vc.t2,
             }
             if current_path[2] == "description":
                 p0 = cosine_obj.get_profile(current_vc.t1)
                 p1 = cosine_obj.get_profile(current_vc.t2)
                 cos_dist_res = cosine_obj.similarity_profiles(p0, p1)
                 to_append["descr_dist"] = 1 - cos_dist_res
+                to_append["old_desc"] = current_vc.t1
+                to_append["new_desc"] = current_vc.t2
+            else:
+                to_append["old_val"] = current_vc.t1
+                to_append["new_val"] = current_vc.t2
             if current_path[2] == "range":
                 old_element = old_view.get_element(current_vc.t1)
-                to_append["old_range_type"] = type(old_element)
+                to_append["old_range_type"] = type(old_element).class_name
                 new_element = new_view.get_element(current_vc.t2)
-                to_append["new_range_type"] = type(new_element)
+                to_append["new_range_type"] = type(new_element).class_name
             lod.append(to_append)
 
     df = pd.DataFrame(lod)
