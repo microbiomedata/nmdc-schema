@@ -14,12 +14,13 @@ class TermBroker:
     recon_schema_id = f"{recon_schema_prefix}{recon_schema_name}"
     # todo why aren't I using my dependency resolver?!
     recon_schema_imports = ["core"]
+    # horizon is not a parent term
     static_parent_imports = [
         "core field",
         "environment field",
         "investigation field",
         "nucleic acid sequence source field",
-        "sequencing field",
+        "sequencing field", "horizon"
     ]
     static_renamed_imports = {
         "tot_nitro_cont_meth": "tot_nitro_content_meth",

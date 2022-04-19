@@ -6773,6 +6773,27 @@ slots:
     slot_uri: MIXS:0000561
     multivalued: true
     range: string
+  horizon:
+    name: horizon
+    aliases:
+    - horizon
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: enumeration
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Specific layer in the land area which measures parallel to the soil
+      surface and possesses physical characteristics which differ from the layers
+      above and beneath
+    title: horizon
+    from_schema: http://w3id.org/mixs/terms
+    source: http://w3id.org/mixs/terms
+    is_a: core field
+    slot_uri: MIXS:0001082
+    multivalued: false
+    range: horizon_enum
   horizon_meth:
     name: horizon_meth
     aliases:
