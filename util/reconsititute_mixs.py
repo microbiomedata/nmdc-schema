@@ -70,7 +70,7 @@ class TermBroker:
         self.term_dol[list_alias] = term_list
 
     def get_schema_slot_names(
-        self, view_alias: str, incl_imports: bool = True
+            self, view_alias: str, incl_imports: bool = True
     ) -> List[str]:
         current_view = self.view_dict[view_alias]
         current_slot_obj = current_view.all_slots(imports=incl_imports)
@@ -88,7 +88,7 @@ class TermBroker:
         return current_slot_names
 
     def get_mongodb_coll_slot_names(
-        self, mongo_client, db_name: str, coll_name: str, query: Dict
+            self, mongo_client, db_name: str, coll_name: str, query: Dict
     ) -> List[str]:
         mydb = mongo_client[db_name]
         mycol = mydb[coll_name]
@@ -113,7 +113,7 @@ class TermBroker:
         return l_diff
 
     def do_reconstitution(
-        self, view_alias: str, legacy_alias: str, slot_name_list: List[str]
+            self, view_alias: str, legacy_alias: str, slot_name_list: List[str]
     ) -> SchemaDefinition:
         current_schema = SchemaDefinition(
             name=self.recon_schema_name, id=self.recon_schema_id
@@ -123,9 +123,9 @@ class TermBroker:
         legacy_view = self.view_dict[legacy_alias]
 
         all_slots = (
-            slot_name_list
-            + self.static_parent_imports
-            + list(self.static_renamed_imports.keys())
+                slot_name_list
+                + self.static_parent_imports
+                + list(self.static_renamed_imports.keys())
         )
         all_slots.sort()
 
@@ -173,9 +173,9 @@ class TermBroker:
 
 tb = TermBroker()
 
-tb.add_view_from_file(view_alias="nmdc_mixs_5", schema_file="../src/schema/mixs.yaml")
-tb.add_view_from_file(view_alias="nmdc_root", schema_file="../src/schema/nmdc.yaml")
-tb.add_view_from_file(view_alias="mixs6", schema_file="../mixs/model/schema/mixs.yaml")
+tb.add_view_from_file(view_alias="nmdc_mixs_5", schema_file="src/schema/mixs.yaml")
+tb.add_view_from_file(view_alias="nmdc_root", schema_file="src/schema/nmdc.yaml")
+tb.add_view_from_file(view_alias="mixs6", schema_file="mixs/model/schema/mixs.yaml")
 tb.add_view_from_file(
     view_alias="nmdc_dh",
     schema_file="https://raw.githubusercontent.com/microbiomedata/sheets_and_friends/issue-100-netlify-linkml-datastructure/artifacts/nmdc_dh.yaml",
@@ -198,7 +198,7 @@ nmdc_biosample_slot_names = tb.get_class_slot_names(
 # # when importing mixs_new into nmdc
 # pprint.pprint(nmdc_biosample_slot_names)
 
-with open("../local/secrets.yaml", "r") as stream:
+with open("local/secrets.yaml", "r") as stream:
     try:
         secrets = yaml.safe_load(stream)
     except yaml.YAMLError as exc:
@@ -258,4 +258,4 @@ reconstituted = tb.do_reconstitution(
 # recon_text = yaml_dumper.dumps(reconstituted)
 # print(recon_text)
 
-yaml_dumper.dump(reconstituted, "../src/schema/mixs_new.yaml")
+yaml_dumper.dump(reconstituted, "src/schema/mixs_new.yaml")

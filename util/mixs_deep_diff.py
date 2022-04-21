@@ -10,14 +10,12 @@ INCLUDE_DESCRIPTIONS = True
 shingle_size = 2
 cosine_obj = Cosine(shingle_size)
 
-old_file = "../src/schema/mixs.yaml"
-new_file = "../src/schema/mixs_new.yaml"
+old_file = "src/schema/mixs.yaml"
+new_file = "src/schema/mixs_new.yaml"
 
-# tsv_out = "../reports/slot.tsv"
+anno_tsv_out = "reports/slot_annotations_diffs.tsv"
 
-anno_tsv_out = "../reports/slot_annotations_diffs.tsv"
-
-slot_diff_yaml_out = "../reports/slot_diffs.yaml"
+slot_diff_yaml_out = "reports/slot_diffs.yaml"
 
 
 def y_file_to_dict(y_file_name):
@@ -38,9 +36,9 @@ def get_slots_diff(deep_diff_obj, delta_type):
         current_path = current_dds.path(output_format="list")
         # print(current_path)
         if (
-            len(current_path) == 3
-            and current_path[0] == "slots"
-            and current_path[2] == "name"
+                len(current_path) == 3
+                and current_path[0] == "slots"
+                and current_path[2] == "name"
         ):
             slots_diff.add(current_path[1])
         if len(current_path) == 2 and current_path[0] == "slots":
@@ -58,9 +56,9 @@ def get_anno_diffs(deep_diff_obj, tsv_file_name, incl_descrs=False):
     for current_vc in vc:
         current_path = current_vc.path(output_format="list")
         if (
-            len(current_path) == 3
-            and current_path[0] == "slots"
-            and (current_path[2] != "description" or incl_descrs)
+                len(current_path) == 3
+                and current_path[0] == "slots"
+                and (current_path[2] != "description" or incl_descrs)
         ):
             to_append = {
                 "slot": current_path[1],

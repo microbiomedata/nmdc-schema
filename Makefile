@@ -230,3 +230,31 @@ validate-%: test/data/%.json jsonschema/nmdc.schema.json
 
 validate-invalid-%: test/data/invalid_schemas/%.json jsonschema/nmdc.schema.json
 	! $(RUN) jsonschema -i $< $(word 2, $^)
+
+.PHONY: mixs-updating test6
+
+test6: mixs-updating test
+	yq '.imports[1] = "mixs"' src/schema/nmdc.yaml > src/schema/temp
+	mv src/schema/temp src/schema/nmdc.yaml
+
+mixs-updating:
+	# make sure that the nmdc schema
+	# currently requires GO-based yq
+	# there are other solutions
+	# would be better to do this by value, not index
+	yq '.imports[1] = "mixs"' src/schema/nmdc.yaml > src/schema/temp
+	mv src/schema/temp src/schema/nmdc.yaml
+	rm -rf reports/slot_annotations_diffs.tsv
+	rm -rf reports/slot_diffs.yaml
+	rm -rf src/schema/mixs_new.yaml
+	# several minutes
+	# currently requires ssh tunnel to NMDC mongodb on NERSC SPIN
+	# and all accounts implied by that
+	# todo  replace with direct API calls
+	# output = src/schema/mixs_new.yaml
+	poetry run python util/reconsititute_mixs.py
+	# output goes in report/
+	poetry run python util/mixs_deep_diff.py
+	yq '.imports[1] = "mixs_new"' src/schema/nmdc.yaml > src/schema/temp
+	mv src/schema/temp src/schema/nmdc.yaml
+
