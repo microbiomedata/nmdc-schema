@@ -257,4 +257,5 @@ mixs-updating:
 	poetry run python util/mixs_deep_diff.py
 	yq '.imports[1] = "mixs_new"' src/schema/nmdc.yaml > src/schema/temp
 	mv src/schema/temp src/schema/nmdc.yaml
+	poetry run python util/biosamples_from_NMDC_api.py
 
