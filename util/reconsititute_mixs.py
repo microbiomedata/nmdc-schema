@@ -8,6 +8,8 @@ from linkml_runtime import SchemaView
 from linkml_runtime.dumpers import yaml_dumper
 from linkml_runtime.linkml_model import SchemaDefinition
 
+import difflib
+
 
 # id: https://microbiomedata/schema/mixs
 # name: mixs-schema
@@ -35,27 +37,27 @@ class TermBroker:
 
     # todo refactor
     non_mixs_6_slots = {
-        "env_package": "nmdc_mixs_5",
-        "horizon": "nmdc_mixs_5",
-        "link_addit_analys": "nmdc_mixs_5",
-        "microbial_biomass_meth": "nmdc_mixs_5",
-        "pool_dna_extracts": "nmdc_mixs_5",
-        "previous_land_use_meth": "nmdc_mixs_5",
-        "samp_collect_device": "nmdc_mixs_5",
-        "samp_vol_we_dna_ext": "nmdc_mixs_5",
-        "texture": "nmdc_mixs_5",
-        "texture_meth": "nmdc_mixs_5",
-        "tot_nitro_content_meth": "nmdc_mixs_5",
-        "water_content_soil_meth": "nmdc_mixs_5",
-        "nucl_acid_ext": "nmdc_mixs_5",
-        "nucl_acid_amp": "nmdc_mixs_5",
-        "target_gene": "nmdc_mixs_5",
-        "target_subfragment": "nmdc_mixs_5",
-        "pcr_primers": "nmdc_mixs_5",
-        "pcr_cond": "nmdc_mixs_5",
-        "seq_meth": "nmdc_mixs_5",
-        "seq_quality_check": "nmdc_mixs_5",
-        "chimera_check": "nmdc_mixs_5",
+        "env_package": "lost_in_mixs_6",
+        "horizon": "nmdc_mixs_5_and_6",
+        "link_addit_analys": "nmdc_mixs_5_and_6",
+        "microbial_biomass_meth": "nmdc_mixs_5_and_6",
+        "pool_dna_extracts": "nmdc_mixs_5_and_6",
+        "previous_land_use_meth": "nmdc_mixs_5_and_6",
+        "samp_collect_device": "nmdc_mixs_5_and_6",
+        "texture": "nmdc_mixs_5_and_6",
+        "texture_meth": "nmdc_mixs_5_and_6",
+        "tot_nitro_content_meth": "renamed_in_mixs_6",
+        "water_content_soil_meth": "renamed_in_mixs_6",
+        "chimera_check": "nmdc_use-omics_processing",
+        "nucl_acid_amp": "nmdc_use-omics_processing",
+        "nucl_acid_ext": "nmdc_use-omics_processing",
+        "pcr_cond": "nmdc_use-omics_processing",
+        "pcr_primers": "nmdc_use-omics_processing",
+        "samp_vol_we_dna_ext": "nmdc_use-omics_processing",
+        "seq_meth": "nmdc_use-omics_processing",
+        "seq_quality_check": "nmdc_use-omics_processing",
+        "target_gene": "nmdc_use-omics_processing",
+        "target_subfragment": "nmdc_use-omics_processing",
     }
 
     def __init__(self):
@@ -70,7 +72,7 @@ class TermBroker:
         self.term_dol[list_alias] = term_list
 
     def get_schema_slot_names(
-            self, view_alias: str, incl_imports: bool = True
+        self, view_alias: str, incl_imports: bool = True
     ) -> List[str]:
         current_view = self.view_dict[view_alias]
         current_slot_obj = current_view.all_slots(imports=incl_imports)
@@ -88,7 +90,7 @@ class TermBroker:
         return current_slot_names
 
     def get_mongodb_coll_slot_names(
-            self, mongo_client, db_name: str, coll_name: str, query: Dict
+        self, mongo_client, db_name: str, coll_name: str, query: Dict
     ) -> List[str]:
         mydb = mongo_client[db_name]
         mycol = mydb[coll_name]
@@ -113,7 +115,7 @@ class TermBroker:
         return l_diff
 
     def do_reconstitution(
-            self, view_alias: str, legacy_alias: str, slot_name_list: List[str]
+        self, view_alias: str, legacy_alias: str, slot_name_list: List[str]
     ) -> SchemaDefinition:
         current_schema = SchemaDefinition(
             name=self.recon_schema_name, id=self.recon_schema_id
@@ -123,9 +125,9 @@ class TermBroker:
         legacy_view = self.view_dict[legacy_alias]
 
         all_slots = (
-                slot_name_list
-                + self.static_parent_imports
-                + list(self.static_renamed_imports.keys())
+            slot_name_list
+            + self.static_parent_imports
+            + list(self.static_renamed_imports.keys())
         )
         all_slots.sort()
 
@@ -157,8 +159,8 @@ class TermBroker:
 
         # todo refactor
         for k, v in self.non_mixs_6_slots.items():
-            print(f"extra slot {k} from {v}")
-            extra_view = self.view_dict[v]
+            print(f"extra slot {k} ({v})")
+            extra_view = self.view_dict["nmdc_mixs_5"]
             extra_slot = extra_view.get_slot(k)
             extra_slot.source = extra_view.schema.id
             current_schema.slots[k] = extra_slot
