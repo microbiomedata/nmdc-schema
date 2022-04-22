@@ -281,6 +281,7 @@ include_intersection.sort()
 pprint.pprint(include_intersection)
 
 merged = recat.merge(right=match_frame, how="left", on="slot")
+
 temp = merged.loc[
     merged["slot_raw"].isin(list(match_frame["slot"])) & merged["schema"].eq("NMDC"),
     ["schema", "slot_raw", "match", "rank", "mongodb"],
