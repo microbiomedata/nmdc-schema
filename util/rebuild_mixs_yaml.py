@@ -6,6 +6,37 @@ from linkml_runtime.dumpers import yaml_dumper
 from linkml_runtime.linkml_model import SchemaDefinition, Annotation
 from sqldf import sqldf
 
+# this script, in combination with slot_roster.py, creates a MIxS-subset import file
+# for use with the NMDC schema
+# the output (can) include the slots from the latest MIxS model,
+# as long as that has been pulled into the local submodule
+
+# todo we also import slots that are used in the NMDC's DataHarmonizer templates
+#  even if they we never imported into the NMDC schema before
+
+
+# and we are NOT importing MIxS slots that were included in the legacy NMDC MIxS import
+# but were never associated with any class
+
+
+# This script can overwrite some of the attributes based on legacy NMDC usage
+# ie, it doesn't make sense to change the schema if the data backend
+# or downstream data consumers still expect legacy ranges, etc.
+
+# this list defines the attributes which will be held back to the legacy values
+keep_vals_from_legacy = [
+    "is_a",
+    "multivalued",
+    "range",
+]
+
+# and this provides a see_also link for the terms that have held-back attribute values
+# might be nice to use something official like an NMDC page
+# but for now I am considering a Google Docs page, or just a link to this script via GH
+use_legacy_see_also = "http://example.com"
+
+destination_schema_file = "../src/schema/mixs_rebuild.yaml"
+
 mixs_5_file = "../src/schema/mixs.yaml"
 mixs_5_view = SchemaView(mixs_5_file)
 
@@ -14,6 +45,8 @@ mixs_6_view = SchemaView(mixs_6_file)
 
 slot_roster_file = "../reports/slot_roster.tsv"
 slot_roster_frame = pd.read_csv(slot_roster_file, sep="\t", low_memory=False)
+
+# todo mixed metaphors of sqldf and .loc indexing
 
 query = """
 SELECT
@@ -42,7 +75,21 @@ where
 now_available = sqldf.run(query)
 na_set = set(now_available["slot"])
 
-include_intersection = list(na_set.intersection(set(legacy_mixs_usage["slot"])))
+query = """
+select
+    distinct slot
+from
+    slot_roster_frame
+where
+    "schema" = 'nmdc_dh'
+    and slot_schema = 'http://w3id.org/mixs/terms'
+"""
+
+from_dh = sqldf.run(query)
+
+include_intersection = na_set.intersection(set(legacy_mixs_usage["slot"]))
+include_intersection = include_intersection.intersection(set(from_dh["slot"]))
+include_intersection = list(include_intersection)
 include_intersection.sort()
 
 # print(slot_roster_frame['no_good_match'].value_counts(dropna=False))
@@ -91,7 +138,7 @@ rebuild_mixs_schema = SchemaDefinition(
     name=mixs_5_view.schema.name,
     id=mixs_5_view.schema.id,
     title=mixs_5_view.schema.title,
-    imports=mixs_5_view.schema.imports
+    imports=mixs_5_view.schema.imports,
 )
 
 appended_intersection = include_intersection + list(replace_with_new["match"])
@@ -113,12 +160,10 @@ for current_slot_name in appended_intersection:
     range_obj = mixs_6_view.get_element(temp.range)
     range_type = type(range_obj)
     range_type_name = range_type.class_name
-    if range_type_name == 'enum_definition':
+    if range_type_name == "enum_definition":
         rebuild_mixs_schema.enums[temp.range] = range_obj
     if temp.is_a:
-        print(temp.is_a)
         is_a_obj = mixs_6_view.get_slot(temp.is_a)
-        print(is_a_obj)
         rebuild_mixs_schema.slots[temp.is_a] = is_a_obj
 
 for current_slot_name in salvage_from_legacy:
@@ -133,7 +178,26 @@ for current_slot_name in salvage_from_legacy:
     range_obj = mixs_5_view.get_element(temp.range)
     range_type = type(range_obj)
     range_type_name = range_type.class_name
-    if range_type_name == 'enum_definition':
+    if range_type_name == "enum_definition":
         rebuild_mixs_schema.enums[temp.range] = range_obj
 
-yaml_dumper.dump(rebuild_mixs_schema, "../src/schema/mixs_rebuild.yaml")
+legagacy_schema_slots = mixs_5_view.all_slots()
+legagacy_schema_slotnames = list(legagacy_schema_slots.keys())
+legagacy_schema_slotnames.sort()
+
+rebuild_mixs_schema_slots = rebuild_mixs_schema.slots
+rebuild_mixs_schema_slotnames = list(rebuild_mixs_schema_slots.keys())
+rebuild_mixs_schema_slotnames.sort()
+
+# todo also add new see_also
+for current_slot_name in rebuild_mixs_schema_slotnames:
+    if current_slot_name in legagacy_schema_slotnames:
+        legacy_slot_obj = mixs_5_view.get_slot(current_slot_name)
+        for current_use_legacy in keep_vals_from_legacy:
+            print(f"{current_slot_name} {current_use_legacy}")
+            rebuild_mixs_schema.slots[current_slot_name][
+                current_use_legacy
+            ] = mixs_5_view.schema.slots[current_slot_name][current_use_legacy]
+    rebuild_mixs_schema.slots[current_slot_name].see_also.append(use_legacy_see_also)
+
+yaml_dumper.dump(rebuild_mixs_schema, destination_schema_file)
