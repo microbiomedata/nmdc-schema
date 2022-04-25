@@ -33,7 +33,7 @@ keep_vals_from_legacy = [
 # and this provides a see_also link for the terms that have held-back attribute values
 # might be nice to use something official like an NMDC page
 # but for now I am considering a Google Docs page, or just a link to this script via GH
-use_legacy_see_also = "http://example.com"
+use_legacy_see_also = "https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py"
 
 destination_schema_file = "../src/schema/mixs_rebuild.yaml"
 
