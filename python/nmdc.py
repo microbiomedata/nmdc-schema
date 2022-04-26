@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-26T08:59:48
+# Generation date: 2022-04-26T12:28:07
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -5379,8 +5379,7 @@ slots.core_field = Slot(uri="str(uriorcurie)", name="core field", curie=None,
                    model_uri=NMDC.core_field, domain=None, range=Optional[str])
 
 slots.add_recov_method = Slot(uri=MIXS['0001009'], name="add_recov_method", curie=MIXS.curie('0001009'),
-                   model_uri=NMDC.add_recov_method, domain=None, range=Optional[Union[dict, TextValue]],
-                   pattern=re.compile(r'^(Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer Addition|Surfactant Addition|Not Applicable|other);([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$'))
+                   model_uri=NMDC.add_recov_method, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.additional_info = Slot(uri=MIXS['0000300'], name="additional_info", curie=MIXS.curie('0000300'),
                    model_uri=NMDC.additional_info, domain=None, range=Optional[Union[dict, TextValue]])

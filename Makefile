@@ -262,18 +262,19 @@ reports/slot_annotations_diffs.tsv: src/schema/mixs_new.yaml
 		--legacy_mixs_module_in src/schema/mixs_legacy.yaml \
 		--current_mixs_module_in $<
 
-.PHONY: new_test new_clean
+.PHONY: post_test mixs_clean
 
-#	poetry run python util/biosamples_from_NMDC_api.py
+post_test: clean mixs_clean reports/slot_annotations_diffs.tsv all
+	cp python/nmdc.py nmdc_schema/nmdc.py
+	poetry run python biosamples_from_NMDC_api.py
+	# todo add check over omics processings too?
 
-new_test: clean new_clean reports/slot_annotations_diffs.tsv all
-	# todo add check over all biosamples and omics processings
-
-new_clean:
+mixs_clean:
 	rm -rf reports/slot_annotations_diffs.tsv
 	rm -rf reports/slot_diffs.yaml
 	rm -rf reports/slot_roster.tsv
 	rm -rf src/schema/mixs*yaml
 	curl -o src/schema/mixs.yaml https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
 	curl -o src/schema/nmdc.yaml https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml
+	curl -o nmdc_schema/nmdc.py https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/nmdc_schema/nmdc.py
 	cp src/schema/mixs.yaml src/schema/mixs_legacy.yaml

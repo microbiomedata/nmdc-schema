@@ -1,33 +1,39 @@
-from linkml_runtime.dumpers import yaml_dumper
-
-from nmdc_schema.nmdc import (
-    Biosample,
-    ControlledTermValue,
-    QuantityValue,
-    TextValue,
-    GeolocationValue,
-)
-
-# this is loading the Biosample definition from PyPI?, not from the latest local files
-# so bisample has a tot_nitro_content_meth but not a tot_nitro_cont_meth slot
-
-# from python.nmdc import (
-#     Biosample,
-#     ControlledTermValue,
-#     QuantityValue,
-#     TextValue,
-#     GeolocationValue,
-# )
-
-
-import requests
-
-# todo should also run over omics processings and maybe some others
-
-# from linkml_runtime.loaders import yaml_loader
+# from linkml_runtime.dumpers import yaml_dumper
 # import inspect
 # import pandas as pd
 # import yaml
+
+# QuantityValue, GeolocationValue
+from python.nmdc import (
+    Biosample,
+    ControlledTermValue,
+    TextValue
+)
+
+import requests
+
+# todo make me a test
+
+test_bs = {
+    "id": "gold:Gb0239919",
+    "name": "ALTERED Anthropogenic terrestrial soil microbial communities from Pennsylvania, USA - Shade23.Cen03.14102015",
+    "part_of": ["gold:Gs0154244"],
+    "env_broad_scale": ControlledTermValue(
+        has_raw_value="ENVO:01000219", was_generated_by=None, type=None, term=None
+    ),
+    "env_local_scale": ControlledTermValue(
+        has_raw_value="ENVO:00002204", was_generated_by=None, type=None, term=None
+    ),
+    "env_medium": ControlledTermValue(
+        has_raw_value="ENVO:00001998", was_generated_by=None, type=None, term=None
+    ),
+    # "UNDEFINED": "UNDEFINED"
+    "tot_nitro_cont_meth": TextValue(has_raw_value="careful measuring"),
+    # "tot_nitro_content_meth": TextValue(has_raw_value="careful measuring"),
+}
+
+# todo should also run over omics processings and maybe some others
+
 
 current_page = 1
 cumulative_bs = []
@@ -43,69 +49,6 @@ while True:
         break
     cumulative_bs = cumulative_bs + res_res
     print(f"cumulative biosamples: {len(cumulative_bs)}")
-
-# cumulative_bs.append({"name": "insufficient"})
-
-test_bs = {
-    "id": "gold:Gb0239919",
-    "name": "ALTERED Anthropogenic terrestrial soil microbial communities from Pennsylvania, USA - Shade23.Cen03.14102015",
-    "description": "Anthropogenic terrestrial soil microbial communities from Pennsylvania, USA",
-    "part_of": ["gold:Gs0154244"],
-    "env_broad_scale": ControlledTermValue(
-        has_raw_value="ENVO:01000219", was_generated_by=None, type=None, term=None
-    ),
-    "env_local_scale": ControlledTermValue(
-        has_raw_value="ENVO:00002204", was_generated_by=None, type=None, term=None
-    ),
-    "env_medium": ControlledTermValue(
-        has_raw_value="ENVO:00001998", was_generated_by=None, type=None, term=None
-    ),
-    "type": "nmdc:Biosample",
-    "depth": QuantityValue(
-        has_raw_value=None,
-        was_generated_by=None,
-        type=None,
-        has_unit="meter",
-        has_numeric_value=None,
-        has_minimum_numeric_value=None,
-        has_maximum_numeric_value=None,
-    ),
-    "geo_loc_name": TextValue(
-        has_raw_value="USA: Pennsylvania,Borough of Centralia",
-        was_generated_by=None,
-        type=None,
-        language=None,
-    ),
-    "lat_lon": GeolocationValue(
-        has_raw_value="40.798 -76.341133",
-        was_generated_by=None,
-        type=None,
-        latitude=40.798,
-        longitude=-76.341133,
-    ),
-    "ecosystem": "Environmental",
-    "ecosystem_category": "Terrestrial",
-    "ecosystem_type": "Soil",
-    "ecosystem_subtype": "Unclassified",
-    "specific_ecosystem": "Unclassified",
-    "add_date": "2019-09-03T00:00:00",
-    "depth2": QuantityValue(
-        has_raw_value=None,
-        was_generated_by=None,
-        type=None,
-        has_unit="meter",
-        has_numeric_value=None,
-        has_minimum_numeric_value=None,
-        has_maximum_numeric_value=None,
-    ),
-    "habitat": "Anthropogenic terrestrial soil",
-    "location": "USA",
-    "mod_date": "2022-04-08T00:00:00",
-    "GOLD_sample_identifiers": ["gold:Gb0239919"],
-    # "UNDEFINED": "UNDEFINED"
-    # "tot_nitro_cont_meth": "careful measuring",
-    "tot_nitro_content_meth": TextValue(has_raw_value="careful measuring"),
-}
 
 cumulative_bs.append(test_bs)
 

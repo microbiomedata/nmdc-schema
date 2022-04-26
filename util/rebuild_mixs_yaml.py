@@ -161,12 +161,12 @@ def cli(
         try:
             nmdc_dict = yaml.safe_load(stream)
         except yaml.YAMLError as exc:
-            print(exc)
+            logger.warning(exc)
 
     for i in rwn_lod:
-        print(i)
+        logger.info(i)
         temp = nmdc_dict['classes'][i['class']]['slots']
-        pprint.pprint(temp)
+        # pprint.pprint(temp)
         temp.remove(i['slot_raw'])
         temp.append(i['match'])
         nmdc_dict['classes'][i['class']]['slots'] = temp
@@ -251,15 +251,16 @@ def cli(
     rebuild_mixs_schema_slotnames = list(rebuild_mixs_schema_slots.keys())
     rebuild_mixs_schema_slotnames.sort()
 
-    # todo also add new see_also
     for current_slot_name in rebuild_mixs_schema_slotnames:
         if current_slot_name in legacy_schema_slotnames:
-            # legacy_slot_obj = mixs_5_view.get_slot(current_slot_name)
             for current_use_legacy in use_legacy:
                 rebuild_mixs_schema.slots[current_slot_name][
                     current_use_legacy
                 ] = mixs_5_view.schema.slots[current_slot_name][current_use_legacy]
         rebuild_mixs_schema.slots[current_slot_name].see_also.append(legacy_see_also)
+
+    # todo this is way too ad-hoc
+    rebuild_mixs_schema.slots['add_recov_method'].pattern = None
 
     yaml_dumper.dump(rebuild_mixs_schema, output_yaml)
 
