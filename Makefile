@@ -231,18 +231,9 @@ validate-%: test/data/%.json jsonschema/nmdc.schema.json
 validate-invalid-%: test/data/invalid_schemas/%.json jsonschema/nmdc.schema.json
 	! $(RUN) jsonschema -i $< $(word 2, $^)
 
-.PHONY: mixs-updating
+# ---
 
 reports/slot_roster.tsv:
-	curl -o src/schema/mixs.yaml https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
-	curl -o src/schema/nmdc.yaml https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml
-	# make sure that the nmdc schema
-	# currently requires GO-based yq
-	# there are other solutions
-	# would be better to do this by value, not index
-#	yq '.imports[1] = "mixs"' src/schema/nmdc.yaml > src/schema/temp
-#	mv src/schema/temp src/schema/nmdc.yaml
-	cp src/schema/mixs.yaml src/schema/mixs_legacy.yaml
 	poetry run python util/slot_roster.py \
 		--input_paths "mixs/model/schema/mixs.yaml" \
 		--input_paths "src/schema/nmdc.yaml" \
@@ -271,20 +262,18 @@ reports/slot_annotations_diffs.tsv: src/schema/mixs_new.yaml
 		--legacy_mixs_module_in src/schema/mixs_legacy.yaml \
 		--current_mixs_module_in $<
 
-new_test: new_clean reports/slot_annotations_diffs.tsv test
-	# todo add check over all biosamples and omics processings
-
 .PHONY: new_test new_clean
 
-#	poetry run python util/mixs_deep_diff.py
-#	yq '.imports[1] = "mixs_new"' src/schema/nmdc.yaml > src/schema/temp
-#	mv src/schema/temp src/schema/nmdc.yaml
 #	poetry run python util/biosamples_from_NMDC_api.py
+
+new_test: clean new_clean reports/slot_annotations_diffs.tsv all
+	# todo add check over all biosamples and omics processings
 
 new_clean:
 	rm -rf reports/slot_annotations_diffs.tsv
 	rm -rf reports/slot_diffs.yaml
 	rm -rf reports/slot_roster.tsv
-	rm -rf src/schema/mixs*yaml*
-	rm -rf src/schema/mixs_legacy.yaml
-	rm -rf src/schema/mixs_new.yaml
+	rm -rf src/schema/mixs*yaml
+	curl -o src/schema/mixs.yaml https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+	curl -o src/schema/nmdc.yaml https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml
+	cp src/schema/mixs.yaml src/schema/mixs_legacy.yaml

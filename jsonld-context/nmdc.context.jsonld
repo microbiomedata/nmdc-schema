@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-04-19T19:21:01\n    Schema: NMDC\n    metamodel version: 1.7.0\n    model version: 2.1.0\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC).\n  \nThis schema is organized into distinct modules:\n  \n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-04-26T08:59:11\n    Schema: NMDC\n    metamodel version: 1.7.0\n    model version: 2.1.0\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC).\n  \nThis schema is organized into distinct modules:\n  \n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "CAS": "http://identifiers.org/cas/",
       "CATH": "http://identifiers.org/cath/",
@@ -320,6 +320,14 @@
          "@type": "@id",
          "@id": "MIXS:0000175"
       },
+      "blood_press_diast": {
+         "@type": "@id",
+         "@id": "MIXS:0000258"
+      },
+      "blood_press_syst": {
+         "@type": "@id",
+         "@id": "MIXS:0000259"
+      },
       "bromide": {
          "@type": "@id",
          "@id": "MIXS:0000176"
@@ -408,6 +416,9 @@
          "@type": "@id",
          "@id": "MIXS:0000656"
       },
+      "chem_treat_method": {
+         "@id": "MIXS:0000457"
+      },
       "chem_treatment": {
          "@type": "@id",
          "@id": "MIXS:0001012"
@@ -417,7 +428,7 @@
       },
       "chimera_check": {
          "@type": "@id",
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/chimera_check"
+         "@id": "MIXS:0000052"
       },
       "chloride": {
          "@type": "@id",
@@ -452,7 +463,7 @@
          "@id": "MIXS:0000785"
       },
       "core_field": {
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/core_field"
+         "@id": "https://microbiomedata/schema/mixs/core_field"
       },
       "crop_rotation": {
          "@type": "@id",
@@ -684,10 +695,10 @@
       },
       "env_package": {
          "@type": "@id",
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/env_package"
+         "@id": "https://microbiomedata/schema/mixs/env_package"
       },
       "environment_field": {
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/environment_field"
+         "@id": "https://microbiomedata/schema/mixs/environment_field"
       },
       "escalator": {
          "@type": "@id",
@@ -966,6 +977,9 @@
          "@type": "@id",
          "@id": "MIXS:0000810"
       },
+      "heat_sys_deliv_meth": {
+         "@id": "MIXS:0000812"
+      },
       "heat_system_id": {
          "@type": "@id",
          "@id": "MIXS:0000833"
@@ -991,7 +1005,7 @@
       },
       "horizon": {
          "@type": "@id",
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/horizon"
+         "@id": "MIXS:0001082"
       },
       "horizon_meth": {
          "@type": "@id",
@@ -1033,6 +1047,9 @@
          "@type": "@id",
          "@id": "MIXS:0000257"
       },
+      "host_family_relation": {
+         "@id": "MIXS:0000872"
+      },
       "host_genotype": {
          "@type": "@id",
          "@id": "MIXS:0000365"
@@ -1073,9 +1090,15 @@
          "@type": "@id",
          "@id": "MIXS:0000861"
       },
+      "host_subspecf_genlin": {
+         "@id": "MIXS:0001318"
+      },
       "host_substrate": {
          "@type": "@id",
          "@id": "MIXS:0000252"
+      },
+      "host_symbiont": {
+         "@id": "MIXS:0001298"
       },
       "host_taxid": {
          "@type": "@id",
@@ -1156,7 +1179,7 @@
          "@id": "MIXS:0000813"
       },
       "investigation_field": {
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/investigation_field"
+         "@id": "https://microbiomedata/schema/mixs/investigation_field"
       },
       "is_balanced": {
          "@type": "xsd:boolean"
@@ -1213,7 +1236,7 @@
       },
       "link_addit_analys": {
          "@type": "@id",
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/link_addit_analys"
+         "@id": "MIXS:0000340"
       },
       "link_class_info": {
          "@type": "@id",
@@ -1329,13 +1352,16 @@
       "MGnify_project_identifiers": {
          "@type": "@id"
       },
+      "micro_biomass_meth": {
+         "@id": "MIXS:0000339"
+      },
       "microbial_biomass": {
          "@type": "@id",
          "@id": "MIXS:0000650"
       },
       "microbial_biomass_meth": {
          "@type": "@id",
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/microbial_biomass_meth"
+         "@id": "MIXS:0000339"
       },
       "min_q_value": {
          "@type": "xsd:float"
@@ -1367,16 +1393,19 @@
       "nom_analysis_activity_set": {
          "@type": "@id"
       },
+      "non_min_nutr_regm": {
+         "@id": "MIXS:0000571"
+      },
       "nucl_acid_amp": {
          "@type": "@id",
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/nucl_acid_amp"
+         "@id": "MIXS:0000038"
       },
       "nucl_acid_ext": {
          "@type": "@id",
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/nucl_acid_ext"
+         "@id": "MIXS:0000037"
       },
       "nucleic_acid_sequence_source_field": {
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/nucleic_acid_sequence_source_field"
+         "@id": "https://microbiomedata/schema/mixs/nucleic_acid_sequence_source_field"
       },
       "num_aligned_reads": {
          "@type": "xsd:float",
@@ -1422,6 +1451,9 @@
       "org_carb": {
          "@type": "@id",
          "@id": "MIXS:0000508"
+      },
+      "org_count_qpcr_info": {
+         "@id": "MIXS:0000099"
       },
       "org_matter": {
          "@type": "@id",
@@ -1480,11 +1512,11 @@
       },
       "pcr_cond": {
          "@type": "@id",
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/pcr_cond"
+         "@id": "MIXS:0000049"
       },
       "pcr_primers": {
          "@type": "@id",
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/pcr_primers"
+         "@id": "MIXS:0000046"
       },
       "peptide_sequence_count": {
          "@type": "xsd:integer"
@@ -1564,7 +1596,7 @@
       },
       "pool_dna_extracts": {
          "@type": "@id",
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/pool_dna_extracts"
+         "@id": "MIXS:0000325"
       },
       "porosity": {
          "@type": "@id",
@@ -1582,9 +1614,15 @@
          "@type": "@id",
          "@id": "MIXS:0000348"
       },
+      "pres_animal_insect": {
+         "@id": "MIXS:0000819"
+      },
       "pressure": {
          "@type": "@id",
          "@id": "MIXS:0000412"
+      },
+      "prev_land_use_meth": {
+         "@id": "MIXS:0000316"
       },
       "previous_land_use": {
          "@type": "@id",
@@ -1592,7 +1630,7 @@
       },
       "previous_land_use_meth": {
          "@type": "@id",
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/previous_land_use_meth"
+         "@id": "MIXS:0000316"
       },
       "primary_prod": {
          "@type": "@id",
@@ -1683,6 +1721,9 @@
          "@type": "@id",
          "@id": "MIXS:0000169"
       },
+      "room_architec_elem": {
+         "@id": "MIXS:0000233"
+      },
       "room_condt": {
          "@type": "@id",
          "@id": "MIXS:0000822"
@@ -1714,6 +1755,10 @@
       "room_loc": {
          "@type": "@id",
          "@id": "MIXS:0000823"
+      },
+      "room_moist_dam_hist": {
+         "@type": "xsd:integer",
+         "@id": "MIXS:0000235"
       },
       "room_net_area": {
          "@type": "@id",
@@ -1791,9 +1836,24 @@
          "@type": "@id",
          "@id": "MIXS:0000860"
       },
+      "samp_collec_device": {
+         "@id": "MIXS:0000002"
+      },
+      "samp_collec_method": {
+         "@id": "MIXS:0001225"
+      },
       "samp_collect_device": {
          "@type": "@id",
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/samp_collect_device"
+         "@id": "MIXS:0000002"
+      },
+      "samp_collect_point": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "MIXS:0001015"
       },
       "samp_dis_stage": {
          "@type": "@id",
@@ -1814,6 +1874,9 @@
       "samp_md": {
          "@type": "@id",
          "@id": "MIXS:0000413"
+      },
+      "samp_name": {
+         "@id": "MIXS:0001107"
       },
       "samp_preserv": {
          "@type": "@id",
@@ -1865,7 +1928,7 @@
       },
       "samp_vol_we_dna_ext": {
          "@type": "@id",
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/samp_vol_we_dna_ext"
+         "@id": "MIXS:0000111"
       },
       "samp_weather": {
          "@type": "@id",
@@ -1975,18 +2038,21 @@
       },
       "seq_meth": {
          "@type": "@id",
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/seq_meth"
+         "@id": "MIXS:0000050"
       },
       "seq_quality_check": {
          "@type": "@id",
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/seq_quality_check"
+         "@id": "MIXS:0000051"
       },
       "sequencing_field": {
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/sequencing_field"
+         "@id": "https://microbiomedata/schema/mixs/sequencing_field"
       },
       "sewage_type": {
          "@type": "@id",
          "@id": "MIXS:0000215"
+      },
+      "shad_dev_water_mold": {
+         "@id": "MIXS:0000834"
       },
       "shading_device_cond": {
          "@type": "@id",
@@ -2039,6 +2105,22 @@
       "sodium": {
          "@type": "@id",
          "@id": "MIXS:0000428"
+      },
+      "soil_horizon": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "MIXS:0001082"
+      },
+      "soil_text_measure": {
+         "@type": "@id",
+         "@id": "MIXS:0000335"
+      },
+      "soil_texture_meth": {
+         "@id": "MIXS:0000336"
       },
       "soil_type": {
          "@type": "@id",
@@ -2186,11 +2268,11 @@
       },
       "target_gene": {
          "@type": "@id",
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/target_gene"
+         "@id": "MIXS:0000044"
       },
       "target_subfragment": {
          "@type": "@id",
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/target_subfragment"
+         "@id": "MIXS:0000045"
       },
       "temp": {
          "@type": "@id",
@@ -2210,11 +2292,11 @@
       },
       "texture": {
          "@type": "@id",
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/texture"
+         "@id": "MIXS:0000335"
       },
       "texture_meth": {
          "@type": "@id",
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/texture_meth"
+         "@id": "MIXS:0000336"
       },
       "tidal_stage": {
          "@type": "@id",
@@ -2267,10 +2349,6 @@
          "@type": "@id",
          "@id": "MIXS:0000530"
       },
-      "tot_nitro_content_meth": {
-         "@type": "@id",
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/tot_nitro_content_meth"
-      },
       "tot_org_c_meth": {
          "@type": "@id",
          "@id": "MIXS:0000337"
@@ -2310,6 +2388,10 @@
       "turbidity": {
          "@type": "@id",
          "@id": "MIXS:0000191"
+      },
+      "tvdss_of_hcr_press": {
+         "@type": "@id",
+         "@id": "MIXS:0000397"
       },
       "tvdss_of_hcr_temp": {
          "@type": "@id",
@@ -2407,10 +2489,6 @@
          "@type": "@id",
          "@id": "MIXS:0000185"
       },
-      "water_content_soil_meth": {
-         "@type": "@id",
-         "@id": "http://example.com/mixs_for_nmdc_biosamples/water_content_soil_meth"
-      },
       "water_current": {
          "@type": "@id",
          "@id": "MIXS:0000203"
@@ -2426,6 +2504,10 @@
       "water_feat_type": {
          "@type": "@id",
          "@id": "MIXS:0000847"
+      },
+      "water_prod_rate": {
+         "@type": "@id",
+         "@id": "MIXS:0000453"
       },
       "water_temp_regm": {
          "@type": "@id",

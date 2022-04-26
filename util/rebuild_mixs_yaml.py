@@ -12,6 +12,8 @@ import click
 import click_log
 import logging
 
+import yaml
+
 # TODO add click documentation etc
 
 # this script, in combination with slot_roster.py, creates a MIxS-subset import file
@@ -61,7 +63,7 @@ def cli(
     logger.info("getting started")
     mixs_5_view = SchemaView(legacy_mixs_module_in)
     mixs_6_view = SchemaView(current_mixs_root_in)
-    nmdc_view = SchemaView(current_nmdc_root_in)
+    # nmdc_view = SchemaView(current_nmdc_root_in)
     slot_roster_frame = pd.read_csv(slot_roster_tsv_in, sep="\t", low_memory=False)
 
     # todo mixed metaphors of sqldf and .loc indexing
@@ -79,7 +81,7 @@ def cli(
     """
 
     legacy_mixs_usage = sqldf(lmu_q)
-    legacy_mixs_usage.to_csv("legacy_mixs_usage.csv")
+    # legacy_mixs_usage.to_csv("legacy_mixs_usage.csv")
 
     fdh_q = """
     select
@@ -92,7 +94,7 @@ def cli(
     """
 
     from_dh = sqldf(fdh_q)
-    from_dh.to_csv("from_dh.csv")
+    # from_dh.to_csv("from_dh.csv")
 
     na_q = """
     SELECT
@@ -105,7 +107,7 @@ def cli(
     """
 
     now_available = sqldf(na_q)
-    now_available.to_csv("now_available.csv")
+    # now_available.to_csv("now_available.csv")
     na_set = set(now_available["slot"])
 
     legacy_or_dh = set(legacy_mixs_usage['slot']).union(set(from_dh['slot']))
@@ -151,14 +153,44 @@ def cli(
         ["class", "slot_raw", "match"],
     ]
 
-    # todo mangles description. do this manually, with yq, or glom?
     rwn_lod = replace_with_new.to_dict(orient='records')
+
+    # todo opening with SchemaView description.
+    #  do this manually, with yq, or glom?
+    with open(current_nmdc_root_in, "r") as stream:
+        try:
+            nmdc_dict = yaml.safe_load(stream)
+        except yaml.YAMLError as exc:
+            print(exc)
+
     for i in rwn_lod:
-        temp = nmdc_view.schema.classes[i['class']].slots
+        print(i)
+        temp = nmdc_dict['classes'][i['class']]['slots']
+        pprint.pprint(temp)
         temp.remove(i['slot_raw'])
         temp.append(i['match'])
-        nmdc_view.schema.classes[i['class']].slots = temp
-        yaml_dumper.dump(nmdc_view.schema, current_nmdc_root_in)
+        nmdc_dict['classes'][i['class']]['slots'] = temp
+    # todo save to a different file?
+    #  flow style?
+    with open(current_nmdc_root_in, 'w') as outfile:
+        yaml.dump(nmdc_dict, outfile, default_flow_style=False, sort_keys=False)
+
+    # shoot, that mangles the schema description, too
+    # FROM
+    #   Schema for National Microbiome Data Collaborative (NMDC).
+    #
+    #   This schema is organized into distinct modules:
+    #
+    #    * a set of core types for representing data values
+    #    * the mixs schema (auto-translated from mixs excel)
+    #    * annotation schema
+    #    * the NMDC schema itself
+    # TO
+    # "Schema for National Microbiome Data Collaborative (NMDC).\n  \nThis\
+    #   \ schema is organized into distinct modules:\n  \n * a set of core types for representing\
+    #   \ data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation\
+    #   \ schema\n * the NMDC schema itself"
+    # anything else?
 
     rwn_dict = replace_with_new.set_index("slot_raw").to_dict()["match"]
 

@@ -1,5 +1,5 @@
 # Auto generated from mixs.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-19T19:21:21
+# Generation date: 2022-04-26T08:59:31
 # Schema: mixs-schema
 #
 # id: https://microbiomedata/schema/mixs
@@ -39,6 +39,7 @@ DRUGBANK = CurieNamespace('DRUGBANK', 'http://identifiers.org/drugbank/')
 HMDB = CurieNamespace('HMDB', 'http://identifiers.org/hmdb/')
 KEGG_COMPOUND = CurieNamespace('KEGG_COMPOUND', 'http://identifiers.org/kegg.compound/')
 MESH = CurieNamespace('MESH', 'http://identifiers.org/mesh/')
+MIXS = CurieNamespace('MIXS', 'https://w3id.org/gensc/')
 OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
 PR = CurieNamespace('PR', 'http://purl.obolibrary.org/obo/PR_')
 PUBCHEM_COMPOUND = CurieNamespace('PUBCHEM_COMPOUND', 'http://identifiers.org/pubchem.compound/')
@@ -854,2147 +855,3492 @@ class Agent(YAMLRoot):
 
 
 # Enumerations
+class ArchStrucEnum(EnumDefinitionImpl):
 
+    building = PermissibleValue(text="building")
+    shed = PermissibleValue(text="shed")
+    home = PermissibleValue(text="home")
+
+    _defn = EnumDefinition(
+        name="ArchStrucEnum",
+    )
+
+class BiolStatEnum(EnumDefinitionImpl):
+
+    wild = PermissibleValue(text="wild")
+    natural = PermissibleValue(text="natural")
+    hybrid = PermissibleValue(text="hybrid")
+    mutant = PermissibleValue(text="mutant")
+
+    _defn = EnumDefinition(
+        name="BiolStatEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "semi-natural",
+                PermissibleValue(text="semi-natural") )
+        setattr(cls, "inbred line",
+                PermissibleValue(text="inbred line") )
+        setattr(cls, "breeder's line",
+                PermissibleValue(text="breeder's line") )
+        setattr(cls, "clonal selection",
+                PermissibleValue(text="clonal selection") )
+
+class BioticRelationshipEnum(EnumDefinitionImpl):
+
+    parasite = PermissibleValue(text="parasite")
+    commensal = PermissibleValue(text="commensal")
+    symbiont = PermissibleValue(text="symbiont")
+
+    _defn = EnumDefinition(
+        name="BioticRelationshipEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "free living",
+                PermissibleValue(text="free living") )
+
+class BuildDocsEnum(EnumDefinitionImpl):
+
+    schedule = PermissibleValue(text="schedule")
+    sections = PermissibleValue(text="sections")
+    submittals = PermissibleValue(text="submittals")
+    windows = PermissibleValue(text="windows")
+
+    _defn = EnumDefinition(
+        name="BuildDocsEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "building information model",
+                PermissibleValue(text="building information model") )
+        setattr(cls, "commissioning report",
+                PermissibleValue(text="commissioning report") )
+        setattr(cls, "complaint logs",
+                PermissibleValue(text="complaint logs") )
+        setattr(cls, "contract administration",
+                PermissibleValue(text="contract administration") )
+        setattr(cls, "cost estimate",
+                PermissibleValue(text="cost estimate") )
+        setattr(cls, "janitorial schedules or logs",
+                PermissibleValue(text="janitorial schedules or logs") )
+        setattr(cls, "maintenance plans",
+                PermissibleValue(text="maintenance plans") )
+        setattr(cls, "shop drawings",
+                PermissibleValue(text="shop drawings") )
+        setattr(cls, "ventilation system",
+                PermissibleValue(text="ventilation system") )
+
+class BuildOccupTypeEnum(EnumDefinitionImpl):
+
+    office = PermissibleValue(text="office")
+    market = PermissibleValue(text="market")
+    restaurant = PermissibleValue(text="restaurant")
+    residence = PermissibleValue(text="residence")
+    school = PermissibleValue(text="school")
+    residential = PermissibleValue(text="residential")
+    commercial = PermissibleValue(text="commercial")
+    airport = PermissibleValue(text="airport")
+
+    _defn = EnumDefinition(
+        name="BuildOccupTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "low rise",
+                PermissibleValue(text="low rise") )
+        setattr(cls, "high rise",
+                PermissibleValue(text="high rise") )
+        setattr(cls, "wood framed",
+                PermissibleValue(text="wood framed") )
+        setattr(cls, "health care",
+                PermissibleValue(text="health care") )
+        setattr(cls, "sports complex",
+                PermissibleValue(text="sports complex") )
+
+class BuildingSettingEnum(EnumDefinitionImpl):
+
+    urban = PermissibleValue(text="urban")
+    suburban = PermissibleValue(text="suburban")
+    exurban = PermissibleValue(text="exurban")
+    rural = PermissibleValue(text="rural")
+
+    _defn = EnumDefinition(
+        name="BuildingSettingEnum",
+    )
+
+class CeilCondEnum(EnumDefinitionImpl):
+
+    new = PermissibleValue(text="new")
+    damaged = PermissibleValue(text="damaged")
+    rupture = PermissibleValue(text="rupture")
+
+    _defn = EnumDefinition(
+        name="CeilCondEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "visible wear",
+                PermissibleValue(text="visible wear") )
+        setattr(cls, "needs repair",
+                PermissibleValue(text="needs repair") )
+
+class CeilFinishMatEnum(EnumDefinitionImpl):
+
+    drywall = PermissibleValue(text="drywall")
+    tiles = PermissibleValue(text="tiles")
+    PVC = PermissibleValue(text="PVC")
+    plasterboard = PermissibleValue(text="plasterboard")
+    metal = PermissibleValue(text="metal")
+    fiberglass = PermissibleValue(text="fiberglass")
+    stucco = PermissibleValue(text="stucco")
+    wood = PermissibleValue(text="wood")
+
+    _defn = EnumDefinition(
+        name="CeilFinishMatEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "mineral fibre",
+                PermissibleValue(text="mineral fibre") )
+        setattr(cls, "mineral wool/calcium silicate",
+                PermissibleValue(text="mineral wool/calcium silicate") )
+
+class CeilTextureEnum(EnumDefinitionImpl):
+
+    knockdown = PermissibleValue(text="knockdown")
+    popcorn = PermissibleValue(text="popcorn")
+    smooth = PermissibleValue(text="smooth")
+    swirl = PermissibleValue(text="swirl")
+
+    _defn = EnumDefinition(
+        name="CeilTextureEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "crows feet",
+                PermissibleValue(text="crows feet") )
+        setattr(cls, "crows-foot stomp",
+                PermissibleValue(text="crows-foot stomp") )
+        setattr(cls, "double skip",
+                PermissibleValue(text="double skip") )
+        setattr(cls, "hawk and trowel",
+                PermissibleValue(text="hawk and trowel") )
+        setattr(cls, "orange peel",
+                PermissibleValue(text="orange peel") )
+        setattr(cls, "rosebud stomp",
+                PermissibleValue(text="rosebud stomp") )
+        setattr(cls, "Santa-Fe texture",
+                PermissibleValue(text="Santa-Fe texture") )
+        setattr(cls, "skip trowel",
+                PermissibleValue(text="skip trowel") )
+        setattr(cls, "stomp knockdown",
+                PermissibleValue(text="stomp knockdown") )
+
+class CeilTypeEnum(EnumDefinitionImpl):
+
+    cathedral = PermissibleValue(text="cathedral")
+    dropped = PermissibleValue(text="dropped")
+    concave = PermissibleValue(text="concave")
+    coffered = PermissibleValue(text="coffered")
+    cove = PermissibleValue(text="cove")
+    stretched = PermissibleValue(text="stretched")
+
+    _defn = EnumDefinition(
+        name="CeilTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "barrel-shaped",
+                PermissibleValue(text="barrel-shaped") )
+
+class CurLandUseEnum(EnumDefinitionImpl):
+
+    cities = PermissibleValue(text="cities")
+    farmstead = PermissibleValue(text="farmstead")
+    rock = PermissibleValue(text="rock")
+    sand = PermissibleValue(text="sand")
+    gravel = PermissibleValue(text="gravel")
+    mudflats = PermissibleValue(text="mudflats")
+    badlands = PermissibleValue(text="badlands")
+    rangeland = PermissibleValue(text="rangeland")
+    hayland = PermissibleValue(text="hayland")
+
+    _defn = EnumDefinition(
+        name="CurLandUseEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "industrial areas",
+                PermissibleValue(text="industrial areas") )
+        setattr(cls, "roads/railroads",
+                PermissibleValue(text="roads/railroads") )
+        setattr(cls, "salt flats",
+                PermissibleValue(text="salt flats") )
+        setattr(cls, "permanent snow or ice",
+                PermissibleValue(text="permanent snow or ice") )
+        setattr(cls, "saline seeps",
+                PermissibleValue(text="saline seeps") )
+        setattr(cls, "mines/quarries",
+                PermissibleValue(text="mines/quarries") )
+        setattr(cls, "oil waste areas",
+                PermissibleValue(text="oil waste areas") )
+        setattr(cls, "small grains",
+                PermissibleValue(text="small grains") )
+        setattr(cls, "row crops",
+                PermissibleValue(text="row crops") )
+        setattr(cls, "vegetable crops",
+                PermissibleValue(text="vegetable crops") )
+        setattr(cls, "horticultural plants (e.g. tulips)",
+                PermissibleValue(text="horticultural plants (e.g. tulips)") )
+        setattr(cls, "marshlands (grass,sedges,rushes)",
+                PermissibleValue(text="marshlands (grass,sedges,rushes)") )
+        setattr(cls, "tundra (mosses,lichens)",
+                PermissibleValue(text="tundra (mosses,lichens)") )
+        setattr(cls, "pastureland (grasslands used for livestock grazing)",
+                PermissibleValue(text="pastureland (grasslands used for livestock grazing)") )
+        setattr(cls, "meadows (grasses,alfalfa,fescue,bromegrass,timothy)",
+                PermissibleValue(text="meadows (grasses,alfalfa,fescue,bromegrass,timothy)") )
+        setattr(cls, "shrub land (e.g. mesquite,sage-brush,creosote bush,shrub oak,eucalyptus)",
+                PermissibleValue(text="shrub land (e.g. mesquite,sage-brush,creosote bush,shrub oak,eucalyptus)") )
+        setattr(cls, "successional shrub land (tree saplings,hazels,sumacs,chokecherry,shrub dogwoods,blackberries)",
+                PermissibleValue(text="successional shrub land (tree saplings,hazels,sumacs,chokecherry,shrub dogwoods,blackberries)") )
+        setattr(cls, "shrub crops (blueberries,nursery ornamentals,filberts)",
+                PermissibleValue(text="shrub crops (blueberries,nursery ornamentals,filberts)") )
+        setattr(cls, "vine crops (grapes)",
+                PermissibleValue(text="vine crops (grapes)") )
+        setattr(cls, "conifers (e.g. pine,spruce,fir,cypress)",
+                PermissibleValue(text="conifers (e.g. pine,spruce,fir,cypress)") )
+        setattr(cls, "hardwoods (e.g. oak,hickory,elm,aspen)",
+                PermissibleValue(text="hardwoods (e.g. oak,hickory,elm,aspen)") )
+        setattr(cls, "intermixed hardwood and conifers",
+                PermissibleValue(text="intermixed hardwood and conifers") )
+        setattr(cls, "tropical (e.g. mangrove,palms)",
+                PermissibleValue(text="tropical (e.g. mangrove,palms)") )
+        setattr(cls, "rainforest (evergreen forest receiving greater than 406 cm annual rainfall)",
+                PermissibleValue(text="rainforest (evergreen forest receiving greater than 406 cm annual rainfall)") )
+        setattr(cls, "swamp (permanent or semi-permanent water body dominated by woody plants)",
+                PermissibleValue(text="swamp (permanent or semi-permanent water body dominated by woody plants)") )
+        setattr(cls, "crop trees (nuts,fruit,christmas trees,nursery trees)",
+                PermissibleValue(text="crop trees (nuts,fruit,christmas trees,nursery trees)") )
+
+class DeposEnvEnum(EnumDefinitionImpl):
+
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="DeposEnvEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Continental - Alluvial",
+                PermissibleValue(text="Continental - Alluvial") )
+        setattr(cls, "Continental - Aeolian",
+                PermissibleValue(text="Continental - Aeolian") )
+        setattr(cls, "Continental - Fluvial",
+                PermissibleValue(text="Continental - Fluvial") )
+        setattr(cls, "Continental - Lacustrine",
+                PermissibleValue(text="Continental - Lacustrine") )
+        setattr(cls, "Transitional - Deltaic",
+                PermissibleValue(text="Transitional - Deltaic") )
+        setattr(cls, "Transitional - Tidal",
+                PermissibleValue(text="Transitional - Tidal") )
+        setattr(cls, "Transitional - Lagoonal",
+                PermissibleValue(text="Transitional - Lagoonal") )
+        setattr(cls, "Transitional - Beach",
+                PermissibleValue(text="Transitional - Beach") )
+        setattr(cls, "Transitional - Lake",
+                PermissibleValue(text="Transitional - Lake") )
+        setattr(cls, "Marine - Shallow",
+                PermissibleValue(text="Marine - Shallow") )
+        setattr(cls, "Marine - Deep",
+                PermissibleValue(text="Marine - Deep") )
+        setattr(cls, "Marine - Reef",
+                PermissibleValue(text="Marine - Reef") )
+        setattr(cls, "Other - Evaporite",
+                PermissibleValue(text="Other - Evaporite") )
+        setattr(cls, "Other - Glacial",
+                PermissibleValue(text="Other - Glacial") )
+        setattr(cls, "Other - Volcanic",
+                PermissibleValue(text="Other - Volcanic") )
+
+class DoorCompTypeEnum(EnumDefinitionImpl):
+
+    revolving = PermissibleValue(text="revolving")
+    sliding = PermissibleValue(text="sliding")
+    telescopic = PermissibleValue(text="telescopic")
+
+    _defn = EnumDefinition(
+        name="DoorCompTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "metal covered",
+                PermissibleValue(text="metal covered") )
+
+class DoorCondEnum(EnumDefinitionImpl):
+
+    damaged = PermissibleValue(text="damaged")
+    new = PermissibleValue(text="new")
+    rupture = PermissibleValue(text="rupture")
+
+    _defn = EnumDefinition(
+        name="DoorCondEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "needs repair",
+                PermissibleValue(text="needs repair") )
+        setattr(cls, "visible wear",
+                PermissibleValue(text="visible wear") )
+
+class DoorDirectEnum(EnumDefinitionImpl):
+
+    inward = PermissibleValue(text="inward")
+    outward = PermissibleValue(text="outward")
+    sideways = PermissibleValue(text="sideways")
+
+    _defn = EnumDefinition(
+        name="DoorDirectEnum",
+    )
+
+class DoorLocEnum(EnumDefinitionImpl):
+
+    north = PermissibleValue(text="north")
+    south = PermissibleValue(text="south")
+    east = PermissibleValue(text="east")
+    west = PermissibleValue(text="west")
+
+    _defn = EnumDefinition(
+        name="DoorLocEnum",
+    )
+
+class DoorMatEnum(EnumDefinitionImpl):
+
+    aluminum = PermissibleValue(text="aluminum")
+    fiberboard = PermissibleValue(text="fiberboard")
+    fiberglass = PermissibleValue(text="fiberglass")
+    metal = PermissibleValue(text="metal")
+    vinyl = PermissibleValue(text="vinyl")
+    wood = PermissibleValue(text="wood")
+
+    _defn = EnumDefinition(
+        name="DoorMatEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "cellular PVC",
+                PermissibleValue(text="cellular PVC") )
+        setattr(cls, "engineered plastic",
+                PermissibleValue(text="engineered plastic") )
+        setattr(cls, "thermoplastic alloy",
+                PermissibleValue(text="thermoplastic alloy") )
+        setattr(cls, "wood/plastic composite",
+                PermissibleValue(text="wood/plastic composite") )
+
+class DoorMoveEnum(EnumDefinitionImpl):
+
+    collapsible = PermissibleValue(text="collapsible")
+    folding = PermissibleValue(text="folding")
+    revolving = PermissibleValue(text="revolving")
+    sliding = PermissibleValue(text="sliding")
+    swinging = PermissibleValue(text="swinging")
+
+    _defn = EnumDefinition(
+        name="DoorMoveEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "rolling shutter",
+                PermissibleValue(text="rolling shutter") )
+
+class DoorTypeEnum(EnumDefinitionImpl):
+
+    composite = PermissibleValue(text="composite")
+    metal = PermissibleValue(text="metal")
+    wooden = PermissibleValue(text="wooden")
+
+    _defn = EnumDefinition(
+        name="DoorTypeEnum",
+    )
+
+class DoorTypeMetalEnum(EnumDefinitionImpl):
+
+    collapsible = PermissibleValue(text="collapsible")
+    hollow = PermissibleValue(text="hollow")
+
+    _defn = EnumDefinition(
+        name="DoorTypeMetalEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "corrugated steel",
+                PermissibleValue(text="corrugated steel") )
+        setattr(cls, "rolling shutters",
+                PermissibleValue(text="rolling shutters") )
+        setattr(cls, "steel plate",
+                PermissibleValue(text="steel plate") )
+
+class DoorTypeWoodEnum(EnumDefinitionImpl):
+
+    battened = PermissibleValue(text="battened")
+    flush = PermissibleValue(text="flush")
+    louvered = PermissibleValue(text="louvered")
+
+    _defn = EnumDefinition(
+        name="DoorTypeWoodEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "bettened and ledged",
+                PermissibleValue(text="bettened and ledged") )
+        setattr(cls, "ledged and braced",
+                PermissibleValue(text="ledged and braced") )
+        setattr(cls, "ledged and framed",
+                PermissibleValue(text="ledged and framed") )
+        setattr(cls, "ledged, braced and frame",
+                PermissibleValue(text="ledged, braced and frame") )
+        setattr(cls, "framed and paneled",
+                PermissibleValue(text="framed and paneled") )
+        setattr(cls, "glashed or sash",
+                PermissibleValue(text="glashed or sash") )
+        setattr(cls, "wire gauged",
+                PermissibleValue(text="wire gauged") )
+
+class DrainageClassEnum(EnumDefinitionImpl):
+
+    poorly = PermissibleValue(text="poorly")
+    well = PermissibleValue(text="well")
+
+    _defn = EnumDefinition(
+        name="DrainageClassEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "very poorly",
+                PermissibleValue(text="very poorly") )
+        setattr(cls, "somewhat poorly",
+                PermissibleValue(text="somewhat poorly") )
+        setattr(cls, "moderately well",
+                PermissibleValue(text="moderately well") )
+        setattr(cls, "excessively drained",
+                PermissibleValue(text="excessively drained") )
+
+class DrawingsEnum(EnumDefinitionImpl):
+
+    operation = PermissibleValue(text="operation")
+    construction = PermissibleValue(text="construction")
+    bid = PermissibleValue(text="bid")
+    design = PermissibleValue(text="design")
+    diagram = PermissibleValue(text="diagram")
+    sketch = PermissibleValue(text="sketch")
+
+    _defn = EnumDefinition(
+        name="DrawingsEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "as built",
+                PermissibleValue(text="as built") )
+        setattr(cls, "building navigation map",
+                PermissibleValue(text="building navigation map") )
+
+class ExtWallOrientEnum(EnumDefinitionImpl):
+
+    north = PermissibleValue(text="north")
+    south = PermissibleValue(text="south")
+    east = PermissibleValue(text="east")
+    west = PermissibleValue(text="west")
+    northeast = PermissibleValue(text="northeast")
+    southeast = PermissibleValue(text="southeast")
+    southwest = PermissibleValue(text="southwest")
+    northwest = PermissibleValue(text="northwest")
+
+    _defn = EnumDefinition(
+        name="ExtWallOrientEnum",
+    )
+
+class ExtWindowOrientEnum(EnumDefinitionImpl):
+
+    north = PermissibleValue(text="north")
+    south = PermissibleValue(text="south")
+    east = PermissibleValue(text="east")
+    west = PermissibleValue(text="west")
+    northeast = PermissibleValue(text="northeast")
+    southeast = PermissibleValue(text="southeast")
+    southwest = PermissibleValue(text="southwest")
+    northwest = PermissibleValue(text="northwest")
+
+    _defn = EnumDefinition(
+        name="ExtWindowOrientEnum",
+    )
+
+class FaoClassEnum(EnumDefinitionImpl):
+
+    Acrisols = PermissibleValue(text="Acrisols")
+    Andosols = PermissibleValue(text="Andosols")
+    Arenosols = PermissibleValue(text="Arenosols")
+    Cambisols = PermissibleValue(text="Cambisols")
+    Chernozems = PermissibleValue(text="Chernozems")
+    Ferralsols = PermissibleValue(text="Ferralsols")
+    Fluvisols = PermissibleValue(text="Fluvisols")
+    Gleysols = PermissibleValue(text="Gleysols")
+    Greyzems = PermissibleValue(text="Greyzems")
+    Gypsisols = PermissibleValue(text="Gypsisols")
+    Histosols = PermissibleValue(text="Histosols")
+    Kastanozems = PermissibleValue(text="Kastanozems")
+    Lithosols = PermissibleValue(text="Lithosols")
+    Luvisols = PermissibleValue(text="Luvisols")
+    Nitosols = PermissibleValue(text="Nitosols")
+    Phaeozems = PermissibleValue(text="Phaeozems")
+    Planosols = PermissibleValue(text="Planosols")
+    Podzols = PermissibleValue(text="Podzols")
+    Podzoluvisols = PermissibleValue(text="Podzoluvisols")
+    Rankers = PermissibleValue(text="Rankers")
+    Regosols = PermissibleValue(text="Regosols")
+    Rendzinas = PermissibleValue(text="Rendzinas")
+    Solonchaks = PermissibleValue(text="Solonchaks")
+    Solonetz = PermissibleValue(text="Solonetz")
+    Vertisols = PermissibleValue(text="Vertisols")
+    Yermosols = PermissibleValue(text="Yermosols")
+
+    _defn = EnumDefinition(
+        name="FaoClassEnum",
+    )
+
+class FilterTypeEnum(EnumDefinitionImpl):
+
+    HEPA = PermissibleValue(text="HEPA")
+    electrostatic = PermissibleValue(text="electrostatic")
+
+    _defn = EnumDefinition(
+        name="FilterTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "particulate air filter",
+                PermissibleValue(text="particulate air filter") )
+        setattr(cls, "chemical air filter",
+                PermissibleValue(text="chemical air filter") )
+        setattr(cls, "low-MERV pleated media",
+                PermissibleValue(text="low-MERV pleated media") )
+        setattr(cls, "gas-phase or ultraviolet air treatments",
+                PermissibleValue(text="gas-phase or ultraviolet air treatments") )
+
+class FloorCondEnum(EnumDefinitionImpl):
+
+    new = PermissibleValue(text="new")
+    damaged = PermissibleValue(text="damaged")
+    rupture = PermissibleValue(text="rupture")
+
+    _defn = EnumDefinition(
+        name="FloorCondEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "visible wear",
+                PermissibleValue(text="visible wear") )
+        setattr(cls, "needs repair",
+                PermissibleValue(text="needs repair") )
+
+class FloorFinishMatEnum(EnumDefinitionImpl):
+
+    tile = PermissibleValue(text="tile")
+    carpet = PermissibleValue(text="carpet")
+    rug = PermissibleValue(text="rug")
+    lineoleum = PermissibleValue(text="lineoleum")
+    stone = PermissibleValue(text="stone")
+    bamboo = PermissibleValue(text="bamboo")
+    cork = PermissibleValue(text="cork")
+    terrazo = PermissibleValue(text="terrazo")
+    concrete = PermissibleValue(text="concrete")
+    none = PermissibleValue(text="none")
+    sealed = PermissibleValue(text="sealed")
+    paint = PermissibleValue(text="paint")
+
+    _defn = EnumDefinition(
+        name="FloorFinishMatEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "wood strip or parquet",
+                PermissibleValue(text="wood strip or parquet") )
+        setattr(cls, "laminate wood",
+                PermissibleValue(text="laminate wood") )
+        setattr(cls, "vinyl composition tile",
+                PermissibleValue(text="vinyl composition tile") )
+        setattr(cls, "sheet vinyl",
+                PermissibleValue(text="sheet vinyl") )
+        setattr(cls, "clear finish",
+                PermissibleValue(text="clear finish") )
+        setattr(cls, "none or unfinished",
+                PermissibleValue(text="none or unfinished") )
+
+class FloorStrucEnum(EnumDefinitionImpl):
+
+    balcony = PermissibleValue(text="balcony")
+    concrete = PermissibleValue(text="concrete")
+
+    _defn = EnumDefinition(
+        name="FloorStrucEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "floating floor",
+                PermissibleValue(text="floating floor") )
+        setattr(cls, "glass floor",
+                PermissibleValue(text="glass floor") )
+        setattr(cls, "raised floor",
+                PermissibleValue(text="raised floor") )
+        setattr(cls, "sprung floor",
+                PermissibleValue(text="sprung floor") )
+        setattr(cls, "wood-framed",
+                PermissibleValue(text="wood-framed") )
+
+class FloorWaterMoldEnum(EnumDefinitionImpl):
+
+    condensation = PermissibleValue(text="condensation")
+
+    _defn = EnumDefinition(
+        name="FloorWaterMoldEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "mold odor",
+                PermissibleValue(text="mold odor") )
+        setattr(cls, "wet floor",
+                PermissibleValue(text="wet floor") )
+        setattr(cls, "water stains",
+                PermissibleValue(text="water stains") )
+        setattr(cls, "wall discoloration",
+                PermissibleValue(text="wall discoloration") )
+        setattr(cls, "floor discoloration",
+                PermissibleValue(text="floor discoloration") )
+        setattr(cls, "ceiling discoloration",
+                PermissibleValue(text="ceiling discoloration") )
+        setattr(cls, "peeling paint or wallpaper",
+                PermissibleValue(text="peeling paint or wallpaper") )
+        setattr(cls, "bulging walls",
+                PermissibleValue(text="bulging walls") )
+
+class FreqCleanEnum(EnumDefinitionImpl):
+
+    Daily = PermissibleValue(text="Daily")
+    Weekly = PermissibleValue(text="Weekly")
+    Monthly = PermissibleValue(text="Monthly")
+    Quarterly = PermissibleValue(text="Quarterly")
+    Annually = PermissibleValue(text="Annually")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="FreqCleanEnum",
+    )
+
+class FurnitureEnum(EnumDefinitionImpl):
+
+    cabinet = PermissibleValue(text="cabinet")
+    chair = PermissibleValue(text="chair")
+    desks = PermissibleValue(text="desks")
+
+    _defn = EnumDefinition(
+        name="FurnitureEnum",
+    )
+
+class GenderRestroomEnum(EnumDefinitionImpl):
+
+    female = PermissibleValue(text="female")
+    male = PermissibleValue(text="male")
+    unisex = PermissibleValue(text="unisex")
+
+    _defn = EnumDefinition(
+        name="GenderRestroomEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "all gender",
+                PermissibleValue(text="all gender") )
+        setattr(cls, "gender neurtral",
+                PermissibleValue(text="gender neurtral") )
+        setattr(cls, "male and female",
+                PermissibleValue(text="male and female") )
+
+class GrowthHabitEnum(EnumDefinitionImpl):
+
+    erect = PermissibleValue(text="erect")
+    spreading = PermissibleValue(text="spreading")
+    prostrate = PermissibleValue(text="prostrate")
+
+    _defn = EnumDefinition(
+        name="GrowthHabitEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "semi-erect",
+                PermissibleValue(text="semi-erect") )
+
+class HandidnessEnum(EnumDefinitionImpl):
+
+    ambidexterity = PermissibleValue(text="ambidexterity")
+
+    _defn = EnumDefinition(
+        name="HandidnessEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "left handedness",
+                PermissibleValue(text="left handedness") )
+        setattr(cls, "mixed-handedness",
+                PermissibleValue(text="mixed-handedness") )
+        setattr(cls, "right handedness",
+                PermissibleValue(text="right handedness") )
+
+class HcProducedEnum(EnumDefinitionImpl):
+
+    Oil = PermissibleValue(text="Oil")
+    Gas = PermissibleValue(text="Gas")
+    Bitumen = PermissibleValue(text="Bitumen")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="HcProducedEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Gas-Condensate",
+                PermissibleValue(text="Gas-Condensate") )
+        setattr(cls, "Coalbed Methane",
+                PermissibleValue(text="Coalbed Methane") )
+
+class HcrEnum(EnumDefinitionImpl):
+
+    Coalbed = PermissibleValue(text="Coalbed")
+    Shale = PermissibleValue(text="Shale")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="HcrEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Oil Reservoir",
+                PermissibleValue(text="Oil Reservoir") )
+        setattr(cls, "Gas Reservoir",
+                PermissibleValue(text="Gas Reservoir") )
+        setattr(cls, "Oil Sand",
+                PermissibleValue(text="Oil Sand") )
+        setattr(cls, "Tight Oil Reservoir",
+                PermissibleValue(text="Tight Oil Reservoir") )
+        setattr(cls, "Tight Gas Reservoir",
+                PermissibleValue(text="Tight Gas Reservoir") )
+
+class HcrGeolAgeEnum(EnumDefinitionImpl):
+
+    Archean = PermissibleValue(text="Archean")
+    Cambrian = PermissibleValue(text="Cambrian")
+    Carboniferous = PermissibleValue(text="Carboniferous")
+    Cenozoic = PermissibleValue(text="Cenozoic")
+    Cretaceous = PermissibleValue(text="Cretaceous")
+    Devonian = PermissibleValue(text="Devonian")
+    Jurassic = PermissibleValue(text="Jurassic")
+    Mesozoic = PermissibleValue(text="Mesozoic")
+    Neogene = PermissibleValue(text="Neogene")
+    Ordovician = PermissibleValue(text="Ordovician")
+    Paleogene = PermissibleValue(text="Paleogene")
+    Paleozoic = PermissibleValue(text="Paleozoic")
+    Permian = PermissibleValue(text="Permian")
+    Precambrian = PermissibleValue(text="Precambrian")
+    Proterozoic = PermissibleValue(text="Proterozoic")
+    Silurian = PermissibleValue(text="Silurian")
+    Triassic = PermissibleValue(text="Triassic")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="HcrGeolAgeEnum",
+    )
+
+class HeatCoolTypeEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="HeatCoolTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "radiant system",
+                PermissibleValue(text="radiant system") )
+        setattr(cls, "heat pump",
+                PermissibleValue(text="heat pump") )
+        setattr(cls, "forced air system",
+                PermissibleValue(text="forced air system") )
+        setattr(cls, "steam forced heat",
+                PermissibleValue(text="steam forced heat") )
+        setattr(cls, "wood stove",
+                PermissibleValue(text="wood stove") )
+
+class HeatDelivLocEnum(EnumDefinitionImpl):
+
+    north = PermissibleValue(text="north")
+    south = PermissibleValue(text="south")
+    east = PermissibleValue(text="east")
+    west = PermissibleValue(text="west")
+
+    _defn = EnumDefinition(
+        name="HeatDelivLocEnum",
+    )
+
+class HorizonEnum(EnumDefinitionImpl):
+
+    Permafrost = PermissibleValue(text="Permafrost")
+
+    _defn = EnumDefinition(
+        name="HorizonEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "O horizon",
+                PermissibleValue(text="O horizon") )
+        setattr(cls, "A horizon",
+                PermissibleValue(text="A horizon") )
+        setattr(cls, "E horizon",
+                PermissibleValue(text="E horizon") )
+        setattr(cls, "B horizon",
+                PermissibleValue(text="B horizon") )
+        setattr(cls, "C horizon",
+                PermissibleValue(text="C horizon") )
+        setattr(cls, "R layer",
+                PermissibleValue(text="R layer") )
+
+class HostSexEnum(EnumDefinitionImpl):
+
+    female = PermissibleValue(text="female")
+    hermaphrodite = PermissibleValue(text="hermaphrodite")
+    male = PermissibleValue(text="male")
+    neuter = PermissibleValue(text="neuter")
+
+    _defn = EnumDefinition(
+        name="HostSexEnum",
+    )
+
+class IndoorSpaceEnum(EnumDefinitionImpl):
+
+    bedroom = PermissibleValue(text="bedroom")
+    office = PermissibleValue(text="office")
+    bathroom = PermissibleValue(text="bathroom")
+    foyer = PermissibleValue(text="foyer")
+    kitchen = PermissibleValue(text="kitchen")
+    hallway = PermissibleValue(text="hallway")
+    elevator = PermissibleValue(text="elevator")
+
+    _defn = EnumDefinition(
+        name="IndoorSpaceEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "locker room",
+                PermissibleValue(text="locker room") )
+
+class IndoorSurfEnum(EnumDefinitionImpl):
+
+    cabinet = PermissibleValue(text="cabinet")
+    ceiling = PermissibleValue(text="ceiling")
+    door = PermissibleValue(text="door")
+    shelving = PermissibleValue(text="shelving")
+    window = PermissibleValue(text="window")
+    wall = PermissibleValue(text="wall")
+
+    _defn = EnumDefinition(
+        name="IndoorSurfEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "counter top",
+                PermissibleValue(text="counter top") )
+        setattr(cls, "vent cover",
+                PermissibleValue(text="vent cover") )
+
+class IntWallCondEnum(EnumDefinitionImpl):
+
+    new = PermissibleValue(text="new")
+    damaged = PermissibleValue(text="damaged")
+    rupture = PermissibleValue(text="rupture")
+
+    _defn = EnumDefinition(
+        name="IntWallCondEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "visible wear",
+                PermissibleValue(text="visible wear") )
+        setattr(cls, "needs repair",
+                PermissibleValue(text="needs repair") )
+
+class LightTypeEnum(EnumDefinitionImpl):
+
+    none = PermissibleValue(text="none")
+
+    _defn = EnumDefinition(
+        name="LightTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "natural light",
+                PermissibleValue(text="natural light") )
+        setattr(cls, "electric light",
+                PermissibleValue(text="electric light") )
+        setattr(cls, "desk lamp",
+                PermissibleValue(text="desk lamp") )
+        setattr(cls, "flourescent lights",
+                PermissibleValue(text="flourescent lights") )
+
+class LithologyEnum(EnumDefinitionImpl):
+
+    Basement = PermissibleValue(text="Basement")
+    Chalk = PermissibleValue(text="Chalk")
+    Chert = PermissibleValue(text="Chert")
+    Coal = PermissibleValue(text="Coal")
+    Conglomerate = PermissibleValue(text="Conglomerate")
+    Diatomite = PermissibleValue(text="Diatomite")
+    Dolomite = PermissibleValue(text="Dolomite")
+    Limestone = PermissibleValue(text="Limestone")
+    Sandstone = PermissibleValue(text="Sandstone")
+    Shale = PermissibleValue(text="Shale")
+    Siltstone = PermissibleValue(text="Siltstone")
+    Volcanic = PermissibleValue(text="Volcanic")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="LithologyEnum",
+    )
+
+class MechStrucEnum(EnumDefinitionImpl):
+
+    subway = PermissibleValue(text="subway")
+    coach = PermissibleValue(text="coach")
+    carriage = PermissibleValue(text="carriage")
+    elevator = PermissibleValue(text="elevator")
+    escalator = PermissibleValue(text="escalator")
+    boat = PermissibleValue(text="boat")
+    train = PermissibleValue(text="train")
+    car = PermissibleValue(text="car")
+    bus = PermissibleValue(text="bus")
+
+    _defn = EnumDefinition(
+        name="MechStrucEnum",
+    )
+
+class OccupDocumentEnum(EnumDefinitionImpl):
+
+    estimate = PermissibleValue(text="estimate")
+    videos = PermissibleValue(text="videos")
+
+    _defn = EnumDefinition(
+        name="OccupDocumentEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "automated count",
+                PermissibleValue(text="automated count") )
+        setattr(cls, "manual count",
+                PermissibleValue(text="manual count") )
+
+class OrganismCountEnum(EnumDefinitionImpl):
+
+    ATP = PermissibleValue(text="ATP")
+    MPN = PermissibleValue(text="MPN")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="OrganismCountEnum",
+    )
+
+class OxyStatSampEnum(EnumDefinitionImpl):
+
+    aerobic = PermissibleValue(text="aerobic")
+    anaerobic = PermissibleValue(text="anaerobic")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="OxyStatSampEnum",
+    )
+
+class PlantGrowthMedEnum(EnumDefinitionImpl):
+
+    perlite = PermissibleValue(text="perlite")
+    pumice = PermissibleValue(text="pumice")
+    sand = PermissibleValue(text="sand")
+    soil = PermissibleValue(text="soil")
+    vermiculite = PermissibleValue(text="vermiculite")
+    water = PermissibleValue(text="water")
+
+    _defn = EnumDefinition(
+        name="PlantGrowthMedEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "other artificial liquid medium",
+                PermissibleValue(text="other artificial liquid medium") )
+        setattr(cls, "other artificial solid medium",
+                PermissibleValue(text="other artificial solid medium") )
+        setattr(cls, "peat moss",
+                PermissibleValue(text="peat moss") )
+
+class PlantSexEnum(EnumDefinitionImpl):
+
+    Androdioecious = PermissibleValue(text="Androdioecious")
+    Androecious = PermissibleValue(text="Androecious")
+    Androgynous = PermissibleValue(text="Androgynous")
+    Androgynomonoecious = PermissibleValue(text="Androgynomonoecious")
+    Andromonoecious = PermissibleValue(text="Andromonoecious")
+    Bisexual = PermissibleValue(text="Bisexual")
+    Dichogamous = PermissibleValue(text="Dichogamous")
+    Diclinous = PermissibleValue(text="Diclinous")
+    Dioecious = PermissibleValue(text="Dioecious")
+    Gynodioecious = PermissibleValue(text="Gynodioecious")
+    Gynoecious = PermissibleValue(text="Gynoecious")
+    Gynomonoecious = PermissibleValue(text="Gynomonoecious")
+    Hermaphroditic = PermissibleValue(text="Hermaphroditic")
+    Imperfect = PermissibleValue(text="Imperfect")
+    Monoclinous = PermissibleValue(text="Monoclinous")
+    Monoecious = PermissibleValue(text="Monoecious")
+    Perfect = PermissibleValue(text="Perfect")
+    Polygamodioecious = PermissibleValue(text="Polygamodioecious")
+    Polygamomonoecious = PermissibleValue(text="Polygamomonoecious")
+    Polygamous = PermissibleValue(text="Polygamous")
+    Protandrous = PermissibleValue(text="Protandrous")
+    Protogynous = PermissibleValue(text="Protogynous")
+    Subandroecious = PermissibleValue(text="Subandroecious")
+    Subdioecious = PermissibleValue(text="Subdioecious")
+    Subgynoecious = PermissibleValue(text="Subgynoecious")
+    Synoecious = PermissibleValue(text="Synoecious")
+    Trimonoecious = PermissibleValue(text="Trimonoecious")
+    Trioecious = PermissibleValue(text="Trioecious")
+    Unisexual = PermissibleValue(text="Unisexual")
+
+    _defn = EnumDefinition(
+        name="PlantSexEnum",
+    )
+
+class ProfilePositionEnum(EnumDefinitionImpl):
+
+    summit = PermissibleValue(text="summit")
+    shoulder = PermissibleValue(text="shoulder")
+    backslope = PermissibleValue(text="backslope")
+    footslope = PermissibleValue(text="footslope")
+    toeslope = PermissibleValue(text="toeslope")
+
+    _defn = EnumDefinition(
+        name="ProfilePositionEnum",
+    )
+
+class QuadPosEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="QuadPosEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "North side",
+                PermissibleValue(text="North side") )
+        setattr(cls, "West side",
+                PermissibleValue(text="West side") )
+        setattr(cls, "South side",
+                PermissibleValue(text="South side") )
+        setattr(cls, "East side",
+                PermissibleValue(text="East side") )
+
+class RelSampLocEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="RelSampLocEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "edge of car",
+                PermissibleValue(text="edge of car") )
+        setattr(cls, "center of car",
+                PermissibleValue(text="center of car") )
+        setattr(cls, "under a seat",
+                PermissibleValue(text="under a seat") )
+
+class RelToOxygenEnum(EnumDefinitionImpl):
+
+    aerobe = PermissibleValue(text="aerobe")
+    anaerobe = PermissibleValue(text="anaerobe")
+    facultative = PermissibleValue(text="facultative")
+    microaerophilic = PermissibleValue(text="microaerophilic")
+    microanaerobe = PermissibleValue(text="microanaerobe")
+
+    _defn = EnumDefinition(
+        name="RelToOxygenEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "obligate aerobe",
+                PermissibleValue(text="obligate aerobe") )
+        setattr(cls, "obligate anaerobe",
+                PermissibleValue(text="obligate anaerobe") )
+
+class RoomCondtEnum(EnumDefinitionImpl):
+
+    new = PermissibleValue(text="new")
+    damaged = PermissibleValue(text="damaged")
+    rupture = PermissibleValue(text="rupture")
+
+    _defn = EnumDefinition(
+        name="RoomCondtEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "visible wear",
+                PermissibleValue(text="visible wear") )
+        setattr(cls, "needs repair",
+                PermissibleValue(text="needs repair") )
+        setattr(cls, "visible signs of mold/mildew",
+                PermissibleValue(text="visible signs of mold/mildew") )
+
+class RoomConnectedEnum(EnumDefinitionImpl):
+
+    attic = PermissibleValue(text="attic")
+    bathroom = PermissibleValue(text="bathroom")
+    closet = PermissibleValue(text="closet")
+    elevator = PermissibleValue(text="elevator")
+    hallway = PermissibleValue(text="hallway")
+    kitchen = PermissibleValue(text="kitchen")
+    office = PermissibleValue(text="office")
+    stairwell = PermissibleValue(text="stairwell")
+
+    _defn = EnumDefinition(
+        name="RoomConnectedEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "conference room",
+                PermissibleValue(text="conference room") )
+        setattr(cls, "examining room",
+                PermissibleValue(text="examining room") )
+        setattr(cls, "mail room",
+                PermissibleValue(text="mail room") )
+
+class RoomLocEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="RoomLocEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "corner room",
+                PermissibleValue(text="corner room") )
+        setattr(cls, "interior room",
+                PermissibleValue(text="interior room") )
+        setattr(cls, "exterior wall",
+                PermissibleValue(text="exterior wall") )
+
+class RoomSampPosEnum(EnumDefinitionImpl):
+
+    center = PermissibleValue(text="center")
+
+    _defn = EnumDefinition(
+        name="RoomSampPosEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "north corner",
+                PermissibleValue(text="north corner") )
+        setattr(cls, "south corner",
+                PermissibleValue(text="south corner") )
+        setattr(cls, "west corner",
+                PermissibleValue(text="west corner") )
+        setattr(cls, "east corner",
+                PermissibleValue(text="east corner") )
+        setattr(cls, "northeast corner",
+                PermissibleValue(text="northeast corner") )
+        setattr(cls, "northwest corner",
+                PermissibleValue(text="northwest corner") )
+        setattr(cls, "southeast corner",
+                PermissibleValue(text="southeast corner") )
+        setattr(cls, "southwest corner",
+                PermissibleValue(text="southwest corner") )
+
+class RoomTypeEnum(EnumDefinitionImpl):
+
+    attic = PermissibleValue(text="attic")
+    bathroom = PermissibleValue(text="bathroom")
+    closet = PermissibleValue(text="closet")
+    elevator = PermissibleValue(text="elevator")
+    hallway = PermissibleValue(text="hallway")
+    kitchen = PermissibleValue(text="kitchen")
+    stairwell = PermissibleValue(text="stairwell")
+    lobby = PermissibleValue(text="lobby")
+    vestibule = PermissibleValue(text="vestibule")
+    laboratory_wet = PermissibleValue(text="laboratory_wet")
+    laboratory_dry = PermissibleValue(text="laboratory_dry")
+    gymnasium = PermissibleValue(text="gymnasium")
+    natatorium = PermissibleValue(text="natatorium")
+    auditorium = PermissibleValue(text="auditorium")
+    lockers = PermissibleValue(text="lockers")
+    cafe = PermissibleValue(text="cafe")
+    warehouse = PermissibleValue(text="warehouse")
+
+    _defn = EnumDefinition(
+        name="RoomTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "conference room",
+                PermissibleValue(text="conference room") )
+        setattr(cls, "examining room",
+                PermissibleValue(text="examining room") )
+        setattr(cls, "mail room",
+                PermissibleValue(text="mail room") )
+        setattr(cls, "private office",
+                PermissibleValue(text="private office") )
+        setattr(cls, "open office",
+                PermissibleValue(text="open office") )
+        setattr(cls, ",restroom",
+                PermissibleValue(text=",restroom") )
+        setattr(cls, "mechanical or electrical room",
+                PermissibleValue(text="mechanical or electrical room") )
+        setattr(cls, "data center",
+                PermissibleValue(text="data center") )
+
+class SampCaptStatusEnum(EnumDefinitionImpl):
+
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="SampCaptStatusEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "active surveillance in response to an outbreak",
+                PermissibleValue(text="active surveillance in response to an outbreak") )
+        setattr(cls, "active surveillance not initiated by an outbreak",
+                PermissibleValue(text="active surveillance not initiated by an outbreak") )
+        setattr(cls, "farm sample",
+                PermissibleValue(text="farm sample") )
+        setattr(cls, "market sample",
+                PermissibleValue(text="market sample") )
+
+class SampCollectPointEnum(EnumDefinitionImpl):
+
+    well = PermissibleValue(text="well")
+    wellhead = PermissibleValue(text="wellhead")
+    separator = PermissibleValue(text="separator")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="SampCollectPointEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "test well",
+                PermissibleValue(text="test well") )
+        setattr(cls, "drilling rig",
+                PermissibleValue(text="drilling rig") )
+        setattr(cls, "storage tank",
+                PermissibleValue(text="storage tank") )
+
+class SampDisStageEnum(EnumDefinitionImpl):
+
+    dissemination = PermissibleValue(text="dissemination")
+    infection = PermissibleValue(text="infection")
+    inoculation = PermissibleValue(text="inoculation")
+    penetration = PermissibleValue(text="penetration")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="SampDisStageEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "growth and reproduction",
+                PermissibleValue(text="growth and reproduction") )
+
+class SampFloorEnum(EnumDefinitionImpl):
+
+    basement = PermissibleValue(text="basement")
+    lobby = PermissibleValue(text="lobby")
+
+    _defn = EnumDefinition(
+        name="SampFloorEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "1st floor",
+                PermissibleValue(text="1st floor") )
+        setattr(cls, "2nd floor",
+                PermissibleValue(text="2nd floor") )
+
+class SampMdEnum(EnumDefinitionImpl):
+
+    DF = PermissibleValue(text="DF")
+    RT = PermissibleValue(text="RT")
+    KB = PermissibleValue(text="KB")
+    MSL = PermissibleValue(text="MSL")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="SampMdEnum",
+    )
+
+class SampSubtypeEnum(EnumDefinitionImpl):
+
+    biofilm = PermissibleValue(text="biofilm")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="SampSubtypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "oil phase",
+                PermissibleValue(text="oil phase") )
+        setattr(cls, "water phase",
+                PermissibleValue(text="water phase") )
+        setattr(cls, "not applicable",
+                PermissibleValue(text="not applicable") )
+
+class SampWeatherEnum(EnumDefinitionImpl):
+
+    cloudy = PermissibleValue(text="cloudy")
+    foggy = PermissibleValue(text="foggy")
+    hail = PermissibleValue(text="hail")
+    rain = PermissibleValue(text="rain")
+    snow = PermissibleValue(text="snow")
+    sleet = PermissibleValue(text="sleet")
+    sunny = PermissibleValue(text="sunny")
+    windy = PermissibleValue(text="windy")
+
+    _defn = EnumDefinition(
+        name="SampWeatherEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "clear sky",
+                PermissibleValue(text="clear sky") )
+
+class SeasonUseEnum(EnumDefinitionImpl):
+
+    Spring = PermissibleValue(text="Spring")
+    Summer = PermissibleValue(text="Summer")
+    Fall = PermissibleValue(text="Fall")
+    Winter = PermissibleValue(text="Winter")
+
+    _defn = EnumDefinition(
+        name="SeasonUseEnum",
+    )
+
+class SedimentTypeEnum(EnumDefinitionImpl):
+
+    biogenous = PermissibleValue(text="biogenous")
+    cosmogenous = PermissibleValue(text="cosmogenous")
+    hydrogenous = PermissibleValue(text="hydrogenous")
+    lithogenous = PermissibleValue(text="lithogenous")
+
+    _defn = EnumDefinition(
+        name="SedimentTypeEnum",
+    )
+
+class ShadingDeviceCondEnum(EnumDefinitionImpl):
+
+    damaged = PermissibleValue(text="damaged")
+    new = PermissibleValue(text="new")
+    rupture = PermissibleValue(text="rupture")
+
+    _defn = EnumDefinition(
+        name="ShadingDeviceCondEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "needs repair",
+                PermissibleValue(text="needs repair") )
+        setattr(cls, "visible wear",
+                PermissibleValue(text="visible wear") )
+
+class ShadingDeviceTypeEnum(EnumDefinitionImpl):
+
+    tree = PermissibleValue(text="tree")
+    trellis = PermissibleValue(text="trellis")
+
+    _defn = EnumDefinition(
+        name="ShadingDeviceTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "bahama shutters",
+                PermissibleValue(text="bahama shutters") )
+        setattr(cls, "exterior roll blind",
+                PermissibleValue(text="exterior roll blind") )
+        setattr(cls, "gambrel awning",
+                PermissibleValue(text="gambrel awning") )
+        setattr(cls, "hood awning",
+                PermissibleValue(text="hood awning") )
+        setattr(cls, "porchroller awning",
+                PermissibleValue(text="porchroller awning") )
+        setattr(cls, "sarasota shutters",
+                PermissibleValue(text="sarasota shutters") )
+        setattr(cls, "slatted aluminum",
+                PermissibleValue(text="slatted aluminum") )
+        setattr(cls, "solid aluminum awning",
+                PermissibleValue(text="solid aluminum awning") )
+        setattr(cls, "sun screen",
+                PermissibleValue(text="sun screen") )
+        setattr(cls, "venetian awning",
+                PermissibleValue(text="venetian awning") )
+
+class SoilHorizonEnum(EnumDefinitionImpl):
+
+    Permafrost = PermissibleValue(text="Permafrost")
+
+    _defn = EnumDefinition(
+        name="SoilHorizonEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "O horizon",
+                PermissibleValue(text="O horizon") )
+        setattr(cls, "A horizon",
+                PermissibleValue(text="A horizon") )
+        setattr(cls, "E horizon",
+                PermissibleValue(text="E horizon") )
+        setattr(cls, "B horizon",
+                PermissibleValue(text="B horizon") )
+        setattr(cls, "C horizon",
+                PermissibleValue(text="C horizon") )
+        setattr(cls, "R layer",
+                PermissibleValue(text="R layer") )
+
+class SpecificEnum(EnumDefinitionImpl):
+
+    operation = PermissibleValue(text="operation")
+    construction = PermissibleValue(text="construction")
+    bid = PermissibleValue(text="bid")
+    design = PermissibleValue(text="design")
+    photos = PermissibleValue(text="photos")
+
+    _defn = EnumDefinition(
+        name="SpecificEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "as built",
+                PermissibleValue(text="as built") )
+
+class SrDepEnvEnum(EnumDefinitionImpl):
+
+    Lacustine = PermissibleValue(text="Lacustine")
+    Fluvioldeltaic = PermissibleValue(text="Fluvioldeltaic")
+    Fluviomarine = PermissibleValue(text="Fluviomarine")
+    Marine = PermissibleValue(text="Marine")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="SrDepEnvEnum",
+    )
+
+class SrGeolAgeEnum(EnumDefinitionImpl):
+
+    Archean = PermissibleValue(text="Archean")
+    Cambrian = PermissibleValue(text="Cambrian")
+    Carboniferous = PermissibleValue(text="Carboniferous")
+    Cenozoic = PermissibleValue(text="Cenozoic")
+    Cretaceous = PermissibleValue(text="Cretaceous")
+    Devonian = PermissibleValue(text="Devonian")
+    Jurassic = PermissibleValue(text="Jurassic")
+    Mesozoic = PermissibleValue(text="Mesozoic")
+    Neogene = PermissibleValue(text="Neogene")
+    Ordovician = PermissibleValue(text="Ordovician")
+    Paleogene = PermissibleValue(text="Paleogene")
+    Paleozoic = PermissibleValue(text="Paleozoic")
+    Permian = PermissibleValue(text="Permian")
+    Precambrian = PermissibleValue(text="Precambrian")
+    Proterozoic = PermissibleValue(text="Proterozoic")
+    Silurian = PermissibleValue(text="Silurian")
+    Triassic = PermissibleValue(text="Triassic")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="SrGeolAgeEnum",
+    )
+
+class SrKerogTypeEnum(EnumDefinitionImpl):
+
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="SrKerogTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Type I",
+                PermissibleValue(text="Type I") )
+        setattr(cls, "Type II",
+                PermissibleValue(text="Type II") )
+        setattr(cls, "Type III",
+                PermissibleValue(text="Type III") )
+        setattr(cls, "Type IV",
+                PermissibleValue(text="Type IV") )
+
+class SrLithologyEnum(EnumDefinitionImpl):
+
+    Clastic = PermissibleValue(text="Clastic")
+    Carbonate = PermissibleValue(text="Carbonate")
+    Coal = PermissibleValue(text="Coal")
+    Biosilicieous = PermissibleValue(text="Biosilicieous")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="SrLithologyEnum",
+    )
+
+class SubstructureTypeEnum(EnumDefinitionImpl):
+
+    crawlspace = PermissibleValue(text="crawlspace")
+    basement = PermissibleValue(text="basement")
+
+    _defn = EnumDefinition(
+        name="SubstructureTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "slab on grade",
+                PermissibleValue(text="slab on grade") )
+
+class SurfAirContEnum(EnumDefinitionImpl):
+
+    dust = PermissibleValue(text="dust")
+    radon = PermissibleValue(text="radon")
+    nutrients = PermissibleValue(text="nutrients")
+    biocides = PermissibleValue(text="biocides")
+
+    _defn = EnumDefinition(
+        name="SurfAirContEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "organic matter",
+                PermissibleValue(text="organic matter") )
+        setattr(cls, "particulate matter",
+                PermissibleValue(text="particulate matter") )
+        setattr(cls, "volatile organic compounds",
+                PermissibleValue(text="volatile organic compounds") )
+        setattr(cls, "biological contaminants",
+                PermissibleValue(text="biological contaminants") )
+
+class SurfMaterialEnum(EnumDefinitionImpl):
+
+    adobe = PermissibleValue(text="adobe")
+    carpet = PermissibleValue(text="carpet")
+    concrete = PermissibleValue(text="concrete")
+    glass = PermissibleValue(text="glass")
+    metal = PermissibleValue(text="metal")
+    paint = PermissibleValue(text="paint")
+    plastic = PermissibleValue(text="plastic")
+    stone = PermissibleValue(text="stone")
+    stucco = PermissibleValue(text="stucco")
+    tile = PermissibleValue(text="tile")
+    vinyl = PermissibleValue(text="vinyl")
+    wood = PermissibleValue(text="wood")
+
+    _defn = EnumDefinition(
+        name="SurfMaterialEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "cinder blocks",
+                PermissibleValue(text="cinder blocks") )
+        setattr(cls, "hay bales",
+                PermissibleValue(text="hay bales") )
+        setattr(cls, "stainless steel",
+                PermissibleValue(text="stainless steel") )
+
+class TidalStageEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="TidalStageEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "low tide",
+                PermissibleValue(text="low tide") )
+        setattr(cls, "ebb tide",
+                PermissibleValue(text="ebb tide") )
+        setattr(cls, "flood tide",
+                PermissibleValue(text="flood tide") )
+        setattr(cls, "high tide",
+                PermissibleValue(text="high tide") )
+
+class TillageEnum(EnumDefinitionImpl):
+
+    drill = PermissibleValue(text="drill")
+    chisel = PermissibleValue(text="chisel")
+    tined = PermissibleValue(text="tined")
+    mouldboard = PermissibleValue(text="mouldboard")
+
+    _defn = EnumDefinition(
+        name="TillageEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "cutting disc",
+                PermissibleValue(text="cutting disc") )
+        setattr(cls, "ridge till",
+                PermissibleValue(text="ridge till") )
+        setattr(cls, "strip tillage",
+                PermissibleValue(text="strip tillage") )
+        setattr(cls, "zonal tillage",
+                PermissibleValue(text="zonal tillage") )
+        setattr(cls, "disc plough",
+                PermissibleValue(text="disc plough") )
+
+class TrainLineEnum(EnumDefinitionImpl):
+
+    red = PermissibleValue(text="red")
+    green = PermissibleValue(text="green")
+    orange = PermissibleValue(text="orange")
+
+    _defn = EnumDefinition(
+        name="TrainLineEnum",
+    )
+
+class TrainStatLocEnum(EnumDefinitionImpl):
+
+    riverside = PermissibleValue(text="riverside")
+
+    _defn = EnumDefinition(
+        name="TrainStatLocEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "south station above ground",
+                PermissibleValue(text="south station above ground") )
+        setattr(cls, "south station underground",
+                PermissibleValue(text="south station underground") )
+        setattr(cls, "south station amtrak",
+                PermissibleValue(text="south station amtrak") )
+        setattr(cls, "forest hills",
+                PermissibleValue(text="forest hills") )
+
+class TrainStopLocEnum(EnumDefinitionImpl):
+
+    end = PermissibleValue(text="end")
+    mid = PermissibleValue(text="mid")
+    downtown = PermissibleValue(text="downtown")
+
+    _defn = EnumDefinition(
+        name="TrainStopLocEnum",
+    )
+
+class VisMediaEnum(EnumDefinitionImpl):
+
+    photos = PermissibleValue(text="photos")
+    videos = PermissibleValue(text="videos")
+    interiors = PermissibleValue(text="interiors")
+    equipment = PermissibleValue(text="equipment")
+
+    _defn = EnumDefinition(
+        name="VisMediaEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "commonly of the building",
+                PermissibleValue(text="commonly of the building") )
+        setattr(cls, "site context (adjacent buildings, vegetation, terrain, streets)",
+                PermissibleValue(text="site context (adjacent buildings, vegetation, terrain, streets)") )
+        setattr(cls, "3D scans",
+                PermissibleValue(text="3D scans") )
+
+class WallConstTypeEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="WallConstTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "frame construction",
+                PermissibleValue(text="frame construction") )
+        setattr(cls, "joisted masonry",
+                PermissibleValue(text="joisted masonry") )
+        setattr(cls, "light noncombustible",
+                PermissibleValue(text="light noncombustible") )
+        setattr(cls, "masonry noncombustible",
+                PermissibleValue(text="masonry noncombustible") )
+        setattr(cls, "modified fire resistive",
+                PermissibleValue(text="modified fire resistive") )
+        setattr(cls, "fire resistive",
+                PermissibleValue(text="fire resistive") )
+
+class WallFinishMatEnum(EnumDefinitionImpl):
+
+    plaster = PermissibleValue(text="plaster")
+    tile = PermissibleValue(text="tile")
+    terrazzo = PermissibleValue(text="terrazzo")
+    wood = PermissibleValue(text="wood")
+    metal = PermissibleValue(text="metal")
+    masonry = PermissibleValue(text="masonry")
+
+    _defn = EnumDefinition(
+        name="WallFinishMatEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "gypsum plaster",
+                PermissibleValue(text="gypsum plaster") )
+        setattr(cls, "veneer plaster",
+                PermissibleValue(text="veneer plaster") )
+        setattr(cls, "gypsum board",
+                PermissibleValue(text="gypsum board") )
+        setattr(cls, "stone facing",
+                PermissibleValue(text="stone facing") )
+        setattr(cls, "acoustical treatment",
+                PermissibleValue(text="acoustical treatment") )
+
+class WallLocEnum(EnumDefinitionImpl):
+
+    north = PermissibleValue(text="north")
+    south = PermissibleValue(text="south")
+    east = PermissibleValue(text="east")
+    west = PermissibleValue(text="west")
+
+    _defn = EnumDefinition(
+        name="WallLocEnum",
+    )
+
+class WallSurfTreatmentEnum(EnumDefinitionImpl):
+
+    painted = PermissibleValue(text="painted")
+    paneling = PermissibleValue(text="paneling")
+    stucco = PermissibleValue(text="stucco")
+    fabric = PermissibleValue(text="fabric")
+
+    _defn = EnumDefinition(
+        name="WallSurfTreatmentEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "wall paper",
+                PermissibleValue(text="wall paper") )
+        setattr(cls, "no treatment",
+                PermissibleValue(text="no treatment") )
+
+class WallTextureEnum(EnumDefinitionImpl):
+
+    knockdown = PermissibleValue(text="knockdown")
+    popcorn = PermissibleValue(text="popcorn")
+    smooth = PermissibleValue(text="smooth")
+    swirl = PermissibleValue(text="swirl")
+
+    _defn = EnumDefinition(
+        name="WallTextureEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "crows feet",
+                PermissibleValue(text="crows feet") )
+        setattr(cls, "crows-foot stomp",
+                PermissibleValue(text="crows-foot stomp") )
+        setattr(cls, "",
+                PermissibleValue(text="") )
+        setattr(cls, "double skip",
+                PermissibleValue(text="double skip") )
+        setattr(cls, "hawk and trowel",
+                PermissibleValue(text="hawk and trowel") )
+        setattr(cls, "orange peel",
+                PermissibleValue(text="orange peel") )
+        setattr(cls, "rosebud stomp",
+                PermissibleValue(text="rosebud stomp") )
+        setattr(cls, "Santa-Fe texture",
+                PermissibleValue(text="Santa-Fe texture") )
+        setattr(cls, "skip trowel",
+                PermissibleValue(text="skip trowel") )
+        setattr(cls, "stomp knockdown",
+                PermissibleValue(text="stomp knockdown") )
+
+class WaterFeatTypeEnum(EnumDefinitionImpl):
+
+    fountain = PermissibleValue(text="fountain")
+    pool = PermissibleValue(text="pool")
+    stream = PermissibleValue(text="stream")
+    waterfall = PermissibleValue(text="waterfall")
+
+    _defn = EnumDefinition(
+        name="WaterFeatTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "standing feature",
+                PermissibleValue(text="standing feature") )
+
+class WeekdayEnum(EnumDefinitionImpl):
+
+    Monday = PermissibleValue(text="Monday")
+    Tuesday = PermissibleValue(text="Tuesday")
+    Wednesday = PermissibleValue(text="Wednesday")
+    Thursday = PermissibleValue(text="Thursday")
+    Friday = PermissibleValue(text="Friday")
+    Saturday = PermissibleValue(text="Saturday")
+    Sunday = PermissibleValue(text="Sunday")
+
+    _defn = EnumDefinition(
+        name="WeekdayEnum",
+    )
+
+class WindowCondEnum(EnumDefinitionImpl):
+
+    damaged = PermissibleValue(text="damaged")
+    new = PermissibleValue(text="new")
+    rupture = PermissibleValue(text="rupture")
+
+    _defn = EnumDefinition(
+        name="WindowCondEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "needs repair",
+                PermissibleValue(text="needs repair") )
+        setattr(cls, "visible wear",
+                PermissibleValue(text="visible wear") )
+
+class WindowCoverEnum(EnumDefinitionImpl):
+
+    blinds = PermissibleValue(text="blinds")
+    curtains = PermissibleValue(text="curtains")
+    none = PermissibleValue(text="none")
+
+    _defn = EnumDefinition(
+        name="WindowCoverEnum",
+    )
+
+class WindowHorizPosEnum(EnumDefinitionImpl):
+
+    left = PermissibleValue(text="left")
+    middle = PermissibleValue(text="middle")
+    right = PermissibleValue(text="right")
+
+    _defn = EnumDefinition(
+        name="WindowHorizPosEnum",
+    )
+
+class WindowLocEnum(EnumDefinitionImpl):
+
+    north = PermissibleValue(text="north")
+    south = PermissibleValue(text="south")
+    east = PermissibleValue(text="east")
+    west = PermissibleValue(text="west")
+
+    _defn = EnumDefinition(
+        name="WindowLocEnum",
+    )
+
+class WindowMatEnum(EnumDefinitionImpl):
+
+    clad = PermissibleValue(text="clad")
+    fiberglass = PermissibleValue(text="fiberglass")
+    metal = PermissibleValue(text="metal")
+    vinyl = PermissibleValue(text="vinyl")
+    wood = PermissibleValue(text="wood")
+
+    _defn = EnumDefinition(
+        name="WindowMatEnum",
+    )
+
+class WindowTypeEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="WindowTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "single-hung sash window",
+                PermissibleValue(text="single-hung sash window") )
+        setattr(cls, "horizontal sash window",
+                PermissibleValue(text="horizontal sash window") )
+        setattr(cls, "fixed window",
+                PermissibleValue(text="fixed window") )
+
+class WindowVertPosEnum(EnumDefinitionImpl):
+
+    bottom = PermissibleValue(text="bottom")
+    middle = PermissibleValue(text="middle")
+    top = PermissibleValue(text="top")
+    low = PermissibleValue(text="low")
+    high = PermissibleValue(text="high")
+
+    _defn = EnumDefinition(
+        name="WindowVertPosEnum",
+    )
 
 # Slots
 class slots:
     pass
 
-slots.submitted_to_insdc = Slot(uri=DEFAULT_.submitted_to_insdc, name="submitted_to_insdc", curie=DEFAULT_.curie('submitted_to_insdc'),
-                   model_uri=DEFAULT_.submitted_to_insdc, domain=None, range=Optional[Union[dict, BooleanValue]], mappings = [MIXS.submitted_to_insdc],
-                   pattern=re.compile(r'[true|false]'))
+slots.abs_air_humidity = Slot(uri=MIXS['0000122'], name="abs_air_humidity", curie=MIXS.curie('0000122'),
+                   model_uri=DEFAULT_.abs_air_humidity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.investigation_type = Slot(uri=DEFAULT_.investigation_type, name="investigation_type", curie=DEFAULT_.curie('investigation_type'),
-                   model_uri=DEFAULT_.investigation_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.investigation_type],
-                   pattern=re.compile(r'[eukaryote|bacteria_archaea|plasmid|virus|organelle|metagenome|metatranscriptome|mimarks\-survey|mimarks\-specimen|misag|mimag|miuvig]'))
+slots.core_field = Slot(uri=DEFAULT_.core_field, name="core field", curie=DEFAULT_.curie('core_field'),
+                   model_uri=DEFAULT_.core_field, domain=None, range=Optional[str])
 
-slots.project_name = Slot(uri=DEFAULT_.project_name, name="project_name", curie=DEFAULT_.curie('project_name'),
-                   model_uri=DEFAULT_.project_name, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.project_name])
+slots.add_recov_method = Slot(uri=MIXS['0001009'], name="add_recov_method", curie=MIXS.curie('0001009'),
+                   model_uri=DEFAULT_.add_recov_method, domain=None, range=Optional[Union[dict, TextValue]],
+                   pattern=re.compile(r'^(Water Injection|Dump Flood|Gas Injection|Wag Immiscible Injection|Polymer Addition|Surfactant Addition|Not Applicable|other);([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$'))
 
-slots.experimental_factor = Slot(uri=DEFAULT_.experimental_factor, name="experimental_factor", curie=DEFAULT_.curie('experimental_factor'),
-                   model_uri=DEFAULT_.experimental_factor, domain=None, range=Optional[Union[dict, ControlledTermValue]], mappings = [MIXS.experimental_factor])
+slots.additional_info = Slot(uri=MIXS['0000300'], name="additional_info", curie=MIXS.curie('0000300'),
+                   model_uri=DEFAULT_.additional_info, domain=None, range=Optional[Union[dict, TextValue]])
 
-slots.lat_lon = Slot(uri=DEFAULT_.lat_lon, name="lat_lon", curie=DEFAULT_.curie('lat_lon'),
-                   model_uri=DEFAULT_.lat_lon, domain=None, range=Optional[Union[dict, GeolocationValue]], mappings = [MIXS.lat_lon],
-                   pattern=re.compile(r'\d+[.\d+] \d+[.\d+]'))
+slots.address = Slot(uri=MIXS['0000218'], name="address", curie=MIXS.curie('0000218'),
+                   model_uri=DEFAULT_.address, domain=None, range=Optional[Union[dict, TextValue]])
 
-slots.depth = Slot(uri=DEFAULT_.depth, name="depth", curie=DEFAULT_.curie('depth'),
-                   model_uri=DEFAULT_.depth, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.depth])
+slots.adj_room = Slot(uri=MIXS['0000219'], name="adj_room", curie=MIXS.curie('0000219'),
+                   model_uri=DEFAULT_.adj_room, domain=None, range=Optional[Union[dict, TextValue]])
 
-slots.alt = Slot(uri=DEFAULT_.alt, name="alt", curie=DEFAULT_.curie('alt'),
-                   model_uri=DEFAULT_.alt, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.alt],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
+slots.aero_struc = Slot(uri=MIXS['0000773'], name="aero_struc", curie=MIXS.curie('0000773'),
+                   model_uri=DEFAULT_.aero_struc, domain=None, range=Optional[Union[dict, TextValue]])
 
-slots.elev = Slot(uri=DEFAULT_.elev, name="elev", curie=DEFAULT_.curie('elev'),
-                   model_uri=DEFAULT_.elev, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.elev],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
+slots.agrochem_addition = Slot(uri=MIXS['0000639'], name="agrochem_addition", curie=MIXS.curie('0000639'),
+                   model_uri=DEFAULT_.agrochem_addition, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.geo_loc_name = Slot(uri=DEFAULT_.geo_loc_name, name="geo_loc_name", curie=DEFAULT_.curie('geo_loc_name'),
-                   model_uri=DEFAULT_.geo_loc_name, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.geo_loc_name])
+slots.air_temp = Slot(uri=MIXS['0000124'], name="air_temp", curie=MIXS.curie('0000124'),
+                   model_uri=DEFAULT_.air_temp, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.collection_date = Slot(uri=DEFAULT_.collection_date, name="collection_date", curie=DEFAULT_.curie('collection_date'),
-                   model_uri=DEFAULT_.collection_date, domain=None, range=Optional[Union[dict, TimestampValue]], mappings = [MIXS.collection_date])
+slots.air_temp_regm = Slot(uri=MIXS['0000551'], name="air_temp_regm", curie=MIXS.curie('0000551'),
+                   model_uri=DEFAULT_.air_temp_regm, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.env_broad_scale = Slot(uri=DEFAULT_.env_broad_scale, name="env_broad_scale", curie=DEFAULT_.curie('env_broad_scale'),
-                   model_uri=DEFAULT_.env_broad_scale, domain=None, range=Optional[Union[dict, ControlledTermValue]], mappings = [MIXS.env_broad_scale],
-                   pattern=re.compile(r'.* \S+:\S+'))
+slots.al_sat = Slot(uri=MIXS['0000607'], name="al_sat", curie=MIXS.curie('0000607'),
+                   model_uri=DEFAULT_.al_sat, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.env_local_scale = Slot(uri=DEFAULT_.env_local_scale, name="env_local_scale", curie=DEFAULT_.curie('env_local_scale'),
-                   model_uri=DEFAULT_.env_local_scale, domain=None, range=Optional[Union[dict, ControlledTermValue]], mappings = [MIXS.env_local_scale],
-                   pattern=re.compile(r'.* \S+:\S+'))
+slots.al_sat_meth = Slot(uri=MIXS['0000324'], name="al_sat_meth", curie=MIXS.curie('0000324'),
+                   model_uri=DEFAULT_.al_sat_meth, domain=None, range=Optional[Union[dict, TextValue]])
 
-slots.env_medium = Slot(uri=DEFAULT_.env_medium, name="env_medium", curie=DEFAULT_.curie('env_medium'),
-                   model_uri=DEFAULT_.env_medium, domain=None, range=Optional[Union[dict, ControlledTermValue]], mappings = [MIXS.env_medium],
-                   pattern=re.compile(r'.* \S+:\S+'))
+slots.alkalinity = Slot(uri=MIXS['0000421'], name="alkalinity", curie=MIXS.curie('0000421'),
+                   model_uri=DEFAULT_.alkalinity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.alkalinity_method = Slot(uri=MIXS['0000298'], name="alkalinity_method", curie=MIXS.curie('0000298'),
+                   model_uri=DEFAULT_.alkalinity_method, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.alkyl_diethers = Slot(uri=MIXS['0000490'], name="alkyl_diethers", curie=MIXS.curie('0000490'),
+                   model_uri=DEFAULT_.alkyl_diethers, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.alt = Slot(uri=MIXS['0000094'], name="alt", curie=MIXS.curie('0000094'),
+                   model_uri=DEFAULT_.alt, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.environment_field = Slot(uri=DEFAULT_.environment_field, name="environment field", curie=DEFAULT_.curie('environment_field'),
+                   model_uri=DEFAULT_.environment_field, domain=None, range=Optional[str])
+
+slots.aminopept_act = Slot(uri=MIXS['0000172'], name="aminopept_act", curie=MIXS.curie('0000172'),
+                   model_uri=DEFAULT_.aminopept_act, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.ammonium = Slot(uri=MIXS['0000427'], name="ammonium", curie=MIXS.curie('0000427'),
+                   model_uri=DEFAULT_.ammonium, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.amount_light = Slot(uri=MIXS['0000140'], name="amount_light", curie=MIXS.curie('0000140'),
+                   model_uri=DEFAULT_.amount_light, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.ances_data = Slot(uri=MIXS['0000247'], name="ances_data", curie=MIXS.curie('0000247'),
+                   model_uri=DEFAULT_.ances_data, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.annual_precpt = Slot(uri=MIXS['0000644'], name="annual_precpt", curie=MIXS.curie('0000644'),
+                   model_uri=DEFAULT_.annual_precpt, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.annual_temp = Slot(uri=MIXS['0000642'], name="annual_temp", curie=MIXS.curie('0000642'),
+                   model_uri=DEFAULT_.annual_temp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.antibiotic_regm = Slot(uri=MIXS['0000553'], name="antibiotic_regm", curie=MIXS.curie('0000553'),
+                   model_uri=DEFAULT_.antibiotic_regm, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.api = Slot(uri=MIXS['0000157'], name="api", curie=MIXS.curie('0000157'),
+                   model_uri=DEFAULT_.api, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.arch_struc = Slot(uri=MIXS['0000774'], name="arch_struc", curie=MIXS.curie('0000774'),
+                   model_uri=DEFAULT_.arch_struc, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.aromatics_pc = Slot(uri=MIXS['0000133'], name="aromatics_pc", curie=MIXS.curie('0000133'),
+                   model_uri=DEFAULT_.aromatics_pc, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.asphaltenes_pc = Slot(uri=MIXS['0000135'], name="asphaltenes_pc", curie=MIXS.curie('0000135'),
+                   model_uri=DEFAULT_.asphaltenes_pc, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.atmospheric_data = Slot(uri=MIXS['0001097'], name="atmospheric_data", curie=MIXS.curie('0001097'),
+                   model_uri=DEFAULT_.atmospheric_data, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.avg_dew_point = Slot(uri=MIXS['0000141'], name="avg_dew_point", curie=MIXS.curie('0000141'),
+                   model_uri=DEFAULT_.avg_dew_point, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.avg_occup = Slot(uri=MIXS['0000775'], name="avg_occup", curie=MIXS.curie('0000775'),
+                   model_uri=DEFAULT_.avg_occup, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.avg_temp = Slot(uri=MIXS['0000142'], name="avg_temp", curie=MIXS.curie('0000142'),
+                   model_uri=DEFAULT_.avg_temp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.bac_prod = Slot(uri=MIXS['0000683'], name="bac_prod", curie=MIXS.curie('0000683'),
+                   model_uri=DEFAULT_.bac_prod, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.bac_resp = Slot(uri=MIXS['0000684'], name="bac_resp", curie=MIXS.curie('0000684'),
+                   model_uri=DEFAULT_.bac_resp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.bacteria_carb_prod = Slot(uri=MIXS['0000173'], name="bacteria_carb_prod", curie=MIXS.curie('0000173'),
+                   model_uri=DEFAULT_.bacteria_carb_prod, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.barometric_press = Slot(uri=MIXS['0000096'], name="barometric_press", curie=MIXS.curie('0000096'),
+                   model_uri=DEFAULT_.barometric_press, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.basin = Slot(uri=MIXS['0000290'], name="basin", curie=MIXS.curie('0000290'),
+                   model_uri=DEFAULT_.basin, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.bathroom_count = Slot(uri=MIXS['0000776'], name="bathroom_count", curie=MIXS.curie('0000776'),
+                   model_uri=DEFAULT_.bathroom_count, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.bedroom_count = Slot(uri=MIXS['0000777'], name="bedroom_count", curie=MIXS.curie('0000777'),
+                   model_uri=DEFAULT_.bedroom_count, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.benzene = Slot(uri=MIXS['0000153'], name="benzene", curie=MIXS.curie('0000153'),
+                   model_uri=DEFAULT_.benzene, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.biochem_oxygen_dem = Slot(uri=MIXS['0000653'], name="biochem_oxygen_dem", curie=MIXS.curie('0000653'),
+                   model_uri=DEFAULT_.biochem_oxygen_dem, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.biocide = Slot(uri=MIXS['0001011'], name="biocide", curie=MIXS.curie('0001011'),
+                   model_uri=DEFAULT_.biocide, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.biocide_admin_method = Slot(uri=MIXS['0000456'], name="biocide_admin_method", curie=MIXS.curie('0000456'),
+                   model_uri=DEFAULT_.biocide_admin_method, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.biol_stat = Slot(uri=MIXS['0000858'], name="biol_stat", curie=MIXS.curie('0000858'),
+                   model_uri=DEFAULT_.biol_stat, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.biomass = Slot(uri=MIXS['0000174'], name="biomass", curie=MIXS.curie('0000174'),
+                   model_uri=DEFAULT_.biomass, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.biotic_regm = Slot(uri=MIXS['0001038'], name="biotic_regm", curie=MIXS.curie('0001038'),
+                   model_uri=DEFAULT_.biotic_regm, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.biotic_relationship = Slot(uri=MIXS['0000028'], name="biotic_relationship", curie=MIXS.curie('0000028'),
+                   model_uri=DEFAULT_.biotic_relationship, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.nucleic_acid_sequence_source_field = Slot(uri=DEFAULT_.nucleic_acid_sequence_source_field, name="nucleic acid sequence source field", curie=DEFAULT_.curie('nucleic_acid_sequence_source_field'),
+                   model_uri=DEFAULT_.nucleic_acid_sequence_source_field, domain=None, range=Optional[str])
+
+slots.bishomohopanol = Slot(uri=MIXS['0000175'], name="bishomohopanol", curie=MIXS.curie('0000175'),
+                   model_uri=DEFAULT_.bishomohopanol, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.blood_press_diast = Slot(uri=MIXS['0000258'], name="blood_press_diast", curie=MIXS.curie('0000258'),
+                   model_uri=DEFAULT_.blood_press_diast, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.blood_press_syst = Slot(uri=MIXS['0000259'], name="blood_press_syst", curie=MIXS.curie('0000259'),
+                   model_uri=DEFAULT_.blood_press_syst, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.bromide = Slot(uri=MIXS['0000176'], name="bromide", curie=MIXS.curie('0000176'),
+                   model_uri=DEFAULT_.bromide, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.build_docs = Slot(uri=MIXS['0000787'], name="build_docs", curie=MIXS.curie('0000787'),
+                   model_uri=DEFAULT_.build_docs, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.build_occup_type = Slot(uri=MIXS['0000761'], name="build_occup_type", curie=MIXS.curie('0000761'),
+                   model_uri=DEFAULT_.build_occup_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.building_setting = Slot(uri=MIXS['0000768'], name="building_setting", curie=MIXS.curie('0000768'),
+                   model_uri=DEFAULT_.building_setting, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.built_struc_age = Slot(uri=MIXS['0000145'], name="built_struc_age", curie=MIXS.curie('0000145'),
+                   model_uri=DEFAULT_.built_struc_age, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.built_struc_set = Slot(uri=MIXS['0000778'], name="built_struc_set", curie=MIXS.curie('0000778'),
+                   model_uri=DEFAULT_.built_struc_set, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.built_struc_type = Slot(uri=MIXS['0000721'], name="built_struc_type", curie=MIXS.curie('0000721'),
+                   model_uri=DEFAULT_.built_struc_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.calcium = Slot(uri=MIXS['0000432'], name="calcium", curie=MIXS.curie('0000432'),
+                   model_uri=DEFAULT_.calcium, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.carb_dioxide = Slot(uri=MIXS['0000097'], name="carb_dioxide", curie=MIXS.curie('0000097'),
+                   model_uri=DEFAULT_.carb_dioxide, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.carb_monoxide = Slot(uri=MIXS['0000098'], name="carb_monoxide", curie=MIXS.curie('0000098'),
+                   model_uri=DEFAULT_.carb_monoxide, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.carb_nitro_ratio = Slot(uri=MIXS['0000310'], name="carb_nitro_ratio", curie=MIXS.curie('0000310'),
+                   model_uri=DEFAULT_.carb_nitro_ratio, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.ceil_area = Slot(uri=MIXS['0000148'], name="ceil_area", curie=MIXS.curie('0000148'),
+                   model_uri=DEFAULT_.ceil_area, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.ceil_cond = Slot(uri=MIXS['0000779'], name="ceil_cond", curie=MIXS.curie('0000779'),
+                   model_uri=DEFAULT_.ceil_cond, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.ceil_finish_mat = Slot(uri=MIXS['0000780'], name="ceil_finish_mat", curie=MIXS.curie('0000780'),
+                   model_uri=DEFAULT_.ceil_finish_mat, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.ceil_struc = Slot(uri=MIXS['0000782'], name="ceil_struc", curie=MIXS.curie('0000782'),
+                   model_uri=DEFAULT_.ceil_struc, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.ceil_texture = Slot(uri=MIXS['0000783'], name="ceil_texture", curie=MIXS.curie('0000783'),
+                   model_uri=DEFAULT_.ceil_texture, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.ceil_thermal_mass = Slot(uri=MIXS['0000143'], name="ceil_thermal_mass", curie=MIXS.curie('0000143'),
+                   model_uri=DEFAULT_.ceil_thermal_mass, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.ceil_type = Slot(uri=MIXS['0000784'], name="ceil_type", curie=MIXS.curie('0000784'),
+                   model_uri=DEFAULT_.ceil_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.ceil_water_mold = Slot(uri=MIXS['0000781'], name="ceil_water_mold", curie=MIXS.curie('0000781'),
+                   model_uri=DEFAULT_.ceil_water_mold, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.chem_administration = Slot(uri=MIXS['0000751'], name="chem_administration", curie=MIXS.curie('0000751'),
+                   model_uri=DEFAULT_.chem_administration, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+
+slots.chem_mutagen = Slot(uri=MIXS['0000555'], name="chem_mutagen", curie=MIXS.curie('0000555'),
+                   model_uri=DEFAULT_.chem_mutagen, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.chem_oxygen_dem = Slot(uri=MIXS['0000656'], name="chem_oxygen_dem", curie=MIXS.curie('0000656'),
+                   model_uri=DEFAULT_.chem_oxygen_dem, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.chem_treat_method = Slot(uri=MIXS['0000457'], name="chem_treat_method", curie=MIXS.curie('0000457'),
+                   model_uri=DEFAULT_.chem_treat_method, domain=None, range=Optional[str])
+
+slots.chem_treatment = Slot(uri=MIXS['0001012'], name="chem_treatment", curie=MIXS.curie('0001012'),
+                   model_uri=DEFAULT_.chem_treatment, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.chimera_check = Slot(uri=MIXS['0000052'], name="chimera_check", curie=MIXS.curie('0000052'),
+                   model_uri=DEFAULT_.chimera_check, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.sequencing_field = Slot(uri=DEFAULT_.sequencing_field, name="sequencing field", curie=DEFAULT_.curie('sequencing_field'),
+                   model_uri=DEFAULT_.sequencing_field, domain=None, range=Optional[str])
+
+slots.chloride = Slot(uri=MIXS['0000429'], name="chloride", curie=MIXS.curie('0000429'),
+                   model_uri=DEFAULT_.chloride, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.chlorophyll = Slot(uri=MIXS['0000177'], name="chlorophyll", curie=MIXS.curie('0000177'),
+                   model_uri=DEFAULT_.chlorophyll, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.climate_environment = Slot(uri=MIXS['0001040'], name="climate_environment", curie=MIXS.curie('0001040'),
+                   model_uri=DEFAULT_.climate_environment, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.collection_date = Slot(uri=MIXS['0000011'], name="collection_date", curie=MIXS.curie('0000011'),
+                   model_uri=DEFAULT_.collection_date, domain=None, range=Optional[Union[dict, TimestampValue]])
+
+slots.conduc = Slot(uri=MIXS['0000692'], name="conduc", curie=MIXS.curie('0000692'),
+                   model_uri=DEFAULT_.conduc, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.cool_syst_id = Slot(uri=MIXS['0000785'], name="cool_syst_id", curie=MIXS.curie('0000785'),
+                   model_uri=DEFAULT_.cool_syst_id, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.crop_rotation = Slot(uri=MIXS['0000318'], name="crop_rotation", curie=MIXS.curie('0000318'),
+                   model_uri=DEFAULT_.crop_rotation, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.cult_root_med = Slot(uri=MIXS['0001041'], name="cult_root_med", curie=MIXS.curie('0001041'),
+                   model_uri=DEFAULT_.cult_root_med, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.cur_land_use = Slot(uri=MIXS['0001080'], name="cur_land_use", curie=MIXS.curie('0001080'),
+                   model_uri=DEFAULT_.cur_land_use, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.cur_vegetation = Slot(uri=MIXS['0000312'], name="cur_vegetation", curie=MIXS.curie('0000312'),
+                   model_uri=DEFAULT_.cur_vegetation, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.cur_vegetation_meth = Slot(uri=MIXS['0000314'], name="cur_vegetation_meth", curie=MIXS.curie('0000314'),
+                   model_uri=DEFAULT_.cur_vegetation_meth, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.date_last_rain = Slot(uri=MIXS['0000786'], name="date_last_rain", curie=MIXS.curie('0000786'),
+                   model_uri=DEFAULT_.date_last_rain, domain=None, range=Optional[Union[dict, TimestampValue]])
+
+slots.density = Slot(uri=MIXS['0000435'], name="density", curie=MIXS.curie('0000435'),
+                   model_uri=DEFAULT_.density, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.depos_env = Slot(uri=MIXS['0000992'], name="depos_env", curie=MIXS.curie('0000992'),
+                   model_uri=DEFAULT_.depos_env, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.depth = Slot(uri=MIXS['0000018'], name="depth", curie=MIXS.curie('0000018'),
+                   model_uri=DEFAULT_.depth, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.dew_point = Slot(uri=MIXS['0000129'], name="dew_point", curie=MIXS.curie('0000129'),
+                   model_uri=DEFAULT_.dew_point, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.diether_lipids = Slot(uri=MIXS['0000178'], name="diether_lipids", curie=MIXS.curie('0000178'),
+                   model_uri=DEFAULT_.diether_lipids, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.diss_carb_dioxide = Slot(uri=MIXS['0000436'], name="diss_carb_dioxide", curie=MIXS.curie('0000436'),
+                   model_uri=DEFAULT_.diss_carb_dioxide, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.diss_hydrogen = Slot(uri=MIXS['0000179'], name="diss_hydrogen", curie=MIXS.curie('0000179'),
+                   model_uri=DEFAULT_.diss_hydrogen, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.diss_inorg_carb = Slot(uri=MIXS['0000434'], name="diss_inorg_carb", curie=MIXS.curie('0000434'),
+                   model_uri=DEFAULT_.diss_inorg_carb, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.diss_inorg_nitro = Slot(uri=MIXS['0000698'], name="diss_inorg_nitro", curie=MIXS.curie('0000698'),
+                   model_uri=DEFAULT_.diss_inorg_nitro, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.diss_inorg_phosp = Slot(uri=MIXS['0000106'], name="diss_inorg_phosp", curie=MIXS.curie('0000106'),
+                   model_uri=DEFAULT_.diss_inorg_phosp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.diss_iron = Slot(uri=MIXS['0000139'], name="diss_iron", curie=MIXS.curie('0000139'),
+                   model_uri=DEFAULT_.diss_iron, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.diss_org_carb = Slot(uri=MIXS['0000433'], name="diss_org_carb", curie=MIXS.curie('0000433'),
+                   model_uri=DEFAULT_.diss_org_carb, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.diss_org_nitro = Slot(uri=MIXS['0000162'], name="diss_org_nitro", curie=MIXS.curie('0000162'),
+                   model_uri=DEFAULT_.diss_org_nitro, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.diss_oxygen = Slot(uri=MIXS['0000119'], name="diss_oxygen", curie=MIXS.curie('0000119'),
+                   model_uri=DEFAULT_.diss_oxygen, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.diss_oxygen_fluid = Slot(uri=MIXS['0000438'], name="diss_oxygen_fluid", curie=MIXS.curie('0000438'),
+                   model_uri=DEFAULT_.diss_oxygen_fluid, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.door_comp_type = Slot(uri=MIXS['0000795'], name="door_comp_type", curie=MIXS.curie('0000795'),
+                   model_uri=DEFAULT_.door_comp_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.door_cond = Slot(uri=MIXS['0000788'], name="door_cond", curie=MIXS.curie('0000788'),
+                   model_uri=DEFAULT_.door_cond, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.door_direct = Slot(uri=MIXS['0000789'], name="door_direct", curie=MIXS.curie('0000789'),
+                   model_uri=DEFAULT_.door_direct, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.door_loc = Slot(uri=MIXS['0000790'], name="door_loc", curie=MIXS.curie('0000790'),
+                   model_uri=DEFAULT_.door_loc, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.door_mat = Slot(uri=MIXS['0000791'], name="door_mat", curie=MIXS.curie('0000791'),
+                   model_uri=DEFAULT_.door_mat, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.door_move = Slot(uri=MIXS['0000792'], name="door_move", curie=MIXS.curie('0000792'),
+                   model_uri=DEFAULT_.door_move, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.door_size = Slot(uri=MIXS['0000158'], name="door_size", curie=MIXS.curie('0000158'),
+                   model_uri=DEFAULT_.door_size, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.door_type = Slot(uri=MIXS['0000794'], name="door_type", curie=MIXS.curie('0000794'),
+                   model_uri=DEFAULT_.door_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.door_type_metal = Slot(uri=MIXS['0000796'], name="door_type_metal", curie=MIXS.curie('0000796'),
+                   model_uri=DEFAULT_.door_type_metal, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.door_type_wood = Slot(uri=MIXS['0000797'], name="door_type_wood", curie=MIXS.curie('0000797'),
+                   model_uri=DEFAULT_.door_type_wood, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.door_water_mold = Slot(uri=MIXS['0000793'], name="door_water_mold", curie=MIXS.curie('0000793'),
+                   model_uri=DEFAULT_.door_water_mold, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.down_par = Slot(uri=MIXS['0000703'], name="down_par", curie=MIXS.curie('0000703'),
+                   model_uri=DEFAULT_.down_par, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.drainage_class = Slot(uri=MIXS['0001085'], name="drainage_class", curie=MIXS.curie('0001085'),
+                   model_uri=DEFAULT_.drainage_class, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.drawings = Slot(uri=MIXS['0000798'], name="drawings", curie=MIXS.curie('0000798'),
+                   model_uri=DEFAULT_.drawings, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.efficiency_percent = Slot(uri=MIXS['0000657'], name="efficiency_percent", curie=MIXS.curie('0000657'),
+                   model_uri=DEFAULT_.efficiency_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.elev = Slot(uri=MIXS['0000093'], name="elev", curie=MIXS.curie('0000093'),
+                   model_uri=DEFAULT_.elev, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.elevator = Slot(uri=MIXS['0000799'], name="elevator", curie=MIXS.curie('0000799'),
+                   model_uri=DEFAULT_.elevator, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.emulsions = Slot(uri=MIXS['0000660'], name="emulsions", curie=MIXS.curie('0000660'),
+                   model_uri=DEFAULT_.emulsions, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.env_broad_scale = Slot(uri=MIXS['0000012'], name="env_broad_scale", curie=MIXS.curie('0000012'),
+                   model_uri=DEFAULT_.env_broad_scale, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+
+slots.env_local_scale = Slot(uri=MIXS['0000013'], name="env_local_scale", curie=MIXS.curie('0000013'),
+                   model_uri=DEFAULT_.env_local_scale, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+
+slots.env_medium = Slot(uri=MIXS['0000014'], name="env_medium", curie=MIXS.curie('0000014'),
+                   model_uri=DEFAULT_.env_medium, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+
+slots.escalator = Slot(uri=MIXS['0000800'], name="escalator", curie=MIXS.curie('0000800'),
+                   model_uri=DEFAULT_.escalator, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.ethylbenzene = Slot(uri=MIXS['0000155'], name="ethylbenzene", curie=MIXS.curie('0000155'),
+                   model_uri=DEFAULT_.ethylbenzene, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.exp_duct = Slot(uri=MIXS['0000144'], name="exp_duct", curie=MIXS.curie('0000144'),
+                   model_uri=DEFAULT_.exp_duct, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.exp_pipe = Slot(uri=MIXS['0000220'], name="exp_pipe", curie=MIXS.curie('0000220'),
+                   model_uri=DEFAULT_.exp_pipe, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.experimental_factor = Slot(uri=MIXS['0000008'], name="experimental_factor", curie=MIXS.curie('0000008'),
+                   model_uri=DEFAULT_.experimental_factor, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+
+slots.investigation_field = Slot(uri=DEFAULT_.investigation_field, name="investigation field", curie=DEFAULT_.curie('investigation_field'),
+                   model_uri=DEFAULT_.investigation_field, domain=None, range=Optional[str])
+
+slots.ext_door = Slot(uri=MIXS['0000170'], name="ext_door", curie=MIXS.curie('0000170'),
+                   model_uri=DEFAULT_.ext_door, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.ext_wall_orient = Slot(uri=MIXS['0000817'], name="ext_wall_orient", curie=MIXS.curie('0000817'),
+                   model_uri=DEFAULT_.ext_wall_orient, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.ext_window_orient = Slot(uri=MIXS['0000818'], name="ext_window_orient", curie=MIXS.curie('0000818'),
+                   model_uri=DEFAULT_.ext_window_orient, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.extreme_event = Slot(uri=MIXS['0000320'], name="extreme_event", curie=MIXS.curie('0000320'),
+                   model_uri=DEFAULT_.extreme_event, domain=None, range=Optional[Union[dict, TimestampValue]])
+
+slots.fao_class = Slot(uri=MIXS['0001083'], name="fao_class", curie=MIXS.curie('0001083'),
+                   model_uri=DEFAULT_.fao_class, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.fertilizer_regm = Slot(uri=MIXS['0000556'], name="fertilizer_regm", curie=MIXS.curie('0000556'),
+                   model_uri=DEFAULT_.fertilizer_regm, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.field = Slot(uri=MIXS['0000291'], name="field", curie=MIXS.curie('0000291'),
+                   model_uri=DEFAULT_.field, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.filter_type = Slot(uri=MIXS['0000765'], name="filter_type", curie=MIXS.curie('0000765'),
+                   model_uri=DEFAULT_.filter_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.fire = Slot(uri=MIXS['0001086'], name="fire", curie=MIXS.curie('0001086'),
+                   model_uri=DEFAULT_.fire, domain=None, range=Optional[Union[dict, TimestampValue]])
+
+slots.fireplace_type = Slot(uri=MIXS['0000802'], name="fireplace_type", curie=MIXS.curie('0000802'),
+                   model_uri=DEFAULT_.fireplace_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.flooding = Slot(uri=MIXS['0000319'], name="flooding", curie=MIXS.curie('0000319'),
+                   model_uri=DEFAULT_.flooding, domain=None, range=Optional[Union[dict, TimestampValue]])
+
+slots.floor_age = Slot(uri=MIXS['0000164'], name="floor_age", curie=MIXS.curie('0000164'),
+                   model_uri=DEFAULT_.floor_age, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.floor_area = Slot(uri=MIXS['0000165'], name="floor_area", curie=MIXS.curie('0000165'),
+                   model_uri=DEFAULT_.floor_area, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.floor_cond = Slot(uri=MIXS['0000803'], name="floor_cond", curie=MIXS.curie('0000803'),
+                   model_uri=DEFAULT_.floor_cond, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.floor_count = Slot(uri=MIXS['0000225'], name="floor_count", curie=MIXS.curie('0000225'),
+                   model_uri=DEFAULT_.floor_count, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.floor_finish_mat = Slot(uri=MIXS['0000804'], name="floor_finish_mat", curie=MIXS.curie('0000804'),
+                   model_uri=DEFAULT_.floor_finish_mat, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.floor_struc = Slot(uri=MIXS['0000806'], name="floor_struc", curie=MIXS.curie('0000806'),
+                   model_uri=DEFAULT_.floor_struc, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.floor_thermal_mass = Slot(uri=MIXS['0000166'], name="floor_thermal_mass", curie=MIXS.curie('0000166'),
+                   model_uri=DEFAULT_.floor_thermal_mass, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.floor_water_mold = Slot(uri=MIXS['0000805'], name="floor_water_mold", curie=MIXS.curie('0000805'),
+                   model_uri=DEFAULT_.floor_water_mold, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.fluor = Slot(uri=MIXS['0000704'], name="fluor", curie=MIXS.curie('0000704'),
+                   model_uri=DEFAULT_.fluor, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.freq_clean = Slot(uri=MIXS['0000226'], name="freq_clean", curie=MIXS.curie('0000226'),
+                   model_uri=DEFAULT_.freq_clean, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.freq_cook = Slot(uri=MIXS['0000227'], name="freq_cook", curie=MIXS.curie('0000227'),
+                   model_uri=DEFAULT_.freq_cook, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.fungicide_regm = Slot(uri=MIXS['0000557'], name="fungicide_regm", curie=MIXS.curie('0000557'),
+                   model_uri=DEFAULT_.fungicide_regm, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.furniture = Slot(uri=MIXS['0000807'], name="furniture", curie=MIXS.curie('0000807'),
+                   model_uri=DEFAULT_.furniture, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.gaseous_environment = Slot(uri=MIXS['0000558'], name="gaseous_environment", curie=MIXS.curie('0000558'),
+                   model_uri=DEFAULT_.gaseous_environment, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.gaseous_substances = Slot(uri=MIXS['0000661'], name="gaseous_substances", curie=MIXS.curie('0000661'),
+                   model_uri=DEFAULT_.gaseous_substances, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.gender_restroom = Slot(uri=MIXS['0000808'], name="gender_restroom", curie=MIXS.curie('0000808'),
+                   model_uri=DEFAULT_.gender_restroom, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.genetic_mod = Slot(uri=MIXS['0000859'], name="genetic_mod", curie=MIXS.curie('0000859'),
+                   model_uri=DEFAULT_.genetic_mod, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.geo_loc_name = Slot(uri=MIXS['0000010'], name="geo_loc_name", curie=MIXS.curie('0000010'),
+                   model_uri=DEFAULT_.geo_loc_name, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.glucosidase_act = Slot(uri=MIXS['0000137'], name="glucosidase_act", curie=MIXS.curie('0000137'),
+                   model_uri=DEFAULT_.glucosidase_act, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.gravidity = Slot(uri=MIXS['0000875'], name="gravidity", curie=MIXS.curie('0000875'),
+                   model_uri=DEFAULT_.gravidity, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.gravity = Slot(uri=MIXS['0000559'], name="gravity", curie=MIXS.curie('0000559'),
+                   model_uri=DEFAULT_.gravity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.growth_facil = Slot(uri=MIXS['0001043'], name="growth_facil", curie=MIXS.curie('0001043'),
+                   model_uri=DEFAULT_.growth_facil, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+
+slots.growth_habit = Slot(uri=MIXS['0001044'], name="growth_habit", curie=MIXS.curie('0001044'),
+                   model_uri=DEFAULT_.growth_habit, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.growth_hormone_regm = Slot(uri=MIXS['0000560'], name="growth_hormone_regm", curie=MIXS.curie('0000560'),
+                   model_uri=DEFAULT_.growth_hormone_regm, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.hall_count = Slot(uri=MIXS['0000228'], name="hall_count", curie=MIXS.curie('0000228'),
+                   model_uri=DEFAULT_.hall_count, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.handidness = Slot(uri=MIXS['0000809'], name="handidness", curie=MIXS.curie('0000809'),
+                   model_uri=DEFAULT_.handidness, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.hc_produced = Slot(uri=MIXS['0000989'], name="hc_produced", curie=MIXS.curie('0000989'),
+                   model_uri=DEFAULT_.hc_produced, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.hcr = Slot(uri=MIXS['0000988'], name="hcr", curie=MIXS.curie('0000988'),
+                   model_uri=DEFAULT_.hcr, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.hcr_fw_salinity = Slot(uri=MIXS['0000406'], name="hcr_fw_salinity", curie=MIXS.curie('0000406'),
+                   model_uri=DEFAULT_.hcr_fw_salinity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.hcr_geol_age = Slot(uri=MIXS['0000993'], name="hcr_geol_age", curie=MIXS.curie('0000993'),
+                   model_uri=DEFAULT_.hcr_geol_age, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.hcr_pressure = Slot(uri=MIXS['0000395'], name="hcr_pressure", curie=MIXS.curie('0000395'),
+                   model_uri=DEFAULT_.hcr_pressure, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.hcr_temp = Slot(uri=MIXS['0000393'], name="hcr_temp", curie=MIXS.curie('0000393'),
+                   model_uri=DEFAULT_.hcr_temp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.heat_cool_type = Slot(uri=MIXS['0000766'], name="heat_cool_type", curie=MIXS.curie('0000766'),
+                   model_uri=DEFAULT_.heat_cool_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.heat_deliv_loc = Slot(uri=MIXS['0000810'], name="heat_deliv_loc", curie=MIXS.curie('0000810'),
+                   model_uri=DEFAULT_.heat_deliv_loc, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.heat_sys_deliv_meth = Slot(uri=MIXS['0000812'], name="heat_sys_deliv_meth", curie=MIXS.curie('0000812'),
+                   model_uri=DEFAULT_.heat_sys_deliv_meth, domain=None, range=Optional[str])
+
+slots.heat_system_id = Slot(uri=MIXS['0000833'], name="heat_system_id", curie=MIXS.curie('0000833'),
+                   model_uri=DEFAULT_.heat_system_id, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.heavy_metals = Slot(uri=MIXS['0000652'], name="heavy_metals", curie=MIXS.curie('0000652'),
+                   model_uri=DEFAULT_.heavy_metals, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.heavy_metals_meth = Slot(uri=MIXS['0000343'], name="heavy_metals_meth", curie=MIXS.curie('0000343'),
+                   model_uri=DEFAULT_.heavy_metals_meth, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.height_carper_fiber = Slot(uri=MIXS['0000167'], name="height_carper_fiber", curie=MIXS.curie('0000167'),
+                   model_uri=DEFAULT_.height_carper_fiber, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.herbicide_regm = Slot(uri=MIXS['0000561'], name="herbicide_regm", curie=MIXS.curie('0000561'),
+                   model_uri=DEFAULT_.herbicide_regm, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.horizon = Slot(uri=MIXS['0001082'], name="horizon", curie=MIXS.curie('0001082'),
+                   model_uri=DEFAULT_.horizon, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.horizon_meth = Slot(uri=MIXS['0000321'], name="horizon_meth", curie=MIXS.curie('0000321'),
+                   model_uri=DEFAULT_.horizon_meth, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_age = Slot(uri=MIXS['0000255'], name="host_age", curie=MIXS.curie('0000255'),
+                   model_uri=DEFAULT_.host_age, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.host_body_habitat = Slot(uri=MIXS['0000866'], name="host_body_habitat", curie=MIXS.curie('0000866'),
+                   model_uri=DEFAULT_.host_body_habitat, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_body_product = Slot(uri=MIXS['0000888'], name="host_body_product", curie=MIXS.curie('0000888'),
+                   model_uri=DEFAULT_.host_body_product, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+
+slots.host_body_site = Slot(uri=MIXS['0000867'], name="host_body_site", curie=MIXS.curie('0000867'),
+                   model_uri=DEFAULT_.host_body_site, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+
+slots.host_body_temp = Slot(uri=MIXS['0000274'], name="host_body_temp", curie=MIXS.curie('0000274'),
+                   model_uri=DEFAULT_.host_body_temp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.host_color = Slot(uri=MIXS['0000260'], name="host_color", curie=MIXS.curie('0000260'),
+                   model_uri=DEFAULT_.host_color, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_common_name = Slot(uri=MIXS['0000248'], name="host_common_name", curie=MIXS.curie('0000248'),
+                   model_uri=DEFAULT_.host_common_name, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_diet = Slot(uri=MIXS['0000869'], name="host_diet", curie=MIXS.curie('0000869'),
+                   model_uri=DEFAULT_.host_diet, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_dry_mass = Slot(uri=MIXS['0000257'], name="host_dry_mass", curie=MIXS.curie('0000257'),
+                   model_uri=DEFAULT_.host_dry_mass, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.host_family_relation = Slot(uri=MIXS['0000872'], name="host_family_relation", curie=MIXS.curie('0000872'),
+                   model_uri=DEFAULT_.host_family_relation, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.host_genotype = Slot(uri=MIXS['0000365'], name="host_genotype", curie=MIXS.curie('0000365'),
+                   model_uri=DEFAULT_.host_genotype, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_growth_cond = Slot(uri=MIXS['0000871'], name="host_growth_cond", curie=MIXS.curie('0000871'),
+                   model_uri=DEFAULT_.host_growth_cond, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_height = Slot(uri=MIXS['0000264'], name="host_height", curie=MIXS.curie('0000264'),
+                   model_uri=DEFAULT_.host_height, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.host_last_meal = Slot(uri=MIXS['0000870'], name="host_last_meal", curie=MIXS.curie('0000870'),
+                   model_uri=DEFAULT_.host_last_meal, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_length = Slot(uri=MIXS['0000256'], name="host_length", curie=MIXS.curie('0000256'),
+                   model_uri=DEFAULT_.host_length, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.host_life_stage = Slot(uri=MIXS['0000251'], name="host_life_stage", curie=MIXS.curie('0000251'),
+                   model_uri=DEFAULT_.host_life_stage, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_phenotype = Slot(uri=MIXS['0000874'], name="host_phenotype", curie=MIXS.curie('0000874'),
+                   model_uri=DEFAULT_.host_phenotype, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+
+slots.host_sex = Slot(uri=MIXS['0000811'], name="host_sex", curie=MIXS.curie('0000811'),
+                   model_uri=DEFAULT_.host_sex, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_shape = Slot(uri=MIXS['0000261'], name="host_shape", curie=MIXS.curie('0000261'),
+                   model_uri=DEFAULT_.host_shape, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_subject_id = Slot(uri=MIXS['0000861'], name="host_subject_id", curie=MIXS.curie('0000861'),
+                   model_uri=DEFAULT_.host_subject_id, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_subspecf_genlin = Slot(uri=MIXS['0001318'], name="host_subspecf_genlin", curie=MIXS.curie('0001318'),
+                   model_uri=DEFAULT_.host_subspecf_genlin, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.host_substrate = Slot(uri=MIXS['0000252'], name="host_substrate", curie=MIXS.curie('0000252'),
+                   model_uri=DEFAULT_.host_substrate, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_symbiont = Slot(uri=MIXS['0001298'], name="host_symbiont", curie=MIXS.curie('0001298'),
+                   model_uri=DEFAULT_.host_symbiont, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.host_taxid = Slot(uri=MIXS['0000250'], name="host_taxid", curie=MIXS.curie('0000250'),
+                   model_uri=DEFAULT_.host_taxid, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_tot_mass = Slot(uri=MIXS['0000263'], name="host_tot_mass", curie=MIXS.curie('0000263'),
+                   model_uri=DEFAULT_.host_tot_mass, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.host_wet_mass = Slot(uri=MIXS['0000567'], name="host_wet_mass", curie=MIXS.curie('0000567'),
+                   model_uri=DEFAULT_.host_wet_mass, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.humidity = Slot(uri=MIXS['0000100'], name="humidity", curie=MIXS.curie('0000100'),
+                   model_uri=DEFAULT_.humidity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.humidity_regm = Slot(uri=MIXS['0000568'], name="humidity_regm", curie=MIXS.curie('0000568'),
+                   model_uri=DEFAULT_.humidity_regm, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.indoor_space = Slot(uri=MIXS['0000763'], name="indoor_space", curie=MIXS.curie('0000763'),
+                   model_uri=DEFAULT_.indoor_space, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.indoor_surf = Slot(uri=MIXS['0000764'], name="indoor_surf", curie=MIXS.curie('0000764'),
+                   model_uri=DEFAULT_.indoor_surf, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.indust_eff_percent = Slot(uri=MIXS['0000662'], name="indust_eff_percent", curie=MIXS.curie('0000662'),
+                   model_uri=DEFAULT_.indust_eff_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.inorg_particles = Slot(uri=MIXS['0000664'], name="inorg_particles", curie=MIXS.curie('0000664'),
+                   model_uri=DEFAULT_.inorg_particles, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.inside_lux = Slot(uri=MIXS['0000168'], name="inside_lux", curie=MIXS.curie('0000168'),
+                   model_uri=DEFAULT_.inside_lux, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.int_wall_cond = Slot(uri=MIXS['0000813'], name="int_wall_cond", curie=MIXS.curie('0000813'),
+                   model_uri=DEFAULT_.int_wall_cond, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.iw_bt_date_well = Slot(uri=MIXS['0001010'], name="iw_bt_date_well", curie=MIXS.curie('0001010'),
+                   model_uri=DEFAULT_.iw_bt_date_well, domain=None, range=Optional[Union[dict, TimestampValue]])
+
+slots.iwf = Slot(uri=MIXS['0000455'], name="iwf", curie=MIXS.curie('0000455'),
+                   model_uri=DEFAULT_.iwf, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.last_clean = Slot(uri=MIXS['0000814'], name="last_clean", curie=MIXS.curie('0000814'),
+                   model_uri=DEFAULT_.last_clean, domain=None, range=Optional[Union[dict, TimestampValue]])
+
+slots.lat_lon = Slot(uri=MIXS['0000009'], name="lat_lon", curie=MIXS.curie('0000009'),
+                   model_uri=DEFAULT_.lat_lon, domain=None, range=Optional[Union[dict, GeolocationValue]])
+
+slots.light_intensity = Slot(uri=MIXS['0000706'], name="light_intensity", curie=MIXS.curie('0000706'),
+                   model_uri=DEFAULT_.light_intensity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.light_regm = Slot(uri=MIXS['0000569'], name="light_regm", curie=MIXS.curie('0000569'),
+                   model_uri=DEFAULT_.light_regm, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.light_type = Slot(uri=MIXS['0000769'], name="light_type", curie=MIXS.curie('0000769'),
+                   model_uri=DEFAULT_.light_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.link_addit_analys = Slot(uri=MIXS['0000340'], name="link_addit_analys", curie=MIXS.curie('0000340'),
+                   model_uri=DEFAULT_.link_addit_analys, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.link_class_info = Slot(uri=MIXS['0000329'], name="link_class_info", curie=MIXS.curie('0000329'),
+                   model_uri=DEFAULT_.link_class_info, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.link_climate_info = Slot(uri=MIXS['0000328'], name="link_climate_info", curie=MIXS.curie('0000328'),
+                   model_uri=DEFAULT_.link_climate_info, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.lithology = Slot(uri=MIXS['0000990'], name="lithology", curie=MIXS.curie('0000990'),
+                   model_uri=DEFAULT_.lithology, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.local_class = Slot(uri=MIXS['0000330'], name="local_class", curie=MIXS.curie('0000330'),
+                   model_uri=DEFAULT_.local_class, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.local_class_meth = Slot(uri=MIXS['0000331'], name="local_class_meth", curie=MIXS.curie('0000331'),
+                   model_uri=DEFAULT_.local_class_meth, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.magnesium = Slot(uri=MIXS['0000431'], name="magnesium", curie=MIXS.curie('0000431'),
+                   model_uri=DEFAULT_.magnesium, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.max_occup = Slot(uri=MIXS['0000229'], name="max_occup", curie=MIXS.curie('0000229'),
+                   model_uri=DEFAULT_.max_occup, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mean_frict_vel = Slot(uri=MIXS['0000498'], name="mean_frict_vel", curie=MIXS.curie('0000498'),
+                   model_uri=DEFAULT_.mean_frict_vel, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mean_peak_frict_vel = Slot(uri=MIXS['0000502'], name="mean_peak_frict_vel", curie=MIXS.curie('0000502'),
+                   model_uri=DEFAULT_.mean_peak_frict_vel, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mech_struc = Slot(uri=MIXS['0000815'], name="mech_struc", curie=MIXS.curie('0000815'),
+                   model_uri=DEFAULT_.mech_struc, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.mechanical_damage = Slot(uri=MIXS['0001052'], name="mechanical_damage", curie=MIXS.curie('0001052'),
+                   model_uri=DEFAULT_.mechanical_damage, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.methane = Slot(uri=MIXS['0000101'], name="methane", curie=MIXS.curie('0000101'),
+                   model_uri=DEFAULT_.methane, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.micro_biomass_meth = Slot(uri=MIXS['0000339'], name="micro_biomass_meth", curie=MIXS.curie('0000339'),
+                   model_uri=DEFAULT_.micro_biomass_meth, domain=None, range=Optional[str])
+
+slots.microbial_biomass = Slot(uri=MIXS['0000650'], name="microbial_biomass", curie=MIXS.curie('0000650'),
+                   model_uri=DEFAULT_.microbial_biomass, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.microbial_biomass_meth = Slot(uri=MIXS['0000339'], name="microbial_biomass_meth", curie=MIXS.curie('0000339'),
+                   model_uri=DEFAULT_.microbial_biomass_meth, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.mineral_nutr_regm = Slot(uri=MIXS['0000570'], name="mineral_nutr_regm", curie=MIXS.curie('0000570'),
+                   model_uri=DEFAULT_.mineral_nutr_regm, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.misc_param = Slot(uri=MIXS['0000752'], name="misc_param", curie=MIXS.curie('0000752'),
+                   model_uri=DEFAULT_.misc_param, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.n_alkanes = Slot(uri=MIXS['0000503'], name="n_alkanes", curie=MIXS.curie('0000503'),
+                   model_uri=DEFAULT_.n_alkanes, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.nitrate = Slot(uri=MIXS['0000425'], name="nitrate", curie=MIXS.curie('0000425'),
+                   model_uri=DEFAULT_.nitrate, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.nitrite = Slot(uri=MIXS['0000426'], name="nitrite", curie=MIXS.curie('0000426'),
+                   model_uri=DEFAULT_.nitrite, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.nitro = Slot(uri=MIXS['0000504'], name="nitro", curie=MIXS.curie('0000504'),
+                   model_uri=DEFAULT_.nitro, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.non_min_nutr_regm = Slot(uri=MIXS['0000571'], name="non_min_nutr_regm", curie=MIXS.curie('0000571'),
+                   model_uri=DEFAULT_.non_min_nutr_regm, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.nucl_acid_amp = Slot(uri=MIXS['0000038'], name="nucl_acid_amp", curie=MIXS.curie('0000038'),
+                   model_uri=DEFAULT_.nucl_acid_amp, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.nucl_acid_ext = Slot(uri=MIXS['0000037'], name="nucl_acid_ext", curie=MIXS.curie('0000037'),
+                   model_uri=DEFAULT_.nucl_acid_ext, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.number_pets = Slot(uri=MIXS['0000231'], name="number_pets", curie=MIXS.curie('0000231'),
+                   model_uri=DEFAULT_.number_pets, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.number_plants = Slot(uri=MIXS['0000230'], name="number_plants", curie=MIXS.curie('0000230'),
+                   model_uri=DEFAULT_.number_plants, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.number_resident = Slot(uri=MIXS['0000232'], name="number_resident", curie=MIXS.curie('0000232'),
+                   model_uri=DEFAULT_.number_resident, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.occup_density_samp = Slot(uri=MIXS['0000217'], name="occup_density_samp", curie=MIXS.curie('0000217'),
+                   model_uri=DEFAULT_.occup_density_samp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.occup_document = Slot(uri=MIXS['0000816'], name="occup_document", curie=MIXS.curie('0000816'),
+                   model_uri=DEFAULT_.occup_document, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.occup_samp = Slot(uri=MIXS['0000772'], name="occup_samp", curie=MIXS.curie('0000772'),
+                   model_uri=DEFAULT_.occup_samp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.org_carb = Slot(uri=MIXS['0000508'], name="org_carb", curie=MIXS.curie('0000508'),
+                   model_uri=DEFAULT_.org_carb, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.org_count_qpcr_info = Slot(uri=MIXS['0000099'], name="org_count_qpcr_info", curie=MIXS.curie('0000099'),
+                   model_uri=DEFAULT_.org_count_qpcr_info, domain=None, range=Optional[str])
+
+slots.org_matter = Slot(uri=MIXS['0000204'], name="org_matter", curie=MIXS.curie('0000204'),
+                   model_uri=DEFAULT_.org_matter, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.org_nitro = Slot(uri=MIXS['0000205'], name="org_nitro", curie=MIXS.curie('0000205'),
+                   model_uri=DEFAULT_.org_nitro, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.org_particles = Slot(uri=MIXS['0000665'], name="org_particles", curie=MIXS.curie('0000665'),
+                   model_uri=DEFAULT_.org_particles, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.organism_count = Slot(uri=MIXS['0000103'], name="organism_count", curie=MIXS.curie('0000103'),
+                   model_uri=DEFAULT_.organism_count, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.owc_tvdss = Slot(uri=MIXS['0000405'], name="owc_tvdss", curie=MIXS.curie('0000405'),
+                   model_uri=DEFAULT_.owc_tvdss, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.oxy_stat_samp = Slot(uri=MIXS['0000753'], name="oxy_stat_samp", curie=MIXS.curie('0000753'),
+                   model_uri=DEFAULT_.oxy_stat_samp, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.oxygen = Slot(uri=MIXS['0000104'], name="oxygen", curie=MIXS.curie('0000104'),
+                   model_uri=DEFAULT_.oxygen, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.part_org_carb = Slot(uri=MIXS['0000515'], name="part_org_carb", curie=MIXS.curie('0000515'),
+                   model_uri=DEFAULT_.part_org_carb, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.part_org_nitro = Slot(uri=MIXS['0000719'], name="part_org_nitro", curie=MIXS.curie('0000719'),
+                   model_uri=DEFAULT_.part_org_nitro, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.particle_class = Slot(uri=MIXS['0000206'], name="particle_class", curie=MIXS.curie('0000206'),
+                   model_uri=DEFAULT_.particle_class, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.pcr_cond = Slot(uri=MIXS['0000049'], name="pcr_cond", curie=MIXS.curie('0000049'),
+                   model_uri=DEFAULT_.pcr_cond, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.pcr_primers = Slot(uri=MIXS['0000046'], name="pcr_primers", curie=MIXS.curie('0000046'),
+                   model_uri=DEFAULT_.pcr_primers, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.permeability = Slot(uri=MIXS['0000404'], name="permeability", curie=MIXS.curie('0000404'),
+                   model_uri=DEFAULT_.permeability, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.perturbation = Slot(uri=MIXS['0000754'], name="perturbation", curie=MIXS.curie('0000754'),
+                   model_uri=DEFAULT_.perturbation, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.pesticide_regm = Slot(uri=MIXS['0000573'], name="pesticide_regm", curie=MIXS.curie('0000573'),
+                   model_uri=DEFAULT_.pesticide_regm, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.petroleum_hydrocarb = Slot(uri=MIXS['0000516'], name="petroleum_hydrocarb", curie=MIXS.curie('0000516'),
+                   model_uri=DEFAULT_.petroleum_hydrocarb, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.ph = Slot(uri=MIXS['0001001'], name="ph", curie=MIXS.curie('0001001'),
+                   model_uri=DEFAULT_.ph, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.ph_meth = Slot(uri=MIXS['0001106'], name="ph_meth", curie=MIXS.curie('0001106'),
+                   model_uri=DEFAULT_.ph_meth, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.ph_regm = Slot(uri=MIXS['0001056'], name="ph_regm", curie=MIXS.curie('0001056'),
+                   model_uri=DEFAULT_.ph_regm, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.phaeopigments = Slot(uri=MIXS['0000180'], name="phaeopigments", curie=MIXS.curie('0000180'),
+                   model_uri=DEFAULT_.phaeopigments, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.phosphate = Slot(uri=MIXS['0000505'], name="phosphate", curie=MIXS.curie('0000505'),
+                   model_uri=DEFAULT_.phosphate, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.phosplipid_fatt_acid = Slot(uri=MIXS['0000181'], name="phosplipid_fatt_acid", curie=MIXS.curie('0000181'),
+                   model_uri=DEFAULT_.phosplipid_fatt_acid, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.photon_flux = Slot(uri=MIXS['0000725'], name="photon_flux", curie=MIXS.curie('0000725'),
+                   model_uri=DEFAULT_.photon_flux, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.plant_growth_med = Slot(uri=MIXS['0001057'], name="plant_growth_med", curie=MIXS.curie('0001057'),
+                   model_uri=DEFAULT_.plant_growth_med, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+
+slots.plant_product = Slot(uri=MIXS['0001058'], name="plant_product", curie=MIXS.curie('0001058'),
+                   model_uri=DEFAULT_.plant_product, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.plant_sex = Slot(uri=MIXS['0001059'], name="plant_sex", curie=MIXS.curie('0001059'),
+                   model_uri=DEFAULT_.plant_sex, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.plant_struc = Slot(uri=MIXS['0001060'], name="plant_struc", curie=MIXS.curie('0001060'),
+                   model_uri=DEFAULT_.plant_struc, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+
+slots.pollutants = Slot(uri=MIXS['0000107'], name="pollutants", curie=MIXS.curie('0000107'),
+                   model_uri=DEFAULT_.pollutants, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.pool_dna_extracts = Slot(uri=MIXS['0000325'], name="pool_dna_extracts", curie=MIXS.curie('0000325'),
+                   model_uri=DEFAULT_.pool_dna_extracts, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.porosity = Slot(uri=MIXS['0000211'], name="porosity", curie=MIXS.curie('0000211'),
+                   model_uri=DEFAULT_.porosity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.potassium = Slot(uri=MIXS['0000430'], name="potassium", curie=MIXS.curie('0000430'),
+                   model_uri=DEFAULT_.potassium, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.pour_point = Slot(uri=MIXS['0000127'], name="pour_point", curie=MIXS.curie('0000127'),
+                   model_uri=DEFAULT_.pour_point, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.pre_treatment = Slot(uri=MIXS['0000348'], name="pre_treatment", curie=MIXS.curie('0000348'),
+                   model_uri=DEFAULT_.pre_treatment, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.pres_animal_insect = Slot(uri=MIXS['0000819'], name="pres_animal_insect", curie=MIXS.curie('0000819'),
+                   model_uri=DEFAULT_.pres_animal_insect, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^(cat|dog|rodent|snake|other);\d+$'))
+
+slots.pressure = Slot(uri=MIXS['0000412'], name="pressure", curie=MIXS.curie('0000412'),
+                   model_uri=DEFAULT_.pressure, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.prev_land_use_meth = Slot(uri=MIXS['0000316'], name="prev_land_use_meth", curie=MIXS.curie('0000316'),
+                   model_uri=DEFAULT_.prev_land_use_meth, domain=None, range=Optional[str])
+
+slots.previous_land_use = Slot(uri=MIXS['0000315'], name="previous_land_use", curie=MIXS.curie('0000315'),
+                   model_uri=DEFAULT_.previous_land_use, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.previous_land_use_meth = Slot(uri=MIXS['0000316'], name="previous_land_use_meth", curie=MIXS.curie('0000316'),
+                   model_uri=DEFAULT_.previous_land_use_meth, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.primary_prod = Slot(uri=MIXS['0000728'], name="primary_prod", curie=MIXS.curie('0000728'),
+                   model_uri=DEFAULT_.primary_prod, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.primary_treatment = Slot(uri=MIXS['0000349'], name="primary_treatment", curie=MIXS.curie('0000349'),
+                   model_uri=DEFAULT_.primary_treatment, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.prod_rate = Slot(uri=MIXS['0000452'], name="prod_rate", curie=MIXS.curie('0000452'),
+                   model_uri=DEFAULT_.prod_rate, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.prod_start_date = Slot(uri=MIXS['0001008'], name="prod_start_date", curie=MIXS.curie('0001008'),
+                   model_uri=DEFAULT_.prod_start_date, domain=None, range=Optional[Union[dict, TimestampValue]])
+
+slots.profile_position = Slot(uri=MIXS['0001084'], name="profile_position", curie=MIXS.curie('0001084'),
+                   model_uri=DEFAULT_.profile_position, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.quad_pos = Slot(uri=MIXS['0000820'], name="quad_pos", curie=MIXS.curie('0000820'),
+                   model_uri=DEFAULT_.quad_pos, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.radiation_regm = Slot(uri=MIXS['0000575'], name="radiation_regm", curie=MIXS.curie('0000575'),
+                   model_uri=DEFAULT_.radiation_regm, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.rainfall_regm = Slot(uri=MIXS['0000576'], name="rainfall_regm", curie=MIXS.curie('0000576'),
+                   model_uri=DEFAULT_.rainfall_regm, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.reactor_type = Slot(uri=MIXS['0000350'], name="reactor_type", curie=MIXS.curie('0000350'),
+                   model_uri=DEFAULT_.reactor_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.redox_potential = Slot(uri=MIXS['0000182'], name="redox_potential", curie=MIXS.curie('0000182'),
+                   model_uri=DEFAULT_.redox_potential, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.rel_air_humidity = Slot(uri=MIXS['0000121'], name="rel_air_humidity", curie=MIXS.curie('0000121'),
+                   model_uri=DEFAULT_.rel_air_humidity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.rel_humidity_out = Slot(uri=MIXS['0000188'], name="rel_humidity_out", curie=MIXS.curie('0000188'),
+                   model_uri=DEFAULT_.rel_humidity_out, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.rel_samp_loc = Slot(uri=MIXS['0000821'], name="rel_samp_loc", curie=MIXS.curie('0000821'),
+                   model_uri=DEFAULT_.rel_samp_loc, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.rel_to_oxygen = Slot(uri=MIXS['0000015'], name="rel_to_oxygen", curie=MIXS.curie('0000015'),
+                   model_uri=DEFAULT_.rel_to_oxygen, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.reservoir = Slot(uri=MIXS['0000303'], name="reservoir", curie=MIXS.curie('0000303'),
+                   model_uri=DEFAULT_.reservoir, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.resins_pc = Slot(uri=MIXS['0000134'], name="resins_pc", curie=MIXS.curie('0000134'),
+                   model_uri=DEFAULT_.resins_pc, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.room_air_exch_rate = Slot(uri=MIXS['0000169'], name="room_air_exch_rate", curie=MIXS.curie('0000169'),
+                   model_uri=DEFAULT_.room_air_exch_rate, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.room_architec_elem = Slot(uri=MIXS['0000233'], name="room_architec_elem", curie=MIXS.curie('0000233'),
+                   model_uri=DEFAULT_.room_architec_elem, domain=None, range=Optional[str])
+
+slots.room_condt = Slot(uri=MIXS['0000822'], name="room_condt", curie=MIXS.curie('0000822'),
+                   model_uri=DEFAULT_.room_condt, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.room_connected = Slot(uri=MIXS['0000826'], name="room_connected", curie=MIXS.curie('0000826'),
+                   model_uri=DEFAULT_.room_connected, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.room_count = Slot(uri=MIXS['0000234'], name="room_count", curie=MIXS.curie('0000234'),
+                   model_uri=DEFAULT_.room_count, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.room_dim = Slot(uri=MIXS['0000192'], name="room_dim", curie=MIXS.curie('0000192'),
+                   model_uri=DEFAULT_.room_dim, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.room_door_dist = Slot(uri=MIXS['0000193'], name="room_door_dist", curie=MIXS.curie('0000193'),
+                   model_uri=DEFAULT_.room_door_dist, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.room_door_share = Slot(uri=MIXS['0000242'], name="room_door_share", curie=MIXS.curie('0000242'),
+                   model_uri=DEFAULT_.room_door_share, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.room_hallway = Slot(uri=MIXS['0000238'], name="room_hallway", curie=MIXS.curie('0000238'),
+                   model_uri=DEFAULT_.room_hallway, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.room_loc = Slot(uri=MIXS['0000823'], name="room_loc", curie=MIXS.curie('0000823'),
+                   model_uri=DEFAULT_.room_loc, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.room_moist_dam_hist = Slot(uri=MIXS['0000235'], name="room_moist_dam_hist", curie=MIXS.curie('0000235'),
+                   model_uri=DEFAULT_.room_moist_dam_hist, domain=None, range=Optional[int])
+
+slots.room_net_area = Slot(uri=MIXS['0000194'], name="room_net_area", curie=MIXS.curie('0000194'),
+                   model_uri=DEFAULT_.room_net_area, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.room_occup = Slot(uri=MIXS['0000236'], name="room_occup", curie=MIXS.curie('0000236'),
+                   model_uri=DEFAULT_.room_occup, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.room_samp_pos = Slot(uri=MIXS['0000824'], name="room_samp_pos", curie=MIXS.curie('0000824'),
+                   model_uri=DEFAULT_.room_samp_pos, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.room_type = Slot(uri=MIXS['0000825'], name="room_type", curie=MIXS.curie('0000825'),
+                   model_uri=DEFAULT_.room_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.room_vol = Slot(uri=MIXS['0000195'], name="room_vol", curie=MIXS.curie('0000195'),
+                   model_uri=DEFAULT_.room_vol, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.room_wall_share = Slot(uri=MIXS['0000243'], name="room_wall_share", curie=MIXS.curie('0000243'),
+                   model_uri=DEFAULT_.room_wall_share, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.room_window_count = Slot(uri=MIXS['0000237'], name="room_window_count", curie=MIXS.curie('0000237'),
+                   model_uri=DEFAULT_.room_window_count, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.root_cond = Slot(uri=MIXS['0001061'], name="root_cond", curie=MIXS.curie('0001061'),
+                   model_uri=DEFAULT_.root_cond, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.root_med_carbon = Slot(uri=MIXS['0000577'], name="root_med_carbon", curie=MIXS.curie('0000577'),
+                   model_uri=DEFAULT_.root_med_carbon, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.root_med_macronutr = Slot(uri=MIXS['0000578'], name="root_med_macronutr", curie=MIXS.curie('0000578'),
+                   model_uri=DEFAULT_.root_med_macronutr, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.root_med_micronutr = Slot(uri=MIXS['0000579'], name="root_med_micronutr", curie=MIXS.curie('0000579'),
+                   model_uri=DEFAULT_.root_med_micronutr, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.root_med_ph = Slot(uri=MIXS['0001062'], name="root_med_ph", curie=MIXS.curie('0001062'),
+                   model_uri=DEFAULT_.root_med_ph, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.root_med_regl = Slot(uri=MIXS['0000581'], name="root_med_regl", curie=MIXS.curie('0000581'),
+                   model_uri=DEFAULT_.root_med_regl, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.root_med_solid = Slot(uri=MIXS['0001063'], name="root_med_solid", curie=MIXS.curie('0001063'),
+                   model_uri=DEFAULT_.root_med_solid, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.root_med_suppl = Slot(uri=MIXS['0000580'], name="root_med_suppl", curie=MIXS.curie('0000580'),
+                   model_uri=DEFAULT_.root_med_suppl, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.salinity = Slot(uri=MIXS['0000183'], name="salinity", curie=MIXS.curie('0000183'),
+                   model_uri=DEFAULT_.salinity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.salinity_meth = Slot(uri=MIXS['0000341'], name="salinity_meth", curie=MIXS.curie('0000341'),
+                   model_uri=DEFAULT_.salinity_meth, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.salt_regm = Slot(uri=MIXS['0000582'], name="salt_regm", curie=MIXS.curie('0000582'),
+                   model_uri=DEFAULT_.salt_regm, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.samp_capt_status = Slot(uri=MIXS['0000860'], name="samp_capt_status", curie=MIXS.curie('0000860'),
+                   model_uri=DEFAULT_.samp_capt_status, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.samp_collec_device = Slot(uri=MIXS['0000002'], name="samp_collec_device", curie=MIXS.curie('0000002'),
+                   model_uri=DEFAULT_.samp_collec_device, domain=None, range=Optional[str])
+
+slots.samp_collec_method = Slot(uri=MIXS['0001225'], name="samp_collec_method", curie=MIXS.curie('0001225'),
+                   model_uri=DEFAULT_.samp_collec_method, domain=None, range=Optional[str])
+
+slots.samp_collect_device = Slot(uri=MIXS['0000002'], name="samp_collect_device", curie=MIXS.curie('0000002'),
+                   model_uri=DEFAULT_.samp_collect_device, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.samp_collect_point = Slot(uri=MIXS['0001015'], name="samp_collect_point", curie=MIXS.curie('0001015'),
+                   model_uri=DEFAULT_.samp_collect_point, domain=None, range=Optional[Union[str, "SampCollectPointEnum"]])
+
+slots.samp_dis_stage = Slot(uri=MIXS['0000249'], name="samp_dis_stage", curie=MIXS.curie('0000249'),
+                   model_uri=DEFAULT_.samp_dis_stage, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.samp_floor = Slot(uri=MIXS['0000828'], name="samp_floor", curie=MIXS.curie('0000828'),
+                   model_uri=DEFAULT_.samp_floor, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.samp_loc_corr_rate = Slot(uri=MIXS['0000136'], name="samp_loc_corr_rate", curie=MIXS.curie('0000136'),
+                   model_uri=DEFAULT_.samp_loc_corr_rate, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.samp_mat_process = Slot(uri=MIXS['0000016'], name="samp_mat_process", curie=MIXS.curie('0000016'),
+                   model_uri=DEFAULT_.samp_mat_process, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+
+slots.samp_md = Slot(uri=MIXS['0000413'], name="samp_md", curie=MIXS.curie('0000413'),
+                   model_uri=DEFAULT_.samp_md, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.samp_name = Slot(uri=MIXS['0001107'], name="samp_name", curie=MIXS.curie('0001107'),
+                   model_uri=DEFAULT_.samp_name, domain=None, range=Optional[str])
+
+slots.samp_preserv = Slot(uri=MIXS['0000463'], name="samp_preserv", curie=MIXS.curie('0000463'),
+                   model_uri=DEFAULT_.samp_preserv, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.samp_room_id = Slot(uri=MIXS['0000244'], name="samp_room_id", curie=MIXS.curie('0000244'),
+                   model_uri=DEFAULT_.samp_room_id, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.samp_size = Slot(uri=MIXS['0000001'], name="samp_size", curie=MIXS.curie('0000001'),
+                   model_uri=DEFAULT_.samp_size, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.samp_sort_meth = Slot(uri=MIXS['0000216'], name="samp_sort_meth", curie=MIXS.curie('0000216'),
+                   model_uri=DEFAULT_.samp_sort_meth, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.samp_store_dur = Slot(uri=MIXS['0000116'], name="samp_store_dur", curie=MIXS.curie('0000116'),
+                   model_uri=DEFAULT_.samp_store_dur, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.samp_store_loc = Slot(uri=MIXS['0000755'], name="samp_store_loc", curie=MIXS.curie('0000755'),
+                   model_uri=DEFAULT_.samp_store_loc, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.samp_store_temp = Slot(uri=MIXS['0000110'], name="samp_store_temp", curie=MIXS.curie('0000110'),
+                   model_uri=DEFAULT_.samp_store_temp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.samp_subtype = Slot(uri=MIXS['0000999'], name="samp_subtype", curie=MIXS.curie('0000999'),
+                   model_uri=DEFAULT_.samp_subtype, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.samp_time_out = Slot(uri=MIXS['0000196'], name="samp_time_out", curie=MIXS.curie('0000196'),
+                   model_uri=DEFAULT_.samp_time_out, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.samp_transport_cond = Slot(uri=MIXS['0000410'], name="samp_transport_cond", curie=MIXS.curie('0000410'),
+                   model_uri=DEFAULT_.samp_transport_cond, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.samp_tvdss = Slot(uri=MIXS['0000409'], name="samp_tvdss", curie=MIXS.curie('0000409'),
+                   model_uri=DEFAULT_.samp_tvdss, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.samp_type = Slot(uri=MIXS['0000998'], name="samp_type", curie=MIXS.curie('0000998'),
+                   model_uri=DEFAULT_.samp_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.samp_vol_we_dna_ext = Slot(uri=MIXS['0000111'], name="samp_vol_we_dna_ext", curie=MIXS.curie('0000111'),
+                   model_uri=DEFAULT_.samp_vol_we_dna_ext, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.samp_weather = Slot(uri=MIXS['0000827'], name="samp_weather", curie=MIXS.curie('0000827'),
+                   model_uri=DEFAULT_.samp_weather, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.samp_well_name = Slot(uri=MIXS['0000296'], name="samp_well_name", curie=MIXS.curie('0000296'),
+                   model_uri=DEFAULT_.samp_well_name, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.saturates_pc = Slot(uri=MIXS['0000131'], name="saturates_pc", curie=MIXS.curie('0000131'),
+                   model_uri=DEFAULT_.saturates_pc, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.season = Slot(uri=MIXS['0000829'], name="season", curie=MIXS.curie('0000829'),
+                   model_uri=DEFAULT_.season, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.season_environment = Slot(uri=MIXS['0001068'], name="season_environment", curie=MIXS.curie('0001068'),
+                   model_uri=DEFAULT_.season_environment, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.season_precpt = Slot(uri=MIXS['0000645'], name="season_precpt", curie=MIXS.curie('0000645'),
+                   model_uri=DEFAULT_.season_precpt, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.season_temp = Slot(uri=MIXS['0000643'], name="season_temp", curie=MIXS.curie('0000643'),
+                   model_uri=DEFAULT_.season_temp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.season_use = Slot(uri=MIXS['0000830'], name="season_use", curie=MIXS.curie('0000830'),
+                   model_uri=DEFAULT_.season_use, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.secondary_treatment = Slot(uri=MIXS['0000351'], name="secondary_treatment", curie=MIXS.curie('0000351'),
+                   model_uri=DEFAULT_.secondary_treatment, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.sediment_type = Slot(uri=MIXS['0001078'], name="sediment_type", curie=MIXS.curie('0001078'),
+                   model_uri=DEFAULT_.sediment_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.seq_meth = Slot(uri=MIXS['0000050'], name="seq_meth", curie=MIXS.curie('0000050'),
+                   model_uri=DEFAULT_.seq_meth, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.seq_quality_check = Slot(uri=MIXS['0000051'], name="seq_quality_check", curie=MIXS.curie('0000051'),
+                   model_uri=DEFAULT_.seq_quality_check, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.sewage_type = Slot(uri=MIXS['0000215'], name="sewage_type", curie=MIXS.curie('0000215'),
+                   model_uri=DEFAULT_.sewage_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.shad_dev_water_mold = Slot(uri=MIXS['0000834'], name="shad_dev_water_mold", curie=MIXS.curie('0000834'),
+                   model_uri=DEFAULT_.shad_dev_water_mold, domain=None, range=Optional[str])
+
+slots.shading_device_cond = Slot(uri=MIXS['0000831'], name="shading_device_cond", curie=MIXS.curie('0000831'),
+                   model_uri=DEFAULT_.shading_device_cond, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.shading_device_loc = Slot(uri=MIXS['0000832'], name="shading_device_loc", curie=MIXS.curie('0000832'),
+                   model_uri=DEFAULT_.shading_device_loc, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.shading_device_mat = Slot(uri=MIXS['0000245'], name="shading_device_mat", curie=MIXS.curie('0000245'),
+                   model_uri=DEFAULT_.shading_device_mat, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.shading_device_type = Slot(uri=MIXS['0000835'], name="shading_device_type", curie=MIXS.curie('0000835'),
+                   model_uri=DEFAULT_.shading_device_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.sieving = Slot(uri=MIXS['0000322'], name="sieving", curie=MIXS.curie('0000322'),
+                   model_uri=DEFAULT_.sieving, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.silicate = Slot(uri=MIXS['0000184'], name="silicate", curie=MIXS.curie('0000184'),
+                   model_uri=DEFAULT_.silicate, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.size_frac = Slot(uri=MIXS['0000017'], name="size_frac", curie=MIXS.curie('0000017'),
+                   model_uri=DEFAULT_.size_frac, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.size_frac_low = Slot(uri=MIXS['0000735'], name="size_frac_low", curie=MIXS.curie('0000735'),
+                   model_uri=DEFAULT_.size_frac_low, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.size_frac_up = Slot(uri=MIXS['0000736'], name="size_frac_up", curie=MIXS.curie('0000736'),
+                   model_uri=DEFAULT_.size_frac_up, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.slope_aspect = Slot(uri=MIXS['0000647'], name="slope_aspect", curie=MIXS.curie('0000647'),
+                   model_uri=DEFAULT_.slope_aspect, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.slope_gradient = Slot(uri=MIXS['0000646'], name="slope_gradient", curie=MIXS.curie('0000646'),
+                   model_uri=DEFAULT_.slope_gradient, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sludge_retent_time = Slot(uri=MIXS['0000669'], name="sludge_retent_time", curie=MIXS.curie('0000669'),
+                   model_uri=DEFAULT_.sludge_retent_time, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sodium = Slot(uri=MIXS['0000428'], name="sodium", curie=MIXS.curie('0000428'),
+                   model_uri=DEFAULT_.sodium, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.soil_horizon = Slot(uri=MIXS['0001082'], name="soil_horizon", curie=MIXS.curie('0001082'),
+                   model_uri=DEFAULT_.soil_horizon, domain=None, range=Optional[Union[str, "SoilHorizonEnum"]])
+
+slots.soil_text_measure = Slot(uri=MIXS['0000335'], name="soil_text_measure", curie=MIXS.curie('0000335'),
+                   model_uri=DEFAULT_.soil_text_measure, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.soil_texture_meth = Slot(uri=MIXS['0000336'], name="soil_texture_meth", curie=MIXS.curie('0000336'),
+                   model_uri=DEFAULT_.soil_texture_meth, domain=None, range=Optional[str])
+
+slots.soil_type = Slot(uri=MIXS['0000332'], name="soil_type", curie=MIXS.curie('0000332'),
+                   model_uri=DEFAULT_.soil_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.soil_type_meth = Slot(uri=MIXS['0000334'], name="soil_type_meth", curie=MIXS.curie('0000334'),
+                   model_uri=DEFAULT_.soil_type_meth, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.solar_irradiance = Slot(uri=MIXS['0000112'], name="solar_irradiance", curie=MIXS.curie('0000112'),
+                   model_uri=DEFAULT_.solar_irradiance, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.soluble_inorg_mat = Slot(uri=MIXS['0000672'], name="soluble_inorg_mat", curie=MIXS.curie('0000672'),
+                   model_uri=DEFAULT_.soluble_inorg_mat, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.soluble_org_mat = Slot(uri=MIXS['0000673'], name="soluble_org_mat", curie=MIXS.curie('0000673'),
+                   model_uri=DEFAULT_.soluble_org_mat, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.soluble_react_phosp = Slot(uri=MIXS['0000738'], name="soluble_react_phosp", curie=MIXS.curie('0000738'),
+                   model_uri=DEFAULT_.soluble_react_phosp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.source_mat_id = Slot(uri=MIXS['0000026'], name="source_mat_id", curie=MIXS.curie('0000026'),
+                   model_uri=DEFAULT_.source_mat_id, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.space_typ_state = Slot(uri=MIXS['0000770'], name="space_typ_state", curie=MIXS.curie('0000770'),
+                   model_uri=DEFAULT_.space_typ_state, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.specific = Slot(uri=MIXS['0000836'], name="specific", curie=MIXS.curie('0000836'),
+                   model_uri=DEFAULT_.specific, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.specific_humidity = Slot(uri=MIXS['0000214'], name="specific_humidity", curie=MIXS.curie('0000214'),
+                   model_uri=DEFAULT_.specific_humidity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sr_dep_env = Slot(uri=MIXS['0000996'], name="sr_dep_env", curie=MIXS.curie('0000996'),
+                   model_uri=DEFAULT_.sr_dep_env, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.sr_geol_age = Slot(uri=MIXS['0000997'], name="sr_geol_age", curie=MIXS.curie('0000997'),
+                   model_uri=DEFAULT_.sr_geol_age, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.sr_kerog_type = Slot(uri=MIXS['0000994'], name="sr_kerog_type", curie=MIXS.curie('0000994'),
+                   model_uri=DEFAULT_.sr_kerog_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.sr_lithology = Slot(uri=MIXS['0000995'], name="sr_lithology", curie=MIXS.curie('0000995'),
+                   model_uri=DEFAULT_.sr_lithology, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.standing_water_regm = Slot(uri=MIXS['0001069'], name="standing_water_regm", curie=MIXS.curie('0001069'),
+                   model_uri=DEFAULT_.standing_water_regm, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.store_cond = Slot(uri=MIXS['0000327'], name="store_cond", curie=MIXS.curie('0000327'),
+                   model_uri=DEFAULT_.store_cond, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.substructure_type = Slot(uri=MIXS['0000767'], name="substructure_type", curie=MIXS.curie('0000767'),
+                   model_uri=DEFAULT_.substructure_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.sulfate = Slot(uri=MIXS['0000423'], name="sulfate", curie=MIXS.curie('0000423'),
+                   model_uri=DEFAULT_.sulfate, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sulfate_fw = Slot(uri=MIXS['0000407'], name="sulfate_fw", curie=MIXS.curie('0000407'),
+                   model_uri=DEFAULT_.sulfate_fw, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sulfide = Slot(uri=MIXS['0000424'], name="sulfide", curie=MIXS.curie('0000424'),
+                   model_uri=DEFAULT_.sulfide, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.surf_air_cont = Slot(uri=MIXS['0000759'], name="surf_air_cont", curie=MIXS.curie('0000759'),
+                   model_uri=DEFAULT_.surf_air_cont, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.surf_humidity = Slot(uri=MIXS['0000123'], name="surf_humidity", curie=MIXS.curie('0000123'),
+                   model_uri=DEFAULT_.surf_humidity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.surf_material = Slot(uri=MIXS['0000758'], name="surf_material", curie=MIXS.curie('0000758'),
+                   model_uri=DEFAULT_.surf_material, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.surf_moisture = Slot(uri=MIXS['0000128'], name="surf_moisture", curie=MIXS.curie('0000128'),
+                   model_uri=DEFAULT_.surf_moisture, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.surf_moisture_ph = Slot(uri=MIXS['0000760'], name="surf_moisture_ph", curie=MIXS.curie('0000760'),
+                   model_uri=DEFAULT_.surf_moisture_ph, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.surf_temp = Slot(uri=MIXS['0000125'], name="surf_temp", curie=MIXS.curie('0000125'),
+                   model_uri=DEFAULT_.surf_temp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.suspend_part_matter = Slot(uri=MIXS['0000741'], name="suspend_part_matter", curie=MIXS.curie('0000741'),
+                   model_uri=DEFAULT_.suspend_part_matter, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.suspend_solids = Slot(uri=MIXS['0000150'], name="suspend_solids", curie=MIXS.curie('0000150'),
+                   model_uri=DEFAULT_.suspend_solids, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tan = Slot(uri=MIXS['0000120'], name="tan", curie=MIXS.curie('0000120'),
+                   model_uri=DEFAULT_.tan, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.target_gene = Slot(uri=MIXS['0000044'], name="target_gene", curie=MIXS.curie('0000044'),
+                   model_uri=DEFAULT_.target_gene, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.target_subfragment = Slot(uri=MIXS['0000045'], name="target_subfragment", curie=MIXS.curie('0000045'),
+                   model_uri=DEFAULT_.target_subfragment, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.temp = Slot(uri=MIXS['0000113'], name="temp", curie=MIXS.curie('0000113'),
+                   model_uri=DEFAULT_.temp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.temp_out = Slot(uri=MIXS['0000197'], name="temp_out", curie=MIXS.curie('0000197'),
+                   model_uri=DEFAULT_.temp_out, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tertiary_treatment = Slot(uri=MIXS['0000352'], name="tertiary_treatment", curie=MIXS.curie('0000352'),
+                   model_uri=DEFAULT_.tertiary_treatment, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.texture = Slot(uri=MIXS['0000335'], name="texture", curie=MIXS.curie('0000335'),
+                   model_uri=DEFAULT_.texture, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.texture_meth = Slot(uri=MIXS['0000336'], name="texture_meth", curie=MIXS.curie('0000336'),
+                   model_uri=DEFAULT_.texture_meth, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.tidal_stage = Slot(uri=MIXS['0000750'], name="tidal_stage", curie=MIXS.curie('0000750'),
+                   model_uri=DEFAULT_.tidal_stage, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.tillage = Slot(uri=MIXS['0001081'], name="tillage", curie=MIXS.curie('0001081'),
+                   model_uri=DEFAULT_.tillage, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.tiss_cult_growth_med = Slot(uri=MIXS['0001070'], name="tiss_cult_growth_med", curie=MIXS.curie('0001070'),
+                   model_uri=DEFAULT_.tiss_cult_growth_med, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.toluene = Slot(uri=MIXS['0000154'], name="toluene", curie=MIXS.curie('0000154'),
+                   model_uri=DEFAULT_.toluene, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tot_carb = Slot(uri=MIXS['0000525'], name="tot_carb", curie=MIXS.curie('0000525'),
+                   model_uri=DEFAULT_.tot_carb, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tot_depth_water_col = Slot(uri=MIXS['0000634'], name="tot_depth_water_col", curie=MIXS.curie('0000634'),
+                   model_uri=DEFAULT_.tot_depth_water_col, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tot_diss_nitro = Slot(uri=MIXS['0000744'], name="tot_diss_nitro", curie=MIXS.curie('0000744'),
+                   model_uri=DEFAULT_.tot_diss_nitro, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tot_inorg_nitro = Slot(uri=MIXS['0000745'], name="tot_inorg_nitro", curie=MIXS.curie('0000745'),
+                   model_uri=DEFAULT_.tot_inorg_nitro, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tot_iron = Slot(uri=MIXS['0000105'], name="tot_iron", curie=MIXS.curie('0000105'),
+                   model_uri=DEFAULT_.tot_iron, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tot_nitro = Slot(uri=MIXS['0000102'], name="tot_nitro", curie=MIXS.curie('0000102'),
+                   model_uri=DEFAULT_.tot_nitro, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tot_nitro_cont_meth = Slot(uri=MIXS['0000338'], name="tot_nitro_cont_meth", curie=MIXS.curie('0000338'),
+                   model_uri=DEFAULT_.tot_nitro_cont_meth, domain=None, range=Optional[str])
+
+slots.tot_nitro_content = Slot(uri=MIXS['0000530'], name="tot_nitro_content", curie=MIXS.curie('0000530'),
+                   model_uri=DEFAULT_.tot_nitro_content, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tot_org_c_meth = Slot(uri=MIXS['0000337'], name="tot_org_c_meth", curie=MIXS.curie('0000337'),
+                   model_uri=DEFAULT_.tot_org_c_meth, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.tot_org_carb = Slot(uri=MIXS['0000533'], name="tot_org_carb", curie=MIXS.curie('0000533'),
+                   model_uri=DEFAULT_.tot_org_carb, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tot_part_carb = Slot(uri=MIXS['0000747'], name="tot_part_carb", curie=MIXS.curie('0000747'),
+                   model_uri=DEFAULT_.tot_part_carb, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tot_phosp = Slot(uri=MIXS['0000117'], name="tot_phosp", curie=MIXS.curie('0000117'),
+                   model_uri=DEFAULT_.tot_phosp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tot_phosphate = Slot(uri=MIXS['0000689'], name="tot_phosphate", curie=MIXS.curie('0000689'),
+                   model_uri=DEFAULT_.tot_phosphate, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tot_sulfur = Slot(uri=MIXS['0000419'], name="tot_sulfur", curie=MIXS.curie('0000419'),
+                   model_uri=DEFAULT_.tot_sulfur, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.train_line = Slot(uri=MIXS['0000837'], name="train_line", curie=MIXS.curie('0000837'),
+                   model_uri=DEFAULT_.train_line, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.train_stat_loc = Slot(uri=MIXS['0000838'], name="train_stat_loc", curie=MIXS.curie('0000838'),
+                   model_uri=DEFAULT_.train_stat_loc, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.train_stop_loc = Slot(uri=MIXS['0000839'], name="train_stop_loc", curie=MIXS.curie('0000839'),
+                   model_uri=DEFAULT_.train_stop_loc, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.turbidity = Slot(uri=MIXS['0000191'], name="turbidity", curie=MIXS.curie('0000191'),
+                   model_uri=DEFAULT_.turbidity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tvdss_of_hcr_press = Slot(uri=MIXS['0000397'], name="tvdss_of_hcr_press", curie=MIXS.curie('0000397'),
+                   model_uri=DEFAULT_.tvdss_of_hcr_press, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tvdss_of_hcr_temp = Slot(uri=MIXS['0000394'], name="tvdss_of_hcr_temp", curie=MIXS.curie('0000394'),
+                   model_uri=DEFAULT_.tvdss_of_hcr_temp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.typ_occup_density = Slot(uri=MIXS['0000771'], name="typ_occup_density", curie=MIXS.curie('0000771'),
+                   model_uri=DEFAULT_.typ_occup_density, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.ventilation_rate = Slot(uri=MIXS['0000114'], name="ventilation_rate", curie=MIXS.curie('0000114'),
+                   model_uri=DEFAULT_.ventilation_rate, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.ventilation_type = Slot(uri=MIXS['0000756'], name="ventilation_type", curie=MIXS.curie('0000756'),
+                   model_uri=DEFAULT_.ventilation_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.vfa = Slot(uri=MIXS['0000152'], name="vfa", curie=MIXS.curie('0000152'),
+                   model_uri=DEFAULT_.vfa, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.vfa_fw = Slot(uri=MIXS['0000408'], name="vfa_fw", curie=MIXS.curie('0000408'),
+                   model_uri=DEFAULT_.vfa_fw, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.vis_media = Slot(uri=MIXS['0000840'], name="vis_media", curie=MIXS.curie('0000840'),
+                   model_uri=DEFAULT_.vis_media, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.viscosity = Slot(uri=MIXS['0000126'], name="viscosity", curie=MIXS.curie('0000126'),
+                   model_uri=DEFAULT_.viscosity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.volatile_org_comp = Slot(uri=MIXS['0000115'], name="volatile_org_comp", curie=MIXS.curie('0000115'),
+                   model_uri=DEFAULT_.volatile_org_comp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.wall_area = Slot(uri=MIXS['0000198'], name="wall_area", curie=MIXS.curie('0000198'),
+                   model_uri=DEFAULT_.wall_area, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.wall_const_type = Slot(uri=MIXS['0000841'], name="wall_const_type", curie=MIXS.curie('0000841'),
+                   model_uri=DEFAULT_.wall_const_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.wall_finish_mat = Slot(uri=MIXS['0000842'], name="wall_finish_mat", curie=MIXS.curie('0000842'),
+                   model_uri=DEFAULT_.wall_finish_mat, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.wall_height = Slot(uri=MIXS['0000221'], name="wall_height", curie=MIXS.curie('0000221'),
+                   model_uri=DEFAULT_.wall_height, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.wall_loc = Slot(uri=MIXS['0000843'], name="wall_loc", curie=MIXS.curie('0000843'),
+                   model_uri=DEFAULT_.wall_loc, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.wall_surf_treatment = Slot(uri=MIXS['0000845'], name="wall_surf_treatment", curie=MIXS.curie('0000845'),
+                   model_uri=DEFAULT_.wall_surf_treatment, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.wall_texture = Slot(uri=MIXS['0000846'], name="wall_texture", curie=MIXS.curie('0000846'),
+                   model_uri=DEFAULT_.wall_texture, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.wall_thermal_mass = Slot(uri=MIXS['0000222'], name="wall_thermal_mass", curie=MIXS.curie('0000222'),
+                   model_uri=DEFAULT_.wall_thermal_mass, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.wall_water_mold = Slot(uri=MIXS['0000844'], name="wall_water_mold", curie=MIXS.curie('0000844'),
+                   model_uri=DEFAULT_.wall_water_mold, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.wastewater_type = Slot(uri=MIXS['0000353'], name="wastewater_type", curie=MIXS.curie('0000353'),
+                   model_uri=DEFAULT_.wastewater_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.water_cont_soil_meth = Slot(uri=MIXS['0000323'], name="water_cont_soil_meth", curie=MIXS.curie('0000323'),
+                   model_uri=DEFAULT_.water_cont_soil_meth, domain=None, range=Optional[str])
+
+slots.water_content = Slot(uri=MIXS['0000185'], name="water_content", curie=MIXS.curie('0000185'),
+                   model_uri=DEFAULT_.water_content, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.water_current = Slot(uri=MIXS['0000203'], name="water_current", curie=MIXS.curie('0000203'),
+                   model_uri=DEFAULT_.water_current, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.water_cut = Slot(uri=MIXS['0000454'], name="water_cut", curie=MIXS.curie('0000454'),
+                   model_uri=DEFAULT_.water_cut, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.water_feat_size = Slot(uri=MIXS['0000223'], name="water_feat_size", curie=MIXS.curie('0000223'),
+                   model_uri=DEFAULT_.water_feat_size, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.water_feat_type = Slot(uri=MIXS['0000847'], name="water_feat_type", curie=MIXS.curie('0000847'),
+                   model_uri=DEFAULT_.water_feat_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.water_prod_rate = Slot(uri=MIXS['0000453'], name="water_prod_rate", curie=MIXS.curie('0000453'),
+                   model_uri=DEFAULT_.water_prod_rate, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.water_temp_regm = Slot(uri=MIXS['0000590'], name="water_temp_regm", curie=MIXS.curie('0000590'),
+                   model_uri=DEFAULT_.water_temp_regm, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.watering_regm = Slot(uri=MIXS['0000591'], name="watering_regm", curie=MIXS.curie('0000591'),
+                   model_uri=DEFAULT_.watering_regm, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.weekday = Slot(uri=MIXS['0000848'], name="weekday", curie=MIXS.curie('0000848'),
+                   model_uri=DEFAULT_.weekday, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.win = Slot(uri=MIXS['0000297'], name="win", curie=MIXS.curie('0000297'),
+                   model_uri=DEFAULT_.win, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.wind_direction = Slot(uri=MIXS['0000757'], name="wind_direction", curie=MIXS.curie('0000757'),
+                   model_uri=DEFAULT_.wind_direction, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.wind_speed = Slot(uri=MIXS['0000118'], name="wind_speed", curie=MIXS.curie('0000118'),
+                   model_uri=DEFAULT_.wind_speed, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.window_cond = Slot(uri=MIXS['0000849'], name="window_cond", curie=MIXS.curie('0000849'),
+                   model_uri=DEFAULT_.window_cond, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.window_cover = Slot(uri=MIXS['0000850'], name="window_cover", curie=MIXS.curie('0000850'),
+                   model_uri=DEFAULT_.window_cover, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.window_horiz_pos = Slot(uri=MIXS['0000851'], name="window_horiz_pos", curie=MIXS.curie('0000851'),
+                   model_uri=DEFAULT_.window_horiz_pos, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.window_loc = Slot(uri=MIXS['0000852'], name="window_loc", curie=MIXS.curie('0000852'),
+                   model_uri=DEFAULT_.window_loc, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.window_mat = Slot(uri=MIXS['0000853'], name="window_mat", curie=MIXS.curie('0000853'),
+                   model_uri=DEFAULT_.window_mat, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.window_open_freq = Slot(uri=MIXS['0000246'], name="window_open_freq", curie=MIXS.curie('0000246'),
+                   model_uri=DEFAULT_.window_open_freq, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.window_size = Slot(uri=MIXS['0000224'], name="window_size", curie=MIXS.curie('0000224'),
+                   model_uri=DEFAULT_.window_size, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.window_status = Slot(uri=MIXS['0000855'], name="window_status", curie=MIXS.curie('0000855'),
+                   model_uri=DEFAULT_.window_status, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.window_type = Slot(uri=MIXS['0000856'], name="window_type", curie=MIXS.curie('0000856'),
+                   model_uri=DEFAULT_.window_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.window_vert_pos = Slot(uri=MIXS['0000857'], name="window_vert_pos", curie=MIXS.curie('0000857'),
+                   model_uri=DEFAULT_.window_vert_pos, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.window_water_mold = Slot(uri=MIXS['0000854'], name="window_water_mold", curie=MIXS.curie('0000854'),
+                   model_uri=DEFAULT_.window_water_mold, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.xylene = Slot(uri=MIXS['0000156'], name="xylene", curie=MIXS.curie('0000156'),
+                   model_uri=DEFAULT_.xylene, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.env_package = Slot(uri=DEFAULT_.env_package, name="env_package", curie=DEFAULT_.curie('env_package'),
                    model_uri=DEFAULT_.env_package, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.env_package],
                    pattern=re.compile(r'[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc environment|plant\-associated|sediment|soil|wastewater\/sludge|water]'))
-
-slots.subspecf_gen_lin = Slot(uri=DEFAULT_.subspecf_gen_lin, name="subspecf_gen_lin", curie=DEFAULT_.curie('subspecf_gen_lin'),
-                   model_uri=DEFAULT_.subspecf_gen_lin, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.subspecf_gen_lin])
-
-slots.ploidy = Slot(uri=DEFAULT_.ploidy, name="ploidy", curie=DEFAULT_.curie('ploidy'),
-                   model_uri=DEFAULT_.ploidy, domain=None, range=Optional[Union[dict, ControlledTermValue]], mappings = [MIXS.ploidy],
-                   pattern=re.compile(r'.* \S+:\S+'))
-
-slots.num_replicons = Slot(uri=DEFAULT_.num_replicons, name="num_replicons", curie=DEFAULT_.curie('num_replicons'),
-                   model_uri=DEFAULT_.num_replicons, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.num_replicons])
-
-slots.extrachrom_elements = Slot(uri=DEFAULT_.extrachrom_elements, name="extrachrom_elements", curie=DEFAULT_.curie('extrachrom_elements'),
-                   model_uri=DEFAULT_.extrachrom_elements, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.extrachrom_elements])
-
-slots.estimated_size = Slot(uri=DEFAULT_.estimated_size, name="estimated_size", curie=DEFAULT_.curie('estimated_size'),
-                   model_uri=DEFAULT_.estimated_size, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.estimated_size])
-
-slots.ref_biomaterial = Slot(uri=DEFAULT_.ref_biomaterial, name="ref_biomaterial", curie=DEFAULT_.curie('ref_biomaterial'),
-                   model_uri=DEFAULT_.ref_biomaterial, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.ref_biomaterial])
-
-slots.source_mat_id = Slot(uri=DEFAULT_.source_mat_id, name="source_mat_id", curie=DEFAULT_.curie('source_mat_id'),
-                   model_uri=DEFAULT_.source_mat_id, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.source_mat_id])
-
-slots.pathogenicity = Slot(uri=DEFAULT_.pathogenicity, name="pathogenicity", curie=DEFAULT_.curie('pathogenicity'),
-                   model_uri=DEFAULT_.pathogenicity, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.pathogenicity])
-
-slots.biotic_relationship = Slot(uri=DEFAULT_.biotic_relationship, name="biotic_relationship", curie=DEFAULT_.curie('biotic_relationship'),
-                   model_uri=DEFAULT_.biotic_relationship, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.biotic_relationship],
-                   pattern=re.compile(r'[free living|parasitism|commensalism|symbiotic|mutualism]'))
-
-slots.specific_host = Slot(uri=DEFAULT_.specific_host, name="specific_host", curie=DEFAULT_.curie('specific_host'),
-                   model_uri=DEFAULT_.specific_host, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.specific_host])
-
-slots.host_spec_range = Slot(uri=DEFAULT_.host_spec_range, name="host_spec_range", curie=DEFAULT_.curie('host_spec_range'),
-                   model_uri=DEFAULT_.host_spec_range, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.host_spec_range])
-
-slots.health_disease_stat = Slot(uri=DEFAULT_.health_disease_stat, name="health_disease_stat", curie=DEFAULT_.curie('health_disease_stat'),
-                   model_uri=DEFAULT_.health_disease_stat, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.health_disease_stat],
-                   pattern=re.compile(r'[healthy|diseased|dead|disease\-free|undetermined|recovering|resolving|pre\-existing condition|pathological|life threatening|congenital]'))
-
-slots.trophic_level = Slot(uri=DEFAULT_.trophic_level, name="trophic_level", curie=DEFAULT_.curie('trophic_level'),
-                   model_uri=DEFAULT_.trophic_level, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.trophic_level],
-                   pattern=re.compile(r'[autotroph|carboxydotroph|chemoautotroph|chemoheterotroph|chemolithoautotroph|chemolithotroph|chemoorganoheterotroph|chemoorganotroph|chemosynthetic|chemotroph|copiotroph|diazotroph|facultative|autotroph|heterotroph|lithoautotroph|lithoheterotroph|lithotroph|methanotroph|methylotroph|mixotroph|obligate|chemoautolithotroph|oligotroph|organoheterotroph|organotroph|photoautotroph|photoheterotroph|photolithoautotroph|photolithotroph|photosynthetic|phototroph]'))
-
-slots.propagation = Slot(uri=DEFAULT_.propagation, name="propagation", curie=DEFAULT_.curie('propagation'),
-                   model_uri=DEFAULT_.propagation, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.propagation])
-
-slots.encoded_traits = Slot(uri=DEFAULT_.encoded_traits, name="encoded_traits", curie=DEFAULT_.curie('encoded_traits'),
-                   model_uri=DEFAULT_.encoded_traits, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.encoded_traits])
-
-slots.rel_to_oxygen = Slot(uri=DEFAULT_.rel_to_oxygen, name="rel_to_oxygen", curie=DEFAULT_.curie('rel_to_oxygen'),
-                   model_uri=DEFAULT_.rel_to_oxygen, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.rel_to_oxygen],
-                   pattern=re.compile(r'[aerobe|anaerobe|facultative|microaerophilic|microanaerobe|obligate aerobe|obligate anaerobe]'))
-
-slots.isol_growth_condt = Slot(uri=DEFAULT_.isol_growth_condt, name="isol_growth_condt", curie=DEFAULT_.curie('isol_growth_condt'),
-                   model_uri=DEFAULT_.isol_growth_condt, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.isol_growth_condt])
-
-slots.samp_collect_device = Slot(uri=DEFAULT_.samp_collect_device, name="samp_collect_device", curie=DEFAULT_.curie('samp_collect_device'),
-                   model_uri=DEFAULT_.samp_collect_device, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.samp_collect_device])
-
-slots.samp_mat_process = Slot(uri=DEFAULT_.samp_mat_process, name="samp_mat_process", curie=DEFAULT_.curie('samp_mat_process'),
-                   model_uri=DEFAULT_.samp_mat_process, domain=None, range=Optional[Union[dict, ControlledTermValue]], mappings = [MIXS.samp_mat_process])
-
-slots.size_frac = Slot(uri=DEFAULT_.size_frac, name="size_frac", curie=DEFAULT_.curie('size_frac'),
-                   model_uri=DEFAULT_.size_frac, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.size_frac],
-                   pattern=re.compile(r'\d+[.\d+]\-\d+[.\d+] \S+'))
-
-slots.samp_size = Slot(uri=DEFAULT_.samp_size, name="samp_size", curie=DEFAULT_.curie('samp_size'),
-                   model_uri=DEFAULT_.samp_size, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.samp_size],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.source_uvig = Slot(uri=DEFAULT_.source_uvig, name="source_uvig", curie=DEFAULT_.curie('source_uvig'),
-                   model_uri=DEFAULT_.source_uvig, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.source_uvig],
-                   pattern=re.compile(r'[metagenome (not viral targeted)|viral fraction metagenome (virome)|sequence\-targeted metagenome|metatranscriptome (not viral targeted)|viral fraction RNA metagenome (RNA virome)|sequence\-targeted RNA metagenome|microbial single amplified genome (SAG)|viral single amplified genome (vSAG)|isolate microbial genome|other]'))
-
-slots.virus_enrich_appr = Slot(uri=DEFAULT_.virus_enrich_appr, name="virus_enrich_appr", curie=DEFAULT_.curie('virus_enrich_appr'),
-                   model_uri=DEFAULT_.virus_enrich_appr, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.virus_enrich_appr],
-                   pattern=re.compile(r'[filtration|ultrafiltration|centrifugation|ultracentrifugation|PEG Precipitation|FeCl Precipitation|CsCl density gradient|DNAse|RNAse|targeted sequence capture|other|none]'))
-
-slots.nucl_acid_ext = Slot(uri=DEFAULT_.nucl_acid_ext, name="nucl_acid_ext", curie=DEFAULT_.curie('nucl_acid_ext'),
-                   model_uri=DEFAULT_.nucl_acid_ext, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.nucl_acid_ext])
-
-slots.nucl_acid_amp = Slot(uri=DEFAULT_.nucl_acid_amp, name="nucl_acid_amp", curie=DEFAULT_.curie('nucl_acid_amp'),
-                   model_uri=DEFAULT_.nucl_acid_amp, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.nucl_acid_amp])
-
-slots.lib_size = Slot(uri=DEFAULT_.lib_size, name="lib_size", curie=DEFAULT_.curie('lib_size'),
-                   model_uri=DEFAULT_.lib_size, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.lib_size])
-
-slots.lib_reads_seqd = Slot(uri=DEFAULT_.lib_reads_seqd, name="lib_reads_seqd", curie=DEFAULT_.curie('lib_reads_seqd'),
-                   model_uri=DEFAULT_.lib_reads_seqd, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.lib_reads_seqd])
-
-slots.lib_layout = Slot(uri=DEFAULT_.lib_layout, name="lib_layout", curie=DEFAULT_.curie('lib_layout'),
-                   model_uri=DEFAULT_.lib_layout, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.lib_layout],
-                   pattern=re.compile(r'[paired|single|vector|other]'))
-
-slots.lib_vector = Slot(uri=DEFAULT_.lib_vector, name="lib_vector", curie=DEFAULT_.curie('lib_vector'),
-                   model_uri=DEFAULT_.lib_vector, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.lib_vector])
-
-slots.lib_screen = Slot(uri=DEFAULT_.lib_screen, name="lib_screen", curie=DEFAULT_.curie('lib_screen'),
-                   model_uri=DEFAULT_.lib_screen, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.lib_screen])
-
-slots.target_gene = Slot(uri=DEFAULT_.target_gene, name="target_gene", curie=DEFAULT_.curie('target_gene'),
-                   model_uri=DEFAULT_.target_gene, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.target_gene])
-
-slots.target_subfragment = Slot(uri=DEFAULT_.target_subfragment, name="target_subfragment", curie=DEFAULT_.curie('target_subfragment'),
-                   model_uri=DEFAULT_.target_subfragment, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.target_subfragment])
-
-slots.pcr_primers = Slot(uri=DEFAULT_.pcr_primers, name="pcr_primers", curie=DEFAULT_.curie('pcr_primers'),
-                   model_uri=DEFAULT_.pcr_primers, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.pcr_primers])
-
-slots.mid = Slot(uri=DEFAULT_.mid, name="mid", curie=DEFAULT_.curie('mid'),
-                   model_uri=DEFAULT_.mid, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.mid])
-
-slots.adapters = Slot(uri=DEFAULT_.adapters, name="adapters", curie=DEFAULT_.curie('adapters'),
-                   model_uri=DEFAULT_.adapters, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.adapters])
-
-slots.pcr_cond = Slot(uri=DEFAULT_.pcr_cond, name="pcr_cond", curie=DEFAULT_.curie('pcr_cond'),
-                   model_uri=DEFAULT_.pcr_cond, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.pcr_cond],
-                   pattern=re.compile(r'initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final elongation:degrees_minutes;total cycles'))
-
-slots.seq_meth = Slot(uri=DEFAULT_.seq_meth, name="seq_meth", curie=DEFAULT_.curie('seq_meth'),
-                   model_uri=DEFAULT_.seq_meth, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.seq_meth],
-                   pattern=re.compile(r'[MinION|GridION|PromethION|454 GS|454 GS 20|454 GS FLX|454 GS FLX+|454 GS FLX Titanium|454 GS Junior|Illumina Genome Analyzer|Illumina Genome Analyzer II|Illumina Genome Analyzer IIx|Illumina HiSeq 4000|Illumina HiSeq 3000|Illumina HiSeq 2500|Illumina HiSeq 2000|Illumina HiSeq 1500|Illumina HiSeq 1000|Illumina HiScanSQ|Illumina MiSeq|Illumina HiSeq X Five|Illumina HiSeq X Ten|Illumina NextSeq 500|Illumina NextSeq 550|AB SOLiD System|AB SOLiD System 2.0|AB SOLiD System 3.0|AB SOLiD 3 Plus System|AB SOLiD 4 System|AB SOLiD 4hq System|AB SOLiD PI System|AB 5500 Genetic Analyzer|AB 5500xl Genetic Analyzer|AB 5500xl\-W Genetic Analysis System|Ion Torrent PGM|Ion Torrent Proton|Ion Torrent S5|Ion Torrent S5 XL|PacBio RS|PacBio RS II|Sequel|AB 3730xL Genetic Analyzer|AB 3730 Genetic Analyzer|AB 3500xL Genetic Analyzer|AB 3500 Genetic Analyzer|AB 3130xL Genetic Analyzer|AB 3130 Genetic Analyzer|AB 310 Genetic Analyzer|BGISEQ\-500]'))
-
-slots.seq_quality_check = Slot(uri=DEFAULT_.seq_quality_check, name="seq_quality_check", curie=DEFAULT_.curie('seq_quality_check'),
-                   model_uri=DEFAULT_.seq_quality_check, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.seq_quality_check],
-                   pattern=re.compile(r'[none|manually edited]'))
-
-slots.chimera_check = Slot(uri=DEFAULT_.chimera_check, name="chimera_check", curie=DEFAULT_.curie('chimera_check'),
-                   model_uri=DEFAULT_.chimera_check, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.chimera_check])
-
-slots.tax_ident = Slot(uri=DEFAULT_.tax_ident, name="tax_ident", curie=DEFAULT_.curie('tax_ident'),
-                   model_uri=DEFAULT_.tax_ident, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.tax_ident],
-                   pattern=re.compile(r'[16S rRNA gene|multi\-marker approach|other]'))
-
-slots.assembly_qual = Slot(uri=DEFAULT_.assembly_qual, name="assembly_qual", curie=DEFAULT_.curie('assembly_qual'),
-                   model_uri=DEFAULT_.assembly_qual, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.assembly_qual],
-                   pattern=re.compile(r'[Finished genome|High\-quality draft genome|Medium\-quality draft genome|Low\-quality draft genome|Genome fragment(s)]'))
-
-slots.assembly_name = Slot(uri=DEFAULT_.assembly_name, name="assembly_name", curie=DEFAULT_.curie('assembly_name'),
-                   model_uri=DEFAULT_.assembly_name, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.assembly_name])
-
-slots.assembly_software = Slot(uri=DEFAULT_.assembly_software, name="assembly_software", curie=DEFAULT_.curie('assembly_software'),
-                   model_uri=DEFAULT_.assembly_software, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.assembly_software])
-
-slots.annot = Slot(uri=DEFAULT_.annot, name="annot", curie=DEFAULT_.curie('annot'),
-                   model_uri=DEFAULT_.annot, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.annot])
-
-slots.number_contig = Slot(uri=DEFAULT_.number_contig, name="number_contig", curie=DEFAULT_.curie('number_contig'),
-                   model_uri=DEFAULT_.number_contig, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.number_contig])
-
-slots.feat_pred = Slot(uri=DEFAULT_.feat_pred, name="feat_pred", curie=DEFAULT_.curie('feat_pred'),
-                   model_uri=DEFAULT_.feat_pred, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.feat_pred])
-
-slots.ref_db = Slot(uri=DEFAULT_.ref_db, name="ref_db", curie=DEFAULT_.curie('ref_db'),
-                   model_uri=DEFAULT_.ref_db, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.ref_db])
-
-slots.sim_search_meth = Slot(uri=DEFAULT_.sim_search_meth, name="sim_search_meth", curie=DEFAULT_.curie('sim_search_meth'),
-                   model_uri=DEFAULT_.sim_search_meth, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.sim_search_meth])
-
-slots.tax_class = Slot(uri=DEFAULT_.tax_class, name="tax_class", curie=DEFAULT_.curie('tax_class'),
-                   model_uri=DEFAULT_.tax_class, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.tax_class])
-
-slots._16s_recover = Slot(uri=DEFAULT_._16s_recover, name="_16s_recover", curie=DEFAULT_.curie('_16s_recover'),
-                   model_uri=DEFAULT_._16s_recover, domain=None, range=Optional[Union[dict, BooleanValue]], mappings = [MIXS._16s_recover],
-                   pattern=re.compile(r'[true|false]'))
-
-slots._16s_recover_software = Slot(uri=DEFAULT_._16s_recover_software, name="_16s_recover_software", curie=DEFAULT_.curie('_16s_recover_software'),
-                   model_uri=DEFAULT_._16s_recover_software, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS._16s_recover_software])
-
-slots.trnas = Slot(uri=DEFAULT_.trnas, name="trnas", curie=DEFAULT_.curie('trnas'),
-                   model_uri=DEFAULT_.trnas, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.trnas])
-
-slots.trna_ext_software = Slot(uri=DEFAULT_.trna_ext_software, name="trna_ext_software", curie=DEFAULT_.curie('trna_ext_software'),
-                   model_uri=DEFAULT_.trna_ext_software, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.trna_ext_software])
-
-slots.compl_score = Slot(uri=DEFAULT_.compl_score, name="compl_score", curie=DEFAULT_.curie('compl_score'),
-                   model_uri=DEFAULT_.compl_score, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.compl_score])
-
-slots.compl_software = Slot(uri=DEFAULT_.compl_software, name="compl_software", curie=DEFAULT_.curie('compl_software'),
-                   model_uri=DEFAULT_.compl_software, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.compl_software])
-
-slots.compl_appr = Slot(uri=DEFAULT_.compl_appr, name="compl_appr", curie=DEFAULT_.curie('compl_appr'),
-                   model_uri=DEFAULT_.compl_appr, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.compl_appr],
-                   pattern=re.compile(r'[marker gene|reference based|other]'))
-
-slots.contam_score = Slot(uri=DEFAULT_.contam_score, name="contam_score", curie=DEFAULT_.curie('contam_score'),
-                   model_uri=DEFAULT_.contam_score, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.contam_score],
-                   pattern=re.compile(r'\d+[.\d+] percentage'))
-
-slots.contam_screen_input = Slot(uri=DEFAULT_.contam_screen_input, name="contam_screen_input", curie=DEFAULT_.curie('contam_screen_input'),
-                   model_uri=DEFAULT_.contam_screen_input, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.contam_screen_input],
-                   pattern=re.compile(r'[reads| contigs]'))
-
-slots.contam_screen_param = Slot(uri=DEFAULT_.contam_screen_param, name="contam_screen_param", curie=DEFAULT_.curie('contam_screen_param'),
-                   model_uri=DEFAULT_.contam_screen_param, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.contam_screen_param])
-
-slots.decontam_software = Slot(uri=DEFAULT_.decontam_software, name="decontam_software", curie=DEFAULT_.curie('decontam_software'),
-                   model_uri=DEFAULT_.decontam_software, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.decontam_software],
-                   pattern=re.compile(r'[checkm\/refinem|anvi\'o|prodege|bbtools:decontaminate.sh|acdc|combination]'))
-
-slots.sort_tech = Slot(uri=DEFAULT_.sort_tech, name="sort_tech", curie=DEFAULT_.curie('sort_tech'),
-                   model_uri=DEFAULT_.sort_tech, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.sort_tech],
-                   pattern=re.compile(r'[flow cytometric cell sorting|microfluidics|lazer\-tweezing|optical manipulation|micromanipulation|other]'))
-
-slots.single_cell_lysis_appr = Slot(uri=DEFAULT_.single_cell_lysis_appr, name="single_cell_lysis_appr", curie=DEFAULT_.curie('single_cell_lysis_appr'),
-                   model_uri=DEFAULT_.single_cell_lysis_appr, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.single_cell_lysis_appr],
-                   pattern=re.compile(r'[chemical|enzymatic|physical|combination]'))
-
-slots.single_cell_lysis_prot = Slot(uri=DEFAULT_.single_cell_lysis_prot, name="single_cell_lysis_prot", curie=DEFAULT_.curie('single_cell_lysis_prot'),
-                   model_uri=DEFAULT_.single_cell_lysis_prot, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.single_cell_lysis_prot])
-
-slots.wga_amp_appr = Slot(uri=DEFAULT_.wga_amp_appr, name="wga_amp_appr", curie=DEFAULT_.curie('wga_amp_appr'),
-                   model_uri=DEFAULT_.wga_amp_appr, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.wga_amp_appr],
-                   pattern=re.compile(r'[pcr based|mda based]'))
-
-slots.wga_amp_kit = Slot(uri=DEFAULT_.wga_amp_kit, name="wga_amp_kit", curie=DEFAULT_.curie('wga_amp_kit'),
-                   model_uri=DEFAULT_.wga_amp_kit, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.wga_amp_kit])
-
-slots.bin_param = Slot(uri=DEFAULT_.bin_param, name="bin_param", curie=DEFAULT_.curie('bin_param'),
-                   model_uri=DEFAULT_.bin_param, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.bin_param],
-                   pattern=re.compile(r'[homology search|kmer|coverage|codon usage|combination]'))
-
-slots.bin_software = Slot(uri=DEFAULT_.bin_software, name="bin_software", curie=DEFAULT_.curie('bin_software'),
-                   model_uri=DEFAULT_.bin_software, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.bin_software],
-                   pattern=re.compile(r'[metabat|maxbin|concoct|groupm|esom|metawatt|combination|other]'))
-
-slots.reassembly_bin = Slot(uri=DEFAULT_.reassembly_bin, name="reassembly_bin", curie=DEFAULT_.curie('reassembly_bin'),
-                   model_uri=DEFAULT_.reassembly_bin, domain=None, range=Optional[Union[dict, BooleanValue]], mappings = [MIXS.reassembly_bin],
-                   pattern=re.compile(r'[true|false]'))
-
-slots.mag_cov_software = Slot(uri=DEFAULT_.mag_cov_software, name="mag_cov_software", curie=DEFAULT_.curie('mag_cov_software'),
-                   model_uri=DEFAULT_.mag_cov_software, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.mag_cov_software],
-                   pattern=re.compile(r'[bwa|bbmap|bowtie|other]'))
-
-slots.vir_ident_software = Slot(uri=DEFAULT_.vir_ident_software, name="vir_ident_software", curie=DEFAULT_.curie('vir_ident_software'),
-                   model_uri=DEFAULT_.vir_ident_software, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.vir_ident_software])
-
-slots.pred_genome_type = Slot(uri=DEFAULT_.pred_genome_type, name="pred_genome_type", curie=DEFAULT_.curie('pred_genome_type'),
-                   model_uri=DEFAULT_.pred_genome_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.pred_genome_type],
-                   pattern=re.compile(r'[DNA|dsDNA|ssDNA|RNA|dsRNA|ssRNA|ssRNA (+)|ssRNA (\-)|mixed|uncharacterized]'))
-
-slots.pred_genome_struc = Slot(uri=DEFAULT_.pred_genome_struc, name="pred_genome_struc", curie=DEFAULT_.curie('pred_genome_struc'),
-                   model_uri=DEFAULT_.pred_genome_struc, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.pred_genome_struc],
-                   pattern=re.compile(r'[segmented|non\-segmented|undetermined]'))
-
-slots.detec_type = Slot(uri=DEFAULT_.detec_type, name="detec_type", curie=DEFAULT_.curie('detec_type'),
-                   model_uri=DEFAULT_.detec_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.detec_type],
-                   pattern=re.compile(r'[independent sequence (UViG)|provirus (UpViG)]'))
-
-slots.votu_class_appr = Slot(uri=DEFAULT_.votu_class_appr, name="votu_class_appr", curie=DEFAULT_.curie('votu_class_appr'),
-                   model_uri=DEFAULT_.votu_class_appr, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.votu_class_appr])
-
-slots.votu_seq_comp_appr = Slot(uri=DEFAULT_.votu_seq_comp_appr, name="votu_seq_comp_appr", curie=DEFAULT_.curie('votu_seq_comp_appr'),
-                   model_uri=DEFAULT_.votu_seq_comp_appr, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.votu_seq_comp_appr])
-
-slots.votu_db = Slot(uri=DEFAULT_.votu_db, name="votu_db", curie=DEFAULT_.curie('votu_db'),
-                   model_uri=DEFAULT_.votu_db, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.votu_db])
-
-slots.host_pred_appr = Slot(uri=DEFAULT_.host_pred_appr, name="host_pred_appr", curie=DEFAULT_.curie('host_pred_appr'),
-                   model_uri=DEFAULT_.host_pred_appr, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.host_pred_appr],
-                   pattern=re.compile(r'[provirus|host sequence similarity|CRISPR spacer match|kmer similarity|co\-occurrence|combination|other]'))
-
-slots.host_pred_est_acc = Slot(uri=DEFAULT_.host_pred_est_acc, name="host_pred_est_acc", curie=DEFAULT_.curie('host_pred_est_acc'),
-                   model_uri=DEFAULT_.host_pred_est_acc, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.host_pred_est_acc])
-
-slots.mixs_url = Slot(uri=DEFAULT_.mixs_url, name="mixs_url", curie=DEFAULT_.curie('mixs_url'),
-                   model_uri=DEFAULT_.mixs_url, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.mixs_url])
-
-slots.sop = Slot(uri=DEFAULT_.sop, name="sop", curie=DEFAULT_.curie('sop'),
-                   model_uri=DEFAULT_.sop, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.sop])
-
-slots.barometric_press = Slot(uri=DEFAULT_.barometric_press, name="barometric_press", curie=DEFAULT_.curie('barometric_press'),
-                   model_uri=DEFAULT_.barometric_press, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.barometric_press],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.carb_dioxide = Slot(uri=DEFAULT_.carb_dioxide, name="carb_dioxide", curie=DEFAULT_.curie('carb_dioxide'),
-                   model_uri=DEFAULT_.carb_dioxide, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.carb_dioxide],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.carb_monoxide = Slot(uri=DEFAULT_.carb_monoxide, name="carb_monoxide", curie=DEFAULT_.curie('carb_monoxide'),
-                   model_uri=DEFAULT_.carb_monoxide, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.carb_monoxide],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.chem_administration = Slot(uri=DEFAULT_.chem_administration, name="chem_administration", curie=DEFAULT_.curie('chem_administration'),
-                   model_uri=DEFAULT_.chem_administration, domain=None, range=Optional[Union[dict, ControlledTermValue]], mappings = [MIXS.chem_administration])
-
-slots.humidity = Slot(uri=DEFAULT_.humidity, name="humidity", curie=DEFAULT_.curie('humidity'),
-                   model_uri=DEFAULT_.humidity, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.humidity],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.methane = Slot(uri=DEFAULT_.methane, name="methane", curie=DEFAULT_.curie('methane'),
-                   model_uri=DEFAULT_.methane, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.methane],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.misc_param = Slot(uri=DEFAULT_.misc_param, name="misc_param", curie=DEFAULT_.curie('misc_param'),
-                   model_uri=DEFAULT_.misc_param, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.misc_param])
-
-slots.organism_count = Slot(uri=DEFAULT_.organism_count, name="organism_count", curie=DEFAULT_.curie('organism_count'),
-                   model_uri=DEFAULT_.organism_count, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.organism_count])
-
-slots.oxygen = Slot(uri=DEFAULT_.oxygen, name="oxygen", curie=DEFAULT_.curie('oxygen'),
-                   model_uri=DEFAULT_.oxygen, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.oxygen],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.oxy_stat_samp = Slot(uri=DEFAULT_.oxy_stat_samp, name="oxy_stat_samp", curie=DEFAULT_.curie('oxy_stat_samp'),
-                   model_uri=DEFAULT_.oxy_stat_samp, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.oxy_stat_samp],
-                   pattern=re.compile(r'[aerobic|anaerobic|other]'))
-
-slots.perturbation = Slot(uri=DEFAULT_.perturbation, name="perturbation", curie=DEFAULT_.curie('perturbation'),
-                   model_uri=DEFAULT_.perturbation, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.perturbation])
-
-slots.pollutants = Slot(uri=DEFAULT_.pollutants, name="pollutants", curie=DEFAULT_.curie('pollutants'),
-                   model_uri=DEFAULT_.pollutants, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.pollutants])
-
-slots.resp_part_matter = Slot(uri=DEFAULT_.resp_part_matter, name="resp_part_matter", curie=DEFAULT_.curie('resp_part_matter'),
-                   model_uri=DEFAULT_.resp_part_matter, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.resp_part_matter])
-
-slots.samp_salinity = Slot(uri=DEFAULT_.samp_salinity, name="samp_salinity", curie=DEFAULT_.curie('samp_salinity'),
-                   model_uri=DEFAULT_.samp_salinity, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.samp_salinity],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.samp_store_dur = Slot(uri=DEFAULT_.samp_store_dur, name="samp_store_dur", curie=DEFAULT_.curie('samp_store_dur'),
-                   model_uri=DEFAULT_.samp_store_dur, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.samp_store_dur])
-
-slots.samp_store_loc = Slot(uri=DEFAULT_.samp_store_loc, name="samp_store_loc", curie=DEFAULT_.curie('samp_store_loc'),
-                   model_uri=DEFAULT_.samp_store_loc, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.samp_store_loc])
-
-slots.samp_store_temp = Slot(uri=DEFAULT_.samp_store_temp, name="samp_store_temp", curie=DEFAULT_.curie('samp_store_temp'),
-                   model_uri=DEFAULT_.samp_store_temp, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.samp_store_temp],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.samp_vol_we_dna_ext = Slot(uri=DEFAULT_.samp_vol_we_dna_ext, name="samp_vol_we_dna_ext", curie=DEFAULT_.curie('samp_vol_we_dna_ext'),
-                   model_uri=DEFAULT_.samp_vol_we_dna_ext, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.samp_vol_we_dna_ext],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.solar_irradiance = Slot(uri=DEFAULT_.solar_irradiance, name="solar_irradiance", curie=DEFAULT_.curie('solar_irradiance'),
-                   model_uri=DEFAULT_.solar_irradiance, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.solar_irradiance],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.temp = Slot(uri=DEFAULT_.temp, name="temp", curie=DEFAULT_.curie('temp'),
-                   model_uri=DEFAULT_.temp, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.temp],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.ventilation_rate = Slot(uri=DEFAULT_.ventilation_rate, name="ventilation_rate", curie=DEFAULT_.curie('ventilation_rate'),
-                   model_uri=DEFAULT_.ventilation_rate, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.ventilation_rate],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.ventilation_type = Slot(uri=DEFAULT_.ventilation_type, name="ventilation_type", curie=DEFAULT_.curie('ventilation_type'),
-                   model_uri=DEFAULT_.ventilation_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.ventilation_type])
-
-slots.volatile_org_comp = Slot(uri=DEFAULT_.volatile_org_comp, name="volatile_org_comp", curie=DEFAULT_.curie('volatile_org_comp'),
-                   model_uri=DEFAULT_.volatile_org_comp, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.volatile_org_comp])
-
-slots.wind_direction = Slot(uri=DEFAULT_.wind_direction, name="wind_direction", curie=DEFAULT_.curie('wind_direction'),
-                   model_uri=DEFAULT_.wind_direction, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.wind_direction])
-
-slots.wind_speed = Slot(uri=DEFAULT_.wind_speed, name="wind_speed", curie=DEFAULT_.curie('wind_speed'),
-                   model_uri=DEFAULT_.wind_speed, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.wind_speed],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.surf_material = Slot(uri=DEFAULT_.surf_material, name="surf_material", curie=DEFAULT_.curie('surf_material'),
-                   model_uri=DEFAULT_.surf_material, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.surf_material],
-                   pattern=re.compile(r'[concrete|wood|stone|tile|plastic|glass|vinyl|metal|carpet|stainless steel|paint|cinder blocks|hay bales|stucco|adobe]'))
-
-slots.surf_air_cont = Slot(uri=DEFAULT_.surf_air_cont, name="surf_air_cont", curie=DEFAULT_.curie('surf_air_cont'),
-                   model_uri=DEFAULT_.surf_air_cont, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.surf_air_cont],
-                   pattern=re.compile(r'[dust|organic matter|particulate matter|volatile organic compounds|biological contaminants|radon|nutrients|biocides]'))
-
-slots.rel_air_humidity = Slot(uri=DEFAULT_.rel_air_humidity, name="rel_air_humidity", curie=DEFAULT_.curie('rel_air_humidity'),
-                   model_uri=DEFAULT_.rel_air_humidity, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.rel_air_humidity],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.abs_air_humidity = Slot(uri=DEFAULT_.abs_air_humidity, name="abs_air_humidity", curie=DEFAULT_.curie('abs_air_humidity'),
-                   model_uri=DEFAULT_.abs_air_humidity, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.abs_air_humidity],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.surf_humidity = Slot(uri=DEFAULT_.surf_humidity, name="surf_humidity", curie=DEFAULT_.curie('surf_humidity'),
-                   model_uri=DEFAULT_.surf_humidity, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.surf_humidity],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.air_temp = Slot(uri=DEFAULT_.air_temp, name="air_temp", curie=DEFAULT_.curie('air_temp'),
-                   model_uri=DEFAULT_.air_temp, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.air_temp],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.surf_temp = Slot(uri=DEFAULT_.surf_temp, name="surf_temp", curie=DEFAULT_.curie('surf_temp'),
-                   model_uri=DEFAULT_.surf_temp, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.surf_temp],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.surf_moisture_ph = Slot(uri=DEFAULT_.surf_moisture_ph, name="surf_moisture_ph", curie=DEFAULT_.curie('surf_moisture_ph'),
-                   model_uri=DEFAULT_.surf_moisture_ph, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.surf_moisture_ph],
-                   pattern=re.compile(r'\d+[.\d+]'))
-
-slots.build_occup_type = Slot(uri=DEFAULT_.build_occup_type, name="build_occup_type", curie=DEFAULT_.curie('build_occup_type'),
-                   model_uri=DEFAULT_.build_occup_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.build_occup_type],
-                   pattern=re.compile(r'[office|market|restaurant|residence|school|residential|commercial|low rise|high rise|wood framed|office|health care|school|airport|sports complex]'))
-
-slots.surf_moisture = Slot(uri=DEFAULT_.surf_moisture, name="surf_moisture", curie=DEFAULT_.curie('surf_moisture'),
-                   model_uri=DEFAULT_.surf_moisture, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.surf_moisture],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.dew_point = Slot(uri=DEFAULT_.dew_point, name="dew_point", curie=DEFAULT_.curie('dew_point'),
-                   model_uri=DEFAULT_.dew_point, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.dew_point],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.indoor_space = Slot(uri=DEFAULT_.indoor_space, name="indoor_space", curie=DEFAULT_.curie('indoor_space'),
-                   model_uri=DEFAULT_.indoor_space, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.indoor_space],
-                   pattern=re.compile(r'[bedroom|office|bathroom|foyer|kitchen|locker room|hallway|elevator]'))
-
-slots.indoor_surf = Slot(uri=DEFAULT_.indoor_surf, name="indoor_surf", curie=DEFAULT_.curie('indoor_surf'),
-                   model_uri=DEFAULT_.indoor_surf, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.indoor_surf],
-                   pattern=re.compile(r'[counter top|window|wall|cabinet|ceiling|door|shelving|vent cover]'))
-
-slots.filter_type = Slot(uri=DEFAULT_.filter_type, name="filter_type", curie=DEFAULT_.curie('filter_type'),
-                   model_uri=DEFAULT_.filter_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.filter_type],
-                   pattern=re.compile(r'[particulate air filter|chemical air filter|low\-MERV pleated media|HEPA|electrostatic|gas\-phase or ultraviolet air treatments]'))
-
-slots.heat_cool_type = Slot(uri=DEFAULT_.heat_cool_type, name="heat_cool_type", curie=DEFAULT_.curie('heat_cool_type'),
-                   model_uri=DEFAULT_.heat_cool_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.heat_cool_type],
-                   pattern=re.compile(r'[radiant system|heat pump|forced air system|steam forced heat|wood stove]'))
-
-slots.substructure_type = Slot(uri=DEFAULT_.substructure_type, name="substructure_type", curie=DEFAULT_.curie('substructure_type'),
-                   model_uri=DEFAULT_.substructure_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.substructure_type],
-                   pattern=re.compile(r'[crawlspace|slab on grade|basement]'))
-
-slots.building_setting = Slot(uri=DEFAULT_.building_setting, name="building_setting", curie=DEFAULT_.curie('building_setting'),
-                   model_uri=DEFAULT_.building_setting, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.building_setting],
-                   pattern=re.compile(r'[urban|suburban|exurban|rural]'))
-
-slots.light_type = Slot(uri=DEFAULT_.light_type, name="light_type", curie=DEFAULT_.curie('light_type'),
-                   model_uri=DEFAULT_.light_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.light_type],
-                   pattern=re.compile(r'[natural light|electric light|desk lamp|flourescent lights|natural light|none]'))
-
-slots.samp_sort_meth = Slot(uri=DEFAULT_.samp_sort_meth, name="samp_sort_meth", curie=DEFAULT_.curie('samp_sort_meth'),
-                   model_uri=DEFAULT_.samp_sort_meth, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.samp_sort_meth])
-
-slots.space_typ_state = Slot(uri=DEFAULT_.space_typ_state, name="space_typ_state", curie=DEFAULT_.curie('space_typ_state'),
-                   model_uri=DEFAULT_.space_typ_state, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.space_typ_state],
-                   pattern=re.compile(r'[typically occupied|typically unoccupied]'))
-
-slots.typ_occup_density = Slot(uri=DEFAULT_.typ_occup_density, name="typ_occup_density", curie=DEFAULT_.curie('typ_occup_density'),
-                   model_uri=DEFAULT_.typ_occup_density, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.typ_occup_density],
-                   pattern=re.compile(r'\d+[.\d+]'))
-
-slots.occup_samp = Slot(uri=DEFAULT_.occup_samp, name="occup_samp", curie=DEFAULT_.curie('occup_samp'),
-                   model_uri=DEFAULT_.occup_samp, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.occup_samp])
-
-slots.occup_density_samp = Slot(uri=DEFAULT_.occup_density_samp, name="occup_density_samp", curie=DEFAULT_.curie('occup_density_samp'),
-                   model_uri=DEFAULT_.occup_density_samp, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.occup_density_samp],
-                   pattern=re.compile(r'\d+[.\d+]'))
-
-slots.address = Slot(uri=DEFAULT_.address, name="address", curie=DEFAULT_.curie('address'),
-                   model_uri=DEFAULT_.address, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.address])
-
-slots.adj_room = Slot(uri=DEFAULT_.adj_room, name="adj_room", curie=DEFAULT_.curie('adj_room'),
-                   model_uri=DEFAULT_.adj_room, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.adj_room])
-
-slots.aero_struc = Slot(uri=DEFAULT_.aero_struc, name="aero_struc", curie=DEFAULT_.curie('aero_struc'),
-                   model_uri=DEFAULT_.aero_struc, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.aero_struc],
-                   pattern=re.compile(r'[plane|glider]'))
-
-slots.amount_light = Slot(uri=DEFAULT_.amount_light, name="amount_light", curie=DEFAULT_.curie('amount_light'),
-                   model_uri=DEFAULT_.amount_light, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.amount_light],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.arch_struc = Slot(uri=DEFAULT_.arch_struc, name="arch_struc", curie=DEFAULT_.curie('arch_struc'),
-                   model_uri=DEFAULT_.arch_struc, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.arch_struc],
-                   pattern=re.compile(r'[building|shed|home]'))
-
-slots.avg_occup = Slot(uri=DEFAULT_.avg_occup, name="avg_occup", curie=DEFAULT_.curie('avg_occup'),
-                   model_uri=DEFAULT_.avg_occup, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.avg_occup],
-                   pattern=re.compile(r'\d+[.\d+]'))
-
-slots.avg_dew_point = Slot(uri=DEFAULT_.avg_dew_point, name="avg_dew_point", curie=DEFAULT_.curie('avg_dew_point'),
-                   model_uri=DEFAULT_.avg_dew_point, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.avg_dew_point],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.avg_temp = Slot(uri=DEFAULT_.avg_temp, name="avg_temp", curie=DEFAULT_.curie('avg_temp'),
-                   model_uri=DEFAULT_.avg_temp, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.avg_temp],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.bathroom_count = Slot(uri=DEFAULT_.bathroom_count, name="bathroom_count", curie=DEFAULT_.curie('bathroom_count'),
-                   model_uri=DEFAULT_.bathroom_count, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.bathroom_count])
-
-slots.bedroom_count = Slot(uri=DEFAULT_.bedroom_count, name="bedroom_count", curie=DEFAULT_.curie('bedroom_count'),
-                   model_uri=DEFAULT_.bedroom_count, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.bedroom_count])
-
-slots.built_struc_age = Slot(uri=DEFAULT_.built_struc_age, name="built_struc_age", curie=DEFAULT_.curie('built_struc_age'),
-                   model_uri=DEFAULT_.built_struc_age, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.built_struc_age],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.built_struc_set = Slot(uri=DEFAULT_.built_struc_set, name="built_struc_set", curie=DEFAULT_.curie('built_struc_set'),
-                   model_uri=DEFAULT_.built_struc_set, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.built_struc_set],
-                   pattern=re.compile(r'[urban|rural]'))
-
-slots.built_struc_type = Slot(uri=DEFAULT_.built_struc_type, name="built_struc_type", curie=DEFAULT_.curie('built_struc_type'),
-                   model_uri=DEFAULT_.built_struc_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.built_struc_type])
-
-slots.ceil_area = Slot(uri=DEFAULT_.ceil_area, name="ceil_area", curie=DEFAULT_.curie('ceil_area'),
-                   model_uri=DEFAULT_.ceil_area, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.ceil_area],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.ceil_cond = Slot(uri=DEFAULT_.ceil_cond, name="ceil_cond", curie=DEFAULT_.curie('ceil_cond'),
-                   model_uri=DEFAULT_.ceil_cond, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.ceil_cond],
-                   pattern=re.compile(r'[new|visible wear|needs repair|damaged|rupture]'))
-
-slots.ceil_finish_mat = Slot(uri=DEFAULT_.ceil_finish_mat, name="ceil_finish_mat", curie=DEFAULT_.curie('ceil_finish_mat'),
-                   model_uri=DEFAULT_.ceil_finish_mat, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.ceil_finish_mat],
-                   pattern=re.compile(r'[drywall|mineral fibre|tiles|PVC|plasterboard|metal|fiberglass|stucco|mineral wool\/calcium silicate|wood]'))
-
-slots.ceil_water_mold = Slot(uri=DEFAULT_.ceil_water_mold, name="ceil_water_mold", curie=DEFAULT_.curie('ceil_water_mold'),
-                   model_uri=DEFAULT_.ceil_water_mold, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.ceil_water_mold],
-                   pattern=re.compile(r'[presence of mold visible|no presence of mold visible]'))
-
-slots.ceil_struc = Slot(uri=DEFAULT_.ceil_struc, name="ceil_struc", curie=DEFAULT_.curie('ceil_struc'),
-                   model_uri=DEFAULT_.ceil_struc, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.ceil_struc],
-                   pattern=re.compile(r'[wood frame|concrete]'))
-
-slots.ceil_texture = Slot(uri=DEFAULT_.ceil_texture, name="ceil_texture", curie=DEFAULT_.curie('ceil_texture'),
-                   model_uri=DEFAULT_.ceil_texture, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.ceil_texture],
-                   pattern=re.compile(r'[crows feet|crows\-foot stomp|double skip|hawk and trowel|knockdown|popcorn|orange peel|rosebud stomp|Santa\-Fe texture|skip trowel|smooth|stomp knockdown|swirl]'))
-
-slots.ceil_thermal_mass = Slot(uri=DEFAULT_.ceil_thermal_mass, name="ceil_thermal_mass", curie=DEFAULT_.curie('ceil_thermal_mass'),
-                   model_uri=DEFAULT_.ceil_thermal_mass, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.ceil_thermal_mass],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.ceil_type = Slot(uri=DEFAULT_.ceil_type, name="ceil_type", curie=DEFAULT_.curie('ceil_type'),
-                   model_uri=DEFAULT_.ceil_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.ceil_type],
-                   pattern=re.compile(r'[cathedral|dropped|concave|barrel\-shaped|coffered|cove|stretched]'))
-
-slots.cool_syst_id = Slot(uri=DEFAULT_.cool_syst_id, name="cool_syst_id", curie=DEFAULT_.curie('cool_syst_id'),
-                   model_uri=DEFAULT_.cool_syst_id, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.cool_syst_id])
-
-slots.date_last_rain = Slot(uri=DEFAULT_.date_last_rain, name="date_last_rain", curie=DEFAULT_.curie('date_last_rain'),
-                   model_uri=DEFAULT_.date_last_rain, domain=None, range=Optional[Union[dict, TimestampValue]], mappings = [MIXS.date_last_rain])
-
-slots.build_docs = Slot(uri=DEFAULT_.build_docs, name="build_docs", curie=DEFAULT_.curie('build_docs'),
-                   model_uri=DEFAULT_.build_docs, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.build_docs],
-                   pattern=re.compile(r'[building information model|commissioning report|complaint logs|contract administration|cost estimate|janitorial schedules or logs|maintenance plans|schedule|sections|shop drawings|submittals|ventilation system|windows] '))
-
-slots.door_size = Slot(uri=DEFAULT_.door_size, name="door_size", curie=DEFAULT_.curie('door_size'),
-                   model_uri=DEFAULT_.door_size, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.door_size],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.door_cond = Slot(uri=DEFAULT_.door_cond, name="door_cond", curie=DEFAULT_.curie('door_cond'),
-                   model_uri=DEFAULT_.door_cond, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.door_cond],
-                   pattern=re.compile(r'[damaged|needs repair|new|rupture|visible wear]'))
-
-slots.door_direct = Slot(uri=DEFAULT_.door_direct, name="door_direct", curie=DEFAULT_.curie('door_direct'),
-                   model_uri=DEFAULT_.door_direct, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.door_direct],
-                   pattern=re.compile(r'[inward|outward|sideways]'))
-
-slots.door_loc = Slot(uri=DEFAULT_.door_loc, name="door_loc", curie=DEFAULT_.curie('door_loc'),
-                   model_uri=DEFAULT_.door_loc, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.door_loc],
-                   pattern=re.compile(r'[north|south|east|west]'))
-
-slots.door_mat = Slot(uri=DEFAULT_.door_mat, name="door_mat", curie=DEFAULT_.curie('door_mat'),
-                   model_uri=DEFAULT_.door_mat, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.door_mat],
-                   pattern=re.compile(r'[aluminum|cellular PVC|engineered plastic|fiberboard|fiberglass|metal|thermoplastic alloy|vinyl|wood|wood\/plastic composite]'))
-
-slots.door_move = Slot(uri=DEFAULT_.door_move, name="door_move", curie=DEFAULT_.curie('door_move'),
-                   model_uri=DEFAULT_.door_move, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.door_move],
-                   pattern=re.compile(r'[collapsible|folding|revolving|rolling shutter|sliding|swinging] '))
-
-slots.door_water_mold = Slot(uri=DEFAULT_.door_water_mold, name="door_water_mold", curie=DEFAULT_.curie('door_water_mold'),
-                   model_uri=DEFAULT_.door_water_mold, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.door_water_mold],
-                   pattern=re.compile(r'[presence of mold visible|no presence of mold visible]'))
-
-slots.door_type = Slot(uri=DEFAULT_.door_type, name="door_type", curie=DEFAULT_.curie('door_type'),
-                   model_uri=DEFAULT_.door_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.door_type],
-                   pattern=re.compile(r'[composite|metal|wooden]'))
-
-slots.door_comp_type = Slot(uri=DEFAULT_.door_comp_type, name="door_comp_type", curie=DEFAULT_.curie('door_comp_type'),
-                   model_uri=DEFAULT_.door_comp_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.door_comp_type],
-                   pattern=re.compile(r'[metal covered|revolving|sliding|telescopic]'))
-
-slots.door_type_metal = Slot(uri=DEFAULT_.door_type_metal, name="door_type_metal", curie=DEFAULT_.curie('door_type_metal'),
-                   model_uri=DEFAULT_.door_type_metal, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.door_type_metal],
-                   pattern=re.compile(r'[collapsible|corrugated steel|hollow|rolling shutters|steel plate]'))
-
-slots.door_type_wood = Slot(uri=DEFAULT_.door_type_wood, name="door_type_wood", curie=DEFAULT_.curie('door_type_wood'),
-                   model_uri=DEFAULT_.door_type_wood, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.door_type_wood],
-                   pattern=re.compile(r'[bettened and ledged|battened|ledged and braced|battened|ledged and framed|battened|ledged, braced and frame|framed and paneled|glashed or sash|flush|louvered|wire gauged]'))
-
-slots.drawings = Slot(uri=DEFAULT_.drawings, name="drawings", curie=DEFAULT_.curie('drawings'),
-                   model_uri=DEFAULT_.drawings, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.drawings],
-                   pattern=re.compile(r'[operation|as built|construction|bid|design|building navigation map|diagram|sketch]'))
-
-slots.elevator = Slot(uri=DEFAULT_.elevator, name="elevator", curie=DEFAULT_.curie('elevator'),
-                   model_uri=DEFAULT_.elevator, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.elevator])
-
-slots.escalator = Slot(uri=DEFAULT_.escalator, name="escalator", curie=DEFAULT_.curie('escalator'),
-                   model_uri=DEFAULT_.escalator, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.escalator])
-
-slots.exp_duct = Slot(uri=DEFAULT_.exp_duct, name="exp_duct", curie=DEFAULT_.curie('exp_duct'),
-                   model_uri=DEFAULT_.exp_duct, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.exp_duct],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.exp_pipe = Slot(uri=DEFAULT_.exp_pipe, name="exp_pipe", curie=DEFAULT_.curie('exp_pipe'),
-                   model_uri=DEFAULT_.exp_pipe, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.exp_pipe])
-
-slots.ext_door = Slot(uri=DEFAULT_.ext_door, name="ext_door", curie=DEFAULT_.curie('ext_door'),
-                   model_uri=DEFAULT_.ext_door, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.ext_door])
-
-slots.fireplace_type = Slot(uri=DEFAULT_.fireplace_type, name="fireplace_type", curie=DEFAULT_.curie('fireplace_type'),
-                   model_uri=DEFAULT_.fireplace_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.fireplace_type],
-                   pattern=re.compile(r'[gas burning|wood burning]'))
-
-slots.floor_age = Slot(uri=DEFAULT_.floor_age, name="floor_age", curie=DEFAULT_.curie('floor_age'),
-                   model_uri=DEFAULT_.floor_age, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.floor_age],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.floor_area = Slot(uri=DEFAULT_.floor_area, name="floor_area", curie=DEFAULT_.curie('floor_area'),
-                   model_uri=DEFAULT_.floor_area, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.floor_area],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.floor_cond = Slot(uri=DEFAULT_.floor_cond, name="floor_cond", curie=DEFAULT_.curie('floor_cond'),
-                   model_uri=DEFAULT_.floor_cond, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.floor_cond],
-                   pattern=re.compile(r'[new|visible wear|needs repair|damaged|rupture]'))
-
-slots.floor_count = Slot(uri=DEFAULT_.floor_count, name="floor_count", curie=DEFAULT_.curie('floor_count'),
-                   model_uri=DEFAULT_.floor_count, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.floor_count])
-
-slots.floor_finish_mat = Slot(uri=DEFAULT_.floor_finish_mat, name="floor_finish_mat", curie=DEFAULT_.curie('floor_finish_mat'),
-                   model_uri=DEFAULT_.floor_finish_mat, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.floor_finish_mat],
-                   pattern=re.compile(r'[tile|wood strip or parquet|carpet|rug|laminate wood|lineoleum|vinyl composition tile|sheet vinyl|stone|bamboo|cork|terrazo|concrete|none;specify unfinished|sealed|clear finish|paint]'))
-
-slots.floor_water_mold = Slot(uri=DEFAULT_.floor_water_mold, name="floor_water_mold", curie=DEFAULT_.curie('floor_water_mold'),
-                   model_uri=DEFAULT_.floor_water_mold, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.floor_water_mold],
-                   pattern=re.compile(r'[mold odor|wet floor|water stains|wall discoloration|floor discoloration|ceiling discoloration|peeling paint or wallpaper|bulging walls|condensation]'))
-
-slots.floor_struc = Slot(uri=DEFAULT_.floor_struc, name="floor_struc", curie=DEFAULT_.curie('floor_struc'),
-                   model_uri=DEFAULT_.floor_struc, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.floor_struc],
-                   pattern=re.compile(r'[balcony|floating floor|glass floor|raised floor|sprung floor|wood\-framed|concrete]'))
-
-slots.floor_thermal_mass = Slot(uri=DEFAULT_.floor_thermal_mass, name="floor_thermal_mass", curie=DEFAULT_.curie('floor_thermal_mass'),
-                   model_uri=DEFAULT_.floor_thermal_mass, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.floor_thermal_mass],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.freq_clean = Slot(uri=DEFAULT_.freq_clean, name="freq_clean", curie=DEFAULT_.curie('freq_clean'),
-                   model_uri=DEFAULT_.freq_clean, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.freq_clean])
-
-slots.freq_cook = Slot(uri=DEFAULT_.freq_cook, name="freq_cook", curie=DEFAULT_.curie('freq_cook'),
-                   model_uri=DEFAULT_.freq_cook, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.freq_cook])
-
-slots.furniture = Slot(uri=DEFAULT_.furniture, name="furniture", curie=DEFAULT_.curie('furniture'),
-                   model_uri=DEFAULT_.furniture, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.furniture],
-                   pattern=re.compile(r'[cabinet|chair|desks]'))
-
-slots.gender_restroom = Slot(uri=DEFAULT_.gender_restroom, name="gender_restroom", curie=DEFAULT_.curie('gender_restroom'),
-                   model_uri=DEFAULT_.gender_restroom, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.gender_restroom],
-                   pattern=re.compile(r'[male|female]'))
-
-slots.hall_count = Slot(uri=DEFAULT_.hall_count, name="hall_count", curie=DEFAULT_.curie('hall_count'),
-                   model_uri=DEFAULT_.hall_count, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.hall_count])
-
-slots.handidness = Slot(uri=DEFAULT_.handidness, name="handidness", curie=DEFAULT_.curie('handidness'),
-                   model_uri=DEFAULT_.handidness, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.handidness],
-                   pattern=re.compile(r'[ambidexterity|left handedness|mixed\-handedness|right handedness]'))
-
-slots.heat_deliv_loc = Slot(uri=DEFAULT_.heat_deliv_loc, name="heat_deliv_loc", curie=DEFAULT_.curie('heat_deliv_loc'),
-                   model_uri=DEFAULT_.heat_deliv_loc, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.heat_deliv_loc],
-                   pattern=re.compile(r'[north|south|east|west]'))
-
-slots.heat_system_deliv_meth = Slot(uri=DEFAULT_.heat_system_deliv_meth, name="heat_system_deliv_meth", curie=DEFAULT_.curie('heat_system_deliv_meth'),
-                   model_uri=DEFAULT_.heat_system_deliv_meth, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.heat_system_deliv_meth],
-                   pattern=re.compile(r'[conductive|radiant]'))
-
-slots.heat_system_id = Slot(uri=DEFAULT_.heat_system_id, name="heat_system_id", curie=DEFAULT_.curie('heat_system_id'),
-                   model_uri=DEFAULT_.heat_system_id, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.heat_system_id])
-
-slots.height_carper_fiber = Slot(uri=DEFAULT_.height_carper_fiber, name="height_carper_fiber", curie=DEFAULT_.curie('height_carper_fiber'),
-                   model_uri=DEFAULT_.height_carper_fiber, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.height_carper_fiber],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.inside_lux = Slot(uri=DEFAULT_.inside_lux, name="inside_lux", curie=DEFAULT_.curie('inside_lux'),
-                   model_uri=DEFAULT_.inside_lux, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.inside_lux],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.int_wall_cond = Slot(uri=DEFAULT_.int_wall_cond, name="int_wall_cond", curie=DEFAULT_.curie('int_wall_cond'),
-                   model_uri=DEFAULT_.int_wall_cond, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.int_wall_cond],
-                   pattern=re.compile(r'[new|visible wear|needs repair|damaged|rupture]'))
-
-slots.last_clean = Slot(uri=DEFAULT_.last_clean, name="last_clean", curie=DEFAULT_.curie('last_clean'),
-                   model_uri=DEFAULT_.last_clean, domain=None, range=Optional[Union[dict, TimestampValue]], mappings = [MIXS.last_clean])
-
-slots.max_occup = Slot(uri=DEFAULT_.max_occup, name="max_occup", curie=DEFAULT_.curie('max_occup'),
-                   model_uri=DEFAULT_.max_occup, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.max_occup])
-
-slots.mech_struc = Slot(uri=DEFAULT_.mech_struc, name="mech_struc", curie=DEFAULT_.curie('mech_struc'),
-                   model_uri=DEFAULT_.mech_struc, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.mech_struc],
-                   pattern=re.compile(r'[subway|coach|carriage|elevator|escalator|boat|train|car|bus]'))
-
-slots.number_plants = Slot(uri=DEFAULT_.number_plants, name="number_plants", curie=DEFAULT_.curie('number_plants'),
-                   model_uri=DEFAULT_.number_plants, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.number_plants])
-
-slots.number_pets = Slot(uri=DEFAULT_.number_pets, name="number_pets", curie=DEFAULT_.curie('number_pets'),
-                   model_uri=DEFAULT_.number_pets, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.number_pets])
-
-slots.number_resident = Slot(uri=DEFAULT_.number_resident, name="number_resident", curie=DEFAULT_.curie('number_resident'),
-                   model_uri=DEFAULT_.number_resident, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.number_resident])
-
-slots.occup_document = Slot(uri=DEFAULT_.occup_document, name="occup_document", curie=DEFAULT_.curie('occup_document'),
-                   model_uri=DEFAULT_.occup_document, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.occup_document],
-                   pattern=re.compile(r'[automated count|estimate|manual count|videos]'))
-
-slots.ext_wall_orient = Slot(uri=DEFAULT_.ext_wall_orient, name="ext_wall_orient", curie=DEFAULT_.curie('ext_wall_orient'),
-                   model_uri=DEFAULT_.ext_wall_orient, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.ext_wall_orient],
-                   pattern=re.compile(r'[north|south|east|west|northeast|southeast|southwest|northwest]'))
-
-slots.ext_window_orient = Slot(uri=DEFAULT_.ext_window_orient, name="ext_window_orient", curie=DEFAULT_.curie('ext_window_orient'),
-                   model_uri=DEFAULT_.ext_window_orient, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.ext_window_orient],
-                   pattern=re.compile(r'[north|south|east|west|northeast|southeast|southwest|northwest]'))
-
-slots.rel_humidity_out = Slot(uri=DEFAULT_.rel_humidity_out, name="rel_humidity_out", curie=DEFAULT_.curie('rel_humidity_out'),
-                   model_uri=DEFAULT_.rel_humidity_out, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.rel_humidity_out],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.pres_animal = Slot(uri=DEFAULT_.pres_animal, name="pres_animal", curie=DEFAULT_.curie('pres_animal'),
-                   model_uri=DEFAULT_.pres_animal, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.pres_animal])
-
-slots.quad_pos = Slot(uri=DEFAULT_.quad_pos, name="quad_pos", curie=DEFAULT_.curie('quad_pos'),
-                   model_uri=DEFAULT_.quad_pos, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.quad_pos],
-                   pattern=re.compile(r'[North side|West side|South side|East side]'))
-
-slots.rel_samp_loc = Slot(uri=DEFAULT_.rel_samp_loc, name="rel_samp_loc", curie=DEFAULT_.curie('rel_samp_loc'),
-                   model_uri=DEFAULT_.rel_samp_loc, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.rel_samp_loc],
-                   pattern=re.compile(r'[edge of car|center of car|under a seat]'))
-
-slots.room_air_exch_rate = Slot(uri=DEFAULT_.room_air_exch_rate, name="room_air_exch_rate", curie=DEFAULT_.curie('room_air_exch_rate'),
-                   model_uri=DEFAULT_.room_air_exch_rate, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.room_air_exch_rate],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.room_architec_element = Slot(uri=DEFAULT_.room_architec_element, name="room_architec_element", curie=DEFAULT_.curie('room_architec_element'),
-                   model_uri=DEFAULT_.room_architec_element, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.room_architec_element])
-
-slots.room_condt = Slot(uri=DEFAULT_.room_condt, name="room_condt", curie=DEFAULT_.curie('room_condt'),
-                   model_uri=DEFAULT_.room_condt, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.room_condt],
-                   pattern=re.compile(r'[new|visible wear|needs repair|damaged|rupture|visible signs of mold\/mildew]'))
-
-slots.room_count = Slot(uri=DEFAULT_.room_count, name="room_count", curie=DEFAULT_.curie('room_count'),
-                   model_uri=DEFAULT_.room_count, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.room_count])
-
-slots.room_dim = Slot(uri=DEFAULT_.room_dim, name="room_dim", curie=DEFAULT_.curie('room_dim'),
-                   model_uri=DEFAULT_.room_dim, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.room_dim])
-
-slots.room_door_dist = Slot(uri=DEFAULT_.room_door_dist, name="room_door_dist", curie=DEFAULT_.curie('room_door_dist'),
-                   model_uri=DEFAULT_.room_door_dist, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.room_door_dist])
-
-slots.room_loc = Slot(uri=DEFAULT_.room_loc, name="room_loc", curie=DEFAULT_.curie('room_loc'),
-                   model_uri=DEFAULT_.room_loc, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.room_loc],
-                   pattern=re.compile(r'[corner room|interior room|exterior wall]'))
-
-slots.room_moist_damage_hist = Slot(uri=DEFAULT_.room_moist_damage_hist, name="room_moist_damage_hist", curie=DEFAULT_.curie('room_moist_damage_hist'),
-                   model_uri=DEFAULT_.room_moist_damage_hist, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.room_moist_damage_hist])
-
-slots.room_net_area = Slot(uri=DEFAULT_.room_net_area, name="room_net_area", curie=DEFAULT_.curie('room_net_area'),
-                   model_uri=DEFAULT_.room_net_area, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.room_net_area])
-
-slots.room_occup = Slot(uri=DEFAULT_.room_occup, name="room_occup", curie=DEFAULT_.curie('room_occup'),
-                   model_uri=DEFAULT_.room_occup, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.room_occup])
-
-slots.room_samp_pos = Slot(uri=DEFAULT_.room_samp_pos, name="room_samp_pos", curie=DEFAULT_.curie('room_samp_pos'),
-                   model_uri=DEFAULT_.room_samp_pos, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.room_samp_pos],
-                   pattern=re.compile(r'[north corner|south corner|west corner|east corner|northeast corner|northwest corner|southeast corner|southwest corner|center]'))
-
-slots.room_type = Slot(uri=DEFAULT_.room_type, name="room_type", curie=DEFAULT_.curie('room_type'),
-                   model_uri=DEFAULT_.room_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.room_type],
-                   pattern=re.compile(r'[attic|bathroom|closet|conference room|elevator|examining room|hallway|kitchen|mail room|private office|open office|stairwell|,restroom|lobby|vestibule|mechanical or electrical room|data center|laboratory_wet|laboratory_dry|gymnasium|natatorium|auditorium|lockers|cafe|warehouse]'))
-
-slots.room_vol = Slot(uri=DEFAULT_.room_vol, name="room_vol", curie=DEFAULT_.curie('room_vol'),
-                   model_uri=DEFAULT_.room_vol, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.room_vol])
-
-slots.room_window_count = Slot(uri=DEFAULT_.room_window_count, name="room_window_count", curie=DEFAULT_.curie('room_window_count'),
-                   model_uri=DEFAULT_.room_window_count, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.room_window_count])
-
-slots.room_connected = Slot(uri=DEFAULT_.room_connected, name="room_connected", curie=DEFAULT_.curie('room_connected'),
-                   model_uri=DEFAULT_.room_connected, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.room_connected],
-                   pattern=re.compile(r'[attic|bathroom|closet|conference room|elevator|examining room|hallway|kitchen|mail room|office|stairwell]'))
-
-slots.room_hallway = Slot(uri=DEFAULT_.room_hallway, name="room_hallway", curie=DEFAULT_.curie('room_hallway'),
-                   model_uri=DEFAULT_.room_hallway, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.room_hallway])
-
-slots.room_door_share = Slot(uri=DEFAULT_.room_door_share, name="room_door_share", curie=DEFAULT_.curie('room_door_share'),
-                   model_uri=DEFAULT_.room_door_share, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.room_door_share])
-
-slots.room_wall_share = Slot(uri=DEFAULT_.room_wall_share, name="room_wall_share", curie=DEFAULT_.curie('room_wall_share'),
-                   model_uri=DEFAULT_.room_wall_share, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.room_wall_share])
-
-slots.samp_weather = Slot(uri=DEFAULT_.samp_weather, name="samp_weather", curie=DEFAULT_.curie('samp_weather'),
-                   model_uri=DEFAULT_.samp_weather, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.samp_weather],
-                   pattern=re.compile(r'[clear sky|cloudy|foggy|hail|rain|snow|sleet|sunny|windy]'))
-
-slots.samp_floor = Slot(uri=DEFAULT_.samp_floor, name="samp_floor", curie=DEFAULT_.curie('samp_floor'),
-                   model_uri=DEFAULT_.samp_floor, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.samp_floor])
-
-slots.samp_room_id = Slot(uri=DEFAULT_.samp_room_id, name="samp_room_id", curie=DEFAULT_.curie('samp_room_id'),
-                   model_uri=DEFAULT_.samp_room_id, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.samp_room_id])
-
-slots.samp_time_out = Slot(uri=DEFAULT_.samp_time_out, name="samp_time_out", curie=DEFAULT_.curie('samp_time_out'),
-                   model_uri=DEFAULT_.samp_time_out, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.samp_time_out],
-                   pattern=re.compile(r'\d+[.\d+]'))
-
-slots.season = Slot(uri=DEFAULT_.season, name="season", curie=DEFAULT_.curie('season'),
-                   model_uri=DEFAULT_.season, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.season],
-                   pattern=re.compile(r'[Spring|Summer|Fall|Winter]'))
-
-slots.season_use = Slot(uri=DEFAULT_.season_use, name="season_use", curie=DEFAULT_.curie('season_use'),
-                   model_uri=DEFAULT_.season_use, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.season_use],
-                   pattern=re.compile(r'[Spring|Summer|Fall|Winter]'))
-
-slots.shading_device_cond = Slot(uri=DEFAULT_.shading_device_cond, name="shading_device_cond", curie=DEFAULT_.curie('shading_device_cond'),
-                   model_uri=DEFAULT_.shading_device_cond, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.shading_device_cond],
-                   pattern=re.compile(r'[damaged|needs repair|new|rupture|visible wear]'))
-
-slots.shading_device_loc = Slot(uri=DEFAULT_.shading_device_loc, name="shading_device_loc", curie=DEFAULT_.curie('shading_device_loc'),
-                   model_uri=DEFAULT_.shading_device_loc, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.shading_device_loc],
-                   pattern=re.compile(r'[exterior|interior]'))
-
-slots.shading_device_mat = Slot(uri=DEFAULT_.shading_device_mat, name="shading_device_mat", curie=DEFAULT_.curie('shading_device_mat'),
-                   model_uri=DEFAULT_.shading_device_mat, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.shading_device_mat])
-
-slots.shading_device_water_mold = Slot(uri=DEFAULT_.shading_device_water_mold, name="shading_device_water_mold", curie=DEFAULT_.curie('shading_device_water_mold'),
-                   model_uri=DEFAULT_.shading_device_water_mold, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.shading_device_water_mold],
-                   pattern=re.compile(r'[presence of mold visible|no presence of mold visible]'))
-
-slots.shading_device_type = Slot(uri=DEFAULT_.shading_device_type, name="shading_device_type", curie=DEFAULT_.curie('shading_device_type'),
-                   model_uri=DEFAULT_.shading_device_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.shading_device_type],
-                   pattern=re.compile(r'[bahama shutters|exterior roll blind|gambrel awning|hood awning|porchroller awning|sarasota shutters|slatted aluminum|solid aluminum awning|sun screen|tree|trellis|venetian awning]'))
-
-slots.specific_humidity = Slot(uri=DEFAULT_.specific_humidity, name="specific_humidity", curie=DEFAULT_.curie('specific_humidity'),
-                   model_uri=DEFAULT_.specific_humidity, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.specific_humidity],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.specific = Slot(uri=DEFAULT_.specific, name="specific", curie=DEFAULT_.curie('specific'),
-                   model_uri=DEFAULT_.specific, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.specific],
-                   pattern=re.compile(r'[operation|as built|construction|bid|design|photos]'))
-
-slots.temp_out = Slot(uri=DEFAULT_.temp_out, name="temp_out", curie=DEFAULT_.curie('temp_out'),
-                   model_uri=DEFAULT_.temp_out, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.temp_out],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.train_line = Slot(uri=DEFAULT_.train_line, name="train_line", curie=DEFAULT_.curie('train_line'),
-                   model_uri=DEFAULT_.train_line, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.train_line],
-                   pattern=re.compile(r'[red|green|orange]'))
-
-slots.train_stat_loc = Slot(uri=DEFAULT_.train_stat_loc, name="train_stat_loc", curie=DEFAULT_.curie('train_stat_loc'),
-                   model_uri=DEFAULT_.train_stat_loc, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.train_stat_loc],
-                   pattern=re.compile(r'[south station above ground|south station underground|south station amtrak|forest hills|riverside]'))
-
-slots.train_stop_loc = Slot(uri=DEFAULT_.train_stop_loc, name="train_stop_loc", curie=DEFAULT_.curie('train_stop_loc'),
-                   model_uri=DEFAULT_.train_stop_loc, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.train_stop_loc],
-                   pattern=re.compile(r'[end|mid|downtown]'))
-
-slots.vis_media = Slot(uri=DEFAULT_.vis_media, name="vis_media", curie=DEFAULT_.curie('vis_media'),
-                   model_uri=DEFAULT_.vis_media, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.vis_media],
-                   pattern=re.compile(r'[photos|videos|commonly of the building|site context (adjacent buildings, vegetation, terrain, streets)|interiors|equipment|3D scans]'))
-
-slots.wall_area = Slot(uri=DEFAULT_.wall_area, name="wall_area", curie=DEFAULT_.curie('wall_area'),
-                   model_uri=DEFAULT_.wall_area, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.wall_area],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.wall_const_type = Slot(uri=DEFAULT_.wall_const_type, name="wall_const_type", curie=DEFAULT_.curie('wall_const_type'),
-                   model_uri=DEFAULT_.wall_const_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.wall_const_type],
-                   pattern=re.compile(r'[frame construction|joisted masonry|light noncombustible|masonry noncombustible|modified fire resistive|fire resistive]'))
-
-slots.wall_finish_mat = Slot(uri=DEFAULT_.wall_finish_mat, name="wall_finish_mat", curie=DEFAULT_.curie('wall_finish_mat'),
-                   model_uri=DEFAULT_.wall_finish_mat, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.wall_finish_mat],
-                   pattern=re.compile(r'[plaster|gypsum plaster|veneer plaster|gypsum board|tile|terrazzo|stone facing|acoustical treatment|wood|metal|masonry]'))
-
-slots.wall_height = Slot(uri=DEFAULT_.wall_height, name="wall_height", curie=DEFAULT_.curie('wall_height'),
-                   model_uri=DEFAULT_.wall_height, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.wall_height],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.wall_loc = Slot(uri=DEFAULT_.wall_loc, name="wall_loc", curie=DEFAULT_.curie('wall_loc'),
-                   model_uri=DEFAULT_.wall_loc, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.wall_loc],
-                   pattern=re.compile(r'[north|south|east|west]'))
-
-slots.wall_water_mold = Slot(uri=DEFAULT_.wall_water_mold, name="wall_water_mold", curie=DEFAULT_.curie('wall_water_mold'),
-                   model_uri=DEFAULT_.wall_water_mold, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.wall_water_mold],
-                   pattern=re.compile(r'[presence of mold visible|no presence of mold visible]'))
-
-slots.wall_surf_treatment = Slot(uri=DEFAULT_.wall_surf_treatment, name="wall_surf_treatment", curie=DEFAULT_.curie('wall_surf_treatment'),
-                   model_uri=DEFAULT_.wall_surf_treatment, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.wall_surf_treatment],
-                   pattern=re.compile(r'[painted|wall paper|no treatment|paneling|stucco|fabric]'))
-
-slots.wall_texture = Slot(uri=DEFAULT_.wall_texture, name="wall_texture", curie=DEFAULT_.curie('wall_texture'),
-                   model_uri=DEFAULT_.wall_texture, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.wall_texture],
-                   pattern=re.compile(r'[crows feet|crows\-foot stomp|double skip|hawk and trowel|knockdown|popcorn|orange peel|rosebud stomp|Santa\-Fe texture|skip trowel|smooth|stomp knockdown|swirl]'))
-
-slots.wall_thermal_mass = Slot(uri=DEFAULT_.wall_thermal_mass, name="wall_thermal_mass", curie=DEFAULT_.curie('wall_thermal_mass'),
-                   model_uri=DEFAULT_.wall_thermal_mass, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.wall_thermal_mass],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.water_feat_size = Slot(uri=DEFAULT_.water_feat_size, name="water_feat_size", curie=DEFAULT_.curie('water_feat_size'),
-                   model_uri=DEFAULT_.water_feat_size, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.water_feat_size],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.water_feat_type = Slot(uri=DEFAULT_.water_feat_type, name="water_feat_type", curie=DEFAULT_.curie('water_feat_type'),
-                   model_uri=DEFAULT_.water_feat_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.water_feat_type],
-                   pattern=re.compile(r'[fountain|pool|standing feature|stream|waterfall]'))
-
-slots.weekday = Slot(uri=DEFAULT_.weekday, name="weekday", curie=DEFAULT_.curie('weekday'),
-                   model_uri=DEFAULT_.weekday, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.weekday],
-                   pattern=re.compile(r'[Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday]'))
-
-slots.window_size = Slot(uri=DEFAULT_.window_size, name="window_size", curie=DEFAULT_.curie('window_size'),
-                   model_uri=DEFAULT_.window_size, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.window_size],
-                   pattern=re.compile(r'\d+[.\d+] \S+ x \d+[.\d+] \S+'))
-
-slots.window_cond = Slot(uri=DEFAULT_.window_cond, name="window_cond", curie=DEFAULT_.curie('window_cond'),
-                   model_uri=DEFAULT_.window_cond, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.window_cond],
-                   pattern=re.compile(r'[damaged|needs repair|new|rupture|visible wear]'))
-
-slots.window_cover = Slot(uri=DEFAULT_.window_cover, name="window_cover", curie=DEFAULT_.curie('window_cover'),
-                   model_uri=DEFAULT_.window_cover, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.window_cover],
-                   pattern=re.compile(r'[blinds|curtains|none]'))
-
-slots.window_horiz_pos = Slot(uri=DEFAULT_.window_horiz_pos, name="window_horiz_pos", curie=DEFAULT_.curie('window_horiz_pos'),
-                   model_uri=DEFAULT_.window_horiz_pos, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.window_horiz_pos],
-                   pattern=re.compile(r'[left|middle|right]'))
-
-slots.window_loc = Slot(uri=DEFAULT_.window_loc, name="window_loc", curie=DEFAULT_.curie('window_loc'),
-                   model_uri=DEFAULT_.window_loc, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.window_loc],
-                   pattern=re.compile(r'[north|south|east|west]'))
-
-slots.window_mat = Slot(uri=DEFAULT_.window_mat, name="window_mat", curie=DEFAULT_.curie('window_mat'),
-                   model_uri=DEFAULT_.window_mat, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.window_mat],
-                   pattern=re.compile(r'[clad|fiberglass|metal|vinyl|wood]'))
-
-slots.window_open_freq = Slot(uri=DEFAULT_.window_open_freq, name="window_open_freq", curie=DEFAULT_.curie('window_open_freq'),
-                   model_uri=DEFAULT_.window_open_freq, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.window_open_freq])
-
-slots.window_water_mold = Slot(uri=DEFAULT_.window_water_mold, name="window_water_mold", curie=DEFAULT_.curie('window_water_mold'),
-                   model_uri=DEFAULT_.window_water_mold, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.window_water_mold],
-                   pattern=re.compile(r'[presence of mold visible|no presence of mold visible]'))
-
-slots.window_status = Slot(uri=DEFAULT_.window_status, name="window_status", curie=DEFAULT_.curie('window_status'),
-                   model_uri=DEFAULT_.window_status, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.window_status],
-                   pattern=re.compile(r'[closed|open]'))
-
-slots.window_type = Slot(uri=DEFAULT_.window_type, name="window_type", curie=DEFAULT_.curie('window_type'),
-                   model_uri=DEFAULT_.window_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.window_type],
-                   pattern=re.compile(r'[single\-hung sash window|horizontal sash window|fixed window] '))
-
-slots.window_vert_pos = Slot(uri=DEFAULT_.window_vert_pos, name="window_vert_pos", curie=DEFAULT_.curie('window_vert_pos'),
-                   model_uri=DEFAULT_.window_vert_pos, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.window_vert_pos],
-                   pattern=re.compile(r'[bottom|middle|top|low|middle|high]'))
-
-slots.ances_data = Slot(uri=DEFAULT_.ances_data, name="ances_data", curie=DEFAULT_.curie('ances_data'),
-                   model_uri=DEFAULT_.ances_data, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.ances_data])
-
-slots.biol_stat = Slot(uri=DEFAULT_.biol_stat, name="biol_stat", curie=DEFAULT_.curie('biol_stat'),
-                   model_uri=DEFAULT_.biol_stat, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.biol_stat],
-                   pattern=re.compile(r'[wild|natural|semi\-natural|inbred line|breeder\'s line|hybrid|clonal selection|mutant]'))
-
-slots.genetic_mod = Slot(uri=DEFAULT_.genetic_mod, name="genetic_mod", curie=DEFAULT_.curie('genetic_mod'),
-                   model_uri=DEFAULT_.genetic_mod, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.genetic_mod])
-
-slots.host_common_name = Slot(uri=DEFAULT_.host_common_name, name="host_common_name", curie=DEFAULT_.curie('host_common_name'),
-                   model_uri=DEFAULT_.host_common_name, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.host_common_name])
-
-slots.samp_capt_status = Slot(uri=DEFAULT_.samp_capt_status, name="samp_capt_status", curie=DEFAULT_.curie('samp_capt_status'),
-                   model_uri=DEFAULT_.samp_capt_status, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.samp_capt_status],
-                   pattern=re.compile(r'[active surveillance in response to an outbreak|active surveillance not initiated by an outbreak|farm sample|market sample|other]'))
-
-slots.samp_dis_stage = Slot(uri=DEFAULT_.samp_dis_stage, name="samp_dis_stage", curie=DEFAULT_.curie('samp_dis_stage'),
-                   model_uri=DEFAULT_.samp_dis_stage, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.samp_dis_stage])
-
-slots.host_taxid = Slot(uri=DEFAULT_.host_taxid, name="host_taxid", curie=DEFAULT_.curie('host_taxid'),
-                   model_uri=DEFAULT_.host_taxid, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.host_taxid])
-
-slots.host_subject_id = Slot(uri=DEFAULT_.host_subject_id, name="host_subject_id", curie=DEFAULT_.curie('host_subject_id'),
-                   model_uri=DEFAULT_.host_subject_id, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.host_subject_id])
-
-slots.host_age = Slot(uri=DEFAULT_.host_age, name="host_age", curie=DEFAULT_.curie('host_age'),
-                   model_uri=DEFAULT_.host_age, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.host_age],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.host_life_stage = Slot(uri=DEFAULT_.host_life_stage, name="host_life_stage", curie=DEFAULT_.curie('host_life_stage'),
-                   model_uri=DEFAULT_.host_life_stage, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.host_life_stage])
-
-slots.host_sex = Slot(uri=DEFAULT_.host_sex, name="host_sex", curie=DEFAULT_.curie('host_sex'),
-                   model_uri=DEFAULT_.host_sex, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.host_sex],
-                   pattern=re.compile(r'[male|female|neuter|hermaphrodite|not determined]'))
-
-slots.host_disease_stat = Slot(uri=DEFAULT_.host_disease_stat, name="host_disease_stat", curie=DEFAULT_.curie('host_disease_stat'),
-                   model_uri=DEFAULT_.host_disease_stat, domain=None, range=Optional[Union[dict, ControlledTermValue]], mappings = [MIXS.host_disease_stat])
-
-slots.host_body_habitat = Slot(uri=DEFAULT_.host_body_habitat, name="host_body_habitat", curie=DEFAULT_.curie('host_body_habitat'),
-                   model_uri=DEFAULT_.host_body_habitat, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.host_body_habitat])
-
-slots.host_body_site = Slot(uri=DEFAULT_.host_body_site, name="host_body_site", curie=DEFAULT_.curie('host_body_site'),
-                   model_uri=DEFAULT_.host_body_site, domain=None, range=Optional[Union[dict, ControlledTermValue]], mappings = [MIXS.host_body_site],
-                   pattern=re.compile(r'.* \S+:\S+'))
-
-slots.host_body_product = Slot(uri=DEFAULT_.host_body_product, name="host_body_product", curie=DEFAULT_.curie('host_body_product'),
-                   model_uri=DEFAULT_.host_body_product, domain=None, range=Optional[Union[dict, ControlledTermValue]], mappings = [MIXS.host_body_product],
-                   pattern=re.compile(r'.* \S+:\S+'))
-
-slots.host_tot_mass = Slot(uri=DEFAULT_.host_tot_mass, name="host_tot_mass", curie=DEFAULT_.curie('host_tot_mass'),
-                   model_uri=DEFAULT_.host_tot_mass, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.host_tot_mass],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.host_height = Slot(uri=DEFAULT_.host_height, name="host_height", curie=DEFAULT_.curie('host_height'),
-                   model_uri=DEFAULT_.host_height, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.host_height],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.host_length = Slot(uri=DEFAULT_.host_length, name="host_length", curie=DEFAULT_.curie('host_length'),
-                   model_uri=DEFAULT_.host_length, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.host_length],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.host_diet = Slot(uri=DEFAULT_.host_diet, name="host_diet", curie=DEFAULT_.curie('host_diet'),
-                   model_uri=DEFAULT_.host_diet, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.host_diet])
-
-slots.host_last_meal = Slot(uri=DEFAULT_.host_last_meal, name="host_last_meal", curie=DEFAULT_.curie('host_last_meal'),
-                   model_uri=DEFAULT_.host_last_meal, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.host_last_meal])
-
-slots.host_growth_cond = Slot(uri=DEFAULT_.host_growth_cond, name="host_growth_cond", curie=DEFAULT_.curie('host_growth_cond'),
-                   model_uri=DEFAULT_.host_growth_cond, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.host_growth_cond])
-
-slots.host_substrate = Slot(uri=DEFAULT_.host_substrate, name="host_substrate", curie=DEFAULT_.curie('host_substrate'),
-                   model_uri=DEFAULT_.host_substrate, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.host_substrate])
-
-slots.host_family_relationship = Slot(uri=DEFAULT_.host_family_relationship, name="host_family_relationship", curie=DEFAULT_.curie('host_family_relationship'),
-                   model_uri=DEFAULT_.host_family_relationship, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.host_family_relationship])
-
-slots.host_infra_specific_name = Slot(uri=DEFAULT_.host_infra_specific_name, name="host_infra_specific_name", curie=DEFAULT_.curie('host_infra_specific_name'),
-                   model_uri=DEFAULT_.host_infra_specific_name, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.host_infra_specific_name])
-
-slots.host_infra_specific_rank = Slot(uri=DEFAULT_.host_infra_specific_rank, name="host_infra_specific_rank", curie=DEFAULT_.curie('host_infra_specific_rank'),
-                   model_uri=DEFAULT_.host_infra_specific_rank, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.host_infra_specific_rank])
-
-slots.host_genotype = Slot(uri=DEFAULT_.host_genotype, name="host_genotype", curie=DEFAULT_.curie('host_genotype'),
-                   model_uri=DEFAULT_.host_genotype, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.host_genotype])
-
-slots.host_phenotype = Slot(uri=DEFAULT_.host_phenotype, name="host_phenotype", curie=DEFAULT_.curie('host_phenotype'),
-                   model_uri=DEFAULT_.host_phenotype, domain=None, range=Optional[Union[dict, ControlledTermValue]], mappings = [MIXS.host_phenotype],
-                   pattern=re.compile(r'.* \S+:\S+'))
-
-slots.host_body_temp = Slot(uri=DEFAULT_.host_body_temp, name="host_body_temp", curie=DEFAULT_.curie('host_body_temp'),
-                   model_uri=DEFAULT_.host_body_temp, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.host_body_temp],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.host_dry_mass = Slot(uri=DEFAULT_.host_dry_mass, name="host_dry_mass", curie=DEFAULT_.curie('host_dry_mass'),
-                   model_uri=DEFAULT_.host_dry_mass, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.host_dry_mass],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.host_blood_press_diast = Slot(uri=DEFAULT_.host_blood_press_diast, name="host_blood_press_diast", curie=DEFAULT_.curie('host_blood_press_diast'),
-                   model_uri=DEFAULT_.host_blood_press_diast, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.host_blood_press_diast],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.host_blood_press_syst = Slot(uri=DEFAULT_.host_blood_press_syst, name="host_blood_press_syst", curie=DEFAULT_.curie('host_blood_press_syst'),
-                   model_uri=DEFAULT_.host_blood_press_syst, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.host_blood_press_syst],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.host_color = Slot(uri=DEFAULT_.host_color, name="host_color", curie=DEFAULT_.curie('host_color'),
-                   model_uri=DEFAULT_.host_color, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.host_color])
-
-slots.host_shape = Slot(uri=DEFAULT_.host_shape, name="host_shape", curie=DEFAULT_.curie('host_shape'),
-                   model_uri=DEFAULT_.host_shape, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.host_shape])
-
-slots.gravidity = Slot(uri=DEFAULT_.gravidity, name="gravidity", curie=DEFAULT_.curie('gravidity'),
-                   model_uri=DEFAULT_.gravidity, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.gravidity])
-
-slots.ihmc_medication_code = Slot(uri=DEFAULT_.ihmc_medication_code, name="ihmc_medication_code", curie=DEFAULT_.curie('ihmc_medication_code'),
-                   model_uri=DEFAULT_.ihmc_medication_code, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.ihmc_medication_code])
-
-slots.smoker = Slot(uri=DEFAULT_.smoker, name="smoker", curie=DEFAULT_.curie('smoker'),
-                   model_uri=DEFAULT_.smoker, domain=None, range=Optional[Union[dict, BooleanValue]], mappings = [MIXS.smoker],
-                   pattern=re.compile(r'[true|false]'))
-
-slots.host_hiv_stat = Slot(uri=DEFAULT_.host_hiv_stat, name="host_hiv_stat", curie=DEFAULT_.curie('host_hiv_stat'),
-                   model_uri=DEFAULT_.host_hiv_stat, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.host_hiv_stat],
-                   pattern=re.compile(r'[true|false];[true|false]'))
-
-slots.drug_usage = Slot(uri=DEFAULT_.drug_usage, name="drug_usage", curie=DEFAULT_.curie('drug_usage'),
-                   model_uri=DEFAULT_.drug_usage, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.drug_usage])
-
-slots.host_body_mass_index = Slot(uri=DEFAULT_.host_body_mass_index, name="host_body_mass_index", curie=DEFAULT_.curie('host_body_mass_index'),
-                   model_uri=DEFAULT_.host_body_mass_index, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.host_body_mass_index],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.diet_last_six_month = Slot(uri=DEFAULT_.diet_last_six_month, name="diet_last_six_month", curie=DEFAULT_.curie('diet_last_six_month'),
-                   model_uri=DEFAULT_.diet_last_six_month, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.diet_last_six_month])
-
-slots.weight_loss_3_month = Slot(uri=DEFAULT_.weight_loss_3_month, name="weight_loss_3_month", curie=DEFAULT_.curie('weight_loss_3_month'),
-                   model_uri=DEFAULT_.weight_loss_3_month, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.weight_loss_3_month],
-                   pattern=re.compile(r'[true|false];\d+[.\d+] \S+'))
-
-slots.ihmc_ethnicity = Slot(uri=DEFAULT_.ihmc_ethnicity, name="ihmc_ethnicity", curie=DEFAULT_.curie('ihmc_ethnicity'),
-                   model_uri=DEFAULT_.ihmc_ethnicity, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.ihmc_ethnicity])
-
-slots.host_occupation = Slot(uri=DEFAULT_.host_occupation, name="host_occupation", curie=DEFAULT_.curie('host_occupation'),
-                   model_uri=DEFAULT_.host_occupation, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.host_occupation])
-
-slots.pet_farm_animal = Slot(uri=DEFAULT_.pet_farm_animal, name="pet_farm_animal", curie=DEFAULT_.curie('pet_farm_animal'),
-                   model_uri=DEFAULT_.pet_farm_animal, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.pet_farm_animal])
-
-slots.travel_out_six_month = Slot(uri=DEFAULT_.travel_out_six_month, name="travel_out_six_month", curie=DEFAULT_.curie('travel_out_six_month'),
-                   model_uri=DEFAULT_.travel_out_six_month, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.travel_out_six_month])
-
-slots.twin_sibling = Slot(uri=DEFAULT_.twin_sibling, name="twin_sibling", curie=DEFAULT_.curie('twin_sibling'),
-                   model_uri=DEFAULT_.twin_sibling, domain=None, range=Optional[Union[dict, BooleanValue]], mappings = [MIXS.twin_sibling],
-                   pattern=re.compile(r'[true|false]'))
-
-slots.medic_hist_perform = Slot(uri=DEFAULT_.medic_hist_perform, name="medic_hist_perform", curie=DEFAULT_.curie('medic_hist_perform'),
-                   model_uri=DEFAULT_.medic_hist_perform, domain=None, range=Optional[Union[dict, BooleanValue]], mappings = [MIXS.medic_hist_perform],
-                   pattern=re.compile(r'[true|false]'))
-
-slots.study_complt_stat = Slot(uri=DEFAULT_.study_complt_stat, name="study_complt_stat", curie=DEFAULT_.curie('study_complt_stat'),
-                   model_uri=DEFAULT_.study_complt_stat, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.study_complt_stat],
-                   pattern=re.compile(r'[true|false];[adverse event|non\-compliance|lost to follow up|other\-specify]'))
-
-slots.pulmonary_disord = Slot(uri=DEFAULT_.pulmonary_disord, name="pulmonary_disord", curie=DEFAULT_.curie('pulmonary_disord'),
-                   model_uri=DEFAULT_.pulmonary_disord, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.pulmonary_disord])
-
-slots.nose_throat_disord = Slot(uri=DEFAULT_.nose_throat_disord, name="nose_throat_disord", curie=DEFAULT_.curie('nose_throat_disord'),
-                   model_uri=DEFAULT_.nose_throat_disord, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.nose_throat_disord])
-
-slots.blood_blood_disord = Slot(uri=DEFAULT_.blood_blood_disord, name="blood_blood_disord", curie=DEFAULT_.curie('blood_blood_disord'),
-                   model_uri=DEFAULT_.blood_blood_disord, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.blood_blood_disord])
-
-slots.host_pulse = Slot(uri=DEFAULT_.host_pulse, name="host_pulse", curie=DEFAULT_.curie('host_pulse'),
-                   model_uri=DEFAULT_.host_pulse, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.host_pulse],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.gestation_state = Slot(uri=DEFAULT_.gestation_state, name="gestation_state", curie=DEFAULT_.curie('gestation_state'),
-                   model_uri=DEFAULT_.gestation_state, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.gestation_state])
-
-slots.maternal_health_stat = Slot(uri=DEFAULT_.maternal_health_stat, name="maternal_health_stat", curie=DEFAULT_.curie('maternal_health_stat'),
-                   model_uri=DEFAULT_.maternal_health_stat, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.maternal_health_stat])
-
-slots.foetal_health_stat = Slot(uri=DEFAULT_.foetal_health_stat, name="foetal_health_stat", curie=DEFAULT_.curie('foetal_health_stat'),
-                   model_uri=DEFAULT_.foetal_health_stat, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.foetal_health_stat])
-
-slots.amniotic_fluid_color = Slot(uri=DEFAULT_.amniotic_fluid_color, name="amniotic_fluid_color", curie=DEFAULT_.curie('amniotic_fluid_color'),
-                   model_uri=DEFAULT_.amniotic_fluid_color, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.amniotic_fluid_color])
-
-slots.kidney_disord = Slot(uri=DEFAULT_.kidney_disord, name="kidney_disord", curie=DEFAULT_.curie('kidney_disord'),
-                   model_uri=DEFAULT_.kidney_disord, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.kidney_disord])
-
-slots.urogenit_tract_disor = Slot(uri=DEFAULT_.urogenit_tract_disor, name="urogenit_tract_disor", curie=DEFAULT_.curie('urogenit_tract_disor'),
-                   model_uri=DEFAULT_.urogenit_tract_disor, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.urogenit_tract_disor])
-
-slots.urine_collect_meth = Slot(uri=DEFAULT_.urine_collect_meth, name="urine_collect_meth", curie=DEFAULT_.curie('urine_collect_meth'),
-                   model_uri=DEFAULT_.urine_collect_meth, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.urine_collect_meth],
-                   pattern=re.compile(r'[clean catch|catheter]'))
-
-slots.gastrointest_disord = Slot(uri=DEFAULT_.gastrointest_disord, name="gastrointest_disord", curie=DEFAULT_.curie('gastrointest_disord'),
-                   model_uri=DEFAULT_.gastrointest_disord, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.gastrointest_disord])
-
-slots.liver_disord = Slot(uri=DEFAULT_.liver_disord, name="liver_disord", curie=DEFAULT_.curie('liver_disord'),
-                   model_uri=DEFAULT_.liver_disord, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.liver_disord])
-
-slots.special_diet = Slot(uri=DEFAULT_.special_diet, name="special_diet", curie=DEFAULT_.curie('special_diet'),
-                   model_uri=DEFAULT_.special_diet, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.special_diet],
-                   pattern=re.compile(r'[low carb|reduced calorie|vegetarian|other(to be specified)]'))
-
-slots.nose_mouth_teeth_throat_disord = Slot(uri=DEFAULT_.nose_mouth_teeth_throat_disord, name="nose_mouth_teeth_throat_disord", curie=DEFAULT_.curie('nose_mouth_teeth_throat_disord'),
-                   model_uri=DEFAULT_.nose_mouth_teeth_throat_disord, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.nose_mouth_teeth_throat_disord])
-
-slots.time_last_toothbrush = Slot(uri=DEFAULT_.time_last_toothbrush, name="time_last_toothbrush", curie=DEFAULT_.curie('time_last_toothbrush'),
-                   model_uri=DEFAULT_.time_last_toothbrush, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.time_last_toothbrush])
-
-slots.dermatology_disord = Slot(uri=DEFAULT_.dermatology_disord, name="dermatology_disord", curie=DEFAULT_.curie('dermatology_disord'),
-                   model_uri=DEFAULT_.dermatology_disord, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.dermatology_disord])
-
-slots.time_since_last_wash = Slot(uri=DEFAULT_.time_since_last_wash, name="time_since_last_wash", curie=DEFAULT_.curie('time_since_last_wash'),
-                   model_uri=DEFAULT_.time_since_last_wash, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.time_since_last_wash])
-
-slots.dominant_hand = Slot(uri=DEFAULT_.dominant_hand, name="dominant_hand", curie=DEFAULT_.curie('dominant_hand'),
-                   model_uri=DEFAULT_.dominant_hand, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.dominant_hand],
-                   pattern=re.compile(r'[left|right|ambidextrous]'))
-
-slots.menarche = Slot(uri=DEFAULT_.menarche, name="menarche", curie=DEFAULT_.curie('menarche'),
-                   model_uri=DEFAULT_.menarche, domain=None, range=Optional[Union[dict, TimestampValue]], mappings = [MIXS.menarche])
-
-slots.sexual_act = Slot(uri=DEFAULT_.sexual_act, name="sexual_act", curie=DEFAULT_.curie('sexual_act'),
-                   model_uri=DEFAULT_.sexual_act, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.sexual_act])
-
-slots.pregnancy = Slot(uri=DEFAULT_.pregnancy, name="pregnancy", curie=DEFAULT_.curie('pregnancy'),
-                   model_uri=DEFAULT_.pregnancy, domain=None, range=Optional[Union[dict, TimestampValue]], mappings = [MIXS.pregnancy])
-
-slots.douche = Slot(uri=DEFAULT_.douche, name="douche", curie=DEFAULT_.curie('douche'),
-                   model_uri=DEFAULT_.douche, domain=None, range=Optional[Union[dict, TimestampValue]], mappings = [MIXS.douche])
-
-slots.birth_control = Slot(uri=DEFAULT_.birth_control, name="birth_control", curie=DEFAULT_.curie('birth_control'),
-                   model_uri=DEFAULT_.birth_control, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.birth_control])
-
-slots.menopause = Slot(uri=DEFAULT_.menopause, name="menopause", curie=DEFAULT_.curie('menopause'),
-                   model_uri=DEFAULT_.menopause, domain=None, range=Optional[Union[dict, TimestampValue]], mappings = [MIXS.menopause])
-
-slots.hrt = Slot(uri=DEFAULT_.hrt, name="hrt", curie=DEFAULT_.curie('hrt'),
-                   model_uri=DEFAULT_.hrt, domain=None, range=Optional[Union[dict, TimestampValue]], mappings = [MIXS.hrt])
-
-slots.hysterectomy = Slot(uri=DEFAULT_.hysterectomy, name="hysterectomy", curie=DEFAULT_.curie('hysterectomy'),
-                   model_uri=DEFAULT_.hysterectomy, domain=None, range=Optional[Union[dict, BooleanValue]], mappings = [MIXS.hysterectomy],
-                   pattern=re.compile(r'[true|false]'))
-
-slots.gynecologic_disord = Slot(uri=DEFAULT_.gynecologic_disord, name="gynecologic_disord", curie=DEFAULT_.curie('gynecologic_disord'),
-                   model_uri=DEFAULT_.gynecologic_disord, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.gynecologic_disord])
-
-slots.urogenit_disord = Slot(uri=DEFAULT_.urogenit_disord, name="urogenit_disord", curie=DEFAULT_.curie('urogenit_disord'),
-                   model_uri=DEFAULT_.urogenit_disord, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.urogenit_disord])
-
-slots.hcr = Slot(uri=DEFAULT_.hcr, name="hcr", curie=DEFAULT_.curie('hcr'),
-                   model_uri=DEFAULT_.hcr, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.hcr],
-                   pattern=re.compile(r'[Oil Reservoir|Gas Reservoir|Oil Sand|Coalbed|Shale|Tight Oil Reservoir|Tight Gas Reservoir|other]'))
-
-slots.hc_produced = Slot(uri=DEFAULT_.hc_produced, name="hc_produced", curie=DEFAULT_.curie('hc_produced'),
-                   model_uri=DEFAULT_.hc_produced, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.hc_produced],
-                   pattern=re.compile(r'[Oil|Gas\-Condensate|Gas|Bitumen|Coalbed Methane|other]'))
-
-slots.basin = Slot(uri=DEFAULT_.basin, name="basin", curie=DEFAULT_.curie('basin'),
-                   model_uri=DEFAULT_.basin, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.basin])
-
-slots.field = Slot(uri=DEFAULT_.field, name="field", curie=DEFAULT_.curie('field'),
-                   model_uri=DEFAULT_.field, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.field])
-
-slots.reservoir = Slot(uri=DEFAULT_.reservoir, name="reservoir", curie=DEFAULT_.curie('reservoir'),
-                   model_uri=DEFAULT_.reservoir, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.reservoir])
-
-slots.hcr_temp = Slot(uri=DEFAULT_.hcr_temp, name="hcr_temp", curie=DEFAULT_.curie('hcr_temp'),
-                   model_uri=DEFAULT_.hcr_temp, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.hcr_temp],
-                   pattern=re.compile(r'\d+[.\d+] \- \d+[.\d+] \S+'))
-
-slots.tvdss_of_hcr_temp = Slot(uri=DEFAULT_.tvdss_of_hcr_temp, name="tvdss_of_hcr_temp", curie=DEFAULT_.curie('tvdss_of_hcr_temp'),
-                   model_uri=DEFAULT_.tvdss_of_hcr_temp, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.tvdss_of_hcr_temp],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.hcr_pressure = Slot(uri=DEFAULT_.hcr_pressure, name="hcr_pressure", curie=DEFAULT_.curie('hcr_pressure'),
-                   model_uri=DEFAULT_.hcr_pressure, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.hcr_pressure],
-                   pattern=re.compile(r'\d+[.\d+] \- \d+[.\d+] \S+'))
-
-slots.tvdss_of_hcr_pressure = Slot(uri=DEFAULT_.tvdss_of_hcr_pressure, name="tvdss_of_hcr_pressure", curie=DEFAULT_.curie('tvdss_of_hcr_pressure'),
-                   model_uri=DEFAULT_.tvdss_of_hcr_pressure, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.tvdss_of_hcr_pressure],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.permeability = Slot(uri=DEFAULT_.permeability, name="permeability", curie=DEFAULT_.curie('permeability'),
-                   model_uri=DEFAULT_.permeability, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.permeability])
-
-slots.porosity = Slot(uri=DEFAULT_.porosity, name="porosity", curie=DEFAULT_.curie('porosity'),
-                   model_uri=DEFAULT_.porosity, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.porosity],
-                   pattern=re.compile(r'\d+[.\d+] \- \d+[.\d+] \S+'))
-
-slots.lithology = Slot(uri=DEFAULT_.lithology, name="lithology", curie=DEFAULT_.curie('lithology'),
-                   model_uri=DEFAULT_.lithology, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.lithology],
-                   pattern=re.compile(r'[Basement|Chalk|Chert|Coal|Conglomerate|Diatomite|Dolomite|Limestone|Sandstone|Shale|Siltstone|Volcanic|other]'))
-
-slots.depos_env = Slot(uri=DEFAULT_.depos_env, name="depos_env", curie=DEFAULT_.curie('depos_env'),
-                   model_uri=DEFAULT_.depos_env, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.depos_env],
-                   pattern=re.compile(r'[Continental \- Alluvial|Continental \- Aeolian|Continental \- Fluvial|Continental \- Lacustrine|Transitional \- Deltaic|Transitional \- Tidal|Transitional \- Lagoonal|Transitional \- Beach|Transitional \- Lake|Marine \- Shallow|Marine \- Deep|Marine \- Reef|Other \- Evaporite|Other \- Glacial|Other \- Volcanic|other]'))
-
-slots.hcr_geol_age = Slot(uri=DEFAULT_.hcr_geol_age, name="hcr_geol_age", curie=DEFAULT_.curie('hcr_geol_age'),
-                   model_uri=DEFAULT_.hcr_geol_age, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.hcr_geol_age],
-                   pattern=re.compile(r'[Archean|Cambrian|Carboniferous|Cenozoic|Cretaceous|Devonian|Jurassic|Mesozoic|Neogene|Ordovician|Paleogene|Paleozoic|Permian|Precambrian|Proterozoic|Silurian|Triassic|other]'))
-
-slots.owc_tvdss = Slot(uri=DEFAULT_.owc_tvdss, name="owc_tvdss", curie=DEFAULT_.curie('owc_tvdss'),
-                   model_uri=DEFAULT_.owc_tvdss, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.owc_tvdss],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.hcr_fw_salinity = Slot(uri=DEFAULT_.hcr_fw_salinity, name="hcr_fw_salinity", curie=DEFAULT_.curie('hcr_fw_salinity'),
-                   model_uri=DEFAULT_.hcr_fw_salinity, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.hcr_fw_salinity],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.sulfate_fw = Slot(uri=DEFAULT_.sulfate_fw, name="sulfate_fw", curie=DEFAULT_.curie('sulfate_fw'),
-                   model_uri=DEFAULT_.sulfate_fw, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.sulfate_fw],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.vfa_fw = Slot(uri=DEFAULT_.vfa_fw, name="vfa_fw", curie=DEFAULT_.curie('vfa_fw'),
-                   model_uri=DEFAULT_.vfa_fw, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.vfa_fw],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.sr_kerog_type = Slot(uri=DEFAULT_.sr_kerog_type, name="sr_kerog_type", curie=DEFAULT_.curie('sr_kerog_type'),
-                   model_uri=DEFAULT_.sr_kerog_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.sr_kerog_type],
-                   pattern=re.compile(r'[Type I|Type II|Type III|Type IV|other]'))
-
-slots.sr_lithology = Slot(uri=DEFAULT_.sr_lithology, name="sr_lithology", curie=DEFAULT_.curie('sr_lithology'),
-                   model_uri=DEFAULT_.sr_lithology, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.sr_lithology],
-                   pattern=re.compile(r'[Clastic|Carbonate|Coal|Biosilicieous|other]'))
-
-slots.sr_dep_env = Slot(uri=DEFAULT_.sr_dep_env, name="sr_dep_env", curie=DEFAULT_.curie('sr_dep_env'),
-                   model_uri=DEFAULT_.sr_dep_env, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.sr_dep_env],
-                   pattern=re.compile(r'[Lacustine|Fluvioldeltaic|Fluviomarine|Marine|other]'))
-
-slots.sr_geol_age = Slot(uri=DEFAULT_.sr_geol_age, name="sr_geol_age", curie=DEFAULT_.curie('sr_geol_age'),
-                   model_uri=DEFAULT_.sr_geol_age, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.sr_geol_age],
-                   pattern=re.compile(r'[Archean|Cambrian|Carboniferous|Cenozoic|Cretaceous|Devonian|Jurassic|Mesozoic|Neogene|Ordovician|Paleogene|Paleozoic|Permian|Precambrian|Proterozoic|Silurian|Triassic|other]'))
-
-slots.samp_well_name = Slot(uri=DEFAULT_.samp_well_name, name="samp_well_name", curie=DEFAULT_.curie('samp_well_name'),
-                   model_uri=DEFAULT_.samp_well_name, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.samp_well_name])
-
-slots.win = Slot(uri=DEFAULT_.win, name="win", curie=DEFAULT_.curie('win'),
-                   model_uri=DEFAULT_.win, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.win])
-
-slots.samp_type = Slot(uri=DEFAULT_.samp_type, name="samp_type", curie=DEFAULT_.curie('samp_type'),
-                   model_uri=DEFAULT_.samp_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.samp_type],
-                   pattern=re.compile(r'[core|rock trimmings|drill cuttings|piping section|coupon|pigging debris|solid deposit|produced fluid|produced water|injected water|water from treatment plant|fresh water|sea water|drilling fluid|procedural blank|positive control|negative control|other]'))
-
-slots.samp_subtype = Slot(uri=DEFAULT_.samp_subtype, name="samp_subtype", curie=DEFAULT_.curie('samp_subtype'),
-                   model_uri=DEFAULT_.samp_subtype, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.samp_subtype],
-                   pattern=re.compile(r'[oil phase|water phase|biofilm|not applicable|other]'))
-
-slots.pressure = Slot(uri=DEFAULT_.pressure, name="pressure", curie=DEFAULT_.curie('pressure'),
-                   model_uri=DEFAULT_.pressure, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.pressure],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.samp_tvdss = Slot(uri=DEFAULT_.samp_tvdss, name="samp_tvdss", curie=DEFAULT_.curie('samp_tvdss'),
-                   model_uri=DEFAULT_.samp_tvdss, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.samp_tvdss],
-                   pattern=re.compile(r'\d+[.\d+]\-\d+[.\d+] \S+'))
-
-slots.samp_md = Slot(uri=DEFAULT_.samp_md, name="samp_md", curie=DEFAULT_.curie('samp_md'),
-                   model_uri=DEFAULT_.samp_md, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.samp_md],
-                   pattern=re.compile(r'\d+[.\d+] \S+;[GL|DF|RT|KB|MSL|other]'))
-
-slots.samp_transport_cond = Slot(uri=DEFAULT_.samp_transport_cond, name="samp_transport_cond", curie=DEFAULT_.curie('samp_transport_cond'),
-                   model_uri=DEFAULT_.samp_transport_cond, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.samp_transport_cond],
-                   pattern=re.compile(r'\d+[.\d+] \S+;\d+[.\d+] \S+'))
-
-slots.organism_count_qpcr_info = Slot(uri=DEFAULT_.organism_count_qpcr_info, name="organism_count_qpcr_info", curie=DEFAULT_.curie('organism_count_qpcr_info'),
-                   model_uri=DEFAULT_.organism_count_qpcr_info, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.organism_count_qpcr_info])
-
-slots.ph = Slot(uri=DEFAULT_.ph, name="ph", curie=DEFAULT_.curie('ph'),
-                   model_uri=DEFAULT_.ph, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.ph],
-                   pattern=re.compile(r'\d+[.\d+]'))
-
-slots.alkalinity = Slot(uri=DEFAULT_.alkalinity, name="alkalinity", curie=DEFAULT_.curie('alkalinity'),
-                   model_uri=DEFAULT_.alkalinity, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.alkalinity],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.alkalinity_method = Slot(uri=DEFAULT_.alkalinity_method, name="alkalinity_method", curie=DEFAULT_.curie('alkalinity_method'),
-                   model_uri=DEFAULT_.alkalinity_method, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.alkalinity_method])
-
-slots.sulfate = Slot(uri=DEFAULT_.sulfate, name="sulfate", curie=DEFAULT_.curie('sulfate'),
-                   model_uri=DEFAULT_.sulfate, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.sulfate],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.sulfide = Slot(uri=DEFAULT_.sulfide, name="sulfide", curie=DEFAULT_.curie('sulfide'),
-                   model_uri=DEFAULT_.sulfide, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.sulfide],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.tot_sulfur = Slot(uri=DEFAULT_.tot_sulfur, name="tot_sulfur", curie=DEFAULT_.curie('tot_sulfur'),
-                   model_uri=DEFAULT_.tot_sulfur, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.tot_sulfur],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.nitrate = Slot(uri=DEFAULT_.nitrate, name="nitrate", curie=DEFAULT_.curie('nitrate'),
-                   model_uri=DEFAULT_.nitrate, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.nitrate],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.nitrite = Slot(uri=DEFAULT_.nitrite, name="nitrite", curie=DEFAULT_.curie('nitrite'),
-                   model_uri=DEFAULT_.nitrite, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.nitrite],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.ammonium = Slot(uri=DEFAULT_.ammonium, name="ammonium", curie=DEFAULT_.curie('ammonium'),
-                   model_uri=DEFAULT_.ammonium, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.ammonium],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.tot_nitro = Slot(uri=DEFAULT_.tot_nitro, name="tot_nitro", curie=DEFAULT_.curie('tot_nitro'),
-                   model_uri=DEFAULT_.tot_nitro, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.tot_nitro],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.diss_iron = Slot(uri=DEFAULT_.diss_iron, name="diss_iron", curie=DEFAULT_.curie('diss_iron'),
-                   model_uri=DEFAULT_.diss_iron, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.diss_iron],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.sodium = Slot(uri=DEFAULT_.sodium, name="sodium", curie=DEFAULT_.curie('sodium'),
-                   model_uri=DEFAULT_.sodium, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.sodium],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.chloride = Slot(uri=DEFAULT_.chloride, name="chloride", curie=DEFAULT_.curie('chloride'),
-                   model_uri=DEFAULT_.chloride, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.chloride],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.potassium = Slot(uri=DEFAULT_.potassium, name="potassium", curie=DEFAULT_.curie('potassium'),
-                   model_uri=DEFAULT_.potassium, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.potassium],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.magnesium = Slot(uri=DEFAULT_.magnesium, name="magnesium", curie=DEFAULT_.curie('magnesium'),
-                   model_uri=DEFAULT_.magnesium, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.magnesium],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.calcium = Slot(uri=DEFAULT_.calcium, name="calcium", curie=DEFAULT_.curie('calcium'),
-                   model_uri=DEFAULT_.calcium, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.calcium],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.tot_iron = Slot(uri=DEFAULT_.tot_iron, name="tot_iron", curie=DEFAULT_.curie('tot_iron'),
-                   model_uri=DEFAULT_.tot_iron, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.tot_iron],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.diss_org_carb = Slot(uri=DEFAULT_.diss_org_carb, name="diss_org_carb", curie=DEFAULT_.curie('diss_org_carb'),
-                   model_uri=DEFAULT_.diss_org_carb, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.diss_org_carb],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.diss_inorg_carb = Slot(uri=DEFAULT_.diss_inorg_carb, name="diss_inorg_carb", curie=DEFAULT_.curie('diss_inorg_carb'),
-                   model_uri=DEFAULT_.diss_inorg_carb, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.diss_inorg_carb],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.diss_inorg_phosp = Slot(uri=DEFAULT_.diss_inorg_phosp, name="diss_inorg_phosp", curie=DEFAULT_.curie('diss_inorg_phosp'),
-                   model_uri=DEFAULT_.diss_inorg_phosp, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.diss_inorg_phosp],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.tot_phosp = Slot(uri=DEFAULT_.tot_phosp, name="tot_phosp", curie=DEFAULT_.curie('tot_phosp'),
-                   model_uri=DEFAULT_.tot_phosp, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.tot_phosp],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.suspend_solids = Slot(uri=DEFAULT_.suspend_solids, name="suspend_solids", curie=DEFAULT_.curie('suspend_solids'),
-                   model_uri=DEFAULT_.suspend_solids, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.suspend_solids])
-
-slots.density = Slot(uri=DEFAULT_.density, name="density", curie=DEFAULT_.curie('density'),
-                   model_uri=DEFAULT_.density, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.density],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.diss_carb_dioxide = Slot(uri=DEFAULT_.diss_carb_dioxide, name="diss_carb_dioxide", curie=DEFAULT_.curie('diss_carb_dioxide'),
-                   model_uri=DEFAULT_.diss_carb_dioxide, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.diss_carb_dioxide],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.diss_oxygen_fluid = Slot(uri=DEFAULT_.diss_oxygen_fluid, name="diss_oxygen_fluid", curie=DEFAULT_.curie('diss_oxygen_fluid'),
-                   model_uri=DEFAULT_.diss_oxygen_fluid, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.diss_oxygen_fluid],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.vfa = Slot(uri=DEFAULT_.vfa, name="vfa", curie=DEFAULT_.curie('vfa'),
-                   model_uri=DEFAULT_.vfa, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.vfa],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.benzene = Slot(uri=DEFAULT_.benzene, name="benzene", curie=DEFAULT_.curie('benzene'),
-                   model_uri=DEFAULT_.benzene, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.benzene],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.toluene = Slot(uri=DEFAULT_.toluene, name="toluene", curie=DEFAULT_.curie('toluene'),
-                   model_uri=DEFAULT_.toluene, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.toluene],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.ethylbenzene = Slot(uri=DEFAULT_.ethylbenzene, name="ethylbenzene", curie=DEFAULT_.curie('ethylbenzene'),
-                   model_uri=DEFAULT_.ethylbenzene, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.ethylbenzene],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.xylene = Slot(uri=DEFAULT_.xylene, name="xylene", curie=DEFAULT_.curie('xylene'),
-                   model_uri=DEFAULT_.xylene, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.xylene],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.api = Slot(uri=DEFAULT_.api, name="api", curie=DEFAULT_.curie('api'),
-                   model_uri=DEFAULT_.api, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.api],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.tan = Slot(uri=DEFAULT_.tan, name="tan", curie=DEFAULT_.curie('tan'),
-                   model_uri=DEFAULT_.tan, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.tan],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.viscosity = Slot(uri=DEFAULT_.viscosity, name="viscosity", curie=DEFAULT_.curie('viscosity'),
-                   model_uri=DEFAULT_.viscosity, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.viscosity],
-                   pattern=re.compile(r'\d+[.\d+] \S+;\d+[.\d+] \S+'))
-
-slots.pour_point = Slot(uri=DEFAULT_.pour_point, name="pour_point", curie=DEFAULT_.curie('pour_point'),
-                   model_uri=DEFAULT_.pour_point, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.pour_point],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.saturates_pc = Slot(uri=DEFAULT_.saturates_pc, name="saturates_pc", curie=DEFAULT_.curie('saturates_pc'),
-                   model_uri=DEFAULT_.saturates_pc, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.saturates_pc])
-
-slots.aromatics_pc = Slot(uri=DEFAULT_.aromatics_pc, name="aromatics_pc", curie=DEFAULT_.curie('aromatics_pc'),
-                   model_uri=DEFAULT_.aromatics_pc, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.aromatics_pc])
-
-slots.resins_pc = Slot(uri=DEFAULT_.resins_pc, name="resins_pc", curie=DEFAULT_.curie('resins_pc'),
-                   model_uri=DEFAULT_.resins_pc, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.resins_pc])
-
-slots.asphaltenes_pc = Slot(uri=DEFAULT_.asphaltenes_pc, name="asphaltenes_pc", curie=DEFAULT_.curie('asphaltenes_pc'),
-                   model_uri=DEFAULT_.asphaltenes_pc, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.asphaltenes_pc])
-
-slots.additional_info = Slot(uri=DEFAULT_.additional_info, name="additional_info", curie=DEFAULT_.curie('additional_info'),
-                   model_uri=DEFAULT_.additional_info, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.additional_info])
-
-slots.prod_start_date = Slot(uri=DEFAULT_.prod_start_date, name="prod_start_date", curie=DEFAULT_.curie('prod_start_date'),
-                   model_uri=DEFAULT_.prod_start_date, domain=None, range=Optional[Union[dict, TimestampValue]], mappings = [MIXS.prod_start_date])
-
-slots.prod_rate = Slot(uri=DEFAULT_.prod_rate, name="prod_rate", curie=DEFAULT_.curie('prod_rate'),
-                   model_uri=DEFAULT_.prod_rate, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.prod_rate],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.water_production_rate = Slot(uri=DEFAULT_.water_production_rate, name="water_production_rate", curie=DEFAULT_.curie('water_production_rate'),
-                   model_uri=DEFAULT_.water_production_rate, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.water_production_rate],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.water_cut = Slot(uri=DEFAULT_.water_cut, name="water_cut", curie=DEFAULT_.curie('water_cut'),
-                   model_uri=DEFAULT_.water_cut, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.water_cut],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.iwf = Slot(uri=DEFAULT_.iwf, name="iwf", curie=DEFAULT_.curie('iwf'),
-                   model_uri=DEFAULT_.iwf, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.iwf],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.add_recov_method = Slot(uri=DEFAULT_.add_recov_method, name="add_recov_method", curie=DEFAULT_.curie('add_recov_method'),
-                   model_uri=DEFAULT_.add_recov_method, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.add_recov_method])
-
-slots.iw_bt_date_well = Slot(uri=DEFAULT_.iw_bt_date_well, name="iw_bt_date_well", curie=DEFAULT_.curie('iw_bt_date_well'),
-                   model_uri=DEFAULT_.iw_bt_date_well, domain=None, range=Optional[Union[dict, TimestampValue]], mappings = [MIXS.iw_bt_date_well])
-
-slots.biocide = Slot(uri=DEFAULT_.biocide, name="biocide", curie=DEFAULT_.curie('biocide'),
-                   model_uri=DEFAULT_.biocide, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.biocide])
-
-slots.biocide_admin_method = Slot(uri=DEFAULT_.biocide_admin_method, name="biocide_admin_method", curie=DEFAULT_.curie('biocide_admin_method'),
-                   model_uri=DEFAULT_.biocide_admin_method, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.biocide_admin_method])
-
-slots.chem_treatment = Slot(uri=DEFAULT_.chem_treatment, name="chem_treatment", curie=DEFAULT_.curie('chem_treatment'),
-                   model_uri=DEFAULT_.chem_treatment, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.chem_treatment])
-
-slots.chem_treatment_method = Slot(uri=DEFAULT_.chem_treatment_method, name="chem_treatment_method", curie=DEFAULT_.curie('chem_treatment_method'),
-                   model_uri=DEFAULT_.chem_treatment_method, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.chem_treatment_method])
-
-slots.samp_loc_corr_rate = Slot(uri=DEFAULT_.samp_loc_corr_rate, name="samp_loc_corr_rate", curie=DEFAULT_.curie('samp_loc_corr_rate'),
-                   model_uri=DEFAULT_.samp_loc_corr_rate, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.samp_loc_corr_rate],
-                   pattern=re.compile(r'\d+[.\d+] \- \d+[.\d+] \S+'))
-
-slots.samp_collection_point = Slot(uri=DEFAULT_.samp_collection_point, name="samp_collection_point", curie=DEFAULT_.curie('samp_collection_point'),
-                   model_uri=DEFAULT_.samp_collection_point, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.samp_collection_point],
-                   pattern=re.compile(r'[well|test well|drilling rig|wellhead|separator|storage tank|other]'))
-
-slots.samp_preserv = Slot(uri=DEFAULT_.samp_preserv, name="samp_preserv", curie=DEFAULT_.curie('samp_preserv'),
-                   model_uri=DEFAULT_.samp_preserv, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.samp_preserv])
-
-slots.alkyl_diethers = Slot(uri=DEFAULT_.alkyl_diethers, name="alkyl_diethers", curie=DEFAULT_.curie('alkyl_diethers'),
-                   model_uri=DEFAULT_.alkyl_diethers, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.alkyl_diethers],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.aminopept_act = Slot(uri=DEFAULT_.aminopept_act, name="aminopept_act", curie=DEFAULT_.curie('aminopept_act'),
-                   model_uri=DEFAULT_.aminopept_act, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.aminopept_act],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.bacteria_carb_prod = Slot(uri=DEFAULT_.bacteria_carb_prod, name="bacteria_carb_prod", curie=DEFAULT_.curie('bacteria_carb_prod'),
-                   model_uri=DEFAULT_.bacteria_carb_prod, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.bacteria_carb_prod],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.biomass = Slot(uri=DEFAULT_.biomass, name="biomass", curie=DEFAULT_.curie('biomass'),
-                   model_uri=DEFAULT_.biomass, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.biomass])
-
-slots.bishomohopanol = Slot(uri=DEFAULT_.bishomohopanol, name="bishomohopanol", curie=DEFAULT_.curie('bishomohopanol'),
-                   model_uri=DEFAULT_.bishomohopanol, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.bishomohopanol],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.bromide = Slot(uri=DEFAULT_.bromide, name="bromide", curie=DEFAULT_.curie('bromide'),
-                   model_uri=DEFAULT_.bromide, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.bromide],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.carb_nitro_ratio = Slot(uri=DEFAULT_.carb_nitro_ratio, name="carb_nitro_ratio", curie=DEFAULT_.curie('carb_nitro_ratio'),
-                   model_uri=DEFAULT_.carb_nitro_ratio, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.carb_nitro_ratio],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.chlorophyll = Slot(uri=DEFAULT_.chlorophyll, name="chlorophyll", curie=DEFAULT_.curie('chlorophyll'),
-                   model_uri=DEFAULT_.chlorophyll, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.chlorophyll],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.diether_lipids = Slot(uri=DEFAULT_.diether_lipids, name="diether_lipids", curie=DEFAULT_.curie('diether_lipids'),
-                   model_uri=DEFAULT_.diether_lipids, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.diether_lipids])
-
-slots.diss_hydrogen = Slot(uri=DEFAULT_.diss_hydrogen, name="diss_hydrogen", curie=DEFAULT_.curie('diss_hydrogen'),
-                   model_uri=DEFAULT_.diss_hydrogen, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.diss_hydrogen],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.diss_org_nitro = Slot(uri=DEFAULT_.diss_org_nitro, name="diss_org_nitro", curie=DEFAULT_.curie('diss_org_nitro'),
-                   model_uri=DEFAULT_.diss_org_nitro, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.diss_org_nitro],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.diss_oxygen = Slot(uri=DEFAULT_.diss_oxygen, name="diss_oxygen", curie=DEFAULT_.curie('diss_oxygen'),
-                   model_uri=DEFAULT_.diss_oxygen, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.diss_oxygen],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.glucosidase_act = Slot(uri=DEFAULT_.glucosidase_act, name="glucosidase_act", curie=DEFAULT_.curie('glucosidase_act'),
-                   model_uri=DEFAULT_.glucosidase_act, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.glucosidase_act],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.mean_frict_vel = Slot(uri=DEFAULT_.mean_frict_vel, name="mean_frict_vel", curie=DEFAULT_.curie('mean_frict_vel'),
-                   model_uri=DEFAULT_.mean_frict_vel, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.mean_frict_vel],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.mean_peak_frict_vel = Slot(uri=DEFAULT_.mean_peak_frict_vel, name="mean_peak_frict_vel", curie=DEFAULT_.curie('mean_peak_frict_vel'),
-                   model_uri=DEFAULT_.mean_peak_frict_vel, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.mean_peak_frict_vel],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.n_alkanes = Slot(uri=DEFAULT_.n_alkanes, name="n_alkanes", curie=DEFAULT_.curie('n_alkanes'),
-                   model_uri=DEFAULT_.n_alkanes, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.n_alkanes])
-
-slots.nitro = Slot(uri=DEFAULT_.nitro, name="nitro", curie=DEFAULT_.curie('nitro'),
-                   model_uri=DEFAULT_.nitro, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.nitro],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.org_carb = Slot(uri=DEFAULT_.org_carb, name="org_carb", curie=DEFAULT_.curie('org_carb'),
-                   model_uri=DEFAULT_.org_carb, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.org_carb],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.org_matter = Slot(uri=DEFAULT_.org_matter, name="org_matter", curie=DEFAULT_.curie('org_matter'),
-                   model_uri=DEFAULT_.org_matter, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.org_matter],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.org_nitro = Slot(uri=DEFAULT_.org_nitro, name="org_nitro", curie=DEFAULT_.curie('org_nitro'),
-                   model_uri=DEFAULT_.org_nitro, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.org_nitro],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.part_org_carb = Slot(uri=DEFAULT_.part_org_carb, name="part_org_carb", curie=DEFAULT_.curie('part_org_carb'),
-                   model_uri=DEFAULT_.part_org_carb, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.part_org_carb],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.petroleum_hydrocarb = Slot(uri=DEFAULT_.petroleum_hydrocarb, name="petroleum_hydrocarb", curie=DEFAULT_.curie('petroleum_hydrocarb'),
-                   model_uri=DEFAULT_.petroleum_hydrocarb, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.petroleum_hydrocarb],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.phaeopigments = Slot(uri=DEFAULT_.phaeopigments, name="phaeopigments", curie=DEFAULT_.curie('phaeopigments'),
-                   model_uri=DEFAULT_.phaeopigments, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.phaeopigments])
-
-slots.phosphate = Slot(uri=DEFAULT_.phosphate, name="phosphate", curie=DEFAULT_.curie('phosphate'),
-                   model_uri=DEFAULT_.phosphate, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.phosphate],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.phosplipid_fatt_acid = Slot(uri=DEFAULT_.phosplipid_fatt_acid, name="phosplipid_fatt_acid", curie=DEFAULT_.curie('phosplipid_fatt_acid'),
-                   model_uri=DEFAULT_.phosplipid_fatt_acid, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.phosplipid_fatt_acid])
-
-slots.redox_potential = Slot(uri=DEFAULT_.redox_potential, name="redox_potential", curie=DEFAULT_.curie('redox_potential'),
-                   model_uri=DEFAULT_.redox_potential, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.redox_potential],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.salinity = Slot(uri=DEFAULT_.salinity, name="salinity", curie=DEFAULT_.curie('salinity'),
-                   model_uri=DEFAULT_.salinity, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.salinity],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.silicate = Slot(uri=DEFAULT_.silicate, name="silicate", curie=DEFAULT_.curie('silicate'),
-                   model_uri=DEFAULT_.silicate, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.silicate],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.tot_carb = Slot(uri=DEFAULT_.tot_carb, name="tot_carb", curie=DEFAULT_.curie('tot_carb'),
-                   model_uri=DEFAULT_.tot_carb, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.tot_carb],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.tot_nitro_content = Slot(uri=DEFAULT_.tot_nitro_content, name="tot_nitro_content", curie=DEFAULT_.curie('tot_nitro_content'),
-                   model_uri=DEFAULT_.tot_nitro_content, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.tot_nitro_content],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.tot_org_carb = Slot(uri=DEFAULT_.tot_org_carb, name="tot_org_carb", curie=DEFAULT_.curie('tot_org_carb'),
-                   model_uri=DEFAULT_.tot_org_carb, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.tot_org_carb],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.turbidity = Slot(uri=DEFAULT_.turbidity, name="turbidity", curie=DEFAULT_.curie('turbidity'),
-                   model_uri=DEFAULT_.turbidity, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.turbidity],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.water_content = Slot(uri=DEFAULT_.water_content, name="water_content", curie=DEFAULT_.curie('water_content'),
-                   model_uri=DEFAULT_.water_content, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.water_content],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.water_current = Slot(uri=DEFAULT_.water_current, name="water_current", curie=DEFAULT_.curie('water_current'),
-                   model_uri=DEFAULT_.water_current, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.water_current],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.air_temp_regm = Slot(uri=DEFAULT_.air_temp_regm, name="air_temp_regm", curie=DEFAULT_.curie('air_temp_regm'),
-                   model_uri=DEFAULT_.air_temp_regm, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.air_temp_regm])
-
-slots.antibiotic_regm = Slot(uri=DEFAULT_.antibiotic_regm, name="antibiotic_regm", curie=DEFAULT_.curie('antibiotic_regm'),
-                   model_uri=DEFAULT_.antibiotic_regm, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.antibiotic_regm])
-
-slots.biotic_regm = Slot(uri=DEFAULT_.biotic_regm, name="biotic_regm", curie=DEFAULT_.curie('biotic_regm'),
-                   model_uri=DEFAULT_.biotic_regm, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.biotic_regm])
-
-slots.chem_mutagen = Slot(uri=DEFAULT_.chem_mutagen, name="chem_mutagen", curie=DEFAULT_.curie('chem_mutagen'),
-                   model_uri=DEFAULT_.chem_mutagen, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.chem_mutagen])
-
-slots.climate_environment = Slot(uri=DEFAULT_.climate_environment, name="climate_environment", curie=DEFAULT_.curie('climate_environment'),
-                   model_uri=DEFAULT_.climate_environment, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.climate_environment])
-
-slots.cult_root_med = Slot(uri=DEFAULT_.cult_root_med, name="cult_root_med", curie=DEFAULT_.curie('cult_root_med'),
-                   model_uri=DEFAULT_.cult_root_med, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.cult_root_med])
-
-slots.fertilizer_regm = Slot(uri=DEFAULT_.fertilizer_regm, name="fertilizer_regm", curie=DEFAULT_.curie('fertilizer_regm'),
-                   model_uri=DEFAULT_.fertilizer_regm, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.fertilizer_regm])
-
-slots.fungicide_regm = Slot(uri=DEFAULT_.fungicide_regm, name="fungicide_regm", curie=DEFAULT_.curie('fungicide_regm'),
-                   model_uri=DEFAULT_.fungicide_regm, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.fungicide_regm])
-
-slots.gaseous_environment = Slot(uri=DEFAULT_.gaseous_environment, name="gaseous_environment", curie=DEFAULT_.curie('gaseous_environment'),
-                   model_uri=DEFAULT_.gaseous_environment, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.gaseous_environment])
-
-slots.gravity = Slot(uri=DEFAULT_.gravity, name="gravity", curie=DEFAULT_.curie('gravity'),
-                   model_uri=DEFAULT_.gravity, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.gravity])
-
-slots.growth_facil = Slot(uri=DEFAULT_.growth_facil, name="growth_facil", curie=DEFAULT_.curie('growth_facil'),
-                   model_uri=DEFAULT_.growth_facil, domain=None, range=Optional[Union[dict, ControlledTermValue]], mappings = [MIXS.growth_facil])
-
-slots.growth_habit = Slot(uri=DEFAULT_.growth_habit, name="growth_habit", curie=DEFAULT_.curie('growth_habit'),
-                   model_uri=DEFAULT_.growth_habit, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.growth_habit],
-                   pattern=re.compile(r'[erect|semi\-erect|spreading|prostrate] '))
-
-slots.growth_hormone_regm = Slot(uri=DEFAULT_.growth_hormone_regm, name="growth_hormone_regm", curie=DEFAULT_.curie('growth_hormone_regm'),
-                   model_uri=DEFAULT_.growth_hormone_regm, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.growth_hormone_regm])
-
-slots.herbicide_regm = Slot(uri=DEFAULT_.herbicide_regm, name="herbicide_regm", curie=DEFAULT_.curie('herbicide_regm'),
-                   model_uri=DEFAULT_.herbicide_regm, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.herbicide_regm])
-
-slots.host_wet_mass = Slot(uri=DEFAULT_.host_wet_mass, name="host_wet_mass", curie=DEFAULT_.curie('host_wet_mass'),
-                   model_uri=DEFAULT_.host_wet_mass, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.host_wet_mass],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.humidity_regm = Slot(uri=DEFAULT_.humidity_regm, name="humidity_regm", curie=DEFAULT_.curie('humidity_regm'),
-                   model_uri=DEFAULT_.humidity_regm, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.humidity_regm])
-
-slots.light_regm = Slot(uri=DEFAULT_.light_regm, name="light_regm", curie=DEFAULT_.curie('light_regm'),
-                   model_uri=DEFAULT_.light_regm, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.light_regm])
-
-slots.mechanical_damage = Slot(uri=DEFAULT_.mechanical_damage, name="mechanical_damage", curie=DEFAULT_.curie('mechanical_damage'),
-                   model_uri=DEFAULT_.mechanical_damage, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.mechanical_damage])
-
-slots.mineral_nutr_regm = Slot(uri=DEFAULT_.mineral_nutr_regm, name="mineral_nutr_regm", curie=DEFAULT_.curie('mineral_nutr_regm'),
-                   model_uri=DEFAULT_.mineral_nutr_regm, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.mineral_nutr_regm])
-
-slots.non_mineral_nutr_regm = Slot(uri=DEFAULT_.non_mineral_nutr_regm, name="non_mineral_nutr_regm", curie=DEFAULT_.curie('non_mineral_nutr_regm'),
-                   model_uri=DEFAULT_.non_mineral_nutr_regm, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.non_mineral_nutr_regm])
-
-slots.ph_regm = Slot(uri=DEFAULT_.ph_regm, name="ph_regm", curie=DEFAULT_.curie('ph_regm'),
-                   model_uri=DEFAULT_.ph_regm, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.ph_regm])
-
-slots.pesticide_regm = Slot(uri=DEFAULT_.pesticide_regm, name="pesticide_regm", curie=DEFAULT_.curie('pesticide_regm'),
-                   model_uri=DEFAULT_.pesticide_regm, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.pesticide_regm])
-
-slots.plant_growth_med = Slot(uri=DEFAULT_.plant_growth_med, name="plant_growth_med", curie=DEFAULT_.curie('plant_growth_med'),
-                   model_uri=DEFAULT_.plant_growth_med, domain=None, range=Optional[Union[dict, ControlledTermValue]], mappings = [MIXS.plant_growth_med],
-                   pattern=re.compile(r'.* \S+:\S+'))
-
-slots.plant_product = Slot(uri=DEFAULT_.plant_product, name="plant_product", curie=DEFAULT_.curie('plant_product'),
-                   model_uri=DEFAULT_.plant_product, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.plant_product])
-
-slots.plant_sex = Slot(uri=DEFAULT_.plant_sex, name="plant_sex", curie=DEFAULT_.curie('plant_sex'),
-                   model_uri=DEFAULT_.plant_sex, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.plant_sex],
-                   pattern=re.compile(r'[Androdioecious|Androecious|Androgynous|Androgynomonoecious|Andromonoecious|Bisexual|Dichogamous|Diclinous|Dioecious|Gynodioecious|Gynoecious|Gynomonoecious|Hermaphroditic|Imperfect|Monoclinous|Monoecious|Perfect|Polygamodioecious|Polygamomonoecious|Polygamous|Protandrous|Protogynous|Subandroecious|Subdioecious|Subgynoecious|Synoecious|Trimonoecious|Trioecious|Unisexual]'))
-
-slots.plant_struc = Slot(uri=DEFAULT_.plant_struc, name="plant_struc", curie=DEFAULT_.curie('plant_struc'),
-                   model_uri=DEFAULT_.plant_struc, domain=None, range=Optional[Union[dict, ControlledTermValue]], mappings = [MIXS.plant_struc],
-                   pattern=re.compile(r'.* \S+:\S+'))
-
-slots.radiation_regm = Slot(uri=DEFAULT_.radiation_regm, name="radiation_regm", curie=DEFAULT_.curie('radiation_regm'),
-                   model_uri=DEFAULT_.radiation_regm, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.radiation_regm])
-
-slots.rainfall_regm = Slot(uri=DEFAULT_.rainfall_regm, name="rainfall_regm", curie=DEFAULT_.curie('rainfall_regm'),
-                   model_uri=DEFAULT_.rainfall_regm, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.rainfall_regm])
-
-slots.root_cond = Slot(uri=DEFAULT_.root_cond, name="root_cond", curie=DEFAULT_.curie('root_cond'),
-                   model_uri=DEFAULT_.root_cond, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.root_cond])
-
-slots.root_med_carbon = Slot(uri=DEFAULT_.root_med_carbon, name="root_med_carbon", curie=DEFAULT_.curie('root_med_carbon'),
-                   model_uri=DEFAULT_.root_med_carbon, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.root_med_carbon])
-
-slots.root_med_macronutr = Slot(uri=DEFAULT_.root_med_macronutr, name="root_med_macronutr", curie=DEFAULT_.curie('root_med_macronutr'),
-                   model_uri=DEFAULT_.root_med_macronutr, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.root_med_macronutr])
-
-slots.root_med_micronutr = Slot(uri=DEFAULT_.root_med_micronutr, name="root_med_micronutr", curie=DEFAULT_.curie('root_med_micronutr'),
-                   model_uri=DEFAULT_.root_med_micronutr, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.root_med_micronutr])
-
-slots.root_med_suppl = Slot(uri=DEFAULT_.root_med_suppl, name="root_med_suppl", curie=DEFAULT_.curie('root_med_suppl'),
-                   model_uri=DEFAULT_.root_med_suppl, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.root_med_suppl])
-
-slots.root_med_ph = Slot(uri=DEFAULT_.root_med_ph, name="root_med_ph", curie=DEFAULT_.curie('root_med_ph'),
-                   model_uri=DEFAULT_.root_med_ph, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.root_med_ph],
-                   pattern=re.compile(r'\d+[.\d+]'))
-
-slots.root_med_regl = Slot(uri=DEFAULT_.root_med_regl, name="root_med_regl", curie=DEFAULT_.curie('root_med_regl'),
-                   model_uri=DEFAULT_.root_med_regl, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.root_med_regl])
-
-slots.root_med_solid = Slot(uri=DEFAULT_.root_med_solid, name="root_med_solid", curie=DEFAULT_.curie('root_med_solid'),
-                   model_uri=DEFAULT_.root_med_solid, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.root_med_solid])
-
-slots.salt_regm = Slot(uri=DEFAULT_.salt_regm, name="salt_regm", curie=DEFAULT_.curie('salt_regm'),
-                   model_uri=DEFAULT_.salt_regm, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.salt_regm])
-
-slots.season_environment = Slot(uri=DEFAULT_.season_environment, name="season_environment", curie=DEFAULT_.curie('season_environment'),
-                   model_uri=DEFAULT_.season_environment, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.season_environment])
-
-slots.standing_water_regm = Slot(uri=DEFAULT_.standing_water_regm, name="standing_water_regm", curie=DEFAULT_.curie('standing_water_regm'),
-                   model_uri=DEFAULT_.standing_water_regm, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.standing_water_regm])
-
-slots.tiss_cult_growth_med = Slot(uri=DEFAULT_.tiss_cult_growth_med, name="tiss_cult_growth_med", curie=DEFAULT_.curie('tiss_cult_growth_med'),
-                   model_uri=DEFAULT_.tiss_cult_growth_med, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.tiss_cult_growth_med])
-
-slots.water_temp_regm = Slot(uri=DEFAULT_.water_temp_regm, name="water_temp_regm", curie=DEFAULT_.curie('water_temp_regm'),
-                   model_uri=DEFAULT_.water_temp_regm, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.water_temp_regm])
-
-slots.watering_regm = Slot(uri=DEFAULT_.watering_regm, name="watering_regm", curie=DEFAULT_.curie('watering_regm'),
-                   model_uri=DEFAULT_.watering_regm, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.watering_regm])
-
-slots.particle_class = Slot(uri=DEFAULT_.particle_class, name="particle_class", curie=DEFAULT_.curie('particle_class'),
-                   model_uri=DEFAULT_.particle_class, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.particle_class])
-
-slots.sediment_type = Slot(uri=DEFAULT_.sediment_type, name="sediment_type", curie=DEFAULT_.curie('sediment_type'),
-                   model_uri=DEFAULT_.sediment_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.sediment_type],
-                   pattern=re.compile(r'[biogenous|cosmogenous|hydrogenous|lithogenous]'))
-
-slots.tidal_stage = Slot(uri=DEFAULT_.tidal_stage, name="tidal_stage", curie=DEFAULT_.curie('tidal_stage'),
-                   model_uri=DEFAULT_.tidal_stage, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.tidal_stage],
-                   pattern=re.compile(r'[low tide|ebb tide|flood tide|high tide]'))
-
-slots.tot_depth_water_col = Slot(uri=DEFAULT_.tot_depth_water_col, name="tot_depth_water_col", curie=DEFAULT_.curie('tot_depth_water_col'),
-                   model_uri=DEFAULT_.tot_depth_water_col, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.tot_depth_water_col],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.cur_land_use = Slot(uri=DEFAULT_.cur_land_use, name="cur_land_use", curie=DEFAULT_.curie('cur_land_use'),
-                   model_uri=DEFAULT_.cur_land_use, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.cur_land_use],
-                   pattern=re.compile(r'[cities|farmstead|industrial areas|roads\/railroads|rock|sand|gravel|mudflats|salt flats|badlands|permanent snow or ice|saline seeps|mines\/quarries|oil waste areas|small grains|row crops|vegetable crops|horticultural plants (e.g. tulips)|marshlands (grass,sedges,rushes)|tundra (mosses,lichens)|rangeland|pastureland (grasslands used for livestock grazing)|hayland|meadows (grasses,alfalfa,fescue,bromegrass,timothy)|shrub land (e.g. mesquite,sage\-brush,creosote bush,shrub oak,eucalyptus)|successional shrub land (tree saplings,hazels,sumacs,chokecherry,shrub dogwoods,blackberries)|shrub crops (blueberries,nursery ornamentals,filberts)|vine crops (grapes)|conifers (e.g. pine,spruce,fir,cypress)|hardwoods (e.g. oak,hickory,elm,aspen)|intermixed hardwood and conifers|tropical (e.g. mangrove,palms)|rainforest (evergreen forest receiving >406 cm annual rainfall)|swamp (permanent or semi\-permanent water body dominated by woody plants)|crop trees (nuts,fruit,christmas trees,nursery trees)]'))
-
-slots.cur_vegetation = Slot(uri=DEFAULT_.cur_vegetation, name="cur_vegetation", curie=DEFAULT_.curie('cur_vegetation'),
-                   model_uri=DEFAULT_.cur_vegetation, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.cur_vegetation])
-
-slots.cur_vegetation_meth = Slot(uri=DEFAULT_.cur_vegetation_meth, name="cur_vegetation_meth", curie=DEFAULT_.curie('cur_vegetation_meth'),
-                   model_uri=DEFAULT_.cur_vegetation_meth, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.cur_vegetation_meth])
-
-slots.previous_land_use = Slot(uri=DEFAULT_.previous_land_use, name="previous_land_use", curie=DEFAULT_.curie('previous_land_use'),
-                   model_uri=DEFAULT_.previous_land_use, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.previous_land_use])
-
-slots.previous_land_use_meth = Slot(uri=DEFAULT_.previous_land_use_meth, name="previous_land_use_meth", curie=DEFAULT_.curie('previous_land_use_meth'),
-                   model_uri=DEFAULT_.previous_land_use_meth, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.previous_land_use_meth])
-
-slots.crop_rotation = Slot(uri=DEFAULT_.crop_rotation, name="crop_rotation", curie=DEFAULT_.curie('crop_rotation'),
-                   model_uri=DEFAULT_.crop_rotation, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.crop_rotation])
-
-slots.agrochem_addition = Slot(uri=DEFAULT_.agrochem_addition, name="agrochem_addition", curie=DEFAULT_.curie('agrochem_addition'),
-                   model_uri=DEFAULT_.agrochem_addition, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.agrochem_addition])
-
-slots.tillage = Slot(uri=DEFAULT_.tillage, name="tillage", curie=DEFAULT_.curie('tillage'),
-                   model_uri=DEFAULT_.tillage, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.tillage],
-                   pattern=re.compile(r'[drill|cutting disc|ridge till|strip tillage|zonal tillage|chisel|tined|mouldboard|disc plough]'))
-
-slots.fire = Slot(uri=DEFAULT_.fire, name="fire", curie=DEFAULT_.curie('fire'),
-                   model_uri=DEFAULT_.fire, domain=None, range=Optional[Union[dict, TimestampValue]], mappings = [MIXS.fire])
-
-slots.flooding = Slot(uri=DEFAULT_.flooding, name="flooding", curie=DEFAULT_.curie('flooding'),
-                   model_uri=DEFAULT_.flooding, domain=None, range=Optional[Union[dict, TimestampValue]], mappings = [MIXS.flooding])
-
-slots.extreme_event = Slot(uri=DEFAULT_.extreme_event, name="extreme_event", curie=DEFAULT_.curie('extreme_event'),
-                   model_uri=DEFAULT_.extreme_event, domain=None, range=Optional[Union[dict, TimestampValue]], mappings = [MIXS.extreme_event])
-
-slots.horizon = Slot(uri=DEFAULT_.horizon, name="horizon", curie=DEFAULT_.curie('horizon'),
-                   model_uri=DEFAULT_.horizon, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.horizon],
-                   pattern=re.compile(r'[O horizon|A horizon|E horizon|B horizon|C horizon|R layer|Permafrost]'))
-
-slots.horizon_meth = Slot(uri=DEFAULT_.horizon_meth, name="horizon_meth", curie=DEFAULT_.curie('horizon_meth'),
-                   model_uri=DEFAULT_.horizon_meth, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.horizon_meth])
-
-slots.sieving = Slot(uri=DEFAULT_.sieving, name="sieving", curie=DEFAULT_.curie('sieving'),
-                   model_uri=DEFAULT_.sieving, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.sieving])
-
-slots.water_content_soil_meth = Slot(uri=DEFAULT_.water_content_soil_meth, name="water_content_soil_meth", curie=DEFAULT_.curie('water_content_soil_meth'),
-                   model_uri=DEFAULT_.water_content_soil_meth, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.water_content_soil_meth])
-
-slots.pool_dna_extracts = Slot(uri=DEFAULT_.pool_dna_extracts, name="pool_dna_extracts", curie=DEFAULT_.curie('pool_dna_extracts'),
-                   model_uri=DEFAULT_.pool_dna_extracts, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.pool_dna_extracts])
-
-slots.store_cond = Slot(uri=DEFAULT_.store_cond, name="store_cond", curie=DEFAULT_.curie('store_cond'),
-                   model_uri=DEFAULT_.store_cond, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.store_cond])
-
-slots.link_climate_info = Slot(uri=DEFAULT_.link_climate_info, name="link_climate_info", curie=DEFAULT_.curie('link_climate_info'),
-                   model_uri=DEFAULT_.link_climate_info, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.link_climate_info])
-
-slots.annual_temp = Slot(uri=DEFAULT_.annual_temp, name="annual_temp", curie=DEFAULT_.curie('annual_temp'),
-                   model_uri=DEFAULT_.annual_temp, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.annual_temp],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.season_temp = Slot(uri=DEFAULT_.season_temp, name="season_temp", curie=DEFAULT_.curie('season_temp'),
-                   model_uri=DEFAULT_.season_temp, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.season_temp],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.annual_precpt = Slot(uri=DEFAULT_.annual_precpt, name="annual_precpt", curie=DEFAULT_.curie('annual_precpt'),
-                   model_uri=DEFAULT_.annual_precpt, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.annual_precpt],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.season_precpt = Slot(uri=DEFAULT_.season_precpt, name="season_precpt", curie=DEFAULT_.curie('season_precpt'),
-                   model_uri=DEFAULT_.season_precpt, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.season_precpt],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.link_class_info = Slot(uri=DEFAULT_.link_class_info, name="link_class_info", curie=DEFAULT_.curie('link_class_info'),
-                   model_uri=DEFAULT_.link_class_info, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.link_class_info])
-
-slots.fao_class = Slot(uri=DEFAULT_.fao_class, name="fao_class", curie=DEFAULT_.curie('fao_class'),
-                   model_uri=DEFAULT_.fao_class, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.fao_class],
-                   pattern=re.compile(r'[Acrisols|Andosols|Arenosols|Cambisols|Chernozems|Ferralsols|Fluvisols|Gleysols|Greyzems|Gypsisols|Histosols|Kastanozems|Lithosols|Luvisols|Nitosols|Phaeozems|Planosols|Podzols|Podzoluvisols|Rankers|Regosols|Rendzinas|Solonchaks|Solonetz|Vertisols|Yermosols]'))
-
-slots.local_class = Slot(uri=DEFAULT_.local_class, name="local_class", curie=DEFAULT_.curie('local_class'),
-                   model_uri=DEFAULT_.local_class, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.local_class])
-
-slots.local_class_meth = Slot(uri=DEFAULT_.local_class_meth, name="local_class_meth", curie=DEFAULT_.curie('local_class_meth'),
-                   model_uri=DEFAULT_.local_class_meth, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.local_class_meth])
-
-slots.soil_type = Slot(uri=DEFAULT_.soil_type, name="soil_type", curie=DEFAULT_.curie('soil_type'),
-                   model_uri=DEFAULT_.soil_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.soil_type])
-
-slots.soil_type_meth = Slot(uri=DEFAULT_.soil_type_meth, name="soil_type_meth", curie=DEFAULT_.curie('soil_type_meth'),
-                   model_uri=DEFAULT_.soil_type_meth, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.soil_type_meth])
-
-slots.slope_gradient = Slot(uri=DEFAULT_.slope_gradient, name="slope_gradient", curie=DEFAULT_.curie('slope_gradient'),
-                   model_uri=DEFAULT_.slope_gradient, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.slope_gradient],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.slope_aspect = Slot(uri=DEFAULT_.slope_aspect, name="slope_aspect", curie=DEFAULT_.curie('slope_aspect'),
-                   model_uri=DEFAULT_.slope_aspect, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.slope_aspect],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.profile_position = Slot(uri=DEFAULT_.profile_position, name="profile_position", curie=DEFAULT_.curie('profile_position'),
-                   model_uri=DEFAULT_.profile_position, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.profile_position],
-                   pattern=re.compile(r'[summit|shoulder|backslope|footslope|toeslope]'))
-
-slots.drainage_class = Slot(uri=DEFAULT_.drainage_class, name="drainage_class", curie=DEFAULT_.curie('drainage_class'),
-                   model_uri=DEFAULT_.drainage_class, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.drainage_class],
-                   pattern=re.compile(r'[very poorly|poorly|somewhat poorly|moderately well|well|excessively drained]'))
-
-slots.texture = Slot(uri=DEFAULT_.texture, name="texture", curie=DEFAULT_.curie('texture'),
-                   model_uri=DEFAULT_.texture, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.texture],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.texture_meth = Slot(uri=DEFAULT_.texture_meth, name="texture_meth", curie=DEFAULT_.curie('texture_meth'),
-                   model_uri=DEFAULT_.texture_meth, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.texture_meth])
-
-slots.ph_meth = Slot(uri=DEFAULT_.ph_meth, name="ph_meth", curie=DEFAULT_.curie('ph_meth'),
-                   model_uri=DEFAULT_.ph_meth, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.ph_meth])
-
-slots.tot_org_c_meth = Slot(uri=DEFAULT_.tot_org_c_meth, name="tot_org_c_meth", curie=DEFAULT_.curie('tot_org_c_meth'),
-                   model_uri=DEFAULT_.tot_org_c_meth, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.tot_org_c_meth])
-
-slots.tot_nitro_content_meth = Slot(uri=DEFAULT_.tot_nitro_content_meth, name="tot_nitro_content_meth", curie=DEFAULT_.curie('tot_nitro_content_meth'),
-                   model_uri=DEFAULT_.tot_nitro_content_meth, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.tot_nitro_content_meth])
-
-slots.microbial_biomass = Slot(uri=DEFAULT_.microbial_biomass, name="microbial_biomass", curie=DEFAULT_.curie('microbial_biomass'),
-                   model_uri=DEFAULT_.microbial_biomass, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.microbial_biomass],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.microbial_biomass_meth = Slot(uri=DEFAULT_.microbial_biomass_meth, name="microbial_biomass_meth", curie=DEFAULT_.curie('microbial_biomass_meth'),
-                   model_uri=DEFAULT_.microbial_biomass_meth, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.microbial_biomass_meth])
-
-slots.link_addit_analys = Slot(uri=DEFAULT_.link_addit_analys, name="link_addit_analys", curie=DEFAULT_.curie('link_addit_analys'),
-                   model_uri=DEFAULT_.link_addit_analys, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.link_addit_analys])
-
-slots.extreme_salinity = Slot(uri=DEFAULT_.extreme_salinity, name="extreme_salinity", curie=DEFAULT_.curie('extreme_salinity'),
-                   model_uri=DEFAULT_.extreme_salinity, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.extreme_salinity],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.salinity_meth = Slot(uri=DEFAULT_.salinity_meth, name="salinity_meth", curie=DEFAULT_.curie('salinity_meth'),
-                   model_uri=DEFAULT_.salinity_meth, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.salinity_meth])
-
-slots.heavy_metals = Slot(uri=DEFAULT_.heavy_metals, name="heavy_metals", curie=DEFAULT_.curie('heavy_metals'),
-                   model_uri=DEFAULT_.heavy_metals, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.heavy_metals])
-
-slots.heavy_metals_meth = Slot(uri=DEFAULT_.heavy_metals_meth, name="heavy_metals_meth", curie=DEFAULT_.curie('heavy_metals_meth'),
-                   model_uri=DEFAULT_.heavy_metals_meth, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.heavy_metals_meth])
-
-slots.al_sat = Slot(uri=DEFAULT_.al_sat, name="al_sat", curie=DEFAULT_.curie('al_sat'),
-                   model_uri=DEFAULT_.al_sat, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.al_sat],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.al_sat_meth = Slot(uri=DEFAULT_.al_sat_meth, name="al_sat_meth", curie=DEFAULT_.curie('al_sat_meth'),
-                   model_uri=DEFAULT_.al_sat_meth, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.al_sat_meth])
-
-slots.biochem_oxygen_dem = Slot(uri=DEFAULT_.biochem_oxygen_dem, name="biochem_oxygen_dem", curie=DEFAULT_.curie('biochem_oxygen_dem'),
-                   model_uri=DEFAULT_.biochem_oxygen_dem, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.biochem_oxygen_dem],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.chem_oxygen_dem = Slot(uri=DEFAULT_.chem_oxygen_dem, name="chem_oxygen_dem", curie=DEFAULT_.curie('chem_oxygen_dem'),
-                   model_uri=DEFAULT_.chem_oxygen_dem, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.chem_oxygen_dem],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.efficiency_percent = Slot(uri=DEFAULT_.efficiency_percent, name="efficiency_percent", curie=DEFAULT_.curie('efficiency_percent'),
-                   model_uri=DEFAULT_.efficiency_percent, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.efficiency_percent],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.emulsions = Slot(uri=DEFAULT_.emulsions, name="emulsions", curie=DEFAULT_.curie('emulsions'),
-                   model_uri=DEFAULT_.emulsions, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.emulsions])
-
-slots.gaseous_substances = Slot(uri=DEFAULT_.gaseous_substances, name="gaseous_substances", curie=DEFAULT_.curie('gaseous_substances'),
-                   model_uri=DEFAULT_.gaseous_substances, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.gaseous_substances])
-
-slots.indust_eff_percent = Slot(uri=DEFAULT_.indust_eff_percent, name="indust_eff_percent", curie=DEFAULT_.curie('indust_eff_percent'),
-                   model_uri=DEFAULT_.indust_eff_percent, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.indust_eff_percent],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.inorg_particles = Slot(uri=DEFAULT_.inorg_particles, name="inorg_particles", curie=DEFAULT_.curie('inorg_particles'),
-                   model_uri=DEFAULT_.inorg_particles, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.inorg_particles])
-
-slots.org_particles = Slot(uri=DEFAULT_.org_particles, name="org_particles", curie=DEFAULT_.curie('org_particles'),
-                   model_uri=DEFAULT_.org_particles, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.org_particles])
-
-slots.pre_treatment = Slot(uri=DEFAULT_.pre_treatment, name="pre_treatment", curie=DEFAULT_.curie('pre_treatment'),
-                   model_uri=DEFAULT_.pre_treatment, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.pre_treatment])
-
-slots.primary_treatment = Slot(uri=DEFAULT_.primary_treatment, name="primary_treatment", curie=DEFAULT_.curie('primary_treatment'),
-                   model_uri=DEFAULT_.primary_treatment, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.primary_treatment])
-
-slots.reactor_type = Slot(uri=DEFAULT_.reactor_type, name="reactor_type", curie=DEFAULT_.curie('reactor_type'),
-                   model_uri=DEFAULT_.reactor_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.reactor_type])
-
-slots.secondary_treatment = Slot(uri=DEFAULT_.secondary_treatment, name="secondary_treatment", curie=DEFAULT_.curie('secondary_treatment'),
-                   model_uri=DEFAULT_.secondary_treatment, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.secondary_treatment])
-
-slots.sewage_type = Slot(uri=DEFAULT_.sewage_type, name="sewage_type", curie=DEFAULT_.curie('sewage_type'),
-                   model_uri=DEFAULT_.sewage_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.sewage_type])
-
-slots.sludge_retent_time = Slot(uri=DEFAULT_.sludge_retent_time, name="sludge_retent_time", curie=DEFAULT_.curie('sludge_retent_time'),
-                   model_uri=DEFAULT_.sludge_retent_time, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.sludge_retent_time],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.soluble_inorg_mat = Slot(uri=DEFAULT_.soluble_inorg_mat, name="soluble_inorg_mat", curie=DEFAULT_.curie('soluble_inorg_mat'),
-                   model_uri=DEFAULT_.soluble_inorg_mat, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.soluble_inorg_mat])
-
-slots.soluble_org_mat = Slot(uri=DEFAULT_.soluble_org_mat, name="soluble_org_mat", curie=DEFAULT_.curie('soluble_org_mat'),
-                   model_uri=DEFAULT_.soluble_org_mat, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.soluble_org_mat])
-
-slots.tertiary_treatment = Slot(uri=DEFAULT_.tertiary_treatment, name="tertiary_treatment", curie=DEFAULT_.curie('tertiary_treatment'),
-                   model_uri=DEFAULT_.tertiary_treatment, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.tertiary_treatment])
-
-slots.tot_phosphate = Slot(uri=DEFAULT_.tot_phosphate, name="tot_phosphate", curie=DEFAULT_.curie('tot_phosphate'),
-                   model_uri=DEFAULT_.tot_phosphate, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.tot_phosphate],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.wastewater_type = Slot(uri=DEFAULT_.wastewater_type, name="wastewater_type", curie=DEFAULT_.curie('wastewater_type'),
-                   model_uri=DEFAULT_.wastewater_type, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.wastewater_type])
-
-slots.atmospheric_data = Slot(uri=DEFAULT_.atmospheric_data, name="atmospheric_data", curie=DEFAULT_.curie('atmospheric_data'),
-                   model_uri=DEFAULT_.atmospheric_data, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.atmospheric_data])
-
-slots.bac_prod = Slot(uri=DEFAULT_.bac_prod, name="bac_prod", curie=DEFAULT_.curie('bac_prod'),
-                   model_uri=DEFAULT_.bac_prod, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.bac_prod],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.bac_resp = Slot(uri=DEFAULT_.bac_resp, name="bac_resp", curie=DEFAULT_.curie('bac_resp'),
-                   model_uri=DEFAULT_.bac_resp, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.bac_resp],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.conduc = Slot(uri=DEFAULT_.conduc, name="conduc", curie=DEFAULT_.curie('conduc'),
-                   model_uri=DEFAULT_.conduc, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.conduc],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.diss_inorg_nitro = Slot(uri=DEFAULT_.diss_inorg_nitro, name="diss_inorg_nitro", curie=DEFAULT_.curie('diss_inorg_nitro'),
-                   model_uri=DEFAULT_.diss_inorg_nitro, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.diss_inorg_nitro],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.down_par = Slot(uri=DEFAULT_.down_par, name="down_par", curie=DEFAULT_.curie('down_par'),
-                   model_uri=DEFAULT_.down_par, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.down_par],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.fluor = Slot(uri=DEFAULT_.fluor, name="fluor", curie=DEFAULT_.curie('fluor'),
-                   model_uri=DEFAULT_.fluor, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.fluor],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.light_intensity = Slot(uri=DEFAULT_.light_intensity, name="light_intensity", curie=DEFAULT_.curie('light_intensity'),
-                   model_uri=DEFAULT_.light_intensity, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.light_intensity],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.part_org_nitro = Slot(uri=DEFAULT_.part_org_nitro, name="part_org_nitro", curie=DEFAULT_.curie('part_org_nitro'),
-                   model_uri=DEFAULT_.part_org_nitro, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.part_org_nitro],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.photon_flux = Slot(uri=DEFAULT_.photon_flux, name="photon_flux", curie=DEFAULT_.curie('photon_flux'),
-                   model_uri=DEFAULT_.photon_flux, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.photon_flux],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.primary_prod = Slot(uri=DEFAULT_.primary_prod, name="primary_prod", curie=DEFAULT_.curie('primary_prod'),
-                   model_uri=DEFAULT_.primary_prod, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.primary_prod],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.size_frac_low = Slot(uri=DEFAULT_.size_frac_low, name="size_frac_low", curie=DEFAULT_.curie('size_frac_low'),
-                   model_uri=DEFAULT_.size_frac_low, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.size_frac_low],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.size_frac_up = Slot(uri=DEFAULT_.size_frac_up, name="size_frac_up", curie=DEFAULT_.curie('size_frac_up'),
-                   model_uri=DEFAULT_.size_frac_up, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.size_frac_up],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.soluble_react_phosp = Slot(uri=DEFAULT_.soluble_react_phosp, name="soluble_react_phosp", curie=DEFAULT_.curie('soluble_react_phosp'),
-                   model_uri=DEFAULT_.soluble_react_phosp, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.soluble_react_phosp],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.suspend_part_matter = Slot(uri=DEFAULT_.suspend_part_matter, name="suspend_part_matter", curie=DEFAULT_.curie('suspend_part_matter'),
-                   model_uri=DEFAULT_.suspend_part_matter, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.suspend_part_matter],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.tot_diss_nitro = Slot(uri=DEFAULT_.tot_diss_nitro, name="tot_diss_nitro", curie=DEFAULT_.curie('tot_diss_nitro'),
-                   model_uri=DEFAULT_.tot_diss_nitro, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.tot_diss_nitro],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.tot_inorg_nitro = Slot(uri=DEFAULT_.tot_inorg_nitro, name="tot_inorg_nitro", curie=DEFAULT_.curie('tot_inorg_nitro'),
-                   model_uri=DEFAULT_.tot_inorg_nitro, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.tot_inorg_nitro],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
-
-slots.tot_part_carb = Slot(uri=DEFAULT_.tot_part_carb, name="tot_part_carb", curie=DEFAULT_.curie('tot_part_carb'),
-                   model_uri=DEFAULT_.tot_part_carb, domain=None, range=Optional[Union[dict, QuantityValue]], mappings = [MIXS.tot_part_carb],
-                   pattern=re.compile(r'\d+[.\d+] \S+'))
 
 slots.language = Slot(uri=NMDC.language, name="language", curie=NMDC.curie('language'),
                    model_uri=DEFAULT_.language, domain=None, range=Optional[str])
