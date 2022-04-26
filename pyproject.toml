@@ -52,6 +52,8 @@ pymongo = "^4.1.0"
 deepdiff = "^5.8.0"
 strsimpy = "^0.2.1"
 sqldf = "^0.4.2"
+click-log = "^0.4.0"
+pandasql = "^0.7.3"
 
 [tool.poetry.dev-dependencies]
 build = "*"

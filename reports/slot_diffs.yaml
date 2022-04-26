@@ -45,6 +45,8 @@ added:
 - biotic_regm
 - biotic_relationship
 - bishomohopanol
+- blood_press_diast
+- blood_press_syst
 - bromide
 - build_docs
 - build_occup_type
@@ -67,6 +69,7 @@ added:
 - chem_administration
 - chem_mutagen
 - chem_oxygen_dem
+- chem_treat_method
 - chem_treatment
 - chimera_check
 - chloride
@@ -170,6 +173,7 @@ added:
 - hcr_temp
 - heat_cool_type
 - heat_deliv_loc
+- heat_sys_deliv_meth
 - heat_system_id
 - heavy_metals
 - heavy_metals_meth
@@ -186,6 +190,7 @@ added:
 - host_common_name
 - host_diet
 - host_dry_mass
+- host_family_relation
 - host_genotype
 - host_growth_cond
 - host_height
@@ -196,7 +201,9 @@ added:
 - host_sex
 - host_shape
 - host_subject_id
+- host_subspecf_genlin
 - host_substrate
+- host_symbiont
 - host_taxid
 - host_tot_mass
 - host_wet_mass
@@ -229,6 +236,7 @@ added:
 - mech_struc
 - mechanical_damage
 - methane
+- micro_biomass_meth
 - microbial_biomass
 - microbial_biomass_meth
 - mineral_nutr_regm
@@ -237,6 +245,7 @@ added:
 - nitrate
 - nitrite
 - nitro
+- non_min_nutr_regm
 - nucl_acid_amp
 - nucl_acid_ext
 - nucleic acid sequence source field
@@ -247,6 +256,7 @@ added:
 - occup_document
 - occup_samp
 - org_carb
+- org_count_qpcr_info
 - org_matter
 - org_nitro
 - org_particles
@@ -280,7 +290,9 @@ added:
 - potassium
 - pour_point
 - pre_treatment
+- pres_animal_insect
 - pressure
+- prev_land_use_meth
 - previous_land_use
 - previous_land_use_meth
 - primary_prod
@@ -300,6 +312,7 @@ added:
 - reservoir
 - resins_pc
 - room_air_exch_rate
+- room_architec_elem
 - room_condt
 - room_connected
 - room_count
@@ -308,6 +321,7 @@ added:
 - room_door_share
 - room_hallway
 - room_loc
+- room_moist_dam_hist
 - room_net_area
 - room_occup
 - room_samp_pos
@@ -327,12 +341,16 @@ added:
 - salinity_meth
 - salt_regm
 - samp_capt_status
+- samp_collec_device
+- samp_collec_method
 - samp_collect_device
+- samp_collect_point
 - samp_dis_stage
 - samp_floor
 - samp_loc_corr_rate
 - samp_mat_process
 - samp_md
+- samp_name
 - samp_preserv
 - samp_room_id
 - samp_size
@@ -360,6 +378,7 @@ added:
 - seq_quality_check
 - sequencing field
 - sewage_type
+- shad_dev_water_mold
 - shading_device_cond
 - shading_device_loc
 - shading_device_mat
@@ -373,6 +392,9 @@ added:
 - slope_gradient
 - sludge_retent_time
 - sodium
+- soil_horizon
+- soil_text_measure
+- soil_texture_meth
 - soil_type
 - soil_type_meth
 - solar_irradiance
@@ -421,7 +443,6 @@ added:
 - tot_nitro
 - tot_nitro_cont_meth
 - tot_nitro_content
-- tot_nitro_content_meth
 - tot_org_c_meth
 - tot_org_carb
 - tot_part_carb
@@ -432,6 +453,7 @@ added:
 - train_stat_loc
 - train_stop_loc
 - turbidity
+- tvdss_of_hcr_press
 - tvdss_of_hcr_temp
 - typ_occup_density
 - ventilation_rate
@@ -453,11 +475,11 @@ added:
 - wastewater_type
 - water_cont_soil_meth
 - water_content
-- water_content_soil_meth
 - water_current
 - water_cut
 - water_feat_size
 - water_feat_type
+- water_prod_rate
 - water_temp_regm
 - watering_regm
 - weekday
@@ -589,6 +611,7 @@ removed:
 - tax_ident
 - time_last_toothbrush
 - time_since_last_wash
+- tot_nitro_content_meth
 - travel_out_six_month
 - trna_ext_software
 - trnas
@@ -603,6 +626,7 @@ removed:
 - votu_class_appr
 - votu_db
 - votu_seq_comp_appr
+- water_content_soil_meth
 - water_production_rate
 - weight_loss_3_month
 - wga_amp_appr
