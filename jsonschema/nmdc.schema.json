@@ -1230,7 +1230,7 @@
                "type": "array"
             },
             "read_based_analysis_activity_set": {
-               "description": "This property links a database object to the set of read based analysis activities.",
+               "description": "This property links a database object to the set of read based analysis activities.\n  ",
                "items": {
                   "$ref": "#/$defs/ReadBasedAnalysisActivity"
                },
@@ -3238,7 +3238,7 @@
                "type": "string"
             },
             "instrument_name": {
-               "description": "The name of the instrument that was used for processing the sample.",
+               "description": "The name of the instrument that was used for processing the sample.\n   ",
                "type": "string"
             },
             "mod_date": {
@@ -4298,14 +4298,6 @@
          "additionalProperties": false,
          "description": "A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.",
          "properties": {
-            "GOLD_sample_identifiers": {
-               "description": "identifiers for corresponding sample in GOLD",
-               "items": {
-                  "type": "string"
-               },
-               "pattern": "^GOLD:Gb[0-9]+$",
-               "type": "array"
-            },
             "GOLD_study_identifiers": {
                "description": "identifiers for corresponding project in GOLD",
                "items": {
@@ -4420,9 +4412,6 @@
             },
             "name": {
                "description": "A human readable label for an entity",
-               "type": "string"
-            },
-            "notes": {
                "type": "string"
             },
             "objective": {
@@ -5039,7 +5028,7 @@
          "type": "array"
       },
       "read_based_analysis_activity_set": {
-         "description": "This property links a database object to the set of read based analysis activities.",
+         "description": "This property links a database object to the set of read based analysis activities.\n  ",
          "items": {
             "$ref": "#/$defs/ReadBasedAnalysisActivity"
          },
