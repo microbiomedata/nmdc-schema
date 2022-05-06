@@ -1,5 +1,0 @@
-name: websites
-description: A list of websites that are associated with the entity.
-from_schema: https://microbiomedata/schema/core
-multivalued: true
-range: string
