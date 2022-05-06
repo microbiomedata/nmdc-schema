@@ -230,3 +230,51 @@ validate-%: test/data/%.json jsonschema/nmdc.schema.json
 
 validate-invalid-%: test/data/invalid_schemas/%.json jsonschema/nmdc.schema.json
 	! $(RUN) jsonschema -i $< $(word 2, $^)
+
+# ---
+
+reports/slot_roster.tsv:
+	poetry run python util/slot_roster.py \
+		--input_paths "mixs/model/schema/mixs.yaml" \
+		--input_paths "src/schema/nmdc.yaml" \
+		--input_paths "https://raw.githubusercontent.com/microbiomedata/sheets_and_friends/issue-100-netlify-linkml-datastructure/artifacts/nmdc_dh.yaml" \
+		--output_tsv $@
+
+src/schema/mixs_new.yaml: reports/slot_roster.tsv
+	poetry run python util/rebuild_mixs_yaml.py \
+		--use_legacy "is_a" \
+		--use_legacy "multivalued" \
+		--use_legacy "range" \
+		--output_yaml $@ \
+		--legacy_see_also "https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py" \
+		--slot_roster_tsv_in $< \
+		--legacy_mixs_module_in src/schema/mixs_legacy.yaml\
+		--current_mixs_root_in mixs/model/schema/mixs.yaml \
+		--current_nmdc_root_in src/schema/nmdc.yaml
+	cp $@ src/schema/mixs.yaml
+
+reports/slot_annotations_diffs.tsv: src/schema/mixs_new.yaml
+	poetry run python util/mixs_deep_diff.py \
+		--include_descriptions True \
+		--shingle_size 2 \
+		--slot_diff_yaml_out reports/slot_diffs.yaml \
+		--anno_diff_tsv_out $@ \
+		--legacy_mixs_module_in src/schema/mixs_legacy.yaml \
+		--current_mixs_module_in $<
+
+.PHONY: post_test mixs_clean
+
+post_test: clean mixs_clean reports/slot_annotations_diffs.tsv all
+	cp python/nmdc.py nmdc_schema/nmdc.py
+	poetry run python biosamples_from_NMDC_api.py
+	# todo add check over omics processings too?
+
+mixs_clean:
+	rm -rf reports/slot_annotations_diffs.tsv
+	rm -rf reports/slot_diffs.yaml
+	rm -rf reports/slot_roster.tsv
+	rm -rf src/schema/mixs*yaml
+	curl -o src/schema/mixs.yaml https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+	curl -o src/schema/nmdc.yaml https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml
+	curl -o nmdc_schema/nmdc.py https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/nmdc_schema/nmdc.py
+	cp src/schema/mixs.yaml src/schema/mixs_legacy.yaml
