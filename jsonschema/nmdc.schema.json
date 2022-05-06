@@ -1230,7 +1230,7 @@
                "type": "array"
             },
             "read_based_analysis_activity_set": {
-               "description": "This property links a database object to the set of read based analysis activities.\n  ",
+               "description": "This property links a database object to the set of read based analysis activities.",
                "items": {
                   "$ref": "#/$defs/ReadBasedAnalysisActivity"
                },
@@ -3238,7 +3238,7 @@
                "type": "string"
             },
             "instrument_name": {
-               "description": "The name of the instrument that was used for processing the sample.\n   ",
+               "description": "The name of the instrument that was used for processing the sample.",
                "type": "string"
             },
             "mod_date": {
@@ -3509,15 +3509,15 @@
                "type": "string"
             },
             "has_raw_value": {
-               "description": "The full name of the Investgator in format FIRST LAST.",
+               "description": "The full name of the Investigator in format FIRST LAST.",
                "type": "string"
             },
             "name": {
-               "description": "The full name of the Investgator. It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.",
+               "description": "The full name of the Investigator. It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.",
                "type": "string"
             },
             "orcid": {
-               "description": "The ORICD of a person.",
+               "description": "The ORCID of a person.",
                "type": "string"
             },
             "profile_image_url": {
@@ -3532,7 +3532,7 @@
                "type": "string"
             },
             "websites": {
-               "description": "A list of websites that are assocatiated with the entity.",
+               "description": "A list of websites that are associated with the entity.",
                "items": {
                   "type": "string"
                },
@@ -4298,6 +4298,14 @@
          "additionalProperties": false,
          "description": "A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.",
          "properties": {
+            "GOLD_sample_identifiers": {
+               "description": "identifiers for corresponding sample in GOLD",
+               "items": {
+                  "type": "string"
+               },
+               "pattern": "^GOLD:Gb[0-9]+$",
+               "type": "array"
+            },
             "GOLD_study_identifiers": {
                "description": "identifiers for corresponding project in GOLD",
                "items": {
@@ -4335,7 +4343,7 @@
                "type": "string"
             },
             "alternative_descriptions": {
-               "description": "A list of alternative descriptions for the entity. The distinction between desciption and alternative descriptions is application-specific.",
+               "description": "A list of alternative descriptions for the entity. The distinction between description and alternative descriptions is application-specific.",
                "items": {
                   "type": "string"
                },
@@ -4414,6 +4422,9 @@
                "description": "A human readable label for an entity",
                "type": "string"
             },
+            "notes": {
+               "type": "string"
+            },
             "objective": {
                "description": "The scientific objectives associated with the entity. It SHOULD correspond to scientific norms for objectives field in a structured abstract.",
                "type": "string"
@@ -4423,7 +4434,7 @@
                "description": "Principal Investigator who led the study and/or generated the dataset."
             },
             "publications": {
-               "description": "A list of publications that are assocatiated with the entity. The publicatons SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.",
+               "description": "A list of publications that are associated with the entity. The publications SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.",
                "items": {
                   "type": "string"
                },
@@ -4447,7 +4458,7 @@
                "type": "array"
             },
             "title": {
-               "description": "A name given to the entity that differs from the name/label programatically assigned to it. For example, when extracting study information for GOLD, the GOLD system has assigned a name/label. However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.",
+               "description": "A name given to the entity that differs from the name/label programmatically assigned to it. For example, when extracting study information for GOLD, the GOLD system has assigned a name/label. However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.",
                "type": "string"
             },
             "type": {
@@ -4455,7 +4466,7 @@
                "type": "string"
             },
             "websites": {
-               "description": "A list of websites that are assocatiated with the entity.",
+               "description": "A list of websites that are associated with the entity.",
                "items": {
                   "type": "string"
                },
@@ -5028,7 +5039,7 @@
          "type": "array"
       },
       "read_based_analysis_activity_set": {
-         "description": "This property links a database object to the set of read based analysis activities.\n  ",
+         "description": "This property links a database object to the set of read based analysis activities.",
          "items": {
             "$ref": "#/$defs/ReadBasedAnalysisActivity"
          },

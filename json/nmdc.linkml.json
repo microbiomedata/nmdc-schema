@@ -1,6 +1,6 @@
 {
   "name": "NMDC",
-  "description": "Schema for National Microbiome Data Collaborative (NMDC).\n  \nThis schema is organized into distinct modules:\n  \n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself",
+  "description": "Schema for National Microbiome Data Collaborative (NMDC).\nThis schema is organized into distinct modules:\n\n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself",
   "title": "NMDC Schema",
   "id": "https://microbiomedata/schema",
   "version": "2.1.0",
@@ -3480,6 +3480,12 @@
     },
     "has credit associations": {
       "name": "has credit associations",
+      "annotations": {
+        "display_hint": {
+          "tag": "display_hint",
+          "value": "Other researchers associated with this study."
+        }
+      },
       "description": "This slot links a study to a credit association.  The credit association will be linked to a person value and to a CRediT Contributor Roles term. Overall semantics: person should get credit X for their participation in the study",
       "from_schema": "https://microbiomedata/schema",
       "domain": "study",
@@ -3521,6 +3527,12 @@
     },
     "applied roles": {
       "name": "applied roles",
+      "annotations": {
+        "display_hint": {
+          "tag": "display_hint",
+          "value": "Identify all CRediT roles associated with this contributor. CRediT Information: https://info.orcid.org/credit-for-research-contribution ; CRediT: https://credit.niso.org/"
+        }
+      },
       "from_schema": "https://microbiomedata/schema",
       "domain": "credit association",
       "multivalued": true,
@@ -3693,7 +3705,7 @@
     },
     "read based analysis activity set": {
       "name": "read based analysis activity set",
-      "description": "This property links a database object to the set of read based analysis activities.\n  ",
+      "description": "This property links a database object to the set of read based analysis activities.",
       "from_schema": "https://microbiomedata/schema",
       "mixins": [
         "object set"
@@ -3768,12 +3780,12 @@
     },
     "instrument_name": {
       "name": "instrument_name",
-      "description": "The name of the instrument that was used for processing the sample.\n   ",
+      "description": "The name of the instrument that was used for processing the sample.",
       "from_schema": "https://microbiomedata/schema"
     },
     "gold_path_field": {
       "name": "gold_path_field",
-      "description": "This is a grouping for any of the gold path fields          ",
+      "description": "This is a grouping for any of the gold path fields",
       "from_schema": "https://microbiomedata/schema",
       "is_a": "attribute",
       "abstract": true,
@@ -4423,7 +4435,7 @@
     },
     "orcid": {
       "name": "orcid",
-      "description": "The ORICD of a person.",
+      "description": "The ORCID of a person.",
       "from_schema": "https://microbiomedata/schema",
       "domain": "person value",
       "range": "string"
@@ -4555,14 +4567,14 @@
     },
     "websites": {
       "name": "websites",
-      "description": "A list of websites that are assocatiated with the entity.",
+      "description": "A list of websites that are associated with the entity.",
       "from_schema": "https://microbiomedata/schema",
       "multivalued": true,
       "range": "string"
     },
     "publications": {
       "name": "publications",
-      "description": "A list of publications that are assocatiated with the entity. The publicatons SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.",
+      "description": "A list of publications that are associated with the entity. The publications SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.",
       "from_schema": "https://microbiomedata/schema",
       "multivalued": true,
       "range": "string"
@@ -4674,7 +4686,7 @@
       "exact_mappings": [
         "dcterms:title"
       ],
-      "description": "A name given to the entity that differs from the name/label programatically assigned to it. For example, when extracting study information for GOLD, the GOLD system has assigned a name/label. However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.",
+      "description": "A name given to the entity that differs from the name/label programmatically assigned to it. For example, when extracting study information for GOLD, the GOLD system has assigned a name/label. However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.",
       "from_schema": "https://microbiomedata/schema",
       "multivalued": false,
       "range": "string"
@@ -4702,7 +4714,7 @@
     },
     "alternative descriptions": {
       "name": "alternative descriptions",
-      "description": "A list of alternative descriptions for the entity. The distinction between desciption and alternative descriptions is application-specific.",
+      "description": "A list of alternative descriptions for the entity. The distinction between description and alternative descriptions is application-specific.",
       "from_schema": "https://microbiomedata/schema",
       "multivalued": true,
       "range": "string"
@@ -21229,7 +21241,7 @@
         },
         "read based analysis activity set": {
           "name": "read based analysis activity set",
-          "description": "This property links a database object to the set of read based analysis activities.\n  ",
+          "description": "This property links a database object to the set of read based analysis activities.",
           "from_schema": "https://microbiomedata/schema",
           "mixins": [
             "object set"
@@ -21607,8 +21619,10 @@
         "tot_org_carb",
         "tot_org_c_meth",
         "tot_nitro_content",
+        "tot_nitro_cont_meth",
         "tot_phosp",
         "water_content",
+        "water_cont_soil_meth",
         "ecosystem",
         "ecosystem_category",
         "ecosystem_type",
@@ -21631,9 +21645,7 @@
         "subsurface_depth2",
         "GOLD sample identifiers",
         "INSDC biosample identifiers",
-        "INSDC secondary sample identifiers",
-        "tot_nitro_cont_meth",
-        "water_cont_soil_meth"
+        "INSDC secondary sample identifiers"
       ],
       "slot_usage": {
         "lat_lon": {
@@ -25564,6 +25576,40 @@
           "owner": "biosample",
           "range": "quantity value"
         },
+        "tot_nitro_cont_meth": {
+          "name": "tot_nitro_cont_meth",
+          "aliases": [
+            "total nitrogen content method"
+          ],
+          "annotations": {
+            "expected_value": {
+              "tag": "expected_value",
+              "value": "PMID,DOI or url"
+            },
+            "occurrence": {
+              "tag": "occurrence",
+              "value": "1"
+            },
+            "mixs_5_name": {
+              "tag": "mixs_5_name",
+              "value": "tot_nitro_content_meth"
+            }
+          },
+          "description": "Reference or method used in determining the total nitrogen",
+          "title": "total nitrogen content method",
+          "from_schema": "https://microbiomedata/schema",
+          "source": "http://w3id.org/mixs/terms",
+          "see_also": [
+            "https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py"
+          ],
+          "is_a": "core field",
+          "string_serialization": "{PMID}|{DOI}|{URL}",
+          "slot_uri": "MIXS:0000338",
+          "multivalued": false,
+          "alias": "tot_nitro_cont_meth",
+          "owner": "biosample",
+          "range": "string"
+        },
         "tot_phosp": {
           "name": "tot_phosp",
           "aliases": [
@@ -25634,6 +25680,40 @@
           "alias": "water_content",
           "owner": "biosample",
           "range": "quantity value"
+        },
+        "water_cont_soil_meth": {
+          "name": "water_cont_soil_meth",
+          "aliases": [
+            "water content method"
+          ],
+          "annotations": {
+            "expected_value": {
+              "tag": "expected_value",
+              "value": "PMID,DOI or url"
+            },
+            "occurrence": {
+              "tag": "occurrence",
+              "value": "1"
+            },
+            "mixs_5_name": {
+              "tag": "mixs_5_name",
+              "value": "water_content_soil_meth"
+            }
+          },
+          "description": "Reference or method used in determining the water content of soil",
+          "title": "water content method",
+          "from_schema": "https://microbiomedata/schema",
+          "source": "http://w3id.org/mixs/terms",
+          "see_also": [
+            "https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py"
+          ],
+          "is_a": "core field",
+          "string_serialization": "{PMID}|{DOI}|{URL}",
+          "slot_uri": "MIXS:0000323",
+          "multivalued": false,
+          "alias": "water_cont_soil_meth",
+          "owner": "biosample",
+          "range": "string"
         },
         "ecosystem": {
           "name": "ecosystem",
@@ -25898,74 +25978,6 @@
           "range": "external identifier",
           "pattern": "^biosample:(E|D|S)RS[0-9]{6,}$"
         },
-        "tot_nitro_cont_meth": {
-          "name": "tot_nitro_cont_meth",
-          "aliases": [
-            "total nitrogen content method"
-          ],
-          "annotations": {
-            "expected_value": {
-              "tag": "expected_value",
-              "value": "PMID,DOI or url"
-            },
-            "occurrence": {
-              "tag": "occurrence",
-              "value": "1"
-            },
-            "mixs_5_name": {
-              "tag": "mixs_5_name",
-              "value": "tot_nitro_content_meth"
-            }
-          },
-          "description": "Reference or method used in determining the total nitrogen",
-          "title": "total nitrogen content method",
-          "from_schema": "https://microbiomedata/schema",
-          "source": "http://w3id.org/mixs/terms",
-          "see_also": [
-            "https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py"
-          ],
-          "is_a": "core field",
-          "string_serialization": "{PMID}|{DOI}|{URL}",
-          "slot_uri": "MIXS:0000338",
-          "multivalued": false,
-          "alias": "tot_nitro_cont_meth",
-          "owner": "biosample",
-          "range": "string"
-        },
-        "water_cont_soil_meth": {
-          "name": "water_cont_soil_meth",
-          "aliases": [
-            "water content method"
-          ],
-          "annotations": {
-            "expected_value": {
-              "tag": "expected_value",
-              "value": "PMID,DOI or url"
-            },
-            "occurrence": {
-              "tag": "occurrence",
-              "value": "1"
-            },
-            "mixs_5_name": {
-              "tag": "mixs_5_name",
-              "value": "water_content_soil_meth"
-            }
-          },
-          "description": "Reference or method used in determining the water content of soil",
-          "title": "water content method",
-          "from_schema": "https://microbiomedata/schema",
-          "source": "http://w3id.org/mixs/terms",
-          "see_also": [
-            "https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py"
-          ],
-          "is_a": "core field",
-          "string_serialization": "{PMID}|{DOI}|{URL}",
-          "slot_uri": "MIXS:0000323",
-          "multivalued": false,
-          "alias": "water_cont_soil_meth",
-          "owner": "biosample",
-          "range": "string"
-        },
         "id": {
           "name": "id",
           "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
@@ -26025,7 +26037,7 @@
       "broad_mappings": [
         "prov:Activity"
       ],
-      "description": "A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.  ",
+      "description": "A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.",
       "alt_descriptions": {
         "embl.ena": {
           "source": "embl.ena",
@@ -26071,7 +26083,76 @@
       "slot_usage": {
         "doi": {
           "name": "doi",
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "DOI associated with the data in this study. This is required when data is already generated."
+            }
+          },
           "description": "The dataset citation for this study"
+        },
+        "name": {
+          "name": "name",
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "Provide a name for the study your samples will belong with."
+            }
+          }
+        },
+        "websites": {
+          "name": "websites",
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "Link to the Principal Investigator's research lab webpage  or the study webpage associated with this collection of samples.  Multiple links can be provided."
+            }
+          }
+        },
+        "description": {
+          "name": "description",
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "Provide a brief description of your study."
+            }
+          }
+        },
+        "notes": {
+          "name": "notes",
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "Add any additional notes or comments about this study."
+            }
+          }
+        },
+        "alternative names": {
+          "name": "alternative names",
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "Project, study, or sample set names the are also associated with this submission  or other names / identifiers for this study."
+            }
+          }
+        },
+        "GOLD sample identifiers": {
+          "name": "GOLD sample identifiers",
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "Provide the GOLD study IDs associated with samples for this study."
+            }
+          }
+        },
+        "INSDC bioproject identifiers": {
+          "name": "INSDC bioproject identifiers",
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title."
+            }
+          }
         }
       },
       "attributes": {
@@ -26164,6 +26245,12 @@
         },
         "doi": {
           "name": "doi",
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "DOI associated with the data in this study. This is required when data is already generated."
+            }
+          },
           "description": "The dataset citation for this study",
           "from_schema": "https://microbiomedata/schema",
           "is_a": "attribute",
@@ -26176,7 +26263,7 @@
           "exact_mappings": [
             "dcterms:title"
           ],
-          "description": "A name given to the entity that differs from the name/label programatically assigned to it. For example, when extracting study information for GOLD, the GOLD system has assigned a name/label. However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.",
+          "description": "A name given to the entity that differs from the name/label programmatically assigned to it. For example, when extracting study information for GOLD, the GOLD system has assigned a name/label. However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.",
           "from_schema": "https://microbiomedata/schema",
           "multivalued": false,
           "alias": "title",
@@ -26197,7 +26284,7 @@
         },
         "alternative descriptions": {
           "name": "alternative descriptions",
-          "description": "A list of alternative descriptions for the entity. The distinction between desciption and alternative descriptions is application-specific.",
+          "description": "A list of alternative descriptions for the entity. The distinction between description and alternative descriptions is application-specific.",
           "from_schema": "https://microbiomedata/schema",
           "multivalued": true,
           "alias": "alternative_descriptions",
@@ -26206,10 +26293,12 @@
         },
         "alternative names": {
           "name": "alternative names",
-          "exact_mappings": [
-            "dcterms:alternative",
-            "skos:altLabel"
-          ],
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "Project, study, or sample set names the are also associated with this submission  or other names / identifiers for this study."
+            }
+          },
           "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.",
           "from_schema": "https://microbiomedata/schema",
           "multivalued": true,
@@ -26242,7 +26331,13 @@
         },
         "websites": {
           "name": "websites",
-          "description": "A list of websites that are assocatiated with the entity.",
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "Link to the Principal Investigator's research lab webpage  or the study webpage associated with this collection of samples.  Multiple links can be provided."
+            }
+          },
+          "description": "A list of websites that are associated with the entity.",
           "from_schema": "https://microbiomedata/schema",
           "multivalued": true,
           "alias": "websites",
@@ -26251,7 +26346,7 @@
         },
         "publications": {
           "name": "publications",
-          "description": "A list of publications that are assocatiated with the entity. The publicatons SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.",
+          "description": "A list of publications that are associated with the entity. The publications SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.",
           "from_schema": "https://microbiomedata/schema",
           "multivalued": true,
           "alias": "publications",
@@ -26303,29 +26398,15 @@
         },
         "INSDC bioproject identifiers": {
           "name": "INSDC bioproject identifiers",
-          "aliases": [
-            "NCBI bioproject identifiers",
-            "DDBJ bioproject identifiers"
-          ],
-          "description": "identifiers for corresponding project in INSDC Bioproject",
-          "comments": [
-            "these are distinct IDs from INSDC SRA/ENA project identifiers, but are usually(?) one to one"
-          ],
-          "examples": [
-            {
-              "value": "https://identifiers.org/bioproject:PRJNA366857",
-              "description": "Avena fatua rhizosphere microbial communities - H1_Rhizo_Litter_2 metatranscriptome"
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title."
             }
-          ],
+          },
+          "description": "identifiers for corresponding project in INSDC Bioproject",
           "from_schema": "https://microbiomedata/schema",
-          "see_also": [
-            "https://www.ncbi.nlm.nih.gov/bioproject/",
-            "https://www.ddbj.nig.ac.jp/bioproject/index-e.html"
-          ],
           "is_a": "study identifiers",
-          "mixins": [
-            "INSDC identifiers"
-          ],
           "multivalued": true,
           "alias": "INSDC_bioproject_identifiers",
           "owner": "study",
@@ -26402,6 +26483,12 @@
         },
         "has credit associations": {
           "name": "has credit associations",
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "Other researchers associated with this study."
+            }
+          },
           "description": "This slot links a study to a credit association.  The credit association will be linked to a person value and to a CRediT Contributor Roles term. Overall semantics: person should get credit X for their participation in the study",
           "from_schema": "https://microbiomedata/schema",
           "domain": "study",
@@ -26435,6 +26522,12 @@
         },
         "name": {
           "name": "name",
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "Provide a name for the study your samples will belong with."
+            }
+          },
           "description": "A human readable label for an entity",
           "from_schema": "https://microbiomedata/schema",
           "multivalued": false,
@@ -26444,6 +26537,12 @@
         },
         "description": {
           "name": "description",
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "Provide a brief description of your study."
+            }
+          },
           "description": "a human-readable description of a thing",
           "from_schema": "https://microbiomedata/schema",
           "slot_uri": "dcterms:description",
@@ -26634,7 +26733,7 @@
         },
         "instrument_name": {
           "name": "instrument_name",
-          "description": "The name of the instrument that was used for processing the sample.\n   ",
+          "description": "The name of the instrument that was used for processing the sample.",
           "from_schema": "https://microbiomedata/schema",
           "alias": "instrument_name",
           "owner": "omics processing",
@@ -27107,7 +27206,7 @@
         "credit table",
         "associated researchers"
       ],
-      "description": "This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role (https://casrai.org/credit/) and for a person value Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0 ",
+      "description": "This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role (https://casrai.org/credit/) and for a person value Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0",
       "from_schema": "https://microbiomedata/schema",
       "slots": [
         "applies to person",
@@ -27144,6 +27243,12 @@
         },
         "applied roles": {
           "name": "applied roles",
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "Identify all CRediT roles associated with this contributor. CRediT Information: https://info.orcid.org/credit-for-research-contribution ; CRediT: https://credit.niso.org/"
+            }
+          },
           "from_schema": "https://microbiomedata/schema",
           "domain": "credit association",
           "multivalued": true,
@@ -27523,22 +27628,52 @@
         "websites"
       ],
       "slot_usage": {
+        "orcid": {
+          "name": "orcid",
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "Open Researcher and Contributor ID for this person. See https://orcid.org"
+            }
+          }
+        },
+        "email": {
+          "name": "email",
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "Email address for this person."
+            }
+          }
+        },
         "has raw value": {
           "name": "has raw value",
-          "description": "The full name of the Investgator in format FIRST LAST.",
+          "description": "The full name of the Investigator in format FIRST LAST.",
           "notes": [
             "May eventually be deprecated in favor of \"name\"."
           ]
         },
         "name": {
           "name": "name",
-          "description": "The full name of the Investgator. It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional."
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "First name, middle initial, and last name of this person."
+            }
+          },
+          "description": "The full name of the Investigator. It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional."
         }
       },
       "attributes": {
         "orcid": {
           "name": "orcid",
-          "description": "The ORICD of a person.",
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "Open Researcher and Contributor ID for this person. See https://orcid.org"
+            }
+          },
+          "description": "The ORCID of a person.",
           "from_schema": "https://microbiomedata/schema",
           "domain": "person value",
           "alias": "orcid",
@@ -27556,6 +27691,12 @@
         },
         "email": {
           "name": "email",
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "Email address for this person."
+            }
+          },
           "description": "An email address for an entity such as a person. This should be the primarly email address used.",
           "from_schema": "https://microbiomedata/schema",
           "slot_uri": "schema:email",
@@ -27565,7 +27706,13 @@
         },
         "name": {
           "name": "name",
-          "description": "The full name of the Investgator. It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.",
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "First name, middle initial, and last name of this person."
+            }
+          },
+          "description": "The full name of the Investigator. It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.",
           "from_schema": "https://microbiomedata/schema",
           "multivalued": false,
           "alias": "name",
@@ -27574,7 +27721,7 @@
         },
         "websites": {
           "name": "websites",
-          "description": "A list of websites that are assocatiated with the entity.",
+          "description": "A list of websites that are associated with the entity.",
           "from_schema": "https://microbiomedata/schema",
           "multivalued": true,
           "alias": "websites",
@@ -27583,7 +27730,7 @@
         },
         "has raw value": {
           "name": "has raw value",
-          "description": "The full name of the Investgator in format FIRST LAST.",
+          "description": "The full name of the Investigator in format FIRST LAST.",
           "notes": [
             "May eventually be deprecated in favor of \"name\"."
           ],

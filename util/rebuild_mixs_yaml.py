@@ -51,13 +51,13 @@ click_log.basic_config(logger)
 @click.option("--current_mixs_root_in", "-c", required=True)
 @click.option("--current_nmdc_root_in", "-c", required=True)
 def cli(
-        use_legacy,
-        output_yaml,
-        legacy_see_also,
-        slot_roster_tsv_in,
-        legacy_mixs_module_in,
-        current_mixs_root_in,
-        current_nmdc_root_in
+    use_legacy,
+    output_yaml,
+    legacy_see_also,
+    slot_roster_tsv_in,
+    legacy_mixs_module_in,
+    current_mixs_root_in,
+    current_nmdc_root_in,
 ):
     logger.info("getting started")
     mixs_5_view = SchemaView(legacy_mixs_module_in)
@@ -109,13 +109,17 @@ def cli(
     # now_available.to_csv("now_available.csv")
     na_set = set(now_available["slot"])
 
-    legacy_or_dh = set(legacy_mixs_usage['slot']).union(set(from_dh['slot']))
+    legacy_or_dh = set(legacy_mixs_usage["slot"]).union(set(from_dh["slot"]))
 
     l_o_d_available = legacy_or_dh.intersection(na_set)
     # l_o_d_available = l_o_d_available - set('air_particulate_matter_concentration')
     l_o_d_available = list(l_o_d_available)
-    l_o_d_available = [i for i in l_o_d_available if
-                       i != 'air_particulate_matter_concentration' and i != 'air particulate matter concentration']
+    l_o_d_available = [
+        i
+        for i in l_o_d_available
+        if i != "air_particulate_matter_concentration"
+        and i != "air particulate matter concentration"
+    ]
     l_o_d_available.sort()
 
     #     # print(slot_roster_frame['no_good_match'].value_counts(dropna=False))
@@ -134,6 +138,10 @@ def cli(
     # ---
     # these slots are already being used in mongodb, but are no longer defined in MIxS 6 or later
     # just salvage them from MIxS 5
+
+    if "no_good_match" not in slot_roster_frame:
+        slot_roster_frame["no_good_match"] = ""
+
     salvage_from_legacy = slot_roster_frame.loc[
         slot_roster_frame["no_good_match"].eq(1)
         & slot_roster_frame["schema"].eq("NMDC")
@@ -144,6 +152,9 @@ def cli(
     salvage_from_legacy.drop_duplicates(inplace=True)
     salvage_from_legacy = list(salvage_from_legacy["slot_raw"])
 
+    if "match" not in slot_roster_frame:
+        slot_roster_frame["match"] = ""
+
     replace_with_new = slot_roster_frame.loc[
         slot_roster_frame["match"].str.len()
         > 0
@@ -152,7 +163,7 @@ def cli(
         ["class", "slot_raw", "match"],
     ]
 
-    rwn_lod = replace_with_new.to_dict(orient='records')
+    rwn_lod = replace_with_new.to_dict(orient="records")
 
     # todo opening with SchemaView description.
     #  do this manually, with yq, or glom?
@@ -174,7 +185,7 @@ def cli(
 
     # todo save to a different file?
     #  flow style?
-    with open(current_nmdc_root_in, 'w') as outfile:
+    with open(current_nmdc_root_in, "w") as outfile:
         yaml.dump(nmdc_dict, outfile, default_flow_style=False, sort_keys=False)
 
     # shoot, that mangles the schema description, too
