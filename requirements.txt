@@ -1,7 +1,0 @@
-linkml >= 1.1.9
-jq
-mkdocs
-pandoc
-twine
-build
-wheel

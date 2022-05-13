@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-04-26T12:28:07
+# Generation date: 2022-05-06T11:22:11
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -7442,6 +7442,12 @@ slots.quantity_value_has_unit = Slot(uri=NMDC.has_unit, name="quantity value_has
 
 slots.quantity_value_has_numeric_value = Slot(uri=NMDC.has_numeric_value, name="quantity value_has numeric value", curie=NMDC.curie('has_numeric_value'),
                    model_uri=NMDC.quantity_value_has_numeric_value, domain=QuantityValue, range=Optional[float], mappings = [QUD.quantityValue, SCHEMA.value])
+
+slots.person_value_orcid = Slot(uri=NMDC.orcid, name="person value_orcid", curie=NMDC.curie('orcid'),
+                   model_uri=NMDC.person_value_orcid, domain=PersonValue, range=Optional[str])
+
+slots.person_value_email = Slot(uri=SCHEMA.email, name="person value_email", curie=SCHEMA.curie('email'),
+                   model_uri=NMDC.person_value_email, domain=PersonValue, range=Optional[str])
 
 slots.person_value_has_raw_value = Slot(uri=NMDC.has_raw_value, name="person value_has raw value", curie=NMDC.curie('has_raw_value'),
                    model_uri=NMDC.person_value_has_raw_value, domain=PersonValue, range=Optional[str])

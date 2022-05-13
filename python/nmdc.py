@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-05-06T10:24:26
+# Generation date: 2022-05-06T11:22:11
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -603,10 +603,8 @@ class Biosample(NamedThing):
     tot_org_carb: Optional[Union[dict, "QuantityValue"]] = None
     tot_org_c_meth: Optional[Union[dict, "TextValue"]] = None
     tot_nitro_content: Optional[Union[dict, "QuantityValue"]] = None
-    tot_nitro_cont_meth: Optional[str] = None
     tot_phosp: Optional[Union[dict, "QuantityValue"]] = None
     water_content: Optional[Union[dict, "QuantityValue"]] = None
-    water_cont_soil_meth: Optional[str] = None
     ecosystem: Optional[str] = None
     ecosystem_category: Optional[str] = None
     ecosystem_type: Optional[str] = None
@@ -630,6 +628,8 @@ class Biosample(NamedThing):
     GOLD_sample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     INSDC_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     INSDC_secondary_sample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    tot_nitro_cont_meth: Optional[str] = None
+    water_cont_soil_meth: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -998,17 +998,11 @@ class Biosample(NamedThing):
         if self.tot_nitro_content is not None and not isinstance(self.tot_nitro_content, QuantityValue):
             self.tot_nitro_content = QuantityValue(**as_dict(self.tot_nitro_content))
 
-        if self.tot_nitro_cont_meth is not None and not isinstance(self.tot_nitro_cont_meth, str):
-            self.tot_nitro_cont_meth = str(self.tot_nitro_cont_meth)
-
         if self.tot_phosp is not None and not isinstance(self.tot_phosp, QuantityValue):
             self.tot_phosp = QuantityValue(**as_dict(self.tot_phosp))
 
         if self.water_content is not None and not isinstance(self.water_content, QuantityValue):
             self.water_content = QuantityValue(**as_dict(self.water_content))
-
-        if self.water_cont_soil_meth is not None and not isinstance(self.water_cont_soil_meth, str):
-            self.water_cont_soil_meth = str(self.water_cont_soil_meth)
 
         if self.ecosystem is not None and not isinstance(self.ecosystem, str):
             self.ecosystem = str(self.ecosystem)
@@ -1082,6 +1076,12 @@ class Biosample(NamedThing):
             self.INSDC_secondary_sample_identifiers = [self.INSDC_secondary_sample_identifiers] if self.INSDC_secondary_sample_identifiers is not None else []
         self.INSDC_secondary_sample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.INSDC_secondary_sample_identifiers]
 
+        if self.tot_nitro_cont_meth is not None and not isinstance(self.tot_nitro_cont_meth, str):
+            self.tot_nitro_cont_meth = str(self.tot_nitro_cont_meth)
+
+        if self.water_cont_soil_meth is not None and not isinstance(self.water_cont_soil_meth, str):
+            self.water_cont_soil_meth = str(self.water_cont_soil_meth)
+
         super().__post_init__(**kwargs)
 
 
@@ -1124,10 +1124,6 @@ class Study(NamedThing):
     MGnify_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     has_credit_associations: Optional[Union[Union[dict, "CreditAssociation"], List[Union[dict, "CreditAssociation"]]]] = empty_list()
     study_image: Optional[Union[Union[dict, "ImageValue"], List[Union[dict, "ImageValue"]]]] = empty_list()
-    name: Optional[str] = None
-    description: Optional[str] = None
-    notes: Optional[str] = None
-    GOLD_sample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1221,19 +1217,6 @@ class Study(NamedThing):
         if not isinstance(self.study_image, list):
             self.study_image = [self.study_image] if self.study_image is not None else []
         self.study_image = [v if isinstance(v, ImageValue) else ImageValue(**as_dict(v)) for v in self.study_image]
-
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if self.notes is not None and not isinstance(self.notes, str):
-            self.notes = str(self.notes)
-
-        if not isinstance(self.GOLD_sample_identifiers, list):
-            self.GOLD_sample_identifiers = [self.GOLD_sample_identifiers] if self.GOLD_sample_identifiers is not None else []
-        self.GOLD_sample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.GOLD_sample_identifiers]
 
         super().__post_init__(**kwargs)
 
@@ -7292,9 +7275,6 @@ slots.date_created = Slot(uri=NMDC.date_created, name="date created", curie=NMDC
 slots.etl_software_version = Slot(uri=NMDC.etl_software_version, name="etl software version", curie=NMDC.curie('etl_software_version'),
                    model_uri=NMDC.etl_software_version, domain=None, range=Optional[str])
 
-slots.notes = Slot(uri=NMDC.notes, name="notes", curie=NMDC.curie('notes'),
-                   model_uri=NMDC.notes, domain=None, range=Optional[str])
-
 slots.metabolite_quantified = Slot(uri=NMDC.metabolite_quantified, name="metabolite quantified", curie=NMDC.curie('metabolite_quantified'),
                    model_uri=NMDC.metabolite_quantified, domain=None, range=Optional[Union[str, ChemicalEntityId]])
 
@@ -7444,29 +7424,6 @@ slots.biosample_part_of = Slot(uri=DCTERMS.isPartOf, name="biosample_part of", c
 
 slots.study_doi = Slot(uri=NMDC.doi, name="study_doi", curie=NMDC.curie('doi'),
                    model_uri=NMDC.study_doi, domain=Study, range=Optional[Union[dict, "AttributeValue"]])
-
-slots.study_name = Slot(uri=NMDC.name, name="study_name", curie=NMDC.curie('name'),
-                   model_uri=NMDC.study_name, domain=Study, range=Optional[str])
-
-slots.study_websites = Slot(uri=NMDC.websites, name="study_websites", curie=NMDC.curie('websites'),
-                   model_uri=NMDC.study_websites, domain=Study, range=Optional[Union[str, List[str]]])
-
-slots.study_description = Slot(uri=DCTERMS.description, name="study_description", curie=DCTERMS.curie('description'),
-                   model_uri=NMDC.study_description, domain=Study, range=Optional[str])
-
-slots.study_notes = Slot(uri=NMDC.notes, name="study_notes", curie=NMDC.curie('notes'),
-                   model_uri=NMDC.study_notes, domain=Study, range=Optional[str])
-
-slots.study_alternative_names = Slot(uri=NMDC.alternative_names, name="study_alternative names", curie=NMDC.curie('alternative_names'),
-                   model_uri=NMDC.study_alternative_names, domain=Study, range=Optional[Union[str, List[str]]])
-
-slots.study_GOLD_sample_identifiers = Slot(uri=NMDC.GOLD_sample_identifiers, name="study_GOLD sample identifiers", curie=NMDC.curie('GOLD_sample_identifiers'),
-                   model_uri=NMDC.study_GOLD_sample_identifiers, domain=Study, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^GOLD:Gb[0-9]+$'))
-
-slots.study_INSDC_bioproject_identifiers = Slot(uri=NMDC.INSDC_bioproject_identifiers, name="study_INSDC bioproject identifiers", curie=NMDC.curie('INSDC_bioproject_identifiers'),
-                   model_uri=NMDC.study_INSDC_bioproject_identifiers, domain=Study, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^bioproject:PRJ[DEN][A-Z][0-9]+$'))
 
 slots.biosample_processing_has_input = Slot(uri=NMDC.has_input, name="biosample processing_has input", curie=NMDC.curie('has_input'),
                    model_uri=NMDC.biosample_processing_has_input, domain=BiosampleProcessing, range=Optional[Union[Union[str, BiosampleId], List[Union[str, BiosampleId]]]])

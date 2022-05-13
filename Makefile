@@ -269,12 +269,19 @@ post_test: clean mixs_clean reports/slot_annotations_diffs.tsv all
 	poetry run python biosamples_from_NMDC_api.py
 	# todo add check over omics processings too?
 
+reference_commit=dbbf2f85b676daa35af78992c2649a68457cae21
+# main
+# release 3.2.0 = dbbf2f85b676daa35af78992c2649a68457cae21
+
 mixs_clean:
 	rm -rf reports/slot_annotations_diffs.tsv
 	rm -rf reports/slot_diffs.yaml
 	rm -rf reports/slot_roster.tsv
 	rm -rf src/schema/mixs*yaml
-	curl -o src/schema/mixs.yaml https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
-	curl -o src/schema/nmdc.yaml https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml
-	curl -o nmdc_schema/nmdc.py https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/nmdc_schema/nmdc.py
+	# ensure that we are comparing against the current main
+	#   not some local junk
+	#   OR could compare against some other branch, commit, etc.
+	curl -o src/schema/mixs.yaml https://raw.githubusercontent.com/microbiomedata/nmdc-schema/$(reference_commit)/src/schema/mixs.yaml
+	curl -o src/schema/nmdc.yaml https://raw.githubusercontent.com/microbiomedata/nmdc-schema/$(reference_commit)/src/schema/nmdc.yaml
+	curl -o nmdc_schema/nmdc.py https://raw.githubusercontent.com/microbiomedata/nmdc-schema/$(reference_commit)/nmdc_schema/nmdc.py
 	cp src/schema/mixs.yaml src/schema/mixs_legacy.yaml
