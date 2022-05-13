@@ -1,4 +1,3 @@
-import pprint
 
 import pandas as pd
 from linkml_runtime import SchemaView
@@ -175,12 +174,15 @@ def cli(
             logger.warning(exc)
 
     for i in rwn_lod:
-        logger.info(i)
-        temp = nmdc_dict["classes"][i["class"]]["slots"]
-        # pprint.pprint(temp)
-        temp.remove(i["slot_raw"])
-        temp.append(i["match"])
-        nmdc_dict["classes"][i["class"]]["slots"] = temp
+        try:
+            logger.info(i)
+            temp = nmdc_dict['classes'][i['class']]['slots']
+            temp.remove(i['slot_raw'])
+            temp.append(i['match'])
+            nmdc_dict['classes'][i['class']]['slots'] = temp
+        except ValueError:
+            logger.error(f"'slot_row' not in {i}")
+
     # todo save to a different file?
     #  flow style?
     with open(current_nmdc_root_in, "w") as outfile:
@@ -269,9 +271,6 @@ def cli(
                     current_use_legacy
                 ] = mixs_5_view.schema.slots[current_slot_name][current_use_legacy]
         rebuild_mixs_schema.slots[current_slot_name].see_also.append(legacy_see_also)
-
-    # todo this is way too ad-hoc
-    rebuild_mixs_schema.slots["add_recov_method"].pattern = None
 
     yaml_dumper.dump(rebuild_mixs_schema, output_yaml)
 
