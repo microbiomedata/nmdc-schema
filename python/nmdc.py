@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-05-13T08:53:19
+# Generation date: 2022-05-25T12:54:44
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -630,6 +630,68 @@ class Biosample(NamedThing):
     GOLD_sample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     INSDC_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     INSDC_secondary_sample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    dna_absorb1: Optional[str] = None
+    dna_absorb2: Optional[str] = None
+    dna_collect_site: Optional[str] = None
+    dna_concentration: Optional[str] = None
+    dna_cont_type: Optional[Union[str, "DnaContTypeEnum"]] = None
+    dna_cont_well: Optional[str] = None
+    dna_container_ID: Optional[str] = None
+    dna_dnase: Optional[Union[str, "DnaDnaseEnum"]] = None
+    dna_isolate_meth: Optional[str] = None
+    dna_organisms: Optional[str] = None
+    dna_project_contact: Optional[str] = None
+    dna_samp_ID: Optional[str] = None
+    dna_sample_format: Optional[Union[str, "DnaSampleFormatEnum"]] = None
+    dna_sample_name: Optional[str] = None
+    dna_seq_project: Optional[str] = None
+    dna_seq_project_PI: Optional[str] = None
+    dna_seq_project_name: Optional[str] = None
+    dna_volume: Optional[str] = None
+    proposal_dna: Optional[str] = None
+    dnase_rna: Optional[Union[str, "DnaseRnaEnum"]] = None
+    proposal_rna: Optional[str] = None
+    rna_absorb1: Optional[str] = None
+    rna_absorb2: Optional[str] = None
+    rna_collect_site: Optional[str] = None
+    rna_concentration: Optional[str] = None
+    rna_cont_type: Optional[Union[str, "RnaContTypeEnum"]] = None
+    rna_cont_well: Optional[str] = None
+    rna_container_ID: Optional[str] = None
+    rna_isolate_meth: Optional[str] = None
+    rna_organisms: Optional[str] = None
+    rna_project_contact: Optional[str] = None
+    rna_samp_ID: Optional[str] = None
+    rna_sample_format: Optional[Union[str, "RnaSampleFormatEnum"]] = None
+    rna_sample_name: Optional[str] = None
+    rna_seq_project: Optional[str] = None
+    rna_seq_project_PI: Optional[str] = None
+    rna_seq_project_name: Optional[str] = None
+    rna_volume: Optional[str] = None
+    collection_date_inc: Optional[str] = None
+    collection_time: Optional[str] = None
+    collection_time_inc: Optional[str] = None
+    experimental_factor_other: Optional[str] = None
+    filter_method: Optional[str] = None
+    isotope_exposure: Optional[str] = None
+    micro_biomass_C_meth: Optional[str] = None
+    micro_biomass_N_meth: Optional[str] = None
+    microbial_biomass_C: Optional[str] = None
+    microbial_biomass_N: Optional[str] = None
+    non_microb_biomass: Optional[str] = None
+    non_microb_biomass_method: Optional[str] = None
+    org_nitro_method: Optional[str] = None
+    other_treatment: Optional[str] = None
+    start_date_inc: Optional[str] = None
+    start_time_inc: Optional[str] = None
+    EMSL_store_temp: Optional[str] = None
+    project_ID: Optional[str] = None
+    replicate_number: Optional[str] = None
+    sample_shipped: Optional[str] = None
+    sample_type: Optional[Union[str, "SampleTypeEnum"]] = None
+    technical_reps: Optional[str] = None
+    analysis_type: Optional[Union[Union[str, "AnalysisTypeEnum"], List[Union[str, "AnalysisTypeEnum"]]]] = empty_list()
+    sample_link: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1081,6 +1143,193 @@ class Biosample(NamedThing):
         if not isinstance(self.INSDC_secondary_sample_identifiers, list):
             self.INSDC_secondary_sample_identifiers = [self.INSDC_secondary_sample_identifiers] if self.INSDC_secondary_sample_identifiers is not None else []
         self.INSDC_secondary_sample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.INSDC_secondary_sample_identifiers]
+
+        if self.dna_absorb1 is not None and not isinstance(self.dna_absorb1, str):
+            self.dna_absorb1 = str(self.dna_absorb1)
+
+        if self.dna_absorb2 is not None and not isinstance(self.dna_absorb2, str):
+            self.dna_absorb2 = str(self.dna_absorb2)
+
+        if self.dna_collect_site is not None and not isinstance(self.dna_collect_site, str):
+            self.dna_collect_site = str(self.dna_collect_site)
+
+        if self.dna_concentration is not None and not isinstance(self.dna_concentration, str):
+            self.dna_concentration = str(self.dna_concentration)
+
+        if self.dna_cont_type is not None and not isinstance(self.dna_cont_type, DnaContTypeEnum):
+            self.dna_cont_type = DnaContTypeEnum(self.dna_cont_type)
+
+        if self.dna_cont_well is not None and not isinstance(self.dna_cont_well, str):
+            self.dna_cont_well = str(self.dna_cont_well)
+
+        if self.dna_container_ID is not None and not isinstance(self.dna_container_ID, str):
+            self.dna_container_ID = str(self.dna_container_ID)
+
+        if self.dna_dnase is not None and not isinstance(self.dna_dnase, DnaDnaseEnum):
+            self.dna_dnase = DnaDnaseEnum(self.dna_dnase)
+
+        if self.dna_isolate_meth is not None and not isinstance(self.dna_isolate_meth, str):
+            self.dna_isolate_meth = str(self.dna_isolate_meth)
+
+        if self.dna_organisms is not None and not isinstance(self.dna_organisms, str):
+            self.dna_organisms = str(self.dna_organisms)
+
+        if self.dna_project_contact is not None and not isinstance(self.dna_project_contact, str):
+            self.dna_project_contact = str(self.dna_project_contact)
+
+        if self.dna_samp_ID is not None and not isinstance(self.dna_samp_ID, str):
+            self.dna_samp_ID = str(self.dna_samp_ID)
+
+        if self.dna_sample_format is not None and not isinstance(self.dna_sample_format, DnaSampleFormatEnum):
+            self.dna_sample_format = DnaSampleFormatEnum(self.dna_sample_format)
+
+        if self.dna_sample_name is not None and not isinstance(self.dna_sample_name, str):
+            self.dna_sample_name = str(self.dna_sample_name)
+
+        if self.dna_seq_project is not None and not isinstance(self.dna_seq_project, str):
+            self.dna_seq_project = str(self.dna_seq_project)
+
+        if self.dna_seq_project_PI is not None and not isinstance(self.dna_seq_project_PI, str):
+            self.dna_seq_project_PI = str(self.dna_seq_project_PI)
+
+        if self.dna_seq_project_name is not None and not isinstance(self.dna_seq_project_name, str):
+            self.dna_seq_project_name = str(self.dna_seq_project_name)
+
+        if self.dna_volume is not None and not isinstance(self.dna_volume, str):
+            self.dna_volume = str(self.dna_volume)
+
+        if self.proposal_dna is not None and not isinstance(self.proposal_dna, str):
+            self.proposal_dna = str(self.proposal_dna)
+
+        if self.dnase_rna is not None and not isinstance(self.dnase_rna, DnaseRnaEnum):
+            self.dnase_rna = DnaseRnaEnum(self.dnase_rna)
+
+        if self.proposal_rna is not None and not isinstance(self.proposal_rna, str):
+            self.proposal_rna = str(self.proposal_rna)
+
+        if self.rna_absorb1 is not None and not isinstance(self.rna_absorb1, str):
+            self.rna_absorb1 = str(self.rna_absorb1)
+
+        if self.rna_absorb2 is not None and not isinstance(self.rna_absorb2, str):
+            self.rna_absorb2 = str(self.rna_absorb2)
+
+        if self.rna_collect_site is not None and not isinstance(self.rna_collect_site, str):
+            self.rna_collect_site = str(self.rna_collect_site)
+
+        if self.rna_concentration is not None and not isinstance(self.rna_concentration, str):
+            self.rna_concentration = str(self.rna_concentration)
+
+        if self.rna_cont_type is not None and not isinstance(self.rna_cont_type, RnaContTypeEnum):
+            self.rna_cont_type = RnaContTypeEnum(self.rna_cont_type)
+
+        if self.rna_cont_well is not None and not isinstance(self.rna_cont_well, str):
+            self.rna_cont_well = str(self.rna_cont_well)
+
+        if self.rna_container_ID is not None and not isinstance(self.rna_container_ID, str):
+            self.rna_container_ID = str(self.rna_container_ID)
+
+        if self.rna_isolate_meth is not None and not isinstance(self.rna_isolate_meth, str):
+            self.rna_isolate_meth = str(self.rna_isolate_meth)
+
+        if self.rna_organisms is not None and not isinstance(self.rna_organisms, str):
+            self.rna_organisms = str(self.rna_organisms)
+
+        if self.rna_project_contact is not None and not isinstance(self.rna_project_contact, str):
+            self.rna_project_contact = str(self.rna_project_contact)
+
+        if self.rna_samp_ID is not None and not isinstance(self.rna_samp_ID, str):
+            self.rna_samp_ID = str(self.rna_samp_ID)
+
+        if self.rna_sample_format is not None and not isinstance(self.rna_sample_format, RnaSampleFormatEnum):
+            self.rna_sample_format = RnaSampleFormatEnum(self.rna_sample_format)
+
+        if self.rna_sample_name is not None and not isinstance(self.rna_sample_name, str):
+            self.rna_sample_name = str(self.rna_sample_name)
+
+        if self.rna_seq_project is not None and not isinstance(self.rna_seq_project, str):
+            self.rna_seq_project = str(self.rna_seq_project)
+
+        if self.rna_seq_project_PI is not None and not isinstance(self.rna_seq_project_PI, str):
+            self.rna_seq_project_PI = str(self.rna_seq_project_PI)
+
+        if self.rna_seq_project_name is not None and not isinstance(self.rna_seq_project_name, str):
+            self.rna_seq_project_name = str(self.rna_seq_project_name)
+
+        if self.rna_volume is not None and not isinstance(self.rna_volume, str):
+            self.rna_volume = str(self.rna_volume)
+
+        if self.collection_date_inc is not None and not isinstance(self.collection_date_inc, str):
+            self.collection_date_inc = str(self.collection_date_inc)
+
+        if self.collection_time is not None and not isinstance(self.collection_time, str):
+            self.collection_time = str(self.collection_time)
+
+        if self.collection_time_inc is not None and not isinstance(self.collection_time_inc, str):
+            self.collection_time_inc = str(self.collection_time_inc)
+
+        if self.experimental_factor_other is not None and not isinstance(self.experimental_factor_other, str):
+            self.experimental_factor_other = str(self.experimental_factor_other)
+
+        if self.filter_method is not None and not isinstance(self.filter_method, str):
+            self.filter_method = str(self.filter_method)
+
+        if self.isotope_exposure is not None and not isinstance(self.isotope_exposure, str):
+            self.isotope_exposure = str(self.isotope_exposure)
+
+        if self.micro_biomass_C_meth is not None and not isinstance(self.micro_biomass_C_meth, str):
+            self.micro_biomass_C_meth = str(self.micro_biomass_C_meth)
+
+        if self.micro_biomass_N_meth is not None and not isinstance(self.micro_biomass_N_meth, str):
+            self.micro_biomass_N_meth = str(self.micro_biomass_N_meth)
+
+        if self.microbial_biomass_C is not None and not isinstance(self.microbial_biomass_C, str):
+            self.microbial_biomass_C = str(self.microbial_biomass_C)
+
+        if self.microbial_biomass_N is not None and not isinstance(self.microbial_biomass_N, str):
+            self.microbial_biomass_N = str(self.microbial_biomass_N)
+
+        if self.non_microb_biomass is not None and not isinstance(self.non_microb_biomass, str):
+            self.non_microb_biomass = str(self.non_microb_biomass)
+
+        if self.non_microb_biomass_method is not None and not isinstance(self.non_microb_biomass_method, str):
+            self.non_microb_biomass_method = str(self.non_microb_biomass_method)
+
+        if self.org_nitro_method is not None and not isinstance(self.org_nitro_method, str):
+            self.org_nitro_method = str(self.org_nitro_method)
+
+        if self.other_treatment is not None and not isinstance(self.other_treatment, str):
+            self.other_treatment = str(self.other_treatment)
+
+        if self.start_date_inc is not None and not isinstance(self.start_date_inc, str):
+            self.start_date_inc = str(self.start_date_inc)
+
+        if self.start_time_inc is not None and not isinstance(self.start_time_inc, str):
+            self.start_time_inc = str(self.start_time_inc)
+
+        if self.EMSL_store_temp is not None and not isinstance(self.EMSL_store_temp, str):
+            self.EMSL_store_temp = str(self.EMSL_store_temp)
+
+        if self.project_ID is not None and not isinstance(self.project_ID, str):
+            self.project_ID = str(self.project_ID)
+
+        if self.replicate_number is not None and not isinstance(self.replicate_number, str):
+            self.replicate_number = str(self.replicate_number)
+
+        if self.sample_shipped is not None and not isinstance(self.sample_shipped, str):
+            self.sample_shipped = str(self.sample_shipped)
+
+        if self.sample_type is not None and not isinstance(self.sample_type, SampleTypeEnum):
+            self.sample_type = SampleTypeEnum(self.sample_type)
+
+        if self.technical_reps is not None and not isinstance(self.technical_reps, str):
+            self.technical_reps = str(self.technical_reps)
+
+        if not isinstance(self.analysis_type, list):
+            self.analysis_type = [self.analysis_type] if self.analysis_type is not None else []
+        self.analysis_type = [v if isinstance(v, AnalysisTypeEnum) else AnalysisTypeEnum(v) for v in self.analysis_type]
+
+        if self.sample_link is not None and not isinstance(self.sample_link, str):
+            self.sample_link = str(self.sample_link)
 
         super().__post_init__(**kwargs)
 
@@ -5190,6 +5439,113 @@ class WindowVertPosEnum(EnumDefinitionImpl):
         name="WindowVertPosEnum",
     )
 
+class SampleTypeEnum(EnumDefinitionImpl):
+
+    soil = PermissibleValue(text="soil")
+    water_extract_soil = PermissibleValue(text="water_extract_soil")
+
+    _defn = EnumDefinition(
+        name="SampleTypeEnum",
+    )
+
+class DnaContTypeEnum(EnumDefinitionImpl):
+
+    plate = PermissibleValue(text="plate")
+    tube = PermissibleValue(text="tube")
+
+    _defn = EnumDefinition(
+        name="DnaContTypeEnum",
+    )
+
+class DnaDnaseEnum(EnumDefinitionImpl):
+
+    no = PermissibleValue(text="no")
+    yes = PermissibleValue(text="yes")
+
+    _defn = EnumDefinition(
+        name="DnaDnaseEnum",
+    )
+
+class DnaSampleFormatEnum(EnumDefinitionImpl):
+
+    DNAStable = PermissibleValue(text="DNAStable")
+    Ethanol = PermissibleValue(text="Ethanol")
+    PBS = PermissibleValue(text="PBS")
+    Pellet = PermissibleValue(text="Pellet")
+    RNAStable = PermissibleValue(text="RNAStable")
+    TE = PermissibleValue(text="TE")
+    Water = PermissibleValue(text="Water")
+
+    _defn = EnumDefinition(
+        name="DnaSampleFormatEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "10 mM Tris-HCl",
+                PermissibleValue(text="10 mM Tris-HCl") )
+        setattr(cls, "Low EDTA TE",
+                PermissibleValue(text="Low EDTA TE") )
+        setattr(cls, "MDA reaction buffer",
+                PermissibleValue(text="MDA reaction buffer") )
+
+class DnaseRnaEnum(EnumDefinitionImpl):
+
+    no = PermissibleValue(text="no")
+    yes = PermissibleValue(text="yes")
+
+    _defn = EnumDefinition(
+        name="DnaseRnaEnum",
+    )
+
+class RnaContTypeEnum(EnumDefinitionImpl):
+
+    plate = PermissibleValue(text="plate")
+    tube = PermissibleValue(text="tube")
+
+    _defn = EnumDefinition(
+        name="RnaContTypeEnum",
+    )
+
+class RnaSampleFormatEnum(EnumDefinitionImpl):
+
+    DNAStable = PermissibleValue(text="DNAStable")
+    Ethanol = PermissibleValue(text="Ethanol")
+    PBS = PermissibleValue(text="PBS")
+    Pellet = PermissibleValue(text="Pellet")
+    RNAStable = PermissibleValue(text="RNAStable")
+    TE = PermissibleValue(text="TE")
+    Water = PermissibleValue(text="Water")
+
+    _defn = EnumDefinition(
+        name="RnaSampleFormatEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "10 mM Tris-HCl",
+                PermissibleValue(text="10 mM Tris-HCl") )
+        setattr(cls, "Low EDTA TE",
+                PermissibleValue(text="Low EDTA TE") )
+        setattr(cls, "MDA reaction buffer",
+                PermissibleValue(text="MDA reaction buffer") )
+
+class AnalysisTypeEnum(EnumDefinitionImpl):
+
+    metabolomics = PermissibleValue(text="metabolomics")
+    metagenomics = PermissibleValue(text="metagenomics")
+    metaproteomics = PermissibleValue(text="metaproteomics")
+    metatranscriptomics = PermissibleValue(text="metatranscriptomics")
+
+    _defn = EnumDefinition(
+        name="AnalysisTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "natural organic matter",
+                PermissibleValue(text="natural organic matter") )
+
 # Slots
 class slots:
     pass
@@ -7204,6 +7560,192 @@ slots.assembly_identifiers = Slot(uri=NMDC.assembly_identifiers, name="assembly 
 slots.INSDC_assembly_identifiers = Slot(uri=NMDC.INSDC_assembly_identifiers, name="INSDC assembly identifiers", curie=NMDC.curie('INSDC_assembly_identifiers'),
                    model_uri=NMDC.INSDC_assembly_identifiers, domain=None, range=Optional[str],
                    pattern=re.compile(r'^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$'))
+
+slots.EMSL_store_temp = Slot(uri=NMDC.EMSL_store_temp, name="EMSL_store_temp", curie=NMDC.curie('EMSL_store_temp'),
+                   model_uri=NMDC.EMSL_store_temp, domain=None, range=Optional[str])
+
+slots.project_ID = Slot(uri=NMDC.project_ID, name="project_ID", curie=NMDC.curie('project_ID'),
+                   model_uri=NMDC.project_ID, domain=None, range=Optional[str])
+
+slots.replicate_number = Slot(uri=NMDC.replicate_number, name="replicate_number", curie=NMDC.curie('replicate_number'),
+                   model_uri=NMDC.replicate_number, domain=None, range=Optional[str])
+
+slots.sample_shipped = Slot(uri=NMDC.sample_shipped, name="sample_shipped", curie=NMDC.curie('sample_shipped'),
+                   model_uri=NMDC.sample_shipped, domain=None, range=Optional[str])
+
+slots.sample_type = Slot(uri=NMDC.sample_type, name="sample_type", curie=NMDC.curie('sample_type'),
+                   model_uri=NMDC.sample_type, domain=None, range=Optional[Union[str, "SampleTypeEnum"]])
+
+slots.technical_reps = Slot(uri=NMDC.technical_reps, name="technical_reps", curie=NMDC.curie('technical_reps'),
+                   model_uri=NMDC.technical_reps, domain=None, range=Optional[str])
+
+slots.dna_absorb1 = Slot(uri=NMDC.dna_absorb1, name="dna_absorb1", curie=NMDC.curie('dna_absorb1'),
+                   model_uri=NMDC.dna_absorb1, domain=None, range=Optional[str])
+
+slots.dna_absorb2 = Slot(uri=NMDC.dna_absorb2, name="dna_absorb2", curie=NMDC.curie('dna_absorb2'),
+                   model_uri=NMDC.dna_absorb2, domain=None, range=Optional[str])
+
+slots.dna_collect_site = Slot(uri=NMDC.dna_collect_site, name="dna_collect_site", curie=NMDC.curie('dna_collect_site'),
+                   model_uri=NMDC.dna_collect_site, domain=None, range=Optional[str])
+
+slots.dna_concentration = Slot(uri=NMDC.dna_concentration, name="dna_concentration", curie=NMDC.curie('dna_concentration'),
+                   model_uri=NMDC.dna_concentration, domain=None, range=Optional[str])
+
+slots.dna_cont_type = Slot(uri=NMDC.dna_cont_type, name="dna_cont_type", curie=NMDC.curie('dna_cont_type'),
+                   model_uri=NMDC.dna_cont_type, domain=None, range=Optional[Union[str, "DnaContTypeEnum"]])
+
+slots.dna_cont_well = Slot(uri=NMDC.dna_cont_well, name="dna_cont_well", curie=NMDC.curie('dna_cont_well'),
+                   model_uri=NMDC.dna_cont_well, domain=None, range=Optional[str])
+
+slots.dna_container_ID = Slot(uri=NMDC.dna_container_ID, name="dna_container_ID", curie=NMDC.curie('dna_container_ID'),
+                   model_uri=NMDC.dna_container_ID, domain=None, range=Optional[str])
+
+slots.dna_dnase = Slot(uri=NMDC.dna_dnase, name="dna_dnase", curie=NMDC.curie('dna_dnase'),
+                   model_uri=NMDC.dna_dnase, domain=None, range=Optional[Union[str, "DnaDnaseEnum"]])
+
+slots.dna_isolate_meth = Slot(uri=NMDC.dna_isolate_meth, name="dna_isolate_meth", curie=NMDC.curie('dna_isolate_meth'),
+                   model_uri=NMDC.dna_isolate_meth, domain=None, range=Optional[str])
+
+slots.dna_organisms = Slot(uri=NMDC.dna_organisms, name="dna_organisms", curie=NMDC.curie('dna_organisms'),
+                   model_uri=NMDC.dna_organisms, domain=None, range=Optional[str])
+
+slots.dna_project_contact = Slot(uri=NMDC.dna_project_contact, name="dna_project_contact", curie=NMDC.curie('dna_project_contact'),
+                   model_uri=NMDC.dna_project_contact, domain=None, range=Optional[str])
+
+slots.dna_samp_ID = Slot(uri=NMDC.dna_samp_ID, name="dna_samp_ID", curie=NMDC.curie('dna_samp_ID'),
+                   model_uri=NMDC.dna_samp_ID, domain=None, range=Optional[str])
+
+slots.dna_sample_format = Slot(uri=NMDC.dna_sample_format, name="dna_sample_format", curie=NMDC.curie('dna_sample_format'),
+                   model_uri=NMDC.dna_sample_format, domain=None, range=Optional[Union[str, "DnaSampleFormatEnum"]])
+
+slots.dna_sample_name = Slot(uri=NMDC.dna_sample_name, name="dna_sample_name", curie=NMDC.curie('dna_sample_name'),
+                   model_uri=NMDC.dna_sample_name, domain=None, range=Optional[str])
+
+slots.dna_seq_project = Slot(uri=NMDC.dna_seq_project, name="dna_seq_project", curie=NMDC.curie('dna_seq_project'),
+                   model_uri=NMDC.dna_seq_project, domain=None, range=Optional[str])
+
+slots.dna_seq_project_PI = Slot(uri=NMDC.dna_seq_project_PI, name="dna_seq_project_PI", curie=NMDC.curie('dna_seq_project_PI'),
+                   model_uri=NMDC.dna_seq_project_PI, domain=None, range=Optional[str])
+
+slots.dna_seq_project_name = Slot(uri=NMDC.dna_seq_project_name, name="dna_seq_project_name", curie=NMDC.curie('dna_seq_project_name'),
+                   model_uri=NMDC.dna_seq_project_name, domain=None, range=Optional[str])
+
+slots.dna_volume = Slot(uri=NMDC.dna_volume, name="dna_volume", curie=NMDC.curie('dna_volume'),
+                   model_uri=NMDC.dna_volume, domain=None, range=Optional[str])
+
+slots.proposal_dna = Slot(uri=NMDC.proposal_dna, name="proposal_dna", curie=NMDC.curie('proposal_dna'),
+                   model_uri=NMDC.proposal_dna, domain=None, range=Optional[str])
+
+slots.dnase_rna = Slot(uri=NMDC.dnase_rna, name="dnase_rna", curie=NMDC.curie('dnase_rna'),
+                   model_uri=NMDC.dnase_rna, domain=None, range=Optional[Union[str, "DnaseRnaEnum"]])
+
+slots.proposal_rna = Slot(uri=NMDC.proposal_rna, name="proposal_rna", curie=NMDC.curie('proposal_rna'),
+                   model_uri=NMDC.proposal_rna, domain=None, range=Optional[str])
+
+slots.rna_absorb1 = Slot(uri=NMDC.rna_absorb1, name="rna_absorb1", curie=NMDC.curie('rna_absorb1'),
+                   model_uri=NMDC.rna_absorb1, domain=None, range=Optional[str])
+
+slots.rna_absorb2 = Slot(uri=NMDC.rna_absorb2, name="rna_absorb2", curie=NMDC.curie('rna_absorb2'),
+                   model_uri=NMDC.rna_absorb2, domain=None, range=Optional[str])
+
+slots.rna_collect_site = Slot(uri=NMDC.rna_collect_site, name="rna_collect_site", curie=NMDC.curie('rna_collect_site'),
+                   model_uri=NMDC.rna_collect_site, domain=None, range=Optional[str])
+
+slots.rna_concentration = Slot(uri=NMDC.rna_concentration, name="rna_concentration", curie=NMDC.curie('rna_concentration'),
+                   model_uri=NMDC.rna_concentration, domain=None, range=Optional[str])
+
+slots.rna_cont_type = Slot(uri=NMDC.rna_cont_type, name="rna_cont_type", curie=NMDC.curie('rna_cont_type'),
+                   model_uri=NMDC.rna_cont_type, domain=None, range=Optional[Union[str, "RnaContTypeEnum"]])
+
+slots.rna_cont_well = Slot(uri=NMDC.rna_cont_well, name="rna_cont_well", curie=NMDC.curie('rna_cont_well'),
+                   model_uri=NMDC.rna_cont_well, domain=None, range=Optional[str])
+
+slots.rna_container_ID = Slot(uri=NMDC.rna_container_ID, name="rna_container_ID", curie=NMDC.curie('rna_container_ID'),
+                   model_uri=NMDC.rna_container_ID, domain=None, range=Optional[str])
+
+slots.rna_isolate_meth = Slot(uri=NMDC.rna_isolate_meth, name="rna_isolate_meth", curie=NMDC.curie('rna_isolate_meth'),
+                   model_uri=NMDC.rna_isolate_meth, domain=None, range=Optional[str])
+
+slots.rna_organisms = Slot(uri=NMDC.rna_organisms, name="rna_organisms", curie=NMDC.curie('rna_organisms'),
+                   model_uri=NMDC.rna_organisms, domain=None, range=Optional[str])
+
+slots.rna_project_contact = Slot(uri=NMDC.rna_project_contact, name="rna_project_contact", curie=NMDC.curie('rna_project_contact'),
+                   model_uri=NMDC.rna_project_contact, domain=None, range=Optional[str])
+
+slots.rna_samp_ID = Slot(uri=NMDC.rna_samp_ID, name="rna_samp_ID", curie=NMDC.curie('rna_samp_ID'),
+                   model_uri=NMDC.rna_samp_ID, domain=None, range=Optional[str])
+
+slots.rna_sample_format = Slot(uri=NMDC.rna_sample_format, name="rna_sample_format", curie=NMDC.curie('rna_sample_format'),
+                   model_uri=NMDC.rna_sample_format, domain=None, range=Optional[Union[str, "RnaSampleFormatEnum"]])
+
+slots.rna_sample_name = Slot(uri=NMDC.rna_sample_name, name="rna_sample_name", curie=NMDC.curie('rna_sample_name'),
+                   model_uri=NMDC.rna_sample_name, domain=None, range=Optional[str])
+
+slots.rna_seq_project = Slot(uri=NMDC.rna_seq_project, name="rna_seq_project", curie=NMDC.curie('rna_seq_project'),
+                   model_uri=NMDC.rna_seq_project, domain=None, range=Optional[str])
+
+slots.rna_seq_project_PI = Slot(uri=NMDC.rna_seq_project_PI, name="rna_seq_project_PI", curie=NMDC.curie('rna_seq_project_PI'),
+                   model_uri=NMDC.rna_seq_project_PI, domain=None, range=Optional[str])
+
+slots.rna_seq_project_name = Slot(uri=NMDC.rna_seq_project_name, name="rna_seq_project_name", curie=NMDC.curie('rna_seq_project_name'),
+                   model_uri=NMDC.rna_seq_project_name, domain=None, range=Optional[str])
+
+slots.rna_volume = Slot(uri=NMDC.rna_volume, name="rna_volume", curie=NMDC.curie('rna_volume'),
+                   model_uri=NMDC.rna_volume, domain=None, range=Optional[str])
+
+slots.collection_date_inc = Slot(uri=NMDC.collection_date_inc, name="collection_date_inc", curie=NMDC.curie('collection_date_inc'),
+                   model_uri=NMDC.collection_date_inc, domain=None, range=Optional[str])
+
+slots.collection_time = Slot(uri=NMDC.collection_time, name="collection_time", curie=NMDC.curie('collection_time'),
+                   model_uri=NMDC.collection_time, domain=None, range=Optional[str])
+
+slots.collection_time_inc = Slot(uri=NMDC.collection_time_inc, name="collection_time_inc", curie=NMDC.curie('collection_time_inc'),
+                   model_uri=NMDC.collection_time_inc, domain=None, range=Optional[str])
+
+slots.experimental_factor_other = Slot(uri=NMDC.experimental_factor_other, name="experimental_factor_other", curie=NMDC.curie('experimental_factor_other'),
+                   model_uri=NMDC.experimental_factor_other, domain=None, range=Optional[str])
+
+slots.filter_method = Slot(uri=NMDC.filter_method, name="filter_method", curie=NMDC.curie('filter_method'),
+                   model_uri=NMDC.filter_method, domain=None, range=Optional[str])
+
+slots.isotope_exposure = Slot(uri=NMDC.isotope_exposure, name="isotope_exposure", curie=NMDC.curie('isotope_exposure'),
+                   model_uri=NMDC.isotope_exposure, domain=None, range=Optional[str])
+
+slots.micro_biomass_C_meth = Slot(uri=NMDC.micro_biomass_C_meth, name="micro_biomass_C_meth", curie=NMDC.curie('micro_biomass_C_meth'),
+                   model_uri=NMDC.micro_biomass_C_meth, domain=None, range=Optional[str])
+
+slots.micro_biomass_N_meth = Slot(uri=NMDC.micro_biomass_N_meth, name="micro_biomass_N_meth", curie=NMDC.curie('micro_biomass_N_meth'),
+                   model_uri=NMDC.micro_biomass_N_meth, domain=None, range=Optional[str])
+
+slots.microbial_biomass_C = Slot(uri=NMDC.microbial_biomass_C, name="microbial_biomass_C", curie=NMDC.curie('microbial_biomass_C'),
+                   model_uri=NMDC.microbial_biomass_C, domain=None, range=Optional[str])
+
+slots.microbial_biomass_N = Slot(uri=NMDC.microbial_biomass_N, name="microbial_biomass_N", curie=NMDC.curie('microbial_biomass_N'),
+                   model_uri=NMDC.microbial_biomass_N, domain=None, range=Optional[str])
+
+slots.non_microb_biomass = Slot(uri=NMDC.non_microb_biomass, name="non_microb_biomass", curie=NMDC.curie('non_microb_biomass'),
+                   model_uri=NMDC.non_microb_biomass, domain=None, range=Optional[str])
+
+slots.non_microb_biomass_method = Slot(uri=NMDC.non_microb_biomass_method, name="non_microb_biomass_method", curie=NMDC.curie('non_microb_biomass_method'),
+                   model_uri=NMDC.non_microb_biomass_method, domain=None, range=Optional[str])
+
+slots.org_nitro_method = Slot(uri=NMDC.org_nitro_method, name="org_nitro_method", curie=NMDC.curie('org_nitro_method'),
+                   model_uri=NMDC.org_nitro_method, domain=None, range=Optional[str])
+
+slots.other_treatment = Slot(uri=NMDC.other_treatment, name="other_treatment", curie=NMDC.curie('other_treatment'),
+                   model_uri=NMDC.other_treatment, domain=None, range=Optional[str])
+
+slots.start_date_inc = Slot(uri=NMDC.start_date_inc, name="start_date_inc", curie=NMDC.curie('start_date_inc'),
+                   model_uri=NMDC.start_date_inc, domain=None, range=Optional[str])
+
+slots.start_time_inc = Slot(uri=NMDC.start_time_inc, name="start_time_inc", curie=NMDC.curie('start_time_inc'),
+                   model_uri=NMDC.start_time_inc, domain=None, range=Optional[str])
+
+slots.analysis_type = Slot(uri=NMDC.analysis_type, name="analysis_type", curie=NMDC.curie('analysis_type'),
+                   model_uri=NMDC.analysis_type, domain=None, range=Optional[Union[Union[str, "AnalysisTypeEnum"], List[Union[str, "AnalysisTypeEnum"]]]])
+
+slots.sample_link = Slot(uri=NMDC.sample_link, name="sample_link", curie=NMDC.curie('sample_link'),
+                   model_uri=NMDC.sample_link, domain=None, range=Optional[str])
 
 slots.id = Slot(uri=NMDC.id, name="id", curie=NMDC.curie('id'),
                    model_uri=NMDC.id, domain=None, range=URIRef)

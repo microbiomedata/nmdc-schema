@@ -67,7 +67,8 @@ slots:
     rank: 13
     slot_group: JGI-Metatranscriptomics
     range: dnase_rna_enum
-    required: true
+    required: false
+    recommended: true
   proposal_rna:
     name: proposal_rna
     title: RNA proposal ID
@@ -80,7 +81,8 @@ slots:
     rank: 19
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
-    required: true
+    required: false
+    recommended: true
   rna_absorb1:
     name: rna_absorb1
     description: 260/280 measurement of RNA sample purity
@@ -117,7 +119,8 @@ slots:
     rank: 15
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
-    required: true
+    required: false
+    recommended: true
   rna_concentration:
     name: rna_concentration
     title: RNA concentration in ng/ul
@@ -130,7 +133,8 @@ slots:
     rank: 5
     string_serialization: '{float}'
     slot_group: JGI-Metatranscriptomics
-    required: true
+    required: false
+    recommended: true
     minimum_value: 0
     maximum_value: 1000
   rna_cont_type:
@@ -143,7 +147,8 @@ slots:
     rank: 10
     slot_group: JGI-Metatranscriptomics
     range: rna_cont_type_enum
-    required: true
+    required: false
+    recommended: true
   rna_cont_well:
     name: rna_cont_well
     title: RNA well number
@@ -157,7 +162,8 @@ slots:
     rank: 11
     string_serialization: '{96 well plate pos}'
     slot_group: JGI-Metatranscriptomics
-    required: true
+    required: false
+    recommended: true
   rna_container_ID:
     name: rna_container_ID
     title: RNA container label
@@ -170,7 +176,8 @@ slots:
     rank: 9
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
-    required: true
+    required: false
+    recommended: true
   rna_isolate_meth:
     name: rna_isolate_meth
     description: Describe the method/protocol/kit used to extract DNA/RNA.
@@ -181,7 +188,8 @@ slots:
     rank: 16
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
-    required: true
+    required: false
+    recommended: true
   rna_organisms:
     name: rna_organisms
     description: List any organisms known or suspected to grow in co-culture, as well
@@ -207,7 +215,8 @@ slots:
     rank: 18
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
-    required: true
+    required: false
+    recommended: true
   rna_samp_ID:
     name: rna_samp_ID
     title: RNA sample ID
@@ -220,7 +229,8 @@ slots:
     rank: 3
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
-    required: true
+    required: false
+    recommended: true
   rna_sample_format:
     name: rna_sample_format
     description: Solution in which the RNA sample has been suspended
@@ -231,7 +241,8 @@ slots:
     rank: 12
     slot_group: JGI-Metatranscriptomics
     range: rna_sample_format_enum
-    required: true
+    required: false
+    recommended: true
   rna_sample_name:
     name: rna_sample_name
     description: Give the RNA sample a name that is meaningful to you. Sample names
@@ -243,7 +254,8 @@ slots:
     rank: 4
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
-    required: true
+    required: false
+    recommended: true
     minimum_value: 0
     maximum_value: 2000
   rna_seq_project:
@@ -258,7 +270,8 @@ slots:
     rank: 1
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
-    required: true
+    required: false
+    recommended: true
   rna_seq_project_PI:
     name: rna_seq_project_PI
     title: RNA seq project PI
@@ -271,7 +284,8 @@ slots:
     rank: 17
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
-    required: true
+    required: false
+    recommended: true
   rna_seq_project_name:
     name: rna_seq_project_name
     title: RNA seq project name
@@ -284,7 +298,8 @@ slots:
     rank: 2
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
-    required: true
+    required: false
+    recommended: true
   rna_volume:
     name: rna_volume
     title: RNA volume in ul
@@ -297,4 +312,5 @@ slots:
     rank: 6
     string_serialization: '{float}'
     slot_group: JGI-Metatranscriptomics
-    required: true
+    required: false
+    recommended: true

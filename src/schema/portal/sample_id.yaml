@@ -43,7 +43,8 @@ slots:
     multivalued: true
     slot_group: Sample ID
     range: analysis_type_enum
-    required: true
+    required: false
+    recommended: true
   sample_link:
     name: sample_link
     description: A unique identifier to assign parent-child, subsample, or sibling

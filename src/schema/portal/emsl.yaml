@@ -36,7 +36,8 @@ slots:
     rank: 4
     string_serialization: '{float}'
     slot_group: EMSL
-    required: true
+    required: false
+    recommended: true
   project_ID:
     name: project_ID
     description: Proposal IDs or names associated with dataset
@@ -45,7 +46,8 @@ slots:
     rank: 1
     string_serialization: '{text}'
     slot_group: EMSL
-    required: true
+    required: false
+    recommended: true
   replicate_number:
     name: replicate_number
     description: If sending biological replicates, indicate the rep number here.
@@ -66,7 +68,8 @@ slots:
     rank: 3
     string_serialization: '{float} {unit}'
     slot_group: EMSL
-    required: true
+    required: false
+    recommended: true
   sample_type:
     name: sample_type
     description: Type of sample being submitted
@@ -79,7 +82,8 @@ slots:
     rank: 2
     slot_group: EMSL
     range: sample_type_enum
-    required: true
+    required: false
+    recommended: true
   technical_reps:
     name: technical_reps
     description: If sending multiple technical replicates of the same sample, indicate

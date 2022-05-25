@@ -53,6 +53,18 @@
          "title": "Agent",
          "type": "object"
       },
+      "AnalysisTypeEnum": {
+         "description": "",
+         "enum": [
+            "metabolomics",
+            "metagenomics",
+            "metaproteomics",
+            "metatranscriptomics",
+            "natural organic matter"
+         ],
+         "title": "AnalysisTypeEnum",
+         "type": "string"
+      },
       "ArchStrucEnum": {
          "description": "",
          "enum": [
@@ -102,6 +114,10 @@
          "additionalProperties": false,
          "description": "A material sample. It may be environmental (encompassing many organisms) or isolate or tissue.   An environmental sample containing genetic material from multiple individuals is commonly referred to as a biosample.",
          "properties": {
+            "EMSL_store_temp": {
+               "description": "Temperature at which the sample sent to EMSL should be stored",
+               "type": "string"
+            },
             "GOLD_sample_identifiers": {
                "description": "identifiers for corresponding sample in GOLD",
                "items": {
@@ -173,6 +189,13 @@
                "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of ammonium in the sample"
             },
+            "analysis_type": {
+               "description": "Select all the data types associated or available for this biosample",
+               "items": {
+                  "$ref": "#/$defs/AnalysisTypeEnum"
+               },
+               "type": "array"
+            },
             "annual_precpt": {
                "$ref": "#/$defs/QuantityValue",
                "description": "The average of all annual precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps."
@@ -216,6 +239,18 @@
             "collection_date": {
                "$ref": "#/$defs/TimestampValue",
                "description": "The time of sampling, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant"
+            },
+            "collection_date_inc": {
+               "description": "Date the incubation was harvested/collected/ended. Only relevant for incubation samples.",
+               "type": "string"
+            },
+            "collection_time": {
+               "description": "The time of sampling, either as an instance (single point) or interval.",
+               "type": "string"
+            },
+            "collection_time_inc": {
+               "description": "Time the incubation was harvested/collected/ended. Only relevant for incubation samples.",
+               "type": "string"
             },
             "community": {
                "type": "string"
@@ -279,6 +314,75 @@
                "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of dissolved oxygen"
             },
+            "dna_absorb1": {
+               "description": "260/280 measurement of DNA sample purity",
+               "type": "string"
+            },
+            "dna_absorb2": {
+               "description": "260/230 measurement of DNA sample purity",
+               "type": "string"
+            },
+            "dna_collect_site": {
+               "description": "Provide information on the site your DNA sample was collected from",
+               "type": "string"
+            },
+            "dna_concentration": {
+               "maximum": 2000,
+               "minimum": 0,
+               "type": "string"
+            },
+            "dna_cont_type": {
+               "$ref": "#/$defs/DnaContTypeEnum",
+               "description": "Tube or plate (96-well)"
+            },
+            "dna_cont_well": {
+               "type": "string"
+            },
+            "dna_container_ID": {
+               "type": "string"
+            },
+            "dna_dnase": {
+               "$ref": "#/$defs/DnaDnaseEnum"
+            },
+            "dna_isolate_meth": {
+               "description": "Describe the method/protocol/kit used to extract DNA/RNA.",
+               "type": "string"
+            },
+            "dna_organisms": {
+               "description": "List any organisms known or suspected to grow in co-culture, as well as estimated % of the organism in that culture.",
+               "type": "string"
+            },
+            "dna_project_contact": {
+               "type": "string"
+            },
+            "dna_samp_ID": {
+               "type": "string"
+            },
+            "dna_sample_format": {
+               "$ref": "#/$defs/DnaSampleFormatEnum",
+               "description": "Solution in which the DNA sample has been suspended"
+            },
+            "dna_sample_name": {
+               "description": "Give the DNA sample a name that is meaningful to you. Sample names must be unique across all JGI projects and contain a-z, A-Z, 0-9, - and _ only.",
+               "type": "string"
+            },
+            "dna_seq_project": {
+               "type": "string"
+            },
+            "dna_seq_project_PI": {
+               "type": "string"
+            },
+            "dna_seq_project_name": {
+               "type": "string"
+            },
+            "dna_volume": {
+               "maximum": 1000,
+               "minimum": 0,
+               "type": "string"
+            },
+            "dnase_rna": {
+               "$ref": "#/$defs/DnaseRnaEnum"
+            },
             "drainage_class": {
                "$ref": "#/$defs/TextValue",
                "description": "Drainage classification from a standard system such as the USDA system"
@@ -320,6 +424,10 @@
                "description": "MIxS extension for reporting of measurements and observations obtained from one or more of the environments where the sample was obtained. All environmental packages listed here are further defined in separate subtables. By giving the name of the environmental package, a selection of fields can be made from the subtables and can be reported",
                "pattern": "[air|built environment|host\\-associated|human\\-associated|human\\-skin|human\\-oral|human\\-gut|human\\-vaginal|hydrocarbon resources\\-cores|hydrocarbon resources\\-fluids\\/swabs|microbial mat\\/biofilm|misc environment|plant\\-associated|sediment|soil|wastewater\\/sludge|water]"
             },
+            "experimental_factor_other": {
+               "description": "Other details about your sample that you feel can't be accurately represented in the available columns.",
+               "type": "string"
+            },
             "extreme_event": {
                "$ref": "#/$defs/TimestampValue",
                "description": "Unusual physical events that may have affected microbial populations"
@@ -327,6 +435,10 @@
             "fao_class": {
                "$ref": "#/$defs/TextValue",
                "description": "Soil classification from the FAO World Reference Database for Soil Resources. The list can be found at http://www.fao.org/nr/land/sols/soil/wrb-soil-maps/reference-groups"
+            },
+            "filter_method": {
+               "description": "Type of filter used or how the sample was filtered",
+               "type": "string"
             },
             "fire": {
                "$ref": "#/$defs/TimestampValue",
@@ -373,6 +485,10 @@
             "identifier": {
                "type": "string"
             },
+            "isotope_exposure": {
+               "description": "List isotope exposure or addition applied to your sample.",
+               "type": "string"
+            },
             "lat_lon": {
                "$ref": "#/$defs/GeolocationValue",
                "description": "This is currently a required field but it's not clear if this should be required for human hosts"
@@ -412,9 +528,25 @@
                "$ref": "#/$defs/QuantityValue",
                "description": "Measurement of mean peak friction velocity"
             },
+            "micro_biomass_C_meth": {
+               "description": "Reference or method used in determining microbial biomass",
+               "type": "string"
+            },
+            "micro_biomass_N_meth": {
+               "description": "Reference or method used in determining microbial biomass nitrogen",
+               "type": "string"
+            },
             "microbial_biomass": {
                "$ref": "#/$defs/QuantityValue",
                "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units"
+            },
+            "microbial_biomass_C": {
+               "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units",
+               "type": "string"
+            },
+            "microbial_biomass_N": {
+               "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units",
+               "type": "string"
             },
             "microbial_biomass_meth": {
                "$ref": "#/$defs/TextValue",
@@ -447,6 +579,14 @@
                "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of nitrite in the sample"
             },
+            "non_microb_biomass": {
+               "description": "Amount of biomass; should include the name for the part of biomass measured, e.g.insect, plant, total. Can include multiple measurements separated by ;",
+               "type": "string"
+            },
+            "non_microb_biomass_method": {
+               "description": "Reference or method used in determining biomass",
+               "type": "string"
+            },
             "org_matter": {
                "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of organic matter"
@@ -455,9 +595,17 @@
                "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of organic nitrogen"
             },
+            "org_nitro_method": {
+               "description": "Method used for obtaining organic nitrogen",
+               "type": "string"
+            },
             "organism_count": {
                "$ref": "#/$defs/QuantityValue",
                "description": "Total cell count of any organism (or group of organisms) per gram, volume or area of sample, should include name of organism followed by count. The method that was used for the enumeration (e.g. qPCR, atp, mpn, etc.) Should also be provided. (example: total prokaryotes; 3.5e7 cells per ml; qpcr)"
+            },
+            "other_treatment": {
+               "description": "Other treatments applied to your samples that are not applicable to the provided fields",
+               "type": "string"
             },
             "oxy_stat_samp": {
                "$ref": "#/$defs/TextValue",
@@ -522,12 +670,89 @@
                "$ref": "#/$defs/TextValue",
                "description": "Cross-sectional position in the hillslope where sample was collected.sample area position in relation to surrounding areas"
             },
+            "project_ID": {
+               "description": "Proposal IDs or names associated with dataset",
+               "type": "string"
+            },
             "proport_woa_temperature": {
+               "type": "string"
+            },
+            "proposal_dna": {
+               "type": "string"
+            },
+            "proposal_rna": {
                "type": "string"
             },
             "redox_potential": {
                "$ref": "#/$defs/QuantityValue",
                "description": "Redox potential, measured relative to a hydrogen cell, indicating oxidation or reduction potential"
+            },
+            "replicate_number": {
+               "description": "If sending biological replicates, indicate the rep number here.",
+               "type": "string"
+            },
+            "rna_absorb1": {
+               "description": "260/280 measurement of RNA sample purity",
+               "type": "string"
+            },
+            "rna_absorb2": {
+               "description": "260/230 measurement of RNA sample purity",
+               "type": "string"
+            },
+            "rna_collect_site": {
+               "description": "Provide information on the site your RNA sample was collected from",
+               "type": "string"
+            },
+            "rna_concentration": {
+               "maximum": 1000,
+               "minimum": 0,
+               "type": "string"
+            },
+            "rna_cont_type": {
+               "$ref": "#/$defs/RnaContTypeEnum",
+               "description": "Tube or plate (96-well)"
+            },
+            "rna_cont_well": {
+               "type": "string"
+            },
+            "rna_container_ID": {
+               "type": "string"
+            },
+            "rna_isolate_meth": {
+               "description": "Describe the method/protocol/kit used to extract DNA/RNA.",
+               "type": "string"
+            },
+            "rna_organisms": {
+               "description": "List any organisms known or suspected to grow in co-culture, as well as estimated % of the organism in that culture.",
+               "type": "string"
+            },
+            "rna_project_contact": {
+               "type": "string"
+            },
+            "rna_samp_ID": {
+               "type": "string"
+            },
+            "rna_sample_format": {
+               "$ref": "#/$defs/RnaSampleFormatEnum",
+               "description": "Solution in which the RNA sample has been suspended"
+            },
+            "rna_sample_name": {
+               "description": "Give the RNA sample a name that is meaningful to you. Sample names must be unique across all JGI projects and contain a-z, A-Z, 0-9, - and _ only.",
+               "maximum": 2000,
+               "minimum": 0,
+               "type": "string"
+            },
+            "rna_seq_project": {
+               "type": "string"
+            },
+            "rna_seq_project_PI": {
+               "type": "string"
+            },
+            "rna_seq_project_name": {
+               "type": "string"
+            },
+            "rna_volume": {
+               "type": "string"
             },
             "salinity": {
                "$ref": "#/$defs/QuantityValue",
@@ -567,6 +792,18 @@
             },
             "sample_collection_site": {
                "type": "string"
+            },
+            "sample_link": {
+               "description": "A unique identifier to assign parent-child, subsample, or sibling samples. This is relevant when a sample or other material was used to generate the new sample.",
+               "type": "string"
+            },
+            "sample_shipped": {
+               "description": "The total amount or size (volume (ml), mass (g) or area (m2) ) of sample sent to EMSL",
+               "type": "string"
+            },
+            "sample_type": {
+               "$ref": "#/$defs/SampleTypeEnum",
+               "description": "Type of sample being submitted"
             },
             "season_precpt": {
                "$ref": "#/$defs/QuantityValue",
@@ -615,6 +852,14 @@
                "description": "Specific ecosystems represent specific features of the environment like aphotic zone in an ocean or gastric mucosa within a host digestive system. Specific ecosystem is in position 5/5 in a GOLD path.",
                "type": "string"
             },
+            "start_date_inc": {
+               "description": "Date the incubation was started. Only relevant for incubation samples.",
+               "type": "string"
+            },
+            "start_time_inc": {
+               "description": "Time the incubation was started. Only relevant for incubation samples.",
+               "type": "string"
+            },
             "store_cond": {
                "$ref": "#/$defs/TextValue",
                "description": "Explain how and for how long the soil sample was stored before DNA extraction (fresh/frozen/other)."
@@ -632,6 +877,10 @@
             "sulfide": {
                "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of sulfide in the sample"
+            },
+            "technical_reps": {
+               "description": "If sending multiple technical replicates of the same sample, indicate how many replicates are being sent",
+               "type": "string"
             },
             "temp": {
                "$ref": "#/$defs/QuantityValue",
@@ -1269,6 +1518,50 @@
             "other"
          ],
          "title": "DeposEnvEnum",
+         "type": "string"
+      },
+      "DnaContTypeEnum": {
+         "description": "",
+         "enum": [
+            "plate",
+            "tube"
+         ],
+         "title": "DnaContTypeEnum",
+         "type": "string"
+      },
+      "DnaDnaseEnum": {
+         "description": "",
+         "enum": [
+            "no",
+            "yes"
+         ],
+         "title": "DnaDnaseEnum",
+         "type": "string"
+      },
+      "DnaSampleFormatEnum": {
+         "description": "",
+         "enum": [
+            "10 mM Tris-HCl",
+            "DNAStable",
+            "Ethanol",
+            "Low EDTA TE",
+            "MDA reaction buffer",
+            "PBS",
+            "Pellet",
+            "RNAStable",
+            "TE",
+            "Water"
+         ],
+         "title": "DnaSampleFormatEnum",
+         "type": "string"
+      },
+      "DnaseRnaEnum": {
+         "description": "",
+         "enum": [
+            "no",
+            "yes"
+         ],
+         "title": "DnaseRnaEnum",
          "type": "string"
       },
       "DoorCompTypeEnum": {
@@ -3974,6 +4267,32 @@
          "title": "RelToOxygenEnum",
          "type": "string"
       },
+      "RnaContTypeEnum": {
+         "description": "",
+         "enum": [
+            "plate",
+            "tube"
+         ],
+         "title": "RnaContTypeEnum",
+         "type": "string"
+      },
+      "RnaSampleFormatEnum": {
+         "description": "",
+         "enum": [
+            "10 mM Tris-HCl",
+            "DNAStable",
+            "Ethanol",
+            "Low EDTA TE",
+            "MDA reaction buffer",
+            "PBS",
+            "Pellet",
+            "RNAStable",
+            "TE",
+            "Water"
+         ],
+         "title": "RnaSampleFormatEnum",
+         "type": "string"
+      },
       "RoomCondtEnum": {
          "description": "",
          "enum": [
@@ -4151,6 +4470,15 @@
             "windy"
          ],
          "title": "SampWeatherEnum",
+         "type": "string"
+      },
+      "SampleTypeEnum": {
+         "description": "",
+         "enum": [
+            "soil",
+            "water_extract_soil"
+         ],
+         "title": "SampleTypeEnum",
          "type": "string"
       },
       "SeasonUseEnum": {
