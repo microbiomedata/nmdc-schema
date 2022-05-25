@@ -285,3 +285,6 @@ mixs_clean:
 	curl -o src/schema/nmdc.yaml https://raw.githubusercontent.com/microbiomedata/nmdc-schema/$(reference_commit)/src/schema/nmdc.yaml
 	curl -o nmdc_schema/nmdc.py https://raw.githubusercontent.com/microbiomedata/nmdc-schema/$(reference_commit)/nmdc_schema/nmdc.py
 	cp src/schema/mixs.yaml src/schema/mixs_legacy.yaml
+
+src/schema/portal/emsl.yaml:
+	$(RUN) python util/integrate_dh_non_mixs_classes.py
