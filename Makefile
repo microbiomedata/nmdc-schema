@@ -88,6 +88,9 @@ gen-python: $(patsubst %, target/python/%.py, $(SCHEMA_NAMES))
 target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
 # --no-mergeimports was causing an import error
 #	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
+	# hardcoded solution for the new src/schema/portal directory
+	# maybe I should flatten that
+	mkdir -p target/python/portal
 	$(RUN) gen-py-classes --mergeimports $(GEN_OPTS) $< > $@
 
 ###  -- GRAPHQL --
