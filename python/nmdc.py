@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-05-13T08:53:19
+# Generation date: 2022-05-25T14:39:19
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -630,6 +630,13 @@ class Biosample(NamedThing):
     GOLD_sample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     INSDC_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     INSDC_secondary_sample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    zinc: Optional[Union[dict, "QuantityValue"]] = None
+    manganese: Optional[Union[dict, "QuantityValue"]] = None
+    ammonium_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
+    nitrate_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
+    nitrite_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
+    lbc_thirty: Optional[Union[dict, "QuantityValue"]] = None
+    lbceq: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1081,6 +1088,27 @@ class Biosample(NamedThing):
         if not isinstance(self.INSDC_secondary_sample_identifiers, list):
             self.INSDC_secondary_sample_identifiers = [self.INSDC_secondary_sample_identifiers] if self.INSDC_secondary_sample_identifiers is not None else []
         self.INSDC_secondary_sample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.INSDC_secondary_sample_identifiers]
+
+        if self.zinc is not None and not isinstance(self.zinc, QuantityValue):
+            self.zinc = QuantityValue(**as_dict(self.zinc))
+
+        if self.manganese is not None and not isinstance(self.manganese, QuantityValue):
+            self.manganese = QuantityValue(**as_dict(self.manganese))
+
+        if self.ammonium_nitrogen is not None and not isinstance(self.ammonium_nitrogen, QuantityValue):
+            self.ammonium_nitrogen = QuantityValue(**as_dict(self.ammonium_nitrogen))
+
+        if self.nitrate_nitrogen is not None and not isinstance(self.nitrate_nitrogen, QuantityValue):
+            self.nitrate_nitrogen = QuantityValue(**as_dict(self.nitrate_nitrogen))
+
+        if self.nitrite_nitrogen is not None and not isinstance(self.nitrite_nitrogen, QuantityValue):
+            self.nitrite_nitrogen = QuantityValue(**as_dict(self.nitrite_nitrogen))
+
+        if self.lbc_thirty is not None and not isinstance(self.lbc_thirty, QuantityValue):
+            self.lbc_thirty = QuantityValue(**as_dict(self.lbc_thirty))
+
+        if self.lbceq is not None and not isinstance(self.lbceq, QuantityValue):
+            self.lbceq = QuantityValue(**as_dict(self.lbceq))
 
         super().__post_init__(**kwargs)
 
@@ -7204,6 +7232,27 @@ slots.assembly_identifiers = Slot(uri=NMDC.assembly_identifiers, name="assembly 
 slots.INSDC_assembly_identifiers = Slot(uri=NMDC.INSDC_assembly_identifiers, name="INSDC assembly identifiers", curie=NMDC.curie('INSDC_assembly_identifiers'),
                    model_uri=NMDC.INSDC_assembly_identifiers, domain=None, range=Optional[str],
                    pattern=re.compile(r'^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$'))
+
+slots.zinc = Slot(uri=NMDC.zinc, name="zinc", curie=NMDC.curie('zinc'),
+                   model_uri=NMDC.zinc, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.manganese = Slot(uri=NMDC.manganese, name="manganese", curie=NMDC.curie('manganese'),
+                   model_uri=NMDC.manganese, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.ammonium_nitrogen = Slot(uri=NMDC.ammonium_nitrogen, name="ammonium nitrogen", curie=NMDC.curie('ammonium_nitrogen'),
+                   model_uri=NMDC.ammonium_nitrogen, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.nitrate_nitrogen = Slot(uri=NMDC.nitrate_nitrogen, name="nitrate nitrogen", curie=NMDC.curie('nitrate_nitrogen'),
+                   model_uri=NMDC.nitrate_nitrogen, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.nitrite_nitrogen = Slot(uri=NMDC.nitrite_nitrogen, name="nitrite nitrogen", curie=NMDC.curie('nitrite_nitrogen'),
+                   model_uri=NMDC.nitrite_nitrogen, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.lbc_thirty = Slot(uri=NMDC.lbc_thirty, name="lbc_thirty", curie=NMDC.curie('lbc_thirty'),
+                   model_uri=NMDC.lbc_thirty, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.lbceq = Slot(uri=NMDC.lbceq, name="lbceq", curie=NMDC.curie('lbceq'),
+                   model_uri=NMDC.lbceq, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.id = Slot(uri=NMDC.id, name="id", curie=NMDC.curie('id'),
                    model_uri=NMDC.id, domain=None, range=URIRef)

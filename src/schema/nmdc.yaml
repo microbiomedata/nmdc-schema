@@ -45,6 +45,7 @@ imports:
 - workflow_execution_activity
 - annotation
 - external_identifiers
+- bioscales
 subsets:
   sample subset:
     description: Subset consisting of entities linked to the processing of samples.  Currently,
@@ -275,6 +276,18 @@ classes:
       - GOLD sample identifiers
       - INSDC biosample identifiers
       - INSDC secondary sample identifiers
+
+      # bioscales
+      # tot_phosp, tot_carb, tot_nitro_content, pH already associated with biosamples
+      - zinc
+      - manganese
+      - ammonium nitrogen
+      - nitrate nitrogen
+      - nitrite nitrogen
+      - lbc_thirty
+      - lbceq
+
+
     slot_usage:
       lat_lon:
         required: false
