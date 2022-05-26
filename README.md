@@ -40,7 +40,7 @@ See https://github.com/microbiomedata/nmdc-runtime/#data-exports
 ----
 
 ```mermaid
-flowchart LR
+flowchart TD
     subgraph nmdc-schema repo
     ly([NMDC LinkML YAML files])
     lg(generated artifacts)
@@ -56,16 +56,18 @@ flowchart LR
     subgraph MIxS
     m([MIxS Schema])
     end
-    subgraph Submission Portal
+    subgraph SubmissionPortal
     sppg[(Postgres)]
-    spa[API]
+    spa[Portal API]
+    sppg<-->spa
     click spa href "https://data.dev.microbiomedata.org/docs" _top
     ps[Pydantic schema]
     end
     subgraph MongoDB
     mc[(Collections)]
     ms[Implicit schema]
-    ma[API]
+    ma[Search API]
+    mc<-->ma
     click ma href "https://api.dev.microbiomedata.org/docs" _top
     end
     mc --Ingest--> sppg
@@ -75,4 +77,12 @@ flowchart LR
     dhjs[Data Harmoizer JS, etc.]
     saf-->sps-->dhjs
     end
+    dhjs-->SubmissionPortal
+    subgraph DataMapping
+    sa[sample-annotator repo]
+    end
+    spa-->sa-..->ma
+    ly-..->ps
+    sj[some json]
+    ly-..->sj-..->MongoDB-..->ps
 ```
