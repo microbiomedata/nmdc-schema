@@ -41,7 +41,6 @@ See https://github.com/microbiomedata/nmdc-runtime/#data-exports
 
 ```mermaid
 flowchart LR
-flowchart LR
     subgraph nmdc-schema repo
     ly([NMDC LinkML YAML files])
     lg(generated artifacts)
