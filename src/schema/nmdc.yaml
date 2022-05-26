@@ -282,7 +282,7 @@ classes:
       - INSDC biosample identifiers
       - INSDC secondary sample identifiers
 
-      # MIxS terms initally used in
+      # MIxS terms initially used in
       # sample metadata submission portal (aka DataHarmonizer)
       - air_temp_regm
       - biotic_regm
