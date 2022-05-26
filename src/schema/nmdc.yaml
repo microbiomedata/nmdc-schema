@@ -282,7 +282,28 @@ classes:
       - INSDC biosample identifiers
       - INSDC secondary sample identifiers
 
-      # sample metadata submission portal (aka DataHarmonizer) terms
+      # MIxS terms initally used in
+      # sample metadata submission portal (aka DataHarmonizer)
+      - air_temp_regm
+      - biotic_regm
+      - biotic_relationship
+      - climate_environment
+      - experimental_factor
+      - gaseous_environment
+      - growth_facil
+      - humidity_regm
+      - light_regm
+      - micro_biomass_meth
+      - phosphate
+      - rel_to_oxygen
+      - samp_collec_method
+      - samp_size
+      - soil_text_measure
+      - soil_texture_meth
+      - source_mat_id
+      - watering_regm
+
+      # sample metadata submission portal (aka DataHarmonizer) terms (EMSL, JGI, etc.)
       - dna_absorb1
       - dna_absorb2
       - dna_collect_site
