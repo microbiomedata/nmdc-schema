@@ -41,10 +41,7 @@ See https://github.com/microbiomedata/nmdc-runtime/#data-exports
 
 ```mermaid
 flowchart LR
-    subgraph sheets_and_friends repo
-    end
-    subgraph Pydantic Schema
-    end
+flowchart LR
     subgraph nmdc-schema repo
     ly([NMDC LinkML YAML files])
     lg(generated artifacts)
@@ -61,9 +58,10 @@ flowchart LR
     m([MIxS Schema])
     end
     subgraph Submission Portal
-    sps([Submission Portal Schema])
     sppg[(Postgres)]
     spa[API]
+    click spa href "https://data.dev.microbiomedata.org/docs" _top
+    ps[Pydantic schema]
     end
     subgraph MongoDB
     mc[(Collections)]
@@ -72,4 +70,10 @@ flowchart LR
     click ma href "https://api.dev.microbiomedata.org/docs" _top
     end
     mc --Ingest--> sppg
+    subgraph DH Template Prep
+    saf[sheets_and_friends repo]
+    sps([Submission Portal Schema])
+    dhjs[Data Harmoizer JS, etc.]
+    saf-->sps-->dhjs
+    end
 ```
