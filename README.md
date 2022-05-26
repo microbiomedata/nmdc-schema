@@ -36,3 +36,23 @@ See [MAINTAINERS.md](MAINTAINERS.md) for instructions on maintaining and updatin
 ## NMDC metadata downloads
 
 See https://github.com/microbiomedata/nmdc-runtime/#data-exports
+
+----
+
+```mermaid
+flowchart TB
+    subgraph Data Validation
+    ly([NMDC LinkML YAML files])
+    click ly href "https://github.com/microbiomedata/nmdc-schema/tree/main/src/schema" _top
+    d[(Some data)]
+    v[[Validation process]]
+    v--Has input-->d
+    v--Has input-->ly
+    end
+    subgraph MIxS
+    m([MIxS Schema])
+    end
+    subgraph Submission Portal
+    sps([Submission Portal Schema])
+    end
+```
