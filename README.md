@@ -41,13 +41,22 @@ See https://github.com/microbiomedata/nmdc-runtime/#data-exports
 
 ```mermaid
 flowchart TB
-    subgraph Data Validation
+    subgraph sheets_and_friends repo
+    end
+    subgraph Pydantic Schema
+    end
+    subgraph nmdc-schema repo
     ly([NMDC LinkML YAML files])
+    lg(generated artifacts)
+    ly-.make all.->lg
+    end
+    subgraph Data Validation
     click ly href "https://github.com/microbiomedata/nmdc-schema/tree/main/src/schema" _top
     d[(Some data)]
     v[[Validation process]]
     v--Has input-->d
     v--Has input-->ly
+    v--Has output-->STDOUT
     end
     subgraph MIxS
     m([MIxS Schema])
@@ -55,4 +64,9 @@ flowchart TB
     subgraph Submission Portal
     sps([Submission Portal Schema])
     end
+    subgraph MongoDB
+    end
+    subgraph Postgres
+    end
+    MongoDB --Ingest--> Postgres
 ```
