@@ -37,7 +37,7 @@ See [MAINTAINERS.md](MAINTAINERS.md) for instructions on maintaining and updatin
 
 See https://github.com/microbiomedata/nmdc-runtime/#data-exports
 
-----
+## Ecosystem Diagram
 
 ```mermaid
 flowchart TD
