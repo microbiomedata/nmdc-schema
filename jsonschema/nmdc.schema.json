@@ -173,6 +173,10 @@
                "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of ammonium in the sample"
             },
+            "ammonium_nitrogen": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Concentration of ammonium nitrogen in the sample"
+            },
             "annual_precpt": {
                "$ref": "#/$defs/QuantityValue",
                "description": "The average of all annual precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps."
@@ -377,6 +381,14 @@
                "$ref": "#/$defs/GeolocationValue",
                "description": "This is currently a required field but it's not clear if this should be required for human hosts"
             },
+            "lbc_thirty": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "lime buffer capacity, determined after 30 minute incubation"
+            },
+            "lbceq": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "lime buffer capacity, determined at equilibrium after 5 day incubation"
+            },
             "link_addit_analys": {
                "$ref": "#/$defs/TextValue",
                "description": "Link to additional analysis results performed on the sample"
@@ -403,6 +415,10 @@
             "magnesium": {
                "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of magnesium in the sample"
+            },
+            "manganese": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Concentration of manganese in the sample"
             },
             "mean_frict_vel": {
                "$ref": "#/$defs/QuantityValue",
@@ -443,9 +459,17 @@
                "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of nitrate in the sample"
             },
+            "nitrate_nitrogen": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Concentration of nitrate nitrogen in the sample"
+            },
             "nitrite": {
                "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of nitrite in the sample"
+            },
+            "nitrite_nitrogen": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Concentration of nitrite nitrogen in the sample"
             },
             "org_matter": {
                "$ref": "#/$defs/QuantityValue",
@@ -696,6 +720,10 @@
             "water_content": {
                "$ref": "#/$defs/QuantityValue",
                "description": "Water content measurement"
+            },
+            "zinc": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Concentration of zinc in the sample"
             }
          },
          "required": [
