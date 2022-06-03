@@ -88,6 +88,9 @@ gen-python: $(patsubst %, target/python/%.py, $(SCHEMA_NAMES))
 target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
 # --no-mergeimports was causing an import error
 #	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
+	# hardcoded solution for the new src/schema/portal directory
+	# maybe I should flatten that
+	mkdir -p target/python/portal
 	$(RUN) gen-py-classes --mergeimports $(GEN_OPTS) $< > $@
 
 ###  -- GRAPHQL --
@@ -285,3 +288,6 @@ mixs_clean:
 	curl -o src/schema/nmdc.yaml https://raw.githubusercontent.com/microbiomedata/nmdc-schema/$(reference_commit)/src/schema/nmdc.yaml
 	curl -o nmdc_schema/nmdc.py https://raw.githubusercontent.com/microbiomedata/nmdc-schema/$(reference_commit)/nmdc_schema/nmdc.py
 	cp src/schema/mixs.yaml src/schema/mixs_legacy.yaml
+
+src/schema/portal/emsl.yaml:
+	$(RUN) python util/integrate_dh_non_mixs_classes.py

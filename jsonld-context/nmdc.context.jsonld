@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-05-25T14:39:08\n    Schema: NMDC\n    metamodel version: 1.7.0\n    model version: 4.0.0\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC).\nThis schema is organized into distinct modules:\n\n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-06-03T12:47:32\n    Schema: NMDC\n    metamodel version: 1.7.0\n    model version: 4.0.0\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC).\nThis schema is organized into distinct modules:\n\n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "CAS": "http://identifiers.org/cas/",
       "CATH": "http://identifiers.org/cath/",
@@ -175,6 +175,14 @@
       },
       "analysis_identifiers": {
          "@type": "@id"
+      },
+      "analysis_type": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         }
       },
       "ances_data": {
          "@type": "@id",
@@ -596,6 +604,38 @@
       "diss_oxygen_fluid": {
          "@type": "@id",
          "@id": "MIXS:0000438"
+      },
+      "dna_cont_type": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         }
+      },
+      "dna_dnase": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         }
+      },
+      "dna_sample_format": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         }
+      },
+      "dnase_rna": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         }
       },
       "doi": {
          "@type": "@id"
@@ -1735,6 +1775,22 @@
       "right_participants": {
          "@type": "@id"
       },
+      "rna_cont_type": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         }
+      },
+      "rna_sample_format": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         }
+      },
       "room_air_exch_rate": {
          "@type": "@id",
          "@id": "MIXS:0000169"
@@ -1973,6 +2029,14 @@
       },
       "sample_collection_year": {
          "@type": "xsd:integer"
+      },
+      "sample_type": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         }
       },
       "saturates_pc": {
          "@type": "@id",
