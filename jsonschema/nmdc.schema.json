@@ -150,6 +150,10 @@
                "$ref": "#/$defs/QuantityValue",
                "description": "Addition of fertilizers, pesticides, etc. - amount and time of applications"
             },
+            "air_temp_regm": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens"
+            },
             "al_sat": {
                "$ref": "#/$defs/QuantityValue",
                "description": "Aluminum saturation (esp. For tropical soils)"
@@ -189,6 +193,10 @@
                "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of ammonium in the sample"
             },
+            "ammonium_nitrogen": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Concentration of ammonium nitrogen in the sample"
+            },
             "analysis_type": {
                "description": "Select all the data types associated or available for this biosample",
                "items": {
@@ -207,6 +215,14 @@
             "bacteria_carb_prod": {
                "$ref": "#/$defs/QuantityValue",
                "description": "Measurement of bacterial carbon production"
+            },
+            "biotic_regm": {
+               "$ref": "#/$defs/TextValue",
+               "description": "Information about treatment(s) involving use of biotic factors, such as bacteria, viruses or fungi."
+            },
+            "biotic_relationship": {
+               "$ref": "#/$defs/TextValue",
+               "description": "Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g., parasite on species X; mutualist with species Y. The target organism is the subject of the relationship, and the other organism(s) is the object"
             },
             "bishomohopanol": {
                "$ref": "#/$defs/QuantityValue",
@@ -235,6 +251,10 @@
             "chlorophyll": {
                "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of chlorophyll"
+            },
+            "climate_environment": {
+               "$ref": "#/$defs/TextValue",
+               "description": "Treatment involving an exposure to a particular climate; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple climates"
             },
             "collection_date": {
                "$ref": "#/$defs/TimestampValue",
@@ -424,6 +444,10 @@
                "description": "MIxS extension for reporting of measurements and observations obtained from one or more of the environments where the sample was obtained. All environmental packages listed here are further defined in separate subtables. By giving the name of the environmental package, a selection of fields can be made from the subtables and can be reported",
                "pattern": "[air|built environment|host\\-associated|human\\-associated|human\\-skin|human\\-oral|human\\-gut|human\\-vaginal|hydrocarbon resources\\-cores|hydrocarbon resources\\-fluids\\/swabs|microbial mat\\/biofilm|misc environment|plant\\-associated|sediment|soil|wastewater\\/sludge|water]"
             },
+            "experimental_factor": {
+               "$ref": "#/$defs/ControlledTermValue",
+               "description": "Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms, please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI"
+            },
             "experimental_factor_other": {
                "description": "Other details about your sample that you feel can't be accurately represented in the available columns.",
                "type": "string"
@@ -448,6 +472,10 @@
                "$ref": "#/$defs/TimestampValue",
                "description": "Historical and/or physical evidence of flooding"
             },
+            "gaseous_environment": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens"
+            },
             "geo_loc_name": {
                "$ref": "#/$defs/TextValue",
                "description": "The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)"
@@ -455,6 +483,10 @@
             "glucosidase_act": {
                "$ref": "#/$defs/QuantityValue",
                "description": "Measurement of glucosidase activity"
+            },
+            "growth_facil": {
+               "$ref": "#/$defs/ControlledTermValue",
+               "description": "Type of facility where the sampled plant was grown; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field. Alternatively use Crop Ontology (CO) terms, see http://www.cropontology.org/ontology/CO_715/Crop%20Research"
             },
             "habitat": {
                "type": "string"
@@ -478,6 +510,10 @@
             "host_name": {
                "type": "string"
             },
+            "humidity_regm": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens"
+            },
             "id": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                "type": "string"
@@ -492,6 +528,18 @@
             "lat_lon": {
                "$ref": "#/$defs/GeolocationValue",
                "description": "This is currently a required field but it's not clear if this should be required for human hosts"
+            },
+            "lbc_thirty": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "lime buffer capacity, determined after 30 minute incubation"
+            },
+            "lbceq": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "lime buffer capacity, determined at equilibrium after 5 day incubation"
+            },
+            "light_regm": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Information about treatment(s) involving exposure to light, including both light intensity and quality."
             },
             "link_addit_analys": {
                "$ref": "#/$defs/TextValue",
@@ -520,6 +568,10 @@
                "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of magnesium in the sample"
             },
+            "manganese": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Concentration of manganese in the sample"
+            },
             "mean_frict_vel": {
                "$ref": "#/$defs/QuantityValue",
                "description": "Measurement of mean friction velocity"
@@ -534,6 +586,10 @@
             },
             "micro_biomass_N_meth": {
                "description": "Reference or method used in determining microbial biomass nitrogen",
+               "type": "string"
+            },
+            "micro_biomass_meth": {
+               "description": "Reference or method used in determining microbial biomass",
                "type": "string"
             },
             "microbial_biomass": {
@@ -575,9 +631,17 @@
                "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of nitrate in the sample"
             },
+            "nitrate_nitrogen": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Concentration of nitrate nitrogen in the sample"
+            },
             "nitrite": {
                "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of nitrite in the sample"
+            },
+            "nitrite_nitrogen": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Concentration of nitrite nitrogen in the sample"
             },
             "non_microb_biomass": {
                "description": "Amount of biomass; should include the name for the part of biomass measured, e.g.insect, plant, total. Can include multiple measurements separated by ;",
@@ -642,6 +706,10 @@
                "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of phaeopigments; can include multiple phaeopigments"
             },
+            "phosphate": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Concentration of phosphate"
+            },
             "phosplipid_fatt_acid": {
                "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of phospholipid fatty acids; can include multiple values"
@@ -686,6 +754,10 @@
             "redox_potential": {
                "$ref": "#/$defs/QuantityValue",
                "description": "Redox potential, measured relative to a hydrogen cell, indicating oxidation or reduction potential"
+            },
+            "rel_to_oxygen": {
+               "$ref": "#/$defs/TextValue",
+               "description": "Is this organism an aerobe, anaerobe? Please note that aerobic and anaerobic are valid descriptors for microbial environments"
             },
             "replicate_number": {
                "description": "If sending biological replicates, indicate the rep number here.",
@@ -766,6 +838,10 @@
                "$ref": "#/$defs/TextValue",
                "description": "Reference or method used in determining salinity"
             },
+            "samp_collec_method": {
+               "description": "The method employed for collecting the sample.",
+               "type": "string"
+            },
             "samp_collect_device": {
                "$ref": "#/$defs/TextValue",
                "description": "The device used to collect an environmental sample. This field accepts terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO). This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094)."
@@ -773,6 +849,10 @@
             "samp_mat_process": {
                "$ref": "#/$defs/ControlledTermValue",
                "description": "A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed."
+            },
+            "samp_size": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "The total amount or size (volume (ml), mass (g) or area (m2) ) of sample collected."
             },
             "samp_store_dur": {
                "$ref": "#/$defs/TextValue",
@@ -837,6 +917,14 @@
                "$ref": "#/$defs/QuantityValue",
                "description": "Sodium concentration in the sample"
             },
+            "soil_text_measure": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "The relative proportion of different grain sizes of mineral particles in a soil, as described using a standard system; express as % sand (50 um to 2 mm), silt (2 um to 50 um), and clay (<2 um) with textural name (e.g., silty clay loam) optional."
+            },
+            "soil_texture_meth": {
+               "description": "Reference or method used in determining soil texture",
+               "type": "string"
+            },
             "soil_type": {
                "$ref": "#/$defs/TextValue",
                "description": "Description of the soil type or classification. This field accepts terms under soil (http://purl.obolibrary.org/obo/ENVO_00001998).  Multiple terms can be separated by pipes."
@@ -847,6 +935,10 @@
             },
             "soluble_iron_micromol": {
                "type": "string"
+            },
+            "source_mat_id": {
+               "$ref": "#/$defs/TextValue",
+               "description": "A unique identifier assigned to a material sample (as defined by http://rs.tdwg.org/dwc/terms/materialSampleID, and as opposed to a particular digital record of a material sample) used for extracting nucleic acids, and subsequent sequencing. The identifier can refer either to the original material collected or to any derived sub-samples. The INSDC qualifiers /specimen_voucher, /bio_material, or /culture_collection may or may not share the same value as the source_mat_id field. For instance, the /specimen_voucher qualifier and source_mat_id may both contain 'UAM:Herps:14' , referring to both the specimen voucher and sampled tissue with the same identifier. However, the /culture_collection qualifier may refer to a value from an initial culture (e.g. ATCC:11775) while source_mat_id would refer to an identifier from some derived culture from which the nucleic acids were extracted (e.g. xatc123 or ark:/2154/R2)."
             },
             "specific_ecosystem": {
                "description": "Specific ecosystems represent specific features of the environment like aphotic zone in an ocean or gastric mucosa within a host digestive system. Specific ecosystem is in position 5/5 in a GOLD path.",
@@ -945,6 +1037,14 @@
             "water_content": {
                "$ref": "#/$defs/QuantityValue",
                "description": "Water content measurement"
+            },
+            "watering_regm": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Information about treatment involving an exposure to watering frequencies, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens"
+            },
+            "zinc": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Concentration of zinc in the sample"
             }
          },
          "required": [

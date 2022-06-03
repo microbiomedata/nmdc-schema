@@ -38,18 +38,19 @@ emit_prefixes:
   - xsd
   - skos
 imports:
+  - annotation
+  - bioscales
+  - core
+  - external_identifiers
   - linkml:types
   - mixs
-  - core
-  - prov
-  - workflow_execution_activity
-  - annotation
-  - external_identifiers
   - portal/emsl
   - portal/jgi_metagenomics
   - portal/jgi_metatranscriptomics
   - portal/mixs_inspired
   - portal/sample_id
+  - prov
+  - workflow_execution_activity
 
 subsets:
   sample subset:
@@ -58,6 +59,7 @@ subsets:
   data object subset:
     description: Subset consisting of the data objects that either inputs or outputs
       of processes or workflows.
+
 classes:
   database:
     tree_root: true
@@ -112,6 +114,7 @@ classes:
         required: true
     id_prefixes:
       - GOLD
+
   biosample:
     is_a: named thing
     in_subset:
@@ -252,7 +255,7 @@ classes:
       - tot_phosp
       - water_content
       - water_cont_soil_meth # MAM 2022-05-06
-      
+
       # GOLD path fields
       - ecosystem
       - ecosystem_category
@@ -277,10 +280,11 @@ classes:
       - subsurface_depth
       - subsurface_depth2
 
-      # external IDs      
+      # external IDs
       - GOLD sample identifiers
       - INSDC biosample identifiers
       - INSDC secondary sample identifiers
+
 
       # MIxS terms initially used in
       # sample metadata submission portal (aka DataHarmonizer)
@@ -366,6 +370,16 @@ classes:
       - technical_reps
       - analysis_type
       - sample_link
+      # bioscales
+      # tot_phosp, tot_carb, tot_nitro_content, pH already associated with biosamples
+      - zinc
+      - manganese
+      - ammonium nitrogen
+      - nitrate nitrogen
+      - nitrite nitrogen
+      - lbc_thirty
+      - lbceq
+
     slot_usage:
       lat_lon:
         required: false
@@ -384,6 +398,8 @@ classes:
     exact_mappings:
       - OBI:0000747
       - NCIT:C43412
+
+
   study:
     is_a: named thing
     in_subset:
@@ -572,6 +588,7 @@ classes:
       - applied roles
       - type
     class_uri: prov:Association
+
 enums:
   file type enum:
     permissible_values:
@@ -696,6 +713,7 @@ enums:
         meaning: OBI:0000103
     comments:
       - credit enums come from https://casrai.org/credit/
+
 slots:
   ess dive datasets:
     multivalued: true

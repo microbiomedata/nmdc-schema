@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-05-25T12:54:35\n    Schema: NMDC\n    metamodel version: 1.7.0\n    model version: 4.0.0\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC).\nThis schema is organized into distinct modules:\n\n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-06-03T12:47:32\n    Schema: NMDC\n    metamodel version: 1.7.0\n    model version: 4.0.0\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC).\nThis schema is organized into distinct modules:\n\n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "CAS": "http://identifiers.org/cas/",
       "CATH": "http://identifiers.org/cath/",
@@ -165,6 +165,9 @@
       "ammonium": {
          "@type": "@id",
          "@id": "MIXS:0000427"
+      },
+      "ammonium_nitrogen": {
+         "@type": "@id"
       },
       "amount_light": {
          "@type": "@id",
@@ -1259,6 +1262,12 @@
          "@type": "xsd:decimal",
          "@id": "wgs:lat"
       },
+      "lbc_thirty": {
+         "@type": "@id"
+      },
+      "lbceq": {
+         "@type": "@id"
+      },
       "left_participants": {
          "@type": "@id"
       },
@@ -1341,6 +1350,9 @@
          "@type": "@id",
          "@id": "https://microbiomedata/schema/workflow_execution_activity/mags_list"
       },
+      "manganese": {
+         "@type": "@id"
+      },
       "max_occup": {
          "@type": "@id",
          "@id": "MIXS:0000229"
@@ -1422,9 +1434,15 @@
          "@type": "@id",
          "@id": "MIXS:0000425"
       },
+      "nitrate_nitrogen": {
+         "@type": "@id"
+      },
       "nitrite": {
          "@type": "@id",
          "@id": "MIXS:0000426"
+      },
+      "nitrite_nitrogen": {
+         "@type": "@id"
       },
       "nitro": {
          "@type": "@id",
@@ -2644,6 +2662,9 @@
       "xylene": {
          "@type": "@id",
          "@id": "MIXS:0000156"
+      },
+      "zinc": {
+         "@type": "@id"
       },
       "CreditAssociation": {
          "@id": "prov:Association"

@@ -1,9 +1,9 @@
-# Auto generated from external_identifiers.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-06-03T12:47:53
-# Schema: NMDC-External-Identifiers
+# Auto generated from bioscales.yaml by pythongen.py version: 0.9.0
+# Generation date: 2022-06-03T12:48:07
+# Schema: NMDC-Bioscales
 #
-# id: https://microbiomedata/schema/external_identifiers
-# description: External identifiers
+# id: https://microbiomedata/schema/bioscales
+# description: NMDC Schema support for Bioscales analytes
 # license: https://creativecommons.org/publicdomain/zero/1.0/
 
 import dataclasses
@@ -22,8 +22,8 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.linkml_model.types import Boolean, Datetime, Double, Float, Integer, String, Uriorcurie
-from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE, XSDDateTime
+from linkml_runtime.linkml_model.types import Boolean, Datetime, Double, Float, Integer, String
+from linkml_runtime.utils.metamodelcore import Bool, XSDDateTime
 
 metamodel_version = "1.7.0"
 version = None
@@ -36,10 +36,10 @@ CAS = CurieNamespace('CAS', 'http://identifiers.org/cas/')
 CHEBI = CurieNamespace('CHEBI', 'http://purl.obolibrary.org/obo/CHEBI_')
 CHEMBL_COMPOUND = CurieNamespace('CHEMBL_COMPOUND', 'http://identifiers.org/chembl.compound/')
 DRUGBANK = CurieNamespace('DRUGBANK', 'http://identifiers.org/drugbank/')
-GOLD = CurieNamespace('GOLD', 'https://identifiers.org/gold/')
 HMDB = CurieNamespace('HMDB', 'http://identifiers.org/hmdb/')
 KEGG_COMPOUND = CurieNamespace('KEGG_COMPOUND', 'http://identifiers.org/kegg.compound/')
 MESH = CurieNamespace('MESH', 'http://identifiers.org/mesh/')
+MS = CurieNamespace('MS', 'http://purl.obolibrary.org/obo/MS_')
 OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
 PR = CurieNamespace('PR', 'http://purl.obolibrary.org/obo/PR_')
 PUBCHEM_COMPOUND = CurieNamespace('PUBCHEM_COMPOUND', 'http://identifiers.org/pubchem.compound/')
@@ -47,7 +47,9 @@ UNIPROTKB = CurieNamespace('UniProtKB', 'http://example.org/UNKNOWN/UniProtKB/')
 BIOLINK = CurieNamespace('biolink', 'http://example.org/UNKNOWN/biolink/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 GTPO = CurieNamespace('gtpo', 'http://example.org/UNKNOWN/gtpo/')
+IGSNVOC = CurieNamespace('igsnvoc', 'https://igsn.org/voc/v1/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
+MIXS = CurieNamespace('mixs', 'https://w3id.org/gensc/')
 NMDC = CurieNamespace('nmdc', 'https://microbiomedata/meta/')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 QUD = CurieNamespace('qud', 'http://qudt.org/1.1/schema/qudt#')
@@ -61,14 +63,6 @@ DEFAULT_ = NMDC
 
 
 # Types
-class ExternalIdentifier(Uriorcurie):
-    """ A CURIE representing an external identifier """
-    type_class_uri = XSD.anyURI
-    type_class_curie = "xsd:anyURI"
-    type_name = "external identifier"
-    type_model_uri = NMDC.ExternalIdentifier
-
-
 class Bytes(int):
     """ An integer value that corresponds to a size in bytes """
     type_class_uri = XSD.int
@@ -869,83 +863,26 @@ class Agent(YAMLRoot):
 class slots:
     pass
 
-slots.external_database_identifiers = Slot(uri=NMDC.external_database_identifiers, name="external database identifiers", curie=NMDC.curie('external_database_identifiers'),
-                   model_uri=NMDC.external_database_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]])
+slots.zinc = Slot(uri=NMDC.zinc, name="zinc", curie=NMDC.curie('zinc'),
+                   model_uri=NMDC.zinc, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.GOLD_identifiers = Slot(uri=NMDC.GOLD_identifiers, name="GOLD identifiers", curie=NMDC.curie('GOLD_identifiers'),
-                   model_uri=NMDC.GOLD_identifiers, domain=None, range=Optional[str])
+slots.manganese = Slot(uri=NMDC.manganese, name="manganese", curie=NMDC.curie('manganese'),
+                   model_uri=NMDC.manganese, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.MGnify_identifiers = Slot(uri=NMDC.MGnify_identifiers, name="MGnify identifiers", curie=NMDC.curie('MGnify_identifiers'),
-                   model_uri=NMDC.MGnify_identifiers, domain=None, range=Optional[str])
+slots.ammonium_nitrogen = Slot(uri=NMDC.ammonium_nitrogen, name="ammonium nitrogen", curie=NMDC.curie('ammonium_nitrogen'),
+                   model_uri=NMDC.ammonium_nitrogen, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.INSDC_identifiers = Slot(uri=NMDC.INSDC_identifiers, name="INSDC identifiers", curie=NMDC.curie('INSDC_identifiers'),
-                   model_uri=NMDC.INSDC_identifiers, domain=None, range=Optional[str])
+slots.nitrate_nitrogen = Slot(uri=NMDC.nitrate_nitrogen, name="nitrate nitrogen", curie=NMDC.curie('nitrate_nitrogen'),
+                   model_uri=NMDC.nitrate_nitrogen, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.study_identifiers = Slot(uri=NMDC.study_identifiers, name="study identifiers", curie=NMDC.curie('study_identifiers'),
-                   model_uri=NMDC.study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]])
+slots.nitrite_nitrogen = Slot(uri=NMDC.nitrite_nitrogen, name="nitrite nitrogen", curie=NMDC.curie('nitrite_nitrogen'),
+                   model_uri=NMDC.nitrite_nitrogen, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.INSDC_SRA_ENA_study_identifiers = Slot(uri=NMDC.INSDC_SRA_ENA_study_identifiers, name="INSDC SRA ENA study identifiers", curie=NMDC.curie('INSDC_SRA_ENA_study_identifiers'),
-                   model_uri=NMDC.INSDC_SRA_ENA_study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^insdc.sra:(E|D|S)RP[0-9]{6,}$'))
+slots.lbc_thirty = Slot(uri=NMDC.lbc_thirty, name="lbc_thirty", curie=NMDC.curie('lbc_thirty'),
+                   model_uri=NMDC.lbc_thirty, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.INSDC_bioproject_identifiers = Slot(uri=NMDC.INSDC_bioproject_identifiers, name="INSDC bioproject identifiers", curie=NMDC.curie('INSDC_bioproject_identifiers'),
-                   model_uri=NMDC.INSDC_bioproject_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^bioproject:PRJ[DEN][A-Z][0-9]+$'))
-
-slots.GOLD_study_identifiers = Slot(uri=NMDC.GOLD_study_identifiers, name="GOLD study identifiers", curie=NMDC.curie('GOLD_study_identifiers'),
-                   model_uri=NMDC.GOLD_study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^GOLD:Gs[0-9]+$'))
-
-slots.MGnify_project_identifiers = Slot(uri=NMDC.MGnify_project_identifiers, name="MGnify project identifiers", curie=NMDC.curie('MGnify_project_identifiers'),
-                   model_uri=NMDC.MGnify_project_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^mgnify.proj:[A-Z]+[0-9]+$'))
-
-slots.sample_identifiers = Slot(uri=NMDC.sample_identifiers, name="sample identifiers", curie=NMDC.curie('sample_identifiers'),
-                   model_uri=NMDC.sample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]])
-
-slots.GOLD_sample_identifiers = Slot(uri=NMDC.GOLD_sample_identifiers, name="GOLD sample identifiers", curie=NMDC.curie('GOLD_sample_identifiers'),
-                   model_uri=NMDC.GOLD_sample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^GOLD:Gb[0-9]+$'))
-
-slots.INSDC_biosample_identifiers = Slot(uri=NMDC.INSDC_biosample_identifiers, name="INSDC biosample identifiers", curie=NMDC.curie('INSDC_biosample_identifiers'),
-                   model_uri=NMDC.INSDC_biosample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^biosample:SAM[NED]([A-Z])?[0-9]+$'))
-
-slots.INSDC_secondary_sample_identifiers = Slot(uri=NMDC.INSDC_secondary_sample_identifiers, name="INSDC secondary sample identifiers", curie=NMDC.curie('INSDC_secondary_sample_identifiers'),
-                   model_uri=NMDC.INSDC_secondary_sample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^biosample:(E|D|S)RS[0-9]{6,}$'))
-
-slots.omics_processing_identifiers = Slot(uri=NMDC.omics_processing_identifiers, name="omics processing identifiers", curie=NMDC.curie('omics_processing_identifiers'),
-                   model_uri=NMDC.omics_processing_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]])
-
-slots.GOLD_sequencing_project_identifiers = Slot(uri=NMDC.GOLD_sequencing_project_identifiers, name="GOLD sequencing project identifiers", curie=NMDC.curie('GOLD_sequencing_project_identifiers'),
-                   model_uri=NMDC.GOLD_sequencing_project_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^GOLD:Gp[0-9]+$'))
-
-slots.INSDC_experiment_identifiers = Slot(uri=NMDC.INSDC_experiment_identifiers, name="INSDC experiment identifiers", curie=NMDC.curie('INSDC_experiment_identifiers'),
-                   model_uri=NMDC.INSDC_experiment_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^insdc.sra:(E|D|S)RX[0-9]{6,}$'))
-
-slots.analysis_identifiers = Slot(uri=NMDC.analysis_identifiers, name="analysis identifiers", curie=NMDC.curie('analysis_identifiers'),
-                   model_uri=NMDC.analysis_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]])
-
-slots.GOLD_analysis_project_identifiers = Slot(uri=NMDC.GOLD_analysis_project_identifiers, name="GOLD analysis project identifiers", curie=NMDC.curie('GOLD_analysis_project_identifiers'),
-                   model_uri=NMDC.GOLD_analysis_project_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^GOLD:Ga[0-9]+$'))
-
-slots.INSDC_analysis_identifiers = Slot(uri=NMDC.INSDC_analysis_identifiers, name="INSDC analysis identifiers", curie=NMDC.curie('INSDC_analysis_identifiers'),
-                   model_uri=NMDC.INSDC_analysis_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^insdc.sra:(E|D|S)RR[0-9]{6,}$'))
-
-slots.MGnify_analysis_identifiers = Slot(uri=NMDC.MGnify_analysis_identifiers, name="MGnify analysis identifiers", curie=NMDC.curie('MGnify_analysis_identifiers'),
-                   model_uri=NMDC.MGnify_analysis_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]])
-
-slots.assembly_identifiers = Slot(uri=NMDC.assembly_identifiers, name="assembly identifiers", curie=NMDC.curie('assembly_identifiers'),
-                   model_uri=NMDC.assembly_identifiers, domain=None, range=Optional[str])
-
-slots.INSDC_assembly_identifiers = Slot(uri=NMDC.INSDC_assembly_identifiers, name="INSDC assembly identifiers", curie=NMDC.curie('INSDC_assembly_identifiers'),
-                   model_uri=NMDC.INSDC_assembly_identifiers, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$'))
+slots.lbceq = Slot(uri=NMDC.lbceq, name="lbceq", curie=NMDC.curie('lbceq'),
+                   model_uri=NMDC.lbceq, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.language = Slot(uri=NMDC.language, name="language", curie=NMDC.curie('language'),
                    model_uri=NMDC.language, domain=None, range=Optional[str])
