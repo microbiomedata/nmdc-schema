@@ -54,6 +54,9 @@ prefixes:
   img.taxon:
     prefix_prefix: img.taxon
     prefix_reference: http://img.jgi.doe.gov/cgi-bin/w/main.cgi?section=TaxonDetail&taxon_oid=
+  nmdc_dh_templates:
+    prefix_prefix: nmdc_dh_templates
+    prefix_reference: https://example.com/nmdc_dh_templates/
 default_prefix: nmdc_dh_templates
 default_range: string
 classes:
