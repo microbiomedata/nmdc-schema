@@ -30,6 +30,7 @@ prefixes:
 default_prefix: nmdc
 default_range: string
 default_curi_maps:
+  - semweb_context
   - obo_context
   - idot_context
 emit_prefixes:
