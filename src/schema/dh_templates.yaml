@@ -2833,19 +2833,6 @@ classes:
         range: quantity value
         pattern: ^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)? \S+$
 enums:
-  analysis_type_enum:
-    name: analysis_type_enum
-    permissible_values:
-      metabolomics:
-        text: metabolomics
-      metagenomics:
-        text: metagenomics
-      metaproteomics:
-        text: metaproteomics
-      metatranscriptomics:
-        text: metatranscriptomics
-      natural organic matter:
-        text: natural organic matter
   biotic_relationship_enum:
     name: biotic_relationship_enum
     from_schema: http://w3id.org/mixs/terms
