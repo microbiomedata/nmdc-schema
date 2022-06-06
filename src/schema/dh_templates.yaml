@@ -2833,18 +2833,6 @@ classes:
         range: quantity value
         pattern: ^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)? \S+$
 enums:
-  biotic_relationship_enum:
-    name: biotic_relationship_enum
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      free living:
-        text: free living
-      parasite:
-        text: parasite
-      commensal:
-        text: commensal
-      symbiont:
-        text: symbiont
   dna_cont_type_enum:
     name: dna_cont_type_enum
     permissible_values:
@@ -2852,43 +2840,6 @@ enums:
         text: plate
       tube:
         text: tube
-  dna_dnase_enum:
-    name: dna_dnase_enum
-    permissible_values:
-      'no':
-        text: 'no'
-      'yes':
-        text: 'yes'
-  dna_sample_format_enum:
-    name: dna_sample_format_enum
-    permissible_values:
-      10 mM Tris-HCl:
-        text: 10 mM Tris-HCl
-      DNAStable:
-        text: DNAStable
-      Ethanol:
-        text: Ethanol
-      Low EDTA TE:
-        text: Low EDTA TE
-      MDA reaction buffer:
-        text: MDA reaction buffer
-      PBS:
-        text: PBS
-      Pellet:
-        text: Pellet
-      RNAStable:
-        text: RNAStable
-      TE:
-        text: TE
-      Water:
-        text: Water
-  dnase_rna_enum:
-    name: dnase_rna_enum
-    permissible_values:
-      'no':
-        text: 'no'
-      'yes':
-        text: 'yes'
   ecosystem_category_enum:
     name: ecosystem_category_enum
     permissible_values:
