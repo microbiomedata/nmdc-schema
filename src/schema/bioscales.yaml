@@ -29,6 +29,7 @@ default_curi_maps:
 imports:
   - linkml:types
   - core
+  - nmdc # super circular
 slots:
   zinc:
     name: zinc
