@@ -51,6 +51,7 @@ imports:
   - portal/sample_id
   - prov
   - workflow_execution_activity
+  - dh_templates
 
 subsets:
   sample subset:

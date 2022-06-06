@@ -4,7 +4,6 @@ description: Schema for creating Data Harmonizer interfaces for biosamples based
 id: https://example.com/nmdc_dh_templates
 imports:
 - linkml:types
-- nmdc
 prefixes:
 #  nmdc_dh:
 #    prefix_prefix: nmdc_dh
@@ -62,7 +61,6 @@ default_range: string
 classes:
   samp_id_new_terms_mixin:
     name: samp_id_new_terms_mixin
-    from_schema: https://example.com/nmdc_dh
     mixin: true
     slots:
     - analysis_type
@@ -73,7 +71,6 @@ classes:
     description: One DataHarmonizer interface, for the specified combination of a
       checklist, enviornmental_package, and various standards, user facilities or
       analysis types
-    from_schema: https://example.com/nmdc_dh
   bioscales:
     name: bioscales
     is_a: dh_interface
@@ -2838,7 +2835,6 @@ classes:
 enums:
   analysis_type_enum:
     name: analysis_type_enum
-    from_schema: https://example.com/nmdc_dh
     permissible_values:
       metabolomics:
         text: metabolomics
@@ -2864,7 +2860,6 @@ enums:
         text: symbiont
   dna_cont_type_enum:
     name: dna_cont_type_enum
-    from_schema: https://example.com/nmdc_dh
     permissible_values:
       plate:
         text: plate
@@ -2872,7 +2867,6 @@ enums:
         text: tube
   dna_dnase_enum:
     name: dna_dnase_enum
-    from_schema: https://example.com/nmdc_dh
     permissible_values:
       'no':
         text: 'no'
@@ -2880,7 +2874,6 @@ enums:
         text: 'yes'
   dna_sample_format_enum:
     name: dna_sample_format_enum
-    from_schema: https://example.com/nmdc_dh
     permissible_values:
       10 mM Tris-HCl:
         text: 10 mM Tris-HCl
@@ -2904,7 +2897,6 @@ enums:
         text: Water
   dnase_rna_enum:
     name: dnase_rna_enum
-    from_schema: https://example.com/nmdc_dh
     permissible_values:
       'no':
         text: 'no'
@@ -2912,7 +2904,6 @@ enums:
         text: 'yes'
   ecosystem_category_enum:
     name: ecosystem_category_enum
-    from_schema: https://example.com/nmdc_dh
     permissible_values:
       Terrestrial:
         text: Terrestrial
@@ -2920,13 +2911,11 @@ enums:
         - https://github.com/microbiomedata/sheets_and_friends/issues/22
   ecosystem_enum:
     name: ecosystem_enum
-    from_schema: https://example.com/nmdc_dh
     permissible_values:
       Environmental:
         text: Environmental
   ecosystem_subtype_enum:
     name: ecosystem_subtype_enum
-    from_schema: https://example.com/nmdc_dh
     permissible_values:
       Biocrust:
         text: Biocrust
@@ -2972,13 +2961,11 @@ enums:
         text: Wetlands
   ecosystem_type_enum:
     name: ecosystem_type_enum
-    from_schema: https://example.com/nmdc_dh
     permissible_values:
       Soil:
         text: Soil
   env_package_enum:
     name: env_package_enum
-    from_schema: https://example.com/nmdc_dh
     permissible_values:
       soil:
         text: soil
@@ -2987,7 +2974,6 @@ enums:
           here
   growth_facil_enum:
     name: growth_facil_enum
-    from_schema: https://example.com/nmdc_dh
     permissible_values:
       experimental_garden:
         text: experimental_garden
@@ -3035,7 +3021,6 @@ enums:
         text: obligate anaerobe
   rna_cont_type_enum:
     name: rna_cont_type_enum
-    from_schema: https://example.com/nmdc_dh
     permissible_values:
       plate:
         text: plate
@@ -3043,7 +3028,6 @@ enums:
         text: tube
   rna_sample_format_enum:
     name: rna_sample_format_enum
-    from_schema: https://example.com/nmdc_dh
     permissible_values:
       10 mM Tris-HCl:
         text: 10 mM Tris-HCl
@@ -3067,7 +3051,6 @@ enums:
         text: Water
   sample_type_enum:
     name: sample_type_enum
-    from_schema: https://example.com/nmdc_dh
     permissible_values:
       soil:
         text: soil
@@ -3075,7 +3058,6 @@ enums:
         text: water_extract_soil
   specific_ecosystem_enum:
     name: specific_ecosystem_enum
-    from_schema: https://example.com/nmdc_dh
     permissible_values:
       Agricultural:
         text: Agricultural
@@ -3127,7 +3109,6 @@ enums:
         text: Uranium contaminated
   store_cond_enum:
     name: store_cond_enum
-    from_schema: https://example.com/nmdc_dh
     permissible_values:
       fresh:
         text: fresh
@@ -3146,7 +3127,6 @@ enums:
         text: other
   env_broad_scale_soil_enum:
     name: env_broad_scale_soil_enum
-    from_schema: https://example.com/nmdc_dh
     permissible_values:
       alpine biome [ENVO:01001835]:
         text: alpine biome [ENVO:01001835]
@@ -3230,7 +3210,6 @@ enums:
         text: ____tropical savanna biome [ENVO:01000188]
   env_local_scale_soil_enum:
     name: env_local_scale_soil_enum
-    from_schema: https://example.com/nmdc_dh
     permissible_values:
       active geological fault [ENVO:01000669]:
         text: active geological fault [ENVO:01000669]
@@ -3308,7 +3287,6 @@ enums:
         text: woodland clearing [ENVO:00000444]
   env_medium_soil_enum:
     name: env_medium_soil_enum
-    from_schema: https://example.com/nmdc_dh
     permissible_values:
       agricultural soil [ENVO:00002259]:
         text: agricultural soil [ENVO:00002259]
