@@ -3,7 +3,14 @@ description: Schema for creating Data Harmonizer interfaces for biosamples based
   MIxS and other standards
 id: https://example.com/nmdc_dh_templates
 imports:
+- bioscales
 - linkml:types
+- mixs
+- portal/emsl
+- portal/jgi_metagenomics
+- portal/jgi_metatranscriptomics
+- portal/mixs_inspired
+- portal/sample_id
 prefixes:
 #  nmdc_dh:
 #    prefix_prefix: nmdc_dh
