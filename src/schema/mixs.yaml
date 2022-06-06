@@ -1995,7 +1995,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000122
+    slot_uri: mixs:0000122
     multivalued: false
     range: quantity value
   core field:
@@ -2028,7 +2028,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0001009
+    slot_uri: mixs:0001009
     multivalued: false
     range: text value
   additional_info:
@@ -2051,7 +2051,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000300
+    slot_uri: mixs:0000300
     multivalued: false
     range: text value
   address:
@@ -2073,7 +2073,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{integer}{text}'
-    slot_uri: MIXS:0000218
+    slot_uri: mixs:0000218
     multivalued: false
     range: text value
   adj_room:
@@ -2096,7 +2096,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{integer}'
-    slot_uri: MIXS:0000219
+    slot_uri: mixs:0000219
     multivalued: false
     range: text value
   aero_struc:
@@ -2122,7 +2122,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '[plane|glider]'
-    slot_uri: MIXS:0000773
+    slot_uri: mixs:0000773
     multivalued: false
     range: text value
   agrochem_addition:
@@ -2149,7 +2149,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit};{timestamp}'
-    slot_uri: MIXS:0000639
+    slot_uri: mixs:0000639
     multivalued: false
     range: quantity value
   air_temp:
@@ -2175,7 +2175,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000124
+    slot_uri: mixs:0000124
     multivalued: false
     range: quantity value
   air_temp_regm:
@@ -2205,7 +2205,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0000551
+    slot_uri: mixs:0000551
     multivalued: false
     range: quantity value
   al_sat:
@@ -2229,7 +2229,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000607
+    slot_uri: mixs:0000607
     multivalued: false
     range: quantity value
   al_sat_meth:
@@ -2251,7 +2251,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000324
+    slot_uri: mixs:0000324
     multivalued: false
     range: text value
   alkalinity:
@@ -2278,7 +2278,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000421
+    slot_uri: mixs:0000421
     multivalued: false
     range: quantity value
   alkalinity_method:
@@ -2302,7 +2302,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000298
+    slot_uri: mixs:0000298
     multivalued: false
     range: text value
   alkyl_diethers:
@@ -2328,7 +2328,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000490
+    slot_uri: mixs:0000490
     multivalued: false
     range: quantity value
   alt:
@@ -2353,7 +2353,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000094
+    slot_uri: mixs:0000094
     multivalued: false
     range: quantity value
   environment field:
@@ -2386,7 +2386,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000172
+    slot_uri: mixs:0000172
     multivalued: false
     range: quantity value
   ammonium:
@@ -2412,7 +2412,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000427
+    slot_uri: mixs:0000427
     multivalued: false
     range: quantity value
   amount_light:
@@ -2437,7 +2437,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000140
+    slot_uri: mixs:0000140
     multivalued: false
     range: quantity value
   ances_data:
@@ -2463,7 +2463,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000247
+    slot_uri: mixs:0000247
     multivalued: false
     range: text value
   annual_precpt:
@@ -2488,7 +2488,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000644
+    slot_uri: mixs:0000644
     multivalued: false
     range: quantity value
   annual_temp:
@@ -2514,7 +2514,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000642
+    slot_uri: mixs:0000642
     multivalued: false
     range: quantity value
   antibiotic_regm:
@@ -2545,7 +2545,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0000553
+    slot_uri: mixs:0000553
     multivalued: false
     range: quantity value
   api:
@@ -2571,7 +2571,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000157
+    slot_uri: mixs:0000157
     multivalued: false
     range: quantity value
   arch_struc:
@@ -2595,7 +2595,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000774
+    slot_uri: mixs:0000774
     multivalued: false
     range: text value
   aromatics_pc:
@@ -2624,7 +2624,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000133
+    slot_uri: mixs:0000133
     multivalued: false
     range: quantity value
   asphaltenes_pc:
@@ -2653,7 +2653,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000135
+    slot_uri: mixs:0000135
     multivalued: false
     range: quantity value
   atmospheric_data:
@@ -2677,7 +2677,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0001097
+    slot_uri: mixs:0001097
     multivalued: false
     range: quantity value
   avg_dew_point:
@@ -2704,7 +2704,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000141
+    slot_uri: mixs:0000141
     multivalued: false
     range: quantity value
   avg_occup:
@@ -2728,7 +2728,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000775
+    slot_uri: mixs:0000775
     multivalued: false
     range: text value
   avg_temp:
@@ -2755,7 +2755,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000142
+    slot_uri: mixs:0000142
     multivalued: false
     range: quantity value
   bac_prod:
@@ -2781,7 +2781,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000683
+    slot_uri: mixs:0000683
     multivalued: false
     range: quantity value
   bac_resp:
@@ -2807,7 +2807,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000684
+    slot_uri: mixs:0000684
     multivalued: false
     range: quantity value
   bacteria_carb_prod:
@@ -2833,7 +2833,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000173
+    slot_uri: mixs:0000173
     multivalued: false
     range: quantity value
   barometric_press:
@@ -2860,7 +2860,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000096
+    slot_uri: mixs:0000096
     multivalued: false
     range: quantity value
   basin:
@@ -2882,7 +2882,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000290
+    slot_uri: mixs:0000290
     multivalued: false
     range: text value
   bathroom_count:
@@ -2905,7 +2905,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000776
+    slot_uri: mixs:0000776
     multivalued: false
     range: text value
   bedroom_count:
@@ -2928,7 +2928,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000777
+    slot_uri: mixs:0000777
     multivalued: false
     range: text value
   benzene:
@@ -2952,7 +2952,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000153
+    slot_uri: mixs:0000153
     multivalued: false
     range: quantity value
   biochem_oxygen_dem:
@@ -2978,7 +2978,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000653
+    slot_uri: mixs:0000653
     multivalued: false
     range: quantity value
   biocide:
@@ -3003,7 +3003,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{text};{timestamp}'
-    slot_uri: MIXS:0001011
+    slot_uri: mixs:0001011
     multivalued: false
     range: text value
   biocide_admin_method:
@@ -3030,7 +3030,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration};{duration}'
-    slot_uri: MIXS:0000456
+    slot_uri: mixs:0000456
     multivalued: false
     range: quantity value
   biol_stat:
@@ -3053,7 +3053,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000858
+    slot_uri: mixs:0000858
     multivalued: false
     range: text value
   biomass:
@@ -3081,7 +3081,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000174
+    slot_uri: mixs:0000174
     multivalued: false
     range: quantity value
   biotic_regm:
@@ -3106,7 +3106,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0001038
+    slot_uri: mixs:0001038
     multivalued: false
     range: text value
   biotic_relationship:
@@ -3129,7 +3129,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000028
+    slot_uri: mixs:0000028
     multivalued: false
     range: text value
   nucleic acid sequence source field:
@@ -3161,7 +3161,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000175
+    slot_uri: mixs:0000175
     multivalued: false
     range: quantity value
   blood_press_diast:
@@ -3185,7 +3185,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: core field
-    slot_uri: MIXS:0000258
+    slot_uri: mixs:0000258
     multivalued: false
     range: quantity value
   blood_press_syst:
@@ -3209,7 +3209,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: core field
-    slot_uri: MIXS:0000259
+    slot_uri: mixs:0000259
     multivalued: false
     range: quantity value
   bromide:
@@ -3235,7 +3235,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000176
+    slot_uri: mixs:0000176
     multivalued: false
     range: quantity value
   build_docs:
@@ -3258,7 +3258,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000787
+    slot_uri: mixs:0000787
     multivalued: false
     range: text value
   build_occup_type:
@@ -3282,7 +3282,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000761
+    slot_uri: mixs:0000761
     multivalued: false
     range: text value
   building_setting:
@@ -3305,7 +3305,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000768
+    slot_uri: mixs:0000768
     multivalued: false
     range: text value
   built_struc_age:
@@ -3331,7 +3331,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000145
+    slot_uri: mixs:0000145
     multivalued: false
     range: quantity value
   built_struc_set:
@@ -3356,7 +3356,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '[urban|rural]'
-    slot_uri: MIXS:0000778
+    slot_uri: mixs:0000778
     multivalued: false
     range: text value
   built_struc_type:
@@ -3379,7 +3379,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000721
+    slot_uri: mixs:0000721
     multivalued: false
     range: text value
   calcium:
@@ -3405,7 +3405,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000432
+    slot_uri: mixs:0000432
     multivalued: false
     range: quantity value
   carb_dioxide:
@@ -3431,7 +3431,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000097
+    slot_uri: mixs:0000097
     multivalued: false
     range: quantity value
   carb_monoxide:
@@ -3457,7 +3457,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000098
+    slot_uri: mixs:0000098
     multivalued: false
     range: quantity value
   carb_nitro_ratio:
@@ -3480,7 +3480,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000310
+    slot_uri: mixs:0000310
     multivalued: false
     range: quantity value
   ceil_area:
@@ -3506,7 +3506,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000148
+    slot_uri: mixs:0000148
     multivalued: false
     range: quantity value
   ceil_cond:
@@ -3530,7 +3530,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000779
+    slot_uri: mixs:0000779
     multivalued: false
     range: text value
   ceil_finish_mat:
@@ -3553,7 +3553,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000780
+    slot_uri: mixs:0000780
     multivalued: false
     range: text value
   ceil_struc:
@@ -3577,7 +3577,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '[wood frame|concrete]'
-    slot_uri: MIXS:0000782
+    slot_uri: mixs:0000782
     multivalued: false
     range: text value
   ceil_texture:
@@ -3600,7 +3600,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000783
+    slot_uri: mixs:0000783
     multivalued: false
     range: text value
   ceil_thermal_mass:
@@ -3627,7 +3627,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000143
+    slot_uri: mixs:0000143
     multivalued: false
     range: quantity value
   ceil_type:
@@ -3650,7 +3650,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000784
+    slot_uri: mixs:0000784
     multivalued: false
     range: text value
   ceil_water_mold:
@@ -3674,7 +3674,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '[presence of mold visible|no presence of mold visible]'
-    slot_uri: MIXS:0000781
+    slot_uri: mixs:0000781
     multivalued: false
     range: text value
   chem_administration:
@@ -3701,7 +3701,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{termLabel} {[termID]};{timestamp}'
-    slot_uri: MIXS:0000751
+    slot_uri: mixs:0000751
     multivalued: false
     range: controlled term value
   chem_mutagen:
@@ -3731,7 +3731,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0000555
+    slot_uri: mixs:0000555
     multivalued: false
     range: quantity value
   chem_oxygen_dem:
@@ -3757,7 +3757,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000656
+    slot_uri: mixs:0000656
     multivalued: false
     range: quantity value
   chem_treat_method:
@@ -3784,7 +3784,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: core field
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration};{duration};{duration}'
-    slot_uri: MIXS:0000457
+    slot_uri: mixs:0000457
     multivalued: false
     range: string
   chem_treatment:
@@ -3812,7 +3812,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{text};{timestamp}'
-    slot_uri: MIXS:0001012
+    slot_uri: mixs:0001012
     multivalued: false
     range: text value
   chimera_check:
@@ -3835,7 +3835,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{software};{version};{parameters}'
-    slot_uri: MIXS:0000052
+    slot_uri: mixs:0000052
     multivalued: false
     range: text value
   sequencing field:
@@ -3867,7 +3867,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000429
+    slot_uri: mixs:0000429
     multivalued: false
     range: quantity value
   chlorophyll:
@@ -3893,7 +3893,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000177
+    slot_uri: mixs:0000177
     multivalued: false
     range: quantity value
   climate_environment:
@@ -3920,7 +3920,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0001040
+    slot_uri: mixs:0001040
     multivalued: false
     range: text value
   collection_date:
@@ -3943,7 +3943,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000011
+    slot_uri: mixs:0000011
     multivalued: false
     range: timestamp value
   conduc:
@@ -3969,7 +3969,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000692
+    slot_uri: mixs:0000692
     multivalued: false
     range: quantity value
   cool_syst_id:
@@ -3992,7 +3992,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000785
+    slot_uri: mixs:0000785
     multivalued: false
     range: text value
   crop_rotation:
@@ -4016,7 +4016,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{boolean};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0000318
+    slot_uri: mixs:0000318
     multivalued: false
     range: text value
   cult_root_med:
@@ -4043,7 +4043,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}|{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0001041
+    slot_uri: mixs:0001041
     multivalued: false
     range: text value
   cur_land_use:
@@ -4066,7 +4066,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0001080
+    slot_uri: mixs:0001080
     multivalued: false
     range: text value
   cur_vegetation:
@@ -4089,7 +4089,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000312
+    slot_uri: mixs:0000312
     multivalued: false
     range: text value
   cur_vegetation_meth:
@@ -4111,7 +4111,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000314
+    slot_uri: mixs:0000314
     multivalued: false
     range: text value
   date_last_rain:
@@ -4134,7 +4134,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000786
+    slot_uri: mixs:0000786
     multivalued: false
     range: timestamp value
   density:
@@ -4161,7 +4161,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000435
+    slot_uri: mixs:0000435
     multivalued: false
     range: quantity value
   depos_env:
@@ -4185,7 +4185,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000992
+    slot_uri: mixs:0000992
     multivalued: false
     range: text value
   depth:
@@ -4207,7 +4207,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000018
+    slot_uri: mixs:0000018
     multivalued: false
     range: quantity value
   dew_point:
@@ -4234,7 +4234,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000129
+    slot_uri: mixs:0000129
     multivalued: false
     range: quantity value
   diether_lipids:
@@ -4262,7 +4262,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000178
+    slot_uri: mixs:0000178
     multivalued: false
     range: quantity value
   diss_carb_dioxide:
@@ -4289,7 +4289,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000436
+    slot_uri: mixs:0000436
     multivalued: false
     range: quantity value
   diss_hydrogen:
@@ -4315,7 +4315,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000179
+    slot_uri: mixs:0000179
     multivalued: false
     range: quantity value
   diss_inorg_carb:
@@ -4342,7 +4342,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000434
+    slot_uri: mixs:0000434
     multivalued: false
     range: quantity value
   diss_inorg_nitro:
@@ -4368,7 +4368,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000698
+    slot_uri: mixs:0000698
     multivalued: false
     range: quantity value
   diss_inorg_phosp:
@@ -4394,7 +4394,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000106
+    slot_uri: mixs:0000106
     multivalued: false
     range: quantity value
   diss_iron:
@@ -4418,7 +4418,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000139
+    slot_uri: mixs:0000139
     multivalued: false
     range: quantity value
   diss_org_carb:
@@ -4445,7 +4445,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000433
+    slot_uri: mixs:0000433
     multivalued: false
     range: quantity value
   diss_org_nitro:
@@ -4472,7 +4472,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000162
+    slot_uri: mixs:0000162
     multivalued: false
     range: quantity value
   diss_oxygen:
@@ -4498,7 +4498,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000119
+    slot_uri: mixs:0000119
     multivalued: false
     range: quantity value
   diss_oxygen_fluid:
@@ -4523,7 +4523,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000438
+    slot_uri: mixs:0000438
     multivalued: false
     range: quantity value
   door_comp_type:
@@ -4546,7 +4546,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000795
+    slot_uri: mixs:0000795
     multivalued: false
     range: text value
   door_cond:
@@ -4569,7 +4569,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000788
+    slot_uri: mixs:0000788
     multivalued: false
     range: text value
   door_direct:
@@ -4592,7 +4592,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000789
+    slot_uri: mixs:0000789
     multivalued: false
     range: text value
   door_loc:
@@ -4615,7 +4615,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000790
+    slot_uri: mixs:0000790
     multivalued: false
     range: text value
   door_mat:
@@ -4638,7 +4638,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000791
+    slot_uri: mixs:0000791
     multivalued: false
     range: text value
   door_move:
@@ -4661,7 +4661,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000792
+    slot_uri: mixs:0000792
     multivalued: false
     range: text value
   door_size:
@@ -4687,7 +4687,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000158
+    slot_uri: mixs:0000158
     multivalued: false
     range: quantity value
   door_type:
@@ -4710,7 +4710,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000794
+    slot_uri: mixs:0000794
     multivalued: false
     range: text value
   door_type_metal:
@@ -4733,7 +4733,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000796
+    slot_uri: mixs:0000796
     multivalued: false
     range: text value
   door_type_wood:
@@ -4756,7 +4756,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000797
+    slot_uri: mixs:0000797
     multivalued: false
     range: text value
   door_water_mold:
@@ -4780,7 +4780,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '[presence of mold visible|no presence of mold visible]'
-    slot_uri: MIXS:0000793
+    slot_uri: mixs:0000793
     multivalued: false
     range: text value
   down_par:
@@ -4808,7 +4808,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000703
+    slot_uri: mixs:0000703
     multivalued: false
     range: quantity value
   drainage_class:
@@ -4831,7 +4831,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0001085
+    slot_uri: mixs:0001085
     multivalued: false
     range: text value
   drawings:
@@ -4855,7 +4855,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000798
+    slot_uri: mixs:0000798
     multivalued: false
     range: text value
   efficiency_percent:
@@ -4879,7 +4879,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000657
+    slot_uri: mixs:0000657
     multivalued: false
     range: quantity value
   elev:
@@ -4902,7 +4902,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000093
+    slot_uri: mixs:0000093
     multivalued: false
     range: quantity value
   elevator:
@@ -4925,7 +4925,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000799
+    slot_uri: mixs:0000799
     multivalued: false
     range: text value
   emulsions:
@@ -4952,7 +4952,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000660
+    slot_uri: mixs:0000660
     multivalued: false
     range: quantity value
   env_broad_scale:
@@ -4980,7 +4980,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{termLabel} {[termID]}'
-    slot_uri: MIXS:0000012
+    slot_uri: mixs:0000012
     multivalued: false
     range: controlled term value
   env_local_scale:
@@ -5010,7 +5010,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{termLabel} {[termID]}'
-    slot_uri: MIXS:0000013
+    slot_uri: mixs:0000013
     multivalued: false
     range: controlled term value
   env_medium:
@@ -5040,7 +5040,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{termLabel} {[termID]}'
-    slot_uri: MIXS:0000014
+    slot_uri: mixs:0000014
     multivalued: false
     range: controlled term value
   escalator:
@@ -5063,7 +5063,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000800
+    slot_uri: mixs:0000800
     multivalued: false
     range: text value
   ethylbenzene:
@@ -5087,7 +5087,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000155
+    slot_uri: mixs:0000155
     multivalued: false
     range: quantity value
   exp_duct:
@@ -5111,7 +5111,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000144
+    slot_uri: mixs:0000144
     multivalued: false
     range: quantity value
   exp_pipe:
@@ -5132,7 +5132,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000220
+    slot_uri: mixs:0000220
     multivalued: false
     range: quantity value
   experimental_factor:
@@ -5158,7 +5158,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{termLabel} {[termID]}|{text}'
-    slot_uri: MIXS:0000008
+    slot_uri: mixs:0000008
     multivalued: false
     range: controlled term value
   investigation field:
@@ -5187,7 +5187,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000170
+    slot_uri: mixs:0000170
     multivalued: false
     range: text value
   ext_wall_orient:
@@ -5210,7 +5210,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000817
+    slot_uri: mixs:0000817
     multivalued: false
     range: text value
   ext_window_orient:
@@ -5233,7 +5233,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000818
+    slot_uri: mixs:0000818
     multivalued: false
     range: text value
   extreme_event:
@@ -5254,7 +5254,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000320
+    slot_uri: mixs:0000320
     multivalued: false
     range: timestamp value
   fao_class:
@@ -5278,7 +5278,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0001083
+    slot_uri: mixs:0001083
     multivalued: false
     range: text value
   fertilizer_regm:
@@ -5309,7 +5309,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0000556
+    slot_uri: mixs:0000556
     multivalued: false
     range: quantity value
   field:
@@ -5331,7 +5331,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000291
+    slot_uri: mixs:0000291
     multivalued: false
     range: text value
   filter_type:
@@ -5354,7 +5354,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000765
+    slot_uri: mixs:0000765
     multivalued: false
     range: text value
   fire:
@@ -5375,7 +5375,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0001086
+    slot_uri: mixs:0001086
     multivalued: false
     range: timestamp value
   fireplace_type:
@@ -5399,7 +5399,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '[gas burning|wood burning]'
-    slot_uri: MIXS:0000802
+    slot_uri: mixs:0000802
     multivalued: false
     range: text value
   flooding:
@@ -5420,7 +5420,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000319
+    slot_uri: mixs:0000319
     multivalued: false
     range: timestamp value
   floor_age:
@@ -5444,7 +5444,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000164
+    slot_uri: mixs:0000164
     multivalued: false
     range: quantity value
   floor_area:
@@ -5468,7 +5468,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000165
+    slot_uri: mixs:0000165
     multivalued: false
     range: quantity value
   floor_cond:
@@ -5492,7 +5492,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000803
+    slot_uri: mixs:0000803
     multivalued: false
     range: text value
   floor_count:
@@ -5514,7 +5514,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000225
+    slot_uri: mixs:0000225
     multivalued: false
     range: text value
   floor_finish_mat:
@@ -5537,7 +5537,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000804
+    slot_uri: mixs:0000804
     multivalued: false
     range: text value
   floor_struc:
@@ -5561,7 +5561,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000806
+    slot_uri: mixs:0000806
     multivalued: false
     range: text value
   floor_thermal_mass:
@@ -5585,7 +5585,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000166
+    slot_uri: mixs:0000166
     multivalued: false
     range: quantity value
   floor_water_mold:
@@ -5608,7 +5608,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000805
+    slot_uri: mixs:0000805
     multivalued: false
     range: text value
   fluor:
@@ -5634,7 +5634,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000704
+    slot_uri: mixs:0000704
     multivalued: false
     range: quantity value
   freq_clean:
@@ -5656,7 +5656,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000226
+    slot_uri: mixs:0000226
     multivalued: false
     range: quantity value
   freq_cook:
@@ -5677,7 +5677,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000227
+    slot_uri: mixs:0000227
     multivalued: false
     range: quantity value
   fungicide_regm:
@@ -5707,7 +5707,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0000557
+    slot_uri: mixs:0000557
     multivalued: false
     range: quantity value
   furniture:
@@ -5730,7 +5730,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000807
+    slot_uri: mixs:0000807
     multivalued: false
     range: text value
   gaseous_environment:
@@ -5760,7 +5760,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0000558
+    slot_uri: mixs:0000558
     multivalued: false
     range: quantity value
   gaseous_substances:
@@ -5786,7 +5786,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000661
+    slot_uri: mixs:0000661
     multivalued: false
     range: quantity value
   gender_restroom:
@@ -5809,7 +5809,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000808
+    slot_uri: mixs:0000808
     multivalued: false
     range: text value
   genetic_mod:
@@ -5836,7 +5836,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
-    slot_uri: MIXS:0000859
+    slot_uri: mixs:0000859
     multivalued: false
     range: text value
   geo_loc_name:
@@ -5861,7 +5861,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{term}: {term}, {text}'
-    slot_uri: MIXS:0000010
+    slot_uri: mixs:0000010
     multivalued: false
     range: text value
   glucosidase_act:
@@ -5887,7 +5887,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000137
+    slot_uri: mixs:0000137
     multivalued: false
     range: quantity value
   gravidity:
@@ -5912,7 +5912,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{boolean};{timestamp}'
-    slot_uri: MIXS:0000875
+    slot_uri: mixs:0000875
     multivalued: false
     range: text value
   gravity:
@@ -5943,7 +5943,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0000559
+    slot_uri: mixs:0000559
     multivalued: false
     range: quantity value
   growth_facil:
@@ -5969,7 +5969,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}|{termLabel} {[termID]}'
-    slot_uri: MIXS:0001043
+    slot_uri: mixs:0001043
     multivalued: false
     range: controlled term value
   growth_habit:
@@ -5992,7 +5992,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0001044
+    slot_uri: mixs:0001044
     multivalued: false
     range: text value
   growth_hormone_regm:
@@ -6023,7 +6023,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0000560
+    slot_uri: mixs:0000560
     multivalued: false
     range: quantity value
   hall_count:
@@ -6044,7 +6044,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000228
+    slot_uri: mixs:0000228
     multivalued: false
     range: text value
   handidness:
@@ -6067,7 +6067,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000809
+    slot_uri: mixs:0000809
     multivalued: false
     range: text value
   hc_produced:
@@ -6091,7 +6091,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000989
+    slot_uri: mixs:0000989
     multivalued: false
     range: text value
   hcr:
@@ -6120,7 +6120,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000988
+    slot_uri: mixs:0000988
     multivalued: false
     range: text value
   hcr_fw_salinity:
@@ -6145,7 +6145,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000406
+    slot_uri: mixs:0000406
     multivalued: false
     range: quantity value
   hcr_geol_age:
@@ -6169,7 +6169,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000993
+    slot_uri: mixs:0000993
     multivalued: false
     range: text value
   hcr_pressure:
@@ -6194,7 +6194,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{float} - {float} {unit}'
-    slot_uri: MIXS:0000395
+    slot_uri: mixs:0000395
     multivalued: false
     range: quantity value
   hcr_temp:
@@ -6221,7 +6221,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{float} - {float} {unit}'
-    slot_uri: MIXS:0000393
+    slot_uri: mixs:0000393
     multivalued: false
     range: quantity value
   heat_cool_type:
@@ -6244,7 +6244,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000766
+    slot_uri: mixs:0000766
     multivalued: false
     range: text value
   heat_deliv_loc:
@@ -6267,7 +6267,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000810
+    slot_uri: mixs:0000810
     multivalued: false
     range: text value
   heat_sys_deliv_meth:
@@ -6291,7 +6291,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: core field
     string_serialization: '[conductive|radiant]'
-    slot_uri: MIXS:0000812
+    slot_uri: mixs:0000812
     multivalued: false
     range: string
   heat_system_id:
@@ -6312,7 +6312,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000833
+    slot_uri: mixs:0000833
     multivalued: false
     range: text value
   heavy_metals:
@@ -6340,7 +6340,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000652
+    slot_uri: mixs:0000652
     multivalued: false
     range: quantity value
   heavy_metals_meth:
@@ -6362,7 +6362,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000343
+    slot_uri: mixs:0000343
     multivalued: false
     range: text value
   height_carper_fiber:
@@ -6386,7 +6386,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000167
+    slot_uri: mixs:0000167
     multivalued: false
     range: quantity value
   herbicide_regm:
@@ -6417,7 +6417,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0000561
+    slot_uri: mixs:0000561
     multivalued: false
     range: quantity value
   horizon:
@@ -6440,7 +6440,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0001082
+    slot_uri: mixs:0001082
     multivalued: false
     range: text value
   horizon_meth:
@@ -6462,7 +6462,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000321
+    slot_uri: mixs:0000321
     multivalued: false
     range: text value
   host_age:
@@ -6489,7 +6489,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000255
+    slot_uri: mixs:0000255
     multivalued: false
     range: quantity value
   host_body_habitat:
@@ -6513,7 +6513,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000866
+    slot_uri: mixs:0000866
     multivalued: false
     range: text value
   host_body_product:
@@ -6540,7 +6540,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{termLabel} {[termID]}'
-    slot_uri: MIXS:0000888
+    slot_uri: mixs:0000888
     multivalued: false
     range: controlled term value
   host_body_site:
@@ -6567,7 +6567,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{termLabel} {[termID]}'
-    slot_uri: MIXS:0000867
+    slot_uri: mixs:0000867
     multivalued: false
     range: controlled term value
   host_body_temp:
@@ -6593,7 +6593,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000274
+    slot_uri: mixs:0000274
     multivalued: false
     range: quantity value
   host_color:
@@ -6615,7 +6615,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000260
+    slot_uri: mixs:0000260
     multivalued: false
     range: text value
   host_common_name:
@@ -6639,7 +6639,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000248
+    slot_uri: mixs:0000248
     multivalued: false
     range: text value
   host_diet:
@@ -6664,7 +6664,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000869
+    slot_uri: mixs:0000869
     multivalued: false
     range: text value
   host_dry_mass:
@@ -6690,7 +6690,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000257
+    slot_uri: mixs:0000257
     multivalued: false
     range: quantity value
   host_family_relation:
@@ -6715,7 +6715,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: core field
     string_serialization: '{text};{text}'
-    slot_uri: MIXS:0000872
+    slot_uri: mixs:0000872
     multivalued: true
     range: string
   host_genotype:
@@ -6739,7 +6739,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000365
+    slot_uri: mixs:0000365
     multivalued: false
     range: text value
   host_growth_cond:
@@ -6763,7 +6763,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
-    slot_uri: MIXS:0000871
+    slot_uri: mixs:0000871
     multivalued: false
     range: text value
   host_height:
@@ -6789,7 +6789,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000264
+    slot_uri: mixs:0000264
     multivalued: false
     range: quantity value
   host_last_meal:
@@ -6814,7 +6814,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{duration}'
-    slot_uri: MIXS:0000870
+    slot_uri: mixs:0000870
     multivalued: false
     range: text value
   host_length:
@@ -6840,7 +6840,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000256
+    slot_uri: mixs:0000256
     multivalued: false
     range: quantity value
   host_life_stage:
@@ -6864,7 +6864,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000251
+    slot_uri: mixs:0000251
     multivalued: false
     range: text value
   host_phenotype:
@@ -6890,7 +6890,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{termLabel} {[termID]}'
-    slot_uri: MIXS:0000874
+    slot_uri: mixs:0000874
     multivalued: false
     range: controlled term value
   host_sex:
@@ -6913,7 +6913,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000811
+    slot_uri: mixs:0000811
     multivalued: false
     range: text value
   host_shape:
@@ -6937,7 +6937,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000261
+    slot_uri: mixs:0000261
     multivalued: false
     range: text value
   host_subject_id:
@@ -6961,7 +6961,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000861
+    slot_uri: mixs:0000861
     multivalued: false
     range: text value
   host_subspecf_genlin:
@@ -6990,7 +6990,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: core field
     string_serialization: '{rank name}:{text}'
-    slot_uri: MIXS:0001318
+    slot_uri: mixs:0001318
     multivalued: true
     range: string
   host_substrate:
@@ -7014,7 +7014,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000252
+    slot_uri: mixs:0000252
     multivalued: false
     range: text value
   host_symbiont:
@@ -7039,7 +7039,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: core field
     string_serialization: '{text}'
-    slot_uri: MIXS:0001298
+    slot_uri: mixs:0001298
     multivalued: true
     range: string
   host_taxid:
@@ -7063,7 +7063,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{NCBI taxid}'
-    slot_uri: MIXS:0000250
+    slot_uri: mixs:0000250
     multivalued: false
     range: text value
   host_tot_mass:
@@ -7089,7 +7089,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000263
+    slot_uri: mixs:0000263
     multivalued: false
     range: quantity value
   host_wet_mass:
@@ -7115,7 +7115,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000567
+    slot_uri: mixs:0000567
     multivalued: false
     range: quantity value
   humidity:
@@ -7141,7 +7141,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000100
+    slot_uri: mixs:0000100
     multivalued: false
     range: quantity value
   humidity_regm:
@@ -7172,7 +7172,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0000568
+    slot_uri: mixs:0000568
     multivalued: false
     range: quantity value
   indoor_space:
@@ -7196,7 +7196,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000763
+    slot_uri: mixs:0000763
     multivalued: false
     range: text value
   indoor_surf:
@@ -7219,7 +7219,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000764
+    slot_uri: mixs:0000764
     multivalued: false
     range: text value
   indust_eff_percent:
@@ -7244,7 +7244,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000662
+    slot_uri: mixs:0000662
     multivalued: false
     range: quantity value
   inorg_particles:
@@ -7270,7 +7270,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000664
+    slot_uri: mixs:0000664
     multivalued: false
     range: quantity value
   inside_lux:
@@ -7294,7 +7294,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000168
+    slot_uri: mixs:0000168
     multivalued: false
     range: quantity value
   int_wall_cond:
@@ -7318,7 +7318,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000813
+    slot_uri: mixs:0000813
     multivalued: false
     range: text value
   iw_bt_date_well:
@@ -7342,7 +7342,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0001010
+    slot_uri: mixs:0001010
     multivalued: false
     range: timestamp value
   iwf:
@@ -7367,7 +7367,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000455
+    slot_uri: mixs:0000455
     multivalued: false
     range: quantity value
   last_clean:
@@ -7390,7 +7390,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000814
+    slot_uri: mixs:0000814
     multivalued: false
     range: timestamp value
   lat_lon:
@@ -7412,7 +7412,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{float} {float}'
-    slot_uri: MIXS:0000009
+    slot_uri: mixs:0000009
     multivalued: false
     range: geolocation value
   light_intensity:
@@ -7438,7 +7438,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000706
+    slot_uri: mixs:0000706
     multivalued: false
     range: quantity value
   light_regm:
@@ -7466,7 +7466,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit};{float} {unit}'
-    slot_uri: MIXS:0000569
+    slot_uri: mixs:0000569
     multivalued: false
     range: quantity value
   light_type:
@@ -7492,7 +7492,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000769
+    slot_uri: mixs:0000769
     multivalued: false
     range: text value
   link_addit_analys:
@@ -7514,7 +7514,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000340
+    slot_uri: mixs:0000340
     multivalued: false
     range: text value
   link_class_info:
@@ -7536,7 +7536,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000329
+    slot_uri: mixs:0000329
     multivalued: false
     range: text value
   link_climate_info:
@@ -7558,7 +7558,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000328
+    slot_uri: mixs:0000328
     multivalued: false
     range: text value
   lithology:
@@ -7582,7 +7582,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000990
+    slot_uri: mixs:0000990
     multivalued: false
     range: text value
   local_class:
@@ -7604,7 +7604,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000330
+    slot_uri: mixs:0000330
     multivalued: false
     range: text value
   local_class_meth:
@@ -7626,7 +7626,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000331
+    slot_uri: mixs:0000331
     multivalued: false
     range: text value
   magnesium:
@@ -7653,7 +7653,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000431
+    slot_uri: mixs:0000431
     multivalued: false
     range: quantity value
   max_occup:
@@ -7674,7 +7674,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000229
+    slot_uri: mixs:0000229
     multivalued: false
     range: quantity value
   mean_frict_vel:
@@ -7700,7 +7700,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000498
+    slot_uri: mixs:0000498
     multivalued: false
     range: quantity value
   mean_peak_frict_vel:
@@ -7726,7 +7726,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000502
+    slot_uri: mixs:0000502
     multivalued: false
     range: quantity value
   mech_struc:
@@ -7749,7 +7749,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000815
+    slot_uri: mixs:0000815
     multivalued: false
     range: text value
   mechanical_damage:
@@ -7774,7 +7774,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{text}'
-    slot_uri: MIXS:0001052
+    slot_uri: mixs:0001052
     multivalued: false
     range: text value
   methane:
@@ -7800,7 +7800,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000101
+    slot_uri: mixs:0000101
     multivalued: false
     range: quantity value
   micro_biomass_meth:
@@ -7822,7 +7822,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000339
+    slot_uri: mixs:0000339
     multivalued: false
     range: string
   microbial_biomass:
@@ -7848,7 +7848,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000650
+    slot_uri: mixs:0000650
     multivalued: false
     range: quantity value
   microbial_biomass_meth:
@@ -7870,7 +7870,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{PMID|DOI|URL}'
-    slot_uri: MIXS:0000339
+    slot_uri: mixs:0000339
     multivalued: false
     range: text value
   mineral_nutr_regm:
@@ -7902,7 +7902,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0000570
+    slot_uri: mixs:0000570
     multivalued: false
     range: quantity value
   misc_param:
@@ -7927,7 +7927,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000752
+    slot_uri: mixs:0000752
     multivalued: false
     range: quantity value
   n_alkanes:
@@ -7954,7 +7954,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000503
+    slot_uri: mixs:0000503
     multivalued: false
     range: quantity value
   nitrate:
@@ -7980,7 +7980,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000425
+    slot_uri: mixs:0000425
     multivalued: false
     range: quantity value
   nitrite:
@@ -8006,7 +8006,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000426
+    slot_uri: mixs:0000426
     multivalued: false
     range: quantity value
   nitro:
@@ -8032,7 +8032,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000504
+    slot_uri: mixs:0000504
     multivalued: false
     range: quantity value
   non_min_nutr_regm:
@@ -8064,7 +8064,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0000571
+    slot_uri: mixs:0000571
     multivalued: true
     range: string
   nucl_acid_amp:
@@ -8087,7 +8087,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000038
+    slot_uri: mixs:0000038
     multivalued: false
     range: text value
   nucl_acid_ext:
@@ -8110,7 +8110,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000037
+    slot_uri: mixs:0000037
     multivalued: false
     range: text value
   number_pets:
@@ -8131,7 +8131,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000231
+    slot_uri: mixs:0000231
     multivalued: false
     range: quantity value
   number_plants:
@@ -8152,7 +8152,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000230
+    slot_uri: mixs:0000230
     multivalued: false
     range: quantity value
   number_resident:
@@ -8173,7 +8173,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000232
+    slot_uri: mixs:0000232
     multivalued: false
     range: quantity value
   occup_density_samp:
@@ -8194,7 +8194,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000217
+    slot_uri: mixs:0000217
     multivalued: false
     range: quantity value
   occup_document:
@@ -8217,7 +8217,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000816
+    slot_uri: mixs:0000816
     multivalued: false
     range: text value
   occup_samp:
@@ -8240,7 +8240,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000772
+    slot_uri: mixs:0000772
     multivalued: false
     range: quantity value
   org_carb:
@@ -8266,7 +8266,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000508
+    slot_uri: mixs:0000508
     multivalued: false
     range: quantity value
   org_count_qpcr_info:
@@ -8298,7 +8298,7 @@ slots:
     is_a: core field
     string_serialization: '{text};FWD:{dna};REV:{dna};initial denaturation:degrees_minutes;denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
       elongation:degrees_minutes; total cycles'
-    slot_uri: MIXS:0000099
+    slot_uri: mixs:0000099
     multivalued: false
     range: string
   org_matter:
@@ -8324,7 +8324,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000204
+    slot_uri: mixs:0000204
     multivalued: false
     range: quantity value
   org_nitro:
@@ -8350,7 +8350,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000205
+    slot_uri: mixs:0000205
     multivalued: false
     range: quantity value
   org_particles:
@@ -8376,7 +8376,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000665
+    slot_uri: mixs:0000665
     multivalued: false
     range: quantity value
   organism_count:
@@ -8406,7 +8406,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000103
+    slot_uri: mixs:0000103
     multivalued: false
     range: quantity value
   owc_tvdss:
@@ -8430,7 +8430,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000405
+    slot_uri: mixs:0000405
     multivalued: false
     range: quantity value
   oxy_stat_samp:
@@ -8453,7 +8453,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000753
+    slot_uri: mixs:0000753
     multivalued: false
     range: text value
   oxygen:
@@ -8479,7 +8479,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000104
+    slot_uri: mixs:0000104
     multivalued: false
     range: quantity value
   part_org_carb:
@@ -8505,7 +8505,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000515
+    slot_uri: mixs:0000515
     multivalued: false
     range: quantity value
   part_org_nitro:
@@ -8531,7 +8531,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000719
+    slot_uri: mixs:0000719
     multivalued: false
     range: quantity value
   particle_class:
@@ -8558,7 +8558,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000206
+    slot_uri: mixs:0000206
     multivalued: false
     range: quantity value
   pcr_cond:
@@ -8582,7 +8582,7 @@ slots:
     is_a: attribute
     string_serialization: initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
       elongation:degrees_minutes;total cycles
-    slot_uri: MIXS:0000049
+    slot_uri: mixs:0000049
     multivalued: false
     range: text value
   pcr_primers:
@@ -8606,7 +8606,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: FWD:{dna};REV:{dna}
-    slot_uri: MIXS:0000046
+    slot_uri: mixs:0000046
     multivalued: false
     range: text value
   permeability:
@@ -8632,7 +8632,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{integer} - {integer} {unit}'
-    slot_uri: MIXS:0000404
+    slot_uri: mixs:0000404
     multivalued: false
     range: quantity value
   perturbation:
@@ -8659,7 +8659,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0000754
+    slot_uri: mixs:0000754
     multivalued: false
     range: text value
   pesticide_regm:
@@ -8690,7 +8690,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0000573
+    slot_uri: mixs:0000573
     multivalued: false
     range: quantity value
   petroleum_hydrocarb:
@@ -8716,7 +8716,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000516
+    slot_uri: mixs:0000516
     multivalued: false
     range: quantity value
   ph:
@@ -8740,7 +8740,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0001001
+    slot_uri: mixs:0001001
     multivalued: false
     range: quantity value
   ph_meth:
@@ -8762,7 +8762,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0001106
+    slot_uri: mixs:0001106
     multivalued: false
     range: text value
   ph_regm:
@@ -8789,7 +8789,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{float};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0001056
+    slot_uri: mixs:0001056
     multivalued: false
     range: text value
   phaeopigments:
@@ -8816,7 +8816,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000180
+    slot_uri: mixs:0000180
     multivalued: false
     range: quantity value
   phosphate:
@@ -8842,7 +8842,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000505
+    slot_uri: mixs:0000505
     multivalued: false
     range: quantity value
   phosplipid_fatt_acid:
@@ -8869,7 +8869,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000181
+    slot_uri: mixs:0000181
     multivalued: false
     range: quantity value
   photon_flux:
@@ -8895,7 +8895,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000725
+    slot_uri: mixs:0000725
     multivalued: false
     range: quantity value
   plant_growth_med:
@@ -8922,7 +8922,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0001057
+    slot_uri: mixs:0001057
     multivalued: false
     range: controlled term value
   plant_product:
@@ -8946,7 +8946,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0001058
+    slot_uri: mixs:0001058
     multivalued: false
     range: text value
   plant_sex:
@@ -8970,7 +8970,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0001059
+    slot_uri: mixs:0001059
     multivalued: false
     range: text value
   plant_struc:
@@ -8997,7 +8997,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{termLabel} {[termID]}'
-    slot_uri: MIXS:0001060
+    slot_uri: mixs:0001060
     multivalued: false
     range: controlled term value
   pollutants:
@@ -9026,7 +9026,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000107
+    slot_uri: mixs:0000107
     multivalued: false
     range: quantity value
   pool_dna_extracts:
@@ -9051,7 +9051,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{boolean};{integer}'
-    slot_uri: MIXS:0000325
+    slot_uri: mixs:0000325
     multivalued: false
     range: text value
   porosity:
@@ -9077,7 +9077,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{float} - {float} {unit}'
-    slot_uri: MIXS:0000211
+    slot_uri: mixs:0000211
     multivalued: false
     range: quantity value
   potassium:
@@ -9103,7 +9103,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000430
+    slot_uri: mixs:0000430
     multivalued: false
     range: quantity value
   pour_point:
@@ -9130,7 +9130,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000127
+    slot_uri: mixs:0000127
     multivalued: false
     range: quantity value
   pre_treatment:
@@ -9153,7 +9153,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000348
+    slot_uri: mixs:0000348
     multivalued: false
     range: text value
   pres_animal_insect:
@@ -9177,7 +9177,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: core field
-    slot_uri: MIXS:0000819
+    slot_uri: mixs:0000819
     multivalued: false
     range: string
     pattern: ^(cat|dog|rodent|snake|other);\d+$
@@ -9204,7 +9204,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000412
+    slot_uri: mixs:0000412
     multivalued: false
     range: quantity value
   prev_land_use_meth:
@@ -9226,7 +9226,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000316
+    slot_uri: mixs:0000316
     multivalued: false
     range: string
   previous_land_use:
@@ -9248,7 +9248,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{timestamp}'
-    slot_uri: MIXS:0000315
+    slot_uri: mixs:0000315
     multivalued: false
     range: text value
   previous_land_use_meth:
@@ -9270,7 +9270,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{PMID|DOI|URL}'
-    slot_uri: MIXS:0000316
+    slot_uri: mixs:0000316
     multivalued: false
     range: text value
   primary_prod:
@@ -9297,7 +9297,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000728
+    slot_uri: mixs:0000728
     multivalued: false
     range: quantity value
   primary_treatment:
@@ -9321,7 +9321,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000349
+    slot_uri: mixs:0000349
     multivalued: false
     range: text value
   prod_rate:
@@ -9345,7 +9345,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000452
+    slot_uri: mixs:0000452
     multivalued: false
     range: quantity value
   prod_start_date:
@@ -9368,7 +9368,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0001008
+    slot_uri: mixs:0001008
     multivalued: false
     range: timestamp value
   profile_position:
@@ -9392,7 +9392,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0001084
+    slot_uri: mixs:0001084
     multivalued: false
     range: text value
   quad_pos:
@@ -9415,7 +9415,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000820
+    slot_uri: mixs:0000820
     multivalued: false
     range: text value
   radiation_regm:
@@ -9446,7 +9446,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0000575
+    slot_uri: mixs:0000575
     multivalued: false
     range: quantity value
   rainfall_regm:
@@ -9476,7 +9476,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0000576
+    slot_uri: mixs:0000576
     multivalued: false
     range: quantity value
   reactor_type:
@@ -9500,7 +9500,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000350
+    slot_uri: mixs:0000350
     multivalued: false
     range: text value
   redox_potential:
@@ -9527,7 +9527,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000182
+    slot_uri: mixs:0000182
     multivalued: false
     range: quantity value
   rel_air_humidity:
@@ -9554,7 +9554,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000121
+    slot_uri: mixs:0000121
     multivalued: false
     range: quantity value
   rel_humidity_out:
@@ -9580,7 +9580,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000188
+    slot_uri: mixs:0000188
     multivalued: false
     range: quantity value
   rel_samp_loc:
@@ -9603,7 +9603,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000821
+    slot_uri: mixs:0000821
     multivalued: false
     range: text value
   rel_to_oxygen:
@@ -9624,7 +9624,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000015
+    slot_uri: mixs:0000015
     multivalued: false
     range: text value
   reservoir:
@@ -9646,7 +9646,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000303
+    slot_uri: mixs:0000303
     multivalued: false
     range: text value
   resins_pc:
@@ -9675,7 +9675,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000134
+    slot_uri: mixs:0000134
     multivalued: false
     range: quantity value
   room_air_exch_rate:
@@ -9699,7 +9699,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000169
+    slot_uri: mixs:0000169
     multivalued: false
     range: quantity value
   room_architec_elem:
@@ -9722,7 +9722,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: core field
     string_serialization: '{text}'
-    slot_uri: MIXS:0000233
+    slot_uri: mixs:0000233
     multivalued: false
     range: string
   room_condt:
@@ -9745,7 +9745,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000822
+    slot_uri: mixs:0000822
     multivalued: false
     range: text value
   room_connected:
@@ -9768,7 +9768,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000826
+    slot_uri: mixs:0000826
     multivalued: false
     range: text value
   room_count:
@@ -9790,7 +9790,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000234
+    slot_uri: mixs:0000234
     multivalued: false
     range: text value
   room_dim:
@@ -9815,7 +9815,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{integer} {unit} x {integer} {unit} x {integer} {unit}'
-    slot_uri: MIXS:0000192
+    slot_uri: mixs:0000192
     multivalued: false
     range: quantity value
   room_door_dist:
@@ -9841,7 +9841,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{integer} {unit}'
-    slot_uri: MIXS:0000193
+    slot_uri: mixs:0000193
     multivalued: false
     range: quantity value
   room_door_share:
@@ -9864,7 +9864,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{integer}'
-    slot_uri: MIXS:0000242
+    slot_uri: mixs:0000242
     multivalued: false
     range: text value
   room_hallway:
@@ -9887,7 +9887,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{integer}'
-    slot_uri: MIXS:0000238
+    slot_uri: mixs:0000238
     multivalued: false
     range: text value
   room_loc:
@@ -9910,7 +9910,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000823
+    slot_uri: mixs:0000823
     multivalued: false
     range: text value
   room_moist_dam_hist:
@@ -9932,7 +9932,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: core field
-    slot_uri: MIXS:0000235
+    slot_uri: mixs:0000235
     multivalued: false
     range: integer
   room_net_area:
@@ -9957,7 +9957,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{integer} {unit}'
-    slot_uri: MIXS:0000194
+    slot_uri: mixs:0000194
     multivalued: false
     range: quantity value
   room_occup:
@@ -9978,7 +9978,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000236
+    slot_uri: mixs:0000236
     multivalued: false
     range: quantity value
   room_samp_pos:
@@ -10002,7 +10002,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000824
+    slot_uri: mixs:0000824
     multivalued: false
     range: text value
   room_type:
@@ -10026,7 +10026,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000825
+    slot_uri: mixs:0000825
     multivalued: false
     range: text value
   room_vol:
@@ -10051,7 +10051,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{integer} {unit}'
-    slot_uri: MIXS:0000195
+    slot_uri: mixs:0000195
     multivalued: false
     range: quantity value
   room_wall_share:
@@ -10074,7 +10074,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{integer}'
-    slot_uri: MIXS:0000243
+    slot_uri: mixs:0000243
     multivalued: false
     range: text value
   room_window_count:
@@ -10095,7 +10095,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000237
+    slot_uri: mixs:0000237
     multivalued: false
     range: text value
   root_cond:
@@ -10120,7 +10120,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
-    slot_uri: MIXS:0001061
+    slot_uri: mixs:0001061
     multivalued: false
     range: text value
   root_med_carbon:
@@ -10147,7 +10147,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000577
+    slot_uri: mixs:0000577
     multivalued: false
     range: quantity value
   root_med_macronutr:
@@ -10175,7 +10175,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000578
+    slot_uri: mixs:0000578
     multivalued: false
     range: quantity value
   root_med_micronutr:
@@ -10203,7 +10203,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000579
+    slot_uri: mixs:0000579
     multivalued: false
     range: quantity value
   root_med_ph:
@@ -10226,7 +10226,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0001062
+    slot_uri: mixs:0001062
     multivalued: false
     range: quantity value
   root_med_regl:
@@ -10254,7 +10254,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000581
+    slot_uri: mixs:0000581
     multivalued: false
     range: quantity value
   root_med_solid:
@@ -10279,7 +10279,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0001063
+    slot_uri: mixs:0001063
     multivalued: false
     range: text value
   root_med_suppl:
@@ -10308,7 +10308,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000580
+    slot_uri: mixs:0000580
     multivalued: false
     range: quantity value
   salinity:
@@ -10339,7 +10339,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000183
+    slot_uri: mixs:0000183
     multivalued: false
     range: quantity value
   salinity_meth:
@@ -10361,7 +10361,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000341
+    slot_uri: mixs:0000341
     multivalued: false
     range: text value
   salt_regm:
@@ -10392,7 +10392,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0000582
+    slot_uri: mixs:0000582
     multivalued: false
     range: quantity value
   samp_capt_status:
@@ -10415,7 +10415,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000860
+    slot_uri: mixs:0000860
     multivalued: false
     range: text value
   samp_collec_device:
@@ -10438,7 +10438,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: nucleic acid sequence source field
     string_serialization: '{termLabel} {[termID]}|{text}'
-    slot_uri: MIXS:0000002
+    slot_uri: mixs:0000002
     multivalued: false
     range: string
   samp_collec_method:
@@ -10459,7 +10459,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: nucleic acid sequence source field
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
-    slot_uri: MIXS:0001225
+    slot_uri: mixs:0001225
     multivalued: false
     range: string
   samp_collect_device:
@@ -10485,7 +10485,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{termLabel} {[termID]}|{text}'
-    slot_uri: MIXS:0000002
+    slot_uri: mixs:0000002
     multivalued: false
     range: text value
   samp_collect_point:
@@ -10510,7 +10510,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: core field
-    slot_uri: MIXS:0001015
+    slot_uri: mixs:0001015
     multivalued: false
     range: samp_collect_point_enum
   samp_dis_stage:
@@ -10534,7 +10534,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000249
+    slot_uri: mixs:0000249
     multivalued: false
     range: text value
   samp_floor:
@@ -10557,7 +10557,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000828
+    slot_uri: mixs:0000828
     multivalued: false
     range: text value
   samp_loc_corr_rate:
@@ -10588,7 +10588,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{float} - {float} {unit}'
-    slot_uri: MIXS:0000136
+    slot_uri: mixs:0000136
     multivalued: false
     range: quantity value
   samp_mat_process:
@@ -10611,7 +10611,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000016
+    slot_uri: mixs:0000016
     multivalued: false
     range: controlled term value
   samp_md:
@@ -10642,7 +10642,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000413
+    slot_uri: mixs:0000413
     multivalued: false
     range: quantity value
   samp_name:
@@ -10669,7 +10669,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: investigation field
     string_serialization: '{text}'
-    slot_uri: MIXS:0001107
+    slot_uri: mixs:0001107
     multivalued: false
     range: string
   samp_preserv:
@@ -10695,7 +10695,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000463
+    slot_uri: mixs:0000463
     multivalued: false
     range: quantity value
   samp_room_id:
@@ -10717,7 +10717,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000244
+    slot_uri: mixs:0000244
     multivalued: false
     range: text value
   samp_size:
@@ -10741,7 +10741,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000001
+    slot_uri: mixs:0000001
     multivalued: false
     range: quantity value
   samp_sort_meth:
@@ -10766,7 +10766,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000216
+    slot_uri: mixs:0000216
     multivalued: false
     range: text value
   samp_store_dur:
@@ -10790,7 +10790,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{duration}'
-    slot_uri: MIXS:0000116
+    slot_uri: mixs:0000116
     multivalued: false
     range: text value
   samp_store_loc:
@@ -10814,7 +10814,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000755
+    slot_uri: mixs:0000755
     multivalued: false
     range: text value
   samp_store_temp:
@@ -10840,7 +10840,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000110
+    slot_uri: mixs:0000110
     multivalued: false
     range: quantity value
   samp_subtype:
@@ -10865,7 +10865,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000999
+    slot_uri: mixs:0000999
     multivalued: false
     range: text value
   samp_time_out:
@@ -10889,7 +10889,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000196
+    slot_uri: mixs:0000196
     multivalued: false
     range: text value
   samp_transport_cond:
@@ -10917,7 +10917,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{float} {unit};{float} {unit}'
-    slot_uri: MIXS:0000410
+    slot_uri: mixs:0000410
     multivalued: false
     range: quantity value
   samp_tvdss:
@@ -10944,7 +10944,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{float}-{float} {unit}'
-    slot_uri: MIXS:0000409
+    slot_uri: mixs:0000409
     multivalued: false
     range: quantity value
   samp_type:
@@ -10973,7 +10973,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{termLabel} {[termID]}'
-    slot_uri: MIXS:0000998
+    slot_uri: mixs:0000998
     multivalued: false
     range: text value
   samp_vol_we_dna_ext:
@@ -10989,7 +10989,7 @@ slots:
         value: millliter, gram, milligram, square centimeter
     description: 'Volume (ml) or mass (g) of total collected sample processed for
       DNA extraction. Note: total sample collected should be entered under the term
-      Sample Size (MIXS:0000001).'
+      Sample Size (mixs:0000001).'
     title: sample volume or weight for DNA extraction
     examples:
     - value: 1500 milliliter
@@ -10998,7 +10998,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000111
+    slot_uri: mixs:0000111
     multivalued: false
     range: quantity value
   samp_weather:
@@ -11021,7 +11021,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000827
+    slot_uri: mixs:0000827
     multivalued: false
     range: text value
   samp_well_name:
@@ -11043,7 +11043,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000296
+    slot_uri: mixs:0000296
     multivalued: false
     range: text value
   saturates_pc:
@@ -11072,7 +11072,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000131
+    slot_uri: mixs:0000131
     multivalued: false
     range: quantity value
   season:
@@ -11098,7 +11098,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{termLabel} {[termID]}'
-    slot_uri: MIXS:0000829
+    slot_uri: mixs:0000829
     multivalued: false
     range: text value
   season_environment:
@@ -11125,7 +11125,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0001068
+    slot_uri: mixs:0001068
     multivalued: false
     range: text value
   season_precpt:
@@ -11150,7 +11150,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000645
+    slot_uri: mixs:0000645
     multivalued: false
     range: quantity value
   season_temp:
@@ -11176,7 +11176,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000643
+    slot_uri: mixs:0000643
     multivalued: false
     range: quantity value
   season_use:
@@ -11199,7 +11199,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000830
+    slot_uri: mixs:0000830
     multivalued: false
     range: text value
   secondary_treatment:
@@ -11222,7 +11222,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000351
+    slot_uri: mixs:0000351
     multivalued: false
     range: text value
   sediment_type:
@@ -11245,7 +11245,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0001078
+    slot_uri: mixs:0001078
     multivalued: false
     range: text value
   seq_meth:
@@ -11267,7 +11267,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{termLabel} {[termID]}|{text}'
-    slot_uri: MIXS:0000050
+    slot_uri: mixs:0000050
     multivalued: false
     range: text value
   seq_quality_check:
@@ -11291,7 +11291,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '[none|manually edited]'
-    slot_uri: MIXS:0000051
+    slot_uri: mixs:0000051
     multivalued: false
     range: text value
   sewage_type:
@@ -11313,7 +11313,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000215
+    slot_uri: mixs:0000215
     multivalued: false
     range: text value
   shad_dev_water_mold:
@@ -11337,7 +11337,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: core field
     string_serialization: '[presence of mold visible|no presence of mold visible]'
-    slot_uri: MIXS:0000834
+    slot_uri: mixs:0000834
     multivalued: false
     range: string
   shading_device_cond:
@@ -11360,7 +11360,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000831
+    slot_uri: mixs:0000831
     multivalued: false
     range: text value
   shading_device_loc:
@@ -11384,7 +11384,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '[exterior|interior]'
-    slot_uri: MIXS:0000832
+    slot_uri: mixs:0000832
     multivalued: false
     range: text value
   shading_device_mat:
@@ -11406,7 +11406,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000245
+    slot_uri: mixs:0000245
     multivalued: false
     range: text value
   shading_device_type:
@@ -11429,7 +11429,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000835
+    slot_uri: mixs:0000835
     multivalued: false
     range: text value
   sieving:
@@ -11452,7 +11452,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{{text}|{float} {unit}};{float} {unit}'
-    slot_uri: MIXS:0000322
+    slot_uri: mixs:0000322
     multivalued: false
     range: quantity value
   silicate:
@@ -11478,7 +11478,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000184
+    slot_uri: mixs:0000184
     multivalued: false
     range: quantity value
   size_frac:
@@ -11499,7 +11499,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{float}-{float} {unit}'
-    slot_uri: MIXS:0000017
+    slot_uri: mixs:0000017
     multivalued: false
     range: quantity value
   size_frac_low:
@@ -11526,7 +11526,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000735
+    slot_uri: mixs:0000735
     multivalued: false
     range: quantity value
   size_frac_up:
@@ -11553,7 +11553,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000736
+    slot_uri: mixs:0000736
     multivalued: false
     range: quantity value
   slope_aspect:
@@ -11580,7 +11580,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000647
+    slot_uri: mixs:0000647
     multivalued: false
     range: quantity value
   slope_gradient:
@@ -11606,7 +11606,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000646
+    slot_uri: mixs:0000646
     multivalued: false
     range: quantity value
   sludge_retent_time:
@@ -11630,7 +11630,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000669
+    slot_uri: mixs:0000669
     multivalued: false
     range: quantity value
   sodium:
@@ -11656,7 +11656,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000428
+    slot_uri: mixs:0000428
     multivalued: false
     range: quantity value
   soil_horizon:
@@ -11681,7 +11681,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: core field
-    slot_uri: MIXS:0001082
+    slot_uri: mixs:0001082
     multivalued: false
     range: soil_horizon_enum
   soil_text_measure:
@@ -11705,7 +11705,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: core field
-    slot_uri: MIXS:0000335
+    slot_uri: mixs:0000335
     multivalued: false
     range: quantity value
   soil_texture_meth:
@@ -11727,7 +11727,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000336
+    slot_uri: mixs:0000336
     multivalued: false
     range: string
   soil_type:
@@ -11753,7 +11753,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{termLabel} {[termID]}'
-    slot_uri: MIXS:0000332
+    slot_uri: mixs:0000332
     multivalued: false
     range: text value
   soil_type_meth:
@@ -11776,7 +11776,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000334
+    slot_uri: mixs:0000334
     multivalued: false
     range: text value
   solar_irradiance:
@@ -11804,7 +11804,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000112
+    slot_uri: mixs:0000112
     multivalued: false
     range: quantity value
   soluble_inorg_mat:
@@ -11830,7 +11830,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000672
+    slot_uri: mixs:0000672
     multivalued: false
     range: quantity value
   soluble_org_mat:
@@ -11856,7 +11856,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000673
+    slot_uri: mixs:0000673
     multivalued: false
     range: quantity value
   soluble_react_phosp:
@@ -11882,7 +11882,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000738
+    slot_uri: mixs:0000738
     multivalued: false
     range: quantity value
   source_mat_id:
@@ -11915,7 +11915,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000026
+    slot_uri: mixs:0000026
     multivalued: false
     range: text value
   space_typ_state:
@@ -11939,7 +11939,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '[typically occupied|typically unoccupied]'
-    slot_uri: MIXS:0000770
+    slot_uri: mixs:0000770
     multivalued: false
     range: text value
   specific:
@@ -11963,7 +11963,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000836
+    slot_uri: mixs:0000836
     multivalued: false
     range: text value
   specific_humidity:
@@ -11991,7 +11991,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000214
+    slot_uri: mixs:0000214
     multivalued: false
     range: quantity value
   sr_dep_env:
@@ -12015,7 +12015,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000996
+    slot_uri: mixs:0000996
     multivalued: false
     range: text value
   sr_geol_age:
@@ -12039,7 +12039,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000997
+    slot_uri: mixs:0000997
     multivalued: false
     range: text value
   sr_kerog_type:
@@ -12066,7 +12066,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000994
+    slot_uri: mixs:0000994
     multivalued: false
     range: text value
   sr_lithology:
@@ -12090,7 +12090,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000995
+    slot_uri: mixs:0000995
     multivalued: false
     range: text value
   standing_water_regm:
@@ -12117,7 +12117,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0001069
+    slot_uri: mixs:0001069
     multivalued: false
     range: text value
   store_cond:
@@ -12142,7 +12142,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{duration}'
-    slot_uri: MIXS:0000327
+    slot_uri: mixs:0000327
     multivalued: false
     range: text value
   substructure_type:
@@ -12166,7 +12166,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000767
+    slot_uri: mixs:0000767
     multivalued: false
     range: text value
   sulfate:
@@ -12192,7 +12192,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000423
+    slot_uri: mixs:0000423
     multivalued: false
     range: quantity value
   sulfate_fw:
@@ -12216,7 +12216,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000407
+    slot_uri: mixs:0000407
     multivalued: false
     range: quantity value
   sulfide:
@@ -12242,7 +12242,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000424
+    slot_uri: mixs:0000424
     multivalued: false
     range: quantity value
   surf_air_cont:
@@ -12265,7 +12265,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000759
+    slot_uri: mixs:0000759
     multivalued: false
     range: text value
   surf_humidity:
@@ -12291,7 +12291,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000123
+    slot_uri: mixs:0000123
     multivalued: false
     range: quantity value
   surf_material:
@@ -12314,7 +12314,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000758
+    slot_uri: mixs:0000758
     multivalued: false
     range: text value
   surf_moisture:
@@ -12340,7 +12340,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000128
+    slot_uri: mixs:0000128
     multivalued: false
     range: quantity value
   surf_moisture_ph:
@@ -12363,7 +12363,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000760
+    slot_uri: mixs:0000760
     multivalued: false
     range: quantity value
   surf_temp:
@@ -12389,7 +12389,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000125
+    slot_uri: mixs:0000125
     multivalued: false
     range: quantity value
   suspend_part_matter:
@@ -12415,7 +12415,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000741
+    slot_uri: mixs:0000741
     multivalued: false
     range: quantity value
   suspend_solids:
@@ -12442,7 +12442,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000150
+    slot_uri: mixs:0000150
     multivalued: false
     range: quantity value
   tan:
@@ -12469,7 +12469,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000120
+    slot_uri: mixs:0000120
     multivalued: false
     range: quantity value
   target_gene:
@@ -12490,7 +12490,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000044
+    slot_uri: mixs:0000044
     multivalued: false
     range: text value
   target_subfragment:
@@ -12512,7 +12512,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000045
+    slot_uri: mixs:0000045
     multivalued: false
     range: text value
   temp:
@@ -12535,7 +12535,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000113
+    slot_uri: mixs:0000113
     multivalued: false
     range: quantity value
   temp_out:
@@ -12561,7 +12561,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000197
+    slot_uri: mixs:0000197
     multivalued: false
     range: quantity value
   tertiary_treatment:
@@ -12584,7 +12584,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000352
+    slot_uri: mixs:0000352
     multivalued: false
     range: text value
   texture:
@@ -12608,7 +12608,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000335
+    slot_uri: mixs:0000335
     multivalued: false
     range: quantity value
   texture_meth:
@@ -12630,7 +12630,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000336
+    slot_uri: mixs:0000336
     multivalued: false
     range: text value
   tidal_stage:
@@ -12653,7 +12653,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000750
+    slot_uri: mixs:0000750
     multivalued: false
     range: text value
   tillage:
@@ -12676,7 +12676,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0001081
+    slot_uri: mixs:0001081
     multivalued: false
     range: text value
   tiss_cult_growth_med:
@@ -12700,7 +12700,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
-    slot_uri: MIXS:0001070
+    slot_uri: mixs:0001070
     multivalued: false
     range: text value
   toluene:
@@ -12724,7 +12724,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000154
+    slot_uri: mixs:0000154
     multivalued: false
     range: quantity value
   tot_carb:
@@ -12748,7 +12748,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000525
+    slot_uri: mixs:0000525
     multivalued: false
     range: quantity value
   tot_depth_water_col:
@@ -12774,7 +12774,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000634
+    slot_uri: mixs:0000634
     multivalued: false
     range: quantity value
   tot_diss_nitro:
@@ -12801,7 +12801,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000744
+    slot_uri: mixs:0000744
     multivalued: false
     range: quantity value
   tot_inorg_nitro:
@@ -12827,7 +12827,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000745
+    slot_uri: mixs:0000745
     multivalued: false
     range: quantity value
   tot_iron:
@@ -12851,7 +12851,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000105
+    slot_uri: mixs:0000105
     multivalued: false
     range: quantity value
   tot_nitro:
@@ -12879,7 +12879,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000102
+    slot_uri: mixs:0000102
     multivalued: false
     range: quantity value
   tot_nitro_cont_meth:
@@ -12904,7 +12904,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000338
+    slot_uri: mixs:0000338
     multivalued: false
     range: string
   tot_nitro_content:
@@ -12928,7 +12928,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000530
+    slot_uri: mixs:0000530
     multivalued: false
     range: quantity value
   tot_org_c_meth:
@@ -12950,7 +12950,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000337
+    slot_uri: mixs:0000337
     multivalued: false
     range: text value
   tot_org_carb:
@@ -12975,7 +12975,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000533
+    slot_uri: mixs:0000533
     multivalued: false
     range: quantity value
   tot_part_carb:
@@ -13001,7 +13001,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000747
+    slot_uri: mixs:0000747
     multivalued: false
     range: quantity value
   tot_phosp:
@@ -13028,7 +13028,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000117
+    slot_uri: mixs:0000117
     multivalued: false
     range: quantity value
   tot_phosphate:
@@ -13052,7 +13052,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000689
+    slot_uri: mixs:0000689
     multivalued: false
     range: quantity value
   tot_sulfur:
@@ -13076,7 +13076,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000419
+    slot_uri: mixs:0000419
     multivalued: false
     range: quantity value
   train_line:
@@ -13099,7 +13099,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000837
+    slot_uri: mixs:0000837
     multivalued: false
     range: text value
   train_stat_loc:
@@ -13122,7 +13122,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000838
+    slot_uri: mixs:0000838
     multivalued: false
     range: text value
   train_stop_loc:
@@ -13145,7 +13145,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000839
+    slot_uri: mixs:0000839
     multivalued: false
     range: text value
   turbidity:
@@ -13172,7 +13172,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000191
+    slot_uri: mixs:0000191
     multivalued: false
     range: quantity value
   tvdss_of_hcr_press:
@@ -13197,7 +13197,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: core field
-    slot_uri: MIXS:0000397
+    slot_uri: mixs:0000397
     multivalued: false
     range: quantity value
   tvdss_of_hcr_temp:
@@ -13222,7 +13222,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000394
+    slot_uri: mixs:0000394
     multivalued: false
     range: quantity value
   typ_occup_density:
@@ -13245,7 +13245,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000771
+    slot_uri: mixs:0000771
     multivalued: false
     range: quantity value
   ventilation_rate:
@@ -13271,7 +13271,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000114
+    slot_uri: mixs:0000114
     multivalued: false
     range: quantity value
   ventilation_type:
@@ -13295,7 +13295,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000756
+    slot_uri: mixs:0000756
     multivalued: false
     range: text value
   vfa:
@@ -13319,7 +13319,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000152
+    slot_uri: mixs:0000152
     multivalued: false
     range: quantity value
   vfa_fw:
@@ -13343,7 +13343,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000408
+    slot_uri: mixs:0000408
     multivalued: false
     range: quantity value
   vis_media:
@@ -13366,7 +13366,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000840
+    slot_uri: mixs:0000840
     multivalued: false
     range: text value
   viscosity:
@@ -13392,7 +13392,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{float} {unit};{float} {unit}'
-    slot_uri: MIXS:0000126
+    slot_uri: mixs:0000126
     multivalued: false
     range: quantity value
   volatile_org_comp:
@@ -13421,7 +13421,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text};{float} {unit}'
-    slot_uri: MIXS:0000115
+    slot_uri: mixs:0000115
     multivalued: false
     range: quantity value
   wall_area:
@@ -13445,7 +13445,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000198
+    slot_uri: mixs:0000198
     multivalued: false
     range: quantity value
   wall_const_type:
@@ -13469,7 +13469,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000841
+    slot_uri: mixs:0000841
     multivalued: false
     range: text value
   wall_finish_mat:
@@ -13492,7 +13492,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000842
+    slot_uri: mixs:0000842
     multivalued: false
     range: text value
   wall_height:
@@ -13516,7 +13516,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000221
+    slot_uri: mixs:0000221
     multivalued: false
     range: quantity value
   wall_loc:
@@ -13539,7 +13539,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000843
+    slot_uri: mixs:0000843
     multivalued: false
     range: text value
   wall_surf_treatment:
@@ -13562,7 +13562,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000845
+    slot_uri: mixs:0000845
     multivalued: false
     range: text value
   wall_texture:
@@ -13585,7 +13585,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000846
+    slot_uri: mixs:0000846
     multivalued: false
     range: text value
   wall_thermal_mass:
@@ -13611,7 +13611,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000222
+    slot_uri: mixs:0000222
     multivalued: false
     range: quantity value
   wall_water_mold:
@@ -13635,7 +13635,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '[presence of mold visible|no presence of mold visible]'
-    slot_uri: MIXS:0000844
+    slot_uri: mixs:0000844
     multivalued: false
     range: text value
   wastewater_type:
@@ -13658,7 +13658,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000353
+    slot_uri: mixs:0000353
     multivalued: false
     range: text value
   water_cont_soil_meth:
@@ -13683,7 +13683,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: MIXS:0000323
+    slot_uri: mixs:0000323
     multivalued: false
     range: string
   water_content:
@@ -13707,7 +13707,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000185
+    slot_uri: mixs:0000185
     multivalued: false
     range: quantity value
   water_current:
@@ -13733,7 +13733,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000203
+    slot_uri: mixs:0000203
     multivalued: false
     range: quantity value
   water_cut:
@@ -13758,7 +13758,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000454
+    slot_uri: mixs:0000454
     multivalued: false
     range: quantity value
   water_feat_size:
@@ -13782,7 +13782,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000223
+    slot_uri: mixs:0000223
     multivalued: false
     range: quantity value
   water_feat_type:
@@ -13805,7 +13805,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000847
+    slot_uri: mixs:0000847
     multivalued: false
     range: text value
   water_prod_rate:
@@ -13829,7 +13829,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: core field
-    slot_uri: MIXS:0000453
+    slot_uri: mixs:0000453
     multivalued: false
     range: quantity value
   water_temp_regm:
@@ -13859,7 +13859,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0000590
+    slot_uri: mixs:0000590
     multivalued: false
     range: quantity value
   watering_regm:
@@ -13889,7 +13889,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
-    slot_uri: MIXS:0000591
+    slot_uri: mixs:0000591
     multivalued: false
     range: quantity value
   weekday:
@@ -13912,7 +13912,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000848
+    slot_uri: mixs:0000848
     multivalued: false
     range: text value
   win:
@@ -13937,7 +13937,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000297
+    slot_uri: mixs:0000297
     multivalued: false
     range: text value
   wind_direction:
@@ -13961,7 +13961,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{text}'
-    slot_uri: MIXS:0000757
+    slot_uri: mixs:0000757
     multivalued: false
     range: text value
   wind_speed:
@@ -13987,7 +13987,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000118
+    slot_uri: mixs:0000118
     multivalued: false
     range: quantity value
   window_cond:
@@ -14010,7 +14010,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000849
+    slot_uri: mixs:0000849
     multivalued: false
     range: text value
   window_cover:
@@ -14033,7 +14033,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000850
+    slot_uri: mixs:0000850
     multivalued: false
     range: text value
   window_horiz_pos:
@@ -14056,7 +14056,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000851
+    slot_uri: mixs:0000851
     multivalued: false
     range: text value
   window_loc:
@@ -14079,7 +14079,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000852
+    slot_uri: mixs:0000852
     multivalued: false
     range: text value
   window_mat:
@@ -14102,7 +14102,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000853
+    slot_uri: mixs:0000853
     multivalued: false
     range: text value
   window_open_freq:
@@ -14123,7 +14123,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000246
+    slot_uri: mixs:0000246
     multivalued: false
     range: text value
   window_size:
@@ -14148,7 +14148,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '{float} {unit} x {float} {unit}'
-    slot_uri: MIXS:0000224
+    slot_uri: mixs:0000224
     multivalued: false
     range: quantity value
   window_status:
@@ -14173,7 +14173,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '[closed|open]'
-    slot_uri: MIXS:0000855
+    slot_uri: mixs:0000855
     multivalued: false
     range: text value
   window_type:
@@ -14196,7 +14196,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000856
+    slot_uri: mixs:0000856
     multivalued: false
     range: text value
   window_vert_pos:
@@ -14219,7 +14219,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000857
+    slot_uri: mixs:0000857
     multivalued: false
     range: text value
   window_water_mold:
@@ -14243,7 +14243,7 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     string_serialization: '[presence of mold visible|no presence of mold visible]'
-    slot_uri: MIXS:0000854
+    slot_uri: mixs:0000854
     multivalued: false
     range: text value
   xylene:
@@ -14267,7 +14267,7 @@ slots:
     see_also:
     - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    slot_uri: MIXS:0000156
+    slot_uri: mixs:0000156
     multivalued: false
     range: quantity value
   env_package:

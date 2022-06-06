@@ -3,14 +3,8 @@ description: Schema for creating Data Harmonizer interfaces for biosamples based
   MIxS and other standards
 id: https://example.com/nmdc_dh_templates
 imports:
-- bioscales
 - linkml:types
-- mixs
-- portal/emsl
-- portal/jgi_metagenomics
-- portal/jgi_metatranscriptomics
-- portal/mixs_inspired
-- portal/sample_id
+- nmdc
 prefixes:
 #  nmdc_dh:
 #    prefix_prefix: nmdc_dh
@@ -21,7 +15,7 @@ prefixes:
   linkml:
     prefix_prefix: linkml
     prefix_reference: https://w3id.org/linkml/
-#  MIXS:
+#  mixs:
 #    prefix_prefix: MIXS
 #    prefix_reference: https://w3id.org/mixs/terms/
 #  MIGS:
@@ -211,7 +205,7 @@ classes:
         rank: 2
         is_a: core field
         string_serialization: '{text};{float} {unit};{timestamp}'
-        slot_uri: MIXS:0000639
+        slot_uri: mixs:0000639
         multivalued: true
         owner: soil MIMS
         slot_group: MIxS
@@ -239,7 +233,7 @@ classes:
         - extreme_unusual_properties/Al saturation
         rank: 3
         is_a: core field
-        slot_uri: MIXS:0000607
+        slot_uri: mixs:0000607
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -265,7 +259,7 @@ classes:
         rank: 4
         is_a: core field
         string_serialization: '{PMID}|{DOI}|{URL}'
-        slot_uri: MIXS:0000324
+        slot_uri: mixs:0000324
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -294,7 +288,7 @@ classes:
         - mean annual precipitation
         rank: 5
         is_a: core field
-        slot_uri: MIXS:0000644
+        slot_uri: mixs:0000644
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -322,7 +316,7 @@ classes:
         - mean annual temperature
         rank: 6
         is_a: core field
-        slot_uri: MIXS:0000642
+        slot_uri: mixs:0000642
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -347,7 +341,7 @@ classes:
         - carbon/nitrogen ratio
         rank: 44
         is_a: core field
-        slot_uri: MIXS:0000310
+        slot_uri: mixs:0000310
         multivalued: false
         owner: MIMS
         slot_group: MIxS
@@ -372,7 +366,7 @@ classes:
         rank: 7
         is_a: core field
         string_serialization: '{boolean};{Rn/start_time/end_time/duration}'
-        slot_uri: MIXS:0000318
+        slot_uri: mixs:0000318
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -396,7 +390,7 @@ classes:
         - current land use
         rank: 8
         is_a: core field
-        slot_uri: MIXS:0001080
+        slot_uri: mixs:0001080
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -422,7 +416,7 @@ classes:
         rank: 9
         is_a: core field
         string_serialization: '{text}'
-        slot_uri: MIXS:0000312
+        slot_uri: mixs:0000312
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -447,7 +441,7 @@ classes:
         rank: 10
         is_a: core field
         string_serialization: '{PMID}|{DOI}|{URL}'
-        slot_uri: MIXS:0000314
+        slot_uri: mixs:0000314
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -472,7 +466,7 @@ classes:
         - drainage classification
         rank: 11
         is_a: core field
-        slot_uri: MIXS:0001085
+        slot_uri: mixs:0001085
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -491,7 +485,7 @@ classes:
         rank: 12
         is_a: investigation field
         string_serialization: '{termLabel} {[termID]}|{text}'
-        slot_uri: MIXS:0000008
+        slot_uri: mixs:0000008
         multivalued: false
         owner: MIMS
         slot_group: MIxS
@@ -515,7 +509,7 @@ classes:
         - history/extreme events
         rank: 13
         is_a: core field
-        slot_uri: MIXS:0000320
+        slot_uri: mixs:0000320
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -540,7 +534,7 @@ classes:
         - soil_taxonomic/FAO classification
         rank: 14
         is_a: core field
-        slot_uri: MIXS:0001083
+        slot_uri: mixs:0001083
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -564,7 +558,7 @@ classes:
         - history/fire
         rank: 15
         is_a: core field
-        slot_uri: MIXS:0001086
+        slot_uri: mixs:0001086
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -588,7 +582,7 @@ classes:
         - history/flooding
         rank: 16
         is_a: core field
-        slot_uri: MIXS:0000319
+        slot_uri: mixs:0000319
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -618,7 +612,7 @@ classes:
         rank: 17
         is_a: core field
         string_serialization: '{text};{float} {unit}'
-        slot_uri: MIXS:0000652
+        slot_uri: mixs:0000652
         multivalued: true
         owner: soil MIMS
         slot_group: MIxS
@@ -644,7 +638,7 @@ classes:
         rank: 18
         is_a: core field
         string_serialization: '{PMID}|{DOI}|{URL}'
-        slot_uri: MIXS:0000343
+        slot_uri: mixs:0000343
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -669,7 +663,7 @@ classes:
         rank: 19
         is_a: core field
         string_serialization: '{PMID}|{DOI}|{URL}'
-        slot_uri: MIXS:0000321
+        slot_uri: mixs:0000321
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -694,7 +688,7 @@ classes:
         rank: 20
         is_a: core field
         string_serialization: '{PMID}|{DOI}|{URL}'
-        slot_uri: MIXS:0000329
+        slot_uri: mixs:0000329
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -719,7 +713,7 @@ classes:
         rank: 21
         is_a: core field
         string_serialization: '{PMID}|{DOI}|{URL}'
-        slot_uri: MIXS:0000328
+        slot_uri: mixs:0000328
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -744,7 +738,7 @@ classes:
         rank: 22
         is_a: core field
         string_serialization: '{text}'
-        slot_uri: MIXS:0000330
+        slot_uri: mixs:0000330
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -769,7 +763,7 @@ classes:
         rank: 24
         is_a: core field
         string_serialization: '{PMID}|{DOI}|{URL}'
-        slot_uri: MIXS:0000331
+        slot_uri: mixs:0000331
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -794,7 +788,7 @@ classes:
         rank: 43
         is_a: core field
         string_serialization: '{PMID}|{DOI}|{URL}'
-        slot_uri: MIXS:0000339
+        slot_uri: mixs:0000339
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -823,7 +817,7 @@ classes:
         - microbial biomass
         rank: 42
         is_a: core field
-        slot_uri: MIXS:0000650
+        slot_uri: mixs:0000650
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -850,7 +844,7 @@ classes:
         rank: 24
         is_a: core field
         string_serialization: '{text};{float} {unit}'
-        slot_uri: MIXS:0000752
+        slot_uri: mixs:0000752
         multivalued: true
         owner: MIMS
         slot_group: MIxS
@@ -877,7 +871,7 @@ classes:
         - organic matter
         rank: 45
         is_a: core field
-        slot_uri: MIXS:0000204
+        slot_uri: mixs:0000204
         multivalued: false
         owner: MIMS
         slot_group: MIxS
@@ -904,7 +898,7 @@ classes:
         - organic nitrogen
         rank: 46
         is_a: core field
-        slot_uri: MIXS:0000205
+        slot_uri: mixs:0000205
         multivalued: false
         owner: MIMS
         slot_group: MIxS
@@ -928,7 +922,7 @@ classes:
         - oxygenation status of sample
         rank: 25
         is_a: core field
-        slot_uri: MIXS:0000753
+        slot_uri: mixs:0000753
         multivalued: false
         owner: MIMS
         slot_group: MIxS
@@ -952,7 +946,7 @@ classes:
         rank: 41
         is_a: core field
         string_serialization: '{PMID}|{DOI}|{URL}'
-        slot_uri: MIXS:0001106
+        slot_uri: mixs:0001106
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -979,7 +973,7 @@ classes:
         - phosphate
         rank: 53
         is_a: core field
-        slot_uri: MIXS:0000505
+        slot_uri: mixs:0000505
         multivalued: false
         owner: MIMS
         slot_group: MIxS
@@ -1005,7 +999,7 @@ classes:
         rank: 26
         is_a: core field
         string_serialization: '{PMID}|{DOI}|{URL}'
-        slot_uri: MIXS:0000316
+        slot_uri: mixs:0000316
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -1030,7 +1024,7 @@ classes:
         rank: 27
         is_a: core field
         string_serialization: '{text};{timestamp}'
-        slot_uri: MIXS:0000315
+        slot_uri: mixs:0000315
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -1056,7 +1050,7 @@ classes:
         - profile position
         rank: 28
         is_a: core field
-        slot_uri: MIXS:0001084
+        slot_uri: mixs:0001084
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -1088,7 +1082,7 @@ classes:
         - salinity
         rank: 54
         is_a: core field
-        slot_uri: MIXS:0000183
+        slot_uri: mixs:0000183
         multivalued: false
         owner: MIMS
         slot_group: MIxS
@@ -1113,7 +1107,7 @@ classes:
         rank: 55
         is_a: core field
         string_serialization: '{PMID}|{DOI}|{URL}'
-        slot_uri: MIXS:0000341
+        slot_uri: mixs:0000341
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -1142,7 +1136,7 @@ classes:
         - mean seasonal precipitation
         rank: 29
         is_a: core field
-        slot_uri: MIXS:0000645
+        slot_uri: mixs:0000645
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -1170,7 +1164,7 @@ classes:
         - mean seasonal temperature
         rank: 30
         is_a: core field
-        slot_uri: MIXS:0000643
+        slot_uri: mixs:0000643
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -1201,7 +1195,7 @@ classes:
         - slope aspect
         rank: 1
         is_a: core field
-        slot_uri: MIXS:0000647
+        slot_uri: mixs:0000647
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -1231,7 +1225,7 @@ classes:
         - slope gradient
         rank: 31
         is_a: core field
-        slot_uri: MIXS:0000646
+        slot_uri: mixs:0000646
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -1258,7 +1252,7 @@ classes:
         - soil horizon
         rank: 32
         is_a: core field
-        slot_uri: MIXS:0001082
+        slot_uri: mixs:0001082
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -1285,7 +1279,7 @@ classes:
         - soil texture measurement
         rank: 33
         is_a: core field
-        slot_uri: MIXS:0000335
+        slot_uri: mixs:0000335
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -1311,7 +1305,7 @@ classes:
         rank: 34
         is_a: core field
         string_serialization: '{PMID}|{DOI}|{URL}'
-        slot_uri: MIXS:0000336
+        slot_uri: mixs:0000336
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -1338,7 +1332,7 @@ classes:
         rank: 35
         is_a: core field
         string_serialization: '{termLabel} {[termID]}'
-        slot_uri: MIXS:0000332
+        slot_uri: mixs:0000332
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -1365,7 +1359,7 @@ classes:
         rank: 36
         is_a: core field
         string_serialization: '{PMID}|{DOI}|{URL}'
-        slot_uri: MIXS:0000334
+        slot_uri: mixs:0000334
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -1389,7 +1383,7 @@ classes:
         - temperature
         rank: 37
         is_a: environment field
-        slot_uri: MIXS:0000113
+        slot_uri: mixs:0000113
         multivalued: false
         owner: MIMS
         slot_group: MIxS
@@ -1413,7 +1407,7 @@ classes:
         - history/tillage
         rank: 38
         is_a: core field
-        slot_uri: MIXS:0001081
+        slot_uri: mixs:0001081
         multivalued: true
         owner: soil MIMS
         slot_group: MIxS
@@ -1440,7 +1434,7 @@ classes:
         - total carbon
         rank: 47
         is_a: core field
-        slot_uri: MIXS:0000525
+        slot_uri: mixs:0000525
         multivalued: false
         owner: MIMS
         slot_group: MIxS
@@ -1465,7 +1459,7 @@ classes:
         rank: 49
         is_a: core field
         string_serialization: '{PMID}|{DOI}|{URL}'
-        slot_uri: MIXS:0000338
+        slot_uri: mixs:0000338
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -1492,7 +1486,7 @@ classes:
         - total nitrogen content
         rank: 48
         is_a: core field
-        slot_uri: MIXS:0000530
+        slot_uri: mixs:0000530
         multivalued: false
         owner: MIMS
         slot_group: MIxS
@@ -1517,7 +1511,7 @@ classes:
         rank: 51
         is_a: core field
         string_serialization: '{PMID}|{DOI}|{URL}'
-        slot_uri: MIXS:0000337
+        slot_uri: mixs:0000337
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -1545,7 +1539,7 @@ classes:
         - total organic carbon
         rank: 50
         is_a: core field
-        slot_uri: MIXS:0000533
+        slot_uri: mixs:0000533
         multivalued: false
         owner: MIMS
         slot_group: MIxS
@@ -1573,7 +1567,7 @@ classes:
         - total phosphorus
         rank: 52
         is_a: core field
-        slot_uri: MIXS:0000117
+        slot_uri: mixs:0000117
         multivalued: false
         owner: MIMS
         slot_group: MIxS
@@ -1599,7 +1593,7 @@ classes:
         rank: 40
         is_a: core field
         string_serialization: '{PMID}|{DOI}|{URL}'
-        slot_uri: MIXS:0000323
+        slot_uri: mixs:0000323
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS
@@ -1626,7 +1620,7 @@ classes:
         - water content
         rank: 39
         is_a: core field
-        slot_uri: MIXS:0000185
+        slot_uri: mixs:0000185
         multivalued: false
         owner: MIMS
         slot_group: MIxS
@@ -1658,7 +1652,7 @@ classes:
         rank: 16
         is_a: core field
         string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
-        slot_uri: MIXS:0000551
+        slot_uri: mixs:0000551
         multivalued: true
         owner: MIMS
         slot_group: MIxS (modified)
@@ -1684,7 +1678,7 @@ classes:
         - altitude
         rank: 26
         is_a: environment field
-        slot_uri: MIXS:0000094
+        slot_uri: mixs:0000094
         multivalued: false
         owner: MIMS
         slot_group: MIxS (modified)
@@ -1711,7 +1705,7 @@ classes:
         rank: 13
         is_a: core field
         string_serialization: '{text}'
-        slot_uri: MIXS:0001038
+        slot_uri: mixs:0001038
         multivalued: false
         owner: MIMS
         slot_group: MIxS (modified)
@@ -1735,7 +1729,7 @@ classes:
         - observed biotic relationship
         rank: 22
         is_a: nucleic acid sequence source field
-        slot_uri: MIXS:0000028
+        slot_uri: mixs:0000028
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS (modified)
@@ -1762,7 +1756,7 @@ classes:
         rank: 17
         is_a: core field
         string_serialization: '{termLabel} {[termID]};{timestamp}'
-        slot_uri: MIXS:0000751
+        slot_uri: mixs:0000751
         multivalued: true
         owner: MIMS
         slot_group: MIxS (modified)
@@ -1790,7 +1784,7 @@ classes:
         rank: 19
         is_a: core field
         string_serialization: '{text};{Rn/start_time/end_time/duration}'
-        slot_uri: MIXS:0001040
+        slot_uri: mixs:0001040
         multivalued: true
         owner: MIMS
         slot_group: MIxS (modified)
@@ -1803,7 +1797,7 @@ classes:
         from_schema: http://w3id.org/mixs/terms
         rank: 3
         is_a: environment field
-        slot_uri: MIXS:0000011
+        slot_uri: mixs:0000011
         multivalued: false
         owner: MIMS
         slot_group: MIxS (modified)
@@ -1834,7 +1828,7 @@ classes:
         - depth
         rank: 10
         is_a: environment field
-        slot_uri: MIXS:0000018
+        slot_uri: mixs:0000018
         multivalued: false
         owner: MIMS
         slot_group: MIxS (modified)
@@ -1864,7 +1858,7 @@ classes:
         - elevation
         rank: 6
         is_a: environment field
-        slot_uri: MIXS:0000093
+        slot_uri: mixs:0000093
         multivalued: false
         owner: MIMS
         slot_group: MIxS (modified)
@@ -1896,7 +1890,7 @@ classes:
         rank: 20
         is_a: core field
         string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
-        slot_uri: MIXS:0000558
+        slot_uri: mixs:0000558
         multivalued: true
         owner: MIMS
         slot_group: MIxS (modified)
@@ -1913,7 +1907,7 @@ classes:
         rank: 4
         is_a: environment field
         string_serialization: '{text}: {text}, {text}'
-        slot_uri: MIXS:0000010
+        slot_uri: mixs:0000010
         multivalued: false
         owner: MIMS
         slot_group: MIxS (modified)
@@ -1941,7 +1935,7 @@ classes:
         rank: 1
         is_a: core field
         string_serialization: '{text}|{termLabel} {[termID]}'
-        slot_uri: MIXS:0001043
+        slot_uri: mixs:0001043
         multivalued: false
         owner: MIMS
         slot_group: MIxS (modified)
@@ -1975,7 +1969,7 @@ classes:
         rank: 21
         is_a: core field
         string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
-        slot_uri: MIXS:0000568
+        slot_uri: mixs:0000568
         multivalued: true
         owner: MIMS
         slot_group: MIxS (modified)
@@ -1991,7 +1985,7 @@ classes:
         rank: 5
         is_a: environment field
         string_serialization: (lat lon}
-        slot_uri: MIXS:0000009
+        slot_uri: mixs:0000009
         multivalued: false
         owner: MIMS
         slot_group: MIxS (modified)
@@ -2021,7 +2015,7 @@ classes:
         rank: 24
         is_a: core field
         string_serialization: '{text};{float} {unit};{float} {unit}'
-        slot_uri: MIXS:0000569
+        slot_uri: mixs:0000569
         multivalued: false
         owner: MIMS
         slot_group: MIxS (modified)
@@ -2048,7 +2042,7 @@ classes:
         - pH
         rank: 27
         is_a: core field
-        slot_uri: MIXS:0001001
+        slot_uri: mixs:0001001
         multivalued: false
         owner: MIMS
         slot_group: MIxS (modified)
@@ -2067,7 +2061,7 @@ classes:
         from_schema: http://w3id.org/mixs/terms
         rank: 23
         is_a: nucleic acid sequence source field
-        slot_uri: MIXS:0000015
+        slot_uri: mixs:0000015
         multivalued: false
         owner: MIMS
         slot_group: MIxS (modified)
@@ -2083,7 +2077,7 @@ classes:
         rank: 14
         is_a: nucleic acid sequence source field
         string_serialization: '{termLabel} {[termID]}|{text}'
-        slot_uri: MIXS:0000002
+        slot_uri: mixs:0000002
         multivalued: false
         owner: MIMS
         slot_group: MIxS (modified)
@@ -2099,7 +2093,7 @@ classes:
         rank: 15
         is_a: nucleic acid sequence source field
         string_serialization: '{PMID}|{DOI}|{URL}|{text}'
-        slot_uri: MIXS:0001225
+        slot_uri: mixs:0001225
         multivalued: false
         owner: MIMS
         slot_group: MIxS (modified)
@@ -2117,7 +2111,7 @@ classes:
         rank: 12
         is_a: nucleic acid sequence source field
         string_serialization: '{text}'
-        slot_uri: MIXS:0000016
+        slot_uri: mixs:0000016
         multivalued: false
         owner: MIMS
         slot_group: MIxS (modified)
@@ -2131,7 +2125,7 @@ classes:
         from_schema: http://w3id.org/mixs/terms
         rank: 18
         is_a: nucleic acid sequence source field
-        slot_uri: MIXS:0000001
+        slot_uri: mixs:0000001
         multivalued: false
         owner: MIMS
         slot_group: MIxS (modified)
@@ -2165,7 +2159,7 @@ classes:
         - sample storage temperature
         rank: 7
         is_a: core field
-        slot_uri: MIXS:0000110
+        slot_uri: mixs:0000110
         multivalued: false
         owner: MIMS
         slot_group: MIxS (modified)
@@ -2192,7 +2186,7 @@ classes:
         rank: 8
         is_a: core field
         string_serialization: '{{text}|{float} {unit}};{float} {unit}'
-        slot_uri: MIXS:0000322
+        slot_uri: mixs:0000322
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS (modified)
@@ -2221,7 +2215,7 @@ classes:
         - size-fraction lower threshold
         rank: 9
         is_a: core field
-        slot_uri: MIXS:0000735
+        slot_uri: mixs:0000735
         multivalued: false
         owner: MIMS
         slot_group: MIxS (modified)
@@ -2250,7 +2244,7 @@ classes:
         - size-fraction upper threshold
         rank: 11
         is_a: core field
-        slot_uri: MIXS:0000736
+        slot_uri: mixs:0000736
         multivalued: false
         owner: MIMS
         slot_group: MIxS (modified)
@@ -2276,7 +2270,7 @@ classes:
         rank: 2
         is_a: core field
         string_serialization: '{text};{duration}'
-        slot_uri: MIXS:0000327
+        slot_uri: mixs:0000327
         multivalued: false
         owner: soil MIMS
         slot_group: MIxS (modified)
@@ -2307,7 +2301,7 @@ classes:
         rank: 25
         is_a: core field
         string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
-        slot_uri: MIXS:0000591
+        slot_uri: mixs:0000591
         multivalued: true
         owner: MIMS
         slot_group: MIxS (modified)
@@ -2334,7 +2328,7 @@ classes:
         - calcium
         rank: 9
         is_a: core field
-        slot_uri: MIXS:0000432
+        slot_uri: mixs:0000432
         multivalued: false
         owner: MIMS
         slot_group: MIxS core
@@ -2362,7 +2356,7 @@ classes:
         - magnesium
         rank: 21
         is_a: core field
-        slot_uri: MIXS:0000431
+        slot_uri: mixs:0000431
         multivalued: false
         owner: MIMS
         slot_group: MIxS core
@@ -2389,7 +2383,7 @@ classes:
         - potassium
         rank: 38
         is_a: core field
-        slot_uri: MIXS:0000430
+        slot_uri: mixs:0000430
         multivalued: false
         owner: MIMS
         slot_group: MIxS core
@@ -2418,7 +2412,7 @@ classes:
         - total nitrogen concentration
         rank: 381
         is_a: core field
-        slot_uri: MIXS:0000102
+        slot_uri: mixs:0000102
         multivalued: false
         owner: MIMS
         slot_group: MIxS core
@@ -2437,7 +2431,7 @@ classes:
         rank: 6
         is_a: environment field
         string_serialization: '{termLabel} {[termID]}'
-        slot_uri: MIXS:0000012
+        slot_uri: mixs:0000012
         multivalued: false
         owner: MIMS
         slot_group: Sample ID
@@ -2460,7 +2454,7 @@ classes:
         rank: 7
         is_a: environment field
         string_serialization: '{termLabel} {[termID]}'
-        slot_uri: MIXS:0000013
+        slot_uri: mixs:0000013
         multivalued: false
         owner: MIMS
         slot_group: Sample ID
@@ -2483,7 +2477,7 @@ classes:
         rank: 8
         is_a: environment field
         string_serialization: '{termLabel} {[termID]}'
-        slot_uri: MIXS:0000014
+        slot_uri: mixs:0000014
         multivalued: false
         owner: MIMS
         slot_group: Sample ID
@@ -2501,7 +2495,7 @@ classes:
         rank: 2
         is_a: investigation field
         string_serialization: '{text}'
-        slot_uri: MIXS:0001107
+        slot_uri: mixs:0001107
         multivalued: false
         owner: MIMS
         slot_group: Sample ID
@@ -2520,7 +2514,7 @@ classes:
         rank: 1
         is_a: nucleic acid sequence source field
         string_serialization: '{text}:{text}'
-        slot_uri: MIXS:0000026
+        slot_uri: mixs:0000026
         multivalued: false
         owner: MIMS
         slot_group: Sample ID
