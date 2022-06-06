@@ -132,6 +132,7 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
+      - submitter_id
       - type  # custom slot that specifies object type
       - alternative identifiers
       - part of
@@ -715,6 +716,13 @@ enums:
       - credit enums come from https://casrai.org/credit/
 
 slots:
+  submitter_id:
+    description: An identifier that is meaningful to a data submitter.
+    notes:
+      - Might come from a data collection interface like the NMDC submission portal, currently using DataHarmonizer
+      - Not guaranteed to be globally unique or resolvable
+    todos:
+      - The id slot inherited from named thing should take a globally unique and resolvable value. Mint an NMDC id for that.
   ess dive datasets:
     multivalued: true
     description: List of ESS-DIVE dataset DOIs
