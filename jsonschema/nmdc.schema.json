@@ -53,6 +53,28 @@
          "title": "Agent",
          "type": "object"
       },
+      "AnalysisTypeEnum": {
+         "description": "",
+         "enum": [
+            "metabolomics",
+            "metagenomics",
+            "metaproteomics",
+            "metatranscriptomics",
+            "natural organic matter"
+         ],
+         "title": "AnalysisTypeEnum",
+         "type": "string"
+      },
+      "ArchStrucEnum": {
+         "description": "",
+         "enum": [
+            "building",
+            "shed",
+            "home"
+         ],
+         "title": "ArchStrucEnum",
+         "type": "string"
+      },
       "AttributeValue": {
          "additionalProperties": false,
          "description": "The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic value and the structured value",
@@ -73,10 +95,29 @@
          "title": "AttributeValue",
          "type": "object"
       },
+      "BiolStatEnum": {
+         "description": "",
+         "enum": [
+            "wild",
+            "natural",
+            "semi-natural",
+            "inbred line",
+            "breeder's line",
+            "hybrid",
+            "clonal selection",
+            "mutant"
+         ],
+         "title": "BiolStatEnum",
+         "type": "string"
+      },
       "Biosample": {
          "additionalProperties": false,
          "description": "A material sample. It may be environmental (encompassing many organisms) or isolate or tissue.   An environmental sample containing genetic material from multiple individuals is commonly referred to as a biosample.",
          "properties": {
+            "EMSL_store_temp": {
+               "description": "Temperature at which the sample sent to EMSL should be stored",
+               "type": "string"
+            },
             "GOLD_sample_identifiers": {
                "description": "identifiers for corresponding sample in GOLD",
                "items": {
@@ -109,10 +150,13 @@
                "$ref": "#/$defs/QuantityValue",
                "description": "Addition of fertilizers, pesticides, etc. - amount and time of applications"
             },
+            "air_temp_regm": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens"
+            },
             "al_sat": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Aluminum saturation (esp. For tropical soils)",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Aluminum saturation (esp. For tropical soils)"
             },
             "al_sat_meth": {
                "$ref": "#/$defs/TextValue",
@@ -120,8 +164,7 @@
             },
             "alkalinity": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Alkalinity, the ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Alkalinity, the ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate"
             },
             "alkalinity_method": {
                "$ref": "#/$defs/TextValue",
@@ -129,13 +172,11 @@
             },
             "alkyl_diethers": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Concentration of alkyl diethers ",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Concentration of alkyl diethers"
             },
             "alt": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Altitude is a term used to identify heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earthbs surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Altitude is a term used to identify heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earth's surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air"
             },
             "alternative_identifiers": {
                "description": "A list of alternative identifiers for the entity.",
@@ -146,48 +187,58 @@
             },
             "aminopept_act": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Measurement of aminopeptidase activity",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Measurement of aminopeptidase activity"
             },
             "ammonium": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Concentration of ammonium in the sample",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Concentration of ammonium in the sample"
+            },
+            "ammonium_nitrogen": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Concentration of ammonium nitrogen in the sample"
+            },
+            "analysis_type": {
+               "description": "Select all the data types associated or available for this biosample",
+               "items": {
+                  "$ref": "#/$defs/AnalysisTypeEnum"
+               },
+               "type": "array"
             },
             "annual_precpt": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "The average of all annual precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps.",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "The average of all annual precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps."
             },
             "annual_temp": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Mean annual temperature",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Mean annual temperature"
             },
             "bacteria_carb_prod": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Measurement of bacterial carbon production",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Measurement of bacterial carbon production"
+            },
+            "biotic_regm": {
+               "$ref": "#/$defs/TextValue",
+               "description": "Information about treatment(s) involving use of biotic factors, such as bacteria, viruses or fungi."
+            },
+            "biotic_relationship": {
+               "$ref": "#/$defs/TextValue",
+               "description": "Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g., parasite on species X; mutualist with species Y. The target organism is the subject of the relationship, and the other organism(s) is the object"
             },
             "bishomohopanol": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Concentration of bishomohopanol ",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Concentration of bishomohopanol"
             },
             "bromide": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Concentration of bromide ",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Concentration of bromide"
             },
             "calcium": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Concentration of calcium in the sample",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Concentration of calcium in the sample"
             },
             "carb_nitro_ratio": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Ratio of amount or concentrations of carbon to nitrogen",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Ratio of amount or concentrations of carbon to nitrogen"
             },
             "chem_administration": {
                "$ref": "#/$defs/ControlledTermValue",
@@ -195,17 +246,31 @@
             },
             "chloride": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Concentration of chloride in the sample",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Concentration of chloride in the sample"
             },
             "chlorophyll": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Concentration of chlorophyll",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Concentration of chlorophyll"
+            },
+            "climate_environment": {
+               "$ref": "#/$defs/TextValue",
+               "description": "Treatment involving an exposure to a particular climate; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple climates"
             },
             "collection_date": {
                "$ref": "#/$defs/TimestampValue",
                "description": "The time of sampling, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant"
+            },
+            "collection_date_inc": {
+               "description": "Date the incubation was harvested/collected/ended. Only relevant for incubation samples.",
+               "type": "string"
+            },
+            "collection_time": {
+               "description": "The time of sampling, either as an instance (single point) or interval.",
+               "type": "string"
+            },
+            "collection_time_inc": {
+               "description": "Time the incubation was harvested/collected/ended. Only relevant for incubation samples.",
+               "type": "string"
             },
             "community": {
                "type": "string"
@@ -216,8 +281,7 @@
             },
             "cur_land_use": {
                "$ref": "#/$defs/TextValue",
-               "description": "Present state of sample site",
-               "pattern": "[cities|farmstead|industrial areas|roads\\/railroads|rock|sand|gravel|mudflats|salt flats|badlands|permanent snow or ice|saline seeps|mines\\/quarries|oil waste areas|small grains|row crops|vegetable crops|horticultural plants (e.g. tulips)|marshlands (grass,sedges,rushes)|tundra (mosses,lichens)|rangeland|pastureland (grasslands used for livestock grazing)|hayland|meadows (grasses,alfalfa,fescue,bromegrass,timothy)|shrub land (e.g. mesquite,sage\\-brush,creosote bush,shrub oak,eucalyptus)|successional shrub land (tree saplings,hazels,sumacs,chokecherry,shrub dogwoods,blackberries)|shrub crops (blueberries,nursery ornamentals,filberts)|vine crops (grapes)|conifers (e.g. pine,spruce,fir,cypress)|hardwoods (e.g. oak,hickory,elm,aspen)|intermixed hardwood and conifers|tropical (e.g. mangrove,palms)|rainforest (evergreen forest receiving >406 cm annual rainfall)|swamp (permanent or semi\\-permanent water body dominated by woody plants)|crop trees (nuts,fruit,christmas trees,nursery trees)]"
+               "description": "Present state of sample site"
             },
             "cur_vegetation": {
                "$ref": "#/$defs/TextValue",
@@ -225,16 +289,15 @@
             },
             "cur_vegetation_meth": {
                "$ref": "#/$defs/TextValue",
-               "description": "Reference or method used in vegetation classification "
+               "description": "Reference or method used in vegetation classification"
             },
             "density": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Density of the sample, which is its mass per unit volume (aka volumetric mass density)",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Density of the sample, which is its mass per unit volume (aka volumetric mass density)"
             },
             "depth": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Depth is defined as the vertical distance below local surface, e.g. For sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples"
+               "description": "The vertical distance below local surface, e.g. for sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples."
             },
             "depth2": {
                "$ref": "#/$defs/QuantityValue"
@@ -245,43 +308,104 @@
             },
             "diss_carb_dioxide": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Concentration of dissolved carbon dioxide in the sample or liquid portion of the sample",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Concentration of dissolved carbon dioxide in the sample or liquid portion of the sample"
             },
             "diss_hydrogen": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Concentration of dissolved hydrogen",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Concentration of dissolved hydrogen"
             },
             "diss_inorg_carb": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter"
             },
             "diss_inorg_phosp": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Concentration of dissolved inorganic phosphorus in the sample",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Concentration of dissolved inorganic phosphorus in the sample"
             },
             "diss_org_carb": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid"
             },
             "diss_org_nitro": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Dissolved organic nitrogen concentration measured as; total dissolved nitrogen - NH4 - NO3 - NO2",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Dissolved organic nitrogen concentration measured as; total dissolved nitrogen - NH4 - NO3 - NO2"
             },
             "diss_oxygen": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Concentration of dissolved oxygen",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Concentration of dissolved oxygen"
+            },
+            "dna_absorb1": {
+               "description": "260/280 measurement of DNA sample purity",
+               "type": "string"
+            },
+            "dna_absorb2": {
+               "description": "260/230 measurement of DNA sample purity",
+               "type": "string"
+            },
+            "dna_collect_site": {
+               "description": "Provide information on the site your DNA sample was collected from",
+               "type": "string"
+            },
+            "dna_concentration": {
+               "maximum": 2000,
+               "minimum": 0,
+               "type": "string"
+            },
+            "dna_cont_type": {
+               "$ref": "#/$defs/DnaContTypeEnum",
+               "description": "Tube or plate (96-well)"
+            },
+            "dna_cont_well": {
+               "type": "string"
+            },
+            "dna_container_ID": {
+               "type": "string"
+            },
+            "dna_dnase": {
+               "$ref": "#/$defs/DnaDnaseEnum"
+            },
+            "dna_isolate_meth": {
+               "description": "Describe the method/protocol/kit used to extract DNA/RNA.",
+               "type": "string"
+            },
+            "dna_organisms": {
+               "description": "List any organisms known or suspected to grow in co-culture, as well as estimated % of the organism in that culture.",
+               "type": "string"
+            },
+            "dna_project_contact": {
+               "type": "string"
+            },
+            "dna_samp_ID": {
+               "type": "string"
+            },
+            "dna_sample_format": {
+               "$ref": "#/$defs/DnaSampleFormatEnum",
+               "description": "Solution in which the DNA sample has been suspended"
+            },
+            "dna_sample_name": {
+               "description": "Give the DNA sample a name that is meaningful to you. Sample names must be unique across all JGI projects and contain a-z, A-Z, 0-9, - and _ only.",
+               "type": "string"
+            },
+            "dna_seq_project": {
+               "type": "string"
+            },
+            "dna_seq_project_PI": {
+               "type": "string"
+            },
+            "dna_seq_project_name": {
+               "type": "string"
+            },
+            "dna_volume": {
+               "maximum": 1000,
+               "minimum": 0,
+               "type": "string"
+            },
+            "dnase_rna": {
+               "$ref": "#/$defs/DnaseRnaEnum"
             },
             "drainage_class": {
                "$ref": "#/$defs/TextValue",
-               "description": "Drainage classification from a standard system such as the USDA system",
-               "pattern": "[very poorly|poorly|somewhat poorly|moderately well|well|excessively drained]"
+               "description": "Drainage classification from a standard system such as the USDA system"
             },
             "ecosystem": {
                "description": "An ecosystem is a combination of a physical environment (abiotic factors) and all the organisms (biotic factors) that interact with this environment. Ecosystem is in position 1/5 in a GOLD path.",
@@ -301,28 +425,32 @@
             },
             "elev": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit."
             },
             "env_broad_scale": {
                "$ref": "#/$defs/ControlledTermValue",
-               "description": "In this field, report which major environmental system your sample or specimen came from. The systems identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. were you in the desert or a rainforest?). We recommend using subclasses of ENVOUs biome class: http://purl.obolibrary.org/obo/ENVO_00000428. Format (one term): termLabel [termID], Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a water sample from the photic zone in middle of the Atlantic Ocean, consider: oceanic epipelagic zone biome [ENVO:01000033]. Example: Annotating a sample from the Amazon rainforest consider: tropical moist broadleaf forest biome [ENVO:01000228]. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html",
-               "pattern": ".* \\S+:\\S+"
+               "description": "Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO\u2019s biome class:  http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS"
             },
             "env_local_scale": {
                "$ref": "#/$defs/ControlledTermValue",
-               "description": "In this field, report the entity or entities which are in your sample or specimenUs local vicinity and which you believe have significant causal influences on your sample or specimen. Please use terms that are present in ENVO and which are of smaller spatial grain than your entry for env_broad_scale. Format (one term): termLabel [termID]; Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a pooled sample taken from various vegetation layers in a forest consider: canopy [ENVO:00000047]|herb and fern layer [ENVO:01000337]|litter layer [ENVO:01000338]|understory [01000335]|shrub layer [ENVO:01000336]. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html",
-               "pattern": ".* \\S+:\\S+"
+               "description": "Report the entity or entities which are in the sample or specimen\u2019s local vicinity and which you believe have significant causal influences on your sample or specimen. We recommend using EnvO terms which are of smaller spatial grain than your entry for env_broad_scale. Terms, such as anatomical sites, from other OBO Library ontologies which interoperate with EnvO (e.g. UBERON) are accepted in this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS."
             },
             "env_medium": {
                "$ref": "#/$defs/ControlledTermValue",
-               "description": "In this field, report which environmental material or materials (pipe separated) immediately surrounded your sample or specimen prior to sampling, using one or more subclasses of ENVOUs environmental material class: http://purl.obolibrary.org/obo/ENVO_00010483. Format (one term): termLabel [termID]; Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a fish swimming in the upper 100 m of the Atlantic Ocean, consider: ocean water [ENVO:00002151]. Example: Annotating a duck on a pond consider: pond water [ENVO:00002228]|air ENVO_00002005. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html",
-               "pattern": ".* \\S+:\\S+"
+               "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top)."
             },
             "env_package": {
                "$ref": "#/$defs/TextValue",
                "description": "MIxS extension for reporting of measurements and observations obtained from one or more of the environments where the sample was obtained. All environmental packages listed here are further defined in separate subtables. By giving the name of the environmental package, a selection of fields can be made from the subtables and can be reported",
                "pattern": "[air|built environment|host\\-associated|human\\-associated|human\\-skin|human\\-oral|human\\-gut|human\\-vaginal|hydrocarbon resources\\-cores|hydrocarbon resources\\-fluids\\/swabs|microbial mat\\/biofilm|misc environment|plant\\-associated|sediment|soil|wastewater\\/sludge|water]"
+            },
+            "experimental_factor": {
+               "$ref": "#/$defs/ControlledTermValue",
+               "description": "Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms, please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI"
+            },
+            "experimental_factor_other": {
+               "description": "Other details about your sample that you feel can't be accurately represented in the available columns.",
+               "type": "string"
             },
             "extreme_event": {
                "$ref": "#/$defs/TimestampValue",
@@ -330,8 +458,11 @@
             },
             "fao_class": {
                "$ref": "#/$defs/TextValue",
-               "description": "Soil classification from the FAO World Reference Database for Soil Resources. The list can be found at http://www.fao.org/nr/land/sols/soil/wrb-soil-maps/reference-groups",
-               "pattern": "[Acrisols|Andosols|Arenosols|Cambisols|Chernozems|Ferralsols|Fluvisols|Gleysols|Greyzems|Gypsisols|Histosols|Kastanozems|Lithosols|Luvisols|Nitosols|Phaeozems|Planosols|Podzols|Podzoluvisols|Rankers|Regosols|Rendzinas|Solonchaks|Solonetz|Vertisols|Yermosols]"
+               "description": "Soil classification from the FAO World Reference Database for Soil Resources. The list can be found at http://www.fao.org/nr/land/sols/soil/wrb-soil-maps/reference-groups"
+            },
+            "filter_method": {
+               "description": "Type of filter used or how the sample was filtered",
+               "type": "string"
             },
             "fire": {
                "$ref": "#/$defs/TimestampValue",
@@ -341,21 +472,28 @@
                "$ref": "#/$defs/TimestampValue",
                "description": "Historical and/or physical evidence of flooding"
             },
+            "gaseous_environment": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens"
+            },
             "geo_loc_name": {
                "$ref": "#/$defs/TextValue",
-               "description": "The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (v 1.512) (http://purl.bioontology.org/ontology/GAZ)"
+               "description": "The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)"
             },
             "glucosidase_act": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Measurement of glucosidase activity",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Measurement of glucosidase activity"
+            },
+            "growth_facil": {
+               "$ref": "#/$defs/ControlledTermValue",
+               "description": "Type of facility where the sampled plant was grown; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field. Alternatively use Crop Ontology (CO) terms, see http://www.cropontology.org/ontology/CO_715/Crop%20Research"
             },
             "habitat": {
                "type": "string"
             },
             "heavy_metals": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Heavy metals present and concentrationsany drug used by subject and the frequency of usage; can include multiple heavy metals and concentrations"
+               "description": "Heavy metals present in the sequenced sample and their concentrations. For multiple heavy metals and concentrations, add multiple copies of this field."
             },
             "heavy_metals_meth": {
                "$ref": "#/$defs/TextValue",
@@ -363,8 +501,7 @@
             },
             "horizon": {
                "$ref": "#/$defs/TextValue",
-               "description": "Specific layer in the land area which measures parallel to the soil surface and possesses physical characteristics which differ from the layers above and beneath",
-               "pattern": "[O horizon|A horizon|E horizon|B horizon|C horizon|R layer|Permafrost]"
+               "description": "Specific layer in the land area which measures parallel to the soil surface and possesses physical characteristics which differ from the layers above and beneath"
             },
             "horizon_meth": {
                "$ref": "#/$defs/TextValue",
@@ -373,6 +510,10 @@
             "host_name": {
                "type": "string"
             },
+            "humidity_regm": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens"
+            },
             "id": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                "type": "string"
@@ -380,10 +521,25 @@
             "identifier": {
                "type": "string"
             },
+            "isotope_exposure": {
+               "description": "List isotope exposure or addition applied to your sample.",
+               "type": "string"
+            },
             "lat_lon": {
                "$ref": "#/$defs/GeolocationValue",
-               "description": "This is currently a required field but it's not clear if this should be required for human hosts",
-               "pattern": "\\d+[.\\d+] \\d+[.\\d+]"
+               "description": "This is currently a required field but it's not clear if this should be required for human hosts"
+            },
+            "lbc_thirty": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "lime buffer capacity, determined after 30 minute incubation"
+            },
+            "lbceq": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "lime buffer capacity, determined at equilibrium after 5 day incubation"
+            },
+            "light_regm": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Information about treatment(s) involving exposure to light, including both light intensity and quality."
             },
             "link_addit_analys": {
                "$ref": "#/$defs/TextValue",
@@ -403,30 +559,50 @@
             },
             "local_class_meth": {
                "$ref": "#/$defs/TextValue",
-               "description": "Reference or method used in determining the local soil classification "
+               "description": "Reference or method used in determining the local soil classification"
             },
             "location": {
                "type": "string"
             },
             "magnesium": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Concentration of magnesium in the sample",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Concentration of magnesium in the sample"
+            },
+            "manganese": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Concentration of manganese in the sample"
             },
             "mean_frict_vel": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Measurement of mean friction velocity",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Measurement of mean friction velocity"
             },
             "mean_peak_frict_vel": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Measurement of mean peak friction velocity",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Measurement of mean peak friction velocity"
+            },
+            "micro_biomass_C_meth": {
+               "description": "Reference or method used in determining microbial biomass",
+               "type": "string"
+            },
+            "micro_biomass_N_meth": {
+               "description": "Reference or method used in determining microbial biomass nitrogen",
+               "type": "string"
+            },
+            "micro_biomass_meth": {
+               "description": "Reference or method used in determining microbial biomass",
+               "type": "string"
             },
             "microbial_biomass": {
                "$ref": "#/$defs/QuantityValue",
+               "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units"
+            },
+            "microbial_biomass_C": {
                "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "type": "string"
+            },
+            "microbial_biomass_N": {
+               "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units",
+               "type": "string"
             },
             "microbial_biomass_meth": {
                "$ref": "#/$defs/TextValue",
@@ -453,32 +629,51 @@
             },
             "nitrate": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Concentration of nitrate in the sample",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Concentration of nitrate in the sample"
+            },
+            "nitrate_nitrogen": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Concentration of nitrate nitrogen in the sample"
             },
             "nitrite": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Concentration of nitrite in the sample",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Concentration of nitrite in the sample"
+            },
+            "nitrite_nitrogen": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Concentration of nitrite nitrogen in the sample"
+            },
+            "non_microb_biomass": {
+               "description": "Amount of biomass; should include the name for the part of biomass measured, e.g.insect, plant, total. Can include multiple measurements separated by ;",
+               "type": "string"
+            },
+            "non_microb_biomass_method": {
+               "description": "Reference or method used in determining biomass",
+               "type": "string"
             },
             "org_matter": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Concentration of organic matter ",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Concentration of organic matter"
             },
             "org_nitro": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Concentration of organic nitrogen",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Concentration of organic nitrogen"
+            },
+            "org_nitro_method": {
+               "description": "Method used for obtaining organic nitrogen",
+               "type": "string"
             },
             "organism_count": {
                "$ref": "#/$defs/QuantityValue",
                "description": "Total cell count of any organism (or group of organisms) per gram, volume or area of sample, should include name of organism followed by count. The method that was used for the enumeration (e.g. qPCR, atp, mpn, etc.) Should also be provided. (example: total prokaryotes; 3.5e7 cells per ml; qpcr)"
             },
+            "other_treatment": {
+               "description": "Other treatments applied to your samples that are not applicable to the provided fields",
+               "type": "string"
+            },
             "oxy_stat_samp": {
                "$ref": "#/$defs/TextValue",
-               "description": "Oxygenation status of sample",
-               "pattern": "[aerobic|anaerobic|other]"
+               "description": "Oxygenation status of sample"
             },
             "part_of": {
                "description": "Links a resource to another resource that either logically or physically includes it.",
@@ -489,8 +684,7 @@
             },
             "part_org_carb": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Concentration of particulate organic carbon",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Concentration of particulate organic carbon"
             },
             "perturbation": {
                "$ref": "#/$defs/TextValue",
@@ -498,13 +692,11 @@
             },
             "petroleum_hydrocarb": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Concentration of petroleum hydrocarbon",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Concentration of petroleum hydrocarbon"
             },
             "ph": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Ph measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid",
-               "pattern": "\\d+[.\\d+]"
+               "description": "Ph measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid"
             },
             "ph_meth": {
                "$ref": "#/$defs/TextValue",
@@ -513,6 +705,10 @@
             "phaeopigments": {
                "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of phaeopigments; can include multiple phaeopigments"
+            },
+            "phosphate": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Concentration of phosphate"
             },
             "phosplipid_fatt_acid": {
                "$ref": "#/$defs/QuantityValue",
@@ -524,13 +720,11 @@
             },
             "potassium": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Concentration of potassium in the sample",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Concentration of potassium in the sample"
             },
             "pressure": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Pressure to which the sample is subject to, in atmospheres",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Pressure to which the sample is subject to, in atmospheres"
             },
             "previous_land_use": {
                "$ref": "#/$defs/TextValue",
@@ -542,21 +736,99 @@
             },
             "profile_position": {
                "$ref": "#/$defs/TextValue",
-               "description": "Cross-sectional position in the hillslope where sample was collected.sample area position in relation to surrounding areas",
-               "pattern": "[summit|shoulder|backslope|footslope|toeslope]"
+               "description": "Cross-sectional position in the hillslope where sample was collected.sample area position in relation to surrounding areas"
+            },
+            "project_ID": {
+               "description": "Proposal IDs or names associated with dataset",
+               "type": "string"
             },
             "proport_woa_temperature": {
                "type": "string"
             },
+            "proposal_dna": {
+               "type": "string"
+            },
+            "proposal_rna": {
+               "type": "string"
+            },
             "redox_potential": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Redox potential, measured relative to a hydrogen cell, indicating oxidation or reduction potential",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Redox potential, measured relative to a hydrogen cell, indicating oxidation or reduction potential"
+            },
+            "rel_to_oxygen": {
+               "$ref": "#/$defs/TextValue",
+               "description": "Is this organism an aerobe, anaerobe? Please note that aerobic and anaerobic are valid descriptors for microbial environments"
+            },
+            "replicate_number": {
+               "description": "If sending biological replicates, indicate the rep number here.",
+               "type": "string"
+            },
+            "rna_absorb1": {
+               "description": "260/280 measurement of RNA sample purity",
+               "type": "string"
+            },
+            "rna_absorb2": {
+               "description": "260/230 measurement of RNA sample purity",
+               "type": "string"
+            },
+            "rna_collect_site": {
+               "description": "Provide information on the site your RNA sample was collected from",
+               "type": "string"
+            },
+            "rna_concentration": {
+               "maximum": 1000,
+               "minimum": 0,
+               "type": "string"
+            },
+            "rna_cont_type": {
+               "$ref": "#/$defs/RnaContTypeEnum",
+               "description": "Tube or plate (96-well)"
+            },
+            "rna_cont_well": {
+               "type": "string"
+            },
+            "rna_container_ID": {
+               "type": "string"
+            },
+            "rna_isolate_meth": {
+               "description": "Describe the method/protocol/kit used to extract DNA/RNA.",
+               "type": "string"
+            },
+            "rna_organisms": {
+               "description": "List any organisms known or suspected to grow in co-culture, as well as estimated % of the organism in that culture.",
+               "type": "string"
+            },
+            "rna_project_contact": {
+               "type": "string"
+            },
+            "rna_samp_ID": {
+               "type": "string"
+            },
+            "rna_sample_format": {
+               "$ref": "#/$defs/RnaSampleFormatEnum",
+               "description": "Solution in which the RNA sample has been suspended"
+            },
+            "rna_sample_name": {
+               "description": "Give the RNA sample a name that is meaningful to you. Sample names must be unique across all JGI projects and contain a-z, A-Z, 0-9, - and _ only.",
+               "maximum": 2000,
+               "minimum": 0,
+               "type": "string"
+            },
+            "rna_seq_project": {
+               "type": "string"
+            },
+            "rna_seq_project_PI": {
+               "type": "string"
+            },
+            "rna_seq_project_name": {
+               "type": "string"
+            },
+            "rna_volume": {
+               "type": "string"
             },
             "salinity": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Salinity is the total concentration of all dissolved salts in a water sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "The total concentration of all dissolved salts in a liquid or solid sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater."
             },
             "salinity_category": {
                "description": "Categorcial description of the sample's salinity. Examples: halophile, halotolerant, hypersaline, huryhaline",
@@ -566,13 +838,21 @@
                "$ref": "#/$defs/TextValue",
                "description": "Reference or method used in determining salinity"
             },
+            "samp_collec_method": {
+               "description": "The method employed for collecting the sample.",
+               "type": "string"
+            },
             "samp_collect_device": {
                "$ref": "#/$defs/TextValue",
-               "description": "The method or device employed for collecting the sample"
+               "description": "The device used to collect an environmental sample. This field accepts terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO). This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094)."
             },
             "samp_mat_process": {
                "$ref": "#/$defs/ControlledTermValue",
-               "description": "Any processing applied to the sample during or after retrieving the sample from environment. This field accepts OBI, for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI"
+               "description": "A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed."
+            },
+            "samp_size": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "The total amount or size (volume (ml), mass (g) or area (m2) ) of sample collected."
             },
             "samp_store_dur": {
                "$ref": "#/$defs/TextValue",
@@ -584,59 +864,70 @@
             },
             "samp_store_temp": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Temperature at which sample was stored, e.g. -80 degree Celsius",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Temperature at which sample was stored, e.g. -80 degree Celsius"
             },
             "samp_vol_we_dna_ext": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Volume (ml), weight (g) of processed sample, or surface area swabbed from sample for DNA extraction",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Volume (ml) or mass (g) of total collected sample processed for DNA extraction. Note: total sample collected should be entered under the term Sample Size (MIXS:0000001)."
             },
             "sample_collection_site": {
                "type": "string"
             },
+            "sample_link": {
+               "description": "A unique identifier to assign parent-child, subsample, or sibling samples. This is relevant when a sample or other material was used to generate the new sample.",
+               "type": "string"
+            },
+            "sample_shipped": {
+               "description": "The total amount or size (volume (ml), mass (g) or area (m2) ) of sample sent to EMSL",
+               "type": "string"
+            },
+            "sample_type": {
+               "$ref": "#/$defs/SampleTypeEnum",
+               "description": "Type of sample being submitted"
+            },
             "season_precpt": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "The average of all seasonal precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps.",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "The average of all seasonal precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps."
             },
             "season_temp": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Mean seasonal temperature",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Mean seasonal temperature"
             },
             "sieving": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Collection design of pooled samples and/or sieve size and amount of sample sieved "
+               "description": "Collection design of pooled samples and/or sieve size and amount of sample sieved"
             },
             "size_frac_low": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample"
             },
             "size_frac_up": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample"
             },
             "slope_aspect": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees); e.g., nw or 315 degrees. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees); e.g., nw or 315 degrees. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration."
             },
             "slope_gradient": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Commonly called 'slope'. The angle between ground surface and a horizontal line (in percent). This is the direction that overland water would flow. This measure is usually taken with a hand level meter or clinometer",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Commonly called 'slope'. The angle between ground surface and a horizontal line (in percent). This is the direction that overland water would flow. This measure is usually taken with a hand level meter or clinometer"
             },
             "sodium": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Sodium concentration in the sample",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Sodium concentration in the sample"
+            },
+            "soil_text_measure": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "The relative proportion of different grain sizes of mineral particles in a soil, as described using a standard system; express as % sand (50 um to 2 mm), silt (2 um to 50 um), and clay (<2 um) with textural name (e.g., silty clay loam) optional."
+            },
+            "soil_texture_meth": {
+               "description": "Reference or method used in determining soil texture",
+               "type": "string"
             },
             "soil_type": {
                "$ref": "#/$defs/TextValue",
-               "description": "Soil series name or other lower-level classification"
+               "description": "Description of the soil type or classification. This field accepts terms under soil (http://purl.obolibrary.org/obo/ENVO_00001998).  Multiple terms can be separated by pipes."
             },
             "soil_type_meth": {
                "$ref": "#/$defs/TextValue",
@@ -645,13 +936,25 @@
             "soluble_iron_micromol": {
                "type": "string"
             },
+            "source_mat_id": {
+               "$ref": "#/$defs/TextValue",
+               "description": "A unique identifier assigned to a material sample (as defined by http://rs.tdwg.org/dwc/terms/materialSampleID, and as opposed to a particular digital record of a material sample) used for extracting nucleic acids, and subsequent sequencing. The identifier can refer either to the original material collected or to any derived sub-samples. The INSDC qualifiers /specimen_voucher, /bio_material, or /culture_collection may or may not share the same value as the source_mat_id field. For instance, the /specimen_voucher qualifier and source_mat_id may both contain 'UAM:Herps:14' , referring to both the specimen voucher and sampled tissue with the same identifier. However, the /culture_collection qualifier may refer to a value from an initial culture (e.g. ATCC:11775) while source_mat_id would refer to an identifier from some derived culture from which the nucleic acids were extracted (e.g. xatc123 or ark:/2154/R2)."
+            },
             "specific_ecosystem": {
                "description": "Specific ecosystems represent specific features of the environment like aphotic zone in an ocean or gastric mucosa within a host digestive system. Specific ecosystem is in position 5/5 in a GOLD path.",
                "type": "string"
             },
+            "start_date_inc": {
+               "description": "Date the incubation was started. Only relevant for incubation samples.",
+               "type": "string"
+            },
+            "start_time_inc": {
+               "description": "Time the incubation was started. Only relevant for incubation samples.",
+               "type": "string"
+            },
             "store_cond": {
                "$ref": "#/$defs/TextValue",
-               "description": "Explain how and for how long the soil sample was stored before DNA extraction"
+               "description": "Explain how and for how long the soil sample was stored before DNA extraction (fresh/frozen/other)."
             },
             "subsurface_depth": {
                "$ref": "#/$defs/QuantityValue"
@@ -661,61 +964,55 @@
             },
             "sulfate": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Concentration of sulfate in the sample",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Concentration of sulfate in the sample"
             },
             "sulfide": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Concentration of sulfide in the sample",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Concentration of sulfide in the sample"
+            },
+            "technical_reps": {
+               "description": "If sending multiple technical replicates of the same sample, indicate how many replicates are being sent",
+               "type": "string"
             },
             "temp": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Temperature of the sample at the time of sampling",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Temperature of the sample at the time of sampling."
             },
             "texture": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "The relative proportion of different grain sizes of mineral particles in a soil, as described using a standard system; express as % sand (50 um to 2 mm), silt (2 um to 50 um), and clay (<2 um) with textural name (e.g., silty clay loam) optional.",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "The relative proportion of different grain sizes of mineral particles in a soil, as described using a standard system; express as % sand (50 um to 2 mm), silt (2 um to 50 um), and clay (<2 um) with textural name (e.g., silty clay loam) optional."
             },
             "texture_meth": {
                "$ref": "#/$defs/TextValue",
-               "description": "Reference or method used in determining soil texture"
+               "description": "Reference or method used in determining soil texture."
             },
             "tidal_stage": {
                "$ref": "#/$defs/TextValue",
-               "description": "Stage of tide",
-               "pattern": "[low tide|ebb tide|flood tide|high tide]"
+               "description": "Stage of tide"
             },
             "tillage": {
                "$ref": "#/$defs/TextValue",
-               "description": "Note method(s) used for tilling",
-               "pattern": "[drill|cutting disc|ridge till|strip tillage|zonal tillage|chisel|tined|mouldboard|disc plough]"
+               "description": "Note method(s) used for tilling"
             },
             "tot_carb": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Total carbon content",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Total carbon content"
             },
             "tot_depth_water_col": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Measurement of total depth of water column",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Measurement of total depth of water column"
             },
             "tot_diss_nitro": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen"
+            },
+            "tot_nitro_cont_meth": {
+               "description": "Reference or method used in determining the total nitrogen",
+               "type": "string"
             },
             "tot_nitro_content": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Total nitrogen content of the sample",
-               "pattern": "\\d+[.\\d+] \\S+"
-            },
-            "tot_nitro_content_meth": {
-               "$ref": "#/$defs/TextValue",
-               "description": "Reference or method used in determining the total nitrogen"
+               "description": "Total nitrogen content of the sample"
             },
             "tot_org_c_meth": {
                "$ref": "#/$defs/TextValue",
@@ -723,26 +1020,31 @@
             },
             "tot_org_carb": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Definition for soil: total organic carbon content of the soil, definition otherwise: total organic carbon content",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Definition for soil: total organic carbon content of the soil, definition otherwise: total organic carbon content"
             },
             "tot_phosp": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Total phosphorus concentration in the sample, calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Total phosphorus concentration in the sample, calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus"
             },
             "type": {
                "description": "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.",
                "type": "string"
             },
+            "water_cont_soil_meth": {
+               "description": "Reference or method used in determining the water content of soil",
+               "type": "string"
+            },
             "water_content": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Water content measurement",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Water content measurement"
             },
-            "water_content_soil_meth": {
-               "$ref": "#/$defs/TextValue",
-               "description": "Reference or method used in determining the water content of soil"
+            "watering_regm": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Information about treatment involving an exposure to watering frequencies, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens"
+            },
+            "zinc": {
+               "$ref": "#/$defs/QuantityValue",
+               "description": "Concentration of zinc in the sample"
             }
          },
          "required": [
@@ -792,6 +1094,17 @@
          "title": "BiosampleProcessing",
          "type": "object"
       },
+      "BioticRelationshipEnum": {
+         "description": "",
+         "enum": [
+            "free living",
+            "parasite",
+            "commensal",
+            "symbiont"
+         ],
+         "title": "BioticRelationshipEnum",
+         "type": "string"
+      },
       "BooleanValue": {
          "additionalProperties": false,
          "description": "A value that is a boolean",
@@ -815,6 +1128,120 @@
          "required": [],
          "title": "BooleanValue",
          "type": "object"
+      },
+      "BuildDocsEnum": {
+         "description": "",
+         "enum": [
+            "building information model",
+            "commissioning report",
+            "complaint logs",
+            "contract administration",
+            "cost estimate",
+            "janitorial schedules or logs",
+            "maintenance plans",
+            "schedule",
+            "sections",
+            "shop drawings",
+            "submittals",
+            "ventilation system",
+            "windows"
+         ],
+         "title": "BuildDocsEnum",
+         "type": "string"
+      },
+      "BuildOccupTypeEnum": {
+         "description": "",
+         "enum": [
+            "office",
+            "market",
+            "restaurant",
+            "residence",
+            "school",
+            "residential",
+            "commercial",
+            "low rise",
+            "high rise",
+            "wood framed",
+            "health care",
+            "airport",
+            "sports complex"
+         ],
+         "title": "BuildOccupTypeEnum",
+         "type": "string"
+      },
+      "BuildingSettingEnum": {
+         "description": "",
+         "enum": [
+            "urban",
+            "suburban",
+            "exurban",
+            "rural"
+         ],
+         "title": "BuildingSettingEnum",
+         "type": "string"
+      },
+      "CeilCondEnum": {
+         "description": "",
+         "enum": [
+            "new",
+            "visible wear",
+            "needs repair",
+            "damaged",
+            "rupture"
+         ],
+         "title": "CeilCondEnum",
+         "type": "string"
+      },
+      "CeilFinishMatEnum": {
+         "description": "",
+         "enum": [
+            "drywall",
+            "mineral fibre",
+            "tiles",
+            "PVC",
+            "plasterboard",
+            "metal",
+            "fiberglass",
+            "stucco",
+            "mineral wool/calcium silicate",
+            "wood"
+         ],
+         "title": "CeilFinishMatEnum",
+         "type": "string"
+      },
+      "CeilTextureEnum": {
+         "description": "",
+         "enum": [
+            "crows feet",
+            "crows-foot stomp",
+            "double skip",
+            "hawk and trowel",
+            "knockdown",
+            "popcorn",
+            "orange peel",
+            "rosebud stomp",
+            "Santa-Fe texture",
+            "skip trowel",
+            "smooth",
+            "stomp knockdown",
+            "swirl"
+         ],
+         "title": "CeilTextureEnum",
+         "type": "string"
+      },
+      "CeilTypeEnum": {
+         "description": "",
+         "enum": [
+            "cathedral",
+            "dropped",
+            "concave",
+            "barrel-shaped",
+            "coffered",
+            "cove",
+            "stretched"
+         ],
+         "title": "CeilTypeEnum",
+         "type": "string"
       },
       "ChemicalEntity": {
          "additionalProperties": false,
@@ -935,6 +1362,48 @@
             "Principal Investigator"
          ],
          "title": "CreditEnum",
+         "type": "string"
+      },
+      "CurLandUseEnum": {
+         "description": "",
+         "enum": [
+            "cities",
+            "farmstead",
+            "industrial areas",
+            "roads/railroads",
+            "rock",
+            "sand",
+            "gravel",
+            "mudflats",
+            "salt flats",
+            "badlands",
+            "permanent snow or ice",
+            "saline seeps",
+            "mines/quarries",
+            "oil waste areas",
+            "small grains",
+            "row crops",
+            "vegetable crops",
+            "horticultural plants (e.g. tulips)",
+            "marshlands (grass,sedges,rushes)",
+            "tundra (mosses,lichens)",
+            "rangeland",
+            "pastureland (grasslands used for livestock grazing)",
+            "hayland",
+            "meadows (grasses,alfalfa,fescue,bromegrass,timothy)",
+            "shrub land (e.g. mesquite,sage-brush,creosote bush,shrub oak,eucalyptus)",
+            "successional shrub land (tree saplings,hazels,sumacs,chokecherry,shrub dogwoods,blackberries)",
+            "shrub crops (blueberries,nursery ornamentals,filberts)",
+            "vine crops (grapes)",
+            "conifers (e.g. pine,spruce,fir,cypress)",
+            "hardwoods (e.g. oak,hickory,elm,aspen)",
+            "intermixed hardwood and conifers",
+            "tropical (e.g. mangrove,palms)",
+            "rainforest (evergreen forest receiving greater than 406 cm annual rainfall)",
+            "swamp (permanent or semi-permanent water body dominated by woody plants)",
+            "crop trees (nuts,fruit,christmas trees,nursery trees)"
+         ],
+         "title": "CurLandUseEnum",
          "type": "string"
       },
       "DataObject": {
@@ -1110,7 +1579,7 @@
                "type": "array"
             },
             "read_based_analysis_activity_set": {
-               "description": "This property links a database object to the set of read based analysis activities.\n  ",
+               "description": "This property links a database object to the set of read based analysis activities.",
                "items": {
                   "$ref": "#/$defs/ReadBasedAnalysisActivity"
                },
@@ -1127,6 +1596,214 @@
          "required": [],
          "title": "Database",
          "type": "object"
+      },
+      "DeposEnvEnum": {
+         "description": "",
+         "enum": [
+            "Continental - Alluvial",
+            "Continental - Aeolian",
+            "Continental - Fluvial",
+            "Continental - Lacustrine",
+            "Transitional - Deltaic",
+            "Transitional - Tidal",
+            "Transitional - Lagoonal",
+            "Transitional - Beach",
+            "Transitional - Lake",
+            "Marine - Shallow",
+            "Marine - Deep",
+            "Marine - Reef",
+            "Other - Evaporite",
+            "Other - Glacial",
+            "Other - Volcanic",
+            "other"
+         ],
+         "title": "DeposEnvEnum",
+         "type": "string"
+      },
+      "DnaContTypeEnum": {
+         "description": "",
+         "enum": [
+            "plate",
+            "tube"
+         ],
+         "title": "DnaContTypeEnum",
+         "type": "string"
+      },
+      "DnaDnaseEnum": {
+         "description": "",
+         "enum": [
+            "no",
+            "yes"
+         ],
+         "title": "DnaDnaseEnum",
+         "type": "string"
+      },
+      "DnaSampleFormatEnum": {
+         "description": "",
+         "enum": [
+            "10 mM Tris-HCl",
+            "DNAStable",
+            "Ethanol",
+            "Low EDTA TE",
+            "MDA reaction buffer",
+            "PBS",
+            "Pellet",
+            "RNAStable",
+            "TE",
+            "Water"
+         ],
+         "title": "DnaSampleFormatEnum",
+         "type": "string"
+      },
+      "DnaseRnaEnum": {
+         "description": "",
+         "enum": [
+            "no",
+            "yes"
+         ],
+         "title": "DnaseRnaEnum",
+         "type": "string"
+      },
+      "DoorCompTypeEnum": {
+         "description": "",
+         "enum": [
+            "metal covered",
+            "revolving",
+            "sliding",
+            "telescopic"
+         ],
+         "title": "DoorCompTypeEnum",
+         "type": "string"
+      },
+      "DoorCondEnum": {
+         "description": "",
+         "enum": [
+            "damaged",
+            "needs repair",
+            "new",
+            "rupture",
+            "visible wear"
+         ],
+         "title": "DoorCondEnum",
+         "type": "string"
+      },
+      "DoorDirectEnum": {
+         "description": "",
+         "enum": [
+            "inward",
+            "outward",
+            "sideways"
+         ],
+         "title": "DoorDirectEnum",
+         "type": "string"
+      },
+      "DoorLocEnum": {
+         "description": "",
+         "enum": [
+            "north",
+            "south",
+            "east",
+            "west"
+         ],
+         "title": "DoorLocEnum",
+         "type": "string"
+      },
+      "DoorMatEnum": {
+         "description": "",
+         "enum": [
+            "aluminum",
+            "cellular PVC",
+            "engineered plastic",
+            "fiberboard",
+            "fiberglass",
+            "metal",
+            "thermoplastic alloy",
+            "vinyl",
+            "wood",
+            "wood/plastic composite"
+         ],
+         "title": "DoorMatEnum",
+         "type": "string"
+      },
+      "DoorMoveEnum": {
+         "description": "",
+         "enum": [
+            "collapsible",
+            "folding",
+            "revolving",
+            "rolling shutter",
+            "sliding",
+            "swinging"
+         ],
+         "title": "DoorMoveEnum",
+         "type": "string"
+      },
+      "DoorTypeEnum": {
+         "description": "",
+         "enum": [
+            "composite",
+            "metal",
+            "wooden"
+         ],
+         "title": "DoorTypeEnum",
+         "type": "string"
+      },
+      "DoorTypeMetalEnum": {
+         "description": "",
+         "enum": [
+            "collapsible",
+            "corrugated steel",
+            "hollow",
+            "rolling shutters",
+            "steel plate"
+         ],
+         "title": "DoorTypeMetalEnum",
+         "type": "string"
+      },
+      "DoorTypeWoodEnum": {
+         "description": "",
+         "enum": [
+            "bettened and ledged",
+            "battened",
+            "ledged and braced",
+            "ledged and framed",
+            "ledged, braced and frame",
+            "framed and paneled",
+            "glashed or sash",
+            "flush",
+            "louvered",
+            "wire gauged"
+         ],
+         "title": "DoorTypeWoodEnum",
+         "type": "string"
+      },
+      "DrainageClassEnum": {
+         "description": "",
+         "enum": [
+            "very poorly",
+            "poorly",
+            "somewhat poorly",
+            "moderately well",
+            "well",
+            "excessively drained"
+         ],
+         "title": "DrainageClassEnum",
+         "type": "string"
+      },
+      "DrawingsEnum": {
+         "description": "",
+         "enum": [
+            "operation",
+            "as built",
+            "construction",
+            "bid",
+            "design",
+            "building navigation map",
+            "diagram",
+            "sketch"
+         ],
+         "title": "DrawingsEnum",
+         "type": "string"
       },
       "EnvironmentalMaterialTerm": {
          "additionalProperties": false,
@@ -1157,6 +1834,69 @@
          ],
          "title": "EnvironmentalMaterialTerm",
          "type": "object"
+      },
+      "ExtWallOrientEnum": {
+         "description": "",
+         "enum": [
+            "north",
+            "south",
+            "east",
+            "west",
+            "northeast",
+            "southeast",
+            "southwest",
+            "northwest"
+         ],
+         "title": "ExtWallOrientEnum",
+         "type": "string"
+      },
+      "ExtWindowOrientEnum": {
+         "description": "",
+         "enum": [
+            "north",
+            "south",
+            "east",
+            "west",
+            "northeast",
+            "southeast",
+            "southwest",
+            "northwest"
+         ],
+         "title": "ExtWindowOrientEnum",
+         "type": "string"
+      },
+      "FaoClassEnum": {
+         "description": "",
+         "enum": [
+            "Acrisols",
+            "Andosols",
+            "Arenosols",
+            "Cambisols",
+            "Chernozems",
+            "Ferralsols",
+            "Fluvisols",
+            "Gleysols",
+            "Greyzems",
+            "Gypsisols",
+            "Histosols",
+            "Kastanozems",
+            "Lithosols",
+            "Luvisols",
+            "Nitosols",
+            "Phaeozems",
+            "Planosols",
+            "Podzols",
+            "Podzoluvisols",
+            "Rankers",
+            "Regosols",
+            "Rendzinas",
+            "Solonchaks",
+            "Solonetz",
+            "Vertisols",
+            "Yermosols"
+         ],
+         "title": "FaoClassEnum",
+         "type": "string"
       },
       "FileTypeEnum": {
          "description": "",
@@ -1202,6 +1942,99 @@
          "title": "FileTypeEnum",
          "type": "string"
       },
+      "FilterTypeEnum": {
+         "description": "",
+         "enum": [
+            "particulate air filter",
+            "chemical air filter",
+            "low-MERV pleated media",
+            "HEPA",
+            "electrostatic",
+            "gas-phase or ultraviolet air treatments"
+         ],
+         "title": "FilterTypeEnum",
+         "type": "string"
+      },
+      "FloorCondEnum": {
+         "description": "",
+         "enum": [
+            "new",
+            "visible wear",
+            "needs repair",
+            "damaged",
+            "rupture"
+         ],
+         "title": "FloorCondEnum",
+         "type": "string"
+      },
+      "FloorFinishMatEnum": {
+         "description": "",
+         "enum": [
+            "tile",
+            "wood strip or parquet",
+            "carpet",
+            "rug",
+            "laminate wood",
+            "lineoleum",
+            "vinyl composition tile",
+            "sheet vinyl",
+            "stone",
+            "bamboo",
+            "cork",
+            "terrazo",
+            "concrete",
+            "none",
+            "sealed",
+            "clear finish",
+            "paint",
+            "none or unfinished"
+         ],
+         "title": "FloorFinishMatEnum",
+         "type": "string"
+      },
+      "FloorStrucEnum": {
+         "description": "",
+         "enum": [
+            "balcony",
+            "floating floor",
+            "glass floor",
+            "raised floor",
+            "sprung floor",
+            "wood-framed",
+            "concrete"
+         ],
+         "title": "FloorStrucEnum",
+         "type": "string"
+      },
+      "FloorWaterMoldEnum": {
+         "description": "",
+         "enum": [
+            "mold odor",
+            "wet floor",
+            "water stains",
+            "wall discoloration",
+            "floor discoloration",
+            "ceiling discoloration",
+            "peeling paint or wallpaper",
+            "bulging walls",
+            "condensation"
+         ],
+         "title": "FloorWaterMoldEnum",
+         "type": "string"
+      },
+      "FreqCleanEnum": {
+         "description": "",
+         "enum": [
+            "Daily",
+            "Weekly",
+            "Monthly",
+            "Quarterly",
+            "Annually",
+            "other"
+         ],
+         "title": "FreqCleanEnum",
+         "type": "string"
+      },
       "FunctionalAnnotation": {
          "additionalProperties": false,
          "description": "An assignment of a function term (e.g. reaction or pathway) that is executed by a gene product, or which the gene product plays an active role in. Functional annotations can be assigned manually by curators, or automatically in workflows. In the context of NMDC, all function annotation is performed automatically, typically using HMM or Blast type methods",
@@ -1225,6 +2058,29 @@
          "required": [],
          "title": "FunctionalAnnotation",
          "type": "object"
+      },
+      "FurnitureEnum": {
+         "description": "",
+         "enum": [
+            "cabinet",
+            "chair",
+            "desks"
+         ],
+         "title": "FurnitureEnum",
+         "type": "string"
+      },
+      "GenderRestroomEnum": {
+         "description": "",
+         "enum": [
+            "all gender",
+            "female",
+            "gender neurtral",
+            "male",
+            "male and female",
+            "unisex"
+         ],
+         "title": "GenderRestroomEnum",
+         "type": "string"
       },
       "GeneProduct": {
          "additionalProperties": false,
@@ -1333,6 +2189,129 @@
          "title": "GeolocationValue",
          "type": "object"
       },
+      "GrowthHabitEnum": {
+         "description": "",
+         "enum": [
+            "erect",
+            "semi-erect",
+            "spreading",
+            "prostrate"
+         ],
+         "title": "GrowthHabitEnum",
+         "type": "string"
+      },
+      "HandidnessEnum": {
+         "description": "",
+         "enum": [
+            "ambidexterity",
+            "left handedness",
+            "mixed-handedness",
+            "right handedness"
+         ],
+         "title": "HandidnessEnum",
+         "type": "string"
+      },
+      "HcProducedEnum": {
+         "description": "",
+         "enum": [
+            "Oil",
+            "Gas-Condensate",
+            "Gas",
+            "Bitumen",
+            "Coalbed Methane",
+            "other"
+         ],
+         "title": "HcProducedEnum",
+         "type": "string"
+      },
+      "HcrEnum": {
+         "description": "",
+         "enum": [
+            "Oil Reservoir",
+            "Gas Reservoir",
+            "Oil Sand",
+            "Coalbed",
+            "Shale",
+            "Tight Oil Reservoir",
+            "Tight Gas Reservoir",
+            "other"
+         ],
+         "title": "HcrEnum",
+         "type": "string"
+      },
+      "HcrGeolAgeEnum": {
+         "description": "",
+         "enum": [
+            "Archean",
+            "Cambrian",
+            "Carboniferous",
+            "Cenozoic",
+            "Cretaceous",
+            "Devonian",
+            "Jurassic",
+            "Mesozoic",
+            "Neogene",
+            "Ordovician",
+            "Paleogene",
+            "Paleozoic",
+            "Permian",
+            "Precambrian",
+            "Proterozoic",
+            "Silurian",
+            "Triassic",
+            "other"
+         ],
+         "title": "HcrGeolAgeEnum",
+         "type": "string"
+      },
+      "HeatCoolTypeEnum": {
+         "description": "",
+         "enum": [
+            "radiant system",
+            "heat pump",
+            "forced air system",
+            "steam forced heat",
+            "wood stove"
+         ],
+         "title": "HeatCoolTypeEnum",
+         "type": "string"
+      },
+      "HeatDelivLocEnum": {
+         "description": "",
+         "enum": [
+            "north",
+            "south",
+            "east",
+            "west"
+         ],
+         "title": "HeatDelivLocEnum",
+         "type": "string"
+      },
+      "HorizonEnum": {
+         "description": "",
+         "enum": [
+            "O horizon",
+            "A horizon",
+            "E horizon",
+            "B horizon",
+            "C horizon",
+            "R layer",
+            "Permafrost"
+         ],
+         "title": "HorizonEnum",
+         "type": "string"
+      },
+      "HostSexEnum": {
+         "description": "",
+         "enum": [
+            "female",
+            "hermaphrodite",
+            "male",
+            "neuter"
+         ],
+         "title": "HostSexEnum",
+         "type": "string"
+      },
       "ImageValue": {
          "additionalProperties": false,
          "description": "An attribute value representing an image.",
@@ -1364,6 +2343,36 @@
          "title": "ImageValue",
          "type": "object"
       },
+      "IndoorSpaceEnum": {
+         "description": "",
+         "enum": [
+            "bedroom",
+            "office",
+            "bathroom",
+            "foyer",
+            "kitchen",
+            "locker room",
+            "hallway",
+            "elevator"
+         ],
+         "title": "IndoorSpaceEnum",
+         "type": "string"
+      },
+      "IndoorSurfEnum": {
+         "description": "",
+         "enum": [
+            "cabinet",
+            "ceiling",
+            "counter top",
+            "door",
+            "shelving",
+            "vent cover",
+            "window",
+            "wall"
+         ],
+         "title": "IndoorSurfEnum",
+         "type": "string"
+      },
       "Instrument": {
          "additionalProperties": false,
          "description": "A material entity that is designed to perform a function in a scientific investigation, but is not a reagent[OBI].",
@@ -1394,6 +2403,18 @@
          "title": "Instrument",
          "type": "object"
       },
+      "IntWallCondEnum": {
+         "description": "",
+         "enum": [
+            "new",
+            "visible wear",
+            "needs repair",
+            "damaged",
+            "rupture"
+         ],
+         "title": "IntWallCondEnum",
+         "type": "string"
+      },
       "IntegerValue": {
          "additionalProperties": false,
          "description": "A value that is an integer",
@@ -1417,6 +2438,38 @@
          "required": [],
          "title": "IntegerValue",
          "type": "object"
+      },
+      "LightTypeEnum": {
+         "description": "",
+         "enum": [
+            "natural light",
+            "electric light",
+            "desk lamp",
+            "flourescent lights",
+            "none"
+         ],
+         "title": "LightTypeEnum",
+         "type": "string"
+      },
+      "LithologyEnum": {
+         "description": "",
+         "enum": [
+            "Basement",
+            "Chalk",
+            "Chert",
+            "Coal",
+            "Conglomerate",
+            "Diatomite",
+            "Dolomite",
+            "Limestone",
+            "Sandstone",
+            "Shale",
+            "Siltstone",
+            "Volcanic",
+            "other"
+         ],
+         "title": "LithologyEnum",
+         "type": "string"
       },
       "MAGBin": {
          "additionalProperties": false,
@@ -1582,6 +2635,22 @@
          ],
          "title": "MAGsAnalysisActivity",
          "type": "object"
+      },
+      "MechStrucEnum": {
+         "description": "",
+         "enum": [
+            "subway",
+            "coach",
+            "carriage",
+            "elevator",
+            "escalator",
+            "boat",
+            "train",
+            "car",
+            "bus"
+         ],
+         "title": "MechStrucEnum",
+         "type": "string"
       },
       "MetaboliteQuantification": {
          "additionalProperties": false,
@@ -2494,6 +3563,17 @@
          "title": "NomAnalysisActivity",
          "type": "object"
       },
+      "OccupDocumentEnum": {
+         "description": "",
+         "enum": [
+            "automated count",
+            "estimate",
+            "manual count",
+            "videos"
+         ],
+         "title": "OccupDocumentEnum",
+         "type": "string"
+      },
       "OmicsProcessing": {
          "additionalProperties": false,
          "description": "The methods and processes used to generate omics data from a biosample or organism.",
@@ -2526,7 +3606,7 @@
             },
             "chimera_check": {
                "$ref": "#/$defs/TextValue",
-               "description": "A chimeric sequence, or chimera for short, is a sequence comprised of two or more phylogenetically distinct parent sequences. Chimeras are usually PCR artifacts thought to occur when a prematurely terminated amplicon reanneals to a foreign DNA strand and is copied to completion in the following PCR cycles. The point at which the chimeric sequence changes from one parent to the next is called the breakpoint or conversion point"
+               "description": "Tool(s) used for chimera checking, including version number and parameters, to discover and remove chimeric sequences. A chimeric sequence is comprised of two or more phylogenetically distinct parent sequences."
             },
             "description": {
                "description": "a human-readable description of a thing",
@@ -2551,7 +3631,7 @@
                "type": "string"
             },
             "instrument_name": {
-               "description": "The name of the instrument that was used for processing the sample.\n   ",
+               "description": "The name of the instrument that was used for processing the sample.",
                "type": "string"
             },
             "mod_date": {
@@ -2586,8 +3666,7 @@
             },
             "pcr_cond": {
                "$ref": "#/$defs/TextValue",
-               "description": "Description of reaction conditions and components of PCR in the form of  'initial denaturation:94degC_1.5min; annealing=...'",
-               "pattern": "initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final elongation:degrees_minutes;total cycles"
+               "description": "Description of reaction conditions and components of PCR in the form of 'initial denaturation:94degC_1.5min; annealing=...'"
             },
             "pcr_primers": {
                "$ref": "#/$defs/TextValue",
@@ -2603,18 +3682,15 @@
             },
             "samp_vol_we_dna_ext": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Volume (ml), weight (g) of processed sample, or surface area swabbed from sample for DNA extraction",
-               "pattern": "\\d+[.\\d+] \\S+"
+               "description": "Volume (ml) or mass (g) of total collected sample processed for DNA extraction. Note: total sample collected should be entered under the term Sample Size (MIXS:0000001)."
             },
             "seq_meth": {
                "$ref": "#/$defs/TextValue",
-               "description": "Sequencing method used; e.g. Sanger, pyrosequencing, ABI-solid",
-               "pattern": "[MinION|GridION|PromethION|454 GS|454 GS 20|454 GS FLX|454 GS FLX+|454 GS FLX Titanium|454 GS Junior|Illumina Genome Analyzer|Illumina Genome Analyzer II|Illumina Genome Analyzer IIx|Illumina HiSeq 4000|Illumina HiSeq 3000|Illumina HiSeq 2500|Illumina HiSeq 2000|Illumina HiSeq 1500|Illumina HiSeq 1000|Illumina HiScanSQ|Illumina MiSeq|Illumina HiSeq X Five|Illumina HiSeq X Ten|Illumina NextSeq 500|Illumina NextSeq 550|AB SOLiD System|AB SOLiD System 2.0|AB SOLiD System 3.0|AB SOLiD 3 Plus System|AB SOLiD 4 System|AB SOLiD 4hq System|AB SOLiD PI System|AB 5500 Genetic Analyzer|AB 5500xl Genetic Analyzer|AB 5500xl\\-W Genetic Analysis System|Ion Torrent PGM|Ion Torrent Proton|Ion Torrent S5|Ion Torrent S5 XL|PacBio RS|PacBio RS II|Sequel|AB 3730xL Genetic Analyzer|AB 3730 Genetic Analyzer|AB 3500xL Genetic Analyzer|AB 3500 Genetic Analyzer|AB 3130xL Genetic Analyzer|AB 3130 Genetic Analyzer|AB 310 Genetic Analyzer|BGISEQ\\-500]"
+               "description": "Sequencing machine used. Where possible the term should be taken from the OBI list of DNA sequencers (http://purl.obolibrary.org/obo/OBI_0400103)."
             },
             "seq_quality_check": {
                "$ref": "#/$defs/TextValue",
-               "description": "Indicate if the sequence has been called by automatic systems (none) or undergone a manual editing procedure (e.g. by inspecting the raw data or chromatograms). Applied only for sequences that are not submitted to SRA,ENA or DRA",
-               "pattern": "[none|manually edited]"
+               "description": "Indicate if the sequence has been called by automatic systems (none) or undergone a manual editing procedure (e.g. by inspecting the raw data or chromatograms). Applied only for sequences that are not submitted to SRA,ENA or DRA"
             },
             "target_gene": {
                "$ref": "#/$defs/TextValue",
@@ -2665,6 +3741,16 @@
          "title": "OntologyClass",
          "type": "object"
       },
+      "OrganismCountEnum": {
+         "description": "",
+         "enum": [
+            "ATP",
+            "MPN",
+            "other"
+         ],
+         "title": "OrganismCountEnum",
+         "type": "string"
+      },
       "OrthologyGroup": {
          "additionalProperties": false,
          "description": "A set of genes or gene products in which all members are orthologous",
@@ -2694,6 +3780,16 @@
          ],
          "title": "OrthologyGroup",
          "type": "object"
+      },
+      "OxyStatSampEnum": {
+         "description": "",
+         "enum": [
+            "aerobic",
+            "anaerobic",
+            "other"
+         ],
+         "title": "OxyStatSampEnum",
+         "type": "string"
       },
       "Pathway": {
          "additionalProperties": false,
@@ -2806,15 +3902,15 @@
                "type": "string"
             },
             "has_raw_value": {
-               "description": "The full name of the Investgator in format FIRST LAST.",
+               "description": "The full name of the Investigator in format FIRST LAST.",
                "type": "string"
             },
             "name": {
-               "description": "The full name of the Investgator. It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.",
+               "description": "The full name of the Investigator. It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.",
                "type": "string"
             },
             "orcid": {
-               "description": "The ORICD of a person.",
+               "description": "The ORCID of a person.",
                "type": "string"
             },
             "profile_image_url": {
@@ -2829,7 +3925,7 @@
                "type": "string"
             },
             "websites": {
-               "description": "A list of websites that are assocatiated with the entity.",
+               "description": "A list of websites that are associated with the entity.",
                "items": {
                   "type": "string"
                },
@@ -2839,6 +3935,70 @@
          "required": [],
          "title": "PersonValue",
          "type": "object"
+      },
+      "PlantGrowthMedEnum": {
+         "description": "",
+         "enum": [
+            "other artificial liquid medium",
+            "other artificial solid medium",
+            "peat moss",
+            "perlite",
+            "pumice",
+            "sand",
+            "soil",
+            "vermiculite",
+            "water"
+         ],
+         "title": "PlantGrowthMedEnum",
+         "type": "string"
+      },
+      "PlantSexEnum": {
+         "description": "",
+         "enum": [
+            "Androdioecious",
+            "Androecious",
+            "Androgynous",
+            "Androgynomonoecious",
+            "Andromonoecious",
+            "Bisexual",
+            "Dichogamous",
+            "Diclinous",
+            "Dioecious",
+            "Gynodioecious",
+            "Gynoecious",
+            "Gynomonoecious",
+            "Hermaphroditic",
+            "Imperfect",
+            "Monoclinous",
+            "Monoecious",
+            "Perfect",
+            "Polygamodioecious",
+            "Polygamomonoecious",
+            "Polygamous",
+            "Protandrous",
+            "Protogynous",
+            "Subandroecious",
+            "Subdioecious",
+            "Subgynoecious",
+            "Synoecious",
+            "Trimonoecious",
+            "Trioecious",
+            "Unisexual"
+         ],
+         "title": "PlantSexEnum",
+         "type": "string"
+      },
+      "ProfilePositionEnum": {
+         "description": "",
+         "enum": [
+            "summit",
+            "shoulder",
+            "backslope",
+            "footslope",
+            "toeslope"
+         ],
+         "title": "ProfilePositionEnum",
+         "type": "string"
       },
       "ProteinQuantification": {
          "additionalProperties": false,
@@ -2871,6 +4031,17 @@
          "required": [],
          "title": "ProteinQuantification",
          "type": "object"
+      },
+      "QuadPosEnum": {
+         "description": "",
+         "enum": [
+            "North side",
+            "West side",
+            "South side",
+            "East side"
+         ],
+         "title": "QuadPosEnum",
+         "type": "string"
       },
       "QuantityValue": {
          "additionalProperties": false,
@@ -3172,10 +4343,397 @@
          "title": "ReadQCAnalysisActivity",
          "type": "object"
       },
+      "RelSampLocEnum": {
+         "description": "",
+         "enum": [
+            "edge of car",
+            "center of car",
+            "under a seat"
+         ],
+         "title": "RelSampLocEnum",
+         "type": "string"
+      },
+      "RelToOxygenEnum": {
+         "description": "",
+         "enum": [
+            "aerobe",
+            "anaerobe",
+            "facultative",
+            "microaerophilic",
+            "microanaerobe",
+            "obligate aerobe",
+            "obligate anaerobe"
+         ],
+         "title": "RelToOxygenEnum",
+         "type": "string"
+      },
+      "RnaContTypeEnum": {
+         "description": "",
+         "enum": [
+            "plate",
+            "tube"
+         ],
+         "title": "RnaContTypeEnum",
+         "type": "string"
+      },
+      "RnaSampleFormatEnum": {
+         "description": "",
+         "enum": [
+            "10 mM Tris-HCl",
+            "DNAStable",
+            "Ethanol",
+            "Low EDTA TE",
+            "MDA reaction buffer",
+            "PBS",
+            "Pellet",
+            "RNAStable",
+            "TE",
+            "Water"
+         ],
+         "title": "RnaSampleFormatEnum",
+         "type": "string"
+      },
+      "RoomCondtEnum": {
+         "description": "",
+         "enum": [
+            "new",
+            "visible wear",
+            "needs repair",
+            "damaged",
+            "rupture",
+            "visible signs of mold/mildew"
+         ],
+         "title": "RoomCondtEnum",
+         "type": "string"
+      },
+      "RoomConnectedEnum": {
+         "description": "",
+         "enum": [
+            "attic",
+            "bathroom",
+            "closet",
+            "conference room",
+            "elevator",
+            "examining room",
+            "hallway",
+            "kitchen",
+            "mail room",
+            "office",
+            "stairwell"
+         ],
+         "title": "RoomConnectedEnum",
+         "type": "string"
+      },
+      "RoomLocEnum": {
+         "description": "",
+         "enum": [
+            "corner room",
+            "interior room",
+            "exterior wall"
+         ],
+         "title": "RoomLocEnum",
+         "type": "string"
+      },
+      "RoomSampPosEnum": {
+         "description": "",
+         "enum": [
+            "north corner",
+            "south corner",
+            "west corner",
+            "east corner",
+            "northeast corner",
+            "northwest corner",
+            "southeast corner",
+            "southwest corner",
+            "center"
+         ],
+         "title": "RoomSampPosEnum",
+         "type": "string"
+      },
+      "RoomTypeEnum": {
+         "description": "",
+         "enum": [
+            "attic",
+            "bathroom",
+            "closet",
+            "conference room",
+            "elevator",
+            "examining room",
+            "hallway",
+            "kitchen",
+            "mail room",
+            "private office",
+            "open office",
+            "stairwell",
+            ",restroom",
+            "lobby",
+            "vestibule",
+            "mechanical or electrical room",
+            "data center",
+            "laboratory_wet",
+            "laboratory_dry",
+            "gymnasium",
+            "natatorium",
+            "auditorium",
+            "lockers",
+            "cafe",
+            "warehouse"
+         ],
+         "title": "RoomTypeEnum",
+         "type": "string"
+      },
+      "SampCaptStatusEnum": {
+         "description": "",
+         "enum": [
+            "active surveillance in response to an outbreak",
+            "active surveillance not initiated by an outbreak",
+            "farm sample",
+            "market sample",
+            "other"
+         ],
+         "title": "SampCaptStatusEnum",
+         "type": "string"
+      },
+      "SampCollectPointEnum": {
+         "description": "",
+         "enum": [
+            "well",
+            "test well",
+            "drilling rig",
+            "wellhead",
+            "separator",
+            "storage tank",
+            "other"
+         ],
+         "title": "SampCollectPointEnum",
+         "type": "string"
+      },
+      "SampDisStageEnum": {
+         "description": "",
+         "enum": [
+            "dissemination",
+            "growth and reproduction",
+            "infection",
+            "inoculation",
+            "penetration",
+            "other"
+         ],
+         "title": "SampDisStageEnum",
+         "type": "string"
+      },
+      "SampFloorEnum": {
+         "description": "",
+         "enum": [
+            "1st floor",
+            "2nd floor",
+            "basement",
+            "lobby"
+         ],
+         "title": "SampFloorEnum",
+         "type": "string"
+      },
+      "SampMdEnum": {
+         "description": "",
+         "enum": [
+            "DF",
+            "RT",
+            "KB",
+            "MSL",
+            "other"
+         ],
+         "title": "SampMdEnum",
+         "type": "string"
+      },
+      "SampSubtypeEnum": {
+         "description": "",
+         "enum": [
+            "oil phase",
+            "water phase",
+            "biofilm",
+            "not applicable",
+            "other"
+         ],
+         "title": "SampSubtypeEnum",
+         "type": "string"
+      },
+      "SampWeatherEnum": {
+         "description": "",
+         "enum": [
+            "clear sky",
+            "cloudy",
+            "foggy",
+            "hail",
+            "rain",
+            "snow",
+            "sleet",
+            "sunny",
+            "windy"
+         ],
+         "title": "SampWeatherEnum",
+         "type": "string"
+      },
+      "SampleTypeEnum": {
+         "description": "",
+         "enum": [
+            "soil",
+            "water_extract_soil"
+         ],
+         "title": "SampleTypeEnum",
+         "type": "string"
+      },
+      "SeasonUseEnum": {
+         "description": "",
+         "enum": [
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter"
+         ],
+         "title": "SeasonUseEnum",
+         "type": "string"
+      },
+      "SedimentTypeEnum": {
+         "description": "",
+         "enum": [
+            "biogenous",
+            "cosmogenous",
+            "hydrogenous",
+            "lithogenous"
+         ],
+         "title": "SedimentTypeEnum",
+         "type": "string"
+      },
+      "ShadingDeviceCondEnum": {
+         "description": "",
+         "enum": [
+            "damaged",
+            "needs repair",
+            "new",
+            "rupture",
+            "visible wear"
+         ],
+         "title": "ShadingDeviceCondEnum",
+         "type": "string"
+      },
+      "ShadingDeviceTypeEnum": {
+         "description": "",
+         "enum": [
+            "bahama shutters",
+            "exterior roll blind",
+            "gambrel awning",
+            "hood awning",
+            "porchroller awning",
+            "sarasota shutters",
+            "slatted aluminum",
+            "solid aluminum awning",
+            "sun screen",
+            "tree",
+            "trellis",
+            "venetian awning"
+         ],
+         "title": "ShadingDeviceTypeEnum",
+         "type": "string"
+      },
+      "SoilHorizonEnum": {
+         "description": "",
+         "enum": [
+            "O horizon",
+            "A horizon",
+            "E horizon",
+            "B horizon",
+            "C horizon",
+            "R layer",
+            "Permafrost"
+         ],
+         "title": "SoilHorizonEnum",
+         "type": "string"
+      },
+      "SpecificEnum": {
+         "description": "",
+         "enum": [
+            "operation",
+            "as built",
+            "construction",
+            "bid",
+            "design",
+            "photos"
+         ],
+         "title": "SpecificEnum",
+         "type": "string"
+      },
+      "SrDepEnvEnum": {
+         "description": "",
+         "enum": [
+            "Lacustine",
+            "Fluvioldeltaic",
+            "Fluviomarine",
+            "Marine",
+            "other"
+         ],
+         "title": "SrDepEnvEnum",
+         "type": "string"
+      },
+      "SrGeolAgeEnum": {
+         "description": "",
+         "enum": [
+            "Archean",
+            "Cambrian",
+            "Carboniferous",
+            "Cenozoic",
+            "Cretaceous",
+            "Devonian",
+            "Jurassic",
+            "Mesozoic",
+            "Neogene",
+            "Ordovician",
+            "Paleogene",
+            "Paleozoic",
+            "Permian",
+            "Precambrian",
+            "Proterozoic",
+            "Silurian",
+            "Triassic",
+            "other"
+         ],
+         "title": "SrGeolAgeEnum",
+         "type": "string"
+      },
+      "SrKerogTypeEnum": {
+         "description": "",
+         "enum": [
+            "Type I",
+            "Type II",
+            "Type III",
+            "Type IV",
+            "other"
+         ],
+         "title": "SrKerogTypeEnum",
+         "type": "string"
+      },
+      "SrLithologyEnum": {
+         "description": "",
+         "enum": [
+            "Clastic",
+            "Carbonate",
+            "Coal",
+            "Biosilicieous",
+            "other"
+         ],
+         "title": "SrLithologyEnum",
+         "type": "string"
+      },
       "Study": {
          "additionalProperties": false,
          "description": "A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.",
          "properties": {
+            "GOLD_sample_identifiers": {
+               "description": "identifiers for corresponding sample in GOLD",
+               "items": {
+                  "type": "string"
+               },
+               "pattern": "^GOLD:Gb[0-9]+$",
+               "type": "array"
+            },
             "GOLD_study_identifiers": {
                "description": "identifiers for corresponding project in GOLD",
                "items": {
@@ -3213,7 +4771,7 @@
                "type": "string"
             },
             "alternative_descriptions": {
-               "description": "A list of alternative descriptions for the entity. The distinction between desciption and alternative descriptions is application-specific.",
+               "description": "A list of alternative descriptions for the entity. The distinction between description and alternative descriptions is application-specific.",
                "items": {
                   "type": "string"
                },
@@ -3292,6 +4850,9 @@
                "description": "A human readable label for an entity",
                "type": "string"
             },
+            "notes": {
+               "type": "string"
+            },
             "objective": {
                "description": "The scientific objectives associated with the entity. It SHOULD correspond to scientific norms for objectives field in a structured abstract.",
                "type": "string"
@@ -3301,7 +4862,7 @@
                "description": "Principal Investigator who led the study and/or generated the dataset."
             },
             "publications": {
-               "description": "A list of publications that are assocatiated with the entity. The publicatons SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.",
+               "description": "A list of publications that are associated with the entity. The publications SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.",
                "items": {
                   "type": "string"
                },
@@ -3325,7 +4886,7 @@
                "type": "array"
             },
             "title": {
-               "description": "A name given to the entity that differs from the name/label programatically assigned to it. For example, when extracting study information for GOLD, the GOLD system has assigned a name/label. However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.",
+               "description": "A name given to the entity that differs from the name/label programmatically assigned to it. For example, when extracting study information for GOLD, the GOLD system has assigned a name/label. However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.",
                "type": "string"
             },
             "type": {
@@ -3333,7 +4894,7 @@
                "type": "string"
             },
             "websites": {
-               "description": "A list of websites that are assocatiated with the entity.",
+               "description": "A list of websites that are associated with the entity.",
                "items": {
                   "type": "string"
                },
@@ -3345,6 +4906,53 @@
          ],
          "title": "Study",
          "type": "object"
+      },
+      "SubstructureTypeEnum": {
+         "description": "",
+         "enum": [
+            "crawlspace",
+            "slab on grade",
+            "basement"
+         ],
+         "title": "SubstructureTypeEnum",
+         "type": "string"
+      },
+      "SurfAirContEnum": {
+         "description": "",
+         "enum": [
+            "dust",
+            "organic matter",
+            "particulate matter",
+            "volatile organic compounds",
+            "biological contaminants",
+            "radon",
+            "nutrients",
+            "biocides"
+         ],
+         "title": "SurfAirContEnum",
+         "type": "string"
+      },
+      "SurfMaterialEnum": {
+         "description": "",
+         "enum": [
+            "adobe",
+            "carpet",
+            "cinder blocks",
+            "concrete",
+            "hay bales",
+            "glass",
+            "metal",
+            "paint",
+            "plastic",
+            "stainless steel",
+            "stone",
+            "stucco",
+            "tile",
+            "vinyl",
+            "wood"
+         ],
+         "title": "SurfMaterialEnum",
+         "type": "string"
       },
       "TextValue": {
          "additionalProperties": false,
@@ -3370,6 +4978,33 @@
          "title": "TextValue",
          "type": "object"
       },
+      "TidalStageEnum": {
+         "description": "",
+         "enum": [
+            "low tide",
+            "ebb tide",
+            "flood tide",
+            "high tide"
+         ],
+         "title": "TidalStageEnum",
+         "type": "string"
+      },
+      "TillageEnum": {
+         "description": "",
+         "enum": [
+            "drill",
+            "cutting disc",
+            "ridge till",
+            "strip tillage",
+            "zonal tillage",
+            "chisel",
+            "tined",
+            "mouldboard",
+            "disc plough"
+         ],
+         "title": "TillageEnum",
+         "type": "string"
+      },
       "TimestampValue": {
          "additionalProperties": false,
          "description": "A value that is a timestamp. The range should be ISO-8601",
@@ -3390,6 +5025,38 @@
          "title": "TimestampValue",
          "type": "object"
       },
+      "TrainLineEnum": {
+         "description": "",
+         "enum": [
+            "red",
+            "green",
+            "orange"
+         ],
+         "title": "TrainLineEnum",
+         "type": "string"
+      },
+      "TrainStatLocEnum": {
+         "description": "",
+         "enum": [
+            "south station above ground",
+            "south station underground",
+            "south station amtrak",
+            "forest hills",
+            "riverside"
+         ],
+         "title": "TrainStatLocEnum",
+         "type": "string"
+      },
+      "TrainStopLocEnum": {
+         "description": "",
+         "enum": [
+            "end",
+            "mid",
+            "downtown"
+         ],
+         "title": "TrainStopLocEnum",
+         "type": "string"
+      },
       "UrlValue": {
          "additionalProperties": false,
          "description": "A value that is a string that conforms to URL syntax",
@@ -3409,6 +5076,199 @@
          "required": [],
          "title": "UrlValue",
          "type": "object"
+      },
+      "VisMediaEnum": {
+         "description": "",
+         "enum": [
+            "photos",
+            "videos",
+            "commonly of the building",
+            "site context (adjacent buildings, vegetation, terrain, streets)",
+            "interiors",
+            "equipment",
+            "3D scans"
+         ],
+         "title": "VisMediaEnum",
+         "type": "string"
+      },
+      "WallConstTypeEnum": {
+         "description": "",
+         "enum": [
+            "frame construction",
+            "joisted masonry",
+            "light noncombustible",
+            "masonry noncombustible",
+            "modified fire resistive",
+            "fire resistive"
+         ],
+         "title": "WallConstTypeEnum",
+         "type": "string"
+      },
+      "WallFinishMatEnum": {
+         "description": "",
+         "enum": [
+            "plaster",
+            "gypsum plaster",
+            "veneer plaster",
+            "gypsum board",
+            "tile",
+            "terrazzo",
+            "stone facing",
+            "acoustical treatment",
+            "wood",
+            "metal",
+            "masonry"
+         ],
+         "title": "WallFinishMatEnum",
+         "type": "string"
+      },
+      "WallLocEnum": {
+         "description": "",
+         "enum": [
+            "north",
+            "south",
+            "east",
+            "west"
+         ],
+         "title": "WallLocEnum",
+         "type": "string"
+      },
+      "WallSurfTreatmentEnum": {
+         "description": "",
+         "enum": [
+            "painted",
+            "wall paper",
+            "no treatment",
+            "paneling",
+            "stucco",
+            "fabric"
+         ],
+         "title": "WallSurfTreatmentEnum",
+         "type": "string"
+      },
+      "WallTextureEnum": {
+         "description": "",
+         "enum": [
+            "crows feet",
+            "crows-foot stomp",
+            "",
+            "double skip",
+            "hawk and trowel",
+            "knockdown",
+            "popcorn",
+            "orange peel",
+            "rosebud stomp",
+            "Santa-Fe texture",
+            "skip trowel",
+            "smooth",
+            "stomp knockdown",
+            "swirl"
+         ],
+         "title": "WallTextureEnum",
+         "type": "string"
+      },
+      "WaterFeatTypeEnum": {
+         "description": "",
+         "enum": [
+            "fountain",
+            "pool",
+            "standing feature",
+            "stream",
+            "waterfall"
+         ],
+         "title": "WaterFeatTypeEnum",
+         "type": "string"
+      },
+      "WeekdayEnum": {
+         "description": "",
+         "enum": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+         ],
+         "title": "WeekdayEnum",
+         "type": "string"
+      },
+      "WindowCondEnum": {
+         "description": "",
+         "enum": [
+            "damaged",
+            "needs repair",
+            "new",
+            "rupture",
+            "visible wear"
+         ],
+         "title": "WindowCondEnum",
+         "type": "string"
+      },
+      "WindowCoverEnum": {
+         "description": "",
+         "enum": [
+            "blinds",
+            "curtains",
+            "none"
+         ],
+         "title": "WindowCoverEnum",
+         "type": "string"
+      },
+      "WindowHorizPosEnum": {
+         "description": "",
+         "enum": [
+            "left",
+            "middle",
+            "right"
+         ],
+         "title": "WindowHorizPosEnum",
+         "type": "string"
+      },
+      "WindowLocEnum": {
+         "description": "",
+         "enum": [
+            "north",
+            "south",
+            "east",
+            "west"
+         ],
+         "title": "WindowLocEnum",
+         "type": "string"
+      },
+      "WindowMatEnum": {
+         "description": "",
+         "enum": [
+            "clad",
+            "fiberglass",
+            "metal",
+            "vinyl",
+            "wood"
+         ],
+         "title": "WindowMatEnum",
+         "type": "string"
+      },
+      "WindowTypeEnum": {
+         "description": "",
+         "enum": [
+            "single-hung sash window",
+            "horizontal sash window",
+            "fixed window"
+         ],
+         "title": "WindowTypeEnum",
+         "type": "string"
+      },
+      "WindowVertPosEnum": {
+         "description": "",
+         "enum": [
+            "bottom",
+            "middle",
+            "top",
+            "low",
+            "high"
+         ],
+         "title": "WindowVertPosEnum",
+         "type": "string"
       },
       "WorkflowExecutionActivity": {
          "additionalProperties": false,
@@ -3607,7 +5467,7 @@
          "type": "array"
       },
       "read_based_analysis_activity_set": {
-         "description": "This property links a database object to the set of read based analysis activities.\n  ",
+         "description": "This property links a database object to the set of read based analysis activities.",
          "items": {
             "$ref": "#/$defs/ReadBasedAnalysisActivity"
          },
@@ -3624,6 +5484,6 @@
    "required": [],
    "title": "NMDC",
    "type": "object",
-   "version": "2.1.0"
+   "version": "4.0.0"
 }
 

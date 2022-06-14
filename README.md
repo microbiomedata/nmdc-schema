@@ -26,10 +26,8 @@ See also [these slides](https://microbiomedata.github.io/nmdc-schema/schema-slid
 
 ## Dependencies
 In order to make new release of the schema, you must have the following installed on your sytem:
-- [pipenv](https://pypi.org/project/pipenv/)
+- [poetry](https://python-poetry.org/docs/#installation/)
 - [pandoc](https://pandoc.org/installing.html)
-
-A Pipfile.lock is include in the repository, but you can rebuild the lock file by executing `pipenv install -d`.
 
 ## Maintaining the Schema
 
