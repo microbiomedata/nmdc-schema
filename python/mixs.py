@@ -1,5 +1,5 @@
 # Auto generated from mixs.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-06-03T12:47:57
+# Generation date: 2022-06-14T17:31:38
 # Schema: mixs-schema
 #
 # id: https://microbiomedata/schema/mixs
@@ -39,7 +39,6 @@ DRUGBANK = CurieNamespace('DRUGBANK', 'http://identifiers.org/drugbank/')
 HMDB = CurieNamespace('HMDB', 'http://identifiers.org/hmdb/')
 KEGG_COMPOUND = CurieNamespace('KEGG_COMPOUND', 'http://identifiers.org/kegg.compound/')
 MESH = CurieNamespace('MESH', 'http://identifiers.org/mesh/')
-MIXS = CurieNamespace('MIXS', 'https://w3id.org/gensc/')
 OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
 PR = CurieNamespace('PR', 'http://purl.obolibrary.org/obo/PR_')
 PUBCHEM_COMPOUND = CurieNamespace('PUBCHEM_COMPOUND', 'http://identifiers.org/pubchem.compound/')
@@ -2704,8 +2703,6 @@ class WallTextureEnum(EnumDefinitionImpl):
                 PermissibleValue(text="crows feet") )
         setattr(cls, "crows-foot stomp",
                 PermissibleValue(text="crows-foot stomp") )
-        setattr(cls, "",
-                PermissibleValue(text="") )
         setattr(cls, "double skip",
                 PermissibleValue(text="double skip") )
         setattr(cls, "hawk and trowel",
@@ -4341,6 +4338,45 @@ slots.env_package = Slot(uri=DEFAULT_.env_package, name="env_package", curie=DEF
                    model_uri=DEFAULT_.env_package, domain=None, range=Optional[Union[dict, TextValue]], mappings = [MIXS.env_package],
                    pattern=re.compile(r'[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc environment|plant\-associated|sediment|soil|wastewater\/sludge|water]'))
 
+slots.peptide_sequence_count = Slot(uri=NMDC.peptide_sequence_count, name="peptide_sequence_count", curie=NMDC.curie('peptide_sequence_count'),
+                   model_uri=DEFAULT_.peptide_sequence_count, domain=None, range=Optional[str])
+
+slots.protein_spectral_count = Slot(uri=NMDC.protein_spectral_count, name="protein_spectral_count", curie=NMDC.curie('protein_spectral_count'),
+                   model_uri=DEFAULT_.protein_spectral_count, domain=None, range=Optional[str])
+
+slots.protein_sum_masic_abundance = Slot(uri=NMDC.protein_sum_masic_abundance, name="protein_sum_masic_abundance", curie=NMDC.curie('protein_sum_masic_abundance'),
+                   model_uri=DEFAULT_.protein_sum_masic_abundance, domain=None, range=Optional[str])
+
+slots.peptide_sequence = Slot(uri=NMDC.peptide_sequence, name="peptide sequence", curie=NMDC.curie('peptide_sequence'),
+                   model_uri=DEFAULT_.peptide_sequence, domain=None, range=Optional[str])
+
+slots.best_protein = Slot(uri=NMDC.best_protein, name="best protein", curie=NMDC.curie('best_protein'),
+                   model_uri=DEFAULT_.best_protein, domain=None, range=Optional[str])
+
+slots.all_proteins = Slot(uri=NMDC.all_proteins, name="all proteins", curie=NMDC.curie('all_proteins'),
+                   model_uri=DEFAULT_.all_proteins, domain=None, range=Optional[str])
+
+slots.min_q_value = Slot(uri=NMDC.min_q_value, name="min_q_value", curie=NMDC.curie('min_q_value'),
+                   model_uri=DEFAULT_.min_q_value, domain=None, range=Optional[str])
+
+slots.peptide_spectral_count = Slot(uri=NMDC.peptide_spectral_count, name="peptide_spectral_count", curie=NMDC.curie('peptide_spectral_count'),
+                   model_uri=DEFAULT_.peptide_spectral_count, domain=None, range=Optional[str])
+
+slots.peptide_sum_masic_abundance = Slot(uri=NMDC.peptide_sum_masic_abundance, name="peptide_sum_masic_abundance", curie=NMDC.curie('peptide_sum_masic_abundance'),
+                   model_uri=DEFAULT_.peptide_sum_masic_abundance, domain=None, range=Optional[str])
+
+slots.inchi = Slot(uri=NMDC.inchi, name="inchi", curie=NMDC.curie('inchi'),
+                   model_uri=DEFAULT_.inchi, domain=None, range=Optional[str])
+
+slots.inchi_key = Slot(uri=NMDC.inchi_key, name="inchi key", curie=NMDC.curie('inchi_key'),
+                   model_uri=DEFAULT_.inchi_key, domain=None, range=Optional[str])
+
+slots.smiles = Slot(uri=NMDC.smiles, name="smiles", curie=NMDC.curie('smiles'),
+                   model_uri=DEFAULT_.smiles, domain=None, range=Optional[str])
+
+slots.chemical_formula = Slot(uri=NMDC.chemical_formula, name="chemical formula", curie=NMDC.curie('chemical_formula'),
+                   model_uri=DEFAULT_.chemical_formula, domain=None, range=Optional[str])
+
 slots.language = Slot(uri=NMDC.language, name="language", curie=NMDC.curie('language'),
                    model_uri=DEFAULT_.language, domain=None, range=Optional[str])
 
@@ -4535,45 +4571,6 @@ slots.metabolite_quantified = Slot(uri=DEFAULT_.metabolite_quantified, name="met
 slots.highest_similarity_score = Slot(uri=DEFAULT_.highest_similarity_score, name="highest similarity score", curie=DEFAULT_.curie('highest_similarity_score'),
                    model_uri=DEFAULT_.highest_similarity_score, domain=None, range=Optional[float])
 
-slots.peptide_sequence = Slot(uri=DEFAULT_.peptide_sequence, name="peptide sequence", curie=DEFAULT_.curie('peptide_sequence'),
-                   model_uri=DEFAULT_.peptide_sequence, domain=None, range=Optional[str])
-
-slots.best_protein = Slot(uri=DEFAULT_.best_protein, name="best protein", curie=DEFAULT_.curie('best_protein'),
-                   model_uri=DEFAULT_.best_protein, domain=None, range=Optional[Union[str, GeneProductId]])
-
-slots.all_proteins = Slot(uri=DEFAULT_.all_proteins, name="all proteins", curie=DEFAULT_.curie('all_proteins'),
-                   model_uri=DEFAULT_.all_proteins, domain=None, range=Optional[Union[Union[str, GeneProductId], List[Union[str, GeneProductId]]]])
-
-slots.min_q_value = Slot(uri=DEFAULT_.min_q_value, name="min_q_value", curie=DEFAULT_.curie('min_q_value'),
-                   model_uri=DEFAULT_.min_q_value, domain=None, range=Optional[float])
-
-slots.peptide_spectral_count = Slot(uri=DEFAULT_.peptide_spectral_count, name="peptide_spectral_count", curie=DEFAULT_.curie('peptide_spectral_count'),
-                   model_uri=DEFAULT_.peptide_spectral_count, domain=None, range=Optional[int])
-
-slots.peptide_sum_masic_abundance = Slot(uri=DEFAULT_.peptide_sum_masic_abundance, name="peptide_sum_masic_abundance", curie=DEFAULT_.curie('peptide_sum_masic_abundance'),
-                   model_uri=DEFAULT_.peptide_sum_masic_abundance, domain=None, range=Optional[int])
-
-slots.peptide_sequence_count = Slot(uri=DEFAULT_.peptide_sequence_count, name="peptide_sequence_count", curie=DEFAULT_.curie('peptide_sequence_count'),
-                   model_uri=DEFAULT_.peptide_sequence_count, domain=None, range=Optional[int])
-
-slots.protein_spectral_count = Slot(uri=DEFAULT_.protein_spectral_count, name="protein_spectral_count", curie=DEFAULT_.curie('protein_spectral_count'),
-                   model_uri=DEFAULT_.protein_spectral_count, domain=None, range=Optional[int])
-
-slots.protein_sum_masic_abundance = Slot(uri=DEFAULT_.protein_sum_masic_abundance, name="protein_sum_masic_abundance", curie=DEFAULT_.curie('protein_sum_masic_abundance'),
-                   model_uri=DEFAULT_.protein_sum_masic_abundance, domain=None, range=Optional[int])
-
-slots.inchi = Slot(uri=DEFAULT_.inchi, name="inchi", curie=DEFAULT_.curie('inchi'),
-                   model_uri=DEFAULT_.inchi, domain=None, range=Optional[str])
-
-slots.inchi_key = Slot(uri=DEFAULT_.inchi_key, name="inchi key", curie=DEFAULT_.curie('inchi_key'),
-                   model_uri=DEFAULT_.inchi_key, domain=None, range=Optional[str])
-
-slots.smiles = Slot(uri=DEFAULT_.smiles, name="smiles", curie=DEFAULT_.curie('smiles'),
-                   model_uri=DEFAULT_.smiles, domain=None, range=Optional[Union[str, List[str]]])
-
-slots.chemical_formula = Slot(uri=DEFAULT_.chemical_formula, name="chemical formula", curie=DEFAULT_.curie('chemical_formula'),
-                   model_uri=DEFAULT_.chemical_formula, domain=None, range=Optional[str])
-
 slots.attribute_value_type = Slot(uri=NMDC.type, name="attribute value_type", curie=NMDC.curie('type'),
                    model_uri=DEFAULT_.attribute_value_type, domain=AttributeValue, range=Optional[str])
 
@@ -4607,49 +4604,49 @@ slots.metabolite_quantification_metabolite_quantified = Slot(uri=DEFAULT_.metabo
 slots.metabolite_quantification_highest_similarity_score = Slot(uri=DEFAULT_.highest_similarity_score, name="metabolite quantification_highest similarity score", curie=DEFAULT_.curie('highest_similarity_score'),
                    model_uri=DEFAULT_.metabolite_quantification_highest_similarity_score, domain=MetaboliteQuantification, range=Optional[float])
 
-slots.peptide_quantification_peptide_sequence = Slot(uri=DEFAULT_.peptide_sequence, name="peptide quantification_peptide sequence", curie=DEFAULT_.curie('peptide_sequence'),
+slots.peptide_quantification_peptide_sequence = Slot(uri=NMDC.peptide_sequence, name="peptide quantification_peptide sequence", curie=NMDC.curie('peptide_sequence'),
                    model_uri=DEFAULT_.peptide_quantification_peptide_sequence, domain=PeptideQuantification, range=Optional[str])
 
-slots.peptide_quantification_best_protein = Slot(uri=DEFAULT_.best_protein, name="peptide quantification_best protein", curie=DEFAULT_.curie('best_protein'),
+slots.peptide_quantification_best_protein = Slot(uri=NMDC.best_protein, name="peptide quantification_best protein", curie=NMDC.curie('best_protein'),
                    model_uri=DEFAULT_.peptide_quantification_best_protein, domain=PeptideQuantification, range=Optional[Union[str, GeneProductId]])
 
-slots.peptide_quantification_all_proteins = Slot(uri=DEFAULT_.all_proteins, name="peptide quantification_all proteins", curie=DEFAULT_.curie('all_proteins'),
+slots.peptide_quantification_all_proteins = Slot(uri=NMDC.all_proteins, name="peptide quantification_all proteins", curie=NMDC.curie('all_proteins'),
                    model_uri=DEFAULT_.peptide_quantification_all_proteins, domain=PeptideQuantification, range=Optional[Union[Union[str, GeneProductId], List[Union[str, GeneProductId]]]])
 
-slots.peptide_quantification_min_q_value = Slot(uri=DEFAULT_.min_q_value, name="peptide quantification_min_q_value", curie=DEFAULT_.curie('min_q_value'),
+slots.peptide_quantification_min_q_value = Slot(uri=NMDC.min_q_value, name="peptide quantification_min_q_value", curie=NMDC.curie('min_q_value'),
                    model_uri=DEFAULT_.peptide_quantification_min_q_value, domain=PeptideQuantification, range=Optional[float])
 
-slots.peptide_quantification_peptide_spectral_count = Slot(uri=DEFAULT_.peptide_spectral_count, name="peptide quantification_peptide_spectral_count", curie=DEFAULT_.curie('peptide_spectral_count'),
+slots.peptide_quantification_peptide_spectral_count = Slot(uri=NMDC.peptide_spectral_count, name="peptide quantification_peptide_spectral_count", curie=NMDC.curie('peptide_spectral_count'),
                    model_uri=DEFAULT_.peptide_quantification_peptide_spectral_count, domain=PeptideQuantification, range=Optional[int])
 
-slots.peptide_quantification_peptide_sum_masic_abundance = Slot(uri=DEFAULT_.peptide_sum_masic_abundance, name="peptide quantification_peptide_sum_masic_abundance", curie=DEFAULT_.curie('peptide_sum_masic_abundance'),
+slots.peptide_quantification_peptide_sum_masic_abundance = Slot(uri=NMDC.peptide_sum_masic_abundance, name="peptide quantification_peptide_sum_masic_abundance", curie=NMDC.curie('peptide_sum_masic_abundance'),
                    model_uri=DEFAULT_.peptide_quantification_peptide_sum_masic_abundance, domain=PeptideQuantification, range=Optional[int])
 
-slots.protein_quantification_best_protein = Slot(uri=DEFAULT_.best_protein, name="protein quantification_best protein", curie=DEFAULT_.curie('best_protein'),
+slots.protein_quantification_best_protein = Slot(uri=NMDC.best_protein, name="protein quantification_best protein", curie=NMDC.curie('best_protein'),
                    model_uri=DEFAULT_.protein_quantification_best_protein, domain=ProteinQuantification, range=Optional[Union[str, GeneProductId]])
 
-slots.protein_quantification_all_proteins = Slot(uri=DEFAULT_.all_proteins, name="protein quantification_all proteins", curie=DEFAULT_.curie('all_proteins'),
+slots.protein_quantification_all_proteins = Slot(uri=NMDC.all_proteins, name="protein quantification_all proteins", curie=NMDC.curie('all_proteins'),
                    model_uri=DEFAULT_.protein_quantification_all_proteins, domain=ProteinQuantification, range=Optional[Union[Union[str, GeneProductId], List[Union[str, GeneProductId]]]])
 
-slots.protein_quantification_peptide_sequence_count = Slot(uri=DEFAULT_.peptide_sequence_count, name="protein quantification_peptide_sequence_count", curie=DEFAULT_.curie('peptide_sequence_count'),
+slots.protein_quantification_peptide_sequence_count = Slot(uri=NMDC.peptide_sequence_count, name="protein quantification_peptide_sequence_count", curie=NMDC.curie('peptide_sequence_count'),
                    model_uri=DEFAULT_.protein_quantification_peptide_sequence_count, domain=ProteinQuantification, range=Optional[int])
 
-slots.protein_quantification_protein_spectral_count = Slot(uri=DEFAULT_.protein_spectral_count, name="protein quantification_protein_spectral_count", curie=DEFAULT_.curie('protein_spectral_count'),
+slots.protein_quantification_protein_spectral_count = Slot(uri=NMDC.protein_spectral_count, name="protein quantification_protein_spectral_count", curie=NMDC.curie('protein_spectral_count'),
                    model_uri=DEFAULT_.protein_quantification_protein_spectral_count, domain=ProteinQuantification, range=Optional[int])
 
-slots.protein_quantification_protein_sum_masic_abundance = Slot(uri=DEFAULT_.protein_sum_masic_abundance, name="protein quantification_protein_sum_masic_abundance", curie=DEFAULT_.curie('protein_sum_masic_abundance'),
+slots.protein_quantification_protein_sum_masic_abundance = Slot(uri=NMDC.protein_sum_masic_abundance, name="protein quantification_protein_sum_masic_abundance", curie=NMDC.curie('protein_sum_masic_abundance'),
                    model_uri=DEFAULT_.protein_quantification_protein_sum_masic_abundance, domain=ProteinQuantification, range=Optional[int])
 
-slots.chemical_entity_inchi = Slot(uri=DEFAULT_.inchi, name="chemical entity_inchi", curie=DEFAULT_.curie('inchi'),
+slots.chemical_entity_inchi = Slot(uri=NMDC.inchi, name="chemical entity_inchi", curie=NMDC.curie('inchi'),
                    model_uri=DEFAULT_.chemical_entity_inchi, domain=ChemicalEntity, range=Optional[str])
 
-slots.chemical_entity_inchi_key = Slot(uri=DEFAULT_.inchi_key, name="chemical entity_inchi key", curie=DEFAULT_.curie('inchi_key'),
+slots.chemical_entity_inchi_key = Slot(uri=NMDC.inchi_key, name="chemical entity_inchi key", curie=NMDC.curie('inchi_key'),
                    model_uri=DEFAULT_.chemical_entity_inchi_key, domain=ChemicalEntity, range=Optional[str])
 
-slots.chemical_entity_smiles = Slot(uri=DEFAULT_.smiles, name="chemical entity_smiles", curie=DEFAULT_.curie('smiles'),
+slots.chemical_entity_smiles = Slot(uri=NMDC.smiles, name="chemical entity_smiles", curie=NMDC.curie('smiles'),
                    model_uri=DEFAULT_.chemical_entity_smiles, domain=ChemicalEntity, range=Optional[Union[str, List[str]]])
 
-slots.chemical_entity_chemical_formula = Slot(uri=DEFAULT_.chemical_formula, name="chemical entity_chemical formula", curie=DEFAULT_.curie('chemical_formula'),
+slots.chemical_entity_chemical_formula = Slot(uri=NMDC.chemical_formula, name="chemical entity_chemical formula", curie=NMDC.curie('chemical_formula'),
                    model_uri=DEFAULT_.chemical_entity_chemical_formula, domain=ChemicalEntity, range=Optional[str])
 
 slots.geolocation_value_has_raw_value = Slot(uri=NMDC.has_raw_value, name="geolocation value_has raw value", curie=NMDC.curie('has_raw_value'),

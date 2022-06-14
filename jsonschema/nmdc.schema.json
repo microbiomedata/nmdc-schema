@@ -1955,6 +1955,18 @@
          "title": "FilterTypeEnum",
          "type": "string"
       },
+      "FlatterStudy": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "flatter_has_credit_associations": {
+               "$ref": "#/$defs/CreditAssociation"
+            }
+         },
+         "required": [],
+         "title": "FlatterStudy",
+         "type": "object"
+      },
       "FloorCondEnum": {
          "description": "",
          "enum": [
@@ -5151,7 +5163,6 @@
          "enum": [
             "crows feet",
             "crows-foot stomp",
-            "",
             "double skip",
             "hawk and trowel",
             "knockdown",

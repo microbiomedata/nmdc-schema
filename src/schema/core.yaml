@@ -429,6 +429,27 @@ classes:
 
 slots:
 
+  # protein quantification slots
+  peptide_sequence_count:
+  protein_spectral_count:
+  protein_sum_masic_abundance:
+
+  # peptide quantification slots
+  peptide sequence:
+  best protein:
+  all proteins:
+  min_q_value:
+  peptide_spectral_count:
+  peptide_sum_masic_abundance:
+
+  # chemical entity slots
+  inchi:
+  inchi key:
+  smiles:
+  chemical formula:
+
+
+
   language:
     range: language code
     description: >-

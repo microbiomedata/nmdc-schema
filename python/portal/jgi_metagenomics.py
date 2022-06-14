@@ -1,5 +1,5 @@
 # Auto generated from jgi_metagenomics.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-06-03T12:47:40
+# Generation date: 2022-06-14T17:31:21
 # Schema: jgi_metagenomics
 #
 # id: https://microbiomedata/schema/jgi_metagenomics

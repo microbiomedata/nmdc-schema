@@ -27,6 +27,19 @@ prefixes:
   NCIT: http://purl.obolibrary.org/obo/NCIT_
   igsn: https://app.geosamples.org/sample/igsn/
   img.taxon: http://img.jgi.doe.gov/cgi-bin/w/main.cgi?section=TaxonDetail&taxon_oid=
+  # todo add real prefix expansions
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  insdc.srs: http://example.com/
+  mgnify: http://example.com/
+  COG: http://example.com/
+  MetaCyc: http://example.com/
+  EC: http://example.com/
+  MetaNetX: http://example.com/
+  RetroRules: http://example.com/
+  UniProtKB: http://example.com/
+  gtpo: http://example.com/
+  ISA: http://example.com/
+
 default_prefix: nmdc
 default_range: string
 default_curi_maps:
@@ -61,6 +74,11 @@ subsets:
       of processes or workflows.
 
 classes:
+
+  flatter study:
+    slots:
+      - flatter has credit associations
+
   database:
     tree_root: true
     aliases:
@@ -715,6 +733,35 @@ enums:
       - credit enums come from https://casrai.org/credit/
 
 slots:
+  flatter has credit associations:
+    range: credit association
+    # 0..Inf
+  #    multivalued: True
+
+  nmdc schema version:
+  date created:
+  etl software version:
+
+  # study slot
+  notes:
+  # pathway slots
+  has_part:
+  # reaction participant slots
+  chemical:
+  stoichiometry:
+  # metabolite quantification slots
+  metabolite quantified:
+  highest similarity score:
+  # read QC analysis activity slots
+  input_read_bases:
+  output_read_bases:
+  # metabolomics analysis activity slots
+  has metabolite quantifications:
+  has calibration:
+  # metaproteomics analysis activity slots
+  has peptide quantifications:
+
+
   ess dive datasets:
     multivalued: true
     description: List of ESS-DIVE dataset DOIs
