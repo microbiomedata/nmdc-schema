@@ -78,6 +78,7 @@ classes:
   flatter study:
     slots:
       - flatter has credit associations
+      - flatter credit associations ial
 
   database:
     tree_root: true
@@ -735,6 +736,12 @@ enums:
 slots:
   flatter has credit associations:
     range: credit association
+
+  flatter credit associations ial:
+    range: credit association
+    multivalued: true
+    inlined_as_list: true
+
     # 0..Inf
   #    multivalued: True
 

@@ -3690,6 +3690,14 @@
       "from_schema": "https://microbiomedata/schema",
       "range": "credit association"
     },
+    "flatter credit associations ial": {
+      "name": "flatter credit associations ial",
+      "from_schema": "https://microbiomedata/schema",
+      "multivalued": true,
+      "range": "credit association",
+      "inlined": true,
+      "inlined_as_list": true
+    },
     "nmdc schema version": {
       "name": "nmdc schema version",
       "from_schema": "https://microbiomedata/schema"
@@ -22738,7 +22746,8 @@
       "name": "flatter study",
       "from_schema": "https://microbiomedata/schema",
       "slots": [
-        "flatter has credit associations"
+        "flatter has credit associations",
+        "flatter credit associations ial"
       ],
       "attributes": {
         "flatter has credit associations": {
@@ -22747,6 +22756,15 @@
           "alias": "flatter_has_credit_associations",
           "owner": "flatter study",
           "range": "credit association"
+        },
+        "flatter credit associations ial": {
+          "name": "flatter credit associations ial",
+          "from_schema": "https://microbiomedata/schema",
+          "multivalued": true,
+          "alias": "flatter_credit_associations_ial",
+          "owner": "flatter study",
+          "range": "credit association",
+          "inlined_as_list": true
         }
       }
     },

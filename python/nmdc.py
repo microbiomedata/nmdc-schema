@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-06-14T17:31:50
+# Generation date: 2022-06-15T09:45:37
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -257,10 +257,15 @@ class FlatterStudy(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = NMDC.FlatterStudy
 
     flatter_has_credit_associations: Optional[Union[dict, "CreditAssociation"]] = None
+    flatter_credit_associations_ial: Optional[Union[Union[dict, "CreditAssociation"], List[Union[dict, "CreditAssociation"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.flatter_has_credit_associations is not None and not isinstance(self.flatter_has_credit_associations, CreditAssociation):
             self.flatter_has_credit_associations = CreditAssociation(**as_dict(self.flatter_has_credit_associations))
+
+        if not isinstance(self.flatter_credit_associations_ial, list):
+            self.flatter_credit_associations_ial = [self.flatter_credit_associations_ial] if self.flatter_credit_associations_ial is not None else []
+        self.flatter_credit_associations_ial = [v if isinstance(v, CreditAssociation) else CreditAssociation(**as_dict(v)) for v in self.flatter_credit_associations_ial]
 
         super().__post_init__(**kwargs)
 
@@ -5667,6 +5672,9 @@ class slots:
 
 slots.flatter_has_credit_associations = Slot(uri=NMDC.flatter_has_credit_associations, name="flatter has credit associations", curie=NMDC.curie('flatter_has_credit_associations'),
                    model_uri=NMDC.flatter_has_credit_associations, domain=None, range=Optional[Union[dict, CreditAssociation]])
+
+slots.flatter_credit_associations_ial = Slot(uri=NMDC.flatter_credit_associations_ial, name="flatter credit associations ial", curie=NMDC.curie('flatter_credit_associations_ial'),
+                   model_uri=NMDC.flatter_credit_associations_ial, domain=None, range=Optional[Union[Union[dict, CreditAssociation], List[Union[dict, CreditAssociation]]]])
 
 slots.nmdc_schema_version = Slot(uri=NMDC.nmdc_schema_version, name="nmdc schema version", curie=NMDC.curie('nmdc_schema_version'),
                    model_uri=NMDC.nmdc_schema_version, domain=None, range=Optional[str])

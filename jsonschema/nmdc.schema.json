@@ -1959,6 +1959,12 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "flatter_credit_associations_ial": {
+               "items": {
+                  "$ref": "#/$defs/CreditAssociation"
+               },
+               "type": "array"
+            },
             "flatter_has_credit_associations": {
                "$ref": "#/$defs/CreditAssociation"
             }
