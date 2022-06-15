@@ -33,12 +33,18 @@ class TestCA(unittest.TestCase):
         validator.validate_object(ca1, target_class=CreditAssociation)
         validator.validate_object(ca2, target_class=CreditAssociation)
 
-        try:
-            s.has_credit_associations.append(ca1)
-            s.has_credit_associations.append(ca2)
-            validator.validate_object(s, target_class=Study)
-        except Exception as e:
-            logging.error(traceback.format_exc())
+        # try:
+        #     s.has_credit_associations.append(ca1)
+        #     s.has_credit_associations.append(ca2)
+        #     validator.validate_object(s, target_class=Study)
+        # except Exception as e:
+        #     logging.error(traceback.format_exc())
+
+        s.has_credit_associations.append(ca1)
+        s.has_credit_associations.append(ca2)
+        validator.validate_object(s, target_class=Study)
+
+        print(s)
 
         self.assertEqual(type(s), Study)
 
