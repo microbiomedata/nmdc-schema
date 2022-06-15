@@ -722,7 +722,8 @@ slots:
     domain: study
     range: credit association
     multivalued: true
-    inlined: true
+    # was just "inlined: true"
+    inlined_as_list: true
     description: 'This slot links a study to a credit association.  The credit association
       will be linked to a person value and to a CRediT Contributor Roles term. Overall
       semantics: person should get credit X for their participation in the study'
