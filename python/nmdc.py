@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-06-03T12:48:09
+# Generation date: 2022-06-15T10:43:24
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -1681,7 +1681,9 @@ class Study(NamedThing):
             self.MGnify_project_identifiers = [self.MGnify_project_identifiers] if self.MGnify_project_identifiers is not None else []
         self.MGnify_project_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.MGnify_project_identifiers]
 
-        self._normalize_inlined_as_dict(slot_name="has_credit_associations", slot_type=CreditAssociation, key_name="applies to person", keyed=False)
+        if not isinstance(self.has_credit_associations, list):
+            self.has_credit_associations = [self.has_credit_associations] if self.has_credit_associations is not None else []
+        self.has_credit_associations = [v if isinstance(v, CreditAssociation) else CreditAssociation(**as_dict(v)) for v in self.has_credit_associations]
 
         if not isinstance(self.study_image, list):
             self.study_image = [self.study_image] if self.study_image is not None else []
