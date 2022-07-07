@@ -19,6 +19,7 @@
     pre > code.sourceCode { white-space: pre; position: relative; }
     pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
     div.sourceCode { margin: 1em 0; }
     pre.sourceCode { margin: 0; }
@@ -78,6 +79,7 @@
     code span.va { color: #19177c; } /* Variable */
     code span.vs { color: #4070a0; } /* VerbatimString */
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
     href="https://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
@@ -100,7 +102,8 @@ Chris Mungall
 <ul class="incremental">
 <li>schema.yaml</li>
 </ul></li>
-<li>The modeling language is <a href="https://linkml.io/linkml/">LinkML</a></li>
+<li>The modeling language is <a
+href="https://linkml.io/linkml/">LinkML</a></li>
 <li>Can compile down to other forms
 <ul class="incremental">
 <li>JSON-Schema</li>
@@ -161,20 +164,21 @@ Chris Mungall
 <div class="columns">
 <div class="column" style="width:40%;">
 <p>Example</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">{</span><span class="er">id</span><span class="fu">:</span> <span class="st">&quot;GOLD:Gb0205609&quot;</span><span class="fu">,</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a> <span class="er">name</span><span class="fu">:</span> <span class="st">&quot;sample from ...&quot;</span><span class="fu">,</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a> <span class="er">description</span><span class="fu">:</span> <span class="st">&quot;.....&quot;</span><span class="fu">,</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a> <span class="er">alternate_identifiers</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;ENA:....&quot;</span><span class="ot">,</span> <span class="er">...</span><span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a> <span class="er">depth</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>    <span class="er">raw</span> <span class="er">value</span><span class="fu">:</span> <span class="st">&quot;32.1 cm&quot;</span><span class="fu">,</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>    <span class="er">unit</span><span class="fu">:</span> <span class="st">&quot;cm&quot;</span><span class="fu">,</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>    <span class="er">numeric</span> <span class="er">value</span><span class="fu">:</span> <span class="fl">32.1</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a> <span class="fu">},</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a> <span class="er">lat_lon</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>    <span class="er">raw_value</span><span class="fu">:</span> <span class="st">&quot;12.3 45.6&quot;</span><span class="fu">,</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a>    <span class="er">latitute</span><span class="fu">:</span> <span class="fl">12.3</span><span class="fu">,</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a>    <span class="er">longitude</span><span class="fu">:</span> <span class="fl">45.6</span><span class="fu">,</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a> <span class="fu">},</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">id</span><span class="fu">:</span> <span class="st">&quot;GOLD:Gb0205609&quot;</span><span class="fu">,</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> <span class="er">name</span><span class="fu">:</span> <span class="st">&quot;sample from ...&quot;</span><span class="fu">,</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> <span class="er">description</span><span class="fu">:</span> <span class="st">&quot;.....&quot;</span><span class="fu">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a> <span class="er">alternate_identifiers</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;ENA:....&quot;</span><span class="ot">,</span> <span class="er">...</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a> <span class="er">depth</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="er">raw</span> <span class="er">value</span><span class="fu">:</span> <span class="st">&quot;32.1 cm&quot;</span><span class="fu">,</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="er">unit</span><span class="fu">:</span> <span class="st">&quot;cm&quot;</span><span class="fu">,</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="er">numeric</span> <span class="er">value</span><span class="fu">:</span> <span class="fl">32.1</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a> <span class="fu">},</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a> <span class="er">lat_lon</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="er">raw_value</span><span class="fu">:</span> <span class="st">&quot;12.3 45.6&quot;</span><span class="fu">,</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="er">latitute</span><span class="fu">:</span> <span class="fl">12.3</span><span class="fu">,</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="er">longitude</span><span class="fu">:</span> <span class="fl">45.6</span><span class="fu">,</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a> <span class="fu">},</span></span></code></pre></div>
 </div><div class="column" style="width:60%;">
 <ul class="incremental">
 <li>can optionally be adorned as json-ld
@@ -200,64 +204,71 @@ Chris Mungall
 </div>
 <div id="example-class-definition" class="slide section level1">
 <h1>Example Class Definition</h1>
-<div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="at">  </span><span class="fu">biosample</span><span class="kw">:</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="at">    </span><span class="fu">is_a</span><span class="kw">:</span><span class="at"> named thing</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="at">    </span><span class="fu">aliases</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">&#39;sample&#39;</span><span class="kw">,</span><span class="at"> </span><span class="st">&#39;material sample&#39;</span><span class="kw">]</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">&gt;-</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>      A material sample. It may be environmental (encompassing many organisms) or isolate or tissue.  </span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>      An environmental sample containing genetic material from multiple individuals is commonly referred to as a biosample.  </span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a><span class="at">    </span><span class="fu">slots</span><span class="kw">:</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> lat_lon</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> depth</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> env_broad_scale</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> env_local_scale</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> env_medium</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">biosample</span><span class="kw">:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">is_a</span><span class="kw">:</span><span class="at"> named thing</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">aliases</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">&#39;sample&#39;</span><span class="kw">,</span><span class="at"> </span><span class="st">&#39;material sample&#39;</span><span class="kw">]</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">&gt;-</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      A material sample. It may be environmental (encompassing many organisms) or isolate or tissue.  </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      An environmental sample containing genetic material from multiple individuals is commonly referred to as a biosample.  </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slots</span><span class="kw">:</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> lat_lon</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> depth</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> env_broad_scale</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> env_local_scale</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> env_medium</span></span></code></pre></div>
 </div>
 <div id="inheritance" class="slide section level1">
 <h1>Inheritance</h1>
-<div class="sourceCode" id="cb3"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="at">  </span><span class="fu">biosample</span><span class="kw">:</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="at">    </span><span class="fu">is_a</span><span class="kw">:</span><span class="at"> named thing</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="at">    ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">biosample</span><span class="kw">:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">is_a</span><span class="kw">:</span><span class="at"> named thing</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">    ...</span></span></code></pre></div>
 <p>inherits from:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="at">  </span><span class="fu">named thing</span><span class="kw">:</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;a databased entity or concept/class&quot;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="at">    </span><span class="fu">slots</span><span class="kw">:</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> id</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> name</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> description</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> alternate identifiers</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">named thing</span><span class="kw">:</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;a databased entity or concept/class&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slots</span><span class="kw">:</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> id</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> name</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> description</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> alternate identifiers</span></span></code></pre></div>
+
 </div>
 <div id="example" class="slide section level1">
 <h1>Example</h1>
 <div class="columns">
 <div class="column" style="width:40%;">
 <p>data:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="fu">{</span><span class="er">id</span><span class="fu">:</span> <span class="st">&quot;GOLD:Gb0205609&quot;</span><span class="fu">,</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a> <span class="er">name</span><span class="fu">:</span> <span class="st">&quot;sample from ...&quot;</span><span class="fu">,</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a> <span class="er">description</span><span class="fu">:</span> <span class="st">&quot;.....&quot;</span><span class="fu">,</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a> <span class="er">alternate_identifiers</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;ENA:....&quot;</span><span class="ot">,</span> <span class="er">...</span><span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a> <span class="er">lat_lon</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a>    <span class="er">...</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a> <span class="fu">},</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a> <span class="er">depth</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a>    <span class="er">...</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a> <span class="fu">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">id</span><span class="fu">:</span> <span class="st">&quot;GOLD:Gb0205609&quot;</span><span class="fu">,</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> <span class="er">name</span><span class="fu">:</span> <span class="st">&quot;sample from ...&quot;</span><span class="fu">,</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a> <span class="er">description</span><span class="fu">:</span> <span class="st">&quot;.....&quot;</span><span class="fu">,</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> <span class="er">alternate_identifiers</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;ENA:....&quot;</span><span class="ot">,</span> <span class="er">...</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a> <span class="er">lat_lon</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="er">...</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a> <span class="fu">},</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a> <span class="er">depth</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="er">...</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a> <span class="fu">}</span></span></code></pre></div>
 </div><div class="column" style="width:60%;">
 <p>schema:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="at">  </span><span class="fu">biosample</span><span class="kw">:</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="at">    </span><span class="fu">is_a</span><span class="kw">:</span><span class="at"> named thing</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="at">    </span><span class="fu">slots</span><span class="kw">:</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> lat_lon</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> depth</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ...</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a><span class="at">    </span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true"></a><span class="at">  </span><span class="fu">named thing</span><span class="kw">:</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;a databased entity or concept/class&quot;</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true"></a><span class="at">    </span><span class="fu">slots</span><span class="kw">:</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> id</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> name</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> description</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> alternate identifiers</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">biosample</span><span class="kw">:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">is_a</span><span class="kw">:</span><span class="at"> named thing</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slots</span><span class="kw">:</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> lat_lon</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> depth</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ...</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">named thing</span><span class="kw">:</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;a databased entity or concept/class&quot;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slots</span><span class="kw">:</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> id</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> name</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> description</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> alternate identifiers</span></span></code></pre></div>
+
 </div>
 </div>
 </div>
@@ -266,45 +277,47 @@ Chris Mungall
 <div class="columns">
 <div class="column" style="width:40%;">
 <h3 id="nmdc.yaml">nmdc.yaml</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="fu">id</span><span class="kw">:</span><span class="at"> nmdc</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="fu">imports</span><span class="kw">:</span><span class="at"> mixs</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a><span class="at">  ...</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="at">  </span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a><span class="at">  </span><span class="fu">biosample</span><span class="kw">:</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a><span class="at">    </span><span class="fu">is_a</span><span class="kw">:</span><span class="at"> named thing</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a><span class="at">    ...</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a><span class="at">    </span><span class="fu">slots</span><span class="kw">:</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> lat_lon</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> depth</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> env_broad_scale</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> env_local_scale</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> env_medium</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">id</span><span class="kw">:</span><span class="at"> nmdc</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">imports</span><span class="kw">:</span><span class="at"> mixs</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="at">  ...</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">biosample</span><span class="kw">:</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">is_a</span><span class="kw">:</span><span class="at"> named thing</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="at">    ...</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slots</span><span class="kw">:</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> lat_lon</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> depth</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> env_broad_scale</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> env_local_scale</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> env_medium</span></span></code></pre></div>
 </div><div class="column" style="width:60%;">
 <h3 id="mixs.yaml">mixs.yaml</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="fu">id</span><span class="kw">:</span><span class="at"> mixs</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a><span class="at">  </span><span class="fu">lat_lon</span><span class="kw">:</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a><span class="at">    </span><span class="fu">aliases</span><span class="kw">:</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> geographic location (latitude and longitude)</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">&gt;-</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>       The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees and in WGS84 system</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a><span class="at">    </span><span class="fu">multivalued</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true"></a><span class="at">    </span><span class="fu">is_a</span><span class="kw">:</span><span class="at"> attribute</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true"></a><span class="at">    </span><span class="fu">range</span><span class="kw">:</span><span class="at"> geolocation value</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true"></a><span class="at">    </span><span class="fu">mappings</span><span class="kw">:</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> MIxS:lat_lon</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true"></a><span class="at">      </span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true"></a><span class="at">  </span><span class="fu">depth</span><span class="kw">:</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true"></a><span class="at">    </span><span class="fu">aliases</span><span class="kw">:</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> geographic location (depth)</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">&gt;-</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true"></a>       Please refer to the definitions of depth in the environmental packages</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true"></a><span class="at">    </span><span class="fu">multivalued</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true"></a><span class="at">    </span><span class="fu">is_a</span><span class="kw">:</span><span class="at"> attribute</span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true"></a><span class="at">    </span><span class="fu">range</span><span class="kw">:</span><span class="at"> text value</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true"></a><span class="at">    </span><span class="fu">mappings</span><span class="kw">:</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> MIxS:depth</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">id</span><span class="kw">:</span><span class="at"> mixs</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">lat_lon</span><span class="kw">:</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">aliases</span><span class="kw">:</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> geographic location (latitude and longitude)</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">&gt;-</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>       The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees and in WGS84 system</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">multivalued</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">is_a</span><span class="kw">:</span><span class="at"> attribute</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">range</span><span class="kw">:</span><span class="at"> geolocation value</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">mappings</span><span class="kw">:</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> MIxS:lat_lon</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="at">      </span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">depth</span><span class="kw">:</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">aliases</span><span class="kw">:</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> geographic location (depth)</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">&gt;-</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>       Please refer to the definitions of depth in the environmental packages</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">multivalued</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">is_a</span><span class="kw">:</span><span class="at"> attribute</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">range</span><span class="kw">:</span><span class="at"> text value</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">mappings</span><span class="kw">:</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> MIxS:depth</span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -313,52 +326,54 @@ Chris Mungall
 <div class="columns">
 <div class="column" style="width:40%;">
 <p>data:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="fu">{</span><span class="er">id</span><span class="fu">:</span> <span class="st">&quot;GOLD:Gb0205609&quot;</span><span class="fu">,</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a> <span class="er">name</span><span class="fu">:</span> <span class="st">&quot;sample from ...&quot;</span><span class="fu">,</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a> <span class="er">description</span><span class="fu">:</span> <span class="st">&quot;.....&quot;</span><span class="fu">,</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a> <span class="er">alternate_identifiers</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;ENA:....&quot;</span><span class="ot">,</span> <span class="er">...</span><span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a> <span class="er">lat_lon</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a>    <span class="er">raw_value</span><span class="fu">:</span> <span class="st">&quot;12.3 45.6&quot;</span><span class="fu">,</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a>    <span class="er">latitute</span><span class="fu">:</span> <span class="fl">12.3</span><span class="fu">,</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true"></a>    <span class="er">longitude</span><span class="fu">:</span> <span class="fl">45.6</span><span class="fu">,</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true"></a> <span class="fu">},</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true"></a> <span class="er">...</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">id</span><span class="fu">:</span> <span class="st">&quot;GOLD:Gb0205609&quot;</span><span class="fu">,</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a> <span class="er">name</span><span class="fu">:</span> <span class="st">&quot;sample from ...&quot;</span><span class="fu">,</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a> <span class="er">description</span><span class="fu">:</span> <span class="st">&quot;.....&quot;</span><span class="fu">,</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a> <span class="er">alternate_identifiers</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;ENA:....&quot;</span><span class="ot">,</span> <span class="er">...</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a> <span class="er">lat_lon</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="er">raw_value</span><span class="fu">:</span> <span class="st">&quot;12.3 45.6&quot;</span><span class="fu">,</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="er">latitute</span><span class="fu">:</span> <span class="fl">12.3</span><span class="fu">,</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="er">longitude</span><span class="fu">:</span> <span class="fl">45.6</span><span class="fu">,</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a> <span class="fu">},</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a> <span class="er">...</span></span></code></pre></div>
 </div><div class="column" style="width:60%;">
 <p>schema:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="fu">slots</span><span class="kw">:</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="at">  </span><span class="fu">lat_lon</span><span class="kw">:</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="at">    </span><span class="fu">aliases</span><span class="kw">:</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> geographic location (latitude and longitude)</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">&gt;-</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a>       The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees and in WGS84 system</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true"></a><span class="at">    </span><span class="fu">multivalued</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true"></a><span class="at">    </span><span class="fu">is_a</span><span class="kw">:</span><span class="at"> attribute</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true"></a><span class="at">    </span><span class="fu">range</span><span class="kw">:</span><span class="at"> geolocation value</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true"></a><span class="at">    </span><span class="fu">mappings</span><span class="kw">:</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> MIxS:lat_lon</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true"></a></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true"></a><span class="fu">classes</span><span class="kw">:</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true"></a></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true"></a><span class="at">  </span><span class="fu">attribute value</span><span class="kw">:</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">&gt;-</span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true"></a>      The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true"></a>      value and the structured value</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true"></a><span class="at">    </span><span class="fu">slots</span><span class="kw">:</span></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> has raw value</span></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true"></a></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true"></a><span class="at">  </span><span class="fu">geolocation value</span><span class="kw">:</span></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true"></a><span class="at">    </span><span class="fu">is_a</span><span class="kw">:</span><span class="at"> attribute value</span></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">&gt;-</span></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true"></a>      A normalized value for a location on the earth&#39;s surface</span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true"></a><span class="at">    </span><span class="fu">slots</span><span class="kw">:</span></span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> latitude</span></span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> longitude</span></span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true"></a><span class="at">    </span><span class="fu">slot_usage</span><span class="kw">:</span></span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true"></a><span class="at">      </span><span class="fu">has raw value</span><span class="kw">:</span></span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true"></a><span class="fu">        description</span><span class="kw">: </span><span class="ch">&gt;-</span></span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true"></a>          The raw value for a  geolocation should follow {lat} {long}</span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true"></a><span class="co">        # to_str: {latitude} {longitude}</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slots</span><span class="kw">:</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">lat_lon</span><span class="kw">:</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">aliases</span><span class="kw">:</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> geographic location (latitude and longitude)</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">&gt;-</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>       The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees and in WGS84 system</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">multivalued</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">is_a</span><span class="kw">:</span><span class="at"> attribute</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">range</span><span class="kw">:</span><span class="at"> geolocation value</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">mappings</span><span class="kw">:</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> MIxS:lat_lon</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="fu">classes</span><span class="kw">:</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">attribute value</span><span class="kw">:</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">&gt;-</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>      The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>      value and the structured value</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slots</span><span class="kw">:</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> has raw value</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">geolocation value</span><span class="kw">:</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">is_a</span><span class="kw">:</span><span class="at"> attribute value</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">&gt;-</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>      A normalized value for a location on the earth&#39;s surface</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slots</span><span class="kw">:</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> latitude</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> longitude</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">slot_usage</span><span class="kw">:</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">has raw value</span><span class="kw">:</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="fu">        description</span><span class="kw">: </span><span class="ch">&gt;-</span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>          The raw value for a  geolocation should follow {lat} {long}</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="co">        # to_str: {latitude} {longitude}</span></span></code></pre></div>
 </div>
 </div>
 </div>

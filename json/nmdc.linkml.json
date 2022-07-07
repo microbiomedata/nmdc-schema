@@ -3720,7 +3720,8 @@
       "slot_uri": "prov:qualifiedAssociation",
       "multivalued": true,
       "range": "credit association",
-      "inlined": true
+      "inlined": true,
+      "inlined_as_list": true
     },
     "study image": {
       "name": "study image",
@@ -22321,7 +22322,6 @@
         }
       ],
       "from_schema": "https://microbiomedata/schema",
-      "source": "https://www.ornl.gov/content/bio-scales-0",
       "aliases": [
         "zinc"
       ],
@@ -22353,7 +22353,6 @@
         }
       ],
       "from_schema": "https://microbiomedata/schema",
-      "source": "https://www.ornl.gov/content/bio-scales-0",
       "aliases": [
         "manganese"
       ],
@@ -22385,7 +22384,6 @@
         }
       ],
       "from_schema": "https://microbiomedata/schema",
-      "source": "https://www.ornl.gov/content/bio-scales-0",
       "aliases": [
         "ammonium nitrogen",
         "NH4-N"
@@ -22421,7 +22419,6 @@
         }
       ],
       "from_schema": "https://microbiomedata/schema",
-      "source": "https://www.ornl.gov/content/bio-scales-0",
       "aliases": [
         "nitrate nitrogen",
         "NO3-N"
@@ -22454,7 +22451,6 @@
         }
       ],
       "from_schema": "https://microbiomedata/schema",
-      "source": "https://www.ornl.gov/content/bio-scales-0",
       "aliases": [
         "nitrite nitrogen",
         "NO2-N"
@@ -22490,7 +22486,6 @@
         }
       ],
       "from_schema": "https://microbiomedata/schema",
-      "source": "https://www.ornl.gov/content/bio-scales-0",
       "see_also": [
         "https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF"
       ],
@@ -22530,7 +22525,6 @@
         }
       ],
       "from_schema": "https://microbiomedata/schema",
-      "source": "https://www.ornl.gov/content/bio-scales-0",
       "aliases": [
         "lbceq",
         "lime buffer capacity (at 5-day equilibrium)"
@@ -29469,7 +29463,6 @@
             }
           ],
           "from_schema": "https://microbiomedata/schema",
-          "source": "https://www.ornl.gov/content/bio-scales-0",
           "aliases": [
             "zinc"
           ],
@@ -29503,7 +29496,6 @@
             }
           ],
           "from_schema": "https://microbiomedata/schema",
-          "source": "https://www.ornl.gov/content/bio-scales-0",
           "aliases": [
             "manganese"
           ],
@@ -29537,7 +29529,6 @@
             }
           ],
           "from_schema": "https://microbiomedata/schema",
-          "source": "https://www.ornl.gov/content/bio-scales-0",
           "aliases": [
             "ammonium nitrogen",
             "NH4-N"
@@ -29575,7 +29566,6 @@
             }
           ],
           "from_schema": "https://microbiomedata/schema",
-          "source": "https://www.ornl.gov/content/bio-scales-0",
           "aliases": [
             "nitrate nitrogen",
             "NO3-N"
@@ -29610,7 +29600,6 @@
             }
           ],
           "from_schema": "https://microbiomedata/schema",
-          "source": "https://www.ornl.gov/content/bio-scales-0",
           "aliases": [
             "nitrite nitrogen",
             "NO2-N"
@@ -29648,7 +29637,6 @@
             }
           ],
           "from_schema": "https://microbiomedata/schema",
-          "source": "https://www.ornl.gov/content/bio-scales-0",
           "see_also": [
             "https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF"
           ],
@@ -29690,7 +29678,6 @@
             }
           ],
           "from_schema": "https://microbiomedata/schema",
-          "source": "https://www.ornl.gov/content/bio-scales-0",
           "aliases": [
             "lbceq",
             "lime buffer capacity (at 5-day equilibrium)"
@@ -30220,7 +30207,7 @@
           "alias": "has_credit_associations",
           "owner": "study",
           "range": "credit association",
-          "inlined": true
+          "inlined_as_list": true
         },
         "study image": {
           "name": "study image",

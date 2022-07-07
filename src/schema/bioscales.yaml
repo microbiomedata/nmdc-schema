@@ -48,7 +48,7 @@ slots:
     title: zinc
     examples:
       - value: 2.5 mg/kg
-    source: https://www.ornl.gov/content/bio-scales-0
+#    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
     range: quantity value
@@ -70,7 +70,7 @@ slots:
     title: manganese
     examples:
       - value: 24.7 mg/kg
-    source: https://www.ornl.gov/content/bio-scales-0
+#    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
     range: quantity value
@@ -94,7 +94,7 @@ slots:
     title: ammonium nitrogen
     examples:
       - value: 2.3 mg/kg
-    source: https://www.ornl.gov/content/bio-scales-0
+#    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
     range: quantity value
@@ -120,7 +120,7 @@ slots:
     title: nitrate nitrogen
     examples:
       - value: 0.29 mg/kg
-    source: https://www.ornl.gov/content/bio-scales-0
+#    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
     range: quantity value
@@ -144,7 +144,7 @@ slots:
     title: nitrite nitrogen
     examples:
       - value: 1.2 mg/kg
-    source: https://www.ornl.gov/content/bio-scales-0
+#    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
     range: quantity value
@@ -172,7 +172,7 @@ slots:
     title: lime buffer capacity (at 30 minutes)
     examples:
       - value: 543 mg/kg
-    source: https://www.ornl.gov/content/bio-scales-0
+#    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
     range: quantity value
@@ -200,7 +200,7 @@ slots:
     title: lime buffer capacity (after 5 day incubation)
     examples:
       - value: 1575 mg/kg
-    source: https://www.ornl.gov/content/bio-scales-0
+#    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
     range: quantity value

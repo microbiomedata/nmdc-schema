@@ -1,5 +1,5 @@
 # Auto generated from basic_slots.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-06-03T12:47:38
+# Generation date: 2022-06-15T10:42:50
 # Schema: NMDC-Basic-Slots
 #
 # id: https://microbiomedata/schema/basic_slots
