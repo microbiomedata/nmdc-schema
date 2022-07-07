@@ -538,7 +538,7 @@ enums:
         description: GFF3 format file with Pfam
         annotations:
           file_name_pattern: "[GOLD-AP]_pfam.gff"
-          CRT Annotation GFF:
+      CRT Annotation GFF:
       Genmark Annotation GFF:
         description: GFF3 format file with Genemark Annotations
       Prodigal Annotation GFF:
