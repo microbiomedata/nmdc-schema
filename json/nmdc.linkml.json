@@ -335,6 +335,14 @@
           "text": "GOTTCHA2 Krona Plot",
           "description": "GOTTCHA2 krona plot HTML file"
         },
+        "GOTTCHA2 Classification Report": {
+          "text": "GOTTCHA2 Classification Report",
+          "description": "GOTTCHA2 classification report file"
+        },
+        "GOTTCHA2 Report Full": {
+          "text": "GOTTCHA2 Report Full",
+          "description": "GOTTCHA2 report file"
+        },
         "Kraken2 Krona Plot": {
           "text": "Kraken2 Krona Plot",
           "description": "Kraken2 krona plot HTML file"
@@ -342,6 +350,10 @@
         "Centrifuge Krona Plot": {
           "text": "Centrifuge Krona Plot",
           "description": "Centrifug krona plot HTML file"
+        },
+        "Centrifuge output report file": {
+          "text": "Centrifuge output report file",
+          "description": "Centrifug output report file"
         },
         "Kraken2 Classification Report": {
           "text": "Kraken2 Classification Report",
@@ -416,6 +428,50 @@
               "value": "[GOLD-AP]_tigrfam.gff"
             }
           }
+        },
+        "CRT Annotation GFF": {
+          "text": "CRT Annotation GFF",
+          "description": "GFF3 format file with CRT"
+        },
+        "Genmark Annotation GFF": {
+          "text": "Genmark Annotation GFF",
+          "description": "GFF3 format file with Genmark"
+        },
+        "Prodigal Annotation GFF": {
+          "text": "Prodigal Annotation GFF",
+          "description": "GFF3 format file with Prodigal"
+        },
+        "TRNA Annotation GFF": {
+          "text": "TRNA Annotation GFF",
+          "description": "GFF3 format file with TRNA"
+        },
+        "Misc Annotation GFF": {
+          "text": "Misc Annotation GFF",
+          "description": "GFF3 format file with Misc"
+        },
+        "RFAM Annotation GFF": {
+          "text": "RFAM Annotation GFF",
+          "description": "GFF3 format file with RFAM"
+        },
+        "TMRNA Annotation GFF": {
+          "text": "TMRNA Annotation GFF",
+          "description": "GFF3 format file with TMRNA"
+        },
+        "KO_EC Annotation GFF": {
+          "text": "KO_EC Annotation GFF",
+          "description": "GFF3 format file with KO_EC"
+        },
+        "Product Names": {
+          "text": "Product Names",
+          "description": "Product names file"
+        },
+        "Gene Phylogeny tsv": {
+          "text": "Gene Phylogeny tsv",
+          "description": "Gene Phylogeny tsv"
+        },
+        "Crisprt Terms": {
+          "text": "Crisprt Terms",
+          "description": "Crisprt Terms"
         },
         "Clusters of Orthologous Groups (COG) Annotation GFF": {
           "text": "Clusters of Orthologous Groups (COG) Annotation GFF",

@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-06-15T10:43:24
+# Generation date: 2022-06-09T02:52:45
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -3434,12 +3434,21 @@ class FileTypeEnum(EnumDefinitionImpl):
         setattr(cls, "GOTTCHA2 Krona Plot",
                 PermissibleValue(text="GOTTCHA2 Krona Plot",
                                  description="GOTTCHA2 krona plot HTML file") )
+        setattr(cls, "GOTTCHA2 Classification Report",
+                PermissibleValue(text="GOTTCHA2 Classification Report",
+                                 description="GOTTCHA2 classification report file") )
+        setattr(cls, "GOTTCHA2 Report Full",
+                PermissibleValue(text="GOTTCHA2 Report Full",
+                                 description="GOTTCHA2 report file") )
         setattr(cls, "Kraken2 Krona Plot",
                 PermissibleValue(text="Kraken2 Krona Plot",
                                  description="Kraken2 krona plot HTML file") )
         setattr(cls, "Centrifuge Krona Plot",
                 PermissibleValue(text="Centrifuge Krona Plot",
                                  description="Centrifug krona plot HTML file") )
+        setattr(cls, "Centrifuge output report file",
+                PermissibleValue(text="Centrifuge output report file",
+                                 description="Centrifug output report file") )
         setattr(cls, "Kraken2 Classification Report",
                 PermissibleValue(text="Kraken2 Classification Report",
                                  description="Kraken2 output report file") )
@@ -3491,6 +3500,39 @@ class FileTypeEnum(EnumDefinitionImpl):
         setattr(cls, "TIGRFam Annotation GFF",
                 PermissibleValue(text="TIGRFam Annotation GFF",
                                  description="GFF3 format file with TIGRfam") )
+        setattr(cls, "CRT Annotation GFF",
+                PermissibleValue(text="CRT Annotation GFF",
+                                 description="GFF3 format file with CRT") )
+        setattr(cls, "Genmark Annotation GFF",
+                PermissibleValue(text="Genmark Annotation GFF",
+                                 description="GFF3 format file with Genmark") )
+        setattr(cls, "Prodigal Annotation GFF",
+                PermissibleValue(text="Prodigal Annotation GFF",
+                                 description="GFF3 format file with Prodigal") )
+        setattr(cls, "TRNA Annotation GFF",
+                PermissibleValue(text="TRNA Annotation GFF",
+                                 description="GFF3 format file with TRNA") )
+        setattr(cls, "Misc Annotation GFF",
+                PermissibleValue(text="Misc Annotation GFF",
+                                 description="GFF3 format file with Misc") )
+        setattr(cls, "RFAM Annotation GFF",
+                PermissibleValue(text="RFAM Annotation GFF",
+                                 description="GFF3 format file with RFAM") )
+        setattr(cls, "TMRNA Annotation GFF",
+                PermissibleValue(text="TMRNA Annotation GFF",
+                                 description="GFF3 format file with TMRNA") )
+        setattr(cls, "KO_EC Annotation GFF",
+                PermissibleValue(text="KO_EC Annotation GFF",
+                                 description="GFF3 format file with KO_EC") )
+        setattr(cls, "Product Names",
+                PermissibleValue(text="Product Names",
+                                 description="Product names file") )
+        setattr(cls, "Gene Phylogeny tsv",
+                PermissibleValue(text="Gene Phylogeny tsv",
+                                 description="Gene Phylogeny tsv") )
+        setattr(cls, "Crisprt Terms",
+                PermissibleValue(text="Crisprt Terms",
+                                 description="Crisprt Terms") )
         setattr(cls, "Clusters of Orthologous Groups (COG) Annotation GFF",
                 PermissibleValue(text="Clusters of Orthologous Groups (COG) Annotation GFF",
                                  description="GFF3 format file with COGs") )
