@@ -49,7 +49,7 @@ URI: {{ gen.uri_link(element) }}
       {% for s in schemaview.class_induced_slots(element.name)|sort(attribute='name') -%}
         {{ gen.name(element) }} : {{gen.name(s)}}
       {% endfor %}
-
+```
 {% endif %}
 
 

@@ -6,6 +6,8 @@ SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
 SCHEMA_NAME = nmdc
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
 
+DOCS_DIR = docs
+
 RUN=poetry run
 
 #TGTS = graphql jsonschema docs shex owl csv  python
@@ -69,6 +71,12 @@ target/docs/%.md: $(SCHEMA_SRC) tdir-docs
 	$(RUN) gen-markdown $(GEN_OPTS) --dir target/docs $<
 stage-docs: gen-docs
 	cp -pr target/docs .
+
+gen-doc:
+	$(RUN) gen-doc $(SCHEMA_SRC) --template-directory $(SRC_DIR)/doc-templates -d $(DOCS_DIR)
+	cp $(SRC_DIR)/$(DOCS_DIR)/*.md $(DOCS_DIR)
+	mkdir -p $(DOCS_DIR)/images
+	cp $(SRC_DIR)/$(DOCS_DIR)/images/* $(DOCS_DIR)/images
 
 make-slides: target/docs/schema-slides.html copy-src-slides-images
 .PHONY: make-slides
@@ -153,7 +161,7 @@ docserve:
 
 gh-deploy:
 # deploy documentation (note: requires documentation is in docs dir)
-	$(RUN) mkdocs gh-deploy --remote-branch gh-pages --force --theme readthedocs
+	$(RUN) mkdocs gh-deploy --remote-branch gh-pages
 
 ###  -- PYPI TARGETS
 # Use the build-package target to build a PYPI package locally
