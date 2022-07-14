@@ -63,10 +63,10 @@ URI: {{ gen.uri_link(element) }}
 
 ## Slots
 
-| Name | Range | Cardinality | Description  | Info |
-| ---  | --- | --- | --- | --- |
+| Name | Range | Cardinality | Description  |
+| ---  | --- | --- | --- |
 {% for s in schemaview.class_induced_slots(element.name) -%}
-| {{gen.link(s)}} | {{gen.link(s.range)}} | {{ gen.cardinality(s) }} | {{s.description}}  | . |
+| {{gen.link(s)}} | {{gen.link(s.range)}} | {{ gen.cardinality(s) }} | {{s.description}}  |
 {% endfor %}
 
 ## Usages
