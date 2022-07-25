@@ -713,6 +713,28 @@ enums:
         meaning: OBI:0000103
     comments:
       - credit enums come from https://casrai.org/credit/
+  processing_institution_enum:
+    name: processing_institution_enum
+    comments:
+      - This will become the range of processing_institution.omics processing
+      - use ROR meanings like https://ror.org/0168r3w48 for UCSD
+    from_schema: NMDC_enums_roundtrip
+    permissible_values:
+      UCSD:
+        text: UCSD
+        title: University of California, San Diego
+        meaning: https://ror.org/0168r3w48
+      JGI:
+        text: JGI
+        title: Joint Genome Institute
+        meaning: https://ror.org/04xm1d337
+      EMSL:
+        text: EMSL
+        title: Environmental Molecular Sciences Laboratory
+        meaning: https://ror.org/04rc0xn13
+        comments:
+          - replaces Environmental Molecular Science Laboratory
+          - replaces Environmental Molecular Sciences Lab
 
 slots:
   ess dive datasets:
