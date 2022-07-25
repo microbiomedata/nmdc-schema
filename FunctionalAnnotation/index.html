@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Class: functional annotation - NMDC Schema Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Class: functional annotation";
+        var mkdocs_page_input_path = "FunctionalAnnotation.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> NMDC Schema Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../home/">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">NMDC Schema</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Metadata_Documentation_Overview/">NMDC Metadata Standards Documentation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../schema-validation/">NMDC Schema Validation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../identifiers/">Identifiers in NMDC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../NMDC_MIxS_Soil_documentation/">MIxS Soil Package</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../credits/">Credits</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">NMDC Schema Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Class: functional annotation</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="class-functional-annotation">Class: functional annotation</h1>
+<p>An assignment of a function term (e.g. reaction or pathway) that is executed by a gene product, or which the gene product plays an active role in. Functional annotations can be assigned manually by curators, or automatically in workflows. In the context of NMDC, all function annotation is performed automatically, typically using HMM or Blast type methods</p>
+<p>URI: <a href="https://microbiomedata/meta/FunctionalAnnotation">nmdc:FunctionalAnnotation</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[OntologyClass],[MetagenomeAnnotationActivity],[GeneProduct],[OntologyClass]&lt;type%200..1-%20[FunctionalAnnotation&#124;has_function:string%20%3F],[GeneProduct]&lt;subject%200..1-%20[FunctionalAnnotation],[MetagenomeAnnotationActivity]&lt;was%20generated%20by%200..1-%20[FunctionalAnnotation],[Database]++-%20functional%20annotation%20set%200..*&gt;[FunctionalAnnotation],[Database]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[OntologyClass],[MetagenomeAnnotationActivity],[GeneProduct],[OntologyClass]&lt;type%200..1-%20[FunctionalAnnotation&#124;has_function:string%20%3F],[GeneProduct]&lt;subject%200..1-%20[FunctionalAnnotation],[MetagenomeAnnotationActivity]&lt;was%20generated%20by%200..1-%20[FunctionalAnnotation],[Database]++-%20functional%20annotation%20set%200..*&gt;[FunctionalAnnotation],[Database]" /></a></p>
+<h2 id="referenced-by-class">Referenced by Class</h2>
+<ul>
+<li><strong><a href="../Database/">Database</a></strong> <em><a href="../functional_annotation_set/">functional annotation set</a></em>  <sub>0..*</sub>  <strong><a href="./">FunctionalAnnotation</a></strong></li>
+</ul>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
+<ul>
+<li><a href="../functional_annotation_was_generated_by/">functional annotation➞was generated by</a>  <sub>0..1</sub><ul>
+<li>Description: provenance for the annotation.</li>
+<li>Range: <a href="../MetagenomeAnnotationActivity/">MetagenomeAnnotationActivity</a></li>
+</ul>
+</li>
+<li><a href="../subject/">subject</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../GeneProduct/">GeneProduct</a></li>
+</ul>
+</li>
+<li><a href="../functional_annotation_has_function/">functional annotation➞has function</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="../functional_annotation_type/">functional annotation➞type</a>  <sub>0..1</sub><ul>
+<li>Description: TODO</li>
+<li>Range: <a href="../OntologyClass/">OntologyClass</a></li>
+<li>Example: nmdc:Biosample None</li>
+<li>Example: nmdc:Study None</li>
+</ul>
+</li>
+</ul>
+<h2 id="other-properties">Other properties</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Comments:</strong></td>
+<td></td>
+<td>move id slot usage patterns to has_function slot usage?</td>
+</tr>
+<tr>
+<td><strong>See also:</strong></td>
+<td></td>
+<td><a href="https://img.jgi.doe.gov/docs/functional-annotation.pdf">https://img.jgi.doe.gov/docs/functional-annotation.pdf</a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><a href="https://github.com/microbiomedata/mg_annotation/blob/master/functional-annotation.wdl">https://github.com/microbiomedata/mg_annotation/blob/master/functional-annotation.wdl</a></td>
+</tr>
+<tr>
+<td><strong>Narrow Mappings:</strong></td>
+<td></td>
+<td>biolink:GeneToGoTermAssociation</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

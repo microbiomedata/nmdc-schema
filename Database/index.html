@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Class: database - NMDC Schema Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Class: database";
+        var mkdocs_page_input_path = "Database.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> NMDC Schema Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../home/">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">NMDC Schema</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Metadata_Documentation_Overview/">NMDC Metadata Standards Documentation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../schema-validation/">NMDC Schema Validation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../identifiers/">Identifiers in NMDC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../NMDC_MIxS_Soil_documentation/">MIxS Soil Package</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../credits/">Credits</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">NMDC Schema Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Class: database</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="class-database">Class: database</h1>
+<p>An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed databse top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest</p>
+<p>URI: <a href="https://microbiomedata/meta/Database">nmdc:Database</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[WorkflowExecutionActivity],[Study],[ReadBasedAnalysisActivity],[ReadQCAnalysisActivity],[OmicsProcessing],[NomAnalysisActivity],[MetatranscriptomeActivity],[MetaproteomicsAnalysisActivity],[MetagenomeAssembly],[MetagenomeAnnotationActivity],[MetabolomicsAnalysisActivity],[GenomeFeature],[FunctionalAnnotation],[GenomeFeature]&lt;genome%20feature%20set%200..*-++[Database&#124;nmdc_schema_version:string%20%3F;date_created:string%20%3F;etl_software_version:string%20%3F],[FunctionalAnnotation]&lt;functional%20annotation%20set%200..*-++[Database],[OmicsProcessing]&lt;omics%20processing%20set%200..*-++[Database],[NomAnalysisActivity]&lt;nom%20analysis%20activity%20set%200..*-++[Database],[ReadBasedAnalysisActivity]&lt;read%20based%20analysis%20activity%20set%200..*-++[Database],[ReadQCAnalysisActivity]&lt;read%20QC%20analysis%20activity%20set%200..*-++[Database],[MetatranscriptomeActivity]&lt;metatranscriptome%20activity%20set%200..*-++[Database],[MetagenomeAssembly]&lt;metagenome%20assembly%20set%200..*-++[Database],[MetagenomeAnnotationActivity]&lt;metagenome%20annotation%20activity%20set%200..*-++[Database],[MetaproteomicsAnalysisActivity]&lt;metaproteomics%20analysis%20activity%20set%200..*-++[Database],[MetabolomicsAnalysisActivity]&lt;metabolomics%20analysis%20activity%20set%200..*-++[Database],[MAGsAnalysisActivity]&lt;mags%20activity%20set%200..*-++[Database],[WorkflowExecutionActivity]&lt;activity%20set%200..*-++[Database],[DataObject]&lt;data%20object%20set%200..*-++[Database],[Study]&lt;study%20set%200..*-++[Database],[Biosample]&lt;biosample%20set%200..*-++[Database],[DataObject],[Biosample],[MAGsAnalysisActivity]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[WorkflowExecutionActivity],[Study],[ReadBasedAnalysisActivity],[ReadQCAnalysisActivity],[OmicsProcessing],[NomAnalysisActivity],[MetatranscriptomeActivity],[MetaproteomicsAnalysisActivity],[MetagenomeAssembly],[MetagenomeAnnotationActivity],[MetabolomicsAnalysisActivity],[GenomeFeature],[FunctionalAnnotation],[GenomeFeature]&lt;genome%20feature%20set%200..*-++[Database&#124;nmdc_schema_version:string%20%3F;date_created:string%20%3F;etl_software_version:string%20%3F],[FunctionalAnnotation]&lt;functional%20annotation%20set%200..*-++[Database],[OmicsProcessing]&lt;omics%20processing%20set%200..*-++[Database],[NomAnalysisActivity]&lt;nom%20analysis%20activity%20set%200..*-++[Database],[ReadBasedAnalysisActivity]&lt;read%20based%20analysis%20activity%20set%200..*-++[Database],[ReadQCAnalysisActivity]&lt;read%20QC%20analysis%20activity%20set%200..*-++[Database],[MetatranscriptomeActivity]&lt;metatranscriptome%20activity%20set%200..*-++[Database],[MetagenomeAssembly]&lt;metagenome%20assembly%20set%200..*-++[Database],[MetagenomeAnnotationActivity]&lt;metagenome%20annotation%20activity%20set%200..*-++[Database],[MetaproteomicsAnalysisActivity]&lt;metaproteomics%20analysis%20activity%20set%200..*-++[Database],[MetabolomicsAnalysisActivity]&lt;metabolomics%20analysis%20activity%20set%200..*-++[Database],[MAGsAnalysisActivity]&lt;mags%20activity%20set%200..*-++[Database],[WorkflowExecutionActivity]&lt;activity%20set%200..*-++[Database],[DataObject]&lt;data%20object%20set%200..*-++[Database],[Study]&lt;study%20set%200..*-++[Database],[Biosample]&lt;biosample%20set%200..*-++[Database],[DataObject],[Biosample],[MAGsAnalysisActivity]" /></a></p>
+<h2 id="referenced-by-class">Referenced by Class</h2>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
+<ul>
+<li><a href="../biosample_set/">biosample set</a>  <sub>0..*</sub><ul>
+<li>Description: This property links a database object to the set of samples within it.</li>
+<li>Range: <a href="../Biosample/">Biosample</a></li>
+</ul>
+</li>
+<li><a href="../study_set/">study set</a>  <sub>0..*</sub><ul>
+<li>Description: This property links a database object to the set of studies within it.</li>
+<li>Range: <a href="../Study/">Study</a></li>
+</ul>
+</li>
+<li><a href="../data_object_set/">data object set</a>  <sub>0..*</sub><ul>
+<li>Description: This property links a database object to the set of data objects within it.</li>
+<li>Range: <a href="../DataObject/">DataObject</a></li>
+</ul>
+</li>
+<li><a href="../activity_set/">activity set</a>  <sub>0..*</sub><ul>
+<li>Description: This property links a database object to the set of workflow activities.</li>
+<li>Range: <a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></li>
+</ul>
+</li>
+<li><a href="../mags_activity_set/">mags activity set</a>  <sub>0..*</sub><ul>
+<li>Description: This property links a database object to the set of MAGs analysis activities.</li>
+<li>Range: <a href="../MAGsAnalysisActivity/">MAGsAnalysisActivity</a></li>
+</ul>
+</li>
+<li><a href="../metabolomics_analysis_activity_set/">metabolomics analysis activity set</a>  <sub>0..*</sub><ul>
+<li>Description: This property links a database object to the set of metabolomics analysis activities.</li>
+<li>Range: <a href="../MetabolomicsAnalysisActivity/">MetabolomicsAnalysisActivity</a></li>
+</ul>
+</li>
+<li><a href="../metaproteomics_analysis_activity_set/">metaproteomics analysis activity set</a>  <sub>0..*</sub><ul>
+<li>Description: This property links a database object to the set of metaproteomics analysis activities.</li>
+<li>Range: <a href="../MetaproteomicsAnalysisActivity/">MetaproteomicsAnalysisActivity</a></li>
+</ul>
+</li>
+<li><a href="../metagenome_annotation_activity_set/">metagenome annotation activity set</a>  <sub>0..*</sub><ul>
+<li>Description: This property links a database object to the set of metagenome annotation activities.</li>
+<li>Range: <a href="../MetagenomeAnnotationActivity/">MetagenomeAnnotationActivity</a></li>
+</ul>
+</li>
+<li><a href="../metagenome_assembly_set/">metagenome assembly set</a>  <sub>0..*</sub><ul>
+<li>Description: This property links a database object to the set of metagenome assembly activities.</li>
+<li>Range: <a href="../MetagenomeAssembly/">MetagenomeAssembly</a></li>
+</ul>
+</li>
+<li><a href="../metatranscriptome_activity_set/">metatranscriptome activity set</a>  <sub>0..*</sub><ul>
+<li>Description: This property links a database object to the set of metatranscriptome analysis activities.</li>
+<li>Range: <a href="../MetatranscriptomeActivity/">MetatranscriptomeActivity</a></li>
+</ul>
+</li>
+<li><a href="../read_QC_analysis_activity_set/">read QC analysis activity set</a>  <sub>0..*</sub><ul>
+<li>Description: This property links a database object to the set of read QC analysis activities.</li>
+<li>Range: <a href="../ReadQCAnalysisActivity/">ReadQCAnalysisActivity</a></li>
+</ul>
+</li>
+<li><a href="../read_based_analysis_activity_set/">read based analysis activity set</a>  <sub>0..*</sub><ul>
+<li>Description: This property links a database object to the set of read based analysis activities.</li>
+<li>Range: <a href="../ReadBasedAnalysisActivity/">ReadBasedAnalysisActivity</a></li>
+</ul>
+</li>
+<li><a href="../nom_analysis_activity_set/">nom analysis activity set</a>  <sub>0..*</sub><ul>
+<li>Description: This property links a database object to the set of natural organic matter (NOM) analysis activities.</li>
+<li>Range: <a href="../NomAnalysisActivity/">NomAnalysisActivity</a></li>
+</ul>
+</li>
+<li><a href="../omics_processing_set/">omics processing set</a>  <sub>0..*</sub><ul>
+<li>Description: This property links a database object to the set of omics processings within it.</li>
+<li>Range: <a href="../OmicsProcessing/">OmicsProcessing</a></li>
+</ul>
+</li>
+<li><a href="../functional_annotation_set/">functional annotation set</a>  <sub>0..*</sub><ul>
+<li>Description: This property links a database object to the set of all functional annotations</li>
+<li>Range: <a href="../FunctionalAnnotation/">FunctionalAnnotation</a></li>
+</ul>
+</li>
+<li><a href="../genome_feature_set/">genome feature set</a>  <sub>0..*</sub><ul>
+<li>Description: This property links a database object to the set of all features</li>
+<li>Range: <a href="../GenomeFeature/">GenomeFeature</a></li>
+</ul>
+</li>
+<li><a href="../database_nmdc_schema_version/">database➞nmdc schema version</a>  <sub>0..1</sub><ul>
+<li>Description: TODO</li>
+<li>Range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="../database_date_created/">database➞date created</a>  <sub>0..1</sub><ul>
+<li>Description: TODO</li>
+<li>Range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="../database_etl_software_version/">database➞etl software version</a>  <sub>0..1</sub><ul>
+<li>Description: TODO</li>
+<li>Range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="other-properties">Other properties</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Aliases:</strong></td>
+<td></td>
+<td>NMDC metadata object</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

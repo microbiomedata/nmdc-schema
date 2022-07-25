@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>NMDC Schema Documentation</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "NMDC Schema";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> NMDC Schema Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home/">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href=".">NMDC Schema</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mixins">Mixins</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#slots">Slots</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#enums">Enums</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#subsets">Subsets</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#types">Types</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#built-in">Built in</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#defined">Defined</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="Metadata_Documentation_Overview/">NMDC Metadata Standards Documentation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="schema-validation/">NMDC Schema Validation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="identifiers/">Identifiers in NMDC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="NMDC_MIxS_Soil_documentation/">MIxS Soil Package</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="credits/">Credits</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">NMDC Schema Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>NMDC Schema</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="nmdc">NMDC</h1>
+<p><strong>metamodel version:</strong> 1.7.0</p>
+<p><strong>version:</strong> 4.0.0</p>
+<p>Schema for National Microbiome Data Collaborative (NMDC).
+This schema is organized into distinct modules:</p>
+<ul>
+<li>a set of core types for representing data values</li>
+<li>the mixs schema (auto-translated from mixs excel)</li>
+<li>annotation schema</li>
+<li>the NMDC schema itself</li>
+</ul>
+<h3 id="classes">Classes</h3>
+<ul>
+<li><a href="MAGBin/">MAGBin</a></li>
+<li><a href="Activity/">Activity</a> - a provence-generating activity<ul>
+<li><a href="WorkflowExecutionActivity/">WorkflowExecutionActivity</a> - Represents an instance of an execution of a particular workflow<ul>
+<li><a href="MAGsAnalysisActivity/">MAGsAnalysisActivity</a></li>
+<li><a href="MetabolomicsAnalysisActivity/">MetabolomicsAnalysisActivity</a></li>
+<li><a href="MetagenomeAnnotationActivity/">MetagenomeAnnotationActivity</a></li>
+<li><a href="MetagenomeAssembly/">MetagenomeAssembly</a></li>
+<li><a href="MetaproteomicsAnalysisActivity/">MetaproteomicsAnalysisActivity</a></li>
+<li><a href="MetatranscriptomeActivity/">MetatranscriptomeActivity</a> - A metatranscriptome activity that e.g. pools assembly and annotation activity.</li>
+<li><a href="MetatranscriptomeAnnotationActivity/">MetatranscriptomeAnnotationActivity</a></li>
+<li><a href="MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></li>
+<li><a href="NomAnalysisActivity/">NomAnalysisActivity</a></li>
+<li><a href="ReadQCAnalysisActivity/">ReadQCAnalysisActivity</a></li>
+<li><a href="ReadBasedAnalysisActivity/">ReadBasedAnalysisActivity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="Agent/">Agent</a> - a provence-generating agent</li>
+<li><a href="AttributeValue/">AttributeValue</a> - The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic value and the structured value<ul>
+<li><a href="BooleanValue/">BooleanValue</a> - A value that is a boolean</li>
+<li><a href="ControlledTermValue/">ControlledTermValue</a> - A controlled term or class from an ontology</li>
+<li><a href="GeolocationValue/">GeolocationValue</a> - A normalized value for a location on the earth's surface</li>
+<li><a href="ImageValue/">ImageValue</a> - An attribute value representing an image.</li>
+<li><a href="IntegerValue/">IntegerValue</a> - A value that is an integer</li>
+<li><a href="PersonValue/">PersonValue</a> - An attribute value representing a person</li>
+<li><a href="QuantityValue/">QuantityValue</a> - A simple quantity, e.g. 2cm</li>
+<li><a href="TextValue/">TextValue</a> - A basic string value</li>
+<li><a href="TimestampValue/">TimestampValue</a> - A value that is a timestamp. The range should be ISO-8601</li>
+<li><a href="UrlValue/">UrlValue</a> - A value that is a string that conforms to URL syntax</li>
+</ul>
+</li>
+<li><a href="CreditAssociation/">CreditAssociation</a> - This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role (https://casrai.org/credit/) and for a person value Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0</li>
+<li><a href="Database/">Database</a> - An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed databse top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest</li>
+<li><a href="FunctionalAnnotation/">FunctionalAnnotation</a> - An assignment of a function term (e.g. reaction or pathway) that is executed by a gene product, or which the gene product plays an active role in. Functional annotations can be assigned manually by curators, or automatically in workflows. In the context of NMDC, all function annotation is performed automatically, typically using HMM or Blast type methods</li>
+<li><a href="GenomeFeature/">GenomeFeature</a> - A feature localized to an interval along a genome</li>
+<li><a href="MetaboliteQuantification/">MetaboliteQuantification</a> - This is used to link a metabolomics analysis workflow to a specific metabolite</li>
+<li><a href="NamedThing/">NamedThing</a> - a databased entity or concept/class<ul>
+<li><a href="Biosample/">Biosample</a> - A material sample. It may be environmental (encompassing many organisms) or isolate or tissue.   An environmental sample containing genetic material from multiple individuals is commonly referred to as a biosample.</li>
+<li><a href="BiosampleProcessing/">BiosampleProcessing</a> - A process that takes one or more biosamples as inputs and generates one or as outputs. Examples of outputs include samples cultivated from another sample or data objects created by instruments runs.<ul>
+<li><a href="OmicsProcessing/">OmicsProcessing</a> - The methods and processes used to generate omics data from a biosample or organism.</li>
+</ul>
+</li>
+<li><a href="DataObject/">DataObject</a> - An object that primarily consists of symbols that represent information.   Files, records, and omics data are examples of data objects. </li>
+<li><a href="GeneProduct/">GeneProduct</a> - A molecule encoded by a gene that has an evolved function</li>
+<li><a href="Instrument/">Instrument</a> - A material entity that is designed to perform a function in a scientific investigation, but is not a reagent[OBI].</li>
+<li><a href="OntologyClass/">OntologyClass</a><ul>
+<li><a href="ChemicalEntity/">ChemicalEntity</a> - An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs. There may be different terms for distinct acid-base forms, protonation states</li>
+<li><a href="EnvironmentalMaterialTerm/">EnvironmentalMaterialTerm</a></li>
+<li><a href="FunctionalAnnotationTerm/">FunctionalAnnotationTerm</a> - Abstract grouping class for any term/descriptor that can be applied to a functional unit of a genome (protein, ncRNA, complex).<ul>
+<li><a href="OrthologyGroup/">OrthologyGroup</a> - A set of genes or gene products in which all members are orthologous</li>
+<li><a href="Pathway/">Pathway</a> - A pathway is a sequence of steps/reactions carried out by an organism or community of organisms</li>
+<li><a href="Reaction/">Reaction</a> - An individual biochemical transformation carried out by a functional unit of an organism, in which a collection of substrates are transformed into a collection of products. Can also represent transporters</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="Person/">Person</a> - represents a person, such as a researcher</li>
+<li><a href="Study/">Study</a> - A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.</li>
+</ul>
+</li>
+<li><a href="PeptideQuantification/">PeptideQuantification</a> - This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information</li>
+<li><a href="ProteinQuantification/">ProteinQuantification</a> - This is used to link a metaproteomics analysis workflow to a specific protein</li>
+<li><a href="ReactionParticipant/">ReactionParticipant</a> - Instances of this link a reaction to a chemical entity participant</li>
+</ul>
+<h3 id="mixins">Mixins</h3>
+<h3 id="slots">Slots</h3>
+<ul>
+<li><a href="EMSL_store_temp/">EMSL_store_temp</a> - Temperature at which the sample sent to EMSL should be stored</li>
+<li><a href="GOLD_identifiers/">GOLD identifiers</a></li>
+<li><a href="INSDC_identifiers/">INSDC identifiers</a> - Any identifier covered by the International Nucleotide Sequence Database Collaboration</li>
+<li><a href="MGnify_identifiers/">MGnify identifiers</a></li>
+<li><a href="abstract/">abstract</a> - The abstract of manuscript/grant associated with the entity; i.e., a summary of the resource.</li>
+<li><a href="acted_on_behalf_of/">acted on behalf of</a></li>
+<li><a href="activity_set/">activity set</a> - This property links a database object to the set of workflow activities.</li>
+<li><a href="add_date/">add_date</a> - The date on which the information was added to the database.</li>
+<li><a href="all_proteins/">all proteins</a> - the list of protein identifiers that are associated with the peptide sequence<ul>
+<li><a href="peptide_quantification_all_proteins/">peptide quantification➞all proteins</a></li>
+<li><a href="protein_quantification_all_proteins/">protein quantification➞all proteins</a> - the grouped list of protein identifiers associated with the peptide sequences that were grouped to a best protein</li>
+</ul>
+</li>
+<li><a href="alternate_emails/">alternate emails</a> - One or more other email addresses for an entity.</li>
+<li><a href="alternative_descriptions/">alternative descriptions</a> - A list of alternative descriptions for the entity. The distinction between description and alternative descriptions is application-specific.</li>
+<li><a href="alternative_identifiers/">alternative identifiers</a> - A list of alternative identifiers for the entity.<ul>
+<li><a href="external_database_identifiers/">external database identifiers</a> - Link to corresponding identifier in external database<ul>
+<li><a href="GOLD_sequencing_project_identifiers/">GOLD sequencing project identifiers</a> - identifiers for corresponding sequencing project in GOLD</li>
+<li><a href="INSDC_experiment_identifiers/">INSDC experiment identifiers</a></li>
+<li><a href="analysis_identifiers/">analysis identifiers</a><ul>
+<li><a href="GOLD_analysis_project_identifiers/">GOLD analysis project identifiers</a> - identifiers for corresponding analysis project in GOLD</li>
+<li><a href="INSDC_analysis_identifiers/">INSDC analysis identifiers</a></li>
+<li><a href="MGnify_analysis_identifiers/">MGnify analysis identifiers</a></li>
+</ul>
+</li>
+<li><a href="omics_processing_identifiers/">omics processing identifiers</a></li>
+<li><a href="sample_identifiers/">sample identifiers</a><ul>
+<li><a href="GOLD_sample_identifiers/">GOLD sample identifiers</a> - identifiers for corresponding sample in GOLD<ul>
+<li><a href="study_GOLD_sample_identifiers/">study➞GOLD sample identifiers</a></li>
+</ul>
+</li>
+<li><a href="INSDC_biosample_identifiers/">INSDC biosample identifiers</a> - identifiers for corresponding sample in INSDC</li>
+<li><a href="INSDC_secondary_sample_identifiers/">INSDC secondary sample identifiers</a> - secondary identifiers for corresponding sample in INSDC</li>
+</ul>
+</li>
+<li><a href="study_identifiers/">study identifiers</a><ul>
+<li><a href="GOLD_study_identifiers/">GOLD study identifiers</a> - identifiers for corresponding project in GOLD</li>
+<li><a href="INSDC_SRA_ENA_study_identifiers/">INSDC SRA ENA study identifiers</a> - identifiers for corresponding project in INSDC SRA / ENA</li>
+<li><a href="INSDC_bioproject_identifiers/">INSDC bioproject identifiers</a> - identifiers for corresponding project in INSDC Bioproject<ul>
+<li><a href="study_INSDC_bioproject_identifiers/">study➞INSDC bioproject identifiers</a></li>
+</ul>
+</li>
+<li><a href="MGnify_project_identifiers/">MGnify project identifiers</a> - identifiers for corresponding project in MGnify</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="alternative_names/">alternative names</a> - A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.<ul>
+<li><a href="study_alternative_names/">study➞alternative names</a></li>
+</ul>
+</li>
+<li><a href="alternative_titles/">alternative titles</a> - A list of alternative titles for the entity. The distinction between title and alternative titles is application-specific.</li>
+<li><a href="analysis_type/">analysis_type</a> - Select all the data types associated or available for this biosample</li>
+<li><a href="applied_role/">applied role</a></li>
+<li><a href="applied_roles/">applied roles</a></li>
+<li><a href="applies_to_person/">applies to person</a></li>
+<li><a href="assembly_identifiers/">assembly identifiers</a><ul>
+<li><a href="INSDC_assembly_identifiers/">INSDC assembly identifiers</a></li>
+</ul>
+</li>
+<li><a href="attribute/">attribute</a> - A attribute of a biosample. Examples: depth, habitat, material. For NMDC, attributes SHOULD be mapped to terms within a MIxS template<ul>
+<li><a href="abs_air_humidity/">abs_air_humidity</a> - Actual mass of water vapor - mh20 - present in the air water vapor mixture</li>
+<li><a href="add_recov_method/">add_recov_method</a> - Additional (i.e. Secondary, tertiary, etc.) recovery methods deployed for increase of hydrocarbon recovery from resource and start date for each one of them. If "other" is specified, please propose entry in "additional info" field</li>
+<li><a href="additional_info/">additional_info</a> - Information that doesn't fit anywhere else. Can also be used to propose new entries for fields with controlled vocabulary</li>
+<li><a href="address/">address</a> - The street name and building number where the sampling occurred.</li>
+<li><a href="adj_room/">adj_room</a> - List of rooms (room number, room name) immediately adjacent to the sampling room</li>
+<li><a href="aero_struc/">aero_struc</a> - Aerospace structures typically consist of thin plates with stiffeners for the external surfaces, bulkheads and frames to support the shape and fasteners such as welds, rivets, screws and bolts to hold the components together</li>
+<li><a href="agrochem_addition/">agrochem_addition</a> - Addition of fertilizers, pesticides, etc. - amount and time of applications</li>
+<li><a href="air_temp/">air_temp</a> - Temperature of the air at the time of sampling</li>
+<li><a href="air_temp_regm/">air_temp_regm</a> - Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens</li>
+<li><a href="al_sat/">al_sat</a> - Aluminum saturation (esp. For tropical soils)</li>
+<li><a href="al_sat_meth/">al_sat_meth</a> - Reference or method used in determining Al saturation</li>
+<li><a href="alkalinity/">alkalinity</a> - Alkalinity, the ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate</li>
+<li><a href="alkalinity_method/">alkalinity_method</a> - Method used for alkalinity measurement</li>
+<li><a href="alkyl_diethers/">alkyl_diethers</a> - Concentration of alkyl diethers</li>
+<li><a href="alt/">alt</a> - Altitude is a term used to identify heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earth's surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air</li>
+<li><a href="aminopept_act/">aminopept_act</a> - Measurement of aminopeptidase activity</li>
+<li><a href="ammonium/">ammonium</a> - Concentration of ammonium in the sample</li>
+<li><a href="ammonium_nitrogen/">ammonium nitrogen</a> - Concentration of ammonium nitrogen in the sample</li>
+<li><a href="amount_light/">amount_light</a> - The unit of illuminance and luminous emittance, measuring luminous flux per unit area</li>
+<li><a href="ances_data/">ances_data</a> - Information about either pedigree or other ancestral information description (e.g. parental variety in case of mutant or selection), e.g. A/3*B (meaning [(A x B) x B] x B)</li>
+<li><a href="annual_precpt/">annual_precpt</a> - The average of all annual precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps.</li>
+<li><a href="annual_temp/">annual_temp</a> - Mean annual temperature</li>
+<li><a href="antibiotic_regm/">antibiotic_regm</a> - Information about treatment involving antibiotic administration; should include the name of antibiotic, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple antibiotic regimens</li>
+<li><a href="api/">api</a> - API gravity is a measure of how heavy or light a petroleum liquid is compared to water (source: https://en.wikipedia.org/wiki/API_gravity) (e.g. 31.1¬∞ API)</li>
+<li><a href="arch_struc/">arch_struc</a> - An architectural structure is a human-made, free-standing, immobile outdoor construction</li>
+<li><a href="aromatics_pc/">aromatics_pc</a> - Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis method that divides¬†crude oil¬†components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)</li>
+<li><a href="asphaltenes_pc/">asphaltenes_pc</a> - Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis method that divides¬†crude oil¬†components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)</li>
+<li><a href="atmospheric_data/">atmospheric_data</a> - Measurement of atmospheric data; can include multiple data</li>
+<li><a href="avg_dew_point/">avg_dew_point</a> - The average of dew point measures taken at the beginning of every hour over a 24 hour period on the sampling day</li>
+<li><a href="avg_occup/">avg_occup</a> - Daily average occupancy of room. Indicate the number of person(s) daily occupying the sampling room.</li>
+<li><a href="avg_temp/">avg_temp</a> - The average of temperatures taken at the beginning of every hour over a 24 hour period on the sampling day</li>
+<li><a href="bac_prod/">bac_prod</a> - Bacterial production in the water column measured by isotope uptake</li>
+<li><a href="bac_resp/">bac_resp</a> - Measurement of bacterial respiration in the water column</li>
+<li><a href="bacteria_carb_prod/">bacteria_carb_prod</a> - Measurement of bacterial carbon production</li>
+<li><a href="barometric_press/">barometric_press</a> - Force per unit area exerted against a surface by the weight of air above that surface</li>
+<li><a href="basin/">basin</a> - Name of the basin (e.g. Campos)</li>
+<li><a href="bathroom_count/">bathroom_count</a> - The number of bathrooms in the building</li>
+<li><a href="bedroom_count/">bedroom_count</a> - The number of bedrooms in the building</li>
+<li><a href="benzene/">benzene</a> - Concentration of benzene in the sample</li>
+<li><a href="biochem_oxygen_dem/">biochem_oxygen_dem</a> - Amount of dissolved oxygen needed by aerobic biological organisms in a body of water to break down organic material present in a given water sample at certain temperature over a specific time period</li>
+<li><a href="biocide/">biocide</a> - List of biocides (commercial name of product and supplier) and date of administration</li>
+<li><a href="biocide_admin_method/">biocide_admin_method</a> - Method of biocide administration (dose, frequency, duration, time elapsed between last biociding and sampling) (e.g. 150 mg/l; weekly; 4 hr; 3 days)</li>
+<li><a href="biol_stat/">biol_stat</a> - The level of genome modification.</li>
+<li><a href="biomass/">biomass</a> - Amount of biomass; should include the name for the part of biomass measured, e.g. Microbial, total. Can include multiple measurements</li>
+<li><a href="biotic_regm/">biotic_regm</a> - Information about treatment(s) involving use of biotic factors, such as bacteria, viruses or fungi.</li>
+<li><a href="biotic_relationship/">biotic_relationship</a> - Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g., parasite on species X; mutualist with species Y. The target organism is the subject of the relationship, and the other organism(s) is the object</li>
+<li><a href="bishomohopanol/">bishomohopanol</a> - Concentration of bishomohopanol</li>
+<li><a href="bromide/">bromide</a> - Concentration of bromide</li>
+<li><a href="build_docs/">build_docs</a> - The building design, construction and operation documents</li>
+<li><a href="build_occup_type/">build_occup_type</a> - The primary function for which a building or discrete part of a building is intended to be used</li>
+<li><a href="building_setting/">building_setting</a> - A location (geography) where a building is set</li>
+<li><a href="built_struc_age/">built_struc_age</a> - The age of the built structure since construction</li>
+<li><a href="built_struc_set/">built_struc_set</a> - The characterization of the location of the built structure as high or low human density</li>
+<li><a href="built_struc_type/">built_struc_type</a> - A physical structure that is a body or assemblage of bodies in space to form a system capable of supporting loads</li>
+<li><a href="calcium/">calcium</a> - Concentration of calcium in the sample</li>
+<li><a href="carb_dioxide/">carb_dioxide</a> - Carbon dioxide (gas) amount or concentration at the time of sampling</li>
+<li><a href="carb_monoxide/">carb_monoxide</a> - Carbon monoxide (gas) amount or concentration at the time of sampling</li>
+<li><a href="carb_nitro_ratio/">carb_nitro_ratio</a> - Ratio of amount or concentrations of carbon to nitrogen</li>
+<li><a href="ceil_area/">ceil_area</a> - The area of the ceiling space within the room</li>
+<li><a href="ceil_cond/">ceil_cond</a> - The physical condition of the ceiling at the time of sampling; photos or video preferred; use drawings to indicate location of damaged areas</li>
+<li><a href="ceil_finish_mat/">ceil_finish_mat</a> - The type of material used to finish a ceiling</li>
+<li><a href="ceil_struc/">ceil_struc</a> - The construction format of the ceiling</li>
+<li><a href="ceil_texture/">ceil_texture</a> - The feel, appearance, or consistency of a ceiling surface</li>
+<li><a href="ceil_thermal_mass/">ceil_thermal_mass</a> - The ability of the ceiling to provide inertia against temperature fluctuations. Generally this means concrete that is exposed. A metal deck that supports a concrete slab will act thermally as long as it is exposed to room air flow</li>
+<li><a href="ceil_type/">ceil_type</a> - The type of ceiling according to the ceiling's appearance or construction</li>
+<li><a href="ceil_water_mold/">ceil_water_mold</a> - Signs of the presence of mold or mildew on the ceiling</li>
+<li><a href="chem_administration/">chem_administration</a> - List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi</li>
+<li><a href="chem_mutagen/">chem_mutagen</a> - Treatment involving use of mutagens; should include the name of mutagen, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple mutagen regimens</li>
+<li><a href="chem_oxygen_dem/">chem_oxygen_dem</a> - A measure of the capacity of water to consume oxygen during the decomposition of organic matter and the oxidation of inorganic chemicals such as ammonia and nitrite</li>
+<li><a href="chem_treatment/">chem_treatment</a> - List of chemical compounds administered upstream the sampling location where sampling occurred (e.g. Glycols, H2S scavenger, corrosion and scale inhibitors, demulsifiers, and other production chemicals etc.). The commercial name of the product and name of the supplier should be provided. The date of administration should also be included</li>
+<li><a href="chimera_check/">chimera_check</a> - Tool(s) used for chimera checking, including version number and parameters, to discover and remove chimeric sequences. A chimeric sequence is comprised of two or more phylogenetically distinct parent sequences.</li>
+<li><a href="chloride/">chloride</a> - Concentration of chloride in the sample</li>
+<li><a href="chlorophyll/">chlorophyll</a> - Concentration of chlorophyll</li>
+<li><a href="climate_environment/">climate_environment</a> - Treatment involving an exposure to a particular climate; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple climates</li>
+<li><a href="collection_date/">collection_date</a> - The time of sampling, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant</li>
+<li><a href="conduc/">conduc</a> - Electrical conductivity of water</li>
+<li><a href="cool_syst_id/">cool_syst_id</a> - The cooling system identifier</li>
+<li><a href="crop_rotation/">crop_rotation</a> - Whether or not crop is rotated, and if yes, rotation schedule</li>
+<li><a href="cult_root_med/">cult_root_med</a> - Name or reference for the hydroponic or in vitro culture rooting medium; can be the name of a commonly used medium or reference to a specific medium, e.g. Murashige and Skoog medium. If the medium has not been formally published, use the rooting medium descriptors.</li>
+<li><a href="cur_land_use/">cur_land_use</a> - Present state of sample site</li>
+<li><a href="cur_vegetation/">cur_vegetation</a> - Vegetation classification from one or more standard classification systems, or agricultural crop</li>
+<li><a href="cur_vegetation_meth/">cur_vegetation_meth</a> - Reference or method used in vegetation classification</li>
+<li><a href="date_last_rain/">date_last_rain</a> - The date of the last time it rained</li>
+<li><a href="density/">density</a> - Density of the sample, which is its mass per unit volume (aka volumetric mass density)</li>
+<li><a href="depos_env/">depos_env</a> - Main depositional environment (https://en.wikipedia.org/wiki/Depositional_environment). If "other" is specified, please propose entry in "additional info" field</li>
+<li><a href="depth/">depth</a> - The vertical distance below local surface, e.g. for sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples.</li>
+<li><a href="dew_point/">dew_point</a> - The temperature to which a given parcel of humid air must be cooled, at constant barometric pressure, for water vapor to condense into water.</li>
+<li><a href="diether_lipids/">diether_lipids</a> - Concentration of diether lipids; can include multiple types of diether lipids</li>
+<li><a href="display_order/">display order</a> - When rendering information, this attribute to specify the order in which the information should be rendered.</li>
+<li><a href="diss_carb_dioxide/">diss_carb_dioxide</a> - Concentration of dissolved carbon dioxide in the sample or liquid portion of the sample</li>
+<li><a href="diss_hydrogen/">diss_hydrogen</a> - Concentration of dissolved hydrogen</li>
+<li><a href="diss_inorg_carb/">diss_inorg_carb</a> - Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter</li>
+<li><a href="diss_inorg_nitro/">diss_inorg_nitro</a> - Concentration of dissolved inorganic nitrogen</li>
+<li><a href="diss_inorg_phosp/">diss_inorg_phosp</a> - Concentration of dissolved inorganic phosphorus in the sample</li>
+<li><a href="diss_iron/">diss_iron</a> - Concentration of dissolved iron in the sample</li>
+<li><a href="diss_org_carb/">diss_org_carb</a> - Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid</li>
+<li><a href="diss_org_nitro/">diss_org_nitro</a> - Dissolved organic nitrogen concentration measured as; total dissolved nitrogen - NH4 - NO3 - NO2</li>
+<li><a href="diss_oxygen/">diss_oxygen</a> - Concentration of dissolved oxygen</li>
+<li><a href="diss_oxygen_fluid/">diss_oxygen_fluid</a> - Concentration of dissolved oxygen in the oil field produced fluids as it contributes to oxgen-corrosion and microbial activity (e.g. Mic).</li>
+<li><a href="doi/">doi</a><ul>
+<li><a href="study_doi/">study➞doi</a> - The dataset citation for this study</li>
+</ul>
+</li>
+<li><a href="door_comp_type/">door_comp_type</a> - The composite type of the door</li>
+<li><a href="door_cond/">door_cond</a> - The phsical condition of the door</li>
+<li><a href="door_direct/">door_direct</a> - The direction the door opens</li>
+<li><a href="door_loc/">door_loc</a> - The relative location of the door in the room</li>
+<li><a href="door_mat/">door_mat</a> - The material the door is composed of</li>
+<li><a href="door_move/">door_move</a> - The type of movement of the door</li>
+<li><a href="door_size/">door_size</a> - The size of the door</li>
+<li><a href="door_type/">door_type</a> - The type of door material</li>
+<li><a href="door_type_metal/">door_type_metal</a> - The type of metal door</li>
+<li><a href="door_type_wood/">door_type_wood</a> - The type of wood door</li>
+<li><a href="door_water_mold/">door_water_mold</a> - Signs of the presence of mold or mildew on a door</li>
+<li><a href="down_par/">down_par</a> - Visible waveband radiance and irradiance measurements in the water column</li>
+<li><a href="drainage_class/">drainage_class</a> - Drainage classification from a standard system such as the USDA system</li>
+<li><a href="drawings/">drawings</a> - The buildings architectural drawings; if design is chosen, indicate phase-conceptual, schematic, design development, and construction documents</li>
+<li><a href="efficiency_percent/">efficiency_percent</a> - Percentage of volatile solids removed from the anaerobic digestor</li>
+<li><a href="elev/">elev</a> - Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit.</li>
+<li><a href="elevator/">elevator</a> - The number of elevators within the built structure</li>
+<li><a href="emulsions/">emulsions</a> - Amount or concentration of substances such as paints, adhesives, mayonnaise, hair colorants, emulsified oils, etc.; can include multiple emulsion types</li>
+<li><a href="env_broad_scale/">env_broad_scale</a> - Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO’s biome class:  http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS<ul>
+<li><a href="biosample_env_broad_scale/">biosample➞env_broad_scale</a></li>
+</ul>
+</li>
+<li><a href="env_local_scale/">env_local_scale</a> - Report the entity or entities which are in the sample or specimen’s local vicinity and which you believe have significant causal influences on your sample or specimen. We recommend using EnvO terms which are of smaller spatial grain than your entry for env_broad_scale. Terms, such as anatomical sites, from other OBO Library ontologies which interoperate with EnvO (e.g. UBERON) are accepted in this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.<ul>
+<li><a href="biosample_env_local_scale/">biosample➞env_local_scale</a></li>
+</ul>
+</li>
+<li><a href="env_medium/">env_medium</a> - Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top).<ul>
+<li><a href="biosample_env_medium/">biosample➞env_medium</a></li>
+</ul>
+</li>
+<li><a href="env_package/">env_package</a> - MIxS extension for reporting of measurements and observations obtained from one or more of the environments where the sample was obtained. All environmental packages listed here are further defined in separate subtables. By giving the name of the environmental package, a selection of fields can be made from the subtables and can be reported</li>
+<li><a href="escalator/">escalator</a> - The number of escalators within the built structure</li>
+<li><a href="ethylbenzene/">ethylbenzene</a> - Concentration of ethylbenzene in the sample</li>
+<li><a href="execution_resource/">execution resource</a> - Example: NERSC-Cori<ul>
+<li><a href="workflow_execution_activity_execution_resource/">workflow execution activity➞execution resource</a></li>
+</ul>
+</li>
+<li><a href="exp_duct/">exp_duct</a> - The amount of exposed ductwork in the room</li>
+<li><a href="exp_pipe/">exp_pipe</a> - The number of exposed pipes in the room</li>
+<li><a href="experimental_factor/">experimental_factor</a> - Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms, please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI</li>
+<li><a href="ext_door/">ext_door</a> - The number of exterior doors in the built structure</li>
+<li><a href="ext_wall_orient/">ext_wall_orient</a> - The orientation of the exterior wall</li>
+<li><a href="ext_window_orient/">ext_window_orient</a> - The compass direction the exterior window of the room is facing</li>
+<li><a href="extreme_event/">extreme_event</a> - Unusual physical events that may have affected microbial populations</li>
+<li><a href="fao_class/">fao_class</a> - Soil classification from the FAO World Reference Database for Soil Resources. The list can be found at http://www.fao.org/nr/land/sols/soil/wrb-soil-maps/reference-groups</li>
+<li><a href="fertilizer_regm/">fertilizer_regm</a> - Information about treatment involving the use of fertilizers; should include the name of fertilizer, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fertilizer regimens</li>
+<li><a href="field/">field</a> - Name of the hydrocarbon field (e.g. Albacora)</li>
+<li><a href="file_size_bytes/">file size bytes</a> - Size of the file in bytes</li>
+<li><a href="filter_type/">filter_type</a> - A device which removes solid particulates or airborne molecular contaminants</li>
+<li><a href="fire/">fire</a> - Historical and/or physical evidence of fire</li>
+<li><a href="fireplace_type/">fireplace_type</a> - A firebox with chimney</li>
+<li><a href="flooding/">flooding</a> - Historical and/or physical evidence of flooding</li>
+<li><a href="floor_age/">floor_age</a> - The time period since installment of the carpet or flooring</li>
+<li><a href="floor_area/">floor_area</a> - The area of the floor space within the room</li>
+<li><a href="floor_cond/">floor_cond</a> - The physical condition of the floor at the time of sampling; photos or video preferred; use drawings to indicate location of damaged areas</li>
+<li><a href="floor_count/">floor_count</a> - The number of floors in the building, including basements and mechanical penthouse</li>
+<li><a href="floor_finish_mat/">floor_finish_mat</a> - The floor covering type; the finished surface that is walked on</li>
+<li><a href="floor_struc/">floor_struc</a> - Refers to the structural elements and subfloor upon which the finish flooring is installed</li>
+<li><a href="floor_thermal_mass/">floor_thermal_mass</a> - The ability of the floor to provide inertia against temperature fluctuations</li>
+<li><a href="floor_water_mold/">floor_water_mold</a> - Signs of the presence of mold or mildew in a room</li>
+<li><a href="fluor/">fluor</a> - Raw or converted fluorescence of water</li>
+<li><a href="freq_clean/">freq_clean</a> - The number of times the sample location is cleaned. Frequency of cleaning might be on a Daily basis, Weekly, Monthly, Quarterly or Annually.</li>
+<li><a href="freq_cook/">freq_cook</a> - The number of times a meal is cooked per week</li>
+<li><a href="fungicide_regm/">fungicide_regm</a> - Information about treatment involving use of fungicides; should include the name of fungicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fungicide regimens</li>
+<li><a href="furniture/">furniture</a> - The types of furniture present in the sampled room</li>
+<li><a href="gaseous_environment/">gaseous_environment</a> - Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens</li>
+<li><a href="gaseous_substances/">gaseous_substances</a> - Amount or concentration of substances such as hydrogen sulfide, carbon dioxide, methane, etc.; can include multiple substances</li>
+<li><a href="gender_restroom/">gender_restroom</a> - The gender type of the restroom</li>
+<li><a href="genetic_mod/">genetic_mod</a> - Genetic modifications of the genome of an organism, which may occur naturally by spontaneous mutation, or be introduced by some experimental means, e.g. specification of a transgene or the gene knocked-out or details of transient transfection</li>
+<li><a href="geo_loc_name/">geo_loc_name</a> - The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)</li>
+<li><a href="git_url/">git url</a> - Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1<ul>
+<li><a href="workflow_execution_activity_git_url/">workflow execution activity➞git url</a></li>
+</ul>
+</li>
+<li><a href="glucosidase_act/">glucosidase_act</a> - Measurement of glucosidase activity</li>
+<li><a href="gold_path_field/">gold_path_field</a> - This is a grouping for any of the gold path fields<ul>
+<li><a href="ecosystem/">ecosystem</a> - An ecosystem is a combination of a physical environment (abiotic factors) and all the organisms (biotic factors) that interact with this environment. Ecosystem is in position 1/5 in a GOLD path.</li>
+<li><a href="ecosystem_category/">ecosystem_category</a> - Ecosystem categories represent divisions within the ecosystem based on specific characteristics of the environment from where an organism or sample is isolated. Ecosystem category is in position 2/5 in a GOLD path.</li>
+<li><a href="ecosystem_subtype/">ecosystem_subtype</a> - Ecosystem subtypes represent further subdivision of Ecosystem types into more distinct subtypes. Ecosystem subtype is in position 4/5 in a GOLD path.</li>
+<li><a href="ecosystem_type/">ecosystem_type</a> - Ecosystem types represent things having common characteristics within the Ecosystem Category. These common characteristics based grouping is still broad but specific to the characteristics of a given environment. Ecosystem type is in position 3/5 in a GOLD path.</li>
+<li><a href="specific_ecosystem/">specific_ecosystem</a> - Specific ecosystems represent specific features of the environment like aphotic zone in an ocean or gastric mucosa within a host digestive system. Specific ecosystem is in position 5/5 in a GOLD path.</li>
+</ul>
+</li>
+<li><a href="gravidity/">gravidity</a> - Whether or not subject is gravid, and if yes date due or date post-conception, specifying which is used</li>
+<li><a href="gravity/">gravity</a> - Information about treatment involving use of gravity factor to study various types of responses in presence, absence or modified levels of gravity; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple treatments</li>
+<li><a href="growth_facil/">growth_facil</a> - Type of facility where the sampled plant was grown; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field. Alternatively use Crop Ontology (CO) terms, see http://www.cropontology.org/ontology/CO_715/Crop%20Research</li>
+<li><a href="growth_habit/">growth_habit</a> - Characteristic shape, appearance or growth form of a plant species</li>
+<li><a href="growth_hormone_regm/">growth_hormone_regm</a> - Information about treatment involving use of growth hormones; should include the name of growth hormone, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple growth hormone regimens</li>
+<li><a href="hall_count/">hall_count</a> - The total count of hallways and cooridors in the built structure</li>
+<li><a href="handidness/">handidness</a> - The handidness of the individual sampled</li>
+<li><a href="hc_produced/">hc_produced</a> - Main hydrocarbon type produced from resource (i.e. Oil, gas, condensate, etc). If "other" is specified, please propose entry in "additional info" field</li>
+<li><a href="hcr/">hcr</a> - Main Hydrocarbon Resource type. The term "Hydrocarbon Resource" HCR defined as a natural environmental feature containing large amounts of hydrocarbons at high concentrations potentially suitable for commercial exploitation. This term should not be confused with the Hydrocarbon Occurrence term which also includes hydrocarbon-rich environments with currently limited commercial interest such as seeps, outcrops, gas hydrates etc. If "other" is specified, please propose entry in "additional info" field</li>
+<li><a href="hcr_fw_salinity/">hcr_fw_salinity</a> - Original formation water salinity (prior to secondary recovery e.g. Waterflooding) expressed as TDS</li>
+<li><a href="hcr_geol_age/">hcr_geol_age</a> - Geological age of hydrocarbon resource (Additional info: https://en.wikipedia.org/wiki/Period_(geology)). If "other" is specified, please propose entry in "additional info" field</li>
+<li><a href="hcr_pressure/">hcr_pressure</a> - Original pressure of the hydrocarbon resource</li>
+<li><a href="hcr_temp/">hcr_temp</a> - Original temperature of the hydrocarbon resource</li>
+<li><a href="heat_cool_type/">heat_cool_type</a> - Methods of conditioning or heating a room or building</li>
+<li><a href="heat_deliv_loc/">heat_deliv_loc</a> - The location of heat delivery within the room</li>
+<li><a href="heat_system_id/">heat_system_id</a> - The heating system identifier</li>
+<li><a href="heavy_metals/">heavy_metals</a> - Heavy metals present in the sequenced sample and their concentrations. For multiple heavy metals and concentrations, add multiple copies of this field.</li>
+<li><a href="heavy_metals_meth/">heavy_metals_meth</a> - Reference or method used in determining heavy metals</li>
+<li><a href="height_carper_fiber/">height_carper_fiber</a> - The average carpet fiber height in the indoor environment</li>
+<li><a href="herbicide_regm/">herbicide_regm</a> - Information about treatment involving use of herbicides; information about treatment involving use of growth hormones; should include the name of herbicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens</li>
+<li><a href="horizon/">horizon</a> - Specific layer in the land area which measures parallel to the soil surface and possesses physical characteristics which differ from the layers above and beneath</li>
+<li><a href="horizon_meth/">horizon_meth</a> - Reference or method used in determining the horizon</li>
+<li><a href="host_age/">host_age</a> - Age of host at the time of sampling; relevant scale depends on species and study, e.g. Could be seconds for amoebae or centuries for trees</li>
+<li><a href="host_body_habitat/">host_body_habitat</a> - Original body habitat where the sample was obtained from</li>
+<li><a href="host_body_product/">host_body_product</a> - Substance produced by the body, e.g. Stool, mucus, where the sample was obtained from. For foundational model of anatomy ontology (fma) or Uber-anatomy ontology (UBERON) terms, please see https://www.ebi.ac.uk/ols/ontologies/fma or https://www.ebi.ac.uk/ols/ontologies/uberon</li>
+<li><a href="host_body_site/">host_body_site</a> - Name of body site where the sample was obtained from, such as a specific organ or tissue (tongue, lung etc...). For foundational model of anatomy ontology (fma) (v 4.11.0) or Uber-anatomy ontology (UBERON) (v releases/2014-06-15) terms, please see http://purl.bioontology.org/ontology/FMA or http://purl.bioontology.org/ontology/UBERON</li>
+<li><a href="host_body_temp/">host_body_temp</a> - Core body temperature of the host when sample was collected</li>
+<li><a href="host_color/">host_color</a> - The color of host</li>
+<li><a href="host_common_name/">host_common_name</a> - Common name of the host.</li>
+<li><a href="host_diet/">host_diet</a> - Type of diet depending on the host, for animals omnivore, herbivore etc., for humans high-fat, meditteranean etc.; can include multiple diet types</li>
+<li><a href="host_dry_mass/">host_dry_mass</a> - Measurement of dry mass</li>
+<li><a href="host_genotype/">host_genotype</a> - Observed genotype</li>
+<li><a href="host_growth_cond/">host_growth_cond</a> - Literature reference giving growth conditions of the host</li>
+<li><a href="host_height/">host_height</a> - The height of subject</li>
+<li><a href="host_last_meal/">host_last_meal</a> - Content of last meal and time since feeding; can include multiple values</li>
+<li><a href="host_length/">host_length</a> - The length of subject</li>
+<li><a href="host_life_stage/">host_life_stage</a> - Description of life stage of host</li>
+<li><a href="host_phenotype/">host_phenotype</a> - Phenotype of human or other host. For phenotypic quality ontology (pato) (v 2018-03-27) terms, please see http://purl.bioontology.org/ontology/pato. For Human Phenotype Ontology (HP) (v 2018-06-13) please see http://purl.bioontology.org/ontology/HP</li>
+<li><a href="host_sex/">host_sex</a> - Gender or physical sex of the host.</li>
+<li><a href="host_shape/">host_shape</a> - Morphological shape of host</li>
+<li><a href="host_subject_id/">host_subject_id</a> - A unique identifier by which each subject can be referred to, de-identified.</li>
+<li><a href="host_substrate/">host_substrate</a> - The growth substrate of the host.</li>
+<li><a href="host_taxid/">host_taxid</a> - NCBI taxon id of the host, e.g. 9606</li>
+<li><a href="host_tot_mass/">host_tot_mass</a> - Total mass of the host at collection, the unit depends on host</li>
+<li><a href="host_wet_mass/">host_wet_mass</a> - Measurement of wet mass</li>
+<li><a href="humidity/">humidity</a> - Amount of water vapour in the air, at the time of sampling</li>
+<li><a href="humidity_regm/">humidity_regm</a> - Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens</li>
+<li><a href="indoor_space/">indoor_space</a> - A distinguishable space within a structure, the purpose for which discrete areas of a building is used</li>
+<li><a href="indoor_surf/">indoor_surf</a> - Type of indoor surface</li>
+<li><a href="indust_eff_percent/">indust_eff_percent</a> - Percentage of industrial effluents received by wastewater treatment plant</li>
+<li><a href="inorg_particles/">inorg_particles</a> - Concentration of particles such as sand, grit, metal particles, ceramics, etc.; can include multiple particles</li>
+<li><a href="inside_lux/">inside_lux</a> - The recorded value at sampling time (power density)</li>
+<li><a href="int_wall_cond/">int_wall_cond</a> - The physical condition of the wall at the time of sampling; photos or video preferred; use drawings to indicate location of damaged areas</li>
+<li><a href="iw_bt_date_well/">iw_bt_date_well</a> - Injection water breakthrough date per well following a secondary and/or tertiary recovery</li>
+<li><a href="iwf/">iwf</a> - Proportion of the produced fluids derived from injected water at the time of sampling. (e.g. 87%)</li>
+<li><a href="last_clean/">last_clean</a> - The last time the floor was cleaned (swept, mopped, vacuumed)</li>
+<li><a href="lat_lon/">lat_lon</a> - The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees and in WGS84 system<ul>
+<li><a href="biosample_lat_lon/">biosample➞lat_lon</a> - This is currently a required field but it's not clear if this should be required for human hosts</li>
+</ul>
+</li>
+<li><a href="lbc_thirty/">lbc_thirty</a> - lime buffer capacity, determined after 30 minute incubation</li>
+<li><a href="lbceq/">lbceq</a> - lime buffer capacity, determined at equilibrium after 5 day incubation</li>
+<li><a href="light_intensity/">light_intensity</a> - Measurement of light intensity</li>
+<li><a href="light_regm/">light_regm</a> - Information about treatment(s) involving exposure to light, including both light intensity and quality.</li>
+<li><a href="light_type/">light_type</a> - Application of light to achieve some practical or aesthetic effect. Lighting includes the use of both artificial light sources such as lamps and light fixtures, as well as natural illumination by capturing daylight. Can also include absence of light</li>
+<li><a href="link_addit_analys/">link_addit_analys</a> - Link to additional analysis results performed on the sample</li>
+<li><a href="link_class_info/">link_class_info</a> - Link to digitized soil maps or other soil classification information</li>
+<li><a href="link_climate_info/">link_climate_info</a> - Link to climate resource</li>
+<li><a href="lithology/">lithology</a> - Hydrocarbon resource main lithology (Additional information: http://petrowiki.org/Lithology_and_rock_type_determination). If "other" is specified, please propose entry in "additional info" field</li>
+<li><a href="local_class/">local_class</a> - Soil classification based on local soil classification system</li>
+<li><a href="local_class_meth/">local_class_meth</a> - Reference or method used in determining the local soil classification</li>
+<li><a href="magnesium/">magnesium</a> - Concentration of magnesium in the sample</li>
+<li><a href="manganese/">manganese</a> - Concentration of manganese in the sample</li>
+<li><a href="max_occup/">max_occup</a> - The maximum amount of people allowed in the indoor environment</li>
+<li><a href="md5_checksum/">md5 checksum</a> - MD5 checksum of file (pre-compressed)</li>
+<li><a href="mean_frict_vel/">mean_frict_vel</a> - Measurement of mean friction velocity</li>
+<li><a href="mean_peak_frict_vel/">mean_peak_frict_vel</a> - Measurement of mean peak friction velocity</li>
+<li><a href="mech_struc/">mech_struc</a> - mechanical structure: a moving structure</li>
+<li><a href="mechanical_damage/">mechanical_damage</a> - Information about any mechanical damage exerted on the plant; can include multiple damages and sites</li>
+<li><a href="methane/">methane</a> - Methane (gas) amount or concentration at the time of sampling</li>
+<li><a href="microbial_biomass/">microbial_biomass</a> - The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units</li>
+<li><a href="microbial_biomass_meth/">microbial_biomass_meth</a> - Reference or method used in determining microbial biomass</li>
+<li><a href="mineral_nutr_regm/">mineral_nutr_regm</a> - Information about treatment involving the use of mineral supplements; should include the name of mineral nutrient, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple mineral nutrient regimens</li>
+<li><a href="misc_param/">misc_param</a> - Any other measurement performed or parameter collected, that is not listed here</li>
+<li><a href="n_alkanes/">n_alkanes</a> - Concentration of n-alkanes; can include multiple n-alkanes</li>
+<li><a href="nitrate/">nitrate</a> - Concentration of nitrate in the sample</li>
+<li><a href="nitrate_nitrogen/">nitrate nitrogen</a> - Concentration of nitrate nitrogen in the sample</li>
+<li><a href="nitrite/">nitrite</a> - Concentration of nitrite in the sample</li>
+<li><a href="nitrite_nitrogen/">nitrite nitrogen</a> - Concentration of nitrite nitrogen in the sample</li>
+<li><a href="nitro/">nitro</a> - Concentration of nitrogen (total)</li>
+<li><a href="nucl_acid_amp/">nucl_acid_amp</a> - A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the enzymatic amplification (PCR, TMA, NASBA) of specific nucleic acids</li>
+<li><a href="nucl_acid_ext/">nucl_acid_ext</a> - A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the material separation to recover the nucleic acid fraction from a sample</li>
+<li><a href="number_pets/">number_pets</a> - The number of pets residing in the sampled space</li>
+<li><a href="number_plants/">number_plants</a> - The number of plant(s) in the sampling space</li>
+<li><a href="number_resident/">number_resident</a> - The number of individuals currently occupying in the sampling location</li>
+<li><a href="occup_density_samp/">occup_density_samp</a> - Average number of occupants at time of sampling per square footage</li>
+<li><a href="occup_document/">occup_document</a> - The type of documentation of occupancy</li>
+<li><a href="occup_samp/">occup_samp</a> - Number of occupants present at time of sample within the given space</li>
+<li><a href="org_carb/">org_carb</a> - Concentration of organic carbon</li>
+<li><a href="org_matter/">org_matter</a> - Concentration of organic matter</li>
+<li><a href="org_nitro/">org_nitro</a> - Concentration of organic nitrogen</li>
+<li><a href="org_particles/">org_particles</a> - Concentration of particles such as faeces, hairs, food, vomit, paper fibers, plant material, humus, etc.</li>
+<li><a href="organism_count/">organism_count</a> - Total cell count of any organism (or group of organisms) per gram, volume or area of sample, should include name of organism followed by count. The method that was used for the enumeration (e.g. qPCR, atp, mpn, etc.) Should also be provided. (example: total prokaryotes; 3.5e7 cells per ml; qpcr)</li>
+<li><a href="owc_tvdss/">owc_tvdss</a> - Depth of the original oil water contact (OWC) zone (average) (m TVDSS)</li>
+<li><a href="oxy_stat_samp/">oxy_stat_samp</a> - Oxygenation status of sample</li>
+<li><a href="oxygen/">oxygen</a> - Oxygen (gas) amount or concentration at the time of sampling</li>
+<li><a href="part_org_carb/">part_org_carb</a> - Concentration of particulate organic carbon</li>
+<li><a href="part_org_nitro/">part_org_nitro</a> - Concentration of particulate organic nitrogen</li>
+<li><a href="particle_class/">particle_class</a> - Particles are classified, based on their size, into six general categories:clay, silt, sand, gravel, cobbles, and boulders; should include amount of particle preceded by the name of the particle type; can include multiple values</li>
+<li><a href="pcr_cond/">pcr_cond</a> - Description of reaction conditions and components of PCR in the form of 'initial denaturation:94degC_1.5min; annealing=...'</li>
+<li><a href="pcr_primers/">pcr_primers</a> - PCR primers that were used to amplify the sequence of the targeted gene, locus or subfragment. This field should contain all the primers used for a single PCR reaction if multiple forward or reverse primers are present in a single PCR reaction. The primer sequence should be reported in uppercase letters</li>
+<li><a href="permeability/">permeability</a> - Measure of the ability of a hydrocarbon resource to allow fluids to pass through it. (Additional information: https://en.wikipedia.org/wiki/Permeability_(earth_sciences))</li>
+<li><a href="perturbation/">perturbation</a> - Type of perturbation, e.g. chemical administration, physical disturbance, etc., coupled with perturbation regimen including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types</li>
+<li><a href="pesticide_regm/">pesticide_regm</a> - Information about treatment involving use of insecticides; should include the name of pesticide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple pesticide regimens</li>
+<li><a href="petroleum_hydrocarb/">petroleum_hydrocarb</a> - Concentration of petroleum hydrocarbon</li>
+<li><a href="ph/">ph</a> - Ph measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid</li>
+<li><a href="ph_meth/">ph_meth</a> - Reference or method used in determining ph</li>
+<li><a href="ph_regm/">ph_regm</a> - Information about treatment involving exposure of plants to varying levels of ph of the growth media, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimen</li>
+<li><a href="phaeopigments/">phaeopigments</a> - Concentration of phaeopigments; can include multiple phaeopigments</li>
+<li><a href="phosphate/">phosphate</a> - Concentration of phosphate</li>
+<li><a href="phosplipid_fatt_acid/">phosplipid_fatt_acid</a> - Concentration of phospholipid fatty acids; can include multiple values</li>
+<li><a href="photon_flux/">photon_flux</a> - Measurement of photon flux</li>
+<li><a href="plant_growth_med/">plant_growth_med</a> - Specification of the media for growing the plants or tissue cultured samples, e.g. soil, aeroponic, hydroponic, in vitro solid culture medium, in vitro liquid culture medium. Recommended value is a specific value from EO:plant growth medium (follow this link for terms http://purl.obolibrary.org/obo/EO_0007147) or other controlled vocabulary</li>
+<li><a href="plant_product/">plant_product</a> - Substance produced by the plant, where the sample was obtained from</li>
+<li><a href="plant_sex/">plant_sex</a> - Sex of the reproductive parts on the whole plant, e.g. pistillate, staminate, monoecieous, hermaphrodite.</li>
+<li><a href="plant_struc/">plant_struc</a> - Name of plant structure the sample was obtained from; for Plant Ontology (PO) (v releases/2017-12-14) terms, see http://purl.bioontology.org/ontology/PO, e.g. petiole epidermis (PO_0000051). If an individual flower is sampled, the sex of it can be recorded here.</li>
+<li><a href="pollutants/">pollutants</a> - Pollutant types and, amount or concentrations measured at the time of sampling; can report multiple pollutants by entering numeric values preceded by name of pollutant</li>
+<li><a href="pool_dna_extracts/">pool_dna_extracts</a> - Indicate whether multiple DNA extractions were mixed. If the answer yes, the number of extracts that were pooled should be given</li>
+<li><a href="porosity/">porosity</a> - Porosity of deposited sediment is volume of voids divided by the total volume of sample</li>
+<li><a href="potassium/">potassium</a> - Concentration of potassium in the sample</li>
+<li><a href="pour_point/">pour_point</a> - Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a high¬†pour point¬†is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material. (soure: https://en.wikipedia.org/wiki/pour_point)</li>
+<li><a href="pre_treatment/">pre_treatment</a> - The process of pre-treatment removes materials that can be easily collected from the raw wastewater</li>
+<li><a href="pressure/">pressure</a> - Pressure to which the sample is subject to, in atmospheres</li>
+<li><a href="previous_land_use/">previous_land_use</a> - Previous land use and dates</li>
+<li><a href="previous_land_use_meth/">previous_land_use_meth</a> - Reference or method used in determining previous land use and dates</li>
+<li><a href="primary_prod/">primary_prod</a> - Measurement of primary production, generally measured as isotope uptake</li>
+<li><a href="primary_treatment/">primary_treatment</a> - The process to produce both a generally homogeneous liquid capable of being treated biologically and a sludge that can be separately treated or processed</li>
+<li><a href="principal_investigator/">principal investigator</a> - Principal Investigator who led the study and/or generated the dataset.</li>
+<li><a href="prod_rate/">prod_rate</a> - Oil and/or gas production rates per well (e.g. 524 m3 / day)</li>
+<li><a href="prod_start_date/">prod_start_date</a> - Date of field's first production</li>
+<li><a href="profile_position/">profile_position</a> - Cross-sectional position in the hillslope where sample was collected.sample area position in relation to surrounding areas</li>
+<li><a href="quad_pos/">quad_pos</a> - The quadrant position of the sampling room within the building</li>
+<li><a href="radiation_regm/">radiation_regm</a> - Information about treatment involving exposure of plant or a plant part to a particular radiation regimen; should include the radiation type, amount or intensity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple radiation regimens</li>
+<li><a href="rainfall_regm/">rainfall_regm</a> - Information about treatment involving an exposure to a given amount of rainfall, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens</li>
+<li><a href="reactor_type/">reactor_type</a> - Anaerobic digesters can be designed and engineered to operate using a number of different process configurations, as batch or continuous, mesophilic, high solid or low solid, and single stage or multistage</li>
+<li><a href="redox_potential/">redox_potential</a> - Redox potential, measured relative to a hydrogen cell, indicating oxidation or reduction potential</li>
+<li><a href="rel_air_humidity/">rel_air_humidity</a> - Partial vapor and air pressure, density of the vapor and air, or by the actual mass of the vapor and air</li>
+<li><a href="rel_humidity_out/">rel_humidity_out</a> - The recorded outside relative humidity value at the time of sampling</li>
+<li><a href="rel_samp_loc/">rel_samp_loc</a> - The sampling location within the train car</li>
+<li><a href="rel_to_oxygen/">rel_to_oxygen</a> - Is this organism an aerobe, anaerobe? Please note that aerobic and anaerobic are valid descriptors for microbial environments</li>
+<li><a href="reservoir/">reservoir</a> - Name of the reservoir (e.g. Carapebus)</li>
+<li><a href="resins_pc/">resins_pc</a> - Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis method that divides¬†crude oil¬†components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)</li>
+<li><a href="room_air_exch_rate/">room_air_exch_rate</a> - The rate at which outside air replaces indoor air in a given space</li>
+<li><a href="room_condt/">room_condt</a> - The condition of the room at the time of sampling</li>
+<li><a href="room_connected/">room_connected</a> - List of rooms connected to the sampling room by a doorway</li>
+<li><a href="room_count/">room_count</a> - The total count of rooms in the built structure including all room types</li>
+<li><a href="room_dim/">room_dim</a> - The length, width and height of sampling room</li>
+<li><a href="room_door_dist/">room_door_dist</a> - Distance between doors (meters) in the hallway between the sampling room and adjacent rooms</li>
+<li><a href="room_door_share/">room_door_share</a> - List of room(s) (room number, room name) sharing a door with the sampling room</li>
+<li><a href="room_hallway/">room_hallway</a> - List of room(s) (room number, room name) located in the same hallway as sampling room</li>
+<li><a href="room_loc/">room_loc</a> - The position of the room within the building</li>
+<li><a href="room_net_area/">room_net_area</a> - The net floor area of sampling room. Net area excludes wall thicknesses</li>
+<li><a href="room_occup/">room_occup</a> - Count of room occupancy at time of sampling</li>
+<li><a href="room_samp_pos/">room_samp_pos</a> - The horizontal sampling position in the room relative to architectural elements</li>
+<li><a href="room_type/">room_type</a> - The main purpose or activity of the sampling room. A room is any distinguishable space within a structure</li>
+<li><a href="room_vol/">room_vol</a> - Volume of sampling room</li>
+<li><a href="room_wall_share/">room_wall_share</a> - List of room(s) (room number, room name) sharing a wall with the sampling room</li>
+<li><a href="room_window_count/">room_window_count</a> - Number of windows in the room</li>
+<li><a href="root_cond/">root_cond</a> - Relevant rooting conditions such as field plot size, sowing density, container dimensions, number of plants per container.</li>
+<li><a href="root_med_carbon/">root_med_carbon</a> - Source of organic carbon in the culture rooting medium; e.g. sucrose.</li>
+<li><a href="root_med_macronutr/">root_med_macronutr</a> - Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S); e.g. KH2PO4 (170¬†mg/L).</li>
+<li><a href="root_med_micronutr/">root_med_micronutr</a> - Measurement of the culture rooting medium micronutrients (Fe, Mn, Zn, B, Cu, Mo); e.g. H3BO3 (6.2¬†mg/L).</li>
+<li><a href="root_med_ph/">root_med_ph</a> - pH measurement of the culture rooting medium; e.g. 5.5.</li>
+<li><a href="root_med_regl/">root_med_regl</a> - Growth regulators in the culture rooting medium such as cytokinins, auxins, gybberellins, abscisic acid; e.g. 0.5¬†mg/L NAA.</li>
+<li><a href="root_med_solid/">root_med_solid</a> - Specification of the solidifying agent in the culture rooting medium; e.g. agar.</li>
+<li><a href="root_med_suppl/">root_med_suppl</a> - Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics activated charcoal; e.g. nicotinic acid (0.5¬†mg/L).</li>
+<li><a href="salinity/">salinity</a> - The total concentration of all dissolved salts in a liquid or solid sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater.</li>
+<li><a href="salinity_meth/">salinity_meth</a> - Reference or method used in determining salinity</li>
+<li><a href="salt_regm/">salt_regm</a> - Information about treatment involving use of salts as supplement to liquid and soil growth media; should include the name of salt, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple salt regimens</li>
+<li><a href="samp_capt_status/">samp_capt_status</a> - Reason for the sample</li>
+<li><a href="samp_collect_device/">samp_collect_device</a> - The device used to collect an environmental sample. This field accepts terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO). This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094).</li>
+<li><a href="samp_dis_stage/">samp_dis_stage</a> - Stage of the disease at the time of sample collection, e.g. inoculation, penetration, infection, growth and reproduction, dissemination of pathogen.</li>
+<li><a href="samp_floor/">samp_floor</a> - The floor of the building, where the sampling room is located</li>
+<li><a href="samp_loc_corr_rate/">samp_loc_corr_rate</a> - Metal corrosion rate is the speed of metal deterioration due to environmental conditions. As environmental conditions change corrosion rates change accordingly. Therefore, long term corrosion rates are generally more informative than short term rates and for that reason they are preferred during reporting. In the case of suspected MIC, corrosion rate measurements at the time of sampling might provide insights into the involvement of certain microbial community members in MIC as well as potential microbial interplays</li>
+<li><a href="samp_mat_process/">samp_mat_process</a> - A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed.</li>
+<li><a href="samp_md/">samp_md</a> - In non deviated well, measured depth is equal to the true vertical depth, TVD (TVD=TVDSS plus the reference or datum it refers to). In deviated wells, the MD is the length of trajectory of the borehole measured from the same reference or datum. Common datums used are ground level (GL), drilling rig floor (DF), rotary table (RT), kelly bushing (KB) and mean sea level (MSL). If "other" is specified, please propose entry in "additional info" field</li>
+<li><a href="samp_preserv/">samp_preserv</a> - Preservative added to the sample (e.g. Rnalater, alcohol, formaldehyde, etc.). Where appropriate include volume added (e.g. Rnalater; 2 ml)</li>
+<li><a href="samp_room_id/">samp_room_id</a> - Sampling room number. This ID should be consistent with the designations on the building floor plans</li>
+<li><a href="samp_size/">samp_size</a> - The total amount or size (volume (ml), mass (g) or area (m2) ) of sample collected.</li>
+<li><a href="samp_sort_meth/">samp_sort_meth</a> - Method by which samples are sorted; open face filter collecting total suspended particles, prefilter to remove particles larger than X micrometers in diameter, where common values of X would be 10 and 2.5 full size sorting in a cascade impactor.</li>
+<li><a href="samp_store_dur/">samp_store_dur</a> - Duration for which the sample was stored</li>
+<li><a href="samp_store_loc/">samp_store_loc</a> - Location at which sample was stored, usually name of a specific freezer/room</li>
+<li><a href="samp_store_temp/">samp_store_temp</a> - Temperature at which sample was stored, e.g. -80 degree Celsius</li>
+<li><a href="samp_subtype/">samp_subtype</a> - Name of sample sub-type. For example if "sample type" is "Produced Water" then subtype could be "Oil Phase" or "Water Phase". If "other" is specified, please propose entry in "additional info" field</li>
+<li><a href="samp_time_out/">samp_time_out</a> - The recent and long term history of outside sampling</li>
+<li><a href="samp_transport_cond/">samp_transport_cond</a> - Sample transport duration (in days or hrs) and temperature the sample was exposed to (e.g. 5.5 days; 20 ¬∞C)</li>
+<li><a href="samp_tvdss/">samp_tvdss</a> - Depth of the sample i.e. The vertical distance between the sea level and the sampled position in the subsurface. Depth can be reported as an interval for subsurface samples e.g. 1325.75-1362.25 m</li>
+<li><a href="samp_type/">samp_type</a> - The type of material from which the sample was obtained. For the Hydrocarbon package, samples include types like core, rock trimmings, drill cuttings, piping section, coupon, pigging debris, solid deposit, produced fluid, produced water, injected water, swabs, etc. For the Food Package, samples are usually categorized as food, body products or tissues, or environmental material. This field accepts terms listed under environmental specimen (http://purl.obolibrary.org/obo/GENEPIO_0001246).</li>
+<li><a href="samp_vol_we_dna_ext/">samp_vol_we_dna_ext</a> - Volume (ml) or mass (g) of total collected sample processed for DNA extraction. Note: total sample collected should be entered under the term Sample Size (MIXS:0000001).</li>
+<li><a href="samp_weather/">samp_weather</a> - The weather on the sampling day</li>
+<li><a href="samp_well_name/">samp_well_name</a> - Name of the well (e.g. BXA1123) where sample was taken</li>
+<li><a href="saturates_pc/">saturates_pc</a> - Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis method that divides¬†crude oil¬†components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)</li>
+<li><a href="season/">season</a> - The season when sampling occurred. Any of the four periods into which the year is divided by the equinoxes and solstices. This field accepts terms listed under season (http://purl.obolibrary.org/obo/NCIT_C94729).</li>
+<li><a href="season_environment/">season_environment</a> - Treatment involving an exposure to a particular season (e.g. Winter, summer, rabi, rainy etc.), treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment</li>
+<li><a href="season_precpt/">season_precpt</a> - The average of all seasonal precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps.</li>
+<li><a href="season_temp/">season_temp</a> - Mean seasonal temperature</li>
+<li><a href="season_use/">season_use</a> - The seasons the space is occupied</li>
+<li><a href="secondary_treatment/">secondary_treatment</a> - The process for substantially degrading the biological content of the sewage</li>
+<li><a href="sediment_type/">sediment_type</a> - Information about the sediment type based on major constituents</li>
+<li><a href="seq_meth/">seq_meth</a> - Sequencing machine used. Where possible the term should be taken from the OBI list of DNA sequencers (http://purl.obolibrary.org/obo/OBI_0400103).</li>
+<li><a href="seq_quality_check/">seq_quality_check</a> - Indicate if the sequence has been called by automatic systems (none) or undergone a manual editing procedure (e.g. by inspecting the raw data or chromatograms). Applied only for sequences that are not submitted to SRA,ENA or DRA</li>
+<li><a href="sewage_type/">sewage_type</a> - Type of wastewater treatment plant as municipial or industrial</li>
+<li><a href="shading_device_cond/">shading_device_cond</a> - The physical condition of the shading device at the time of sampling</li>
+<li><a href="shading_device_loc/">shading_device_loc</a> - The location of the shading device in relation to the built structure</li>
+<li><a href="shading_device_mat/">shading_device_mat</a> - The material the shading device is composed of</li>
+<li><a href="shading_device_type/">shading_device_type</a> - The type of shading device</li>
+<li><a href="sieving/">sieving</a> - Collection design of pooled samples and/or sieve size and amount of sample sieved</li>
+<li><a href="silicate/">silicate</a> - Concentration of silicate</li>
+<li><a href="size_frac/">size_frac</a> - Filtering pore size used in sample preparation</li>
+<li><a href="size_frac_low/">size_frac_low</a> - Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample</li>
+<li><a href="size_frac_up/">size_frac_up</a> - Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample</li>
+<li><a href="slope_aspect/">slope_aspect</a> - The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees); e.g., nw or 315 degrees. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.</li>
+<li><a href="slope_gradient/">slope_gradient</a> - Commonly called 'slope'. The angle between ground surface and a horizontal line (in percent). This is the direction that overland water would flow. This measure is usually taken with a hand level meter or clinometer</li>
+<li><a href="sludge_retent_time/">sludge_retent_time</a> - The time activated sludge remains in reactor</li>
+<li><a href="sodium/">sodium</a> - Sodium concentration in the sample</li>
+<li><a href="soil_type/">soil_type</a> - Description of the soil type or classification. This field accepts terms under soil (http://purl.obolibrary.org/obo/ENVO_00001998).  Multiple terms can be separated by pipes.</li>
+<li><a href="soil_type_meth/">soil_type_meth</a> - Reference or method used in determining soil series name or other lower-level classification</li>
+<li><a href="solar_irradiance/">solar_irradiance</a> - The amount of solar energy that arrives at a specific area of a surface during a specific time interval</li>
+<li><a href="soluble_inorg_mat/">soluble_inorg_mat</a> - Concentration of substances such as ammonia, road-salt, sea-salt, cyanide, hydrogen sulfide, thiocyanates, thiosulfates, etc.</li>
+<li><a href="soluble_org_mat/">soluble_org_mat</a> - Concentration of substances such as urea, fruit sugars, soluble proteins, drugs, pharmaceuticals, etc.</li>
+<li><a href="soluble_react_phosp/">soluble_react_phosp</a> - Concentration of soluble reactive phosphorus</li>
+<li><a href="source_mat_id/">source_mat_id</a> - A unique identifier assigned to a material sample (as defined by http://rs.tdwg.org/dwc/terms/materialSampleID, and as opposed to a particular digital record of a material sample) used for extracting nucleic acids, and subsequent sequencing. The identifier can refer either to the original material collected or to any derived sub-samples. The INSDC qualifiers /specimen_voucher, /bio_material, or /culture_collection may or may not share the same value as the source_mat_id field. For instance, the /specimen_voucher qualifier and source_mat_id may both contain 'UAM:Herps:14' , referring to both the specimen voucher and sampled tissue with the same identifier. However, the /culture_collection qualifier may refer to a value from an initial culture (e.g. ATCC:11775) while source_mat_id would refer to an identifier from some derived culture from which the nucleic acids were extracted (e.g. xatc123 or ark:/2154/R2).</li>
+<li><a href="space_typ_state/">space_typ_state</a> - Customary or normal state of the space</li>
+<li><a href="specific/">specific</a> - The building specifications. If design is chosen, indicate phase: conceptual, schematic, design development, construction documents</li>
+<li><a href="specific_humidity/">specific_humidity</a> - The mass of water vapour in a unit mass of moist air, usually expressed as grams of vapour per kilogram of air, or, in air conditioning, as grains per pound.</li>
+<li><a href="sr_dep_env/">sr_dep_env</a> - Source rock depositional environment (https://en.wikipedia.org/wiki/Source_rock). If "other" is specified, please propose entry in "additional info" field</li>
+<li><a href="sr_geol_age/">sr_geol_age</a> - Geological age of source rock (Additional info: https://en.wikipedia.org/wiki/Period_(geology)). If "other" is specified, please propose entry in "additional info" field</li>
+<li><a href="sr_kerog_type/">sr_kerog_type</a> - Origin of kerogen. Type I: Algal (aquatic), Type II: planktonic and soft plant material (aquatic or terrestrial), Type III: terrestrial woody/ fibrous plant material (terrestrial), Type IV: oxidized recycled woody debris (terrestrial) (additional information: https://en.wikipedia.org/wiki/Kerogen). If "other" is specified, please propose entry in "additional info" field</li>
+<li><a href="sr_lithology/">sr_lithology</a> - Lithology of source rock (https://en.wikipedia.org/wiki/Source_rock). If "other" is specified, please propose entry in "additional info" field</li>
+<li><a href="standing_water_regm/">standing_water_regm</a> - Treatment involving an exposure to standing water during a plant's life span, types can be flood water or standing water, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens</li>
+<li><a href="store_cond/">store_cond</a> - Explain how and for how long the soil sample was stored before DNA extraction (fresh/frozen/other).</li>
+<li><a href="substructure_type/">substructure_type</a> - The substructure or under building is that largely hidden section of the building which is built off the foundations to the ground floor level</li>
+<li><a href="sulfate/">sulfate</a> - Concentration of sulfate in the sample</li>
+<li><a href="sulfate_fw/">sulfate_fw</a> - Original sulfate concentration in the hydrocarbon resource</li>
+<li><a href="sulfide/">sulfide</a> - Concentration of sulfide in the sample</li>
+<li><a href="surf_air_cont/">surf_air_cont</a> - Contaminant identified on surface</li>
+<li><a href="surf_humidity/">surf_humidity</a> - Surfaces: water activity as a function of air and material moisture</li>
+<li><a href="surf_material/">surf_material</a> - Surface materials at the point of sampling</li>
+<li><a href="surf_moisture/">surf_moisture</a> - Water held on a surface</li>
+<li><a href="surf_moisture_ph/">surf_moisture_ph</a> - ph measurement of surface</li>
+<li><a href="surf_temp/">surf_temp</a> - Temperature of the surface at the time of sampling</li>
+<li><a href="suspend_part_matter/">suspend_part_matter</a> - Concentration of suspended particulate matter</li>
+<li><a href="suspend_solids/">suspend_solids</a> - Concentration of substances including a wide variety of material, such as silt, decaying plant and animal matter; can include multiple substances</li>
+<li><a href="tan/">tan</a> - Total Acid Number¬†(TAN) is a measurement of acidity that is determined by the amount of¬†potassium hydroxide¬†in milligrams that is needed to neutralize the acids in one gram of oil.¬†It is an important quality measurement of¬†crude oil. (source: https://en.wikipedia.org/wiki/Total_acid_number)</li>
+<li><a href="target_gene/">target_gene</a> - Targeted gene or locus name for marker gene studies</li>
+<li><a href="target_subfragment/">target_subfragment</a> - Name of subfragment of a gene or locus. Important to e.g. identify special regions on marker genes like V6 on 16S rRNA</li>
+<li><a href="temp/">temp</a> - Temperature of the sample at the time of sampling.</li>
+<li><a href="temp_out/">temp_out</a> - The recorded temperature value at sampling time outside</li>
+<li><a href="tertiary_treatment/">tertiary_treatment</a> - The process providing a final treatment stage to raise the effluent quality before it is discharged to the receiving environment</li>
+<li><a href="texture/">texture</a> - The relative proportion of different grain sizes of mineral particles in a soil, as described using a standard system; express as % sand (50 um to 2 mm), silt (2 um to 50 um), and clay (&lt;2 um) with textural name (e.g., silty clay loam) optional.</li>
+<li><a href="texture_meth/">texture_meth</a> - Reference or method used in determining soil texture.</li>
+<li><a href="tidal_stage/">tidal_stage</a> - Stage of tide</li>
+<li><a href="tillage/">tillage</a> - Note method(s) used for tilling</li>
+<li><a href="tiss_cult_growth_med/">tiss_cult_growth_med</a> - Description of plant tissue culture growth media used</li>
+<li><a href="toluene/">toluene</a> - Concentration of toluene in the sample</li>
+<li><a href="tot_carb/">tot_carb</a> - Total carbon content</li>
+<li><a href="tot_depth_water_col/">tot_depth_water_col</a> - Measurement of total depth of water column</li>
+<li><a href="tot_diss_nitro/">tot_diss_nitro</a> - Total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen</li>
+<li><a href="tot_inorg_nitro/">tot_inorg_nitro</a> - Total inorganic nitrogen content</li>
+<li><a href="tot_iron/">tot_iron</a> - Concentration of total iron in the sample</li>
+<li><a href="tot_nitro/">tot_nitro</a> - Total nitrogen concentration of water samples, calculated by: total nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured without filtering, reported as nitrogen</li>
+<li><a href="tot_nitro_content/">tot_nitro_content</a> - Total nitrogen content of the sample</li>
+<li><a href="tot_org_c_meth/">tot_org_c_meth</a> - Reference or method used in determining total organic carbon</li>
+<li><a href="tot_org_carb/">tot_org_carb</a> - Definition for soil: total organic carbon content of the soil, definition otherwise: total organic carbon content</li>
+<li><a href="tot_part_carb/">tot_part_carb</a> - Total particulate carbon content</li>
+<li><a href="tot_phosp/">tot_phosp</a> - Total phosphorus concentration in the sample, calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus</li>
+<li><a href="tot_phosphate/">tot_phosphate</a> - Total amount or concentration of phosphate</li>
+<li><a href="tot_sulfur/">tot_sulfur</a> - Concentration of total sulfur in the sample</li>
+<li><a href="train_line/">train_line</a> - The subway line name</li>
+<li><a href="train_stat_loc/">train_stat_loc</a> - The train station collection location</li>
+<li><a href="train_stop_loc/">train_stop_loc</a> - The train stop collection location</li>
+<li><a href="turbidity/">turbidity</a> - Measure of the amount of cloudiness or haziness in water caused by individual particles</li>
+<li><a href="tvdss_of_hcr_temp/">tvdss_of_hcr_temp</a> - True vertical depth subsea (TVDSS) of the hydrocarbon resource where the original temperature was measured (e.g. 1345 m).</li>
+<li><a href="typ_occup_density/">typ_occup_density</a> - Customary or normal density of occupants</li>
+<li><a href="url/">url</a></li>
+<li><a href="ventilation_rate/">ventilation_rate</a> - Ventilation rate of the system in the sampled premises</li>
+<li><a href="ventilation_type/">ventilation_type</a> - Ventilation system used in the sampled premises</li>
+<li><a href="vfa/">vfa</a> - Concentration of Volatile Fatty Acids in the sample</li>
+<li><a href="vfa_fw/">vfa_fw</a> - Original volatile fatty acid concentration in the hydrocarbon resource</li>
+<li><a href="vis_media/">vis_media</a> - The building visual media</li>
+<li><a href="viscosity/">viscosity</a> - A measure of oil's resistance¬†to gradual deformation by¬†shear stress¬†or¬†tensile stress (e.g. 3.5 cp; 100 ¬∞C)</li>
+<li><a href="volatile_org_comp/">volatile_org_comp</a> - Concentration of carbon-based chemicals that easily evaporate at room temperature; can report multiple volatile organic compounds by entering numeric values preceded by name of compound</li>
+<li><a href="wall_area/">wall_area</a> - The total area of the sampled room's walls</li>
+<li><a href="wall_const_type/">wall_const_type</a> - The building class of the wall defined by the composition of the building elements and fire-resistance rating.</li>
+<li><a href="wall_finish_mat/">wall_finish_mat</a> - The material utilized to finish the outer most layer of the wall</li>
+<li><a href="wall_height/">wall_height</a> - The average height of the walls in the sampled room</li>
+<li><a href="wall_loc/">wall_loc</a> - The relative location of the wall within the room</li>
+<li><a href="wall_surf_treatment/">wall_surf_treatment</a> - The surface treatment of interior wall</li>
+<li><a href="wall_texture/">wall_texture</a> - The feel, appearance, or consistency of a wall surface</li>
+<li><a href="wall_thermal_mass/">wall_thermal_mass</a> - The ability of the wall to provide inertia against temperature fluctuations. Generally this means concrete or concrete block that is either exposed or covered only with paint</li>
+<li><a href="wall_water_mold/">wall_water_mold</a> - Signs of the presence of mold or mildew on a wall</li>
+<li><a href="wastewater_type/">wastewater_type</a> - The origin of wastewater such as human waste, rainfall, storm drains, etc.</li>
+<li><a href="water_content/">water_content</a> - Water content measurement</li>
+<li><a href="water_current/">water_current</a> - Measurement of magnitude and direction of flow within a fluid</li>
+<li><a href="water_cut/">water_cut</a> - Current amount of water (%) in a produced fluid stream; or the average of the combined streams</li>
+<li><a href="water_feat_size/">water_feat_size</a> - The size of the water feature</li>
+<li><a href="water_feat_type/">water_feat_type</a> - The type of water feature present within the building being sampled</li>
+<li><a href="water_temp_regm/">water_temp_regm</a> - Information about treatment involving an exposure to water with varying degree of temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens</li>
+<li><a href="watering_regm/">watering_regm</a> - Information about treatment involving an exposure to watering frequencies, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens</li>
+<li><a href="weekday/">weekday</a> - The day of the week when sampling occurred</li>
+<li><a href="win/">win</a> - A unique identifier of a well or wellbore. This is part of the Global Framework for Well Identification initiative which is compiled by the Professional Petroleum Data Management Association (PPDM) in an effort to improve well identification systems. (Supporting information: https://ppdm.org/ and http://dl.ppdm.org/dl/690)</li>
+<li><a href="wind_direction/">wind_direction</a> - Wind direction is the direction from which a wind originates</li>
+<li><a href="wind_speed/">wind_speed</a> - Speed of wind measured at the time of sampling</li>
+<li><a href="window_cond/">window_cond</a> - The physical condition of the window at the time of sampling</li>
+<li><a href="window_cover/">window_cover</a> - The type of window covering</li>
+<li><a href="window_horiz_pos/">window_horiz_pos</a> - The horizontal position of the window on the wall</li>
+<li><a href="window_loc/">window_loc</a> - The relative location of the window within the room</li>
+<li><a href="window_mat/">window_mat</a> - The type of material used to finish a window</li>
+<li><a href="window_open_freq/">window_open_freq</a> - The number of times windows are opened per week</li>
+<li><a href="window_size/">window_size</a> - The window's length and width</li>
+<li><a href="window_status/">window_status</a> - Defines whether the windows were open or closed during environmental testing</li>
+<li><a href="window_type/">window_type</a> - The type of windows</li>
+<li><a href="window_vert_pos/">window_vert_pos</a> - The vertical position of the window on the wall</li>
+<li><a href="window_water_mold/">window_water_mold</a> - Signs of the presence of mold or mildew on the window.</li>
+<li><a href="xylene/">xylene</a> - Concentration of xylene in the sample</li>
+<li><a href="zinc/">zinc</a> - Concentration of zinc in the sample</li>
+</ul>
+</li>
+<li><a href="best_protein/">best protein</a> - the specific protein identifier most correctly associated with the peptide sequence<ul>
+<li><a href="peptide_quantification_best_protein/">peptide quantification➞best protein</a></li>
+<li><a href="protein_quantification_best_protein/">protein quantification➞best protein</a> - the specific protein identifier most correctly grouped to its associated peptide sequences</li>
+</ul>
+</li>
+<li><a href="binned_contig_num/">binned contig num</a></li>
+<li><a href="biogas_retention_time/">biogas_retention_time</a></li>
+<li><a href="biogas_temperature/">biogas_temperature</a></li>
+<li><a href="biosample_set/">biosample set</a> - This property links a database object to the set of samples within it.</li>
+<li><a href="chemical/">chemical</a><ul>
+<li><a href="reaction_participant_chemical/">reaction participant➞chemical</a></li>
+</ul>
+</li>
+<li><a href="chemical_formula/">chemical formula</a> - A generic grouping for miolecular formulae and empirican formulae<ul>
+<li><a href="chemical_entity_chemical_formula/">chemical entity➞chemical formula</a></li>
+</ul>
+</li>
+<li><a href="collection_date_inc/">collection_date_inc</a> - Date the incubation was harvested/collected/ended. Only relevant for incubation samples.</li>
+<li><a href="collection_time/">collection_time</a> - The time of sampling, either as an instance (single point) or interval.</li>
+<li><a href="collection_time_inc/">collection_time_inc</a> - Time the incubation was harvested/collected/ended. Only relevant for incubation samples.</li>
+<li><a href="community/">community</a></li>
+<li><a href="completion_date/">completion_date</a></li>
+<li><a href="compression_type/">compression type</a> - If provided, specifies the compression type</li>
+<li><a href="core_field/">core field</a> - basic fields<ul>
+<li><a href="blood_press_diast/">blood_press_diast</a> - Resting diastolic blood pressure, measured as mm mercury</li>
+<li><a href="blood_press_syst/">blood_press_syst</a> - Resting systolic blood pressure, measured as mm mercury</li>
+<li><a href="chem_treat_method/">chem_treat_method</a> - Method of chemical administration(dose, frequency, duration, time elapsed between administration and sampling) (e.g. 50 mg/l; twice a week; 1 hr; 0 days)</li>
+<li><a href="heat_sys_deliv_meth/">heat_sys_deliv_meth</a> - The method by which the heat is delivered through the system</li>
+<li><a href="host_family_relation/">host_family_relation</a> - Familial relationships to other hosts in the same study; can include multiple relationships</li>
+<li><a href="host_subspecf_genlin/">host_subspecf_genlin</a> - Information about the genetic distinctness of the host organism below the subspecies level e.g., serovar, serotype, biotype, ecotype, variety, cultivar, or any relevant genetic typing schemes like Group I plasmid. Subspecies should not be recorded in this term, but in the NCBI taxonomy. Supply both the lineage name and the lineage rank separated by a colon, e.g., biovar:abc123.</li>
+<li><a href="host_symbiont/">host_symbiont</a> - The taxonomic name of the organism(s) found living in mutualistic, commensalistic, or parasitic symbiosis with the specific host.</li>
+<li><a href="micro_biomass_meth/">micro_biomass_meth</a> - Reference or method used in determining microbial biomass</li>
+<li><a href="non_min_nutr_regm/">non_min_nutr_regm</a> - Information about treatment involving the exposure of plant to non-mineral nutrient such as oxygen, hydrogen or carbon; should include the name of non-mineral nutrient, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple non-mineral nutrient regimens</li>
+<li><a href="org_count_qpcr_info/">org_count_qpcr_info</a> - If qpcr was used for the cell count, the target gene name, the primer sequence and the cycling conditions should also be provided. (Example: 16S rrna; FWD:ACGTAGCTATGACGT REV:GTGCTAGTCGAGTAC; initial denaturation:90C_5min; denaturation:90C_2min; annealing:52C_30 sec; elongation:72C_30 sec; 90 C for 1 min; final elongation:72C_5min; 30 cycles)</li>
+<li><a href="pres_animal_insect/">pres_animal_insect</a> - The type and number of animals or insects present in the sampling space.</li>
+<li><a href="prev_land_use_meth/">prev_land_use_meth</a> - Reference or method used in determining previous land use and dates</li>
+<li><a href="room_architec_elem/">room_architec_elem</a> - The unique details and component parts that, together, form the architecture of a distinguisahable space within a built structure</li>
+<li><a href="room_moist_dam_hist/">room_moist_dam_hist</a> - The history of moisture damage or mold in the past 12 months. Number of events of moisture damage or mold observed</li>
+<li><a href="samp_collect_point/">samp_collect_point</a> - Sampling point on the asset were sample was collected (e.g. Wellhead, storage tank, separator, etc). If "other" is specified, please propose entry in "additional info" field</li>
+<li><a href="shad_dev_water_mold/">shad_dev_water_mold</a> - Signs of the presence of mold or mildew on the shading device</li>
+<li><a href="soil_horizon/">soil_horizon</a> - Specific layer in the land area which measures parallel to the soil surface and possesses physical characteristics which differ from the layers above and beneath</li>
+<li><a href="soil_text_measure/">soil_text_measure</a> - The relative proportion of different grain sizes of mineral particles in a soil, as described using a standard system; express as % sand (50 um to 2 mm), silt (2 um to 50 um), and clay (&lt;2 um) with textural name (e.g., silty clay loam) optional.</li>
+<li><a href="soil_texture_meth/">soil_texture_meth</a> - Reference or method used in determining soil texture</li>
+<li><a href="tot_nitro_cont_meth/">tot_nitro_cont_meth</a> - Reference or method used in determining the total nitrogen</li>
+<li><a href="tvdss_of_hcr_press/">tvdss_of_hcr_press</a> - True vertical depth subsea (TVDSS) of the hydrocarbon resource where the original pressure was measured (e.g. 1578 m).</li>
+<li><a href="water_cont_soil_meth/">water_cont_soil_meth</a> - Reference or method used in determining the water content of soil</li>
+<li><a href="water_prod_rate/">water_prod_rate</a> - Water production rates per well (e.g. 987 m3 / day)</li>
+</ul>
+</li>
+<li><a href="data_object_set/">data object set</a> - This property links a database object to the set of data objects within it.</li>
+<li><a href="data_object_type/">data object type</a> - The type of file represented by the data object.</li>
+<li><a href="date_created/">date created</a> - TODO<ul>
+<li><a href="database_date_created/">database➞date created</a></li>
+</ul>
+</li>
+<li><a href="depth2/">depth2</a></li>
+<li><a href="description/">description</a> - a human-readable description of a thing<ul>
+<li><a href="data_object_description/">data object➞description</a></li>
+<li><a href="study_description/">study➞description</a></li>
+</ul>
+</li>
+<li><a href="direction/">direction</a> - One of l-&gt;r, r-&gt;l, bidirectional, neutral<ul>
+<li><a href="reaction_direction/">reaction➞direction</a></li>
+</ul>
+</li>
+<li><a href="dna_absorb1/">dna_absorb1</a> - 260/280 measurement of DNA sample purity</li>
+<li><a href="dna_absorb2/">dna_absorb2</a> - 260/230 measurement of DNA sample purity</li>
+<li><a href="dna_collect_site/">dna_collect_site</a> - Provide information on the site your DNA sample was collected from</li>
+<li><a href="dna_concentration/">dna_concentration</a></li>
+<li><a href="dna_cont_type/">dna_cont_type</a> - Tube or plate (96-well)</li>
+<li><a href="dna_cont_well/">dna_cont_well</a></li>
+<li><a href="dna_container_ID/">dna_container_ID</a></li>
+<li><a href="dna_dnase/">dna_dnase</a></li>
+<li><a href="dna_isolate_meth/">dna_isolate_meth</a> - Describe the method/protocol/kit used to extract DNA/RNA.</li>
+<li><a href="dna_organisms/">dna_organisms</a> - List any organisms known or suspected to grow in co-culture, as well as estimated % of the organism in that culture.</li>
+<li><a href="dna_project_contact/">dna_project_contact</a></li>
+<li><a href="dna_samp_ID/">dna_samp_ID</a></li>
+<li><a href="dna_sample_format/">dna_sample_format</a> - Solution in which the DNA sample has been suspended</li>
+<li><a href="dna_sample_name/">dna_sample_name</a> - Give the DNA sample a name that is meaningful to you. Sample names must be unique across all JGI projects and contain a-z, A-Z, 0-9, - and _ only.</li>
+<li><a href="dna_seq_project/">dna_seq_project</a></li>
+<li><a href="dna_seq_project_PI/">dna_seq_project_PI</a></li>
+<li><a href="dna_seq_project_name/">dna_seq_project_name</a></li>
+<li><a href="dna_volume/">dna_volume</a></li>
+<li><a href="dnase_rna/">dnase_rna</a></li>
+<li><a href="ecosystem_path_id/">ecosystem_path_id</a> - A unique id representing the GOLD classifers associated with a sample.</li>
+<li><a href="email/">email</a> - An email address for an entity such as a person. This should be the primarly email address used.<ul>
+<li><a href="person_value_email/">person value➞email</a></li>
+</ul>
+</li>
+<li><a href="encodes/">encodes</a> - The gene product encoded by this feature. Typically this is used for a CDS feature or gene feature which will encode a protein. It can also be used by a nc transcript ot gene feature that encoded a ncRNA<ul>
+<li><a href="genome_feature_encodes/">genome feature➞encodes</a></li>
+</ul>
+</li>
+<li><a href="ended_at_time/">ended at time</a><ul>
+<li><a href="workflow_execution_activity_ended_at_time/">workflow execution activity➞ended at time</a></li>
+</ul>
+</li>
+<li><a href="environment_field/">environment field</a> - field describing environmental aspect of a sample</li>
+<li><a href="ess_dive_datasets/">ess dive datasets</a> - List of ESS-DIVE dataset DOIs</li>
+<li><a href="etl_software_version/">etl software version</a> - TODO<ul>
+<li><a href="database_etl_software_version/">database➞etl software version</a></li>
+</ul>
+</li>
+<li><a href="experimental_factor_other/">experimental_factor_other</a> - Other details about your sample that you feel can't be accurately represented in the available columns.</li>
+<li><a href="feature_type/">feature type</a> - TODO: Yuri to write<ul>
+<li><a href="genome_feature_feature_type/">genome feature➞feature type</a></li>
+</ul>
+</li>
+<li><a href="filter_method/">filter_method</a> - Type of filter used or how the sample was filtered</li>
+<li><a href="functional_annotation_set/">functional annotation set</a> - This property links a database object to the set of all functional annotations</li>
+<li><a href="funding_sources/">funding sources</a></li>
+<li><a href="genome_feature_set/">genome feature set</a> - This property links a database object to the set of all features</li>
+<li><a href="gff_coordinate/">gff coordinate</a> - A positive 1-based integer coordinate indicating start or end<ul>
+<li><a href="end/">end</a> - The end of the feature in positive 1-based integer coordinates</li>
+<li><a href="genome_feature_end/">genome feature➞end</a> - The end of the feature in positive 1-based integer coordinates</li>
+<li><a href="genome_feature_start/">genome feature➞start</a> - The start of the feature in positive 1-based integer coordinates</li>
+<li><a href="start/">start</a> - The start of the feature in positive 1-based integer coordinates</li>
+</ul>
+</li>
+<li><a href="habitat/">habitat</a></li>
+<li><a href="has_boolean_value/">has boolean value</a> - Links a quantity value to a boolean</li>
+<li><a href="has_calibration/">has calibration</a> - TODO: Yuri to fill in<ul>
+<li><a href="metabolomics_analysis_activity_has_calibration/">metabolomics analysis activity➞has calibration</a></li>
+<li><a href="nom_analysis_activity_has_calibration/">nom analysis activity➞has calibration</a> - A reference to a file that holds calibration information.</li>
+</ul>
+</li>
+<li><a href="has_credit_associations/">has credit associations</a> - This slot links a study to a credit association.  The credit association will be linked to a person value and to a CRediT Contributor Roles term. Overall semantics: person should get credit X for their participation in the study</li>
+<li><a href="has_function/">has function</a><ul>
+<li><a href="functional_annotation_has_function/">functional annotation➞has function</a></li>
+</ul>
+</li>
+<li><a href="has_input/">has input</a> - An input to a process.<ul>
+<li><a href="biosample_processing_has_input/">biosample processing➞has input</a><ul>
+<li><a href="omics_processing_has_input/">omics processing➞has input</a></li>
+</ul>
+</li>
+<li><a href="workflow_execution_activity_has_input/">workflow execution activity➞has input</a><ul>
+<li><a href="read_QC_analysis_activity_has_input/">read QC analysis activity➞has input</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="has_metabolite_quantifications/">has metabolite quantifications</a><ul>
+<li><a href="metabolomics_analysis_activity_has_metabolite_quantifications/">metabolomics analysis activity➞has metabolite quantifications</a></li>
+</ul>
+</li>
+<li><a href="has_numeric_value/">has numeric value</a> - Links a quantity value to a number<ul>
+<li><a href="has_maximum_numeric_value/">has maximum numeric value</a> - The maximum value part, expressed as number, of the quantity value when the value covers a range.</li>
+<li><a href="has_minimum_numeric_value/">has minimum numeric value</a> - The minimum value part, expressed as number, of the quantity value when the value covers a range.</li>
+<li><a href="quantity_value_has_numeric_value/">quantity value➞has numeric value</a> - The number part of the quantity</li>
+</ul>
+</li>
+<li><a href="has_output/">has output</a> - An output biosample to a processing step<ul>
+<li><a href="workflow_execution_activity_has_output/">workflow execution activity➞has output</a><ul>
+<li><a href="read_QC_analysis_activity_has_output/">read QC analysis activity➞has output</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="has_participants/">has participants</a><ul>
+<li><a href="left_participants/">left participants</a></li>
+<li><a href="reaction_left_participants/">reaction➞left participants</a></li>
+<li><a href="reaction_right_participants/">reaction➞right participants</a></li>
+<li><a href="right_participants/">right participants</a></li>
+</ul>
+</li>
+<li><a href="has_peptide_quantifications/">has peptide quantifications</a><ul>
+<li><a href="metaproteomics_analysis_activity_has_peptide_quantifications/">metaproteomics analysis activity➞has peptide quantifications</a></li>
+</ul>
+</li>
+<li><a href="has_raw_value/">has raw value</a> - The value that was specified for an annotation in raw form, i.e. a string. E.g. "2 cm" or "2-4 cm"<ul>
+<li><a href="geolocation_value_has_raw_value/">geolocation value➞has raw value</a> - The raw value for a  geolocation should follow {lat} {long}</li>
+<li><a href="person_value_has_raw_value/">person value➞has raw value</a> - The full name of the Investigator in format FIRST LAST.</li>
+<li><a href="quantity_value_has_raw_value/">quantity value➞has raw value</a> - Unnormalized atomic string representation, should in syntax {number} {unit}</li>
+</ul>
+</li>
+<li><a href="has_unit/">has unit</a> - Links a quantity value to a unit<ul>
+<li><a href="quantity_value_has_unit/">quantity value➞has unit</a> - The unit of the quantity</li>
+</ul>
+</li>
+<li><a href="has_part/">has_part</a> - A pathway can be broken down to a series of reaction step<ul>
+<li><a href="pathway_has_part/">pathway➞has_part</a></li>
+</ul>
+</li>
+<li><a href="highest_similarity_score/">highest similarity score</a> - TODO: Yuri to fill in<ul>
+<li><a href="metabolite_quantification_highest_similarity_score/">metabolite quantification➞highest similarity score</a></li>
+</ul>
+</li>
+<li><a href="host_name/">host_name</a></li>
+<li><a href="id/">id</a> - A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI<ul>
+<li><a href="person_id/">person➞id</a> - Should be an ORCID. Specify in CURIE format. E.g ORCID:0000-1111-...</li>
+</ul>
+</li>
+<li><a href="identifier/">identifier</a></li>
+<li><a href="inchi/">inchi</a><ul>
+<li><a href="chemical_entity_inchi/">chemical entity➞inchi</a></li>
+</ul>
+</li>
+<li><a href="inchi_key/">inchi key</a><ul>
+<li><a href="chemical_entity_inchi_key/">chemical entity➞inchi key</a></li>
+</ul>
+</li>
+<li><a href="input_contig_num/">input contig num</a></li>
+<li><a href="input_read_bases/">input_read_bases</a> - TODO<ul>
+<li><a href="read_QC_analysis_activity_input_read_bases/">read QC analysis activity➞input_read_bases</a></li>
+</ul>
+</li>
+<li><a href="instrument_name/">instrument_name</a> - The name of the instrument that was used for processing the sample.</li>
+<li><a href="investigation_field/">investigation field</a> - field describing aspect of the investigation/study to which the sample belongs<ul>
+<li><a href="samp_name/">samp_name</a> - A local identifier or name that for the material sample used for extracting nucleic acids, and subsequent sequencing. It can refer either to the original material collected or to any derived sub-samples. It can have any format, but we suggest that you make it concise, unique and consistent within your lab, and as informative as possible. INSDC requires every sample name from a single Submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to sample_name.</li>
+</ul>
+</li>
+<li><a href="is_balanced/">is balanced</a><ul>
+<li><a href="reaction_is_balanced/">reaction➞is balanced</a></li>
+</ul>
+</li>
+<li><a href="is_diastereoselective/">is diastereoselective</a><ul>
+<li><a href="reaction_is_diastereoselective/">reaction➞is diastereoselective</a></li>
+</ul>
+</li>
+<li><a href="is_fully_characterized/">is fully characterized</a> - False if includes R-groups<ul>
+<li><a href="reaction_is_fully_characterized/">reaction➞is fully characterized</a></li>
+</ul>
+</li>
+<li><a href="is_stereo/">is stereo</a><ul>
+<li><a href="reaction_is_stereo/">reaction➞is stereo</a></li>
+</ul>
+</li>
+<li><a href="is_transport/">is transport</a><ul>
+<li><a href="reaction_is_transport/">reaction➞is transport</a></li>
+</ul>
+</li>
+<li><a href="isotope_exposure/">isotope_exposure</a> - List isotope exposure or addition applied to your sample.</li>
+<li><a href="keywords/">keywords</a> - A list of keywords that used to associate the entity. Keywords SHOULD come from controlled vocabularies, including MESH, ENVO.</li>
+<li><a href="language/">language</a> - Should use ISO 639-1 code e.g. "en", "fr"</li>
+<li><a href="latitude/">latitude</a> - latitude</li>
+<li><a href="location/">location</a></li>
+<li><a href="longitude/">longitude</a> - longitude</li>
+<li><a href="lowDepth_contig_num/">lowDepth contig num</a></li>
+<li><a href="mAGBin__bin_name/">➞bin name</a></li>
+<li><a href="mAGBin__bin_quality/">➞bin quality</a></li>
+<li><a href="mAGBin__completeness/">➞completeness</a></li>
+<li><a href="mAGBin__contamination/">➞contamination</a></li>
+<li><a href="mAGBin__gene_count/">➞gene count</a></li>
+<li><a href="mAGBin__gtdbtk_class/">➞gtdbtk class</a></li>
+<li><a href="mAGBin__gtdbtk_domain/">➞gtdbtk domain</a></li>
+<li><a href="mAGBin__gtdbtk_family/">➞gtdbtk family</a></li>
+<li><a href="mAGBin__gtdbtk_genus/">➞gtdbtk genus</a></li>
+<li><a href="mAGBin__gtdbtk_order/">➞gtdbtk order</a></li>
+<li><a href="mAGBin__gtdbtk_phylum/">➞gtdbtk phylum</a></li>
+<li><a href="mAGBin__gtdbtk_species/">➞gtdbtk species</a></li>
+<li><a href="mAGBin__num_16s/">➞num 16s</a></li>
+<li><a href="mAGBin__num_23s/">➞num 23s</a></li>
+<li><a href="mAGBin__num_5s/">➞num 5s</a></li>
+<li><a href="mAGBin__num_tRNA/">➞num tRNA</a></li>
+<li><a href="mAGBin__number_of_contig/">➞number of contig</a></li>
+<li><a href="mags_activity_set/">mags activity set</a> - This property links a database object to the set of MAGs analysis activities.</li>
+<li><a href="mags_list/">mags list</a></li>
+<li><a href="metabolite_quantified/">metabolite quantified</a> - the specific metabolite identifier<ul>
+<li><a href="metabolite_quantification_metabolite_quantified/">metabolite quantification➞metabolite quantified</a></li>
+</ul>
+</li>
+<li><a href="metabolomics_analysis_activity_set/">metabolomics analysis activity set</a> - This property links a database object to the set of metabolomics analysis activities.</li>
+<li><a href="metagenome_annotation_activity_set/">metagenome annotation activity set</a> - This property links a database object to the set of metagenome annotation activities.</li>
+<li><a href="metagenome_assembly_parameter/">metagenome assembly parameter</a><ul>
+<li><a href="asm_score/">asm_score</a> - A score for comparing metagenomic assembly quality from same sample.</li>
+<li><a href="contig_bp/">contig_bp</a> - Total size in bp of all contigs.</li>
+<li><a href="contigs/">contigs</a> - The sum of the (length*log(length)) of all contigs, times some constant.  Increase the contiguity, the score will increase</li>
+<li><a href="ctg_L50/">ctg_L50</a> - Given a set of contigs, the L50 is defined as the sequence length of the shortest contig at 50% of the total genome length.</li>
+<li><a href="ctg_L90/">ctg_L90</a> - The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all contigs of that length or longer contains at least 90% of the sum of the lengths of all contigs.</li>
+<li><a href="ctg_N50/">ctg_N50</a> - Given a set of contigs, each with its own length, the N50 count is defined as the smallest number of contigs whose length sum makes up half of genome size.</li>
+<li><a href="ctg_N90/">ctg_N90</a> - Given a set of contigs, each with its own length, the N90 count is defined as the smallest number of contigs whose length sum makes up 90% of genome size.</li>
+<li><a href="ctg_logsum/">ctg_logsum</a> - Maximum contig length.</li>
+<li><a href="ctg_max/">ctg_max</a> - Maximum contig length.</li>
+<li><a href="ctg_powsum/">ctg_powsum</a> - Powersum of all contigs is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25).</li>
+<li><a href="gap_pct/">gap_pct</a> - The gap size percentage of all scaffolds.</li>
+<li><a href="gc_avg/">gc_avg</a> - Average of GC content of all contigs.</li>
+<li><a href="gc_std/">gc_std</a> - Standard deviation of GC content of all contigs.</li>
+<li><a href="num_aligned_reads/">num_aligned_reads</a> - The sequence count number of input reads aligned to assembled contigs.</li>
+<li><a href="num_input_reads/">num_input_reads</a> - The sequence count number of input reads for assembly.</li>
+<li><a href="scaf_L50/">scaf_L50</a> - Given a set of scaffolds, the L50 is defined as the sequence length of the shortest scaffold at 50% of the total genome length.</li>
+<li><a href="scaf_L90/">scaf_L90</a> - The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all scaffolds of that length or longer contains at least 90% of the sum of the lengths of all scaffolds.</li>
+<li><a href="scaf_N50/">scaf_N50</a> - Given a set of scaffolds, each with its own length, the N50 count is defined as the smallest number of scaffolds whose length sum makes up half of genome size.</li>
+<li><a href="scaf_N90/">scaf_N90</a> - Given a set of scaffolds, each with its own length, the N90 count is defined as the smallest number of scaffolds whose length sum makes up 90% of genome size.</li>
+<li><a href="scaf_bp/">scaf_bp</a> - Total size in bp of all scaffolds.</li>
+<li><a href="scaf_l_gt50K/">scaf_l_gt50K</a> - Total size in bp of all scaffolds greater than 50 KB.</li>
+<li><a href="scaf_logsum/">scaf_logsum</a> - The sum of the (length*log(length)) of all scaffolds, times some constant.  Increase the contiguity, the score will increase</li>
+<li><a href="scaf_max/">scaf_max</a> - Maximum scaffold length.</li>
+<li><a href="scaf_n_gt50K/">scaf_n_gt50K</a> - Total sequence count of scaffolds greater than 50 KB.</li>
+<li><a href="scaf_pct_gt50K/">scaf_pct_gt50K</a> - Total sequence size percentage of scaffolds greater than 50 KB.</li>
+<li><a href="scaf_powsum/">scaf_powsum</a> - Powersum of all scaffolds is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25).</li>
+<li><a href="scaffolds/">scaffolds</a> - Total sequence count of all scaffolds.</li>
+</ul>
+</li>
+<li><a href="metagenome_assembly_set/">metagenome assembly set</a> - This property links a database object to the set of metagenome assembly activities.</li>
+<li><a href="metaproteomics_analysis_activity_set/">metaproteomics analysis activity set</a> - This property links a database object to the set of metaproteomics analysis activities.</li>
+<li><a href="metatranscriptome_activity_set/">metatranscriptome activity set</a> - This property links a database object to the set of metatranscriptome analysis activities.</li>
+<li><a href="micro_biomass_C_meth/">micro_biomass_C_meth</a> - Reference or method used in determining microbial biomass</li>
+<li><a href="micro_biomass_N_meth/">micro_biomass_N_meth</a> - Reference or method used in determining microbial biomass nitrogen</li>
+<li><a href="microbial_biomass_C/">microbial_biomass_C</a> - The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units</li>
+<li><a href="microbial_biomass_N/">microbial_biomass_N</a> - The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units</li>
+<li><a href="min_q_value/">min_q_value</a> - smallest Q-Value associated with the peptide sequence as provided by MSGFPlus tool<ul>
+<li><a href="peptide_quantification_min_q_value/">peptide quantification➞min_q_value</a></li>
+</ul>
+</li>
+<li><a href="mod_date/">mod_date</a> - The last date on which the database information was modified.</li>
+<li><a href="name/">name</a> - A human readable label for an entity<ul>
+<li><a href="data_object_name/">data object➞name</a></li>
+<li><a href="person_value_name/">person value➞name</a> - The full name of the Investigator. It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.</li>
+<li><a href="study_name/">study➞name</a></li>
+</ul>
+</li>
+<li><a href="ncbi_project_name/">ncbi_project_name</a></li>
+<li><a href="ncbi_taxonomy_name/">ncbi_taxonomy_name</a></li>
+<li><a href="nmdc_schema_version/">nmdc schema version</a> - TODO<ul>
+<li><a href="database_nmdc_schema_version/">database➞nmdc schema version</a></li>
+</ul>
+</li>
+<li><a href="nom_analysis_activity_set/">nom analysis activity set</a> - This property links a database object to the set of natural organic matter (NOM) analysis activities.</li>
+<li><a href="non_microb_biomass/">non_microb_biomass</a> - Amount of biomass; should include the name for the part of biomass measured, e.g.insect, plant, total. Can include multiple measurements separated by ;</li>
+<li><a href="non_microb_biomass_method/">non_microb_biomass_method</a> - Reference or method used in determining biomass</li>
+<li><a href="notes/">notes</a><ul>
+<li><a href="study_notes/">study➞notes</a></li>
+</ul>
+</li>
+<li><a href="nucleic_acid_sequence_source_field/">nucleic acid sequence source field</a><ul>
+<li><a href="samp_collec_device/">samp_collec_device</a> - The device used to collect an environmental sample. This field accepts terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO). This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094).</li>
+<li><a href="samp_collec_method/">samp_collec_method</a> - The method employed for collecting the sample.</li>
+</ul>
+</li>
+<li><a href="object_set/">object set</a> - Applies to a property that links a database object to a set of objects. This is necessary in a json document to provide context for a list, and to allow for a single json object that combines multiple object types</li>
+<li><a href="objective/">objective</a> - The scientific objectives associated with the entity. It SHOULD correspond to scientific norms for objectives field in a structured abstract.</li>
+<li><a href="omics_processing_set/">omics processing set</a> - This property links a database object to the set of omics processings within it.</li>
+<li><a href="omics_type/">omics type</a> - The type of omics data</li>
+<li><a href="omics_type/">omics_type</a></li>
+<li><a href="orcid/">orcid</a> - The ORCID of a person.<ul>
+<li><a href="person_value_orcid/">person value➞orcid</a></li>
+</ul>
+</li>
+<li><a href="org_nitro_method/">org_nitro_method</a> - Method used for obtaining organic nitrogen</li>
+<li><a href="other_treatment/">other_treatment</a> - Other treatments applied to your samples that are not applicable to the provided fields</li>
+<li><a href="output_read_bases/">output_read_bases</a> - TODO<ul>
+<li><a href="read_QC_analysis_activity_output_read_bases/">read QC analysis activity➞output_read_bases</a></li>
+</ul>
+</li>
+<li><a href="part_of/">part of</a> - Links a resource to another resource that either logically or physically includes it.<ul>
+<li><a href="biosample_part_of/">biosample➞part of</a></li>
+</ul>
+</li>
+<li><a href="peptide_sequence/">peptide sequence</a><ul>
+<li><a href="peptide_quantification_peptide_sequence/">peptide quantification➞peptide sequence</a></li>
+</ul>
+</li>
+<li><a href="peptide_sequence_count/">peptide_sequence_count</a> - count of peptide sequences grouped to the best_protein<ul>
+<li><a href="protein_quantification_peptide_sequence_count/">protein quantification➞peptide_sequence_count</a></li>
+</ul>
+</li>
+<li><a href="peptide_spectral_count/">peptide_spectral_count</a> - sum of filter passing MS2 spectra associated with the peptide sequence within a given LC-MS/MS data file<ul>
+<li><a href="peptide_quantification_peptide_spectral_count/">peptide quantification➞peptide_spectral_count</a></li>
+</ul>
+</li>
+<li><a href="peptide_sum_masic_abundance/">peptide_sum_masic_abundance</a> - combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the peptide sequence from a given LC-MS/MS data file using the MASIC tool<ul>
+<li><a href="peptide_quantification_peptide_sum_masic_abundance/">peptide quantification➞peptide_sum_masic_abundance</a></li>
+</ul>
+</li>
+<li><a href="phase/">phase</a> - The phase for a coding sequence entity. For example, phase of a CDS as represented in a GFF3 with a value of 0, 1 or 2.<ul>
+<li><a href="genome_feature_phase/">genome feature➞phase</a></li>
+</ul>
+</li>
+<li><a href="processing_institution/">processing_institution</a> - The organization that processed the sample.</li>
+<li><a href="profile_image_url/">profile image url</a> - A url that points to an image of a person.</li>
+<li><a href="project_ID/">project_ID</a> - Proposal IDs or names associated with dataset</li>
+<li><a href="proport_woa_temperature/">proport_woa_temperature</a></li>
+<li><a href="proposal_dna/">proposal_dna</a></li>
+<li><a href="proposal_rna/">proposal_rna</a></li>
+<li><a href="protein_spectral_count/">protein_spectral_count</a> - sum of filter passing MS2 spectra associated with the best protein within a given LC-MS/MS data file<ul>
+<li><a href="protein_quantification_protein_spectral_count/">protein quantification➞protein_spectral_count</a></li>
+</ul>
+</li>
+<li><a href="protein_sum_masic_abundance/">protein_sum_masic_abundance</a> - combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the best protein from a given LC-MS/MS data file using the MASIC tool<ul>
+<li><a href="protein_quantification_protein_sum_masic_abundance/">protein quantification➞protein_sum_masic_abundance</a></li>
+</ul>
+</li>
+<li><a href="publications/">publications</a> - A list of publications that are associated with the entity. The publications SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.</li>
+<li><a href="read_QC_analysis_activity_set/">read QC analysis activity set</a> - This property links a database object to the set of read QC analysis activities.</li>
+<li><a href="read_QC_analysis_statistic/">read QC analysis statistic</a><ul>
+<li><a href="input_base_count/">input base count</a> - The nucleotide base count number of input reads for QC analysis.</li>
+<li><a href="input_read_count/">input read count</a> - The sequence count number of input reads for QC analysis.</li>
+<li><a href="output_base_count/">output base count</a> - After QC analysis nucleotide base count number.</li>
+<li><a href="output_read_count/">output read count</a> - After QC analysis sequence count number. </li>
+</ul>
+</li>
+<li><a href="read_based_analysis_activity_set/">read based analysis activity set</a> - This property links a database object to the set of read based analysis activities.</li>
+<li><a href="relevant_protocols/">relevant protocols</a></li>
+<li><a href="replicate_number/">replicate_number</a> - If sending biological replicates, indicate the rep number here.</li>
+<li><a href="rna_absorb1/">rna_absorb1</a> - 260/280 measurement of RNA sample purity</li>
+<li><a href="rna_absorb2/">rna_absorb2</a> - 260/230 measurement of RNA sample purity</li>
+<li><a href="rna_collect_site/">rna_collect_site</a> - Provide information on the site your RNA sample was collected from</li>
+<li><a href="rna_concentration/">rna_concentration</a></li>
+<li><a href="rna_cont_type/">rna_cont_type</a> - Tube or plate (96-well)</li>
+<li><a href="rna_cont_well/">rna_cont_well</a></li>
+<li><a href="rna_container_ID/">rna_container_ID</a></li>
+<li><a href="rna_isolate_meth/">rna_isolate_meth</a> - Describe the method/protocol/kit used to extract DNA/RNA.</li>
+<li><a href="rna_organisms/">rna_organisms</a> - List any organisms known or suspected to grow in co-culture, as well as estimated % of the organism in that culture.</li>
+<li><a href="rna_project_contact/">rna_project_contact</a></li>
+<li><a href="rna_samp_ID/">rna_samp_ID</a></li>
+<li><a href="rna_sample_format/">rna_sample_format</a> - Solution in which the RNA sample has been suspended</li>
+<li><a href="rna_sample_name/">rna_sample_name</a> - Give the RNA sample a name that is meaningful to you. Sample names must be unique across all JGI projects and contain a-z, A-Z, 0-9, - and _ only.</li>
+<li><a href="rna_seq_project/">rna_seq_project</a></li>
+<li><a href="rna_seq_project_PI/">rna_seq_project_PI</a></li>
+<li><a href="rna_seq_project_name/">rna_seq_project_name</a></li>
+<li><a href="rna_volume/">rna_volume</a></li>
+<li><a href="salinity_category/">salinity_category</a> - Categorcial description of the sample's salinity. Examples: halophile, halotolerant, hypersaline, huryhaline</li>
+<li><a href="sample_collection_day/">sample_collection_day</a></li>
+<li><a href="sample_collection_hour/">sample_collection_hour</a></li>
+<li><a href="sample_collection_minute/">sample_collection_minute</a></li>
+<li><a href="sample_collection_month/">sample_collection_month</a></li>
+<li><a href="sample_collection_site/">sample_collection_site</a></li>
+<li><a href="sample_collection_year/">sample_collection_year</a></li>
+<li><a href="sample_link/">sample_link</a> - A unique identifier to assign parent-child, subsample, or sibling samples. This is relevant when a sample or other material was used to generate the new sample.</li>
+<li><a href="sample_shipped/">sample_shipped</a> - The total amount or size (volume (ml), mass (g) or area (m2) ) of sample sent to EMSL</li>
+<li><a href="sample_type/">sample_type</a> - Type of sample being submitted</li>
+<li><a href="seqid/">seqid</a> - The ID of the landmark used to establish the coordinate system for the current feature.<ul>
+<li><a href="genome_feature_seqid/">genome feature➞seqid</a></li>
+</ul>
+</li>
+<li><a href="sequencing_field/">sequencing field</a></li>
+<li><a href="smarts_string/">smarts string</a><ul>
+<li><a href="reaction_smarts_string/">reaction➞smarts string</a></li>
+</ul>
+</li>
+<li><a href="smiles/">smiles</a> - A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.<ul>
+<li><a href="chemical_entity_smiles/">chemical entity➞smiles</a></li>
+</ul>
+</li>
+<li><a href="soil_annual_season_temp/">soil_annual_season_temp</a></li>
+<li><a href="soluble_iron_micromol/">soluble_iron_micromol</a></li>
+<li><a href="start_date_inc/">start_date_inc</a> - Date the incubation was started. Only relevant for incubation samples.</li>
+<li><a href="start_time_inc/">start_time_inc</a> - Time the incubation was started. Only relevant for incubation samples.</li>
+<li><a href="started_at_time/">started at time</a><ul>
+<li><a href="workflow_execution_activity_started_at_time/">workflow execution activity➞started at time</a></li>
+</ul>
+</li>
+<li><a href="stoichiometry/">stoichiometry</a><ul>
+<li><a href="reaction_participant_stoichiometry/">reaction participant➞stoichiometry</a></li>
+</ul>
+</li>
+<li><a href="strand/">strand</a> - The strand on which a feature is located. Has a value of '+' (sense strand or forward strand) or '-' (anti-sense strand or reverse strand).<ul>
+<li><a href="genome_feature_strand/">genome feature➞strand</a></li>
+</ul>
+</li>
+<li><a href="study_image/">study image</a> - Links a study to one or more images.</li>
+<li><a href="study_set/">study set</a> - This property links a database object to the set of studies within it.</li>
+<li><a href="subject/">subject</a></li>
+<li><a href="subsurface_depth/">subsurface_depth</a></li>
+<li><a href="subsurface_depth2/">subsurface_depth2</a></li>
+<li><a href="technical_reps/">technical_reps</a> - If sending multiple technical replicates of the same sample, indicate how many replicates are being sent</li>
+<li><a href="term/">term</a> - pointer to an ontology class</li>
+<li><a href="title/">title</a> - A name given to the entity that differs from the name/label programmatically assigned to it. For example, when extracting study information for GOLD, the GOLD system has assigned a name/label. However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.</li>
+<li><a href="too_short_contig_num/">too short contig num</a></li>
+<li><a href="type/">type</a> - An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.<ul>
+<li><a href="attribute_value_type/">attribute value➞type</a> - An optional string that specified the type of object.</li>
+<li><a href="functional_annotation_type/">functional annotation➞type</a> - TODO</li>
+<li><a href="genome_feature_type/">genome feature➞type</a> - A type from the sequence ontology</li>
+<li><a href="workflow_execution_activity_type/">workflow execution activity➞type</a></li>
+</ul>
+</li>
+<li><a href="unbinned_contig_num/">unbinned contig num</a></li>
+<li><a href="used/">used</a><ul>
+<li><a href="metabolomics_analysis_activity_used/">metabolomics analysis activity➞used</a> - The instrument used to collect the data used in the analysis</li>
+<li><a href="metaproteomics_analysis_activity_used/">metaproteomics analysis activity➞used</a> - The instrument used to collect the data used in the analysis</li>
+<li><a href="nom_analysis_activity_used/">nom analysis activity➞used</a> - The instrument used to collect the data used in the analysis</li>
+</ul>
+</li>
+<li><a href="was_associated_with/">was associated with</a><ul>
+<li><a href="workflow_execution_activity_was_associated_with/">workflow execution activity➞was associated with</a> - the agent/entity associated with the generation of the file</li>
+</ul>
+</li>
+<li><a href="was_generated_by/">was generated by</a><ul>
+<li><a href="functional_annotation_was_generated_by/">functional annotation➞was generated by</a> - provenance for the annotation.</li>
+</ul>
+</li>
+<li><a href="was_informed_by/">was informed by</a><ul>
+<li><a href="workflow_execution_activity_was_informed_by/">workflow execution activity➞was informed by</a></li>
+</ul>
+</li>
+<li><a href="websites/">websites</a> - A list of websites that are associated with the entity.<ul>
+<li><a href="study_websites/">study➞websites</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="enums">Enums</h3>
+<ul>
+<li><a href="analysis_type_enum/">analysis_type_enum</a></li>
+<li><a href="arch_struc_enum/">arch_struc_enum</a></li>
+<li><a href="biol_stat_enum/">biol_stat_enum</a></li>
+<li><a href="biotic_relationship_enum/">biotic_relationship_enum</a></li>
+<li><a href="build_docs_enum/">build_docs_enum</a></li>
+<li><a href="build_occup_type_enum/">build_occup_type_enum</a></li>
+<li><a href="building_setting_enum/">building_setting_enum</a></li>
+<li><a href="ceil_cond_enum/">ceil_cond_enum</a></li>
+<li><a href="ceil_finish_mat_enum/">ceil_finish_mat_enum</a></li>
+<li><a href="ceil_texture_enum/">ceil_texture_enum</a></li>
+<li><a href="ceil_type_enum/">ceil_type_enum</a></li>
+<li><a href="credit enum.md">credit enum</a></li>
+<li><a href="cur_land_use_enum/">cur_land_use_enum</a></li>
+<li><a href="depos_env_enum/">depos_env_enum</a></li>
+<li><a href="dna_cont_type_enum/">dna_cont_type_enum</a></li>
+<li><a href="dna_dnase_enum/">dna_dnase_enum</a></li>
+<li><a href="dna_sample_format_enum/">dna_sample_format_enum</a></li>
+<li><a href="dnase_rna_enum/">dnase_rna_enum</a></li>
+<li><a href="door_comp_type_enum/">door_comp_type_enum</a></li>
+<li><a href="door_cond_enum/">door_cond_enum</a></li>
+<li><a href="door_direct_enum/">door_direct_enum</a></li>
+<li><a href="door_loc_enum/">door_loc_enum</a></li>
+<li><a href="door_mat_enum/">door_mat_enum</a></li>
+<li><a href="door_move_enum/">door_move_enum</a></li>
+<li><a href="door_type_enum/">door_type_enum</a></li>
+<li><a href="door_type_metal_enum/">door_type_metal_enum</a></li>
+<li><a href="door_type_wood_enum/">door_type_wood_enum</a></li>
+<li><a href="drainage_class_enum/">drainage_class_enum</a></li>
+<li><a href="drawings_enum/">drawings_enum</a></li>
+<li><a href="ext_wall_orient_enum/">ext_wall_orient_enum</a></li>
+<li><a href="ext_window_orient_enum/">ext_window_orient_enum</a></li>
+<li><a href="fao_class_enum/">fao_class_enum</a></li>
+<li><a href="file type enum.md">file type enum</a></li>
+<li><a href="filter_type_enum/">filter_type_enum</a></li>
+<li><a href="floor_cond_enum/">floor_cond_enum</a></li>
+<li><a href="floor_finish_mat_enum/">floor_finish_mat_enum</a></li>
+<li><a href="floor_struc_enum/">floor_struc_enum</a></li>
+<li><a href="floor_water_mold_enum/">floor_water_mold_enum</a></li>
+<li><a href="freq_clean_enum/">freq_clean_enum</a></li>
+<li><a href="furniture_enum/">furniture_enum</a></li>
+<li><a href="gender_restroom_enum/">gender_restroom_enum</a></li>
+<li><a href="growth_habit_enum/">growth_habit_enum</a></li>
+<li><a href="handidness_enum/">handidness_enum</a></li>
+<li><a href="hc_produced_enum/">hc_produced_enum</a></li>
+<li><a href="hcr_enum/">hcr_enum</a></li>
+<li><a href="hcr_geol_age_enum/">hcr_geol_age_enum</a></li>
+<li><a href="heat_cool_type_enum/">heat_cool_type_enum</a></li>
+<li><a href="heat_deliv_loc_enum/">heat_deliv_loc_enum</a></li>
+<li><a href="horizon_enum/">horizon_enum</a></li>
+<li><a href="host_sex_enum/">host_sex_enum</a></li>
+<li><a href="indoor_space_enum/">indoor_space_enum</a></li>
+<li><a href="indoor_surf_enum/">indoor_surf_enum</a></li>
+<li><a href="int_wall_cond_enum/">int_wall_cond_enum</a></li>
+<li><a href="light_type_enum/">light_type_enum</a></li>
+<li><a href="lithology_enum/">lithology_enum</a></li>
+<li><a href="mech_struc_enum/">mech_struc_enum</a></li>
+<li><a href="occup_document_enum/">occup_document_enum</a></li>
+<li><a href="organism_count_enum/">organism_count_enum</a></li>
+<li><a href="oxy_stat_samp_enum/">oxy_stat_samp_enum</a></li>
+<li><a href="plant_growth_med_enum/">plant_growth_med_enum</a></li>
+<li><a href="plant_sex_enum/">plant_sex_enum</a></li>
+<li><a href="processing_institution_enum/">processing_institution_enum</a></li>
+<li><a href="profile_position_enum/">profile_position_enum</a></li>
+<li><a href="quad_pos_enum/">quad_pos_enum</a></li>
+<li><a href="rel_samp_loc_enum/">rel_samp_loc_enum</a></li>
+<li><a href="rel_to_oxygen_enum/">rel_to_oxygen_enum</a></li>
+<li><a href="rna_cont_type_enum/">rna_cont_type_enum</a></li>
+<li><a href="rna_sample_format_enum/">rna_sample_format_enum</a></li>
+<li><a href="room_condt_enum/">room_condt_enum</a></li>
+<li><a href="room_connected_enum/">room_connected_enum</a></li>
+<li><a href="room_loc_enum/">room_loc_enum</a></li>
+<li><a href="room_samp_pos_enum/">room_samp_pos_enum</a></li>
+<li><a href="room_type_enum/">room_type_enum</a></li>
+<li><a href="samp_capt_status_enum/">samp_capt_status_enum</a></li>
+<li><a href="samp_collect_point_enum/">samp_collect_point_enum</a></li>
+<li><a href="samp_dis_stage_enum/">samp_dis_stage_enum</a></li>
+<li><a href="samp_floor_enum/">samp_floor_enum</a></li>
+<li><a href="samp_md_enum/">samp_md_enum</a></li>
+<li><a href="samp_subtype_enum/">samp_subtype_enum</a></li>
+<li><a href="samp_weather_enum/">samp_weather_enum</a></li>
+<li><a href="sample_type_enum/">sample_type_enum</a></li>
+<li><a href="season_use_enum/">season_use_enum</a></li>
+<li><a href="sediment_type_enum/">sediment_type_enum</a></li>
+<li><a href="shading_device_cond_enum/">shading_device_cond_enum</a></li>
+<li><a href="shading_device_type_enum/">shading_device_type_enum</a></li>
+<li><a href="soil_horizon_enum/">soil_horizon_enum</a></li>
+<li><a href="specific_enum/">specific_enum</a></li>
+<li><a href="sr_dep_env_enum/">sr_dep_env_enum</a></li>
+<li><a href="sr_geol_age_enum/">sr_geol_age_enum</a></li>
+<li><a href="sr_kerog_type_enum/">sr_kerog_type_enum</a></li>
+<li><a href="sr_lithology_enum/">sr_lithology_enum</a></li>
+<li><a href="substructure_type_enum/">substructure_type_enum</a></li>
+<li><a href="surf_air_cont_enum/">surf_air_cont_enum</a></li>
+<li><a href="surf_material_enum/">surf_material_enum</a></li>
+<li><a href="tidal_stage_enum/">tidal_stage_enum</a></li>
+<li><a href="tillage_enum/">tillage_enum</a></li>
+<li><a href="train_line_enum/">train_line_enum</a></li>
+<li><a href="train_stat_loc_enum/">train_stat_loc_enum</a></li>
+<li><a href="train_stop_loc_enum/">train_stop_loc_enum</a></li>
+<li><a href="vis_media_enum/">vis_media_enum</a></li>
+<li><a href="wall_const_type_enum/">wall_const_type_enum</a></li>
+<li><a href="wall_finish_mat_enum/">wall_finish_mat_enum</a></li>
+<li><a href="wall_loc_enum/">wall_loc_enum</a></li>
+<li><a href="wall_surf_treatment_enum/">wall_surf_treatment_enum</a></li>
+<li><a href="wall_texture_enum/">wall_texture_enum</a></li>
+<li><a href="water_feat_type_enum/">water_feat_type_enum</a></li>
+<li><a href="weekday_enum/">weekday_enum</a></li>
+<li><a href="window_cond_enum/">window_cond_enum</a></li>
+<li><a href="window_cover_enum/">window_cover_enum</a></li>
+<li><a href="window_horiz_pos_enum/">window_horiz_pos_enum</a></li>
+<li><a href="window_loc_enum/">window_loc_enum</a></li>
+<li><a href="window_mat_enum/">window_mat_enum</a></li>
+<li><a href="window_type_enum/">window_type_enum</a></li>
+<li><a href="window_vert_pos_enum/">window_vert_pos_enum</a></li>
+</ul>
+<h3 id="subsets">Subsets</h3>
+<ul>
+<li><a href="DataObjectSubset/">DataObjectSubset</a> - Subset consisting of the data objects that either inputs or outputs of processes or workflows.</li>
+<li><a href="Environment/">Environment</a></li>
+<li><a href="Investigation/">Investigation</a></li>
+<li><a href="MixsExtension/">MixsExtension</a></li>
+<li><a href="NucleicAcidSequenceSource/">NucleicAcidSequenceSource</a></li>
+<li><a href="SampleSubset/">SampleSubset</a> - Subset consisting of entities linked to the processing of samples.  Currently, this subset consists of study, omics process, and biosample.</li>
+<li><a href="Sequencing/">Sequencing</a></li>
+<li><a href="Soil/">Soil</a></li>
+<li><a href="WorkflowSubset/">WorkflowSubset</a> - Subset consisting of just the workflow execution activities</li>
+</ul>
+<h3 id="types">Types</h3>
+<h4 id="built-in">Built in</h4>
+<ul>
+<li><strong>Bool</strong></li>
+<li><strong>Decimal</strong></li>
+<li><strong>ElementIdentifier</strong></li>
+<li><strong>NCName</strong></li>
+<li><strong>NodeIdentifier</strong></li>
+<li><strong>URI</strong></li>
+<li><strong>URIorCURIE</strong></li>
+<li><strong>XSDDate</strong></li>
+<li><strong>XSDDateTime</strong></li>
+<li><strong>XSDTime</strong></li>
+<li><strong>float</strong></li>
+<li><strong>int</strong></li>
+<li><strong>str</strong></li>
+</ul>
+<h4 id="defined">Defined</h4>
+<ul>
+<li><a href="types/Boolean/">Boolean</a>  (<strong>Bool</strong>)  - A binary (true or false) value</li>
+<li><a href="types/Bytes/">Bytes</a>  (<strong>int</strong>)  - An integer value that corresponds to a size in bytes</li>
+<li><a href="types/Date/">Date</a>  (<strong>XSDDate</strong>)  - a date (year, month and day) in an idealized calendar</li>
+<li><a href="types/DateOrDatetime/">DateOrDatetime</a>  (<strong>str</strong>)  - Either a date or a datetime</li>
+<li><a href="types/Datetime/">Datetime</a>  (<strong>XSDDateTime</strong>)  - The combination of a date and time</li>
+<li><a href="types/Decimal/">Decimal</a>  (<strong>Decimal</strong>)  - A real number with arbitrary precision that conforms to the xsd:decimal specification</li>
+<li><a href="types/DecimalDegree/">DecimalDegree</a>  (<strong>float</strong>)  - A decimal degree expresses latitude or longitude as decimal fractions.</li>
+<li><a href="types/Double/">Double</a>  (<strong>float</strong>)  - A real number that conforms to the xsd:double specification</li>
+<li><a href="types/ExternalIdentifier/">ExternalIdentifier</a>  (<a href="types/Uriorcurie/">Uriorcurie</a>)  - A CURIE representing an external identifier</li>
+<li><a href="types/Float/">Float</a>  (<strong>float</strong>)  - A real number that conforms to the xsd:float specification</li>
+<li><a href="types/Integer/">Integer</a>  (<strong>int</strong>)  - An integer</li>
+<li><a href="types/LanguageCode/">LanguageCode</a>  (<strong>str</strong>)  - A language code conforming to ISO_639-1</li>
+<li><a href="types/Ncname/">Ncname</a>  (<strong>NCName</strong>)  - Prefix part of CURIE</li>
+<li><a href="types/Nodeidentifier/">Nodeidentifier</a>  (<strong>NodeIdentifier</strong>)  - A URI, CURIE or BNODE that represents a node in a model.</li>
+<li><a href="types/Objectidentifier/">Objectidentifier</a>  (<strong>ElementIdentifier</strong>)  - A URI or CURIE that represents an object in the model.</li>
+<li><a href="types/String/">String</a>  (<strong>str</strong>)  - A character string</li>
+<li><a href="types/Time/">Time</a>  (<strong>XSDTime</strong>)  - A time object represents a (local) time of day, independent of any particular day</li>
+<li><a href="types/Unit/">Unit</a>  (<strong>str</strong>) </li>
+<li><a href="types/Uri/">Uri</a>  (<strong>URI</strong>)  - a complete URI</li>
+<li><a href="types/Uriorcurie/">Uriorcurie</a>  (<strong>URIorCURIE</strong>)  - a URI or a CURIE</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="home/" class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="Metadata_Documentation_Overview/" class="btn btn-neutral float-right" title="NMDC Metadata Standards Documentation">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="home/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="Metadata_Documentation_Overview/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.3.0
+Build Date UTC : 2022-07-25 17:25:03.193632+00:00
+-->

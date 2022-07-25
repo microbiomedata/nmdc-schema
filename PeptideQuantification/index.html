@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Class: peptide quantification - NMDC Schema Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Class: peptide quantification";
+        var mkdocs_page_input_path = "PeptideQuantification.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> NMDC Schema Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../home/">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">NMDC Schema</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Metadata_Documentation_Overview/">NMDC Metadata Standards Documentation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../schema-validation/">NMDC Schema Validation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../identifiers/">Identifiers in NMDC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../NMDC_MIxS_Soil_documentation/">MIxS Soil Package</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../credits/">Credits</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">NMDC Schema Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Class: peptide quantification</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="class-peptide-quantification">Class: peptide quantification</h1>
+<p>This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information</p>
+<p>URI: <a href="https://microbiomedata/meta/PeptideQuantification">nmdc:PeptideQuantification</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[GeneProduct]&lt;all%20proteins%200..*-%20[PeptideQuantification&#124;peptide_sequence:string%20%3F;min_q_value:float%20%3F;peptide_spectral_count:integer%20%3F;peptide_sum_masic_abundance:integer%20%3F],[GeneProduct]&lt;best%20protein%200..1-%20[PeptideQuantification],[MetaproteomicsAnalysisActivity]++-%20has%20peptide%20quantifications%200..*&gt;[PeptideQuantification],[MetaproteomicsAnalysisActivity],[GeneProduct]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[GeneProduct]&lt;all%20proteins%200..*-%20[PeptideQuantification&#124;peptide_sequence:string%20%3F;min_q_value:float%20%3F;peptide_spectral_count:integer%20%3F;peptide_sum_masic_abundance:integer%20%3F],[GeneProduct]&lt;best%20protein%200..1-%20[PeptideQuantification],[MetaproteomicsAnalysisActivity]++-%20has%20peptide%20quantifications%200..*&gt;[PeptideQuantification],[MetaproteomicsAnalysisActivity],[GeneProduct]" /></a></p>
+<h2 id="referenced-by-class">Referenced by Class</h2>
+<ul>
+<li><strong>None</strong> <em><a href="../has_peptide_quantifications/">has peptide quantifications</a></em>  <sub>0..*</sub>  <strong><a href="./">PeptideQuantification</a></strong></li>
+<li><strong><a href="../MetaproteomicsAnalysisActivity/">MetaproteomicsAnalysisActivity</a></strong> <em><a href="../metaproteomics_analysis_activity_has_peptide_quantifications/">metaproteomics analysis activity➞has peptide quantifications</a></em>  <sub>0..*</sub>  <strong><a href="./">PeptideQuantification</a></strong></li>
+</ul>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
+<ul>
+<li><a href="../peptide_quantification_peptide_sequence/">peptide quantification➞peptide sequence</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="../peptide_quantification_best_protein/">peptide quantification➞best protein</a>  <sub>0..1</sub><ul>
+<li>Description: the specific protein identifier most correctly associated with the peptide sequence</li>
+<li>Range: <a href="../GeneProduct/">GeneProduct</a></li>
+</ul>
+</li>
+<li><a href="../peptide_quantification_all_proteins/">peptide quantification➞all proteins</a>  <sub>0..*</sub><ul>
+<li>Description: the list of protein identifiers that are associated with the peptide sequence</li>
+<li>Range: <a href="../GeneProduct/">GeneProduct</a></li>
+</ul>
+</li>
+<li><a href="../peptide_quantification_min_q_value/">peptide quantification➞min_q_value</a>  <sub>0..1</sub><ul>
+<li>Description: smallest Q-Value associated with the peptide sequence as provided by MSGFPlus tool</li>
+<li>Range: <a href="../types/Float/">Float</a></li>
+</ul>
+</li>
+<li><a href="../peptide_quantification_peptide_spectral_count/">peptide quantification➞peptide_spectral_count</a>  <sub>0..1</sub><ul>
+<li>Description: sum of filter passing MS2 spectra associated with the peptide sequence within a given LC-MS/MS data file</li>
+<li>Range: <a href="../types/Integer/">Integer</a></li>
+</ul>
+</li>
+<li><a href="../peptide_quantification_peptide_sum_masic_abundance/">peptide quantification➞peptide_sum_masic_abundance</a>  <sub>0..1</sub><ul>
+<li>Description: combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the peptide sequence from a given LC-MS/MS data file using the MASIC tool</li>
+<li>Range: <a href="../types/Integer/">Integer</a></li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

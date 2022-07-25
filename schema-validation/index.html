@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>NMDC Schema Validation - NMDC Schema Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "NMDC Schema Validation";
+        var mkdocs_page_input_path = "schema-validation.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> NMDC Schema Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../home/">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">NMDC Schema</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Metadata_Documentation_Overview/">NMDC Metadata Standards Documentation</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">NMDC Schema Validation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#syntactically-correct-json">Syntactically correct JSON</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#schema-validation">Schema validation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-to-do-if-your-json-does-not-validate">What to do if your JSON does not validate</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nmdc-producer-sop">NMDC Producer SOP</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../identifiers/">Identifiers in NMDC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../NMDC_MIxS_Soil_documentation/">MIxS Soil Package</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../credits/">Credits</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">NMDC Schema Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>NMDC Schema Validation</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="validating-json-objects-against-the-nmdc-schema">Validating json objects against the NMDC schema</h1>
+<p>This document assumes knowledge of
+<a href="https://www.json.org/json-en.html">JSON</a>. It also assumes rudimentary
+familiarity with <a href="https://json-schema.org/">JSON-Schema</a> but don't
+worry if you are not an expert on this.</p>
+<p>We can conceive of validation of a piece of JSON at two levels</p>
+<ol>
+<li>The JSON should be syntactically correct JSON</li>
+<li>The JSON should conform to the NMDC schema</li>
+</ol>
+<h2 id="syntactically-correct-json">Syntactically correct JSON</h2>
+<p>It is crucial that the JSON is syntactically valid, otherwise it can't even be schema-validated.</p>
+<p>There are a variety of ways to check for this. We recommend using jsonschema to validate this, see below.</p>
+<p>NOTE: all NMDC JSON-producing tools, libraries, or scripts SHOULD use a standard json library. If you are using a robust standard json library, your output is practically guaranteed to be syntactically valid JSON.</p>
+<p>It is strongly recommended that you do NOT generate JSON by methods such as directly manipulating json strings or printing directly. This is guaranteed to be fragile/non-robust. Even if your code works now, it is certain it will fail later and produce incorrect JSON.</p>
+<p>For Python, there is only one choice:</p>
+<p>https://docs.python.org/3/library/json.html</p>
+<p>If you are not using this, you should</p>
+<h2 id="schema-validation">Schema validation</h2>
+<p>The JSON-Schema for NMDC is maintained in this github repo, under <a href="../jsonschema/nmdc.schema.json">jsonschema/nmdc.schema.json</a></p>
+<p>Note that the JSON-Schema is generated from a higher level YAML
+representation, using a modeling framework called linkML. See the
+README for details. For understanding the schema, you may be better
+looking at the auto-generated docs. However, for computational
+conformance, the JSON-Schema is what is should be used.</p>
+<p>There are a variety of json schema validators, these will give the same results. There are web playgrounds for this. But for simplicity we recommend the Python <a href="https://pypi.org/project/jsonschema/">jsonschema package</a></p>
+<p>To install:</p>
+<pre><code class="language-bash">pip install jsonschema
+</code></pre>
+<p>Assume you have a file MYFILE that is json intended to conform</p>
+<pre><code class="language-bash">jsonschema -i /PATH/TO/MYFILE.json jsonschema/nmdc.schema.json
+</code></pre>
+<p>If the json is valid, there will be no output and the script will pass. If there are problems these will be reported.</p>
+<p>You can try this with some ready-made examples in this repo:</p>
+<pre><code class="language-bash">jsonschema -i examples/nmdc-01.json jsonschema/nmdc.schema.json
+</code></pre>
+<p>Note: nmdc.schema.json describes each model object, its required attributes and attribute types.  The examples themselves use JSON notation to allow multiple instances of the objects in the JSON schema, to be submitted in one file.</p>
+<p>You can also use the jsonschema library to validate directly from within your python.</p>
+<h2 id="what-to-do-if-your-json-does-not-validate">What to do if your JSON does not validate</h2>
+<p>There are 3 possibilities:</p>
+<ol>
+<li>Your json is good, and the schema needs to be extended or modified to account</li>
+<li>you need to modify the json to conform</li>
+<li>some other odd bug somewhere</li>
+</ol>
+<p>For 1, you can go right ahead and make PR on the schema yaml. However,
+if you are not comfortable doing this then you can get help from one
+of the schema developers. We recommend filing a new ticket explaining the issue.</p>
+<p>For 2, this is upon you to fix this, however debugging can be aided in pulling out single instances of your model objects, and verifying that you are creating valid JSON (ie: paste one instance of your object into https://jsonlint.com/ or tools like it to verify its syntax).
+Another common issue is that you might have incorrect syntax for grouping many instances of a JSON object into an array.  Using a small subsample of your data and an online linter as above, can aide in debugging this.
+Sometimes the validation can complain about invalid syntax if the attribute of an instance object disagrees with the schema's typing (ie: you have an integer where a string is expected).</p>
+<h2 id="nmdc-producer-sop">NMDC Producer SOP</h2>
+<p>It is expected that different providers of JSON within the NMDC take
+responsibility for validating their JSON. Aim1 can help with any
+problems.</p>
+<p>Currently not all providers of information to NMDC provide JSON - for
+example, GOLD is provided as database dumps, and an ETL process
+transforms this into JSON. In future we would like to move towards a
+situation where all information is provided as JSON.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Metadata_Documentation_Overview/" class="btn btn-neutral float-left" title="NMDC Metadata Standards Documentation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../identifiers/" class="btn btn-neutral float-right" title="Identifiers in NMDC">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Metadata_Documentation_Overview/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../identifiers/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

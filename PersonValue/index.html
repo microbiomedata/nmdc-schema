@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Class: person value - NMDC Schema Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Class: person value";
+        var mkdocs_page_input_path = "PersonValue.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> NMDC Schema Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../home/">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">NMDC Schema</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Metadata_Documentation_Overview/">NMDC Metadata Standards Documentation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../schema-validation/">NMDC Schema Validation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../identifiers/">Identifiers in NMDC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../NMDC_MIxS_Soil_documentation/">MIxS Soil Package</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../credits/">Credits</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">NMDC Schema Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Class: person value</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="class-person-value">Class: person value</h1>
+<p>An attribute value representing a person</p>
+<p>URI: <a href="https://microbiomedata/meta/PersonValue">nmdc:PersonValue</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[CreditAssociation]++-%20applies%20to%20person%201..1&gt;[PersonValue&#124;orcid:string%20%3F;profile_image_url:string%20%3F;email:string%20%3F;name:string%20%3F;websites:string%20*;has_raw_value:string%20%3F;type(i):string%20%3F],[Study]++-%20principal%20investigator%200..1&gt;[PersonValue],[OmicsProcessing]++-%20principal%20investigator%200..1&gt;[PersonValue],[AttributeValue]^-[PersonValue],[Study],[OmicsProcessing],[CreditAssociation],[AttributeValue],[Activity]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[CreditAssociation]++-%20applies%20to%20person%201..1&gt;[PersonValue&#124;orcid:string%20%3F;profile_image_url:string%20%3F;email:string%20%3F;name:string%20%3F;websites:string%20*;has_raw_value:string%20%3F;type(i):string%20%3F],[Study]++-%20principal%20investigator%200..1&gt;[PersonValue],[OmicsProcessing]++-%20principal%20investigator%200..1&gt;[PersonValue],[AttributeValue]^-[PersonValue],[Study],[OmicsProcessing],[CreditAssociation],[AttributeValue],[Activity]" /></a></p>
+<h2 id="parents">Parents</h2>
+<ul>
+<li>is_a: <a href="../AttributeValue/">AttributeValue</a> - The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic value and the structured value</li>
+</ul>
+<h2 id="referenced-by-class">Referenced by Class</h2>
+<ul>
+<li><strong><a href="../CreditAssociation/">CreditAssociation</a></strong> <em><a href="../applies_to_person/">applies to person</a></em>  <sub>1..1</sub>  <strong><a href="./">PersonValue</a></strong></li>
+<li><strong>None</strong> <em><a href="../principal_investigator/">principal investigator</a></em>  <sub>0..1</sub>  <strong><a href="./">PersonValue</a></strong></li>
+</ul>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
+<ul>
+<li><a href="../person_value_orcid/">person value➞orcid</a>  <sub>0..1</sub><ul>
+<li>Description: The ORCID of a person.</li>
+<li>Range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="../profile_image_url/">profile image url</a>  <sub>0..1</sub><ul>
+<li>Description: A url that points to an image of a person.</li>
+<li>Range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="../person_value_email/">person value➞email</a>  <sub>0..1</sub><ul>
+<li>Description: An email address for an entity such as a person. This should be the primarly email address used.</li>
+<li>Range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="../person_value_name/">person value➞name</a>  <sub>0..1</sub><ul>
+<li>Description: The full name of the Investigator. It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.</li>
+<li>Range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="../websites/">websites</a>  <sub>0..*</sub><ul>
+<li>Description: A list of websites that are associated with the entity.</li>
+<li>Range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="../person_value_has_raw_value/">person value➞has raw value</a>  <sub>0..1</sub><ul>
+<li>Description: The full name of the Investigator in format FIRST LAST.</li>
+<li>Range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="inherited-from-attribute-value">Inherited from attribute value:</h3>
+<ul>
+<li><a href="../was_generated_by/">was generated by</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../Activity/">Activity</a></li>
+</ul>
+</li>
+<li><a href="../attribute_value_type/">attribute value➞type</a>  <sub>0..1</sub><ul>
+<li>Description: An optional string that specified the type of object.</li>
+<li>Range: <a href="../types/String/">String</a></li>
+<li>Example: nmdc:Biosample None</li>
+<li>Example: nmdc:Study None</li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

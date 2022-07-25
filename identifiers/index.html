@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Identifiers in NMDC - NMDC Schema Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Identifiers in NMDC";
+        var mkdocs_page_input_path = "identifiers.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> NMDC Schema Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../home/">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">NMDC Schema</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Metadata_Documentation_Overview/">NMDC Metadata Standards Documentation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../schema-validation/">NMDC Schema Validation</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Identifiers in NMDC</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#curies-prefixed-ids">CURIEs - prefixed IDs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#insdc-biosamples">INSDC BioSamples</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#gold-identifiers">GOLD identifiers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#identifiers-for-ontology-terms-and-function-descriptors">identifiers for ontology terms and function descriptors</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#kegg">KEGG</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#recommended-ids-for-use-within-nmdc">Recommended IDs for use within NMDC</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ids-minted-for-use-within-nmdc">IDs minted for use within NMDC</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reuse-vs-minting-new-ids">Reuse vs minting new IDs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ids-generated-during-workflows">IDs generated during workflows</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mixs-term-identifiers">MIxS term identifiers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#identifier-mapping">Identifier mapping</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#identifiers-and-semantic-web-uris">Identifiers and semantic web URIs</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../NMDC_MIxS_Soil_documentation/">MIxS Soil Package</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../credits/">Credits</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">NMDC Schema Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Identifiers in NMDC</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="identifiers-in-nmdc">Identifiers in NMDC</h1>
+<p>Identifiers are crucial for the NMDC, both for any data objects <em>created</em> (aka minted) and for any external objects <em>referenced</em></p>
+<p>Examples of entities that require identifiers:</p>
+<ul>
+<li>Samples</li>
+<li>Data objects (e.g. sequence files)</li>
+<li>Taxa (e.g. NCBITaxon or GTDB)</li>
+<li>Genes, Proteins</li>
+<li>Sequences (e.g. genome/transcriptome)</li>
+<li>Ontology terms and other descriptors<ul>
+<li>functional orthologs, e.g. KEGG.orthology (KO) terms</li>
+<li>pathways, e.g. KEGG.pathway, MetaCyc, GO</li>
+<li>reactions/activities: KEGG, MetaCyc</li>
+<li>chemical entities: CHEBI, CHEMBL, INCHI, ...</li>
+<li>sequence feature types: SO, Rfam</li>
+</ul>
+</li>
+</ul>
+<p>Identifiers should be:</p>
+<ul>
+<li>Permanent</li>
+<li>Unique</li>
+<li>Resolvable</li>
+<li>Opaque</li>
+</ul>
+<p>See <a href="https://www.ncbi.nlm.nih.gov/pubmed/28662064">McMurry et al, PMID:28662064</a> for more desiderata.</p>
+<h2 id="curies-prefixed-ids">CURIEs - prefixed IDs</h2>
+<p>Following McMurry et al we adopt the use of <em>prefixed identifiers</em></p>
+<p>The syntax is:</p>
+<pre><code>Prefix:LocalId
+</code></pre>
+<p>Examples:</p>
+<ul>
+<li>GO:0008152</li>
+<li>BIOSAMPLE:SAMEA2397676</li>
+<li>DOI:10.1038/nbt1156</li>
+</ul>
+<p>These prefixed identifiers are also known as CURIEs (Compact URIs). There is a <a href="https://www.w3.org/TR/curie">W3C specification</a> for these</p>
+<p>All prefixes should be registered with a standard identifier prefix system. These include:</p>
+<ul>
+<li>http://n2t.net</li>
+<li>http://identifiers.org</li>
+<li>http://obofoundry.org</li>
+</ul>
+<h2 id="examples">Examples</h2>
+<h3 id="insdc-biosamples">INSDC BioSamples</h3>
+<p>Registry entry: https://registry.identifiers.org/registry/biosample</p>
+<p>Example ID/CURIE: BIOSAMPLE:SAMEA2397676</p>
+<p>Resolving via identifiers.org: <a href="https://identifiers.org/BIOSAMPLE:SAMEA2397676">https://identifiers.org/BIOSAMPLE:SAMEA2397676</a></p>
+<p>Resolving via nt2.net: <a href="http://n2t.net/BIOSAMPLE:SAMEA2397676">http://n2t.net/BIOSAMPLE:SAMEA2397676</a></p>
+<h3 id="gold-identifiers">GOLD identifiers</h3>
+<p>https://registry.identifiers.org/registry/gold</p>
+<p>Example ID: <code>GOLD:Gp0119849</code></p>
+<p>Resolving via identifiers.org: https://identifiers.org/GOLD:Gp0119849</p>
+<h3 id="identifiers-for-ontology-terms-and-function-descriptors">identifiers for ontology terms and function descriptors</h3>
+<p>Most of the ontologies we use are in OBO. All OBO IDs are prefixed
+using the ontology ID space. The list of ID spaces can be found on
+http://obofoundry.org</p>
+<p>For example the ID/CURIE <code>ENVO:00002007</code> represents the class <code>sediment</code> and is expanded to a URI of http://purl.obolibrary.org/obo/ENVO_00002007</p>
+<h4 id="kegg">KEGG</h4>
+<p>KEGG is actually a set of databases, each with its own prefix, usually of form <code>KEGG.$database</code>, e.g.</p>
+<ul>
+<li><a href="https://registry.identifiers.org/registry/kegg.orthology">KEGG.ORTHOLOGY</a> (aka KO), e.g. KEGG.ORTHOLOGY:K00001</li>
+<li><a href="https://registry.identifiers.org/registry/kegg.compound">KEGG.COMPOUND</a>, e.g. KEGG.COMPOUND:C12345</li>
+</ul>
+<h2 id="recommended-ids-for-use-within-nmdc">Recommended IDs for use within NMDC</h2>
+<p>The NMDC schema is annotated with the set of IDs that are allowed to act as primary keys for instances of each class.</p>
+<p>For example the class <a href="https://microbiomedata.github.io/nmdc-metadata/docs/OrthologyGroup">OrthologyGroup</a> has a description of the IDs allowed on the class web page, the first listed is <a href="https://registry.identifiers.org/registry/kegg.orthology">KEGG.ORTHOLOGY</a></p>
+<p>The underlying yaml looks like this:</p>
+<pre><code>  orthology group:
+    is_a: functional annotation term
+    description: &gt;-
+      A set of genes or gene products in which all members are orthologous
+    id_prefixes:
+      - KEGG.ORTHOLOGY  ## KO number
+      - EGGNOG
+      - PFAM
+      - TIGRFAM
+      - SUPFAM
+      - PANTHER.FAMILY
+    exact_mappings:
+      - biolink:GeneFamily
+</code></pre>
+<p>The full URLs for each is in the jsonld context file</p>
+<h2 id="ids-minted-for-use-within-nmdc">IDs minted for use within NMDC</h2>
+<p>Note that NMDC schema mandates IDs for most objects. These always have the field name <a href="https://microbiomedata.github.io/nmdc-metadata/docs/id">id</a> </p>
+<h2 id="reuse-vs-minting-new-ids">Reuse vs minting new IDs</h2>
+<p>We try to reuse IDs as far as possible. For example, for any sample already in GOLD, we use the GOLD sample identifier, e.g. GOLD:Gb.....</p>
+<h2 id="ids-generated-during-workflows">IDs generated during workflows</h2>
+<p>This section is in  progress. See https://github.com/microbiomedata/nmdc-metadata/issues/195</p>
+<p>All instances of <a href="https://microbiomedata.github.io/nmdc-metadata/docs/OmicsProcessing">OmicsProcessing</a> have IDs. The policy for ID depends on the provider.</p>
+<p>Currently metagenomics omics objects look like this:</p>
+<pre><code class="language-yaml">      id: &quot;gold:Gp0108335&quot;
+      name: &quot;Thawing permafrost microbial communities from the Arctic, studying carbon transformations - Permafrost 712P3D&quot;
+      has_input: 
+        - &quot;gold:Gb0108335&quot;
+      part_of: 
+        - &quot;gold:Gs0112340&quot;
+      has_output: 
+        - &quot;jgi:551a20d30d878525404e90d5&quot;
+      omics_type: Metagenome
+      type: &quot;nmdc:OmicsProcessing&quot;
+      add_date: &quot;30-OCT-14 12.00.00.000000000 AM&quot;
+      mod_date: &quot;22-MAY-20 06.13.12.927000000 PM&quot;
+      ncbi_project_name: &quot;Thawing permafrost microbial communities from the Arctic, studying carbon transformations - Permafrost 712P3D&quot;
+      processing_institution: &quot;Joint Genome Institute&quot;
+      principal_investigator_name: &quot;Virginia Rich&quot;
+</code></pre>
+<p>note that we use re-using the GOLD ID rather than minting a new one</p>
+<p>the linked data object uses a jgi prefix and an md5 hash</p>
+<pre><code class="language-yaml">      id: &quot;jgi:551a20d30d878525404e90d5&quot;
+      name: &quot;8871.1.114459.GCCAAT.fastq.gz&quot;
+      description: &quot;Raw sequencer read data&quot;
+      file_size_bytes: 17586370657
+      type: &quot;nmdc:DataObject&quot;
+</code></pre>
+<p>note that currently jgi is not registered and thus the ID is not resolvable</p>
+<p>Currently metaproteomics omics objects look like this:</p>
+<pre><code class="language-yaml">      id: &quot;emsl:404590&quot;
+      name: &quot;FECB_21_5093B_01_23Dec14_Tiger_14-11-12&quot;
+      description: &quot;High res MS with low res CID MSn&quot;
+      part_of: 
+        - &quot;gold:Gs0110132&quot;
+      has_output: 
+        - &quot;emsl:output_404590&quot;
+      omics_type: Proteomics
+      type: &quot;nmdc:OmicsProcessing&quot;
+      instrument_name: &quot;VOrbiETD03&quot;
+      processing_institution: &quot;Environmental Molecular Sciences Lab&quot;
+</code></pre>
+<p>this is suboptimal; <code>emsl</code> is not yet registered, and it's not clear that the integer is unique within emsl, let alone the nmdc subset</p>
+<p>the output data objects are formed from these:</p>
+<pre><code class="language-yaml">      id: &quot;emsl:output_404590&quot;
+      name: &quot;output: FECB_21_5093B_01_23Dec14_Tiger_14-11-12&quot;
+      description: &quot;High res MS with low res CID MSn&quot;
+      file_size_bytes: 503296678
+      type: &quot;nmdc:DataObject&quot;
+</code></pre>
+<p>the data objects use hashes (md5) prefixed with nmdc:</p>
+<pre><code class="language-yaml">      name: &quot;404590_resultant.tsv&quot;
+      description: &quot;Aggregation of analysis tools{MSGFplus, MASIC} results&quot;
+      file_size_bytes: 10948480
+      type: &quot;nmdc:DataObject&quot;
+      id: &quot;nmdc:e0c70280a7a23c7c5cc1e589f72e896e&quot;
+</code></pre>
+<p>note nmdc is not yet registered</p>
+<p>Both metaG and metaT analyses produce GFF3 files. See <a href="https://github.com/microbiomedata/nmdc-metadata/issues/184">issue 184</a> for more on how the GFF is modeled.</p>
+<p>The main entity we care about in these is the [gene product] https://microbiomedata.github.io/nmdc-metadata/docs/GeneProduct) ID (usually a protein), this is what functional annotation hangs off. </p>
+<p>This is typically a protein encoded by a CDS, e.g.</p>
+<pre><code>Ga0185794_41    GeneMark.hmm-2 v1.05    CDS     48      1037    56.13   +       0       ID=Ga0185794_41_48_1037;translation_table=11;start_type=ATG;product=5-methylthioadenosine/S-adenosylhomocysteine deaminase;product_source=KO:K12960;cath_funfam=3.20.20.140;cog=COG0402;ko=KO:K12960;ec_number=EC:3.5.4.28,EC:3.5.4.31;pfam=PF01979;superfamily=51338,51556
+</code></pre>
+<p>Currently we are prefixing the ID field in GFF with <code>nmdc</code>, e.g. <code>nmdc:Ga0185794_41_48_1037</code> as the protein ID</p>
+<p>When converting col9 we ensure that each ID is correctly prefixed. So for example, we use <code>KEGG.OTHOLOGY:K12960</code> not <code>KO:K12960</code> as the former is the official prefix according to KEGG and identifiers.org</p>
+<p>We will also later need a policy for IDs for the sequences in col1 (ie genome or transcript), please return later for more details...</p>
+<h2 id="mixs-term-identifiers">MIxS term identifiers</h2>
+<p>We are working with the GSC to provide permanent IDs for MIxS terms. Note these terms are schema-level rather than data-level.</p>
+<p>Please check this section later</p>
+<p>For now we place these in the nmdc namespaces, e.g</p>
+<p><code>nmdc:alt</code></p>
+<h2 id="identifier-mapping">Identifier mapping</h2>
+<p>Please check this section later</p>
+<h2 id="identifiers-and-semantic-web-uris">Identifiers and semantic web URIs</h2>
+<p>We produce a JSON-LD context with the schema:</p>
+<ul>
+<li><a href="jsonschema/nmdc.context.jsonld">jsonschema/nmdc.context.jsonld</a></li>
+</ul>
+<p>When this is combined with schema-conformant JSON, RDF can be automatically created using the intended URIs</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../schema-validation/" class="btn btn-neutral float-left" title="NMDC Schema Validation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../NMDC_MIxS_Soil_documentation/" class="btn btn-neutral float-right" title="MIxS Soil Package">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../schema-validation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../NMDC_MIxS_Soil_documentation/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

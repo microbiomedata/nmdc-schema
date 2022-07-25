@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Class: data object - NMDC Schema Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Class: data object";
+        var mkdocs_page_input_path = "DataObject.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> NMDC Schema Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../home/">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">NMDC Schema</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Metadata_Documentation_Overview/">NMDC Metadata Standards Documentation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../schema-validation/">NMDC Schema Validation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../identifiers/">Identifiers in NMDC</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../NMDC_MIxS_Soil_documentation/">MIxS Soil Package</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../credits/">Credits</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">NMDC Schema Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Class: data object</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="class-data-object">Class: data object</h1>
+<p>An object that primarily consists of symbols that represent information.   Files, records, and omics data are examples of data objects.</p>
+<p>URI: <a href="https://microbiomedata/meta/DataObject">nmdc:DataObject</a></p>
+<p><a href="https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[Database],[Activity]&lt;was%20generated%20by%200..1-%20[DataObject&#124;file_size_bytes:bytes%20%3F;md5_checksum:string%20%3F;data_object_type:file_type_enum%20%3F;compression_type:string%20%3F;url:string%20%3F;type:string%20%3F;name:string;description:string;id(i):string;alternative_identifiers(i):string%20*],[Database]++-%20data%20object%20set%200..*&gt;[DataObject],[NamedThing]^-[DataObject],[Activity]"><img alt="img" src="https://yuml.me/diagram/nofunky;dir:TB/class/[NamedThing],[Database],[Activity]&lt;was%20generated%20by%200..1-%20[DataObject&#124;file_size_bytes:bytes%20%3F;md5_checksum:string%20%3F;data_object_type:file_type_enum%20%3F;compression_type:string%20%3F;url:string%20%3F;type:string%20%3F;name:string;description:string;id(i):string;alternative_identifiers(i):string%20*],[Database]++-%20data%20object%20set%200..*&gt;[DataObject],[NamedThing]^-[DataObject],[Activity]" /></a></p>
+<h2 id="identifier-prefixes">Identifier prefixes</h2>
+<ul>
+<li>GOLD</li>
+</ul>
+<h2 id="parents">Parents</h2>
+<ul>
+<li>is_a: <a href="../NamedThing/">NamedThing</a> - a databased entity or concept/class</li>
+</ul>
+<h2 id="referenced-by-class">Referenced by Class</h2>
+<ul>
+<li><strong><a href="../Database/">Database</a></strong> <em><a href="../data_object_set/">data object set</a></em>  <sub>0..*</sub>  <strong><a href="./">DataObject</a></strong></li>
+</ul>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
+<ul>
+<li><a href="../file_size_bytes/">file size bytes</a>  <sub>0..1</sub><ul>
+<li>Description: Size of the file in bytes</li>
+<li>Range: <a href="../types/Bytes/">Bytes</a></li>
+</ul>
+</li>
+<li><a href="../md5_checksum/">md5 checksum</a>  <sub>0..1</sub><ul>
+<li>Description: MD5 checksum of file (pre-compressed)</li>
+<li>Range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="../data_object_type/">data object type</a>  <sub>0..1</sub><ul>
+<li>Description: The type of file represented by the data object.</li>
+<li>Range: <a href="file type enum.md">file type enum</a></li>
+<li>Example: FT ICR-MS Analysis Results None</li>
+<li>Example: GC-MS Metabolomics Results None</li>
+</ul>
+</li>
+<li><a href="../compression_type/">compression type</a>  <sub>0..1</sub><ul>
+<li>Description: If provided, specifies the compression type</li>
+<li>Range: <a href="../types/String/">String</a></li>
+<li>Example: gzip None</li>
+</ul>
+</li>
+<li><a href="../was_generated_by/">was generated by</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../Activity/">Activity</a></li>
+</ul>
+</li>
+<li><a href="../url/">url</a>  <sub>0..1</sub><ul>
+<li>Range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="../type/">type</a>  <sub>0..1</sub><ul>
+<li>Description: An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.</li>
+<li>Range: <a href="../types/String/">String</a></li>
+<li>Example: nmdc:Biosample None</li>
+<li>Example: nmdc:Study None</li>
+</ul>
+</li>
+<li><a href="../data_object_name/">data object➞name</a>  <sub>1..1</sub><ul>
+<li>Description: A human readable label for an entity</li>
+<li>Range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="../data_object_description/">data object➞description</a>  <sub>1..1</sub><ul>
+<li>Description: a human-readable description of a thing</li>
+<li>Range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="inherited-from-named-thing">Inherited from named thing:</h3>
+<ul>
+<li><a href="../id/">id</a>  <sub>1..1</sub><ul>
+<li>Description: A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI</li>
+<li>Range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="../alternative_identifiers/">alternative identifiers</a>  <sub>0..*</sub><ul>
+<li>Description: A list of alternative identifiers for the entity.</li>
+<li>Range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="other-properties">Other properties</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>In Subsets:</strong></td>
+<td></td>
+<td>data object subset</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
