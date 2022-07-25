@@ -3,8 +3,10 @@ import pprint
 
 from pymongo import MongoClient
 
+m_pass = ""
+
 client = MongoClient(
-    "mongodb://mam:NJAxcszXBt3fu%21q@localhost:27027/?authSource=admin&readPreference=primary&directConnection=true&ssl=false"
+    f"mongodb://mam:{m_pass}@localhost:27027/?authSource=admin&readPreference=primary&directConnection=true&ssl=false"
 )
 
 id_inst_file ="../target/omics_processing_id_inst.tsv"
