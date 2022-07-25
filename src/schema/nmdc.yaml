@@ -1061,7 +1061,7 @@ slots:
   biogas_retention_time:
     range: string
   processing_institution:
-    range: string
+    range: processing_institution_enum
     description: The organization that processed the sample.
   omics_type:
     range: string
