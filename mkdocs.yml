@@ -1,8 +1,14 @@
 site_name: "NMDC Schema Documentation"
+
 theme:
-  name: readthedocs
-  features:
-    - navigation.instant
+  name: material
+plugins:
+  - search
+  - mermaid2
+
+docs_dir: docs
+site_dir: mkdocs_html
+
 nav:
   - Home: home.md
   - NMDC Schema: index.md
@@ -10,4 +16,4 @@ nav:
   - NMDC Schema Validation: schema-validation.md
   - Identifiers in NMDC: identifiers.md
   - MIxS Soil Package: NMDC_MIxS_Soil_documentation.md
-  - Credits: credits.md    
+  - Credits: credits.md

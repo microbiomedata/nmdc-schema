@@ -1,5 +1,5 @@
 id: https://microbiomedata/schema/external_identifiers
-name: NMDC-External-Identifiers
+name: external_identifiers
 title: NMDC External Identifiers
 description: >-
   External identifiers
