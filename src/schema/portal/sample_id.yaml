@@ -63,3 +63,4 @@ slots:
     string_serialization: '{text}:{text}'
     slot_group: Sample ID
     recommended: true
+    multivalued: true
