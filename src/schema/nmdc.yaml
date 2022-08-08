@@ -391,8 +391,8 @@ classes:
         required: true
       env_medium:
         required: true
-      part of:
-        required: false
+    #      part of:
+    #        required: false
     id_prefixes:
       - GOLD
     exact_mappings:
