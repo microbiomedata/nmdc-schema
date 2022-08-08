@@ -1,5 +1,5 @@
 # Auto generated from external_identifiers.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-06-15T10:43:06
+# Generation date: 2022-08-08T14:48:11
 # Schema: NMDC-External-Identifiers
 #
 # id: https://microbiomedata/schema/external_identifiers
