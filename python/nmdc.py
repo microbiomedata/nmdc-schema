@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-06-15T10:43:24
+# Generation date: 2022-08-08T14:48:31
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -602,12 +602,13 @@ class Biosample(NamedThing):
     class_model_uri: ClassVar[URIRef] = NMDC.Biosample
 
     id: Union[str, BiosampleId] = None
-    part_of: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    canary: str = None
     env_broad_scale: Union[dict, "ControlledTermValue"] = None
     env_local_scale: Union[dict, "ControlledTermValue"] = None
     env_medium: Union[dict, "ControlledTermValue"] = None
     type: Optional[str] = None
     alternative_identifiers: Optional[Union[str, List[str]]] = empty_list()
+    part_of: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
     agrochem_addition: Optional[Union[dict, "QuantityValue"]] = None
     alkalinity: Optional[Union[dict, "QuantityValue"]] = None
     alkalinity_method: Optional[Union[dict, "TextValue"]] = None
@@ -825,7 +826,7 @@ class Biosample(NamedThing):
     sample_type: Optional[Union[str, "SampleTypeEnum"]] = None
     technical_reps: Optional[str] = None
     analysis_type: Optional[Union[Union[str, "AnalysisTypeEnum"], List[Union[str, "AnalysisTypeEnum"]]]] = empty_list()
-    sample_link: Optional[str] = None
+    sample_link: Optional[Union[str, List[str]]] = empty_list()
     zinc: Optional[Union[dict, "QuantityValue"]] = None
     manganese: Optional[Union[dict, "QuantityValue"]] = None
     ammonium_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
@@ -840,11 +841,10 @@ class Biosample(NamedThing):
         if not isinstance(self.id, BiosampleId):
             self.id = BiosampleId(self.id)
 
-        if self._is_empty(self.part_of):
-            self.MissingRequiredField("part_of")
-        if not isinstance(self.part_of, list):
-            self.part_of = [self.part_of] if self.part_of is not None else []
-        self.part_of = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.part_of]
+        if self._is_empty(self.canary):
+            self.MissingRequiredField("canary")
+        if not isinstance(self.canary, str):
+            self.canary = str(self.canary)
 
         if self._is_empty(self.env_broad_scale):
             self.MissingRequiredField("env_broad_scale")
@@ -867,6 +867,10 @@ class Biosample(NamedThing):
         if not isinstance(self.alternative_identifiers, list):
             self.alternative_identifiers = [self.alternative_identifiers] if self.alternative_identifiers is not None else []
         self.alternative_identifiers = [v if isinstance(v, str) else str(v) for v in self.alternative_identifiers]
+
+        if not isinstance(self.part_of, list):
+            self.part_of = [self.part_of] if self.part_of is not None else []
+        self.part_of = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.part_of]
 
         if self.agrochem_addition is not None and not isinstance(self.agrochem_addition, QuantityValue):
             self.agrochem_addition = QuantityValue(**as_dict(self.agrochem_addition))
@@ -1523,8 +1527,9 @@ class Biosample(NamedThing):
             self.analysis_type = [self.analysis_type] if self.analysis_type is not None else []
         self.analysis_type = [v if isinstance(v, AnalysisTypeEnum) else AnalysisTypeEnum(v) for v in self.analysis_type]
 
-        if self.sample_link is not None and not isinstance(self.sample_link, str):
-            self.sample_link = str(self.sample_link)
+        if not isinstance(self.sample_link, list):
+            self.sample_link = [self.sample_link] if self.sample_link is not None else []
+        self.sample_link = [v if isinstance(v, str) else str(v) for v in self.sample_link]
 
         if self.zinc is not None and not isinstance(self.zinc, QuantityValue):
             self.zinc = QuantityValue(**as_dict(self.zinc))
@@ -1756,7 +1761,7 @@ class OmicsProcessing(BiosampleProcessing):
     omics_type: Optional[Union[dict, "ControlledTermValue"]] = None
     part_of: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
     principal_investigator: Optional[Union[dict, "PersonValue"]] = None
-    processing_institution: Optional[str] = None
+    processing_institution: Optional[Union[str, "ProcessingInstitutionEnum"]] = None
     type: Optional[str] = None
     GOLD_sequencing_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     INSDC_experiment_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
@@ -1813,8 +1818,8 @@ class OmicsProcessing(BiosampleProcessing):
         if self.principal_investigator is not None and not isinstance(self.principal_investigator, PersonValue):
             self.principal_investigator = PersonValue(**as_dict(self.principal_investigator))
 
-        if self.processing_institution is not None and not isinstance(self.processing_institution, str):
-            self.processing_institution = str(self.processing_institution)
+        if self.processing_institution is not None and not isinstance(self.processing_institution, ProcessingInstitutionEnum):
+            self.processing_institution = ProcessingInstitutionEnum(self.processing_institution)
 
         if self.type is not None and not isinstance(self.type, str):
             self.type = str(self.type)
@@ -3557,6 +3562,19 @@ class CreditEnum(EnumDefinitionImpl):
                 PermissibleValue(text="Principal Investigator",
                                  description="principal investigator role",
                                  meaning=OBI["0000103"]) )
+
+class ProcessingInstitutionEnum(EnumDefinitionImpl):
+
+    UCSD = PermissibleValue(text="UCSD",
+                               meaning=None)
+    JGI = PermissibleValue(text="JGI",
+                             meaning=None)
+    EMSL = PermissibleValue(text="EMSL",
+                               meaning=None)
+
+    _defn = EnumDefinition(
+        name="ProcessingInstitutionEnum",
+    )
 
 class ArchStrucEnum(EnumDefinitionImpl):
 
@@ -5652,6 +5670,9 @@ class AnalysisTypeEnum(EnumDefinitionImpl):
 class slots:
     pass
 
+slots.canary = Slot(uri=NMDC.canary, name="canary", curie=NMDC.curie('canary'),
+                   model_uri=NMDC.canary, domain=None, range=Optional[str])
+
 slots.ess_dive_datasets = Slot(uri=NMDC.ess_dive_datasets, name="ess dive datasets", curie=NMDC.curie('ess_dive_datasets'),
                    model_uri=NMDC.ess_dive_datasets, domain=None, range=Optional[Union[str, List[str]]])
 
@@ -5839,7 +5860,7 @@ slots.biogas_retention_time = Slot(uri=NMDC.biogas_retention_time, name="biogas_
                    model_uri=NMDC.biogas_retention_time, domain=None, range=Optional[str])
 
 slots.processing_institution = Slot(uri=NMDC.processing_institution, name="processing_institution", curie=NMDC.curie('processing_institution'),
-                   model_uri=NMDC.processing_institution, domain=None, range=Optional[str])
+                   model_uri=NMDC.processing_institution, domain=None, range=Optional[Union[str, "ProcessingInstitutionEnum"]])
 
 slots.omics_type = Slot(uri=NMDC.omics_type, name="omics_type", curie=NMDC.curie('omics_type'),
                    model_uri=NMDC.omics_type, domain=None, range=Optional[str])
@@ -7728,7 +7749,7 @@ slots.analysis_type = Slot(uri=NMDC.analysis_type, name="analysis_type", curie=N
                    model_uri=NMDC.analysis_type, domain=None, range=Optional[Union[Union[str, "AnalysisTypeEnum"], List[Union[str, "AnalysisTypeEnum"]]]])
 
 slots.sample_link = Slot(uri=NMDC.sample_link, name="sample_link", curie=NMDC.curie('sample_link'),
-                   model_uri=NMDC.sample_link, domain=None, range=Optional[str])
+                   model_uri=NMDC.sample_link, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.started_at_time = Slot(uri=NMDC.started_at_time, name="started at time", curie=NMDC.curie('started_at_time'),
                    model_uri=NMDC.started_at_time, domain=None, range=Optional[Union[str, XSDDateTime]], mappings = [PROV.startedAtTime],
@@ -8104,8 +8125,8 @@ slots.biosample_env_local_scale = Slot(uri=MIXS['0000013'], name="biosample_env_
 slots.biosample_env_medium = Slot(uri=MIXS['0000014'], name="biosample_env_medium", curie=MIXS.curie('0000014'),
                    model_uri=NMDC.biosample_env_medium, domain=Biosample, range=Union[dict, "ControlledTermValue"])
 
-slots.biosample_part_of = Slot(uri=DCTERMS.isPartOf, name="biosample_part of", curie=DCTERMS.curie('isPartOf'),
-                   model_uri=NMDC.biosample_part_of, domain=Biosample, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
+slots.biosample_canary = Slot(uri=NMDC.canary, name="biosample_canary", curie=NMDC.curie('canary'),
+                   model_uri=NMDC.biosample_canary, domain=Biosample, range=str)
 
 slots.study_doi = Slot(uri=NMDC.doi, name="study_doi", curie=NMDC.curie('doi'),
                    model_uri=NMDC.study_doi, domain=Study, range=Optional[Union[dict, "AttributeValue"]])

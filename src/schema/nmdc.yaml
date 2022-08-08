@@ -135,6 +135,7 @@ classes:
       - type  # custom slot that specifies object type
       - alternative identifiers
       - part of
+      - canary
 
       # MIXS slots
       - agrochem_addition
@@ -391,8 +392,11 @@ classes:
         required: true
       env_medium:
         required: true
+      canary:
+        required: true
     #      part of:
     #        required: false
+
     id_prefixes:
       - GOLD
     exact_mappings:
@@ -737,6 +741,7 @@ enums:
           - replaces Environmental Molecular Sciences Lab
 
 slots:
+  canary:
   ess dive datasets:
     multivalued: true
     description: List of ESS-DIVE dataset DOIs
