@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-08-08T14:48:31
+# Generation date: 2022-08-08T15:19:34
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -602,13 +602,14 @@ class Biosample(NamedThing):
     class_model_uri: ClassVar[URIRef] = NMDC.Biosample
 
     id: Union[str, BiosampleId] = None
-    canary: str = None
     env_broad_scale: Union[dict, "ControlledTermValue"] = None
     env_local_scale: Union[dict, "ControlledTermValue"] = None
     env_medium: Union[dict, "ControlledTermValue"] = None
+    sample_link: Union[str, List[str]] = None
     type: Optional[str] = None
     alternative_identifiers: Optional[Union[str, List[str]]] = empty_list()
     part_of: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
+    canary: Optional[str] = None
     agrochem_addition: Optional[Union[dict, "QuantityValue"]] = None
     alkalinity: Optional[Union[dict, "QuantityValue"]] = None
     alkalinity_method: Optional[Union[dict, "TextValue"]] = None
@@ -826,7 +827,6 @@ class Biosample(NamedThing):
     sample_type: Optional[Union[str, "SampleTypeEnum"]] = None
     technical_reps: Optional[str] = None
     analysis_type: Optional[Union[Union[str, "AnalysisTypeEnum"], List[Union[str, "AnalysisTypeEnum"]]]] = empty_list()
-    sample_link: Optional[Union[str, List[str]]] = empty_list()
     zinc: Optional[Union[dict, "QuantityValue"]] = None
     manganese: Optional[Union[dict, "QuantityValue"]] = None
     ammonium_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
@@ -840,11 +840,6 @@ class Biosample(NamedThing):
             self.MissingRequiredField("id")
         if not isinstance(self.id, BiosampleId):
             self.id = BiosampleId(self.id)
-
-        if self._is_empty(self.canary):
-            self.MissingRequiredField("canary")
-        if not isinstance(self.canary, str):
-            self.canary = str(self.canary)
 
         if self._is_empty(self.env_broad_scale):
             self.MissingRequiredField("env_broad_scale")
@@ -861,6 +856,12 @@ class Biosample(NamedThing):
         if not isinstance(self.env_medium, ControlledTermValue):
             self.env_medium = ControlledTermValue(**as_dict(self.env_medium))
 
+        if self._is_empty(self.sample_link):
+            self.MissingRequiredField("sample_link")
+        if not isinstance(self.sample_link, list):
+            self.sample_link = [self.sample_link] if self.sample_link is not None else []
+        self.sample_link = [v if isinstance(v, str) else str(v) for v in self.sample_link]
+
         if self.type is not None and not isinstance(self.type, str):
             self.type = str(self.type)
 
@@ -871,6 +872,9 @@ class Biosample(NamedThing):
         if not isinstance(self.part_of, list):
             self.part_of = [self.part_of] if self.part_of is not None else []
         self.part_of = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.part_of]
+
+        if self.canary is not None and not isinstance(self.canary, str):
+            self.canary = str(self.canary)
 
         if self.agrochem_addition is not None and not isinstance(self.agrochem_addition, QuantityValue):
             self.agrochem_addition = QuantityValue(**as_dict(self.agrochem_addition))
@@ -1526,10 +1530,6 @@ class Biosample(NamedThing):
         if not isinstance(self.analysis_type, list):
             self.analysis_type = [self.analysis_type] if self.analysis_type is not None else []
         self.analysis_type = [v if isinstance(v, AnalysisTypeEnum) else AnalysisTypeEnum(v) for v in self.analysis_type]
-
-        if not isinstance(self.sample_link, list):
-            self.sample_link = [self.sample_link] if self.sample_link is not None else []
-        self.sample_link = [v if isinstance(v, str) else str(v) for v in self.sample_link]
 
         if self.zinc is not None and not isinstance(self.zinc, QuantityValue):
             self.zinc = QuantityValue(**as_dict(self.zinc))
@@ -8125,8 +8125,8 @@ slots.biosample_env_local_scale = Slot(uri=MIXS['0000013'], name="biosample_env_
 slots.biosample_env_medium = Slot(uri=MIXS['0000014'], name="biosample_env_medium", curie=MIXS.curie('0000014'),
                    model_uri=NMDC.biosample_env_medium, domain=Biosample, range=Union[dict, "ControlledTermValue"])
 
-slots.biosample_canary = Slot(uri=NMDC.canary, name="biosample_canary", curie=NMDC.curie('canary'),
-                   model_uri=NMDC.biosample_canary, domain=Biosample, range=str)
+slots.biosample_sample_link = Slot(uri=NMDC.sample_link, name="biosample_sample_link", curie=NMDC.curie('sample_link'),
+                   model_uri=NMDC.biosample_sample_link, domain=Biosample, range=Union[str, List[str]])
 
 slots.study_doi = Slot(uri=NMDC.doi, name="study_doi", curie=NMDC.curie('doi'),
                    model_uri=NMDC.study_doi, domain=Study, range=Optional[Union[dict, "AttributeValue"]])

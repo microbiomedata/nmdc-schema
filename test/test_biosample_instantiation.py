@@ -25,8 +25,8 @@ class TestBiosampleInstantiation(unittest.TestCase):
         try:
             bs = Biosample(
                 id="x",
-                canary="canary",
-                part_of="x",
+                # canary="canary",
+                sample_link="x",
                 env_broad_scale=ControlledTermValue(),
                 env_local_scale=ControlledTermValue(),
                 env_medium=ControlledTermValue(),

@@ -392,8 +392,10 @@ classes:
         required: true
       env_medium:
         required: true
-      canary:
+      sample_link:
         required: true
+    #      canary:
+    #        required: true
     #      part of:
     #        required: false
 

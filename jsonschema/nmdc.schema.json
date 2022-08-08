@@ -1055,10 +1055,10 @@
          },
          "required": [
             "id",
-            "canary",
             "env_broad_scale",
             "env_local_scale",
-            "env_medium"
+            "env_medium",
+            "sample_link"
          ],
          "title": "Biosample",
          "type": "object"
