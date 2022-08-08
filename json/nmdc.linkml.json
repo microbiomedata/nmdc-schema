@@ -23262,8 +23262,8 @@
           "name": "env_medium",
           "required": true
         },
-        "canary": {
-          "name": "canary",
+        "sample_link": {
+          "name": "sample_link",
           "required": true
         }
       },
@@ -23314,8 +23314,7 @@
           "from_schema": "https://microbiomedata/schema",
           "alias": "canary",
           "owner": "biosample",
-          "range": "string",
-          "required": true
+          "range": "string"
         },
         "agrochem_addition": {
           "name": "agrochem_addition",
@@ -29419,14 +29418,6 @@
           "name": "sample_link",
           "description": "A unique identifier to assign parent-child, subsample, or sibling samples. This is relevant when a sample or other material was used to generate the new sample.",
           "title": "sample linkage",
-          "comments": [
-            "This field allows multiple entries separated by ; (Examples: Soil collected from the field will link with the soil used in an incubation. The soil a plant was grown in links to the plant sample. An original culture sample was transferred to a new vial and generated a new sample)"
-          ],
-          "examples": [
-            {
-              "value": "IGSN:DSJ0284"
-            }
-          ],
           "from_schema": "https://microbiomedata/schema",
           "rank": 5,
           "string_serialization": "{text}:{text}",
@@ -29435,6 +29426,7 @@
           "owner": "biosample",
           "slot_group": "Sample ID",
           "range": "string",
+          "required": true,
           "recommended": true
         },
         "zinc": {
