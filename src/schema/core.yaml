@@ -630,3 +630,19 @@ slots:
     description: >-
       A list of publications that are associated with the entity.
       The publications SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.
+
+  all proteins:
+  best protein:
+  chemical formula:
+  inchi key:
+  inchi:
+  min_q_value:
+  peptide sequence:
+  peptide_sequence_count:
+  peptide_spectral_count:
+  peptide_sum_masic_abundance:
+  protein_spectral_count:
+  protein_sum_masic_abundance:
+  smiles:
+  metabolite quantified:
+  highest similarity score:
