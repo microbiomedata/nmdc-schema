@@ -17,7 +17,7 @@ version: 4.0.0
 prefixes:
   nmdc: https://microbiomedata/meta/
   GOLD: https://identifiers.org/gold/
-  mixs: https://w3id.org/gensc/
+  MIXS: https://w3id.org/gensc/
   wgs: http://www.w3.org/2003/01/geo/wgs84_pos
   qud: http://qudt.org/1.1/schema/qudt#
   dcterms: http://purl.org/dc/terms/
