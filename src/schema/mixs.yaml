@@ -14275,7 +14275,7 @@ slots:
     aliases:
     - environmental package
     mappings:
-    - mixs:env_package
+    - MIXS:env_package
     description: MIxS extension for reporting of measurements and observations obtained
       from one or more of the environments where the sample was obtained. All environmental
       packages listed here are further defined in separate subtables. By giving the
