@@ -27,6 +27,8 @@ classes:
       - analysis
     comments:
       - Each instance of this (and all other) activities is  a distinct run with start and stop times, potentially with different inputs and outputs
+    todos:
+      - the slots in the usage section all need examples and ranges
     is_a: activity
     in_subset:
       - workflow subset
@@ -51,6 +53,9 @@ classes:
         inlined: false # allow for strings of IDs
       started at time:
         required: true
+        example:
+          - value: "2022-08-10"
+        range: date
       ended at time:
         required: true
       git url:
