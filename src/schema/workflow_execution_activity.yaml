@@ -169,6 +169,8 @@ classes:
       - mags list
 
   read QC analysis activity:
+    description: A workflow execution activity that performs quality control on raw Illumina reads including quality trimming, artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant removal
+    title: Read quality control analysis activity
     is_a: workflow execution activity
     in_subset:
       - workflow subset
