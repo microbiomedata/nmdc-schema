@@ -1050,8 +1050,6 @@ slots:
     range: string
   sample_collection_site:
     range: string
-  identifier:
-    range: string
   sample_collection_year:
     range: integer
   sample_collection_month:
