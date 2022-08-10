@@ -25,6 +25,8 @@ classes:
   workflow execution activity:
     aliases:
       - analysis
+    comments:
+      - Each instance of this (and all other) activities is  a distinct run with start and stop times, potentially with different inputs and outputs
     is_a: activity
     in_subset:
       - workflow subset
@@ -153,6 +155,8 @@ classes:
       - workflow subset
 
   MAGs analysis activity:
+    description: A workflow execution activity that uses computational binning tools to group assembled contigs into genomes
+    title: Metagenome-Assembled Genome analysis activity
     is_a: workflow execution activity
     in_subset:
       - workflow subset
