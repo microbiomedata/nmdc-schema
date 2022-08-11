@@ -236,3 +236,20 @@ slots:
     description: A positive 1-based integer coordinate indicating start or end
     comments:
       - "For features that cross the origin of a circular feature (e.g. most bacterial genomes, plasmids, and some viral genomes), the requirement for start to be less than or equal to end is satisfied by making end = the position of the end + the length of the landmark feature."
+
+  direction:
+  encodes:
+  end:
+  feature type:
+  is balanced:
+  is diastereoselective:
+  is fully characterized:
+  is stereo:
+  is transport:
+  left participants:
+  phase:
+  right participants:
+  seqid:
+  smarts string:
+  start:
+  strand:

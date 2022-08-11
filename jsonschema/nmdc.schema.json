@@ -236,6 +236,9 @@
                "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of calcium in the sample"
             },
+            "canary": {
+               "type": "string"
+            },
             "carb_nitro_ratio": {
                "$ref": "#/$defs/QuantityValue",
                "description": "Ratio of amount or concentrations of carbon to nitrogen"
@@ -875,7 +878,10 @@
             },
             "sample_link": {
                "description": "A unique identifier to assign parent-child, subsample, or sibling samples. This is relevant when a sample or other material was used to generate the new sample.",
-               "type": "string"
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
             },
             "sample_shipped": {
                "description": "The total amount or size (volume (ml), mass (g) or area (m2) ) of sample sent to EMSL",
@@ -1049,10 +1055,10 @@
          },
          "required": [
             "id",
-            "part_of",
             "env_broad_scale",
             "env_local_scale",
-            "env_medium"
+            "env_medium",
+            "sample_link"
          ],
          "title": "Biosample",
          "type": "object"
@@ -3677,8 +3683,8 @@
                "description": "Principal Investigator who led the study and/or generated the dataset."
             },
             "processing_institution": {
-               "description": "The organization that processed the sample.",
-               "type": "string"
+               "$ref": "#/$defs/ProcessingInstitutionEnum",
+               "description": "The organization that processed the sample."
             },
             "samp_vol_we_dna_ext": {
                "$ref": "#/$defs/QuantityValue",
@@ -3986,6 +3992,16 @@
             "Unisexual"
          ],
          "title": "PlantSexEnum",
+         "type": "string"
+      },
+      "ProcessingInstitutionEnum": {
+         "description": "",
+         "enum": [
+            "UCSD",
+            "JGI",
+            "EMSL"
+         ],
+         "title": "ProcessingInstitutionEnum",
          "type": "string"
       },
       "ProfilePositionEnum": {

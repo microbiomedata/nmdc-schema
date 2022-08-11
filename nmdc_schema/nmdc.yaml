@@ -140,6 +140,7 @@ classes:
       - type  # custom slot that specifies object type
       - alternative identifiers
       - part of
+      - sample_link
     
       # MIXS slots
       - agrochem_addition
@@ -301,7 +302,13 @@ classes:
       env_medium:
         required: true
       part of:
+        required: false
+      sample_link: 
         required: true
+        multivalued: true
+        range: named thing
+        comments:
+          - consider using this for linking a biosample to one or more studies
     id_prefixes:
       - GOLD
     exact_mappings:

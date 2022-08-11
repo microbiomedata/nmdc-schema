@@ -18,7 +18,7 @@
       "part_of": [
         "gold:Gs0112340"
       ],
-      "processing_institution": "Joint Genome Institute",
+      "processing_institution": "JGI",
       "type": "nmdc:OmicsProcessing"
     },
     {
@@ -39,7 +39,7 @@
       "part_of": [
         "gold:Gs0112340"
       ],
-      "processing_institution": "Joint Genome Institute",
+      "processing_institution": "JGI",
       "type": "nmdc:OmicsProcessing"
     },
     {
@@ -60,7 +60,7 @@
       "part_of": [
         "gold:Gs0112340"
       ],
-      "processing_institution": "Joint Genome Institute",
+      "processing_institution": "JGI",
       "type": "nmdc:OmicsProcessing"
     }
   ]

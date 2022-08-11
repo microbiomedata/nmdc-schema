@@ -212,7 +212,7 @@
       "name": "time",
       "description": "A time object represents a (local) time of day, independent of any particular day",
       "notes": [
-        "URI is dateTime because OWL reasoners don't work with straight date or time"
+        "URI is dateTime because OWL reasoners do not work with straight date or time"
       ],
       "from_schema": "https://microbiomedata/schema",
       "base": "XSDTime",
@@ -236,6 +236,14 @@
       "from_schema": "https://microbiomedata/schema",
       "base": "XSDDateTime",
       "uri": "xsd:dateTime",
+      "repr": "str"
+    },
+    "date_or_datetime": {
+      "name": "date_or_datetime",
+      "description": "Either a date or a datetime",
+      "from_schema": "https://microbiomedata/schema",
+      "base": "str",
+      "uri": "linkml:DateOrDatetime",
       "repr": "str"
     },
     "uriorcurie": {
@@ -540,6 +548,35 @@
           "text": "Principal Investigator",
           "description": "principal investigator role",
           "meaning": "OBI:0000103"
+        }
+      }
+    },
+    "processing_institution_enum": {
+      "name": "processing_institution_enum",
+      "comments": [
+        "This will become the range of processing_institution.omics processing",
+        "use ROR meanings like https://ror.org/0168r3w48 for UCSD"
+      ],
+      "from_schema": "https://microbiomedata/schema",
+      "permissible_values": {
+        "UCSD": {
+          "text": "UCSD",
+          "meaning": "https://ror.org/0168r3w48",
+          "title": "University of California, San Diego"
+        },
+        "JGI": {
+          "text": "JGI",
+          "meaning": "https://ror.org/04xm1d337",
+          "title": "Joint Genome Institute"
+        },
+        "EMSL": {
+          "text": "EMSL",
+          "meaning": "https://ror.org/04rc0xn13",
+          "title": "Environmental Molecular Sciences Laboratory",
+          "comments": [
+            "replaces Environmental Molecular Science Laboratory",
+            "replaces Environmental Molecular Sciences Lab"
+          ]
         }
       }
     },
@@ -3644,6 +3681,10 @@
     }
   },
   "slots": {
+    "canary": {
+      "name": "canary",
+      "from_schema": "https://microbiomedata/schema"
+    },
     "ess dive datasets": {
       "name": "ess dive datasets",
       "description": "List of ESS-DIVE dataset DOIs",
@@ -4176,7 +4217,7 @@
       "name": "processing_institution",
       "description": "The organization that processed the sample.",
       "from_schema": "https://microbiomedata/schema",
-      "range": "string"
+      "range": "processing_institution_enum"
     },
     "omics_type": {
       "name": "omics_type",
@@ -5190,6 +5231,7 @@
       "from_schema": "https://microbiomedata/schema",
       "rank": 5,
       "string_serialization": "{text}:{text}",
+      "multivalued": true,
       "slot_group": "Sample ID",
       "recommended": true
     },
@@ -22972,6 +23014,7 @@
         "type",
         "alternative identifiers",
         "part of",
+        "canary",
         "agrochem_addition",
         "alkalinity",
         "alkalinity_method",
@@ -23219,8 +23262,8 @@
           "name": "env_medium",
           "required": true
         },
-        "part of": {
-          "name": "part of",
+        "sample_link": {
+          "name": "sample_link",
           "required": true
         }
       },
@@ -23256,13 +23299,22 @@
           "name": "part of",
           "description": "Links a resource to another resource that either logically or physically includes it.",
           "from_schema": "https://microbiomedata/schema",
+          "aliases": [
+            "is part of"
+          ],
           "domain": "named thing",
           "slot_uri": "dcterms:isPartOf",
           "multivalued": true,
           "alias": "part_of",
           "owner": "biosample",
-          "range": "named thing",
-          "required": true
+          "range": "named thing"
+        },
+        "canary": {
+          "name": "canary",
+          "from_schema": "https://microbiomedata/schema",
+          "alias": "canary",
+          "owner": "biosample",
+          "range": "string"
         },
         "agrochem_addition": {
           "name": "agrochem_addition",
@@ -29366,21 +29418,15 @@
           "name": "sample_link",
           "description": "A unique identifier to assign parent-child, subsample, or sibling samples. This is relevant when a sample or other material was used to generate the new sample.",
           "title": "sample linkage",
-          "comments": [
-            "This field allows multiple entries separated by ; (Examples: Soil collected from the field will link with the soil used in an incubation. The soil a plant was grown in links to the plant sample. An original culture sample was transferred to a new vial and generated a new sample)"
-          ],
-          "examples": [
-            {
-              "value": "IGSN:DSJ0284"
-            }
-          ],
           "from_schema": "https://microbiomedata/schema",
           "rank": 5,
           "string_serialization": "{text}:{text}",
+          "multivalued": true,
           "alias": "sample_link",
           "owner": "biosample",
           "slot_group": "Sample ID",
           "range": "string",
+          "required": true,
           "recommended": true
         },
         "zinc": {
@@ -30448,7 +30494,7 @@
           "from_schema": "https://microbiomedata/schema",
           "alias": "processing_institution",
           "owner": "omics processing",
-          "range": "string"
+          "range": "processing_institution_enum"
         },
         "type": {
           "name": "type",
