@@ -10,7 +10,7 @@ URI: <a href={{ schema.id }}>{{ schema.id }}</a>
 | Class | Description |
 | --- | --- |
 {% for u, v in gen.class_hierarchy_as_tuples() -%}
-| {{ "&nbsp;"|safe*u*8 }}{{ gen.link(schemaview.get_class(v)) }} | {{ schemaview.get_class(v).description }} |
+| {{ "&nbsp;"|safe*u*8 }}{{ gen.link(schemaview.get_class(v)) }} | {{ schemaview.get_class(v).description|enshorten }} |
 {% endfor %}
 
 ## Slots
