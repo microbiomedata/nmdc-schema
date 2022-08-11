@@ -66,13 +66,13 @@ URI: {{ gen.uri_link(element) }}
 | Name | Range | Cardinality | Description  |
 | ---  | --- | --- | --- |
 {% for s in schemaview.class_induced_slots(element.name) -%}
-| {{gen.link(s)}} | {{gen.link(s.range)}} | {{ gen.cardinality(s) }} | {{s.description}}  |
+| {{gen.link(s)}} | {{gen.link(s.range)}} | {{ gen.cardinality(s) }} | {{ s.description }}  |
 {% endfor %}
 
 ## Usages
 
 {% if schemaview.usage_index().get(element.name) %}
-| used by | used in | type | used |
+| used by class | linking slot | type | used |
 | ---  | --- | --- | --- |
 {% for usage in schemaview.usage_index().get(element.name) -%}
 | {{gen.link(usage.used_by)}} | {{gen.link(usage.slot)}} | {{usage.metaslot}} | {{usage.used }} |
@@ -103,8 +103,6 @@ URI: {{ gen.uri_link(element) }}
 
 
 ## LinkML Specification
-
-<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 
 ### Direct
 

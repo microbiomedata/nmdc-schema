@@ -7,10 +7,9 @@ URI: {{ gen.uri(element) }}
 ## Permissible Values
 
 | Value | Meaning | Description |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 {% for pv in element.permissible_values.values() -%}
-| {{pv.text}} | {{pv.meaning}} | {{pv.description}} |
+| {{pv.text}} | {{pv.meaning}} | {{pv.description|enshorten}} |
 {% endfor %}
 
 {% include "common_metadata.md.jinja2" %}
-
