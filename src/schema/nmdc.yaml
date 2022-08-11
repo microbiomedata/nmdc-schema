@@ -15,18 +15,38 @@ description: >-
 license: https://creativecommons.org/publicdomain/zero/1.0/
 version: 4.0.0
 prefixes:
-  nmdc: https://microbiomedata/meta/
   GOLD: https://identifiers.org/gold/
-  mixs: https://w3id.org/gensc/
-  wgs: http://www.w3.org/2003/01/geo/wgs84_pos
-  qud: http://qudt.org/1.1/schema/qudt#
-  dcterms: http://purl.org/dc/terms/
-  linkml: https://w3id.org/linkml/
+  MIXS: https://w3id.org/gensc/
   MS: http://purl.obolibrary.org/obo/MS_
-  OBI: http://purl.obolibrary.org/obo/OBI_
   NCIT: http://purl.obolibrary.org/obo/NCIT_
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  biolink: https://w3id.org/biolink/vocab/
+  dcterms: http://purl.org/dc/terms/
   igsn: https://app.geosamples.org/sample/igsn/
   img.taxon: http://img.jgi.doe.gov/cgi-bin/w/main.cgi?section=TaxonDetail&taxon_oid=
+  linkml: https://w3id.org/linkml/
+  nmdc: https://microbiomedata/meta/
+  qud: http://qudt.org/1.1/schema/qudt#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  wgs: http://www.w3.org/2003/01/geo/wgs84_pos
+
+  COG: http://example.com/
+  EC: http://example.com/
+  ISA: http://example.com/
+  MetaCyc: http://example.com/
+  MetaNetX: http://example.com/
+  RetroRules: http://example.com/
+  UniProtKB: http://example.com/
+  gtpo: http://example.com/
+  insdc.srs: http://example.com/
+  mgnify: http://example.com/
+
+  nmdc_anno: https://microbiomedata/schema/annotation/
+  nmdc_mixs: https://microbiomedata/schema/mixs/
+  nmdc_wfea: https://microbiomedata/schema/workflow_execution_activity/
+
+
+
 default_prefix: nmdc
 default_range: string
 default_curi_maps:
@@ -70,22 +90,22 @@ classes:
       translated to JSON-Schema this is the 'root' object. It should contain pointers
       to other objects of interest
     slots:
-      - biosample set
-      - study set
-      - data object set
       - activity set
-      - mags activity set
-      - metabolomics analysis activity set
-      - metaproteomics analysis activity set
-      - metagenome annotation activity set
-      - metagenome assembly set
-      - metatranscriptome activity set
-      - read QC analysis activity set
-      - read based analysis activity set
-      - nom analysis activity set
-      - omics processing set
+      - biosample set
+      - data object set
       - functional annotation set
       - genome feature set
+      - mags activity set
+      - metabolomics analysis activity set
+      - metagenome annotation activity set
+      - metagenome assembly set
+      - metaproteomics analysis activity set
+      - metatranscriptome activity set
+      - nom analysis activity set
+      - omics processing set
+      - read QC analysis activity set
+      - read based analysis activity set
+      - study set
     slot_usage:
       nmdc schema version:
         description: TODO
@@ -93,6 +113,7 @@ classes:
         description: TODO
       etl software version:
         description: TODO
+
   data object:
     is_a: named thing
     in_subset:
@@ -135,6 +156,7 @@ classes:
       - type  # custom slot that specifies object type
       - alternative identifiers
       - part of
+      - canary
 
       # MIXS slots
       - agrochem_addition
@@ -391,8 +413,13 @@ classes:
         required: true
       env_medium:
         required: true
-      part of:
+      sample_link:
         required: true
+    #      canary:
+    #        required: true
+    #      part of:
+    #        required: false
+
     id_prefixes:
       - GOLD
     exact_mappings:
@@ -713,8 +740,31 @@ enums:
         meaning: OBI:0000103
     comments:
       - credit enums come from https://casrai.org/credit/
+  processing_institution_enum:
+    name: processing_institution_enum
+    comments:
+      - This will become the range of processing_institution.omics processing
+      - use ROR meanings like https://ror.org/0168r3w48 for UCSD
+    from_schema: NMDC_enums_roundtrip
+    permissible_values:
+      UCSD:
+        text: UCSD
+        title: University of California, San Diego
+        meaning: https://ror.org/0168r3w48
+      JGI:
+        text: JGI
+        title: Joint Genome Institute
+        meaning: https://ror.org/04xm1d337
+      EMSL:
+        text: EMSL
+        title: Environmental Molecular Sciences Laboratory
+        meaning: https://ror.org/04rc0xn13
+        comments:
+          - replaces Environmental Molecular Science Laboratory
+          - replaces Environmental Molecular Sciences Lab
 
 slots:
+  canary:
   ess dive datasets:
     multivalued: true
     description: List of ESS-DIVE dataset DOIs
@@ -1039,7 +1089,7 @@ slots:
   biogas_retention_time:
     range: string
   processing_institution:
-    range: string
+    range: processing_institution_enum
     description: The organization that processed the sample.
   omics_type:
     range: string

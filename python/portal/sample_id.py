@@ -1,5 +1,5 @@
 # Auto generated from sample_id.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-06-15T10:42:58
+# Generation date: 2022-08-08T15:19:10
 # Schema: sample_id
 #
 # id: https://microbiomedata/schema/sample_id
@@ -69,4 +69,4 @@ slots.analysis_type = Slot(uri=NMDC.analysis_type, name="analysis_type", curie=N
                    model_uri=NMDC.analysis_type, domain=None, range=Optional[Union[Union[str, "AnalysisTypeEnum"], List[Union[str, "AnalysisTypeEnum"]]]])
 
 slots.sample_link = Slot(uri=NMDC.sample_link, name="sample_link", curie=NMDC.curie('sample_link'),
-                   model_uri=NMDC.sample_link, domain=None, range=Optional[str])
+                   model_uri=NMDC.sample_link, domain=None, range=Optional[Union[str, List[str]]])

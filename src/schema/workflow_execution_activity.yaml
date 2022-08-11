@@ -10,8 +10,6 @@ prefixes:
   nmdc: https://microbiomedata/meta/
   linkml: https://w3id.org/linkml/
 
-default_prefix: nmdc
-
 imports:
   - prov
   - core
@@ -26,6 +24,8 @@ classes:
   workflow execution activity:
     aliases:
       - analysis
+    comments:
+      - Each instance of this (and all other) activities is  a distinct run with start and stop times, potentially with different inputs and outputs
     is_a: activity
     in_subset:
       - workflow subset
@@ -153,6 +153,8 @@ classes:
       - workflow subset
 
   MAGs analysis activity:
+    description: A workflow execution activity that uses computational binning tools to group assembled contigs into genomes
+    title: Metagenome-Assembled Genome analysis activity
     is_a: workflow execution activity
     in_subset:
       - workflow subset
@@ -165,6 +167,8 @@ classes:
       - mags list
 
   read QC analysis activity:
+    description: A workflow execution activity that performs quality control on raw Illumina reads including quality trimming, artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant removal
+    title: Read quality control analysis activity
     is_a: workflow execution activity
     in_subset:
       - workflow subset
@@ -240,7 +244,7 @@ classes:
 
 slots:
   ## Workflow specific slots
-  metagenome assembly parameter: {}
+  metagenome assembly parameter: { }
 
   asm_score:
     is_a: metagenome assembly parameter
@@ -404,7 +408,7 @@ slots:
       The sequence count number of input reads aligned to assembled contigs.
     range: float
 
-  read QC analysis statistic: {}
+  read QC analysis statistic: { }
 
   mags list:
     range: MAG bin
@@ -448,3 +452,9 @@ slots:
     description: >-
       After QC analysis nucleotide base count number.
     range: float
+
+  has calibration:
+  has metabolite quantifications:
+  input_read_bases:
+  output_read_bases:
+
