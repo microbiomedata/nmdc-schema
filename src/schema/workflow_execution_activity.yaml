@@ -21,7 +21,6 @@ subsets:
       Subset consisting of just the workflow execution activities
 
 classes:
-
   workflow execution activity:
     aliases:
       - analysis
@@ -41,7 +40,7 @@ classes:
       - has input
       - has output
       - part of
-      - type  # custom slot that specifies object type
+      - type # custom slot that specifies object type
     slot_usage:
       was associated with:
         required: false
@@ -65,7 +64,6 @@ classes:
         required: true
       type:
         required: true
-
 
   metagenome assembly:
     is_a: workflow execution activity
@@ -446,7 +444,7 @@ slots:
   output read count:
     is_a: read QC analysis statistic
     description: >-
-      After QC analysis sequence count number. 
+      After QC analysis sequence count number.
     range: float
 
   output base count:
