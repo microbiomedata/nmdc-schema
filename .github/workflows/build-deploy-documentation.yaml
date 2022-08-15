@@ -65,9 +65,9 @@ jobs:
         run: poetry install --no-interaction --no-root     
         
       #----------------------------------------------
-      #             generate markdown files 
+      #             generate markdown files
       #----------------------------------------------
-      - run: make stage-docs
+      - run: make gen-doc
 
       #----------------------------------------------
       #               deploy documentation 
