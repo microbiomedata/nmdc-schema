@@ -137,11 +137,15 @@ classes:
 
   metagenome annotation activity:
     is_a: workflow execution activity
+    slots:
+      - GOLD analysis project identifiers
     in_subset:
       - workflow subset
 
   metatranscriptome annotation activity:
     is_a: workflow execution activity
+    slots:
+      - GOLD analysis project identifiers
     in_subset:
       - workflow subset
 
