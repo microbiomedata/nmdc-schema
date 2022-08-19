@@ -190,7 +190,7 @@ slots:
     is_a: external database identifiers
   
   GOLD sequencing project identifiers:
-    is_a: external database identifiers
+    is_a: omics processing identifiers
     mixins:
       - GOLD identifiers
     pattern: "^GOLD:Gp[0-9]+$"
