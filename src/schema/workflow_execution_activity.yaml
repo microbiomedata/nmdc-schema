@@ -136,6 +136,7 @@ classes:
       - INSDC assembly identifiers
 
   metagenome annotation activity:
+    description: A workflow execution activity that provides functional and strctural annotation of assembled metagenome contigs
     is_a: workflow execution activity
     slots:
       - GOLD analysis project identifiers
