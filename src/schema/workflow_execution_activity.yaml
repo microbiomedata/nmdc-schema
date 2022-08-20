@@ -66,6 +66,7 @@ classes:
         required: true
 
   metagenome assembly:
+    description: A workflow execution activity that dose de novo genome assembly using metagenome sequencing reads
     is_a: workflow execution activity
     in_subset:
       - workflow subset
