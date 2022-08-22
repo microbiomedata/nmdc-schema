@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="images/nmdc_logo_long.jpeg" width="100" height="30"/>
+    <img src="images/nmdc_logo_long.jpeg" width="100" height="40"/>
 </p>
 
 # National Microbiome Data Collaborative Schema
@@ -11,7 +11,7 @@ The NMDC is a multi-organizational effort to integrate microbiome data across di
 
 This repository mainly defines a [LinkML](https://github.com/linkml/linkml) schema for managing metadata from the [National Microbiome Data Collaborative (NMDC)](https://microbiomedata.org/).
 
-# Repository Contents Overview
+## Repository Contents Overview
 Some products that are maintained, and tasks orchestrated within this repository are:
 
 - Maintenance of LinkML YAML that specifies the NMDC Schema
