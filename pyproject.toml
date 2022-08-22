@@ -5,7 +5,8 @@ description = "Schema resources for the National Microbiome Data Collaborative (
 authors = [
     "Bill Duncan <wdduncan@gmail.com>",
     "Mark Andrew Miller <MAM@lbl.gov>",
-    "Sujay Patil <spatil@lbl.gov>"
+    "Sujay Patil <spatil@lbl.gov>",
+    "Chris Mungall <cjmungall@lbl.gov>",
 ]
 
 readme = "README.md"
@@ -44,8 +45,6 @@ nmdc-data = "nmdc_schema.nmdc_data:cli"
 python = "^3.9"
 
 linkml = "*"
-linkml-runtime = "*"
-openpyxl = "==3.0.7"
 pandoc = "*"
 pymongo = "^4.1.0"
 deepdiff = "^5.8.0"
