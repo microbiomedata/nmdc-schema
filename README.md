@@ -1,35 +1,30 @@
+<p align="center">
+    <img src="images/nmdc_logo_long.jpeg" width="100" height="30"/>
+</p>
+
 # National Microbiome Data Collaborative Schema
 
 [![PyPI - License](https://img.shields.io/pypi/l/nmdc-schema)](https://github.com/microbiomedata/nmdc-schema/blob/main/LICENSE)
-[![GitHub last commit](https://img.shields.io/github/last-commit/microbiomedata/nmdc-schema?branch=main&kill_cache=1)](https://github.com/microbiomedata/nmdc-schema/commits)
-[![GitHub issues](https://img.shields.io/github/issues/microbiomedata/nmdc-schema?branch=master&kill_cache=1)](https://github.com/microbiomedata/nmdc-schema/issues)
-[![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/microbiomedata/nmdc-schema?branch=main&kill_cache=1)](https://github.com/microbiomedata/nmdc-schema/issues?q=is%3Aissue+is%3Aclosed)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/microbiomedata/nmdc-schema?branch=main&kill_cache=1)](https://github.com/microbiomedata/nmdc-schema/pulls)
+[![PyPI version](https://badge.fury.io/py/nmdc-schema.svg)](https://badge.fury.io/py/nmdc-schema)
 
-![Deploy Documentation](https://github.com/microbiomedata/nmdc-schema/workflows/Build%20and%20Deploy%20Static%20Mkdocs%20Documentation/badge.svg?branch=main)
+The NMDC is a multi-organizational effort to integrate microbiome data across diverse areas in medicine, agriculture, bioenergy, and the environment. This integrated platform facilitates comprehensive discovery of and access to multidisciplinary microbiome data in order to unlock new possibilities with microbiome data science.
 
-![nmdc logo](images/nmdc_logo_long.jpeg)
+This repository mainly defines a [LinkML](https://github.com/linkml/linkml) schema for managing metadata from the [National Microbiome Data Collaborative (NMDC)](https://microbiomedata.org/).
 
-This repository defines a [linkml](https://github.com/linkml/linkml) schema for managing metadata from the [National Microbiome Data Collaborative (NMDC)](https://microbiomedata.org/). The NMDC is a multi-organizational effort to integrate microbiome data across diverse areas in medicine, agriculture, bioenergy, and the environment. This integrated platform facilitates comprehensive discovery of and access to multidisciplinary microbiome data in order to unlock new possibilities with microbiome data science. 
+# Repository Contents Overview
+Some products that are maintained, and tasks orchestrated within this repository are:
 
-Tasks managed by the repository are:
-
--   Generating the schema
--   Converting the schema from it's native LinkML/YAML format into other artifacts
-    -   [JSON-Schema](jsonschema/nmdc.schema.json)
--   Deploying the schema as a PyPI package
--   Deploying the [documentation](https://microbiomedata.github.io/nmdc-schema/) 
-
+- Maintenance of LinkML YAML that specifies the NMDC Schema
+  - [src/schema/nmdc.yaml](src/schema/nmdc.yaml)
+  - and various other YAML schemas imported by it, like [prov.yaml](src/schema/prov.yaml), [annotation.yaml](src/schema/annotation.yaml), etc. all which you can find in the [src/schema](src/schema/) folder
+- Makefile targets for converting the schema from it's native LinkML YAML format to other artifact like [JSON Schema](jsonschema/nmdc.schema.json)
+- Build, deployment and distribution of the schema as a PyPI package
+- Automatic publishing of refreshed documentation upon change to the schema, accessible [here](https://microbiomedata.github.io/nmdc-schema/)
 ## Background
 
 The NMDC [Introduction to metadata and ontologies](https://microbiomedata.org/introduction-to-metadata-and-ontologies/) primer provides some the context for this project.
 
 See also [these slides](https://microbiomedata.github.io/nmdc-schema/schema-slides.html) ![](images/16px-External.svg.png) describing the schema.
-
-## Dependencies
-In order to make new release of the schema, you must have the following installed on your sytem:
-- [poetry](https://python-poetry.org/docs/#installation/)
-- [pandoc](https://pandoc.org/installing.html)
 
 ## Maintaining the Schema
 
