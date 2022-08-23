@@ -29,7 +29,7 @@ prefixes:
   qud: http://qudt.org/1.1/schema/qudt#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   wgs: http://www.w3.org/2003/01/geo/wgs84_pos
-  EFO: : http://purl.obolibrary.org/obo/EFO_
+  EFO: http://purl.obolibrary.org/obo/EFO_
 
   COG: http://example.com/
   EC: http://example.com/
