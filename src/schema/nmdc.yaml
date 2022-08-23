@@ -29,6 +29,7 @@ prefixes:
   qud: http://qudt.org/1.1/schema/qudt#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   wgs: http://www.w3.org/2003/01/geo/wgs84_pos
+  EFO: : http://purl.obolibrary.org/obo/EFO_
 
   COG: http://example.com/
   EC: http://example.com/
@@ -766,6 +767,9 @@ enums:
       Principal Investigator:
         description: principal investigator role
         meaning: OBI:0000103
+      Submitter:
+        description: the person(s) who enter study and biosmaple metadata into the NMDC submission portal
+        meaning: EFO:0001741
     comments:
       - credit enums come from https://casrai.org/credit/
   processing_institution_enum:
