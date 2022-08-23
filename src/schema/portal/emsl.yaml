@@ -26,10 +26,12 @@ enums:
 slots:
   EMSL_store_temp:
     name: EMSL_store_temp
-    description: Temperature at which the sample sent to EMSL should be stored
+    description: The temperature at which the sample should be stored upon delivery to EMSL
     title: EMSL sample storage temperature, deg. C
     comments:
     - Enter a temperature in celsius. Numeric portion only.
+    todos:
+      - add 'see_alsos' with link to NEXUS info
     examples:
     - value: '-80'
     from_schema: https://example.com/nmdc_dh

@@ -1,15 +1,15 @@
 id: https://microbiomedata/schema/workflow_execution_activity
 name: NMDC-Workflow-Exectution
-title: Workflow Exectution Activities module for NMDC Schema 
+title: Workflow Exectution Activities module for NMDC Schema
 
 default_curi_maps:
   - obo_context
   - idot_context
-  
+
 prefixes:
   nmdc: https://microbiomedata/meta/
   linkml: https://w3id.org/linkml/
-  
+
 imports:
   - prov
   - core
@@ -21,12 +21,13 @@ subsets:
       Subset consisting of just the workflow execution activities
 
 classes:
-
   workflow execution activity:
     aliases:
       - analysis
+    comments:
+      - Each instance of this (and all other) activities is  a distinct run with start and stop times, potentially with different inputs and outputs
     is_a: activity
-    in_subset: 
+    in_subset:
       - workflow subset
     description: >-
       Represents an instance of an execution of a particular workflow
@@ -39,7 +40,7 @@ classes:
       - has input
       - has output
       - part of
-      - type  # custom slot that specifies object type
+      - type # custom slot that specifies object type
     slot_usage:
       was associated with:
         required: false
@@ -64,10 +65,9 @@ classes:
       type:
         required: true
 
-
   metagenome assembly:
     is_a: workflow execution activity
-    in_subset: 
+    in_subset:
       - workflow subset
     slots:
       - asm_score
@@ -102,7 +102,7 @@ classes:
 
   metatranscriptome assembly:
     is_a: workflow execution activity
-    in_subset: 
+    in_subset:
       - workflow subset
     slots:
       - asm_score
@@ -136,13 +136,18 @@ classes:
       - INSDC assembly identifiers
 
   metagenome annotation activity:
+    description: A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
     is_a: workflow execution activity
-    in_subset: 
+    slots:
+      - GOLD analysis project identifiers
+    in_subset:
       - workflow subset
 
   metatranscriptome annotation activity:
     is_a: workflow execution activity
-    in_subset: 
+    slots:
+      - GOLD analysis project identifiers
+    in_subset:
       - workflow subset
 
   metatranscriptome activity:
@@ -153,20 +158,24 @@ classes:
       - workflow subset
 
   MAGs analysis activity:
+    description: A workflow execution activity that uses computational binning tools to group assembled contigs into genomes
+    title: Metagenome-Assembled Genome analysis activity
     is_a: workflow execution activity
-    in_subset: 
+    in_subset:
       - workflow subset
     slots:
       - input contig num
       - binned contig num
-      - too short contig num 
+      - too short contig num
       - lowDepth contig num
       - unbinned contig num
       - mags list
 
   read QC analysis activity:
+    description: A workflow execution activity that performs quality control on raw Illumina reads including quality trimming, artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant removal
+    title: Read quality control analysis activity
     is_a: workflow execution activity
-    in_subset: 
+    in_subset:
       - workflow subset
     slots:
       - input read count
@@ -186,15 +195,17 @@ classes:
         inlined: false
       has output:
         inlined: false
-        
-  read based analysis activity:
+
+  read based taxonomy analysis activity:
+    description: A workflow execution activity that performs taxonomy classification using sequencing reads
+    title: Read based analysis activity
     is_a: workflow execution activity
     in_subset:
-      - workflow subset    
-        
+      - workflow subset
+
   metabolomics analysis activity:
     is_a: workflow execution activity
-    in_subset: 
+    in_subset:
       - workflow subset
     slot_usage:
       used:
@@ -208,10 +219,10 @@ classes:
       has calibration:
         description: >-
           TODO: Yuri to fill in
-    
+
   metaproteomics analysis activity:
     is_a: workflow execution activity
-    in_subset: 
+    in_subset:
       - workflow subset
     slot_usage:
       used:
@@ -225,7 +236,7 @@ classes:
 
   nom analysis activity:
     is_a: workflow execution activity
-    in_subset: 
+    in_subset:
       - workflow subset
     slot_usage:
       used:
@@ -236,11 +247,11 @@ classes:
       has calibration:
         range: string
         description: >-
-            A reference to a file that holds calibration information.
+          A reference to a file that holds calibration information.
 
 slots:
   ## Workflow specific slots
-  metagenome assembly parameter: {}
+  metagenome assembly parameter: { }
 
   asm_score:
     is_a: metagenome assembly parameter
@@ -264,14 +275,14 @@ slots:
     is_a: metagenome assembly parameter
     description: >-
       Powersum of all scaffolds is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25).
-    range: float 
+    range: float
 
   scaf_max:
     is_a: metagenome assembly parameter
     description: >-
       Maximum scaffold length.
     range: float
-      
+
   scaf_bp:
     is_a: metagenome assembly parameter
     description: >-
@@ -283,7 +294,7 @@ slots:
     description: >-
       Given a set of scaffolds, each with its own length, the N50 count is defined as the smallest number of scaffolds whose length sum makes up half of genome size.
     range: float
-      
+
   scaf_N90:
     is_a: metagenome assembly parameter
     description: >-
@@ -319,7 +330,7 @@ slots:
     description: >-
       Total sequence size percentage of scaffolds greater than 50 KB.
     range: float
-      
+
   contigs:
     is_a: metagenome assembly parameter
     description: >-
@@ -331,7 +342,7 @@ slots:
     description: >-
       Total size in bp of all contigs.
     range: float
-      
+
   ctg_N50:
     is_a: metagenome assembly parameter
     description: >-
@@ -366,20 +377,20 @@ slots:
     is_a: metagenome assembly parameter
     description: >-
       Powersum of all contigs is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25).
-    range: float 
+    range: float
 
   ctg_max:
     is_a: metagenome assembly parameter
     description: >-
       Maximum contig length.
     range: float
-      
+
   gap_pct:
     is_a: metagenome assembly parameter
     description: >-
       The gap size percentage of all scaffolds.
     range: float
-      
+
   gc_std:
     is_a: metagenome assembly parameter
     description: >-
@@ -403,8 +414,8 @@ slots:
     description: >-
       The sequence count number of input reads aligned to assembled contigs.
     range: float
-      
-  read QC analysis statistic: {}
+
+  read QC analysis statistic: { }
 
   mags list:
     range: MAG bin
@@ -424,13 +435,13 @@ slots:
 
   lowDepth contig num:
     range: integer
-      
+
   input read count:
     is_a: read QC analysis statistic
     description: >-
       The sequence count number of input reads for QC analysis.
     range: float
-    
+
   input base count:
     is_a: read QC analysis statistic
     description: >-
@@ -440,7 +451,7 @@ slots:
   output read count:
     is_a: read QC analysis statistic
     description: >-
-      After QC analysis sequence count number. 
+      After QC analysis sequence count number.
     range: float
 
   output base count:
@@ -448,3 +459,9 @@ slots:
     description: >-
       After QC analysis nucleotide base count number.
     range: float
+
+  has calibration:
+  has metabolite quantifications:
+  input_read_bases:
+  output_read_bases:
+
