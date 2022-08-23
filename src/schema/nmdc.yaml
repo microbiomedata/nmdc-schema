@@ -104,7 +104,7 @@ classes:
       - nom analysis activity set
       - omics processing set
       - read QC analysis activity set
-      - read based analysis activity set
+      - read based taxonomy analysis activity set
       - study set
     slot_usage:
       nmdc schema version:
