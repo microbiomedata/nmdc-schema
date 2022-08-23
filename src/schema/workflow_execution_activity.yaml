@@ -66,7 +66,7 @@ classes:
         required: true
 
   metagenome assembly:
-    description: A workflow execution activity that converts seqeuncing reads into an assembled metagenome.
+    description: A workflow execution activity that converts sequencing reads into an assembled metagenome.
     comments:
     - instances of this class may use a de novo assembly strategy in most or all cases relevant to NMDC
     is_a: workflow execution activity
