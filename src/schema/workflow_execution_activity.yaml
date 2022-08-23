@@ -191,8 +191,8 @@ classes:
       has output:
         inlined: false
 
-  read based analysis activity:
-    description: A workflow execution activity that performs taxonomy classificaton using sequencing reads
+  read based taxonomy analysis activity:
+    description: A workflow execution activity that performs taxonomy classification using sequencing reads
     title: Read based analysis activity
     is_a: workflow execution activity
     in_subset:
