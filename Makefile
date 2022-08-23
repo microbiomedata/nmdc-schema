@@ -282,7 +282,7 @@ post_test: clean mixs_clean reports/slot_annotations_diffs.tsv all
 
 reference_commit=dbbf2f85b676daa35af78992c2649a68457cae21
 # main
-# release 3.2.0 = dbbf2f85b676daa35af78992c2649a68457cae21
+# release 3_2_0 = dbbf2f85b676daa35af78992c2649a68457cae21
 
 mixs_clean:
 	rm -rf reports/slot_annotations_diffs.tsv
@@ -299,3 +299,12 @@ mixs_clean:
 
 src/schema/portal/emsl.yaml:
 	$(RUN) python util/integrate_dh_non_mixs_classes.py
+
+assets/3_2_0/nmdc.schema.json:
+	curl --output  $@  "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v3.2.0/jsonschema/nmdc.schema.json"
+
+assets/4_0_0/nmdc.schema.json:
+	curl --output  $@  "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v4.0.0/jsonschema/nmdc.schema.json"
+
+assets/schema_json_diff.txt:assets/3_2_0/nmdc.schema.json assets/4_0_0/nmdc.schema.json
+	- jd -o $@ --set $^
