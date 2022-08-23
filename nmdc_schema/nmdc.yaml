@@ -479,10 +479,16 @@ enums:
         description: CheckM statistics report
       GOTTCHA2 Krona Plot:
         description: GOTTCHA2 krona plot HTML file
+      GOTTCHA2 Classification Report:
+        description: GOTTCHA2 classification report
+      GOTTCHA2 Report Full:
+        description: GOTTCHA2 report file
       Kraken2 Krona Plot:
         description: Kraken2 krona plot HTML file
       Centrifuge Krona Plot:
         description: Centrifug krona plot HTML file
+      Centrifuge output report file:
+        description: Centrifug report file
       Kraken2 Classification Report:
         description: Kraken2 output report file
       Kraken2 Taxonomic Classification:
@@ -539,9 +545,30 @@ enums:
         description: GFF3 format file with Pfam
         annotations:
           file_name_pattern: "[GOLD-AP]_pfam.gff"
+      CRT Annotation GFF:
+      Genmark Annotation GFF:
+        description: GFF3 format file with Genemark Annotations
+      Prodigal Annotation GFF:
+        description: GFF3 format file with Prodigal Annotations
+      TRNA Annotation GFF:
+        description: GFF3 format file with tRNA Annotations
+      Misc Annotation GFF:
+        description: GFF3 format file with miscellaneous Annotations
+      RFAM Annotation GFF:
+        description: GFF3 format file with RFAM Annotations
+      TMRNA Annotation GFF:
+        description: GFF3 format file with tmRNA Annotations
+      KO_EC Annotation GFF:
+        description: GFF3 format file with KO and EC Annotations
+      Product Names:
+        description: TSV with product name annotations
+      Gene Phylogeny TSV:
+        description: TSV with Gene Phylogeny
+      Crisprt Terms:
+        description: Crispr annotations
       Direct Infusion FT ICR-MS Raw Data:
         description: Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance mass spectrometry raw data acquired in broadband full scan mode
-      
+
   credit enum:
     permissible_values:
       Conceptualization:

@@ -643,10 +643,16 @@ enums:
         description: CheckM statistics report
       GOTTCHA2 Krona Plot:
         description: GOTTCHA2 krona plot HTML file
+      GOTTCHA2 Classification Report:
+        description: GOTTCHA2 classification report file
+      GOTTCHA2 Report Full:
+        description: GOTTCHA2 report file
       Kraken2 Krona Plot:
         description: Kraken2 krona plot HTML file
       Centrifuge Krona Plot:
         description: Centrifug krona plot HTML file
+      Centrifuge output report file:
+        description: Centrifug output report file
       Kraken2 Classification Report:
         description: Kraken2 output report file
       Kraken2 Taxonomic Classification:
@@ -683,6 +689,28 @@ enums:
         description: GFF3 format file with TIGRfam
         annotations:
           file_name_pattern: '[GOLD-AP]_tigrfam.gff'
+      CRT Annotation GFF:
+        description: GFF3 format file with CRT
+      Genmark Annotation GFF:
+        description: GFF3 format file with Genmark
+      Prodigal Annotation GFF:
+        description: GFF3 format file with Prodigal
+      TRNA Annotation GFF:
+        description: GFF3 format file with TRNA
+      Misc Annotation GFF:
+        description: GFF3 format file with Misc
+      RFAM Annotation GFF:
+        description: GFF3 format file with RFAM
+      TMRNA Annotation GFF:
+        description: GFF3 format file with TMRNA
+      KO_EC Annotation GFF:
+        description: GFF3 format file with KO_EC
+      Product Names:
+        description: Product names file
+      Gene Phylogeny tsv:
+        description: Gene Phylogeny tsv
+      Crisprt Terms:
+        description: Crisprt Terms
       Clusters of Orthologous Groups (COG) Annotation GFF:
         description: GFF3 format file with COGs
         annotations:
