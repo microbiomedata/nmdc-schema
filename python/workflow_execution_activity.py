@@ -1,5 +1,5 @@
 # Auto generated from workflow_execution_activity.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-08-23T09:40:50
+# Generation date: 2022-08-23T09:55:23
 # Schema: NMDC-Workflow-Exectution
 #
 # id: https://microbiomedata/schema/workflow_execution_activity

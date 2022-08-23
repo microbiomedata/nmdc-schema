@@ -1,5 +1,5 @@
 # Auto generated from mixs_inspired.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-08-23T09:40:34
+# Generation date: 2022-08-23T09:55:07
 # Schema: mixs_inspired
 #
 # id: https://microbiomedata/schema/mixs_inspired
