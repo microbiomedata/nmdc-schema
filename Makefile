@@ -299,3 +299,43 @@ mixs_clean:
 
 src/schema/portal/emsl.yaml:
 	$(RUN) python util/integrate_dh_non_mixs_classes.py
+
+# this should follow existing patterns
+# now might be a good time for a repo refactor, following the examples of the next schema or linkml-ws new in general
+
+owl/nmdc-schema.owl: src/schema/nmdc.yaml
+	$(RUN) gen-owl --output $@ --metadata-profile rdfs --no-type-objects --format ttl $<
+
+# gen-owl [OPTIONS] YAMLFILE
+# Options:
+  #  -o, --output TEXT               Output file name
+  #  --metadata-profile [linkml|rdfs]
+  #                                  What kind of metadata profile to use for
+  #                                  annotations on generated OWL objects
+  #                                  [default: linkml]
+  #  --type-objects / --no-type-objects
+  #                                  If true, will model linkml types as objects,
+  #                                  not literals  [default: type-objects]
+  #  --metaclasses / --no-metaclasses
+  #                                  If true, include linkml metamodel classes as
+  #                                  metaclasses. Note this introduces punning in
+  #                                  OWL-DL  [default: metaclasses]
+  #  --add-ols-annotations / --no-add-ols-annotations
+  #                                  If true, auto-include annotations from
+  #                                  https://www.ebi.ac.uk/ols/docs/installation-
+  #                                  guide  [default: add-ols-annotations]
+  #  --ontology-iri-suffix TEXT      Suffix to append to schema id to generate
+  #                                  OWL Ontology IRI  [default: .owl.ttl]
+  #  -f, --format [owl|ttl|json-ld|xml|n3|turtle|ttl|ntriples|nt|nt11|nquads|trix|trig|hext]
+  #                                  Output format  [default: owl]
+  #  --metadata / --no-metadata      Include metadata in output  [default:
+  #                                  metadata]
+  #  --useuris / --metauris          Include metadata in output  [default:
+  #                                  useuris]
+  #  -im, --importmap FILENAME       Import mapping file
+  #  --log_level [CRITICAL|ERROR|WARNING|INFO|DEBUG]
+  #                                  Logging level  [default: WARNING]
+  #  -v, --verbose                   verbosity
+  #  --mergeimports / --no-mergeimports
+  #                                  Merge imports into source file
+  #                                  (default=mergeimports)
