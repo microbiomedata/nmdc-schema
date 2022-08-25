@@ -45,7 +45,7 @@ types:
     description: >-
       An integer value that corresponds to a size in bytes
     base: int
-    uri: xsd:int
+    uri: xsd:long
     see_also:
       - UO:0000233
   
