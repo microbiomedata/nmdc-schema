@@ -274,10 +274,10 @@ classes:
       - tot_org_carb
       - tot_org_c_meth
       - tot_nitro_content
-      - tot_nitro_cont_meth # MAM 2022-05-06
+      - tot_nitro_cont_meth
       - tot_phosp
       - water_content
-      - water_cont_soil_meth # MAM 2022-05-06
+      - water_cont_soil_meth
 
       # GOLD path fields
       - ecosystem
