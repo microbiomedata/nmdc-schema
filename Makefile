@@ -161,7 +161,7 @@ docserve:
 
 gh-deploy:
 # deploy documentation (note: requires documentation is in docs dir)
-	$(RUN) mkdocs gh-deploy
+	$(RUN) mkdocs gh-deploy --force
 
 ###  -- PYPI TARGETS
 # Use the build-package target to build a PYPI package locally
