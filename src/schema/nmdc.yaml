@@ -426,7 +426,6 @@ classes:
       - OBI:0000747
       - NCIT:C43412
 
-
   study:
     is_a: named thing
     in_subset:
