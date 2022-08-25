@@ -47,7 +47,6 @@ prefixes:
   nmdc_wfea: https://microbiomedata/schema/workflow_execution_activity/
 
 
-
 default_prefix: nmdc
 default_range: string
 default_curi_maps:
