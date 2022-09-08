@@ -50,13 +50,13 @@ prefixes:
 default_prefix: nmdc
 default_range: string
 default_curi_maps:
-  - obo_context
   - idot_context
+  - obo_context
 emit_prefixes:
   - rdf
   - rdfs
-  - xsd
   - skos
+  - xsd
 imports:
   - annotation
   - bioscales
@@ -70,6 +70,7 @@ imports:
   - portal/mixs_inspired
   - portal/sample_id
   - prov
+  - sample_prep
   - workflow_execution_activity
 
 subsets:
@@ -93,9 +94,12 @@ classes:
       - activity set
       - biosample set
       - data object set
+      - dissolving_process_set
       - functional annotation set
       - genome feature set
       - mags activity set
+      - material_sample_set
+      - material_sampling_process_set
       - metabolomics analysis activity set
       - metagenome annotation activity set
       - metagenome assembly set
@@ -103,6 +107,7 @@ classes:
       - metatranscriptome activity set
       - nom analysis activity set
       - omics processing set
+      - reaction_activity_set
       - read QC analysis activity set
       - read based taxonomy analysis activity set
       - study set
@@ -156,7 +161,7 @@ classes:
       - type  # custom slot that specifies object type
       - alternative identifiers
       - part of
-      - canary
+#      - canary
 
       # MIXS slots
       - agrochem_addition
@@ -795,6 +800,7 @@ enums:
 
 slots:
   canary:
+    description: a slot that can be added and removed as evidence that schema changes have propagated to other systems
   ess dive datasets:
     multivalued: true
     description: List of ESS-DIVE dataset DOIs
