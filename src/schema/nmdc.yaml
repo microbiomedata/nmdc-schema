@@ -16,7 +16,7 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 version: 4.0.0
 prefixes:
   GOLD: https://identifiers.org/gold/
-  MIXS: https://w3id.org/gensc/
+  mixs: https://w3id.org/mixs/
   MS: http://purl.obolibrary.org/obo/MS_
   NCIT: http://purl.obolibrary.org/obo/NCIT_
   OBI: http://purl.obolibrary.org/obo/OBI_
@@ -41,11 +41,6 @@ prefixes:
   gtpo: http://example.com/
   insdc.srs: http://example.com/
   mgnify: http://example.com/
-
-  nmdc_anno: https://microbiomedata/schema/annotation/
-  nmdc_mixs: https://microbiomedata/schema/mixs/
-  nmdc_wfea: https://microbiomedata/schema/workflow_execution_activity/
-
 
 default_prefix: nmdc
 default_range: string

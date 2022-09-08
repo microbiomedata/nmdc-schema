@@ -6,7 +6,7 @@ description: >-
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
-  MIXS: https://w3id.org/gensc/
+  mixs: https://w3id.org/mixs/
   #  MS: http://purl.obolibrary.org/obo/MS_
   #  PR: http://identifiers.org/pr/
   UniProtKB: http://example.com/
