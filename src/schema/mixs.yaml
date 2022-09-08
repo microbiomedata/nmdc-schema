@@ -9,7 +9,7 @@ imports:
 
 
 prefixes:
-  nmdc: https://microbiomedata/meta/
+  nmdc: https://w3id.org/nmdc/
 #  MIXS: https://microbiomedata/schema/mixs/
 
 

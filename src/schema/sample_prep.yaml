@@ -12,7 +12,7 @@ prefixes:
   GOLD: https://identifiers.org/gold/
   OBI: http://purl.obolibrary.org/obo/OBI_
   linkml: https://w3id.org/linkml/
-  nmdc: https://microbiomedata/meta/
+  nmdc: https://w3id.org/nmdc/
   prov: http://www.w3.org/ns/prov#
 #  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
 

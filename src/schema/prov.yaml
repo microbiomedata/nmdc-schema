@@ -7,7 +7,7 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
   linkml: https://w3id.org/linkml/
-  nmdc: https://microbiomedata/meta/
+  nmdc: https://w3id.org/nmdc/
   prov: http://www.w3.org/ns/prov#
   
 default_prefix: nmdc

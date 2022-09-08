@@ -10,7 +10,7 @@ default_curi_maps:
   - idot_context
 
 prefixes:
-  nmdc: https://microbiomedata/meta/
+  nmdc: https://w3id.org/nmdc/
   linkml: https://w3id.org/linkml/
 
 imports:

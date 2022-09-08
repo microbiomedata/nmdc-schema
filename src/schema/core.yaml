@@ -15,7 +15,7 @@ prefixes:
   gtpo: http://example.com/
   igsnvoc: https://igsn.org/voc/v1/
   linkml: https://w3id.org/linkml/
-  nmdc: https://microbiomedata/meta/
+  nmdc: https://w3id.org/nmdc/
   qud: http://qudt.org/1.1/schema/qudt#
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   schema: http://schema.org/

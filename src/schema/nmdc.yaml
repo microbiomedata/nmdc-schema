@@ -25,7 +25,7 @@ prefixes:
   igsn: https://app.geosamples.org/sample/igsn/
   img.taxon: http://img.jgi.doe.gov/cgi-bin/w/main.cgi?section=TaxonDetail&taxon_oid=
   linkml: https://w3id.org/linkml/
-  nmdc: https://microbiomedata/meta/
+  nmdc: https://w3id.org/nmdc/
   qud: http://qudt.org/1.1/schema/qudt#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   wgs: http://www.w3.org/2003/01/geo/wgs84_pos

@@ -26,7 +26,7 @@ prefixes:
   SEED: http://identifiers.org/seed/
   biolink: https://w3id.org/biolink/vocab/
   linkml: https://w3id.org/linkml/
-  nmdc: https://microbiomedata/meta/
+  nmdc: https://w3id.org/nmdc/
 
 default_prefix: nmdc
 
