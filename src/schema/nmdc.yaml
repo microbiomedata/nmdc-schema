@@ -94,9 +94,12 @@ classes:
       - activity set
       - biosample set
       - data object set
+      - dissolving_process_set
       - functional annotation set
       - genome feature set
       - mags activity set
+      - material_sample_set
+      - material_sampling_process_set
       - metabolomics analysis activity set
       - metagenome annotation activity set
       - metagenome assembly set
@@ -104,6 +107,7 @@ classes:
       - metatranscriptome activity set
       - nom analysis activity set
       - omics processing set
+      - reaction_activity_set
       - read QC analysis activity set
       - read based taxonomy analysis activity set
       - study set
