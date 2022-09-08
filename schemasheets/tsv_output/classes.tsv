@@ -1,0 +1,52 @@
+class	is_a	description	from_schema
+>class	is_a	description	from_schema
+database		An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed databse top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest	https://microbiomedata/schema
+data object	named thing	An object that primarily consists of symbols that represent information.   Files, records, and omics data are examples of data objects. 	https://microbiomedata/schema
+biosample	named thing	A material sample. It may be environmental (encompassing many organisms) or isolate or tissue.   An environmental sample containing genetic material from multiple individuals is commonly referred to as a biosample.	https://microbiomedata/schema
+study	named thing	A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.	https://microbiomedata/schema
+biosample processing	named thing	A process that takes one or more biosamples as inputs and generates one or as outputs. Examples of outputs include samples cultivated from another sample or data objects created by instruments runs.	https://microbiomedata/schema
+omics processing	biosample processing	The methods and processes used to generate omics data from a biosample or organism.	https://microbiomedata/schema
+credit association		This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role (https://casrai.org/credit/) and for a person value Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0	https://microbiomedata/schema
+workflow execution activity	activity	Represents an instance of an execution of a particular workflow	https://microbiomedata/schema/workflow_execution_activity
+metagenome assembly	workflow execution activity		https://microbiomedata/schema/workflow_execution_activity
+metatranscriptome assembly	workflow execution activity		https://microbiomedata/schema/workflow_execution_activity
+metagenome annotation activity	workflow execution activity		https://microbiomedata/schema/workflow_execution_activity
+metatranscriptome annotation activity	workflow execution activity		https://microbiomedata/schema/workflow_execution_activity
+metatranscriptome activity	workflow execution activity	A metatranscriptome activity that e.g. pools assembly and annotation activity.	https://microbiomedata/schema/workflow_execution_activity
+MAGs analysis activity	workflow execution activity	A workflow execution activity that uses computational binning tools to group assembled contigs into genomes	https://microbiomedata/schema/workflow_execution_activity
+read QC analysis activity	workflow execution activity	A workflow execution activity that performs quality control on raw Illumina reads including quality trimming, artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant removal	https://microbiomedata/schema/workflow_execution_activity
+read based analysis activity	workflow execution activity		https://microbiomedata/schema/workflow_execution_activity
+metabolomics analysis activity	workflow execution activity		https://microbiomedata/schema/workflow_execution_activity
+metaproteomics analysis activity	workflow execution activity		https://microbiomedata/schema/workflow_execution_activity
+nom analysis activity	workflow execution activity		https://microbiomedata/schema/workflow_execution_activity
+named thing		a databased entity or concept/class	https://microbiomedata/schema/core
+ontology class	named thing		https://microbiomedata/schema/core
+environmental material term	ontology class		https://microbiomedata/schema/core
+attribute value		The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic value and the structured value	https://microbiomedata/schema/core
+quantity value	attribute value	A simple quantity, e.g. 2cm	https://microbiomedata/schema/core
+image value	attribute value	An attribute value representing an image.	https://microbiomedata/schema/core
+person value	attribute value	An attribute value representing a person	https://microbiomedata/schema/core
+person	named thing	represents a person, such as a researcher	https://microbiomedata/schema/core
+MAG bin			https://microbiomedata/schema/core
+instrument	named thing	A material entity that is designed to perform a function in a scientific investigation, but is not a reagent[OBI].	https://microbiomedata/schema/core
+metabolite quantification		This is used to link a metabolomics analysis workflow to a specific metabolite	https://microbiomedata/schema/core
+peptide quantification		This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information	https://microbiomedata/schema/core
+protein quantification		This is used to link a metaproteomics analysis workflow to a specific protein	https://microbiomedata/schema/core
+chemical entity	ontology class	An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs. There may be different terms for distinct acid-base forms, protonation states	https://microbiomedata/schema/core
+gene product	named thing	A molecule encoded by a gene that has an evolved function	https://microbiomedata/schema/core
+text value	attribute value	A basic string value	https://microbiomedata/schema/core
+url value	attribute value	A value that is a string that conforms to URL syntax	https://microbiomedata/schema/core
+timestamp value	attribute value	A value that is a timestamp. The range should be ISO-8601	https://microbiomedata/schema/core
+integer value	attribute value	A value that is an integer	https://microbiomedata/schema/core
+boolean value	attribute value	A value that is a boolean	https://microbiomedata/schema/core
+controlled term value	attribute value	A controlled term or class from an ontology	https://microbiomedata/schema/core
+geolocation value	attribute value	A normalized value for a location on the earth's surface	https://microbiomedata/schema/core
+activity		a provence-generating activity	https://microbiomedata/schema/prov
+agent		a provence-generating agent	https://microbiomedata/schema/prov
+genome feature		A feature localized to an interval along a genome	https://microbiomedata/schema/annotation
+functional annotation term	ontology class	Abstract grouping class for any term/descriptor that can be applied to a functional unit of a genome (protein, ncRNA, complex).	https://microbiomedata/schema/annotation
+pathway	functional annotation term	A pathway is a sequence of steps/reactions carried out by an organism or community of organisms	https://microbiomedata/schema/annotation
+reaction	functional annotation term	An individual biochemical transformation carried out by a functional unit of an organism, in which a collection of substrates are transformed into a collection of products. Can also represent transporters	https://microbiomedata/schema/annotation
+reaction participant		Instances of this link a reaction to a chemical entity participant	https://microbiomedata/schema/annotation
+orthology group	functional annotation term	A set of genes or gene products in which all members are orthologous	https://microbiomedata/schema/annotation
+functional annotation		An assignment of a function term (e.g. reaction or pathway) that is executed by a gene product, or which the gene product plays an active role in. Functional annotations can be assigned manually by curators, or automatically in workflows. In the context of NMDC, all function annotation is performed automatically, typically using HMM or Blast type methods	https://microbiomedata/schema/annotation
