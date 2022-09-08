@@ -7,20 +7,21 @@ see_also:
   - https://gitlab.pnnl.gov/MoNET/analytical-processes/-/blob/main/organicmatterextraction.toml
 
 prefixes:
-  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
+  CHEBI: http://identifiers.org/chebi/
   CHMO: http://purl.obolibrary.org/obo/CHMO_
   GOLD: https://identifiers.org/gold/
   OBI: http://purl.obolibrary.org/obo/OBI_
   linkml: https://w3id.org/linkml/
   nmdc: https://microbiomedata/meta/
   prov: http://www.w3.org/ns/prov#
+#  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
 
 default_prefix: nmdc
 default_range: string
 
 default_curi_maps:
-  - obo_context
   - idot_context
+  - obo_context
 
 imports:
   - basic_slots

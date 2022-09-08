@@ -6,21 +6,22 @@ description: >-
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
+  GOLD: https://identifiers.org/gold/
+  linkml: https://w3id.org/linkml/
   nmdc: https://microbiomedata/meta/
   prov: http://www.w3.org/ns/prov#
-  linkml: https://w3id.org/linkml/
-  GOLD: https://identifiers.org/gold/
+  skos: http://www.w3.org/2004/02/skos/core#
   
 default_prefix: nmdc
 default_range: string
 
 default_curi_maps:
-  - obo_context
   - idot_context
+  - obo_context
 
 imports:
-  - linkml:types
   - core
+  - linkml:types
   
 types:
   

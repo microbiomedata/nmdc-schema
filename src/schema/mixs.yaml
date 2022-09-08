@@ -1,9 +1,20 @@
 name: mixs-schema
 title: MIxS Schema
 id: https://microbiomedata/schema/mixs
+
+default_range: string
+
 imports:
 - core
-default_prefix: https://microbiomedata/schema/mixs/
+
+
+prefixes:
+  nmdc: https://microbiomedata/meta/
+#  MIXS: https://microbiomedata/schema/mixs/
+
+
+default_prefix: nmdc
+
 enums:
   arch_struc_enum:
     name: arch_struc_enum

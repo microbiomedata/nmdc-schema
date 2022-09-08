@@ -6,25 +6,25 @@ description: >-
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
-  nmdc: https://microbiomedata/meta/
   MIXS: https://w3id.org/gensc/
-  wgs: http://www.w3.org/2003/01/geo/wgs84_pos
-  qud: http://qudt.org/1.1/schema/qudt#
+#  MS: http://purl.obolibrary.org/obo/MS_
   dcterms: http://purl.org/dc/terms/
-  schema: http://schema.org/
-  MS: http://purl.obolibrary.org/obo/MS_
   igsnvoc: https://igsn.org/voc/v1/
   linkml: https://w3id.org/linkml/
+  nmdc: https://microbiomedata/meta/
+  qud: http://qudt.org/1.1/schema/qudt#
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  schema: http://schema.org/
   sio: http://semanticscience.org/resource/SIO_
   skos: http://www.w3.org/2004/02/skos/core#
+  wgs: http://www.w3.org/2003/01/geo/wgs84_pos
 
 default_prefix: nmdc
 default_range: string
 
 default_curi_maps:
-  - obo_context
   - idot_context
+  - obo_context
 
 imports:
   - linkml:types

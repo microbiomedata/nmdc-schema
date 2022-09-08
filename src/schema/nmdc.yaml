@@ -49,6 +49,7 @@ prefixes:
 
 default_prefix: nmdc
 default_range: string
+
 default_curi_maps:
   - idot_context
   - obo_context
@@ -112,11 +113,11 @@ classes:
       - read based taxonomy analysis activity set
       - study set
     slot_usage:
-      nmdc schema version:
-        description: TODO
       date created:
         description: TODO
       etl software version:
+        description: TODO
+      nmdc schema version:
         description: TODO
 
   data object:
@@ -161,7 +162,7 @@ classes:
       - type  # custom slot that specifies object type
       - alternative identifiers
       - part of
-#      - canary
+      #      - canary
 
       # MIXS slots
       - agrochem_addition
@@ -799,6 +800,16 @@ enums:
           - replaces Environmental Molecular Sciences Lab
 
 slots:
+  date created:
+    description: from database class
+  etl software version:
+    description: from database class
+  nmdc schema version:
+    description: from database class
+
+  notes:
+    description: from study class
+
   canary:
     description: a slot that can be added and removed as evidence that schema changes have propagated to other systems
   ess dive datasets:

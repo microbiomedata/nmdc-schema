@@ -4,25 +4,36 @@ title: Annotation Module for NMDC Schema
 description: >-
   This module in the schema is for representing annotations including functional annotations of proteins and other gene products,
   as well as controlled terms for describing things like metabolites
+default_range: string
 
 see_also:
   - https://github.com/microbiomedata/nmdc-metadata/issues/176
 
 default_curi_maps:
-  - obo_context
   - idot_context
+  - obo_context
 
 prefixes:
-  nmdc: https://microbiomedata/meta/
+  COG: http://example.com/
+  EC: http://example.com/
+  GO: http://identifiers.org/go/
+  KEGG.PATHWAY: http://identifiers.org/kegg.pathway/
+  KEGG.REACTION: http://identifiers.org/kegg.reaction/
+  MetaCyc: http://example.com/
+  MetaNetX: http://example.com/
+  RHEA: http://identifiers.org/rhea/
+  RetroRules: http://example.com/
+  SEED: http://identifiers.org/seed/
   biolink: https://w3id.org/biolink/vocab/
   linkml: https://w3id.org/linkml/
+  nmdc: https://microbiomedata/meta/
 
 default_prefix: nmdc
 
 imports:
+  - core
   - linkml:types
   - prov
-  - core
   - workflow_execution_activity
 
 classes:
@@ -103,7 +114,7 @@ classes:
     description: >-
       A pathway is a sequence of steps/reactions carried out by an organism or community of organisms
     slot_usage:
-      has_part:
+      has part:
         range: reaction
         multivalued: true
         description: >-
@@ -215,6 +226,14 @@ classes:
       - biolink:GeneToGoTermAssociation
 
 slots:
+
+  has part: { }
+
+  chemical:
+    description: from reaction participant class
+  stoichiometry:
+    description: from reaction participant class
+
   subject:
     range: gene product
 

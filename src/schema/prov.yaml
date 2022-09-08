@@ -6,20 +6,20 @@ description: >-
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
+  linkml: https://w3id.org/linkml/
   nmdc: https://microbiomedata/meta/
   prov: http://www.w3.org/ns/prov#
-  linkml: https://w3id.org/linkml/
   
 default_prefix: nmdc
 default_range: string
 
 default_curi_maps:
-  - obo_context
   - idot_context
+  - obo_context
 
 imports:
-  - linkml:types
   - basic_slots
+  - linkml:types
 classes:
 
   activity:
