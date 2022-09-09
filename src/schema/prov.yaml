@@ -8,7 +8,7 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
-  prov: https://www.w3.org/ns/prov#
+  prov: http://www.w3.org/ns/prov#
   
 default_prefix: nmdc
 default_range: string

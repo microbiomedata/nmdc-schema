@@ -15,32 +15,32 @@ description: >-
 license: https://creativecommons.org/publicdomain/zero/1.0/
 version: 4.0.0
 prefixes:
-  GOLD: https://identifiers.org/gold/
-  mixs: https://w3id.org/mixs/
+  EFO: http://identifiers.org/efo/
+  GOLD: http://identifiers.org/gold/
   MS: http://purl.obolibrary.org/obo/MS_
+  MetaCyc: https://identifiers.org/metacyc.reaction/ # assuming we're talking about metacyc reactions and not genes, compounds etc.
   NCIT: http://purl.obolibrary.org/obo/NCIT_
   OBI: http://purl.obolibrary.org/obo/OBI_
+  UniProtKB: https://identifiers.org/uniprot/
   biolink: https://w3id.org/biolink/vocab/
   dcterms: http://purl.org/dc/terms/
   igsn: https://app.geosamples.org/sample/igsn/
   img.taxon: http://img.jgi.doe.gov/cgi-bin/w/main.cgi?section=TaxonDetail&taxon_oid=
   linkml: https://w3id.org/linkml/
+  mixs: https://w3id.org/mixs/
   nmdc: https://w3id.org/nmdc/
   qud: http://qudt.org/1.1/schema/qudt#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   wgs: http://www.w3.org/2003/01/geo/wgs84_pos
-  EFO: http://purl.obolibrary.org/obo/EFO_
 
-  COG: http://example.com/
-  EC: http://example.com/
-  ISA: http://example.com/
-  MetaCyc: http://example.com/
-  MetaNetX: http://example.com/
-  RetroRules: http://example.com/
-  UniProtKB: http://example.com/
-  gtpo: http://example.com/
-  insdc.srs: http://example.com/
-  mgnify: http://example.com/
+  COG: https://unknown.to.linter.org/
+  EC: https://unknown.to.linter.org/
+  ISA: https://unknown.to.linter.org/
+  MetaNetX: https://unknown.to.linter.org/
+  RetroRules: https://unknown.to.linter.org/
+  gtpo: https://unknown.to.linter.org/
+  insdc.srs: https://unknown.to.linter.org/
+  mgnify: https://unknown.to.linter.org/
 
 default_prefix: nmdc
 default_range: string

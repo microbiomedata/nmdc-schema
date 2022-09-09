@@ -9,10 +9,10 @@ prefixes:
   mixs: https://w3id.org/mixs/
   #  MS: http://purl.obolibrary.org/obo/MS_
   #  PR: http://identifiers.org/pr/
-  UniProtKB: http://example.com/
+  UniProtKB: https://identifiers.org/uniprot/
   biolink: https://w3id.org/biolink/vocab/
   dcterms: http://purl.org/dc/terms/
-  gtpo: http://example.com/
+  gtpo: https://unknown.to.linter.org/
   igsnvoc: https://igsn.org/voc/v1/
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
@@ -22,6 +22,8 @@ prefixes:
   sio: http://semanticscience.org/resource/SIO_
   skos: http://www.w3.org/2004/02/skos/core#
   wgs: http://www.w3.org/2003/01/geo/wgs84_pos
+  #  KEGG_COMPOUND: http://unknown.to.linter.org/
+  KEGG.COMPOUND: http://identifiers.org/kegg.compound/
 
 default_prefix: nmdc
 default_range: string
@@ -350,14 +352,14 @@ classes:
     see_also:
       - https://bioconductor.org/packages/devel/data/annotation/vignettes/metaboliteIDmapping/inst/doc/metaboliteIDmapping.html
     id_prefixes:
-      - KEGG.COMPOUND
+      - CAS
       - CHEBI
       - CHEMBL.COMPOUND
       - DRUGBANK
-      - PUBCHEM.COMPOUND
-      - CAS
       - HMDB
+      - KEGG.COMPOUND
       - MESH
+      - PUBCHEM.COMPOUND
     exact_mappings:
       - biolink:ChemicalSubstance
 
@@ -368,9 +370,9 @@ classes:
     comments:
       - we may include a more general gene product class in future to allow for ncRNA annotation
     id_prefixes:
+      - PR
       - UniProtKB
       - gtpo
-      - PR
     exact_mappings:
       - biolink:GeneProduct
 
