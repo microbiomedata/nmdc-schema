@@ -10,13 +10,14 @@ see_also:
   - https://github.com/microbiomedata/nmdc-metadata/issues/176
 
 default_curi_maps:
-  - idot_context
   - obo_context
+  - idot_context
+
 
 prefixes:
   COG: http://example.com/
   EC: http://example.com/
-  GO: http://identifiers.org/go/
+  GO: http://purl.obolibrary.org/obo/GO_
   KEGG.PATHWAY: http://identifiers.org/kegg.pathway/
   KEGG.REACTION: http://identifiers.org/kegg.reaction/
   MetaCyc: http://example.com/

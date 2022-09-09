@@ -1,20 +1,15 @@
 SRC_DIR = src
 SCHEMA_DIR = $(SRC_DIR)/schema
 SOURCE_FILES := $(shell find $(SCHEMA_DIR) -name '*.yaml')
-SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
-
-SCHEMA_NAME = nmdc
-SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
-
 DOCS_DIR = docs
-
-RUN=poetry run
-
-#TGTS = graphql jsonschema docs shex owl csv  python
-TGTS = jsonschema jsonld-context python json docs
-
 #GEN_OPTS = --no-mergeimports
 GEN_OPTS =
+RUN=poetry run
+SCHEMA_NAME = nmdc
+SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
+SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
+#TGTS = graphql jsonschema docs shex owl csv  python docs
+TGTS = jsonschema jsonld-context python json doc
 
 all: gen stage
 gen: $(patsubst %,gen-%,$(TGTS))
@@ -60,19 +55,23 @@ stage-%: gen-%
 ###  -- MARKDOWN DOCS AND SLIDES --
 # Generate documentation ready for mkdocs
 # TODO: modularize imports
-gen-docs: target/docs/index.md copy-src-docs make-slides
+#gen-docs: target/docs/index.md copy-src-docs make-slides
 .PHONY: gen-docs
 copy-src-docs:
 	mkdir -p target/docs/images
 	cp $(SRC_DIR)/docs/*.md target/docs/
 	cp $(SRC_DIR)/docs/images/* target/docs/images/
 PHONY: copy-src-docs
+
 target/docs/%.md: $(SCHEMA_SRC) tdir-docs
 	$(RUN) gen-markdown $(GEN_OPTS) --dir target/docs $<
-stage-docs: gen-docs
-	cp -pr target/docs .
+
+#stage-docs: gen-docs
+#	cp -pr target/docs .
 
 gen-doc:
+	mkdir -p target/doc
+	echo 'long story' > target/doc/placeholder.txt
 	$(RUN) gen-doc $(SCHEMA_SRC) --template-directory $(SRC_DIR)/doc-templates -d $(DOCS_DIR)
 	cp $(SRC_DIR)/$(DOCS_DIR)/*.md $(DOCS_DIR)
 	mkdir -p $(DOCS_DIR)/images
@@ -98,8 +97,12 @@ gen-python: $(patsubst %, target/python/%.py, $(SCHEMA_NAMES))
 #	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
 	# hardcoded solution for the new src/schema/portal directory in target/python/%.py
 
-target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python
-	mkdir -p target/python/portal
+target/python/portal:
+	mkdir -p $@
+
+# 	mkdir -p target/python/portal
+
+target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python target/python/portal
 	$(RUN) gen-py-classes --mergeimports $(GEN_OPTS) $< > $@
 
 ###  -- GRAPHQL --

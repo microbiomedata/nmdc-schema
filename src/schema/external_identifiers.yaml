@@ -9,20 +9,20 @@ prefixes:
   GOLD: https://identifiers.org/gold/
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
-  prov: http://www.w3.org/ns/prov#
+  prov: https://www.w3.org/ns/prov#
   skos: http://www.w3.org/2004/02/skos/core#
-  
+
 default_prefix: nmdc
 default_range: string
 
 default_curi_maps:
-  - idot_context
   - obo_context
+  - idot_context
 
 imports:
   - core
   - linkml:types
-  
+
 types:
   
   external identifier:
@@ -31,7 +31,7 @@ types:
       A CURIE representing an external identifier
     see_also:
       - https://microbiomedata.github.io/nmdc-schema/identifiers.html
-  
+
 slots:
   
   external database identifiers:
@@ -113,7 +113,7 @@ slots:
     see_also:
       - https://www.ncbi.nlm.nih.gov/bioproject/
       - https://www.ddbj.nig.ac.jp/bioproject/index-e.html
-        
+
   GOLD study identifiers:
     is_a: study identifiers
     mixins:
@@ -132,7 +132,7 @@ slots:
     description: identifiers for corresponding project in MGnify
     examples:
       - value: https://identifiers.org/mgnify.proj:MGYS00005757
-    
+
   ## samples
 
   sample identifiers:
@@ -205,8 +205,8 @@ slots:
     pattern: "^insdc.sra:(E|D|S)RX[0-9]{6,}$"
     mixins:
       - INSDC identifiers
-    
-        
+
+
   ## analysis run
 
   analysis identifiers:
