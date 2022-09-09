@@ -230,20 +230,6 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
-name = "deepdiff"
-version = "5.8.1"
-description = "Deep Difference and Search of any Python object/data."
-category = "main"
-optional = false
-python-versions = ">=3.6"
-
-[package.dependencies]
-ordered-set = ">=4.1.0,<4.2.0"
-
-[package.extras]
-cli = ["click (==8.0.3)", "pyyaml (==5.4.1)", "toml (==0.10.2)", "clevercsv (==0.7.1)"]
-
-[[package]]
 name = "deprecated"
 version = "1.2.13"
 description = "Python @deprecated decorator to deprecate old python classes, functions or methods."
@@ -806,14 +792,6 @@ rtd = ["ipython", "sphinx-book-theme", "sphinx-design", "sphinxext-rediraffe (>=
 testing = ["beautifulsoup4", "coverage", "pytest (>=6,<7)", "pytest-cov", "pytest-regressions", "pytest-param-files (>=0.3.4,<0.4.0)", "sphinx-pytest"]
 
 [[package]]
-name = "numpy"
-version = "1.23.2"
-description = "NumPy is the fundamental package for array computing with Python."
-category = "main"
-optional = false
-python-versions = ">=3.8"
-
-[[package]]
 name = "openpyxl"
 version = "3.0.10"
 description = "A Python library to read/write Excel 2010 xlsx/xlsm files"
@@ -825,17 +803,6 @@ python-versions = ">=3.6"
 et-xmlfile = "*"
 
 [[package]]
-name = "ordered-set"
-version = "4.1.0"
-description = "An OrderedSet is a custom MutableSet that remembers its order, so that every"
-category = "main"
-optional = false
-python-versions = ">=3.7"
-
-[package.extras]
-dev = ["pytest", "black", "mypy"]
-
-[[package]]
 name = "packaging"
 version = "21.3"
 description = "Core utilities for Python packages"
@@ -845,52 +812,6 @@ python-versions = ">=3.6"
 
 [package.dependencies]
 pyparsing = ">=2.0.2,<3.0.5 || >3.0.5"
-
-[[package]]
-name = "pandas"
-version = "1.4.4"
-description = "Powerful data structures for data analysis, time series, and statistics"
-category = "main"
-optional = false
-python-versions = ">=3.8"
-
-[package.dependencies]
-numpy = [
-    {version = ">=1.18.5", markers = "platform_machine != \"aarch64\" and platform_machine != \"arm64\" and python_version < \"3.10\""},
-    {version = ">=1.19.2", markers = "platform_machine == \"aarch64\" and python_version < \"3.10\""},
-    {version = ">=1.20.0", markers = "platform_machine == \"arm64\" and python_version < \"3.10\""},
-    {version = ">=1.21.0", markers = "python_version >= \"3.10\""},
-]
-python-dateutil = ">=2.8.1"
-pytz = ">=2020.1"
-
-[package.extras]
-test = ["hypothesis (>=5.5.3)", "pytest (>=6.0)", "pytest-xdist (>=1.31)"]
-
-[[package]]
-name = "pandasql"
-version = "0.7.3"
-description = "sqldf for pandas"
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-numpy = "*"
-pandas = "*"
-sqlalchemy = "*"
-
-[[package]]
-name = "pandoc"
-version = "2.2"
-description = "Pandoc Documents for Python"
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-plumbum = "*"
-ply = "*"
 
 [[package]]
 name = "parse"
@@ -953,22 +874,6 @@ python-versions = ">=3.6"
 [package.extras]
 testing = ["pytest-benchmark", "pytest"]
 dev = ["tox", "pre-commit"]
-
-[[package]]
-name = "plumbum"
-version = "1.7.2"
-description = "Plumbum: shell combinators library"
-category = "main"
-optional = false
-python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
-
-[package.dependencies]
-pywin32 = {version = "*", markers = "platform_system == \"Windows\" and platform_python_implementation != \"PyPy\""}
-
-[package.extras]
-dev = ["paramiko", "psutil", "pytest", "pytest-cov", "pytest-mock", "pytest-timeout"]
-docs = ["Sphinx (>=3.0.0)", "sphinx-rtd-theme (>=0.5.0)"]
-ssh = ["paramiko"]
 
 [[package]]
 name = "ply"
@@ -1067,23 +972,6 @@ python-versions = ">=3.7"
 markdown = ">=3.2"
 
 [[package]]
-name = "pymongo"
-version = "4.2.0"
-description = "Python driver for MongoDB <http://www.mongodb.org>"
-category = "main"
-optional = false
-python-versions = ">=3.7"
-
-[package.extras]
-aws = ["pymongo-auth-aws (<2.0.0)"]
-encryption = ["pymongocrypt (>=1.3.0,<2.0.0)"]
-gssapi = ["pykerberos"]
-ocsp = ["pyopenssl (>=17.2.0)", "requests (<3.0.0)", "service-identity (>=18.1.0)", "certifi"]
-snappy = ["python-snappy"]
-srv = ["dnspython (>=1.16.0,<3.0.0)"]
-zstd = ["zstandard"]
-
-[[package]]
 name = "pyparsing"
 version = "3.0.9"
 description = "pyparsing module - Classes and methods to define and execute parsing grammars"
@@ -1152,14 +1040,6 @@ six = ">=1.5"
 name = "pytz"
 version = "2022.2.1"
 description = "World timezone definitions, modern and historical"
-category = "main"
-optional = false
-python-versions = "*"
-
-[[package]]
-name = "pywin32"
-version = "304"
-description = "Python for Window Extensions"
 category = "main"
 optional = false
 python-versions = "*"
@@ -1554,22 +1434,6 @@ pymysql = ["pymysql (<1)", "pymysql"]
 sqlcipher = ["sqlcipher3-binary"]
 
 [[package]]
-name = "sqldf"
-version = "0.4.2"
-description = "A simple way to run SQL queries (SQLite3) on pandas.Dataframe objects."
-category = "main"
-optional = false
-python-versions = "*"
-
-[[package]]
-name = "strsimpy"
-version = "0.2.1"
-description = "A library implementing different string similarity and distance measures"
-category = "main"
-optional = false
-python-versions = "*"
-
-[[package]]
 name = "tomli"
 version = "2.0.1"
 description = "A lil' TOML parser"
@@ -1698,7 +1562,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "bfb9c4486dcd2e5d92c42ef09ddee49766784c8dc4c1fbe7bd30577cc2c5638d"
+content-hash = "79cbf92265c29b28df007100e6e3f7447220383fb11f7d91e5729e0bb42783f4"
 
 [metadata.files]
 alabaster = []
@@ -1720,7 +1584,6 @@ colorama = []
 commonmark = []
 cryptography = []
 decorator = []
-deepdiff = []
 deprecated = []
 distlib = []
 docutils = []
@@ -1764,20 +1627,14 @@ mkdocs-mermaid2-plugin = []
 more-itertools = []
 mypy-extensions = []
 myst-parser = []
-numpy = []
 openpyxl = []
-ordered-set = []
 packaging = []
-pandas = []
-pandasql = []
-pandoc = []
 parse = []
 pathspec = []
 pep517 = []
 pkginfo = []
 platformdirs = []
 pluggy = []
-plumbum = []
 ply = []
 prefixcommons = []
 prefixmaps = []
@@ -1787,14 +1644,12 @@ pydantic = []
 pygments = []
 pyjsg = []
 pymdown-extensions = []
-pymongo = []
 pyparsing = []
 pyrsistent = []
 pyshex = []
 pyshexc = []
 python-dateutil = []
 pytz = []
-pywin32 = []
 pywin32-ctypes = []
 pyyaml = []
 pyyaml-env-tag = []
@@ -1824,8 +1679,6 @@ sphinxcontrib-jsmath = []
 sphinxcontrib-qthelp = []
 sphinxcontrib-serializinghtml = []
 sqlalchemy = []
-sqldf = []
-strsimpy = []
 tomli = []
 tox = []
 twine = []
