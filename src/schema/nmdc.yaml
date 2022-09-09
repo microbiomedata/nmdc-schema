@@ -1094,7 +1094,12 @@ slots:
   sample_collection_site:
     range: string
   identifier:
+    slot_group: biosample_identifiers
     range: string
+    todos:
+      - used in MongoDB as of 2022-09-09, which is still on schema 3.?
+      - we will remove this slot form the schema, but make sure to retain the content in MongoDB in a relevant, retained slot
+      - Mark will do the MongoDB migration
   sample_collection_year:
     range: integer
   sample_collection_month:
