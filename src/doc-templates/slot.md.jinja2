@@ -36,14 +36,24 @@ URI: [{{ gen.uri(element) }}]({{ gen.uri(element) }})
 <!-- no inheritance hierarchy -->
 {% endif %}
 
+{% if schemaview.is_mixin(element.name) %}
+## Mixin Usage
+
+| mixed into | description | range | domain |
+| --- | --- | --- | --- |
+{% for s in schemaview.slot_children(element.name) -%}
+| {{ gen.link(s) }} | {{ schemaview.get_slot(s).description }} | {{ schemaview.get_slot(s).range }} | {{ schemaview.get_classes_by_slot(schemaview.get_slot(s))|join(', ') }} |
+{% endfor %}
+{% endif %}
+
 ## Properties
 
 * Range: {{gen.link(element.range)}}
 * Multivalued: {{ element.multivalued }}
 {% if element.aliases %}
 * Aliases:
-    {% for alias in element.aliases -%}
-        * {{ alias }}
+{% for alias in element.aliases -%}
+    * {{ alias }}
 {% endfor %}
 {% endif %}
 
@@ -51,6 +61,9 @@ URI: [{{ gen.uri(element) }}]({{ gen.uri(element) }})
 * Required: {{ element.required }}
 {% elif element.recommended %}
 * Recommended: {{ element.recommended }}
+{% endif %}
+{% if schemaview.is_mixin(element.name) %}
+* Mixin: {{ element.mixin }}
 {% endif %}
 
 {% if schemaview.usage_index().get(element.name) %}
