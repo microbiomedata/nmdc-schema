@@ -1,5 +1,5 @@
 # Auto generated from basic_slots.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-08-23T09:55:04
+# Generation date: 2022-09-12T13:29:53
 # Schema: NMDC-Basic-Slots
 #
 # id: https://microbiomedata/schema/basic_slots
@@ -35,8 +35,8 @@ dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 # Namespaces
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
-NMDC = CurieNamespace('nmdc', 'https://microbiomedata/meta/')
-SKOS = CurieNamespace('skos', 'http://example.org/UNKNOWN/skos/')
+NMDC = CurieNamespace('nmdc', 'https://w3id.org/nmdc/')
+SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
 DEFAULT_ = NMDC
 
 

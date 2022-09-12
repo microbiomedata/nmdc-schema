@@ -1,7 +1,7 @@
 {
   "functional_annotation_set": [
     {
-      "has_function": "KEGG.PATHWAY:rsk00410"
+      "has_function": "KEGG_PATHWAY:rsk00410"
     },
     {
       "has_function": "KEGG.REACTION:R00100"

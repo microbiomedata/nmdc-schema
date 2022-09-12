@@ -1,5 +1,5 @@
 # Auto generated from mixs_inspired.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-08-23T09:55:07
+# Generation date: 2022-09-12T13:29:58
 # Schema: mixs_inspired
 #
 # id: https://microbiomedata/schema/mixs_inspired
@@ -33,7 +33,7 @@ dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
-NMDC = CurieNamespace('nmdc', 'https://microbiomedata/meta/')
+NMDC = CurieNamespace('nmdc', 'https://w3id.org/nmdc/')
 DEFAULT_ = NMDC
 
 

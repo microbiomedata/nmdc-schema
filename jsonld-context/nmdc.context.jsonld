@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-08-23T09:54:59\n    Schema: NMDC\n    metamodel version: 1.7.0\n    model version: 4.0.0\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC).\nThis schema is organized into distinct modules:\n\n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-09-12T13:29:44\n    Schema: NMDC\n    metamodel version: 1.7.0\n    model version: 4.0.0\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC).\nThis schema is organized into distinct modules:\n\n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "CAS": "http://identifiers.org/cas/",
       "CATH": "http://identifiers.org/cath/",
@@ -8,29 +8,33 @@
          "@prefix": true
       },
       "CHEMBL.COMPOUND": "http://identifiers.org/chembl.compound/",
-      "COG": "http://example.com/",
+      "CHMO": {
+         "@id": "http://purl.obolibrary.org/obo/CHMO_",
+         "@prefix": true
+      },
+      "COG": "https://unknown.to.linter.org/",
       "DRUGBANK": "http://identifiers.org/drugbank/",
-      "EC": "http://example.com/",
+      "EC": "https://unknown.to.linter.org/",
+      "EFO": "http://identifiers.org/efo/",
       "EGGNOG": "http://identifiers.org/eggnog/",
       "GO": {
          "@id": "http://purl.obolibrary.org/obo/GO_",
          "@prefix": true
       },
-      "GOLD": "https://identifiers.org/gold/",
+      "GOLD": "http://identifiers.org/gold/",
       "HMDB": "http://identifiers.org/hmdb/",
-      "ISA": "http://example.com/",
+      "ISA": "https://unknown.to.linter.org/",
       "KEGG.COMPOUND": "http://identifiers.org/kegg.compound/",
       "KEGG.ORTHOLOGY": "http://identifiers.org/kegg.orthology/",
-      "KEGG.PATHWAY": "http://identifiers.org/kegg.pathway/",
       "KEGG.REACTION": "http://identifiers.org/kegg.reaction/",
+      "KEGG_PATHWAY": "http://identifiers.org/kegg.pathway/",
       "MESH": "http://identifiers.org/mesh/",
-      "MIXS": "https://w3id.org/gensc/",
       "MS": {
          "@id": "http://purl.obolibrary.org/obo/MS_",
          "@prefix": true
       },
-      "MetaCyc": "http://example.com/",
-      "MetaNetX": "http://example.com/",
+      "MetaCyc": "https://identifiers.org/metacyc.reaction/",
+      "MetaNetX": "https://unknown.to.linter.org/",
       "NCIT": {
          "@id": "http://purl.obolibrary.org/obo/NCIT_",
          "@prefix": true
@@ -51,7 +55,7 @@
          "@id": "http://purl.obolibrary.org/obo/RO_",
          "@prefix": true
       },
-      "RetroRules": "http://example.com/",
+      "RetroRules": "https://unknown.to.linter.org/",
       "SEED": "http://identifiers.org/seed/",
       "SIO": {
          "@id": "http://semanticscience.org/resource/SIO_",
@@ -59,22 +63,20 @@
       },
       "SUPFAM": "http://identifiers.org/supfam/",
       "TIGRFAM": "http://identifiers.org/tigrfam/",
-      "UniProtKB": "http://example.com/",
+      "UniProtKB": "https://identifiers.org/uniprot/",
       "biolink": "https://w3id.org/biolink/vocab/",
       "dcterms": "http://purl.org/dc/terms/",
-      "gtpo": "http://example.com/",
+      "gtpo": "https://unknown.to.linter.org/",
       "igsn": "https://app.geosamples.org/sample/igsn/",
       "img.taxon": {
          "@id": "http://img.jgi.doe.gov/cgi-bin/w/main.cgi?section=TaxonDetail&taxon_oid=",
          "@prefix": true
       },
-      "insdc.srs": "http://example.com/",
+      "insdc.srs": "https://unknown.to.linter.org/",
       "linkml": "https://w3id.org/linkml/",
-      "mgnify": "http://example.com/",
-      "nmdc": "https://microbiomedata/meta/",
-      "nmdc_anno": "https://microbiomedata/schema/annotation/",
-      "nmdc_mixs": "https://microbiomedata/schema/mixs/",
-      "nmdc_wfea": "https://microbiomedata/schema/workflow_execution_activity/",
+      "mgnify": "https://unknown.to.linter.org/",
+      "mixs": "https://w3id.org/mixs/",
+      "nmdc": "https://w3id.org/nmdc/",
       "prov": "http://www.w3.org/ns/prov#",
       "qud": "http://qudt.org/1.1/schema/qudt#",
       "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
@@ -90,10 +92,10 @@
          "@prefix": true
       },
       "xsd": "http://www.w3.org/2001/XMLSchema#",
-      "@vocab": "https://microbiomedata/meta/",
+      "@vocab": "https://w3id.org/nmdc/",
       "abs_air_humidity": {
          "@type": "@id",
-         "@id": "MIXS:0000122"
+         "@id": "mixs:0000122"
       },
       "acted_on_behalf_of": {
          "@type": "@id"
@@ -103,74 +105,77 @@
       },
       "add_recov_method": {
          "@type": "@id",
-         "@id": "MIXS:0001009"
+         "@id": "mixs:0001009"
       },
       "additional_info": {
          "@type": "@id",
-         "@id": "MIXS:0000300"
+         "@id": "mixs:0000300"
       },
       "address": {
          "@type": "@id",
-         "@id": "MIXS:0000218"
+         "@id": "mixs:0000218"
       },
       "adj_room": {
          "@type": "@id",
-         "@id": "MIXS:0000219"
+         "@id": "mixs:0000219"
       },
       "aero_struc": {
          "@type": "@id",
-         "@id": "MIXS:0000773"
+         "@id": "mixs:0000773"
       },
       "agrochem_addition": {
          "@type": "@id",
-         "@id": "MIXS:0000639"
+         "@id": "mixs:0000639"
       },
       "air_temp": {
          "@type": "@id",
-         "@id": "MIXS:0000124"
+         "@id": "mixs:0000124"
       },
       "air_temp_regm": {
          "@type": "@id",
-         "@id": "MIXS:0000551"
+         "@id": "mixs:0000551"
       },
       "al_sat": {
          "@type": "@id",
-         "@id": "MIXS:0000607"
+         "@id": "mixs:0000607"
       },
       "al_sat_meth": {
          "@type": "@id",
-         "@id": "MIXS:0000324"
+         "@id": "mixs:0000324"
       },
       "alkalinity": {
          "@type": "@id",
-         "@id": "MIXS:0000421"
+         "@id": "mixs:0000421"
       },
       "alkalinity_method": {
          "@type": "@id",
-         "@id": "MIXS:0000298"
+         "@id": "mixs:0000298"
       },
       "alkyl_diethers": {
          "@type": "@id",
-         "@id": "MIXS:0000490"
+         "@id": "mixs:0000490"
       },
       "alt": {
          "@type": "@id",
-         "@id": "MIXS:0000094"
+         "@id": "mixs:0000094"
       },
       "aminopept_act": {
          "@type": "@id",
-         "@id": "MIXS:0000172"
+         "@id": "mixs:0000172"
       },
       "ammonium": {
          "@type": "@id",
-         "@id": "MIXS:0000427"
+         "@id": "mixs:0000427"
       },
       "ammonium_nitrogen": {
          "@type": "@id"
       },
+      "amount_collected": {
+         "@type": "@id"
+      },
       "amount_light": {
          "@type": "@id",
-         "@id": "MIXS:0000140"
+         "@id": "mixs:0000140"
       },
       "analysis_identifiers": {
          "@type": "@id"
@@ -185,23 +190,23 @@
       },
       "ances_data": {
          "@type": "@id",
-         "@id": "MIXS:0000247"
+         "@id": "mixs:0000247"
       },
       "annual_precpt": {
          "@type": "@id",
-         "@id": "MIXS:0000644"
+         "@id": "mixs:0000644"
       },
       "annual_temp": {
          "@type": "@id",
-         "@id": "MIXS:0000642"
+         "@id": "mixs:0000642"
       },
       "antibiotic_regm": {
          "@type": "@id",
-         "@id": "MIXS:0000553"
+         "@id": "mixs:0000553"
       },
       "api": {
          "@type": "@id",
-         "@id": "MIXS:0000157"
+         "@id": "mixs:0000157"
       },
       "applied_role": {
          "@context": {
@@ -226,299 +231,293 @@
       },
       "arch_struc": {
          "@type": "@id",
-         "@id": "MIXS:0000774"
+         "@id": "mixs:0000774"
       },
       "aromatics_pc": {
          "@type": "@id",
-         "@id": "MIXS:0000133"
+         "@id": "mixs:0000133"
       },
       "asm_score": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:asm_score"
+         "@type": "xsd:float"
       },
       "asphaltenes_pc": {
          "@type": "@id",
-         "@id": "MIXS:0000135"
+         "@id": "mixs:0000135"
       },
       "atmospheric_data": {
          "@type": "@id",
-         "@id": "MIXS:0001097"
+         "@id": "mixs:0001097"
       },
       "avg_dew_point": {
          "@type": "@id",
-         "@id": "MIXS:0000141"
+         "@id": "mixs:0000141"
       },
       "avg_occup": {
          "@type": "@id",
-         "@id": "MIXS:0000775"
+         "@id": "mixs:0000775"
       },
       "avg_temp": {
          "@type": "@id",
-         "@id": "MIXS:0000142"
+         "@id": "mixs:0000142"
       },
       "bac_prod": {
          "@type": "@id",
-         "@id": "MIXS:0000683"
+         "@id": "mixs:0000683"
       },
       "bac_resp": {
          "@type": "@id",
-         "@id": "MIXS:0000684"
+         "@id": "mixs:0000684"
       },
       "bacteria_carb_prod": {
          "@type": "@id",
-         "@id": "MIXS:0000173"
+         "@id": "mixs:0000173"
       },
       "barometric_press": {
          "@type": "@id",
-         "@id": "MIXS:0000096"
+         "@id": "mixs:0000096"
       },
       "basin": {
          "@type": "@id",
-         "@id": "MIXS:0000290"
+         "@id": "mixs:0000290"
       },
       "bathroom_count": {
          "@type": "@id",
-         "@id": "MIXS:0000776"
+         "@id": "mixs:0000776"
       },
       "bedroom_count": {
          "@type": "@id",
-         "@id": "MIXS:0000777"
+         "@id": "mixs:0000777"
       },
       "benzene": {
          "@type": "@id",
-         "@id": "MIXS:0000153"
+         "@id": "mixs:0000153"
       },
       "binned_contig_num": {
-         "@type": "xsd:integer",
-         "@id": "nmdc_wfea:binned_contig_num"
+         "@type": "xsd:integer"
       },
       "biochem_oxygen_dem": {
          "@type": "@id",
-         "@id": "MIXS:0000653"
+         "@id": "mixs:0000653"
       },
       "biocide": {
          "@type": "@id",
-         "@id": "MIXS:0001011"
+         "@id": "mixs:0001011"
       },
       "biocide_admin_method": {
          "@type": "@id",
-         "@id": "MIXS:0000456"
+         "@id": "mixs:0000456"
       },
       "biol_stat": {
          "@type": "@id",
-         "@id": "MIXS:0000858"
+         "@id": "mixs:0000858"
       },
       "biomass": {
          "@type": "@id",
-         "@id": "MIXS:0000174"
+         "@id": "mixs:0000174"
       },
       "biosample_set": {
          "@type": "@id"
       },
       "biotic_regm": {
          "@type": "@id",
-         "@id": "MIXS:0001038"
+         "@id": "mixs:0001038"
       },
       "biotic_relationship": {
          "@type": "@id",
-         "@id": "MIXS:0000028"
+         "@id": "mixs:0000028"
       },
       "bishomohopanol": {
          "@type": "@id",
-         "@id": "MIXS:0000175"
+         "@id": "mixs:0000175"
       },
       "blood_press_diast": {
          "@type": "@id",
-         "@id": "MIXS:0000258"
+         "@id": "mixs:0000258"
       },
       "blood_press_syst": {
          "@type": "@id",
-         "@id": "MIXS:0000259"
+         "@id": "mixs:0000259"
       },
       "bromide": {
          "@type": "@id",
-         "@id": "MIXS:0000176"
+         "@id": "mixs:0000176"
       },
       "build_docs": {
          "@type": "@id",
-         "@id": "MIXS:0000787"
+         "@id": "mixs:0000787"
       },
       "build_occup_type": {
          "@type": "@id",
-         "@id": "MIXS:0000761"
+         "@id": "mixs:0000761"
       },
       "building_setting": {
          "@type": "@id",
-         "@id": "MIXS:0000768"
+         "@id": "mixs:0000768"
       },
       "built_struc_age": {
          "@type": "@id",
-         "@id": "MIXS:0000145"
+         "@id": "mixs:0000145"
       },
       "built_struc_set": {
          "@type": "@id",
-         "@id": "MIXS:0000778"
+         "@id": "mixs:0000778"
       },
       "built_struc_type": {
          "@type": "@id",
-         "@id": "MIXS:0000721"
+         "@id": "mixs:0000721"
       },
       "calcium": {
          "@type": "@id",
-         "@id": "MIXS:0000432"
+         "@id": "mixs:0000432"
       },
       "carb_dioxide": {
          "@type": "@id",
-         "@id": "MIXS:0000097"
+         "@id": "mixs:0000097"
       },
       "carb_monoxide": {
          "@type": "@id",
-         "@id": "MIXS:0000098"
+         "@id": "mixs:0000098"
       },
       "carb_nitro_ratio": {
          "@type": "@id",
-         "@id": "MIXS:0000310"
+         "@id": "mixs:0000310"
       },
       "ceil_area": {
          "@type": "@id",
-         "@id": "MIXS:0000148"
+         "@id": "mixs:0000148"
       },
       "ceil_cond": {
          "@type": "@id",
-         "@id": "MIXS:0000779"
+         "@id": "mixs:0000779"
       },
       "ceil_finish_mat": {
          "@type": "@id",
-         "@id": "MIXS:0000780"
+         "@id": "mixs:0000780"
       },
       "ceil_struc": {
          "@type": "@id",
-         "@id": "MIXS:0000782"
+         "@id": "mixs:0000782"
       },
       "ceil_texture": {
          "@type": "@id",
-         "@id": "MIXS:0000783"
+         "@id": "mixs:0000783"
       },
       "ceil_thermal_mass": {
          "@type": "@id",
-         "@id": "MIXS:0000143"
+         "@id": "mixs:0000143"
       },
       "ceil_type": {
          "@type": "@id",
-         "@id": "MIXS:0000784"
+         "@id": "mixs:0000784"
       },
       "ceil_water_mold": {
          "@type": "@id",
-         "@id": "MIXS:0000781"
+         "@id": "mixs:0000781"
       },
       "chem_administration": {
          "@type": "@id",
-         "@id": "MIXS:0000751"
+         "@id": "mixs:0000751"
       },
       "chem_mutagen": {
          "@type": "@id",
-         "@id": "MIXS:0000555"
+         "@id": "mixs:0000555"
       },
       "chem_oxygen_dem": {
          "@type": "@id",
-         "@id": "MIXS:0000656"
+         "@id": "mixs:0000656"
       },
       "chem_treat_method": {
-         "@id": "MIXS:0000457"
+         "@id": "mixs:0000457"
       },
       "chem_treatment": {
          "@type": "@id",
-         "@id": "MIXS:0001012"
-      },
-      "chemical": {
-         "@type": "@id"
+         "@id": "mixs:0001012"
       },
       "chimera_check": {
          "@type": "@id",
-         "@id": "MIXS:0000052"
+         "@id": "mixs:0000052"
       },
       "chloride": {
          "@type": "@id",
-         "@id": "MIXS:0000429"
+         "@id": "mixs:0000429"
       },
       "chlorophyll": {
          "@type": "@id",
-         "@id": "MIXS:0000177"
+         "@id": "mixs:0000177"
       },
       "climate_environment": {
          "@type": "@id",
-         "@id": "MIXS:0001040"
+         "@id": "mixs:0001040"
       },
       "collection_date": {
          "@type": "@id",
-         "@id": "MIXS:0000011"
+         "@id": "mixs:0000011"
       },
       "conduc": {
          "@type": "@id",
-         "@id": "MIXS:0000692"
+         "@id": "mixs:0000692"
+      },
+      "container_size": {
+         "@type": "@id"
+      },
+      "container_type": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         }
       },
       "contig_bp": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:contig_bp"
+         "@type": "xsd:float"
       },
       "contigs": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:contigs"
+         "@type": "xsd:float"
       },
       "cool_syst_id": {
          "@type": "@id",
-         "@id": "MIXS:0000785"
-      },
-      "core_field": {
-         "@id": "nmdc_mixs:core_field"
+         "@id": "mixs:0000785"
       },
       "crop_rotation": {
          "@type": "@id",
-         "@id": "MIXS:0000318"
+         "@id": "mixs:0000318"
       },
       "ctg_L50": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:ctg_L50"
+         "@type": "xsd:float"
       },
       "ctg_L90": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:ctg_L90"
+         "@type": "xsd:float"
       },
       "ctg_logsum": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:ctg_logsum"
+         "@type": "xsd:float"
       },
       "ctg_max": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:ctg_max"
+         "@type": "xsd:float"
       },
       "ctg_N50": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:ctg_N50"
+         "@type": "xsd:float"
       },
       "ctg_N90": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:ctg_N90"
+         "@type": "xsd:float"
       },
       "ctg_powsum": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:ctg_powsum"
+         "@type": "xsd:float"
       },
       "cult_root_med": {
          "@type": "@id",
-         "@id": "MIXS:0001041"
+         "@id": "mixs:0001041"
       },
       "cur_land_use": {
          "@type": "@id",
-         "@id": "MIXS:0001080"
+         "@id": "mixs:0001080"
       },
       "cur_vegetation": {
          "@type": "@id",
-         "@id": "MIXS:0000312"
+         "@id": "mixs:0000312"
       },
       "cur_vegetation_meth": {
          "@type": "@id",
-         "@id": "MIXS:0000314"
+         "@id": "mixs:0000314"
       },
       "data_object_set": {
          "@type": "@id"
@@ -533,19 +532,19 @@
       },
       "date_last_rain": {
          "@type": "@id",
-         "@id": "MIXS:0000786"
+         "@id": "mixs:0000786"
       },
       "density": {
          "@type": "@id",
-         "@id": "MIXS:0000435"
+         "@id": "mixs:0000435"
       },
       "depos_env": {
          "@type": "@id",
-         "@id": "MIXS:0000992"
+         "@id": "mixs:0000992"
       },
       "depth": {
          "@type": "@id",
-         "@id": "MIXS:0000018"
+         "@id": "mixs:0000018"
       },
       "depth2": {
          "@type": "@id"
@@ -553,53 +552,81 @@
       "description": {
          "@id": "dcterms:description"
       },
+      "device_type": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         }
+      },
       "dew_point": {
          "@type": "@id",
-         "@id": "MIXS:0000129"
+         "@id": "mixs:0000129"
       },
       "diether_lipids": {
          "@type": "@id",
-         "@id": "MIXS:0000178"
+         "@id": "mixs:0000178"
       },
       "diss_carb_dioxide": {
          "@type": "@id",
-         "@id": "MIXS:0000436"
+         "@id": "mixs:0000436"
       },
       "diss_hydrogen": {
          "@type": "@id",
-         "@id": "MIXS:0000179"
+         "@id": "mixs:0000179"
       },
       "diss_inorg_carb": {
          "@type": "@id",
-         "@id": "MIXS:0000434"
+         "@id": "mixs:0000434"
       },
       "diss_inorg_nitro": {
          "@type": "@id",
-         "@id": "MIXS:0000698"
+         "@id": "mixs:0000698"
       },
       "diss_inorg_phosp": {
          "@type": "@id",
-         "@id": "MIXS:0000106"
+         "@id": "mixs:0000106"
       },
       "diss_iron": {
          "@type": "@id",
-         "@id": "MIXS:0000139"
+         "@id": "mixs:0000139"
       },
       "diss_org_carb": {
          "@type": "@id",
-         "@id": "MIXS:0000433"
+         "@id": "mixs:0000433"
       },
       "diss_org_nitro": {
          "@type": "@id",
-         "@id": "MIXS:0000162"
+         "@id": "mixs:0000162"
       },
       "diss_oxygen": {
          "@type": "@id",
-         "@id": "MIXS:0000119"
+         "@id": "mixs:0000119"
       },
       "diss_oxygen_fluid": {
          "@type": "@id",
-         "@id": "MIXS:0000438"
+         "@id": "mixs:0000438"
+      },
+      "dissolution_aided_by": {
+         "@type": "@id"
+      },
+      "dissolution_reagent": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         }
+      },
+      "dissolution_volume": {
+         "@type": "@id"
+      },
+      "dissolved_in": {
+         "@type": "@id"
+      },
+      "dissolving_process_set": {
+         "@type": "@id"
       },
       "dna_cont_type": {
          "@context": {
@@ -638,267 +665,260 @@
       },
       "door_comp_type": {
          "@type": "@id",
-         "@id": "MIXS:0000795"
+         "@id": "mixs:0000795"
       },
       "door_cond": {
          "@type": "@id",
-         "@id": "MIXS:0000788"
+         "@id": "mixs:0000788"
       },
       "door_direct": {
          "@type": "@id",
-         "@id": "MIXS:0000789"
+         "@id": "mixs:0000789"
       },
       "door_loc": {
          "@type": "@id",
-         "@id": "MIXS:0000790"
+         "@id": "mixs:0000790"
       },
       "door_mat": {
          "@type": "@id",
-         "@id": "MIXS:0000791"
+         "@id": "mixs:0000791"
       },
       "door_move": {
          "@type": "@id",
-         "@id": "MIXS:0000792"
+         "@id": "mixs:0000792"
       },
       "door_size": {
          "@type": "@id",
-         "@id": "MIXS:0000158"
+         "@id": "mixs:0000158"
       },
       "door_type": {
          "@type": "@id",
-         "@id": "MIXS:0000794"
+         "@id": "mixs:0000794"
       },
       "door_type_metal": {
          "@type": "@id",
-         "@id": "MIXS:0000796"
+         "@id": "mixs:0000796"
       },
       "door_type_wood": {
          "@type": "@id",
-         "@id": "MIXS:0000797"
+         "@id": "mixs:0000797"
       },
       "door_water_mold": {
          "@type": "@id",
-         "@id": "MIXS:0000793"
+         "@id": "mixs:0000793"
       },
       "down_par": {
          "@type": "@id",
-         "@id": "MIXS:0000703"
+         "@id": "mixs:0000703"
       },
       "drainage_class": {
          "@type": "@id",
-         "@id": "MIXS:0001085"
+         "@id": "mixs:0001085"
       },
       "drawings": {
          "@type": "@id",
-         "@id": "MIXS:0000798"
+         "@id": "mixs:0000798"
       },
       "efficiency_percent": {
          "@type": "@id",
-         "@id": "MIXS:0000657"
+         "@id": "mixs:0000657"
       },
       "elev": {
          "@type": "@id",
-         "@id": "MIXS:0000093"
+         "@id": "mixs:0000093"
       },
       "elevator": {
          "@type": "@id",
-         "@id": "MIXS:0000799"
+         "@id": "mixs:0000799"
       },
       "email": {
          "@id": "schema:email"
       },
       "emulsions": {
          "@type": "@id",
-         "@id": "MIXS:0000660"
+         "@id": "mixs:0000660"
       },
       "ended_at_time": {
          "@type": "xsd:dateTime"
       },
       "env_broad_scale": {
          "@type": "@id",
-         "@id": "MIXS:0000012"
+         "@id": "mixs:0000012"
       },
       "env_local_scale": {
          "@type": "@id",
-         "@id": "MIXS:0000013"
+         "@id": "mixs:0000013"
       },
       "env_medium": {
          "@type": "@id",
-         "@id": "MIXS:0000014"
+         "@id": "mixs:0000014"
       },
       "env_package": {
-         "@type": "@id",
-         "@id": "nmdc_mixs:env_package"
-      },
-      "environment_field": {
-         "@id": "nmdc_mixs:environment_field"
+         "@type": "@id"
       },
       "escalator": {
          "@type": "@id",
-         "@id": "MIXS:0000800"
+         "@id": "mixs:0000800"
       },
       "ethylbenzene": {
          "@type": "@id",
-         "@id": "MIXS:0000155"
+         "@id": "mixs:0000155"
       },
       "exp_duct": {
          "@type": "@id",
-         "@id": "MIXS:0000144"
+         "@id": "mixs:0000144"
       },
       "exp_pipe": {
          "@type": "@id",
-         "@id": "MIXS:0000220"
+         "@id": "mixs:0000220"
       },
       "experimental_factor": {
          "@type": "@id",
-         "@id": "MIXS:0000008"
+         "@id": "mixs:0000008"
       },
       "ext_door": {
          "@type": "@id",
-         "@id": "MIXS:0000170"
+         "@id": "mixs:0000170"
       },
       "ext_wall_orient": {
          "@type": "@id",
-         "@id": "MIXS:0000817"
+         "@id": "mixs:0000817"
       },
       "ext_window_orient": {
          "@type": "@id",
-         "@id": "MIXS:0000818"
+         "@id": "mixs:0000818"
       },
       "external_database_identifiers": {
          "@type": "@id"
       },
       "extreme_event": {
          "@type": "@id",
-         "@id": "MIXS:0000320"
+         "@id": "mixs:0000320"
       },
       "fao_class": {
          "@type": "@id",
-         "@id": "MIXS:0001083"
+         "@id": "mixs:0001083"
       },
       "fertilizer_regm": {
          "@type": "@id",
-         "@id": "MIXS:0000556"
+         "@id": "mixs:0000556"
       },
       "field": {
          "@type": "@id",
-         "@id": "MIXS:0000291"
+         "@id": "mixs:0000291"
       },
       "file_size_bytes": {
-         "@type": "xsd:int"
+         "@type": "xsd:long"
       },
       "filter_type": {
          "@type": "@id",
-         "@id": "MIXS:0000765"
+         "@id": "mixs:0000765"
       },
       "fire": {
          "@type": "@id",
-         "@id": "MIXS:0001086"
+         "@id": "mixs:0001086"
       },
       "fireplace_type": {
          "@type": "@id",
-         "@id": "MIXS:0000802"
+         "@id": "mixs:0000802"
       },
       "flooding": {
          "@type": "@id",
-         "@id": "MIXS:0000319"
+         "@id": "mixs:0000319"
       },
       "floor_age": {
          "@type": "@id",
-         "@id": "MIXS:0000164"
+         "@id": "mixs:0000164"
       },
       "floor_area": {
          "@type": "@id",
-         "@id": "MIXS:0000165"
+         "@id": "mixs:0000165"
       },
       "floor_cond": {
          "@type": "@id",
-         "@id": "MIXS:0000803"
+         "@id": "mixs:0000803"
       },
       "floor_count": {
          "@type": "@id",
-         "@id": "MIXS:0000225"
+         "@id": "mixs:0000225"
       },
       "floor_finish_mat": {
          "@type": "@id",
-         "@id": "MIXS:0000804"
+         "@id": "mixs:0000804"
       },
       "floor_struc": {
          "@type": "@id",
-         "@id": "MIXS:0000806"
+         "@id": "mixs:0000806"
       },
       "floor_thermal_mass": {
          "@type": "@id",
-         "@id": "MIXS:0000166"
+         "@id": "mixs:0000166"
       },
       "floor_water_mold": {
          "@type": "@id",
-         "@id": "MIXS:0000805"
+         "@id": "mixs:0000805"
       },
       "fluor": {
          "@type": "@id",
-         "@id": "MIXS:0000704"
+         "@id": "mixs:0000704"
       },
       "freq_clean": {
          "@type": "@id",
-         "@id": "MIXS:0000226"
+         "@id": "mixs:0000226"
       },
       "freq_cook": {
          "@type": "@id",
-         "@id": "MIXS:0000227"
+         "@id": "mixs:0000227"
       },
       "functional_annotation_set": {
          "@type": "@id"
       },
       "fungicide_regm": {
          "@type": "@id",
-         "@id": "MIXS:0000557"
+         "@id": "mixs:0000557"
       },
       "furniture": {
          "@type": "@id",
-         "@id": "MIXS:0000807"
+         "@id": "mixs:0000807"
       },
       "gap_pct": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:gap_pct"
+         "@type": "xsd:float"
       },
       "gaseous_environment": {
          "@type": "@id",
-         "@id": "MIXS:0000558"
+         "@id": "mixs:0000558"
       },
       "gaseous_substances": {
          "@type": "@id",
-         "@id": "MIXS:0000661"
+         "@id": "mixs:0000661"
       },
       "gc_avg": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:gc_avg"
+         "@type": "xsd:float"
       },
       "gc_std": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:gc_std"
+         "@type": "xsd:float"
       },
       "gender_restroom": {
          "@type": "@id",
-         "@id": "MIXS:0000808"
+         "@id": "mixs:0000808"
       },
       "genetic_mod": {
          "@type": "@id",
-         "@id": "MIXS:0000859"
+         "@id": "mixs:0000859"
       },
       "genome_feature_set": {
          "@type": "@id"
       },
       "geo_loc_name": {
          "@type": "@id",
-         "@id": "MIXS:0000010"
+         "@id": "mixs:0000010"
       },
       "gff_coordinate": {
          "@type": "xsd:integer"
       },
       "glucosidase_act": {
          "@type": "@id",
-         "@id": "MIXS:0000137"
+         "@id": "mixs:0000137"
       },
       "GOLD_analysis_project_identifiers": {
          "@type": "@id"
@@ -914,37 +934,34 @@
       },
       "gravidity": {
          "@type": "@id",
-         "@id": "MIXS:0000875"
+         "@id": "mixs:0000875"
       },
       "gravity": {
          "@type": "@id",
-         "@id": "MIXS:0000559"
+         "@id": "mixs:0000559"
       },
       "growth_facil": {
          "@type": "@id",
-         "@id": "MIXS:0001043"
+         "@id": "mixs:0001043"
       },
       "growth_habit": {
          "@type": "@id",
-         "@id": "MIXS:0001044"
+         "@id": "mixs:0001044"
       },
       "growth_hormone_regm": {
          "@type": "@id",
-         "@id": "MIXS:0000560"
+         "@id": "mixs:0000560"
       },
       "hall_count": {
          "@type": "@id",
-         "@id": "MIXS:0000228"
+         "@id": "mixs:0000228"
       },
       "handidness": {
          "@type": "@id",
-         "@id": "MIXS:0000809"
+         "@id": "mixs:0000809"
       },
       "has_boolean_value": {
          "@type": "xsd:boolean"
-      },
-      "has_calibration": {
-         "@id": "nmdc_wfea:has_calibration"
       },
       "has_credit_associations": {
          "@type": "@id",
@@ -956,9 +973,6 @@
       "has_maximum_numeric_value": {
          "@type": "xsd:float"
       },
-      "has_metabolite_quantifications": {
-         "@id": "nmdc_wfea:has_metabolite_quantifications"
-      },
       "has_minimum_numeric_value": {
          "@type": "xsd:float"
       },
@@ -968,215 +982,203 @@
       "has_output": {
          "@type": "@id"
       },
-      "has_peptide_quantifications": {
-         "@type": "@id"
-      },
-      "has_part": {
-         "@type": "@id"
-      },
       "hc_produced": {
          "@type": "@id",
-         "@id": "MIXS:0000989"
+         "@id": "mixs:0000989"
       },
       "hcr": {
          "@type": "@id",
-         "@id": "MIXS:0000988"
+         "@id": "mixs:0000988"
       },
       "hcr_fw_salinity": {
          "@type": "@id",
-         "@id": "MIXS:0000406"
+         "@id": "mixs:0000406"
       },
       "hcr_geol_age": {
          "@type": "@id",
-         "@id": "MIXS:0000993"
+         "@id": "mixs:0000993"
       },
       "hcr_pressure": {
          "@type": "@id",
-         "@id": "MIXS:0000395"
+         "@id": "mixs:0000395"
       },
       "hcr_temp": {
          "@type": "@id",
-         "@id": "MIXS:0000393"
+         "@id": "mixs:0000393"
       },
       "heat_cool_type": {
          "@type": "@id",
-         "@id": "MIXS:0000766"
+         "@id": "mixs:0000766"
       },
       "heat_deliv_loc": {
          "@type": "@id",
-         "@id": "MIXS:0000810"
+         "@id": "mixs:0000810"
       },
       "heat_sys_deliv_meth": {
-         "@id": "MIXS:0000812"
+         "@id": "mixs:0000812"
       },
       "heat_system_id": {
          "@type": "@id",
-         "@id": "MIXS:0000833"
+         "@id": "mixs:0000833"
       },
       "heavy_metals": {
          "@type": "@id",
-         "@id": "MIXS:0000652"
+         "@id": "mixs:0000652"
       },
       "heavy_metals_meth": {
          "@type": "@id",
-         "@id": "MIXS:0000343"
+         "@id": "mixs:0000343"
       },
       "height_carper_fiber": {
          "@type": "@id",
-         "@id": "MIXS:0000167"
+         "@id": "mixs:0000167"
       },
       "herbicide_regm": {
          "@type": "@id",
-         "@id": "MIXS:0000561"
+         "@id": "mixs:0000561"
       },
       "horizon": {
          "@type": "@id",
-         "@id": "MIXS:0001082"
+         "@id": "mixs:0001082"
       },
       "horizon_meth": {
          "@type": "@id",
-         "@id": "MIXS:0000321"
+         "@id": "mixs:0000321"
       },
       "host_age": {
          "@type": "@id",
-         "@id": "MIXS:0000255"
+         "@id": "mixs:0000255"
       },
       "host_body_habitat": {
          "@type": "@id",
-         "@id": "MIXS:0000866"
+         "@id": "mixs:0000866"
       },
       "host_body_product": {
          "@type": "@id",
-         "@id": "MIXS:0000888"
+         "@id": "mixs:0000888"
       },
       "host_body_site": {
          "@type": "@id",
-         "@id": "MIXS:0000867"
+         "@id": "mixs:0000867"
       },
       "host_body_temp": {
          "@type": "@id",
-         "@id": "MIXS:0000274"
+         "@id": "mixs:0000274"
       },
       "host_color": {
          "@type": "@id",
-         "@id": "MIXS:0000260"
+         "@id": "mixs:0000260"
       },
       "host_common_name": {
          "@type": "@id",
-         "@id": "MIXS:0000248"
+         "@id": "mixs:0000248"
       },
       "host_diet": {
          "@type": "@id",
-         "@id": "MIXS:0000869"
+         "@id": "mixs:0000869"
       },
       "host_dry_mass": {
          "@type": "@id",
-         "@id": "MIXS:0000257"
+         "@id": "mixs:0000257"
       },
       "host_family_relation": {
-         "@id": "MIXS:0000872"
+         "@id": "mixs:0000872"
       },
       "host_genotype": {
          "@type": "@id",
-         "@id": "MIXS:0000365"
+         "@id": "mixs:0000365"
       },
       "host_growth_cond": {
          "@type": "@id",
-         "@id": "MIXS:0000871"
+         "@id": "mixs:0000871"
       },
       "host_height": {
          "@type": "@id",
-         "@id": "MIXS:0000264"
+         "@id": "mixs:0000264"
       },
       "host_last_meal": {
          "@type": "@id",
-         "@id": "MIXS:0000870"
+         "@id": "mixs:0000870"
       },
       "host_length": {
          "@type": "@id",
-         "@id": "MIXS:0000256"
+         "@id": "mixs:0000256"
       },
       "host_life_stage": {
          "@type": "@id",
-         "@id": "MIXS:0000251"
+         "@id": "mixs:0000251"
       },
       "host_phenotype": {
          "@type": "@id",
-         "@id": "MIXS:0000874"
+         "@id": "mixs:0000874"
       },
       "host_sex": {
          "@type": "@id",
-         "@id": "MIXS:0000811"
+         "@id": "mixs:0000811"
       },
       "host_shape": {
          "@type": "@id",
-         "@id": "MIXS:0000261"
+         "@id": "mixs:0000261"
       },
       "host_subject_id": {
          "@type": "@id",
-         "@id": "MIXS:0000861"
+         "@id": "mixs:0000861"
       },
       "host_subspecf_genlin": {
-         "@id": "MIXS:0001318"
+         "@id": "mixs:0001318"
       },
       "host_substrate": {
          "@type": "@id",
-         "@id": "MIXS:0000252"
+         "@id": "mixs:0000252"
       },
       "host_symbiont": {
-         "@id": "MIXS:0001298"
+         "@id": "mixs:0001298"
       },
       "host_taxid": {
          "@type": "@id",
-         "@id": "MIXS:0000250"
+         "@id": "mixs:0000250"
       },
       "host_tot_mass": {
          "@type": "@id",
-         "@id": "MIXS:0000263"
+         "@id": "mixs:0000263"
       },
       "host_wet_mass": {
          "@type": "@id",
-         "@id": "MIXS:0000567"
+         "@id": "mixs:0000567"
       },
       "humidity": {
          "@type": "@id",
-         "@id": "MIXS:0000100"
+         "@id": "mixs:0000100"
       },
       "humidity_regm": {
          "@type": "@id",
-         "@id": "MIXS:0000568"
+         "@id": "mixs:0000568"
       },
       "id": "@id",
       "indoor_space": {
          "@type": "@id",
-         "@id": "MIXS:0000763"
+         "@id": "mixs:0000763"
       },
       "indoor_surf": {
          "@type": "@id",
-         "@id": "MIXS:0000764"
+         "@id": "mixs:0000764"
       },
       "indust_eff_percent": {
          "@type": "@id",
-         "@id": "MIXS:0000662"
+         "@id": "mixs:0000662"
       },
       "inorg_particles": {
          "@type": "@id",
-         "@id": "MIXS:0000664"
+         "@id": "mixs:0000664"
       },
       "input_base_count": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:input_base_count"
+         "@type": "xsd:float"
       },
       "input_contig_num": {
-         "@type": "xsd:integer",
-         "@id": "nmdc_wfea:input_contig_num"
+         "@type": "xsd:integer"
       },
       "input_read_count": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:input_read_count"
-      },
-      "input_read_bases": {
-         "@id": "nmdc_wfea:input_read_bases"
+         "@type": "xsd:float"
       },
       "INSDC_analysis_identifiers": {
          "@type": "@id"
@@ -1198,33 +1200,30 @@
       },
       "inside_lux": {
          "@type": "@id",
-         "@id": "MIXS:0000168"
+         "@id": "mixs:0000168"
       },
       "int_wall_cond": {
          "@type": "@id",
-         "@id": "MIXS:0000813"
-      },
-      "investigation_field": {
-         "@id": "nmdc_mixs:investigation_field"
+         "@id": "mixs:0000813"
       },
       "iw_bt_date_well": {
          "@type": "@id",
-         "@id": "MIXS:0001010"
+         "@id": "mixs:0001010"
       },
       "iwf": {
          "@type": "@id",
-         "@id": "MIXS:0000455"
+         "@id": "mixs:0000455"
       },
       "language": {
          "@type": "xsd:language"
       },
       "last_clean": {
          "@type": "@id",
-         "@id": "MIXS:0000814"
+         "@id": "mixs:0000814"
       },
       "lat_lon": {
          "@type": "@id",
-         "@id": "MIXS:0000009"
+         "@id": "mixs:0000009"
       },
       "latitude": {
          "@type": "xsd:decimal",
@@ -1238,47 +1237,46 @@
       },
       "light_intensity": {
          "@type": "@id",
-         "@id": "MIXS:0000706"
+         "@id": "mixs:0000706"
       },
       "light_regm": {
          "@type": "@id",
-         "@id": "MIXS:0000569"
+         "@id": "mixs:0000569"
       },
       "light_type": {
          "@type": "@id",
-         "@id": "MIXS:0000769"
+         "@id": "mixs:0000769"
       },
       "link_addit_analys": {
          "@type": "@id",
-         "@id": "MIXS:0000340"
+         "@id": "mixs:0000340"
       },
       "link_class_info": {
          "@type": "@id",
-         "@id": "MIXS:0000329"
+         "@id": "mixs:0000329"
       },
       "link_climate_info": {
          "@type": "@id",
-         "@id": "MIXS:0000328"
+         "@id": "mixs:0000328"
       },
       "lithology": {
          "@type": "@id",
-         "@id": "MIXS:0000990"
+         "@id": "mixs:0000990"
       },
       "local_class": {
          "@type": "@id",
-         "@id": "MIXS:0000330"
+         "@id": "mixs:0000330"
       },
       "local_class_meth": {
          "@type": "@id",
-         "@id": "MIXS:0000331"
+         "@id": "mixs:0000331"
       },
       "longitude": {
          "@type": "xsd:decimal",
          "@id": "wgs:long"
       },
       "lowDepth_contig_num": {
-         "@type": "xsd:integer",
-         "@id": "nmdc_wfea:lowDepth_contig_num"
+         "@type": "xsd:integer"
       },
       "completeness": {
          "@type": "xsd:float"
@@ -1306,46 +1304,54 @@
       },
       "magnesium": {
          "@type": "@id",
-         "@id": "MIXS:0000431"
+         "@id": "mixs:0000431"
       },
       "mags_activity_set": {
          "@type": "@id"
       },
       "mags_list": {
-         "@type": "@id",
-         "@id": "nmdc_wfea:mags_list"
+         "@type": "@id"
       },
       "manganese": {
          "@type": "@id"
       },
+      "material_input": {
+         "@type": "@id"
+      },
+      "material_output": {
+         "@type": "@id"
+      },
+      "material_sample_set": {
+         "@type": "@id"
+      },
+      "material_sampling_process_set": {
+         "@type": "@id"
+      },
       "max_occup": {
          "@type": "@id",
-         "@id": "MIXS:0000229"
+         "@id": "mixs:0000229"
       },
       "mean_frict_vel": {
          "@type": "@id",
-         "@id": "MIXS:0000498"
+         "@id": "mixs:0000498"
       },
       "mean_peak_frict_vel": {
          "@type": "@id",
-         "@id": "MIXS:0000502"
+         "@id": "mixs:0000502"
       },
       "mech_struc": {
          "@type": "@id",
-         "@id": "MIXS:0000815"
+         "@id": "mixs:0000815"
       },
       "mechanical_damage": {
          "@type": "@id",
-         "@id": "MIXS:0001052"
+         "@id": "mixs:0001052"
       },
       "metabolomics_analysis_activity_set": {
          "@type": "@id"
       },
       "metagenome_annotation_activity_set": {
          "@type": "@id"
-      },
-      "metagenome_assembly_parameter": {
-         "@id": "nmdc_wfea:metagenome_assembly_parameter"
       },
       "metagenome_assembly_set": {
          "@type": "@id"
@@ -1358,7 +1364,7 @@
       },
       "methane": {
          "@type": "@id",
-         "@id": "MIXS:0000101"
+         "@id": "mixs:0000101"
       },
       "MGnify_analysis_identifiers": {
          "@type": "@id"
@@ -1367,94 +1373,89 @@
          "@type": "@id"
       },
       "micro_biomass_meth": {
-         "@id": "MIXS:0000339"
+         "@id": "mixs:0000339"
       },
       "microbial_biomass": {
          "@type": "@id",
-         "@id": "MIXS:0000650"
+         "@id": "mixs:0000650"
       },
       "microbial_biomass_meth": {
          "@type": "@id",
-         "@id": "MIXS:0000339"
+         "@id": "mixs:0000339"
       },
       "mineral_nutr_regm": {
          "@type": "@id",
-         "@id": "MIXS:0000570"
+         "@id": "mixs:0000570"
       },
       "misc_param": {
          "@type": "@id",
-         "@id": "MIXS:0000752"
+         "@id": "mixs:0000752"
       },
       "n_alkanes": {
          "@type": "@id",
-         "@id": "MIXS:0000503"
+         "@id": "mixs:0000503"
       },
       "nitrate": {
          "@type": "@id",
-         "@id": "MIXS:0000425"
+         "@id": "mixs:0000425"
       },
       "nitrate_nitrogen": {
          "@type": "@id"
       },
       "nitrite": {
          "@type": "@id",
-         "@id": "MIXS:0000426"
+         "@id": "mixs:0000426"
       },
       "nitrite_nitrogen": {
          "@type": "@id"
       },
       "nitro": {
          "@type": "@id",
-         "@id": "MIXS:0000504"
+         "@id": "mixs:0000504"
       },
       "nom_analysis_activity_set": {
          "@type": "@id"
       },
       "non_min_nutr_regm": {
-         "@id": "MIXS:0000571"
+         "@id": "mixs:0000571"
       },
       "nucl_acid_amp": {
          "@type": "@id",
-         "@id": "MIXS:0000038"
+         "@id": "mixs:0000038"
       },
       "nucl_acid_ext": {
          "@type": "@id",
-         "@id": "MIXS:0000037"
-      },
-      "nucleic_acid_sequence_source_field": {
-         "@id": "nmdc_mixs:nucleic_acid_sequence_source_field"
+         "@id": "mixs:0000037"
       },
       "num_aligned_reads": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:num_aligned_reads"
+         "@type": "xsd:float"
       },
       "num_input_reads": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:num_input_reads"
+         "@type": "xsd:float"
       },
       "number_pets": {
          "@type": "@id",
-         "@id": "MIXS:0000231"
+         "@id": "mixs:0000231"
       },
       "number_plants": {
          "@type": "@id",
-         "@id": "MIXS:0000230"
+         "@id": "mixs:0000230"
       },
       "number_resident": {
          "@type": "@id",
-         "@id": "MIXS:0000232"
+         "@id": "mixs:0000232"
       },
       "occup_density_samp": {
          "@type": "@id",
-         "@id": "MIXS:0000217"
+         "@id": "mixs:0000217"
       },
       "occup_document": {
          "@type": "@id",
-         "@id": "MIXS:0000816"
+         "@id": "mixs:0000816"
       },
       "occup_samp": {
          "@type": "@id",
-         "@id": "MIXS:0000772"
+         "@id": "mixs:0000772"
       },
       "omics_processing_identifiers": {
          "@type": "@id"
@@ -1467,49 +1468,44 @@
       },
       "org_carb": {
          "@type": "@id",
-         "@id": "MIXS:0000508"
+         "@id": "mixs:0000508"
       },
       "org_count_qpcr_info": {
-         "@id": "MIXS:0000099"
+         "@id": "mixs:0000099"
       },
       "org_matter": {
          "@type": "@id",
-         "@id": "MIXS:0000204"
+         "@id": "mixs:0000204"
       },
       "org_nitro": {
          "@type": "@id",
-         "@id": "MIXS:0000205"
+         "@id": "mixs:0000205"
       },
       "org_particles": {
          "@type": "@id",
-         "@id": "MIXS:0000665"
+         "@id": "mixs:0000665"
       },
       "organism_count": {
          "@type": "@id",
-         "@id": "MIXS:0000103"
+         "@id": "mixs:0000103"
       },
       "output_base_count": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:output_base_count"
+         "@type": "xsd:float"
       },
       "output_read_count": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:output_read_count"
-      },
-      "output_read_bases": {
-         "@id": "nmdc_wfea:output_read_bases"
+         "@type": "xsd:float"
       },
       "owc_tvdss": {
          "@type": "@id",
-         "@id": "MIXS:0000405"
+         "@id": "mixs:0000405"
       },
       "oxy_stat_samp": {
          "@type": "@id",
-         "@id": "MIXS:0000753"
+         "@id": "mixs:0000753"
       },
       "oxygen": {
          "@type": "@id",
-         "@id": "MIXS:0000104"
+         "@id": "mixs:0000104"
       },
       "part_of": {
          "@type": "@id",
@@ -1517,135 +1513,144 @@
       },
       "part_org_carb": {
          "@type": "@id",
-         "@id": "MIXS:0000515"
+         "@id": "mixs:0000515"
       },
       "part_org_nitro": {
          "@type": "@id",
-         "@id": "MIXS:0000719"
+         "@id": "mixs:0000719"
       },
       "particle_class": {
          "@type": "@id",
-         "@id": "MIXS:0000206"
+         "@id": "mixs:0000206"
       },
       "pcr_cond": {
          "@type": "@id",
-         "@id": "MIXS:0000049"
+         "@id": "mixs:0000049"
       },
       "pcr_primers": {
          "@type": "@id",
-         "@id": "MIXS:0000046"
+         "@id": "mixs:0000046"
       },
       "permeability": {
          "@type": "@id",
-         "@id": "MIXS:0000404"
+         "@id": "mixs:0000404"
       },
       "perturbation": {
          "@type": "@id",
-         "@id": "MIXS:0000754"
+         "@id": "mixs:0000754"
       },
       "pesticide_regm": {
          "@type": "@id",
-         "@id": "MIXS:0000573"
+         "@id": "mixs:0000573"
       },
       "petroleum_hydrocarb": {
          "@type": "@id",
-         "@id": "MIXS:0000516"
+         "@id": "mixs:0000516"
       },
       "ph": {
          "@type": "@id",
-         "@id": "MIXS:0001001"
+         "@id": "mixs:0001001"
       },
       "ph_meth": {
          "@type": "@id",
-         "@id": "MIXS:0001106"
+         "@id": "mixs:0001106"
       },
       "ph_regm": {
          "@type": "@id",
-         "@id": "MIXS:0001056"
+         "@id": "mixs:0001056"
       },
       "phaeopigments": {
          "@type": "@id",
-         "@id": "MIXS:0000180"
+         "@id": "mixs:0000180"
       },
       "phosphate": {
          "@type": "@id",
-         "@id": "MIXS:0000505"
+         "@id": "mixs:0000505"
       },
       "phosplipid_fatt_acid": {
          "@type": "@id",
-         "@id": "MIXS:0000181"
+         "@id": "mixs:0000181"
       },
       "photon_flux": {
          "@type": "@id",
-         "@id": "MIXS:0000725"
+         "@id": "mixs:0000725"
       },
       "plant_growth_med": {
          "@type": "@id",
-         "@id": "MIXS:0001057"
+         "@id": "mixs:0001057"
       },
       "plant_product": {
          "@type": "@id",
-         "@id": "MIXS:0001058"
+         "@id": "mixs:0001058"
       },
       "plant_sex": {
          "@type": "@id",
-         "@id": "MIXS:0001059"
+         "@id": "mixs:0001059"
       },
       "plant_struc": {
          "@type": "@id",
-         "@id": "MIXS:0001060"
+         "@id": "mixs:0001060"
       },
       "pollutants": {
          "@type": "@id",
-         "@id": "MIXS:0000107"
+         "@id": "mixs:0000107"
       },
       "pool_dna_extracts": {
          "@type": "@id",
-         "@id": "MIXS:0000325"
+         "@id": "mixs:0000325"
       },
       "porosity": {
          "@type": "@id",
-         "@id": "MIXS:0000211"
+         "@id": "mixs:0000211"
       },
       "potassium": {
          "@type": "@id",
-         "@id": "MIXS:0000430"
+         "@id": "mixs:0000430"
       },
       "pour_point": {
          "@type": "@id",
-         "@id": "MIXS:0000127"
+         "@id": "mixs:0000127"
       },
       "pre_treatment": {
          "@type": "@id",
-         "@id": "MIXS:0000348"
+         "@id": "mixs:0000348"
       },
       "pres_animal_insect": {
-         "@id": "MIXS:0000819"
+         "@id": "mixs:0000819"
       },
       "pressure": {
          "@type": "@id",
-         "@id": "MIXS:0000412"
+         "@id": "mixs:0000412"
       },
       "prev_land_use_meth": {
-         "@id": "MIXS:0000316"
+         "@id": "mixs:0000316"
       },
       "previous_land_use": {
          "@type": "@id",
-         "@id": "MIXS:0000315"
+         "@id": "mixs:0000315"
       },
       "previous_land_use_meth": {
          "@type": "@id",
-         "@id": "MIXS:0000316"
+         "@id": "mixs:0000316"
       },
       "primary_prod": {
          "@type": "@id",
-         "@id": "MIXS:0000728"
+         "@id": "mixs:0000728"
       },
       "primary_treatment": {
          "@type": "@id",
-         "@id": "MIXS:0000349"
+         "@id": "mixs:0000349"
       },
       "principal_investigator": {
+         "@type": "@id"
+      },
+      "process_speed": {
+         "@type": "@id"
+      },
+      "process_temperature": {
+         "@type": "@id"
+      },
+      "process_time": {
          "@type": "@id"
       },
       "processing_institution": {
@@ -1658,31 +1663,37 @@
       },
       "prod_rate": {
          "@type": "@id",
-         "@id": "MIXS:0000452"
+         "@id": "mixs:0000452"
       },
       "prod_start_date": {
          "@type": "@id",
-         "@id": "MIXS:0001008"
+         "@id": "mixs:0001008"
       },
       "profile_position": {
          "@type": "@id",
-         "@id": "MIXS:0001084"
+         "@id": "mixs:0001084"
       },
       "quad_pos": {
          "@type": "@id",
-         "@id": "MIXS:0000820"
+         "@id": "mixs:0000820"
       },
       "radiation_regm": {
          "@type": "@id",
-         "@id": "MIXS:0000575"
+         "@id": "mixs:0000575"
       },
       "rainfall_regm": {
          "@type": "@id",
-         "@id": "MIXS:0000576"
+         "@id": "mixs:0000576"
+      },
+      "reaction_activity_set": {
+         "@type": "@id"
+      },
+      "reaction_aided_by": {
+         "@type": "@id"
       },
       "reactor_type": {
          "@type": "@id",
-         "@id": "MIXS:0000350"
+         "@id": "mixs:0000350"
       },
       "read_based_taxonomy_analysis_activity_set": {
          "@type": "@id"
@@ -1690,36 +1701,33 @@
       "read_QC_analysis_activity_set": {
          "@type": "@id"
       },
-      "read_QC_analysis_statistic": {
-         "@id": "nmdc_wfea:read_QC_analysis_statistic"
-      },
       "redox_potential": {
          "@type": "@id",
-         "@id": "MIXS:0000182"
+         "@id": "mixs:0000182"
       },
       "rel_air_humidity": {
          "@type": "@id",
-         "@id": "MIXS:0000121"
+         "@id": "mixs:0000121"
       },
       "rel_humidity_out": {
          "@type": "@id",
-         "@id": "MIXS:0000188"
+         "@id": "mixs:0000188"
       },
       "rel_samp_loc": {
          "@type": "@id",
-         "@id": "MIXS:0000821"
+         "@id": "mixs:0000821"
       },
       "rel_to_oxygen": {
          "@type": "@id",
-         "@id": "MIXS:0000015"
+         "@id": "mixs:0000015"
       },
       "reservoir": {
          "@type": "@id",
-         "@id": "MIXS:0000303"
+         "@id": "mixs:0000303"
       },
       "resins_pc": {
          "@type": "@id",
-         "@id": "MIXS:0000134"
+         "@id": "mixs:0000134"
       },
       "rna_cont_type": {
          "@context": {
@@ -1739,132 +1747,132 @@
       },
       "room_air_exch_rate": {
          "@type": "@id",
-         "@id": "MIXS:0000169"
+         "@id": "mixs:0000169"
       },
       "room_architec_elem": {
-         "@id": "MIXS:0000233"
+         "@id": "mixs:0000233"
       },
       "room_condt": {
          "@type": "@id",
-         "@id": "MIXS:0000822"
+         "@id": "mixs:0000822"
       },
       "room_connected": {
          "@type": "@id",
-         "@id": "MIXS:0000826"
+         "@id": "mixs:0000826"
       },
       "room_count": {
          "@type": "@id",
-         "@id": "MIXS:0000234"
+         "@id": "mixs:0000234"
       },
       "room_dim": {
          "@type": "@id",
-         "@id": "MIXS:0000192"
+         "@id": "mixs:0000192"
       },
       "room_door_dist": {
          "@type": "@id",
-         "@id": "MIXS:0000193"
+         "@id": "mixs:0000193"
       },
       "room_door_share": {
          "@type": "@id",
-         "@id": "MIXS:0000242"
+         "@id": "mixs:0000242"
       },
       "room_hallway": {
          "@type": "@id",
-         "@id": "MIXS:0000238"
+         "@id": "mixs:0000238"
       },
       "room_loc": {
          "@type": "@id",
-         "@id": "MIXS:0000823"
+         "@id": "mixs:0000823"
       },
       "room_moist_dam_hist": {
          "@type": "xsd:integer",
-         "@id": "MIXS:0000235"
+         "@id": "mixs:0000235"
       },
       "room_net_area": {
          "@type": "@id",
-         "@id": "MIXS:0000194"
+         "@id": "mixs:0000194"
       },
       "room_occup": {
          "@type": "@id",
-         "@id": "MIXS:0000236"
+         "@id": "mixs:0000236"
       },
       "room_samp_pos": {
          "@type": "@id",
-         "@id": "MIXS:0000824"
+         "@id": "mixs:0000824"
       },
       "room_type": {
          "@type": "@id",
-         "@id": "MIXS:0000825"
+         "@id": "mixs:0000825"
       },
       "room_vol": {
          "@type": "@id",
-         "@id": "MIXS:0000195"
+         "@id": "mixs:0000195"
       },
       "room_wall_share": {
          "@type": "@id",
-         "@id": "MIXS:0000243"
+         "@id": "mixs:0000243"
       },
       "room_window_count": {
          "@type": "@id",
-         "@id": "MIXS:0000237"
+         "@id": "mixs:0000237"
       },
       "root_cond": {
          "@type": "@id",
-         "@id": "MIXS:0001061"
+         "@id": "mixs:0001061"
       },
       "root_med_carbon": {
          "@type": "@id",
-         "@id": "MIXS:0000577"
+         "@id": "mixs:0000577"
       },
       "root_med_macronutr": {
          "@type": "@id",
-         "@id": "MIXS:0000578"
+         "@id": "mixs:0000578"
       },
       "root_med_micronutr": {
          "@type": "@id",
-         "@id": "MIXS:0000579"
+         "@id": "mixs:0000579"
       },
       "root_med_ph": {
          "@type": "@id",
-         "@id": "MIXS:0001062"
+         "@id": "mixs:0001062"
       },
       "root_med_regl": {
          "@type": "@id",
-         "@id": "MIXS:0000581"
+         "@id": "mixs:0000581"
       },
       "root_med_solid": {
          "@type": "@id",
-         "@id": "MIXS:0001063"
+         "@id": "mixs:0001063"
       },
       "root_med_suppl": {
          "@type": "@id",
-         "@id": "MIXS:0000580"
+         "@id": "mixs:0000580"
       },
       "salinity": {
          "@type": "@id",
-         "@id": "MIXS:0000183"
+         "@id": "mixs:0000183"
       },
       "salinity_meth": {
          "@type": "@id",
-         "@id": "MIXS:0000341"
+         "@id": "mixs:0000341"
       },
       "salt_regm": {
          "@type": "@id",
-         "@id": "MIXS:0000582"
+         "@id": "mixs:0000582"
       },
       "samp_capt_status": {
          "@type": "@id",
-         "@id": "MIXS:0000860"
+         "@id": "mixs:0000860"
       },
       "samp_collec_device": {
-         "@id": "MIXS:0000002"
+         "@id": "mixs:0000002"
       },
       "samp_collec_method": {
-         "@id": "MIXS:0001225"
+         "@id": "mixs:0001225"
       },
       "samp_collect_device": {
          "@type": "@id",
-         "@id": "MIXS:0000002"
+         "@id": "mixs:0000002"
       },
       "samp_collect_point": {
          "@context": {
@@ -1873,90 +1881,90 @@
             "description": "skos:prefLabel",
             "meaning": "@id"
          },
-         "@id": "MIXS:0001015"
+         "@id": "mixs:0001015"
       },
       "samp_dis_stage": {
          "@type": "@id",
-         "@id": "MIXS:0000249"
+         "@id": "mixs:0000249"
       },
       "samp_floor": {
          "@type": "@id",
-         "@id": "MIXS:0000828"
+         "@id": "mixs:0000828"
       },
       "samp_loc_corr_rate": {
          "@type": "@id",
-         "@id": "MIXS:0000136"
+         "@id": "mixs:0000136"
       },
       "samp_mat_process": {
          "@type": "@id",
-         "@id": "MIXS:0000016"
+         "@id": "mixs:0000016"
       },
       "samp_md": {
          "@type": "@id",
-         "@id": "MIXS:0000413"
+         "@id": "mixs:0000413"
       },
       "samp_name": {
-         "@id": "MIXS:0001107"
+         "@id": "mixs:0001107"
       },
       "samp_preserv": {
          "@type": "@id",
-         "@id": "MIXS:0000463"
+         "@id": "mixs:0000463"
       },
       "samp_room_id": {
          "@type": "@id",
-         "@id": "MIXS:0000244"
+         "@id": "mixs:0000244"
       },
       "samp_size": {
          "@type": "@id",
-         "@id": "MIXS:0000001"
+         "@id": "mixs:0000001"
       },
       "samp_sort_meth": {
          "@type": "@id",
-         "@id": "MIXS:0000216"
+         "@id": "mixs:0000216"
       },
       "samp_store_dur": {
          "@type": "@id",
-         "@id": "MIXS:0000116"
+         "@id": "mixs:0000116"
       },
       "samp_store_loc": {
          "@type": "@id",
-         "@id": "MIXS:0000755"
+         "@id": "mixs:0000755"
       },
       "samp_store_temp": {
          "@type": "@id",
-         "@id": "MIXS:0000110"
+         "@id": "mixs:0000110"
       },
       "samp_subtype": {
          "@type": "@id",
-         "@id": "MIXS:0000999"
+         "@id": "mixs:0000999"
       },
       "samp_time_out": {
          "@type": "@id",
-         "@id": "MIXS:0000196"
+         "@id": "mixs:0000196"
       },
       "samp_transport_cond": {
          "@type": "@id",
-         "@id": "MIXS:0000410"
+         "@id": "mixs:0000410"
       },
       "samp_tvdss": {
          "@type": "@id",
-         "@id": "MIXS:0000409"
+         "@id": "mixs:0000409"
       },
       "samp_type": {
          "@type": "@id",
-         "@id": "MIXS:0000998"
+         "@id": "mixs:0000998"
       },
       "samp_vol_we_dna_ext": {
          "@type": "@id",
-         "@id": "MIXS:0000111"
+         "@id": "mixs:0000111"
       },
       "samp_weather": {
          "@type": "@id",
-         "@id": "MIXS:0000827"
+         "@id": "mixs:0000827"
       },
       "samp_well_name": {
          "@type": "@id",
-         "@id": "MIXS:0000296"
+         "@id": "mixs:0000296"
       },
       "sample_identifiers": {
          "@type": "@id"
@@ -1984,155 +1992,148 @@
             "meaning": "@id"
          }
       },
+      "sampling_method": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         }
+      },
       "saturates_pc": {
          "@type": "@id",
-         "@id": "MIXS:0000131"
+         "@id": "mixs:0000131"
       },
       "scaf_bp": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:scaf_bp"
+         "@type": "xsd:float"
       },
       "scaf_L50": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:scaf_L50"
+         "@type": "xsd:float"
       },
       "scaf_L90": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:scaf_L90"
+         "@type": "xsd:float"
       },
       "scaf_l_gt50K": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:scaf_l_gt50K"
+         "@type": "xsd:float"
       },
       "scaf_logsum": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:scaf_logsum"
+         "@type": "xsd:float"
       },
       "scaf_max": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:scaf_max"
+         "@type": "xsd:float"
       },
       "scaf_N50": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:scaf_N50"
+         "@type": "xsd:float"
       },
       "scaf_N90": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:scaf_N90"
+         "@type": "xsd:float"
       },
       "scaf_n_gt50K": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:scaf_n_gt50K"
+         "@type": "xsd:float"
       },
       "scaf_pct_gt50K": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:scaf_pct_gt50K"
+         "@type": "xsd:float"
       },
       "scaf_powsum": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:scaf_powsum"
+         "@type": "xsd:float"
       },
       "scaffolds": {
-         "@type": "xsd:float",
-         "@id": "nmdc_wfea:scaffolds"
+         "@type": "xsd:float"
       },
       "season": {
          "@type": "@id",
-         "@id": "MIXS:0000829"
+         "@id": "mixs:0000829"
       },
       "season_environment": {
          "@type": "@id",
-         "@id": "MIXS:0001068"
+         "@id": "mixs:0001068"
       },
       "season_precpt": {
          "@type": "@id",
-         "@id": "MIXS:0000645"
+         "@id": "mixs:0000645"
       },
       "season_temp": {
          "@type": "@id",
-         "@id": "MIXS:0000643"
+         "@id": "mixs:0000643"
       },
       "season_use": {
          "@type": "@id",
-         "@id": "MIXS:0000830"
+         "@id": "mixs:0000830"
       },
       "secondary_treatment": {
          "@type": "@id",
-         "@id": "MIXS:0000351"
+         "@id": "mixs:0000351"
       },
       "sediment_type": {
          "@type": "@id",
-         "@id": "MIXS:0001078"
+         "@id": "mixs:0001078"
       },
       "seq_meth": {
          "@type": "@id",
-         "@id": "MIXS:0000050"
+         "@id": "mixs:0000050"
       },
       "seq_quality_check": {
          "@type": "@id",
-         "@id": "MIXS:0000051"
-      },
-      "sequencing_field": {
-         "@id": "nmdc_mixs:sequencing_field"
+         "@id": "mixs:0000051"
       },
       "sewage_type": {
          "@type": "@id",
-         "@id": "MIXS:0000215"
+         "@id": "mixs:0000215"
       },
       "shad_dev_water_mold": {
-         "@id": "MIXS:0000834"
+         "@id": "mixs:0000834"
       },
       "shading_device_cond": {
          "@type": "@id",
-         "@id": "MIXS:0000831"
+         "@id": "mixs:0000831"
       },
       "shading_device_loc": {
          "@type": "@id",
-         "@id": "MIXS:0000832"
+         "@id": "mixs:0000832"
       },
       "shading_device_mat": {
          "@type": "@id",
-         "@id": "MIXS:0000245"
+         "@id": "mixs:0000245"
       },
       "shading_device_type": {
          "@type": "@id",
-         "@id": "MIXS:0000835"
+         "@id": "mixs:0000835"
       },
       "sieving": {
          "@type": "@id",
-         "@id": "MIXS:0000322"
+         "@id": "mixs:0000322"
       },
       "silicate": {
          "@type": "@id",
-         "@id": "MIXS:0000184"
+         "@id": "mixs:0000184"
       },
       "size_frac": {
          "@type": "@id",
-         "@id": "MIXS:0000017"
+         "@id": "mixs:0000017"
       },
       "size_frac_low": {
          "@type": "@id",
-         "@id": "MIXS:0000735"
+         "@id": "mixs:0000735"
       },
       "size_frac_up": {
          "@type": "@id",
-         "@id": "MIXS:0000736"
+         "@id": "mixs:0000736"
       },
       "slope_aspect": {
          "@type": "@id",
-         "@id": "MIXS:0000647"
+         "@id": "mixs:0000647"
       },
       "slope_gradient": {
          "@type": "@id",
-         "@id": "MIXS:0000646"
+         "@id": "mixs:0000646"
       },
       "sludge_retent_time": {
          "@type": "@id",
-         "@id": "MIXS:0000669"
+         "@id": "mixs:0000669"
       },
       "sodium": {
          "@type": "@id",
-         "@id": "MIXS:0000428"
+         "@id": "mixs:0000428"
       },
       "soil_horizon": {
          "@context": {
@@ -2141,84 +2142,81 @@
             "description": "skos:prefLabel",
             "meaning": "@id"
          },
-         "@id": "MIXS:0001082"
+         "@id": "mixs:0001082"
       },
       "soil_text_measure": {
          "@type": "@id",
-         "@id": "MIXS:0000335"
+         "@id": "mixs:0000335"
       },
       "soil_texture_meth": {
-         "@id": "MIXS:0000336"
+         "@id": "mixs:0000336"
       },
       "soil_type": {
          "@type": "@id",
-         "@id": "MIXS:0000332"
+         "@id": "mixs:0000332"
       },
       "soil_type_meth": {
          "@type": "@id",
-         "@id": "MIXS:0000334"
+         "@id": "mixs:0000334"
       },
       "solar_irradiance": {
          "@type": "@id",
-         "@id": "MIXS:0000112"
+         "@id": "mixs:0000112"
       },
       "soluble_inorg_mat": {
          "@type": "@id",
-         "@id": "MIXS:0000672"
+         "@id": "mixs:0000672"
       },
       "soluble_org_mat": {
          "@type": "@id",
-         "@id": "MIXS:0000673"
+         "@id": "mixs:0000673"
       },
       "soluble_react_phosp": {
          "@type": "@id",
-         "@id": "MIXS:0000738"
+         "@id": "mixs:0000738"
       },
       "source_mat_id": {
          "@type": "@id",
-         "@id": "MIXS:0000026"
+         "@id": "mixs:0000026"
       },
       "space_typ_state": {
          "@type": "@id",
-         "@id": "MIXS:0000770"
+         "@id": "mixs:0000770"
       },
       "specific": {
          "@type": "@id",
-         "@id": "MIXS:0000836"
+         "@id": "mixs:0000836"
       },
       "specific_humidity": {
          "@type": "@id",
-         "@id": "MIXS:0000214"
+         "@id": "mixs:0000214"
       },
       "sr_dep_env": {
          "@type": "@id",
-         "@id": "MIXS:0000996"
+         "@id": "mixs:0000996"
       },
       "sr_geol_age": {
          "@type": "@id",
-         "@id": "MIXS:0000997"
+         "@id": "mixs:0000997"
       },
       "sr_kerog_type": {
          "@type": "@id",
-         "@id": "MIXS:0000994"
+         "@id": "mixs:0000994"
       },
       "sr_lithology": {
          "@type": "@id",
-         "@id": "MIXS:0000995"
+         "@id": "mixs:0000995"
       },
       "standing_water_regm": {
          "@type": "@id",
-         "@id": "MIXS:0001069"
+         "@id": "mixs:0001069"
       },
       "started_at_time": {
          "@type": "xsd:dateTime"
       },
-      "stoichiometry": {
-         "@type": "xsd:integer"
-      },
       "store_cond": {
          "@type": "@id",
-         "@id": "MIXS:0000327"
+         "@id": "mixs:0000327"
       },
       "study_identifiers": {
          "@type": "@id"
@@ -2234,7 +2232,7 @@
       },
       "substructure_type": {
          "@type": "@id",
-         "@id": "MIXS:0000767"
+         "@id": "mixs:0000767"
       },
       "subsurface_depth": {
          "@type": "@id"
@@ -2244,67 +2242,67 @@
       },
       "sulfate": {
          "@type": "@id",
-         "@id": "MIXS:0000423"
+         "@id": "mixs:0000423"
       },
       "sulfate_fw": {
          "@type": "@id",
-         "@id": "MIXS:0000407"
+         "@id": "mixs:0000407"
       },
       "sulfide": {
          "@type": "@id",
-         "@id": "MIXS:0000424"
+         "@id": "mixs:0000424"
       },
       "surf_air_cont": {
          "@type": "@id",
-         "@id": "MIXS:0000759"
+         "@id": "mixs:0000759"
       },
       "surf_humidity": {
          "@type": "@id",
-         "@id": "MIXS:0000123"
+         "@id": "mixs:0000123"
       },
       "surf_material": {
          "@type": "@id",
-         "@id": "MIXS:0000758"
+         "@id": "mixs:0000758"
       },
       "surf_moisture": {
          "@type": "@id",
-         "@id": "MIXS:0000128"
+         "@id": "mixs:0000128"
       },
       "surf_moisture_ph": {
          "@type": "@id",
-         "@id": "MIXS:0000760"
+         "@id": "mixs:0000760"
       },
       "surf_temp": {
          "@type": "@id",
-         "@id": "MIXS:0000125"
+         "@id": "mixs:0000125"
       },
       "suspend_part_matter": {
          "@type": "@id",
-         "@id": "MIXS:0000741"
+         "@id": "mixs:0000741"
       },
       "suspend_solids": {
          "@type": "@id",
-         "@id": "MIXS:0000150"
+         "@id": "mixs:0000150"
       },
       "tan": {
          "@type": "@id",
-         "@id": "MIXS:0000120"
+         "@id": "mixs:0000120"
       },
       "target_gene": {
          "@type": "@id",
-         "@id": "MIXS:0000044"
+         "@id": "mixs:0000044"
       },
       "target_subfragment": {
          "@type": "@id",
-         "@id": "MIXS:0000045"
+         "@id": "mixs:0000045"
       },
       "temp": {
          "@type": "@id",
-         "@id": "MIXS:0000113"
+         "@id": "mixs:0000113"
       },
       "temp_out": {
          "@type": "@id",
-         "@id": "MIXS:0000197"
+         "@id": "mixs:0000197"
       },
       "term": {
          "@type": "@id",
@@ -2312,186 +2310,184 @@
       },
       "tertiary_treatment": {
          "@type": "@id",
-         "@id": "MIXS:0000352"
+         "@id": "mixs:0000352"
       },
       "texture": {
          "@type": "@id",
-         "@id": "MIXS:0000335"
+         "@id": "mixs:0000335"
       },
       "texture_meth": {
          "@type": "@id",
-         "@id": "MIXS:0000336"
+         "@id": "mixs:0000336"
       },
       "tidal_stage": {
          "@type": "@id",
-         "@id": "MIXS:0000750"
+         "@id": "mixs:0000750"
       },
       "tillage": {
          "@type": "@id",
-         "@id": "MIXS:0001081"
+         "@id": "mixs:0001081"
       },
       "tiss_cult_growth_med": {
          "@type": "@id",
-         "@id": "MIXS:0001070"
+         "@id": "mixs:0001070"
       },
       "toluene": {
          "@type": "@id",
-         "@id": "MIXS:0000154"
+         "@id": "mixs:0000154"
       },
       "too_short_contig_num": {
-         "@type": "xsd:integer",
-         "@id": "nmdc_wfea:too_short_contig_num"
+         "@type": "xsd:integer"
       },
       "tot_carb": {
          "@type": "@id",
-         "@id": "MIXS:0000525"
+         "@id": "mixs:0000525"
       },
       "tot_depth_water_col": {
          "@type": "@id",
-         "@id": "MIXS:0000634"
+         "@id": "mixs:0000634"
       },
       "tot_diss_nitro": {
          "@type": "@id",
-         "@id": "MIXS:0000744"
+         "@id": "mixs:0000744"
       },
       "tot_inorg_nitro": {
          "@type": "@id",
-         "@id": "MIXS:0000745"
+         "@id": "mixs:0000745"
       },
       "tot_iron": {
          "@type": "@id",
-         "@id": "MIXS:0000105"
+         "@id": "mixs:0000105"
       },
       "tot_nitro": {
          "@type": "@id",
-         "@id": "MIXS:0000102"
+         "@id": "mixs:0000102"
       },
       "tot_nitro_cont_meth": {
-         "@id": "MIXS:0000338"
+         "@id": "mixs:0000338"
       },
       "tot_nitro_content": {
          "@type": "@id",
-         "@id": "MIXS:0000530"
+         "@id": "mixs:0000530"
       },
       "tot_org_c_meth": {
          "@type": "@id",
-         "@id": "MIXS:0000337"
+         "@id": "mixs:0000337"
       },
       "tot_org_carb": {
          "@type": "@id",
-         "@id": "MIXS:0000533"
+         "@id": "mixs:0000533"
       },
       "tot_part_carb": {
          "@type": "@id",
-         "@id": "MIXS:0000747"
+         "@id": "mixs:0000747"
       },
       "tot_phosp": {
          "@type": "@id",
-         "@id": "MIXS:0000117"
+         "@id": "mixs:0000117"
       },
       "tot_phosphate": {
          "@type": "@id",
-         "@id": "MIXS:0000689"
+         "@id": "mixs:0000689"
       },
       "tot_sulfur": {
          "@type": "@id",
-         "@id": "MIXS:0000419"
+         "@id": "mixs:0000419"
       },
       "train_line": {
          "@type": "@id",
-         "@id": "MIXS:0000837"
+         "@id": "mixs:0000837"
       },
       "train_stat_loc": {
          "@type": "@id",
-         "@id": "MIXS:0000838"
+         "@id": "mixs:0000838"
       },
       "train_stop_loc": {
          "@type": "@id",
-         "@id": "MIXS:0000839"
+         "@id": "mixs:0000839"
       },
       "turbidity": {
          "@type": "@id",
-         "@id": "MIXS:0000191"
+         "@id": "mixs:0000191"
       },
       "tvdss_of_hcr_press": {
          "@type": "@id",
-         "@id": "MIXS:0000397"
+         "@id": "mixs:0000397"
       },
       "tvdss_of_hcr_temp": {
          "@type": "@id",
-         "@id": "MIXS:0000394"
+         "@id": "mixs:0000394"
       },
       "typ_occup_density": {
          "@type": "@id",
-         "@id": "MIXS:0000771"
+         "@id": "mixs:0000771"
       },
       "unbinned_contig_num": {
-         "@type": "xsd:integer",
-         "@id": "nmdc_wfea:unbinned_contig_num"
+         "@type": "xsd:integer"
       },
       "ventilation_rate": {
          "@type": "@id",
-         "@id": "MIXS:0000114"
+         "@id": "mixs:0000114"
       },
       "ventilation_type": {
          "@type": "@id",
-         "@id": "MIXS:0000756"
+         "@id": "mixs:0000756"
       },
       "vfa": {
          "@type": "@id",
-         "@id": "MIXS:0000152"
+         "@id": "mixs:0000152"
       },
       "vfa_fw": {
          "@type": "@id",
-         "@id": "MIXS:0000408"
+         "@id": "mixs:0000408"
       },
       "vis_media": {
          "@type": "@id",
-         "@id": "MIXS:0000840"
+         "@id": "mixs:0000840"
       },
       "viscosity": {
          "@type": "@id",
-         "@id": "MIXS:0000126"
+         "@id": "mixs:0000126"
       },
       "volatile_org_comp": {
          "@type": "@id",
-         "@id": "MIXS:0000115"
+         "@id": "mixs:0000115"
       },
       "wall_area": {
          "@type": "@id",
-         "@id": "MIXS:0000198"
+         "@id": "mixs:0000198"
       },
       "wall_const_type": {
          "@type": "@id",
-         "@id": "MIXS:0000841"
+         "@id": "mixs:0000841"
       },
       "wall_finish_mat": {
          "@type": "@id",
-         "@id": "MIXS:0000842"
+         "@id": "mixs:0000842"
       },
       "wall_height": {
          "@type": "@id",
-         "@id": "MIXS:0000221"
+         "@id": "mixs:0000221"
       },
       "wall_loc": {
          "@type": "@id",
-         "@id": "MIXS:0000843"
+         "@id": "mixs:0000843"
       },
       "wall_surf_treatment": {
          "@type": "@id",
-         "@id": "MIXS:0000845"
+         "@id": "mixs:0000845"
       },
       "wall_texture": {
          "@type": "@id",
-         "@id": "MIXS:0000846"
+         "@id": "mixs:0000846"
       },
       "wall_thermal_mass": {
          "@type": "@id",
-         "@id": "MIXS:0000222"
+         "@id": "mixs:0000222"
       },
       "wall_water_mold": {
          "@type": "@id",
-         "@id": "MIXS:0000844"
+         "@id": "mixs:0000844"
       },
       "was_associated_with": {
          "@type": "@id"
@@ -2504,106 +2500,106 @@
       },
       "wastewater_type": {
          "@type": "@id",
-         "@id": "MIXS:0000353"
+         "@id": "mixs:0000353"
       },
       "water_cont_soil_meth": {
-         "@id": "MIXS:0000323"
+         "@id": "mixs:0000323"
       },
       "water_content": {
          "@type": "@id",
-         "@id": "MIXS:0000185"
+         "@id": "mixs:0000185"
       },
       "water_current": {
          "@type": "@id",
-         "@id": "MIXS:0000203"
+         "@id": "mixs:0000203"
       },
       "water_cut": {
          "@type": "@id",
-         "@id": "MIXS:0000454"
+         "@id": "mixs:0000454"
       },
       "water_feat_size": {
          "@type": "@id",
-         "@id": "MIXS:0000223"
+         "@id": "mixs:0000223"
       },
       "water_feat_type": {
          "@type": "@id",
-         "@id": "MIXS:0000847"
+         "@id": "mixs:0000847"
       },
       "water_prod_rate": {
          "@type": "@id",
-         "@id": "MIXS:0000453"
+         "@id": "mixs:0000453"
       },
       "water_temp_regm": {
          "@type": "@id",
-         "@id": "MIXS:0000590"
+         "@id": "mixs:0000590"
       },
       "watering_regm": {
          "@type": "@id",
-         "@id": "MIXS:0000591"
+         "@id": "mixs:0000591"
       },
       "weekday": {
          "@type": "@id",
-         "@id": "MIXS:0000848"
+         "@id": "mixs:0000848"
       },
       "win": {
          "@type": "@id",
-         "@id": "MIXS:0000297"
+         "@id": "mixs:0000297"
       },
       "wind_direction": {
          "@type": "@id",
-         "@id": "MIXS:0000757"
+         "@id": "mixs:0000757"
       },
       "wind_speed": {
          "@type": "@id",
-         "@id": "MIXS:0000118"
+         "@id": "mixs:0000118"
       },
       "window_cond": {
          "@type": "@id",
-         "@id": "MIXS:0000849"
+         "@id": "mixs:0000849"
       },
       "window_cover": {
          "@type": "@id",
-         "@id": "MIXS:0000850"
+         "@id": "mixs:0000850"
       },
       "window_horiz_pos": {
          "@type": "@id",
-         "@id": "MIXS:0000851"
+         "@id": "mixs:0000851"
       },
       "window_loc": {
          "@type": "@id",
-         "@id": "MIXS:0000852"
+         "@id": "mixs:0000852"
       },
       "window_mat": {
          "@type": "@id",
-         "@id": "MIXS:0000853"
+         "@id": "mixs:0000853"
       },
       "window_open_freq": {
          "@type": "@id",
-         "@id": "MIXS:0000246"
+         "@id": "mixs:0000246"
       },
       "window_size": {
          "@type": "@id",
-         "@id": "MIXS:0000224"
+         "@id": "mixs:0000224"
       },
       "window_status": {
          "@type": "@id",
-         "@id": "MIXS:0000855"
+         "@id": "mixs:0000855"
       },
       "window_type": {
          "@type": "@id",
-         "@id": "MIXS:0000856"
+         "@id": "mixs:0000856"
       },
       "window_vert_pos": {
          "@type": "@id",
-         "@id": "MIXS:0000857"
+         "@id": "mixs:0000857"
       },
       "window_water_mold": {
          "@type": "@id",
-         "@id": "MIXS:0000854"
+         "@id": "mixs:0000854"
       },
       "xylene": {
          "@type": "@id",
-         "@id": "MIXS:0000156"
+         "@id": "mixs:0000156"
       },
       "zinc": {
          "@type": "@id"
@@ -2611,41 +2607,11 @@
       "CreditAssociation": {
          "@id": "prov:Association"
       },
-      "MAGsAnalysisActivity": {
-         "@id": "nmdc_wfea:MAGsAnalysisActivity"
+      "DissolvingProcess": {
+         "@id": "CHMO:0002773"
       },
-      "MetabolomicsAnalysisActivity": {
-         "@id": "nmdc_wfea:MetabolomicsAnalysisActivity"
-      },
-      "MetagenomeAnnotationActivity": {
-         "@id": "nmdc_wfea:MetagenomeAnnotationActivity"
-      },
-      "MetagenomeAssembly": {
-         "@id": "nmdc_wfea:MetagenomeAssembly"
-      },
-      "MetaproteomicsAnalysisActivity": {
-         "@id": "nmdc_wfea:MetaproteomicsAnalysisActivity"
-      },
-      "MetatranscriptomeActivity": {
-         "@id": "nmdc_wfea:MetatranscriptomeActivity"
-      },
-      "MetatranscriptomeAnnotationActivity": {
-         "@id": "nmdc_wfea:MetatranscriptomeAnnotationActivity"
-      },
-      "MetatranscriptomeAssembly": {
-         "@id": "nmdc_wfea:MetatranscriptomeAssembly"
-      },
-      "NomAnalysisActivity": {
-         "@id": "nmdc_wfea:NomAnalysisActivity"
-      },
-      "ReadBasedTaxonomyAnalysisActivity": {
-         "@id": "nmdc_wfea:ReadBasedTaxonomyAnalysisActivity"
-      },
-      "ReadQCAnalysisActivity": {
-         "@id": "nmdc_wfea:ReadQCAnalysisActivity"
-      },
-      "WorkflowExecutionActivity": {
-         "@id": "nmdc_wfea:WorkflowExecutionActivity"
+      "MaterialSamplingProcess": {
+         "@id": "OBI:0000744"
       }
    }
 }
