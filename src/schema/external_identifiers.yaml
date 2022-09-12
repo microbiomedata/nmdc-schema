@@ -184,7 +184,7 @@ slots:
       - value: https://identifiers.org/insdc.sra:DRS166340
         description: I13_N_5-10 sample from Soil fungal diversity along elevational gradients
 
-  ## omics processing
+  ## OmicsProcessing
 
   omics processing identifiers:
     abstract: true

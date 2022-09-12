@@ -79,7 +79,7 @@ subsets:
       of processes or workflows.
 
 classes:
-  database:
+  Database:
     tree_root: true
     aliases:
       - NMDC metadata object
@@ -116,8 +116,8 @@ classes:
       nmdc schema version:
         description: TODO
 
-  data object:
-    is_a: named thing
+  DataObject:
+    is_a: NamedThing
     in_subset:
       - data object subset
     description: 'An object that primarily consists of symbols that represent information.   Files,
@@ -138,8 +138,8 @@ classes:
     id_prefixes:
       - GOLD
 
-  biosample:
-    is_a: named thing
+  Biosample:
+    is_a: NamedThing
     in_subset:
       - sample subset
     aliases:
@@ -428,8 +428,8 @@ classes:
       - OBI:0000747
       - NCIT:C43412
 
-  study:
-    is_a: named thing
+  Study:
+    is_a: NamedThing
     in_subset:
       - sample subset
     aliases:
@@ -543,10 +543,10 @@ classes:
       - GOLD ## https://identifiers.org/gold:Gs0110115
       - insdc.srs ## https://www.ebi.ac.uk/ena/browser/view/PRJEB45055?
       - mgnify ## https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757
-  biosample processing:
+  BiosampleProcessing:
     aliases:
       - material processing
-    is_a: named thing
+    is_a: NamedThing
     description: A process that takes one or more biosamples as inputs and generates
       one or as outputs. Examples of outputs include samples cultivated from another
       sample or data objects created by instruments runs.
@@ -554,15 +554,15 @@ classes:
       - has input
     slot_usage:
       has input:
-        range: biosample
+        range: Biosample
     broad_mappings:
       - OBI:0000094
-  omics processing:
+  OmicsProcessing:
     aliases:
       - omics assay
       - sequencing project
       - experiment
-    is_a: biosample processing
+    is_a: BiosampleProcessing
     in_subset:
       - sample subset
     description: >-
@@ -602,7 +602,7 @@ classes:
     broad_mappings:
       - OBI:0000070
       - ISA:Assay
-  credit association:
+  CreditAssociation:
     aliases:
       - study role
       - credit table
@@ -812,8 +812,8 @@ slots:
     multivalued: true
     description: List of ESS-DIVE dataset DOIs
   has credit associations:
-    domain: study
-    range: credit association
+    domain: Study
+    range: CreditAssociation
     multivalued: true
     # was just "inlined: true"
     inlined_as_list: true
@@ -826,8 +826,8 @@ slots:
         tag: display_hint
         value: Other researchers associated with this study.
   study image:
-    domain: study
-    range: image value
+    domain: Study
+    range: ImageValue
     multivalued: true
     inlined: true
     description: Links a study to one or more images.
@@ -838,7 +838,7 @@ slots:
     multivalued: true
     range: string
   applied role:
-    domain: credit association
+    domain: CreditAssociation
     range: credit enum
     slot_uri: prov:hadRole
     deprecated: A credit association may have multiple roles. So, use the applied
@@ -846,7 +846,7 @@ slots:
     multivalued: false
     required: false
   applied roles:
-    domain: credit association
+    domain: CreditAssociation
     range: credit enum
     multivalued: true
     required: true
@@ -856,8 +856,8 @@ slots:
         value: >-
           Identify all CRediT roles associated with this contributor. CRediT Information: https://info.orcid.org/credit-for-research-contribution ; CRediT: https://credit.niso.org/
   applies to person:
-    domain: credit association
-    range: person value
+    domain: CreditAssociation
+    range: PersonValue
     todos: prov:agent takes an Agent object. Is a person value an Agent? Also try
       to relate to principal investigator slot? could include OBI:0000103 principal
       investigator role... do we need to define the OBI prefix?
@@ -866,7 +866,7 @@ slots:
     slot_uri: prov:agent
   object set:
     mixin: true
-    domain: database
+    domain: Database
     multivalued: true
     inlined_as_list: true
     description: Applies to a property that links a database object to a set of objects.
@@ -874,116 +874,116 @@ slots:
       for a single json object that combines multiple object types
   biosample set:
     mixins: object set
-    domain: database
-    range: biosample
+    domain: Database
+    range: Biosample
     multivalued: true
     description: This property links a database object to the set of samples within
       it.
   study set:
     mixins: object set
-    domain: database
-    range: study
+    domain: Database
+    range: Study
     multivalued: true
     description: This property links a database object to the set of studies within
       it.
   data object set:
     mixins: object set
-    domain: database
-    range: data object
+    domain: Database
+    range: DataObject
     multivalued: true
     description: This property links a database object to the set of data objects
       within it.
   genome feature set:
     mixins: object set
-    domain: database
-    range: genome feature
+    domain: Database
+    range: GenomeFeature
     multivalued: true
     description: This property links a database object to the set of all features
   functional annotation set:
     mixins: object set
-    domain: database
-    range: functional annotation
+    domain: Database
+    range: FunctionalAnnotation
     multivalued: true
     description: This property links a database object to the set of all functional
       annotations
   activity set:
     mixins: object set
-    domain: database
-    range: workflow execution activity
+    domain: Database
+    range: WorkflowExecutionActivity
     multivalued: true
     description: This property links a database object to the set of workflow activities.
   mags activity set:
     mixins: object set
-    domain: database
-    range: MAGs analysis activity
+    domain: Database
+    range: MagsAnalysisActivity
     multivalued: true
     description: This property links a database object to the set of MAGs analysis
       activities.
   metabolomics analysis activity set:
     mixins: object set
-    domain: database
-    range: metabolomics analysis activity
+    domain: Database
+    range: MetabolomicsAnalysisActivity
     multivalued: true
     description: This property links a database object to the set of metabolomics
       analysis activities.
   metaproteomics analysis activity set:
     mixins: object set
-    domain: database
-    range: metaproteomics analysis activity
+    domain: Database
+    range: MetaproteomicsAnalysisActivity
     multivalued: true
     description: This property links a database object to the set of metaproteomics
       analysis activities.
   metagenome annotation activity set:
     mixins: object set
-    domain: database
-    range: metagenome annotation activity
+    domain: Database
+    range: MetagenomeAnnotationActivity
     multivalued: true
     description: This property links a database object to the set of metagenome annotation
       activities.
   metagenome assembly set:
     mixins: object set
-    domain: database
-    range: metagenome assembly
+    domain: Database
+    range: MetagenomeAssembly
     multivalued: true
     description: This property links a database object to the set of metagenome assembly
       activities.
   metatranscriptome activity set:
     mixins: object set
-    domain: database
-    range: metatranscriptome activity
+    domain: Database
+    range: MetatranscriptomeActivity
     multivalued: true
     description: This property links a database object to the set of metatranscriptome
       analysis activities.
   read QC analysis activity set:
     mixins: object set
-    domain: database
-    range: read QC analysis activity
+    domain: Database
+    range: ReadQcAnalysisActivity
     multivalued: true
     description: This property links a database object to the set of read QC analysis
       activities.
   read based taxonomy analysis activity set:
     mixins: object set
-    domain: database
-    range: read based taxonomy analysis activity
+    domain: Database
+    range: ReadBasedTaxonomyAnalysisActivity
     multivalued: true
     description: >-
       This property links a database object to the set of read based analysis activities.
   nom analysis activity set:
     mixins: object set
-    domain: database
-    range: nom analysis activity
+    domain: Database
+    range: NomAnalysisActivity
     multivalued: true
     description: This property links a database object to the set of natural organic
       matter (NOM) analysis activities.
   omics processing set:
     mixins: object set
-    domain: database
-    range: omics processing
+    domain: Database
+    range: OmicsProcessing
     multivalued: true
     description: This property links a database object to the set of omics processings
       within it.
   omics type:
-    range: controlled term value
+    range: ControlledTermValue
     description: The type of omics data
     examples:
       - value: metatranscriptome
@@ -1067,11 +1067,11 @@ slots:
     aliases:
       - PI
     is_a: attribute
-    range: person value
+    range: PersonValue
     description: Principal Investigator who led the study and/or generated the dataset.
   doi:
     is_a: attribute
-    range: attribute value
+    range: AttributeValue
   add_date:
     range: string
     description: The date on which the information was added to the database.
@@ -1121,11 +1121,11 @@ slots:
   host_name:
     range: string
   depth2:
-    range: quantity value
+    range: QuantityValue
   subsurface_depth:
-    range: quantity value
+    range: QuantityValue
   subsurface_depth2:
-    range: quantity value
+    range: QuantityValue
   proport_woa_temperature:
     range: string
 

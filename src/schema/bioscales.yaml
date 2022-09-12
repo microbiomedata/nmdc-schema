@@ -52,7 +52,7 @@ slots:
 #    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   manganese:
     name: manganese
     aliases:
@@ -74,7 +74,7 @@ slots:
 #    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
-    range: quantity value
+    range: QuantityValue
 
   ammonium nitrogen:
     name: ammonium nitrogen
@@ -98,7 +98,7 @@ slots:
 #    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
-    range: quantity value
+    range: QuantityValue
 
   nitrate nitrogen:
     name: nitrate nitrogen
@@ -124,7 +124,7 @@ slots:
 #    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
-    range: quantity value
+    range: QuantityValue
 
   nitrite nitrogen:
     name: nitrite nitrogen
@@ -148,7 +148,7 @@ slots:
 #    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
-    range: quantity value
+    range: QuantityValue
 
 
   lbc_thirty:
@@ -176,7 +176,7 @@ slots:
 #    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
-    range: quantity value
+    range: QuantityValue
     see_also: https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF
 
 
@@ -204,4 +204,4 @@ slots:
 #    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
-    range: quantity value
+    range: QuantityValue

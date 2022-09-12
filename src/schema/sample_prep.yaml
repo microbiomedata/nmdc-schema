@@ -116,7 +116,7 @@ slots:
 
     aliases:
       - volume
-    range: quantity value
+    range: QuantityValue
     inlined: true
   dissolved_in:
     name: dissolved_in
@@ -149,14 +149,14 @@ slots:
 
     aliases:
       - shake_speed
-    range: quantity value
+    range: QuantityValue
     inlined: true
   process_temperature:
     name: process_temperature
     todos:
       - constrain units
 
-    range: quantity value
+    range: QuantityValue
     inlined: true
   process_time:
     name: process_time
@@ -164,13 +164,13 @@ slots:
 
     aliases:
       - shake_time
-    range: quantity value
+    range: QuantityValue
     inlined: true
   container_size:
     name: container_size
     title: container size
 
-    range: quantity value
+    range: QuantityValue
     inlined: true
   container_type:
     name: container_type
@@ -181,7 +181,7 @@ slots:
     name: amount_collected
     title: amount collected
 
-    range: quantity value
+    range: QuantityValue
     inlined: true
   collected_into:
     name: collected_into
@@ -303,18 +303,6 @@ classes:
       sampling_method:
         name: sampling_method
     class_uri: OBI:0000744
-  NamedThing:
-    name: NamedThing
-
-    slots:
-      - description
-      - id
-    slot_usage:
-      description:
-        name: description
-      id:
-        name: id
-        identifier: true
 
   ReactionActivity:
     name: ReactionActivity
@@ -340,5 +328,5 @@ classes:
         todos:
           - constrain units
           - align with process_time
-        range: quantity value
+        range: QuantityValue
         inlined: true
