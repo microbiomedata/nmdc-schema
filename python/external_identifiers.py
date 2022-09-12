@@ -1,5 +1,5 @@
 # Auto generated from external_identifiers.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-08-23T09:55:17
+# Generation date: 2022-09-12T13:30:11
 # Schema: external_identifiers
 #
 # id: https://microbiomedata/schema/external_identifiers
@@ -36,19 +36,19 @@ CAS = CurieNamespace('CAS', 'http://identifiers.org/cas/')
 CHEBI = CurieNamespace('CHEBI', 'http://purl.obolibrary.org/obo/CHEBI_')
 CHEMBL_COMPOUND = CurieNamespace('CHEMBL_COMPOUND', 'http://identifiers.org/chembl.compound/')
 DRUGBANK = CurieNamespace('DRUGBANK', 'http://identifiers.org/drugbank/')
-GOLD = CurieNamespace('GOLD', 'https://identifiers.org/gold/')
+GOLD = CurieNamespace('GOLD', 'http://identifiers.org/gold/')
 HMDB = CurieNamespace('HMDB', 'http://identifiers.org/hmdb/')
 KEGG_COMPOUND = CurieNamespace('KEGG_COMPOUND', 'http://identifiers.org/kegg.compound/')
 MESH = CurieNamespace('MESH', 'http://identifiers.org/mesh/')
 OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
 PR = CurieNamespace('PR', 'http://purl.obolibrary.org/obo/PR_')
 PUBCHEM_COMPOUND = CurieNamespace('PUBCHEM_COMPOUND', 'http://identifiers.org/pubchem.compound/')
-UNIPROTKB = CurieNamespace('UniProtKB', 'http://example.org/UNKNOWN/UniProtKB/')
-BIOLINK = CurieNamespace('biolink', 'http://example.org/UNKNOWN/biolink/')
+UNIPROTKB = CurieNamespace('UniProtKB', 'https://identifiers.org/uniprot/')
+BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
-GTPO = CurieNamespace('gtpo', 'http://example.org/UNKNOWN/gtpo/')
+GTPO = CurieNamespace('gtpo', 'https://unknown.to.linter.org/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
-NMDC = CurieNamespace('nmdc', 'https://microbiomedata/meta/')
+NMDC = CurieNamespace('nmdc', 'https://w3id.org/nmdc/')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 QUD = CurieNamespace('qud', 'http://qudt.org/1.1/schema/qudt#')
 RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
@@ -71,8 +71,8 @@ class ExternalIdentifier(Uriorcurie):
 
 class Bytes(int):
     """ An integer value that corresponds to a size in bytes """
-    type_class_uri = XSD.int
-    type_class_curie = "xsd:int"
+    type_class_uri = XSD.long
+    type_class_curie = "xsd:long"
     type_name = "bytes"
     type_model_uri = NMDC.Bytes
 

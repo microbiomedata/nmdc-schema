@@ -236,9 +236,6 @@
                "$ref": "#/$defs/QuantityValue",
                "description": "Concentration of calcium in the sample"
             },
-            "canary": {
-               "type": "string"
-            },
             "carb_nitro_ratio": {
                "$ref": "#/$defs/QuantityValue",
                "description": "Ratio of amount or concentrations of carbon to nitrogen"
@@ -871,7 +868,7 @@
             },
             "samp_vol_we_dna_ext": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Volume (ml) or mass (g) of total collected sample processed for DNA extraction. Note: total sample collected should be entered under the term Sample Size (MIXS:0000001)."
+               "description": "Volume (ml) or mass (g) of total collected sample processed for DNA extraction. Note: total sample collected should be entered under the term Sample Size (mixs:0000001)."
             },
             "sample_collection_site": {
                "type": "string"
@@ -1296,6 +1293,14 @@
          "title": "ChemicalEntity",
          "type": "object"
       },
+      "ContainerTypeEnum": {
+         "description": "",
+         "enum": [
+            "screw_top_conical"
+         ],
+         "title": "ContainerTypeEnum",
+         "type": "string"
+      },
       "ControlledTermValue": {
          "additionalProperties": false,
          "description": "A controlled term or class from an ontology",
@@ -1365,7 +1370,8 @@
             "Visualization",
             "Writing original draft",
             "Writing review and editing",
-            "Principal Investigator"
+            "Principal Investigator",
+            "Submitter"
          ],
          "title": "CreditEnum",
          "type": "string"
@@ -1472,7 +1478,7 @@
       },
       "Database": {
          "additionalProperties": false,
-         "description": "An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed databse top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest",
+         "description": "An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest",
          "properties": {
             "activity_set": {
                "description": "This property links a database object to the set of workflow activities.",
@@ -1499,6 +1505,12 @@
                "description": "TODO",
                "type": "string"
             },
+            "dissolving_process_set": {
+               "items": {
+                  "$ref": "#/$defs/DissolvingProcess"
+               },
+               "type": "array"
+            },
             "etl_software_version": {
                "description": "TODO",
                "type": "string"
@@ -1521,6 +1533,18 @@
                "description": "This property links a database object to the set of MAGs analysis activities.",
                "items": {
                   "$ref": "#/$defs/MAGsAnalysisActivity"
+               },
+               "type": "array"
+            },
+            "material_sample_set": {
+               "items": {
+                  "$ref": "#/$defs/MaterialSample"
+               },
+               "type": "array"
+            },
+            "material_sampling_process_set": {
+               "items": {
+                  "$ref": "#/$defs/MaterialSamplingProcess"
                },
                "type": "array"
             },
@@ -1577,6 +1601,12 @@
                },
                "type": "array"
             },
+            "reaction_activity_set": {
+               "items": {
+                  "$ref": "#/$defs/ReactionActivity"
+               },
+               "type": "array"
+            },
             "read_QC_analysis_activity_set": {
                "description": "This property links a database object to the set of read QC analysis activities.",
                "items": {
@@ -1625,6 +1655,42 @@
          ],
          "title": "DeposEnvEnum",
          "type": "string"
+      },
+      "DeviceTypeEnum": {
+         "description": "",
+         "enum": [
+            "orbital_shaker",
+            "thermomixer"
+         ],
+         "title": "DeviceTypeEnum",
+         "type": "string"
+      },
+      "DissolvingProcess": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "dissolution_aided_by": {
+               "$ref": "#/$defs/LabDevice"
+            },
+            "dissolution_reagent": {
+               "$ref": "#/$defs/SolventEnum"
+            },
+            "dissolution_volume": {
+               "$ref": "#/$defs/QuantityValue"
+            },
+            "dissolved_in": {
+               "$ref": "#/$defs/MaterialContainer"
+            },
+            "material_input": {
+               "type": "string"
+            },
+            "material_output": {
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "DissolvingProcess",
+         "type": "object"
       },
       "DnaContTypeEnum": {
          "description": "",
@@ -2060,7 +2126,7 @@
          "description": "An assignment of a function term (e.g. reaction or pathway) that is executed by a gene product, or which the gene product plays an active role in. Functional annotations can be assigned manually by curators, or automatically in workflows. In the context of NMDC, all function annotation is performed automatically, typically using HMM or Blast type methods",
          "properties": {
             "has_function": {
-               "pattern": "^(KEGG.PATHWAY:\\w{2,4}\\d{5}|KEGG.REACTION:R\\d+|RHEA:\\d{5}|MetaCyc:[A-Za-z0-9+_.%-:]+|EC:\\d{1,2}(\\.\\d{0,3}){0,3}|GO:\\d{7}|MetaNetX:(MNXR\\d+|EMPTY)|SEED:\\w+|KEGG\\.ORTHOLOGY:K\\d+|EGGNOG:\\w+|PFAM:PF\\d{5}|TIGRFAM:TIGR\\d+|SUPFAM:\\w+|CATH:[1-6]\\.[0-9]+\\.[0-9]+\\.[0-9]+|PANTHER.FAMILY:PTHR\\d{5}(\\:SF\\d{1,3})?)$",
+               "pattern": "^(KEGG_PATHWAY:\\w{2,4}\\d{5}|KEGG.REACTION:R\\d+|RHEA:\\d{5}|MetaCyc:[A-Za-z0-9+_.%-:]+|EC:\\d{1,2}(\\.\\d{0,3}){0,3}|GO:\\d{7}|MetaNetX:(MNXR\\d+|EMPTY)|SEED:\\w+|KEGG\\.ORTHOLOGY:K\\d+|EGGNOG:\\w+|PFAM:PF\\d{5}|TIGRFAM:TIGR\\d+|SUPFAM:\\w+|CATH:[1-6]\\.[0-9]+\\.[0-9]+\\.[0-9]+|PANTHER.FAMILY:PTHR\\d{5}(\\:SF\\d{1,3})?)$",
                "type": "string"
             },
             "subject": {
@@ -2459,6 +2525,27 @@
          "title": "IntegerValue",
          "type": "object"
       },
+      "LabDevice": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "device_type": {
+               "$ref": "#/$defs/DeviceTypeEnum"
+            },
+            "process_speed": {
+               "$ref": "#/$defs/QuantityValue"
+            },
+            "process_temperature": {
+               "$ref": "#/$defs/QuantityValue"
+            },
+            "process_time": {
+               "$ref": "#/$defs/QuantityValue"
+            }
+         },
+         "required": [],
+         "title": "LabDevice",
+         "type": "object"
+      },
       "LightTypeEnum": {
          "description": "",
          "enum": [
@@ -2654,6 +2741,64 @@
             "was_informed_by"
          ],
          "title": "MAGsAnalysisActivity",
+         "type": "object"
+      },
+      "MaterialContainer": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "container_size": {
+               "$ref": "#/$defs/QuantityValue"
+            },
+            "container_type": {
+               "$ref": "#/$defs/ContainerTypeEnum"
+            }
+         },
+         "required": [],
+         "title": "MaterialContainer",
+         "type": "object"
+      },
+      "MaterialSample": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "description": {
+               "description": "a human-readable description of a thing",
+               "type": "string"
+            },
+            "id": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "MaterialSample",
+         "type": "object"
+      },
+      "MaterialSamplingProcess": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "amount_collected": {
+               "$ref": "#/$defs/QuantityValue"
+            },
+            "collected_into": {
+               "$ref": "#/$defs/MaterialContainer"
+            },
+            "material_input": {
+               "type": "string"
+            },
+            "material_output": {
+               "type": "string"
+            },
+            "sampling_method": {
+               "$ref": "#/$defs/SamplingMethodEnum"
+            }
+         },
+         "required": [],
+         "title": "MaterialSamplingProcess",
          "type": "object"
       },
       "MechStrucEnum": {
@@ -2877,7 +3022,7 @@
       },
       "MetagenomeAssembly": {
          "additionalProperties": false,
-         "description": "",
+         "description": "A workflow execution activity that converts sequencing reads into an assembled metagenome.",
          "properties": {
             "INSDC_assembly_identifiers": {
                "pattern": "^insdc.sra:[A-Z]+[0-9]+(\\.[0-9]+)?$",
@@ -3514,6 +3659,25 @@
          "title": "MetatranscriptomeAssembly",
          "type": "object"
       },
+      "NamedThing": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "description": {
+               "description": "a human-readable description of a thing",
+               "type": "string"
+            },
+            "id": {
+               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            }
+         },
+         "required": [
+            "id"
+         ],
+         "title": "NamedThing",
+         "type": "object"
+      },
       "NomAnalysisActivity": {
          "additionalProperties": false,
          "description": "",
@@ -3718,7 +3882,7 @@
             },
             "samp_vol_we_dna_ext": {
                "$ref": "#/$defs/QuantityValue",
-               "description": "Volume (ml) or mass (g) of total collected sample processed for DNA extraction. Note: total sample collected should be entered under the term Sample Size (MIXS:0000001)."
+               "description": "Volume (ml) or mass (g) of total collected sample processed for DNA extraction. Note: total sample collected should be entered under the term Sample Size (mixs:0000001)."
             },
             "seq_meth": {
                "$ref": "#/$defs/TextValue",
@@ -4190,14 +4354,40 @@
          "title": "Reaction",
          "type": "object"
       },
+      "ReactionActivity": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "material_input": {
+               "type": "string"
+            },
+            "material_output": {
+               "type": "string"
+            },
+            "reaction_aided_by": {
+               "$ref": "#/$defs/LabDevice"
+            },
+            "reaction_temperature": {
+               "type": "string"
+            },
+            "reaction_time": {
+               "$ref": "#/$defs/QuantityValue"
+            }
+         },
+         "required": [],
+         "title": "ReactionActivity",
+         "type": "object"
+      },
       "ReactionParticipant": {
          "additionalProperties": false,
          "description": "Instances of this link a reaction to a chemical entity participant",
          "properties": {
             "chemical": {
+               "description": "from reaction participant class",
                "type": "string"
             },
             "stoichiometry": {
+               "description": "from reaction participant class",
                "type": "integer"
             }
          },
@@ -4627,6 +4817,14 @@
          "title": "SampleTypeEnum",
          "type": "string"
       },
+      "SamplingMethodEnum": {
+         "description": "",
+         "enum": [
+            "weighing"
+         ],
+         "title": "SamplingMethodEnum",
+         "type": "string"
+      },
       "SeasonUseEnum": {
          "description": "",
          "enum": [
@@ -4692,6 +4890,14 @@
             "Permafrost"
          ],
          "title": "SoilHorizonEnum",
+         "type": "string"
+      },
+      "SolventEnum": {
+         "description": "",
+         "enum": [
+            "deionized_water"
+         ],
+         "title": "SolventEnum",
          "type": "string"
       },
       "SpecificEnum": {
@@ -4897,6 +5103,7 @@
                "type": "string"
             },
             "notes": {
+               "description": "from study class",
                "type": "string"
             },
             "objective": {
@@ -5197,7 +5404,6 @@
          "enum": [
             "crows feet",
             "crows-foot stomp",
-            "",
             "double skip",
             "hawk and trowel",
             "knockdown",
@@ -5427,6 +5633,12 @@
          "description": "TODO",
          "type": "string"
       },
+      "dissolving_process_set": {
+         "items": {
+            "$ref": "#/$defs/DissolvingProcess"
+         },
+         "type": "array"
+      },
       "etl_software_version": {
          "description": "TODO",
          "type": "string"
@@ -5449,6 +5661,18 @@
          "description": "This property links a database object to the set of MAGs analysis activities.",
          "items": {
             "$ref": "#/$defs/MAGsAnalysisActivity"
+         },
+         "type": "array"
+      },
+      "material_sample_set": {
+         "items": {
+            "$ref": "#/$defs/MaterialSample"
+         },
+         "type": "array"
+      },
+      "material_sampling_process_set": {
+         "items": {
+            "$ref": "#/$defs/MaterialSamplingProcess"
          },
          "type": "array"
       },
@@ -5502,6 +5726,12 @@
          "description": "This property links a database object to the set of omics processings within it.",
          "items": {
             "$ref": "#/$defs/OmicsProcessing"
+         },
+         "type": "array"
+      },
+      "reaction_activity_set": {
+         "items": {
+            "$ref": "#/$defs/ReactionActivity"
          },
          "type": "array"
       },
