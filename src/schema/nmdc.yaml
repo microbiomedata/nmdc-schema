@@ -15,43 +15,40 @@ description: >-
 license: https://creativecommons.org/publicdomain/zero/1.0/
 version: 4.0.0
 prefixes:
-  GOLD: https://identifiers.org/gold/
-  MIXS: https://w3id.org/gensc/
+  EFO: http://identifiers.org/efo/
+  GOLD: http://identifiers.org/gold/
   MS: http://purl.obolibrary.org/obo/MS_
+  MetaCyc: https://identifiers.org/metacyc.reaction/ # assuming we're talking about metacyc reactions and not genes, compounds etc.
   NCIT: http://purl.obolibrary.org/obo/NCIT_
   OBI: http://purl.obolibrary.org/obo/OBI_
+  UniProtKB: https://identifiers.org/uniprot/
   biolink: https://w3id.org/biolink/vocab/
   dcterms: http://purl.org/dc/terms/
   igsn: https://app.geosamples.org/sample/igsn/
   img.taxon: http://img.jgi.doe.gov/cgi-bin/w/main.cgi?section=TaxonDetail&taxon_oid=
   linkml: https://w3id.org/linkml/
-  nmdc: https://microbiomedata/meta/
+  mixs: https://w3id.org/mixs/
+  nmdc: https://w3id.org/nmdc/
   qud: http://qudt.org/1.1/schema/qudt#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   wgs: http://www.w3.org/2003/01/geo/wgs84_pos
-  EFO: http://purl.obolibrary.org/obo/EFO_
 
-  COG: http://example.com/
-  EC: http://example.com/
-  ISA: http://example.com/
-  MetaCyc: http://example.com/
-  MetaNetX: http://example.com/
-  RetroRules: http://example.com/
-  UniProtKB: http://example.com/
-  gtpo: http://example.com/
-  insdc.srs: http://example.com/
-  mgnify: http://example.com/
-
-  nmdc_anno: https://microbiomedata/schema/annotation/
-  nmdc_mixs: https://microbiomedata/schema/mixs/
-  nmdc_wfea: https://microbiomedata/schema/workflow_execution_activity/
-
+  COG: https://unknown.to.linter.org/
+  EC: https://unknown.to.linter.org/
+  ISA: https://unknown.to.linter.org/
+  MetaNetX: https://unknown.to.linter.org/
+  RetroRules: https://unknown.to.linter.org/
+  gtpo: https://unknown.to.linter.org/
+  insdc.srs: https://unknown.to.linter.org/
+  mgnify: https://unknown.to.linter.org/
 
 default_prefix: nmdc
 default_range: string
+
 default_curi_maps:
-  - idot_context
   - obo_context
+  - idot_context
+
 emit_prefixes:
   - rdf
   - rdfs
@@ -112,11 +109,11 @@ classes:
       - read based taxonomy analysis activity set
       - study set
     slot_usage:
-      nmdc schema version:
-        description: TODO
       date created:
         description: TODO
       etl software version:
+        description: TODO
+      nmdc schema version:
         description: TODO
 
   data object:
@@ -161,7 +158,7 @@ classes:
       - type  # custom slot that specifies object type
       - alternative identifiers
       - part of
-#      - canary
+      #      - canary
 
       # MIXS slots
       - agrochem_addition
@@ -799,6 +796,16 @@ enums:
           - replaces Environmental Molecular Sciences Lab
 
 slots:
+  date created:
+    description: from database class
+  etl software version:
+    description: from database class
+  nmdc schema version:
+    description: from database class
+
+  notes:
+    description: from study class
+
   canary:
     description: a slot that can be added and removed as evidence that schema changes have propagated to other systems
   ess dive datasets:
@@ -1087,7 +1094,12 @@ slots:
   sample_collection_site:
     range: string
   identifier:
+    slot_group: biosample_identifiers
     range: string
+    todos:
+      - used in MongoDB as of 2022-09-09, which is still on schema 3.?
+      - we will remove this slot form the schema, but make sure to retain the content in MongoDB in a relevant, retained slot
+      - Mark will do the MongoDB migration
   sample_collection_year:
     range: integer
   sample_collection_month:

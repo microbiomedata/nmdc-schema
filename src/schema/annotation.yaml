@@ -4,6 +4,7 @@ title: Annotation Module for NMDC Schema
 description: >-
   This module in the schema is for representing annotations including functional annotations of proteins and other gene products,
   as well as controlled terms for describing things like metabolites
+default_range: string
 
 see_also:
   - https://github.com/microbiomedata/nmdc-metadata/issues/176
@@ -12,17 +13,30 @@ default_curi_maps:
   - obo_context
   - idot_context
 
+
 prefixes:
-  nmdc: https://microbiomedata/meta/
+  COG: https://unknown.to.linter.org/
+  EC: https://unknown.to.linter.org/
+  GO: http://purl.obolibrary.org/obo/GO_
+  KEGG_PATHWAY: http://identifiers.org/kegg.pathway/
+  KEGG.REACTION: http://identifiers.org/kegg.reaction/
+  MetaCyc: https://identifiers.org/metacyc.reaction/
+  MetaNetX: https://unknown.to.linter.org/
+  RHEA: http://identifiers.org/rhea/
+  RetroRules: https://unknown.to.linter.org/
+  SEED: http://identifiers.org/seed/
   biolink: https://w3id.org/biolink/vocab/
   linkml: https://w3id.org/linkml/
+  nmdc: https://w3id.org/nmdc/
+  #  KEGG_ORTHOLOGY: http://unknown.to.linter.org/
+  KEGG.ORTHOLOGY: http://identifiers.org/kegg.orthology/
 
 default_prefix: nmdc
 
 imports:
+  - core
   - linkml:types
   - prov
-  - core
   - workflow_execution_activity
 
 classes:
@@ -103,13 +117,13 @@ classes:
     description: >-
       A pathway is a sequence of steps/reactions carried out by an organism or community of organisms
     slot_usage:
-      has_part:
+      has part:
         range: reaction
         multivalued: true
         description: >-
           A pathway can be broken down to a series of reaction step
     id_prefixes:
-      - KEGG.PATHWAY
+      - KEGG_PATHWAY
       - COG
     exact_mappings:
       - biolink:Pathway
@@ -171,13 +185,13 @@ classes:
     description: >-
       A set of genes or gene products in which all members are orthologous
     id_prefixes:
-      - KEGG.ORTHOLOGY ## KO number
-      - EGGNOG
-      - PFAM
-      - TIGRFAM
-      - SUPFAM
       - CATH
+      - EGGNOG
+      - KEGG.ORTHOLOGY ## KO number
       - PANTHER.FAMILY
+      - PFAM
+      - SUPFAM
+      - TIGRFAM
     exact_mappings:
       - biolink:GeneFamily
 
@@ -197,7 +211,7 @@ classes:
       - has function
     slot_usage:
       has function: # was: id
-        pattern: "^(KEGG.PATHWAY:\\w{2,4}\\d{5}|KEGG.REACTION:R\\d+|RHEA:\\d{5}|MetaCyc:[A-Za-z0-9+_.%-:]+|EC:\\d{1,2}(\\.\\d{0,3}){0,3}|GO:\\d{7}|MetaNetX:(MNXR\\d+|EMPTY)|SEED:\\w+|KEGG\\.ORTHOLOGY:K\\d+|EGGNOG:\\w+|PFAM:PF\\d{5}|TIGRFAM:TIGR\\d+|SUPFAM:\\w+|CATH:[1-6]\\.[0-9]+\\.[0-9]+\\.[0-9]+|PANTHER.FAMILY:PTHR\\d{5}(\\:SF\\d{1,3})?)$"
+        pattern: "^(KEGG_PATHWAY:\\w{2,4}\\d{5}|KEGG.REACTION:R\\d+|RHEA:\\d{5}|MetaCyc:[A-Za-z0-9+_.%-:]+|EC:\\d{1,2}(\\.\\d{0,3}){0,3}|GO:\\d{7}|MetaNetX:(MNXR\\d+|EMPTY)|SEED:\\w+|KEGG\\.ORTHOLOGY:K\\d+|EGGNOG:\\w+|PFAM:PF\\d{5}|TIGRFAM:TIGR\\d+|SUPFAM:\\w+|CATH:[1-6]\\.[0-9]+\\.[0-9]+\\.[0-9]+|PANTHER.FAMILY:PTHR\\d{5}(\\:SF\\d{1,3})?)$"
         comments:
           - "Still missing patterns for COG and RetroRules."
           - "These patterns aren't tied to the listed prefixes. A discussion about that possibility had been started, including the question of whether these lists are intended to be open examples or closed"
@@ -215,6 +229,14 @@ classes:
       - biolink:GeneToGoTermAssociation
 
 slots:
+
+  has part: { }
+
+  chemical:
+    description: from reaction participant class
+  stoichiometry:
+    description: from reaction participant class
+
   subject:
     range: gene product
 

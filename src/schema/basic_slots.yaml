@@ -7,9 +7,10 @@ description: >-
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
-  nmdc: https://microbiomedata/meta/
-  linkml: https://w3id.org/linkml/
   dcterms: http://purl.org/dc/terms/
+  linkml: https://w3id.org/linkml/
+  nmdc: https://w3id.org/nmdc/
+  skos: http://www.w3.org/2004/02/skos/core#
     
 default_prefix: nmdc
 default_range: string
@@ -17,6 +18,7 @@ default_range: string
 default_curi_maps:
   - obo_context
   - idot_context
+
 
 imports:
   - linkml:types

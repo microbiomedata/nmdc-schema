@@ -11,7 +11,7 @@ prefixes:
 - prefix_prefix: linkml
   prefix_reference: https://w3id.org/linkml/
 - prefix_prefix: nmdc
-  prefix_reference: https://microbiomedata/meta/
+  prefix_reference: https://w3id.org/nmdc/
 default_prefix: nmdc
 default_range: string
 enums:

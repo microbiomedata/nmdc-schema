@@ -6,9 +6,9 @@ description: >-
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
-  nmdc: https://microbiomedata/meta/
-  prov: http://www.w3.org/ns/prov#
   linkml: https://w3id.org/linkml/
+  nmdc: https://w3id.org/nmdc/
+  prov: http://www.w3.org/ns/prov#
   
 default_prefix: nmdc
 default_range: string
@@ -17,9 +17,10 @@ default_curi_maps:
   - obo_context
   - idot_context
 
+
 imports:
-  - linkml:types
   - basic_slots
+  - linkml:types
 classes:
 
   activity:

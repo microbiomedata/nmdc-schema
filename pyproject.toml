@@ -43,23 +43,22 @@ nmdc-data = "nmdc_schema.nmdc_data:cli"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-
+#deepdiff = "^5.8.0"
 linkml = "*"
-pandoc = "*"
-pymongo = "^4.1.0"
-deepdiff = "^5.8.0"
-strsimpy = "^0.2.1"
-sqldf = "^0.4.2"
-pandasql = "^0.7.3"
+#pandasql = "^0.7.3"
+#pandoc = "*"
+#pymongo = "^4.1.0"
+#sqldf = "^0.4.2"
+#strsimpy = "^0.2.1"
 
 [tool.poetry.dev-dependencies]
 black = "^22.3.0"
-mkdocs-material = "^8.3.6"
-mkdocs-mermaid2-plugin = "^0.6.0"
-click-log = "^0.4.0"
 build = "*"
+click-log = "^0.4.0"
 jq = "*"
 mkdocs = "*"
+mkdocs-material = "^8.3.6"
+mkdocs-mermaid2-plugin = "^0.6.0"
 twine = "*"
 
 [build-system]

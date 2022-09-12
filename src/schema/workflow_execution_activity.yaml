@@ -2,12 +2,15 @@ id: https://microbiomedata/schema/workflow_execution_activity
 name: NMDC-Workflow-Exectution
 title: Workflow Exectution Activities module for NMDC Schema
 
+default_prefix: nmdc
+default_range: string
+
 default_curi_maps:
   - obo_context
   - idot_context
 
 prefixes:
-  nmdc: https://microbiomedata/meta/
+  nmdc: https://w3id.org/nmdc/
   linkml: https://w3id.org/linkml/
 
 imports:
@@ -68,7 +71,7 @@ classes:
   metagenome assembly:
     description: A workflow execution activity that converts sequencing reads into an assembled metagenome.
     comments:
-    - instances of this class may use a de novo assembly strategy in most or all cases relevant to NMDC
+      - instances of this class may use a de novo assembly strategy in most or all cases relevant to NMDC
     is_a: workflow execution activity
     in_subset:
       - workflow subset
@@ -255,6 +258,8 @@ classes:
 slots:
   ## Workflow specific slots
   metagenome assembly parameter: { }
+
+  has peptide quantifications: { }
 
   asm_score:
     is_a: metagenome assembly parameter
