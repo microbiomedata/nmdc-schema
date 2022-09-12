@@ -221,7 +221,8 @@ SCHEMA_TEST_EXAMPLES := \
 	nmdc_example_database \
 	study_test \
 	functional_annotation_set \
-	study_credit_test
+	study_credit_test \
+	samp_prep_db
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
 	biosample_invalid_range \
