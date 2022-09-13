@@ -14,7 +14,6 @@ prefixes:
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
   prov: http://www.w3.org/ns/prov#
-#  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
 
 default_prefix: nmdc
 default_range: string
@@ -192,13 +191,6 @@ slots:
     title: sampling method
 
     range: SamplingMethodEnum
-  has_unit:
-    name: has_unit
-    title: has_unit
-
-  has_value:
-    name: has_value
-    title: has value
 
   reaction_aided_by:
     name: reaction_aided_by

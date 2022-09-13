@@ -22,7 +22,7 @@
     ],
     "input_contig_num": 169782,
     "too_short_contig_num": 159810,
-    "lowDepth_contig_num": 0,
+    "low_depth_contig_num": 0,
     "unbinned_contig_num": 9483,
     "binned_contig_num": 489,
     "mags_list": [
@@ -36,7 +36,7 @@
         "num_16s": 0,
         "num_5s": 1,
         "num_23s": 0,
-        "num_tRNA": 1
+        "num_t_rna": 1
       },
       {
         "bin_name": "bins.2",
@@ -48,7 +48,7 @@
         "num_16s": 0,
         "num_5s": 1,
         "num_23s": 0,
-        "num_tRNA": 26
+        "num_t_rna": 26
       },
       {
         "bin_name": "bins.3",
@@ -60,7 +60,7 @@
         "num_16s": 0,
         "num_5s": 0,
         "num_23s": 0,
-        "num_tRNA": 1
+        "num_t_rna": 1
       }
     ]
   },
@@ -86,7 +86,7 @@
     ],
     "input_contig_num": 78376,
     "too_short_contig_num": 75364,
-    "lowDepth_contig_num": 0,
+    "low_depth_contig_num": 0,
     "unbinned_contig_num": 2806,
     "binned_contig_num": 206,
     "mags_list": [
@@ -100,7 +100,7 @@
         "num_16s": 0,
         "num_5s": 0,
         "num_23s": 0,
-        "num_tRNA": 4
+        "num_t_rna": 4
       },
       {
         "bin_name": "bins.2",
@@ -112,7 +112,7 @@
         "num_16s": 0,
         "num_5s": 0,
         "num_23s": 0,
-        "num_tRNA": 5
+        "num_t_rna": 5
       },
       {
         "bin_name": "bins.3",
@@ -124,7 +124,7 @@
         "num_16s": 0,
         "num_5s": 0,
         "num_23s": 0,
-        "num_tRNA": 7
+        "num_t_rna": 7
       }
     ]
   }
