@@ -2010,8 +2010,8 @@ slots:
     slot_uri: mixs:0000122
     multivalued: false
     range: QuantityValue
-  core field:
-    name: core field
+  core_field:
+    name: core_field
     description: basic fields
     from_schema: http://w3id.org/mixs/terms
     see_also:
@@ -2368,8 +2368,8 @@ slots:
     slot_uri: mixs:0000094
     multivalued: false
     range: QuantityValue
-  environment field:
-    name: environment field
+  environment_field:
+    name: environment_field
     description: field describing environmental aspect of a sample
     from_schema: http://w3id.org/mixs/terms
     see_also:
@@ -3144,8 +3144,8 @@ slots:
     slot_uri: mixs:0000028
     multivalued: false
     range: TextValue
-  nucleic acid sequence source field:
-    name: nucleic acid sequence source field
+  nucleic_acid_sequence_source_field:
+    name: nucleic_acid_sequence_source_field
     from_schema: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
@@ -3196,7 +3196,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     slot_uri: mixs:0000258
     multivalued: false
     range: QuantityValue
@@ -3220,7 +3220,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     slot_uri: mixs:0000259
     multivalued: false
     range: QuantityValue
@@ -3794,7 +3794,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration};{duration};{duration}'
     slot_uri: mixs:0000457
     multivalued: false
@@ -3850,8 +3850,8 @@ slots:
     slot_uri: mixs:0000052
     multivalued: false
     range: TextValue
-  sequencing field:
-    name: sequencing field
+  sequencing_field:
+    name: sequencing_field
     from_schema: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
@@ -5173,8 +5173,8 @@ slots:
     slot_uri: mixs:0000008
     multivalued: false
     range: ControlledTermValue
-  investigation field:
-    name: investigation field
+  investigation_field:
+    name: investigation_field
     description: field describing aspect of the investigation/study to which the sample
       belongs
     from_schema: http://w3id.org/mixs/terms
@@ -6301,7 +6301,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '[conductive|radiant]'
     slot_uri: mixs:0000812
     multivalued: false
@@ -6725,7 +6725,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{text};{text}'
     slot_uri: mixs:0000872
     multivalued: true
@@ -7000,7 +7000,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{rank name}:{text}'
     slot_uri: mixs:0001318
     multivalued: true
@@ -7049,7 +7049,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{text}'
     slot_uri: mixs:0001298
     multivalued: true
@@ -7832,7 +7832,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000339
     multivalued: false
@@ -8074,7 +8074,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0000571
     multivalued: true
@@ -8307,7 +8307,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{text};FWD:{dna};REV:{dna};initial denaturation:degrees_minutes;denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
       elongation:degrees_minutes; total cycles'
     slot_uri: mixs:0000099
@@ -9188,7 +9188,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     slot_uri: mixs:0000819
     multivalued: false
     range: string
@@ -9236,7 +9236,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000316
     multivalued: false
@@ -9732,7 +9732,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{text}'
     slot_uri: mixs:0000233
     multivalued: false
@@ -9943,7 +9943,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     slot_uri: mixs:0000235
     multivalued: false
     range: integer
@@ -10448,7 +10448,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: nucleic acid sequence source field
+    is_a: nucleic_acid_sequence_source_field
     string_serialization: '{termLabel} {[termID]}|{text}'
     slot_uri: mixs:0000002
     multivalued: false
@@ -10469,7 +10469,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: nucleic acid sequence source field
+    is_a: nucleic_acid_sequence_source_field
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
     slot_uri: mixs:0001225
     multivalued: false
@@ -10521,7 +10521,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     slot_uri: mixs:0001015
     multivalued: false
     range: samp_collect_point_enum
@@ -10679,7 +10679,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: investigation field
+    is_a: investigation_field
     string_serialization: '{text}'
     slot_uri: mixs:0001107
     multivalued: false
@@ -11347,7 +11347,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '[presence of mold visible|no presence of mold visible]'
     slot_uri: mixs:0000834
     multivalued: false
@@ -11692,7 +11692,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     slot_uri: mixs:0001082
     multivalued: false
     range: soil_horizon_enum
@@ -11716,7 +11716,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     slot_uri: mixs:0000335
     multivalued: false
     range: QuantityValue
@@ -11737,7 +11737,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000336
     multivalued: false
@@ -12914,7 +12914,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000338
     multivalued: false
@@ -13208,7 +13208,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     slot_uri: mixs:0000397
     multivalued: false
     range: QuantityValue
@@ -13693,7 +13693,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000323
     multivalued: false
@@ -13800,7 +13800,7 @@ slots:
   water_feat_type:
     name: water_feat_type
     aliases:
-      - water feature type
+      - water feature_type
     annotations:
       expected_value:
         tag: expected_value
@@ -13840,7 +13840,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     slot_uri: mixs:0000453
     multivalued: false
     range: QuantityValue

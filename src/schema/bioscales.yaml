@@ -76,10 +76,10 @@ slots:
     multivalued: false
     range: QuantityValue
 
-  ammonium nitrogen:
-    name: ammonium nitrogen
+  ammonium_nitrogen:
+    name: ammonium_nitrogen
     aliases:
-      - ammonium nitrogen
+      - ammonium_nitrogen
       - NH4-N
     annotations:
       expected_value:
@@ -100,10 +100,10 @@ slots:
     multivalued: false
     range: QuantityValue
 
-  nitrate nitrogen:
-    name: nitrate nitrogen
+  nitrate_nitrogen:
+    name: nitrate_nitrogen
     aliases:
-      - nitrate nitrogen
+      - nitrate_nitrogen
       - NO3-N
     notes:
       - often below some specified limit of detection
@@ -118,7 +118,7 @@ slots:
         tag: occurrence
         value: '1'
     description: Concentration of nitrate nitrogen in the sample
-    title: nitrate nitrogen
+    title: nitrate_nitrogen
     examples:
       - value: 0.29 mg/kg
 #    source: https://www.ornl.gov/content/bio-scales-0
@@ -126,10 +126,10 @@ slots:
     multivalued: false
     range: QuantityValue
 
-  nitrite nitrogen:
-    name: nitrite nitrogen
+  nitrite_nitrogen:
+    name: nitrite_nitrogen
     aliases:
-      - nitrite nitrogen
+      - nitrite_nitrogen
       - NO2-N
     annotations:
       expected_value:
@@ -142,7 +142,7 @@ slots:
         tag: occurrence
         value: '1'
     description: Concentration of nitrite nitrogen in the sample
-    title: nitrite nitrogen
+    title: nitrite_nitrogen
     examples:
       - value: 1.2 mg/kg
 #    source: https://www.ornl.gov/content/bio-scales-0

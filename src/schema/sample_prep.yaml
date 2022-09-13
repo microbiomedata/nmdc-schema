@@ -194,7 +194,7 @@ slots:
     range: SamplingMethodEnum
   has_unit:
     name: has_unit
-    title: has unit
+    title: has_unit
 
   has_value:
     name: has_value

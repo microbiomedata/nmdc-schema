@@ -137,8 +137,8 @@ slots:
     slot_group: JGI-Metagenomics
     required: false
     recommended: true
-  dna_container_ID:
-    name: dna_container_ID
+  dna_container_id:
+    name: dna_container_id
     title: DNA container label
     comments:
     - Must be unique across all tubes and plates, and <20 characters. All samples
@@ -203,8 +203,8 @@ slots:
     slot_group: JGI-Metagenomics
     required: false
     recommended: true
-  dna_samp_ID:
-    name: dna_samp_ID
+  dna_samp_id:
+    name: dna_samp_id
     title: DNA sample ID
     todos:
     - Removed identifier = TRUE from dna_samp_ID in JGI_sample_slots, as a class can't
@@ -260,8 +260,8 @@ slots:
     slot_group: JGI-Metagenomics
     required: false
     recommended: true
-  dna_seq_project_PI:
-    name: dna_seq_project_PI
+  dna_seq_project_pi:
+    name: dna_seq_project_pi
     title: DNA seq project PI
     comments:
     - Do not edit these values. A template will be provided by NMDC in which these

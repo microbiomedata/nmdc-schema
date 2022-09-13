@@ -105,12 +105,12 @@ slots:
     string_serialization: '{termLabel} {[termID]}; {timestamp}'
     slot_group: MIxS Inspired
     recommended: true
-  micro_biomass_C_meth:
-    name: micro_biomass_C_meth
+  micro_biomass_c_meth:
+    name: micro_biomass_c_meth
     description: Reference or method used in determining microbial biomass
     title: microbial biomass carbon method
     comments:
-    - required if "microbial_biomass_C" is provided
+    - required if "microbial_biomass_c" is provided
     from_schema: https://example.com/nmdc_dh
     see_also:
     - MIxS:micro_biomass_meth
@@ -118,20 +118,20 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_group: MIxS Inspired
     recommended: true
-  micro_biomass_N_meth:
-    name: micro_biomass_N_meth
+  micro_biomass_n_meth:
+    name: micro_biomass_n_meth
     description: Reference or method used in determining microbial biomass nitrogen
     title: microbial biomass nitrogen method
     comments:
-    - required if "microbial_biomass_N" is provided
+    - required if "microbial_biomass_n" is provided
     from_schema: https://example.com/nmdc_dh
     see_also:
     - MIxS:micro_biomass_meth
     rank: 13
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_group: MIxS Inspired
-  microbial_biomass_C:
-    name: microbial_biomass_C
+  microbial_biomass_c:
+    name: microbial_biomass_c
     description: The part of the organic matter in the soil that constitutes living
       microorganisms smaller than 5-10 micrometer. If you keep this, you would need
       to have correction factors used for conversion to the final units
@@ -142,8 +142,8 @@ slots:
     rank: 10
     string_serialization: '{float} {unit}'
     slot_group: MIxS Inspired
-  microbial_biomass_N:
-    name: microbial_biomass_N
+  microbial_biomass_n:
+    name: microbial_biomass_n
     description: The part of the organic matter in the soil that constitutes living
       microorganisms smaller than 5-10 micrometer. If you keep this, you would need
       to have correction factors used for conversion to the final units

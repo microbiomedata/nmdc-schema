@@ -164,8 +164,8 @@ slots:
     slot_group: JGI-Metatranscriptomics
     required: false
     recommended: true
-  rna_container_ID:
-    name: rna_container_ID
+  rna_container_id:
+    name: rna_container_id
     title: RNA container label
     comments:
     - Must be unique across all tubes and plates, and <20 characters. All samples
@@ -217,8 +217,8 @@ slots:
     slot_group: JGI-Metatranscriptomics
     required: false
     recommended: true
-  rna_samp_ID:
-    name: rna_samp_ID
+  rna_samp_id:
+    name: rna_samp_id
     title: RNA sample ID
     comments:
     - Do not edit these values. A template will be provided by NMDC in which these
@@ -272,8 +272,8 @@ slots:
     slot_group: JGI-Metatranscriptomics
     required: false
     recommended: true
-  rna_seq_project_PI:
-    name: rna_seq_project_PI
+  rna_seq_project_pi:
+    name: rna_seq_project_pi
     title: RNA seq project PI
     comments:
     - Do not edit these values. A template will be provided by NMDC in which these
