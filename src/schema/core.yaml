@@ -21,7 +21,7 @@ prefixes:
   schema: http://schema.org/
   sio: http://semanticscience.org/resource/SIO_
   skos: http://www.w3.org/2004/02/skos/core#
-  wgs: http://www.w3.org/2003/01/geo/wgs84_pos
+  wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
   #  KEGG_COMPOUND: http://unknown.to.linter.org/
   KEGG.COMPOUND: http://identifiers.org/kegg.compound/
 
@@ -496,7 +496,7 @@ slots:
     range: decimal degree
     description: >-
       latitude
-    slot_uri: wgs:lat
+    slot_uri: wgs84:lat
     mappings:
       - schema:latitude
 
@@ -505,7 +505,7 @@ slots:
     range: decimal degree
     description: >-
       longitude
-    slot_uri: wgs:long
+    slot_uri: wgs84:long
     mappings:
       - schema:longitude
 

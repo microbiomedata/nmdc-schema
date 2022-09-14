@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-09-12T13:29:44\n    Schema: NMDC\n    metamodel version: 1.7.0\n    model version: 4.0.0\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC).\nThis schema is organized into distinct modules:\n\n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-09-14T10:10:18\n    Schema: NMDC\n    metamodel version: 1.7.0\n    model version: 4.0.0\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC).\nThis schema is organized into distinct modules:\n\n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "CAS": "http://identifiers.org/cas/",
       "CATH": "http://identifiers.org/cath/",
@@ -23,6 +23,7 @@
       },
       "GOLD": "http://identifiers.org/gold/",
       "HMDB": "http://identifiers.org/hmdb/",
+      "IMG.TAXON": "http://identifiers.org/img.taxon/",
       "ISA": "https://unknown.to.linter.org/",
       "KEGG.COMPOUND": "http://identifiers.org/kegg.compound/",
       "KEGG.ORTHOLOGY": "http://identifiers.org/kegg.orthology/",
@@ -68,10 +69,6 @@
       "dcterms": "http://purl.org/dc/terms/",
       "gtpo": "https://unknown.to.linter.org/",
       "igsn": "https://app.geosamples.org/sample/igsn/",
-      "img.taxon": {
-         "@id": "http://img.jgi.doe.gov/cgi-bin/w/main.cgi?section=TaxonDetail&taxon_oid=",
-         "@prefix": true
-      },
       "insdc.srs": "https://unknown.to.linter.org/",
       "linkml": "https://w3id.org/linkml/",
       "mgnify": "https://unknown.to.linter.org/",
@@ -87,10 +84,7 @@
          "@prefix": true
       },
       "skos": "http://www.w3.org/2004/02/skos/core#",
-      "wgs": {
-         "@id": "http://www.w3.org/2003/01/geo/wgs84_pos",
-         "@prefix": true
-      },
+      "wgs84": "http://www.w3.org/2003/01/geo/wgs84_pos#",
       "xsd": "http://www.w3.org/2001/XMLSchema#",
       "@vocab": "https://w3id.org/nmdc/",
       "abs_air_humidity": {
@@ -101,6 +95,15 @@
          "@type": "@id"
       },
       "activity_set": {
+         "@type": "@id"
+      },
+      "activity_speed": {
+         "@type": "@id"
+      },
+      "activity_temperature": {
+         "@type": "@id"
+      },
+      "activity_time": {
          "@type": "@id"
       },
       "add_recov_method": {
@@ -316,6 +319,9 @@
          "@id": "mixs:0000174"
       },
       "biosample_set": {
+         "@type": "@id"
+      },
+      "biosample_input": {
          "@type": "@id"
       },
       "biotic_regm": {
@@ -625,7 +631,7 @@
       "dissolved_in": {
          "@type": "@id"
       },
-      "dissolving_process_set": {
+      "dissolving_activity_set": {
          "@type": "@id"
       },
       "dna_cont_type": {
@@ -1227,7 +1233,7 @@
       },
       "latitude": {
          "@type": "xsd:decimal",
-         "@id": "wgs:lat"
+         "@id": "wgs84:lat"
       },
       "lbc_thirty": {
          "@type": "@id"
@@ -1273,7 +1279,7 @@
       },
       "longitude": {
          "@type": "xsd:decimal",
-         "@id": "wgs:long"
+         "@id": "wgs84:long"
       },
       "lowDepth_contig_num": {
          "@type": "xsd:integer"
@@ -1324,7 +1330,7 @@
       "material_sample_set": {
          "@type": "@id"
       },
-      "material_sampling_process_set": {
+      "material_sampling_activity_set": {
          "@type": "@id"
       },
       "max_occup": {
@@ -1642,15 +1648,6 @@
          "@id": "mixs:0000349"
       },
       "principal_investigator": {
-         "@type": "@id"
-      },
-      "process_speed": {
-         "@type": "@id"
-      },
-      "process_temperature": {
-         "@type": "@id"
-      },
-      "process_time": {
          "@type": "@id"
       },
       "processing_institution": {
@@ -2607,10 +2604,10 @@
       "CreditAssociation": {
          "@id": "prov:Association"
       },
-      "DissolvingProcess": {
+      "DissolvingActivity": {
          "@id": "CHMO:0002773"
       },
-      "MaterialSamplingProcess": {
+      "MaterialSamplingActivity": {
          "@id": "OBI:0000744"
       }
    }

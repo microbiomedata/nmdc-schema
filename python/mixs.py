@@ -1,5 +1,5 @@
 # Auto generated from mixs.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-09-12T13:30:15
+# Generation date: 2022-09-14T10:10:52
 # Schema: mixs-schema
 #
 # id: https://microbiomedata/schema/mixs
@@ -54,7 +54,7 @@ RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
 SIO = CurieNamespace('sio', 'http://semanticscience.org/resource/SIO_')
 SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
-WGS = CurieNamespace('wgs', 'http://www.w3.org/2003/01/geo/wgs84_pos')
+WGS84 = CurieNamespace('wgs84', 'http://www.w3.org/2003/01/geo/wgs84_pos#')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
 DEFAULT_ = NMDC
 
@@ -4362,10 +4362,10 @@ slots.has_maximum_numeric_value = Slot(uri=NMDC.has_maximum_numeric_value, name=
 slots.has_boolean_value = Slot(uri=NMDC.has_boolean_value, name="has boolean value", curie=NMDC.curie('has_boolean_value'),
                    model_uri=NMDC.has_boolean_value, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.latitude = Slot(uri=WGS.lat, name="latitude", curie=WGS.curie('lat'),
+slots.latitude = Slot(uri=WGS84.lat, name="latitude", curie=WGS84.curie('lat'),
                    model_uri=NMDC.latitude, domain=GeolocationValue, range=Optional[float], mappings = [SCHEMA.latitude])
 
-slots.longitude = Slot(uri=WGS.long, name="longitude", curie=WGS.curie('long'),
+slots.longitude = Slot(uri=WGS84.long, name="longitude", curie=WGS84.curie('long'),
                    model_uri=NMDC.longitude, domain=GeolocationValue, range=Optional[float], mappings = [SCHEMA.longitude])
 
 slots.term = Slot(uri=RDF.type, name="term", curie=RDF.curie('type'),

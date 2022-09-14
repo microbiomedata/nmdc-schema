@@ -1,7 +1,7 @@
 id: https://microbiomedata/schema/sample_prep
 name: sample_prep
 title: NMDC sample prep schema
-description: Material and process classes for describing sample preparation, in support of EMSL, Monet, MANA, etc.
+description: Material and activity classes for describing sample preparation, in support of EMSL, Monet, MANA, etc.
 license: https://creativecommons.org/publicdomain/zero/1.0/
 see_also:
   - https://gitlab.pnnl.gov/MoNET/analytical-processes/-/blob/main/organicmatterextraction.toml
@@ -27,6 +27,7 @@ imports:
   - basic_slots
   - core
   - linkml:types
+  - nmdc
 
 enums:
   ContainerTypeEnum:
@@ -67,12 +68,20 @@ enums:
         title: Deionized water
         broad_mappings:
           - CHEBI:15377
+      methanol:
+        text: methanol
+        title: Methanol
+        meaning: CHEBI:17790
+      chloroform:
+        text: chloroform
+        title: Chloroform
+        meaning: CHEBI:35255
 slots:
-  dissolving_process_set:
-    name: dissolving_process_set
-    title: dissolving process set
+  dissolving_activity_set:
+    name: dissolving_activity_set
+    title: dissolving activity set
     multivalued: true
-    range: DissolvingProcess
+    range: DissolvingActivity
     inlined_as_list: true
   material_sample_set:
     name: material_sample_set
@@ -81,12 +90,12 @@ slots:
     multivalued: true
     range: MaterialSample
     inlined_as_list: true
-  material_sampling_process_set:
-    name: material_sampling_process_set
-    title: material sampling process set
+  material_sampling_activity_set:
+    name: material_sampling_activity_set
+    title: material sampling activity set
 
     multivalued: true
-    range: MaterialSamplingProcess
+    range: MaterialSamplingActivity
     inlined_as_list: true
   reaction_activity_set:
     name: reaction_activity_set
@@ -125,9 +134,16 @@ slots:
       - container
     range: MaterialContainer
     inlined: true
+
+  biosample_input:
+    name: biosample_input
+    title: biosample input
+    range: biosample
+
   material_input:
     name: material_input
     title: material input
+
 
     range: MaterialSample
   material_output:
@@ -142,24 +158,24 @@ slots:
     aliases:
       - shaker type
     range: DeviceTypeEnum
-  process_speed:
-    name: process_speed
-    title: process speed
+  activity_speed:
+    name: activity_speed
+    title: activity speed
 
     aliases:
       - shake_speed
     range: QuantityValue
     inlined: true
-  process_temperature:
-    name: process_temperature
+  activity_temperature:
+    name: activity_temperature
     todos:
       - constrain units
 
     range: QuantityValue
     inlined: true
-  process_time:
-    name: process_time
-    title: process time
+  activity_time:
+    name: activity_time
+    title: activity time
 
     aliases:
       - shake_time
@@ -207,9 +223,9 @@ slots:
     name: reaction_time
 
 classes:
-  DissolvingProcess:
-    name: DissolvingProcess
-    title: Dissolving process
+  DissolvingActivity:
+    name: DissolvingActivity
+    title: Dissolving activity
 
     aliases:
       - dissolution-activity
@@ -238,9 +254,9 @@ classes:
 
     slots:
       - device_type
-      - process_speed
-      - process_temperature
-      - process_time
+      - activity_speed
+      - activity_temperature
+      - activity_time
   MaterialContainer:
     name: MaterialContainer
     title: Material container
@@ -255,16 +271,16 @@ classes:
     aliases:
       - Material entity
     is_a: NamedThing
-  MaterialSamplingProcess:
-    name: MaterialSamplingProcess
-    title: Material sampling process
+  MaterialSamplingActivity:
+    name: MaterialSamplingActivity
+    title: Material sampling activity
 
     aliases:
       - weighing-activity
     slots:
       - amount_collected
       - collected_into
-      - material_input
+      - biosample_input
       - material_output
       - sampling_method
     slot_usage:
@@ -278,13 +294,12 @@ classes:
           - weighing-activity.contanier
         range: MaterialContainer
         inlined: true
-      material_input:
-        name: material_input
+      biosample_input:
+        name: biosample_input
         examples:
           - value: soil:1
         aliases:
           - weighing-activity.source_material
-        range: MaterialSample
       material_output:
         name: material_output
         examples:
@@ -319,6 +334,6 @@ classes:
         name: reaction_time
         todos:
           - constrain units
-          - align with process_time
-        range: QuantityValue
+          - align with activity_time
+        range: quantity value
         inlined: true

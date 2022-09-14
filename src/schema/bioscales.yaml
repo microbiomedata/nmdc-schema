@@ -7,7 +7,7 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
   mixs: https://w3id.org/mixs/
-#  MS: http://purl.obolibrary.org/obo/MS_
+  #  MS: http://purl.obolibrary.org/obo/MS_
   dcterms: http://purl.org/dc/terms/
   igsnvoc: https://igsn.org/voc/v1/
   linkml: https://w3id.org/linkml/
@@ -17,7 +17,7 @@ prefixes:
   schema: http://schema.org/
   sio: http://semanticscience.org/resource/SIO_
   skos: http://www.w3.org/2004/02/skos/core#
-  wgs: http://www.w3.org/2003/01/geo/wgs84_pos
+  wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
 
 default_prefix: nmdc
 default_range: string
@@ -49,7 +49,7 @@ slots:
     title: zinc
     examples:
       - value: 2.5 mg/kg
-#    source: https://www.ornl.gov/content/bio-scales-0
+    #    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
     range: QuantityValue
@@ -71,7 +71,7 @@ slots:
     title: manganese
     examples:
       - value: 24.7 mg/kg
-#    source: https://www.ornl.gov/content/bio-scales-0
+    #    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
     range: QuantityValue
@@ -95,7 +95,7 @@ slots:
     title: ammonium nitrogen
     examples:
       - value: 2.3 mg/kg
-#    source: https://www.ornl.gov/content/bio-scales-0
+    #    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
     range: QuantityValue
@@ -121,7 +121,7 @@ slots:
     title: nitrate_nitrogen
     examples:
       - value: 0.29 mg/kg
-#    source: https://www.ornl.gov/content/bio-scales-0
+    #    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
     range: QuantityValue
@@ -145,7 +145,7 @@ slots:
     title: nitrite_nitrogen
     examples:
       - value: 1.2 mg/kg
-#    source: https://www.ornl.gov/content/bio-scales-0
+    #    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
     range: QuantityValue
@@ -173,7 +173,7 @@ slots:
     title: lime buffer capacity (at 30 minutes)
     examples:
       - value: 543 mg/kg
-#    source: https://www.ornl.gov/content/bio-scales-0
+    #    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
     range: QuantityValue
@@ -201,7 +201,7 @@ slots:
     title: lime buffer capacity (after 5 day incubation)
     examples:
       - value: 1575 mg/kg
-#    source: https://www.ornl.gov/content/bio-scales-0
+    #    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
     range: QuantityValue
