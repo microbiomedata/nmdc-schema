@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-09-14T10:10:18\n    Schema: NMDC\n    metamodel version: 1.7.0\n    model version: 4.0.0\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC).\nThis schema is organized into distinct modules:\n\n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-09-14T16:54:32\n    Schema: NMDC\n    metamodel version: 1.7.0\n    model version: 4.0.0\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC).\nThis schema is organized into distinct modules:\n\n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "CAS": "http://identifiers.org/cas/",
       "CATH": "http://identifiers.org/cath/",
@@ -318,10 +318,10 @@
          "@type": "@id",
          "@id": "mixs:0000174"
       },
-      "biosample_set": {
+      "biosample_input": {
          "@type": "@id"
       },
-      "biosample_input": {
+      "biosample_set": {
          "@type": "@id"
       },
       "biotic_regm": {
@@ -488,10 +488,10 @@
          "@type": "@id",
          "@id": "mixs:0000318"
       },
-      "ctg_L50": {
+      "ctg_l50": {
          "@type": "xsd:float"
       },
-      "ctg_L90": {
+      "ctg_l90": {
          "@type": "xsd:float"
       },
       "ctg_logsum": {
@@ -500,10 +500,10 @@
       "ctg_max": {
          "@type": "xsd:float"
       },
-      "ctg_N50": {
+      "ctg_n50": {
          "@type": "xsd:float"
       },
-      "ctg_N90": {
+      "ctg_n90": {
          "@type": "xsd:float"
       },
       "ctg_powsum": {
@@ -926,16 +926,16 @@
          "@type": "@id",
          "@id": "mixs:0000137"
       },
-      "GOLD_analysis_project_identifiers": {
+      "gold_analysis_project_identifiers": {
          "@type": "@id"
       },
-      "GOLD_sample_identifiers": {
+      "gold_sample_identifiers": {
          "@type": "@id"
       },
-      "GOLD_sequencing_project_identifiers": {
+      "gold_sequencing_project_identifiers": {
          "@type": "@id"
       },
-      "GOLD_study_identifiers": {
+      "gold_study_identifiers": {
          "@type": "@id"
       },
       "gravidity": {
@@ -1186,22 +1186,19 @@
       "input_read_count": {
          "@type": "xsd:float"
       },
-      "INSDC_analysis_identifiers": {
+      "insdc_analysis_identifiers": {
          "@type": "@id"
       },
-      "INSDC_bioproject_identifiers": {
+      "insdc_biosample_identifiers": {
          "@type": "@id"
       },
-      "INSDC_biosample_identifiers": {
+      "insdc_experiment_identifiers": {
          "@type": "@id"
       },
-      "INSDC_experiment_identifiers": {
+      "insdc_secondary_sample_identifiers": {
          "@type": "@id"
       },
-      "INSDC_secondary_sample_identifiers": {
-         "@type": "@id"
-      },
-      "INSDC_SRA_ENA_study_identifiers": {
+      "insdc_sra_ena_study_identifiers": {
          "@type": "@id"
       },
       "inside_lux": {
@@ -1281,7 +1278,7 @@
          "@type": "xsd:decimal",
          "@id": "wgs84:long"
       },
-      "lowDepth_contig_num": {
+      "low_depth_contig_num": {
          "@type": "xsd:integer"
       },
       "completeness": {
@@ -1302,7 +1299,7 @@
       "num_5s": {
          "@type": "xsd:integer"
       },
-      "num_tRNA": {
+      "num_t_rna": {
          "@type": "xsd:integer"
       },
       "number_of_contig": {
@@ -1372,10 +1369,7 @@
          "@type": "@id",
          "@id": "mixs:0000101"
       },
-      "MGnify_analysis_identifiers": {
-         "@type": "@id"
-      },
-      "MGnify_project_identifiers": {
+      "mgnify_analysis_identifiers": {
          "@type": "@id"
       },
       "micro_biomass_meth": {
@@ -1695,7 +1689,7 @@
       "read_based_taxonomy_analysis_activity_set": {
          "@type": "@id"
       },
-      "read_QC_analysis_activity_set": {
+      "read_qc_analysis_activity_set": {
          "@type": "@id"
       },
       "redox_potential": {
@@ -1963,9 +1957,6 @@
          "@type": "@id",
          "@id": "mixs:0000296"
       },
-      "sample_identifiers": {
-         "@type": "@id"
-      },
       "sample_collection_day": {
          "@type": "xsd:integer"
       },
@@ -1980,6 +1971,9 @@
       },
       "sample_collection_year": {
          "@type": "xsd:integer"
+      },
+      "sample_identifiers": {
+         "@type": "@id"
       },
       "sample_type": {
          "@context": {
@@ -2004,13 +1998,13 @@
       "scaf_bp": {
          "@type": "xsd:float"
       },
-      "scaf_L50": {
+      "scaf_l50": {
          "@type": "xsd:float"
       },
-      "scaf_L90": {
+      "scaf_l90": {
          "@type": "xsd:float"
       },
-      "scaf_l_gt50K": {
+      "scaf_l_gt50k": {
          "@type": "xsd:float"
       },
       "scaf_logsum": {
@@ -2019,16 +2013,16 @@
       "scaf_max": {
          "@type": "xsd:float"
       },
-      "scaf_N50": {
+      "scaf_n50": {
          "@type": "xsd:float"
       },
-      "scaf_N90": {
+      "scaf_n90": {
          "@type": "xsd:float"
       },
-      "scaf_n_gt50K": {
+      "scaf_n_gt50k": {
          "@type": "xsd:float"
       },
-      "scaf_pct_gt50K": {
+      "scaf_pct_gt50k": {
          "@type": "xsd:float"
       },
       "scaf_powsum": {

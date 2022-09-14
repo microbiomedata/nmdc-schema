@@ -1,5 +1,5 @@
 # Auto generated from emsl.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-09-14T10:10:43
+# Generation date: 2022-09-14T16:54:54
 # Schema: emsl
 #
 # id: https://microbiomedata/schema/emsl
@@ -58,11 +58,11 @@ class SampleTypeEnum(EnumDefinitionImpl):
 class slots:
     pass
 
-slots.EMSL_store_temp = Slot(uri=NMDC.EMSL_store_temp, name="EMSL_store_temp", curie=NMDC.curie('EMSL_store_temp'),
-                   model_uri=NMDC.EMSL_store_temp, domain=None, range=Optional[str])
+slots.emsl_store_temp = Slot(uri=NMDC.emsl_store_temp, name="emsl_store_temp", curie=NMDC.curie('emsl_store_temp'),
+                   model_uri=NMDC.emsl_store_temp, domain=None, range=Optional[str])
 
-slots.project_ID = Slot(uri=NMDC.project_ID, name="project_ID", curie=NMDC.curie('project_ID'),
-                   model_uri=NMDC.project_ID, domain=None, range=Optional[str])
+slots.project_id = Slot(uri=NMDC.project_id, name="project_id", curie=NMDC.curie('project_id'),
+                   model_uri=NMDC.project_id, domain=None, range=Optional[str])
 
 slots.replicate_number = Slot(uri=NMDC.replicate_number, name="replicate_number", curie=NMDC.curie('replicate_number'),
                    model_uri=NMDC.replicate_number, domain=None, range=Optional[str])

@@ -500,18 +500,13 @@
     }
   },
   "slots": {
-    "date created": {
-      "name": "date created",
+    "date_created": {
+      "name": "date_created",
       "description": "from database class",
       "from_schema": "https://microbiomedata/schema"
     },
-    "etl software version": {
-      "name": "etl software version",
-      "description": "from database class",
-      "from_schema": "https://microbiomedata/schema"
-    },
-    "nmdc schema version": {
-      "name": "nmdc schema version",
+    "etl_software_version": {
+      "name": "etl_software_version",
       "description": "from database class",
       "from_schema": "https://microbiomedata/schema"
     },
@@ -525,14 +520,14 @@
       "description": "a slot that can be added and removed as evidence that schema changes have propagated to other systems",
       "from_schema": "https://microbiomedata/schema"
     },
-    "ess dive datasets": {
-      "name": "ess dive datasets",
+    "ess_dive_datasets": {
+      "name": "ess_dive_datasets",
       "description": "List of ESS-DIVE dataset DOIs",
       "from_schema": "https://microbiomedata/schema",
       "multivalued": true
     },
-    "has credit associations": {
-      "name": "has credit associations",
+    "has_credit_associations": {
+      "name": "has_credit_associations",
       "annotations": {
         "display_hint": {
           "tag": "display_hint",
@@ -541,45 +536,45 @@
       },
       "description": "This slot links a study to a credit association.  The credit association will be linked to a person value and to a CRediT Contributor Roles term. Overall semantics: person should get credit X for their participation in the study",
       "from_schema": "https://microbiomedata/schema",
-      "domain": "study",
+      "domain": "Study",
       "slot_uri": "prov:qualifiedAssociation",
       "multivalued": true,
-      "range": "credit association",
+      "range": "CreditAssociation",
       "inlined_as_list": true
     },
-    "study image": {
-      "name": "study image",
+    "study_image": {
+      "name": "study_image",
       "description": "Links a study to one or more images.",
       "from_schema": "https://microbiomedata/schema",
-      "domain": "study",
+      "domain": "Study",
       "multivalued": true,
-      "range": "image value",
+      "range": "ImageValue",
       "inlined": true
     },
-    "relevant protocols": {
-      "name": "relevant protocols",
+    "relevant_protocols": {
+      "name": "relevant_protocols",
       "from_schema": "https://microbiomedata/schema",
       "multivalued": true,
       "range": "string"
     },
-    "funding sources": {
-      "name": "funding sources",
+    "funding_sources": {
+      "name": "funding_sources",
       "from_schema": "https://microbiomedata/schema",
       "multivalued": true,
       "range": "string"
     },
-    "applied role": {
-      "name": "applied role",
+    "applied_role": {
+      "name": "applied_role",
       "deprecated": "A credit association may have multiple roles. So, use the applied roles slot.",
       "from_schema": "https://microbiomedata/schema",
-      "domain": "credit association",
+      "domain": "CreditAssociation",
       "slot_uri": "prov:hadRole",
       "multivalued": false,
       "range": "credit enum",
       "required": false
     },
-    "applied roles": {
-      "name": "applied roles",
+    "applied_roles": {
+      "name": "applied_roles",
       "annotations": {
         "display_hint": {
           "tag": "display_hint",
@@ -587,210 +582,210 @@
         }
       },
       "from_schema": "https://microbiomedata/schema",
-      "domain": "credit association",
+      "domain": "CreditAssociation",
       "multivalued": true,
       "range": "credit enum",
       "required": true
     },
-    "applies to person": {
-      "name": "applies to person",
+    "applies_to_person": {
+      "name": "applies_to_person",
       "todos": [
         "prov:agent takes an Agent object. Is a person value an Agent? Also try to relate to principal investigator slot? could include OBI:0000103 principal investigator role... do we need to define the OBI prefix?"
       ],
       "from_schema": "https://microbiomedata/schema",
-      "domain": "credit association",
+      "domain": "CreditAssociation",
       "slot_uri": "prov:agent",
       "multivalued": false,
-      "range": "person value",
+      "range": "PersonValue",
       "required": true
     },
-    "object set": {
-      "name": "object set",
+    "object_set": {
+      "name": "object_set",
       "description": "Applies to a property that links a database object to a set of objects. This is necessary in a json document to provide context for a list, and to allow for a single json object that combines multiple object types",
       "from_schema": "https://microbiomedata/schema",
       "mixin": true,
-      "domain": "database",
+      "domain": "Database",
       "multivalued": true,
       "inlined_as_list": true
     },
-    "biosample set": {
-      "name": "biosample set",
+    "biosample_set": {
+      "name": "biosample_set",
       "description": "This property links a database object to the set of samples within it.",
       "from_schema": "https://microbiomedata/schema",
       "mixins": [
-        "object set"
+        "object_set"
       ],
-      "domain": "database",
+      "domain": "Database",
       "multivalued": true,
-      "range": "biosample"
+      "range": "Biosample"
     },
-    "study set": {
-      "name": "study set",
+    "study_set": {
+      "name": "study_set",
       "description": "This property links a database object to the set of studies within it.",
       "from_schema": "https://microbiomedata/schema",
       "mixins": [
-        "object set"
+        "object_set"
       ],
-      "domain": "database",
+      "domain": "Database",
       "multivalued": true,
-      "range": "study"
+      "range": "Study"
     },
-    "data object set": {
-      "name": "data object set",
+    "data_object_set": {
+      "name": "data_object_set",
       "description": "This property links a database object to the set of data objects within it.",
       "from_schema": "https://microbiomedata/schema",
       "mixins": [
-        "object set"
+        "object_set"
       ],
-      "domain": "database",
+      "domain": "Database",
       "multivalued": true,
-      "range": "data object"
+      "range": "DataObject"
     },
-    "genome feature set": {
-      "name": "genome feature set",
+    "genome_feature_set": {
+      "name": "genome_feature_set",
       "description": "This property links a database object to the set of all features",
       "from_schema": "https://microbiomedata/schema",
       "mixins": [
-        "object set"
+        "object_set"
       ],
-      "domain": "database",
+      "domain": "Database",
       "multivalued": true,
-      "range": "genome feature"
+      "range": "GenomeFeature"
     },
-    "functional annotation set": {
-      "name": "functional annotation set",
+    "functional_annotation_set": {
+      "name": "functional_annotation_set",
       "description": "This property links a database object to the set of all functional annotations",
       "from_schema": "https://microbiomedata/schema",
       "mixins": [
-        "object set"
+        "object_set"
       ],
-      "domain": "database",
+      "domain": "Database",
       "multivalued": true,
-      "range": "functional annotation"
+      "range": "FunctionalAnnotation"
     },
-    "activity set": {
-      "name": "activity set",
+    "activity_set": {
+      "name": "activity_set",
       "description": "This property links a database object to the set of workflow activities.",
       "from_schema": "https://microbiomedata/schema",
       "mixins": [
-        "object set"
+        "object_set"
       ],
-      "domain": "database",
+      "domain": "Database",
       "multivalued": true,
-      "range": "workflow execution activity"
+      "range": "WorkflowExecutionActivity"
     },
-    "mags activity set": {
-      "name": "mags activity set",
+    "mags_activity_set": {
+      "name": "mags_activity_set",
       "description": "This property links a database object to the set of MAGs analysis activities.",
       "from_schema": "https://microbiomedata/schema",
       "mixins": [
-        "object set"
+        "object_set"
       ],
-      "domain": "database",
+      "domain": "Database",
       "multivalued": true,
-      "range": "MAGs analysis activity"
+      "range": "MagsAnalysisActivity"
     },
-    "metabolomics analysis activity set": {
-      "name": "metabolomics analysis activity set",
+    "metabolomics_analysis_activity_set": {
+      "name": "metabolomics_analysis_activity_set",
       "description": "This property links a database object to the set of metabolomics analysis activities.",
       "from_schema": "https://microbiomedata/schema",
       "mixins": [
-        "object set"
+        "object_set"
       ],
-      "domain": "database",
+      "domain": "Database",
       "multivalued": true,
-      "range": "metabolomics analysis activity"
+      "range": "MetabolomicsAnalysisActivity"
     },
-    "metaproteomics analysis activity set": {
-      "name": "metaproteomics analysis activity set",
+    "metaproteomics_analysis_activity_set": {
+      "name": "metaproteomics_analysis_activity_set",
       "description": "This property links a database object to the set of metaproteomics analysis activities.",
       "from_schema": "https://microbiomedata/schema",
       "mixins": [
-        "object set"
+        "object_set"
       ],
-      "domain": "database",
+      "domain": "Database",
       "multivalued": true,
-      "range": "metaproteomics analysis activity"
+      "range": "MetaproteomicsAnalysisActivity"
     },
-    "metagenome annotation activity set": {
-      "name": "metagenome annotation activity set",
+    "metagenome_annotation_activity_set": {
+      "name": "metagenome_annotation_activity_set",
       "description": "This property links a database object to the set of metagenome annotation activities.",
       "from_schema": "https://microbiomedata/schema",
       "mixins": [
-        "object set"
+        "object_set"
       ],
-      "domain": "database",
+      "domain": "Database",
       "multivalued": true,
-      "range": "metagenome annotation activity"
+      "range": "MetagenomeAnnotationActivity"
     },
-    "metagenome assembly set": {
-      "name": "metagenome assembly set",
+    "metagenome_assembly_set": {
+      "name": "metagenome_assembly_set",
       "description": "This property links a database object to the set of metagenome assembly activities.",
       "from_schema": "https://microbiomedata/schema",
       "mixins": [
-        "object set"
+        "object_set"
       ],
-      "domain": "database",
+      "domain": "Database",
       "multivalued": true,
-      "range": "metagenome assembly"
+      "range": "MetagenomeAssembly"
     },
-    "metatranscriptome activity set": {
-      "name": "metatranscriptome activity set",
+    "metatranscriptome_activity_set": {
+      "name": "metatranscriptome_activity_set",
       "description": "This property links a database object to the set of metatranscriptome analysis activities.",
       "from_schema": "https://microbiomedata/schema",
       "mixins": [
-        "object set"
+        "object_set"
       ],
-      "domain": "database",
+      "domain": "Database",
       "multivalued": true,
-      "range": "metatranscriptome activity"
+      "range": "MetatranscriptomeActivity"
     },
-    "read QC analysis activity set": {
-      "name": "read QC analysis activity set",
+    "read_qc_analysis_activity_set": {
+      "name": "read_qc_analysis_activity_set",
       "description": "This property links a database object to the set of read QC analysis activities.",
       "from_schema": "https://microbiomedata/schema",
       "mixins": [
-        "object set"
+        "object_set"
       ],
-      "domain": "database",
+      "domain": "Database",
       "multivalued": true,
-      "range": "read QC analysis activity"
+      "range": "ReadQcAnalysisActivity"
     },
-    "read based taxonomy analysis activity set": {
-      "name": "read based taxonomy analysis activity set",
+    "read_based_taxonomy_analysis_activity_set": {
+      "name": "read_based_taxonomy_analysis_activity_set",
       "description": "This property links a database object to the set of read based analysis activities.",
       "from_schema": "https://microbiomedata/schema",
       "mixins": [
-        "object set"
+        "object_set"
       ],
-      "domain": "database",
+      "domain": "Database",
       "multivalued": true,
-      "range": "read based taxonomy analysis activity"
+      "range": "ReadBasedTaxonomyAnalysisActivity"
     },
-    "nom analysis activity set": {
-      "name": "nom analysis activity set",
+    "nom_analysis_activity_set": {
+      "name": "nom_analysis_activity_set",
       "description": "This property links a database object to the set of natural organic matter (NOM) analysis activities.",
       "from_schema": "https://microbiomedata/schema",
       "mixins": [
-        "object set"
+        "object_set"
       ],
-      "domain": "database",
+      "domain": "Database",
       "multivalued": true,
-      "range": "nom analysis activity"
+      "range": "NomAnalysisActivity"
     },
-    "omics processing set": {
-      "name": "omics processing set",
+    "omics_processing_set": {
+      "name": "omics_processing_set",
       "description": "This property links a database object to the set of omics processings within it.",
       "from_schema": "https://microbiomedata/schema",
       "mixins": [
-        "object set"
+        "object_set"
       ],
-      "domain": "database",
+      "domain": "Database",
       "multivalued": true,
-      "range": "omics processing"
+      "range": "OmicsProcessing"
     },
-    "omics type": {
-      "name": "omics type",
+    "omics_type": {
+      "name": "omics_type",
       "description": "The type of omics data",
       "examples": [
         {
@@ -801,10 +796,10 @@
         }
       ],
       "from_schema": "https://microbiomedata/schema",
-      "range": "controlled term value"
+      "range": "ControlledTermValue"
     },
-    "data object type": {
-      "name": "data object type",
+    "data_object_type": {
+      "name": "data_object_type",
       "description": "The type of file represented by the data object.",
       "examples": [
         {
@@ -817,8 +812,8 @@
       "from_schema": "https://microbiomedata/schema",
       "range": "file type enum"
     },
-    "compression type": {
-      "name": "compression type",
+    "compression_type": {
+      "name": "compression_type",
       "description": "If provided, specifies the compression type",
       "todos": [
         "consider enum"
@@ -904,21 +899,21 @@
       ],
       "is_a": "gold_path_field"
     },
-    "principal investigator": {
-      "name": "principal investigator",
+    "principal_investigator": {
+      "name": "principal_investigator",
       "description": "Principal Investigator who led the study and/or generated the dataset.",
       "from_schema": "https://microbiomedata/schema",
       "aliases": [
         "PI"
       ],
       "is_a": "attribute",
-      "range": "person value"
+      "range": "PersonValue"
     },
     "doi": {
       "name": "doi",
       "from_schema": "https://microbiomedata/schema",
       "is_a": "attribute",
-      "range": "attribute value"
+      "range": "AttributeValue"
     },
     "add_date": {
       "name": "add_date",
@@ -1026,17 +1021,17 @@
     "depth2": {
       "name": "depth2",
       "from_schema": "https://microbiomedata/schema",
-      "range": "quantity value"
+      "range": "QuantityValue"
     },
     "subsurface_depth": {
       "name": "subsurface_depth",
       "from_schema": "https://microbiomedata/schema",
-      "range": "quantity value"
+      "range": "QuantityValue"
     },
     "subsurface_depth2": {
       "name": "subsurface_depth2",
       "from_schema": "https://microbiomedata/schema",
-      "range": "quantity value"
+      "range": "QuantityValue"
     },
     "proport_woa_temperature": {
       "name": "proport_woa_temperature",
@@ -1064,11 +1059,6 @@
       "from_schema": "https://microbiomedata/schema",
       "range": "processing_institution_enum"
     },
-    "omics_type": {
-      "name": "omics_type",
-      "from_schema": "https://microbiomedata/schema",
-      "range": "string"
-    },
     "completion_date": {
       "name": "completion_date",
       "from_schema": "https://microbiomedata/schema",
@@ -1076,55 +1066,53 @@
     }
   },
   "classes": {
-    "database": {
-      "name": "database",
+    "Database": {
+      "name": "Database",
       "description": "An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest",
       "from_schema": "https://microbiomedata/schema",
       "aliases": [
         "NMDC metadata object"
       ],
       "slots": [
-        "activity set",
-        "biosample set",
-        "data object set",
+        "activity_set",
+        "biosample_set",
+        "data_object_set",
         "dissolving_activity_set",
-        "functional annotation set",
-        "genome feature set",
-        "mags activity set",
-        "material_sample_set",
+        "functional_annotation_set",
+        "genome_feature_set",
+        "mags_activity_set",
         "material_sample_set",
         "material_sampling_activity_set",
-        "metabolomics analysis activity set",
-        "metagenome annotation activity set",
-        "metagenome assembly set",
-        "metaproteomics analysis activity set",
-        "metatranscriptome activity set",
-        "nom analysis activity set",
-        "omics processing set",
+        "metabolomics_analysis_activity_set",
+        "metagenome_annotation_activity_set",
+        "metagenome_assembly_set",
+        "metaproteomics_analysis_activity_set",
+        "metatranscriptome_activity_set",
+        "nom_analysis_activity_set",
+        "omics_processing_set",
         "reaction_activity_set",
-        "reaction_activity_set",
-        "read QC analysis activity set",
-        "read based taxonomy analysis activity set",
-        "study set"
+        "read_qc_analysis_activity_set",
+        "read_based_taxonomy_analysis_activity_set",
+        "study_set"
       ],
       "slot_usage": {
-        "date created": {
-          "name": "date created",
+        "date_created": {
+          "name": "date_created",
           "description": "TODO"
         },
-        "etl software version": {
-          "name": "etl software version",
+        "etl_software_version": {
+          "name": "etl_software_version",
           "description": "TODO"
         },
-        "nmdc schema version": {
-          "name": "nmdc schema version",
+        "metatranscriptome_activity_set": {
+          "name": "metatranscriptome_activity_set",
           "description": "TODO"
         }
       },
       "tree_root": true
     },
-    "data object": {
-      "name": "data object",
+    "DataObject": {
+      "name": "DataObject",
       "id_prefixes": [
         "GOLD"
       ],
@@ -1133,13 +1121,13 @@
         "data object subset"
       ],
       "from_schema": "https://microbiomedata/schema",
-      "is_a": "named thing",
+      "is_a": "NamedThing",
       "slots": [
-        "file size bytes",
-        "md5 checksum",
-        "data object type",
-        "compression type",
-        "was generated by",
+        "file_size_bytes",
+        "md5_checksum",
+        "data_object_type",
+        "compression_type",
+        "was_generated_by",
         "url",
         "type"
       ],
@@ -1154,8 +1142,8 @@
         }
       }
     },
-    "biosample": {
-      "name": "biosample",
+    "Biosample": {
+      "name": "Biosample",
       "id_prefixes": [
         "GOLD"
       ],
@@ -1180,11 +1168,11 @@
         "OBI:0000747",
         "NCIT:C43412"
       ],
-      "is_a": "named thing",
+      "is_a": "NamedThing",
       "slots": [
         "type",
-        "alternative identifiers",
-        "part of",
+        "alternative_identifiers",
+        "part_of",
         "agrochem_addition",
         "alkalinity",
         "alkalinity_method",
@@ -1323,9 +1311,9 @@
         "soluble_iron_micromol",
         "subsurface_depth",
         "subsurface_depth2",
-        "GOLD sample identifiers",
-        "INSDC biosample identifiers",
-        "INSDC secondary sample identifiers",
+        "gold_sample_identifiers",
+        "insdc_biosample_identifiers",
+        "insdc_secondary_sample_identifiers",
         "air_temp_regm",
         "biotic_regm",
         "biotic_relationship",
@@ -1350,16 +1338,16 @@
         "dna_concentration",
         "dna_cont_type",
         "dna_cont_well",
-        "dna_container_ID",
+        "dna_container_id",
         "dna_dnase",
         "dna_isolate_meth",
         "dna_organisms",
         "dna_project_contact",
-        "dna_samp_ID",
+        "dna_samp_id",
         "dna_sample_format",
         "dna_sample_name",
         "dna_seq_project",
-        "dna_seq_project_PI",
+        "dna_seq_project_pi",
         "dna_seq_project_name",
         "dna_volume",
         "proposal_dna",
@@ -1371,15 +1359,15 @@
         "rna_concentration",
         "rna_cont_type",
         "rna_cont_well",
-        "rna_container_ID",
+        "rna_container_id",
         "rna_isolate_meth",
         "rna_organisms",
         "rna_project_contact",
-        "rna_samp_ID",
+        "rna_samp_id",
         "rna_sample_format",
         "rna_sample_name",
         "rna_seq_project",
-        "rna_seq_project_PI",
+        "rna_seq_project_pi",
         "rna_seq_project_name",
         "rna_volume",
         "collection_date_inc",
@@ -1388,18 +1376,18 @@
         "experimental_factor_other",
         "filter_method",
         "isotope_exposure",
-        "micro_biomass_C_meth",
-        "micro_biomass_N_meth",
-        "microbial_biomass_C",
-        "microbial_biomass_N",
+        "micro_biomass_c_meth",
+        "micro_biomass_n_meth",
+        "microbial_biomass_c",
+        "microbial_biomass_n",
         "non_microb_biomass",
         "non_microb_biomass_method",
         "org_nitro_method",
         "other_treatment",
         "start_date_inc",
         "start_time_inc",
-        "EMSL_store_temp",
-        "project_ID",
+        "emsl_store_temp",
+        "project_id",
         "replicate_number",
         "sample_shipped",
         "sample_type",
@@ -1408,9 +1396,9 @@
         "sample_link",
         "zinc",
         "manganese",
-        "ammonium nitrogen",
-        "nitrate nitrogen",
-        "nitrite nitrogen",
+        "ammonium_nitrogen",
+        "nitrate_nitrogen",
+        "nitrite_nitrogen",
         "lbc_thirty",
         "lbceq"
       ],
@@ -1438,8 +1426,8 @@
         }
       }
     },
-    "study": {
-      "name": "study",
+    "Study": {
+      "name": "Study",
       "id_prefixes": [
         "GOLD",
         "insdc.srs",
@@ -1481,33 +1469,33 @@
       "broad_mappings": [
         "prov:Activity"
       ],
-      "is_a": "named thing",
+      "is_a": "NamedThing",
       "slots": [
         "ecosystem",
         "ecosystem_category",
         "ecosystem_type",
         "ecosystem_subtype",
         "specific_ecosystem",
-        "principal investigator",
+        "principal_investigator",
         "doi",
         "title",
-        "alternative titles",
-        "alternative descriptions",
-        "alternative names",
+        "alternative_titles",
+        "alternative_descriptions",
+        "alternative_names",
         "abstract",
         "objective",
         "websites",
         "publications",
-        "ess dive datasets",
+        "ess_dive_datasets",
         "type",
-        "relevant protocols",
-        "funding sources",
-        "INSDC bioproject identifiers",
-        "INSDC SRA ENA study identifiers",
-        "GOLD study identifiers",
-        "MGnify project identifiers",
-        "has credit associations",
-        "study image"
+        "relevant_protocols",
+        "funding_sources",
+        "insdc_bioproject_identifiers",
+        "insdc_sra_ena_study_identifiers",
+        "gold_study_identifiers",
+        "mgnify_project_identifiers",
+        "has_credit_associations",
+        "study_image"
       ],
       "slot_usage": {
         "doi": {
@@ -1556,8 +1544,8 @@
             }
           }
         },
-        "alternative names": {
-          "name": "alternative names",
+        "alternative_names": {
+          "name": "alternative_names",
           "annotations": {
             "display_hint": {
               "tag": "display_hint",
@@ -1565,8 +1553,8 @@
             }
           }
         },
-        "GOLD sample identifiers": {
-          "name": "GOLD sample identifiers",
+        "gold_sample_identifiers": {
+          "name": "gold_sample_identifiers",
           "annotations": {
             "display_hint": {
               "tag": "display_hint",
@@ -1574,8 +1562,8 @@
             }
           }
         },
-        "INSDC bioproject identifiers": {
-          "name": "INSDC bioproject identifiers",
+        "insdc_bioproject_identifiers": {
+          "name": "insdc_bioproject_identifiers",
           "annotations": {
             "display_hint": {
               "tag": "display_hint",
@@ -1585,8 +1573,8 @@
         }
       }
     },
-    "biosample processing": {
-      "name": "biosample processing",
+    "BiosampleProcessing": {
+      "name": "BiosampleProcessing",
       "description": "A process that takes one or more biosamples as inputs and generates one or as outputs. Examples of outputs include samples cultivated from another sample or data objects created by instruments runs.",
       "from_schema": "https://microbiomedata/schema",
       "aliases": [
@@ -1595,19 +1583,19 @@
       "broad_mappings": [
         "OBI:0000094"
       ],
-      "is_a": "named thing",
+      "is_a": "NamedThing",
       "slots": [
-        "has input"
+        "has_input"
       ],
       "slot_usage": {
-        "has input": {
-          "name": "has input",
-          "range": "biosample"
+        "has_input": {
+          "name": "has_input",
+          "range": "Biosample"
         }
       }
     },
-    "omics processing": {
-      "name": "omics processing",
+    "OmicsProcessing": {
+      "name": "OmicsProcessing",
       "description": "The methods and processes used to generate omics data from a biosample or organism.",
       "alt_descriptions": {
         "embl.ena": {
@@ -1631,21 +1619,21 @@
         "OBI:0000070",
         "ISA:Assay"
       ],
-      "is_a": "biosample processing",
+      "is_a": "BiosampleProcessing",
       "slots": [
         "add_date",
         "mod_date",
-        "has input",
-        "has output",
+        "has_input",
+        "has_output",
         "instrument_name",
         "ncbi_project_name",
-        "omics type",
-        "part of",
-        "principal investigator",
+        "omics_type",
+        "part_of",
+        "principal_investigator",
         "processing_institution",
         "type",
-        "GOLD sequencing project identifiers",
-        "INSDC experiment identifiers",
+        "gold_sequencing_project_identifiers",
+        "insdc_experiment_identifiers",
         "samp_vol_we_dna_ext",
         "nucl_acid_ext",
         "nucl_acid_amp",
@@ -1658,14 +1646,14 @@
         "chimera_check"
       ],
       "slot_usage": {
-        "has input": {
-          "name": "has input",
+        "has_input": {
+          "name": "has_input",
           "required": true
         }
       }
     },
-    "credit association": {
-      "name": "credit association",
+    "CreditAssociation": {
+      "name": "CreditAssociation",
       "description": "This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role (https://casrai.org/credit/) and for a person value Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0",
       "from_schema": "https://microbiomedata/schema",
       "aliases": [
@@ -1674,9 +1662,9 @@
         "associated researchers"
       ],
       "slots": [
-        "applies to person",
-        "applied role",
-        "applied roles",
+        "applies_to_person",
+        "applied_role",
+        "applied_roles",
         "type"
       ],
       "class_uri": "prov:Association"

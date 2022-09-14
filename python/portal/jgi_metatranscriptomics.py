@@ -1,5 +1,5 @@
 # Auto generated from jgi_metatranscriptomics.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-09-14T10:11:41
+# Generation date: 2022-09-14T16:56:28
 # Schema: jgi_metatranscriptomics
 #
 # id: https://microbiomedata/schema/jgi_metatranscriptomics
@@ -114,8 +114,8 @@ slots.rna_cont_type = Slot(uri=NMDC.rna_cont_type, name="rna_cont_type", curie=N
 slots.rna_cont_well = Slot(uri=NMDC.rna_cont_well, name="rna_cont_well", curie=NMDC.curie('rna_cont_well'),
                    model_uri=NMDC.rna_cont_well, domain=None, range=Optional[str])
 
-slots.rna_container_ID = Slot(uri=NMDC.rna_container_ID, name="rna_container_ID", curie=NMDC.curie('rna_container_ID'),
-                   model_uri=NMDC.rna_container_ID, domain=None, range=Optional[str])
+slots.rna_container_id = Slot(uri=NMDC.rna_container_id, name="rna_container_id", curie=NMDC.curie('rna_container_id'),
+                   model_uri=NMDC.rna_container_id, domain=None, range=Optional[str])
 
 slots.rna_isolate_meth = Slot(uri=NMDC.rna_isolate_meth, name="rna_isolate_meth", curie=NMDC.curie('rna_isolate_meth'),
                    model_uri=NMDC.rna_isolate_meth, domain=None, range=Optional[str])
@@ -126,8 +126,8 @@ slots.rna_organisms = Slot(uri=NMDC.rna_organisms, name="rna_organisms", curie=N
 slots.rna_project_contact = Slot(uri=NMDC.rna_project_contact, name="rna_project_contact", curie=NMDC.curie('rna_project_contact'),
                    model_uri=NMDC.rna_project_contact, domain=None, range=Optional[str])
 
-slots.rna_samp_ID = Slot(uri=NMDC.rna_samp_ID, name="rna_samp_ID", curie=NMDC.curie('rna_samp_ID'),
-                   model_uri=NMDC.rna_samp_ID, domain=None, range=Optional[str])
+slots.rna_samp_id = Slot(uri=NMDC.rna_samp_id, name="rna_samp_id", curie=NMDC.curie('rna_samp_id'),
+                   model_uri=NMDC.rna_samp_id, domain=None, range=Optional[str])
 
 slots.rna_sample_format = Slot(uri=NMDC.rna_sample_format, name="rna_sample_format", curie=NMDC.curie('rna_sample_format'),
                    model_uri=NMDC.rna_sample_format, domain=None, range=Optional[Union[str, "RnaSampleFormatEnum"]])
@@ -138,8 +138,8 @@ slots.rna_sample_name = Slot(uri=NMDC.rna_sample_name, name="rna_sample_name", c
 slots.rna_seq_project = Slot(uri=NMDC.rna_seq_project, name="rna_seq_project", curie=NMDC.curie('rna_seq_project'),
                    model_uri=NMDC.rna_seq_project, domain=None, range=Optional[str])
 
-slots.rna_seq_project_PI = Slot(uri=NMDC.rna_seq_project_PI, name="rna_seq_project_PI", curie=NMDC.curie('rna_seq_project_PI'),
-                   model_uri=NMDC.rna_seq_project_PI, domain=None, range=Optional[str])
+slots.rna_seq_project_pi = Slot(uri=NMDC.rna_seq_project_pi, name="rna_seq_project_pi", curie=NMDC.curie('rna_seq_project_pi'),
+                   model_uri=NMDC.rna_seq_project_pi, domain=None, range=Optional[str])
 
 slots.rna_seq_project_name = Slot(uri=NMDC.rna_seq_project_name, name="rna_seq_project_name", curie=NMDC.curie('rna_seq_project_name'),
                    model_uri=NMDC.rna_seq_project_name, domain=None, range=Optional[str])

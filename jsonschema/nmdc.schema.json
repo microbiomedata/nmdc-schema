@@ -114,34 +114,6 @@
          "additionalProperties": false,
          "description": "A material sample. It may be environmental (encompassing many organisms) or isolate or tissue.   An environmental sample containing genetic material from multiple individuals is commonly referred to as a biosample.",
          "properties": {
-            "EMSL_store_temp": {
-               "description": "The temperature at which the sample should be stored upon delivery to EMSL",
-               "type": "string"
-            },
-            "GOLD_sample_identifiers": {
-               "description": "identifiers for corresponding sample in GOLD",
-               "items": {
-                  "type": "string"
-               },
-               "pattern": "^GOLD:Gb[0-9]+$",
-               "type": "array"
-            },
-            "INSDC_biosample_identifiers": {
-               "description": "identifiers for corresponding sample in INSDC",
-               "items": {
-                  "type": "string"
-               },
-               "pattern": "^biosample:SAM[NED]([A-Z])?[0-9]+$",
-               "type": "array"
-            },
-            "INSDC_secondary_sample_identifiers": {
-               "description": "secondary identifiers for corresponding sample in INSDC",
-               "items": {
-                  "type": "string"
-               },
-               "pattern": "^biosample:(E|D|S)RS[0-9]{6,}$",
-               "type": "array"
-            },
             "add_date": {
                "description": "The date on which the information was added to the database.",
                "type": "string"
@@ -358,7 +330,7 @@
             "dna_cont_well": {
                "type": "string"
             },
-            "dna_container_ID": {
+            "dna_container_id": {
                "type": "string"
             },
             "dna_dnase": {
@@ -375,7 +347,7 @@
             "dna_project_contact": {
                "type": "string"
             },
-            "dna_samp_ID": {
+            "dna_samp_id": {
                "type": "string"
             },
             "dna_sample_format": {
@@ -389,10 +361,10 @@
             "dna_seq_project": {
                "type": "string"
             },
-            "dna_seq_project_PI": {
+            "dna_seq_project_name": {
                "type": "string"
             },
-            "dna_seq_project_name": {
+            "dna_seq_project_pi": {
                "type": "string"
             },
             "dna_volume": {
@@ -426,6 +398,10 @@
             "elev": {
                "$ref": "#/$defs/QuantityValue",
                "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit."
+            },
+            "emsl_store_temp": {
+               "description": "The temperature at which the sample should be stored upon delivery to EMSL",
+               "type": "string"
             },
             "env_broad_scale": {
                "$ref": "#/$defs/ControlledTermValue",
@@ -484,6 +460,14 @@
                "$ref": "#/$defs/QuantityValue",
                "description": "Measurement of glucosidase activity"
             },
+            "gold_sample_identifiers": {
+               "description": "identifiers for corresponding sample in GOLD",
+               "items": {
+                  "type": "string"
+               },
+               "pattern": "^GOLD:Gb[0-9]+$",
+               "type": "array"
+            },
             "growth_facil": {
                "$ref": "#/$defs/ControlledTermValue",
                "description": "Type of facility where the sampled plant was grown; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field. Alternatively use Crop Ontology (CO) terms, see http://www.cropontology.org/ontology/CO_715/Crop%20Research"
@@ -520,6 +504,22 @@
             },
             "identifier": {
                "type": "string"
+            },
+            "insdc_biosample_identifiers": {
+               "description": "identifiers for corresponding sample in INSDC",
+               "items": {
+                  "type": "string"
+               },
+               "pattern": "^biosample:SAM[NED]([A-Z])?[0-9]+$",
+               "type": "array"
+            },
+            "insdc_secondary_sample_identifiers": {
+               "description": "secondary identifiers for corresponding sample in INSDC",
+               "items": {
+                  "type": "string"
+               },
+               "pattern": "^biosample:(E|D|S)RS[0-9]{6,}$",
+               "type": "array"
             },
             "isotope_exposure": {
                "description": "List isotope exposure or addition applied to your sample.",
@@ -580,33 +580,33 @@
                "$ref": "#/$defs/QuantityValue",
                "description": "Measurement of mean peak friction velocity"
             },
-            "micro_biomass_C_meth": {
+            "micro_biomass_c_meth": {
                "description": "Reference or method used in determining microbial biomass",
-               "type": "string"
-            },
-            "micro_biomass_N_meth": {
-               "description": "Reference or method used in determining microbial biomass nitrogen",
                "type": "string"
             },
             "micro_biomass_meth": {
                "description": "Reference or method used in determining microbial biomass",
                "type": "string"
             },
+            "micro_biomass_n_meth": {
+               "description": "Reference or method used in determining microbial biomass nitrogen",
+               "type": "string"
+            },
             "microbial_biomass": {
                "$ref": "#/$defs/QuantityValue",
                "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units"
             },
-            "microbial_biomass_C": {
-               "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units",
-               "type": "string"
-            },
-            "microbial_biomass_N": {
+            "microbial_biomass_c": {
                "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units",
                "type": "string"
             },
             "microbial_biomass_meth": {
                "$ref": "#/$defs/TextValue",
                "description": "Reference or method used in determining microbial biomass"
+            },
+            "microbial_biomass_n": {
+               "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units",
+               "type": "string"
             },
             "misc_param": {
                "$ref": "#/$defs/QuantityValue",
@@ -738,7 +738,7 @@
                "$ref": "#/$defs/TextValue",
                "description": "Cross-sectional position in the hillslope where sample was collected.sample area position in relation to surrounding areas"
             },
-            "project_ID": {
+            "project_id": {
                "description": "Proposal IDs or names associated with dataset",
                "type": "string"
             },
@@ -787,7 +787,7 @@
             "rna_cont_well": {
                "type": "string"
             },
-            "rna_container_ID": {
+            "rna_container_id": {
                "type": "string"
             },
             "rna_isolate_meth": {
@@ -801,7 +801,7 @@
             "rna_project_contact": {
                "type": "string"
             },
-            "rna_samp_ID": {
+            "rna_samp_id": {
                "type": "string"
             },
             "rna_sample_format": {
@@ -817,10 +817,10 @@
             "rna_seq_project": {
                "type": "string"
             },
-            "rna_seq_project_PI": {
+            "rna_seq_project_name": {
                "type": "string"
             },
-            "rna_seq_project_name": {
+            "rna_seq_project_pi": {
                "type": "string"
             },
             "rna_volume": {
@@ -1532,7 +1532,7 @@
             "mags_activity_set": {
                "description": "This property links a database object to the set of MAGs analysis activities.",
                "items": {
-                  "$ref": "#/$defs/MAGsAnalysisActivity"
+                  "$ref": "#/$defs/MagsAnalysisActivity"
                },
                "type": "array"
             },
@@ -1577,15 +1577,11 @@
                "type": "array"
             },
             "metatranscriptome_activity_set": {
-               "description": "This property links a database object to the set of metatranscriptome analysis activities.",
+               "description": "TODO",
                "items": {
                   "$ref": "#/$defs/MetatranscriptomeActivity"
                },
                "type": "array"
-            },
-            "nmdc_schema_version": {
-               "description": "TODO",
-               "type": "string"
             },
             "nom_analysis_activity_set": {
                "description": "This property links a database object to the set of natural organic matter (NOM) analysis activities.",
@@ -1607,17 +1603,17 @@
                },
                "type": "array"
             },
-            "read_QC_analysis_activity_set": {
-               "description": "This property links a database object to the set of read QC analysis activities.",
-               "items": {
-                  "$ref": "#/$defs/ReadQCAnalysisActivity"
-               },
-               "type": "array"
-            },
             "read_based_taxonomy_analysis_activity_set": {
                "description": "This property links a database object to the set of read based analysis activities.",
                "items": {
                   "$ref": "#/$defs/ReadBasedTaxonomyAnalysisActivity"
+               },
+               "type": "array"
+            },
+            "read_qc_analysis_activity_set": {
+               "description": "This property links a database object to the set of read QC analysis activities.",
+               "items": {
+                  "$ref": "#/$defs/ReadQcAnalysisActivity"
                },
                "type": "array"
             },
@@ -2578,7 +2574,7 @@
          "title": "LithologyEnum",
          "type": "string"
       },
-      "MAGBin": {
+      "MagBin": {
          "additionalProperties": false,
          "description": "",
          "properties": {
@@ -2627,7 +2623,7 @@
             "num_5s": {
                "type": "integer"
             },
-            "num_tRNA": {
+            "num_t_rna": {
                "type": "integer"
             },
             "number_of_contig": {
@@ -2639,10 +2635,10 @@
             }
          },
          "required": [],
-         "title": "MAGBin",
+         "title": "MagBin",
          "type": "object"
       },
-      "MAGsAnalysisActivity": {
+      "MagsAnalysisActivity": {
          "additionalProperties": false,
          "description": "A workflow execution activity that uses computational binning tools to group assembled contigs into genomes",
          "properties": {
@@ -2683,12 +2679,12 @@
             "input_contig_num": {
                "type": "integer"
             },
-            "lowDepth_contig_num": {
+            "low_depth_contig_num": {
                "type": "integer"
             },
             "mags_list": {
                "items": {
-                  "$ref": "#/$defs/MAGBin"
+                  "$ref": "#/$defs/MagBin"
                },
                "type": "array"
             },
@@ -2740,7 +2736,7 @@
             "ended_at_time",
             "was_informed_by"
          ],
-         "title": "MAGsAnalysisActivity",
+         "title": "MagsAnalysisActivity",
          "type": "object"
       },
       "MaterialContainer": {
@@ -2762,12 +2758,23 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "alternative_identifiers": {
+               "description": "A list of alternative identifiers for the entity.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "description": {
                "description": "a human-readable description of a thing",
                "type": "string"
             },
             "id": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "name": {
+               "description": "A human readable label for an entity",
                "type": "string"
             }
          },
@@ -2936,14 +2943,6 @@
          "additionalProperties": false,
          "description": "A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs",
          "properties": {
-            "GOLD_analysis_project_identifiers": {
-               "description": "identifiers for corresponding analysis project in GOLD",
-               "items": {
-                  "type": "string"
-               },
-               "pattern": "^GOLD:Ga[0-9]+$",
-               "type": "array"
-            },
             "ended_at_time": {
                "format": "date-time",
                "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
@@ -2956,6 +2955,14 @@
             "git_url": {
                "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                "type": "string"
+            },
+            "gold_analysis_project_identifiers": {
+               "description": "identifiers for corresponding analysis project in GOLD",
+               "items": {
+                  "type": "string"
+               },
+               "pattern": "^GOLD:Ga[0-9]+$",
+               "type": "array"
             },
             "has_input": {
                "description": "An input to a process.",
@@ -3024,10 +3031,6 @@
          "additionalProperties": false,
          "description": "A workflow execution activity that converts sequencing reads into an assembled metagenome.",
          "properties": {
-            "INSDC_assembly_identifiers": {
-               "pattern": "^insdc.sra:[A-Z]+[0-9]+(\\.[0-9]+)?$",
-               "type": "string"
-            },
             "asm_score": {
                "description": "A score for comparing metagenomic assembly quality from same sample.",
                "type": "number"
@@ -3040,20 +3043,12 @@
                "description": "The sum of the (length*log(length)) of all contigs, times some constant.  Increase the contiguity, the score will increase",
                "type": "number"
             },
-            "ctg_L50": {
+            "ctg_l50": {
                "description": "Given a set of contigs, the L50 is defined as the sequence length of the shortest contig at 50% of the total genome length.",
                "type": "number"
             },
-            "ctg_L90": {
+            "ctg_l90": {
                "description": "The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all contigs of that length or longer contains at least 90% of the sum of the lengths of all contigs.",
-               "type": "number"
-            },
-            "ctg_N50": {
-               "description": "Given a set of contigs, each with its own length, the N50 count is defined as the smallest number of contigs whose length sum makes up half of genome size.",
-               "type": "number"
-            },
-            "ctg_N90": {
-               "description": "Given a set of contigs, each with its own length, the N90 count is defined as the smallest number of contigs whose length sum makes up 90% of genome size.",
                "type": "number"
             },
             "ctg_logsum": {
@@ -3062,6 +3057,14 @@
             },
             "ctg_max": {
                "description": "Maximum contig length.",
+               "type": "number"
+            },
+            "ctg_n50": {
+               "description": "Given a set of contigs, each with its own length, the N50 count is defined as the smallest number_of_contigs whose length sum makes up half of genome size.",
+               "type": "number"
+            },
+            "ctg_n90": {
+               "description": "Given a set of contigs, each with its own length, the N90 count is defined as the smallest number of contigs whose length sum makes up 90% of genome size.",
                "type": "number"
             },
             "ctg_powsum": {
@@ -3111,6 +3114,10 @@
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                "type": "string"
             },
+            "insdc_assembly_identifiers": {
+               "pattern": "^insdc.sra:[A-Z]+[0-9]+(\\.[0-9]+)?$",
+               "type": "string"
+            },
             "name": {
                "description": "A human readable label for an entity",
                "type": "string"
@@ -3130,27 +3137,19 @@
                },
                "type": "array"
             },
-            "scaf_L50": {
-               "description": "Given a set of scaffolds, the L50 is defined as the sequence length of the shortest scaffold at 50% of the total genome length.",
-               "type": "number"
-            },
-            "scaf_L90": {
-               "description": "The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all scaffolds of that length or longer contains at least 90% of the sum of the lengths of all scaffolds.",
-               "type": "number"
-            },
-            "scaf_N50": {
-               "description": "Given a set of scaffolds, each with its own length, the N50 count is defined as the smallest number of scaffolds whose length sum makes up half of genome size.",
-               "type": "number"
-            },
-            "scaf_N90": {
-               "description": "Given a set of scaffolds, each with its own length, the N90 count is defined as the smallest number of scaffolds whose length sum makes up 90% of genome size.",
-               "type": "number"
-            },
             "scaf_bp": {
                "description": "Total size in bp of all scaffolds.",
                "type": "number"
             },
-            "scaf_l_gt50K": {
+            "scaf_l50": {
+               "description": "Given a set of scaffolds, the L50 is defined as the sequence length of the shortest scaffold at 50% of the total genome length.",
+               "type": "number"
+            },
+            "scaf_l90": {
+               "description": "The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all scaffolds of that length or longer contains at least 90% of the sum of the lengths of all scaffolds.",
+               "type": "number"
+            },
+            "scaf_l_gt50k": {
                "description": "Total size in bp of all scaffolds greater than 50 KB.",
                "type": "number"
             },
@@ -3162,11 +3161,19 @@
                "description": "Maximum scaffold length.",
                "type": "number"
             },
-            "scaf_n_gt50K": {
+            "scaf_n50": {
+               "description": "Given a set of scaffolds, each with its own length, the N50 count is defined as the smallest number of scaffolds whose length sum makes up half of genome size.",
+               "type": "number"
+            },
+            "scaf_n90": {
+               "description": "Given a set of scaffolds, each with its own length, the N90 count is defined as the smallest number of scaffolds whose length sum makes up 90% of genome size.",
+               "type": "number"
+            },
+            "scaf_n_gt50k": {
                "description": "Total sequence count of scaffolds greater than 50 KB.",
                "type": "number"
             },
-            "scaf_pct_gt50K": {
+            "scaf_pct_gt50k": {
                "description": "Total sequence size percentage of scaffolds greater than 50 KB.",
                "type": "number"
             },
@@ -3383,14 +3390,6 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
-            "GOLD_analysis_project_identifiers": {
-               "description": "identifiers for corresponding analysis project in GOLD",
-               "items": {
-                  "type": "string"
-               },
-               "pattern": "^GOLD:Ga[0-9]+$",
-               "type": "array"
-            },
             "ended_at_time": {
                "format": "date-time",
                "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
@@ -3403,6 +3402,14 @@
             "git_url": {
                "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                "type": "string"
+            },
+            "gold_analysis_project_identifiers": {
+               "description": "identifiers for corresponding analysis project in GOLD",
+               "items": {
+                  "type": "string"
+               },
+               "pattern": "^GOLD:Ga[0-9]+$",
+               "type": "array"
             },
             "has_input": {
                "description": "An input to a process.",
@@ -3471,10 +3478,6 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
-            "INSDC_assembly_identifiers": {
-               "pattern": "^insdc.sra:[A-Z]+[0-9]+(\\.[0-9]+)?$",
-               "type": "string"
-            },
             "asm_score": {
                "description": "A score for comparing metagenomic assembly quality from same sample.",
                "type": "number"
@@ -3487,20 +3490,12 @@
                "description": "The sum of the (length*log(length)) of all contigs, times some constant.  Increase the contiguity, the score will increase",
                "type": "number"
             },
-            "ctg_L50": {
+            "ctg_l50": {
                "description": "Given a set of contigs, the L50 is defined as the sequence length of the shortest contig at 50% of the total genome length.",
                "type": "number"
             },
-            "ctg_L90": {
+            "ctg_l90": {
                "description": "The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all contigs of that length or longer contains at least 90% of the sum of the lengths of all contigs.",
-               "type": "number"
-            },
-            "ctg_N50": {
-               "description": "Given a set of contigs, each with its own length, the N50 count is defined as the smallest number of contigs whose length sum makes up half of genome size.",
-               "type": "number"
-            },
-            "ctg_N90": {
-               "description": "Given a set of contigs, each with its own length, the N90 count is defined as the smallest number of contigs whose length sum makes up 90% of genome size.",
                "type": "number"
             },
             "ctg_logsum": {
@@ -3509,6 +3504,14 @@
             },
             "ctg_max": {
                "description": "Maximum contig length.",
+               "type": "number"
+            },
+            "ctg_n50": {
+               "description": "Given a set of contigs, each with its own length, the N50 count is defined as the smallest number_of_contigs whose length sum makes up half of genome size.",
+               "type": "number"
+            },
+            "ctg_n90": {
+               "description": "Given a set of contigs, each with its own length, the N90 count is defined as the smallest number of contigs whose length sum makes up 90% of genome size.",
                "type": "number"
             },
             "ctg_powsum": {
@@ -3558,6 +3561,10 @@
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                "type": "string"
             },
+            "insdc_assembly_identifiers": {
+               "pattern": "^insdc.sra:[A-Z]+[0-9]+(\\.[0-9]+)?$",
+               "type": "string"
+            },
             "name": {
                "description": "A human readable label for an entity",
                "type": "string"
@@ -3577,27 +3584,19 @@
                },
                "type": "array"
             },
-            "scaf_L50": {
-               "description": "Given a set of scaffolds, the L50 is defined as the sequence length of the shortest scaffold at 50% of the total genome length.",
-               "type": "number"
-            },
-            "scaf_L90": {
-               "description": "The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all scaffolds of that length or longer contains at least 90% of the sum of the lengths of all scaffolds.",
-               "type": "number"
-            },
-            "scaf_N50": {
-               "description": "Given a set of scaffolds, each with its own length, the N50 count is defined as the smallest number of scaffolds whose length sum makes up half of genome size.",
-               "type": "number"
-            },
-            "scaf_N90": {
-               "description": "Given a set of scaffolds, each with its own length, the N90 count is defined as the smallest number of scaffolds whose length sum makes up 90% of genome size.",
-               "type": "number"
-            },
             "scaf_bp": {
                "description": "Total size in bp of all scaffolds.",
                "type": "number"
             },
-            "scaf_l_gt50K": {
+            "scaf_l50": {
+               "description": "Given a set of scaffolds, the L50 is defined as the sequence length of the shortest scaffold at 50% of the total genome length.",
+               "type": "number"
+            },
+            "scaf_l90": {
+               "description": "The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all scaffolds of that length or longer contains at least 90% of the sum of the lengths of all scaffolds.",
+               "type": "number"
+            },
+            "scaf_l_gt50k": {
                "description": "Total size in bp of all scaffolds greater than 50 KB.",
                "type": "number"
             },
@@ -3609,11 +3608,19 @@
                "description": "Maximum scaffold length.",
                "type": "number"
             },
-            "scaf_n_gt50K": {
+            "scaf_n50": {
+               "description": "Given a set of scaffolds, each with its own length, the N50 count is defined as the smallest number of scaffolds whose length sum makes up half of genome size.",
+               "type": "number"
+            },
+            "scaf_n90": {
+               "description": "Given a set of scaffolds, each with its own length, the N90 count is defined as the smallest number of scaffolds whose length sum makes up 90% of genome size.",
+               "type": "number"
+            },
+            "scaf_n_gt50k": {
                "description": "Total sequence count of scaffolds greater than 50 KB.",
                "type": "number"
             },
-            "scaf_pct_gt50K": {
+            "scaf_pct_gt50k": {
                "description": "Total sequence size percentage of scaffolds greater than 50 KB.",
                "type": "number"
             },
@@ -3657,25 +3664,6 @@
             "was_informed_by"
          ],
          "title": "MetatranscriptomeAssembly",
-         "type": "object"
-      },
-      "NamedThing": {
-         "additionalProperties": false,
-         "description": "",
-         "properties": {
-            "description": {
-               "description": "a human-readable description of a thing",
-               "type": "string"
-            },
-            "id": {
-               "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-               "type": "string"
-            }
-         },
-         "required": [
-            "id"
-         ],
-         "title": "NamedThing",
          "type": "object"
       },
       "NomAnalysisActivity": {
@@ -3778,21 +3766,6 @@
          "additionalProperties": false,
          "description": "The methods and processes used to generate omics data from a biosample or organism.",
          "properties": {
-            "GOLD_sequencing_project_identifiers": {
-               "description": "identifiers for corresponding sequencing project in GOLD",
-               "items": {
-                  "type": "string"
-               },
-               "pattern": "^GOLD:Gp[0-9]+$",
-               "type": "array"
-            },
-            "INSDC_experiment_identifiers": {
-               "items": {
-                  "type": "string"
-               },
-               "pattern": "^insdc.sra:(E|D|S)RX[0-9]{6,}$",
-               "type": "array"
-            },
             "add_date": {
                "description": "The date on which the information was added to the database.",
                "type": "string"
@@ -3812,6 +3785,14 @@
                "description": "a human-readable description of a thing",
                "type": "string"
             },
+            "gold_sequencing_project_identifiers": {
+               "description": "identifiers for corresponding sequencing project in GOLD",
+               "items": {
+                  "type": "string"
+               },
+               "pattern": "^GOLD:Gp[0-9]+$",
+               "type": "array"
+            },
             "has_input": {
                "description": "An input to a process.",
                "items": {
@@ -3829,6 +3810,13 @@
             "id": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                "type": "string"
+            },
+            "insdc_experiment_identifiers": {
+               "items": {
+                  "type": "string"
+               },
+               "pattern": "^insdc.sra:(E|D|S)RX[0-9]{6,}$",
+               "type": "array"
             },
             "instrument_name": {
                "description": "The name of the instrument that was used for processing the sample.",
@@ -4475,7 +4463,7 @@
          "title": "ReadBasedTaxonomyAnalysisActivity",
          "type": "object"
       },
-      "ReadQCAnalysisActivity": {
+      "ReadQcAnalysisActivity": {
          "additionalProperties": false,
          "description": "A workflow execution activity that performs quality control on raw Illumina reads including quality trimming, artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant removal",
          "properties": {
@@ -4576,7 +4564,7 @@
             "has_input",
             "has_output"
          ],
-         "title": "ReadQCAnalysisActivity",
+         "title": "ReadQcAnalysisActivity",
          "type": "object"
       },
       "RelSampLocEnum": {
@@ -4980,46 +4968,6 @@
          "additionalProperties": false,
          "description": "A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.",
          "properties": {
-            "GOLD_sample_identifiers": {
-               "description": "identifiers for corresponding sample in GOLD",
-               "items": {
-                  "type": "string"
-               },
-               "pattern": "^GOLD:Gb[0-9]+$",
-               "type": "array"
-            },
-            "GOLD_study_identifiers": {
-               "description": "identifiers for corresponding project in GOLD",
-               "items": {
-                  "type": "string"
-               },
-               "pattern": "^GOLD:Gs[0-9]+$",
-               "type": "array"
-            },
-            "INSDC_SRA_ENA_study_identifiers": {
-               "description": "identifiers for corresponding project in INSDC SRA / ENA",
-               "items": {
-                  "type": "string"
-               },
-               "pattern": "^insdc.sra:(E|D|S)RP[0-9]{6,}$",
-               "type": "array"
-            },
-            "INSDC_bioproject_identifiers": {
-               "description": "identifiers for corresponding project in INSDC Bioproject",
-               "items": {
-                  "type": "string"
-               },
-               "pattern": "^bioproject:PRJ[DEN][A-Z][0-9]+$",
-               "type": "array"
-            },
-            "MGnify_project_identifiers": {
-               "description": "identifiers for corresponding project in MGnify",
-               "items": {
-                  "type": "string"
-               },
-               "pattern": "^mgnify.proj:[A-Z]+[0-9]+$",
-               "type": "array"
-            },
             "abstract": {
                "description": "The abstract of manuscript/grant associated with the entity; i.e., a summary of the resource.",
                "type": "string"
@@ -5089,6 +5037,22 @@
                },
                "type": "array"
             },
+            "gold_sample_identifiers": {
+               "description": "identifiers for corresponding sample in GOLD",
+               "items": {
+                  "type": "string"
+               },
+               "pattern": "^GOLD:Gb[0-9]+$",
+               "type": "array"
+            },
+            "gold_study_identifiers": {
+               "description": "identifiers for corresponding project in GOLD",
+               "items": {
+                  "type": "string"
+               },
+               "pattern": "^GOLD:Gs[0-9]+$",
+               "type": "array"
+            },
             "has_credit_associations": {
                "description": "This slot links a study to a credit association.  The credit association will be linked to a person value and to a CRediT Contributor Roles term. Overall semantics: person should get credit X for their participation in the study",
                "items": {
@@ -5098,6 +5062,24 @@
             },
             "id": {
                "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+               "type": "string"
+            },
+            "insdc_bioproject_identifiers": {
+               "description": "identifiers for corresponding project in INSDC Bioproject",
+               "pattern": "^bioproject:PRJ[DEN][A-Z][0-9]+$",
+               "type": "string"
+            },
+            "insdc_sra_ena_study_identifiers": {
+               "description": "identifiers for corresponding project in INSDC SRA / ENA",
+               "items": {
+                  "type": "string"
+               },
+               "pattern": "^insdc.sra:(E|D|S)RP[0-9]{6,}$",
+               "type": "array"
+            },
+            "mgnify_project_identifiers": {
+               "description": "identifiers for corresponding project in MGnify",
+               "pattern": "^mgnify.proj:[A-Z]+[0-9]+$",
                "type": "string"
             },
             "name": {
@@ -5662,7 +5644,7 @@
       "mags_activity_set": {
          "description": "This property links a database object to the set of MAGs analysis activities.",
          "items": {
-            "$ref": "#/$defs/MAGsAnalysisActivity"
+            "$ref": "#/$defs/MagsAnalysisActivity"
          },
          "type": "array"
       },
@@ -5707,15 +5689,11 @@
          "type": "array"
       },
       "metatranscriptome_activity_set": {
-         "description": "This property links a database object to the set of metatranscriptome analysis activities.",
+         "description": "TODO",
          "items": {
             "$ref": "#/$defs/MetatranscriptomeActivity"
          },
          "type": "array"
-      },
-      "nmdc_schema_version": {
-         "description": "TODO",
-         "type": "string"
       },
       "nom_analysis_activity_set": {
          "description": "This property links a database object to the set of natural organic matter (NOM) analysis activities.",
@@ -5737,17 +5715,17 @@
          },
          "type": "array"
       },
-      "read_QC_analysis_activity_set": {
-         "description": "This property links a database object to the set of read QC analysis activities.",
-         "items": {
-            "$ref": "#/$defs/ReadQCAnalysisActivity"
-         },
-         "type": "array"
-      },
       "read_based_taxonomy_analysis_activity_set": {
          "description": "This property links a database object to the set of read based analysis activities.",
          "items": {
             "$ref": "#/$defs/ReadBasedTaxonomyAnalysisActivity"
+         },
+         "type": "array"
+      },
+      "read_qc_analysis_activity_set": {
+         "description": "This property links a database object to the set of read QC analysis activities.",
+         "items": {
+            "$ref": "#/$defs/ReadQcAnalysisActivity"
          },
          "type": "array"
       },

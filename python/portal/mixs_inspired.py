@@ -1,5 +1,5 @@
 # Auto generated from mixs_inspired.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-09-14T10:11:39
+# Generation date: 2022-09-14T16:56:26
 # Schema: mixs_inspired
 #
 # id: https://microbiomedata/schema/mixs_inspired
@@ -69,17 +69,17 @@ slots.filter_method = Slot(uri=NMDC.filter_method, name="filter_method", curie=N
 slots.isotope_exposure = Slot(uri=NMDC.isotope_exposure, name="isotope_exposure", curie=NMDC.curie('isotope_exposure'),
                    model_uri=NMDC.isotope_exposure, domain=None, range=Optional[str])
 
-slots.micro_biomass_C_meth = Slot(uri=NMDC.micro_biomass_C_meth, name="micro_biomass_C_meth", curie=NMDC.curie('micro_biomass_C_meth'),
-                   model_uri=NMDC.micro_biomass_C_meth, domain=None, range=Optional[str])
+slots.micro_biomass_c_meth = Slot(uri=NMDC.micro_biomass_c_meth, name="micro_biomass_c_meth", curie=NMDC.curie('micro_biomass_c_meth'),
+                   model_uri=NMDC.micro_biomass_c_meth, domain=None, range=Optional[str])
 
-slots.micro_biomass_N_meth = Slot(uri=NMDC.micro_biomass_N_meth, name="micro_biomass_N_meth", curie=NMDC.curie('micro_biomass_N_meth'),
-                   model_uri=NMDC.micro_biomass_N_meth, domain=None, range=Optional[str])
+slots.micro_biomass_n_meth = Slot(uri=NMDC.micro_biomass_n_meth, name="micro_biomass_n_meth", curie=NMDC.curie('micro_biomass_n_meth'),
+                   model_uri=NMDC.micro_biomass_n_meth, domain=None, range=Optional[str])
 
-slots.microbial_biomass_C = Slot(uri=NMDC.microbial_biomass_C, name="microbial_biomass_C", curie=NMDC.curie('microbial_biomass_C'),
-                   model_uri=NMDC.microbial_biomass_C, domain=None, range=Optional[str])
+slots.microbial_biomass_c = Slot(uri=NMDC.microbial_biomass_c, name="microbial_biomass_c", curie=NMDC.curie('microbial_biomass_c'),
+                   model_uri=NMDC.microbial_biomass_c, domain=None, range=Optional[str])
 
-slots.microbial_biomass_N = Slot(uri=NMDC.microbial_biomass_N, name="microbial_biomass_N", curie=NMDC.curie('microbial_biomass_N'),
-                   model_uri=NMDC.microbial_biomass_N, domain=None, range=Optional[str])
+slots.microbial_biomass_n = Slot(uri=NMDC.microbial_biomass_n, name="microbial_biomass_n", curie=NMDC.curie('microbial_biomass_n'),
+                   model_uri=NMDC.microbial_biomass_n, domain=None, range=Optional[str])
 
 slots.non_microb_biomass = Slot(uri=NMDC.non_microb_biomass, name="non_microb_biomass", curie=NMDC.curie('non_microb_biomass'),
                    model_uri=NMDC.non_microb_biomass, domain=None, range=Optional[str])

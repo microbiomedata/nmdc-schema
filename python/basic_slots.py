@@ -1,5 +1,5 @@
 # Auto generated from basic_slots.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-09-14T10:11:35
+# Generation date: 2022-09-14T16:56:22
 # Schema: NMDC-Basic-Slots
 #
 # id: https://microbiomedata/schema/basic_slots
@@ -69,14 +69,14 @@ slots.type = Slot(uri=NMDC.type, name="type", curie=NMDC.curie('type'),
 slots.title = Slot(uri=NMDC.title, name="title", curie=NMDC.curie('title'),
                    model_uri=NMDC.title, domain=None, range=Optional[str])
 
-slots.alternative_titles = Slot(uri=NMDC.alternative_titles, name="alternative titles", curie=NMDC.curie('alternative_titles'),
+slots.alternative_titles = Slot(uri=NMDC.alternative_titles, name="alternative_titles", curie=NMDC.curie('alternative_titles'),
                    model_uri=NMDC.alternative_titles, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.alternative_names = Slot(uri=NMDC.alternative_names, name="alternative names", curie=NMDC.curie('alternative_names'),
+slots.alternative_names = Slot(uri=NMDC.alternative_names, name="alternative_names", curie=NMDC.curie('alternative_names'),
                    model_uri=NMDC.alternative_names, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.alternative_descriptions = Slot(uri=NMDC.alternative_descriptions, name="alternative descriptions", curie=NMDC.curie('alternative_descriptions'),
+slots.alternative_descriptions = Slot(uri=NMDC.alternative_descriptions, name="alternative_descriptions", curie=NMDC.curie('alternative_descriptions'),
                    model_uri=NMDC.alternative_descriptions, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.alternative_identifiers = Slot(uri=NMDC.alternative_identifiers, name="alternative identifiers", curie=NMDC.curie('alternative_identifiers'),
+slots.alternative_identifiers = Slot(uri=NMDC.alternative_identifiers, name="alternative_identifiers", curie=NMDC.curie('alternative_identifiers'),
                    model_uri=NMDC.alternative_identifiers, domain=None, range=Optional[Union[str, List[str]]])

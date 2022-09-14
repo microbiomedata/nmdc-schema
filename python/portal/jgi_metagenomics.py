@@ -1,5 +1,5 @@
 # Auto generated from jgi_metagenomics.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-09-14T10:11:37
+# Generation date: 2022-09-14T16:56:24
 # Schema: jgi_metagenomics
 #
 # id: https://microbiomedata/schema/jgi_metagenomics
@@ -108,8 +108,8 @@ slots.dna_cont_type = Slot(uri=NMDC.dna_cont_type, name="dna_cont_type", curie=N
 slots.dna_cont_well = Slot(uri=NMDC.dna_cont_well, name="dna_cont_well", curie=NMDC.curie('dna_cont_well'),
                    model_uri=NMDC.dna_cont_well, domain=None, range=Optional[str])
 
-slots.dna_container_ID = Slot(uri=NMDC.dna_container_ID, name="dna_container_ID", curie=NMDC.curie('dna_container_ID'),
-                   model_uri=NMDC.dna_container_ID, domain=None, range=Optional[str])
+slots.dna_container_id = Slot(uri=NMDC.dna_container_id, name="dna_container_id", curie=NMDC.curie('dna_container_id'),
+                   model_uri=NMDC.dna_container_id, domain=None, range=Optional[str])
 
 slots.dna_dnase = Slot(uri=NMDC.dna_dnase, name="dna_dnase", curie=NMDC.curie('dna_dnase'),
                    model_uri=NMDC.dna_dnase, domain=None, range=Optional[Union[str, "DnaDnaseEnum"]])
@@ -123,8 +123,8 @@ slots.dna_organisms = Slot(uri=NMDC.dna_organisms, name="dna_organisms", curie=N
 slots.dna_project_contact = Slot(uri=NMDC.dna_project_contact, name="dna_project_contact", curie=NMDC.curie('dna_project_contact'),
                    model_uri=NMDC.dna_project_contact, domain=None, range=Optional[str])
 
-slots.dna_samp_ID = Slot(uri=NMDC.dna_samp_ID, name="dna_samp_ID", curie=NMDC.curie('dna_samp_ID'),
-                   model_uri=NMDC.dna_samp_ID, domain=None, range=Optional[str])
+slots.dna_samp_id = Slot(uri=NMDC.dna_samp_id, name="dna_samp_id", curie=NMDC.curie('dna_samp_id'),
+                   model_uri=NMDC.dna_samp_id, domain=None, range=Optional[str])
 
 slots.dna_sample_format = Slot(uri=NMDC.dna_sample_format, name="dna_sample_format", curie=NMDC.curie('dna_sample_format'),
                    model_uri=NMDC.dna_sample_format, domain=None, range=Optional[Union[str, "DnaSampleFormatEnum"]])
@@ -135,8 +135,8 @@ slots.dna_sample_name = Slot(uri=NMDC.dna_sample_name, name="dna_sample_name", c
 slots.dna_seq_project = Slot(uri=NMDC.dna_seq_project, name="dna_seq_project", curie=NMDC.curie('dna_seq_project'),
                    model_uri=NMDC.dna_seq_project, domain=None, range=Optional[str])
 
-slots.dna_seq_project_PI = Slot(uri=NMDC.dna_seq_project_PI, name="dna_seq_project_PI", curie=NMDC.curie('dna_seq_project_PI'),
-                   model_uri=NMDC.dna_seq_project_PI, domain=None, range=Optional[str])
+slots.dna_seq_project_pi = Slot(uri=NMDC.dna_seq_project_pi, name="dna_seq_project_pi", curie=NMDC.curie('dna_seq_project_pi'),
+                   model_uri=NMDC.dna_seq_project_pi, domain=None, range=Optional[str])
 
 slots.dna_seq_project_name = Slot(uri=NMDC.dna_seq_project_name, name="dna_seq_project_name", curie=NMDC.curie('dna_seq_project_name'),
                    model_uri=NMDC.dna_seq_project_name, domain=None, range=Optional[str])
