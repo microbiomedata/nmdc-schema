@@ -1,5 +1,5 @@
 # Auto generated from emsl.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-09-12T13:30:05
+# Generation date: 2022-09-14T10:10:43
 # Schema: emsl
 #
 # id: https://microbiomedata/schema/emsl

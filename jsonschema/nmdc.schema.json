@@ -1505,9 +1505,9 @@
                "description": "TODO",
                "type": "string"
             },
-            "dissolving_process_set": {
+            "dissolving_activity_set": {
                "items": {
-                  "$ref": "#/$defs/DissolvingProcess"
+                  "$ref": "#/$defs/DissolvingActivity"
                },
                "type": "array"
             },
@@ -1542,9 +1542,9 @@
                },
                "type": "array"
             },
-            "material_sampling_process_set": {
+            "material_sampling_activity_set": {
                "items": {
-                  "$ref": "#/$defs/MaterialSamplingProcess"
+                  "$ref": "#/$defs/MaterialSamplingActivity"
                },
                "type": "array"
             },
@@ -1665,7 +1665,7 @@
          "title": "DeviceTypeEnum",
          "type": "string"
       },
-      "DissolvingProcess": {
+      "DissolvingActivity": {
          "additionalProperties": false,
          "description": "",
          "properties": {
@@ -1689,7 +1689,7 @@
             }
          },
          "required": [],
-         "title": "DissolvingProcess",
+         "title": "DissolvingActivity",
          "type": "object"
       },
       "DnaContTypeEnum": {
@@ -2529,17 +2529,17 @@
          "additionalProperties": false,
          "description": "",
          "properties": {
+            "activity_speed": {
+               "$ref": "#/$defs/QuantityValue"
+            },
+            "activity_temperature": {
+               "$ref": "#/$defs/QuantityValue"
+            },
+            "activity_time": {
+               "$ref": "#/$defs/QuantityValue"
+            },
             "device_type": {
                "$ref": "#/$defs/DeviceTypeEnum"
-            },
-            "process_speed": {
-               "$ref": "#/$defs/QuantityValue"
-            },
-            "process_temperature": {
-               "$ref": "#/$defs/QuantityValue"
-            },
-            "process_time": {
-               "$ref": "#/$defs/QuantityValue"
             }
          },
          "required": [],
@@ -2777,18 +2777,18 @@
          "title": "MaterialSample",
          "type": "object"
       },
-      "MaterialSamplingProcess": {
+      "MaterialSamplingActivity": {
          "additionalProperties": false,
          "description": "",
          "properties": {
             "amount_collected": {
                "$ref": "#/$defs/QuantityValue"
             },
+            "biosample_input": {
+               "type": "string"
+            },
             "collected_into": {
                "$ref": "#/$defs/MaterialContainer"
-            },
-            "material_input": {
-               "type": "string"
             },
             "material_output": {
                "type": "string"
@@ -2798,7 +2798,7 @@
             }
          },
          "required": [],
-         "title": "MaterialSamplingProcess",
+         "title": "MaterialSamplingActivity",
          "type": "object"
       },
       "MechStrucEnum": {
@@ -4895,7 +4895,9 @@
       "SolventEnum": {
          "description": "",
          "enum": [
-            "deionized_water"
+            "deionized_water",
+            "methanol",
+            "chloroform"
          ],
          "title": "SolventEnum",
          "type": "string"
@@ -5633,9 +5635,9 @@
          "description": "TODO",
          "type": "string"
       },
-      "dissolving_process_set": {
+      "dissolving_activity_set": {
          "items": {
-            "$ref": "#/$defs/DissolvingProcess"
+            "$ref": "#/$defs/DissolvingActivity"
          },
          "type": "array"
       },
@@ -5670,9 +5672,9 @@
          },
          "type": "array"
       },
-      "material_sampling_process_set": {
+      "material_sampling_activity_set": {
          "items": {
-            "$ref": "#/$defs/MaterialSamplingProcess"
+            "$ref": "#/$defs/MaterialSamplingActivity"
          },
          "type": "array"
       },
