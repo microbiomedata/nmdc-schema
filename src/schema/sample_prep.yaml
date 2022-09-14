@@ -138,7 +138,7 @@ slots:
   biosample_input:
     name: biosample_input
     title: biosample input
-    range: biosample
+    range: Biosample
 
   material_input:
     name: material_input
@@ -335,5 +335,5 @@ classes:
         todos:
           - constrain units
           - align with activity_time
-        range: quantity value
+        range: QuantityValue
         inlined: true
