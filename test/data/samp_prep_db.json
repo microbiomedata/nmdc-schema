@@ -1,13 +1,13 @@
 {
-  "dissolving_process_set": [
+  "dissolving_activity_set": [
     {
       "dissolution_aided_by": {
         "device_type": "orbital_shaker",
-        "process_speed": {
+        "activity_speed": {
           "has_unit": "RPM",
           "has_numeric_value": 800.0
         },
-        "process_time": {
+        "activity_time": {
           "has_unit": "hours",
           "has_numeric_value": 2.0
         }
@@ -50,7 +50,7 @@
       "description": "something at the end of a reaction"
     }
   ],
-  "material_sampling_process_set": [
+  "material_sampling_activity_set": [
     {
       "amount_collected": {
         "has_unit": "grams",
@@ -63,7 +63,7 @@
         },
         "container_type": "screw_top_conical"
       },
-      "material_input": "monet_data:soil_1",
+      "biosample_input": "monet_data:soil_1",
       "material_output": "monet_data:somextract_6",
       "sampling_method": "weighing"
     }
@@ -74,11 +74,11 @@
       "material_output": "monet_data:derive_5",
       "reaction_aided_by": {
         "device_type": "thermomixer",
-        "process_temperature": {
+        "activity_temperature": {
           "has_unit": "degrees Celsius",
           "has_numeric_value": 37.0
         },
-        "process_time": {
+        "activity_time": {
           "has_unit": "hours",
           "has_numeric_value": 1.5
         }

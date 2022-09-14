@@ -1,0 +1,54 @@
+dissolving_activity_set:
+- dissolution_aided_by:
+    device_type: orbital_shaker
+    activity_speed:
+      has_unit: RPM
+      has_numeric_value: 800.0
+    activity_time:
+      has_unit: hours
+      has_numeric_value: 2.0
+  dissolution_reagent: deionized_water
+  dissolution_volume:
+    has_unit: mL
+    has_numeric_value: 30.0
+  dissolved_in:
+    container_size:
+      has_unit: mL
+      has_numeric_value: 50.0
+    container_type: screw_top_conical
+  material_input: monet_data:somextract_6
+  material_output: monet_data:somextract_7
+material_sample_set:
+- id: monet_data:soil_1
+  description: a soil biosample
+- id: monet_data:somextract_6
+  description: a 6 gram aliquot of monet_data:soil_1
+- id: monet_data:somextract_7
+  description: monet_data:somextract_6 dissolved in 30 mL of water
+- id: monet_data:derive_4
+  description: something at the beginning of a reaction
+- id: monet_data:derive_5
+  description: something at the end of a reaction
+material_sampling_activity_set:
+- amount_collected:
+    has_unit: grams
+    has_numeric_value: 6.0
+  collected_into:
+    container_size:
+      has_unit: mL
+      has_numeric_value: 50.0
+    container_type: screw_top_conical
+  biosample_input: monet_data:soil_1
+  material_output: monet_data:somextract_6
+  sampling_method: weighing
+reaction_activity_set:
+- material_input: monet_data:derive_4
+  material_output: monet_data:derive_5
+  reaction_aided_by:
+    device_type: thermomixer
+    activity_temperature:
+      has_unit: degrees Celsius
+      has_numeric_value: 37.0
+    activity_time:
+      has_unit: hours
+      has_numeric_value: 1.5
