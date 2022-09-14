@@ -40,7 +40,7 @@ imports:
   - workflow_execution_activity
 
 classes:
-  genome feature:
+  GenomeFeature:
     description: >-
       A feature localized to an interval along a genome
     comments:
@@ -53,18 +53,18 @@ classes:
         range: string ## make this an object
         required: true
       type:
-        range: ontology class
+        range: OntologyClass
         description: >-
           A type from the sequence ontology
         slot_uri: rdf:type
       start:
-        is_a: gff coordinate
+        is_a: gff_coordinate
         description: The start of the feature in positive 1-based integer coordinates
         required: true
         close_mappings:
           - biolink:start_interbase_coordinate
       end:
-        is_a: gff coordinate
+        is_a: gff_coordinate
         description: The end of the feature in positive 1-based integer coordinates
         comments: >-
           - "constraint: end > start"
@@ -87,38 +87,38 @@ classes:
         exact_mappings:
           - biolink:phase
       encodes:
-        range: gene product
+        range: GeneProduct
         description: >-
           The gene product encoded by this feature.
           Typically this is used for a CDS feature or gene feature which will encode a protein.
           It can also be used by a nc transcript ot gene feature that encoded a ncRNA
         required: false
-      feature type:
+      feature_type:
         description: >-
           TODO: Yuri to write
 
-  functional annotation term:
+  FunctionalAnnotationTerm:
     aliases:
       - function
-      - functional annotation
-    is_a: ontology class
+      - FunctionalAnnotation
+    is_a: OntologyClass
     description: >-
       Abstract grouping class for any term/descriptor that can be applied to a functional unit of a genome (protein, ncRNA, complex).
     abstract: true
     todos:
       - decide if this should be used for product naming
 
-  pathway:
+  Pathway:
     aliases:
       - biological process
       - metabolic pathway
       - signaling pathway
-    is_a: functional annotation term
+    is_a: FunctionalAnnotationTerm
     description: >-
       A pathway is a sequence of steps/reactions carried out by an organism or community of organisms
     slot_usage:
-      has part:
-        range: reaction
+      has_part:
+        range: Reaction
         multivalued: true
         description: >-
           A pathway can be broken down to a series of reaction step
@@ -128,34 +128,34 @@ classes:
     exact_mappings:
       - biolink:Pathway
 
-  reaction:
-    is_a: functional annotation term
+  Reaction:
+    is_a: FunctionalAnnotationTerm
     description: >-
       An individual biochemical transformation carried out by a functional unit of an organism, in which a collection of substrates are transformed into a collection of products.
       Can also represent transporters
     slot_usage:
-      left participants:
-        is_a: has participants
+      left_participants:
+        is_a: has_participants
         multivalued: true
-        range: reaction participant
-      right participants:
-        is_a: has participants
+        range: ReactionParticipant
+      right_participants:
+        is_a: has_participants
         multivalued: true
-        range: reaction participant
+        range: ReactionParticipant
       direction:
         description: >-
           One of l->r, r->l, bidirectional, neutral
-      smarts string:
+      smarts_string:
         range: string
-      is diastereoselective:
+      is_diastereoselective:
         range: boolean
-      is stereo:
+      is_stereo:
         range: boolean
-      is balanced:
+      is_balanced:
         range: boolean
-      is transport:
+      is_transport:
         range: boolean
-      is fully characterized:
+      is_fully_characterized:
         range: boolean
         description: >-
           False if includes R-groups
@@ -171,17 +171,17 @@ classes:
     exact_mappings:
       - biolink:MolecularActivity
 
-  reaction participant:
+  ReactionParticipant:
     description: >-
       Instances of this link a reaction to a chemical entity participant
     slot_usage:
       chemical:
-        range: chemical entity
+        range: ChemicalEntity
       stoichiometry:
         range: integer
 
-  orthology group:
-    is_a: functional annotation term
+  OrthologyGroup:
+    is_a: FunctionalAnnotationTerm
     description: >-
       A set of genes or gene products in which all members are orthologous
     id_prefixes:
@@ -195,7 +195,7 @@ classes:
     exact_mappings:
       - biolink:GeneFamily
 
-  functional annotation:
+  FunctionalAnnotation:
     description: >-
       An assignment of a function term (e.g. reaction or pathway) that is executed by a gene product, or which the gene product plays an active role in.
       Functional annotations can be assigned manually by curators, or automatically in workflows. In the context of NMDC, all function annotation is performed
@@ -206,23 +206,23 @@ classes:
       - https://img.jgi.doe.gov/docs/functional-annotation.pdf
       - https://github.com/microbiomedata/mg_annotation/blob/master/functional-annotation.wdl
     slots:
-      - was generated by
+      - was_generated_by
       - subject
-      - has function
+      - has_function
     slot_usage:
-      has function: # was: id
+      has_function: # was: id
         pattern: "^(KEGG_PATHWAY:\\w{2,4}\\d{5}|KEGG.REACTION:R\\d+|RHEA:\\d{5}|MetaCyc:[A-Za-z0-9+_.%-:]+|EC:\\d{1,2}(\\.\\d{0,3}){0,3}|GO:\\d{7}|MetaNetX:(MNXR\\d+|EMPTY)|SEED:\\w+|KEGG\\.ORTHOLOGY:K\\d+|EGGNOG:\\w+|PFAM:PF\\d{5}|TIGRFAM:TIGR\\d+|SUPFAM:\\w+|CATH:[1-6]\\.[0-9]+\\.[0-9]+\\.[0-9]+|PANTHER.FAMILY:PTHR\\d{5}(\\:SF\\d{1,3})?)$"
         comments:
           - "Still missing patterns for COG and RetroRules."
           - "These patterns aren't tied to the listed prefixes. A discussion about that possibility had been started, including the question of whether these lists are intended to be open examples or closed"
       type:
-        range: ontology class
+        range: OntologyClass
         description: >-
           TODO
-      was generated by:
+      was_generated_by:
         description: >-
           provenance for the annotation.
-        range: metagenome annotation activity
+        range: MetagenomeAnnotationActivity
         notes:
           - Note to be consistent with the rest of the NMDC schema we use the PROV annotation model, rather than GPAD
     narrow_mappings:
@@ -230,7 +230,7 @@ classes:
 
 slots:
 
-  has part: { }
+  has_part: { }
 
   chemical:
     description: from reaction participant class
@@ -238,21 +238,21 @@ slots:
     description: from reaction participant class
 
   subject:
-    range: gene product
+    range: GeneProduct
 
-  has function:
-    range: string # was: functional annotation term
+  has_function:
+    range: string # was: FunctionalAnnotationTerm
     comments:
       - "the range for has_function was asserted as functional_annotation_term,"
       - "but is actually taking string arguments in the Polyneme MongoDB,"
       - "and those are frequently fulltext, not CURIEs. MAM 2021-06-23"
 
-  has participants:
+  has_participants:
     abstract: true
     exact_mappings:
       - RO:0000057
 
-  gff coordinate:
+  gff_coordinate:
     range: integer
     minimum_value: 1
     description: A positive 1-based integer coordinate indicating start or end
@@ -262,16 +262,16 @@ slots:
   direction:
   encodes:
   end:
-  feature type:
-  is balanced:
-  is diastereoselective:
-  is fully characterized:
-  is stereo:
-  is transport:
-  left participants:
+  feature_type:
+  is_balanced:
+  is_diastereoselective:
+  is_fully_characterized:
+  is_stereo:
+  is_transport:
+  left_participants:
   phase:
-  right participants:
+  right_participants:
   seqid:
-  smarts string:
+  smarts_string:
   start:
   strand:

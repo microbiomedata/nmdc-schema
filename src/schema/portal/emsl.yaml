@@ -24,8 +24,8 @@ enums:
       water_extract_soil:
         text: water_extract_soil
 slots:
-  EMSL_store_temp:
-    name: EMSL_store_temp
+  emsl_store_temp:
+    name: emsl_store_temp
     description: The temperature at which the sample should be stored upon delivery to EMSL
     title: EMSL sample storage temperature, deg. C
     comments:
@@ -40,8 +40,8 @@ slots:
     slot_group: EMSL
     required: false
     recommended: true
-  project_ID:
-    name: project_ID
+  project_id:
+    name: project_id
     description: Proposal IDs or names associated with dataset
     title: project ID
     from_schema: https://example.com/nmdc_dh

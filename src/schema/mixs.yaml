@@ -2009,9 +2009,9 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000122
     multivalued: false
-    range: quantity value
-  core field:
-    name: core field
+    range: QuantityValue
+  core_field:
+    name: core_field
     description: basic fields
     from_schema: http://w3id.org/mixs/terms
     see_also:
@@ -2042,7 +2042,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0001009
     multivalued: false
-    range: text value
+    range: TextValue
   additional_info:
     name: additional_info
     aliases:
@@ -2065,7 +2065,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000300
     multivalued: false
-    range: text value
+    range: TextValue
   address:
     name: address
     aliases:
@@ -2087,7 +2087,7 @@ slots:
     string_serialization: '{integer}{text}'
     slot_uri: mixs:0000218
     multivalued: false
-    range: text value
+    range: TextValue
   adj_room:
     name: adj_room
     aliases:
@@ -2110,7 +2110,7 @@ slots:
     string_serialization: '{text};{integer}'
     slot_uri: mixs:0000219
     multivalued: false
-    range: text value
+    range: TextValue
   aero_struc:
     name: aero_struc
     aliases:
@@ -2136,7 +2136,7 @@ slots:
     string_serialization: '[plane|glider]'
     slot_uri: mixs:0000773
     multivalued: false
-    range: text value
+    range: TextValue
   agrochem_addition:
     name: agrochem_addition
     aliases:
@@ -2163,7 +2163,7 @@ slots:
     string_serialization: '{text};{float} {unit};{timestamp}'
     slot_uri: mixs:0000639
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   air_temp:
     name: air_temp
     aliases:
@@ -2189,7 +2189,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000124
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   air_temp_regm:
     name: air_temp_regm
     aliases:
@@ -2219,7 +2219,7 @@ slots:
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0000551
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   al_sat:
     name: al_sat
     aliases:
@@ -2243,7 +2243,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000607
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   al_sat_meth:
     name: al_sat_meth
     aliases:
@@ -2265,7 +2265,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000324
     multivalued: false
-    range: text value
+    range: TextValue
   alkalinity:
     name: alkalinity
     aliases:
@@ -2292,7 +2292,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000421
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   alkalinity_method:
     name: alkalinity_method
     aliases:
@@ -2316,7 +2316,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000298
     multivalued: false
-    range: text value
+    range: TextValue
   alkyl_diethers:
     name: alkyl_diethers
     aliases:
@@ -2342,7 +2342,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000490
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   alt:
     name: alt
     aliases:
@@ -2367,9 +2367,9 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000094
     multivalued: false
-    range: quantity value
-  environment field:
-    name: environment field
+    range: QuantityValue
+  environment_field:
+    name: environment_field
     description: field describing environmental aspect of a sample
     from_schema: http://w3id.org/mixs/terms
     see_also:
@@ -2400,7 +2400,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000172
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   ammonium:
     name: ammonium
     aliases:
@@ -2426,7 +2426,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000427
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   amount_light:
     name: amount_light
     aliases:
@@ -2451,7 +2451,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000140
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   ances_data:
     name: ances_data
     aliases:
@@ -2477,7 +2477,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000247
     multivalued: false
-    range: text value
+    range: TextValue
   annual_precpt:
     name: annual_precpt
     aliases:
@@ -2502,7 +2502,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000644
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   annual_temp:
     name: annual_temp
     aliases:
@@ -2528,7 +2528,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000642
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   antibiotic_regm:
     name: antibiotic_regm
     aliases:
@@ -2559,7 +2559,7 @@ slots:
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0000553
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   api:
     name: api
     aliases:
@@ -2585,7 +2585,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000157
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   arch_struc:
     name: arch_struc
     aliases:
@@ -2609,7 +2609,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000774
     multivalued: false
-    range: text value
+    range: TextValue
   aromatics_pc:
     name: aromatics_pc
     aliases:
@@ -2638,7 +2638,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000133
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   asphaltenes_pc:
     name: asphaltenes_pc
     aliases:
@@ -2667,7 +2667,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000135
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   atmospheric_data:
     name: atmospheric_data
     aliases:
@@ -2691,7 +2691,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0001097
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   avg_dew_point:
     name: avg_dew_point
     aliases:
@@ -2718,7 +2718,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000141
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   avg_occup:
     name: avg_occup
     aliases:
@@ -2742,7 +2742,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000775
     multivalued: false
-    range: text value
+    range: TextValue
   avg_temp:
     name: avg_temp
     aliases:
@@ -2769,7 +2769,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000142
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   bac_prod:
     name: bac_prod
     aliases:
@@ -2795,7 +2795,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000683
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   bac_resp:
     name: bac_resp
     aliases:
@@ -2821,7 +2821,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000684
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   bacteria_carb_prod:
     name: bacteria_carb_prod
     aliases:
@@ -2847,7 +2847,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000173
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   barometric_press:
     name: barometric_press
     aliases:
@@ -2874,7 +2874,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000096
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   basin:
     name: basin
     aliases:
@@ -2896,7 +2896,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000290
     multivalued: false
-    range: text value
+    range: TextValue
   bathroom_count:
     name: bathroom_count
     aliases:
@@ -2919,7 +2919,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000776
     multivalued: false
-    range: text value
+    range: TextValue
   bedroom_count:
     name: bedroom_count
     aliases:
@@ -2942,7 +2942,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000777
     multivalued: false
-    range: text value
+    range: TextValue
   benzene:
     name: benzene
     aliases:
@@ -2966,7 +2966,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000153
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   biochem_oxygen_dem:
     name: biochem_oxygen_dem
     aliases:
@@ -2992,7 +2992,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000653
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   biocide:
     name: biocide
     aliases:
@@ -3017,7 +3017,7 @@ slots:
     string_serialization: '{text};{text};{timestamp}'
     slot_uri: mixs:0001011
     multivalued: false
-    range: text value
+    range: TextValue
   biocide_admin_method:
     name: biocide_admin_method
     aliases:
@@ -3044,7 +3044,7 @@ slots:
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration};{duration}'
     slot_uri: mixs:0000456
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   biol_stat:
     name: biol_stat
     aliases:
@@ -3067,7 +3067,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000858
     multivalued: false
-    range: text value
+    range: TextValue
   biomass:
     name: biomass
     aliases:
@@ -3095,7 +3095,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000174
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   biotic_regm:
     name: biotic_regm
     aliases:
@@ -3120,7 +3120,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0001038
     multivalued: false
-    range: text value
+    range: TextValue
   biotic_relationship:
     name: biotic_relationship
     aliases:
@@ -3143,9 +3143,9 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000028
     multivalued: false
-    range: text value
-  nucleic acid sequence source field:
-    name: nucleic acid sequence source field
+    range: TextValue
+  nucleic_acid_sequence_source_field:
+    name: nucleic_acid_sequence_source_field
     from_schema: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
@@ -3175,7 +3175,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000175
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   blood_press_diast:
     name: blood_press_diast
     aliases:
@@ -3196,10 +3196,10 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     slot_uri: mixs:0000258
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   blood_press_syst:
     name: blood_press_syst
     aliases:
@@ -3220,10 +3220,10 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     slot_uri: mixs:0000259
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   bromide:
     name: bromide
     aliases:
@@ -3249,7 +3249,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000176
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   build_docs:
     name: build_docs
     aliases:
@@ -3272,7 +3272,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000787
     multivalued: false
-    range: text value
+    range: TextValue
   build_occup_type:
     name: build_occup_type
     aliases:
@@ -3296,7 +3296,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000761
     multivalued: false
-    range: text value
+    range: TextValue
   building_setting:
     name: building_setting
     aliases:
@@ -3319,7 +3319,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000768
     multivalued: false
-    range: text value
+    range: TextValue
   built_struc_age:
     name: built_struc_age
     aliases:
@@ -3345,7 +3345,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000145
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   built_struc_set:
     name: built_struc_set
     aliases:
@@ -3370,7 +3370,7 @@ slots:
     string_serialization: '[urban|rural]'
     slot_uri: mixs:0000778
     multivalued: false
-    range: text value
+    range: TextValue
   built_struc_type:
     name: built_struc_type
     aliases:
@@ -3393,7 +3393,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000721
     multivalued: false
-    range: text value
+    range: TextValue
   calcium:
     name: calcium
     aliases:
@@ -3419,7 +3419,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000432
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   carb_dioxide:
     name: carb_dioxide
     aliases:
@@ -3445,7 +3445,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000097
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   carb_monoxide:
     name: carb_monoxide
     aliases:
@@ -3471,7 +3471,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000098
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   carb_nitro_ratio:
     name: carb_nitro_ratio
     aliases:
@@ -3494,7 +3494,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000310
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   ceil_area:
     name: ceil_area
     aliases:
@@ -3520,7 +3520,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000148
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   ceil_cond:
     name: ceil_cond
     aliases:
@@ -3544,7 +3544,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000779
     multivalued: false
-    range: text value
+    range: TextValue
   ceil_finish_mat:
     name: ceil_finish_mat
     aliases:
@@ -3567,7 +3567,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000780
     multivalued: false
-    range: text value
+    range: TextValue
   ceil_struc:
     name: ceil_struc
     aliases:
@@ -3591,7 +3591,7 @@ slots:
     string_serialization: '[wood frame|concrete]'
     slot_uri: mixs:0000782
     multivalued: false
-    range: text value
+    range: TextValue
   ceil_texture:
     name: ceil_texture
     aliases:
@@ -3614,7 +3614,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000783
     multivalued: false
-    range: text value
+    range: TextValue
   ceil_thermal_mass:
     name: ceil_thermal_mass
     aliases:
@@ -3641,7 +3641,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000143
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   ceil_type:
     name: ceil_type
     aliases:
@@ -3664,7 +3664,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000784
     multivalued: false
-    range: text value
+    range: TextValue
   ceil_water_mold:
     name: ceil_water_mold
     aliases:
@@ -3688,7 +3688,7 @@ slots:
     string_serialization: '[presence of mold visible|no presence of mold visible]'
     slot_uri: mixs:0000781
     multivalued: false
-    range: text value
+    range: TextValue
   chem_administration:
     name: chem_administration
     aliases:
@@ -3715,7 +3715,7 @@ slots:
     string_serialization: '{termLabel} {[termID]};{timestamp}'
     slot_uri: mixs:0000751
     multivalued: false
-    range: controlled term value
+    range: ControlledTermValue
   chem_mutagen:
     name: chem_mutagen
     aliases:
@@ -3745,7 +3745,7 @@ slots:
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0000555
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   chem_oxygen_dem:
     name: chem_oxygen_dem
     aliases:
@@ -3771,7 +3771,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000656
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   chem_treat_method:
     name: chem_treat_method
     aliases:
@@ -3794,7 +3794,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration};{duration};{duration}'
     slot_uri: mixs:0000457
     multivalued: false
@@ -3826,7 +3826,7 @@ slots:
     string_serialization: '{text};{text};{timestamp}'
     slot_uri: mixs:0001012
     multivalued: false
-    range: text value
+    range: TextValue
   chimera_check:
     name: chimera_check
     aliases:
@@ -3849,9 +3849,9 @@ slots:
     string_serialization: '{software};{version};{parameters}'
     slot_uri: mixs:0000052
     multivalued: false
-    range: text value
-  sequencing field:
-    name: sequencing field
+    range: TextValue
+  sequencing_field:
+    name: sequencing_field
     from_schema: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
@@ -3881,7 +3881,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000429
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   chlorophyll:
     name: chlorophyll
     aliases:
@@ -3907,7 +3907,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000177
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   climate_environment:
     name: climate_environment
     aliases:
@@ -3934,7 +3934,7 @@ slots:
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0001040
     multivalued: false
-    range: text value
+    range: TextValue
   collection_date:
     name: collection_date
     aliases:
@@ -3957,7 +3957,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000011
     multivalued: false
-    range: timestamp value
+    range: TimestampValue
   conduc:
     name: conduc
     aliases:
@@ -3983,7 +3983,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000692
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   cool_syst_id:
     name: cool_syst_id
     aliases:
@@ -4006,7 +4006,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000785
     multivalued: false
-    range: text value
+    range: TextValue
   crop_rotation:
     name: crop_rotation
     aliases:
@@ -4030,7 +4030,7 @@ slots:
     string_serialization: '{boolean};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0000318
     multivalued: false
-    range: text value
+    range: TextValue
   cult_root_med:
     name: cult_root_med
     aliases:
@@ -4057,7 +4057,7 @@ slots:
     string_serialization: '{text}|{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0001041
     multivalued: false
-    range: text value
+    range: TextValue
   cur_land_use:
     name: cur_land_use
     aliases:
@@ -4080,7 +4080,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0001080
     multivalued: false
-    range: text value
+    range: TextValue
   cur_vegetation:
     name: cur_vegetation
     aliases:
@@ -4103,7 +4103,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000312
     multivalued: false
-    range: text value
+    range: TextValue
   cur_vegetation_meth:
     name: cur_vegetation_meth
     aliases:
@@ -4125,7 +4125,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000314
     multivalued: false
-    range: text value
+    range: TextValue
   date_last_rain:
     name: date_last_rain
     aliases:
@@ -4148,7 +4148,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000786
     multivalued: false
-    range: timestamp value
+    range: TimestampValue
   density:
     name: density
     aliases:
@@ -4175,7 +4175,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000435
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   depos_env:
     name: depos_env
     aliases:
@@ -4199,7 +4199,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000992
     multivalued: false
-    range: text value
+    range: TextValue
   depth:
     name: depth
     aliases:
@@ -4221,7 +4221,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000018
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   dew_point:
     name: dew_point
     aliases:
@@ -4248,7 +4248,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000129
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diether_lipids:
     name: diether_lipids
     aliases:
@@ -4276,7 +4276,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000178
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_carb_dioxide:
     name: diss_carb_dioxide
     aliases:
@@ -4303,7 +4303,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000436
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_hydrogen:
     name: diss_hydrogen
     aliases:
@@ -4329,7 +4329,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000179
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_inorg_carb:
     name: diss_inorg_carb
     aliases:
@@ -4356,7 +4356,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000434
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_inorg_nitro:
     name: diss_inorg_nitro
     aliases:
@@ -4382,7 +4382,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000698
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_inorg_phosp:
     name: diss_inorg_phosp
     aliases:
@@ -4408,7 +4408,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000106
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_iron:
     name: diss_iron
     aliases:
@@ -4432,7 +4432,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000139
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_org_carb:
     name: diss_org_carb
     aliases:
@@ -4459,7 +4459,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000433
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_org_nitro:
     name: diss_org_nitro
     aliases:
@@ -4486,7 +4486,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000162
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_oxygen:
     name: diss_oxygen
     aliases:
@@ -4512,7 +4512,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000119
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_oxygen_fluid:
     name: diss_oxygen_fluid
     aliases:
@@ -4537,7 +4537,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000438
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   door_comp_type:
     name: door_comp_type
     aliases:
@@ -4560,7 +4560,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000795
     multivalued: false
-    range: text value
+    range: TextValue
   door_cond:
     name: door_cond
     aliases:
@@ -4583,7 +4583,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000788
     multivalued: false
-    range: text value
+    range: TextValue
   door_direct:
     name: door_direct
     aliases:
@@ -4606,7 +4606,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000789
     multivalued: false
-    range: text value
+    range: TextValue
   door_loc:
     name: door_loc
     aliases:
@@ -4629,7 +4629,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000790
     multivalued: false
-    range: text value
+    range: TextValue
   door_mat:
     name: door_mat
     aliases:
@@ -4652,7 +4652,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000791
     multivalued: false
-    range: text value
+    range: TextValue
   door_move:
     name: door_move
     aliases:
@@ -4675,7 +4675,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000792
     multivalued: false
-    range: text value
+    range: TextValue
   door_size:
     name: door_size
     aliases:
@@ -4701,7 +4701,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000158
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   door_type:
     name: door_type
     aliases:
@@ -4724,7 +4724,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000794
     multivalued: false
-    range: text value
+    range: TextValue
   door_type_metal:
     name: door_type_metal
     aliases:
@@ -4747,7 +4747,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000796
     multivalued: false
-    range: text value
+    range: TextValue
   door_type_wood:
     name: door_type_wood
     aliases:
@@ -4770,7 +4770,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000797
     multivalued: false
-    range: text value
+    range: TextValue
   door_water_mold:
     name: door_water_mold
     aliases:
@@ -4794,7 +4794,7 @@ slots:
     string_serialization: '[presence of mold visible|no presence of mold visible]'
     slot_uri: mixs:0000793
     multivalued: false
-    range: text value
+    range: TextValue
   down_par:
     name: down_par
     aliases:
@@ -4822,7 +4822,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000703
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   drainage_class:
     name: drainage_class
     aliases:
@@ -4845,7 +4845,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0001085
     multivalued: false
-    range: text value
+    range: TextValue
   drawings:
     name: drawings
     aliases:
@@ -4869,7 +4869,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000798
     multivalued: false
-    range: text value
+    range: TextValue
   efficiency_percent:
     name: efficiency_percent
     aliases:
@@ -4893,7 +4893,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000657
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   elev:
     name: elev
     aliases:
@@ -4916,7 +4916,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000093
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   elevator:
     name: elevator
     aliases:
@@ -4939,7 +4939,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000799
     multivalued: false
-    range: text value
+    range: TextValue
   emulsions:
     name: emulsions
     aliases:
@@ -4966,7 +4966,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000660
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   env_broad_scale:
     name: env_broad_scale
     aliases:
@@ -4994,7 +4994,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: mixs:0000012
     multivalued: false
-    range: controlled term value
+    range: ControlledTermValue
   env_local_scale:
     name: env_local_scale
     aliases:
@@ -5024,7 +5024,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: mixs:0000013
     multivalued: false
-    range: controlled term value
+    range: ControlledTermValue
   env_medium:
     name: env_medium
     aliases:
@@ -5054,7 +5054,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: mixs:0000014
     multivalued: false
-    range: controlled term value
+    range: ControlledTermValue
   escalator:
     name: escalator
     aliases:
@@ -5077,7 +5077,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000800
     multivalued: false
-    range: text value
+    range: TextValue
   ethylbenzene:
     name: ethylbenzene
     aliases:
@@ -5101,7 +5101,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000155
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   exp_duct:
     name: exp_duct
     aliases:
@@ -5125,7 +5125,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000144
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   exp_pipe:
     name: exp_pipe
     aliases:
@@ -5146,7 +5146,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000220
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   experimental_factor:
     name: experimental_factor
     aliases:
@@ -5172,9 +5172,9 @@ slots:
     string_serialization: '{termLabel} {[termID]}|{text}'
     slot_uri: mixs:0000008
     multivalued: false
-    range: controlled term value
-  investigation field:
-    name: investigation field
+    range: ControlledTermValue
+  investigation_field:
+    name: investigation_field
     description: field describing aspect of the investigation/study to which the sample
       belongs
     from_schema: http://w3id.org/mixs/terms
@@ -5201,7 +5201,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000170
     multivalued: false
-    range: text value
+    range: TextValue
   ext_wall_orient:
     name: ext_wall_orient
     aliases:
@@ -5224,7 +5224,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000817
     multivalued: false
-    range: text value
+    range: TextValue
   ext_window_orient:
     name: ext_window_orient
     aliases:
@@ -5247,7 +5247,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000818
     multivalued: false
-    range: text value
+    range: TextValue
   extreme_event:
     name: extreme_event
     aliases:
@@ -5268,7 +5268,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000320
     multivalued: false
-    range: timestamp value
+    range: TimestampValue
   fao_class:
     name: fao_class
     aliases:
@@ -5292,7 +5292,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0001083
     multivalued: false
-    range: text value
+    range: TextValue
   fertilizer_regm:
     name: fertilizer_regm
     aliases:
@@ -5323,7 +5323,7 @@ slots:
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0000556
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   field:
     name: field
     aliases:
@@ -5345,7 +5345,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000291
     multivalued: false
-    range: text value
+    range: TextValue
   filter_type:
     name: filter_type
     aliases:
@@ -5368,7 +5368,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000765
     multivalued: false
-    range: text value
+    range: TextValue
   fire:
     name: fire
     aliases:
@@ -5389,7 +5389,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0001086
     multivalued: false
-    range: timestamp value
+    range: TimestampValue
   fireplace_type:
     name: fireplace_type
     aliases:
@@ -5413,7 +5413,7 @@ slots:
     string_serialization: '[gas burning|wood burning]'
     slot_uri: mixs:0000802
     multivalued: false
-    range: text value
+    range: TextValue
   flooding:
     name: flooding
     aliases:
@@ -5434,7 +5434,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000319
     multivalued: false
-    range: timestamp value
+    range: TimestampValue
   floor_age:
     name: floor_age
     aliases:
@@ -5458,7 +5458,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000164
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   floor_area:
     name: floor_area
     aliases:
@@ -5482,7 +5482,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000165
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   floor_cond:
     name: floor_cond
     aliases:
@@ -5506,7 +5506,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000803
     multivalued: false
-    range: text value
+    range: TextValue
   floor_count:
     name: floor_count
     aliases:
@@ -5528,7 +5528,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000225
     multivalued: false
-    range: text value
+    range: TextValue
   floor_finish_mat:
     name: floor_finish_mat
     aliases:
@@ -5551,7 +5551,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000804
     multivalued: false
-    range: text value
+    range: TextValue
   floor_struc:
     name: floor_struc
     aliases:
@@ -5575,7 +5575,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000806
     multivalued: false
-    range: text value
+    range: TextValue
   floor_thermal_mass:
     name: floor_thermal_mass
     aliases:
@@ -5599,7 +5599,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000166
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   floor_water_mold:
     name: floor_water_mold
     aliases:
@@ -5622,7 +5622,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000805
     multivalued: false
-    range: text value
+    range: TextValue
   fluor:
     name: fluor
     aliases:
@@ -5648,7 +5648,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000704
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   freq_clean:
     name: freq_clean
     aliases:
@@ -5670,7 +5670,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000226
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   freq_cook:
     name: freq_cook
     aliases:
@@ -5691,7 +5691,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000227
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   fungicide_regm:
     name: fungicide_regm
     aliases:
@@ -5721,7 +5721,7 @@ slots:
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0000557
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   furniture:
     name: furniture
     aliases:
@@ -5744,7 +5744,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000807
     multivalued: false
-    range: text value
+    range: TextValue
   gaseous_environment:
     name: gaseous_environment
     aliases:
@@ -5774,7 +5774,7 @@ slots:
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0000558
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   gaseous_substances:
     name: gaseous_substances
     aliases:
@@ -5800,7 +5800,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000661
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   gender_restroom:
     name: gender_restroom
     aliases:
@@ -5823,7 +5823,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000808
     multivalued: false
-    range: text value
+    range: TextValue
   genetic_mod:
     name: genetic_mod
     aliases:
@@ -5850,7 +5850,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
     slot_uri: mixs:0000859
     multivalued: false
-    range: text value
+    range: TextValue
   geo_loc_name:
     name: geo_loc_name
     aliases:
@@ -5875,7 +5875,7 @@ slots:
     string_serialization: '{term}: {term}, {text}'
     slot_uri: mixs:0000010
     multivalued: false
-    range: text value
+    range: TextValue
   glucosidase_act:
     name: glucosidase_act
     aliases:
@@ -5901,7 +5901,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000137
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   gravidity:
     name: gravidity
     aliases:
@@ -5926,7 +5926,7 @@ slots:
     string_serialization: '{boolean};{timestamp}'
     slot_uri: mixs:0000875
     multivalued: false
-    range: text value
+    range: TextValue
   gravity:
     name: gravity
     aliases:
@@ -5957,7 +5957,7 @@ slots:
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0000559
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   growth_facil:
     name: growth_facil
     aliases:
@@ -5983,7 +5983,7 @@ slots:
     string_serialization: '{text}|{termLabel} {[termID]}'
     slot_uri: mixs:0001043
     multivalued: false
-    range: controlled term value
+    range: ControlledTermValue
   growth_habit:
     name: growth_habit
     aliases:
@@ -6006,7 +6006,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0001044
     multivalued: false
-    range: text value
+    range: TextValue
   growth_hormone_regm:
     name: growth_hormone_regm
     aliases:
@@ -6037,7 +6037,7 @@ slots:
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0000560
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   hall_count:
     name: hall_count
     aliases:
@@ -6058,7 +6058,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000228
     multivalued: false
-    range: text value
+    range: TextValue
   handidness:
     name: handidness
     aliases:
@@ -6081,7 +6081,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000809
     multivalued: false
-    range: text value
+    range: TextValue
   hc_produced:
     name: hc_produced
     aliases:
@@ -6105,7 +6105,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000989
     multivalued: false
-    range: text value
+    range: TextValue
   hcr:
     name: hcr
     aliases:
@@ -6134,7 +6134,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000988
     multivalued: false
-    range: text value
+    range: TextValue
   hcr_fw_salinity:
     name: hcr_fw_salinity
     aliases:
@@ -6159,7 +6159,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000406
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   hcr_geol_age:
     name: hcr_geol_age
     aliases:
@@ -6183,7 +6183,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000993
     multivalued: false
-    range: text value
+    range: TextValue
   hcr_pressure:
     name: hcr_pressure
     aliases:
@@ -6208,7 +6208,7 @@ slots:
     string_serialization: '{float} - {float} {unit}'
     slot_uri: mixs:0000395
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   hcr_temp:
     name: hcr_temp
     aliases:
@@ -6235,7 +6235,7 @@ slots:
     string_serialization: '{float} - {float} {unit}'
     slot_uri: mixs:0000393
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   heat_cool_type:
     name: heat_cool_type
     aliases:
@@ -6258,7 +6258,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000766
     multivalued: false
-    range: text value
+    range: TextValue
   heat_deliv_loc:
     name: heat_deliv_loc
     aliases:
@@ -6281,7 +6281,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000810
     multivalued: false
-    range: text value
+    range: TextValue
   heat_sys_deliv_meth:
     name: heat_sys_deliv_meth
     aliases:
@@ -6301,7 +6301,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '[conductive|radiant]'
     slot_uri: mixs:0000812
     multivalued: false
@@ -6326,7 +6326,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000833
     multivalued: false
-    range: text value
+    range: TextValue
   heavy_metals:
     name: heavy_metals
     aliases:
@@ -6354,7 +6354,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000652
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   heavy_metals_meth:
     name: heavy_metals_meth
     aliases:
@@ -6376,7 +6376,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000343
     multivalued: false
-    range: text value
+    range: TextValue
   height_carper_fiber:
     name: height_carper_fiber
     aliases:
@@ -6400,7 +6400,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000167
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   herbicide_regm:
     name: herbicide_regm
     aliases:
@@ -6431,7 +6431,7 @@ slots:
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0000561
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   horizon:
     name: horizon
     aliases:
@@ -6454,7 +6454,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0001082
     multivalued: false
-    range: text value
+    range: TextValue
   horizon_meth:
     name: horizon_meth
     aliases:
@@ -6476,7 +6476,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000321
     multivalued: false
-    range: text value
+    range: TextValue
   host_age:
     name: host_age
     aliases:
@@ -6503,7 +6503,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000255
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   host_body_habitat:
     name: host_body_habitat
     aliases:
@@ -6527,7 +6527,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000866
     multivalued: false
-    range: text value
+    range: TextValue
   host_body_product:
     name: host_body_product
     aliases:
@@ -6554,7 +6554,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: mixs:0000888
     multivalued: false
-    range: controlled term value
+    range: ControlledTermValue
   host_body_site:
     name: host_body_site
     aliases:
@@ -6581,7 +6581,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: mixs:0000867
     multivalued: false
-    range: controlled term value
+    range: ControlledTermValue
   host_body_temp:
     name: host_body_temp
     aliases:
@@ -6607,7 +6607,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000274
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   host_color:
     name: host_color
     aliases:
@@ -6629,7 +6629,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000260
     multivalued: false
-    range: text value
+    range: TextValue
   host_common_name:
     name: host_common_name
     aliases:
@@ -6653,7 +6653,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000248
     multivalued: false
-    range: text value
+    range: TextValue
   host_diet:
     name: host_diet
     aliases:
@@ -6678,7 +6678,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000869
     multivalued: false
-    range: text value
+    range: TextValue
   host_dry_mass:
     name: host_dry_mass
     aliases:
@@ -6704,7 +6704,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000257
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   host_family_relation:
     name: host_family_relation
     aliases:
@@ -6725,7 +6725,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{text};{text}'
     slot_uri: mixs:0000872
     multivalued: true
@@ -6753,7 +6753,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000365
     multivalued: false
-    range: text value
+    range: TextValue
   host_growth_cond:
     name: host_growth_cond
     aliases:
@@ -6777,7 +6777,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
     slot_uri: mixs:0000871
     multivalued: false
-    range: text value
+    range: TextValue
   host_height:
     name: host_height
     aliases:
@@ -6803,7 +6803,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000264
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   host_last_meal:
     name: host_last_meal
     aliases:
@@ -6828,7 +6828,7 @@ slots:
     string_serialization: '{text};{duration}'
     slot_uri: mixs:0000870
     multivalued: false
-    range: text value
+    range: TextValue
   host_length:
     name: host_length
     aliases:
@@ -6854,7 +6854,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000256
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   host_life_stage:
     name: host_life_stage
     aliases:
@@ -6878,7 +6878,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000251
     multivalued: false
-    range: text value
+    range: TextValue
   host_phenotype:
     name: host_phenotype
     aliases:
@@ -6904,7 +6904,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: mixs:0000874
     multivalued: false
-    range: controlled term value
+    range: ControlledTermValue
   host_sex:
     name: host_sex
     aliases:
@@ -6927,7 +6927,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000811
     multivalued: false
-    range: text value
+    range: TextValue
   host_shape:
     name: host_shape
     aliases:
@@ -6951,7 +6951,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000261
     multivalued: false
-    range: text value
+    range: TextValue
   host_subject_id:
     name: host_subject_id
     aliases:
@@ -6975,7 +6975,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000861
     multivalued: false
-    range: text value
+    range: TextValue
   host_subspecf_genlin:
     name: host_subspecf_genlin
     aliases:
@@ -7000,7 +7000,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{rank name}:{text}'
     slot_uri: mixs:0001318
     multivalued: true
@@ -7028,7 +7028,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000252
     multivalued: false
-    range: text value
+    range: TextValue
   host_symbiont:
     name: host_symbiont
     aliases:
@@ -7049,7 +7049,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{text}'
     slot_uri: mixs:0001298
     multivalued: true
@@ -7077,7 +7077,7 @@ slots:
     string_serialization: '{NCBI taxid}'
     slot_uri: mixs:0000250
     multivalued: false
-    range: text value
+    range: TextValue
   host_tot_mass:
     name: host_tot_mass
     aliases:
@@ -7103,7 +7103,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000263
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   host_wet_mass:
     name: host_wet_mass
     aliases:
@@ -7129,7 +7129,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000567
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   humidity:
     name: humidity
     aliases:
@@ -7155,7 +7155,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000100
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   humidity_regm:
     name: humidity_regm
     aliases:
@@ -7186,7 +7186,7 @@ slots:
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0000568
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   indoor_space:
     name: indoor_space
     aliases:
@@ -7210,7 +7210,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000763
     multivalued: false
-    range: text value
+    range: TextValue
   indoor_surf:
     name: indoor_surf
     aliases:
@@ -7233,7 +7233,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000764
     multivalued: false
-    range: text value
+    range: TextValue
   indust_eff_percent:
     name: indust_eff_percent
     aliases:
@@ -7258,7 +7258,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000662
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   inorg_particles:
     name: inorg_particles
     aliases:
@@ -7284,7 +7284,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000664
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   inside_lux:
     name: inside_lux
     aliases:
@@ -7308,7 +7308,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000168
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   int_wall_cond:
     name: int_wall_cond
     aliases:
@@ -7332,7 +7332,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000813
     multivalued: false
-    range: text value
+    range: TextValue
   iw_bt_date_well:
     name: iw_bt_date_well
     aliases:
@@ -7356,7 +7356,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0001010
     multivalued: false
-    range: timestamp value
+    range: TimestampValue
   iwf:
     name: iwf
     aliases:
@@ -7381,7 +7381,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000455
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   last_clean:
     name: last_clean
     aliases:
@@ -7404,7 +7404,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000814
     multivalued: false
-    range: timestamp value
+    range: TimestampValue
   lat_lon:
     name: lat_lon
     aliases:
@@ -7426,7 +7426,7 @@ slots:
     string_serialization: '{float} {float}'
     slot_uri: mixs:0000009
     multivalued: false
-    range: geolocation value
+    range: GeolocationValue
   light_intensity:
     name: light_intensity
     aliases:
@@ -7452,7 +7452,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000706
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   light_regm:
     name: light_regm
     aliases:
@@ -7480,7 +7480,7 @@ slots:
     string_serialization: '{text};{float} {unit};{float} {unit}'
     slot_uri: mixs:0000569
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   light_type:
     name: light_type
     aliases:
@@ -7506,7 +7506,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000769
     multivalued: false
-    range: text value
+    range: TextValue
   link_addit_analys:
     name: link_addit_analys
     aliases:
@@ -7528,7 +7528,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000340
     multivalued: false
-    range: text value
+    range: TextValue
   link_class_info:
     name: link_class_info
     aliases:
@@ -7550,7 +7550,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000329
     multivalued: false
-    range: text value
+    range: TextValue
   link_climate_info:
     name: link_climate_info
     aliases:
@@ -7572,7 +7572,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000328
     multivalued: false
-    range: text value
+    range: TextValue
   lithology:
     name: lithology
     aliases:
@@ -7596,7 +7596,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000990
     multivalued: false
-    range: text value
+    range: TextValue
   local_class:
     name: local_class
     aliases:
@@ -7618,7 +7618,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000330
     multivalued: false
-    range: text value
+    range: TextValue
   local_class_meth:
     name: local_class_meth
     aliases:
@@ -7640,7 +7640,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000331
     multivalued: false
-    range: text value
+    range: TextValue
   magnesium:
     name: magnesium
     aliases:
@@ -7667,7 +7667,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000431
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   max_occup:
     name: max_occup
     aliases:
@@ -7688,7 +7688,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000229
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   mean_frict_vel:
     name: mean_frict_vel
     aliases:
@@ -7714,7 +7714,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000498
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   mean_peak_frict_vel:
     name: mean_peak_frict_vel
     aliases:
@@ -7740,7 +7740,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000502
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   mech_struc:
     name: mech_struc
     aliases:
@@ -7763,7 +7763,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000815
     multivalued: false
-    range: text value
+    range: TextValue
   mechanical_damage:
     name: mechanical_damage
     aliases:
@@ -7788,7 +7788,7 @@ slots:
     string_serialization: '{text};{text}'
     slot_uri: mixs:0001052
     multivalued: false
-    range: text value
+    range: TextValue
   methane:
     name: methane
     aliases:
@@ -7814,7 +7814,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000101
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   micro_biomass_meth:
     name: micro_biomass_meth
     aliases:
@@ -7832,7 +7832,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000339
     multivalued: false
@@ -7862,7 +7862,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000650
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   microbial_biomass_meth:
     name: microbial_biomass_meth
     aliases:
@@ -7884,7 +7884,7 @@ slots:
     string_serialization: '{PMID|DOI|URL}'
     slot_uri: mixs:0000339
     multivalued: false
-    range: text value
+    range: TextValue
   mineral_nutr_regm:
     name: mineral_nutr_regm
     aliases:
@@ -7916,7 +7916,7 @@ slots:
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0000570
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   misc_param:
     name: misc_param
     aliases:
@@ -7941,7 +7941,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000752
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   n_alkanes:
     name: n_alkanes
     aliases:
@@ -7968,7 +7968,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000503
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   nitrate:
     name: nitrate
     aliases:
@@ -7994,7 +7994,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000425
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   nitrite:
     name: nitrite
     aliases:
@@ -8020,7 +8020,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000426
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   nitro:
     name: nitro
     aliases:
@@ -8046,7 +8046,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000504
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   non_min_nutr_regm:
     name: non_min_nutr_regm
     aliases:
@@ -8074,7 +8074,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0000571
     multivalued: true
@@ -8101,7 +8101,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000038
     multivalued: false
-    range: text value
+    range: TextValue
   nucl_acid_ext:
     name: nucl_acid_ext
     aliases:
@@ -8124,7 +8124,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000037
     multivalued: false
-    range: text value
+    range: TextValue
   number_pets:
     name: number_pets
     aliases:
@@ -8145,7 +8145,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000231
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   number_plants:
     name: number_plants
     aliases:
@@ -8166,7 +8166,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000230
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   number_resident:
     name: number_resident
     aliases:
@@ -8187,7 +8187,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000232
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   occup_density_samp:
     name: occup_density_samp
     aliases:
@@ -8208,7 +8208,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000217
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   occup_document:
     name: occup_document
     aliases:
@@ -8231,7 +8231,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000816
     multivalued: false
-    range: text value
+    range: TextValue
   occup_samp:
     name: occup_samp
     aliases:
@@ -8254,7 +8254,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000772
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   org_carb:
     name: org_carb
     aliases:
@@ -8280,7 +8280,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000508
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   org_count_qpcr_info:
     name: org_count_qpcr_info
     aliases:
@@ -8307,7 +8307,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{text};FWD:{dna};REV:{dna};initial denaturation:degrees_minutes;denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
       elongation:degrees_minutes; total cycles'
     slot_uri: mixs:0000099
@@ -8338,7 +8338,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000204
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   org_nitro:
     name: org_nitro
     aliases:
@@ -8364,7 +8364,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000205
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   org_particles:
     name: org_particles
     aliases:
@@ -8390,7 +8390,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000665
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   organism_count:
     name: organism_count
     aliases:
@@ -8420,7 +8420,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000103
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   owc_tvdss:
     name: owc_tvdss
     aliases:
@@ -8444,7 +8444,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000405
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   oxy_stat_samp:
     name: oxy_stat_samp
     aliases:
@@ -8467,7 +8467,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000753
     multivalued: false
-    range: text value
+    range: TextValue
   oxygen:
     name: oxygen
     aliases:
@@ -8493,7 +8493,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000104
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   part_org_carb:
     name: part_org_carb
     aliases:
@@ -8519,7 +8519,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000515
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   part_org_nitro:
     name: part_org_nitro
     aliases:
@@ -8545,7 +8545,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000719
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   particle_class:
     name: particle_class
     aliases:
@@ -8572,7 +8572,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000206
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   pcr_cond:
     name: pcr_cond
     aliases:
@@ -8596,7 +8596,7 @@ slots:
       elongation:degrees_minutes;total cycles
     slot_uri: mixs:0000049
     multivalued: false
-    range: text value
+    range: TextValue
   pcr_primers:
     name: pcr_primers
     aliases:
@@ -8620,7 +8620,7 @@ slots:
     string_serialization: FWD:{dna};REV:{dna}
     slot_uri: mixs:0000046
     multivalued: false
-    range: text value
+    range: TextValue
   permeability:
     name: permeability
     aliases:
@@ -8646,7 +8646,7 @@ slots:
     string_serialization: '{integer} - {integer} {unit}'
     slot_uri: mixs:0000404
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   perturbation:
     name: perturbation
     aliases:
@@ -8673,7 +8673,7 @@ slots:
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0000754
     multivalued: false
-    range: text value
+    range: TextValue
   pesticide_regm:
     name: pesticide_regm
     aliases:
@@ -8704,7 +8704,7 @@ slots:
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0000573
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   petroleum_hydrocarb:
     name: petroleum_hydrocarb
     aliases:
@@ -8730,7 +8730,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000516
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   ph:
     name: ph
     aliases:
@@ -8754,7 +8754,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0001001
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   ph_meth:
     name: ph_meth
     aliases:
@@ -8776,7 +8776,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0001106
     multivalued: false
-    range: text value
+    range: TextValue
   ph_regm:
     name: ph_regm
     aliases:
@@ -8803,7 +8803,7 @@ slots:
     string_serialization: '{float};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0001056
     multivalued: false
-    range: text value
+    range: TextValue
   phaeopigments:
     name: phaeopigments
     aliases:
@@ -8830,7 +8830,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000180
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   phosphate:
     name: phosphate
     aliases:
@@ -8856,7 +8856,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000505
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   phosplipid_fatt_acid:
     name: phosplipid_fatt_acid
     aliases:
@@ -8883,7 +8883,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000181
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   photon_flux:
     name: photon_flux
     aliases:
@@ -8909,7 +8909,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000725
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   plant_growth_med:
     name: plant_growth_med
     aliases:
@@ -8936,7 +8936,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0001057
     multivalued: false
-    range: controlled term value
+    range: ControlledTermValue
   plant_product:
     name: plant_product
     aliases:
@@ -8960,7 +8960,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0001058
     multivalued: false
-    range: text value
+    range: TextValue
   plant_sex:
     name: plant_sex
     aliases:
@@ -8984,7 +8984,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0001059
     multivalued: false
-    range: text value
+    range: TextValue
   plant_struc:
     name: plant_struc
     aliases:
@@ -9011,7 +9011,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: mixs:0001060
     multivalued: false
-    range: controlled term value
+    range: ControlledTermValue
   pollutants:
     name: pollutants
     aliases:
@@ -9040,7 +9040,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000107
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   pool_dna_extracts:
     name: pool_dna_extracts
     aliases:
@@ -9065,7 +9065,7 @@ slots:
     string_serialization: '{boolean};{integer}'
     slot_uri: mixs:0000325
     multivalued: false
-    range: text value
+    range: TextValue
   porosity:
     name: porosity
     aliases:
@@ -9091,7 +9091,7 @@ slots:
     string_serialization: '{float} - {float} {unit}'
     slot_uri: mixs:0000211
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   potassium:
     name: potassium
     aliases:
@@ -9117,7 +9117,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000430
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   pour_point:
     name: pour_point
     aliases:
@@ -9144,7 +9144,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000127
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   pre_treatment:
     name: pre_treatment
     aliases:
@@ -9167,7 +9167,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000348
     multivalued: false
-    range: text value
+    range: TextValue
   pres_animal_insect:
     name: pres_animal_insect
     aliases:
@@ -9188,7 +9188,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     slot_uri: mixs:0000819
     multivalued: false
     range: string
@@ -9218,7 +9218,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000412
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   prev_land_use_meth:
     name: prev_land_use_meth
     aliases:
@@ -9236,7 +9236,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000316
     multivalued: false
@@ -9262,7 +9262,7 @@ slots:
     string_serialization: '{text};{timestamp}'
     slot_uri: mixs:0000315
     multivalued: false
-    range: text value
+    range: TextValue
   previous_land_use_meth:
     name: previous_land_use_meth
     aliases:
@@ -9284,7 +9284,7 @@ slots:
     string_serialization: '{PMID|DOI|URL}'
     slot_uri: mixs:0000316
     multivalued: false
-    range: text value
+    range: TextValue
   primary_prod:
     name: primary_prod
     aliases:
@@ -9311,7 +9311,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000728
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   primary_treatment:
     name: primary_treatment
     aliases:
@@ -9335,7 +9335,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000349
     multivalued: false
-    range: text value
+    range: TextValue
   prod_rate:
     name: prod_rate
     aliases:
@@ -9359,7 +9359,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000452
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   prod_start_date:
     name: prod_start_date
     aliases:
@@ -9382,7 +9382,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0001008
     multivalued: false
-    range: timestamp value
+    range: TimestampValue
   profile_position:
     name: profile_position
     aliases:
@@ -9406,7 +9406,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0001084
     multivalued: false
-    range: text value
+    range: TextValue
   quad_pos:
     name: quad_pos
     aliases:
@@ -9429,7 +9429,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000820
     multivalued: false
-    range: text value
+    range: TextValue
   radiation_regm:
     name: radiation_regm
     aliases:
@@ -9460,7 +9460,7 @@ slots:
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0000575
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   rainfall_regm:
     name: rainfall_regm
     aliases:
@@ -9490,7 +9490,7 @@ slots:
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0000576
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   reactor_type:
     name: reactor_type
     aliases:
@@ -9514,7 +9514,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000350
     multivalued: false
-    range: text value
+    range: TextValue
   redox_potential:
     name: redox_potential
     aliases:
@@ -9541,7 +9541,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000182
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   rel_air_humidity:
     name: rel_air_humidity
     aliases:
@@ -9568,7 +9568,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000121
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   rel_humidity_out:
     name: rel_humidity_out
     aliases:
@@ -9594,7 +9594,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000188
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   rel_samp_loc:
     name: rel_samp_loc
     aliases:
@@ -9617,7 +9617,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000821
     multivalued: false
-    range: text value
+    range: TextValue
   rel_to_oxygen:
     name: rel_to_oxygen
     aliases:
@@ -9638,7 +9638,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000015
     multivalued: false
-    range: text value
+    range: TextValue
   reservoir:
     name: reservoir
     aliases:
@@ -9660,7 +9660,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000303
     multivalued: false
-    range: text value
+    range: TextValue
   resins_pc:
     name: resins_pc
     aliases:
@@ -9689,7 +9689,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000134
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   room_air_exch_rate:
     name: room_air_exch_rate
     aliases:
@@ -9713,7 +9713,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000169
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   room_architec_elem:
     name: room_architec_elem
     aliases:
@@ -9732,7 +9732,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{text}'
     slot_uri: mixs:0000233
     multivalued: false
@@ -9759,7 +9759,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000822
     multivalued: false
-    range: text value
+    range: TextValue
   room_connected:
     name: room_connected
     aliases:
@@ -9782,7 +9782,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000826
     multivalued: false
-    range: text value
+    range: TextValue
   room_count:
     name: room_count
     aliases:
@@ -9804,7 +9804,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000234
     multivalued: false
-    range: text value
+    range: TextValue
   room_dim:
     name: room_dim
     aliases:
@@ -9829,7 +9829,7 @@ slots:
     string_serialization: '{integer} {unit} x {integer} {unit} x {integer} {unit}'
     slot_uri: mixs:0000192
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   room_door_dist:
     name: room_door_dist
     aliases:
@@ -9855,7 +9855,7 @@ slots:
     string_serialization: '{integer} {unit}'
     slot_uri: mixs:0000193
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   room_door_share:
     name: room_door_share
     aliases:
@@ -9878,7 +9878,7 @@ slots:
     string_serialization: '{text};{integer}'
     slot_uri: mixs:0000242
     multivalued: false
-    range: text value
+    range: TextValue
   room_hallway:
     name: room_hallway
     aliases:
@@ -9901,7 +9901,7 @@ slots:
     string_serialization: '{text};{integer}'
     slot_uri: mixs:0000238
     multivalued: false
-    range: text value
+    range: TextValue
   room_loc:
     name: room_loc
     aliases:
@@ -9924,7 +9924,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000823
     multivalued: false
-    range: text value
+    range: TextValue
   room_moist_dam_hist:
     name: room_moist_dam_hist
     aliases:
@@ -9943,7 +9943,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     slot_uri: mixs:0000235
     multivalued: false
     range: integer
@@ -9971,7 +9971,7 @@ slots:
     string_serialization: '{integer} {unit}'
     slot_uri: mixs:0000194
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   room_occup:
     name: room_occup
     aliases:
@@ -9992,7 +9992,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000236
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   room_samp_pos:
     name: room_samp_pos
     aliases:
@@ -10016,7 +10016,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000824
     multivalued: false
-    range: text value
+    range: TextValue
   room_type:
     name: room_type
     aliases:
@@ -10040,7 +10040,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000825
     multivalued: false
-    range: text value
+    range: TextValue
   room_vol:
     name: room_vol
     aliases:
@@ -10065,7 +10065,7 @@ slots:
     string_serialization: '{integer} {unit}'
     slot_uri: mixs:0000195
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   room_wall_share:
     name: room_wall_share
     aliases:
@@ -10088,7 +10088,7 @@ slots:
     string_serialization: '{text};{integer}'
     slot_uri: mixs:0000243
     multivalued: false
-    range: text value
+    range: TextValue
   room_window_count:
     name: room_window_count
     aliases:
@@ -10109,7 +10109,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000237
     multivalued: false
-    range: text value
+    range: TextValue
   root_cond:
     name: root_cond
     aliases:
@@ -10134,7 +10134,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
     slot_uri: mixs:0001061
     multivalued: false
-    range: text value
+    range: TextValue
   root_med_carbon:
     name: root_med_carbon
     aliases:
@@ -10161,7 +10161,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000577
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   root_med_macronutr:
     name: root_med_macronutr
     aliases:
@@ -10189,7 +10189,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000578
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   root_med_micronutr:
     name: root_med_micronutr
     aliases:
@@ -10217,7 +10217,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000579
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   root_med_ph:
     name: root_med_ph
     aliases:
@@ -10240,7 +10240,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0001062
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   root_med_regl:
     name: root_med_regl
     aliases:
@@ -10268,7 +10268,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000581
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   root_med_solid:
     name: root_med_solid
     aliases:
@@ -10293,7 +10293,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0001063
     multivalued: false
-    range: text value
+    range: TextValue
   root_med_suppl:
     name: root_med_suppl
     aliases:
@@ -10322,7 +10322,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000580
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   salinity:
     name: salinity
     aliases:
@@ -10353,7 +10353,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000183
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   salinity_meth:
     name: salinity_meth
     aliases:
@@ -10375,7 +10375,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000341
     multivalued: false
-    range: text value
+    range: TextValue
   salt_regm:
     name: salt_regm
     aliases:
@@ -10406,7 +10406,7 @@ slots:
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0000582
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   samp_capt_status:
     name: samp_capt_status
     aliases:
@@ -10429,7 +10429,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000860
     multivalued: false
-    range: text value
+    range: TextValue
   samp_collec_device:
     name: samp_collec_device
     aliases:
@@ -10448,7 +10448,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: nucleic acid sequence source field
+    is_a: nucleic_acid_sequence_source_field
     string_serialization: '{termLabel} {[termID]}|{text}'
     slot_uri: mixs:0000002
     multivalued: false
@@ -10469,7 +10469,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: nucleic acid sequence source field
+    is_a: nucleic_acid_sequence_source_field
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
     slot_uri: mixs:0001225
     multivalued: false
@@ -10499,7 +10499,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}|{text}'
     slot_uri: mixs:0000002
     multivalued: false
-    range: text value
+    range: TextValue
   samp_collect_point:
     name: samp_collect_point
     aliases:
@@ -10521,7 +10521,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     slot_uri: mixs:0001015
     multivalued: false
     range: samp_collect_point_enum
@@ -10548,7 +10548,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000249
     multivalued: false
-    range: text value
+    range: TextValue
   samp_floor:
     name: samp_floor
     aliases:
@@ -10571,7 +10571,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000828
     multivalued: false
-    range: text value
+    range: TextValue
   samp_loc_corr_rate:
     name: samp_loc_corr_rate
     aliases:
@@ -10602,7 +10602,7 @@ slots:
     string_serialization: '{float} - {float} {unit}'
     slot_uri: mixs:0000136
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   samp_mat_process:
     name: samp_mat_process
     aliases:
@@ -10625,7 +10625,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000016
     multivalued: false
-    range: controlled term value
+    range: ControlledTermValue
   samp_md:
     name: samp_md
     aliases:
@@ -10656,7 +10656,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000413
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   samp_name:
     name: samp_name
     aliases:
@@ -10679,7 +10679,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: investigation field
+    is_a: investigation_field
     string_serialization: '{text}'
     slot_uri: mixs:0001107
     multivalued: false
@@ -10709,7 +10709,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000463
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   samp_room_id:
     name: samp_room_id
     aliases:
@@ -10731,7 +10731,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000244
     multivalued: false
-    range: text value
+    range: TextValue
   samp_size:
     name: samp_size
     aliases:
@@ -10755,7 +10755,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000001
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   samp_sort_meth:
     name: samp_sort_meth
     aliases:
@@ -10780,7 +10780,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000216
     multivalued: false
-    range: text value
+    range: TextValue
   samp_store_dur:
     name: samp_store_dur
     aliases:
@@ -10804,7 +10804,7 @@ slots:
     string_serialization: '{duration}'
     slot_uri: mixs:0000116
     multivalued: false
-    range: text value
+    range: TextValue
   samp_store_loc:
     name: samp_store_loc
     aliases:
@@ -10828,7 +10828,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000755
     multivalued: false
-    range: text value
+    range: TextValue
   samp_store_temp:
     name: samp_store_temp
     aliases:
@@ -10854,7 +10854,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000110
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   samp_subtype:
     name: samp_subtype
     aliases:
@@ -10879,7 +10879,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000999
     multivalued: false
-    range: text value
+    range: TextValue
   samp_time_out:
     name: samp_time_out
     aliases:
@@ -10903,7 +10903,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000196
     multivalued: false
-    range: text value
+    range: TextValue
   samp_transport_cond:
     name: samp_transport_cond
     aliases:
@@ -10931,7 +10931,7 @@ slots:
     string_serialization: '{float} {unit};{float} {unit}'
     slot_uri: mixs:0000410
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   samp_tvdss:
     name: samp_tvdss
     aliases:
@@ -10958,7 +10958,7 @@ slots:
     string_serialization: '{float}-{float} {unit}'
     slot_uri: mixs:0000409
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   samp_type:
     name: samp_type
     aliases:
@@ -10987,7 +10987,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: mixs:0000998
     multivalued: false
-    range: text value
+    range: TextValue
   samp_vol_we_dna_ext:
     name: samp_vol_we_dna_ext
     aliases:
@@ -11012,7 +11012,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000111
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   samp_weather:
     name: samp_weather
     aliases:
@@ -11035,7 +11035,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000827
     multivalued: false
-    range: text value
+    range: TextValue
   samp_well_name:
     name: samp_well_name
     aliases:
@@ -11057,7 +11057,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000296
     multivalued: false
-    range: text value
+    range: TextValue
   saturates_pc:
     name: saturates_pc
     aliases:
@@ -11086,7 +11086,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000131
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   season:
     name: season
     aliases:
@@ -11112,7 +11112,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: mixs:0000829
     multivalued: false
-    range: text value
+    range: TextValue
   season_environment:
     name: season_environment
     aliases:
@@ -11139,7 +11139,7 @@ slots:
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0001068
     multivalued: false
-    range: text value
+    range: TextValue
   season_precpt:
     name: season_precpt
     aliases:
@@ -11164,7 +11164,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000645
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   season_temp:
     name: season_temp
     aliases:
@@ -11190,7 +11190,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000643
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   season_use:
     name: season_use
     aliases:
@@ -11213,7 +11213,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000830
     multivalued: false
-    range: text value
+    range: TextValue
   secondary_treatment:
     name: secondary_treatment
     aliases:
@@ -11236,7 +11236,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000351
     multivalued: false
-    range: text value
+    range: TextValue
   sediment_type:
     name: sediment_type
     aliases:
@@ -11259,7 +11259,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0001078
     multivalued: false
-    range: text value
+    range: TextValue
   seq_meth:
     name: seq_meth
     aliases:
@@ -11281,7 +11281,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}|{text}'
     slot_uri: mixs:0000050
     multivalued: false
-    range: text value
+    range: TextValue
   seq_quality_check:
     name: seq_quality_check
     aliases:
@@ -11305,7 +11305,7 @@ slots:
     string_serialization: '[none|manually edited]'
     slot_uri: mixs:0000051
     multivalued: false
-    range: text value
+    range: TextValue
   sewage_type:
     name: sewage_type
     aliases:
@@ -11327,7 +11327,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000215
     multivalued: false
-    range: text value
+    range: TextValue
   shad_dev_water_mold:
     name: shad_dev_water_mold
     aliases:
@@ -11347,7 +11347,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '[presence of mold visible|no presence of mold visible]'
     slot_uri: mixs:0000834
     multivalued: false
@@ -11374,7 +11374,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000831
     multivalued: false
-    range: text value
+    range: TextValue
   shading_device_loc:
     name: shading_device_loc
     aliases:
@@ -11398,7 +11398,7 @@ slots:
     string_serialization: '[exterior|interior]'
     slot_uri: mixs:0000832
     multivalued: false
-    range: text value
+    range: TextValue
   shading_device_mat:
     name: shading_device_mat
     aliases:
@@ -11420,7 +11420,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000245
     multivalued: false
-    range: text value
+    range: TextValue
   shading_device_type:
     name: shading_device_type
     aliases:
@@ -11443,7 +11443,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000835
     multivalued: false
-    range: text value
+    range: TextValue
   sieving:
     name: sieving
     aliases:
@@ -11466,7 +11466,7 @@ slots:
     string_serialization: '{{text}|{float} {unit}};{float} {unit}'
     slot_uri: mixs:0000322
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   silicate:
     name: silicate
     aliases:
@@ -11492,7 +11492,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000184
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   size_frac:
     name: size_frac
     aliases:
@@ -11513,7 +11513,7 @@ slots:
     string_serialization: '{float}-{float} {unit}'
     slot_uri: mixs:0000017
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   size_frac_low:
     name: size_frac_low
     aliases:
@@ -11540,7 +11540,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000735
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   size_frac_up:
     name: size_frac_up
     aliases:
@@ -11567,7 +11567,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000736
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   slope_aspect:
     name: slope_aspect
     aliases:
@@ -11594,7 +11594,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000647
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   slope_gradient:
     name: slope_gradient
     aliases:
@@ -11620,7 +11620,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000646
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   sludge_retent_time:
     name: sludge_retent_time
     aliases:
@@ -11644,7 +11644,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000669
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   sodium:
     name: sodium
     aliases:
@@ -11670,7 +11670,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000428
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   soil_horizon:
     name: soil_horizon
     aliases:
@@ -11692,7 +11692,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     slot_uri: mixs:0001082
     multivalued: false
     range: soil_horizon_enum
@@ -11716,10 +11716,10 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     slot_uri: mixs:0000335
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   soil_texture_meth:
     name: soil_texture_meth
     aliases:
@@ -11737,7 +11737,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000336
     multivalued: false
@@ -11767,7 +11767,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: mixs:0000332
     multivalued: false
-    range: text value
+    range: TextValue
   soil_type_meth:
     name: soil_type_meth
     aliases:
@@ -11790,7 +11790,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000334
     multivalued: false
-    range: text value
+    range: TextValue
   solar_irradiance:
     name: solar_irradiance
     aliases:
@@ -11818,7 +11818,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000112
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   soluble_inorg_mat:
     name: soluble_inorg_mat
     aliases:
@@ -11844,7 +11844,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000672
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   soluble_org_mat:
     name: soluble_org_mat
     aliases:
@@ -11870,7 +11870,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000673
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   soluble_react_phosp:
     name: soluble_react_phosp
     aliases:
@@ -11896,7 +11896,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000738
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   source_mat_id:
     name: source_mat_id
     aliases:
@@ -11929,7 +11929,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000026
     multivalued: false
-    range: text value
+    range: TextValue
   space_typ_state:
     name: space_typ_state
     aliases:
@@ -11953,7 +11953,7 @@ slots:
     string_serialization: '[typically occupied|typically unoccupied]'
     slot_uri: mixs:0000770
     multivalued: false
-    range: text value
+    range: TextValue
   specific:
     name: specific
     aliases:
@@ -11977,7 +11977,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000836
     multivalued: false
-    range: text value
+    range: TextValue
   specific_humidity:
     name: specific_humidity
     aliases:
@@ -12005,7 +12005,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000214
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   sr_dep_env:
     name: sr_dep_env
     aliases:
@@ -12029,7 +12029,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000996
     multivalued: false
-    range: text value
+    range: TextValue
   sr_geol_age:
     name: sr_geol_age
     aliases:
@@ -12053,7 +12053,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000997
     multivalued: false
-    range: text value
+    range: TextValue
   sr_kerog_type:
     name: sr_kerog_type
     aliases:
@@ -12080,7 +12080,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000994
     multivalued: false
-    range: text value
+    range: TextValue
   sr_lithology:
     name: sr_lithology
     aliases:
@@ -12104,7 +12104,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000995
     multivalued: false
-    range: text value
+    range: TextValue
   standing_water_regm:
     name: standing_water_regm
     aliases:
@@ -12131,7 +12131,7 @@ slots:
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0001069
     multivalued: false
-    range: text value
+    range: TextValue
   store_cond:
     name: store_cond
     aliases:
@@ -12156,7 +12156,7 @@ slots:
     string_serialization: '{text};{duration}'
     slot_uri: mixs:0000327
     multivalued: false
-    range: text value
+    range: TextValue
   substructure_type:
     name: substructure_type
     aliases:
@@ -12180,7 +12180,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000767
     multivalued: false
-    range: text value
+    range: TextValue
   sulfate:
     name: sulfate
     aliases:
@@ -12206,7 +12206,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000423
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   sulfate_fw:
     name: sulfate_fw
     aliases:
@@ -12230,7 +12230,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000407
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   sulfide:
     name: sulfide
     aliases:
@@ -12256,7 +12256,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000424
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   surf_air_cont:
     name: surf_air_cont
     aliases:
@@ -12279,7 +12279,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000759
     multivalued: false
-    range: text value
+    range: TextValue
   surf_humidity:
     name: surf_humidity
     aliases:
@@ -12305,7 +12305,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000123
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   surf_material:
     name: surf_material
     aliases:
@@ -12328,7 +12328,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000758
     multivalued: false
-    range: text value
+    range: TextValue
   surf_moisture:
     name: surf_moisture
     aliases:
@@ -12354,7 +12354,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000128
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   surf_moisture_ph:
     name: surf_moisture_ph
     aliases:
@@ -12377,7 +12377,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000760
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   surf_temp:
     name: surf_temp
     aliases:
@@ -12403,7 +12403,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000125
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   suspend_part_matter:
     name: suspend_part_matter
     aliases:
@@ -12429,7 +12429,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000741
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   suspend_solids:
     name: suspend_solids
     aliases:
@@ -12456,7 +12456,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000150
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tan:
     name: tan
     aliases:
@@ -12483,7 +12483,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000120
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   target_gene:
     name: target_gene
     aliases:
@@ -12504,7 +12504,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000044
     multivalued: false
-    range: text value
+    range: TextValue
   target_subfragment:
     name: target_subfragment
     aliases:
@@ -12526,7 +12526,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000045
     multivalued: false
-    range: text value
+    range: TextValue
   temp:
     name: temp
     aliases:
@@ -12549,7 +12549,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000113
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   temp_out:
     name: temp_out
     aliases:
@@ -12575,7 +12575,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000197
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tertiary_treatment:
     name: tertiary_treatment
     aliases:
@@ -12598,7 +12598,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000352
     multivalued: false
-    range: text value
+    range: TextValue
   texture:
     name: texture
     aliases:
@@ -12622,7 +12622,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000335
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   texture_meth:
     name: texture_meth
     aliases:
@@ -12644,7 +12644,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000336
     multivalued: false
-    range: text value
+    range: TextValue
   tidal_stage:
     name: tidal_stage
     aliases:
@@ -12667,7 +12667,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000750
     multivalued: false
-    range: text value
+    range: TextValue
   tillage:
     name: tillage
     aliases:
@@ -12690,7 +12690,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0001081
     multivalued: false
-    range: text value
+    range: TextValue
   tiss_cult_growth_med:
     name: tiss_cult_growth_med
     aliases:
@@ -12714,7 +12714,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
     slot_uri: mixs:0001070
     multivalued: false
-    range: text value
+    range: TextValue
   toluene:
     name: toluene
     aliases:
@@ -12738,7 +12738,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000154
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tot_carb:
     name: tot_carb
     aliases:
@@ -12762,7 +12762,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000525
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tot_depth_water_col:
     name: tot_depth_water_col
     aliases:
@@ -12788,7 +12788,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000634
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tot_diss_nitro:
     name: tot_diss_nitro
     aliases:
@@ -12815,7 +12815,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000744
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tot_inorg_nitro:
     name: tot_inorg_nitro
     aliases:
@@ -12841,7 +12841,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000745
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tot_iron:
     name: tot_iron
     aliases:
@@ -12865,7 +12865,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000105
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tot_nitro:
     name: tot_nitro
     aliases:
@@ -12893,7 +12893,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000102
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tot_nitro_cont_meth:
     name: tot_nitro_cont_meth
     aliases:
@@ -12914,7 +12914,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000338
     multivalued: false
@@ -12942,7 +12942,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000530
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tot_org_c_meth:
     name: tot_org_c_meth
     aliases:
@@ -12964,7 +12964,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000337
     multivalued: false
-    range: text value
+    range: TextValue
   tot_org_carb:
     name: tot_org_carb
     aliases:
@@ -12989,7 +12989,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000533
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tot_part_carb:
     name: tot_part_carb
     aliases:
@@ -13015,7 +13015,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000747
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tot_phosp:
     name: tot_phosp
     aliases:
@@ -13042,7 +13042,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000117
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tot_phosphate:
     name: tot_phosphate
     aliases:
@@ -13066,7 +13066,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000689
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tot_sulfur:
     name: tot_sulfur
     aliases:
@@ -13090,7 +13090,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000419
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   train_line:
     name: train_line
     aliases:
@@ -13113,7 +13113,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000837
     multivalued: false
-    range: text value
+    range: TextValue
   train_stat_loc:
     name: train_stat_loc
     aliases:
@@ -13136,7 +13136,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000838
     multivalued: false
-    range: text value
+    range: TextValue
   train_stop_loc:
     name: train_stop_loc
     aliases:
@@ -13159,7 +13159,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000839
     multivalued: false
-    range: text value
+    range: TextValue
   turbidity:
     name: turbidity
     aliases:
@@ -13186,7 +13186,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000191
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tvdss_of_hcr_press:
     name: tvdss_of_hcr_press
     aliases:
@@ -13208,10 +13208,10 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     slot_uri: mixs:0000397
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tvdss_of_hcr_temp:
     name: tvdss_of_hcr_temp
     aliases:
@@ -13236,7 +13236,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000394
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   typ_occup_density:
     name: typ_occup_density
     aliases:
@@ -13259,7 +13259,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000771
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   ventilation_rate:
     name: ventilation_rate
     aliases:
@@ -13285,7 +13285,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000114
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   ventilation_type:
     name: ventilation_type
     aliases:
@@ -13309,7 +13309,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000756
     multivalued: false
-    range: text value
+    range: TextValue
   vfa:
     name: vfa
     aliases:
@@ -13333,7 +13333,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000152
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   vfa_fw:
     name: vfa_fw
     aliases:
@@ -13357,7 +13357,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000408
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   vis_media:
     name: vis_media
     aliases:
@@ -13380,7 +13380,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000840
     multivalued: false
-    range: text value
+    range: TextValue
   viscosity:
     name: viscosity
     aliases:
@@ -13406,7 +13406,7 @@ slots:
     string_serialization: '{float} {unit};{float} {unit}'
     slot_uri: mixs:0000126
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   volatile_org_comp:
     name: volatile_org_comp
     aliases:
@@ -13435,7 +13435,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: mixs:0000115
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   wall_area:
     name: wall_area
     aliases:
@@ -13459,7 +13459,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000198
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   wall_const_type:
     name: wall_const_type
     aliases:
@@ -13483,7 +13483,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000841
     multivalued: false
-    range: text value
+    range: TextValue
   wall_finish_mat:
     name: wall_finish_mat
     aliases:
@@ -13506,7 +13506,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000842
     multivalued: false
-    range: text value
+    range: TextValue
   wall_height:
     name: wall_height
     aliases:
@@ -13530,7 +13530,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000221
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   wall_loc:
     name: wall_loc
     aliases:
@@ -13553,7 +13553,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000843
     multivalued: false
-    range: text value
+    range: TextValue
   wall_surf_treatment:
     name: wall_surf_treatment
     aliases:
@@ -13576,7 +13576,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000845
     multivalued: false
-    range: text value
+    range: TextValue
   wall_texture:
     name: wall_texture
     aliases:
@@ -13599,7 +13599,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000846
     multivalued: false
-    range: text value
+    range: TextValue
   wall_thermal_mass:
     name: wall_thermal_mass
     aliases:
@@ -13625,7 +13625,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000222
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   wall_water_mold:
     name: wall_water_mold
     aliases:
@@ -13649,7 +13649,7 @@ slots:
     string_serialization: '[presence of mold visible|no presence of mold visible]'
     slot_uri: mixs:0000844
     multivalued: false
-    range: text value
+    range: TextValue
   wastewater_type:
     name: wastewater_type
     aliases:
@@ -13672,7 +13672,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000353
     multivalued: false
-    range: text value
+    range: TextValue
   water_cont_soil_meth:
     name: water_cont_soil_meth
     aliases:
@@ -13693,7 +13693,7 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000323
     multivalued: false
@@ -13721,7 +13721,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000185
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   water_current:
     name: water_current
     aliases:
@@ -13747,7 +13747,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000203
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   water_cut:
     name: water_cut
     aliases:
@@ -13772,7 +13772,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000454
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   water_feat_size:
     name: water_feat_size
     aliases:
@@ -13796,11 +13796,11 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000223
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   water_feat_type:
     name: water_feat_type
     aliases:
-      - water feature type
+      - water feature_type
     annotations:
       expected_value:
         tag: expected_value
@@ -13819,7 +13819,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000847
     multivalued: false
-    range: text value
+    range: TextValue
   water_prod_rate:
     name: water_prod_rate
     aliases:
@@ -13840,10 +13840,10 @@ slots:
     source: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: core field
+    is_a: core_field
     slot_uri: mixs:0000453
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   water_temp_regm:
     name: water_temp_regm
     aliases:
@@ -13873,7 +13873,7 @@ slots:
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0000590
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   watering_regm:
     name: watering_regm
     aliases:
@@ -13903,7 +13903,7 @@ slots:
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: mixs:0000591
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   weekday:
     name: weekday
     aliases:
@@ -13926,7 +13926,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000848
     multivalued: false
-    range: text value
+    range: TextValue
   win:
     name: win
     aliases:
@@ -13951,7 +13951,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000297
     multivalued: false
-    range: text value
+    range: TextValue
   wind_direction:
     name: wind_direction
     aliases:
@@ -13975,7 +13975,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: mixs:0000757
     multivalued: false
-    range: text value
+    range: TextValue
   wind_speed:
     name: wind_speed
     aliases:
@@ -14001,7 +14001,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000118
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   window_cond:
     name: window_cond
     aliases:
@@ -14024,7 +14024,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000849
     multivalued: false
-    range: text value
+    range: TextValue
   window_cover:
     name: window_cover
     aliases:
@@ -14047,7 +14047,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000850
     multivalued: false
-    range: text value
+    range: TextValue
   window_horiz_pos:
     name: window_horiz_pos
     aliases:
@@ -14070,7 +14070,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000851
     multivalued: false
-    range: text value
+    range: TextValue
   window_loc:
     name: window_loc
     aliases:
@@ -14093,7 +14093,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000852
     multivalued: false
-    range: text value
+    range: TextValue
   window_mat:
     name: window_mat
     aliases:
@@ -14116,7 +14116,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000853
     multivalued: false
-    range: text value
+    range: TextValue
   window_open_freq:
     name: window_open_freq
     aliases:
@@ -14137,7 +14137,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000246
     multivalued: false
-    range: text value
+    range: TextValue
   window_size:
     name: window_size
     aliases:
@@ -14162,7 +14162,7 @@ slots:
     string_serialization: '{float} {unit} x {float} {unit}'
     slot_uri: mixs:0000224
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   window_status:
     name: window_status
     aliases:
@@ -14187,7 +14187,7 @@ slots:
     string_serialization: '[closed|open]'
     slot_uri: mixs:0000855
     multivalued: false
-    range: text value
+    range: TextValue
   window_type:
     name: window_type
     aliases:
@@ -14210,7 +14210,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000856
     multivalued: false
-    range: text value
+    range: TextValue
   window_vert_pos:
     name: window_vert_pos
     aliases:
@@ -14233,7 +14233,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000857
     multivalued: false
-    range: text value
+    range: TextValue
   window_water_mold:
     name: window_water_mold
     aliases:
@@ -14257,7 +14257,7 @@ slots:
     string_serialization: '[presence of mold visible|no presence of mold visible]'
     slot_uri: mixs:0000854
     multivalued: false
-    range: text value
+    range: TextValue
   xylene:
     name: xylene
     aliases:
@@ -14281,7 +14281,7 @@ slots:
     is_a: attribute
     slot_uri: mixs:0000156
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   env_package:
     name: env_package
     aliases:
@@ -14301,7 +14301,7 @@ slots:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     multivalued: false
-    range: text value
+    range: TextValue
     pattern: '[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon
       resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc
       environment|plant\-associated|sediment|soil|wastewater\/sludge|water]'

@@ -52,7 +52,7 @@ slots:
     #    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   manganese:
     name: manganese
     aliases:
@@ -74,12 +74,12 @@ slots:
     #    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
-    range: quantity value
+    range: QuantityValue
 
-  ammonium nitrogen:
-    name: ammonium nitrogen
+  ammonium_nitrogen:
+    name: ammonium_nitrogen
     aliases:
-      - ammonium nitrogen
+      - ammonium_nitrogen
       - NH4-N
     annotations:
       expected_value:
@@ -98,12 +98,12 @@ slots:
     #    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
-    range: quantity value
+    range: QuantityValue
 
-  nitrate nitrogen:
-    name: nitrate nitrogen
+  nitrate_nitrogen:
+    name: nitrate_nitrogen
     aliases:
-      - nitrate nitrogen
+      - nitrate_nitrogen
       - NO3-N
     notes:
       - often below some specified limit of detection
@@ -118,18 +118,18 @@ slots:
         tag: occurrence
         value: '1'
     description: Concentration of nitrate nitrogen in the sample
-    title: nitrate nitrogen
+    title: nitrate_nitrogen
     examples:
       - value: 0.29 mg/kg
     #    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
-    range: quantity value
+    range: QuantityValue
 
-  nitrite nitrogen:
-    name: nitrite nitrogen
+  nitrite_nitrogen:
+    name: nitrite_nitrogen
     aliases:
-      - nitrite nitrogen
+      - nitrite_nitrogen
       - NO2-N
     annotations:
       expected_value:
@@ -142,13 +142,13 @@ slots:
         tag: occurrence
         value: '1'
     description: Concentration of nitrite nitrogen in the sample
-    title: nitrite nitrogen
+    title: nitrite_nitrogen
     examples:
       - value: 1.2 mg/kg
     #    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
-    range: quantity value
+    range: QuantityValue
 
 
   lbc_thirty:
@@ -176,7 +176,7 @@ slots:
     #    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
-    range: quantity value
+    range: QuantityValue
     see_also: https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF
 
 
@@ -204,4 +204,4 @@ slots:
     #    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
-    range: quantity value
+    range: QuantityValue

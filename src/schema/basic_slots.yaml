@@ -69,7 +69,7 @@ slots:
     exact_mappings:
       - dcterms:title
 
-  alternative titles:
+  alternative_titles:
     range: string
     multivalued: true
     description: >-
@@ -78,7 +78,7 @@ slots:
     exact_mappings:
       - dcterms:alternative
   
-  alternative names:
+  alternative_names:
     range: string
     multivalued: true
     description: >-
@@ -88,14 +88,14 @@ slots:
       - dcterms:alternative
       - skos:altLabel
 
-  alternative descriptions:
+  alternative_descriptions:
     range: string
     multivalued: true
     description: >-
       A list of alternative descriptions for the entity.
       The distinction between description and alternative descriptions is application-specific.
   
-  alternative identifiers:
+  alternative_identifiers:
     range: string
     multivalued: true
     description: >-

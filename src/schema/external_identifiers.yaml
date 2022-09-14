@@ -34,8 +34,8 @@ types:
 
 slots:
   
-  external database identifiers:
-    is_a: alternative identifiers
+  external_database_identifiers:
+    is_a: alternative_identifiers
     abstract: true
     multivalued: true
     description:
@@ -46,17 +46,17 @@ slots:
     close_mappings:
       - skos:closeMatch
 
-  GOLD identifiers:
+  gold_identifiers:
     mixin: true
     see_also:
       - https://gold.jgi.doe.gov/
 
-  MGnify identifiers:
+  mgnify_identifiers:
     mixin: true
     see_also:
       - https://www.ebi.ac.uk/metagenomics/
 
-  INSDC identifiers:
+  insdc_identifiers:
     mixin: true
     aliases:
       - EBI identifiers
@@ -73,14 +73,14 @@ slots:
 
   ## studies
 
-  study identifiers:
+  study_identifiers:
     abstract: true
-    is_a: external database identifiers
+    is_a: external_database_identifiers
   
-  INSDC SRA ENA study identifiers:
-    is_a: study identifiers
+  insdc_sra_ena_study_identifiers:
+    is_a: study_identifiers
     mixins:
-      - INSDC identifiers
+      - insdc_identifiers
     aliases:
       - EBI ENA study identifiers
       - NCBI SRA identifiers
@@ -96,10 +96,10 @@ slots:
       - https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=studies
       - https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=studies
 
-  INSDC bioproject identifiers:
-    is_a: study identifiers
+  insdc_bioproject_identifiers:
+    is_a: insdc_identifiers
     mixins:
-      - INSDC identifiers
+      - insdc_identifiers
     aliases:
       - NCBI bioproject identifiers
       - DDBJ bioproject identifiers
@@ -114,10 +114,10 @@ slots:
       - https://www.ncbi.nlm.nih.gov/bioproject/
       - https://www.ddbj.nig.ac.jp/bioproject/index-e.html
 
-  GOLD study identifiers:
-    is_a: study identifiers
+  gold_study_identifiers:
+    is_a: study_identifiers
     mixins:
-      - GOLD identifiers
+      - gold_identifiers
     pattern: "^GOLD:Gs[0-9]+$"
     multivalued: true
     description: identifiers for corresponding project in GOLD
@@ -126,8 +126,8 @@ slots:
     see_also:
       - https://gold.jgi.doe.gov/studies
 
-  MGnify project identifiers:
-    is_a: study identifiers
+  mgnify_project_identifiers:
+    is_a: insdc_identifiers
     pattern: "^mgnify.proj:[A-Z]+[0-9]+$"
     description: identifiers for corresponding project in MGnify
     examples:
@@ -135,14 +135,14 @@ slots:
 
   ## samples
 
-  sample identifiers:
+  sample_identifiers:
     abstract: true
-    is_a: external database identifiers
+    is_a: external_database_identifiers
   
-  GOLD sample identifiers:
-    is_a: sample identifiers
+  gold_sample_identifiers:
+    is_a: sample_identifiers
     mixins:
-      - GOLD identifiers
+      - gold_identifiers
     pattern: "^GOLD:Gb[0-9]+$"
     multivalued: true
     description: identifiers for corresponding sample in GOLD
@@ -150,10 +150,10 @@ slots:
       - value: https://identifiers.org/gold:Gb0312930
 
 
-  INSDC biosample identifiers:
-    is_a: sample identifiers
+  insdc_biosample_identifiers:
+    is_a: sample_identifiers
     mixins:
-      - INSDC identifiers
+      - insdc_identifiers
     aliases:
       - EBI biosample identifiers
       - NCBI biosample identifiers
@@ -171,10 +171,10 @@ slots:
       - https://www.ncbi.nlm.nih.gov/biosample
       - https://www.ddbj.nig.ac.jp/biosample/index-e.html
 
-  INSDC secondary sample identifiers:
-    is_a: sample identifiers
+  insdc_secondary_sample_identifiers:
+    is_a: sample_identifiers
     mixins:
-      - INSDC identifiers
+      - insdc_identifiers
     pattern: "^biosample:(E|D|S)RS[0-9]{6,}$"
     description: secondary identifiers for corresponding sample in INSDC
     comments:
@@ -184,77 +184,77 @@ slots:
       - value: https://identifiers.org/insdc.sra:DRS166340
         description: I13_N_5-10 sample from Soil fungal diversity along elevational gradients
 
-  ## omics processing
+  ## OmicsProcessing
 
-  omics processing identifiers:
+  omics_processing_identifiers:
     abstract: true
-    is_a: external database identifiers
+    is_a: external_database_identifiers
   
-  GOLD sequencing project identifiers:
-    is_a: omics processing identifiers
+  gold_sequencing_project_identifiers:
+    is_a: omics_processing_identifiers
     mixins:
-      - GOLD identifiers
+      - gold_identifiers
     pattern: "^GOLD:Gp[0-9]+$"
     multivalued: true
     description: identifiers for corresponding sequencing project in GOLD
     examples:
       - value: https://identifiers.org/gold:Gp0108335
 
-  INSDC experiment identifiers:
-    is_a: external database identifiers
+  insdc_experiment_identifiers:
+    is_a: external_database_identifiers
     pattern: "^insdc.sra:(E|D|S)RX[0-9]{6,}$"
     mixins:
-      - INSDC identifiers
+      - insdc_identifiers
 
 
   ## analysis run
 
-  analysis identifiers:
+  analysis_identifiers:
     abstract: true
-    is_a: external database identifiers
+    is_a: external_database_identifiers
   
-  GOLD analysis project identifiers:
-    is_a: analysis identifiers
+  gold_analysis_project_identifiers:
+    is_a: analysis_identifiers
     mixins:
-      - GOLD identifiers
+      - gold_identifiers
     pattern: "^GOLD:Ga[0-9]+$"
     multivalued: true
     description: identifiers for corresponding analysis project in GOLD
     examples:
       - value: https://identifiers.org/gold:Ga0526289
 
-  INSDC analysis identifiers:
-    is_a: analysis identifiers
+  insdc_analysis_identifiers:
+    is_a: analysis_identifiers
     comments:
       - in INSDC this is a run but it corresponds to a GOLD analysis
     pattern: "^insdc.sra:(E|D|S)RR[0-9]{6,}$"
     mixins:
-      - INSDC identifiers
+      - insdc_identifiers
     examples:
       - value: https://www.ebi.ac.uk/metagenomics/runs/DRR218479
         description: Illumina MiSeq paired end sequencing of SAMD00212331
       - value: https://www.ebi.ac.uk/ena/browser/view/ERR436051
 
 
-  MGnify analysis identifiers:
-    is_a: analysis identifiers
+  mgnify_analysis_identifiers:
+    is_a: analysis_identifiers
     #pattern: "^mgnify:MGYA[0-9]+$" ## TODO https://github.com/bioregistry/bioregistry/issues/109
     mixins:
-      - MGnify identifiers
+      - mgnify_identifiers
     examples:
       - value: https://www.ebi.ac.uk/metagenomics/analyses/MGYA00002270
         description: combined analyses (taxonomic, functional) of sample ERS438107
 
   ## assemblies
 
-  assembly identifiers:
+  assembly_identifiers:
     abstract: true
 
-  INSDC assembly identifiers:
-    is_a: assembly identifiers
+  insdc_assembly_identifiers:
+    is_a: assembly_identifiers
     pattern: "^insdc.sra:[A-Z]+[0-9]+(\\.[0-9]+)?$"
     mixins:
-      - INSDC identifiers
+      - insdc_identifiers
     
   
   
