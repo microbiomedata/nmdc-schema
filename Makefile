@@ -175,14 +175,14 @@ clean-package:
 	rm -rf dist && echo 'dist removed'
 	rm -rf nmdc_schema.egg-info && echo 'egg-info removed'
 	rm -f nmdc_schema/*.py
+	touch nmdc_schema/__init__.py
 	rm -f nmdc_schema/*.json
 	rm -f nmdc_schema/*.tsv
 
 build-nmdc_schema: clean-package
 	cp src/schema/nmdc.yaml nmdc_schema/ # copy nmdc yaml file
 	cp python/*.py nmdc_schema/ # copy python files
-	mkdir -p nmdc_schema/jsonschema
-	cp jsonschema/nmdc.schema.json nmdc_schema/jsonschema/ # copy nmdc json schema
+	cp jsonschema/nmdc.schema.json nmdc_schema/ # copy nmdc json schema
 
 build-package: build-nmdc_schema
 	poetry build
