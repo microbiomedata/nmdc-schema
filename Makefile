@@ -181,11 +181,8 @@ clean-package:
 build-nmdc_schema: clean-package
 	cp src/schema/nmdc.yaml nmdc_schema/ # copy nmdc yaml file
 	cp python/*.py nmdc_schema/ # copy python files
-	cp jsonschema/nmdc.schema.json nmdc_schema/ # copy nmdc json schema
-	cp sssom/gold-to-mixs.sssom.tsv nmdc_schema/ # copy sssom mapping
-	cp util/validate_nmdc_json.py nmdc_schema/ # copy command-line validation tool
-	cp util/nmdc_version.py nmdc_schema/ # copy command-line version tool
-	cp util/nmdc_data.py nmdc_schema/ # copy command-line data retrieval tool
+	mkdir -p nmdc_schema/jsonschema
+	cp jsonschema/nmdc.schema.json nmdc_schema/jsonschema/ # copy nmdc json schema
 
 build-package: build-nmdc_schema
 	poetry build
