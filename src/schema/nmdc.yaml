@@ -154,6 +154,7 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
+      - biosample_categories
       - type  # custom slot that specifies object type
       - alternative_identifiers
       - part_of
@@ -617,6 +618,15 @@ classes:
     class_uri: prov:Association
 
 enums:
+  biosample_category_enum:
+    description: Categories that a biosmaple can belong to, whether funding-based, methods-based, etc.
+    permissible_values:
+      LTER: { }
+      SIP: { }
+      SFA: { }
+      FICUS: { }
+      NGEE: { }
+      WARMING: { }
   file type enum:
     permissible_values:
       FT ICR-MS Analysis Results:
@@ -795,6 +805,11 @@ enums:
           - replaces Environmental Molecular Sciences Lab
 
 slots:
+
+  biosample_categories:
+    title: Categories the biosample belongs to
+    range: biosample_category_enum
+    multivalued: true
   date_created:
     description: from database class
   etl_software_version:
