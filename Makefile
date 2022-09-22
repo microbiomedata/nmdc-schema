@@ -319,3 +319,9 @@ assets/from_mongodb.json:
 
 validate_vs_3_2_0: assets/from_mongodb.json assets/3_2_0/nmdc.schema.json
 	jsonschema -i $^
+
+from_mongo_cleanup:
+	rm -rf assets/from_mongodb.json
+	rm -rf assets/from_mongodb.yaml
+
+from_mongo_all: from_mongo_cleanup validate_vs_3_2_0
