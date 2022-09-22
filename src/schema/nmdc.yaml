@@ -409,7 +409,7 @@ classes:
           display_hint:
             tag: display_hint
             value: >-
-              Provide the GOLD biosample IDs associated with samples for this biosample.
+              Provide the GOLD biosample IDs associated with this biosample.
       lat_lon:
         required: false
         description: This is currently a required field but it's not clear if this
