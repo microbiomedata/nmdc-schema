@@ -17,7 +17,7 @@ nmdc_runtime_api_base = "https://api.dev.microbiomedata.org/"
 tasks_by_token = {
     "studies": {"api_method": None, "database_slot": "study_set"},
     "biosamples": {"api_method": None, "database_slot": "biosample_set"},
-    "omics_processing_set": {"api_method": None, "database_slot": "omics_processing_set"}
+    # "omics_processing_set": {"api_method": None, "database_slot": "omics_processing_set"}
 }
 
 
