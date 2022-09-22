@@ -313,3 +313,9 @@ assets/4_0_0/nmdc.schema.json:
 
 assets/schema_json_diff.txt:assets/3_2_0/nmdc.schema.json assets/4_0_0/nmdc.schema.json
 	- jd -o $@ --set $^
+
+assets/from_mongodb.json:
+	$(RUN) python util/mongodb2database.py
+
+validate_vs_3_2_0: assets/from_mongodb.json assets/3_2_0/nmdc.schema.json
+	jsonschema -i $^
