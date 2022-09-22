@@ -628,18 +628,18 @@ enums:
       - They are intended to enable metadata search and or filtering, for example in the NMDC data portal, https://data.microbiomedata.org/
     permissible_values:
       LTER:
-        text: National Science Foundation's Long Term Ecological Research Network
+        title: National Science Foundation's Long Term Ecological Research Network
         meaning: https://lternet.edu/
       SIP: { }
       SFA:
-        text: Department of Energy Office of Science Biological and Environmental Research Program Laboratory Science Focus Areas
+        title: Department of Energy Office of Science Biological and Environmental Research Program Laboratory Science Focus Areas
         description: Science Focus Area projects funded through the Department of Energy Office of Science Biological and Environmental Research Program
         meaning: https://science.osti.gov/ber/funding-opportunities/laboratory-scientific-focus-area-guidance
       FICUS:
-        text: Facilities Integrating Collaborations for User Science
+        title: Facilities Integrating Collaborations for User Science
         meaning: https://jgi.doe.gov/user-programs/program-info/ficus-overview
       NEON:
-        text: National Science Foundation's National Ecological Observatory Network
+        title: National Science Foundation's National Ecological Observatory Network
         meaning: https://www.neonscience.org
   file type enum:
     permissible_values:
