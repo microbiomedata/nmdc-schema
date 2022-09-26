@@ -1,8 +1,14 @@
-# {{ gen.name(element) }}
+# Enum: {{ gen.name(element) }}
 
-{{ element.description }}
+{% if element.title is not none %}
+Title: {{ element.title }}
+{% endif %}
 
-URI: {{ gen.uri(element) }}
+{% if element.description %}
+_{{ element.description }}_
+{% endif %}
+
+URI: [{{ gen.uri(element) }}]({{ gen.uri(element) }})
 
 ## Permissible Values
 
