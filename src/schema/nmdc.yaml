@@ -81,7 +81,7 @@ settings:
   id_nmdc_prefix: "nmdc:"
   id_type_sample: "sa"
   id_type_study: "st"
-  id_shoulder: "[0-9][a-z]*[0-9]"
+  id_shoulder: "[0-9][a-z]*?[0-9]"
   id_generated: "[a-z0-9]{6,}"
 
 classes:
