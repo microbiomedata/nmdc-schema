@@ -111,7 +111,28 @@ The full URLs for each is in the jsonld context file
 
 ## IDs minted for use within NMDC
 
-Note that NMDC schema mandates IDs for most objects. These always have the field name [id](https://microbiomedata.github.io/nmdc-metadata/docs/id) 
+The typical structure of an NMDC-minted identifier would look like below:
+
+```
+nmdc:<type-code><shoulder><blade>
+```
+
+There are four parts to the above identifier:
+1. `nmdc`: prefix before the [`:`] colon.
+2. `<type-code>`: alphabetical code that is part of a recognized and controlled set. Type codes will be all alphabetical characters, and compact. No more than six characters. The corresponding regex pattern will be `[a-z]{1,6}`.
+  * `sa`: sample
+  * `st`: study
+  * `saa`: sample activity, represented as `[sa prov:wasGeneratedBy saa]`
+  * `p`: party, ex., instrument, person, software agent
+  * `op`: omics processing
+  * `do`: data object
+  * `opa`: omics processing activity, represented as `[opa prov:used sample, do prov:wasGeneratedBy opa]`
+  * `oa`: omics analysis
+  * `oaa`: omics analysis activity, represented as  `[oaa prov:used do, do prov:wasGeneratedBy oaa]`
+3. `<shoulder>`: opaque minting agent usernames, i.e., shoulders for minting authority. Meaning a shoulder would be assigned to an organisation, like, EMSL or JGI and not a person. Shoulders would be of the form `[0-9][a-z]*[0-9]`, i.e., two numbers with zero or more alphabetical characters in between.
+4. `<blade>`: The fully unique part of the identifier under a given type code and shoulder namespace. It is a base32 encoding of a 64-bit integer value and a checksum, which helps defend against many communication errors.
+
+In the context of the schema, all classes will use an NMDC minted ID.
 
 ## Reuse vs minting new IDs
 
