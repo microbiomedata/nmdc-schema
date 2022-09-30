@@ -77,6 +77,13 @@ subsets:
     description: Subset consisting of the data objects that either inputs or outputs
       of processes or workflows.
 
+settings:
+  id_nmdc_prefix: "nmdc"
+  id_type_sample: "sa"
+  id_type_study: "st"
+  id_shoulder: "[0-9][a-z]*[0-9]"
+  id_generated: "[a-z0-9]{6,}"
+
 classes:
   Database:
     tree_root: true
@@ -404,6 +411,11 @@ classes:
       - lbceq
 
     slot_usage:
+      id: 
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:{id_type_sample}{id_shoulder}{id_generated}"
+          interpolated: true
+          partial_match: false
       lat_lon:
         required: false
         description: This is currently a required field but it's not clear if this
@@ -471,6 +483,11 @@ classes:
       - has_credit_associations
       - study_image
     slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:{id_type_study}{id_shoulder}{id_generated}"
+          interpolated: true
+          partial_match: false
       doi:
         description: >-
           The dataset citation for this study
@@ -542,6 +559,7 @@ classes:
       - GOLD ## https://identifiers.org/gold:Gs0110115
       - insdc.srs ## https://www.ebi.ac.uk/ena/browser/view/PRJEB45055?
       - mgnify ## https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757
+
   BiosampleProcessing:
     aliases:
       - material processing
