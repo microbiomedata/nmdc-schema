@@ -148,6 +148,45 @@
     }
   },
   "enums": {
+    "biosample_category_enum": {
+      "name": "biosample_category_enum",
+      "description": "Funding-based, sample location-based, or experimental method-based defined categories",
+      "notes": [
+        "Currently, these values can associated with biosamples via the biosample_categories slot",
+        "They might also be applicable to other classes",
+        "They are intended to enable metadata search and or filtering, for example in the NMDC data portal, https://data.microbiomedata.org/"
+      ],
+      "from_schema": "https://microbiomedata/schema",
+      "aliases": [
+        "category tag"
+      ],
+      "permissible_values": {
+        "LTER": {
+          "text": "LTER",
+          "meaning": "https://lternet.edu/",
+          "title": "National Science Foundation's Long Term Ecological Research Network"
+        },
+        "SIP": {
+          "text": "SIP"
+        },
+        "SFA": {
+          "text": "SFA",
+          "description": "Science Focus Area projects funded through the Department of Energy Office of Science Biological and Environmental Research Program",
+          "meaning": "https://science.osti.gov/ber/funding-opportunities/laboratory-scientific-focus-area-guidance",
+          "title": "Department of Energy Office of Science Biological and Environmental Research Program Laboratory Science Focus Areas"
+        },
+        "FICUS": {
+          "text": "FICUS",
+          "meaning": "https://jgi.doe.gov/user-programs/program-info/ficus-overview",
+          "title": "Facilities Integrating Collaborations for User Science"
+        },
+        "NEON": {
+          "text": "NEON",
+          "meaning": "https://www.neonscience.org",
+          "title": "National Science Foundation's National Ecological Observatory Network"
+        }
+      }
+    },
     "file type enum": {
       "name": "file type enum",
       "from_schema": "https://microbiomedata/schema",
@@ -500,6 +539,13 @@
     }
   },
   "slots": {
+    "biosample_categories": {
+      "name": "biosample_categories",
+      "title": "Categories the biosample belongs to",
+      "from_schema": "https://microbiomedata/schema",
+      "multivalued": true,
+      "range": "biosample_category_enum"
+    },
     "date_created": {
       "name": "date_created",
       "description": "from database class",
@@ -1170,6 +1216,7 @@
       ],
       "is_a": "NamedThing",
       "slots": [
+        "biosample_categories",
         "type",
         "alternative_identifiers",
         "part_of",
@@ -1403,6 +1450,23 @@
         "lbceq"
       ],
       "slot_usage": {
+        "gold_sample_identifiers": {
+          "name": "gold_sample_identifiers",
+          "annotations": {
+            "display_hint": {
+              "tag": "display_hint",
+              "value": "Provide the GOLD biosample IDs associated with this biosample."
+            }
+          }
+        },
+        "id": {
+          "name": "id",
+          "structured_pattern": {
+            "syntax": "{id_nmdc_prefix}:{id_type_sample}{id_shoulder}{id_generated}",
+            "interpolated": true,
+            "partial_match": false
+          }
+        },
         "lat_lon": {
           "name": "lat_lon",
           "description": "This is currently a required field but it's not clear if this should be required for human hosts",
@@ -1498,6 +1562,14 @@
         "study_image"
       ],
       "slot_usage": {
+        "id": {
+          "name": "id",
+          "structured_pattern": {
+            "syntax": "{id_nmdc_prefix}:{id_type_study}{id_shoulder}{id_generated}",
+            "interpolated": true,
+            "partial_match": false
+          }
+        },
         "doi": {
           "name": "doi",
           "annotations": {
@@ -1550,15 +1622,6 @@
             "display_hint": {
               "tag": "display_hint",
               "value": "Project, study, or sample set names the are also associated with this submission  or other names / identifiers for this study."
-            }
-          }
-        },
-        "gold_sample_identifiers": {
-          "name": "gold_sample_identifiers",
-          "annotations": {
-            "display_hint": {
-              "tag": "display_hint",
-              "value": "Provide the GOLD study IDs associated with samples for this study."
             }
           }
         },
@@ -1671,5 +1734,27 @@
     }
   },
   "source_file": "src/schema/nmdc.yaml",
+  "settings": {
+    "id_nmdc_prefix": {
+      "setting_key": "id_nmdc_prefix",
+      "setting_value": "nmdc"
+    },
+    "id_type_sample": {
+      "setting_key": "id_type_sample",
+      "setting_value": "sa"
+    },
+    "id_type_study": {
+      "setting_key": "id_type_study",
+      "setting_value": "st"
+    },
+    "id_shoulder": {
+      "setting_key": "id_shoulder",
+      "setting_value": "[0-9][a-z]*[0-9]"
+    },
+    "id_generated": {
+      "setting_key": "id_generated",
+      "setting_value": "[a-z0-9]{6,}"
+    }
+  },
   "@type": "SchemaDefinition"
 }

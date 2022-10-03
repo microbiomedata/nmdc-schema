@@ -1,5 +1,5 @@
 # Auto generated from annotation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-09-14T16:54:56
+# Generation date: 2022-10-03T14:44:48
 # Schema: NMDC-Annotation
 #
 # id: https://microbiomedata/schema/annotation

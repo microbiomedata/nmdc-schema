@@ -44,7 +44,7 @@ nmdc-data = "nmdc_schema.nmdc_data:cli"
 [tool.poetry.dependencies]
 python = "^3.9"
 #deepdiff = "^5.8.0"
-linkml = "^1.3.5"
+linkml = "1.3.4"
 #pandasql = "^0.7.3"
 #pandoc = "*"
 #pymongo = "^4.1.0"

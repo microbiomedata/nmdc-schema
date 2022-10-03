@@ -1,5 +1,5 @@
 # Auto generated from sample_prep.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-09-14T16:56:16
+# Generation date: 2022-10-03T14:45:29
 # Schema: sample_prep
 #
 # id: https://microbiomedata/schema/sample_prep
@@ -1262,6 +1262,7 @@ class Biosample(NamedThing):
     env_local_scale: Union[dict, ControlledTermValue] = None
     env_medium: Union[dict, ControlledTermValue] = None
     sample_link: Union[str, List[str]] = None
+    biosample_categories: Optional[Union[Union[str, "BiosampleCategoryEnum"], List[Union[str, "BiosampleCategoryEnum"]]]] = empty_list()
     type: Optional[str] = None
     alternative_identifiers: Optional[Union[str, List[str]]] = empty_list()
     part_of: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
@@ -1516,6 +1517,10 @@ class Biosample(NamedThing):
         if not isinstance(self.sample_link, list):
             self.sample_link = [self.sample_link] if self.sample_link is not None else []
         self.sample_link = [v if isinstance(v, str) else str(v) for v in self.sample_link]
+
+        if not isinstance(self.biosample_categories, list):
+            self.biosample_categories = [self.biosample_categories] if self.biosample_categories is not None else []
+        self.biosample_categories = [v if isinstance(v, BiosampleCategoryEnum) else BiosampleCategoryEnum(v) for v in self.biosample_categories]
 
         if self.type is not None and not isinstance(self.type, str):
             self.type = str(self.type)
@@ -2249,7 +2254,6 @@ class Study(NamedThing):
     name: Optional[str] = None
     description: Optional[str] = None
     notes: Optional[str] = None
-    gold_sample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -2352,10 +2356,6 @@ class Study(NamedThing):
 
         if self.notes is not None and not isinstance(self.notes, str):
             self.notes = str(self.notes)
-
-        if not isinstance(self.gold_sample_identifiers, list):
-            self.gold_sample_identifiers = [self.gold_sample_identifiers] if self.gold_sample_identifiers is not None else []
-        self.gold_sample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.gold_sample_identifiers]
 
         super().__post_init__(**kwargs)
 
@@ -3643,6 +3643,26 @@ class SolventEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="SolventEnum",
+    )
+
+class BiosampleCategoryEnum(EnumDefinitionImpl):
+    """
+    Funding-based, sample location-based, or experimental method-based defined categories
+    """
+    LTER = PermissibleValue(text="LTER",
+                               meaning=None)
+    SIP = PermissibleValue(text="SIP")
+    SFA = PermissibleValue(text="SFA",
+                             description="Science Focus Area projects funded through the Department of Energy Office of Science Biological and Environmental Research Program",
+                             meaning=None)
+    FICUS = PermissibleValue(text="FICUS",
+                                 meaning=None)
+    NEON = PermissibleValue(text="NEON",
+                               meaning=None)
+
+    _defn = EnumDefinition(
+        name="BiosampleCategoryEnum",
+        description="Funding-based, sample location-based, or experimental method-based defined categories",
     )
 
 class FileTypeEnum(EnumDefinitionImpl):
@@ -6191,6 +6211,9 @@ slots.metabolite_quantified = Slot(uri=NMDC.metabolite_quantified, name="metabol
 slots.highest_similarity_score = Slot(uri=NMDC.highest_similarity_score, name="highest_similarity_score", curie=NMDC.curie('highest_similarity_score'),
                    model_uri=NMDC.highest_similarity_score, domain=None, range=Optional[str])
 
+slots.biosample_categories = Slot(uri=NMDC.biosample_categories, name="biosample_categories", curie=NMDC.curie('biosample_categories'),
+                   model_uri=NMDC.biosample_categories, domain=None, range=Optional[Union[Union[str, "BiosampleCategoryEnum"], List[Union[str, "BiosampleCategoryEnum"]]]])
+
 slots.date_created = Slot(uri=NMDC.date_created, name="date_created", curie=NMDC.curie('date_created'),
                    model_uri=NMDC.date_created, domain=None, range=Optional[str])
 
@@ -8580,6 +8603,13 @@ slots.DataObject_name = Slot(uri=NMDC.name, name="DataObject_name", curie=NMDC.c
 slots.DataObject_description = Slot(uri=DCTERMS.description, name="DataObject_description", curie=DCTERMS.curie('description'),
                    model_uri=NMDC.DataObject_description, domain=DataObject, range=str)
 
+slots.Biosample_gold_sample_identifiers = Slot(uri=NMDC.gold_sample_identifiers, name="Biosample_gold_sample_identifiers", curie=NMDC.curie('gold_sample_identifiers'),
+                   model_uri=NMDC.Biosample_gold_sample_identifiers, domain=Biosample, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^GOLD:Gb[0-9]+$'))
+
+slots.Biosample_id = Slot(uri=NMDC.id, name="Biosample_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.Biosample_id, domain=Biosample, range=Union[str, BiosampleId])
+
 slots.Biosample_lat_lon = Slot(uri=MIXS['0000009'], name="Biosample_lat_lon", curie=MIXS.curie('0000009'),
                    model_uri=NMDC.Biosample_lat_lon, domain=Biosample, range=Optional[Union[dict, GeolocationValue]])
 
@@ -8594,6 +8624,9 @@ slots.Biosample_env_medium = Slot(uri=MIXS['0000014'], name="Biosample_env_mediu
 
 slots.Biosample_sample_link = Slot(uri=NMDC.sample_link, name="Biosample_sample_link", curie=NMDC.curie('sample_link'),
                    model_uri=NMDC.Biosample_sample_link, domain=Biosample, range=Union[str, List[str]])
+
+slots.Study_id = Slot(uri=NMDC.id, name="Study_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.Study_id, domain=Study, range=Union[str, StudyId])
 
 slots.Study_doi = Slot(uri=NMDC.doi, name="Study_doi", curie=NMDC.curie('doi'),
                    model_uri=NMDC.Study_doi, domain=Study, range=Optional[Union[dict, AttributeValue]])
@@ -8612,10 +8645,6 @@ slots.Study_notes = Slot(uri=NMDC.notes, name="Study_notes", curie=NMDC.curie('n
 
 slots.Study_alternative_names = Slot(uri=NMDC.alternative_names, name="Study_alternative_names", curie=NMDC.curie('alternative_names'),
                    model_uri=NMDC.Study_alternative_names, domain=Study, range=Optional[Union[str, List[str]]])
-
-slots.Study_gold_sample_identifiers = Slot(uri=NMDC.gold_sample_identifiers, name="Study_gold_sample_identifiers", curie=NMDC.curie('gold_sample_identifiers'),
-                   model_uri=NMDC.Study_gold_sample_identifiers, domain=Study, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
-                   pattern=re.compile(r'^GOLD:Gb[0-9]+$'))
 
 slots.Study_insdc_bioproject_identifiers = Slot(uri=NMDC.insdc_bioproject_identifiers, name="Study_insdc_bioproject_identifiers", curie=NMDC.curie('insdc_bioproject_identifiers'),
                    model_uri=NMDC.Study_insdc_bioproject_identifiers, domain=Study, range=Optional[str],

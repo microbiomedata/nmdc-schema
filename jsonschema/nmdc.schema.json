@@ -188,6 +188,12 @@
                "$ref": "#/$defs/QuantityValue",
                "description": "Measurement of bacterial carbon production"
             },
+            "biosample_categories": {
+               "items": {
+                  "$ref": "#/$defs/BiosampleCategoryEnum"
+               },
+               "type": "array"
+            },
             "biotic_regm": {
                "$ref": "#/$defs/TextValue",
                "description": "Information about treatment(s) involving use of biotic factors, such as bacteria, viruses or fungi."
@@ -1051,14 +1057,26 @@
             }
          },
          "required": [
-            "id",
             "env_broad_scale",
             "env_local_scale",
             "env_medium",
-            "sample_link"
+            "sample_link",
+            "id"
          ],
          "title": "Biosample",
          "type": "object"
+      },
+      "BiosampleCategoryEnum": {
+         "description": "Funding-based, sample location-based, or experimental method-based defined categories",
+         "enum": [
+            "LTER",
+            "SIP",
+            "SFA",
+            "FICUS",
+            "NEON"
+         ],
+         "title": "BiosampleCategoryEnum",
+         "type": "string"
       },
       "BiosampleProcessing": {
          "additionalProperties": false,
@@ -5035,14 +5053,6 @@
                "items": {
                   "type": "string"
                },
-               "type": "array"
-            },
-            "gold_sample_identifiers": {
-               "description": "identifiers for corresponding sample in GOLD",
-               "items": {
-                  "type": "string"
-               },
-               "pattern": "^GOLD:Gb[0-9]+$",
                "type": "array"
             },
             "gold_study_identifiers": {
