@@ -411,6 +411,12 @@ classes:
       - lbceq
 
     slot_usage:
+      gold_sample_identifiers:
+        annotations:
+          display_hint:
+            tag: display_hint
+            value: >-
+              Provide the GOLD biosample IDs associated with this biosample.
       id: 
         structured_pattern:
           syntax: "{id_nmdc_prefix}:{id_type_sample}{id_shoulder}{id_generated}"
@@ -529,12 +535,7 @@ classes:
             value: >-
               Project, study, or sample set names the are also associated with this submission 
               or other names / identifiers for this study.
-      gold_sample_identifiers:
-        annotations:
-          display_hint:
-            tag: display_hint
-            value: >-
-              Provide the GOLD study IDs associated with samples for this study.
+
       insdc_bioproject_identifiers:
         annotations:
           display_hint:
