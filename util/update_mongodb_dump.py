@@ -19,6 +19,8 @@ actions = {
         {"GOLD_sample_identifiers": "gold_sample_identifiers",
          "INSDC_biosample_identifiers": "insdc_biosample_identifiers",
          "part_of": "sample_link", },
+    "omics_processing_set":
+        {"GOLD_sequencing_project_identifiers": "gold_sequencing_project_identifiers", },
 }
 
 

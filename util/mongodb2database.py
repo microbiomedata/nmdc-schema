@@ -17,7 +17,7 @@ nmdc_runtime_api_base = "https://api.dev.microbiomedata.org/"
 tasks_by_token = {
     "studies": {"api_method": None, "database_slot": "study_set"},
     "biosamples": {"api_method": None, "database_slot": "biosample_set"},
-    # "omics_processing_set": {"api_method": None, "database_slot": "omics_processing_set"}
+    "omics_processing_set": {"api_method": None, "database_slot": "omics_processing_set"}
 }
 
 
@@ -54,9 +54,9 @@ def get_all_by_token(task_dict, max_page_size=100):
             print(f"current page token: {next_page_token}")
             page_by_token = get_page_by_token(setname=tv["database_slot"], max_page_size=max_page_size,
                                               next_page_token=next_page_token)
-            for i in page_by_token["resources"]:
-                if "has_credit_associations" in i:
-                    del i["has_credit_associations"]
+            # for i in page_by_token["resources"]:
+            #     if "has_credit_associations" in i:
+            #         del i["has_credit_associations"]
             # pprint.pprint(page_by_token)
             print(page_by_token.keys())
             if "next_page_token" in page_by_token and page_by_token["next_page_token"]:
