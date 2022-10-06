@@ -418,11 +418,6 @@ classes:
             tag: display_hint
             value: >-
               Provide the GOLD biosample IDs associated with this biosample.
-      id: 
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:{id_type_sample}{id_shoulder}{id_generated}"
-          interpolated: true
-          partial_match: false
       lat_lon:
         required: false
         description: This is currently a required field but it's not clear if this
@@ -490,11 +485,6 @@ classes:
       - has_credit_associations
       - study_image
     slot_usage:
-      id:
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:{id_type_study}{id_shoulder}{id_generated}"
-          interpolated: true
-          partial_match: false
       doi:
         description: >-
           The dataset citation for this study
