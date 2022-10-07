@@ -153,7 +153,7 @@ classes:
       - material sample
       - specimen
       - biospecimen
-    description: >-
+    description: >- #MLS this is a weird description.. why is there >-
       A material sample. It may be environmental (encompassing many organisms) or isolate or tissue.  
       An environmental sample containing genetic material from multiple individuals is commonly referred to as a biosample.
     alt_descriptions:
@@ -161,14 +161,23 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
-      - biosample_categories
+      - biosample_categories #MLS What is this?
       - type  # custom slot that specifies object type
-      - alternative_identifiers
       - part_of
       #      - canary
 
+      # Identifiers
+      - id
+      - alternative_identifiers #MLS alternative_id or identifiers?
+
+      # external IDs
+      - emsl_sample_identifiers
+      - gold_sample_identifiers
+      - insdc_biosample_identifiers
+      - insdc_secondary_sample_identifiers #MLS what is this?
+
       # MIXS slots
-      - agrochem_addition
+      - agrochem_addition #MLS why are these listed here if they're in mixs.yaml & that's where add slot usage?
       - alkalinity
       - alkalinity_method
       - alkyl_diethers
@@ -295,7 +304,7 @@ classes:
       - specific_ecosystem
 
       # GOLD specific fields
-      - add_date
+      - add_date #MLS we should visit these. not sure they need to be here
       - community
       - depth2
       - habitat
@@ -311,15 +320,9 @@ classes:
       - subsurface_depth
       - subsurface_depth2
 
-      # external IDs
-      - gold_sample_identifiers
-      - insdc_biosample_identifiers
-      - insdc_secondary_sample_identifiers
-
-
       # MIxS terms initially used in
       # sample metadata submission portal (aka DataHarmonizer)
-      - air_temp_regm
+      - air_temp_regm #MLS so, do these come from MIxS? or are these the terms we edited? or aren't in the soil package
       - biotic_regm
       - biotic_relationship
       - climate_environment
@@ -339,6 +342,7 @@ classes:
       - watering_regm
 
       # sample metadata submission portal (aka DataHarmonizer) terms (EMSL, JGI, etc.)
+      # JGI fields
       - dna_absorb1
       - dna_absorb2
       - dna_collect_site
@@ -377,6 +381,8 @@ classes:
       - rna_seq_project_pi
       - rna_seq_project_name
       - rna_volume
+
+      # MIxS Inspired fields
       - collection_date_inc
       - collection_time
       - collection_time_inc
@@ -393,7 +399,6 @@ classes:
       - other_treatment
       - start_date_inc
       - start_time_inc
-      - emsl_store_temp
       - project_id
       - replicate_number
       - sample_shipped
@@ -401,8 +406,12 @@ classes:
       - technical_reps
       - analysis_type
       - sample_link
+
+      # EMSL fields
+      - emsl_store_temp #MLS need to identify the other slots that are EMSL only
+
       # bioscales
-      # tot_phosp, tot_carb, tot_nitro_content, pH already associated with biosamples
+      # tot_phosp, tot_carb, tot_nitro_content, pH already associated with biosamples #MLS what's this?
       - zinc
       - manganese
       - ammonium_nitrogen
@@ -413,17 +422,24 @@ classes:
 
     slot_usage:
       gold_sample_identifiers:
+        description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
+        comments: This is the ID provided by GOLD that starts with 'GB'
         annotations:
           display_hint:
             tag: display_hint
             value: >-
               Provide the GOLD biosample IDs associated with this biosample.
-      id: 
+      alternative_identifiers:
+          description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
+          required: false
+      id:
+        description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
         structured_pattern:
           syntax: "{id_nmdc_prefix}:{id_type_sample}{id_shoulder}{id_generated}"
           interpolated: true
           partial_match: false
-      lat_lon:
+        required: true
+      lat_lon: #MLS I think this can go away
         required: false
         description: This is currently a required field but it's not clear if this
           should be required for human hosts
@@ -434,6 +450,7 @@ classes:
       env_medium:
         required: true
       sample_link:
+        description:
         required: true
     #      canary:
     #        required: true
@@ -464,6 +481,21 @@ classes:
         controls its release date. A study accession is typically used when citing
         data submitted to ENA
     slots:
+      # Identifiers
+      - id
+
+      # Alternative IDs
+      - alternative_identifiers
+
+      # Related IDs
+      - related_identifiers
+      - emsl_proposal_identifier
+      - emsl_proposal_doi
+      - gold_study_identifiers
+      - insdc_bioproject_identifiers
+      - insdc_sra_ena_study_identifiers #MLS what's this?
+      - mgnify_project_identifiers
+
       - ecosystem
       - ecosystem_category
       - ecosystem_type
@@ -472,7 +504,7 @@ classes:
       - principal_investigator
       - doi
       - title
-      - alternative_titles
+      - alternative_titles #MLS need to figure out what these are and how they're used
       - alternative_descriptions
       - alternative_names
       - abstract
@@ -483,14 +515,12 @@ classes:
       - type
       - relevant_protocols
       - funding_sources
-      - insdc_bioproject_identifiers
-      - insdc_sra_ena_study_identifiers
-      - gold_study_identifiers
-      - mgnify_project_identifiers
       - has_credit_associations
       - study_image
+
     slot_usage:
       id:
+        description: An NMDC assigned unique identifier for a sample submitted to NMDC.
         structured_pattern:
           syntax: "{id_nmdc_prefix}:{id_type_study}{id_shoulder}{id_generated}"
           interpolated: true
@@ -501,15 +531,16 @@ classes:
         annotations:
           display_hint:
             tag: display_hint
-            value: >-
+            value: >- #MLS how should value and description differ?
               DOI associated with the data in this study. This is required when data is already generated.
       name:
+        description:
         annotations:
           display_hint:
             tag: display_hint
             value: Provide a name for the study your samples will belong with.
-
       websites:
+        description:
         annotations:
           display_hint:
             tag: display_hint
@@ -518,31 +549,42 @@ classes:
               or the study webpage associated with this collection of samples. 
               Multiple links can be provided.
       description:
+        description: A brief summary that details the study you're submitted to NMDC
         annotations:
           display_hint:
             tag: display_hint
             value: >-
               Provide a brief description of your study.
       notes:
+        description:
         annotations:
           display_hint:
             tag: display_hint
             value: >-
               Add any additional notes or comments about this study.
+      alternative_identifiers:
+        description: Unique identifier for a study submitted to additional resources. Matches that which has been submitted to NMDC
       alternative_names:
+        description:
         annotations:
           display_hint:
             tag: display_hint
             value: >-
               Project, study, or sample set names the are also associated with this submission 
               or other names / identifiers for this study.
-
+      related_identifiers:
+          description: Unique identifier for a study submitted to additional resources. Similar, but not necessarily identical to that which has been submitted to NMDC
       insdc_bioproject_identifiers:
+        description: Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.
         annotations:
           display_hint:
             tag: display_hint
             value: >-
               Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title.
+      emsl_project_identifier:
+        description: The EMSL project ID that relates to the NMDC submitted study
+      emsl_proposal_doi:
+        description: The DOI for the EMSL awarded study that relates to the NMDC submitted study
     exact_mappings:
       - SIO:001066
       - NCIT:C63536
