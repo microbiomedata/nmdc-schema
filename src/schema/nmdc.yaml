@@ -652,6 +652,8 @@ enums:
         meaning: https://www.neonscience.org
   file type enum:
     permissible_values:
+      Metagenome Raw Reads:
+        todos: add annotations
       FT ICR-MS Analysis Results:
         description: FT ICR-MS-based molecular formula assignment results table
       GC-MS Metabolomics Results:
