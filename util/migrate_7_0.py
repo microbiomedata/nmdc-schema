@@ -43,13 +43,13 @@ print("Gathering mongodb collection stats")
 collections_to_repair = [
     'activity_set',
     'biosample_set',
-    'data_object_set',  # ValueError: Unknown FileTypeEnum enumeration code: Metagenome Raw Reads
+    'data_object_set',
     # 'functional_annotation_set',
     # 'genome_feature_set',
-    # 'mags_activity_set',
-    # 'metabolomics_analysis_activity_set',
-    # 'metagenome_annotation_activity_set',
-    # 'metagenome_assembly_set',
+    'mags_activity_set',
+    'metabolomics_analysis_activity_set',
+    'metagenome_annotation_activity_set',
+    'metagenome_assembly_set',
     'metaproteomics_analysis_activity_set',
     'metatranscriptome_activity_set',
     'nom_analysis_activity_set',
@@ -86,20 +86,21 @@ name_replacements = {
         "GOLD_sequencing_project_identifiers": "gold_sequencing_project_identifiers",
     },
     "MagsAnalysisActivity": {
-        "num_tRNA": "num_trna",  # inside of mags_list
+        "num_tRNA": "num_trnanum_t_rna",  # inside of mags_list of MagBin instances,
+        "lowDepth_contig_num": "low_depth_contig_num",
     },
     "MetagenomeAssembly": {
-        "ctg_L50": "contig_L50",
-        "ctg_L90": "contig_L90",
-        "ctg_N50": "contig_N50",
-        "ctg_N90": "contig_N90",
-        "scaf_L50": "scaffold_L50",
-        "scaf_L90": "scaffold_L90",
-        "scaf_N50": "scaffold_N50",
-        "scaf_N90": "scaffold_N90",
-        "scaf_l_gt50K": "scaffold_l_gt50K",
-        "scaf_n_gt50K": "scaffold_n_gt50K",
-        "scaf_pct_gt50K": "scaffold_pct_gt50K",
+        "ctg_L50": "ctg_l50",
+        "ctg_L90": "ctg_l90",
+        "ctg_N50": "ctg_n50",
+        "ctg_N90": "ctg_n90",
+        "scaf_L50": "scaf_l50",
+        "scaf_L90": "scaf_l90",
+        "scaf_N50": "scaf_n50",
+        "scaf_N90": "scaf_n90",
+        "scaf_l_gt50K": "scaf_l_gt50k",
+        "scaf_n_gt50K": "scaf_n_gt50k",
+        "scaf_pct_gt50K": "scaf_pct_gt50k",
     }
 }
 
@@ -131,17 +132,14 @@ for collection_name in collections_to_repair:
             del document["_id"]
             if range_class.name in name_replacements:
                 for old_name, new_name in name_replacements[range_class.name].items():
-                    # print(f"Replacing {old_name} with {new_name}")
                     if old_name in document:
                         document[new_name] = document[old_name]
                         del document[old_name]
             if collection_name == "data_object_set" and "data_object_type" in document:
-                # print(document["data_object_type"])
                 data_object_file_type_values.add(document["data_object_type"])
 
             else:
                 pass
-                # print(f"no name replacements for {range_class.name}")
             # PROBLEM CASE: improperly formatted dates
             # todo remove need for enumerating date fields
             if 'started_at_time' in document:
@@ -151,21 +149,31 @@ for collection_name in collections_to_repair:
             if 'ended_at_time' in document:
                 eadt = str(pendulum.parse(document['ended_at_time']))
                 document['ended_at_time'] = eadt
+            if collection_name == "data_object_set" and ("id" not in document or not document["id"]):
+                print(f"no id in document: {document}")
+                document['id'] = f"nmdc:{document['md5_checksum']}"
+            else:
+                pass
+
+            if collection_name == "mags_activity_set" and 'mags_list' in document and document['mags_list']:
+                for i in document['mags_list']:
+                    if 'num_tRNA' in i:
+                        i['num_t_rna'] = i['num_tRNA']
+                        del i['num_tRNA']
+                    # pprint.pprint(i)
+
             database_obj[collection_name].append(document)
         if len(database_obj[collection_name]) == 0:
             del database_obj[collection_name]
 
-used_object_type_values = data_object_file_type_values
-print(f"data_object_file_type_values values: {used_object_type_values}")
-
 defined_object_type_pvs = nmdc_view.get_enum("file type enum").permissible_values
 defined_object_type_texts = set([pvv.text for pvk, pvv in defined_object_type_pvs.items()])
 
-unexpected_object_type_values = list(used_object_type_values - defined_object_type_texts)
+unexpected_object_type_values = list(data_object_file_type_values - defined_object_type_texts)
 
 unexpected_object_type_values.sort()
 
-print(unexpected_object_type_values)
+# print(unexpected_object_type_values)
 
 print("dumping to json")
 
