@@ -297,7 +297,7 @@ classes:
       # GOLD specific fields
       - add_date
       - community
-      - depth2
+#      - depth2
       - habitat
       - host_name
       - identifier
@@ -309,7 +309,7 @@ classes:
       - sample_collection_site
       - soluble_iron_micromol
       - subsurface_depth
-      - subsurface_depth2
+#      - subsurface_depth2
 
       # external IDs
       - gold_sample_identifiers
@@ -1159,12 +1159,12 @@ slots:
     range: string
   host_name:
     range: string
-  depth2:
-    range: QuantityValue
+#  depth2:
+#    range: QuantityValue
   subsurface_depth:
     range: QuantityValue
-  subsurface_depth2:
-    range: QuantityValue
+#  subsurface_depth2:
+#    range: QuantityValue
   proport_woa_temperature:
     range: string
 

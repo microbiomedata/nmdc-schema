@@ -418,6 +418,9 @@ classes:
     slots:
       - term
     # TODO: add fields for ontology, branch
+    slot_usage:
+      term:
+        required: true
 
   GeolocationValue:
     is_a: AttributeValue
