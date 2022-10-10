@@ -4994,7 +4994,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: mixs:0000012
     multivalued: false
-    range: ControlledTermValue
+    range: ControlledIdentifiedTermValue
   env_local_scale:
     name: env_local_scale
     aliases:
@@ -5024,7 +5024,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: mixs:0000013
     multivalued: false
-    range: ControlledTermValue
+    range: ControlledIdentifiedTermValue
   env_medium:
     name: env_medium
     aliases:
@@ -5054,7 +5054,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: mixs:0000014
     multivalued: false
-    range: ControlledTermValue
+    range: ControlledIdentifiedTermValue
   escalator:
     name: escalator
     aliases:

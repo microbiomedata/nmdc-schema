@@ -9,13 +9,22 @@
         "gold:Gs0110115"
       ],
       "env_broad_scale": {
-        "has_raw_value": "ENVO:00002030"
+        "has_raw_value": "ENVO:00002030",
+        "term": {
+          "id": "ENVO:00002030"
+        }
       },
       "env_local_scale": {
-        "has_raw_value": "ENVO:00002169"
+        "has_raw_value": "ENVO:00002169",
+        "term": {
+          "id": "ENVO:00002169"
+        }
       },
       "env_medium": {
-        "has_raw_value": "ENVO:00005792"
+        "has_raw_value": "ENVO:00005792",
+        "term": {
+          "id": "ENVO:00005792"
+        }
       },
       "geo_loc_name": {
         "has_raw_value": "Lithgow"
@@ -51,13 +60,22 @@
         "gold:Gs0110115"
       ],
       "env_broad_scale": {
-        "has_raw_value": "ENVO:00002030"
+        "has_raw_value": "ENVO:00002030",
+        "term": {
+          "id": "ENVO:00002030"
+        }
       },
       "env_local_scale": {
-        "has_raw_value": "ENVO:00002169"
+        "has_raw_value": "ENVO:00002169",
+        "term": {
+          "id": "ENVO:00002169"
+        }
       },
       "env_medium": {
-        "has_raw_value": "ENVO:00005792"
+        "has_raw_value": "ENVO:00005792",
+        "term": {
+          "id": "ENVO:00005792"
+        }
       },
       "geo_loc_name": {
         "has_raw_value": "Lithgow"
@@ -89,13 +107,22 @@
         "gold:Gs0110115"
       ],
       "env_broad_scale": {
-        "has_raw_value": "ENVO:00002030"
+        "has_raw_value": "ENVO:00002030",
+        "term": {
+          "id": "ENVO:00002030"
+        }
       },
       "env_local_scale": {
-        "has_raw_value": "ENVO:00002169"
+        "has_raw_value": "ENVO:00002169",
+        "term": {
+          "id": "ENVO:00002169"
+        }
       },
       "env_medium": {
-        "has_raw_value": "ENVO:00005792"
+        "has_raw_value": "ENVO:00005792",
+        "term": {
+          "id": "ENVO:00005792"
+        }
       },
       "geo_loc_name": {
         "has_raw_value": "Lithgow"
@@ -127,13 +154,22 @@
         "gold:Gs0110115"
       ],
       "env_broad_scale": {
-        "has_raw_value": "ENVO:00002030"
+        "has_raw_value": "ENVO:00002030",
+        "term": {
+          "id": "ENVO:00002030"
+        }
       },
       "env_local_scale": {
-        "has_raw_value": "ENVO:00002169"
+        "has_raw_value": "ENVO:00002169",
+        "term": {
+          "id": "ENVO:00002169"
+        }
       },
       "env_medium": {
-        "has_raw_value": "ENVO:00005792"
+        "has_raw_value": "ENVO:00005792",
+        "term": {
+          "id": "ENVO:00005792"
+        }
       },
       "geo_loc_name": {
         "has_raw_value": "Lithgow"

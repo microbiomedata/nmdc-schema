@@ -133,13 +133,22 @@
         "has_raw_value": "2011-06-15"
       },
       "env_broad_scale": {
-        "has_raw_value": "ENVO:00000446"
+        "has_raw_value": "ENVO:00000446",
+        "term": {
+          "id": "ENVO:00000446"
+        }
       },
       "env_local_scale": {
-        "has_raw_value": "ENVO:00000232"
+        "has_raw_value": "ENVO:00000232",
+        "term": {
+          "id": "ENVO:00000232"
+        }
       },
       "env_medium": {
-        "has_raw_value": "ENVO:00000134"
+        "has_raw_value": "ENVO:00000134",
+        "term": {
+          "id": "ENVO:00000134"
+        }
       },
       "geo_loc_name": {
         "has_raw_value": "Sweden: Stordalen"
@@ -175,13 +184,22 @@
         "has_raw_value": "2017-05-24"
       },
       "env_broad_scale": {
-        "has_raw_value": "ENVO:01000174"
+        "has_raw_value": "ENVO:01000174",
+        "term": {
+          "id": "ENVO:01000174"
+        }
       },
       "env_local_scale": {
-        "has_raw_value": "ENVO:01000159"
+        "has_raw_value": "ENVO:01000159",
+        "term": {
+          "id": "ENVO:01000159"
+        }
       },
       "env_medium": {
-        "has_raw_value": "ENVO:00002261"
+        "has_raw_value": "ENVO:00002261",
+        "term": {
+          "id": "ENVO:00002261"
+        }
       },
       "geo_loc_name": {
         "has_raw_value": "USA: Massachusetts"
@@ -217,13 +235,22 @@
         "has_raw_value": "2018-01-29"
       },
       "env_broad_scale": {
-        "has_raw_value": "ENVO:00000446"
+        "has_raw_value": "ENVO:00000446",
+        "term": {
+          "id": "ENVO:00000446"
+        }
       },
       "env_local_scale": {
-        "has_raw_value": "ENVO:00005801"
+        "has_raw_value": "ENVO:00005801",
+        "term": {
+          "id": "ENVO:00005801"
+        }
       },
       "env_medium": {
-        "has_raw_value": "ENVO:00005774"
+        "has_raw_value": "ENVO:00005774",
+        "term": {
+          "id": "ENVO:00005774"
+        }
       },
       "geo_loc_name": {
         "has_raw_value": "USA: Seattle, Washington"

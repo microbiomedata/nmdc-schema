@@ -8,12 +8,18 @@ RUN=poetry run
 SCHEMA_NAME = nmdc
 SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
-#TGTS = graphql jsonschema docs shex owl csv  python docs
+#TGTS = csv docs graphql owl pythonshex
 TGTS = jsonschema jsonld-context python json doc
 
-all: gen stage
+.PHONY: all build-nmdc_schema build-package clean clean-artifacts \
+clean-docs clean-package copy-src-docs copy-src-slides-images \
+deploy-pypi docserve echo \
+gen gen-csv gen-docs gen-graphql  gen-json gen-jsonld-context gen-jsonschema gen-owl gen-python gen-rdf gen-shex \
+gh-deployinstall make-slides mixs_clean post_test stage t \
+test  test-data test-jsonschema test-jsonschema_invalid
+
+all: clean gen stage
 gen: $(patsubst %,gen-%,$(TGTS))
-.PHONY: all gen stage clean clean-artifacts clean-docs t echo test install docserve gh-deploy .FORCE
 
 clean: clean-artifacts clean-docs
 
@@ -31,10 +37,9 @@ t:
 echo:
 	echo $(patsubst %,gen-%,$(TGTS))
 
-.PHONY: test
+
 test: all test-data
 
-.PHONY: test-data
 test-data: test-jsonschema test-jsonschema_invalid
 
 install:
@@ -56,12 +61,13 @@ stage-%: gen-%
 # Generate documentation ready for mkdocs
 # TODO: modularize imports
 #gen-docs: target/docs/index.md copy-src-docs make-slides
-.PHONY: gen-docs
+
+
 copy-src-docs:
 	mkdir -p target/docs/images
 	cp $(SRC_DIR)/docs/*.md target/docs/
 	cp $(SRC_DIR)/docs/images/* target/docs/images/
-PHONY: copy-src-docs
+
 
 target/docs/%.md: $(SCHEMA_SRC) tdir-docs
 	$(RUN) gen-markdown $(GEN_OPTS) --dir target/docs $<
@@ -78,11 +84,11 @@ gen-doc:
 	cp $(SRC_DIR)/$(DOCS_DIR)/images/* $(DOCS_DIR)/images
 
 make-slides: target/docs/schema-slides.html copy-src-slides-images
-.PHONY: make-slides
+
 copy-src-slides-images:
 	mkdir -p target/docs/images
 	cp $(SRC_DIR)/slides/images/* target/docs/images/
-.PHONY: copy-src-slides-images
+
 target/docs/schema-slides.html: tdir-docs 
 # see here for demos https://pandoc.org/demos.html
 # here the pandoc manual https://pandoc.org/MANUAL.html
@@ -91,7 +97,7 @@ target/docs/schema-slides.html: tdir-docs
 ###  -- PYTHON --
 # TODO: modularize imports
 gen-python: $(patsubst %, target/python/%.py, $(SCHEMA_NAMES))
-.PHONY: gen-python
+
 
 # --no-mergeimports was causing an import error
 #	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
@@ -108,54 +114,54 @@ target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python target/python/portal
 ###  -- GRAPHQL --
 # TODO: modularize imports. For now imports are merged.
 gen-graphql:target/graphql/$(SCHEMA_NAME).graphql 
-.PHONY: gen-graphql
+
 target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
 	$(RUN) gen-graphql $(GEN_OPTS) $< > $@
 
 ###  -- JSON SCHEMA --
 # TODO: modularize imports. For now imports are merged.
 gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json
-.PHONY: gen-jsonschema
+
 target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
 	$(RUN) gen-json-schema $(GEN_OPTS) --closed -t database $< > $@
 
 ###  -- JSONLD Context --
 gen-jsonld-context: target/jsonld-context/$(SCHEMA_NAME).context.jsonld
-.PHONY: gen-jsonld-context
+
 target/jsonld-context/%.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld-context
 	$(RUN) gen-jsonld-context $(GEN_OPTS) $< > $@
 
 ###  -- SHEX --
 # one file per module
 gen-shex: $(patsubst %, target/shex/%.shex, $(SCHEMA_NAMES))
-.PHONY: gen-shex
+
 target/shex/%.shex: $(SCHEMA_DIR)/%.yaml tdir-shex
 	$(RUN) gen-shex --no-mergeimports $(GEN_OPTS) $< > $@
 
 ###  -- CSV --
 # one file per module
 gen-csv: $(patsubst %, target/csv/%.csv, $(SCHEMA_NAMES))
-.PHONY: gen-csv
+
 target/csv/%.csv: $(SCHEMA_DIR)/%.yaml tdir-csv
 	$(RUN) gen-csv $(GEN_OPTS) $< > $@
 
 ###  -- OWL --
 # TODO: modularize imports. For now imports are merged.
 gen-owl: target/owl/$(SCHEMA_NAME).owl.ttl
-.PHONY: gen-owl
+
 target/owl/%.owl.ttl: $(SCHEMA_DIR)/%.yaml tdir-owl
 	$(RUN) gen-owl $(GEN_OPTS) $< > $@
 
 ###  -- RDF (direct mapping) --
 # TODO: modularize imports. For now imports are merged.
 gen-rdf: target/rdf/$(SCHEMA_NAME).ttl
-.PHONY: gen-rdf
+
 target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml tdir-rdf
 	$(RUN) gen-rdf $(GEN_OPTS) $< > $@
 
 ###  -- JSON --
 gen-json: target/json/$(SCHEMA_NAME).linkml.json
-.PHONY: gen-json
+
 target/json/%.linkml.json: $(SCHEMA_DIR)/%.yaml tdir-json
 	$(RUN) gen-linkml $(GEN_OPTS) --format json --materialize-attributes $< > $@
 
@@ -170,7 +176,7 @@ gh-deploy:
 ###  -- PYPI TARGETS
 # Use the build-package target to build a PYPI package locally
 # This is useful for testing
-.PHONY: clean-package build-nmdc_schema build-package deploy-pypi
+
 clean-package:
 	rm -rf dist && echo 'dist removed'
 	rm -rf nmdc_schema.egg-info && echo 'egg-info removed'
@@ -234,10 +240,10 @@ SCHEMA_TEST_EXAMPLES_INVALID := \
 
 # 	functional_annotation_set_invalid has invalid ID pattern but regex tests aren't applied yet? MAM 2021-06-24
 
-.PHONY: test-jsonschema
+
 test-jsonschema: $(foreach example, $(SCHEMA_TEST_EXAMPLES), validate-$(example))
 
-.PHONY: test-jsonschema_invalid
+
 test-jsonschema_invalid: $(foreach example, $(SCHEMA_TEST_EXAMPLES_INVALID), validate-invalid-$(example))
 
 validate-%: test/data/%.json jsonschema/nmdc.schema.json
@@ -278,7 +284,7 @@ reports/slot_annotations_diffs.tsv: src/schema/mixs_new.yaml
 		--legacy_mixs_module_in src/schema/mixs_legacy.yaml \
 		--current_mixs_module_in $<
 
-.PHONY: post_test mixs_clean
+
 
 post_test: clean mixs_clean reports/slot_annotations_diffs.tsv all
 	cp python/nmdc.py nmdc_schema/nmdc.py
