@@ -29,7 +29,9 @@ dest_mongo_dbname = "nmdc_7_0_0"
 excluded_collections = ['@type']
 
 max_collection_bytes = 10000000000
-last_doc_num = 999999
+last_doc_num = 100000
+
+migrate_partial = False
 
 # PROBLEM CASE: slot name has been changed since data was saved
 # todo right now only works for root-level slots within each document
@@ -38,6 +40,7 @@ name_replacements = {
         "GOLD_sample_identifiers": "gold_sample_identifiers",
         "INSDC_biosample_identifiers": "insdc_biosample_identifiers",
         "part_of": "sample_link",
+        "identifier": "samp_name",
     },
     "Study": {
         "GOLD_study_identifiers": "gold_study_identifiers",
@@ -94,25 +97,22 @@ collections_intersection.sort()
 
 print("Gathering mongodb collection stats")
 
-# # todo we should switch to using the collections_intersection
-# #  this avoids large and known-problematic collections
-#
-# collections_to_repair = [
-#     'activity_set',
-#     'biosample_set',
-#     'data_object_set',
-#     'functional_annotation_set',
-#     'genome_feature_set',
-#     'mags_activity_set',
-#     'metabolomics_analysis_activity_set',
-#     'metagenome_annotation_activity_set',
-#     'metagenome_assembly_set',
-#     'metaproteomics_analysis_activity_set',
-#     'metatranscriptome_activity_set',
-#     'nom_analysis_activity_set',
-#     'omics_processing_set',
-#     'study_set'
-# ]
+collections_intersection = [
+    # 'activity_set',
+    'biosample_set',
+    # 'data_object_set',
+    # 'functional_annotation_set',
+    # 'genome_feature_set',
+    # 'mags_activity_set',
+    # 'metabolomics_analysis_activity_set',
+    # 'metagenome_annotation_activity_set',
+    # 'metagenome_assembly_set',
+    # 'metaproteomics_analysis_activity_set',
+    # 'metatranscriptome_activity_set',
+    # 'nom_analysis_activity_set',
+    # 'omics_processing_set',
+    'study_set'
+]
 
 selected_stats = {}
 for collection_name in collections_intersection:
@@ -148,96 +148,94 @@ for collection_name in collections_intersection:
     cursor = None
     if collection_stats["size_in_bytes"] > max_collection_bytes:
         print(f"Over max_collection_bytes limit of {max_collection_bytes} for migration: {collection_stats}")
-        cursor = collection.find({}).limit(last_doc_num)
+        if migrate_partial:
+            cursor = collection.find({}).limit(last_doc_num)
     else:
         print(f"Within max_collection_bytes limit of {max_collection_bytes} for migration:  {collection_stats}")
         cursor = collection.find({})
-    for document in cursor:
-        del document["_id"]
-        if range_class.name in name_replacements:
-            for old_name, new_name in name_replacements[range_class.name].items():
-                if old_name in document:
-                    document[new_name] = document[old_name]
-                    del document[old_name]
-        if collection_name == "data_object_set" and "data_object_type" in document:
-            data_object_file_type_values.add(document["data_object_type"])
-        else:
-            pass
-
-        # PROBLEM CASE: improperly formatted dates
-        # todo remove need for enumerating date fields
-        if 'started_at_time' in document:
-            sadt = str(pendulum.parse(document['started_at_time']))
-            document['started_at_time'] = sadt
-        if 'ended_at_time' in document:
-            eadt = str(pendulum.parse(document['ended_at_time']))
-            document['ended_at_time'] = eadt
-        if collection_name == "data_object_set" and ("id" not in document or not document["id"]):
-            print(f"no id in document: {document}")
-            document['id'] = f"nmdc:{document['md5_checksum']}"
-        else:
-            pass
-
-        if collection_name == "mags_activity_set" and 'mags_list' in document and document['mags_list']:
-            for i in document['mags_list']:
-                if 'num_tRNA' in i:
-                    i['num_t_rna'] = i['num_tRNA']
-                    del i['num_tRNA']
-
-        # PROBLEM CASE: depth2 will be removed from the schema
-        if collection_name == "biosample_set":
-            if "depth2" in document:
-                # print(f"depth: {document['depth']}")
-                if "depth" in document:
-                    # print(f"depth2: {document['depth2']}")
-                    if document['depth']['has_unit'] != document['depth2']['has_unit']:
-                        print(
-                            f"PROBLEM: depth and depth2 have different units: {document['depth']['has_unit']} and {document['depth2']['has_unit']}")
-                    else:
-                        # print(f"depth and depth2 have same units: {document['depth']['has_unit']}")
-                        if 'has_numeric_value' in document['depth2']:
-                            if 'has_maximum_numeric_value' in document['depth']:
-                                if document['depth']['has_maximum_numeric_value'] != document['depth2'][
-                                    'has_numeric_value']:
-                                    print(
-                                        f"PROBLEM: depth and depth2 have different maximum values: {document['depth']['has_maximum_numeric_value']} and {document['depth2']['has_maximum_numeric_value']}")
-                                else:
-                                    del document['depth2']
-                            else:
-                                # todo any assumptions?
-                                document['depth']['has_maximum_numeric_value'] = document['depth2'][
-                                    'has_numeric_value']
-                                del document['depth2']
-                else:
-                    print("depth2 but no depth")
-                    # todo assuming the depth2 object has all of these fields
-                    document['depth'] = {'has_numeric_value': document['depth']['has_numeric_value'],
-                                         'has_raw_value': document['depth']['has_raw_value'],
-                                         'has_unit': document['depth']['has_unit']}
-                    del document['depth2']
+    if cursor:
+        for document in cursor:
+            del document["_id"]
+            if range_class.name in name_replacements:
+                for old_name, new_name in name_replacements[range_class.name].items():
+                    if old_name in document:
+                        document[new_name] = document[old_name]
+                        del document[old_name]
+            if collection_name == "data_object_set" and "data_object_type" in document:
+                data_object_file_type_values.add(document["data_object_type"])
             else:
                 pass
-                # print("SURPRISE: no depth2")
-            # PROBLEM CASE: MIXS env triad objects must include a OntologyTerm id
-            #  would like to include the name/label, too
-            #  this causes breakage in 'omics_processing_set'[]['omics_type']
-            # https://microbiomedata.github.io/nmdc-schema/ControlledTermValue/
-            for triad_slot in ['env_broad_scale', 'env_local_scale', 'env_medium']:
-                if 'term' not in document[triad_slot]:
-                    if 'has_raw_value' not in document[triad_slot]:
-                        print(f"  PROBLEM: no has_raw_value in {triad_slot}")
-                    else:
-                        # todo how much flexibility for the ontology prefix?
-                        m = re.search(r'\b(.*:\d+)', document[triad_slot]['has_raw_value'])
-                        if m:
-                            # todo check for multiple matches
-                            document[triad_slot]['term'] = {'id': m.group(0)}
-                        else:
-                            print(f"    no ENVO:(\\d+) in {triad_slot} has_raw_value")
 
-        database_obj[collection_name].append(document)
-    if len(database_obj[collection_name]) == 0:
-        del database_obj[collection_name]
+            # PROBLEM CASE: improperly formatted dates
+            # todo remove need for enumerating date fields
+            if 'started_at_time' in document:
+                sadt = str(pendulum.parse(document['started_at_time']))
+                document['started_at_time'] = sadt
+            if 'ended_at_time' in document:
+                eadt = str(pendulum.parse(document['ended_at_time']))
+                document['ended_at_time'] = eadt
+            if collection_name == "data_object_set" and ("id" not in document or not document["id"]):
+                print(f"no id in document: {document}")
+                document['id'] = f"nmdc:{document['md5_checksum']}"
+            else:
+                pass
+
+            if collection_name == "mags_activity_set" and 'mags_list' in document and document['mags_list']:
+                for i in document['mags_list']:
+                    if 'num_tRNA' in i:
+                        i['num_t_rna'] = i['num_tRNA']
+                        del i['num_tRNA']
+
+            # PROBLEM CASE: depth2 will be removed from the schema
+            if collection_name == "biosample_set":
+                if "depth2" in document:
+                    if "depth" in document:
+                        if document['depth']['has_unit'] != document['depth2']['has_unit']:
+                            print(
+                                f"PROBLEM: depth and depth2 have different units: {document['depth']['has_unit']} and {document['depth2']['has_unit']}")
+                        else:
+                            if 'has_numeric_value' in document['depth2']:
+                                if 'has_maximum_numeric_value' in document['depth']:
+                                    if document['depth']['has_maximum_numeric_value'] != document['depth2'][
+                                        'has_numeric_value']:
+                                        print(
+                                            f"PROBLEM: depth and depth2 have different maximum values: {document['depth']['has_maximum_numeric_value']} and {document['depth2']['has_maximum_numeric_value']}")
+                                    else:
+                                        del document['depth2']
+                                else:
+                                    # todo any assumptions?
+                                    document['depth']['has_maximum_numeric_value'] = document['depth2'][
+                                        'has_numeric_value']
+                                    del document['depth2']
+                    else:
+                        print("depth2 but no depth")
+                        # todo assuming the depth2 object has all of these fields
+                        document['depth'] = {'has_numeric_value': document['depth']['has_numeric_value'],
+                                             'has_raw_value': document['depth']['has_raw_value'],
+                                             'has_unit': document['depth']['has_unit']}
+                        del document['depth2']
+                else:
+                    pass
+                # PROBLEM CASE: MIXS env triad objects must include a OntologyTerm id
+                #  would like to include the name/label, too
+                #  this causes breakage in 'omics_processing_set'[]['omics_type']
+                # https://microbiomedata.github.io/nmdc-schema/ControlledTermValue/
+                for triad_slot in ['env_broad_scale', 'env_local_scale', 'env_medium']:
+                    if 'term' not in document[triad_slot]:
+                        if 'has_raw_value' not in document[triad_slot]:
+                            print(f"  PROBLEM: no has_raw_value in {triad_slot}")
+                        else:
+                            # todo how much flexibility for the ontology prefix?
+                            m = re.search(r'\b(.*:\d+)', document[triad_slot]['has_raw_value'])
+                            if m:
+                                # todo check for multiple matches
+                                document[triad_slot]['term'] = {'id': m.group(0)}
+                            else:
+                                print(f"    no ENVO:(\\d+) in {triad_slot} has_raw_value")
+
+            database_obj[collection_name].append(document)
+        if len(database_obj[collection_name]) == 0:
+            del database_obj[collection_name]
 
 defined_object_type_pvs = nmdc_view.get_enum("file type enum").permissible_values
 defined_object_type_texts = set([pvv.text for pvk, pvv in defined_object_type_pvs.items()])

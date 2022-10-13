@@ -161,6 +161,7 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
+      - samp_name
       - biosample_categories
       - type  # custom slot that specifies object type
       - alternative_identifiers
@@ -300,7 +301,9 @@ classes:
 #      - depth2
       - habitat
       - host_name
-      - identifier
+      # to deprecate
+      # by commenting here we are removing teh assignment of identifier to Biosample, but not eliminating it schema-wide
+#      - identifier
       - location
       - mod_date
       - ncbi_taxonomy_name
