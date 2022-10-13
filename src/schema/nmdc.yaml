@@ -40,6 +40,7 @@ prefixes:
   qud: http://qudt.org/1.1/schema/qudt#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
+  emsl: https://unknown.to.linter.org/
 
 default_prefix: nmdc
 default_range: string
@@ -298,12 +299,12 @@ classes:
       # GOLD specific fields
       - add_date
       - community
-#      - depth2
+      #      - depth2
       - habitat
       - host_name
       # to deprecate
       # by commenting here we are removing teh assignment of identifier to Biosample, but not eliminating it schema-wide
-#      - identifier
+      #      - identifier
       - location
       - mod_date
       - ncbi_taxonomy_name
@@ -312,12 +313,14 @@ classes:
       - sample_collection_site
       - soluble_iron_micromol
       - subsurface_depth
-#      - subsurface_depth2
+      #      - subsurface_depth2
 
       # external IDs
       - gold_sample_identifiers
       - insdc_biosample_identifiers
       - insdc_secondary_sample_identifiers
+      - emsl_biosample_identifiers
+      - igsn_biosample_identifiers
 
 
       # MIxS terms initially used in
@@ -415,6 +418,8 @@ classes:
       - lbceq
 
     slot_usage:
+      id:
+        pattern: '^nmdc:'
       gold_sample_identifiers:
         annotations:
           display_hint:
@@ -834,6 +839,27 @@ enums:
 
 slots:
 
+  emsl_biosample_identifiers:
+    title: EMSL Biosample Identifiers
+    description: >-
+      A list of identifiers for the biosample from the EMSL database.  This is
+      used to link the biosample, as modeled by NMDC, to the biosample in the planned EMSL NEXUS database.
+    multivalued: true
+    is_a: sample_identifiers
+    todos:
+      - removed "planned" once NEXUS is online
+      - make an emsl identifiers mixin
+      - determine real expansion for emsl prefix
+
+  igsn_biosample_identifiers:
+    title: IGSN Biosample Identifiers
+    description: >-
+      A list of identifiers for the biosample from the IGSN database.
+    multivalued: true
+    is_a: sample_identifiers
+    todos:
+      - make an igsn identifiers mixin
+
   biosample_categories:
     title: Categories the biosample belongs to
     range: biosample_category_enum
@@ -1162,12 +1188,12 @@ slots:
     range: string
   host_name:
     range: string
-#  depth2:
-#    range: QuantityValue
+  #  depth2:
+  #    range: QuantityValue
   subsurface_depth:
     range: QuantityValue
-#  subsurface_depth2:
-#    range: QuantityValue
+  #  subsurface_depth2:
+  #    range: QuantityValue
   proport_woa_temperature:
     range: string
 

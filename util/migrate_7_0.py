@@ -1,5 +1,6 @@
 import pprint
 import re
+import uuid
 
 import pendulum as pendulum
 from dotenv import dotenv_values
@@ -65,6 +66,21 @@ name_replacements = {
         "scaf_n_gt50K": "scaf_n_gt50k",
         "scaf_pct_gt50K": "scaf_pct_gt50k",
     }
+}
+
+# PROBLEM CASE: Biosample instances should be identified with an nmdc: identifier
+# todo add minting of nmdc: identifiers
+#   for now, using uuids as placeholders
+# this required migrating whatever currently appears in the id slot to some other slot
+
+#   52 id_prefix: emsl
+#  648 id_prefix: gold
+#   53 id_prefix: igsn
+
+biosample_id_routing = {
+    "emsl": "emsl_biosample_identifiers",
+    "gold": "gold_sample_identifiers",
+    "igsn": "igsn_biosample_identifiers",
 }
 
 database_obj = Database()
@@ -186,8 +202,17 @@ for collection_name in collections_intersection:
                         i['num_t_rna'] = i['num_tRNA']
                         del i['num_tRNA']
 
-            # PROBLEM CASE: depth2 will be removed from the schema
             if collection_name == "biosample_set":
+                id_prefix = document['id'].split(':')[0]
+                if id_prefix in biosample_id_routing:
+                    if "id" in document and document['id'].startswith(id_prefix):
+                        if biosample_id_routing[id_prefix] not in document:
+                            document[biosample_id_routing[id_prefix]] = []
+                        if document['id'] not in document[biosample_id_routing[id_prefix]]:
+                            document[biosample_id_routing[id_prefix]].append(document['id'])
+                        document['id'] = f"nmdc:{str(uuid.uuid4())}"
+
+                # PROBLEM CASE: depth2 will be removed from the schema
                 if "depth2" in document:
                     if "depth" in document:
                         if document['depth']['has_unit'] != document['depth2']['has_unit']:
