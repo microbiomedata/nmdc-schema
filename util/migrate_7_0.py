@@ -11,8 +11,6 @@ from pymongo import MongoClient
 from nmdc_schema.nmdc import Database
 
 # import yaml
-# from linkml_runtime.dumpers import yaml_dumper
-# , Biosample, ControlledTermValue, OntologyClass
 
 dotenv_file = "../local/.env"
 
@@ -29,9 +27,12 @@ dest_mongo_port = "27777"
 dest_mongo_dbname = "nmdc_7_0_0"
 excluded_collections = ['@type']
 
+# how large is too large for loading locally?
 max_collection_bytes = 10000000000
+# if a collection is too large, at least look at the first last_doc_num number of documents
 last_doc_num = 100000
-
+# if we do look at the first last_doc_num number of documents,
+#   should that PARTIAL collection be loaded into the local mongodb
 migrate_partial = False
 
 # PROBLEM CASE: slot name has been changed since data was saved
@@ -71,7 +72,7 @@ name_replacements = {
 # PROBLEM CASE: Biosample instances should be identified with an nmdc: identifier
 # todo add minting of nmdc: identifiers
 #   for now, using uuids as placeholders
-# this required migrating whatever currently appears in the id slot to some other slot
+# this requires migrating whatever currently appears in the id slot to some other slot
 
 #   52 id_prefix: emsl
 #  648 id_prefix: gold
@@ -101,9 +102,9 @@ remote_client = MongoClient(
 
 remote_db = remote_client["nmdc"]
 
+# might not be using
 ots = remote_db['omics_processing_set'].find().distinct('omics_type.has_raw_value')
 ots.sort()
-pprint.pprint(ots)
 
 remote_collections = remote_db.list_collection_names()
 
@@ -113,6 +114,7 @@ collections_intersection.sort()
 
 print("Gathering mongodb collection stats")
 
+# for debugging, can limit collections_intersection to a subset of collections
 collections_intersection = [
     # 'activity_set',
     'biosample_set',
@@ -182,6 +184,8 @@ for collection_name in collections_intersection:
             else:
                 pass
 
+            # todo repairs not handled by name_replacements
+
             # PROBLEM CASE: improperly formatted dates
             # todo remove need for enumerating date fields
             if 'started_at_time' in document:
@@ -213,6 +217,7 @@ for collection_name in collections_intersection:
                         document['id'] = f"nmdc:{str(uuid.uuid4())}"
 
                 # PROBLEM CASE: depth2 will be removed from the schema
+                # todo soil samples should have a minimum and maximum depth per Montana
                 if "depth2" in document:
                     if "depth" in document:
                         if document['depth']['has_unit'] != document['depth2']['has_unit']:
@@ -256,7 +261,7 @@ for collection_name in collections_intersection:
                                 # todo check for multiple matches
                                 document[triad_slot]['term'] = {'id': m.group(0)}
                             else:
-                                print(f"    no ENVO:(\\d+) in {triad_slot} has_raw_value")
+                                print(f"    don't see any term id in {triad_slot}'s has_raw_value")
 
             database_obj[collection_name].append(document)
         if len(database_obj[collection_name]) == 0:
