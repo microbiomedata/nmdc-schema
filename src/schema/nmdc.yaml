@@ -153,31 +153,31 @@ classes:
       - material sample
       - specimen
       - biospecimen
-    description: >- #MLS this is a weird description.. why is there >-
-      A material sample. It may be environmental (encompassing many organisms) or isolate or tissue.  
-      An environmental sample containing genetic material from multiple individuals is commonly referred to as a biosample.
+    description: >-
+      A material sample to describe information about the physical biological specimen from which your experimental data are derived.
+    todos:
+      - could add GOLD and EBI's biosample definitions to the alt_descriptions?
     alt_descriptions:
       embl.ena: A sample contains information about the sequenced source material.
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
-      - biosample_categories #MLS What is this?
+      - biosample_categories
       - type  # custom slot that specifies object type
       - part_of
       #      - canary
 
       # Identifiers
       - id
-      - alternative_identifiers #MLS alternative_id or identifiers?
+      - alternative_identifiers
 
-      # external IDs
-      - emsl_sample_identifiers
+      # external IDs, alternate IDs
       - gold_sample_identifiers
-      - insdc_biosample_identifiers
-      - insdc_secondary_sample_identifiers #MLS what is this?
+#      - insdc_biosample_identifiers
+#      - insdc_secondary_sample_identifiers #MLS DNA sample identifier not a biosample identifier. Mark to follow up on this
 
       # MIXS slots
-      - agrochem_addition #MLS why are these listed here if they're in mixs.yaml & that's where add slot usage?
+      - agrochem_addition
       - alkalinity
       - alkalinity_method
       - alkyl_diethers
@@ -304,7 +304,7 @@ classes:
       - specific_ecosystem
 
       # GOLD specific fields
-      - add_date #MLS we should visit these. not sure they need to be here
+      - add_date
       - community
       - depth2
       - habitat
@@ -322,7 +322,7 @@ classes:
 
       # MIxS terms initially used in
       # sample metadata submission portal (aka DataHarmonizer)
-      - air_temp_regm #MLS so, do these come from MIxS? or are these the terms we edited? or aren't in the soil package
+      - air_temp_regm
       - biotic_regm
       - biotic_relationship
       - climate_environment
@@ -408,10 +408,9 @@ classes:
       - sample_link
 
       # EMSL fields
-      - emsl_store_temp #MLS need to identify the other slots that are EMSL only
 
       # bioscales
-      # tot_phosp, tot_carb, tot_nitro_content, pH already associated with biosamples #MLS what's this?
+      # tot_phosp, tot_carb, tot_nitro_content, pH already associated with biosamples
       - zinc
       - manganese
       - ammonium_nitrogen
@@ -439,7 +438,7 @@ classes:
           interpolated: true
           partial_match: false
         required: true
-      lat_lon: #MLS I think this can go away
+      lat_lon:
         required: false
         description: This is currently a required field but it's not clear if this
           should be required for human hosts
@@ -492,8 +491,8 @@ classes:
       - emsl_proposal_identifier
       - emsl_proposal_doi
       - gold_study_identifiers
-      - insdc_bioproject_identifiers
-      - insdc_sra_ena_study_identifiers #MLS what's this?
+      #- insdc_bioproject_identifiers
+      #- insdc_sra_ena_study_identifiers
       - mgnify_project_identifiers
 
       - ecosystem
@@ -529,9 +528,9 @@ classes:
         description: >-
           The dataset citation for this study
         annotations:
-          display_hint:
+          display_hint: #should appear on data and submission portal. display_hint is a type of annotation, you can add others
             tag: display_hint
-            value: >- #MLS how should value and description differ?
+            value: >- #MLS how should value and description differ? .. annotations are a key value pair. value is what you're providing for that annotation
               DOI associated with the data in this study. This is required when data is already generated.
       name:
         description:
@@ -880,7 +879,6 @@ enums:
           - replaces Environmental Molecular Sciences Lab
 
 slots:
-
   biosample_categories:
     title: Categories the biosample belongs to
     range: biosample_category_enum
@@ -891,6 +889,20 @@ slots:
     description: from database class
   #  metatranscriptome_activity_set:
   #    description: from database class
+  related_identifiers:
+    title: Related Identifiers
+    description: Identifiers assigned to a thing that is similar to that which is represented in NMDC. Related identifier are not an identical match and may have some variation.
+  emsl_proposal_identifier:
+    title: EMSL Proposal Identifier
+    description: The proposal number assigned to the EMSL awarded study that relates to that which is represented in NMDC.
+  emsl_proposal_doi:
+    title: EMSL Proposal DOI
+    description: The proposal DOI assigned to the awarded EMSL study.
+  gold_study_identifiers:
+    title: GOLD Study Identifiers
+    description: The GS identifier assigned to the GOLD studay that replates to that which is represented in NMDC.
+  #- insdc_bioproject_identifiers
+  #- insdc_sra_ena_study_identifiers
 
   notes:
     description: from study class
