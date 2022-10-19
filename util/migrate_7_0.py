@@ -116,19 +116,19 @@ print("Gathering mongodb collection stats")
 
 # for debugging, can limit collections_intersection to a subset of collections
 collections_intersection = [
-    # 'activity_set',
+    'activity_set',
     'biosample_set',
-    # 'data_object_set',
+    'data_object_set',
     # 'functional_annotation_set',
     # 'genome_feature_set',
-    # 'mags_activity_set',
-    # 'metabolomics_analysis_activity_set',
-    # 'metagenome_annotation_activity_set',
-    # 'metagenome_assembly_set',
-    # 'metaproteomics_analysis_activity_set',
-    # 'metatranscriptome_activity_set',
-    # 'nom_analysis_activity_set',
-    # 'omics_processing_set',
+    'mags_activity_set',
+    'metabolomics_analysis_activity_set',
+    'metagenome_annotation_activity_set',
+    'metagenome_assembly_set',
+    'metaproteomics_analysis_activity_set',
+    'metatranscriptome_activity_set',
+    'nom_analysis_activity_set',
+    'omics_processing_set',
     'study_set'
 ]
 
