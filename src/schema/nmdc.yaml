@@ -174,7 +174,7 @@ classes:
       # external IDs, alternate IDs
       - gold_sample_identifiers
 #      - insdc_biosample_identifiers
-#      - insdc_secondary_sample_identifiers #MLS DNA sample identifier not a biosample identifier. Mark to follow up on this
+#      - insdc_secondary_sample_identifiers
 
       # MIXS slots
       - agrochem_addition
@@ -503,7 +503,7 @@ classes:
       - principal_investigator
       - doi
       - title
-      - alternative_titles #MLS need to figure out what these are and how they're used
+      - alternative_titles
       - alternative_descriptions
       - alternative_names
       - abstract
@@ -528,9 +528,9 @@ classes:
         description: >-
           The dataset citation for this study
         annotations:
-          display_hint: #should appear on data and submission portal. display_hint is a type of annotation, you can add others
+          display_hint:
             tag: display_hint
-            value: >- #MLS how should value and description differ? .. annotations are a key value pair. value is what you're providing for that annotation
+            value: >- 
               DOI associated with the data in this study. This is required when data is already generated.
       name:
         description:
