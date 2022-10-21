@@ -338,3 +338,6 @@ from_mongo_cleanup:
 	rm -rf assets/from_mongodb_updated.json
 
 from_mongo_all: from_mongo_cleanup validate_vs_3_2_0 validate_vs_current
+
+mongo_migration:
+	$(RUN) python util/migrate_7.py
