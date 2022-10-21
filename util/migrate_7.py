@@ -55,7 +55,7 @@ name_replacements = {
 # PROBLEM CASE: Biosample instances should be identified with an nmdc: identifier
 # todo add minting of nmdc: identifiers
 #   for now, using uuids as placeholders
-# this requires migrating whatever currently appears in the id slot to some other slot
+# this requires routing whatever currently appears in the id slot to some other slot
 
 #   52 id_prefix: emsl
 #  648 id_prefix: gold
@@ -108,15 +108,10 @@ def route_document_ids(document, routing_table):
     if "alternative_identifiers" in document and document["alternative_identifiers"]:
         ais = document["alternative_identifiers"]
         ais.sort()
-        ais_len = len(ais)
         for index, ai in enumerate(ais):
             id_route = determine_routing(ai, routing_table)
             if id_route:
-                # logger.info(f"alternative identifier {index + 1} of {ais_len}: {ai} will be routed into {id_route}")
                 document = do_routing(document, id_route, ai)
-                # depleted_list = ais.copy()
-                # depleted_list = [i for i in depleted_list if i != ai]
-                # document["alternative_identifiers"] = depleted_list
     concatenateds = concatenate_additional_biosample_identifiers(document)
     if concatenateds:
         logger.info(f"concatenateds: {concatenateds}")
@@ -171,10 +166,6 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
     )
 
     remote_db = remote_client["nmdc"]
-
-    # # might not be using
-    # ots = remote_db['omics_processing_set'].find().distinct('omics_type.has_raw_value')
-    # ots.sort()
 
     remote_collections = remote_db.list_collection_names()
 
@@ -256,8 +247,6 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                             del document[old_name]
                 if collection_name == "data_object_set" and "data_object_type" in document:
                     data_object_file_type_values.add(document["data_object_type"])
-                else:
-                    pass
 
                 # todo migrations not handled by name_replacements
 
@@ -272,8 +261,6 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                 if collection_name == "data_object_set" and ("id" not in document or not document["id"]):
                     logger.warning(f"no id in document: {document}")
                     document['id'] = f"nmdc:{document['md5_checksum']}"
-                else:
-                    pass
 
                 if collection_name == "mags_activity_set" and 'mags_list' in document and document['mags_list']:
                     for i in document['mags_list']:
@@ -283,25 +270,10 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
 
                 if collection_name == "biosample_set":
 
-                    # todo provide indicator of source biosample
-                    # id_bag = []
-                    # # could have obtained this from schema?
-                    # specific_id_arrays = [
-                    #     "alternative_identifiers",
-                    #     "emsl_biosample_identifiers",
-                    #     "gold_sample_identifiers,"
-                    #     "img_identifiers"
-                    #     "insdc_biosample_identifiers",
-                    # ]
-                    # for current_array in specific_id_arrays:
-                    #     if current_array in document:
-                    #         id_bag.extend(document[current_array])
-                    # id_bag.sort()
-
+                    # provide indicator of source biosample
                     bs_ids_old_new = [document['id']]
-
+                    # reroute identifiers
                     document = route_document_ids(document, biosample_id_routing)
-
                     bs_ids_old_new.append(document['id'])
 
                     # PROBLEM CASE: depth2 will be removed from the schema
@@ -344,12 +316,12 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                                                  'has_raw_value': document['depth']['has_raw_value'],
                                                  'has_unit': document['depth']['has_unit']}
                             del document['depth2']
-                    else:
-                        pass
+
                     # PROBLEM CASE: MIXS env triad objects must include a OntologyTerm id
-                    #  would like to include the name/label, too
-                    #  this causes breakage in 'omics_processing_set'[]['omics_type']
+                    #  ideally would also like to include the name/label
+                    #  that requirement would be incompatible with the 'omics_processing_set'[]['omics_type']s
                     # https://microbiomedata.github.io/nmdc-schema/ControlledTermValue/
+                    # so creating a new ???
                     for triad_slot in ['env_broad_scale', 'env_local_scale', 'env_medium']:
                         if 'term' not in document[triad_slot]:
                             if 'has_raw_value' not in document[triad_slot]:
@@ -363,7 +335,7 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                                 else:
                                     logger.warning(f"    don't see any term id in {triad_slot}'s has_raw_value")
 
-                    # todo how would other NMDC components handle biosmaples with no alternative_identifiers?
+                    # todo how would other NMDC components handle biosamples with no alternative_identifiers?
                     if "alternative_identifiers" in document and len(document["alternative_identifiers"]) < 1:
                         del document["alternative_identifiers"]
 
@@ -404,8 +376,6 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                 logger.info(f"Inserting {i}")
                 insertion = collection.insert_many(database_obj[i])
                 logger.info(f"Inserted {len(insertion.inserted_ids)} documents")
-
-                # logger.info(pprint.pformat(database_obj[i]))
             else:
                 logger.warning(f"Skipping {i} because it has no documents")
 
