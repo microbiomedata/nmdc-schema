@@ -898,9 +898,7 @@ slots:
   emsl_proposal_doi:
     title: EMSL Proposal DOI
     description: The proposal DOI assigned to the awarded EMSL study.
-  gold_study_identifiers:
-    title: GOLD Study Identifiers
-    description: The GS identifier assigned to the GOLD studay that replates to that which is represented in NMDC.
+
   #- insdc_bioproject_identifiers
   #- insdc_sra_ena_study_identifiers
 

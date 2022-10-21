@@ -120,11 +120,14 @@ slots:
       - gold_identifiers
     pattern: "^GOLD:Gs[0-9]+$"
     multivalued: true
-    description: identifiers for corresponding project in GOLD
+    description: identifiers for corresponding project(s) in GOLD
+    comments:
+      - uses the prefix GS (but possibly in a different case)
     examples:
       - value: https://identifiers.org/gold:Gs0110115
     see_also:
       - https://gold.jgi.doe.gov/studies
+    title: GOLD Study Identifiers
 
   mgnify_project_identifiers:
     is_a: insdc_identifiers
