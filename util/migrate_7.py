@@ -16,6 +16,126 @@ from nmdc_schema.nmdc import Database
 logger = logging.getLogger(__name__)
 click_log.basic_config(logger)
 
+# todo if there are multiple biosample gold identifiers, then how do we know whether one is more trusted?
+
+# PROBLEM CASE: slot name has been changed since data was saved
+# todo right now only works for root-level slots within each document
+name_replacements = {
+    "Biosample": {
+        "GOLD_sample_identifiers": "gold_sample_identifiers",
+        "INSDC_biosample_identifiers": "insdc_biosample_identifiers",
+        "part_of": "sample_link",
+        "identifier": "samp_name",
+    },
+    "Study": {
+        "GOLD_study_identifiers": "gold_study_identifiers",
+    },
+    "OmicsProcessing": {
+        "GOLD_sequencing_project_identifiers": "gold_sequencing_project_identifiers",
+    },
+    "MagsAnalysisActivity": {
+        "num_tRNA": "num_trnanum_t_rna",  # inside of mags_list of MagBin instances,
+        "lowDepth_contig_num": "low_depth_contig_num",
+    },
+    "MetagenomeAssembly": {
+        "ctg_L50": "ctg_l50",
+        "ctg_L90": "ctg_l90",
+        "ctg_N50": "ctg_n50",
+        "ctg_N90": "ctg_n90",
+        "scaf_L50": "scaf_l50",
+        "scaf_L90": "scaf_l90",
+        "scaf_N50": "scaf_n50",
+        "scaf_N90": "scaf_n90",
+        "scaf_l_gt50K": "scaf_l_gt50k",
+        "scaf_n_gt50K": "scaf_n_gt50k",
+        "scaf_pct_gt50K": "scaf_pct_gt50k",
+    }
+}
+
+# PROBLEM CASE: Biosample instances should be identified with an nmdc: identifier
+# todo add minting of nmdc: identifiers
+#   for now, using uuids as placeholders
+# this requires migrating whatever currently appears in the id slot to some other slot
+
+#   52 id_prefix: emsl
+#  648 id_prefix: gold
+#   53 id_prefix: igsn
+
+biosample_id_routing = {
+    "emsl": "emsl_biosample_identifiers",
+    "gold": "gold_sample_identifiers",
+    "igsn": "igsn_biosample_identifiers",
+    "img.taxon": "img_identifiers"
+}
+
+
+def determine_routing(id_val, routing_table):
+    id_prefix = id_val.split(':')[0]
+    # logger.info(f"id = {id_val}; id_prefix = {id_prefix}")
+    if id_prefix in routing_table:
+        return routing_table[id_prefix]
+    else:
+        logger.warning(f"Don't know how to route ids with prefix {id_prefix}")
+
+
+def do_routing(document, id_route, id_val):
+    if id_route not in document:
+        document[id_route] = []
+    if id_val not in document[id_route]:
+        document[id_route].append(id_val)
+    return document
+
+
+def concatenate_additional_biosample_identifiers(biosample):
+    concatenateds = set()
+    id_sources = list(biosample_id_routing.values())
+    for id_source in id_sources:
+        if id_source in biosample and biosample[id_source]:
+            for id_val in biosample[id_source]:
+                concatenateds.add(id_val)
+    concatenateds = list(concatenateds)
+    concatenateds.sort()
+    return concatenateds
+
+
+# todo add lookup of insdc identifiers from gold api?
+def route_document_ids(document, routing_table):
+    id_route = determine_routing(document['id'], routing_table)
+    if id_route:
+        document = do_routing(document, id_route, document['id'])
+        # todo use real NMDC minted ids not UUIDs!
+        document['id'] = f"nmdc:{str(uuid.uuid4())}"
+    if "alternative_identifiers" in document and document["alternative_identifiers"]:
+        ais = document["alternative_identifiers"]
+        ais.sort()
+        ais_len = len(ais)
+        for index, ai in enumerate(ais):
+            id_route = determine_routing(ai, routing_table)
+            if id_route:
+                # logger.info(f"alternative identifier {index + 1} of {ais_len}: {ai} will be routed into {id_route}")
+                document = do_routing(document, id_route, ai)
+                # depleted_list = ais.copy()
+                # depleted_list = [i for i in depleted_list if i != ai]
+                # document["alternative_identifiers"] = depleted_list
+    concatenateds = concatenate_additional_biosample_identifiers(document)
+    if concatenateds:
+        logger.info(f"concatenateds: {concatenateds}")
+        if "alternative_identifiers" in document:
+            starting_alternatives = document["alternative_identifiers"].copy()
+            logger.info(f"starting_alternatives: {starting_alternatives}")
+            depleted_alternatives = list(set(starting_alternatives) - set(concatenateds))
+            depleted_alternatives.sort()
+            logger.info(f"depleted_alternatives: {depleted_alternatives}")
+            if depleted_alternatives:
+                document["alternative_identifiers"] = depleted_alternatives
+                logger.info(f"alternative_identifiers: {document['alternative_identifiers']}")
+            else:
+                del document["alternative_identifiers"]
+                logger.warning(f"deleted empty alternative_identifiers")
+        else:
+            logger.info("no alternative_identifiers to deplete or delete")
+    return document
+
 
 @click.command()
 @click_log.simple_verbosity_option(logger)
@@ -33,55 +153,6 @@ click_log.basic_config(logger)
 def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_port: str, dest_mongo_dbname: str,
         max_collection_bytes: int, last_doc_num: int, migrate_partial: bool):
     excluded_collections = ['@type']
-
-    # PROBLEM CASE: slot name has been changed since data was saved
-    # todo right now only works for root-level slots within each document
-    name_replacements = {
-        "Biosample": {
-            "GOLD_sample_identifiers": "gold_sample_identifiers",
-            "INSDC_biosample_identifiers": "insdc_biosample_identifiers",
-            "part_of": "sample_link",
-            "identifier": "samp_name",
-        },
-        "Study": {
-            "GOLD_study_identifiers": "gold_study_identifiers",
-        },
-        "OmicsProcessing": {
-            "GOLD_sequencing_project_identifiers": "gold_sequencing_project_identifiers",
-        },
-        "MagsAnalysisActivity": {
-            "num_tRNA": "num_trnanum_t_rna",  # inside of mags_list of MagBin instances,
-            "lowDepth_contig_num": "low_depth_contig_num",
-        },
-        "MetagenomeAssembly": {
-            "ctg_L50": "ctg_l50",
-            "ctg_L90": "ctg_l90",
-            "ctg_N50": "ctg_n50",
-            "ctg_N90": "ctg_n90",
-            "scaf_L50": "scaf_l50",
-            "scaf_L90": "scaf_l90",
-            "scaf_N50": "scaf_n50",
-            "scaf_N90": "scaf_n90",
-            "scaf_l_gt50K": "scaf_l_gt50k",
-            "scaf_n_gt50K": "scaf_n_gt50k",
-            "scaf_pct_gt50K": "scaf_pct_gt50k",
-        }
-    }
-
-    # PROBLEM CASE: Biosample instances should be identified with an nmdc: identifier
-    # todo add minting of nmdc: identifiers
-    #   for now, using uuids as placeholders
-    # this requires migrating whatever currently appears in the id slot to some other slot
-
-    #   52 id_prefix: emsl
-    #  648 id_prefix: gold
-    #   53 id_prefix: igsn
-
-    biosample_id_routing = {
-        "emsl": "emsl_biosample_identifiers",
-        "gold": "gold_sample_identifiers",
-        "igsn": "igsn_biosample_identifiers",
-    }
 
     database_obj = Database()
 
@@ -177,6 +248,8 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
             for document in cursor:
                 del document["_id"]
                 if range_class.name in name_replacements:
+                    # todo Class 'dict' does not define '__getitem__', so the '[]' operator cannot be used on its instances
+                    #  but still works
                     for old_name, new_name in name_replacements[range_class.name].items():
                         if old_name in document:
                             document[new_name] = document[old_name]
@@ -186,7 +259,7 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                 else:
                     pass
 
-                # todo repairs not handled by name_replacements
+                # todo migrations not handled by name_replacements
 
                 # PROBLEM CASE: improperly formatted dates
                 # todo remove need for enumerating date fields
@@ -209,30 +282,27 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                             del i['num_tRNA']
 
                 if collection_name == "biosample_set":
-                    id_prefix = document['id'].split(':')[0]
-                    # logger.info(id_prefix)
-                    if id_prefix in biosample_id_routing:
-                        if "id" in document and document['id'].startswith(id_prefix):
-                            # logger.info(biosample_id_routing[id_prefix])
-                            if biosample_id_routing[id_prefix] not in document:
-                                document[biosample_id_routing[id_prefix]] = []
-                            if document['id'] not in document[biosample_id_routing[id_prefix]]:
-                                document[biosample_id_routing[id_prefix]].append(document['id'])
-                            document['id'] = f"nmdc:{str(uuid.uuid4())}"
 
                     # todo provide indicator of source biosample
-                    id_bag = []
-                    # could have obtained this from schema?
-                    specific_id_arrays = [
-                        "alternative_identifiers",
-                        "gold_sample_identifiers,"
-                        "insdc_biosample_identifiers",
-                        "emsl_biosample_identifiers"
-                    ]
-                    for current_array in specific_id_arrays:
-                        if current_array in document:
-                            id_bag.extend(document[current_array])
-                    id_bag.sort()
+                    # id_bag = []
+                    # # could have obtained this from schema?
+                    # specific_id_arrays = [
+                    #     "alternative_identifiers",
+                    #     "emsl_biosample_identifiers",
+                    #     "gold_sample_identifiers,"
+                    #     "img_identifiers"
+                    #     "insdc_biosample_identifiers",
+                    # ]
+                    # for current_array in specific_id_arrays:
+                    #     if current_array in document:
+                    #         id_bag.extend(document[current_array])
+                    # id_bag.sort()
+
+                    bs_ids_old_new = [document['id']]
+
+                    document = route_document_ids(document, biosample_id_routing)
+
+                    bs_ids_old_new.append(document['id'])
 
                     # PROBLEM CASE: depth2 will be removed from the schema
                     # todo soil samples should have a minimum and maximum depth per Montana
@@ -255,15 +325,17 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                                         document['depth']['has_maximum_numeric_value'] = document['depth2'][
                                             'has_numeric_value']
                                         if "has_minimum_numeric_value" not in document['depth']:
+                                            # todo we could constrain this to "soil samples"
+                                            #  if there was a clear indicator of a Biosamples having some soil attribute
                                             logger.warning(
-                                                f"Biosample {id_bag}: inferring depth's min value = numeric value")
+                                                f"Biosample {bs_ids_old_new}: inferring depth's min value = numeric value")
                                             document['depth']["has_minimum_numeric_value"] = document['depth'][
                                                 "has_numeric_value"]
                                         else:
                                             if document['depth']["has_numeric_value"] != document['depth'][
                                                 "has_minimum_numeric_value"]:
                                                 logger.warning(
-                                                    f"Biosample {id_bag}: depth min value != its numeric value !")
+                                                    f"Biosample {bs_ids_old_new}: depth min value != its numeric value !")
                                         del document['depth2']
                         else:
                             logger.warning("depth2 but no depth")
@@ -291,6 +363,10 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                                 else:
                                     logger.warning(f"    don't see any term id in {triad_slot}'s has_raw_value")
 
+                    # todo how would other NMDC components handle biosmaples with no alternative_identifiers?
+                    if "alternative_identifiers" in document and len(document["alternative_identifiers"]) < 1:
+                        del document["alternative_identifiers"]
+
                 database_obj[collection_name].append(document)
             if len(database_obj[collection_name]) == 0:
                 del database_obj[collection_name]
@@ -310,7 +386,7 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
 
     destination_collections = destination_db.list_collection_names()
 
-    logger.info("attempting to validate repaired data")
+    logger.info("attempting to validate migrated data")
     val_inst = JsonSchemaDataValidator(schema_file)
     val_inst.validate_object(database_obj)
     logger.info("data validation complete")

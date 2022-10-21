@@ -162,6 +162,7 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
+      - img_identifiers
       - samp_name
       - biosample_categories
       - type  # custom slot that specifies object type
@@ -838,6 +839,15 @@ enums:
           - replaces Environmental Molecular Sciences Lab
 
 slots:
+
+  img_identifiers:
+    title: IMG Identifiers
+    description: >-
+      A list of identifiers that relate the biosample to records in the IMG database.
+    multivalued: true
+    todos:
+      - add is_a or mixin modeling
+      - what are the class of IMG records?!
 
   emsl_biosample_identifiers:
     title: EMSL Biosample Identifiers
