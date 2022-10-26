@@ -428,16 +428,14 @@ classes:
             tag: display_hint
             value: >-
               Provide the GOLD biosample IDs associated with this biosample.
+
       alternative_identifiers:
           description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
           required: false
       id:
         description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:{id_type_sample}{id_shoulder}{id_generated}"
-          interpolated: true
-          partial_match: false
         required: true
+
       lat_lon:
         required: false
         description: This is currently a required field but it's not clear if this
@@ -521,10 +519,6 @@ classes:
     slot_usage:
       id:
         description: An NMDC assigned unique identifier for a sample submitted to NMDC.
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:{id_type_study}{id_shoulder}{id_generated}"
-          interpolated: true
-          partial_match: false
       doi:
         description: >-
           The dataset citation for this study
@@ -704,6 +698,8 @@ enums:
         meaning: https://www.neonscience.org
   file type enum:
     permissible_values:
+      Metagenome Raw Reads:
+        todos: add annotations
       FT ICR-MS Analysis Results:
         description: FT ICR-MS-based molecular formula assignment results table
       GC-MS Metabolomics Results:
