@@ -154,7 +154,7 @@ classes:
       - specimen
       - biospecimen
     description: >-
-      A material sample to describe information about the physical biological specimen from which your experimental data are derived.
+      Biological source material which can be characterized by an experiment.
     todos:
       - could add GOLD and EBI's biosample definitions to the alt_descriptions?
     alt_descriptions:
@@ -461,6 +461,7 @@ classes:
     exact_mappings:
       - OBI:0000747
       - NCIT:C43412
+      - http://purl.obolibrary.org/obo/FBcv_0003024
 
   Study:
     is_a: NamedThing
