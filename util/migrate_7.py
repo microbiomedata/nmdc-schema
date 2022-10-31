@@ -145,9 +145,13 @@ def route_document_ids(document, routing_table):
               help="The first <last_doc_num> documents from large remote collections will be loaded into local RAM")
 @click.option("--migrate_partial", default=False,
               help="Should the first first <last_doc_num> documents from large remote collections be loaded into the destination mongodb? ")
+@click.option("--excluded_collection", multiple=True,
+              default=[
+                  "read_qc_analysis_activity_set",
+                  '@type'
+              ])
 def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_port: str, dest_mongo_dbname: str,
-        max_collection_bytes: int, last_doc_num: int, migrate_partial: bool):
-    excluded_collections = ['@type']
+        max_collection_bytes: int, last_doc_num: int, migrate_partial: bool, excluded_collection):
 
     database_obj = Database()
 
@@ -170,6 +174,10 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
     remote_collections = remote_db.list_collection_names()
 
     collections_intersection = set(database_slots).intersection(set(remote_collections))
+    logger.info(f"collections_intersection: {collections_intersection}")
+    logger.info(f"excluded_collection: {excluded_collection}")
+    collections_intersection = collections_intersection - set(excluded_collection)
+    logger.info(f"collections_intersection: {collections_intersection}")
     collections_intersection = list(collections_intersection)
     collections_intersection.sort()
 
@@ -364,7 +372,7 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
     logger.info("data validation complete")
 
     for i in collections_intersection:
-        if i in excluded_collections:
+        if i in excluded_collection:
             logger.warning(f"Skipping {i}")
         else:
             if i in destination_collections:

@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-10-03T14:44:27\n    Schema: NMDC\n    metamodel version: 1.7.0\n    model version: 4.0.0\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC).\nThis schema is organized into distinct modules:\n\n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-10-31T15:50:46\n    Schema: NMDC\n    metamodel version: 1.7.0\n    model version: 4.0.0\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC).\nThis schema is organized into distinct modules:\n\n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "CAS": "http://identifiers.org/cas/",
       "CATH": "http://identifiers.org/cath/",
@@ -67,6 +67,7 @@
       "UniProtKB": "https://identifiers.org/uniprot/",
       "biolink": "https://w3id.org/biolink/vocab/",
       "dcterms": "http://purl.org/dc/terms/",
+      "emsl": "https://unknown.to.linter.org/",
       "gtpo": "https://unknown.to.linter.org/",
       "igsn": "https://app.geosamples.org/sample/igsn/",
       "insdc.srs": "https://unknown.to.linter.org/",
@@ -561,9 +562,6 @@
          "@type": "@id",
          "@id": "mixs:0000018"
       },
-      "depth2": {
-         "@type": "@id"
-      },
       "description": {
          "@id": "dcterms:description"
       },
@@ -748,6 +746,9 @@
       },
       "email": {
          "@id": "schema:email"
+      },
+      "emsl_biosample_identifiers": {
+         "@type": "@id"
       },
       "emulsions": {
          "@type": "@id",
@@ -1168,6 +1169,9 @@
       "humidity_regm": {
          "@type": "@id",
          "@id": "mixs:0000568"
+      },
+      "igsn_biosample_identifiers": {
+         "@type": "@id"
       },
       "indoor_space": {
          "@type": "@id",
@@ -2234,9 +2238,6 @@
          "@id": "mixs:0000767"
       },
       "subsurface_depth": {
-         "@type": "@id"
-      },
-      "subsurface_depth2": {
          "@type": "@id"
       },
       "sulfate": {

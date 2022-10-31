@@ -1,5 +1,5 @@
 # Auto generated from sample_prep.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-10-03T14:45:29
+# Generation date: 2022-10-31T15:50:53
 # Schema: sample_prep
 #
 # id: https://microbiomedata/schema/sample_prep
@@ -1055,6 +1055,26 @@ class ControlledTermValue(AttributeValue):
 
 
 @dataclass
+class ControlledIdentifiedTermValue(ControlledTermValue):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC.ControlledIdentifiedTermValue
+    class_class_curie: ClassVar[str] = "nmdc:ControlledIdentifiedTermValue"
+    class_name: ClassVar[str] = "ControlledIdentifiedTermValue"
+    class_model_uri: ClassVar[URIRef] = NMDC.ControlledIdentifiedTermValue
+
+    term: Union[dict, OntologyClass] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.term):
+            self.MissingRequiredField("term")
+        if not isinstance(self.term, OntologyClass):
+            self.term = OntologyClass(**as_dict(self.term))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class GeolocationValue(AttributeValue):
     """
     A normalized value for a location on the earth's surface
@@ -1258,10 +1278,12 @@ class Biosample(NamedThing):
     class_model_uri: ClassVar[URIRef] = NMDC.Biosample
 
     id: Union[str, BiosampleId] = None
-    env_broad_scale: Union[dict, ControlledTermValue] = None
-    env_local_scale: Union[dict, ControlledTermValue] = None
-    env_medium: Union[dict, ControlledTermValue] = None
+    env_broad_scale: Union[dict, ControlledIdentifiedTermValue] = None
+    env_local_scale: Union[dict, ControlledIdentifiedTermValue] = None
+    env_medium: Union[dict, ControlledIdentifiedTermValue] = None
     sample_link: Union[str, List[str]] = None
+    img_identifiers: Optional[Union[str, List[str]]] = empty_list()
+    samp_name: Optional[str] = None
     biosample_categories: Optional[Union[Union[str, "BiosampleCategoryEnum"], List[Union[str, "BiosampleCategoryEnum"]]]] = empty_list()
     type: Optional[str] = None
     alternative_identifiers: Optional[Union[str, List[str]]] = empty_list()
@@ -1388,10 +1410,8 @@ class Biosample(NamedThing):
     specific_ecosystem: Optional[str] = None
     add_date: Optional[str] = None
     community: Optional[str] = None
-    depth2: Optional[Union[dict, QuantityValue]] = None
     habitat: Optional[str] = None
     host_name: Optional[str] = None
-    identifier: Optional[str] = None
     location: Optional[str] = None
     mod_date: Optional[str] = None
     ncbi_taxonomy_name: Optional[str] = None
@@ -1400,10 +1420,11 @@ class Biosample(NamedThing):
     sample_collection_site: Optional[str] = None
     soluble_iron_micromol: Optional[str] = None
     subsurface_depth: Optional[Union[dict, QuantityValue]] = None
-    subsurface_depth2: Optional[Union[dict, QuantityValue]] = None
     gold_sample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     insdc_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     insdc_secondary_sample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    emsl_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    igsn_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     air_temp_regm: Optional[Union[dict, QuantityValue]] = None
     biotic_regm: Optional[Union[dict, TextValue]] = None
     biotic_relationship: Optional[Union[dict, TextValue]] = None
@@ -1499,24 +1520,31 @@ class Biosample(NamedThing):
 
         if self._is_empty(self.env_broad_scale):
             self.MissingRequiredField("env_broad_scale")
-        if not isinstance(self.env_broad_scale, ControlledTermValue):
-            self.env_broad_scale = ControlledTermValue(**as_dict(self.env_broad_scale))
+        if not isinstance(self.env_broad_scale, ControlledIdentifiedTermValue):
+            self.env_broad_scale = ControlledIdentifiedTermValue(**as_dict(self.env_broad_scale))
 
         if self._is_empty(self.env_local_scale):
             self.MissingRequiredField("env_local_scale")
-        if not isinstance(self.env_local_scale, ControlledTermValue):
-            self.env_local_scale = ControlledTermValue(**as_dict(self.env_local_scale))
+        if not isinstance(self.env_local_scale, ControlledIdentifiedTermValue):
+            self.env_local_scale = ControlledIdentifiedTermValue(**as_dict(self.env_local_scale))
 
         if self._is_empty(self.env_medium):
             self.MissingRequiredField("env_medium")
-        if not isinstance(self.env_medium, ControlledTermValue):
-            self.env_medium = ControlledTermValue(**as_dict(self.env_medium))
+        if not isinstance(self.env_medium, ControlledIdentifiedTermValue):
+            self.env_medium = ControlledIdentifiedTermValue(**as_dict(self.env_medium))
 
         if self._is_empty(self.sample_link):
             self.MissingRequiredField("sample_link")
         if not isinstance(self.sample_link, list):
             self.sample_link = [self.sample_link] if self.sample_link is not None else []
         self.sample_link = [v if isinstance(v, str) else str(v) for v in self.sample_link]
+
+        if not isinstance(self.img_identifiers, list):
+            self.img_identifiers = [self.img_identifiers] if self.img_identifiers is not None else []
+        self.img_identifiers = [v if isinstance(v, str) else str(v) for v in self.img_identifiers]
+
+        if self.samp_name is not None and not isinstance(self.samp_name, str):
+            self.samp_name = str(self.samp_name)
 
         if not isinstance(self.biosample_categories, list):
             self.biosample_categories = [self.biosample_categories] if self.biosample_categories is not None else []
@@ -1899,17 +1927,11 @@ class Biosample(NamedThing):
         if self.community is not None and not isinstance(self.community, str):
             self.community = str(self.community)
 
-        if self.depth2 is not None and not isinstance(self.depth2, QuantityValue):
-            self.depth2 = QuantityValue(**as_dict(self.depth2))
-
         if self.habitat is not None and not isinstance(self.habitat, str):
             self.habitat = str(self.habitat)
 
         if self.host_name is not None and not isinstance(self.host_name, str):
             self.host_name = str(self.host_name)
-
-        if self.identifier is not None and not isinstance(self.identifier, str):
-            self.identifier = str(self.identifier)
 
         if self.location is not None and not isinstance(self.location, str):
             self.location = str(self.location)
@@ -1935,9 +1957,6 @@ class Biosample(NamedThing):
         if self.subsurface_depth is not None and not isinstance(self.subsurface_depth, QuantityValue):
             self.subsurface_depth = QuantityValue(**as_dict(self.subsurface_depth))
 
-        if self.subsurface_depth2 is not None and not isinstance(self.subsurface_depth2, QuantityValue):
-            self.subsurface_depth2 = QuantityValue(**as_dict(self.subsurface_depth2))
-
         if not isinstance(self.gold_sample_identifiers, list):
             self.gold_sample_identifiers = [self.gold_sample_identifiers] if self.gold_sample_identifiers is not None else []
         self.gold_sample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.gold_sample_identifiers]
@@ -1949,6 +1968,14 @@ class Biosample(NamedThing):
         if not isinstance(self.insdc_secondary_sample_identifiers, list):
             self.insdc_secondary_sample_identifiers = [self.insdc_secondary_sample_identifiers] if self.insdc_secondary_sample_identifiers is not None else []
         self.insdc_secondary_sample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.insdc_secondary_sample_identifiers]
+
+        if not isinstance(self.emsl_biosample_identifiers, list):
+            self.emsl_biosample_identifiers = [self.emsl_biosample_identifiers] if self.emsl_biosample_identifiers is not None else []
+        self.emsl_biosample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.emsl_biosample_identifiers]
+
+        if not isinstance(self.igsn_biosample_identifiers, list):
+            self.igsn_biosample_identifiers = [self.igsn_biosample_identifiers] if self.igsn_biosample_identifiers is not None else []
+        self.igsn_biosample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.igsn_biosample_identifiers]
 
         if self.air_temp_regm is not None and not isinstance(self.air_temp_regm, QuantityValue):
             self.air_temp_regm = QuantityValue(**as_dict(self.air_temp_regm))
@@ -3673,6 +3700,8 @@ class FileTypeEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
+        setattr(cls, "Metagenome Raw Reads",
+                PermissibleValue(text="Metagenome Raw Reads") )
         setattr(cls, "FT ICR-MS Analysis Results",
                 PermissibleValue(text="FT ICR-MS Analysis Results",
                                  description="FT ICR-MS-based molecular formula assignment results table") )
@@ -6211,6 +6240,15 @@ slots.metabolite_quantified = Slot(uri=NMDC.metabolite_quantified, name="metabol
 slots.highest_similarity_score = Slot(uri=NMDC.highest_similarity_score, name="highest_similarity_score", curie=NMDC.curie('highest_similarity_score'),
                    model_uri=NMDC.highest_similarity_score, domain=None, range=Optional[str])
 
+slots.img_identifiers = Slot(uri=NMDC.img_identifiers, name="img_identifiers", curie=NMDC.curie('img_identifiers'),
+                   model_uri=NMDC.img_identifiers, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.emsl_biosample_identifiers = Slot(uri=NMDC.emsl_biosample_identifiers, name="emsl_biosample_identifiers", curie=NMDC.curie('emsl_biosample_identifiers'),
+                   model_uri=NMDC.emsl_biosample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]])
+
+slots.igsn_biosample_identifiers = Slot(uri=NMDC.igsn_biosample_identifiers, name="igsn_biosample_identifiers", curie=NMDC.curie('igsn_biosample_identifiers'),
+                   model_uri=NMDC.igsn_biosample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]])
+
 slots.biosample_categories = Slot(uri=NMDC.biosample_categories, name="biosample_categories", curie=NMDC.curie('biosample_categories'),
                    model_uri=NMDC.biosample_categories, domain=None, range=Optional[Union[Union[str, "BiosampleCategoryEnum"], List[Union[str, "BiosampleCategoryEnum"]]]])
 
@@ -6391,14 +6429,8 @@ slots.soluble_iron_micromol = Slot(uri=NMDC.soluble_iron_micromol, name="soluble
 slots.host_name = Slot(uri=NMDC.host_name, name="host_name", curie=NMDC.curie('host_name'),
                    model_uri=NMDC.host_name, domain=None, range=Optional[str])
 
-slots.depth2 = Slot(uri=NMDC.depth2, name="depth2", curie=NMDC.curie('depth2'),
-                   model_uri=NMDC.depth2, domain=None, range=Optional[Union[dict, QuantityValue]])
-
 slots.subsurface_depth = Slot(uri=NMDC.subsurface_depth, name="subsurface_depth", curie=NMDC.curie('subsurface_depth'),
                    model_uri=NMDC.subsurface_depth, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.subsurface_depth2 = Slot(uri=NMDC.subsurface_depth2, name="subsurface_depth2", curie=NMDC.curie('subsurface_depth2'),
-                   model_uri=NMDC.subsurface_depth2, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.proport_woa_temperature = Slot(uri=NMDC.proport_woa_temperature, name="proport_woa_temperature", curie=NMDC.curie('proport_woa_temperature'),
                    model_uri=NMDC.proport_woa_temperature, domain=None, range=Optional[str])
@@ -6976,13 +7008,13 @@ slots.emulsions = Slot(uri=MIXS['0000660'], name="emulsions", curie=MIXS.curie('
                    model_uri=NMDC.emulsions, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.env_broad_scale = Slot(uri=MIXS['0000012'], name="env_broad_scale", curie=MIXS.curie('0000012'),
-                   model_uri=NMDC.env_broad_scale, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+                   model_uri=NMDC.env_broad_scale, domain=None, range=Optional[Union[dict, ControlledIdentifiedTermValue]])
 
 slots.env_local_scale = Slot(uri=MIXS['0000013'], name="env_local_scale", curie=MIXS.curie('0000013'),
-                   model_uri=NMDC.env_local_scale, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+                   model_uri=NMDC.env_local_scale, domain=None, range=Optional[Union[dict, ControlledIdentifiedTermValue]])
 
 slots.env_medium = Slot(uri=MIXS['0000014'], name="env_medium", curie=MIXS.curie('0000014'),
-                   model_uri=NMDC.env_medium, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+                   model_uri=NMDC.env_medium, domain=None, range=Optional[Union[dict, ControlledIdentifiedTermValue]])
 
 slots.escalator = Slot(uri=MIXS['0000800'], name="escalator", curie=MIXS.curie('0000800'),
                    model_uri=NMDC.escalator, domain=None, range=Optional[Union[dict, TextValue]])
@@ -8585,6 +8617,9 @@ slots.ChemicalEntity_smiles = Slot(uri=NMDC.smiles, name="ChemicalEntity_smiles"
 slots.ChemicalEntity_chemical_formula = Slot(uri=NMDC.chemical_formula, name="ChemicalEntity_chemical_formula", curie=NMDC.curie('chemical_formula'),
                    model_uri=NMDC.ChemicalEntity_chemical_formula, domain=ChemicalEntity, range=Optional[str])
 
+slots.ControlledIdentifiedTermValue_term = Slot(uri=RDF.type, name="ControlledIdentifiedTermValue_term", curie=RDF.curie('type'),
+                   model_uri=NMDC.ControlledIdentifiedTermValue_term, domain=ControlledIdentifiedTermValue, range=Union[dict, OntologyClass])
+
 slots.GeolocationValue_has_raw_value = Slot(uri=NMDC.has_raw_value, name="GeolocationValue_has_raw_value", curie=NMDC.curie('has_raw_value'),
                    model_uri=NMDC.GeolocationValue_has_raw_value, domain=GeolocationValue, range=Optional[str])
 
@@ -8603,30 +8638,28 @@ slots.DataObject_name = Slot(uri=NMDC.name, name="DataObject_name", curie=NMDC.c
 slots.DataObject_description = Slot(uri=DCTERMS.description, name="DataObject_description", curie=DCTERMS.curie('description'),
                    model_uri=NMDC.DataObject_description, domain=DataObject, range=str)
 
+slots.Biosample_id = Slot(uri=NMDC.id, name="Biosample_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.Biosample_id, domain=Biosample, range=Union[str, BiosampleId],
+                   pattern=re.compile(r'^nmdc:'))
+
 slots.Biosample_gold_sample_identifiers = Slot(uri=NMDC.gold_sample_identifiers, name="Biosample_gold_sample_identifiers", curie=NMDC.curie('gold_sample_identifiers'),
                    model_uri=NMDC.Biosample_gold_sample_identifiers, domain=Biosample, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^GOLD:Gb[0-9]+$'))
-
-slots.Biosample_id = Slot(uri=NMDC.id, name="Biosample_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.Biosample_id, domain=Biosample, range=Union[str, BiosampleId])
 
 slots.Biosample_lat_lon = Slot(uri=MIXS['0000009'], name="Biosample_lat_lon", curie=MIXS.curie('0000009'),
                    model_uri=NMDC.Biosample_lat_lon, domain=Biosample, range=Optional[Union[dict, GeolocationValue]])
 
 slots.Biosample_env_broad_scale = Slot(uri=MIXS['0000012'], name="Biosample_env_broad_scale", curie=MIXS.curie('0000012'),
-                   model_uri=NMDC.Biosample_env_broad_scale, domain=Biosample, range=Union[dict, ControlledTermValue])
+                   model_uri=NMDC.Biosample_env_broad_scale, domain=Biosample, range=Union[dict, ControlledIdentifiedTermValue])
 
 slots.Biosample_env_local_scale = Slot(uri=MIXS['0000013'], name="Biosample_env_local_scale", curie=MIXS.curie('0000013'),
-                   model_uri=NMDC.Biosample_env_local_scale, domain=Biosample, range=Union[dict, ControlledTermValue])
+                   model_uri=NMDC.Biosample_env_local_scale, domain=Biosample, range=Union[dict, ControlledIdentifiedTermValue])
 
 slots.Biosample_env_medium = Slot(uri=MIXS['0000014'], name="Biosample_env_medium", curie=MIXS.curie('0000014'),
-                   model_uri=NMDC.Biosample_env_medium, domain=Biosample, range=Union[dict, ControlledTermValue])
+                   model_uri=NMDC.Biosample_env_medium, domain=Biosample, range=Union[dict, ControlledIdentifiedTermValue])
 
 slots.Biosample_sample_link = Slot(uri=NMDC.sample_link, name="Biosample_sample_link", curie=NMDC.curie('sample_link'),
                    model_uri=NMDC.Biosample_sample_link, domain=Biosample, range=Union[str, List[str]])
-
-slots.Study_id = Slot(uri=NMDC.id, name="Study_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.Study_id, domain=Study, range=Union[str, StudyId])
 
 slots.Study_doi = Slot(uri=NMDC.doi, name="Study_doi", curie=NMDC.curie('doi'),
                    model_uri=NMDC.Study_doi, domain=Study, range=Optional[Union[dict, AttributeValue]])

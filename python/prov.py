@@ -1,5 +1,5 @@
 # Auto generated from prov.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-10-03T14:44:58
+# Generation date: 2022-10-31T15:51:30
 # Schema: NMDC-PROV
 #
 # id: https://microbiomedata/schema/prov

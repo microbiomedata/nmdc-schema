@@ -520,6 +520,13 @@
                },
                "type": "array"
             },
+            "img_identifiers": {
+               "description": "A list of identifiers that relate the biosample to records in the IMG database.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
             "insdc_biosample_identifiers": {
                "description": "identifiers for corresponding sample in INSDC",
                "items": {

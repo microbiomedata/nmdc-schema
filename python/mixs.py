@@ -1,5 +1,5 @@
 # Auto generated from mixs.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-10-03T14:44:54
+# Generation date: 2022-10-31T15:51:23
 # Schema: mixs-schema
 #
 # id: https://microbiomedata/schema/mixs
@@ -747,6 +747,26 @@ class ControlledTermValue(AttributeValue):
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.term is not None and not isinstance(self.term, OntologyClass):
+            self.term = OntologyClass(**as_dict(self.term))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class ControlledIdentifiedTermValue(ControlledTermValue):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC.ControlledIdentifiedTermValue
+    class_class_curie: ClassVar[str] = "nmdc:ControlledIdentifiedTermValue"
+    class_name: ClassVar[str] = "ControlledIdentifiedTermValue"
+    class_model_uri: ClassVar[URIRef] = NMDC.ControlledIdentifiedTermValue
+
+    term: Union[dict, OntologyClass] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.term):
+            self.MissingRequiredField("term")
+        if not isinstance(self.term, OntologyClass):
             self.term = OntologyClass(**as_dict(self.term))
 
         super().__post_init__(**kwargs)
@@ -3206,13 +3226,13 @@ slots.emulsions = Slot(uri=MIXS['0000660'], name="emulsions", curie=MIXS.curie('
                    model_uri=NMDC.emulsions, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.env_broad_scale = Slot(uri=MIXS['0000012'], name="env_broad_scale", curie=MIXS.curie('0000012'),
-                   model_uri=NMDC.env_broad_scale, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+                   model_uri=NMDC.env_broad_scale, domain=None, range=Optional[Union[dict, ControlledIdentifiedTermValue]])
 
 slots.env_local_scale = Slot(uri=MIXS['0000013'], name="env_local_scale", curie=MIXS.curie('0000013'),
-                   model_uri=NMDC.env_local_scale, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+                   model_uri=NMDC.env_local_scale, domain=None, range=Optional[Union[dict, ControlledIdentifiedTermValue]])
 
 slots.env_medium = Slot(uri=MIXS['0000014'], name="env_medium", curie=MIXS.curie('0000014'),
-                   model_uri=NMDC.env_medium, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+                   model_uri=NMDC.env_medium, domain=None, range=Optional[Union[dict, ControlledIdentifiedTermValue]])
 
 slots.escalator = Slot(uri=MIXS['0000800'], name="escalator", curie=MIXS.curie('0000800'),
                    model_uri=NMDC.escalator, domain=None, range=Optional[Union[dict, TextValue]])
@@ -4648,6 +4668,9 @@ slots.ChemicalEntity_smiles = Slot(uri=NMDC.smiles, name="ChemicalEntity_smiles"
 
 slots.ChemicalEntity_chemical_formula = Slot(uri=NMDC.chemical_formula, name="ChemicalEntity_chemical_formula", curie=NMDC.curie('chemical_formula'),
                    model_uri=NMDC.ChemicalEntity_chemical_formula, domain=ChemicalEntity, range=Optional[str])
+
+slots.ControlledIdentifiedTermValue_term = Slot(uri=RDF.type, name="ControlledIdentifiedTermValue_term", curie=RDF.curie('type'),
+                   model_uri=NMDC.ControlledIdentifiedTermValue_term, domain=ControlledIdentifiedTermValue, range=Union[dict, OntologyClass])
 
 slots.GeolocationValue_has_raw_value = Slot(uri=NMDC.has_raw_value, name="GeolocationValue_has_raw_value", curie=NMDC.curie('has_raw_value'),
                    model_uri=NMDC.GeolocationValue_has_raw_value, domain=GeolocationValue, range=Optional[str])

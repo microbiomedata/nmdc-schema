@@ -1,5 +1,5 @@
 # Auto generated from workflow_execution_activity.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-10-03T14:44:56
+# Generation date: 2022-10-31T15:51:27
 # Schema: NMDC-Workflow-Exectution
 #
 # id: https://microbiomedata/schema/workflow_execution_activity
@@ -1616,6 +1616,26 @@ class ControlledTermValue(AttributeValue):
 
 
 @dataclass
+class ControlledIdentifiedTermValue(ControlledTermValue):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC.ControlledIdentifiedTermValue
+    class_class_curie: ClassVar[str] = "nmdc:ControlledIdentifiedTermValue"
+    class_name: ClassVar[str] = "ControlledIdentifiedTermValue"
+    class_model_uri: ClassVar[URIRef] = NMDC.ControlledIdentifiedTermValue
+
+    term: Union[dict, OntologyClass] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.term):
+            self.MissingRequiredField("term")
+        if not isinstance(self.term, OntologyClass):
+            self.term = OntologyClass(**as_dict(self.term))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class GeolocationValue(AttributeValue):
     """
     A normalized value for a location on the earth's surface
@@ -2233,6 +2253,9 @@ slots.ChemicalEntity_smiles = Slot(uri=NMDC.smiles, name="ChemicalEntity_smiles"
 
 slots.ChemicalEntity_chemical_formula = Slot(uri=NMDC.chemical_formula, name="ChemicalEntity_chemical_formula", curie=NMDC.curie('chemical_formula'),
                    model_uri=NMDC.ChemicalEntity_chemical_formula, domain=ChemicalEntity, range=Optional[str])
+
+slots.ControlledIdentifiedTermValue_term = Slot(uri=RDF.type, name="ControlledIdentifiedTermValue_term", curie=RDF.curie('type'),
+                   model_uri=NMDC.ControlledIdentifiedTermValue_term, domain=ControlledIdentifiedTermValue, range=Union[dict, OntologyClass])
 
 slots.GeolocationValue_has_raw_value = Slot(uri=NMDC.has_raw_value, name="GeolocationValue_has_raw_value", curie=NMDC.curie('has_raw_value'),
                    model_uri=NMDC.GeolocationValue_has_raw_value, domain=GeolocationValue, range=Optional[str])
