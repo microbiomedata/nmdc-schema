@@ -9,12 +9,17 @@ import pendulum as pendulum
 from dotenv import dotenv_values
 from linkml.validators import JsonSchemaDataValidator
 from linkml_runtime import SchemaView
+from linkml_runtime.dumpers import yaml_dumper
 from pymongo import MongoClient
 
 from nmdc_schema.nmdc import Database
 
 logger = logging.getLogger(__name__)
 click_log.basic_config(logger)
+
+# todo update OmicsProcessings to use new Biosample IDs
+#   for now, just trust that the collections will be processed in alphabetical order
+
 
 # todo if there are multiple biosample gold identifiers, then how do we know whether one is more trusted?
 
@@ -67,6 +72,8 @@ biosample_id_routing = {
     "igsn": "igsn_biosample_identifiers",
     "img.taxon": "img_identifiers"
 }
+
+biosample_id_tracking = {}
 
 
 def determine_routing(id_val, routing_table):
@@ -152,7 +159,6 @@ def route_document_ids(document, routing_table):
               ])
 def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_port: str, dest_mongo_dbname: str,
         max_collection_bytes: int, last_doc_num: int, migrate_partial: bool, excluded_collection):
-
     database_obj = Database()
 
     logger.info(f"Loading config from {dotenv_file}")
@@ -279,10 +285,12 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                 if collection_name == "biosample_set":
 
                     # provide indicator of source biosample
+                    old = document['id']
                     bs_ids_old_new = [document['id']]
                     # reroute identifiers
                     document = route_document_ids(document, biosample_id_routing)
                     bs_ids_old_new.append(document['id'])
+                    biosample_id_tracking[old] = document['id']
 
                     # PROBLEM CASE: depth2 will be removed from the schema
                     # todo soil samples should have a minimum and maximum depth per Montana
@@ -347,6 +355,20 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                     if "alternative_identifiers" in document and len(document["alternative_identifiers"]) < 1:
                         del document["alternative_identifiers"]
 
+                if collection_name == "omics_processing_set":
+                    if 'has_input' in document:
+                        loopable = document['has_input'].copy()
+                        for i in loopable:
+                            logger.info(f"document {document['id']} has_input {i}")
+                            if i in biosample_id_tracking:
+                                logger.info(f"will replace {i} with {biosample_id_tracking[i]}")
+                                document['has_input'].remove(i)
+                                document['has_input'].append(biosample_id_tracking[i])
+                            else:
+                                logger.info(f"no replacement for {i}")
+                    else:
+                        logger.warning(f"document {document['id']} has no has_input")
+
                 database_obj[collection_name].append(document)
             if len(database_obj[collection_name]) == 0:
                 del database_obj[collection_name]
@@ -388,6 +410,7 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                 logger.warning(f"Skipping {i} because it has no documents")
 
     logger.info("done")
+    logger.info(biosample_id_tracking)
 
 
 if __name__ == "__main__":
