@@ -1,3 +1,4 @@
+import importlib
 import logging
 import pprint
 import re
@@ -6,13 +7,17 @@ import uuid
 import click
 import click_log
 import pendulum as pendulum
+import yaml
 from dotenv import dotenv_values
 from linkml.validators import JsonSchemaDataValidator
 from linkml_runtime import SchemaView
-from linkml_runtime.dumpers import yaml_dumper
+from linkml_runtime.dumpers import yaml_dumper, json_dumper
+from linkml_runtime.loaders import json_loader
 from pymongo import MongoClient
 
 from nmdc_schema.nmdc import Database
+
+yaml_out = "../data_7.yaml"
 
 logger = logging.getLogger(__name__)
 click_log.basic_config(logger)
@@ -29,7 +34,7 @@ name_replacements = {
     "Biosample": {
         "GOLD_sample_identifiers": "gold_sample_identifiers",
         "INSDC_biosample_identifiers": "insdc_biosample_identifiers",
-        "part_of": "sample_link",
+        # "part_of": "sample_link",
         "identifier": "samp_name",
     },
     "Study": {
@@ -155,11 +160,14 @@ def route_document_ids(document, routing_table):
 @click.option("--excluded_collection", multiple=True,
               default=[
                   "read_qc_analysis_activity_set",
-                  '@type'
+                  '@type',
+                  'activity_set',
               ])
 def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_port: str, dest_mongo_dbname: str,
         max_collection_bytes: int, last_doc_num: int, migrate_partial: bool, excluded_collection):
     database_obj = Database()
+
+    module = __import__("nmdc_schema")
 
     logger.info(f"Loading config from {dotenv_file}")
 
@@ -231,6 +239,7 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
     data_object_file_type_values = set()
 
     for collection_name in collections_intersection:
+        logger.info(f"collection_name: {collection_name}")
         collection_stats = selected_stats[collection_name]
         collection_range = nmdc_view.get_slot(collection_name).range
         range_class = nmdc_view.get_class(collection_range)
@@ -369,48 +378,76 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                     else:
                         logger.warning(f"document {document['id']} has no has_input")
 
-                database_obj[collection_name].append(document)
+                # todo: no, don't append a dict to a Database list of objects
+                #   dynamically instantiate first
+
+                logger.info(
+                    f"document {document['id']} has Python type {type(document)} and intended NMDC type {collection_range}")
+                logger.info(pprint.pformat(document))
+
+                try:
+                    dynamic_class = getattr(importlib.import_module("nmdc_schema.nmdc"), collection_range)
+                    # todo validation takes place here so don't need to replicate
+                    instance = json_loader.loads(document, target_class=dynamic_class)
+
+                    # print(json_dumper.dumps(instance))
+
+                    database_obj[collection_name].append(instance)
+
+                except AttributeError:
+                    logger.error(f"no class {collection_range} in nmdc_schema.nmdc")
+                    continue
+
             if len(database_obj[collection_name]) == 0:
                 del database_obj[collection_name]
 
-    defined_object_type_pvs = nmdc_view.get_enum("file type enum").permissible_values
-    defined_object_type_texts = set([pvv.text for pvk, pvv in defined_object_type_pvs.items()])
-
-    unexpected_object_type_values = list(data_object_file_type_values - defined_object_type_texts)
-
-    unexpected_object_type_values.sort()
-
-    destination_client = MongoClient(
-        f"mongodb://{dest_mongo_address}:{dest_mongo_port}"
-    )
-
-    destination_db = destination_client[dest_mongo_dbname]
-
-    destination_collections = destination_db.list_collection_names()
-
-    logger.info("attempting to validate migrated data")
-    val_inst = JsonSchemaDataValidator(schema_file)
-    val_inst.validate_object(database_obj)
-    logger.info("data validation complete")
-
-    for i in collections_intersection:
-        if i in excluded_collection:
-            logger.warning(f"Skipping {i}")
-        else:
-            if i in destination_collections:
-                logger.warning(f"Dropping destination {i}")
-                collection = destination_db[i]
-                collection.drop()
-            if i in database_obj and database_obj[i]:
-                collection = destination_db[i]
-                logger.info(f"Inserting {i}")
-                insertion = collection.insert_many(database_obj[i])
-                logger.info(f"Inserted {len(insertion.inserted_ids)} documents")
-            else:
-                logger.warning(f"Skipping {i} because it has no documents")
-
-    logger.info("done")
-    logger.info(biosample_id_tracking)
+    # defined_object_type_pvs = nmdc_view.get_enum("file type enum").permissible_values
+    # defined_object_type_texts = set([pvv.text for pvk, pvv in defined_object_type_pvs.items()])
+    #
+    # unexpected_object_type_values = list(data_object_file_type_values - defined_object_type_texts)
+    #
+    # unexpected_object_type_values.sort()
+    #
+    # destination_client = MongoClient(
+    #     f"mongodb://{dest_mongo_address}:{dest_mongo_port}"
+    # )
+    #
+    # destination_db = destination_client[dest_mongo_dbname]
+    #
+    # destination_collections = destination_db.list_collection_names()
+    #
+    # logger.info("attempting to validate migrated data")
+    # val_inst = JsonSchemaDataValidator(schema_file)
+    # val_inst.validate_object(database_obj)
+    # logger.info("data validation complete")
+    #
+    # for i in collections_intersection:
+    #     if i in excluded_collection:
+    #         logger.warning(f"Skipping {i}")
+    #     else:
+    #         if i in destination_collections:
+    #             logger.warning(f"Dropping destination {i}")
+    #             collection = destination_db[i]
+    #             collection.drop()
+    #         if i in database_obj and database_obj[i]:
+    #             collection = destination_db[i]
+    #             logger.info(f"Inserting {i}")
+    #             logger.info(f"type = {type(database_obj[i])}")
+    #
+    #             insertion = collection.insert_many(database_obj[i])
+    #             logger.info(f"Inserted {len(insertion.inserted_ids)} documents")
+    #         else:
+    #             logger.warning(f"Skipping {i} because it has no documents")
+    #
+    # logger.info("done")
+    # # logger.info(biosample_id_tracking)
+    #
+    # # # todo dump destination_db to yaml file
+    # #
+    # # with open(yaml_out, 'w') as outfile:
+    # #     yaml.dump(database_obj, outfile, default_flow_style=False)
+    #
+    # logger.info(f"database_obj's type: {type(database_obj)}")
 
 
 if __name__ == "__main__":
