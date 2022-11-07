@@ -1,4 +1,5 @@
 import importlib
+import json
 import logging
 import pprint
 import re
@@ -17,7 +18,8 @@ from pymongo import MongoClient
 
 from nmdc_schema.nmdc import Database
 
-yaml_out = "../data_7.yaml"
+# yaml_out = "../data_7.yaml"
+json_out = "data_7.json"
 
 logger = logging.getLogger(__name__)
 click_log.basic_config(logger)
@@ -34,7 +36,7 @@ name_replacements = {
     "Biosample": {
         "GOLD_sample_identifiers": "gold_sample_identifiers",
         "INSDC_biosample_identifiers": "insdc_biosample_identifiers",
-        # "part_of": "sample_link",
+        "part_of": "sample_link",
         "identifier": "samp_name",
     },
     "Study": {
@@ -144,6 +146,11 @@ def route_document_ids(document, routing_table):
     return document
 
 
+# todo source mongo defined in .env
+#   destination mongo defined with CLI parameters
+#   these default parameters assume the destination mongo is local and was started like this
+#     mongod --port 27777
+
 @click.command()
 @click_log.simple_verbosity_option(logger)
 @click.option("--dotenv_file", type=click.Path(exists=True), default="local/.env")
@@ -159,15 +166,14 @@ def route_document_ids(document, routing_table):
               help="Should the first first <last_doc_num> documents from large remote collections be loaded into the destination mongodb? ")
 @click.option("--excluded_collection", multiple=True,
               default=[
-                  "read_qc_analysis_activity_set",
-                  '@type',
-                  'activity_set',
+                  # todo mongodb has a read_QC_analysis_activity_set
+                  # "read_qc_analysis_activity_set",
+                  # '@type',
+                  # 'activity_set',
               ])
 def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_port: str, dest_mongo_dbname: str,
         max_collection_bytes: int, last_doc_num: int, migrate_partial: bool, excluded_collection):
     database_obj = Database()
-
-    module = __import__("nmdc_schema")
 
     logger.info(f"Loading config from {dotenv_file}")
 
@@ -186,6 +192,12 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
     remote_db = remote_client["nmdc"]
 
     remote_collections = remote_db.list_collection_names()
+
+    logger.info(f"raw remote_collections: {remote_collections}")
+
+    remote_collections_lc = [collection.lower() for collection in remote_collections]
+
+    logger.info(f"lowercase remote_collections: {remote_collections_lc}")
 
     collections_intersection = set(database_slots).intersection(set(remote_collections))
     logger.info(f"collections_intersection: {collections_intersection}")
@@ -239,6 +251,7 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
     data_object_file_type_values = set()
 
     for collection_name in collections_intersection:
+        collection_name_lc = collection_name.lower()
         logger.info(f"collection_name: {collection_name}")
         collection_stats = selected_stats[collection_name]
         collection_range = nmdc_view.get_slot(collection_name).range
@@ -378,19 +391,11 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                     else:
                         logger.warning(f"document {document['id']} has no has_input")
 
-                # todo: no, don't append a dict to a Database list of objects
-                #   dynamically instantiate first
-
-                logger.info(
-                    f"document {document['id']} has Python type {type(document)} and intended NMDC type {collection_range}")
-                logger.info(pprint.pformat(document))
-
                 try:
-                    dynamic_class = getattr(importlib.import_module("nmdc_schema.nmdc"), collection_range)
+                    # todo this is importing from the PyPI package, not the local source
+                    dynamic_class = getattr(importlib.import_module("target.python.nmdc"), collection_range)
                     # todo validation takes place here so don't need to replicate
                     instance = json_loader.loads(document, target_class=dynamic_class)
-
-                    # print(json_dumper.dumps(instance))
 
                     database_obj[collection_name].append(instance)
 
@@ -398,56 +403,65 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                     logger.error(f"no class {collection_range} in nmdc_schema.nmdc")
                     continue
 
-            if len(database_obj[collection_name]) == 0:
-                del database_obj[collection_name]
+            # KeyError: 'read_qc_analysis_activity_set'
+            if collection_name in database_obj:
+                if len(database_obj[collection_name]) == 0:
+                    del database_obj[collection_name]
+            else:
+                logger.error(f"no collection {collection_name} in database_obj")
 
-    # defined_object_type_pvs = nmdc_view.get_enum("file type enum").permissible_values
-    # defined_object_type_texts = set([pvv.text for pvk, pvv in defined_object_type_pvs.items()])
-    #
-    # unexpected_object_type_values = list(data_object_file_type_values - defined_object_type_texts)
-    #
-    # unexpected_object_type_values.sort()
-    #
-    # destination_client = MongoClient(
-    #     f"mongodb://{dest_mongo_address}:{dest_mongo_port}"
-    # )
-    #
-    # destination_db = destination_client[dest_mongo_dbname]
-    #
-    # destination_collections = destination_db.list_collection_names()
-    #
+    defined_object_type_pvs = nmdc_view.get_enum("file type enum").permissible_values
+    defined_object_type_texts = set([pvv.text for pvk, pvv in defined_object_type_pvs.items()])
+
+    unexpected_object_type_values = list(data_object_file_type_values - defined_object_type_texts)
+
+    unexpected_object_type_values.sort()
+
+    # todo how/where to report unexpected_object_type_values?
+
+    destination_client = MongoClient(
+        f"mongodb://{dest_mongo_address}:{dest_mongo_port}"
+    )
+
+    destination_db = destination_client[dest_mongo_dbname]
+
+    destination_collections = destination_db.list_collection_names()
+
+    # # todo probably not necessary due to instantiations above
     # logger.info("attempting to validate migrated data")
     # val_inst = JsonSchemaDataValidator(schema_file)
     # val_inst.validate_object(database_obj)
     # logger.info("data validation complete")
-    #
-    # for i in collections_intersection:
-    #     if i in excluded_collection:
-    #         logger.warning(f"Skipping {i}")
-    #     else:
-    #         if i in destination_collections:
-    #             logger.warning(f"Dropping destination {i}")
-    #             collection = destination_db[i]
-    #             collection.drop()
-    #         if i in database_obj and database_obj[i]:
-    #             collection = destination_db[i]
-    #             logger.info(f"Inserting {i}")
-    #             logger.info(f"type = {type(database_obj[i])}")
-    #
-    #             insertion = collection.insert_many(database_obj[i])
-    #             logger.info(f"Inserted {len(insertion.inserted_ids)} documents")
-    #         else:
-    #             logger.warning(f"Skipping {i} because it has no documents")
-    #
-    # logger.info("done")
-    # # logger.info(biosample_id_tracking)
-    #
-    # # # todo dump destination_db to yaml file
-    # #
-    # # with open(yaml_out, 'w') as outfile:
-    # #     yaml.dump(database_obj, outfile, default_flow_style=False)
-    #
-    # logger.info(f"database_obj's type: {type(database_obj)}")
+
+    for i in collections_intersection:
+        if i in excluded_collection:
+            logger.warning(f"Skipping {i}")
+        else:
+            if i in destination_collections:
+                logger.warning(f"Dropping destination {i}")
+                collection = destination_db[i]
+                collection.drop()
+            if i in database_obj and database_obj[i]:
+                collection = destination_db[i]
+                logger.info(f"Preparing to populate collection {i} in destination database")
+                vanilla_list = []
+                for inner_obj in database_obj[i]:
+                    io_json_string = json_dumper.dumps(inner_obj)
+                    io_dict = json.loads(io_json_string)
+                    vanilla_list.append(io_dict)
+
+                insertion = collection.insert_many(vanilla_list)
+                logger.info(f"Inserted {len(insertion.inserted_ids)} documents")
+            else:
+                logger.warning(f"Skipping {i} because it has no documents")
+
+    # logger.info(biosample_id_tracking)
+
+    logger.info("Finished populating destination mongodb")
+    logger.info("Starting to dump to JSON file")
+    json_dumper.dump(database_obj, json_out)
+
+    logger.info("Finished dump to JSON file")
 
 
 if __name__ == "__main__":

@@ -41,6 +41,8 @@ prefixes:
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
   emsl: https://unknown.to.linter.org/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  jgi: https://unknown.to.linter.org/
 
 default_prefix: nmdc
 default_range: string

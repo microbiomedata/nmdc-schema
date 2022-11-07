@@ -341,3 +341,15 @@ from_mongo_all: from_mongo_cleanup validate_vs_3_2_0 validate_vs_current
 
 mongo_migration:
 	$(RUN) python util/migrate_7.py
+
+data_7.ttl: data_7.json
+	$(RUN) linkml-convert \
+		--output $@	\
+		--schema src/schema/nmdc.yaml \
+		--target-class Database  $<
+
+data_7.db:
+	$(RUN) linkml-sqldb dump \
+			--db $@ \
+			--target-class Database \
+			--schema src/schema/nmdc.yaml data_7.json

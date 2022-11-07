@@ -25,7 +25,12 @@ bs_json = """
 
 dynamic_class_name = "Biosample"
 
-dynamic_class = getattr(importlib.import_module("nmdc_schema.nmdc"), dynamic_class_name)
+# dynamic_class = getattr(importlib.import_module("nmdc_schema.nmdc"), dynamic_class_name)
+
+
+dynamic_class = getattr(importlib.import_module("target.python.nmdc"), dynamic_class_name)
+
+# dynamic_class = getattr(importlib.import_module(name="../nmdc_schema", package="nmdc"), dynamic_class_name)
 
 instance = json_loader.loads(bs_json, target_class=dynamic_class)
 
