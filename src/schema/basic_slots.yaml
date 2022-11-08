@@ -11,7 +11,7 @@ prefixes:
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
   skos: http://www.w3.org/2004/02/skos/core#
-    
+
 default_prefix: nmdc
 default_range: string
 
@@ -31,7 +31,11 @@ slots:
     description: >-
       A unique identifier for a thing.
       Must be either a CURIE shorthand for a URI or a complete URI
-    #required: false # for now we are setting this to false until we develop an id template
+    notes:
+      - "relocated YAML comment: for now we are setting this to false until we develop an id template"
+      - "Doesn't 'identifier: true' imply 'required: true'?"
+      - "abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?"
+    pattern: ^nmdc:[A-Za-z0-9]{1,6}-[A-Za-z0-9]{1,6}-[A-Za-z0-9]{1,6}(\.[A-Za-z0-9]{1,6})?(_.+)?$
 
   name:
     multivalued: false
@@ -45,7 +49,7 @@ slots:
     description: >-
       a human-readable description of a thing
     slot_uri: dcterms:description
-    
+
   type:
     deprecated: >-
       Due to confusion about what values are used for this slot, it is best not to use this slot.
