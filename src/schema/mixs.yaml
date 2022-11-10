@@ -6,6 +6,7 @@ default_range: string
 
 imports:
   - core
+  - basic_slots
 
 
 prefixes:

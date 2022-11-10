@@ -19,6 +19,7 @@ prefixes:
   EC: https://unknown.to.linter.org/
   EFO: http://identifiers.org/efo/
   GOLD: http://identifiers.org/gold/
+  IMG.TAXON: http://identifiers.org/img.taxon/
   ISA: https://unknown.to.linter.org/
   MS: http://purl.obolibrary.org/obo/MS_
   MetaCyc: https://identifiers.org/metacyc.reaction/ # assuming we're talking about metacyc reactions and not genes, compounds etc.
@@ -27,22 +28,26 @@ prefixes:
   OBI: http://purl.obolibrary.org/obo/OBI_
   RetroRules: https://unknown.to.linter.org/
   UniProtKB: https://identifiers.org/uniprot/
+  bare: https://unknown.to.linter.org/
   biolink: https://w3id.org/biolink/vocab/
   dcterms: http://purl.org/dc/terms/
+  emsl: https://unknown.to.linter.org/
   gtpo: https://unknown.to.linter.org/
   igsn: https://app.geosamples.org/sample/igsn/
-  IMG.TAXON: http://identifiers.org/img.taxon/
   insdc.srs: https://unknown.to.linter.org/
+  jgi: https://unknown.to.linter.org/
   linkml: https://w3id.org/linkml/
   mgnify: https://unknown.to.linter.org/
   mixs: https://w3id.org/mixs/
   nmdc: https://w3id.org/nmdc/
+  prov: http://www.w3.org/ns/prov#
   qud: http://qudt.org/1.1/schema/qudt#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
+  schema: http://schema.org/
+  skos: http://www.w3.org/2004/02/skos/core#
   wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
-  emsl: https://unknown.to.linter.org/
   xsd: http://www.w3.org/2001/XMLSchema#
-  jgi: https://unknown.to.linter.org/
 
 default_prefix: nmdc
 default_range: string
@@ -59,6 +64,7 @@ emit_prefixes:
 imports:
   - annotation
   - bioscales
+  - basic_slots
   - core
   - external_identifiers
   - linkml:types
@@ -132,6 +138,7 @@ classes:
     description: 'An object that primarily consists of symbols that represent information.   Files,
       records, and omics data are examples of data objects. '
     slots:
+      - raw_type
       - file_size_bytes
       - md5_checksum
       - data_object_type
@@ -164,6 +171,7 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
+      - raw_type
       - img_identifiers
       - samp_name
       - biosample_categories
@@ -470,6 +478,7 @@ classes:
         controls its release date. A study accession is typically used when citing
         data submitted to ENA
     slots:
+      - raw_type
       - ecosystem
       - ecosystem_category
       - ecosystem_type
@@ -593,6 +602,7 @@ classes:
     comments:
       - The IDs for objects coming from GOLD will have prefixes gold:GpNNNN
     slots:
+      - raw_type
       - add_date
       - mod_date
       - has_input

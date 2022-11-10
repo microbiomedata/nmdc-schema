@@ -27,7 +27,7 @@ imports:
   - basic_slots
   - core
   - linkml:types
-  - nmdc
+  - nmdc # for slot biosample_input with range: Biosample
 
 enums:
   ContainerTypeEnum:

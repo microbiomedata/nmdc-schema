@@ -80,6 +80,24 @@ biosample_id_routing = {
     "img.taxon": "img_identifiers"
 }
 
+slot2coll = {
+    'activity_set': 'activity_set',
+    'biosample_set': 'biosample_set',
+    'data_object_set': 'data_object_set',
+    'mags_activity_set': 'mags_activity_set',
+    'metabolomics_analysis_activity_set': 'metabolomics_analysis_activity_set',
+    'metagenome_annotation_activity_set': 'metagenome_annotation_activity_set',
+    'metagenome_assembly_set': 'metagenome_assembly_set',
+    'metaproteomics_analysis_activity_set': 'metaproteomics_analysis_activity_set',
+    'metatranscriptome_activity_set': 'metatranscriptome_activity_set',
+    'nom_analysis_activity_set': 'nom_analysis_activity_set',
+    'omics_processing_set': 'omics_processing_set',
+    'read_qc_analysis_activity_set': 'read_QC_analysis_activity_set',
+    'study_set': 'study_set',
+}
+
+coll2slot = {v: k for k, v in slot2coll.items()}
+
 biosample_id_tracking = {}
 
 
@@ -166,8 +184,10 @@ def route_document_ids(document, routing_table):
               help="Should the first first <last_doc_num> documents from large remote collections be loaded into the destination mongodb? ")
 @click.option("--excluded_collection", multiple=True,
               default=[
+                  # "biosample_set",
                   # todo mongodb has a read_QC_analysis_activity_set
-                  # "read_qc_analysis_activity_set",
+                  "read_qc_analysis_activity_set",
+                  # read_qc_analysis_activity_set: ValueError:  Unknown argument: version = 'b1.0.6'
                   # '@type',
                   # 'activity_set',
               ])
@@ -209,23 +229,28 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
 
     logger.info("Gathering mongodb collection stats")
 
-    # # for debugging, can limit collections_intersection to a subset of collections
-    # collections_intersection = [
-    #     'activity_set',
-    #     'biosample_set',
-    #     'data_object_set',
-    #     'functional_annotation_set',
-    #     'genome_feature_set',
-    #     'mags_activity_set',
-    #     'metabolomics_analysis_activity_set',
-    #     'metagenome_annotation_activity_set',
-    #     'metagenome_assembly_set',
-    #     'metaproteomics_analysis_activity_set',
-    #     'metatranscriptome_activity_set',
-    #     'nom_analysis_activity_set',
-    #     'omics_processing_set',
-    #     'study_set'
-    # ]
+    # for debugging, can limit collections_intersection to a subset of collections
+    collections_intersection = [
+        # 'functional_annotation_set', # huge... haven't tried to instantiate, convert to RDF or load into GraphDB yet
+        # 'genome_feature_set', # huge... haven't tried to instantiate, convert to RDF or load into GraphDB yet
+        # 'read_QC_analysis_activity_set', # read_QC_analysis_activity_set collection vs read_qc_analysis_activity_set slot
+        # 'read_qc_analysis_activity_set', # read_QC_analysis_activity_set collection vs read_qc_analysis_activity_set slot
+        #
+        'activity_set',  # empty, but import into GraphDB OK
+        'biosample_set',  # import into GraphDB OK
+        'data_object_set',  # 'document_count': 40858, 'size_in_bytes': 15068847
+        # 'mags_activity_set',  # import into GraphDB OK
+        # 'metabolomics_analysis_activity_set',
+        # # 'document_count': 209, 'size_in_bytes': 15754341, but import into GraphDB OK
+        # 'metagenome_annotation_activity_set',  # import into GraphDB OK
+        # 'metagenome_assembly_set',  # import into GraphDB OK
+        # 'metaproteomics_analysis_activity_set',
+        # # 'document_count': 52, 'size_in_bytes': 208015260, but import into GraphDB OK
+        # 'metatranscriptome_activity_set',
+        # 'nom_analysis_activity_set',  # import into GraphDB OK
+        'omics_processing_set',  # import into GraphDB OK
+        'study_set',  # import into GraphDB OK
+    ]
 
     selected_stats = {}
     for collection_name in collections_intersection:
@@ -246,7 +271,7 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
     logger.info(pprint.pformat(sorted_selected_stats))
     logger.info("")
 
-    logger.info("starting dumps from mongodb")
+    logger.info("starting dumps from source mongodb")
 
     data_object_file_type_values = set()
 
@@ -281,10 +306,15 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                         if old_name in document:
                             document[new_name] = document[old_name]
                             del document[old_name]
+
                 if collection_name == "data_object_set" and "data_object_type" in document:
                     data_object_file_type_values.add(document["data_object_type"])
+                    if ":" not in document['id']:
+                        logger.error(f"illegal document id: {document['id']}")
+                        document['id'] = f"bare:{document['id']}"
+                    document['id'] = document['id'].strip()
 
-                # todo migrations not handled by name_replacements
+                    # todo migrations not handled by name_replacements
 
                 # PROBLEM CASE: improperly formatted dates
                 # todo remove need for enumerating date fields
@@ -294,6 +324,7 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                 if 'ended_at_time' in document:
                     eadt = str(pendulum.parse(document['ended_at_time']))
                     document['ended_at_time'] = eadt
+
                 if collection_name == "data_object_set" and ("id" not in document or not document["id"]):
                     logger.warning(f"no id in document: {document}")
                     document['id'] = f"nmdc:{document['md5_checksum']}"
@@ -306,7 +337,6 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
 
                 if collection_name == "biosample_set":
 
-                    # provide indicator of source biosample
                     old = document['id']
                     bs_ids_old_new = [document['id']]
                     # reroute identifiers
@@ -360,6 +390,7 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                     #  that requirement would be incompatible with the 'omics_processing_set'[]['omics_type']s
                     # https://microbiomedata.github.io/nmdc-schema/ControlledTermValue/
                     # so creating a new ???
+                    # todo this does not address ControlledTermValue objects that are not part of the MIXS env triad
                     for triad_slot in ['env_broad_scale', 'env_local_scale', 'env_medium']:
                         if 'term' not in document[triad_slot]:
                             if 'has_raw_value' not in document[triad_slot]:
@@ -390,6 +421,24 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                                 logger.info(f"no replacement for {i}")
                     else:
                         logger.warning(f"document {document['id']} has no has_input")
+
+                if collection_name == "metatranscriptome_activity_set":
+                    tidy_inputs = [i.strip() for i in document['has_input']]
+                    document['has_input'] = tidy_inputs
+                    if 'part_of' in document:
+                        parents = document['part_of']
+                        tidy_parents = [i.replace("_", ":") for i in parents]
+                        document['part_of'] = tidy_parents
+
+                if "type" in document:
+                    # an rdf:type object is assigned on instatiation, as long as there is no nmdc type value
+                    # should also remove internal nmdc type values, esp from Biosamples for geolocation values and ???
+                    document["raw_type"] = document["type"]
+                    del document["type"]
+
+                if "@type" in document:
+                    # never appears... inserted during instantiation of the document ?
+                    logger.warning(f"Document {document['id']} has rdf type {document['@type']}")
 
                 try:
                     # todo this is importing from the PyPI package, not the local source
@@ -426,12 +475,6 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
     destination_db = destination_client[dest_mongo_dbname]
 
     destination_collections = destination_db.list_collection_names()
-
-    # # todo probably not necessary due to instantiations above
-    # logger.info("attempting to validate migrated data")
-    # val_inst = JsonSchemaDataValidator(schema_file)
-    # val_inst.validate_object(database_obj)
-    # logger.info("data validation complete")
 
     for i in collections_intersection:
         if i in excluded_collection:

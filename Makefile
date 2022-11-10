@@ -339,17 +339,72 @@ from_mongo_cleanup:
 
 from_mongo_all: from_mongo_cleanup validate_vs_3_2_0 validate_vs_current
 
-mongo_migration:
+mongo_migration: data_7.json
+
+data_7.json:
 	$(RUN) python util/migrate_7.py
 
-data_7.ttl: data_7.json
+data_7.ttl: src/schema/nmdc.yaml data_7.json
 	$(RUN) linkml-convert \
+		--no-validate \
 		--output $@	\
-		--schema src/schema/nmdc.yaml \
-		--target-class Database  $<
+		--target-class Database \
+		--schema $^
 
-data_7.db:
+data_7.db: src/schema/nmdc.yaml data_7.json
 	$(RUN) linkml-sqldb dump \
 			--db $@ \
 			--target-class Database \
-			--schema src/schema/nmdc.yaml data_7.json
+			--schema $^
+
+nmdc.ttl: src/schema/nmdc.yaml
+	$(RUN) gen-owl \
+		--output $@ $<
+
+#  -o, --output TEXT               Output file name
+#  --metadata-profile [linkml|rdfs]
+#                                  What kind of metadata profile to use for
+#                                  annotations on generated OWL objects
+#                                  [default: linkml]
+#  --type-objects / --no-type-objects
+#                                  If true, will model linkml types as objects,
+#                                  not literals  [default: type-objects]
+#  --metaclasses / --no-metaclasses
+#                                  If true, include linkml metamodel classes as
+#                                  metaclasses. Note this introduces punning in
+#                                  OWL-DL  [default: metaclasses]
+#  --add-ols-annotations / --no-add-ols-annotations
+#                                  If true, auto-include annotations from
+#                                  https://www.ebi.ac.uk/ols/docs/installation-
+#                                  guide  [default: add-ols-annotations]
+#  --ontology-uri-suffix TEXT      Suffix to append to schema id to generate
+#                                  OWL Ontology IRI  [default: .owl.ttl]
+#  -f, --format [owl|ttl|json-ld|xml|n3|turtle|ttl|ntriples|nt|nt11|nquads|trix|trig|hext]
+#                                  Output format  [default: owl]
+#  --metadata / --no-metadata      Include metadata in output  [default:
+#                                  metadata]
+#  --useuris / --metauris          Include metadata in output  [default:
+#                                  useuris]
+#  -im, --importmap FILENAME       Import mapping file
+#  --log_level [CRITICAL|ERROR|WARNING|INFO|DEBUG]
+#                                  Logging level  [default: WARNING]
+#  -v, --verbose                   verbosity
+#  --mergeimports / --no-mergeimports
+#                                  Merge imports into source file
+#                                  (default=mergeimports)
+
+  #ERROR:root:Multiple slots with URI: https://w3id.org/mixs/0001082: ['horizon', 'soil_horizon']; consider giving each a unique slot_uri
+  #ERROR:root:Multiple slots with URI: https://w3id.org/mixs/0000339: ['micro_biomass_meth', 'microbial_biomass_meth']; consider giving each a unique slot_uri
+  #ERROR:root:Multiple slots with URI: https://w3id.org/mixs/0000339: ['micro_biomass_meth', 'microbial_biomass_meth']; consider giving each a unique slot_uri
+  #ERROR:root:Multiple slots with URI: https://w3id.org/mixs/0000316: ['prev_land_use_meth', 'previous_land_use_meth']; consider giving each a unique slot_uri
+  #ERROR:root:Multiple slots with URI: https://w3id.org/mixs/0000316: ['prev_land_use_meth', 'previous_land_use_meth']; consider giving each a unique slot_uri
+  #ERROR:root:Multiple slots with URI: https://w3id.org/mixs/0000002: ['samp_collec_device', 'samp_collect_device']; consider giving each a unique slot_uri
+  #ERROR:root:Multiple slots with URI: https://w3id.org/mixs/0000002: ['samp_collec_device', 'samp_collect_device']; consider giving each a unique slot_uri
+  #ERROR:root:Multiple slots with URI: https://w3id.org/mixs/0001082: ['horizon', 'soil_horizon']; consider giving each a unique slot_uri
+  #ERROR:root:Multiple slots with URI: https://w3id.org/mixs/0000335: ['soil_text_measure', 'texture']; consider giving each a unique slot_uri
+  #ERROR:root:Multiple slots with URI: https://w3id.org/mixs/0000336: ['soil_texture_meth', 'texture_meth']; consider giving each a unique slot_uri
+  #ERROR:root:Multiple slots with URI: https://w3id.org/mixs/0000335: ['soil_text_measure', 'texture']; consider giving each a unique slot_uri
+  #ERROR:root:Multiple slots with URI: https://w3id.org/mixs/0000336: ['soil_texture_meth', 'texture_meth']; consider giving each a unique slot_uri
+
+nmdc_sqla.py: src/schema/nmdc.yaml
+	$(RUN) gen-sqla $< > $@

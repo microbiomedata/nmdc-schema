@@ -34,6 +34,7 @@ prefixes:
 default_prefix: nmdc
 
 imports:
+  - basic_slots
   - core
   - linkml:types
   - prov
@@ -47,6 +48,8 @@ classes:
       - corresponds to an entry in GFF3
     see_also:
       - https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md
+    slots:
+      - raw_type
     slot_usage:
       seqid:
         description: The ID of the landmark used to establish the coordinate system for the current feature.
@@ -206,6 +209,7 @@ classes:
       - https://img.jgi.doe.gov/docs/functional-annotation.pdf
       - https://github.com/microbiomedata/mg_annotation/blob/master/functional-annotation.wdl
     slots:
+      - raw_type
       - was_generated_by
       - subject
       - has_function

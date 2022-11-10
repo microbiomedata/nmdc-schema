@@ -11,7 +11,7 @@ prefixes:
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
   skos: http://www.w3.org/2004/02/skos/core#
-    
+
 default_prefix: nmdc
 default_range: string
 
@@ -22,8 +22,11 @@ default_curi_maps:
 
 imports:
   - linkml:types
+  - core
 
 slots:
+
+  raw_type: { }
 
   id:
     identifier: true
@@ -45,7 +48,7 @@ slots:
     description: >-
       a human-readable description of a thing
     slot_uri: dcterms:description
-    
+
   type:
     deprecated: >-
       Due to confusion about what values are used for this slot, it is best not to use this slot.
