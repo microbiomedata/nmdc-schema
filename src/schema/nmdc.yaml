@@ -228,7 +228,7 @@ classes:
       - glucosidase_act
       - heavy_metals
       - heavy_metals_meth
-      - horizon
+#      - horizon
       - horizon_meth
       - lat_lon
       - link_addit_analys
@@ -240,7 +240,7 @@ classes:
       - mean_frict_vel
       - mean_peak_frict_vel
       - microbial_biomass
-      - microbial_biomass_meth
+#      - microbial_biomass_meth
       - misc_param
       - n_alkanes
       - nitrate
@@ -260,12 +260,12 @@ classes:
       - potassium
       - pressure
       - previous_land_use
-      - previous_land_use_meth
+#      - previous_land_use_meth
       - profile_position
       - redox_potential
       - salinity
       - salinity_meth
-      - samp_collect_device
+#      - samp_collect_device
       - samp_mat_process
       - samp_store_dur
       - samp_store_loc
@@ -285,8 +285,8 @@ classes:
       - sulfate
       - sulfide
       - temp
-      - texture
-      - texture_meth
+#      - texture
+#      - texture_meth
       - tillage
       - tidal_stage
       - tot_carb
@@ -345,13 +345,13 @@ classes:
       - growth_facil
       - humidity_regm
       - light_regm
-      - micro_biomass_meth
+#      - micro_biomass_meth
       - phosphate
       - rel_to_oxygen
       - samp_collec_method
       - samp_size
-      - soil_text_measure
-      - soil_texture_meth
+#      - soil_text_measure
+#      - soil_texture_meth
       - source_mat_id
       - watering_regm
 

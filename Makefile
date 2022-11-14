@@ -361,6 +361,39 @@ nmdc.ttl: src/schema/nmdc.yaml
 	$(RUN) gen-owl \
 		--output $@ $<
 
+was_associated_with.ttl: was_associated_with_generated.yaml
+	$(RUN) gen-owl \
+		--output $@ $<
+
+was_associated_with.py: was_associated_with_generated.yaml
+	$(RUN) gen-py-classes $< > $@
+
+was_associated_with_generated.yaml: was_associated_with.yaml
+	$(RUN) gen-linkml \
+		--format yaml \
+		--no-materialize-attributes \
+		--output $@ $<
+
+concrete_thing_set.json: was_associated_with_generated.yaml concrete_thing_set.yaml
+	$(RUN) linkml-convert \
+		--output $@	\
+		--target-class Database \
+		--schema $^
+
+concrete_thing_set.db: was_associated_with_generated.yaml concrete_thing_set.json
+	$(RUN) linkml-sqldb dump \
+			--db $@ \
+			--target-class Database \
+			--schema $^
+
+waw_all: waw_cleanup was_associated_with.ttl concrete_thing_set.db
+
+waw_cleanup:
+	rm -rf was_associated_with_generated.yaml
+	rm -rf was_associated_with.ttl
+	rm -rf concrete_thing_set.json
+	rm -rf concrete_thing_set.db
+
 #  -o, --output TEXT               Output file name
 #  --metadata-profile [linkml|rdfs]
 #                                  What kind of metadata profile to use for
