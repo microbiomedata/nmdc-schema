@@ -32,13 +32,14 @@ slots:
       A unique identifier for a thing.
       Must be either a CURIE shorthand for a URI or a complete URI
     notes:
-      - "relocated YAML comment: for now we are setting required to false until we develop an id template"
-      - "Doesn't 'identifier: true' imply 'required: true'?"
       - "abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?"
-      - a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters will be accepted
-      - typecodes must correspond 1:1 to a class in the NMDC schema. this will be checked via per-class id slot usage assertions
-      - minting authority shoulders should probably be enumerated and checked in the pattern
-    pattern: ^nmdc:[a-z]{1,6}-[0-9][a-z]{,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,6})?(_.+)?$
+      - 'a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters will be accepted'
+      - 'typecodes must correspond 1:1 to a class in the NMDC schema. this will be checked via per-class id slot usage assertions'
+      - 'minting authority shoulders should probably be enumerated and checked in the pattern'
+    pattern: ^nmdc:[a-z]{1,6}-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,6})?(_[A-Za-z0-9_\.-]+)?$
+    examples:
+      - value: nmdc:mgmag-00-x012.1_7_c1
+        value_description: 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248'
 
   name:
     multivalued: false
