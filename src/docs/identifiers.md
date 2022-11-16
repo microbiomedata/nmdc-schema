@@ -113,7 +113,7 @@ The full URLs for each is in the jsonld context file
 
 The NMDC schema specifies legal identifiers for all of its classes. All data instances/records that are intended for upload into the NMDC metadata store must have an `id` field that follows this specification, which is discussed below. NMDC offers a central identifier minting [endpoint](https://api.dev.microbiomedata.org/docs#/identifiers/mint_ids_ids_mint_post) in order to save data contributors the trouble of hand-crafting `id`s, but it will require an update before it generates `id`s following the pattern specified below.
 
-The possibility of decentralized (or offline) minting of `id`s  by trusted organizations has also been anticipated. `id` component 3 below (the shoulder). LBL, which hosts the `id` minting endpoint will use one shoulder value. If another organization, like JGI or EMSL, needs to bulk-create `id`s outside of the  central identifier minting endpoint, they would use different shoulders, to be determined by the NMDC schema and metadata team.
+The possibility of decentralized (or offline) minting of `id`s  by trusted organizations has also been anticipated. `id` component 3 below (the shoulder) is used to indicate the organizastion that minted an `id`. LBL, which hosts the `id` minting endpoint will use one shoulder value. If another organization, like JGI or EMSL, needs to bulk-create `id`s outside of the  central identifier minting endpoint, they would use different shoulders, to be determined by the NMDC schema and metadata team.
 
 No matter where they are minted, all NMDC `id` values must match this abstract pattern:
 
