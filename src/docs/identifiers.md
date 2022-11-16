@@ -129,9 +129,9 @@ There are six parts to the above identifier:
 
 4. `<blade>`: The fully unique part of the identifier under a given type code and shoulder namespace. It is a base32 encoding of a 64-bit integer value and a checksum. The _shoulder_ and _blade_ together make up the _key_ of the identifier. The blade is an alphanumeric string of open-ended length with at least one character, following the regular expression: `[A-Za-z0-9]{1,}`.
 
-5. <`.version`>: The *version* portion of the identifier is used to indicate the version of the workflow run on the sample. It differentiates multiple iterations of a workflow. The delimiter used to separate the *version* from the _blade_ and everything before it is a dot (`.`), and the version is an alphanumeric string of length one to six characters.
+5. `<.version>`: The *version* portion of the identifier is used to indicate the version of the workflow run on the sample. It differentiates multiple iterations of a workflow. The delimiter used to separate the *version* from the _blade_ and everything before it is a dot (`.`), and the version is an alphanumeric string of length one to six characters.
 
-6. <`_locus`>: The _locus_ component is indicative of the contig on which a genomic feature is found, along with the start and end coordinates. The intra component delimiter that is used to separate coordinates of the locus is underscore (`_`). The locus is an alphanumeric string composed of one or more characters which can include upper and lowercase letters, numbers, and special characters underscore (`_`), dot (`.`) and hyphen (`-`).
+6. `<_locus>`: The _locus_ component is indicative of the contig on which a genomic feature is found, along with the start and end coordinates. The intra component delimiter that is used to separate coordinates of the locus is underscore (`_`). The locus is an alphanumeric string composed of one or more characters which can include upper and lowercase letters, numbers, and special characters underscore (`_`), dot (`.`) and hyphen (`-`).
 
 Notes: 
 
