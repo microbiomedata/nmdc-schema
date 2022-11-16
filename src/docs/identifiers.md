@@ -111,12 +111,14 @@ The full URLs for each is in the jsonld context file
 
 ## IDs minted for use within NMDC
 
-The central identifier minting service is an endpoint within the NMDC runtime API. Currently, the central identifier has an API endpoint which is accessible [here](https://api.dev.microbiomedata.org/docs#/identifiers/mint_ids_ids_mint_post). The endpoint helps generate identifiers for NMDC _entities_ like biosamples, studies, etc.
+The NMDC offers a central identifier minting service, as an endpoint within the NMDC runtime API which is accessible [here](https://api.dev.microbiomedata.org/docs#/identifiers/mint_ids_ids_mint_post). The endpoint helps generate identifiers for NMDC _entities_ like biosamples, studies, etc.
+
+The [NMDC Schema](../schema/nmdc.yaml) specifies legal identifiers for all of its classes. All instances/records that are intended for upload into the NMDC metadata store must have an `id` field that follows the specification discussed below.
 
 The typical structure of an NMDC-minted identifier would look like below:
 
 ```
-nmdc:<type-code>-<shoulder>-<blade>(.version)(_locus)
+nmdc:<type-code>-<shoulder>-<blade><.version><_locus>
 ```
 
 There are six parts to the above identifier:
@@ -127,22 +129,22 @@ There are six parts to the above identifier:
 
 3. `<shoulder>`: A string designed to serve as usernames for ID minting authorities. These authorities are typically organizations like EMSL, or JGI and hence shoulders would be assigned to organizations only. The shoulder helps us answer the question about the *authority that is minting* the NMDC identifier. All shoulders will be zero to six character alphabetical codes flanked with a digit on either side. The central minting service would have a unique shoulder code of its own. Similarly, other site-specific offline minting stewards assigned by NMDC, would also have their own unique shoulder codes which help ensure that even offline, we are always generating locally unique keys. The regular expression for the *shoulder* portion of the identifier is: `[0-9][a-z]{0,6}[0-9]`.
 
-4. `<blade>`: The fully unique part of the identifier under a given type code and shoulder namespace. It is a base32 encoding of a 64-bit integer value and a checksum. The _shoulder_ and _blade_ together make up the _key_ of the identifier. The blade is an alphanumeric string of open-ended length with at least one character, following the regular expression: `[A-Za-z0-9]{1,}`.
+4. `<blade>`: The fully unique part of the identifier under a given type code and shoulder namespace. The _shoulder_ and _blade_ together make up the _key_ of the identifier. The blade is an alphanumeric string of open-ended length with at least one character, following the regular expression: `[A-Za-z0-9]{1,}`.
 
-5. `<.version>`: The *version* portion of the identifier is used to indicate the version of the workflow run on the sample. It differentiates multiple iterations of a workflow. The delimiter used to separate the *version* from the _blade_ and everything before it is a dot (`.`), and the version is an alphanumeric string of length one to six characters.
+5. `<.version>`: The *version* portion of the identifier is used to indicate the version of the workflow run on the sample. It differentiates multiple iterations of a workflow. The delimiter used to separate the *version* from the *blade* and everything before it is a dot (`.`). The *version* is at least a one character alphanumeric string of open-ended length with one or more dots indicating subversions. The regular expression pattern that the *version* conforms to is: `(\.[A-Za-z0-9]{1,})*`.
 
-6. `<_locus>`: The _locus_ component is indicative of the contig on which a genomic feature is found, along with the start and end coordinates. The intra component delimiter that is used to separate coordinates of the locus is underscore (`_`). The locus is an alphanumeric string composed of one or more characters which can include upper and lowercase letters, numbers, and special characters underscore (`_`), dot (`.`) and hyphen (`-`).
-
-Notes: 
-
-* The reason why we would want to have shoulders uniquely identifying minting authorities is to accommodate a decentralized, or distributed ID minting service implementation. Meaning, one organization, say LBL which hosts the central ID minting service which is assigned a type code of `00` generates some NMDC IDs. In a similar fashion, another organization, say JGI, might want to have an offline ID minting service within their organization that also generates NMDC IDs. So organizations like the JGI, would be assigned a shoulder, say, `01` to identify the organization. Similarly, we can generate different shoulder ids for different organizations that want to use offline NMDC ID minting services.
-* The above identifier structure applies to ids minted by the central minting service, and offline id minting services.
+6. `<_locus>`: The _locus_ component is indicative of the contig on which a genomic feature is found, along with the start and end coordinates. The intra component delimiter that is used to separate coordinates of the *locus* is underscore (`_`). The *locus* is an alphanumeric string composed of one or more characters which can include upper and lowercase letters, numbers, and special characters underscore (`_`), dot (`.`) and hyphen (`-`). The regular expression that the locus will follow is: `_[A-Za-z0-9_\.-]+`.
 
 The regular expression pattern that all identifiers must follow is as below:
 
 ```
-^nmdc:[a-z]{1,6}-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,6})?(_[A-Za-z0-9_\.-]+)?$
+^(?<prefix>nmdc):(?<typecode>[a-z]{1,6})-(?<shoulder>[0-9][a-z]{0,6}[0-9])-(?<blade>[A-Za-z0-9]{1,})(?<version>(\.[A-Za-z0-9]{1,})*)(?<locus>_[A-Za-z0-9_\.-]+)?$
 ```
+
+Notes:
+
+* The reason why we would want to have shoulders uniquely identifying minting authorities is to accommodate a decentralized, or distributed ID minting service implementation. Meaning, one organization, say LBL which hosts the central ID minting service which is assigned a type code of `00` generates some NMDC IDs. In a similar fashion, another organization, say JGI, might want to have an offline ID minting service within their organization that also generates NMDC IDs. So organizations like the JGI, would be assigned a shoulder by the NMDC, say, `01` to identify the organization. Similarly, we can generate different shoulder ids for different organizations that want to use offline NMDC ID minting services.
+* The above identifier structure applies to ids minted by the central minting service hosted by LBL, as well as offline id minting services that may be setup at trusted organizations.
 
 ## Reuse vs minting new IDs
 
