@@ -39,7 +39,7 @@ slots:
     pattern: ^(?<prefix>nmdc):(?<typecode>[a-z]{1,6})-(?<shoulder>[0-9][a-z]{0,6}[0-9])-(?<blade>[A-Za-z0-9]{1,})(?<version>(\.[A-Za-z0-9]{1,})*)(?<locus>_[A-Za-z0-9_\.-]+)?$
     examples:
       - value: nmdc:mgmag-00-x012.1_7_c1
-        value_description: 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248'
+        description: 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248'
 
   name:
     multivalued: false
