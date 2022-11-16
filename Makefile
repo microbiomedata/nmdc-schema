@@ -337,3 +337,9 @@ target/TermsUpdated_organicmatterextraction.yaml: assets/TermsUpdated_organicmat
 	$(RUN) sheets2linkml \
 	--name TermsUpdated_organicmatterextraction \
 	--output $@ $^
+
+assets/TermsUpdated_organicmatterextraction_data.json: assets/TermsUpdated_organicmatterextraction_data.yaml
+	$(RUN) linkml-convert \
+		--output $@ \
+		--target-class MaterialSamplingProcess \
+		--schema target/TermsUpdated_organicmatterextraction.yaml $<
