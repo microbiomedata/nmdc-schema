@@ -332,3 +332,8 @@ from_mongo_cleanup:
 	rm -rf assets/from_mongodb_updated.json
 
 from_mongo_all: from_mongo_cleanup validate_vs_3_2_0 validate_vs_current
+
+target/TermsUpdated_organicmatterextraction.yaml: assets/TermsUpdated_organicmatterextraction.tsv
+	$(RUN) sheets2linkml \
+	--name TermsUpdated_organicmatterextraction \
+	--output $@ $^
