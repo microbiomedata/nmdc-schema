@@ -333,13 +333,19 @@ from_mongo_cleanup:
 
 from_mongo_all: from_mongo_cleanup validate_vs_3_2_0 validate_vs_current
 
+TermsUpdated_organicmatterextraction_all: TermsUpdated_organicmatterextraction_clean assets/TermsUpdated_organicmatterextraction_data.json
+
+TermsUpdated_organicmatterextraction_clean:
+	rm -rf target/TermsUpdated_organicmatterextraction.yaml
+	rm -rf assets/TermsUpdated_organicmatterextraction_data.json
+
 target/TermsUpdated_organicmatterextraction.yaml: assets/TermsUpdated_organicmatterextraction.tsv
 	$(RUN) sheets2linkml \
 	--name TermsUpdated_organicmatterextraction \
 	--output $@ $^
 
-assets/TermsUpdated_organicmatterextraction_data.json: assets/TermsUpdated_organicmatterextraction_data.yaml
+assets/TermsUpdated_organicmatterextraction_data.json: target/TermsUpdated_organicmatterextraction.yaml assets/TermsUpdated_organicmatterextraction_data.yaml
 	$(RUN) linkml-convert \
 		--output $@ \
 		--target-class MaterialSamplingProcess \
-		--schema target/TermsUpdated_organicmatterextraction.yaml $<
+		--schema $^
