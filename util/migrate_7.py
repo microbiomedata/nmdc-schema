@@ -12,11 +12,11 @@ import yaml
 from dotenv import dotenv_values
 from linkml.validators import JsonSchemaDataValidator
 from linkml_runtime import SchemaView
-from linkml_runtime.dumpers import yaml_dumper, json_dumper
-from linkml_runtime.loaders import json_loader
+from linkml_runtime.dumpers import yaml_dumper, json_dumper, rdf_dumper
+from linkml_runtime.loaders import json_loader, rdf_loader
 from pymongo import MongoClient
 
-from nmdc_schema.nmdc import Database
+from target.python.nmdc import Database
 
 # yaml_out = "../data_7.yaml"
 json_out = "data_7.json"
@@ -103,7 +103,6 @@ biosample_id_tracking = {}
 
 def determine_routing(id_val, routing_table):
     id_prefix = id_val.split(':')[0]
-    # logger.info(f"id = {id_val}; id_prefix = {id_prefix}")
     if id_prefix in routing_table:
         return routing_table[id_prefix]
     else:
@@ -178,18 +177,14 @@ def route_document_ids(document, routing_table):
 @click.option("--dest_mongo_dbname", default="nmdc_7")
 @click.option("--max_collection_bytes", default=10000000000,
               help="Remote collections larger than this will not be loaded in their entirety into local RAM")
-@click.option("--last_doc_num", default=100000,
+@click.option("--last_doc_num", default=100,
               help="The first <last_doc_num> documents from large remote collections will be loaded into local RAM")
-@click.option("--migrate_partial", default=False,
+@click.option("--migrate_partial", default=True,
               help="Should the first first <last_doc_num> documents from large remote collections be loaded into the destination mongodb? ")
 @click.option("--excluded_collection", multiple=True,
               default=[
-                  # "biosample_set",
                   # todo mongodb has a read_QC_analysis_activity_set
                   "read_qc_analysis_activity_set",
-                  # read_qc_analysis_activity_set: ValueError:  Unknown argument: version = 'b1.0.6'
-                  # '@type',
-                  # 'activity_set',
               ])
 def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_port: str, dest_mongo_dbname: str,
         max_collection_bytes: int, last_doc_num: int, migrate_partial: bool, excluded_collection):
@@ -204,6 +199,9 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
     nmdc_view = SchemaView(schema_file)
 
     database_slots = nmdc_view.class_slots("Database")
+    database_slots.sort()
+
+    logger.info(pprint.pformat(database_slots))
 
     remote_client = MongoClient(
         f"mongodb://{config['SOURCE_MONGO_USER']}:{config['SOURCE_MONGO_PASS']}@{config['SOURCE_MONGO_HOST']}:{config['SOURCE_MONGO_PORT']}/?{config['SOURCE_MONGO_AUTH_SUFFIX']}"
@@ -212,45 +210,16 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
     remote_db = remote_client["nmdc"]
 
     remote_collections = remote_db.list_collection_names()
+    remote_collections.sort()
 
-    logger.info(f"raw remote_collections: {remote_collections}")
+    logger.info(pprint.pformat(remote_collections))
 
-    remote_collections_lc = [collection.lower() for collection in remote_collections]
+    collections_intersection = [i for i in remote_collections if i.lower() in database_slots]
 
-    logger.info(f"lowercase remote_collections: {remote_collections_lc}")
-
-    collections_intersection = set(database_slots).intersection(set(remote_collections))
-    logger.info(f"collections_intersection: {collections_intersection}")
-    logger.info(f"excluded_collection: {excluded_collection}")
-    collections_intersection = collections_intersection - set(excluded_collection)
-    logger.info(f"collections_intersection: {collections_intersection}")
-    collections_intersection = list(collections_intersection)
+    collections_intersection = list(set(collections_intersection) - set(excluded_collection))
     collections_intersection.sort()
 
-    logger.info("Gathering mongodb collection stats")
-
-    # for debugging, can limit collections_intersection to a subset of collections
-    collections_intersection = [
-        # 'functional_annotation_set', # huge... haven't tried to instantiate, convert to RDF or load into GraphDB yet
-        # 'genome_feature_set', # huge... haven't tried to instantiate, convert to RDF or load into GraphDB yet
-        # 'read_QC_analysis_activity_set', # read_QC_analysis_activity_set collection vs read_qc_analysis_activity_set slot
-        # 'read_qc_analysis_activity_set', # read_QC_analysis_activity_set collection vs read_qc_analysis_activity_set slot
-        #
-        'activity_set',  # empty, but import into GraphDB OK
-        'biosample_set',  # import into GraphDB OK
-        'data_object_set',  # 'document_count': 40858, 'size_in_bytes': 15068847
-        # 'mags_activity_set',  # import into GraphDB OK
-        # 'metabolomics_analysis_activity_set',
-        # # 'document_count': 209, 'size_in_bytes': 15754341, but import into GraphDB OK
-        # 'metagenome_annotation_activity_set',  # import into GraphDB OK
-        # 'metagenome_assembly_set',  # import into GraphDB OK
-        # 'metaproteomics_analysis_activity_set',
-        # # 'document_count': 52, 'size_in_bytes': 208015260, but import into GraphDB OK
-        # 'metatranscriptome_activity_set',
-        # 'nom_analysis_activity_set',  # import into GraphDB OK
-        'omics_processing_set',  # import into GraphDB OK
-        'study_set',  # import into GraphDB OK
-    ]
+    logger.info(pprint.pformat(collections_intersection))
 
     selected_stats = {}
     for collection_name in collections_intersection:
@@ -277,10 +246,13 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
 
     for collection_name in collections_intersection:
         collection_name_lc = collection_name.lower()
-        logger.info(f"collection_name: {collection_name}")
+
         collection_stats = selected_stats[collection_name]
-        collection_range = nmdc_view.get_slot(collection_name).range
+
+        collection_range = nmdc_view.get_slot(collection_name_lc).range
+
         range_class = nmdc_view.get_class(collection_range)
+
         range_slot_names = nmdc_view.class_slots(range_class.name)
         range_slot_names.sort()
 
@@ -288,13 +260,13 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
         cursor = None
         if collection_stats["size_in_bytes"] > max_collection_bytes:
             logger.warning(
-                f"{collection_name}: {collection_stats}, with range {collection_range} is larger than the limit of {max_collection_bytes} bytes")
+                f"{collection_name_lc}: {collection_stats}, with range {collection_range} is larger than the limit of {max_collection_bytes} bytes")
             if migrate_partial:
                 logger.info(f"But will load the first {last_doc_num} documents anyway")
                 cursor = collection.find({}).limit(last_doc_num)
         else:
             logger.info(
-                f"{collection_name}: {collection_stats}, with range {collection_range} is within the limit of {max_collection_bytes} bytes")
+                f"{collection_name_lc}: {collection_stats}, with range {collection_range} is within the limit of {max_collection_bytes} bytes")
             cursor = collection.find({})
         if cursor:
             for document in cursor:
@@ -307,12 +279,14 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                             document[new_name] = document[old_name]
                             del document[old_name]
 
-                if collection_name == "data_object_set" and "data_object_type" in document:
+                if collection_name_lc == "data_object_set" and "data_object_type" in document:
                     data_object_file_type_values.add(document["data_object_type"])
+
+                if 'id' in document and document['id']:
                     if ":" not in document['id']:
-                        logger.error(f"illegal document id: {document['id']}")
+                        logger.error(f"illegal {collection_name_lc} document id: {document['id']}")
                         document['id'] = f"bare:{document['id']}"
-                    document['id'] = document['id'].strip()
+                        document['id'] = document['id'].strip()
 
                     # todo migrations not handled by name_replacements
 
@@ -325,17 +299,17 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                     eadt = str(pendulum.parse(document['ended_at_time']))
                     document['ended_at_time'] = eadt
 
-                if collection_name == "data_object_set" and ("id" not in document or not document["id"]):
+                if collection_name_lc == "data_object_set" and ("id" not in document or not document["id"]):
                     logger.warning(f"no id in document: {document}")
                     document['id'] = f"nmdc:{document['md5_checksum']}"
 
-                if collection_name == "mags_activity_set" and 'mags_list' in document and document['mags_list']:
+                if collection_name_lc == "mags_activity_set" and 'mags_list' in document and document['mags_list']:
                     for i in document['mags_list']:
                         if 'num_tRNA' in i:
                             i['num_t_rna'] = i['num_tRNA']
                             del i['num_tRNA']
 
-                if collection_name == "biosample_set":
+                if collection_name_lc == "biosample_set":
 
                     old = document['id']
                     bs_ids_old_new = [document['id']]
@@ -408,7 +382,7 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                     if "alternative_identifiers" in document and len(document["alternative_identifiers"]) < 1:
                         del document["alternative_identifiers"]
 
-                if collection_name == "omics_processing_set":
+                if collection_name_lc == "omics_processing_set":
                     if 'has_input' in document:
                         loopable = document['has_input'].copy()
                         for i in loopable:
@@ -422,7 +396,7 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                     else:
                         logger.warning(f"document {document['id']} has no has_input")
 
-                if collection_name == "metatranscriptome_activity_set":
+                if collection_name_lc == "metatranscriptome_activity_set":
                     tidy_inputs = [i.strip() for i in document['has_input']]
                     document['has_input'] = tidy_inputs
                     if 'part_of' in document:
@@ -441,23 +415,28 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
                     logger.warning(f"Document {document['id']} has rdf type {document['@type']}")
 
                 try:
-                    # todo this is importing from the PyPI package, not the local source
-                    dynamic_class = getattr(importlib.import_module("target.python.nmdc"), collection_range)
-                    # todo validation takes place here so don't need to replicate
-                    instance = json_loader.loads(document, target_class=dynamic_class)
+                    jd = json.dumps(document)
 
-                    database_obj[collection_name].append(instance)
+                    dynamic_class = getattr(importlib.import_module("target.python.nmdc"), collection_range)
+
+                    # # todo validation takes place here so don't need to replicate it
+                    # could we just load from the dict document?
+                    instance = json_loader.loads(jd, target_class=dynamic_class)
+
+                    rdfout = rdf_dumper.dumps(instance, "jsonld-context/nmdc.context.jsonld")
+
+                    database_obj[collection_name_lc].append(instance)
 
                 except AttributeError:
-                    logger.error(f"no class {collection_range} in nmdc_schema.nmdc")
+                    logger.error(f"no class {collection_name_lc} in nmdc_schema.nmdc")
                     continue
 
             # KeyError: 'read_qc_analysis_activity_set'
-            if collection_name in database_obj:
-                if len(database_obj[collection_name]) == 0:
-                    del database_obj[collection_name]
+            if collection_name_lc in database_obj:
+                if len(database_obj[collection_name_lc]) == 0:
+                    del database_obj[collection_name_lc]
             else:
-                logger.error(f"no collection {collection_name} in database_obj")
+                logger.error(f"no collection {collection_name_lc} in database_obj")
 
     defined_object_type_pvs = nmdc_view.get_enum("file type enum").permissible_values
     defined_object_type_texts = set([pvv.text for pvk, pvv in defined_object_type_pvs.items()])
@@ -477,18 +456,19 @@ def cli(dotenv_file: str, schema_file: str, dest_mongo_address: str, dest_mongo_
     destination_collections = destination_db.list_collection_names()
 
     for i in collections_intersection:
-        if i in excluded_collection:
+        ilc = i.lower()
+        if ilc in excluded_collection:
             logger.warning(f"Skipping {i}")
         else:
-            if i in destination_collections:
-                logger.warning(f"Dropping destination {i}")
+            if ilc in destination_collections:
+                logger.warning(f"Dropping destination {ilc}")
                 collection = destination_db[i]
                 collection.drop()
-            if i in database_obj and database_obj[i]:
-                collection = destination_db[i]
-                logger.info(f"Preparing to populate collection {i} in destination database")
+            if ilc in database_obj and database_obj[ilc]:
+                collection = destination_db[ilc]
+                logger.info(f"Preparing to populate collection {ilc} in destination database")
                 vanilla_list = []
-                for inner_obj in database_obj[i]:
+                for inner_obj in database_obj[ilc]:
                     io_json_string = json_dumper.dumps(inner_obj)
                     io_dict = json.loads(io_json_string)
                     vanilla_list.append(io_dict)

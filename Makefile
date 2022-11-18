@@ -341,6 +341,12 @@ from_mongo_all: from_mongo_cleanup validate_vs_3_2_0 validate_vs_current
 
 mongo_migration: data_7.json
 
+migration_clean:
+	rm -rf data_7.json
+	rm -rf data_7.ttl
+
+migration_all: migration_clean data_7.ttl
+
 data_7.json:
 	$(RUN) python util/migrate_7.py
 
