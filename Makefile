@@ -332,3 +332,51 @@ from_mongo_cleanup:
 	rm -rf assets/from_mongodb_updated.json
 
 from_mongo_all: from_mongo_cleanup validate_vs_3_2_0 validate_vs_current
+
+target/nmdc.yaml: src/schema/nmdc.yaml
+	$(RUN) gen-linkml \
+		--format yaml \
+		--no-materialize-attributes \
+		--no-materialize-patterns \
+		--output $@ $<
+
+target/mixs.yaml: src/schema/mixs.yaml
+	$(RUN) gen-linkml \
+		--format yaml \
+		--no-materialize-attributes \
+		--no-materialize-patterns \
+		--mergeimports \
+		--output $@ $<
+
+#target/target: target/mixs.yaml
+#	$(RUN) gen-project \
+#		--dir $@ $<
+
+target/mixs.owl.ttl: src/schema/mixs.yaml
+	$(RUN) gen-owl \
+		--output $@ $<
+
+target/core.owl.ttl: src/schema/core.yaml
+	$(RUN) gen-owl \
+		--output $@ $<
+
+target/mixs_without_core.ofn: target/mixs.owl.ttl target/core.owl.ttl
+	robot unmerge --input $< --input $(word 2,$^) --output $@
+
+target/mixs_without_core.yaml: target/mixs_without_core.ofn
+	$(RUN) schemauto import-owl \
+		--identifier name \
+		--output $@ $<
+
+clean_depleteds:
+	rm -rf src/schema/nmdc_depleted.yaml
+	rm -rf src/schema/mixs_depleted.yaml
+
+depleteds_all: clean_depleteds target/target
+
+src/schema/nmdc_depleted.yaml:
+	$(RUN) python util/merge_then_demerge_mixs.py
+
+target/target: src/schema/nmdc_depleted.yaml
+	$(RUN) gen-project \
+		--dir $@ $<
