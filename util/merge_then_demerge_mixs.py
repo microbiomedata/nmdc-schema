@@ -1,5 +1,7 @@
 import pprint
 
+from linkml.utils.schema_builder import SchemaBuilder
+from linkml.utils.schema_fixer import SchemaFixer
 from linkml_runtime import SchemaView
 from linkml_runtime.dumpers import yaml_dumper
 from linkml_runtime.linkml_model import SubsetDefinition
@@ -111,5 +113,20 @@ nmdc_view.schema.imports.append('linkml:types')
 # are we getting the subsets? see https://github.com/linkml/linkml-runtime/pull/230
 nmdc_view.schema.subsets['mixs extension'] = SubsetDefinition(name="mixs extension")
 nmdc_view.schema.subsets['workflow subset'] = SubsetDefinition(name="workflow subset")
+
+fixer = SchemaFixer()
+
+fixer.remove_redundant_slot_usage(nmdc_view.schema)
+# fixer.attributes_to_slots(nmdc_view.schema, remove_redundant_slot_usage=False)
+# # Traceback (most recent call last):
+# #   File "/Users/MAM/Documents/gitrepos/nmdc-schema/util/merge_then_demerge_mixs.py", line 138, in <module>
+# #     fixer.attributes_to_slots(nmdc_view.schema, remove_redundant_slot_usage=False)
+# #   File "/Users/MAM/Library/Caches/pypoetry/virtualenvs/nmdc-schema-MTtWF7zd-py3.9/lib/python3.9/site-packages/linkml/utils/schema_fixer.py", line 150, in attributes_to_slots
+# #     self.merge_slot_usage(sv, c, a)
+# #   File "/Users/MAM/Library/Caches/pypoetry/virtualenvs/nmdc-schema-MTtWF7zd-py3.9/lib/python3.9/site-packages/linkml/utils/schema_fixer.py", line 181, in merge_slot_usage
+# #     if slot.name not in cls.slot_usage:
+# # AttributeError: 'str' object has no attribute 'name'
+# # make: *** [src/schema/nmdc_depleted.yaml] Error 1
+
 
 yaml_dumper.dump(nmdc_view.schema, depleted_nmdc_yaml)
