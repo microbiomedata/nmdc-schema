@@ -371,12 +371,16 @@ target/mixs_without_core.yaml: target/mixs_without_core.ofn
 clean_depleteds:
 	rm -rf src/schema/nmdc_depleted.yaml
 	rm -rf src/schema/mixs_depleted.yaml
+	rm -rf target/target/*
 
 depleteds_all: clean_depleteds target/target
 
 src/schema/nmdc_depleted.yaml:
 	$(RUN) python util/merge_then_demerge_mixs.py
 
+# excluding excel for performance reasons and (low priority) https://github.com/linkml/linkml/issues/1090
+# try csv generator?
 target/target: src/schema/nmdc_depleted.yaml
 	$(RUN) gen-project \
+		--exclude excel \
 		--dir $@ $<
