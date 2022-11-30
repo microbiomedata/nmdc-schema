@@ -19,6 +19,7 @@ prefixes:
   EC: https://unknown.to.linter.org/
   EFO: http://identifiers.org/efo/
   GOLD: http://identifiers.org/gold/
+  IMG.TAXON: http://identifiers.org/img.taxon/
   ISA: https://unknown.to.linter.org/
   MS: http://purl.obolibrary.org/obo/MS_
   MetaCyc: https://identifiers.org/metacyc.reaction/ # assuming we're talking about metacyc reactions and not genes, compounds etc.
@@ -27,19 +28,27 @@ prefixes:
   OBI: http://purl.obolibrary.org/obo/OBI_
   RetroRules: https://unknown.to.linter.org/
   UniProtKB: https://identifiers.org/uniprot/
+  bare: https://unknown.to.linter.org/
   biolink: https://w3id.org/biolink/vocab/
   dcterms: http://purl.org/dc/terms/
+  emsl: https://unknown.to.linter.org/
   gtpo: https://unknown.to.linter.org/
   igsn: https://app.geosamples.org/sample/igsn/
-  IMG.TAXON: http://identifiers.org/img.taxon/
   insdc.srs: https://unknown.to.linter.org/
+  jgi: https://unknown.to.linter.org/
   linkml: https://w3id.org/linkml/
   mgnify: https://unknown.to.linter.org/
   mixs: https://w3id.org/mixs/
   nmdc: https://w3id.org/nmdc/
+  prov: http://www.w3.org/ns/prov#
   qud: http://qudt.org/1.1/schema/qudt#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
+  schema: http://schema.org/
+  skos: http://www.w3.org/2004/02/skos/core#
   wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
+  xsd: http://www.w3.org/2001/XMLSchema#
+
 
 default_prefix: nmdc
 default_range: string
@@ -53,8 +62,10 @@ emit_prefixes:
   - rdfs
   - skos
   - xsd
+
 imports:
   - annotation
+  - basic_slots
   - bioscales
   - core
   - external_identifiers
@@ -135,7 +146,7 @@ classes:
       - compression_type
       - was_generated_by
       - url
-      - type
+      - raw_type
     slot_usage:
       name:
         required: true
@@ -162,10 +173,12 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
+      - raw_type
+      - img_identifiers
+      - samp_name
       - biosample_categories
-      - type  # custom slot that specifies object type
+      - raw_type  # custom slot that specifies object type
       - part_of
-      #      - canary
 
       # Identifiers
       - id
@@ -175,6 +188,8 @@ classes:
       - gold_sample_identifiers
 #      - insdc_biosample_identifiers
 #      - insdc_secondary_sample_identifiers
+      - emsl_biosample_identifiers
+      - igsn_biosample_identifiers
 
       # MIXS slots
       - agrochem_addition
@@ -224,8 +239,8 @@ classes:
       - glucosidase_act
       - heavy_metals
       - heavy_metals_meth
-      - horizon
-      - horizon_meth
+#      - horizon
+#      - horizon_meth
       - lat_lon
       - link_addit_analys
       - link_class_info
@@ -235,8 +250,8 @@ classes:
       - magnesium
       - mean_frict_vel
       - mean_peak_frict_vel
-      - microbial_biomass
-      - microbial_biomass_meth
+#      - microbial_biomass
+#      - microbial_biomass_meth
       - misc_param
       - n_alkanes
       - nitrate
@@ -255,13 +270,13 @@ classes:
       - pool_dna_extracts
       - potassium
       - pressure
-      - previous_land_use
-      - previous_land_use_meth
+#      - previous_land_use
+#      - previous_land_use_meth
       - profile_position
       - redox_potential
       - salinity
       - salinity_meth
-      - samp_collect_device
+#      - samp_collect_device
       - samp_mat_process
       - samp_store_dur
       - samp_store_loc
@@ -281,8 +296,8 @@ classes:
       - sulfate
       - sulfide
       - temp
-      - texture
-      - texture_meth
+#      - texture
+#      - texture_meth
       - tillage
       - tidal_stage
       - tot_carb
@@ -306,10 +321,10 @@ classes:
       # GOLD specific fields
       - add_date
       - community
-      - depth2
+#      - depth2
       - habitat
       - host_name
-      - identifier
+#      - identifier
       - location
       - mod_date
       - ncbi_taxonomy_name
@@ -318,7 +333,7 @@ classes:
       - sample_collection_site
       - soluble_iron_micromol
       - subsurface_depth
-      - subsurface_depth2
+#      - subsurface_depth2
 
       # MIxS terms initially used in
       # sample metadata submission portal (aka DataHarmonizer)
@@ -331,13 +346,13 @@ classes:
       - growth_facil
       - humidity_regm
       - light_regm
-      - micro_biomass_meth
+#      - micro_biomass_meth
       - phosphate
       - rel_to_oxygen
       - samp_collec_method
       - samp_size
-      - soil_text_measure
-      - soil_texture_meth
+#      - soil_text_measure
+#      - soil_texture_meth
       - source_mat_id
       - watering_regm
 
@@ -435,6 +450,7 @@ classes:
       id:
         description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
         required: true
+        pattern: '^nmdc:'
 
       lat_lon:
         required: false
@@ -510,7 +526,7 @@ classes:
       - websites
       - publications
       - ess_dive_datasets
-      - type
+      - raw_type
       - relevant_protocols
       - funding_sources
       - has_credit_associations
@@ -638,7 +654,7 @@ classes:
       - part_of
       - principal_investigator
       - processing_institution
-      - type
+      - raw_type
       - gold_sequencing_project_identifiers
       - insdc_experiment_identifiers
       - samp_vol_we_dna_ext
@@ -669,7 +685,7 @@ classes:
       - applies_to_person
       - applied_role
       - applied_roles
-      - type
+      - raw_type
     class_uri: prov:Association
 
 enums:
@@ -876,6 +892,35 @@ enums:
           - replaces Environmental Molecular Sciences Lab
 
 slots:
+  img_identifiers:
+    title: IMG Identifiers
+    description: >-
+      A list of identifiers that relate the biosample to records in the IMG database.
+    multivalued: true
+    todos:
+      - add is_a or mixin modeling
+      - what are the class of IMG records?!
+
+  emsl_biosample_identifiers:
+    title: EMSL Biosample Identifiers
+    description: >-
+      A list of identifiers for the biosample from the EMSL database.  This is
+      used to link the biosample, as modeled by NMDC, to the biosample in the planned EMSL NEXUS database.
+    multivalued: true
+    is_a: sample_identifiers
+    todos:
+      - removed "planned" once NEXUS is online
+      - make an emsl identifiers mixin
+      - determine real expansion for emsl prefix
+
+  igsn_biosample_identifiers:
+    title: IGSN Biosample Identifiers
+    description: >-
+      A list of identifiers for the biosample from the IGSN database.
+    multivalued: true
+    is_a: sample_identifiers
+    todos:
+      - make an igsn identifiers mixin
   biosample_categories:
     title: Categories the biosample belongs to
     range: biosample_category_enum
@@ -1216,12 +1261,12 @@ slots:
     range: string
   host_name:
     range: string
-  depth2:
-    range: QuantityValue
+#  depth2:
+#    range: QuantityValue
   subsurface_depth:
     range: QuantityValue
-  subsurface_depth2:
-    range: QuantityValue
+#  subsurface_depth2:
+#    range: QuantityValue
   proport_woa_temperature:
     range: string
 

@@ -419,6 +419,15 @@ classes:
       - term
     # TODO: add fields for ontology, branch
 
+  ControlledIdentifiedTermValue:
+    description: A controlled term or class from an ontology, requiring the presence of term with an id
+    comments:
+      - To be used for slots like env_broad_scale
+    is_a: ControlledTermValue
+    slot_usage:
+      term:
+        required: true
+
   GeolocationValue:
     is_a: AttributeValue
     description: >-
@@ -514,7 +523,7 @@ slots:
     range: OntologyClass
     description: >-
       pointer to an ontology class
-    slot_uri: rdf:type
+    #    slot_uri: rdf:type
     inlined: true
 
   orcid:

@@ -20,6 +20,7 @@ default_curi_maps:
   - idot_context
 
 imports:
+  - basic_slots
   - core
   - linkml:types
 
@@ -42,7 +43,9 @@ slots:
       Link to corresponding identifier in external database
     comments:
       The value of this field is always a registered CURIE
-    range: external identifier
+    #    range: external identifier
+    #    range: string
+    range: uriorcurie
     close_mappings:
       - skos:closeMatch
 

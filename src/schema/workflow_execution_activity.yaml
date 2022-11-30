@@ -14,9 +14,10 @@ prefixes:
   linkml: https://w3id.org/linkml/
 
 imports:
-  - prov
+  - basic_slots
   - core
   - external_identifiers
+  - prov
 
 subsets:
   workflow subset:
@@ -43,13 +44,14 @@ classes:
       - has_input
       - has_output
       - part_of
-      - type # custom slot that specifies object type
+      - raw_type # custom slot that specifies object type
     slot_usage:
       was_associated_with:
         required: false
         description: >-
           the agent/entity associated with the generation of the file
-        range: WorkflowExecutionActivity
+        range: WorkflowExecutionActivity  # MAM I don't think this is a reasonable override of the global range of Agent
+        # but commenting that line out does not, on its own, fix the conversion to SQLite
         inlined: false # allow for strings of IDs
       started_at_time:
         required: true
@@ -65,8 +67,8 @@ classes:
         required: true
       execution_resource:
         required: true
-      type:
-        required: true
+      raw_type:
+  #        required: true
 
   MetagenomeAssembly:
     description: A workflow execution activity that converts sequencing reads into an assembled metagenome.
@@ -76,6 +78,7 @@ classes:
     in_subset:
       - workflow subset
     slots:
+      - raw_type
       - asm_score
       - scaffolds
       - scaf_logsum
@@ -145,6 +148,7 @@ classes:
     description: A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
     is_a: WorkflowExecutionActivity
     slots:
+      - raw_type
       - gold_analysis_project_identifiers
     in_subset:
       - workflow subset
@@ -152,6 +156,7 @@ classes:
   MetatranscriptomeAnnotationActivity:
     is_a: WorkflowExecutionActivity
     slots:
+      - raw_type
       - gold_analysis_project_identifiers
     in_subset:
       - workflow subset
@@ -162,6 +167,9 @@ classes:
       A metatranscriptome activity that e.g. pools assembly and annotation activity.
     in_subset:
       - workflow subset
+    slots:
+      - raw_type
+
 
   MagsAnalysisActivity:
     description: A workflow execution activity that uses computational binning tools to group assembled contigs into genomes
@@ -170,6 +178,7 @@ classes:
     in_subset:
       - workflow subset
     slots:
+      - raw_type
       - input_contig_num
       - binned_contig_num
       - too_short_contig_num
@@ -184,6 +193,7 @@ classes:
     in_subset:
       - workflow subset
     slots:
+      - raw_type
       - input_read_count
       - input_base_count
       - output_read_count
@@ -208,11 +218,16 @@ classes:
     is_a: WorkflowExecutionActivity
     in_subset:
       - workflow subset
+    slots:
+      - raw_type
+
 
   MetabolomicsAnalysisActivity:
     is_a: WorkflowExecutionActivity
     in_subset:
       - workflow subset
+    slots:
+      - raw_type
     slot_usage:
       used:
         range: Instrument
@@ -230,6 +245,8 @@ classes:
     is_a: WorkflowExecutionActivity
     in_subset:
       - workflow subset
+    slots:
+      - raw_type
     slot_usage:
       used:
         range: Instrument
@@ -244,6 +261,8 @@ classes:
     is_a: WorkflowExecutionActivity
     in_subset:
       - workflow subset
+    slots:
+      - raw_type
     slot_usage:
       used:
         range: Instrument

@@ -34,6 +34,7 @@ prefixes:
 default_prefix: nmdc
 
 imports:
+  - basic_slots
   - core
   - linkml:types
   - prov
@@ -52,11 +53,11 @@ classes:
         description: The ID of the landmark used to establish the coordinate system for the current feature.
         range: string ## make this an object
         required: true
-      type:
+      raw_type:
         range: OntologyClass
         description: >-
           A type from the sequence ontology
-        slot_uri: rdf:type
+      #        slot_uri: rdf:type
       start:
         is_a: gff_coordinate
         description: The start of the feature in positive 1-based integer coordinates
@@ -215,7 +216,7 @@ classes:
         comments:
           - "Still missing patterns for COG and RetroRules."
           - "These patterns aren't tied to the listed prefixes. A discussion about that possibility had been started, including the question of whether these lists are intended to be open examples or closed"
-      type:
+      raw_type:
         range: OntologyClass
         description: >-
           TODO
