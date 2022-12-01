@@ -143,12 +143,12 @@ slots:
 
   ## samples
 
-  sample_identifiers:
+  biosample_identifiers:
     abstract: true
     is_a: external_database_identifiers
   
   gold_biosample_identifiers:
-    is_a: sample_identifiers
+    is_a: biosample_identifiers
     mixins:
       - gold_identifiers
     pattern: "^GOLD:Gb[0-9]+$"
@@ -159,7 +159,7 @@ slots:
 
 
   insdc_biosample_identifiers:
-    is_a: sample_identifiers
+    is_a: biosample_identifiers
     mixins:
       - insdc_identifiers
     aliases:
@@ -180,7 +180,7 @@ slots:
       - https://www.ddbj.nig.ac.jp/biosample/index-e.html
 
   insdc_secondary_sample_identifiers:
-    is_a: sample_identifiers
+    is_a: biosample_identifiers
     mixins:
       - insdc_identifiers
     pattern: "^biosample:(E|D|S)RS[0-9]{6,}$"

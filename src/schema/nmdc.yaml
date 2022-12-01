@@ -919,7 +919,7 @@ slots:
       A list of identifiers for the biosample from the EMSL database.  This is
       used to link the biosample, as modeled by NMDC, to the biosample in the planned EMSL NEXUS database.
     multivalued: true
-    is_a: sample_identifiers
+    is_a: biosample_identifiers
     todos:
       - removed "planned" once NEXUS is online
       - make an emsl identifiers mixin
@@ -930,7 +930,7 @@ slots:
     description: >-
       A list of identifiers for the biosample from the IGSN database.
     multivalued: true
-    is_a: sample_identifiers
+    is_a: biosample_identifiers
     todos:
       - make an igsn identifiers mixin
   biosample_categories:
