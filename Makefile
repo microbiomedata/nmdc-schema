@@ -332,3 +332,11 @@ from_mongo_cleanup:
 	rm -rf assets/from_mongodb_updated.json
 
 from_mongo_all: from_mongo_cleanup validate_vs_3_2_0 validate_vs_current
+
+target/metabref_SQL_table_dump.yaml: assets/metabref_SQL_table_dump.txt
+	cp $< $(subst .txt,,$@).sql
+#	sed -i.back 's/public.//g' $(subst .txt,,$@).sql
+#	sed -i.back 's/ IF EXISTS / /g' $(subst .txt,,$@).sql
+#	sed -i.back 's/ IF NOT EXISTS / /g' $(subst .txt,,$@).sql
+	#sqlite3 $(subst .txt,,$@).db < $(subst .txt,,$@).sql
+	#schemauto import-sql sqlite3 $(subst .txt,,$@).db

@@ -1,0 +1,328 @@
+-- Table: public.alembic_version
+
+-- DROP TABLE IF EXISTS public.alembic_version;
+
+CREATE TABLE IF NOT EXISTS public.alembic_version
+(
+    version_num character varying(32) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT alembic_version_pkc PRIMARY KEY (version_num)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.alembic_version
+    OWNER to developer;
+
+-- Table: public.containerType
+
+-- DROP TABLE IF EXISTS public."containerType";
+
+CREATE TABLE IF NOT EXISTS public."containerType"
+(
+    id integer NOT NULL DEFAULT nextval('"containerType_id_seq"'::regclass),
+    description character varying COLLATE pg_catalog."default",
+    type character varying COLLATE pg_catalog."default",
+    size character varying COLLATE pg_catalog."default",
+    was_generated_by character varying COLLATE pg_catalog."default",
+    CONSTRAINT "containerType_pkey" PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."containerType"
+    OWNER to developer;
+
+-- Table: public.detectionActivity
+
+-- DROP TABLE IF EXISTS public."detectionActivity";
+
+CREATE TABLE IF NOT EXISTS public."detectionActivity"
+(
+    id integer NOT NULL DEFAULT nextval('"detectionActivity_id_seq"'::regclass),
+    spectrum_id integer,
+    type character varying COLLATE pg_catalog."default",
+    analyzer character varying COLLATE pg_catalog."default",
+    acquisition character varying COLLATE pg_catalog."default",
+    ionization character varying COLLATE pg_catalog."default",
+    rawdata_url character varying COLLATE pg_catalog."default",
+    CONSTRAINT "detectionActivity_pkey" PRIMARY KEY (id),
+    CONSTRAINT "detectionActivity_spectrum_id_fkey" FOREIGN KEY (spectrum_id)
+        REFERENCES public."massSpectrumObject" (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."detectionActivity"
+    OWNER to developer;
+
+-- Table: public.deviceType
+
+-- DROP TABLE IF EXISTS public."deviceType";
+
+CREATE TABLE IF NOT EXISTS public."deviceType"
+(
+    id integer NOT NULL DEFAULT nextval('"deviceType_id_seq"'::regclass),
+    description character varying COLLATE pg_catalog."default",
+    type character varying COLLATE pg_catalog."default",
+    was_generated_by character varying COLLATE pg_catalog."default",
+    CONSTRAINT "deviceType_pkey" PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."deviceType"
+    OWNER to developer;
+
+-- Table: public.massSpectrumObject
+
+-- DROP TABLE IF EXISTS public."massSpectrumObject";
+
+CREATE TABLE IF NOT EXISTS public."massSpectrumObject"
+(
+    id integer NOT NULL DEFAULT nextval('"massSpectrumObject_id_seq"'::regclass),
+    molecular_data_id integer,
+    type character varying COLLATE pg_catalog."default",
+    source character varying COLLATE pg_catalog."default",
+    version character varying COLLATE pg_catalog."default",
+    collision_energy character varying COLLATE pg_catalog."default",
+    precursor_ion double precision,
+    peak_count integer NOT NULL,
+    rt double precision NOT NULL,
+    mz bytea NOT NULL,
+    abundance bytea NOT NULL,
+    polarity character varying COLLATE pg_catalog."default",
+    CONSTRAINT "massSpectrumObject_pkey" PRIMARY KEY (id),
+    CONSTRAINT "massSpectrumObject_molecular_data_id_fkey" FOREIGN KEY (molecular_data_id)
+        REFERENCES public."molecularData" (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."massSpectrumObject"
+    OWNER to developer;
+
+-- Table: public.metadata_object
+
+-- DROP TABLE IF EXISTS public.metadata_object;
+
+CREATE TABLE IF NOT EXISTS public.metadata_object
+(
+    id integer NOT NULL DEFAULT nextval('metadata_object_id_seq'::regclass),
+    molecular_data_id integer,
+    source character varying COLLATE pg_catalog."default",
+    source_temp_c double precision,
+    ev double precision,
+    classify character varying COLLATE pg_catalog."default",
+    comment character varying COLLATE pg_catalog."default",
+    CONSTRAINT metadata_object_pkey PRIMARY KEY (id),
+    CONSTRAINT metadata_object_molecular_data_id_fkey FOREIGN KEY (molecular_data_id)
+        REFERENCES public."molecularData" (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.metadata_object
+    OWNER to developer;
+
+-- Table: public.molecularData
+
+-- DROP TABLE IF EXISTS public."molecularData";
+
+CREATE TABLE IF NOT EXISTS public."molecularData"
+(
+    id integer NOT NULL DEFAULT nextval('"molecularData_id_seq"'::regclass),
+    inchikey character varying COLLATE pg_catalog."default" NOT NULL,
+    name character varying COLLATE pg_catalog."default" NOT NULL,
+    formula character varying COLLATE pg_catalog."default",
+    casno character varying COLLATE pg_catalog."default",
+    inchi character varying COLLATE pg_catalog."default" NOT NULL,
+    chebi character varying COLLATE pg_catalog."default",
+    smiles character varying COLLATE pg_catalog."default",
+    kegg character varying COLLATE pg_catalog."default",
+    iupac_name character varying COLLATE pg_catalog."default",
+    traditional_name character varying COLLATE pg_catalog."default",
+    common_name character varying COLLATE pg_catalog."default",
+    match_name character varying COLLATE pg_catalog."default",
+    derivativenum character varying COLLATE pg_catalog."default",
+    CONSTRAINT "molecularData_pkey" PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."molecularData"
+    OWNER to developer;
+
+-- Table: public.quantityValue
+
+-- DROP TABLE IF EXISTS public."quantityValue";
+
+CREATE TABLE IF NOT EXISTS public."quantityValue"
+(
+    id integer NOT NULL DEFAULT nextval('"quantityValue_id_seq"'::regclass),
+    description character varying COLLATE pg_catalog."default",
+    has_numeric_value numeric,
+    has_minimum_numeric_value numeric,
+    has_maximum_numeric_value numeric,
+    has_raw_value character varying COLLATE pg_catalog."default",
+    type character varying COLLATE pg_catalog."default",
+    has_unit character varying COLLATE pg_catalog."default",
+    was_generated_by character varying COLLATE pg_catalog."default",
+    CONSTRAINT "quantityValue_pkey" PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."quantityValue"
+    OWNER to developer;
+
+-- Table: public.referenceMaterial
+
+-- DROP TABLE IF EXISTS public."referenceMaterial";
+
+CREATE TABLE IF NOT EXISTS public."referenceMaterial"
+(
+    id integer NOT NULL DEFAULT nextval('"referenceMaterial_id_seq"'::regclass),
+    sample_operation_id integer,
+    type character varying COLLATE pg_catalog."default",
+    source character varying COLLATE pg_catalog."default",
+    CONSTRAINT "referenceMaterial_pkey" PRIMARY KEY (id),
+    CONSTRAINT "referenceMaterial_sample_operation_id_fkey" FOREIGN KEY (sample_operation_id)
+        REFERENCES public."sampleOperations" (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."referenceMaterial"
+    OWNER to developer;
+
+-- Table: public.sampleOperations
+
+-- DROP TABLE IF EXISTS public."sampleOperations";
+
+CREATE TABLE IF NOT EXISTS public."sampleOperations"
+(
+    id integer NOT NULL DEFAULT nextval('"sampleOperations_id_seq"'::regclass),
+    detection_id integer,
+    separation_id integer,
+    type activity NOT NULL,
+    material_input integer,
+    derivatization character varying COLLATE pg_catalog."default",
+    material_output character varying COLLATE pg_catalog."default",
+    reaction_aided_by character varying COLLATE pg_catalog."default",
+    reaction_temperature double precision,
+    reaction_time double precision,
+    extractant character varying COLLATE pg_catalog."default",
+    sample_volume double precision,
+    mixing character varying COLLATE pg_catalog."default",
+    speed character varying COLLATE pg_catalog."default",
+    analyte_id integer NOT NULL,
+    source_mat_id integer,
+    container_type character varying COLLATE pg_catalog."default",
+    volume_unit character varying COLLATE pg_catalog."default",
+    duration double precision,
+    unit character varying COLLATE pg_catalog."default",
+    volume integer,
+    concentration character varying COLLATE pg_catalog."default",
+    starting_amount double precision,
+    material_component_separation character varying COLLATE pg_catalog."default",
+    value double precision,
+    analyte_volume integer,
+    acid character varying COLLATE pg_catalog."default",
+    "pH" double precision,
+    celsius_temperature double precision,
+    separation_method character varying COLLATE pg_catalog."default",
+    filter character varying COLLATE pg_catalog."default",
+    material_pore_size double precision,
+    conditioning character varying COLLATE pg_catalog."default",
+    conditioning_volume integer,
+    CONSTRAINT "sampleOperations_pkey" PRIMARY KEY (id),
+    CONSTRAINT "sampleOperations_detection_id_fkey" FOREIGN KEY (detection_id)
+        REFERENCES public."detectionActivity" (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "sampleOperations_separation_id_fkey" FOREIGN KEY (separation_id)
+        REFERENCES public."separationActivity" (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."sampleOperations"
+    OWNER to developer;
+
+-- Table: public.separationActivity
+
+-- DROP TABLE IF EXISTS public."separationActivity";
+
+CREATE TABLE IF NOT EXISTS public."separationActivity"
+(
+    id integer NOT NULL DEFAULT nextval('"separationActivity_id_seq"'::regclass),
+    type separation_types NOT NULL,
+    detection_id integer,
+    "column" character varying COLLATE pg_catalog."default",
+    mobile_phase character varying COLLATE pg_catalog."default",
+    gradient character varying COLLATE pg_catalog."default",
+    flow_rate character varying COLLATE pg_catalog."default",
+    instrument_name character varying COLLATE pg_catalog."default",
+    column_temp integer,
+    sample_chamber_temp integer,
+    separation_id integer,
+    column_lc character varying COLLATE pg_catalog."default",
+    filter character varying COLLATE pg_catalog."default",
+    water_acquity character varying COLLATE pg_catalog."default",
+    column_temp_lc character varying COLLATE pg_catalog."default",
+    gradient_lc character varying COLLATE pg_catalog."default",
+    acceleration character varying COLLATE pg_catalog."default",
+    seal_wash character varying COLLATE pg_catalog."default",
+    max_pressure character varying COLLATE pg_catalog."default",
+    separation_id_gc integer,
+    derivative integer,
+    CONSTRAINT "separationActivity_pkey" PRIMARY KEY (id),
+    CONSTRAINT "separationActivity_detection_id_fkey" FOREIGN KEY (detection_id)
+        REFERENCES public."detectionActivity" (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "separationActivity_separation_id_fkey" FOREIGN KEY (separation_id)
+        REFERENCES public."separationActivity" (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "separationActivity_separation_id_gc_fkey" FOREIGN KEY (separation_id_gc)
+        REFERENCES public."separationActivity" (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."separationActivity"
+    OWNER to developer;
+
+-- Table: public.user
+
+-- DROP TABLE IF EXISTS public."user";
+
+CREATE TABLE IF NOT EXISTS public."user"
+(
+    id integer NOT NULL DEFAULT nextval('user_id_seq'::regclass),
+    email character varying(100) COLLATE pg_catalog."default",
+    password character varying COLLATE pg_catalog."default",
+    username character varying(100) COLLATE pg_catalog."default",
+    api_key character varying COLLATE pg_catalog."default",
+    first_name character varying(100) COLLATE pg_catalog."default",
+    last_name character varying(100) COLLATE pg_catalog."default",
+    CONSTRAINT user_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."user"
+    OWNER to developer;
