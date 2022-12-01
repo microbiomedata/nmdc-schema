@@ -26,19 +26,14 @@ imports:
 
 slots:
 
-  raw_type:
-    description: a placeholder for the contents of legacy, free-text type slots
-    comments:
-      - does not retain the rdf:type slot URI
-
-
   id:
     identifier: true
     multivalued: false
     description: >-
       A unique identifier for a thing.
       Must be either a CURIE shorthand for a URI or a complete URI
-    #required: false # for now we are setting this to false until we develop an id template
+    notes:
+      - for now we are setting this to false until we develop an id template
 
   name:
     multivalued: false
@@ -57,11 +52,11 @@ slots:
     deprecated: >-
       Due to confusion about what values are used for this slot, it is best not to use this slot.
       See https://github.com/microbiomedata/nmdc-schema/issues/248.
+      MAM removed designates_type and rdf:type slot uri 2022-11-30
     range: string
     description: >-
       An optional string that specifies the type object. 
       This is used to allow for searches for different kinds of objects.
-    designates_type: true
     examples:
       - value: nmdc:Biosample
       - value: nmdc:Study

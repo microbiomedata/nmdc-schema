@@ -1,9 +1,13 @@
 id: https://microbiomedata/schema/workflow_execution_activity
-name: NMDC-Workflow-Exectution
-title: Workflow Exectution Activities module for NMDC Schema
+name: NMDC-Workflow-Execution
+title: Workflow Execution Activities module for NMDC Schema
 
 default_prefix: nmdc
 default_range: string
+
+notes:
+  - "should type be required for WorkflowExecutionActivity ?"
+  - "changed misspelled schema name and title to 'Execution'"
 
 default_curi_maps:
   - obo_context
@@ -44,15 +48,17 @@ classes:
       - has_input
       - has_output
       - part_of
-      - raw_type # custom slot that specifies object type
+      - type
+    notes:
+      - MAM I don't think this is a reasonable override of the global range of Agent, but commenting that line out does not, on its own, fix the conversion to SQLite
+      - "inlining of was_associated_with values allows for collections (strings?) of WorkflowExecutionActivity id values"
     slot_usage:
       was_associated_with:
         required: false
         description: >-
           the agent/entity associated with the generation of the file
-        range: WorkflowExecutionActivity  # MAM I don't think this is a reasonable override of the global range of Agent
-        # but commenting that line out does not, on its own, fix the conversion to SQLite
-        inlined: false # allow for strings of IDs
+        range: WorkflowExecutionActivity
+        inlined: false
       started_at_time:
         required: true
       ended_at_time:
@@ -67,8 +73,7 @@ classes:
         required: true
       execution_resource:
         required: true
-      raw_type:
-  #        required: true
+      type: { }
 
   MetagenomeAssembly:
     description: A workflow execution activity that converts sequencing reads into an assembled metagenome.
@@ -78,7 +83,7 @@ classes:
     in_subset:
       - workflow subset
     slots:
-      - raw_type
+      - type
       - asm_score
       - scaffolds
       - scaf_logsum
@@ -106,7 +111,6 @@ classes:
       - gc_avg
       - num_input_reads
       - num_aligned_reads
-      # external identifiers
       - insdc_assembly_identifiers
 
   MetatranscriptomeAssembly:
@@ -141,14 +145,13 @@ classes:
       - gc_avg
       - num_input_reads
       - num_aligned_reads
-      # external identifiers
       - insdc_assembly_identifiers
 
   MetagenomeAnnotationActivity:
     description: A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
     is_a: WorkflowExecutionActivity
     slots:
-      - raw_type
+      - type
       - gold_analysis_project_identifiers
     in_subset:
       - workflow subset
@@ -156,7 +159,7 @@ classes:
   MetatranscriptomeAnnotationActivity:
     is_a: WorkflowExecutionActivity
     slots:
-      - raw_type
+      - type
       - gold_analysis_project_identifiers
     in_subset:
       - workflow subset
@@ -168,7 +171,7 @@ classes:
     in_subset:
       - workflow subset
     slots:
-      - raw_type
+      - type
 
 
   MagsAnalysisActivity:
@@ -178,7 +181,7 @@ classes:
     in_subset:
       - workflow subset
     slots:
-      - raw_type
+      - type
       - input_contig_num
       - binned_contig_num
       - too_short_contig_num
@@ -193,7 +196,7 @@ classes:
     in_subset:
       - workflow subset
     slots:
-      - raw_type
+      - type
       - input_read_count
       - input_base_count
       - output_read_count
@@ -219,7 +222,7 @@ classes:
     in_subset:
       - workflow subset
     slots:
-      - raw_type
+      - type
 
 
   MetabolomicsAnalysisActivity:
@@ -227,7 +230,7 @@ classes:
     in_subset:
       - workflow subset
     slots:
-      - raw_type
+      - type
     slot_usage:
       used:
         range: Instrument
@@ -246,7 +249,7 @@ classes:
     in_subset:
       - workflow subset
     slots:
-      - raw_type
+      - type
     slot_usage:
       used:
         range: Instrument
@@ -262,7 +265,7 @@ classes:
     in_subset:
       - workflow subset
     slots:
-      - raw_type
+      - type
     slot_usage:
       used:
         range: Instrument
@@ -275,7 +278,7 @@ classes:
           A reference to a file that holds calibration information.
 
 slots:
-  ## Workflow specific slots
+
   metagenome_assembly_parameter: { }
 
   has_peptide_quantifications: { }

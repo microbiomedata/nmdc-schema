@@ -5,6 +5,9 @@ description: >-
   External identifiers
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
+todos:
+  - "## section delimiters should be subsets"
+
 prefixes:
   GOLD: http://identifiers.org/gold/
   linkml: https://w3id.org/linkml/
@@ -39,12 +42,11 @@ slots:
     is_a: alternative_identifiers
     abstract: true
     multivalued: true
-    description:
-      Link to corresponding identifier in external database
+    description: Link to corresponding identifier in external database
     comments:
-      The value of this field is always a registered CURIE
-    #    range: external identifier
-    #    range: string
+      - The value of this field is always a registered CURIE
+    notes:
+      - "had tried ranges of  external identifier and string"
     range: uriorcurie
     close_mappings:
       - skos:closeMatch
@@ -69,7 +71,7 @@ slots:
       Any identifier covered by the International Nucleotide Sequence Database Collaboration
     comments:
       - note that we deliberately abstract over which of the partner databases accepted the initial submission
-      - the first letter of the accession indicates which partner accepted the initial submission: E for ENA, D for DDBJ, or S or N for NCBI.
+      - "the first letter of the accession indicates which partner accepted the initial submission: E for ENA, D for DDBJ, or S or N for NCBI."
     see_also:
       - https://www.insdc.org/
       - https://ena-docs.readthedocs.io/en/latest/submit/general-guide/accessions.html
@@ -145,7 +147,7 @@ slots:
     abstract: true
     is_a: external_database_identifiers
   
-  gold_sample_identifiers:
+  gold_biosample_identifiers:
     is_a: sample_identifiers
     mixins:
       - gold_identifiers
@@ -184,7 +186,7 @@ slots:
     pattern: "^biosample:(E|D|S)RS[0-9]{6,}$"
     description: secondary identifiers for corresponding sample in INSDC
     comments:
-      - ENA redirects these to primary IDs, e.g. https://www.ebi.ac.uk/ena/browser/view/DRS166340 -> SAMD00212331
+      - "ENA redirects these to primary IDs, e.g. https://www.ebi.ac.uk/ena/browser/view/DRS166340 -> SAMD00212331"
       - MGnify uses these as their primary sample IDs
     examples:
       - value: https://identifiers.org/insdc.sra:DRS166340
@@ -244,7 +246,8 @@ slots:
 
   mgnify_analysis_identifiers:
     is_a: analysis_identifiers
-    #pattern: "^mgnify:MGYA[0-9]+$" ## TODO https://github.com/bioregistry/bioregistry/issues/109
+    notes:
+      - 'removed pattern: "^mgnify:MGYA[0-9]+$" ## TODO https://github.com/bioregistry/bioregistry/issues/109'
     mixins:
       - mgnify_identifiers
     examples:

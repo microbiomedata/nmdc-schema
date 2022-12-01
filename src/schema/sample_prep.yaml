@@ -22,12 +22,13 @@ default_curi_maps:
   - obo_context
   - idot_context
 
-
+notes:
+  - "circular nmdc import is for slot biosample_input with range: Biosample"
 imports:
   - basic_slots
   - core
   - linkml:types
-  - nmdc # for slot biosample_input with range: Biosample
+  - nmdc
 
 enums:
   ContainerTypeEnum:

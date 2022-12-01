@@ -5,9 +5,12 @@ description: >-
   NMDC Schema support for Bioscales analytes
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
+notes:
+  - "removed MS: http://purl.obolibrary.org/obo/MS_ prefix assignment"
+  - "should https://www.ornl.gov/content/bio-scales-0 be the 'source' for some of theses slots?"
+
 prefixes:
   mixs: https://w3id.org/mixs/
-  #  MS: http://purl.obolibrary.org/obo/MS_
   dcterms: http://purl.org/dc/terms/
   igsnvoc: https://igsn.org/voc/v1/
   linkml: https://w3id.org/linkml/
@@ -51,10 +54,11 @@ slots:
     title: zinc
     examples:
       - value: 2.5 mg/kg
-    #    source: https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
     range: QuantityValue
+    notes:
+      - see https://www.ornl.gov/content/bio-scales-0. could that be the "source"?
   manganese:
     name: manganese
     aliases:
@@ -73,7 +77,8 @@ slots:
     title: manganese
     examples:
       - value: 24.7 mg/kg
-    #    source: https://www.ornl.gov/content/bio-scales-0
+    notes:
+      - see https://www.ornl.gov/content/bio-scales-0. could that be the "source"?
     is_a: attribute
     multivalued: false
     range: QuantityValue
@@ -97,7 +102,8 @@ slots:
     title: ammonium nitrogen
     examples:
       - value: 2.3 mg/kg
-    #    source: https://www.ornl.gov/content/bio-scales-0
+    notes:
+      - see https://www.ornl.gov/content/bio-scales-0. could that be the "source"?
     is_a: attribute
     multivalued: false
     range: QuantityValue
@@ -107,7 +113,7 @@ slots:
     aliases:
       - nitrate_nitrogen
       - NO3-N
-    notes:
+    comments:
       - often below some specified limit of detection
     annotations:
       expected_value:
@@ -123,7 +129,8 @@ slots:
     title: nitrate_nitrogen
     examples:
       - value: 0.29 mg/kg
-    #    source: https://www.ornl.gov/content/bio-scales-0
+    notes:
+      - see https://www.ornl.gov/content/bio-scales-0. could that be the "source"?
     is_a: attribute
     multivalued: false
     range: QuantityValue
@@ -147,7 +154,8 @@ slots:
     title: nitrite_nitrogen
     examples:
       - value: 1.2 mg/kg
-    #    source: https://www.ornl.gov/content/bio-scales-0
+    notes:
+      - see https://www.ornl.gov/content/bio-scales-0. could that be the "source"?
     is_a: attribute
     multivalued: false
     range: QuantityValue
@@ -155,7 +163,7 @@ slots:
 
   lbc_thirty:
     name: lbc_thirty
-    notes:
+    comments:
       - This is the mass of lime, in mg, needed to raise the pH of one kg of soil by one pH unit
     aliases:
       - lbc_thirty
@@ -175,7 +183,8 @@ slots:
     title: lime buffer capacity (at 30 minutes)
     examples:
       - value: 543 mg/kg
-    #    source: https://www.ornl.gov/content/bio-scales-0
+    notes:
+      - see https://www.ornl.gov/content/bio-scales-0. could that be the "source"?
     is_a: attribute
     multivalued: false
     range: QuantityValue
@@ -184,7 +193,7 @@ slots:
 
   lbceq:
     name: lbceq
-    notes:
+    comments:
       - This is the mass of lime, in mg, needed to raise the pH of one kg of soil by one pH unit
     aliases:
       - lbceq
@@ -203,7 +212,8 @@ slots:
     title: lime buffer capacity (after 5 day incubation)
     examples:
       - value: 1575 mg/kg
-    #    source: https://www.ornl.gov/content/bio-scales-0
+    notes:
+      - see https://www.ornl.gov/content/bio-scales-0. could that be the "source"?
     is_a: attribute
     multivalued: false
     range: QuantityValue

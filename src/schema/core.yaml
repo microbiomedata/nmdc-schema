@@ -5,16 +5,19 @@ description: >-
   Schema for National Microbiome Data Collaborative (NMDC), Core Types
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
+notes:
+  - "removed MS: http://purl.obolibrary.org/obo/MS_ prefix assignment"
+  - "removed PR: http://identifiers.org/pr/ prefix assignment"
+
 prefixes:
-  mixs: https://w3id.org/mixs/
-  #  MS: http://purl.obolibrary.org/obo/MS_
-  #  PR: http://identifiers.org/pr/
+  KEGG.COMPOUND: http://identifiers.org/kegg.compound/
   UniProtKB: https://identifiers.org/uniprot/
   biolink: https://w3id.org/biolink/vocab/
   dcterms: http://purl.org/dc/terms/
   gtpo: https://unknown.to.linter.org/
   igsnvoc: https://igsn.org/voc/v1/
   linkml: https://w3id.org/linkml/
+  mixs: https://w3id.org/mixs/
   nmdc: https://w3id.org/nmdc/
   qud: http://qudt.org/1.1/schema/qudt#
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
@@ -22,8 +25,6 @@ prefixes:
   sio: http://semanticscience.org/resource/SIO_
   skos: http://www.w3.org/2004/02/skos/core#
   wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
-  #  KEGG_COMPOUND: http://unknown.to.linter.org/
-  KEGG.COMPOUND: http://identifiers.org/kegg.compound/
 
 default_prefix: nmdc
 default_range: string
@@ -186,7 +187,7 @@ classes:
     is_a: NamedThing
     description: >-
       represents a person, such as a researcher
-    comments:
+    notes:
       - "not yet in use"
     slot_usage:
       id:
@@ -195,7 +196,7 @@ classes:
   
   MagBin:
     slots:
-      - type  # custom slot that specifies object type
+      - type
     attributes:
       bin_name:
         range: string
@@ -335,7 +336,7 @@ classes:
         multivalued: false
         range: string
       inchi_key:
-        key: false # rare; Pletnev I, Erin A, McNaught A, Blinov K, Tchekhovskoi D, Heller S (2012) InChIKey collision resistance: an experimental testing. J Cheminform. 4:12
+        key: false
         multivalued: false
         range: string
       smiles:
@@ -367,7 +368,7 @@ classes:
     is_a: NamedThing
     description: >-
       A molecule encoded by a gene that has an evolved function
-    comments:
+    notes:
       - we may include a more general gene product class in future to allow for ncRNA annotation
     id_prefixes:
       - PR
@@ -392,10 +393,8 @@ classes:
     is_a: AttributeValue
     description: >-
       A value that is a timestamp. The range should be ISO-8601
-    #slots:
-    #  - year
-    #  - month
-    #  - day
+    notes:
+      - "removed the following slots: year, month, day"
 
   IntegerValue:
     is_a: AttributeValue
@@ -417,11 +416,12 @@ classes:
       A controlled term or class from an ontology
     slots:
       - term
-    # TODO: add fields for ontology, branch
+    todos:
+      - add fields for ontology, branch
 
   ControlledIdentifiedTermValue:
     description: A controlled term or class from an ontology, requiring the presence of term with an id
-    comments:
+    notes:
       - To be used for slots like env_broad_scale
     is_a: ControlledTermValue
     slot_usage:
@@ -435,11 +435,12 @@ classes:
     slots:
       - latitude
       - longitude
+    notes:
+      - "what did 'to_str: {latitude} {longitude}' mean?"
     slot_usage:
       has_raw_value:
         description: >-
           The raw value for a  geolocation should follow {lat} {long}
-        # to_str: {latitude} {longitude}
     mappings:
       - schema:GeoCoordinates
 
@@ -523,8 +524,9 @@ slots:
     range: OntologyClass
     description: >-
       pointer to an ontology class
-    #    slot_uri: rdf:type
     inlined: true
+    notes:
+      - "removed 'slot_uri: rdf:type'"
 
   orcid:
     description: >-
@@ -651,6 +653,8 @@ slots:
   best_protein:
   chemical_formula:
   inchi_key:
+    notes:
+      - "key set to false due to rare collisions: Pletnev I, Erin A, McNaught A, Blinov K, Tchekhovskoi D, Heller S (2012) InChIKey collision resistance: an experimental testing. J Cheminform. 4:12"
   inchi:
   min_q_value:
   peptide_sequence:

@@ -8,6 +8,9 @@ imports:
   - core
   - basic_slots
 
+notes:
+  - "commented out sever MIxS terms/slots that were sharing slot uris"
+
 
 prefixes:
   nmdc: https://w3id.org/nmdc/
@@ -1842,9 +1845,8 @@ enums:
         text: crows feet
       crows-foot stomp:
         text: crows-foot stomp
-      #      ? ''
-      #        :
-      #        text: ''
+        notes:
+          - "removed '?' and '' as PVs"
       double skip:
         text: double skip
       hawk and trowel:

@@ -17,6 +17,9 @@ gen: $(patsubst %,gen-%,$(TGTS))
 
 clean: clean-artifacts clean-docs
 
+squeaky-clean: clean clean-package from_mongo_cleanup # NOT mixs_clean
+squeaky-all: squeaky-clean  test
+
 clean-artifacts:
 	rm -rf target/
 
@@ -71,7 +74,7 @@ target/docs/%.md: $(SCHEMA_SRC) tdir-docs
 
 gen-doc:
 	mkdir -p target/doc
-	echo 'long story' > target/doc/placeholder.txt
+	echo 'forces retention of this directory after rm -rf target/*' > target/doc/placeholder.txt
 	$(RUN) gen-doc $(SCHEMA_SRC) --template-directory $(SRC_DIR)/doc-templates -d $(DOCS_DIR)
 	cp $(SRC_DIR)/$(DOCS_DIR)/*.md $(DOCS_DIR)
 	mkdir -p $(DOCS_DIR)/images
