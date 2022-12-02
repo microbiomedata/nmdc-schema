@@ -335,3 +335,6 @@ from_mongo_all: from_mongo_cleanup validate_vs_3_2_0 validate_vs_current
 
 assets/metabref_SQL_table_dump.yaml: assets/metabref_SQL_table_dump.txt
 	$(RUN) schemauto import-sql postgresql+psycopg2://metab_user:metab_pass@localhost:5432/metab > $@
+
+target/nmdc_sqlalchemy.py: src/schema/nmdc.yaml
+	$(RUN) gen-sqla $< > $@
