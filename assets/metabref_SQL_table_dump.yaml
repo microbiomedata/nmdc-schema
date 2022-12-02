@@ -1,0 +1,290 @@
+name: test-schema
+id: http://example.org/test-schema
+default_prefix: http://example.org/test-schema/
+classes:
+  alembic_version:
+    attributes:
+      version_num:
+        identifier: true
+        range: string
+  containerType:
+    attributes:
+      id:
+        identifier: true
+        range: integer
+      description:
+        range: string
+      type:
+        range: string
+      size:
+        range: string
+      was_generated_by:
+        range: string
+  deviceType:
+    attributes:
+      id:
+        identifier: true
+        range: integer
+      description:
+        range: string
+      type:
+        range: string
+      was_generated_by:
+        range: string
+  molecularData:
+    attributes:
+      id:
+        identifier: true
+        range: integer
+      inchikey:
+        range: string
+      formula:
+        range: string
+      casno:
+        range: string
+      inchi:
+        range: string
+      chebi:
+        range: string
+      smiles:
+        range: string
+      kegg:
+        range: string
+      iupac_name:
+        range: string
+      traditional_name:
+        range: string
+      common_name:
+        range: string
+      match_name:
+        range: string
+      derivativenum:
+        range: string
+  quantityValue:
+    attributes:
+      id:
+        identifier: true
+        range: integer
+      description:
+        range: string
+      has_numeric_value:
+        range: string
+      has_minimum_numeric_value:
+        range: string
+      has_maximum_numeric_value:
+        range: string
+      has_raw_value:
+        range: string
+      type:
+        range: string
+      has_unit:
+        range: string
+      was_generated_by:
+        range: string
+  user:
+    attributes:
+      id:
+        identifier: true
+        range: integer
+      email:
+        range: string
+      password:
+        range: string
+      username:
+        range: string
+      api_key:
+        range: string
+      first_name:
+        range: string
+      last_name:
+        range: string
+  massSpectrumObject:
+    attributes:
+      id:
+        identifier: true
+        range: integer
+      molecular_data_id:
+        range: molecularData
+      type:
+        range: string
+      source:
+        range: string
+      version:
+        range: string
+      collision_energy:
+        range: string
+      precursor_ion:
+        range: string
+      peak_count:
+        range: integer
+      rt:
+        range: string
+      mz:
+        range: string
+      abundance:
+        range: string
+      polarity:
+        range: string
+  metadata_object:
+    attributes:
+      id:
+        identifier: true
+        range: integer
+      molecular_data_id:
+        range: molecularData
+      source:
+        range: string
+      source_temp_c:
+        range: string
+      ev:
+        range: string
+      classify:
+        range: string
+      comment:
+        range: string
+  detectionActivity:
+    attributes:
+      id:
+        identifier: true
+        range: integer
+      spectrum_id:
+        range: massSpectrumObject
+      type:
+        range: string
+      analyzer:
+        range: string
+      acquisition:
+        range: string
+      ionization:
+        range: string
+      rawdata_url:
+        range: string
+  separationActivity:
+    attributes:
+      id:
+        identifier: true
+        range: integer
+      type:
+        range: string
+      detection_id:
+        range: detectionActivity
+      column:
+        range: string
+      mobile_phase:
+        range: string
+      gradient:
+        range: string
+      flow_rate:
+        range: string
+      instrument_name:
+        range: string
+      column_temp:
+        range: integer
+      sample_chamber_temp:
+        range: integer
+      separation_id:
+        range: separationActivity
+      column_lc:
+        range: string
+      filter:
+        range: string
+      water_acquity:
+        range: string
+      column_temp_lc:
+        range: string
+      gradient_lc:
+        range: string
+      acceleration:
+        range: string
+      seal_wash:
+        range: string
+      max_pressure:
+        range: string
+      separation_id_gc:
+        range: separationActivity
+      derivative:
+        range: integer
+  sampleOperations:
+    attributes:
+      id:
+        identifier: true
+        range: integer
+      detection_id:
+        range: detectionActivity
+      separation_id:
+        range: separationActivity
+      type:
+        range: string
+      material_input:
+        range: integer
+      derivatization:
+        range: string
+      material_output:
+        range: string
+      reaction_aided_by:
+        range: string
+      reaction_temperature:
+        range: string
+      reaction_time:
+        range: string
+      extractant:
+        range: string
+      sample_volume:
+        range: string
+      mixing:
+        range: string
+      speed:
+        range: string
+      analyte_id:
+        range: integer
+      source_mat_id:
+        range: integer
+      container_type:
+        range: string
+      volume_unit:
+        range: string
+      duration:
+        range: string
+      unit:
+        range: string
+      volume:
+        range: integer
+      concentration:
+        range: string
+      starting_amount:
+        range: string
+      material_component_separation:
+        range: string
+      value:
+        range: string
+      analyte_volume:
+        range: integer
+      acid:
+        range: string
+      pH:
+        range: string
+      celsius_temperature:
+        range: string
+      separation_method:
+        range: string
+      filter:
+        range: string
+      material_pore_size:
+        range: string
+      conditioning:
+        range: string
+      conditioning_volume:
+        range: integer
+  referenceMaterial:
+    attributes:
+      id:
+        identifier: true
+        range: integer
+      sample_operation_id:
+        range: sampleOperations
+      type:
+        range: string
+      source:
+        range: string
+prefixes: {}
+
