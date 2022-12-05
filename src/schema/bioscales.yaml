@@ -32,8 +32,6 @@ default_curi_maps:
 
 imports:
   - basic_slots
-  - core
-  - linkml:types
 
 slots:
   zinc:

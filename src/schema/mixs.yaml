@@ -5,7 +5,6 @@ id: https://microbiomedata/schema/mixs
 default_range: string
 
 imports:
-  - core
   - basic_slots
 
 notes:

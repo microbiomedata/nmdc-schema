@@ -21,7 +21,6 @@ default_curi_maps:
 
 
 imports:
-  - linkml:types
   - core
 
 slots:

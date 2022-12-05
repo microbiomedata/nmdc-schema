@@ -38,7 +38,6 @@ default_prefix: nmdc
 imports:
   - basic_slots
   - core
-  - linkml:types
   - prov
   - workflow_execution_activity
 

@@ -19,7 +19,6 @@ prefixes:
 
 imports:
   - basic_slots
-  - core
   - external_identifiers
   - prov
 

@@ -26,8 +26,6 @@ notes:
   - "circular nmdc import is for slot biosample_input with range: Biosample"
 imports:
   - basic_slots
-  - core
-  - linkml:types
   - nmdc
 
 enums:
