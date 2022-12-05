@@ -11,7 +11,7 @@ prefixes:
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
   skos: http://www.w3.org/2004/02/skos/core#
-    
+
 default_prefix: nmdc
 default_range: string
 
@@ -21,7 +21,7 @@ default_curi_maps:
 
 
 imports:
-  - linkml:types
+  - core
 
 slots:
 
@@ -31,7 +31,8 @@ slots:
     description: >-
       A unique identifier for a thing.
       Must be either a CURIE shorthand for a URI or a complete URI
-    #required: false # for now we are setting this to false until we develop an id template
+    notes:
+      - for now we are setting this to false until we develop an id template
 
   name:
     multivalued: false
@@ -45,16 +46,16 @@ slots:
     description: >-
       a human-readable description of a thing
     slot_uri: dcterms:description
-    
+
   type:
     deprecated: >-
       Due to confusion about what values are used for this slot, it is best not to use this slot.
       See https://github.com/microbiomedata/nmdc-schema/issues/248.
+      MAM removed designates_type and rdf:type slot uri 2022-11-30
     range: string
     description: >-
       An optional string that specifies the type object. 
       This is used to allow for searches for different kinds of objects.
-    designates_type: true
     examples:
       - value: nmdc:Biosample
       - value: nmdc:Study
