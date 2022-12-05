@@ -10,7 +10,6 @@
             "Data curation"
           ],
           "applies_to_person": {
-            "type": "PersonValue",
             "orcid": "orcid:0000-0002-1825-00"
           }
         },
@@ -20,7 +19,6 @@
             "Software"
           ],
           "applies_to_person": {
-            "type": "PersonValue",
             "orcid": "orcid:0000-0001-9076-6066"
           }
         }

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <script src='https://www.w3.org/Tools/respec/respec-w3c' async class='remove'></script>
+    <script class='remove'>
+      // All config options at https://respec.org/docs/
+      var respecConfig = {
+        // Working Groups ids at https://respec.org/w3c/groups/
+        license: "cc0",
+        latestVersion: "https://w3id.org/nmdc/napa-protocol.html",
+        edDraftURI: "https://w3id.org/nmdc/napa-protocol.html",
+        group: "perma-id",
+        specStatus: "unofficial",
+        editors: [{
+          name: "Shane Canon",
+          orcid: "0000-0002-8440-738X",
+          company: "Lawrence Berkeley National Laboratory",
+          companyURL: "https://lbl.gov"
+        }, {
+          name: "Mark A. Miller",
+          orcid: "0000-0001-9076-6066",
+          company: "Lawrence Berkeley National Laboratory",
+          companyURL: "https://lbl.gov"
+        }, {
+          name: "Chris Mungall",
+          orcid: "0000-0002-6601-2165",
+          company: "Lawrence Berkeley National Laboratory",
+          companyURL: "https://lbl.gov"
+        }, {
+          name: "Sujay Patil",
+          orcid: "0000-0001-6142-1106",
+          company: "Lawrence Berkeley National Laboratory",
+          companyURL: "https://lbl.gov"
+        }, {
+          name: "Montana Smith",
+          orcid: "0000-0002-8683-0050",
+          company: "Pacific Northwest National Laboratory",
+          companyURL: "https://pnnl.gov"
+        }, {
+          name: "Donny Winston",
+          orcid: "0000-0002-8424-0604",
+          company: "Polyneme LLC",
+          companyURL: "https://polyneme.xyz"
+        }],
+        github: {
+          branch: "main",
+          repoURL: "microbiomedata/nmdc-schema",
+        },
+        // See https://respec.org/docs/#xref for usage.
+        xref: "web-platform",
+      };
+    </script>
+  </head>
+  <body>
+    <h1 id="title">The NMDC Identifier Scheme</h1>
+    <h2 id="subtitle">aka <em>The Napa Protocol</em></h2>
+    <section id='abstract'>
+      <p>
+        The National Microbiome Data Collaborative (NMDC) ingests, enriches, stores, and
+        disseminates metadata and data for consumption by the broader scientific community.
+        This document explains the NMDC scheme for persistent identifiers (PIDs)
+        that are minted and bound to digital objects via metadata records.
+      </p>
+    </section>
+    <section id='sotd'>
+      <p>
+        This is being actively edited in preparation for internal NMDC team review in November 2022.
+      </p>
+    </section>
+    <section>
+      <h1>Syntax diagram</h1>
+    <figure id="id-syntax-diagram">
+
+      <svg class="railroad-diagram" width="584" height="400" viewBox="0 0 584 400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 45v20m10 -20v20m-10 -10h20"></path>
+</g>
+<path d="M40 55h10"></path>
+<g>
+<path d="M50 55h0"></path>
+<path d="M50 55h10"></path>
+<g>
+<path d="M60 55h10"></path>
+<path d="M514 55h10"></path>
+<g>
+<path d="M70 55h0"></path>
+<path d="M180 55h0"></path>
+<rect x="70" y="36" width="110" height="38" rx="10" ry="10" class="group-box"></rect>
+<g class="non-terminal ">
+<path d="M70 55h10"></path>
+<path d="M170 55h10"></path>
+<rect x="80" y="44" width="90" height="22"></rect>
+<text x="125" y="59">nmdc:</text>
+</g>
+<g class="comment ">
+<path d="M70 28h0"></path>
+<path d="M122 28h0"></path>
+<text x="96" y="33" class="comment">prefix</text>
+</g>
+</g>
+<path d="M180 55h10"></path>
+<path d="M190 55h10"></path>
+<g>
+<path d="M200 55h0"></path>
+<path d="M440 55h0"></path>
+<rect x="200" y="36" width="240" height="47" rx="10" ry="10" class="group-box"></rect>
+<g>
+<path d="M200 55h10"></path>
+<path d="M430 55h10"></path>
+<g class="non-terminal ">
+<path d="M210 55h0"></path>
+<path d="M300 55h0"></path>
+<rect x="210" y="44" width="90" height="22"></rect>
+<text x="255" y="59">&#91;a-z&#93;</text>
+</g>
+<path d="M300 55h10"></path>
+<path d="M310 55h10"></path>
+<g>
+<path d="M320 55h0"></path>
+<path d="M430 55h0"></path>
+<path d="M320 55h10"></path>
+<g class="terminal ">
+<path d="M330 55h0"></path>
+<path d="M420 55h0"></path>
+<rect x="330" y="44" width="90" height="22" rx="10" ry="10"></rect>
+<text x="375" y="59">&#91;a-z&#93;</text>
+</g>
+<path d="M420 55h10"></path>
+<path d="M330 55a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path>
+<g>
+<path d="M330 75h90"></path>
+</g>
+<path d="M420 75a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10"></path>
+</g>
+</g>
+<g class="comment ">
+<path d="M200 28h0"></path>
+<path d="M266 28h0"></path>
+<text x="233" y="33" class="comment">typecode</text>
+</g>
+</g>
+<path d="M440 55h10"></path>
+<path d="M450 55h10"></path>
+<g>
+<path d="M460 55h0"></path>
+<path d="M514 55h0"></path>
+<rect x="460" y="36" width="54" height="38" rx="10" ry="10" class="group-box"></rect>
+<g class="non-terminal ">
+<path d="M460 55h10"></path>
+<path d="M504 55h10"></path>
+<rect x="470" y="44" width="34" height="22"></rect>
+<text x="487" y="59">-</text>
+</g>
+<g class="comment ">
+<path d="M460 28h0"></path>
+<path d="M498 28h0"></path>
+<text x="479" y="33" class="comment">dash</text>
+</g>
+</g>
+</g>
+<path d="M524 55a10 10 0 0 1 10 10v16a10 10 0 0 1 -10 10h-464a10 10 0 0 0 -10 10v23a10 10 0 0 0 10 10"></path>
+<g>
+<path d="M60 134h10"></path>
+<path d="M514 134h10"></path>
+<g>
+<path d="M70 134h0"></path>
+<path d="M440 134h0"></path>
+<rect x="70" y="115" width="370" height="67" rx="10" ry="10" class="group-box"></rect>
+<g>
+<path d="M70 134h10"></path>
+<path d="M430 134h10"></path>
+<g class="non-terminal ">
+<path d="M80 134h0"></path>
+<path d="M170 134h0"></path>
+<rect x="80" y="123" width="90" height="22"></rect>
+<text x="125" y="138">&#91;0-9&#93;</text>
+</g>
+<path d="M170 134h10"></path>
+<g>
+<path d="M180 134h0"></path>
+<path d="M330 134h0"></path>
+<path d="M180 134h20"></path>
+<g>
+<path d="M200 134h110"></path>
+</g>
+<path d="M310 134h20"></path>
+<path d="M180 134a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10"></path>
+<g>
+<path d="M200 154h0"></path>
+<path d="M310 154h0"></path>
+<path d="M200 154h10"></path>
+<g class="terminal ">
+<path d="M210 154h0"></path>
+<path d="M300 154h0"></path>
+<rect x="210" y="143" width="90" height="22" rx="10" ry="10"></rect>
+<text x="255" y="158">&#91;a-z&#93;</text>
+</g>
+<path d="M300 154h10"></path>
+<path d="M210 154a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path>
+<g>
+<path d="M210 174h90"></path>
+</g>
+<path d="M300 174a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10"></path>
+</g>
+<path d="M310 154a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"></path>
+</g>
+<path d="M330 134h10"></path>
+<g class="non-terminal ">
+<path d="M340 134h0"></path>
+<path d="M430 134h0"></path>
+<rect x="340" y="123" width="90" height="22"></rect>
+<text x="385" y="138">&#91;0-9&#93;</text>
+</g>
+</g>
+<g class="comment ">
+<path d="M70 107h0"></path>
+<path d="M290 107h0"></path>
+<text x="180" y="112" class="comment">shoulder (delegated authority)</text>
+</g>
+</g>
+<path d="M440 134h10"></path>
+<path d="M450 134h10"></path>
+<g>
+<path d="M460 134h0"></path>
+<path d="M514 134h0"></path>
+<rect x="460" y="115" width="54" height="38" rx="10" ry="10" class="group-box"></rect>
+<g class="non-terminal ">
+<path d="M460 134h10"></path>
+<path d="M504 134h10"></path>
+<rect x="470" y="123" width="34" height="22"></rect>
+<text x="487" y="138">-</text>
+</g>
+<g class="comment ">
+<path d="M460 107h0"></path>
+<path d="M498 107h0"></path>
+<text x="479" y="112" class="comment">dash</text>
+</g>
+</g>
+</g>
+<path d="M524 134a10 10 0 0 1 10 10v36a10 10 0 0 1 -10 10h-464a10 10 0 0 0 -10 10v23a10 10 0 0 0 10 10"></path>
+<g>
+<path d="M60 233h70"></path>
+<path d="M454 233h70"></path>
+<rect x="130" y="214" width="324" height="47" rx="10" ry="10" class="group-box"></rect>
+<g>
+<path d="M130 233h10"></path>
+<path d="M444 233h10"></path>
+<g class="non-terminal ">
+<path d="M140 233h0"></path>
+<path d="M272 233h0"></path>
+<rect x="140" y="222" width="132" height="22"></rect>
+<text x="206" y="237">&#91;a-z0-9&#93;</text>
+</g>
+<path d="M272 233h10"></path>
+<path d="M282 233h10"></path>
+<g>
+<path d="M292 233h0"></path>
+<path d="M444 233h0"></path>
+<path d="M292 233h10"></path>
+<g class="terminal ">
+<path d="M302 233h0"></path>
+<path d="M434 233h0"></path>
+<rect x="302" y="222" width="132" height="22" rx="10" ry="10"></rect>
+<text x="368" y="237">&#91;a-z0-9&#93;</text>
+</g>
+<path d="M434 233h10"></path>
+<path d="M302 233a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path>
+<g>
+<path d="M302 253h132"></path>
+</g>
+<path d="M434 253a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10"></path>
+</g>
+</g>
+<g class="comment ">
+<path d="M130 206h0"></path>
+<path d="M175 206h0"></path>
+<text x="152.5" y="211" class="comment">blade</text>
+</g>
+</g>
+<path d="M524 233a10 10 0 0 1 10 10v16a10 10 0 0 1 -10 10h-464a10 10 0 0 0 -10 10v55a10 10 0 0 0 10 10"></path>
+<g>
+<path d="M60 344h72"></path>
+<path d="M452 344h72"></path>
+<path d="M132 344a10 10 0 0 0 10 -10v-47a10 10 0 0 1 10 -10"></path>
+<g>
+<path d="M152 277h280"></path>
+</g>
+<path d="M432 277a10 10 0 0 1 10 10v47a10 10 0 0 0 10 10"></path>
+<path d="M132 344h20"></path>
+<g>
+<path d="M152 344h0"></path>
+<path d="M432 344h0"></path>
+<path d="M152 344h10"></path>
+<g>
+<path d="M162 344h0"></path>
+<path d="M422 344h0"></path>
+<rect x="162" y="301" width="260" height="71" rx="10" ry="10" class="group-box"></rect>
+<g>
+<path d="M162 344h10"></path>
+<path d="M412 344h10"></path>
+<g>
+<path d="M172 344h0"></path>
+<path d="M226 344h0"></path>
+<rect x="172" y="325" width="54" height="38" rx="10" ry="10" class="group-box"></rect>
+<g class="non-terminal ">
+<path d="M172 344h10"></path>
+<path d="M216 344h10"></path>
+<rect x="182" y="333" width="34" height="22"></rect>
+<text x="199" y="348">.</text>
+</g>
+<g class="comment ">
+<path d="M172 317h0"></path>
+<path d="M224 317h0"></path>
+<text x="198" y="322" class="comment">period</text>
+</g>
+</g>
+<path d="M226 344h10"></path>
+<path d="M236 344h10"></path>
+<g>
+<path d="M246 344h0"></path>
+<path d="M412 344h0"></path>
+<path d="M246 344h10"></path>
+<g class="non-terminal ">
+<path d="M256 344h0"></path>
+<path d="M402 344h0"></path>
+<rect x="256" y="333" width="146" height="22"></rect>
+<text x="329" y="348">&#91;a-z0-9&#95;&#93;</text>
+</g>
+<path d="M402 344h10"></path>
+<path d="M256 344a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10"></path>
+<g>
+<path d="M256 364h146"></path>
+</g>
+<path d="M402 364a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10"></path>
+</g>
+</g>
+<g class="comment ">
+<path d="M162 293h0"></path>
+<path d="M221 293h0"></path>
+<text x="191.5" y="298" class="comment">variant</text>
+</g>
+</g>
+<path d="M422 344h10"></path>
+<path d="M162 344a10 10 0 0 0 -10 10v16a10 10 0 0 0 10 10"></path>
+<g>
+<path d="M162 380h260"></path>
+</g>
+<path d="M422 380a10 10 0 0 0 10 -10v-16a10 10 0 0 0 -10 -10"></path>
+</g>
+<path d="M432 344h20"></path>
+</g>
+<path d="M524 344h10"></path>
+<path d="M534 344h0"></path>
+</g>
+<path d="M534 344h10"></path>
+<path d="M 544 344 h 20 m -10 -10 v 20 m 10 -20 v 20"></path>
+</g>
+<style>
+	svg {
+		background-color: hsl(30,20%,95%);
+	}
+	path {
+		stroke-width: 3;
+		stroke: black;
+		fill: rgba(0,0,0,0);
+	}
+	text {
+		font: bold 14px monospace;
+		text-anchor: middle;
+		white-space: pre;
+	}
+	text.diagram-text {
+		font-size: 12px;
+	}
+	text.diagram-arrow {
+		font-size: 16px;
+	}
+	text.label {
+		text-anchor: start;
+	}
+	text.comment {
+		font: italic 12px monospace;
+	}
+	g.non-terminal text {
+		/&#42;font-style: italic;&#42;/
+	}
+	rect {
+		stroke-width: 3;
+		stroke: black;
+		fill: hsl(120,100%,90%);
+	}
+	rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+	path.diagram-text {
+		stroke-width: 3;
+		stroke: black;
+		fill: white;
+		cursor: help;
+	}
+	g.diagram-text:hover path.diagram-text {
+		fill: #eee;
+	}</style>
+</svg>
+  <figcaption><a href="https://en.wikipedia.org/wiki/Syntax_diagram">syntax diagram</a> (aka <em>railroad diagram</em>) for NMDC identifiers</figcaption>
+    </figure>
+    <pre>
+# using https://tabatkins.github.io/railroad-diagrams/generator.html
+Diagram(
+  Stack(
+  Sequence(
+    Group(NonTerminal('nmdc:'), 'prefix'),
+    Group(Sequence(NonTerminal('[a-z]'), OneOrMore('[a-z]')), 'typecode'),
+    Group(NonTerminal('-'), 'dash'),
+  ),
+  Sequence(
+    Group(
+      Sequence(
+        NonTerminal('[0-9]'),
+        ZeroOrMore('[a-z]', '', 'skip'),
+        NonTerminal('[0-9]')
+      ), 'shoulder (delegated authority)'),
+    Group(NonTerminal('-'), 'dash'),
+  ),
+  Group(Sequence(NonTerminal('[a-z0-9]'), OneOrMore('[a-z0-9]')), 'blade'),
+  ZeroOrMore(
+    Group(
+      Sequence(
+        Group(NonTerminal('.'), 'period'),
+        OneOrMore(NonTerminal('[a-z0-9_]'))
+      ), 'variant'))
+  )
+)
+    </pre>
+    </section>
+
+    <section data-dfn-for="Foo">
+      <h2>Start your spec!</h2>
+      <pre class="idl">
+      [Exposed=Window]
+      interface Foo {
+        attribute DOMString bar;
+        undefined doTheFoo();
+      };
+      </pre>
+      <section>
+        <h2><dfn>bar</dfn> attribute</h2>
+        <p>When getting, the {{Foo/bar}} attribute returns you a 🍹.</p>
+      </section>
+      <section>
+        <h2><dfn>doTheFoo()</dfn> method</h2>
+        <p>When called, {{Foo/doTheFoo()}} MUST behave as follows:</p>
+        <ol class="algorithm">
+          <li>If <var>thing</var>....</li>
+          <li>Let <var>someProp</var>... of the [[DOM]] spec.</li>
+        </ol>
+      </section>
+    </section>
+    <section id='conformance'>
+      <!-- This section is filled automatically by ReSpec. -->
+    </section>
+  </body>
+</html>

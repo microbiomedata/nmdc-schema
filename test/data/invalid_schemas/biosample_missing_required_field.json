@@ -5,13 +5,22 @@
       "description": "Bulk Aqueous phase filtered water",
       "type": "nmdc:Biosample",
       "env_broad_scale": {
-        "has_raw_value": "ENVO:00002030"
+        "has_raw_value": "ENVO:00002030",
+        "term": {
+          "id": "ENVO:00002030"
+        }
       },
       "env_local_scale": {
-        "has_raw_value": "ENVO:00002169"
+        "has_raw_value": "ENVO:00002169",
+        "term": {
+          "id": "ENVO:00002169"
+        }
       },
       "env_medium": {
-        "has_raw_value": "ENVO:00005792"
+        "has_raw_value": "ENVO:00005792",
+        "term": {
+          "id": "ENVO:00005792"
+        }
       },
       "geo_loc_name": {
         "has_raw_value": "Lithgow"
@@ -21,7 +30,7 @@
         "latitude": -33.460524,
         "longitude": 150.168149
       },
-      "ecosystem": "Environmental", 
+      "ecosystem": "Environmental",
       "ecosystem_category": "Aquatic",
       "ecosystem_type": "Freshwater",
       "ecosystem_subtype": "Groundwater",
@@ -39,13 +48,22 @@
       "description": "Bulk Aqueous phase filtered water",
       "type": "nmdc:Biosample",
       "env_broad_scale": {
-        "has_raw_value": "ENVO:00002030"
+        "has_raw_value": "ENVO:00002030",
+        "term": {
+          "id": "ENVO:00002030"
+        }
       },
       "env_local_scale": {
-        "has_raw_value": "ENVO:00002169"
+        "has_raw_value": "ENVO:00002169",
+        "term": {
+          "id": "ENVO:00002169"
+        }
       },
       "env_medium": {
-        "has_raw_value": "ENVO:00005792"
+        "has_raw_value": "ENVO:00005792",
+        "term": {
+          "id": "ENVO:00005792"
+        }
       },
       "geo_loc_name": {
         "has_raw_value": "Lithgow"
@@ -73,13 +91,22 @@
       "description": "Bulk Aqueous phase filtered water",
       "type": "nmdc:Biosample",
       "env_broad_scale": {
-        "has_raw_value": "ENVO:00002030"
+        "has_raw_value": "ENVO:00002030",
+        "term": {
+          "id": "ENVO:00002030"
+        }
       },
       "env_local_scale": {
-        "has_raw_value": "ENVO:00002169"
+        "has_raw_value": "ENVO:00002169",
+        "term": {
+          "id": "ENVO:00002169"
+        }
       },
       "env_medium": {
-        "has_raw_value": "ENVO:00005792"
+        "has_raw_value": "ENVO:00005792",
+        "term": {
+          "id": "ENVO:00005792"
+        }
       },
       "geo_loc_name": {
         "has_raw_value": "Lithgow"
