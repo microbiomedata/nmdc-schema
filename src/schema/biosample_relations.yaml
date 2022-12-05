@@ -1,5 +1,6 @@
 name: biosample_relations
 id: http://example.com/biosample_relations
+
 default_prefix: biosample_relations
 prefixes:
   BFO: http://purl.obolibrary.org/obo/BFO_
