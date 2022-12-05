@@ -57,8 +57,8 @@ slots:
     is_a: attribute
     multivalued: false
     range: QuantityValue
-    notes:
-      - see https://www.ornl.gov/content/bio-scales-0. could that be the "source"?
+    see_also:
+      - https://www.ornl.gov/content/bio-scales-0
   manganese:
     name: manganese
     aliases:
@@ -77,8 +77,8 @@ slots:
     title: manganese
     examples:
       - value: 24.7 mg/kg
-    notes:
-      - see https://www.ornl.gov/content/bio-scales-0. could that be the "source"?
+    see_also:
+      - https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
     range: QuantityValue
@@ -102,8 +102,8 @@ slots:
     title: ammonium nitrogen
     examples:
       - value: 2.3 mg/kg
-    notes:
-      - see https://www.ornl.gov/content/bio-scales-0. could that be the "source"?
+    see_also:
+      - https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
     range: QuantityValue
@@ -129,8 +129,8 @@ slots:
     title: nitrate_nitrogen
     examples:
       - value: 0.29 mg/kg
-    notes:
-      - see https://www.ornl.gov/content/bio-scales-0. could that be the "source"?
+    see_also:
+      - https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
     range: QuantityValue
@@ -154,8 +154,8 @@ slots:
     title: nitrite_nitrogen
     examples:
       - value: 1.2 mg/kg
-    notes:
-      - see https://www.ornl.gov/content/bio-scales-0. could that be the "source"?
+    see_also:
+      - https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
     range: QuantityValue
@@ -183,12 +183,12 @@ slots:
     title: lime buffer capacity (at 30 minutes)
     examples:
       - value: 543 mg/kg
-    notes:
-      - see https://www.ornl.gov/content/bio-scales-0. could that be the "source"?
+    see_also:
+      - https://www.ornl.gov/content/bio-scales-0
+      - https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF
     is_a: attribute
     multivalued: false
     range: QuantityValue
-    see_also: https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF
 
 
   lbceq:
@@ -212,8 +212,8 @@ slots:
     title: lime buffer capacity (after 5 day incubation)
     examples:
       - value: 1575 mg/kg
-    notes:
-      - see https://www.ornl.gov/content/bio-scales-0. could that be the "source"?
+    see_also:
+      - https://www.ornl.gov/content/bio-scales-0
     is_a: attribute
     multivalued: false
     range: QuantityValue
