@@ -335,3 +335,6 @@ from_mongo_cleanup:
 	rm -rf assets/from_mongodb_updated.json
 
 from_mongo_all: from_mongo_cleanup validate_vs_3_2_0 validate_vs_current
+
+target/nmdc_data_for_v7.json:
+	$(RUN) python util/migrate_3_2_to_7.py

@@ -200,6 +200,7 @@ classes:
       - input_base_count
       - output_read_count
       - output_base_count
+      - version
     slot_usage:
       input_read_bases:
         range: float

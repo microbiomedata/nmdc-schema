@@ -198,7 +198,7 @@ classes:
 
       ## external IDs, alternate IDs
       - gold_biosample_identifiers
-      #      - insdc_biosample_identifiers
+      - insdc_biosample_identifiers
       #      - insdc_secondary_sample_identifiers
       - emsl_biosample_identifiers
       - igsn_biosample_identifiers
