@@ -44,6 +44,7 @@ nmdc-data = "nmdc_schema.nmdc_data:cli"
 [tool.poetry.dependencies]
 python = "^3.9"
 linkml = "*"
+check-jsonschema = "^0.19.2"
 
 [tool.poetry.dev-dependencies]
 black = "^22.3.0"

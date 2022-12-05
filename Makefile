@@ -243,12 +243,12 @@ test-jsonschema: $(foreach example, $(SCHEMA_TEST_EXAMPLES), validate-$(example)
 .PHONY: test-jsonschema_invalid
 test-jsonschema_invalid: $(foreach example, $(SCHEMA_TEST_EXAMPLES_INVALID), validate-invalid-$(example))
 
-validate-%: test/data/%.json jsonschema/nmdc.schema.json
+validate-%: jsonschema/nmdc.schema.json test/data/%.json
 # util/validate_nmdc_json.py -i $< # example of validating data using the cli
-	$(RUN) jsonschema -i $< $(word 2, $^)
+	$(RUN) check-jsonschema --schemafile $^
 
-validate-invalid-%: test/data/invalid_schemas/%.json jsonschema/nmdc.schema.json
-	! $(RUN) jsonschema -i $< $(word 2, $^)
+validate-invalid-%: jsonschema/nmdc.schema.json test/data/invalid_schemas/%.json
+	! $(RUN) check-jsonschema --schemafile $^
 
 # ---
 
