@@ -56,7 +56,7 @@ jq = "^1.3.0"
 mkdocs = "^1.4.2"
 mkdocs-material = "^8.5.11"
 mkdocs-mermaid2-plugin = "^0.6.0"
-twine = "^4.0.2"
+twine = "^4.0.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
