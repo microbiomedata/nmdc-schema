@@ -460,7 +460,6 @@ classes:
         description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
         required: true
         pattern: '^nmdc:'
-
       lat_lon:
         required: false
         description: This is currently a required field but it's not clear if this
@@ -476,6 +475,24 @@ classes:
         required: false
       part_of:
         required: true
+      extreme_event:
+        name: extreme_event
+        title: history/extreme events
+        aliases:
+          - mixs:0000320
+        description: Unusual physical events that may have affected microbial populations
+        examples:
+          - 1980-05-18, volcanic eruption
+        annotations:
+          expected_value:
+            tag: expected_value
+            value: date, text
+          occurrence:
+            tag: occurrence
+            value: '1'
+        is_a: attribute
+        multivalued: false
+        range: text
 
     id_prefixes:
       - GOLD
