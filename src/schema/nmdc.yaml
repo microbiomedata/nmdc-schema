@@ -476,6 +476,53 @@ classes:
         required: false
       part_of:
         required: true
+      fire:
+        name: fire
+        title: history/fire
+        aliases:
+          - mixs:0001086
+        description: Historical and/or physical evidence of fire
+        guidance:
+          - Provide the date the fire occurred. If extended burning occurred provide the date range.
+        examples:
+          - value: 1871-10-10
+          - value: 1871-10-01 to 1871-10-31
+        todos:
+          - is "to" acceptable? Is there a better way to request that be written?
+        annotations:
+          expected_value:
+            tag: expected_value
+            value: date
+          occurrence:
+            tag: occurrence
+            value: '1'
+        is_a: attribute
+        multivalued: false
+        range: text
+      flooding:
+        name: flooding
+        title: history/flooding
+        aliases:
+          - mixs:0000319
+        annotations:
+          expected_value:
+            tag: expected_value
+            value: date
+          occurrence:
+            tag: occurrence
+            value: '1'
+        description: Historical and/or physical evidence of flooding
+        guidance:
+          - Provide the date the flood occurred. If extended flooding occurred provide the date range.
+        examples:
+          - value: 1927-04-15
+          - value: 1927-04 to 1927-05
+        todos:
+          - is "to" acceptable? Is there a better way to request that be written?
+          - What about if the "day" isn't known? Is this ok?
+        is_a: attribute
+        multivalued: false
+        range: text
 
     id_prefixes:
       - GOLD
