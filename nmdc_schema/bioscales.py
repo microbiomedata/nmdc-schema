@@ -1,5 +1,5 @@
 # Auto generated from bioscales.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-12-14T11:06:19
+# Generation date: 2022-12-14T12:52:54
 # Schema: NMDC-Bioscales
 #
 # id: https://microbiomedata/schema/bioscales

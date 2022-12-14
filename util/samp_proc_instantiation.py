@@ -84,4 +84,4 @@ d5 = nmdc.MaterialSample(
 
 samp_proc_db.material_sample_set.append(d5)
 
-print(yaml_dumper.dump(samp_proc_db, "assets/samp_proc_instantiation.yaml"))
+yaml_dumper.dump(samp_proc_db, "assets/samp_proc_instantiation.yaml")

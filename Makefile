@@ -15,9 +15,14 @@ gen: $(patsubst %,gen-%,$(TGTS))
 
 clean: clean-artifacts clean-docs
 
-squeaky-clean: clean clean-package from_mongo_cleanup # NOT mixs_clean
-squeaky-all: squeaky-clean test build-nmdc_schema
+squeaky-clean: clean clean-package clean-docs from_mongo_cleanup # NOT mixs_clean
+squeaky-all: squeaky-clean target/doc test build-nmdc_schema
 	poetry install
+	# shouldn't be creating this in the first place
+	rm -rf doc
+
+target/doc:
+	mkdir -p $@
 
 clean-artifacts:
 	rm -rf target/
@@ -53,11 +58,6 @@ stage: $(patsubst %,stage-%,$(TGTS))
 stage-%: gen-%
 	cp -pr target/$* .
 
-
-###  -- MARKDOWN DOCS AND SLIDES --
-# Generate documentation ready for mkdocs
-# TODO: modularize imports
-#gen-docs: target/docs/index.md copy-src-docs make-slides
 .PHONY: gen-docs
 copy-src-docs:
 	mkdir -p target/docs/images
@@ -68,12 +68,9 @@ PHONY: copy-src-docs
 target/docs/%.md: $(SCHEMA_SRC) tdir-docs
 	$(RUN) gen-markdown $(GEN_OPTS) --dir target/docs $<
 
-#stage-docs: gen-docs
-#	cp -pr target/docs .
-
 gen-doc:
-	mkdir -p target/doc
-	echo 'forces retention of this directory after rm -rf target/*' > target/doc/placeholder.txt
+#	mkdir -p target/doc
+#	echo 'forces retention of this directory after rm -rf target/*' > target/doc/placeholder.txt
 	$(RUN) gen-doc $(SCHEMA_SRC) --template-directory $(SRC_DIR)/doc-templates -d $(DOCS_DIR)
 	cp $(SRC_DIR)/$(DOCS_DIR)/*.md $(DOCS_DIR)
 	mkdir -p $(DOCS_DIR)/images

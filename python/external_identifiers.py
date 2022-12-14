@@ -1,5 +1,5 @@
 # Auto generated from external_identifiers.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-12-14T11:06:47
+# Generation date: 2022-12-14T12:53:28
 # Schema: external_identifiers
 #
 # id: https://microbiomedata/schema/external_identifiers
