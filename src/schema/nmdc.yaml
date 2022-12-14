@@ -92,6 +92,19 @@ imports:
   - sample_prep
   - workflow_execution_activity
 
+settings:
+  id_nmdc_prefix: "^(nmdc)"
+  id_typecode: "([a-z]{1,6})"
+  id_shoulder: "([0-9][a-z]{0,6}[0-9])"
+  id_blade: "([A-Za-z0-9]{1,})"
+  id_version: "(\\.[A-Za-z0-9]{1,})*"
+  id_locus: "(_[A-Za-z0-9_\\.-]+)?$"
+  # class to typecode associations
+  id_typecode_biosample: "bsm"
+  id_typecode_study: "sty"
+  id_typecode_biosample_processing: "bsmprc"
+  id_typecode_omics_processing: "omprc"
+
 subsets:
   sample subset:
     description: Subset consisting of entities linked to the processing of samples.  Currently,
@@ -99,13 +112,6 @@ subsets:
   data object subset:
     description: Subset consisting of the data objects that either inputs or outputs
       of processes or workflows.
-
-settings:
-  id_nmdc_prefix: "nmdc"
-  id_type_sample: "sa"
-  id_type_study: "st"
-  id_shoulder: "[0-9][a-z]*[0-9]"
-  id_generated: "[a-z0-9]{6,}"
 
 classes:
 
@@ -488,8 +494,15 @@ classes:
       - nitrite_nitrogen
       - lbc_thirty
       - lbceq
-
     slot_usage:
+      id:
+        description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
+        required: true
+        pattern: '^nmdc:'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:{id_typecode_biosample}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
       gold_biosample_identifiers:
         description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
         comments: This is the ID provided by GOLD that starts with 'GB'
@@ -498,15 +511,9 @@ classes:
             tag: display_hint
             value: >-
               Provide the GOLD biosample IDs associated with this biosample.
-
       alternative_identifiers:
         description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
         required: false
-      id:
-        description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
-        required: true
-        pattern: '^nmdc:'
-
       lat_lon:
         required: false
         description: This is currently a required field but it's not clear if this
@@ -522,7 +529,6 @@ classes:
         required: false
       part_of:
         required: true
-
     id_prefixes:
       - GOLD
     exact_mappings:
@@ -584,10 +590,13 @@ classes:
       - funding_sources
       - has_credit_associations
       - study_image
-
     slot_usage:
       id:
         description: An NMDC assigned unique identifier for a sample submitted to NMDC.
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:{id_typecode_study}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
       doi:
         description: >-
           The dataset citation for this study
@@ -681,10 +690,16 @@ classes:
     slots:
       - has_input
     slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:{id_typecode_biosample_processing}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
       has_input:
         range: Biosample
     broad_mappings:
       - OBI:0000094
+
   OmicsProcessing:
     aliases:
       - omics assay
@@ -725,11 +740,17 @@ classes:
       - seq_quality_check
       - chimera_check
     slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:{id_typecode_omics_processing}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
       has_input:
         required: true
     broad_mappings:
       - OBI:0000070
       - ISA:Assay
+
   CreditAssociation:
     aliases:
       - study role
