@@ -16,8 +16,14 @@ gen: $(patsubst %,gen-%,$(TGTS))
 clean: clean-artifacts clean-docs
 
 squeaky-clean: clean clean-package from_mongo_cleanup # NOT mixs_clean
-squeaky-all: squeaky-clean test build-nmdc_schema
+squeaky-all: squeaky-clean target all  test-data build-nmdc_schema
 	poetry install
+
+target:
+	mkdir -p target
+
+revert-jsonschema:
+	git checkout 885c86b58dccc77b18bf9c625d7da686582b6108 -- jsonschema/nmdc.schema.json
 
 clean-artifacts:
 	rm -rf target/
@@ -214,6 +220,7 @@ delete-poetry-env:
 ##  -- TEST/VALIDATE JSONSCHEMA
 
 # datasets used test/validate the schema
+#
 SCHEMA_TEST_EXAMPLES := \
 	MAGs_activity \
 	biosample_test \

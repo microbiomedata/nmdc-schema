@@ -1611,6 +1611,17 @@
         "lbceq"
       ],
       "slot_usage": {
+        "id": {
+          "name": "id",
+          "description": "An NMDC assigned unique identifier for a biosample submitted to NMDC.",
+          "required": true,
+          "pattern": "^nmdc:",
+          "structured_pattern": {
+            "syntax": "{id_nmdc_prefix}:{id_typecode_biosample}-{id_shoulder}-{id_blade}{id_version}{id_locus}",
+            "interpolated": true,
+            "partial_match": false
+          }
+        },
         "gold_biosample_identifiers": {
           "name": "gold_biosample_identifiers",
           "annotations": {
@@ -1628,12 +1639,6 @@
           "name": "alternative_identifiers",
           "description": "Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC",
           "required": false
-        },
-        "id": {
-          "name": "id",
-          "description": "An NMDC assigned unique identifier for a biosample submitted to NMDC.",
-          "required": true,
-          "pattern": "^nmdc:"
         },
         "lat_lon": {
           "name": "lat_lon",
@@ -1745,7 +1750,12 @@
       "slot_usage": {
         "id": {
           "name": "id",
-          "description": "An NMDC assigned unique identifier for a sample submitted to NMDC."
+          "description": "An NMDC assigned unique identifier for a sample submitted to NMDC.",
+          "structured_pattern": {
+            "syntax": "{id_nmdc_prefix}:{id_typecode_study}-{id_shoulder}-{id_blade}{id_version}{id_locus}",
+            "interpolated": true,
+            "partial_match": false
+          }
         },
         "doi": {
           "name": "doi",
@@ -1846,6 +1856,14 @@
         "has_input"
       ],
       "slot_usage": {
+        "id": {
+          "name": "id",
+          "structured_pattern": {
+            "syntax": "{id_nmdc_prefix}:{id_typecode_biosample_processing}-{id_shoulder}-{id_blade}{id_version}{id_locus}",
+            "interpolated": true,
+            "partial_match": false
+          }
+        },
         "has_input": {
           "name": "has_input",
           "range": "Biosample"
@@ -1904,6 +1922,14 @@
         "chimera_check"
       ],
       "slot_usage": {
+        "id": {
+          "name": "id",
+          "structured_pattern": {
+            "syntax": "{id_nmdc_prefix}:{id_typecode_omics_processing}-{id_shoulder}-{id_blade}{id_version}{id_locus}",
+            "interpolated": true,
+            "partial_match": false
+          }
+        },
         "has_input": {
           "name": "has_input",
           "required": true
@@ -1932,23 +1958,43 @@
   "settings": {
     "id_nmdc_prefix": {
       "setting_key": "id_nmdc_prefix",
-      "setting_value": "nmdc"
+      "setting_value": "^(nmdc)"
     },
-    "id_type_sample": {
-      "setting_key": "id_type_sample",
-      "setting_value": "sa"
-    },
-    "id_type_study": {
-      "setting_key": "id_type_study",
-      "setting_value": "st"
+    "id_typecode": {
+      "setting_key": "id_typecode",
+      "setting_value": "([a-z]{1,6})"
     },
     "id_shoulder": {
       "setting_key": "id_shoulder",
-      "setting_value": "[0-9][a-z]*[0-9]"
+      "setting_value": "([0-9][a-z]{0,6}[0-9])"
     },
-    "id_generated": {
-      "setting_key": "id_generated",
-      "setting_value": "[a-z0-9]{6,}"
+    "id_blade": {
+      "setting_key": "id_blade",
+      "setting_value": "([A-Za-z0-9]{1,})"
+    },
+    "id_version": {
+      "setting_key": "id_version",
+      "setting_value": "(\\.[A-Za-z0-9]{1,})*"
+    },
+    "id_locus": {
+      "setting_key": "id_locus",
+      "setting_value": "(_[A-Za-z0-9_\\.-]+)?$"
+    },
+    "id_typecode_biosample": {
+      "setting_key": "id_typecode_biosample",
+      "setting_value": "bsm"
+    },
+    "id_typecode_study": {
+      "setting_key": "id_typecode_study",
+      "setting_value": "sty"
+    },
+    "id_typecode_biosample_processing": {
+      "setting_key": "id_typecode_biosample_processing",
+      "setting_value": "bsmprc"
+    },
+    "id_typecode_omics_processing": {
+      "setting_key": "id_typecode_omics_processing",
+      "setting_value": "omprc"
     }
   },
   "@type": "SchemaDefinition"
