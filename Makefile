@@ -2,13 +2,11 @@ SRC_DIR = src
 SCHEMA_DIR = $(SRC_DIR)/schema
 SOURCE_FILES := $(shell find $(SCHEMA_DIR) -name '*.yaml')
 DOCS_DIR = docs
-#GEN_OPTS = --no-mergeimports
 GEN_OPTS =
 RUN=poetry run
 SCHEMA_NAME = nmdc
 SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
-#TGTS = graphql jsonschema docs shex owl csv  python docs
 TGTS = jsonschema jsonld-context python json doc
 
 all: gen stage
@@ -16,6 +14,10 @@ gen: $(patsubst %,gen-%,$(TGTS))
 .PHONY: all gen stage clean clean-artifacts clean-docs t echo test install docserve gh-deploy .FORCE
 
 clean: clean-artifacts clean-docs
+
+squeaky-clean: clean clean-package from_mongo_cleanup # NOT mixs_clean
+squeaky-all: squeaky-clean  test build-nmdc_schema
+	poetry install
 
 clean-artifacts:
 	rm -rf target/
@@ -71,7 +73,7 @@ target/docs/%.md: $(SCHEMA_SRC) tdir-docs
 
 gen-doc:
 	mkdir -p target/doc
-	echo 'long story' > target/doc/placeholder.txt
+	echo 'forces retention of this directory after rm -rf target/*' > target/doc/placeholder.txt
 	$(RUN) gen-doc $(SCHEMA_SRC) --template-directory $(SRC_DIR)/doc-templates -d $(DOCS_DIR)
 	cp $(SRC_DIR)/$(DOCS_DIR)/*.md $(DOCS_DIR)
 	mkdir -p $(DOCS_DIR)/images
@@ -172,20 +174,22 @@ gh-deploy:
 # This is useful for testing
 .PHONY: clean-package build-nmdc_schema build-package deploy-pypi
 clean-package:
+	rm -f nmdc_schema/*.json
+	rm -f nmdc_schema/*.py
+	rm -f nmdc_schema/*.tsv
 	rm -rf dist && echo 'dist removed'
 	rm -rf nmdc_schema.egg-info && echo 'egg-info removed'
-	rm -f nmdc_schema/*.py
-	rm -f nmdc_schema/*.json
-	rm -f nmdc_schema/*.tsv
 
 build-nmdc_schema: clean-package
-	cp src/schema/nmdc.yaml nmdc_schema/ # copy nmdc yaml file
-	cp python/*.py nmdc_schema/ # copy python files
 	cp jsonschema/nmdc.schema.json nmdc_schema/ # copy nmdc json schema
+	cp python/*.py nmdc_schema/ # copy python files
+	cp src/schema/nmdc.yaml nmdc_schema/ # copy nmdc yaml file
 	cp sssom/gold-to-mixs.sssom.tsv nmdc_schema/ # copy sssom mapping
-	cp util/validate_nmdc_json.py nmdc_schema/ # copy command-line validation tool
-	cp util/nmdc_version.py nmdc_schema/ # copy command-line version tool
+	cp util/__init__.py nmdc_schema/
+	cp util/migrate_3_2_to_7.py nmdc_schema/ # copy command-line migration tool
 	cp util/nmdc_data.py nmdc_schema/ # copy command-line data retrieval tool
+	cp util/nmdc_version.py nmdc_schema/ # copy command-line version tool
+	cp util/validate_nmdc_json.py nmdc_schema/ # copy command-line validation tool
 
 build-package: build-nmdc_schema
 	poetry build
@@ -240,12 +244,12 @@ test-jsonschema: $(foreach example, $(SCHEMA_TEST_EXAMPLES), validate-$(example)
 .PHONY: test-jsonschema_invalid
 test-jsonschema_invalid: $(foreach example, $(SCHEMA_TEST_EXAMPLES_INVALID), validate-invalid-$(example))
 
-validate-%: test/data/%.json jsonschema/nmdc.schema.json
+validate-%: jsonschema/nmdc.schema.json test/data/%.json
 # util/validate_nmdc_json.py -i $< # example of validating data using the cli
-	$(RUN) jsonschema -i $< $(word 2, $^)
+	$(RUN) check-jsonschema --schemafile $^
 
-validate-invalid-%: test/data/invalid_schemas/%.json jsonschema/nmdc.schema.json
-	! $(RUN) jsonschema -i $< $(word 2, $^)
+validate-invalid-%: jsonschema/nmdc.schema.json test/data/invalid_schemas/%.json
+	! $(RUN) check-jsonschema --schemafile $^
 
 # ---
 
@@ -332,3 +336,6 @@ from_mongo_cleanup:
 	rm -rf assets/from_mongodb_updated.json
 
 from_mongo_all: from_mongo_cleanup validate_vs_3_2_0 validate_vs_current
+
+target/nmdc_data_for_v7.json:
+	$(RUN) migrate_3_2_to_7
