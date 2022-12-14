@@ -1,1 +1,1 @@
-long story
+forces retention of this directory after rm -rf target/*

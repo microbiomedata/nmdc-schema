@@ -108,6 +108,40 @@ settings:
   id_generated: "[a-z0-9]{6,}"
 
 classes:
+
+  FieldResearchSite:
+    aliases:
+      - research plot
+    description: A site, outside of a laboratory, from which biosamples may be collected.
+    is_a: Site
+    #    is_a: NamedThing
+    title: Field Research Site
+    comments:
+      - Provides grouping of biosamples at level that's more specific than belonging
+        to the same study
+      - be very clear that this could be part of a larger site
+      - In Bioscales, one might say that rhizosphere soil and bulk soil from around
+        the same plant were obtained at the same site. In this case, the site would
+        correspond to one tree.
+      - "might correspond to GOLD's identifier on a page like https://gold.jgi.doe.gov/biosample?id=Gb0305833"
+
+  CollectingBiosamplesFromSite:
+    is_a: PlannedProcess
+    title: Collecting Biosamples From Site
+    slots:
+      - has_inputs
+      - has_outputs
+    comments:
+      - "this illustrates implementing a Biosample relation with a process class"
+    slot_usage:
+      has_inputs:
+        range: Site
+        #        range: NamedThing
+        required: true
+      has_outputs:
+        range: Biosample
+        required: true
+
   Database:
     tree_root: true
     aliases:
@@ -137,6 +171,17 @@ classes:
       - read_qc_analysis_activity_set
       - read_based_taxonomy_analysis_activity_set
       - study_set
+    attributes:
+      frs_set:
+        inlined_as_list: true
+        multivalued: true
+        range: FieldResearchSite
+        domain: Database
+      cbfs_set:
+        inlined_as_list: true
+        multivalued: true
+        range: CollectingBiosamplesFromSite
+        domain: Database
     slot_usage:
       date_created:
         description: TODO
@@ -168,7 +213,7 @@ classes:
       - GOLD
 
   Biosample:
-    is_a: NamedThing
+    is_a: MaterialEntity
     in_subset:
       - sample subset
     aliases:
@@ -185,6 +230,7 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
+      - collected_from
       - type
       - img_identifiers
       - samp_name
@@ -903,6 +949,17 @@ enums:
           - replaces Environmental Molecular Sciences Lab
 
 slots:
+
+  collected_from:
+    description: The Site from which a Biosample was collected
+    domain: Biosample
+    range: FieldResearchSite
+    comments:
+      - this illustrates implementing a Biosample relation with a (binary) slot
+    todos:
+      - add an OBO slot_uri ?
+
+
   emsl_project_identifier: { }
   img_identifiers:
     title: IMG Identifiers

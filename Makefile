@@ -16,7 +16,7 @@ gen: $(patsubst %,gen-%,$(TGTS))
 clean: clean-artifacts clean-docs
 
 squeaky-clean: clean clean-package from_mongo_cleanup # NOT mixs_clean
-squeaky-all: squeaky-clean  test build-nmdc_schema
+squeaky-all: squeaky-clean test build-nmdc_schema
 	poetry install
 
 clean-artifacts:
@@ -215,18 +215,19 @@ delete-poetry-env:
 
 # datasets used test/validate the schema
 SCHEMA_TEST_EXAMPLES := \
+	MAGs_activity \
 	biosample_test \
+	biosamples_to_sites \
+	functional_annotation_set \
 	gold_project_test \
 	img_mg_annotation_objects \
-	nmdc_example_database \
-	MAGs_activity \
 	mg_assembly_activities_test \
 	mg_assembly_data_objects_test \
 	nmdc_example_database \
-	study_test \
-	functional_annotation_set \
+	nmdc_example_database \
+	samp_prep_db \
 	study_credit_test \
-	samp_prep_db
+	study_test
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
 	biosample_invalid_range \
@@ -248,94 +249,94 @@ validate-%: jsonschema/nmdc.schema.json test/data/%.json
 # util/validate_nmdc_json.py -i $< # example of validating data using the cli
 	$(RUN) check-jsonschema --schemafile $^
 
-validate-invalid-%: jsonschema/nmdc.schema.json test/data/invalid_schemas/%.json
+validate-invalid-%: jsonschema/nmdc.schema.json test/data/invalid_data/%.json
 	! $(RUN) check-jsonschema --schemafile $^
 
 # ---
 
-reports/slot_roster.tsv:
-	poetry run python util/slot_roster.py \
-		--input_paths "mixs/model/schema/mixs.yaml" \
-		--input_paths "src/schema/nmdc.yaml" \
-		--input_paths "https://raw.githubusercontent.com/microbiomedata/sheets_and_friends/issue-100-netlify-linkml-datastructure/artifacts/nmdc_dh.yaml" \
-		--output_tsv $@
+#reports/slot_roster.tsv:
+#	poetry run python util/slot_roster.py \
+#		--input_paths "mixs/model/schema/mixs.yaml" \
+#		--input_paths "src/schema/nmdc.yaml" \
+#		--input_paths "https://raw.githubusercontent.com/microbiomedata/sheets_and_friends/issue-100-netlify-linkml-datastructure/artifacts/nmdc_dh.yaml" \
+#		--output_tsv $@
+#
+#src/schema/mixs_new.yaml: reports/slot_roster.tsv
+#	poetry run python util/rebuild_mixs_yaml.py \
+#		--use_legacy "is_a" \
+#		--use_legacy "multivalued" \
+#		--use_legacy "range" \
+#		--output_yaml $@ \
+#		--legacy_see_also "https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py" \
+#		--slot_roster_tsv_in $< \
+#		--legacy_mixs_module_in src/schema/mixs_legacy.yaml\
+#		--current_mixs_root_in mixs/model/schema/mixs.yaml \
+#		--current_nmdc_root_in src/schema/nmdc.yaml
+#	cp $@ src/schema/mixs.yaml
+#
+#reports/slot_annotations_diffs.tsv: src/schema/mixs_new.yaml
+#	poetry run python util/mixs_deep_diff.py \
+#		--include_descriptions True \
+#		--shingle_size 2 \
+#		--slot_diff_yaml_out reports/slot_diffs.yaml \
+#		--anno_diff_tsv_out $@ \
+#		--legacy_mixs_module_in src/schema/mixs_legacy.yaml \
+#		--current_mixs_module_in $<
 
-src/schema/mixs_new.yaml: reports/slot_roster.tsv
-	poetry run python util/rebuild_mixs_yaml.py \
-		--use_legacy "is_a" \
-		--use_legacy "multivalued" \
-		--use_legacy "range" \
-		--output_yaml $@ \
-		--legacy_see_also "https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py" \
-		--slot_roster_tsv_in $< \
-		--legacy_mixs_module_in src/schema/mixs_legacy.yaml\
-		--current_mixs_root_in mixs/model/schema/mixs.yaml \
-		--current_nmdc_root_in src/schema/nmdc.yaml
-	cp $@ src/schema/mixs.yaml
-
-reports/slot_annotations_diffs.tsv: src/schema/mixs_new.yaml
-	poetry run python util/mixs_deep_diff.py \
-		--include_descriptions True \
-		--shingle_size 2 \
-		--slot_diff_yaml_out reports/slot_diffs.yaml \
-		--anno_diff_tsv_out $@ \
-		--legacy_mixs_module_in src/schema/mixs_legacy.yaml \
-		--current_mixs_module_in $<
-
-.PHONY: post_test mixs_clean
-
-post_test: clean mixs_clean reports/slot_annotations_diffs.tsv all
-	cp python/nmdc.py nmdc_schema/nmdc.py
-	poetry run python biosamples_from_NMDC_api.py
-	# todo add check over omics processings too?
-
-reference_commit=dbbf2f85b676daa35af78992c2649a68457cae21
-# main
-# release 3_2_0 = dbbf2f85b676daa35af78992c2649a68457cae21
-
-mixs_clean:
-	rm -rf reports/slot_annotations_diffs.tsv
-	rm -rf reports/slot_diffs.yaml
-	rm -rf reports/slot_roster.tsv
-	rm -rf src/schema/mixs*yaml
-	# ensure that we are comparing against the current main
-	#   not some local junk
-	#   OR could compare against some other branch, commit, etc.
-	curl -o src/schema/mixs.yaml https://raw.githubusercontent.com/microbiomedata/nmdc-schema/$(reference_commit)/src/schema/mixs.yaml
-	curl -o src/schema/nmdc.yaml https://raw.githubusercontent.com/microbiomedata/nmdc-schema/$(reference_commit)/src/schema/nmdc.yaml
-	curl -o nmdc_schema/nmdc.py https://raw.githubusercontent.com/microbiomedata/nmdc-schema/$(reference_commit)/nmdc_schema/nmdc.py
-	cp src/schema/mixs.yaml src/schema/mixs_legacy.yaml
+#.PHONY: post_test mixs_clean
+#
+#post_test: clean mixs_clean reports/slot_annotations_diffs.tsv all
+#	cp python/nmdc.py nmdc_schema/nmdc.py
+#	poetry run python biosamples_from_NMDC_api.py
+#	# todo add check over omics processings too?
+#
+#reference_commit=dbbf2f85b676daa35af78992c2649a68457cae21
+## main
+## release 3_2_0 = dbbf2f85b676daa35af78992c2649a68457cae21
+#
+#mixs_clean:
+#	rm -rf reports/slot_annotations_diffs.tsv
+#	rm -rf reports/slot_diffs.yaml
+#	rm -rf reports/slot_roster.tsv
+#	rm -rf src/schema/mixs*yaml
+#	# ensure that we are comparing against the current main
+#	#   not some local junk
+#	#   OR could compare against some other branch, commit, etc.
+#	curl -o src/schema/mixs.yaml https://raw.githubusercontent.com/microbiomedata/nmdc-schema/$(reference_commit)/src/schema/mixs.yaml
+#	curl -o src/schema/nmdc.yaml https://raw.githubusercontent.com/microbiomedata/nmdc-schema/$(reference_commit)/src/schema/nmdc.yaml
+#	curl -o nmdc_schema/nmdc.py https://raw.githubusercontent.com/microbiomedata/nmdc-schema/$(reference_commit)/nmdc_schema/nmdc.py
+#	cp src/schema/mixs.yaml src/schema/mixs_legacy.yaml
 
 src/schema/portal/emsl.yaml:
 	$(RUN) python util/integrate_dh_non_mixs_classes.py
 
-assets/3_2_0/nmdc.schema.json:
-	curl --output  $@  "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v3.2.0/jsonschema/nmdc.schema.json"
-
-assets/4_0_0/nmdc.schema.json:
-	curl --output  $@  "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v4.0.0/jsonschema/nmdc.schema.json"
-
-assets/schema_json_diff.txt:assets/3_2_0/nmdc.schema.json assets/4_0_0/nmdc.schema.json
-	- jd -o $@ --set $^
-
-assets/from_mongodb.json:
-	$(RUN) python util/mongodb2database.py
-
-validate_vs_3_2_0: assets/from_mongodb.json assets/3_2_0/nmdc.schema.json
-	jsonschema -i $^
-
-assets/from_mongodb_updated.json:
-	$(RUN) python util/update_mongodb_dump.py
-
-validate_vs_current: assets/from_mongodb_updated.json jsonschema/nmdc.schema.json
-	jsonschema -i $^
+#assets/3_2_0/nmdc.schema.json:
+#	curl --output  $@  "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v3.2.0/jsonschema/nmdc.schema.json"
+#
+#assets/4_0_0/nmdc.schema.json:
+#	curl --output  $@  "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v4.0.0/jsonschema/nmdc.schema.json"
+#
+#assets/schema_json_diff.txt:assets/3_2_0/nmdc.schema.json assets/4_0_0/nmdc.schema.json
+#	- jd -o $@ --set $^
+#
+#assets/from_mongodb.json:
+#	$(RUN) python util/mongodb2database.py
+#
+#validate_vs_3_2_0: assets/from_mongodb.json assets/3_2_0/nmdc.schema.json
+#	jsonschema -i $^
+#
+#assets/from_mongodb_updated.json:
+#	$(RUN) python util/update_mongodb_dump.py
+#
+#validate_vs_current: assets/from_mongodb_updated.json jsonschema/nmdc.schema.json
+#	jsonschema -i $^
 
 from_mongo_cleanup:
 	rm -rf assets/from_mongodb.json
 	rm -rf assets/from_mongodb.yaml
 	rm -rf assets/from_mongodb_updated.json
 
-from_mongo_all: from_mongo_cleanup validate_vs_3_2_0 validate_vs_current
+#from_mongo_all: from_mongo_cleanup validate_vs_3_2_0 validate_vs_current
 
 target/nmdc_data_for_v7.json:
 	$(RUN) migrate_3_2_to_7

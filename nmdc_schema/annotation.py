@@ -1,5 +1,5 @@
 # Auto generated from annotation.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-12-08T18:53:26
+# Generation date: 2022-12-14T11:06:43
 # Schema: NMDC-Annotation
 #
 # id: https://microbiomedata/schema/annotation
@@ -120,6 +120,22 @@ class ExternalIdentifier(Uriorcurie):
 
 # Class references
 class NamedThingId(extended_str):
+    pass
+
+
+class MaterialEntityId(NamedThingId):
+    pass
+
+
+class AnalyticalSampleId(MaterialEntityId):
+    pass
+
+
+class SiteId(MaterialEntityId):
+    pass
+
+
+class PlannedProcessId(NamedThingId):
     pass
 
 
@@ -363,6 +379,100 @@ class NamedThing(YAMLRoot):
         if not isinstance(self.alternative_identifiers, list):
             self.alternative_identifiers = [self.alternative_identifiers] if self.alternative_identifiers is not None else []
         self.alternative_identifiers = [v if isinstance(v, str) else str(v) for v in self.alternative_identifiers]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class MaterialEntity(NamedThing):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC.MaterialEntity
+    class_class_curie: ClassVar[str] = "nmdc:MaterialEntity"
+    class_name: ClassVar[str] = "MaterialEntity"
+    class_model_uri: ClassVar[URIRef] = NMDC.MaterialEntity
+
+    id: Union[str, MaterialEntityId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MaterialEntityId):
+            self.id = MaterialEntityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class AnalyticalSample(MaterialEntity):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC.AnalyticalSample
+    class_class_curie: ClassVar[str] = "nmdc:AnalyticalSample"
+    class_name: ClassVar[str] = "AnalyticalSample"
+    class_model_uri: ClassVar[URIRef] = NMDC.AnalyticalSample
+
+    id: Union[str, AnalyticalSampleId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, AnalyticalSampleId):
+            self.id = AnalyticalSampleId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Site(MaterialEntity):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC.Site
+    class_class_curie: ClassVar[str] = "nmdc:Site"
+    class_name: ClassVar[str] = "Site"
+    class_model_uri: ClassVar[URIRef] = NMDC.Site
+
+    id: Union[str, SiteId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SiteId):
+            self.id = SiteId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class PlannedProcess(NamedThing):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = OBI["0000011"]
+    class_class_curie: ClassVar[str] = "OBI:0000011"
+    class_name: ClassVar[str] = "PlannedProcess"
+    class_model_uri: ClassVar[URIRef] = NMDC.PlannedProcess
+
+    id: Union[str, PlannedProcessId] = None
+    has_inputs: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
+    has_outputs: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
+    participating_agent: Optional[Union[dict, "Agent"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PlannedProcessId):
+            self.id = PlannedProcessId(self.id)
+
+        if not isinstance(self.has_inputs, list):
+            self.has_inputs = [self.has_inputs] if self.has_inputs is not None else []
+        self.has_inputs = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_inputs]
+
+        if not isinstance(self.has_outputs, list):
+            self.has_outputs = [self.has_outputs] if self.has_outputs is not None else []
+        self.has_outputs = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_outputs]
+
+        if self.participating_agent is not None and not isinstance(self.participating_agent, Agent):
+            self.participating_agent = Agent(**as_dict(self.participating_agent))
 
         super().__post_init__(**kwargs)
 
@@ -2075,6 +2185,15 @@ slots.alternative_descriptions = Slot(uri=NMDC.alternative_descriptions, name="a
 
 slots.alternative_identifiers = Slot(uri=NMDC.alternative_identifiers, name="alternative_identifiers", curie=NMDC.curie('alternative_identifiers'),
                    model_uri=NMDC.alternative_identifiers, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.has_inputs = Slot(uri=NMDC.has_inputs, name="has_inputs", curie=NMDC.curie('has_inputs'),
+                   model_uri=NMDC.has_inputs, domain=PlannedProcess, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
+
+slots.has_outputs = Slot(uri=NMDC.has_outputs, name="has_outputs", curie=NMDC.curie('has_outputs'),
+                   model_uri=NMDC.has_outputs, domain=PlannedProcess, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
+
+slots.participating_agent = Slot(uri=NMDC.participating_agent, name="participating_agent", curie=NMDC.curie('participating_agent'),
+                   model_uri=NMDC.participating_agent, domain=PlannedProcess, range=Optional[Union[dict, "Agent"]])
 
 slots.language = Slot(uri=NMDC.language, name="language", curie=NMDC.curie('language'),
                    model_uri=NMDC.language, domain=None, range=Optional[str])

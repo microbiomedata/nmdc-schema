@@ -1,5 +1,5 @@
 # Auto generated from sample_prep.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-12-08T18:53:09
+# Generation date: 2022-12-14T11:06:25
 # Schema: sample_prep
 #
 # id: https://microbiomedata/schema/sample_prep
@@ -141,10 +141,6 @@ class DataObjectId(NamedThingId):
     pass
 
 
-class BiosampleId(NamedThingId):
-    pass
-
-
 class StudyId(NamedThingId):
     pass
 
@@ -154,6 +150,34 @@ class BiosampleProcessingId(NamedThingId):
 
 
 class OmicsProcessingId(BiosampleProcessingId):
+    pass
+
+
+class MaterialEntityId(NamedThingId):
+    pass
+
+
+class BiosampleId(MaterialEntityId):
+    pass
+
+
+class AnalyticalSampleId(MaterialEntityId):
+    pass
+
+
+class SiteId(MaterialEntityId):
+    pass
+
+
+class FieldResearchSiteId(SiteId):
+    pass
+
+
+class PlannedProcessId(NamedThingId):
+    pass
+
+
+class CollectingBiosamplesFromSiteId(PlannedProcessId):
     pass
 
 
@@ -441,6 +465,8 @@ class Database(YAMLRoot):
     read_qc_analysis_activity_set: Optional[Union[Dict[Union[str, ReadQcAnalysisActivityId], Union[dict, "ReadQcAnalysisActivity"]], List[Union[dict, "ReadQcAnalysisActivity"]]]] = empty_dict()
     read_based_taxonomy_analysis_activity_set: Optional[Union[Dict[Union[str, ReadBasedTaxonomyAnalysisActivityId], Union[dict, "ReadBasedTaxonomyAnalysisActivity"]], List[Union[dict, "ReadBasedTaxonomyAnalysisActivity"]]]] = empty_dict()
     study_set: Optional[Union[Dict[Union[str, StudyId], Union[dict, "Study"]], List[Union[dict, "Study"]]]] = empty_dict()
+    frs_set: Optional[Union[Dict[Union[str, FieldResearchSiteId], Union[dict, FieldResearchSite]], List[Union[dict, FieldResearchSite]]]] = empty_dict()
+    cbfs_set: Optional[Union[Dict[Union[str, CollectingBiosamplesFromSiteId], Union[dict, CollectingBiosamplesFromSite]], List[Union[dict, CollectingBiosamplesFromSite]]]] = empty_dict()
     date_created: Optional[str] = None
     etl_software_version: Optional[str] = None
 
@@ -494,6 +520,10 @@ class Database(YAMLRoot):
         self._normalize_inlined_as_list(slot_name="read_based_taxonomy_analysis_activity_set", slot_type=ReadBasedTaxonomyAnalysisActivity, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="study_set", slot_type=Study, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="frs_set", slot_type=FieldResearchSite, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="cbfs_set", slot_type=CollectingBiosamplesFromSite, key_name="id", keyed=True)
 
         if self.date_created is not None and not isinstance(self.date_created, str):
             self.date_created = str(self.date_created)
@@ -666,7 +696,346 @@ class DataObject(NamedThing):
 
 
 @dataclass
-class Biosample(NamedThing):
+class Study(NamedThing):
+    """
+    A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying
+    projects.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC.Study
+    class_class_curie: ClassVar[str] = "nmdc:Study"
+    class_name: ClassVar[str] = "Study"
+    class_model_uri: ClassVar[URIRef] = NMDC.Study
+
+    id: Union[str, StudyId] = None
+    alternative_identifiers: Optional[Union[str, List[str]]] = empty_list()
+    related_identifiers: Optional[str] = None
+    emsl_proposal_identifier: Optional[str] = None
+    emsl_proposal_doi: Optional[str] = None
+    gold_study_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    mgnify_project_identifiers: Optional[str] = None
+    ecosystem: Optional[str] = None
+    ecosystem_category: Optional[str] = None
+    ecosystem_type: Optional[str] = None
+    ecosystem_subtype: Optional[str] = None
+    specific_ecosystem: Optional[str] = None
+    principal_investigator: Optional[Union[dict, "PersonValue"]] = None
+    doi: Optional[Union[dict, "AttributeValue"]] = None
+    title: Optional[str] = None
+    alternative_titles: Optional[Union[str, List[str]]] = empty_list()
+    alternative_descriptions: Optional[Union[str, List[str]]] = empty_list()
+    alternative_names: Optional[Union[str, List[str]]] = empty_list()
+    abstract: Optional[str] = None
+    objective: Optional[str] = None
+    websites: Optional[Union[str, List[str]]] = empty_list()
+    publications: Optional[Union[str, List[str]]] = empty_list()
+    ess_dive_datasets: Optional[Union[str, List[str]]] = empty_list()
+    type: Optional[str] = None
+    relevant_protocols: Optional[Union[str, List[str]]] = empty_list()
+    funding_sources: Optional[Union[str, List[str]]] = empty_list()
+    has_credit_associations: Optional[Union[Union[dict, "CreditAssociation"], List[Union[dict, "CreditAssociation"]]]] = empty_list()
+    study_image: Optional[Union[Union[dict, "ImageValue"], List[Union[dict, "ImageValue"]]]] = empty_list()
+    name: Optional[str] = None
+    description: Optional[str] = None
+    notes: Optional[str] = None
+    insdc_bioproject_identifiers: Optional[str] = None
+    emsl_project_identifier: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, StudyId):
+            self.id = StudyId(self.id)
+
+        if not isinstance(self.alternative_identifiers, list):
+            self.alternative_identifiers = [self.alternative_identifiers] if self.alternative_identifiers is not None else []
+        self.alternative_identifiers = [v if isinstance(v, str) else str(v) for v in self.alternative_identifiers]
+
+        if self.related_identifiers is not None and not isinstance(self.related_identifiers, str):
+            self.related_identifiers = str(self.related_identifiers)
+
+        if self.emsl_proposal_identifier is not None and not isinstance(self.emsl_proposal_identifier, str):
+            self.emsl_proposal_identifier = str(self.emsl_proposal_identifier)
+
+        if self.emsl_proposal_doi is not None and not isinstance(self.emsl_proposal_doi, str):
+            self.emsl_proposal_doi = str(self.emsl_proposal_doi)
+
+        if not isinstance(self.gold_study_identifiers, list):
+            self.gold_study_identifiers = [self.gold_study_identifiers] if self.gold_study_identifiers is not None else []
+        self.gold_study_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.gold_study_identifiers]
+
+        if self.mgnify_project_identifiers is not None and not isinstance(self.mgnify_project_identifiers, str):
+            self.mgnify_project_identifiers = str(self.mgnify_project_identifiers)
+
+        if self.ecosystem is not None and not isinstance(self.ecosystem, str):
+            self.ecosystem = str(self.ecosystem)
+
+        if self.ecosystem_category is not None and not isinstance(self.ecosystem_category, str):
+            self.ecosystem_category = str(self.ecosystem_category)
+
+        if self.ecosystem_type is not None and not isinstance(self.ecosystem_type, str):
+            self.ecosystem_type = str(self.ecosystem_type)
+
+        if self.ecosystem_subtype is not None and not isinstance(self.ecosystem_subtype, str):
+            self.ecosystem_subtype = str(self.ecosystem_subtype)
+
+        if self.specific_ecosystem is not None and not isinstance(self.specific_ecosystem, str):
+            self.specific_ecosystem = str(self.specific_ecosystem)
+
+        if self.principal_investigator is not None and not isinstance(self.principal_investigator, PersonValue):
+            self.principal_investigator = PersonValue(**as_dict(self.principal_investigator))
+
+        if self.doi is not None and not isinstance(self.doi, AttributeValue):
+            self.doi = AttributeValue(**as_dict(self.doi))
+
+        if self.title is not None and not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if not isinstance(self.alternative_titles, list):
+            self.alternative_titles = [self.alternative_titles] if self.alternative_titles is not None else []
+        self.alternative_titles = [v if isinstance(v, str) else str(v) for v in self.alternative_titles]
+
+        if not isinstance(self.alternative_descriptions, list):
+            self.alternative_descriptions = [self.alternative_descriptions] if self.alternative_descriptions is not None else []
+        self.alternative_descriptions = [v if isinstance(v, str) else str(v) for v in self.alternative_descriptions]
+
+        if not isinstance(self.alternative_names, list):
+            self.alternative_names = [self.alternative_names] if self.alternative_names is not None else []
+        self.alternative_names = [v if isinstance(v, str) else str(v) for v in self.alternative_names]
+
+        if self.abstract is not None and not isinstance(self.abstract, str):
+            self.abstract = str(self.abstract)
+
+        if self.objective is not None and not isinstance(self.objective, str):
+            self.objective = str(self.objective)
+
+        if not isinstance(self.websites, list):
+            self.websites = [self.websites] if self.websites is not None else []
+        self.websites = [v if isinstance(v, str) else str(v) for v in self.websites]
+
+        if not isinstance(self.publications, list):
+            self.publications = [self.publications] if self.publications is not None else []
+        self.publications = [v if isinstance(v, str) else str(v) for v in self.publications]
+
+        if not isinstance(self.ess_dive_datasets, list):
+            self.ess_dive_datasets = [self.ess_dive_datasets] if self.ess_dive_datasets is not None else []
+        self.ess_dive_datasets = [v if isinstance(v, str) else str(v) for v in self.ess_dive_datasets]
+
+        if self.type is not None and not isinstance(self.type, str):
+            self.type = str(self.type)
+
+        if not isinstance(self.relevant_protocols, list):
+            self.relevant_protocols = [self.relevant_protocols] if self.relevant_protocols is not None else []
+        self.relevant_protocols = [v if isinstance(v, str) else str(v) for v in self.relevant_protocols]
+
+        if not isinstance(self.funding_sources, list):
+            self.funding_sources = [self.funding_sources] if self.funding_sources is not None else []
+        self.funding_sources = [v if isinstance(v, str) else str(v) for v in self.funding_sources]
+
+        if not isinstance(self.has_credit_associations, list):
+            self.has_credit_associations = [self.has_credit_associations] if self.has_credit_associations is not None else []
+        self.has_credit_associations = [v if isinstance(v, CreditAssociation) else CreditAssociation(**as_dict(v)) for v in self.has_credit_associations]
+
+        if not isinstance(self.study_image, list):
+            self.study_image = [self.study_image] if self.study_image is not None else []
+        self.study_image = [v if isinstance(v, ImageValue) else ImageValue(**as_dict(v)) for v in self.study_image]
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.notes is not None and not isinstance(self.notes, str):
+            self.notes = str(self.notes)
+
+        if self.insdc_bioproject_identifiers is not None and not isinstance(self.insdc_bioproject_identifiers, str):
+            self.insdc_bioproject_identifiers = str(self.insdc_bioproject_identifiers)
+
+        if self.emsl_project_identifier is not None and not isinstance(self.emsl_project_identifier, str):
+            self.emsl_project_identifier = str(self.emsl_project_identifier)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class BiosampleProcessing(NamedThing):
+    """
+    A process that takes one or more biosamples as inputs and generates one or as outputs. Examples of outputs include
+    samples cultivated from another sample or data objects created by instruments runs.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC.BiosampleProcessing
+    class_class_curie: ClassVar[str] = "nmdc:BiosampleProcessing"
+    class_name: ClassVar[str] = "BiosampleProcessing"
+    class_model_uri: ClassVar[URIRef] = NMDC.BiosampleProcessing
+
+    id: Union[str, BiosampleProcessingId] = None
+    has_input: Optional[Union[Union[str, BiosampleId], List[Union[str, BiosampleId]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, BiosampleProcessingId):
+            self.id = BiosampleProcessingId(self.id)
+
+        if not isinstance(self.has_input, list):
+            self.has_input = [self.has_input] if self.has_input is not None else []
+        self.has_input = [v if isinstance(v, BiosampleId) else BiosampleId(v) for v in self.has_input]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class OmicsProcessing(BiosampleProcessing):
+    """
+    The methods and processes used to generate omics data from a biosample or organism.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC.OmicsProcessing
+    class_class_curie: ClassVar[str] = "nmdc:OmicsProcessing"
+    class_name: ClassVar[str] = "OmicsProcessing"
+    class_model_uri: ClassVar[URIRef] = NMDC.OmicsProcessing
+
+    id: Union[str, OmicsProcessingId] = None
+    add_date: Optional[str] = None
+    mod_date: Optional[str] = None
+    has_input: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
+    has_output: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
+    instrument_name: Optional[str] = None
+    ncbi_project_name: Optional[str] = None
+    omics_type: Optional[Union[dict, "ControlledTermValue"]] = None
+    part_of: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
+    principal_investigator: Optional[Union[dict, "PersonValue"]] = None
+    processing_institution: Optional[Union[str, "ProcessingInstitutionEnum"]] = None
+    type: Optional[str] = None
+    gold_sequencing_project_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    insdc_experiment_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    samp_vol_we_dna_ext: Optional[Union[dict, "QuantityValue"]] = None
+    nucl_acid_ext: Optional[Union[dict, "TextValue"]] = None
+    nucl_acid_amp: Optional[Union[dict, "TextValue"]] = None
+    target_gene: Optional[Union[dict, "TextValue"]] = None
+    target_subfragment: Optional[Union[dict, "TextValue"]] = None
+    pcr_primers: Optional[Union[dict, "TextValue"]] = None
+    pcr_cond: Optional[Union[dict, "TextValue"]] = None
+    seq_meth: Optional[Union[dict, "TextValue"]] = None
+    seq_quality_check: Optional[Union[dict, "TextValue"]] = None
+    chimera_check: Optional[Union[dict, "TextValue"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, OmicsProcessingId):
+            self.id = OmicsProcessingId(self.id)
+
+        if self._is_empty(self.has_input):
+            self.MissingRequiredField("has_input")
+        if not isinstance(self.has_input, list):
+            self.has_input = [self.has_input] if self.has_input is not None else []
+        self.has_input = [v if isinstance(v, BiosampleId) else BiosampleId(v) for v in self.has_input]
+
+        if self.add_date is not None and not isinstance(self.add_date, str):
+            self.add_date = str(self.add_date)
+
+        if self.mod_date is not None and not isinstance(self.mod_date, str):
+            self.mod_date = str(self.mod_date)
+
+        if not isinstance(self.has_input, list):
+            self.has_input = [self.has_input] if self.has_input is not None else []
+        self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
+
+        if not isinstance(self.has_output, list):
+            self.has_output = [self.has_output] if self.has_output is not None else []
+        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
+
+        if self.instrument_name is not None and not isinstance(self.instrument_name, str):
+            self.instrument_name = str(self.instrument_name)
+
+        if self.ncbi_project_name is not None and not isinstance(self.ncbi_project_name, str):
+            self.ncbi_project_name = str(self.ncbi_project_name)
+
+        if self.omics_type is not None and not isinstance(self.omics_type, ControlledTermValue):
+            self.omics_type = ControlledTermValue(**as_dict(self.omics_type))
+
+        if not isinstance(self.part_of, list):
+            self.part_of = [self.part_of] if self.part_of is not None else []
+        self.part_of = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.part_of]
+
+        if self.principal_investigator is not None and not isinstance(self.principal_investigator, PersonValue):
+            self.principal_investigator = PersonValue(**as_dict(self.principal_investigator))
+
+        if self.processing_institution is not None and not isinstance(self.processing_institution, ProcessingInstitutionEnum):
+            self.processing_institution = ProcessingInstitutionEnum(self.processing_institution)
+
+        if self.type is not None and not isinstance(self.type, str):
+            self.type = str(self.type)
+
+        if not isinstance(self.gold_sequencing_project_identifiers, list):
+            self.gold_sequencing_project_identifiers = [self.gold_sequencing_project_identifiers] if self.gold_sequencing_project_identifiers is not None else []
+        self.gold_sequencing_project_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.gold_sequencing_project_identifiers]
+
+        if not isinstance(self.insdc_experiment_identifiers, list):
+            self.insdc_experiment_identifiers = [self.insdc_experiment_identifiers] if self.insdc_experiment_identifiers is not None else []
+        self.insdc_experiment_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.insdc_experiment_identifiers]
+
+        if self.samp_vol_we_dna_ext is not None and not isinstance(self.samp_vol_we_dna_ext, QuantityValue):
+            self.samp_vol_we_dna_ext = QuantityValue(**as_dict(self.samp_vol_we_dna_ext))
+
+        if self.nucl_acid_ext is not None and not isinstance(self.nucl_acid_ext, TextValue):
+            self.nucl_acid_ext = TextValue(**as_dict(self.nucl_acid_ext))
+
+        if self.nucl_acid_amp is not None and not isinstance(self.nucl_acid_amp, TextValue):
+            self.nucl_acid_amp = TextValue(**as_dict(self.nucl_acid_amp))
+
+        if self.target_gene is not None and not isinstance(self.target_gene, TextValue):
+            self.target_gene = TextValue(**as_dict(self.target_gene))
+
+        if self.target_subfragment is not None and not isinstance(self.target_subfragment, TextValue):
+            self.target_subfragment = TextValue(**as_dict(self.target_subfragment))
+
+        if self.pcr_primers is not None and not isinstance(self.pcr_primers, TextValue):
+            self.pcr_primers = TextValue(**as_dict(self.pcr_primers))
+
+        if self.pcr_cond is not None and not isinstance(self.pcr_cond, TextValue):
+            self.pcr_cond = TextValue(**as_dict(self.pcr_cond))
+
+        if self.seq_meth is not None and not isinstance(self.seq_meth, TextValue):
+            self.seq_meth = TextValue(**as_dict(self.seq_meth))
+
+        if self.seq_quality_check is not None and not isinstance(self.seq_quality_check, TextValue):
+            self.seq_quality_check = TextValue(**as_dict(self.seq_quality_check))
+
+        if self.chimera_check is not None and not isinstance(self.chimera_check, TextValue):
+            self.chimera_check = TextValue(**as_dict(self.chimera_check))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class MaterialEntity(NamedThing):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC.MaterialEntity
+    class_class_curie: ClassVar[str] = "nmdc:MaterialEntity"
+    class_name: ClassVar[str] = "MaterialEntity"
+    class_model_uri: ClassVar[URIRef] = NMDC.MaterialEntity
+
+    id: Union[str, MaterialEntityId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MaterialEntityId):
+            self.id = MaterialEntityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Biosample(MaterialEntity):
     """
     Biological source material which can be characterized by an experiment.
     """
@@ -682,6 +1051,7 @@ class Biosample(NamedThing):
     env_broad_scale: Union[dict, "ControlledIdentifiedTermValue"] = None
     env_local_scale: Union[dict, "ControlledIdentifiedTermValue"] = None
     env_medium: Union[dict, "ControlledIdentifiedTermValue"] = None
+    collected_from: Optional[Union[str, FieldResearchSiteId]] = None
     type: Optional[str] = None
     img_identifiers: Optional[Union[str, List[str]]] = empty_list()
     samp_name: Optional[str] = None
@@ -924,6 +1294,9 @@ class Biosample(NamedThing):
             self.MissingRequiredField("env_medium")
         if not isinstance(self.env_medium, ControlledIdentifiedTermValue):
             self.env_medium = ControlledIdentifiedTermValue(**as_dict(self.env_medium))
+
+        if self.collected_from is not None and not isinstance(self.collected_from, FieldResearchSiteId):
+            self.collected_from = FieldResearchSiteId(self.collected_from)
 
         if self.type is not None and not isinstance(self.type, str):
             self.type = str(self.type)
@@ -1586,320 +1959,132 @@ class Biosample(NamedThing):
 
 
 @dataclass
-class Study(NamedThing):
-    """
-    A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying
-    projects.
-    """
+class AnalyticalSample(MaterialEntity):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMDC.Study
-    class_class_curie: ClassVar[str] = "nmdc:Study"
-    class_name: ClassVar[str] = "Study"
-    class_model_uri: ClassVar[URIRef] = NMDC.Study
+    class_class_uri: ClassVar[URIRef] = NMDC.AnalyticalSample
+    class_class_curie: ClassVar[str] = "nmdc:AnalyticalSample"
+    class_name: ClassVar[str] = "AnalyticalSample"
+    class_model_uri: ClassVar[URIRef] = NMDC.AnalyticalSample
 
-    id: Union[str, StudyId] = None
-    alternative_identifiers: Optional[Union[str, List[str]]] = empty_list()
-    related_identifiers: Optional[str] = None
-    emsl_proposal_identifier: Optional[str] = None
-    emsl_proposal_doi: Optional[str] = None
-    gold_study_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
-    mgnify_project_identifiers: Optional[str] = None
-    ecosystem: Optional[str] = None
-    ecosystem_category: Optional[str] = None
-    ecosystem_type: Optional[str] = None
-    ecosystem_subtype: Optional[str] = None
-    specific_ecosystem: Optional[str] = None
-    principal_investigator: Optional[Union[dict, "PersonValue"]] = None
-    doi: Optional[Union[dict, "AttributeValue"]] = None
-    title: Optional[str] = None
-    alternative_titles: Optional[Union[str, List[str]]] = empty_list()
-    alternative_descriptions: Optional[Union[str, List[str]]] = empty_list()
-    alternative_names: Optional[Union[str, List[str]]] = empty_list()
-    abstract: Optional[str] = None
-    objective: Optional[str] = None
-    websites: Optional[Union[str, List[str]]] = empty_list()
-    publications: Optional[Union[str, List[str]]] = empty_list()
-    ess_dive_datasets: Optional[Union[str, List[str]]] = empty_list()
-    type: Optional[str] = None
-    relevant_protocols: Optional[Union[str, List[str]]] = empty_list()
-    funding_sources: Optional[Union[str, List[str]]] = empty_list()
-    has_credit_associations: Optional[Union[Union[dict, "CreditAssociation"], List[Union[dict, "CreditAssociation"]]]] = empty_list()
-    study_image: Optional[Union[Union[dict, "ImageValue"], List[Union[dict, "ImageValue"]]]] = empty_list()
-    name: Optional[str] = None
-    description: Optional[str] = None
-    notes: Optional[str] = None
-    insdc_bioproject_identifiers: Optional[str] = None
-    emsl_project_identifier: Optional[str] = None
+    id: Union[str, AnalyticalSampleId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, StudyId):
-            self.id = StudyId(self.id)
-
-        if not isinstance(self.alternative_identifiers, list):
-            self.alternative_identifiers = [self.alternative_identifiers] if self.alternative_identifiers is not None else []
-        self.alternative_identifiers = [v if isinstance(v, str) else str(v) for v in self.alternative_identifiers]
-
-        if self.related_identifiers is not None and not isinstance(self.related_identifiers, str):
-            self.related_identifiers = str(self.related_identifiers)
-
-        if self.emsl_proposal_identifier is not None and not isinstance(self.emsl_proposal_identifier, str):
-            self.emsl_proposal_identifier = str(self.emsl_proposal_identifier)
-
-        if self.emsl_proposal_doi is not None and not isinstance(self.emsl_proposal_doi, str):
-            self.emsl_proposal_doi = str(self.emsl_proposal_doi)
-
-        if not isinstance(self.gold_study_identifiers, list):
-            self.gold_study_identifiers = [self.gold_study_identifiers] if self.gold_study_identifiers is not None else []
-        self.gold_study_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.gold_study_identifiers]
-
-        if self.mgnify_project_identifiers is not None and not isinstance(self.mgnify_project_identifiers, str):
-            self.mgnify_project_identifiers = str(self.mgnify_project_identifiers)
-
-        if self.ecosystem is not None and not isinstance(self.ecosystem, str):
-            self.ecosystem = str(self.ecosystem)
-
-        if self.ecosystem_category is not None and not isinstance(self.ecosystem_category, str):
-            self.ecosystem_category = str(self.ecosystem_category)
-
-        if self.ecosystem_type is not None and not isinstance(self.ecosystem_type, str):
-            self.ecosystem_type = str(self.ecosystem_type)
-
-        if self.ecosystem_subtype is not None and not isinstance(self.ecosystem_subtype, str):
-            self.ecosystem_subtype = str(self.ecosystem_subtype)
-
-        if self.specific_ecosystem is not None and not isinstance(self.specific_ecosystem, str):
-            self.specific_ecosystem = str(self.specific_ecosystem)
-
-        if self.principal_investigator is not None and not isinstance(self.principal_investigator, PersonValue):
-            self.principal_investigator = PersonValue(**as_dict(self.principal_investigator))
-
-        if self.doi is not None and not isinstance(self.doi, AttributeValue):
-            self.doi = AttributeValue(**as_dict(self.doi))
-
-        if self.title is not None and not isinstance(self.title, str):
-            self.title = str(self.title)
-
-        if not isinstance(self.alternative_titles, list):
-            self.alternative_titles = [self.alternative_titles] if self.alternative_titles is not None else []
-        self.alternative_titles = [v if isinstance(v, str) else str(v) for v in self.alternative_titles]
-
-        if not isinstance(self.alternative_descriptions, list):
-            self.alternative_descriptions = [self.alternative_descriptions] if self.alternative_descriptions is not None else []
-        self.alternative_descriptions = [v if isinstance(v, str) else str(v) for v in self.alternative_descriptions]
-
-        if not isinstance(self.alternative_names, list):
-            self.alternative_names = [self.alternative_names] if self.alternative_names is not None else []
-        self.alternative_names = [v if isinstance(v, str) else str(v) for v in self.alternative_names]
-
-        if self.abstract is not None and not isinstance(self.abstract, str):
-            self.abstract = str(self.abstract)
-
-        if self.objective is not None and not isinstance(self.objective, str):
-            self.objective = str(self.objective)
-
-        if not isinstance(self.websites, list):
-            self.websites = [self.websites] if self.websites is not None else []
-        self.websites = [v if isinstance(v, str) else str(v) for v in self.websites]
-
-        if not isinstance(self.publications, list):
-            self.publications = [self.publications] if self.publications is not None else []
-        self.publications = [v if isinstance(v, str) else str(v) for v in self.publications]
-
-        if not isinstance(self.ess_dive_datasets, list):
-            self.ess_dive_datasets = [self.ess_dive_datasets] if self.ess_dive_datasets is not None else []
-        self.ess_dive_datasets = [v if isinstance(v, str) else str(v) for v in self.ess_dive_datasets]
-
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
-
-        if not isinstance(self.relevant_protocols, list):
-            self.relevant_protocols = [self.relevant_protocols] if self.relevant_protocols is not None else []
-        self.relevant_protocols = [v if isinstance(v, str) else str(v) for v in self.relevant_protocols]
-
-        if not isinstance(self.funding_sources, list):
-            self.funding_sources = [self.funding_sources] if self.funding_sources is not None else []
-        self.funding_sources = [v if isinstance(v, str) else str(v) for v in self.funding_sources]
-
-        if not isinstance(self.has_credit_associations, list):
-            self.has_credit_associations = [self.has_credit_associations] if self.has_credit_associations is not None else []
-        self.has_credit_associations = [v if isinstance(v, CreditAssociation) else CreditAssociation(**as_dict(v)) for v in self.has_credit_associations]
-
-        if not isinstance(self.study_image, list):
-            self.study_image = [self.study_image] if self.study_image is not None else []
-        self.study_image = [v if isinstance(v, ImageValue) else ImageValue(**as_dict(v)) for v in self.study_image]
-
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if self.notes is not None and not isinstance(self.notes, str):
-            self.notes = str(self.notes)
-
-        if self.insdc_bioproject_identifiers is not None and not isinstance(self.insdc_bioproject_identifiers, str):
-            self.insdc_bioproject_identifiers = str(self.insdc_bioproject_identifiers)
-
-        if self.emsl_project_identifier is not None and not isinstance(self.emsl_project_identifier, str):
-            self.emsl_project_identifier = str(self.emsl_project_identifier)
+        if not isinstance(self.id, AnalyticalSampleId):
+            self.id = AnalyticalSampleId(self.id)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class BiosampleProcessing(NamedThing):
-    """
-    A process that takes one or more biosamples as inputs and generates one or as outputs. Examples of outputs include
-    samples cultivated from another sample or data objects created by instruments runs.
-    """
+class Site(MaterialEntity):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMDC.BiosampleProcessing
-    class_class_curie: ClassVar[str] = "nmdc:BiosampleProcessing"
-    class_name: ClassVar[str] = "BiosampleProcessing"
-    class_model_uri: ClassVar[URIRef] = NMDC.BiosampleProcessing
+    class_class_uri: ClassVar[URIRef] = NMDC.Site
+    class_class_curie: ClassVar[str] = "nmdc:Site"
+    class_name: ClassVar[str] = "Site"
+    class_model_uri: ClassVar[URIRef] = NMDC.Site
 
-    id: Union[str, BiosampleProcessingId] = None
-    has_input: Optional[Union[Union[str, BiosampleId], List[Union[str, BiosampleId]]]] = empty_list()
+    id: Union[str, SiteId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, BiosampleProcessingId):
-            self.id = BiosampleProcessingId(self.id)
-
-        if not isinstance(self.has_input, list):
-            self.has_input = [self.has_input] if self.has_input is not None else []
-        self.has_input = [v if isinstance(v, BiosampleId) else BiosampleId(v) for v in self.has_input]
+        if not isinstance(self.id, SiteId):
+            self.id = SiteId(self.id)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass
-class OmicsProcessing(BiosampleProcessing):
+class FieldResearchSite(Site):
     """
-    The methods and processes used to generate omics data from a biosample or organism.
+    A site, outside of a laboratory, from which biosamples may be collected.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMDC.OmicsProcessing
-    class_class_curie: ClassVar[str] = "nmdc:OmicsProcessing"
-    class_name: ClassVar[str] = "OmicsProcessing"
-    class_model_uri: ClassVar[URIRef] = NMDC.OmicsProcessing
+    class_class_uri: ClassVar[URIRef] = NMDC.FieldResearchSite
+    class_class_curie: ClassVar[str] = "nmdc:FieldResearchSite"
+    class_name: ClassVar[str] = "FieldResearchSite"
+    class_model_uri: ClassVar[URIRef] = NMDC.FieldResearchSite
 
-    id: Union[str, OmicsProcessingId] = None
-    add_date: Optional[str] = None
-    mod_date: Optional[str] = None
-    has_input: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
-    has_output: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
-    instrument_name: Optional[str] = None
-    ncbi_project_name: Optional[str] = None
-    omics_type: Optional[Union[dict, "ControlledTermValue"]] = None
-    part_of: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
-    principal_investigator: Optional[Union[dict, "PersonValue"]] = None
-    processing_institution: Optional[Union[str, "ProcessingInstitutionEnum"]] = None
-    type: Optional[str] = None
-    gold_sequencing_project_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
-    insdc_experiment_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
-    samp_vol_we_dna_ext: Optional[Union[dict, "QuantityValue"]] = None
-    nucl_acid_ext: Optional[Union[dict, "TextValue"]] = None
-    nucl_acid_amp: Optional[Union[dict, "TextValue"]] = None
-    target_gene: Optional[Union[dict, "TextValue"]] = None
-    target_subfragment: Optional[Union[dict, "TextValue"]] = None
-    pcr_primers: Optional[Union[dict, "TextValue"]] = None
-    pcr_cond: Optional[Union[dict, "TextValue"]] = None
-    seq_meth: Optional[Union[dict, "TextValue"]] = None
-    seq_quality_check: Optional[Union[dict, "TextValue"]] = None
-    chimera_check: Optional[Union[dict, "TextValue"]] = None
+    id: Union[str, FieldResearchSiteId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, OmicsProcessingId):
-            self.id = OmicsProcessingId(self.id)
+        if not isinstance(self.id, FieldResearchSiteId):
+            self.id = FieldResearchSiteId(self.id)
 
-        if self._is_empty(self.has_input):
-            self.MissingRequiredField("has_input")
-        if not isinstance(self.has_input, list):
-            self.has_input = [self.has_input] if self.has_input is not None else []
-        self.has_input = [v if isinstance(v, BiosampleId) else BiosampleId(v) for v in self.has_input]
+        super().__post_init__(**kwargs)
 
-        if self.add_date is not None and not isinstance(self.add_date, str):
-            self.add_date = str(self.add_date)
 
-        if self.mod_date is not None and not isinstance(self.mod_date, str):
-            self.mod_date = str(self.mod_date)
+@dataclass
+class PlannedProcess(NamedThing):
+    _inherited_slots: ClassVar[List[str]] = []
 
-        if not isinstance(self.has_input, list):
-            self.has_input = [self.has_input] if self.has_input is not None else []
-        self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
+    class_class_uri: ClassVar[URIRef] = OBI["0000011"]
+    class_class_curie: ClassVar[str] = "OBI:0000011"
+    class_name: ClassVar[str] = "PlannedProcess"
+    class_model_uri: ClassVar[URIRef] = NMDC.PlannedProcess
 
-        if not isinstance(self.has_output, list):
-            self.has_output = [self.has_output] if self.has_output is not None else []
-        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
+    id: Union[str, PlannedProcessId] = None
+    has_inputs: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
+    has_outputs: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
+    participating_agent: Optional[Union[dict, "Agent"]] = None
 
-        if self.instrument_name is not None and not isinstance(self.instrument_name, str):
-            self.instrument_name = str(self.instrument_name)
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PlannedProcessId):
+            self.id = PlannedProcessId(self.id)
 
-        if self.ncbi_project_name is not None and not isinstance(self.ncbi_project_name, str):
-            self.ncbi_project_name = str(self.ncbi_project_name)
+        if not isinstance(self.has_inputs, list):
+            self.has_inputs = [self.has_inputs] if self.has_inputs is not None else []
+        self.has_inputs = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_inputs]
 
-        if self.omics_type is not None and not isinstance(self.omics_type, ControlledTermValue):
-            self.omics_type = ControlledTermValue(**as_dict(self.omics_type))
+        if not isinstance(self.has_outputs, list):
+            self.has_outputs = [self.has_outputs] if self.has_outputs is not None else []
+        self.has_outputs = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_outputs]
 
-        if not isinstance(self.part_of, list):
-            self.part_of = [self.part_of] if self.part_of is not None else []
-        self.part_of = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.part_of]
+        if self.participating_agent is not None and not isinstance(self.participating_agent, Agent):
+            self.participating_agent = Agent(**as_dict(self.participating_agent))
 
-        if self.principal_investigator is not None and not isinstance(self.principal_investigator, PersonValue):
-            self.principal_investigator = PersonValue(**as_dict(self.principal_investigator))
+        super().__post_init__(**kwargs)
 
-        if self.processing_institution is not None and not isinstance(self.processing_institution, ProcessingInstitutionEnum):
-            self.processing_institution = ProcessingInstitutionEnum(self.processing_institution)
 
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
+@dataclass
+class CollectingBiosamplesFromSite(PlannedProcess):
+    _inherited_slots: ClassVar[List[str]] = []
 
-        if not isinstance(self.gold_sequencing_project_identifiers, list):
-            self.gold_sequencing_project_identifiers = [self.gold_sequencing_project_identifiers] if self.gold_sequencing_project_identifiers is not None else []
-        self.gold_sequencing_project_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.gold_sequencing_project_identifiers]
+    class_class_uri: ClassVar[URIRef] = NMDC.CollectingBiosamplesFromSite
+    class_class_curie: ClassVar[str] = "nmdc:CollectingBiosamplesFromSite"
+    class_name: ClassVar[str] = "CollectingBiosamplesFromSite"
+    class_model_uri: ClassVar[URIRef] = NMDC.CollectingBiosamplesFromSite
 
-        if not isinstance(self.insdc_experiment_identifiers, list):
-            self.insdc_experiment_identifiers = [self.insdc_experiment_identifiers] if self.insdc_experiment_identifiers is not None else []
-        self.insdc_experiment_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.insdc_experiment_identifiers]
+    id: Union[str, CollectingBiosamplesFromSiteId] = None
+    has_inputs: Union[Union[str, SiteId], List[Union[str, SiteId]]] = None
+    has_outputs: Union[Union[str, BiosampleId], List[Union[str, BiosampleId]]] = None
 
-        if self.samp_vol_we_dna_ext is not None and not isinstance(self.samp_vol_we_dna_ext, QuantityValue):
-            self.samp_vol_we_dna_ext = QuantityValue(**as_dict(self.samp_vol_we_dna_ext))
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, CollectingBiosamplesFromSiteId):
+            self.id = CollectingBiosamplesFromSiteId(self.id)
 
-        if self.nucl_acid_ext is not None and not isinstance(self.nucl_acid_ext, TextValue):
-            self.nucl_acid_ext = TextValue(**as_dict(self.nucl_acid_ext))
+        if self._is_empty(self.has_inputs):
+            self.MissingRequiredField("has_inputs")
+        if not isinstance(self.has_inputs, list):
+            self.has_inputs = [self.has_inputs] if self.has_inputs is not None else []
+        self.has_inputs = [v if isinstance(v, SiteId) else SiteId(v) for v in self.has_inputs]
 
-        if self.nucl_acid_amp is not None and not isinstance(self.nucl_acid_amp, TextValue):
-            self.nucl_acid_amp = TextValue(**as_dict(self.nucl_acid_amp))
-
-        if self.target_gene is not None and not isinstance(self.target_gene, TextValue):
-            self.target_gene = TextValue(**as_dict(self.target_gene))
-
-        if self.target_subfragment is not None and not isinstance(self.target_subfragment, TextValue):
-            self.target_subfragment = TextValue(**as_dict(self.target_subfragment))
-
-        if self.pcr_primers is not None and not isinstance(self.pcr_primers, TextValue):
-            self.pcr_primers = TextValue(**as_dict(self.pcr_primers))
-
-        if self.pcr_cond is not None and not isinstance(self.pcr_cond, TextValue):
-            self.pcr_cond = TextValue(**as_dict(self.pcr_cond))
-
-        if self.seq_meth is not None and not isinstance(self.seq_meth, TextValue):
-            self.seq_meth = TextValue(**as_dict(self.seq_meth))
-
-        if self.seq_quality_check is not None and not isinstance(self.seq_quality_check, TextValue):
-            self.seq_quality_check = TextValue(**as_dict(self.seq_quality_check))
-
-        if self.chimera_check is not None and not isinstance(self.chimera_check, TextValue):
-            self.chimera_check = TextValue(**as_dict(self.chimera_check))
+        if self._is_empty(self.has_outputs):
+            self.MissingRequiredField("has_outputs")
+        if not isinstance(self.has_outputs, list):
+            self.has_outputs = [self.has_outputs] if self.has_outputs is not None else []
+        self.has_outputs = [v if isinstance(v, BiosampleId) else BiosampleId(v) for v in self.has_outputs]
 
         super().__post_init__(**kwargs)
 
@@ -6100,6 +6285,9 @@ slots.alternative_descriptions = Slot(uri=NMDC.alternative_descriptions, name="a
 slots.alternative_identifiers = Slot(uri=NMDC.alternative_identifiers, name="alternative_identifiers", curie=NMDC.curie('alternative_identifiers'),
                    model_uri=NMDC.alternative_identifiers, domain=None, range=Optional[Union[str, List[str]]])
 
+slots.collected_from = Slot(uri=NMDC.collected_from, name="collected_from", curie=NMDC.curie('collected_from'),
+                   model_uri=NMDC.collected_from, domain=Biosample, range=Optional[Union[str, FieldResearchSiteId]])
+
 slots.emsl_project_identifier = Slot(uri=NMDC.emsl_project_identifier, name="emsl_project_identifier", curie=NMDC.curie('emsl_project_identifier'),
                    model_uri=NMDC.emsl_project_identifier, domain=None, range=Optional[str])
 
@@ -6318,6 +6506,15 @@ slots.processing_institution = Slot(uri=NMDC.processing_institution, name="proce
 
 slots.completion_date = Slot(uri=NMDC.completion_date, name="completion_date", curie=NMDC.curie('completion_date'),
                    model_uri=NMDC.completion_date, domain=None, range=Optional[str])
+
+slots.has_inputs = Slot(uri=NMDC.has_inputs, name="has_inputs", curie=NMDC.curie('has_inputs'),
+                   model_uri=NMDC.has_inputs, domain=PlannedProcess, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
+
+slots.has_outputs = Slot(uri=NMDC.has_outputs, name="has_outputs", curie=NMDC.curie('has_outputs'),
+                   model_uri=NMDC.has_outputs, domain=PlannedProcess, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
+
+slots.participating_agent = Slot(uri=NMDC.participating_agent, name="participating_agent", curie=NMDC.curie('participating_agent'),
+                   model_uri=NMDC.participating_agent, domain=PlannedProcess, range=Optional[Union[dict, "Agent"]])
 
 slots.language = Slot(uri=NMDC.language, name="language", curie=NMDC.curie('language'),
                    model_uri=NMDC.language, domain=None, range=Optional[str])
@@ -8423,6 +8620,12 @@ slots.input_read_bases = Slot(uri=NMDC.input_read_bases, name="input_read_bases"
 slots.output_read_bases = Slot(uri=NMDC.output_read_bases, name="output_read_bases", curie=NMDC.curie('output_read_bases'),
                    model_uri=NMDC.output_read_bases, domain=None, range=Optional[str])
 
+slots.database__frs_set = Slot(uri=NMDC.frs_set, name="database__frs_set", curie=NMDC.curie('frs_set'),
+                   model_uri=NMDC.database__frs_set, domain=Database, range=Optional[Union[Dict[Union[str, FieldResearchSiteId], Union[dict, FieldResearchSite]], List[Union[dict, FieldResearchSite]]]])
+
+slots.database__cbfs_set = Slot(uri=NMDC.cbfs_set, name="database__cbfs_set", curie=NMDC.curie('cbfs_set'),
+                   model_uri=NMDC.database__cbfs_set, domain=Database, range=Optional[Union[Dict[Union[str, CollectingBiosamplesFromSiteId], Union[dict, CollectingBiosamplesFromSite]], List[Union[dict, CollectingBiosamplesFromSite]]]])
+
 slots.magBin__bin_name = Slot(uri=NMDC.bin_name, name="magBin__bin_name", curie=NMDC.curie('bin_name'),
                    model_uri=NMDC.magBin__bin_name, domain=None, range=Optional[str])
 
@@ -8503,6 +8706,12 @@ slots.ReactionActivity_material_output = Slot(uri=NMDC.material_output, name="Re
 
 slots.ReactionActivity_reaction_time = Slot(uri=NMDC.reaction_time, name="ReactionActivity_reaction_time", curie=NMDC.curie('reaction_time'),
                    model_uri=NMDC.ReactionActivity_reaction_time, domain=ReactionActivity, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.CollectingBiosamplesFromSite_has_inputs = Slot(uri=NMDC.has_inputs, name="CollectingBiosamplesFromSite_has_inputs", curie=NMDC.curie('has_inputs'),
+                   model_uri=NMDC.CollectingBiosamplesFromSite_has_inputs, domain=CollectingBiosamplesFromSite, range=Union[Union[str, SiteId], List[Union[str, SiteId]]])
+
+slots.CollectingBiosamplesFromSite_has_outputs = Slot(uri=NMDC.has_outputs, name="CollectingBiosamplesFromSite_has_outputs", curie=NMDC.curie('has_outputs'),
+                   model_uri=NMDC.CollectingBiosamplesFromSite_has_outputs, domain=CollectingBiosamplesFromSite, range=Union[Union[str, BiosampleId], List[Union[str, BiosampleId]]])
 
 slots.Database_date_created = Slot(uri=NMDC.date_created, name="Database_date_created", curie=NMDC.curie('date_created'),
                    model_uri=NMDC.Database_date_created, domain=Database, range=Optional[str])

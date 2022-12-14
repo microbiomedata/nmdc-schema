@@ -1,5 +1,5 @@
 # Auto generated from core.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-10-03T14:45:07
+# Generation date: 2022-12-14T11:06:45
 # Schema: NMDC-Core
 #
 # id: https://microbiomedata/schema/core
@@ -98,6 +98,22 @@ class NamedThingId(extended_str):
     pass
 
 
+class MaterialEntityId(NamedThingId):
+    pass
+
+
+class AnalyticalSampleId(MaterialEntityId):
+    pass
+
+
+class SiteId(MaterialEntityId):
+    pass
+
+
+class PlannedProcessId(NamedThingId):
+    pass
+
+
 class OntologyClassId(NamedThingId):
     pass
 
@@ -158,6 +174,100 @@ class NamedThing(YAMLRoot):
         if not isinstance(self.alternative_identifiers, list):
             self.alternative_identifiers = [self.alternative_identifiers] if self.alternative_identifiers is not None else []
         self.alternative_identifiers = [v if isinstance(v, str) else str(v) for v in self.alternative_identifiers]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class MaterialEntity(NamedThing):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC.MaterialEntity
+    class_class_curie: ClassVar[str] = "nmdc:MaterialEntity"
+    class_name: ClassVar[str] = "MaterialEntity"
+    class_model_uri: ClassVar[URIRef] = NMDC.MaterialEntity
+
+    id: Union[str, MaterialEntityId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MaterialEntityId):
+            self.id = MaterialEntityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class AnalyticalSample(MaterialEntity):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC.AnalyticalSample
+    class_class_curie: ClassVar[str] = "nmdc:AnalyticalSample"
+    class_name: ClassVar[str] = "AnalyticalSample"
+    class_model_uri: ClassVar[URIRef] = NMDC.AnalyticalSample
+
+    id: Union[str, AnalyticalSampleId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, AnalyticalSampleId):
+            self.id = AnalyticalSampleId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class Site(MaterialEntity):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC.Site
+    class_class_curie: ClassVar[str] = "nmdc:Site"
+    class_name: ClassVar[str] = "Site"
+    class_model_uri: ClassVar[URIRef] = NMDC.Site
+
+    id: Union[str, SiteId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SiteId):
+            self.id = SiteId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class PlannedProcess(NamedThing):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = OBI["0000011"]
+    class_class_curie: ClassVar[str] = "OBI:0000011"
+    class_name: ClassVar[str] = "PlannedProcess"
+    class_model_uri: ClassVar[URIRef] = NMDC.PlannedProcess
+
+    id: Union[str, PlannedProcessId] = None
+    has_inputs: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
+    has_outputs: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
+    participating_agent: Optional[Union[dict, "Agent"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PlannedProcessId):
+            self.id = PlannedProcessId(self.id)
+
+        if not isinstance(self.has_inputs, list):
+            self.has_inputs = [self.has_inputs] if self.has_inputs is not None else []
+        self.has_inputs = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_inputs]
+
+        if not isinstance(self.has_outputs, list):
+            self.has_outputs = [self.has_outputs] if self.has_outputs is not None else []
+        self.has_outputs = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_outputs]
+
+        if self.participating_agent is not None and not isinstance(self.participating_agent, Agent):
+            self.participating_agent = Agent(**as_dict(self.participating_agent))
 
         super().__post_init__(**kwargs)
 
@@ -755,6 +865,29 @@ class ControlledTermValue(AttributeValue):
 
 
 @dataclass
+class ControlledIdentifiedTermValue(ControlledTermValue):
+    """
+    A controlled term or class from an ontology, requiring the presence of term with an id
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC.ControlledIdentifiedTermValue
+    class_class_curie: ClassVar[str] = "nmdc:ControlledIdentifiedTermValue"
+    class_name: ClassVar[str] = "ControlledIdentifiedTermValue"
+    class_model_uri: ClassVar[URIRef] = NMDC.ControlledIdentifiedTermValue
+
+    term: Union[dict, OntologyClass] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.term):
+            self.MissingRequiredField("term")
+        if not isinstance(self.term, OntologyClass):
+            self.term = OntologyClass(**as_dict(self.term))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class GeolocationValue(AttributeValue):
     """
     A normalized value for a location on the earth's surface
@@ -862,6 +995,15 @@ class Agent(YAMLRoot):
 class slots:
     pass
 
+slots.has_inputs = Slot(uri=NMDC.has_inputs, name="has_inputs", curie=NMDC.curie('has_inputs'),
+                   model_uri=NMDC.has_inputs, domain=PlannedProcess, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
+
+slots.has_outputs = Slot(uri=NMDC.has_outputs, name="has_outputs", curie=NMDC.curie('has_outputs'),
+                   model_uri=NMDC.has_outputs, domain=PlannedProcess, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
+
+slots.participating_agent = Slot(uri=NMDC.participating_agent, name="participating_agent", curie=NMDC.curie('participating_agent'),
+                   model_uri=NMDC.participating_agent, domain=PlannedProcess, range=Optional[Union[dict, "Agent"]])
+
 slots.language = Slot(uri=NMDC.language, name="language", curie=NMDC.curie('language'),
                    model_uri=NMDC.language, domain=None, range=Optional[str])
 
@@ -892,7 +1034,7 @@ slots.latitude = Slot(uri=WGS84.lat, name="latitude", curie=WGS84.curie('lat'),
 slots.longitude = Slot(uri=WGS84.long, name="longitude", curie=WGS84.curie('long'),
                    model_uri=NMDC.longitude, domain=GeolocationValue, range=Optional[float], mappings = [SCHEMA.longitude])
 
-slots.term = Slot(uri=RDF.type, name="term", curie=RDF.curie('type'),
+slots.term = Slot(uri=NMDC.term, name="term", curie=NMDC.curie('term'),
                    model_uri=NMDC.term, domain=ControlledTermValue, range=Optional[Union[dict, OntologyClass]])
 
 slots.orcid = Slot(uri=NMDC.orcid, name="orcid", curie=NMDC.curie('orcid'),
@@ -1172,6 +1314,9 @@ slots.ChemicalEntity_smiles = Slot(uri=NMDC.smiles, name="ChemicalEntity_smiles"
 
 slots.ChemicalEntity_chemical_formula = Slot(uri=NMDC.chemical_formula, name="ChemicalEntity_chemical_formula", curie=NMDC.curie('chemical_formula'),
                    model_uri=NMDC.ChemicalEntity_chemical_formula, domain=ChemicalEntity, range=Optional[str])
+
+slots.ControlledIdentifiedTermValue_term = Slot(uri=NMDC.term, name="ControlledIdentifiedTermValue_term", curie=NMDC.curie('term'),
+                   model_uri=NMDC.ControlledIdentifiedTermValue_term, domain=ControlledIdentifiedTermValue, range=Union[dict, OntologyClass])
 
 slots.GeolocationValue_has_raw_value = Slot(uri=NMDC.has_raw_value, name="GeolocationValue_has_raw_value", curie=NMDC.curie('has_raw_value'),
                    model_uri=NMDC.GeolocationValue_has_raw_value, domain=GeolocationValue, range=Optional[str])

@@ -1,5 +1,5 @@
 # Auto generated from sample_id.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-10-03T14:44:44
+# Generation date: 2022-12-14T11:06:52
 # Schema: sample_id
 #
 # id: https://microbiomedata/schema/sample_id
