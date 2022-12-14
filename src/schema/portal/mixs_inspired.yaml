@@ -21,7 +21,7 @@ slots:
       for incubation samples.
     title: incubation collection date
     notes:
-    - MIxS collection_date accepts (truncated) ISO8601. DH taking arb prec date only
+    - MIxS collection_date accepts (truncated) ISO8601. DH taking arbitrary precision date only
     comments:
     - Date should be formatted as YYYY(-MM(-DD)). Ie, 2021-04-15, 2021-04 and 2021
       are all acceptable.
@@ -207,7 +207,7 @@ slots:
     description: Date the incubation was started. Only relevant for incubation samples.
     title: incubation start date
     notes:
-    - MIxS collection_date accepts (truncated) ISO8601. DH taking arb prec date only
+    - MIxS collection_date accepts (truncated) ISO8601. DH taking arbitrary precision date only
     comments:
     - Date should be formatted as YYYY(-MM(-DD)). Ie, 2021-04-15, 2021-04 and 2021
       are all acceptable.
