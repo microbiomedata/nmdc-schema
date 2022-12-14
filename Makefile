@@ -18,6 +18,8 @@ clean: clean-artifacts clean-docs
 squeaky-clean: clean clean-package from_mongo_cleanup # NOT mixs_clean
 squeaky-all: squeaky-clean target all  test-data build-nmdc_schema
 	poetry install
+	# shouldn't be creating this in the first place
+	rm -rf doc
 
 target:
 	mkdir -p target
@@ -61,9 +63,6 @@ stage-%: gen-%
 
 
 ###  -- MARKDOWN DOCS AND SLIDES --
-# Generate documentation ready for mkdocs
-# TODO: modularize imports
-#gen-docs: target/docs/index.md copy-src-docs make-slides
 .PHONY: gen-docs
 copy-src-docs:
 	mkdir -p target/docs/images
@@ -73,9 +72,6 @@ PHONY: copy-src-docs
 
 target/docs/%.md: $(SCHEMA_SRC) tdir-docs
 	$(RUN) gen-markdown $(GEN_OPTS) --dir target/docs $<
-
-#stage-docs: gen-docs
-#	cp -pr target/docs .
 
 gen-doc:
 	mkdir -p target/doc
@@ -92,8 +88,6 @@ copy-src-slides-images:
 	cp $(SRC_DIR)/slides/images/* target/docs/images/
 .PHONY: copy-src-slides-images
 target/docs/schema-slides.html: tdir-docs 
-# see here for demos https://pandoc.org/demos.html
-# here the pandoc manual https://pandoc.org/MANUAL.html
 	$(RUN) pandoc -s --webtex -i -t slidy src/slides/schema-slides.md -o $@
 
 ###  -- PYTHON --
@@ -101,14 +95,8 @@ target/docs/schema-slides.html: tdir-docs
 gen-python: $(patsubst %, target/python/%.py, $(SCHEMA_NAMES))
 .PHONY: gen-python
 
-# --no-mergeimports was causing an import error
-#	gen-py-classes --no-mergeimports $(GEN_OPTS) $< > $@
-	# hardcoded solution for the new src/schema/portal directory in target/python/%.py
-
 target/python/portal:
 	mkdir -p $@
-
-# 	mkdir -p target/python/portal
 
 target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python target/python/portal
 	$(RUN) gen-py-classes --mergeimports $(GEN_OPTS) $< > $@
