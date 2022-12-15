@@ -29,7 +29,14 @@ jobs:
 
     - name: Build package
       run: |
+        make squeaky-clean
+        make target all
         make build-nmdc_schema
+        poetry install
+        make test-jsonschema
+        make test-jsonschema_invalid
+        make test-dataclasses
+#        make build-nmdc_schema
         poetry version $(git describe --tags --abbrev=0)
         poetry build
                 
