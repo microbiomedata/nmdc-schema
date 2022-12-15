@@ -16,7 +16,7 @@ gen: $(patsubst %,gen-%,$(TGTS))
 clean: clean-artifacts clean-docs
 
 squeaky-clean: clean clean-package from_mongo_cleanup # NOT mixs_clean
-squeaky-all: squeaky-clean target all  test-data build-nmdc_schema
+squeaky-all: squeaky-clean target all test-data build-nmdc_schema test-dataclasses
 	poetry install
 	# shouldn't be creating this in the first place
 	rm -rf doc

@@ -15,9 +15,8 @@ from python.nmdc import PersonValue, CreditAssociation, Study
 class TestCA(unittest.TestCase):
 
     def test_sum(self):
-
         # nmdc_schema = "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml"
-        nmdc_schema = "../src/schema/nmdc.yaml"
+        nmdc_schema = "src/schema/nmdc.yaml"
 
         validator = JsonSchemaDataValidator(nmdc_schema)
 
