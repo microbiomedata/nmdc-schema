@@ -66,8 +66,13 @@ jobs:
     #----------------------------------------------
     - name: Make Artifacts
       run: |
-        make clean-artifacts
-        make all
+        make squeaky-clean
+        make target all
+        make build-nmdc_schema
+        poetry install
+#        make clean-artifacts
+#        make all
+
 
     #----------------------------------------------
     #   validate test data against JSON Schema
