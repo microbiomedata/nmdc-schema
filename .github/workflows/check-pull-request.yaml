@@ -23,7 +23,7 @@ jobs:
     #----------------------------------------------
     - name: Checkout
       uses: actions/checkout@v3
-    
+
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
@@ -45,7 +45,7 @@ jobs:
       run: sudo apt-get install pandoc
 
     #----------------------------------------------
-    #       load cached venv if cache exists      
+    #       load cached venv if cache exists
     #----------------------------------------------
     - name: Load cached venv
       id: cached-poetry-dependencies
@@ -55,25 +55,32 @@ jobs:
         key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
 
     #----------------------------------------------
-    # install dependencies if cache does not exist 
+    # install dependencies if cache does not exist
     #----------------------------------------------
     - name: Install dependencies
       if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
       run: poetry install --no-interaction --no-root
-    
+
     #----------------------------------------------
-    #         build generated artifacts 
+    #         build generated artifacts
     #----------------------------------------------
     - name: Make Artifacts
       run: |
         make clean-artifacts
         make all
-        
+
     #----------------------------------------------
-    #   validate test data against JSON Schema 
+    #   validate test data against JSON Schema
     #----------------------------------------------
     - name: Validate JSON Schema
       run: |
         make test-jsonschema
         make test-jsonschema_invalid
+       
+
+    #----------------------------------------------
+    #   load the python data classes
+    #----------------------------------------------
+    - name: load the python data classes
+      run: |
         make test-dataclasses
