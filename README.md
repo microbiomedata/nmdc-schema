@@ -2,6 +2,7 @@
     <img src="images/nmdc_logo_long.jpeg" width="100" height="40"/>
 </p>
 
+
 # National Microbiome Data Collaborative Schema
 
 [![PyPI - License](https://img.shields.io/pypi/l/nmdc-schema)](https://github.com/microbiomedata/nmdc-schema/blob/main/LICENSE)
