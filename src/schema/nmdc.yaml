@@ -177,17 +177,9 @@ classes:
       - read_qc_analysis_activity_set
       - read_based_taxonomy_analysis_activity_set
       - study_set
-    attributes:
-      frs_set:
-        inlined_as_list: true
-        multivalued: true
-        range: FieldResearchSite
-        domain: Database
-      cbfs_set:
-        inlined_as_list: true
-        multivalued: true
-        range: CollectingBiosamplesFromSite
-        domain: Database
+      - field_research_site_set
+      - collecting_biosamples_from_site_set
+
     slot_usage:
       date_created:
         description: TODO
@@ -1116,6 +1108,16 @@ slots:
     multivalued: true
     description: This property links a database object to the set of studies within
       it.
+  field_research_site_set:
+    inlined_as_list: true
+    multivalued: true
+    range: FieldResearchSite
+    domain: Database
+  collecting_biosamples_from_site_set:
+    inlined_as_list: true
+    multivalued: true
+    range: CollectingBiosamplesFromSite
+    domain: Database
   data_object_set:
     mixins: object_set
     domain: Database

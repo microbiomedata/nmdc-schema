@@ -181,7 +181,7 @@
       }
     }
   ],
-  "frs_set": [
+  "field_research_site_set": [
     {
       "id": "GOLD:BESC-13-CL1_35_33",
       "description": "Bioscales tree BESC-13-CL1_35_33"
@@ -191,7 +191,7 @@
       "description": "Bioscales tree BESC-13-CL2_39_29"
     }
   ],
-  "cbfs_set": [
+  "collecting_biosamples_from_site_set": [
     {
       "id": "cleanroom_schema:cbfs1",
       "name": "Collection of biosamples from BESC-13-CL1_35_33",
