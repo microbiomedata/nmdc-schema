@@ -16,7 +16,7 @@ gen: $(patsubst %,gen-%,$(TGTS))
 clean: clean-artifacts clean-docs
 
 squeaky-clean: clean clean-package from_mongo_cleanup # NOT mixs_clean
-squeaky-all: squeaky-clean target all  test-data build-nmdc_schema
+squeaky-all: squeaky-clean target all test-data build-nmdc_schema test-dataclasses
 	poetry install
 	# shouldn't be creating this in the first place
 	rm -rf doc
@@ -46,6 +46,9 @@ test: all test-data
 
 .PHONY: test-data
 test-data: test-jsonschema test-jsonschema_invalid
+
+test-dataclasses:
+	$(RUN) pytest -v
 
 install:
 	poetry install
@@ -212,7 +215,6 @@ delete-poetry-env:
 SCHEMA_TEST_EXAMPLES := \
 	MAGs_activity \
 	biosample_test \
-	biosamples_to_sites \
 	functional_annotation_set \
 	gold_project_test \
 	img_mg_annotation_objects \
@@ -225,6 +227,7 @@ SCHEMA_TEST_EXAMPLES := \
 	study_test
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
+	biosamples_to_sites \
 	biosample_invalid_range \
 	biosample_mismatch_regex \
 	biosample_missing_required_field \
