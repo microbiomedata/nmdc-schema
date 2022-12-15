@@ -213,6 +213,7 @@ delete-poetry-env:
 # datasets used test/validate the schema
 #
 SCHEMA_TEST_EXAMPLES := \
+	biosamples_to_sites \
 	MAGs_activity \
 	biosample_test \
 	functional_annotation_set \
@@ -227,7 +228,6 @@ SCHEMA_TEST_EXAMPLES := \
 	study_test
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
-	biosamples_to_sites \
 	biosample_invalid_range \
 	biosample_mismatch_regex \
 	biosample_missing_required_field \
