@@ -335,3 +335,4 @@ from_mongo_cleanup:
 
 target/nmdc_data_for_v7.json:
 	$(RUN) migrate_3_2_to_7
+
