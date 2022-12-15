@@ -212,7 +212,6 @@ delete-poetry-env:
 SCHEMA_TEST_EXAMPLES := \
 	MAGs_activity \
 	biosample_test \
-	biosamples_to_sites \
 	functional_annotation_set \
 	gold_project_test \
 	img_mg_annotation_objects \
@@ -225,6 +224,7 @@ SCHEMA_TEST_EXAMPLES := \
 	study_test
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
+	biosamples_to_sites \
 	biosample_invalid_range \
 	biosample_mismatch_regex \
 	biosample_missing_required_field \
