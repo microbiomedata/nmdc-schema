@@ -76,3 +76,4 @@ jobs:
       run: |
         make test-jsonschema
         make test-jsonschema_invalid
+        make test-dataclasses

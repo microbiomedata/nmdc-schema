@@ -47,6 +47,9 @@ test: all test-data
 .PHONY: test-data
 test-data: test-jsonschema test-jsonschema_invalid
 
+test-dataclasses:
+	$(RUN) pytest -v
+
 install:
 	poetry install
 
