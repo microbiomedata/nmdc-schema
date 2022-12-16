@@ -475,23 +475,13 @@ classes:
       part_of:
         required: true
       extreme_event:
-        name: extreme_event
-        title: history/extreme events
-        aliases:
-          - mixs:0000320
-        description: Unusual physical events that may have affected microbial populations
         examples:
           - value: 1980-05-18, volcanic eruption
         annotations:
           expected_value:
             tag: expected_value
-            value: date, text
-          occurrence:
-            tag: occurrence
-            value: '1'
-        is_a: attribute
-        multivalued: false
-        range: text
+            value: date, string
+        range: string
 
     id_prefixes:
       - GOLD
