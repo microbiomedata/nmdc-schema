@@ -37,12 +37,6 @@ jobs:
           virtualenvs-create: true
           virtualenvs-in-project: true
 
-      #    #----------------------------------------------
-      #    #               install pandoc
-      #    #----------------------------------------------
-      #    - name: Install pandoc
-      #      run: sudo apt-get install pandoc
-
       #----------------------------------------------
       #       load cached venv if cache exists
       #----------------------------------------------
@@ -68,9 +62,6 @@ jobs:
           make squeaky-clean
           make target all
           make build-nmdc_schema
-          poetry install
-      #        make clean-artifacts
-      #        make all
 
 
       #----------------------------------------------
@@ -89,21 +80,13 @@ jobs:
         run: |
           make test-dataclasses
 
-#    - name: Build package
-#      run: |
-#        make squeaky-clean
-#        make target all
-#        make build-nmdc_schema
-#        poetry install
-#        make test-jsonschema
-#        make test-jsonschema_invalid
-#        make test-dataclasses
-##        make build-nmdc_schema
-#        poetry version $(git describe --tags --abbrev=0)
-#        poetry build
-#
-#    - name: Publish distribution 📦 to PyPI
-#      uses: pypa/gh-action-pypi-publish@v1.2.2
-#      with:
-#        user: __token__
-#        password: ${{ secrets.nmdc_schema_pypi_token }}
+      - name: Build package
+        run: |
+          poetry version $(git describe --tags --abbrev=0)
+          poetry build
+
+      - name: Publish distribution 📦 to PyPI
+        uses: pypa/gh-action-pypi-publish@v1.2.2
+        with:
+          user: __token__
+          password: ${{ secrets.nmdc_schema_pypi_token }}
