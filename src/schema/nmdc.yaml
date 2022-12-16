@@ -496,6 +496,7 @@ classes:
           syntax: "{id_nmdc_prefix}:{id_typecode_biosample}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
           partial_match: false
+
       gold_biosample_identifiers:
         description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
         comments: This is the ID provided by GOLD that starts with 'GB'
@@ -507,6 +508,7 @@ classes:
       alternative_identifiers:
         description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
         required: false
+
       lat_lon:
         required: false
         description: This is currently a required field but it's not clear if this
@@ -522,6 +524,16 @@ classes:
         required: false
       part_of:
         required: true
+
+      extreme_event:
+        examples:
+          - value: 1980-05-18, volcanic eruption
+        annotations:
+          expected_value:
+            tag: expected_value
+            value: date, string
+        range: string
+
     id_prefixes:
       - GOLD
     exact_mappings:
