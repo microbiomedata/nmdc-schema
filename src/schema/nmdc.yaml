@@ -477,11 +477,6 @@ classes:
       part_of:
         required: true
       fire:
-        name: fire
-        title: history/fire
-        aliases:
-          - mixs:0001086
-        description: Historical and/or physical evidence of fire
         guidance:
           - Provide the date the fire occurred. If extended burning occurred provide the date range.
         examples:
@@ -492,26 +487,15 @@ classes:
         annotations:
           expected_value:
             tag: expected_value
-            value: date
-          occurrence:
-            tag: occurrence
-            value: '1'
+            value: date string
         is_a: attribute
         multivalued: false
-        range: text
+        range: string
       flooding:
-        name: flooding
-        title: history/flooding
-        aliases:
-          - mixs:0000319
         annotations:
           expected_value:
             tag: expected_value
-            value: date
-          occurrence:
-            tag: occurrence
-            value: '1'
-        description: Historical and/or physical evidence of flooding
+            value: date string
         guidance:
           - Provide the date the flood occurred. If extended flooding occurred provide the date range.
         examples:
@@ -520,9 +504,7 @@ classes:
         todos:
           - is "to" acceptable? Is there a better way to request that be written?
           - What about if the "day" isn't known? Is this ok?
-        is_a: attribute
-        multivalued: false
-        range: text
+        range: string
 
     id_prefixes:
       - GOLD

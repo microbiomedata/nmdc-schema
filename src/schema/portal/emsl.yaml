@@ -64,7 +64,7 @@ slots:
   sample_shipped:
     name: sample_shipped
     description: The total amount or size (volume (ml), mass (g) or area (m2) ) of
-      sample sent to EMSL
+      sample sent to EMSL.
     title: sample shipped amount
     from_schema: https://example.com/nmdc_dh
     rank: 3
@@ -72,6 +72,12 @@ slots:
     slot_group: EMSL
     required: false
     recommended: true
+    examples:
+      - value: 15 g
+      - value: 100 uL
+      - value: 5 mL
+    comments:
+      - This field is only required when completing metadata for samples being submitted to EMSL for analyses.
   sample_type:
     name: sample_type
     description: Type of sample being submitted
@@ -88,11 +94,15 @@ slots:
     recommended: true
   technical_reps:
     name: technical_reps
-    description: If sending multiple technical replicates of the same sample, indicate
-      how many replicates are being sent
+    description: If sending technical replicates of the same sample, indicate the replicate number.
     title: number technical replicate
+    examples:
+      -value: 2
     from_schema: https://example.com/nmdc_dh
     rank: 5
     string_serialization: '{integer}'
     slot_group: EMSL
     recommended: true
+    comments:
+      - This field is only required when completing metadata for samples being submitted to EMSL for analyses.
+
