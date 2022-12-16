@@ -1,13 +1,9 @@
-import logging
-import traceback
 import unittest
 
 from linkml.validators.jsonschemavalidator import JsonSchemaDataValidator
 
-from python.nmdc import PersonValue, CreditAssociation, Study
+from nmdc_schema.nmdc import PersonValue, CreditAssociation, Study
 
-
-# from linkml_runtime.dumpers import yaml_dumper
 
 # todo reimplement with methods?
 
@@ -15,6 +11,7 @@ from python.nmdc import PersonValue, CreditAssociation, Study
 class TestCA(unittest.TestCase):
 
     def test_sum(self):
+        # better from package data?
         # nmdc_schema = "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml"
         nmdc_schema = "src/schema/nmdc.yaml"
 
@@ -32,18 +29,11 @@ class TestCA(unittest.TestCase):
         validator.validate_object(ca1, target_class=CreditAssociation)
         validator.validate_object(ca2, target_class=CreditAssociation)
 
-        # try:
-        #     s.has_credit_associations.append(ca1)
-        #     s.has_credit_associations.append(ca2)
-        #     validator.validate_object(s, target_class=Study)
-        # except Exception as e:
-        #     logging.error(traceback.format_exc())
-
         s.has_credit_associations.append(ca1)
         s.has_credit_associations.append(ca2)
         validator.validate_object(s, target_class=Study)
 
-        print(s)
+        # print(s)
 
         self.assertEqual(type(s), Study)
 
