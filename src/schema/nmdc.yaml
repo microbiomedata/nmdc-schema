@@ -92,6 +92,19 @@ imports:
   - sample_prep
   - workflow_execution_activity
 
+settings:
+  id_nmdc_prefix: "^(nmdc)"
+  id_typecode: "([a-z]{1,6})"
+  id_shoulder: "([0-9][a-z]{0,6}[0-9])"
+  id_blade: "([A-Za-z0-9]{1,})"
+  id_version: "(\\.[A-Za-z0-9]{1,})*"
+  id_locus: "(_[A-Za-z0-9_\\.-]+)?$"
+  # class to typecode associations
+  id_typecode_biosample: "bsm"
+  id_typecode_study: "sty"
+  id_typecode_biosample_processing: "bsmprc"
+  id_typecode_omics_processing: "omprc"
+
 subsets:
   sample subset:
     description: Subset consisting of entities linked to the processing of samples.  Currently,
@@ -100,14 +113,8 @@ subsets:
     description: Subset consisting of the data objects that either inputs or outputs
       of processes or workflows.
 
-settings:
-  id_nmdc_prefix: "nmdc"
-  id_type_sample: "sa"
-  id_type_study: "st"
-  id_shoulder: "[0-9][a-z]*[0-9]"
-  id_generated: "[a-z0-9]{6,}"
-
 classes:
+
   Database:
     tree_root: true
     aliases:
@@ -137,6 +144,9 @@ classes:
       - read_qc_analysis_activity_set
       - read_based_taxonomy_analysis_activity_set
       - study_set
+      - field_research_site_set
+      - collecting_biosamples_from_site_set
+
     slot_usage:
       date_created:
         description: TODO
@@ -144,6 +154,40 @@ classes:
         description: TODO
       metatranscriptome_activity_set:
         description: TODO
+
+  FieldResearchSite:
+    aliases:
+      - research plot
+    description: A site, outside of a laboratory, from which biosamples may be collected.
+    is_a: Site
+    #    is_a: NamedThing
+    title: Field Research Site
+    comments:
+      - Provides grouping of biosamples at level that's more specific than belonging
+        to the same study
+      - be very clear that this could be part of a larger site
+      - In Bioscales, one might say that rhizosphere soil and bulk soil from around
+        the same plant were obtained at the same site. In this case, the site would
+        correspond to one tree.
+      - "might correspond to GOLD's identifier on a page like https://gold.jgi.doe.gov/biosample?id=Gb0305833"
+
+  CollectingBiosamplesFromSite:
+    is_a: PlannedProcess
+    title: Collecting Biosamples From Site
+    slots:
+      - has_inputs
+      - has_outputs
+    comments:
+      - "this illustrates implementing a Biosample relation with a process class"
+    slot_usage:
+      has_inputs:
+        range: Site
+        #        range: NamedThing
+        required: true
+      has_outputs:
+        range: Biosample
+        required: true
+
 
   DataObject:
     is_a: NamedThing
@@ -168,7 +212,7 @@ classes:
       - GOLD
 
   Biosample:
-    is_a: NamedThing
+    is_a: MaterialEntity
     in_subset:
       - sample subset
     aliases:
@@ -185,6 +229,7 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
+      - collected_from
       - type
       - img_identifiers
       - samp_name
@@ -442,8 +487,16 @@ classes:
       - nitrite_nitrogen
       - lbc_thirty
       - lbceq
-
     slot_usage:
+      id:
+        description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
+        required: true
+        pattern: '^nmdc:'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:{id_typecode_biosample}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
+
       gold_biosample_identifiers:
         description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
         comments: This is the ID provided by GOLD that starts with 'GB'
@@ -455,10 +508,7 @@ classes:
       alternative_identifiers:
         description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
         required: false
-      id:
-        description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
-        required: true
-        pattern: '^nmdc:'
+
       lat_lon:
         required: false
         description: This is currently a required field but it's not clear if this
@@ -474,6 +524,7 @@ classes:
         required: false
       part_of:
         required: true
+
       extreme_event:
         examples:
           - value: 1980-05-18, volcanic eruption
@@ -544,10 +595,13 @@ classes:
       - funding_sources
       - has_credit_associations
       - study_image
-
     slot_usage:
       id:
         description: An NMDC assigned unique identifier for a sample submitted to NMDC.
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:{id_typecode_study}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
       doi:
         description: >-
           The dataset citation for this study
@@ -641,10 +695,16 @@ classes:
     slots:
       - has_input
     slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:{id_typecode_biosample_processing}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
       has_input:
         range: Biosample
     broad_mappings:
       - OBI:0000094
+
   OmicsProcessing:
     aliases:
       - omics assay
@@ -685,11 +745,17 @@ classes:
       - seq_quality_check
       - chimera_check
     slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:{id_typecode_omics_processing}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
       has_input:
         required: true
     broad_mappings:
       - OBI:0000070
       - ISA:Assay
+
   CreditAssociation:
     aliases:
       - study role
@@ -909,6 +975,17 @@ enums:
           - replaces Environmental Molecular Sciences Lab
 
 slots:
+
+  collected_from:
+    description: The Site from which a Biosample was collected
+    domain: Biosample
+    range: FieldResearchSite
+    comments:
+      - this illustrates implementing a Biosample relation with a (binary) slot
+    todos:
+      - add an OBO slot_uri ?
+
+
   emsl_project_identifier: { }
   img_identifiers:
     title: IMG Identifiers
@@ -1044,6 +1121,16 @@ slots:
     multivalued: true
     description: This property links a database object to the set of studies within
       it.
+  field_research_site_set:
+    inlined_as_list: true
+    multivalued: true
+    range: FieldResearchSite
+    domain: Database
+  collecting_biosamples_from_site_set:
+    inlined_as_list: true
+    multivalued: true
+    range: CollectingBiosamplesFromSite
+    domain: Database
   data_object_set:
     mixins: object_set
     domain: Database

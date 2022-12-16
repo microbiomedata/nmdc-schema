@@ -93,6 +93,34 @@ classes:
       - description
       - alternative_identifiers
 
+  MaterialEntity:
+    aliases:
+      - Material
+      - Physical entity
+    is_a: NamedThing
+    title: Material Entity
+
+  AnalyticalSample:
+    is_a: MaterialEntity
+    title: Analytical Sample
+
+  Site:
+    is_a: MaterialEntity
+    title: Site
+    comments:
+      - BCO sample collection site ?
+
+
+
+  PlannedProcess:
+    class_uri: OBI:0000011
+    is_a: NamedThing
+    title: Planned Process
+    slots:
+      - has_inputs
+      - has_outputs
+      - participating_agent
+
   OntologyClass:
     is_a: NamedThing
 
@@ -445,6 +473,21 @@ classes:
       - schema:GeoCoordinates
 
 slots:
+
+  has_inputs:
+    domain: PlannedProcess
+    multivalued: true
+    range: NamedThing
+
+  has_outputs:
+    domain: PlannedProcess
+    multivalued: true
+    range: NamedThing
+
+  participating_agent:
+    domain: PlannedProcess
+    range: Agent
+
 
   language:
     range: language code

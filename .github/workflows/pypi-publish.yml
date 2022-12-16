@@ -8,33 +8,86 @@ on:
     types:
       - created
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  deploy:
-
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - uses: actions/checkout@v3
+      #----------------------------------------------
+      #       check-out repo and set-up python
+      #----------------------------------------------
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.9
-    
-    - name: Install Poetry
-      uses: snok/install-poetry@v1.1.6
-      with:
-        virtualenvs-create: true
-        virtualenvs-in-project: true
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
 
-    - name: Build package
-      run: |
-        make build-nmdc_schema
-        poetry version $(git describe --tags --abbrev=0)
-        poetry build
-                
-    - name: Publish distribution 📦 to PyPI
-      uses: pypa/gh-action-pypi-publish@v1.2.2
-      with:
-        user: __token__
-        password: ${{ secrets.nmdc_schema_pypi_token }}
+      #----------------------------------------------
+      #          install & configure poetry
+      #----------------------------------------------
+      - name: Install Poetry
+        uses: snok/install-poetry@v1.3
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+
+      #----------------------------------------------
+      #       load cached venv if cache exists
+      #----------------------------------------------
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+
+      #----------------------------------------------
+      # install dependencies if cache does not exist
+      #----------------------------------------------
+      - name: Install dependencies
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction --no-root
+
+      #----------------------------------------------
+      #         build generated artifacts
+      #----------------------------------------------
+      - name: Make Artifacts
+        run: |
+          make squeaky-clean
+          make target all
+          make build-nmdc_schema
+          poetry install
+
+
+      #----------------------------------------------
+      #   validate test data against JSON Schema
+      #----------------------------------------------
+      - name: Validate JSON Schema
+        run: |
+          make test-jsonschema
+          make test-jsonschema_invalid
+      
+
+      #----------------------------------------------
+      #   load the python data classes
+      #----------------------------------------------
+      - name: load the python data classes
+        run: |
+          make test-dataclasses
+
+      - name: Build package
+        run: |
+          poetry version $(git describe --tags --abbrev=0)
+          poetry build
+
+      - name: Publish distribution 📦 to PyPI
+        uses: pypa/gh-action-pypi-publish@v1.2.2
+        with:
+          user: __token__
+          password: ${{ secrets.nmdc_schema_pypi_token }}
