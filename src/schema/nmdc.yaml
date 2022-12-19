@@ -524,35 +524,35 @@ classes:
         required: false
       part_of:
         required: true
-      fire:
-        guidance:
-          - Provide the date the fire occurred. If extended burning occurred provide the date range.
-        examples:
-          - value: 1871-10-10
-          - value: 1871-10-01 to 1871-10-31
-        todos:
-          - is "to" acceptable? Is there a better way to request that be written?
-        annotations:
-          expected_value:
-            tag: expected_value
-            value: date string
-        is_a: attribute
-        multivalued: false
-        range: string
-      flooding:
-        annotations:
-          expected_value:
-            tag: expected_value
-            value: date string
-        guidance:
-          - Provide the date the flood occurred. If extended flooding occurred provide the date range.
-        examples:
-          - value: 1927-04-15
-          - value: 1927-04 to 1927-05
-        todos:
-          - is "to" acceptable? Is there a better way to request that be written?
-          - What about if the "day" isn't known? Is this ok?
-        range: string
+#      fire:
+#        comments:
+#          - Provide the date the fire occurred. If extended burning occurred provide the date range.
+#        examples:
+#          - value: 1871-10-10
+#          - value: 1871-10-01 to 1871-10-31
+#        todos:
+#          - is "to" acceptable? Is there a better way to request that be written?
+#        annotations:
+#          expected_value:
+#            tag: expected_value
+#            value: date string
+#        is_a: attribute
+#        multivalued: false
+#        range: string
+#      flooding:
+#        annotations:
+#          expected_value:
+#            tag: expected_value
+#            value: date string
+#        comments:
+#          - Provide the date the flood occurred. If extended flooding occurred provide the date range.
+#        examples:
+#          - value: 1927-04-15
+#          - value: 1927-04 to 1927-05
+#        todos:
+#          - is "to" acceptable? Is there a better way to request that be written?
+#          - What about if the "day" isn't known? Is this ok?
+#        range: string
 
       extreme_event:
         examples:
