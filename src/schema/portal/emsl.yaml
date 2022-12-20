@@ -97,7 +97,7 @@ slots:
     description: If sending technical replicates of the same sample, indicate the replicate number.
     title: number technical replicate
     examples:
-      -value: 2
+      - value: 2
     from_schema: https://example.com/nmdc_dh
     rank: 5
     string_serialization: '{integer}'
