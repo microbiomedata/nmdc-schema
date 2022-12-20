@@ -55,6 +55,9 @@ enums:
         text: TE
       Water:
         text: Water
+      Gentegra-DNA:
+      Gentegra-RNA:
+      
 slots:
   dna_absorb1:
     name: dna_absorb1
