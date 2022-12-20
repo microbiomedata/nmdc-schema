@@ -55,6 +55,8 @@ enums:
         text: TE
       Water:
         text: Water
+      Gentegra-DNA:
+      Gentegra-RNA:
 slots:
   dnase_rna:
     name: dnase_rna
