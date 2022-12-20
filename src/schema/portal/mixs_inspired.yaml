@@ -83,6 +83,8 @@ slots:
     string_serialization: '{text}'
     slot_group: MIxS Inspired
     recommended: true
+    comments:
+      - This is open text to describe your sample. Information put here will be used to consider additional slots/terms that should be provided for collection.
   filter_method:
     name: filter_method
     description: Type of filter used or how the sample was filtered
@@ -94,9 +96,21 @@ slots:
     string_serialization: '{text}'
     slot_group: MIxS Inspired
     recommended: true
+    comments:
+      - describe the filter or provide a catalog number and manufacturer
+    examples:
+      - value: C18
+      - value: Basix PES, 13-100-106 FisherSci
   isotope_exposure:
     name: isotope_exposure
     description: List isotope exposure or addition applied to your sample.
+    guidance:
+      - This is requred when your experimental design includes the use of isotopically labeled compounds
+    examples:
+      -value: 13C glucose
+      -value: H218O
+    todos:
+      - Can we make the H218O correctly super and subscripted?
     title: isotope exposure/addition
     from_schema: https://example.com/nmdc_dh
     see_also:
@@ -108,6 +122,11 @@ slots:
   micro_biomass_c_meth:
     name: micro_biomass_c_meth
     description: Reference or method used in determining microbial biomass
+    guidance:
+      - Only required when providing a microbial biomass measurement value
+    examples:
+      -value: https://doi.org/10.1016/0038-0717(87)90052-6
+      -value: https://doi.org/10.1016/0038-0717(87)90052-6 | https://www.sciencedirect.com/science/article/abs/pii/0038071787900526
     title: microbial biomass carbon method
     comments:
     - required if "microbial_biomass_c" is provided
@@ -121,6 +140,11 @@ slots:
   micro_biomass_n_meth:
     name: micro_biomass_n_meth
     description: Reference or method used in determining microbial biomass nitrogen
+    guidance:
+      - Only required when providing a microbial biomass measurement value
+    examples:
+      -value: https://doi.org/10.1016/0038-0717(87)90052-6
+      -value: https://doi.org/10.1016/0038-0717(87)90052-6 | https://www.sciencedirect.com/science/article/abs/pii/0038071787900526
     title: microbial biomass nitrogen method
     comments:
     - required if "microbial_biomass_n" is provided
@@ -133,8 +157,9 @@ slots:
   microbial_biomass_c:
     name: microbial_biomass_c
     description: The part of the organic matter in the soil that constitutes living
-      microorganisms smaller than 5-10 micrometer. If you keep this, you would need
-      to have correction factors used for conversion to the final units
+      microorganisms smaller than 5-10 micrometer.
+    comments:
+      - If you provide this, correction factors used for conversion to the final units and method are required
     title: microbial biomass carbon
     from_schema: https://example.com/nmdc_dh
     see_also:
@@ -142,11 +167,16 @@ slots:
     rank: 10
     string_serialization: '{float} {unit}'
     slot_group: MIxS Inspired
+    examples:
+      -value: 0.05 ug C/g dry soil
   microbial_biomass_n:
     name: microbial_biomass_n
     description: The part of the organic matter in the soil that constitutes living
-      microorganisms smaller than 5-10 micrometer. If you keep this, you would need
-      to have correction factors used for conversion to the final units
+      microorganisms smaller than 5-10 micrometer.
+    comments:
+      - If you provide this, correction factors used for conversion to the final units and method are required
+    examples:
+      -value: 0.05 ug N/g dry soil
     title: microbial biomass nitrogen
     from_schema: https://example.com/nmdc_dh
     see_also:
@@ -166,6 +196,8 @@ slots:
     rank: 8
     string_serialization: '{text};{float} {unit}'
     slot_group: MIxS Inspired
+    examples:
+      - insect 0.23 ug; plant 1g
   non_microb_biomass_method:
     name: non_microb_biomass_method
     description: Reference or method used in determining biomass
@@ -178,12 +210,16 @@ slots:
     rank: 9
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_group: MIxS Inspired
+    example:
+      - https://doi.org/10.1038/s41467-021-26181-3
   org_nitro_method:
     name: org_nitro_method
     description: Method used for obtaining organic nitrogen
     title: organic nitrogen method
     comments:
     - required if "org_nitro" is provided
+    examples:
+      -value: https://doi.org/10.1016/0038-0717(85)90144-0
     from_schema: https://example.com/nmdc_dh
     see_also:
     - MIxS:org_nitro|tot_nitro_cont_meth
@@ -202,6 +238,9 @@ slots:
     string_serialization: '{text}'
     slot_group: MIxS Inspired
     recommended: true
+    guidance:
+      - This is an open text field to provide any treatments that cannot be captured in the provided slots.
+      - Values entered here will be used to determine potential new slots.
   start_date_inc:
     name: start_date_inc
     description: Date the incubation was started. Only relevant for incubation samples.
