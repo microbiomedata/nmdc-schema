@@ -536,8 +536,6 @@ classes:
           expected_value:
             tag: expected_value
             value: date string
-        is_a: attribute
-        multivalued: false
         range: string
       flooding:
         annotations:
