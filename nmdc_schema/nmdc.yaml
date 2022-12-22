@@ -592,7 +592,7 @@ classes:
       - study_image
     slot_usage:
       id:
-        description: An NMDC assigned unique identifier for a sample submitted to NMDC.
+        description: An NMDC assigned unique identifier for a study submitted to NMDC.
         structured_pattern:
           syntax: "{id_nmdc_prefix}:{id_typecode_study}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
