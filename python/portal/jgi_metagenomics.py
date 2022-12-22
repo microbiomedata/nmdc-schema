@@ -1,5 +1,5 @@
 # Auto generated from jgi_metagenomics.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-10-03T14:45:36
+# Generation date: 2022-12-22T13:47:34
 # Schema: jgi_metagenomics
 #
 # id: https://microbiomedata/schema/jgi_metagenomics
@@ -85,6 +85,10 @@ class DnaSampleFormatEnum(EnumDefinitionImpl):
                 PermissibleValue(text="Low EDTA TE") )
         setattr(cls, "MDA reaction buffer",
                 PermissibleValue(text="MDA reaction buffer") )
+        setattr(cls, "Gentegra-DNA",
+                PermissibleValue(text="Gentegra-DNA") )
+        setattr(cls, "Gentegra-RNA",
+                PermissibleValue(text="Gentegra-RNA") )
 
 # Slots
 class slots:

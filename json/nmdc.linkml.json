@@ -2,10 +2,22 @@
   "name": "NMDC",
   "description": "Schema for National Microbiome Data Collaborative (NMDC).\nThis schema is organized into distinct modules:\n\n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself",
   "title": "NMDC Schema",
+  "notes": [
+    "MetaCyc expansion assumes we're talking about metacyc reactions and not genes, compounds etc.",
+    "removed/commented out the comfusing 'identifier' slot",
+    "removed/commented out all mentions and definitions of depth2 and subsurface_depth2",
+    "depth2 should now be migrated to the has_maximum_value part of depth",
+    "slots requested for Bioscales, but already available for Biosample: tot_phosp, tot_carb, tot_nitro_content, pH",
+    "informal ## section delimiters should be replaced with subsets ?",
+    "commented out insdc_biosample_identifiers insdc_secondary_sample_identifiers... need better understanding of id patterns (at least)",
+    "commented out several MIxS terms assigned to Biosample because the definitions of those terms were commented out in mixs.yaml dues to shared slot uris",
+    "resuming use of part_of to link Biosamples to Studies. eg releasing sample_link from that role"
+  ],
   "id": "https://microbiomedata/schema",
-  "version": "4.0.0",
+  "version": "7.0.0",
   "imports": [
     "annotation",
+    "basic_slots",
     "bioscales",
     "core",
     "external_identifiers",
@@ -37,6 +49,10 @@
     "GOLD": {
       "prefix_prefix": "GOLD",
       "prefix_reference": "http://identifiers.org/gold/"
+    },
+    "IMG.TAXON": {
+      "prefix_prefix": "IMG.TAXON",
+      "prefix_reference": "http://identifiers.org/img.taxon/"
     },
     "ISA": {
       "prefix_prefix": "ISA",
@@ -70,6 +86,10 @@
       "prefix_prefix": "UniProtKB",
       "prefix_reference": "https://identifiers.org/uniprot/"
     },
+    "bare": {
+      "prefix_prefix": "bare",
+      "prefix_reference": "https://unknown.to.linter.org/"
+    },
     "biolink": {
       "prefix_prefix": "biolink",
       "prefix_reference": "https://w3id.org/biolink/vocab/"
@@ -77,6 +97,10 @@
     "dcterms": {
       "prefix_prefix": "dcterms",
       "prefix_reference": "http://purl.org/dc/terms/"
+    },
+    "emsl": {
+      "prefix_prefix": "emsl",
+      "prefix_reference": "https://unknown.to.linter.org/"
     },
     "gtpo": {
       "prefix_prefix": "gtpo",
@@ -86,12 +110,12 @@
       "prefix_prefix": "igsn",
       "prefix_reference": "https://app.geosamples.org/sample/igsn/"
     },
-    "IMG.TAXON": {
-      "prefix_prefix": "IMG.TAXON",
-      "prefix_reference": "http://identifiers.org/img.taxon/"
-    },
     "insdc.srs": {
       "prefix_prefix": "insdc.srs",
+      "prefix_reference": "https://unknown.to.linter.org/"
+    },
+    "jgi": {
+      "prefix_prefix": "jgi",
       "prefix_reference": "https://unknown.to.linter.org/"
     },
     "linkml": {
@@ -110,17 +134,37 @@
       "prefix_prefix": "nmdc",
       "prefix_reference": "https://w3id.org/nmdc/"
     },
+    "prov": {
+      "prefix_prefix": "prov",
+      "prefix_reference": "http://www.w3.org/ns/prov#"
+    },
     "qud": {
       "prefix_prefix": "qud",
       "prefix_reference": "http://qudt.org/1.1/schema/qudt#"
+    },
+    "rdf": {
+      "prefix_prefix": "rdf",
+      "prefix_reference": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     },
     "rdfs": {
       "prefix_prefix": "rdfs",
       "prefix_reference": "http://www.w3.org/2000/01/rdf-schema#"
     },
+    "schema": {
+      "prefix_prefix": "schema",
+      "prefix_reference": "http://schema.org/"
+    },
+    "skos": {
+      "prefix_prefix": "skos",
+      "prefix_reference": "http://www.w3.org/2004/02/skos/core#"
+    },
     "wgs84": {
       "prefix_prefix": "wgs84",
       "prefix_reference": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+    },
+    "xsd": {
+      "prefix_prefix": "xsd",
+      "prefix_reference": "http://www.w3.org/2001/XMLSchema#"
     }
   },
   "emit_prefixes": [
@@ -191,6 +235,12 @@
       "name": "file type enum",
       "from_schema": "https://microbiomedata/schema",
       "permissible_values": {
+        "Metagenome Raw Reads": {
+          "text": "Metagenome Raw Reads",
+          "todos": [
+            "add annotations"
+          ]
+        },
         "FT ICR-MS Analysis Results": {
           "text": "FT ICR-MS Analysis Results",
           "description": "FT ICR-MS-based molecular formula assignment results table"
@@ -510,7 +560,7 @@
     },
     "processing_institution_enum": {
       "name": "processing_institution_enum",
-      "comments": [
+      "notes": [
         "This will become the range of processing_institution.omics processing",
         "use ROR meanings like https://ror.org/0168r3w48 for UCSD"
       ],
@@ -530,7 +580,7 @@
           "text": "EMSL",
           "meaning": "https://ror.org/04rc0xn13",
           "title": "Environmental Molecular Sciences Laboratory",
-          "comments": [
+          "notes": [
             "replaces Environmental Molecular Science Laboratory",
             "replaces Environmental Molecular Sciences Lab"
           ]
@@ -539,6 +589,58 @@
     }
   },
   "slots": {
+    "collected_from": {
+      "name": "collected_from",
+      "description": "The Site from which a Biosample was collected",
+      "todos": [
+        "add an OBO slot_uri ?"
+      ],
+      "comments": [
+        "this illustrates implementing a Biosample relation with a (binary) slot"
+      ],
+      "from_schema": "https://microbiomedata/schema",
+      "domain": "Biosample",
+      "range": "FieldResearchSite"
+    },
+    "emsl_project_identifier": {
+      "name": "emsl_project_identifier",
+      "from_schema": "https://microbiomedata/schema"
+    },
+    "img_identifiers": {
+      "name": "img_identifiers",
+      "description": "A list of identifiers that relate the biosample to records in the IMG database.",
+      "title": "IMG Identifiers",
+      "todos": [
+        "add is_a or mixin modeling",
+        "what are the class of IMG records?!"
+      ],
+      "from_schema": "https://microbiomedata/schema",
+      "multivalued": true
+    },
+    "emsl_biosample_identifiers": {
+      "name": "emsl_biosample_identifiers",
+      "description": "A list of identifiers for the biosample from the EMSL database.  This is used to link the biosample, as modeled by NMDC, to the biosample in the planned EMSL NEXUS database.",
+      "title": "EMSL Biosample Identifiers",
+      "todos": [
+        "removed \"planned\" once NEXUS is online",
+        "make an emsl identifiers mixin",
+        "determine real expansion for emsl prefix"
+      ],
+      "from_schema": "https://microbiomedata/schema",
+      "is_a": "biosample_identifiers",
+      "multivalued": true
+    },
+    "igsn_biosample_identifiers": {
+      "name": "igsn_biosample_identifiers",
+      "description": "A list of identifiers for the biosample from the IGSN database.",
+      "title": "IGSN Biosample Identifiers",
+      "todos": [
+        "make an igsn identifiers mixin"
+      ],
+      "from_schema": "https://microbiomedata/schema",
+      "is_a": "biosample_identifiers",
+      "multivalued": true
+    },
     "biosample_categories": {
       "name": "biosample_categories",
       "title": "Categories the biosample belongs to",
@@ -554,6 +656,24 @@
     "etl_software_version": {
       "name": "etl_software_version",
       "description": "from database class",
+      "from_schema": "https://microbiomedata/schema"
+    },
+    "related_identifiers": {
+      "name": "related_identifiers",
+      "description": "Identifiers assigned to a thing that is similar to that which is represented in NMDC. Related identifier are not an identical match and may have some variation.",
+      "title": "Related Identifiers",
+      "from_schema": "https://microbiomedata/schema"
+    },
+    "emsl_proposal_identifier": {
+      "name": "emsl_proposal_identifier",
+      "description": "The proposal number assigned to the EMSL awarded study that relates to that which is represented in NMDC.",
+      "title": "EMSL Proposal Identifier",
+      "from_schema": "https://microbiomedata/schema"
+    },
+    "emsl_proposal_doi": {
+      "name": "emsl_proposal_doi",
+      "description": "The proposal DOI assigned to the awarded EMSL study.",
+      "title": "EMSL Proposal DOI",
       "from_schema": "https://microbiomedata/schema"
     },
     "notes": {
@@ -581,6 +701,9 @@
         }
       },
       "description": "This slot links a study to a credit association.  The credit association will be linked to a person value and to a CRediT Contributor Roles term. Overall semantics: person should get credit X for their participation in the study",
+      "notes": [
+        "had just been \"inlined: true\""
+      ],
       "from_schema": "https://microbiomedata/schema",
       "domain": "Study",
       "slot_uri": "prov:qualifiedAssociation",
@@ -675,6 +798,22 @@
       "domain": "Database",
       "multivalued": true,
       "range": "Study"
+    },
+    "field_research_site_set": {
+      "name": "field_research_site_set",
+      "from_schema": "https://microbiomedata/schema",
+      "domain": "Database",
+      "multivalued": true,
+      "range": "FieldResearchSite",
+      "inlined_as_list": true
+    },
+    "collecting_biosamples_from_site_set": {
+      "name": "collecting_biosamples_from_site_set",
+      "from_schema": "https://microbiomedata/schema",
+      "domain": "Database",
+      "multivalued": true,
+      "range": "CollectingBiosamplesFromSite",
+      "inlined_as_list": true
     },
     "data_object_set": {
       "name": "data_object_set",
@@ -833,6 +972,9 @@
     "omics_type": {
       "name": "omics_type",
       "description": "The type of omics data",
+      "notes": [
+        "was the range string at one point? the values in MongoDB don't look like NMDC classes"
+      ],
       "examples": [
         {
           "value": "metatranscriptome"
@@ -1009,17 +1151,6 @@
       "from_schema": "https://microbiomedata/schema",
       "range": "string"
     },
-    "identifier": {
-      "name": "identifier",
-      "todos": [
-        "used in MongoDB as of 2022-09-09, which is still on schema 3.?",
-        "we will remove this slot form the schema, but make sure to retain the content in MongoDB in a relevant, retained slot",
-        "Mark will do the MongoDB migration"
-      ],
-      "from_schema": "https://microbiomedata/schema",
-      "slot_group": "biosample_identifiers",
-      "range": "string"
-    },
     "sample_collection_year": {
       "name": "sample_collection_year",
       "from_schema": "https://microbiomedata/schema",
@@ -1048,6 +1179,9 @@
     "salinity_category": {
       "name": "salinity_category",
       "description": "Categorcial description of the sample's salinity. Examples: halophile, halotolerant, hypersaline, huryhaline",
+      "notes": [
+        "maps to gold:salinity"
+      ],
       "from_schema": "https://microbiomedata/schema",
       "see_also": [
         "https://github.com/microbiomedata/nmdc-metadata/pull/297"
@@ -1064,18 +1198,8 @@
       "from_schema": "https://microbiomedata/schema",
       "range": "string"
     },
-    "depth2": {
-      "name": "depth2",
-      "from_schema": "https://microbiomedata/schema",
-      "range": "QuantityValue"
-    },
     "subsurface_depth": {
       "name": "subsurface_depth",
-      "from_schema": "https://microbiomedata/schema",
-      "range": "QuantityValue"
-    },
-    "subsurface_depth2": {
-      "name": "subsurface_depth2",
       "from_schema": "https://microbiomedata/schema",
       "range": "QuantityValue"
     },
@@ -1139,7 +1263,9 @@
         "reaction_activity_set",
         "read_qc_analysis_activity_set",
         "read_based_taxonomy_analysis_activity_set",
-        "study_set"
+        "study_set",
+        "field_research_site_set",
+        "collecting_biosamples_from_site_set"
       ],
       "slot_usage": {
         "date_created": {
@@ -1156,6 +1282,47 @@
         }
       },
       "tree_root": true
+    },
+    "FieldResearchSite": {
+      "name": "FieldResearchSite",
+      "description": "A site, outside of a laboratory, from which biosamples may be collected.",
+      "title": "Field Research Site",
+      "comments": [
+        "Provides grouping of biosamples at level that's more specific than belonging to the same study",
+        "be very clear that this could be part of a larger site",
+        "In Bioscales, one might say that rhizosphere soil and bulk soil from around the same plant were obtained at the same site. In this case, the site would correspond to one tree.",
+        "might correspond to GOLD's identifier on a page like https://gold.jgi.doe.gov/biosample?id=Gb0305833"
+      ],
+      "from_schema": "https://microbiomedata/schema",
+      "aliases": [
+        "research plot"
+      ],
+      "is_a": "Site"
+    },
+    "CollectingBiosamplesFromSite": {
+      "name": "CollectingBiosamplesFromSite",
+      "title": "Collecting Biosamples From Site",
+      "comments": [
+        "this illustrates implementing a Biosample relation with a process class"
+      ],
+      "from_schema": "https://microbiomedata/schema",
+      "is_a": "PlannedProcess",
+      "slots": [
+        "has_inputs",
+        "has_outputs"
+      ],
+      "slot_usage": {
+        "has_inputs": {
+          "name": "has_inputs",
+          "range": "Site",
+          "required": true
+        },
+        "has_outputs": {
+          "name": "has_outputs",
+          "range": "Biosample",
+          "required": true
+        }
+      }
     },
     "DataObject": {
       "name": "DataObject",
@@ -1193,13 +1360,16 @@
       "id_prefixes": [
         "GOLD"
       ],
-      "description": "A material sample. It may be environmental (encompassing many organisms) or isolate or tissue.   An environmental sample containing genetic material from multiple individuals is commonly referred to as a biosample.",
+      "description": "Biological source material which can be characterized by an experiment.",
       "alt_descriptions": {
         "embl.ena": {
           "source": "embl.ena",
           "description": "A sample contains information about the sequenced source material. Samples are associated with checklists, which define the fields used to annotate the samples. Samples are always associated with a taxon."
         }
       },
+      "todos": [
+        "could add GOLD and EBI's biosample definitions to the alt_descriptions?"
+      ],
       "in_subset": [
         "sample subset"
       ],
@@ -1212,14 +1382,24 @@
       ],
       "exact_mappings": [
         "OBI:0000747",
-        "NCIT:C43412"
+        "NCIT:C43412",
+        "http://purl.obolibrary.org/obo/FBcv_0003024"
       ],
-      "is_a": "NamedThing",
+      "is_a": "MaterialEntity",
       "slots": [
+        "collected_from",
+        "type",
+        "img_identifiers",
+        "samp_name",
         "biosample_categories",
         "type",
-        "alternative_identifiers",
         "part_of",
+        "id",
+        "alternative_identifiers",
+        "gold_biosample_identifiers",
+        "insdc_biosample_identifiers",
+        "emsl_biosample_identifiers",
+        "igsn_biosample_identifiers",
         "agrochem_addition",
         "alkalinity",
         "alkalinity_method",
@@ -1267,8 +1447,6 @@
         "glucosidase_act",
         "heavy_metals",
         "heavy_metals_meth",
-        "horizon",
-        "horizon_meth",
         "lat_lon",
         "link_addit_analys",
         "link_class_info",
@@ -1278,8 +1456,6 @@
         "magnesium",
         "mean_frict_vel",
         "mean_peak_frict_vel",
-        "microbial_biomass",
-        "microbial_biomass_meth",
         "misc_param",
         "n_alkanes",
         "nitrate",
@@ -1298,13 +1474,10 @@
         "pool_dna_extracts",
         "potassium",
         "pressure",
-        "previous_land_use",
-        "previous_land_use_meth",
         "profile_position",
         "redox_potential",
         "salinity",
         "salinity_meth",
-        "samp_collect_device",
         "samp_mat_process",
         "samp_store_dur",
         "samp_store_loc",
@@ -1324,8 +1497,6 @@
         "sulfate",
         "sulfide",
         "temp",
-        "texture",
-        "texture_meth",
         "tillage",
         "tidal_stage",
         "tot_carb",
@@ -1345,10 +1516,8 @@
         "specific_ecosystem",
         "add_date",
         "community",
-        "depth2",
         "habitat",
         "host_name",
-        "identifier",
         "location",
         "mod_date",
         "ncbi_taxonomy_name",
@@ -1357,10 +1526,6 @@
         "sample_collection_site",
         "soluble_iron_micromol",
         "subsurface_depth",
-        "subsurface_depth2",
-        "gold_sample_identifiers",
-        "insdc_biosample_identifiers",
-        "insdc_secondary_sample_identifiers",
         "air_temp_regm",
         "biotic_regm",
         "biotic_relationship",
@@ -1370,13 +1535,10 @@
         "growth_facil",
         "humidity_regm",
         "light_regm",
-        "micro_biomass_meth",
         "phosphate",
         "rel_to_oxygen",
         "samp_collec_method",
         "samp_size",
-        "soil_text_measure",
-        "soil_texture_meth",
         "source_mat_id",
         "watering_regm",
         "dna_absorb1",
@@ -1433,7 +1595,6 @@
         "other_treatment",
         "start_date_inc",
         "start_time_inc",
-        "emsl_store_temp",
         "project_id",
         "replicate_number",
         "sample_shipped",
@@ -1450,22 +1611,34 @@
         "lbceq"
       ],
       "slot_usage": {
-        "gold_sample_identifiers": {
-          "name": "gold_sample_identifiers",
+        "id": {
+          "name": "id",
+          "description": "An NMDC assigned unique identifier for a biosample submitted to NMDC.",
+          "required": true,
+          "pattern": "^nmdc:",
+          "structured_pattern": {
+            "syntax": "{id_nmdc_prefix}:{id_typecode_biosample}-{id_shoulder}-{id_blade}{id_version}{id_locus}",
+            "interpolated": true,
+            "partial_match": false
+          }
+        },
+        "gold_biosample_identifiers": {
+          "name": "gold_biosample_identifiers",
           "annotations": {
             "display_hint": {
               "tag": "display_hint",
               "value": "Provide the GOLD biosample IDs associated with this biosample."
             }
-          }
+          },
+          "description": "Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample",
+          "comments": [
+            "This is the ID provided by GOLD that starts with 'GB'"
+          ]
         },
-        "id": {
-          "name": "id",
-          "structured_pattern": {
-            "syntax": "{id_nmdc_prefix}:{id_type_sample}{id_shoulder}{id_generated}",
-            "interpolated": true,
-            "partial_match": false
-          }
+        "alternative_identifiers": {
+          "name": "alternative_identifiers",
+          "description": "Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC",
+          "required": false
         },
         "lat_lon": {
           "name": "lat_lon",
@@ -1486,7 +1659,27 @@
         },
         "sample_link": {
           "name": "sample_link",
+          "description": "JsonObj()",
+          "required": false
+        },
+        "part_of": {
+          "name": "part_of",
           "required": true
+        },
+        "extreme_event": {
+          "name": "extreme_event",
+          "annotations": {
+            "expected_value": {
+              "tag": "expected_value",
+              "value": "date, string"
+            }
+          },
+          "examples": [
+            {
+              "value": "1980-05-18, volcanic eruption"
+            }
+          ],
+          "range": "string"
         }
       }
     },
@@ -1507,6 +1700,11 @@
       "todos": [
         "determine how to get data values for submitted_to_insdc, investigation_type, experimental_factor",
         "project_name is redundant with name, so excluding it"
+      ],
+      "notes": [
+        "sample GOLD link https://identifiers.org/gold:Gs0110115",
+        "sample insdc.srs link https://www.ebi.ac.uk/ena/browser/view/PRJEB45055 ?",
+        "sample mgnify link https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757"
       ],
       "in_subset": [
         "sample subset"
@@ -1535,6 +1733,13 @@
       ],
       "is_a": "NamedThing",
       "slots": [
+        "id",
+        "alternative_identifiers",
+        "related_identifiers",
+        "emsl_proposal_identifier",
+        "emsl_proposal_doi",
+        "gold_study_identifiers",
+        "mgnify_project_identifiers",
         "ecosystem",
         "ecosystem_category",
         "ecosystem_type",
@@ -1554,18 +1759,15 @@
         "type",
         "relevant_protocols",
         "funding_sources",
-        "insdc_bioproject_identifiers",
-        "insdc_sra_ena_study_identifiers",
-        "gold_study_identifiers",
-        "mgnify_project_identifiers",
         "has_credit_associations",
         "study_image"
       ],
       "slot_usage": {
         "id": {
           "name": "id",
+          "description": "An NMDC assigned unique identifier for a sample submitted to NMDC.",
           "structured_pattern": {
-            "syntax": "{id_nmdc_prefix}:{id_type_study}{id_shoulder}{id_generated}",
+            "syntax": "{id_nmdc_prefix}:{id_typecode_study}-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
             "partial_match": false
           }
@@ -1605,7 +1807,8 @@
               "tag": "display_hint",
               "value": "Provide a brief description of your study."
             }
-          }
+          },
+          "description": "A brief summary that details the study you're submitted to NMDC"
         },
         "notes": {
           "name": "notes",
@@ -1616,6 +1819,10 @@
             }
           }
         },
+        "alternative_identifiers": {
+          "name": "alternative_identifiers",
+          "description": "Unique identifier for a study submitted to additional resources. Matches that which has been submitted to NMDC"
+        },
         "alternative_names": {
           "name": "alternative_names",
           "annotations": {
@@ -1625,6 +1832,10 @@
             }
           }
         },
+        "related_identifiers": {
+          "name": "related_identifiers",
+          "description": "Unique identifier for a study submitted to additional resources. Similar, but not necessarily identical to that which has been submitted to NMDC"
+        },
         "insdc_bioproject_identifiers": {
           "name": "insdc_bioproject_identifiers",
           "annotations": {
@@ -1632,7 +1843,16 @@
               "tag": "display_hint",
               "value": "Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title."
             }
-          }
+          },
+          "description": "Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study."
+        },
+        "emsl_project_identifier": {
+          "name": "emsl_project_identifier",
+          "description": "The EMSL project ID that relates to the NMDC submitted study"
+        },
+        "emsl_proposal_doi": {
+          "name": "emsl_proposal_doi",
+          "description": "The DOI for the EMSL awarded study that relates to the NMDC submitted study"
         }
       }
     },
@@ -1651,6 +1871,14 @@
         "has_input"
       ],
       "slot_usage": {
+        "id": {
+          "name": "id",
+          "structured_pattern": {
+            "syntax": "{id_nmdc_prefix}:{id_typecode_biosample_processing}-{id_shoulder}-{id_blade}{id_version}{id_locus}",
+            "interpolated": true,
+            "partial_match": false
+          }
+        },
         "has_input": {
           "name": "has_input",
           "range": "Biosample"
@@ -1667,7 +1895,7 @@
         }
       },
       "comments": [
-        "The IDs for objects coming from GOLD will have prefixes gold:GpNNNN"
+        "The ID prefix for objects coming from GOLD will be gold:Gp"
       ],
       "in_subset": [
         "sample subset"
@@ -1709,6 +1937,14 @@
         "chimera_check"
       ],
       "slot_usage": {
+        "id": {
+          "name": "id",
+          "structured_pattern": {
+            "syntax": "{id_nmdc_prefix}:{id_typecode_omics_processing}-{id_shoulder}-{id_blade}{id_version}{id_locus}",
+            "interpolated": true,
+            "partial_match": false
+          }
+        },
         "has_input": {
           "name": "has_input",
           "required": true
@@ -1737,23 +1973,43 @@
   "settings": {
     "id_nmdc_prefix": {
       "setting_key": "id_nmdc_prefix",
-      "setting_value": "nmdc"
+      "setting_value": "^(nmdc)"
     },
-    "id_type_sample": {
-      "setting_key": "id_type_sample",
-      "setting_value": "sa"
-    },
-    "id_type_study": {
-      "setting_key": "id_type_study",
-      "setting_value": "st"
+    "id_typecode": {
+      "setting_key": "id_typecode",
+      "setting_value": "([a-z]{1,6})"
     },
     "id_shoulder": {
       "setting_key": "id_shoulder",
-      "setting_value": "[0-9][a-z]*[0-9]"
+      "setting_value": "([0-9][a-z]{0,6}[0-9])"
     },
-    "id_generated": {
-      "setting_key": "id_generated",
-      "setting_value": "[a-z0-9]{6,}"
+    "id_blade": {
+      "setting_key": "id_blade",
+      "setting_value": "([A-Za-z0-9]{1,})"
+    },
+    "id_version": {
+      "setting_key": "id_version",
+      "setting_value": "(\\.[A-Za-z0-9]{1,})*"
+    },
+    "id_locus": {
+      "setting_key": "id_locus",
+      "setting_value": "(_[A-Za-z0-9_\\.-]+)?$"
+    },
+    "id_typecode_biosample": {
+      "setting_key": "id_typecode_biosample",
+      "setting_value": "bsm"
+    },
+    "id_typecode_study": {
+      "setting_key": "id_typecode_study",
+      "setting_value": "sty"
+    },
+    "id_typecode_biosample_processing": {
+      "setting_key": "id_typecode_biosample_processing",
+      "setting_value": "bsmprc"
+    },
+    "id_typecode_omics_processing": {
+      "setting_key": "id_typecode_omics_processing",
+      "setting_value": "omprc"
     }
   },
   "@type": "SchemaDefinition"

@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-10-03T14:44:27\n    Schema: NMDC\n    metamodel version: 1.7.0\n    model version: 4.0.0\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC).\nThis schema is organized into distinct modules:\n\n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "_comments": "Auto generated from nmdc.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-12-22T13:46:54\n    Schema: NMDC\n    metamodel version: 1.7.0\n    model version: 7.0.0\n    \n    id: https://microbiomedata/schema\n    description: Schema for National Microbiome Data Collaborative (NMDC).\nThis schema is organized into distinct modules:\n\n * a set of core types for representing data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation schema\n * the NMDC schema itself\n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
    "@context": {
       "CAS": "http://identifiers.org/cas/",
       "CATH": "http://identifiers.org/cath/",
@@ -17,6 +17,10 @@
       "EC": "https://unknown.to.linter.org/",
       "EFO": "http://identifiers.org/efo/",
       "EGGNOG": "http://identifiers.org/eggnog/",
+      "FBcv": {
+         "@id": "http://purl.obolibrary.org/obo/FBcv_",
+         "@prefix": true
+      },
       "GO": {
          "@id": "http://purl.obolibrary.org/obo/GO_",
          "@prefix": true
@@ -65,11 +69,14 @@
       "SUPFAM": "http://identifiers.org/supfam/",
       "TIGRFAM": "http://identifiers.org/tigrfam/",
       "UniProtKB": "https://identifiers.org/uniprot/",
+      "bare": "https://unknown.to.linter.org/",
       "biolink": "https://w3id.org/biolink/vocab/",
       "dcterms": "http://purl.org/dc/terms/",
+      "emsl": "https://unknown.to.linter.org/",
       "gtpo": "https://unknown.to.linter.org/",
       "igsn": "https://app.geosamples.org/sample/igsn/",
       "insdc.srs": "https://unknown.to.linter.org/",
+      "jgi": "https://unknown.to.linter.org/",
       "linkml": "https://w3id.org/linkml/",
       "mgnify": "https://unknown.to.linter.org/",
       "mixs": "https://w3id.org/mixs/",
@@ -327,6 +334,9 @@
          }
       },
       "id": "@id",
+      "biosample_identifiers": {
+         "@type": "@id"
+      },
       "biosample_input": {
          "@type": "@id"
       },
@@ -464,6 +474,12 @@
          "@type": "@id",
          "@id": "mixs:0001040"
       },
+      "collected_from": {
+         "@type": "@id"
+      },
+      "collecting_biosamples_from_site_set": {
+         "@type": "@id"
+      },
       "collection_date": {
          "@type": "@id",
          "@id": "mixs:0000011"
@@ -560,9 +576,6 @@
       "depth": {
          "@type": "@id",
          "@id": "mixs:0000018"
-      },
-      "depth2": {
-         "@type": "@id"
       },
       "description": {
          "@id": "dcterms:description"
@@ -749,6 +762,9 @@
       "email": {
          "@id": "schema:email"
       },
+      "emsl_biosample_identifiers": {
+         "@type": "@id"
+      },
       "emulsions": {
          "@type": "@id",
          "@id": "mixs:0000660"
@@ -821,6 +837,9 @@
       "field": {
          "@type": "@id",
          "@id": "mixs:0000291"
+      },
+      "field_research_site_set": {
+         "@type": "@id"
       },
       "file_size_bytes": {
          "@type": "xsd:long"
@@ -938,7 +957,7 @@
       "gold_analysis_project_identifiers": {
          "@type": "@id"
       },
-      "gold_sample_identifiers": {
+      "gold_biosample_identifiers": {
          "@type": "@id"
       },
       "gold_sequencing_project_identifiers": {
@@ -985,6 +1004,9 @@
       "has_input": {
          "@type": "@id"
       },
+      "has_inputs": {
+         "@type": "@id"
+      },
       "has_maximum_numeric_value": {
          "@type": "xsd:float"
       },
@@ -995,6 +1017,9 @@
          "@type": "xsd:float"
       },
       "has_output": {
+         "@type": "@id"
+      },
+      "has_outputs": {
          "@type": "@id"
       },
       "hc_produced": {
@@ -1051,10 +1076,6 @@
       "herbicide_regm": {
          "@type": "@id",
          "@id": "mixs:0000561"
-      },
-      "horizon": {
-         "@type": "@id",
-         "@id": "mixs:0001082"
       },
       "horizon_meth": {
          "@type": "@id",
@@ -1168,6 +1189,9 @@
       "humidity_regm": {
          "@type": "@id",
          "@id": "mixs:0000568"
+      },
+      "igsn_biosample_identifiers": {
+         "@type": "@id"
       },
       "indoor_space": {
          "@type": "@id",
@@ -1380,16 +1404,9 @@
       "mgnify_analysis_identifiers": {
          "@type": "@id"
       },
-      "micro_biomass_meth": {
-         "@id": "mixs:0000339"
-      },
       "microbial_biomass": {
          "@type": "@id",
          "@id": "mixs:0000650"
-      },
-      "microbial_biomass_meth": {
-         "@type": "@id",
-         "@id": "mixs:0000339"
       },
       "mineral_nutr_regm": {
          "@type": "@id",
@@ -1527,6 +1544,9 @@
          "@type": "@id",
          "@id": "mixs:0000719"
       },
+      "participating_agent": {
+         "@type": "@id"
+      },
       "particle_class": {
          "@type": "@id",
          "@id": "mixs:0000206"
@@ -1630,16 +1650,9 @@
          "@type": "@id",
          "@id": "mixs:0000412"
       },
-      "prev_land_use_meth": {
-         "@id": "mixs:0000316"
-      },
       "previous_land_use": {
          "@type": "@id",
          "@id": "mixs:0000315"
-      },
-      "previous_land_use_meth": {
-         "@type": "@id",
-         "@id": "mixs:0000316"
       },
       "primary_prod": {
          "@type": "@id",
@@ -1863,15 +1876,8 @@
          "@type": "@id",
          "@id": "mixs:0000860"
       },
-      "samp_collec_device": {
-         "@id": "mixs:0000002"
-      },
       "samp_collec_method": {
          "@id": "mixs:0001225"
-      },
-      "samp_collect_device": {
-         "@type": "@id",
-         "@id": "mixs:0000002"
       },
       "samp_collect_point": {
          "@context": {
@@ -1979,9 +1985,6 @@
       },
       "sample_collection_year": {
          "@type": "xsd:integer"
-      },
-      "sample_identifiers": {
-         "@type": "@id"
       },
       "sample_type": {
          "@context": {
@@ -2134,22 +2137,6 @@
          "@type": "@id",
          "@id": "mixs:0000428"
       },
-      "soil_horizon": {
-         "@context": {
-            "@vocab": "@null",
-            "text": "skos:notation",
-            "description": "skos:prefLabel",
-            "meaning": "@id"
-         },
-         "@id": "mixs:0001082"
-      },
-      "soil_text_measure": {
-         "@type": "@id",
-         "@id": "mixs:0000335"
-      },
-      "soil_texture_meth": {
-         "@id": "mixs:0000336"
-      },
       "soil_type": {
          "@type": "@id",
          "@id": "mixs:0000332"
@@ -2236,9 +2223,6 @@
       "subsurface_depth": {
          "@type": "@id"
       },
-      "subsurface_depth2": {
-         "@type": "@id"
-      },
       "sulfate": {
          "@type": "@id",
          "@id": "mixs:0000423"
@@ -2304,20 +2288,11 @@
          "@id": "mixs:0000197"
       },
       "term": {
-         "@type": "@id",
-         "@id": "rdf:type"
+         "@type": "@id"
       },
       "tertiary_treatment": {
          "@type": "@id",
          "@id": "mixs:0000352"
-      },
-      "texture": {
-         "@type": "@id",
-         "@id": "mixs:0000335"
-      },
-      "texture_meth": {
-         "@type": "@id",
-         "@id": "mixs:0000336"
       },
       "tidal_stage": {
          "@type": "@id",
@@ -2611,6 +2586,9 @@
       },
       "MaterialSamplingActivity": {
          "@id": "OBI:0000744"
+      },
+      "PlannedProcess": {
+         "@id": "OBI:0000011"
       }
    }
 }

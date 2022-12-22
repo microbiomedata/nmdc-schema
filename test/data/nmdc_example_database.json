@@ -122,24 +122,36 @@
   ],
   "biosample_set": [
     {
-      "id": "gold:Gb0150408",
+      "id": "nmdc:c6eb9f01-796b-4bd6-8ed4-74e221eed7c1",
+      "gold_biosample_identifiers": [
+        "gold:Gb0150408"
+      ],
       "name": "Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG",
       "description": "Permafrost microbial communities from Stordalen Mire, Sweden",
       "type": "nmdc:Biosample",
-      "sample_link": [
+      "part_of": [
         "gold:Gs0128849"
       ],
       "collection_date": {
         "has_raw_value": "2011-06-15"
       },
       "env_broad_scale": {
-        "has_raw_value": "ENVO:00000446"
+        "has_raw_value": "ENVO:00002030",
+        "term": {
+          "id": "ENVO:00002030"
+        }
       },
       "env_local_scale": {
-        "has_raw_value": "ENVO:00000232"
+        "has_raw_value": "ENVO:00002169",
+        "term": {
+          "id": "ENVO:00002169"
+        }
       },
       "env_medium": {
-        "has_raw_value": "ENVO:00000134"
+        "has_raw_value": "ENVO:00005792",
+        "term": {
+          "id": "ENVO:00005792"
+        }
       },
       "geo_loc_name": {
         "has_raw_value": "Sweden: Stordalen"
@@ -157,31 +169,43 @@
       "add_date": "17-MAR-17 04.55.54.717000000 PM",
       "community": "microbial communities",
       "habitat": "Fen",
-      "identifier": "611E1M metaG",
+      "samp_name": "611E1M metaG",
       "location": "Stordalen Mire, Sweden",
       "mod_date": "08-JAN-20 02.49.23.000000000 PM",
       "ncbi_taxonomy_name": "permafrost metagenome",
       "sample_collection_site": "Mire fen"
     },
     {
-      "id": "gold:Gb0157174",
+      "id": "nmdc:87698d0e-13b5-488a-9324-53846a6e332d",
+      "gold_biosample_identifiers": [
+        "gold:Gb0157174"
+      ],
       "name": "Forest soil microbial communities from Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O",
       "description": "Forest soil from Barre Woods Harvard Forest LTER site was incubated at 10C with heavy water. Sample is from a control plot at ambient soil temperature, organic horizon - top 4cm of soil",
       "type": "nmdc:Biosample",
-      "sample_link": [
+      "part_of": [
         "gold:Gs0128849"
       ],
       "collection_date": {
         "has_raw_value": "2017-05-24"
       },
       "env_broad_scale": {
-        "has_raw_value": "ENVO:01000174"
+        "has_raw_value": "ENVO:00002030",
+        "term": {
+          "id": "ENVO:00002030"
+        }
       },
       "env_local_scale": {
-        "has_raw_value": "ENVO:01000159"
+        "has_raw_value": "ENVO:00002169",
+        "term": {
+          "id": "ENVO:00002169"
+        }
       },
       "env_medium": {
-        "has_raw_value": "ENVO:00002261"
+        "has_raw_value": "ENVO:00005792",
+        "term": {
+          "id": "ENVO:00005792"
+        }
       },
       "geo_loc_name": {
         "has_raw_value": "USA: Massachusetts"
@@ -199,31 +223,43 @@
       "add_date": "17-AUG-17 05.38.34.719000000 PM",
       "community": "microbial communities",
       "habitat": "soil",
-      "identifier": "Inc-BW-C-14-O",
+      "samp_name": "Inc-BW-C-14-O",
       "location": "Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United States",
       "mod_date": "08-JAN-20 02.49.23.000000000 PM",
       "ncbi_taxonomy_name": "soil metagenome",
       "sample_collection_site": "forest soil"
     },
     {
-      "id": "gold:Gb0188037",
+      "id": "nmdc:9a4f0882-49b2-46ed-8951-0ee2ea019df7",
+      "gold_biosample_identifiers": [
+        "gold:Gb0188037"
+      ],
       "name": "Rhizosphere microbial communities from Carex aquatilis grown in University of Washington, Seatle, WA, United States - 4-1-23 metaG",
       "description": "Rhizosphere microbial communities from Carex aquatilis grown in submerged peat from a thermokarst bog, University of Washington, Seatle, WA, United States",
       "type": "nmdc:Biosample",
-      "sample_link": [
+      "part_of": [
         "gold:Gs0128849"
       ],
       "collection_date": {
         "has_raw_value": "2018-01-29"
       },
       "env_broad_scale": {
-        "has_raw_value": "ENVO:00000446"
+        "has_raw_value": "ENVO:00002030",
+        "term": {
+          "id": "ENVO:00002030"
+        }
       },
       "env_local_scale": {
-        "has_raw_value": "ENVO:00005801"
+        "has_raw_value": "ENVO:00002169",
+        "term": {
+          "id": "ENVO:00002169"
+        }
       },
       "env_medium": {
-        "has_raw_value": "ENVO:00005774"
+        "has_raw_value": "ENVO:00005792",
+        "term": {
+          "id": "ENVO:00005792"
+        }
       },
       "geo_loc_name": {
         "has_raw_value": "USA: Seattle, Washington"
@@ -242,7 +278,7 @@
       "community": "microbial communities",
       "habitat": "rhizosphere",
       "host_name": "Carex aquatilis",
-      "identifier": "4-1-23 metaG",
+      "samp_name": "4-1-23 metaG",
       "location": "University of Washington, Seatle, WA, United States",
       "mod_date": "08-JAN-20 02.49.25.000000000 PM",
       "ncbi_taxonomy_name": "rhizosphere metagenome",

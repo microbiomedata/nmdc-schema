@@ -2,6 +2,18 @@ id: https://microbiomedata/schema
 name: NMDC
 title: NMDC Schema
 
+notes:
+  - "MetaCyc expansion assumes we're talking about metacyc reactions and not genes, compounds etc."
+  - "removed/commented out the comfusing 'identifier' slot"
+  - "removed/commented out all mentions and definitions of depth2 and subsurface_depth2"
+  - "depth2 should now be migrated to the has_maximum_value part of depth"
+  - "slots requested for Bioscales, but already available for Biosample: tot_phosp, tot_carb, tot_nitro_content, pH"
+  - "informal ## section delimiters should be replaced with subsets ?"
+  - "commented out insdc_biosample_identifiers insdc_secondary_sample_identifiers... need better understanding of id patterns (at least)"
+  - "commented out several MIxS terms assigned to Biosample because the definitions of those terms were commented out in mixs.yaml dues to shared slot uris"
+  - "resuming use of part_of to link Biosamples to Studies. eg releasing sample_link from that role"
+
+
 description: >-
   Schema for National Microbiome Data Collaborative (NMDC).
   
@@ -19,27 +31,36 @@ prefixes:
   EC: https://unknown.to.linter.org/
   EFO: http://identifiers.org/efo/
   GOLD: http://identifiers.org/gold/
+  IMG.TAXON: http://identifiers.org/img.taxon/
   ISA: https://unknown.to.linter.org/
   MS: http://purl.obolibrary.org/obo/MS_
-  MetaCyc: https://identifiers.org/metacyc.reaction/ # assuming we're talking about metacyc reactions and not genes, compounds etc.
+  MetaCyc: https://identifiers.org/metacyc.reaction/
   MetaNetX: https://unknown.to.linter.org/
   NCIT: http://purl.obolibrary.org/obo/NCIT_
   OBI: http://purl.obolibrary.org/obo/OBI_
   RetroRules: https://unknown.to.linter.org/
   UniProtKB: https://identifiers.org/uniprot/
+  bare: https://unknown.to.linter.org/
   biolink: https://w3id.org/biolink/vocab/
   dcterms: http://purl.org/dc/terms/
+  emsl: https://unknown.to.linter.org/
   gtpo: https://unknown.to.linter.org/
   igsn: https://app.geosamples.org/sample/igsn/
-  IMG.TAXON: http://identifiers.org/img.taxon/
   insdc.srs: https://unknown.to.linter.org/
+  jgi: https://unknown.to.linter.org/
   linkml: https://w3id.org/linkml/
   mgnify: https://unknown.to.linter.org/
   mixs: https://w3id.org/mixs/
   nmdc: https://w3id.org/nmdc/
+  prov: http://www.w3.org/ns/prov#
   qud: http://qudt.org/1.1/schema/qudt#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
+  schema: http://schema.org/
+  skos: http://www.w3.org/2004/02/skos/core#
   wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
+  xsd: http://www.w3.org/2001/XMLSchema#
+
 
 default_prefix: nmdc
 default_range: string
@@ -53,8 +74,10 @@ emit_prefixes:
   - rdfs
   - skos
   - xsd
+
 imports:
   - annotation
+  - basic_slots
   - bioscales
   - core
   - external_identifiers
@@ -69,6 +92,19 @@ imports:
   - sample_prep
   - workflow_execution_activity
 
+settings:
+  id_nmdc_prefix: "^(nmdc)"
+  id_typecode: "([a-z]{1,6})"
+  id_shoulder: "([0-9][a-z]{0,6}[0-9])"
+  id_blade: "([A-Za-z0-9]{1,})"
+  id_version: "(\\.[A-Za-z0-9]{1,})*"
+  id_locus: "(_[A-Za-z0-9_\\.-]+)?$"
+  # class to typecode associations
+  id_typecode_biosample: "bsm"
+  id_typecode_study: "sty"
+  id_typecode_biosample_processing: "bsmprc"
+  id_typecode_omics_processing: "omprc"
+
 subsets:
   sample subset:
     description: Subset consisting of entities linked to the processing of samples.  Currently,
@@ -77,14 +113,8 @@ subsets:
     description: Subset consisting of the data objects that either inputs or outputs
       of processes or workflows.
 
-settings:
-  id_nmdc_prefix: "nmdc"
-  id_type_sample: "sa"
-  id_type_study: "st"
-  id_shoulder: "[0-9][a-z]*[0-9]"
-  id_generated: "[a-z0-9]{6,}"
-
 classes:
+
   Database:
     tree_root: true
     aliases:
@@ -114,6 +144,9 @@ classes:
       - read_qc_analysis_activity_set
       - read_based_taxonomy_analysis_activity_set
       - study_set
+      - field_research_site_set
+      - collecting_biosamples_from_site_set
+
     slot_usage:
       date_created:
         description: TODO
@@ -121,6 +154,40 @@ classes:
         description: TODO
       metatranscriptome_activity_set:
         description: TODO
+
+  FieldResearchSite:
+    aliases:
+      - research plot
+    description: A site, outside of a laboratory, from which biosamples may be collected.
+    is_a: Site
+    #    is_a: NamedThing
+    title: Field Research Site
+    comments:
+      - Provides grouping of biosamples at level that's more specific than belonging
+        to the same study
+      - be very clear that this could be part of a larger site
+      - In Bioscales, one might say that rhizosphere soil and bulk soil from around
+        the same plant were obtained at the same site. In this case, the site would
+        correspond to one tree.
+      - "might correspond to GOLD's identifier on a page like https://gold.jgi.doe.gov/biosample?id=Gb0305833"
+
+  CollectingBiosamplesFromSite:
+    is_a: PlannedProcess
+    title: Collecting Biosamples From Site
+    slots:
+      - has_inputs
+      - has_outputs
+    comments:
+      - "this illustrates implementing a Biosample relation with a process class"
+    slot_usage:
+      has_inputs:
+        range: Site
+        #        range: NamedThing
+        required: true
+      has_outputs:
+        range: Biosample
+        required: true
+
 
   DataObject:
     is_a: NamedThing
@@ -145,7 +212,7 @@ classes:
       - GOLD
 
   Biosample:
-    is_a: NamedThing
+    is_a: MaterialEntity
     in_subset:
       - sample subset
     aliases:
@@ -162,21 +229,26 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
+      - collected_from
+      - type
+      - img_identifiers
+      - samp_name
       - biosample_categories
-      - type  # custom slot that specifies object type
+      - type
       - part_of
-      #      - canary
 
-      # Identifiers
+      ## Identifiers
       - id
       - alternative_identifiers
 
-      # external IDs, alternate IDs
-      - gold_sample_identifiers
-#      - insdc_biosample_identifiers
-#      - insdc_secondary_sample_identifiers
+      ## external IDs, alternate IDs
+      - gold_biosample_identifiers
+      - insdc_biosample_identifiers
+      #      - insdc_secondary_sample_identifiers
+      - emsl_biosample_identifiers
+      - igsn_biosample_identifiers
 
-      # MIXS slots
+      ## MIXS slots
       - agrochem_addition
       - alkalinity
       - alkalinity_method
@@ -224,8 +296,8 @@ classes:
       - glucosidase_act
       - heavy_metals
       - heavy_metals_meth
-      - horizon
-      - horizon_meth
+      #      - horizon
+      #      - horizon_meth
       - lat_lon
       - link_addit_analys
       - link_class_info
@@ -235,8 +307,8 @@ classes:
       - magnesium
       - mean_frict_vel
       - mean_peak_frict_vel
-      - microbial_biomass
-      - microbial_biomass_meth
+      #      - microbial_biomass
+      #      - microbial_biomass_meth
       - misc_param
       - n_alkanes
       - nitrate
@@ -255,13 +327,13 @@ classes:
       - pool_dna_extracts
       - potassium
       - pressure
-      - previous_land_use
-      - previous_land_use_meth
+      #      - previous_land_use
+      #      - previous_land_use_meth
       - profile_position
       - redox_potential
       - salinity
       - salinity_meth
-      - samp_collect_device
+      #      - samp_collect_device
       - samp_mat_process
       - samp_store_dur
       - samp_store_loc
@@ -281,8 +353,8 @@ classes:
       - sulfate
       - sulfide
       - temp
-      - texture
-      - texture_meth
+      #      - texture
+      #      - texture_meth
       - tillage
       - tidal_stage
       - tot_carb
@@ -296,32 +368,30 @@ classes:
       - water_content
       - water_cont_soil_meth
 
-      # GOLD path fields
+      ## GOLD path fields
       - ecosystem
       - ecosystem_category
       - ecosystem_type
       - ecosystem_subtype
       - specific_ecosystem
 
-      # GOLD specific fields
+      ## GOLD specific fields
       - add_date
       - community
-      - depth2
       - habitat
       - host_name
-      - identifier
       - location
       - mod_date
       - ncbi_taxonomy_name
       - proport_woa_temperature
-      - salinity_category # note: maps to gold:salinity
+      - salinity_category
       - sample_collection_site
       - soluble_iron_micromol
       - subsurface_depth
-      - subsurface_depth2
 
-      # MIxS terms initially used in
-      # sample metadata submission portal (aka DataHarmonizer)
+
+      ## MIxS terms initially used in
+      ## sample metadata submission portal (aka DataHarmonizer)
       - air_temp_regm
       - biotic_regm
       - biotic_relationship
@@ -331,18 +401,18 @@ classes:
       - growth_facil
       - humidity_regm
       - light_regm
-      - micro_biomass_meth
+      #      - micro_biomass_meth
       - phosphate
       - rel_to_oxygen
       - samp_collec_method
       - samp_size
-      - soil_text_measure
-      - soil_texture_meth
+      #      - soil_text_measure
+      #      - soil_texture_meth
       - source_mat_id
       - watering_regm
 
-      # sample metadata submission portal (aka DataHarmonizer) terms (EMSL, JGI, etc.)
-      # JGI fields
+      ## sample metadata submission portal (aka DataHarmonizer) terms (EMSL, JGI, etc.)
+      ## JGI fields
       - dna_absorb1
       - dna_absorb2
       - dna_collect_site
@@ -407,10 +477,9 @@ classes:
       - analysis_type
       - sample_link
 
-      # EMSL fields
+      ## EMSL slots
 
-      # bioscales
-      # tot_phosp, tot_carb, tot_nitro_content, pH already associated with biosamples
+      ## bioscales slots
       - zinc
       - manganese
       - ammonium_nitrogen
@@ -418,9 +487,17 @@ classes:
       - nitrite_nitrogen
       - lbc_thirty
       - lbceq
-
     slot_usage:
-      gold_sample_identifiers:
+      id:
+        description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
+        required: true
+        pattern: '^nmdc:'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:{id_typecode_biosample}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
+
+      gold_biosample_identifiers:
         description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
         comments: This is the ID provided by GOLD that starts with 'GB'
         annotations:
@@ -428,13 +505,9 @@ classes:
             tag: display_hint
             value: >-
               Provide the GOLD biosample IDs associated with this biosample.
-
       alternative_identifiers:
-          description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
-          required: false
-      id:
-        description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
-        required: true
+        description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
+        required: false
 
       lat_lon:
         required: false
@@ -447,12 +520,19 @@ classes:
       env_medium:
         required: true
       sample_link:
-        description:
+        description: { }
+        required: false
+      part_of:
         required: true
-    #      canary:
-    #        required: true
-    #      part_of:
-    #        required: false
+
+      extreme_event:
+        examples:
+          - value: 1980-05-18, volcanic eruption
+        annotations:
+          expected_value:
+            tag: expected_value
+            value: date, string
+        range: string
 
     id_prefixes:
       - GOLD
@@ -479,13 +559,13 @@ classes:
         controls its release date. A study accession is typically used when citing
         data submitted to ENA
     slots:
-      # Identifiers
+      ## Identifiers
       - id
 
-      # Alternative IDs
+      ## Alternative IDs
       - alternative_identifiers
 
-      # Related IDs
+      ## Related IDs
       - related_identifiers
       - emsl_proposal_identifier
       - emsl_proposal_doi
@@ -515,17 +595,20 @@ classes:
       - funding_sources
       - has_credit_associations
       - study_image
-
     slot_usage:
       id:
-        description: An NMDC assigned unique identifier for a sample submitted to NMDC.
+        description: An NMDC assigned unique identifier for a study submitted to NMDC.
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:{id_typecode_study}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
       doi:
         description: >-
           The dataset citation for this study
         annotations:
           display_hint:
             tag: display_hint
-            value: >- 
+            value: >-
               DOI associated with the data in this study. This is required when data is already generated.
       name:
         description:
@@ -567,7 +650,7 @@ classes:
               Project, study, or sample set names the are also associated with this submission 
               or other names / identifiers for this study.
       related_identifiers:
-          description: Unique identifier for a study submitted to additional resources. Similar, but not necessarily identical to that which has been submitted to NMDC
+        description: Unique identifier for a study submitted to additional resources. Similar, but not necessarily identical to that which has been submitted to NMDC
       insdc_bioproject_identifiers:
         description: Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.
         annotations:
@@ -594,9 +677,13 @@ classes:
         experimental_factor
       - project_name is redundant with name, so excluding it
     id_prefixes:
-      - GOLD ## https://identifiers.org/gold:Gs0110115
-      - insdc.srs ## https://www.ebi.ac.uk/ena/browser/view/PRJEB45055?
-      - mgnify ## https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757
+      - GOLD
+      - insdc.srs
+      - mgnify
+    notes:
+      - "sample GOLD link https://identifiers.org/gold:Gs0110115"
+      - "sample insdc.srs link https://www.ebi.ac.uk/ena/browser/view/PRJEB45055 ?"
+      - "sample mgnify link https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757"
 
   BiosampleProcessing:
     aliases:
@@ -608,10 +695,16 @@ classes:
     slots:
       - has_input
     slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:{id_typecode_biosample_processing}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
       has_input:
         range: Biosample
     broad_mappings:
       - OBI:0000094
+
   OmicsProcessing:
     aliases:
       - omics assay
@@ -626,7 +719,7 @@ classes:
       embl.ena: An experiment contains information about a sequencing experiment including
         library and instrument details.
     comments:
-      - The IDs for objects coming from GOLD will have prefixes gold:GpNNNN
+      - The ID prefix for objects coming from GOLD will be gold:Gp
     slots:
       - add_date
       - mod_date
@@ -652,11 +745,17 @@ classes:
       - seq_quality_check
       - chimera_check
     slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:{id_typecode_omics_processing}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
       has_input:
         required: true
     broad_mappings:
       - OBI:0000070
       - ISA:Assay
+
   CreditAssociation:
     aliases:
       - study role
@@ -854,7 +953,7 @@ enums:
       - credit enums come from https://casrai.org/credit/
   processing_institution_enum:
     name: processing_institution_enum
-    comments:
+    notes:
       - This will become the range of processing_institution.omics processing
       - use ROR meanings like https://ror.org/0168r3w48 for UCSD
     from_schema: NMDC_enums_roundtrip
@@ -871,11 +970,52 @@ enums:
         text: EMSL
         title: Environmental Molecular Sciences Laboratory
         meaning: https://ror.org/04rc0xn13
-        comments:
+        notes:
           - replaces Environmental Molecular Science Laboratory
           - replaces Environmental Molecular Sciences Lab
 
 slots:
+
+  collected_from:
+    description: The Site from which a Biosample was collected
+    domain: Biosample
+    range: FieldResearchSite
+    comments:
+      - this illustrates implementing a Biosample relation with a (binary) slot
+    todos:
+      - add an OBO slot_uri ?
+
+
+  emsl_project_identifier: { }
+  img_identifiers:
+    title: IMG Identifiers
+    description: >-
+      A list of identifiers that relate the biosample to records in the IMG database.
+    multivalued: true
+    todos:
+      - add is_a or mixin modeling
+      - what are the class of IMG records?!
+
+  emsl_biosample_identifiers:
+    title: EMSL Biosample Identifiers
+    description: >-
+      A list of identifiers for the biosample from the EMSL database.  This is
+      used to link the biosample, as modeled by NMDC, to the biosample in the planned EMSL NEXUS database.
+    multivalued: true
+    is_a: biosample_identifiers
+    todos:
+      - removed "planned" once NEXUS is online
+      - make an emsl identifiers mixin
+      - determine real expansion for emsl prefix
+
+  igsn_biosample_identifiers:
+    title: IGSN Biosample Identifiers
+    description: >-
+      A list of identifiers for the biosample from the IGSN database.
+    multivalued: true
+    is_a: biosample_identifiers
+    todos:
+      - make an igsn identifiers mixin
   biosample_categories:
     title: Categories the biosample belongs to
     range: biosample_category_enum
@@ -884,8 +1024,6 @@ slots:
     description: from database class
   etl_software_version:
     description: from database class
-  #  metatranscriptome_activity_set:
-  #    description: from database class
   related_identifiers:
     title: Related Identifiers
     description: Identifiers assigned to a thing that is similar to that which is represented in NMDC. Related identifier are not an identical match and may have some variation.
@@ -911,7 +1049,8 @@ slots:
     domain: Study
     range: CreditAssociation
     multivalued: true
-    # was just "inlined: true"
+    notes:
+      - 'had just been "inlined: true"'
     inlined_as_list: true
     description: 'This slot links a study to a credit association.  The credit association
       will be linked to a person value and to a CRediT Contributor Roles term. Overall
@@ -982,6 +1121,16 @@ slots:
     multivalued: true
     description: This property links a database object to the set of studies within
       it.
+  field_research_site_set:
+    inlined_as_list: true
+    multivalued: true
+    range: FieldResearchSite
+    domain: Database
+  collecting_biosamples_from_site_set:
+    inlined_as_list: true
+    multivalued: true
+    range: CollectingBiosamplesFromSite
+    domain: Database
   data_object_set:
     mixins: object_set
     domain: Database
@@ -1084,6 +1233,8 @@ slots:
     examples:
       - value: metatranscriptome
       - value: metagenome
+    notes:
+      - "was the range string at one point? the values in MongoDB don't look like NMDC classes"
   data_object_type:
     range: file type enum
     description: The type of file represented by the data object.
@@ -1189,13 +1340,13 @@ slots:
     range: string
   sample_collection_site:
     range: string
-  identifier:
-    slot_group: biosample_identifiers
-    range: string
-    todos:
-      - used in MongoDB as of 2022-09-09, which is still on schema 3.?
-      - we will remove this slot form the schema, but make sure to retain the content in MongoDB in a relevant, retained slot
-      - Mark will do the MongoDB migration
+  #  identifier:
+  #    slot_group: biosample_identifiers
+  #    range: string
+  #    todos:
+  #      - used in MongoDB as of 2022-09-09, which is still on schema 3.?
+  #      - we will remove this slot form the schema, but make sure to retain the content in MongoDB in a relevant, retained slot
+  #      - Mark will do the MongoDB migration
   sample_collection_year:
     range: integer
   sample_collection_month:
@@ -1212,16 +1363,16 @@ slots:
     range: string
     see_also:
       - https://github.com/microbiomedata/nmdc-metadata/pull/297
+    notes:
+      - "maps to gold:salinity"
   soluble_iron_micromol:
     range: string
   host_name:
     range: string
-  depth2:
-    range: QuantityValue
   subsurface_depth:
     range: QuantityValue
-  subsurface_depth2:
-    range: QuantityValue
+  #  subsurface_depth2:
+  #    range: QuantityValue
   proport_woa_temperature:
     range: string
 
@@ -1235,7 +1386,6 @@ slots:
   processing_institution:
     range: processing_institution_enum
     description: The organization that processed the sample.
-  #  omics_type:
-  #    range: string
+
   completion_date:
     range: string

@@ -1,26 +1,21 @@
 {
   "study_set": [
     {
-      "type": "study",
       "id": "example:123",
       "has_credit_associations": [
         {
-          "type": "credit association",
           "applied_roles": [
             "Data curation"
           ],
           "applies_to_person": {
-            "type": "PersonValue",
             "orcid": "orcid:0000-0002-1825-00"
           }
         },
         {
-          "type": "credit association",
           "applied_roles": [
             "Software"
           ],
           "applies_to_person": {
-            "type": "PersonValue",
             "orcid": "orcid:0000-0001-9076-6066"
           }
         }

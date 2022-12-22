@@ -1,0 +1,220 @@
+{
+  "biosample_set": [
+    {
+      "id": "nmdc:biosample_placeholder_1",
+      "name": "Root microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL1_35_33 endosphere",
+      "description": "Root microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
+      "collected_from": "GOLD:BESC-13-CL1_35_33",
+      "gold_biosample_identifiers": [
+        "GOLD:Gb0305833"
+      ],
+      "part_of": [
+        "nmdc:study_placeholder"
+      ],
+      "env_broad_scale": {
+        "has_raw_value": "ENVO:00002030",
+        "term": {
+          "id": "ENVO:00002030"
+        }
+      },
+      "env_local_scale": {
+        "has_raw_value": "ENVO:00002169",
+        "term": {
+          "id": "ENVO:00002169"
+        }
+      },
+      "env_medium": {
+        "has_raw_value": "ENVO:00005792",
+        "term": {
+          "id": "ENVO:00005792"
+        }
+      }
+    },
+    {
+      "id": "nmdc:biosample_placeholder_2",
+      "name": "Rhizosphere soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL1_35_33",
+      "description": "Rhizosphere soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
+      "collected_from": "GOLD:BESC-13-CL1_35_33",
+      "gold_biosample_identifiers": [
+        "GOLD:Gb0291692"
+      ],
+      "part_of": [
+        "nmdc:study_placeholder"
+      ],
+      "env_broad_scale": {
+        "has_raw_value": "ENVO:00002030",
+        "term": {
+          "id": "ENVO:00002030"
+        }
+      },
+      "env_local_scale": {
+        "has_raw_value": "ENVO:00002169",
+        "term": {
+          "id": "ENVO:00002169"
+        }
+      },
+      "env_medium": {
+        "has_raw_value": "ENVO:00005792",
+        "term": {
+          "id": "ENVO:00005792"
+        }
+      }
+    },
+    {
+      "id": "nmdc:biosample_placeholder_3",
+      "name": "Bulk soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL1_35_33",
+      "description": "Bulk soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
+      "collected_from": "GOLD:BESC-13-CL1_35_33",
+      "gold_biosample_identifiers": [
+        "GOLD:Gb0291582"
+      ],
+      "part_of": [
+        "nmdc:study_placeholder"
+      ],
+      "env_broad_scale": {
+        "has_raw_value": "ENVO:00002030",
+        "term": {
+          "id": "ENVO:00002030"
+        }
+      },
+      "env_local_scale": {
+        "has_raw_value": "ENVO:00002169",
+        "term": {
+          "id": "ENVO:00002169"
+        }
+      },
+      "env_medium": {
+        "has_raw_value": "ENVO:00005792",
+        "term": {
+          "id": "ENVO:00005792"
+        }
+      }
+    },
+    {
+      "id": "nmdc:biosample_placeholder_4",
+      "name": "Root microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL2_39_29 endosphere",
+      "description": "Root microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
+      "collected_from": "GOLD:BESC-13-CL2_39_29",
+      "gold_biosample_identifiers": [
+        "GOLD:Gb0305834"
+      ],
+      "part_of": [
+        "nmdc:study_placeholder"
+      ],
+      "env_broad_scale": {
+        "has_raw_value": "ENVO:00002030",
+        "term": {
+          "id": "ENVO:00002030"
+        }
+      },
+      "env_local_scale": {
+        "has_raw_value": "ENVO:00002169",
+        "term": {
+          "id": "ENVO:00002169"
+        }
+      },
+      "env_medium": {
+        "has_raw_value": "ENVO:00005792",
+        "term": {
+          "id": "ENVO:00005792"
+        }
+      }
+    },
+    {
+      "id": "nmdc:study_placeholder",
+      "name": "Rhizosphere soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL2_39_29",
+      "description": "Rhizosphere soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
+      "collected_from": "GOLD:BESC-13-CL2_39_29",
+      "gold_biosample_identifiers": [
+        "GOLD:Gb0291693"
+      ],
+      "part_of": [
+        "nmdc:study_placeholder"
+      ],
+      "env_broad_scale": {
+        "has_raw_value": "ENVO:00002030",
+        "term": {
+          "id": "ENVO:00002030"
+        }
+      },
+      "env_local_scale": {
+        "has_raw_value": "ENVO:00002169",
+        "term": {
+          "id": "ENVO:00002169"
+        }
+      },
+      "env_medium": {
+        "has_raw_value": "ENVO:00005792",
+        "term": {
+          "id": "ENVO:00005792"
+        }
+      }
+    },
+    {
+      "id": "nmdc:biosample_placeholder_6",
+      "name": "Bulk soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL2_39_29",
+      "description": "Bulk soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
+      "collected_from": "GOLD:BESC-13-CL2_39_29",
+      "gold_biosample_identifiers": [
+        "GOLD:Gb0291583"
+      ],
+      "part_of": [
+        "nmdc:study_placeholder"
+      ],
+      "env_broad_scale": {
+        "has_raw_value": "ENVO:00002030",
+        "term": {
+          "id": "ENVO:00002030"
+        }
+      },
+      "env_local_scale": {
+        "has_raw_value": "ENVO:00002169",
+        "term": {
+          "id": "ENVO:00002169"
+        }
+      },
+      "env_medium": {
+        "has_raw_value": "ENVO:00005792",
+        "term": {
+          "id": "ENVO:00005792"
+        }
+      }
+    }
+  ],
+  "field_research_site_set": [
+    {
+      "id": "GOLD:BESC-13-CL1_35_33",
+      "description": "Bioscales tree BESC-13-CL1_35_33"
+    },
+    {
+      "id": "GOLD:BESC-13-CL2_39_29",
+      "description": "Bioscales tree BESC-13-CL2_39_29"
+    }
+  ],
+  "collecting_biosamples_from_site_set": [
+    {
+      "id": "cleanroom_schema:cbfs1",
+      "name": "Collection of biosamples from BESC-13-CL1_35_33",
+      "has_inputs": [
+        "GOLD:BESC-13-CL1_35_33"
+      ],
+      "has_outputs": [
+        "GOLD:Gb0305833",
+        "GOLD:Gb0291692",
+        "GOLD:Gb0291582"
+      ]
+    },
+    {
+      "id": "cleanroom_schema:cbfs2",
+      "name": "Collection of biosamples from BESC-13-CL2_39_29",
+      "has_inputs": [
+        "GOLD:BESC-13-CL2_39_29"
+      ],
+      "has_outputs": [
+        "GOLD:Gb0305834",
+        "GOLD:Gb0291693",
+        "GOLD:Gb0291583"
+      ]
+    }
+  ]
+}
