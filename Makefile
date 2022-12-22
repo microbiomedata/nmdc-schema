@@ -334,7 +334,25 @@ from_mongo_cleanup:
 	rm -rf assets/from_mongodb.yaml
 	rm -rf assets/from_mongodb_updated.json
 
+TermsUpdated_organicmatterextraction_all: TermsUpdated_organicmatterextraction_clean assets/TermsUpdated_organicmatterextraction_data.json
+
+TermsUpdated_organicmatterextraction_clean:
+	rm -rf target/TermsUpdated_organicmatterextraction.yaml
+	rm -rf assets/TermsUpdated_organicmatterextraction_data.json
+
+target/TermsUpdated_organicmatterextraction.yaml: assets/TermsUpdated_organicmatterextraction.tsv
+	$(RUN) sheets2linkml \
+	--name TermsUpdated_organicmatterextraction \
+	--output $@ $^
+
+assets/TermsUpdated_organicmatterextraction_data.json: target/TermsUpdated_organicmatterextraction.yaml assets/TermsUpdated_organicmatterextraction_data.yaml
+	$(RUN) linkml-convert \
+		--output $@ \
+		--target-class MaterialSamplingProcess \
+		--schema $^
+
 #from_mongo_all: from_mongo_cleanup validate_vs_3_2_0 validate_vs_current
 
 target/nmdc_data_for_v7.json:
 	$(RUN) migrate_3_2_to_7
+
