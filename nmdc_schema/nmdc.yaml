@@ -115,6 +115,46 @@ subsets:
 
 classes:
 
+  Database:
+    tree_root: true
+    aliases:
+      - NMDC metadata object
+    description: An abstract holder for any set of metadata and data. It does not
+      need to correspond to an actual managed database top level holder class. When
+      translated to JSON-Schema this is the 'root' object. It should contain pointers
+      to other objects of interest
+    slots:
+      - activity_set
+      - biosample_set
+      - data_object_set
+      - dissolving_activity_set
+      - functional_annotation_set
+      - genome_feature_set
+      - mags_activity_set
+      - material_sample_set
+      - material_sampling_activity_set
+      - metabolomics_analysis_activity_set
+      - metagenome_annotation_activity_set
+      - metagenome_assembly_set
+      - metaproteomics_analysis_activity_set
+      - metatranscriptome_activity_set
+      - nom_analysis_activity_set
+      - omics_processing_set
+      - reaction_activity_set
+      - read_qc_analysis_activity_set
+      - read_based_taxonomy_analysis_activity_set
+      - study_set
+      - field_research_site_set
+      - collecting_biosamples_from_site_set
+
+    slot_usage:
+      date_created:
+        description: TODO
+      etl_software_version:
+        description: TODO
+      metatranscriptome_activity_set:
+        description: TODO
+
   FieldResearchSite:
     aliases:
       - research plot
@@ -148,53 +188,6 @@ classes:
         range: Biosample
         required: true
 
-  Database:
-    tree_root: true
-    aliases:
-      - NMDC metadata object
-    description: An abstract holder for any set of metadata and data. It does not
-      need to correspond to an actual managed database top level holder class. When
-      translated to JSON-Schema this is the 'root' object. It should contain pointers
-      to other objects of interest
-    slots:
-      - activity_set
-      - biosample_set
-      - data_object_set
-      - dissolving_activity_set
-      - functional_annotation_set
-      - genome_feature_set
-      - mags_activity_set
-      - material_sample_set
-      - material_sampling_activity_set
-      - metabolomics_analysis_activity_set
-      - metagenome_annotation_activity_set
-      - metagenome_assembly_set
-      - metaproteomics_analysis_activity_set
-      - metatranscriptome_activity_set
-      - nom_analysis_activity_set
-      - omics_processing_set
-      - reaction_activity_set
-      - read_qc_analysis_activity_set
-      - read_based_taxonomy_analysis_activity_set
-      - study_set
-    attributes:
-      frs_set:
-        inlined_as_list: true
-        multivalued: true
-        range: FieldResearchSite
-        domain: Database
-      cbfs_set:
-        inlined_as_list: true
-        multivalued: true
-        range: CollectingBiosamplesFromSite
-        domain: Database
-    slot_usage:
-      date_created:
-        description: TODO
-      etl_software_version:
-        description: TODO
-      metatranscriptome_activity_set:
-        description: TODO
 
   DataObject:
     is_a: NamedThing
@@ -503,6 +496,7 @@ classes:
           syntax: "{id_nmdc_prefix}:{id_typecode_biosample}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
           partial_match: false
+
       gold_biosample_identifiers:
         description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
         comments: This is the ID provided by GOLD that starts with 'GB'
@@ -514,6 +508,7 @@ classes:
       alternative_identifiers:
         description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
         required: false
+
       lat_lon:
         required: false
         description: This is currently a required field but it's not clear if this
@@ -529,6 +524,16 @@ classes:
         required: false
       part_of:
         required: true
+
+      extreme_event:
+        examples:
+          - value: 1980-05-18, volcanic eruption
+        annotations:
+          expected_value:
+            tag: expected_value
+            value: date, string
+        range: string
+
     id_prefixes:
       - GOLD
     exact_mappings:
@@ -592,7 +597,7 @@ classes:
       - study_image
     slot_usage:
       id:
-        description: An NMDC assigned unique identifier for a study submitted to NMDC.
+        description: An NMDC assigned unique identifier for a sample submitted to NMDC.
         structured_pattern:
           syntax: "{id_nmdc_prefix}:{id_typecode_study}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -1116,6 +1121,16 @@ slots:
     multivalued: true
     description: This property links a database object to the set of studies within
       it.
+  field_research_site_set:
+    inlined_as_list: true
+    multivalued: true
+    range: FieldResearchSite
+    domain: Database
+  collecting_biosamples_from_site_set:
+    inlined_as_list: true
+    multivalued: true
+    range: CollectingBiosamplesFromSite
+    domain: Database
   data_object_set:
     mixins: object_set
     domain: Database

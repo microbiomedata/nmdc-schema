@@ -799,6 +799,22 @@
       "multivalued": true,
       "range": "Study"
     },
+    "field_research_site_set": {
+      "name": "field_research_site_set",
+      "from_schema": "https://microbiomedata/schema",
+      "domain": "Database",
+      "multivalued": true,
+      "range": "FieldResearchSite",
+      "inlined_as_list": true
+    },
+    "collecting_biosamples_from_site_set": {
+      "name": "collecting_biosamples_from_site_set",
+      "from_schema": "https://microbiomedata/schema",
+      "domain": "Database",
+      "multivalued": true,
+      "range": "CollectingBiosamplesFromSite",
+      "inlined_as_list": true
+    },
     "data_object_set": {
       "name": "data_object_set",
       "description": "This property links a database object to the set of data objects within it.",
@@ -1220,6 +1236,53 @@
     }
   },
   "classes": {
+    "Database": {
+      "name": "Database",
+      "description": "An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest",
+      "from_schema": "https://microbiomedata/schema",
+      "aliases": [
+        "NMDC metadata object"
+      ],
+      "slots": [
+        "activity_set",
+        "biosample_set",
+        "data_object_set",
+        "dissolving_activity_set",
+        "functional_annotation_set",
+        "genome_feature_set",
+        "mags_activity_set",
+        "material_sample_set",
+        "material_sampling_activity_set",
+        "metabolomics_analysis_activity_set",
+        "metagenome_annotation_activity_set",
+        "metagenome_assembly_set",
+        "metaproteomics_analysis_activity_set",
+        "metatranscriptome_activity_set",
+        "nom_analysis_activity_set",
+        "omics_processing_set",
+        "reaction_activity_set",
+        "read_qc_analysis_activity_set",
+        "read_based_taxonomy_analysis_activity_set",
+        "study_set",
+        "field_research_site_set",
+        "collecting_biosamples_from_site_set"
+      ],
+      "slot_usage": {
+        "date_created": {
+          "name": "date_created",
+          "description": "TODO"
+        },
+        "etl_software_version": {
+          "name": "etl_software_version",
+          "description": "TODO"
+        },
+        "metatranscriptome_activity_set": {
+          "name": "metatranscriptome_activity_set",
+          "description": "TODO"
+        }
+      },
+      "tree_root": true
+    },
     "FieldResearchSite": {
       "name": "FieldResearchSite",
       "description": "A site, outside of a laboratory, from which biosamples may be collected.",
@@ -1260,69 +1323,6 @@
           "required": true
         }
       }
-    },
-    "Database": {
-      "name": "Database",
-      "description": "An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest",
-      "from_schema": "https://microbiomedata/schema",
-      "aliases": [
-        "NMDC metadata object"
-      ],
-      "slots": [
-        "activity_set",
-        "biosample_set",
-        "data_object_set",
-        "dissolving_activity_set",
-        "functional_annotation_set",
-        "genome_feature_set",
-        "mags_activity_set",
-        "material_sample_set",
-        "material_sampling_activity_set",
-        "metabolomics_analysis_activity_set",
-        "metagenome_annotation_activity_set",
-        "metagenome_assembly_set",
-        "metaproteomics_analysis_activity_set",
-        "metatranscriptome_activity_set",
-        "nom_analysis_activity_set",
-        "omics_processing_set",
-        "reaction_activity_set",
-        "read_qc_analysis_activity_set",
-        "read_based_taxonomy_analysis_activity_set",
-        "study_set"
-      ],
-      "slot_usage": {
-        "date_created": {
-          "name": "date_created",
-          "description": "TODO"
-        },
-        "etl_software_version": {
-          "name": "etl_software_version",
-          "description": "TODO"
-        },
-        "metatranscriptome_activity_set": {
-          "name": "metatranscriptome_activity_set",
-          "description": "TODO"
-        }
-      },
-      "attributes": {
-        "frs_set": {
-          "name": "frs_set",
-          "from_schema": "https://microbiomedata/schema",
-          "domain": "Database",
-          "multivalued": true,
-          "range": "FieldResearchSite",
-          "inlined_as_list": true
-        },
-        "cbfs_set": {
-          "name": "cbfs_set",
-          "from_schema": "https://microbiomedata/schema",
-          "domain": "Database",
-          "multivalued": true,
-          "range": "CollectingBiosamplesFromSite",
-          "inlined_as_list": true
-        }
-      },
-      "tree_root": true
     },
     "DataObject": {
       "name": "DataObject",
@@ -1665,6 +1665,21 @@
         "part_of": {
           "name": "part_of",
           "required": true
+        },
+        "extreme_event": {
+          "name": "extreme_event",
+          "annotations": {
+            "expected_value": {
+              "tag": "expected_value",
+              "value": "date, string"
+            }
+          },
+          "examples": [
+            {
+              "value": "1980-05-18, volcanic eruption"
+            }
+          ],
+          "range": "string"
         }
       }
     },

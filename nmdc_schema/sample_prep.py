@@ -1,5 +1,5 @@
 # Auto generated from sample_prep.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-12-14T15:01:29
+# Generation date: 2022-12-22T13:47:05
 # Schema: sample_prep
 #
 # id: https://microbiomedata/schema/sample_prep
@@ -465,8 +465,8 @@ class Database(YAMLRoot):
     read_qc_analysis_activity_set: Optional[Union[Dict[Union[str, ReadQcAnalysisActivityId], Union[dict, "ReadQcAnalysisActivity"]], List[Union[dict, "ReadQcAnalysisActivity"]]]] = empty_dict()
     read_based_taxonomy_analysis_activity_set: Optional[Union[Dict[Union[str, ReadBasedTaxonomyAnalysisActivityId], Union[dict, "ReadBasedTaxonomyAnalysisActivity"]], List[Union[dict, "ReadBasedTaxonomyAnalysisActivity"]]]] = empty_dict()
     study_set: Optional[Union[Dict[Union[str, StudyId], Union[dict, "Study"]], List[Union[dict, "Study"]]]] = empty_dict()
-    frs_set: Optional[Union[Dict[Union[str, FieldResearchSiteId], Union[dict, FieldResearchSite]], List[Union[dict, FieldResearchSite]]]] = empty_dict()
-    cbfs_set: Optional[Union[Dict[Union[str, CollectingBiosamplesFromSiteId], Union[dict, CollectingBiosamplesFromSite]], List[Union[dict, CollectingBiosamplesFromSite]]]] = empty_dict()
+    field_research_site_set: Optional[Union[Dict[Union[str, FieldResearchSiteId], Union[dict, "FieldResearchSite"]], List[Union[dict, "FieldResearchSite"]]]] = empty_dict()
+    collecting_biosamples_from_site_set: Optional[Union[Dict[Union[str, CollectingBiosamplesFromSiteId], Union[dict, "CollectingBiosamplesFromSite"]], List[Union[dict, "CollectingBiosamplesFromSite"]]]] = empty_dict()
     date_created: Optional[str] = None
     etl_software_version: Optional[str] = None
 
@@ -521,9 +521,9 @@ class Database(YAMLRoot):
 
         self._normalize_inlined_as_list(slot_name="study_set", slot_type=Study, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="frs_set", slot_type=FieldResearchSite, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="field_research_site_set", slot_type=FieldResearchSite, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="cbfs_set", slot_type=CollectingBiosamplesFromSite, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="collecting_biosamples_from_site_set", slot_type=CollectingBiosamplesFromSite, key_name="id", keyed=True)
 
         if self.date_created is not None and not isinstance(self.date_created, str):
             self.date_created = str(self.date_created)
@@ -1097,7 +1097,7 @@ class Biosample(MaterialEntity):
     drainage_class: Optional[Union[dict, "TextValue"]] = None
     elev: Optional[Union[dict, "QuantityValue"]] = None
     env_package: Optional[Union[dict, "TextValue"]] = None
-    extreme_event: Optional[Union[dict, "TimestampValue"]] = None
+    extreme_event: Optional[str] = None
     fao_class: Optional[Union[dict, "TextValue"]] = None
     fire: Optional[Union[dict, "TimestampValue"]] = None
     flooding: Optional[Union[dict, "TimestampValue"]] = None
@@ -1443,8 +1443,8 @@ class Biosample(MaterialEntity):
         if self.env_package is not None and not isinstance(self.env_package, TextValue):
             self.env_package = TextValue(**as_dict(self.env_package))
 
-        if self.extreme_event is not None and not isinstance(self.extreme_event, TimestampValue):
-            self.extreme_event = TimestampValue(**as_dict(self.extreme_event))
+        if self.extreme_event is not None and not isinstance(self.extreme_event, str):
+            self.extreme_event = str(self.extreme_event)
 
         if self.fao_class is not None and not isinstance(self.fao_class, TextValue):
             self.fao_class = TextValue(**as_dict(self.fao_class))
@@ -6127,6 +6127,10 @@ class DnaSampleFormatEnum(EnumDefinitionImpl):
                 PermissibleValue(text="Low EDTA TE") )
         setattr(cls, "MDA reaction buffer",
                 PermissibleValue(text="MDA reaction buffer") )
+        setattr(cls, "Gentegra-DNA",
+                PermissibleValue(text="Gentegra-DNA") )
+        setattr(cls, "Gentegra-RNA",
+                PermissibleValue(text="Gentegra-RNA") )
 
 class DnaseRnaEnum(EnumDefinitionImpl):
 
@@ -6168,6 +6172,10 @@ class RnaSampleFormatEnum(EnumDefinitionImpl):
                 PermissibleValue(text="Low EDTA TE") )
         setattr(cls, "MDA reaction buffer",
                 PermissibleValue(text="MDA reaction buffer") )
+        setattr(cls, "Gentegra-DNA",
+                PermissibleValue(text="Gentegra-DNA") )
+        setattr(cls, "Gentegra-RNA",
+                PermissibleValue(text="Gentegra-RNA") )
 
 class AnalysisTypeEnum(EnumDefinitionImpl):
 
@@ -6356,6 +6364,12 @@ slots.biosample_set = Slot(uri=NMDC.biosample_set, name="biosample_set", curie=N
 
 slots.study_set = Slot(uri=NMDC.study_set, name="study_set", curie=NMDC.curie('study_set'),
                    model_uri=NMDC.study_set, domain=Database, range=Optional[Union[Dict[Union[str, StudyId], Union[dict, "Study"]], List[Union[dict, "Study"]]]])
+
+slots.field_research_site_set = Slot(uri=NMDC.field_research_site_set, name="field_research_site_set", curie=NMDC.curie('field_research_site_set'),
+                   model_uri=NMDC.field_research_site_set, domain=Database, range=Optional[Union[Dict[Union[str, FieldResearchSiteId], Union[dict, "FieldResearchSite"]], List[Union[dict, "FieldResearchSite"]]]])
+
+slots.collecting_biosamples_from_site_set = Slot(uri=NMDC.collecting_biosamples_from_site_set, name="collecting_biosamples_from_site_set", curie=NMDC.curie('collecting_biosamples_from_site_set'),
+                   model_uri=NMDC.collecting_biosamples_from_site_set, domain=Database, range=Optional[Union[Dict[Union[str, CollectingBiosamplesFromSiteId], Union[dict, "CollectingBiosamplesFromSite"]], List[Union[dict, "CollectingBiosamplesFromSite"]]]])
 
 slots.data_object_set = Slot(uri=NMDC.data_object_set, name="data_object_set", curie=NMDC.curie('data_object_set'),
                    model_uri=NMDC.data_object_set, domain=Database, range=Optional[Union[Dict[Union[str, DataObjectId], Union[dict, "DataObject"]], List[Union[dict, "DataObject"]]]])
@@ -8620,12 +8634,6 @@ slots.input_read_bases = Slot(uri=NMDC.input_read_bases, name="input_read_bases"
 slots.output_read_bases = Slot(uri=NMDC.output_read_bases, name="output_read_bases", curie=NMDC.curie('output_read_bases'),
                    model_uri=NMDC.output_read_bases, domain=None, range=Optional[str])
 
-slots.database__frs_set = Slot(uri=NMDC.frs_set, name="database__frs_set", curie=NMDC.curie('frs_set'),
-                   model_uri=NMDC.database__frs_set, domain=Database, range=Optional[Union[Dict[Union[str, FieldResearchSiteId], Union[dict, FieldResearchSite]], List[Union[dict, FieldResearchSite]]]])
-
-slots.database__cbfs_set = Slot(uri=NMDC.cbfs_set, name="database__cbfs_set", curie=NMDC.curie('cbfs_set'),
-                   model_uri=NMDC.database__cbfs_set, domain=Database, range=Optional[Union[Dict[Union[str, CollectingBiosamplesFromSiteId], Union[dict, CollectingBiosamplesFromSite]], List[Union[dict, CollectingBiosamplesFromSite]]]])
-
 slots.magBin__bin_name = Slot(uri=NMDC.bin_name, name="magBin__bin_name", curie=NMDC.curie('bin_name'),
                    model_uri=NMDC.magBin__bin_name, domain=None, range=Optional[str])
 
@@ -8707,12 +8715,6 @@ slots.ReactionActivity_material_output = Slot(uri=NMDC.material_output, name="Re
 slots.ReactionActivity_reaction_time = Slot(uri=NMDC.reaction_time, name="ReactionActivity_reaction_time", curie=NMDC.curie('reaction_time'),
                    model_uri=NMDC.ReactionActivity_reaction_time, domain=ReactionActivity, range=Optional[Union[dict, "QuantityValue"]])
 
-slots.CollectingBiosamplesFromSite_has_inputs = Slot(uri=NMDC.has_inputs, name="CollectingBiosamplesFromSite_has_inputs", curie=NMDC.curie('has_inputs'),
-                   model_uri=NMDC.CollectingBiosamplesFromSite_has_inputs, domain=CollectingBiosamplesFromSite, range=Union[Union[str, SiteId], List[Union[str, SiteId]]])
-
-slots.CollectingBiosamplesFromSite_has_outputs = Slot(uri=NMDC.has_outputs, name="CollectingBiosamplesFromSite_has_outputs", curie=NMDC.curie('has_outputs'),
-                   model_uri=NMDC.CollectingBiosamplesFromSite_has_outputs, domain=CollectingBiosamplesFromSite, range=Union[Union[str, BiosampleId], List[Union[str, BiosampleId]]])
-
 slots.Database_date_created = Slot(uri=NMDC.date_created, name="Database_date_created", curie=NMDC.curie('date_created'),
                    model_uri=NMDC.Database_date_created, domain=Database, range=Optional[str])
 
@@ -8721,6 +8723,12 @@ slots.Database_etl_software_version = Slot(uri=NMDC.etl_software_version, name="
 
 slots.Database_metatranscriptome_activity_set = Slot(uri=NMDC.metatranscriptome_activity_set, name="Database_metatranscriptome_activity_set", curie=NMDC.curie('metatranscriptome_activity_set'),
                    model_uri=NMDC.Database_metatranscriptome_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, MetatranscriptomeActivityId], Union[dict, "MetatranscriptomeActivity"]], List[Union[dict, "MetatranscriptomeActivity"]]]])
+
+slots.CollectingBiosamplesFromSite_has_inputs = Slot(uri=NMDC.has_inputs, name="CollectingBiosamplesFromSite_has_inputs", curie=NMDC.curie('has_inputs'),
+                   model_uri=NMDC.CollectingBiosamplesFromSite_has_inputs, domain=CollectingBiosamplesFromSite, range=Union[Union[str, SiteId], List[Union[str, SiteId]]])
+
+slots.CollectingBiosamplesFromSite_has_outputs = Slot(uri=NMDC.has_outputs, name="CollectingBiosamplesFromSite_has_outputs", curie=NMDC.curie('has_outputs'),
+                   model_uri=NMDC.CollectingBiosamplesFromSite_has_outputs, domain=CollectingBiosamplesFromSite, range=Union[Union[str, BiosampleId], List[Union[str, BiosampleId]]])
 
 slots.DataObject_name = Slot(uri=NMDC.name, name="DataObject_name", curie=NMDC.curie('name'),
                    model_uri=NMDC.DataObject_name, domain=DataObject, range=str)
@@ -8756,6 +8764,9 @@ slots.Biosample_sample_link = Slot(uri=NMDC.sample_link, name="Biosample_sample_
 
 slots.Biosample_part_of = Slot(uri=DCTERMS.isPartOf, name="Biosample_part_of", curie=DCTERMS.curie('isPartOf'),
                    model_uri=NMDC.Biosample_part_of, domain=Biosample, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
+
+slots.Biosample_extreme_event = Slot(uri=MIXS['0000320'], name="Biosample_extreme_event", curie=MIXS.curie('0000320'),
+                   model_uri=NMDC.Biosample_extreme_event, domain=Biosample, range=Optional[str])
 
 slots.Study_id = Slot(uri=NMDC.id, name="Study_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Study_id, domain=Study, range=Union[str, StudyId])

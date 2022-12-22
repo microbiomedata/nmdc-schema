@@ -1,5 +1,5 @@
 # Auto generated from core.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-12-14T15:01:50
+# Generation date: 2022-12-22T13:47:24
 # Schema: NMDC-Core
 #
 # id: https://microbiomedata/schema/core
