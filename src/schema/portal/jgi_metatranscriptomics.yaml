@@ -155,7 +155,7 @@ slots:
     name: rna_cont_well
     title: RNA well number
     comments:
-    - Required when 'plate' is selected for container type. Corner wells must be blank.
+    - Required when 'plate' is selected for container type. Corner wells must be blank/empty (A1, A12, H1, H12).
       For partial plates, fill by columns. Leave blank if the sample will be shipped
       in a tube.
     examples:
