@@ -693,61 +693,61 @@ classes:
           - check and correct validation so examples are accepted
           - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
           - how to manage multiple water content methods?
-      #ph_meth:
-#        examples:
-#          - value: https://www.southernlabware.com/pc9500-benchtop-ph-conductivity-meter-kit-ph-accuracy-2000mv-ph-range-2-000-to-20-000.html?gclid=Cj0KCQiAwJWdBhCYARIsAJc4idCO5vtvbVMf545fcvdROFqa6zjzNSoywNx6K4k9Coo9cCc2pybtvGsaAiR0EALw_wcB
-#          - value: https://doi.org/10.2136/sssabookser5.3.c16
-#        comments:
-#          - This can include a link to the instrument used or a citation for the method.
-#      tot_carb:
-#        examples:
-#          - value: 1 ug/L
-#        todos:
-#          - is this inorganic and organic? both? could use some clarification.
-#          - ug/L doesn't seem like the right units. Should check this slots usage in databases and re-evaluate. I couldn't find any references that provided this data in this format
-#      tot_nitro_cont_meth:
-#        examples:
-#          - value: https://doi.org/10.2134/agronmonogr9.2.c32
-#          - value: https://acsess.onlinelibrary.wiley.com/doi/full/10.2136/sssaj2009.0389?casa_token=bm0pYIUdNMgAAAAA%3AOWVRR0STHaOe-afTcTdxn5m1hM8n2ltM0wY-b1iYpYdD9dhwppk5j3LvC2IO5yhOIvyLVeQz4NZRCZo
-#      tot_nitro_content:
-#        examples:
-#          - value: 5 mg N/ L
-#      tot_org_c_meth:
-#        examples:
-#          - value: https://doi.org/10.1080/07352680902776556
-#      tot_org_carb:
-#        examples:
-#          - value: 5 mg N/ L
-#        todos:
-#         - check description. How are they different?
-#      salinity_meth:
-#        -examples:
-#          - value: https://doi.org/10.1007/978-1-61779-986-0_28
-#      sieving:
-#        comments:
-#          - Describe how samples were composited or sieved.
-#          - Use 'sample link' to indicate which samples were combined.
-#        examples:
-#          - value: combined 2 cores | 4mm sieved
-#          - value: 4 mm sieved and homogenized
-#          - value: 50 g | 5 cores | 2 mm sieved
-#        todos:
-#          - check validation and examples
-#      climate_environment:
-#        todos:
-#          - description says "can include multiple climates" but multivalued is set to false
-#          - add examples, i need to see some examples to add correctly formatted example.
-#      gaseous_environment:
-#        todos:
-#          - would like to see usage examples for this slot. Requiring micromole/L seems too limiting and doesn't match expected_value value
-#          - did I do this right? keep the example that's provided and add another? soas to not override
-#        examples:
-#          - value: CO2; 500ppm above ambient; constant
-#          - value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
-#      watering_regm:
-#        examples:
-#          - value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
-#          - value: 75% water holding capacity; constant
+      ph_meth:
+        examples:
+          - value: https://www.southernlabware.com/pc9500-benchtop-ph-conductivity-meter-kit-ph-accuracy-2000mv-ph-range-2-000-to-20-000.html?gclid=Cj0KCQiAwJWdBhCYARIsAJc4idCO5vtvbVMf545fcvdROFqa6zjzNSoywNx6K4k9Coo9cCc2pybtvGsaAiR0EALw_wcB
+          - value: https://doi.org/10.2136/sssabookser5.3.c16
+        comments:
+          - This can include a link to the instrument used or a citation for the method.
+      tot_carb:
+        examples:
+          - value: 1 ug/L
+        todos:
+          - is this inorganic and organic? both? could use some clarification.
+          - ug/L doesn't seem like the right units. Should check this slots usage in databases and re-evaluate. I couldn't find any references that provided this data in this format
+      tot_nitro_cont_meth:
+        examples:
+          - value: https://doi.org/10.2134/agronmonogr9.2.c32
+          - value: https://acsess.onlinelibrary.wiley.com/doi/full/10.2136/sssaj2009.0389?casa_token=bm0pYIUdNMgAAAAA%3AOWVRR0STHaOe-afTcTdxn5m1hM8n2ltM0wY-b1iYpYdD9dhwppk5j3LvC2IO5yhOIvyLVeQz4NZRCZo
+      tot_nitro_content:
+        examples:
+          - value: 5 mg N/ L
+      tot_org_c_meth:
+        examples:
+          - value: https://doi.org/10.1080/07352680902776556
+      tot_org_carb:
+        examples:
+          - value: 5 mg N/ L
+        todos:
+         - check description. How are they different?
+      salinity_meth:
+        examples:
+          - value: https://doi.org/10.1007/978-1-61779-986-0_28
+      sieving:
+        comments:
+          - Describe how samples were composited or sieved.
+          - Use 'sample link' to indicate which samples were combined.
+        examples:
+          - value: combined 2 cores | 4mm sieved
+          - value: 4 mm sieved and homogenized
+          - value: 50 g | 5 cores | 2 mm sieved
+        todos:
+          - check validation and examples
+      climate_environment:
+        todos:
+          - description says "can include multiple climates" but multivalued is set to false
+          - add examples, i need to see some examples to add correctly formatted example.
+      gaseous_environment:
+        todos:
+          - would like to see usage examples for this slot. Requiring micromole/L seems too limiting and doesn't match expected_value value
+          - did I do this right? keep the example that's provided and add another? soas to not override
+        examples:
+          - value: CO2; 500ppm above ambient; constant
+          - value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+      watering_regm:
+        examples:
+          - value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+          - value: 75% water holding capacity; constant
 
     id_prefixes:
       - GOLD
