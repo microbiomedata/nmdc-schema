@@ -84,7 +84,11 @@ slots:
     slot_group: MIxS Inspired
     recommended: true
     comments:
-      - This is open text to describe your sample. Information put here will be used to consider additional slots/terms that should be provided for collection.
+      - This slot accepts open-ended text about your sample.
+      - We recommend using key:value pairs.
+      - Provided pairs will be considered for inclusion as future slots/terms in this data collection template.
+    examples:
+      - value: "experimental treatment: value"
   filter_method:
     name: filter_method
     description: Type of filter used or how the sample was filtered
@@ -121,7 +125,7 @@ slots:
     recommended: true
   micro_biomass_c_meth:
     name: micro_biomass_c_meth
-    description: Reference or method used in determining microbial biomass
+    description: Reference or method used in determining microbial biomass carbon
     examples:
       - value: https://doi.org/10.1016/0038-0717(87)90052-6
       - value: https://doi.org/10.1016/0038-0717(87)90052-6 | https://www.sciencedirect.com/science/article/abs/pii/0038071787900526
@@ -135,6 +139,8 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_group: MIxS Inspired
     recommended: true
+    todos:
+      - How should we separate values? | or ;? lets be consistent
   micro_biomass_n_meth:
     name: micro_biomass_n_meth
     description: Reference or method used in determining microbial biomass nitrogen
