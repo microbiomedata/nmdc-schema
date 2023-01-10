@@ -225,7 +225,8 @@ SCHEMA_TEST_EXAMPLES := \
 	nmdc_example_database \
 	samp_prep_db \
 	study_credit_test \
-	study_test
+	study_test \
+	bioscales_v7
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
 	biosample_invalid_range \
