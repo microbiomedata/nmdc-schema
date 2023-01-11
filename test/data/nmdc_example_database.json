@@ -287,21 +287,21 @@
   ],
   "data_object_set": [
     {
-      "id": "jgi:58b653757ded5e7a2af951c4",
+      "id": "nmdc:161afbd2-0d43-48ba-bc96-47697de83fbb",
       "name": "11340.8.202049.GTCTCCT-AAGGAGA.fastq.gz",
       "description": "Raw sequencer read data",
       "file_size_bytes": 9208349052.0,
       "type": "nmdc:DataObject"
     },
     {
-      "id": "jgi:599c3a117ded5e41edd7da77",
+      "id": "nmdc:80224019-2607-4610-8981-11ba7ef871fc",
       "name": "11839.4.222578.GAGCTCA-TTGAGCT.fastq.gz",
       "description": "Raw sequencer read data",
       "file_size_bytes": 34243309819.0,
       "type": "nmdc:DataObject"
     },
     {
-      "id": "jgi:5baa816646d1e63f764deb37",
+      "id": "nmdc:5fd558d1-38d3-4f70-8fca-023fff2a035e",
       "name": "12660.4.274923.GATCGTAC-GTACGATC.fastq.gz",
       "description": "Raw sequencer read data",
       "file_size_bytes": 7580035314.0,
