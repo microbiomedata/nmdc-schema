@@ -213,28 +213,31 @@ delete-poetry-env:
 # datasets used test/validate the schema
 #
 SCHEMA_TEST_EXAMPLES := \
-	biosamples_to_sites \
-	MAGs_activity \
-	biosample_test \
-	functional_annotation_set \
-	gold_project_test \
-	img_mg_annotation_objects \
-	mg_assembly_activities_test \
-	mg_assembly_data_objects_test \
-	nmdc_example_database \
-	nmdc_example_database \
-	samp_prep_db \
-	study_credit_test \
-	study_test
+	Database-MAGs-activity \
+	Database-biosample-test \
+	Database-biosamples-to-sites \
+	Database-functional-annotation-set \
+	Database-gold-project-test \
+	Database-img-mg-annotation-objects \
+	Database-mg-assembly-activities-test \
+	Database-mg-assembly-data-objects-test \
+	Database-nmdc-example-database \
+	Database-samp-prep-db \
+	Database-study-credit-test \
+	Database-study-test
+
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
-	biosample_invalid_range \
-	biosample_mismatch_regex \
-	biosample_missing_required_field \
-	biosample_single_multi_value_mixup \
-	biosample_undeclared_slot \
-	study_credit_enum_mangle
+	Database-claimed-invalid-functional-annotation \
+	Database-claimed-invalid-studies \
+	Database-biosample-invalid-range \
+	Database-biosample-mismatch-regex \
+	Database-biosample-missing-required-field \
+	Database-biosample-single-multi-value-mixup \
+	Database-biosample-undeclared-slot \
+	Database-study-credit-enum-mangle
 
+# what's going on with the ambiguous test data files?
 # 	functional_annotation_set_invalid has invalid ID pattern but regex tests aren't applied yet? MAM 2021-06-24
 
 .PHONY: test-jsonschema
@@ -243,14 +246,46 @@ test-jsonschema: $(foreach example, $(SCHEMA_TEST_EXAMPLES), validate-$(example)
 .PHONY: test-jsonschema_invalid
 test-jsonschema_invalid: $(foreach example, $(SCHEMA_TEST_EXAMPLES_INVALID), validate-invalid-$(example))
 
-validate-%: jsonschema/nmdc.schema.json test/data/%.json
+validate-%: jsonschema/nmdc.schema.json test/data/valid_data/%.json
 # util/validate_nmdc_json.py -i $< # example of validating data using the cli
 	$(RUN) check-jsonschema --schemafile $^
 
 validate-invalid-%: jsonschema/nmdc.schema.json test/data/invalid_data/%.json
 	! $(RUN) check-jsonschema --schemafile $^
 
-# ---
+# if the imports merge worked, the output should include a definition for WorkflowExecutionActivity:
+test/data/nmdc_generated.yaml: $(SCHEMA_DIR)/nmdc.yaml
+	$(RUN) gen-linkml \
+ 		--format yaml \
+ 		--output $@ \
+ 		--no-materialize-attributes \
+ 		--mergeimports $<
+
+test/data/output: test/data/nmdc_generated.yaml make_yaml_examples
+	$(RUN) mkdir -p $@
+	$(RUN) linkml-run-examples \
+		--schema $< \
+		--input-directory test/data/valid_data \
+		--counter-example-input-directory test/data/invalid_data \
+		--output-directory test/data/output
+
+INVALID_JSONS = $(wildcard test/data/invalid_data/*.json)
+INVALID_YAMLS = $(patsubst test/data/invalid_data/%.json, test/data/invalid_data/%.yaml, $(INVALID_JSONS))
+
+VALID_JSONS = $(wildcard test/data/valid_data/*.json)
+VALID_YAMLS = $(patsubst test/data/valid_data/%.json, test/data/valid_data/%.yaml, $(VALID_JSONS))
+
+test/data/invalid_data/%.yaml: test/data/invalid_data/%.json
+	$(RUN) yq $< > $@
+
+test/data/valid_data/%.yaml: test/data/valid_data/%.json
+	$(RUN) yq $< > $@
+
+make_yaml_examples: $(INVALID_YAMLS) $(VALID_YAMLS)
+
+del_yaml_examples:
+	rm -f $(INVALID_YAMLS)
+	rm -f $(VALID_YAMLS)
 
 #reports/slot_roster.tsv:
 #	poetry run python util/slot_roster.py \
