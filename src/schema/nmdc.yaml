@@ -104,6 +104,10 @@ settings:
   id_typecode_study: "sty"
   id_typecode_biosample_processing: "bsmprc"
   id_typecode_omics_processing: "omprc"
+  id_typecode_dataobject: "dobj"
+  id_typecode_activity: "acty"
+
+
 
 subsets:
   sample subset:
@@ -208,6 +212,14 @@ classes:
         required: true
       description:
         required: true
+      id:
+        pattern: '^nmdc:'
+        structured_pattern:
+          todos:
+            - remove the static pattern once the minter can generate ids that satisfy this structured_pattern
+          syntax: "{id_nmdc_prefix}:{id_typecode_dataobject}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
     id_prefixes:
       - GOLD
 
@@ -493,6 +505,8 @@ classes:
         required: true
         pattern: '^nmdc:'
         structured_pattern:
+          todos:
+            - remove the static pattern once the minter can generate ids that satisfy this structured_pattern
           syntax: "{id_nmdc_prefix}:{id_typecode_biosample}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
           partial_match: false
@@ -599,6 +613,8 @@ classes:
       id:
         description: An NMDC assigned unique identifier for a study submitted to NMDC.
         structured_pattern:
+          todos:
+            - remove any static pattern once the minter can generate ids that satisfy this structured_pattern
           syntax: "{id_nmdc_prefix}:{id_typecode_study}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
           partial_match: false
@@ -697,6 +713,8 @@ classes:
     slot_usage:
       id:
         structured_pattern:
+          todos:
+            - remove any static pattern once the minter can generate ids that satisfy this structured_pattern
           syntax: "{id_nmdc_prefix}:{id_typecode_biosample_processing}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
           partial_match: false
@@ -747,6 +765,8 @@ classes:
     slot_usage:
       id:
         structured_pattern:
+          todos:
+            - remove any static pattern once the minter can generate ids that satisfy this structured_pattern
           syntax: "{id_nmdc_prefix}:{id_typecode_omics_processing}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
           partial_match: false
