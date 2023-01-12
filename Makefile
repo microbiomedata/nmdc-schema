@@ -261,7 +261,7 @@ test/data/nmdc_generated.yaml: $(SCHEMA_DIR)/nmdc.yaml
  		--no-materialize-attributes \
  		--mergeimports $<
 
-test/data/output: test/data/nmdc_generated.yaml make_yaml_examples
+test/data/output: src/schema/nmdc.yaml make_yaml_examples
 	$(RUN) mkdir -p $@
 	$(RUN) linkml-run-examples \
 		--schema $< \
