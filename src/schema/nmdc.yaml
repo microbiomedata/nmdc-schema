@@ -106,6 +106,7 @@ settings:
   id_typecode_omics_processing: "omprc"
   id_typecode_dataobject: "dobj"
   id_typecode_activity: "acty"
+  id_typecode_named_thing: "nt"
 
 
 

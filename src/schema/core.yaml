@@ -92,6 +92,14 @@ classes:
       - name
       - description
       - alternative_identifiers
+    slot_usage:
+      id:
+        structured_pattern:
+          todos:
+          syntax: "{id_nmdc_prefix}:{id_typecode_named_thing}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
+
 
   MaterialEntity:
     aliases:
