@@ -15,6 +15,6 @@ nav:
   - NMDC Metadata Standards Documentation: Metadata_Documentation_Overview.md
   - NMDC Schema Validation: schema-validation.md
   - Identifiers in NMDC: identifiers.md
-  - MIxS Soil Package: NMDC_MIxS_Soil_documentation.md
-  - Typecodes for Classes: typecode_table.md
+  - Table of Identifier Typecodes for each Class: typecode_table.md
+  - DEPRECATED MIxS Soil Package: NMDC_MIxS_Soil_documentation.md
   - Credits: credits.md
