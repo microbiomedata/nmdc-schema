@@ -10,7 +10,8 @@ for `WorkflowExecutionActivity`, which is inherited from it's ancestor `Activity
 
 Todo:
 
-- Continue to add typecode to classes that are curently just inheriting general typecodes.
+- Document criteria for "good typecodes"
+- Continue to add typecode to classes that are currently just inheriting general typecodes.
 - Investigate which of these classes have identifiers that will actually appear on the Data Portal. Classes that are
   more behind-the-scenes (however were are going to rigorously define that) may require less deliberation.
 - Automate build and deploy of this table
