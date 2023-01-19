@@ -286,6 +286,12 @@ classes:
       has_peptide_quantifications:
         range: PeptideQuantification
         multivalued: true
+      id:
+        pattern: '^nmdc:wfmp'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
   NomAnalysisActivity:
     is_a: WorkflowExecutionActivity
