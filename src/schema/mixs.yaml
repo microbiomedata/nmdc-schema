@@ -14,7 +14,7 @@ notes:
 prefixes:
   nmdc: https://w3id.org/nmdc/
   mixs: https://w3id.org/mixs/
-
+  NCBITaxon: https://ontobee.org/ontology/NCBITaxon
 
 default_prefix: nmdc
 
@@ -7335,6 +7335,10 @@ slots:
     slot_uri: mixs:0000813
     multivalued: false
     range: TextValue
+  investigation field:
+    abstract: true
+    description: field describing aspect of the investigation/study to which the sample
+      belongs
   iw_bt_date_well:
     name: iw_bt_date_well
     aliases:
@@ -10882,6 +10886,24 @@ slots:
     slot_uri: mixs:0000999
     multivalued: false
     range: TextValue
+  samp_taxon_id:
+    is_a: investigation field
+    title: Taxonomy ID of DNA sample
+    description: "NCBI taxon id of the sample.  Maybe be a single taxon or mixed taxa\
+      \ sample. Use 'synthetic metagenome\u2019 for mock community/positive controls,\
+      \ or 'blank sample' for negative controls."
+    range: string
+    multivalued: false
+    examples:
+    - value: soil metagenome [NCBITaxon:410658]
+    comments: []
+    todos:
+    - "structured pattern: {text} [NCBITaxon:{integer}]"
+    aliases:
+    - Taxonomy ID of DNA sample
+    annotations:
+      expected_value: Taxonomy ID
+    slot_uri: mixs:0001320
   samp_time_out:
     name: samp_time_out
     aliases:
