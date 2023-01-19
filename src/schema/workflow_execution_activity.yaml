@@ -152,6 +152,13 @@ classes:
       - num_input_reads
       - num_aligned_reads
       - insdc_assembly_identifiers
+    slot_usage:
+      id:
+        pattern: '^nmdc:wfmtas'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
   MetagenomeAnnotationActivity:
     description: A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
