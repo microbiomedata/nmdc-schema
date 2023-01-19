@@ -1,7 +1,7 @@
 {
   "mags_activity_set": [
     {
-      "id": "nmdc:f2fc8f5aade3092ea97769f0a892d2a9",
+      "id": "nmdc:act-f2fc8f5aade3092ea97769f0a892d2a9",
       "name": "MAGs activiity 1781_86101",
       "was_informed_by": "gold:Gp0115663",
       "started_at_time": "2021-01-10T00:00:00+00:00",
@@ -65,7 +65,7 @@
       ]
     },
     {
-      "id": "nmdc:a0ca0743a49e4bf12db9b5d933c4e76a",
+      "id": "nmdc:act-a0ca0743a49e4bf12db9b5d933c4e76a",
       "name": "MAGs activiity 1781_86089",
       "was_informed_by": "gold:Gp0115664",
       "started_at_time": "2021-01-10T00:00:00+00:00",
