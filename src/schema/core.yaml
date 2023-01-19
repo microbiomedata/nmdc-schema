@@ -135,6 +135,7 @@ classes:
 
 
   PlannedProcess:
+    abstract: true
     class_uri: OBI:0000011
     is_a: NamedThing
     title: Planned Process
