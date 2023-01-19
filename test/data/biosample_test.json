@@ -48,6 +48,7 @@
       "location": "from the Lithgow State Coal Mine, New South Wales, Australia",
       "mod_date": "26-AUG-16 01.50.27.000000000 PM",
       "ncbi_taxonomy_name": "coal metagenome",
+      "samp_taxon_id": "coal metagenome [NCBITaxon:1260732]",
       "sample_collection_site": "Lithgow State Coal Mine"
     },
     {
@@ -102,6 +103,7 @@
       "location": "from the Lithgow State Coal Mine, New South Wales, Australia",
       "mod_date": "26-AUG-16 01.50.27.000000000 PM",
       "ncbi_taxonomy_name": "coal metagenome",
+      "samp_taxon_id": "coal metagenome [NCBITaxon:1260732]",
       "sample_collection_site": "Lithgow State Coal Mine"
     },
     {
@@ -152,6 +154,7 @@
       "location": "from the Lithgow State Coal Mine, New South Wales, Australia",
       "mod_date": "26-AUG-16 01.50.27.000000000 PM",
       "ncbi_taxonomy_name": "coal metagenome",
+      "samp_taxon_id": "coal metagenome [NCBITaxon:1260732]",
       "sample_collection_site": "Lithgow State Coal Mine"
     },
     {
@@ -202,6 +205,7 @@
       "location": "from the Lithgow State Coal Mine, New South Wales, Australia",
       "mod_date": "26-AUG-16 01.50.27.000000000 PM",
       "ncbi_taxonomy_name": "coal metagenome",
+      "samp_taxon_id": "coal metagenome [NCBITaxon:1260732]",
       "sample_collection_site": "Lithgow State Coal Mine"
     }
   ]
