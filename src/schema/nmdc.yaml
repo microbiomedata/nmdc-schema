@@ -101,7 +101,7 @@ settings:
   id_locus: "(_[A-Za-z0-9_\\.-]+)?$"
   # class to typecode associations
   #  id_typecode_biosample: "bsm"
-  id_typecode_study: "sty"
+  #  id_typecode_study: "sty"
   #  id_typecode_biosample_processing: "bsmprc"
   #  id_typecode_omics_processing: "omprc"
   #  id_typecode_dataobject: "dobj"
