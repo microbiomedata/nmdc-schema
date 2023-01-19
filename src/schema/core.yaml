@@ -138,6 +138,15 @@ classes:
 
   OntologyClass:
     is_a: NamedThing
+    notes:
+      - The identifiers for terms from external ontologies can't have their ids constrained to the nmdc namespace
+  #    slot_usage:
+  #      id:
+  #        pattern: '^nmdc:ontc'
+  #        structured_pattern:
+  #          syntax: "{id_nmdc_prefix}:ontc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+  #          interpolated: true
+  #          partial_match: false
 
   EnvironmentalMaterialTerm:
     is_a: OntologyClass
@@ -373,7 +382,15 @@ classes:
     description: >-
       An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs.
       There may be different terms for distinct acid-base forms, protonation states
+    comments:
+      - As with the parent OntologyClass, we will not assign an nmdc id pattern or typecode to this class.
     slot_usage:
+      #      id:
+      #        pattern: '^nmdc:cheme'
+      #        structured_pattern:
+      #          syntax: "{id_nmdc_prefix}:cheme-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+      #          interpolated: true
+      #          partial_match: false
       inchi:
         key: false
         multivalued: false
