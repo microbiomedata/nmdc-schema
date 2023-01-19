@@ -300,6 +300,13 @@ classes:
       A material entity that is designed to perform a function in a scientific investigation, but is not a reagent[OBI].
     exact_mappings:
       - OBI:0000485
+    slot_usage:
+      id:
+        pattern: '^nmdc:inst'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
   MetaboliteQuantification:
     description: >-
