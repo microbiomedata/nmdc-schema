@@ -73,6 +73,12 @@ classes:
       execution_resource:
         required: true
       type: { }
+      id:
+        pattern: '^nmdc:wf'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
   MetagenomeAssembly:
     description: A workflow execution activity that converts sequencing reads into an assembled metagenome.
