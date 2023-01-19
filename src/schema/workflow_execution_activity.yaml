@@ -250,6 +250,12 @@ classes:
       has_calibration:
         description: >-
           TODO: Yuri to fill in
+      id:
+        pattern: '^nmdc:wfmb'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
   MetaproteomicsAnalysisActivity:
     is_a: WorkflowExecutionActivity
