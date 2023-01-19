@@ -154,6 +154,13 @@ classes:
       - gold_analysis_project_identifiers
     in_subset:
       - workflow subset
+    slot_usage:
+      id:
+        pattern: '^nmdc:wfmgan'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
   MetatranscriptomeAnnotationActivity:
     is_a: WorkflowExecutionActivity
