@@ -193,7 +193,7 @@
   ],
   "collecting_biosamples_from_site_set": [
     {
-      "id": "cleanroom_schema:cbfs1",
+      "id": "nmdc:clsite-4ff95e3a-e5e1-4a85-96b2-acf3fb242004",
       "name": "Collection of biosamples from BESC-13-CL1_35_33",
       "has_inputs": [
         "GOLD:BESC-13-CL1_35_33"
@@ -205,7 +205,7 @@
       ]
     },
     {
-      "id": "cleanroom_schema:cbfs2",
+      "id": "nmdc:clsite-87c6ff79-4d89-4362-be87-67766356b1ce",
       "name": "Collection of biosamples from BESC-13-CL2_39_29",
       "has_inputs": [
         "GOLD:BESC-13-CL2_39_29"

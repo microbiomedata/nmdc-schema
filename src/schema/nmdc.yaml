@@ -192,6 +192,12 @@ classes:
       has_outputs:
         range: Biosample
         required: true
+      id:
+        pattern: '^nmdc:clsite'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
 
   DataObject:
