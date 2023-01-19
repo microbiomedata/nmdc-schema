@@ -54,7 +54,10 @@
   ],
   "omics_processing_set": [
     {
-      "id": "gold:Gp0225767",
+      "id": "nmdc:bsmprc-45fc7de7-3610-4f15-b95e-d19462c98469",
+      "alternative_identifiers": [
+        "gold:Gp0225767"
+      ],
       "name": "Forest soil microbial communities from Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O",
       "description": "Forest soil from Barre Woods Harvard Forest LTER site was incubated at 10C with heavy water. Sample is from a control plot at ambient soil temperature, organic horizon - top 4cm of soil",
       "has_input": [
@@ -76,7 +79,10 @@
       "type": "nmdc:OmicsProcessing"
     },
     {
-      "id": "gold:Gp0208560",
+      "id": "nmdc:bsmprc-50a0ab53-cd00-476e-9ca1-f178843b4a30",
+      "alternative_identifiers": [
+        "gold:Gp0208560"
+      ],
       "name": "Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG",
       "description": "Permafrost microbial communities from Stordalen Mire, Sweden",
       "has_input": [
@@ -98,7 +104,10 @@
       "type": "nmdc:OmicsProcessing"
     },
     {
-      "id": "gold:Gp0306221",
+      "id": "nmdc:bsmprc-ed3f3c3a-8916-4fc8-8d98-40a8399719e3",
+      "alternative_identifiers": [
+        "gold:Gp0306221"
+      ],
       "name": "Rhizosphere microbial communities from Carex aquatilis grown in University of Washington, Seatle, WA, United States - 4-1-23 metaG",
       "description": "Rhizosphere microbial communities from Carex aquatilis grown in submerged peat from a thermokarst bog, University of Washington, Seatle, WA, United States",
       "has_input": [

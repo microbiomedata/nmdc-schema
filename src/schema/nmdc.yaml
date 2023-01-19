@@ -102,7 +102,7 @@ settings:
   # class to typecode associations
   #  id_typecode_biosample: "bsm"
   id_typecode_study: "sty"
-  id_typecode_biosample_processing: "bsmprc"
+  #  id_typecode_biosample_processing: "bsmprc"
   id_typecode_omics_processing: "omprc"
   id_typecode_dataobject: "dobj"
   #  id_typecode_activity: "acty"
@@ -711,10 +711,9 @@ classes:
       - has_input
     slot_usage:
       id:
+        pattern: '^nmdc:bsmprc'
         structured_pattern:
-          todos:
-            - remove any static pattern once the minter can generate ids that satisfy this structured_pattern
-          syntax: "{id_nmdc_prefix}:{id_typecode_biosample_processing}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:bsmprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
           partial_match: false
       has_input:

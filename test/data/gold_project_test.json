@@ -1,7 +1,10 @@
 {
   "omics_processing_set": [
     {
-      "id": "gold:Gp0108335",
+      "id": "nmdc:bsmprc-93312e7f-79f2-4861-b108-3aa8ccb86c9b",
+      "alternative_identifiers": [
+        "gold:Gp0108335"
+      ],
       "name": "Thawing permafrost microbial communities from the Arctic, studying carbon transformations - Permafrost 712P3D",
       "has_input": [
         "gold:Gb0108335"
@@ -22,7 +25,10 @@
       "type": "nmdc:OmicsProcessing"
     },
     {
-      "id": "gold:Gp0108340",
+      "id": "nmdc:bsmprc-68fa114f-6709-4e4c-bd2b-c53fd5ee51da",
+      "alternative_identifiers": [
+        "gold:Gp0108340"
+      ],
       "name": "Thawing permafrost microbial communities from the Arctic, studying carbon transformations - Permafrost 612S3M",
       "has_input": [
         "gold:Gb0108340"
@@ -43,7 +49,10 @@
       "type": "nmdc:OmicsProcessing"
     },
     {
-      "id": "gold:Gp0108341",
+      "id": "nmdc:bsmprc-32604e07-bfa6-4d43-a998-3f1cde25bf4f",
+      "alternative_identifiers": [
+        "gold:Gp0108341"
+      ],
       "name": "Thawing permafrost microbial communities from the Arctic, studying carbon transformations - Permafrost 712S3S",
       "has_input": [
         "gold:Gb0108341"
