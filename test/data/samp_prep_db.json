@@ -24,29 +24,34 @@
         },
         "container_type": "screw_top_conical"
       },
-      "material_input": "monet_data:somextract_6",
-      "material_output": "monet_data:somextract_7"
+      "material_input": "nmdc:matsm-b1fb4ff1-e59b-4e2b-a8f9-b95ea6ba4135",
+      "material_output": "nmdc:matsm-181a7a0a-4b04-4a22-9b89-db53e2ccdc99"
     }
   ],
   "material_sample_set": [
     {
-      "id": "monet_data:soil_1",
+      "name": "monet_data:soil_1",
+      "id": "nmdc:matsm-bfc5b458-1c62-44e7-886a-dd3a2cc7ad67",
       "description": "a soil biosample"
     },
     {
-      "id": "monet_data:somextract_6",
+      "name": "nmdc:matsm-b1fb4ff1-e59b-4e2b-a8f9-b95ea6ba4135",
+      "id": "nmdc:matsm-b1fb4ff1-e59b-4e2b-a8f9-b95ea6ba4135",
       "description": "a 6 gram aliquot of monet_data:soil_1"
     },
     {
-      "id": "monet_data:somextract_7",
+      "name": "monet_data:somextract_7",
+      "id": "nmdc:matsm-181a7a0a-4b04-4a22-9b89-db53e2ccdc99",
       "description": "monet_data:somextract_6 dissolved in 30 mL of water"
     },
     {
-      "id": "monet_data:derive_4",
+      "name": "monet_data:derive_4",
+      "id": "nmdc:matsm-31380f3c-cea3-4f68-a8c6-cd84efa5e622",
       "description": "something at the beginning of a reaction"
     },
     {
-      "id": "monet_data:derive_5",
+      "name": "monet_data:derive_5",
+      "id": "nmdc:matsm-9fe9277b-454a-4257-a825-3b4725df665e",
       "description": "something at the end of a reaction"
     }
   ],
@@ -63,15 +68,15 @@
         },
         "container_type": "screw_top_conical"
       },
-      "biosample_input": "monet_data:soil_1",
-      "material_output": "monet_data:somextract_6",
+      "biosample_input": "nmdc:matsm-bfc5b458-1c62-44e7-886a-dd3a2cc7ad67",
+      "material_output": "nmdc:matsm-b1fb4ff1-e59b-4e2b-a8f9-b95ea6ba4135",
       "sampling_method": "weighing"
     }
   ],
   "reaction_activity_set": [
     {
-      "material_input": "monet_data:derive_4",
-      "material_output": "monet_data:derive_5",
+      "material_input": "nmdc:matsm-31380f3c-cea3-4f68-a8c6-cd84efa5e622",
+      "material_output": "nmdc:matsm-9fe9277b-454a-4257-a825-3b4725df665e",
       "reaction_aided_by": {
         "device_type": "thermomixer",
         "activity_temperature": {
