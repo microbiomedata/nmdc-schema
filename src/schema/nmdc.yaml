@@ -103,12 +103,10 @@ settings:
   #  id_typecode_biosample: "bsm"
   id_typecode_study: "sty"
   #  id_typecode_biosample_processing: "bsmprc"
-#  id_typecode_omics_processing: "omprc"
+  #  id_typecode_omics_processing: "omprc"
   #  id_typecode_dataobject: "dobj"
   #  id_typecode_activity: "acty"
-  id_typecode_named_thing: "nt"
-
-
+  #  id_typecode_named_thing: "nt"
 
 subsets:
   sample subset:
