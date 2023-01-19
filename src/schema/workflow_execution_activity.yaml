@@ -256,6 +256,12 @@ classes:
         inlined: false
       has_output:
         inlined: false
+      id:
+        pattern: '^nmdc:wfrqc'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
   ReadBasedTaxonomyAnalysisActivity:
     description: A workflow execution activity that performs taxonomy classification using sequencing reads
