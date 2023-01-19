@@ -7,7 +7,7 @@ notes:
   - "removed/commented out the comfusing 'identifier' slot"
   - "removed/commented out all mentions and definitions of depth2 and subsurface_depth2"
   - "depth2 should now be migrated to the has_maximum_value part of depth"
-  - "slots requested for Bioscales, but already available for Biosample: tot_phosp, tot_carb, tot_nitro_content, pH"
+  - "slots requested for Bioscales, but already available for Biosample : tot_phosp, tot_carb, tot_nitro_content, pH"
   - "informal ## section delimiters should be replaced with subsets ?"
   - "commented out insdc_biosample_identifiers insdc_secondary_sample_identifiers... need better understanding of id patterns (at least)"
   - "commented out several MIxS terms assigned to Biosample because the definitions of those terms were commented out in mixs.yaml dues to shared slot uris"
@@ -210,7 +210,9 @@ classes:
     in_subset:
       - data object subset
     description: 'An object that primarily consists of symbols that represent information.   Files,
-      records, and omics data are examples of data objects. '
+      records, and omics data are examples of data objects.'
+    notes:
+      - removed previous id_prefixes value of GOLD, since we are now using pattern-based id validation
     slots:
       - file_size_bytes
       - md5_checksum
@@ -230,8 +232,8 @@ classes:
           syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
           partial_match: false
-    id_prefixes:
-      - GOLD
+  #    id_prefixes:
+  #      - GOLD
 
   Biosample:
     is_a: MaterialEntity
@@ -246,6 +248,8 @@ classes:
       Biological source material which can be characterized by an experiment.
     todos:
       - could add GOLD and EBI's biosample definitions to the alt_descriptions?
+    notes:
+      - removed previous id_prefixes value of GOLD, since we are now using pattern-based id validation
     alt_descriptions:
       embl.ena: A sample contains information about the sequenced source material.
         Samples are associated with checklists, which define the fields used to annotate
@@ -555,9 +559,8 @@ classes:
             tag: expected_value
             value: date, string
         range: string
-
-    id_prefixes:
-      - GOLD
+    #    id_prefixes:
+    #      - GOLD
     exact_mappings:
       - OBI:0000747
       - NCIT:C43412
@@ -699,14 +702,15 @@ classes:
       - determine how to get data values for submitted_to_insdc, investigation_type,
         experimental_factor
       - project_name is redundant with name, so excluding it
-    id_prefixes:
-      - GOLD
-      - insdc.srs
-      - mgnify
+    #    id_prefixes:
+    #      - GOLD
+    #      - insdc.srs
+    #      - mgnify
     notes:
       - "sample GOLD link https://identifiers.org/gold:Gs0110115"
       - "sample insdc.srs link https://www.ebi.ac.uk/ena/browser/view/PRJEB45055 ?"
       - "sample mgnify link https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757"
+      - "GOLD, insdc.srs and mgnify are reasonable prefixes for alternative study identifiers, but no longer for the Study.id"
 
   BiosampleProcessing:
     aliases:
