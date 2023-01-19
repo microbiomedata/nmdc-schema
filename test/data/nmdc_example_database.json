@@ -54,7 +54,7 @@
   ],
   "omics_processing_set": [
     {
-      "id": "nmdc:bsmprc-45fc7de7-3610-4f15-b95e-d19462c98469",
+      "id": "nmdc:omprc-45fc7de7-3610-4f15-b95e-d19462c98469",
       "alternative_identifiers": [
         "gold:Gp0225767"
       ],
@@ -79,7 +79,7 @@
       "type": "nmdc:OmicsProcessing"
     },
     {
-      "id": "nmdc:bsmprc-50a0ab53-cd00-476e-9ca1-f178843b4a30",
+      "id": "nmdc:omprc-50a0ab53-cd00-476e-9ca1-f178843b4a30",
       "alternative_identifiers": [
         "gold:Gp0208560"
       ],
@@ -104,7 +104,7 @@
       "type": "nmdc:OmicsProcessing"
     },
     {
-      "id": "nmdc:bsmprc-ed3f3c3a-8916-4fc8-8d98-40a8399719e3",
+      "id": "nmdc:omprc-ed3f3c3a-8916-4fc8-8d98-40a8399719e3",
       "alternative_identifiers": [
         "gold:Gp0306221"
       ],
