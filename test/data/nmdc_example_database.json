@@ -1,7 +1,10 @@
 {
   "study_set": [
     {
-      "id": "gold:Gs0128849",
+      "id": "nmdc:sty-19f024bb-8f6a-42e9-846b-beff8e417cbd",
+      "gold_study_identifiers": [
+        "gold:Gs0128849"
+      ],
       "name": "Permafrost microbial communities from Stordalen Mire, Sweden",
       "description": "Thawing permafrost is one of the largest soil carbon pools on the planet. The goal of this project is to study microbial communities that participate in the soil carbon cycle.",
       "ecosystem": "Environmental",
@@ -18,7 +21,10 @@
       "type": "nmdc:Study"
     },
     {
-      "id": "gold:Gs0130354",
+      "id": "nmdc:sty-d9a5431e-0ae0-4953-b00a-945fc5d94cd9",
+      "gold_study_identifiers": [
+        "gold:Gs0130354"
+      ],
       "name": "Forest soil microbial communities from Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United States",
       "description": "The goal of this study is to learn the molecular mechanisms underlying changes in the temperature sensitive respiration response of forest soils to long-term experimental warming",
       "ecosystem": "Environmental",
@@ -35,7 +41,10 @@
       "type": "nmdc:Study"
     },
     {
-      "id": "gold:Gs0134277",
+      "id": "nmdc:sty-2e9e3439-06e1-4ebb-ae97-20a198272831",
+      "gold_study_identifiers": [
+        "gold:Gs0134277"
+      ],
       "name": "Rhizosphere microbial communities from Carex aquatilis grown in University of Washington, Seatle, WA, United States",
       "description": "The goal of this study is to advance understanding of the response of methane production and methane oxidation to changes in plant productivity so that modeled representations of these processes and interactions can be improved.",
       "ecosystem": "Host-associated",
