@@ -185,6 +185,13 @@ classes:
       - workflow subset
     slots:
       - type
+    slot_usage:
+      id:
+        pattern: '^nmdc:wfmt'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
 
   MagsAnalysisActivity:
