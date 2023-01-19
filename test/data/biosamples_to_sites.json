@@ -1,7 +1,7 @@
 {
   "biosample_set": [
     {
-      "id": "nmdc:biosample_placeholder_1",
+      "id": "nmdc:bsm-biosample_placeholder_1",
       "name": "Root microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL1_35_33 endosphere",
       "description": "Root microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
       "collected_from": "GOLD:BESC-13-CL1_35_33",
@@ -31,7 +31,7 @@
       }
     },
     {
-      "id": "nmdc:biosample_placeholder_2",
+      "id": "nmdc:bsm-biosample_placeholder_2",
       "name": "Rhizosphere soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL1_35_33",
       "description": "Rhizosphere soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
       "collected_from": "GOLD:BESC-13-CL1_35_33",
@@ -61,7 +61,7 @@
       }
     },
     {
-      "id": "nmdc:biosample_placeholder_3",
+      "id": "nmdc:bsm-biosample_placeholder_3",
       "name": "Bulk soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL1_35_33",
       "description": "Bulk soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
       "collected_from": "GOLD:BESC-13-CL1_35_33",
@@ -91,7 +91,7 @@
       }
     },
     {
-      "id": "nmdc:biosample_placeholder_4",
+      "id": "nmdc:bsm-biosample_placeholder_4",
       "name": "Root microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL2_39_29 endosphere",
       "description": "Root microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
       "collected_from": "GOLD:BESC-13-CL2_39_29",
@@ -121,7 +121,7 @@
       }
     },
     {
-      "id": "nmdc:study_placeholder",
+      "id": "nmdc:bsm-study_placeholder",
       "name": "Rhizosphere soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL2_39_29",
       "description": "Rhizosphere soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
       "collected_from": "GOLD:BESC-13-CL2_39_29",
@@ -151,7 +151,7 @@
       }
     },
     {
-      "id": "nmdc:biosample_placeholder_6",
+      "id": "nmdc:bsm-biosample_placeholder_6",
       "name": "Bulk soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL2_39_29",
       "description": "Bulk soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
       "collected_from": "GOLD:BESC-13-CL2_39_29",

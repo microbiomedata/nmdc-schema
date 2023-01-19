@@ -122,7 +122,7 @@
   ],
   "biosample_set": [
     {
-      "id": "nmdc:c6eb9f01-796b-4bd6-8ed4-74e221eed7c1",
+      "id": "nmdc:bsm-c6eb9f01-796b-4bd6-8ed4-74e221eed7c1",
       "gold_biosample_identifiers": [
         "gold:Gb0150408"
       ],
@@ -176,7 +176,7 @@
       "sample_collection_site": "Mire fen"
     },
     {
-      "id": "nmdc:87698d0e-13b5-488a-9324-53846a6e332d",
+      "id": "nmdc:bsm-87698d0e-13b5-488a-9324-53846a6e332d",
       "gold_biosample_identifiers": [
         "gold:Gb0157174"
       ],
@@ -230,7 +230,7 @@
       "sample_collection_site": "forest soil"
     },
     {
-      "id": "nmdc:9a4f0882-49b2-46ed-8951-0ee2ea019df7",
+      "id": "nmdc:bsm-9a4f0882-49b2-46ed-8951-0ee2ea019df7",
       "gold_biosample_identifiers": [
         "gold:Gb0188037"
       ],
