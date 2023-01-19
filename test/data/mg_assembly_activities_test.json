@@ -1,7 +1,7 @@
 {
   "metagenome_assembly_set": [
     {
-      "id": "nmdc:act-f404cb05d4c1458b659ae2232245c45d",
+      "id": "nmdc:wfmgas-f404cb05d4c1458b659ae2232245c45d",
       "name": "Metagenome assembly 1472_51277",
       "was_informed_by": "gold:Gp0061273",
       "started_at_time": "2020-03-24T00:00:00+00:00",
@@ -48,7 +48,7 @@
       "num_aligned_reads": 63046103
     },
     {
-      "id": "nmdc:act-e7d3e1551ad9439505b522d5b1768c97",
+      "id": "nmdc:wfmgas-e7d3e1551ad9439505b522d5b1768c97",
       "name": "Metagenome assembly 1472_51278",
       "was_informed_by": "gold:Gp0061274",
       "started_at_time": "2020-03-25T00:00:00+00:00",
@@ -95,7 +95,7 @@
       "num_aligned_reads": 95369019
     },
     {
-      "id": "nmdc:act-9a2a0778e003977d594c93e54fcef3e6",
+      "id": "nmdc:wfmgas-9a2a0778e003977d594c93e54fcef3e6",
       "name": "Metagenome assembly 1472_51279",
       "was_informed_by": "gold:Gp0061275",
       "started_at_time": "2020-03-25T00:00:00+00:00",
