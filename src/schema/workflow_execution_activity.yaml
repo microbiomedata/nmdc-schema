@@ -330,6 +330,13 @@ classes:
         range: string
         description: >-
           A reference to a file that holds calibration information.
+      id:
+        pattern: '^nmdc:wfnom'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
+
 
 slots:
 
