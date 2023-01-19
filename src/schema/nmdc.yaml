@@ -175,6 +175,13 @@ classes:
         the same plant were obtained at the same site. In this case, the site would
         correspond to one tree.
       - "might correspond to GOLD's identifier on a page like https://gold.jgi.doe.gov/biosample?id=Gb0305833"
+    slot_usage:
+      id:
+        pattern: '^nmdc:frsite'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
   CollectingBiosamplesFromSite:
     is_a: PlannedProcess

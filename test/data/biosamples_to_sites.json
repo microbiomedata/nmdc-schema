@@ -4,7 +4,7 @@
       "id": "nmdc:bsm-biosample_placeholder_1",
       "name": "Root microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL1_35_33 endosphere",
       "description": "Root microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
-      "collected_from": "GOLD:BESC-13-CL1_35_33",
+      "collected_from": "nmdc:frsite-2ec2ebde-857f-4dc5-ab5e-881c3eb337ce",
       "gold_biosample_identifiers": [
         "GOLD:Gb0305833"
       ],
@@ -34,7 +34,7 @@
       "id": "nmdc:bsm-biosample_placeholder_2",
       "name": "Rhizosphere soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL1_35_33",
       "description": "Rhizosphere soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
-      "collected_from": "GOLD:BESC-13-CL1_35_33",
+      "collected_from": "nmdc:frsite-2ec2ebde-857f-4dc5-ab5e-881c3eb337ce",
       "gold_biosample_identifiers": [
         "GOLD:Gb0291692"
       ],
@@ -64,7 +64,7 @@
       "id": "nmdc:bsm-biosample_placeholder_3",
       "name": "Bulk soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL1_35_33",
       "description": "Bulk soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
-      "collected_from": "GOLD:BESC-13-CL1_35_33",
+      "collected_from": "nmdc:frsite-2ec2ebde-857f-4dc5-ab5e-881c3eb337ce",
       "gold_biosample_identifiers": [
         "GOLD:Gb0291582"
       ],
@@ -183,11 +183,13 @@
   ],
   "field_research_site_set": [
     {
-      "id": "GOLD:BESC-13-CL1_35_33",
+      "id": "nmdc:frsite-2ec2ebde-857f-4dc5-ab5e-881c3eb337ce",
+      "name": "BESC-13-CL1_35_33",
       "description": "Bioscales tree BESC-13-CL1_35_33"
     },
     {
-      "id": "GOLD:BESC-13-CL2_39_29",
+      "id": "nmdc:frsite-10e5281b-504b-4f56-80fe-2e50d7d00521",
+      "name": "BESC-13-CL2_39_29",
       "description": "Bioscales tree BESC-13-CL2_39_29"
     }
   ],
@@ -196,7 +198,7 @@
       "id": "nmdc:clsite-4ff95e3a-e5e1-4a85-96b2-acf3fb242004",
       "name": "Collection of biosamples from BESC-13-CL1_35_33",
       "has_inputs": [
-        "GOLD:BESC-13-CL1_35_33"
+        "nmdc:frsite-2ec2ebde-857f-4dc5-ab5e-881c3eb337ce"
       ],
       "has_outputs": [
         "GOLD:Gb0305833",
