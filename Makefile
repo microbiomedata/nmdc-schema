@@ -1,3 +1,7 @@
+# consider some cleanup: /assets /images /slides /util
+# /doc vs /docs?
+# empties: /graphql /owl /rdf /shex
+
 SRC_DIR = src
 SCHEMA_DIR = $(SRC_DIR)/schema
 SOURCE_FILES := $(shell find $(SCHEMA_DIR) -name '*.yaml')
@@ -29,6 +33,13 @@ revert-jsonschema:
 
 clean-artifacts:
 	rm -rf target/
+	rm -rf json/*.json
+	rm -rf jsonld-context/*.jsonld
+	rm -rf jsonschema/*.json
+	rm -rf python/*.py
+	rm -rf python/portal/*.py
+
+
 
 clean-docs:
 	ls docs/*.md | egrep -v 'README.md|README.markdown' | xargs rm -f # keep readme files
@@ -186,6 +197,7 @@ clean-package:
 	rm -f nmdc_schema/*.json
 	rm -f nmdc_schema/*.py
 	rm -f nmdc_schema/*.tsv
+	rm -f nmdc_schema/*.yaml
 	rm -rf dist && echo 'dist removed'
 	rm -rf nmdc_schema.egg-info && echo 'egg-info removed'
 

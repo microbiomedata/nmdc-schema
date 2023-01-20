@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-12-22T13:47:11
+# Generation date: 2023-01-20T13:17:08
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -970,15 +970,6 @@ class MaterialEntity(NamedThing):
     class_model_uri: ClassVar[URIRef] = NMDC.MaterialEntity
 
     id: Union[str, MaterialEntityId] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, MaterialEntityId):
-            self.id = MaterialEntityId(self.id)
-
-        super().__post_init__(**kwargs)
-
 
 @dataclass
 class Biosample(MaterialEntity):
@@ -1982,11 +1973,6 @@ class PlannedProcess(NamedThing):
     participating_agent: Optional[Union[dict, "Agent"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, PlannedProcessId):
-            self.id = PlannedProcessId(self.id)
-
         if not isinstance(self.has_inputs, list):
             self.has_inputs = [self.has_inputs] if self.has_inputs is not None else []
         self.has_inputs = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_inputs]
@@ -8266,7 +8252,8 @@ slots.dna_cont_type = Slot(uri=NMDC.dna_cont_type, name="dna_cont_type", curie=N
                    model_uri=NMDC.dna_cont_type, domain=None, range=Optional[Union[str, "DnaContTypeEnum"]])
 
 slots.dna_cont_well = Slot(uri=NMDC.dna_cont_well, name="dna_cont_well", curie=NMDC.curie('dna_cont_well'),
-                   model_uri=NMDC.dna_cont_well, domain=None, range=Optional[str])
+                   model_uri=NMDC.dna_cont_well, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$'))
 
 slots.dna_container_id = Slot(uri=NMDC.dna_container_id, name="dna_container_id", curie=NMDC.curie('dna_container_id'),
                    model_uri=NMDC.dna_container_id, domain=None, range=Optional[str])
@@ -8329,7 +8316,8 @@ slots.rna_cont_type = Slot(uri=NMDC.rna_cont_type, name="rna_cont_type", curie=N
                    model_uri=NMDC.rna_cont_type, domain=None, range=Optional[Union[str, "RnaContTypeEnum"]])
 
 slots.rna_cont_well = Slot(uri=NMDC.rna_cont_well, name="rna_cont_well", curie=NMDC.curie('rna_cont_well'),
-                   model_uri=NMDC.rna_cont_well, domain=None, range=Optional[str])
+                   model_uri=NMDC.rna_cont_well, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$'))
 
 slots.rna_container_id = Slot(uri=NMDC.rna_container_id, name="rna_container_id", curie=NMDC.curie('rna_container_id'),
                    model_uri=NMDC.rna_container_id, domain=None, range=Optional[str])
@@ -8702,11 +8690,19 @@ slots.Database_etl_software_version = Slot(uri=NMDC.etl_software_version, name="
 slots.Database_metatranscriptome_activity_set = Slot(uri=NMDC.metatranscriptome_activity_set, name="Database_metatranscriptome_activity_set", curie=NMDC.curie('metatranscriptome_activity_set'),
                    model_uri=NMDC.Database_metatranscriptome_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, MetatranscriptomeActivityId], Union[dict, "MetatranscriptomeActivity"]], List[Union[dict, "MetatranscriptomeActivity"]]]])
 
+slots.FieldResearchSite_id = Slot(uri=NMDC.id, name="FieldResearchSite_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.FieldResearchSite_id, domain=FieldResearchSite, range=Union[str, FieldResearchSiteId],
+                   pattern=re.compile(r'^nmdc:frsite'))
+
 slots.CollectingBiosamplesFromSite_has_inputs = Slot(uri=NMDC.has_inputs, name="CollectingBiosamplesFromSite_has_inputs", curie=NMDC.curie('has_inputs'),
                    model_uri=NMDC.CollectingBiosamplesFromSite_has_inputs, domain=CollectingBiosamplesFromSite, range=Union[Union[str, SiteId], List[Union[str, SiteId]]])
 
 slots.CollectingBiosamplesFromSite_has_outputs = Slot(uri=NMDC.has_outputs, name="CollectingBiosamplesFromSite_has_outputs", curie=NMDC.curie('has_outputs'),
                    model_uri=NMDC.CollectingBiosamplesFromSite_has_outputs, domain=CollectingBiosamplesFromSite, range=Union[Union[str, BiosampleId], List[Union[str, BiosampleId]]])
+
+slots.CollectingBiosamplesFromSite_id = Slot(uri=NMDC.id, name="CollectingBiosamplesFromSite_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.CollectingBiosamplesFromSite_id, domain=CollectingBiosamplesFromSite, range=Union[str, CollectingBiosamplesFromSiteId],
+                   pattern=re.compile(r'^nmdc:clsite'))
 
 slots.DataObject_name = Slot(uri=NMDC.name, name="DataObject_name", curie=NMDC.curie('name'),
                    model_uri=NMDC.DataObject_name, domain=DataObject, range=str)
@@ -8714,9 +8710,13 @@ slots.DataObject_name = Slot(uri=NMDC.name, name="DataObject_name", curie=NMDC.c
 slots.DataObject_description = Slot(uri=DCTERMS.description, name="DataObject_description", curie=DCTERMS.curie('description'),
                    model_uri=NMDC.DataObject_description, domain=DataObject, range=str)
 
+slots.DataObject_id = Slot(uri=NMDC.id, name="DataObject_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.DataObject_id, domain=DataObject, range=Union[str, DataObjectId],
+                   pattern=re.compile(r'^nmdc:dobj'))
+
 slots.Biosample_id = Slot(uri=NMDC.id, name="Biosample_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Biosample_id, domain=Biosample, range=Union[str, BiosampleId],
-                   pattern=re.compile(r'^nmdc:'))
+                   pattern=re.compile(r'^nmdc:bsm'))
 
 slots.Biosample_gold_biosample_identifiers = Slot(uri=NMDC.gold_biosample_identifiers, name="Biosample_gold_biosample_identifiers", curie=NMDC.curie('gold_biosample_identifiers'),
                    model_uri=NMDC.Biosample_gold_biosample_identifiers, domain=Biosample, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
@@ -8747,7 +8747,8 @@ slots.Biosample_extreme_event = Slot(uri=MIXS['0000320'], name="Biosample_extrem
                    model_uri=NMDC.Biosample_extreme_event, domain=Biosample, range=Optional[str])
 
 slots.Study_id = Slot(uri=NMDC.id, name="Study_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.Study_id, domain=Study, range=Union[str, StudyId])
+                   model_uri=NMDC.Study_id, domain=Study, range=Union[str, StudyId],
+                   pattern=re.compile(r'^nmdc:sty'))
 
 slots.Study_doi = Slot(uri=NMDC.doi, name="Study_doi", curie=NMDC.curie('doi'),
                    model_uri=NMDC.Study_doi, domain=Study, range=Optional[Union[dict, "AttributeValue"]])
@@ -8784,13 +8785,15 @@ slots.Study_emsl_proposal_doi = Slot(uri=NMDC.emsl_proposal_doi, name="Study_ems
                    model_uri=NMDC.Study_emsl_proposal_doi, domain=Study, range=Optional[str])
 
 slots.BiosampleProcessing_id = Slot(uri=NMDC.id, name="BiosampleProcessing_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.BiosampleProcessing_id, domain=BiosampleProcessing, range=Union[str, BiosampleProcessingId])
+                   model_uri=NMDC.BiosampleProcessing_id, domain=BiosampleProcessing, range=Union[str, BiosampleProcessingId],
+                   pattern=re.compile(r'^nmdc:bsmprc'))
 
 slots.BiosampleProcessing_has_input = Slot(uri=NMDC.has_input, name="BiosampleProcessing_has_input", curie=NMDC.curie('has_input'),
                    model_uri=NMDC.BiosampleProcessing_has_input, domain=BiosampleProcessing, range=Optional[Union[Union[str, BiosampleId], List[Union[str, BiosampleId]]]])
 
 slots.OmicsProcessing_id = Slot(uri=NMDC.id, name="OmicsProcessing_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.OmicsProcessing_id, domain=OmicsProcessing, range=Union[str, OmicsProcessingId])
+                   model_uri=NMDC.OmicsProcessing_id, domain=OmicsProcessing, range=Union[str, OmicsProcessingId],
+                   pattern=re.compile(r'^nmdc:omprc'))
 
 slots.OmicsProcessing_has_input = Slot(uri=NMDC.has_input, name="OmicsProcessing_has_input", curie=NMDC.curie('has_input'),
                    model_uri=NMDC.OmicsProcessing_has_input, domain=OmicsProcessing, range=Union[Union[str, BiosampleId], List[Union[str, BiosampleId]]])
@@ -8865,6 +8868,14 @@ slots.FunctionalAnnotation_type = Slot(uri=NMDC.type, name="FunctionalAnnotation
 slots.FunctionalAnnotation_was_generated_by = Slot(uri=NMDC.was_generated_by, name="FunctionalAnnotation_was_generated_by", curie=NMDC.curie('was_generated_by'),
                    model_uri=NMDC.FunctionalAnnotation_was_generated_by, domain=FunctionalAnnotation, range=Optional[Union[str, MetagenomeAnnotationActivityId]], mappings = [PROV.wasGeneratedBy])
 
+slots.AnalyticalSample_id = Slot(uri=NMDC.id, name="AnalyticalSample_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.AnalyticalSample_id, domain=AnalyticalSample, range=Union[str, AnalyticalSampleId],
+                   pattern=re.compile(r'^nmdc:ansm'))
+
+slots.Site_id = Slot(uri=NMDC.id, name="Site_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.Site_id, domain=Site, range=Union[str, SiteId],
+                   pattern=re.compile(r'^nmdc:site'))
+
 slots.AttributeValue_type = Slot(uri=NMDC.type, name="AttributeValue_type", curie=NMDC.curie('type'),
                    model_uri=NMDC.AttributeValue_type, domain=AttributeValue, range=Optional[str])
 
@@ -8891,6 +8902,10 @@ slots.PersonValue_name = Slot(uri=NMDC.name, name="PersonValue_name", curie=NMDC
 
 slots.Person_id = Slot(uri=NMDC.id, name="Person_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Person_id, domain=Person, range=Union[str, PersonId])
+
+slots.Instrument_id = Slot(uri=NMDC.id, name="Instrument_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.Instrument_id, domain=Instrument, range=Union[str, InstrumentId],
+                   pattern=re.compile(r'^nmdc:inst'))
 
 slots.MetaboliteQuantification_metabolite_quantified = Slot(uri=NMDC.metabolite_quantified, name="MetaboliteQuantification_metabolite_quantified", curie=NMDC.curie('metabolite_quantified'),
                    model_uri=NMDC.MetaboliteQuantification_metabolite_quantified, domain=MetaboliteQuantification, range=Optional[Union[str, ChemicalEntityId]])
@@ -8949,11 +8964,19 @@ slots.ControlledIdentifiedTermValue_term = Slot(uri=NMDC.term, name="ControlledI
 slots.GeolocationValue_has_raw_value = Slot(uri=NMDC.has_raw_value, name="GeolocationValue_has_raw_value", curie=NMDC.curie('has_raw_value'),
                    model_uri=NMDC.GeolocationValue_has_raw_value, domain=GeolocationValue, range=Optional[str])
 
+slots.Activity_id = Slot(uri=NMDC.id, name="Activity_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.Activity_id, domain=Activity, range=Union[str, ActivityId],
+                   pattern=re.compile(r'^nmdc:act'))
+
 slots.DissolvingActivity_material_input = Slot(uri=NMDC.material_input, name="DissolvingActivity_material_input", curie=NMDC.curie('material_input'),
                    model_uri=NMDC.DissolvingActivity_material_input, domain=DissolvingActivity, range=Optional[Union[str, MaterialSampleId]])
 
 slots.DissolvingActivity_material_output = Slot(uri=NMDC.material_output, name="DissolvingActivity_material_output", curie=NMDC.curie('material_output'),
                    model_uri=NMDC.DissolvingActivity_material_output, domain=DissolvingActivity, range=Optional[Union[str, MaterialSampleId]])
+
+slots.MaterialSample_id = Slot(uri=NMDC.id, name="MaterialSample_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.MaterialSample_id, domain=MaterialSample, range=Union[str, MaterialSampleId],
+                   pattern=re.compile(r'^nmdc:matsm'))
 
 slots.MaterialSamplingActivity_amount_collected = Slot(uri=NMDC.amount_collected, name="MaterialSamplingActivity_amount_collected", curie=NMDC.curie('amount_collected'),
                    model_uri=NMDC.MaterialSamplingActivity_amount_collected, domain=MaterialSamplingActivity, range=Optional[Union[dict, QuantityValue]])
@@ -9008,6 +9031,34 @@ slots.WorkflowExecutionActivity_execution_resource = Slot(uri=NMDC.execution_res
 slots.WorkflowExecutionActivity_type = Slot(uri=NMDC.type, name="WorkflowExecutionActivity_type", curie=NMDC.curie('type'),
                    model_uri=NMDC.WorkflowExecutionActivity_type, domain=WorkflowExecutionActivity, range=Optional[str])
 
+slots.WorkflowExecutionActivity_id = Slot(uri=NMDC.id, name="WorkflowExecutionActivity_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.WorkflowExecutionActivity_id, domain=WorkflowExecutionActivity, range=Union[str, WorkflowExecutionActivityId],
+                   pattern=re.compile(r'^nmdc:wf'))
+
+slots.MetagenomeAssembly_id = Slot(uri=NMDC.id, name="MetagenomeAssembly_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.MetagenomeAssembly_id, domain=MetagenomeAssembly, range=Union[str, MetagenomeAssemblyId],
+                   pattern=re.compile(r'^nmdc:wfmgas'))
+
+slots.MetatranscriptomeAssembly_id = Slot(uri=NMDC.id, name="MetatranscriptomeAssembly_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.MetatranscriptomeAssembly_id, domain=MetatranscriptomeAssembly, range=Union[str, MetatranscriptomeAssemblyId],
+                   pattern=re.compile(r'^nmdc:wfmtas'))
+
+slots.MetagenomeAnnotationActivity_id = Slot(uri=NMDC.id, name="MetagenomeAnnotationActivity_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.MetagenomeAnnotationActivity_id, domain=MetagenomeAnnotationActivity, range=Union[str, MetagenomeAnnotationActivityId],
+                   pattern=re.compile(r'^nmdc:wfmgan'))
+
+slots.MetatranscriptomeAnnotationActivity_id = Slot(uri=NMDC.id, name="MetatranscriptomeAnnotationActivity_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.MetatranscriptomeAnnotationActivity_id, domain=MetatranscriptomeAnnotationActivity, range=Union[str, MetatranscriptomeAnnotationActivityId],
+                   pattern=re.compile(r'^nmdc:wfmtan'))
+
+slots.MetatranscriptomeActivity_id = Slot(uri=NMDC.id, name="MetatranscriptomeActivity_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.MetatranscriptomeActivity_id, domain=MetatranscriptomeActivity, range=Union[str, MetatranscriptomeActivityId],
+                   pattern=re.compile(r'^nmdc:wfmt'))
+
+slots.MagsAnalysisActivity_id = Slot(uri=NMDC.id, name="MagsAnalysisActivity_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.MagsAnalysisActivity_id, domain=MagsAnalysisActivity, range=Union[str, MagsAnalysisActivityId],
+                   pattern=re.compile(r'^nmdc:wfmag'))
+
 slots.ReadQcAnalysisActivity_input_read_bases = Slot(uri=NMDC.input_read_bases, name="ReadQcAnalysisActivity_input_read_bases", curie=NMDC.curie('input_read_bases'),
                    model_uri=NMDC.ReadQcAnalysisActivity_input_read_bases, domain=ReadQcAnalysisActivity, range=Optional[float])
 
@@ -9020,6 +9071,14 @@ slots.ReadQcAnalysisActivity_has_input = Slot(uri=NMDC.has_input, name="ReadQcAn
 slots.ReadQcAnalysisActivity_has_output = Slot(uri=NMDC.has_output, name="ReadQcAnalysisActivity_has_output", curie=NMDC.curie('has_output'),
                    model_uri=NMDC.ReadQcAnalysisActivity_has_output, domain=ReadQcAnalysisActivity, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
 
+slots.ReadQcAnalysisActivity_id = Slot(uri=NMDC.id, name="ReadQcAnalysisActivity_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.ReadQcAnalysisActivity_id, domain=ReadQcAnalysisActivity, range=Union[str, ReadQcAnalysisActivityId],
+                   pattern=re.compile(r'^nmdc:wfrqc'))
+
+slots.ReadBasedTaxonomyAnalysisActivity_id = Slot(uri=NMDC.id, name="ReadBasedTaxonomyAnalysisActivity_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.ReadBasedTaxonomyAnalysisActivity_id, domain=ReadBasedTaxonomyAnalysisActivity, range=Union[str, ReadBasedTaxonomyAnalysisActivityId],
+                   pattern=re.compile(r'^nmdc:wfrbt'))
+
 slots.MetabolomicsAnalysisActivity_used = Slot(uri=NMDC.used, name="MetabolomicsAnalysisActivity_used", curie=NMDC.curie('used'),
                    model_uri=NMDC.MetabolomicsAnalysisActivity_used, domain=MetabolomicsAnalysisActivity, range=Optional[Union[str, InstrumentId]], mappings = [PROV.used])
 
@@ -9029,14 +9088,26 @@ slots.MetabolomicsAnalysisActivity_has_metabolite_quantifications = Slot(uri=NMD
 slots.MetabolomicsAnalysisActivity_has_calibration = Slot(uri=NMDC.has_calibration, name="MetabolomicsAnalysisActivity_has_calibration", curie=NMDC.curie('has_calibration'),
                    model_uri=NMDC.MetabolomicsAnalysisActivity_has_calibration, domain=MetabolomicsAnalysisActivity, range=Optional[str])
 
+slots.MetabolomicsAnalysisActivity_id = Slot(uri=NMDC.id, name="MetabolomicsAnalysisActivity_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.MetabolomicsAnalysisActivity_id, domain=MetabolomicsAnalysisActivity, range=Union[str, MetabolomicsAnalysisActivityId],
+                   pattern=re.compile(r'^nmdc:wfmb'))
+
 slots.MetaproteomicsAnalysisActivity_used = Slot(uri=NMDC.used, name="MetaproteomicsAnalysisActivity_used", curie=NMDC.curie('used'),
                    model_uri=NMDC.MetaproteomicsAnalysisActivity_used, domain=MetaproteomicsAnalysisActivity, range=Optional[Union[str, InstrumentId]], mappings = [PROV.used])
 
 slots.MetaproteomicsAnalysisActivity_has_peptide_quantifications = Slot(uri=NMDC.has_peptide_quantifications, name="MetaproteomicsAnalysisActivity_has_peptide_quantifications", curie=NMDC.curie('has_peptide_quantifications'),
                    model_uri=NMDC.MetaproteomicsAnalysisActivity_has_peptide_quantifications, domain=MetaproteomicsAnalysisActivity, range=Optional[Union[Union[dict, PeptideQuantification], List[Union[dict, PeptideQuantification]]]])
 
+slots.MetaproteomicsAnalysisActivity_id = Slot(uri=NMDC.id, name="MetaproteomicsAnalysisActivity_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.MetaproteomicsAnalysisActivity_id, domain=MetaproteomicsAnalysisActivity, range=Union[str, MetaproteomicsAnalysisActivityId],
+                   pattern=re.compile(r'^nmdc:wfmp'))
+
 slots.NomAnalysisActivity_used = Slot(uri=NMDC.used, name="NomAnalysisActivity_used", curie=NMDC.curie('used'),
                    model_uri=NMDC.NomAnalysisActivity_used, domain=NomAnalysisActivity, range=Optional[Union[str, InstrumentId]], mappings = [PROV.used])
 
 slots.NomAnalysisActivity_has_calibration = Slot(uri=NMDC.has_calibration, name="NomAnalysisActivity_has_calibration", curie=NMDC.curie('has_calibration'),
                    model_uri=NMDC.NomAnalysisActivity_has_calibration, domain=NomAnalysisActivity, range=Optional[str])
+
+slots.NomAnalysisActivity_id = Slot(uri=NMDC.id, name="NomAnalysisActivity_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.NomAnalysisActivity_id, domain=NomAnalysisActivity, range=Union[str, NomAnalysisActivityId],
+                   pattern=re.compile(r'^nmdc:wfnom'))
