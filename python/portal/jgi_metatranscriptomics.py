@@ -1,5 +1,5 @@
 # Auto generated from jgi_metatranscriptomics.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-01-20T13:16:46
+# Generation date: 2023-01-20T15:23:28
 # Schema: jgi_metatranscriptomics
 #
 # id: https://microbiomedata/schema/jgi_metatranscriptomics

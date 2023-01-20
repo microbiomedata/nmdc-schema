@@ -121,7 +121,7 @@ classes:
     title: Analytical Sample
     slot_usage:
       id:
-        pattern: '^nmdc:ansm'
+        #        pattern: '^nmdc:ansm'
         structured_pattern:
           syntax: "{id_nmdc_prefix}:ansm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -135,7 +135,7 @@ classes:
       - BCO sample collection site ?
     slot_usage:
       id:
-        pattern: '^nmdc:site'
+        #        pattern: '^nmdc:site'
         structured_pattern:
           syntax: "{id_nmdc_prefix}:site-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -317,7 +317,7 @@ classes:
       - OBI:0000485
     slot_usage:
       id:
-        pattern: '^nmdc:inst'
+        #        pattern: '^nmdc:inst'
         structured_pattern:
           syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
