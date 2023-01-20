@@ -252,6 +252,7 @@ SCHEMA_TEST_EXAMPLES := \
 	study_test
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
+	biosample_incomplete_napa_id \
 	biosample_invalid_range \
 	biosample_mismatch_regex \
 	biosample_missing_required_field \

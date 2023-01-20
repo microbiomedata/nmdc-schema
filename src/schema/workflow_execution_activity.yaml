@@ -74,7 +74,7 @@ classes:
         required: true
       type: { }
       id:
-        pattern: '^nmdc:wf'
+        #        pattern: '^nmdc:wf'
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -119,7 +119,7 @@ classes:
       - insdc_assembly_identifiers
     slot_usage:
       id:
-        pattern: '^nmdc:wfmgas'
+        #        pattern: '^nmdc:wfmgas'
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -160,7 +160,7 @@ classes:
       - insdc_assembly_identifiers
     slot_usage:
       id:
-        pattern: '^nmdc:wfmtas'
+        #        pattern: '^nmdc:wfmtas'
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -176,7 +176,7 @@ classes:
       - workflow subset
     slot_usage:
       id:
-        pattern: '^nmdc:wfmgan'
+        #        pattern: '^nmdc:wfmgan'
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -191,7 +191,7 @@ classes:
       - workflow subset
     slot_usage:
       id:
-        pattern: '^nmdc:wfmtan'
+        #        pattern: '^nmdc:wfmtan'
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -207,7 +207,7 @@ classes:
       - type
     slot_usage:
       id:
-        pattern: '^nmdc:wfmt'
+        #        pattern: '^nmdc:wfmt'
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -230,7 +230,7 @@ classes:
       - mags_list
     slot_usage:
       id:
-        pattern: '^nmdc:wfmag'
+        #        pattern: '^nmdc:wfmag'
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -263,7 +263,7 @@ classes:
       has_output:
         inlined: false
       id:
-        pattern: '^nmdc:wfrqc'
+        #        pattern: '^nmdc:wfrqc'
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -279,7 +279,7 @@ classes:
       - type
     slot_usage:
       id:
-        pattern: '^nmdc:wfrbt'
+        #        pattern: '^nmdc:wfrbt'
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -305,7 +305,7 @@ classes:
         description: >-
           TODO: Yuri to fill in
       id:
-        pattern: '^nmdc:wfmb'
+        #        pattern: '^nmdc:wfmb'
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -327,7 +327,7 @@ classes:
         range: PeptideQuantification
         multivalued: true
       id:
-        pattern: '^nmdc:wfmp'
+        #        pattern: '^nmdc:wfmp'
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -350,7 +350,7 @@ classes:
         description: >-
           A reference to a file that holds calibration information.
       id:
-        pattern: '^nmdc:wfnom'
+        #        pattern: '^nmdc:wfnom'
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true

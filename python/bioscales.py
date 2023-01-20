@@ -1,5 +1,5 @@
 # Auto generated from bioscales.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-01-20T13:17:05
+# Generation date: 2023-01-20T15:23:55
 # Schema: NMDC-Bioscales
 #
 # id: https://microbiomedata/schema/bioscales
@@ -1245,12 +1245,10 @@ slots.magBin__gtdbtk_species = Slot(uri=NMDC.gtdbtk_species, name="magBin__gtdbt
                    model_uri=NMDC.magBin__gtdbtk_species, domain=None, range=Optional[str])
 
 slots.AnalyticalSample_id = Slot(uri=NMDC.id, name="AnalyticalSample_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.AnalyticalSample_id, domain=AnalyticalSample, range=Union[str, AnalyticalSampleId],
-                   pattern=re.compile(r'^nmdc:ansm'))
+                   model_uri=NMDC.AnalyticalSample_id, domain=AnalyticalSample, range=Union[str, AnalyticalSampleId])
 
 slots.Site_id = Slot(uri=NMDC.id, name="Site_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.Site_id, domain=Site, range=Union[str, SiteId],
-                   pattern=re.compile(r'^nmdc:site'))
+                   model_uri=NMDC.Site_id, domain=Site, range=Union[str, SiteId])
 
 slots.AttributeValue_type = Slot(uri=NMDC.type, name="AttributeValue_type", curie=NMDC.curie('type'),
                    model_uri=NMDC.AttributeValue_type, domain=AttributeValue, range=Optional[str])
@@ -1280,8 +1278,7 @@ slots.Person_id = Slot(uri=NMDC.id, name="Person_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Person_id, domain=Person, range=Union[str, PersonId])
 
 slots.Instrument_id = Slot(uri=NMDC.id, name="Instrument_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.Instrument_id, domain=Instrument, range=Union[str, InstrumentId],
-                   pattern=re.compile(r'^nmdc:inst'))
+                   model_uri=NMDC.Instrument_id, domain=Instrument, range=Union[str, InstrumentId])
 
 slots.MetaboliteQuantification_metabolite_quantified = Slot(uri=NMDC.metabolite_quantified, name="MetaboliteQuantification_metabolite_quantified", curie=NMDC.curie('metabolite_quantified'),
                    model_uri=NMDC.MetaboliteQuantification_metabolite_quantified, domain=MetaboliteQuantification, range=Optional[Union[str, ChemicalEntityId]])
@@ -1341,5 +1338,4 @@ slots.GeolocationValue_has_raw_value = Slot(uri=NMDC.has_raw_value, name="Geoloc
                    model_uri=NMDC.GeolocationValue_has_raw_value, domain=GeolocationValue, range=Optional[str])
 
 slots.Activity_id = Slot(uri=NMDC.id, name="Activity_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.Activity_id, domain=Activity, range=Union[str, ActivityId],
-                   pattern=re.compile(r'^nmdc:act'))
+                   model_uri=NMDC.Activity_id, domain=Activity, range=Union[str, ActivityId])

@@ -23469,7 +23469,6 @@
             "Activity",
             "NamedThing"
           ],
-          "pattern": "^nmdc:frsite",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -23493,7 +23492,6 @@
             "NamedThing"
           ],
           "range": "string",
-          "pattern": "^nmdc:frsite",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -23585,7 +23583,6 @@
             "Activity",
             "NamedThing"
           ],
-          "pattern": "^nmdc:clsite",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -23649,7 +23646,6 @@
             "NamedThing"
           ],
           "range": "string",
-          "pattern": "^nmdc:clsite",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -23756,7 +23752,6 @@
             "Activity",
             "NamedThing"
           ],
-          "pattern": "^nmdc:dobj",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -23910,7 +23905,6 @@
             "NamedThing"
           ],
           "range": "string",
-          "pattern": "^nmdc:dobj",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -24239,7 +24233,6 @@
             "NamedThing"
           ],
           "required": true,
-          "pattern": "^nmdc:bsm",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -24495,7 +24488,6 @@
           ],
           "range": "string",
           "required": true,
-          "pattern": "^nmdc:bsm",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -31277,7 +31269,6 @@
             "Activity",
             "NamedThing"
           ],
-          "pattern": "^nmdc:sty",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -31428,7 +31419,6 @@
             "NamedThing"
           ],
           "range": "string",
-          "pattern": "^nmdc:sty",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -31969,7 +31959,6 @@
             "Activity",
             "NamedThing"
           ],
-          "pattern": "^nmdc:bsmprc",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:bsmprc-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -32020,7 +32009,6 @@
             "NamedThing"
           ],
           "range": "string",
-          "pattern": "^nmdc:bsmprc",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:bsmprc-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -32149,7 +32137,6 @@
             "Activity",
             "NamedThing"
           ],
-          "pattern": "^nmdc:omprc",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -32750,7 +32737,6 @@
             "NamedThing"
           ],
           "range": "string",
-          "pattern": "^nmdc:omprc",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -33872,7 +33858,6 @@
             "Activity",
             "NamedThing"
           ],
-          "pattern": "^nmdc:wf",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -34005,7 +33990,6 @@
             "NamedThing"
           ],
           "range": "string",
-          "pattern": "^nmdc:wf",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -34155,7 +34139,6 @@
             "Activity",
             "NamedThing"
           ],
-          "pattern": "^nmdc:wfmgas",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -34683,7 +34666,6 @@
             "NamedThing"
           ],
           "range": "string",
-          "pattern": "^nmdc:wfmgas",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -34851,7 +34833,6 @@
             "Activity",
             "NamedThing"
           ],
-          "pattern": "^nmdc:wfmtas",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -35409,7 +35390,6 @@
             "NamedThing"
           ],
           "range": "string",
-          "pattern": "^nmdc:wfmtas",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -35568,7 +35548,6 @@
             "Activity",
             "NamedThing"
           ],
-          "pattern": "^nmdc:wfmgan",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -35817,7 +35796,6 @@
             "NamedThing"
           ],
           "range": "string",
-          "pattern": "^nmdc:wfmgan",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -35995,7 +35973,6 @@
             "Activity",
             "NamedThing"
           ],
-          "pattern": "^nmdc:wfmtan",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -36283,7 +36260,6 @@
             "NamedThing"
           ],
           "range": "string",
-          "pattern": "^nmdc:wfmtan",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -36485,7 +36461,6 @@
             "Activity",
             "NamedThing"
           ],
-          "pattern": "^nmdc:wfmt",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -36793,7 +36768,6 @@
             "NamedThing"
           ],
           "range": "string",
-          "pattern": "^nmdc:wfmt",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -37030,7 +37004,6 @@
             "Activity",
             "NamedThing"
           ],
-          "pattern": "^nmdc:wfmag",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -37446,7 +37419,6 @@
             "NamedThing"
           ],
           "range": "string",
-          "pattern": "^nmdc:wfmag",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -37752,7 +37724,6 @@
             "Activity",
             "NamedThing"
           ],
-          "pattern": "^nmdc:wfrqc",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -38143,7 +38114,6 @@
             "NamedThing"
           ],
           "range": "string",
-          "pattern": "^nmdc:wfrqc",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -38442,7 +38412,6 @@
             "Activity",
             "NamedThing"
           ],
-          "pattern": "^nmdc:wfrbt",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -38886,7 +38855,6 @@
             "NamedThing"
           ],
           "range": "string",
-          "pattern": "^nmdc:wfrbt",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -39250,7 +39218,6 @@
             "Activity",
             "NamedThing"
           ],
-          "pattern": "^nmdc:wfmb",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -39753,7 +39720,6 @@
             "NamedThing"
           ],
           "range": "string",
-          "pattern": "^nmdc:wfmb",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -40156,7 +40122,6 @@
             "Activity",
             "NamedThing"
           ],
-          "pattern": "^nmdc:wfmp",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -40722,7 +40687,6 @@
             "NamedThing"
           ],
           "range": "string",
-          "pattern": "^nmdc:wfmp",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -41174,7 +41138,6 @@
             "Activity",
             "NamedThing"
           ],
-          "pattern": "^nmdc:wfnom",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -41807,7 +41770,6 @@
             "NamedThing"
           ],
           "range": "string",
-          "pattern": "^nmdc:wfnom",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -42292,7 +42254,6 @@
             "Activity",
             "NamedThing"
           ],
-          "pattern": "^nmdc:act",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:act-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -42336,7 +42297,6 @@
             "NamedThing"
           ],
           "range": "string",
-          "pattern": "^nmdc:act",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:act-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -42927,7 +42887,6 @@
             "NamedThing",
             "MaterialEntity"
           ],
-          "pattern": "^nmdc:ansm",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:ansm-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -42969,7 +42928,6 @@
             "MaterialEntity"
           ],
           "range": "string",
-          "pattern": "^nmdc:ansm",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:ansm-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -43172,7 +43130,6 @@
             "MaterialEntity",
             "AnalyticalSample"
           ],
-          "pattern": "^nmdc:site",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:site-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -43215,7 +43172,6 @@
             "AnalyticalSample"
           ],
           "range": "string",
-          "pattern": "^nmdc:site",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:site-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -45116,7 +45072,6 @@
             "EnvironmentalMaterialTerm",
             "Person"
           ],
-          "pattern": "^nmdc:inst",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -45164,7 +45119,6 @@
             "Person"
           ],
           "range": "string",
-          "pattern": "^nmdc:inst",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -46918,7 +46872,6 @@
             "ChemicalEntity",
             "GeneProduct"
           ],
-          "pattern": "^nmdc:matsm",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:matsm-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
@@ -46969,7 +46922,6 @@
             "GeneProduct"
           ],
           "range": "string",
-          "pattern": "^nmdc:matsm",
           "structured_pattern": {
             "syntax": "{id_nmdc_prefix}:matsm-{id_shoulder}-{id_blade}{id_version}{id_locus}",
             "interpolated": true,
