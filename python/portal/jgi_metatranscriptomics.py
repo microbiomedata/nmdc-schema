@@ -1,5 +1,5 @@
 # Auto generated from jgi_metatranscriptomics.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-12-22T13:47:28
+# Generation date: 2023-01-20T13:16:46
 # Schema: jgi_metatranscriptomics
 #
 # id: https://microbiomedata/schema/jgi_metatranscriptomics
@@ -116,7 +116,8 @@ slots.rna_cont_type = Slot(uri=NMDC.rna_cont_type, name="rna_cont_type", curie=N
                    model_uri=NMDC.rna_cont_type, domain=None, range=Optional[Union[str, "RnaContTypeEnum"]])
 
 slots.rna_cont_well = Slot(uri=NMDC.rna_cont_well, name="rna_cont_well", curie=NMDC.curie('rna_cont_well'),
-                   model_uri=NMDC.rna_cont_well, domain=None, range=Optional[str])
+                   model_uri=NMDC.rna_cont_well, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$'))
 
 slots.rna_container_id = Slot(uri=NMDC.rna_container_id, name="rna_container_id", curie=NMDC.curie('rna_container_id'),
                    model_uri=NMDC.rna_container_id, domain=None, range=Optional[str])
