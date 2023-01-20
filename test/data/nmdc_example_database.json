@@ -1,7 +1,7 @@
 {
   "study_set": [
     {
-      "id": "nmdc:sty-19f024bb-8f6a-42e9-846b-beff8e417cbd",
+      "id": "nmdc:sty-99-FkQIsc",
       "gold_study_identifiers": [
         "gold:Gs0128849"
       ],
@@ -21,7 +21,7 @@
       "type": "nmdc:Study"
     },
     {
-      "id": "nmdc:sty-d9a5431e-0ae0-4953-b00a-945fc5d94cd9",
+      "id": "nmdc:sty-99-oJmAOs",
       "gold_study_identifiers": [
         "gold:Gs0130354"
       ],
@@ -41,7 +41,7 @@
       "type": "nmdc:Study"
     },
     {
-      "id": "nmdc:sty-2e9e3439-06e1-4ebb-ae97-20a198272831",
+      "id": "nmdc:sty-99-3bQQ4j",
       "gold_study_identifiers": [
         "gold:Gs0134277"
       ],
@@ -63,7 +63,7 @@
   ],
   "omics_processing_set": [
     {
-      "id": "nmdc:omprc-45fc7de7-3610-4f15-b95e-d19462c98469",
+      "id": "nmdc:omprc-99-9XUVVF",
       "alternative_identifiers": [
         "gold:Gp0225767"
       ],
@@ -88,7 +88,7 @@
       "type": "nmdc:OmicsProcessing"
     },
     {
-      "id": "nmdc:omprc-50a0ab53-cd00-476e-9ca1-f178843b4a30",
+      "id": "nmdc:omprc-99-dk9vgI",
       "alternative_identifiers": [
         "gold:Gp0208560"
       ],
@@ -113,7 +113,7 @@
       "type": "nmdc:OmicsProcessing"
     },
     {
-      "id": "nmdc:omprc-ed3f3c3a-8916-4fc8-8d98-40a8399719e3",
+      "id": "nmdc:omprc-99-MVW1FV",
       "alternative_identifiers": [
         "gold:Gp0306221"
       ],
@@ -140,7 +140,7 @@
   ],
   "biosample_set": [
     {
-      "id": "nmdc:bsm-c6eb9f01-796b-4bd6-8ed4-74e221eed7c1",
+      "id": "nmdc:bsm-99-isqhuW",
       "gold_biosample_identifiers": [
         "gold:Gb0150408"
       ],
@@ -194,7 +194,7 @@
       "sample_collection_site": "Mire fen"
     },
     {
-      "id": "nmdc:bsm-87698d0e-13b5-488a-9324-53846a6e332d",
+      "id": "nmdc:bsm-99-dge3H9",
       "gold_biosample_identifiers": [
         "gold:Gb0157174"
       ],
@@ -248,7 +248,7 @@
       "sample_collection_site": "forest soil"
     },
     {
-      "id": "nmdc:bsm-9a4f0882-49b2-46ed-8951-0ee2ea019df7",
+      "id": "nmdc:bsm-99-dc6tg6",
       "gold_biosample_identifiers": [
         "gold:Gb0188037"
       ],
@@ -305,21 +305,21 @@
   ],
   "data_object_set": [
     {
-      "id": "nmdc:dobj-161afbd2-0d43-48ba-bc96-47697de83fbb",
+      "id": "nmdc:dobj-99-dkJ8xX",
       "name": "11340.8.202049.GTCTCCT-AAGGAGA.fastq.gz",
       "description": "Raw sequencer read data",
       "file_size_bytes": 9208349052.0,
       "type": "nmdc:DataObject"
     },
     {
-      "id": "nmdc:dobj-80224019-2607-4610-8981-11ba7ef871fc",
+      "id": "nmdc:dobj-99-7zrm55",
       "name": "11839.4.222578.GAGCTCA-TTGAGCT.fastq.gz",
       "description": "Raw sequencer read data",
       "file_size_bytes": 34243309819.0,
       "type": "nmdc:DataObject"
     },
     {
-      "id": "nmdc:dobj-5fd558d1-38d3-4f70-8fca-023fff2a035e",
+      "id": "nmdc:dobj-99-sQQw0I",
       "name": "12660.4.274923.GATCGTAC-GTACGATC.fastq.gz",
       "description": "Raw sequencer read data",
       "file_size_bytes": 7580035314.0,

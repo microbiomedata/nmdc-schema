@@ -1,15 +1,15 @@
 {
   "biosample_set": [
     {
-      "id": "nmdc:bsm-ad9d77a0-52d7-43fe-ba66-6fd33b6946d2",
+      "id": "nmdc:bsm-99-J9FcnC",
       "name": "Root microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL1_35_33 endosphere",
       "description": "Root microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
-      "collected_from": "nmdc:frsite-2ec2ebde-857f-4dc5-ab5e-881c3eb337ce",
+      "collected_from": "nmdc:frsite-99-SPreao",
       "gold_biosample_identifiers": [
         "GOLD:Gb0305833"
       ],
       "part_of": [
-        "nmdc:sty-8f2bf526-5fe2-4bc0-aa75-82a9f0b868a5"
+        "nmdc:sty-99-U21mUX"
       ],
       "env_broad_scale": {
         "has_raw_value": "ENVO:00002030",
@@ -31,15 +31,15 @@
       }
     },
     {
-      "id": "nmdc:bsm-2a85c34d-ef39-4160-8959-ce831b26c1fa",
+      "id": "nmdc:bsm-99-BdlWdQ",
       "name": "Rhizosphere soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL1_35_33",
       "description": "Rhizosphere soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
-      "collected_from": "nmdc:frsite-2ec2ebde-857f-4dc5-ab5e-881c3eb337ce",
+      "collected_from": "nmdc:frsite-99-SPreao",
       "gold_biosample_identifiers": [
         "GOLD:Gb0291692"
       ],
       "part_of": [
-        "nmdc:sty-8f2bf526-5fe2-4bc0-aa75-82a9f0b868a5"
+        "nmdc:sty-99-U21mUX"
       ],
       "env_broad_scale": {
         "has_raw_value": "ENVO:00002030",
@@ -61,15 +61,15 @@
       }
     },
     {
-      "id": "nmdc:bsm-c253f1e2-d532-4fdb-9bd3-32b611dcb680",
+      "id": "nmdc:bsm-99-vn74Wq",
       "name": "Bulk soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL1_35_33",
       "description": "Bulk soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
-      "collected_from": "nmdc:frsite-2ec2ebde-857f-4dc5-ab5e-881c3eb337ce",
+      "collected_from": "nmdc:frsite-99-SPreao",
       "gold_biosample_identifiers": [
         "GOLD:Gb0291582"
       ],
       "part_of": [
-        "nmdc:sty-8f2bf526-5fe2-4bc0-aa75-82a9f0b868a5"
+        "nmdc:sty-99-U21mUX"
       ],
       "env_broad_scale": {
         "has_raw_value": "ENVO:00002030",
@@ -91,15 +91,15 @@
       }
     },
     {
-      "id": "nmdc:bsm-f34aa0dd-1fbf-4c46-aa16-713d41cfdc64",
+      "id": "nmdc:bsm-99-P8FdpS",
       "name": "Root microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL2_39_29 endosphere",
       "description": "Root microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
-      "collected_from": "nmdc:frsite-10e5281b-504b-4f56-80fe-2e50d7d00521",
+      "collected_from": "nmdc:frsite-99-h2mYFG",
       "gold_biosample_identifiers": [
         "GOLD:Gb0305834"
       ],
       "part_of": [
-        "nmdc:sty-8f2bf526-5fe2-4bc0-aa75-82a9f0b868a5"
+        "nmdc:sty-99-U21mUX"
       ],
       "env_broad_scale": {
         "has_raw_value": "ENVO:00002030",
@@ -121,15 +121,15 @@
       }
     },
     {
-      "id": "nmdc:bsm-32dea169-9135-4e9b-bce2-2286ac10ac0b",
+      "id": "nmdc:bsm-99-ugBwz3",
       "name": "Rhizosphere soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL2_39_29",
       "description": "Rhizosphere soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
-      "collected_from": "nmdc:frsite-10e5281b-504b-4f56-80fe-2e50d7d00521",
+      "collected_from": "nmdc:frsite-99-h2mYFG",
       "gold_biosample_identifiers": [
         "GOLD:Gb0291693"
       ],
       "part_of": [
-        "nmdc:sty-8f2bf526-5fe2-4bc0-aa75-82a9f0b868a5"
+        "nmdc:sty-99-U21mUX"
       ],
       "env_broad_scale": {
         "has_raw_value": "ENVO:00002030",
@@ -151,15 +151,15 @@
       }
     },
     {
-      "id": "nmdc:bsm-0e948efc-15bb-48b5-b312-d87fafe5ba9a",
+      "id": "nmdc:bsm-99-tN5lxM",
       "name": "Bulk soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL2_39_29",
       "description": "Bulk soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
-      "collected_from": "nmdc:frsite-10e5281b-504b-4f56-80fe-2e50d7d00521",
+      "collected_from": "nmdc:frsite-99-h2mYFG",
       "gold_biosample_identifiers": [
         "GOLD:Gb0291583"
       ],
       "part_of": [
-        "nmdc:sty-8f2bf526-5fe2-4bc0-aa75-82a9f0b868a5"
+        "nmdc:sty-99-U21mUX"
       ],
       "env_broad_scale": {
         "has_raw_value": "ENVO:00002030",
@@ -183,39 +183,39 @@
   ],
   "field_research_site_set": [
     {
-      "id": "nmdc:frsite-2ec2ebde-857f-4dc5-ab5e-881c3eb337ce",
+      "id": "nmdc:frsite-99-SPreao",
       "name": "BESC-13-CL1_35_33",
       "description": "Bioscales tree BESC-13-CL1_35_33"
     },
     {
-      "id": "nmdc:frsite-10e5281b-504b-4f56-80fe-2e50d7d00521",
+      "id": "nmdc:frsite-99-h2mYFG",
       "name": "BESC-13-CL2_39_29",
       "description": "Bioscales tree BESC-13-CL2_39_29"
     }
   ],
   "collecting_biosamples_from_site_set": [
     {
-      "id": "nmdc:clsite-4ff95e3a-e5e1-4a85-96b2-acf3fb242004",
+      "id": "nmdc:clsite-99-Cq00d1",
       "name": "Collection of biosamples from BESC-13-CL1_35_33",
       "has_inputs": [
-        "nmdc:frsite-2ec2ebde-857f-4dc5-ab5e-881c3eb337ce"
+        "nmdc:frsite-99-SPreao"
       ],
       "has_outputs": [
-        "nmdc:bsm-ad9d77a0-52d7-43fe-ba66-6fd33b6946d2",
-        "nmdc:bsm-2a85c34d-ef39-4160-8959-ce831b26c1fa",
-        "nmdc:bsm-c253f1e2-d532-4fdb-9bd3-32b611dcb680"
+        "nmdc:bsm-99-J9FcnC",
+        "nmdc:bsm-99-BdlWdQ",
+        "nmdc:bsm-99-vn74Wq"
       ]
     },
     {
-      "id": "nmdc:clsite-87c6ff79-4d89-4362-be87-67766356b1ce",
+      "id": "nmdc:clsite-99-yzmLBN",
       "name": "Collection of biosamples from BESC-13-CL2_39_29",
       "has_inputs": [
-        "nmdc:frsite-10e5281b-504b-4f56-80fe-2e50d7d00521"
+        "nmdc:frsite-99-h2mYFG"
       ],
       "has_outputs": [
-        "nmdc:bsm-f34aa0dd-1fbf-4c46-aa16-713d41cfdc64",
-        "nmdc:bsm-32dea169-9135-4e9b-bce2-2286ac10ac0b",
-        "nmdc:bsm-0e948efc-15bb-48b5-b312-d87fafe5ba9a"
+        "nmdc:bsm-99-P8FdpS",
+        "nmdc:bsm-99-ugBwz3",
+        "nmdc:bsm-99-tN5lxM"
       ]
     }
   ]

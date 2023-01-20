@@ -94,7 +94,7 @@ imports:
 
 settings:
   id_nmdc_prefix: "^(nmdc)"
-  id_typecode: "([a-z]{1,6})"
+#  id_typecode: "([a-z]{1,6})"
   id_shoulder: "([0-9][a-z]{0,6}[0-9])"
   id_blade: "([A-Za-z0-9]{1,})"
   id_version: "(\\.[A-Za-z0-9]{1,})*"
