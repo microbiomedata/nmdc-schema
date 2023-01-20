@@ -116,7 +116,19 @@ target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
 gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json
 .PHONY: gen-jsonschema
 target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
-	$(RUN) gen-json-schema $(GEN_OPTS) --closed -t database $< > $@
+	#$(RUN) gen-json-schema $(GEN_OPTS) --closed -t database $< > $@
+	# pre-materialize the patterns before jsonschema generation
+	# should be doing that for all of the generated artifacts
+	$(RUN) gen-linkml \
+		-o target/nmdc_generated.yaml \
+		--materialize-patterns \
+		--no-materialize-attributes \
+		--format yaml \
+		--mergeimports $(SCHEMA_SRC)
+	$(RUN) gen-json-schema $(GEN_OPTS) \
+		--closed \
+		-t database target/nmdc_generated.yaml > $@
+	rm -rf target/nmdc_generated.yaml
 
 ###  -- JSONLD Context --
 gen-jsonld-context: target/jsonld-context/$(SCHEMA_NAME).context.jsonld
@@ -213,9 +225,9 @@ delete-poetry-env:
 # datasets used test/validate the schema
 #
 SCHEMA_TEST_EXAMPLES := \
-	biosamples_to_sites \
 	MAGs_activity \
 	biosample_test \
+	biosamples_to_sites \
 	functional_annotation_set \
 	gold_project_test \
 	img_mg_annotation_objects \

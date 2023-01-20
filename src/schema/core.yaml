@@ -92,35 +92,57 @@ classes:
       - name
       - description
       - alternative_identifiers
-    slot_usage:
-      id:
-        structured_pattern:
-          todos:
-          syntax: "{id_nmdc_prefix}:{id_typecode_named_thing}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
-          partial_match: false
+  #    slot_usage:
+  #      id:
+  #        structured_pattern:
+  #          todos:
+  #          syntax: "{id_nmdc_prefix}:{id_typecode_named_thing}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+  #          interpolated: true
+  #          partial_match: false
 
 
   MaterialEntity:
+    abstract: true
     aliases:
       - Material
       - Physical entity
     is_a: NamedThing
     title: Material Entity
+  #    slot_usage:
+  #      id:
+  #        pattern: '^nmdc:mate'
+  #        structured_pattern:
+  #          syntax: "{id_nmdc_prefix}:mate-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+  #          interpolated: true
+  #          partial_match: false
 
   AnalyticalSample:
     is_a: MaterialEntity
     title: Analytical Sample
+    slot_usage:
+      id:
+        pattern: '^nmdc:ansm'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:ansm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
   Site:
+    abstract: true
     is_a: MaterialEntity
     title: Site
     comments:
       - BCO sample collection site ?
-
-
+    slot_usage:
+      id:
+        pattern: '^nmdc:site'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:site-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
   PlannedProcess:
+    abstract: true
     class_uri: OBI:0000011
     is_a: NamedThing
     title: Planned Process
@@ -131,6 +153,15 @@ classes:
 
   OntologyClass:
     is_a: NamedThing
+    notes:
+      - The identifiers for terms from external ontologies can't have their ids constrained to the nmdc namespace
+  #    slot_usage:
+  #      id:
+  #        pattern: '^nmdc:ontc'
+  #        structured_pattern:
+  #          syntax: "{id_nmdc_prefix}:ontc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+  #          interpolated: true
+  #          partial_match: false
 
   EnvironmentalMaterialTerm:
     is_a: OntologyClass
@@ -284,6 +315,13 @@ classes:
       A material entity that is designed to perform a function in a scientific investigation, but is not a reagent[OBI].
     exact_mappings:
       - OBI:0000485
+    slot_usage:
+      id:
+        pattern: '^nmdc:inst'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
   MetaboliteQuantification:
     description: >-
@@ -366,7 +404,15 @@ classes:
     description: >-
       An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs.
       There may be different terms for distinct acid-base forms, protonation states
+    comments:
+      - As with the parent OntologyClass, we will not assign an nmdc id pattern or typecode to this class.
     slot_usage:
+      #      id:
+      #        pattern: '^nmdc:cheme'
+      #        structured_pattern:
+      #          syntax: "{id_nmdc_prefix}:cheme-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+      #          interpolated: true
+      #          partial_match: false
       inchi:
         key: false
         multivalued: false
