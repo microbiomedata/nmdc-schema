@@ -363,6 +363,7 @@ classes:
       - samp_mat_process
       - samp_store_dur
       - samp_store_loc
+      - samp_taxon_id
       - samp_store_temp
       - samp_vol_we_dna_ext
       - season_temp
