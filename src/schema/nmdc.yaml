@@ -236,6 +236,17 @@ classes:
   #      - GOLD
 
   Biosample:
+    rules:
+      - preconditions:
+          slot_conditions:
+            yval:
+              equals_number: 7
+        postconditions:
+          slot_conditions:
+            xval:
+              minimum_value: 111
+        description: if yval is 7, xval must be 11
+
     is_a: MaterialEntity
     in_subset:
       - sample subset
@@ -255,6 +266,8 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
+      - xval
+      - yval
       - collected_from
       - type
       - img_identifiers
@@ -1006,6 +1019,11 @@ enums:
           - replaces Environmental Molecular Sciences Lab
 
 slots:
+
+  xval:
+    range: integer
+  yval:
+    range: integer
 
   collected_from:
     description: The Site from which a Biosample was collected

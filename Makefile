@@ -251,6 +251,8 @@ SCHEMA_TEST_EXAMPLES := \
 	study_credit_test \
 	study_test
 
+#	biosample_y_without_x \
+
 SCHEMA_TEST_EXAMPLES_INVALID := \
 	biosample_incomplete_napa_id \
 	biosample_invalid_range \
