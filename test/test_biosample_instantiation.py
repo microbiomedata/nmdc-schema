@@ -11,8 +11,6 @@ from nmdc_schema.nmdc import (
 class TestBiosampleInstantiation(unittest.TestCase):
     def test_with_part_of(self):
         bs = Biosample(
-            yval=7,
-            xval=3,
             id="bs:1",
             part_of=[
                 "study:1",

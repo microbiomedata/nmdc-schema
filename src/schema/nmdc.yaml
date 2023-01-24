@@ -266,8 +266,7 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
-      - xval
-      - yval
+      - embargoed
       - collected_from
       - type
       - img_identifiers
@@ -1020,10 +1019,16 @@ enums:
 
 slots:
 
-  xval:
-    range: integer
-  yval:
-    range: integer
+  embargoed:
+    description: >-
+      If true, the data are embargoed and not available for public access.
+    range: boolean
+    recommended: true
+    todos:
+      - make this required?
+      - first apply to Biosample
+      - try to apply to all Biosamples in a particular nmdc-server SubmissionMetadata?
+      - applying to a Study may nto be granular enough
 
   collected_from:
     description: The Site from which a Biosample was collected

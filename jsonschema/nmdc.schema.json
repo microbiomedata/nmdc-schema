@@ -433,6 +433,10 @@
                     "$ref": "#/$defs/QuantityValue",
                     "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit."
                 },
+                "embargoed": {
+                    "description": "If true, the data are embargoed and not available for public access.",
+                    "type": "boolean"
+                },
                 "emsl_biosample_identifiers": {
                     "description": "A list of identifiers for the biosample from the EMSL database.  This is used to link the biosample, as modeled by NMDC, to the biosample in the planned EMSL NEXUS database.",
                     "items": {
@@ -879,6 +883,10 @@
                 "samp_store_temp": {
                     "$ref": "#/$defs/QuantityValue",
                     "description": "Temperature at which sample was stored, e.g. -80 degree Celsius"
+                },
+                "samp_taxon_id": {
+                    "description": "NCBI taxon id of the sample. May be a single taxon or mixed taxa sample. Use 'synthetic metagenome' for mock community/positive controls, or 'blank sample' for negative controls.",
+                    "type": "string"
                 },
                 "samp_vol_we_dna_ext": {
                     "$ref": "#/$defs/QuantityValue",
@@ -5416,6 +5424,16 @@
     "$id": "https://microbiomedata/schema",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": false,
+    "if": {
+        "properties": {
+            "yval": {
+                "const": 7
+            }
+        },
+        "required": [
+            "yval"
+        ]
+    },
     "metamodel_version": "1.7.0",
     "properties": {
         "activity_set": {
@@ -5566,6 +5584,16 @@
             },
             "type": "array"
         }
+    },
+    "then": {
+        "properties": {
+            "xval": {
+                "minimum": 111
+            }
+        },
+        "required": [
+            "xval"
+        ]
     },
     "title": "NMDC",
     "type": "object",
