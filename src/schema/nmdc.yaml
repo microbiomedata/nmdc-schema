@@ -255,6 +255,7 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
+      - uriorcurie_slot
       - embargoed
       - collected_from
       - type
@@ -1007,6 +1008,9 @@ enums:
           - replaces Environmental Molecular Sciences Lab
 
 slots:
+
+  uriorcurie_slot:
+    range: uriorcurie
 
   embargoed:
     description: >-

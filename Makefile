@@ -249,7 +249,10 @@ SCHEMA_TEST_EXAMPLES := \
 	nmdc_example_database \
 	samp_prep_db \
 	study_credit_test \
-	study_test
+	study_test \
+	minimal_valid_biosample_test.json \
+	minimal_valid_biosample_with_uriorcurie_test.json \
+	minimal_valid_embargoed_biosample_test.json
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
 	biosample_incomplete_napa_id \
