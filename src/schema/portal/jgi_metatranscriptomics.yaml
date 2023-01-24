@@ -55,6 +55,8 @@ enums:
         text: TE
       Water:
         text: Water
+      Gentegra-DNA:
+      Gentegra-RNA:
 slots:
   dnase_rna:
     name: dnase_rna
@@ -151,11 +153,12 @@ slots:
     recommended: true
   rna_cont_well:
     name: rna_cont_well
-    title: RNA well number
+    title: RNA plate position
     comments:
-    - Required when 'plate' is selected for container type. Corner wells must be blank.
-      For partial plates, fill by columns. Leave blank if the sample will be shipped
-      in a tube.
+    - Required when 'plate' is selected for container type.
+    - Leave blank if the sample will be shipped in a tube.
+    - JGI will not process samples in corner wells, so A1, A12, H1 and H12 will not pass validation.
+    - For partial plates, fill by columns, like B1-G1,A2-H2,A3-D3 (NOT A2-A11,B1-B8).
     examples:
     - value: B2
     from_schema: https://example.com/nmdc_dh
@@ -164,6 +167,7 @@ slots:
     slot_group: JGI-Metatranscriptomics
     required: false
     recommended: true
+    pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
   rna_container_id:
     name: rna_container_id
     title: RNA container label

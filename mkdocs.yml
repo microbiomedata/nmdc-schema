@@ -12,8 +12,9 @@ site_dir: mkdocs_html
 nav:
   - Home: home.md
   - NMDC Schema: index.md
-  - NMDC Metadata Standards Documentation:  Metadata_Documentation_Overview.md 
+  - NMDC Metadata Standards Documentation: Metadata_Documentation_Overview.md
   - NMDC Schema Validation: schema-validation.md
   - Identifiers in NMDC: identifiers.md
-  - MIxS Soil Package: NMDC_MIxS_Soil_documentation.md
+  - Table of Identifier Typecodes for each Class: typecode_table.md
+  - DEPRECATED MIxS Soil Package: NMDC_MIxS_Soil_documentation.md
   - Credits: credits.md

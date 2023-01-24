@@ -1,5 +1,5 @@
 # Auto generated from jgi_metagenomics.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-12-14T15:02:01
+# Generation date: 2023-01-20T15:23:23
 # Schema: jgi_metagenomics
 #
 # id: https://microbiomedata/schema/jgi_metagenomics
@@ -85,6 +85,10 @@ class DnaSampleFormatEnum(EnumDefinitionImpl):
                 PermissibleValue(text="Low EDTA TE") )
         setattr(cls, "MDA reaction buffer",
                 PermissibleValue(text="MDA reaction buffer") )
+        setattr(cls, "Gentegra-DNA",
+                PermissibleValue(text="Gentegra-DNA") )
+        setattr(cls, "Gentegra-RNA",
+                PermissibleValue(text="Gentegra-RNA") )
 
 # Slots
 class slots:
@@ -106,7 +110,8 @@ slots.dna_cont_type = Slot(uri=NMDC.dna_cont_type, name="dna_cont_type", curie=N
                    model_uri=NMDC.dna_cont_type, domain=None, range=Optional[Union[str, "DnaContTypeEnum"]])
 
 slots.dna_cont_well = Slot(uri=NMDC.dna_cont_well, name="dna_cont_well", curie=NMDC.curie('dna_cont_well'),
-                   model_uri=NMDC.dna_cont_well, domain=None, range=Optional[str])
+                   model_uri=NMDC.dna_cont_well, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$'))
 
 slots.dna_container_id = Slot(uri=NMDC.dna_container_id, name="dna_container_id", curie=NMDC.curie('dna_container_id'),
                    model_uri=NMDC.dna_container_id, domain=None, range=Optional[str])

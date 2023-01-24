@@ -1,3 +1,7 @@
+# consider some cleanup: /assets /images /slides /util
+# /doc vs /docs?
+# empties: /graphql /owl /rdf /shex
+
 SRC_DIR = src
 SCHEMA_DIR = $(SRC_DIR)/schema
 SOURCE_FILES := $(shell find $(SCHEMA_DIR) -name '*.yaml')
@@ -29,6 +33,13 @@ revert-jsonschema:
 
 clean-artifacts:
 	rm -rf target/
+	rm -rf json/*.json
+	rm -rf jsonld-context/*.jsonld
+	rm -rf jsonschema/*.json
+	rm -rf python/*.py
+	rm -rf python/portal/*.py
+
+
 
 clean-docs:
 	ls docs/*.md | egrep -v 'README.md|README.markdown' | xargs rm -f # keep readme files
@@ -116,7 +127,19 @@ target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
 gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json
 .PHONY: gen-jsonschema
 target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
-	$(RUN) gen-json-schema $(GEN_OPTS) --closed -t database $< > $@
+	#$(RUN) gen-json-schema $(GEN_OPTS) --closed -t database $< > $@
+	# pre-materialize the patterns before jsonschema generation
+	# should be doing that for all of the generated artifacts
+	$(RUN) gen-linkml \
+		-o target/nmdc_generated.yaml \
+		--materialize-patterns \
+		--no-materialize-attributes \
+		--format yaml \
+		--mergeimports $(SCHEMA_SRC)
+	$(RUN) gen-json-schema $(GEN_OPTS) \
+		--closed \
+		-t database target/nmdc_generated.yaml > $@
+	rm -rf target/nmdc_generated.yaml
 
 ###  -- JSONLD Context --
 gen-jsonld-context: target/jsonld-context/$(SCHEMA_NAME).context.jsonld
@@ -174,6 +197,7 @@ clean-package:
 	rm -f nmdc_schema/*.json
 	rm -f nmdc_schema/*.py
 	rm -f nmdc_schema/*.tsv
+	rm -f nmdc_schema/*.yaml
 	rm -rf dist && echo 'dist removed'
 	rm -rf nmdc_schema.egg-info && echo 'egg-info removed'
 
@@ -213,9 +237,9 @@ delete-poetry-env:
 # datasets used test/validate the schema
 #
 SCHEMA_TEST_EXAMPLES := \
-	biosamples_to_sites \
 	MAGs_activity \
 	biosample_test \
+	biosamples_to_sites \
 	functional_annotation_set \
 	gold_project_test \
 	img_mg_annotation_objects \
@@ -229,6 +253,7 @@ SCHEMA_TEST_EXAMPLES := \
 	minimal_valid_biosample_with_fire
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
+	biosample_incomplete_napa_id \
 	biosample_invalid_range \
 	biosample_mismatch_regex \
 	biosample_missing_required_field \
@@ -336,7 +361,25 @@ from_mongo_cleanup:
 	rm -rf assets/from_mongodb.yaml
 	rm -rf assets/from_mongodb_updated.json
 
+TermsUpdated_organicmatterextraction_all: TermsUpdated_organicmatterextraction_clean assets/TermsUpdated_organicmatterextraction_data.json
+
+TermsUpdated_organicmatterextraction_clean:
+	rm -rf target/TermsUpdated_organicmatterextraction.yaml
+	rm -rf assets/TermsUpdated_organicmatterextraction_data.json
+
+target/TermsUpdated_organicmatterextraction.yaml: assets/TermsUpdated_organicmatterextraction.tsv
+	$(RUN) sheets2linkml \
+	--name TermsUpdated_organicmatterextraction \
+	--output $@ $^
+
+assets/TermsUpdated_organicmatterextraction_data.json: target/TermsUpdated_organicmatterextraction.yaml assets/TermsUpdated_organicmatterextraction_data.yaml
+	$(RUN) linkml-convert \
+		--output $@ \
+		--target-class MaterialSamplingProcess \
+		--schema $^
+
 #from_mongo_all: from_mongo_cleanup validate_vs_3_2_0 validate_vs_current
 
 target/nmdc_data_for_v7.json:
 	$(RUN) migrate_3_2_to_7
+

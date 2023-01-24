@@ -22,7 +22,8 @@
         "term": {
           "id": "ENVO:00005792"
         }
-      }
+      },
+      "embargoed": true
     }
   ]
 }

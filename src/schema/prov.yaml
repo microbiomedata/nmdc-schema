@@ -9,7 +9,7 @@ prefixes:
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
   prov: http://www.w3.org/ns/prov#
-  
+
 default_prefix: nmdc
 default_range: string
 
@@ -36,7 +36,16 @@ classes:
       - used
     mappings:
       - prov:Activity
-      
+    slot_usage:
+      id:
+        #        pattern: '^nmdc:act'
+        structured_pattern:
+          todos:
+            - remove the static pattern once the minter can generate ids that satisfy this structured_pattern and gen-linkml can expand the structured_pattern
+          syntax: "{id_nmdc_prefix}:act-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
+
   Agent:
     description: "a provence-generating agent"
     slots:
@@ -44,7 +53,7 @@ classes:
       - was_informed_by
     mappings:
       - prov:Agent
-      
+
 slots:
 
   started_at_time:

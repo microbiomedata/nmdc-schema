@@ -142,6 +142,7 @@ The per-part regular expression described above can be composed into one complet
 
 ```
 ^(?<prefix>nmdc):(?<typecode>[a-z]{1,6})-(?<shoulder>[0-9][a-z]{0,6}[0-9])-(?<blade>[A-Za-z0-9]+)(?<version>(\.[A-Za-z0-9]+)*)(?<locus>_[A-Za-z0-9_\.-]+)?$
+```
 
 ## Reuse vs minting new IDs
 

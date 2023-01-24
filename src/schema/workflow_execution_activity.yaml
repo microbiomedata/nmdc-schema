@@ -73,6 +73,12 @@ classes:
       execution_resource:
         required: true
       type: { }
+      id:
+        #        pattern: '^nmdc:wf'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
   MetagenomeAssembly:
     description: A workflow execution activity that converts sequencing reads into an assembled metagenome.
@@ -111,6 +117,13 @@ classes:
       - num_input_reads
       - num_aligned_reads
       - insdc_assembly_identifiers
+    slot_usage:
+      id:
+        #        pattern: '^nmdc:wfmgas'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
   MetatranscriptomeAssembly:
     is_a: WorkflowExecutionActivity
@@ -145,6 +158,13 @@ classes:
       - num_input_reads
       - num_aligned_reads
       - insdc_assembly_identifiers
+    slot_usage:
+      id:
+        #        pattern: '^nmdc:wfmtas'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
   MetagenomeAnnotationActivity:
     description: A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
@@ -154,6 +174,13 @@ classes:
       - gold_analysis_project_identifiers
     in_subset:
       - workflow subset
+    slot_usage:
+      id:
+        #        pattern: '^nmdc:wfmgan'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
   MetatranscriptomeAnnotationActivity:
     is_a: WorkflowExecutionActivity
@@ -162,6 +189,13 @@ classes:
       - gold_analysis_project_identifiers
     in_subset:
       - workflow subset
+    slot_usage:
+      id:
+        #        pattern: '^nmdc:wfmtan'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
   MetatranscriptomeActivity:
     is_a: WorkflowExecutionActivity
@@ -171,6 +205,13 @@ classes:
       - workflow subset
     slots:
       - type
+    slot_usage:
+      id:
+        #        pattern: '^nmdc:wfmt'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
 
   MagsAnalysisActivity:
@@ -187,6 +228,13 @@ classes:
       - low_depth_contig_num
       - unbinned_contig_num
       - mags_list
+    slot_usage:
+      id:
+        #        pattern: '^nmdc:wfmag'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
   ReadQcAnalysisActivity:
     description: A workflow execution activity that performs quality control on raw Illumina reads including quality trimming, artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant removal
@@ -200,7 +248,7 @@ classes:
       - input_base_count
       - output_read_count
       - output_base_count
-#      - version
+    #      - version
     slot_usage:
       input_read_bases:
         range: float
@@ -214,6 +262,12 @@ classes:
         inlined: false
       has_output:
         inlined: false
+      id:
+        #        pattern: '^nmdc:wfrqc'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
   ReadBasedTaxonomyAnalysisActivity:
     description: A workflow execution activity that performs taxonomy classification using sequencing reads
@@ -223,6 +277,13 @@ classes:
       - workflow subset
     slots:
       - type
+    slot_usage:
+      id:
+        #        pattern: '^nmdc:wfrbt'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
 
   MetabolomicsAnalysisActivity:
@@ -243,6 +304,12 @@ classes:
       has_calibration:
         description: >-
           TODO: Yuri to fill in
+      id:
+        #        pattern: '^nmdc:wfmb'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
   MetaproteomicsAnalysisActivity:
     is_a: WorkflowExecutionActivity
@@ -259,6 +326,12 @@ classes:
       has_peptide_quantifications:
         range: PeptideQuantification
         multivalued: true
+      id:
+        #        pattern: '^nmdc:wfmp'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
   NomAnalysisActivity:
     is_a: WorkflowExecutionActivity
@@ -276,6 +349,13 @@ classes:
         range: string
         description: >-
           A reference to a file that holds calibration information.
+      id:
+        #        pattern: '^nmdc:wfnom'
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
+
 
 slots:
 

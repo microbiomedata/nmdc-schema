@@ -7,7 +7,7 @@ notes:
   - "removed/commented out the comfusing 'identifier' slot"
   - "removed/commented out all mentions and definitions of depth2 and subsurface_depth2"
   - "depth2 should now be migrated to the has_maximum_value part of depth"
-  - "slots requested for Bioscales, but already available for Biosample: tot_phosp, tot_carb, tot_nitro_content, pH"
+  - "slots requested for Bioscales, but already available for Biosample : tot_phosp, tot_carb, tot_nitro_content, pH"
   - "informal ## section delimiters should be replaced with subsets ?"
   - "commented out insdc_biosample_identifiers insdc_secondary_sample_identifiers... need better understanding of id patterns (at least)"
   - "commented out several MIxS terms assigned to Biosample because the definitions of those terms were commented out in mixs.yaml dues to shared slot uris"
@@ -94,16 +94,10 @@ imports:
 
 settings:
   id_nmdc_prefix: "^(nmdc)"
-  id_typecode: "([a-z]{1,6})"
   id_shoulder: "([0-9][a-z]{0,6}[0-9])"
   id_blade: "([A-Za-z0-9]{1,})"
   id_version: "(\\.[A-Za-z0-9]{1,})*"
   id_locus: "(_[A-Za-z0-9_\\.-]+)?$"
-  # class to typecode associations
-  id_typecode_biosample: "bsm"
-  id_typecode_study: "sty"
-  id_typecode_biosample_processing: "bsmprc"
-  id_typecode_omics_processing: "omprc"
 
 subsets:
   sample subset:
@@ -160,7 +154,6 @@ classes:
       - research plot
     description: A site, outside of a laboratory, from which biosamples may be collected.
     is_a: Site
-    #    is_a: NamedThing
     title: Field Research Site
     comments:
       - Provides grouping of biosamples at level that's more specific than belonging
@@ -170,6 +163,12 @@ classes:
         the same plant were obtained at the same site. In this case, the site would
         correspond to one tree.
       - "might correspond to GOLD's identifier on a page like https://gold.jgi.doe.gov/biosample?id=Gb0305833"
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
   CollectingBiosamplesFromSite:
     is_a: PlannedProcess
@@ -187,6 +186,11 @@ classes:
       has_outputs:
         range: Biosample
         required: true
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
 
 
   DataObject:
@@ -194,7 +198,9 @@ classes:
     in_subset:
       - data object subset
     description: 'An object that primarily consists of symbols that represent information.   Files,
-      records, and omics data are examples of data objects. '
+      records, and omics data are examples of data objects.'
+    notes:
+      - removed previous id_prefixes value of GOLD, since we are now using pattern-based id validation
     slots:
       - file_size_bytes
       - md5_checksum
@@ -208,10 +214,16 @@ classes:
         required: true
       description:
         required: true
-    id_prefixes:
-      - GOLD
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
+    comments:
+      - removed id_prefixes value of GOLD, since we are now using pattern-based id validation
 
   Biosample:
+
     is_a: MaterialEntity
     in_subset:
       - sample subset
@@ -224,11 +236,14 @@ classes:
       Biological source material which can be characterized by an experiment.
     todos:
       - could add GOLD and EBI's biosample definitions to the alt_descriptions?
+    notes:
+      - removed previous id_prefixes value of GOLD, since we are now using pattern-based id validation
     alt_descriptions:
       embl.ena: A sample contains information about the sequenced source material.
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
+      - embargoed
       - collected_from
       - type
       - img_identifiers
@@ -337,6 +352,7 @@ classes:
       - samp_mat_process
       - samp_store_dur
       - samp_store_loc
+      - samp_taxon_id
       - samp_store_temp
       - samp_vol_we_dna_ext
       - season_temp
@@ -491,9 +507,8 @@ classes:
       id:
         description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
         required: true
-        pattern: '^nmdc:'
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:{id_typecode_biosample}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
           partial_match: false
       gold_biosample_identifiers:
@@ -750,8 +765,6 @@ classes:
           - value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
           - value: 75% water holding capacity; constant
 
-    id_prefixes:
-      - GOLD
     exact_mappings:
       - OBI:0000747
       - NCIT:C43412
@@ -813,11 +826,11 @@ classes:
       - study_image
     slot_usage:
       id:
-        description: An NMDC assigned unique identifier for a sample submitted to NMDC.
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:{id_typecode_study}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
           partial_match: false
+
       doi:
         description: >-
           The dataset citation for this study
@@ -892,14 +905,11 @@ classes:
       - determine how to get data values for submitted_to_insdc, investigation_type,
         experimental_factor
       - project_name is redundant with name, so excluding it
-    id_prefixes:
-      - GOLD
-      - insdc.srs
-      - mgnify
     notes:
       - "sample GOLD link https://identifiers.org/gold:Gs0110115"
       - "sample insdc.srs link https://www.ebi.ac.uk/ena/browser/view/PRJEB45055 ?"
       - "sample mgnify link https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757"
+      - "GOLD, insdc.srs and mgnify are reasonable prefixes for alternative study identifiers, but no longer for the Study.id"
 
   BiosampleProcessing:
     aliases:
@@ -913,7 +923,7 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:{id_typecode_biosample_processing}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:bsmprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
           partial_match: false
       has_input:
@@ -960,10 +970,11 @@ classes:
       - seq_meth
       - seq_quality_check
       - chimera_check
+
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:{id_typecode_omics_processing}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
           partial_match: false
       has_input:
@@ -1191,6 +1202,17 @@ enums:
           - replaces Environmental Molecular Sciences Lab
 
 slots:
+
+  embargoed:
+    description: >-
+      If true, the data are embargoed and not available for public access.
+    range: boolean
+    recommended: true
+    todos:
+      - make this required?
+      - first apply to Biosample
+      - try to apply to all Biosamples in a particular nmdc-server SubmissionMetadata?
+      - applying to a Study may nto be granular enough
 
   collected_from:
     description: The Site from which a Biosample was collected
@@ -1556,13 +1578,6 @@ slots:
     range: string
   sample_collection_site:
     range: string
-  #  identifier:
-  #    slot_group: biosample_identifiers
-  #    range: string
-  #    todos:
-  #      - used in MongoDB as of 2022-09-09, which is still on schema 3.?
-  #      - we will remove this slot form the schema, but make sure to retain the content in MongoDB in a relevant, retained slot
-  #      - Mark will do the MongoDB migration
   sample_collection_year:
     range: integer
   sample_collection_month:
@@ -1587,8 +1602,7 @@ slots:
     range: string
   subsurface_depth:
     range: QuantityValue
-  #  subsurface_depth2:
-  #    range: QuantityValue
+
   proport_woa_temperature:
     range: string
 

@@ -1,7 +1,7 @@
 {
   "biosample_set": [
     {
-      "id": "nmdc:6057d02c-664c-41c9-8486-3624ca845747",
+      "id": "nmdc:bsm-99-dtTMNb",
       "gold_biosample_identifiers": [
         "gold:Gb0101224"
       ],
@@ -48,10 +48,11 @@
       "location": "from the Lithgow State Coal Mine, New South Wales, Australia",
       "mod_date": "26-AUG-16 01.50.27.000000000 PM",
       "ncbi_taxonomy_name": "coal metagenome",
+      "samp_taxon_id": "coal metagenome [NCBITaxon:1260732]",
       "sample_collection_site": "Lithgow State Coal Mine"
     },
     {
-      "id": "nmdc:6057d02c-664c-41c9-8486-3624ca845747",
+      "id": "nmdc:bsm-99-AtTUOs",
       "gold_biosample_identifiers": [
         "gold:Gb0101224"
       ],
@@ -102,10 +103,11 @@
       "location": "from the Lithgow State Coal Mine, New South Wales, Australia",
       "mod_date": "26-AUG-16 01.50.27.000000000 PM",
       "ncbi_taxonomy_name": "coal metagenome",
+      "samp_taxon_id": "coal metagenome [NCBITaxon:1260732]",
       "sample_collection_site": "Lithgow State Coal Mine"
     },
     {
-      "id": "nmdc:e924072f-98b5-4f88-a796-a7ba1d8ddd92",
+      "id": "nmdc:bsm-99-eBVHjN",
       "gold_biosample_identifiers": [
         "gold:Gb0101225"
       ],
@@ -152,10 +154,11 @@
       "location": "from the Lithgow State Coal Mine, New South Wales, Australia",
       "mod_date": "26-AUG-16 01.50.27.000000000 PM",
       "ncbi_taxonomy_name": "coal metagenome",
+      "samp_taxon_id": "coal metagenome [NCBITaxon:1260732]",
       "sample_collection_site": "Lithgow State Coal Mine"
     },
     {
-      "id": "nmdc:61c3332d-f654-4db8-8d2f-59475894daa5",
+      "id": "nmdc:bsm-99-TDPHTh",
       "gold_biosample_identifiers": [
         "gold:Gb0101226"
       ],
@@ -202,6 +205,7 @@
       "location": "from the Lithgow State Coal Mine, New South Wales, Australia",
       "mod_date": "26-AUG-16 01.50.27.000000000 PM",
       "ncbi_taxonomy_name": "coal metagenome",
+      "samp_taxon_id": "coal metagenome [NCBITaxon:1260732]",
       "sample_collection_site": "Lithgow State Coal Mine"
     }
   ]

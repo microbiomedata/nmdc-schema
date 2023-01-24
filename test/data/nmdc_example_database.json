@@ -1,7 +1,10 @@
 {
   "study_set": [
     {
-      "id": "gold:Gs0128849",
+      "id": "nmdc:sty-99-FkQIsc",
+      "gold_study_identifiers": [
+        "gold:Gs0128849"
+      ],
       "name": "Permafrost microbial communities from Stordalen Mire, Sweden",
       "description": "Thawing permafrost is one of the largest soil carbon pools on the planet. The goal of this project is to study microbial communities that participate in the soil carbon cycle.",
       "ecosystem": "Environmental",
@@ -18,7 +21,10 @@
       "type": "nmdc:Study"
     },
     {
-      "id": "gold:Gs0130354",
+      "id": "nmdc:sty-99-oJmAOs",
+      "gold_study_identifiers": [
+        "gold:Gs0130354"
+      ],
       "name": "Forest soil microbial communities from Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United States",
       "description": "The goal of this study is to learn the molecular mechanisms underlying changes in the temperature sensitive respiration response of forest soils to long-term experimental warming",
       "ecosystem": "Environmental",
@@ -35,7 +41,10 @@
       "type": "nmdc:Study"
     },
     {
-      "id": "gold:Gs0134277",
+      "id": "nmdc:sty-99-3bQQ4j",
+      "gold_study_identifiers": [
+        "gold:Gs0134277"
+      ],
       "name": "Rhizosphere microbial communities from Carex aquatilis grown in University of Washington, Seatle, WA, United States",
       "description": "The goal of this study is to advance understanding of the response of methane production and methane oxidation to changes in plant productivity so that modeled representations of these processes and interactions can be improved.",
       "ecosystem": "Host-associated",
@@ -54,7 +63,10 @@
   ],
   "omics_processing_set": [
     {
-      "id": "gold:Gp0225767",
+      "id": "nmdc:omprc-99-9XUVVF",
+      "alternative_identifiers": [
+        "gold:Gp0225767"
+      ],
       "name": "Forest soil microbial communities from Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O",
       "description": "Forest soil from Barre Woods Harvard Forest LTER site was incubated at 10C with heavy water. Sample is from a control plot at ambient soil temperature, organic horizon - top 4cm of soil",
       "has_input": [
@@ -76,7 +88,10 @@
       "type": "nmdc:OmicsProcessing"
     },
     {
-      "id": "gold:Gp0208560",
+      "id": "nmdc:omprc-99-dk9vgI",
+      "alternative_identifiers": [
+        "gold:Gp0208560"
+      ],
       "name": "Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG",
       "description": "Permafrost microbial communities from Stordalen Mire, Sweden",
       "has_input": [
@@ -98,7 +113,10 @@
       "type": "nmdc:OmicsProcessing"
     },
     {
-      "id": "gold:Gp0306221",
+      "id": "nmdc:omprc-99-MVW1FV",
+      "alternative_identifiers": [
+        "gold:Gp0306221"
+      ],
       "name": "Rhizosphere microbial communities from Carex aquatilis grown in University of Washington, Seatle, WA, United States - 4-1-23 metaG",
       "description": "Rhizosphere microbial communities from Carex aquatilis grown in submerged peat from a thermokarst bog, University of Washington, Seatle, WA, United States",
       "has_input": [
@@ -122,7 +140,7 @@
   ],
   "biosample_set": [
     {
-      "id": "nmdc:c6eb9f01-796b-4bd6-8ed4-74e221eed7c1",
+      "id": "nmdc:bsm-99-isqhuW",
       "gold_biosample_identifiers": [
         "gold:Gb0150408"
       ],
@@ -176,7 +194,7 @@
       "sample_collection_site": "Mire fen"
     },
     {
-      "id": "nmdc:87698d0e-13b5-488a-9324-53846a6e332d",
+      "id": "nmdc:bsm-99-dge3H9",
       "gold_biosample_identifiers": [
         "gold:Gb0157174"
       ],
@@ -230,7 +248,7 @@
       "sample_collection_site": "forest soil"
     },
     {
-      "id": "nmdc:9a4f0882-49b2-46ed-8951-0ee2ea019df7",
+      "id": "nmdc:bsm-99-dc6tg6",
       "gold_biosample_identifiers": [
         "gold:Gb0188037"
       ],
@@ -287,21 +305,21 @@
   ],
   "data_object_set": [
     {
-      "id": "jgi:58b653757ded5e7a2af951c4",
+      "id": "nmdc:dobj-99-dkJ8xX",
       "name": "11340.8.202049.GTCTCCT-AAGGAGA.fastq.gz",
       "description": "Raw sequencer read data",
       "file_size_bytes": 9208349052.0,
       "type": "nmdc:DataObject"
     },
     {
-      "id": "jgi:599c3a117ded5e41edd7da77",
+      "id": "nmdc:dobj-99-7zrm55",
       "name": "11839.4.222578.GAGCTCA-TTGAGCT.fastq.gz",
       "description": "Raw sequencer read data",
       "file_size_bytes": 34243309819.0,
       "type": "nmdc:DataObject"
     },
     {
-      "id": "jgi:5baa816646d1e63f764deb37",
+      "id": "nmdc:dobj-99-sQQw0I",
       "name": "12660.4.274923.GATCGTAC-GTACGATC.fastq.gz",
       "description": "Raw sequencer read data",
       "file_size_bytes": 7580035314.0,

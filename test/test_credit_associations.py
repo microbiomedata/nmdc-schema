@@ -23,7 +23,7 @@ class TestCA(unittest.TestCase):
         ca1 = CreditAssociation(applies_to_person=pv1, applied_roles=["Supervision", "Validation"])
         ca2 = CreditAssociation(applies_to_person=pv2, applied_roles=["Investigation"])
 
-        s = Study(id="abc")
+        s = Study(id="nmdc:sty-e3e05c16-8c9a-421e-ade5-cde4e5a435fa")
 
         # # why is schema loaded each time?
         validator.validate_object(ca1, target_class=CreditAssociation)
