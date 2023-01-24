@@ -14,7 +14,7 @@ notes:
 prefixes:
   nmdc: https://w3id.org/nmdc/
   mixs: https://w3id.org/mixs/
-  NCBITaxon: https://ontobee.org/ontology/NCBITaxon
+#  NCBITaxon: https://ontobee.org/ontology/NCBITaxon
 
 default_prefix: nmdc
 
@@ -6434,29 +6434,29 @@ slots:
     slot_uri: mixs:0000561
     multivalued: false
     range: QuantityValue
-#  horizon:
-#    name: horizon
-#    aliases:
-#      - horizon
-#    annotations:
-#      expected_value:
-#        tag: expected_value
-#        value: enumeration
-#      occurrence:
-#        tag: occurrence
-#        value: '1'
-#    description: Specific layer in the land area which measures parallel to the soil
-#      surface and possesses physical characteristics which differ from the layers
-#      above and beneath
-#    title: horizon
-#    from_schema: http://w3id.org/mixs/terms
-#    source: http://w3id.org/mixs/terms
-#    see_also:
-#      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-#    is_a: attribute
-#    slot_uri: mixs:0001082
-#    multivalued: false
-#    range: TextValue
+  #  horizon:
+  #    name: horizon
+  #    aliases:
+  #      - horizon
+  #    annotations:
+  #      expected_value:
+  #        tag: expected_value
+  #        value: enumeration
+  #      occurrence:
+  #        tag: occurrence
+  #        value: '1'
+  #    description: Specific layer in the land area which measures parallel to the soil
+  #      surface and possesses physical characteristics which differ from the layers
+  #      above and beneath
+  #    title: horizon
+  #    from_schema: http://w3id.org/mixs/terms
+  #    source: http://w3id.org/mixs/terms
+  #    see_also:
+  #      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
+  #    is_a: attribute
+  #    slot_uri: mixs:0001082
+  #    multivalued: false
+  #    range: TextValue
   horizon_meth:
     name: horizon_meth
     aliases:
@@ -7821,28 +7821,28 @@ slots:
     slot_uri: mixs:0000101
     multivalued: false
     range: QuantityValue
-#  micro_biomass_meth:
-#    name: micro_biomass_meth
-#    aliases:
-#      - microbial biomass method
-#    annotations:
-#      expected_value:
-#        tag: expected_value
-#        value: PMID,DOI or url
-#      occurrence:
-#        tag: occurrence
-#        value: '1'
-#    description: Reference or method used in determining microbial biomass
-#    title: microbial biomass method
-#    from_schema: http://w3id.org/mixs/terms
-#    source: http://w3id.org/mixs/terms
-#    see_also:
-#      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-#    is_a: core_field
-#    string_serialization: '{PMID}|{DOI}|{URL}'
-#    slot_uri: mixs:0000339
-#    multivalued: false
-#    range: string
+  #  micro_biomass_meth:
+  #    name: micro_biomass_meth
+  #    aliases:
+  #      - microbial biomass method
+  #    annotations:
+  #      expected_value:
+  #        tag: expected_value
+  #        value: PMID,DOI or url
+  #      occurrence:
+  #        tag: occurrence
+  #        value: '1'
+  #    description: Reference or method used in determining microbial biomass
+  #    title: microbial biomass method
+  #    from_schema: http://w3id.org/mixs/terms
+  #    source: http://w3id.org/mixs/terms
+  #    see_also:
+  #      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
+  #    is_a: core_field
+  #    string_serialization: '{PMID}|{DOI}|{URL}'
+  #    slot_uri: mixs:0000339
+  #    multivalued: false
+  #    range: string
   microbial_biomass:
     name: microbial_biomass
     aliases:
@@ -7869,28 +7869,28 @@ slots:
     slot_uri: mixs:0000650
     multivalued: false
     range: QuantityValue
-#  microbial_biomass_meth:
-#    name: microbial_biomass_meth
-#    aliases:
-#      - microbial biomass method
-#    annotations:
-#      expected_value:
-#        tag: expected_value
-#        value: PMID,DOI or url
-#      occurrence:
-#        tag: occurrence
-#        value: '1'
-#    description: Reference or method used in determining microbial biomass
-#    title: microbial biomass method
-#    from_schema: http://w3id.org/mixs/terms
-#    source: http://w3id.org/mixs/terms
-#    see_also:
-#      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-#    is_a: attribute
-#    string_serialization: '{PMID|DOI|URL}'
-#    slot_uri: mixs:0000339
-#    multivalued: false
-#    range: TextValue
+  #  microbial_biomass_meth:
+  #    name: microbial_biomass_meth
+  #    aliases:
+  #      - microbial biomass method
+  #    annotations:
+  #      expected_value:
+  #        tag: expected_value
+  #        value: PMID,DOI or url
+  #      occurrence:
+  #        tag: occurrence
+  #        value: '1'
+  #    description: Reference or method used in determining microbial biomass
+  #    title: microbial biomass method
+  #    from_schema: http://w3id.org/mixs/terms
+  #    source: http://w3id.org/mixs/terms
+  #    see_also:
+  #      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
+  #    is_a: attribute
+  #    string_serialization: '{PMID|DOI|URL}'
+  #    slot_uri: mixs:0000339
+  #    multivalued: false
+  #    range: TextValue
   mineral_nutr_regm:
     name: mineral_nutr_regm
     aliases:
@@ -9225,28 +9225,28 @@ slots:
     slot_uri: mixs:0000412
     multivalued: false
     range: QuantityValue
-#  prev_land_use_meth:
-#    name: prev_land_use_meth
-#    aliases:
-#      - history/previous land use method
-#    annotations:
-#      expected_value:
-#        tag: expected_value
-#        value: PMID,DOI or url
-#      occurrence:
-#        tag: occurrence
-#        value: '1'
-#    description: Reference or method used in determining previous land use and dates
-#    title: history/previous land use method
-#    from_schema: http://w3id.org/mixs/terms
-#    source: http://w3id.org/mixs/terms
-#    see_also:
-#      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-#    is_a: core_field
-#    string_serialization: '{PMID}|{DOI}|{URL}'
-#    slot_uri: mixs:0000316
-#    multivalued: false
-#    range: string
+  #  prev_land_use_meth:
+  #    name: prev_land_use_meth
+  #    aliases:
+  #      - history/previous land use method
+  #    annotations:
+  #      expected_value:
+  #        tag: expected_value
+  #        value: PMID,DOI or url
+  #      occurrence:
+  #        tag: occurrence
+  #        value: '1'
+  #    description: Reference or method used in determining previous land use and dates
+  #    title: history/previous land use method
+  #    from_schema: http://w3id.org/mixs/terms
+  #    source: http://w3id.org/mixs/terms
+  #    see_also:
+  #      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
+  #    is_a: core_field
+  #    string_serialization: '{PMID}|{DOI}|{URL}'
+  #    slot_uri: mixs:0000316
+  #    multivalued: false
+  #    range: string
   previous_land_use:
     name: previous_land_use
     aliases:
@@ -9269,28 +9269,28 @@ slots:
     slot_uri: mixs:0000315
     multivalued: false
     range: TextValue
-#  previous_land_use_meth:
-#    name: previous_land_use_meth
-#    aliases:
-#      - history/previous land use method
-#    annotations:
-#      expected_value:
-#        tag: expected_value
-#        value: PMID,DOI or url
-#      occurrence:
-#        tag: occurrence
-#        value: '1'
-#    description: Reference or method used in determining previous land use and dates
-#    title: history/previous land use method
-#    from_schema: http://w3id.org/mixs/terms
-#    source: http://w3id.org/mixs/terms
-#    see_also:
-#      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-#    is_a: attribute
-#    string_serialization: '{PMID|DOI|URL}'
-#    slot_uri: mixs:0000316
-#    multivalued: false
-#    range: TextValue
+  #  previous_land_use_meth:
+  #    name: previous_land_use_meth
+  #    aliases:
+  #      - history/previous land use method
+  #    annotations:
+  #      expected_value:
+  #        tag: expected_value
+  #        value: PMID,DOI or url
+  #      occurrence:
+  #        tag: occurrence
+  #        value: '1'
+  #    description: Reference or method used in determining previous land use and dates
+  #    title: history/previous land use method
+  #    from_schema: http://w3id.org/mixs/terms
+  #    source: http://w3id.org/mixs/terms
+  #    see_also:
+  #      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
+  #    is_a: attribute
+  #    string_serialization: '{PMID|DOI|URL}'
+  #    slot_uri: mixs:0000316
+  #    multivalued: false
+  #    range: TextValue
   primary_prod:
     name: primary_prod
     aliases:
@@ -10436,29 +10436,29 @@ slots:
     slot_uri: mixs:0000860
     multivalued: false
     range: TextValue
-#  samp_collec_device:
-#    name: samp_collec_device
-#    aliases:
-#      - sample collection device
-#    annotations:
-#      expected_value:
-#        tag: expected_value
-#        value: device name
-#    description: The device used to collect an environmental sample. This field accepts
-#      terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO).
-#      This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094).
-#    title: sample collection device
-#    examples:
-#      - value: swab, biopsy, niskin bottle, push core, drag swab [GENEPIO:0002713]
-#    from_schema: http://w3id.org/mixs/terms
-#    source: http://w3id.org/mixs/terms
-#    see_also:
-#      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-#    is_a: nucleic_acid_sequence_source_field
-#    string_serialization: '{termLabel} {[termID]}|{text}'
-#    slot_uri: mixs:0000002
-#    multivalued: false
-#    range: string
+  #  samp_collec_device:
+  #    name: samp_collec_device
+  #    aliases:
+  #      - sample collection device
+  #    annotations:
+  #      expected_value:
+  #        tag: expected_value
+  #        value: device name
+  #    description: The device used to collect an environmental sample. This field accepts
+  #      terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO).
+  #      This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094).
+  #    title: sample collection device
+  #    examples:
+  #      - value: swab, biopsy, niskin bottle, push core, drag swab [GENEPIO:0002713]
+  #    from_schema: http://w3id.org/mixs/terms
+  #    source: http://w3id.org/mixs/terms
+  #    see_also:
+  #      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
+  #    is_a: nucleic_acid_sequence_source_field
+  #    string_serialization: '{termLabel} {[termID]}|{text}'
+  #    slot_uri: mixs:0000002
+  #    multivalued: false
+  #    range: string
   samp_collec_method:
     name: samp_collec_method
     aliases:
@@ -10480,32 +10480,32 @@ slots:
     slot_uri: mixs:0001225
     multivalued: false
     range: string
-#  samp_collect_device:
-#    name: samp_collect_device
-#    aliases:
-#      - sample collection device
-#    annotations:
-#      expected_value:
-#        tag: expected_value
-#        value: device name
-#      occurrence:
-#        tag: occurrence
-#        value: '1'
-#    description: The device used to collect an environmental sample. This field accepts
-#      terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO).
-#      This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094).
-#    title: sample collection device
-#    examples:
-#      - value: swab, biopsy, niskin bottle, push core, drag swab [GENEPIO:0002713]
-#    from_schema: http://w3id.org/mixs/terms
-#    source: http://w3id.org/mixs/terms
-#    see_also:
-#      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-#    is_a: attribute
-#    string_serialization: '{termLabel} {[termID]}|{text}'
-#    slot_uri: mixs:0000002
-#    multivalued: false
-#    range: TextValue
+  #  samp_collect_device:
+  #    name: samp_collect_device
+  #    aliases:
+  #      - sample collection device
+  #    annotations:
+  #      expected_value:
+  #        tag: expected_value
+  #        value: device name
+  #      occurrence:
+  #        tag: occurrence
+  #        value: '1'
+  #    description: The device used to collect an environmental sample. This field accepts
+  #      terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO).
+  #      This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094).
+  #    title: sample collection device
+  #    examples:
+  #      - value: swab, biopsy, niskin bottle, push core, drag swab [GENEPIO:0002713]
+  #    from_schema: http://w3id.org/mixs/terms
+  #    source: http://w3id.org/mixs/terms
+  #    see_also:
+  #      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
+  #    is_a: attribute
+  #    string_serialization: '{termLabel} {[termID]}|{text}'
+  #    slot_uri: mixs:0000002
+  #    multivalued: false
+  #    range: TextValue
   samp_collect_point:
     name: samp_collect_point
     aliases:
@@ -10889,18 +10889,18 @@ slots:
   samp_taxon_id:
     is_a: investigation field
     title: Taxonomy ID of DNA sample
-    description: NCBI taxon id of the sample. May be a single taxon or mixed taxa 
-      sample. Use 'synthetic metagenome' for mock community/positive controls, 
+    description: NCBI taxon id of the sample. May be a single taxon or mixed taxa
+      sample. Use 'synthetic metagenome' for mock community/positive controls,
       or 'blank sample' for negative controls.
     range: string
     multivalued: false
     examples:
-    - value: soil metagenome [NCBITaxon:410658]
-    comments: []
+      - value: soil metagenome [NCBITaxon:410658]
+    comments: [ ]
     todos:
-    - "structured pattern: {text} [NCBITaxon:{integer}]"
+      - "structured pattern: {text} [NCBITaxon:{integer}]"
     aliases:
-    - Taxonomy ID of DNA sample
+      - Taxonomy ID of DNA sample
     annotations:
       expected_value: Taxonomy ID
     slot_uri: mixs:0001320
@@ -11695,77 +11695,77 @@ slots:
     slot_uri: mixs:0000428
     multivalued: false
     range: QuantityValue
-#  soil_horizon:
-#    name: soil_horizon
-#    aliases:
-#      - soil horizon
-#    annotations:
-#      expected_value:
-#        tag: expected_value
-#        value: enumeration
-#      occurrence:
-#        tag: occurrence
-#        value: '1'
-#    description: Specific layer in the land area which measures parallel to the soil
-#      surface and possesses physical characteristics which differ from the layers
-#      above and beneath
-#    title: soil horizon
-#    examples:
-#      - value: A horizon
-#    from_schema: http://w3id.org/mixs/terms
-#    source: http://w3id.org/mixs/terms
-#    see_also:
-#      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-#    is_a: core_field
-#    slot_uri: mixs:0001082
-#    multivalued: false
-#    range: soil_horizon_enum
-#  soil_text_measure:
-#    name: soil_text_measure
-#    aliases:
-#      - soil texture measurement
-#    annotations:
-#      expected_value:
-#        tag: expected_value
-#        value: measurement value
-#      occurrence:
-#        tag: occurrence
-#        value: '1'
-#    description: The relative proportion of different grain sizes of mineral particles
-#      in a soil, as described using a standard system; express as % sand (50 um to
-#      2 mm), silt (2 um to 50 um), and clay (<2 um) with textural name (e.g., silty
-#      clay loam) optional.
-#    title: soil texture measurement
-#    from_schema: http://w3id.org/mixs/terms
-#    source: http://w3id.org/mixs/terms
-#    see_also:
-#      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-#    is_a: core_field
-#    slot_uri: mixs:0000335
-#    multivalued: false
-#    range: QuantityValue
-#  soil_texture_meth:
-#    name: soil_texture_meth
-#    aliases:
-#      - soil texture method
-#    annotations:
-#      expected_value:
-#        tag: expected_value
-#        value: PMID,DOI or url
-#      occurrence:
-#        tag: occurrence
-#        value: '1'
-#    description: Reference or method used in determining soil texture
-#    title: soil texture method
-#    from_schema: http://w3id.org/mixs/terms
-#    source: http://w3id.org/mixs/terms
-#    see_also:
-#      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-#    is_a: core_field
-#    string_serialization: '{PMID}|{DOI}|{URL}'
-#    slot_uri: mixs:0000336
-#    multivalued: false
-#    range: string
+  #  soil_horizon:
+  #    name: soil_horizon
+  #    aliases:
+  #      - soil horizon
+  #    annotations:
+  #      expected_value:
+  #        tag: expected_value
+  #        value: enumeration
+  #      occurrence:
+  #        tag: occurrence
+  #        value: '1'
+  #    description: Specific layer in the land area which measures parallel to the soil
+  #      surface and possesses physical characteristics which differ from the layers
+  #      above and beneath
+  #    title: soil horizon
+  #    examples:
+  #      - value: A horizon
+  #    from_schema: http://w3id.org/mixs/terms
+  #    source: http://w3id.org/mixs/terms
+  #    see_also:
+  #      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
+  #    is_a: core_field
+  #    slot_uri: mixs:0001082
+  #    multivalued: false
+  #    range: soil_horizon_enum
+  #  soil_text_measure:
+  #    name: soil_text_measure
+  #    aliases:
+  #      - soil texture measurement
+  #    annotations:
+  #      expected_value:
+  #        tag: expected_value
+  #        value: measurement value
+  #      occurrence:
+  #        tag: occurrence
+  #        value: '1'
+  #    description: The relative proportion of different grain sizes of mineral particles
+  #      in a soil, as described using a standard system; express as % sand (50 um to
+  #      2 mm), silt (2 um to 50 um), and clay (<2 um) with textural name (e.g., silty
+  #      clay loam) optional.
+  #    title: soil texture measurement
+  #    from_schema: http://w3id.org/mixs/terms
+  #    source: http://w3id.org/mixs/terms
+  #    see_also:
+  #      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
+  #    is_a: core_field
+  #    slot_uri: mixs:0000335
+  #    multivalued: false
+  #    range: QuantityValue
+  #  soil_texture_meth:
+  #    name: soil_texture_meth
+  #    aliases:
+  #      - soil texture method
+  #    annotations:
+  #      expected_value:
+  #        tag: expected_value
+  #        value: PMID,DOI or url
+  #      occurrence:
+  #        tag: occurrence
+  #        value: '1'
+  #    description: Reference or method used in determining soil texture
+  #    title: soil texture method
+  #    from_schema: http://w3id.org/mixs/terms
+  #    source: http://w3id.org/mixs/terms
+  #    see_also:
+  #      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
+  #    is_a: core_field
+  #    string_serialization: '{PMID}|{DOI}|{URL}'
+  #    slot_uri: mixs:0000336
+  #    multivalued: false
+  #    range: string
   soil_type:
     name: soil_type
     aliases:
@@ -12623,52 +12623,52 @@ slots:
     slot_uri: mixs:0000352
     multivalued: false
     range: TextValue
-#  texture:
-#    name: texture
-#    aliases:
-#      - texture
-#    annotations:
-#      expected_value:
-#        tag: expected_value
-#        value: measurement value
-#      occurrence:
-#        tag: occurrence
-#        value: '1'
-#    description: The relative proportion of different grain sizes of mineral particles
-#      in a soil, as described using a standard system; express as % sand (50 um to
-#      2 mm), silt (2 um to 50 um), and clay (<2 um) with textural name (e.g., silty
-#      clay loam) optional.
-#    title: texture
-#    from_schema: http://w3id.org/mixs/terms
-#    source: http://w3id.org/mixs/terms
-#    see_also:
-#      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-#    is_a: attribute
-#    slot_uri: mixs:0000335
-#    multivalued: false
-#    range: QuantityValue
-#  texture_meth:
-#    name: texture_meth
-#    aliases:
-#      - texture method
-#    annotations:
-#      expected_value:
-#        tag: expected_value
-#        value: PMID,DOI or url
-#      occurrence:
-#        tag: occurrence
-#        value: '1'
-#    description: Reference or method used in determining soil texture.
-#    title: texture method
-#    from_schema: http://w3id.org/mixs/terms
-#    source: http://w3id.org/mixs/terms
-#    see_also:
-#      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-#    is_a: attribute
-#    string_serialization: '{PMID}|{DOI}|{URL}'
-#    slot_uri: mixs:0000336
-#    multivalued: false
-#    range: TextValue
+  #  texture:
+  #    name: texture
+  #    aliases:
+  #      - texture
+  #    annotations:
+  #      expected_value:
+  #        tag: expected_value
+  #        value: measurement value
+  #      occurrence:
+  #        tag: occurrence
+  #        value: '1'
+  #    description: The relative proportion of different grain sizes of mineral particles
+  #      in a soil, as described using a standard system; express as % sand (50 um to
+  #      2 mm), silt (2 um to 50 um), and clay (<2 um) with textural name (e.g., silty
+  #      clay loam) optional.
+  #    title: texture
+  #    from_schema: http://w3id.org/mixs/terms
+  #    source: http://w3id.org/mixs/terms
+  #    see_also:
+  #      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
+  #    is_a: attribute
+  #    slot_uri: mixs:0000335
+  #    multivalued: false
+  #    range: QuantityValue
+  #  texture_meth:
+  #    name: texture_meth
+  #    aliases:
+  #      - texture method
+  #    annotations:
+  #      expected_value:
+  #        tag: expected_value
+  #        value: PMID,DOI or url
+  #      occurrence:
+  #        tag: occurrence
+  #        value: '1'
+  #    description: Reference or method used in determining soil texture.
+  #    title: texture method
+  #    from_schema: http://w3id.org/mixs/terms
+  #    source: http://w3id.org/mixs/terms
+  #    see_also:
+  #      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
+  #    is_a: attribute
+  #    string_serialization: '{PMID}|{DOI}|{URL}'
+  #    slot_uri: mixs:0000336
+  #    multivalued: false
+  #    range: TextValue
   tidal_stage:
     name: tidal_stage
     aliases:
