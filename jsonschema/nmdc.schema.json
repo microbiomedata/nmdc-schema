@@ -154,11 +154,11 @@
                 },
                 "al_sat": {
                     "$ref": "#/$defs/QuantityValue",
-                    "description": "Aluminum saturation (esp. For tropical soils)"
+                    "description": "The relative abundance of aluminum in the sample"
                 },
                 "al_sat_meth": {
                     "$ref": "#/$defs/TextValue",
-                    "description": "Reference or method used in determining Al saturation"
+                    "description": "Reference or method used in determining Aluminum saturation"
                 },
                 "alkalinity": {
                     "$ref": "#/$defs/QuantityValue",
@@ -482,12 +482,13 @@
                     "type": "string"
                 },
                 "fire": {
-                    "$ref": "#/$defs/TimestampValue",
-                    "description": "Historical and/or physical evidence of fire"
+                    "description": "Historical and/or physical evidence of fire",
+                    "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?(\\s+to\\s+[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?)?$",
+                    "type": "string"
                 },
                 "flooding": {
-                    "$ref": "#/$defs/TimestampValue",
-                    "description": "Historical and/or physical evidence of flooding"
+                    "description": "Historical and/or physical evidence of flooding",
+                    "type": "string"
                 },
                 "gaseous_environment": {
                     "$ref": "#/$defs/QuantityValue",
@@ -517,12 +518,18 @@
                     "type": "string"
                 },
                 "heavy_metals": {
-                    "$ref": "#/$defs/QuantityValue",
-                    "description": "Heavy metals present in the sequenced sample and their concentrations. For multiple heavy metals and concentrations, add multiple copies of this field."
+                    "description": "Heavy metals present in the sample and their concentrations.",
+                    "items": {
+                        "$ref": "#/$defs/QuantityValue"
+                    },
+                    "type": "array"
                 },
                 "heavy_metals_meth": {
-                    "$ref": "#/$defs/TextValue",
-                    "description": "Reference or method used in determining heavy metals"
+                    "description": "Reference or method used in determining heavy metals",
+                    "items": {
+                        "$ref": "#/$defs/TextValue"
+                    },
+                    "type": "array"
                 },
                 "host_name": {
                     "type": "string"
@@ -618,7 +625,7 @@
                     "description": "Measurement of mean peak friction velocity"
                 },
                 "micro_biomass_c_meth": {
-                    "description": "Reference or method used in determining microbial biomass",
+                    "description": "Reference or method used in determining microbial biomass carbon",
                     "type": "string"
                 },
                 "micro_biomass_n_meth": {
@@ -626,11 +633,11 @@
                     "type": "string"
                 },
                 "microbial_biomass_c": {
-                    "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units",
+                    "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer.",
                     "type": "string"
                 },
                 "microbial_biomass_n": {
-                    "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units",
+                    "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer.",
                     "type": "string"
                 },
                 "misc_param": {
@@ -903,7 +910,7 @@
                     "type": "array"
                 },
                 "sample_shipped": {
-                    "description": "The total amount or size (volume (ml), mass (g) or area (m2) ) of sample sent to EMSL",
+                    "description": "The total amount or size (volume (ml), mass (g) or area (m2) ) of sample sent to EMSL.",
                     "type": "string"
                 },
                 "sample_type": {
@@ -932,7 +939,7 @@
                 },
                 "slope_aspect": {
                     "$ref": "#/$defs/QuantityValue",
-                    "description": "The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees); e.g., nw or 315 degrees. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration."
+                    "description": "The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees). - This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration."
                 },
                 "slope_gradient": {
                     "$ref": "#/$defs/QuantityValue",
@@ -985,7 +992,7 @@
                     "description": "Concentration of sulfide in the sample"
                 },
                 "technical_reps": {
-                    "description": "If sending multiple technical replicates of the same sample, indicate how many replicates are being sent",
+                    "description": "If sending technical replicates of the same sample, indicate the replicate count.",
                     "type": "string"
                 },
                 "temp": {
@@ -1041,8 +1048,11 @@
                     "type": "string"
                 },
                 "water_content": {
-                    "$ref": "#/$defs/QuantityValue",
-                    "description": "Water content measurement"
+                    "description": "Water content measurement",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "watering_regm": {
                     "$ref": "#/$defs/QuantityValue",

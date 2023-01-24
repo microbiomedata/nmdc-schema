@@ -249,7 +249,8 @@ SCHEMA_TEST_EXAMPLES := \
 	nmdc_example_database \
 	samp_prep_db \
 	study_credit_test \
-	study_test
+	study_test \
+	minimal_valid_biosample_with_fire
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
 	biosample_incomplete_napa_id \
@@ -258,7 +259,8 @@ SCHEMA_TEST_EXAMPLES_INVALID := \
 	biosample_missing_required_field \
 	biosample_single_multi_value_mixup \
 	biosample_undeclared_slot \
-	study_credit_enum_mangle
+	study_credit_enum_mangle \
+	minimal_biosample_invalid_fire
 
 # 	functional_annotation_set_invalid has invalid ID pattern but regex tests aren't applied yet? MAM 2021-06-24
 
