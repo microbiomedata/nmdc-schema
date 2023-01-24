@@ -118,6 +118,49 @@ subsets:
 
 classes:
 
+  # don't get stuck with slots and classes whose names are only different in terms of capitalization
+
+  StudyForm: { }
+  SampleData: { }
+  PackageName: { }
+  MultiOmicsForm: { }
+
+  User:
+    description: >-
+      A person, in the context of interacting with the Submission Portal
+    comments:
+      - Presumably similar to Person or PersonValue
+      - id, name and orcid are already defined in nmdc.yaml, but maybe the range or domain will need to be broadened or constrained?
+    slots:
+      - id
+      - orcid
+      - name
+      - is_admin
+
+
+  MetadataSubmission:
+    slots:
+      - template
+      - studyForm
+      - sampleData
+      - packageName
+      - multiOmicsForm
+
+
+  SubmissionMetadata:
+    description: >-
+      A submission of Study and Biosample metadata from the nmdc-server/Submission Portal.
+    see_also:
+      - https://github.com/microbiomedata/nmdc-server/blob/main/nmdc_server/models.py#L824-L834
+    slots:
+      - id
+      - author_orcid
+      - created
+      - status
+      - metadata_submission
+      - author_id
+      - author
+
   Database:
     tree_root: true
     aliases:
@@ -1006,6 +1049,64 @@ enums:
           - replaces Environmental Molecular Sciences Lab
 
 slots:
+
+  template:
+    range: string
+    comments:
+      - Currently this holds a string like "soil", "soil_jgi_mg", "air", etc that is the name of a
+        class in the submission schema. There is in-progress work in the submission portal
+        that may change to an array of class names instead.
+  studyForm:
+    range: StudyForm
+  sampleData:
+    range: SampleData
+  packageName:
+    range: PackageName
+  multiOmicsForm:
+    range: MultiOmicsForm
+
+  is_admin:
+    range: boolean
+
+  author_orcid:
+    description: Column(String, nullable=False)
+    range: string
+    todos:
+      - add a validation pattern
+      - make required?
+      - might be similar to ???
+  created:
+    description: Column(DateTime, nullable=False, default=datetime.utcnow)
+    todos:
+      - add a validation type
+      - make required?
+      - might be similar to ???
+  status:
+    description: Column(String, nullable=False, default="in-progress")
+    range: string
+    todos:
+      - add a validation pattern
+      - make required?
+      - might be similar to ???
+  metadata_submission:
+    description: Column(JSONB, nullable=False)
+    range: MetadataSubmission
+    todos:
+      - make required?
+      - might be similar to ???
+  author_id:
+    description: Column(UUID(as_uuid=True), ForeignKey(User.id))
+    range: string
+    todos:
+      - add a validation pattern
+      - make required?
+      - might be similar to ???
+  author:
+    description: relationship("User")
+    todos:
+      - add a range
+      - make required?
+      - might be similar to ???
 
   collected_from:
     description: The Site from which a Biosample was collected
