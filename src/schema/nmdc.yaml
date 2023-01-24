@@ -673,22 +673,22 @@ classes:
           - Soil water content can be measure MANY ways and often, multiple ways are used in one experiment (gravimetric water content and water holding capacity and water filled pore space, to name a few).
           - Should this be multi valued? How to we manage and validate this?
       water_content:
-#        annotations:
-#          expected_value:
-#            tag: expected_value
-#            value: string
-#          preferred_unit:
-#            tag: preferred_unit
-#            #value: gram per gram or cubic centimeter per cubic centimeter
-#        #multivalued: true
+        annotations:
+          expected_value:
+            tag: expected_value
+            value: string
+          preferred_unit:
+            tag: preferred_unit
+            value: gram per gram or cubic centimeter per cubic centimeter
+        multivalued: true
         range: string
-#        examples:
-#          - value: 75%
-#          - value: 75 %
-#          - value: 0.75 g water/g dry soil
-#          - value: 75% water holding capacity
-#          - value: 1.1 g fresh weight/ dry weight
-#          - value: 10% water filled pore space
+        examples:
+          - value: 75%
+          - value: 75 %
+          - value: 0.75 g water/g dry soil
+          - value: 75% water holding capacity
+          - value: 1.1 g fresh weight/ dry weight
+          - value: 10% water filled pore space
         todos:
           - value in preferred unit is too limiting. need to change this
           - check and correct validation so examples are accepted
@@ -720,7 +720,7 @@ classes:
         examples:
           - value: 5 mg N/ L
         todos:
-         - check description. How are they different?
+          - check description. How are they different?
       salinity_meth:
         examples:
           - value: https://doi.org/10.1007/978-1-61779-986-0_28
