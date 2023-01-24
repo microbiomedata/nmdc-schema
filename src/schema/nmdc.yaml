@@ -536,6 +536,7 @@ classes:
             tag: expected_value
             value: date string
         range: string
+        pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$
       flooding:
         annotations:
           expected_value:

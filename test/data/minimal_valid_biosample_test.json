@@ -1,0 +1,32 @@
+// 20230124150223
+// https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/test/data/minimal_valid_biosample_test.json
+
+{
+  "biosample_set": [
+    {
+      "id": "nmdc:bsm-99-dtTMNb",
+      "fire": "1871-10-01 to 1871-10-31",
+      "part_of": [
+        "gold:Gs0110115"
+      ],
+      "env_broad_scale": {
+        "has_raw_value": "ENVO:00002030",
+        "term": {
+          "id": "ENVO:00002030"
+        }
+      },
+      "env_local_scale": {
+        "has_raw_value": "ENVO:00002169",
+        "term": {
+          "id": "ENVO:00002169"
+        }
+      },
+      "env_medium": {
+        "has_raw_value": "ENVO:00005792",
+        "term": {
+          "id": "ENVO:00005792"
+        }
+      }
+    }
+  ]
+}
