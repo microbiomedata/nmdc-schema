@@ -42,7 +42,6 @@ imports:
 subsets:
   environment: { }
   investigation: { }
-  mixs extension: { }
   nucleic acid sequence source: { }
   sequencing: { }
   soil: { }

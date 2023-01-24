@@ -7,14 +7,22 @@ default_range: string
 imports:
   - basic_slots
 
-notes:
-  - "commented out sever MIxS terms/slots that were sharing slot uris"
+subsets:
+  mixs_environmental_triad:
+    title: MIxS Environmental Triad
+  mixs extension: { }
 
+notes:
+  - "commented out several MIxS terms/slots that were sharing slot uris"
+  - "attempts have been made to automate the maintenance of this file, but it is essentially hand-curated"
+  - note that the NMDC submission schema in sheets_and_friends takes its MIxS terms from
+    https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml
+    and then potentially modifies them. Ideally this file would contain MIxS terms, essentially ready-to-use
+  - yet another source of MIxS terms is the incomplete https://github.com/GenomicsStandardsConsortium/mixs/tree/issue-511-tested-schemasheets
 
 prefixes:
   nmdc: https://w3id.org/nmdc/
   mixs: https://w3id.org/mixs/
-#  NCBITaxon: https://ontobee.org/ontology/NCBITaxon
 
 default_prefix: nmdc
 
@@ -4970,6 +4978,8 @@ slots:
     multivalued: false
     range: QuantityValue
   env_broad_scale:
+    in_subset:
+      - mixs_environmental_triad
     name: env_broad_scale
     aliases:
       - broad-scale environmental context
@@ -4998,6 +5008,8 @@ slots:
     multivalued: false
     range: ControlledIdentifiedTermValue
   env_local_scale:
+    in_subset:
+      - mixs_environmental_triad
     name: env_local_scale
     aliases:
       - local environmental context
@@ -5028,6 +5040,8 @@ slots:
     multivalued: false
     range: ControlledIdentifiedTermValue
   env_medium:
+    in_subset:
+      - mixs_environmental_triad
     name: env_medium
     aliases:
       - environmental medium
