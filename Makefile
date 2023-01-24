@@ -237,20 +237,22 @@ delete-poetry-env:
 # datasets used test/validate the schema
 #
 SCHEMA_TEST_EXAMPLES := \
-	MAGs_activity \
 	biosample_test \
 	biosamples_to_sites \
 	functional_annotation_set \
 	gold_project_test \
 	img_mg_annotation_objects \
+	MAGs_activity \
 	mg_assembly_activities_test \
 	mg_assembly_data_objects_test \
-	nmdc_example_database \
+	minimal_valid_biosample_test \
+	minimal_valid_biosample_with_fire \
+	minimal_valid_embargoed_biosample_test \
 	nmdc_example_database \
 	samp_prep_db \
 	study_credit_test \
-	study_test \
-	minimal_valid_biosample_with_fire
+	study_test
+
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
 	biosample_incomplete_napa_id \
@@ -259,8 +261,11 @@ SCHEMA_TEST_EXAMPLES_INVALID := \
 	biosample_missing_required_field \
 	biosample_single_multi_value_mixup \
 	biosample_undeclared_slot \
-	study_credit_enum_mangle \
-	minimal_biosample_invalid_fire
+	functional_annotation_set_invalid \
+	invalid_study_test \
+	minimal_biosample_invalid_fire \
+	minimal_non_boolean_embargoed_biosample_test \
+	study_credit_enum_mangle
 
 # 	functional_annotation_set_invalid has invalid ID pattern but regex tests aren't applied yet? MAM 2021-06-24
 
