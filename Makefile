@@ -249,7 +249,8 @@ SCHEMA_TEST_EXAMPLES := \
 	nmdc_example_database \
 	samp_prep_db \
 	study_credit_test \
-	study_test
+	study_test \
+	minimal_valid_plate_biosample_test
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
 	biosample_incomplete_napa_id \

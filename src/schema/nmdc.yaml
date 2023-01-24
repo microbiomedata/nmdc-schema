@@ -237,15 +237,28 @@ classes:
 
   Biosample:
     rules:
-      - preconditions:
+      - description: Samples in tubes can't have a plate position.
+          But plate_position currently does have to be asserted as an empty string.
+          Can't be null, None, un-asserted,etc.
+          Had wanted to use value_present, but that may not be implemented in the linkml-runtime yet.
+        preconditions:
           slot_conditions:
-            yval:
-              equals_number: 7
+            dna_cont_type:
+              equals_string: tube
         postconditions:
           slot_conditions:
-            xval:
-              minimum_value: 111
-        description: if yval is 7, xval must be 11
+            dna_cont_well:
+              none_of:
+                pattern: ".+"
+      - description: Samples in plates must have a plate position that matches the regex
+        preconditions:
+          slot_conditions:
+            dna_cont_type:
+              equals_string: plate
+        postconditions:
+          slot_conditions:
+            dna_cont_well:
+              pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
 
     is_a: MaterialEntity
     in_subset:
