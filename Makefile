@@ -251,7 +251,6 @@ SCHEMA_TEST_EXAMPLES := \
 	study_credit_test \
 	study_test \
 	minimal_valid_biosample_test.json \
-	minimal_valid_biosample_with_uriorcurie_test.json \
 	minimal_valid_embargoed_biosample_test.json
 
 SCHEMA_TEST_EXAMPLES_INVALID := \
