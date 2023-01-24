@@ -94,7 +94,7 @@ slots:
     recommended: true
   technical_reps:
     name: technical_reps
-    description: If sending technical replicates of the same sample, indicate the replicate number.
+    description: If sending technical replicates of the same sample, indicate the replicate count.
     title: number technical replicate
     examples:
       - value: 2

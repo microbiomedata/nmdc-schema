@@ -1,6 +1,3 @@
-// 20230124150223
-// https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/test/data/minimal_valid_biosample_test.json
-
 {
   "biosample_set": [
     {
