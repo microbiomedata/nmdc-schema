@@ -1,0 +1,117 @@
+{
+    "$defs": {
+        "Biosample": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "dna_cont_type": {
+                    "$ref": "#/$defs/DnaContTypeEnum"
+                },
+                "dna_cont_well": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "dna_cont_type"
+            ],
+            "title": "Biosample",
+            "type": "object"
+        },
+        "Database": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "biosample_set": {
+                    "items": {
+                        "$ref": "#/$defs/Biosample"
+                    },
+                    "type": "array"
+                }
+            },
+            "title": "Database",
+            "type": "object"
+        },
+        "DnaContTypeEnum": {
+            "description": "",
+            "enum": [
+                "plate",
+                "tube"
+            ],
+            "title": "DnaContTypeEnum",
+            "type": "string"
+        }
+    },
+    "$id": "http://example.com/well_plate",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "allOf": [
+        {
+            "if": {
+                "properties": {
+                    "dna_cont_type": {
+                        "const": "plate"
+                    }
+                },
+                "required": [
+                    "dna_cont_type"
+                ]
+            },
+            "then": {
+                "properties": {
+                    "dna_cont_well": {
+                        "const": "C2"
+                    }
+                },
+                "required": [
+                    "dna_cont_well"
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "dna_cont_type": {
+                        "const": "tube"
+                    }
+                },
+                "required": [
+                    "dna_cont_type"
+                ]
+            },
+            "then": {
+                "properties": {
+                    "dna_cont_well": {
+                        "not": {
+                            "anyOf": [
+                                {
+                                    "pattern": ".+"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "dna_cont_well"
+                ]
+            }
+        }
+    ],
+    "metamodel_version": "1.7.0",
+    "properties": {
+        "biosample_set": {
+            "items": {
+                "$ref": "#/$defs/Biosample"
+            },
+            "type": "array"
+        }
+    },
+    "title": "well_plate",
+    "type": "object",
+    "version": null
+}

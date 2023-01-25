@@ -1,0 +1,9 @@
+biosample_set:
+  - id: a:1
+    name: a1
+    dna_cont_type: tube
+    dna_cont_well: C2
+  - id: a:2
+    name: a2
+    dna_cont_type: tube
+    dna_cont_well: C3
