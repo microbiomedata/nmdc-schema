@@ -1,7 +1,6 @@
 id: https://microbiomedata/schema
 name: NMDC
 title: NMDC Schema
-
 notes:
   - "MetaCyc expansion assumes we're talking about metacyc reactions and not genes, compounds etc."
   - "removed/commented out the comfusing 'identifier' slot"
@@ -12,20 +11,20 @@ notes:
   - "commented out insdc_biosample_identifiers insdc_secondary_sample_identifiers... need better understanding of id patterns (at least)"
   - "commented out several MIxS terms assigned to Biosample because the definitions of those terms were commented out in mixs.yaml dues to shared slot uris"
   - "resuming use of part_of to link Biosamples to Studies. eg releasing sample_link from that role"
-
-
 description: >-
   Schema for National Microbiome Data Collaborative (NMDC).
-  
+
   This schema is organized into distinct modules:
-  
+
+
+
+
    * a set of core types for representing data values
    * the mixs schema (auto-translated from mixs excel)
    * annotation schema
    * the NMDC schema itself
-
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: 7.0.0
+version: v7.2.0-28-g5384989c
 prefixes:
   COG: https://unknown.to.linter.org/
   EC: https://unknown.to.linter.org/
@@ -60,21 +59,16 @@ prefixes:
   skos: http://www.w3.org/2004/02/skos/core#
   wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
   xsd: http://www.w3.org/2001/XMLSchema#
-
-
 default_prefix: nmdc
 default_range: string
-
 default_curi_maps:
   - obo_context
   - idot_context
-
 emit_prefixes:
   - rdf
   - rdfs
   - skos
   - xsd
-
 imports:
   - annotation
   - basic_slots
@@ -91,33 +85,23 @@ imports:
   - prov
   - sample_prep
   - workflow_execution_activity
-
 settings:
   id_nmdc_prefix: "^(nmdc)"
   id_shoulder: "([0-9][a-z]{0,6}[0-9])"
   id_blade: "([A-Za-z0-9]{1,})"
   id_version: "(\\.[A-Za-z0-9]{1,})*"
   id_locus: "(_[A-Za-z0-9_\\.-]+)?$"
-
 subsets:
   sample subset:
-    description: Subset consisting of entities linked to the processing of samples.  Currently,
-      this subset consists of study, omics process, and biosample.
+    description: Subset consisting of entities linked to the processing of samples.  Currently, this subset consists of study, omics process, and biosample.
   data object subset:
-    description: Subset consisting of the data objects that either inputs or outputs
-      of processes or workflows.
-
-
+    description: Subset consisting of the data objects that either inputs or outputs of processes or workflows.
 classes:
-
   Database:
     tree_root: true
     aliases:
       - NMDC metadata object
-    description: An abstract holder for any set of metadata and data. It does not
-      need to correspond to an actual managed database top level holder class. When
-      translated to JSON-Schema this is the 'root' object. It should contain pointers
-      to other objects of interest
+    description: An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest
     slots:
       - activity_set
       - biosample_set
@@ -141,7 +125,6 @@ classes:
       - study_set
       - field_research_site_set
       - collecting_biosamples_from_site_set
-
     slot_usage:
       date_created:
         description: TODO
@@ -149,7 +132,6 @@ classes:
         description: TODO
       metatranscriptome_activity_set:
         description: TODO
-
   FieldResearchSite:
     aliases:
       - research plot
@@ -157,12 +139,9 @@ classes:
     is_a: Site
     title: Field Research Site
     comments:
-      - Provides grouping of biosamples at level that's more specific than belonging
-        to the same study
+      - Provides grouping of biosamples at level that's more specific than belonging to the same study
       - be very clear that this could be part of a larger site
-      - In Bioscales, one might say that rhizosphere soil and bulk soil from around
-        the same plant were obtained at the same site. In this case, the site would
-        correspond to one tree.
+      - In Bioscales, one might say that rhizosphere soil and bulk soil from around the same plant were obtained at the same site. In this case, the site would correspond to one tree.
       - "might correspond to GOLD's identifier on a page like https://gold.jgi.doe.gov/biosample?id=Gb0305833"
     slot_usage:
       id:
@@ -170,7 +149,6 @@ classes:
           syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
           partial_match: false
-
   CollectingBiosamplesFromSite:
     is_a: PlannedProcess
     title: Collecting Biosamples From Site
@@ -192,14 +170,11 @@ classes:
           syntax: "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
           partial_match: false
-
-
   DataObject:
     is_a: NamedThing
     in_subset:
       - data object subset
-    description: 'An object that primarily consists of symbols that represent information.   Files,
-      records, and omics data are examples of data objects.'
+    description: 'An object that primarily consists of symbols that represent information.   Files, records, and omics data are examples of data objects.'
     notes:
       - removed previous id_prefixes value of GOLD, since we are now using pattern-based id validation
     slots:
@@ -222,9 +197,7 @@ classes:
           partial_match: false
     comments:
       - removed id_prefixes value of GOLD, since we are now using pattern-based id validation
-
   Biosample:
-
     is_a: MaterialEntity
     in_subset:
       - sample subset
@@ -240,9 +213,7 @@ classes:
     notes:
       - removed previous id_prefixes value of GOLD, since we are now using pattern-based id validation
     alt_descriptions:
-      embl.ena: A sample contains information about the sequenced source material.
-        Samples are associated with checklists, which define the fields used to annotate
-        the samples. Samples are always associated with a taxon.
+      embl.ena: A sample contains information about the sequenced source material. Samples are associated with checklists, which define the fields used to annotate the samples. Samples are always associated with a taxon.
     slots:
       - embargoed
       - collected_from
@@ -252,18 +223,15 @@ classes:
       - biosample_categories
       - type
       - part_of
-
       ## Identifiers
       - id
       - alternative_identifiers
-
       ## external IDs, alternate IDs
       - gold_biosample_identifiers
       - insdc_biosample_identifiers
       #      - insdc_secondary_sample_identifiers
       - emsl_biosample_identifiers
       - igsn_biosample_identifiers
-
       ## MIXS slots
       - agrochem_addition
       - alkalinity
@@ -384,14 +352,12 @@ classes:
       - tot_phosp
       - water_content
       - water_cont_soil_meth
-
       ## GOLD path fields
       - ecosystem
       - ecosystem_category
       - ecosystem_type
       - ecosystem_subtype
       - specific_ecosystem
-
       ## GOLD specific fields
       - add_date
       - community
@@ -405,8 +371,6 @@ classes:
       - sample_collection_site
       - soluble_iron_micromol
       - subsurface_depth
-
-
       ## MIxS terms initially used in
       ## sample metadata submission portal (aka DataHarmonizer)
       - air_temp_regm
@@ -427,7 +391,6 @@ classes:
       #      - soil_texture_meth
       - source_mat_id
       - watering_regm
-
       ## sample metadata submission portal (aka DataHarmonizer) terms (EMSL, JGI, etc.)
       ## JGI fields
       - dna_absorb1
@@ -468,7 +431,6 @@ classes:
       - rna_seq_project_pi
       - rna_seq_project_name
       - rna_volume
-
       # MIxS Inspired fields
       - collection_date_inc
       - collection_time
@@ -493,7 +455,6 @@ classes:
       - technical_reps
       - analysis_type
       - sample_link
-
       ## EMSL slots
 
       ## bioscales slots
@@ -525,8 +486,7 @@ classes:
         required: false
       lat_lon:
         required: false
-        description: This is currently a required field but it's not clear if this
-          should be required for human hosts
+        description: This is currently a required field but it's not clear if this should be required for human hosts
       env_broad_scale:
         required: true
       env_local_scale:
@@ -534,7 +494,7 @@ classes:
       env_medium:
         required: true
       sample_link:
-        description: { }
+        description: {}
         required: false
       part_of:
         required: true
@@ -583,8 +543,7 @@ classes:
           - value: 35
         comments:
           - Aspect is the orientation of slope, measured clockwise in degrees from 0 to 360, where 0 is north-facing, 90 is east-facing, 180 is south-facing, and 270 is west-facing.
-        description: The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees).
-          - This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.
+        description: The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees). - This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.
         todos:
           - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
       slope_gradient:
@@ -620,8 +579,7 @@ classes:
         todos:
           - This is no longer matching the listed IRI from GSC, added example. When NMDC has its own slots, map this to the MIxS slot
       cur_vegetation:
-        description: Vegetation classification from one or more standard classification
-          systems, or agricultural crop
+        description: Vegetation classification from one or more standard classification systems, or agricultural crop
         comments:
           - Values provided here can be specific species of vegetation or vegetation regions
           - See for vegetation regions- https://education.nationalgeographic.org/resource/vegetation-region
@@ -765,12 +723,10 @@ classes:
         examples:
           - value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
           - value: 75% water holding capacity; constant
-
     exact_mappings:
       - OBI:0000747
       - NCIT:C43412
       - http://purl.obolibrary.org/obo/FBcv_0003024
-
   Study:
     is_a: NamedThing
     in_subset:
@@ -785,16 +741,12 @@ classes:
     description: >-
       A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.
     alt_descriptions:
-      embl.ena: A study (project) groups together data submitted to the archive and
-        controls its release date. A study accession is typically used when citing
-        data submitted to ENA
+      embl.ena: A study (project) groups together data submitted to the archive and controls its release date. A study accession is typically used when citing data submitted to ENA
     slots:
       ## Identifiers
       - id
-
       ## Alternative IDs
       - alternative_identifiers
-
       ## Related IDs
       - related_identifiers
       - emsl_proposal_identifier
@@ -803,7 +755,6 @@ classes:
       #- insdc_bioproject_identifiers
       #- insdc_sra_ena_study_identifiers
       - mgnify_project_identifiers
-
       - ecosystem
       - ecosystem_category
       - ecosystem_type
@@ -831,7 +782,6 @@ classes:
           syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
           partial_match: false
-
       doi:
         description: >-
           The dataset citation for this study
@@ -852,9 +802,7 @@ classes:
           display_hint:
             tag: display_hint
             value: >-
-              Link to the Principal Investigator's research lab webpage 
-              or the study webpage associated with this collection of samples. 
-              Multiple links can be provided.
+              Link to the Principal Investigator's research lab webpage  or the study webpage associated with this collection of samples.  Multiple links can be provided.
       description:
         description: A brief summary that details the study you're submitted to NMDC
         annotations:
@@ -877,8 +825,7 @@ classes:
           display_hint:
             tag: display_hint
             value: >-
-              Project, study, or sample set names the are also associated with this submission 
-              or other names / identifiers for this study.
+              Project, study, or sample set names the are also associated with this submission  or other names / identifiers for this study.
       related_identifiers:
         description: Unique identifier for a study submitted to additional resources. Similar, but not necessarily identical to that which has been submitted to NMDC
       insdc_bioproject_identifiers:
@@ -903,22 +850,18 @@ classes:
     broad_mappings:
       - prov:Activity
     todos:
-      - determine how to get data values for submitted_to_insdc, investigation_type,
-        experimental_factor
+      - determine how to get data values for submitted_to_insdc, investigation_type, experimental_factor
       - project_name is redundant with name, so excluding it
     notes:
       - "sample GOLD link https://identifiers.org/gold:Gs0110115"
       - "sample insdc.srs link https://www.ebi.ac.uk/ena/browser/view/PRJEB45055 ?"
       - "sample mgnify link https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757"
       - "GOLD, insdc.srs and mgnify are reasonable prefixes for alternative study identifiers, but no longer for the Study.id"
-
   BiosampleProcessing:
     aliases:
       - material processing
     is_a: NamedThing
-    description: A process that takes one or more biosamples as inputs and generates
-      one or as outputs. Examples of outputs include samples cultivated from another
-      sample or data objects created by instruments runs.
+    description: A process that takes one or more biosamples as inputs and generates one or as outputs. Examples of outputs include samples cultivated from another sample or data objects created by instruments runs.
     slots:
       - has_input
     slot_usage:
@@ -931,7 +874,6 @@ classes:
         range: Biosample
     broad_mappings:
       - OBI:0000094
-
   OmicsProcessing:
     aliases:
       - omics assay
@@ -943,8 +885,7 @@ classes:
     description: >-
       The methods and processes used to generate omics data from a biosample or organism.
     alt_descriptions:
-      embl.ena: An experiment contains information about a sequencing experiment including
-        library and instrument details.
+      embl.ena: An experiment contains information about a sequencing experiment including library and instrument details.
     comments:
       - The ID prefix for objects coming from GOLD will be gold:Gp
     slots:
@@ -971,7 +912,6 @@ classes:
       - seq_meth
       - seq_quality_check
       - chimera_check
-
     slot_usage:
       id:
         structured_pattern:
@@ -983,22 +923,19 @@ classes:
     broad_mappings:
       - OBI:0000070
       - ISA:Assay
-
   CreditAssociation:
     aliases:
       - study role
       - credit table
       - associated researchers
     description: >-
-      This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role (https://casrai.org/credit/) and for a person value
-      Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0
+      This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role (https://casrai.org/credit/) and for a person value Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0
     slots:
       - applies_to_person
       - applied_role
       - applied_roles
       - type
     class_uri: prov:Association
-
 enums:
   biosample_category_enum:
     description: Funding-based, sample location-based, or experimental method-based defined categories
@@ -1012,7 +949,7 @@ enums:
       LTER:
         title: National Science Foundation's Long Term Ecological Research Network
         meaning: https://lternet.edu/
-      SIP: { }
+      SIP: {}
       SFA:
         title: Department of Energy Office of Science Biological and Environmental Research Program Laboratory Science Focus Areas
         description: Science Focus Area projects funded through the Department of Energy Office of Science Biological and Environmental Research Program
@@ -1168,9 +1105,9 @@ enums:
       Visualization:
         description: Visualization
       Writing original draft:
-        description: "Writing \u2013 original draft"
+        description: "Writing – original draft"
       Writing review and editing:
-        description: "Writing \u2013 review & editing"
+        description: "Writing – review & editing"
       Principal Investigator:
         description: principal investigator role
         meaning: OBI:0000103
@@ -1201,9 +1138,7 @@ enums:
         notes:
           - replaces Environmental Molecular Science Laboratory
           - replaces Environmental Molecular Sciences Lab
-
 slots:
-
   embargoed:
     description: >-
       If true, the data are embargoed and not available for public access.
@@ -1214,7 +1149,6 @@ slots:
       - first apply to Biosample
       - try to apply to all Biosamples in a particular nmdc-server SubmissionMetadata?
       - applying to a Study may nto be granular enough
-
   collected_from:
     description: The Site from which a Biosample was collected
     domain: Biosample
@@ -1223,9 +1157,7 @@ slots:
       - this illustrates implementing a Biosample relation with a (binary) slot
     todos:
       - add an OBO slot_uri ?
-
-
-  emsl_project_identifier: { }
+  emsl_project_identifier: {}
   img_identifiers:
     title: IMG Identifiers
     description: >-
@@ -1234,19 +1166,16 @@ slots:
     todos:
       - add is_a or mixin modeling
       - what are the class of IMG records?!
-
   emsl_biosample_identifiers:
     title: EMSL Biosample Identifiers
     description: >-
-      A list of identifiers for the biosample from the EMSL database.  This is
-      used to link the biosample, as modeled by NMDC, to the biosample in the planned EMSL NEXUS database.
+      A list of identifiers for the biosample from the EMSL database.  This is used to link the biosample, as modeled by NMDC, to the biosample in the planned EMSL NEXUS database.
     multivalued: true
     is_a: biosample_identifiers
     todos:
       - removed "planned" once NEXUS is online
       - make an emsl identifiers mixin
       - determine real expansion for emsl prefix
-
   igsn_biosample_identifiers:
     title: IGSN Biosample Identifiers
     description: >-
@@ -1272,13 +1201,10 @@ slots:
   emsl_proposal_doi:
     title: EMSL Proposal DOI
     description: The proposal DOI assigned to the awarded EMSL study.
-
   #- insdc_bioproject_identifiers
   #- insdc_sra_ena_study_identifiers
-
   notes:
     description: from study class
-
   canary:
     description: a slot that can be added and removed as evidence that schema changes have propagated to other systems
   ess_dive_datasets:
@@ -1291,9 +1217,7 @@ slots:
     notes:
       - 'had just been "inlined: true"'
     inlined_as_list: true
-    description: 'This slot links a study to a credit association.  The credit association
-      will be linked to a person value and to a CRediT Contributor Roles term. Overall
-      semantics: person should get credit X for their participation in the study'
+    description: 'This slot links a study to a credit association.  The credit association will be linked to a person value and to a CRediT Contributor Roles term. Overall semantics: person should get credit X for their participation in the study'
     slot_uri: prov:qualifiedAssociation
     annotations:
       display_hint:
@@ -1315,8 +1239,7 @@ slots:
     domain: CreditAssociation
     range: credit enum
     slot_uri: prov:hadRole
-    deprecated: A credit association may have multiple roles. So, use the applied
-      roles slot.
+    deprecated: A credit association may have multiple roles. So, use the applied roles slot.
     multivalued: false
     required: false
   applied_roles:
@@ -1332,9 +1255,7 @@ slots:
   applies_to_person:
     domain: CreditAssociation
     range: PersonValue
-    todos: prov:agent takes an Agent object. Is a person value an Agent? Also try
-      to relate to principal investigator slot? could include OBI:0000103 principal
-      investigator role... do we need to define the OBI prefix?
+    todos: prov:agent takes an Agent object. Is a person value an Agent? Also try to relate to principal investigator slot? could include OBI:0000103 principal investigator role... do we need to define the OBI prefix?
     multivalued: false
     required: true
     slot_uri: prov:agent
@@ -1343,23 +1264,19 @@ slots:
     domain: Database
     multivalued: true
     inlined_as_list: true
-    description: Applies to a property that links a database object to a set of objects.
-      This is necessary in a json document to provide context for a list, and to allow
-      for a single json object that combines multiple object types
+    description: Applies to a property that links a database object to a set of objects. This is necessary in a json document to provide context for a list, and to allow for a single json object that combines multiple object types
   biosample_set:
     mixins: object_set
     domain: Database
     range: Biosample
     multivalued: true
-    description: This property links a database object to the set of samples within
-      it.
+    description: This property links a database object to the set of samples within it.
   study_set:
     mixins: object_set
     domain: Database
     range: Study
     multivalued: true
-    description: This property links a database object to the set of studies within
-      it.
+    description: This property links a database object to the set of studies within it.
   field_research_site_set:
     inlined_as_list: true
     multivalued: true
@@ -1375,8 +1292,7 @@ slots:
     domain: Database
     range: DataObject
     multivalued: true
-    description: This property links a database object to the set of data objects
-      within it.
+    description: This property links a database object to the set of data objects within it.
   genome_feature_set:
     mixins: object_set
     domain: Database
@@ -1388,8 +1304,7 @@ slots:
     domain: Database
     range: FunctionalAnnotation
     multivalued: true
-    description: This property links a database object to the set of all functional
-      annotations
+    description: This property links a database object to the set of all functional annotations
   activity_set:
     mixins: object_set
     domain: Database
@@ -1401,50 +1316,43 @@ slots:
     domain: Database
     range: MagsAnalysisActivity
     multivalued: true
-    description: This property links a database object to the set of MAGs analysis
-      activities.
+    description: This property links a database object to the set of MAGs analysis activities.
   metabolomics_analysis_activity_set:
     mixins: object_set
     domain: Database
     range: MetabolomicsAnalysisActivity
     multivalued: true
-    description: This property links a database object to the set of metabolomics
-      analysis activities.
+    description: This property links a database object to the set of metabolomics analysis activities.
   metaproteomics_analysis_activity_set:
     mixins: object_set
     domain: Database
     range: MetaproteomicsAnalysisActivity
     multivalued: true
-    description: This property links a database object to the set of metaproteomics
-      analysis activities.
+    description: This property links a database object to the set of metaproteomics analysis activities.
   metagenome_annotation_activity_set:
     mixins: object_set
     domain: Database
     range: MetagenomeAnnotationActivity
     multivalued: true
-    description: This property links a database object to the set of metagenome annotation
-      activities.
+    description: This property links a database object to the set of metagenome annotation activities.
   metagenome_assembly_set:
     mixins: object_set
     domain: Database
     range: MetagenomeAssembly
     multivalued: true
-    description: This property links a database object to the set of metagenome assembly
-      activities.
+    description: This property links a database object to the set of metagenome assembly activities.
   metatranscriptome_activity_set:
     mixins: object_set
     domain: Database
     range: MetatranscriptomeActivity
     multivalued: true
-    description: This property links a database object to the set of metatranscriptome
-      analysis activities.
+    description: This property links a database object to the set of metatranscriptome analysis activities.
   read_qc_analysis_activity_set:
     mixins: object_set
     domain: Database
     range: ReadQcAnalysisActivity
     multivalued: true
-    description: This property links a database object to the set of read QC analysis
-      activities.
+    description: This property links a database object to the set of read QC analysis activities.
   read_based_taxonomy_analysis_activity_set:
     mixins: object_set
     domain: Database
@@ -1457,15 +1365,13 @@ slots:
     domain: Database
     range: NomAnalysisActivity
     multivalued: true
-    description: This property links a database object to the set of natural organic
-      matter (NOM) analysis activities.
+    description: This property links a database object to the set of natural organic matter (NOM) analysis activities.
   omics_processing_set:
     mixins: object_set
     domain: Database
     range: OmicsProcessing
     multivalued: true
-    description: This property links a database object to the set of omics processings
-      within it.
+    description: This property links a database object to the set of omics processings within it.
   omics_type:
     range: ControlledTermValue
     description: The type of omics data
@@ -1499,55 +1405,28 @@ slots:
       This is a grouping for any of the gold path fields
   ecosystem:
     is_a: gold_path_field
-    description: An ecosystem is a combination of a physical environment (abiotic
-      factors) and all the organisms (biotic factors) that interact with this environment.
-      Ecosystem is in position 1/5 in a GOLD path.
-    comments: The abiotic factors play a profound role on the type and composition
-      of organisms in a given environment. The GOLD Ecosystem at the top of the five-level
-      classification system is aimed at capturing the broader environment from which
-      an organism or environmental sample is collected. The three broad groups under
-      Ecosystem are Environmental, Host-associated, and Engineered. They represent
-      samples collected from a natural environment or from another organism or from
-      engineered environments like bioreactors respectively.
+    description: An ecosystem is a combination of a physical environment (abiotic factors) and all the organisms (biotic factors) that interact with this environment. Ecosystem is in position 1/5 in a GOLD path.
+    comments: The abiotic factors play a profound role on the type and composition of organisms in a given environment. The GOLD Ecosystem at the top of the five-level classification system is aimed at capturing the broader environment from which an organism or environmental sample is collected. The three broad groups under Ecosystem are Environmental, Host-associated, and Engineered. They represent samples collected from a natural environment or from another organism or from engineered environments like bioreactors respectively.
     see_also: https://gold.jgi.doe.gov/help
   ecosystem_category:
     is_a: gold_path_field
-    description: Ecosystem categories represent divisions within the ecosystem based
-      on specific characteristics of the environment from where an organism or sample
-      is isolated. Ecosystem category is in position 2/5 in a GOLD path.
-    comments: The Environmental ecosystem (for example) is divided into Air, Aquatic
-      and Terrestrial. Ecosystem categories for Host-associated samples can be individual
-      hosts or phyla and for engineered samples it may be manipulated environments
-      like bioreactors, solid waste etc.
+    description: Ecosystem categories represent divisions within the ecosystem based on specific characteristics of the environment from where an organism or sample is isolated. Ecosystem category is in position 2/5 in a GOLD path.
+    comments: The Environmental ecosystem (for example) is divided into Air, Aquatic and Terrestrial. Ecosystem categories for Host-associated samples can be individual hosts or phyla and for engineered samples it may be manipulated environments like bioreactors, solid waste etc.
     see_also: https://gold.jgi.doe.gov/help
   ecosystem_type:
     is_a: gold_path_field
-    description: Ecosystem types represent things having common characteristics within
-      the Ecosystem Category. These common characteristics based grouping is still
-      broad but specific to the characteristics of a given environment. Ecosystem
-      type is in position 3/5 in a GOLD path.
-    comments: The Aquatic ecosystem category (for example) may have ecosystem types
-      like Marine or Thermal springs etc. Ecosystem category Air may have Indoor air
-      or Outdoor air as different Ecosystem Types. In the case of Host-associated
-      samples, ecosystem type can represent Respiratory system, Digestive system,
-      Roots etc.
+    description: Ecosystem types represent things having common characteristics within the Ecosystem Category. These common characteristics based grouping is still broad but specific to the characteristics of a given environment. Ecosystem type is in position 3/5 in a GOLD path.
+    comments: The Aquatic ecosystem category (for example) may have ecosystem types like Marine or Thermal springs etc. Ecosystem category Air may have Indoor air or Outdoor air as different Ecosystem Types. In the case of Host-associated samples, ecosystem type can represent Respiratory system, Digestive system, Roots etc.
     see_also: https://gold.jgi.doe.gov/help
   ecosystem_subtype:
     is_a: gold_path_field
-    description: Ecosystem subtypes represent further subdivision of Ecosystem types
-      into more distinct subtypes. Ecosystem subtype is in position 4/5 in a GOLD
-      path.
-    comments: Ecosystem Type Marine (Environmental -> Aquatic -> Marine) is further
-      divided (for example) into Intertidal zone, Coastal, Pelagic, Intertidal zone
-      etc. in the Ecosystem subtype category.
+    description: Ecosystem subtypes represent further subdivision of Ecosystem types into more distinct subtypes. Ecosystem subtype is in position 4/5 in a GOLD path.
+    comments: Ecosystem Type Marine (Environmental -> Aquatic -> Marine) is further divided (for example) into Intertidal zone, Coastal, Pelagic, Intertidal zone etc. in the Ecosystem subtype category.
     see_also: https://gold.jgi.doe.gov/help
   specific_ecosystem:
     is_a: gold_path_field
-    description: Specific ecosystems represent specific features of the environment
-      like aphotic zone in an ocean or gastric mucosa within a host digestive system.
-      Specific ecosystem is in position 5/5 in a GOLD path.
-    comments: Specific ecosystems help to define samples based on very specific characteristics
-      of an environment under the five-level classification system.
+    description: Specific ecosystems represent specific features of the environment like aphotic zone in an ocean or gastric mucosa within a host digestive system. Specific ecosystem is in position 5/5 in a GOLD path.
+    comments: Specific ecosystems help to define samples based on very specific characteristics of an environment under the five-level classification system.
     see_also: https://gold.jgi.doe.gov/help
   principal_investigator:
     aliases:
@@ -1590,8 +1469,7 @@ slots:
   sample_collection_minute:
     range: integer
   salinity_category:
-    description: 'Categorcial description of the sample''s salinity. Examples: halophile,
-      halotolerant, hypersaline, huryhaline'
+    description: 'Categorcial description of the sample''s salinity. Examples: halophile, halotolerant, hypersaline, huryhaline'
     range: string
     see_also:
       - https://github.com/microbiomedata/nmdc-metadata/pull/297
@@ -1603,20 +1481,16 @@ slots:
     range: string
   subsurface_depth:
     range: QuantityValue
-
   proport_woa_temperature:
     range: string
-
   biogas_temperature:
     range: string
   soil_annual_season_temp:
     range: string
-
   biogas_retention_time:
     range: string
   processing_institution:
     range: processing_institution_enum
     description: The organization that processed the sample.
-
   completion_date:
     range: string

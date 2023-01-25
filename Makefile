@@ -11,16 +11,15 @@ RUN=poetry run
 SCHEMA_NAME = nmdc
 SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
 SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
-TGTS = jsonschema jsonld-context python json doc
+TGTS = doc json jsonld-context jsonschema python
 
-all: gen stage
 gen: $(patsubst %,gen-%,$(TGTS))
-.PHONY: all gen stage clean clean-artifacts clean-docs t echo test install docserve gh-deploy .FORCE
+.PHONY: all clean clean-artifacts clean-docs docserve echo gen gh-deploy install stage t test .FORCE
 
 clean: clean-artifacts clean-docs
 
 squeaky-clean: clean clean-package from_mongo_cleanup # NOT mixs_clean
-squeaky-all: squeaky-clean target all test-data build-nmdc_schema test-dataclasses
+all: squeaky-clean target gen stage test-data build-nmdc_schema test-dataclasses insert_gh_tag
 	poetry install
 	# shouldn't be creating this in the first place
 	rm -rf doc
@@ -38,8 +37,6 @@ clean-artifacts:
 	rm -rf jsonschema/*.json
 	rm -rf python/*.py
 	rm -rf python/portal/*.py
-
-
 
 clean-docs:
 	ls docs/*.md | egrep -v 'README.md|README.markdown' | xargs rm -f # keep readme files
@@ -387,4 +384,9 @@ assets/TermsUpdated_organicmatterextraction_data.json: target/TermsUpdated_organ
 
 target/nmdc_data_for_v7.json:
 	$(RUN) migrate_3_2_to_7
+
+GH_TAG := $(shell git describe --tags $(git rev-list --tags --max-count=1))
+
+insert_gh_tag: $(SCHEMA_SRC)
+	yq -i '.version |= "$(GH_TAG)"' $^
 
