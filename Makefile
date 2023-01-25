@@ -6,7 +6,7 @@ SRC_DIR = src
 SCHEMA_DIR = $(SRC_DIR)/schema
 SOURCE_FILES := $(shell find $(SCHEMA_DIR) -name '*.yaml')
 DOCS_DIR = docs
-GEN_OPTS =
+GEN_OPTS = --log_level WARNING
 RUN=poetry run
 SCHEMA_NAME = nmdc
 SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
@@ -98,7 +98,7 @@ copy-src-slides-images:
 	mkdir -p target/docs/images
 	cp $(SRC_DIR)/slides/images/* target/docs/images/
 .PHONY: copy-src-slides-images
-target/docs/schema-slides.html: tdir-docs 
+target/docs/schema-slides.html: tdir-docs
 	$(RUN) pandoc -s --webtex -i -t slidy src/slides/schema-slides.md -o $@
 
 ###  -- PYTHON --
@@ -110,14 +110,14 @@ target/python/portal:
 	mkdir -p $@
 
 target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python target/python/portal
-	$(RUN) gen-py-classes --mergeimports $(GEN_OPTS) $< > $@
+	$(RUN) gen-py-classes  --mergeimports $(GEN_OPTS) $< > $@
 
 ###  -- GRAPHQL --
 # TODO: modularize imports. For now imports are merged.
-gen-graphql:target/graphql/$(SCHEMA_NAME).graphql 
+gen-graphql:target/graphql/$(SCHEMA_NAME).graphql
 .PHONY: gen-graphql
 target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
-	$(RUN) gen-graphql $(GEN_OPTS) $< > $@
+	$(RUN) gen-graphql --mergeimports $(GEN_OPTS) $< > $@
 
 ###  -- JSON SCHEMA --
 # TODO: modularize imports. For now imports are merged.
@@ -127,7 +127,7 @@ target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
 	#$(RUN) gen-json-schema $(GEN_OPTS) --closed -t database $< > $@
 	# pre-materialize the patterns before jsonschema generation
 	# should be doing that for all of the generated artifacts
-	$(RUN) gen-linkml \
+	$(RUN) gen-linkml $(GEN_OPTS) \
 		-o target/nmdc_generated.yaml \
 		--materialize-patterns \
 		--no-materialize-attributes \
@@ -234,14 +234,16 @@ delete-poetry-env:
 # datasets used test/validate the schema
 #
 SCHEMA_TEST_EXAMPLES := \
+	MAGs_activity \
 	biosample_test \
 	biosamples_to_sites \
 	functional_annotation_set \
 	gold_project_test \
 	img_mg_annotation_objects \
-	MAGs_activity \
 	mg_assembly_activities_test \
 	mg_assembly_data_objects_test \
+	minimal_massive_study_test \
+	minimal_study_test \
 	minimal_valid_biosample_test \
 	minimal_valid_biosample_with_fire \
 	minimal_valid_embargoed_biosample_test \
@@ -261,6 +263,7 @@ SCHEMA_TEST_EXAMPLES_INVALID := \
 	functional_annotation_set_invalid \
 	invalid_study_test \
 	minimal_biosample_invalid_fire \
+	minimal_invalid_massive_study_test \
 	minimal_non_boolean_embargoed_biosample_test \
 	study_credit_enum_mangle
 

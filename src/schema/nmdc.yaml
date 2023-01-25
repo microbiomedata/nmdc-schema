@@ -19,12 +19,16 @@ description: >-
 
 
 
+
+
+
+
    * a set of core types for representing data values
    * the mixs schema (auto-translated from mixs excel)
    * annotation schema
    * the NMDC schema itself
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: v7.2.0-28-g5384989c
+version: v7.2.0-29-g68df8f11
 prefixes:
   COG: https://unknown.to.linter.org/
   EC: https://unknown.to.linter.org/
@@ -747,6 +751,7 @@ classes:
       - id
       ## Alternative IDs
       - alternative_identifiers
+      - massive_study_identifier
       ## Related IDs
       - related_identifiers
       - emsl_proposal_identifier

@@ -91,13 +91,6 @@ classes:
       - name
       - description
       - alternative_identifiers
-  #    slot_usage:
-  #      id:
-  #        structured_pattern:
-  #          todos:
-  #          syntax: "{id_nmdc_prefix}:{id_typecode_named_thing}-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-  #          interpolated: true
-  #          partial_match: false
 
 
   MaterialEntity:
@@ -107,20 +100,12 @@ classes:
       - Physical entity
     is_a: NamedThing
     title: Material Entity
-  #    slot_usage:
-  #      id:
-  #        pattern: '^nmdc:mate'
-  #        structured_pattern:
-  #          syntax: "{id_nmdc_prefix}:mate-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-  #          interpolated: true
-  #          partial_match: false
 
   AnalyticalSample:
     is_a: MaterialEntity
     title: Analytical Sample
     slot_usage:
       id:
-        #        pattern: '^nmdc:ansm'
         structured_pattern:
           syntax: "{id_nmdc_prefix}:ansm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -134,7 +119,6 @@ classes:
       - BCO sample collection site ?
     slot_usage:
       id:
-        #        pattern: '^nmdc:site'
         structured_pattern:
           syntax: "{id_nmdc_prefix}:site-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -154,13 +138,6 @@ classes:
     is_a: NamedThing
     notes:
       - The identifiers for terms from external ontologies can't have their ids constrained to the nmdc namespace
-  #    slot_usage:
-  #      id:
-  #        pattern: '^nmdc:ontc'
-  #        structured_pattern:
-  #          syntax: "{id_nmdc_prefix}:ontc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-  #          interpolated: true
-  #          partial_match: false
 
   EnvironmentalMaterialTerm:
     is_a: OntologyClass
@@ -316,7 +293,6 @@ classes:
       - OBI:0000485
     slot_usage:
       id:
-        #        pattern: '^nmdc:inst'
         structured_pattern:
           syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -406,12 +382,6 @@ classes:
     comments:
       - As with the parent OntologyClass, we will not assign an nmdc id pattern or typecode to this class.
     slot_usage:
-      #      id:
-      #        pattern: '^nmdc:cheme'
-      #        structured_pattern:
-      #          syntax: "{id_nmdc_prefix}:cheme-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-      #          interpolated: true
-      #          partial_match: false
       inchi:
         key: false
         multivalued: false

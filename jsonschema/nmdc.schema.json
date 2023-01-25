@@ -4940,6 +4940,11 @@
                     "pattern": "^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                     "type": "string"
                 },
+                "massive_study_identifier": {
+                    "description": "identifiers for corresponding study in MASSIVE",
+                    "pattern": "^MASSIVE:",
+                    "type": "string"
+                },
                 "mgnify_project_identifiers": {
                     "description": "identifiers for corresponding project in MGnify",
                     "pattern": "^mgnify.proj:[A-Z]+[0-9]+$",
@@ -5587,5 +5592,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "v7.2"
+    "version": "v7.2.0-29-g68df8f11"
 }
