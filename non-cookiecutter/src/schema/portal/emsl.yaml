@@ -1,0 +1,108 @@
+name: emsl
+description: This file defines terms that appear in the 'EMSL' section of the NMDC
+  sample metadata submission portal, which is implemented with DataHarmonizer as of
+  Spring 2022
+title: 'NMDC Schema supplement for Submission Portal: EMSL'
+id: https://microbiomedata/schema/emsl
+imports:
+- linkml:types
+license: 'license: https://creativecommons.org/publicdomain/zero/1.0/'
+prefixes:
+- prefix_prefix: linkml
+  prefix_reference: https://w3id.org/linkml/
+- prefix_prefix: nmdc
+  prefix_reference: https://w3id.org/nmdc/
+default_prefix: nmdc
+default_range: string
+enums:
+  sample_type_enum:
+    name: sample_type_enum
+    from_schema: https://example.com/nmdc_dh
+    permissible_values:
+      soil:
+        text: soil
+      water_extract_soil:
+        text: water_extract_soil
+slots:
+  emsl_store_temp:
+    name: emsl_store_temp
+    description: The temperature at which the sample should be stored upon delivery to EMSL
+    title: EMSL sample storage temperature, deg. C
+    comments:
+    - Enter a temperature in celsius. Numeric portion only.
+    todos:
+      - add 'see_alsos' with link to NEXUS info
+    examples:
+    - value: '-80'
+    from_schema: https://example.com/nmdc_dh
+    rank: 4
+    string_serialization: '{float}'
+    slot_group: EMSL
+    required: false
+    recommended: true
+  project_id:
+    name: project_id
+    description: Proposal IDs or names associated with dataset
+    title: project ID
+    from_schema: https://example.com/nmdc_dh
+    rank: 1
+    string_serialization: '{text}'
+    slot_group: EMSL
+    required: false
+    recommended: true
+  replicate_number:
+    name: replicate_number
+    description: If sending biological replicates, indicate the rep number here.
+    title: replicate number
+    comments:
+    - This will guide staff in ensuring your samples are block & randomized correctly
+    from_schema: https://example.com/nmdc_dh
+    rank: 6
+    string_serialization: '{integer}'
+    slot_group: EMSL
+    recommended: true
+  sample_shipped:
+    name: sample_shipped
+    description: The total amount or size (volume (ml), mass (g) or area (m2) ) of
+      sample sent to EMSL.
+    title: sample shipped amount
+    from_schema: https://example.com/nmdc_dh
+    rank: 3
+    string_serialization: '{float} {unit}'
+    slot_group: EMSL
+    required: false
+    recommended: true
+    examples:
+      - value: 15 g
+      - value: 100 uL
+      - value: 5 mL
+    comments:
+      - This field is only required when completing metadata for samples being submitted to EMSL for analyses.
+  sample_type:
+    name: sample_type
+    description: Type of sample being submitted
+    title: sample type
+    comments:
+    - This can vary from 'environmental package' if the sample is an extraction.
+    examples:
+    - value: water extracted soil
+    from_schema: https://example.com/nmdc_dh
+    rank: 2
+    slot_group: EMSL
+    range: sample_type_enum
+    required: false
+    recommended: true
+  technical_reps:
+    name: technical_reps
+    description: If sending technical replicates of the same sample, indicate the replicate count.
+    title: number technical replicate
+    examples:
+      - value: 2
+    from_schema: https://example.com/nmdc_dh
+    rank: 5
+    string_serialization: '{integer}'
+    slot_group: EMSL
+    recommended: true
+    comments:
+      - This field is only required when completing metadata for samples being submitted to EMSL for analyses.
+

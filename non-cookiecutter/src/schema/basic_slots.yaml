@@ -1,0 +1,111 @@
+id: https://microbiomedata/schema/basic_slots
+name: NMDC-Basic-Slots
+title: Basic Slots for NMDC Schema
+description: >-
+  Basic Linkml slots that are used across the Schema for National Microbiome Data Collaborative (NMDC).
+  Examples include "id", "name", "description". These slots have primitive data types (e.g., sting) as ranges.
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+prefixes:
+  dcterms: http://purl.org/dc/terms/
+  linkml: https://w3id.org/linkml/
+  nmdc: https://w3id.org/nmdc/
+  skos: http://www.w3.org/2004/02/skos/core#
+
+default_prefix: nmdc
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+
+
+imports:
+  - core
+
+slots:
+
+  id:
+    identifier: true
+    multivalued: false
+    description: >-
+      A unique identifier for a thing.
+      Must be either a CURIE shorthand for a URI or a complete URI
+    notes:
+      - "abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?"
+      - 'a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters will be accepted'
+      - 'typecodes must correspond 1:1 to a class in the NMDC schema. this will be checked via per-class id slot usage assertions'
+      - 'minting authority shoulders should probably be enumerated and checked in the pattern'
+    #    pattern: ^(?<prefix>nmdc):(?<typecode>[a-z]{1,6})-(?<shoulder>[0-9][a-z]{0,6}[0-9])-(?<blade>[A-Za-z0-9]{1,})(?<version>(\.[A-Za-z0-9]{1,})*)(?<locus>_[A-Za-z0-9_\.-]+)?$
+    examples:
+      - value: nmdc:mgmag-00-x012.1_7_c1
+        description: 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248'
+
+  name:
+    multivalued: false
+    range: string
+    description: >-
+      A human readable label for an entity
+
+  description:
+    range: string
+    multivalued: false
+    description: >-
+      a human-readable description of a thing
+    slot_uri: dcterms:description
+
+  type:
+    deprecated: >-
+      Due to confusion about what values are used for this slot, it is best not to use this slot.
+      See https://github.com/microbiomedata/nmdc-schema/issues/248.
+      MAM removed designates_type and rdf:type slot uri 2022-11-30
+    range: string
+    description: >-
+      An optional string that specifies the type object. 
+      This is used to allow for searches for different kinds of objects.
+    examples:
+      - value: nmdc:Biosample
+      - value: nmdc:Study
+
+  title:
+    range: string
+    multivalued: false
+    description: >-
+      A name given to the entity that differs from the name/label programmatically assigned to it.
+      For example, when extracting study information for GOLD, the GOLD system has assigned a name/label.
+      However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.
+    exact_mappings:
+      - dcterms:title
+
+  alternative_titles:
+    range: string
+    multivalued: true
+    description: >-
+      A list of alternative titles for the entity.
+      The distinction between title and alternative titles is application-specific.
+    exact_mappings:
+      - dcterms:alternative
+  
+  alternative_names:
+    range: string
+    multivalued: true
+    description: >-
+      A list of alternative names used to refer to the entity.
+      The distinction between name and alternative names is application-specific.
+    exact_mappings:
+      - dcterms:alternative
+      - skos:altLabel
+
+  alternative_descriptions:
+    range: string
+    multivalued: true
+    description: >-
+      A list of alternative descriptions for the entity.
+      The distinction between description and alternative descriptions is application-specific.
+  
+  alternative_identifiers:
+    range: string
+    multivalued: true
+    description: >-
+      A list of alternative identifiers for the entity.
+

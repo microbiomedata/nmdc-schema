@@ -1,0 +1,66 @@
+name: sample_id
+description: This file defines terms that appear in the 'Sample ID' section of the
+  NMDC sample metadata submission portal, which is implemented with DataHarmonizer
+  as of Spring 2022
+title: 'NMDC Schema supplement for Submission Portal: Sample ID'
+id: https://microbiomedata/schema/sample_id
+imports:
+- linkml:types
+license: 'license: https://creativecommons.org/publicdomain/zero/1.0/'
+prefixes:
+- prefix_prefix: linkml
+  prefix_reference: https://w3id.org/linkml/
+- prefix_prefix: nmdc
+  prefix_reference: https://w3id.org/nmdc/
+default_prefix: nmdc
+default_range: string
+enums:
+  analysis_type_enum:
+    name: analysis_type_enum
+    from_schema: https://example.com/nmdc_dh
+    permissible_values:
+      metabolomics:
+        text: metabolomics
+      metagenomics:
+        text: metagenomics
+      metaproteomics:
+        text: metaproteomics
+      metatranscriptomics:
+        text: metatranscriptomics
+      natural organic matter:
+        text: natural organic matter
+slots:
+  analysis_type:
+    name: analysis_type
+    description: Select all the data types associated or available for this biosample
+    title: analysis/data type
+    examples:
+    - value: metagenomics; metabolomics; proteomics
+    from_schema: https://example.com/nmdc_dh
+    see_also:
+    - MIxS:investigation_type
+    rank: 3
+    multivalued: true
+    slot_group: Sample ID
+    range: analysis_type_enum
+    required: false
+    recommended: true
+  sample_link:
+    name: sample_link
+    description: A unique identifier to assign parent-child, subsample, or sibling
+      samples. This is relevant when a sample or other material was used to generate
+      the new sample.
+    title: sample linkage
+    comments:
+    - 'This field allows multiple entries separated by ; (Examples: Soil collected
+      from the field will link with the soil used in an incubation. The soil a plant
+      was grown in links to the plant sample. An original culture sample was transferred
+      to a new vial and generated a new sample)'
+    examples:
+    - value: IGSN:DSJ0284
+    from_schema: https://example.com/nmdc_dh
+    rank: 5
+    string_serialization: '{text}:{text}'
+    slot_group: Sample ID
+    recommended: true
+    multivalued: true

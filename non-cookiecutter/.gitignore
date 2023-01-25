@@ -1,0 +1,29 @@
+target/
+site/
+venv/
+docs/*md
+docs/types/
+*/my_schema.*
+.env
+.venv
+local/
+
+# jupyter backups
+.ipynb_checkpoints/
+
+.DS_Store
+
+# PyCharm project config
+.idea/
+
+*.old
+
+# emacs backup files
+*~
+
+# ignore files needed for pypi distribution
+__pycache__/
+build/
+dist/
+*.egg-info/
+*.egg
