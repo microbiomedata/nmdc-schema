@@ -14,7 +14,7 @@ prefixes:
   nmdc: https://w3id.org/nmdc/
   prov: http://www.w3.org/ns/prov#
   skos: http://www.w3.org/2004/02/skos/core#
-  MASSIVE: https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=
+#  MASSIVE: https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=
 
 # WARNING:Namespaces:MASSIVE namespace is already mapped to http://identifiers.org/massive/ -
 #   Mapping to https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task= ignored

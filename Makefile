@@ -90,7 +90,24 @@ gen-examples:
 
 gen-project: $(PYMODEL)
 	# compile-sheets
-	$(RUN) gen-project -d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
+	$(RUN) gen-project \
+		--include jsonschema \
+		--include python \
+		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
+
+#INFO:root:Skipping excel as not in inclusion list
+#INFO:root:Skipping graphql as not in inclusion list
+#INFO:root:Skipping jsonld as not in inclusion list
+#INFO:root:Skipping jsonldcontext as not in inclusion list
+#INFO:root:Skipping jsonschema as not in inclusion list
+#INFO:root:Skipping markdown as not in inclusion list
+#INFO:root:Skipping owl as not in inclusion list
+#INFO:root:Skipping prefixmap as not in inclusion list
+#INFO:root:Skipping proto as not in inclusion list
+#INFO:root:Skipping python as not in inclusion list
+#INFO:root:Skipping shacl as not in inclusion list
+#INFO:root:Skipping shex as not in inclusion list
+#INFO:root:Skipping sqlddl as not in inclusion list
 
 
 test: test-schema test-python
