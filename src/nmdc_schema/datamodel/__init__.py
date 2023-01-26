@@ -1,1 +1,1 @@
-from .attributes_of_biosamples import *
+from .nmdc_schema import *

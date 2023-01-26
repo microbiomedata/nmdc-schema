@@ -1,3 +1,6 @@
+# investigation_field and investigation field
+
+
 MAKEFLAGS += --warn-undefined-variables
 SHELL := bash
 .SHELLFLAGS := -eu -o pipefail -c
@@ -93,6 +96,17 @@ gen-project: $(PYMODEL)
 	$(RUN) gen-project \
 		--include jsonschema \
 		--include python \
+		--exclude excel \
+		--exclude graphql \
+		--exclude jsonld \
+		--exclude jsonldcontext \
+		--exclude markdown \
+		--include owl \
+		--exclude prefixmap \
+		--exclude proto \
+		--exclude shacl \
+		--exclude shex \
+		--exclude sqlddl \
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 
 #INFO:root:Skipping excel as not in inclusion list
@@ -112,7 +126,21 @@ gen-project: $(PYMODEL)
 
 test: test-schema test-python
 test-schema:
-	$(RUN) gen-project -d tmp $(SOURCE_SCHEMA_PATH) 
+	$(RUN) gen-project \
+		--include jsonschema \
+		--include python \
+		--exclude excel \
+		--exclude graphql \
+		--exclude jsonld \
+		--exclude jsonldcontext \
+		--exclude markdown \
+		--include owl \
+		--exclude prefixmap \
+		--exclude proto \
+		--exclude shacl \
+		--exclude shex \
+		--exclude sqlddl \
+		-d tmp $(SOURCE_SCHEMA_PATH)
 
 test-python:
 	$(RUN) python -m unittest discover
@@ -154,7 +182,8 @@ MKDOCS = $(RUN) mkdocs
 mkd-%:
 	$(MKDOCS) $*
 
-PROJECT_FOLDERS = sqlschema shex shacl protobuf prefixmap owl jsonschema jsonld graphql excel
+#PROJECT_FOLDERS = sqlschema shex shacl protobuf prefixmap owl jsonschema jsonld graphql excel
+PROJECT_FOLDERS = owl jsonschema
 git-init-add: git-init git-add git-commit git-status
 git-init:
 	git init

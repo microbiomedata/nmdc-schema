@@ -10901,7 +10901,7 @@ slots:
     multivalued: false
     range: TextValue
   samp_taxon_id:
-    is_a: investigation field
+    is_a: investigation_field
     title: Taxonomy ID of DNA sample
     description: NCBI taxon id of the sample. May be a single taxon or mixed taxa
       sample. Use 'synthetic metagenome' for mock community/positive controls,
