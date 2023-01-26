@@ -21,7 +21,7 @@ only generating a few artifacts... should document the performance and outcome o
 #INFO:root:Skipping sqlddl as not in inclusion list
 
 test sql-db dump?
-use run-linkml-examples
+add to run-linkml-examples
 validation within containers currently weak
 
 
