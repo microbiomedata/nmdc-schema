@@ -19,6 +19,59 @@ part_of:
 - gold:Gs0110115
 
 ```
+## Biosample-exhasutive
+### Input
+```yaml
+add_date: '2021-03-31'
+agrochem_addition:
+  has_raw_value: lime;1 kg/acre;2022-11-16T16:05:42+0000
+air_temp_regm:
+  has_raw_value: 25 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+al_sat:
+  has_raw_value: 0.1 mg/kg
+al_sat_meth:
+  has_raw_value: https://journaljeai.com/index.php/JEAI/article/view/583
+alkalinity:
+  has_raw_value: 50 milligram per liter
+alkalinity_method:
+  has_raw_value: https://wrrc.umass.edu/research/projects/acid-rain-monitoring-project/analysis-method-ph-and-alkalinity
+alkyl_diethers:
+  has_raw_value: 0.005 mole per liter
+alt:
+  has_raw_value: 100 meter
+alternative_identifiers:
+- any_string
+- seriously_anything
+aminopept_act:
+  has_raw_value: 0.269 mole per liter per hour
+ammonium:
+  has_raw_value: 1.5 milligram per liter
+ammonium_nitrogen:
+  has_raw_value: 0.5 milligram per liter
+analysis_type:
+- metabolomics
+- metagenomics
+annual_precpt:
+  has_raw_value: 0.5 milligram per liter
+collection_date:
+  has_raw_value: 2023-01-16T16:05:42+0000
+env_broad_scale:
+  has_raw_value: ENVO:00002030
+  term:
+    id: ENVO:00002030
+env_local_scale:
+  has_raw_value: ENVO:00002169
+  term:
+    id: ENVO:00002169
+env_medium:
+  has_raw_value: ENVO:00005792
+  term:
+    id: ENVO:00005792
+id: nmdc:bsm-99-dtTMNb
+part_of:
+- gold:Gs0110115
+
+```
 ## Biosample-minimal
 ### Input
 ```yaml

@@ -1,0 +1,55 @@
+@prefix ENVO: <http://purl.obolibrary.org/obo/ENVO_> .
+@prefix GOLD: <http://identifiers.org/gold/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix mixs: <https://w3id.org/mixs/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+
+nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
+    dcterms:isPartOf GOLD:Gs0110115 ;
+    mixs:0000011 [ a nmdc:TimestampValue ;
+            nmdc:has_raw_value "2023-01-16T16:05:42+0000" ] ;
+    mixs:0000012 [ a nmdc:ControlledIdentifiedTermValue ;
+            nmdc:has_raw_value "ENVO:00002030" ;
+            nmdc:term ENVO:00002030 ] ;
+    mixs:0000013 [ a nmdc:ControlledIdentifiedTermValue ;
+            nmdc:has_raw_value "ENVO:00002169" ;
+            nmdc:term ENVO:00002169 ] ;
+    mixs:0000014 [ a nmdc:ControlledIdentifiedTermValue ;
+            nmdc:has_raw_value "ENVO:00005792" ;
+            nmdc:term ENVO:00005792 ] ;
+    mixs:0000094 [ a nmdc:QuantityValue ;
+            nmdc:has_raw_value "100 meter" ] ;
+    mixs:0000172 [ a nmdc:QuantityValue ;
+            nmdc:has_raw_value "0.269 mole per liter per hour" ] ;
+    mixs:0000298 [ a nmdc:TextValue ;
+            nmdc:has_raw_value "https://wrrc.umass.edu/research/projects/acid-rain-monitoring-project/analysis-method-ph-and-alkalinity" ] ;
+    mixs:0000324 [ a nmdc:TextValue ;
+            nmdc:has_raw_value "https://journaljeai.com/index.php/JEAI/article/view/583" ] ;
+    mixs:0000421 [ a nmdc:QuantityValue ;
+            nmdc:has_raw_value "50 milligram per liter" ] ;
+    mixs:0000427 [ a nmdc:QuantityValue ;
+            nmdc:has_raw_value "1.5 milligram per liter" ] ;
+    mixs:0000490 [ a nmdc:QuantityValue ;
+            nmdc:has_raw_value "0.005 mole per liter" ] ;
+    mixs:0000551 [ a nmdc:QuantityValue ;
+            nmdc:has_raw_value "25 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M" ] ;
+    mixs:0000607 [ a nmdc:QuantityValue ;
+            nmdc:has_raw_value "0.1 mg/kg" ] ;
+    mixs:0000639 [ a nmdc:QuantityValue ;
+            nmdc:has_raw_value "lime;1 kg/acre;2022-11-16T16:05:42+0000" ] ;
+    mixs:0000644 [ a nmdc:QuantityValue ;
+            nmdc:has_raw_value "0.5 milligram per liter" ] ;
+    nmdc:add_date "2021-03-31" ;
+    nmdc:alternative_identifiers "any_string",
+        "seriously_anything" ;
+    nmdc:ammonium_nitrogen [ a nmdc:QuantityValue ;
+            nmdc:has_raw_value "0.5 milligram per liter" ] ;
+    nmdc:analysis_type "metabolomics",
+        "metagenomics" .
+
+ENVO:00002030 a nmdc:OntologyClass .
+
+ENVO:00002169 a nmdc:OntologyClass .
+
+ENVO:00005792 a nmdc:OntologyClass .
+
