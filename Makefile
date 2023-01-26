@@ -8,6 +8,7 @@ SHELL := bash
 
 RUN = poetry run
 # get values from about.yaml file
+# replaced sh with bash esp for linux
 SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
 SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 SOURCE_SCHEMA_DIR = $(dir $(SOURCE_SCHEMA_PATH))
@@ -58,6 +59,7 @@ install:
 # check we are up to date
 check: cruft-check
 cruft-check:
+	# added cruft to poetry env and added poetry wrapper to cruft invocations
 	$(RUN) cruft check
 cruft-diff:
 	$(RUN) cruft diff
@@ -86,6 +88,7 @@ gen-examples:
 # generates all project files
 
 gen-project: $(PYMODEL)
+	# added inclusion/exclusion parameters here, in test rule, and in project directories constant
 	$(RUN) gen-project \
 		--include jsonschema \
 		--include python \
@@ -129,6 +132,8 @@ lint:
 check-config:
 	@(grep my-datamodel about.yaml > /dev/null && printf "\n**Project not configured**:\n\n  - Remember to edit 'about.yaml'\n\n" || exit 0)
 
+# migration of anything mentioning person is incomplete
+
 convert-examples-to-%:
 	$(patsubst %, $(RUN) linkml-convert  % -s $(SOURCE_SCHEMA_PATH) -C Person, $(shell find src/data/examples -name "*.yaml"))
 
@@ -151,8 +156,11 @@ $(DOCDIR):
 	mkdir -p $@
 
 gendoc: $(DOCDIR)
+	# added copying of images and renaming of TEMP.md
 	cp $(SRC)/docs/*md $(DOCDIR) ; \
+	cp -r $(SRC)/docs/images $(DOCDIR) ; \
 	$(RUN) gen-doc -d $(DOCDIR) $(SOURCE_SCHEMA_PATH)
+	mv $(DOCDIR)/TEMP.md $(DOCDIR)/temp.md
 
 testdoc: gendoc serve
 

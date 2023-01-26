@@ -185,13 +185,9 @@ twine = "^4.0.1"
 
 WARNING  -  Documentation file 'attribute.md' contains a link to 'temp.md' which is not found in the documentation files.
 WARNING  -  Documentation file 'Biosample.md' contains a link to 'temp.md' which is not found in the documentation files.
-WARNING  -  Documentation file 'identifiers.md' contains a link to 'jsonschema/nmdc.context.jsonld' which is not found in the documentation files.
 WARNING  -  Documentation file 'index.md' contains a link to 'temp.md' which is not found in the documentation files.
 WARNING  -  Documentation file 'QuantityValue.md' contains a link to 'temp.md' which is not found in the documentation files.
+
+WARNING  -  Documentation file 'identifiers.md' contains a link to 'jsonschema/nmdc.context.jsonld' which is not found in the documentation files.
 WARNING  -  Documentation file 'schema-validation.md' contains a link to '../jsonschema/nmdc.schema.json' which is not found in the documentation files.
-WARNING  - .* "GET /images/NMDC_metadata_img1.png HTTP/1.1" code 404
-WARNING  - .* "GET /images/NMDC_metadata_img2.png HTTP/1.1" code 404
-WARNING  - .* "GET /images/NMDC_metadata_img3.png HTTP/1.1" code 404
-WARNING  - .* "GET /images/NMDC_metadata_img4.png HTTP/1.1" code 404
-WARNING  - .* "GET /images/NMDC_metadata_img5.png HTTP/1.1" code 404
-WARNING  - .* "GET /images/NMDC_metadata_img6.png HTTP/1.1" code 404
+
