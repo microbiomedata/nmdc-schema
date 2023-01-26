@@ -20,8 +20,9 @@ class TestData(unittest.TestCase):
     """Test data and datamodel."""
 
     def test_data(self):
+        # print(ROOT)
         for path in EXAMPLE_FILES:
-            print(path)
+            # print(path)
             obj = yaml_loader.load(path, target_class=Biosample)
-            print(yaml_dumper.dumps(obj))
+            # print(yaml_dumper.dumps(obj))
             assert obj
