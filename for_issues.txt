@@ -1,4 +1,4 @@
-CLI tools and utility code won't work anymore
+Exisiting CLI tools and utility code won't work until addressed
 GH raw URLs won't work any more
 module path may have changed
 
