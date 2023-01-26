@@ -1,25 +1,3 @@
-# investigation_field and investigation field
-
-#[tool.poetry.group.dev.dependencies]
-#black = "^22.10.0"
-#build = "^0.9.0"
-#check-jsonschema = "^0.19.2"
-#click-log = "^0.4.0"
-#cruft = "^2.12.0"
-#deepdiff = "^6.2.1"
-#docutils = "^0.19"
-#jq = "^1.3.0"
-#jupyter = "^1.0.0"
-#linkml = "^1.4.2"
-#mkdocs = "^1.4.2"
-#mkdocs-material = "^8.5.7"
-#mkdocs-mermaid2-plugin = "^0.6.0"
-#pandas = "^1.5.1"
-#pendulum = "^2.1.2"
-#pymongo = "^4.3.3"
-#python-dotenv = "^0.21.0"
-#twine = "^4.0.1"
-
 MAKEFLAGS += --warn-undefined-variables
 SHELL := bash
 .SHELLFLAGS := -eu -o pipefail -c
@@ -101,9 +79,6 @@ site: gen-project gendoc
 %.yaml: gen-project
 deploy: all mkd-gh-deploy
 
-#compile-sheets:
-#	$(RUN) sheets2linkml --gsheet-id $(SHEET_ID) $(SHEET_TABS) > $(SHEET_MODULE_PATH).tmp && mv $(SHEET_MODULE_PATH).tmp $(SHEET_MODULE_PATH)
-
 # In future this will be done by conversion
 gen-examples:
 	cp src/data/examples/* $(EXAMPLEDIR)
@@ -111,7 +86,6 @@ gen-examples:
 # generates all project files
 
 gen-project: $(PYMODEL)
-	# compile-sheets
 	$(RUN) gen-project \
 		--include jsonschema \
 		--include python \
@@ -127,21 +101,6 @@ gen-project: $(PYMODEL)
 		--exclude shex \
 		--exclude sqlddl \
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
-
-#INFO:root:Skipping excel as not in inclusion list
-#INFO:root:Skipping graphql as not in inclusion list
-#INFO:root:Skipping jsonld as not in inclusion list
-#INFO:root:Skipping jsonldcontext as not in inclusion list
-#INFO:root:Skipping jsonschema as not in inclusion list
-#INFO:root:Skipping markdown as not in inclusion list
-#INFO:root:Skipping owl as not in inclusion list
-#INFO:root:Skipping prefixmap as not in inclusion list
-#INFO:root:Skipping proto as not in inclusion list
-#INFO:root:Skipping python as not in inclusion list
-#INFO:root:Skipping shacl as not in inclusion list
-#INFO:root:Skipping shex as not in inclusion list
-#INFO:root:Skipping sqlddl as not in inclusion list
-
 
 test: test-schema test-python
 test-schema:
