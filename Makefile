@@ -1,5 +1,24 @@
 # investigation_field and investigation field
 
+#[tool.poetry.group.dev.dependencies]
+#black = "^22.10.0"
+#build = "^0.9.0"
+#check-jsonschema = "^0.19.2"
+#click-log = "^0.4.0"
+#cruft = "^2.12.0"
+#deepdiff = "^6.2.1"
+#docutils = "^0.19"
+#jq = "^1.3.0"
+#jupyter = "^1.0.0"
+#linkml = "^1.4.2"
+#mkdocs = "^1.4.2"
+#mkdocs-material = "^8.5.7"
+#mkdocs-mermaid2-plugin = "^0.6.0"
+#pandas = "^1.5.1"
+#pendulum = "^2.1.2"
+#pymongo = "^4.3.3"
+#python-dotenv = "^0.21.0"
+#twine = "^4.0.1"
 
 MAKEFLAGS += --warn-undefined-variables
 SHELL := bash
@@ -146,13 +165,13 @@ test-python:
 	$(RUN) python -m unittest discover
 
 lint:
-	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH) 
+	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH)
 
 check-config:
 	@(grep my-datamodel about.yaml > /dev/null && printf "\n**Project not configured**:\n\n  - Remember to edit 'about.yaml'\n\n" || exit 0)
 
 convert-examples-to-%:
-	$(patsubst %, $(RUN) linkml-convert  % -s $(SOURCE_SCHEMA_PATH) -C Person, $(shell find src/data/examples -name "*.yaml")) 
+	$(patsubst %, $(RUN) linkml-convert  % -s $(SOURCE_SCHEMA_PATH) -C Person, $(shell find src/data/examples -name "*.yaml"))
 
 examples/%.yaml: src/data/examples/%.yaml
 	$(RUN) linkml-convert -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
