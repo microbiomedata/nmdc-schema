@@ -1,0 +1,222 @@
+@prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
+@prefix attributes_of_biosamples: <https://w3id.org/microbiomedata/attributes-of-biosamples/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.com/depth_in_meters> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "depth_in_meters" ;
+    dcterms:title "Depth in meters" ;
+    rdfs:range linkml:Float ;
+    skos:definition "bare float representation of depth in meters" .
+
+<http://example.com/experimental_slot> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "experimental_slot" ;
+    rdfs:range linkml:String .
+
+<http://example.com/intlist> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "intlist" ;
+    rdfs:range linkml:Integer .
+
+linkml:SubsetDefinition a owl:Class ;
+    rdfs:label "subset_definition" .
+
+<https://w3id.org/microbiomedata/attributes-of-biosamples> a owl:Ontology ;
+    rdfs:label "attributes-of-biosamples" ;
+    IAO:0000700 <http://example.com/Biosample>,
+        <http://example.com/Collection>,
+        <http://example.com/Meeting> ;
+    dcterms:license "MIT" ;
+    dcterms:title "attributes-of-biosamples" ;
+    rdfs:seeAlso "https://microbiomedata.github.io/attributes-of-biosamples" ;
+    linkml:generation_date "2023-01-20T23:44:57" ;
+    linkml:metamodel_version "1.7.0" ;
+    linkml:source_file "attributes_of_biosamples.yaml" ;
+    linkml:source_file_date "2023-01-20T22:50:07" ;
+    linkml:source_file_size 676 .
+
+<http://example.com/Collection> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Collection" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <http://example.com/Meeting> ;
+            owl:onProperty <http://example.com/meetings> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <http://example.com/Biosample> ;
+            owl:onProperty <http://example.com/biosamples> ] ;
+    skos:definition "a collection of collections" .
+
+<http://example.com/biosamples> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "biosamples" ;
+    rdfs:range <http://example.com/Biosample> .
+
+<http://example.com/intval> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "intval" ;
+    rdfs:range linkml:Integer .
+
+<http://example.com/lat> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "lat" ;
+    rdfs:range <http://example.com/DecimalDegree> .
+
+<http://example.com/meeting_info> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "meeting_info" ;
+    rdfs:range <http://example.com/COMPASSPOINTS> .
+
+<http://example.com/meetings> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "meetings" ;
+    rdfs:range <http://example.com/Meeting> .
+
+<http://example.com/sometimes_absent> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "sometimes_absent" ;
+    rdfs:range linkml:String .
+
+linkml:TypeDefinition a owl:Class ;
+    rdfs:label "type_definition" .
+
+linkml:topValue a owl:DatatypeProperty ;
+    rdfs:label "value" .
+
+<http://example.com/COMPASSPOINTS#east> a <http://example.com/COMPASSPOINTS>,
+        owl:Class ;
+    rdfs:label "east" .
+
+<http://example.com/COMPASSPOINTS#north> a <http://example.com/COMPASSPOINTS>,
+        owl:Class ;
+    rdfs:label "north" .
+
+<http://example.com/COMPASSPOINTS#south> a <http://example.com/COMPASSPOINTS>,
+        owl:Class ;
+    rdfs:label "south" .
+
+<http://example.com/COMPASSPOINTS#west> a <http://example.com/COMPASSPOINTS>,
+        owl:Class ;
+    rdfs:label "west" .
+
+<http://example.com/DecimalDegree> a owl:Class,
+        linkml:TypeDefinition ;
+    rdfs:label "DecimalDegree" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:decimal ;
+            owl:onProperty linkml:topValue ;
+            owl:qualifiedCardinality 1 ] .
+
+<http://example.com/TIMESOFDAY#afternoon> a <http://example.com/TIMESOFDAY>,
+        owl:Class ;
+    rdfs:label "afternoon" .
+
+<http://example.com/TIMESOFDAY#evening> a <http://example.com/TIMESOFDAY>,
+        owl:Class ;
+    rdfs:label "evening" .
+
+<http://example.com/TIMESOFDAY#morning> a <http://example.com/TIMESOFDAY>,
+        owl:Class ;
+    rdfs:label "morning" .
+
+<http://example.com/TIMESOFDAY#night> a <http://example.com/TIMESOFDAY>,
+        owl:Class ;
+    rdfs:label "night" .
+
+<http://example.com/id> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "id" ;
+    rdfs:range linkml:String ;
+    rdfs:subPropertyOf <http://example.com/depth> ;
+    skos:altLabel "denoter",
+        "identifier" ;
+    skos:definition "value that points exclusively to one instances of a class" .
+
+<http://example.com/Biosample> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Biosample" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <http://example.com/DecimalDegree> ;
+            owl:onProperty <http://example.com/lat> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty <http://example.com/intval> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://example.com/id> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://example.com/depth> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://example.com/sometimes_absent> ;
+            owl:qualifiedCardinality 1 ] ;
+    skos:definition "something you can collect from the environment" .
+
+<http://example.com/Meeting> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Meeting" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <http://example.com/COMPASSPOINTS> ;
+            owl:onProperty <http://example.com/meeting_info> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://example.com/id> ;
+            owl:qualifiedCardinality 1 ] .
+
+<http://example.com/depth> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "depth" ;
+    dcterms:conformsTo "kindergarten stuff" ;
+    rdfs:range linkml:String ;
+    rdfs:seeAlso "https://en.wikipedia.org/wiki/Depth_(video_game)",
+        "https://en.wikipedia.org/wiki/Three-dimensional_space" ;
+    skos:closeMatch <http://w3id.org/mixs/0000018> ;
+    skos:definition "how far down" ;
+    skos:editorialNote "call mom",
+        "vote" ;
+    skos:exactMatch <http://example.com/depth> ;
+    skos:note "could be a bare number",
+        "could be a string with a number and a unit",
+        "could be a tuple" ;
+    linkml:examples "Example(value='2000', description=None)",
+        "Example(value='high', description=None)",
+        "Example(value='low', description=None)" ;
+    attributes_of_biosamples:spanish "profundidad" .
+
+linkml:ClassDefinition a owl:Class ;
+    rdfs:label "class_definition" .
+
+<http://example.com/TIMESOFDAY> a owl:Class,
+        linkml:EnumDefinition ;
+    rdfs:label "TIMES_OF_DAY" ;
+    owl:unionOf ( <http://example.com/TIMESOFDAY#afternoon> <http://example.com/TIMESOFDAY#evening> <http://example.com/TIMESOFDAY#morning> <http://example.com/TIMESOFDAY#night> ) ;
+    linkml:permissible_values <http://example.com/TIMESOFDAY#afternoon>,
+        <http://example.com/TIMESOFDAY#evening>,
+        <http://example.com/TIMESOFDAY#morning>,
+        <http://example.com/TIMESOFDAY#night> .
+
+<http://example.com/COMPASSPOINTS> a owl:Class,
+        linkml:EnumDefinition ;
+    rdfs:label "COMPASS_POINTS" ;
+    owl:unionOf ( <http://example.com/COMPASSPOINTS#east> <http://example.com/COMPASSPOINTS#north> <http://example.com/COMPASSPOINTS#south> <http://example.com/COMPASSPOINTS#west> ) ;
+    linkml:permissible_values <http://example.com/COMPASSPOINTS#east>,
+        <http://example.com/COMPASSPOINTS#north>,
+        <http://example.com/COMPASSPOINTS#south>,
+        <http://example.com/COMPASSPOINTS#west> .
+
+linkml:SlotDefinition a owl:Class ;
+    rdfs:label "slot_definition" .
+
+

@@ -1,0 +1,217 @@
+id: https://microbiomedata/schema/bioscales
+name: NMDC-Bioscales
+title: NMDC Schema support for Bioscales analytes
+description: >-
+  NMDC Schema support for Bioscales analytes
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+notes:
+  - "removed MS: http://purl.obolibrary.org/obo/MS_ prefix assignment"
+  - "should https://www.ornl.gov/content/bio-scales-0 be the 'source' for some of theses slots?"
+
+prefixes:
+  mixs: https://w3id.org/mixs/
+  dcterms: http://purl.org/dc/terms/
+  igsnvoc: https://igsn.org/voc/v1/
+  linkml: https://w3id.org/linkml/
+  nmdc: https://w3id.org/nmdc/
+  qud: http://qudt.org/1.1/schema/qudt#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  schema: http://schema.org/
+  sio: http://semanticscience.org/resource/SIO_
+  skos: http://www.w3.org/2004/02/skos/core#
+  wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
+
+default_prefix: nmdc
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+
+
+imports:
+  - basic_slots
+
+slots:
+  zinc:
+    name: zinc
+    aliases:
+      - zinc
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: mg/kg (ppm)
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of zinc in the sample
+    title: zinc
+    examples:
+      - value: 2.5 mg/kg
+    is_a: attribute
+    multivalued: false
+    range: QuantityValue
+    see_also:
+      - https://www.ornl.gov/content/bio-scales-0
+  manganese:
+    name: manganese
+    aliases:
+      - manganese
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: mg/kg (ppm)
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of manganese in the sample
+    title: manganese
+    examples:
+      - value: 24.7 mg/kg
+    see_also:
+      - https://www.ornl.gov/content/bio-scales-0
+    is_a: attribute
+    multivalued: false
+    range: QuantityValue
+
+  ammonium_nitrogen:
+    name: ammonium_nitrogen
+    aliases:
+      - ammonium_nitrogen
+      - NH4-N
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: mg/kg
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of ammonium nitrogen in the sample
+    title: ammonium nitrogen
+    examples:
+      - value: 2.3 mg/kg
+    see_also:
+      - https://www.ornl.gov/content/bio-scales-0
+    is_a: attribute
+    multivalued: false
+    range: QuantityValue
+
+  nitrate_nitrogen:
+    name: nitrate_nitrogen
+    aliases:
+      - nitrate_nitrogen
+      - NO3-N
+    comments:
+      - often below some specified limit of detection
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: mg/kg
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of nitrate nitrogen in the sample
+    title: nitrate_nitrogen
+    examples:
+      - value: 0.29 mg/kg
+    see_also:
+      - https://www.ornl.gov/content/bio-scales-0
+    is_a: attribute
+    multivalued: false
+    range: QuantityValue
+
+  nitrite_nitrogen:
+    name: nitrite_nitrogen
+    aliases:
+      - nitrite_nitrogen
+      - NO2-N
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: mg/kg
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of nitrite nitrogen in the sample
+    title: nitrite_nitrogen
+    examples:
+      - value: 1.2 mg/kg
+    see_also:
+      - https://www.ornl.gov/content/bio-scales-0
+    is_a: attribute
+    multivalued: false
+    range: QuantityValue
+
+
+  lbc_thirty:
+    name: lbc_thirty
+    comments:
+      - This is the mass of lime, in mg, needed to raise the pH of one kg of soil by one pH unit
+    aliases:
+      - lbc_thirty
+      - lbc30
+      - lime buffer capacity (at 30 minutes)
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: ppm CaCO3/pH
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: lime buffer capacity, determined after 30 minute incubation
+    title: lime buffer capacity (at 30 minutes)
+    examples:
+      - value: 543 mg/kg
+    see_also:
+      - https://www.ornl.gov/content/bio-scales-0
+      - https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF
+    is_a: attribute
+    multivalued: false
+    range: QuantityValue
+
+
+  lbceq:
+    name: lbceq
+    comments:
+      - This is the mass of lime, in mg, needed to raise the pH of one kg of soil by one pH unit
+    aliases:
+      - lbceq
+      - lime buffer capacity (at 5-day equilibrium)
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: ppm CaCO3/pH
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: lime buffer capacity, determined at equilibrium after 5 day incubation
+    title: lime buffer capacity (after 5 day incubation)
+    examples:
+      - value: 1575 mg/kg
+    see_also:
+      - https://www.ornl.gov/content/bio-scales-0
+    is_a: attribute
+    multivalued: false
+    range: QuantityValue

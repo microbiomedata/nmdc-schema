@@ -1,0 +1,284 @@
+id: https://microbiomedata/schema/annotation
+name: NMDC-Annotation
+title: Annotation Module for NMDC Schema
+description: >-
+  This module in the schema is for representing annotations including functional annotations of proteins and other gene products,
+  as well as controlled terms for describing things like metabolites
+default_range: string
+
+see_also:
+  - https://github.com/microbiomedata/nmdc-metadata/issues/176
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+
+notes:
+  - Removed slot_uri of rdf:type from type slot. Is OntologyClass an appropriate range?
+
+
+prefixes:
+  COG: https://unknown.to.linter.org/
+  EC: https://unknown.to.linter.org/
+  GO: http://purl.obolibrary.org/obo/GO_
+  KEGG_PATHWAY: http://identifiers.org/kegg.pathway/
+  KEGG.REACTION: http://identifiers.org/kegg.reaction/
+  MetaCyc: https://identifiers.org/metacyc.reaction/
+  MetaNetX: https://unknown.to.linter.org/
+  RHEA: http://identifiers.org/rhea/
+  RetroRules: https://unknown.to.linter.org/
+  SEED: http://identifiers.org/seed/
+  biolink: https://w3id.org/biolink/vocab/
+  linkml: https://w3id.org/linkml/
+  nmdc: https://w3id.org/nmdc/
+  KEGG.ORTHOLOGY: http://identifiers.org/kegg.orthology/
+
+default_prefix: nmdc
+
+imports:
+  - basic_slots
+  - core
+  - prov
+  - workflow_execution_activity
+
+classes:
+  GenomeFeature:
+    description: >-
+      A feature localized to an interval along a genome
+    comments:
+      - corresponds to an entry in GFF3
+    see_also:
+      - https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md
+    slot_usage:
+      seqid:
+        description: The ID of the landmark used to establish the coordinate system for the current feature.
+        range: string
+        required: true
+      type:
+        range: OntologyClass
+        description: >-
+          A type from the sequence ontology
+      start:
+        is_a: gff_coordinate
+        description: The start of the feature in positive 1-based integer coordinates
+        required: true
+        close_mappings:
+          - biolink:start_interbase_coordinate
+      end:
+        is_a: gff_coordinate
+        description: The end of the feature in positive 1-based integer coordinates
+        comments: >-
+          - "constraint: end > start"
+          - "For features that cross the origin of a circular feature,  end = the position of the end + the length of the landmark feature."
+        required: true
+        close_mappings:
+          - biolink:end_interbase_coordinate
+      strand:
+        description: >-
+          The strand on which a feature is located. Has a value of '+' (sense strand or forward strand) or '-' (anti-sense strand or reverse strand).
+        exact_mappings:
+          - biolink:strand
+      phase:
+        range: integer
+        minimum_value: 0
+        maximum_value: 0
+        description: >-
+          The phase for a coding sequence entity. For example, phase of a CDS as represented in a GFF3 with a value of 0, 1 or 2.
+        exact_mappings:
+          - biolink:phase
+      encodes:
+        range: GeneProduct
+        description: >-
+          The gene product encoded by this feature.
+          Typically this is used for a CDS feature or gene feature which will encode a protein.
+          It can also be used by a nc transcript ot gene feature that encoded a ncRNA
+        required: false
+      feature_type:
+        description: >-
+          TODO: Yuri to write
+
+  FunctionalAnnotationTerm:
+    aliases:
+      - function
+      - FunctionalAnnotation
+    is_a: OntologyClass
+    description: >-
+      Abstract grouping class for any term/descriptor that can be applied to a functional unit of a genome (protein, ncRNA, complex).
+    abstract: true
+    todos:
+      - decide if this should be used for product naming
+
+  Pathway:
+    aliases:
+      - biological process
+      - metabolic pathway
+      - signaling pathway
+    is_a: FunctionalAnnotationTerm
+    description: >-
+      A pathway is a sequence of steps/reactions carried out by an organism or community of organisms
+    slot_usage:
+      has_part:
+        range: Reaction
+        multivalued: true
+        description: >-
+          A pathway can be broken down to a series of reaction step
+    id_prefixes:
+      - KEGG_PATHWAY
+      - COG
+    exact_mappings:
+      - biolink:Pathway
+
+  Reaction:
+    is_a: FunctionalAnnotationTerm
+    description: >-
+      An individual biochemical transformation carried out by a functional unit of an organism, in which a collection of substrates are transformed into a collection of products.
+      Can also represent transporters
+    slot_usage:
+      left_participants:
+        is_a: has_participants
+        multivalued: true
+        range: ReactionParticipant
+      right_participants:
+        is_a: has_participants
+        multivalued: true
+        range: ReactionParticipant
+      direction:
+        description: >-
+          One of l->r, r->l, bidirectional, neutral
+      smarts_string:
+        range: string
+      is_diastereoselective:
+        range: boolean
+      is_stereo:
+        range: boolean
+      is_balanced:
+        range: boolean
+      is_transport:
+        range: boolean
+      is_fully_characterized:
+        range: boolean
+        description: >-
+          False if includes R-groups
+    id_prefixes:
+      - KEGG.REACTION
+      - RHEA
+      - MetaCyc
+      - EC
+      - GO
+      - MetaNetX
+      - SEED
+      - RetroRules
+    exact_mappings:
+      - biolink:MolecularActivity
+
+  ReactionParticipant:
+    description: >-
+      Instances of this link a reaction to a chemical entity participant
+    slot_usage:
+      chemical:
+        range: ChemicalEntity
+      stoichiometry:
+        range: integer
+
+  OrthologyGroup:
+    is_a: FunctionalAnnotationTerm
+    description: >-
+      A set of genes or gene products in which all members are orthologous
+    id_prefixes:
+      - CATH
+      - EGGNOG
+      - KEGG.ORTHOLOGY
+      - PANTHER.FAMILY
+      - PFAM
+      - SUPFAM
+      - TIGRFAM
+    exact_mappings:
+      - biolink:GeneFamily
+    notes:
+      - KEGG.ORTHOLOGY prefix is used for KO numbers
+
+  FunctionalAnnotation:
+    description: >-
+      An assignment of a function term (e.g. reaction or pathway) that is executed by a gene product, or which the gene product plays an active role in.
+      Functional annotations can be assigned manually by curators, or automatically in workflows. In the context of NMDC, all function annotation is performed
+      automatically, typically using HMM or Blast type methods
+    notes:
+      - "move id slot usage patterns to has_function slot usage?"
+    see_also:
+      - https://img.jgi.doe.gov/docs/functional-annotation.pdf
+      - https://github.com/microbiomedata/mg_annotation/blob/master/functional-annotation.wdl
+    slots:
+      - was_generated_by
+      - subject
+      - has_function
+    slot_usage:
+      has_function:
+        pattern: "^(KEGG_PATHWAY:\\w{2,4}\\d{5}|KEGG.REACTION:R\\d+|RHEA:\\d{5}|MetaCyc:[A-Za-z0-9+_.%-:]+|EC:\\d{1,2}(\\.\\d{0,3}){0,3}|GO:\\d{7}|MetaNetX:(MNXR\\d+|EMPTY)|SEED:\\w+|KEGG\\.ORTHOLOGY:K\\d+|EGGNOG:\\w+|PFAM:PF\\d{5}|TIGRFAM:TIGR\\d+|SUPFAM:\\w+|CATH:[1-6]\\.[0-9]+\\.[0-9]+\\.[0-9]+|PANTHER.FAMILY:PTHR\\d{5}(\\:SF\\d{1,3})?)$"
+        notes:
+          - this slot had been called id
+          - "Still missing patterns for COG and RetroRules."
+          - "These patterns aren't tied to the listed prefixes. A discussion about that possibility had been started, including the question of whether these lists are intended to be open examples or closed"
+      type:
+        range: OntologyClass
+        description: >-
+          TODO
+      was_generated_by:
+        description: >-
+          provenance for the annotation.
+        range: MetagenomeAnnotationActivity
+        notes:
+          - Note to be consistent with the rest of the NMDC schema we use the PROV annotation model, rather than GPAD
+    narrow_mappings:
+      - biolink:GeneToGoTermAssociation
+
+slots:
+
+  has_part: { }
+
+  chemical:
+    description: from reaction participant class
+  stoichiometry:
+    description: from reaction participant class
+
+  subject:
+    range: GeneProduct
+
+  has_function:
+    range: string
+    notes:
+      - "the range for has_function was asserted as functional_annotation_term/FunctionalAnnotationTerm,"
+      - "but is actually taking string arguments in MongoDB,"
+      - "and those are frequently fulltext, not CURIEs. MAM 2021-06-23"
+
+  has_participants:
+    abstract: true
+    exact_mappings:
+      - RO:0000057
+
+  gff_coordinate:
+    range: integer
+    minimum_value: 1
+    description: A positive 1-based integer coordinate indicating start or end
+    comments:
+      - "For features that cross the origin of a circular feature (e.g. most bacterial genomes, plasmids, and some viral genomes), the requirement for start to be less than or equal to end is satisfied by making end = the position of the end + the length of the landmark feature."
+
+  direction:
+  encodes:
+  end:
+  feature_type:
+  is_balanced:
+  is_diastereoselective:
+  is_fully_characterized:
+  is_stereo:
+  is_transport:
+  left_participants:
+  phase:
+  right_participants:
+  seqid:
+    todos:
+      - "change range from string to object"
+  smarts_string:
+  start:
+  strand:
+    todos:
+      - "set the range to an enum?"

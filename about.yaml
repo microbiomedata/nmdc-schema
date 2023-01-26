@@ -1,0 +1,6 @@
+name: nmdc_schema
+author: Mark Andrew Miller <mam@lbl.gov>
+description: Schema resources for the National Microbiome Data Collaborative (NMDC)
+source_schema_path: src/nmdc_schema/schema/nmdc.yaml
+google_sheet_id:
+google_sheet_tabs:

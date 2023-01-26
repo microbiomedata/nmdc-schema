@@ -1,0 +1,977 @@
+// a provence-generating activity
+message Activity
+ {
+  string id = 0
+  string name = 0
+  datetime startedAtTime = 0
+  datetime endedAtTime = 0
+  activity wasInformedBy = 0
+  agent wasAssociatedWith = 0
+  string used = 0
+ }
+// a provence-generating agent
+message Agent
+ {
+  agent actedOnBehalfOf = 0
+  activity wasInformedBy = 0
+ }
+message AnalyticalSample
+ {
+  string name = 0
+  string description = 0
+ repeated  string alternativeIdentifiers = 0
+  string id = 0
+ }
+// The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic value and the structured value
+message AttributeValue
+ {
+  string hasRawValue = 0
+  activity wasGeneratedBy = 0
+  string type = 0
+ }
+// Biological source material which can be characterized by an experiment.
+message Biosample
+ {
+  string name = 0
+  string description = 0
+  boolean embargoed = 0
+  fieldResearchSite collectedFrom = 0
+  string type = 0
+ repeated  string imgIdentifiers = 0
+  string sampName = 0
+ repeated  biosampleCategoryEnum biosampleCategories = 0
+ repeated  namedThing partOf = 0
+  string id = 0
+ repeated  string alternativeIdentifiers = 0
+ repeated  uriorcurie goldBiosampleIdentifiers = 0
+ repeated  uriorcurie insdcBiosampleIdentifiers = 0
+ repeated  uriorcurie emslBiosampleIdentifiers = 0
+ repeated  uriorcurie igsnBiosampleIdentifiers = 0
+  quantityValue agrochemAddition = 0
+  quantityValue alkalinity = 0
+  textValue alkalinityMethod = 0
+  quantityValue alkylDiethers = 0
+  quantityValue alt = 0
+  quantityValue alSat = 0
+  textValue alSatMeth = 0
+  quantityValue aminopeptAct = 0
+  quantityValue ammonium = 0
+  quantityValue annualPrecpt = 0
+  quantityValue annualTemp = 0
+  quantityValue bacteriaCarbProd = 0
+  quantityValue bishomohopanol = 0
+  quantityValue bromide = 0
+  quantityValue calcium = 0
+  quantityValue carbNitroRatio = 0
+  controlledTermValue chemAdministration = 0
+  quantityValue chloride = 0
+  quantityValue chlorophyll = 0
+  timestampValue collectionDate = 0
+  textValue curLandUse = 0
+  textValue curVegetation = 0
+  textValue curVegetationMeth = 0
+  textValue cropRotation = 0
+  quantityValue density = 0
+  quantityValue depth = 0
+  quantityValue dissCarbDioxide = 0
+  quantityValue dissHydrogen = 0
+  quantityValue dissInorgCarb = 0
+  quantityValue dissInorgPhosp = 0
+  quantityValue dissOrgCarb = 0
+  quantityValue dissOrgNitro = 0
+  quantityValue dissOxygen = 0
+  textValue drainageClass = 0
+  quantityValue elev = 0
+  textValue envPackage = 0
+  controlledIdentifiedTermValue envBroadScale = 0
+  controlledIdentifiedTermValue envLocalScale = 0
+  controlledIdentifiedTermValue envMedium = 0
+  string extremeEvent = 0
+  textValue faoClass = 0
+  string fire = 0
+  string flooding = 0
+  textValue geoLocName = 0
+  quantityValue glucosidaseAct = 0
+ repeated  quantityValue heavyMetals = 0
+ repeated  textValue heavyMetalsMeth = 0
+  geolocationValue latLon = 0
+  textValue linkAdditAnalys = 0
+  textValue linkClassInfo = 0
+  textValue linkClimateInfo = 0
+  textValue localClass = 0
+  textValue localClassMeth = 0
+  quantityValue magnesium = 0
+  quantityValue meanFrictVel = 0
+  quantityValue meanPeakFrictVel = 0
+  quantityValue miscParam = 0
+  quantityValue nAlkanes = 0
+  quantityValue nitrate = 0
+  quantityValue nitrite = 0
+  quantityValue orgMatter = 0
+  quantityValue orgNitro = 0
+  quantityValue organismCount = 0
+  textValue oxyStatSamp = 0
+  quantityValue partOrgCarb = 0
+  textValue perturbation = 0
+  quantityValue petroleumHydrocarb = 0
+  quantityValue ph = 0
+  textValue phMeth = 0
+  quantityValue phaeopigments = 0
+  quantityValue phosplipidFattAcid = 0
+  textValue poolDnaExtracts = 0
+  quantityValue potassium = 0
+  quantityValue pressure = 0
+  textValue profilePosition = 0
+  quantityValue redoxPotential = 0
+  quantityValue salinity = 0
+  textValue salinityMeth = 0
+  controlledTermValue sampMatProcess = 0
+  textValue sampStoreDur = 0
+  textValue sampStoreLoc = 0
+  string sampTaxonId = 0
+  quantityValue sampStoreTemp = 0
+  quantityValue sampVolWeDnaExt = 0
+  quantityValue seasonTemp = 0
+  quantityValue seasonPrecpt = 0
+  quantityValue sieving = 0
+  quantityValue sizeFracLow = 0
+  quantityValue sizeFracUp = 0
+  quantityValue slopeGradient = 0
+  quantityValue slopeAspect = 0
+  quantityValue sodium = 0
+  textValue soilType = 0
+  textValue soilTypeMeth = 0
+  textValue storeCond = 0
+  quantityValue sulfate = 0
+  quantityValue sulfide = 0
+  quantityValue temp = 0
+  textValue tillage = 0
+  textValue tidalStage = 0
+  quantityValue totCarb = 0
+  quantityValue totDepthWaterCol = 0
+  quantityValue totDissNitro = 0
+  quantityValue totOrgCarb = 0
+  textValue totOrgCMeth = 0
+  quantityValue totNitroContent = 0
+  string totNitroContMeth = 0
+  quantityValue totPhosp = 0
+ repeated  string waterContent = 0
+  string waterContSoilMeth = 0
+  string ecosystem = 0
+  string ecosystemCategory = 0
+  string ecosystemType = 0
+  string ecosystemSubtype = 0
+  string specificEcosystem = 0
+  string addDate = 0
+  string community = 0
+  string habitat = 0
+  string hostName = 0
+  string location = 0
+  string modDate = 0
+  string ncbiTaxonomyName = 0
+  string proportWoaTemperature = 0
+  string salinityCategory = 0
+  string sampleCollectionSite = 0
+  string solubleIronMicromol = 0
+  quantityValue subsurfaceDepth = 0
+  quantityValue airTempRegm = 0
+  textValue bioticRegm = 0
+  textValue bioticRelationship = 0
+  textValue climateEnvironment = 0
+  controlledTermValue experimentalFactor = 0
+  quantityValue gaseousEnvironment = 0
+  controlledTermValue growthFacil = 0
+  quantityValue humidityRegm = 0
+  quantityValue lightRegm = 0
+  quantityValue phosphate = 0
+  textValue relToOxygen = 0
+  string sampCollecMethod = 0
+  quantityValue sampSize = 0
+  textValue sourceMatId = 0
+  quantityValue wateringRegm = 0
+  string dnaAbsorb1 = 7
+  string dnaAbsorb2 = 8
+  string dnaCollectSite = 15
+  string dnaConcentration = 5
+  dnaContTypeEnum dnaContType = 10
+  string dnaContWell = 11
+  string dnaContainerId = 9
+  dnaDnaseEnum dnaDnase = 13
+  string dnaIsolateMeth = 16
+  string dnaOrganisms = 14
+  string dnaProjectContact = 18
+  string dnaSampId = 3
+  dnaSampleFormatEnum dnaSampleFormat = 12
+  string dnaSampleName = 4
+  string dnaSeqProject = 1
+  string dnaSeqProjectPi = 17
+  string dnaSeqProjectName = 2
+  string dnaVolume = 6
+  string proposalDna = 19
+  dnaseRnaEnum dnaseRna = 13
+  string proposalRna = 19
+  string rnaAbsorb1 = 7
+  string rnaAbsorb2 = 8
+  string rnaCollectSite = 15
+  string rnaConcentration = 5
+  rnaContTypeEnum rnaContType = 10
+  string rnaContWell = 11
+  string rnaContainerId = 9
+  string rnaIsolateMeth = 16
+  string rnaOrganisms = 14
+  string rnaProjectContact = 18
+  string rnaSampId = 3
+  rnaSampleFormatEnum rnaSampleFormat = 12
+  string rnaSampleName = 4
+  string rnaSeqProject = 1
+  string rnaSeqProjectPi = 17
+  string rnaSeqProjectName = 2
+  string rnaVolume = 6
+  string collectionDateInc = 2
+  string collectionTime = 1
+  string collectionTimeInc = 3
+  string experimentalFactorOther = 7
+  string filterMethod = 6
+  string isotopeExposure = 16
+  string microBiomassCMeth = 11
+  string microBiomassNMeth = 13
+  string microbialBiomassC = 10
+  string microbialBiomassN = 12
+  string nonMicrobBiomass = 8
+  string nonMicrobBiomassMethod = 9
+  string orgNitroMethod = 14
+  string otherTreatment = 15
+  string startDateInc = 4
+  string startTimeInc = 5
+  string projectId = 1
+  string replicateNumber = 6
+  string sampleShipped = 3
+  sampleTypeEnum sampleType = 2
+  string technicalReps = 5
+ repeated  analysisTypeEnum analysisType = 3
+ repeated  string sampleLink = 5
+  quantityValue zinc = 0
+  quantityValue manganese = 0
+  quantityValue ammoniumNitrogen = 0
+  quantityValue nitrateNitrogen = 0
+  quantityValue nitriteNitrogen = 0
+  quantityValue lbcThirty = 0
+  quantityValue lbceq = 0
+ }
+// A process that takes one or more biosamples as inputs and generates one or as outputs. Examples of outputs include samples cultivated from another sample or data objects created by instruments runs.
+message BiosampleProcessing
+ {
+  string name = 0
+  string description = 0
+ repeated  string alternativeIdentifiers = 0
+ repeated  biosample hasInput = 0
+  string id = 0
+ }
+// A value that is a boolean
+message BooleanValue
+ {
+  string hasRawValue = 0
+  activity wasGeneratedBy = 0
+  string type = 0
+  boolean hasBooleanValue = 0
+ }
+// An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs. There may be different terms for distinct acid-base forms, protonation states
+message ChemicalEntity
+ {
+  string id = 0
+  string name = 0
+  string description = 0
+ repeated  string alternativeIdentifiers = 0
+  string inchi = 0
+  string inchiKey = 0
+ repeated  string smiles = 0
+  string chemicalFormula = 0
+ }
+message CollectingBiosamplesFromSite
+ {
+  string name = 0
+  string description = 0
+ repeated  string alternativeIdentifiers = 0
+  agent participatingAgent = 0
+ repeated  site hasInputs = 0
+ repeated  biosample hasOutputs = 0
+  string id = 0
+ }
+// A controlled term or class from an ontology, requiring the presence of term with an id
+message ControlledIdentifiedTermValue
+ {
+  string hasRawValue = 0
+  activity wasGeneratedBy = 0
+  string type = 0
+  ontologyClass term = 0
+ }
+// A controlled term or class from an ontology
+message ControlledTermValue
+ {
+  string hasRawValue = 0
+  activity wasGeneratedBy = 0
+  string type = 0
+  ontologyClass term = 0
+ }
+// This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role (https://casrai.org/credit/) and for a person value Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0
+message CreditAssociation
+ {
+  personValue appliesToPerson = 0
+  creditEnum appliedRole = 0
+ repeated  creditEnum appliedRoles = 0
+  string type = 0
+ }
+// An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest
+message Database
+ {
+ repeated  workflowExecutionActivity activitySet = 0
+ repeated  biosample biosampleSet = 0
+ repeated  dataObject dataObjectSet = 0
+ repeated  dissolvingActivity dissolvingActivitySet = 0
+ repeated  functionalAnnotation functionalAnnotationSet = 0
+ repeated  genomeFeature genomeFeatureSet = 0
+ repeated  magsAnalysisActivity magsActivitySet = 0
+ repeated  materialSample materialSampleSet = 0
+ repeated  materialSamplingActivity materialSamplingActivitySet = 0
+ repeated  metabolomicsAnalysisActivity metabolomicsAnalysisActivitySet = 0
+ repeated  metagenomeAnnotationActivity metagenomeAnnotationActivitySet = 0
+ repeated  metagenomeAssembly metagenomeAssemblySet = 0
+ repeated  metaproteomicsAnalysisActivity metaproteomicsAnalysisActivitySet = 0
+ repeated  metatranscriptomeActivity metatranscriptomeActivitySet = 0
+ repeated  nomAnalysisActivity nomAnalysisActivitySet = 0
+ repeated  omicsProcessing omicsProcessingSet = 0
+ repeated  reactionActivity reactionActivitySet = 0
+ repeated  readQcAnalysisActivity readQcAnalysisActivitySet = 0
+ repeated  readBasedTaxonomyAnalysisActivity readBasedTaxonomyAnalysisActivitySet = 0
+ repeated  study studySet = 0
+ repeated  fieldResearchSite fieldResearchSiteSet = 0
+ repeated  collectingBiosamplesFromSite collectingBiosamplesFromSiteSet = 0
+  string dateCreated = 0
+  string etlSoftwareVersion = 0
+ }
+// An object that primarily consists of symbols that represent information.   Files, records, and omics data are examples of data objects.
+message DataObject
+ {
+ repeated  string alternativeIdentifiers = 0
+  bytes fileSizeBytes = 0
+  string md5Checksum = 0
+  fileTypeEnum dataObjectType = 0
+  string compressionType = 0
+  activity wasGeneratedBy = 0
+  string url = 0
+  string type = 0
+  string name = 0
+  string description = 0
+  string id = 0
+ }
+message DissolvingActivity
+ {
+  labDevice dissolutionAidedBy = 0
+  solventEnum dissolutionReagent = 0
+  quantityValue dissolutionVolume = 0
+  materialContainer dissolvedIn = 0
+  materialSample materialInput = 0
+  materialSample materialOutput = 0
+ }
+message EnvironmentalMaterialTerm
+ {
+  string id = 0
+  string name = 0
+  string description = 0
+ repeated  string alternativeIdentifiers = 0
+ }
+// A site, outside of a laboratory, from which biosamples may be collected.
+message FieldResearchSite
+ {
+  string name = 0
+  string description = 0
+ repeated  string alternativeIdentifiers = 0
+  string id = 0
+ }
+// An assignment of a function term (e.g. reaction or pathway) that is executed by a gene product, or which the gene product plays an active role in. Functional annotations can be assigned manually by curators, or automatically in workflows. In the context of NMDC, all function annotation is performed automatically, typically using HMM or Blast type methods
+message FunctionalAnnotation
+ {
+  metagenomeAnnotationActivity wasGeneratedBy = 0
+  geneProduct subject = 0
+  string hasFunction = 0
+  ontologyClass type = 0
+ }
+// A molecule encoded by a gene that has an evolved function
+message GeneProduct
+ {
+  string id = 0
+  string name = 0
+  string description = 0
+ repeated  string alternativeIdentifiers = 0
+ }
+// A feature localized to an interval along a genome
+message GenomeFeature
+ {
+  string seqid = 0
+  ontologyClass type = 0
+  integer start = 0
+  integer end = 0
+  string strand = 0
+  integer phase = 0
+  geneProduct encodes = 0
+  string featureType = 0
+ }
+// A normalized value for a location on the earth's surface
+message GeolocationValue
+ {
+  activity wasGeneratedBy = 0
+  string type = 0
+  decimalDegree latitude = 0
+  decimalDegree longitude = 0
+  string hasRawValue = 0
+ }
+// An attribute value representing an image.
+message ImageValue
+ {
+  string hasRawValue = 0
+  activity wasGeneratedBy = 0
+  string type = 0
+  string url = 0
+  string description = 0
+  string displayOrder = 0
+ }
+// A material entity that is designed to perform a function in a scientific investigation, but is not a reagent[OBI].
+message Instrument
+ {
+  string name = 0
+  string description = 0
+ repeated  string alternativeIdentifiers = 0
+  string id = 0
+ }
+// A value that is an integer
+message IntegerValue
+ {
+  string hasRawValue = 0
+  activity wasGeneratedBy = 0
+  string type = 0
+  float hasNumericValue = 0
+ }
+message LabDevice
+ {
+  deviceTypeEnum deviceType = 0
+  quantityValue activitySpeed = 0
+  quantityValue activityTemperature = 0
+  quantityValue activityTime = 0
+ }
+message MagBin
+ {
+  string type = 0
+  string binName = 0
+  integer numberOfContig = 0
+  float completeness = 0
+  float contamination = 0
+  integer geneCount = 0
+  string binQuality = 0
+  integer num16s = 0
+  integer num5s = 0
+  integer num23s = 0
+  integer numTRna = 0
+  string gtdbtkDomain = 0
+  string gtdbtkPhylum = 0
+  string gtdbtkClass = 0
+  string gtdbtkOrder = 0
+  string gtdbtkFamily = 0
+  string gtdbtkGenus = 0
+  string gtdbtkSpecies = 0
+ }
+// A workflow execution activity that uses computational binning tools to group assembled contigs into genomes
+message MagsAnalysisActivity
+ {
+  string name = 0
+  string used = 0
+  string executionResource = 0
+  string gitUrl = 0
+ repeated  namedThing hasInput = 0
+ repeated  namedThing hasOutput = 0
+ repeated  namedThing partOf = 0
+  workflowExecutionActivity wasAssociatedWith = 0
+  datetime startedAtTime = 0
+  datetime endedAtTime = 0
+  activity wasInformedBy = 0
+  string type = 0
+  integer inputContigNum = 0
+  integer binnedContigNum = 0
+  integer tooShortContigNum = 0
+  integer lowDepthContigNum = 0
+  integer unbinnedContigNum = 0
+ repeated  magBin magsList = 0
+  string id = 0
+ }
+message MaterialContainer
+ {
+  quantityValue containerSize = 0
+  containerTypeEnum containerType = 0
+ }
+message MaterialSample
+ {
+  string name = 0
+  string description = 0
+ repeated  string alternativeIdentifiers = 0
+  string id = 0
+ }
+message MaterialSamplingActivity
+ {
+  quantityValue amountCollected = 0
+  materialContainer collectedInto = 0
+  biosample biosampleInput = 0
+  materialSample materialOutput = 0
+  samplingMethodEnum samplingMethod = 0
+ }
+// This is used to link a metabolomics analysis workflow to a specific metabolite
+message MetaboliteQuantification
+ {
+ repeated  string alternativeIdentifiers = 0
+  chemicalEntity metaboliteQuantified = 0
+  float highestSimilarityScore = 0
+ }
+message MetabolomicsAnalysisActivity
+ {
+  string name = 0
+  string executionResource = 0
+  string gitUrl = 0
+ repeated  namedThing hasInput = 0
+ repeated  namedThing hasOutput = 0
+ repeated  namedThing partOf = 0
+  workflowExecutionActivity wasAssociatedWith = 0
+  datetime startedAtTime = 0
+  datetime endedAtTime = 0
+  activity wasInformedBy = 0
+  string type = 0
+  instrument used = 0
+ repeated  metaboliteQuantification hasMetaboliteQuantifications = 0
+  string hasCalibration = 0
+  string id = 0
+ }
+// A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
+message MetagenomeAnnotationActivity
+ {
+  string name = 0
+  string used = 0
+  string executionResource = 0
+  string gitUrl = 0
+ repeated  namedThing hasInput = 0
+ repeated  namedThing hasOutput = 0
+ repeated  namedThing partOf = 0
+  workflowExecutionActivity wasAssociatedWith = 0
+  datetime startedAtTime = 0
+  datetime endedAtTime = 0
+  activity wasInformedBy = 0
+  string type = 0
+ repeated  uriorcurie goldAnalysisProjectIdentifiers = 0
+  string id = 0
+ }
+// A workflow execution activity that converts sequencing reads into an assembled metagenome.
+message MetagenomeAssembly
+ {
+  string name = 0
+  string used = 0
+  string executionResource = 0
+  string gitUrl = 0
+ repeated  namedThing hasInput = 0
+ repeated  namedThing hasOutput = 0
+ repeated  namedThing partOf = 0
+  workflowExecutionActivity wasAssociatedWith = 0
+  datetime startedAtTime = 0
+  datetime endedAtTime = 0
+  activity wasInformedBy = 0
+  string type = 0
+  float asmScore = 0
+  float scaffolds = 0
+  float scafLogsum = 0
+  float scafPowsum = 0
+  float scafMax = 0
+  float scafBp = 0
+  float scafN50 = 0
+  float scafN90 = 0
+  float scafL50 = 0
+  float scafL90 = 0
+  float scafNGt50k = 0
+  float scafLGt50k = 0
+  float scafPctGt50k = 0
+  float contigs = 0
+  float contigBp = 0
+  float ctgN50 = 0
+  float ctgL50 = 0
+  float ctgN90 = 0
+  float ctgL90 = 0
+  float ctgLogsum = 0
+  float ctgPowsum = 0
+  float ctgMax = 0
+  float gapPct = 0
+  float gcStd = 0
+  float gcAvg = 0
+  float numInputReads = 0
+  float numAlignedReads = 0
+  string insdcAssemblyIdentifiers = 0
+  string id = 0
+ }
+message MetaproteomicsAnalysisActivity
+ {
+  string name = 0
+  string executionResource = 0
+  string gitUrl = 0
+ repeated  namedThing hasInput = 0
+ repeated  namedThing hasOutput = 0
+ repeated  namedThing partOf = 0
+  workflowExecutionActivity wasAssociatedWith = 0
+  datetime startedAtTime = 0
+  datetime endedAtTime = 0
+  activity wasInformedBy = 0
+  string type = 0
+  instrument used = 0
+ repeated  peptideQuantification hasPeptideQuantifications = 0
+  string id = 0
+ }
+// A metatranscriptome activity that e.g. pools assembly and annotation activity.
+message MetatranscriptomeActivity
+ {
+  string name = 0
+  string used = 0
+  string executionResource = 0
+  string gitUrl = 0
+ repeated  namedThing hasInput = 0
+ repeated  namedThing hasOutput = 0
+ repeated  namedThing partOf = 0
+  workflowExecutionActivity wasAssociatedWith = 0
+  datetime startedAtTime = 0
+  datetime endedAtTime = 0
+  activity wasInformedBy = 0
+  string type = 0
+  string id = 0
+ }
+message MetatranscriptomeAnnotationActivity
+ {
+  string name = 0
+  string used = 0
+  string executionResource = 0
+  string gitUrl = 0
+ repeated  namedThing hasInput = 0
+ repeated  namedThing hasOutput = 0
+ repeated  namedThing partOf = 0
+  workflowExecutionActivity wasAssociatedWith = 0
+  datetime startedAtTime = 0
+  datetime endedAtTime = 0
+  activity wasInformedBy = 0
+  string type = 0
+ repeated  uriorcurie goldAnalysisProjectIdentifiers = 0
+  string id = 0
+ }
+message MetatranscriptomeAssembly
+ {
+  string name = 0
+  string used = 0
+  string executionResource = 0
+  string gitUrl = 0
+ repeated  namedThing hasInput = 0
+ repeated  namedThing hasOutput = 0
+ repeated  namedThing partOf = 0
+  string type = 0
+  workflowExecutionActivity wasAssociatedWith = 0
+  datetime startedAtTime = 0
+  datetime endedAtTime = 0
+  activity wasInformedBy = 0
+  float asmScore = 0
+  float scaffolds = 0
+  float scafLogsum = 0
+  float scafPowsum = 0
+  float scafMax = 0
+  float scafBp = 0
+  float scafN50 = 0
+  float scafN90 = 0
+  float scafL50 = 0
+  float scafL90 = 0
+  float scafNGt50k = 0
+  float scafLGt50k = 0
+  float scafPctGt50k = 0
+  float contigs = 0
+  float contigBp = 0
+  float ctgN50 = 0
+  float ctgL50 = 0
+  float ctgN90 = 0
+  float ctgL90 = 0
+  float ctgLogsum = 0
+  float ctgPowsum = 0
+  float ctgMax = 0
+  float gapPct = 0
+  float gcStd = 0
+  float gcAvg = 0
+  float numInputReads = 0
+  float numAlignedReads = 0
+  string insdcAssemblyIdentifiers = 0
+  string id = 0
+ }
+message NomAnalysisActivity
+ {
+  string name = 0
+  string executionResource = 0
+  string gitUrl = 0
+ repeated  namedThing hasInput = 0
+ repeated  namedThing hasOutput = 0
+ repeated  namedThing partOf = 0
+  workflowExecutionActivity wasAssociatedWith = 0
+  datetime startedAtTime = 0
+  datetime endedAtTime = 0
+  activity wasInformedBy = 0
+  string type = 0
+  instrument used = 0
+  string hasCalibration = 0
+  string id = 0
+ }
+// The methods and processes used to generate omics data from a biosample or organism.
+message OmicsProcessing
+ {
+  string name = 0
+  string description = 0
+ repeated  string alternativeIdentifiers = 0
+  string addDate = 0
+  string modDate = 0
+ repeated  namedThing hasInput = 0
+ repeated  namedThing hasOutput = 0
+  string instrumentName = 0
+  string ncbiProjectName = 0
+  controlledTermValue omicsType = 0
+ repeated  namedThing partOf = 0
+  personValue principalInvestigator = 0
+  processingInstitutionEnum processingInstitution = 0
+  string type = 0
+ repeated  uriorcurie goldSequencingProjectIdentifiers = 0
+ repeated  uriorcurie insdcExperimentIdentifiers = 0
+  quantityValue sampVolWeDnaExt = 0
+  textValue nuclAcidExt = 0
+  textValue nuclAcidAmp = 0
+  textValue targetGene = 0
+  textValue targetSubfragment = 0
+  textValue pcrPrimers = 0
+  textValue pcrCond = 0
+  textValue seqMeth = 0
+  textValue seqQualityCheck = 0
+  textValue chimeraCheck = 0
+  string id = 0
+ }
+message OntologyClass
+ {
+  string id = 0
+  string name = 0
+  string description = 0
+ repeated  string alternativeIdentifiers = 0
+ }
+// A set of genes or gene products in which all members are orthologous
+message OrthologyGroup
+ {
+  string id = 0
+  string name = 0
+  string description = 0
+ repeated  string alternativeIdentifiers = 0
+ }
+// A pathway is a sequence of steps/reactions carried out by an organism or community of organisms
+message Pathway
+ {
+  string id = 0
+  string name = 0
+  string description = 0
+ repeated  string alternativeIdentifiers = 0
+ repeated  reaction hasPart = 0
+ }
+// This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information
+message PeptideQuantification
+ {
+  string peptideSequence = 0
+  geneProduct bestProtein = 0
+ repeated  geneProduct allProteins = 0
+  float minQValue = 0
+  integer peptideSpectralCount = 0
+  integer peptideSumMasicAbundance = 0
+ }
+// represents a person, such as a researcher
+message Person
+ {
+  string name = 0
+  string description = 0
+ repeated  string alternativeIdentifiers = 0
+  string id = 0
+ }
+// An attribute value representing a person
+message PersonValue
+ {
+  activity wasGeneratedBy = 0
+  string type = 0
+  string orcid = 0
+  string profileImageUrl = 0
+  string email = 0
+  string name = 0
+ repeated  string websites = 0
+  string hasRawValue = 0
+ }
+// This is used to link a metaproteomics analysis workflow to a specific protein
+message ProteinQuantification
+ {
+  geneProduct bestProtein = 0
+ repeated  geneProduct allProteins = 0
+  integer peptideSequenceCount = 0
+  integer proteinSpectralCount = 0
+  integer proteinSumMasicAbundance = 0
+ }
+// A simple quantity, e.g. 2cm
+message QuantityValue
+ {
+  activity wasGeneratedBy = 0
+  string type = 0
+  unit hasUnit = 0
+  double hasNumericValue = 0
+  float hasMinimumNumericValue = 0
+  float hasMaximumNumericValue = 0
+  string hasRawValue = 0
+ }
+// An individual biochemical transformation carried out by a functional unit of an organism, in which a collection of substrates are transformed into a collection of products. Can also represent transporters
+message Reaction
+ {
+  string id = 0
+  string name = 0
+  string description = 0
+ repeated  string alternativeIdentifiers = 0
+ repeated  reactionParticipant leftParticipants = 0
+ repeated  reactionParticipant rightParticipants = 0
+  string direction = 0
+  string smartsString = 0
+  boolean isDiastereoselective = 0
+  boolean isStereo = 0
+  boolean isBalanced = 0
+  boolean isTransport = 0
+  boolean isFullyCharacterized = 0
+ }
+message ReactionActivity
+ {
+  materialSample materialInput = 0
+  materialSample materialOutput = 0
+  labDevice reactionAidedBy = 0
+  string reactionTemperature = 0
+  quantityValue reactionTime = 0
+ }
+// Instances of this link a reaction to a chemical entity participant
+message ReactionParticipant
+ {
+  chemicalEntity chemical = 0
+  integer stoichiometry = 0
+ }
+// A workflow execution activity that performs taxonomy classification using sequencing reads
+message ReadBasedTaxonomyAnalysisActivity
+ {
+  string name = 0
+  string used = 0
+  string executionResource = 0
+  string gitUrl = 0
+ repeated  namedThing hasInput = 0
+ repeated  namedThing hasOutput = 0
+ repeated  namedThing partOf = 0
+  workflowExecutionActivity wasAssociatedWith = 0
+  datetime startedAtTime = 0
+  datetime endedAtTime = 0
+  activity wasInformedBy = 0
+  string type = 0
+  string id = 0
+ }
+// A workflow execution activity that performs quality control on raw Illumina reads including quality trimming, artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant removal
+message ReadQcAnalysisActivity
+ {
+  string name = 0
+  string used = 0
+  string executionResource = 0
+  string gitUrl = 0
+ repeated  namedThing partOf = 0
+  workflowExecutionActivity wasAssociatedWith = 0
+  datetime startedAtTime = 0
+  datetime endedAtTime = 0
+  activity wasInformedBy = 0
+  string type = 0
+  float inputReadCount = 0
+  float inputBaseCount = 0
+  float outputReadCount = 0
+  float outputBaseCount = 0
+  float inputReadBases = 0
+  float outputReadBases = 0
+ repeated  namedThing hasInput = 0
+ repeated  namedThing hasOutput = 0
+  string id = 0
+ }
+// A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.
+message Study
+ {
+  string id = 0
+ repeated  string alternativeIdentifiers = 0
+  string massiveStudyIdentifier = 0
+  string relatedIdentifiers = 0
+  string emslProposalIdentifier = 0
+  string emslProposalDoi = 0
+ repeated  uriorcurie goldStudyIdentifiers = 0
+  string mgnifyProjectIdentifiers = 0
+  string ecosystem = 0
+  string ecosystemCategory = 0
+  string ecosystemType = 0
+  string ecosystemSubtype = 0
+  string specificEcosystem = 0
+  personValue principalInvestigator = 0
+  attributeValue doi = 0
+  string title = 0
+ repeated  string alternativeTitles = 0
+ repeated  string alternativeDescriptions = 0
+ repeated  string alternativeNames = 0
+  string abstract = 0
+  string objective = 0
+ repeated  string websites = 0
+ repeated  string publications = 0
+ repeated  string essDiveDatasets = 0
+  string type = 0
+ repeated  string relevantProtocols = 0
+ repeated  string fundingSources = 0
+ repeated  creditAssociation hasCreditAssociations = 0
+ repeated  imageValue studyImage = 0
+  string name = 0
+  string description = 0
+  string notes = 0
+  string insdcBioprojectIdentifiers = 0
+  string emslProjectIdentifier = 0
+ }
+// A basic string value
+message TextValue
+ {
+  string hasRawValue = 0
+  activity wasGeneratedBy = 0
+  string type = 0
+  languageCode language = 0
+ }
+// A value that is a timestamp. The range should be ISO-8601
+message TimestampValue
+ {
+  string hasRawValue = 0
+  activity wasGeneratedBy = 0
+  string type = 0
+ }
+// A value that is a string that conforms to URL syntax
+message UrlValue
+ {
+  string hasRawValue = 0
+  activity wasGeneratedBy = 0
+  string type = 0
+ }
+// Represents an instance of an execution of a particular workflow
+message WorkflowExecutionActivity
+ {
+  string name = 0
+  string used = 0
+  string executionResource = 0
+  string gitUrl = 0
+ repeated  namedThing hasInput = 0
+ repeated  namedThing hasOutput = 0
+ repeated  namedThing partOf = 0
+  string type = 0
+  workflowExecutionActivity wasAssociatedWith = 0
+  datetime startedAtTime = 0
+  datetime endedAtTime = 0
+  activity wasInformedBy = 0
+  string id = 0
+ }

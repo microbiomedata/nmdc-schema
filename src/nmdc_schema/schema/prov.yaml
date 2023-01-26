@@ -1,0 +1,99 @@
+id: https://microbiomedata/schema/prov
+name: NMDC-PROV
+title: NMDC Rendering of prov schema
+description: >-
+  See https://www.w3.org/TR/prov-o/
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  nmdc: https://w3id.org/nmdc/
+  prov: http://www.w3.org/ns/prov#
+
+default_prefix: nmdc
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+
+
+imports:
+  - basic_slots
+
+
+classes:
+
+  Activity:
+    description: "a provence-generating activity"
+    slots:
+      - id
+      - name
+      - started_at_time
+      - ended_at_time
+      - was_informed_by
+      - was_associated_with
+      - used
+    mappings:
+      - prov:Activity
+    slot_usage:
+      id:
+        structured_pattern:
+          todos:
+            - remove the static pattern once the minter can generate ids that satisfy this structured_pattern and gen-linkml can expand the structured_pattern
+          syntax: "{id_nmdc_prefix}:act-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
+
+  Agent:
+    description: "a provence-generating agent"
+    slots:
+      - acted_on_behalf_of
+      - was_informed_by
+    mappings:
+      - prov:Agent
+
+slots:
+
+  started_at_time:
+    range: datetime
+    pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
+    notes: >-
+      The regex for ISO-8601 format was taken from here: https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/
+      It may not be complete, but it is good enough for now.
+    mappings:
+      - prov:startedAtTime
+
+  ended_at_time:
+    range: datetime
+    pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
+    notes: >-
+      The regex for ISO-8601 format was taken from here: https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/
+      It may not be complete, but it is good enough for now.
+    mappings:
+      - prov:endedAtTime
+
+  was_informed_by:
+    range: Activity
+    mappings:
+      - prov:wasInformedBy
+
+  was_associated_with:
+    range: Agent
+    mappings:
+      - prov:wasAssociatedWith
+
+  acted_on_behalf_of:
+    range: Agent
+    mappings:
+      - prov:actedOnBehalfOf
+
+  was_generated_by:
+    range: Activity
+    mappings:
+      - prov:wasGeneratedBy
+
+  used:
+    domain: Activity
+    mappings:
+      - prov:used

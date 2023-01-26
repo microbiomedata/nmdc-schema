@@ -1,0 +1,320 @@
+name: jgi_metatranscriptomics
+description: This file defines terms that appear in the 'JGI-Metatranscriptomics'
+  section of the NMDC sample metadata submission portal, which is implemented with
+  DataHarmonizer as of Spring 2022
+title: 'NMDC Schema supplement for Submission Portal: JGI-Metatranscriptomics'
+id: https://microbiomedata/schema/jgi_metatranscriptomics
+imports:
+- linkml:types
+license: 'license: https://creativecommons.org/publicdomain/zero/1.0/'
+prefixes:
+- prefix_prefix: linkml
+  prefix_reference: https://w3id.org/linkml/
+- prefix_prefix: nmdc
+  prefix_reference: https://w3id.org/nmdc/
+default_prefix: nmdc
+default_range: string
+enums:
+  dnase_rna_enum:
+    name: dnase_rna_enum
+    from_schema: https://example.com/nmdc_dh
+    permissible_values:
+      'no':
+        text: 'no'
+      'yes':
+        text: 'yes'
+  rna_cont_type_enum:
+    name: rna_cont_type_enum
+    from_schema: https://example.com/nmdc_dh
+    permissible_values:
+      plate:
+        text: plate
+      tube:
+        text: tube
+  rna_sample_format_enum:
+    name: rna_sample_format_enum
+    from_schema: https://example.com/nmdc_dh
+    permissible_values:
+      10 mM Tris-HCl:
+        text: 10 mM Tris-HCl
+      DNAStable:
+        text: DNAStable
+      Ethanol:
+        text: Ethanol
+      Low EDTA TE:
+        text: Low EDTA TE
+      MDA reaction buffer:
+        text: MDA reaction buffer
+      PBS:
+        text: PBS
+      Pellet:
+        text: Pellet
+      RNAStable:
+        text: RNAStable
+      TE:
+        text: TE
+      Water:
+        text: Water
+      Gentegra-DNA:
+      Gentegra-RNA:
+slots:
+  dnase_rna:
+    name: dnase_rna
+    title: DNase treated
+    comments:
+    - Note DNAse treatment is required for all RNA samples.
+    examples:
+    - value: 'no'
+    from_schema: https://example.com/nmdc_dh
+    rank: 13
+    slot_group: JGI-Metatranscriptomics
+    range: dnase_rna_enum
+    required: false
+    recommended: true
+  proposal_rna:
+    name: proposal_rna
+    title: RNA proposal ID
+    comments:
+    - Do not edit these values. A template will be provided by NMDC in which these
+      values have been pre-filled.
+    examples:
+    - value: '504000'
+    from_schema: https://example.com/nmdc_dh
+    rank: 19
+    string_serialization: '{text}'
+    slot_group: JGI-Metatranscriptomics
+    required: false
+    recommended: true
+  rna_absorb1:
+    name: rna_absorb1
+    description: 260/280 measurement of RNA sample purity
+    title: RNA absorbance 260/280
+    comments:
+    - Recommended value is between 1 and 3.
+    examples:
+    - value: '2.02'
+    from_schema: https://example.com/nmdc_dh
+    rank: 7
+    string_serialization: '{float}'
+    slot_group: JGI-Metatranscriptomics
+    recommended: true
+  rna_absorb2:
+    name: rna_absorb2
+    description: 260/230 measurement of RNA sample purity
+    title: RNA absorbance 260/230
+    comments:
+    - Recommended value is between 1 and 3.
+    examples:
+    - value: '2.02'
+    from_schema: https://example.com/nmdc_dh
+    rank: 8
+    string_serialization: '{float}'
+    slot_group: JGI-Metatranscriptomics
+    recommended: true
+  rna_collect_site:
+    name: rna_collect_site
+    description: Provide information on the site your RNA sample was collected from
+    title: RNA collection site
+    examples:
+    - value: untreated pond water
+    from_schema: https://example.com/nmdc_dh
+    rank: 15
+    string_serialization: '{text}'
+    slot_group: JGI-Metatranscriptomics
+    required: false
+    recommended: true
+  rna_concentration:
+    name: rna_concentration
+    title: RNA concentration in ng/ul
+    comments:
+    - Units must be in ng/uL. Enter the numerical part only. Must be calculated using
+      a fluorometric method. Acceptable values are 0-2000.
+    examples:
+    - value: '100'
+    from_schema: https://example.com/nmdc_dh
+    rank: 5
+    string_serialization: '{float}'
+    slot_group: JGI-Metatranscriptomics
+    required: false
+    recommended: true
+    minimum_value: 0
+    maximum_value: 1000
+  rna_cont_type:
+    name: rna_cont_type
+    description: Tube or plate (96-well)
+    title: RNA container type
+    examples:
+    - value: plate
+    from_schema: https://example.com/nmdc_dh
+    rank: 10
+    slot_group: JGI-Metatranscriptomics
+    range: rna_cont_type_enum
+    required: false
+    recommended: true
+  rna_cont_well:
+    name: rna_cont_well
+    title: RNA plate position
+    comments:
+    - Required when 'plate' is selected for container type.
+    - Leave blank if the sample will be shipped in a tube.
+    - JGI will not process samples in corner wells, so A1, A12, H1 and H12 will not pass validation.
+    - For partial plates, fill by columns, like B1-G1,A2-H2,A3-D3 (NOT A2-A11,B1-B8).
+    examples:
+    - value: B2
+    from_schema: https://example.com/nmdc_dh
+    rank: 11
+    string_serialization: '{96 well plate pos}'
+    slot_group: JGI-Metatranscriptomics
+    required: false
+    recommended: true
+    pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+  rna_container_id:
+    name: rna_container_id
+    title: RNA container label
+    comments:
+    - Must be unique across all tubes and plates, and <20 characters. All samples
+      in a plate should have the same plate label.
+    examples:
+    - value: Pond_MT_041618
+    from_schema: https://example.com/nmdc_dh
+    rank: 9
+    string_serialization: '{text}'
+    slot_group: JGI-Metatranscriptomics
+    required: false
+    recommended: true
+  rna_isolate_meth:
+    name: rna_isolate_meth
+    description: Describe the method/protocol/kit used to extract DNA/RNA.
+    title: RNA isolation method
+    examples:
+    - value: phenol/chloroform extraction
+    from_schema: https://example.com/nmdc_dh
+    rank: 16
+    string_serialization: '{text}'
+    slot_group: JGI-Metatranscriptomics
+    required: false
+    recommended: true
+  rna_organisms:
+    name: rna_organisms
+    description: List any organisms known or suspected to grow in co-culture, as well
+      as estimated % of the organism in that culture.
+    title: RNA expected organisms
+    examples:
+    - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
+        (1%)
+    from_schema: https://example.com/nmdc_dh
+    rank: 14
+    string_serialization: '{text}'
+    slot_group: JGI-Metatranscriptomics
+    recommended: true
+  rna_project_contact:
+    name: rna_project_contact
+    title: RNA seq project contact
+    comments:
+    - Do not edit these values. A template will be provided by NMDC in which these
+      values have been pre-filled.
+    examples:
+    - value: John Jones
+    from_schema: https://example.com/nmdc_dh
+    rank: 18
+    string_serialization: '{text}'
+    slot_group: JGI-Metatranscriptomics
+    required: false
+    recommended: true
+  rna_samp_id:
+    name: rna_samp_id
+    title: RNA sample ID
+    comments:
+    - Do not edit these values. A template will be provided by NMDC in which these
+      values have been pre-filled.
+    examples:
+    - value: '187654'
+    from_schema: https://example.com/nmdc_dh
+    rank: 3
+    string_serialization: '{text}'
+    slot_group: JGI-Metatranscriptomics
+    required: false
+    recommended: true
+  rna_sample_format:
+    name: rna_sample_format
+    description: Solution in which the RNA sample has been suspended
+    title: RNA sample format
+    examples:
+    - value: Water
+    from_schema: https://example.com/nmdc_dh
+    rank: 12
+    slot_group: JGI-Metatranscriptomics
+    range: rna_sample_format_enum
+    required: false
+    recommended: true
+  rna_sample_name:
+    name: rna_sample_name
+    description: Give the RNA sample a name that is meaningful to you. Sample names
+      must be unique across all JGI projects and contain a-z, A-Z, 0-9, - and _ only.
+    title: RNA sample name
+    examples:
+    - value: JGI_pond_041618
+    from_schema: https://example.com/nmdc_dh
+    rank: 4
+    string_serialization: '{text}'
+    slot_group: JGI-Metatranscriptomics
+    required: false
+    recommended: true
+    minimum_value: 0
+    maximum_value: 2000
+  rna_seq_project:
+    name: rna_seq_project
+    title: RNA seq project ID
+    comments:
+    - Do not edit these values. A template will be provided by NMDC in which these
+      values have been pre-filled.
+    examples:
+    - value: '1191234'
+    from_schema: https://example.com/nmdc_dh
+    rank: 1
+    string_serialization: '{text}'
+    slot_group: JGI-Metatranscriptomics
+    required: false
+    recommended: true
+  rna_seq_project_pi:
+    name: rna_seq_project_pi
+    title: RNA seq project PI
+    comments:
+    - Do not edit these values. A template will be provided by NMDC in which these
+      values have been pre-filled.
+    examples:
+    - value: Jane Johnson
+    from_schema: https://example.com/nmdc_dh
+    rank: 17
+    string_serialization: '{text}'
+    slot_group: JGI-Metatranscriptomics
+    required: false
+    recommended: true
+  rna_seq_project_name:
+    name: rna_seq_project_name
+    title: RNA seq project name
+    comments:
+    - Do not edit these values. A template will be provided by NMDC in which these
+      values have been pre-filled.
+    examples:
+    - value: JGI Pond metatranscriptomics
+    from_schema: https://example.com/nmdc_dh
+    rank: 2
+    string_serialization: '{text}'
+    slot_group: JGI-Metatranscriptomics
+    required: false
+    recommended: true
+  rna_volume:
+    name: rna_volume
+    title: RNA volume in ul
+    comments:
+    - Units must be in uL. Enter the numerical part only. Value must 0-1000. Values
+      <25 by special permission only.
+    examples:
+    - value: '25'
+    from_schema: https://example.com/nmdc_dh
+    rank: 6
+    string_serialization: '{float}'
+    slot_group: JGI-Metatranscriptomics
+    required: false
+    recommended: true

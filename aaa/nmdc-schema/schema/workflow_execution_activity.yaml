@@ -1,0 +1,565 @@
+id: https://microbiomedata/schema/workflow_execution_activity
+name: NMDC-Workflow-Execution
+title: Workflow Execution Activities module for NMDC Schema
+
+default_prefix: nmdc
+default_range: string
+
+notes:
+  - "should type be required for WorkflowExecutionActivity ?"
+  - "changed misspelled schema name and title to 'Execution'"
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+
+prefixes:
+  nmdc: https://w3id.org/nmdc/
+  linkml: https://w3id.org/linkml/
+
+imports:
+  - basic_slots
+  - external_identifiers
+  - prov
+
+subsets:
+  workflow subset:
+    description: >-
+      Subset consisting of just the workflow execution activities
+
+classes:
+  WorkflowExecutionActivity:
+    aliases:
+      - analysis
+    comments:
+      - Each instance of this (and all other) activities is  a distinct run with start and stop times, potentially with different inputs and outputs
+    is_a: Activity
+    in_subset:
+      - workflow subset
+    description: >-
+      Represents an instance of an execution of a particular workflow
+    alt_descriptions:
+      embl.ena: >-
+        An analysis contains secondary analysis results derived from sequence reads (e.g. a genome assembly)
+    slots:
+      - execution_resource
+      - git_url
+      - has_input
+      - has_output
+      - part_of
+      - type
+    notes:
+      - MAM I don't think this is a reasonable override of the global range of Agent, but commenting that line out does not, on its own, fix the conversion to SQLite
+      - "inlining of was_associated_with values allows for collections (strings?) of WorkflowExecutionActivity id values"
+    slot_usage:
+      was_associated_with:
+        required: false
+        description: >-
+          the agent/entity associated with the generation of the file
+        range: WorkflowExecutionActivity
+        inlined: false
+      started_at_time:
+        required: true
+      ended_at_time:
+        required: true
+      git_url:
+        required: true
+      has_input:
+        required: true
+      has_output:
+        required: true
+      was_informed_by:
+        required: true
+      execution_resource:
+        required: true
+      type: { }
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
+
+  MetagenomeAssembly:
+    description: A workflow execution activity that converts sequencing reads into an assembled metagenome.
+    comments:
+      - instances of this class may use a de novo assembly strategy in most or all cases relevant to NMDC
+    is_a: WorkflowExecutionActivity
+    in_subset:
+      - workflow subset
+    slots:
+      - type
+      - asm_score
+      - scaffolds
+      - scaf_logsum
+      - scaf_powsum
+      - scaf_max
+      - scaf_bp
+      - scaf_n50
+      - scaf_n90
+      - scaf_l50
+      - scaf_l90
+      - scaf_n_gt50k
+      - scaf_l_gt50k
+      - scaf_pct_gt50k
+      - contigs
+      - contig_bp
+      - ctg_n50
+      - ctg_l50
+      - ctg_n90
+      - ctg_l90
+      - ctg_logsum
+      - ctg_powsum
+      - ctg_max
+      - gap_pct
+      - gc_std
+      - gc_avg
+      - num_input_reads
+      - num_aligned_reads
+      - insdc_assembly_identifiers
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
+
+  MetatranscriptomeAssembly:
+    is_a: WorkflowExecutionActivity
+    in_subset:
+      - workflow subset
+    slots:
+      - asm_score
+      - scaffolds
+      - scaf_logsum
+      - scaf_powsum
+      - scaf_max
+      - scaf_bp
+      - scaf_n50
+      - scaf_n90
+      - scaf_l50
+      - scaf_l90
+      - scaf_n_gt50k
+      - scaf_l_gt50k
+      - scaf_pct_gt50k
+      - contigs
+      - contig_bp
+      - ctg_n50
+      - ctg_l50
+      - ctg_n90
+      - ctg_l90
+      - ctg_logsum
+      - ctg_powsum
+      - ctg_max
+      - gap_pct
+      - gc_std
+      - gc_avg
+      - num_input_reads
+      - num_aligned_reads
+      - insdc_assembly_identifiers
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
+
+  MetagenomeAnnotationActivity:
+    description: A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
+    is_a: WorkflowExecutionActivity
+    slots:
+      - type
+      - gold_analysis_project_identifiers
+    in_subset:
+      - workflow subset
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
+
+  MetatranscriptomeAnnotationActivity:
+    is_a: WorkflowExecutionActivity
+    slots:
+      - type
+      - gold_analysis_project_identifiers
+    in_subset:
+      - workflow subset
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
+
+  MetatranscriptomeActivity:
+    is_a: WorkflowExecutionActivity
+    description: >-
+      A metatranscriptome activity that e.g. pools assembly and annotation activity.
+    in_subset:
+      - workflow subset
+    slots:
+      - type
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
+
+
+  MagsAnalysisActivity:
+    description: A workflow execution activity that uses computational binning tools to group assembled contigs into genomes
+    title: Metagenome-Assembled Genome analysis activity
+    is_a: WorkflowExecutionActivity
+    in_subset:
+      - workflow subset
+    slots:
+      - type
+      - input_contig_num
+      - binned_contig_num
+      - too_short_contig_num
+      - low_depth_contig_num
+      - unbinned_contig_num
+      - mags_list
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
+
+  ReadQcAnalysisActivity:
+    description: A workflow execution activity that performs quality control on raw Illumina reads including quality trimming, artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant removal
+    title: Read quality control analysis activity
+    is_a: WorkflowExecutionActivity
+    in_subset:
+      - workflow subset
+    slots:
+      - type
+      - input_read_count
+      - input_base_count
+      - output_read_count
+      - output_base_count
+    #      - version
+    slot_usage:
+      input_read_bases:
+        range: float
+        description: >-
+          TODO
+      output_read_bases:
+        range: float
+        description: >-
+          TODO
+      has_input:
+        inlined: false
+      has_output:
+        inlined: false
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
+
+  ReadBasedTaxonomyAnalysisActivity:
+    description: A workflow execution activity that performs taxonomy classification using sequencing reads
+    title: Read based analysis activity
+    is_a: WorkflowExecutionActivity
+    in_subset:
+      - workflow subset
+    slots:
+      - type
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
+
+
+  MetabolomicsAnalysisActivity:
+    is_a: WorkflowExecutionActivity
+    in_subset:
+      - workflow subset
+    slots:
+      - type
+    slot_usage:
+      used:
+        range: Instrument
+        multivalued: false
+        description: >-
+          The instrument used to collect the data used in the analysis
+      has_metabolite_quantifications:
+        range: MetaboliteQuantification
+        multivalued: true
+      has_calibration:
+        description: >-
+          TODO: Yuri to fill in
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
+
+  MetaproteomicsAnalysisActivity:
+    is_a: WorkflowExecutionActivity
+    in_subset:
+      - workflow subset
+    slots:
+      - type
+    slot_usage:
+      used:
+        range: Instrument
+        multivalued: false
+        description: >-
+          The instrument used to collect the data used in the analysis
+      has_peptide_quantifications:
+        range: PeptideQuantification
+        multivalued: true
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
+
+  NomAnalysisActivity:
+    is_a: WorkflowExecutionActivity
+    in_subset:
+      - workflow subset
+    slots:
+      - type
+    slot_usage:
+      used:
+        range: Instrument
+        multivalued: false
+        description: >-
+          The instrument used to collect the data used in the analysis
+      has_calibration:
+        range: string
+        description: >-
+          A reference to a file that holds calibration information.
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
+
+
+slots:
+
+  metagenome_assembly_parameter: { }
+
+  has_peptide_quantifications: { }
+
+  asm_score:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      A score for comparing metagenomic assembly quality from same sample.
+    range: float
+
+  scaffolds:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      Total sequence count of all scaffolds.
+    range: float
+
+  scaf_logsum:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      The sum of the (length*log(length)) of all scaffolds, times some constant.  Increase the contiguity, the score will increase
+    range: float
+
+  scaf_powsum:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      Powersum of all scaffolds is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25).
+    range: float
+
+  scaf_max:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      Maximum scaffold length.
+    range: float
+
+  scaf_bp:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      Total size in bp of all scaffolds.
+    range: float
+
+  scaf_n50:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      Given a set of scaffolds, each with its own length, the N50 count is defined as the smallest number of scaffolds whose length sum makes up half of genome size.
+    range: float
+
+  scaf_n90:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      Given a set of scaffolds, each with its own length, the N90 count is defined as the smallest number of scaffolds whose length sum makes up 90% of genome size.
+    range: float
+
+  scaf_l50:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      Given a set of scaffolds, the L50 is defined as the sequence length of the shortest scaffold at 50% of the total genome length.
+    range: float
+
+  scaf_l90:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all scaffolds of that length or longer contains at least 90% of the sum of the lengths of all scaffolds.
+    range: float
+
+  scaf_n_gt50k:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      Total sequence count of scaffolds greater than 50 KB.
+    range: float
+
+  scaf_l_gt50k:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      Total size in bp of all scaffolds greater than 50 KB.
+    range: float
+
+  scaf_pct_gt50k:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      Total sequence size percentage of scaffolds greater than 50 KB.
+    range: float
+
+  contigs:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      The sum of the (length*log(length)) of all contigs, times some constant.  Increase the contiguity, the score will increase
+    range: float
+
+  contig_bp:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      Total size in bp of all contigs.
+    range: float
+
+  ctg_n50:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      Given a set of contigs, each with its own length, the N50 count is defined as the smallest number_of_contigs whose length sum makes up half of genome size.
+    range: float
+
+  ctg_l50:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      Given a set of contigs, the L50 is defined as the sequence length of the shortest contig at 50% of the total genome length.
+    range: float
+
+  ctg_n90:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      Given a set of contigs, each with its own length, the N90 count is defined as the smallest number of contigs whose length sum makes up 90% of genome size.
+    range: float
+
+  ctg_l90:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all contigs of that length or longer contains at least 90% of the sum of the lengths of all contigs.
+    range: float
+
+  ctg_logsum:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      Maximum contig length.
+    range: float
+
+  ctg_powsum:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      Powersum of all contigs is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25).
+    range: float
+
+  ctg_max:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      Maximum contig length.
+    range: float
+
+  gap_pct:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      The gap size percentage of all scaffolds.
+    range: float
+
+  gc_std:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      Standard deviation of GC content of all contigs.
+    range: float
+
+  gc_avg:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      Average of GC content of all contigs.
+    range: float
+
+  num_input_reads:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      The sequence count number of input reads for assembly.
+    range: float
+
+  num_aligned_reads:
+    is_a: metagenome_assembly_parameter
+    description: >-
+      The sequence count number of input reads aligned to assembled contigs.
+    range: float
+
+  read_qc_analysis_statistic: { }
+
+  mags_list:
+    range: MagBin
+    multivalued: true
+
+  too_short_contig_num:
+    range: integer
+
+  binned_contig_num:
+    range: integer
+
+  input_contig_num:
+    range: integer
+
+  unbinned_contig_num:
+    range: integer
+
+  low_depth_contig_num:
+    range: integer
+
+  input_read_count:
+    is_a: read_qc_analysis_statistic
+    description: >-
+      The sequence count number of input reads for QC analysis.
+    range: float
+
+  input_base_count:
+    is_a: read_qc_analysis_statistic
+    description: >-
+      The nucleotide base count number of input reads for QC analysis.
+    range: float
+
+  output_read_count:
+    is_a: read_qc_analysis_statistic
+    description: >-
+      After QC analysis sequence count number.
+    range: float
+
+  output_base_count:
+    is_a: read_qc_analysis_statistic
+    description: >-
+      After QC analysis nucleotide base count number.
+    range: float
+
+  has_calibration:
+  has_metabolite_quantifications:
+  input_read_bases:
+  output_read_bases:
+

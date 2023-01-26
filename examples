@@ -1,0 +1,12 @@
+biosamples:
+  - id: A
+    depth: 5
+    intval: 5
+  - id: B
+    depth: 10
+    intval: 555
+meetings:
+  - id: M1
+    meeting_info: north
+  - id: M2
+    meeting_info: east

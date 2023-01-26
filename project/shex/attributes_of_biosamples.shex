@@ -1,0 +1,64 @@
+BASE <https://w3id.org/microbiomedata/attributes-of-biosamples/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX linkml: <https://w3id.org/linkml/>
+PREFIX suggestion_only: <http://example.com/>
+
+
+linkml:String xsd:string
+
+linkml:Integer xsd:integer
+
+linkml:Boolean xsd:boolean
+
+linkml:Float xsd:float
+
+linkml:Double xsd:double
+
+linkml:Decimal xsd:decimal
+
+linkml:Time xsd:dateTime
+
+linkml:Date xsd:date
+
+linkml:Datetime xsd:dateTime
+
+linkml:DateOrDatetime linkml:DateOrDatetime
+
+linkml:Uriorcurie IRI
+
+linkml:Uri IRI
+
+linkml:Ncname xsd:string
+
+linkml:Objectidentifier IRI
+
+linkml:Nodeidentifier NONLITERAL
+
+suggestion_only:DecimalDegree xsd:decimal
+
+suggestion_only:Biosample CLOSED {
+    (  $suggestion_only:Biosample_tes (  suggestion_only:depth @linkml:String ? ;
+          suggestion_only:intval @linkml:Integer ;
+          suggestion_only:sometimes_absent @linkml:String ;
+          suggestion_only:lat @suggestion_only:DecimalDegree ?
+       ) ;
+       rdf:type [ suggestion_only:Biosample ]
+    )
+}
+
+suggestion_only:Collection CLOSED {
+    (  $suggestion_only:Collection_tes (  suggestion_only:biosamples @suggestion_only:Biosample * ;
+          suggestion_only:meetings @suggestion_only:Meeting *
+       ) ;
+       rdf:type [ suggestion_only:Collection ] ?
+    )
+}
+
+suggestion_only:Meeting CLOSED {
+    (  $suggestion_only:Meeting_tes suggestion_only:meeting_info @suggestion_only:COMPASSPOINTS ? ;
+       rdf:type [ suggestion_only:Meeting ]
+    )
+}
+
+

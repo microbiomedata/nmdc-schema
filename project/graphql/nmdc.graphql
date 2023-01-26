@@ -1,0 +1,1036 @@
+type Activity
+  {
+    id: String!
+    name: String
+    startedAtTime: Datetime
+    endedAtTime: Datetime
+    wasInformedBy: Activity
+    wasAssociatedWith: Agent
+    used: String
+  }
+
+type Agent
+  {
+    actedOnBehalfOf: Agent
+    wasInformedBy: Activity
+  }
+
+type AnalyticalSample
+  {
+    name: String
+    description: String
+    alternativeIdentifiers: [String]
+    id: String!
+  }
+
+type AttributeValue
+  {
+    hasRawValue: String
+    wasGeneratedBy: Activity
+    type: String
+  }
+
+type Biosample
+  {
+    name: String
+    description: String
+    embargoed: Boolean
+    collectedFrom: FieldResearchSite
+    type: String
+    imgIdentifiers: [String]
+    sampName: String
+    biosampleCategories: [BiosampleCategoryEnum]
+    partOf: [NamedThing]!
+    id: String!
+    alternativeIdentifiers: [String]
+    goldBiosampleIdentifiers: [Uriorcurie]
+    insdcBiosampleIdentifiers: [Uriorcurie]
+    emslBiosampleIdentifiers: [Uriorcurie]
+    igsnBiosampleIdentifiers: [Uriorcurie]
+    agrochemAddition: QuantityValue
+    alkalinity: QuantityValue
+    alkalinityMethod: TextValue
+    alkylDiethers: QuantityValue
+    alt: QuantityValue
+    alSat: QuantityValue
+    alSatMeth: TextValue
+    aminopeptAct: QuantityValue
+    ammonium: QuantityValue
+    annualPrecpt: QuantityValue
+    annualTemp: QuantityValue
+    bacteriaCarbProd: QuantityValue
+    bishomohopanol: QuantityValue
+    bromide: QuantityValue
+    calcium: QuantityValue
+    carbNitroRatio: QuantityValue
+    chemAdministration: ControlledTermValue
+    chloride: QuantityValue
+    chlorophyll: QuantityValue
+    collectionDate: TimestampValue
+    curLandUse: TextValue
+    curVegetation: TextValue
+    curVegetationMeth: TextValue
+    cropRotation: TextValue
+    density: QuantityValue
+    depth: QuantityValue
+    dissCarbDioxide: QuantityValue
+    dissHydrogen: QuantityValue
+    dissInorgCarb: QuantityValue
+    dissInorgPhosp: QuantityValue
+    dissOrgCarb: QuantityValue
+    dissOrgNitro: QuantityValue
+    dissOxygen: QuantityValue
+    drainageClass: TextValue
+    elev: QuantityValue
+    envPackage: TextValue
+    envBroadScale: ControlledIdentifiedTermValue!
+    envLocalScale: ControlledIdentifiedTermValue!
+    envMedium: ControlledIdentifiedTermValue!
+    extremeEvent: String
+    faoClass: TextValue
+    fire: String
+    flooding: String
+    geoLocName: TextValue
+    glucosidaseAct: QuantityValue
+    heavyMetals: [QuantityValue]
+    heavyMetalsMeth: [TextValue]
+    latLon: GeolocationValue
+    linkAdditAnalys: TextValue
+    linkClassInfo: TextValue
+    linkClimateInfo: TextValue
+    localClass: TextValue
+    localClassMeth: TextValue
+    magnesium: QuantityValue
+    meanFrictVel: QuantityValue
+    meanPeakFrictVel: QuantityValue
+    miscParam: QuantityValue
+    nAlkanes: QuantityValue
+    nitrate: QuantityValue
+    nitrite: QuantityValue
+    orgMatter: QuantityValue
+    orgNitro: QuantityValue
+    organismCount: QuantityValue
+    oxyStatSamp: TextValue
+    partOrgCarb: QuantityValue
+    perturbation: TextValue
+    petroleumHydrocarb: QuantityValue
+    ph: QuantityValue
+    phMeth: TextValue
+    phaeopigments: QuantityValue
+    phosplipidFattAcid: QuantityValue
+    poolDnaExtracts: TextValue
+    potassium: QuantityValue
+    pressure: QuantityValue
+    profilePosition: TextValue
+    redoxPotential: QuantityValue
+    salinity: QuantityValue
+    salinityMeth: TextValue
+    sampMatProcess: ControlledTermValue
+    sampStoreDur: TextValue
+    sampStoreLoc: TextValue
+    sampTaxonId: String
+    sampStoreTemp: QuantityValue
+    sampVolWeDnaExt: QuantityValue
+    seasonTemp: QuantityValue
+    seasonPrecpt: QuantityValue
+    sieving: QuantityValue
+    sizeFracLow: QuantityValue
+    sizeFracUp: QuantityValue
+    slopeGradient: QuantityValue
+    slopeAspect: QuantityValue
+    sodium: QuantityValue
+    soilType: TextValue
+    soilTypeMeth: TextValue
+    storeCond: TextValue
+    sulfate: QuantityValue
+    sulfide: QuantityValue
+    temp: QuantityValue
+    tillage: TextValue
+    tidalStage: TextValue
+    totCarb: QuantityValue
+    totDepthWaterCol: QuantityValue
+    totDissNitro: QuantityValue
+    totOrgCarb: QuantityValue
+    totOrgCMeth: TextValue
+    totNitroContent: QuantityValue
+    totNitroContMeth: String
+    totPhosp: QuantityValue
+    waterContent: [String]
+    waterContSoilMeth: String
+    ecosystem: String
+    ecosystemCategory: String
+    ecosystemType: String
+    ecosystemSubtype: String
+    specificEcosystem: String
+    addDate: String
+    community: String
+    habitat: String
+    hostName: String
+    location: String
+    modDate: String
+    ncbiTaxonomyName: String
+    proportWoaTemperature: String
+    salinityCategory: String
+    sampleCollectionSite: String
+    solubleIronMicromol: String
+    subsurfaceDepth: QuantityValue
+    airTempRegm: QuantityValue
+    bioticRegm: TextValue
+    bioticRelationship: TextValue
+    climateEnvironment: TextValue
+    experimentalFactor: ControlledTermValue
+    gaseousEnvironment: QuantityValue
+    growthFacil: ControlledTermValue
+    humidityRegm: QuantityValue
+    lightRegm: QuantityValue
+    phosphate: QuantityValue
+    relToOxygen: TextValue
+    sampCollecMethod: String
+    sampSize: QuantityValue
+    sourceMatId: TextValue
+    wateringRegm: QuantityValue
+    dnaAbsorb1: String
+    dnaAbsorb2: String
+    dnaCollectSite: String
+    dnaConcentration: String
+    dnaContType: DnaContTypeEnum
+    dnaContWell: String
+    dnaContainerId: String
+    dnaDnase: DnaDnaseEnum
+    dnaIsolateMeth: String
+    dnaOrganisms: String
+    dnaProjectContact: String
+    dnaSampId: String
+    dnaSampleFormat: DnaSampleFormatEnum
+    dnaSampleName: String
+    dnaSeqProject: String
+    dnaSeqProjectPi: String
+    dnaSeqProjectName: String
+    dnaVolume: String
+    proposalDna: String
+    dnaseRna: DnaseRnaEnum
+    proposalRna: String
+    rnaAbsorb1: String
+    rnaAbsorb2: String
+    rnaCollectSite: String
+    rnaConcentration: String
+    rnaContType: RnaContTypeEnum
+    rnaContWell: String
+    rnaContainerId: String
+    rnaIsolateMeth: String
+    rnaOrganisms: String
+    rnaProjectContact: String
+    rnaSampId: String
+    rnaSampleFormat: RnaSampleFormatEnum
+    rnaSampleName: String
+    rnaSeqProject: String
+    rnaSeqProjectPi: String
+    rnaSeqProjectName: String
+    rnaVolume: String
+    collectionDateInc: String
+    collectionTime: String
+    collectionTimeInc: String
+    experimentalFactorOther: String
+    filterMethod: String
+    isotopeExposure: String
+    microBiomassCMeth: String
+    microBiomassNMeth: String
+    microbialBiomassC: String
+    microbialBiomassN: String
+    nonMicrobBiomass: String
+    nonMicrobBiomassMethod: String
+    orgNitroMethod: String
+    otherTreatment: String
+    startDateInc: String
+    startTimeInc: String
+    projectId: String
+    replicateNumber: String
+    sampleShipped: String
+    sampleType: SampleTypeEnum
+    technicalReps: String
+    analysisType: [AnalysisTypeEnum]
+    sampleLink: [String]
+    zinc: QuantityValue
+    manganese: QuantityValue
+    ammoniumNitrogen: QuantityValue
+    nitrateNitrogen: QuantityValue
+    nitriteNitrogen: QuantityValue
+    lbcThirty: QuantityValue
+    lbceq: QuantityValue
+  }
+
+type BiosampleProcessing
+  {
+    name: String
+    description: String
+    alternativeIdentifiers: [String]
+    hasInput: [Biosample]
+    id: String!
+  }
+
+type BooleanValue
+  {
+    hasRawValue: String
+    wasGeneratedBy: Activity
+    type: String
+    hasBooleanValue: Boolean
+  }
+
+type ChemicalEntity
+  {
+    id: String!
+    name: String
+    description: String
+    alternativeIdentifiers: [String]
+    inchi: String
+    inchiKey: String
+    smiles: [String]
+    chemicalFormula: String
+  }
+
+type CollectingBiosamplesFromSite
+  {
+    name: String
+    description: String
+    alternativeIdentifiers: [String]
+    participatingAgent: Agent
+    hasInputs: [Site]!
+    hasOutputs: [Biosample]!
+    id: String!
+  }
+
+type ControlledIdentifiedTermValue
+  {
+    hasRawValue: String
+    wasGeneratedBy: Activity
+    type: String
+    term: OntologyClass!
+  }
+
+type ControlledTermValue
+  {
+    hasRawValue: String
+    wasGeneratedBy: Activity
+    type: String
+    term: OntologyClass
+  }
+
+type CreditAssociation
+  {
+    appliesToPerson: PersonValue!
+    appliedRole: CreditEnum
+    appliedRoles: [CreditEnum]!
+    type: String
+  }
+
+type Database
+  {
+    activitySet: [WorkflowExecutionActivity]
+    biosampleSet: [Biosample]
+    dataObjectSet: [DataObject]
+    dissolvingActivitySet: [DissolvingActivity]
+    functionalAnnotationSet: [FunctionalAnnotation]
+    genomeFeatureSet: [GenomeFeature]
+    magsActivitySet: [MagsAnalysisActivity]
+    materialSampleSet: [MaterialSample]
+    materialSamplingActivitySet: [MaterialSamplingActivity]
+    metabolomicsAnalysisActivitySet: [MetabolomicsAnalysisActivity]
+    metagenomeAnnotationActivitySet: [MetagenomeAnnotationActivity]
+    metagenomeAssemblySet: [MetagenomeAssembly]
+    metaproteomicsAnalysisActivitySet: [MetaproteomicsAnalysisActivity]
+    metatranscriptomeActivitySet: [MetatranscriptomeActivity]
+    nomAnalysisActivitySet: [NomAnalysisActivity]
+    omicsProcessingSet: [OmicsProcessing]
+    reactionActivitySet: [ReactionActivity]
+    readQcAnalysisActivitySet: [ReadQcAnalysisActivity]
+    readBasedTaxonomyAnalysisActivitySet: [ReadBasedTaxonomyAnalysisActivity]
+    studySet: [Study]
+    fieldResearchSiteSet: [FieldResearchSite]
+    collectingBiosamplesFromSiteSet: [CollectingBiosamplesFromSite]
+    dateCreated: String
+    etlSoftwareVersion: String
+  }
+
+type DataObject
+  {
+    alternativeIdentifiers: [String]
+    fileSizeBytes: Bytes
+    md5Checksum: String
+    dataObjectType: FileTypeEnum
+    compressionType: String
+    wasGeneratedBy: Activity
+    url: String
+    type: String
+    name: String!
+    description: String!
+    id: String!
+  }
+
+type DissolvingActivity
+  {
+    dissolutionAidedBy: LabDevice
+    dissolutionReagent: SolventEnum
+    dissolutionVolume: QuantityValue
+    dissolvedIn: MaterialContainer
+    materialInput: MaterialSample
+    materialOutput: MaterialSample
+  }
+
+type EnvironmentalMaterialTerm
+  {
+    id: String!
+    name: String
+    description: String
+    alternativeIdentifiers: [String]
+  }
+
+type FieldResearchSite
+  {
+    name: String
+    description: String
+    alternativeIdentifiers: [String]
+    id: String!
+  }
+
+type FunctionalAnnotation
+  {
+    wasGeneratedBy: MetagenomeAnnotationActivity
+    subject: GeneProduct
+    hasFunction: String
+    type: OntologyClass
+  }
+
+interface FunctionalAnnotationTerm
+  {
+    id: String!
+    name: String
+    description: String
+    alternativeIdentifiers: [String]
+  }
+
+type GeneProduct
+  {
+    id: String!
+    name: String
+    description: String
+    alternativeIdentifiers: [String]
+  }
+
+type GenomeFeature
+  {
+    seqid: String!
+    type: OntologyClass
+    start: Integer!
+    end: Integer!
+    strand: String
+    phase: Integer
+    encodes: GeneProduct
+    featureType: String
+  }
+
+type GeolocationValue
+  {
+    wasGeneratedBy: Activity
+    type: String
+    latitude: DecimalDegree
+    longitude: DecimalDegree
+    hasRawValue: String
+  }
+
+type ImageValue
+  {
+    hasRawValue: String
+    wasGeneratedBy: Activity
+    type: String
+    url: String
+    description: String
+    displayOrder: String
+  }
+
+type Instrument
+  {
+    name: String
+    description: String
+    alternativeIdentifiers: [String]
+    id: String!
+  }
+
+type IntegerValue
+  {
+    hasRawValue: String
+    wasGeneratedBy: Activity
+    type: String
+    hasNumericValue: Float
+  }
+
+type LabDevice
+  {
+    deviceType: DeviceTypeEnum
+    activitySpeed: QuantityValue
+    activityTemperature: QuantityValue
+    activityTime: QuantityValue
+  }
+
+type MagBin
+  {
+    type: String
+    binName: String
+    numberOfContig: Integer
+    completeness: Float
+    contamination: Float
+    geneCount: Integer
+    binQuality: String
+    num16s: Integer
+    num5s: Integer
+    num23s: Integer
+    numTRna: Integer
+    gtdbtkDomain: String
+    gtdbtkPhylum: String
+    gtdbtkClass: String
+    gtdbtkOrder: String
+    gtdbtkFamily: String
+    gtdbtkGenus: String
+    gtdbtkSpecies: String
+  }
+
+type MagsAnalysisActivity
+  {
+    name: String
+    used: String
+    executionResource: String!
+    gitUrl: String!
+    hasInput: [NamedThing]!
+    hasOutput: [NamedThing]!
+    partOf: [NamedThing]
+    wasAssociatedWith: WorkflowExecutionActivity
+    startedAtTime: Datetime!
+    endedAtTime: Datetime!
+    wasInformedBy: Activity!
+    type: String
+    inputContigNum: Integer
+    binnedContigNum: Integer
+    tooShortContigNum: Integer
+    lowDepthContigNum: Integer
+    unbinnedContigNum: Integer
+    magsList: [MagBin]
+    id: String!
+  }
+
+type MaterialContainer
+  {
+    containerSize: QuantityValue
+    containerType: ContainerTypeEnum
+  }
+
+interface MaterialEntity
+  {
+    id: String!
+    name: String
+    description: String
+    alternativeIdentifiers: [String]
+  }
+
+type MaterialSample
+  {
+    name: String
+    description: String
+    alternativeIdentifiers: [String]
+    id: String!
+  }
+
+type MaterialSamplingActivity
+  {
+    amountCollected: QuantityValue
+    collectedInto: MaterialContainer
+    biosampleInput: Biosample
+    materialOutput: MaterialSample
+    samplingMethod: SamplingMethodEnum
+  }
+
+type MetaboliteQuantification
+  {
+    alternativeIdentifiers: [String]
+    metaboliteQuantified: ChemicalEntity
+    highestSimilarityScore: Float
+  }
+
+type MetabolomicsAnalysisActivity
+  {
+    name: String
+    executionResource: String!
+    gitUrl: String!
+    hasInput: [NamedThing]!
+    hasOutput: [NamedThing]!
+    partOf: [NamedThing]
+    wasAssociatedWith: WorkflowExecutionActivity
+    startedAtTime: Datetime!
+    endedAtTime: Datetime!
+    wasInformedBy: Activity!
+    type: String
+    used: Instrument
+    hasMetaboliteQuantifications: [MetaboliteQuantification]
+    hasCalibration: String
+    id: String!
+  }
+
+type MetagenomeAnnotationActivity
+  {
+    name: String
+    used: String
+    executionResource: String!
+    gitUrl: String!
+    hasInput: [NamedThing]!
+    hasOutput: [NamedThing]!
+    partOf: [NamedThing]
+    wasAssociatedWith: WorkflowExecutionActivity
+    startedAtTime: Datetime!
+    endedAtTime: Datetime!
+    wasInformedBy: Activity!
+    type: String
+    goldAnalysisProjectIdentifiers: [Uriorcurie]
+    id: String!
+  }
+
+type MetagenomeAssembly
+  {
+    name: String
+    used: String
+    executionResource: String!
+    gitUrl: String!
+    hasInput: [NamedThing]!
+    hasOutput: [NamedThing]!
+    partOf: [NamedThing]
+    wasAssociatedWith: WorkflowExecutionActivity
+    startedAtTime: Datetime!
+    endedAtTime: Datetime!
+    wasInformedBy: Activity!
+    type: String
+    asmScore: Float
+    scaffolds: Float
+    scafLogsum: Float
+    scafPowsum: Float
+    scafMax: Float
+    scafBp: Float
+    scafN50: Float
+    scafN90: Float
+    scafL50: Float
+    scafL90: Float
+    scafNGt50k: Float
+    scafLGt50k: Float
+    scafPctGt50k: Float
+    contigs: Float
+    contigBp: Float
+    ctgN50: Float
+    ctgL50: Float
+    ctgN90: Float
+    ctgL90: Float
+    ctgLogsum: Float
+    ctgPowsum: Float
+    ctgMax: Float
+    gapPct: Float
+    gcStd: Float
+    gcAvg: Float
+    numInputReads: Float
+    numAlignedReads: Float
+    insdcAssemblyIdentifiers: String
+    id: String!
+  }
+
+type MetaproteomicsAnalysisActivity
+  {
+    name: String
+    executionResource: String!
+    gitUrl: String!
+    hasInput: [NamedThing]!
+    hasOutput: [NamedThing]!
+    partOf: [NamedThing]
+    wasAssociatedWith: WorkflowExecutionActivity
+    startedAtTime: Datetime!
+    endedAtTime: Datetime!
+    wasInformedBy: Activity!
+    type: String
+    used: Instrument
+    hasPeptideQuantifications: [PeptideQuantification]
+    id: String!
+  }
+
+type MetatranscriptomeActivity
+  {
+    name: String
+    used: String
+    executionResource: String!
+    gitUrl: String!
+    hasInput: [NamedThing]!
+    hasOutput: [NamedThing]!
+    partOf: [NamedThing]
+    wasAssociatedWith: WorkflowExecutionActivity
+    startedAtTime: Datetime!
+    endedAtTime: Datetime!
+    wasInformedBy: Activity!
+    type: String
+    id: String!
+  }
+
+type MetatranscriptomeAnnotationActivity
+  {
+    name: String
+    used: String
+    executionResource: String!
+    gitUrl: String!
+    hasInput: [NamedThing]!
+    hasOutput: [NamedThing]!
+    partOf: [NamedThing]
+    wasAssociatedWith: WorkflowExecutionActivity
+    startedAtTime: Datetime!
+    endedAtTime: Datetime!
+    wasInformedBy: Activity!
+    type: String
+    goldAnalysisProjectIdentifiers: [Uriorcurie]
+    id: String!
+  }
+
+type MetatranscriptomeAssembly
+  {
+    name: String
+    used: String
+    executionResource: String!
+    gitUrl: String!
+    hasInput: [NamedThing]!
+    hasOutput: [NamedThing]!
+    partOf: [NamedThing]
+    type: String
+    wasAssociatedWith: WorkflowExecutionActivity
+    startedAtTime: Datetime!
+    endedAtTime: Datetime!
+    wasInformedBy: Activity!
+    asmScore: Float
+    scaffolds: Float
+    scafLogsum: Float
+    scafPowsum: Float
+    scafMax: Float
+    scafBp: Float
+    scafN50: Float
+    scafN90: Float
+    scafL50: Float
+    scafL90: Float
+    scafNGt50k: Float
+    scafLGt50k: Float
+    scafPctGt50k: Float
+    contigs: Float
+    contigBp: Float
+    ctgN50: Float
+    ctgL50: Float
+    ctgN90: Float
+    ctgL90: Float
+    ctgLogsum: Float
+    ctgPowsum: Float
+    ctgMax: Float
+    gapPct: Float
+    gcStd: Float
+    gcAvg: Float
+    numInputReads: Float
+    numAlignedReads: Float
+    insdcAssemblyIdentifiers: String
+    id: String!
+  }
+
+interface NamedThing
+  {
+    id: String!
+    name: String
+    description: String
+    alternativeIdentifiers: [String]
+  }
+
+type NomAnalysisActivity
+  {
+    name: String
+    executionResource: String!
+    gitUrl: String!
+    hasInput: [NamedThing]!
+    hasOutput: [NamedThing]!
+    partOf: [NamedThing]
+    wasAssociatedWith: WorkflowExecutionActivity
+    startedAtTime: Datetime!
+    endedAtTime: Datetime!
+    wasInformedBy: Activity!
+    type: String
+    used: Instrument
+    hasCalibration: String
+    id: String!
+  }
+
+type OmicsProcessing
+  {
+    name: String
+    description: String
+    alternativeIdentifiers: [String]
+    addDate: String
+    modDate: String
+    hasInput: [NamedThing]
+    hasOutput: [NamedThing]
+    instrumentName: String
+    ncbiProjectName: String
+    omicsType: ControlledTermValue
+    partOf: [NamedThing]
+    principalInvestigator: PersonValue
+    processingInstitution: ProcessingInstitutionEnum
+    type: String
+    goldSequencingProjectIdentifiers: [Uriorcurie]
+    insdcExperimentIdentifiers: [Uriorcurie]
+    sampVolWeDnaExt: QuantityValue
+    nuclAcidExt: TextValue
+    nuclAcidAmp: TextValue
+    targetGene: TextValue
+    targetSubfragment: TextValue
+    pcrPrimers: TextValue
+    pcrCond: TextValue
+    seqMeth: TextValue
+    seqQualityCheck: TextValue
+    chimeraCheck: TextValue
+    id: String!
+  }
+
+type OntologyClass
+  {
+    id: String!
+    name: String
+    description: String
+    alternativeIdentifiers: [String]
+  }
+
+type OrthologyGroup
+  {
+    id: String!
+    name: String
+    description: String
+    alternativeIdentifiers: [String]
+  }
+
+type Pathway
+  {
+    id: String!
+    name: String
+    description: String
+    alternativeIdentifiers: [String]
+    hasPart: [Reaction]
+  }
+
+type PeptideQuantification
+  {
+    peptideSequence: String
+    bestProtein: GeneProduct
+    allProteins: [GeneProduct]
+    minQValue: Float
+    peptideSpectralCount: Integer
+    peptideSumMasicAbundance: Integer
+  }
+
+type Person
+  {
+    name: String
+    description: String
+    alternativeIdentifiers: [String]
+    id: String!
+  }
+
+type PersonValue
+  {
+    wasGeneratedBy: Activity
+    type: String
+    orcid: String
+    profileImageUrl: String
+    email: String
+    name: String
+    websites: [String]
+    hasRawValue: String
+  }
+
+interface PlannedProcess
+  {
+    id: String!
+    name: String
+    description: String
+    alternativeIdentifiers: [String]
+    hasInputs: [NamedThing]
+    hasOutputs: [NamedThing]
+    participatingAgent: Agent
+  }
+
+type ProteinQuantification
+  {
+    bestProtein: GeneProduct
+    allProteins: [GeneProduct]
+    peptideSequenceCount: Integer
+    proteinSpectralCount: Integer
+    proteinSumMasicAbundance: Integer
+  }
+
+type QuantityValue
+  {
+    wasGeneratedBy: Activity
+    type: String
+    hasUnit: Unit
+    hasNumericValue: Double
+    hasMinimumNumericValue: Float
+    hasMaximumNumericValue: Float
+    hasRawValue: String
+  }
+
+type Reaction
+  {
+    id: String!
+    name: String
+    description: String
+    alternativeIdentifiers: [String]
+    leftParticipants: [ReactionParticipant]
+    rightParticipants: [ReactionParticipant]
+    direction: String
+    smartsString: String
+    isDiastereoselective: Boolean
+    isStereo: Boolean
+    isBalanced: Boolean
+    isTransport: Boolean
+    isFullyCharacterized: Boolean
+  }
+
+type ReactionActivity
+  {
+    materialInput: MaterialSample
+    materialOutput: MaterialSample
+    reactionAidedBy: LabDevice
+    reactionTemperature: String
+    reactionTime: QuantityValue
+  }
+
+type ReactionParticipant
+  {
+    chemical: ChemicalEntity
+    stoichiometry: Integer
+  }
+
+type ReadBasedTaxonomyAnalysisActivity
+  {
+    name: String
+    used: String
+    executionResource: String!
+    gitUrl: String!
+    hasInput: [NamedThing]!
+    hasOutput: [NamedThing]!
+    partOf: [NamedThing]
+    wasAssociatedWith: WorkflowExecutionActivity
+    startedAtTime: Datetime!
+    endedAtTime: Datetime!
+    wasInformedBy: Activity!
+    type: String
+    id: String!
+  }
+
+type ReadQcAnalysisActivity
+  {
+    name: String
+    used: String
+    executionResource: String!
+    gitUrl: String!
+    partOf: [NamedThing]
+    wasAssociatedWith: WorkflowExecutionActivity
+    startedAtTime: Datetime!
+    endedAtTime: Datetime!
+    wasInformedBy: Activity!
+    type: String
+    inputReadCount: Float
+    inputBaseCount: Float
+    outputReadCount: Float
+    outputBaseCount: Float
+    inputReadBases: Float
+    outputReadBases: Float
+    hasInput: [NamedThing]!
+    hasOutput: [NamedThing]!
+    id: String!
+  }
+
+interface Site
+  {
+    name: String
+    description: String
+    alternativeIdentifiers: [String]
+    id: String!
+  }
+
+type Study
+  {
+    id: String!
+    alternativeIdentifiers: [String]
+    massiveStudyIdentifier: String
+    relatedIdentifiers: String
+    emslProposalIdentifier: String
+    emslProposalDoi: String
+    goldStudyIdentifiers: [Uriorcurie]
+    mgnifyProjectIdentifiers: String
+    ecosystem: String
+    ecosystemCategory: String
+    ecosystemType: String
+    ecosystemSubtype: String
+    specificEcosystem: String
+    principalInvestigator: PersonValue
+    doi: AttributeValue
+    title: String
+    alternativeTitles: [String]
+    alternativeDescriptions: [String]
+    alternativeNames: [String]
+    abstract: String
+    objective: String
+    websites: [String]
+    publications: [String]
+    essDiveDatasets: [String]
+    type: String
+    relevantProtocols: [String]
+    fundingSources: [String]
+    hasCreditAssociations: [CreditAssociation]
+    studyImage: [ImageValue]
+    name: String
+    description: String
+    notes: String
+    insdcBioprojectIdentifiers: String
+    emslProjectIdentifier: String
+  }
+
+type TextValue
+  {
+    hasRawValue: String
+    wasGeneratedBy: Activity
+    type: String
+    language: LanguageCode
+  }
+
+type TimestampValue
+  {
+    hasRawValue: String
+    wasGeneratedBy: Activity
+    type: String
+  }
+
+type UrlValue
+  {
+    hasRawValue: String
+    wasGeneratedBy: Activity
+    type: String
+  }
+
+type WorkflowExecutionActivity
+  {
+    name: String
+    used: String
+    executionResource: String!
+    gitUrl: String!
+    hasInput: [NamedThing]!
+    hasOutput: [NamedThing]!
+    partOf: [NamedThing]
+    type: String
+    wasAssociatedWith: WorkflowExecutionActivity
+    startedAtTime: Datetime!
+    endedAtTime: Datetime!
+    wasInformedBy: Activity!
+    id: String!
+  }
+

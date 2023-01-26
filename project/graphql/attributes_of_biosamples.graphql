@@ -1,0 +1,21 @@
+type Biosample
+  {
+    id: String!
+    depth: String
+    intval: Integer!
+    sometimesAbsent: String!
+    lat: DecimalDegree
+  }
+
+type Collection
+  {
+    biosamples: [Biosample]
+    meetings: [Meeting]
+  }
+
+type Meeting
+  {
+    id: String!
+    meetingInfo: COMPASSPOINTS
+  }
+

@@ -1,0 +1,522 @@
+{
+  "name": "attributes-of-biosamples",
+  "description": "Attributes of Environmental Biosamples",
+  "title": "attributes-of-biosamples",
+  "see_also": [
+    "https://microbiomedata.github.io/attributes-of-biosamples"
+  ],
+  "id": "https://w3id.org/microbiomedata/attributes-of-biosamples",
+  "imports": [
+    "linkml:types",
+    "slotdefs_classdefs_slot_assignments"
+  ],
+  "license": "MIT",
+  "prefixes": [
+    {
+      "prefix_prefix": "attributes_of_biosamples",
+      "prefix_reference": "https://w3id.org/microbiomedata/attributes-of-biosamples/"
+    },
+    {
+      "prefix_prefix": "linkml",
+      "prefix_reference": "https://w3id.org/linkml/"
+    },
+    {
+      "prefix_prefix": "schema",
+      "prefix_reference": "http://schema.org/"
+    }
+  ],
+  "default_prefix": "attributes_of_biosamples",
+  "default_range": "string",
+  "subsets": [
+    {
+      "name": "silly_subset",
+      "definition_uri": "http://example.com/SillySubset",
+      "description": "a subset just for the heck of it",
+      "from_schema": "http://example.com/attributes_of_biosamples",
+      "@type": "SubsetDefinition"
+    }
+  ],
+  "types": [
+    {
+      "name": "string",
+      "definition_uri": "https://w3id.org/linkml/String",
+      "description": "A character string",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "integer",
+      "definition_uri": "https://w3id.org/linkml/Integer",
+      "description": "An integer",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#integer",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "boolean",
+      "definition_uri": "https://w3id.org/linkml/Boolean",
+      "description": "A binary (true or false) value",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "Bool",
+      "uri": "http://www.w3.org/2001/XMLSchema#boolean",
+      "repr": "bool",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "float",
+      "definition_uri": "https://w3id.org/linkml/Float",
+      "description": "A real number that conforms to the xsd:float specification",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#float",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "double",
+      "definition_uri": "https://w3id.org/linkml/Double",
+      "description": "A real number that conforms to the xsd:double specification",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#double",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "decimal",
+      "definition_uri": "https://w3id.org/linkml/Decimal",
+      "description": "A real number with arbitrary precision that conforms to the xsd:decimal specification",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "Decimal",
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "time",
+      "definition_uri": "https://w3id.org/linkml/Time",
+      "description": "A time object represents a (local) time of day, independent of any particular day",
+      "notes": [
+        "URI is dateTime because OWL reasoners do not work with straight date or time"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "XSDTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date",
+      "definition_uri": "https://w3id.org/linkml/Date",
+      "description": "a date (year, month and day) in an idealized calendar",
+      "notes": [
+        "URI is dateTime because OWL reasoners don't work with straight date or time"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "XSDDate",
+      "uri": "http://www.w3.org/2001/XMLSchema#date",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "datetime",
+      "definition_uri": "https://w3id.org/linkml/Datetime",
+      "description": "The combination of a date and time",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "XSDDateTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date_or_datetime",
+      "definition_uri": "https://w3id.org/linkml/DateOrDatetime",
+      "description": "Either a date or a datetime",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "https://w3id.org/linkml/DateOrDatetime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uriorcurie",
+      "definition_uri": "https://w3id.org/linkml/Uriorcurie",
+      "description": "a URI or a CURIE",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "URIorCURIE",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uri",
+      "definition_uri": "https://w3id.org/linkml/Uri",
+      "description": "a complete URI",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "URI",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "ncname",
+      "definition_uri": "https://w3id.org/linkml/Ncname",
+      "description": "Prefix part of CURIE",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NCName",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "objectidentifier",
+      "definition_uri": "https://w3id.org/linkml/Objectidentifier",
+      "description": "A URI or CURIE that represents an object in the model.",
+      "comments": [
+        "Used for inheritence and type checking"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "ElementIdentifier",
+      "uri": "http://www.w3.org/ns/shex#iri",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "nodeidentifier",
+      "definition_uri": "https://w3id.org/linkml/Nodeidentifier",
+      "description": "A URI, CURIE or BNODE that represents a node in a model.",
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NodeIdentifier",
+      "uri": "http://www.w3.org/ns/shex#nonLiteral",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "DecimalDegree",
+      "definition_uri": "http://example.com/DecimalDegree",
+      "description": "A decimal degree expresses latitude or longitude as decimal fractions",
+      "from_schema": "http://example.com/attributes_of_biosamples",
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "@type": "TypeDefinition"
+    }
+  ],
+  "enums": [
+    {
+      "name": "COMPASS_POINTS",
+      "definition_uri": "http://example.com/COMPASSPOINTS",
+      "from_schema": "http://example.com/attributes_of_biosamples",
+      "permissible_values": [
+        {
+          "text": "east"
+        },
+        {
+          "text": "north"
+        },
+        {
+          "text": "south"
+        },
+        {
+          "text": "west"
+        }
+      ]
+    },
+    {
+      "name": "TIMES_OF_DAY",
+      "definition_uri": "http://example.com/TIMESOFDAY",
+      "from_schema": "http://example.com/attributes_of_biosamples",
+      "permissible_values": [
+        {
+          "text": "afternoon"
+        },
+        {
+          "text": "evening"
+        },
+        {
+          "text": "morning"
+        },
+        {
+          "text": "night"
+        }
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "name": "depth",
+      "definition_uri": "http://example.com/depth",
+      "conforms_to": "kindergarten stuff",
+      "annotations": [
+        {
+          "tag": "spanish",
+          "value": "profundidad",
+          "@type": "Annotation"
+        }
+      ],
+      "description": "how far down",
+      "todos": [
+        "so pick one",
+        "then get some sleep"
+      ],
+      "notes": [
+        "call mom",
+        "vote"
+      ],
+      "comments": [
+        "could be a bare number",
+        "could be a string with a number and a unit",
+        "could be a tuple"
+      ],
+      "examples": [
+        {
+          "value": "high",
+          "@type": "Example"
+        },
+        {
+          "value": "low",
+          "@type": "Example"
+        },
+        {
+          "value": "2000",
+          "@type": "Example"
+        }
+      ],
+      "in_subset": [
+        "silly_subset"
+      ],
+      "from_schema": "http://example.com/attributes_of_biosamples",
+      "see_also": [
+        "https://en.wikipedia.org/wiki/Three-dimensional_space",
+        "https://en.wikipedia.org/wiki/Depth_(video_game)"
+      ],
+      "mappings": [
+        "http://example.com/depth"
+      ],
+      "close_mappings": [
+        "http://w3id.org/mixs/0000018"
+      ],
+      "created_by": "ORCID:0000-0001-9076-6066",
+      "slot_uri": "http://example.com/depth",
+      "owner": "Biosample",
+      "domain_of": [
+        "Biosample"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "biosamples",
+      "definition_uri": "http://example.com/biosamples",
+      "from_schema": "http://example.com/attributes_of_biosamples",
+      "slot_uri": "http://example.com/biosamples",
+      "multivalued": true,
+      "owner": "Collection",
+      "domain_of": [
+        "Collection"
+      ],
+      "range": "Biosample",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "id",
+      "definition_uri": "http://example.com/id",
+      "description": "value that points exclusively to one instances of a class",
+      "from_schema": "http://example.com/attributes_of_biosamples",
+      "aliases": [
+        "denoter",
+        "identifier"
+      ],
+      "is_a": "depth",
+      "modified_by": "ORCID:0000-0001-9076-6066",
+      "slot_uri": "http://example.com/id",
+      "identifier": true,
+      "owner": "Meeting",
+      "domain_of": [
+        "Biosample",
+        "Meeting"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "depth_in_meters",
+      "definition_uri": "http://example.com/depth_in_meters",
+      "description": "bare float representation of depth in meters",
+      "title": "Depth in meters",
+      "from_schema": "http://example.com/attributes_of_biosamples",
+      "source": "aob:depth",
+      "status": "fhir_pub_status:publication-status-draft",
+      "slot_uri": "http://example.com/depth_in_meters",
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "intval",
+      "definition_uri": "http://example.com/intval",
+      "from_schema": "http://example.com/attributes_of_biosamples",
+      "slot_uri": "http://example.com/intval",
+      "owner": "Biosample",
+      "domain_of": [
+        "Biosample"
+      ],
+      "slot_group": "experimental_slot",
+      "range": "integer",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "intlist",
+      "definition_uri": "http://example.com/intlist",
+      "from_schema": "http://example.com/attributes_of_biosamples",
+      "slot_uri": "http://example.com/intlist",
+      "multivalued": true,
+      "slot_group": "experimental_slot",
+      "range": "integer",
+      "recommended": true,
+      "minimum_cardinality": 2,
+      "maximum_cardinality": 8,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sometimes_absent",
+      "definition_uri": "http://example.com/sometimes_absent",
+      "from_schema": "http://example.com/attributes_of_biosamples",
+      "slot_uri": "http://example.com/sometimes_absent",
+      "ifabsent": "string(present)",
+      "owner": "Biosample",
+      "domain_of": [
+        "Biosample"
+      ],
+      "slot_group": "experimental_slot",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "lat",
+      "definition_uri": "http://example.com/lat",
+      "from_schema": "http://example.com/attributes_of_biosamples",
+      "slot_uri": "http://example.com/lat",
+      "owner": "Biosample",
+      "domain_of": [
+        "Biosample"
+      ],
+      "slot_group": "experimental_slot",
+      "range": "DecimalDegree",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "experimental_slot",
+      "definition_uri": "http://example.com/experimental_slot",
+      "from_schema": "http://example.com/attributes_of_biosamples",
+      "slot_uri": "http://example.com/experimental_slot",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "meeting_info",
+      "definition_uri": "http://example.com/meeting_info",
+      "from_schema": "http://example.com/attributes_of_biosamples",
+      "slot_uri": "http://example.com/meeting_info",
+      "owner": "Meeting",
+      "domain_of": [
+        "Meeting"
+      ],
+      "range": "COMPASS_POINTS",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "meetings",
+      "definition_uri": "http://example.com/meetings",
+      "from_schema": "http://example.com/attributes_of_biosamples",
+      "slot_uri": "http://example.com/meetings",
+      "multivalued": true,
+      "owner": "Collection",
+      "domain_of": [
+        "Collection"
+      ],
+      "range": "Meeting",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    }
+  ],
+  "classes": [
+    {
+      "name": "Biosample",
+      "id_prefixes": [
+        "suggestion_only"
+      ],
+      "definition_uri": "http://example.com/Biosample",
+      "description": "something you can collect from the environment",
+      "from_schema": "http://example.com/attributes_of_biosamples",
+      "slots": [
+        "id",
+        "depth",
+        "intval",
+        "sometimes_absent",
+        "lat"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://example.com/Biosample",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Collection",
+      "definition_uri": "http://example.com/Collection",
+      "description": "a collection of collections",
+      "from_schema": "http://example.com/attributes_of_biosamples",
+      "slots": [
+        "biosamples",
+        "meetings"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://example.com/Collection",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Meeting",
+      "definition_uri": "http://example.com/Meeting",
+      "from_schema": "http://example.com/attributes_of_biosamples",
+      "slots": [
+        "id",
+        "meeting_info"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://example.com/Meeting",
+      "@type": "ClassDefinition"
+    }
+  ],
+  "metamodel_version": "1.7.0",
+  "source_file": "attributes_of_biosamples.yaml",
+  "source_file_date": "2023-01-20T22:50:07",
+  "source_file_size": 676,
+  "generation_date": "2023-01-20T23:44:53",
+  "@type": "SchemaDefinition",
+  "@context": [
+    "project/jsonld/attributes_of_biosamples.context.jsonld",
+    "https://w3id.org/linkml/types.context.jsonld",
+    "slotdefs_classdefs_slot_assignments.context.jsonld",
+    {
+      "@base": "https://w3id.org/microbiomedata/attributes-of-biosamples/"
+    }
+  ]
+}

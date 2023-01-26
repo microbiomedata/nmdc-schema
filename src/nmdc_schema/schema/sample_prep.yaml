@@ -1,0 +1,344 @@
+id: https://microbiomedata/schema/sample_prep
+name: sample_prep
+title: NMDC sample prep schema
+description: Material and activity classes for describing sample preparation, in support of EMSL, Monet, MANA, etc.
+license: https://creativecommons.org/publicdomain/zero/1.0/
+see_also:
+  - https://gitlab.pnnl.gov/MoNET/analytical-processes/-/blob/main/organicmatterextraction.toml
+
+prefixes:
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
+  CHMO: http://purl.obolibrary.org/obo/CHMO_
+  GOLD: http://identifiers.org/gold/
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  linkml: https://w3id.org/linkml/
+  nmdc: https://w3id.org/nmdc/
+  prov: http://www.w3.org/ns/prov#
+
+default_prefix: nmdc
+default_range: string
+
+default_curi_maps:
+  - obo_context
+  - idot_context
+
+notes:
+  - "circular nmdc import is for slot biosample_input with range: Biosample"
+imports:
+  - basic_slots
+  - nmdc
+
+enums:
+  ContainerTypeEnum:
+    name: ContainerTypeEnum
+    title: Container type enumeration
+
+    permissible_values:
+      screw_top_conical:
+        text: screw_top_conical
+        title: Screw top conical tube
+        aliases:
+          - falcon tube
+  DeviceTypeEnum:
+    name: DeviceTypeEnum
+    title: Shaker type enumeration
+
+    permissible_values:
+      orbital_shaker:
+        text: orbital_shaker
+        title: Orbital shaker
+      thermomixer:
+        text: thermomixer
+        title: Thermomixer
+  SamplingMethodEnum:
+    name: SamplingMethodEnum
+
+    permissible_values:
+      weighing:
+        text: weighing
+        title: Weighing
+  SolventEnum:
+    name: SolventEnum
+    title: Solvent enumeration
+
+    permissible_values:
+      deionized_water:
+        text: deionized_water
+        title: Deionized water
+        broad_mappings:
+          - CHEBI:15377
+      methanol:
+        text: methanol
+        title: Methanol
+        meaning: CHEBI:17790
+      chloroform:
+        text: chloroform
+        title: Chloroform
+        meaning: CHEBI:35255
+slots:
+  dissolving_activity_set:
+    name: dissolving_activity_set
+    title: dissolving activity set
+    multivalued: true
+    range: DissolvingActivity
+    inlined_as_list: true
+  material_sample_set:
+    name: material_sample_set
+    title: material sample set
+
+    multivalued: true
+    range: MaterialSample
+    inlined_as_list: true
+  material_sampling_activity_set:
+    name: material_sampling_activity_set
+    title: material sampling activity set
+
+    multivalued: true
+    range: MaterialSamplingActivity
+    inlined_as_list: true
+  reaction_activity_set:
+    name: reaction_activity_set
+
+    multivalued: true
+    range: ReactionActivity
+    inlined_as_list: true
+  dissolution_aided_by:
+    name: dissolution_aided_by
+    title: dissolution aided by
+
+    aliases:
+      - shaker
+    range: LabDevice
+    inlined: true
+  dissolution_reagent:
+    name: dissolution_reagent
+    title: dissolution reagent
+
+    aliases:
+      - solvent
+    range: SolventEnum
+  dissolution_volume:
+    name: dissolution_volume
+    title: dissolution volume
+
+    aliases:
+      - volume
+    range: QuantityValue
+    inlined: true
+  dissolved_in:
+    name: dissolved_in
+    title: dissolved in
+
+    aliases:
+      - container
+    range: MaterialContainer
+    inlined: true
+
+  biosample_input:
+    name: biosample_input
+    title: biosample input
+    range: Biosample
+
+  material_input:
+    name: material_input
+    title: material input
+
+
+    range: MaterialSample
+  material_output:
+    name: material_output
+    title: material output
+
+    range: MaterialSample
+  device_type:
+    name: device_type
+    title: device type
+
+    aliases:
+      - shaker type
+    range: DeviceTypeEnum
+  activity_speed:
+    name: activity_speed
+    title: activity speed
+
+    aliases:
+      - shake_speed
+    range: QuantityValue
+    inlined: true
+  activity_temperature:
+    name: activity_temperature
+    todos:
+      - constrain units
+
+    range: QuantityValue
+    inlined: true
+  activity_time:
+    name: activity_time
+    title: activity time
+
+    aliases:
+      - shake_time
+    range: QuantityValue
+    inlined: true
+  container_size:
+    name: container_size
+    title: container size
+
+    range: QuantityValue
+    inlined: true
+  container_type:
+    name: container_type
+    title: container type
+
+    range: ContainerTypeEnum
+  amount_collected:
+    name: amount_collected
+    title: amount collected
+
+    range: QuantityValue
+    inlined: true
+  collected_into:
+    name: collected_into
+    title: collected into
+
+  sampling_method:
+    name: sampling_method
+    title: sampling method
+
+    range: SamplingMethodEnum
+
+  reaction_aided_by:
+    name: reaction_aided_by
+    title: reaction aided by
+
+    aliases:
+      - shaker
+    range: LabDevice
+    inlined: true
+  reaction_temperature:
+    name: reaction_temperature
+
+  reaction_time:
+    name: reaction_time
+
+classes:
+  DissolvingActivity:
+    name: DissolvingActivity
+    title: Dissolving activity
+
+    aliases:
+      - dissolution-activity
+    slots:
+      - dissolution_aided_by
+      - dissolution_reagent
+      - dissolution_volume
+      - dissolved_in
+      - material_input
+      - material_output
+    slot_usage:
+      material_input:
+        name: material_input
+        examples:
+          - value: somextract:6
+        range: MaterialSample
+      material_output:
+        name: material_output
+        examples:
+          - value: somextract:7
+        range: MaterialSample
+    class_uri: CHMO:0002773
+  LabDevice:
+    name: LabDevice
+    title: Lab device
+
+    slots:
+      - device_type
+      - activity_speed
+      - activity_temperature
+      - activity_time
+  MaterialContainer:
+    name: MaterialContainer
+    title: Material container
+
+    slots:
+      - container_size
+      - container_type
+  MaterialSample:
+    name: MaterialSample
+    title: Material sample
+    aliases:
+      - Material entity
+    is_a: NamedThing
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:matsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
+
+  MaterialSamplingActivity:
+    name: MaterialSamplingActivity
+    title: Material sampling activity
+
+    aliases:
+      - weighing-activity
+    slots:
+      - amount_collected
+      - collected_into
+      - biosample_input
+      - material_output
+      - sampling_method
+    slot_usage:
+      amount_collected:
+        name: amount_collected
+        aliases:
+          - weighing-activity.weight
+      collected_into:
+        name: collected_into
+        aliases:
+          - weighing-activity.contanier
+        range: MaterialContainer
+        inlined: true
+      biosample_input:
+        name: biosample_input
+        examples:
+          - value: soil:1
+        aliases:
+          - weighing-activity.source_material
+      material_output:
+        name: material_output
+        examples:
+          - value: somextract:6
+        aliases:
+          - weighing-activity.id
+        range: MaterialSample
+      sampling_method:
+        name: sampling_method
+    class_uri: OBI:0000744
+
+  ReactionActivity:
+    name: ReactionActivity
+    title: Reaction activity
+
+    aliases:
+      - reaction-activity
+    slots:
+      - material_input
+      - material_output
+      - reaction_aided_by
+      - reaction_temperature
+      - reaction_time
+    slot_usage:
+      material_input:
+        name: material_input
+        range: MaterialSample
+      material_output:
+        name: material_output
+        range: MaterialSample
+      reaction_time:
+        name: reaction_time
+        todos:
+          - constrain units
+          - align with activity_time
+        range: QuantityValue
+        inlined: true
