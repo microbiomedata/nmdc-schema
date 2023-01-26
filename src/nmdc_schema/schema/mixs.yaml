@@ -7349,10 +7349,10 @@ slots:
     slot_uri: mixs:0000813
     multivalued: false
     range: TextValue
-  investigation field:
-    abstract: true
-    description: field describing aspect of the investigation/study to which the sample
-      belongs
+  #  investigation_field:
+  #    abstract: true
+  #    description: field describing aspect of the investigation/study to which the sample
+  #      belongs
   iw_bt_date_well:
     name: iw_bt_date_well
     aliases:

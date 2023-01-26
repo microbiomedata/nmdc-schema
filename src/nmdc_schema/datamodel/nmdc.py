@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-01-25T19:58:26
+# Generation date: 2023-01-25T20:03:14
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -7430,9 +7430,6 @@ slots.inside_lux = Slot(uri=MIXS['0000168'], name="inside_lux", curie=MIXS.curie
 
 slots.int_wall_cond = Slot(uri=MIXS['0000813'], name="int_wall_cond", curie=MIXS.curie('0000813'),
                    model_uri=NMDC.int_wall_cond, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.investigation_field = Slot(uri=NMDC.investigation_field, name="investigation field", curie=NMDC.curie('investigation_field'),
-                   model_uri=NMDC.investigation_field, domain=None, range=Optional[str])
 
 slots.iw_bt_date_well = Slot(uri=MIXS['0001010'], name="iw_bt_date_well", curie=MIXS.curie('0001010'),
                    model_uri=NMDC.iw_bt_date_well, domain=None, range=Optional[Union[dict, TimestampValue]])

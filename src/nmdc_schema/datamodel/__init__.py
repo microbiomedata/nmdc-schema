@@ -1,1 +1,1 @@
-from .nmdc_schema import *
+from .nmdc import *
