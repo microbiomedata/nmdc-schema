@@ -1,6 +1,6 @@
-# attributes-of-biosamples
+# nmdc_schema
 
-Attributes of Environmental Biosamples
+Schema resources for the National Microbiome Data Collaborative (NMDC)
 
 ## Website
 
@@ -16,8 +16,6 @@ _Incorrect. Fix._
         * [schema](src/nmdc-schema/schema) -- LinkML schema (edit this)
 * [datamodel](src/nmdc-schema/datamodel) -- Generated python datamodel
 * [tests](tests/) - python tests
-
-Deleted [examples/](examples/) in favor of [src/data/examples](src/data/examples)
 
 ## Developer Documentation
 
