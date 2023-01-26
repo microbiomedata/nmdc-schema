@@ -4,7 +4,7 @@ RUN=poetry run
 SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
 SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 
-examples-all: examples src/data/output
+examples-all: examples-clean src/data/output
 
 examples-clean:
 	rm -rf src/data/output
