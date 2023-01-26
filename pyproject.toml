@@ -11,9 +11,9 @@ repository = "https://github.com/microbiomedata/nmdc-schema"
 version = "0.0.0"
 authors = [
     "Bill Duncan <wdduncan@gmail.com>",
+    "Chris Mungall <cjmungall@lbl.gov>",
     "Mark Andrew Miller <MAM@lbl.gov>",
     "Sujay Patil <spatil@lbl.gov>",
-    "Chris Mungall <cjmungall@lbl.gov>",
 ]
 
 [tool.poetry.dependencies]
