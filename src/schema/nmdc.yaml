@@ -225,6 +225,13 @@ classes:
 
   Biosample:
 
+    unique_keys:
+      samp_name_unique_key:
+        notes:
+          - "id is already required to be unique because it is the identifier in Biosample's parent class, NamedThing. Remember, notes like this could be exposed to end users. CJM suggested YAML # comment"
+        unique_key_slots:
+          - samp_name
+
     is_a: MaterialEntity
     in_subset:
       - sample subset
