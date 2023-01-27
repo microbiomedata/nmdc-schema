@@ -1,6 +1,6 @@
 import unittest
 
-from nmdc_schema.datamodel.nmdc import FieldResearchSite
+from nmdc_schema.nmdc import FieldResearchSite
 
 
 class TestBiosampleInstantiation(unittest.TestCase):

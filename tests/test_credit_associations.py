@@ -3,7 +3,7 @@ import unittest
 
 from linkml.validators.jsonschemavalidator import JsonSchemaDataValidator
 
-from nmdc_schema.datamodel.nmdc import PersonValue, CreditAssociation, Study
+from nmdc_schema.nmdc import PersonValue, CreditAssociation, Study
 
 ROOT = os.path.join(os.path.dirname(__file__), '..')
 SCHEMA_DIR = os.path.join(ROOT, "src", "nmdc_schema", "schema")

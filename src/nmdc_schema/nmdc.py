@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-01-20T15:23:58
+# Generation date: 2023-01-27T18:01:02
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -988,6 +988,7 @@ class Biosample(MaterialEntity):
     env_broad_scale: Union[dict, "ControlledIdentifiedTermValue"] = None
     env_local_scale: Union[dict, "ControlledIdentifiedTermValue"] = None
     env_medium: Union[dict, "ControlledIdentifiedTermValue"] = None
+    embargoed: Optional[Union[bool, Bool]] = None
     collected_from: Optional[Union[str, FieldResearchSiteId]] = None
     type: Optional[str] = None
     img_identifiers: Optional[Union[str, List[str]]] = empty_list()
@@ -1036,12 +1037,12 @@ class Biosample(MaterialEntity):
     env_package: Optional[Union[dict, "TextValue"]] = None
     extreme_event: Optional[str] = None
     fao_class: Optional[Union[dict, "TextValue"]] = None
-    fire: Optional[Union[dict, "TimestampValue"]] = None
-    flooding: Optional[Union[dict, "TimestampValue"]] = None
+    fire: Optional[str] = None
+    flooding: Optional[str] = None
     geo_loc_name: Optional[Union[dict, "TextValue"]] = None
     glucosidase_act: Optional[Union[dict, "QuantityValue"]] = None
-    heavy_metals: Optional[Union[dict, "QuantityValue"]] = None
-    heavy_metals_meth: Optional[Union[dict, "TextValue"]] = None
+    heavy_metals: Optional[Union[Union[dict, "QuantityValue"], List[Union[dict, "QuantityValue"]]]] = empty_list()
+    heavy_metals_meth: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     lat_lon: Optional[Union[dict, "GeolocationValue"]] = None
     link_addit_analys: Optional[Union[dict, "TextValue"]] = None
     link_class_info: Optional[Union[dict, "TextValue"]] = None
@@ -1076,6 +1077,7 @@ class Biosample(MaterialEntity):
     samp_mat_process: Optional[Union[dict, "ControlledTermValue"]] = None
     samp_store_dur: Optional[Union[dict, "TextValue"]] = None
     samp_store_loc: Optional[Union[dict, "TextValue"]] = None
+    samp_taxon_id: Optional[str] = None
     samp_store_temp: Optional[Union[dict, "QuantityValue"]] = None
     samp_vol_we_dna_ext: Optional[Union[dict, "QuantityValue"]] = None
     season_temp: Optional[Union[dict, "QuantityValue"]] = None
@@ -1102,7 +1104,7 @@ class Biosample(MaterialEntity):
     tot_nitro_content: Optional[Union[dict, "QuantityValue"]] = None
     tot_nitro_cont_meth: Optional[str] = None
     tot_phosp: Optional[Union[dict, "QuantityValue"]] = None
-    water_content: Optional[Union[dict, "QuantityValue"]] = None
+    water_content: Optional[Union[str, List[str]]] = empty_list()
     water_cont_soil_meth: Optional[str] = None
     ecosystem: Optional[str] = None
     ecosystem_category: Optional[str] = None
@@ -1231,6 +1233,9 @@ class Biosample(MaterialEntity):
             self.MissingRequiredField("env_medium")
         if not isinstance(self.env_medium, ControlledIdentifiedTermValue):
             self.env_medium = ControlledIdentifiedTermValue(**as_dict(self.env_medium))
+
+        if self.embargoed is not None and not isinstance(self.embargoed, Bool):
+            self.embargoed = Bool(self.embargoed)
 
         if self.collected_from is not None and not isinstance(self.collected_from, FieldResearchSiteId):
             self.collected_from = FieldResearchSiteId(self.collected_from)
@@ -1386,11 +1391,11 @@ class Biosample(MaterialEntity):
         if self.fao_class is not None and not isinstance(self.fao_class, TextValue):
             self.fao_class = TextValue(**as_dict(self.fao_class))
 
-        if self.fire is not None and not isinstance(self.fire, TimestampValue):
-            self.fire = TimestampValue(**as_dict(self.fire))
+        if self.fire is not None and not isinstance(self.fire, str):
+            self.fire = str(self.fire)
 
-        if self.flooding is not None and not isinstance(self.flooding, TimestampValue):
-            self.flooding = TimestampValue(**as_dict(self.flooding))
+        if self.flooding is not None and not isinstance(self.flooding, str):
+            self.flooding = str(self.flooding)
 
         if self.geo_loc_name is not None and not isinstance(self.geo_loc_name, TextValue):
             self.geo_loc_name = TextValue(**as_dict(self.geo_loc_name))
@@ -1398,11 +1403,13 @@ class Biosample(MaterialEntity):
         if self.glucosidase_act is not None and not isinstance(self.glucosidase_act, QuantityValue):
             self.glucosidase_act = QuantityValue(**as_dict(self.glucosidase_act))
 
-        if self.heavy_metals is not None and not isinstance(self.heavy_metals, QuantityValue):
-            self.heavy_metals = QuantityValue(**as_dict(self.heavy_metals))
+        if not isinstance(self.heavy_metals, list):
+            self.heavy_metals = [self.heavy_metals] if self.heavy_metals is not None else []
+        self.heavy_metals = [v if isinstance(v, QuantityValue) else QuantityValue(**as_dict(v)) for v in self.heavy_metals]
 
-        if self.heavy_metals_meth is not None and not isinstance(self.heavy_metals_meth, TextValue):
-            self.heavy_metals_meth = TextValue(**as_dict(self.heavy_metals_meth))
+        if not isinstance(self.heavy_metals_meth, list):
+            self.heavy_metals_meth = [self.heavy_metals_meth] if self.heavy_metals_meth is not None else []
+        self.heavy_metals_meth = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.heavy_metals_meth]
 
         if self.lat_lon is not None and not isinstance(self.lat_lon, GeolocationValue):
             self.lat_lon = GeolocationValue(**as_dict(self.lat_lon))
@@ -1506,6 +1513,9 @@ class Biosample(MaterialEntity):
         if self.samp_store_loc is not None and not isinstance(self.samp_store_loc, TextValue):
             self.samp_store_loc = TextValue(**as_dict(self.samp_store_loc))
 
+        if self.samp_taxon_id is not None and not isinstance(self.samp_taxon_id, str):
+            self.samp_taxon_id = str(self.samp_taxon_id)
+
         if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, QuantityValue):
             self.samp_store_temp = QuantityValue(**as_dict(self.samp_store_temp))
 
@@ -1584,8 +1594,9 @@ class Biosample(MaterialEntity):
         if self.tot_phosp is not None and not isinstance(self.tot_phosp, QuantityValue):
             self.tot_phosp = QuantityValue(**as_dict(self.tot_phosp))
 
-        if self.water_content is not None and not isinstance(self.water_content, QuantityValue):
-            self.water_content = QuantityValue(**as_dict(self.water_content))
+        if not isinstance(self.water_content, list):
+            self.water_content = [self.water_content] if self.water_content is not None else []
+        self.water_content = [v if isinstance(v, str) else str(v) for v in self.water_content]
 
         if self.water_cont_soil_meth is not None and not isinstance(self.water_cont_soil_meth, str):
             self.water_cont_soil_meth = str(self.water_cont_soil_meth)
@@ -6191,6 +6202,9 @@ class SolventEnum(EnumDefinitionImpl):
 class slots:
     pass
 
+slots.embargoed = Slot(uri=NMDC.embargoed, name="embargoed", curie=NMDC.curie('embargoed'),
+                   model_uri=NMDC.embargoed, domain=None, range=Optional[Union[bool, Bool]])
+
 slots.collected_from = Slot(uri=NMDC.collected_from, name="collected_from", curie=NMDC.curie('collected_from'),
                    model_uri=NMDC.collected_from, domain=Biosample, range=Optional[Union[str, FieldResearchSiteId]])
 
@@ -7406,6 +7420,9 @@ slots.inside_lux = Slot(uri=MIXS['0000168'], name="inside_lux", curie=MIXS.curie
 slots.int_wall_cond = Slot(uri=MIXS['0000813'], name="int_wall_cond", curie=MIXS.curie('0000813'),
                    model_uri=NMDC.int_wall_cond, domain=None, range=Optional[Union[dict, TextValue]])
 
+slots.investigation_field = Slot(uri=NMDC.investigation_field, name="investigation field", curie=NMDC.curie('investigation_field'),
+                   model_uri=NMDC.investigation_field, domain=None, range=Optional[str])
+
 slots.iw_bt_date_well = Slot(uri=MIXS['0001010'], name="iw_bt_date_well", curie=MIXS.curie('0001010'),
                    model_uri=NMDC.iw_bt_date_well, domain=None, range=Optional[Union[dict, TimestampValue]])
 
@@ -7814,6 +7831,9 @@ slots.samp_store_temp = Slot(uri=MIXS['0000110'], name="samp_store_temp", curie=
 
 slots.samp_subtype = Slot(uri=MIXS['0000999'], name="samp_subtype", curie=MIXS.curie('0000999'),
                    model_uri=NMDC.samp_subtype, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.samp_taxon_id = Slot(uri=MIXS['0001320'], name="samp_taxon_id", curie=MIXS.curie('0001320'),
+                   model_uri=NMDC.samp_taxon_id, domain=None, range=Optional[str])
 
 slots.samp_time_out = Slot(uri=MIXS['0000196'], name="samp_time_out", curie=MIXS.curie('0000196'),
                    model_uri=NMDC.samp_time_out, domain=None, range=Optional[Union[dict, TextValue]])
@@ -8739,8 +8759,84 @@ slots.Biosample_sample_link = Slot(uri=NMDC.sample_link, name="Biosample_sample_
 slots.Biosample_part_of = Slot(uri=DCTERMS.isPartOf, name="Biosample_part_of", curie=DCTERMS.curie('isPartOf'),
                    model_uri=NMDC.Biosample_part_of, domain=Biosample, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
 
+slots.Biosample_fire = Slot(uri=MIXS['0001086'], name="Biosample_fire", curie=MIXS.curie('0001086'),
+                   model_uri=NMDC.Biosample_fire, domain=Biosample, range=Optional[str],
+                   pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$'))
+
+slots.Biosample_flooding = Slot(uri=MIXS['0000319'], name="Biosample_flooding", curie=MIXS.curie('0000319'),
+                   model_uri=NMDC.Biosample_flooding, domain=Biosample, range=Optional[str])
+
 slots.Biosample_extreme_event = Slot(uri=MIXS['0000320'], name="Biosample_extreme_event", curie=MIXS.curie('0000320'),
                    model_uri=NMDC.Biosample_extreme_event, domain=Biosample, range=Optional[str])
+
+slots.Biosample_slope_aspect = Slot(uri=MIXS['0000647'], name="Biosample_slope_aspect", curie=MIXS.curie('0000647'),
+                   model_uri=NMDC.Biosample_slope_aspect, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.Biosample_slope_gradient = Slot(uri=MIXS['0000646'], name="Biosample_slope_gradient", curie=MIXS.curie('0000646'),
+                   model_uri=NMDC.Biosample_slope_gradient, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.Biosample_al_sat = Slot(uri=MIXS['0000607'], name="Biosample_al_sat", curie=MIXS.curie('0000607'),
+                   model_uri=NMDC.Biosample_al_sat, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.Biosample_al_sat_meth = Slot(uri=MIXS['0000324'], name="Biosample_al_sat_meth", curie=MIXS.curie('0000324'),
+                   model_uri=NMDC.Biosample_al_sat_meth, domain=Biosample, range=Optional[Union[dict, "TextValue"]])
+
+slots.Biosample_annual_precpt = Slot(uri=MIXS['0000644'], name="Biosample_annual_precpt", curie=MIXS.curie('0000644'),
+                   model_uri=NMDC.Biosample_annual_precpt, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.Biosample_cur_vegetation = Slot(uri=MIXS['0000312'], name="Biosample_cur_vegetation", curie=MIXS.curie('0000312'),
+                   model_uri=NMDC.Biosample_cur_vegetation, domain=Biosample, range=Optional[Union[dict, "TextValue"]])
+
+slots.Biosample_cur_vegetation_meth = Slot(uri=MIXS['0000314'], name="Biosample_cur_vegetation_meth", curie=MIXS.curie('0000314'),
+                   model_uri=NMDC.Biosample_cur_vegetation_meth, domain=Biosample, range=Optional[Union[dict, "TextValue"]])
+
+slots.Biosample_heavy_metals = Slot(uri=MIXS['0000652'], name="Biosample_heavy_metals", curie=MIXS.curie('0000652'),
+                   model_uri=NMDC.Biosample_heavy_metals, domain=Biosample, range=Optional[Union[Union[dict, "QuantityValue"], List[Union[dict, "QuantityValue"]]]])
+
+slots.Biosample_heavy_metals_meth = Slot(uri=MIXS['0000343'], name="Biosample_heavy_metals_meth", curie=MIXS.curie('0000343'),
+                   model_uri=NMDC.Biosample_heavy_metals_meth, domain=Biosample, range=Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]])
+
+slots.Biosample_season_precpt = Slot(uri=MIXS['0000645'], name="Biosample_season_precpt", curie=MIXS.curie('0000645'),
+                   model_uri=NMDC.Biosample_season_precpt, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.Biosample_water_cont_soil_meth = Slot(uri=MIXS['0000323'], name="Biosample_water_cont_soil_meth", curie=MIXS.curie('0000323'),
+                   model_uri=NMDC.Biosample_water_cont_soil_meth, domain=Biosample, range=Optional[str])
+
+slots.Biosample_water_content = Slot(uri=MIXS['0000185'], name="Biosample_water_content", curie=MIXS.curie('0000185'),
+                   model_uri=NMDC.Biosample_water_content, domain=Biosample, range=Optional[Union[str, List[str]]])
+
+slots.Biosample_ph_meth = Slot(uri=MIXS['0001106'], name="Biosample_ph_meth", curie=MIXS.curie('0001106'),
+                   model_uri=NMDC.Biosample_ph_meth, domain=Biosample, range=Optional[Union[dict, "TextValue"]])
+
+slots.Biosample_tot_carb = Slot(uri=MIXS['0000525'], name="Biosample_tot_carb", curie=MIXS.curie('0000525'),
+                   model_uri=NMDC.Biosample_tot_carb, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.Biosample_tot_nitro_cont_meth = Slot(uri=MIXS['0000338'], name="Biosample_tot_nitro_cont_meth", curie=MIXS.curie('0000338'),
+                   model_uri=NMDC.Biosample_tot_nitro_cont_meth, domain=Biosample, range=Optional[str])
+
+slots.Biosample_tot_nitro_content = Slot(uri=MIXS['0000530'], name="Biosample_tot_nitro_content", curie=MIXS.curie('0000530'),
+                   model_uri=NMDC.Biosample_tot_nitro_content, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.Biosample_tot_org_c_meth = Slot(uri=MIXS['0000337'], name="Biosample_tot_org_c_meth", curie=MIXS.curie('0000337'),
+                   model_uri=NMDC.Biosample_tot_org_c_meth, domain=Biosample, range=Optional[Union[dict, "TextValue"]])
+
+slots.Biosample_tot_org_carb = Slot(uri=MIXS['0000533'], name="Biosample_tot_org_carb", curie=MIXS.curie('0000533'),
+                   model_uri=NMDC.Biosample_tot_org_carb, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.Biosample_salinity_meth = Slot(uri=MIXS['0000341'], name="Biosample_salinity_meth", curie=MIXS.curie('0000341'),
+                   model_uri=NMDC.Biosample_salinity_meth, domain=Biosample, range=Optional[Union[dict, "TextValue"]])
+
+slots.Biosample_sieving = Slot(uri=MIXS['0000322'], name="Biosample_sieving", curie=MIXS.curie('0000322'),
+                   model_uri=NMDC.Biosample_sieving, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.Biosample_climate_environment = Slot(uri=MIXS['0001040'], name="Biosample_climate_environment", curie=MIXS.curie('0001040'),
+                   model_uri=NMDC.Biosample_climate_environment, domain=Biosample, range=Optional[Union[dict, "TextValue"]])
+
+slots.Biosample_gaseous_environment = Slot(uri=MIXS['0000558'], name="Biosample_gaseous_environment", curie=MIXS.curie('0000558'),
+                   model_uri=NMDC.Biosample_gaseous_environment, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.Biosample_watering_regm = Slot(uri=MIXS['0000591'], name="Biosample_watering_regm", curie=MIXS.curie('0000591'),
+                   model_uri=NMDC.Biosample_watering_regm, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
 
 slots.Study_id = Slot(uri=NMDC.id, name="Study_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Study_id, domain=Study, range=Union[str, StudyId])

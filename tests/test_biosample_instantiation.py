@@ -2,7 +2,7 @@ import logging
 
 import unittest
 
-from nmdc_schema.datamodel.nmdc import (
+from nmdc_schema.nmdc import (
     Biosample,
     ControlledIdentifiedTermValue, OntologyClass, ControlledTermValue,
 )
@@ -23,20 +23,15 @@ class TestBiosampleInstantiation(unittest.TestCase):
             env_medium=ControlledIdentifiedTermValue(term=OntologyClass(id="ENVO:00000000")),
         )
 
-    def test_add_sample_link(self):
-        try:
+    def test_invalid_biosample(self):
+        with self.assertRaises(Exception):
             bs = Biosample(
                 id="x",
-                canary="canary",
                 part_of="x",
-                sample_link="x",
                 env_broad_scale=ControlledTermValue(),
                 env_local_scale=ControlledTermValue(),
                 env_medium=ControlledTermValue(),
             )
-            assert type(bs) == Biosample
-        except Exception as e:
-            logging.error(f"Biosample instantiation failed because: {e}")
 
 
 if __name__ == "__main__":

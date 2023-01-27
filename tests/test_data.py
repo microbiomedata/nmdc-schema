@@ -6,7 +6,7 @@ import unittest
 from linkml_runtime.dumpers import yaml_dumper
 from linkml_runtime.loaders import yaml_loader
 
-from nmdc_schema.datamodel.nmdc import Biosample
+from nmdc_schema.nmdc import Biosample
 
 ROOT = os.path.join(os.path.dirname(__file__), '..')
 DATA_DIR = os.path.join(ROOT, "src", "data", "examples")
