@@ -1,0 +1,281 @@
+name: mixs_inspired
+description: This file defines terms that appear in the 'MIxS Inspired' section of
+  the NMDC sample metadata submission portal, which is implemented with DataHarmonizer
+  as of Spring 2022
+title: 'NMDC Schema supplement for Submission Portal: MIxS Inspired'
+id: https://microbiomedata/schema/mixs_inspired
+imports:
+  - linkml:types
+license: 'license: https://creativecommons.org/publicdomain/zero/1.0/'
+prefixes:
+  - prefix_prefix: linkml
+    prefix_reference: https://w3id.org/linkml/
+  - prefix_prefix: nmdc
+    prefix_reference: https://w3id.org/nmdc/
+default_prefix: nmdc
+default_range: string
+slots:
+  collection_date_inc:
+    name: collection_date_inc
+    description: Date the incubation was harvested/collected/ended. Only relevant
+      for incubation samples.
+    title: incubation collection date
+    notes:
+      - MIxS collection_date accepts (truncated) ISO8601. DH taking arbitrary precision date only
+    comments:
+      - Date should be formatted as YYYY(-MM(-DD)). Ie, 2021-04-15, 2021-04 and 2021
+        are all acceptable.
+    examples:
+      - value: 2021-04-15, 2021-04 and 2021 are all acceptable.
+    from_schema: https://example.com/nmdc_dh
+    see_also:
+      - MIxS:collection_date
+    rank: 2
+    string_serialization: '{date, arbitrary precision}'
+    slot_group: MIxS Inspired
+    recommended: true
+  collection_time:
+    name: collection_time
+    description: The time of sampling, either as an instance (single point) or interval.
+    title: collection time, GMT
+    notes:
+      - MIxS collection_date accepts (truncated) ISO8601. DH taking seconds optional
+        time only
+    comments:
+      - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
+    examples:
+      - value: 13:33 or 13:33:55
+    from_schema: https://example.com/nmdc_dh
+    see_also:
+      - MIxS:collection_date
+    rank: 1
+    string_serialization: '{time, seconds optional}'
+    slot_group: MIxS Inspired
+    recommended: true
+  collection_time_inc:
+    name: collection_time_inc
+    description: Time the incubation was harvested/collected/ended. Only relevant
+      for incubation samples.
+    title: incubation collection time, GMT
+    notes:
+      - MIxS collection_date accepts (truncated) ISO8601. DH taking seconds optional
+        time only
+    comments:
+      - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
+    examples:
+      - value: 13:33 or 13:33:55
+    from_schema: https://example.com/nmdc_dh
+    see_also:
+      - MIxS:collection_date
+    rank: 3
+    string_serialization: '{time, seconds optional}'
+    slot_group: MIxS Inspired
+    recommended: true
+  experimental_factor_other:
+    name: experimental_factor_other
+    description: Other details about your sample that you feel can't be accurately
+      represented in the available columns.
+    title: experimental factor- other
+    from_schema: https://example.com/nmdc_dh
+    see_also:
+      - MIxS:experimental_factor|additional_info
+    rank: 7
+    string_serialization: '{text}'
+    slot_group: MIxS Inspired
+    recommended: true
+    comments:
+      - This slot accepts open-ended text about your sample.
+      - We recommend using key:value pairs.
+      - Provided pairs will be considered for inclusion as future slots/terms in this data collection template.
+    examples:
+      - value: "experimental treatment: value"
+  filter_method:
+    name: filter_method
+    description: Type of filter used or how the sample was filtered
+    title: filter method
+    from_schema: https://example.com/nmdc_dh
+    see_also:
+      - MIxS:filter_type
+    rank: 6
+    string_serialization: '{text}'
+    slot_group: MIxS Inspired
+    recommended: true
+    comments:
+      - describe the filter or provide a catalog number and manufacturer
+    examples:
+      - value: C18
+      - value: Basix PES, 13-100-106 FisherSci
+  isotope_exposure:
+    name: isotope_exposure
+    description: List isotope exposure or addition applied to your sample.
+    comments:
+      - This is required when your experimental design includes the use of isotopically labeled compounds
+    examples:
+      - value: 13C glucose
+      - value: H218O
+    todos:
+      - Can we make the H218O correctly super and subscripted?
+    title: isotope exposure/addition
+    from_schema: https://example.com/nmdc_dh
+    see_also:
+      - MIxS:chem_administration
+    rank: 16
+    string_serialization: '{termLabel} {[termID]}; {timestamp}'
+    slot_group: MIxS Inspired
+    recommended: true
+  micro_biomass_c_meth:
+    name: micro_biomass_c_meth
+    description: Reference or method used in determining microbial biomass carbon
+    examples:
+      - value: https://doi.org/10.1016/0038-0717(87)90052-6
+      - value: https://doi.org/10.1016/0038-0717(87)90052-6 | https://www.sciencedirect.com/science/article/abs/pii/0038071787900526
+    title: microbial biomass carbon method
+    comments:
+      - required if "microbial_biomass_c" is provided
+    from_schema: https://example.com/nmdc_dh
+    see_also:
+      - MIxS:micro_biomass_meth
+    rank: 11
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_group: MIxS Inspired
+    recommended: true
+    todos:
+      - How should we separate values? | or ;? lets be consistent
+  micro_biomass_n_meth:
+    name: micro_biomass_n_meth
+    description: Reference or method used in determining microbial biomass nitrogen
+    examples:
+      - value: https://doi.org/10.1016/0038-0717(87)90052-6
+      - value: https://doi.org/10.1016/0038-0717(87)90052-6 | https://www.sciencedirect.com/science/article/abs/pii/0038071787900526
+    title: microbial biomass nitrogen method
+    comments:
+      - required if "microbial_biomass_n" is provided
+    from_schema: https://example.com/nmdc_dh
+    see_also:
+      - MIxS:micro_biomass_meth
+    rank: 13
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_group: MIxS Inspired
+  microbial_biomass_c:
+    name: microbial_biomass_c
+    description: The part of the organic matter in the soil that constitutes living
+      microorganisms smaller than 5-10 micrometer.
+    comments:
+      - If you provide this, correction factors used for conversion to the final units and method are required
+    title: microbial biomass carbon
+    from_schema: https://example.com/nmdc_dh
+    see_also:
+      - MIxS:microbial_biomass
+    rank: 10
+    string_serialization: '{float} {unit}'
+    slot_group: MIxS Inspired
+    examples:
+      - value: 0.05 ug C/g dry soil
+  microbial_biomass_n:
+    name: microbial_biomass_n
+    description: The part of the organic matter in the soil that constitutes living
+      microorganisms smaller than 5-10 micrometer.
+    comments:
+      - If you provide this, correction factors used for conversion to the final units and method are required
+    examples:
+      - value: 0.05 ug N/g dry soil
+    title: microbial biomass nitrogen
+    from_schema: https://example.com/nmdc_dh
+    see_also:
+      - MIxS:microbial_biomass
+    rank: 12
+    string_serialization: '{float} {unit}'
+    slot_group: MIxS Inspired
+  non_microb_biomass:
+    name: non_microb_biomass
+    description: Amount of biomass; should include the name for the part of biomass
+      measured, e.g.insect, plant, total. Can include multiple measurements separated
+      by ;
+    title: non-microbial biomass
+    from_schema: https://example.com/nmdc_dh
+    see_also:
+      - MIxS:biomass|microbial_biomass
+    rank: 8
+    string_serialization: '{text};{float} {unit}'
+    slot_group: MIxS Inspired
+    examples:
+      - value: insect 0.23 ug; plant 1g
+  non_microb_biomass_method:
+    name: non_microb_biomass_method
+    description: Reference or method used in determining biomass
+    title: non-microbial biomass method
+    comments:
+      - required if "non-microbial biomass" is provided
+    from_schema: https://example.com/nmdc_dh
+    see_also:
+      - MIxS:microbial_biomass
+    rank: 9
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_group: MIxS Inspired
+    examples:
+      - value: https://doi.org/10.1038/s41467-021-26181-3
+  org_nitro_method:
+    name: org_nitro_method
+    description: Method used for obtaining organic nitrogen
+    title: organic nitrogen method
+    comments:
+      - required if "org_nitro" is provided
+    examples:
+      - value: https://doi.org/10.1016/0038-0717(85)90144-0
+    from_schema: https://example.com/nmdc_dh
+    see_also:
+      - MIxS:org_nitro|tot_nitro_cont_meth
+    rank: 14
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_group: MIxS Inspired
+  other_treatment:
+    name: other_treatment
+    description: Other treatments applied to your samples that are not applicable
+      to the provided fields
+    title: other treatments
+    from_schema: https://example.com/nmdc_dh
+    see_also:
+      - MIxS:additional_info
+    rank: 15
+    string_serialization: '{text}'
+    slot_group: MIxS Inspired
+    recommended: true
+    comments:
+      - This is an open text field to provide any treatments that cannot be captured in the provided slots.
+#      - Values entered here will be used to determine potential new slots.
+  start_date_inc:
+    name: start_date_inc
+    description: Date the incubation was started. Only relevant for incubation samples.
+    title: incubation start date
+    notes:
+      - MIxS collection_date accepts (truncated) ISO8601. DH taking arbitrary precision date only
+    comments:
+      - Date should be formatted as YYYY(-MM(-DD)). Ie, 2021-04-15, 2021-04 and 2021
+        are all acceptable.
+    examples:
+      - value: 2021-04-15, 2021-04 and 2021 are all acceptable.
+    from_schema: https://example.com/nmdc_dh
+    see_also:
+      - MIxS:collection_date
+    rank: 4
+    string_serialization: '{date, arbitrary precision}'
+    slot_group: MIxS Inspired
+    recommended: true
+  start_time_inc:
+    name: start_time_inc
+    description: Time the incubation was started. Only relevant for incubation samples.
+    title: incubation start time, GMT
+    notes:
+      - MIxS collection_date accepts (truncated) ISO8601. DH taking seconds optional
+        time only
+    comments:
+      - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
+    examples:
+      - value: 13:33 or 13:33:55
+    from_schema: https://example.com/nmdc_dh
+    see_also:
+      - MIxS:collection_date
+    rank: 5
+    string_serialization: '{time, seconds optional}'
+    slot_group: MIxS Inspired
+    recommended: true

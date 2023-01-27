@@ -1570,11 +1570,19 @@
                     },
                     "type": "array"
                 },
+                "date_created": {
+                    "description": "TODO",
+                    "type": "string"
+                },
                 "dissolving_activity_set": {
                     "items": {
                         "$ref": "#/$defs/DissolvingActivity"
                     },
                     "type": "array"
+                },
+                "etl_software_version": {
+                    "description": "TODO",
+                    "type": "string"
                 },
                 "field_research_site_set": {
                     "items": {
@@ -4878,6 +4886,10 @@
                     "description": "Ecosystem types represent things having common characteristics within the Ecosystem Category. These common characteristics based grouping is still broad but specific to the characteristics of a given environment. Ecosystem type is in position 3/5 in a GOLD path.",
                     "type": "string"
                 },
+                "emsl_project_identifier": {
+                    "description": "The EMSL project ID that relates to the NMDC submitted study",
+                    "type": "string"
+                },
                 "emsl_proposal_doi": {
                     "description": "The DOI for the EMSL awarded study that relates to the NMDC submitted study",
                     "type": "string"
@@ -4918,6 +4930,11 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "insdc_bioproject_identifiers": {
+                    "description": "Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.",
+                    "pattern": "^bioproject:PRJ[DEN][A-Z][0-9]+$",
+                    "type": "string"
+                },
                 "mgnify_project_identifiers": {
                     "description": "identifiers for corresponding project in MGnify",
                     "pattern": "^mgnify.proj:[A-Z]+[0-9]+$",
@@ -4925,6 +4942,10 @@
                 },
                 "name": {
                     "description": "A human readable label for an entity",
+                    "type": "string"
+                },
+                "notes": {
+                    "description": "from study class",
                     "type": "string"
                 },
                 "objective": {
@@ -5411,6 +5432,58 @@
     "$id": "https://microbiomedata/schema",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": true,
+    "allOf": [
+        {
+            "if": {
+                "properties": {
+                    "dna_cont_type": {
+                        "const": "tube"
+                    }
+                },
+                "required": [
+                    "dna_cont_type"
+                ]
+            },
+            "then": {
+                "properties": {
+                    "dna_cont_well": {
+                        "not": {
+                            "anyOf": [
+                                {
+                                    "pattern": ".+"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "dna_cont_well"
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "dna_cont_type": {
+                        "const": "plate"
+                    }
+                },
+                "required": [
+                    "dna_cont_type"
+                ]
+            },
+            "then": {
+                "properties": {
+                    "dna_cont_well": {
+                        "pattern": "^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$"
+                    }
+                },
+                "required": [
+                    "dna_cont_well"
+                ]
+            }
+        }
+    ],
     "metamodel_version": "1.7.0",
     "properties": {
         "activity_set": {
@@ -5440,11 +5513,19 @@
             },
             "type": "array"
         },
+        "date_created": {
+            "description": "TODO",
+            "type": "string"
+        },
         "dissolving_activity_set": {
             "items": {
                 "$ref": "#/$defs/DissolvingActivity"
             },
             "type": "array"
+        },
+        "etl_software_version": {
+            "description": "TODO",
+            "type": "string"
         },
         "field_research_site_set": {
             "items": {
