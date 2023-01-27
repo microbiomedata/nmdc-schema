@@ -57,6 +57,7 @@ twine = "^4.0.1"
   warning  Enum 'credit enum' does not have recommended slot 'description'  (recommended)
   warning  Enum 'file type enum' does not have recommended slot 'description'  (recommended)
   warning  Enum 'processing_institution_enum' does not have recommended slot 'description'  (recommended)
+
   warning  Enum has name 'biosample_category_enum'  (standard_naming)
   warning  Enum has name 'credit enum'  (standard_naming)
   warning  Enum has name 'file type enum'  (standard_naming)
