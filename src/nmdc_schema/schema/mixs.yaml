@@ -7349,10 +7349,10 @@ slots:
     slot_uri: mixs:0000813
     multivalued: false
     range: TextValue
-  #  investigation_field:
-  #    abstract: true
-  #    description: field describing aspect of the investigation/study to which the sample
-  #      belongs
+  investigation field:
+    abstract: true
+    description: field describing aspect of the investigation/study to which the sample
+      belongs
   iw_bt_date_well:
     name: iw_bt_date_well
     aliases:
@@ -10901,7 +10901,7 @@ slots:
     multivalued: false
     range: TextValue
   samp_taxon_id:
-    is_a: investigation_field
+    is_a: investigation field
     title: Taxonomy ID of DNA sample
     description: NCBI taxon id of the sample. May be a single taxon or mixed taxa
       sample. Use 'synthetic metagenome' for mock community/positive controls,

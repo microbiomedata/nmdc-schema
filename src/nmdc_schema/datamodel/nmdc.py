@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-01-25T22:08:07
+# Generation date: 2023-01-27T13:22:31
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -28,7 +28,7 @@ from linkml_runtime.linkml_model.types import Boolean, Datetime, Double, Float, 
 from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE, XSDDateTime
 
 metamodel_version = "1.7.0"
-version = "v7.2.0-29-g68df8f11"
+version = "7.0.0"
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -656,7 +656,6 @@ class Study(NamedThing):
 
     id: Union[str, StudyId] = None
     alternative_identifiers: Optional[Union[str, List[str]]] = empty_list()
-    massive_study_identifier: Optional[str] = None
     related_identifiers: Optional[str] = None
     emsl_proposal_identifier: Optional[str] = None
     emsl_proposal_doi: Optional[str] = None
@@ -698,9 +697,6 @@ class Study(NamedThing):
         if not isinstance(self.alternative_identifiers, list):
             self.alternative_identifiers = [self.alternative_identifiers] if self.alternative_identifiers is not None else []
         self.alternative_identifiers = [v if isinstance(v, str) else str(v) for v in self.alternative_identifiers]
-
-        if self.massive_study_identifier is not None and not isinstance(self.massive_study_identifier, str):
-            self.massive_study_identifier = str(self.massive_study_identifier)
 
         if self.related_identifiers is not None and not isinstance(self.related_identifiers, str):
             self.related_identifiers = str(self.related_identifiers)
@@ -6773,13 +6769,6 @@ slots.insdc_assembly_identifiers = Slot(uri=NMDC.insdc_assembly_identifiers, nam
                    model_uri=NMDC.insdc_assembly_identifiers, domain=None, range=Optional[str],
                    pattern=re.compile(r'^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$'))
 
-slots.massive_identifier = Slot(uri=NMDC.massive_identifier, name="massive_identifier", curie=NMDC.curie('massive_identifier'),
-                   model_uri=NMDC.massive_identifier, domain=None, range=Optional[str])
-
-slots.massive_study_identifier = Slot(uri=NMDC.massive_study_identifier, name="massive_study_identifier", curie=NMDC.curie('massive_study_identifier'),
-                   model_uri=NMDC.massive_study_identifier, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^MASSIVE:'))
-
 slots.abs_air_humidity = Slot(uri=MIXS['0000122'], name="abs_air_humidity", curie=MIXS.curie('0000122'),
                    model_uri=NMDC.abs_air_humidity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
@@ -7430,6 +7419,9 @@ slots.inside_lux = Slot(uri=MIXS['0000168'], name="inside_lux", curie=MIXS.curie
 
 slots.int_wall_cond = Slot(uri=MIXS['0000813'], name="int_wall_cond", curie=MIXS.curie('0000813'),
                    model_uri=NMDC.int_wall_cond, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.investigation_field = Slot(uri=NMDC.investigation_field, name="investigation field", curie=NMDC.curie('investigation_field'),
+                   model_uri=NMDC.investigation_field, domain=None, range=Optional[str])
 
 slots.iw_bt_date_well = Slot(uri=MIXS['0001010'], name="iw_bt_date_well", curie=MIXS.curie('0001010'),
                    model_uri=NMDC.iw_bt_date_well, domain=None, range=Optional[Union[dict, TimestampValue]])
