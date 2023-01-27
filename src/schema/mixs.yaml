@@ -5197,6 +5197,7 @@ slots:
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     abstract: true
+
   ext_door:
     name: ext_door
     aliases:
@@ -7349,10 +7350,7 @@ slots:
     slot_uri: mixs:0000813
     multivalued: false
     range: TextValue
-  investigation field:
-    abstract: true
-    description: field describing aspect of the investigation/study to which the sample
-      belongs
+
   iw_bt_date_well:
     name: iw_bt_date_well
     aliases:
@@ -10901,7 +10899,7 @@ slots:
     multivalued: false
     range: TextValue
   samp_taxon_id:
-    is_a: investigation field
+    is_a: investigation_field
     title: Taxonomy ID of DNA sample
     description: NCBI taxon id of the sample. May be a single taxon or mixed taxa
       sample. Use 'synthetic metagenome' for mock community/positive controls,

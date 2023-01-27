@@ -141,6 +141,9 @@ classes:
       - study_set
       - field_research_site_set
       - collecting_biosamples_from_site_set
+      - date_created
+      - etl_software_version
+      - metatranscriptome_activity_set
 
     slot_usage:
       date_created:
@@ -224,6 +227,36 @@ classes:
       - removed id_prefixes value of GOLD, since we are now using pattern-based id validation
 
   Biosample:
+    rules:
+      - description: Samples in tubes can't have a plate position.
+          But plate_position currently does have to be asserted as an empty string.
+          Can't be null, None, un-asserted,etc.
+          Had wanted to use value_present, but that may not be implemented in the linkml-runtime yet.
+        preconditions:
+          slot_conditions:
+            dna_cont_type:
+              equals_string: tube
+        postconditions:
+          slot_conditions:
+            dna_cont_well:
+              none_of:
+                pattern: ".+"
+      - description: Samples in plates must have a plate position that matches the regex. Note the requirement for an empty string in the tube case. Waiting for value_present validation to be added to runtime
+        preconditions:
+          slot_conditions:
+            dna_cont_type:
+              equals_string: plate
+        postconditions:
+          slot_conditions:
+            dna_cont_well:
+              pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+
+    unique_keys:
+      samp_name_unique_key:
+        notes:
+          - "id is already required to be unique because it is the identifier in Biosample's parent class, NamedThing. Remember, notes like this could be exposed to end users. CJM suggested YAML # comment"
+        unique_key_slots:
+          - samp_name
 
     is_a: MaterialEntity
     in_subset:
@@ -825,6 +858,9 @@ classes:
       - funding_sources
       - has_credit_associations
       - study_image
+      - emsl_project_identifier
+      - insdc_bioproject_identifiers
+      - notes
     slot_usage:
       id:
         structured_pattern:
