@@ -18,7 +18,6 @@ nav:
   - NMDC Schema Validation: schema-validation.md
   - Identifiers in NMDC: identifiers.md
   - Table of Identifier Typecodes for each Class: typecode_table.md
-  - DEPRECATED MIxS Soil Package: NMDC_MIxS_Soil_documentation.md
   - Credits: credits.md
 
 site_url:

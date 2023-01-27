@@ -1,8 +1,8 @@
 name: NMDC
 description: "Schema for National Microbiome Data Collaborative (NMDC).\nThis schema\
-  \ is organized into distinct modules:\n\n\n\n\n\n\n\n\n * a set of core types for\
-  \ representing data values\n * the mixs schema (auto-translated from mixs excel)\n\
-  \ * annotation schema\n * the NMDC schema itself"
+  \ is organized into distinct modules:\n\n * a set of core types for representing\
+  \ data values\n * the mixs schema (auto-translated from mixs excel)\n * annotation\
+  \ schema\n * the NMDC schema itself"
 title: NMDC Schema
 notes:
 - MetaCyc expansion assumes we're talking about metacyc reactions and not genes, compounds
@@ -20,7 +20,7 @@ notes:
 - resuming use of part_of to link Biosamples to Studies. eg releasing sample_link
   from that role
 id: https://microbiomedata/schema
-version: v7.2.0-29-g68df8f11
+version: 7.0.0
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   COG:
@@ -4273,25 +4273,6 @@ slots:
     mixins:
     - insdc_identifiers
     pattern: ^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$
-  massive_identifier:
-    name: massive_identifier
-    description: identifiers for entities according to MASSIVE
-    from_schema: https://microbiomedata/schema
-    mixin: true
-    range: string
-  massive_study_identifier:
-    name: massive_study_identifier
-    description: identifiers for corresponding study in MASSIVE
-    comments:
-    - Alicia provided this website https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=83574f41458a4b259621d5c32a4d82f9
-    examples:
-    - value: MASSIVE:MSV000090886
-      description: actual id for MASSIVE's metabolomics analysis of Gb0305843... works
-        with http://identifiers.org/massive/
-    from_schema: https://microbiomedata/schema
-    mixins:
-    - massive_identifier
-    pattern: '^MASSIVE:'
   dissolving_activity_set:
     name: dissolving_activity_set
     title: dissolving activity set
@@ -10683,6 +10664,12 @@ slots:
     slot_uri: mixs:0000813
     multivalued: false
     range: TextValue
+  investigation field:
+    name: investigation field
+    description: field describing aspect of the investigation/study to which the sample
+      belongs
+    from_schema: https://microbiomedata/schema
+    abstract: true
   iw_bt_date_well:
     name: iw_bt_date_well
     annotations:
@@ -14110,7 +14097,7 @@ slots:
     from_schema: https://microbiomedata/schema
     aliases:
     - Taxonomy ID of DNA sample
-    is_a: investigation_field
+    is_a: investigation field
     slot_uri: mixs:0001320
     multivalued: false
     range: string
@@ -18463,7 +18450,6 @@ classes:
     slots:
     - id
     - alternative_identifiers
-    - massive_study_identifier
     - related_identifiers
     - emsl_proposal_identifier
     - emsl_proposal_doi
