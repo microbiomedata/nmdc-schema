@@ -423,6 +423,113 @@ zinc:
   has_raw_value: 2.5 mg/kg
 
 ```
+## Study-minimal
+### Input
+```yaml
+id: nmdc:sty-11-ab
+
+```
+## Study-exhaustive
+### Input
+```yaml
+abstract: Nothing was studied.
+alternative_descriptions:
+- any string 1
+- any string 2
+alternative_identifiers:
+- any string A1
+- any string A2
+alternative_names:
+- any string 1
+- any string 2
+alternative_titles:
+- any string 1
+- any string 2
+description: see also name, title, objective, various alternatives
+doi:
+  has_raw_value: https://doi.org/10.1126/science.1058040
+ecosystem: unconstrained text. should be validated against the controlled vocabulary,
+  by the sample's environmental package. would also be nice to align the CV with MIxS
+  environmental triads
+ecosystem_category: unconstrained text
+ecosystem_subtype: unconstrained text
+ecosystem_type: unconstrained text
+emsl_proposal_doi: any string
+emsl_proposal_identifier: any string EP1
+ess_dive_datasets:
+- any string 1
+- any string 2
+funding_sources:
+- any string 1
+- any string 2
+gold_study_identifiers:
+- gold:any_string_1
+- gold:any_string_2
+has_credit_associations:
+- applied_role: Funding acquisition
+  applied_roles:
+  - Supervision
+  - Conceptualization
+  applies_to_person:
+    email: jcventer@jcvi.org
+    has_raw_value: Craig Venter
+    name: J. Craig Venter
+    orcid: ORCID:0000-0002-7086-765X
+    profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
+    was_generated_by: nmdc:any_string_1
+    websites:
+    - https://www.jcvi.org/
+    - https://www.jcvi.org/about/j-craig-venter
+  type: any string
+- applied_roles:
+  - Investigation
+  - Supervision
+  applies_to_person:
+    name: Tanja Davidsen
+id: nmdc:sty-11-ab
+mgnify_project_identifiers: mgnify.proj:ABC123
+name: see also description, title, objective, various alternatives
+objective: This record, an instance of class Study from the nmdc-schema was had authored,
+  so that the NMDC team would have at least one instance, using all slots, with a
+  mixture of reasonable values and minimally compliant values.
+principal_investigator:
+  email: jcventer@jcvi.org
+  has_raw_value: Craig Venter
+  name: J. Craig Venter
+  orcid: ORCID:0000-0002-7086-765X
+  profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
+  was_generated_by: nmdc:any_string_1
+  websites:
+  - https://www.jcvi.org/
+  - https://www.jcvi.org/about/j-craig-venter
+publications:
+- any string 1
+- any string 2
+related_identifiers: any string R1
+relevant_protocols:
+- any string 1
+- any string 2
+specific_ecosystem: unconstrained text
+study_image:
+- description: Photo of Craig Venter Institute, Rockville, Maryland
+  display_order: '1'
+  has_raw_value: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
+  was_generated_by: nmdc:any_string_1
+- description: Photo of Craig Venter Institute, La Jolla, California
+  display_order: '2'
+  has_raw_value: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
+  url: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
+  was_generated_by: nmdc:any_string_1
+title: Sample Exhaustive Biosample instance. Although all of these values should pass
+  validation, that does not mean that any Biosample of any type would necessarily
+  have this particular combination of values.
+type: any string
+websites:
+- https://w3id.org/nmdc
+- https://w3id.org/linkml
+
+```
 ## Biosample-minimal
 ### Input
 ```yaml

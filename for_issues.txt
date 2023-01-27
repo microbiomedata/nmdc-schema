@@ -193,3 +193,20 @@ WARNING  -  Documentation file 'QuantityValue.md' contains a link to 'temp.md' w
 WARNING  -  Documentation file 'identifiers.md' contains a link to 'jsonschema/nmdc.context.jsonld' which is not found in the documentation files.
 WARNING  -  Documentation file 'schema-validation.md' contains a link to '../jsonschema/nmdc.schema.json' which is not found in the documentation files.
 
+WARNING:root:No namespace defined for URI: https://microbiomedata/schema/core/bin_name
+WARNING:root:No namespace defined for URI: https://microbiomedata/schema/core/bin_quality
+WARNING:root:No namespace defined for URI: https://microbiomedata/schema/core/completeness
+WARNING:root:No namespace defined for URI: https://microbiomedata/schema/core/contamination
+WARNING:root:No namespace defined for URI: https://microbiomedata/schema/core/gene_count
+WARNING:root:No namespace defined for URI: https://microbiomedata/schema/core/gtdbtk_class
+WARNING:root:No namespace defined for URI: https://microbiomedata/schema/core/gtdbtk_domain
+WARNING:root:No namespace defined for URI: https://microbiomedata/schema/core/gtdbtk_family
+WARNING:root:No namespace defined for URI: https://microbiomedata/schema/core/gtdbtk_genus
+WARNING:root:No namespace defined for URI: https://microbiomedata/schema/core/gtdbtk_order
+WARNING:root:No namespace defined for URI: https://microbiomedata/schema/core/gtdbtk_phylum
+WARNING:root:No namespace defined for URI: https://microbiomedata/schema/core/gtdbtk_species
+WARNING:root:No namespace defined for URI: https://microbiomedata/schema/core/num_16s
+WARNING:root:No namespace defined for URI: https://microbiomedata/schema/core/num_23s
+WARNING:root:No namespace defined for URI: https://microbiomedata/schema/core/num_5s
+WARNING:root:No namespace defined for URI: https://microbiomedata/schema/core/num_t_rna
+WARNING:root:No namespace defined for URI: https://microbiomedata/schema/core/number_of_contig
