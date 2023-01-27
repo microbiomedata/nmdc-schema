@@ -1,0 +1,27 @@
+{
+  "template": "https://github.com/linkml/linkml-project-cookiecutter",
+  "commit": "c917617feee59d5cd10d65666e8fd975a969444d",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "nmdc-schema",
+      "__project_slug": "nmdc_schema",
+      "github_org": "microbiomedata",
+      "__source_path": "src/nmdc-schema/schema/nmdc.yaml",
+      "project_description": "Schema resources for the National Microbiome Data Collaborative (NMDC)",
+      "full_name": "Mark Andrew Miller",
+      "email": "mam@lbl.gov",
+      "__author": "Mark Andrew Miller <mam@lbl.gov>",
+      "license": "MIT",
+      "main_schema_class": "Database",
+      "create_python_classes": "Yes",
+      "use_schemasheets": "No",
+      "google_sheet_id": "",
+      "google_sheet_tabs": "",
+      "__google_sheet_module": "",
+      "github_token_for_pypi_deployment": "PYPI_PASSWORD",
+      "_template": "https://github.com/linkml/linkml-project-cookiecutter"
+    }
+  },
+  "directory": null
+}
