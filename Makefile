@@ -1,390 +1,193 @@
-# consider some cleanup: /assets /images /slides /util
-# /doc vs /docs?
-# empties: /graphql /owl /rdf /shex
+MAKEFLAGS += --warn-undefined-variables
+SHELL := bash
+.SHELLFLAGS := -eu -o pipefail -c
+.DEFAULT_GOAL := help
+.DELETE_ON_ERROR:
+.SUFFIXES:
+.SECONDARY:
 
-SRC_DIR = src
-SCHEMA_DIR = $(SRC_DIR)/schema
-SOURCE_FILES := $(shell find $(SCHEMA_DIR) -name '*.yaml')
-DOCS_DIR = docs
-GEN_OPTS =
-RUN=poetry run
-SCHEMA_NAME = nmdc
-SCHEMA_NAMES = $(patsubst $(SCHEMA_DIR)/%.yaml, %, $(SOURCE_FILES))
-SCHEMA_SRC = $(SCHEMA_DIR)/$(SCHEMA_NAME).yaml
-TGTS = jsonschema jsonld-context python json doc
+RUN = poetry run
+# get values from about.yaml file
+# replaced sh with bash esp for linux
+SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
+SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
+SOURCE_SCHEMA_DIR = $(dir $(SOURCE_SCHEMA_PATH))
+SRC = src
+DEST = project
+PYMODEL = $(SRC)/$(SCHEMA_NAME)/datamodel
+DOCDIR = docs
+EXAMPLEDIR = examples
+SHEET_MODULE = slotdefs_classdefs_slot_assignments
+SHEET_ID = $(shell bash ./utils/get-value.sh google_sheet_id)
+SHEET_TABS = $(shell bash ./utils/get-value.sh google_sheet_tabs)
+SHEET_MODULE_PATH = $(SOURCE_SCHEMA_DIR)/$(SHEET_MODULE).yaml
 
-all: gen stage
-gen: $(patsubst %,gen-%,$(TGTS))
-.PHONY: all gen stage clean clean-artifacts clean-docs t echo test install docserve gh-deploy .FORCE
+# basename of a YAML file in model/
+.PHONY: all clean
 
-clean: clean-artifacts clean-docs
+# note: "help" MUST be the first target in the file,
+# when the user types "make" they should get help info
+help: status
+	@echo ""
+	@echo "make setup -- initial setup (run this first)"
+	@echo "make site -- makes site locally"
+	@echo "make install -- install dependencies"
+	@echo "make test -- runs tests"
+	@echo "make lint -- perfom linting"
+	@echo "make testdoc -- builds docs and runs local test server"
+	@echo "make deploy -- deploys site"
+	@echo "make update -- updates linkml version"
+	@echo "make help -- show this help"
+	@echo ""
 
-squeaky-clean: clean clean-package from_mongo_cleanup # NOT mixs_clean
-squeaky-all: squeaky-clean target all test-data build-nmdc_schema test-dataclasses
-	poetry install
-	# shouldn't be creating this in the first place
-	rm -rf doc
+status: check-config
+	@echo "Project: $(SCHEMA_NAME)"
+	@echo "Source: $(SOURCE_SCHEMA_PATH)"
 
-target:
-	mkdir -p target
+# generate products and add everything to github
+setup: install gen-project gen-examples gendoc git-init-add
 
-revert-jsonschema:
-	git checkout 885c86b58dccc77b18bf9c625d7da686582b6108 -- jsonschema/nmdc.schema.json
-
-clean-artifacts:
-	rm -rf target/
-	rm -rf json/*.json
-	rm -rf jsonld-context/*.jsonld
-	rm -rf jsonschema/*.json
-	rm -rf python/*.py
-	rm -rf python/portal/*.py
-
-
-
-clean-docs:
-	ls docs/*.md | egrep -v 'README.md|README.markdown' | xargs rm -f # keep readme files
-	rm -f docs/images/*
-	rm -f docs/types/*
-
-t:
-	echo $(SCHEMA_NAMES)
-
-echo:
-	echo $(patsubst %,gen-%,$(TGTS))
-
-.PHONY: test
-test: all test-data
-
-.PHONY: test-data
-test-data: test-jsonschema test-jsonschema_invalid
-
-test-dataclasses:
-	$(RUN) pytest -v
-
+# install any dependencies required for building
 install:
 	poetry install
-
-tdir-%:
-	mkdir -p target/$*
-
-docs:
-	mkdir -p $@
-	mkdir -p $@/images
-
-stage: $(patsubst %,stage-%,$(TGTS))
-stage-%: gen-%
-	cp -pr target/$* .
-
-
-###  -- MARKDOWN DOCS AND SLIDES --
-.PHONY: gen-docs
-copy-src-docs:
-	mkdir -p target/docs/images
-	cp $(SRC_DIR)/docs/*.md target/docs/
-	cp $(SRC_DIR)/docs/images/* target/docs/images/
-PHONY: copy-src-docs
-
-target/docs/%.md: $(SCHEMA_SRC) tdir-docs
-	$(RUN) gen-markdown $(GEN_OPTS) --dir target/docs $<
-
-gen-doc:
-	mkdir -p target/doc
-	echo 'forces retention of this directory after rm -rf target/*' > target/doc/placeholder.txt
-	$(RUN) gen-doc $(SCHEMA_SRC) --template-directory $(SRC_DIR)/doc-templates -d $(DOCS_DIR)
-	cp $(SRC_DIR)/$(DOCS_DIR)/*.md $(DOCS_DIR)
-	mkdir -p $(DOCS_DIR)/images
-	cp $(SRC_DIR)/$(DOCS_DIR)/images/* $(DOCS_DIR)/images
-
-make-slides: target/docs/schema-slides.html copy-src-slides-images
-.PHONY: make-slides
-copy-src-slides-images:
-	mkdir -p target/docs/images
-	cp $(SRC_DIR)/slides/images/* target/docs/images/
-.PHONY: copy-src-slides-images
-target/docs/schema-slides.html: tdir-docs 
-	$(RUN) pandoc -s --webtex -i -t slidy src/slides/schema-slides.md -o $@
-
-###  -- PYTHON --
-# TODO: modularize imports
-gen-python: $(patsubst %, target/python/%.py, $(SCHEMA_NAMES))
-.PHONY: gen-python
-
-target/python/portal:
-	mkdir -p $@
-
-target/python/%.py: $(SCHEMA_DIR)/%.yaml  tdir-python target/python/portal
-	$(RUN) gen-py-classes --mergeimports $(GEN_OPTS) $< > $@
-
-###  -- GRAPHQL --
-# TODO: modularize imports. For now imports are merged.
-gen-graphql:target/graphql/$(SCHEMA_NAME).graphql 
-.PHONY: gen-graphql
-target/graphql/%.graphql: $(SCHEMA_DIR)/%.yaml tdir-graphql
-	$(RUN) gen-graphql $(GEN_OPTS) $< > $@
-
-###  -- JSON SCHEMA --
-# TODO: modularize imports. For now imports are merged.
-gen-jsonschema: target/jsonschema/$(SCHEMA_NAME).schema.json
-.PHONY: gen-jsonschema
-target/jsonschema/%.schema.json: $(SCHEMA_DIR)/%.yaml tdir-jsonschema
-	#$(RUN) gen-json-schema $(GEN_OPTS) --closed -t database $< > $@
-	# pre-materialize the patterns before jsonschema generation
-	# should be doing that for all of the generated artifacts
-	$(RUN) gen-linkml \
-		-o target/nmdc_generated.yaml \
-		--materialize-patterns \
-		--no-materialize-attributes \
-		--format yaml \
-		--mergeimports $(SCHEMA_SRC)
-	$(RUN) gen-json-schema $(GEN_OPTS) \
-		--closed \
-		-t database target/nmdc_generated.yaml > $@
-	rm -rf target/nmdc_generated.yaml
-
-###  -- JSONLD Context --
-gen-jsonld-context: target/jsonld-context/$(SCHEMA_NAME).context.jsonld
-.PHONY: gen-jsonld-context
-target/jsonld-context/%.context.jsonld: $(SCHEMA_DIR)/%.yaml tdir-jsonld-context
-	$(RUN) gen-jsonld-context $(GEN_OPTS) $< > $@
-
-###  -- SHEX --
-# one file per module
-gen-shex: $(patsubst %, target/shex/%.shex, $(SCHEMA_NAMES))
-.PHONY: gen-shex
-target/shex/%.shex: $(SCHEMA_DIR)/%.yaml tdir-shex
-	$(RUN) gen-shex --no-mergeimports $(GEN_OPTS) $< > $@
-
-###  -- CSV --
-# one file per module
-gen-csv: $(patsubst %, target/csv/%.csv, $(SCHEMA_NAMES))
-.PHONY: gen-csv
-target/csv/%.csv: $(SCHEMA_DIR)/%.yaml tdir-csv
-	$(RUN) gen-csv $(GEN_OPTS) $< > $@
-
-###  -- OWL --
-# TODO: modularize imports. For now imports are merged.
-gen-owl: target/owl/$(SCHEMA_NAME).owl.ttl
-.PHONY: gen-owl
-target/owl/%.owl.ttl: $(SCHEMA_DIR)/%.yaml tdir-owl
-	$(RUN) gen-owl $(GEN_OPTS) $< > $@
-
-###  -- RDF (direct mapping) --
-# TODO: modularize imports. For now imports are merged.
-gen-rdf: target/rdf/$(SCHEMA_NAME).ttl
-.PHONY: gen-rdf
-target/rdf/%.ttl: $(SCHEMA_DIR)/%.yaml tdir-rdf
-	$(RUN) gen-rdf $(GEN_OPTS) $< > $@
-
-###  -- JSON --
-gen-json: target/json/$(SCHEMA_NAME).linkml.json
-.PHONY: gen-json
-target/json/%.linkml.json: $(SCHEMA_DIR)/%.yaml tdir-json
-	$(RUN) gen-linkml $(GEN_OPTS) --format json --materialize-attributes $< > $@
-
-# test docs locally.
-docserve:
-	$(RUN) mkdocs serve
-
-gh-deploy:
-# deploy documentation (note: requires documentation is in docs dir)
-	$(RUN) mkdocs gh-deploy --force
-
-###  -- PYPI TARGETS
-# Use the build-package target to build a PYPI package locally
-# This is useful for testing
-.PHONY: clean-package build-nmdc_schema build-package deploy-pypi
-clean-package:
-	rm -f nmdc_schema/*.json
-	rm -f nmdc_schema/*.py
-	rm -f nmdc_schema/*.tsv
-	rm -f nmdc_schema/*.yaml
-	rm -rf dist && echo 'dist removed'
-	rm -rf nmdc_schema.egg-info && echo 'egg-info removed'
-
-build-nmdc_schema: clean-package
-	cp jsonschema/nmdc.schema.json nmdc_schema/ # copy nmdc json schema
-	cp python/*.py nmdc_schema/ # copy python files
-	cp src/schema/nmdc.yaml nmdc_schema/ # copy nmdc yaml file
-	cp sssom/gold-to-mixs.sssom.tsv nmdc_schema/ # copy sssom mapping
-	cp util/__init__.py nmdc_schema/
-	cp util/migrate_3_2_to_7.py nmdc_schema/ # copy command-line migration tool
-	cp util/nmdc_data.py nmdc_schema/ # copy command-line data retrieval tool
-	cp util/nmdc_version.py nmdc_schema/ # copy command-line version tool
-	cp util/validate_nmdc_json.py nmdc_schema/ # copy command-line validation tool
-
-build-package: build-nmdc_schema
-	poetry build
-
-deploy-pypi:
-# deploys package to pypi
-# note: you need to be a registered PyPI user
-# on the nmdc-schema PyPI repo
-	poetry publish
-
-deploy-testpypi:
-# deploys package to testpypi
-# note: you need to be a registered Test PyPI user
-# on the nmdc-schema Test PyPI repo
-	poetry config repositories.testpypi https://test.pypi.org/legacy/
-	poetry publish -r testpypi
-
-delete-poetry-env:
-# delete the activated virtualenv created by poetry
-	poetry env remove $(basename $(poetry env info --path))
-
-##  -- TEST/VALIDATE JSONSCHEMA
-
-# datasets used test/validate the schema
-#
-SCHEMA_TEST_EXAMPLES := \
-	biosample_test \
-	biosamples_to_sites \
-	functional_annotation_set \
-	gold_project_test \
-	img_mg_annotation_objects \
-	MAGs_activity \
-	mg_assembly_activities_test \
-	mg_assembly_data_objects_test \
-	minimal_valid_biosample_test \
-	minimal_valid_biosample_with_fire \
-	minimal_valid_embargoed_biosample_test \
-	nmdc_example_database \
-	samp_prep_db \
-	study_credit_test \
-	study_test
-
-
-SCHEMA_TEST_EXAMPLES_INVALID := \
-	biosample_incomplete_napa_id \
-	biosample_invalid_range \
-	biosample_mismatch_regex \
-	biosample_missing_required_field \
-	biosample_single_multi_value_mixup \
-	biosample_undeclared_slot \
-	functional_annotation_set_invalid \
-	invalid_study_test \
-	minimal_biosample_invalid_fire \
-	minimal_non_boolean_embargoed_biosample_test \
-	study_credit_enum_mangle
-
-# 	functional_annotation_set_invalid has invalid ID pattern but regex tests aren't applied yet? MAM 2021-06-24
-
-.PHONY: test-jsonschema
-test-jsonschema: $(foreach example, $(SCHEMA_TEST_EXAMPLES), validate-$(example))
-
-.PHONY: test-jsonschema_invalid
-test-jsonschema_invalid: $(foreach example, $(SCHEMA_TEST_EXAMPLES_INVALID), validate-invalid-$(example))
-
-validate-%: jsonschema/nmdc.schema.json test/data/%.json
-# util/validate_nmdc_json.py -i $< # example of validating data using the cli
-	$(RUN) check-jsonschema --schemafile $^
-
-validate-invalid-%: jsonschema/nmdc.schema.json test/data/invalid_data/%.json
-	! $(RUN) check-jsonschema --schemafile $^
+.PHONY: install
 
 # ---
-
-#reports/slot_roster.tsv:
-#	poetry run python util/slot_roster.py \
-#		--input_paths "mixs/model/schema/mixs.yaml" \
-#		--input_paths "src/schema/nmdc.yaml" \
-#		--input_paths "https://raw.githubusercontent.com/microbiomedata/sheets_and_friends/issue-100-netlify-linkml-datastructure/artifacts/nmdc_dh.yaml" \
-#		--output_tsv $@
+# Project Syncronization
+# ---
 #
-#src/schema/mixs_new.yaml: reports/slot_roster.tsv
-#	poetry run python util/rebuild_mixs_yaml.py \
-#		--use_legacy "is_a" \
-#		--use_legacy "multivalued" \
-#		--use_legacy "range" \
-#		--output_yaml $@ \
-#		--legacy_see_also "https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py" \
-#		--slot_roster_tsv_in $< \
-#		--legacy_mixs_module_in src/schema/mixs_legacy.yaml\
-#		--current_mixs_root_in mixs/model/schema/mixs.yaml \
-#		--current_nmdc_root_in src/schema/nmdc.yaml
-#	cp $@ src/schema/mixs.yaml
-#
-#reports/slot_annotations_diffs.tsv: src/schema/mixs_new.yaml
-#	poetry run python util/mixs_deep_diff.py \
-#		--include_descriptions True \
-#		--shingle_size 2 \
-#		--slot_diff_yaml_out reports/slot_diffs.yaml \
-#		--anno_diff_tsv_out $@ \
-#		--legacy_mixs_module_in src/schema/mixs_legacy.yaml \
-#		--current_mixs_module_in $<
+# check we are up to date
+check: cruft-check
+cruft-check:
+	# added cruft to poetry env and added poetry wrapper to cruft invocations
+	$(RUN) cruft check
+cruft-diff:
+	$(RUN) cruft diff
 
-#.PHONY: post_test mixs_clean
-#
-#post_test: clean mixs_clean reports/slot_annotations_diffs.tsv all
-#	cp python/nmdc.py nmdc_schema/nmdc.py
-#	poetry run python biosamples_from_NMDC_api.py
-#	# todo add check over omics processings too?
-#
-#reference_commit=dbbf2f85b676daa35af78992c2649a68457cae21
-## main
-## release 3_2_0 = dbbf2f85b676daa35af78992c2649a68457cae21
-#
-#mixs_clean:
-#	rm -rf reports/slot_annotations_diffs.tsv
-#	rm -rf reports/slot_diffs.yaml
-#	rm -rf reports/slot_roster.tsv
-#	rm -rf src/schema/mixs*yaml
-#	# ensure that we are comparing against the current main
-#	#   not some local junk
-#	#   OR could compare against some other branch, commit, etc.
-#	curl -o src/schema/mixs.yaml https://raw.githubusercontent.com/microbiomedata/nmdc-schema/$(reference_commit)/src/schema/mixs.yaml
-#	curl -o src/schema/nmdc.yaml https://raw.githubusercontent.com/microbiomedata/nmdc-schema/$(reference_commit)/src/schema/nmdc.yaml
-#	curl -o nmdc_schema/nmdc.py https://raw.githubusercontent.com/microbiomedata/nmdc-schema/$(reference_commit)/nmdc_schema/nmdc.py
-#	cp src/schema/mixs.yaml src/schema/mixs_legacy.yaml
+update: update-template update-linkml
+update-template:
+	$(RUN) cruft update
 
-src/schema/portal/emsl.yaml:
-	$(RUN) python util/integrate_dh_non_mixs_classes.py
+# todo: consider pinning to template
+update-linkml:
+	poetry add -D linkml@latest
 
-#assets/3_2_0/nmdc.schema.json:
-#	curl --output  $@  "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v3.2.0/jsonschema/nmdc.schema.json"
-#
-#assets/4_0_0/nmdc.schema.json:
-#	curl --output  $@  "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v4.0.0/jsonschema/nmdc.schema.json"
-#
-#assets/schema_json_diff.txt:assets/3_2_0/nmdc.schema.json assets/4_0_0/nmdc.schema.json
-#	- jd -o $@ --set $^
-#
-#assets/from_mongodb.json:
-#	$(RUN) python util/mongodb2database.py
-#
-#validate_vs_3_2_0: assets/from_mongodb.json assets/3_2_0/nmdc.schema.json
-#	jsonschema -i $^
-#
-#assets/from_mongodb_updated.json:
-#	$(RUN) python util/update_mongodb_dump.py
-#
-#validate_vs_current: assets/from_mongodb_updated.json jsonschema/nmdc.schema.json
-#	jsonschema -i $^
+# EXPERIMENTAL
+create-data-harmonizer:
+	npm init data-harmonizer $(SOURCE_SCHEMA_PATH)
 
-from_mongo_cleanup:
-	rm -rf assets/from_mongodb.json
-	rm -rf assets/from_mongodb.yaml
-	rm -rf assets/from_mongodb_updated.json
+all: site
+site: gen-project gendoc
+%.yaml: gen-project
+deploy: all mkd-gh-deploy
 
-TermsUpdated_organicmatterextraction_all: TermsUpdated_organicmatterextraction_clean assets/TermsUpdated_organicmatterextraction_data.json
+# In future this will be done by conversion
+gen-examples:
+	cp src/data/examples/* $(EXAMPLEDIR)
 
-TermsUpdated_organicmatterextraction_clean:
-	rm -rf target/TermsUpdated_organicmatterextraction.yaml
-	rm -rf assets/TermsUpdated_organicmatterextraction_data.json
+# generates all project files
 
-target/TermsUpdated_organicmatterextraction.yaml: assets/TermsUpdated_organicmatterextraction.tsv
-	$(RUN) sheets2linkml \
-	--name TermsUpdated_organicmatterextraction \
-	--output $@ $^
+gen-project: $(PYMODEL)
+	# added inclusion/exclusion parameters here, in test rule, and in project directories constant
+	$(RUN) gen-project \
+		--include jsonschema \
+		--include python \
+		--exclude excel \
+		--exclude graphql \
+		--exclude jsonld \
+		--exclude jsonldcontext \
+		--exclude markdown \
+		--include owl \
+		--exclude prefixmap \
+		--exclude proto \
+		--exclude shacl \
+		--exclude shex \
+		--exclude sqlddl \
+		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 
-assets/TermsUpdated_organicmatterextraction_data.json: target/TermsUpdated_organicmatterextraction.yaml assets/TermsUpdated_organicmatterextraction_data.yaml
-	$(RUN) linkml-convert \
-		--output $@ \
-		--target-class MaterialSamplingProcess \
-		--schema $^
+test: test-schema test-python
+test-schema:
+	$(RUN) gen-project \
+		--include jsonschema \
+		--include python \
+		--exclude excel \
+		--exclude graphql \
+		--exclude jsonld \
+		--exclude jsonldcontext \
+		--exclude markdown \
+		--include owl \
+		--exclude prefixmap \
+		--exclude proto \
+		--exclude shacl \
+		--exclude shex \
+		--exclude sqlddl \
+		-d tmp $(SOURCE_SCHEMA_PATH)
 
-#from_mongo_all: from_mongo_cleanup validate_vs_3_2_0 validate_vs_current
+test-python:
+	$(RUN) python -m unittest discover
 
-target/nmdc_data_for_v7.json:
-	$(RUN) migrate_3_2_to_7
+lint:
+	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH)
 
+check-config:
+	@(grep my-datamodel about.yaml > /dev/null && printf "\n**Project not configured**:\n\n  - Remember to edit 'about.yaml'\n\n" || exit 0)
+
+# migration of anything mentioning person is incomplete
+
+convert-examples-to-%:
+	$(patsubst %, $(RUN) linkml-convert  % -s $(SOURCE_SCHEMA_PATH) -C Person, $(shell find src/data/examples -name "*.yaml"))
+
+examples/%.yaml: src/data/examples/%.yaml
+	$(RUN) linkml-convert -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
+examples/%.json: src/data/examples/%.yaml
+	$(RUN) linkml-convert -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
+examples/%.ttl: src/data/examples/%.yaml
+	$(RUN) linkml-convert -P EXAMPLE=http://example.org/ -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
+
+# Test documentation locally
+serve: mkd-serve
+
+# Python datamodel
+$(PYMODEL):
+	mkdir -p $@
+
+
+$(DOCDIR):
+	mkdir -p $@
+
+gendoc: $(DOCDIR)
+	# added copying of images and renaming of TEMP.md
+	cp $(SRC)/docs/*md $(DOCDIR) ; \
+	cp -r $(SRC)/docs/images $(DOCDIR) ; \
+	$(RUN) gen-doc -d $(DOCDIR) $(SOURCE_SCHEMA_PATH)
+	mv $(DOCDIR)/TEMP.md $(DOCDIR)/temp.md
+
+testdoc: gendoc serve
+
+MKDOCS = $(RUN) mkdocs
+mkd-%:
+	$(MKDOCS) $*
+
+#PROJECT_FOLDERS = sqlschema shex shacl protobuf prefixmap owl jsonschema jsonld graphql excel
+PROJECT_FOLDERS = owl jsonschema
+git-init-add: git-init git-add git-commit git-status
+git-init:
+	git init
+git-add: .cruft.json
+	git add .gitignore .github .cruft.json Makefile LICENSE *.md examples utils about.yaml mkdocs.yml poetry.lock project.Makefile pyproject.toml src/nmdc_schema/schema/*yaml src/*/datamodel/*py src/data src/docs tests
+	git add $(patsubst %, project/%, $(PROJECT_FOLDERS))
+git-commit:
+	git commit -m 'Initial commit' -a
+git-status:
+	git status
+
+# only necessary if setting up via cookiecutter
+.cruft.json:
+	echo "creating a stub for .cruft.json. IMPORTANT: setup via cruft not cookiecutter recommended!" ; \
+	touch $@
+
+clean:
+	rm -rf $(DEST)
+	rm -rf tmp
+
+include project.Makefile
