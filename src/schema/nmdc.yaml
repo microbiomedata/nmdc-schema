@@ -141,6 +141,9 @@ classes:
       - study_set
       - field_research_site_set
       - collecting_biosamples_from_site_set
+      - date_created
+      - etl_software_version
+      - metatranscriptome_activity_set
 
     slot_usage:
       date_created:
@@ -855,6 +858,9 @@ classes:
       - funding_sources
       - has_credit_associations
       - study_image
+      - emsl_project_identifier
+      - insdc_bioproject_identifiers
+      - notes
     slot_usage:
       id:
         structured_pattern:
