@@ -36,7 +36,6 @@ slots:
       - 'a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters will be accepted'
       - 'typecodes must correspond 1:1 to a class in the NMDC schema. this will be checked via per-class id slot usage assertions'
       - 'minting authority shoulders should probably be enumerated and checked in the pattern'
-#    pattern: ^(?<prefix>nmdc):(?<typecode>[a-z]{1,6})-(?<shoulder>[0-9][a-z]{0,6}[0-9])-(?<blade>[A-Za-z0-9]{1,})(?<version>(\.[A-Za-z0-9]{1,})*)(?<locus>_[A-Za-z0-9_\.-]+)?$
     examples:
       - value: nmdc:mgmag-00-x012.1_7_c1
         description: 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248'

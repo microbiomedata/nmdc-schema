@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-01-27T19:05:29
+# Generation date: 2023-01-27T19:28:29
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -381,6 +381,8 @@ class Database(YAMLRoot):
         if self.etl_software_version is not None and not isinstance(self.etl_software_version, str):
             self.etl_software_version = str(self.etl_software_version)
 
+        self._normalize_inlined_as_list(slot_name="metatranscriptome_activity_set", slot_type=MetatranscriptomeActivity, key_name="id", keyed=True)
+
         super().__post_init__(**kwargs)
 
 
@@ -682,11 +684,12 @@ class Study(NamedThing):
     funding_sources: Optional[Union[str, List[str]]] = empty_list()
     has_credit_associations: Optional[Union[Union[dict, "CreditAssociation"], List[Union[dict, "CreditAssociation"]]]] = empty_list()
     study_image: Optional[Union[Union[dict, "ImageValue"], List[Union[dict, "ImageValue"]]]] = empty_list()
+    emsl_project_identifier: Optional[str] = None
+    insdc_bioproject_identifiers: Optional[str] = None
+    notes: Optional[str] = None
+    massive_study_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     name: Optional[str] = None
     description: Optional[str] = None
-    notes: Optional[str] = None
-    insdc_bioproject_identifiers: Optional[str] = None
-    emsl_project_identifier: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -787,20 +790,24 @@ class Study(NamedThing):
             self.study_image = [self.study_image] if self.study_image is not None else []
         self.study_image = [v if isinstance(v, ImageValue) else ImageValue(**as_dict(v)) for v in self.study_image]
 
+        if self.emsl_project_identifier is not None and not isinstance(self.emsl_project_identifier, str):
+            self.emsl_project_identifier = str(self.emsl_project_identifier)
+
+        if self.insdc_bioproject_identifiers is not None and not isinstance(self.insdc_bioproject_identifiers, str):
+            self.insdc_bioproject_identifiers = str(self.insdc_bioproject_identifiers)
+
+        if self.notes is not None and not isinstance(self.notes, str):
+            self.notes = str(self.notes)
+
+        if not isinstance(self.massive_study_identifiers, list):
+            self.massive_study_identifiers = [self.massive_study_identifiers] if self.massive_study_identifiers is not None else []
+        self.massive_study_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.massive_study_identifiers]
+
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
-
-        if self.notes is not None and not isinstance(self.notes, str):
-            self.notes = str(self.notes)
-
-        if self.insdc_bioproject_identifiers is not None and not isinstance(self.insdc_bioproject_identifiers, str):
-            self.insdc_bioproject_identifiers = str(self.insdc_bioproject_identifiers)
-
-        if self.emsl_project_identifier is not None and not isinstance(self.emsl_project_identifier, str):
-            self.emsl_project_identifier = str(self.emsl_project_identifier)
 
         super().__post_init__(**kwargs)
 
@@ -2372,22 +2379,22 @@ class MagBin(YAMLRoot):
 
     type: Optional[str] = None
     bin_name: Optional[str] = None
-    number_of_contig: Optional[int] = None
+    bin_quality: Optional[str] = None
     completeness: Optional[float] = None
     contamination: Optional[float] = None
     gene_count: Optional[int] = None
-    bin_quality: Optional[str] = None
-    num_16s: Optional[int] = None
-    num_5s: Optional[int] = None
-    num_23s: Optional[int] = None
-    num_t_rna: Optional[int] = None
-    gtdbtk_domain: Optional[str] = None
-    gtdbtk_phylum: Optional[str] = None
     gtdbtk_class: Optional[str] = None
-    gtdbtk_order: Optional[str] = None
+    gtdbtk_domain: Optional[str] = None
     gtdbtk_family: Optional[str] = None
     gtdbtk_genus: Optional[str] = None
+    gtdbtk_order: Optional[str] = None
+    gtdbtk_phylum: Optional[str] = None
     gtdbtk_species: Optional[str] = None
+    num_16s: Optional[int] = None
+    num_23s: Optional[int] = None
+    num_5s: Optional[int] = None
+    num_t_rna: Optional[int] = None
+    number_of_contig: Optional[int] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.type is not None and not isinstance(self.type, str):
@@ -2396,8 +2403,8 @@ class MagBin(YAMLRoot):
         if self.bin_name is not None and not isinstance(self.bin_name, str):
             self.bin_name = str(self.bin_name)
 
-        if self.number_of_contig is not None and not isinstance(self.number_of_contig, int):
-            self.number_of_contig = int(self.number_of_contig)
+        if self.bin_quality is not None and not isinstance(self.bin_quality, str):
+            self.bin_quality = str(self.bin_quality)
 
         if self.completeness is not None and not isinstance(self.completeness, float):
             self.completeness = float(self.completeness)
@@ -2408,32 +2415,11 @@ class MagBin(YAMLRoot):
         if self.gene_count is not None and not isinstance(self.gene_count, int):
             self.gene_count = int(self.gene_count)
 
-        if self.bin_quality is not None and not isinstance(self.bin_quality, str):
-            self.bin_quality = str(self.bin_quality)
-
-        if self.num_16s is not None and not isinstance(self.num_16s, int):
-            self.num_16s = int(self.num_16s)
-
-        if self.num_5s is not None and not isinstance(self.num_5s, int):
-            self.num_5s = int(self.num_5s)
-
-        if self.num_23s is not None and not isinstance(self.num_23s, int):
-            self.num_23s = int(self.num_23s)
-
-        if self.num_t_rna is not None and not isinstance(self.num_t_rna, int):
-            self.num_t_rna = int(self.num_t_rna)
-
-        if self.gtdbtk_domain is not None and not isinstance(self.gtdbtk_domain, str):
-            self.gtdbtk_domain = str(self.gtdbtk_domain)
-
-        if self.gtdbtk_phylum is not None and not isinstance(self.gtdbtk_phylum, str):
-            self.gtdbtk_phylum = str(self.gtdbtk_phylum)
-
         if self.gtdbtk_class is not None and not isinstance(self.gtdbtk_class, str):
             self.gtdbtk_class = str(self.gtdbtk_class)
 
-        if self.gtdbtk_order is not None and not isinstance(self.gtdbtk_order, str):
-            self.gtdbtk_order = str(self.gtdbtk_order)
+        if self.gtdbtk_domain is not None and not isinstance(self.gtdbtk_domain, str):
+            self.gtdbtk_domain = str(self.gtdbtk_domain)
 
         if self.gtdbtk_family is not None and not isinstance(self.gtdbtk_family, str):
             self.gtdbtk_family = str(self.gtdbtk_family)
@@ -2441,8 +2427,29 @@ class MagBin(YAMLRoot):
         if self.gtdbtk_genus is not None and not isinstance(self.gtdbtk_genus, str):
             self.gtdbtk_genus = str(self.gtdbtk_genus)
 
+        if self.gtdbtk_order is not None and not isinstance(self.gtdbtk_order, str):
+            self.gtdbtk_order = str(self.gtdbtk_order)
+
+        if self.gtdbtk_phylum is not None and not isinstance(self.gtdbtk_phylum, str):
+            self.gtdbtk_phylum = str(self.gtdbtk_phylum)
+
         if self.gtdbtk_species is not None and not isinstance(self.gtdbtk_species, str):
             self.gtdbtk_species = str(self.gtdbtk_species)
+
+        if self.num_16s is not None and not isinstance(self.num_16s, int):
+            self.num_16s = int(self.num_16s)
+
+        if self.num_23s is not None and not isinstance(self.num_23s, int):
+            self.num_23s = int(self.num_23s)
+
+        if self.num_5s is not None and not isinstance(self.num_5s, int):
+            self.num_5s = int(self.num_5s)
+
+        if self.num_t_rna is not None and not isinstance(self.num_t_rna, int):
+            self.num_t_rna = int(self.num_t_rna)
+
+        if self.number_of_contig is not None and not isinstance(self.number_of_contig, int):
+            self.number_of_contig = int(self.number_of_contig)
 
         super().__post_init__(**kwargs)
 
@@ -6550,6 +6557,57 @@ slots.lbc_thirty = Slot(uri=NMDC.lbc_thirty, name="lbc_thirty", curie=NMDC.curie
 slots.lbceq = Slot(uri=NMDC.lbceq, name="lbceq", curie=NMDC.curie('lbceq'),
                    model_uri=NMDC.lbceq, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.bin_name = Slot(uri=NMDC.bin_name, name="bin_name", curie=NMDC.curie('bin_name'),
+                   model_uri=NMDC.bin_name, domain=None, range=Optional[str])
+
+slots.number_of_contig = Slot(uri=NMDC.number_of_contig, name="number_of_contig", curie=NMDC.curie('number_of_contig'),
+                   model_uri=NMDC.number_of_contig, domain=None, range=Optional[int])
+
+slots.completeness = Slot(uri=NMDC.completeness, name="completeness", curie=NMDC.curie('completeness'),
+                   model_uri=NMDC.completeness, domain=None, range=Optional[float])
+
+slots.contamination = Slot(uri=NMDC.contamination, name="contamination", curie=NMDC.curie('contamination'),
+                   model_uri=NMDC.contamination, domain=None, range=Optional[float])
+
+slots.gene_count = Slot(uri=NMDC.gene_count, name="gene_count", curie=NMDC.curie('gene_count'),
+                   model_uri=NMDC.gene_count, domain=None, range=Optional[int])
+
+slots.bin_quality = Slot(uri=NMDC.bin_quality, name="bin_quality", curie=NMDC.curie('bin_quality'),
+                   model_uri=NMDC.bin_quality, domain=None, range=Optional[str])
+
+slots.num_16s = Slot(uri=NMDC.num_16s, name="num_16s", curie=NMDC.curie('num_16s'),
+                   model_uri=NMDC.num_16s, domain=None, range=Optional[int])
+
+slots.num_5s = Slot(uri=NMDC.num_5s, name="num_5s", curie=NMDC.curie('num_5s'),
+                   model_uri=NMDC.num_5s, domain=None, range=Optional[int])
+
+slots.num_23s = Slot(uri=NMDC.num_23s, name="num_23s", curie=NMDC.curie('num_23s'),
+                   model_uri=NMDC.num_23s, domain=None, range=Optional[int])
+
+slots.num_t_rna = Slot(uri=NMDC.num_t_rna, name="num_t_rna", curie=NMDC.curie('num_t_rna'),
+                   model_uri=NMDC.num_t_rna, domain=None, range=Optional[int])
+
+slots.gtdbtk_domain = Slot(uri=NMDC.gtdbtk_domain, name="gtdbtk_domain", curie=NMDC.curie('gtdbtk_domain'),
+                   model_uri=NMDC.gtdbtk_domain, domain=None, range=Optional[str])
+
+slots.gtdbtk_phylum = Slot(uri=NMDC.gtdbtk_phylum, name="gtdbtk_phylum", curie=NMDC.curie('gtdbtk_phylum'),
+                   model_uri=NMDC.gtdbtk_phylum, domain=None, range=Optional[str])
+
+slots.gtdbtk_class = Slot(uri=NMDC.gtdbtk_class, name="gtdbtk_class", curie=NMDC.curie('gtdbtk_class'),
+                   model_uri=NMDC.gtdbtk_class, domain=None, range=Optional[str])
+
+slots.gtdbtk_order = Slot(uri=NMDC.gtdbtk_order, name="gtdbtk_order", curie=NMDC.curie('gtdbtk_order'),
+                   model_uri=NMDC.gtdbtk_order, domain=None, range=Optional[str])
+
+slots.gtdbtk_family = Slot(uri=NMDC.gtdbtk_family, name="gtdbtk_family", curie=NMDC.curie('gtdbtk_family'),
+                   model_uri=NMDC.gtdbtk_family, domain=None, range=Optional[str])
+
+slots.gtdbtk_genus = Slot(uri=NMDC.gtdbtk_genus, name="gtdbtk_genus", curie=NMDC.curie('gtdbtk_genus'),
+                   model_uri=NMDC.gtdbtk_genus, domain=None, range=Optional[str])
+
+slots.gtdbtk_species = Slot(uri=NMDC.gtdbtk_species, name="gtdbtk_species", curie=NMDC.curie('gtdbtk_species'),
+                   model_uri=NMDC.gtdbtk_species, domain=None, range=Optional[str])
+
 slots.has_inputs = Slot(uri=NMDC.has_inputs, name="has_inputs", curie=NMDC.curie('has_inputs'),
                    model_uri=NMDC.has_inputs, domain=PlannedProcess, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
 
@@ -6768,6 +6826,13 @@ slots.assembly_identifiers = Slot(uri=NMDC.assembly_identifiers, name="assembly_
 slots.insdc_assembly_identifiers = Slot(uri=NMDC.insdc_assembly_identifiers, name="insdc_assembly_identifiers", curie=NMDC.curie('insdc_assembly_identifiers'),
                    model_uri=NMDC.insdc_assembly_identifiers, domain=None, range=Optional[str],
                    pattern=re.compile(r'^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$'))
+
+slots.massive_identifiers = Slot(uri=NMDC.massive_identifiers, name="massive_identifiers", curie=NMDC.curie('massive_identifiers'),
+                   model_uri=NMDC.massive_identifiers, domain=None, range=Optional[str])
+
+slots.massive_study_identifiers = Slot(uri=NMDC.massive_study_identifiers, name="massive_study_identifiers", curie=NMDC.curie('massive_study_identifiers'),
+                   model_uri=NMDC.massive_study_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   pattern=re.compile(r'^MASSIVE:'))
 
 slots.abs_air_humidity = Slot(uri=MIXS['0000122'], name="abs_air_humidity", curie=MIXS.curie('0000122'),
                    model_uri=NMDC.abs_air_humidity, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -7419,9 +7484,6 @@ slots.inside_lux = Slot(uri=MIXS['0000168'], name="inside_lux", curie=MIXS.curie
 
 slots.int_wall_cond = Slot(uri=MIXS['0000813'], name="int_wall_cond", curie=MIXS.curie('0000813'),
                    model_uri=NMDC.int_wall_cond, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.investigation_field = Slot(uri=NMDC.investigation_field, name="investigation field", curie=NMDC.curie('investigation_field'),
-                   model_uri=NMDC.investigation_field, domain=None, range=Optional[str])
 
 slots.iw_bt_date_well = Slot(uri=MIXS['0001010'], name="iw_bt_date_well", curie=MIXS.curie('0001010'),
                    model_uri=NMDC.iw_bt_date_well, domain=None, range=Optional[Union[dict, TimestampValue]])
@@ -8649,57 +8711,6 @@ slots.input_read_bases = Slot(uri=NMDC.input_read_bases, name="input_read_bases"
 
 slots.output_read_bases = Slot(uri=NMDC.output_read_bases, name="output_read_bases", curie=NMDC.curie('output_read_bases'),
                    model_uri=NMDC.output_read_bases, domain=None, range=Optional[str])
-
-slots.magBin__bin_name = Slot(uri=NMDC.bin_name, name="magBin__bin_name", curie=NMDC.curie('bin_name'),
-                   model_uri=NMDC.magBin__bin_name, domain=None, range=Optional[str])
-
-slots.magBin__number_of_contig = Slot(uri=NMDC.number_of_contig, name="magBin__number_of_contig", curie=NMDC.curie('number_of_contig'),
-                   model_uri=NMDC.magBin__number_of_contig, domain=None, range=Optional[int])
-
-slots.magBin__completeness = Slot(uri=NMDC.completeness, name="magBin__completeness", curie=NMDC.curie('completeness'),
-                   model_uri=NMDC.magBin__completeness, domain=None, range=Optional[float])
-
-slots.magBin__contamination = Slot(uri=NMDC.contamination, name="magBin__contamination", curie=NMDC.curie('contamination'),
-                   model_uri=NMDC.magBin__contamination, domain=None, range=Optional[float])
-
-slots.magBin__gene_count = Slot(uri=NMDC.gene_count, name="magBin__gene_count", curie=NMDC.curie('gene_count'),
-                   model_uri=NMDC.magBin__gene_count, domain=None, range=Optional[int])
-
-slots.magBin__bin_quality = Slot(uri=NMDC.bin_quality, name="magBin__bin_quality", curie=NMDC.curie('bin_quality'),
-                   model_uri=NMDC.magBin__bin_quality, domain=None, range=Optional[str])
-
-slots.magBin__num_16s = Slot(uri=NMDC.num_16s, name="magBin__num_16s", curie=NMDC.curie('num_16s'),
-                   model_uri=NMDC.magBin__num_16s, domain=None, range=Optional[int])
-
-slots.magBin__num_5s = Slot(uri=NMDC.num_5s, name="magBin__num_5s", curie=NMDC.curie('num_5s'),
-                   model_uri=NMDC.magBin__num_5s, domain=None, range=Optional[int])
-
-slots.magBin__num_23s = Slot(uri=NMDC.num_23s, name="magBin__num_23s", curie=NMDC.curie('num_23s'),
-                   model_uri=NMDC.magBin__num_23s, domain=None, range=Optional[int])
-
-slots.magBin__num_t_rna = Slot(uri=NMDC.num_t_rna, name="magBin__num_t_rna", curie=NMDC.curie('num_t_rna'),
-                   model_uri=NMDC.magBin__num_t_rna, domain=None, range=Optional[int])
-
-slots.magBin__gtdbtk_domain = Slot(uri=NMDC.gtdbtk_domain, name="magBin__gtdbtk_domain", curie=NMDC.curie('gtdbtk_domain'),
-                   model_uri=NMDC.magBin__gtdbtk_domain, domain=None, range=Optional[str])
-
-slots.magBin__gtdbtk_phylum = Slot(uri=NMDC.gtdbtk_phylum, name="magBin__gtdbtk_phylum", curie=NMDC.curie('gtdbtk_phylum'),
-                   model_uri=NMDC.magBin__gtdbtk_phylum, domain=None, range=Optional[str])
-
-slots.magBin__gtdbtk_class = Slot(uri=NMDC.gtdbtk_class, name="magBin__gtdbtk_class", curie=NMDC.curie('gtdbtk_class'),
-                   model_uri=NMDC.magBin__gtdbtk_class, domain=None, range=Optional[str])
-
-slots.magBin__gtdbtk_order = Slot(uri=NMDC.gtdbtk_order, name="magBin__gtdbtk_order", curie=NMDC.curie('gtdbtk_order'),
-                   model_uri=NMDC.magBin__gtdbtk_order, domain=None, range=Optional[str])
-
-slots.magBin__gtdbtk_family = Slot(uri=NMDC.gtdbtk_family, name="magBin__gtdbtk_family", curie=NMDC.curie('gtdbtk_family'),
-                   model_uri=NMDC.magBin__gtdbtk_family, domain=None, range=Optional[str])
-
-slots.magBin__gtdbtk_genus = Slot(uri=NMDC.gtdbtk_genus, name="magBin__gtdbtk_genus", curie=NMDC.curie('gtdbtk_genus'),
-                   model_uri=NMDC.magBin__gtdbtk_genus, domain=None, range=Optional[str])
-
-slots.magBin__gtdbtk_species = Slot(uri=NMDC.gtdbtk_species, name="magBin__gtdbtk_species", curie=NMDC.curie('gtdbtk_species'),
-                   model_uri=NMDC.magBin__gtdbtk_species, domain=None, range=Optional[str])
 
 slots.Database_date_created = Slot(uri=NMDC.date_created, name="Database_date_created", curie=NMDC.curie('date_created'),
                    model_uri=NMDC.Database_date_created, domain=Database, range=Optional[str])
