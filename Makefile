@@ -107,6 +107,7 @@ gen-project: $(PYMODEL)
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 
 test: test-schema test-python
+# make test always says "make: Nothing to be done for `test'."
 test-schema:
 	$(RUN) gen-project \
 		--include jsonschema \
@@ -128,7 +129,7 @@ test-python:
 	$(RUN) python -m unittest discover
 
 lint:
-	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH)
+	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH) | tee assets/lint.log
 
 check-config:
 	@(grep my-datamodel about.yaml > /dev/null && printf "\n**Project not configured**:\n\n  - Remember to edit 'about.yaml'\n\n" || exit 0)
