@@ -175,7 +175,41 @@ git-init-add: git-init git-add git-commit git-status
 git-init:
 	git init
 git-add: .cruft.json
-	git add .gitignore .github .cruft.json Makefile LICENSE *.md examples utils about.yaml mkdocs.yml poetry.lock project.Makefile pyproject.toml src/nmdc_schema/schema/*yaml src/*/datamodel/*py src/data src/docs tests
+	git add \
+		*.md \
+		.cruft.json \
+		.github \
+		.gitignore \
+		CODE_OF_CONDUCT.md \
+		CONTRIBUTING.md \
+		LICENSE \
+		MAINTAINERS.md \
+		Makefile \
+		README.md \
+		about.yaml \
+		assets \
+		examples \
+		images \
+		mkdocs.yml \
+		notebooks \
+		poetry.lock \
+		project.Makefile \
+		pyproject.toml \
+		project/nmdc_schema_generated.yaml \
+		reports \
+		src/data \
+		src/doc-templates \
+		src/docs \
+		src/nmdc_schema \
+		sssom \
+		test \
+		tests \
+		util \
+		utils
+
+		#		src/nmdc_schema/schema/*yaml \
+		# 		src/*/datamodel/*py \
+
 	git add $(patsubst %, project/%, $(PROJECT_FOLDERS))
 git-commit:
 	git commit -m 'Initial commit' -a
