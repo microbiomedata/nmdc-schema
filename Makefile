@@ -196,14 +196,14 @@ git-add: .cruft.json
 		poetry.lock \
 		project.Makefile \
 		pyproject.toml \
-		project/nmdc_schema_generated.yaml \
+		project/ \
 		reports \
 		src/data \
 		src/doc-templates \
 		src/docs \
 		src/nmdc_schema \
+		src/schema \
 		sssom \
-		test \
 		tests \
 		util \
 		utils
