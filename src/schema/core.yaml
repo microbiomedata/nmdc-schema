@@ -513,48 +513,6 @@ slots:
     required: false
     range: string
 
-  bin_name:
-    range: string
-  number_of_contig:
-    range: integer
-  completeness:
-    range: float
-  contamination:
-    range: float
-  gene_count:
-    range: integer
-  bin_quality:
-    range: string
-  num_16s:
-    range: integer
-  num_5s:
-    range: integer
-  num_23s:
-    range: integer
-  num_t_rna:
-    range: integer
-  gtdbtk_domain:
-    required: false
-    range: string
-  gtdbtk_phylum:
-    required: false
-    range: string
-  gtdbtk_class:
-    required: false
-    range: string
-  gtdbtk_order:
-    required: false
-    range: string
-  gtdbtk_family:
-    required: false
-    range: string
-  gtdbtk_genus:
-    required: false
-    range: string
-  gtdbtk_species:
-    required: false
-    range: string
-
   has_inputs:
     domain: PlannedProcess
     multivalued: true
