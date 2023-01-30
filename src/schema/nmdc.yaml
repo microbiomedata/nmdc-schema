@@ -798,6 +798,16 @@ classes:
         examples:
           - value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
           - value: 75% water holding capacity; constant
+      source_mat_id:
+        description: A globally unique identifier assigned to the biological sample.
+        title: source material identifier
+        comments:
+          - Identifiers must be prefixed. Possible FAIR prefixes are IGSNs (http://www.geosamples.org/getigsn), NCBI biosample accession numbers, ARK identifiers (https://arks.org/). These IDs enable linking to derived analytes and subsamples. If you have not assigned FAIR identifiers to your samples, you can generate UUIDs (https://www.uuidgenerator.net/).
+        examples:
+          - value: IGSN:AU1243
+          - value: UUID:24f1467a-40f4-11ed-b878-0242ac120002
+        todos:
+          - Currently, the comments say to use UUIDs. However, if we implement assigning NMDC identifiers with the minter we dont need to require a GUID. It can be an optional field to fillout only if they already have a resolvable ID.
 
     exact_mappings:
       - OBI:0000747
