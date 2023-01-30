@@ -30,7 +30,7 @@ imports:
   - basic_slots
 
 types:
-  
+
   external identifier:
     typeof: uriorcurie
     description: >-
@@ -39,7 +39,7 @@ types:
       - https://microbiomedata.github.io/nmdc-schema/identifiers.html
 
 slots:
-  
+
   external_database_identifiers:
     is_a: alternative_identifiers
     abstract: true
@@ -83,7 +83,7 @@ slots:
   study_identifiers:
     abstract: true
     is_a: external_database_identifiers
-  
+
   insdc_sra_ena_study_identifiers:
     is_a: study_identifiers
     mixins:
@@ -148,7 +148,7 @@ slots:
   biosample_identifiers:
     abstract: true
     is_a: external_database_identifiers
-  
+
   gold_biosample_identifiers:
     is_a: biosample_identifiers
     mixins:
@@ -199,7 +199,7 @@ slots:
   omics_processing_identifiers:
     abstract: true
     is_a: external_database_identifiers
-  
+
   gold_sequencing_project_identifiers:
     is_a: omics_processing_identifiers
     mixins:
@@ -222,7 +222,7 @@ slots:
   analysis_identifiers:
     abstract: true
     is_a: external_database_identifiers
-  
+
   gold_analysis_project_identifiers:
     is_a: analysis_identifiers
     mixins:
@@ -282,3 +282,4 @@ slots:
         description: MASSIVE id for MASSIVE's metabolomics analysis of Gb0305843, resolvable with prefix http://identifiers.org/massive/
     see_also:
       - https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=83574f41458a4b259621d5c32a4d82f9
+
