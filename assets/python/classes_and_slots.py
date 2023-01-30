@@ -17,4 +17,4 @@ for current_class in sc_names:
 
 df = pd.DataFrame(lod)
 
-df.to_csv("../reports/nmdc_class_slots.tsv", sep="\t", index=False)
+# df.to_csv("../reports/nmdc_class_slots.tsv", sep="\t", index=False)
