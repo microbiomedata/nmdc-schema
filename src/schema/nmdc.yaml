@@ -453,7 +453,6 @@ classes:
       - light_regm
       #      - micro_biomass_meth
       - phosphate
-      - rel_to_oxygen
       - samp_collec_method
       - samp_size
       #      - soil_text_measure
@@ -538,6 +537,18 @@ classes:
       - lbc_thirty
       - lbceq
     slot_usage:
+      elev:
+        title: elevation, meters
+        range: float
+        comments:
+          - All elevations must be reported in meters. Provide the numerical portion only.
+        examples:
+          value: 100
+      oxy_stat_samp:
+        notes:
+          - this is now a hybrid of the oxy_stat_samp semantics and the rel_to_oxygen enumeration
+        range: rel_to_oxygen_enum
+
       id:
         description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
         required: true

@@ -1186,8 +1186,8 @@ enums:
         text: center of car
       under a seat:
         text: under a seat
-  rel_to_oxygen_enum:
 
+  rel_to_oxygen_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       aerobe:
@@ -1204,8 +1204,8 @@ enums:
         text: obligate aerobe
       obligate anaerobe:
         text: obligate anaerobe
-  room_condt_enum:
 
+  room_condt_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       new:
@@ -4904,8 +4904,8 @@ slots:
     slot_uri: mixs:0000657
     multivalued: false
     range: QuantityValue
-  elev:
 
+  elev:
     aliases:
       - elevation
     annotations:
@@ -4927,8 +4927,8 @@ slots:
     slot_uri: mixs:0000093
     multivalued: false
     range: QuantityValue
-  elevator:
 
+  elevator:
     aliases:
       - elevator count
     annotations:
