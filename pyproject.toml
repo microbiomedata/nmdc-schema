@@ -3,7 +3,7 @@ description = "Schema resources for the National Microbiome Data Collaborative (
 documentation = "https://microbiomedata.github.io/nmdc-schema/"
 homepage = "https://microbiomedata.github.io/nmdc-schema/"
 #include = ["README.md", "src/nmdc-schema/schema", "project"]
-include = ["README.md", "src/schema", "project"]
+include = ["README.md", "src/schema", "project", "sssom"]
 keywords = ["NMDC", "schema", "metadata", "microbiome"]
 license = "MIT"
 name = "nmdc_schema"
@@ -35,19 +35,13 @@ vcs = "git"
 style = "pep440"
 
 #[tool.poetry.dev-dependencies]
-#black = "^22.10.0"
 #build = "^0.9.0"
 #check-jsonschema = "^0.19.2"
 #click-log = "^0.4.0"
-#cruft = "^2.12.0"
 #deepdiff = "^6.2.1"
 #docutils = "^0.19"
 #jq = "^1.3.0"
 #jupyter = "^1.0.0"
-#linkml = "^1.3.15"
-#mkdocs = "^1.4.2"
-#mkdocs-material = "^8.5.7"
-#mkdocs-mermaid2-plugin = "^0.6.0"
 #pandas = "^1.5.1"
 #pendulum = "^2.1.2"
 #pymongo = "^4.3.3"
@@ -62,12 +56,13 @@ build-backend = "poetry_dynamic_versioning.backend"
 docs = ["linkml", "mkdocs-material"]
 
 [tool.poetry.scripts]
-fetch-nmdc-schema =  "nmdc_schema.nmdc_data:get_nmdc_jsonschema"
-nmdc-data =          "nmdc_schema.nmdc_data:cli"
-nmdc-version =       "nmdc_schema.nmdc_version:cli"
-validate-nmdc-json = "nmdc_schema.validate_nmdc_json:cli"
+fetch-nmdc-schema = "nmdc_schema.nmdc_data:get_nmdc_jsonschema"
+nmdc-data = "nmdc_schema.nmdc_data:cli"
+nmdc-version = "nmdc_schema.nmdc_version:cli"
 
-migrate_3_2_to_7 = "nmdc_schema.migrate_3_2_to_7:cli"
+#validate-nmdc-json is deprecated by check-json-schema, which is in turn deprereated by run-linkml-examples
+#validate-nmdc-json = "nmdc_schema.validate_nmdc_json:cli"
+
 
 #classifiers = [
 #    "Development Status :: 4 - Beta",

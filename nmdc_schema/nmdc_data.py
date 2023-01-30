@@ -25,7 +25,7 @@ def get_nmdc_yaml_bytesIO() -> io.BytesIO:
         A bytes stream of nmdc.yaml file.
     """
     # get nmdc.yaml file from the package data
-    return io.BytesIO(pkgutil.get_data(__name__, "nmdc.yaml"))
+    return io.BytesIO(pkgutil.get_data(__name__, "../src/schema/nmdc.yaml"))
 
 
 def get_nmdc_yaml_bytes() -> bytes:
@@ -62,7 +62,7 @@ def get_nmdc_jsonschema_bytesIO() -> io.BytesIO:
         A bytes stream of nmdc.schema.json file.
     """
     # get nmdc.yaml file from the package data
-    return io.BytesIO(pkgutil.get_data(__name__, "nmdc.schema.json"))
+    return io.BytesIO(pkgutil.get_data(__name__, "../project/jsonschema/nmdc.schema.json"))
 
 
 def get_nmdc_jsonschema_bytes() -> bytes:
@@ -193,7 +193,7 @@ def get_gold_sssom() -> str:
     str
         the gold-to-mixs.sssom.tsv file
     """
-    sssom = io.BytesIO(pkgutil.get_data(__name__, "gold-to-mixs.sssom.tsv"))
+    sssom = io.BytesIO(pkgutil.get_data(__name__, "../sssom/gold-to-mixs.sssom.tsv"))
     return sssom.getvalue().decode("utf-8")
 
 
