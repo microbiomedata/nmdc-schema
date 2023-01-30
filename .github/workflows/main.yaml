@@ -2,7 +2,7 @@
 # https://docs.github.com/en/actions/guides/building-and-testing-python
 # https://github.com/snok/install-poetry#workflows-and-tips
 
-name: Build and test attributes_of_biosamples
+name: Build and test nmdc-schema
 
 on: [pull_request]
 
