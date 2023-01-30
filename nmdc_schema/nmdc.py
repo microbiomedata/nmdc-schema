@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-01-20T15:23:58
+# Generation date: 2023-01-30T14:22:17
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -381,6 +381,8 @@ class Database(YAMLRoot):
         if self.etl_software_version is not None and not isinstance(self.etl_software_version, str):
             self.etl_software_version = str(self.etl_software_version)
 
+        self._normalize_inlined_as_list(slot_name="metatranscriptome_activity_set", slot_type=MetatranscriptomeActivity, key_name="id", keyed=True)
+
         super().__post_init__(**kwargs)
 
 
@@ -682,11 +684,12 @@ class Study(NamedThing):
     funding_sources: Optional[Union[str, List[str]]] = empty_list()
     has_credit_associations: Optional[Union[Union[dict, "CreditAssociation"], List[Union[dict, "CreditAssociation"]]]] = empty_list()
     study_image: Optional[Union[Union[dict, "ImageValue"], List[Union[dict, "ImageValue"]]]] = empty_list()
+    emsl_project_identifier: Optional[str] = None
+    insdc_bioproject_identifiers: Optional[str] = None
+    notes: Optional[str] = None
+    massive_study_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     name: Optional[str] = None
     description: Optional[str] = None
-    notes: Optional[str] = None
-    insdc_bioproject_identifiers: Optional[str] = None
-    emsl_project_identifier: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -787,20 +790,24 @@ class Study(NamedThing):
             self.study_image = [self.study_image] if self.study_image is not None else []
         self.study_image = [v if isinstance(v, ImageValue) else ImageValue(**as_dict(v)) for v in self.study_image]
 
+        if self.emsl_project_identifier is not None and not isinstance(self.emsl_project_identifier, str):
+            self.emsl_project_identifier = str(self.emsl_project_identifier)
+
+        if self.insdc_bioproject_identifiers is not None and not isinstance(self.insdc_bioproject_identifiers, str):
+            self.insdc_bioproject_identifiers = str(self.insdc_bioproject_identifiers)
+
+        if self.notes is not None and not isinstance(self.notes, str):
+            self.notes = str(self.notes)
+
+        if not isinstance(self.massive_study_identifiers, list):
+            self.massive_study_identifiers = [self.massive_study_identifiers] if self.massive_study_identifiers is not None else []
+        self.massive_study_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.massive_study_identifiers]
+
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
-
-        if self.notes is not None and not isinstance(self.notes, str):
-            self.notes = str(self.notes)
-
-        if self.insdc_bioproject_identifiers is not None and not isinstance(self.insdc_bioproject_identifiers, str):
-            self.insdc_bioproject_identifiers = str(self.insdc_bioproject_identifiers)
-
-        if self.emsl_project_identifier is not None and not isinstance(self.emsl_project_identifier, str):
-            self.emsl_project_identifier = str(self.emsl_project_identifier)
 
         super().__post_init__(**kwargs)
 
@@ -988,6 +995,7 @@ class Biosample(MaterialEntity):
     env_broad_scale: Union[dict, "ControlledIdentifiedTermValue"] = None
     env_local_scale: Union[dict, "ControlledIdentifiedTermValue"] = None
     env_medium: Union[dict, "ControlledIdentifiedTermValue"] = None
+    embargoed: Optional[Union[bool, Bool]] = None
     collected_from: Optional[Union[str, FieldResearchSiteId]] = None
     type: Optional[str] = None
     img_identifiers: Optional[Union[str, List[str]]] = empty_list()
@@ -1036,12 +1044,12 @@ class Biosample(MaterialEntity):
     env_package: Optional[Union[dict, "TextValue"]] = None
     extreme_event: Optional[str] = None
     fao_class: Optional[Union[dict, "TextValue"]] = None
-    fire: Optional[Union[dict, "TimestampValue"]] = None
-    flooding: Optional[Union[dict, "TimestampValue"]] = None
+    fire: Optional[str] = None
+    flooding: Optional[str] = None
     geo_loc_name: Optional[Union[dict, "TextValue"]] = None
     glucosidase_act: Optional[Union[dict, "QuantityValue"]] = None
-    heavy_metals: Optional[Union[dict, "QuantityValue"]] = None
-    heavy_metals_meth: Optional[Union[dict, "TextValue"]] = None
+    heavy_metals: Optional[Union[Union[dict, "QuantityValue"], List[Union[dict, "QuantityValue"]]]] = empty_list()
+    heavy_metals_meth: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     lat_lon: Optional[Union[dict, "GeolocationValue"]] = None
     link_addit_analys: Optional[Union[dict, "TextValue"]] = None
     link_class_info: Optional[Union[dict, "TextValue"]] = None
@@ -1076,6 +1084,7 @@ class Biosample(MaterialEntity):
     samp_mat_process: Optional[Union[dict, "ControlledTermValue"]] = None
     samp_store_dur: Optional[Union[dict, "TextValue"]] = None
     samp_store_loc: Optional[Union[dict, "TextValue"]] = None
+    samp_taxon_id: Optional[str] = None
     samp_store_temp: Optional[Union[dict, "QuantityValue"]] = None
     samp_vol_we_dna_ext: Optional[Union[dict, "QuantityValue"]] = None
     season_temp: Optional[Union[dict, "QuantityValue"]] = None
@@ -1102,7 +1111,7 @@ class Biosample(MaterialEntity):
     tot_nitro_content: Optional[Union[dict, "QuantityValue"]] = None
     tot_nitro_cont_meth: Optional[str] = None
     tot_phosp: Optional[Union[dict, "QuantityValue"]] = None
-    water_content: Optional[Union[dict, "QuantityValue"]] = None
+    water_content: Optional[Union[str, List[str]]] = empty_list()
     water_cont_soil_meth: Optional[str] = None
     ecosystem: Optional[str] = None
     ecosystem_category: Optional[str] = None
@@ -1231,6 +1240,9 @@ class Biosample(MaterialEntity):
             self.MissingRequiredField("env_medium")
         if not isinstance(self.env_medium, ControlledIdentifiedTermValue):
             self.env_medium = ControlledIdentifiedTermValue(**as_dict(self.env_medium))
+
+        if self.embargoed is not None and not isinstance(self.embargoed, Bool):
+            self.embargoed = Bool(self.embargoed)
 
         if self.collected_from is not None and not isinstance(self.collected_from, FieldResearchSiteId):
             self.collected_from = FieldResearchSiteId(self.collected_from)
@@ -1386,11 +1398,11 @@ class Biosample(MaterialEntity):
         if self.fao_class is not None and not isinstance(self.fao_class, TextValue):
             self.fao_class = TextValue(**as_dict(self.fao_class))
 
-        if self.fire is not None and not isinstance(self.fire, TimestampValue):
-            self.fire = TimestampValue(**as_dict(self.fire))
+        if self.fire is not None and not isinstance(self.fire, str):
+            self.fire = str(self.fire)
 
-        if self.flooding is not None and not isinstance(self.flooding, TimestampValue):
-            self.flooding = TimestampValue(**as_dict(self.flooding))
+        if self.flooding is not None and not isinstance(self.flooding, str):
+            self.flooding = str(self.flooding)
 
         if self.geo_loc_name is not None and not isinstance(self.geo_loc_name, TextValue):
             self.geo_loc_name = TextValue(**as_dict(self.geo_loc_name))
@@ -1398,11 +1410,13 @@ class Biosample(MaterialEntity):
         if self.glucosidase_act is not None and not isinstance(self.glucosidase_act, QuantityValue):
             self.glucosidase_act = QuantityValue(**as_dict(self.glucosidase_act))
 
-        if self.heavy_metals is not None and not isinstance(self.heavy_metals, QuantityValue):
-            self.heavy_metals = QuantityValue(**as_dict(self.heavy_metals))
+        if not isinstance(self.heavy_metals, list):
+            self.heavy_metals = [self.heavy_metals] if self.heavy_metals is not None else []
+        self.heavy_metals = [v if isinstance(v, QuantityValue) else QuantityValue(**as_dict(v)) for v in self.heavy_metals]
 
-        if self.heavy_metals_meth is not None and not isinstance(self.heavy_metals_meth, TextValue):
-            self.heavy_metals_meth = TextValue(**as_dict(self.heavy_metals_meth))
+        if not isinstance(self.heavy_metals_meth, list):
+            self.heavy_metals_meth = [self.heavy_metals_meth] if self.heavy_metals_meth is not None else []
+        self.heavy_metals_meth = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.heavy_metals_meth]
 
         if self.lat_lon is not None and not isinstance(self.lat_lon, GeolocationValue):
             self.lat_lon = GeolocationValue(**as_dict(self.lat_lon))
@@ -1506,6 +1520,9 @@ class Biosample(MaterialEntity):
         if self.samp_store_loc is not None and not isinstance(self.samp_store_loc, TextValue):
             self.samp_store_loc = TextValue(**as_dict(self.samp_store_loc))
 
+        if self.samp_taxon_id is not None and not isinstance(self.samp_taxon_id, str):
+            self.samp_taxon_id = str(self.samp_taxon_id)
+
         if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, QuantityValue):
             self.samp_store_temp = QuantityValue(**as_dict(self.samp_store_temp))
 
@@ -1584,8 +1601,9 @@ class Biosample(MaterialEntity):
         if self.tot_phosp is not None and not isinstance(self.tot_phosp, QuantityValue):
             self.tot_phosp = QuantityValue(**as_dict(self.tot_phosp))
 
-        if self.water_content is not None and not isinstance(self.water_content, QuantityValue):
-            self.water_content = QuantityValue(**as_dict(self.water_content))
+        if not isinstance(self.water_content, list):
+            self.water_content = [self.water_content] if self.water_content is not None else []
+        self.water_content = [v if isinstance(v, str) else str(v) for v in self.water_content]
 
         if self.water_cont_soil_meth is not None and not isinstance(self.water_cont_soil_meth, str):
             self.water_cont_soil_meth = str(self.water_cont_soil_meth)
@@ -2361,22 +2379,22 @@ class MagBin(YAMLRoot):
 
     type: Optional[str] = None
     bin_name: Optional[str] = None
-    number_of_contig: Optional[int] = None
+    bin_quality: Optional[str] = None
     completeness: Optional[float] = None
     contamination: Optional[float] = None
     gene_count: Optional[int] = None
-    bin_quality: Optional[str] = None
-    num_16s: Optional[int] = None
-    num_5s: Optional[int] = None
-    num_23s: Optional[int] = None
-    num_t_rna: Optional[int] = None
-    gtdbtk_domain: Optional[str] = None
-    gtdbtk_phylum: Optional[str] = None
     gtdbtk_class: Optional[str] = None
-    gtdbtk_order: Optional[str] = None
+    gtdbtk_domain: Optional[str] = None
     gtdbtk_family: Optional[str] = None
     gtdbtk_genus: Optional[str] = None
+    gtdbtk_order: Optional[str] = None
+    gtdbtk_phylum: Optional[str] = None
     gtdbtk_species: Optional[str] = None
+    num_16s: Optional[int] = None
+    num_23s: Optional[int] = None
+    num_5s: Optional[int] = None
+    num_t_rna: Optional[int] = None
+    number_of_contig: Optional[int] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.type is not None and not isinstance(self.type, str):
@@ -2385,8 +2403,8 @@ class MagBin(YAMLRoot):
         if self.bin_name is not None and not isinstance(self.bin_name, str):
             self.bin_name = str(self.bin_name)
 
-        if self.number_of_contig is not None and not isinstance(self.number_of_contig, int):
-            self.number_of_contig = int(self.number_of_contig)
+        if self.bin_quality is not None and not isinstance(self.bin_quality, str):
+            self.bin_quality = str(self.bin_quality)
 
         if self.completeness is not None and not isinstance(self.completeness, float):
             self.completeness = float(self.completeness)
@@ -2397,32 +2415,11 @@ class MagBin(YAMLRoot):
         if self.gene_count is not None and not isinstance(self.gene_count, int):
             self.gene_count = int(self.gene_count)
 
-        if self.bin_quality is not None and not isinstance(self.bin_quality, str):
-            self.bin_quality = str(self.bin_quality)
-
-        if self.num_16s is not None and not isinstance(self.num_16s, int):
-            self.num_16s = int(self.num_16s)
-
-        if self.num_5s is not None and not isinstance(self.num_5s, int):
-            self.num_5s = int(self.num_5s)
-
-        if self.num_23s is not None and not isinstance(self.num_23s, int):
-            self.num_23s = int(self.num_23s)
-
-        if self.num_t_rna is not None and not isinstance(self.num_t_rna, int):
-            self.num_t_rna = int(self.num_t_rna)
-
-        if self.gtdbtk_domain is not None and not isinstance(self.gtdbtk_domain, str):
-            self.gtdbtk_domain = str(self.gtdbtk_domain)
-
-        if self.gtdbtk_phylum is not None and not isinstance(self.gtdbtk_phylum, str):
-            self.gtdbtk_phylum = str(self.gtdbtk_phylum)
-
         if self.gtdbtk_class is not None and not isinstance(self.gtdbtk_class, str):
             self.gtdbtk_class = str(self.gtdbtk_class)
 
-        if self.gtdbtk_order is not None and not isinstance(self.gtdbtk_order, str):
-            self.gtdbtk_order = str(self.gtdbtk_order)
+        if self.gtdbtk_domain is not None and not isinstance(self.gtdbtk_domain, str):
+            self.gtdbtk_domain = str(self.gtdbtk_domain)
 
         if self.gtdbtk_family is not None and not isinstance(self.gtdbtk_family, str):
             self.gtdbtk_family = str(self.gtdbtk_family)
@@ -2430,8 +2427,29 @@ class MagBin(YAMLRoot):
         if self.gtdbtk_genus is not None and not isinstance(self.gtdbtk_genus, str):
             self.gtdbtk_genus = str(self.gtdbtk_genus)
 
+        if self.gtdbtk_order is not None and not isinstance(self.gtdbtk_order, str):
+            self.gtdbtk_order = str(self.gtdbtk_order)
+
+        if self.gtdbtk_phylum is not None and not isinstance(self.gtdbtk_phylum, str):
+            self.gtdbtk_phylum = str(self.gtdbtk_phylum)
+
         if self.gtdbtk_species is not None and not isinstance(self.gtdbtk_species, str):
             self.gtdbtk_species = str(self.gtdbtk_species)
+
+        if self.num_16s is not None and not isinstance(self.num_16s, int):
+            self.num_16s = int(self.num_16s)
+
+        if self.num_23s is not None and not isinstance(self.num_23s, int):
+            self.num_23s = int(self.num_23s)
+
+        if self.num_5s is not None and not isinstance(self.num_5s, int):
+            self.num_5s = int(self.num_5s)
+
+        if self.num_t_rna is not None and not isinstance(self.num_t_rna, int):
+            self.num_t_rna = int(self.num_t_rna)
+
+        if self.number_of_contig is not None and not isinstance(self.number_of_contig, int):
+            self.number_of_contig = int(self.number_of_contig)
 
         super().__post_init__(**kwargs)
 
@@ -6191,6 +6209,9 @@ class SolventEnum(EnumDefinitionImpl):
 class slots:
     pass
 
+slots.embargoed = Slot(uri=NMDC.embargoed, name="embargoed", curie=NMDC.curie('embargoed'),
+                   model_uri=NMDC.embargoed, domain=None, range=Optional[Union[bool, Bool]])
+
 slots.collected_from = Slot(uri=NMDC.collected_from, name="collected_from", curie=NMDC.curie('collected_from'),
                    model_uri=NMDC.collected_from, domain=Biosample, range=Optional[Union[str, FieldResearchSiteId]])
 
@@ -6536,6 +6557,57 @@ slots.lbc_thirty = Slot(uri=NMDC.lbc_thirty, name="lbc_thirty", curie=NMDC.curie
 slots.lbceq = Slot(uri=NMDC.lbceq, name="lbceq", curie=NMDC.curie('lbceq'),
                    model_uri=NMDC.lbceq, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.bin_name = Slot(uri=NMDC.bin_name, name="bin_name", curie=NMDC.curie('bin_name'),
+                   model_uri=NMDC.bin_name, domain=None, range=Optional[str])
+
+slots.number_of_contig = Slot(uri=NMDC.number_of_contig, name="number_of_contig", curie=NMDC.curie('number_of_contig'),
+                   model_uri=NMDC.number_of_contig, domain=None, range=Optional[int])
+
+slots.completeness = Slot(uri=NMDC.completeness, name="completeness", curie=NMDC.curie('completeness'),
+                   model_uri=NMDC.completeness, domain=None, range=Optional[float])
+
+slots.contamination = Slot(uri=NMDC.contamination, name="contamination", curie=NMDC.curie('contamination'),
+                   model_uri=NMDC.contamination, domain=None, range=Optional[float])
+
+slots.gene_count = Slot(uri=NMDC.gene_count, name="gene_count", curie=NMDC.curie('gene_count'),
+                   model_uri=NMDC.gene_count, domain=None, range=Optional[int])
+
+slots.bin_quality = Slot(uri=NMDC.bin_quality, name="bin_quality", curie=NMDC.curie('bin_quality'),
+                   model_uri=NMDC.bin_quality, domain=None, range=Optional[str])
+
+slots.num_16s = Slot(uri=NMDC.num_16s, name="num_16s", curie=NMDC.curie('num_16s'),
+                   model_uri=NMDC.num_16s, domain=None, range=Optional[int])
+
+slots.num_5s = Slot(uri=NMDC.num_5s, name="num_5s", curie=NMDC.curie('num_5s'),
+                   model_uri=NMDC.num_5s, domain=None, range=Optional[int])
+
+slots.num_23s = Slot(uri=NMDC.num_23s, name="num_23s", curie=NMDC.curie('num_23s'),
+                   model_uri=NMDC.num_23s, domain=None, range=Optional[int])
+
+slots.num_t_rna = Slot(uri=NMDC.num_t_rna, name="num_t_rna", curie=NMDC.curie('num_t_rna'),
+                   model_uri=NMDC.num_t_rna, domain=None, range=Optional[int])
+
+slots.gtdbtk_domain = Slot(uri=NMDC.gtdbtk_domain, name="gtdbtk_domain", curie=NMDC.curie('gtdbtk_domain'),
+                   model_uri=NMDC.gtdbtk_domain, domain=None, range=Optional[str])
+
+slots.gtdbtk_phylum = Slot(uri=NMDC.gtdbtk_phylum, name="gtdbtk_phylum", curie=NMDC.curie('gtdbtk_phylum'),
+                   model_uri=NMDC.gtdbtk_phylum, domain=None, range=Optional[str])
+
+slots.gtdbtk_class = Slot(uri=NMDC.gtdbtk_class, name="gtdbtk_class", curie=NMDC.curie('gtdbtk_class'),
+                   model_uri=NMDC.gtdbtk_class, domain=None, range=Optional[str])
+
+slots.gtdbtk_order = Slot(uri=NMDC.gtdbtk_order, name="gtdbtk_order", curie=NMDC.curie('gtdbtk_order'),
+                   model_uri=NMDC.gtdbtk_order, domain=None, range=Optional[str])
+
+slots.gtdbtk_family = Slot(uri=NMDC.gtdbtk_family, name="gtdbtk_family", curie=NMDC.curie('gtdbtk_family'),
+                   model_uri=NMDC.gtdbtk_family, domain=None, range=Optional[str])
+
+slots.gtdbtk_genus = Slot(uri=NMDC.gtdbtk_genus, name="gtdbtk_genus", curie=NMDC.curie('gtdbtk_genus'),
+                   model_uri=NMDC.gtdbtk_genus, domain=None, range=Optional[str])
+
+slots.gtdbtk_species = Slot(uri=NMDC.gtdbtk_species, name="gtdbtk_species", curie=NMDC.curie('gtdbtk_species'),
+                   model_uri=NMDC.gtdbtk_species, domain=None, range=Optional[str])
+
 slots.has_inputs = Slot(uri=NMDC.has_inputs, name="has_inputs", curie=NMDC.curie('has_inputs'),
                    model_uri=NMDC.has_inputs, domain=PlannedProcess, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
 
@@ -6754,6 +6826,13 @@ slots.assembly_identifiers = Slot(uri=NMDC.assembly_identifiers, name="assembly_
 slots.insdc_assembly_identifiers = Slot(uri=NMDC.insdc_assembly_identifiers, name="insdc_assembly_identifiers", curie=NMDC.curie('insdc_assembly_identifiers'),
                    model_uri=NMDC.insdc_assembly_identifiers, domain=None, range=Optional[str],
                    pattern=re.compile(r'^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$'))
+
+slots.massive_identifiers = Slot(uri=NMDC.massive_identifiers, name="massive_identifiers", curie=NMDC.curie('massive_identifiers'),
+                   model_uri=NMDC.massive_identifiers, domain=None, range=Optional[str])
+
+slots.massive_study_identifiers = Slot(uri=NMDC.massive_study_identifiers, name="massive_study_identifiers", curie=NMDC.curie('massive_study_identifiers'),
+                   model_uri=NMDC.massive_study_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   pattern=re.compile(r'^MASSIVE:'))
 
 slots.abs_air_humidity = Slot(uri=MIXS['0000122'], name="abs_air_humidity", curie=MIXS.curie('0000122'),
                    model_uri=NMDC.abs_air_humidity, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -7815,6 +7894,9 @@ slots.samp_store_temp = Slot(uri=MIXS['0000110'], name="samp_store_temp", curie=
 slots.samp_subtype = Slot(uri=MIXS['0000999'], name="samp_subtype", curie=MIXS.curie('0000999'),
                    model_uri=NMDC.samp_subtype, domain=None, range=Optional[Union[dict, TextValue]])
 
+slots.samp_taxon_id = Slot(uri=MIXS['0001320'], name="samp_taxon_id", curie=MIXS.curie('0001320'),
+                   model_uri=NMDC.samp_taxon_id, domain=None, range=Optional[str])
+
 slots.samp_time_out = Slot(uri=MIXS['0000196'], name="samp_time_out", curie=MIXS.curie('0000196'),
                    model_uri=NMDC.samp_time_out, domain=None, range=Optional[Union[dict, TextValue]])
 
@@ -8630,57 +8712,6 @@ slots.input_read_bases = Slot(uri=NMDC.input_read_bases, name="input_read_bases"
 slots.output_read_bases = Slot(uri=NMDC.output_read_bases, name="output_read_bases", curie=NMDC.curie('output_read_bases'),
                    model_uri=NMDC.output_read_bases, domain=None, range=Optional[str])
 
-slots.magBin__bin_name = Slot(uri=NMDC.bin_name, name="magBin__bin_name", curie=NMDC.curie('bin_name'),
-                   model_uri=NMDC.magBin__bin_name, domain=None, range=Optional[str])
-
-slots.magBin__number_of_contig = Slot(uri=NMDC.number_of_contig, name="magBin__number_of_contig", curie=NMDC.curie('number_of_contig'),
-                   model_uri=NMDC.magBin__number_of_contig, domain=None, range=Optional[int])
-
-slots.magBin__completeness = Slot(uri=NMDC.completeness, name="magBin__completeness", curie=NMDC.curie('completeness'),
-                   model_uri=NMDC.magBin__completeness, domain=None, range=Optional[float])
-
-slots.magBin__contamination = Slot(uri=NMDC.contamination, name="magBin__contamination", curie=NMDC.curie('contamination'),
-                   model_uri=NMDC.magBin__contamination, domain=None, range=Optional[float])
-
-slots.magBin__gene_count = Slot(uri=NMDC.gene_count, name="magBin__gene_count", curie=NMDC.curie('gene_count'),
-                   model_uri=NMDC.magBin__gene_count, domain=None, range=Optional[int])
-
-slots.magBin__bin_quality = Slot(uri=NMDC.bin_quality, name="magBin__bin_quality", curie=NMDC.curie('bin_quality'),
-                   model_uri=NMDC.magBin__bin_quality, domain=None, range=Optional[str])
-
-slots.magBin__num_16s = Slot(uri=NMDC.num_16s, name="magBin__num_16s", curie=NMDC.curie('num_16s'),
-                   model_uri=NMDC.magBin__num_16s, domain=None, range=Optional[int])
-
-slots.magBin__num_5s = Slot(uri=NMDC.num_5s, name="magBin__num_5s", curie=NMDC.curie('num_5s'),
-                   model_uri=NMDC.magBin__num_5s, domain=None, range=Optional[int])
-
-slots.magBin__num_23s = Slot(uri=NMDC.num_23s, name="magBin__num_23s", curie=NMDC.curie('num_23s'),
-                   model_uri=NMDC.magBin__num_23s, domain=None, range=Optional[int])
-
-slots.magBin__num_t_rna = Slot(uri=NMDC.num_t_rna, name="magBin__num_t_rna", curie=NMDC.curie('num_t_rna'),
-                   model_uri=NMDC.magBin__num_t_rna, domain=None, range=Optional[int])
-
-slots.magBin__gtdbtk_domain = Slot(uri=NMDC.gtdbtk_domain, name="magBin__gtdbtk_domain", curie=NMDC.curie('gtdbtk_domain'),
-                   model_uri=NMDC.magBin__gtdbtk_domain, domain=None, range=Optional[str])
-
-slots.magBin__gtdbtk_phylum = Slot(uri=NMDC.gtdbtk_phylum, name="magBin__gtdbtk_phylum", curie=NMDC.curie('gtdbtk_phylum'),
-                   model_uri=NMDC.magBin__gtdbtk_phylum, domain=None, range=Optional[str])
-
-slots.magBin__gtdbtk_class = Slot(uri=NMDC.gtdbtk_class, name="magBin__gtdbtk_class", curie=NMDC.curie('gtdbtk_class'),
-                   model_uri=NMDC.magBin__gtdbtk_class, domain=None, range=Optional[str])
-
-slots.magBin__gtdbtk_order = Slot(uri=NMDC.gtdbtk_order, name="magBin__gtdbtk_order", curie=NMDC.curie('gtdbtk_order'),
-                   model_uri=NMDC.magBin__gtdbtk_order, domain=None, range=Optional[str])
-
-slots.magBin__gtdbtk_family = Slot(uri=NMDC.gtdbtk_family, name="magBin__gtdbtk_family", curie=NMDC.curie('gtdbtk_family'),
-                   model_uri=NMDC.magBin__gtdbtk_family, domain=None, range=Optional[str])
-
-slots.magBin__gtdbtk_genus = Slot(uri=NMDC.gtdbtk_genus, name="magBin__gtdbtk_genus", curie=NMDC.curie('gtdbtk_genus'),
-                   model_uri=NMDC.magBin__gtdbtk_genus, domain=None, range=Optional[str])
-
-slots.magBin__gtdbtk_species = Slot(uri=NMDC.gtdbtk_species, name="magBin__gtdbtk_species", curie=NMDC.curie('gtdbtk_species'),
-                   model_uri=NMDC.magBin__gtdbtk_species, domain=None, range=Optional[str])
-
 slots.Database_date_created = Slot(uri=NMDC.date_created, name="Database_date_created", curie=NMDC.curie('date_created'),
                    model_uri=NMDC.Database_date_created, domain=Database, range=Optional[str])
 
@@ -8739,8 +8770,84 @@ slots.Biosample_sample_link = Slot(uri=NMDC.sample_link, name="Biosample_sample_
 slots.Biosample_part_of = Slot(uri=DCTERMS.isPartOf, name="Biosample_part_of", curie=DCTERMS.curie('isPartOf'),
                    model_uri=NMDC.Biosample_part_of, domain=Biosample, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
 
+slots.Biosample_fire = Slot(uri=MIXS['0001086'], name="Biosample_fire", curie=MIXS.curie('0001086'),
+                   model_uri=NMDC.Biosample_fire, domain=Biosample, range=Optional[str],
+                   pattern=re.compile(r'^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$'))
+
+slots.Biosample_flooding = Slot(uri=MIXS['0000319'], name="Biosample_flooding", curie=MIXS.curie('0000319'),
+                   model_uri=NMDC.Biosample_flooding, domain=Biosample, range=Optional[str])
+
 slots.Biosample_extreme_event = Slot(uri=MIXS['0000320'], name="Biosample_extreme_event", curie=MIXS.curie('0000320'),
                    model_uri=NMDC.Biosample_extreme_event, domain=Biosample, range=Optional[str])
+
+slots.Biosample_slope_aspect = Slot(uri=MIXS['0000647'], name="Biosample_slope_aspect", curie=MIXS.curie('0000647'),
+                   model_uri=NMDC.Biosample_slope_aspect, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.Biosample_slope_gradient = Slot(uri=MIXS['0000646'], name="Biosample_slope_gradient", curie=MIXS.curie('0000646'),
+                   model_uri=NMDC.Biosample_slope_gradient, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.Biosample_al_sat = Slot(uri=MIXS['0000607'], name="Biosample_al_sat", curie=MIXS.curie('0000607'),
+                   model_uri=NMDC.Biosample_al_sat, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.Biosample_al_sat_meth = Slot(uri=MIXS['0000324'], name="Biosample_al_sat_meth", curie=MIXS.curie('0000324'),
+                   model_uri=NMDC.Biosample_al_sat_meth, domain=Biosample, range=Optional[Union[dict, "TextValue"]])
+
+slots.Biosample_annual_precpt = Slot(uri=MIXS['0000644'], name="Biosample_annual_precpt", curie=MIXS.curie('0000644'),
+                   model_uri=NMDC.Biosample_annual_precpt, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.Biosample_cur_vegetation = Slot(uri=MIXS['0000312'], name="Biosample_cur_vegetation", curie=MIXS.curie('0000312'),
+                   model_uri=NMDC.Biosample_cur_vegetation, domain=Biosample, range=Optional[Union[dict, "TextValue"]])
+
+slots.Biosample_cur_vegetation_meth = Slot(uri=MIXS['0000314'], name="Biosample_cur_vegetation_meth", curie=MIXS.curie('0000314'),
+                   model_uri=NMDC.Biosample_cur_vegetation_meth, domain=Biosample, range=Optional[Union[dict, "TextValue"]])
+
+slots.Biosample_heavy_metals = Slot(uri=MIXS['0000652'], name="Biosample_heavy_metals", curie=MIXS.curie('0000652'),
+                   model_uri=NMDC.Biosample_heavy_metals, domain=Biosample, range=Optional[Union[Union[dict, "QuantityValue"], List[Union[dict, "QuantityValue"]]]])
+
+slots.Biosample_heavy_metals_meth = Slot(uri=MIXS['0000343'], name="Biosample_heavy_metals_meth", curie=MIXS.curie('0000343'),
+                   model_uri=NMDC.Biosample_heavy_metals_meth, domain=Biosample, range=Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]])
+
+slots.Biosample_season_precpt = Slot(uri=MIXS['0000645'], name="Biosample_season_precpt", curie=MIXS.curie('0000645'),
+                   model_uri=NMDC.Biosample_season_precpt, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.Biosample_water_cont_soil_meth = Slot(uri=MIXS['0000323'], name="Biosample_water_cont_soil_meth", curie=MIXS.curie('0000323'),
+                   model_uri=NMDC.Biosample_water_cont_soil_meth, domain=Biosample, range=Optional[str])
+
+slots.Biosample_water_content = Slot(uri=MIXS['0000185'], name="Biosample_water_content", curie=MIXS.curie('0000185'),
+                   model_uri=NMDC.Biosample_water_content, domain=Biosample, range=Optional[Union[str, List[str]]])
+
+slots.Biosample_ph_meth = Slot(uri=MIXS['0001106'], name="Biosample_ph_meth", curie=MIXS.curie('0001106'),
+                   model_uri=NMDC.Biosample_ph_meth, domain=Biosample, range=Optional[Union[dict, "TextValue"]])
+
+slots.Biosample_tot_carb = Slot(uri=MIXS['0000525'], name="Biosample_tot_carb", curie=MIXS.curie('0000525'),
+                   model_uri=NMDC.Biosample_tot_carb, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.Biosample_tot_nitro_cont_meth = Slot(uri=MIXS['0000338'], name="Biosample_tot_nitro_cont_meth", curie=MIXS.curie('0000338'),
+                   model_uri=NMDC.Biosample_tot_nitro_cont_meth, domain=Biosample, range=Optional[str])
+
+slots.Biosample_tot_nitro_content = Slot(uri=MIXS['0000530'], name="Biosample_tot_nitro_content", curie=MIXS.curie('0000530'),
+                   model_uri=NMDC.Biosample_tot_nitro_content, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.Biosample_tot_org_c_meth = Slot(uri=MIXS['0000337'], name="Biosample_tot_org_c_meth", curie=MIXS.curie('0000337'),
+                   model_uri=NMDC.Biosample_tot_org_c_meth, domain=Biosample, range=Optional[Union[dict, "TextValue"]])
+
+slots.Biosample_tot_org_carb = Slot(uri=MIXS['0000533'], name="Biosample_tot_org_carb", curie=MIXS.curie('0000533'),
+                   model_uri=NMDC.Biosample_tot_org_carb, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.Biosample_salinity_meth = Slot(uri=MIXS['0000341'], name="Biosample_salinity_meth", curie=MIXS.curie('0000341'),
+                   model_uri=NMDC.Biosample_salinity_meth, domain=Biosample, range=Optional[Union[dict, "TextValue"]])
+
+slots.Biosample_sieving = Slot(uri=MIXS['0000322'], name="Biosample_sieving", curie=MIXS.curie('0000322'),
+                   model_uri=NMDC.Biosample_sieving, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.Biosample_climate_environment = Slot(uri=MIXS['0001040'], name="Biosample_climate_environment", curie=MIXS.curie('0001040'),
+                   model_uri=NMDC.Biosample_climate_environment, domain=Biosample, range=Optional[Union[dict, "TextValue"]])
+
+slots.Biosample_gaseous_environment = Slot(uri=MIXS['0000558'], name="Biosample_gaseous_environment", curie=MIXS.curie('0000558'),
+                   model_uri=NMDC.Biosample_gaseous_environment, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.Biosample_watering_regm = Slot(uri=MIXS['0000591'], name="Biosample_watering_regm", curie=MIXS.curie('0000591'),
+                   model_uri=NMDC.Biosample_watering_regm, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
 
 slots.Study_id = Slot(uri=NMDC.id, name="Study_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Study_id, domain=Study, range=Union[str, StudyId])

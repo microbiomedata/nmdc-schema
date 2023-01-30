@@ -240,22 +240,23 @@ classes:
     slots:
       - type
       - bin_name
-      - number_of_contig
+      - bin_quality
       - completeness
       - contamination
       - gene_count
-      - bin_quality
-      - num_16s
-      - num_5s
-      - num_23s
-      - num_t_rna
-      - gtdbtk_domain
-      - gtdbtk_phylum
       - gtdbtk_class
-      - gtdbtk_order
+      - gtdbtk_domain
       - gtdbtk_family
       - gtdbtk_genus
+      - gtdbtk_order
+      - gtdbtk_phylum
       - gtdbtk_species
+      - num_16s
+      - num_23s
+      - num_5s
+      - num_t_rna
+      - number_of_contig
+
 
   Instrument:
     is_a: NamedThing
@@ -470,7 +471,6 @@ classes:
       - schema:GeoCoordinates
 
 slots:
-
   bin_name:
     range: string
   number_of_contig:

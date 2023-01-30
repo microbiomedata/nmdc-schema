@@ -18,6 +18,7 @@ prefixes:
 # WARNING:Namespaces:MASSIVE namespace is already mapped to http://identifiers.org/massive/ -
 #   Mapping to https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task= ignored
 
+
 default_prefix: nmdc
 default_range: string
 
@@ -266,19 +267,19 @@ slots:
     mixins:
       - insdc_identifiers
 
-  massive_identifier:
+  massive_identifiers:
     mixin: true
-    range: string
     description: identifiers for entities according to MASSIVE
 
-  massive_study_identifier:
+  massive_study_identifiers:
     is_a: study_identifiers
     mixins:
-      - massive_identifier
+      - massive_identifiers
     pattern: "^MASSIVE:"
     description: identifiers for corresponding study in MASSIVE
-    comments:
-      - Alicia provided this website https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=83574f41458a4b259621d5c32a4d82f9
     examples:
       - value: MASSIVE:MSV000090886
-        description: actual id for MASSIVE's metabolomics analysis of Gb0305843... works with http://identifiers.org/massive/
+        description: MASSIVE id for MASSIVE's metabolomics analysis of Gb0305843, resolvable with prefix http://identifiers.org/massive/
+    see_also:
+      - https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=83574f41458a4b259621d5c32a4d82f9
+

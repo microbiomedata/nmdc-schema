@@ -28,7 +28,7 @@ default_prefix: nmdc
 
 enums:
   arch_struc_enum:
-    name: arch_struc_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       building:
@@ -38,7 +38,7 @@ enums:
       home:
         text: home
   biol_stat_enum:
-    name: biol_stat_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       wild:
@@ -58,7 +58,7 @@ enums:
       mutant:
         text: mutant
   biotic_relationship_enum:
-    name: biotic_relationship_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       free living:
@@ -70,7 +70,7 @@ enums:
       symbiont:
         text: symbiont
   build_docs_enum:
-    name: build_docs_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       building information model:
@@ -100,7 +100,7 @@ enums:
       windows:
         text: windows
   build_occup_type_enum:
-    name: build_occup_type_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       office:
@@ -130,7 +130,7 @@ enums:
       sports complex:
         text: sports complex
   building_setting_enum:
-    name: building_setting_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       urban:
@@ -142,7 +142,7 @@ enums:
       rural:
         text: rural
   ceil_cond_enum:
-    name: ceil_cond_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       new:
@@ -156,7 +156,7 @@ enums:
       rupture:
         text: rupture
   ceil_finish_mat_enum:
-    name: ceil_finish_mat_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       drywall:
@@ -180,7 +180,7 @@ enums:
       wood:
         text: wood
   ceil_texture_enum:
-    name: ceil_texture_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       crows feet:
@@ -210,7 +210,7 @@ enums:
       swirl:
         text: swirl
   ceil_type_enum:
-    name: ceil_type_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       cathedral:
@@ -228,7 +228,7 @@ enums:
       stretched:
         text: stretched
   cur_land_use_enum:
-    name: cur_land_use_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       cities:
@@ -303,7 +303,7 @@ enums:
       crop trees (nuts,fruit,christmas trees,nursery trees):
         text: crop trees (nuts,fruit,christmas trees,nursery trees)
   depos_env_enum:
-    name: depos_env_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       Continental - Alluvial:
@@ -339,7 +339,7 @@ enums:
       other:
         text: other
   door_comp_type_enum:
-    name: door_comp_type_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       metal covered:
@@ -351,7 +351,7 @@ enums:
       telescopic:
         text: telescopic
   door_cond_enum:
-    name: door_cond_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       damaged:
@@ -365,7 +365,7 @@ enums:
       visible wear:
         text: visible wear
   door_direct_enum:
-    name: door_direct_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       inward:
@@ -375,7 +375,7 @@ enums:
       sideways:
         text: sideways
   door_loc_enum:
-    name: door_loc_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       north:
@@ -387,7 +387,7 @@ enums:
       west:
         text: west
   door_mat_enum:
-    name: door_mat_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       aluminum:
@@ -411,7 +411,7 @@ enums:
       wood/plastic composite:
         text: wood/plastic composite
   door_move_enum:
-    name: door_move_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       collapsible:
@@ -427,7 +427,7 @@ enums:
       swinging:
         text: swinging
   door_type_enum:
-    name: door_type_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       composite:
@@ -437,7 +437,7 @@ enums:
       wooden:
         text: wooden
   door_type_metal_enum:
-    name: door_type_metal_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       collapsible:
@@ -451,7 +451,7 @@ enums:
       steel plate:
         text: steel plate
   door_type_wood_enum:
-    name: door_type_wood_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       bettened and ledged:
@@ -475,7 +475,7 @@ enums:
       wire gauged:
         text: wire gauged
   drainage_class_enum:
-    name: drainage_class_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       very poorly:
@@ -491,7 +491,7 @@ enums:
       excessively drained:
         text: excessively drained
   drawings_enum:
-    name: drawings_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       operation:
@@ -511,7 +511,7 @@ enums:
       sketch:
         text: sketch
   ext_wall_orient_enum:
-    name: ext_wall_orient_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       north:
@@ -531,7 +531,7 @@ enums:
       northwest:
         text: northwest
   ext_window_orient_enum:
-    name: ext_window_orient_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       north:
@@ -551,7 +551,7 @@ enums:
       northwest:
         text: northwest
   fao_class_enum:
-    name: fao_class_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       Acrisols:
@@ -607,7 +607,7 @@ enums:
       Yermosols:
         text: Yermosols
   filter_type_enum:
-    name: filter_type_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       particulate air filter:
@@ -623,7 +623,7 @@ enums:
       gas-phase or ultraviolet air treatments:
         text: gas-phase or ultraviolet air treatments
   floor_cond_enum:
-    name: floor_cond_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       new:
@@ -637,7 +637,7 @@ enums:
       rupture:
         text: rupture
   floor_finish_mat_enum:
-    name: floor_finish_mat_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       tile:
@@ -677,7 +677,7 @@ enums:
       none or unfinished:
         text: none or unfinished
   floor_struc_enum:
-    name: floor_struc_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       balcony:
@@ -695,7 +695,7 @@ enums:
       concrete:
         text: concrete
   floor_water_mold_enum:
-    name: floor_water_mold_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       mold odor:
@@ -717,7 +717,7 @@ enums:
       condensation:
         text: condensation
   freq_clean_enum:
-    name: freq_clean_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       Daily:
@@ -733,7 +733,7 @@ enums:
       other:
         text: other
   furniture_enum:
-    name: furniture_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       cabinet:
@@ -743,7 +743,7 @@ enums:
       desks:
         text: desks
   gender_restroom_enum:
-    name: gender_restroom_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       all gender:
@@ -759,7 +759,7 @@ enums:
       unisex:
         text: unisex
   growth_habit_enum:
-    name: growth_habit_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       erect:
@@ -771,7 +771,7 @@ enums:
       prostrate:
         text: prostrate
   handidness_enum:
-    name: handidness_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       ambidexterity:
@@ -783,7 +783,7 @@ enums:
       right handedness:
         text: right handedness
   hc_produced_enum:
-    name: hc_produced_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       Oil:
@@ -799,7 +799,7 @@ enums:
       other:
         text: other
   hcr_enum:
-    name: hcr_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       Oil Reservoir:
@@ -819,7 +819,7 @@ enums:
       other:
         text: other
   hcr_geol_age_enum:
-    name: hcr_geol_age_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       Archean:
@@ -859,7 +859,7 @@ enums:
       other:
         text: other
   heat_cool_type_enum:
-    name: heat_cool_type_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       radiant system:
@@ -873,7 +873,7 @@ enums:
       wood stove:
         text: wood stove
   heat_deliv_loc_enum:
-    name: heat_deliv_loc_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       north:
@@ -885,7 +885,7 @@ enums:
       west:
         text: west
   horizon_enum:
-    name: horizon_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       O horizon:
@@ -903,7 +903,7 @@ enums:
       Permafrost:
         text: Permafrost
   host_sex_enum:
-    name: host_sex_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       female:
@@ -915,7 +915,7 @@ enums:
       neuter:
         text: neuter
   indoor_space_enum:
-    name: indoor_space_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       bedroom:
@@ -935,7 +935,7 @@ enums:
       elevator:
         text: elevator
   indoor_surf_enum:
-    name: indoor_surf_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       cabinet:
@@ -955,7 +955,7 @@ enums:
       wall:
         text: wall
   int_wall_cond_enum:
-    name: int_wall_cond_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       new:
@@ -969,7 +969,7 @@ enums:
       rupture:
         text: rupture
   light_type_enum:
-    name: light_type_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       natural light:
@@ -983,7 +983,7 @@ enums:
       none:
         text: none
   lithology_enum:
-    name: lithology_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       Basement:
@@ -1013,7 +1013,7 @@ enums:
       other:
         text: other
   mech_struc_enum:
-    name: mech_struc_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       subway:
@@ -1035,7 +1035,7 @@ enums:
       bus:
         text: bus
   occup_document_enum:
-    name: occup_document_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       automated count:
@@ -1047,7 +1047,7 @@ enums:
       videos:
         text: videos
   organism_count_enum:
-    name: organism_count_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       ATP:
@@ -1057,7 +1057,7 @@ enums:
       other:
         text: other
   oxy_stat_samp_enum:
-    name: oxy_stat_samp_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       aerobic:
@@ -1067,7 +1067,7 @@ enums:
       other:
         text: other
   plant_growth_med_enum:
-    name: plant_growth_med_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       other artificial liquid medium:
@@ -1089,7 +1089,7 @@ enums:
       water:
         text: water
   plant_sex_enum:
-    name: plant_sex_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       Androdioecious:
@@ -1151,7 +1151,7 @@ enums:
       Unisexual:
         text: Unisexual
   profile_position_enum:
-    name: profile_position_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       summit:
@@ -1165,7 +1165,7 @@ enums:
       toeslope:
         text: toeslope
   quad_pos_enum:
-    name: quad_pos_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       North side:
@@ -1177,7 +1177,7 @@ enums:
       East side:
         text: East side
   rel_samp_loc_enum:
-    name: rel_samp_loc_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       edge of car:
@@ -1187,7 +1187,7 @@ enums:
       under a seat:
         text: under a seat
   rel_to_oxygen_enum:
-    name: rel_to_oxygen_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       aerobe:
@@ -1205,7 +1205,7 @@ enums:
       obligate anaerobe:
         text: obligate anaerobe
   room_condt_enum:
-    name: room_condt_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       new:
@@ -1221,7 +1221,7 @@ enums:
       visible signs of mold/mildew:
         text: visible signs of mold/mildew
   room_connected_enum:
-    name: room_connected_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       attic:
@@ -1247,7 +1247,7 @@ enums:
       stairwell:
         text: stairwell
   room_loc_enum:
-    name: room_loc_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       corner room:
@@ -1257,7 +1257,7 @@ enums:
       exterior wall:
         text: exterior wall
   room_samp_pos_enum:
-    name: room_samp_pos_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       north corner:
@@ -1279,7 +1279,7 @@ enums:
       center:
         text: center
   room_type_enum:
-    name: room_type_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       attic:
@@ -1333,7 +1333,7 @@ enums:
       warehouse:
         text: warehouse
   samp_capt_status_enum:
-    name: samp_capt_status_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       active surveillance in response to an outbreak:
@@ -1347,7 +1347,7 @@ enums:
       other:
         text: other
   samp_collect_point_enum:
-    name: samp_collect_point_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       well:
@@ -1365,7 +1365,7 @@ enums:
       other:
         text: other
   samp_dis_stage_enum:
-    name: samp_dis_stage_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       dissemination:
@@ -1381,7 +1381,7 @@ enums:
       other:
         text: other
   samp_floor_enum:
-    name: samp_floor_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       1st floor:
@@ -1393,7 +1393,7 @@ enums:
       lobby:
         text: lobby
   samp_md_enum:
-    name: samp_md_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       DF:
@@ -1407,7 +1407,7 @@ enums:
       other:
         text: other
   samp_subtype_enum:
-    name: samp_subtype_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       oil phase:
@@ -1421,7 +1421,7 @@ enums:
       other:
         text: other
   samp_weather_enum:
-    name: samp_weather_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       clear sky:
@@ -1443,7 +1443,7 @@ enums:
       windy:
         text: windy
   season_use_enum:
-    name: season_use_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       Spring:
@@ -1455,7 +1455,7 @@ enums:
       Winter:
         text: Winter
   sediment_type_enum:
-    name: sediment_type_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       biogenous:
@@ -1467,7 +1467,7 @@ enums:
       lithogenous:
         text: lithogenous
   shading_device_cond_enum:
-    name: shading_device_cond_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       damaged:
@@ -1481,7 +1481,7 @@ enums:
       visible wear:
         text: visible wear
   shading_device_type_enum:
-    name: shading_device_type_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       bahama shutters:
@@ -1509,7 +1509,7 @@ enums:
       venetian awning:
         text: venetian awning
   soil_horizon_enum:
-    name: soil_horizon_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       O horizon:
@@ -1527,7 +1527,7 @@ enums:
       Permafrost:
         text: Permafrost
   specific_enum:
-    name: specific_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       operation:
@@ -1543,7 +1543,7 @@ enums:
       photos:
         text: photos
   sr_dep_env_enum:
-    name: sr_dep_env_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       Lacustine:
@@ -1557,7 +1557,7 @@ enums:
       other:
         text: other
   sr_geol_age_enum:
-    name: sr_geol_age_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       Archean:
@@ -1597,7 +1597,7 @@ enums:
       other:
         text: other
   sr_kerog_type_enum:
-    name: sr_kerog_type_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       Type I:
@@ -1611,7 +1611,7 @@ enums:
       other:
         text: other
   sr_lithology_enum:
-    name: sr_lithology_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       Clastic:
@@ -1625,7 +1625,7 @@ enums:
       other:
         text: other
   substructure_type_enum:
-    name: substructure_type_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       crawlspace:
@@ -1635,7 +1635,7 @@ enums:
       basement:
         text: basement
   surf_air_cont_enum:
-    name: surf_air_cont_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       dust:
@@ -1655,7 +1655,7 @@ enums:
       biocides:
         text: biocides
   surf_material_enum:
-    name: surf_material_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       adobe:
@@ -1689,7 +1689,7 @@ enums:
       wood:
         text: wood
   tidal_stage_enum:
-    name: tidal_stage_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       low tide:
@@ -1701,7 +1701,7 @@ enums:
       high tide:
         text: high tide
   tillage_enum:
-    name: tillage_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       drill:
@@ -1723,7 +1723,7 @@ enums:
       disc plough:
         text: disc plough
   train_line_enum:
-    name: train_line_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       red:
@@ -1733,7 +1733,7 @@ enums:
       orange:
         text: orange
   train_stat_loc_enum:
-    name: train_stat_loc_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       south station above ground:
@@ -1747,7 +1747,7 @@ enums:
       riverside:
         text: riverside
   train_stop_loc_enum:
-    name: train_stop_loc_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       end:
@@ -1757,7 +1757,7 @@ enums:
       downtown:
         text: downtown
   vis_media_enum:
-    name: vis_media_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       photos:
@@ -1775,7 +1775,7 @@ enums:
       3D scans:
         text: 3D scans
   wall_const_type_enum:
-    name: wall_const_type_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       frame construction:
@@ -1791,7 +1791,7 @@ enums:
       fire resistive:
         text: fire resistive
   wall_finish_mat_enum:
-    name: wall_finish_mat_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       plaster:
@@ -1817,7 +1817,7 @@ enums:
       masonry:
         text: masonry
   wall_loc_enum:
-    name: wall_loc_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       north:
@@ -1829,7 +1829,7 @@ enums:
       west:
         text: west
   wall_surf_treatment_enum:
-    name: wall_surf_treatment_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       painted:
@@ -1845,7 +1845,7 @@ enums:
       fabric:
         text: fabric
   wall_texture_enum:
-    name: wall_texture_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       crows feet:
@@ -1877,7 +1877,7 @@ enums:
       swirl:
         text: swirl
   water_feat_type_enum:
-    name: water_feat_type_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       fountain:
@@ -1891,7 +1891,7 @@ enums:
       waterfall:
         text: waterfall
   weekday_enum:
-    name: weekday_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       Monday:
@@ -1909,7 +1909,7 @@ enums:
       Sunday:
         text: Sunday
   window_cond_enum:
-    name: window_cond_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       damaged:
@@ -1923,7 +1923,7 @@ enums:
       visible wear:
         text: visible wear
   window_cover_enum:
-    name: window_cover_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       blinds:
@@ -1933,7 +1933,7 @@ enums:
       none:
         text: none
   window_horiz_pos_enum:
-    name: window_horiz_pos_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       left:
@@ -1943,7 +1943,7 @@ enums:
       right:
         text: right
   window_loc_enum:
-    name: window_loc_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       north:
@@ -1955,7 +1955,7 @@ enums:
       west:
         text: west
   window_mat_enum:
-    name: window_mat_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       clad:
@@ -1969,7 +1969,7 @@ enums:
       wood:
         text: wood
   window_type_enum:
-    name: window_type_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       single-hung sash window:
@@ -1979,7 +1979,7 @@ enums:
       fixed window:
         text: fixed window
   window_vert_pos_enum:
-    name: window_vert_pos_enum
+
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       bottom:
@@ -1994,7 +1994,7 @@ enums:
         text: high
 slots:
   abs_air_humidity:
-    name: abs_air_humidity
+
     aliases:
       - absolute air humidity
     annotations:
@@ -2021,14 +2021,14 @@ slots:
     multivalued: false
     range: QuantityValue
   core_field:
-    name: core_field
+
     description: basic fields
     from_schema: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     abstract: true
   add_recov_method:
-    name: add_recov_method
+
     aliases:
       - secondary and tertiary recovery methods and start date
     annotations:
@@ -2054,7 +2054,7 @@ slots:
     multivalued: false
     range: TextValue
   additional_info:
-    name: additional_info
+
     aliases:
       - additional info
     annotations:
@@ -2077,7 +2077,7 @@ slots:
     multivalued: false
     range: TextValue
   address:
-    name: address
+
     aliases:
       - address
     annotations:
@@ -2099,7 +2099,7 @@ slots:
     multivalued: false
     range: TextValue
   adj_room:
-    name: adj_room
+
     aliases:
       - adjacent rooms
     annotations:
@@ -2122,7 +2122,7 @@ slots:
     multivalued: false
     range: TextValue
   aero_struc:
-    name: aero_struc
+
     aliases:
       - aerospace structure
     annotations:
@@ -2148,7 +2148,7 @@ slots:
     multivalued: false
     range: TextValue
   agrochem_addition:
-    name: agrochem_addition
+
     aliases:
       - history/agrochemical additions
     annotations:
@@ -2175,7 +2175,7 @@ slots:
     multivalued: false
     range: QuantityValue
   air_temp:
-    name: air_temp
+
     aliases:
       - air temperature
     annotations:
@@ -2201,7 +2201,7 @@ slots:
     multivalued: false
     range: QuantityValue
   air_temp_regm:
-    name: air_temp_regm
+
     aliases:
       - air temperature regimen
     annotations:
@@ -2231,7 +2231,7 @@ slots:
     multivalued: false
     range: QuantityValue
   al_sat:
-    name: al_sat
+
     aliases:
       - extreme_unusual_properties/Al saturation
     annotations:
@@ -2255,7 +2255,7 @@ slots:
     multivalued: false
     range: QuantityValue
   al_sat_meth:
-    name: al_sat_meth
+
     aliases:
       - extreme_unusual_properties/Al saturation method
     annotations:
@@ -2277,7 +2277,7 @@ slots:
     multivalued: false
     range: TextValue
   alkalinity:
-    name: alkalinity
+
     aliases:
       - alkalinity
     annotations:
@@ -2304,7 +2304,7 @@ slots:
     multivalued: false
     range: QuantityValue
   alkalinity_method:
-    name: alkalinity_method
+
     aliases:
       - alkalinity method
     annotations:
@@ -2328,7 +2328,7 @@ slots:
     multivalued: false
     range: TextValue
   alkyl_diethers:
-    name: alkyl_diethers
+
     aliases:
       - alkyl diethers
     annotations:
@@ -2354,7 +2354,7 @@ slots:
     multivalued: false
     range: QuantityValue
   alt:
-    name: alt
+
     aliases:
       - altitude
     annotations:
@@ -2379,14 +2379,14 @@ slots:
     multivalued: false
     range: QuantityValue
   environment_field:
-    name: environment_field
+
     description: field describing environmental aspect of a sample
     from_schema: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     abstract: true
   aminopept_act:
-    name: aminopept_act
+
     aliases:
       - aminopeptidase activity
     annotations:
@@ -2412,7 +2412,7 @@ slots:
     multivalued: false
     range: QuantityValue
   ammonium:
-    name: ammonium
+
     aliases:
       - ammonium
     annotations:
@@ -2438,7 +2438,7 @@ slots:
     multivalued: false
     range: QuantityValue
   amount_light:
-    name: amount_light
+
     aliases:
       - amount of light
     annotations:
@@ -2463,7 +2463,7 @@ slots:
     multivalued: false
     range: QuantityValue
   ances_data:
-    name: ances_data
+
     aliases:
       - ancestral data
     annotations:
@@ -2489,7 +2489,7 @@ slots:
     multivalued: false
     range: TextValue
   annual_precpt:
-    name: annual_precpt
+
     aliases:
       - mean annual precipitation
     annotations:
@@ -2514,7 +2514,7 @@ slots:
     multivalued: false
     range: QuantityValue
   annual_temp:
-    name: annual_temp
+
     aliases:
       - mean annual temperature
     annotations:
@@ -2540,7 +2540,7 @@ slots:
     multivalued: false
     range: QuantityValue
   antibiotic_regm:
-    name: antibiotic_regm
+
     aliases:
       - antibiotic regimen
     annotations:
@@ -2571,7 +2571,7 @@ slots:
     multivalued: false
     range: QuantityValue
   api:
-    name: api
+
     aliases:
       - API gravity
     annotations:
@@ -2597,7 +2597,7 @@ slots:
     multivalued: false
     range: QuantityValue
   arch_struc:
-    name: arch_struc
+
     aliases:
       - architectural structure
     annotations:
@@ -2621,7 +2621,7 @@ slots:
     multivalued: false
     range: TextValue
   aromatics_pc:
-    name: aromatics_pc
+
     aliases:
       - aromatics wt%
     annotations:
@@ -2650,7 +2650,7 @@ slots:
     multivalued: false
     range: QuantityValue
   asphaltenes_pc:
-    name: asphaltenes_pc
+
     aliases:
       - asphaltenes wt%
     annotations:
@@ -2679,7 +2679,7 @@ slots:
     multivalued: false
     range: QuantityValue
   atmospheric_data:
-    name: atmospheric_data
+
     aliases:
       - atmospheric data
     annotations:
@@ -2703,7 +2703,7 @@ slots:
     multivalued: false
     range: QuantityValue
   avg_dew_point:
-    name: avg_dew_point
+
     aliases:
       - average dew point
     annotations:
@@ -2730,7 +2730,7 @@ slots:
     multivalued: false
     range: QuantityValue
   avg_occup:
-    name: avg_occup
+
     aliases:
       - average daily occupancy
     annotations:
@@ -2754,7 +2754,7 @@ slots:
     multivalued: false
     range: TextValue
   avg_temp:
-    name: avg_temp
+
     aliases:
       - average temperature
     annotations:
@@ -2781,7 +2781,7 @@ slots:
     multivalued: false
     range: QuantityValue
   bac_prod:
-    name: bac_prod
+
     aliases:
       - bacterial production
     annotations:
@@ -2807,7 +2807,7 @@ slots:
     multivalued: false
     range: QuantityValue
   bac_resp:
-    name: bac_resp
+
     aliases:
       - bacterial respiration
     annotations:
@@ -2833,7 +2833,7 @@ slots:
     multivalued: false
     range: QuantityValue
   bacteria_carb_prod:
-    name: bacteria_carb_prod
+
     aliases:
       - bacterial carbon production
     annotations:
@@ -2859,7 +2859,7 @@ slots:
     multivalued: false
     range: QuantityValue
   barometric_press:
-    name: barometric_press
+
     aliases:
       - barometric pressure
     annotations:
@@ -2886,7 +2886,7 @@ slots:
     multivalued: false
     range: QuantityValue
   basin:
-    name: basin
+
     aliases:
       - basin name
     annotations:
@@ -2908,7 +2908,7 @@ slots:
     multivalued: false
     range: TextValue
   bathroom_count:
-    name: bathroom_count
+
     aliases:
       - bathroom count
     annotations:
@@ -2931,7 +2931,7 @@ slots:
     multivalued: false
     range: TextValue
   bedroom_count:
-    name: bedroom_count
+
     aliases:
       - bedroom count
     annotations:
@@ -2954,7 +2954,7 @@ slots:
     multivalued: false
     range: TextValue
   benzene:
-    name: benzene
+
     aliases:
       - benzene
     annotations:
@@ -2978,7 +2978,7 @@ slots:
     multivalued: false
     range: QuantityValue
   biochem_oxygen_dem:
-    name: biochem_oxygen_dem
+
     aliases:
       - biochemical oxygen demand
     annotations:
@@ -3004,7 +3004,7 @@ slots:
     multivalued: false
     range: QuantityValue
   biocide:
-    name: biocide
+
     aliases:
       - biocide administration
     annotations:
@@ -3029,7 +3029,7 @@ slots:
     multivalued: false
     range: TextValue
   biocide_admin_method:
-    name: biocide_admin_method
+
     aliases:
       - biocide administration method
     annotations:
@@ -3056,7 +3056,7 @@ slots:
     multivalued: false
     range: QuantityValue
   biol_stat:
-    name: biol_stat
+
     aliases:
       - biological status
     annotations:
@@ -3079,7 +3079,7 @@ slots:
     multivalued: false
     range: TextValue
   biomass:
-    name: biomass
+
     aliases:
       - biomass
     annotations:
@@ -3107,7 +3107,7 @@ slots:
     multivalued: false
     range: QuantityValue
   biotic_regm:
-    name: biotic_regm
+
     aliases:
       - biotic regimen
     annotations:
@@ -3132,7 +3132,7 @@ slots:
     multivalued: false
     range: TextValue
   biotic_relationship:
-    name: biotic_relationship
+
     aliases:
       - observed biotic relationship
     annotations:
@@ -3155,13 +3155,13 @@ slots:
     multivalued: false
     range: TextValue
   nucleic_acid_sequence_source_field:
-    name: nucleic_acid_sequence_source_field
+
     from_schema: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     abstract: true
   bishomohopanol:
-    name: bishomohopanol
+
     aliases:
       - bishomohopanol
     annotations:
@@ -3187,7 +3187,7 @@ slots:
     multivalued: false
     range: QuantityValue
   blood_press_diast:
-    name: blood_press_diast
+
     aliases:
       - host blood pressure diastolic
     annotations:
@@ -3211,7 +3211,7 @@ slots:
     multivalued: false
     range: QuantityValue
   blood_press_syst:
-    name: blood_press_syst
+
     aliases:
       - host blood pressure systolic
     annotations:
@@ -3235,7 +3235,7 @@ slots:
     multivalued: false
     range: QuantityValue
   bromide:
-    name: bromide
+
     aliases:
       - bromide
     annotations:
@@ -3261,7 +3261,7 @@ slots:
     multivalued: false
     range: QuantityValue
   build_docs:
-    name: build_docs
+
     aliases:
       - design, construction, and operation documents
     annotations:
@@ -3284,7 +3284,7 @@ slots:
     multivalued: false
     range: TextValue
   build_occup_type:
-    name: build_occup_type
+
     aliases:
       - building occupancy type
     annotations:
@@ -3308,7 +3308,7 @@ slots:
     multivalued: false
     range: TextValue
   building_setting:
-    name: building_setting
+
     aliases:
       - building setting
     annotations:
@@ -3331,7 +3331,7 @@ slots:
     multivalued: false
     range: TextValue
   built_struc_age:
-    name: built_struc_age
+
     aliases:
       - built structure age
     annotations:
@@ -3357,7 +3357,7 @@ slots:
     multivalued: false
     range: QuantityValue
   built_struc_set:
-    name: built_struc_set
+
     aliases:
       - built structure setting
     annotations:
@@ -3382,7 +3382,7 @@ slots:
     multivalued: false
     range: TextValue
   built_struc_type:
-    name: built_struc_type
+
     aliases:
       - built structure type
     annotations:
@@ -3405,7 +3405,7 @@ slots:
     multivalued: false
     range: TextValue
   calcium:
-    name: calcium
+
     aliases:
       - calcium
     annotations:
@@ -3431,7 +3431,7 @@ slots:
     multivalued: false
     range: QuantityValue
   carb_dioxide:
-    name: carb_dioxide
+
     aliases:
       - carbon dioxide
     annotations:
@@ -3457,7 +3457,7 @@ slots:
     multivalued: false
     range: QuantityValue
   carb_monoxide:
-    name: carb_monoxide
+
     aliases:
       - carbon monoxide
     annotations:
@@ -3483,7 +3483,7 @@ slots:
     multivalued: false
     range: QuantityValue
   carb_nitro_ratio:
-    name: carb_nitro_ratio
+
     aliases:
       - carbon/nitrogen ratio
     annotations:
@@ -3506,7 +3506,7 @@ slots:
     multivalued: false
     range: QuantityValue
   ceil_area:
-    name: ceil_area
+
     aliases:
       - ceiling area
     annotations:
@@ -3532,7 +3532,7 @@ slots:
     multivalued: false
     range: QuantityValue
   ceil_cond:
-    name: ceil_cond
+
     aliases:
       - ceiling condition
     annotations:
@@ -3556,7 +3556,7 @@ slots:
     multivalued: false
     range: TextValue
   ceil_finish_mat:
-    name: ceil_finish_mat
+
     aliases:
       - ceiling finish material
     annotations:
@@ -3579,7 +3579,7 @@ slots:
     multivalued: false
     range: TextValue
   ceil_struc:
-    name: ceil_struc
+
     aliases:
       - ceiling structure
     annotations:
@@ -3603,7 +3603,7 @@ slots:
     multivalued: false
     range: TextValue
   ceil_texture:
-    name: ceil_texture
+
     aliases:
       - ceiling texture
     annotations:
@@ -3626,7 +3626,7 @@ slots:
     multivalued: false
     range: TextValue
   ceil_thermal_mass:
-    name: ceil_thermal_mass
+
     aliases:
       - ceiling thermal mass
     annotations:
@@ -3653,7 +3653,7 @@ slots:
     multivalued: false
     range: QuantityValue
   ceil_type:
-    name: ceil_type
+
     aliases:
       - ceiling type
     annotations:
@@ -3676,7 +3676,7 @@ slots:
     multivalued: false
     range: TextValue
   ceil_water_mold:
-    name: ceil_water_mold
+
     aliases:
       - ceiling signs of water/mold
     annotations:
@@ -3700,7 +3700,7 @@ slots:
     multivalued: false
     range: TextValue
   chem_administration:
-    name: chem_administration
+
     aliases:
       - chemical administration
     annotations:
@@ -3727,7 +3727,7 @@ slots:
     multivalued: false
     range: ControlledTermValue
   chem_mutagen:
-    name: chem_mutagen
+
     aliases:
       - chemical mutagen
     annotations:
@@ -3757,7 +3757,7 @@ slots:
     multivalued: false
     range: QuantityValue
   chem_oxygen_dem:
-    name: chem_oxygen_dem
+
     aliases:
       - chemical oxygen demand
     annotations:
@@ -3783,7 +3783,7 @@ slots:
     multivalued: false
     range: QuantityValue
   chem_treat_method:
-    name: chem_treat_method
+
     aliases:
       - chemical treatment method
     annotations:
@@ -3810,7 +3810,7 @@ slots:
     multivalued: false
     range: string
   chem_treatment:
-    name: chem_treatment
+
     aliases:
       - chemical treatment
     annotations:
@@ -3838,7 +3838,7 @@ slots:
     multivalued: false
     range: TextValue
   chimera_check:
-    name: chimera_check
+
     aliases:
       - chimera check software
     annotations:
@@ -3861,13 +3861,13 @@ slots:
     multivalued: false
     range: TextValue
   sequencing_field:
-    name: sequencing_field
+
     from_schema: http://w3id.org/mixs/terms
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     abstract: true
   chloride:
-    name: chloride
+
     aliases:
       - chloride
     annotations:
@@ -3893,7 +3893,7 @@ slots:
     multivalued: false
     range: QuantityValue
   chlorophyll:
-    name: chlorophyll
+
     aliases:
       - chlorophyll
     annotations:
@@ -3919,7 +3919,7 @@ slots:
     multivalued: false
     range: QuantityValue
   climate_environment:
-    name: climate_environment
+
     aliases:
       - climate environment
     annotations:
@@ -3946,7 +3946,7 @@ slots:
     multivalued: false
     range: TextValue
   collection_date:
-    name: collection_date
+
     aliases:
       - collection date
     annotations:
@@ -3969,7 +3969,7 @@ slots:
     multivalued: false
     range: TimestampValue
   conduc:
-    name: conduc
+
     aliases:
       - conductivity
     annotations:
@@ -3995,7 +3995,7 @@ slots:
     multivalued: false
     range: QuantityValue
   cool_syst_id:
-    name: cool_syst_id
+
     aliases:
       - cooling system identifier
     annotations:
@@ -4018,7 +4018,7 @@ slots:
     multivalued: false
     range: TextValue
   crop_rotation:
-    name: crop_rotation
+
     aliases:
       - history/crop rotation
     annotations:
@@ -4042,7 +4042,7 @@ slots:
     multivalued: false
     range: TextValue
   cult_root_med:
-    name: cult_root_med
+
     aliases:
       - culture rooting medium
     annotations:
@@ -4069,7 +4069,7 @@ slots:
     multivalued: false
     range: TextValue
   cur_land_use:
-    name: cur_land_use
+
     aliases:
       - current land use
     annotations:
@@ -4092,7 +4092,7 @@ slots:
     multivalued: false
     range: TextValue
   cur_vegetation:
-    name: cur_vegetation
+
     aliases:
       - current vegetation
     annotations:
@@ -4115,7 +4115,7 @@ slots:
     multivalued: false
     range: TextValue
   cur_vegetation_meth:
-    name: cur_vegetation_meth
+
     aliases:
       - current vegetation method
     annotations:
@@ -4137,7 +4137,7 @@ slots:
     multivalued: false
     range: TextValue
   date_last_rain:
-    name: date_last_rain
+
     aliases:
       - date last rain
     annotations:
@@ -4160,7 +4160,7 @@ slots:
     multivalued: false
     range: TimestampValue
   density:
-    name: density
+
     aliases:
       - density
     annotations:
@@ -4187,7 +4187,7 @@ slots:
     multivalued: false
     range: QuantityValue
   depos_env:
-    name: depos_env
+
     aliases:
       - depositional environment
     annotations:
@@ -4211,7 +4211,7 @@ slots:
     multivalued: false
     range: TextValue
   depth:
-    name: depth
+
     aliases:
       - depth
     annotations:
@@ -4233,7 +4233,7 @@ slots:
     multivalued: false
     range: QuantityValue
   dew_point:
-    name: dew_point
+
     aliases:
       - dew point
     annotations:
@@ -4260,7 +4260,7 @@ slots:
     multivalued: false
     range: QuantityValue
   diether_lipids:
-    name: diether_lipids
+
     aliases:
       - diether lipids
     annotations:
@@ -4288,7 +4288,7 @@ slots:
     multivalued: false
     range: QuantityValue
   diss_carb_dioxide:
-    name: diss_carb_dioxide
+
     aliases:
       - dissolved carbon dioxide
     annotations:
@@ -4315,7 +4315,7 @@ slots:
     multivalued: false
     range: QuantityValue
   diss_hydrogen:
-    name: diss_hydrogen
+
     aliases:
       - dissolved hydrogen
     annotations:
@@ -4341,7 +4341,7 @@ slots:
     multivalued: false
     range: QuantityValue
   diss_inorg_carb:
-    name: diss_inorg_carb
+
     aliases:
       - dissolved inorganic carbon
     annotations:
@@ -4368,7 +4368,7 @@ slots:
     multivalued: false
     range: QuantityValue
   diss_inorg_nitro:
-    name: diss_inorg_nitro
+
     aliases:
       - dissolved inorganic nitrogen
     annotations:
@@ -4394,7 +4394,7 @@ slots:
     multivalued: false
     range: QuantityValue
   diss_inorg_phosp:
-    name: diss_inorg_phosp
+
     aliases:
       - dissolved inorganic phosphorus
     annotations:
@@ -4420,7 +4420,7 @@ slots:
     multivalued: false
     range: QuantityValue
   diss_iron:
-    name: diss_iron
+
     aliases:
       - dissolved iron
     annotations:
@@ -4444,7 +4444,7 @@ slots:
     multivalued: false
     range: QuantityValue
   diss_org_carb:
-    name: diss_org_carb
+
     aliases:
       - dissolved organic carbon
     annotations:
@@ -4471,7 +4471,7 @@ slots:
     multivalued: false
     range: QuantityValue
   diss_org_nitro:
-    name: diss_org_nitro
+
     aliases:
       - dissolved organic nitrogen
     annotations:
@@ -4498,7 +4498,7 @@ slots:
     multivalued: false
     range: QuantityValue
   diss_oxygen:
-    name: diss_oxygen
+
     aliases:
       - dissolved oxygen
     annotations:
@@ -4524,7 +4524,7 @@ slots:
     multivalued: false
     range: QuantityValue
   diss_oxygen_fluid:
-    name: diss_oxygen_fluid
+
     aliases:
       - dissolved oxygen in fluids
     annotations:
@@ -4549,7 +4549,7 @@ slots:
     multivalued: false
     range: QuantityValue
   door_comp_type:
-    name: door_comp_type
+
     aliases:
       - door type, composite
     annotations:
@@ -4572,7 +4572,7 @@ slots:
     multivalued: false
     range: TextValue
   door_cond:
-    name: door_cond
+
     aliases:
       - door condition
     annotations:
@@ -4595,7 +4595,7 @@ slots:
     multivalued: false
     range: TextValue
   door_direct:
-    name: door_direct
+
     aliases:
       - door direction of opening
     annotations:
@@ -4618,7 +4618,7 @@ slots:
     multivalued: false
     range: TextValue
   door_loc:
-    name: door_loc
+
     aliases:
       - door location
     annotations:
@@ -4641,7 +4641,7 @@ slots:
     multivalued: false
     range: TextValue
   door_mat:
-    name: door_mat
+
     aliases:
       - door material
     annotations:
@@ -4664,7 +4664,7 @@ slots:
     multivalued: false
     range: TextValue
   door_move:
-    name: door_move
+
     aliases:
       - door movement
     annotations:
@@ -4687,7 +4687,7 @@ slots:
     multivalued: false
     range: TextValue
   door_size:
-    name: door_size
+
     aliases:
       - door area or size
     annotations:
@@ -4713,7 +4713,7 @@ slots:
     multivalued: false
     range: QuantityValue
   door_type:
-    name: door_type
+
     aliases:
       - door type
     annotations:
@@ -4736,7 +4736,7 @@ slots:
     multivalued: false
     range: TextValue
   door_type_metal:
-    name: door_type_metal
+
     aliases:
       - door type, metal
     annotations:
@@ -4759,7 +4759,7 @@ slots:
     multivalued: false
     range: TextValue
   door_type_wood:
-    name: door_type_wood
+
     aliases:
       - door type, wood
     annotations:
@@ -4782,7 +4782,7 @@ slots:
     multivalued: false
     range: TextValue
   door_water_mold:
-    name: door_water_mold
+
     aliases:
       - door signs of water/mold
     annotations:
@@ -4806,7 +4806,7 @@ slots:
     multivalued: false
     range: TextValue
   down_par:
-    name: down_par
+
     aliases:
       - downward PAR
     annotations:
@@ -4834,7 +4834,7 @@ slots:
     multivalued: false
     range: QuantityValue
   drainage_class:
-    name: drainage_class
+
     aliases:
       - drainage classification
     annotations:
@@ -4857,7 +4857,7 @@ slots:
     multivalued: false
     range: TextValue
   drawings:
-    name: drawings
+
     aliases:
       - drawings
     annotations:
@@ -4881,7 +4881,7 @@ slots:
     multivalued: false
     range: TextValue
   efficiency_percent:
-    name: efficiency_percent
+
     aliases:
       - efficiency percent
     annotations:
@@ -4905,7 +4905,7 @@ slots:
     multivalued: false
     range: QuantityValue
   elev:
-    name: elev
+
     aliases:
       - elevation
     annotations:
@@ -4928,7 +4928,7 @@ slots:
     multivalued: false
     range: QuantityValue
   elevator:
-    name: elevator
+
     aliases:
       - elevator count
     annotations:
@@ -4951,7 +4951,7 @@ slots:
     multivalued: false
     range: TextValue
   emulsions:
-    name: emulsions
+
     aliases:
       - emulsions
     annotations:
@@ -4980,7 +4980,7 @@ slots:
   env_broad_scale:
     in_subset:
       - mixs_environmental_triad
-    name: env_broad_scale
+
     aliases:
       - broad-scale environmental context
     annotations:
@@ -5010,7 +5010,7 @@ slots:
   env_local_scale:
     in_subset:
       - mixs_environmental_triad
-    name: env_local_scale
+
     aliases:
       - local environmental context
     annotations:
@@ -5042,7 +5042,7 @@ slots:
   env_medium:
     in_subset:
       - mixs_environmental_triad
-    name: env_medium
+
     aliases:
       - environmental medium
     annotations:
@@ -5072,7 +5072,7 @@ slots:
     multivalued: false
     range: ControlledIdentifiedTermValue
   escalator:
-    name: escalator
+
     aliases:
       - escalator count
     annotations:
@@ -5095,7 +5095,7 @@ slots:
     multivalued: false
     range: TextValue
   ethylbenzene:
-    name: ethylbenzene
+
     aliases:
       - ethylbenzene
     annotations:
@@ -5119,7 +5119,7 @@ slots:
     multivalued: false
     range: QuantityValue
   exp_duct:
-    name: exp_duct
+
     aliases:
       - exposed ductwork
     annotations:
@@ -5143,7 +5143,7 @@ slots:
     multivalued: false
     range: QuantityValue
   exp_pipe:
-    name: exp_pipe
+
     aliases:
       - exposed pipes
     annotations:
@@ -5164,7 +5164,7 @@ slots:
     multivalued: false
     range: QuantityValue
   experimental_factor:
-    name: experimental_factor
+
     aliases:
       - experimental factor
     annotations:
@@ -5190,7 +5190,7 @@ slots:
     multivalued: false
     range: ControlledTermValue
   investigation_field:
-    name: investigation_field
+
     description: field describing aspect of the investigation/study to which the sample
       belongs
     from_schema: http://w3id.org/mixs/terms
@@ -5199,7 +5199,7 @@ slots:
     abstract: true
 
   ext_door:
-    name: ext_door
+
     aliases:
       - exterior door count
     annotations:
@@ -5220,7 +5220,7 @@ slots:
     multivalued: false
     range: TextValue
   ext_wall_orient:
-    name: ext_wall_orient
+
     aliases:
       - orientations of exterior wall
     annotations:
@@ -5243,7 +5243,7 @@ slots:
     multivalued: false
     range: TextValue
   ext_window_orient:
-    name: ext_window_orient
+
     aliases:
       - orientations of exterior window
     annotations:
@@ -5266,7 +5266,7 @@ slots:
     multivalued: false
     range: TextValue
   extreme_event:
-    name: extreme_event
+
     aliases:
       - history/extreme events
     annotations:
@@ -5287,7 +5287,7 @@ slots:
     multivalued: false
     range: TimestampValue
   fao_class:
-    name: fao_class
+
     aliases:
       - soil_taxonomic/FAO classification
     annotations:
@@ -5311,7 +5311,7 @@ slots:
     multivalued: false
     range: TextValue
   fertilizer_regm:
-    name: fertilizer_regm
+
     aliases:
       - fertilizer regimen
     annotations:
@@ -5342,7 +5342,7 @@ slots:
     multivalued: false
     range: QuantityValue
   field:
-    name: field
+
     aliases:
       - field name
     annotations:
@@ -5364,7 +5364,7 @@ slots:
     multivalued: false
     range: TextValue
   filter_type:
-    name: filter_type
+
     aliases:
       - filter type
     annotations:
@@ -5387,7 +5387,7 @@ slots:
     multivalued: false
     range: TextValue
   fire:
-    name: fire
+
     aliases:
       - history/fire
     annotations:
@@ -5408,7 +5408,7 @@ slots:
     multivalued: false
     range: TimestampValue
   fireplace_type:
-    name: fireplace_type
+
     aliases:
       - fireplace type
     annotations:
@@ -5432,7 +5432,7 @@ slots:
     multivalued: false
     range: TextValue
   flooding:
-    name: flooding
+
     aliases:
       - history/flooding
     annotations:
@@ -5453,7 +5453,7 @@ slots:
     multivalued: false
     range: TimestampValue
   floor_age:
-    name: floor_age
+
     aliases:
       - floor age
     annotations:
@@ -5477,7 +5477,7 @@ slots:
     multivalued: false
     range: QuantityValue
   floor_area:
-    name: floor_area
+
     aliases:
       - floor area
     annotations:
@@ -5501,7 +5501,7 @@ slots:
     multivalued: false
     range: QuantityValue
   floor_cond:
-    name: floor_cond
+
     aliases:
       - floor condition
     annotations:
@@ -5525,7 +5525,7 @@ slots:
     multivalued: false
     range: TextValue
   floor_count:
-    name: floor_count
+
     aliases:
       - floor count
     annotations:
@@ -5547,7 +5547,7 @@ slots:
     multivalued: false
     range: TextValue
   floor_finish_mat:
-    name: floor_finish_mat
+
     aliases:
       - floor finish material
     annotations:
@@ -5570,7 +5570,7 @@ slots:
     multivalued: false
     range: TextValue
   floor_struc:
-    name: floor_struc
+
     aliases:
       - floor structure
     annotations:
@@ -5594,7 +5594,7 @@ slots:
     multivalued: false
     range: TextValue
   floor_thermal_mass:
-    name: floor_thermal_mass
+
     aliases:
       - floor thermal mass
     annotations:
@@ -5618,7 +5618,7 @@ slots:
     multivalued: false
     range: QuantityValue
   floor_water_mold:
-    name: floor_water_mold
+
     aliases:
       - floor signs of water/mold
     annotations:
@@ -5641,7 +5641,7 @@ slots:
     multivalued: false
     range: TextValue
   fluor:
-    name: fluor
+
     aliases:
       - fluorescence
     annotations:
@@ -5667,7 +5667,7 @@ slots:
     multivalued: false
     range: QuantityValue
   freq_clean:
-    name: freq_clean
+
     aliases:
       - frequency of cleaning
     annotations:
@@ -5689,7 +5689,7 @@ slots:
     multivalued: false
     range: QuantityValue
   freq_cook:
-    name: freq_cook
+
     aliases:
       - frequency of cooking
     annotations:
@@ -5710,7 +5710,7 @@ slots:
     multivalued: false
     range: QuantityValue
   fungicide_regm:
-    name: fungicide_regm
+
     aliases:
       - fungicide regimen
     annotations:
@@ -5740,7 +5740,7 @@ slots:
     multivalued: false
     range: QuantityValue
   furniture:
-    name: furniture
+
     aliases:
       - furniture
     annotations:
@@ -5763,7 +5763,7 @@ slots:
     multivalued: false
     range: TextValue
   gaseous_environment:
-    name: gaseous_environment
+
     aliases:
       - gaseous environment
     annotations:
@@ -5793,7 +5793,7 @@ slots:
     multivalued: false
     range: QuantityValue
   gaseous_substances:
-    name: gaseous_substances
+
     aliases:
       - gaseous substances
     annotations:
@@ -5819,7 +5819,7 @@ slots:
     multivalued: false
     range: QuantityValue
   gender_restroom:
-    name: gender_restroom
+
     aliases:
       - gender of restroom
     annotations:
@@ -5842,7 +5842,7 @@ slots:
     multivalued: false
     range: TextValue
   genetic_mod:
-    name: genetic_mod
+
     aliases:
       - genetic modification
     annotations:
@@ -5869,7 +5869,7 @@ slots:
     multivalued: false
     range: TextValue
   geo_loc_name:
-    name: geo_loc_name
+
     aliases:
       - geographic location (country and/or sea,region)
     annotations:
@@ -5894,7 +5894,7 @@ slots:
     multivalued: false
     range: TextValue
   glucosidase_act:
-    name: glucosidase_act
+
     aliases:
       - glucosidase activity
     annotations:
@@ -5920,7 +5920,7 @@ slots:
     multivalued: false
     range: QuantityValue
   gravidity:
-    name: gravidity
+
     aliases:
       - gravidity
     annotations:
@@ -5945,7 +5945,7 @@ slots:
     multivalued: false
     range: TextValue
   gravity:
-    name: gravity
+
     aliases:
       - gravity
     annotations:
@@ -5976,7 +5976,7 @@ slots:
     multivalued: false
     range: QuantityValue
   growth_facil:
-    name: growth_facil
+
     aliases:
       - growth facility
     annotations:
@@ -6002,7 +6002,7 @@ slots:
     multivalued: false
     range: ControlledTermValue
   growth_habit:
-    name: growth_habit
+
     aliases:
       - growth habit
     annotations:
@@ -6025,7 +6025,7 @@ slots:
     multivalued: false
     range: TextValue
   growth_hormone_regm:
-    name: growth_hormone_regm
+
     aliases:
       - growth hormone regimen
     annotations:
@@ -6056,7 +6056,7 @@ slots:
     multivalued: false
     range: QuantityValue
   hall_count:
-    name: hall_count
+
     aliases:
       - hallway/corridor count
     annotations:
@@ -6077,7 +6077,7 @@ slots:
     multivalued: false
     range: TextValue
   handidness:
-    name: handidness
+
     aliases:
       - handidness
     annotations:
@@ -6100,7 +6100,7 @@ slots:
     multivalued: false
     range: TextValue
   hc_produced:
-    name: hc_produced
+
     aliases:
       - hydrocarbon type produced
     annotations:
@@ -6124,7 +6124,7 @@ slots:
     multivalued: false
     range: TextValue
   hcr:
-    name: hcr
+
     aliases:
       - hydrocarbon resource type
     annotations:
@@ -6153,7 +6153,7 @@ slots:
     multivalued: false
     range: TextValue
   hcr_fw_salinity:
-    name: hcr_fw_salinity
+
     aliases:
       - formation water salinity
     annotations:
@@ -6178,7 +6178,7 @@ slots:
     multivalued: false
     range: QuantityValue
   hcr_geol_age:
-    name: hcr_geol_age
+
     aliases:
       - hydrocarbon resource geological age
     annotations:
@@ -6202,7 +6202,7 @@ slots:
     multivalued: false
     range: TextValue
   hcr_pressure:
-    name: hcr_pressure
+
     aliases:
       - hydrocarbon resource original pressure
     annotations:
@@ -6227,7 +6227,7 @@ slots:
     multivalued: false
     range: QuantityValue
   hcr_temp:
-    name: hcr_temp
+
     aliases:
       - hydrocarbon resource original temperature
     annotations:
@@ -6254,7 +6254,7 @@ slots:
     multivalued: false
     range: QuantityValue
   heat_cool_type:
-    name: heat_cool_type
+
     aliases:
       - heating and cooling system type
     annotations:
@@ -6277,7 +6277,7 @@ slots:
     multivalued: false
     range: TextValue
   heat_deliv_loc:
-    name: heat_deliv_loc
+
     aliases:
       - heating delivery locations
     annotations:
@@ -6300,7 +6300,7 @@ slots:
     multivalued: false
     range: TextValue
   heat_sys_deliv_meth:
-    name: heat_sys_deliv_meth
+
     aliases:
       - heating system delivery method
     annotations:
@@ -6324,7 +6324,7 @@ slots:
     multivalued: false
     range: string
   heat_system_id:
-    name: heat_system_id
+
     aliases:
       - heating system identifier
     annotations:
@@ -6345,7 +6345,7 @@ slots:
     multivalued: false
     range: TextValue
   heavy_metals:
-    name: heavy_metals
+
     aliases:
       - extreme_unusual_properties/heavy metals
     annotations:
@@ -6373,7 +6373,7 @@ slots:
     multivalued: false
     range: QuantityValue
   heavy_metals_meth:
-    name: heavy_metals_meth
+
     aliases:
       - extreme_unusual_properties/heavy metals method
     annotations:
@@ -6395,7 +6395,7 @@ slots:
     multivalued: false
     range: TextValue
   height_carper_fiber:
-    name: height_carper_fiber
+
     aliases:
       - height carpet fiber mat
     annotations:
@@ -6419,7 +6419,7 @@ slots:
     multivalued: false
     range: QuantityValue
   herbicide_regm:
-    name: herbicide_regm
+
     aliases:
       - herbicide regimen
     annotations:
@@ -6450,7 +6450,7 @@ slots:
     multivalued: false
     range: QuantityValue
   #  horizon:
-  #    name: horizon
+  #   
   #    aliases:
   #      - horizon
   #    annotations:
@@ -6473,7 +6473,7 @@ slots:
   #    multivalued: false
   #    range: TextValue
   horizon_meth:
-    name: horizon_meth
+
     aliases:
       - soil horizon method
     annotations:
@@ -6495,7 +6495,7 @@ slots:
     multivalued: false
     range: TextValue
   host_age:
-    name: host_age
+
     aliases:
       - host age
     annotations:
@@ -6522,7 +6522,7 @@ slots:
     multivalued: false
     range: QuantityValue
   host_body_habitat:
-    name: host_body_habitat
+
     aliases:
       - host body habitat
     annotations:
@@ -6546,7 +6546,7 @@ slots:
     multivalued: false
     range: TextValue
   host_body_product:
-    name: host_body_product
+
     aliases:
       - host body product
     annotations:
@@ -6573,7 +6573,7 @@ slots:
     multivalued: false
     range: ControlledIdentifiedTermValue
   host_body_site:
-    name: host_body_site
+
     aliases:
       - host body site
     annotations:
@@ -6600,7 +6600,7 @@ slots:
     multivalued: false
     range: ControlledIdentifiedTermValue
   host_body_temp:
-    name: host_body_temp
+
     aliases:
       - host body temperature
     annotations:
@@ -6626,7 +6626,7 @@ slots:
     multivalued: false
     range: QuantityValue
   host_color:
-    name: host_color
+
     aliases:
       - host color
     annotations:
@@ -6648,7 +6648,7 @@ slots:
     multivalued: false
     range: TextValue
   host_common_name:
-    name: host_common_name
+
     aliases:
       - host common name
     annotations:
@@ -6672,7 +6672,7 @@ slots:
     multivalued: false
     range: TextValue
   host_diet:
-    name: host_diet
+
     aliases:
       - host diet
     annotations:
@@ -6697,7 +6697,7 @@ slots:
     multivalued: false
     range: TextValue
   host_dry_mass:
-    name: host_dry_mass
+
     aliases:
       - host dry mass
     annotations:
@@ -6723,7 +6723,7 @@ slots:
     multivalued: false
     range: QuantityValue
   host_family_relation:
-    name: host_family_relation
+
     aliases:
       - host family relationship
     annotations:
@@ -6748,7 +6748,7 @@ slots:
     multivalued: true
     range: string
   host_genotype:
-    name: host_genotype
+
     aliases:
       - host genotype
     annotations:
@@ -6772,7 +6772,7 @@ slots:
     multivalued: false
     range: TextValue
   host_growth_cond:
-    name: host_growth_cond
+
     aliases:
       - host growth conditions
     annotations:
@@ -6796,7 +6796,7 @@ slots:
     multivalued: false
     range: TextValue
   host_height:
-    name: host_height
+
     aliases:
       - host height
     annotations:
@@ -6822,7 +6822,7 @@ slots:
     multivalued: false
     range: QuantityValue
   host_last_meal:
-    name: host_last_meal
+
     aliases:
       - host last meal
     annotations:
@@ -6847,7 +6847,7 @@ slots:
     multivalued: false
     range: TextValue
   host_length:
-    name: host_length
+
     aliases:
       - host length
     annotations:
@@ -6873,7 +6873,7 @@ slots:
     multivalued: false
     range: QuantityValue
   host_life_stage:
-    name: host_life_stage
+
     aliases:
       - host life stage
     annotations:
@@ -6897,7 +6897,7 @@ slots:
     multivalued: false
     range: TextValue
   host_phenotype:
-    name: host_phenotype
+
     aliases:
       - host phenotype
     annotations:
@@ -6923,7 +6923,7 @@ slots:
     multivalued: false
     range: ControlledIdentifiedTermValue
   host_sex:
-    name: host_sex
+
     aliases:
       - host sex
     annotations:
@@ -6946,7 +6946,7 @@ slots:
     multivalued: false
     range: TextValue
   host_shape:
-    name: host_shape
+
     aliases:
       - host shape
     annotations:
@@ -6970,7 +6970,7 @@ slots:
     multivalued: false
     range: TextValue
   host_subject_id:
-    name: host_subject_id
+
     aliases:
       - host subject id
     annotations:
@@ -6994,7 +6994,7 @@ slots:
     multivalued: false
     range: TextValue
   host_subspecf_genlin:
-    name: host_subspecf_genlin
+
     aliases:
       - host subspecific genetic lineage
     annotations:
@@ -7023,7 +7023,7 @@ slots:
     multivalued: true
     range: string
   host_substrate:
-    name: host_substrate
+
     aliases:
       - host substrate
     annotations:
@@ -7047,7 +7047,7 @@ slots:
     multivalued: false
     range: TextValue
   host_symbiont:
-    name: host_symbiont
+
     aliases:
       - observed host symbionts
     annotations:
@@ -7072,7 +7072,7 @@ slots:
     multivalued: true
     range: string
   host_taxid:
-    name: host_taxid
+
     aliases:
       - host taxid
     annotations:
@@ -7096,7 +7096,7 @@ slots:
     multivalued: false
     range: TextValue
   host_tot_mass:
-    name: host_tot_mass
+
     aliases:
       - host total mass
     annotations:
@@ -7122,7 +7122,7 @@ slots:
     multivalued: false
     range: QuantityValue
   host_wet_mass:
-    name: host_wet_mass
+
     aliases:
       - host wet mass
     annotations:
@@ -7148,7 +7148,7 @@ slots:
     multivalued: false
     range: QuantityValue
   humidity:
-    name: humidity
+
     aliases:
       - humidity
     annotations:
@@ -7174,7 +7174,7 @@ slots:
     multivalued: false
     range: QuantityValue
   humidity_regm:
-    name: humidity_regm
+
     aliases:
       - humidity regimen
     annotations:
@@ -7205,7 +7205,7 @@ slots:
     multivalued: false
     range: QuantityValue
   indoor_space:
-    name: indoor_space
+
     aliases:
       - indoor space
     annotations:
@@ -7229,7 +7229,7 @@ slots:
     multivalued: false
     range: TextValue
   indoor_surf:
-    name: indoor_surf
+
     aliases:
       - indoor surface
     annotations:
@@ -7252,7 +7252,7 @@ slots:
     multivalued: false
     range: TextValue
   indust_eff_percent:
-    name: indust_eff_percent
+
     aliases:
       - industrial effluent percent
     annotations:
@@ -7277,7 +7277,7 @@ slots:
     multivalued: false
     range: QuantityValue
   inorg_particles:
-    name: inorg_particles
+
     aliases:
       - inorganic particles
     annotations:
@@ -7303,7 +7303,7 @@ slots:
     multivalued: false
     range: QuantityValue
   inside_lux:
-    name: inside_lux
+
     aliases:
       - inside lux light
     annotations:
@@ -7327,7 +7327,7 @@ slots:
     multivalued: false
     range: QuantityValue
   int_wall_cond:
-    name: int_wall_cond
+
     aliases:
       - interior wall condition
     annotations:
@@ -7352,7 +7352,7 @@ slots:
     range: TextValue
 
   iw_bt_date_well:
-    name: iw_bt_date_well
+
     aliases:
       - injection water breakthrough date of specific well
     annotations:
@@ -7376,7 +7376,7 @@ slots:
     multivalued: false
     range: TimestampValue
   iwf:
-    name: iwf
+
     aliases:
       - injection water fraction
     annotations:
@@ -7401,7 +7401,7 @@ slots:
     multivalued: false
     range: QuantityValue
   last_clean:
-    name: last_clean
+
     aliases:
       - last time swept/mopped/vacuumed
     annotations:
@@ -7424,7 +7424,7 @@ slots:
     multivalued: false
     range: TimestampValue
   lat_lon:
-    name: lat_lon
+
     aliases:
       - geographic location (latitude and longitude)
     annotations:
@@ -7446,7 +7446,7 @@ slots:
     multivalued: false
     range: GeolocationValue
   light_intensity:
-    name: light_intensity
+
     aliases:
       - light intensity
     annotations:
@@ -7472,7 +7472,7 @@ slots:
     multivalued: false
     range: QuantityValue
   light_regm:
-    name: light_regm
+
     aliases:
       - light regimen
     annotations:
@@ -7500,7 +7500,7 @@ slots:
     multivalued: false
     range: QuantityValue
   light_type:
-    name: light_type
+
     aliases:
       - light type
     annotations:
@@ -7526,7 +7526,7 @@ slots:
     multivalued: false
     range: TextValue
   link_addit_analys:
-    name: link_addit_analys
+
     aliases:
       - links to additional analysis
     annotations:
@@ -7548,7 +7548,7 @@ slots:
     multivalued: false
     range: TextValue
   link_class_info:
-    name: link_class_info
+
     aliases:
       - link to classification information
     annotations:
@@ -7570,7 +7570,7 @@ slots:
     multivalued: false
     range: TextValue
   link_climate_info:
-    name: link_climate_info
+
     aliases:
       - link to climate information
     annotations:
@@ -7592,7 +7592,7 @@ slots:
     multivalued: false
     range: TextValue
   lithology:
-    name: lithology
+
     aliases:
       - lithology
     annotations:
@@ -7616,7 +7616,7 @@ slots:
     multivalued: false
     range: TextValue
   local_class:
-    name: local_class
+
     aliases:
       - soil_taxonomic/local classification
     annotations:
@@ -7638,7 +7638,7 @@ slots:
     multivalued: false
     range: TextValue
   local_class_meth:
-    name: local_class_meth
+
     aliases:
       - soil_taxonomic/local classification method
     annotations:
@@ -7660,7 +7660,7 @@ slots:
     multivalued: false
     range: TextValue
   magnesium:
-    name: magnesium
+
     aliases:
       - magnesium
     annotations:
@@ -7687,7 +7687,7 @@ slots:
     multivalued: false
     range: QuantityValue
   max_occup:
-    name: max_occup
+
     aliases:
       - maximum occupancy
     annotations:
@@ -7708,7 +7708,7 @@ slots:
     multivalued: false
     range: QuantityValue
   mean_frict_vel:
-    name: mean_frict_vel
+
     aliases:
       - mean friction velocity
     annotations:
@@ -7734,7 +7734,7 @@ slots:
     multivalued: false
     range: QuantityValue
   mean_peak_frict_vel:
-    name: mean_peak_frict_vel
+
     aliases:
       - mean peak friction velocity
     annotations:
@@ -7760,7 +7760,7 @@ slots:
     multivalued: false
     range: QuantityValue
   mech_struc:
-    name: mech_struc
+
     aliases:
       - mechanical structure
     annotations:
@@ -7783,7 +7783,7 @@ slots:
     multivalued: false
     range: TextValue
   mechanical_damage:
-    name: mechanical_damage
+
     aliases:
       - mechanical damage
     annotations:
@@ -7808,7 +7808,7 @@ slots:
     multivalued: false
     range: TextValue
   methane:
-    name: methane
+
     aliases:
       - methane
     annotations:
@@ -7834,7 +7834,7 @@ slots:
     multivalued: false
     range: QuantityValue
   #  micro_biomass_meth:
-  #    name: micro_biomass_meth
+  #   
   #    aliases:
   #      - microbial biomass method
   #    annotations:
@@ -7856,7 +7856,7 @@ slots:
   #    multivalued: false
   #    range: string
   microbial_biomass:
-    name: microbial_biomass
+
     aliases:
       - microbial biomass
     annotations:
@@ -7882,7 +7882,7 @@ slots:
     multivalued: false
     range: QuantityValue
   #  microbial_biomass_meth:
-  #    name: microbial_biomass_meth
+  #   
   #    aliases:
   #      - microbial biomass method
   #    annotations:
@@ -7904,7 +7904,7 @@ slots:
   #    multivalued: false
   #    range: TextValue
   mineral_nutr_regm:
-    name: mineral_nutr_regm
+
     aliases:
       - mineral nutrient regimen
     annotations:
@@ -7936,7 +7936,7 @@ slots:
     multivalued: false
     range: QuantityValue
   misc_param:
-    name: misc_param
+
     aliases:
       - miscellaneous parameter
     annotations:
@@ -7961,7 +7961,7 @@ slots:
     multivalued: false
     range: QuantityValue
   n_alkanes:
-    name: n_alkanes
+
     aliases:
       - n-alkanes
     annotations:
@@ -7988,7 +7988,7 @@ slots:
     multivalued: false
     range: QuantityValue
   nitrate:
-    name: nitrate
+
     aliases:
       - nitrate
     annotations:
@@ -8014,7 +8014,7 @@ slots:
     multivalued: false
     range: QuantityValue
   nitrite:
-    name: nitrite
+
     aliases:
       - nitrite
     annotations:
@@ -8040,7 +8040,7 @@ slots:
     multivalued: false
     range: QuantityValue
   nitro:
-    name: nitro
+
     aliases:
       - nitrogen
     annotations:
@@ -8066,7 +8066,7 @@ slots:
     multivalued: false
     range: QuantityValue
   non_min_nutr_regm:
-    name: non_min_nutr_regm
+
     aliases:
       - non-mineral nutrient regimen
     annotations:
@@ -8098,7 +8098,7 @@ slots:
     multivalued: true
     range: string
   nucl_acid_amp:
-    name: nucl_acid_amp
+
     aliases:
       - nucleic acid amplification
     annotations:
@@ -8121,7 +8121,7 @@ slots:
     multivalued: false
     range: TextValue
   nucl_acid_ext:
-    name: nucl_acid_ext
+
     aliases:
       - nucleic acid extraction
     annotations:
@@ -8144,7 +8144,7 @@ slots:
     multivalued: false
     range: TextValue
   number_pets:
-    name: number_pets
+
     aliases:
       - number of pets
     annotations:
@@ -8165,7 +8165,7 @@ slots:
     multivalued: false
     range: QuantityValue
   number_plants:
-    name: number_plants
+
     aliases:
       - number of houseplants
     annotations:
@@ -8186,7 +8186,7 @@ slots:
     multivalued: false
     range: QuantityValue
   number_resident:
-    name: number_resident
+
     aliases:
       - number of residents
     annotations:
@@ -8207,7 +8207,7 @@ slots:
     multivalued: false
     range: QuantityValue
   occup_density_samp:
-    name: occup_density_samp
+
     aliases:
       - occupant density at sampling
     annotations:
@@ -8228,7 +8228,7 @@ slots:
     multivalued: false
     range: QuantityValue
   occup_document:
-    name: occup_document
+
     aliases:
       - occupancy documentation
     annotations:
@@ -8251,7 +8251,7 @@ slots:
     multivalued: false
     range: TextValue
   occup_samp:
-    name: occup_samp
+
     aliases:
       - occupancy at sampling
     annotations:
@@ -8274,7 +8274,7 @@ slots:
     multivalued: false
     range: QuantityValue
   org_carb:
-    name: org_carb
+
     aliases:
       - organic carbon
     annotations:
@@ -8300,7 +8300,7 @@ slots:
     multivalued: false
     range: QuantityValue
   org_count_qpcr_info:
-    name: org_count_qpcr_info
+
     aliases:
       - organism count qPCR information
     annotations:
@@ -8332,7 +8332,7 @@ slots:
     multivalued: false
     range: string
   org_matter:
-    name: org_matter
+
     aliases:
       - organic matter
     annotations:
@@ -8358,7 +8358,7 @@ slots:
     multivalued: false
     range: QuantityValue
   org_nitro:
-    name: org_nitro
+
     aliases:
       - organic nitrogen
     annotations:
@@ -8384,7 +8384,7 @@ slots:
     multivalued: false
     range: QuantityValue
   org_particles:
-    name: org_particles
+
     aliases:
       - organic particles
     annotations:
@@ -8410,7 +8410,7 @@ slots:
     multivalued: false
     range: QuantityValue
   organism_count:
-    name: organism_count
+
     aliases:
       - organism count
     annotations:
@@ -8440,7 +8440,7 @@ slots:
     multivalued: false
     range: QuantityValue
   owc_tvdss:
-    name: owc_tvdss
+
     aliases:
       - oil water contact depth
     annotations:
@@ -8464,7 +8464,7 @@ slots:
     multivalued: false
     range: QuantityValue
   oxy_stat_samp:
-    name: oxy_stat_samp
+
     aliases:
       - oxygenation status of sample
     annotations:
@@ -8487,7 +8487,7 @@ slots:
     multivalued: false
     range: TextValue
   oxygen:
-    name: oxygen
+
     aliases:
       - oxygen
     annotations:
@@ -8513,7 +8513,7 @@ slots:
     multivalued: false
     range: QuantityValue
   part_org_carb:
-    name: part_org_carb
+
     aliases:
       - particulate organic carbon
     annotations:
@@ -8539,7 +8539,7 @@ slots:
     multivalued: false
     range: QuantityValue
   part_org_nitro:
-    name: part_org_nitro
+
     aliases:
       - particulate organic nitrogen
     annotations:
@@ -8565,7 +8565,7 @@ slots:
     multivalued: false
     range: QuantityValue
   particle_class:
-    name: particle_class
+
     aliases:
       - particle classification
     annotations:
@@ -8592,7 +8592,7 @@ slots:
     multivalued: false
     range: QuantityValue
   pcr_cond:
-    name: pcr_cond
+
     aliases:
       - pcr conditions
     annotations:
@@ -8616,7 +8616,7 @@ slots:
     multivalued: false
     range: TextValue
   pcr_primers:
-    name: pcr_primers
+
     aliases:
       - pcr primers
     annotations:
@@ -8640,7 +8640,7 @@ slots:
     multivalued: false
     range: TextValue
   permeability:
-    name: permeability
+
     aliases:
       - permeability
     annotations:
@@ -8666,7 +8666,7 @@ slots:
     multivalued: false
     range: QuantityValue
   perturbation:
-    name: perturbation
+
     aliases:
       - perturbation
     annotations:
@@ -8693,7 +8693,7 @@ slots:
     multivalued: false
     range: TextValue
   pesticide_regm:
-    name: pesticide_regm
+
     aliases:
       - pesticide regimen
     annotations:
@@ -8724,7 +8724,7 @@ slots:
     multivalued: false
     range: QuantityValue
   petroleum_hydrocarb:
-    name: petroleum_hydrocarb
+
     aliases:
       - petroleum hydrocarbon
     annotations:
@@ -8750,7 +8750,7 @@ slots:
     multivalued: false
     range: QuantityValue
   ph:
-    name: ph
+
     aliases:
       - pH
     annotations:
@@ -8774,7 +8774,7 @@ slots:
     multivalued: false
     range: QuantityValue
   ph_meth:
-    name: ph_meth
+
     aliases:
       - pH method
     annotations:
@@ -8796,7 +8796,7 @@ slots:
     multivalued: false
     range: TextValue
   ph_regm:
-    name: ph_regm
+
     aliases:
       - pH regimen
     annotations:
@@ -8823,7 +8823,7 @@ slots:
     multivalued: false
     range: TextValue
   phaeopigments:
-    name: phaeopigments
+
     aliases:
       - phaeopigments
     annotations:
@@ -8850,7 +8850,7 @@ slots:
     multivalued: false
     range: QuantityValue
   phosphate:
-    name: phosphate
+
     aliases:
       - phosphate
     annotations:
@@ -8876,7 +8876,7 @@ slots:
     multivalued: false
     range: QuantityValue
   phosplipid_fatt_acid:
-    name: phosplipid_fatt_acid
+
     aliases:
       - phospholipid fatty acid
     annotations:
@@ -8903,7 +8903,7 @@ slots:
     multivalued: false
     range: QuantityValue
   photon_flux:
-    name: photon_flux
+
     aliases:
       - photon flux
     annotations:
@@ -8929,7 +8929,7 @@ slots:
     multivalued: false
     range: QuantityValue
   plant_growth_med:
-    name: plant_growth_med
+
     aliases:
       - plant growth medium
     annotations:
@@ -8956,7 +8956,7 @@ slots:
     multivalued: false
     range: ControlledTermValue
   plant_product:
-    name: plant_product
+
     aliases:
       - plant product
     annotations:
@@ -8980,7 +8980,7 @@ slots:
     multivalued: false
     range: TextValue
   plant_sex:
-    name: plant_sex
+
     aliases:
       - plant sex
     annotations:
@@ -9004,7 +9004,7 @@ slots:
     multivalued: false
     range: TextValue
   plant_struc:
-    name: plant_struc
+
     aliases:
       - plant structure
     annotations:
@@ -9031,7 +9031,7 @@ slots:
     multivalued: false
     range: ControlledIdentifiedTermValue
   pollutants:
-    name: pollutants
+
     aliases:
       - pollutants
     annotations:
@@ -9060,7 +9060,7 @@ slots:
     multivalued: false
     range: QuantityValue
   pool_dna_extracts:
-    name: pool_dna_extracts
+
     aliases:
       - pooling of DNA extracts (if done)
     annotations:
@@ -9085,7 +9085,7 @@ slots:
     multivalued: false
     range: TextValue
   porosity:
-    name: porosity
+
     aliases:
       - porosity
     annotations:
@@ -9111,7 +9111,7 @@ slots:
     multivalued: false
     range: QuantityValue
   potassium:
-    name: potassium
+
     aliases:
       - potassium
     annotations:
@@ -9137,7 +9137,7 @@ slots:
     multivalued: false
     range: QuantityValue
   pour_point:
-    name: pour_point
+
     aliases:
       - pour point
     annotations:
@@ -9164,7 +9164,7 @@ slots:
     multivalued: false
     range: QuantityValue
   pre_treatment:
-    name: pre_treatment
+
     aliases:
       - pre-treatment
     annotations:
@@ -9187,7 +9187,7 @@ slots:
     multivalued: false
     range: TextValue
   pres_animal_insect:
-    name: pres_animal_insect
+
     aliases:
       - presence of pets, animals, or insects
     annotations:
@@ -9212,7 +9212,7 @@ slots:
     range: string
     pattern: ^(cat|dog|rodent|snake|other);\d+$
   pressure:
-    name: pressure
+
     aliases:
       - pressure
     annotations:
@@ -9238,7 +9238,7 @@ slots:
     multivalued: false
     range: QuantityValue
   #  prev_land_use_meth:
-  #    name: prev_land_use_meth
+  #   
   #    aliases:
   #      - history/previous land use method
   #    annotations:
@@ -9260,7 +9260,7 @@ slots:
   #    multivalued: false
   #    range: string
   previous_land_use:
-    name: previous_land_use
+
     aliases:
       - history/previous land use
     annotations:
@@ -9282,7 +9282,7 @@ slots:
     multivalued: false
     range: TextValue
   #  previous_land_use_meth:
-  #    name: previous_land_use_meth
+  #   
   #    aliases:
   #      - history/previous land use method
   #    annotations:
@@ -9304,7 +9304,7 @@ slots:
   #    multivalued: false
   #    range: TextValue
   primary_prod:
-    name: primary_prod
+
     aliases:
       - primary production
     annotations:
@@ -9331,7 +9331,7 @@ slots:
     multivalued: false
     range: QuantityValue
   primary_treatment:
-    name: primary_treatment
+
     aliases:
       - primary treatment
     annotations:
@@ -9355,7 +9355,7 @@ slots:
     multivalued: false
     range: TextValue
   prod_rate:
-    name: prod_rate
+
     aliases:
       - production rate
     annotations:
@@ -9379,7 +9379,7 @@ slots:
     multivalued: false
     range: QuantityValue
   prod_start_date:
-    name: prod_start_date
+
     aliases:
       - production start date
     annotations:
@@ -9402,7 +9402,7 @@ slots:
     multivalued: false
     range: TimestampValue
   profile_position:
-    name: profile_position
+
     aliases:
       - profile position
     annotations:
@@ -9426,7 +9426,7 @@ slots:
     multivalued: false
     range: TextValue
   quad_pos:
-    name: quad_pos
+
     aliases:
       - quadrant position
     annotations:
@@ -9449,7 +9449,7 @@ slots:
     multivalued: false
     range: TextValue
   radiation_regm:
-    name: radiation_regm
+
     aliases:
       - radiation regimen
     annotations:
@@ -9480,7 +9480,7 @@ slots:
     multivalued: false
     range: QuantityValue
   rainfall_regm:
-    name: rainfall_regm
+
     aliases:
       - rainfall regimen
     annotations:
@@ -9510,7 +9510,7 @@ slots:
     multivalued: false
     range: QuantityValue
   reactor_type:
-    name: reactor_type
+
     aliases:
       - reactor type
     annotations:
@@ -9534,7 +9534,7 @@ slots:
     multivalued: false
     range: TextValue
   redox_potential:
-    name: redox_potential
+
     aliases:
       - redox potential
     annotations:
@@ -9561,7 +9561,7 @@ slots:
     multivalued: false
     range: QuantityValue
   rel_air_humidity:
-    name: rel_air_humidity
+
     aliases:
       - relative air humidity
     annotations:
@@ -9588,7 +9588,7 @@ slots:
     multivalued: false
     range: QuantityValue
   rel_humidity_out:
-    name: rel_humidity_out
+
     aliases:
       - outside relative humidity
     annotations:
@@ -9614,7 +9614,7 @@ slots:
     multivalued: false
     range: QuantityValue
   rel_samp_loc:
-    name: rel_samp_loc
+
     aliases:
       - relative sampling location
     annotations:
@@ -9637,7 +9637,7 @@ slots:
     multivalued: false
     range: TextValue
   rel_to_oxygen:
-    name: rel_to_oxygen
+
     aliases:
       - relationship to oxygen
     annotations:
@@ -9658,7 +9658,7 @@ slots:
     multivalued: false
     range: TextValue
   reservoir:
-    name: reservoir
+
     aliases:
       - reservoir name
     annotations:
@@ -9680,7 +9680,7 @@ slots:
     multivalued: false
     range: TextValue
   resins_pc:
-    name: resins_pc
+
     aliases:
       - resins wt%
     annotations:
@@ -9709,7 +9709,7 @@ slots:
     multivalued: false
     range: QuantityValue
   room_air_exch_rate:
-    name: room_air_exch_rate
+
     aliases:
       - room air exchange rate
     annotations:
@@ -9733,7 +9733,7 @@ slots:
     multivalued: false
     range: QuantityValue
   room_architec_elem:
-    name: room_architec_elem
+
     aliases:
       - room architectural elements
     annotations:
@@ -9756,7 +9756,7 @@ slots:
     multivalued: false
     range: string
   room_condt:
-    name: room_condt
+
     aliases:
       - room condition
     annotations:
@@ -9779,7 +9779,7 @@ slots:
     multivalued: false
     range: TextValue
   room_connected:
-    name: room_connected
+
     aliases:
       - rooms connected by a doorway
     annotations:
@@ -9802,7 +9802,7 @@ slots:
     multivalued: false
     range: TextValue
   room_count:
-    name: room_count
+
     aliases:
       - room count
     annotations:
@@ -9824,7 +9824,7 @@ slots:
     multivalued: false
     range: TextValue
   room_dim:
-    name: room_dim
+
     aliases:
       - room dimensions
     annotations:
@@ -9849,7 +9849,7 @@ slots:
     multivalued: false
     range: QuantityValue
   room_door_dist:
-    name: room_door_dist
+
     aliases:
       - room door distance
     annotations:
@@ -9875,7 +9875,7 @@ slots:
     multivalued: false
     range: QuantityValue
   room_door_share:
-    name: room_door_share
+
     aliases:
       - rooms that share a door with sampling room
     annotations:
@@ -9898,7 +9898,7 @@ slots:
     multivalued: false
     range: TextValue
   room_hallway:
-    name: room_hallway
+
     aliases:
       - rooms that are on the same hallway
     annotations:
@@ -9921,7 +9921,7 @@ slots:
     multivalued: false
     range: TextValue
   room_loc:
-    name: room_loc
+
     aliases:
       - room location in building
     annotations:
@@ -9944,7 +9944,7 @@ slots:
     multivalued: false
     range: TextValue
   room_moist_dam_hist:
-    name: room_moist_dam_hist
+
     aliases:
       - room moisture damage or mold history
     annotations:
@@ -9966,7 +9966,7 @@ slots:
     multivalued: false
     range: integer
   room_net_area:
-    name: room_net_area
+
     aliases:
       - room net area
     annotations:
@@ -9991,7 +9991,7 @@ slots:
     multivalued: false
     range: QuantityValue
   room_occup:
-    name: room_occup
+
     aliases:
       - room occupancy
     annotations:
@@ -10012,7 +10012,7 @@ slots:
     multivalued: false
     range: QuantityValue
   room_samp_pos:
-    name: room_samp_pos
+
     aliases:
       - room sampling position
     annotations:
@@ -10036,7 +10036,7 @@ slots:
     multivalued: false
     range: TextValue
   room_type:
-    name: room_type
+
     aliases:
       - room type
     annotations:
@@ -10060,7 +10060,7 @@ slots:
     multivalued: false
     range: TextValue
   room_vol:
-    name: room_vol
+
     aliases:
       - room volume
     annotations:
@@ -10085,7 +10085,7 @@ slots:
     multivalued: false
     range: QuantityValue
   room_wall_share:
-    name: room_wall_share
+
     aliases:
       - rooms that share a wall with sampling room
     annotations:
@@ -10108,7 +10108,7 @@ slots:
     multivalued: false
     range: TextValue
   room_window_count:
-    name: room_window_count
+
     aliases:
       - room window count
     annotations:
@@ -10129,7 +10129,7 @@ slots:
     multivalued: false
     range: TextValue
   root_cond:
-    name: root_cond
+
     aliases:
       - rooting conditions
     annotations:
@@ -10154,7 +10154,7 @@ slots:
     multivalued: false
     range: TextValue
   root_med_carbon:
-    name: root_med_carbon
+
     aliases:
       - rooting medium carbon
     annotations:
@@ -10181,7 +10181,7 @@ slots:
     multivalued: false
     range: QuantityValue
   root_med_macronutr:
-    name: root_med_macronutr
+
     aliases:
       - rooting medium macronutrients
     annotations:
@@ -10209,7 +10209,7 @@ slots:
     multivalued: false
     range: QuantityValue
   root_med_micronutr:
-    name: root_med_micronutr
+
     aliases:
       - rooting medium micronutrients
     annotations:
@@ -10237,7 +10237,7 @@ slots:
     multivalued: false
     range: QuantityValue
   root_med_ph:
-    name: root_med_ph
+
     aliases:
       - rooting medium pH
     annotations:
@@ -10260,7 +10260,7 @@ slots:
     multivalued: false
     range: QuantityValue
   root_med_regl:
-    name: root_med_regl
+
     aliases:
       - rooting medium regulators
     annotations:
@@ -10288,7 +10288,7 @@ slots:
     multivalued: false
     range: QuantityValue
   root_med_solid:
-    name: root_med_solid
+
     aliases:
       - rooting medium solidifier
     annotations:
@@ -10313,7 +10313,7 @@ slots:
     multivalued: false
     range: TextValue
   root_med_suppl:
-    name: root_med_suppl
+
     aliases:
       - rooting medium organic supplements
     annotations:
@@ -10342,7 +10342,7 @@ slots:
     multivalued: false
     range: QuantityValue
   salinity:
-    name: salinity
+
     aliases:
       - salinity
     annotations:
@@ -10373,7 +10373,7 @@ slots:
     multivalued: false
     range: QuantityValue
   salinity_meth:
-    name: salinity_meth
+
     aliases:
       - salinity method
     annotations:
@@ -10395,7 +10395,7 @@ slots:
     multivalued: false
     range: TextValue
   salt_regm:
-    name: salt_regm
+
     aliases:
       - salt regimen
     annotations:
@@ -10426,7 +10426,7 @@ slots:
     multivalued: false
     range: QuantityValue
   samp_capt_status:
-    name: samp_capt_status
+
     aliases:
       - sample capture status
     annotations:
@@ -10449,7 +10449,7 @@ slots:
     multivalued: false
     range: TextValue
   #  samp_collec_device:
-  #    name: samp_collec_device
+  #   
   #    aliases:
   #      - sample collection device
   #    annotations:
@@ -10472,7 +10472,7 @@ slots:
   #    multivalued: false
   #    range: string
   samp_collec_method:
-    name: samp_collec_method
+
     aliases:
       - sample collection method
     annotations:
@@ -10493,7 +10493,7 @@ slots:
     multivalued: false
     range: string
   #  samp_collect_device:
-  #    name: samp_collect_device
+  #   
   #    aliases:
   #      - sample collection device
   #    annotations:
@@ -10519,7 +10519,7 @@ slots:
   #    multivalued: false
   #    range: TextValue
   samp_collect_point:
-    name: samp_collect_point
+
     aliases:
       - sample collection point
     annotations:
@@ -10544,7 +10544,7 @@ slots:
     multivalued: false
     range: samp_collect_point_enum
   samp_dis_stage:
-    name: samp_dis_stage
+
     aliases:
       - sample disease stage
     annotations:
@@ -10568,7 +10568,7 @@ slots:
     multivalued: false
     range: TextValue
   samp_floor:
-    name: samp_floor
+
     aliases:
       - sampling floor
     annotations:
@@ -10591,7 +10591,7 @@ slots:
     multivalued: false
     range: TextValue
   samp_loc_corr_rate:
-    name: samp_loc_corr_rate
+
     aliases:
       - corrosion rate at sample location
     annotations:
@@ -10622,7 +10622,7 @@ slots:
     multivalued: false
     range: QuantityValue
   samp_mat_process:
-    name: samp_mat_process
+
     aliases:
       - sample material processing
     annotations:
@@ -10645,7 +10645,7 @@ slots:
     multivalued: false
     range: ControlledTermValue
   samp_md:
-    name: samp_md
+
     aliases:
       - sample measured depth
     annotations:
@@ -10676,7 +10676,7 @@ slots:
     multivalued: false
     range: QuantityValue
   samp_name:
-    name: samp_name
+
     aliases:
       - sample name
     annotations:
@@ -10703,7 +10703,7 @@ slots:
     multivalued: false
     range: string
   samp_preserv:
-    name: samp_preserv
+
     aliases:
       - preservative added to sample
     annotations:
@@ -10729,7 +10729,7 @@ slots:
     multivalued: false
     range: QuantityValue
   samp_room_id:
-    name: samp_room_id
+
     aliases:
       - sampling room ID or name
     annotations:
@@ -10751,7 +10751,7 @@ slots:
     multivalued: false
     range: TextValue
   samp_size:
-    name: samp_size
+
     aliases:
       - amount or size of sample collected
     annotations:
@@ -10775,7 +10775,7 @@ slots:
     multivalued: false
     range: QuantityValue
   samp_sort_meth:
-    name: samp_sort_meth
+
     aliases:
       - sample size sorting method
     annotations:
@@ -10800,7 +10800,7 @@ slots:
     multivalued: false
     range: TextValue
   samp_store_dur:
-    name: samp_store_dur
+
     aliases:
       - sample storage duration
     annotations:
@@ -10824,7 +10824,7 @@ slots:
     multivalued: false
     range: TextValue
   samp_store_loc:
-    name: samp_store_loc
+
     aliases:
       - sample storage location
     annotations:
@@ -10848,7 +10848,7 @@ slots:
     multivalued: false
     range: TextValue
   samp_store_temp:
-    name: samp_store_temp
+
     aliases:
       - sample storage temperature
     annotations:
@@ -10874,7 +10874,7 @@ slots:
     multivalued: false
     range: QuantityValue
   samp_subtype:
-    name: samp_subtype
+
     aliases:
       - sample subtype
     annotations:
@@ -10917,7 +10917,7 @@ slots:
       expected_value: Taxonomy ID
     slot_uri: mixs:0001320
   samp_time_out:
-    name: samp_time_out
+
     aliases:
       - sampling time outside
     annotations:
@@ -10941,7 +10941,7 @@ slots:
     multivalued: false
     range: TextValue
   samp_transport_cond:
-    name: samp_transport_cond
+
     aliases:
       - sample transport conditions
     annotations:
@@ -10969,7 +10969,7 @@ slots:
     multivalued: false
     range: QuantityValue
   samp_tvdss:
-    name: samp_tvdss
+
     aliases:
       - sample true vertical depth subsea
     annotations:
@@ -10996,7 +10996,7 @@ slots:
     multivalued: false
     range: QuantityValue
   samp_type:
-    name: samp_type
+
     aliases:
       - sample type
     annotations:
@@ -11025,7 +11025,7 @@ slots:
     multivalued: false
     range: TextValue
   samp_vol_we_dna_ext:
-    name: samp_vol_we_dna_ext
+
     aliases:
       - sample volume or weight for DNA extraction
     annotations:
@@ -11050,7 +11050,7 @@ slots:
     multivalued: false
     range: QuantityValue
   samp_weather:
-    name: samp_weather
+
     aliases:
       - sampling day weather
     annotations:
@@ -11073,7 +11073,7 @@ slots:
     multivalued: false
     range: TextValue
   samp_well_name:
-    name: samp_well_name
+
     aliases:
       - sample well name
     annotations:
@@ -11095,7 +11095,7 @@ slots:
     multivalued: false
     range: TextValue
   saturates_pc:
-    name: saturates_pc
+
     aliases:
       - saturates wt%
     annotations:
@@ -11124,7 +11124,7 @@ slots:
     multivalued: false
     range: QuantityValue
   season:
-    name: season
+
     aliases:
       - season
     annotations:
@@ -11150,7 +11150,7 @@ slots:
     multivalued: false
     range: TextValue
   season_environment:
-    name: season_environment
+
     aliases:
       - seasonal environment
     annotations:
@@ -11177,7 +11177,7 @@ slots:
     multivalued: false
     range: TextValue
   season_precpt:
-    name: season_precpt
+
     aliases:
       - mean seasonal precipitation
     annotations:
@@ -11202,7 +11202,7 @@ slots:
     multivalued: false
     range: QuantityValue
   season_temp:
-    name: season_temp
+
     aliases:
       - mean seasonal temperature
     annotations:
@@ -11228,7 +11228,7 @@ slots:
     multivalued: false
     range: QuantityValue
   season_use:
-    name: season_use
+
     aliases:
       - seasonal use
     annotations:
@@ -11251,7 +11251,7 @@ slots:
     multivalued: false
     range: TextValue
   secondary_treatment:
-    name: secondary_treatment
+
     aliases:
       - secondary treatment
     annotations:
@@ -11274,7 +11274,7 @@ slots:
     multivalued: false
     range: TextValue
   sediment_type:
-    name: sediment_type
+
     aliases:
       - sediment type
     annotations:
@@ -11297,7 +11297,7 @@ slots:
     multivalued: false
     range: TextValue
   seq_meth:
-    name: seq_meth
+
     aliases:
       - sequencing method
     annotations:
@@ -11319,7 +11319,7 @@ slots:
     multivalued: false
     range: TextValue
   seq_quality_check:
-    name: seq_quality_check
+
     aliases:
       - sequence quality check
     annotations:
@@ -11343,7 +11343,7 @@ slots:
     multivalued: false
     range: TextValue
   sewage_type:
-    name: sewage_type
+
     aliases:
       - sewage type
     annotations:
@@ -11365,7 +11365,7 @@ slots:
     multivalued: false
     range: TextValue
   shad_dev_water_mold:
-    name: shad_dev_water_mold
+
     aliases:
       - shading device signs of water/mold
     annotations:
@@ -11389,7 +11389,7 @@ slots:
     multivalued: false
     range: string
   shading_device_cond:
-    name: shading_device_cond
+
     aliases:
       - shading device condition
     annotations:
@@ -11412,7 +11412,7 @@ slots:
     multivalued: false
     range: TextValue
   shading_device_loc:
-    name: shading_device_loc
+
     aliases:
       - shading device location
     annotations:
@@ -11436,7 +11436,7 @@ slots:
     multivalued: false
     range: TextValue
   shading_device_mat:
-    name: shading_device_mat
+
     aliases:
       - shading device material
     annotations:
@@ -11458,7 +11458,7 @@ slots:
     multivalued: false
     range: TextValue
   shading_device_type:
-    name: shading_device_type
+
     aliases:
       - shading device type
     annotations:
@@ -11481,7 +11481,7 @@ slots:
     multivalued: false
     range: TextValue
   sieving:
-    name: sieving
+
     aliases:
       - composite design/sieving
     annotations:
@@ -11504,7 +11504,7 @@ slots:
     multivalued: false
     range: QuantityValue
   silicate:
-    name: silicate
+
     aliases:
       - silicate
     annotations:
@@ -11530,7 +11530,7 @@ slots:
     multivalued: false
     range: QuantityValue
   size_frac:
-    name: size_frac
+
     aliases:
       - size fraction selected
     annotations:
@@ -11551,7 +11551,7 @@ slots:
     multivalued: false
     range: QuantityValue
   size_frac_low:
-    name: size_frac_low
+
     aliases:
       - size-fraction lower threshold
     annotations:
@@ -11578,7 +11578,7 @@ slots:
     multivalued: false
     range: QuantityValue
   size_frac_up:
-    name: size_frac_up
+
     aliases:
       - size-fraction upper threshold
     annotations:
@@ -11605,7 +11605,7 @@ slots:
     multivalued: false
     range: QuantityValue
   slope_aspect:
-    name: slope_aspect
+
     aliases:
       - slope aspect
     annotations:
@@ -11632,7 +11632,7 @@ slots:
     multivalued: false
     range: QuantityValue
   slope_gradient:
-    name: slope_gradient
+
     aliases:
       - slope gradient
     annotations:
@@ -11658,7 +11658,7 @@ slots:
     multivalued: false
     range: QuantityValue
   sludge_retent_time:
-    name: sludge_retent_time
+
     aliases:
       - sludge retention time
     annotations:
@@ -11682,7 +11682,7 @@ slots:
     multivalued: false
     range: QuantityValue
   sodium:
-    name: sodium
+
     aliases:
       - sodium
     annotations:
@@ -11708,7 +11708,7 @@ slots:
     multivalued: false
     range: QuantityValue
   #  soil_horizon:
-  #    name: soil_horizon
+  #   
   #    aliases:
   #      - soil horizon
   #    annotations:
@@ -11733,7 +11733,7 @@ slots:
   #    multivalued: false
   #    range: soil_horizon_enum
   #  soil_text_measure:
-  #    name: soil_text_measure
+  #   
   #    aliases:
   #      - soil texture measurement
   #    annotations:
@@ -11757,7 +11757,7 @@ slots:
   #    multivalued: false
   #    range: QuantityValue
   #  soil_texture_meth:
-  #    name: soil_texture_meth
+  #   
   #    aliases:
   #      - soil texture method
   #    annotations:
@@ -11779,7 +11779,7 @@ slots:
   #    multivalued: false
   #    range: string
   soil_type:
-    name: soil_type
+
     aliases:
       - soil type
     annotations:
@@ -11805,7 +11805,7 @@ slots:
     multivalued: false
     range: TextValue
   soil_type_meth:
-    name: soil_type_meth
+
     aliases:
       - soil type method
     annotations:
@@ -11828,7 +11828,7 @@ slots:
     multivalued: false
     range: TextValue
   solar_irradiance:
-    name: solar_irradiance
+
     aliases:
       - solar irradiance
     annotations:
@@ -11856,7 +11856,7 @@ slots:
     multivalued: false
     range: QuantityValue
   soluble_inorg_mat:
-    name: soluble_inorg_mat
+
     aliases:
       - soluble inorganic material
     annotations:
@@ -11882,7 +11882,7 @@ slots:
     multivalued: false
     range: QuantityValue
   soluble_org_mat:
-    name: soluble_org_mat
+
     aliases:
       - soluble organic material
     annotations:
@@ -11908,7 +11908,7 @@ slots:
     multivalued: false
     range: QuantityValue
   soluble_react_phosp:
-    name: soluble_react_phosp
+
     aliases:
       - soluble reactive phosphorus
     annotations:
@@ -11934,7 +11934,7 @@ slots:
     multivalued: false
     range: QuantityValue
   source_mat_id:
-    name: source_mat_id
+
     aliases:
       - source material identifiers
     annotations:
@@ -11967,7 +11967,7 @@ slots:
     multivalued: false
     range: TextValue
   space_typ_state:
-    name: space_typ_state
+
     aliases:
       - space typical state
     annotations:
@@ -11991,7 +11991,7 @@ slots:
     multivalued: false
     range: TextValue
   specific:
-    name: specific
+
     aliases:
       - specifications
     annotations:
@@ -12015,7 +12015,7 @@ slots:
     multivalued: false
     range: TextValue
   specific_humidity:
-    name: specific_humidity
+
     aliases:
       - specific humidity
     annotations:
@@ -12043,7 +12043,7 @@ slots:
     multivalued: false
     range: QuantityValue
   sr_dep_env:
-    name: sr_dep_env
+
     aliases:
       - source rock depositional environment
     annotations:
@@ -12067,7 +12067,7 @@ slots:
     multivalued: false
     range: TextValue
   sr_geol_age:
-    name: sr_geol_age
+
     aliases:
       - source rock geological age
     annotations:
@@ -12091,7 +12091,7 @@ slots:
     multivalued: false
     range: TextValue
   sr_kerog_type:
-    name: sr_kerog_type
+
     aliases:
       - source rock kerogen type
     annotations:
@@ -12118,7 +12118,7 @@ slots:
     multivalued: false
     range: TextValue
   sr_lithology:
-    name: sr_lithology
+
     aliases:
       - source rock lithology
     annotations:
@@ -12142,7 +12142,7 @@ slots:
     multivalued: false
     range: TextValue
   standing_water_regm:
-    name: standing_water_regm
+
     aliases:
       - standing water regimen
     annotations:
@@ -12169,7 +12169,7 @@ slots:
     multivalued: false
     range: TextValue
   store_cond:
-    name: store_cond
+
     aliases:
       - storage conditions
     annotations:
@@ -12194,7 +12194,7 @@ slots:
     multivalued: false
     range: TextValue
   substructure_type:
-    name: substructure_type
+
     aliases:
       - substructure type
     annotations:
@@ -12218,7 +12218,7 @@ slots:
     multivalued: false
     range: TextValue
   sulfate:
-    name: sulfate
+
     aliases:
       - sulfate
     annotations:
@@ -12244,7 +12244,7 @@ slots:
     multivalued: false
     range: QuantityValue
   sulfate_fw:
-    name: sulfate_fw
+
     aliases:
       - sulfate in formation water
     annotations:
@@ -12268,7 +12268,7 @@ slots:
     multivalued: false
     range: QuantityValue
   sulfide:
-    name: sulfide
+
     aliases:
       - sulfide
     annotations:
@@ -12294,7 +12294,7 @@ slots:
     multivalued: false
     range: QuantityValue
   surf_air_cont:
-    name: surf_air_cont
+
     aliases:
       - surface-air contaminant
     annotations:
@@ -12317,7 +12317,7 @@ slots:
     multivalued: false
     range: TextValue
   surf_humidity:
-    name: surf_humidity
+
     aliases:
       - surface humidity
     annotations:
@@ -12343,7 +12343,7 @@ slots:
     multivalued: false
     range: QuantityValue
   surf_material:
-    name: surf_material
+
     aliases:
       - surface material
     annotations:
@@ -12366,7 +12366,7 @@ slots:
     multivalued: false
     range: TextValue
   surf_moisture:
-    name: surf_moisture
+
     aliases:
       - surface moisture
     annotations:
@@ -12392,7 +12392,7 @@ slots:
     multivalued: false
     range: QuantityValue
   surf_moisture_ph:
-    name: surf_moisture_ph
+
     aliases:
       - surface moisture pH
     annotations:
@@ -12415,7 +12415,7 @@ slots:
     multivalued: false
     range: QuantityValue
   surf_temp:
-    name: surf_temp
+
     aliases:
       - surface temperature
     annotations:
@@ -12441,7 +12441,7 @@ slots:
     multivalued: false
     range: QuantityValue
   suspend_part_matter:
-    name: suspend_part_matter
+
     aliases:
       - suspended particulate matter
     annotations:
@@ -12467,7 +12467,7 @@ slots:
     multivalued: false
     range: QuantityValue
   suspend_solids:
-    name: suspend_solids
+
     aliases:
       - suspended solids
     annotations:
@@ -12494,7 +12494,7 @@ slots:
     multivalued: false
     range: QuantityValue
   tan:
-    name: tan
+
     aliases:
       - total acid number
     annotations:
@@ -12521,7 +12521,7 @@ slots:
     multivalued: false
     range: QuantityValue
   target_gene:
-    name: target_gene
+
     aliases:
       - target gene
     annotations:
@@ -12542,7 +12542,7 @@ slots:
     multivalued: false
     range: TextValue
   target_subfragment:
-    name: target_subfragment
+
     aliases:
       - target subfragment
     annotations:
@@ -12564,7 +12564,7 @@ slots:
     multivalued: false
     range: TextValue
   temp:
-    name: temp
+
     aliases:
       - temperature
     annotations:
@@ -12587,7 +12587,7 @@ slots:
     multivalued: false
     range: QuantityValue
   temp_out:
-    name: temp_out
+
     aliases:
       - temperature outside house
     annotations:
@@ -12613,7 +12613,7 @@ slots:
     multivalued: false
     range: QuantityValue
   tertiary_treatment:
-    name: tertiary_treatment
+
     aliases:
       - tertiary treatment
     annotations:
@@ -12636,7 +12636,7 @@ slots:
     multivalued: false
     range: TextValue
   #  texture:
-  #    name: texture
+  #   
   #    aliases:
   #      - texture
   #    annotations:
@@ -12660,7 +12660,7 @@ slots:
   #    multivalued: false
   #    range: QuantityValue
   #  texture_meth:
-  #    name: texture_meth
+  #   
   #    aliases:
   #      - texture method
   #    annotations:
@@ -12682,7 +12682,7 @@ slots:
   #    multivalued: false
   #    range: TextValue
   tidal_stage:
-    name: tidal_stage
+
     aliases:
       - tidal stage
     annotations:
@@ -12705,7 +12705,7 @@ slots:
     multivalued: false
     range: TextValue
   tillage:
-    name: tillage
+
     aliases:
       - history/tillage
     annotations:
@@ -12728,7 +12728,7 @@ slots:
     multivalued: false
     range: TextValue
   tiss_cult_growth_med:
-    name: tiss_cult_growth_med
+
     aliases:
       - tissue culture growth media
     annotations:
@@ -12752,7 +12752,7 @@ slots:
     multivalued: false
     range: TextValue
   toluene:
-    name: toluene
+
     aliases:
       - toluene
     annotations:
@@ -12776,7 +12776,7 @@ slots:
     multivalued: false
     range: QuantityValue
   tot_carb:
-    name: tot_carb
+
     aliases:
       - total carbon
     annotations:
@@ -12800,7 +12800,7 @@ slots:
     multivalued: false
     range: QuantityValue
   tot_depth_water_col:
-    name: tot_depth_water_col
+
     aliases:
       - total depth of water column
     annotations:
@@ -12826,7 +12826,7 @@ slots:
     multivalued: false
     range: QuantityValue
   tot_diss_nitro:
-    name: tot_diss_nitro
+
     aliases:
       - total dissolved nitrogen
     annotations:
@@ -12853,7 +12853,7 @@ slots:
     multivalued: false
     range: QuantityValue
   tot_inorg_nitro:
-    name: tot_inorg_nitro
+
     aliases:
       - total inorganic nitrogen
     annotations:
@@ -12879,7 +12879,7 @@ slots:
     multivalued: false
     range: QuantityValue
   tot_iron:
-    name: tot_iron
+
     aliases:
       - total iron
     annotations:
@@ -12903,7 +12903,7 @@ slots:
     multivalued: false
     range: QuantityValue
   tot_nitro:
-    name: tot_nitro
+
     aliases:
       - total nitrogen concentration
     annotations:
@@ -12931,7 +12931,7 @@ slots:
     multivalued: false
     range: QuantityValue
   tot_nitro_cont_meth:
-    name: tot_nitro_cont_meth
+
     aliases:
       - total nitrogen content method
     annotations:
@@ -12956,7 +12956,7 @@ slots:
     multivalued: false
     range: string
   tot_nitro_content:
-    name: tot_nitro_content
+
     aliases:
       - total nitrogen content
     annotations:
@@ -12980,7 +12980,7 @@ slots:
     multivalued: false
     range: QuantityValue
   tot_org_c_meth:
-    name: tot_org_c_meth
+
     aliases:
       - total organic carbon method
     annotations:
@@ -13002,7 +13002,7 @@ slots:
     multivalued: false
     range: TextValue
   tot_org_carb:
-    name: tot_org_carb
+
     aliases:
       - total organic carbon
     annotations:
@@ -13027,7 +13027,7 @@ slots:
     multivalued: false
     range: QuantityValue
   tot_part_carb:
-    name: tot_part_carb
+
     aliases:
       - total particulate carbon
     annotations:
@@ -13053,7 +13053,7 @@ slots:
     multivalued: false
     range: QuantityValue
   tot_phosp:
-    name: tot_phosp
+
     aliases:
       - total phosphorus
     annotations:
@@ -13080,7 +13080,7 @@ slots:
     multivalued: false
     range: QuantityValue
   tot_phosphate:
-    name: tot_phosphate
+
     aliases:
       - total phosphate
     annotations:
@@ -13104,7 +13104,7 @@ slots:
     multivalued: false
     range: QuantityValue
   tot_sulfur:
-    name: tot_sulfur
+
     aliases:
       - total sulfur
     annotations:
@@ -13128,7 +13128,7 @@ slots:
     multivalued: false
     range: QuantityValue
   train_line:
-    name: train_line
+
     aliases:
       - train line
     annotations:
@@ -13151,7 +13151,7 @@ slots:
     multivalued: false
     range: TextValue
   train_stat_loc:
-    name: train_stat_loc
+
     aliases:
       - train station collection location
     annotations:
@@ -13174,7 +13174,7 @@ slots:
     multivalued: false
     range: TextValue
   train_stop_loc:
-    name: train_stop_loc
+
     aliases:
       - train stop collection location
     annotations:
@@ -13197,7 +13197,7 @@ slots:
     multivalued: false
     range: TextValue
   turbidity:
-    name: turbidity
+
     aliases:
       - turbidity
     annotations:
@@ -13224,7 +13224,7 @@ slots:
     multivalued: false
     range: QuantityValue
   tvdss_of_hcr_press:
-    name: tvdss_of_hcr_press
+
     aliases:
       - depth (TVDSS) of hydrocarbon resource pressure
     annotations:
@@ -13249,7 +13249,7 @@ slots:
     multivalued: false
     range: QuantityValue
   tvdss_of_hcr_temp:
-    name: tvdss_of_hcr_temp
+
     aliases:
       - depth (TVDSS) of hydrocarbon resource temperature
     annotations:
@@ -13274,7 +13274,7 @@ slots:
     multivalued: false
     range: QuantityValue
   typ_occup_density:
-    name: typ_occup_density
+
     aliases:
       - typical occupant density
     annotations:
@@ -13297,7 +13297,7 @@ slots:
     multivalued: false
     range: QuantityValue
   ventilation_rate:
-    name: ventilation_rate
+
     aliases:
       - ventilation rate
     annotations:
@@ -13323,7 +13323,7 @@ slots:
     multivalued: false
     range: QuantityValue
   ventilation_type:
-    name: ventilation_type
+
     aliases:
       - ventilation type
     annotations:
@@ -13347,7 +13347,7 @@ slots:
     multivalued: false
     range: TextValue
   vfa:
-    name: vfa
+
     aliases:
       - volatile fatty acids
     annotations:
@@ -13371,7 +13371,7 @@ slots:
     multivalued: false
     range: QuantityValue
   vfa_fw:
-    name: vfa_fw
+
     aliases:
       - vfa in formation water
     annotations:
@@ -13395,7 +13395,7 @@ slots:
     multivalued: false
     range: QuantityValue
   vis_media:
-    name: vis_media
+
     aliases:
       - visual media
     annotations:
@@ -13418,7 +13418,7 @@ slots:
     multivalued: false
     range: TextValue
   viscosity:
-    name: viscosity
+
     aliases:
       - viscosity
     annotations:
@@ -13444,7 +13444,7 @@ slots:
     multivalued: false
     range: QuantityValue
   volatile_org_comp:
-    name: volatile_org_comp
+
     aliases:
       - volatile organic compounds
     annotations:
@@ -13473,7 +13473,7 @@ slots:
     multivalued: false
     range: QuantityValue
   wall_area:
-    name: wall_area
+
     aliases:
       - wall area
     annotations:
@@ -13497,7 +13497,7 @@ slots:
     multivalued: false
     range: QuantityValue
   wall_const_type:
-    name: wall_const_type
+
     aliases:
       - wall construction type
     annotations:
@@ -13521,7 +13521,7 @@ slots:
     multivalued: false
     range: TextValue
   wall_finish_mat:
-    name: wall_finish_mat
+
     aliases:
       - wall finish material
     annotations:
@@ -13544,7 +13544,7 @@ slots:
     multivalued: false
     range: TextValue
   wall_height:
-    name: wall_height
+
     aliases:
       - wall height
     annotations:
@@ -13568,7 +13568,7 @@ slots:
     multivalued: false
     range: QuantityValue
   wall_loc:
-    name: wall_loc
+
     aliases:
       - wall location
     annotations:
@@ -13591,7 +13591,7 @@ slots:
     multivalued: false
     range: TextValue
   wall_surf_treatment:
-    name: wall_surf_treatment
+
     aliases:
       - wall surface treatment
     annotations:
@@ -13614,7 +13614,7 @@ slots:
     multivalued: false
     range: TextValue
   wall_texture:
-    name: wall_texture
+
     aliases:
       - wall texture
     annotations:
@@ -13637,7 +13637,7 @@ slots:
     multivalued: false
     range: TextValue
   wall_thermal_mass:
-    name: wall_thermal_mass
+
     aliases:
       - wall thermal mass
     annotations:
@@ -13663,7 +13663,7 @@ slots:
     multivalued: false
     range: QuantityValue
   wall_water_mold:
-    name: wall_water_mold
+
     aliases:
       - wall signs of water/mold
     annotations:
@@ -13687,7 +13687,7 @@ slots:
     multivalued: false
     range: TextValue
   wastewater_type:
-    name: wastewater_type
+
     aliases:
       - wastewater type
     annotations:
@@ -13710,7 +13710,7 @@ slots:
     multivalued: false
     range: TextValue
   water_cont_soil_meth:
-    name: water_cont_soil_meth
+
     aliases:
       - water content method
     annotations:
@@ -13735,7 +13735,7 @@ slots:
     multivalued: false
     range: string
   water_content:
-    name: water_content
+
     aliases:
       - water content
     annotations:
@@ -13759,7 +13759,7 @@ slots:
     multivalued: false
     range: QuantityValue
   water_current:
-    name: water_current
+
     aliases:
       - water current
     annotations:
@@ -13785,7 +13785,7 @@ slots:
     multivalued: false
     range: QuantityValue
   water_cut:
-    name: water_cut
+
     aliases:
       - water cut
     annotations:
@@ -13810,7 +13810,7 @@ slots:
     multivalued: false
     range: QuantityValue
   water_feat_size:
-    name: water_feat_size
+
     aliases:
       - water feature size
     annotations:
@@ -13834,7 +13834,7 @@ slots:
     multivalued: false
     range: QuantityValue
   water_feat_type:
-    name: water_feat_type
+
     aliases:
       - water feature_type
     annotations:
@@ -13857,7 +13857,7 @@ slots:
     multivalued: false
     range: TextValue
   water_prod_rate:
-    name: water_prod_rate
+
     aliases:
       - water production rate
     annotations:
@@ -13881,7 +13881,7 @@ slots:
     multivalued: false
     range: QuantityValue
   water_temp_regm:
-    name: water_temp_regm
+
     aliases:
       - water temperature regimen
     annotations:
@@ -13911,7 +13911,7 @@ slots:
     multivalued: false
     range: QuantityValue
   watering_regm:
-    name: watering_regm
+
     aliases:
       - watering regimen
     annotations:
@@ -13941,7 +13941,7 @@ slots:
     multivalued: false
     range: QuantityValue
   weekday:
-    name: weekday
+
     aliases:
       - weekday
     annotations:
@@ -13964,7 +13964,7 @@ slots:
     multivalued: false
     range: TextValue
   win:
-    name: win
+
     aliases:
       - well identification number
     annotations:
@@ -13989,7 +13989,7 @@ slots:
     multivalued: false
     range: TextValue
   wind_direction:
-    name: wind_direction
+
     aliases:
       - wind direction
     annotations:
@@ -14013,7 +14013,7 @@ slots:
     multivalued: false
     range: TextValue
   wind_speed:
-    name: wind_speed
+
     aliases:
       - wind speed
     annotations:
@@ -14039,7 +14039,7 @@ slots:
     multivalued: false
     range: QuantityValue
   window_cond:
-    name: window_cond
+
     aliases:
       - window condition
     annotations:
@@ -14062,7 +14062,7 @@ slots:
     multivalued: false
     range: TextValue
   window_cover:
-    name: window_cover
+
     aliases:
       - window covering
     annotations:
@@ -14085,7 +14085,7 @@ slots:
     multivalued: false
     range: TextValue
   window_horiz_pos:
-    name: window_horiz_pos
+
     aliases:
       - window horizontal position
     annotations:
@@ -14108,7 +14108,7 @@ slots:
     multivalued: false
     range: TextValue
   window_loc:
-    name: window_loc
+
     aliases:
       - window location
     annotations:
@@ -14131,7 +14131,7 @@ slots:
     multivalued: false
     range: TextValue
   window_mat:
-    name: window_mat
+
     aliases:
       - window material
     annotations:
@@ -14154,7 +14154,7 @@ slots:
     multivalued: false
     range: TextValue
   window_open_freq:
-    name: window_open_freq
+
     aliases:
       - window open frequency
     annotations:
@@ -14175,7 +14175,7 @@ slots:
     multivalued: false
     range: TextValue
   window_size:
-    name: window_size
+
     aliases:
       - window area/size
     annotations:
@@ -14200,7 +14200,7 @@ slots:
     multivalued: false
     range: QuantityValue
   window_status:
-    name: window_status
+
     aliases:
       - window status
     annotations:
@@ -14225,7 +14225,7 @@ slots:
     multivalued: false
     range: TextValue
   window_type:
-    name: window_type
+
     aliases:
       - window type
     annotations:
@@ -14248,7 +14248,7 @@ slots:
     multivalued: false
     range: TextValue
   window_vert_pos:
-    name: window_vert_pos
+
     aliases:
       - window vertical position
     annotations:
@@ -14271,7 +14271,7 @@ slots:
     multivalued: false
     range: TextValue
   window_water_mold:
-    name: window_water_mold
+
     aliases:
       - window signs of water/mold
     annotations:
@@ -14295,7 +14295,7 @@ slots:
     multivalued: false
     range: TextValue
   xylene:
-    name: xylene
+
     aliases:
       - xylene
     annotations:
@@ -14319,7 +14319,7 @@ slots:
     multivalued: false
     range: QuantityValue
   env_package:
-    name: env_package
+
     aliases:
       - environmental package
     mappings:
