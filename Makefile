@@ -202,7 +202,7 @@ git-add: .cruft.json
 		src/data \
 		src/doc-templates \
 		src/docs \
-		src/nmdc_schema \
+		nmdc_schema \
 		src/schema \
 		sssom \
 		tests \
