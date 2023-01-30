@@ -862,6 +862,8 @@ classes:
       - insdc_bioproject_identifiers
       - notes
       - massive_study_identifiers
+
+
     slot_usage:
       id:
         structured_pattern:
