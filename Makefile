@@ -19,10 +19,7 @@ DEST = project
 PYMODEL = $(SCHEMA_NAME)
 DOCDIR = docs
 EXAMPLEDIR = examples
-#SHEET_MODULE = slotdefs_classdefs_slot_assignments
-#SHEET_ID = $(shell bash ./utils/get-value.sh google_sheet_id)
-#SHEET_TABS = $(shell bash ./utils/get-value.sh google_sheet_tabs)
-#SHEET_MODULE_PATH = $(SOURCE_SCHEMA_DIR)/$(SHEET_MODULE).yaml
+
 
 # basename of a YAML file in model/
 .PHONY: all clean examples-all
@@ -78,10 +75,14 @@ update-linkml:
 create-data-harmonizer:
 	npm init data-harmonizer $(SOURCE_SCHEMA_PATH)
 
+.PHONY: examples-all examples-clean
 all: site
-site: gen-project gendoc examples-all
+site: examples-clean gen-project gendoc project/nmdc_schema_generated.yaml src/data/output
+	# just can't seem to tell pyproject.toml to bundle artifacts like these
+	# so reverting to copying into the module
 	cp project/jsonschema/nmdc.schema.json $(PYMODEL)
 	cp project/nmdc_schema_generated.yaml  $(PYMODEL)
+	cp sssom/gold-to-mixs.sssom.tsv        $(PYMODEL)
 %.yaml: gen-project
 deploy: all mkd-gh-deploy
 
@@ -109,8 +110,8 @@ gen-project: $(PYMODEL)
 		--exclude sqlddl \
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 
-test: test-schema test-python
-# make test always says "make: Nothing to be done for `test'."
+test: examples-clean test-schema project/nmdc_schema_generated.yaml src/data/output test-python
+# make test sometimes says "make: Nothing to be done for `test'."
 test-schema:
 	$(RUN) gen-project \
 		--include jsonschema \
@@ -228,23 +229,28 @@ git-status:
 clean:
 	rm -rf $(DEST)
 	rm -rf tmp
+	rm -rf docs/*.md
+	rm -rf docs/*.html
 
 include project.Makefile
 
-examples-all: examples-clean src/data/output
+examples-all: examples-clean project/nmdc_schema_generated.yaml src/data/output
 
 examples-clean:
+	@echo running examples-clean
 	rm -rf src/data/output project/nmdc_schema_generated.yaml
 
-project/nmdc_schema_generated.yaml: $(SOURCE_SCHEMA_PATH)
+project/nmdc_schema_generated.yaml:
+	@echo making project/nmdc_schema_generated.yaml
 	# the need for this may be eliminated by adding mandatory pattern materialization to gen-json-schema
 	$(RUN) gen-linkml \
 		--output $@ \
 		--materialize-patterns \
 		--no-materialize-attributes \
-		--format yaml $<
+		--format yaml $(SOURCE_SCHEMA_PATH)
 
 src/data/output: project/nmdc_schema_generated.yaml
+	@echo making src/data/output
 	mkdir -p $@
 	$(RUN) linkml-run-examples \
 		--schema $< \

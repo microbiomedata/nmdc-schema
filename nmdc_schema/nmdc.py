@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-01-30T22:24:36
+# Generation date: 2023-01-31T08:56:19
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -28,7 +28,7 @@ from linkml_runtime.linkml_model.types import Boolean, Datetime, Double, Float, 
 from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE, XSDDateTime
 
 metamodel_version = "1.7.0"
-version = "7.0.0"
+version = "7.4"
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
