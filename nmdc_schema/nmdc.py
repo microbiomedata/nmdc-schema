@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-01-31T08:56:19
+# Generation date: 2023-01-31T09:13:04
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
