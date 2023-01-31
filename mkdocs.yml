@@ -20,7 +20,7 @@ nav:
   - Table of Identifier Typecodes for each Class: typecode_table.md
   - Credits: credits.md
 
-site_url:
+site_url: https://microbiomedata.github.io/nmdc-schema
 repo_url: https://github.com/microbiomedata/nmdc-schema
 
 # Uncomment this block to enable use of Google Analytics. 
