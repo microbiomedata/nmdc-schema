@@ -734,6 +734,8 @@ enums:
           file_name_pattern: '[GOLD-AP]_pfam.gff'
       Direct Infusion FT ICR-MS Raw Data:
         description: Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance mass spectrometry raw data acquired in broadband full scan mode
+      Raw Compressed Metagenome Interleaved Paired-End Reads:
+        description: Raw sequencing reads from a metagenome that is in interleaved paired-end format and compressed using GNU zip format.
   credit enum:
     permissible_values:
       Conceptualization:

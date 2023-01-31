@@ -217,6 +217,7 @@ SCHEMA_TEST_EXAMPLES := \
 	nmdc_example_database \
 	MAGs_activity \
 	mg_assembly_activities_test \
+        metagenome_seequencing_activity \
 	mg_assembly_data_objects_test \
 	nmdc_example_database \
 	study_test \
