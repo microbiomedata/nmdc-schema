@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-01-30T14:22:17
+# Generation date: 2023-01-30T17:13:07
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -1040,7 +1040,7 @@ class Biosample(MaterialEntity):
     diss_org_nitro: Optional[Union[dict, "QuantityValue"]] = None
     diss_oxygen: Optional[Union[dict, "QuantityValue"]] = None
     drainage_class: Optional[Union[dict, "TextValue"]] = None
-    elev: Optional[Union[dict, "QuantityValue"]] = None
+    elev: Optional[float] = None
     env_package: Optional[Union[dict, "TextValue"]] = None
     extreme_event: Optional[str] = None
     fao_class: Optional[Union[dict, "TextValue"]] = None
@@ -1066,7 +1066,7 @@ class Biosample(MaterialEntity):
     org_matter: Optional[Union[dict, "QuantityValue"]] = None
     org_nitro: Optional[Union[dict, "QuantityValue"]] = None
     organism_count: Optional[Union[dict, "QuantityValue"]] = None
-    oxy_stat_samp: Optional[Union[dict, "TextValue"]] = None
+    oxy_stat_samp: Optional[Union[str, "RelToOxygenEnum"]] = None
     part_org_carb: Optional[Union[dict, "QuantityValue"]] = None
     perturbation: Optional[Union[dict, "TextValue"]] = None
     petroleum_hydrocarb: Optional[Union[dict, "QuantityValue"]] = None
@@ -1140,7 +1140,6 @@ class Biosample(MaterialEntity):
     humidity_regm: Optional[Union[dict, "QuantityValue"]] = None
     light_regm: Optional[Union[dict, "QuantityValue"]] = None
     phosphate: Optional[Union[dict, "QuantityValue"]] = None
-    rel_to_oxygen: Optional[Union[dict, "TextValue"]] = None
     samp_collec_method: Optional[str] = None
     samp_size: Optional[Union[dict, "QuantityValue"]] = None
     source_mat_id: Optional[Union[dict, "TextValue"]] = None
@@ -1386,8 +1385,8 @@ class Biosample(MaterialEntity):
         if self.drainage_class is not None and not isinstance(self.drainage_class, TextValue):
             self.drainage_class = TextValue(**as_dict(self.drainage_class))
 
-        if self.elev is not None and not isinstance(self.elev, QuantityValue):
-            self.elev = QuantityValue(**as_dict(self.elev))
+        if self.elev is not None and not isinstance(self.elev, float):
+            self.elev = float(self.elev)
 
         if self.env_package is not None and not isinstance(self.env_package, TextValue):
             self.env_package = TextValue(**as_dict(self.env_package))
@@ -1466,8 +1465,8 @@ class Biosample(MaterialEntity):
         if self.organism_count is not None and not isinstance(self.organism_count, QuantityValue):
             self.organism_count = QuantityValue(**as_dict(self.organism_count))
 
-        if self.oxy_stat_samp is not None and not isinstance(self.oxy_stat_samp, TextValue):
-            self.oxy_stat_samp = TextValue(**as_dict(self.oxy_stat_samp))
+        if self.oxy_stat_samp is not None and not isinstance(self.oxy_stat_samp, RelToOxygenEnum):
+            self.oxy_stat_samp = RelToOxygenEnum(self.oxy_stat_samp)
 
         if self.part_org_carb is not None and not isinstance(self.part_org_carb, QuantityValue):
             self.part_org_carb = QuantityValue(**as_dict(self.part_org_carb))
@@ -1688,9 +1687,6 @@ class Biosample(MaterialEntity):
 
         if self.phosphate is not None and not isinstance(self.phosphate, QuantityValue):
             self.phosphate = QuantityValue(**as_dict(self.phosphate))
-
-        if self.rel_to_oxygen is not None and not isinstance(self.rel_to_oxygen, TextValue):
-            self.rel_to_oxygen = TextValue(**as_dict(self.rel_to_oxygen))
 
         if self.samp_collec_method is not None and not isinstance(self.samp_collec_method, str):
             self.samp_collec_method = str(self.samp_collec_method)
@@ -8742,6 +8738,12 @@ slots.DataObject_description = Slot(uri=DCTERMS.description, name="DataObject_de
 slots.DataObject_id = Slot(uri=NMDC.id, name="DataObject_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.DataObject_id, domain=DataObject, range=Union[str, DataObjectId])
 
+slots.Biosample_elev = Slot(uri=MIXS['0000093'], name="Biosample_elev", curie=MIXS.curie('0000093'),
+                   model_uri=NMDC.Biosample_elev, domain=Biosample, range=Optional[float])
+
+slots.Biosample_oxy_stat_samp = Slot(uri=MIXS['0000753'], name="Biosample_oxy_stat_samp", curie=MIXS.curie('0000753'),
+                   model_uri=NMDC.Biosample_oxy_stat_samp, domain=Biosample, range=Optional[Union[str, "RelToOxygenEnum"]])
+
 slots.Biosample_id = Slot(uri=NMDC.id, name="Biosample_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Biosample_id, domain=Biosample, range=Union[str, BiosampleId])
 
@@ -8848,6 +8850,9 @@ slots.Biosample_gaseous_environment = Slot(uri=MIXS['0000558'], name="Biosample_
 
 slots.Biosample_watering_regm = Slot(uri=MIXS['0000591'], name="Biosample_watering_regm", curie=MIXS.curie('0000591'),
                    model_uri=NMDC.Biosample_watering_regm, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.Biosample_source_mat_id = Slot(uri=MIXS['0000026'], name="Biosample_source_mat_id", curie=MIXS.curie('0000026'),
+                   model_uri=NMDC.Biosample_source_mat_id, domain=Biosample, range=Optional[Union[dict, "TextValue"]])
 
 slots.Study_id = Slot(uri=NMDC.id, name="Study_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Study_id, domain=Study, range=Union[str, StudyId])
