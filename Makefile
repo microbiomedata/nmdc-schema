@@ -110,8 +110,8 @@ gen-project: $(PYMODEL)
 		--exclude sqlddl \
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 
-test: examples-clean test-schema test-python project/nmdc_schema_generated.yaml src/data/output
-# make test always says "make: Nothing to be done for `test'."
+test: examples-clean test-schema project/nmdc_schema_generated.yaml src/data/output test-python
+# make test sometimes says "make: Nothing to be done for `test'."
 test-schema:
 	$(RUN) gen-project \
 		--include jsonschema \
@@ -229,6 +229,8 @@ git-status:
 clean:
 	rm -rf $(DEST)
 	rm -rf tmp
+	rm -rf docs/*.md
+	rm -rf docs/*.html
 
 include project.Makefile
 
