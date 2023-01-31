@@ -46,7 +46,7 @@ diss_org_carb	QuantityValue	False
 diss_org_nitro	QuantityValue	False			
 diss_oxygen	QuantityValue	False			
 drainage_class	TextValue	False			
-elev	QuantityValue	False			
+elev	float	False			
 env_package	TextValue	False	[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc environment|plant\-associated|sediment|soil|wastewater\/sludge|water]		
 env_broad_scale	ControlledIdentifiedTermValue	False			
 env_local_scale	ControlledIdentifiedTermValue	False			
@@ -75,7 +75,7 @@ nitrite	QuantityValue	False
 org_matter	QuantityValue	False			
 org_nitro	QuantityValue	False			
 organism_count	QuantityValue	False			
-oxy_stat_samp	TextValue	False			
+oxy_stat_samp	rel_to_oxygen_enum	False			
 part_org_carb	QuantityValue	False			
 perturbation	TextValue	False			
 petroleum_hydrocarb	QuantityValue	False			
@@ -149,7 +149,6 @@ growth_facil	ControlledTermValue	False
 humidity_regm	QuantityValue	False			
 light_regm	QuantityValue	False			
 phosphate	QuantityValue	False			
-rel_to_oxygen	TextValue	False			
 samp_collec_method	string	False			
 samp_size	QuantityValue	False			
 source_mat_id	TextValue	False			

@@ -4,11 +4,11 @@ name: Sample Exhaustive Biosample instance. Although all of these values should 
   have this particular combination of values.
 description: unconstrained text
 alternative_identifiers:
-- any_string
-- seriously_anything
+  - any_string
+  - seriously_anything
 part_of:
-- nmdc:unconstrained_study_identifier_string1_needs_pattern_materialization_what_about_referential_integrity
-- nmdc:unconstrained_study_identifier_string2
+  - nmdc:unconstrained_study_identifier_string1_needs_pattern_materialization_what_about_referential_integrity
+  - nmdc:unconstrained_study_identifier_string2
 env_broad_scale:
   has_raw_value: ENVO:00002030
   term:
@@ -25,24 +25,24 @@ embargoed: true
 collected_from: nmdc:unconstrained_site_identifier_string
 type: nmdc:Biosample. change this to require a class name or an enumeration
 img_identifiers:
-- any string 1
-- any string 2
+  - any string 1
+  - any string 2
 samp_name: see also name
 biosample_categories:
-- LTER
-- FICUS
+  - LTER
+  - FICUS
 gold_biosample_identifiers:
-- GOLD:Gb123456789
-- GOLD:Gb
+  - GOLD:Gb123456789
+  - GOLD:Gb
 insdc_biosample_identifiers:
-- biosample:SAMN123456789
-- biosample:SAMN000
+  - biosample:SAMN123456789
+  - biosample:SAMN000
 emsl_biosample_identifiers:
-- any_string
-- seriously_anything
+  - any_string
+  - seriously_anything
 igsn_biosample_identifiers:
-- any:curie_1
-- any:curie_2
+  - any:curie_1
+  - any:curie_2
 agrochem_addition:
   has_raw_value: lime;1 kg/acre;2022-11-16T16:05:42+0000
 alkalinity:
@@ -116,8 +116,8 @@ diss_oxygen:
   has_raw_value: 175 micromole per kilogram
 drainage_class:
   has_raw_value: well
-elev:
-  has_raw_value: 100 meter
+#
+elev: 100
 env_package:
   has_raw_value: unconstrained text. should require the name of a MIxS EnvironmentalPackage
     class. have asked MIxS to return this term to their model. UPDATE VALIDATION RULES/PATTERN/ENUM!
@@ -131,10 +131,10 @@ geo_loc_name:
 glucosidase_act:
   has_raw_value: 5 mol per liter per hour
 heavy_metals:
-- has_raw_value: mercury;0.09 micrograms per gram
-- has_raw_value: arsenic;0.09 micrograms per gram
+  - has_raw_value: mercury;0.09 micrograms per gram
+  - has_raw_value: arsenic;0.09 micrograms per gram
 heavy_metals_meth:
-- has_raw_value: https://link.springer.com/article/10.1007/s42452-019-1578-x
+  - has_raw_value: https://link.springer.com/article/10.1007/s42452-019-1578-x
 lat_lon:
   has_raw_value: 50.586825 6.408977
   latitude: 50.586825
@@ -169,9 +169,8 @@ org_nitro:
   has_raw_value: 4 micromole per liter
 organism_count:
   has_raw_value: total prokaryotes;3.5e7 cells per milliliter;qPCR
-oxy_stat_samp:
-  has_raw_value: aerobic. change implementation from text value to string with enumerated
-    range
+#
+oxy_stat_samp: aerobe
 part_org_carb:
   has_raw_value: 1.92 micromole per liter
 perturbation:
@@ -259,8 +258,8 @@ tot_nitro_cont_meth: https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10
 tot_phosp:
   has_raw_value: 0.03 milligram per liter
 water_content:
-- MIxS doesn't provide an example 1
-- MIxS doesn't provide an example 2
+  - MIxS doesn't provide an example 1
+  - MIxS doesn't provide an example 2
 water_cont_soil_meth: MIxS doesn't provide an example
 ecosystem: unconstrained text. should be validated against the controlled vocabulary,
   by the sample's environmental package. would also be nice to align the CV with MIxS
@@ -305,8 +304,8 @@ light_regm:
   has_raw_value: incandescent light;10 lux;450 nanometer
 phosphate:
   has_raw_value: 0.7 micromole per liter
-rel_to_oxygen:
-  has_raw_value: aerobe. change validation to enumeration
+#rel_to_oxygen:
+#  has_raw_value: aerobe. change validation to enumeration
 samp_collec_method: swabbing
 samp_size:
   has_raw_value: 5 liters
@@ -378,11 +377,11 @@ sample_shipped: 15 g
 sample_type: water_extract_soil
 technical_reps: '2'
 analysis_type:
-- metabolomics
-- metagenomics
+  - metabolomics
+  - metagenomics
 sample_link:
-- IGSN:DSJ0284
-- any:curie
+  - IGSN:DSJ0284
+  - any:curie
 zinc:
   has_raw_value: 2.5 mg/kg
 manganese:

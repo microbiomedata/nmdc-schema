@@ -7,7 +7,7 @@ SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 examples-all: examples-clean src/data/output
 
 examples-clean:
-	rm -rf src/data/output
+	rm -rf src/data/output project/nmdc_schema_generated.yaml
 
 project/nmdc_schema_generated.yaml: $(SOURCE_SCHEMA_PATH)
 	# the need for this may be eliminated by adding mandatory pattern materialization to gen-json-schema
