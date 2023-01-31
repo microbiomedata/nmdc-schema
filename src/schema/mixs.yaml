@@ -7088,13 +7088,12 @@ slots:
       - value: '7955'
     from_schema: http://w3id.org/mixs/terms
     source: http://w3id.org/mixs/terms
-    see_also:
-      - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
-    is_a: attribute
-    string_serialization: '{NCBI taxid}'
+    is_a: core_field
+    todos:
+    - 'structured_pattern: {NCBI taxid}'
     slot_uri: mixs:0000250
     multivalued: false
-    range: TextValue
+    range: integer
   host_tot_mass:
 
     aliases:

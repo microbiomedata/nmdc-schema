@@ -430,6 +430,7 @@ classes:
       - community
       - habitat
       - host_name
+      - host_taxid
       - location
       - mod_date
       - ncbi_taxonomy_name

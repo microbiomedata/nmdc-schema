@@ -272,7 +272,8 @@ add_date: '2021-03-31'
 community: no_example_from_mixs
 habitat: unconstrained text
 host_name: snail is an example value, but unconstrained text is accepted at this point
-location: unconstrained text. should we even keep this slot? check if it ahs been
+host_taxid: 6521
+location: unconstrained text. should we even keep this slot? check if it has been
   used in MongoDB.
 mod_date: '2023-01-25'
 ncbi_taxonomy_name: soil metagenome
