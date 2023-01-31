@@ -3,7 +3,6 @@ description = "Schema resources for the National Microbiome Data Collaborative (
 documentation = "https://microbiomedata.github.io/nmdc-schema/"
 homepage = "https://microbiomedata.github.io/nmdc-schema/"
 #include = ["README.md", "src/nmdc-schema/schema", "project"]
-include = ["README.md", "src/schema/*", "project/*", "sssom/*"]
 keywords = ["NMDC", "schema", "metadata", "microbiome"]
 license = "MIT"
 name = "nmdc_schema"
