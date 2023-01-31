@@ -18156,6 +18156,15 @@ classes:
     - lbc_thirty
     - lbceq
     slot_usage:
+      elev:
+        name: elev
+        title: elevation, meters
+        comments:
+        - All elevations must be reported in meters. Provide the numerical portion
+          only.
+        examples:
+        - value: '100'
+        range: float
       oxy_stat_samp:
         name: oxy_stat_samp
         notes:
