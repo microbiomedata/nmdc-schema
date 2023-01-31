@@ -25,7 +25,7 @@ EXAMPLEDIR = examples
 #SHEET_MODULE_PATH = $(SOURCE_SCHEMA_DIR)/$(SHEET_MODULE).yaml
 
 # basename of a YAML file in model/
-.PHONY: all clean
+.PHONY: all clean examples-all
 
 # note: "help" MUST be the first target in the file,
 # when the user types "make" they should get help info
@@ -80,6 +80,8 @@ create-data-harmonizer:
 
 all: site
 site: gen-project gendoc examples-all
+	cp project/jsonschema/nmdc.schema.json $(PYMODEL)
+	cp project/nmdc_schema_generated.yaml  $(PYMODEL)
 %.yaml: gen-project
 deploy: all mkd-gh-deploy
 
