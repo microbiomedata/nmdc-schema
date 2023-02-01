@@ -199,6 +199,9 @@ classes:
     attributes:
       bin_name:
         range: string
+      members_id:
+        range: string
+        multivalued: true
       number_of_contig:
         range: integer
       completeness:

@@ -639,7 +639,7 @@ enums:
       QC non-rRNA R1:
         description: QC removed rRNA reads (R1) fastq
       Metagenome Bins:
-        description: Metagenome bin tarfiles archive
+        description: Metagenome bin zip archive
       CheckM Statistics:
         description: CheckM statistics report
       GTDBTK Bacterial Summary:
