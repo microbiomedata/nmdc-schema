@@ -1264,6 +1264,29 @@ enums:
 
 slots:
 
+  env_package:
+    aliases:
+      - environmental package
+    #      mappings:
+    #        - mixs:env_package
+    description: MIxS extension for reporting of measurements and observations obtained
+      from one or more of the environments where the sample was obtained. All environmental
+      packages listed here are further defined in separate subtables. By giving the
+      name of the environmental package, a selection of fields can be made from the
+      subtables and can be reported
+    in_subset:
+      - mixs extension
+    #      from_schema: https://microbiomedata/schema/mixs
+    #      source: https://microbiomedata/schema/mixs
+    #      see_also:
+    #        - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
+    is_a: attribute
+    multivalued: false
+    range: TextValue
+  #      pattern: '[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon
+  #        resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc
+  #        environment|plant\-associated|sediment|soil|wastewater\/sludge|water]'
+
   embargoed:
     description: >-
       If true, the data are embargoed and not available for public access.
