@@ -639,9 +639,13 @@ enums:
       QC non-rRNA R1:
         description: QC removed rRNA reads (R1) fastq
       Metagenome Bins:
-        description: Metagenome bin contigs fasta
+        description: Metagenome bin tarfiles archive
       CheckM Statistics:
         description: CheckM statistics report
+      GTDBTK Bacterial Summary:
+        description: GTDBTK bacterial summary
+      GTDBTK Archaeal Summary:
+        description: GTDBTK archaeal summary
       GOTTCHA2 Krona Plot:
         description: GOTTCHA2 krona plot HTML file
       GOTTCHA2 Classification Report:
