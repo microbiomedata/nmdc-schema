@@ -692,11 +692,13 @@ enums:
           file_name_pattern: '[GOLD-AP]_tigrfam.gff'
       CRT Annotation GFF:
         description: GFF3 format file with CRT
-      Genmark Annotation GFF:
-        description: GFF3 format file with Genmark
+      Genemark Annotation GFF:
+        description: GFF3 format file with Genemark
       Prodigal Annotation GFF:
         description: GFF3 format file with Prodigal
       TRNA Annotation GFF:
+        description: GFF3 format file with TRNA
+      TRNA Annotation GFF3:
         description: GFF3 format file with TRNA
       Misc Annotation GFF:
         description: GFF3 format file with Misc
@@ -708,10 +710,10 @@ enums:
         description: GFF3 format file with KO_EC
       Product Names:
         description: Product names file
-      Gene Phylogeny tsv:
+      Gene Phylogeny:
         description: Gene Phylogeny tsv
-      Crisprt Terms:
-        description: Crisprt Terms
+      Crispr Terms:
+        description: Crispr Terms
       Clusters of Orthologous Groups (COG) Annotation GFF:
         description: GFF3 format file with COGs
         annotations:
@@ -732,6 +734,8 @@ enums:
         description: GFF3 format file with Pfam
         annotations:
           file_name_pattern: '[GOLD-AP]_pfam.gff'
+      Annotation Statistics:
+        description: Annotation statistics report
       Direct Infusion FT ICR-MS Raw Data:
         description: Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance mass spectrometry raw data acquired in broadband full scan mode
       Raw Compressed Metagenome Interleaved Paired-End Reads:
