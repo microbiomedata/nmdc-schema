@@ -204,6 +204,8 @@ classes:
         multivalued: true
       number_of_contig:
         range: integer
+      total_bases:
+        range: integer
       completeness:
         range: float
       contamination:
@@ -217,6 +219,8 @@ classes:
       num_5s:
         range: integer
       num_23s:
+        range: integer
+      num_tRNA:
         range: integer
       num_t_rna:
         range: integer
