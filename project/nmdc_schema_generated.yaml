@@ -810,16 +810,40 @@ enums:
         text: soil
       water_extract_soil:
         text: water_extract_soil
-  oxy_stat_samp_enum:
-    name: oxy_stat_samp_enum
+  tillage_enum:
+    name: tillage_enum
     from_schema: https://microbiomedata/schema
     permissible_values:
-      aerobic:
-        text: aerobic
-      anaerobic:
-        text: anaerobic
-      other:
-        text: other
+      drill:
+        text: drill
+      cutting disc:
+        text: cutting disc
+      ridge till:
+        text: ridge till
+      strip tillage:
+        text: strip tillage
+      zonal tillage:
+        text: zonal tillage
+      chisel:
+        text: chisel
+      tined:
+        text: tined
+      mouldboard:
+        text: mouldboard
+      disc plough:
+        text: disc plough
+  biotic_relationship_enum:
+    name: biotic_relationship_enum
+    from_schema: https://microbiomedata/schema
+    permissible_values:
+      free living:
+        text: free living
+      parasite:
+        text: parasite
+      commensal:
+        text: commensal
+      symbiont:
+        text: symbiont
   organism_count_enum:
     name: organism_count_enum
     from_schema: https://microbiomedata/schema
@@ -886,44 +910,30 @@ enums:
         text: Vertisols
       Yermosols:
         text: Yermosols
-  drainage_class_enum:
-    name: drainage_class_enum
+  profile_position_enum:
+    name: profile_position_enum
     from_schema: https://microbiomedata/schema
     permissible_values:
-      very poorly:
-        text: very poorly
-      poorly:
-        text: poorly
-      somewhat poorly:
-        text: somewhat poorly
-      moderately well:
-        text: moderately well
-      well:
-        text: well
-      excessively drained:
-        text: excessively drained
-  tillage_enum:
-    name: tillage_enum
+      summit:
+        text: summit
+      shoulder:
+        text: shoulder
+      backslope:
+        text: backslope
+      footslope:
+        text: footslope
+      toeslope:
+        text: toeslope
+  oxy_stat_samp_enum:
+    name: oxy_stat_samp_enum
     from_schema: https://microbiomedata/schema
     permissible_values:
-      drill:
-        text: drill
-      cutting disc:
-        text: cutting disc
-      ridge till:
-        text: ridge till
-      strip tillage:
-        text: strip tillage
-      zonal tillage:
-        text: zonal tillage
-      chisel:
-        text: chisel
-      tined:
-        text: tined
-      mouldboard:
-        text: mouldboard
-      disc plough:
-        text: disc plough
+      aerobic:
+        text: aerobic
+      anaerobic:
+        text: anaerobic
+      other:
+        text: other
   rel_to_oxygen_enum:
     name: rel_to_oxygen_enum
     from_schema: https://microbiomedata/schema
@@ -1017,18 +1027,22 @@ enums:
         text: swamp (permanent or semi-permanent water body dominated by woody plants)
       crop trees (nuts,fruit,christmas trees,nursery trees):
         text: crop trees (nuts,fruit,christmas trees,nursery trees)
-  biotic_relationship_enum:
-    name: biotic_relationship_enum
+  drainage_class_enum:
+    name: drainage_class_enum
     from_schema: https://microbiomedata/schema
     permissible_values:
-      free living:
-        text: free living
-      parasite:
-        text: parasite
-      commensal:
-        text: commensal
-      symbiont:
-        text: symbiont
+      very poorly:
+        text: very poorly
+      poorly:
+        text: poorly
+      somewhat poorly:
+        text: somewhat poorly
+      moderately well:
+        text: moderately well
+      well:
+        text: well
+      excessively drained:
+        text: excessively drained
   tidal_stage_enum:
     name: tidal_stage_enum
     from_schema: https://microbiomedata/schema
@@ -1041,20 +1055,6 @@ enums:
         text: flood tide
       high tide:
         text: high tide
-  profile_position_enum:
-    name: profile_position_enum
-    from_schema: https://microbiomedata/schema
-    permissible_values:
-      summit:
-        text: summit
-      shoulder:
-        text: shoulder
-      backslope:
-        text: backslope
-      footslope:
-        text: footslope
-      toeslope:
-        text: toeslope
 slots:
   env_package:
     name: env_package
@@ -6734,26 +6734,16 @@ slots:
     slot_uri: mixs:0000045
     multivalued: false
     range: TextValue
-  has unit:
-    name: has unit
-    description: Example "m"
+  has raw value:
+    name: has raw value
     from_schema: https://microbiomedata/schema
+    string_serialization: '{has numeric value} {has unit}'
     owner: QuantityValue
   environment field:
     name: environment field
     description: field describing environmental aspect of a sample
     from_schema: https://microbiomedata/schema
     abstract: true
-  has numeric value:
-    name: has numeric value
-    from_schema: https://microbiomedata/schema
-    owner: QuantityValue
-    range: double
-  has raw value:
-    name: has raw value
-    from_schema: https://microbiomedata/schema
-    string_serialization: '{has numeric value} {has unit}'
-    owner: QuantityValue
   nucleic acid sequence source field:
     name: nucleic acid sequence source field
     from_schema: https://microbiomedata/schema
@@ -6764,6 +6754,16 @@ slots:
       belongs
     from_schema: https://microbiomedata/schema
     abstract: true
+  has numeric value:
+    name: has numeric value
+    from_schema: https://microbiomedata/schema
+    owner: QuantityValue
+    range: double
+  has unit:
+    name: has unit
+    description: Example "m"
+    from_schema: https://microbiomedata/schema
+    owner: QuantityValue
   core field:
     name: core field
     description: basic fields

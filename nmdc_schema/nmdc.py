@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-01-31T21:24:55
+# Generation date: 2023-01-31T21:45:33
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -4082,15 +4082,44 @@ class ProcessingInstitutionEnum(EnumDefinitionImpl):
         name="ProcessingInstitutionEnum",
     )
 
-class OxyStatSampEnum(EnumDefinitionImpl):
+class TillageEnum(EnumDefinitionImpl):
 
-    aerobic = PermissibleValue(text="aerobic")
-    anaerobic = PermissibleValue(text="anaerobic")
-    other = PermissibleValue(text="other")
+    drill = PermissibleValue(text="drill")
+    chisel = PermissibleValue(text="chisel")
+    tined = PermissibleValue(text="tined")
+    mouldboard = PermissibleValue(text="mouldboard")
 
     _defn = EnumDefinition(
-        name="OxyStatSampEnum",
+        name="TillageEnum",
     )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "cutting disc",
+                PermissibleValue(text="cutting disc") )
+        setattr(cls, "ridge till",
+                PermissibleValue(text="ridge till") )
+        setattr(cls, "strip tillage",
+                PermissibleValue(text="strip tillage") )
+        setattr(cls, "zonal tillage",
+                PermissibleValue(text="zonal tillage") )
+        setattr(cls, "disc plough",
+                PermissibleValue(text="disc plough") )
+
+class BioticRelationshipEnum(EnumDefinitionImpl):
+
+    parasite = PermissibleValue(text="parasite")
+    commensal = PermissibleValue(text="commensal")
+    symbiont = PermissibleValue(text="symbiont")
+
+    _defn = EnumDefinition(
+        name="BioticRelationshipEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "free living",
+                PermissibleValue(text="free living") )
 
 class OrganismCountEnum(EnumDefinitionImpl):
 
@@ -4135,49 +4164,27 @@ class FaoClassEnum(EnumDefinitionImpl):
         name="FaoClassEnum",
     )
 
-class DrainageClassEnum(EnumDefinitionImpl):
+class ProfilePositionEnum(EnumDefinitionImpl):
 
-    poorly = PermissibleValue(text="poorly")
-    well = PermissibleValue(text="well")
-
-    _defn = EnumDefinition(
-        name="DrainageClassEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "very poorly",
-                PermissibleValue(text="very poorly") )
-        setattr(cls, "somewhat poorly",
-                PermissibleValue(text="somewhat poorly") )
-        setattr(cls, "moderately well",
-                PermissibleValue(text="moderately well") )
-        setattr(cls, "excessively drained",
-                PermissibleValue(text="excessively drained") )
-
-class TillageEnum(EnumDefinitionImpl):
-
-    drill = PermissibleValue(text="drill")
-    chisel = PermissibleValue(text="chisel")
-    tined = PermissibleValue(text="tined")
-    mouldboard = PermissibleValue(text="mouldboard")
+    summit = PermissibleValue(text="summit")
+    shoulder = PermissibleValue(text="shoulder")
+    backslope = PermissibleValue(text="backslope")
+    footslope = PermissibleValue(text="footslope")
+    toeslope = PermissibleValue(text="toeslope")
 
     _defn = EnumDefinition(
-        name="TillageEnum",
+        name="ProfilePositionEnum",
     )
 
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "cutting disc",
-                PermissibleValue(text="cutting disc") )
-        setattr(cls, "ridge till",
-                PermissibleValue(text="ridge till") )
-        setattr(cls, "strip tillage",
-                PermissibleValue(text="strip tillage") )
-        setattr(cls, "zonal tillage",
-                PermissibleValue(text="zonal tillage") )
-        setattr(cls, "disc plough",
-                PermissibleValue(text="disc plough") )
+class OxyStatSampEnum(EnumDefinitionImpl):
+
+    aerobic = PermissibleValue(text="aerobic")
+    anaerobic = PermissibleValue(text="anaerobic")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="OxyStatSampEnum",
+    )
 
 class RelToOxygenEnum(EnumDefinitionImpl):
 
@@ -4269,20 +4276,25 @@ class CurLandUseEnum(EnumDefinitionImpl):
         setattr(cls, "crop trees (nuts,fruit,christmas trees,nursery trees)",
                 PermissibleValue(text="crop trees (nuts,fruit,christmas trees,nursery trees)") )
 
-class BioticRelationshipEnum(EnumDefinitionImpl):
+class DrainageClassEnum(EnumDefinitionImpl):
 
-    parasite = PermissibleValue(text="parasite")
-    commensal = PermissibleValue(text="commensal")
-    symbiont = PermissibleValue(text="symbiont")
+    poorly = PermissibleValue(text="poorly")
+    well = PermissibleValue(text="well")
 
     _defn = EnumDefinition(
-        name="BioticRelationshipEnum",
+        name="DrainageClassEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "free living",
-                PermissibleValue(text="free living") )
+        setattr(cls, "very poorly",
+                PermissibleValue(text="very poorly") )
+        setattr(cls, "somewhat poorly",
+                PermissibleValue(text="somewhat poorly") )
+        setattr(cls, "moderately well",
+                PermissibleValue(text="moderately well") )
+        setattr(cls, "excessively drained",
+                PermissibleValue(text="excessively drained") )
 
 class TidalStageEnum(EnumDefinitionImpl):
 
@@ -4300,18 +4312,6 @@ class TidalStageEnum(EnumDefinitionImpl):
                 PermissibleValue(text="flood tide") )
         setattr(cls, "high tide",
                 PermissibleValue(text="high tide") )
-
-class ProfilePositionEnum(EnumDefinitionImpl):
-
-    summit = PermissibleValue(text="summit")
-    shoulder = PermissibleValue(text="shoulder")
-    backslope = PermissibleValue(text="backslope")
-    footslope = PermissibleValue(text="footslope")
-    toeslope = PermissibleValue(text="toeslope")
-
-    _defn = EnumDefinition(
-        name="ProfilePositionEnum",
-    )
 
 class SampleTypeEnum(EnumDefinitionImpl):
 
@@ -5499,23 +5499,23 @@ slots.target_gene = Slot(uri=MIXS['0000044'], name="target_gene", curie=MIXS.cur
 slots.target_subfragment = Slot(uri=MIXS['0000045'], name="target_subfragment", curie=MIXS.curie('0000045'),
                    model_uri=NMDC.target_subfragment, domain=None, range=Optional[Union[dict, TextValue]])
 
-slots.has_unit = Slot(uri=NMDC.has_unit, name="has unit", curie=NMDC.curie('has_unit'),
-                   model_uri=NMDC.has_unit, domain=None, range=Optional[str])
+slots.has_raw_value = Slot(uri=NMDC.has_raw_value, name="has raw value", curie=NMDC.curie('has_raw_value'),
+                   model_uri=NMDC.has_raw_value, domain=None, range=Optional[str])
 
 slots.environment_field = Slot(uri=NMDC.environment_field, name="environment field", curie=NMDC.curie('environment_field'),
                    model_uri=NMDC.environment_field, domain=None, range=Optional[str])
-
-slots.has_numeric_value = Slot(uri=NMDC.has_numeric_value, name="has numeric value", curie=NMDC.curie('has_numeric_value'),
-                   model_uri=NMDC.has_numeric_value, domain=None, range=Optional[float])
-
-slots.has_raw_value = Slot(uri=NMDC.has_raw_value, name="has raw value", curie=NMDC.curie('has_raw_value'),
-                   model_uri=NMDC.has_raw_value, domain=None, range=Optional[str])
 
 slots.nucleic_acid_sequence_source_field = Slot(uri=NMDC.nucleic_acid_sequence_source_field, name="nucleic acid sequence source field", curie=NMDC.curie('nucleic_acid_sequence_source_field'),
                    model_uri=NMDC.nucleic_acid_sequence_source_field, domain=None, range=Optional[str])
 
 slots.investigation_field = Slot(uri=NMDC.investigation_field, name="investigation field", curie=NMDC.curie('investigation_field'),
                    model_uri=NMDC.investigation_field, domain=None, range=Optional[str])
+
+slots.has_numeric_value = Slot(uri=NMDC.has_numeric_value, name="has numeric value", curie=NMDC.curie('has_numeric_value'),
+                   model_uri=NMDC.has_numeric_value, domain=None, range=Optional[float])
+
+slots.has_unit = Slot(uri=NMDC.has_unit, name="has unit", curie=NMDC.curie('has_unit'),
+                   model_uri=NMDC.has_unit, domain=None, range=Optional[str])
 
 slots.core_field = Slot(uri=NMDC.core_field, name="core field", curie=NMDC.curie('core_field'),
                    model_uri=NMDC.core_field, domain=None, range=Optional[str])
