@@ -1,5 +1,6 @@
 import csv
 
+import click
 from linkml_runtime.linkml_model.meta import ElementName, PatternExpression, Example
 from linkml_runtime.utils.yamlutils import extended_str
 
@@ -90,5 +91,13 @@ class Usages:
             writer.writerows(usage_rows)
 
 
-usage_inst = Usages()
-usage_inst.write_usage_rows("Biosample", "../biosample_usages.tsv")
+@click.command()
+@click.option('--class_name', default='Biosample', help='Name of the class to generate the report for')
+@click.option('--report_file', default='slot_usage_report.tsv', help='Name of the report file to be generated')
+def generate_usage_report(class_name, report_file):
+    usage_inst = Usages()
+    usage_inst.write_usage_rows(class_name, report_file)
+
+
+if __name__ == "__main__":
+    generate_usage_report()
