@@ -35,7 +35,9 @@
     "any string 1",
     "any string 2"
   ],
-  "samp_name": "see also name",
+  "samp_name": {
+    "has_raw_value": "see also name"
+  },
   "biosample_categories": [
     "LTER",
     "FICUS"
@@ -56,9 +58,11 @@
     "any:curie_1",
     "any:curie_2"
   ],
-  "agrochem_addition": {
-    "has_raw_value": "lime;1 kg/acre;2022-11-16T16:05:42+0000"
-  },
+  "agrochem_addition": [
+    {
+      "has_raw_value": "lime;1 kg/acre;2022-11-16T16:05:42+0000"
+    }
+  ],
   "alkalinity": {
     "has_raw_value": "50 milligram per liter"
   },
@@ -104,21 +108,18 @@
   "carb_nitro_ratio": {
     "has_raw_value": "0.417361111"
   },
-  "chem_administration": {
-    "has_raw_value": "agar [CHEBI:2509];2018-05-11T20:00Z"
-  },
+  "chem_administration": [
+    {
+      "has_raw_value": "agar [CHEBI:2509];2018-05-11T20:00Z"
+    }
+  ],
   "chloride": {
     "has_raw_value": "5000 milligram per liter"
   },
   "chlorophyll": {
     "has_raw_value": "5 milligram per cubic meter"
   },
-  "collection_date": {
-    "has_raw_value": "2023-01-16T16:05:42+0000"
-  },
-  "cur_land_use": {
-    "has_raw_value": "conifers"
-  },
+  "cur_land_use": "farmstead",
   "cur_vegetation": {
     "has_raw_value": "MIxS doesn't provide any guidance more specific than \"text\""
   },
@@ -159,17 +160,13 @@
   "diss_oxygen": {
     "has_raw_value": "175 micromole per kilogram"
   },
-  "drainage_class": {
-    "has_raw_value": "well"
-  },
+  "drainage_class": "well",
   "elev": 100.0,
   "env_package": {
     "has_raw_value": "unconstrained text. should require the name of a MIxS EnvironmentalPackage class. have asked MIxS to return this term to their model. UPDATE VALIDATION RULES/PATTERN/ENUM!"
   },
   "extreme_event": "2023-01-15",
-  "fao_class": {
-    "has_raw_value": "Fluvisol"
-  },
+  "fao_class": "Fluvisols",
   "fire": "2000-11 to 2000-12",
   "flooding": "2000-01-15",
   "geo_loc_name": {
@@ -192,9 +189,7 @@
     }
   ],
   "lat_lon": {
-    "has_raw_value": "50.586825 6.408977",
-    "latitude": 50.586825,
-    "longitude": 6.408977
+    "has_raw_value": "50.586825 6.408977"
   },
   "link_addit_analys": {
     "has_raw_value": "https://pubmed.ncbi.nlm.nih.gov/2315679/"
@@ -220,12 +215,16 @@
   "mean_peak_frict_vel": {
     "has_raw_value": "1 meter per second"
   },
-  "misc_param": {
-    "has_raw_value": "Bicarbonate ion concentration;2075 micromole per kilogram"
-  },
-  "n_alkanes": {
-    "has_raw_value": "n-hexadecane;100 milligram per liter"
-  },
+  "misc_param": [
+    {
+      "has_raw_value": "Bicarbonate ion concentration;2075 micromole per kilogram"
+    }
+  ],
+  "n_alkanes": [
+    {
+      "has_raw_value": "n-hexadecane;100 milligram per liter"
+    }
+  ],
   "nitrate": {
     "has_raw_value": "65 micromole per liter"
   },
@@ -238,31 +237,35 @@
   "org_nitro": {
     "has_raw_value": "4 micromole per liter"
   },
-  "organism_count": {
-    "has_raw_value": "total prokaryotes;3.5e7 cells per milliliter;qPCR"
-  },
+  "organism_count": [
+    "ATP"
+  ],
   "oxy_stat_samp": "aerobe",
   "part_org_carb": {
     "has_raw_value": "1.92 micromole per liter"
   },
-  "perturbation": {
-    "has_raw_value": "antibiotic addition;R2/2018-05-11T14:30Z/2018-05-11T19:30Z/P1H30M"
-  },
+  "perturbation": [
+    {
+      "has_raw_value": "antibiotic addition;R2/2018-05-11T14:30Z/2018-05-11T19:30Z/P1H30M"
+    }
+  ],
   "petroleum_hydrocarb": {
     "has_raw_value": "0.05 micromole per liter"
   },
-  "ph": {
-    "has_raw_value": "7.5"
-  },
+  "ph": 99.99,
   "ph_meth": {
     "has_raw_value": "https://www.epa.gov/sites/production/files/2015-12/documents/9040c.pdf"
   },
-  "phaeopigments": {
-    "has_raw_value": "2.5 milligram per cubic meter"
-  },
-  "phosplipid_fatt_acid": {
-    "has_raw_value": "2.98 milligram per liter"
-  },
+  "phaeopigments": [
+    {
+      "has_raw_value": "2.5 milligram per cubic meter"
+    }
+  ],
+  "phosplipid_fatt_acid": [
+    {
+      "has_raw_value": "2.98 milligram per liter"
+    }
+  ],
   "pool_dna_extracts": {
     "has_raw_value": "yes, 5"
   },
@@ -272,9 +275,7 @@
   "pressure": {
     "has_raw_value": "50 atmosphere"
   },
-  "profile_position": {
-    "has_raw_value": "summit. change validation to enumeration"
-  },
+  "profile_position": "summit",
   "redox_potential": {
     "has_raw_value": "300 millivolt"
   },
@@ -293,7 +294,9 @@
   "samp_store_loc": {
     "has_raw_value": "Freezer no:5"
   },
-  "samp_taxon_id": "soil metagenome [NCBItaxon:410658] but no validation applied yet",
+  "samp_taxon_id": {
+    "has_raw_value": "soil metagenome [NCBItaxon:410658] but no validation applied yet"
+  },
   "samp_store_temp": {
     "has_raw_value": "-80 degree Celsius"
   },
@@ -342,12 +345,10 @@
   "temp": {
     "has_raw_value": "25 degree Celsius"
   },
-  "tillage": {
-    "has_raw_value": "chisel. change validation to enumeration"
-  },
-  "tidal_stage": {
-    "has_raw_value": "high tide. change validation to enumeration"
-  },
+  "tillage": [
+    "chisel"
+  ],
+  "tidal_stage": "high tide",
   "tot_carb": {
     "has_raw_value": "MIxS does not provide an example"
   },
@@ -366,7 +367,9 @@
   "tot_nitro_content": {
     "has_raw_value": "35 milligrams Nitrogen per kilogram of soil"
   },
-  "tot_nitro_cont_meth": "https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00",
+  "tot_nitro_cont_meth": {
+    "has_raw_value": "https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00"
+  },
   "tot_phosp": {
     "has_raw_value": "0.03 milligram per liter"
   },
@@ -374,7 +377,9 @@
     "MIxS doesn't provide an example 1",
     "MIxS doesn't provide an example 2"
   ],
-  "water_cont_soil_meth": "MIxS doesn't provide an example",
+  "water_cont_soil_meth": {
+    "has_raw_value": "MIxS doesn't provide an example"
+  },
   "ecosystem": "unconstrained text. should be validated against the controlled vocabulary, by the sample's environmental package. would also be nice to align the CV with MIxS environmental triads",
   "ecosystem_category": "unconstrained text",
   "ecosystem_type": "unconstrained text",
@@ -394,46 +399,56 @@
   "subsurface_depth": {
     "has_raw_value": "MIxS does not provide an example"
   },
-  "air_temp_regm": {
-    "has_raw_value": "25 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"
-  },
+  "air_temp_regm": [
+    {
+      "has_raw_value": "25 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"
+    }
+  ],
   "biotic_regm": {
     "has_raw_value": "sample inoculated with Rhizobium spp. Culture"
   },
-  "biotic_relationship": {
-    "has_raw_value": "MIxS suggest enum [free living|parasite|commensal|symbiont] but not currently enforced here"
-  },
-  "climate_environment": {
-    "has_raw_value": "tropical climate;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"
-  },
+  "biotic_relationship": "parasite",
+  "climate_environment": [
+    {
+      "has_raw_value": "tropical climate;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"
+    }
+  ],
   "experimental_factor": {
     "has_raw_value": "unconstrained text, unlike the MIxS environmental triad"
   },
-  "gaseous_environment": {
-    "has_raw_value": "nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"
-  },
+  "gaseous_environment": [
+    {
+      "has_raw_value": "nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"
+    }
+  ],
   "growth_facil": {
     "has_raw_value": "Growth chamber [CO_715:0000189]"
   },
-  "humidity_regm": {
-    "has_raw_value": "25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"
-  },
+  "humidity_regm": [
+    {
+      "has_raw_value": "25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"
+    }
+  ],
   "light_regm": {
     "has_raw_value": "incandescent light;10 lux;450 nanometer"
   },
   "phosphate": {
     "has_raw_value": "0.7 micromole per liter"
   },
-  "samp_collec_method": "swabbing",
+  "samp_collec_method": {
+    "has_raw_value": "swabbing"
+  },
   "samp_size": {
     "has_raw_value": "5 liters"
   },
   "source_mat_id": {
     "has_raw_value": "MPI012345"
   },
-  "watering_regm": {
-    "has_raw_value": "1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"
-  },
+  "watering_regm": [
+    {
+      "has_raw_value": "1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"
+    }
+  ],
   "dna_absorb1": "2.02",
   "dna_absorb2": "2.02",
   "dna_collect_site": "untreated pond water",

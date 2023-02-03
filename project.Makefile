@@ -25,3 +25,10 @@ SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 #		--counter-example-input-directory src/data/invalid \
 #		--output-directory $@ > $@/README.md
 #
+
+assets/MIxS_6_term_updates_MIxS6_Core-_Final_clean.tsv:
+	curl -L "https://docs.google.com/spreadsheets/d/1QDeeUcDqXes69Y2RjU2aWgOpCVWo5OVsBX9MKmMqi_o/export?gid=178015749&format=tsv" > $@
+
+assets/MIxS_6_term_updates_MIxS6_packages_-_Final_clean.tsv:
+	curl -L "https://docs.google.com/spreadsheets/d/1QDeeUcDqXes69Y2RjU2aWgOpCVWo5OVsBX9MKmMqi_o/export?gid=750683809&format=tsv" > $@
+
