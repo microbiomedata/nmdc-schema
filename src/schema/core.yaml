@@ -255,8 +255,6 @@ classes:
       - num_23s
       - num_5s
       - num_t_rna
-      - num_t_rna
-      - number_of_contig
       - number_of_contig
       - total_bases
       - type
