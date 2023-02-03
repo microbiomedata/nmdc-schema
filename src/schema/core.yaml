@@ -474,6 +474,9 @@ classes:
       - schema:GeoCoordinates
 
 slots:
+  members_id:
+    todos:
+      - this slot needs some basic textual annotations and constraints
   bin_name:
     range: string
   number_of_contig:
