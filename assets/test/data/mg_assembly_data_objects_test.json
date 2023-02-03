@@ -1,0 +1,25 @@
+{
+  "data_object_set": [
+    {
+      "id": "nmdc:dobj-99-izwYW6",
+      "name": "mapping_stats.txt",
+      "description": "Metagenome Contig Coverage Stats for gold:Gp0061273",
+      "file_size_bytes": 32787380,
+      "type": "nmdc:DataObject"
+    },
+    {
+      "id": "nmdc:dobj-99-bS0GkU",
+      "name": "assembly_contigs.fna",
+      "description": "Assembled contigs fasta for gold:Gp0061273",
+      "file_size_bytes": 206578499,
+      "type": "nmdc:DataObject"
+    },
+    {
+      "id": "nmdc:dobj-99-PqBJvW",
+      "name": "assembly_scaffolds.fna",
+      "description": "Assembled scaffold fasta for gold:Gp0061273",
+      "file_size_bytes": 205297945,
+      "type": "nmdc:DataObject"
+    }
+  ]
+}

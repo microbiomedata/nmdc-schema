@@ -22,11 +22,10 @@ default_curi_maps:
   - obo_context
   - idot_context
 
-
+notes:
+  - "circular nmdc import is for slot biosample_input with range: Biosample"
 imports:
   - basic_slots
-  - core
-  - linkml:types
   - nmdc
 
 enums:
@@ -267,10 +266,16 @@ classes:
   MaterialSample:
     name: MaterialSample
     title: Material sample
-
     aliases:
       - Material entity
     is_a: NamedThing
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:matsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+          partial_match: false
+
   MaterialSamplingActivity:
     name: MaterialSamplingActivity
     title: Material sampling activity
