@@ -4,6 +4,42 @@ RUN=poetry run
 SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
 SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 
+assets/mixs_slots_used_in_schema.tsv:
+	$(RUN) get_mixs_slots_used_in_schema --output_file $@
+
+assets/import_slots_regardless_gen.tsv: assets/mixs_slots_used_in_schema.tsv
+	$(RUN) generate_import_slots_regardless --input_file $< --output_file $@
+
+assets/mixs_subset.yaml: assets/import_slots_regardless_gen.tsv
+	$(RUN) do_shuttle \
+		--recipient_model assets/mixs_template.yaml \
+		--config_tsv $< \
+		--yaml_output $@
+
+assets/mixs_subset_repaired.yaml: assets/mixs_subset.yaml
+	sed 's/quantity value/QuantityValue/' $< > $@
+	sed -i.bak 's/range: string/range: TextValue/' $@
+	sed -i.bak 's/slot_uri: MIXS:/slot_uri: mixs:/' $@
+	yq -i '.slots.env_broad_scale.range |= "ControlledIdentifiedTermValue"' $@
+	yq -i '.slots.env_local_scale.range |= "ControlledIdentifiedTermValue"' $@
+	yq -i '.slots.env_medium.range |= "ControlledIdentifiedTermValue"'  $@
+#	yq -i 'del(.classes.Biosample)' $(word 2,$^)
+#	yq -i 'del(.classes.OmicsProcesing)' $(word 2,$^)
+	yq -i 'del(.enums.[].name)'  $@
+	yq -i 'del(.slots.[].name)'  $@
+
+mixs_diff_cleanup:
+	rm -rf assets/import_slots_regardless_gen.tsv
+	rm -rf assets/mixs_slots_used_in_schema.tsv
+	rm -rf assets/mixs_subset.yaml
+	rm -rf assets/mixs_subset_repaired.yaml
+	rm -rf assets/mixs_subset_repaired.yaml.bak
+
+.PHONY: deepdiff
+
+deepdiff: assets/mixs_subset_repaired.yaml
+	$(RUN) deep diff src/schema/mixs.yaml $<
+
 #examples-all: examples-clean src/data/output
 #
 #examples-clean:

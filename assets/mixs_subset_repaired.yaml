@@ -1,0 +1,3110 @@
+name: mixs-schema
+title: MIxS Schema
+notes:
+  - commented out several MIxS terms/slots that were sharing slot uris
+  - attempts have been made to automate the maintenance of this file, but it is essentially hand-curated
+  - note that the NMDC submission schema in sheets_and_friends takes its MIxS terms from https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml and then potentially modifies them. Ideally this file would contain MIxS terms, essentially ready-to-use
+  - yet another source of MIxS terms is the incomplete https://github.com/GenomicsStandardsConsortium/mixs/tree/issue-511-tested-schemasheets
+id: https://microbiomedata/schema/mixs
+imports:
+  - basic_slots
+prefixes:
+  nmdc:
+    prefix_prefix: nmdc
+    prefix_reference: https://w3id.org/nmdc/
+  mixs:
+    prefix_prefix: mixs
+    prefix_reference: https://w3id.org/mixs/
+  linkml:
+    prefix_prefix: linkml
+    prefix_reference: https://w3id.org/linkml/
+  mixs.vocab:
+    prefix_prefix: mixs.vocab
+    prefix_reference: https://w3id.org/mixs/vocab/
+  MIXS:
+    prefix_prefix: MIXS
+    prefix_reference: https://w3id.org/mixs/terms/
+  MIGS:
+    prefix_prefix: MIGS
+    prefix_reference: https://w3id.org/mixs/migs/
+default_prefix: nmdc
+default_range: TextValue
+subsets:
+  mixs_environmental_triad:
+    name: mixs_environmental_triad
+    title: MIxS Environmental Triad
+  mixs extension:
+    name: mixs extension
+  checklist:
+    name: checklist
+    description: A MIxS checklist. These can be combined with packages
+    from_schema: http://w3id.org/mixs/terms
+  package:
+    name: package
+    description: A MIxS package. These can be combined with checklists
+    from_schema: http://w3id.org/mixs/terms
+  checklist_package_combination:
+    name: checklist_package_combination
+    description: A combination of a checklist and a package
+    from_schema: http://w3id.org/mixs/terms
+enums:
+  profile_position_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      summit:
+        text: summit
+      shoulder:
+        text: shoulder
+      backslope:
+        text: backslope
+      footslope:
+        text: footslope
+      toeslope:
+        text: toeslope
+  cur_land_use_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      cities:
+        text: cities
+      farmstead:
+        text: farmstead
+      industrial areas:
+        text: industrial areas
+      roads/railroads:
+        text: roads/railroads
+      rock:
+        text: rock
+      sand:
+        text: sand
+      gravel:
+        text: gravel
+      mudflats:
+        text: mudflats
+      salt flats:
+        text: salt flats
+      badlands:
+        text: badlands
+      permanent snow or ice:
+        text: permanent snow or ice
+      saline seeps:
+        text: saline seeps
+      mines/quarries:
+        text: mines/quarries
+      oil waste areas:
+        text: oil waste areas
+      small grains:
+        text: small grains
+      row crops:
+        text: row crops
+      vegetable crops:
+        text: vegetable crops
+      horticultural plants (e.g. tulips):
+        text: horticultural plants (e.g. tulips)
+      marshlands (grass,sedges,rushes):
+        text: marshlands (grass,sedges,rushes)
+      tundra (mosses,lichens):
+        text: tundra (mosses,lichens)
+      rangeland:
+        text: rangeland
+      pastureland (grasslands used for livestock grazing):
+        text: pastureland (grasslands used for livestock grazing)
+      hayland:
+        text: hayland
+      meadows (grasses,alfalfa,fescue,bromegrass,timothy):
+        text: meadows (grasses,alfalfa,fescue,bromegrass,timothy)
+      shrub land (e.g. mesquite,sage-brush,creosote bush,shrub oak,eucalyptus):
+        text: shrub land (e.g. mesquite,sage-brush,creosote bush,shrub oak,eucalyptus)
+      successional shrub land (tree saplings,hazels,sumacs,chokecherry,shrub dogwoods,blackberries):
+        text: successional shrub land (tree saplings,hazels,sumacs,chokecherry,shrub dogwoods,blackberries)
+      shrub crops (blueberries,nursery ornamentals,filberts):
+        text: shrub crops (blueberries,nursery ornamentals,filberts)
+      vine crops (grapes):
+        text: vine crops (grapes)
+      conifers (e.g. pine,spruce,fir,cypress):
+        text: conifers (e.g. pine,spruce,fir,cypress)
+      hardwoods (e.g. oak,hickory,elm,aspen):
+        text: hardwoods (e.g. oak,hickory,elm,aspen)
+      intermixed hardwood and conifers:
+        text: intermixed hardwood and conifers
+      tropical (e.g. mangrove,palms):
+        text: tropical (e.g. mangrove,palms)
+      rainforest (evergreen forest receiving greater than 406 cm annual rainfall):
+        text: rainforest (evergreen forest receiving greater than 406 cm annual rainfall)
+      swamp (permanent or semi-permanent water body dominated by woody plants):
+        text: swamp (permanent or semi-permanent water body dominated by woody plants)
+      crop trees (nuts,fruit,christmas trees,nursery trees):
+        text: crop trees (nuts,fruit,christmas trees,nursery trees)
+  organism_count_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      ATP:
+        text: ATP
+      MPN:
+        text: MPN
+      other:
+        text: other
+  tillage_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      drill:
+        text: drill
+      cutting disc:
+        text: cutting disc
+      ridge till:
+        text: ridge till
+      strip tillage:
+        text: strip tillage
+      zonal tillage:
+        text: zonal tillage
+      chisel:
+        text: chisel
+      tined:
+        text: tined
+      mouldboard:
+        text: mouldboard
+      disc plough:
+        text: disc plough
+  oxy_stat_samp_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      aerobic:
+        text: aerobic
+      anaerobic:
+        text: anaerobic
+      other:
+        text: other
+  fao_class_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      Acrisols:
+        text: Acrisols
+      Andosols:
+        text: Andosols
+      Arenosols:
+        text: Arenosols
+      Cambisols:
+        text: Cambisols
+      Chernozems:
+        text: Chernozems
+      Ferralsols:
+        text: Ferralsols
+      Fluvisols:
+        text: Fluvisols
+      Gleysols:
+        text: Gleysols
+      Greyzems:
+        text: Greyzems
+      Gypsisols:
+        text: Gypsisols
+      Histosols:
+        text: Histosols
+      Kastanozems:
+        text: Kastanozems
+      Lithosols:
+        text: Lithosols
+      Luvisols:
+        text: Luvisols
+      Nitosols:
+        text: Nitosols
+      Phaeozems:
+        text: Phaeozems
+      Planosols:
+        text: Planosols
+      Podzols:
+        text: Podzols
+      Podzoluvisols:
+        text: Podzoluvisols
+      Rankers:
+        text: Rankers
+      Regosols:
+        text: Regosols
+      Rendzinas:
+        text: Rendzinas
+      Solonchaks:
+        text: Solonchaks
+      Solonetz:
+        text: Solonetz
+      Vertisols:
+        text: Vertisols
+      Yermosols:
+        text: Yermosols
+  tidal_stage_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      low tide:
+        text: low tide
+      ebb tide:
+        text: ebb tide
+      flood tide:
+        text: flood tide
+      high tide:
+        text: high tide
+  drainage_class_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      very poorly:
+        text: very poorly
+      poorly:
+        text: poorly
+      somewhat poorly:
+        text: somewhat poorly
+      moderately well:
+        text: moderately well
+      well:
+        text: well
+      excessively drained:
+        text: excessively drained
+  rel_to_oxygen_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      aerobe:
+        text: aerobe
+      anaerobe:
+        text: anaerobe
+      facultative:
+        text: facultative
+      microaerophilic:
+        text: microaerophilic
+      microanaerobe:
+        text: microanaerobe
+      obligate aerobe:
+        text: obligate aerobe
+      obligate anaerobe:
+        text: obligate anaerobe
+  biotic_relationship_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      free living:
+        text: free living
+      parasite:
+        text: parasite
+      commensal:
+        text: commensal
+      symbiont:
+        text: symbiont
+slots:
+  agrochem_addition:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: agrochemical name;agrochemical amount;timestamp
+      preferred_unit:
+        tag: preferred_unit
+        value: gram, mole per liter, milligram per liter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Addition of fertilizers, pesticides, etc. - amount and time of applications
+    title: history/agrochemical additions
+    examples:
+      - value: roundup;5 milligram per liter;2018-06-21
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - history/agrochemical additions
+    is_a: core field
+    string_serialization: '{text};{float} {unit};{timestamp}'
+    slot_uri: mixs:0000639
+    multivalued: true
+    range: TextValue
+  air_temp_regm:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: temperature value;treatment interval and duration
+      preferred_unit:
+        tag: preferred_unit
+        value: meter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens
+    title: air temperature regimen
+    examples:
+      - value: 25 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - air temperature regimen
+    is_a: core field
+    string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
+    slot_uri: mixs:0000551
+    multivalued: true
+    range: TextValue
+  al_sat:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: percentage
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Aluminum saturation (esp. For tropical soils)
+    title: extreme_unusual_properties/Al saturation
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - extreme_unusual_properties/Al saturation
+    is_a: core field
+    slot_uri: mixs:0000607
+    multivalued: false
+    range: QuantityValue
+  al_sat_meth:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID,DOI or URL
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Reference or method used in determining Al saturation
+    title: extreme_unusual_properties/Al saturation method
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - extreme_unusual_properties/Al saturation method
+    is_a: core field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: mixs:0000324
+    multivalued: false
+    range: TextValue
+  alkalinity:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: milliequivalent per liter, milligram per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Alkalinity, the ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate
+    title: alkalinity
+    examples:
+      - value: 50 milligram per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - alkalinity
+    is_a: core field
+    slot_uri: mixs:0000421
+    multivalued: false
+    range: QuantityValue
+  alkalinity_method:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: description of method
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Method used for alkalinity measurement
+    title: alkalinity method
+    examples:
+      - value: titration
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - alkalinity method
+    is_a: core field
+    string_serialization: '{text}'
+    slot_uri: mixs:0000298
+    multivalued: false
+    range: TextValue
+  alkyl_diethers:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: mole per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of alkyl diethers
+    title: alkyl diethers
+    examples:
+      - value: 0.005 mole per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - alkyl diethers
+    is_a: core field
+    slot_uri: mixs:0000490
+    multivalued: false
+    range: QuantityValue
+  alt:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+    description: Altitude is a term used to identify heights of objects such as airplanes, space shuttles, rockets, atmospheric balloons and heights of places such as atmospheric layers and clouds. It is used to measure the height of an object which is above the earth's surface. In this context, the altitude measurement is the vertical distance between the earth's surface above sea level and the sampled position in the air
+    title: altitude
+    examples:
+      - value: 100 meter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - altitude
+    is_a: environment field
+    slot_uri: mixs:0000094
+    multivalued: false
+    range: QuantityValue
+  aminopept_act:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: mole per liter per hour
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Measurement of aminopeptidase activity
+    title: aminopeptidase activity
+    examples:
+      - value: 0.269 mole per liter per hour
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - aminopeptidase activity
+    is_a: core field
+    slot_uri: mixs:0000172
+    multivalued: false
+    range: QuantityValue
+  ammonium:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: micromole per liter, milligram per liter, parts per million
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of ammonium in the sample
+    title: ammonium
+    examples:
+      - value: 1.5 milligram per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - ammonium
+    is_a: core field
+    slot_uri: mixs:0000427
+    multivalued: false
+    range: QuantityValue
+  annual_precpt:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: millimeter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The average of all annual precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps.
+    title: mean annual precipitation
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - mean annual precipitation
+    is_a: core field
+    slot_uri: mixs:0000644
+    multivalued: false
+    range: QuantityValue
+  annual_temp:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: degree Celsius
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Mean annual temperature
+    title: mean annual temperature
+    examples:
+      - value: 12.5 degree Celsius
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - mean annual temperature
+    is_a: core field
+    slot_uri: mixs:0000642
+    multivalued: false
+    range: QuantityValue
+  bacteria_carb_prod:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: nanogram per hour
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Measurement of bacterial carbon production
+    title: bacterial carbon production
+    examples:
+      - value: 2.53 microgram per liter per hour
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - bacterial carbon production
+    is_a: core field
+    slot_uri: mixs:0000173
+    multivalued: false
+    range: QuantityValue
+  biotic_regm:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: free text
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Information about treatment(s) involving use of biotic factors, such as bacteria, viruses or fungi.
+    title: biotic regimen
+    examples:
+      - value: sample inoculated with Rhizobium spp. Culture
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - biotic regimen
+    is_a: core field
+    string_serialization: '{text}'
+    slot_uri: mixs:0001038
+    multivalued: false
+    range: TextValue
+  biotic_relationship:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: enumeration
+    description: Description of relationship(s) between the subject organism and other organism(s) it is associated with. E.g., parasite on species X; mutualist with species Y. The target organism is the subject of the relationship, and the other organism(s) is the object
+    title: observed biotic relationship
+    examples:
+      - value: free living
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - observed biotic relationship
+    is_a: nucleic acid sequence source field
+    slot_uri: mixs:0000028
+    multivalued: false
+    range: biotic_relationship_enum
+  bishomohopanol:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: microgram per liter, microgram per gram
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of bishomohopanol
+    title: bishomohopanol
+    examples:
+      - value: 14 microgram per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - bishomohopanol
+    is_a: core field
+    slot_uri: mixs:0000175
+    multivalued: false
+    range: QuantityValue
+  bromide:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: parts per million
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of bromide
+    title: bromide
+    examples:
+      - value: 0.05 parts per million
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - bromide
+    is_a: core field
+    slot_uri: mixs:0000176
+    multivalued: false
+    range: QuantityValue
+  calcium:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: milligram per liter, micromole per liter, parts per million
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of calcium in the sample
+    title: calcium
+    examples:
+      - value: 0.2 micromole per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - calcium
+    is_a: core field
+    slot_uri: mixs:0000432
+    multivalued: false
+    range: QuantityValue
+  carb_nitro_ratio:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Ratio of amount or concentrations of carbon to nitrogen
+    title: carbon/nitrogen ratio
+    examples:
+      - value: '0.417361111'
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - carbon/nitrogen ratio
+    is_a: core field
+    slot_uri: mixs:0000310
+    multivalued: false
+    range: QuantityValue
+  chem_administration:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: CHEBI;timestamp
+      occurrence:
+        tag: occurrence
+        value: m
+    description: List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi
+    title: chemical administration
+    examples:
+      - value: agar [CHEBI:2509];2018-05-11T20:00Z
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - chemical administration
+    is_a: core field
+    string_serialization: '{termLabel} {[termID]};{timestamp}'
+    slot_uri: mixs:0000751
+    multivalued: true
+    range: TextValue
+  chimera_check:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: name and version of software, parameters used
+    description: Tool(s) used for chimera checking, including version number and parameters, to discover and remove chimeric sequences. A chimeric sequence is comprised of two or more phylogenetically distinct parent sequences.
+    title: chimera check software
+    examples:
+      - value: uchime;v4.1;default parameters
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - chimera check software
+    is_a: sequencing field
+    string_serialization: '{software};{version};{parameters}'
+    slot_uri: mixs:0000052
+    multivalued: false
+    range: TextValue
+  chloride:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: milligram per liter, parts per million
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of chloride in the sample
+    title: chloride
+    examples:
+      - value: 5000 milligram per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - chloride
+    is_a: core field
+    slot_uri: mixs:0000429
+    multivalued: false
+    range: QuantityValue
+  chlorophyll:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: milligram per cubic meter, microgram per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of chlorophyll
+    title: chlorophyll
+    examples:
+      - value: 5 milligram per cubic meter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - chlorophyll
+    is_a: core field
+    slot_uri: mixs:0000177
+    multivalued: false
+    range: QuantityValue
+  climate_environment:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: climate name;treatment interval and duration
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Treatment involving an exposure to a particular climate; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple climates
+    title: climate environment
+    examples:
+      - value: tropical climate;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - climate environment
+    is_a: core field
+    string_serialization: '{text};{Rn/start_time/end_time/duration}'
+    slot_uri: mixs:0001040
+    multivalued: true
+    range: TextValue
+  collection_date:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: date and time
+    description: 'The time of sampling, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant'
+    title: collection date
+    examples:
+      - value: 2018-05-11T10:00:00+01:00; 2018-05-11
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - collection date
+    is_a: environment field
+    slot_uri: mixs:0000011
+    multivalued: false
+    range: date
+  crop_rotation:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: crop rotation status;schedule
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Whether or not crop is rotated, and if yes, rotation schedule
+    title: history/crop rotation
+    examples:
+      - value: yes;R2/2017-01-01/2018-12-31/P6M
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - history/crop rotation
+    is_a: core field
+    string_serialization: '{boolean};{Rn/start_time/end_time/duration}'
+    slot_uri: mixs:0000318
+    multivalued: false
+    range: TextValue
+  cur_land_use:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: enumeration
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Present state of sample site
+    title: current land use
+    examples:
+      - value: conifers
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - current land use
+    is_a: core field
+    slot_uri: mixs:0001080
+    multivalued: false
+    range: cur_land_use_enum
+  cur_vegetation:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: current vegetation type
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Vegetation classification from one or more standard classification systems, or agricultural crop
+    title: current vegetation
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - current vegetation
+    is_a: core field
+    string_serialization: '{text}'
+    slot_uri: mixs:0000312
+    multivalued: false
+    range: TextValue
+  cur_vegetation_meth:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID,DOI or url
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Reference or method used in vegetation classification
+    title: current vegetation method
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - current vegetation method
+    is_a: core field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: mixs:0000314
+    multivalued: false
+    range: TextValue
+  density:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: gram per cubic meter, gram per cubic centimeter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Density of the sample, which is its mass per unit volume (aka volumetric mass density)
+    title: density
+    examples:
+      - value: 1000 kilogram per cubic meter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - density
+    is_a: core field
+    slot_uri: mixs:0000435
+    multivalued: false
+    range: QuantityValue
+  depth:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+    description: The vertical distance below local surface, e.g. for sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples.
+    title: depth
+    examples:
+      - value: 10 meter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - depth
+    is_a: environment field
+    slot_uri: mixs:0000018
+    multivalued: false
+    range: QuantityValue
+  diss_carb_dioxide:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: micromole per liter, milligram per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of dissolved carbon dioxide in the sample or liquid portion of the sample
+    title: dissolved carbon dioxide
+    examples:
+      - value: 5 milligram per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - dissolved carbon dioxide
+    is_a: core field
+    slot_uri: mixs:0000436
+    multivalued: false
+    range: QuantityValue
+  diss_hydrogen:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: micromole per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of dissolved hydrogen
+    title: dissolved hydrogen
+    examples:
+      - value: 0.3 micromole per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - dissolved hydrogen
+    is_a: core field
+    slot_uri: mixs:0000179
+    multivalued: false
+    range: QuantityValue
+  diss_inorg_carb:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: microgram per liter, milligram per liter, parts per million
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter
+    title: dissolved inorganic carbon
+    examples:
+      - value: 2059 micromole per kilogram
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - dissolved inorganic carbon
+    is_a: core field
+    slot_uri: mixs:0000434
+    multivalued: false
+    range: QuantityValue
+  diss_inorg_phosp:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: microgram per liter, milligram per liter, parts per million
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of dissolved inorganic phosphorus in the sample
+    title: dissolved inorganic phosphorus
+    examples:
+      - value: 56.5 micromole per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - dissolved inorganic phosphorus
+    is_a: core field
+    slot_uri: mixs:0000106
+    multivalued: false
+    range: QuantityValue
+  diss_org_carb:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: micromole per liter, milligram per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid
+    title: dissolved organic carbon
+    examples:
+      - value: 197 micromole per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - dissolved organic carbon
+    is_a: core field
+    slot_uri: mixs:0000433
+    multivalued: false
+    range: QuantityValue
+  diss_org_nitro:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: microgram per liter, milligram per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Dissolved organic nitrogen concentration measured as; total dissolved nitrogen - NH4 - NO3 - NO2
+    title: dissolved organic nitrogen
+    examples:
+      - value: 0.05 micromole per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - dissolved organic nitrogen
+    is_a: core field
+    slot_uri: mixs:0000162
+    multivalued: false
+    range: QuantityValue
+  diss_oxygen:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: micromole per kilogram, milligram per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of dissolved oxygen
+    title: dissolved oxygen
+    examples:
+      - value: 175 micromole per kilogram
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - dissolved oxygen
+    is_a: core field
+    slot_uri: mixs:0000119
+    multivalued: false
+    range: QuantityValue
+  drainage_class:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: enumeration
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Drainage classification from a standard system such as the USDA system
+    title: drainage classification
+    examples:
+      - value: well
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - drainage classification
+    is_a: core field
+    slot_uri: mixs:0001085
+    multivalued: false
+    range: drainage_class_enum
+  elev:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+    description: Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit.
+    title: elevation
+    examples:
+      - value: 100 meter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - elevation
+    is_a: environment field
+    slot_uri: mixs:0000093
+    multivalued: false
+    range: QuantityValue
+  env_broad_scale:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: The major environment type(s) where the sample was collected. Recommend subclasses of biome [ENVO:00000428]. Multiple terms can be separated by one or more pipes.
+    description: 'Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO’s biome class:  http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'
+    title: broad-scale environmental context
+    examples:
+      - value: oceanic epipelagic zone biome [ENVO:01000033] for annotating a water sample from the photic zone in middle of the Atlantic Ocean
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - broad-scale environmental context
+    is_a: environment field
+    string_serialization: '{termLabel} {[termID]}'
+    slot_uri: mixs:0000012
+    multivalued: false
+    range: ControlledIdentifiedTermValue
+  env_local_scale:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: Environmental entities having causal influences upon the entity at time of sampling.
+    description: 'Report the entity or entities which are in the sample or specimen’s local vicinity and which you believe have significant causal influences on your sample or specimen. We recommend using EnvO terms which are of smaller spatial grain than your entry for env_broad_scale. Terms, such as anatomical sites, from other OBO Library ontologies which interoperate with EnvO (e.g. UBERON) are accepted in this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'
+    title: local environmental context
+    examples:
+      - value: 'litter layer [ENVO:01000338]; Annotating a pooled sample taken from various vegetation layers in a forest consider: canopy [ENVO:00000047]|herb and fern layer [ENVO:01000337]|litter layer [ENVO:01000338]|understory [01000335]|shrub layer [ENVO:01000336].'
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - local environmental context
+    is_a: environment field
+    string_serialization: '{termLabel} {[termID]}'
+    slot_uri: mixs:0000013
+    multivalued: false
+    range: ControlledIdentifiedTermValue
+  env_medium:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: The material displaced by the entity at time of sampling. Recommend subclasses of environmental material [ENVO:00010483].
+    description: 'Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top).'
+    title: environmental medium
+    examples:
+      - value: 'soil [ENVO:00001998]; Annotating a fish swimming in the upper 100 m of the Atlantic Ocean, consider: ocean water [ENVO:00002151]. Example: Annotating a duck on a pond consider: pond water [ENVO:00002228]|air [ENVO_00002005]'
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - environmental medium
+    is_a: environment field
+    string_serialization: '{termLabel} {[termID]}'
+    slot_uri: mixs:0000014
+    multivalued: false
+    range: ControlledIdentifiedTermValue
+  experimental_factor:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: text or EFO and/or OBI
+    description: Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms, please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI
+    title: experimental factor
+    examples:
+      - value: time series design [EFO:EFO_0001779]
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - experimental factor
+    is_a: investigation field
+    string_serialization: '{termLabel} {[termID]}|{text}'
+    slot_uri: mixs:0000008
+    multivalued: false
+    range: TextValue
+  extreme_event:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: date
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Unusual physical events that may have affected microbial populations
+    title: history/extreme events
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - history/extreme events
+    is_a: core field
+    slot_uri: mixs:0000320
+    multivalued: false
+    range: date
+  fao_class:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: enumeration
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Soil classification from the FAO World Reference Database for Soil Resources. The list can be found at http://www.fao.org/nr/land/sols/soil/wrb-soil-maps/reference-groups
+    title: soil_taxonomic/FAO classification
+    examples:
+      - value: Luvisols
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - soil_taxonomic/FAO classification
+    is_a: core field
+    slot_uri: mixs:0001083
+    multivalued: false
+    range: fao_class_enum
+  fire:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: date
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Historical and/or physical evidence of fire
+    title: history/fire
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - history/fire
+    is_a: core field
+    slot_uri: mixs:0001086
+    multivalued: false
+    range: date
+  flooding:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: date
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Historical and/or physical evidence of flooding
+    title: history/flooding
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - history/flooding
+    is_a: core field
+    slot_uri: mixs:0000319
+    multivalued: false
+    range: date
+  gaseous_environment:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: gaseous compound name;gaseous compound amount;treatment interval and duration
+      preferred_unit:
+        tag: preferred_unit
+        value: micromole per liter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens
+    title: gaseous environment
+    examples:
+      - value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - gaseous environment
+    is_a: core field
+    string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
+    slot_uri: mixs:0000558
+    multivalued: true
+    range: TextValue
+  geo_loc_name:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: 'country or sea name (INSDC or GAZ): region(GAZ), specific location name'
+    description: The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)
+    title: geographic location (country and/or sea,region)
+    examples:
+      - value: 'USA: Maryland, Bethesda'
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - geographic location (country and/or sea,region)
+    is_a: environment field
+    string_serialization: '{term}: {term}, {text}'
+    slot_uri: mixs:0000010
+    multivalued: false
+    range: TextValue
+  glucosidase_act:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: mol per liter per hour
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Measurement of glucosidase activity
+    title: glucosidase activity
+    examples:
+      - value: 5 mol per liter per hour
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - glucosidase activity
+    is_a: core field
+    slot_uri: mixs:0000137
+    multivalued: false
+    range: QuantityValue
+  growth_facil:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: free text or CO
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: 'Type of facility where the sampled plant was grown; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field. Alternatively use Crop Ontology (CO) terms, see http://www.cropontology.org/ontology/CO_715/Crop%20Research'
+    title: growth facility
+    examples:
+      - value: Growth chamber [CO_715:0000189]
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - growth facility
+    is_a: core field
+    string_serialization: '{text}|{termLabel} {[termID]}'
+    slot_uri: mixs:0001043
+    multivalued: false
+    range: TextValue
+  heavy_metals:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: heavy metal name;measurement value unit
+      preferred_unit:
+        tag: preferred_unit
+        value: microgram per gram
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Heavy metals present in the sequenced sample and their concentrations. For multiple heavy metals and concentrations, add multiple copies of this field.
+    title: extreme_unusual_properties/heavy metals
+    examples:
+      - value: mercury;0.09 micrograms per gram
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - extreme_unusual_properties/heavy metals
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: mixs:0000652
+    multivalued: true
+    range: TextValue
+  heavy_metals_meth:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID,DOI or url
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Reference or method used in determining heavy metals
+    title: extreme_unusual_properties/heavy metals method
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - extreme_unusual_properties/heavy metals method
+    is_a: core field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: mixs:0000343
+    multivalued: false
+    range: TextValue
+  humidity_regm:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: humidity value;treatment interval and duration
+      preferred_unit:
+        tag: preferred_unit
+        value: gram per cubic meter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
+    title: humidity regimen
+    examples:
+      - value: 25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - humidity regimen
+    is_a: core field
+    string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
+    slot_uri: mixs:0000568
+    multivalued: true
+    range: TextValue
+  lat_lon:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: decimal degrees,  limit to 8 decimal points
+    description: The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees and in WGS84 system
+    title: geographic location (latitude and longitude)
+    examples:
+      - value: 50.586825 6.408977
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - geographic location (latitude and longitude)
+    is_a: environment field
+    string_serialization: '{float} {float}'
+    slot_uri: mixs:0000009
+    multivalued: false
+    range: TextValue
+  light_regm:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: exposure type;light intensity;light quality
+      preferred_unit:
+        tag: preferred_unit
+        value: lux; micrometer, nanometer, angstrom
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Information about treatment(s) involving exposure to light, including both light intensity and quality.
+    title: light regimen
+    examples:
+      - value: incandescant light;10 lux;450 nanometer
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - light regimen
+    is_a: core field
+    string_serialization: '{text};{float} {unit};{float} {unit}'
+    slot_uri: mixs:0000569
+    multivalued: false
+    range: TextValue
+  link_addit_analys:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID,DOI or url
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Link to additional analysis results performed on the sample
+    title: links to additional analysis
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - links to additional analysis
+    is_a: core field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: mixs:0000340
+    multivalued: false
+    range: TextValue
+  link_class_info:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID,DOI or url
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Link to digitized soil maps or other soil classification information
+    title: link to classification information
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - link to classification information
+    is_a: core field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: mixs:0000329
+    multivalued: false
+    range: TextValue
+  link_climate_info:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID,DOI or url
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Link to climate resource
+    title: link to climate information
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - link to climate information
+    is_a: core field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: mixs:0000328
+    multivalued: false
+    range: TextValue
+  local_class:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: local classification name
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Soil classification based on local soil classification system
+    title: soil_taxonomic/local classification
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - soil_taxonomic/local classification
+    is_a: core field
+    string_serialization: '{text}'
+    slot_uri: mixs:0000330
+    multivalued: false
+    range: TextValue
+  local_class_meth:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID,DOI or url
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Reference or method used in determining the local soil classification
+    title: soil_taxonomic/local classification method
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - soil_taxonomic/local classification method
+    is_a: core field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: mixs:0000331
+    multivalued: false
+    range: TextValue
+  magnesium:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: mole per liter, milligram per liter, parts per million, micromole per kilogram
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of magnesium in the sample
+    title: magnesium
+    examples:
+      - value: 52.8 micromole per kilogram
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - magnesium
+    is_a: core field
+    slot_uri: mixs:0000431
+    multivalued: false
+    range: QuantityValue
+  mean_frict_vel:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: meter per second
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Measurement of mean friction velocity
+    title: mean friction velocity
+    examples:
+      - value: 0.5 meter per second
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - mean friction velocity
+    is_a: core field
+    slot_uri: mixs:0000498
+    multivalued: false
+    range: QuantityValue
+  mean_peak_frict_vel:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: meter per second
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Measurement of mean peak friction velocity
+    title: mean peak friction velocity
+    examples:
+      - value: 1 meter per second
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - mean peak friction velocity
+    is_a: core field
+    slot_uri: mixs:0000502
+    multivalued: false
+    range: QuantityValue
+  misc_param:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: parameter name;measurement value
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Any other measurement performed or parameter collected, that is not listed here
+    title: miscellaneous parameter
+    examples:
+      - value: Bicarbonate ion concentration;2075 micromole per kilogram
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - miscellaneous parameter
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: mixs:0000752
+    multivalued: true
+    range: TextValue
+  n_alkanes:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: n-alkane name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: micromole per liter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Concentration of n-alkanes; can include multiple n-alkanes
+    title: n-alkanes
+    examples:
+      - value: n-hexadecane;100 milligram per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - n-alkanes
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: mixs:0000503
+    multivalued: true
+    range: TextValue
+  nitrate:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: micromole per liter, milligram per liter, parts per million
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of nitrate in the sample
+    title: nitrate
+    examples:
+      - value: 65 micromole per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - nitrate
+    is_a: core field
+    slot_uri: mixs:0000425
+    multivalued: false
+    range: QuantityValue
+  nitrite:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: micromole per liter, milligram per liter, parts per million
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of nitrite in the sample
+    title: nitrite
+    examples:
+      - value: 0.5 micromole per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - nitrite
+    is_a: core field
+    slot_uri: mixs:0000426
+    multivalued: false
+    range: QuantityValue
+  nucl_acid_amp:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID, DOI or URL
+    description: A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the enzymatic amplification (PCR, TMA, NASBA) of specific nucleic acids
+    title: nucleic acid amplification
+    examples:
+      - value: https://phylogenomics.me/protocols/16s-pcr-protocol/
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - nucleic acid amplification
+    is_a: sequencing field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: mixs:0000038
+    multivalued: false
+    range: TextValue
+  nucl_acid_ext:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID, DOI or URL
+    description: A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the material separation to recover the nucleic acid fraction from a sample
+    title: nucleic acid extraction
+    examples:
+      - value: https://mobio.com/media/wysiwyg/pdfs/protocols/12888.pdf
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - nucleic acid extraction
+    is_a: sequencing field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: mixs:0000037
+    multivalued: false
+    range: TextValue
+  org_matter:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: microgram per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of organic matter
+    title: organic matter
+    examples:
+      - value: 1.75 milligram per cubic meter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - organic matter
+    is_a: core field
+    slot_uri: mixs:0000204
+    multivalued: false
+    range: QuantityValue
+  org_nitro:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: microgram per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of organic nitrogen
+    title: organic nitrogen
+    examples:
+      - value: 4 micromole per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - organic nitrogen
+    is_a: core field
+    slot_uri: mixs:0000205
+    multivalued: false
+    range: QuantityValue
+  organism_count:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: organism name;measurement value;enumeration
+      preferred_unit:
+        tag: preferred_unit
+        value: number of cells per cubic meter, number of cells per milliliter, number of cells per cubic centimeter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: 'Total cell count of any organism (or group of organisms) per gram, volume or area of sample, should include name of organism followed by count. The method that was used for the enumeration (e.g. qPCR, atp, mpn, etc.) Should also be provided. (example: total prokaryotes; 3.5e7 cells per ml; qpcr)'
+    title: organism count
+    examples:
+      - value: total prokaryotes;3.5e7 cells per milliliter;qPCR
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - organism count
+    is_a: core field
+    slot_uri: mixs:0000103
+    multivalued: true
+    range: organism_count_enum
+  oxy_stat_samp:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: enumeration
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Oxygenation status of sample
+    title: oxygenation status of sample
+    examples:
+      - value: aerobic
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - oxygenation status of sample
+    is_a: core field
+    slot_uri: mixs:0000753
+    multivalued: false
+    range: oxy_stat_samp_enum
+  part_org_carb:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: microgram per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of particulate organic carbon
+    title: particulate organic carbon
+    examples:
+      - value: 1.92 micromole per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - particulate organic carbon
+    is_a: core field
+    slot_uri: mixs:0000515
+    multivalued: false
+    range: QuantityValue
+  pcr_cond:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final elongation:degrees_minutes;total cycles
+    description: Description of reaction conditions and components of PCR in the form of 'initial denaturation:94degC_1.5min; annealing=...'
+    title: pcr conditions
+    examples:
+      - value: initial denaturation:94_3;annealing:50_1;elongation:72_1.5;final elongation:72_10;35
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - pcr conditions
+    is_a: sequencing field
+    string_serialization: initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final elongation:degrees_minutes;total cycles
+    slot_uri: mixs:0000049
+    multivalued: false
+    range: TextValue
+  pcr_primers:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: 'FWD: forward primer sequence;REV:reverse primer sequence'
+    description: PCR primers that were used to amplify the sequence of the targeted gene, locus or subfragment. This field should contain all the primers used for a single PCR reaction if multiple forward or reverse primers are present in a single PCR reaction. The primer sequence should be reported in uppercase letters
+    title: pcr primers
+    examples:
+      - value: FWD:GTGCCAGCMGCCGCGGTAA;REV:GGACTACHVGGGTWTCTAAT
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - pcr primers
+    is_a: sequencing field
+    string_serialization: FWD:{dna};REV:{dna}
+    slot_uri: mixs:0000046
+    multivalued: false
+    range: TextValue
+  perturbation:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: perturbation type name;perturbation interval and duration
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Type of perturbation, e.g. chemical administration, physical disturbance, etc., coupled with perturbation regimen including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types
+    title: perturbation
+    examples:
+      - value: antibiotic addition;R2/2018-05-11T14:30Z/2018-05-11T19:30Z/P1H30M
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - perturbation
+    is_a: core field
+    string_serialization: '{text};{Rn/start_time/end_time/duration}'
+    slot_uri: mixs:0000754
+    multivalued: true
+    range: TextValue
+  petroleum_hydrocarb:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: micromole per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of petroleum hydrocarbon
+    title: petroleum hydrocarbon
+    examples:
+      - value: 0.05 micromole per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - petroleum hydrocarbon
+    is_a: core field
+    slot_uri: mixs:0000516
+    multivalued: false
+    range: QuantityValue
+  ph:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Ph measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid
+    title: pH
+    examples:
+      - value: '7.2'
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - pH
+    is_a: core field
+    slot_uri: mixs:0001001
+    multivalued: false
+    range: double
+  ph_meth:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID,DOI or url
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Reference or method used in determining ph
+    title: pH method
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - pH method
+    is_a: core field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: mixs:0001106
+    multivalued: false
+    range: TextValue
+  phaeopigments:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: phaeopigment name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: milligram per cubic meter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Concentration of phaeopigments; can include multiple phaeopigments
+    title: phaeopigments
+    examples:
+      - value: 2.5 milligram per cubic meter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - phaeopigments
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: mixs:0000180
+    multivalued: true
+    range: TextValue
+  phosphate:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: micromole per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of phosphate
+    title: phosphate
+    examples:
+      - value: 0.7 micromole per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - phosphate
+    is_a: core field
+    slot_uri: mixs:0000505
+    multivalued: false
+    range: QuantityValue
+  phosplipid_fatt_acid:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: phospholipid fatty acid name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: mole per gram, mole per liter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Concentration of phospholipid fatty acids; can include multiple values
+    title: phospholipid fatty acid
+    examples:
+      - value: 2.98 milligram per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - phospholipid fatty acid
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: mixs:0000181
+    multivalued: true
+    range: TextValue
+  pool_dna_extracts:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: pooling status;number of pooled extracts
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Indicate whether multiple DNA extractions were mixed. If the answer yes, the number of extracts that were pooled should be given
+    title: pooling of DNA extracts (if done)
+    examples:
+      - value: yes;5
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - pooling of DNA extracts (if done)
+    is_a: core field
+    string_serialization: '{boolean};{integer}'
+    slot_uri: mixs:0000325
+    multivalued: false
+    range: TextValue
+  potassium:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: milligram per liter, parts per million
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of potassium in the sample
+    title: potassium
+    examples:
+      - value: 463 milligram per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - potassium
+    is_a: core field
+    slot_uri: mixs:0000430
+    multivalued: false
+    range: QuantityValue
+  pressure:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: atmosphere
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Pressure to which the sample is subject to, in atmospheres
+    title: pressure
+    examples:
+      - value: 50 atmosphere
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - pressure
+    is_a: core field
+    slot_uri: mixs:0000412
+    multivalued: false
+    range: QuantityValue
+  profile_position:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: enumeration
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Cross-sectional position in the hillslope where sample was collected.sample area position in relation to surrounding areas
+    title: profile position
+    examples:
+      - value: summit
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - profile position
+    is_a: core field
+    slot_uri: mixs:0001084
+    multivalued: false
+    range: profile_position_enum
+  redox_potential:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: millivolt
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Redox potential, measured relative to a hydrogen cell, indicating oxidation or reduction potential
+    title: redox potential
+    examples:
+      - value: 300 millivolt
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - redox potential
+    is_a: core field
+    slot_uri: mixs:0000182
+    multivalued: false
+    range: QuantityValue
+  rel_to_oxygen:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: enumeration
+    description: Is this organism an aerobe, anaerobe? Please note that aerobic and anaerobic are valid descriptors for microbial environments
+    title: relationship to oxygen
+    examples:
+      - value: aerobe
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - relationship to oxygen
+    is_a: nucleic acid sequence source field
+    slot_uri: mixs:0000015
+    multivalued: false
+    range: rel_to_oxygen_enum
+  salinity:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: practical salinity unit, percentage
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The total concentration of all dissolved salts in a liquid or solid sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater.
+    title: salinity
+    examples:
+      - value: 25 practical salinity unit
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - salinity
+    is_a: core field
+    slot_uri: mixs:0000183
+    multivalued: false
+    range: QuantityValue
+  salinity_meth:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID,DOI or url
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Reference or method used in determining salinity
+    title: salinity method
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - salinity method
+    is_a: core field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: mixs:0000341
+    multivalued: false
+    range: TextValue
+  samp_collec_method:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID,DOI,url , or text
+    description: The method employed for collecting the sample.
+    title: sample collection method
+    examples:
+      - value: swabbing
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - sample collection method
+    is_a: nucleic acid sequence source field
+    string_serialization: '{PMID}|{DOI}|{URL}|{text}'
+    slot_uri: mixs:0001225
+    multivalued: false
+    range: TextValue
+  samp_mat_process:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: text
+    description: A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed.
+    title: sample material processing
+    examples:
+      - value: filtering of seawater, storing samples in ethanol
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - sample material processing
+    is_a: nucleic acid sequence source field
+    string_serialization: '{text}'
+    slot_uri: mixs:0000016
+    multivalued: false
+    range: TextValue
+  samp_name:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: text
+    description: A local identifier or name that for the material sample used for extracting nucleic acids, and subsequent sequencing. It can refer either to the original material collected or to any derived sub-samples. It can have any format, but we suggest that you make it concise, unique and consistent within your lab, and as informative as possible. INSDC requires every sample name from a single Submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to sample_name.
+    title: sample name
+    examples:
+      - value: ISDsoil1
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - sample name
+    is_a: investigation field
+    string_serialization: '{text}'
+    slot_uri: mixs:0001107
+    multivalued: false
+    range: TextValue
+  samp_size:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: millliter, gram, milligram, liter
+    description: The total amount or size (volume (ml), mass (g) or area (m2) ) of sample collected.
+    title: amount or size of sample collected
+    examples:
+      - value: 5 liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - amount or size of sample collected
+    is_a: nucleic acid sequence source field
+    slot_uri: mixs:0000001
+    multivalued: false
+    range: QuantityValue
+  samp_store_dur:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: duration
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Duration for which the sample was stored
+    title: sample storage duration
+    examples:
+      - value: P1Y6M
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - sample storage duration
+    is_a: core field
+    string_serialization: '{duration}'
+    slot_uri: mixs:0000116
+    multivalued: false
+    range: TextValue
+  samp_store_loc:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: location name
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Location at which sample was stored, usually name of a specific freezer/room
+    title: sample storage location
+    examples:
+      - value: Freezer no:5
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - sample storage location
+    is_a: core field
+    string_serialization: '{text}'
+    slot_uri: mixs:0000755
+    multivalued: false
+    range: TextValue
+  samp_store_temp:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: degree Celsius
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Temperature at which sample was stored, e.g. -80 degree Celsius
+    title: sample storage temperature
+    examples:
+      - value: -80 degree Celsius
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - sample storage temperature
+    is_a: core field
+    slot_uri: mixs:0000110
+    multivalued: false
+    range: QuantityValue
+  samp_taxon_id:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: Taxonomy ID
+    description: NCBI taxon id of the sample.  Maybe be a single taxon or mixed taxa sample. Use 'synthetic metagenome’ for mock community/positive controls, or 'blank sample' for negative controls.
+    title: Taxonomy ID of DNA sample
+    examples:
+      - value: Gut Metagenome [NCBI:txid749906]
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - Taxonomy ID of DNA sample
+    is_a: investigation field
+    string_serialization: '{text} [NCBI:txid]'
+    slot_uri: mixs:0001320
+    multivalued: false
+    range: TextValue
+  samp_vol_we_dna_ext:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: millliter, gram, milligram, square centimeter
+    description: 'Volume (ml) or mass (g) of total collected sample processed for DNA extraction. Note: total sample collected should be entered under the term Sample Size (MIXS:0000001).'
+    title: sample volume or weight for DNA extraction
+    examples:
+      - value: 1500 milliliter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - sample volume or weight for DNA extraction
+    is_a: nucleic acid sequence source field
+    slot_uri: mixs:0000111
+    multivalued: false
+    range: QuantityValue
+  season_precpt:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: millimeter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The average of all seasonal precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps.
+    title: mean seasonal precipitation
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - mean seasonal precipitation
+    is_a: core field
+    slot_uri: mixs:0000645
+    multivalued: false
+    range: QuantityValue
+  season_temp:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: degree Celsius
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Mean seasonal temperature
+    title: mean seasonal temperature
+    examples:
+      - value: 18 degree Celsius
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - mean seasonal temperature
+    is_a: core field
+    slot_uri: mixs:0000643
+    multivalued: false
+    range: QuantityValue
+  seq_meth:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: Text or OBI
+    description: Sequencing machine used. Where possible the term should be taken from the OBI list of DNA sequencers (http://purl.obolibrary.org/obo/OBI_0400103).
+    title: sequencing method
+    examples:
+      - value: 454 Genome Sequencer FLX [OBI:0000702]
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - sequencing method
+    is_a: sequencing field
+    string_serialization: '{termLabel} {[termID]}|{text}'
+    slot_uri: mixs:0000050
+    multivalued: false
+    range: TextValue
+  seq_quality_check:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: none or manually edited
+    description: Indicate if the sequence has been called by automatic systems (none) or undergone a manual editing procedure (e.g. by inspecting the raw data or chromatograms). Applied only for sequences that are not submitted to SRA,ENA or DRA
+    title: sequence quality check
+    examples:
+      - value: none
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - sequence quality check
+    is_a: sequencing field
+    string_serialization: '[none|manually edited]'
+    slot_uri: mixs:0000051
+    multivalued: false
+    range: TextValue
+  sieving:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: design name and/or size;amount
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Collection design of pooled samples and/or sieve size and amount of sample sieved
+    title: composite design/sieving
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - composite design/sieving
+    is_a: core field
+    string_serialization: '{{text}|{float} {unit}};{float} {unit}'
+    slot_uri: mixs:0000322
+    multivalued: false
+    range: TextValue
+  size_frac_low:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: value
+      preferred_unit:
+        tag: preferred_unit
+        value: micrometer
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample
+    title: size-fraction lower threshold
+    examples:
+      - value: 0.2 micrometer
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - size-fraction lower threshold
+    is_a: core field
+    slot_uri: mixs:0000735
+    multivalued: false
+    range: QuantityValue
+  size_frac_up:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: value
+      preferred_unit:
+        tag: preferred_unit
+        value: micrometer
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample
+    title: size-fraction upper threshold
+    examples:
+      - value: 20 micrometer
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - size-fraction upper threshold
+    is_a: core field
+    slot_uri: mixs:0000736
+    multivalued: false
+    range: QuantityValue
+  slope_aspect:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: degree
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees); e.g., nw or 315 degrees. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.
+    title: slope aspect
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - slope aspect
+    is_a: core field
+    slot_uri: mixs:0000647
+    multivalued: false
+    range: QuantityValue
+  slope_gradient:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: percentage
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Commonly called 'slope'. The angle between ground surface and a horizontal line (in percent). This is the direction that overland water would flow. This measure is usually taken with a hand level meter or clinometer
+    title: slope gradient
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - slope gradient
+    is_a: core field
+    slot_uri: mixs:0000646
+    multivalued: false
+    range: QuantityValue
+  sodium:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: milligram per liter, parts per million
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Sodium concentration in the sample
+    title: sodium
+    examples:
+      - value: 10.5 milligram per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - sodium
+    is_a: core field
+    slot_uri: mixs:0000428
+    multivalued: false
+    range: QuantityValue
+  soil_type:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: ENVO_00001998
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Description of the soil type or classification. This field accepts terms under soil (http://purl.obolibrary.org/obo/ENVO_00001998).  Multiple terms can be separated by pipes.
+    title: soil type
+    examples:
+      - value: plinthosol [ENVO:00002250]
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - soil type
+    is_a: core field
+    string_serialization: '{termLabel} {[termID]}'
+    slot_uri: mixs:0000332
+    multivalued: false
+    range: TextValue
+  soil_type_meth:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID,DOI or url
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Reference or method used in determining soil series name or other lower-level classification
+    title: soil type method
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - soil type method
+    is_a: core field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: mixs:0000334
+    multivalued: false
+    range: TextValue
+  source_mat_id:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: 'for cultures of microorganisms: identifiers for two culture collections; for other material a unique arbitrary identifer'
+    description: A unique identifier assigned to a material sample (as defined by http://rs.tdwg.org/dwc/terms/materialSampleID, and as opposed to a particular digital record of a material sample) used for extracting nucleic acids, and subsequent sequencing. The identifier can refer either to the original material collected or to any derived sub-samples. The INSDC qualifiers /specimen_voucher, /bio_material, or /culture_collection may or may not share the same value as the source_mat_id field. For instance, the /specimen_voucher qualifier and source_mat_id may both contain 'UAM:Herps:14' , referring to both the specimen voucher and sampled tissue with the same identifier. However, the /culture_collection qualifier may refer to a value from an initial culture (e.g. ATCC:11775) while source_mat_id would refer to an identifier from some derived culture from which the nucleic acids were extracted (e.g. xatc123 or ark:/2154/R2).
+    title: source material identifiers
+    examples:
+      - value: MPI012345
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - source material identifiers
+    is_a: nucleic acid sequence source field
+    string_serialization: '{text}'
+    slot_uri: mixs:0000026
+    multivalued: false
+    range: TextValue
+  store_cond:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: storage condition type;duration
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Explain how and for how long the soil sample was stored before DNA extraction (fresh/frozen/other).
+    title: storage conditions
+    examples:
+      - value: -20 degree Celsius freezer;P2Y10D
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - storage conditions
+    is_a: core field
+    string_serialization: '{text};{duration}'
+    slot_uri: mixs:0000327
+    multivalued: false
+    range: TextValue
+  sulfate:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: micromole per liter, milligram per liter, parts per million
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of sulfate in the sample
+    title: sulfate
+    examples:
+      - value: 5 micromole per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - sulfate
+    is_a: core field
+    slot_uri: mixs:0000423
+    multivalued: false
+    range: QuantityValue
+  sulfide:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: micromole per liter, milligram per liter, parts per million
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of sulfide in the sample
+    title: sulfide
+    examples:
+      - value: 2 micromole per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - sulfide
+    is_a: core field
+    slot_uri: mixs:0000424
+    multivalued: false
+    range: QuantityValue
+  target_gene:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: gene name
+    description: Targeted gene or locus name for marker gene studies
+    title: target gene
+    examples:
+      - value: 16S rRNA, 18S rRNA, nif, amoA, rpo
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - target gene
+    is_a: sequencing field
+    string_serialization: '{text}'
+    slot_uri: mixs:0000044
+    multivalued: false
+    range: TextValue
+  target_subfragment:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: gene fragment name
+    description: Name of subfragment of a gene or locus. Important to e.g. identify special regions on marker genes like V6 on 16S rRNA
+    title: target subfragment
+    examples:
+      - value: V6, V9, ITS
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - target subfragment
+    is_a: sequencing field
+    string_serialization: '{text}'
+    slot_uri: mixs:0000045
+    multivalued: false
+    range: TextValue
+  temp:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: degree Celsius
+    description: Temperature of the sample at the time of sampling.
+    title: temperature
+    examples:
+      - value: 25 degree Celsius
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - temperature
+    is_a: environment field
+    slot_uri: mixs:0000113
+    multivalued: false
+    range: QuantityValue
+  tidal_stage:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: enumeration
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Stage of tide
+    title: tidal stage
+    examples:
+      - value: high tide
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - tidal stage
+    is_a: core field
+    slot_uri: mixs:0000750
+    multivalued: false
+    range: tidal_stage_enum
+  tillage:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: enumeration
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Note method(s) used for tilling
+    title: history/tillage
+    examples:
+      - value: chisel
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - history/tillage
+    is_a: core field
+    slot_uri: mixs:0001081
+    multivalued: true
+    range: tillage_enum
+  tot_carb:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: microgram per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Total carbon content
+    title: total carbon
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - total carbon
+    is_a: core field
+    slot_uri: mixs:0000525
+    multivalued: false
+    range: QuantityValue
+  tot_depth_water_col:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: meter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Measurement of total depth of water column
+    title: total depth of water column
+    examples:
+      - value: 500 meter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - total depth of water column
+    is_a: core field
+    slot_uri: mixs:0000634
+    multivalued: false
+    range: QuantityValue
+  tot_diss_nitro:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: microgram per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: 'Total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen'
+    title: total dissolved nitrogen
+    examples:
+      - value: 40 microgram per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - total dissolved nitrogen
+    is_a: core field
+    slot_uri: mixs:0000744
+    multivalued: false
+    range: QuantityValue
+  tot_nitro_cont_meth:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID,DOI or url
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Reference or method used in determining the total nitrogen
+    title: total nitrogen content method
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - total nitrogen content method
+    is_a: core field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: mixs:0000338
+    multivalued: false
+    range: TextValue
+  tot_nitro_content:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: microgram per liter, micromole per liter, milligram per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Total nitrogen content of the sample
+    title: total nitrogen content
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - total nitrogen content
+    is_a: core field
+    slot_uri: mixs:0000530
+    multivalued: false
+    range: QuantityValue
+  tot_org_c_meth:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID,DOI or url
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Reference or method used in determining total organic carbon
+    title: total organic carbon method
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - total organic carbon method
+    is_a: core field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: mixs:0000337
+    multivalued: false
+    range: TextValue
+  tot_org_carb:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: gram Carbon per kilogram sample material
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: 'Definition for soil: total organic carbon content of the soil, definition otherwise: total organic carbon content'
+    title: total organic carbon
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - total organic carbon
+    is_a: core field
+    slot_uri: mixs:0000533
+    multivalued: false
+    range: QuantityValue
+  tot_phosp:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: micromole per liter, milligram per liter, parts per million
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: 'Total phosphorus concentration in the sample, calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus'
+    title: total phosphorus
+    examples:
+      - value: 0.03 milligram per liter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - total phosphorus
+    is_a: core field
+    slot_uri: mixs:0000117
+    multivalued: false
+    range: QuantityValue
+  url:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: URL
+      occurrence:
+        tag: occurrence
+        value: m
+    description: A related resource that is referenced, cited, or otherwise associated to the sequence.
+    title: relevant electronic resources
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - relevant electronic resources
+    is_a: core field
+    string_serialization: '{URL}'
+    slot_uri: mixs:0000091
+    multivalued: true
+    range: TextValue
+  water_cont_soil_meth:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID,DOI or url
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Reference or method used in determining the water content of soil
+    title: water content method
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - water content method
+    is_a: core field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: mixs:0000323
+    multivalued: false
+    range: TextValue
+  water_content:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: gram per gram or cubic centimeter per cubic centimeter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Water content measurement
+    title: water content
+    examples:
+      - value: ''
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - water content
+    is_a: core field
+    slot_uri: mixs:0000185
+    multivalued: false
+    range: QuantityValue
+  watering_regm:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value;treatment interval and duration
+      preferred_unit:
+        tag: preferred_unit
+        value: milliliter, liter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Information about treatment involving an exposure to watering frequencies, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
+    title: watering regimen
+    examples:
+      - value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - watering regimen
+    is_a: core field
+    string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
+    slot_uri: mixs:0000591
+    multivalued: true
+    range: TextValue
+  has raw value:
+    from_schema: http://w3id.org/mixs/ranges
+    string_serialization: '{has numeric value} {has unit}'
+    owner: QuantityValue
+  environment field:
+    description: field describing environmental aspect of a sample
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
+  has unit:
+    description: Example "m"
+    from_schema: http://w3id.org/mixs/ranges
+    owner: QuantityValue
+  core field:
+    description: basic fields
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
+  investigation field:
+    description: field describing aspect of the investigation/study to which the sample belongs
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
+  nucleic acid sequence source field:
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
+  has numeric value:
+    from_schema: http://w3id.org/mixs/ranges
+    owner: QuantityValue
+    range: double
+  sequencing field:
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
+classes:
+  placeholder_class:
+    name: placeholder_class
+  placeholder class:
+    name: placeholder class
+    slots:
+      - watering_regm
+    slot_usage:
+      watering_regm:
+        name: watering_regm
+        annotations:
+          expected_value:
+            tag: expected_value
+            value: measurement value;treatment interval and duration
+          preferred_unit:
+            tag: preferred_unit
+            value: milliliter, liter
+          occurrence:
+            tag: occurrence
+            value: m
+        description: Information about treatment involving an exposure to watering frequencies, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
+        title: watering regimen
+        examples:
+          - value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+        from_schema: http://w3id.org/mixs/terms
+        aliases:
+          - watering regimen
+        rank: .nan
+        is_a: core field
+        string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
+        slot_uri: mixs:0000591
+        multivalued: true
+        owner: soil MIMS
+        domain_of:
+          - agriculture
+          - plant-associated
+        slot_group: .nan
+        range: TextValue
+  QuantityValue:
+    name: QuantityValue
+    description: used to record a measurement
+    from_schema: http://w3id.org/mixs/ranges
+    attributes:
+      has unit:
+        name: has unit
+        description: Example "m"
+        from_schema: http://w3id.org/mixs/ranges
+      has numeric value:
+        name: has numeric value
+        from_schema: http://w3id.org/mixs/ranges
+        range: double
+      has raw value:
+        name: has raw value
+        from_schema: http://w3id.org/mixs/ranges
+        string_serialization: '{has numeric value} {has unit}'
+source_file: assets/mixs_template.yaml
