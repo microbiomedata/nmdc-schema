@@ -1,10 +1,8 @@
-# wasn't able to curl https://docs.google.com/spreadsheets/d/1cMlPKgjZh-v21aMYCm9x1TxzE5BwGQptBQcvuaYAtC8/edit#gid=1742830620
-# even after having reformating the url
 import csv
 import pprint
 
-in_file = "../assets/sheets-for-nmdc-submission-schema_import_slots_regardless.tsv"
-out_file = "../assets/mixs_coverage.tsv"
+in_file = "../sheets-for-nmdc-submission-schema_import_slots_regardless.tsv"
+out_file = "../mixs_coverage.tsv"
 
 # open data_file with a DictReader
 min_list = []

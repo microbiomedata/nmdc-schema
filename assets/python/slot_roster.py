@@ -60,7 +60,7 @@ def cli(input_paths, output_tsv):
         distinct class
     from
         catted
-    where
+    wher
         "schema" = 'NMDC'
         and slot_schema = 'https://microbiomedata/schema/mixs'
         and class != '' and class is not null
