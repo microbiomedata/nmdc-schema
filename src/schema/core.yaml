@@ -238,7 +238,6 @@ classes:
   
   MagBin:
     slots:
-      - type
       - bin_name
       - bin_quality
       - completeness
@@ -251,12 +250,14 @@ classes:
       - gtdbtk_order
       - gtdbtk_phylum
       - gtdbtk_species
+      - members_id
       - num_16s
       - num_23s
       - num_5s
       - num_t_rna
       - number_of_contig
-
+      - total_bases
+      - type
 
   Instrument:
     is_a: NamedThing
@@ -471,6 +472,12 @@ classes:
       - schema:GeoCoordinates
 
 slots:
+  total_bases:
+    todos:
+      - this slot needs some basic textual annotations and constraints
+  members_id:
+    todos:
+      - this slot needs some basic textual annotations and constraints
   bin_name:
     range: string
   number_of_contig:

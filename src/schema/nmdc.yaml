@@ -131,6 +131,7 @@ classes:
       - metabolomics_analysis_activity_set
       - metagenome_annotation_activity_set
       - metagenome_assembly_set
+      - metagenome_sequencing_activity_set
       - metaproteomics_analysis_activity_set
       - metatranscriptome_activity_set
       - nom_analysis_activity_set
@@ -1106,9 +1107,13 @@ enums:
       QC non-rRNA R1:
         description: QC removed rRNA reads (R1) fastq
       Metagenome Bins:
-        description: Metagenome bin contigs fasta
+        description: Metagenome bin zip archive
       CheckM Statistics:
         description: CheckM statistics report
+      GTDBTK Bacterial Summary:
+        description: GTDBTK bacterial summary
+      GTDBTK Archaeal Summary:
+        description: GTDBTK archaeal summary
       GOTTCHA2 Krona Plot:
         description: GOTTCHA2 krona plot HTML file
       GOTTCHA2 Classification Report:
@@ -1159,11 +1164,13 @@ enums:
           file_name_pattern: '[GOLD-AP]_tigrfam.gff'
       CRT Annotation GFF:
         description: GFF3 format file with CRT
-      Genmark Annotation GFF:
-        description: GFF3 format file with Genmark
+      Genemark Annotation GFF:
+        description: GFF3 format file with Genemark
       Prodigal Annotation GFF:
         description: GFF3 format file with Prodigal
       TRNA Annotation GFF:
+        description: GFF3 format file with TRNA
+      TRNA Annotation GFF3:
         description: GFF3 format file with TRNA
       Misc Annotation GFF:
         description: GFF3 format file with Misc
@@ -1175,10 +1182,10 @@ enums:
         description: GFF3 format file with KO_EC
       Product Names:
         description: Product names file
-      Gene Phylogeny tsv:
+      Gene Phylogeny:
         description: Gene Phylogeny tsv
-      Crisprt Terms:
-        description: Crisprt Terms
+      Crispr Terms:
+        description: Crispr Terms
       Clusters of Orthologous Groups (COG) Annotation GFF:
         description: GFF3 format file with COGs
         annotations:
@@ -1199,8 +1206,12 @@ enums:
         description: GFF3 format file with Pfam
         annotations:
           file_name_pattern: '[GOLD-AP]_pfam.gff'
+      Annotation Statistics:
+        description: Annotation statistics report
       Direct Infusion FT ICR-MS Raw Data:
         description: Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance mass spectrometry raw data acquired in broadband full scan mode
+      Raw Compressed Metagenome Interleaved Paired-End Reads:
+        description: Raw sequencing reads from a metagenome that is in interleaved paired-end format and compressed using GNU zip format.
   credit enum:
     permissible_values:
       Conceptualization:
@@ -1490,6 +1501,13 @@ slots:
     range: MetagenomeAssembly
     multivalued: true
     description: This property links a database object to the set of metagenome assembly
+      activities.
+  metagenome_sequencing_activity_set:
+    mixins: object_set
+    domain: Database
+    range: MetagenomeSequencingActivity
+    multivalued: true
+    description: This property links a database object to the set of metagenome sequencing
       activities.
   metatranscriptome_activity_set:
     mixins: object_set

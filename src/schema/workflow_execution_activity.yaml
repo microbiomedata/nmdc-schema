@@ -48,9 +48,11 @@ classes:
       - has_output
       - part_of
       - type
+      - version
     notes:
       - MAM I don't think this is a reasonable override of the global range of Agent, but commenting that line out does not, on its own, fix the conversion to SQLite
       - "inlining of was_associated_with values allows for collections (strings?) of WorkflowExecutionActivity id values"
+
     slot_usage:
       was_associated_with:
         required: false
@@ -72,7 +74,10 @@ classes:
         required: true
       execution_resource:
         required: true
-      type: { }
+      type:
+        required: true
+      version:
+        required: false
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}"
@@ -228,6 +233,16 @@ classes:
           syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
           partial_match: false
+
+
+  MetagenomeSequencingActivity:
+    description: Initial sequencing activity that precedes any analysis.  This activity has output(s) that are the raw sequencing data.
+    title: Metagenome sequencing activity
+    is_a: WorkflowExecutionActivity
+    in_subset:
+      - workflow subset
+    slots: [ ]
+
 
   ReadQcAnalysisActivity:
     description: A workflow execution activity that performs quality control on raw Illumina reads including quality trimming, artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant removal
@@ -562,4 +577,4 @@ slots:
   has_metabolite_quantifications:
   input_read_bases:
   output_read_bases:
-
+  version:

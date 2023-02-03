@@ -525,6 +525,47 @@ websites:
 - https://w3id.org/linkml
 
 ```
+## Database-with-MetagenomeSequencingActivity
+### Input
+```yaml
+metagenome_sequencing_activity_set:
+- ended_at_time: '2021-09-15T10:13:20+00:00'
+  execution_resource: JGI
+  git_url: ''
+  has_input:
+  - nmdc:unvalidated_placeholder
+  has_output:
+  - nmdc:22afa3d49b73eaec2e9787a6b88fbdc3
+  id: nmdc:wf-99-qwertyuiop
+  name: Sequencing Activity for nmdc:mga0vx38
+  part_of:
+  - nmdc:mga0vx38
+  started_at_time: '2021-08-05T14:48:51+00:00'
+  type: nmdc:MetagenomeSequencing
+  version: v1.0.0
+  was_informed_by: gold:Gp0213371
+
+```
+## MetagenomeSequencingActivity-from-metagenome_seequencing_activity_json
+### Input
+```yaml
+ended_at_time: '2021-09-15T10:13:20+00:00'
+execution_resource: JGI
+git_url: ''
+has_input:
+- nmdc:unvalidated_placeholder
+has_output:
+- nmdc:22afa3d49b73eaec2e9787a6b88fbdc3
+id: nmdc:wf-99-qwertyuiop
+name: Sequencing Activity for nmdc:mga0vx38
+part_of:
+- nmdc:mga0vx38
+started_at_time: '2021-08-05T14:48:51+00:00'
+type: nmdc:MetagenomeSequencing
+version: v1.0.0
+was_informed_by: gold:Gp0213371
+
+```
 ## Biosample-minimal
 ### Input
 ```yaml
@@ -566,6 +607,25 @@ part_of:
 - gold:Gs0110115
 
 ```
+## MetagenomeSequencingActivity-no_parthood
+### Input
+```yaml
+ended_at_time: '2021-09-15T10:13:20+00:00'
+execution_resource: JGI
+git_url: ''
+has_input:
+- nmdc:unvalidated_placeholder
+has_output:
+- nmdc:22afa3d49b73eaec2e9787a6b88fbdc3
+id: nmdc:wf-99-qwertyuiop
+name: Sequencing Activity for nmdc:mga0vx38
+part_of: null
+started_at_time: '2021-08-05T14:48:51+00:00'
+type: nmdc:MetagenomeSequencing
+version: v1.0.0
+was_informed_by: gold:Gp0213371
+
+```
 ## Biosample-missing-id
 ### Input
 ```yaml
@@ -583,5 +643,25 @@ env_medium:
     id: ENVO:00005792
 part_of:
 - gold:Gs0110115
+
+```
+## MetagenomeSequencingActivity-bad_id
+### Input
+```yaml
+ended_at_time: '2021-09-15T10:13:20+00:00'
+execution_resource: JGI
+git_url: ''
+has_input:
+- nmdc:unvalidated_placeholder
+has_output:
+- nmdc:22afa3d49b73eaec2e9787a6b88fbdc3
+id: nmdc:107ade35423143e39dc30b12832ac759
+name: Sequencing Activity for nmdc:mga0vx38
+part_of:
+- nmdc:mga0vx38
+started_at_time: '2021-08-05T14:48:51+00:00'
+type: nmdc:MetagenomeSequencing
+version: v1.0.0
+was_informed_by: gold:Gp0213371
 
 ```
