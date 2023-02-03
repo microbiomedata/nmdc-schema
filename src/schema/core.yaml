@@ -472,6 +472,9 @@ classes:
       - schema:GeoCoordinates
 
 slots:
+  total_bases:
+    todos:
+      - this slot needs some basic textual annotations and constraints
   members_id:
     todos:
       - this slot needs some basic textual annotations and constraints

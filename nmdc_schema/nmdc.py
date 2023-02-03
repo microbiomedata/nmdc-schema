@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-01-31T08:56:19
+# Generation date: 2023-02-03T11:04:47
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -261,6 +261,10 @@ class MagsAnalysisActivityId(WorkflowExecutionActivityId):
     pass
 
 
+class MetagenomeSequencingActivityId(WorkflowExecutionActivityId):
+    pass
+
+
 class ReadQcAnalysisActivityId(WorkflowExecutionActivityId):
     pass
 
@@ -307,6 +311,7 @@ class Database(YAMLRoot):
     metabolomics_analysis_activity_set: Optional[Union[Dict[Union[str, MetabolomicsAnalysisActivityId], Union[dict, "MetabolomicsAnalysisActivity"]], List[Union[dict, "MetabolomicsAnalysisActivity"]]]] = empty_dict()
     metagenome_annotation_activity_set: Optional[Union[Dict[Union[str, MetagenomeAnnotationActivityId], Union[dict, "MetagenomeAnnotationActivity"]], List[Union[dict, "MetagenomeAnnotationActivity"]]]] = empty_dict()
     metagenome_assembly_set: Optional[Union[Dict[Union[str, MetagenomeAssemblyId], Union[dict, "MetagenomeAssembly"]], List[Union[dict, "MetagenomeAssembly"]]]] = empty_dict()
+    metagenome_sequencing_activity_set: Optional[Union[Dict[Union[str, MetagenomeSequencingActivityId], Union[dict, "MetagenomeSequencingActivity"]], List[Union[dict, "MetagenomeSequencingActivity"]]]] = empty_dict()
     metaproteomics_analysis_activity_set: Optional[Union[Dict[Union[str, MetaproteomicsAnalysisActivityId], Union[dict, "MetaproteomicsAnalysisActivity"]], List[Union[dict, "MetaproteomicsAnalysisActivity"]]]] = empty_dict()
     metatranscriptome_activity_set: Optional[Union[Dict[Union[str, MetatranscriptomeActivityId], Union[dict, "MetatranscriptomeActivity"]], List[Union[dict, "MetatranscriptomeActivity"]]]] = empty_dict()
     nom_analysis_activity_set: Optional[Union[Dict[Union[str, NomAnalysisActivityId], Union[dict, "NomAnalysisActivity"]], List[Union[dict, "NomAnalysisActivity"]]]] = empty_dict()
@@ -352,6 +357,8 @@ class Database(YAMLRoot):
         self._normalize_inlined_as_list(slot_name="metagenome_annotation_activity_set", slot_type=MetagenomeAnnotationActivity, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="metagenome_assembly_set", slot_type=MetagenomeAssembly, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="metagenome_sequencing_activity_set", slot_type=MetagenomeSequencingActivity, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="metaproteomics_analysis_activity_set", slot_type=MetaproteomicsAnalysisActivity, key_name="id", keyed=True)
 
@@ -2373,7 +2380,6 @@ class MagBin(YAMLRoot):
     class_name: ClassVar[str] = "MagBin"
     class_model_uri: ClassVar[URIRef] = NMDC.MagBin
 
-    type: Optional[str] = None
     bin_name: Optional[str] = None
     bin_quality: Optional[str] = None
     completeness: Optional[float] = None
@@ -2386,16 +2392,16 @@ class MagBin(YAMLRoot):
     gtdbtk_order: Optional[str] = None
     gtdbtk_phylum: Optional[str] = None
     gtdbtk_species: Optional[str] = None
+    members_id: Optional[str] = None
     num_16s: Optional[int] = None
     num_23s: Optional[int] = None
     num_5s: Optional[int] = None
     num_t_rna: Optional[int] = None
     number_of_contig: Optional[int] = None
+    total_bases: Optional[str] = None
+    type: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
-
         if self.bin_name is not None and not isinstance(self.bin_name, str):
             self.bin_name = str(self.bin_name)
 
@@ -2432,6 +2438,9 @@ class MagBin(YAMLRoot):
         if self.gtdbtk_species is not None and not isinstance(self.gtdbtk_species, str):
             self.gtdbtk_species = str(self.gtdbtk_species)
 
+        if self.members_id is not None and not isinstance(self.members_id, str):
+            self.members_id = str(self.members_id)
+
         if self.num_16s is not None and not isinstance(self.num_16s, int):
             self.num_16s = int(self.num_16s)
 
@@ -2446,6 +2455,12 @@ class MagBin(YAMLRoot):
 
         if self.number_of_contig is not None and not isinstance(self.number_of_contig, int):
             self.number_of_contig = int(self.number_of_contig)
+
+        if self.total_bases is not None and not isinstance(self.total_bases, str):
+            self.total_bases = str(self.total_bases)
+
+        if self.type is not None and not isinstance(self.type, str):
+            self.type = str(self.type)
 
         super().__post_init__(**kwargs)
 
@@ -3074,11 +3089,12 @@ class WorkflowExecutionActivity(Activity):
     git_url: str = None
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    type: str = None
     started_at_time: Union[str, XSDDateTime] = None
     ended_at_time: Union[str, XSDDateTime] = None
     was_informed_by: Union[str, ActivityId] = None
     part_of: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
-    type: Optional[str] = None
+    version: Optional[str] = None
     was_associated_with: Optional[Union[str, WorkflowExecutionActivityId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -3109,6 +3125,11 @@ class WorkflowExecutionActivity(Activity):
             self.has_output = [self.has_output] if self.has_output is not None else []
         self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
 
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        if not isinstance(self.type, str):
+            self.type = str(self.type)
+
         if self._is_empty(self.started_at_time):
             self.MissingRequiredField("started_at_time")
         if not isinstance(self.started_at_time, XSDDateTime):
@@ -3128,8 +3149,8 @@ class WorkflowExecutionActivity(Activity):
             self.part_of = [self.part_of] if self.part_of is not None else []
         self.part_of = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.part_of]
 
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
+        if self.version is not None and not isinstance(self.version, str):
+            self.version = str(self.version)
 
         if self.was_associated_with is not None and not isinstance(self.was_associated_with, WorkflowExecutionActivityId):
             self.was_associated_with = WorkflowExecutionActivityId(self.was_associated_with)
@@ -3297,6 +3318,7 @@ class MetatranscriptomeAssembly(WorkflowExecutionActivity):
     git_url: str = None
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    type: str = None
     started_at_time: Union[str, XSDDateTime] = None
     ended_at_time: Union[str, XSDDateTime] = None
     was_informed_by: Union[str, ActivityId] = None
@@ -3591,6 +3613,38 @@ class MagsAnalysisActivity(WorkflowExecutionActivity):
 
 
 @dataclass
+class MetagenomeSequencingActivity(WorkflowExecutionActivity):
+    """
+    Initial sequencing activity that precedes any analysis. This activity has output(s) that are the raw sequencing
+    data.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC.MetagenomeSequencingActivity
+    class_class_curie: ClassVar[str] = "nmdc:MetagenomeSequencingActivity"
+    class_name: ClassVar[str] = "MetagenomeSequencingActivity"
+    class_model_uri: ClassVar[URIRef] = NMDC.MetagenomeSequencingActivity
+
+    id: Union[str, MetagenomeSequencingActivityId] = None
+    execution_resource: str = None
+    git_url: str = None
+    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    type: str = None
+    started_at_time: Union[str, XSDDateTime] = None
+    ended_at_time: Union[str, XSDDateTime] = None
+    was_informed_by: Union[str, ActivityId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MetagenomeSequencingActivityId):
+            self.id = MetagenomeSequencingActivityId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class ReadQcAnalysisActivity(WorkflowExecutionActivity):
     """
     A workflow execution activity that performs quality control on raw Illumina reads including quality trimming,
@@ -3879,10 +3933,16 @@ class FileTypeEnum(EnumDefinitionImpl):
                                  description="QC removed rRNA reads (R1) fastq") )
         setattr(cls, "Metagenome Bins",
                 PermissibleValue(text="Metagenome Bins",
-                                 description="Metagenome bin contigs fasta") )
+                                 description="Metagenome bin zip archive") )
         setattr(cls, "CheckM Statistics",
                 PermissibleValue(text="CheckM Statistics",
                                  description="CheckM statistics report") )
+        setattr(cls, "GTDBTK Bacterial Summary",
+                PermissibleValue(text="GTDBTK Bacterial Summary",
+                                 description="GTDBTK bacterial summary") )
+        setattr(cls, "GTDBTK Archaeal Summary",
+                PermissibleValue(text="GTDBTK Archaeal Summary",
+                                 description="GTDBTK archaeal summary") )
         setattr(cls, "GOTTCHA2 Krona Plot",
                 PermissibleValue(text="GOTTCHA2 Krona Plot",
                                  description="GOTTCHA2 krona plot HTML file") )
@@ -3955,14 +4015,17 @@ class FileTypeEnum(EnumDefinitionImpl):
         setattr(cls, "CRT Annotation GFF",
                 PermissibleValue(text="CRT Annotation GFF",
                                  description="GFF3 format file with CRT") )
-        setattr(cls, "Genmark Annotation GFF",
-                PermissibleValue(text="Genmark Annotation GFF",
-                                 description="GFF3 format file with Genmark") )
+        setattr(cls, "Genemark Annotation GFF",
+                PermissibleValue(text="Genemark Annotation GFF",
+                                 description="GFF3 format file with Genemark") )
         setattr(cls, "Prodigal Annotation GFF",
                 PermissibleValue(text="Prodigal Annotation GFF",
                                  description="GFF3 format file with Prodigal") )
         setattr(cls, "TRNA Annotation GFF",
                 PermissibleValue(text="TRNA Annotation GFF",
+                                 description="GFF3 format file with TRNA") )
+        setattr(cls, "TRNA Annotation GFF3",
+                PermissibleValue(text="TRNA Annotation GFF3",
                                  description="GFF3 format file with TRNA") )
         setattr(cls, "Misc Annotation GFF",
                 PermissibleValue(text="Misc Annotation GFF",
@@ -3979,12 +4042,12 @@ class FileTypeEnum(EnumDefinitionImpl):
         setattr(cls, "Product Names",
                 PermissibleValue(text="Product Names",
                                  description="Product names file") )
-        setattr(cls, "Gene Phylogeny tsv",
-                PermissibleValue(text="Gene Phylogeny tsv",
+        setattr(cls, "Gene Phylogeny",
+                PermissibleValue(text="Gene Phylogeny",
                                  description="Gene Phylogeny tsv") )
-        setattr(cls, "Crisprt Terms",
-                PermissibleValue(text="Crisprt Terms",
-                                 description="Crisprt Terms") )
+        setattr(cls, "Crispr Terms",
+                PermissibleValue(text="Crispr Terms",
+                                 description="Crispr Terms") )
         setattr(cls, "Clusters of Orthologous Groups (COG) Annotation GFF",
                 PermissibleValue(text="Clusters of Orthologous Groups (COG) Annotation GFF",
                                  description="GFF3 format file with COGs") )
@@ -4000,9 +4063,15 @@ class FileTypeEnum(EnumDefinitionImpl):
         setattr(cls, "Pfam Annotation GFF",
                 PermissibleValue(text="Pfam Annotation GFF",
                                  description="GFF3 format file with Pfam") )
+        setattr(cls, "Annotation Statistics",
+                PermissibleValue(text="Annotation Statistics",
+                                 description="Annotation statistics report") )
         setattr(cls, "Direct Infusion FT ICR-MS Raw Data",
                 PermissibleValue(text="Direct Infusion FT ICR-MS Raw Data",
                                  description="Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance mass spectrometry raw data acquired in broadband full scan mode") )
+        setattr(cls, "Raw Compressed Metagenome Interleaved Paired-End Reads",
+                PermissibleValue(text="Raw Compressed Metagenome Interleaved Paired-End Reads",
+                                 description="Raw sequencing reads from a metagenome that is in interleaved paired-end format and compressed using GNU zip format.") )
 
 class CreditEnum(EnumDefinitionImpl):
 
@@ -6313,6 +6382,9 @@ slots.metagenome_annotation_activity_set = Slot(uri=NMDC.metagenome_annotation_a
 slots.metagenome_assembly_set = Slot(uri=NMDC.metagenome_assembly_set, name="metagenome_assembly_set", curie=NMDC.curie('metagenome_assembly_set'),
                    model_uri=NMDC.metagenome_assembly_set, domain=Database, range=Optional[Union[Dict[Union[str, MetagenomeAssemblyId], Union[dict, "MetagenomeAssembly"]], List[Union[dict, "MetagenomeAssembly"]]]])
 
+slots.metagenome_sequencing_activity_set = Slot(uri=NMDC.metagenome_sequencing_activity_set, name="metagenome_sequencing_activity_set", curie=NMDC.curie('metagenome_sequencing_activity_set'),
+                   model_uri=NMDC.metagenome_sequencing_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, MetagenomeSequencingActivityId], Union[dict, "MetagenomeSequencingActivity"]], List[Union[dict, "MetagenomeSequencingActivity"]]]])
+
 slots.metatranscriptome_activity_set = Slot(uri=NMDC.metatranscriptome_activity_set, name="metatranscriptome_activity_set", curie=NMDC.curie('metatranscriptome_activity_set'),
                    model_uri=NMDC.metatranscriptome_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, MetatranscriptomeActivityId], Union[dict, "MetatranscriptomeActivity"]], List[Union[dict, "MetatranscriptomeActivity"]]]])
 
@@ -6552,6 +6624,12 @@ slots.lbc_thirty = Slot(uri=NMDC.lbc_thirty, name="lbc_thirty", curie=NMDC.curie
 
 slots.lbceq = Slot(uri=NMDC.lbceq, name="lbceq", curie=NMDC.curie('lbceq'),
                    model_uri=NMDC.lbceq, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.total_bases = Slot(uri=NMDC.total_bases, name="total_bases", curie=NMDC.curie('total_bases'),
+                   model_uri=NMDC.total_bases, domain=None, range=Optional[str])
+
+slots.members_id = Slot(uri=NMDC.members_id, name="members_id", curie=NMDC.curie('members_id'),
+                   model_uri=NMDC.members_id, domain=None, range=Optional[str])
 
 slots.bin_name = Slot(uri=NMDC.bin_name, name="bin_name", curie=NMDC.curie('bin_name'),
                    model_uri=NMDC.bin_name, domain=None, range=Optional[str])
@@ -8708,6 +8786,9 @@ slots.input_read_bases = Slot(uri=NMDC.input_read_bases, name="input_read_bases"
 slots.output_read_bases = Slot(uri=NMDC.output_read_bases, name="output_read_bases", curie=NMDC.curie('output_read_bases'),
                    model_uri=NMDC.output_read_bases, domain=None, range=Optional[str])
 
+slots.version = Slot(uri=NMDC.version, name="version", curie=NMDC.curie('version'),
+                   model_uri=NMDC.version, domain=None, range=Optional[str])
+
 slots.Database_date_created = Slot(uri=NMDC.date_created, name="Database_date_created", curie=NMDC.curie('date_created'),
                    model_uri=NMDC.Database_date_created, domain=Database, range=Optional[str])
 
@@ -9129,7 +9210,10 @@ slots.WorkflowExecutionActivity_execution_resource = Slot(uri=NMDC.execution_res
                    model_uri=NMDC.WorkflowExecutionActivity_execution_resource, domain=WorkflowExecutionActivity, range=str)
 
 slots.WorkflowExecutionActivity_type = Slot(uri=NMDC.type, name="WorkflowExecutionActivity_type", curie=NMDC.curie('type'),
-                   model_uri=NMDC.WorkflowExecutionActivity_type, domain=WorkflowExecutionActivity, range=Optional[str])
+                   model_uri=NMDC.WorkflowExecutionActivity_type, domain=WorkflowExecutionActivity, range=str)
+
+slots.WorkflowExecutionActivity_version = Slot(uri=NMDC.version, name="WorkflowExecutionActivity_version", curie=NMDC.curie('version'),
+                   model_uri=NMDC.WorkflowExecutionActivity_version, domain=WorkflowExecutionActivity, range=Optional[str])
 
 slots.WorkflowExecutionActivity_id = Slot(uri=NMDC.id, name="WorkflowExecutionActivity_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.WorkflowExecutionActivity_id, domain=WorkflowExecutionActivity, range=Union[str, WorkflowExecutionActivityId])
