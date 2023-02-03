@@ -4,6 +4,18 @@ RUN=poetry run
 SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
 SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 
+assets/mixs_slots_used_in_schema.tsv:
+	$(RUN) get_mixs_slots_used_in_schema --output_file $@
+
+assets/import_slots_regardless_gen.tsv: assets/mixs_slots_used_in_schema.tsv
+	$(RUN) generate_import_slots_regardless --input_file $< --output_file $@
+
+assets/mixs_subset.yaml: assets/import_slots_regardless_gen.tsv
+	$(RUN) do_shuttle \
+		--recipient_model assets/mixs_template.yaml \
+		--config_tsv $< \
+		--yaml_output $@
+
 #examples-all: examples-clean src/data/output
 #
 #examples-clean:
