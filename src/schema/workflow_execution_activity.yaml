@@ -234,6 +234,7 @@ classes:
           interpolated: true
           partial_match: false
 
+
   MetagenomeSequencingActivity:
     description: Initial sequencing activity that precedes any analysis.  This activity has output(s) that are the raw sequencing data.
     title: Metagenome sequencing activity
@@ -241,6 +242,7 @@ classes:
     in_subset:
       - workflow subset
     slots: [ ]
+
 
   ReadQcAnalysisActivity:
     description: A workflow execution activity that performs quality control on raw Illumina reads including quality trimming, artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant removal
