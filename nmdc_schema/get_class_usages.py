@@ -93,7 +93,7 @@ class Usages:
 
 @click.command()
 @click.option('--class_name', default='Biosample', help='Name of the class to generate the report for')
-@click.option('--report_file', default='slot_usage_report.tsv', help='Name of the report file to be generated')
+@click.option('--report_file', required=True, help='Name of the report file to be generated')
 def generate_usage_report(class_name, report_file):
     usage_inst = Usages()
     usage_inst.write_usage_rows(class_name, report_file)
