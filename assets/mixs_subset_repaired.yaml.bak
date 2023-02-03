@@ -32,7 +32,7 @@ prefixes:
     prefix_prefix: MIGS
     prefix_reference: https://w3id.org/mixs/migs/
 default_prefix: nmdc
-default_range: string
+default_range: TextValue
 subsets:
   mixs_environmental_triad:
     name: mixs_environmental_triad
@@ -321,7 +321,7 @@ slots:
     string_serialization: '{text};{float} {unit};{timestamp}'
     slot_uri: MIXS:0000639
     multivalued: true
-    range: string
+    range: TextValue
   air_temp_regm:
     name: air_temp_regm
     annotations:
@@ -348,7 +348,7 @@ slots:
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000551
     multivalued: true
-    range: string
+    range: TextValue
   al_sat:
     name: al_sat
     annotations:
@@ -371,7 +371,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000607
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   al_sat_meth:
     name: al_sat_meth
     annotations:
@@ -392,7 +392,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000324
     multivalued: false
-    range: string
+    range: TextValue
   alkalinity:
     name: alkalinity
     annotations:
@@ -416,7 +416,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000421
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   alkalinity_method:
     name: alkalinity_method
     annotations:
@@ -437,7 +437,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: MIXS:0000298
     multivalued: false
-    range: string
+    range: TextValue
   alkyl_diethers:
     name: alkyl_diethers
     annotations:
@@ -460,7 +460,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000490
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   alt:
     name: alt
     annotations:
@@ -482,7 +482,7 @@ slots:
     is_a: environment field
     slot_uri: MIXS:0000094
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   aminopept_act:
     name: aminopept_act
     annotations:
@@ -505,7 +505,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000172
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   ammonium:
     name: ammonium
     annotations:
@@ -528,7 +528,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000427
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   annual_precpt:
     name: annual_precpt
     annotations:
@@ -552,7 +552,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000644
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   annual_temp:
     name: annual_temp
     annotations:
@@ -575,7 +575,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000642
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   bacteria_carb_prod:
     name: bacteria_carb_prod
     annotations:
@@ -598,7 +598,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000173
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   biotic_regm:
     name: biotic_regm
     annotations:
@@ -620,7 +620,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: MIXS:0001038
     multivalued: false
-    range: string
+    range: TextValue
   biotic_relationship:
     name: biotic_relationship
     annotations:
@@ -663,7 +663,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000175
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   bromide:
     name: bromide
     annotations:
@@ -686,7 +686,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000176
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   calcium:
     name: calcium
     annotations:
@@ -709,7 +709,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000432
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   carb_nitro_ratio:
     name: carb_nitro_ratio
     annotations:
@@ -729,7 +729,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000310
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   chem_administration:
     name: chem_administration
     annotations:
@@ -753,7 +753,7 @@ slots:
     string_serialization: '{termLabel} {[termID]};{timestamp}'
     slot_uri: MIXS:0000751
     multivalued: true
-    range: string
+    range: TextValue
   chimera_check:
     name: chimera_check
     annotations:
@@ -773,7 +773,7 @@ slots:
     string_serialization: '{software};{version};{parameters}'
     slot_uri: MIXS:0000052
     multivalued: false
-    range: string
+    range: TextValue
   chloride:
     name: chloride
     annotations:
@@ -796,7 +796,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000429
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   chlorophyll:
     name: chlorophyll
     annotations:
@@ -819,7 +819,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000177
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   climate_environment:
     name: climate_environment
     annotations:
@@ -843,7 +843,7 @@ slots:
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0001040
     multivalued: true
-    range: string
+    range: TextValue
   collection_date:
     name: collection_date
     annotations:
@@ -884,7 +884,7 @@ slots:
     string_serialization: '{boolean};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000318
     multivalued: false
-    range: string
+    range: TextValue
   cur_land_use:
     name: cur_land_use
     annotations:
@@ -926,7 +926,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: MIXS:0000312
     multivalued: false
-    range: string
+    range: TextValue
   cur_vegetation_meth:
     name: cur_vegetation_meth
     annotations:
@@ -947,7 +947,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000314
     multivalued: false
-    range: string
+    range: TextValue
   density:
     name: density
     annotations:
@@ -971,7 +971,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000435
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   depth:
     name: depth
     annotations:
@@ -990,7 +990,7 @@ slots:
     is_a: environment field
     slot_uri: MIXS:0000018
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_carb_dioxide:
     name: diss_carb_dioxide
     annotations:
@@ -1014,7 +1014,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000436
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_hydrogen:
     name: diss_hydrogen
     annotations:
@@ -1037,7 +1037,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000179
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_inorg_carb:
     name: diss_inorg_carb
     annotations:
@@ -1061,7 +1061,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000434
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_inorg_phosp:
     name: diss_inorg_phosp
     annotations:
@@ -1084,7 +1084,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000106
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_org_carb:
     name: diss_org_carb
     annotations:
@@ -1108,7 +1108,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000433
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_org_nitro:
     name: diss_org_nitro
     annotations:
@@ -1132,7 +1132,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000162
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_oxygen:
     name: diss_oxygen
     annotations:
@@ -1155,7 +1155,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000119
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   drainage_class:
     name: drainage_class
     annotations:
@@ -1195,7 +1195,7 @@ slots:
     is_a: environment field
     slot_uri: MIXS:0000093
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   env_broad_scale:
     name: env_broad_scale
     annotations:
@@ -1220,7 +1220,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000012
     multivalued: false
-    range: string
+    range: TextValue
   env_local_scale:
     name: env_local_scale
     annotations:
@@ -1247,7 +1247,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000013
     multivalued: false
-    range: string
+    range: TextValue
   env_medium:
     name: env_medium
     annotations:
@@ -1274,7 +1274,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000014
     multivalued: false
-    range: string
+    range: TextValue
   experimental_factor:
     name: experimental_factor
     annotations:
@@ -1297,7 +1297,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}|{text}'
     slot_uri: MIXS:0000008
     multivalued: false
-    range: string
+    range: TextValue
   extreme_event:
     name: extreme_event
     annotations:
@@ -1405,7 +1405,7 @@ slots:
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000558
     multivalued: true
-    range: string
+    range: TextValue
   geo_loc_name:
     name: geo_loc_name
     annotations:
@@ -1427,7 +1427,7 @@ slots:
     string_serialization: '{term}: {term}, {text}'
     slot_uri: MIXS:0000010
     multivalued: false
-    range: string
+    range: TextValue
   glucosidase_act:
     name: glucosidase_act
     annotations:
@@ -1450,7 +1450,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000137
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   growth_facil:
     name: growth_facil
     annotations:
@@ -1473,7 +1473,7 @@ slots:
     string_serialization: '{text}|{termLabel} {[termID]}'
     slot_uri: MIXS:0001043
     multivalued: false
-    range: string
+    range: TextValue
   heavy_metals:
     name: heavy_metals
     annotations:
@@ -1498,7 +1498,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000652
     multivalued: true
-    range: string
+    range: TextValue
   heavy_metals_meth:
     name: heavy_metals_meth
     annotations:
@@ -1519,7 +1519,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000343
     multivalued: false
-    range: string
+    range: TextValue
   humidity_regm:
     name: humidity_regm
     annotations:
@@ -1547,7 +1547,7 @@ slots:
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000568
     multivalued: true
-    range: string
+    range: TextValue
   lat_lon:
     name: lat_lon
     annotations:
@@ -1566,7 +1566,7 @@ slots:
     string_serialization: '{float} {float}'
     slot_uri: MIXS:0000009
     multivalued: false
-    range: string
+    range: TextValue
   light_regm:
     name: light_regm
     annotations:
@@ -1591,7 +1591,7 @@ slots:
     string_serialization: '{text};{float} {unit};{float} {unit}'
     slot_uri: MIXS:0000569
     multivalued: false
-    range: string
+    range: TextValue
   link_addit_analys:
     name: link_addit_analys
     annotations:
@@ -1612,7 +1612,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000340
     multivalued: false
-    range: string
+    range: TextValue
   link_class_info:
     name: link_class_info
     annotations:
@@ -1633,7 +1633,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000329
     multivalued: false
-    range: string
+    range: TextValue
   link_climate_info:
     name: link_climate_info
     annotations:
@@ -1654,7 +1654,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000328
     multivalued: false
-    range: string
+    range: TextValue
   local_class:
     name: local_class
     annotations:
@@ -1675,7 +1675,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: MIXS:0000330
     multivalued: false
-    range: string
+    range: TextValue
   local_class_meth:
     name: local_class_meth
     annotations:
@@ -1696,7 +1696,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000331
     multivalued: false
-    range: string
+    range: TextValue
   magnesium:
     name: magnesium
     annotations:
@@ -1720,7 +1720,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000431
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   mean_frict_vel:
     name: mean_frict_vel
     annotations:
@@ -1743,7 +1743,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000498
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   mean_peak_frict_vel:
     name: mean_peak_frict_vel
     annotations:
@@ -1766,7 +1766,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000502
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   misc_param:
     name: misc_param
     annotations:
@@ -1788,7 +1788,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000752
     multivalued: true
-    range: string
+    range: TextValue
   n_alkanes:
     name: n_alkanes
     annotations:
@@ -1812,7 +1812,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000503
     multivalued: true
-    range: string
+    range: TextValue
   nitrate:
     name: nitrate
     annotations:
@@ -1835,7 +1835,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000425
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   nitrite:
     name: nitrite
     annotations:
@@ -1858,7 +1858,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000426
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   nucl_acid_amp:
     name: nucl_acid_amp
     annotations:
@@ -1878,7 +1878,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000038
     multivalued: false
-    range: string
+    range: TextValue
   nucl_acid_ext:
     name: nucl_acid_ext
     annotations:
@@ -1898,7 +1898,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000037
     multivalued: false
-    range: string
+    range: TextValue
   org_matter:
     name: org_matter
     annotations:
@@ -1921,7 +1921,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000204
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   org_nitro:
     name: org_nitro
     annotations:
@@ -1944,7 +1944,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000205
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   organism_count:
     name: organism_count
     annotations:
@@ -2014,7 +2014,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000515
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   pcr_cond:
     name: pcr_cond
     annotations:
@@ -2035,7 +2035,7 @@ slots:
       elongation:degrees_minutes;total cycles
     slot_uri: MIXS:0000049
     multivalued: false
-    range: string
+    range: TextValue
   pcr_primers:
     name: pcr_primers
     annotations:
@@ -2056,7 +2056,7 @@ slots:
     string_serialization: FWD:{dna};REV:{dna}
     slot_uri: MIXS:0000046
     multivalued: false
-    range: string
+    range: TextValue
   perturbation:
     name: perturbation
     annotations:
@@ -2080,7 +2080,7 @@ slots:
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000754
     multivalued: true
-    range: string
+    range: TextValue
   petroleum_hydrocarb:
     name: petroleum_hydrocarb
     annotations:
@@ -2103,7 +2103,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000516
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   ph:
     name: ph
     annotations:
@@ -2145,7 +2145,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0001106
     multivalued: false
-    range: string
+    range: TextValue
   phaeopigments:
     name: phaeopigments
     annotations:
@@ -2169,7 +2169,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000180
     multivalued: true
-    range: string
+    range: TextValue
   phosphate:
     name: phosphate
     annotations:
@@ -2192,7 +2192,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000505
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   phosplipid_fatt_acid:
     name: phosplipid_fatt_acid
     annotations:
@@ -2216,7 +2216,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000181
     multivalued: true
-    range: string
+    range: TextValue
   pool_dna_extracts:
     name: pool_dna_extracts
     annotations:
@@ -2238,7 +2238,7 @@ slots:
     string_serialization: '{boolean};{integer}'
     slot_uri: MIXS:0000325
     multivalued: false
-    range: string
+    range: TextValue
   potassium:
     name: potassium
     annotations:
@@ -2261,7 +2261,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000430
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   pressure:
     name: pressure
     annotations:
@@ -2284,7 +2284,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000412
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   profile_position:
     name: profile_position
     annotations:
@@ -2329,7 +2329,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000182
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   rel_to_oxygen:
     name: rel_to_oxygen
     annotations:
@@ -2375,7 +2375,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000183
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   salinity_meth:
     name: salinity_meth
     annotations:
@@ -2396,7 +2396,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000341
     multivalued: false
-    range: string
+    range: TextValue
   samp_collec_method:
     name: samp_collec_method
     annotations:
@@ -2414,7 +2414,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
     slot_uri: MIXS:0001225
     multivalued: false
-    range: string
+    range: TextValue
   samp_mat_process:
     name: samp_mat_process
     annotations:
@@ -2434,7 +2434,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: MIXS:0000016
     multivalued: false
-    range: string
+    range: TextValue
   samp_name:
     name: samp_name
     annotations:
@@ -2458,7 +2458,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: MIXS:0001107
     multivalued: false
-    range: string
+    range: TextValue
   samp_size:
     name: samp_size
     annotations:
@@ -2479,7 +2479,7 @@ slots:
     is_a: nucleic acid sequence source field
     slot_uri: MIXS:0000001
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   samp_store_dur:
     name: samp_store_dur
     annotations:
@@ -2500,7 +2500,7 @@ slots:
     string_serialization: '{duration}'
     slot_uri: MIXS:0000116
     multivalued: false
-    range: string
+    range: TextValue
   samp_store_loc:
     name: samp_store_loc
     annotations:
@@ -2521,7 +2521,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: MIXS:0000755
     multivalued: false
-    range: string
+    range: TextValue
   samp_store_temp:
     name: samp_store_temp
     annotations:
@@ -2544,7 +2544,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000110
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   samp_taxon_id:
     name: samp_taxon_id
     annotations:
@@ -2564,7 +2564,7 @@ slots:
     string_serialization: '{text} [NCBI:txid]'
     slot_uri: MIXS:0001320
     multivalued: false
-    range: string
+    range: TextValue
   samp_vol_we_dna_ext:
     name: samp_vol_we_dna_ext
     annotations:
@@ -2586,7 +2586,7 @@ slots:
     is_a: nucleic acid sequence source field
     slot_uri: MIXS:0000111
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   season_precpt:
     name: season_precpt
     annotations:
@@ -2610,7 +2610,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000645
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   season_temp:
     name: season_temp
     annotations:
@@ -2633,7 +2633,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000643
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   seq_meth:
     name: seq_meth
     annotations:
@@ -2652,7 +2652,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}|{text}'
     slot_uri: MIXS:0000050
     multivalued: false
-    range: string
+    range: TextValue
   seq_quality_check:
     name: seq_quality_check
     annotations:
@@ -2673,7 +2673,7 @@ slots:
     string_serialization: '[none|manually edited]'
     slot_uri: MIXS:0000051
     multivalued: false
-    range: string
+    range: TextValue
   sieving:
     name: sieving
     annotations:
@@ -2695,7 +2695,7 @@ slots:
     string_serialization: '{{text}|{float} {unit}};{float} {unit}'
     slot_uri: MIXS:0000322
     multivalued: false
-    range: string
+    range: TextValue
   size_frac_low:
     name: size_frac_low
     annotations:
@@ -2719,7 +2719,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000735
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   size_frac_up:
     name: size_frac_up
     annotations:
@@ -2743,7 +2743,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000736
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   slope_aspect:
     name: slope_aspect
     annotations:
@@ -2769,7 +2769,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000647
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   slope_gradient:
     name: slope_gradient
     annotations:
@@ -2794,7 +2794,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000646
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   sodium:
     name: sodium
     annotations:
@@ -2817,7 +2817,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000428
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   soil_type:
     name: soil_type
     annotations:
@@ -2840,7 +2840,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000332
     multivalued: false
-    range: string
+    range: TextValue
   soil_type_meth:
     name: soil_type_meth
     annotations:
@@ -2862,7 +2862,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000334
     multivalued: false
-    range: string
+    range: TextValue
   source_mat_id:
     name: source_mat_id
     annotations:
@@ -2892,7 +2892,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: MIXS:0000026
     multivalued: false
-    range: string
+    range: TextValue
   store_cond:
     name: store_cond
     annotations:
@@ -2914,7 +2914,7 @@ slots:
     string_serialization: '{text};{duration}'
     slot_uri: MIXS:0000327
     multivalued: false
-    range: string
+    range: TextValue
   sulfate:
     name: sulfate
     annotations:
@@ -2937,7 +2937,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000423
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   sulfide:
     name: sulfide
     annotations:
@@ -2960,7 +2960,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000424
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   target_gene:
     name: target_gene
     annotations:
@@ -2978,7 +2978,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: MIXS:0000044
     multivalued: false
-    range: string
+    range: TextValue
   target_subfragment:
     name: target_subfragment
     annotations:
@@ -2997,7 +2997,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: MIXS:0000045
     multivalued: false
-    range: string
+    range: TextValue
   temp:
     name: temp
     annotations:
@@ -3017,7 +3017,7 @@ slots:
     is_a: environment field
     slot_uri: MIXS:0000113
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tidal_stage:
     name: tidal_stage
     annotations:
@@ -3080,7 +3080,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000525
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tot_depth_water_col:
     name: tot_depth_water_col
     annotations:
@@ -3103,7 +3103,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000634
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tot_diss_nitro:
     name: tot_diss_nitro
     annotations:
@@ -3127,7 +3127,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000744
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tot_nitro_cont_meth:
     name: tot_nitro_cont_meth
     annotations:
@@ -3148,7 +3148,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000338
     multivalued: false
-    range: string
+    range: TextValue
   tot_nitro_content:
     name: tot_nitro_content
     annotations:
@@ -3171,7 +3171,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000530
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tot_org_c_meth:
     name: tot_org_c_meth
     annotations:
@@ -3192,7 +3192,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000337
     multivalued: false
-    range: string
+    range: TextValue
   tot_org_carb:
     name: tot_org_carb
     annotations:
@@ -3216,7 +3216,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000533
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tot_phosp:
     name: tot_phosp
     annotations:
@@ -3240,7 +3240,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000117
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   url:
     name: url
     annotations:
@@ -3262,7 +3262,7 @@ slots:
     string_serialization: '{URL}'
     slot_uri: MIXS:0000091
     multivalued: true
-    range: string
+    range: TextValue
   water_cont_soil_meth:
     name: water_cont_soil_meth
     annotations:
@@ -3283,7 +3283,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000323
     multivalued: false
-    range: string
+    range: TextValue
   water_content:
     name: water_content
     annotations:
@@ -3306,7 +3306,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000185
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   watering_regm:
     name: watering_regm
     annotations:
@@ -3333,12 +3333,12 @@ slots:
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000591
     multivalued: true
-    range: string
+    range: TextValue
   has raw value:
     name: has raw value
     from_schema: http://w3id.org/mixs/ranges
     string_serialization: '{has numeric value} {has unit}'
-    owner: quantity value
+    owner: QuantityValue
   environment field:
     name: environment field
     description: field describing environmental aspect of a sample
@@ -3348,7 +3348,7 @@ slots:
     name: has unit
     description: Example "m"
     from_schema: http://w3id.org/mixs/ranges
-    owner: quantity value
+    owner: QuantityValue
   core field:
     name: core field
     description: basic fields
@@ -3367,7 +3367,7 @@ slots:
   has numeric value:
     name: has numeric value
     from_schema: http://w3id.org/mixs/ranges
-    owner: quantity value
+    owner: QuantityValue
     range: double
   sequencing field:
     name: sequencing field
@@ -3413,9 +3413,9 @@ classes:
         - agriculture
         - plant-associated
         slot_group: .nan
-        range: string
-  quantity value:
-    name: quantity value
+        range: TextValue
+  QuantityValue:
+    name: QuantityValue
     description: used to record a measurement
     from_schema: http://w3id.org/mixs/ranges
     attributes:

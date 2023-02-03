@@ -9,6 +9,7 @@ from typing import List
 
 
 class MIxSSlotsGetter:
+    # switch to retrieving from GSC' mixs.yaml
     def any_mixs_sheet_getter(self, url):
         response = urllib.request.urlopen(url)
         tsv_file = io.StringIO(response.read().decode('utf-8'))

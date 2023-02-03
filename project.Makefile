@@ -16,10 +16,29 @@ assets/mixs_subset.yaml: assets/import_slots_regardless_gen.tsv
 		--config_tsv $< \
 		--yaml_output $@
 
+assets/mixs_subset_repaired.yaml: assets/mixs_subset.yaml
+	sed 's/quantity value/QuantityValue/' $< > $@
+	sed -i.bak 's/range: string/range: TextValue/' $@
+	sed -i.bak 's/slot_uri: MIXS:/slot_uri: mixs:/' $@
+	yq -i '.slots.env_broad_scale.range |= "ControlledIdentifiedTermValue"' $@
+	yq -i '.slots.env_local_scale.range |= "ControlledIdentifiedTermValue"' $@
+	yq -i '.slots.env_medium.range |= "ControlledIdentifiedTermValue"'  $@
+#	yq -i 'del(.classes.Biosample)' $(word 2,$^)
+#	yq -i 'del(.classes.OmicsProcesing)' $(word 2,$^)
+	yq -i 'del(.enums.[].name)'  $@
+	yq -i 'del(.slots.[].name)'  $@
+
+mixs_diff_cleanup:
+	rm -rf assets/import_slots_regardless_gen.tsv
+	rm -rf assets/mixs_slots_used_in_schema.tsv
+	rm -rf assets/mixs_subset.yaml
+	rm -rf assets/mixs_subset_repaired.yaml
+	rm -rf assets/mixs_subset_repaired.yaml.bak
+
 .PHONY: deepdiff
 
-deepdiff:
-	deep diff src/schema/mixs.yaml assets/mixs_subset.yaml
+deepdiff: assets/mixs_subset_repaired.yaml
+	$(RUN) deep diff src/schema/mixs.yaml $<
 
 #examples-all: examples-clean src/data/output
 #
