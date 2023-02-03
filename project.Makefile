@@ -16,6 +16,11 @@ assets/mixs_subset.yaml: assets/import_slots_regardless_gen.tsv
 		--config_tsv $< \
 		--yaml_output $@
 
+.PHONY: deepdiff
+
+deepdiff:
+	deep diff src/schema/mixs.yaml assets/mixs_subset.yaml
+
 #examples-all: examples-clean src/data/output
 #
 #examples-clean:
