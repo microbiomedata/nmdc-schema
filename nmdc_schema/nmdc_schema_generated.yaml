@@ -426,10 +426,16 @@ enums:
         description: QC removed rRNA reads (R1) fastq
       Metagenome Bins:
         text: Metagenome Bins
-        description: Metagenome bin contigs fasta
+        description: Metagenome bin zip archive
       CheckM Statistics:
         text: CheckM Statistics
         description: CheckM statistics report
+      GTDBTK Bacterial Summary:
+        text: GTDBTK Bacterial Summary
+        description: GTDBTK bacterial summary
+      GTDBTK Archaeal Summary:
+        text: GTDBTK Archaeal Summary
+        description: GTDBTK archaeal summary
       GOTTCHA2 Krona Plot:
         text: GOTTCHA2 Krona Plot
         description: GOTTCHA2 krona plot HTML file
@@ -506,14 +512,17 @@ enums:
       CRT Annotation GFF:
         text: CRT Annotation GFF
         description: GFF3 format file with CRT
-      Genmark Annotation GFF:
-        text: Genmark Annotation GFF
-        description: GFF3 format file with Genmark
+      Genemark Annotation GFF:
+        text: Genemark Annotation GFF
+        description: GFF3 format file with Genemark
       Prodigal Annotation GFF:
         text: Prodigal Annotation GFF
         description: GFF3 format file with Prodigal
       TRNA Annotation GFF:
         text: TRNA Annotation GFF
+        description: GFF3 format file with TRNA
+      TRNA Annotation GFF3:
+        text: TRNA Annotation GFF3
         description: GFF3 format file with TRNA
       Misc Annotation GFF:
         text: Misc Annotation GFF
@@ -530,12 +539,12 @@ enums:
       Product Names:
         text: Product Names
         description: Product names file
-      Gene Phylogeny tsv:
-        text: Gene Phylogeny tsv
+      Gene Phylogeny:
+        text: Gene Phylogeny
         description: Gene Phylogeny tsv
-      Crisprt Terms:
-        text: Crisprt Terms
-        description: Crisprt Terms
+      Crispr Terms:
+        text: Crispr Terms
+        description: Crispr Terms
       Clusters of Orthologous Groups (COG) Annotation GFF:
         text: Clusters of Orthologous Groups (COG) Annotation GFF
         description: GFF3 format file with COGs
@@ -571,10 +580,17 @@ enums:
           file_name_pattern:
             tag: file_name_pattern
             value: '[GOLD-AP]_pfam.gff'
+      Annotation Statistics:
+        text: Annotation Statistics
+        description: Annotation statistics report
       Direct Infusion FT ICR-MS Raw Data:
         text: Direct Infusion FT ICR-MS Raw Data
         description: Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance
           mass spectrometry raw data acquired in broadband full scan mode
+      Raw Compressed Metagenome Interleaved Paired-End Reads:
+        text: Raw Compressed Metagenome Interleaved Paired-End Reads
+        description: Raw sequencing reads from a metagenome that is in interleaved
+          paired-end format and compressed using GNU zip format.
   credit enum:
     name: credit enum
     comments:
@@ -1375,6 +1391,16 @@ slots:
     domain: Database
     multivalued: true
     range: MetagenomeAssembly
+  metagenome_sequencing_activity_set:
+    name: metagenome_sequencing_activity_set
+    description: This property links a database object to the set of metagenome sequencing
+      activities.
+    from_schema: https://microbiomedata/schema
+    mixins:
+    - object_set
+    domain: Database
+    multivalued: true
+    range: MetagenomeSequencingActivity
   metatranscriptome_activity_set:
     name: metatranscriptome_activity_set
     description: This property links a database object to the set of metatranscriptome
@@ -1904,6 +1930,9 @@ slots:
   output_read_bases:
     name: output_read_bases
     from_schema: https://microbiomedata/schema
+  version:
+    name: version
+    from_schema: https://microbiomedata/schema
   started_at_time:
     name: started_at_time
     notes:
@@ -2040,6 +2069,16 @@ slots:
     from_schema: https://microbiomedata/schema
     multivalued: true
     range: string
+  total_bases:
+    name: total_bases
+    todos:
+    - this slot needs some basic textual annotations and constraints
+    from_schema: https://microbiomedata/schema
+  members_id:
+    name: members_id
+    todos:
+    - this slot needs some basic textual annotations and constraints
+    from_schema: https://microbiomedata/schema
   bin_name:
     name: bin_name
     from_schema: https://microbiomedata/schema
@@ -7071,6 +7110,7 @@ classes:
     - metabolomics_analysis_activity_set
     - metagenome_annotation_activity_set
     - metagenome_assembly_set
+    - metagenome_sequencing_activity_set
     - metaproteomics_analysis_activity_set
     - metatranscriptome_activity_set
     - nom_analysis_activity_set
@@ -8117,6 +8157,7 @@ classes:
     - has_output
     - part_of
     - type
+    - version
     slot_usage:
       was_associated_with:
         name: was_associated_with
@@ -8147,6 +8188,10 @@ classes:
         required: true
       type:
         name: type
+        required: true
+      version:
+        name: version
+        required: false
       id:
         name: id
         pattern: ^(nmdc):wf-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
@@ -8325,6 +8370,15 @@ classes:
           syntax: '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
           partial_match: false
+  MetagenomeSequencingActivity:
+    name: MetagenomeSequencingActivity
+    description: Initial sequencing activity that precedes any analysis.  This activity
+      has output(s) that are the raw sequencing data.
+    title: Metagenome sequencing activity
+    in_subset:
+    - workflow subset
+    from_schema: https://microbiomedata/schema
+    is_a: WorkflowExecutionActivity
   ReadQcAnalysisActivity:
     name: ReadQcAnalysisActivity
     description: A workflow execution activity that performs quality control on raw
@@ -8667,7 +8721,6 @@ classes:
     name: MagBin
     from_schema: https://microbiomedata/schema
     slots:
-    - type
     - bin_name
     - bin_quality
     - completeness
@@ -8680,11 +8733,14 @@ classes:
     - gtdbtk_order
     - gtdbtk_phylum
     - gtdbtk_species
+    - members_id
     - num_16s
     - num_23s
     - num_5s
     - num_t_rna
     - number_of_contig
+    - total_bases
+    - type
   Instrument:
     name: Instrument
     description: A material entity that is designed to perform a function in a scientific
