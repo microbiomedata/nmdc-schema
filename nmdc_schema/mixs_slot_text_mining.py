@@ -1,13 +1,15 @@
 import csv
+import logging
 import os
 import pprint
 import re
 from typing import List, Dict, Set, Any
 
-MIxS_6_term_updates_tabs = {"core": "MIxS_6_term_updates_MIxS6_Core-_Final_clean.tsv",
-                            "package": "MIxS_6_term_updates_MIxS6_packages_-_Final_clean.tsv"}
-MIxS_6_term_updates_prefix = ".."
-MIxS_6_term_updates_dtm_tsv = "MIxS_6_term_updates_dtm.tsv"
+import click
+import click_log
+
+logger = logging.getLogger(__name__)
+click_log.basic_config(logger)
 
 
 def replace_underscores(string):
@@ -83,8 +85,26 @@ class MixsSlotTextMining:
                 writer.writerow(row)
 
 
-mining_instance = MixsSlotTextMining(MIxS_6_term_updates_tabs, MIxS_6_term_updates_prefix, MIxS_6_term_updates_dtm_tsv)
-mining_instance.tsv_files_to_dict_list()
-mining_instance.change_set_to_sorted_list()
-mining_instance.make_document_term_matrix()
-mining_instance.write_dtm_tsv()
+@click.command()
+@click_log.simple_verbosity_option(logger)
+@click.option("--core_file", required=True)
+@click.option("--packages_file", required=True)
+@click.option("--output_file", required=True)
+def cli(
+        core_file,
+        packages_file,
+        output_file,
+):
+    MIxS_6_term_updates_tabs = {"core": core_file, "packages": packages_file}
+    MIxS_6_term_updates_prefix = ""
+    MIxS_6_term_updates_dtm_tsv = output_file
+    mining_instance = MixsSlotTextMining(MIxS_6_term_updates_tabs, MIxS_6_term_updates_prefix,
+                                         MIxS_6_term_updates_dtm_tsv)
+    mining_instance.tsv_files_to_dict_list()
+    mining_instance.change_set_to_sorted_list()
+    mining_instance.make_document_term_matrix()
+    mining_instance.write_dtm_tsv()
+
+
+if __name__ == "__main__":
+    cli()

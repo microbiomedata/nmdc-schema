@@ -87,3 +87,11 @@ assets/slot_roster.tsv:
 		--input_paths "https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml" \
 		--input_paths "src/schema/nmdc.yaml" \
 		--output_tsv $@
+
+assets/MIxS_6_term_updates_dtm.tsv: \
+assets/MIxS_6_term_updates_MIxS6_Core-_Final_clean.tsv \
+assets/MIxS_6_term_updates_MIxS6_packages_-_Final_clean.tsv
+	$(RUN) mixs_slot_text_mining \
+		--core_file $< \
+		--packages_file $(word 2,$^) \
+		--output_file $@
