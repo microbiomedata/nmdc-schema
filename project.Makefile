@@ -73,10 +73,17 @@ assets/sheets-for-nmdc-submission-schema_import_slots_regardless.tsv:
 
 
 assets/slot_annotations_diffs.tsv: assets/other_mixs_yaml_files/mixs_new.yaml assets/other_mixs_yaml_files/mixs_legacy.yaml
-	poetry run mixs_deep_diff \
+	$(RUN) mixs_deep_diff \
 		--include_descriptions True \
 		--shingle_size 2 \
 		--current_mixs_module_in $< \
 		--legacy_mixs_module_in $(word 2,$^)  \
 		--anno_diff_tsv_out $@ \
 		--slot_diff_yaml_out $(patsubst %.tsv,%.yaml,$@)
+
+assets/slot_roster.tsv:
+	$(RUN) slot_roster \
+		--input_paths "https://raw.githubusercontent.com/microbiomedata/sheets_and_friends/main/artifacts/nmdc_submission_schema.yaml" \
+		--input_paths "https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml" \
+		--input_paths "src/schema/nmdc.yaml" \
+		--output_tsv $@
