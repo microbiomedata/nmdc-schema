@@ -68,3 +68,30 @@ assets/MIxS_6_term_updates_MIxS6_Core-_Final_clean.tsv:
 assets/MIxS_6_term_updates_MIxS6_packages_-_Final_clean.tsv:
 	curl -L "https://docs.google.com/spreadsheets/d/1QDeeUcDqXes69Y2RjU2aWgOpCVWo5OVsBX9MKmMqi_o/export?gid=750683809&format=tsv" > $@
 
+assets/sheets-for-nmdc-submission-schema_import_slots_regardless.tsv:
+	curl -L "https://docs.google.com/spreadsheets/d/1_TSuvEUX68g_o3r1d9wvOYMMbZ3vO4eluvAd2wNJoSU/export?gid=1742830620&format=tsv" > $@
+
+
+assets/slot_annotations_diffs.tsv: assets/other_mixs_yaml_files/mixs_new.yaml assets/other_mixs_yaml_files/mixs_legacy.yaml
+	$(RUN) mixs_deep_diff \
+		--include_descriptions True \
+		--shingle_size 2 \
+		--current_mixs_module_in $< \
+		--legacy_mixs_module_in $(word 2,$^)  \
+		--anno_diff_tsv_out $@ \
+		--slot_diff_yaml_out $(patsubst %.tsv,%.yaml,$@)
+
+assets/slot_roster.tsv:
+	$(RUN) slot_roster \
+		--input_paths "https://raw.githubusercontent.com/microbiomedata/sheets_and_friends/main/artifacts/nmdc_submission_schema.yaml" \
+		--input_paths "https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml" \
+		--input_paths "src/schema/nmdc.yaml" \
+		--output_tsv $@
+
+assets/MIxS_6_term_updates_dtm.tsv: \
+assets/MIxS_6_term_updates_MIxS6_Core-_Final_clean.tsv \
+assets/MIxS_6_term_updates_MIxS6_packages_-_Final_clean.tsv
+	$(RUN) mixs_slot_text_mining \
+		--core_file $< \
+		--packages_file $(word 2,$^) \
+		--output_file $@

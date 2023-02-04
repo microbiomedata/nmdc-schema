@@ -30,6 +30,7 @@ mkdocs-mermaid2-plugin = "^0.6.0"
 sheets-and-friends = "^0.1.0"
 pygsheets = "*" # why are we importing this, when we're alredy using cogs?
 pandasql = "*" # might be able to replace this?
+strsimpy = "*"
 
 [tool.poetry-dynamic-versioning]
 enable = true
@@ -63,6 +64,9 @@ nmdc-data = "nmdc_schema.nmdc_data:cli"
 nmdc-version = "nmdc_schema.nmdc_version:cli"
 get_mixs_slots_used_in_schema = "nmdc_schema.get_mixs_slots_used_in_schema:main"
 generate_import_slots_regardless = "nmdc_schema.generate_import_slots_regardless:main"
+mixs_deep_diff = "nmdc_schema.mixs_deep_diff:cli"
+slot_roster = "nmdc_schema.slot_roster:cli"
+mixs_slot_text_mining = "nmdc_schema.mixs_slot_text_mining:cli"
 
 #validate-nmdc-json is deprecated by check-json-schema, which is in turn deprereated by run-linkml-examples
 #validate-nmdc-json = "nmdc_schema.validate_nmdc_json:cli"
