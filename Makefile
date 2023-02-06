@@ -20,9 +20,7 @@ PYMODEL = $(SCHEMA_NAME)
 DOCDIR = docs
 EXAMPLEDIR = examples
 
-
-# basename of a YAML file in model/
-.PHONY: all clean combined-extras examples-clean
+.PHONY: all clean combined-extras examples-clean site
 
 # note: "help" MUST be the first target in the file,
 # when the user types "make" they should get help info
@@ -80,7 +78,7 @@ site: gen-project gendoc
 
 
 %.yaml: gen-project
-deploy: all mkd-gh-deploy
+deploy: all git-add git-commit mkd-gh-deploy
 
 # In future this will be done by conversion
 gen-examples:
@@ -286,4 +284,3 @@ src/data/output
 # nmdc_schema/nmdc.schema.json (from project/jsonschema/nmdc.schema.json)
 # nmdc_schema/nmdc_materialized_patterns.schema.json
 
-# git-init-add
