@@ -3,7 +3,6 @@ import os
 import glob
 import unittest
 
-from linkml_runtime.dumpers import yaml_dumper
 from linkml_runtime.loaders import yaml_loader
 
 from nmdc_schema.nmdc import Biosample
@@ -22,5 +21,4 @@ class TestData(unittest.TestCase):
         for path in EXAMPLE_FILES:
             # print(path)
             obj = yaml_loader.load(path, target_class=Biosample)
-            # print(yaml_dumper.dumps(obj))
             assert obj
