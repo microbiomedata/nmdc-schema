@@ -193,22 +193,18 @@ git-add: .cruft.json
 		examples \
 		images \
 		mkdocs.yml \
+		nmdc_schema \
 		notebooks \
 		poetry.lock \
 		project.Makefile \
-		pyproject.toml \
 		project/ \
+		pyproject.toml \
 		reports \
-		src/data \
-		src/doc-templates \
-		src/docs \
-		nmdc_schema \
-		src/schema \
+		src/ \
 		sssom \
 		tests \
 		util \
 		utils
-
 		#		src/nmdc_schema/schema/*yaml \
 		# 		src/*/datamodel/*py \
 
@@ -283,8 +279,7 @@ src/data/output
 	cp project/nmdc_schema_generated.yaml                    $(PYMODEL)
 	cp sssom/gold-to-mixs.sssom.tsv                          $(PYMODEL)
 	# ignore warning messages
-	git add *
-	git commit -m "combined-extras"
+
 
 # nmdc_schema/nmdc.yaml (merged, from project/nmdc_schema_merged.yaml)
 # nmdc_schema/nmdc_materialized_patterns.yaml
