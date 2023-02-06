@@ -77,16 +77,8 @@ create-data-harmonizer:
 
 .PHONY: examples-all examples-clean
 all: site
-site: examples-clean gen-project gendoc \
-project/nmdc_schema_generated.yaml project/nmdc_schema_merged.yaml project/nmdc_patterns_materialized.schema.json \
-src/data/output
-	# just can't seem to tell pyproject.toml to bundle artifacts like these
-	# so reverting to copying into the module
-	cp project/jsonschema/nmdc.schema.json                   $(PYMODEL)/nmdc_no_patterns.schema.json
-	cp project/nmdc_patterns_materialized.schema.json        $(PYMODEL)/nmdc.schema.json
-	cp project/nmdc_schema_merged.yaml                       $(PYMODEL)/nmdc_schema_merged_no_patterns.yaml
-	cp project/nmdc_schema_generated.yaml                    $(PYMODEL)
-	cp sssom/gold-to-mixs.sssom.tsv                          $(PYMODEL)
+site:  gen-project gendoc
+
 
 %.yaml: gen-project
 deploy: all mkd-gh-deploy
@@ -115,10 +107,9 @@ gen-project: $(PYMODEL)
 		--exclude sqlddl \
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 
-test: examples-clean test-schema \
-project/nmdc_schema_generated.yaml project/nmdc_schema_merged.yaml project/nmdc_patterns_materialized.schema.json \
-src/data/output test-python
+test: examples-clean test-schema test-python
 # make test sometimes says "make: Nothing to be done for `test'."
+
 test-schema:
 	$(RUN) gen-project \
 		--exclude excel \
@@ -280,3 +271,15 @@ src/data/output: project/nmdc_schema_generated.yaml
 		--input-directory src/data/valid \
 		--counter-example-input-directory src/data/invalid \
 		--output-directory $@ > $@/README.md
+
+.PHONY: combined-extras
+combined-extras: examples-clean gen-project gendoc \
+project/nmdc_schema_generated.yaml project/nmdc_schema_merged.yaml project/nmdc_patterns_materialized.schema.json \
+src/data/output
+	# just can't seem to tell pyproject.toml to bundle artifacts like these
+	# so reverting to copying into the module
+	cp project/jsonschema/nmdc.schema.json                   $(PYMODEL)/nmdc_no_patterns.schema.json
+	cp project/nmdc_patterns_materialized.schema.json        $(PYMODEL)/nmdc.schema.json
+	cp project/nmdc_schema_merged.yaml                       $(PYMODEL)/nmdc_schema_merged_no_patterns.yaml
+	cp project/nmdc_schema_generated.yaml                    $(PYMODEL)
+	cp sssom/gold-to-mixs.sssom.tsv                          $(PYMODEL)
