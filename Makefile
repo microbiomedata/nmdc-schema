@@ -78,7 +78,7 @@ site: gen-project gendoc
 
 
 %.yaml: gen-project
-deploy: all git-add git-commit mkd-gh-deploy
+deploy: all mkd-gh-deploy
 
 # In future this will be done by conversion
 gen-examples:
