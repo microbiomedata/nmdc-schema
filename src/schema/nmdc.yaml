@@ -131,6 +131,7 @@ classes:
       - metabolomics_analysis_activity_set
       - metagenome_annotation_activity_set
       - metagenome_assembly_set
+      - metagenome_sequencing_activity_set
       - metaproteomics_analysis_activity_set
       - metatranscriptome_activity_set
       - nom_analysis_activity_set
@@ -1083,124 +1084,284 @@ enums:
       NEON:
         title: National Science Foundation's National Ecological Observatory Network
         meaning: https://www.neonscience.org
+
   file type enum:
+    name: file type enum
+    from_schema: https://microbiomedata/schema
     permissible_values:
       Metagenome Raw Reads:
-        todos: add annotations
+        text: Metagenome Raw Reads
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '/.+?(?=fastq)/fastq.gz'
       FT ICR-MS Analysis Results:
+        text: FT ICR-MS Analysis Results
         description: FT ICR-MS-based molecular formula assignment results table
       GC-MS Metabolomics Results:
+        text: GC-MS Metabolomics Results
         description: GC-MS-based metabolite assignment results table
       Metaproteomics Workflow Statistics:
+        text: Metaproteomics Workflow Statistics
         description: Aggregate workflow statistics file
       Protein Report:
+        text: Protein Report
         description: Filtered protein report file
       Peptide Report:
+        text: Peptide Report
         description: Filtered peptide report file
       Unfiltered Metaproteomics Results:
+        text: Unfiltered Metaproteomics Results
         description: MSGFjobs and MASIC output file
       Read Count and RPKM:
+        text: Read Count and RPKM
         description: Annotation read count and RPKM per feature JSON
       QC non-rRNA R2:
+        text: QC non-rRNA R2
         description: QC removed rRNA reads (R2) fastq
       QC non-rRNA R1:
+        text: QC non-rRNA R1
         description: QC removed rRNA reads (R1) fastq
       Metagenome Bins:
+        text: Metagenome Bins
         description: Metagenome bin contigs fasta
       CheckM Statistics:
+        text: CheckM Statistics
         description: CheckM statistics report
       GOTTCHA2 Krona Plot:
+        text: GOTTCHA2 Krona Plot
         description: GOTTCHA2 krona plot HTML file
       GOTTCHA2 Classification Report:
+        text: GOTTCHA2 Classification Report
         description: GOTTCHA2 classification report file
       GOTTCHA2 Report Full:
+        text: GOTTCHA2 Report Full
         description: GOTTCHA2 report file
       Kraken2 Krona Plot:
+        text: Kraken2 Krona Plot
         description: Kraken2 krona plot HTML file
       Centrifuge Krona Plot:
+        text: Centrifuge Krona Plot
         description: Centrifug krona plot HTML file
       Centrifuge output report file:
+        text: Centrifuge output report file
         description: Centrifug output report file
       Kraken2 Classification Report:
+        text: Kraken2 Classification Report
         description: Kraken2 output report file
       Kraken2 Taxonomic Classification:
+        text: Kraken2 Taxonomic Classification
         description: Kraken2 output read classification file
       Centrifuge Classification Report:
+        text: Centrifuge Classification Report
         description: Centrifuge output report file
       Centrifuge Taxonomic Classification:
+        text: Centrifuge Taxonomic Classification
         description: Centrifuge output read classification file
       Structural Annotation GFF:
+        text: Structural Annotation GFF
         description: GFF3 format file with structural annotations
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_structural_annotation.gff'
       Functional Annotation GFF:
+        text: Functional Annotation GFF
         description: GFF3 format file with functional annotations
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_functional_annotation.gff'
       Annotation Amino Acid FASTA:
+        text: Annotation Amino Acid FASTA
         description: FASTA amino acid file for annotated proteins
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_proteins.faa'
       Annotation Enzyme Commission:
+        text: Annotation Enzyme Commission
         description: Tab delimited file for EC annotation
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_ec.tsv'
       Annotation KEGG Orthology:
+        text: Annotation KEGG Orthology
         description: Tab delimited file for KO annotation
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_ko.tsv'
       Assembly Coverage BAM:
+        text: Assembly Coverage BAM
         description: Sorted bam file of reads mapping back to the final assembly
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_pairedMapped.sam.gz'
       Assembly AGP:
+        text: Assembly AGP
         description: An AGP format file that describes the assembly
       Assembly Scaffolds:
+        text: Assembly Scaffolds
         description: Final assembly scaffolds fasta
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_assembly.contigs.fasta'
       Assembly Contigs:
+        text: Assembly Contigs
         description: Final assembly contigs fasta
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_contigs.fna'
       Assembly Coverage Stats:
+        text: Assembly Coverage Stats
         description: Assembled contigs coverage information
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_pairedMapped_sorted.bam.cov'
       Filtered Sequencing Reads:
+        text: Filtered Sequencing Reads
         description: Reads QC result fastq (clean data)
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '/.+?(?=filter)/filter-METAGENOME.fastq.gz '
       QC Statistics:
+        text: QC Statistics
         description: Reads QC summary statistics
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '/.+?(?=filter)/filtered-report.txt'
       TIGRFam Annotation GFF:
+        text: TIGRFam Annotation GFF
         description: GFF3 format file with TIGRfam
         annotations:
-          file_name_pattern: '[GOLD-AP]_tigrfam.gff'
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_tigrfam.gff'
       CRT Annotation GFF:
+        text: CRT Annotation GFF
         description: GFF3 format file with CRT
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_crt.gff'
       Genmark Annotation GFF:
+        text: Genmark Annotation GFF
         description: GFF3 format file with Genmark
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_genemark.gff'
       Prodigal Annotation GFF:
+        text: Prodigal Annotation GFF
         description: GFF3 format file with Prodigal
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_prodigal.gff'
       TRNA Annotation GFF:
+        text: TRNA Annotation GFF
         description: GFF3 format file with TRNA
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_trna.gff'
       Misc Annotation GFF:
+        text: Misc Annotation GFF
         description: GFF3 format file with Misc
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_rfam_misc_bind_misc_feature_regulatory.gff'
       RFAM Annotation GFF:
+        text: RFAM Annotation GFF
         description: GFF3 format file with RFAM
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_rfam.gff'
       TMRNA Annotation GFF:
+        text: TMRNA Annotation GFF
         description: GFF3 format file with TMRNA
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_rfam_ncrna_tmrna.gff'
       KO_EC Annotation GFF:
+        text: KO_EC Annotation GFF
         description: GFF3 format file with KO_EC
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_ko_ec.tsv'
       Product Names:
+        text: Product Names
         description: Product names file
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_product_names.tsv'
       Gene Phylogeny tsv:
+        text: Gene Phylogeny tsv
         description: Gene Phylogeny tsv
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_gene_phylogeny.tsv'
       Crisprt Terms:
+        text: Crisprt Terms
         description: Crisprt Terms
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_crt.crisprs'
       Clusters of Orthologous Groups (COG) Annotation GFF:
+        text: Clusters of Orthologous Groups (COG) Annotation GFF
         description: GFF3 format file with COGs
         annotations:
-          file_name_pattern: '[GOLD-AP]_cog.gff'
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_cog.gff'
       CATH FunFams (Functional Families) Annotation GFF:
+        text: CATH FunFams (Functional Families) Annotation GFF
         description: GFF3 format file with CATH FunFams
         annotations:
-          file_name_pattern: '[GOLD-AP]_cath_funfam.gff'
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_cath_funfam.gff'
       SUPERFam Annotation GFF:
+        text: SUPERFam Annotation GFF
         description: GFF3 format file with SUPERFam
         annotations:
-          file_name_pattern: '[GOLD-AP]_supfam.gff'
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_supfam.gff'
       SMART Annotation GFF:
+        text: SMART Annotation GFF
         description: GFF3 format file with SMART
         annotations:
-          file_name_pattern: '[GOLD-AP]_smart.gff'
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_smart.gff'
       Pfam Annotation GFF:
+        text: Pfam Annotation GFF
         description: GFF3 format file with Pfam
         annotations:
-          file_name_pattern: '[GOLD-AP]_pfam.gff'
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_pfam.gff'
       Direct Infusion FT ICR-MS Raw Data:
-        description: Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance mass spectrometry raw data acquired in broadband full scan mode
+        text: Direct Infusion FT ICR-MS Raw Data
+        description: Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance
+          mass spectrometry raw data acquired in broadband full scan mode
+
   credit enum:
     permissible_values:
       Conceptualization:
@@ -1263,6 +1424,29 @@ enums:
           - replaces Environmental Molecular Sciences Lab
 
 slots:
+
+  env_package:
+    aliases:
+      - environmental package
+    #      mappings:
+    #        - mixs:env_package
+    description: MIxS extension for reporting of measurements and observations obtained
+      from one or more of the environments where the sample was obtained. All environmental
+      packages listed here are further defined in separate subtables. By giving the
+      name of the environmental package, a selection of fields can be made from the
+      subtables and can be reported
+    in_subset:
+      - mixs extension
+    #      from_schema: https://microbiomedata/schema/mixs
+    #      source: https://microbiomedata/schema/mixs
+    #      see_also:
+    #        - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
+    is_a: attribute
+    multivalued: false
+    range: TextValue
+  #      pattern: '[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon
+  #        resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc
+  #        environment|plant\-associated|sediment|soil|wastewater\/sludge|water]'
 
   embargoed:
     description: >-
@@ -1490,6 +1674,13 @@ slots:
     range: MetagenomeAssembly
     multivalued: true
     description: This property links a database object to the set of metagenome assembly
+      activities.
+  metagenome_sequencing_activity_set:
+    mixins: object_set
+    domain: Database
+    range: MetagenomeSequencingActivity
+    multivalued: true
+    description: This property links a database object to the set of metagenome sequencing
       activities.
   metatranscriptome_activity_set:
     mixins: object_set
