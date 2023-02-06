@@ -10,6 +10,7 @@ RUN = poetry run
 # get values from about.yaml file
 # replaced sh with bash esp for linux
 SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
+DOCDIR = docs
 SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 SOURCE_SCHEMA_DIR = $(dir $(SOURCE_SCHEMA_PATH))
 SRC = src
@@ -17,10 +18,9 @@ DEST = project
 #PYMODEL = $(SRC)/$(SCHEMA_NAME)/datamodel
 #PYMODEL = $(SRC)/$(SCHEMA_NAME)
 PYMODEL = $(SCHEMA_NAME)
-DOCDIR = docs
 EXAMPLEDIR = examples
 
-.PHONY: all clean combined-extras examples-clean site
+.PHONY: all clean combined-extras examples-clean site test
 
 # note: "help" MUST be the first target in the file,
 # when the user types "make" they should get help info
@@ -74,11 +74,13 @@ create-data-harmonizer:
 	npm init data-harmonizer $(SOURCE_SCHEMA_PATH)
 
 all: site
-site: gen-project gendoc
+site: gen-project gendoc # may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy
 
 
 %.yaml: gen-project
-deploy: all mkd-gh-deploy
+
+# all mkd-gh-deploy
+deploy: gendoc mkd-gh-deploy
 
 # In future this will be done by conversion
 gen-examples:
@@ -227,7 +229,7 @@ include project.Makefile
 
 #examples-all: examples-clean project/nmdc_schema_generated.yaml src/data/output
 
-examples-clean:
+examples-clean: clean
 	@echo running examples-clean
 	rm -rf src/data/output project/nmdc_schema_generated.yaml
 
@@ -240,14 +242,12 @@ project/nmdc_schema_generated.yaml:
 		--no-materialize-attributes \
 		--format yaml $(SOURCE_SCHEMA_PATH)
 
-
 project/nmdc_schema_merged.yaml:
 	$(RUN) gen-linkml \
 		--output $@ \
 		--no-materialize-patterns \
 		--no-materialize-attributes \
 		--format yaml $(SOURCE_SCHEMA_PATH)
-
 
 project/nmdc_patterns_materialized.schema.json: project/nmdc_schema_generated.yaml
 	@echo making project/nmdc_schema_generated.yaml
