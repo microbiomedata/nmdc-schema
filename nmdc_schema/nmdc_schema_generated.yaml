@@ -242,18 +242,24 @@ types:
     name: string
     description: A character string
     from_schema: https://microbiomedata/schema
+    exact_mappings:
+    - schema:Text
     base: str
     uri: xsd:string
   integer:
     name: integer
     description: An integer
     from_schema: https://microbiomedata/schema
+    exact_mappings:
+    - schema:Integer
     base: int
     uri: xsd:integer
   boolean:
     name: boolean
     description: A binary (true or false) value
     from_schema: https://microbiomedata/schema
+    exact_mappings:
+    - schema:Boolean
     base: Bool
     uri: xsd:boolean
     repr: bool
@@ -261,12 +267,16 @@ types:
     name: float
     description: A real number that conforms to the xsd:float specification
     from_schema: https://microbiomedata/schema
+    exact_mappings:
+    - schema:Float
     base: float
     uri: xsd:float
   double:
     name: double
     description: A real number that conforms to the xsd:double specification
     from_schema: https://microbiomedata/schema
+    close_mappings:
+    - schema:Float
     base: float
     uri: xsd:double
   decimal:
@@ -274,6 +284,8 @@ types:
     description: A real number with arbitrary precision that conforms to the xsd:decimal
       specification
     from_schema: https://microbiomedata/schema
+    broad_mappings:
+    - schema:Number
     base: Decimal
     uri: xsd:decimal
   time:
@@ -283,6 +295,8 @@ types:
     notes:
     - URI is dateTime because OWL reasoners do not work with straight date or time
     from_schema: https://microbiomedata/schema
+    exact_mappings:
+    - schema:Time
     base: XSDTime
     uri: xsd:dateTime
     repr: str
@@ -292,6 +306,8 @@ types:
     notes:
     - URI is dateTime because OWL reasoners don't work with straight date or time
     from_schema: https://microbiomedata/schema
+    exact_mappings:
+    - schema:Date
     base: XSDDate
     uri: xsd:date
     repr: str
@@ -299,6 +315,8 @@ types:
     name: datetime
     description: The combination of a date and time
     from_schema: https://microbiomedata/schema
+    exact_mappings:
+    - schema:DateTime
     base: XSDDateTime
     uri: xsd:dateTime
     repr: str
@@ -316,10 +334,28 @@ types:
     base: URIorCURIE
     uri: xsd:anyURI
     repr: str
+  curie:
+    name: curie
+    conforms_to: https://www.w3.org/TR/curie/
+    description: a compact URI
+    comments:
+    - in RDF serializations this MUST be expanded to a URI
+    - in non-RDF serializations MAY be serialized as the compact representation
+    from_schema: https://microbiomedata/schema
+    base: Curie
+    uri: xsd:string
+    repr: str
   uri:
     name: uri
+    conforms_to: https://www.ietf.org/rfc/rfc3987.txt
     description: a complete URI
+    comments:
+    - in RDF serializations a slot with range of uri is treated as a literal or type
+      xsd:anyURI unless it is an identifier or a reference to an identifier, in which
+      case it is translated directly to a node
     from_schema: https://microbiomedata/schema
+    close_mappings:
+    - schema:URL
     base: URI
     uri: xsd:anyURI
     repr: str
