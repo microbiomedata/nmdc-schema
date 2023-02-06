@@ -282,6 +282,7 @@ src/data/output
 	cp project/nmdc_schema_merged.yaml                       $(PYMODEL)/nmdc_schema_merged_no_patterns.yaml
 	cp project/nmdc_schema_generated.yaml                    $(PYMODEL)
 	cp sssom/gold-to-mixs.sssom.tsv                          $(PYMODEL)
+	# ignore warning messages
 	git add *
 	git commit -m "combined-extras"
 
