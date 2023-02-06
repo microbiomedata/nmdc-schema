@@ -8,8 +8,8 @@ related_identifiers: any string R1
 emsl_proposal_identifier: any string EP1
 emsl_proposal_doi: any string
 gold_study_identifiers:
-- gold:any_string_1
-- gold:any_string_2
+- GOLD:Gs12345
+- GOLD:Gs90909
 mgnify_project_identifiers: mgnify.proj:ABC123
 ecosystem: unconstrained text. should be validated against the controlled vocabulary,
   by the sample's environmental package. would also be nice to align the CV with MIxS

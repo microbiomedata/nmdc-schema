@@ -1,6 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Provides CLI to validate json files against the NMDC jsonschema."""
+"""
+Provides CLI to validate json files against the NMDC jsonschema.
+
+This is now deprecated by either
+
+- linkml-run-examples (which doesn't require it's input to be wrapped in a Database but doesn't exhaustively report errors.
+- check-jsonschema (which does require it's input to be wrapped in a Database and does exhaustively report errors.)
+"""
 
 import json, jsonschema, click
 from .nmdc_data import get_nmdc_jsonschema, get_nmdc_jsonschema_dict

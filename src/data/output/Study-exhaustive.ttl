@@ -46,8 +46,8 @@ nmdc:sty-11-ab a nmdc:Study ;
         "any string 2" ;
     nmdc:funding_sources "any string 1",
         "any string 2" ;
-    nmdc:gold_study_identifiers "gold:any_string_1"^^xsd:anyURI,
-        "gold:any_string_2"^^xsd:anyURI ;
+    nmdc:gold_study_identifiers "GOLD:Gs12345"^^xsd:anyURI,
+        "GOLD:Gs90909"^^xsd:anyURI ;
     nmdc:mgnify_project_identifiers "mgnify.proj:ABC123" ;
     nmdc:name "see also description, title, objective, various alternatives" ;
     nmdc:objective "This record, an instance of class Study from the nmdc-schema was had authored, so that the NMDC team would have at least one instance, using all slots, with a mixture of reasonable values and minimally compliant values." ;
@@ -67,16 +67,16 @@ nmdc:sty-11-ab a nmdc:Study ;
         "any string 2" ;
     nmdc:specific_ecosystem "unconstrained text" ;
     nmdc:study_image [ a nmdc:ImageValue ;
-            dcterms:description "Photo of Craig Venter Institute, La Jolla, California" ;
-            nmdc:display_order "2" ;
-            nmdc:has_raw_value "https://today.ucsd.edu/news_uploads/140213ventor2.jpg" ;
-            nmdc:url "https://today.ucsd.edu/news_uploads/140213ventor2.jpg" ;
-            nmdc:was_generated_by nmdc:any_string_1 ],
-        [ a nmdc:ImageValue ;
             dcterms:description "Photo of Craig Venter Institute, Rockville, Maryland" ;
             nmdc:display_order "1" ;
             nmdc:has_raw_value "https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg" ;
             nmdc:url "https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg" ;
+            nmdc:was_generated_by nmdc:any_string_1 ],
+        [ a nmdc:ImageValue ;
+            dcterms:description "Photo of Craig Venter Institute, La Jolla, California" ;
+            nmdc:display_order "2" ;
+            nmdc:has_raw_value "https://today.ucsd.edu/news_uploads/140213ventor2.jpg" ;
+            nmdc:url "https://today.ucsd.edu/news_uploads/140213ventor2.jpg" ;
             nmdc:was_generated_by nmdc:any_string_1 ] ;
     nmdc:title "Sample Exhaustive Biosample instance. Although all of these values should pass validation, that does not mean that any Biosample of any type would necessarily have this particular combination of values." ;
     nmdc:type "any string" ;

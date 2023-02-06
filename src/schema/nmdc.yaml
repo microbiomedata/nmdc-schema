@@ -1128,6 +1128,10 @@ enums:
       CheckM Statistics:
         text: CheckM Statistics
         description: CheckM statistics report
+      GTDBTK Bacterial Summary:
+        description: GTDBTK bacterial summary
+      GTDBTK Archaeal Summary:
+        description: GTDBTK archaeal summary
       GOTTCHA2 Krona Plot:
         text: GOTTCHA2 Krona Plot
         description: GOTTCHA2 krona plot HTML file
@@ -1361,7 +1365,12 @@ enums:
         text: Direct Infusion FT ICR-MS Raw Data
         description: Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance
           mass spectrometry raw data acquired in broadband full scan mode
-
+      Annotation Statistics:
+        description: Annotation statistics report
+      Direct Infusion FT ICR-MS Raw Data:
+        description: Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance mass spectrometry raw data acquired in broadband full scan mode
+      Raw Compressed Metagenome Interleaved Paired-End Reads:
+        description: Raw sequencing reads from a metagenome that is in interleaved paired-end format and compressed using GNU zip format.
   credit enum:
     permissible_values:
       Conceptualization:

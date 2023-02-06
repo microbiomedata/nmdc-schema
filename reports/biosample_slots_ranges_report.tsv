@@ -3,7 +3,7 @@ embargoed	boolean
 collected_from	FieldResearchSite				
 type	string				
 img_identifiers	string	True			
-samp_name	string	False			
+samp_name	TextValue	False			
 biosample_categories	biosample_category_enum	True			
 part_of	NamedThing	True			
 id	string	False	^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$		
@@ -12,7 +12,7 @@ gold_biosample_identifiers	uriorcurie	True	^GOLD:Gb[0-9]+$
 insdc_biosample_identifiers	uriorcurie	True	^biosample:SAM[NED]([A-Z])?[0-9]+$		
 emsl_biosample_identifiers	uriorcurie	True			
 igsn_biosample_identifiers	uriorcurie	True			
-agrochem_addition	QuantityValue	False			
+agrochem_addition	TextValue	True			
 alkalinity	QuantityValue	False			
 alkalinity_method	TextValue	False			
 alkyl_diethers	QuantityValue	False			
@@ -28,11 +28,11 @@ bishomohopanol	QuantityValue	False
 bromide	QuantityValue	False			
 calcium	QuantityValue	False			
 carb_nitro_ratio	QuantityValue	False			
-chem_administration	ControlledTermValue	False			
+chem_administration	TextValue	True			
 chloride	QuantityValue	False			
 chlorophyll	QuantityValue	False			
-collection_date	TimestampValue	False			
-cur_land_use	TextValue	False			
+collection_date	date	False			
+cur_land_use	cur_land_use_enum	False			
 cur_vegetation	TextValue	False			
 cur_vegetation_meth	TextValue	False			
 crop_rotation	TextValue	False			
@@ -45,21 +45,21 @@ diss_inorg_phosp	QuantityValue	False
 diss_org_carb	QuantityValue	False			
 diss_org_nitro	QuantityValue	False			
 diss_oxygen	QuantityValue	False			
-drainage_class	TextValue	False			
+drainage_class	drainage_class_enum	False			
 elev	float	False			
-env_package	TextValue	False	[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc environment|plant\-associated|sediment|soil|wastewater\/sludge|water]		
+env_package	TextValue	False			
 env_broad_scale	ControlledIdentifiedTermValue	False			
 env_local_scale	ControlledIdentifiedTermValue	False			
 env_medium	ControlledIdentifiedTermValue	False			
 extreme_event	string	False			
-fao_class	TextValue	False			
+fao_class	fao_class_enum	False			
 fire	string	False	^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$		
 flooding	string	False			
 geo_loc_name	TextValue	False			
 glucosidase_act	QuantityValue	False			
-heavy_metals	QuantityValue	True			
+heavy_metals	TextValue	True			
 heavy_metals_meth	TextValue	True			
-lat_lon	GeolocationValue	False			
+lat_lon	TextValue	False			
 link_addit_analys	TextValue	False			
 link_class_info	TextValue	False			
 link_climate_info	TextValue	False			
@@ -68,37 +68,37 @@ local_class_meth	TextValue	False
 magnesium	QuantityValue	False			
 mean_frict_vel	QuantityValue	False			
 mean_peak_frict_vel	QuantityValue	False			
-misc_param	QuantityValue	False			
-n_alkanes	QuantityValue	False			
+misc_param	TextValue	True			
+n_alkanes	TextValue	True			
 nitrate	QuantityValue	False			
 nitrite	QuantityValue	False			
 org_matter	QuantityValue	False			
 org_nitro	QuantityValue	False			
-organism_count	QuantityValue	False			
+organism_count	organism_count_enum	True			
 oxy_stat_samp	rel_to_oxygen_enum	False			
 part_org_carb	QuantityValue	False			
-perturbation	TextValue	False			
+perturbation	TextValue	True			
 petroleum_hydrocarb	QuantityValue	False			
-ph	QuantityValue	False			
+ph	double	False			
 ph_meth	TextValue	False			
-phaeopigments	QuantityValue	False			
-phosplipid_fatt_acid	QuantityValue	False			
+phaeopigments	TextValue	True			
+phosplipid_fatt_acid	TextValue	True			
 pool_dna_extracts	TextValue	False			
 potassium	QuantityValue	False			
 pressure	QuantityValue	False			
-profile_position	TextValue	False			
+profile_position	profile_position_enum	False			
 redox_potential	QuantityValue	False			
 salinity	QuantityValue	False			
 salinity_meth	TextValue	False			
-samp_mat_process	ControlledTermValue	False			
+samp_mat_process	TextValue	False			
 samp_store_dur	TextValue	False			
 samp_store_loc	TextValue	False			
-samp_taxon_id	string	False			
+samp_taxon_id	TextValue	False			
 samp_store_temp	QuantityValue	False			
 samp_vol_we_dna_ext	QuantityValue	False			
 season_temp	QuantityValue	False			
 season_precpt	QuantityValue	False			
-sieving	QuantityValue	False			
+sieving	TextValue	False			
 size_frac_low	QuantityValue	False			
 size_frac_up	QuantityValue	False			
 slope_gradient	QuantityValue	False			
@@ -110,18 +110,18 @@ store_cond	TextValue	False
 sulfate	QuantityValue	False			
 sulfide	QuantityValue	False			
 temp	QuantityValue	False			
-tillage	TextValue	False			
-tidal_stage	TextValue	False			
+tillage	tillage_enum	True			
+tidal_stage	tidal_stage_enum	False			
 tot_carb	QuantityValue	False			
 tot_depth_water_col	QuantityValue	False			
 tot_diss_nitro	QuantityValue	False			
 tot_org_carb	QuantityValue	False			
 tot_org_c_meth	TextValue	False			
 tot_nitro_content	QuantityValue	False			
-tot_nitro_cont_meth	string	False			
+tot_nitro_cont_meth	TextValue	False			
 tot_phosp	QuantityValue	False			
 water_content	string	True			
-water_cont_soil_meth	string	False			
+water_cont_soil_meth	TextValue	False			
 ecosystem	string				
 ecosystem_category	string				
 ecosystem_type	string				
@@ -139,20 +139,20 @@ salinity_category	string
 sample_collection_site	string				
 soluble_iron_micromol	string				
 subsurface_depth	QuantityValue				
-air_temp_regm	QuantityValue	False			
+air_temp_regm	TextValue	True			
 biotic_regm	TextValue	False			
-biotic_relationship	TextValue	False			
-climate_environment	TextValue	False			
-experimental_factor	ControlledTermValue	False			
-gaseous_environment	QuantityValue	False			
-growth_facil	ControlledTermValue	False			
-humidity_regm	QuantityValue	False			
-light_regm	QuantityValue	False			
+biotic_relationship	biotic_relationship_enum	False			
+climate_environment	TextValue	True			
+experimental_factor	TextValue	False			
+gaseous_environment	TextValue	True			
+growth_facil	TextValue	False			
+humidity_regm	TextValue	True			
+light_regm	TextValue	False			
 phosphate	QuantityValue	False			
-samp_collec_method	string	False			
+samp_collec_method	TextValue	False			
 samp_size	QuantityValue	False			
 source_mat_id	TextValue	False			
-watering_regm	QuantityValue	False			
+watering_regm	TextValue	True			
 dna_absorb1	string				
 dna_absorb2	string				
 dna_collect_site	string				

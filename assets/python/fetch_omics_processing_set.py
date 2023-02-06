@@ -1,37 +1,23 @@
 import csv
-import pprint
 
 from pymongo import MongoClient
 
-m_pass = ""
+from dotenv import load_dotenv
+import os
+
+load_dotenv("../../local/.env")
+
+id_inst_file = "../omics_processing_id_inst.tsv"
+
+mongo_pw = os.getenv("MONGO_PW")
 
 client = MongoClient(
-    f"mongodb://mam:{m_pass}@localhost:27027/?authSource=admin&readPreference=primary&directConnection=true&ssl=false"
+    f"mongodb://mam:{mongo_pw}@localhost:27027/?authSource=admin&readPreference=primary&directConnection=true&ssl=false"
 )
-
-id_inst_file ="../target/omics_processing_id_inst.tsv"
 
 # on the verbose side for just retrieving a collection
 result_filter = {}
 result = client["nmdc"]["omics_processing_set"].find(filter=result_filter)
-
-# print(type(result))
-# <class 'pymongo.cursor.Cursor'>
-
-# ['GOLD_sequencing_project_identifiers',
-#  '_id',
-#  'add_date',
-#  'has_input',
-#  'has_output',
-#  'id',
-#  'mod_date',
-#  'name',
-#  'ncbi_project_name',
-#  'omics_type',
-#  'part_of',
-#  'principal_investigator',
-#  'processing_institution',
-#  'type']
 
 id_inst = []
 for i in result:

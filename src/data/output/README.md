@@ -24,9 +24,9 @@ part_of:
 ```yaml
 add_date: '2021-03-31'
 agrochem_addition:
-  has_raw_value: lime;1 kg/acre;2022-11-16T16:05:42+0000
+- has_raw_value: lime;1 kg/acre;2022-11-16T16:05:42+0000
 air_temp_regm:
-  has_raw_value: 25 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+- has_raw_value: 25 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 al_sat:
   has_raw_value: 0.1 mg/kg
 al_sat_meth:
@@ -62,9 +62,7 @@ biosample_categories:
 - FICUS
 biotic_regm:
   has_raw_value: sample inoculated with Rhizobium spp. Culture
-biotic_relationship:
-  has_raw_value: MIxS suggest enum [free living|parasite|commensal|symbiont] but not
-    currently enforced here
+biotic_relationship: parasite
 bishomohopanol:
   has_raw_value: 14 microgram per liter
 bromide:
@@ -74,24 +72,21 @@ calcium:
 carb_nitro_ratio:
   has_raw_value: '0.417361111'
 chem_administration:
-  has_raw_value: agar [CHEBI:2509];2018-05-11T20:00Z
+- has_raw_value: agar [CHEBI:2509];2018-05-11T20:00Z
 chloride:
   has_raw_value: 5000 milligram per liter
 chlorophyll:
   has_raw_value: 5 milligram per cubic meter
 climate_environment:
-  has_raw_value: tropical climate;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+- has_raw_value: tropical climate;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 collected_from: nmdc:unconstrained_site_identifier_string
-collection_date:
-  has_raw_value: 2023-01-16T16:05:42+0000
 collection_date_inc: '2023-01-29'
 collection_time: 05:42+0000
 collection_time_inc: 13:42+0000
 community: no_example_from_mixs
 crop_rotation:
   has_raw_value: yes;R2/2017-01-01/2018-12-31/P6M
-cur_land_use:
-  has_raw_value: conifers
+cur_land_use: farmstead
 cur_vegetation:
   has_raw_value: MIxS doesn't provide any guidance more specific than "text"
 cur_vegetation_meth:
@@ -140,8 +135,7 @@ dna_seq_project_name: JGI Pond metagenomics
 dna_seq_project_pi: Jane Johnson
 dna_volume: '25'
 dnase_rna: 'yes'
-drainage_class:
-  has_raw_value: well
+drainage_class: well
 ecosystem: unconstrained text. should be validated against the controlled vocabulary,
   by the sample's environmental package. would also be nice to align the CV with MIxS
   environmental triads
@@ -173,21 +167,20 @@ experimental_factor:
 experimental_factor_other: unconstrained text, but presumably expects 'term label
   [term id]'
 extreme_event: '2023-01-15'
-fao_class:
-  has_raw_value: Fluvisol
+fao_class: Fluvisols
 filter_method: Basix PES, 13-100-106 FisherSci is an example value, but unconstrained
   text is accepted at this point
 fire: 2000-11 to 2000-12
 flooding: '2000-01-15'
 gaseous_environment:
-  has_raw_value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+- has_raw_value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 geo_loc_name:
   has_raw_value: 'USA: Maryland, Bethesda'
 glucosidase_act:
   has_raw_value: 5 mol per liter per hour
 gold_biosample_identifiers:
 - GOLD:Gb123456789
-- GOLD:Gb
+- GOLD:Gb90909090
 growth_facil:
   has_raw_value: Growth chamber [CO_715:0000189]
 habitat: unconstrained text
@@ -198,7 +191,7 @@ heavy_metals_meth:
 - has_raw_value: https://link.springer.com/article/10.1007/s42452-019-1578-x
 host_name: snail is an example value, but unconstrained text is accepted at this point
 humidity_regm:
-  has_raw_value: 25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+- has_raw_value: 25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 id: nmdc:bsm-99-dtTMNb
 igsn_biosample_identifiers:
 - any:curie_1
@@ -212,8 +205,6 @@ insdc_biosample_identifiers:
 isotope_exposure: 13C glucose
 lat_lon:
   has_raw_value: 50.586825 6.408977
-  latitude: 50.586825
-  longitude: 6.408977
 lbc_thirty:
   has_raw_value: 543 mg/kg
 lbceq:
@@ -245,10 +236,10 @@ micro_biomass_n_meth: https://acsess.onlinelibrary.wiley.com/doi/abs/10.2136/sss
 microbial_biomass_c: 0.05 ug C/g dry soil
 microbial_biomass_n: 0.05 ug N/g dry soil
 misc_param:
-  has_raw_value: Bicarbonate ion concentration;2075 micromole per kilogram
+- has_raw_value: Bicarbonate ion concentration;2075 micromole per kilogram
 mod_date: '2023-01-25'
 n_alkanes:
-  has_raw_value: n-hexadecane;100 milligram per liter
+- has_raw_value: n-hexadecane;100 milligram per liter
 name: Sample Exhaustive Biosample instance. Although all of these values should pass
   validation, that does not mean that any Biosample of any type would necessarily
   have this particular combination of values.
@@ -269,7 +260,7 @@ org_nitro:
   has_raw_value: 4 micromole per liter
 org_nitro_method: https://doi.org/10.1016/0038-0717(85)90144-0
 organism_count:
-  has_raw_value: total prokaryotes;3.5e7 cells per milliliter;qPCR
+- ATP
 other_treatment: unconstrained text
 oxy_stat_samp: aerobe
 part_of:
@@ -278,27 +269,25 @@ part_of:
 part_org_carb:
   has_raw_value: 1.92 micromole per liter
 perturbation:
-  has_raw_value: antibiotic addition;R2/2018-05-11T14:30Z/2018-05-11T19:30Z/P1H30M
+- has_raw_value: antibiotic addition;R2/2018-05-11T14:30Z/2018-05-11T19:30Z/P1H30M
 petroleum_hydrocarb:
   has_raw_value: 0.05 micromole per liter
-ph:
-  has_raw_value: '7.5'
+ph: 99.99
 ph_meth:
   has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9040c.pdf
 phaeopigments:
-  has_raw_value: 2.5 milligram per cubic meter
+- has_raw_value: 2.5 milligram per cubic meter
 phosphate:
   has_raw_value: 0.7 micromole per liter
 phosplipid_fatt_acid:
-  has_raw_value: 2.98 milligram per liter
+- has_raw_value: 2.98 milligram per liter
 pool_dna_extracts:
   has_raw_value: yes, 5
 potassium:
   has_raw_value: 463 milligram per liter
 pressure:
   has_raw_value: 50 atmosphere
-profile_position:
-  has_raw_value: summit. change validation to enumeration
+profile_position: summit
 project_id: no example from MIxS
 proport_woa_temperature: no example from MIxS
 proposal_dna: '504000'
@@ -330,10 +319,12 @@ salinity_category: halotolerant is an example from the schema, but MIxS doesn't 
   this slot any more
 salinity_meth:
   has_raw_value: PMID:22895776
-samp_collec_method: swabbing
+samp_collec_method:
+  has_raw_value: swabbing
 samp_mat_process:
   has_raw_value: filtering of seawater
-samp_name: see also name
+samp_name:
+  has_raw_value: see also name
 samp_size:
   has_raw_value: 5 liters
 samp_store_dur:
@@ -342,7 +333,8 @@ samp_store_loc:
   has_raw_value: Freezer no:5
 samp_store_temp:
   has_raw_value: -80 degree Celsius
-samp_taxon_id: soil metagenome [NCBItaxon:410658] but no validation applied yet
+samp_taxon_id:
+  has_raw_value: soil metagenome [NCBItaxon:410658] but no validation applied yet
 samp_vol_we_dna_ext:
   has_raw_value: 1500 milliliter
 sample_collection_site: unconstrained text
@@ -388,17 +380,17 @@ sulfide:
 technical_reps: '2'
 temp:
   has_raw_value: 25 degree Celsius
-tidal_stage:
-  has_raw_value: high tide. change validation to enumeration
+tidal_stage: high tide
 tillage:
-  has_raw_value: chisel. change validation to enumeration
+- chisel
 tot_carb:
   has_raw_value: MIxS does not provide an example
 tot_depth_water_col:
   has_raw_value: 500 meter
 tot_diss_nitro:
   has_raw_value: 40 microgram per liter
-tot_nitro_cont_meth: https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00
+tot_nitro_cont_meth:
+  has_raw_value: https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00
 tot_nitro_content:
   has_raw_value: 35 milligrams Nitrogen per kilogram of soil
 tot_org_c_meth:
@@ -408,12 +400,13 @@ tot_org_carb:
 tot_phosp:
   has_raw_value: 0.03 milligram per liter
 type: nmdc:Biosample. change this to require a class name or an enumeration
-water_cont_soil_meth: MIxS doesn't provide an example
+water_cont_soil_meth:
+  has_raw_value: MIxS doesn't provide an example
 water_content:
 - MIxS doesn't provide an example 1
 - MIxS doesn't provide an example 2
 watering_regm:
-  has_raw_value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+- has_raw_value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 zinc:
   has_raw_value: 2.5 mg/kg
 
@@ -458,8 +451,8 @@ funding_sources:
 - any string 1
 - any string 2
 gold_study_identifiers:
-- gold:any_string_1
-- gold:any_string_2
+- GOLD:Gs12345
+- GOLD:Gs90909
 has_credit_associations:
 - applied_role: Funding acquisition
   applied_roles:
@@ -525,6 +518,47 @@ websites:
 - https://w3id.org/linkml
 
 ```
+## Database-with-MetagenomeSequencingActivity
+### Input
+```yaml
+metagenome_sequencing_activity_set:
+- ended_at_time: '2021-09-15T10:13:20+00:00'
+  execution_resource: JGI
+  git_url: ''
+  has_input:
+  - nmdc:unvalidated_placeholder
+  has_output:
+  - nmdc:22afa3d49b73eaec2e9787a6b88fbdc3
+  id: nmdc:wf-99-qwertyuiop
+  name: Sequencing Activity for nmdc:mga0vx38
+  part_of:
+  - nmdc:mga0vx38
+  started_at_time: '2021-08-05T14:48:51+00:00'
+  type: nmdc:MetagenomeSequencing
+  version: v1.0.0
+  was_informed_by: gold:Gp0213371
+
+```
+## MetagenomeSequencingActivity-from-metagenome_seequencing_activity_json
+### Input
+```yaml
+ended_at_time: '2021-09-15T10:13:20+00:00'
+execution_resource: JGI
+git_url: ''
+has_input:
+- nmdc:unvalidated_placeholder
+has_output:
+- nmdc:22afa3d49b73eaec2e9787a6b88fbdc3
+id: nmdc:wf-99-qwertyuiop
+name: Sequencing Activity for nmdc:mga0vx38
+part_of:
+- nmdc:mga0vx38
+started_at_time: '2021-08-05T14:48:51+00:00'
+type: nmdc:MetagenomeSequencing
+version: v1.0.0
+was_informed_by: gold:Gp0213371
+
+```
 ## Biosample-minimal
 ### Input
 ```yaml
@@ -566,6 +600,25 @@ part_of:
 - gold:Gs0110115
 
 ```
+## MetagenomeSequencingActivity-no_parthood
+### Input
+```yaml
+ended_at_time: '2021-09-15T10:13:20+00:00'
+execution_resource: JGI
+git_url: ''
+has_input:
+- nmdc:unvalidated_placeholder
+has_output:
+- nmdc:22afa3d49b73eaec2e9787a6b88fbdc3
+id: nmdc:wf-99-qwertyuiop
+name: Sequencing Activity for nmdc:mga0vx38
+part_of: null
+started_at_time: '2021-08-05T14:48:51+00:00'
+type: nmdc:MetagenomeSequencing
+version: v1.0.0
+was_informed_by: gold:Gp0213371
+
+```
 ## Biosample-missing-id
 ### Input
 ```yaml
@@ -583,5 +636,25 @@ env_medium:
     id: ENVO:00005792
 part_of:
 - gold:Gs0110115
+
+```
+## MetagenomeSequencingActivity-bad_id
+### Input
+```yaml
+ended_at_time: '2021-09-15T10:13:20+00:00'
+execution_resource: JGI
+git_url: ''
+has_input:
+- nmdc:unvalidated_placeholder
+has_output:
+- nmdc:22afa3d49b73eaec2e9787a6b88fbdc3
+id: nmdc:107ade35423143e39dc30b12832ac759
+name: Sequencing Activity for nmdc:mga0vx38
+part_of:
+- nmdc:mga0vx38
+started_at_time: '2021-08-05T14:48:51+00:00'
+type: nmdc:MetagenomeSequencing
+version: v1.0.0
+was_informed_by: gold:Gp0213371
 
 ```

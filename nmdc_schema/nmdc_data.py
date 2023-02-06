@@ -25,7 +25,7 @@ def get_nmdc_yaml_bytesIO() -> io.BytesIO:
         A bytes stream of nmdc.yaml file.
     """
     # get nmdc.yaml file from the package data
-    return io.BytesIO(pkgutil.get_data(__name__, "nmdc_schema_generated.yaml"))
+    return io.BytesIO(pkgutil.get_data(__name__, " nmdc_schema_merged.yaml"))
 
 
 def get_nmdc_yaml_bytes() -> bytes:
@@ -127,7 +127,7 @@ def get_nmdc_schema_definition() -> SchemaDefinition:
 
 
 def get_nmdc_file_type_enums() -> List[Dict[str, str]]:
-    """Returns list of dicts with informaton about each NMDC file enums.
+    """Returns list of dicts with information about each NMDC file enums.
     Each dict in the list has the key/values:
     {
         name: the name of the enum
@@ -208,10 +208,10 @@ def get_gold_sssom() -> str:
     Only one argument is permitted.
     \b
     fetch arguments:
-    yaml            returns the nmdc.yaml file as a string
+    yaml            returns the merged nmdc.yaml file as a string
     jsonschema      returns the NMDC jsonschema as json
     dict            returns the NMDC jsonschema as a dict
-    schemadef       returns the LinkML SchemaDefintion created from the nmdc.yaml file
+    schemadef       returns the LinkML SchemaDefintion created from the merged nmdc.yaml file
     filetypeenums   returns informaton about the NMDC file type enums as json
     goldsssom       returns the gold-to-mixs.sssom.tsv file contents
     """,
