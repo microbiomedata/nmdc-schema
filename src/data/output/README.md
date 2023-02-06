@@ -180,7 +180,7 @@ glucosidase_act:
   has_raw_value: 5 mol per liter per hour
 gold_biosample_identifiers:
 - GOLD:Gb123456789
-- GOLD:Gb
+- GOLD:Gb90909090
 growth_facil:
   has_raw_value: Growth chamber [CO_715:0000189]
 habitat: unconstrained text
@@ -451,8 +451,8 @@ funding_sources:
 - any string 1
 - any string 2
 gold_study_identifiers:
-- gold:any_string_1
-- gold:any_string_2
+- GOLD:Gs12345
+- GOLD:Gs90909
 has_credit_associations:
 - applied_role: Funding acquisition
   applied_roles:

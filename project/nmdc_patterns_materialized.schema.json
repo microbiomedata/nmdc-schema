@@ -495,9 +495,9 @@
                 "gold_biosample_identifiers": {
                     "description": "Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample",
                     "items": {
+                        "pattern": "^GOLD:Gb[0-9]+$",
                         "type": "string"
                     },
-                    "pattern": "^GOLD:Gb[0-9]+$",
                     "type": "array"
                 },
                 "growth_facil": {
@@ -553,9 +553,9 @@
                 "insdc_biosample_identifiers": {
                     "description": "identifiers for corresponding sample in INSDC",
                     "items": {
+                        "pattern": "^biosample:SAM[NED]([A-Z])?[0-9]+$",
                         "type": "string"
                     },
-                    "pattern": "^biosample:SAM[NED]([A-Z])?[0-9]+$",
                     "type": "array"
                 },
                 "isotope_exposure": {
@@ -2398,9 +2398,9 @@
                 "gold_analysis_project_identifiers": {
                     "description": "identifiers for corresponding analysis project in GOLD",
                     "items": {
+                        "pattern": "^GOLD:Ga[0-9]+$",
                         "type": "string"
                     },
-                    "pattern": "^GOLD:Ga[0-9]+$",
                     "type": "array"
                 },
                 "has_input": {
@@ -2934,9 +2934,9 @@
                 "gold_analysis_project_identifiers": {
                     "description": "identifiers for corresponding analysis project in GOLD",
                     "items": {
+                        "pattern": "^GOLD:Ga[0-9]+$",
                         "type": "string"
                     },
-                    "pattern": "^GOLD:Ga[0-9]+$",
                     "type": "array"
                 },
                 "has_input": {
@@ -3312,9 +3312,9 @@
                 "gold_sequencing_project_identifiers": {
                     "description": "identifiers for corresponding sequencing project in GOLD",
                     "items": {
+                        "pattern": "^GOLD:Gp[0-9]+$",
                         "type": "string"
                     },
-                    "pattern": "^GOLD:Gp[0-9]+$",
                     "type": "array"
                 },
                 "has_input": {
@@ -3338,9 +3338,9 @@
                 },
                 "insdc_experiment_identifiers": {
                     "items": {
+                        "pattern": "^insdc.sra:(E|D|S)RX[0-9]{6,}$",
                         "type": "string"
                     },
-                    "pattern": "^insdc.sra:(E|D|S)RX[0-9]{6,}$",
                     "type": "array"
                 },
                 "instrument_name": {
@@ -4065,9 +4065,9 @@
                 "gold_study_identifiers": {
                     "description": "identifiers for corresponding project(s) in GOLD",
                     "items": {
+                        "pattern": "^GOLD:Gs[0-9]+$",
                         "type": "string"
                     },
-                    "pattern": "^GOLD:Gs[0-9]+$",
                     "type": "array"
                 },
                 "has_credit_associations": {
@@ -4090,9 +4090,9 @@
                 "massive_study_identifiers": {
                     "description": "identifiers for corresponding study in MASSIVE",
                     "items": {
+                        "pattern": "^MASSIVE:",
                         "type": "string"
                     },
-                    "pattern": "^MASSIVE:",
                     "type": "array"
                 },
                 "mgnify_project_identifiers": {

@@ -1044,14 +1044,14 @@ format-nongpl = ["fqdn", "idna", "isoduration", "jsonpointer (>1.13)", "rfc3339-
 
 [[package]]
 name = "linkml"
-version = "1.4.3"
+version = "1.4.4"
 description = "Linked Open Data Modeling Language"
 category = "dev"
 optional = false
 python-versions = ">=3.7.6,<4.0.0"
 files = [
-    {file = "linkml-1.4.3-py3-none-any.whl", hash = "sha256:778603d56f8d4f2e285c63eac0324ece68fe76f018f3a0638dcb3b03fa5c3262"},
-    {file = "linkml-1.4.3.tar.gz", hash = "sha256:0e071d9d6a62924f650172b9fac09fd5626f744363c4d3e67494cdd142251489"},
+    {file = "linkml-1.4.4-py3-none-any.whl", hash = "sha256:82c701fd242174108ca11c18afa4e81c0d231c78ee1c3bfd33c27dfe8663ad25"},
+    {file = "linkml-1.4.4.tar.gz", hash = "sha256:5699c2e2016bc89a48cf645f462f970585bf31b88442ef56305d2e2192c30649"},
 ]
 
 [package.dependencies]
@@ -2986,4 +2986,4 @@ docs = []
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "c5e065d5d4046f3038ddcaba200acf4f7278214b7b7b7dd8b6e9e89b36e2df53"
+content-hash = "12305f567075055418b93563b41c49c0fe5806079c3b8742d965ce411f009f13"
