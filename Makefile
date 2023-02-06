@@ -22,7 +22,7 @@ EXAMPLEDIR = examples
 
 
 # basename of a YAML file in model/
-.PHONY: all clean examples-all
+.PHONY: all clean combined-extras examples-clean
 
 # note: "help" MUST be the first target in the file,
 # when the user types "make" they should get help info
@@ -75,9 +75,8 @@ update-linkml:
 create-data-harmonizer:
 	npm init data-harmonizer $(SOURCE_SCHEMA_PATH)
 
-.PHONY: examples-all examples-clean
 all: site
-site:  gen-project gendoc
+site: gen-project gendoc
 
 
 %.yaml: gen-project
@@ -92,22 +91,22 @@ gen-examples:
 gen-project: $(PYMODEL)
 	# added inclusion/exclusion parameters here, in test rule, and in project directories constant
 	$(RUN) gen-project \
-		--include jsonschema \
-		--include python \
 		--exclude excel \
 		--exclude graphql \
 		--exclude jsonld \
 		--exclude jsonldcontext \
 		--exclude markdown \
-		--include owl \
 		--exclude prefixmap \
 		--exclude proto \
 		--exclude shacl \
 		--exclude shex \
 		--exclude sqlddl \
+		--include jsonschema \
+		--include owl \
+		--include python \
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 
-test: examples-clean test-schema test-python
+test: test-schema test-python
 # make test sometimes says "make: Nothing to be done for `test'."
 
 test-schema:
@@ -232,7 +231,7 @@ clean:
 
 include project.Makefile
 
-examples-all: examples-clean project/nmdc_schema_generated.yaml src/data/output
+#examples-all: examples-clean project/nmdc_schema_generated.yaml src/data/output
 
 examples-clean:
 	@echo running examples-clean
@@ -272,7 +271,7 @@ src/data/output: project/nmdc_schema_generated.yaml
 		--counter-example-input-directory src/data/invalid \
 		--output-directory $@ > $@/README.md
 
-.PHONY: combined-extras
+
 combined-extras: examples-clean gen-project gendoc \
 project/nmdc_schema_generated.yaml project/nmdc_schema_merged.yaml project/nmdc_patterns_materialized.schema.json \
 src/data/output
@@ -283,3 +282,12 @@ src/data/output
 	cp project/nmdc_schema_merged.yaml                       $(PYMODEL)/nmdc_schema_merged_no_patterns.yaml
 	cp project/nmdc_schema_generated.yaml                    $(PYMODEL)
 	cp sssom/gold-to-mixs.sssom.tsv                          $(PYMODEL)
+	git add *
+	git commit -m "combined-extras"
+
+# nmdc_schema/nmdc.yaml (merged, from project/nmdc_schema_merged.yaml)
+# nmdc_schema/nmdc_materialized_patterns.yaml
+# nmdc_schema/nmdc.schema.json (from project/jsonschema/nmdc.schema.json)
+# nmdc_schema/nmdc_materialized_patterns.schema.json
+
+# git-init-add
