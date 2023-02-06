@@ -209,9 +209,9 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     mixs:0000647 [ a nmdc:QuantityValue ;
             nmdc:has_raw_value "MIxS does not provide an example" ] ;
     mixs:0000652 [ a nmdc:TextValue ;
-            nmdc:has_raw_value "arsenic;0.09 micrograms per gram" ],
+            nmdc:has_raw_value "mercury;0.09 micrograms per gram" ],
         [ a nmdc:TextValue ;
-            nmdc:has_raw_value "mercury;0.09 micrograms per gram" ] ;
+            nmdc:has_raw_value "arsenic;0.09 micrograms per gram" ] ;
     mixs:0000735 [ a nmdc:QuantityValue ;
             nmdc:has_raw_value "0.2 micrometer" ] ;
     mixs:0000736 [ a nmdc:QuantityValue ;
@@ -293,8 +293,8 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
             nmdc:has_raw_value "unconstrained text. should require the name of a MIxS EnvironmentalPackage class. have asked MIxS to return this term to their model. UPDATE VALIDATION RULES/PATTERN/ENUM!" ] ;
     nmdc:experimental_factor_other "unconstrained text, but presumably expects 'term label [term id]'" ;
     nmdc:filter_method "Basix PES, 13-100-106 FisherSci is an example value, but unconstrained text is accepted at this point" ;
-    nmdc:gold_biosample_identifiers "GOLD:Gb"^^xsd:anyURI,
-        "GOLD:Gb123456789"^^xsd:anyURI ;
+    nmdc:gold_biosample_identifiers "GOLD:Gb123456789"^^xsd:anyURI,
+        "GOLD:Gb90909090"^^xsd:anyURI ;
     nmdc:habitat "unconstrained text" ;
     nmdc:host_name "snail is an example value, but unconstrained text is accepted at this point" ;
     nmdc:igsn_biosample_identifiers "any:curie_1"^^xsd:anyURI,
