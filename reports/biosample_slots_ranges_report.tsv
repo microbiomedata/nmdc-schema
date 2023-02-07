@@ -1,4 +1,5 @@
 slot_name	slot_range	slot_multivalued	slot_pattern	slot_min	slot_max
+host_taxid	TextValue	False			
 embargoed	boolean				
 collected_from	FieldResearchSite				
 type	string				

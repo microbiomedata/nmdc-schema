@@ -8,11 +8,6 @@ nmdc:sty-11-ab a nmdc:Study ;
     dcterms:description "see also name, title, objective, various alternatives" ;
     prov:qualifiedAssociation [ a prov:Association ;
             prov:agent [ a nmdc:PersonValue ;
-                    nmdc:name "Tanja Davidsen" ] ;
-            nmdc:applied_roles "Investigation",
-                "Supervision" ],
-        [ a prov:Association ;
-            prov:agent [ a nmdc:PersonValue ;
                     schema:email "jcventer@jcvi.org" ;
                     nmdc:has_raw_value "Craig Venter" ;
                     nmdc:name "J. Craig Venter" ;
@@ -24,7 +19,12 @@ nmdc:sty-11-ab a nmdc:Study ;
             prov:hadRole "Funding acquisition" ;
             nmdc:applied_roles "Conceptualization",
                 "Supervision" ;
-            nmdc:type "any string" ] ;
+            nmdc:type "any string" ],
+        [ a prov:Association ;
+            prov:agent [ a nmdc:PersonValue ;
+                    nmdc:name "Tanja Davidsen" ] ;
+            nmdc:applied_roles "Investigation",
+                "Supervision" ] ;
     nmdc:abstract "Nothing was studied." ;
     nmdc:alternative_descriptions "any string 1",
         "any string 2" ;

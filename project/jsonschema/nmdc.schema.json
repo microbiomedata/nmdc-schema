@@ -522,6 +522,10 @@
                 "host_name": {
                     "type": "string"
                 },
+                "host_taxid": {
+                    "$ref": "#/$defs/TextValue",
+                    "description": "NCBI taxon id of the host, e.g. 9606"
+                },
                 "humidity_regm": {
                     "description": "Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens",
                     "items": {
@@ -1837,17 +1841,16 @@
                 "QC Statistics",
                 "TIGRFam Annotation GFF",
                 "CRT Annotation GFF",
-                "Genemark Annotation GFF",
+                "Genmark Annotation GFF",
                 "Prodigal Annotation GFF",
                 "TRNA Annotation GFF",
-                "TRNA Annotation GFF3",
                 "Misc Annotation GFF",
                 "RFAM Annotation GFF",
                 "TMRNA Annotation GFF",
                 "KO_EC Annotation GFF",
                 "Product Names",
-                "Gene Phylogeny",
-                "Crispr Terms",
+                "Gene Phylogeny tsv",
+                "Crisprt Terms",
                 "Clusters of Orthologous Groups (COG) Annotation GFF",
                 "CATH FunFams (Functional Families) Annotation GFF",
                 "SUPERFam Annotation GFF",

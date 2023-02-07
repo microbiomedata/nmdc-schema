@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-02-06T18:15:28
+# Generation date: 2023-02-07T09:32:40
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -1002,6 +1002,7 @@ class Biosample(MaterialEntity):
     env_broad_scale: Union[dict, "ControlledIdentifiedTermValue"] = None
     env_local_scale: Union[dict, "ControlledIdentifiedTermValue"] = None
     env_medium: Union[dict, "ControlledIdentifiedTermValue"] = None
+    host_taxid: Optional[Union[dict, "TextValue"]] = None
     embargoed: Optional[Union[bool, Bool]] = None
     collected_from: Optional[Union[str, FieldResearchSiteId]] = None
     type: Optional[str] = None
@@ -1246,6 +1247,9 @@ class Biosample(MaterialEntity):
             self.MissingRequiredField("env_medium")
         if not isinstance(self.env_medium, ControlledIdentifiedTermValue):
             self.env_medium = ControlledIdentifiedTermValue(**as_dict(self.env_medium))
+
+        if self.host_taxid is not None and not isinstance(self.host_taxid, TextValue):
+            self.host_taxid = TextValue(**as_dict(self.host_taxid))
 
         if self.embargoed is not None and not isinstance(self.embargoed, Bool):
             self.embargoed = Bool(self.embargoed)
@@ -3947,7 +3951,7 @@ class FileTypeEnum(EnumDefinitionImpl):
                                  description="QC removed rRNA reads (R1) fastq") )
         setattr(cls, "Metagenome Bins",
                 PermissibleValue(text="Metagenome Bins",
-                                 description="Metagenome bin zip archive") )
+                                 description="Metagenome bin contigs fasta") )
         setattr(cls, "CheckM Statistics",
                 PermissibleValue(text="CheckM Statistics",
                                  description="CheckM statistics report") )
@@ -4029,17 +4033,14 @@ class FileTypeEnum(EnumDefinitionImpl):
         setattr(cls, "CRT Annotation GFF",
                 PermissibleValue(text="CRT Annotation GFF",
                                  description="GFF3 format file with CRT") )
-        setattr(cls, "Genemark Annotation GFF",
-                PermissibleValue(text="Genemark Annotation GFF",
-                                 description="GFF3 format file with Genemark") )
+        setattr(cls, "Genmark Annotation GFF",
+                PermissibleValue(text="Genmark Annotation GFF",
+                                 description="GFF3 format file with Genmark") )
         setattr(cls, "Prodigal Annotation GFF",
                 PermissibleValue(text="Prodigal Annotation GFF",
                                  description="GFF3 format file with Prodigal") )
         setattr(cls, "TRNA Annotation GFF",
                 PermissibleValue(text="TRNA Annotation GFF",
-                                 description="GFF3 format file with TRNA") )
-        setattr(cls, "TRNA Annotation GFF3",
-                PermissibleValue(text="TRNA Annotation GFF3",
                                  description="GFF3 format file with TRNA") )
         setattr(cls, "Misc Annotation GFF",
                 PermissibleValue(text="Misc Annotation GFF",
@@ -4056,12 +4057,12 @@ class FileTypeEnum(EnumDefinitionImpl):
         setattr(cls, "Product Names",
                 PermissibleValue(text="Product Names",
                                  description="Product names file") )
-        setattr(cls, "Gene Phylogeny",
-                PermissibleValue(text="Gene Phylogeny",
+        setattr(cls, "Gene Phylogeny tsv",
+                PermissibleValue(text="Gene Phylogeny tsv",
                                  description="Gene Phylogeny tsv") )
-        setattr(cls, "Crispr Terms",
-                PermissibleValue(text="Crispr Terms",
-                                 description="Crispr Terms") )
+        setattr(cls, "Crisprt Terms",
+                PermissibleValue(text="Crisprt Terms",
+                                 description="Crisprt Terms") )
         setattr(cls, "Clusters of Orthologous Groups (COG) Annotation GFF",
                 PermissibleValue(text="Clusters of Orthologous Groups (COG) Annotation GFF",
                                  description="GFF3 format file with COGs") )
@@ -4151,6 +4152,16 @@ class ProcessingInstitutionEnum(EnumDefinitionImpl):
         name="ProcessingInstitutionEnum",
     )
 
+class OrganismCountEnum(EnumDefinitionImpl):
+
+    ATP = PermissibleValue(text="ATP")
+    MPN = PermissibleValue(text="MPN")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="OrganismCountEnum",
+    )
+
 class TillageEnum(EnumDefinitionImpl):
 
     drill = PermissibleValue(text="drill")
@@ -4174,31 +4185,6 @@ class TillageEnum(EnumDefinitionImpl):
                 PermissibleValue(text="zonal tillage") )
         setattr(cls, "disc plough",
                 PermissibleValue(text="disc plough") )
-
-class BioticRelationshipEnum(EnumDefinitionImpl):
-
-    parasite = PermissibleValue(text="parasite")
-    commensal = PermissibleValue(text="commensal")
-    symbiont = PermissibleValue(text="symbiont")
-
-    _defn = EnumDefinition(
-        name="BioticRelationshipEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "free living",
-                PermissibleValue(text="free living") )
-
-class OrganismCountEnum(EnumDefinitionImpl):
-
-    ATP = PermissibleValue(text="ATP")
-    MPN = PermissibleValue(text="MPN")
-    other = PermissibleValue(text="other")
-
-    _defn = EnumDefinition(
-        name="OrganismCountEnum",
-    )
 
 class FaoClassEnum(EnumDefinitionImpl):
 
@@ -4233,46 +4219,20 @@ class FaoClassEnum(EnumDefinitionImpl):
         name="FaoClassEnum",
     )
 
-class ProfilePositionEnum(EnumDefinitionImpl):
+class BioticRelationshipEnum(EnumDefinitionImpl):
 
-    summit = PermissibleValue(text="summit")
-    shoulder = PermissibleValue(text="shoulder")
-    backslope = PermissibleValue(text="backslope")
-    footslope = PermissibleValue(text="footslope")
-    toeslope = PermissibleValue(text="toeslope")
+    parasite = PermissibleValue(text="parasite")
+    commensal = PermissibleValue(text="commensal")
+    symbiont = PermissibleValue(text="symbiont")
 
     _defn = EnumDefinition(
-        name="ProfilePositionEnum",
-    )
-
-class OxyStatSampEnum(EnumDefinitionImpl):
-
-    aerobic = PermissibleValue(text="aerobic")
-    anaerobic = PermissibleValue(text="anaerobic")
-    other = PermissibleValue(text="other")
-
-    _defn = EnumDefinition(
-        name="OxyStatSampEnum",
-    )
-
-class RelToOxygenEnum(EnumDefinitionImpl):
-
-    aerobe = PermissibleValue(text="aerobe")
-    anaerobe = PermissibleValue(text="anaerobe")
-    facultative = PermissibleValue(text="facultative")
-    microaerophilic = PermissibleValue(text="microaerophilic")
-    microanaerobe = PermissibleValue(text="microanaerobe")
-
-    _defn = EnumDefinition(
-        name="RelToOxygenEnum",
+        name="BioticRelationshipEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "obligate aerobe",
-                PermissibleValue(text="obligate aerobe") )
-        setattr(cls, "obligate anaerobe",
-                PermissibleValue(text="obligate anaerobe") )
+        setattr(cls, "free living",
+                PermissibleValue(text="free living") )
 
 class CurLandUseEnum(EnumDefinitionImpl):
 
@@ -4345,6 +4305,64 @@ class CurLandUseEnum(EnumDefinitionImpl):
         setattr(cls, "crop trees (nuts,fruit,christmas trees,nursery trees)",
                 PermissibleValue(text="crop trees (nuts,fruit,christmas trees,nursery trees)") )
 
+class TidalStageEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="TidalStageEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "low tide",
+                PermissibleValue(text="low tide") )
+        setattr(cls, "ebb tide",
+                PermissibleValue(text="ebb tide") )
+        setattr(cls, "flood tide",
+                PermissibleValue(text="flood tide") )
+        setattr(cls, "high tide",
+                PermissibleValue(text="high tide") )
+
+class OxyStatSampEnum(EnumDefinitionImpl):
+
+    aerobic = PermissibleValue(text="aerobic")
+    anaerobic = PermissibleValue(text="anaerobic")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="OxyStatSampEnum",
+    )
+
+class ProfilePositionEnum(EnumDefinitionImpl):
+
+    summit = PermissibleValue(text="summit")
+    shoulder = PermissibleValue(text="shoulder")
+    backslope = PermissibleValue(text="backslope")
+    footslope = PermissibleValue(text="footslope")
+    toeslope = PermissibleValue(text="toeslope")
+
+    _defn = EnumDefinition(
+        name="ProfilePositionEnum",
+    )
+
+class RelToOxygenEnum(EnumDefinitionImpl):
+
+    aerobe = PermissibleValue(text="aerobe")
+    anaerobe = PermissibleValue(text="anaerobe")
+    facultative = PermissibleValue(text="facultative")
+    microaerophilic = PermissibleValue(text="microaerophilic")
+    microanaerobe = PermissibleValue(text="microanaerobe")
+
+    _defn = EnumDefinition(
+        name="RelToOxygenEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "obligate aerobe",
+                PermissibleValue(text="obligate aerobe") )
+        setattr(cls, "obligate anaerobe",
+                PermissibleValue(text="obligate anaerobe") )
+
 class DrainageClassEnum(EnumDefinitionImpl):
 
     poorly = PermissibleValue(text="poorly")
@@ -4364,23 +4382,6 @@ class DrainageClassEnum(EnumDefinitionImpl):
                 PermissibleValue(text="moderately well") )
         setattr(cls, "excessively drained",
                 PermissibleValue(text="excessively drained") )
-
-class TidalStageEnum(EnumDefinitionImpl):
-
-    _defn = EnumDefinition(
-        name="TidalStageEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "low tide",
-                PermissibleValue(text="low tide") )
-        setattr(cls, "ebb tide",
-                PermissibleValue(text="ebb tide") )
-        setattr(cls, "flood tide",
-                PermissibleValue(text="flood tide") )
-        setattr(cls, "high tide",
-                PermissibleValue(text="high tide") )
 
 class SampleTypeEnum(EnumDefinitionImpl):
 
@@ -5235,6 +5236,9 @@ slots.carb_nitro_ratio = Slot(uri=MIXS['0000310'], name="carb_nitro_ratio", curi
 slots.chem_administration = Slot(uri=MIXS['0000751'], name="chem_administration", curie=MIXS.curie('0000751'),
                    model_uri=NMDC.chem_administration, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
 
+slots.chimera_check = Slot(uri=MIXS['0000052'], name="chimera_check", curie=MIXS.curie('0000052'),
+                   model_uri=NMDC.chimera_check, domain=None, range=Optional[Union[dict, TextValue]])
+
 slots.chloride = Slot(uri=MIXS['0000429'], name="chloride", curie=MIXS.curie('0000429'),
                    model_uri=NMDC.chloride, domain=None, range=Optional[Union[dict, QuantityValue]])
 
@@ -5379,6 +5383,12 @@ slots.nitrate = Slot(uri=MIXS['0000425'], name="nitrate", curie=MIXS.curie('0000
 slots.nitrite = Slot(uri=MIXS['0000426'], name="nitrite", curie=MIXS.curie('0000426'),
                    model_uri=NMDC.nitrite, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.nucl_acid_amp = Slot(uri=MIXS['0000038'], name="nucl_acid_amp", curie=MIXS.curie('0000038'),
+                   model_uri=NMDC.nucl_acid_amp, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.nucl_acid_ext = Slot(uri=MIXS['0000037'], name="nucl_acid_ext", curie=MIXS.curie('0000037'),
+                   model_uri=NMDC.nucl_acid_ext, domain=None, range=Optional[Union[dict, TextValue]])
+
 slots.org_matter = Slot(uri=MIXS['0000204'], name="org_matter", curie=MIXS.curie('0000204'),
                    model_uri=NMDC.org_matter, domain=None, range=Optional[Union[dict, QuantityValue]])
 
@@ -5393,6 +5403,12 @@ slots.oxy_stat_samp = Slot(uri=MIXS['0000753'], name="oxy_stat_samp", curie=MIXS
 
 slots.part_org_carb = Slot(uri=MIXS['0000515'], name="part_org_carb", curie=MIXS.curie('0000515'),
                    model_uri=NMDC.part_org_carb, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.pcr_cond = Slot(uri=MIXS['0000049'], name="pcr_cond", curie=MIXS.curie('0000049'),
+                   model_uri=NMDC.pcr_cond, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.pcr_primers = Slot(uri=MIXS['0000046'], name="pcr_primers", curie=MIXS.curie('0000046'),
+                   model_uri=NMDC.pcr_primers, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.perturbation = Slot(uri=MIXS['0000754'], name="perturbation", curie=MIXS.curie('0000754'),
                    model_uri=NMDC.perturbation, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
@@ -5429,9 +5445,6 @@ slots.profile_position = Slot(uri=MIXS['0001084'], name="profile_position", curi
 
 slots.redox_potential = Slot(uri=MIXS['0000182'], name="redox_potential", curie=MIXS.curie('0000182'),
                    model_uri=NMDC.redox_potential, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.rel_to_oxygen = Slot(uri=MIXS['0000015'], name="rel_to_oxygen", curie=MIXS.curie('0000015'),
-                   model_uri=NMDC.rel_to_oxygen, domain=None, range=Optional[Union[str, "RelToOxygenEnum"]])
 
 slots.salinity = Slot(uri=MIXS['0000183'], name="salinity", curie=MIXS.curie('0000183'),
                    model_uri=NMDC.salinity, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -5472,6 +5485,12 @@ slots.season_precpt = Slot(uri=MIXS['0000645'], name="season_precpt", curie=MIXS
 slots.season_temp = Slot(uri=MIXS['0000643'], name="season_temp", curie=MIXS.curie('0000643'),
                    model_uri=NMDC.season_temp, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.seq_meth = Slot(uri=MIXS['0000050'], name="seq_meth", curie=MIXS.curie('0000050'),
+                   model_uri=NMDC.seq_meth, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.seq_quality_check = Slot(uri=MIXS['0000051'], name="seq_quality_check", curie=MIXS.curie('0000051'),
+                   model_uri=NMDC.seq_quality_check, domain=None, range=Optional[Union[dict, TextValue]])
+
 slots.sieving = Slot(uri=MIXS['0000322'], name="sieving", curie=MIXS.curie('0000322'),
                    model_uri=NMDC.sieving, domain=None, range=Optional[Union[dict, TextValue]])
 
@@ -5507,6 +5526,12 @@ slots.sulfate = Slot(uri=MIXS['0000423'], name="sulfate", curie=MIXS.curie('0000
 
 slots.sulfide = Slot(uri=MIXS['0000424'], name="sulfide", curie=MIXS.curie('0000424'),
                    model_uri=NMDC.sulfide, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.target_gene = Slot(uri=MIXS['0000044'], name="target_gene", curie=MIXS.curie('0000044'),
+                   model_uri=NMDC.target_gene, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.target_subfragment = Slot(uri=MIXS['0000045'], name="target_subfragment", curie=MIXS.curie('0000045'),
+                   model_uri=NMDC.target_subfragment, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.temp = Slot(uri=MIXS['0000113'], name="temp", curie=MIXS.curie('0000113'),
                    model_uri=NMDC.temp, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -5550,56 +5575,35 @@ slots.water_content = Slot(uri=MIXS['0000185'], name="water_content", curie=MIXS
 slots.watering_regm = Slot(uri=MIXS['0000591'], name="watering_regm", curie=MIXS.curie('0000591'),
                    model_uri=NMDC.watering_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
 
-slots.chimera_check = Slot(uri=MIXS['0000052'], name="chimera_check", curie=MIXS.curie('0000052'),
-                   model_uri=NMDC.chimera_check, domain=None, range=Optional[Union[dict, TextValue]])
+slots.host_taxid = Slot(uri=MIXS['0000250'], name="host_taxid", curie=MIXS.curie('0000250'),
+                   model_uri=NMDC.host_taxid, domain=None, range=Optional[Union[dict, TextValue]])
 
-slots.nucl_acid_amp = Slot(uri=MIXS['0000038'], name="nucl_acid_amp", curie=MIXS.curie('0000038'),
-                   model_uri=NMDC.nucl_acid_amp, domain=None, range=Optional[Union[dict, TextValue]])
+slots.rel_to_oxygen = Slot(uri=MIXS['0000015'], name="rel_to_oxygen", curie=MIXS.curie('0000015'),
+                   model_uri=NMDC.rel_to_oxygen, domain=None, range=Optional[Union[str, "RelToOxygenEnum"]])
 
-slots.nucl_acid_ext = Slot(uri=MIXS['0000037'], name="nucl_acid_ext", curie=MIXS.curie('0000037'),
-                   model_uri=NMDC.nucl_acid_ext, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.pcr_cond = Slot(uri=MIXS['0000049'], name="pcr_cond", curie=MIXS.curie('0000049'),
-                   model_uri=NMDC.pcr_cond, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.pcr_primers = Slot(uri=MIXS['0000046'], name="pcr_primers", curie=MIXS.curie('0000046'),
-                   model_uri=NMDC.pcr_primers, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.seq_meth = Slot(uri=MIXS['0000050'], name="seq_meth", curie=MIXS.curie('0000050'),
-                   model_uri=NMDC.seq_meth, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.seq_quality_check = Slot(uri=MIXS['0000051'], name="seq_quality_check", curie=MIXS.curie('0000051'),
-                   model_uri=NMDC.seq_quality_check, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.target_gene = Slot(uri=MIXS['0000044'], name="target_gene", curie=MIXS.curie('0000044'),
-                   model_uri=NMDC.target_gene, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.target_subfragment = Slot(uri=MIXS['0000045'], name="target_subfragment", curie=MIXS.curie('0000045'),
-                   model_uri=NMDC.target_subfragment, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.has_raw_value = Slot(uri=NMDC.has_raw_value, name="has raw value", curie=NMDC.curie('has_raw_value'),
-                   model_uri=NMDC.has_raw_value, domain=None, range=Optional[str])
-
-slots.environment_field = Slot(uri=NMDC.environment_field, name="environment field", curie=NMDC.curie('environment_field'),
-                   model_uri=NMDC.environment_field, domain=None, range=Optional[str])
-
-slots.nucleic_acid_sequence_source_field = Slot(uri=NMDC.nucleic_acid_sequence_source_field, name="nucleic acid sequence source field", curie=NMDC.curie('nucleic_acid_sequence_source_field'),
+slots.nucleic_acid_sequence_source_field = Slot(uri=MIXS.nucleic_acid_sequence_source_field, name="nucleic acid sequence source field", curie=MIXS.curie('nucleic_acid_sequence_source_field'),
                    model_uri=NMDC.nucleic_acid_sequence_source_field, domain=None, range=Optional[str])
 
-slots.investigation_field = Slot(uri=NMDC.investigation_field, name="investigation field", curie=NMDC.curie('investigation_field'),
-                   model_uri=NMDC.investigation_field, domain=None, range=Optional[str])
-
-slots.has_numeric_value = Slot(uri=NMDC.has_numeric_value, name="has numeric value", curie=NMDC.curie('has_numeric_value'),
-                   model_uri=NMDC.has_numeric_value, domain=None, range=Optional[float])
-
-slots.has_unit = Slot(uri=NMDC.has_unit, name="has unit", curie=NMDC.curie('has_unit'),
-                   model_uri=NMDC.has_unit, domain=None, range=Optional[str])
-
-slots.core_field = Slot(uri=NMDC.core_field, name="core field", curie=NMDC.curie('core_field'),
+slots.core_field = Slot(uri=MIXS.core_field, name="core field", curie=MIXS.curie('core_field'),
                    model_uri=NMDC.core_field, domain=None, range=Optional[str])
 
-slots.sequencing_field = Slot(uri=NMDC.sequencing_field, name="sequencing field", curie=NMDC.curie('sequencing_field'),
+slots.investigation_field = Slot(uri=MIXS.investigation_field, name="investigation field", curie=MIXS.curie('investigation_field'),
+                   model_uri=NMDC.investigation_field, domain=None, range=Optional[str])
+
+slots.environment_field = Slot(uri=MIXS.environment_field, name="environment field", curie=MIXS.curie('environment_field'),
+                   model_uri=NMDC.environment_field, domain=None, range=Optional[str])
+
+slots.sequencing_field = Slot(uri=MIXS.sequencing_field, name="sequencing field", curie=MIXS.curie('sequencing_field'),
                    model_uri=NMDC.sequencing_field, domain=None, range=Optional[str])
+
+slots.has_unit = Slot(uri=MIXS.has_unit, name="has unit", curie=MIXS.curie('has_unit'),
+                   model_uri=NMDC.has_unit, domain=None, range=Optional[str])
+
+slots.has_numeric_value = Slot(uri=MIXS.has_numeric_value, name="has numeric value", curie=MIXS.curie('has_numeric_value'),
+                   model_uri=NMDC.has_numeric_value, domain=None, range=Optional[float])
+
+slots.has_raw_value = Slot(uri=MIXS.has_raw_value, name="has raw value", curie=MIXS.curie('has_raw_value'),
+                   model_uri=NMDC.has_raw_value, domain=None, range=Optional[str])
 
 slots.emsl_store_temp = Slot(uri=NMDC.emsl_store_temp, name="emsl_store_temp", curie=NMDC.curie('emsl_store_temp'),
                    model_uri=NMDC.emsl_store_temp, domain=None, range=Optional[str])
