@@ -39,7 +39,3 @@ primer provides some the context for this project.
 **New system requirement: [Mike Farah's GO-based yq](https://github.com/mikefarah/yq)**
 
 See [MAINTAINERS.md](MAINTAINERS.md) for instructions on maintaining and updating the schema.
-
-## NMDC metadata downloads
-
-See https://github.com/microbiomedata/nmdc-runtime/#data-exports
