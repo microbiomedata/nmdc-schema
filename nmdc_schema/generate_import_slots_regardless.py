@@ -12,7 +12,7 @@ class ImportSlotsRegardless:
         "slot": "",
         "section": "",
         "column order": "",
-        "destination class": "placeholder class"
+        "destination class": "placeholder_class"
     }
 
     def populate_mixs_slots_used_in_schema(self, input_file):

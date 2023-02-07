@@ -13,8 +13,7 @@ subsets:
   mixs extension: { }
 
 notes:
-  - "commented out several MIxS terms/slots that were sharing slot uris"
-  - "attempts have been made to automate the maintenance of this file, but it is essentially hand-curated"
+  - commented out several MIxS terms/slots that were sharing slot uris
   - note that the NMDC submission schema in sheets_and_friends takes its MIxS terms from
     https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml
     and then potentially modifies them. Ideally this file would contain MIxS terms, essentially ready-to-use
@@ -24,7 +23,7 @@ prefixes:
   nmdc: https://w3id.org/nmdc/
   mixs: https://w3id.org/mixs/
 
-default_prefix: nmdc
+default_prefix: mixs
 
 classes:
   placeholder_class: { }

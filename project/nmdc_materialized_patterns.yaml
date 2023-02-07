@@ -140,6 +140,15 @@ prefixes:
   CHMO:
     prefix_prefix: CHMO
     prefix_reference: http://purl.obolibrary.org/obo/CHMO_
+  mixs.vocab:
+    prefix_prefix: mixs.vocab
+    prefix_reference: https://w3id.org/mixs/vocab/
+  MIXS:
+    prefix_prefix: MIXS
+    prefix_reference: https://w3id.org/mixs/terms/
+  MIGS:
+    prefix_prefix: MIGS
+    prefix_reference: https://w3id.org/mixs/migs/
   GO:
     prefix_prefix: GO
     prefix_reference: http://purl.obolibrary.org/obo/GO_
@@ -204,6 +213,18 @@ subsets:
     from_schema: https://microbiomedata/schema
   mixs extension:
     name: mixs extension
+    from_schema: https://microbiomedata/schema
+  checklist:
+    name: checklist
+    description: A MIxS checklist. These can be combined with packages
+    from_schema: https://microbiomedata/schema
+  package:
+    name: package
+    description: A MIxS package. These can be combined with checklists
+    from_schema: https://microbiomedata/schema
+  checklist_package_combination:
+    name: checklist_package_combination
+    description: A combination of a checklist and a package
     from_schema: https://microbiomedata/schema
 types:
   bytes:
@@ -431,8 +452,10 @@ enums:
     permissible_values:
       Metagenome Raw Reads:
         text: Metagenome Raw Reads
-        todos:
-        - add annotations
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: /.+?(?=fastq)/fastq.gz
       FT ICR-MS Analysis Results:
         text: FT ICR-MS Analysis Results
         description: FT ICR-MS-based molecular formula assignment results table
@@ -462,7 +485,7 @@ enums:
         description: QC removed rRNA reads (R1) fastq
       Metagenome Bins:
         text: Metagenome Bins
-        description: Metagenome bin zip archive
+        description: Metagenome bin contigs fasta
       CheckM Statistics:
         text: CheckM Statistics
         description: CheckM statistics report
@@ -505,39 +528,83 @@ enums:
       Structural Annotation GFF:
         text: Structural Annotation GFF
         description: GFF3 format file with structural annotations
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_structural_annotation.gff'
       Functional Annotation GFF:
         text: Functional Annotation GFF
         description: GFF3 format file with functional annotations
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_functional_annotation.gff'
       Annotation Amino Acid FASTA:
         text: Annotation Amino Acid FASTA
         description: FASTA amino acid file for annotated proteins
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_proteins.faa'
       Annotation Enzyme Commission:
         text: Annotation Enzyme Commission
         description: Tab delimited file for EC annotation
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_ec.tsv'
       Annotation KEGG Orthology:
         text: Annotation KEGG Orthology
         description: Tab delimited file for KO annotation
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_ko.tsv'
       Assembly Coverage BAM:
         text: Assembly Coverage BAM
         description: Sorted bam file of reads mapping back to the final assembly
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_pairedMapped.sam.gz'
       Assembly AGP:
         text: Assembly AGP
         description: An AGP format file that describes the assembly
       Assembly Scaffolds:
         text: Assembly Scaffolds
         description: Final assembly scaffolds fasta
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_assembly.contigs.fasta'
       Assembly Contigs:
         text: Assembly Contigs
         description: Final assembly contigs fasta
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_contigs.fna'
       Assembly Coverage Stats:
         text: Assembly Coverage Stats
         description: Assembled contigs coverage information
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_pairedMapped_sorted.bam.cov'
       Filtered Sequencing Reads:
         text: Filtered Sequencing Reads
         description: Reads QC result fastq (clean data)
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '/.+?(?=filter)/filter-METAGENOME.fastq.gz '
       QC Statistics:
         text: QC Statistics
         description: Reads QC summary statistics
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: /.+?(?=filter)/filtered-report.txt
       TIGRFam Annotation GFF:
         text: TIGRFam Annotation GFF
         description: GFF3 format file with TIGRfam
@@ -548,39 +615,80 @@ enums:
       CRT Annotation GFF:
         text: CRT Annotation GFF
         description: GFF3 format file with CRT
-      Genemark Annotation GFF:
-        text: Genemark Annotation GFF
-        description: GFF3 format file with Genemark
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_crt.gff'
+      Genmark Annotation GFF:
+        text: Genmark Annotation GFF
+        description: GFF3 format file with Genmark
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_genemark.gff'
       Prodigal Annotation GFF:
         text: Prodigal Annotation GFF
         description: GFF3 format file with Prodigal
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_prodigal.gff'
       TRNA Annotation GFF:
         text: TRNA Annotation GFF
         description: GFF3 format file with TRNA
-      TRNA Annotation GFF3:
-        text: TRNA Annotation GFF3
-        description: GFF3 format file with TRNA
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_trna.gff'
       Misc Annotation GFF:
         text: Misc Annotation GFF
         description: GFF3 format file with Misc
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_rfam_misc_bind_misc_feature_regulatory.gff'
       RFAM Annotation GFF:
         text: RFAM Annotation GFF
         description: GFF3 format file with RFAM
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_rfam.gff'
       TMRNA Annotation GFF:
         text: TMRNA Annotation GFF
         description: GFF3 format file with TMRNA
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_rfam_ncrna_tmrna.gff'
       KO_EC Annotation GFF:
         text: KO_EC Annotation GFF
         description: GFF3 format file with KO_EC
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_ko_ec.tsv'
       Product Names:
         text: Product Names
         description: Product names file
-      Gene Phylogeny:
-        text: Gene Phylogeny
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_product_names.tsv'
+      Gene Phylogeny tsv:
+        text: Gene Phylogeny tsv
         description: Gene Phylogeny tsv
-      Crispr Terms:
-        text: Crispr Terms
-        description: Crispr Terms
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_gene_phylogeny.tsv'
+      Crisprt Terms:
+        text: Crisprt Terms
+        description: Crisprt Terms
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_crt.crisprs'
       Clusters of Orthologous Groups (COG) Annotation GFF:
         text: Clusters of Orthologous Groups (COG) Annotation GFF
         description: GFF3 format file with COGs
@@ -862,6 +970,16 @@ enums:
         text: soil
       water_extract_soil:
         text: water_extract_soil
+  organism_count_enum:
+    name: organism_count_enum
+    from_schema: https://microbiomedata/schema
+    permissible_values:
+      ATP:
+        text: ATP
+      MPN:
+        text: MPN
+      other:
+        text: other
   tillage_enum:
     name: tillage_enum
     from_schema: https://microbiomedata/schema
@@ -884,28 +1002,6 @@ enums:
         text: mouldboard
       disc plough:
         text: disc plough
-  biotic_relationship_enum:
-    name: biotic_relationship_enum
-    from_schema: https://microbiomedata/schema
-    permissible_values:
-      free living:
-        text: free living
-      parasite:
-        text: parasite
-      commensal:
-        text: commensal
-      symbiont:
-        text: symbiont
-  organism_count_enum:
-    name: organism_count_enum
-    from_schema: https://microbiomedata/schema
-    permissible_values:
-      ATP:
-        text: ATP
-      MPN:
-        text: MPN
-      other:
-        text: other
   fao_class_enum:
     name: fao_class_enum
     from_schema: https://microbiomedata/schema
@@ -962,48 +1058,18 @@ enums:
         text: Vertisols
       Yermosols:
         text: Yermosols
-  profile_position_enum:
-    name: profile_position_enum
+  biotic_relationship_enum:
+    name: biotic_relationship_enum
     from_schema: https://microbiomedata/schema
     permissible_values:
-      summit:
-        text: summit
-      shoulder:
-        text: shoulder
-      backslope:
-        text: backslope
-      footslope:
-        text: footslope
-      toeslope:
-        text: toeslope
-  oxy_stat_samp_enum:
-    name: oxy_stat_samp_enum
-    from_schema: https://microbiomedata/schema
-    permissible_values:
-      aerobic:
-        text: aerobic
-      anaerobic:
-        text: anaerobic
-      other:
-        text: other
-  rel_to_oxygen_enum:
-    name: rel_to_oxygen_enum
-    from_schema: https://microbiomedata/schema
-    permissible_values:
-      aerobe:
-        text: aerobe
-      anaerobe:
-        text: anaerobe
-      facultative:
-        text: facultative
-      microaerophilic:
-        text: microaerophilic
-      microanaerobe:
-        text: microanaerobe
-      obligate aerobe:
-        text: obligate aerobe
-      obligate anaerobe:
-        text: obligate anaerobe
+      free living:
+        text: free living
+      parasite:
+        text: parasite
+      commensal:
+        text: commensal
+      symbiont:
+        text: symbiont
   cur_land_use_enum:
     name: cur_land_use_enum
     from_schema: https://microbiomedata/schema
@@ -1079,6 +1145,60 @@ enums:
         text: swamp (permanent or semi-permanent water body dominated by woody plants)
       crop trees (nuts,fruit,christmas trees,nursery trees):
         text: crop trees (nuts,fruit,christmas trees,nursery trees)
+  tidal_stage_enum:
+    name: tidal_stage_enum
+    from_schema: https://microbiomedata/schema
+    permissible_values:
+      low tide:
+        text: low tide
+      ebb tide:
+        text: ebb tide
+      flood tide:
+        text: flood tide
+      high tide:
+        text: high tide
+  oxy_stat_samp_enum:
+    name: oxy_stat_samp_enum
+    from_schema: https://microbiomedata/schema
+    permissible_values:
+      aerobic:
+        text: aerobic
+      anaerobic:
+        text: anaerobic
+      other:
+        text: other
+  profile_position_enum:
+    name: profile_position_enum
+    from_schema: https://microbiomedata/schema
+    permissible_values:
+      summit:
+        text: summit
+      shoulder:
+        text: shoulder
+      backslope:
+        text: backslope
+      footslope:
+        text: footslope
+      toeslope:
+        text: toeslope
+  rel_to_oxygen_enum:
+    name: rel_to_oxygen_enum
+    from_schema: https://microbiomedata/schema
+    permissible_values:
+      aerobe:
+        text: aerobe
+      anaerobe:
+        text: anaerobe
+      facultative:
+        text: facultative
+      microaerophilic:
+        text: microaerophilic
+      microanaerobe:
+        text: microanaerobe
+      obligate aerobe:
+        text: obligate aerobe
+      obligate anaerobe:
+        text: obligate anaerobe
   drainage_class_enum:
     name: drainage_class_enum
     from_schema: https://microbiomedata/schema
@@ -1095,18 +1215,6 @@ enums:
         text: well
       excessively drained:
         text: excessively drained
-  tidal_stage_enum:
-    name: tidal_stage_enum
-    from_schema: https://microbiomedata/schema
-    permissible_values:
-      low tide:
-        text: low tide
-      ebb tide:
-        text: ebb tide
-      flood tide:
-        text: flood tide
-      high tide:
-        text: high tide
 slots:
   env_package:
     name: env_package
@@ -4251,6 +4359,26 @@ slots:
     slot_uri: mixs:0000751
     multivalued: true
     range: TextValue
+  chimera_check:
+    name: chimera_check
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: name and version of software, parameters used
+    description: Tool(s) used for chimera checking, including version number and parameters,
+      to discover and remove chimeric sequences. A chimeric sequence is comprised
+      of two or more phylogenetically distinct parent sequences.
+    title: chimera check software
+    examples:
+    - value: uchime;v4.1;default parameters
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - chimera check software
+    is_a: sequencing field
+    string_serialization: '{software};{version};{parameters}'
+    slot_uri: mixs:0000052
+    multivalued: false
+    range: TextValue
   chloride:
     name: chloride
     annotations:
@@ -5336,6 +5464,46 @@ slots:
     slot_uri: mixs:0000426
     multivalued: false
     range: QuantityValue
+  nucl_acid_amp:
+    name: nucl_acid_amp
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID, DOI or URL
+    description: A link to a literature reference, electronic resource or a standard
+      operating procedure (SOP), that describes the enzymatic amplification (PCR,
+      TMA, NASBA) of specific nucleic acids
+    title: nucleic acid amplification
+    examples:
+    - value: https://phylogenomics.me/protocols/16s-pcr-protocol/
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - nucleic acid amplification
+    is_a: sequencing field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: mixs:0000038
+    multivalued: false
+    range: TextValue
+  nucl_acid_ext:
+    name: nucl_acid_ext
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID, DOI or URL
+    description: A link to a literature reference, electronic resource or a standard
+      operating procedure (SOP), that describes the material separation to recover
+      the nucleic acid fraction from a sample
+    title: nucleic acid extraction
+    examples:
+    - value: https://mobio.com/media/wysiwyg/pdfs/protocols/12888.pdf
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - nucleic acid extraction
+    is_a: sequencing field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: mixs:0000037
+    multivalued: false
+    range: TextValue
   org_matter:
     name: org_matter
     annotations:
@@ -5452,6 +5620,48 @@ slots:
     slot_uri: mixs:0000515
     multivalued: false
     range: QuantityValue
+  pcr_cond:
+    name: pcr_cond
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
+          elongation:degrees_minutes;total cycles
+    description: Description of reaction conditions and components of PCR in the form
+      of 'initial denaturation:94degC_1.5min; annealing=...'
+    title: pcr conditions
+    examples:
+    - value: initial denaturation:94_3;annealing:50_1;elongation:72_1.5;final elongation:72_10;35
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - pcr conditions
+    is_a: sequencing field
+    string_serialization: initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
+      elongation:degrees_minutes;total cycles
+    slot_uri: mixs:0000049
+    multivalued: false
+    range: TextValue
+  pcr_primers:
+    name: pcr_primers
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: 'FWD: forward primer sequence;REV:reverse primer sequence'
+    description: PCR primers that were used to amplify the sequence of the targeted
+      gene, locus or subfragment. This field should contain all the primers used for
+      a single PCR reaction if multiple forward or reverse primers are present in
+      a single PCR reaction. The primer sequence should be reported in uppercase letters
+    title: pcr primers
+    examples:
+    - value: FWD:GTGCCAGCMGCCGCGGTAA;REV:GGACTACHVGGGTWTCTAAT
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - pcr primers
+    is_a: sequencing field
+    string_serialization: FWD:{dna};REV:{dna}
+    slot_uri: mixs:0000046
+    multivalued: false
+    range: TextValue
   perturbation:
     name: perturbation
     annotations:
@@ -5725,24 +5935,6 @@ slots:
     slot_uri: mixs:0000182
     multivalued: false
     range: QuantityValue
-  rel_to_oxygen:
-    name: rel_to_oxygen
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: enumeration
-    description: Is this organism an aerobe, anaerobe? Please note that aerobic and
-      anaerobic are valid descriptors for microbial environments
-    title: relationship to oxygen
-    examples:
-    - value: aerobe
-    from_schema: https://microbiomedata/schema
-    aliases:
-    - relationship to oxygen
-    is_a: nucleic acid sequence source field
-    slot_uri: mixs:0000015
-    multivalued: false
-    range: rel_to_oxygen_enum
   salinity:
     name: salinity
     annotations:
@@ -6029,6 +6221,46 @@ slots:
     slot_uri: mixs:0000643
     multivalued: false
     range: QuantityValue
+  seq_meth:
+    name: seq_meth
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: Text or OBI
+    description: Sequencing machine used. Where possible the term should be taken
+      from the OBI list of DNA sequencers (http://purl.obolibrary.org/obo/OBI_0400103).
+    title: sequencing method
+    examples:
+    - value: 454 Genome Sequencer FLX [OBI:0000702]
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - sequencing method
+    is_a: sequencing field
+    string_serialization: '{termLabel} {[termID]}|{text}'
+    slot_uri: mixs:0000050
+    multivalued: false
+    range: TextValue
+  seq_quality_check:
+    name: seq_quality_check
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: none or manually edited
+    description: Indicate if the sequence has been called by automatic systems (none)
+      or undergone a manual editing procedure (e.g. by inspecting the raw data or
+      chromatograms). Applied only for sequences that are not submitted to SRA,ENA
+      or DRA
+    title: sequence quality check
+    examples:
+    - value: none
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - sequence quality check
+    is_a: sequencing field
+    string_serialization: '[none|manually edited]'
+    slot_uri: mixs:0000051
+    multivalued: false
+    range: TextValue
   sieving:
     name: sieving
     annotations:
@@ -6316,6 +6548,43 @@ slots:
     slot_uri: mixs:0000424
     multivalued: false
     range: QuantityValue
+  target_gene:
+    name: target_gene
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: gene name
+    description: Targeted gene or locus name for marker gene studies
+    title: target gene
+    examples:
+    - value: 16S rRNA, 18S rRNA, nif, amoA, rpo
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - target gene
+    is_a: sequencing field
+    string_serialization: '{text}'
+    slot_uri: mixs:0000044
+    multivalued: false
+    range: TextValue
+  target_subfragment:
+    name: target_subfragment
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: gene fragment name
+    description: Name of subfragment of a gene or locus. Important to e.g. identify
+      special regions on marker genes like V6 on 16S rRNA
+    title: target subfragment
+    examples:
+    - value: V6, V9, ITS
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - target subfragment
+    is_a: sequencing field
+    string_serialization: '{text}'
+    slot_uri: mixs:0000045
+    multivalued: false
+    range: TextValue
   temp:
     name: temp
     annotations:
@@ -6630,197 +6899,52 @@ slots:
     slot_uri: mixs:0000591
     multivalued: true
     range: TextValue
-  chimera_check:
-    name: chimera_check
+  host_taxid:
+    name: host_taxid
     annotations:
       expected_value:
         tag: expected_value
-        value: name and version of software, parameters used
-    description: Tool(s) used for chimera checking, including version number and parameters,
-      to discover and remove chimeric sequences. A chimeric sequence is comprised
-      of two or more phylogenetically distinct parent sequences.
-    title: chimera check software
+        value: NCBI taxon identifier
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: NCBI taxon id of the host, e.g. 9606
+    title: host taxid
     examples:
-    - value: uchime;v4.1;default parameters
+    - value: '7955'
     from_schema: https://microbiomedata/schema
     aliases:
-    - chimera check software
-    is_a: sequencing field
-    string_serialization: '{software};{version};{parameters}'
-    slot_uri: mixs:0000052
+    - host taxid
+    is_a: core field
+    string_serialization: '{NCBI taxid}'
+    slot_uri: mixs:0000250
     multivalued: false
     range: TextValue
-  nucl_acid_amp:
-    name: nucl_acid_amp
+  rel_to_oxygen:
+    name: rel_to_oxygen
     annotations:
       expected_value:
         tag: expected_value
-        value: PMID, DOI or URL
-    description: A link to a literature reference, electronic resource or a standard
-      operating procedure (SOP), that describes the enzymatic amplification (PCR,
-      TMA, NASBA) of specific nucleic acids
-    title: nucleic acid amplification
+        value: enumeration
+    description: Is this organism an aerobe, anaerobe? Please note that aerobic and
+      anaerobic are valid descriptors for microbial environments
+    title: relationship to oxygen
     examples:
-    - value: https://phylogenomics.me/protocols/16s-pcr-protocol/
+    - value: aerobe
     from_schema: https://microbiomedata/schema
     aliases:
-    - nucleic acid amplification
-    is_a: sequencing field
-    string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: mixs:0000038
+    - relationship to oxygen
+    is_a: nucleic acid sequence source field
+    slot_uri: mixs:0000015
     multivalued: false
-    range: TextValue
-  nucl_acid_ext:
-    name: nucl_acid_ext
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: PMID, DOI or URL
-    description: A link to a literature reference, electronic resource or a standard
-      operating procedure (SOP), that describes the material separation to recover
-      the nucleic acid fraction from a sample
-    title: nucleic acid extraction
-    examples:
-    - value: https://mobio.com/media/wysiwyg/pdfs/protocols/12888.pdf
-    from_schema: https://microbiomedata/schema
-    aliases:
-    - nucleic acid extraction
-    is_a: sequencing field
-    string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_uri: mixs:0000037
-    multivalued: false
-    range: TextValue
-  pcr_cond:
-    name: pcr_cond
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
-          elongation:degrees_minutes;total cycles
-    description: Description of reaction conditions and components of PCR in the form
-      of 'initial denaturation:94degC_1.5min; annealing=...'
-    title: pcr conditions
-    examples:
-    - value: initial denaturation:94_3;annealing:50_1;elongation:72_1.5;final elongation:72_10;35
-    from_schema: https://microbiomedata/schema
-    aliases:
-    - pcr conditions
-    is_a: sequencing field
-    string_serialization: initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
-      elongation:degrees_minutes;total cycles
-    slot_uri: mixs:0000049
-    multivalued: false
-    range: TextValue
-  pcr_primers:
-    name: pcr_primers
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: 'FWD: forward primer sequence;REV:reverse primer sequence'
-    description: PCR primers that were used to amplify the sequence of the targeted
-      gene, locus or subfragment. This field should contain all the primers used for
-      a single PCR reaction if multiple forward or reverse primers are present in
-      a single PCR reaction. The primer sequence should be reported in uppercase letters
-    title: pcr primers
-    examples:
-    - value: FWD:GTGCCAGCMGCCGCGGTAA;REV:GGACTACHVGGGTWTCTAAT
-    from_schema: https://microbiomedata/schema
-    aliases:
-    - pcr primers
-    is_a: sequencing field
-    string_serialization: FWD:{dna};REV:{dna}
-    slot_uri: mixs:0000046
-    multivalued: false
-    range: TextValue
-  seq_meth:
-    name: seq_meth
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: Text or OBI
-    description: Sequencing machine used. Where possible the term should be taken
-      from the OBI list of DNA sequencers (http://purl.obolibrary.org/obo/OBI_0400103).
-    title: sequencing method
-    examples:
-    - value: 454 Genome Sequencer FLX [OBI:0000702]
-    from_schema: https://microbiomedata/schema
-    aliases:
-    - sequencing method
-    is_a: sequencing field
-    string_serialization: '{termLabel} {[termID]}|{text}'
-    slot_uri: mixs:0000050
-    multivalued: false
-    range: TextValue
-  seq_quality_check:
-    name: seq_quality_check
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: none or manually edited
-    description: Indicate if the sequence has been called by automatic systems (none)
-      or undergone a manual editing procedure (e.g. by inspecting the raw data or
-      chromatograms). Applied only for sequences that are not submitted to SRA,ENA
-      or DRA
-    title: sequence quality check
-    examples:
-    - value: none
-    from_schema: https://microbiomedata/schema
-    aliases:
-    - sequence quality check
-    is_a: sequencing field
-    string_serialization: '[none|manually edited]'
-    slot_uri: mixs:0000051
-    multivalued: false
-    range: TextValue
-  target_gene:
-    name: target_gene
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: gene name
-    description: Targeted gene or locus name for marker gene studies
-    title: target gene
-    examples:
-    - value: 16S rRNA, 18S rRNA, nif, amoA, rpo
-    from_schema: https://microbiomedata/schema
-    aliases:
-    - target gene
-    is_a: sequencing field
-    string_serialization: '{text}'
-    slot_uri: mixs:0000044
-    multivalued: false
-    range: TextValue
-  target_subfragment:
-    name: target_subfragment
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: gene fragment name
-    description: Name of subfragment of a gene or locus. Important to e.g. identify
-      special regions on marker genes like V6 on 16S rRNA
-    title: target subfragment
-    examples:
-    - value: V6, V9, ITS
-    from_schema: https://microbiomedata/schema
-    aliases:
-    - target subfragment
-    is_a: sequencing field
-    string_serialization: '{text}'
-    slot_uri: mixs:0000045
-    multivalued: false
-    range: TextValue
-  has raw value:
-    name: has raw value
-    from_schema: https://microbiomedata/schema
-    string_serialization: '{has numeric value} {has unit}'
-    owner: QuantityValue
-  environment field:
-    name: environment field
-    description: field describing environmental aspect of a sample
-    from_schema: https://microbiomedata/schema
-    abstract: true
+    range: rel_to_oxygen_enum
   nucleic acid sequence source field:
     name: nucleic acid sequence source field
+    from_schema: https://microbiomedata/schema
+    abstract: true
+  core field:
+    name: core field
+    description: basic fields
     from_schema: https://microbiomedata/schema
     abstract: true
   investigation field:
@@ -6829,25 +6953,30 @@ slots:
       belongs
     from_schema: https://microbiomedata/schema
     abstract: true
-  has numeric value:
-    name: has numeric value
-    from_schema: https://microbiomedata/schema
-    owner: QuantityValue
-    range: double
-  has unit:
-    name: has unit
-    description: Example "m"
-    from_schema: https://microbiomedata/schema
-    owner: QuantityValue
-  core field:
-    name: core field
-    description: basic fields
+  environment field:
+    name: environment field
+    description: field describing environmental aspect of a sample
     from_schema: https://microbiomedata/schema
     abstract: true
   sequencing field:
     name: sequencing field
     from_schema: https://microbiomedata/schema
     abstract: true
+  has unit:
+    name: has unit
+    description: Example "m"
+    from_schema: https://microbiomedata/schema
+    owner: QuantityValue
+  has numeric value:
+    name: has numeric value
+    from_schema: https://microbiomedata/schema
+    owner: QuantityValue
+    range: double
+  has raw value:
+    name: has raw value
+    from_schema: https://microbiomedata/schema
+    string_serialization: '{has numeric value} {has unit}'
+    owner: QuantityValue
   zinc:
     name: zinc
     annotations:
@@ -7284,6 +7413,7 @@ classes:
     - http://purl.obolibrary.org/obo/FBcv_0003024
     is_a: MaterialEntity
     slots:
+    - host_taxid
     - embargoed
     - collected_from
     - type

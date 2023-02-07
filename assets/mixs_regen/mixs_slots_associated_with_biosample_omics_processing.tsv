@@ -88,7 +88,6 @@ potassium
 pressure
 profile_position
 redox_potential
-rel_to_oxygen
 salinity
 salinity_meth
 samp_collec_method
@@ -129,7 +128,6 @@ tot_nitro_content
 tot_org_c_meth
 tot_org_carb
 tot_phosp
-url
 water_cont_soil_meth
 water_content
 watering_regm

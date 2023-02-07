@@ -4,41 +4,76 @@ RUN=poetry run
 SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
 SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 
-assets/mixs_slots_used_in_schema.tsv:
+.PHONY: mixs_deepdiff shuttle_cleanup
+
+shuttle_cleanup:
+	rm -rf assets/mixs_regen/import_slots_regardless_gen.tsv
+	rm -rf assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv
+	rm -rf assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing_augmented.tsv
+	rm -rf assets/mixs_regen/mixs_slots_used_in_schema.tsv
+	rm -rf assets/mixs_regen/mixs_subset.yaml
+	rm -rf assets/mixs_regen/mixs_subset_repaired.yaml
+	rm -rf assets/mixs_regen/mixs_subset_repaired.yaml.bak
+	rm -rf assets/mixs_regen/slots_associated_with_biosample.tsv
+	rm -rf assets/mixs_regen/slots_associated_with_biosample_omics_processing.tsv
+	rm -rf assets/mixs_regen/slots_associated_with_omics_processing.tsv
+	mkdir -p assets/mixs_regen
+	echo "do not delete this placeholder file" > assets/mixs_regen/placeholder.txt
+
+assets/mixs_regen/mixs_slots_used_in_schema.tsv:
 	$(RUN) get_mixs_slots_used_in_schema --output_file $@
 
-assets/import_slots_regardless_gen.tsv: assets/mixs_slots_used_in_schema.tsv
+assets/mixs_regen/slots_associated_with_biosample.tsv:
+	$(RUN) get_slots_from_class --class_name Biosample --output_file $@
+
+assets/mixs_regen/slots_associated_with_omics_processing.tsv:
+	$(RUN) get_slots_from_class --class_name OmicsProcessing --output_file $@
+
+assets/mixs_regen/slots_associated_with_biosample_omics_processing.tsv: \
+assets/mixs_regen/slots_associated_with_biosample.tsv \
+assets/mixs_regen/slots_associated_with_omics_processing.tsv
+	cat $^ > $@
+
+assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv: \
+assets/mixs_regen/slots_associated_with_biosample_omics_processing.tsv
+	$(RUN) get_mixs_slots_matching_slot_list \
+		--slot_list_file $< \
+		--output_file $@
+
+assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing_augmented.tsv: \
+assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv
+	cp $< $@
+	echo "host_taxid" >> $@
+	echo "rel_to_oxygen" >> $@
+
+
+assets/mixs_regen/import_slots_regardless_gen.tsv: \
+assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing_augmented.tsv
 	$(RUN) generate_import_slots_regardless --input_file $< --output_file $@
 
-assets/mixs_subset.yaml: assets/import_slots_regardless_gen.tsv
+assets/mixs_regen/mixs_subset.yaml: assets/mixs_regen/import_slots_regardless_gen.tsv
 	$(RUN) do_shuttle \
-		--recipient_model assets/mixs_template.yaml \
+		--recipient_model assets/other_mixs_yaml_files/mixs_template.yaml \
 		--config_tsv $< \
 		--yaml_output $@
 
-assets/mixs_subset_repaired.yaml: assets/mixs_subset.yaml
+src/schema/mixs.yaml: assets/mixs_regen/mixs_subset.yaml
+	mv src/schema/mixs.yaml src/schema/mixs.yaml.bak
 	sed 's/quantity value/QuantityValue/' $< > $@
 	sed -i.bak 's/range: string/range: TextValue/' $@
 	sed -i.bak 's/slot_uri: MIXS:/slot_uri: mixs:/' $@
 	yq -i '.slots.env_broad_scale.range |= "ControlledIdentifiedTermValue"' $@
 	yq -i '.slots.env_local_scale.range |= "ControlledIdentifiedTermValue"' $@
 	yq -i '.slots.env_medium.range |= "ControlledIdentifiedTermValue"'  $@
-#	yq -i 'del(.classes.Biosample)' $(word 2,$^)
-#	yq -i 'del(.classes.OmicsProcesing)' $(word 2,$^)
+	yq -i 'del(.classes)' $@
 	yq -i 'del(.enums.[].name)'  $@
 	yq -i 'del(.slots.[].name)'  $@
-
-mixs_diff_cleanup:
-	rm -rf assets/import_slots_regardless_gen.tsv
-	rm -rf assets/mixs_slots_used_in_schema.tsv
-	rm -rf assets/mixs_subset.yaml
-	rm -rf assets/mixs_subset_repaired.yaml
 	rm -rf assets/mixs_subset_repaired.yaml.bak
 
-.PHONY: deepdiff
-
-deepdiff: assets/mixs_subset_repaired.yaml
-	$(RUN) deep diff src/schema/mixs.yaml $<
+mixs_deepdiff: src/schema/mixs.yaml
+	mv src/schema/mixs.yaml.bak src/schema/mixs.bak.yaml
+	$(RUN) deep diff src/schema/mixs.bak.yaml $^
+	mv src/schema/mixs.bak.yaml src/schema/mixs.yaml.bak
 
 #examples-all: examples-clean src/data/output
 #
