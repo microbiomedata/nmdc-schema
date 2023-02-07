@@ -24,7 +24,7 @@ Some products that are maintained, and tasks orchestrated within this repository
       like [prov.yaml](src/schema/prov.yaml), [annotation.yaml](src/schema/annotation.yaml), etc. all which you can find
       in the [src/schema](src/schema/) folder
 - Makefile targets for converting the schema from it's native LinkML YAML format to other artifact
-  like [JSON Schema](jsonschema/nmdc.schema.json)
+  like [JSON Schema](project/jsonschema/nmdc.schema.json)
 - Build, deployment and distribution of the schema as a PyPI package
 - Automatic publishing of refreshed documentation upon change to the schema,
   accessible [here](https://microbiomedata.github.io/nmdc-schema/)
