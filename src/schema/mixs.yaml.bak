@@ -106,28 +106,20 @@ enums:
         text: Vertisols
       Yermosols:
         text: Yermosols
-  tillage_enum:
-    name: tillage_enum
+  profile_position_enum:
+    name: profile_position_enum
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      drill:
-        text: drill
-      cutting disc:
-        text: cutting disc
-      ridge till:
-        text: ridge till
-      strip tillage:
-        text: strip tillage
-      zonal tillage:
-        text: zonal tillage
-      chisel:
-        text: chisel
-      tined:
-        text: tined
-      mouldboard:
-        text: mouldboard
-      disc plough:
-        text: disc plough
+      summit:
+        text: summit
+      shoulder:
+        text: shoulder
+      backslope:
+        text: backslope
+      footslope:
+        text: footslope
+      toeslope:
+        text: toeslope
   drainage_class_enum:
     name: drainage_class_enum
     from_schema: http://w3id.org/mixs/terms
@@ -144,24 +136,6 @@ enums:
         text: well
       excessively drained:
         text: excessively drained
-  rel_to_oxygen_enum:
-    name: rel_to_oxygen_enum
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      aerobe:
-        text: aerobe
-      anaerobe:
-        text: anaerobe
-      facultative:
-        text: facultative
-      microaerophilic:
-        text: microaerophilic
-      microanaerobe:
-        text: microanaerobe
-      obligate aerobe:
-        text: obligate aerobe
-      obligate anaerobe:
-        text: obligate anaerobe
   organism_count_enum:
     name: organism_count_enum
     from_schema: http://w3id.org/mixs/terms
@@ -206,6 +180,46 @@ enums:
         text: flood tide
       high tide:
         text: high tide
+  tillage_enum:
+    name: tillage_enum
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      drill:
+        text: drill
+      cutting disc:
+        text: cutting disc
+      ridge till:
+        text: ridge till
+      strip tillage:
+        text: strip tillage
+      zonal tillage:
+        text: zonal tillage
+      chisel:
+        text: chisel
+      tined:
+        text: tined
+      mouldboard:
+        text: mouldboard
+      disc plough:
+        text: disc plough
+  rel_to_oxygen_enum:
+    name: rel_to_oxygen_enum
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      aerobe:
+        text: aerobe
+      anaerobe:
+        text: anaerobe
+      facultative:
+        text: facultative
+      microaerophilic:
+        text: microaerophilic
+      microanaerobe:
+        text: microanaerobe
+      obligate aerobe:
+        text: obligate aerobe
+      obligate anaerobe:
+        text: obligate anaerobe
   cur_land_use_enum:
     name: cur_land_use_enum
     from_schema: http://w3id.org/mixs/terms
@@ -281,20 +295,6 @@ enums:
         text: swamp (permanent or semi-permanent water body dominated by woody plants)
       crop trees (nuts,fruit,christmas trees,nursery trees):
         text: crop trees (nuts,fruit,christmas trees,nursery trees)
-  profile_position_enum:
-    name: profile_position_enum
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      summit:
-        text: summit
-      shoulder:
-        text: shoulder
-      backslope:
-        text: backslope
-      footslope:
-        text: footslope
-      toeslope:
-        text: toeslope
 slots:
   agrochem_addition:
     name: agrochem_addition
@@ -3331,43 +3331,67 @@ slots:
     slot_uri: MIXS:0000015
     multivalued: false
     range: rel_to_oxygen_enum
-  core field:
-    name: core field
-    description: basic fields
+  abs_air_humidity:
+    name: abs_air_humidity
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: gram per gram, kilogram per kilogram, kilogram, pound
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Actual mass of water vapor - mh20 - present in the air water vapor
+      mixture
+    title: absolute air humidity
+    examples:
+    - value: 9 gram per gram
     from_schema: http://w3id.org/mixs/terms
-    abstract: true
-  environment field:
-    name: environment field
-    description: field describing environmental aspect of a sample
-    from_schema: http://w3id.org/mixs/terms
-    abstract: true
+    aliases:
+    - absolute air humidity
+    is_a: core field
+    slot_uri: MIXS:0000122
+    multivalued: false
+    range: QuantityValue
+  has raw value:
+    name: has raw value
+    from_schema: http://w3id.org/mixs/ranges
+    string_serialization: '{has numeric value} {has unit}'
+    owner: QuantityValue
   has unit:
     name: has unit
     description: Example "m"
     from_schema: http://w3id.org/mixs/ranges
     owner: QuantityValue
-  nucleic acid sequence source field:
-    name: nucleic acid sequence source field
+  core field:
+    name: core field
+    description: basic fields
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
+  investigation field:
+    name: investigation field
+    description: field describing aspect of the investigation/study to which the sample
+      belongs
     from_schema: http://w3id.org/mixs/terms
     abstract: true
   sequencing field:
     name: sequencing field
     from_schema: http://w3id.org/mixs/terms
     abstract: true
-  has raw value:
-    name: has raw value
-    from_schema: http://w3id.org/mixs/ranges
-    string_serialization: '{has numeric value} {has unit}'
-    owner: QuantityValue
   has numeric value:
     name: has numeric value
     from_schema: http://w3id.org/mixs/ranges
     owner: QuantityValue
     range: double
-  investigation field:
-    name: investigation field
-    description: field describing aspect of the investigation/study to which the sample
-      belongs
+  environment field:
+    name: environment field
+    description: field describing environmental aspect of a sample
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
+  nucleic acid sequence source field:
+    name: nucleic acid sequence source field
     from_schema: http://w3id.org/mixs/terms
     abstract: true
 classes:
@@ -3509,6 +3533,7 @@ classes:
     - water_content
     - watering_regm
     - rel_to_oxygen
+    - abs_air_humidity
     slot_usage:
       agrochem_addition:
         name: agrochem_addition
@@ -7400,6 +7425,35 @@ classes:
         slot_group: .nan
         range: rel_to_oxygen_enum
         required: false
+      abs_air_humidity:
+        name: abs_air_humidity
+        annotations:
+          expected_value:
+            tag: expected_value
+            value: measurement value
+          preferred_unit:
+            tag: preferred_unit
+            value: gram per gram, kilogram per kilogram, kilogram, pound
+          occurrence:
+            tag: occurrence
+            value: '1'
+        description: Actual mass of water vapor - mh20 - present in the air water
+          vapor mixture
+        title: absolute air humidity
+        examples:
+        - value: 9 gram per gram
+        from_schema: http://w3id.org/mixs/terms
+        aliases:
+        - absolute air humidity
+        rank: .nan
+        is_a: core field
+        slot_uri: MIXS:0000122
+        multivalued: false
+        owner: soil MIMS
+        domain_of:
+        - built environment
+        slot_group: .nan
+        range: QuantityValue
   QuantityValue:
     name: QuantityValue
     description: used to record a measurement

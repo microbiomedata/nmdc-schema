@@ -44,6 +44,7 @@ assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing_augmente
 assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv
 	cp $< $@
 	echo "rel_to_oxygen" >> $@
+	echo "abs_air_humidity" >> $@
 
 
 assets/mixs_regen/import_slots_regardless_gen.tsv: \
