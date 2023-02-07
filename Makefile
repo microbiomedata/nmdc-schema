@@ -74,7 +74,7 @@ create-data-harmonizer:
 	npm init data-harmonizer $(SOURCE_SCHEMA_PATH)
 
 all: site
-site: gen-project gendoc # may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy
+site: combined-extras gen-project gendoc # may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy
 
 %.yaml: gen-project
 
@@ -103,7 +103,7 @@ gen-project: $(PYMODEL)
 		--include python \
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 
-test: test-schema test-python
+test: combined-extras test-schema test-python
 
 test-schema:
 	$(RUN) gen-project \
