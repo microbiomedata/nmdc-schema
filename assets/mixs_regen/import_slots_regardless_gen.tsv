@@ -133,5 +133,4 @@ soil MIMS	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/mai
 soil MIMS	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml	water_cont_soil_meth			placeholder_class
 soil MIMS	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml	water_content			placeholder_class
 soil MIMS	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml	watering_regm			placeholder_class
-soil MIMS	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml	abs_air_humidity			placeholder_class
 soil MIMS	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml	rel_to_oxygen			placeholder_class

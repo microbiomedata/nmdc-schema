@@ -1,0 +1,490 @@
+source class	source file or URL	slot	section	column order	destination class
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	abs_air_humidity	MIxS core	64	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	add_recov_method	MIxS core	293	hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	additional_info	MIxS core	294	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	address	MIxS core	65	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	adj_room	MIxS core	66	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	aero_struc	MIxS core	67	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	agrochem_addition	MIxS	2	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	air_PM_concen	MIxS core	51	air
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	air_temp	MIxS core	68	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	air_temp_regm	MIxS (modified)	16	bioscales|plant-associated|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	al_sat	MIxS	3	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	al_sat_meth	MIxS	4	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	alkalinity	MIxS core	1	biofilm|hcr-cores|hcr-fluids-swabs|misc-envs|sediment|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	alkalinity_method	MIxS core	221	hcr-cores|hcr-fluids-swabs|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	alkyl_diethers	MIxS core	2	biofilm|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	alt	MIxS (modified)	26	air|biofilm|bioscales|built_env|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	aminopept_act	MIxS core	3	biofilm|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ammonium	MIxS core	4	biofilm|hcr-cores|hcr-fluids-swabs|misc-envs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ammonium_nitrogen	Bioscales	1997	bioscales
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	amount_light	MIxS core	69	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ances_data	MIxS core	241	host-associated|plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	annual_precpt	MIxS	5	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	annual_temp	MIxS	6	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	antibiotic_regm	MIxS core	242	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	api	MIxS core	295	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	arch_struc	MIxS core	70	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	aromatics_pc	MIxS core	296	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	asphaltenes_pc	MIxS core	297	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	atmospheric_data	MIxS core	222	water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	avg_dew_point	MIxS core	71	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	avg_occup	MIxS core	72	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	avg_temp	MIxS core	73	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	bac_prod	MIxS core	223	water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	bac_resp	MIxS core	224	water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	bacteria_carb_prod	MIxS core	5	biofilm|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	barometric_press	MIxS core	52	air
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	basin	MIxS core	298	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	bathroom_count	MIxS core	74	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	bedroom_count	MIxS core	75	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	benzene	MIxS core	299	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	biochem_oxygen_dem	MIxS core	300	wastewater_sludge
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	biocide	MIxS core	301	hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	biocide_admin_method	MIxS core	302	hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	biol_stat	MIxS core	243	host-associated|plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	biomass	MIxS core	6	biofilm|misc-envs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	biotic_regm	MIxS (modified)	13	bioscales|plant-associated|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	biotic_relationship	MIxS (modified)	22	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	bishomohopanol	MIxS core	7	biofilm|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	blood_press_diast	MIxS core	303	host-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	blood_press_syst	MIxS core	304	host-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	bromide	MIxS core	8	biofilm|misc-envs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	build_docs	MIxS core	76	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	build_occup_type	MIxS core	77	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	building_setting	MIxS core	78	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	built_struc_age	MIxS core	79	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	built_struc_set	MIxS core	80	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	built_struc_type	MIxS core	81	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	calcium	MIxS core	9	biofilm|bioscales|hcr-cores|hcr-fluids-swabs|misc-envs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	carb_dioxide	MIxS core	53	air|built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	carb_monoxide	MIxS core	54	air
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	carb_nitro_ratio	MIxS	44	biofilm|bioscales|sediment|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ceil_area	MIxS core	82	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ceil_cond	MIxS core	83	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ceil_finish_mat	MIxS core	84	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ceil_struc	MIxS core	85	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ceil_texture	MIxS core	86	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ceil_thermal_mass	MIxS core	87	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ceil_type	MIxS core	88	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ceil_water_mold	MIxS core	89	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	chem_administration	MIxS (modified)	17	air|biofilm|bioscales|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	chem_mutagen	MIxS core	244	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	chem_oxygen_dem	MIxS core	305	wastewater_sludge
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	chem_treat_method	MIxS core	306	hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	chem_treatment	MIxS core	307	hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	chloride	MIxS core	10	biofilm|hcr-cores|hcr-fluids-swabs|misc-envs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	chlorophyll	MIxS core	11	biofilm|misc-envs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	climate_environment	MIxS (modified)	19	bioscales|plant-associated|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	collection_date	MIxS (modified)	3	air|biofilm|bioscales|built_env|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	conduc	MIxS core	225	water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	cool_syst_id	MIxS core	90	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	crop_rotation	MIxS	7	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	cult_root_med	MIxS core	245	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	cur_land_use	MIxS	8	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	cur_vegetation	MIxS	9	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	cur_vegetation_meth	MIxS	10	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	date_last_rain	MIxS core	91	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	density	MIxS core	12	hcr-cores|hcr-fluids-swabs|misc-envs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	depos_env	MIxS core	308	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	depth	MIxS (modified)	10	air|biofilm|bioscales|built_env|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	dew_point	MIxS core	92	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	diether_lipids	MIxS core	13	biofilm|misc-envs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	diss_carb_dioxide	MIxS core	14	biofilm|hcr-cores|hcr-fluids-swabs|misc-envs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	diss_hydrogen	MIxS core	15	biofilm|misc-envs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	diss_inorg_carb	MIxS core	16	biofilm|hcr-cores|hcr-fluids-swabs|misc-envs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	diss_inorg_nitro	MIxS core	226	water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	diss_inorg_phosp	MIxS core	227	hcr-cores|hcr-fluids-swabs|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	diss_iron	MIxS core	309	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	diss_org_carb	MIxS core	17	biofilm|hcr-cores|hcr-fluids-swabs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	diss_org_nitro	MIxS core	18	biofilm|misc-envs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	diss_oxygen	MIxS core	19	biofilm|misc-envs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	diss_oxygen_fluid	MIxS core	310	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	dna_cont_well	JGI-Metagenomics	11	jgi_mg
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	door_comp_type	MIxS core	93	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	door_cond	MIxS core	94	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	door_direct	MIxS core	95	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	door_loc	MIxS core	96	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	door_mat	MIxS core	97	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	door_move	MIxS core	98	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	door_size	MIxS core	99	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	door_type	MIxS core	100	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	door_type_metal	MIxS core	101	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	door_type_wood	MIxS core	102	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	door_water_mold	MIxS core	103	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	down_par	MIxS core	228	water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	drainage_class	MIxS	11	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	drawings	MIxS core	104	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ecosystem	Sample ID	9	air|biofilm|bioscales|built_env|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ecosystem_category	Sample ID	10	air|biofilm|bioscales|built_env|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ecosystem_subtype	Sample ID	12	air|biofilm|bioscales|built_env|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ecosystem_type	Sample ID	11	air|biofilm|bioscales|built_env|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	efficiency_percent	MIxS core	311	wastewater_sludge
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	elev	MIxS (modified)	6	air|biofilm|bioscales|built_env|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	elevator	MIxS core	105	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	emulsions	MIxS core	312	wastewater_sludge
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	env_broad_scale	Sample ID	6	air|biofilm|bioscales|built_env|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	env_local_scale	Sample ID	7	air|biofilm|bioscales|built_env|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	env_medium	Sample ID	8	air|biofilm|bioscales|built_env|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	escalator	MIxS core	106	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ethylbenzene	MIxS core	313	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	exp_duct	MIxS core	107	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	exp_pipe	MIxS core	108	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	experimental_factor	MIxS	12	air|biofilm|bioscales|built_env|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ext_door	MIxS core	109	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ext_wall_orient	MIxS core	110	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ext_window_orient	MIxS core	111	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	extreme_event	MIxS	13	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	fao_class	MIxS	14	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	fertilizer_regm	MIxS core	246	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	field	MIxS core	314	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	filter_type	MIxS core	112	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	fire	MIxS	15	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	fireplace_type	MIxS core	113	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	flooding	MIxS	16	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	floor_age	MIxS core	114	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	floor_area	MIxS core	115	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	floor_cond	MIxS core	116	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	floor_count	MIxS core	117	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	floor_finish_mat	MIxS core	118	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	floor_struc	MIxS core	119	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	floor_thermal_mass	MIxS core	120	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	floor_water_mold	MIxS core	121	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	fluor	MIxS core	229	water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	freq_clean	MIxS core	122	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	freq_cook	MIxS core	123	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	fungicide_regm	MIxS core	247	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	furniture	MIxS core	124	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	gaseous_environment	MIxS (modified)	20	bioscales|plant-associated|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	gaseous_substances	MIxS core	315	wastewater_sludge
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	gender_restroom	MIxS core	125	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	genetic_mod	MIxS core	248	host-associated|plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	geo_loc_name	MIxS (modified)	4	air|biofilm|bioscales|built_env|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	glucosidase_act	MIxS core	20	biofilm|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	gravidity	MIxS core	316	host-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	gravity	MIxS core	249	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	growth_facil	MIxS (modified)	1	bioscales|plant-associated|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	growth_habit	MIxS core	250	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	growth_hormone_regm	MIxS core	251	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	hall_count	MIxS core	126	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	handidness	MIxS core	127	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	hc_produced	MIxS core	317	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	hcr	MIxS core	318	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	hcr_fw_salinity	MIxS core	319	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	hcr_geol_age	MIxS core	320	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	hcr_pressure	MIxS core	321	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	hcr_temp	MIxS core	322	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	heat_cool_type	MIxS core	128	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	heat_deliv_loc	MIxS core	129	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	heat_sys_deliv_meth	MIxS core	130	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	heat_system_id	MIxS core	131	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	heavy_metals	MIxS	17	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	heavy_metals_meth	MIxS	18	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	height_carper_fiber	MIxS core	132	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	herbicide_regm	MIxS core	252	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	horizon_meth	MIxS	19	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_age	MIxS core	253	host-associated|plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_body_habitat	MIxS core	323	host-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_body_product	MIxS core	324	host-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_body_site	MIxS core	325	host-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_body_temp	MIxS core	326	host-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_color	MIxS core	327	host-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_common_name	MIxS core	254	host-associated|plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_diet	MIxS core	328	host-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_dry_mass	MIxS core	255	host-associated|plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_family_relation	MIxS core	329	host-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_genotype	MIxS core	256	host-associated|plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_growth_cond	MIxS core	330	host-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_height	MIxS core	257	host-associated|plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_last_meal	MIxS core	331	host-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_length	MIxS core	258	host-associated|plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_life_stage	MIxS core	259	host-associated|plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_phenotype	MIxS core	260	host-associated|plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_sex	MIxS core	332	host-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_shape	MIxS core	333	host-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_subject_id	MIxS core	334	host-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_subspecf_genlin	MIxS core	261	host-associated|plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_substrate	MIxS core	335	host-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_symbiont	MIxS core	262	host-associated|plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_taxid	MIxS core	263	host-associated|plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_tot_mass	MIxS core	264	host-associated|plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	host_wet_mass	MIxS core	265	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	humidity	MIxS core	55	air
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	humidity_regm	MIxS (modified)	21	bioscales|plant-associated|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	indoor_space	MIxS core	133	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	indoor_surf	MIxS core	134	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	indust_eff_percent	MIxS core	336	wastewater_sludge
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	inorg_particles	MIxS core	337	wastewater_sludge
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	inside_lux	MIxS core	135	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	int_wall_cond	MIxS core	136	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	iw_bt_date_well	MIxS core	338	hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	iwf	MIxS core	339	hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	last_clean	MIxS core	137	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	lat_lon	MIxS (modified)	5	air|biofilm|bioscales|built_env|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	lbc_thirty	Bioscales	1001	bioscales
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	lbceq	Bioscales	1002	bioscales
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	light_intensity	MIxS core	230	water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	light_regm	MIxS (modified)	24	bioscales|plant-associated|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	light_type	MIxS core	138	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	link_class_info	MIxS	20	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	link_climate_info	MIxS	21	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	lithology	MIxS core	340	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	local_class	MIxS	22	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	local_class_meth	MIxS	24	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	magnesium	MIxS core	21	biofilm|bioscales|hcr-cores|hcr-fluids-swabs|sediment
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	manganese	Bioscales	1003	bioscales
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	max_occup	MIxS core	139	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	mean_frict_vel	MIxS core	22	biofilm|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	mean_peak_frict_vel	MIxS core	23	biofilm|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	mech_struc	MIxS core	140	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	mechanical_damage	MIxS core	266	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	methane	MIxS core	24	air|biofilm|sediment
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	micro_biomass_meth	MIxS	43	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	microbial_biomass	MIxS	42	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	mineral_nutr_regm	MIxS core	267	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	misc_param	MIxS	24	air|biofilm|bioscales|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	n_alkanes	MIxS core	25	biofilm|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	nitrate	MIxS core	26	biofilm|hcr-cores|hcr-fluids-swabs|misc-envs|sediment|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	nitrate_nitrogen	Bioscales	1998	bioscales
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	nitrite	MIxS core	27	biofilm|hcr-cores|hcr-fluids-swabs|misc-envs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	nitrite_nitrogen	Bioscales	1999	bioscales
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	nitro	MIxS core	28	biofilm|misc-envs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	non_min_nutr_regm	MIxS core	268	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	number_pets	MIxS core	141	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	number_plants	MIxS core	142	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	number_resident	MIxS core	143	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	occup_density_samp	MIxS core	144	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	occup_document	MIxS core	145	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	occup_samp	MIxS core	146	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	org_carb	MIxS core	29	biofilm|misc-envs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	org_count_qpcr_info	MIxS core	341	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	org_matter	MIxS	45	biofilm|bioscales|misc-envs|sediment|soil|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	org_nitro	MIxS	46	biofilm|bioscales|misc-envs|sediment|soil|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	org_particles	MIxS core	342	wastewater_sludge
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	organism_count	MIxS core	30	air|biofilm|built_env|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	owc_tvdss	MIxS core	343	hcr-cores
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	oxy_stat_samp	MIxS	25	air|biofilm|bioscales|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	oxygen	MIxS core	56	air
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	part_org_carb	MIxS core	31	biofilm|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	part_org_nitro	MIxS core	231	water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	particle_class	MIxS core	32	sediment
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	permeability	MIxS core	344	hcr-cores
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	perturbation	MIxS core	33	air|biofilm|host-associated|misc-envs|plant-associated|sediment|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	pesticide_regm	MIxS core	269	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	petroleum_hydrocarb	MIxS core	34	biofilm|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ph	MIxS (modified)	27	biofilm|bioscales|hcr-cores|hcr-fluids-swabs|misc-envs|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ph_meth	MIxS	41	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ph_regm	MIxS core	270	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	phaeopigments	MIxS core	35	biofilm|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	phosphate	MIxS	53	biofilm|bioscales|misc-envs|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	phosplipid_fatt_acid	MIxS core	36	biofilm|misc-envs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	photon_flux	MIxS core	232	water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	plant_growth_med	MIxS core	271	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	plant_product	MIxS core	272	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	plant_sex	MIxS core	273	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	plant_struc	MIxS core	274	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	pollutants	MIxS core	57	air
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	porosity	MIxS core	37	hcr-cores|sediment
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	potassium	MIxS core	38	biofilm|bioscales|hcr-cores|hcr-fluids-swabs|misc-envs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	pour_point	MIxS core	345	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	pre_treatment	MIxS core	346	wastewater_sludge
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	pres_animal_insect	MIxS core	147	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	pressure	MIxS core	39	biofilm|hcr-cores|hcr-fluids-swabs|misc-envs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	prev_land_use_meth	MIxS	26	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	previous_land_use	MIxS	27	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	primary_prod	MIxS core	233	water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	primary_treatment	MIxS core	347	wastewater_sludge
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	prod_rate	MIxS core	348	hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	prod_start_date	MIxS core	349	hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	profile_position	MIxS	28	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	quad_pos	MIxS core	148	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	radiation_regm	MIxS core	275	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	rainfall_regm	MIxS core	276	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	reactor_type	MIxS core	350	wastewater_sludge
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	redox_potential	MIxS core	40	biofilm|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	rel_air_humidity	MIxS core	149	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	rel_humidity_out	MIxS core	150	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	rel_samp_loc	MIxS core	151	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	rel_to_oxygen	MIxS (modified)	23	air|biofilm|bioscales|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	reservoir	MIxS core	351	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	resins_pc	MIxS core	352	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	room_air_exch_rate	MIxS core	152	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	room_architec_elem	MIxS core	153	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	room_condt	MIxS core	154	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	room_connected	MIxS core	155	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	room_count	MIxS core	156	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	room_dim	MIxS core	157	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	room_door_dist	MIxS core	158	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	room_door_share	MIxS core	159	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	room_hallway	MIxS core	160	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	room_loc	MIxS core	161	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	room_moist_dam_hist	MIxS core	162	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	room_net_area	MIxS core	163	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	room_occup	MIxS core	164	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	room_samp_pos	MIxS core	165	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	room_type	MIxS core	166	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	room_vol	MIxS core	167	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	room_wall_share	MIxS core	168	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	room_window_count	MIxS core	169	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	root_cond	MIxS core	277	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	root_med_carbon	MIxS core	278	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	root_med_macronutr	MIxS core	279	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	root_med_micronutr	MIxS core	280	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	root_med_ph	MIxS core	281	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	root_med_regl	MIxS core	282	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	root_med_solid	MIxS core	283	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	root_med_suppl	MIxS core	284	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	salinity	MIxS	54	air|biofilm|bioscales|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	salinity_meth	MIxS	55	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	salt_regm	MIxS core	285	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_capt_status	MIxS core	286	host-associated|plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_collec_device	MIxS (modified)	14	air|biofilm|bioscales|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_collec_method	MIxS (modified)	15	air|biofilm|bioscales|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_collect_point	MIxS core	353	hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_dis_stage	MIxS core	287	host-associated|plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_floor	MIxS core	170	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_loc_corr_rate	MIxS core	354	hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_mat_process	MIxS (modified)	12	air|biofilm|bioscales|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_md	MIxS core	355	hcr-cores
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_name	Sample ID	1	dh_mutliview_common_columns
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_preserv	MIxS core	356	hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_room_id	MIxS core	171	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_size	MIxS (modified)	18	air|biofilm|bioscales|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_sort_meth	MIxS core	172	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_store_dur	MIxS core	357	air|biofilm|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_store_loc	MIxS core	42	air|biofilm|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_store_temp	MIxS (modified)	7	air|biofilm|bioscales|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_subtype	MIxS core	358	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_time_out	MIxS core	173	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_transport_cond	MIxS core	359	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_tvdss	MIxS core	360	hcr-cores
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_type	MIxS core	361	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_weather	MIxS core	174	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	samp_well_name	MIxS core	362	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	saturates_pc	MIxS core	363	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	season	MIxS core	175	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	season_environment	MIxS core	288	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	season_precpt	MIxS	29	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	season_temp	MIxS	30	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	season_use	MIxS core	176	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	secondary_treatment	MIxS core	364	wastewater_sludge
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	sediment_type	MIxS core	43	sediment
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	sewage_type	MIxS core	365	wastewater_sludge
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	shad_dev_water_mold	MIxS core	177	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	shading_device_cond	MIxS core	178	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	shading_device_loc	MIxS core	179	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	shading_device_mat	MIxS core	180	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	shading_device_type	MIxS core	181	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	sieving	MIxS (modified)	8	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	silicate	MIxS core	44	biofilm|misc-envs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	size_frac	MIxS core	289	air|biofilm|built_env|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	size_frac_low	MIxS (modified)	9	bioscales|soil|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	size_frac_up	MIxS (modified)	11	bioscales|soil|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	slope_aspect	MIxS	1	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	slope_gradient	MIxS	31	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	sludge_retent_time	MIxS core	366	wastewater_sludge
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	sodium	MIxS core	367	biofilm|hcr-cores|hcr-fluids-swabs|misc-envs|sediment|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	soil_horizon	MIxS	32	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	soil_text_measure	MIxS	33	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	soil_texture_meth	MIxS	34	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	soil_type	MIxS	35	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	soil_type_meth	MIxS	36	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	solar_irradiance	MIxS core	58	air
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	soluble_inorg_mat	MIxS core	368	wastewater_sludge
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	soluble_org_mat	MIxS core	369	wastewater_sludge
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	soluble_react_phosp	MIxS core	234	water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	source_mat_id	Sample ID	2	dh_mutliview_common_columns
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	space_typ_state	MIxS core	182	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	specific	MIxS core	183	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	specific_ecosystem	Sample ID	13	air|biofilm|bioscales|built_env|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	specific_humidity	MIxS core	184	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	sr_dep_env	MIxS core	370	hcr-cores
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	sr_geol_age	MIxS core	371	hcr-cores
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	sr_kerog_type	MIxS core	372	hcr-cores
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	sr_lithology	MIxS core	373	hcr-cores
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	standing_water_regm	MIxS core	290	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	store_cond	MIxS (modified)	2	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	substructure_type	MIxS core	185	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	sulfate	MIxS core	46	biofilm|hcr-cores|hcr-fluids-swabs|misc-envs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	sulfate_fw	MIxS core	374	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	sulfide	MIxS core	375	biofilm|hcr-cores|hcr-fluids-swabs|misc-envs|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	surf_air_cont	MIxS core	186	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	surf_humidity	MIxS core	187	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	surf_material	MIxS core	188	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	surf_moisture	MIxS core	189	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	surf_moisture_ph	MIxS core	190	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	surf_temp	MIxS core	191	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	suspend_part_matter	MIxS core	235	water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	suspend_solids	MIxS core	376	hcr-cores|hcr-fluids-swabs|wastewater_sludge
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	tan	MIxS core	377	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	temp	MIxS	37	air|biofilm|bioscales|built_env|hcr-cores|hcr-fluids-swabs|host-associated|misc-envs|plant-associated|sediment|soil|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	temp_out	MIxS core	192	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	tertiary_treatment	MIxS core	378	wastewater_sludge
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	tidal_stage	MIxS core	48	sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	tillage	MIxS	38	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	tiss_cult_growth_med	MIxS core	291	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	toluene	MIxS core	379	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	tot_carb	MIxS	47	biofilm|bioscales|sediment|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	tot_depth_water_col	MIxS core	49	sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	tot_diss_nitro	MIxS core	236	water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	tot_inorg_nitro	MIxS core	237	water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	tot_iron	MIxS core	380	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	tot_nitro	MIxS core	381	bioscales|hcr-cores|hcr-fluids-swabs|wastewater_sludge|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	tot_nitro_cont_meth	MIxS	49	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	tot_nitro_content	MIxS	48	biofilm|bioscales|sediment|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	tot_org_c_meth	MIxS	51	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	tot_org_carb	MIxS	50	biofilm|bioscales|sediment|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	tot_part_carb	MIxS core	239	water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	tot_phosp	MIxS	52	bioscales|hcr-cores|hcr-fluids-swabs|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	tot_phosphate	MIxS core	382	wastewater_sludge
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	tot_sulfur	MIxS core	383	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	train_line	MIxS core	193	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	train_stat_loc	MIxS core	194	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	train_stop_loc	MIxS core	195	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	turbidity	MIxS core	50	biofilm|sediment|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	tvdss_of_hcr_press	MIxS core	384	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	tvdss_of_hcr_temp	MIxS core	385	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	typ_occup_density	MIxS core	196	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ventilation_rate	MIxS core	59	air
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	ventilation_type	MIxS core	60	air|built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	vfa	MIxS core	386	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	vfa_fw	MIxS core	387	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	vis_media	MIxS core	197	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	viscosity	MIxS core	388	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	volatile_org_comp	MIxS core	61	air
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	wall_area	MIxS core	198	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	wall_const_type	MIxS core	199	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	wall_finish_mat	MIxS core	200	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	wall_height	MIxS core	201	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	wall_loc	MIxS core	202	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	wall_surf_treatment	MIxS core	203	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	wall_texture	MIxS core	204	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	wall_thermal_mass	MIxS core	205	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	wall_water_mold	MIxS core	206	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	wastewater_type	MIxS core	389	wastewater_sludge
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	water_cont_soil_meth	MIxS	40	bioscales|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	water_content	MIxS	39	biofilm|bioscales|sediment|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	water_current	MIxS core	240	misc-envs|water
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	water_cut	MIxS core	390	hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	water_feat_size	MIxS core	207	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	water_feat_type	MIxS core	208	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	water_prod_rate	MIxS core	391	hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	water_temp_regm	MIxS core	292	plant-associated
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	watering_regm	MIxS (modified)	25	bioscales|plant-associated|soil
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	weekday	MIxS core	209	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	win	MIxS core	392	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	wind_direction	MIxS core	62	air
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	wind_speed	MIxS core	63	air
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	window_cond	MIxS core	210	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	window_cover	MIxS core	211	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	window_horiz_pos	MIxS core	212	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	window_loc	MIxS core	213	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	window_mat	MIxS core	214	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	window_open_freq	MIxS core	215	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	window_size	MIxS core	216	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	window_status	MIxS core	217	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	window_type	MIxS core	218	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	window_vert_pos	MIxS core	219	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	window_water_mold	MIxS core	220	built_env
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	xylene	MIxS core	393	hcr-cores|hcr-fluids-swabs
+Biosample	https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc.yaml	zinc	Bioscales	1004	bioscales

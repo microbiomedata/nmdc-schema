@@ -43,7 +43,6 @@ assets/mixs_regen/slots_associated_with_biosample_omics_processing.tsv
 assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing_augmented.tsv: \
 assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv
 	cp $< $@
-	echo "abs_air_humidity" >> $@
 	echo "rel_to_oxygen" >> $@
 
 
@@ -130,3 +129,8 @@ assets/MIxS_6_term_updates_MIxS6_packages_-_Final_clean.tsv
 		--core_file $< \
 		--packages_file $(word 2,$^) \
 		--output_file $@
+
+assets/mixs_slots_by_submission_class.tsv: assets/sheets-for-nmdc-submission-schema_import_slots_regardless.tsv
+	$(RUN) mixs_coverage \
+  		--in_file $< \
+  		--out_file $@

@@ -47,15 +47,6 @@ subsets:
     description: A combination of a checklist and a package
     from_schema: http://w3id.org/mixs/terms
 enums:
-  oxy_stat_samp_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      aerobic:
-        text: aerobic
-      anaerobic:
-        text: anaerobic
-      other:
-        text: other
   fao_class_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
@@ -111,6 +102,99 @@ enums:
         text: Vertisols
       Yermosols:
         text: Yermosols
+  tillage_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      drill:
+        text: drill
+      cutting disc:
+        text: cutting disc
+      ridge till:
+        text: ridge till
+      strip tillage:
+        text: strip tillage
+      zonal tillage:
+        text: zonal tillage
+      chisel:
+        text: chisel
+      tined:
+        text: tined
+      mouldboard:
+        text: mouldboard
+      disc plough:
+        text: disc plough
+  drainage_class_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      very poorly:
+        text: very poorly
+      poorly:
+        text: poorly
+      somewhat poorly:
+        text: somewhat poorly
+      moderately well:
+        text: moderately well
+      well:
+        text: well
+      excessively drained:
+        text: excessively drained
+  rel_to_oxygen_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      aerobe:
+        text: aerobe
+      anaerobe:
+        text: anaerobe
+      facultative:
+        text: facultative
+      microaerophilic:
+        text: microaerophilic
+      microanaerobe:
+        text: microanaerobe
+      obligate aerobe:
+        text: obligate aerobe
+      obligate anaerobe:
+        text: obligate anaerobe
+  organism_count_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      ATP:
+        text: ATP
+      MPN:
+        text: MPN
+      other:
+        text: other
+  oxy_stat_samp_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      aerobic:
+        text: aerobic
+      anaerobic:
+        text: anaerobic
+      other:
+        text: other
+  biotic_relationship_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      free living:
+        text: free living
+      parasite:
+        text: parasite
+      commensal:
+        text: commensal
+      symbiont:
+        text: symbiont
+  tidal_stage_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      low tide:
+        text: low tide
+      ebb tide:
+        text: ebb tide
+      flood tide:
+        text: flood tide
+      high tide:
+        text: high tide
   cur_land_use_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
@@ -184,79 +268,6 @@ enums:
         text: swamp (permanent or semi-permanent water body dominated by woody plants)
       crop trees (nuts,fruit,christmas trees,nursery trees):
         text: crop trees (nuts,fruit,christmas trees,nursery trees)
-  rel_to_oxygen_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      aerobe:
-        text: aerobe
-      anaerobe:
-        text: anaerobe
-      facultative:
-        text: facultative
-      microaerophilic:
-        text: microaerophilic
-      microanaerobe:
-        text: microanaerobe
-      obligate aerobe:
-        text: obligate aerobe
-      obligate anaerobe:
-        text: obligate anaerobe
-  drainage_class_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      very poorly:
-        text: very poorly
-      poorly:
-        text: poorly
-      somewhat poorly:
-        text: somewhat poorly
-      moderately well:
-        text: moderately well
-      well:
-        text: well
-      excessively drained:
-        text: excessively drained
-  organism_count_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      ATP:
-        text: ATP
-      MPN:
-        text: MPN
-      other:
-        text: other
-  tillage_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      drill:
-        text: drill
-      cutting disc:
-        text: cutting disc
-      ridge till:
-        text: ridge till
-      strip tillage:
-        text: strip tillage
-      zonal tillage:
-        text: zonal tillage
-      chisel:
-        text: chisel
-      tined:
-        text: tined
-      mouldboard:
-        text: mouldboard
-      disc plough:
-        text: disc plough
-  tidal_stage_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      low tide:
-        text: low tide
-      ebb tide:
-        text: ebb tide
-      flood tide:
-        text: flood tide
-      high tide:
-        text: high tide
   profile_position_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
@@ -270,17 +281,6 @@ enums:
         text: footslope
       toeslope:
         text: toeslope
-  biotic_relationship_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      free living:
-        text: free living
-      parasite:
-        text: parasite
-      commensal:
-        text: commensal
-      symbiont:
-        text: symbiont
 slots:
   agrochem_addition:
     annotations:
@@ -3005,28 +3005,6 @@ slots:
     slot_uri: mixs:0000591
     multivalued: true
     range: TextValue
-  abs_air_humidity:
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: measurement value
-      preferred_unit:
-        tag: preferred_unit
-        value: gram per gram, kilogram per kilogram, kilogram, pound
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Actual mass of water vapor - mh20 - present in the air water vapor mixture
-    title: absolute air humidity
-    examples:
-      - value: 9 gram per gram
-    from_schema: http://w3id.org/mixs/terms
-    aliases:
-      - absolute air humidity
-    is_a: core field
-    slot_uri: mixs:0000122
-    multivalued: false
-    range: QuantityValue
   rel_to_oxygen:
     annotations:
       expected_value:
@@ -3043,34 +3021,34 @@ slots:
     slot_uri: mixs:0000015
     multivalued: false
     range: rel_to_oxygen_enum
+  core field:
+    description: basic fields
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
   environment field:
     description: field describing environmental aspect of a sample
     from_schema: http://w3id.org/mixs/terms
     abstract: true
-  has numeric value:
+  has unit:
+    description: Example "m"
     from_schema: http://w3id.org/mixs/ranges
     owner: QuantityValue
-    range: double
-  sequencing field:
-    from_schema: http://w3id.org/mixs/terms
-    abstract: true
   nucleic acid sequence source field:
     from_schema: http://w3id.org/mixs/terms
     abstract: true
-  investigation field:
-    description: field describing aspect of the investigation/study to which the sample belongs
-    from_schema: http://w3id.org/mixs/terms
-    abstract: true
-  core field:
-    description: basic fields
+  sequencing field:
     from_schema: http://w3id.org/mixs/terms
     abstract: true
   has raw value:
     from_schema: http://w3id.org/mixs/ranges
     string_serialization: '{has numeric value} {has unit}'
     owner: QuantityValue
-  has unit:
-    description: Example "m"
+  has numeric value:
     from_schema: http://w3id.org/mixs/ranges
     owner: QuantityValue
+    range: double
+  investigation field:
+    description: field describing aspect of the investigation/study to which the sample belongs
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
 source_file: assets/other_mixs_yaml_files/mixs_template.yaml
