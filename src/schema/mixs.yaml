@@ -56,82 +56,6 @@ enums:
         text: MPN
       other:
         text: other
-  tillage_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      drill:
-        text: drill
-      cutting disc:
-        text: cutting disc
-      ridge till:
-        text: ridge till
-      strip tillage:
-        text: strip tillage
-      zonal tillage:
-        text: zonal tillage
-      chisel:
-        text: chisel
-      tined:
-        text: tined
-      mouldboard:
-        text: mouldboard
-      disc plough:
-        text: disc plough
-  fao_class_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      Acrisols:
-        text: Acrisols
-      Andosols:
-        text: Andosols
-      Arenosols:
-        text: Arenosols
-      Cambisols:
-        text: Cambisols
-      Chernozems:
-        text: Chernozems
-      Ferralsols:
-        text: Ferralsols
-      Fluvisols:
-        text: Fluvisols
-      Gleysols:
-        text: Gleysols
-      Greyzems:
-        text: Greyzems
-      Gypsisols:
-        text: Gypsisols
-      Histosols:
-        text: Histosols
-      Kastanozems:
-        text: Kastanozems
-      Lithosols:
-        text: Lithosols
-      Luvisols:
-        text: Luvisols
-      Nitosols:
-        text: Nitosols
-      Phaeozems:
-        text: Phaeozems
-      Planosols:
-        text: Planosols
-      Podzols:
-        text: Podzols
-      Podzoluvisols:
-        text: Podzoluvisols
-      Rankers:
-        text: Rankers
-      Regosols:
-        text: Regosols
-      Rendzinas:
-        text: Rendzinas
-      Solonchaks:
-        text: Solonchaks
-      Solonetz:
-        text: Solonetz
-      Vertisols:
-        text: Vertisols
-      Yermosols:
-        text: Yermosols
   biotic_relationship_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
@@ -143,6 +67,19 @@ enums:
         text: commensal
       symbiont:
         text: symbiont
+  profile_position_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      summit:
+        text: summit
+      shoulder:
+        text: shoulder
+      backslope:
+        text: backslope
+      footslope:
+        text: footslope
+      toeslope:
+        text: toeslope
   cur_land_use_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
@@ -216,39 +153,6 @@ enums:
         text: swamp (permanent or semi-permanent water body dominated by woody plants)
       crop trees (nuts,fruit,christmas trees,nursery trees):
         text: crop trees (nuts,fruit,christmas trees,nursery trees)
-  tidal_stage_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      low tide:
-        text: low tide
-      ebb tide:
-        text: ebb tide
-      flood tide:
-        text: flood tide
-      high tide:
-        text: high tide
-  oxy_stat_samp_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      aerobic:
-        text: aerobic
-      anaerobic:
-        text: anaerobic
-      other:
-        text: other
-  profile_position_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      summit:
-        text: summit
-      shoulder:
-        text: shoulder
-      backslope:
-        text: backslope
-      footslope:
-        text: footslope
-      toeslope:
-        text: toeslope
   rel_to_oxygen_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
@@ -281,6 +185,102 @@ enums:
         text: well
       excessively drained:
         text: excessively drained
+  tidal_stage_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      low tide:
+        text: low tide
+      ebb tide:
+        text: ebb tide
+      flood tide:
+        text: flood tide
+      high tide:
+        text: high tide
+  fao_class_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      Acrisols:
+        text: Acrisols
+      Andosols:
+        text: Andosols
+      Arenosols:
+        text: Arenosols
+      Cambisols:
+        text: Cambisols
+      Chernozems:
+        text: Chernozems
+      Ferralsols:
+        text: Ferralsols
+      Fluvisols:
+        text: Fluvisols
+      Gleysols:
+        text: Gleysols
+      Greyzems:
+        text: Greyzems
+      Gypsisols:
+        text: Gypsisols
+      Histosols:
+        text: Histosols
+      Kastanozems:
+        text: Kastanozems
+      Lithosols:
+        text: Lithosols
+      Luvisols:
+        text: Luvisols
+      Nitosols:
+        text: Nitosols
+      Phaeozems:
+        text: Phaeozems
+      Planosols:
+        text: Planosols
+      Podzols:
+        text: Podzols
+      Podzoluvisols:
+        text: Podzoluvisols
+      Rankers:
+        text: Rankers
+      Regosols:
+        text: Regosols
+      Rendzinas:
+        text: Rendzinas
+      Solonchaks:
+        text: Solonchaks
+      Solonetz:
+        text: Solonetz
+      Vertisols:
+        text: Vertisols
+      Yermosols:
+        text: Yermosols
+  oxy_stat_samp_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      aerobic:
+        text: aerobic
+      anaerobic:
+        text: anaerobic
+      other:
+        text: other
+  tillage_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      drill:
+        text: drill
+      cutting disc:
+        text: cutting disc
+      ridge till:
+        text: ridge till
+      strip tillage:
+        text: strip tillage
+      zonal tillage:
+        text: zonal tillage
+      chisel:
+        text: chisel
+      tined:
+        text: tined
+      mouldboard:
+        text: mouldboard
+      disc plough:
+        text: disc plough
 slots:
   agrochem_addition:
     annotations:
@@ -1371,6 +1371,26 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: mixs:0000343
+    multivalued: false
+    range: TextValue
+  host_taxid:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: NCBI taxon identifier
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: NCBI taxon id of the host, e.g. 9606
+    title: host taxid
+    examples:
+      - value: '7955'
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - host taxid
+    is_a: core field
+    string_serialization: '{NCBI taxid}'
+    slot_uri: mixs:0000250
     multivalued: false
     range: TextValue
   humidity_regm:
@@ -2985,25 +3005,51 @@ slots:
     slot_uri: mixs:0000591
     multivalued: true
     range: TextValue
-  host_taxid:
+  air particulate matter concentration:
     annotations:
       expected_value:
         tag: expected_value
-        value: NCBI taxon identifier
+        value: particulate matter name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: microgram per cubic meter
       occurrence:
         tag: occurrence
-        value: '1'
-    description: NCBI taxon id of the host, e.g. 9606
-    title: host taxid
+        value: m
+    description: Concentration of substances that remain suspended in the air, and comprise mixtures of organic and inorganic substances (PM10 and PM2.5); can report multiple PM's by entering numeric values preceded by name of PM
+    title: air_PM_concen
     examples:
-      - value: '7955'
+      - value: PM2.5;10 microgram per cubic meter
     from_schema: http://w3id.org/mixs/terms
     aliases:
-      - host taxid
+      - air_PM_concen
     is_a: core field
-    string_serialization: '{NCBI taxid}'
-    slot_uri: mixs:0000250
-    multivalued: false
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: mixs:0000108
+    multivalued: true
+    range: TextValue
+  air_PM_concen:
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: particulate matter name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: micrograms per cubic meter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Concentration of substances that remain suspended in the air, and comprise mixtures of organic and inorganic substances (PM10 and PM2.5); can report multiple PM's by entering numeric values preceded by name of PM
+    title: air particulate matter concentration
+    examples:
+      - value: PM2.5;10 microgram per cubic meter
+    from_schema: http://w3id.org/mixs/terms
+    aliases:
+      - air particulate matter concentration
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: mixs:0000108
+    multivalued: true
     range: TextValue
   rel_to_oxygen:
     annotations:
@@ -3021,34 +3067,34 @@ slots:
     slot_uri: mixs:0000015
     multivalued: false
     range: rel_to_oxygen_enum
-  nucleic acid sequence source field:
-    from_schema: http://w3id.org/mixs/terms
-    abstract: true
   core field:
     description: basic fields
     from_schema: http://w3id.org/mixs/terms
     abstract: true
-  investigation field:
-    description: field describing aspect of the investigation/study to which the sample belongs
+  sequencing field:
     from_schema: http://w3id.org/mixs/terms
     abstract: true
   environment field:
     description: field describing environmental aspect of a sample
     from_schema: http://w3id.org/mixs/terms
     abstract: true
-  sequencing field:
+  nucleic acid sequence source field:
     from_schema: http://w3id.org/mixs/terms
     abstract: true
-  has unit:
-    description: Example "m"
-    from_schema: http://w3id.org/mixs/ranges
-    owner: QuantityValue
-  has numeric value:
-    from_schema: http://w3id.org/mixs/ranges
-    owner: QuantityValue
-    range: double
   has raw value:
     from_schema: http://w3id.org/mixs/ranges
     string_serialization: '{has numeric value} {has unit}'
     owner: QuantityValue
+  has unit:
+    description: Example "m"
+    from_schema: http://w3id.org/mixs/ranges
+    owner: QuantityValue
+  investigation field:
+    description: field describing aspect of the investigation/study to which the sample belongs
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
+  has numeric value:
+    from_schema: http://w3id.org/mixs/ranges
+    owner: QuantityValue
+    range: double
 source_file: assets/other_mixs_yaml_files/mixs_template.yaml
