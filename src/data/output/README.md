@@ -190,6 +190,8 @@ heavy_metals:
 heavy_metals_meth:
 - has_raw_value: https://link.springer.com/article/10.1007/s42452-019-1578-x
 host_name: snail is an example value, but unconstrained text is accepted at this point
+host_taxid:
+  has_raw_value: '9606'
 humidity_regm:
 - has_raw_value: 25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 id: nmdc:bsm-99-dtTMNb

@@ -389,3 +389,5 @@ lbc_thirty:
   has_raw_value: 543 mg/kg
 lbceq:
   has_raw_value: 1575 mg/kg
+host_taxid:
+  has_raw_value: "9606"

@@ -21,6 +21,8 @@ env_medium:
   has_raw_value: ENVO:00005792
   term:
     id: ENVO:00005792
+host_taxid:
+  has_raw_value: '9606'
 embargoed: true
 collected_from: nmdc:unconstrained_site_identifier_string
 type: nmdc:Biosample. change this to require a class name or an enumeration

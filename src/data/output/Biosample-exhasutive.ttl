@@ -84,6 +84,8 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
             nmdc:has_raw_value "1.75 milligram per cubic meter" ] ;
     mixs:0000205 [ a nmdc:QuantityValue ;
             nmdc:has_raw_value "4 micromole per liter" ] ;
+    mixs:0000250 [ a nmdc:TextValue ;
+            nmdc:has_raw_value "9606" ] ;
     mixs:0000298 [ a nmdc:TextValue ;
             nmdc:has_raw_value "https://wrrc.umass.edu/research/projects/acid-rain-monitoring-project/analysis-method-ph-and-alkalinity" ] ;
     mixs:0000310 [ a nmdc:QuantityValue ;
