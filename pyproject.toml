@@ -71,6 +71,7 @@ nmdc-version = "nmdc_schema.nmdc_version:cli"
 slot_roster = "nmdc_schema.slot_roster:cli"
 get_mixs_slots_matching_slot_list = "nmdc_schema.get_mixs_slots_matching_slot_list:main"
 minimal_get_submissions = "nmdc_schema.minimal_get_submissions:cli"
+get_class_usages = "nmdc_schema.get_class_usages:main"
 
 #validate-nmdc-json is deprecated by check-json-schema, which is in turn deprereated by run-linkml-examples
 #validate-nmdc-json = "nmdc_schema.validate_nmdc_json:cli"
