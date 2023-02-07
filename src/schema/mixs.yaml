@@ -47,39 +47,70 @@ subsets:
     description: A combination of a checklist and a package
     from_schema: http://w3id.org/mixs/terms
 enums:
-  organism_count_enum:
+  oxy_stat_samp_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      ATP:
-        text: ATP
-      MPN:
-        text: MPN
+      aerobic:
+        text: aerobic
+      anaerobic:
+        text: anaerobic
       other:
         text: other
-  biotic_relationship_enum:
+  fao_class_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      free living:
-        text: free living
-      parasite:
-        text: parasite
-      commensal:
-        text: commensal
-      symbiont:
-        text: symbiont
-  profile_position_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      summit:
-        text: summit
-      shoulder:
-        text: shoulder
-      backslope:
-        text: backslope
-      footslope:
-        text: footslope
-      toeslope:
-        text: toeslope
+      Acrisols:
+        text: Acrisols
+      Andosols:
+        text: Andosols
+      Arenosols:
+        text: Arenosols
+      Cambisols:
+        text: Cambisols
+      Chernozems:
+        text: Chernozems
+      Ferralsols:
+        text: Ferralsols
+      Fluvisols:
+        text: Fluvisols
+      Gleysols:
+        text: Gleysols
+      Greyzems:
+        text: Greyzems
+      Gypsisols:
+        text: Gypsisols
+      Histosols:
+        text: Histosols
+      Kastanozems:
+        text: Kastanozems
+      Lithosols:
+        text: Lithosols
+      Luvisols:
+        text: Luvisols
+      Nitosols:
+        text: Nitosols
+      Phaeozems:
+        text: Phaeozems
+      Planosols:
+        text: Planosols
+      Podzols:
+        text: Podzols
+      Podzoluvisols:
+        text: Podzoluvisols
+      Rankers:
+        text: Rankers
+      Regosols:
+        text: Regosols
+      Rendzinas:
+        text: Rendzinas
+      Solonchaks:
+        text: Solonchaks
+      Solonetz:
+        text: Solonetz
+      Vertisols:
+        text: Vertisols
+      Yermosols:
+        text: Yermosols
   cur_land_use_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
@@ -185,79 +216,13 @@ enums:
         text: well
       excessively drained:
         text: excessively drained
-  tidal_stage_enum:
+  organism_count_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      low tide:
-        text: low tide
-      ebb tide:
-        text: ebb tide
-      flood tide:
-        text: flood tide
-      high tide:
-        text: high tide
-  fao_class_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      Acrisols:
-        text: Acrisols
-      Andosols:
-        text: Andosols
-      Arenosols:
-        text: Arenosols
-      Cambisols:
-        text: Cambisols
-      Chernozems:
-        text: Chernozems
-      Ferralsols:
-        text: Ferralsols
-      Fluvisols:
-        text: Fluvisols
-      Gleysols:
-        text: Gleysols
-      Greyzems:
-        text: Greyzems
-      Gypsisols:
-        text: Gypsisols
-      Histosols:
-        text: Histosols
-      Kastanozems:
-        text: Kastanozems
-      Lithosols:
-        text: Lithosols
-      Luvisols:
-        text: Luvisols
-      Nitosols:
-        text: Nitosols
-      Phaeozems:
-        text: Phaeozems
-      Planosols:
-        text: Planosols
-      Podzols:
-        text: Podzols
-      Podzoluvisols:
-        text: Podzoluvisols
-      Rankers:
-        text: Rankers
-      Regosols:
-        text: Regosols
-      Rendzinas:
-        text: Rendzinas
-      Solonchaks:
-        text: Solonchaks
-      Solonetz:
-        text: Solonetz
-      Vertisols:
-        text: Vertisols
-      Yermosols:
-        text: Yermosols
-  oxy_stat_samp_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      aerobic:
-        text: aerobic
-      anaerobic:
-        text: anaerobic
+      ATP:
+        text: ATP
+      MPN:
+        text: MPN
       other:
         text: other
   tillage_enum:
@@ -281,6 +246,41 @@ enums:
         text: mouldboard
       disc plough:
         text: disc plough
+  tidal_stage_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      low tide:
+        text: low tide
+      ebb tide:
+        text: ebb tide
+      flood tide:
+        text: flood tide
+      high tide:
+        text: high tide
+  profile_position_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      summit:
+        text: summit
+      shoulder:
+        text: shoulder
+      backslope:
+        text: backslope
+      footslope:
+        text: footslope
+      toeslope:
+        text: toeslope
+  biotic_relationship_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      free living:
+        text: free living
+      parasite:
+        text: parasite
+      commensal:
+        text: commensal
+      symbiont:
+        text: symbiont
 slots:
   agrochem_addition:
     annotations:
@@ -3005,52 +3005,28 @@ slots:
     slot_uri: mixs:0000591
     multivalued: true
     range: TextValue
-  air particulate matter concentration:
+  abs_air_humidity:
     annotations:
       expected_value:
         tag: expected_value
-        value: particulate matter name;measurement value
+        value: measurement value
       preferred_unit:
         tag: preferred_unit
-        value: microgram per cubic meter
+        value: gram per gram, kilogram per kilogram, kilogram, pound
       occurrence:
         tag: occurrence
-        value: m
-    description: Concentration of substances that remain suspended in the air, and comprise mixtures of organic and inorganic substances (PM10 and PM2.5); can report multiple PM's by entering numeric values preceded by name of PM
-    title: air_PM_concen
+        value: '1'
+    description: Actual mass of water vapor - mh20 - present in the air water vapor mixture
+    title: absolute air humidity
     examples:
-      - value: PM2.5;10 microgram per cubic meter
+      - value: 9 gram per gram
     from_schema: http://w3id.org/mixs/terms
     aliases:
-      - air_PM_concen
+      - absolute air humidity
     is_a: core field
-    string_serialization: '{text};{float} {unit}'
-    slot_uri: mixs:0000108
-    multivalued: true
-    range: TextValue
-  air_PM_concen:
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: particulate matter name;measurement value
-      preferred_unit:
-        tag: preferred_unit
-        value: micrograms per cubic meter
-      occurrence:
-        tag: occurrence
-        value: m
-    description: Concentration of substances that remain suspended in the air, and comprise mixtures of organic and inorganic substances (PM10 and PM2.5); can report multiple PM's by entering numeric values preceded by name of PM
-    title: air particulate matter concentration
-    examples:
-      - value: PM2.5;10 microgram per cubic meter
-    from_schema: http://w3id.org/mixs/terms
-    aliases:
-      - air particulate matter concentration
-    is_a: core field
-    string_serialization: '{text};{float} {unit}'
-    slot_uri: mixs:0000108
-    multivalued: true
-    range: TextValue
+    slot_uri: mixs:0000122
+    multivalued: false
+    range: QuantityValue
   rel_to_oxygen:
     annotations:
       expected_value:
@@ -3067,18 +3043,26 @@ slots:
     slot_uri: mixs:0000015
     multivalued: false
     range: rel_to_oxygen_enum
-  core field:
-    description: basic fields
-    from_schema: http://w3id.org/mixs/terms
-    abstract: true
-  sequencing field:
-    from_schema: http://w3id.org/mixs/terms
-    abstract: true
   environment field:
     description: field describing environmental aspect of a sample
     from_schema: http://w3id.org/mixs/terms
     abstract: true
+  has numeric value:
+    from_schema: http://w3id.org/mixs/ranges
+    owner: QuantityValue
+    range: double
+  sequencing field:
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
   nucleic acid sequence source field:
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
+  investigation field:
+    description: field describing aspect of the investigation/study to which the sample belongs
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
+  core field:
+    description: basic fields
     from_schema: http://w3id.org/mixs/terms
     abstract: true
   has raw value:
@@ -3089,12 +3073,4 @@ slots:
     description: Example "m"
     from_schema: http://w3id.org/mixs/ranges
     owner: QuantityValue
-  investigation field:
-    description: field describing aspect of the investigation/study to which the sample belongs
-    from_schema: http://w3id.org/mixs/terms
-    abstract: true
-  has numeric value:
-    from_schema: http://w3id.org/mixs/ranges
-    owner: QuantityValue
-    range: double
 source_file: assets/other_mixs_yaml_files/mixs_template.yaml
