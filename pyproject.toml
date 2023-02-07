@@ -63,6 +63,7 @@ docs = ["linkml", "mkdocs-material"]
 [tool.poetry.scripts]
 fetch-nmdc-schema = "nmdc_schema.nmdc_data:get_nmdc_jsonschema"
 generate_import_slots_regardless = "nmdc_schema.generate_import_slots_regardless:main"
+get_class_usages = "nmdc_schema.get_class_usages:main"
 get_mixs_slots_matching_slot_list = "nmdc_schema.get_mixs_slots_matching_slot_list:main"
 get_mixs_slots_used_in_schema = "nmdc_schema.get_mixs_slots_used_in_schema:main"
 get_slots_from_class = "nmdc_schema.get_slots_from_class:main"
