@@ -25,7 +25,7 @@ def get_nmdc_yaml_bytesIO() -> io.BytesIO:
         A bytes stream of nmdc.yaml file.
     """
     # get nmdc.yaml file from the package data
-    return io.BytesIO(pkgutil.get_data(__name__, " nmdc_schema_merged.yaml"))
+    return io.BytesIO(pkgutil.get_data(__name__, "nmdc_schema_merged.yaml"))
 
 
 def get_nmdc_yaml_bytes() -> bytes:
