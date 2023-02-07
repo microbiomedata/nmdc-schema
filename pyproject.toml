@@ -23,14 +23,15 @@ python = "^3.9"
 [tool.poetry.group.dev.dependencies]
 black = "^22.10.0"
 cruft = "^2.12.0"
+python-dotenv = "^0.21.1"
 linkml = "^1.4.4"
 mkdocs = "^1.4.2"
 mkdocs-material = "^8.5.7"
 mkdocs-mermaid2-plugin = "^0.6.0"
+pandasql = "^0.7.3" # might be able to replace this?
+pygsheets = "^2.0.6" # why are we importing this, when we're alredy using cogs?
 sheets-and-friends = "^0.1.0"
-pygsheets = "*" # why are we importing this, when we're alredy using cogs?
-pandasql = "*" # might be able to replace this?
-strsimpy = "*"
+strsimpy = "^0.2.1"
 
 [tool.poetry-dynamic-versioning]
 enable = true
@@ -69,6 +70,7 @@ nmdc-data = "nmdc_schema.nmdc_data:cli"
 nmdc-version = "nmdc_schema.nmdc_version:cli"
 slot_roster = "nmdc_schema.slot_roster:cli"
 get_mixs_slots_matching_slot_list = "nmdc_schema.get_mixs_slots_matching_slot_list:main"
+minimal_get_submissions = "nmdc_schema.minimal_get_submissions:cli"
 
 #validate-nmdc-json is deprecated by check-json-schema, which is in turn deprereated by run-linkml-examples
 #validate-nmdc-json = "nmdc_schema.validate_nmdc_json:cli"
