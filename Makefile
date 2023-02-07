@@ -157,7 +157,7 @@ gendoc: $(DOCDIR)
 	cp $(SRC)/docs/*md $(DOCDIR) ; \
 	cp -r $(SRC)/docs/images $(DOCDIR) ; \
 	$(RUN) gen-doc -d $(DOCDIR) $(SOURCE_SCHEMA_PATH)
-	mv $(DOCDIR)/TEMP.md $(DOCDIR)/temp.md
+	#mv $(DOCDIR)/TEMP.md $(DOCDIR)/temp.md
 
 testdoc: gendoc serve
 
