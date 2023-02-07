@@ -278,6 +278,7 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
+      - host_taxid
       - embargoed
       - collected_from
       - type
