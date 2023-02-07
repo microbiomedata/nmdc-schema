@@ -52,6 +52,7 @@ glucosidase_act
 growth_facil
 heavy_metals
 heavy_metals_meth
+host_taxid
 humidity_regm
 lat_lon
 light_regm
@@ -131,5 +132,6 @@ tot_phosp
 water_cont_soil_meth
 water_content
 watering_regm
-host_taxid
+air particulate matter concentration
+air_PM_concen
 rel_to_oxygen

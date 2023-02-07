@@ -980,84 +980,6 @@ enums:
         text: MPN
       other:
         text: other
-  tillage_enum:
-    name: tillage_enum
-    from_schema: https://microbiomedata/schema
-    permissible_values:
-      drill:
-        text: drill
-      cutting disc:
-        text: cutting disc
-      ridge till:
-        text: ridge till
-      strip tillage:
-        text: strip tillage
-      zonal tillage:
-        text: zonal tillage
-      chisel:
-        text: chisel
-      tined:
-        text: tined
-      mouldboard:
-        text: mouldboard
-      disc plough:
-        text: disc plough
-  fao_class_enum:
-    name: fao_class_enum
-    from_schema: https://microbiomedata/schema
-    permissible_values:
-      Acrisols:
-        text: Acrisols
-      Andosols:
-        text: Andosols
-      Arenosols:
-        text: Arenosols
-      Cambisols:
-        text: Cambisols
-      Chernozems:
-        text: Chernozems
-      Ferralsols:
-        text: Ferralsols
-      Fluvisols:
-        text: Fluvisols
-      Gleysols:
-        text: Gleysols
-      Greyzems:
-        text: Greyzems
-      Gypsisols:
-        text: Gypsisols
-      Histosols:
-        text: Histosols
-      Kastanozems:
-        text: Kastanozems
-      Lithosols:
-        text: Lithosols
-      Luvisols:
-        text: Luvisols
-      Nitosols:
-        text: Nitosols
-      Phaeozems:
-        text: Phaeozems
-      Planosols:
-        text: Planosols
-      Podzols:
-        text: Podzols
-      Podzoluvisols:
-        text: Podzoluvisols
-      Rankers:
-        text: Rankers
-      Regosols:
-        text: Regosols
-      Rendzinas:
-        text: Rendzinas
-      Solonchaks:
-        text: Solonchaks
-      Solonetz:
-        text: Solonetz
-      Vertisols:
-        text: Vertisols
-      Yermosols:
-        text: Yermosols
   biotic_relationship_enum:
     name: biotic_relationship_enum
     from_schema: https://microbiomedata/schema
@@ -1070,6 +992,20 @@ enums:
         text: commensal
       symbiont:
         text: symbiont
+  profile_position_enum:
+    name: profile_position_enum
+    from_schema: https://microbiomedata/schema
+    permissible_values:
+      summit:
+        text: summit
+      shoulder:
+        text: shoulder
+      backslope:
+        text: backslope
+      footslope:
+        text: footslope
+      toeslope:
+        text: toeslope
   cur_land_use_enum:
     name: cur_land_use_enum
     from_schema: https://microbiomedata/schema
@@ -1145,42 +1081,6 @@ enums:
         text: swamp (permanent or semi-permanent water body dominated by woody plants)
       crop trees (nuts,fruit,christmas trees,nursery trees):
         text: crop trees (nuts,fruit,christmas trees,nursery trees)
-  tidal_stage_enum:
-    name: tidal_stage_enum
-    from_schema: https://microbiomedata/schema
-    permissible_values:
-      low tide:
-        text: low tide
-      ebb tide:
-        text: ebb tide
-      flood tide:
-        text: flood tide
-      high tide:
-        text: high tide
-  oxy_stat_samp_enum:
-    name: oxy_stat_samp_enum
-    from_schema: https://microbiomedata/schema
-    permissible_values:
-      aerobic:
-        text: aerobic
-      anaerobic:
-        text: anaerobic
-      other:
-        text: other
-  profile_position_enum:
-    name: profile_position_enum
-    from_schema: https://microbiomedata/schema
-    permissible_values:
-      summit:
-        text: summit
-      shoulder:
-        text: shoulder
-      backslope:
-        text: backslope
-      footslope:
-        text: footslope
-      toeslope:
-        text: toeslope
   rel_to_oxygen_enum:
     name: rel_to_oxygen_enum
     from_schema: https://microbiomedata/schema
@@ -1215,6 +1115,106 @@ enums:
         text: well
       excessively drained:
         text: excessively drained
+  tidal_stage_enum:
+    name: tidal_stage_enum
+    from_schema: https://microbiomedata/schema
+    permissible_values:
+      low tide:
+        text: low tide
+      ebb tide:
+        text: ebb tide
+      flood tide:
+        text: flood tide
+      high tide:
+        text: high tide
+  fao_class_enum:
+    name: fao_class_enum
+    from_schema: https://microbiomedata/schema
+    permissible_values:
+      Acrisols:
+        text: Acrisols
+      Andosols:
+        text: Andosols
+      Arenosols:
+        text: Arenosols
+      Cambisols:
+        text: Cambisols
+      Chernozems:
+        text: Chernozems
+      Ferralsols:
+        text: Ferralsols
+      Fluvisols:
+        text: Fluvisols
+      Gleysols:
+        text: Gleysols
+      Greyzems:
+        text: Greyzems
+      Gypsisols:
+        text: Gypsisols
+      Histosols:
+        text: Histosols
+      Kastanozems:
+        text: Kastanozems
+      Lithosols:
+        text: Lithosols
+      Luvisols:
+        text: Luvisols
+      Nitosols:
+        text: Nitosols
+      Phaeozems:
+        text: Phaeozems
+      Planosols:
+        text: Planosols
+      Podzols:
+        text: Podzols
+      Podzoluvisols:
+        text: Podzoluvisols
+      Rankers:
+        text: Rankers
+      Regosols:
+        text: Regosols
+      Rendzinas:
+        text: Rendzinas
+      Solonchaks:
+        text: Solonchaks
+      Solonetz:
+        text: Solonetz
+      Vertisols:
+        text: Vertisols
+      Yermosols:
+        text: Yermosols
+  oxy_stat_samp_enum:
+    name: oxy_stat_samp_enum
+    from_schema: https://microbiomedata/schema
+    permissible_values:
+      aerobic:
+        text: aerobic
+      anaerobic:
+        text: anaerobic
+      other:
+        text: other
+  tillage_enum:
+    name: tillage_enum
+    from_schema: https://microbiomedata/schema
+    permissible_values:
+      drill:
+        text: drill
+      cutting disc:
+        text: cutting disc
+      ridge till:
+        text: ridge till
+      strip tillage:
+        text: strip tillage
+      zonal tillage:
+        text: zonal tillage
+      chisel:
+        text: chisel
+      tined:
+        text: tined
+      mouldboard:
+        text: mouldboard
+      disc plough:
+        text: disc plough
 slots:
   env_package:
     name: env_package
@@ -5125,6 +5125,27 @@ slots:
     slot_uri: mixs:0000343
     multivalued: false
     range: TextValue
+  host_taxid:
+    name: host_taxid
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: NCBI taxon identifier
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: NCBI taxon id of the host, e.g. 9606
+    title: host taxid
+    examples:
+    - value: '7955'
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - host taxid
+    is_a: core field
+    string_serialization: '{NCBI taxid}'
+    slot_uri: mixs:0000250
+    multivalued: false
+    range: TextValue
   humidity_regm:
     name: humidity_regm
     annotations:
@@ -6899,26 +6920,57 @@ slots:
     slot_uri: mixs:0000591
     multivalued: true
     range: TextValue
-  host_taxid:
-    name: host_taxid
+  air particulate matter concentration:
+    name: air particulate matter concentration
     annotations:
       expected_value:
         tag: expected_value
-        value: NCBI taxon identifier
+        value: particulate matter name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: microgram per cubic meter
       occurrence:
         tag: occurrence
-        value: '1'
-    description: NCBI taxon id of the host, e.g. 9606
-    title: host taxid
+        value: m
+    description: Concentration of substances that remain suspended in the air, and
+      comprise mixtures of organic and inorganic substances (PM10 and PM2.5); can
+      report multiple PM's by entering numeric values preceded by name of PM
+    title: air_PM_concen
     examples:
-    - value: '7955'
+    - value: PM2.5;10 microgram per cubic meter
     from_schema: https://microbiomedata/schema
     aliases:
-    - host taxid
+    - air_PM_concen
     is_a: core field
-    string_serialization: '{NCBI taxid}'
-    slot_uri: mixs:0000250
-    multivalued: false
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: mixs:0000108
+    multivalued: true
+    range: TextValue
+  air_PM_concen:
+    name: air_PM_concen
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: particulate matter name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: micrograms per cubic meter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Concentration of substances that remain suspended in the air, and
+      comprise mixtures of organic and inorganic substances (PM10 and PM2.5); can
+      report multiple PM's by entering numeric values preceded by name of PM
+    title: air particulate matter concentration
+    examples:
+    - value: PM2.5;10 microgram per cubic meter
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - air particulate matter concentration
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: mixs:0000108
+    multivalued: true
     range: TextValue
   rel_to_oxygen:
     name: rel_to_oxygen
@@ -6938,19 +6990,13 @@ slots:
     slot_uri: mixs:0000015
     multivalued: false
     range: rel_to_oxygen_enum
-  nucleic acid sequence source field:
-    name: nucleic acid sequence source field
-    from_schema: https://microbiomedata/schema
-    abstract: true
   core field:
     name: core field
     description: basic fields
     from_schema: https://microbiomedata/schema
     abstract: true
-  investigation field:
-    name: investigation field
-    description: field describing aspect of the investigation/study to which the sample
-      belongs
+  sequencing field:
+    name: sequencing field
     from_schema: https://microbiomedata/schema
     abstract: true
   environment field:
@@ -6958,25 +7004,31 @@ slots:
     description: field describing environmental aspect of a sample
     from_schema: https://microbiomedata/schema
     abstract: true
-  sequencing field:
-    name: sequencing field
+  nucleic acid sequence source field:
+    name: nucleic acid sequence source field
     from_schema: https://microbiomedata/schema
     abstract: true
-  has unit:
-    name: has unit
-    description: Example "m"
-    from_schema: https://microbiomedata/schema
-    owner: QuantityValue
-  has numeric value:
-    name: has numeric value
-    from_schema: https://microbiomedata/schema
-    owner: QuantityValue
-    range: double
   has raw value:
     name: has raw value
     from_schema: https://microbiomedata/schema
     string_serialization: '{has numeric value} {has unit}'
     owner: QuantityValue
+  has unit:
+    name: has unit
+    description: Example "m"
+    from_schema: https://microbiomedata/schema
+    owner: QuantityValue
+  investigation field:
+    name: investigation field
+    description: field describing aspect of the investigation/study to which the sample
+      belongs
+    from_schema: https://microbiomedata/schema
+    abstract: true
+  has numeric value:
+    name: has numeric value
+    from_schema: https://microbiomedata/schema
+    owner: QuantityValue
+    range: double
   zinc:
     name: zinc
     annotations:

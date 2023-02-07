@@ -53,6 +53,7 @@ soil MIMS	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/mai
 soil MIMS	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml	growth_facil			placeholder_class
 soil MIMS	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml	heavy_metals			placeholder_class
 soil MIMS	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml	heavy_metals_meth			placeholder_class
+soil MIMS	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml	host_taxid			placeholder_class
 soil MIMS	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml	humidity_regm			placeholder_class
 soil MIMS	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml	lat_lon			placeholder_class
 soil MIMS	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml	light_regm			placeholder_class
@@ -132,5 +133,6 @@ soil MIMS	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/mai
 soil MIMS	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml	water_cont_soil_meth			placeholder_class
 soil MIMS	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml	water_content			placeholder_class
 soil MIMS	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml	watering_regm			placeholder_class
-soil MIMS	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml	host_taxid			placeholder_class
+soil MIMS	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml	air particulate matter concentration			placeholder_class
+soil MIMS	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml	air_PM_concen			placeholder_class
 soil MIMS	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml	rel_to_oxygen			placeholder_class

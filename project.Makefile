@@ -43,8 +43,10 @@ assets/mixs_regen/slots_associated_with_biosample_omics_processing.tsv
 assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing_augmented.tsv: \
 assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv
 	cp $< $@
-	echo "host_taxid" >> $@
+	echo "air particulate matter concentration" >> $@
+	echo "air_PM_concen" >> $@
 	echo "rel_to_oxygen" >> $@
+
 
 
 assets/mixs_regen/import_slots_regardless_gen.tsv: \
