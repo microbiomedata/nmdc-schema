@@ -581,6 +581,19 @@ part_of:
 - gold:Gs0110115
 
 ```
+## DataObject-MB-unknown-enum-pv
+### Input
+```yaml
+data_object_type: Crisprt Terms
+description: Crisprt Terms for nmdc:ann0vx38
+file_size_bytes: 1234
+id: nmdc:dobj-11-dtTMNb
+md5_checksum: 22afa3d49b73eaec2e9787a6b88fbdc3
+name: Crisprt Terms
+type: nmdc:DataObject
+url: http://example.com
+
+```
 ## Biosample-invalid-embargoed
 ### Input
 ```yaml

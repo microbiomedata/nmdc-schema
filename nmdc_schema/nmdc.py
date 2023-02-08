@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-02-07T19:51:31
+# Generation date: 2023-02-07T20:46:04
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -55,6 +55,7 @@ KEGG_ORTHOLOGY = CurieNamespace('KEGG_ORTHOLOGY', 'http://identifiers.org/kegg.o
 KEGG_REACTION = CurieNamespace('KEGG_REACTION', 'http://identifiers.org/kegg.reaction/')
 KEGG_PATHWAY = CurieNamespace('KEGG_PATHWAY', 'http://identifiers.org/kegg.pathway/')
 MESH = CurieNamespace('MESH', 'http://identifiers.org/mesh/')
+MIXS = CurieNamespace('MIXS', 'https://w3id.org/mixs/')
 MS = CurieNamespace('MS', 'http://purl.obolibrary.org/obo/MS_')
 METACYC = CurieNamespace('MetaCyc', 'https://identifiers.org/metacyc.reaction/')
 METANETX = CurieNamespace('MetaNetX', 'https://unknown.to.linter.org/')
@@ -82,7 +83,6 @@ INSDC_SRS = CurieNamespace('insdc_srs', 'https://unknown.to.linter.org/')
 JGI = CurieNamespace('jgi', 'https://unknown.to.linter.org/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 MGNIFY = CurieNamespace('mgnify', 'https://unknown.to.linter.org/')
-MIXS = CurieNamespace('mixs', 'https://w3id.org/mixs/')
 NMDC = CurieNamespace('nmdc', 'https://w3id.org/nmdc/')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 QUD = CurieNamespace('qud', 'http://qudt.org/1.1/schema/qudt#')

@@ -10,7 +10,7 @@ notes:
   - "should https://www.ornl.gov/content/bio-scales-0 be the 'source' for some of theses slots?"
 
 prefixes:
-  mixs: https://w3id.org/mixs/
+#  mixs: https://w3id.org/mixs/
   dcterms: http://purl.org/dc/terms/
   igsnvoc: https://igsn.org/voc/v1/
   linkml: https://w3id.org/linkml/

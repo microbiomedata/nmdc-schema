@@ -50,7 +50,7 @@ prefixes:
   jgi: https://unknown.to.linter.org/
   linkml: https://w3id.org/linkml/
   mgnify: https://unknown.to.linter.org/
-  mixs: https://w3id.org/mixs/
+  MIXS: https://w3id.org/mixs/
   nmdc: https://w3id.org/nmdc/
   prov: http://www.w3.org/ns/prov#
   qud: http://qudt.org/1.1/schema/qudt#

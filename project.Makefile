@@ -61,7 +61,8 @@ src/schema/mixs.yaml: assets/mixs_regen/mixs_subset.yaml
 	mv src/schema/mixs.yaml src/schema/mixs.yaml.bak
 	sed 's/quantity value/QuantityValue/' $< > $@
 	sed -i.bak 's/range: string/range: TextValue/' $@
-	sed -i.bak 's/slot_uri: MIXS:/slot_uri: mixs:/' $@
+	#sed -i.bak 's/slot_uri: MIXS:/slot_uri: mixs:/' $@
+	#sed -i.bak 's/slot_uri: mixs:/slot_uri: MIXS:/' $@
 	yq -i '.slots.env_broad_scale.range |= "ControlledIdentifiedTermValue"' $@
 	yq -i '.slots.env_local_scale.range |= "ControlledIdentifiedTermValue"' $@
 	yq -i '.slots.env_medium.range |= "ControlledIdentifiedTermValue"'  $@
