@@ -38,7 +38,7 @@ Note that the JSON-Schema is generated from a higher level YAML
 representation, using a modeling framework called linkML. See the
 README for details. For understanding the schema, you may be better
 looking at the auto-generated docs. However, for computational
-conformance, the JSON-Schema is what is should be used.
+conformance, the JSON-Schema is what should be used.
 
 There are a variety of json schema validators, these will give the same results. There are web playgrounds for this. But
 for simplicity we recommend the Python [jsonschema package](https://pypi.org/project/jsonschema/)
