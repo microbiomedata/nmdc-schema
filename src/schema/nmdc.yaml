@@ -1257,9 +1257,9 @@ enums:
           file_name_pattern:
             tag: file_name_pattern
             value: '[GOLD-AP]_crt.gff'
-      Genmark Annotation GFF:
-        text: Genmark Annotation GFF
-        description: GFF3 format file with Genmark
+      Genemark Annotation GFF:
+        text: Genemark Annotation GFF
+        description: GFF3 format file with Genemark
         annotations:
           file_name_pattern:
             tag: file_name_pattern
@@ -1320,9 +1320,9 @@ enums:
           file_name_pattern:
             tag: file_name_pattern
             value: '[GOLD-AP]_gene_phylogeny.tsv'
-      Crisprt Terms:
-        text: Crisprt Terms
-        description: Crisprt Terms
+      Crispr Terms:
+        text: Crispr Terms
+        description: Crispr Terms
         annotations:
           file_name_pattern:
             tag: file_name_pattern
