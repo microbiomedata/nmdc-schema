@@ -4,10 +4,14 @@
 
 nmdc:dobj-11-dtTMNb a nmdc:DataObject ;
     dcterms:description "Crisprt Terms for nmdc:ann0vx38" ;
+    nmdc:alternative_identifiers "prefix:value1",
+        "prefix:value2" ;
+    nmdc:compression_type "any string" ;
     nmdc:data_object_type "Crisprt Terms" ;
     nmdc:file_size_bytes "1234"^^xsd:long ;
     nmdc:md5_checksum "22afa3d49b73eaec2e9787a6b88fbdc3" ;
     nmdc:name "Crisprt Terms" ;
     nmdc:type "nmdc:DataObject" ;
-    nmdc:url "http://example.com" .
+    nmdc:url "http://example.com" ;
+    nmdc:was_generated_by nmdc:invalid_id .
 
