@@ -17,7 +17,7 @@ prefixes:
   gtpo: https://unknown.to.linter.org/
   igsnvoc: https://igsn.org/voc/v1/
   linkml: https://w3id.org/linkml/
-  mixs: https://w3id.org/mixs/
+#  mixs: https://w3id.org/mixs/
   nmdc: https://w3id.org/nmdc/
   qud: http://qudt.org/1.1/schema/qudt#
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
