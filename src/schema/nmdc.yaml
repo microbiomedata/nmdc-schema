@@ -1170,6 +1170,12 @@ enums:
           file_name_pattern:
             tag: file_name_pattern
             value: '[GOLD-AP]_structural_annotation.gff'
+      Structural Annotation Stats Json:
+        text: Structural Annotation Stats Json
+        description: Structural annotations stats json
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern: '[GOLD-AP]_structural_annotation_stats.json'
       Functional Annotation GFF:
         text: Functional Annotation GFF
         description: GFF3 format file with functional annotations
@@ -1177,6 +1183,12 @@ enums:
           file_name_pattern:
             tag: file_name_pattern
             value: '[GOLD-AP]_functional_annotation.gff'
+      Annotaion Info File:
+        text: Annotation Info File
+        description: File containing annotation info
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern: '[GOLD-AP]_imgap.info'
       Annotation Amino Acid FASTA:
         text: Annotation Amino Acid FASTA
         description: FASTA amino acid file for annotated proteins
@@ -1198,6 +1210,12 @@ enums:
           file_name_pattern:
             tag: file_name_pattern
             value: '[GOLD-AP]_ko.tsv'
+      Assembly Info File:
+        text: Assembly Info File
+          description: File containing assembly info
+          annotations:
+            file_name_pattern:
+              tag: file_name_pattern: 'README.txt'
       Assembly Coverage BAM:
         text: Assembly Coverage BAM
         description: Sorted bam file of reads mapping back to the final assembly
@@ -1229,6 +1247,12 @@ enums:
           file_name_pattern:
             tag: file_name_pattern
             value: '[GOLD-AP]_pairedMapped_sorted.bam.cov'
+      Error Corrected Reads:
+        text: Error Corrected Reads
+        description: Error corrected reads fastq
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern: 'input.corr.fastq.gz'
       Filtered Sequencing Reads:
         text: Filtered Sequencing Reads
         description: Reads QC result fastq (clean data)
