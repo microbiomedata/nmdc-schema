@@ -17,7 +17,7 @@ prefixes:
   gtpo: https://unknown.to.linter.org/
   igsnvoc: https://igsn.org/voc/v1/
   linkml: https://w3id.org/linkml/
-#  mixs: https://w3id.org/mixs/
+  #  mixs: https://w3id.org/mixs/
   nmdc: https://w3id.org/nmdc/
   qud: http://qudt.org/1.1/schema/qudt#
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
@@ -108,7 +108,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:ansm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-          partial_match: false
 
   Site:
     abstract: true
@@ -121,7 +120,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:site-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-          partial_match: false
 
   PlannedProcess:
     abstract: true
@@ -203,14 +201,10 @@ classes:
     slot_usage:
       orcid:
         annotations:
-          display_hint:
-            tag: display_hint
-            value: Open Researcher and Contributor ID for this person. See https://orcid.org
+          display_hint: Open Researcher and Contributor ID for this person. See https://orcid.org
       email:
         annotations:
-          display_hint:
-            tag: display_hint
-            value: Email address for this person.
+          display_hint: Email address for this person.
       has_raw_value:
         description: >-
           The full name of the Investigator in format FIRST LAST.
@@ -221,9 +215,7 @@ classes:
           The full name of the Investigator.
           It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
         annotations:
-          display_hint:
-            tag: display_hint
-            value: First name, middle initial, and last name of this person.
+          display_hint: First name, middle initial, and last name of this person.
 
   Person:
     is_a: NamedThing
@@ -272,7 +264,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-          partial_match: false
 
   MetaboliteQuantification:
     description: >-
@@ -359,11 +350,9 @@ classes:
       - As with the parent OntologyClass, we will not assign an nmdc id pattern or typecode to this class.
     slot_usage:
       inchi:
-        key: false
         multivalued: false
         range: string
       inchi_key:
-        key: false
         multivalued: false
         range: string
       smiles:
@@ -375,7 +364,6 @@ classes:
         description: >-
           A generic grouping for miolecular formulae and empirican formulae
         multivalued: false
-        key: false
         range: string
     see_also:
       - https://bioconductor.org/packages/devel/data/annotation/vignettes/metaboliteIDmapping/inst/doc/metaboliteIDmapping.html
@@ -499,25 +487,18 @@ slots:
   num_t_rna:
     range: integer
   gtdbtk_domain:
-    required: false
     range: string
   gtdbtk_phylum:
-    required: false
     range: string
   gtdbtk_class:
-    required: false
     range: string
   gtdbtk_order:
-    required: false
     range: string
   gtdbtk_family:
-    required: false
     range: string
   gtdbtk_genus:
-    required: false
     range: string
   gtdbtk_species:
-    required: false
     range: string
 
   has_inputs:
@@ -551,7 +532,6 @@ slots:
     description: >-
       The value that was specified for an annotation in raw form, i.e. a string. E.g. "2 cm" or "2-4 cm"
     multivalued: false
-    required: false
     domain: AttributeValue
     range: string
 
