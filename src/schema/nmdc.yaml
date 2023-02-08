@@ -1239,7 +1239,7 @@ enums:
         annotations:
           file_name_pattern:
             tag: file_name_pattern
-            value: '[GOLD-AP]_contigs.fna'
+            value: 'assembly.contigs.fasta'
       Assembly Coverage Stats:
         text: Assembly Coverage Stats
         description: Assembled contigs coverage information
@@ -1247,6 +1247,12 @@ enums:
           file_name_pattern:
             tag: file_name_pattern
             value: '[GOLD-AP]_pairedMapped_sorted.bam.cov'
+      Conting Mapping File:
+        text: Conting Mapping File
+        description: Contig mappings between contigs and scaffolds
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern: '[GOLD-AP]_contig_names_mapping.tsv'
       Error Corrected Reads:
         text: Error Corrected Reads
         description: Error corrected reads fastq
