@@ -136,3 +136,7 @@ assets/mixs_slots_by_submission_class.tsv: assets/sheets-for-nmdc-submission-sch
 	$(RUN) mixs_coverage \
   		--in_file $< \
   		--out_file $@
+
+assets/boolean_usages.yaml:
+	$(RUN) boolean_usages \
+		--out_file $@
