@@ -1287,9 +1287,9 @@ enums:
           file_name_pattern:
             tag: file_name_pattern
             value: '[GOLD-AP]_crt.gff'
-      Genmark Annotation GFF:
-        text: Genmark Annotation GFF
-        description: GFF3 format file with Genmark
+      Genemark Annotation GFF:
+        text: Genemark Annotation GFF
+        description: GFF3 format file with Genemark
         annotations:
           file_name_pattern:
             tag: file_name_pattern
