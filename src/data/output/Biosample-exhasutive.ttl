@@ -211,9 +211,9 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     MIXS:0000647 [ a nmdc:QuantityValue ;
             nmdc:has_raw_value "MIxS does not provide an example" ] ;
     MIXS:0000652 [ a nmdc:TextValue ;
-            nmdc:has_raw_value "mercury;0.09 micrograms per gram" ],
+            nmdc:has_raw_value "arsenic;0.09 micrograms per gram" ],
         [ a nmdc:TextValue ;
-            nmdc:has_raw_value "arsenic;0.09 micrograms per gram" ] ;
+            nmdc:has_raw_value "mercury;0.09 micrograms per gram" ] ;
     MIXS:0000735 [ a nmdc:QuantityValue ;
             nmdc:has_raw_value "0.2 micrometer" ] ;
     MIXS:0000736 [ a nmdc:QuantityValue ;

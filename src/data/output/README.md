@@ -561,6 +561,24 @@ version: v1.0.0
 was_informed_by: gold:Gp0213371
 
 ```
+## DataObject-exhaustive
+### Input
+```yaml
+alternative_identifiers:
+- prefix:value1
+- prefix:value2
+compression_type: any string
+data_object_type: Crisprt Terms
+description: Crisprt Terms for nmdc:ann0vx38
+file_size_bytes: 1234
+id: nmdc:dobj-11-dtTMNb
+md5_checksum: 22afa3d49b73eaec2e9787a6b88fbdc3
+name: Crisprt Terms
+type: nmdc:DataObject
+url: http://example.com
+was_generated_by: nmdc:invalid_id
+
+```
 ## Biosample-minimal
 ### Input
 ```yaml
@@ -581,17 +599,12 @@ part_of:
 - gold:Gs0110115
 
 ```
-## DataObject-MB-unknown-enum-pv
+## DataObject-minimal
 ### Input
 ```yaml
-data_object_type: Crisprt Terms
 description: Crisprt Terms for nmdc:ann0vx38
-file_size_bytes: 1234
 id: nmdc:dobj-11-dtTMNb
-md5_checksum: 22afa3d49b73eaec2e9787a6b88fbdc3
 name: Crisprt Terms
-type: nmdc:DataObject
-url: http://example.com
 
 ```
 ## Biosample-invalid-embargoed
@@ -613,6 +626,12 @@ env_medium:
 id: nmdc:bsm-99-dtTMNb
 part_of:
 - gold:Gs0110115
+
+```
+## DataObject-no-id-or-name
+### Input
+```yaml
+description: Crisprt Terms for nmdc:ann0vx38
 
 ```
 ## MetagenomeSequencingActivity-no_parthood
@@ -671,5 +690,23 @@ started_at_time: '2021-08-05T14:48:51+00:00'
 type: nmdc:MetagenomeSequencing
 version: v1.0.0
 was_informed_by: gold:Gp0213371
+
+```
+## DataObject-invalid-data_object_type
+### Input
+```yaml
+alternative_identifiers:
+- prefix:value1
+- prefix:value2
+compression_type: any string
+data_object_type: undefined permissible value for `file type enum`
+description: Crisprt Terms for nmdc:ann0vx38
+file_size_bytes: 1234
+id: nmdc:dobj-11-dtTMNb
+md5_checksum: 22afa3d49b73eaec2e9787a6b88fbdc3
+name: Crisprt Terms
+type: nmdc:DataObject
+url: http://example.com
+was_generated_by: nmdc:invalid_id
 
 ```
