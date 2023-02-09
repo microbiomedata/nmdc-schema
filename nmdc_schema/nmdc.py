@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-02-08T15:25:14
+# Generation date: 2023-02-08T21:41:28
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -8868,9 +8868,6 @@ slots.Biosample_env_local_scale = Slot(uri=MIXS['0000013'], name="Biosample_env_
 
 slots.Biosample_env_medium = Slot(uri=MIXS['0000014'], name="Biosample_env_medium", curie=MIXS.curie('0000014'),
                    model_uri=NMDC.Biosample_env_medium, domain=Biosample, range=Union[dict, "ControlledIdentifiedTermValue"])
-
-slots.Biosample_sample_link = Slot(uri=NMDC.sample_link, name="Biosample_sample_link", curie=NMDC.curie('sample_link'),
-                   model_uri=NMDC.Biosample_sample_link, domain=Biosample, range=Optional[Union[str, List[str]]])
 
 slots.Biosample_part_of = Slot(uri=DCTERMS.isPartOf, name="Biosample_part_of", curie=DCTERMS.curie('isPartOf'),
                    model_uri=NMDC.Biosample_part_of, domain=Biosample, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])

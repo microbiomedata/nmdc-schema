@@ -252,6 +252,9 @@ src/data/output: project/nmdc_materialized_patterns.yaml
 		--output-directory $@ \
 		--schema $< > $@/README.md
 
+#		--input-formats json \
+#		--input-formats yaml \
+
 combined-extras: examples-clean gen-project gendoc \
 project/nmdc_schema_merged.yaml project/nmdc_materialized_patterns.yaml project/nmdc_materialized_patterns.schema.json \
 src/data/output

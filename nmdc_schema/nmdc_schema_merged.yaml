@@ -4091,7 +4091,7 @@ slots:
   email:
     name: email
     description: An email address for an entity such as a person. This should be the
-      primarly email address used.
+      primary email address used.
     from_schema: https://microbiomedata/schema/core
     slot_uri: schema:email
     range: string
@@ -17265,12 +17265,12 @@ classes:
         name: alternative_identifiers
         description: Unique identifier for a biosample submitted to additional resources.
           Matches the entity that has been submitted to NMDC
-        required: false
       lat_lon:
         name: lat_lon
         description: This is currently a required field but it's not clear if this
           should be required for human hosts
-        required: false
+        notes:
+        - required where?
       env_broad_scale:
         name: env_broad_scale
         required: true
@@ -17280,10 +17280,6 @@ classes:
       env_medium:
         name: env_medium
         required: true
-      sample_link:
-        name: sample_link
-        description: JsonObj()
-        required: false
       part_of:
         name: part_of
         required: true
@@ -17441,7 +17437,6 @@ classes:
         examples:
         - value: mercury 0.09 micrograms per gram
         - value: mercury 0.09 ug/g; chromium 0.03 ug/g
-        multivalued: true
       heavy_metals_meth:
         name: heavy_metals_meth
         title: heavy metals method/ extreme unusual properties
@@ -18341,7 +18336,6 @@ classes:
       type:
         name: type
         description: An optional string that specified the type of object.
-        required: false
   QuantityValue:
     name: QuantityValue
     description: A simple quantity, e.g. 2cm
@@ -18584,11 +18578,9 @@ classes:
     slot_usage:
       inchi:
         name: inchi
-        multivalued: false
         range: string
       inchi_key:
         name: inchi_key
-        multivalued: false
         range: string
       smiles:
         name: smiles
@@ -18600,8 +18592,7 @@ classes:
         range: string
       chemical_formula:
         name: chemical_formula
-        description: A generic grouping for miolecular formulae and empirican formulae
-        multivalued: false
+        description: A generic grouping for molecular formulae and empirical formulae
         range: string
   GeneProduct:
     name: GeneProduct

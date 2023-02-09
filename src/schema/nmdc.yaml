@@ -553,6 +553,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+        required: true
       gold_biosample_identifiers:
         description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
         comments: This is the ID provided by GOLD that starts with 'GB'
