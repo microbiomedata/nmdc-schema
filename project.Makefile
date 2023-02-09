@@ -137,6 +137,6 @@ assets/mixs_slots_by_submission_class.tsv: assets/sheets-for-nmdc-submission-sch
   		--in_file $< \
   		--out_file $@
 
-assets/boolean_usages.yaml:
+assets/boolean_usages.tsv:
 	$(RUN) boolean_usages \
 		--out_file $@

@@ -33,15 +33,30 @@ class BooleanUsages:
 def cli(schema_file: str, out_file: str):
     schema_view = SchemaView(schema_file, merge_imports=True)
 
+    comparisons = []
+
     schema_classes = schema_view.all_classes()
     for ck, cv in schema_classes.items():
         if cv.slot_usage:
             for uk, uv in cv.slot_usage.items():
                 uv_dict = json_dumper.to_dict(uv)
                 for dk, dv in uv_dict.items():
-                    # if dv == "True" or dv == "False":
                     if type(dv) == bool:
-                        print(f"{ck = }; {uk = }; {dk = }; {dv = }")
+                        reference_slot = schema_view.get_slot(uk)
+                        reference_attribute = reference_slot[dk]
+                        comparison = {
+                            "class": ck,
+                            "slot": uk,
+                            "attribute": dk,
+                            "value": dv,
+                            "reference_value": reference_attribute
+                        }
+                        comparisons.append(comparison)
+
+    with open(out_file, 'w') as f:
+        writer = csv.DictWriter(f, fieldnames=comparisons[0].keys(), delimiter='\t')
+        writer.writeheader()
+        writer.writerows(comparisons)
 
 
 if __name__ == '__main__':
