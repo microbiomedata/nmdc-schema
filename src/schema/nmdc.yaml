@@ -4,7 +4,7 @@ title: NMDC Schema
 
 notes:
   - "MetaCyc expansion assumes we're talking about metacyc reactions and not genes, compounds etc."
-  - "removed/commented out the comfusing 'identifier' slot"
+  - "removed/commented out the confusing 'identifier' slot"
   - "removed/commented out all mentions and definitions of depth2 and subsurface_depth2"
   - "depth2 should now be migrated to the has_maximum_value part of depth"
   - "slots requested for Bioscales, but already available for Biosample : tot_phosp, tot_carb, tot_nitro_content, pH"
@@ -783,7 +783,7 @@ classes:
       gaseous_environment:
         todos:
           - would like to see usage examples for this slot. Requiring micromole/L seems too limiting and doesn't match expected_value value
-          - did I do this right? keep the example that's provided and add another? soas to not override
+          - did I do this right? keep the example that's provided and add another? so as to not override
         examples:
           - value: CO2; 500ppm above ambient; constant
           - value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
@@ -800,7 +800,7 @@ classes:
           - value: IGSN:AU1243
           - value: UUID:24f1467a-40f4-11ed-b878-0242ac120002
         todos:
-          - Currently, the comments say to use UUIDs. However, if we implement assigning NMDC identifiers with the minter we dont need to require a GUID. It can be an optional field to fillout only if they already have a resolvable ID.
+          - Currently, the comments say to use UUIDs. However, if we implement assigning NMDC identifiers with the minter we dont need to require a GUID. It can be an optional field to fill out only if they already have a resolvable ID.
 
     exact_mappings:
       - OBI:0000747
@@ -1261,6 +1261,8 @@ enums:
           mass spectrometry raw data acquired in broadband full scan mode
       Raw Compressed Metagenome Interleaved Paired-End Reads:
         description: Raw sequencing reads from a metagenome that is in interleaved paired-end format and compressed using GNU zip format.
+
+
   credit enum:
     permissible_values:
       Conceptualization:
@@ -1295,7 +1297,7 @@ enums:
         description: principal investigator role
         meaning: OBI:0000103
       Submitter:
-        description: the person(s) who enter study and biosmaple metadata into the NMDC submission portal
+        description: the person(s) who enter study and biosample metadata into the NMDC submission portal
         meaning: EFO:0001741
     comments:
       - credit enums come from https://casrai.org/credit/
@@ -1731,7 +1733,7 @@ slots:
   sample_collection_minute:
     range: integer
   salinity_category:
-    description: 'Categorcial description of the sample''s salinity. Examples: halophile,
+    description: 'Categorical description of the sample''s salinity. Examples: halophile,
       halotolerant, hypersaline, huryhaline'
     range: string
     see_also:
