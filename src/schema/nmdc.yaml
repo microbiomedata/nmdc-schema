@@ -550,7 +550,6 @@ classes:
 
       id:
         description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -561,20 +560,18 @@ classes:
           display_hint: Provide the GOLD biosample IDs associated with this biosample.
       alternative_identifiers:
         description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
-        required: false
+
       lat_lon:
-        required: false
         description: This is currently a required field but it's not clear if this
           should be required for human hosts
+        notes:
+          - required where?
       env_broad_scale:
         required: true
       env_local_scale:
         required: true
       env_medium:
         required: true
-      sample_link:
-        description: { }
-        required: false
       part_of:
         required: true
       fire:
@@ -683,7 +680,6 @@ classes:
         examples:
           - value: mercury 0.09 micrograms per gram
           - value: mercury 0.09 ug/g; chromium 0.03 ug/g
-        multivalued: true
         todos:
           - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
           - Example & validation. Can we make rules that 27% & 27 % & 0.27 will validate?

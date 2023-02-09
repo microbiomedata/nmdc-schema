@@ -150,7 +150,6 @@ classes:
       type:
         description: >-
           An optional string that specified the type of object.
-        required: false
 
   QuantityValue:
     is_a: AttributeValue
@@ -350,10 +349,8 @@ classes:
       - As with the parent OntologyClass, we will not assign an nmdc id pattern or typecode to this class.
     slot_usage:
       inchi:
-        multivalued: false
         range: string
       inchi_key:
-        multivalued: false
         range: string
       smiles:
         description: >-
@@ -362,8 +359,7 @@ classes:
         range: string
       chemical_formula:
         description: >-
-          A generic grouping for miolecular formulae and empirican formulae
-        multivalued: false
+          A generic grouping for molecular formulae and empirical formulae
         range: string
     see_also:
       - https://bioconductor.org/packages/devel/data/annotation/vignettes/metaboliteIDmapping/inst/doc/metaboliteIDmapping.html
@@ -606,7 +602,7 @@ slots:
   email:
     description: >-
       An email address for an entity such as a person.
-      This should be the primarly email address used.
+      This should be the primary email address used.
     range: string
     slot_uri: schema:email
 
