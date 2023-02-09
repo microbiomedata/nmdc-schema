@@ -61,6 +61,7 @@ build-backend = "poetry_dynamic_versioning.backend"
 docs = ["linkml", "mkdocs-material"]
 
 [tool.poetry.scripts]
+boolean_usages = "nmdc_schema.boolean_usages:cli"
 fetch-nmdc-schema = "nmdc_schema.nmdc_data:get_nmdc_jsonschema"
 generate_import_slots_regardless = "nmdc_schema.generate_import_slots_regardless:main"
 get_class_usages = "nmdc_schema.get_class_usages:main"

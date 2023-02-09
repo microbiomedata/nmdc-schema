@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-02-08T11:11:29
+# Generation date: 2023-02-09T09:45:42
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -3975,10 +3975,10 @@ class FileTypeEnum(EnumDefinitionImpl):
                                  description="Kraken2 krona plot HTML file") )
         setattr(cls, "Centrifuge Krona Plot",
                 PermissibleValue(text="Centrifuge Krona Plot",
-                                 description="Centrifug krona plot HTML file") )
+                                 description="Centrifuge krona plot HTML file") )
         setattr(cls, "Centrifuge output report file",
                 PermissibleValue(text="Centrifuge output report file",
-                                 description="Centrifug output report file") )
+                                 description="Centrifuge output report file") )
         setattr(cls, "Kraken2 Classification Report",
                 PermissibleValue(text="Kraken2 Classification Report",
                                  description="Kraken2 output report file") )
@@ -3994,9 +3994,15 @@ class FileTypeEnum(EnumDefinitionImpl):
         setattr(cls, "Structural Annotation GFF",
                 PermissibleValue(text="Structural Annotation GFF",
                                  description="GFF3 format file with structural annotations") )
+        setattr(cls, "Structural Annotation Stats Json",
+                PermissibleValue(text="Structural Annotation Stats Json",
+                                 description="Structural annotations stats json") )
         setattr(cls, "Functional Annotation GFF",
                 PermissibleValue(text="Functional Annotation GFF",
                                  description="GFF3 format file with functional annotations") )
+        setattr(cls, "Annotation Info File",
+                PermissibleValue(text="Annotation Info File",
+                                 description="File containing annotation info") )
         setattr(cls, "Annotation Amino Acid FASTA",
                 PermissibleValue(text="Annotation Amino Acid FASTA",
                                  description="FASTA amino acid file for annotated proteins") )
@@ -4006,6 +4012,9 @@ class FileTypeEnum(EnumDefinitionImpl):
         setattr(cls, "Annotation KEGG Orthology",
                 PermissibleValue(text="Annotation KEGG Orthology",
                                  description="Tab delimited file for KO annotation") )
+        setattr(cls, "Assembly Info File",
+                PermissibleValue(text="Assembly Info File",
+                                 description="File containing assembly info") )
         setattr(cls, "Assembly Coverage BAM",
                 PermissibleValue(text="Assembly Coverage BAM",
                                  description="Sorted bam file of reads mapping back to the final assembly") )
@@ -4021,6 +4030,12 @@ class FileTypeEnum(EnumDefinitionImpl):
         setattr(cls, "Assembly Coverage Stats",
                 PermissibleValue(text="Assembly Coverage Stats",
                                  description="Assembled contigs coverage information") )
+        setattr(cls, "Contig Mapping File",
+                PermissibleValue(text="Contig Mapping File",
+                                 description="Contig mappings between contigs and scaffolds") )
+        setattr(cls, "Error Corrected Reads",
+                PermissibleValue(text="Error Corrected Reads",
+                                 description="Error corrected reads fastq") )
         setattr(cls, "Filtered Sequencing Reads",
                 PermissibleValue(text="Filtered Sequencing Reads",
                                  description="Reads QC result fastq (clean data)") )
@@ -4033,9 +4048,6 @@ class FileTypeEnum(EnumDefinitionImpl):
         setattr(cls, "CRT Annotation GFF",
                 PermissibleValue(text="CRT Annotation GFF",
                                  description="GFF3 format file with CRT") )
-        setattr(cls, "Genmark Annotation GFF",
-                PermissibleValue(text="Genmark Annotation GFF",
-                                 description="GFF3 format file with Genmark") )
         setattr(cls, "Prodigal Annotation GFF",
                 PermissibleValue(text="Prodigal Annotation GFF",
                                  description="GFF3 format file with Prodigal") )
@@ -4107,7 +4119,7 @@ class CreditEnum(EnumDefinitionImpl):
     Visualization = PermissibleValue(text="Visualization",
                                                  description="Visualization")
     Submitter = PermissibleValue(text="Submitter",
-                                         description="the person(s) who enter study and biosmaple metadata into the NMDC submission portal",
+                                         description="the person(s) who enter study and biosample metadata into the NMDC submission portal",
                                          meaning=EFO["0001741"])
 
     _defn = EnumDefinition(
@@ -8868,9 +8880,6 @@ slots.Biosample_env_local_scale = Slot(uri=MIXS['0000013'], name="Biosample_env_
 
 slots.Biosample_env_medium = Slot(uri=MIXS['0000014'], name="Biosample_env_medium", curie=MIXS.curie('0000014'),
                    model_uri=NMDC.Biosample_env_medium, domain=Biosample, range=Union[dict, "ControlledIdentifiedTermValue"])
-
-slots.Biosample_sample_link = Slot(uri=NMDC.sample_link, name="Biosample_sample_link", curie=NMDC.curie('sample_link'),
-                   model_uri=NMDC.Biosample_sample_link, domain=Biosample, range=Optional[Union[str, List[str]]])
 
 slots.Biosample_part_of = Slot(uri=DCTERMS.isPartOf, name="Biosample_part_of", curie=DCTERMS.curie('isPartOf'),
                    model_uri=NMDC.Biosample_part_of, domain=Biosample, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
