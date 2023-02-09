@@ -173,7 +173,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-          partial_match: false
 
   CollectingBiosamplesFromSite:
     is_a: PlannedProcess
@@ -195,7 +194,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-          partial_match: false
 
 
   DataObject:
@@ -223,7 +221,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-          partial_match: false
     comments:
       - removed id_prefixes value of GOLD, since we are now using pattern-based id validation
 
@@ -553,35 +550,29 @@ classes:
 
       id:
         description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
-        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-          partial_match: false
+        required: true
       gold_biosample_identifiers:
         description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
         comments: This is the ID provided by GOLD that starts with 'GB'
         annotations:
-          display_hint:
-            tag: display_hint
-            value: >-
-              Provide the GOLD biosample IDs associated with this biosample.
+          display_hint: Provide the GOLD biosample IDs associated with this biosample.
       alternative_identifiers:
         description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
-        required: false
+
       lat_lon:
-        required: false
         description: This is currently a required field but it's not clear if this
           should be required for human hosts
+        notes:
+          - required where?
       env_broad_scale:
         required: true
       env_local_scale:
         required: true
       env_medium:
         required: true
-      sample_link:
-        description: { }
-        required: false
       part_of:
         required: true
       fire:
@@ -594,16 +585,12 @@ classes:
           - is "to" acceptable? Is there a better way to request that be written?
           - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
         annotations:
-          expected_value:
-            tag: expected_value
-            value: date string
+          expected_value: date string
         range: string
         pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$
       flooding:
         annotations:
-          expected_value:
-            tag: expected_value
-            value: date string
+          expected_value: date string
         comments:
           - Provide the date the flood occurred. If extended flooding occurred provide the date range.
         examples:
@@ -618,9 +605,7 @@ classes:
         examples:
           - value: 1980-05-18, volcanic eruption
         annotations:
-          expected_value:
-            tag: expected_value
-            value: date, string
+          expected_value: date, string
         range: string
         todos:
           - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
@@ -696,7 +681,6 @@ classes:
         examples:
           - value: mercury 0.09 micrograms per gram
           - value: mercury 0.09 ug/g; chromium 0.03 ug/g
-        multivalued: true
         todos:
           - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
           - Example & validation. Can we make rules that 27% & 27 % & 0.27 will validate?
@@ -736,12 +720,8 @@ classes:
           - Should this be multi valued? How to we manage and validate this?
       water_content:
         annotations:
-          expected_value:
-            tag: expected_value
-            value: string
-          preferred_unit:
-            tag: preferred_unit
-            value: gram per gram or cubic centimeter per cubic centimeter
+          expected_value: string
+          preferred_unit: gram per gram or cubic centimeter per cubic centimeter
         multivalued: true
         range: string
         examples:
@@ -892,64 +872,43 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-          partial_match: false
 
       doi:
         description: >-
           The dataset citation for this study
         annotations:
-          display_hint:
-            tag: display_hint
-            value: >-
-              DOI associated with the data in this study. This is required when data is already generated.
+          display_hint: DOI associated with the data in this study. This is required when data is already generated.
       name:
         description:
         annotations:
-          display_hint:
-            tag: display_hint
-            value: Provide a name for the study your samples will belong with.
+          display_hint: Provide a name for the study your samples will belong with.
       websites:
         description:
         annotations:
-          display_hint:
-            tag: display_hint
-            value: >-
-              Link to the Principal Investigator's research lab webpage 
-              or the study webpage associated with this collection of samples. 
-              Multiple links can be provided.
+          display_hint: Link to the Principal Investigator's research lab webpage
+            or the study webpage associated with this collection of samples.
+            Multiple links can be provided.
       description:
         description: A brief summary that details the study you're submitted to NMDC
         annotations:
-          display_hint:
-            tag: display_hint
-            value: >-
-              Provide a brief description of your study.
+          display_hint: Provide a brief description of your study.
       notes:
         description:
         annotations:
-          display_hint:
-            tag: display_hint
-            value: >-
-              Add any additional notes or comments about this study.
+          display_hint: Add any additional notes or comments about this study.
       alternative_identifiers:
         description: Unique identifier for a study submitted to additional resources. Matches that which has been submitted to NMDC
       alternative_names:
         description:
         annotations:
-          display_hint:
-            tag: display_hint
-            value: >-
-              Project, study, or sample set names the are also associated with this submission 
-              or other names / identifiers for this study.
+          display_hint: Project, study, or sample set names the are also associated with this submission
+            or other names / identifiers for this study.
       related_identifiers:
         description: Unique identifier for a study submitted to additional resources. Similar, but not necessarily identical to that which has been submitted to NMDC
       insdc_bioproject_identifiers:
         description: Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.
         annotations:
-          display_hint:
-            tag: display_hint
-            value: >-
-              Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title.
+          display_hint: Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title.
       emsl_project_identifier:
         description: The EMSL project ID that relates to the NMDC submitted study
       emsl_proposal_doi:
@@ -988,7 +947,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:bsmprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-          partial_match: false
       has_input:
         range: Biosample
     broad_mappings:
@@ -1039,7 +997,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-          partial_match: false
       has_input:
         required: true
     broad_mappings:
@@ -1087,281 +1044,216 @@ enums:
         meaning: https://www.neonscience.org
 
   file type enum:
-    name: file type enum
     from_schema: https://microbiomedata/schema
     permissible_values:
       Metagenome Raw Reads:
-        text: Metagenome Raw Reads
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '/.+?(?=fastq)/fastq.gz'
+          file_name_pattern: '/.+?(?=fastq)/fastq.gz'
       FT ICR-MS Analysis Results:
-        text: FT ICR-MS Analysis Results
         description: FT ICR-MS-based molecular formula assignment results table
       GC-MS Metabolomics Results:
-        text: GC-MS Metabolomics Results
         description: GC-MS-based metabolite assignment results table
       Metaproteomics Workflow Statistics:
-        text: Metaproteomics Workflow Statistics
         description: Aggregate workflow statistics file
       Protein Report:
-        text: Protein Report
         description: Filtered protein report file
       Peptide Report:
-        text: Peptide Report
         description: Filtered peptide report file
       Unfiltered Metaproteomics Results:
-        text: Unfiltered Metaproteomics Results
+
         description: MSGFjobs and MASIC output file
       Read Count and RPKM:
-        text: Read Count and RPKM
+
         description: Annotation read count and RPKM per feature JSON
       QC non-rRNA R2:
-        text: QC non-rRNA R2
+
         description: QC removed rRNA reads (R2) fastq
       QC non-rRNA R1:
-        text: QC non-rRNA R1
+
         description: QC removed rRNA reads (R1) fastq
       Metagenome Bins:
-        text: Metagenome Bins
+
         description: Metagenome bin contigs fasta
       CheckM Statistics:
-        text: CheckM Statistics
+
         description: CheckM statistics report
       GTDBTK Bacterial Summary:
         description: GTDBTK bacterial summary
       GTDBTK Archaeal Summary:
         description: GTDBTK archaeal summary
       GOTTCHA2 Krona Plot:
-        text: GOTTCHA2 Krona Plot
+
         description: GOTTCHA2 krona plot HTML file
       GOTTCHA2 Classification Report:
-        text: GOTTCHA2 Classification Report
+
         description: GOTTCHA2 classification report file
       GOTTCHA2 Report Full:
-        text: GOTTCHA2 Report Full
+
         description: GOTTCHA2 report file
       Kraken2 Krona Plot:
-        text: Kraken2 Krona Plot
+
         description: Kraken2 krona plot HTML file
       Centrifuge Krona Plot:
-        text: Centrifuge Krona Plot
+
         description: Centrifug krona plot HTML file
       Centrifuge output report file:
-        text: Centrifuge output report file
+
         description: Centrifug output report file
       Kraken2 Classification Report:
-        text: Kraken2 Classification Report
+
         description: Kraken2 output report file
       Kraken2 Taxonomic Classification:
-        text: Kraken2 Taxonomic Classification
+
         description: Kraken2 output read classification file
       Centrifuge Classification Report:
-        text: Centrifuge Classification Report
+
         description: Centrifuge output report file
       Centrifuge Taxonomic Classification:
-        text: Centrifuge Taxonomic Classification
+
         description: Centrifuge output read classification file
       Structural Annotation GFF:
-        text: Structural Annotation GFF
+
         description: GFF3 format file with structural annotations
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_structural_annotation.gff'
+          file_name_pattern: '[GOLD-AP]_structural_annotation.gff'
       Functional Annotation GFF:
-        text: Functional Annotation GFF
+
         description: GFF3 format file with functional annotations
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_functional_annotation.gff'
+          file_name_pattern: '[GOLD-AP]_functional_annotation.gff'
       Annotation Amino Acid FASTA:
-        text: Annotation Amino Acid FASTA
+
         description: FASTA amino acid file for annotated proteins
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_proteins.faa'
+          file_name_pattern: '[GOLD-AP]_proteins.faa'
       Annotation Enzyme Commission:
-        text: Annotation Enzyme Commission
+
         description: Tab delimited file for EC annotation
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_ec.tsv'
+          file_name_pattern: '[GOLD-AP]_ec.tsv'
       Annotation KEGG Orthology:
-        text: Annotation KEGG Orthology
+
         description: Tab delimited file for KO annotation
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_ko.tsv'
+          file_name_pattern: '[GOLD-AP]_ko.tsv'
       Assembly Coverage BAM:
-        text: Assembly Coverage BAM
+
         description: Sorted bam file of reads mapping back to the final assembly
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_pairedMapped.sam.gz'
+          file_name_pattern: '[GOLD-AP]_pairedMapped.sam.gz'
       Assembly AGP:
-        text: Assembly AGP
+
         description: An AGP format file that describes the assembly
       Assembly Scaffolds:
-        text: Assembly Scaffolds
+
         description: Final assembly scaffolds fasta
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_assembly.contigs.fasta'
+          file_name_pattern: '[GOLD-AP]_assembly.contigs.fasta'
       Assembly Contigs:
-        text: Assembly Contigs
+
         description: Final assembly contigs fasta
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_contigs.fna'
+          file_name_pattern: '[GOLD-AP]_contigs.fna'
       Assembly Coverage Stats:
-        text: Assembly Coverage Stats
+
         description: Assembled contigs coverage information
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_pairedMapped_sorted.bam.cov'
+          file_name_pattern: '[GOLD-AP]_pairedMapped_sorted.bam.cov'
       Filtered Sequencing Reads:
-        text: Filtered Sequencing Reads
+
         description: Reads QC result fastq (clean data)
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '/.+?(?=filter)/filter-METAGENOME.fastq.gz '
+          file_name_pattern: '/.+?(?=filter)/filter-METAGENOME.fastq.gz '
       QC Statistics:
-        text: QC Statistics
+
         description: Reads QC summary statistics
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '/.+?(?=filter)/filtered-report.txt'
+          file_name_pattern: '/.+?(?=filter)/filtered-report.txt'
       TIGRFam Annotation GFF:
-        text: TIGRFam Annotation GFF
+
         description: GFF3 format file with TIGRfam
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_tigrfam.gff'
+          file_name_pattern: '[GOLD-AP]_tigrfam.gff'
       CRT Annotation GFF:
-        text: CRT Annotation GFF
+
         description: GFF3 format file with CRT
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_crt.gff'
+          file_name_pattern: '[GOLD-AP]_crt.gff'
       Genmark Annotation GFF:
-        text: Genmark Annotation GFF
+
         description: GFF3 format file with Genmark
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_genemark.gff'
+          file_name_pattern: '[GOLD-AP]_genemark.gff'
       Prodigal Annotation GFF:
-        text: Prodigal Annotation GFF
+
         description: GFF3 format file with Prodigal
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_prodigal.gff'
+          file_name_pattern: '[GOLD-AP]_prodigal.gff'
       TRNA Annotation GFF:
-        text: TRNA Annotation GFF
+
         description: GFF3 format file with TRNA
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_trna.gff'
+          file_name_pattern: '[GOLD-AP]_trna.gff'
       Misc Annotation GFF:
-        text: Misc Annotation GFF
+
         description: GFF3 format file with Misc
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_rfam_misc_bind_misc_feature_regulatory.gff'
+          file_name_pattern: '[GOLD-AP]_rfam_misc_bind_misc_feature_regulatory.gff'
       RFAM Annotation GFF:
-        text: RFAM Annotation GFF
+
         description: GFF3 format file with RFAM
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_rfam.gff'
+          file_name_pattern: '[GOLD-AP]_rfam.gff'
       TMRNA Annotation GFF:
-        text: TMRNA Annotation GFF
+
         description: GFF3 format file with TMRNA
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_rfam_ncrna_tmrna.gff'
+          file_name_pattern: '[GOLD-AP]_rfam_ncrna_tmrna.gff'
       KO_EC Annotation GFF:
-        text: KO_EC Annotation GFF
+
         description: GFF3 format file with KO_EC
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_ko_ec.tsv'
+          file_name_pattern: '[GOLD-AP]_ko_ec.tsv'
       Product Names:
-        text: Product Names
+
         description: Product names file
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_product_names.tsv'
+          file_name_pattern: '[GOLD-AP]_product_names.tsv'
       Gene Phylogeny tsv:
-        text: Gene Phylogeny tsv
+
         description: Gene Phylogeny tsv
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_gene_phylogeny.tsv'
+          file_name_pattern: '[GOLD-AP]_gene_phylogeny.tsv'
       Crisprt Terms:
-        text: Crisprt Terms
+
         description: Crisprt Terms
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_crt.crisprs'
+          file_name_pattern: '[GOLD-AP]_crt.crisprs'
       Clusters of Orthologous Groups (COG) Annotation GFF:
-        text: Clusters of Orthologous Groups (COG) Annotation GFF
+
         description: GFF3 format file with COGs
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_cog.gff'
+          file_name_pattern: '[GOLD-AP]_cog.gff'
       CATH FunFams (Functional Families) Annotation GFF:
-        text: CATH FunFams (Functional Families) Annotation GFF
+
         description: GFF3 format file with CATH FunFams
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_cath_funfam.gff'
+          file_name_pattern: '[GOLD-AP]_cath_funfam.gff'
       SUPERFam Annotation GFF:
-        text: SUPERFam Annotation GFF
+
         description: GFF3 format file with SUPERFam
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_supfam.gff'
+          file_name_pattern: '[GOLD-AP]_supfam.gff'
       SMART Annotation GFF:
-        text: SMART Annotation GFF
+
         description: GFF3 format file with SMART
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_smart.gff'
+          file_name_pattern: '[GOLD-AP]_smart.gff'
       Pfam Annotation GFF:
-        text: Pfam Annotation GFF
+
         description: GFF3 format file with Pfam
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: '[GOLD-AP]_pfam.gff'
+          file_name_pattern: '[GOLD-AP]_pfam.gff'
       Annotation Statistics:
         description: Annotation statistics report
       Direct Infusion FT ICR-MS Raw Data:
@@ -1408,22 +1300,21 @@ enums:
     comments:
       - credit enums come from https://casrai.org/credit/
   processing_institution_enum:
-    name: processing_institution_enum
     notes:
       - This will become the range of processing_institution.omics processing
       - use ROR meanings like https://ror.org/0168r3w48 for UCSD
     from_schema: NMDC_enums_roundtrip
     permissible_values:
       UCSD:
-        text: UCSD
+
         title: University of California, San Diego
         meaning: https://ror.org/0168r3w48
       JGI:
-        text: JGI
+
         title: Joint Genome Institute
         meaning: https://ror.org/04xm1d337
       EMSL:
-        text: EMSL
+
         title: Environmental Molecular Sciences Laboratory
         meaning: https://ror.org/04rc0xn13
         notes:
@@ -1449,7 +1340,6 @@ slots:
     #      see_also:
     #        - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
-    multivalued: false
     range: TextValue
   #      pattern: '[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon
   #        resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc
@@ -1547,9 +1437,7 @@ slots:
       semantics: person should get credit X for their participation in the study'
     slot_uri: prov:qualifiedAssociation
     annotations:
-      display_hint:
-        tag: display_hint
-        value: Other researchers associated with this study.
+      display_hint: Other researchers associated with this study.
   study_image:
     domain: Study
     range: ImageValue
@@ -1568,25 +1456,20 @@ slots:
     slot_uri: prov:hadRole
     deprecated: A credit association may have multiple roles. So, use the applied
       roles slot.
-    multivalued: false
-    required: false
   applied_roles:
     domain: CreditAssociation
     range: credit enum
     multivalued: true
     required: true
     annotations:
-      display_hint:
-        tag: display_hint
-        value: >-
-          Identify all CRediT roles associated with this contributor. CRediT Information: https://info.orcid.org/credit-for-research-contribution ; CRediT: https://credit.niso.org/
+      display_hint: >-
+        Identify all CRediT roles associated with this contributor. CRediT Information: https://info.orcid.org/credit-for-research-contribution ; CRediT: https://credit.niso.org/
   applies_to_person:
     domain: CreditAssociation
     range: PersonValue
     todos: prov:agent takes an Agent object. Is a person value an Agent? Also try
       to relate to principal investigator slot? could include OBI:0000103 principal
       investigator role... do we need to define the OBI prefix?
-    multivalued: false
     required: true
     slot_uri: prov:agent
   object_set:

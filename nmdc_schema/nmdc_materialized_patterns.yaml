@@ -2922,7 +2922,6 @@ slots:
     aliases:
     - environmental package
     is_a: attribute
-    multivalued: false
     range: TextValue
   embargoed:
     name: embargoed
@@ -3068,9 +3067,7 @@ slots:
     from_schema: https://microbiomedata/schema
     domain: CreditAssociation
     slot_uri: prov:hadRole
-    multivalued: false
     range: credit enum
-    required: false
   applied_roles:
     name: applied_roles
     annotations:
@@ -3093,7 +3090,6 @@ slots:
     from_schema: https://microbiomedata/schema
     domain: CreditAssociation
     slot_uri: prov:agent
-    multivalued: false
     range: PersonValue
     required: true
   object_set:
@@ -3836,20 +3832,17 @@ slots:
     - value: nmdc:mgmag-00-x012.1_7_c1
       description: https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248
     from_schema: https://microbiomedata/schema
-    multivalued: false
     identifier: true
   name:
     name: name
     description: A human readable label for an entity
     from_schema: https://microbiomedata/schema
-    multivalued: false
     range: string
   description:
     name: description
     description: a human-readable description of a thing
     from_schema: https://microbiomedata/schema
     slot_uri: dcterms:description
-    multivalued: false
     range: string
   type:
     name: type
@@ -3872,7 +3865,6 @@ slots:
     from_schema: https://microbiomedata/schema
     exact_mappings:
     - dcterms:title
-    multivalued: false
     range: string
   alternative_titles:
     name: alternative_titles
@@ -3960,37 +3952,30 @@ slots:
     name: gtdbtk_domain
     from_schema: https://microbiomedata/schema
     range: string
-    required: false
   gtdbtk_phylum:
     name: gtdbtk_phylum
     from_schema: https://microbiomedata/schema
     range: string
-    required: false
   gtdbtk_class:
     name: gtdbtk_class
     from_schema: https://microbiomedata/schema
     range: string
-    required: false
   gtdbtk_order:
     name: gtdbtk_order
     from_schema: https://microbiomedata/schema
     range: string
-    required: false
   gtdbtk_family:
     name: gtdbtk_family
     from_schema: https://microbiomedata/schema
     range: string
-    required: false
   gtdbtk_genus:
     name: gtdbtk_genus
     from_schema: https://microbiomedata/schema
     range: string
-    required: false
   gtdbtk_species:
     name: gtdbtk_species
     from_schema: https://microbiomedata/schema
     range: string
-    required: false
   has_inputs:
     name: has_inputs
     from_schema: https://microbiomedata/schema
@@ -4033,7 +4018,6 @@ slots:
     domain: AttributeValue
     multivalued: false
     range: string
-    required: false
   has_unit:
     name: has_unit
     description: Links a QuantityValue to a unit
@@ -4107,7 +4091,7 @@ slots:
   email:
     name: email
     description: An email address for an entity such as a person. This should be the
-      primarly email address used.
+      primary email address used.
     from_schema: https://microbiomedata/schema
     slot_uri: schema:email
     range: string
@@ -4694,7 +4678,6 @@ slots:
     multivalued: true
     slot_group: Sample ID
     range: analysis_type_enum
-    required: false
     recommended: true
   sample_link:
     name: sample_link
@@ -4996,7 +4979,6 @@ slots:
     rank: 13
     slot_group: JGI-Metatranscriptomics
     range: dnase_rna_enum
-    required: false
     recommended: true
   proposal_rna:
     name: proposal_rna
@@ -5010,7 +4992,6 @@ slots:
     rank: 19
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
-    required: false
     recommended: true
   rna_absorb1:
     name: rna_absorb1
@@ -5048,7 +5029,6 @@ slots:
     rank: 15
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
-    required: false
     recommended: true
   rna_concentration:
     name: rna_concentration
@@ -5062,7 +5042,6 @@ slots:
     rank: 5
     string_serialization: '{float}'
     slot_group: JGI-Metatranscriptomics
-    required: false
     recommended: true
     minimum_value: 0
     maximum_value: 1000
@@ -5076,7 +5055,6 @@ slots:
     rank: 10
     slot_group: JGI-Metatranscriptomics
     range: rna_cont_type_enum
-    required: false
     recommended: true
   rna_cont_well:
     name: rna_cont_well
@@ -5093,7 +5071,6 @@ slots:
     rank: 11
     string_serialization: '{96 well plate pos}'
     slot_group: JGI-Metatranscriptomics
-    required: false
     recommended: true
     pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
   rna_container_id:
@@ -5108,7 +5085,6 @@ slots:
     rank: 9
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
-    required: false
     recommended: true
   rna_isolate_meth:
     name: rna_isolate_meth
@@ -5120,7 +5096,6 @@ slots:
     rank: 16
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
-    required: false
     recommended: true
   rna_organisms:
     name: rna_organisms
@@ -5147,7 +5122,6 @@ slots:
     rank: 18
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
-    required: false
     recommended: true
   rna_samp_id:
     name: rna_samp_id
@@ -5161,7 +5135,6 @@ slots:
     rank: 3
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
-    required: false
     recommended: true
   rna_sample_format:
     name: rna_sample_format
@@ -5173,7 +5146,6 @@ slots:
     rank: 12
     slot_group: JGI-Metatranscriptomics
     range: rna_sample_format_enum
-    required: false
     recommended: true
   rna_sample_name:
     name: rna_sample_name
@@ -5186,7 +5158,6 @@ slots:
     rank: 4
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
-    required: false
     recommended: true
     minimum_value: 0
     maximum_value: 2000
@@ -5202,7 +5173,6 @@ slots:
     rank: 1
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
-    required: false
     recommended: true
   rna_seq_project_pi:
     name: rna_seq_project_pi
@@ -5216,7 +5186,6 @@ slots:
     rank: 17
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
-    required: false
     recommended: true
   rna_seq_project_name:
     name: rna_seq_project_name
@@ -5230,7 +5199,6 @@ slots:
     rank: 2
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
-    required: false
     recommended: true
   rna_volume:
     name: rna_volume
@@ -5244,7 +5212,6 @@ slots:
     rank: 6
     string_serialization: '{float}'
     slot_group: JGI-Metatranscriptomics
-    required: false
     recommended: true
   dna_absorb1:
     name: dna_absorb1
@@ -5282,7 +5249,6 @@ slots:
     rank: 15
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
-    required: false
     recommended: true
   dna_concentration:
     name: dna_concentration
@@ -5296,7 +5262,6 @@ slots:
     rank: 5
     string_serialization: '{float}'
     slot_group: JGI-Metagenomics
-    required: false
     recommended: true
     minimum_value: 0
     maximum_value: 2000
@@ -5310,7 +5275,6 @@ slots:
     rank: 10
     slot_group: JGI-Metagenomics
     range: dna_cont_type_enum
-    required: false
     recommended: true
   dna_cont_well:
     name: dna_cont_well
@@ -5327,7 +5291,6 @@ slots:
     rank: 11
     string_serialization: '{96 well plate pos}'
     slot_group: JGI-Metagenomics
-    required: false
     recommended: true
     pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
   dna_container_id:
@@ -5342,7 +5305,6 @@ slots:
     rank: 9
     string_serialization: '{text < 20 characters}'
     slot_group: JGI-Metagenomics
-    required: false
     recommended: true
   dna_dnase:
     name: dna_dnase
@@ -5355,7 +5317,6 @@ slots:
     rank: 13
     slot_group: JGI-Metagenomics
     range: dna_dnase_enum
-    required: false
     recommended: true
   dna_isolate_meth:
     name: dna_isolate_meth
@@ -5367,7 +5328,6 @@ slots:
     rank: 16
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
-    required: false
     recommended: true
   dna_organisms:
     name: dna_organisms
@@ -5394,7 +5354,6 @@ slots:
     rank: 18
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
-    required: false
     recommended: true
   dna_samp_id:
     name: dna_samp_id
@@ -5412,7 +5371,6 @@ slots:
     rank: 3
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
-    required: false
     recommended: true
   dna_sample_format:
     name: dna_sample_format
@@ -5424,7 +5382,6 @@ slots:
     rank: 12
     slot_group: JGI-Metagenomics
     range: dna_sample_format_enum
-    required: false
     recommended: true
   dna_sample_name:
     name: dna_sample_name
@@ -5437,7 +5394,6 @@ slots:
     rank: 4
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
-    required: false
     recommended: true
   dna_seq_project:
     name: dna_seq_project
@@ -5451,7 +5407,6 @@ slots:
     rank: 1
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
-    required: false
     recommended: true
   dna_seq_project_pi:
     name: dna_seq_project_pi
@@ -5465,7 +5420,6 @@ slots:
     rank: 17
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
-    required: false
     recommended: true
   dna_seq_project_name:
     name: dna_seq_project_name
@@ -5479,7 +5433,6 @@ slots:
     rank: 2
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
-    required: false
     recommended: true
   dna_volume:
     name: dna_volume
@@ -5493,7 +5446,6 @@ slots:
     rank: 6
     string_serialization: '{float}'
     slot_group: JGI-Metagenomics
-    required: false
     recommended: true
     minimum_value: 0
     maximum_value: 1000
@@ -5509,7 +5461,6 @@ slots:
     rank: 19
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
-    required: false
     recommended: true
   emsl_store_temp:
     name: emsl_store_temp
@@ -5526,7 +5477,6 @@ slots:
     rank: 4
     string_serialization: '{float}'
     slot_group: EMSL
-    required: false
     recommended: true
   project_id:
     name: project_id
@@ -5536,7 +5486,6 @@ slots:
     rank: 1
     string_serialization: '{text}'
     slot_group: EMSL
-    required: false
     recommended: true
   replicate_number:
     name: replicate_number
@@ -5565,7 +5514,6 @@ slots:
     rank: 3
     string_serialization: '{float} {unit}'
     slot_group: EMSL
-    required: false
     recommended: true
   sample_type:
     name: sample_type
@@ -5579,7 +5527,6 @@ slots:
     rank: 2
     slot_group: EMSL
     range: sample_type_enum
-    required: false
     recommended: true
   technical_reps:
     name: technical_reps
@@ -16655,7 +16602,6 @@ slots:
     aliases:
     - zinc
     is_a: attribute
-    multivalued: false
     range: QuantityValue
   manganese:
     name: manganese
@@ -16679,7 +16625,6 @@ slots:
     aliases:
     - manganese
     is_a: attribute
-    multivalued: false
     range: QuantityValue
   ammonium_nitrogen:
     name: ammonium_nitrogen
@@ -16704,7 +16649,6 @@ slots:
     - ammonium_nitrogen
     - NH4-N
     is_a: attribute
-    multivalued: false
     range: QuantityValue
   nitrate_nitrogen:
     name: nitrate_nitrogen
@@ -16731,7 +16675,6 @@ slots:
     - nitrate_nitrogen
     - NO3-N
     is_a: attribute
-    multivalued: false
     range: QuantityValue
   nitrite_nitrogen:
     name: nitrite_nitrogen
@@ -16756,7 +16699,6 @@ slots:
     - nitrite_nitrogen
     - NO2-N
     is_a: attribute
-    multivalued: false
     range: QuantityValue
   lbc_thirty:
     name: lbc_thirty
@@ -16786,7 +16728,6 @@ slots:
     - lbc30
     - lime buffer capacity (at 30 minutes)
     is_a: attribute
-    multivalued: false
     range: QuantityValue
   lbceq:
     name: lbceq
@@ -16814,7 +16755,6 @@ slots:
     - lbceq
     - lime buffer capacity (at 5-day equilibrium)
     is_a: attribute
-    multivalued: false
     range: QuantityValue
   has_part:
     name: has_part
@@ -16979,7 +16919,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
   CollectingBiosamplesFromSite:
     name: CollectingBiosamplesFromSite
     title: Collecting Biosamples From Site
@@ -17005,7 +16944,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
   DataObject:
     name: DataObject
     description: An object that primarily consists of symbols that represent information.   Files,
@@ -17040,7 +16978,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
   Biosample:
     name: Biosample
     description: Biological source material which can be characterized by an experiment.
@@ -17318,7 +17255,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
       gold_biosample_identifiers:
         name: gold_biosample_identifiers
         annotations:
@@ -17333,12 +17269,12 @@ classes:
         name: alternative_identifiers
         description: Unique identifier for a biosample submitted to additional resources.
           Matches the entity that has been submitted to NMDC
-        required: false
       lat_lon:
         name: lat_lon
         description: This is currently a required field but it's not clear if this
           should be required for human hosts
-        required: false
+        notes:
+        - required where?
       env_broad_scale:
         name: env_broad_scale
         required: true
@@ -17348,10 +17284,6 @@ classes:
       env_medium:
         name: env_medium
         required: true
-      sample_link:
-        name: sample_link
-        description: JsonObj()
-        required: false
       part_of:
         name: part_of
         required: true
@@ -17509,7 +17441,6 @@ classes:
         examples:
         - value: mercury 0.09 micrograms per gram
         - value: mercury 0.09 ug/g; chromium 0.03 ug/g
-        multivalued: true
       heavy_metals_meth:
         name: heavy_metals_meth
         title: heavy metals method/ extreme unusual properties
@@ -17784,7 +17715,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
       doi:
         name: doi
         annotations:
@@ -17804,9 +17734,9 @@ classes:
         annotations:
           display_hint:
             tag: display_hint
-            value: Link to the Principal Investigator's research lab webpage  or the
-              study webpage associated with this collection of samples.  Multiple
-              links can be provided.
+            value: Link to the Principal Investigator's research lab webpage or the
+              study webpage associated with this collection of samples. Multiple links
+              can be provided.
       description:
         name: description
         annotations:
@@ -17830,7 +17760,7 @@ classes:
           display_hint:
             tag: display_hint
             value: Project, study, or sample set names the are also associated with
-              this submission  or other names / identifiers for this study.
+              this submission or other names / identifiers for this study.
       related_identifiers:
         name: related_identifiers
         description: Unique identifier for a study submitted to additional resources.
@@ -17872,7 +17802,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:bsmprc-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
       has_input:
         name: has_input
         range: Biosample
@@ -17929,7 +17858,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
       has_input:
         name: has_input
         required: true
@@ -17985,8 +17913,6 @@ classes:
         name: was_associated_with
         description: the agent/entity associated with the generation of the file
         range: WorkflowExecutionActivity
-        required: false
-        inlined: false
       started_at_time:
         name: started_at_time
         required: true
@@ -18013,14 +17939,12 @@ classes:
         required: true
       version:
         name: version
-        required: false
       id:
         name: id
         pattern: ^(nmdc):wf-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
   MetagenomeAssembly:
     name: MetagenomeAssembly
     description: A workflow execution activity that converts sequencing reads into
@@ -18069,7 +17993,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
   MetatranscriptomeAssembly:
     name: MetatranscriptomeAssembly
     in_subset:
@@ -18112,7 +18035,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
   MetagenomeAnnotationActivity:
     name: MetagenomeAnnotationActivity
     description: A workflow execution activity that provides functional and structural
@@ -18131,7 +18053,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
   MetatranscriptomeAnnotationActivity:
     name: MetatranscriptomeAnnotationActivity
     in_subset:
@@ -18148,7 +18069,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
   MetatranscriptomeActivity:
     name: MetatranscriptomeActivity
     description: A metatranscriptome activity that e.g. pools assembly and annotation
@@ -18166,7 +18086,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
   MagsAnalysisActivity:
     name: MagsAnalysisActivity
     description: A workflow execution activity that uses computational binning tools
@@ -18191,7 +18110,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
   MetagenomeSequencingActivity:
     name: MetagenomeSequencingActivity
     description: Initial sequencing activity that precedes any analysis.  This activity
@@ -18229,17 +18147,14 @@ classes:
         range: float
       has_input:
         name: has_input
-        inlined: false
       has_output:
         name: has_output
-        inlined: false
       id:
         name: id
         pattern: ^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
   ReadBasedTaxonomyAnalysisActivity:
     name: ReadBasedTaxonomyAnalysisActivity
     description: A workflow execution activity that performs taxonomy classification
@@ -18258,7 +18173,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
   MetabolomicsAnalysisActivity:
     name: MetabolomicsAnalysisActivity
     in_subset:
@@ -18271,7 +18185,6 @@ classes:
       used:
         name: used
         description: The instrument used to collect the data used in the analysis
-        multivalued: false
         range: Instrument
       has_metabolite_quantifications:
         name: has_metabolite_quantifications
@@ -18286,7 +18199,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
   MetaproteomicsAnalysisActivity:
     name: MetaproteomicsAnalysisActivity
     in_subset:
@@ -18299,7 +18211,6 @@ classes:
       used:
         name: used
         description: The instrument used to collect the data used in the analysis
-        multivalued: false
         range: Instrument
       has_peptide_quantifications:
         name: has_peptide_quantifications
@@ -18311,7 +18222,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
   NomAnalysisActivity:
     name: NomAnalysisActivity
     in_subset:
@@ -18324,7 +18234,6 @@ classes:
       used:
         name: used
         description: The instrument used to collect the data used in the analysis
-        multivalued: false
         range: Instrument
       has_calibration:
         name: has_calibration
@@ -18336,7 +18245,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
   Activity:
     name: Activity
     description: a provence-generating activity
@@ -18358,7 +18266,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:act-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
           todos:
           - remove the static pattern once the minter can generate ids that satisfy
             this structured_pattern and gen-linkml can expand the structured_pattern
@@ -18402,7 +18309,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:ansm-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
   Site:
     name: Site
     title: Site
@@ -18418,7 +18324,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:site-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
   PlannedProcess:
     name: PlannedProcess
     title: Planned Process
@@ -18453,7 +18358,6 @@ classes:
       type:
         name: type
         description: An optional string that specified the type of object.
-        required: false
   QuantityValue:
     name: QuantityValue
     description: A simple quantity, e.g. 2cm
@@ -18580,7 +18484,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
   MetaboliteQuantification:
     name: MetaboliteQuantification
     description: This is used to link a metabolomics analysis workflow to a specific
@@ -18698,13 +18601,9 @@ classes:
     slot_usage:
       inchi:
         name: inchi
-        multivalued: false
-        key: false
         range: string
       inchi_key:
         name: inchi_key
-        multivalued: false
-        key: false
         range: string
       smiles:
         name: smiles
@@ -18716,9 +18615,7 @@ classes:
         range: string
       chemical_formula:
         name: chemical_formula
-        description: A generic grouping for miolecular formulae and empirican formulae
-        multivalued: false
-        key: false
+        description: A generic grouping for molecular formulae and empirical formulae
         range: string
   GeneProduct:
     name: GeneProduct
@@ -18859,7 +18756,6 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:matsm-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-          partial_match: false
   MaterialSamplingActivity:
     name: MaterialSamplingActivity
     title: Material sampling activity
@@ -18983,7 +18879,6 @@ classes:
           for a CDS feature or gene feature which will encode a protein. It can also
           be used by a nc transcript ot gene feature that encoded a ncRNA
         range: GeneProduct
-        required: false
       feature_type:
         name: feature_type
         description: 'TODO: Yuri to write'
