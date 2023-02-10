@@ -44,7 +44,7 @@ slots:
   dnase_rna:
     title: DNase treated
     comments:
-      - Note DNAse treatment is required for all RNA samples.
+      - Note DNase treatment is required for all RNA samples.
     examples:
       - value: 'no'
     from_schema: https://example.com/nmdc_dh
