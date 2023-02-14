@@ -140,3 +140,18 @@ assets/mixs_slots_by_submission_class.tsv: assets/sheets-for-nmdc-submission-sch
 assets/boolean_usages.tsv:
 	$(RUN) boolean_usages \
 		--out_file $@
+
+MIXS_YAML_FROM_SHEETS_AND_FRIENDS = src/schema/mixs.yaml
+MIXS_YAML_MARK_OLDER_PYTHON = /home/mark/gitrepos/nmdc-schema/assets/other_mixs_yaml_files/mixs_new.yaml
+MIXS_YAML_PERL_CURATED_Q = /home/mark/gitrepos/nmdc-schema/assets/other_mixs_yaml_files/mixs_legacy.yaml
+
+SCHEMA_FILE = $(MIXS_YAML_FROM_SHEETS_AND_FRIENDS)
+
+schemasheets/populated_tsv/slots.tsv:
+	$(RUN) linkml2sheets \
+		--output-directory $(dir $@) \
+		--schema $(SCHEMA_FILE) schemasheets/schemasheets_templates/slots.tsv
+
+#  --append-sheet / --no-append-sheet
+#  --overwrite / --no-overwrite    If set, then
+#  --unique-slots / --no-unique-slots
