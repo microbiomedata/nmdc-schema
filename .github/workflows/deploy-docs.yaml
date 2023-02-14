@@ -27,5 +27,7 @@ jobs:
         run: |
           mkdir -p docs
           touch docs/.nojekyll
+          cp src/docs/*md docs
+          cp -r src/docs/images docs
           poetry run gen-doc -d docs src/schema/nmdc.yaml
           poetry run mkdocs gh-deploy
