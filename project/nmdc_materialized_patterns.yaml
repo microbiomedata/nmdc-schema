@@ -7,7 +7,7 @@ title: NMDC Schema
 notes:
 - MetaCyc expansion assumes we're talking about metacyc reactions and not genes, compounds
   etc.
-- removed/commented out the comfusing 'identifier' slot
+- removed/commented out the confusing 'identifier' slot
 - removed/commented out all mentions and definitions of depth2 and subsurface_depth2
 - depth2 should now be migrated to the has_maximum_value part of depth
 - 'slots requested for Bioscales, but already available for Biosample : tot_phosp,
@@ -500,10 +500,10 @@ enums:
         description: Kraken2 krona plot HTML file
       Centrifuge Krona Plot:
         text: Centrifuge Krona Plot
-        description: Centrifug krona plot HTML file
+        description: Centrifuge krona plot HTML file
       Centrifuge output report file:
         text: Centrifuge output report file
-        description: Centrifug output report file
+        description: Centrifuge output report file
       Kraken2 Classification Report:
         text: Kraken2 Classification Report
         description: Kraken2 output report file
@@ -523,6 +523,13 @@ enums:
           file_name_pattern:
             tag: file_name_pattern
             value: '[GOLD-AP]_structural_annotation.gff'
+      Structural Annotation Stats Json:
+        text: Structural Annotation Stats Json
+        description: Structural annotations stats json
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_structural_annotation_stats.json'
       Functional Annotation GFF:
         text: Functional Annotation GFF
         description: GFF3 format file with functional annotations
@@ -530,6 +537,13 @@ enums:
           file_name_pattern:
             tag: file_name_pattern
             value: '[GOLD-AP]_functional_annotation.gff'
+      Annotation Info File:
+        text: Annotation Info File
+        description: File containing annotation info
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_imgap.info'
       Annotation Amino Acid FASTA:
         text: Annotation Amino Acid FASTA
         description: FASTA amino acid file for annotated proteins
@@ -551,6 +565,13 @@ enums:
           file_name_pattern:
             tag: file_name_pattern
             value: '[GOLD-AP]_ko.tsv'
+      Assembly Info File:
+        text: Assembly Info File
+        description: File containing assembly info
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: README.txt
       Assembly Coverage BAM:
         text: Assembly Coverage BAM
         description: Sorted bam file of reads mapping back to the final assembly
@@ -574,7 +595,7 @@ enums:
         annotations:
           file_name_pattern:
             tag: file_name_pattern
-            value: '[GOLD-AP]_contigs.fna'
+            value: assembly.contigs.fasta
       Assembly Coverage Stats:
         text: Assembly Coverage Stats
         description: Assembled contigs coverage information
@@ -582,6 +603,20 @@ enums:
           file_name_pattern:
             tag: file_name_pattern
             value: '[GOLD-AP]_pairedMapped_sorted.bam.cov'
+      Contig Mapping File:
+        text: Contig Mapping File
+        description: Contig mappings between contigs and scaffolds
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[GOLD-AP]_contig_names_mapping.tsv'
+      Error Corrected Reads:
+        text: Error Corrected Reads
+        description: Error corrected reads fastq
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: input.corr.fastq.gz
       Filtered Sequencing Reads:
         text: Filtered Sequencing Reads
         description: Reads QC result fastq (clean data)
@@ -610,9 +645,9 @@ enums:
           file_name_pattern:
             tag: file_name_pattern
             value: '[GOLD-AP]_crt.gff'
-      Genmark Annotation GFF:
-        text: Genmark Annotation GFF
-        description: GFF3 format file with Genmark
+      Genemark Annotation GFF:
+        text: Genemark Annotation GFF
+        description: GFF3 format file with Genemark
         annotations:
           file_name_pattern:
             tag: file_name_pattern
@@ -673,13 +708,13 @@ enums:
           file_name_pattern:
             tag: file_name_pattern
             value: '[GOLD-AP]_gene_phylogeny.tsv'
-      Crisprt Terms:
-        text: Crisprt Terms
-        description: Crisprt Terms
+      Crispr Terms:
+        text: Crispr Terms
+        description: Crispr Terms
         annotations:
           file_name_pattern:
             tag: file_name_pattern
-            value: '[GOLD-AP]_crt.crisprs'
+            value: '[GOLD-AP]_gene_phylogeny.tsv'
       Clusters of Orthologous Groups (COG) Annotation GFF:
         text: Clusters of Orthologous Groups (COG) Annotation GFF
         description: GFF3 format file with COGs
@@ -780,7 +815,7 @@ enums:
         meaning: OBI:0000103
       Submitter:
         text: Submitter
-        description: the person(s) who enter study and biosmaple metadata into the
+        description: the person(s) who enter study and biosample metadata into the
           NMDC submission portal
         meaning: EFO:0001741
   processing_institution_enum:
@@ -2909,6 +2944,182 @@ enums:
       East side:
         text: East side
 slots:
+  zinc:
+    name: zinc
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: mg/kg (ppm)
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of zinc in the sample
+    title: zinc
+    examples:
+    - value: 2.5 mg/kg
+    from_schema: https://microbiomedata/schema
+    see_also:
+    - https://www.ornl.gov/content/bio-scales-0
+    aliases:
+    - zinc
+    is_a: attribute
+    range: QuantityValue
+  manganese:
+    name: manganese
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: mg/kg (ppm)
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of manganese in the sample
+    title: manganese
+    examples:
+    - value: 24.7 mg/kg
+    from_schema: https://microbiomedata/schema
+    see_also:
+    - https://www.ornl.gov/content/bio-scales-0
+    aliases:
+    - manganese
+    is_a: attribute
+    range: QuantityValue
+  ammonium_nitrogen:
+    name: ammonium_nitrogen
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: mg/kg
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of ammonium nitrogen in the sample
+    title: ammonium nitrogen
+    examples:
+    - value: 2.3 mg/kg
+    from_schema: https://microbiomedata/schema
+    see_also:
+    - https://www.ornl.gov/content/bio-scales-0
+    aliases:
+    - ammonium_nitrogen
+    - NH4-N
+    is_a: attribute
+    range: QuantityValue
+  nitrate_nitrogen:
+    name: nitrate_nitrogen
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: mg/kg
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of nitrate nitrogen in the sample
+    title: nitrate_nitrogen
+    comments:
+    - often below some specified limit of detection
+    examples:
+    - value: 0.29 mg/kg
+    from_schema: https://microbiomedata/schema
+    see_also:
+    - https://www.ornl.gov/content/bio-scales-0
+    aliases:
+    - nitrate_nitrogen
+    - NO3-N
+    is_a: attribute
+    range: QuantityValue
+  nitrite_nitrogen:
+    name: nitrite_nitrogen
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: mg/kg
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Concentration of nitrite nitrogen in the sample
+    title: nitrite_nitrogen
+    examples:
+    - value: 1.2 mg/kg
+    from_schema: https://microbiomedata/schema
+    see_also:
+    - https://www.ornl.gov/content/bio-scales-0
+    aliases:
+    - nitrite_nitrogen
+    - NO2-N
+    is_a: attribute
+    range: QuantityValue
+  lbc_thirty:
+    name: lbc_thirty
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: ppm CaCO3/pH
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: lime buffer capacity, determined after 30 minute incubation
+    title: lime buffer capacity (at 30 minutes)
+    comments:
+    - This is the mass of lime, in mg, needed to raise the pH of one kg of soil by
+      one pH unit
+    examples:
+    - value: 543 mg/kg
+    from_schema: https://microbiomedata/schema
+    see_also:
+    - https://www.ornl.gov/content/bio-scales-0
+    - https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF
+    aliases:
+    - lbc_thirty
+    - lbc30
+    - lime buffer capacity (at 30 minutes)
+    is_a: attribute
+    range: QuantityValue
+  lbceq:
+    name: lbceq
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: ppm CaCO3/pH
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: lime buffer capacity, determined at equilibrium after 5 day incubation
+    title: lime buffer capacity (after 5 day incubation)
+    comments:
+    - This is the mass of lime, in mg, needed to raise the pH of one kg of soil by
+      one pH unit
+    examples:
+    - value: 1575 mg/kg
+    from_schema: https://microbiomedata/schema
+    see_also:
+    - https://www.ornl.gov/content/bio-scales-0
+    aliases:
+    - lbceq
+    - lime buffer capacity (at 5-day equilibrium)
+    is_a: attribute
+    range: QuantityValue
   env_package:
     name: env_package
     description: MIxS extension for reporting of measurements and observations obtained
@@ -3468,7 +3679,7 @@ slots:
     range: integer
   salinity_category:
     name: salinity_category
-    description: 'Categorcial description of the sample''s salinity. Examples: halophile,
+    description: 'Categorical description of the sample''s salinity. Examples: halophile,
       halotolerant, hypersaline, huryhaline'
     notes:
     - maps to gold:salinity
@@ -4972,7 +5183,7 @@ slots:
     name: dnase_rna
     title: DNase treated
     comments:
-    - Note DNAse treatment is required for all RNA samples.
+    - Note DNase treatment is required for all RNA samples.
     examples:
     - value: 'no'
     from_schema: https://microbiomedata/schema
@@ -5310,7 +5521,7 @@ slots:
     name: dna_dnase
     title: DNase treatment DNA
     comments:
-    - Note DNAse treatment is required for all RNA samples.
+    - Note DNase treatment is required for all RNA samples.
     examples:
     - value: 'no'
     from_schema: https://microbiomedata/schema
@@ -16580,182 +16791,6 @@ slots:
     description: field describing environmental aspect of a sample
     from_schema: https://microbiomedata/schema
     abstract: true
-  zinc:
-    name: zinc
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: measurement value
-      preferred_unit:
-        tag: preferred_unit
-        value: mg/kg (ppm)
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Concentration of zinc in the sample
-    title: zinc
-    examples:
-    - value: 2.5 mg/kg
-    from_schema: https://microbiomedata/schema
-    see_also:
-    - https://www.ornl.gov/content/bio-scales-0
-    aliases:
-    - zinc
-    is_a: attribute
-    range: QuantityValue
-  manganese:
-    name: manganese
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: measurement value
-      preferred_unit:
-        tag: preferred_unit
-        value: mg/kg (ppm)
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Concentration of manganese in the sample
-    title: manganese
-    examples:
-    - value: 24.7 mg/kg
-    from_schema: https://microbiomedata/schema
-    see_also:
-    - https://www.ornl.gov/content/bio-scales-0
-    aliases:
-    - manganese
-    is_a: attribute
-    range: QuantityValue
-  ammonium_nitrogen:
-    name: ammonium_nitrogen
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: measurement value
-      preferred_unit:
-        tag: preferred_unit
-        value: mg/kg
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Concentration of ammonium nitrogen in the sample
-    title: ammonium nitrogen
-    examples:
-    - value: 2.3 mg/kg
-    from_schema: https://microbiomedata/schema
-    see_also:
-    - https://www.ornl.gov/content/bio-scales-0
-    aliases:
-    - ammonium_nitrogen
-    - NH4-N
-    is_a: attribute
-    range: QuantityValue
-  nitrate_nitrogen:
-    name: nitrate_nitrogen
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: measurement value
-      preferred_unit:
-        tag: preferred_unit
-        value: mg/kg
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Concentration of nitrate nitrogen in the sample
-    title: nitrate_nitrogen
-    comments:
-    - often below some specified limit of detection
-    examples:
-    - value: 0.29 mg/kg
-    from_schema: https://microbiomedata/schema
-    see_also:
-    - https://www.ornl.gov/content/bio-scales-0
-    aliases:
-    - nitrate_nitrogen
-    - NO3-N
-    is_a: attribute
-    range: QuantityValue
-  nitrite_nitrogen:
-    name: nitrite_nitrogen
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: measurement value
-      preferred_unit:
-        tag: preferred_unit
-        value: mg/kg
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: Concentration of nitrite nitrogen in the sample
-    title: nitrite_nitrogen
-    examples:
-    - value: 1.2 mg/kg
-    from_schema: https://microbiomedata/schema
-    see_also:
-    - https://www.ornl.gov/content/bio-scales-0
-    aliases:
-    - nitrite_nitrogen
-    - NO2-N
-    is_a: attribute
-    range: QuantityValue
-  lbc_thirty:
-    name: lbc_thirty
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: measurement value
-      preferred_unit:
-        tag: preferred_unit
-        value: ppm CaCO3/pH
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: lime buffer capacity, determined after 30 minute incubation
-    title: lime buffer capacity (at 30 minutes)
-    comments:
-    - This is the mass of lime, in mg, needed to raise the pH of one kg of soil by
-      one pH unit
-    examples:
-    - value: 543 mg/kg
-    from_schema: https://microbiomedata/schema
-    see_also:
-    - https://www.ornl.gov/content/bio-scales-0
-    - https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF
-    aliases:
-    - lbc_thirty
-    - lbc30
-    - lime buffer capacity (at 30 minutes)
-    is_a: attribute
-    range: QuantityValue
-  lbceq:
-    name: lbceq
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: measurement value
-      preferred_unit:
-        tag: preferred_unit
-        value: ppm CaCO3/pH
-      occurrence:
-        tag: occurrence
-        value: '1'
-    description: lime buffer capacity, determined at equilibrium after 5 day incubation
-    title: lime buffer capacity (after 5 day incubation)
-    comments:
-    - This is the mass of lime, in mg, needed to raise the pH of one kg of soil by
-      one pH unit
-    examples:
-    - value: 1575 mg/kg
-    from_schema: https://microbiomedata/schema
-    see_also:
-    - https://www.ornl.gov/content/bio-scales-0
-    aliases:
-    - lbceq
-    - lime buffer capacity (at 5-day equilibrium)
-    is_a: attribute
-    range: QuantityValue
   has_part:
     name: has_part
     from_schema: https://microbiomedata/schema
@@ -17570,8 +17605,8 @@ classes:
         todos:
         - would like to see usage examples for this slot. Requiring micromole/L seems
           too limiting and doesn't match expected_value value
-        - did I do this right? keep the example that's provided and add another? soas
-          to not override
+        - did I do this right? keep the example that's provided and add another? so
+          as to not override
         examples:
         - value: CO2; 500ppm above ambient; constant
         - value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
@@ -17587,7 +17622,8 @@ classes:
         todos:
         - Currently, the comments say to use UUIDs. However, if we implement assigning
           NMDC identifiers with the minter we dont need to require a GUID. It can
-          be an optional field to fillout only if they already have a resolvable ID.
+          be an optional field to fill out only if they already have a resolvable
+          ID.
         comments:
         - Identifiers must be prefixed. Possible FAIR prefixes are IGSNs (http://www.geosamples.org/getigsn),
           NCBI biosample accession numbers, ARK identifiers (https://arks.org/). These

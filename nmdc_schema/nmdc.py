@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-02-08T21:41:28
+# Generation date: 2023-02-14T10:26:02
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -3975,10 +3975,10 @@ class FileTypeEnum(EnumDefinitionImpl):
                                  description="Kraken2 krona plot HTML file") )
         setattr(cls, "Centrifuge Krona Plot",
                 PermissibleValue(text="Centrifuge Krona Plot",
-                                 description="Centrifug krona plot HTML file") )
+                                 description="Centrifuge krona plot HTML file") )
         setattr(cls, "Centrifuge output report file",
                 PermissibleValue(text="Centrifuge output report file",
-                                 description="Centrifug output report file") )
+                                 description="Centrifuge output report file") )
         setattr(cls, "Kraken2 Classification Report",
                 PermissibleValue(text="Kraken2 Classification Report",
                                  description="Kraken2 output report file") )
@@ -3994,9 +3994,15 @@ class FileTypeEnum(EnumDefinitionImpl):
         setattr(cls, "Structural Annotation GFF",
                 PermissibleValue(text="Structural Annotation GFF",
                                  description="GFF3 format file with structural annotations") )
+        setattr(cls, "Structural Annotation Stats Json",
+                PermissibleValue(text="Structural Annotation Stats Json",
+                                 description="Structural annotations stats json") )
         setattr(cls, "Functional Annotation GFF",
                 PermissibleValue(text="Functional Annotation GFF",
                                  description="GFF3 format file with functional annotations") )
+        setattr(cls, "Annotation Info File",
+                PermissibleValue(text="Annotation Info File",
+                                 description="File containing annotation info") )
         setattr(cls, "Annotation Amino Acid FASTA",
                 PermissibleValue(text="Annotation Amino Acid FASTA",
                                  description="FASTA amino acid file for annotated proteins") )
@@ -4006,6 +4012,9 @@ class FileTypeEnum(EnumDefinitionImpl):
         setattr(cls, "Annotation KEGG Orthology",
                 PermissibleValue(text="Annotation KEGG Orthology",
                                  description="Tab delimited file for KO annotation") )
+        setattr(cls, "Assembly Info File",
+                PermissibleValue(text="Assembly Info File",
+                                 description="File containing assembly info") )
         setattr(cls, "Assembly Coverage BAM",
                 PermissibleValue(text="Assembly Coverage BAM",
                                  description="Sorted bam file of reads mapping back to the final assembly") )
@@ -4021,6 +4030,12 @@ class FileTypeEnum(EnumDefinitionImpl):
         setattr(cls, "Assembly Coverage Stats",
                 PermissibleValue(text="Assembly Coverage Stats",
                                  description="Assembled contigs coverage information") )
+        setattr(cls, "Contig Mapping File",
+                PermissibleValue(text="Contig Mapping File",
+                                 description="Contig mappings between contigs and scaffolds") )
+        setattr(cls, "Error Corrected Reads",
+                PermissibleValue(text="Error Corrected Reads",
+                                 description="Error corrected reads fastq") )
         setattr(cls, "Filtered Sequencing Reads",
                 PermissibleValue(text="Filtered Sequencing Reads",
                                  description="Reads QC result fastq (clean data)") )
@@ -4033,9 +4048,9 @@ class FileTypeEnum(EnumDefinitionImpl):
         setattr(cls, "CRT Annotation GFF",
                 PermissibleValue(text="CRT Annotation GFF",
                                  description="GFF3 format file with CRT") )
-        setattr(cls, "Genmark Annotation GFF",
-                PermissibleValue(text="Genmark Annotation GFF",
-                                 description="GFF3 format file with Genmark") )
+        setattr(cls, "Genemark Annotation GFF",
+                PermissibleValue(text="Genemark Annotation GFF",
+                                 description="GFF3 format file with Genemark") )
         setattr(cls, "Prodigal Annotation GFF",
                 PermissibleValue(text="Prodigal Annotation GFF",
                                  description="GFF3 format file with Prodigal") )
@@ -4060,9 +4075,9 @@ class FileTypeEnum(EnumDefinitionImpl):
         setattr(cls, "Gene Phylogeny tsv",
                 PermissibleValue(text="Gene Phylogeny tsv",
                                  description="Gene Phylogeny tsv") )
-        setattr(cls, "Crisprt Terms",
-                PermissibleValue(text="Crisprt Terms",
-                                 description="Crisprt Terms") )
+        setattr(cls, "Crispr Terms",
+                PermissibleValue(text="Crispr Terms",
+                                 description="Crispr Terms") )
         setattr(cls, "Clusters of Orthologous Groups (COG) Annotation GFF",
                 PermissibleValue(text="Clusters of Orthologous Groups (COG) Annotation GFF",
                                  description="GFF3 format file with COGs") )
@@ -4107,7 +4122,7 @@ class CreditEnum(EnumDefinitionImpl):
     Visualization = PermissibleValue(text="Visualization",
                                                  description="Visualization")
     Submitter = PermissibleValue(text="Submitter",
-                                         description="the person(s) who enter study and biosmaple metadata into the NMDC submission portal",
+                                         description="the person(s) who enter study and biosample metadata into the NMDC submission portal",
                                          meaning=EFO["0001741"])
 
     _defn = EnumDefinition(
@@ -6268,6 +6283,27 @@ class SolventEnum(EnumDefinitionImpl):
 class slots:
     pass
 
+slots.zinc = Slot(uri=NMDC.zinc, name="zinc", curie=NMDC.curie('zinc'),
+                   model_uri=NMDC.zinc, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.manganese = Slot(uri=NMDC.manganese, name="manganese", curie=NMDC.curie('manganese'),
+                   model_uri=NMDC.manganese, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.ammonium_nitrogen = Slot(uri=NMDC.ammonium_nitrogen, name="ammonium_nitrogen", curie=NMDC.curie('ammonium_nitrogen'),
+                   model_uri=NMDC.ammonium_nitrogen, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.nitrate_nitrogen = Slot(uri=NMDC.nitrate_nitrogen, name="nitrate_nitrogen", curie=NMDC.curie('nitrate_nitrogen'),
+                   model_uri=NMDC.nitrate_nitrogen, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.nitrite_nitrogen = Slot(uri=NMDC.nitrite_nitrogen, name="nitrite_nitrogen", curie=NMDC.curie('nitrite_nitrogen'),
+                   model_uri=NMDC.nitrite_nitrogen, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.lbc_thirty = Slot(uri=NMDC.lbc_thirty, name="lbc_thirty", curie=NMDC.curie('lbc_thirty'),
+                   model_uri=NMDC.lbc_thirty, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.lbceq = Slot(uri=NMDC.lbceq, name="lbceq", curie=NMDC.curie('lbceq'),
+                   model_uri=NMDC.lbceq, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.env_package = Slot(uri=NMDC.env_package, name="env_package", curie=NMDC.curie('env_package'),
                    model_uri=NMDC.env_package, domain=None, range=Optional[Union[dict, TextValue]])
 
@@ -6600,27 +6636,6 @@ slots.alternative_descriptions = Slot(uri=NMDC.alternative_descriptions, name="a
 
 slots.alternative_identifiers = Slot(uri=NMDC.alternative_identifiers, name="alternative_identifiers", curie=NMDC.curie('alternative_identifiers'),
                    model_uri=NMDC.alternative_identifiers, domain=None, range=Optional[Union[str, List[str]]])
-
-slots.zinc = Slot(uri=NMDC.zinc, name="zinc", curie=NMDC.curie('zinc'),
-                   model_uri=NMDC.zinc, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.manganese = Slot(uri=NMDC.manganese, name="manganese", curie=NMDC.curie('manganese'),
-                   model_uri=NMDC.manganese, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.ammonium_nitrogen = Slot(uri=NMDC.ammonium_nitrogen, name="ammonium_nitrogen", curie=NMDC.curie('ammonium_nitrogen'),
-                   model_uri=NMDC.ammonium_nitrogen, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.nitrate_nitrogen = Slot(uri=NMDC.nitrate_nitrogen, name="nitrate_nitrogen", curie=NMDC.curie('nitrate_nitrogen'),
-                   model_uri=NMDC.nitrate_nitrogen, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.nitrite_nitrogen = Slot(uri=NMDC.nitrite_nitrogen, name="nitrite_nitrogen", curie=NMDC.curie('nitrite_nitrogen'),
-                   model_uri=NMDC.nitrite_nitrogen, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.lbc_thirty = Slot(uri=NMDC.lbc_thirty, name="lbc_thirty", curie=NMDC.curie('lbc_thirty'),
-                   model_uri=NMDC.lbc_thirty, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.lbceq = Slot(uri=NMDC.lbceq, name="lbceq", curie=NMDC.curie('lbceq'),
-                   model_uri=NMDC.lbceq, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.total_bases = Slot(uri=NMDC.total_bases, name="total_bases", curie=NMDC.curie('total_bases'),
                    model_uri=NMDC.total_bases, domain=None, range=Optional[str])
