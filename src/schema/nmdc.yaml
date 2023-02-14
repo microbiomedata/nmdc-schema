@@ -4,7 +4,7 @@ title: NMDC Schema
 
 notes:
   - "MetaCyc expansion assumes we're talking about metacyc reactions and not genes, compounds etc."
-  - "removed/commented out the comfusing 'identifier' slot"
+  - "removed/commented out the confusing 'identifier' slot"
   - "removed/commented out all mentions and definitions of depth2 and subsurface_depth2"
   - "depth2 should now be migrated to the has_maximum_value part of depth"
   - "slots requested for Bioscales, but already available for Biosample : tot_phosp, tot_carb, tot_nitro_content, pH"
@@ -78,7 +78,6 @@ emit_prefixes:
 imports:
   - annotation
   - basic_slots
-  - bioscales
   - core
   - external_identifiers
   - linkml:types
@@ -783,7 +782,7 @@ classes:
       gaseous_environment:
         todos:
           - would like to see usage examples for this slot. Requiring micromole/L seems too limiting and doesn't match expected_value value
-          - did I do this right? keep the example that's provided and add another? soas to not override
+          - did I do this right? keep the example that's provided and add another? so as to not override
         examples:
           - value: CO2; 500ppm above ambient; constant
           - value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
@@ -800,7 +799,7 @@ classes:
           - value: IGSN:AU1243
           - value: UUID:24f1467a-40f4-11ed-b878-0242ac120002
         todos:
-          - Currently, the comments say to use UUIDs. However, if we implement assigning NMDC identifiers with the minter we dont need to require a GUID. It can be an optional field to fillout only if they already have a resolvable ID.
+          - Currently, the comments say to use UUIDs. However, if we implement assigning NMDC identifiers with the minter we dont need to require a GUID. It can be an optional field to fill out only if they already have a resolvable ID.
 
     exact_mappings:
       - OBI:0000747
@@ -1333,7 +1332,7 @@ enums:
         description: principal investigator role
         meaning: OBI:0000103
       Submitter:
-        description: the person(s) who enter study and biosmaple metadata into the NMDC submission portal
+        description: the person(s) who enter study and biosample metadata into the NMDC submission portal
         meaning: EFO:0001741
     comments:
       - credit enums come from https://casrai.org/credit/
@@ -1360,6 +1359,131 @@ enums:
           - replaces Environmental Molecular Sciences Lab
 
 slots:
+
+  zinc:
+    aliases:
+      - zinc
+    annotations:
+      expected_value: measurement value
+      preferred_unit: mg/kg (ppm)
+      occurrence: '1'
+    description: Concentration of zinc in the sample
+    title: zinc
+    examples:
+      - value: 2.5 mg/kg
+    is_a: attribute
+    range: QuantityValue
+    see_also:
+      - https://www.ornl.gov/content/bio-scales-0
+  manganese:
+    aliases:
+      - manganese
+    annotations:
+      expected_value: measurement value
+      preferred_unit: mg/kg (ppm)
+      occurrence: '1'
+    description: Concentration of manganese in the sample
+    title: manganese
+    examples:
+      - value: 24.7 mg/kg
+    see_also:
+      - https://www.ornl.gov/content/bio-scales-0
+    is_a: attribute
+    range: QuantityValue
+
+  ammonium_nitrogen:
+    aliases:
+      - ammonium_nitrogen
+      - NH4-N
+    annotations:
+      expected_value: measurement value
+      preferred_unit: mg/kg
+      occurrence: '1'
+    description: Concentration of ammonium nitrogen in the sample
+    title: ammonium nitrogen
+    examples:
+      - value: 2.3 mg/kg
+    see_also:
+      - https://www.ornl.gov/content/bio-scales-0
+    is_a: attribute
+    range: QuantityValue
+
+  nitrate_nitrogen:
+    aliases:
+      - nitrate_nitrogen
+      - NO3-N
+    comments:
+      - often below some specified limit of detection
+    annotations:
+      expected_value: measurement value
+      preferred_unit: mg/kg
+      occurrence: '1'
+    description: Concentration of nitrate nitrogen in the sample
+    title: nitrate_nitrogen
+    examples:
+      - value: 0.29 mg/kg
+    see_also:
+      - https://www.ornl.gov/content/bio-scales-0
+    is_a: attribute
+    range: QuantityValue
+
+  nitrite_nitrogen:
+    aliases:
+      - nitrite_nitrogen
+      - NO2-N
+    annotations:
+      expected_value: measurement value
+      preferred_unit: mg/kg
+      occurrence: '1'
+    description: Concentration of nitrite nitrogen in the sample
+    title: nitrite_nitrogen
+    examples:
+      - value: 1.2 mg/kg
+    see_also:
+      - https://www.ornl.gov/content/bio-scales-0
+    is_a: attribute
+    range: QuantityValue
+
+  lbc_thirty:
+    comments:
+      - This is the mass of lime, in mg, needed to raise the pH of one kg of soil by one pH unit
+    aliases:
+      - lbc_thirty
+      - lbc30
+      - lime buffer capacity (at 30 minutes)
+    annotations:
+      expected_value: measurement value
+      preferred_unit: ppm CaCO3/pH
+      occurrence: '1'
+    description: lime buffer capacity, determined after 30 minute incubation
+    title: lime buffer capacity (at 30 minutes)
+    examples:
+      - value: 543 mg/kg
+    see_also:
+      - https://www.ornl.gov/content/bio-scales-0
+      - https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF
+    is_a: attribute
+    range: QuantityValue
+
+  lbceq:
+    comments:
+      - This is the mass of lime, in mg, needed to raise the pH of one kg of soil by one pH unit
+    aliases:
+      - lbceq
+      - lime buffer capacity (at 5-day equilibrium)
+    annotations:
+      expected_value: measurement value
+      preferred_unit: ppm CaCO3/pH
+      occurrence: '1'
+    description: lime buffer capacity, determined at equilibrium after 5 day incubation
+    title: lime buffer capacity (after 5 day incubation)
+    examples:
+      - value: 1575 mg/kg
+    see_also:
+      - https://www.ornl.gov/content/bio-scales-0
+    is_a: attribute
+    range: QuantityValue
+
 
   env_package:
     aliases:
@@ -1769,7 +1893,7 @@ slots:
   sample_collection_minute:
     range: integer
   salinity_category:
-    description: 'Categorcial description of the sample''s salinity. Examples: halophile,
+    description: 'Categorical description of the sample''s salinity. Examples: halophile,
       halotolerant, hypersaline, huryhaline'
     range: string
     see_also:
