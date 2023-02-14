@@ -1213,7 +1213,6 @@ enums:
           file_name_pattern: '[GOLD-AP]_crt.gff'
 
       Genemark Annotation GFF:
-        text: Genemark Annotation GFF
         description: GFF3 format file with Genemark
         annotations:
           file_name_pattern: '[GOLD-AP]_genemark.gff'
@@ -1258,10 +1257,10 @@ enums:
         annotations:
           file_name_pattern: '[GOLD-AP]_gene_phylogeny.tsv'
 
-      Crisprt Terms:
-        description: Crisprt Terms
+      Crispr Terms:
+        description: Crispr Terms
         annotations:
-          file_name_pattern: '[GOLD-AP]_crt.crisprs'
+          file_name_pattern: '[GOLD-AP]_gene_phylogeny.tsv'
 
       Clusters of Orthologous Groups (COG) Annotation GFF:
         description: GFF3 format file with COGs
