@@ -55,11 +55,9 @@ classes:
 
     slot_usage:
       was_associated_with:
-        required: false
         description: >-
           the agent/entity associated with the generation of the file
         range: WorkflowExecutionActivity
-        inlined: false
       started_at_time:
         required: true
       ended_at_time:
@@ -77,12 +75,10 @@ classes:
       type:
         required: true
       version:
-        required: false
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-          partial_match: false
 
   MetagenomeAssembly:
     description: A workflow execution activity that converts sequencing reads into an assembled metagenome.
@@ -126,7 +122,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-          partial_match: false
 
   MetatranscriptomeAssembly:
     is_a: WorkflowExecutionActivity
@@ -166,7 +161,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-          partial_match: false
 
   MetagenomeAnnotationActivity:
     description: A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
@@ -181,7 +175,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-          partial_match: false
 
   MetatranscriptomeAnnotationActivity:
     is_a: WorkflowExecutionActivity
@@ -195,7 +188,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-          partial_match: false
 
   MetatranscriptomeActivity:
     is_a: WorkflowExecutionActivity
@@ -210,7 +202,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-          partial_match: false
 
 
   MagsAnalysisActivity:
@@ -232,7 +223,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-          partial_match: false
 
 
   MetagenomeSequencingActivity:
@@ -267,14 +257,11 @@ classes:
         description: >-
           TODO
       has_input:
-        inlined: false
       has_output:
-        inlined: false
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-          partial_match: false
 
   ReadBasedTaxonomyAnalysisActivity:
     description: A workflow execution activity that performs taxonomy classification using sequencing reads
@@ -289,7 +276,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-          partial_match: false
 
 
   MetabolomicsAnalysisActivity:
@@ -301,7 +287,6 @@ classes:
     slot_usage:
       used:
         range: Instrument
-        multivalued: false
         description: >-
           The instrument used to collect the data used in the analysis
       has_metabolite_quantifications:
@@ -314,7 +299,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-          partial_match: false
 
   MetaproteomicsAnalysisActivity:
     is_a: WorkflowExecutionActivity
@@ -325,7 +309,6 @@ classes:
     slot_usage:
       used:
         range: Instrument
-        multivalued: false
         description: >-
           The instrument used to collect the data used in the analysis
       has_peptide_quantifications:
@@ -335,7 +318,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-          partial_match: false
 
   NomAnalysisActivity:
     is_a: WorkflowExecutionActivity
@@ -346,7 +328,6 @@ classes:
     slot_usage:
       used:
         range: Instrument
-        multivalued: false
         description: >-
           The instrument used to collect the data used in the analysis
       has_calibration:
@@ -357,7 +338,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-          partial_match: false
 
 
 slots:

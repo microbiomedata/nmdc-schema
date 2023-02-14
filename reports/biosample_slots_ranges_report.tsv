@@ -7,7 +7,7 @@ img_identifiers	string	True
 samp_name	TextValue	False			
 biosample_categories	biosample_category_enum	True			
 part_of	NamedThing	True			
-id	string	False	^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$		
+id	string		^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$		
 alternative_identifiers	string	True			
 gold_biosample_identifiers	uriorcurie	True	^GOLD:Gb[0-9]+$		
 insdc_biosample_identifiers	uriorcurie	True	^biosample:SAM[NED]([A-Z])?[0-9]+$		
@@ -48,7 +48,7 @@ diss_org_nitro	QuantityValue	False
 diss_oxygen	QuantityValue	False			
 drainage_class	drainage_class_enum	False			
 elev	float	False			
-env_package	TextValue	False			
+env_package	TextValue				
 env_broad_scale	ControlledIdentifiedTermValue	False			
 env_local_scale	ControlledIdentifiedTermValue	False			
 env_medium	ControlledIdentifiedTermValue	False			
@@ -215,12 +215,12 @@ sample_type	sample_type_enum
 technical_reps	string				
 analysis_type	analysis_type_enum	True			
 sample_link	string	True			
-zinc	QuantityValue	False			
-manganese	QuantityValue	False			
-ammonium_nitrogen	QuantityValue	False			
-nitrate_nitrogen	QuantityValue	False			
-nitrite_nitrogen	QuantityValue	False			
-lbc_thirty	QuantityValue	False			
-lbceq	QuantityValue	False			
-name	string	False			
-description	string	False			
+zinc	QuantityValue				
+manganese	QuantityValue				
+ammonium_nitrogen	QuantityValue				
+nitrate_nitrogen	QuantityValue				
+nitrite_nitrogen	QuantityValue				
+lbc_thirty	QuantityValue				
+lbceq	QuantityValue				
+name	string				
+description	string				

@@ -939,7 +939,7 @@
                     "type": "string"
                 },
                 "sample_link": {
-                    "description": "JsonObj()",
+                    "description": "A unique identifier to assign parent-child, subsample, or sibling samples. This is relevant when a sample or other material was used to generate the new sample.",
                     "items": {
                         "type": "string"
                     },
@@ -4224,7 +4224,7 @@
             "description": "An attribute value representing a person",
             "properties": {
                 "email": {
-                    "description": "An email address for an entity such as a person. This should be the primarly email address used.",
+                    "description": "An email address for an entity such as a person. This should be the primary email address used.",
                     "type": "string"
                 },
                 "has_raw_value": {
