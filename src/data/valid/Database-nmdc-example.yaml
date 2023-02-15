@@ -150,8 +150,7 @@ biosample_set:
     add_date: 17-MAR-17 04.55.54.717000000 PM
     community: microbial communities
     habitat: Fen
-    samp_name:
-      has_raw_value: 611E1M metaG
+    samp_name: 11E1M metaG
     location: Stordalen Mire, Sweden
     mod_date: '08-JAN-20 02.49.23.000000000 PM'
     ncbi_taxonomy_name: permafrost metagenome
@@ -193,8 +192,7 @@ biosample_set:
     add_date: 17-AUG-17 05.38.34.719000000 PM
     community: microbial communities
     habitat: soil
-    samp_name:
-      has_raw_value: Inc-BW-C-14-O
+    samp_name: Inc-BW-C-14-O
     location: Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United
       States
     mod_date: '08-JAN-20 02.49.23.000000000 PM'
@@ -237,8 +235,7 @@ biosample_set:
     community: microbial communities
     habitat: rhizosphere
     host_name: Carex aquatilis
-    samp_name:
-      has_raw_value: 4-1-23 metaG
+    samp_name: 4-1-23 metaG
     location: University of Washington, Seatle, WA, United States
     mod_date: '08-JAN-20 02.49.25.000000000 PM'
     ncbi_taxonomy_name: rhizosphere metagenome

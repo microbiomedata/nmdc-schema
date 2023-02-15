@@ -58,17 +58,154 @@ assets/mixs_regen/mixs_subset.yaml: assets/mixs_regen/import_slots_regardless_ge
 		--yaml_output $@
 
 src/schema/mixs.yaml: assets/mixs_regen/mixs_subset.yaml
+	# the majority of operations
+	# change the https://github.com/GenomicsStandardsConsortium/mixs/blob/main/model/schema/mixs.yaml ranges
+	# to match https://github.com/microbiomedata/nmdc-schema/blame/e681592b20f98dab0cf89278b2b3c2f5e0754adf/src/schema/mixs.yaml
+	#   from Apr 2022 ?
+	# add the same thing for other attributes like ...
 	mv src/schema/mixs.yaml src/schema/mixs.yaml.bak
 	sed 's/quantity value/QuantityValue/' $< > $@
 	sed -i.bak 's/range: string/range: TextValue/' $@
+	sed -i.bak 's/range: text value/range: TextValue/' $@
+    # what prefix do we want to use? mixs.yaml uses MIXS as a prefix for slot_uris
 	#sed -i.bak 's/slot_uri: MIXS:/slot_uri: mixs:/' $@
 	#sed -i.bak 's/slot_uri: mixs:/slot_uri: MIXS:/' $@
+	yq -i '.slots.agrochem_addition.range |= "TextValue"' $@
+	yq -i '.slots.air_temp_regm.range |= "TextValue"' $@
+	yq -i '.slots.antibiotic_regm.range |= "TextValue"' $@
+	yq -i '.slots.aromatics_pc.range |= "TextValue"' $@
+	yq -i '.slots.asphaltenes_pc.range |= "TextValue"' $@
+	yq -i '.slots.atmospheric_data.range |= "TextValue"' $@
+	yq -i '.slots.avg_occup.range |= "TextValue"' $@
+	yq -i '.slots.bathroom_count.range |= "TextValue"' $@
+	yq -i '.slots.bedroom_count.range |= "TextValue"' $@
+	yq -i '.slots.biocide_admin_method.range |= "TextValue"' $@
+	yq -i '.slots.biomass.range |= "TextValue"' $@
+	yq -i '.slots.chem_administration.range |= "ControlledTermValue"' $@
+	yq -i '.slots.chem_mutagen.range |= "TextValue"' $@
+	yq -i '.slots.chem_treat_method.range |= "string"' $@
+	yq -i '.slots.collection_date.range |= "TimestampValue"' $@
+	yq -i '.slots.cool_syst_id.range |= "TextValue"' $@
+	yq -i '.slots.date_last_rain.range |= "TimestampValue"' $@
+	yq -i '.slots.diether_lipids.range |= "TextValue"' $@
+	yq -i '.slots.elevator.range |= "TextValue"' $@
+	yq -i '.slots.emulsions.range |= "TextValue"' $@
 	yq -i '.slots.env_broad_scale.range |= "ControlledIdentifiedTermValue"' $@
 	yq -i '.slots.env_local_scale.range |= "ControlledIdentifiedTermValue"' $@
 	yq -i '.slots.env_medium.range |= "ControlledIdentifiedTermValue"'  $@
+	yq -i '.slots.escalator.range |= "TextValue"' $@
+	yq -i '.slots.exp_pipe.range |= "QuantityValue"' $@
+	yq -i '.slots.experimental_factor.range |= "ControlledTermValue"' $@
+	yq -i '.slots.ext_door.range |= "TextValue"' $@
+	yq -i '.slots.extreme_event.range |= "TimestampValue"' $@
+	yq -i '.slots.fertilizer_regm.range |= "TextValue"' $@
+	yq -i '.slots.fire.range |= "TimestampValue"' $@
+	yq -i '.slots.flooding.range |= "TimestampValue"' $@
+	yq -i '.slots.floor_count.range |= "TextValue"' $@
+	yq -i '.slots.freq_clean.range |= "QuantityValue"' $@
+	yq -i '.slots.freq_cook.range |= "QuantityValue"' $@
+	yq -i '.slots.fungicide_regm.range |= "TextValue"' $@
+	yq -i '.slots.gaseous_environment.range |= "TextValue"' $@
+	yq -i '.slots.gaseous_substances.range |= "TextValue"' $@
+	yq -i '.slots.gravity.range |= "TextValue"' $@
+	yq -i '.slots.growth_facil.range |= "ControlledTermValue"' $@
+	yq -i '.slots.growth_hormone_regm.range |= "TextValue"' $@
+	yq -i '.slots.hall_count.range |= "TextValue"' $@
+	yq -i '.slots.hall_count.range |= "TextValue"' $@
+	yq -i '.slots.hcr_pressure.range |= "TextValue"' $@
+	yq -i '.slots.hcr_temp.range |= "TextValue"' $@
+	yq -i '.slots.heat_sys_deliv_meth.range |= "string"' $@
+	yq -i '.slots.heat_system_id.range |= "TextValue"' $@
+	yq -i '.slots.heavy_metals.range |= "TextValue"' $@
+	yq -i '.slots.herbicide_regm.range |= "TextValue"' $@
+	yq -i '.slots.host_body_product.range |= "ControlledTermValue"' $@
+	yq -i '.slots.host_body_site.range |= "ControlledTermValue"' $@
+	yq -i '.slots.host_family_relation.range |= "string"' $@
+	yq -i '.slots.host_phenotype.range |= "ControlledTermValue"' $@
+	yq -i '.slots.host_subspecf_genlin.range |= "string"' $@
+	yq -i '.slots.host_symbiont.range |= "string"' $@
+	yq -i '.slots.humidity_regm.range |= "TextValue"' $@
+	yq -i '.slots.inorg_particles.range |= "TextValue"' $@
+	yq -i '.slots.iw_bt_date_well.range |= "TimestampValue"' $@
+	yq -i '.slots.last_clean.range |= "TimestampValue"' $@
+	yq -i '.slots.lat_lon.range |= "GeolocationValue"' $@
+	yq -i '.slots.light_regm.range |= "TextValue"' $@
+	yq -i '.slots.max_occup.range |= "QuantityValue"' $@
+	yq -i '.slots.micro_biomass_meth.range |= "string"' $@
+	yq -i '.slots.mineral_nutr_regm.range |= "TextValue"' $@
+	yq -i '.slots.misc_param.range |= "TextValue"' $@
+	yq -i '.slots.n_alkanes.range |= "TextValue"' $@
+	yq -i '.slots.non_min_nutr_regm.range |= "string"' $@
+	yq -i '.slots.number_pets.range |= "QuantityValue"' $@
+	yq -i '.slots.number_plants.range |= "QuantityValue"' $@
+	yq -i '.slots.number_resident.range |= "QuantityValue"' $@
+	yq -i '.slots.occup_density_samp.range |= "QuantityValue"' $@
+	yq -i '.slots.occup_samp.range |= "QuantityValue"' $@
+	yq -i '.slots.org_count_qpcr_info.range |= "string"' $@
+	yq -i '.slots.org_particles.range |= "TextValue"' $@
+	yq -i '.slots.organism_count.range |= "QuantityValue"' $@
+	yq -i '.slots.particle_class.range |= "TextValue"' $@
+	yq -i '.slots.permeability.range |= "TextValue"' $@
+	yq -i '.slots.pesticide_regm.range |= "TextValue"' $@
+	#yq -i '.slots.ph.range |= "QuantityValue"' $@
+	yq -i '.slots.phaeopigments.range |= "TextValue"' $@
+	yq -i '.slots.phosplipid_fatt_acid.range |= "TextValue"' $@
+	yq -i '.slots.plant_growth_med.range |= "ControlledTermValue"' $@
+	yq -i '.slots.plant_struc.range |= "ControlledTermValue"' $@
+	yq -i '.slots.pollutants.range |= "TextValue"' $@
+	yq -i '.slots.porosity.range |= "TextValue"' $@
+	yq -i '.slots.pres_animal_insect.range |= "string"' $@
+	yq -i '.slots.prev_land_use_meth.range |= "string"' $@
+	yq -i '.slots.prod_start_date.range |= "TimestampValue"' $@
+	yq -i '.slots.radiation_regm.range |= "TextValue"' $@
+	yq -i '.slots.rainfall_regm.range |= "TextValue"' $@
+	yq -i '.slots.resins_pc.range |= "TextValue"' $@
+	yq -i '.slots.room_architec_elem.range |= "string"' $@
+	yq -i '.slots.room_count.range |= "TextValue"' $@
+	yq -i '.slots.room_dim.range |= "TextValue"' $@
+	yq -i '.slots.room_door_dist.range |= "TextValue"' $@
+	yq -i '.slots.room_net_area.range |= "TextValue"' $@
+	yq -i '.slots.room_occup.range |= "QuantityValue"' $@
+	yq -i '.slots.room_vol.range |= "TextValue"' $@
+	yq -i '.slots.root_med_carbon.range |= "TextValue"' $@
+	yq -i '.slots.root_med_macronutr.range |= "TextValue"' $@
+	yq -i '.slots.root_med_micronutr.range |= "TextValue"' $@
+	yq -i '.slots.root_med_ph.range |= "QuantityValue"' $@
+	yq -i '.slots.root_med_regl.range |= "TextValue"' $@
+	yq -i '.slots.root_med_suppl.range |= "TextValue"' $@
+	yq -i '.slots.salt_regm.range |= "TextValue"' $@
+	yq -i '.slots.samp_collec_device.range |= "string"' $@
+	yq -i '.slots.samp_collec_method.range |= "string"' $@
+	yq -i '.slots.samp_loc_corr_rate.range |= "TextValue"' $@
+	yq -i '.slots.samp_mat_process.range |= "ControlledTermValue"' $@
+	yq -i '.slots.samp_md.range |= "QuantityValue"' $@
+	yq -i '.slots.samp_name.range |= "string"' $@
+	yq -i '.slots.samp_preserv.range |= "TextValue"' $@
+	yq -i '.slots.samp_room_id.range |= "TextValue"' $@
+	yq -i '.slots.samp_time_out.range |= "TextValue"' $@
+	yq -i '.slots.samp_transport_cond.range |= "TextValue"' $@
+	yq -i '.slots.samp_tvdss.range |= "TextValue"' $@
+	yq -i '.slots.saturates_pc.range |= "TextValue"' $@
+	yq -i '.slots.shad_dev_water_mold.range |= "string"' $@
+	yq -i '.slots.sieving.range |= "TextValue"' $@
+	yq -i '.slots.size_frac.range |= "TextValue"' $@
+	yq -i '.slots.soil_texture_meth.range |= "string"' $@
+	yq -i '.slots.soluble_inorg_mat.range |= "TextValue"' $@
+	yq -i '.slots.soluble_org_mat.range |= "TextValue"' $@
+	yq -i '.slots.suspend_solids.range |= "TextValue"' $@
+	yq -i '.slots.tot_nitro_cont_meth.range |= "string"' $@
+	yq -i '.slots.viscosity.range |= "TextValue"' $@
+	yq -i '.slots.volatile_org_comp.range |= "TextValue"' $@
+	yq -i '.slots.water_cont_soil_meth.range |= "string"' $@
+	yq -i '.slots.water_temp_regm.range |= "TextValue"' $@
+	yq -i '.slots.watering_regm.range |= "TextValue"' $@
+	yq -i '.slots.window_open_freq.range |= "TextValue"' $@
+	yq -i '.slots.window_size.range |= "TextValue"' $@
 	yq -i 'del(.classes)' $@
 	yq -i 'del(.enums.[].name)'  $@
+	yq -i 'del(.enums.[].permissible_values.[].text)'  $@
 	yq -i 'del(.slots.[].name)'  $@
+	yq -i 'del(.subsets.[].name)'  $@
 	rm -rf assets/mixs_subset_repaired.yaml.bak
 
 mixs_deepdiff: src/schema/mixs.yaml
