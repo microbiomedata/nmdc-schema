@@ -20,7 +20,7 @@ notes:
 - resuming use of part_of to link Biosamples to Studies. eg releasing sample_link
   from that role
 id: https://microbiomedata/schema
-version: 7.4.10
+version: v7.4.10
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   COG:
