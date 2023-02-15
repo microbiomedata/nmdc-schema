@@ -142,8 +142,8 @@ assets/boolean_usages.tsv:
 		--out_file $@
 
 MIXS_YAML_FROM_SHEETS_AND_FRIENDS = src/schema/mixs.yaml
-MIXS_YAML_MARK_OLDER_PYTHON = /home/mark/gitrepos/nmdc-schema/assets/other_mixs_yaml_files/mixs_new.yaml
-MIXS_YAML_PERL_CURATED_Q = /home/mark/gitrepos/nmdc-schema/assets/other_mixs_yaml_files/mixs_legacy.yaml
+MIXS_YAML_MARK_OLDER_PYTHON = src/schema/mixs_new.yaml
+MIXS_YAML_PERL_CURATED_Q = src/schema/other_mixs_yaml_files/mixs_legacy.yaml
 
 SCHEMA_FILE = $(MIXS_YAML_FROM_SHEETS_AND_FRIENDS)
 
