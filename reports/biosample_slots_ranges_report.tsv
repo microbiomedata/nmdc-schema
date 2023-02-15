@@ -4,7 +4,7 @@ embargoed	boolean
 collected_from	FieldResearchSite				
 type	string				
 img_identifiers	string	True			
-samp_name	TextValue	False			
+samp_name	string	False			
 biosample_categories	biosample_category_enum	True			
 part_of	NamedThing	True			
 id	string		^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$		
@@ -29,10 +29,10 @@ bishomohopanol	QuantityValue	False
 bromide	QuantityValue	False			
 calcium	QuantityValue	False			
 carb_nitro_ratio	QuantityValue	False			
-chem_administration	TextValue	True			
+chem_administration	ControlledTermValue	True			
 chloride	QuantityValue	False			
 chlorophyll	QuantityValue	False			
-collection_date	date	False			
+collection_date	TimestampValue	False			
 cur_land_use	cur_land_use_enum	False			
 cur_vegetation	TextValue	False			
 cur_vegetation_meth	TextValue	False			
@@ -60,7 +60,7 @@ geo_loc_name	TextValue	False
 glucosidase_act	QuantityValue	False			
 heavy_metals	TextValue	True			
 heavy_metals_meth	TextValue	True			
-lat_lon	TextValue	False			
+lat_lon	GeolocationValue	False			
 link_addit_analys	TextValue	False			
 link_class_info	TextValue	False			
 link_climate_info	TextValue	False			
@@ -75,7 +75,7 @@ nitrate	QuantityValue	False
 nitrite	QuantityValue	False			
 org_matter	QuantityValue	False			
 org_nitro	QuantityValue	False			
-organism_count	organism_count_enum	True			
+organism_count	QuantityValue	True			
 oxy_stat_samp	rel_to_oxygen_enum	False			
 part_org_carb	QuantityValue	False			
 perturbation	TextValue	True			
@@ -91,7 +91,7 @@ profile_position	profile_position_enum	False
 redox_potential	QuantityValue	False			
 salinity	QuantityValue	False			
 salinity_meth	TextValue	False			
-samp_mat_process	TextValue	False			
+samp_mat_process	ControlledTermValue	False			
 samp_store_dur	TextValue	False			
 samp_store_loc	TextValue	False			
 samp_taxon_id	TextValue	False			
@@ -119,10 +119,10 @@ tot_diss_nitro	QuantityValue	False
 tot_org_carb	QuantityValue	False			
 tot_org_c_meth	TextValue	False			
 tot_nitro_content	QuantityValue	False			
-tot_nitro_cont_meth	TextValue	False			
+tot_nitro_cont_meth	string	False			
 tot_phosp	QuantityValue	False			
 water_content	string	True			
-water_cont_soil_meth	TextValue	False			
+water_cont_soil_meth	string	False			
 ecosystem	string				
 ecosystem_category	string				
 ecosystem_type	string				
@@ -144,13 +144,13 @@ air_temp_regm	TextValue	True
 biotic_regm	TextValue	False			
 biotic_relationship	biotic_relationship_enum	False			
 climate_environment	TextValue	True			
-experimental_factor	TextValue	False			
+experimental_factor	ControlledTermValue	False			
 gaseous_environment	TextValue	True			
-growth_facil	TextValue	False			
+growth_facil	ControlledTermValue	False			
 humidity_regm	TextValue	True			
 light_regm	TextValue	False			
 phosphate	QuantityValue	False			
-samp_collec_method	TextValue	False			
+samp_collec_method	string	False			
 samp_size	QuantityValue	False			
 source_mat_id	TextValue	False			
 watering_regm	TextValue	True			

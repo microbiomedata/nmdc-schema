@@ -8,7 +8,7 @@ license = "MIT"
 name = "nmdc_schema"
 readme = "README.md"
 repository = "https://github.com/microbiomedata/nmdc-schema"
-version = "0.0.0"
+version = "7.4.9.post30.dev0+5aa31ba7"
 authors = [
     "Bill Duncan <wdduncan@gmail.com>",
     "Chris Mungall <cjmungall@lbl.gov>",
@@ -17,27 +17,28 @@ authors = [
 ]
 
 [tool.poetry.dependencies]
-linkml-runtime = "^1.3.0"
+linkml-runtime = "^1.4.5"
 python = "^3.9"
 jupyter = "^1.0.0"
 
 [tool.poetry.group.dev.dependencies]
-black = "^22.10.0"
+black = "^23.1.0" # "^22.10.0" vs 23.1.0
 cruft = "^2.12.0"
-python-dotenv = "^0.21.1"
 linkml = "^1.4.4"
 mkdocs = "^1.4.2"
-mkdocs-material = "^8.5.7"
+mkdocs-material = "^9.0.12" # "^8.5.11" vs 9.0.12
 mkdocs-mermaid2-plugin = "^0.6.0"
 pandasql = "^0.7.3" # might be able to replace this?
 pygsheets = "^2.0.6" # why are we importing this, when we're alredy using cogs?
-sheets-and-friends = "^0.1.0"
-strsimpy = "^0.2.1"
+python-dotenv = "^0.21.1"
+schemasheets = "^0.1.18" # ^0.1.0" vs 0.1.17
 
-[tool.poetry-dynamic-versioning]
-enable = true
-vcs = "git"
-style = "pep440"
+#Because schemasheets (0.1.17) depends on linkml (>=1.3,<1.4)
+# and no versions of schemasheets match >0.1.17,<0.2.0, schemasheets (>=0.1.17,<0.2.0) requires linkml (>=1.3,<1.4).
+#So, because nmdc-schema depends on both linkml (^1.4.4) and schemasheets (^0.1.17), version solving failed.
+
+sheets-and-friends = "^0.1.4"
+strsimpy = "^0.2.1"
 
 #[tool.poetry.dev-dependencies]
 #build = "^0.9.0"
@@ -52,6 +53,11 @@ style = "pep440"
 #pymongo = "^4.3.3"
 #python-dotenv = "^0.21.0"
 #twine = "^4.0.1"
+
+[tool.poetry-dynamic-versioning]
+enable = false
+vcs = "git"
+style = "pep440"
 
 [build-system]
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
