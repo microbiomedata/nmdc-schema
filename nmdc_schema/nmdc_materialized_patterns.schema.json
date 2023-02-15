@@ -96,16 +96,6 @@
             "title": "AnalyticalSample",
             "type": "object"
         },
-        "ArchStrucEnum": {
-            "description": "",
-            "enum": [
-                "building",
-                "shed",
-                "home"
-            ],
-            "title": "ArchStrucEnum",
-            "type": "string"
-        },
         "AttributeValue": {
             "additionalProperties": false,
             "description": "The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic value and the structured value",
@@ -120,21 +110,6 @@
             },
             "title": "AttributeValue",
             "type": "object"
-        },
-        "BiolStatEnum": {
-            "description": "",
-            "enum": [
-                "wild",
-                "natural",
-                "semi-natural",
-                "inbred line",
-                "breeder's line",
-                "hybrid",
-                "clonal selection",
-                "mutant"
-            ],
-            "title": "BiolStatEnum",
-            "type": "string"
         },
         "Biosample": {
             "additionalProperties": false,
@@ -253,7 +228,7 @@
                 "chem_administration": {
                     "description": "List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi",
                     "items": {
-                        "$ref": "#/$defs/TextValue"
+                        "$ref": "#/$defs/ControlledTermValue"
                     },
                     "type": "array"
                 },
@@ -277,9 +252,8 @@
                     "type": "string"
                 },
                 "collection_date": {
-                    "description": "The time of sampling, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant",
-                    "format": "date",
-                    "type": "string"
+                    "$ref": "#/$defs/TimestampValue",
+                    "description": "The time of sampling, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant"
                 },
                 "collection_date_inc": {
                     "description": "Date the incubation was harvested/collected/ended. Only relevant for incubation samples.",
@@ -474,7 +448,7 @@
                     "description": "MIxS extension for reporting of measurements and observations obtained from one or more of the environments where the sample was obtained. All environmental packages listed here are further defined in separate subtables. By giving the name of the environmental package, a selection of fields can be made from the subtables and can be reported"
                 },
                 "experimental_factor": {
-                    "$ref": "#/$defs/TextValue",
+                    "$ref": "#/$defs/ControlledTermValue",
                     "description": "Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms, please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI"
                 },
                 "experimental_factor_other": {
@@ -526,7 +500,7 @@
                     "type": "array"
                 },
                 "growth_facil": {
-                    "$ref": "#/$defs/TextValue",
+                    "$ref": "#/$defs/ControlledTermValue",
                     "description": "Type of facility where the sampled plant was grown; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field. Alternatively use Crop Ontology (CO) terms, see http://www.cropontology.org/ontology/CO_715/Crop%20Research"
                 },
                 "habitat": {
@@ -592,7 +566,7 @@
                     "type": "string"
                 },
                 "lat_lon": {
-                    "$ref": "#/$defs/TextValue",
+                    "$ref": "#/$defs/GeolocationValue",
                     "description": "This is currently a required field but it's not clear if this should be required for human hosts"
                 },
                 "lbc_thirty": {
@@ -726,7 +700,7 @@
                 "organism_count": {
                     "description": "Total cell count of any organism (or group of organisms) per gram, volume or area of sample, should include name of organism followed by count. The method that was used for the enumeration (e.g. qPCR, atp, mpn, etc.) Should also be provided. (example: total prokaryotes; 3.5e7 cells per ml; qpcr)",
                     "items": {
-                        "$ref": "#/$defs/OrganismCountEnum"
+                        "$ref": "#/$defs/QuantityValue"
                     },
                     "type": "array"
                 },
@@ -900,16 +874,16 @@
                     "description": "Reference or method used in determining salinity"
                 },
                 "samp_collec_method": {
-                    "$ref": "#/$defs/TextValue",
-                    "description": "The method employed for collecting the sample."
+                    "description": "The method employed for collecting the sample.",
+                    "type": "string"
                 },
                 "samp_mat_process": {
-                    "$ref": "#/$defs/TextValue",
+                    "$ref": "#/$defs/ControlledTermValue",
                     "description": "A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed."
                 },
                 "samp_name": {
-                    "$ref": "#/$defs/TextValue",
-                    "description": "A local identifier or name that for the material sample used for extracting nucleic acids, and subsequent sequencing. It can refer either to the original material collected or to any derived sub-samples. It can have any format, but we suggest that you make it concise, unique and consistent within your lab, and as informative as possible. INSDC requires every sample name from a single Submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to sample_name."
+                    "description": "A local identifier or name that for the material sample used for extracting nucleic acids, and subsequent sequencing. It can refer either to the original material collected or to any derived sub-samples. It can have any format, but we suggest that you make it concise, unique and consistent within your lab, and as informative as possible. INSDC requires every sample name from a single Submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to sample_name.",
+                    "type": "string"
                 },
                 "samp_size": {
                     "$ref": "#/$defs/QuantityValue",
@@ -1059,8 +1033,8 @@
                     "description": "Total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen"
                 },
                 "tot_nitro_cont_meth": {
-                    "$ref": "#/$defs/TextValue",
-                    "description": "Reference or method used in determining the total nitrogen"
+                    "description": "Reference or method used in determining the total nitrogen",
+                    "type": "string"
                 },
                 "tot_nitro_content": {
                     "$ref": "#/$defs/QuantityValue",
@@ -1083,8 +1057,8 @@
                     "type": "string"
                 },
                 "water_cont_soil_meth": {
-                    "$ref": "#/$defs/TextValue",
-                    "description": "Reference or method used in determining the water content of soil"
+                    "description": "Reference or method used in determining the water content of soil",
+                    "type": "string"
                 },
                 "water_content": {
                     "description": "Water content measurement",
@@ -1194,120 +1168,6 @@
             },
             "title": "BooleanValue",
             "type": "object"
-        },
-        "BuildDocsEnum": {
-            "description": "",
-            "enum": [
-                "building information model",
-                "commissioning report",
-                "complaint logs",
-                "contract administration",
-                "cost estimate",
-                "janitorial schedules or logs",
-                "maintenance plans",
-                "schedule",
-                "sections",
-                "shop drawings",
-                "submittals",
-                "ventilation system",
-                "windows"
-            ],
-            "title": "BuildDocsEnum",
-            "type": "string"
-        },
-        "BuildOccupTypeEnum": {
-            "description": "",
-            "enum": [
-                "office",
-                "market",
-                "restaurant",
-                "residence",
-                "school",
-                "residential",
-                "commercial",
-                "low rise",
-                "high rise",
-                "wood framed",
-                "health care",
-                "airport",
-                "sports complex"
-            ],
-            "title": "BuildOccupTypeEnum",
-            "type": "string"
-        },
-        "BuildingSettingEnum": {
-            "description": "",
-            "enum": [
-                "urban",
-                "suburban",
-                "exurban",
-                "rural"
-            ],
-            "title": "BuildingSettingEnum",
-            "type": "string"
-        },
-        "CeilCondEnum": {
-            "description": "",
-            "enum": [
-                "new",
-                "visible wear",
-                "needs repair",
-                "damaged",
-                "rupture"
-            ],
-            "title": "CeilCondEnum",
-            "type": "string"
-        },
-        "CeilFinishMatEnum": {
-            "description": "",
-            "enum": [
-                "drywall",
-                "mineral fibre",
-                "tiles",
-                "PVC",
-                "plasterboard",
-                "metal",
-                "fiberglass",
-                "stucco",
-                "mineral wool/calcium silicate",
-                "wood"
-            ],
-            "title": "CeilFinishMatEnum",
-            "type": "string"
-        },
-        "CeilTextureEnum": {
-            "description": "",
-            "enum": [
-                "crows feet",
-                "crows-foot stomp",
-                "double skip",
-                "hawk and trowel",
-                "knockdown",
-                "popcorn",
-                "orange peel",
-                "rosebud stomp",
-                "Santa-Fe texture",
-                "skip trowel",
-                "smooth",
-                "stomp knockdown",
-                "swirl"
-            ],
-            "title": "CeilTextureEnum",
-            "type": "string"
-        },
-        "CeilTypeEnum": {
-            "description": "",
-            "enum": [
-                "cathedral",
-                "dropped",
-                "concave",
-                "barrel-shaped",
-                "coffered",
-                "cove",
-                "stretched"
-            ],
-            "title": "CeilTypeEnum",
-            "type": "string"
         },
         "ChemicalEntity": {
             "additionalProperties": false,
@@ -1758,29 +1618,6 @@
             "title": "Database",
             "type": "object"
         },
-        "DeposEnvEnum": {
-            "description": "",
-            "enum": [
-                "Continental - Alluvial",
-                "Continental - Aeolian",
-                "Continental - Fluvial",
-                "Continental - Lacustrine",
-                "Transitional - Deltaic",
-                "Transitional - Tidal",
-                "Transitional - Lagoonal",
-                "Transitional - Beach",
-                "Transitional - Lake",
-                "Marine - Shallow",
-                "Marine - Deep",
-                "Marine - Reef",
-                "Other - Evaporite",
-                "Other - Glacial",
-                "Other - Volcanic",
-                "other"
-            ],
-            "title": "DeposEnvEnum",
-            "type": "string"
-        },
         "DeviceTypeEnum": {
             "description": "",
             "enum": [
@@ -1862,119 +1699,6 @@
             "title": "DnaseRnaEnum",
             "type": "string"
         },
-        "DoorCompTypeEnum": {
-            "description": "",
-            "enum": [
-                "metal covered",
-                "revolving",
-                "sliding",
-                "telescopic"
-            ],
-            "title": "DoorCompTypeEnum",
-            "type": "string"
-        },
-        "DoorCondEnum": {
-            "description": "",
-            "enum": [
-                "damaged",
-                "needs repair",
-                "new",
-                "rupture",
-                "visible wear"
-            ],
-            "title": "DoorCondEnum",
-            "type": "string"
-        },
-        "DoorDirectEnum": {
-            "description": "",
-            "enum": [
-                "inward",
-                "outward",
-                "sideways"
-            ],
-            "title": "DoorDirectEnum",
-            "type": "string"
-        },
-        "DoorLocEnum": {
-            "description": "",
-            "enum": [
-                "north",
-                "south",
-                "east",
-                "west"
-            ],
-            "title": "DoorLocEnum",
-            "type": "string"
-        },
-        "DoorMatEnum": {
-            "description": "",
-            "enum": [
-                "aluminum",
-                "cellular PVC",
-                "engineered plastic",
-                "fiberboard",
-                "fiberglass",
-                "metal",
-                "thermoplastic alloy",
-                "vinyl",
-                "wood",
-                "wood/plastic composite"
-            ],
-            "title": "DoorMatEnum",
-            "type": "string"
-        },
-        "DoorMoveEnum": {
-            "description": "",
-            "enum": [
-                "collapsible",
-                "folding",
-                "revolving",
-                "rolling shutter",
-                "sliding",
-                "swinging"
-            ],
-            "title": "DoorMoveEnum",
-            "type": "string"
-        },
-        "DoorTypeEnum": {
-            "description": "",
-            "enum": [
-                "composite",
-                "metal",
-                "wooden"
-            ],
-            "title": "DoorTypeEnum",
-            "type": "string"
-        },
-        "DoorTypeMetalEnum": {
-            "description": "",
-            "enum": [
-                "collapsible",
-                "corrugated steel",
-                "hollow",
-                "rolling shutters",
-                "steel plate"
-            ],
-            "title": "DoorTypeMetalEnum",
-            "type": "string"
-        },
-        "DoorTypeWoodEnum": {
-            "description": "",
-            "enum": [
-                "bettened and ledged",
-                "battened",
-                "ledged and braced",
-                "ledged and framed",
-                "ledged, braced and frame",
-                "framed and paneled",
-                "glashed or sash",
-                "flush",
-                "louvered",
-                "wire gauged"
-            ],
-            "title": "DoorTypeWoodEnum",
-            "type": "string"
-        },
         "DrainageClassEnum": {
             "description": "",
             "enum": [
@@ -1986,21 +1710,6 @@
                 "excessively drained"
             ],
             "title": "DrainageClassEnum",
-            "type": "string"
-        },
-        "DrawingsEnum": {
-            "description": "",
-            "enum": [
-                "operation",
-                "as built",
-                "construction",
-                "bid",
-                "design",
-                "building navigation map",
-                "diagram",
-                "sketch"
-            ],
-            "title": "DrawingsEnum",
             "type": "string"
         },
         "EnvironmentalMaterialTerm": {
@@ -2032,36 +1741,6 @@
             ],
             "title": "EnvironmentalMaterialTerm",
             "type": "object"
-        },
-        "ExtWallOrientEnum": {
-            "description": "",
-            "enum": [
-                "north",
-                "south",
-                "east",
-                "west",
-                "northeast",
-                "southeast",
-                "southwest",
-                "northwest"
-            ],
-            "title": "ExtWallOrientEnum",
-            "type": "string"
-        },
-        "ExtWindowOrientEnum": {
-            "description": "",
-            "enum": [
-                "north",
-                "south",
-                "east",
-                "west",
-                "northeast",
-                "southeast",
-                "southwest",
-                "northwest"
-            ],
-            "title": "ExtWindowOrientEnum",
-            "type": "string"
         },
         "FaoClassEnum": {
             "description": "",
@@ -2195,99 +1874,6 @@
             "title": "FileTypeEnum",
             "type": "string"
         },
-        "FilterTypeEnum": {
-            "description": "",
-            "enum": [
-                "particulate air filter",
-                "chemical air filter",
-                "low-MERV pleated media",
-                "HEPA",
-                "electrostatic",
-                "gas-phase or ultraviolet air treatments"
-            ],
-            "title": "FilterTypeEnum",
-            "type": "string"
-        },
-        "FloorCondEnum": {
-            "description": "",
-            "enum": [
-                "new",
-                "visible wear",
-                "needs repair",
-                "damaged",
-                "rupture"
-            ],
-            "title": "FloorCondEnum",
-            "type": "string"
-        },
-        "FloorFinishMatEnum": {
-            "description": "",
-            "enum": [
-                "tile",
-                "wood strip or parquet",
-                "carpet",
-                "rug",
-                "laminate wood",
-                "lineoleum",
-                "vinyl composition tile",
-                "sheet vinyl",
-                "stone",
-                "bamboo",
-                "cork",
-                "terrazo",
-                "concrete",
-                "none",
-                "sealed",
-                "clear finish",
-                "paint",
-                "none or unfinished"
-            ],
-            "title": "FloorFinishMatEnum",
-            "type": "string"
-        },
-        "FloorStrucEnum": {
-            "description": "",
-            "enum": [
-                "balcony",
-                "floating floor",
-                "glass floor",
-                "raised floor",
-                "sprung floor",
-                "wood-framed",
-                "concrete"
-            ],
-            "title": "FloorStrucEnum",
-            "type": "string"
-        },
-        "FloorWaterMoldEnum": {
-            "description": "",
-            "enum": [
-                "mold odor",
-                "wet floor",
-                "water stains",
-                "wall discoloration",
-                "floor discoloration",
-                "ceiling discoloration",
-                "peeling paint or wallpaper",
-                "bulging walls",
-                "condensation"
-            ],
-            "title": "FloorWaterMoldEnum",
-            "type": "string"
-        },
-        "FreqCleanEnum": {
-            "description": "",
-            "enum": [
-                "Daily",
-                "Weekly",
-                "Monthly",
-                "Quarterly",
-                "Annually",
-                "other"
-            ],
-            "title": "FreqCleanEnum",
-            "type": "string"
-        },
         "FunctionalAnnotation": {
             "additionalProperties": false,
             "description": "An assignment of a function term (e.g. reaction or pathway) that is executed by a gene product, or which the gene product plays an active role in. Functional annotations can be assigned manually by curators, or automatically in workflows. In the context of NMDC, all function annotation is performed automatically, typically using HMM or Blast type methods",
@@ -2306,29 +1892,6 @@
             },
             "title": "FunctionalAnnotation",
             "type": "object"
-        },
-        "FurnitureEnum": {
-            "description": "",
-            "enum": [
-                "cabinet",
-                "chair",
-                "desks"
-            ],
-            "title": "FurnitureEnum",
-            "type": "string"
-        },
-        "GenderRestroomEnum": {
-            "description": "",
-            "enum": [
-                "all gender",
-                "female",
-                "gender neurtral",
-                "male",
-                "male and female",
-                "unisex"
-            ],
-            "title": "GenderRestroomEnum",
-            "type": "string"
         },
         "GeneProduct": {
             "additionalProperties": false,
@@ -2389,115 +1952,6 @@
             "title": "GeolocationValue",
             "type": "object"
         },
-        "GrowthHabitEnum": {
-            "description": "",
-            "enum": [
-                "erect",
-                "semi-erect",
-                "spreading",
-                "prostrate"
-            ],
-            "title": "GrowthHabitEnum",
-            "type": "string"
-        },
-        "HandidnessEnum": {
-            "description": "",
-            "enum": [
-                "ambidexterity",
-                "left handedness",
-                "mixed-handedness",
-                "right handedness"
-            ],
-            "title": "HandidnessEnum",
-            "type": "string"
-        },
-        "HcProducedEnum": {
-            "description": "",
-            "enum": [
-                "Oil",
-                "Gas-Condensate",
-                "Gas",
-                "Bitumen",
-                "Coalbed Methane",
-                "other"
-            ],
-            "title": "HcProducedEnum",
-            "type": "string"
-        },
-        "HcrEnum": {
-            "description": "",
-            "enum": [
-                "Oil Reservoir",
-                "Gas Reservoir",
-                "Oil Sand",
-                "Coalbed",
-                "Shale",
-                "Tight Oil Reservoir",
-                "Tight Gas Reservoir",
-                "other"
-            ],
-            "title": "HcrEnum",
-            "type": "string"
-        },
-        "HcrGeolAgeEnum": {
-            "description": "",
-            "enum": [
-                "Archean",
-                "Cambrian",
-                "Carboniferous",
-                "Cenozoic",
-                "Cretaceous",
-                "Devonian",
-                "Jurassic",
-                "Mesozoic",
-                "Neogene",
-                "Ordovician",
-                "Paleogene",
-                "Paleozoic",
-                "Permian",
-                "Precambrian",
-                "Proterozoic",
-                "Silurian",
-                "Triassic",
-                "other"
-            ],
-            "title": "HcrGeolAgeEnum",
-            "type": "string"
-        },
-        "HeatCoolTypeEnum": {
-            "description": "",
-            "enum": [
-                "radiant system",
-                "heat pump",
-                "forced air system",
-                "steam forced heat",
-                "wood stove"
-            ],
-            "title": "HeatCoolTypeEnum",
-            "type": "string"
-        },
-        "HeatDelivLocEnum": {
-            "description": "",
-            "enum": [
-                "north",
-                "south",
-                "east",
-                "west"
-            ],
-            "title": "HeatDelivLocEnum",
-            "type": "string"
-        },
-        "HostSexEnum": {
-            "description": "",
-            "enum": [
-                "female",
-                "hermaphrodite",
-                "male",
-                "neuter"
-            ],
-            "title": "HostSexEnum",
-            "type": "string"
-        },
         "ImageValue": {
             "additionalProperties": false,
             "description": "An attribute value representing an image.",
@@ -2523,36 +1977,6 @@
             },
             "title": "ImageValue",
             "type": "object"
-        },
-        "IndoorSpaceEnum": {
-            "description": "",
-            "enum": [
-                "bedroom",
-                "office",
-                "bathroom",
-                "foyer",
-                "kitchen",
-                "locker room",
-                "hallway",
-                "elevator"
-            ],
-            "title": "IndoorSpaceEnum",
-            "type": "string"
-        },
-        "IndoorSurfEnum": {
-            "description": "",
-            "enum": [
-                "cabinet",
-                "ceiling",
-                "counter top",
-                "door",
-                "shelving",
-                "vent cover",
-                "window",
-                "wall"
-            ],
-            "title": "IndoorSurfEnum",
-            "type": "string"
         },
         "Instrument": {
             "additionalProperties": false,
@@ -2584,18 +2008,6 @@
             ],
             "title": "Instrument",
             "type": "object"
-        },
-        "IntWallCondEnum": {
-            "description": "",
-            "enum": [
-                "new",
-                "visible wear",
-                "needs repair",
-                "damaged",
-                "rupture"
-            ],
-            "title": "IntWallCondEnum",
-            "type": "string"
         },
         "IntegerValue": {
             "additionalProperties": false,
@@ -2635,38 +2047,6 @@
             },
             "title": "LabDevice",
             "type": "object"
-        },
-        "LightTypeEnum": {
-            "description": "",
-            "enum": [
-                "natural light",
-                "electric light",
-                "desk lamp",
-                "flourescent lights",
-                "none"
-            ],
-            "title": "LightTypeEnum",
-            "type": "string"
-        },
-        "LithologyEnum": {
-            "description": "",
-            "enum": [
-                "Basement",
-                "Chalk",
-                "Chert",
-                "Coal",
-                "Conglomerate",
-                "Diatomite",
-                "Dolomite",
-                "Limestone",
-                "Sandstone",
-                "Shale",
-                "Siltstone",
-                "Volcanic",
-                "other"
-            ],
-            "title": "LithologyEnum",
-            "type": "string"
         },
         "MagBin": {
             "additionalProperties": false,
@@ -2905,22 +2285,6 @@
             },
             "title": "MaterialSamplingActivity",
             "type": "object"
-        },
-        "MechStrucEnum": {
-            "description": "",
-            "enum": [
-                "subway",
-                "coach",
-                "carriage",
-                "elevator",
-                "escalator",
-                "boat",
-                "train",
-                "car",
-                "bus"
-            ],
-            "title": "MechStrucEnum",
-            "type": "string"
         },
         "MetaboliteQuantification": {
             "additionalProperties": false,
@@ -3340,7 +2704,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(nmdc):wf-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
+                    "pattern": "^(nmdc):wfmsa-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                     "type": "string"
                 },
                 "name": {
@@ -3929,17 +3293,6 @@
             "title": "NomAnalysisActivity",
             "type": "object"
         },
-        "OccupDocumentEnum": {
-            "description": "",
-            "enum": [
-                "automated count",
-                "estimate",
-                "manual count",
-                "videos"
-            ],
-            "title": "OccupDocumentEnum",
-            "type": "string"
-        },
         "OmicsProcessing": {
             "additionalProperties": false,
             "description": "The methods and processes used to generate omics data from a biosample or organism.",
@@ -4262,58 +3615,6 @@
             "title": "PersonValue",
             "type": "object"
         },
-        "PlantGrowthMedEnum": {
-            "description": "",
-            "enum": [
-                "other artificial liquid medium",
-                "other artificial solid medium",
-                "peat moss",
-                "perlite",
-                "pumice",
-                "sand",
-                "soil",
-                "vermiculite",
-                "water"
-            ],
-            "title": "PlantGrowthMedEnum",
-            "type": "string"
-        },
-        "PlantSexEnum": {
-            "description": "",
-            "enum": [
-                "Androdioecious",
-                "Androecious",
-                "Androgynous",
-                "Androgynomonoecious",
-                "Andromonoecious",
-                "Bisexual",
-                "Dichogamous",
-                "Diclinous",
-                "Dioecious",
-                "Gynodioecious",
-                "Gynoecious",
-                "Gynomonoecious",
-                "Hermaphroditic",
-                "Imperfect",
-                "Monoclinous",
-                "Monoecious",
-                "Perfect",
-                "Polygamodioecious",
-                "Polygamomonoecious",
-                "Polygamous",
-                "Protandrous",
-                "Protogynous",
-                "Subandroecious",
-                "Subdioecious",
-                "Subgynoecious",
-                "Synoecious",
-                "Trimonoecious",
-                "Trioecious",
-                "Unisexual"
-            ],
-            "title": "PlantSexEnum",
-            "type": "string"
-        },
         "ProcessingInstitutionEnum": {
             "description": "",
             "enum": [
@@ -4341,17 +3642,6 @@
             "description": "This is used to link a metaproteomics analysis workflow to a specific protein",
             "title": "ProteinQuantification",
             "type": "object"
-        },
-        "QuadPosEnum": {
-            "description": "",
-            "enum": [
-                "North side",
-                "West side",
-                "South side",
-                "East side"
-            ],
-            "title": "QuadPosEnum",
-            "type": "string"
         },
         "QuantityValue": {
             "additionalProperties": false,
@@ -4625,16 +3915,6 @@
             "title": "ReadQcAnalysisActivity",
             "type": "object"
         },
-        "RelSampLocEnum": {
-            "description": "",
-            "enum": [
-                "edge of car",
-                "center of car",
-                "under a seat"
-            ],
-            "title": "RelSampLocEnum",
-            "type": "string"
-        },
         "RelToOxygenEnum": {
             "description": "",
             "enum": [
@@ -4677,185 +3957,6 @@
             "title": "RnaSampleFormatEnum",
             "type": "string"
         },
-        "RoomCondtEnum": {
-            "description": "",
-            "enum": [
-                "new",
-                "visible wear",
-                "needs repair",
-                "damaged",
-                "rupture",
-                "visible signs of mold/mildew"
-            ],
-            "title": "RoomCondtEnum",
-            "type": "string"
-        },
-        "RoomConnectedEnum": {
-            "description": "",
-            "enum": [
-                "attic",
-                "bathroom",
-                "closet",
-                "conference room",
-                "elevator",
-                "examining room",
-                "hallway",
-                "kitchen",
-                "mail room",
-                "office",
-                "stairwell"
-            ],
-            "title": "RoomConnectedEnum",
-            "type": "string"
-        },
-        "RoomLocEnum": {
-            "description": "",
-            "enum": [
-                "corner room",
-                "interior room",
-                "exterior wall"
-            ],
-            "title": "RoomLocEnum",
-            "type": "string"
-        },
-        "RoomSampPosEnum": {
-            "description": "",
-            "enum": [
-                "north corner",
-                "south corner",
-                "west corner",
-                "east corner",
-                "northeast corner",
-                "northwest corner",
-                "southeast corner",
-                "southwest corner",
-                "center"
-            ],
-            "title": "RoomSampPosEnum",
-            "type": "string"
-        },
-        "RoomTypeEnum": {
-            "description": "",
-            "enum": [
-                "attic",
-                "bathroom",
-                "closet",
-                "conference room",
-                "elevator",
-                "examining room",
-                "hallway",
-                "kitchen",
-                "mail room",
-                "private office",
-                "open office",
-                "stairwell",
-                ",restroom",
-                "lobby",
-                "vestibule",
-                "mechanical or electrical room",
-                "data center",
-                "laboratory_wet",
-                "laboratory_dry",
-                "gymnasium",
-                "natatorium",
-                "auditorium",
-                "lockers",
-                "cafe",
-                "warehouse"
-            ],
-            "title": "RoomTypeEnum",
-            "type": "string"
-        },
-        "SampCaptStatusEnum": {
-            "description": "",
-            "enum": [
-                "active surveillance in response to an outbreak",
-                "active surveillance not initiated by an outbreak",
-                "farm sample",
-                "market sample",
-                "other"
-            ],
-            "title": "SampCaptStatusEnum",
-            "type": "string"
-        },
-        "SampCollectPointEnum": {
-            "description": "",
-            "enum": [
-                "well",
-                "test well",
-                "drilling rig",
-                "wellhead",
-                "separator",
-                "storage tank",
-                "other"
-            ],
-            "title": "SampCollectPointEnum",
-            "type": "string"
-        },
-        "SampDisStageEnum": {
-            "description": "",
-            "enum": [
-                "dissemination",
-                "growth and reproduction",
-                "infection",
-                "inoculation",
-                "penetration",
-                "other"
-            ],
-            "title": "SampDisStageEnum",
-            "type": "string"
-        },
-        "SampFloorEnum": {
-            "description": "",
-            "enum": [
-                "1st floor",
-                "2nd floor",
-                "basement",
-                "lobby"
-            ],
-            "title": "SampFloorEnum",
-            "type": "string"
-        },
-        "SampMdEnum": {
-            "description": "",
-            "enum": [
-                "DF",
-                "RT",
-                "KB",
-                "MSL",
-                "other"
-            ],
-            "title": "SampMdEnum",
-            "type": "string"
-        },
-        "SampSubtypeEnum": {
-            "description": "",
-            "enum": [
-                "oil phase",
-                "water phase",
-                "biofilm",
-                "not applicable",
-                "other"
-            ],
-            "title": "SampSubtypeEnum",
-            "type": "string"
-        },
-        "SampWeatherEnum": {
-            "description": "",
-            "enum": [
-                "clear sky",
-                "cloudy",
-                "foggy",
-                "hail",
-                "rain",
-                "snow",
-                "sleet",
-                "sunny",
-                "windy"
-            ],
-            "title": "SampWeatherEnum",
-            "type": "string"
-        },
         "SampleTypeEnum": {
             "description": "",
             "enum": [
@@ -4873,73 +3974,6 @@
             "title": "SamplingMethodEnum",
             "type": "string"
         },
-        "SeasonUseEnum": {
-            "description": "",
-            "enum": [
-                "Spring",
-                "Summer",
-                "Fall",
-                "Winter"
-            ],
-            "title": "SeasonUseEnum",
-            "type": "string"
-        },
-        "SedimentTypeEnum": {
-            "description": "",
-            "enum": [
-                "biogenous",
-                "cosmogenous",
-                "hydrogenous",
-                "lithogenous"
-            ],
-            "title": "SedimentTypeEnum",
-            "type": "string"
-        },
-        "ShadingDeviceCondEnum": {
-            "description": "",
-            "enum": [
-                "damaged",
-                "needs repair",
-                "new",
-                "rupture",
-                "visible wear"
-            ],
-            "title": "ShadingDeviceCondEnum",
-            "type": "string"
-        },
-        "ShadingDeviceTypeEnum": {
-            "description": "",
-            "enum": [
-                "bahama shutters",
-                "exterior roll blind",
-                "gambrel awning",
-                "hood awning",
-                "porchroller awning",
-                "sarasota shutters",
-                "slatted aluminum",
-                "solid aluminum awning",
-                "sun screen",
-                "tree",
-                "trellis",
-                "venetian awning"
-            ],
-            "title": "ShadingDeviceTypeEnum",
-            "type": "string"
-        },
-        "SoilHorizonEnum": {
-            "description": "",
-            "enum": [
-                "O horizon",
-                "A horizon",
-                "E horizon",
-                "B horizon",
-                "C horizon",
-                "R layer",
-                "Permafrost"
-            ],
-            "title": "SoilHorizonEnum",
-            "type": "string"
-        },
         "SolventEnum": {
             "description": "",
             "enum": [
@@ -4948,80 +3982,6 @@
                 "chloroform"
             ],
             "title": "SolventEnum",
-            "type": "string"
-        },
-        "SpecificEnum": {
-            "description": "",
-            "enum": [
-                "operation",
-                "as built",
-                "construction",
-                "bid",
-                "design",
-                "photos"
-            ],
-            "title": "SpecificEnum",
-            "type": "string"
-        },
-        "SrDepEnvEnum": {
-            "description": "",
-            "enum": [
-                "Lacustine",
-                "Fluvioldeltaic",
-                "Fluviomarine",
-                "Marine",
-                "other"
-            ],
-            "title": "SrDepEnvEnum",
-            "type": "string"
-        },
-        "SrGeolAgeEnum": {
-            "description": "",
-            "enum": [
-                "Archean",
-                "Cambrian",
-                "Carboniferous",
-                "Cenozoic",
-                "Cretaceous",
-                "Devonian",
-                "Jurassic",
-                "Mesozoic",
-                "Neogene",
-                "Ordovician",
-                "Paleogene",
-                "Paleozoic",
-                "Permian",
-                "Precambrian",
-                "Proterozoic",
-                "Silurian",
-                "Triassic",
-                "other"
-            ],
-            "title": "SrGeolAgeEnum",
-            "type": "string"
-        },
-        "SrKerogTypeEnum": {
-            "description": "",
-            "enum": [
-                "Type I",
-                "Type II",
-                "Type III",
-                "Type IV",
-                "other"
-            ],
-            "title": "SrKerogTypeEnum",
-            "type": "string"
-        },
-        "SrLithologyEnum": {
-            "description": "",
-            "enum": [
-                "Clastic",
-                "Carbonate",
-                "Coal",
-                "Biosilicieous",
-                "other"
-            ],
-            "title": "SrLithologyEnum",
             "type": "string"
         },
         "Study": {
@@ -5210,53 +4170,6 @@
             "title": "Study",
             "type": "object"
         },
-        "SubstructureTypeEnum": {
-            "description": "",
-            "enum": [
-                "crawlspace",
-                "slab on grade",
-                "basement"
-            ],
-            "title": "SubstructureTypeEnum",
-            "type": "string"
-        },
-        "SurfAirContEnum": {
-            "description": "",
-            "enum": [
-                "dust",
-                "organic matter",
-                "particulate matter",
-                "volatile organic compounds",
-                "biological contaminants",
-                "radon",
-                "nutrients",
-                "biocides"
-            ],
-            "title": "SurfAirContEnum",
-            "type": "string"
-        },
-        "SurfMaterialEnum": {
-            "description": "",
-            "enum": [
-                "adobe",
-                "carpet",
-                "cinder blocks",
-                "concrete",
-                "hay bales",
-                "glass",
-                "metal",
-                "paint",
-                "plastic",
-                "stainless steel",
-                "stone",
-                "stucco",
-                "tile",
-                "vinyl",
-                "wood"
-            ],
-            "title": "SurfMaterialEnum",
-            "type": "string"
-        },
         "TextValue": {
             "additionalProperties": false,
             "description": "A basic string value",
@@ -5318,38 +4231,6 @@
             "title": "TimestampValue",
             "type": "object"
         },
-        "TrainLineEnum": {
-            "description": "",
-            "enum": [
-                "red",
-                "green",
-                "orange"
-            ],
-            "title": "TrainLineEnum",
-            "type": "string"
-        },
-        "TrainStatLocEnum": {
-            "description": "",
-            "enum": [
-                "south station above ground",
-                "south station underground",
-                "south station amtrak",
-                "forest hills",
-                "riverside"
-            ],
-            "title": "TrainStatLocEnum",
-            "type": "string"
-        },
-        "TrainStopLocEnum": {
-            "description": "",
-            "enum": [
-                "end",
-                "mid",
-                "downtown"
-            ],
-            "title": "TrainStopLocEnum",
-            "type": "string"
-        },
         "UrlValue": {
             "additionalProperties": false,
             "description": "A value that is a string that conforms to URL syntax",
@@ -5364,199 +4245,6 @@
             },
             "title": "UrlValue",
             "type": "object"
-        },
-        "VisMediaEnum": {
-            "description": "",
-            "enum": [
-                "photos",
-                "videos",
-                "commonly of the building",
-                "site context (adjacent buildings, vegetation, terrain, streets)",
-                "interiors",
-                "equipment",
-                "3D scans"
-            ],
-            "title": "VisMediaEnum",
-            "type": "string"
-        },
-        "WallConstTypeEnum": {
-            "description": "",
-            "enum": [
-                "frame construction",
-                "joisted masonry",
-                "light noncombustible",
-                "masonry noncombustible",
-                "modified fire resistive",
-                "fire resistive"
-            ],
-            "title": "WallConstTypeEnum",
-            "type": "string"
-        },
-        "WallFinishMatEnum": {
-            "description": "",
-            "enum": [
-                "plaster",
-                "gypsum plaster",
-                "veneer plaster",
-                "gypsum board",
-                "tile",
-                "terrazzo",
-                "stone facing",
-                "acoustical treatment",
-                "wood",
-                "metal",
-                "masonry"
-            ],
-            "title": "WallFinishMatEnum",
-            "type": "string"
-        },
-        "WallLocEnum": {
-            "description": "",
-            "enum": [
-                "north",
-                "south",
-                "east",
-                "west"
-            ],
-            "title": "WallLocEnum",
-            "type": "string"
-        },
-        "WallSurfTreatmentEnum": {
-            "description": "",
-            "enum": [
-                "painted",
-                "wall paper",
-                "no treatment",
-                "paneling",
-                "stucco",
-                "fabric"
-            ],
-            "title": "WallSurfTreatmentEnum",
-            "type": "string"
-        },
-        "WallTextureEnum": {
-            "description": "",
-            "enum": [
-                "crows feet",
-                "crows-foot stomp",
-                "",
-                "double skip",
-                "hawk and trowel",
-                "knockdown",
-                "popcorn",
-                "orange peel",
-                "rosebud stomp",
-                "Santa-Fe texture",
-                "skip trowel",
-                "smooth",
-                "stomp knockdown",
-                "swirl"
-            ],
-            "title": "WallTextureEnum",
-            "type": "string"
-        },
-        "WaterFeatTypeEnum": {
-            "description": "",
-            "enum": [
-                "fountain",
-                "pool",
-                "standing feature",
-                "stream",
-                "waterfall"
-            ],
-            "title": "WaterFeatTypeEnum",
-            "type": "string"
-        },
-        "WeekdayEnum": {
-            "description": "",
-            "enum": [
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday"
-            ],
-            "title": "WeekdayEnum",
-            "type": "string"
-        },
-        "WindowCondEnum": {
-            "description": "",
-            "enum": [
-                "damaged",
-                "needs repair",
-                "new",
-                "rupture",
-                "visible wear"
-            ],
-            "title": "WindowCondEnum",
-            "type": "string"
-        },
-        "WindowCoverEnum": {
-            "description": "",
-            "enum": [
-                "blinds",
-                "curtains",
-                "none"
-            ],
-            "title": "WindowCoverEnum",
-            "type": "string"
-        },
-        "WindowHorizPosEnum": {
-            "description": "",
-            "enum": [
-                "left",
-                "middle",
-                "right"
-            ],
-            "title": "WindowHorizPosEnum",
-            "type": "string"
-        },
-        "WindowLocEnum": {
-            "description": "",
-            "enum": [
-                "north",
-                "south",
-                "east",
-                "west"
-            ],
-            "title": "WindowLocEnum",
-            "type": "string"
-        },
-        "WindowMatEnum": {
-            "description": "",
-            "enum": [
-                "clad",
-                "fiberglass",
-                "metal",
-                "vinyl",
-                "wood"
-            ],
-            "title": "WindowMatEnum",
-            "type": "string"
-        },
-        "WindowTypeEnum": {
-            "description": "",
-            "enum": [
-                "single-hung sash window",
-                "horizontal sash window",
-                "fixed window"
-            ],
-            "title": "WindowTypeEnum",
-            "type": "string"
-        },
-        "WindowVertPosEnum": {
-            "description": "",
-            "enum": [
-                "bottom",
-                "middle",
-                "top",
-                "low",
-                "high"
-            ],
-            "title": "WindowVertPosEnum",
-            "type": "string"
         },
         "WorkflowExecutionActivity": {
             "additionalProperties": false,
@@ -5865,5 +4553,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "7.4"
+    "version": "7.4.10"
 }

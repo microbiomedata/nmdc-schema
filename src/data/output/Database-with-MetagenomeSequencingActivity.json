@@ -1,7 +1,7 @@
 {
   "metagenome_sequencing_activity_set": [
     {
-      "id": "nmdc:wf-99-qwertyuiop",
+      "id": "nmdc:wfmsa-99-qwertyuiop",
       "name": "Sequencing Activity for nmdc:mga0vx38",
       "started_at_time": "2021-08-05T14:48:51+00:00",
       "ended_at_time": "2021-09-15T10:13:20+00:00",

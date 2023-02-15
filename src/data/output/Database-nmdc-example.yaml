@@ -17,8 +17,7 @@ biosample_set:
     term:
       id: ENVO:00005792
   type: nmdc:Biosample
-  samp_name:
-    has_raw_value: 611E1M metaG
+  samp_name: 11E1M metaG
   gold_biosample_identifiers:
   - GOLD:Gb0150408
   geo_loc_name:
@@ -58,8 +57,7 @@ biosample_set:
     term:
       id: ENVO:00005792
   type: nmdc:Biosample
-  samp_name:
-    has_raw_value: Inc-BW-C-14-O
+  samp_name: Inc-BW-C-14-O
   gold_biosample_identifiers:
   - GOLD:Gb0157174
   geo_loc_name:
@@ -99,8 +97,7 @@ biosample_set:
     term:
       id: ENVO:00005792
   type: nmdc:Biosample
-  samp_name:
-    has_raw_value: 4-1-23 metaG
+  samp_name: 4-1-23 metaG
   gold_biosample_identifiers:
   - GOLD:Gb0188037
   geo_loc_name:

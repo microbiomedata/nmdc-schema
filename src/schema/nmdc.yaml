@@ -25,7 +25,7 @@ description: >-
    * the NMDC schema itself
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: 7.4
+version: 7.4.10
 prefixes:
   COG: https://unknown.to.linter.org/
   EC: https://unknown.to.linter.org/

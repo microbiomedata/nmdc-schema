@@ -29,8 +29,7 @@ type: nmdc:Biosample. change this to require a class name or an enumeration
 img_identifiers:
 - any string 1
 - any string 2
-samp_name:
-  has_raw_value: see also name
+samp_name: see also name
 biosample_categories:
 - LTER
 - FICUS
@@ -163,7 +162,7 @@ org_matter:
 org_nitro:
   has_raw_value: 4 micromole per liter
 organism_count:
-- ATP
+- has_raw_value: ATP
 oxy_stat_samp: aerobe
 part_org_carb:
   has_raw_value: 1.92 micromole per liter
@@ -246,15 +245,13 @@ tot_org_c_meth:
   has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9060a.pdf
 tot_nitro_content:
   has_raw_value: 35 milligrams Nitrogen per kilogram of soil
-tot_nitro_cont_meth:
-  has_raw_value: https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00
+tot_nitro_cont_meth: https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00
 tot_phosp:
   has_raw_value: 0.03 milligram per liter
 water_content:
 - MIxS doesn't provide an example 1
 - MIxS doesn't provide an example 2
-water_cont_soil_meth:
-  has_raw_value: MIxS doesn't provide an example
+water_cont_soil_meth: MIxS doesn't provide an example
 ecosystem: unconstrained text. should be validated against the controlled vocabulary,
   by the sample's environmental package. would also be nice to align the CV with MIxS
   environmental triads
@@ -296,8 +293,7 @@ light_regm:
   has_raw_value: incandescent light;10 lux;450 nanometer
 phosphate:
   has_raw_value: 0.7 micromole per liter
-samp_collec_method:
-  has_raw_value: swabbing
+samp_collec_method: swabbing
 samp_size:
   has_raw_value: 5 liters
 source_mat_id:

@@ -3,7 +3,7 @@
 @prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-nmdc:wf-99-qwertyuiop a nmdc:MetagenomeSequencingActivity ;
+nmdc:wfmsa-99-qwertyuiop a nmdc:MetagenomeSequencingActivity ;
     dcterms:isPartOf nmdc:mga0vx38 ;
     nmdc:ended_at_time "2021-09-15T10:13:20+00:00"^^xsd:dateTime ;
     nmdc:execution_resource "JGI" ;

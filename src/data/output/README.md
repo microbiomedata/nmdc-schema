@@ -450,7 +450,7 @@ metagenome_sequencing_activity_set:
   - nmdc:unvalidated_placeholder
   has_output:
   - nmdc:22afa3d49b73eaec2e9787a6b88fbdc3
-  id: nmdc:wf-99-qwertyuiop
+  id: nmdc:wfmsa-99-qwertyuiop
   name: Sequencing Activity for nmdc:mga0vx38
   part_of:
   - nmdc:mga0vx38
@@ -897,7 +897,7 @@ org_nitro:
   has_raw_value: 4 micromole per liter
 org_nitro_method: https://doi.org/10.1016/0038-0717(85)90144-0
 organism_count:
-- ATP
+- has_raw_value: ATP
 other_treatment: unconstrained text
 oxy_stat_samp: aerobe
 part_of:
@@ -956,12 +956,10 @@ salinity_category: halotolerant is an example from the schema, but MIxS doesn't 
   this slot any more
 salinity_meth:
   has_raw_value: PMID:22895776
-samp_collec_method:
-  has_raw_value: swabbing
+samp_collec_method: swabbing
 samp_mat_process:
   has_raw_value: filtering of seawater
-samp_name:
-  has_raw_value: see also name
+samp_name: see also name
 samp_size:
   has_raw_value: 5 liters
 samp_store_dur:
@@ -1026,8 +1024,7 @@ tot_depth_water_col:
   has_raw_value: 500 meter
 tot_diss_nitro:
   has_raw_value: 40 microgram per liter
-tot_nitro_cont_meth:
-  has_raw_value: https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00
+tot_nitro_cont_meth: https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00
 tot_nitro_content:
   has_raw_value: 35 milligrams Nitrogen per kilogram of soil
 tot_org_c_meth:
@@ -1037,8 +1034,7 @@ tot_org_carb:
 tot_phosp:
   has_raw_value: 0.03 milligram per liter
 type: nmdc:Biosample. change this to require a class name or an enumeration
-water_cont_soil_meth:
-  has_raw_value: MIxS doesn't provide an example
+water_cont_soil_meth: MIxS doesn't provide an example
 water_content:
 - MIxS doesn't provide an example 1
 - MIxS doesn't provide an example 2
@@ -1058,7 +1054,7 @@ has_input:
 - nmdc:unvalidated_placeholder
 has_output:
 - nmdc:22afa3d49b73eaec2e9787a6b88fbdc3
-id: nmdc:wf-99-qwertyuiop
+id: nmdc:wfmsa-99-qwertyuiop
 name: Sequencing Activity for nmdc:mga0vx38
 part_of:
 - nmdc:mga0vx38
@@ -1486,8 +1482,7 @@ biosample_set:
   ncbi_taxonomy_name: permafrost metagenome
   part_of:
   - GOLD:Gs0128849
-  samp_name:
-    has_raw_value: 611E1M metaG
+  samp_name: 11E1M metaG
   sample_collection_site: Mire fen
   specific_ecosystem: Permafrost
   type: nmdc:Biosample
@@ -1528,8 +1523,7 @@ biosample_set:
   ncbi_taxonomy_name: soil metagenome
   part_of:
   - GOLD:Gs0128849
-  samp_name:
-    has_raw_value: Inc-BW-C-14-O
+  samp_name: Inc-BW-C-14-O
   sample_collection_site: forest soil
   specific_ecosystem: Forest Soil
   type: nmdc:Biosample
@@ -1569,8 +1563,7 @@ biosample_set:
   ncbi_taxonomy_name: rhizosphere metagenome
   part_of:
   - GOLD:Gs0128849
-  samp_name:
-    has_raw_value: 4-1-23 metaG
+  samp_name: 4-1-23 metaG
   sample_collection_site: Peat Soil
   specific_ecosystem: Unclassified
   type: nmdc:Biosample
@@ -2221,7 +2214,7 @@ has_input:
 - nmdc:unvalidated_placeholder
 has_output:
 - nmdc:22afa3d49b73eaec2e9787a6b88fbdc3
-id: nmdc:wf-99-qwertyuiop
+id: nmdc:wfmsa-99-qwertyuiop
 name: Sequencing Activity for nmdc:mga0vx38
 part_of: null
 started_at_time: '2021-08-05T14:48:51+00:00'
