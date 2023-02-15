@@ -232,6 +232,11 @@ classes:
     in_subset:
       - workflow subset
     slots: [ ]
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
 
 
   ReadQcAnalysisActivity:

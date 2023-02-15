@@ -1,5 +1,5 @@
 # id: nmdc:107ade35423143e39dc30b12832ac759
-id: 'nmdc:wf-99-qwertyuiop'
+id: 'nmdc:wfmsa-99-qwertyuiop'
 has_input:
   - 'nmdc:unvalidated_placeholder'
 # legacy part_of id? validator won't catch pattern violations
