@@ -20,6 +20,7 @@ authors = [
 linkml-runtime = "^1.4.5"
 python = "^3.9"
 jupyter = "^1.0.0"
+toml = "^0.10.2"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0" # "^22.10.0" vs 23.1.0
