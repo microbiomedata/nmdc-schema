@@ -1,0 +1,304 @@
+class	slot	action	target	path	LinkML implementation notes	value
+Biosample	agrochem_addition	replace_attribute	range			TextValue
+Biosample	air_temp_regm	replace_attribute	range			TextValue
+Biosample	air_temp_regm	replace_attribute	recommended			true
+Biosample	al_sat	add_attribute	comments			Aluminum saturation is the percentage of the CEC occupies by aluminum. Like all cations, aluminum held by the cation exchange complex is in equilibrium with aluminum in the soil solution.
+Biosample	al_sat	replace_attribute	description			The relative abundance of aluminum in the sample
+Biosample	al_sat	overwrite_examples	examples			0.27
+Biosample	al_sat	replace_attribute	title			aluminum saturation/ extreme unusual properties
+Biosample	al_sat	add_attribute	todos			This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot|Example & validation. Can we make rules that 27% & 27 % & 0.27 will validate?|I think it's weird the way GSC writes the title. I recommend this change. Thoughts? I would argue this isn't an extreme unusual property. It's just a biogeochemical measurement.
+Biosample	al_sat_meth	add_attribute	comments			Required when aluminum saturation is provided.
+Biosample	al_sat_meth	replace_attribute	description			Reference or method used in determining Aluminum saturation
+Biosample	al_sat_meth	overwrite_examples	examples			https://doi.org/10.1371/journal.pone.0176357
+Biosample	al_sat_meth	replace_attribute	title			aluminum saturation method/ extreme unusual properties
+Biosample	al_sat_meth	add_attribute	todos			This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot|I think it's weird the way GSC writes the title. I recommend this change. Thoughts?
+Biosample	alt	replace_attribute	recommended			true
+Biosample	annual_precpt	overwrite_examples	examples			8.94 inch
+Biosample	annual_precpt	add_attribute	todos			This is no longer matching the listed IRI from GSC, added example. When NMDC has its own slots, map this to the MIxS slot
+Biosample	antibiotic_regm	replace_attribute	range			TextValue
+Biosample	aromatics_pc	replace_attribute	range			TextValue
+Biosample	asphaltenes_pc	replace_attribute	range			TextValue
+Biosample	atmospheric_data	replace_attribute	range			TextValue
+Biosample	avg_occup	replace_attribute	range			TextValue
+Biosample	bathroom_count	replace_attribute	range			TextValue
+Biosample	bedroom_count	replace_attribute	range			TextValue
+Biosample	biocide_admin_method	replace_attribute	range			TextValue
+Biosample	biomass	replace_attribute	range			TextValue
+Biosample	biotic_regm	replace_attribute	recommended			true
+Biosample	carb_nitro_ratio	replace_attribute	range			float
+Biosample	chem_administration	replace_attribute	range			ControlledTermValue
+Biosample	chem_administration	replace_attribute	recommended			true
+Biosample	chem_mutagen	replace_attribute	range			TextValue
+Biosample	chem_treat_method	replace_attribute	range			TextValue
+Biosample	climate_environment	replace_attribute	recommended			true
+Biosample	climate_environment	add_attribute	todos			"description says ""can include multiple climates"" but multivalued is set to false|add examples, i need to see some examples to add correctly formatted example."
+Biosample	collection_date	replace_attribute	description			The date of sampling
+Biosample	collection_date	overwrite_examples	examples			2021-04-15; 2021-04; 2021
+Biosample	collection_date	add_attribute	notes			MIxS collection_date accepts (truncated) ISO8601. DH taking arb prec date only
+Biosample	collection_date	add_attribute	notes			Use modified term (amended definition)
+Biosample	collection_date	replace_attribute	range			TimestampValue
+Biosample	collection_date	replace_attribute	required			true
+Biosample	collection_date	replace_attribute	string_serialization			{date, arbitrary precision}
+Biosample	cool_syst_id	replace_attribute	range			TextValue
+Biosample	cur_vegetation	add_attribute	comments			Values provided here can be specific species of vegetation or vegetation regions|See for vegetation regions- https://education.nationalgeographic.org/resource/vegetation-region
+Biosample	cur_vegetation	replace_attribute	description			Vegetation classification from one or more standard classification systems, or agricultural crop
+Biosample	cur_vegetation	overwrite_examples	examples			deciduous forest|forest|Bauhinia variegata
+Biosample	cur_vegetation	add_attribute	todos			This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot|Recommend changing this from text value to some king of ontology?
+Biosample	cur_vegetation_meth	add_attribute	comments			Required when current vegetation is provided.
+Biosample	cur_vegetation_meth	overwrite_examples	examples			https://doi.org/10.1111/j.1654-109X.2011.01154.x
+Biosample	cur_vegetation_meth	add_attribute	todos			This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot|I'm not sure this is a DOI, PMID, or URI. Should pool the community and find out how they accomplish this if provided.
+Biosample	date_last_rain	replace_attribute	range			TimestampValue
+Biosample	depth	add_attribute	comments			All depths must be reported in meters. Provide the numerical portion only.
+Biosample	depth	overwrite_examples	examples			0-0.1; 1
+Biosample	depth	add_attribute	notes			Use modified term
+Biosample	depth	replace_attribute	range			TextValue
+Biosample	depth	replace_attribute	required			true
+Biosample	depth	replace_attribute	string_serialization			{float}|{float}-{float}
+Biosample	depth	replace_attribute	title			depth, meters
+Biosample	diether_lipids	replace_attribute	range			TextValue
+Biosample	ecosystem	replace_attribute	range			TextValue
+Biosample	ecosystem	replace_attribute	required			true
+Biosample	ecosystem_category	replace_attribute	range			TextValue
+Biosample	ecosystem_category	replace_attribute	required			true
+Biosample	ecosystem_subtype	replace_attribute	range			TextValue
+Biosample	ecosystem_subtype	replace_attribute	required			true
+Biosample	ecosystem_type	replace_attribute	range			TextValue
+Biosample	ecosystem_type	replace_attribute	required			true
+Biosample	elev	add_attribute	comments			All elevations must be reported in meters. Provide the numerical portion only.
+Biosample	elev	overwrite_examples	examples			100
+Biosample	elev	replace_attribute	range			float
+Biosample	elev	replace_attribute	required			true
+Biosample	elev	replace_attribute	title			elevation, meters
+Biosample	elevator	replace_attribute	range			TextValue
+Biosample	emulsions	replace_attribute	range			TextValue
+Biosample	env_broad_scale	replace_attribute	description			In this field, report which major environmental system your sample or specimen came from. The systems identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. were you in the desert or a rainforest?). We recommend using subclasses of ENVO's biome class: http://purl.obolibrary.org/obo/ENVO_00000428. Format (one term): termLabel [termID], Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a water sample from the photic zone in middle of the Atlantic Ocean, consider: oceanic epipelagic zone biome [ENVO:01000033]. Example: Annotating a sample from the Amazon rainforest consider: tropical moist broadleaf forest biome [ENVO:01000228]. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html
+Biosample	env_broad_scale	add_attribute	notes			"range changed to enumeration late in makefile, so this is modified (but ""sample ID"" anyway)"
+Biosample	env_broad_scale	replace_attribute	range			ControlledIdentifiedTermValue
+Biosample	env_broad_scale	replace_attribute	required			true
+Biosample	env_local_scale	add_attribute	notes			"range changed to enumeration late in makefile, so this is modified (but ""sample ID"" anyway)"
+Biosample	env_local_scale	replace_attribute	range			ControlledIdentifiedTermValue
+Biosample	env_local_scale	replace_attribute	required			true
+Biosample	env_medium	add_attribute	notes			"range changed to enumeration late in makefile, so this is modified (but ""sample ID"" anyway)"
+Biosample	env_medium	replace_attribute	range			ControlledIdentifiedTermValue
+Biosample	env_medium	replace_attribute	required			true
+Biosample	escalator	replace_attribute	range			TextValue
+Biosample	exp_pipe	replace_attribute	range			QuantityValue
+Biosample	experimental_factor	replace_attribute	range			ControlledTermValue
+Biosample	ext_door	replace_attribute	range			TextValue
+Biosample	extreme_event	overwrite_examples	examples			1980-05-18, volcanic eruption
+Biosample	extreme_event	replace_attribute	range			TextValue
+Biosample	extreme_event	add_attribute	todos			may need new range with sub-slots for a date and a descriptive string
+Biosample	extreme_event	add_attribute	todos			This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
+Biosample	fertilizer_regm	replace_attribute	range			TextValue
+Biosample	fire	add_attribute	comments			Provide the date the fire occurred. If extended burning occurred provide the date range.
+Biosample	fire	overwrite_examples	examples			1871-10-10|1871-10-01 to 1871-10-31
+Biosample	fire	replace_attribute	pattern			^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$
+Biosample	fire	replace_attribute	range			TextValue
+Biosample	fire	add_attribute	todos			"is ""to"" acceptable? Is there a better way to request that be written?|This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot"
+Biosample	fire	add_attribute	todos			may need new range with sub-slots for a date or date range
+Biosample	flooding	add_attribute	comments			Provide the date the flood occurred. If extended flooding occurred provide the date range.
+Biosample	flooding	overwrite_examples	examples			1927-04-15|1927-04 to 1927-05
+Biosample	flooding	replace_attribute	range			TextValue
+Biosample	flooding	add_attribute	todos			"is ""to"" acceptable? Is there a better way to request that be written?|What about if the ""day"" isn't known? Is this ok?|This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot"
+Biosample	flooding	add_attribute	todos			may need new range with sub-slots for text or ontology term or enum
+Biosample	floor_count	replace_attribute	range			TextValue
+Biosample	freq_clean	replace_attribute	range			QuantityValue
+Biosample	freq_cook	replace_attribute	range			QuantityValue
+Biosample	fungicide_regm	replace_attribute	range			TextValue
+Biosample	gaseous_environment	overwrite_examples	examples			CO2; 500ppm above ambient; constant|nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+Biosample	gaseous_environment	replace_attribute	range			TextValue
+Biosample	gaseous_environment	replace_attribute	recommended			true
+Biosample	gaseous_environment	add_attribute	todos			would like to see usage examples for this slot. Requiring micromole/L seems too limiting and doesn't match expected_value value|did I do this right? keep the example that's provided and add another? so as to not override
+Biosample	gaseous_substances	replace_attribute	range			TextValue
+Biosample	geo_loc_name	replace_attribute	string_serialization			{text}: {text}, {text}
+Biosample	gravity	replace_attribute	range			TextValue
+Biosample	growth_facil	replace_attribute	description			Type of facility/location where the sample was harvested; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field.
+Biosample	growth_facil	add_attribute	notes			Removed from description: Alternatively use Crop Ontology (CO) terms
+Biosample	growth_facil	replace_attribute	range			TextValue
+Biosample	growth_facil	replace_attribute	required			true
+Biosample	growth_facil	add_attribute	todos			the submission portal has an enum
+Biosample	growth_hormone_regm	replace_attribute	range			TextValue
+Biosample	hall_count	replace_attribute	range			integer
+Biosample	hall_count	add_attribute	todos			is this even present in the mixs subset import?
+Biosample	hcr_pressure	replace_attribute	range			TextValue
+Biosample	hcr_temp	replace_attribute	range			TextValue
+Biosample	heat_sys_deliv_meth	replace_attribute	range			TextValue
+Biosample	heat_system_id	replace_attribute	range			TextValue
+Biosample	heavy_metals	add_attribute	comments			For multiple heavy metals and concentrations, separate by ;
+Biosample	heavy_metals	replace_attribute	description			Heavy metals present in the sample and their concentrations.
+Biosample	heavy_metals	overwrite_examples	examples			mercury 0.09 micrograms per gram|mercury 0.09 ug/g; chromium 0.03 ug/g
+Biosample	heavy_metals	replace_attribute	multivalued			true
+Biosample	heavy_metals	add_attribute	notes			Changed to multi-valued. In MIxS, you add another column to denote multiple heavy metals. We don't have that ability in the submission portal.
+Biosample	heavy_metals	replace_attribute	range			TextValue
+Biosample	heavy_metals	replace_attribute	title			heavy metals/ extreme unusual properties
+Biosample	heavy_metals	add_attribute	todos			This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot|Example & validation. Can we make rules that 27% & 27 % & 0.27 will validate?|I think it's weird the way GSC writes the title. I recommend this change. Thoughts? I would argue this isn't an extreme unusual property. It's just a biogeochemical measurement.
+Biosample	heavy_metals_meth	add_attribute	comments			Required when heavy metals are provided|If different methods are used for multiple metals, indicate the metal and method. Separate metals by ;
+Biosample	heavy_metals_meth	overwrite_examples	examples			https://doi.org/10.3390/ijms9040434|mercury https://doi.org/10.1007/BF01056090; chromium https://doi.org/10.1007/s00216-006-0322-8
+Biosample	heavy_metals_meth	replace_attribute	multivalued			true
+Biosample	heavy_metals_meth	replace_attribute	title			heavy metals method/ extreme unusual properties
+Biosample	heavy_metals_meth	add_attribute	todos			This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
+Biosample	herbicide_regm	replace_attribute	range			TextValue
+Biosample	horizon_meth	replace_attribute	title			horizon method
+Biosample	host_body_product	replace_attribute	range			ControlledTermValue
+Biosample	host_body_site	replace_attribute	range			ControlledTermValue
+Biosample	host_family_relation	replace_attribute	range			TextValue
+Biosample	host_phenotype	replace_attribute	range			ControlledTermValue
+Biosample	host_subspecf_genlin	replace_attribute	range			TextValue
+Biosample	host_symbiont	replace_attribute	range			TextValue
+Biosample	humidity_regm	replace_attribute	range			TextValue
+Biosample	humidity_regm	replace_attribute	recommended			true
+Biosample	inorg_particles	replace_attribute	range			TextValue
+Biosample	iw_bt_date_well	replace_attribute	range			TimestampValue
+Biosample	last_clean	replace_attribute	range			TimestampValue
+Biosample	lat_lon	replace_attribute	description			This is currently a required field but it's not clear if this should be required for human hosts
+Biosample	lat_lon	replace_attribute	range			GeolocationValue
+Biosample	lat_lon	replace_attribute	string_serialization			{lat lon}
+Biosample	light_regm	replace_attribute	range			TextValue
+Biosample	light_regm	replace_attribute	recommended			true
+Biosample	max_occup	replace_attribute	range			QuantityValue
+Biosample	micro_biomass_meth	replace_attribute	range			TextValue
+Biosample	mineral_nutr_regm	replace_attribute	range			TextValue
+Biosample	misc_param	replace_attribute	range			TextValue
+Biosample	n_alkanes	replace_attribute	range			TextValue
+Biosample	non_min_nutr_regm	replace_attribute	range			TextValue
+Biosample	number_pets	replace_attribute	range			QuantityValue
+Biosample	number_plants	replace_attribute	range			QuantityValue
+Biosample	number_resident	replace_attribute	range			QuantityValue
+Biosample	occup_density_samp	replace_attribute	range			QuantityValue
+Biosample	occup_samp	replace_attribute	range			QuantityValue
+Biosample	org_count_qpcr_info	replace_attribute	range			TextValue
+Biosample	org_particles	replace_attribute	range			TextValue
+Biosample	organism_count	replace_attribute	range			QuantityValue
+Biosample	oxy_stat_samp	add_attribute	notes			this is now a hybrid of the oxy_stat_samp semantics and the rel_to_oxygen enumeration
+Biosample	oxy_stat_samp	replace_attribute	range			rel_to_oxygen_enum
+Biosample	particle_class	replace_attribute	range			TextValue
+Biosample	permeability	replace_attribute	range			TextValue
+Biosample	pesticide_regm	replace_attribute	range			TextValue
+Biosample	ph	replace_attribute	description			pH measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid
+Biosample	ph	replace_attribute	maximum_value			14
+Biosample	ph	replace_attribute	minimum_value		expects int?!	0
+Biosample	ph	add_attribute	notes			Use modified term
+Biosample	ph	replace_attribute	range			float
+Biosample	ph	replace_attribute	recommended			true
+Biosample	ph	replace_attribute	string_serialization			{float}
+Biosample	ph_meth	add_attribute	comments			This can include a link to the instrument used or a citation for the method.
+Biosample	ph_meth	overwrite_examples	examples			https://www.southernlabware.com/pc9500-benchtop-ph-conductivity-meter-kit-ph-accuracy-2000mv-ph-range-2-000-to-20-000.html?gclid=Cj0KCQiAwJWdBhCYARIsAJc4idCO5vtvbVMf545fcvdROFqa6zjzNSoywNx6K4k9Coo9cCc2pybtvGsaAiR0EALw_wcB|https://doi.org/10.2136/sssabookser5.3.c16
+Biosample	phaeopigments	replace_attribute	range			TextValue
+Biosample	phosplipid_fatt_acid	replace_attribute	range			TextValue
+Biosample	plant_growth_med	replace_attribute	range			ControlledTermValue
+Biosample	plant_struc	replace_attribute	range			ControlledTermValue
+Biosample	pollutants	replace_attribute	range			TextValue
+Biosample	porosity	replace_attribute	range			TextValue
+Biosample	pres_animal_insect	replace_attribute	range			TextValue
+Biosample	prev_land_use_meth	replace_attribute	range			TextValue
+Biosample	prod_start_date	replace_attribute	range			TimestampValue
+Biosample	radiation_regm	replace_attribute	range			TextValue
+Biosample	rainfall_regm	replace_attribute	range			TextValue
+Biosample	resins_pc	replace_attribute	range			TextValue
+Biosample	room_architec_elem	replace_attribute	range			TextValue
+Biosample	room_count	replace_attribute	range			TextValue
+Biosample	room_dim	replace_attribute	range			TextValue
+Biosample	room_door_dist	replace_attribute	range			TextValue
+Biosample	room_net_area	replace_attribute	range			TextValue
+Biosample	room_occup	replace_attribute	range			QuantityValue
+Biosample	room_vol	replace_attribute	range			TextValue
+Biosample	root_med_carbon	replace_attribute	range			TextValue
+Biosample	root_med_macronutr	replace_attribute	range			TextValue
+Biosample	root_med_micronutr	replace_attribute	range			TextValue
+Biosample	root_med_ph	replace_attribute	range			QuantityValue
+Biosample	root_med_regl	replace_attribute	range			TextValue
+Biosample	root_med_suppl	replace_attribute	range			TextValue
+Biosample	salinity_meth	overwrite_examples	examples			https://doi.org/10.1007/978-1-61779-986-0_28
+Biosample	salt_regm	replace_attribute	range			TextValue
+Biosample	samp_collec_device	add_attribute	comments			Report dimensions and details when applicable
+Biosample	samp_collec_device	replace_attribute	range			TextValue
+Biosample	samp_collec_device	replace_attribute	recommended			true
+Biosample	samp_collec_method	add_attribute	comments			This can be a citation or description
+Biosample	samp_collec_method	replace_attribute	range			TextValue
+Biosample	samp_loc_corr_rate	replace_attribute	range			TextValue
+Biosample	samp_mat_process	replace_attribute	range			ControlledTermValue
+Biosample	samp_md	replace_attribute	range			QuantityValue
+Biosample	samp_name	add_attribute	comments			It can have any format, but we suggest that you make it concise, unique and consistent within your lab, and as informative as possible.
+Biosample	samp_name	replace_attribute	description			A local identifier or name that for the material sample collected. Refers to the original material collected or to any derived sub-samples.
+Biosample	samp_name	overwrite_examples	examples			Rock core CB1178(5-6) from NSW
+Biosample	samp_name	replace_attribute	range			TextValue
+Biosample	samp_preserv	replace_attribute	range			TextValue
+Biosample	samp_room_id	replace_attribute	range			TextValue
+Biosample	samp_size	add_attribute	comments			This refers to the TOTAL amount of sample collected from the experiment. NOT the amount sent to each institution or collected for a specific analysis.
+Biosample	samp_size	overwrite_examples	examples			5 grams; 10 mL
+Biosample	samp_size	replace_attribute	range			TextValue
+Biosample	samp_size	replace_attribute	string_serialization			{float} {unit}
+Biosample	samp_store_temp	replace_attribute	description			Temperature at which the sample was stored (degrees are assumed)
+Biosample	samp_store_temp	overwrite_examples	examples			-80 Celsius
+Biosample	samp_store_temp	replace_attribute	required			true
+Biosample	samp_time_out	replace_attribute	range			TextValue
+Biosample	samp_transport_cond	replace_attribute	range			TextValue
+Biosample	samp_tvdss	replace_attribute	range			TextValue
+Biosample	saturates_pc	replace_attribute	range			TextValue
+Biosample	season_precpt	add_attribute	comments			Seasons are defined as spring (March, April, May), summer (June, July, August), autumn (September, October, November) and winter (December, January, February).
+Biosample	season_precpt	overwrite_examples	examples			0.4 inch|10.16 mm
+Biosample	season_precpt	add_attribute	notes			mean and average are the same thing, but it seems like bad practice to not be consistent. Changed mean to average
+Biosample	season_precpt	replace_attribute	title			average seasonal precipitation
+Biosample	season_precpt	add_attribute	todos			This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot|check validation & examples. always mm? so value only? Or value + unit
+Biosample	shad_dev_water_mold	replace_attribute	range			TextValue
+Biosample	sieving	add_attribute	comments			Describe how samples were composited or sieved.|Use 'sample link' to indicate which samples were combined.
+Biosample	sieving	overwrite_examples	examples			combined 2 cores | 4mm sieved|4 mm sieved and homogenized|50 g | 5 cores | 2 mm sieved
+Biosample	sieving	replace_attribute	range			TextValue
+Biosample	sieving	replace_attribute	recommended			true
+Biosample	sieving	add_attribute	todos			check validation and examples
+Biosample	size_frac	replace_attribute	range			TextValue
+Biosample	size_frac_low	replace_attribute	recommended			false
+Biosample	size_frac_up	replace_attribute	recommended			false
+Biosample	slope_aspect	add_attribute	comments			Aspect is the orientation of slope, measured clockwise in degrees from 0 to 360, where 0 is north-facing, 90 is east-facing, 180 is south-facing, and 270 is west-facing.
+Biosample	slope_aspect	replace_attribute	description			The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees). - This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.
+Biosample	slope_aspect	overwrite_examples	examples			35
+Biosample	slope_aspect	add_attribute	todos			This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
+Biosample	slope_gradient	overwrite_examples	examples			10%|10 %|0.1
+Biosample	slope_gradient	add_attribute	todos			Slope is a percent. How does the validation work? Check to correct examples
+Biosample	soil_texture_meth	replace_attribute	range			TextValue
+Biosample	soluble_inorg_mat	replace_attribute	range			TextValue
+Biosample	soluble_org_mat	replace_attribute	range			TextValue
+Biosample	source_mat_id	add_attribute	comments			Identifiers must be prefixed. Possible FAIR prefixes are IGSNs (http://www.geosamples.org/getigsn), NCBI biosample accession numbers, ARK identifiers (https://arks.org/). These IDs enable linking to derived analytes and subsamples. If you have not assigned FAIR identifiers to your samples, you can generate UUIDs (https://www.uuidgenerator.net/).
+Biosample	source_mat_id	add_attribute	comments			Identifiers must be prefixed. Possible FAIR prefixes are IGSNs (http://www.geosamples.org/getigsn), NCBI biosample accession numbers, ARK identifiers (https://arks.org/). These IDs enable linking to derrived analytes and subsamples. If you have not assigned FAIR identifiers to your samples, you can generate UUIDs (https://www.uuidgenerator.net/).
+Biosample	source_mat_id	replace_attribute	description			A globally unique identifier assigned to the biological sample.
+Biosample	source_mat_id	replace_attribute	description			A globally unique identifier assigned to the biological sample.
+Biosample	source_mat_id	overwrite_examples	examples			IGSN:AU1243 or UUID:24f1467a-40f4-11ed-b878-0242ac120002  
+Biosample	source_mat_id	overwrite_examples	examples			IGSN:AU1243|UUID:24f1467a-40f4-11ed-b878-0242ac120002
+Biosample	source_mat_id	replace_attribute	identifier			true
+Biosample	source_mat_id	add_attribute	notes			The source material IS the Globally Unique ID
+Biosample	source_mat_id	replace_attribute	required			true
+Biosample	source_mat_id	replace_attribute	string_serialization			{text}:{text}
+Biosample	source_mat_id	replace_attribute	title			globally unique ID
+Biosample	source_mat_id	replace_attribute	title			source material identifier
+Biosample	source_mat_id	add_attribute	todos			Currently, the comments say to use UUIDs. However, if we implement assigning NMDC identifiers with the minter we dont need to require a GUID. It can be an optional field to fill out only if they already have a resolvable ID.
+Biosample	specific_ecosystem	replace_attribute	range			TextValue
+Biosample	specific_ecosystem	replace_attribute	required			true
+Biosample	store_cond	replace_attribute	description			Explain how the soil sample is stored (fresh/frozen/other).
+Biosample	store_cond	replace_attribute	range			TextValue
+Biosample	store_cond	add_attribute	todos			submission schema has an enum
+Biosample	store_cond	replace_attribute	required			true
+Biosample	suspend_solids	replace_attribute	range			TextValue
+Biosample	tot_carb	overwrite_examples	examples			1 ug/L
+Biosample	tot_carb	add_attribute	todos			is this inorganic and organic? both? could use some clarification.|ug/L doesn't seem like the right units. Should check this slots usage in databases and re-evaluate. I couldn't find any references that provided this data in this format
+Biosample	tot_nitro_cont_meth	overwrite_examples	examples			https://doi.org/10.2134/agronmonogr9.2.c32|https://acsess.onlinelibrary.wiley.com/doi/full/10.2136/sssaj2009.0389?casa_token=bm0pYIUdNMgAAAAA%3AOWVRR0STHaOe-afTcTdxn5m1hM8n2ltM0wY-b1iYpYdD9dhwppk5j3LvC2IO5yhOIvyLVeQz4NZRCZo
+Biosample	tot_nitro_cont_meth	replace_attribute	range			TextValue
+Biosample	tot_nitro_content	overwrite_examples	examples			5 mg N/ L
+Biosample	tot_org_c_meth	overwrite_examples	examples			https://doi.org/10.1080/07352680902776556
+Biosample	tot_org_carb	overwrite_examples	examples			5 mg N/ L
+Biosample	tot_org_carb	add_attribute	todos			check description. How are they different?
+Biosample	viscosity	replace_attribute	range			TextValue
+Biosample	volatile_org_comp	replace_attribute	range			TextValue
+Biosample	water_cont_soil_meth	add_attribute	comments			Required if providing water content
+Biosample	water_cont_soil_meth	overwrite_examples	examples			J. Nat. Prod. Plant Resour., 2012, 2 (4):500-503|https://dec.alaska.gov/applications/spar/webcalc/definitions.htm
+Biosample	water_cont_soil_meth	replace_attribute	range			TextValue
+Biosample	water_cont_soil_meth	add_attribute	todos			Why is it soil water content method in the name but not the title? Is this slot used in other samples?|Soil water content can be measure MANY ways and often, multiple ways are used in one experiment (gravimetric water content and water holding capacity and water filled pore space, to name a few).|Should this be multi valued? How to we manage and validate this?
+Biosample	water_content	overwrite_examples	examples			75%|75 %|0.75 g water/g dry soil|75% water holding capacity|1.1 g fresh weight/ dry weight|10% water filled pore space
+Biosample	water_content	replace_attribute	multivalued			true
+Biosample	water_content	replace_attribute	range			QuantityValue
+Biosample	water_content	add_attribute	todos			value in preferred unit is too limiting. need to change this|check and correct validation so examples are accepted|This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot|how to manage multiple water content methods?
+Biosample	water_temp_regm	replace_attribute	range			TextValue
+Biosample	watering_regm	overwrite_examples	examples			1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M|75% water holding capacity; constant
+Biosample	watering_regm	replace_attribute	range			TextValue
+Biosample	watering_regm	replace_attribute	recommended			true
+Biosample	window_open_freq	replace_attribute	range			TextValue
+Biosample	window_size	replace_attribute	range			TextValue

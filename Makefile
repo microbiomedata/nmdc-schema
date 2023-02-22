@@ -74,7 +74,12 @@ create-data-harmonizer:
 	npm init data-harmonizer $(SOURCE_SCHEMA_PATH)
 
 all: site
-site: gen-project gendoc # may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy
+site_prep:
+	rm -rf src/schema/mixs.yaml \
+src/schema/mixs.yaml.bak \
+src/schema/nmdc.yaml.bak
+
+site: site_prep src/schema/mixs.yaml src/schema/mixs.yaml gen-project gendoc # may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy
 
 %.yaml: gen-project
 
