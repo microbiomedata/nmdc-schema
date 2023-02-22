@@ -41,68 +41,6 @@ subsets:
     description: A combination of a checklist and a package
     from_schema: http://w3id.org/mixs/terms
 enums:
-  rel_to_oxygen_enum:
-    name: rel_to_oxygen_enum
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      aerobe:
-        text: aerobe
-      anaerobe:
-        text: anaerobe
-      facultative:
-        text: facultative
-      microaerophilic:
-        text: microaerophilic
-      microanaerobe:
-        text: microanaerobe
-      obligate aerobe:
-        text: obligate aerobe
-      obligate anaerobe:
-        text: obligate anaerobe
-  biotic_relationship_enum:
-    name: biotic_relationship_enum
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      free living:
-        text: free living
-      parasite:
-        text: parasite
-      commensal:
-        text: commensal
-      symbiont:
-        text: symbiont
-  oxy_stat_samp_enum:
-    name: oxy_stat_samp_enum
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      aerobic:
-        text: aerobic
-      anaerobic:
-        text: anaerobic
-      other:
-        text: other
-  tidal_stage_enum:
-    name: tidal_stage_enum
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      low tide:
-        text: low tide
-      ebb tide:
-        text: ebb tide
-      flood tide:
-        text: flood tide
-      high tide:
-        text: high tide
-  organism_count_enum:
-    name: organism_count_enum
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      ATP:
-        text: ATP
-      MPN:
-        text: MPN
-      other:
-        text: other
   profile_position_enum:
     name: profile_position_enum
     from_schema: http://w3id.org/mixs/terms
@@ -173,28 +111,62 @@ enums:
         text: Vertisols
       Yermosols:
         text: Yermosols
-  tillage_enum:
-    name: tillage_enum
+  drainage_class_enum:
+    name: drainage_class_enum
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      drill:
-        text: drill
-      cutting disc:
-        text: cutting disc
-      ridge till:
-        text: ridge till
-      strip tillage:
-        text: strip tillage
-      zonal tillage:
-        text: zonal tillage
-      chisel:
-        text: chisel
-      tined:
-        text: tined
-      mouldboard:
-        text: mouldboard
-      disc plough:
-        text: disc plough
+      very poorly:
+        text: very poorly
+      poorly:
+        text: poorly
+      somewhat poorly:
+        text: somewhat poorly
+      moderately well:
+        text: moderately well
+      well:
+        text: well
+      excessively drained:
+        text: excessively drained
+  biotic_relationship_enum:
+    name: biotic_relationship_enum
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      free living:
+        text: free living
+      parasite:
+        text: parasite
+      commensal:
+        text: commensal
+      symbiont:
+        text: symbiont
+  organism_count_enum:
+    name: organism_count_enum
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      ATP:
+        text: ATP
+      MPN:
+        text: MPN
+      other:
+        text: other
+  rel_to_oxygen_enum:
+    name: rel_to_oxygen_enum
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      aerobe:
+        text: aerobe
+      anaerobe:
+        text: anaerobe
+      facultative:
+        text: facultative
+      microaerophilic:
+        text: microaerophilic
+      microanaerobe:
+        text: microanaerobe
+      obligate aerobe:
+        text: obligate aerobe
+      obligate anaerobe:
+        text: obligate anaerobe
   cur_land_use_enum:
     name: cur_land_use_enum
     from_schema: http://w3id.org/mixs/terms
@@ -270,22 +242,50 @@ enums:
         text: swamp (permanent or semi-permanent water body dominated by woody plants)
       crop trees (nuts,fruit,christmas trees,nursery trees):
         text: crop trees (nuts,fruit,christmas trees,nursery trees)
-  drainage_class_enum:
-    name: drainage_class_enum
+  tidal_stage_enum:
+    name: tidal_stage_enum
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      very poorly:
-        text: very poorly
-      poorly:
-        text: poorly
-      somewhat poorly:
-        text: somewhat poorly
-      moderately well:
-        text: moderately well
-      well:
-        text: well
-      excessively drained:
-        text: excessively drained
+      low tide:
+        text: low tide
+      ebb tide:
+        text: ebb tide
+      flood tide:
+        text: flood tide
+      high tide:
+        text: high tide
+  tillage_enum:
+    name: tillage_enum
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      drill:
+        text: drill
+      cutting disc:
+        text: cutting disc
+      ridge till:
+        text: ridge till
+      strip tillage:
+        text: strip tillage
+      zonal tillage:
+        text: zonal tillage
+      chisel:
+        text: chisel
+      tined:
+        text: tined
+      mouldboard:
+        text: mouldboard
+      disc plough:
+        text: disc plough
+  oxy_stat_samp_enum:
+    name: oxy_stat_samp_enum
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      aerobic:
+        text: aerobic
+      anaerobic:
+        text: anaerobic
+      other:
+        text: other
 slots:
   agrochem_addition:
     name: agrochem_addition
@@ -3346,11 +3346,6 @@ slots:
     slot_uri: MIXS:0000122
     multivalued: false
     range: quantity value
-  environment field:
-    name: environment field
-    description: field describing environmental aspect of a sample
-    from_schema: http://w3id.org/mixs/terms
-    abstract: true
   core field:
     name: core field
     description: basic fields
@@ -3360,8 +3355,10 @@ slots:
     name: sequencing field
     from_schema: http://w3id.org/mixs/terms
     abstract: true
-  nucleic acid sequence source field:
-    name: nucleic acid sequence source field
+  investigation field:
+    name: investigation field
+    description: field describing aspect of the investigation/study to which the sample
+      belongs
     from_schema: http://w3id.org/mixs/terms
     abstract: true
   has unit:
@@ -3374,17 +3371,20 @@ slots:
     from_schema: http://w3id.org/mixs/ranges
     string_serialization: '{has numeric value} {has unit}'
     owner: quantity value
-  investigation field:
-    name: investigation field
-    description: field describing aspect of the investigation/study to which the sample
-      belongs
-    from_schema: http://w3id.org/mixs/terms
-    abstract: true
   has numeric value:
     name: has numeric value
     from_schema: http://w3id.org/mixs/ranges
     owner: quantity value
     range: double
+  environment field:
+    name: environment field
+    description: field describing environmental aspect of a sample
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
+  nucleic acid sequence source field:
+    name: nucleic acid sequence source field
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
 classes:
   placeholder_class:
     name: placeholder_class
