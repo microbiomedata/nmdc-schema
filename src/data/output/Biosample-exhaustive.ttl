@@ -95,9 +95,9 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     MIXS:0000183 [ a nmdc:QuantityValue ;
             nmdc:has_raw_value "25 practical salinity unit" ] ;
     MIXS:0000185 [ a nmdc:QuantityValue ;
-            nmdc:has_raw_value "MIxS doesn't provide an example 1" ],
+            nmdc:has_raw_value "MIxS doesn't provide an example 2" ],
         [ a nmdc:QuantityValue ;
-            nmdc:has_raw_value "MIxS doesn't provide an example 2" ] ;
+            nmdc:has_raw_value "MIxS doesn't provide an example 1" ] ;
     MIXS:0000192 "xyz" ;
     MIXS:0000193 "xyz" ;
     MIXS:0000194 "xyz" ;

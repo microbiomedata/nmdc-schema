@@ -1575,21 +1575,21 @@
                 }
             },
             "required": [
+                "id",
                 "depth",
-                "ecosystem",
-                "ecosystem_category",
-                "ecosystem_subtype",
-                "ecosystem_type",
                 "elev",
                 "env_broad_scale",
                 "env_local_scale",
                 "env_medium",
-                "growth_facil",
-                "id",
                 "samp_store_temp",
-                "source_mat_id",
+                "store_cond",
+                "ecosystem",
+                "ecosystem_category",
+                "ecosystem_type",
+                "ecosystem_subtype",
                 "specific_ecosystem",
-                "store_cond"
+                "growth_facil",
+                "source_mat_id"
             ],
             "title": "Biosample",
             "type": "object"

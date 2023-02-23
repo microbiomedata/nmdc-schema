@@ -3,10 +3,6 @@
   "depth": {
     "has_raw_value": "xyz"
   },
-  "ecosystem": "xyz",
-  "ecosystem_category": "xyz",
-  "ecosystem_subtype": "xyz",
-  "ecosystem_type": "xyz",
   "elev": 123.0,
   "env_broad_scale": {
     "has_raw_value": "ENVO:00002030",
@@ -26,19 +22,23 @@
       "id": "ENVO:00005792"
     }
   },
-  "growth_facil": "xyz",
   "samp_store_temp": {
     "has_raw_value": "xyz"
   },
-  "source_mat_id": "xyz",
-  "specific_ecosystem": "xyz",
   "store_cond": "xyz",
-  "collection_date": {
-    "has_raw_value": "xyz"
-  },
+  "ecosystem": "xyz",
+  "ecosystem_category": "xyz",
+  "ecosystem_type": "xyz",
+  "ecosystem_subtype": "xyz",
+  "specific_ecosystem": "xyz",
+  "growth_facil": "xyz",
+  "source_mat_id": "xyz",
   "embargoed": true,
   "part_of": [
     "gold:Gs0110115"
   ],
+  "collection_date": {
+    "has_raw_value": "xyz"
+  },
   "@type": "Biosample"
 }
