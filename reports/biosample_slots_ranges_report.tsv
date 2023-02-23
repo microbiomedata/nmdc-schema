@@ -9,17 +9,17 @@ samp_name	string	False
 type	string				
 id	string				
 alternative_identifiers	string	True			
-gold_biosample_identifiers	uriorcurie	True	^GOLD:Gb[0-9]+$		
-insdc_biosample_identifiers	uriorcurie	True	^biosample:SAM[NED]([A-Z])?[0-9]+$		
 emsl_biosample_identifiers	uriorcurie	True			
+gold_biosample_identifiers	uriorcurie	True	^GOLD:Gb[0-9]+$		
 igsn_biosample_identifiers	uriorcurie	True			
+insdc_biosample_identifiers	uriorcurie	True	^biosample:SAM[NED]([A-Z])?[0-9]+$		
 agrochem_addition	string	True			
+al_sat	QuantityValue	False			
+al_sat_meth	string	False			
 alkalinity	QuantityValue	False			
 alkalinity_method	string	False			
 alkyl_diethers	QuantityValue	False			
 alt	QuantityValue	False			
-al_sat	QuantityValue	False			
-al_sat_meth	string	False			
 aminopept_act	QuantityValue	False			
 ammonium	QuantityValue	False			
 annual_precpt	QuantityValue	False			
@@ -33,10 +33,10 @@ chem_administration	ControlledTermValue	True
 chloride	QuantityValue	False			
 chlorophyll	QuantityValue	False			
 collection_date	TimestampValue	False			
+crop_rotation	string	False			
 cur_land_use	cur_land_use_enum	False			
 cur_vegetation	string	False			
 cur_vegetation_meth	string	False			
-crop_rotation	string	False			
 density	QuantityValue	False			
 depth	QuantityValue	False			
 diss_carb_dioxide	QuantityValue	False			
@@ -48,10 +48,10 @@ diss_org_nitro	QuantityValue	False
 diss_oxygen	QuantityValue	False			
 drainage_class	drainage_class_enum	False			
 elev	float	False			
-env_package	TextValue				
 env_broad_scale	ControlledIdentifiedTermValue	False			
 env_local_scale	ControlledIdentifiedTermValue	False			
 env_medium	ControlledIdentifiedTermValue	False			
+env_package	TextValue				
 extreme_event	date	False			
 fao_class	fao_class_enum	False			
 fire	string	False			
@@ -94,16 +94,16 @@ salinity_meth	string	False
 samp_mat_process	ControlledTermValue	False			
 samp_store_dur	string	False			
 samp_store_loc	string	False			
-samp_taxon_id	string	False			
 samp_store_temp	QuantityValue	False			
+samp_taxon_id	string	False			
 samp_vol_we_dna_ext	QuantityValue	False			
-season_temp	QuantityValue	False			
 season_precpt	QuantityValue	False			
+season_temp	QuantityValue	False			
 sieving	string	False			
 size_frac_low	QuantityValue	False			
 size_frac_up	QuantityValue	False			
-slope_gradient	QuantityValue	False			
 slope_aspect	QuantityValue	False			
+slope_gradient	QuantityValue	False			
 sodium	QuantityValue	False			
 soil_type	string	False			
 soil_type_meth	string	False			
@@ -111,22 +111,22 @@ store_cond	string	False
 sulfate	QuantityValue	False			
 sulfide	QuantityValue	False			
 temp	QuantityValue	False			
-tillage	tillage_enum	True			
 tidal_stage	tidal_stage_enum	False			
+tillage	tillage_enum	True			
 tot_carb	QuantityValue	False			
 tot_depth_water_col	QuantityValue	False			
 tot_diss_nitro	QuantityValue	False			
-tot_org_carb	QuantityValue	False			
-tot_org_c_meth	string	False			
-tot_nitro_content	QuantityValue	False			
 tot_nitro_cont_meth	string	False			
+tot_nitro_content	QuantityValue	False			
+tot_org_c_meth	string	False			
+tot_org_carb	QuantityValue	False			
 tot_phosp	QuantityValue	False			
-water_content	QuantityValue	True			
 water_cont_soil_meth	string	False			
+water_content	QuantityValue	True			
 ecosystem	string				
 ecosystem_category	string				
-ecosystem_type	string				
 ecosystem_subtype	string				
+ecosystem_type	string				
 specific_ecosystem	string				
 add_date	string				
 community	string				
@@ -169,11 +169,11 @@ dna_samp_id	string
 dna_sample_format	dna_sample_format_enum				
 dna_sample_name	string				
 dna_seq_project	string				
-dna_seq_project_pi	string				
 dna_seq_project_name	string				
+dna_seq_project_pi	string				
 dna_volume	string			0	1000
-proposal_dna	string				
 dnase_rna	dnase_rna_enum				
+proposal_dna	string				
 proposal_rna	string				
 rna_absorb1	string				
 rna_absorb2	string				
@@ -189,9 +189,10 @@ rna_samp_id	string
 rna_sample_format	rna_sample_format_enum				
 rna_sample_name	string			0	2000
 rna_seq_project	string				
-rna_seq_project_pi	string				
 rna_seq_project_name	string				
+rna_seq_project_pi	string				
 rna_volume	string				
+analysis_type	analysis_type_enum	True			
 collection_date_inc	string				
 collection_time	string				
 collection_time_inc	string				
@@ -206,22 +207,22 @@ non_microb_biomass	string
 non_microb_biomass_method	string				
 org_nitro_method	string				
 other_treatment	string				
+sample_link	string	True			
 start_date_inc	string				
 start_time_inc	string				
+emsl_store_temp	string				
 project_id	string				
 replicate_number	string				
 sample_shipped	string				
 sample_type	sample_type_enum				
 technical_reps	string				
-analysis_type	analysis_type_enum	True			
-sample_link	string	True			
-zinc	QuantityValue				
-manganese	QuantityValue				
 ammonium_nitrogen	QuantityValue				
-nitrate_nitrogen	QuantityValue				
-nitrite_nitrogen	QuantityValue				
 lbc_thirty	QuantityValue				
 lbceq	QuantityValue				
+manganese	QuantityValue				
+nitrate_nitrogen	QuantityValue				
+nitrite_nitrogen	QuantityValue				
+zinc	QuantityValue				
 abs_air_humidity	QuantityValue	False			
 antibiotic_regm	string	True			
 aromatics_pc	string	False			

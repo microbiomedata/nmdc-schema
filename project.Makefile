@@ -19,11 +19,7 @@ shuttle_cleanup:
 	rm -rf assets/mixs_regen/slots_associated_with_omics_processing.tsv
 	mkdir -p assets/mixs_regen
 	echo "do not delete this placeholder file" > assets/mixs_regen/placeholder.txt
-	sleep 3
-
-#assets/mixs_regen/mixs_slots_used_in_schema.tsv:
-#	$(RUN) get_mixs_slots_used_in_schema --output_file $@
-
+	sleep 5
 
 ## these get_slots_from_class operations aren't very useful
 ##  they only get class/slot assignments from the last nmdc_schema/nmdc_schema_merged.yaml
@@ -50,12 +46,6 @@ assets/mixs_regen/slots_associated_with_biosample_omics_processing.tsv
 		--slot_list_file $< \
 		--output_file $@
 
-#assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing_augmented.tsv: \
-#assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv
-#	cp $< $@
-#	echo "rel_to_oxygen" >> $@
-#	echo "abs_air_humidity" >> $@
-
 assets/mixs_regen/import_slots_regardless_gen.tsv: \
 assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv
 	$(RUN) generate_import_slots_regardless --input_file $< --output_file $@
@@ -67,16 +57,8 @@ assets/mixs_regen/mixs_subset.yaml: assets/mixs_regen/import_slots_regardless_ge
 		--yaml_output $@
 
 src/schema/mixs.yaml: assets/mixs_regen/mixs_subset.yaml
-	# the majority of operations
-	# change the https://github.com/GenomicsStandardsConsortium/mixs/blob/main/model/schema/mixs.yaml ranges
-	# to match https://github.com/microbiomedata/nmdc-schema/blame/e681592b20f98dab0cf89278b2b3c2f5e0754adf/src/schema/mixs.yaml
-	#   from Apr 2022 ?
-	# add the same thing for other attributes like ...
-
 	- [ -f src/schema/mixs.yaml ] && mv src/schema/mixs.yaml src/schema/mixs.yaml.bak
-
 	sed 's/quantity value/QuantityValue/' $< > $@
-	#sed -i.bak 's/range: string/range: TextValue/' $@
 	sed -i.bak 's/range: text value/range: TextValue/' $@
 
 	$(RUN) modifications_and_validation \
@@ -87,10 +69,6 @@ src/schema/mixs.yaml: assets/mixs_regen/mixs_subset.yaml
 
 	mv src/schema/nmdc.yaml src/schema/nmdc.yaml.bak
 	mv src/schema/nmdc_usages.yaml src/schema/nmdc.yaml
-
-#    # what prefix do we want to use? mixs.yaml uses MIXS as a prefix for slot_uris
-#	#sed -i.bak 's/slot_uri: MIXS:/slot_uri: mixs:/' $@
-#	#sed -i.bak 's/slot_uri: mixs:/slot_uri: MIXS:/' $@
 
 	yq -i 'del(.classes)' $@
 	yq -i 'del(.enums.[].name)'  $@
@@ -103,28 +81,6 @@ mixs_deepdiff: src/schema/mixs.yaml
 	mv src/schema/mixs.yaml.bak src/schema/mixs.bak.yaml
 	$(RUN) deep diff src/schema/mixs.bak.yaml $^
 	mv src/schema/mixs.bak.yaml src/schema/mixs.yaml.bak
-
-#examples-all: examples-clean src/data/output
-#
-#examples-clean:
-#	rm -rf src/data/output project/nmdc_schema_generated.yaml
-#
-#project/nmdc_schema_generated.yaml: $(SOURCE_SCHEMA_PATH)
-#	# the need for this may be eliminated by adding mandatory pattern materialization to gen-json-schema
-#	$(RUN) gen-linkml \
-#		--output $@ \
-#		--materialize-patterns \
-#		--no-materialize-attributes \
-#		--format yaml $<
-#
-#src/data/output: project/nmdc_schema_generated.yaml
-#	mkdir -p $@
-#	$(RUN) linkml-run-examples \
-#		--schema $< \
-#		--input-directory src/data/valid \
-#		--counter-example-input-directory src/data/invalid \
-#		--output-directory $@ > $@/README.md
-#
 
 assets/MIxS_6_term_updates_MIxS6_Core-_Final_clean.tsv:
 	curl -L "https://docs.google.com/spreadsheets/d/1QDeeUcDqXes69Y2RjU2aWgOpCVWo5OVsBX9MKmMqi_o/export?gid=178015749&format=tsv" > $@
@@ -178,11 +134,6 @@ schemasheets/populated_tsv/slots.tsv:
 	$(RUN) linkml2sheets \
 		--output-directory $(dir $@) \
 		--schema $(SCHEMA_FILE) schemasheets/schemasheets_templates/slots.tsv
-
-#  --append-sheet / --no-append-sheet
-#  --overwrite / --no-overwrite    If set, then
-#  --unique-slots / --no-unique-slots
-
 
 missing_slots_from_exhaustive_data::
 	$(RUN) python nmdc_schema/still_not_exhasutive.py

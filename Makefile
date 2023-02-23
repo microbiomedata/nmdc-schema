@@ -88,14 +88,14 @@ src/schema/nmdc_no_bs_usage.yaml: src/schema/nmdc.yaml
 	$(RUN) python nmdc_schema/remove_usages_keep_comments.py
 	- [ -f $@ ] && mv $< src/schema/nmdc.yaml.bak
 	- [ -f $@ ] && mv src/schema/nmdc_no_bs_usage.yaml $<
-	sleep 3
+	sleep 5
 
 .PHONY: mixs-baks-cleanup shuttle_cleanup
 
 site-cleanup: clean examples-clean mixs-baks-cleanup shuttle_cleanup
 
 site-prep: site-cleanup src/schema/nmdc_no_bs_usage.yaml src/schema/mixs.yaml
-	sleep 3
+	sleep 5
 
 site: site-prep gen-project gendoc \
 project/nmdc_schema_merged.yaml project/nmdc_materialized_patterns.yaml project/nmdc_materialized_patterns.schema.json

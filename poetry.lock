@@ -3908,14 +3908,14 @@ testing-integration = ["build[virtualenv]", "filelock (>=3.4.0)", "jaraco.envs (
 
 [[package]]
 name = "sheets-and-friends"
-version = "0.1.6"
+version = "0.1.7"
 description = "Create a LinkML model with as-is imported slots, imported but modified slots (via yq), or newly minted slots (via schemasheets)"
 category = "dev"
 optional = false
 python-versions = ">=3.9,<4.0"
 files = [
-    {file = "sheets_and_friends-0.1.6-py3-none-any.whl", hash = "sha256:b41bae3bebfa0ce3aaeba373bbfbd91f141c525cc95d55a0a2dccd655654790a"},
-    {file = "sheets_and_friends-0.1.6.tar.gz", hash = "sha256:3fb3639d1d7e699599846372283059df9b39be9a122a2858c45f3c444924958a"},
+    {file = "sheets_and_friends-0.1.7-py3-none-any.whl", hash = "sha256:b9d2fc6af87a62198e9a7d858523928c0eb76c99741a77db2fe3ee2203cccbd3"},
+    {file = "sheets_and_friends-0.1.7.tar.gz", hash = "sha256:b0317e87aa75684eaebf6673ecfcd260185d2e339a829749bc1d3062d8520cb6"},
 ]
 
 [package.dependencies]
@@ -4835,4 +4835,4 @@ docs = []
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "957485adc4688ec730480474e24658672c0609fa48ca1baee18ae07fbd3ae969"
+content-hash = "248258f25c8fb42e7cce4c3297131ba3fa51b4cd4996fe6e58f2ca052e628636"

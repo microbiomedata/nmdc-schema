@@ -996,134 +996,18 @@ enums:
         text: soil
       water_extract_soil:
         text: water_extract_soil
-  organism_count_enum:
-    name: organism_count_enum
+  tidal_stage_enum:
+    name: tidal_stage_enum
     from_schema: https://microbiomedata/schema/mixs
     permissible_values:
-      ATP:
-        text: ATP
-      MPN:
-        text: MPN
-      other:
-        text: other
-  rel_to_oxygen_enum:
-    name: rel_to_oxygen_enum
-    from_schema: https://microbiomedata/schema/mixs
-    permissible_values:
-      aerobe:
-        text: aerobe
-      anaerobe:
-        text: anaerobe
-      facultative:
-        text: facultative
-      microaerophilic:
-        text: microaerophilic
-      microanaerobe:
-        text: microanaerobe
-      obligate aerobe:
-        text: obligate aerobe
-      obligate anaerobe:
-        text: obligate anaerobe
-  fao_class_enum:
-    name: fao_class_enum
-    from_schema: https://microbiomedata/schema/mixs
-    permissible_values:
-      Acrisols:
-        text: Acrisols
-      Andosols:
-        text: Andosols
-      Arenosols:
-        text: Arenosols
-      Cambisols:
-        text: Cambisols
-      Chernozems:
-        text: Chernozems
-      Ferralsols:
-        text: Ferralsols
-      Fluvisols:
-        text: Fluvisols
-      Gleysols:
-        text: Gleysols
-      Greyzems:
-        text: Greyzems
-      Gypsisols:
-        text: Gypsisols
-      Histosols:
-        text: Histosols
-      Kastanozems:
-        text: Kastanozems
-      Lithosols:
-        text: Lithosols
-      Luvisols:
-        text: Luvisols
-      Nitosols:
-        text: Nitosols
-      Phaeozems:
-        text: Phaeozems
-      Planosols:
-        text: Planosols
-      Podzols:
-        text: Podzols
-      Podzoluvisols:
-        text: Podzoluvisols
-      Rankers:
-        text: Rankers
-      Regosols:
-        text: Regosols
-      Rendzinas:
-        text: Rendzinas
-      Solonchaks:
-        text: Solonchaks
-      Solonetz:
-        text: Solonetz
-      Vertisols:
-        text: Vertisols
-      Yermosols:
-        text: Yermosols
-  samp_md_enum:
-    name: samp_md_enum
-    from_schema: https://microbiomedata/schema/mixs
-    permissible_values:
-      DF:
-        text: DF
-      RT:
-        text: RT
-      KB:
-        text: KB
-      MSL:
-        text: MSL
-      other:
-        text: other
-  drainage_class_enum:
-    name: drainage_class_enum
-    from_schema: https://microbiomedata/schema/mixs
-    permissible_values:
-      very poorly:
-        text: very poorly
-      poorly:
-        text: poorly
-      somewhat poorly:
-        text: somewhat poorly
-      moderately well:
-        text: moderately well
-      well:
-        text: well
-      excessively drained:
-        text: excessively drained
-  profile_position_enum:
-    name: profile_position_enum
-    from_schema: https://microbiomedata/schema/mixs
-    permissible_values:
-      summit:
-        text: summit
-      shoulder:
-        text: shoulder
-      backslope:
-        text: backslope
-      footslope:
-        text: footslope
-      toeslope:
-        text: toeslope
+      low tide:
+        text: low tide
+      ebb tide:
+        text: ebb tide
+      flood tide:
+        text: flood tide
+      high tide:
+        text: high tide
   cur_land_use_enum:
     name: cur_land_use_enum
     from_schema: https://microbiomedata/schema/mixs
@@ -1199,34 +1083,22 @@ enums:
         text: swamp (permanent or semi-permanent water body dominated by woody plants)
       crop trees (nuts,fruit,christmas trees,nursery trees):
         text: crop trees (nuts,fruit,christmas trees,nursery trees)
-  biotic_relationship_enum:
-    name: biotic_relationship_enum
+  drainage_class_enum:
+    name: drainage_class_enum
     from_schema: https://microbiomedata/schema/mixs
     permissible_values:
-      free living:
-        text: free living
-      parasite:
-        text: parasite
-      commensal:
-        text: commensal
-      symbiont:
-        text: symbiont
-  freq_clean_enum:
-    name: freq_clean_enum
-    from_schema: https://microbiomedata/schema/mixs
-    permissible_values:
-      Daily:
-        text: Daily
-      Weekly:
-        text: Weekly
-      Monthly:
-        text: Monthly
-      Quarterly:
-        text: Quarterly
-      Annually:
-        text: Annually
-      other:
-        text: other
+      very poorly:
+        text: very poorly
+      poorly:
+        text: poorly
+      somewhat poorly:
+        text: somewhat poorly
+      moderately well:
+        text: moderately well
+      well:
+        text: well
+      excessively drained:
+        text: excessively drained
   plant_growth_med_enum:
     name: plant_growth_med_enum
     from_schema: https://microbiomedata/schema/mixs
@@ -1249,16 +1121,6 @@ enums:
         text: vermiculite
       water:
         text: water
-  oxy_stat_samp_enum:
-    name: oxy_stat_samp_enum
-    from_schema: https://microbiomedata/schema/mixs
-    permissible_values:
-      aerobic:
-        text: aerobic
-      anaerobic:
-        text: anaerobic
-      other:
-        text: other
   tillage_enum:
     name: tillage_enum
     from_schema: https://microbiomedata/schema/mixs
@@ -1281,18 +1143,156 @@ enums:
         text: mouldboard
       disc plough:
         text: disc plough
-  tidal_stage_enum:
-    name: tidal_stage_enum
+  organism_count_enum:
+    name: organism_count_enum
     from_schema: https://microbiomedata/schema/mixs
     permissible_values:
-      low tide:
-        text: low tide
-      ebb tide:
-        text: ebb tide
-      flood tide:
-        text: flood tide
-      high tide:
-        text: high tide
+      ATP:
+        text: ATP
+      MPN:
+        text: MPN
+      other:
+        text: other
+  freq_clean_enum:
+    name: freq_clean_enum
+    from_schema: https://microbiomedata/schema/mixs
+    permissible_values:
+      Daily:
+        text: Daily
+      Weekly:
+        text: Weekly
+      Monthly:
+        text: Monthly
+      Quarterly:
+        text: Quarterly
+      Annually:
+        text: Annually
+      other:
+        text: other
+  samp_md_enum:
+    name: samp_md_enum
+    from_schema: https://microbiomedata/schema/mixs
+    permissible_values:
+      DF:
+        text: DF
+      RT:
+        text: RT
+      KB:
+        text: KB
+      MSL:
+        text: MSL
+      other:
+        text: other
+  fao_class_enum:
+    name: fao_class_enum
+    from_schema: https://microbiomedata/schema/mixs
+    permissible_values:
+      Acrisols:
+        text: Acrisols
+      Andosols:
+        text: Andosols
+      Arenosols:
+        text: Arenosols
+      Cambisols:
+        text: Cambisols
+      Chernozems:
+        text: Chernozems
+      Ferralsols:
+        text: Ferralsols
+      Fluvisols:
+        text: Fluvisols
+      Gleysols:
+        text: Gleysols
+      Greyzems:
+        text: Greyzems
+      Gypsisols:
+        text: Gypsisols
+      Histosols:
+        text: Histosols
+      Kastanozems:
+        text: Kastanozems
+      Lithosols:
+        text: Lithosols
+      Luvisols:
+        text: Luvisols
+      Nitosols:
+        text: Nitosols
+      Phaeozems:
+        text: Phaeozems
+      Planosols:
+        text: Planosols
+      Podzols:
+        text: Podzols
+      Podzoluvisols:
+        text: Podzoluvisols
+      Rankers:
+        text: Rankers
+      Regosols:
+        text: Regosols
+      Rendzinas:
+        text: Rendzinas
+      Solonchaks:
+        text: Solonchaks
+      Solonetz:
+        text: Solonetz
+      Vertisols:
+        text: Vertisols
+      Yermosols:
+        text: Yermosols
+  oxy_stat_samp_enum:
+    name: oxy_stat_samp_enum
+    from_schema: https://microbiomedata/schema/mixs
+    permissible_values:
+      aerobic:
+        text: aerobic
+      anaerobic:
+        text: anaerobic
+      other:
+        text: other
+  biotic_relationship_enum:
+    name: biotic_relationship_enum
+    from_schema: https://microbiomedata/schema/mixs
+    permissible_values:
+      free living:
+        text: free living
+      parasite:
+        text: parasite
+      commensal:
+        text: commensal
+      symbiont:
+        text: symbiont
+  rel_to_oxygen_enum:
+    name: rel_to_oxygen_enum
+    from_schema: https://microbiomedata/schema/mixs
+    permissible_values:
+      aerobe:
+        text: aerobe
+      anaerobe:
+        text: anaerobe
+      facultative:
+        text: facultative
+      microaerophilic:
+        text: microaerophilic
+      microanaerobe:
+        text: microanaerobe
+      obligate aerobe:
+        text: obligate aerobe
+      obligate anaerobe:
+        text: obligate anaerobe
+  profile_position_enum:
+    name: profile_position_enum
+    from_schema: https://microbiomedata/schema/mixs
+    permissible_values:
+      summit:
+        text: summit
+      shoulder:
+        text: shoulder
+      backslope:
+        text: backslope
+      footslope:
+        text: footslope
+      toeslope:
+        text: toeslope
 slots:
   zinc:
     name: zinc
@@ -9521,16 +9521,31 @@ slots:
     slot_uri: MIXS:0000224
     multivalued: false
     range: string
-  has unit:
-    name: has unit
-    description: Example "m"
+  has raw value:
+    name: has raw value
     from_schema: https://microbiomedata/schema/mixs
+    string_serialization: '{has numeric value} {has unit}'
     owner: QuantityValue
   has numeric value:
     name: has numeric value
     from_schema: https://microbiomedata/schema/mixs
     owner: QuantityValue
     range: double
+  investigation field:
+    name: investigation field
+    description: field describing aspect of the investigation/study to which the sample
+      belongs
+    from_schema: https://microbiomedata/schema/mixs
+    abstract: true
+  sequencing field:
+    name: sequencing field
+    from_schema: https://microbiomedata/schema/mixs
+    abstract: true
+  has unit:
+    name: has unit
+    description: Example "m"
+    from_schema: https://microbiomedata/schema/mixs
+    owner: QuantityValue
   environment field:
     name: environment field
     description: field describing environmental aspect of a sample
@@ -9538,21 +9553,6 @@ slots:
     abstract: true
   nucleic acid sequence source field:
     name: nucleic acid sequence source field
-    from_schema: https://microbiomedata/schema/mixs
-    abstract: true
-  investigation field:
-    name: investigation field
-    description: field describing aspect of the investigation/study to which the sample
-      belongs
-    from_schema: https://microbiomedata/schema/mixs
-    abstract: true
-  has raw value:
-    name: has raw value
-    from_schema: https://microbiomedata/schema/mixs
-    string_serialization: '{has numeric value} {has unit}'
-    owner: QuantityValue
-  sequencing field:
-    name: sequencing field
     from_schema: https://microbiomedata/schema/mixs
     abstract: true
   core field:
