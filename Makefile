@@ -83,8 +83,8 @@ src/schema/mixs.yaml.bak \
 src/schema/nmdc.yaml.bak
 	#yq -i 'del(.classes.Biosample.slot_usage)' src/schema/nmdc.yaml
 	poetry run python nmdc_schema/remove_usages_keep_comments.py
-	mv src/schema/nmdc.yaml src/schema/nmdc.yaml.bak
-	mv src/schema/nmdc_no_bs_usage.yaml src/schema/nmdc.yaml
+	- [ -f src/schema/nmdc_no_bs_usage.yaml ] && mv src/schema/nmdc.yaml src/schema/nmdc.yaml.bak
+	- [ -f src/schema/nmdc_no_bs_usage.yaml ] && mv src/schema/mixs.yaml src/schema/mixs.yaml.bak
 	sleep 3
 
 .PHONY: mixs_baks_del shuttle_cleanup
