@@ -75,8 +75,7 @@ create-data-harmonizer:
 
 all: site
 site_prep:
-	rm -rf src/schema/mixs.yaml \
-src/schema/mixs.yaml.bak \
+	rm -rf src/schema/mixs.yaml.bak \
 src/schema/nmdc.yaml.bak
 
 site: site_prep src/schema/mixs.yaml src/schema/mixs.yaml gen-project gendoc # may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy

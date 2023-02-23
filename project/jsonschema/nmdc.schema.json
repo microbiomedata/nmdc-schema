@@ -220,8 +220,8 @@
                     "description": "Concentration of calcium in the sample"
                 },
                 "carb_nitro_ratio": {
-                    "$ref": "#/$defs/QuantityValue",
-                    "description": "Ratio of amount or concentrations of carbon to nitrogen"
+                    "description": "Ratio of amount or concentrations of carbon to nitrogen",
+                    "type": "number"
                 },
                 "chem_administration": {
                     "description": "List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi",
@@ -251,7 +251,7 @@
                 },
                 "collection_date": {
                     "$ref": "#/$defs/TimestampValue",
-                    "description": "The time of sampling, either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all are ISO8601 compliant"
+                    "description": "The date of sampling"
                 },
                 "collection_date_inc": {
                     "description": "Date the incubation was harvested/collected/ended. Only relevant for incubation samples.",
@@ -289,7 +289,7 @@
                     "description": "Density of the sample, which is its mass per unit volume (aka volumetric mass density)"
                 },
                 "depth": {
-                    "$ref": "#/$defs/QuantityValue",
+                    "$ref": "#/$defs/TextValue",
                     "description": "The vertical distance below local surface, e.g. for sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples."
                 },
                 "description": {
@@ -399,20 +399,20 @@
                     "description": "Drainage classification from a standard system such as the USDA system"
                 },
                 "ecosystem": {
-                    "description": "An ecosystem is a combination of a physical environment (abiotic factors) and all the organisms (biotic factors) that interact with this environment. Ecosystem is in position 1/5 in a GOLD path.",
-                    "type": "string"
+                    "$ref": "#/$defs/TextValue",
+                    "description": "An ecosystem is a combination of a physical environment (abiotic factors) and all the organisms (biotic factors) that interact with this environment. Ecosystem is in position 1/5 in a GOLD path."
                 },
                 "ecosystem_category": {
-                    "description": "Ecosystem categories represent divisions within the ecosystem based on specific characteristics of the environment from where an organism or sample is isolated. Ecosystem category is in position 2/5 in a GOLD path.",
-                    "type": "string"
+                    "$ref": "#/$defs/TextValue",
+                    "description": "Ecosystem categories represent divisions within the ecosystem based on specific characteristics of the environment from where an organism or sample is isolated. Ecosystem category is in position 2/5 in a GOLD path."
                 },
                 "ecosystem_subtype": {
-                    "description": "Ecosystem subtypes represent further subdivision of Ecosystem types into more distinct subtypes. Ecosystem subtype is in position 4/5 in a GOLD path.",
-                    "type": "string"
+                    "$ref": "#/$defs/TextValue",
+                    "description": "Ecosystem subtypes represent further subdivision of Ecosystem types into more distinct subtypes. Ecosystem subtype is in position 4/5 in a GOLD path."
                 },
                 "ecosystem_type": {
-                    "description": "Ecosystem types represent things having common characteristics within the Ecosystem Category. These common characteristics based grouping is still broad but specific to the characteristics of a given environment. Ecosystem type is in position 3/5 in a GOLD path.",
-                    "type": "string"
+                    "$ref": "#/$defs/TextValue",
+                    "description": "Ecosystem types represent things having common characteristics within the Ecosystem Category. These common characteristics based grouping is still broad but specific to the characteristics of a given environment. Ecosystem type is in position 3/5 in a GOLD path."
                 },
                 "elev": {
                     "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit.",
@@ -431,7 +431,7 @@
                 },
                 "env_broad_scale": {
                     "$ref": "#/$defs/ControlledIdentifiedTermValue",
-                    "description": "Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO\u2019s biome class:  http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS"
+                    "description": "In this field, report which major environmental system your sample or specimen came from. The systems identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. were you in the desert or a rainforest?). We recommend using subclasses of ENVO's biome class: http://purl.obolibrary.org/obo/ENVO_00000428. Format (one term): termLabel [termID], Format (multiple terms): termLabel [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a water sample from the photic zone in middle of the Atlantic Ocean, consider: oceanic epipelagic zone biome [ENVO:01000033]. Example: Annotating a sample from the Amazon rainforest consider: tropical moist broadleaf forest biome [ENVO:01000228]. If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html"
                 },
                 "env_local_scale": {
                     "$ref": "#/$defs/ControlledIdentifiedTermValue",
@@ -454,8 +454,8 @@
                     "type": "string"
                 },
                 "extreme_event": {
-                    "description": "Unusual physical events that may have affected microbial populations",
-                    "type": "string"
+                    "$ref": "#/$defs/TextValue",
+                    "description": "Unusual physical events that may have affected microbial populations"
                 },
                 "fao_class": {
                     "$ref": "#/$defs/FaoClassEnum",
@@ -466,13 +466,13 @@
                     "type": "string"
                 },
                 "fire": {
+                    "$ref": "#/$defs/TextValue",
                     "description": "Historical and/or physical evidence of fire",
-                    "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?(\\s+to\\s+[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?)?$",
-                    "type": "string"
+                    "pattern": "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?(\\s+to\\s+[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?)?$"
                 },
                 "flooding": {
-                    "description": "Historical and/or physical evidence of flooding",
-                    "type": "string"
+                    "$ref": "#/$defs/TextValue",
+                    "description": "Historical and/or physical evidence of flooding"
                 },
                 "gaseous_environment": {
                     "description": "Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens",
@@ -498,8 +498,8 @@
                     "type": "array"
                 },
                 "growth_facil": {
-                    "$ref": "#/$defs/ControlledTermValue",
-                    "description": "Type of facility where the sampled plant was grown; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field. Alternatively use Crop Ontology (CO) terms, see http://www.cropontology.org/ontology/CO_715/Crop%20Research"
+                    "$ref": "#/$defs/TextValue",
+                    "description": "Type of facility/location where the sample was harvested; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field."
                 },
                 "habitat": {
                     "type": "string"
@@ -732,7 +732,9 @@
                     "description": "Concentration of petroleum hydrocarbon"
                 },
                 "ph": {
-                    "description": "Ph measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid",
+                    "description": "pH measurement of the sample, or liquid portion of sample, or aqueous phase of the fluid",
+                    "maximum": 14,
+                    "minimum": 0,
                     "type": "number"
                 },
                 "ph_meth": {
@@ -871,19 +873,19 @@
                     "description": "Reference or method used in determining salinity"
                 },
                 "samp_collec_method": {
-                    "description": "The method employed for collecting the sample.",
-                    "type": "string"
+                    "$ref": "#/$defs/TextValue",
+                    "description": "The method employed for collecting the sample."
                 },
                 "samp_mat_process": {
                     "$ref": "#/$defs/ControlledTermValue",
                     "description": "A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed."
                 },
                 "samp_name": {
-                    "description": "A local identifier or name that for the material sample used for extracting nucleic acids, and subsequent sequencing. It can refer either to the original material collected or to any derived sub-samples. It can have any format, but we suggest that you make it concise, unique and consistent within your lab, and as informative as possible. INSDC requires every sample name from a single Submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to sample_name.",
-                    "type": "string"
+                    "$ref": "#/$defs/TextValue",
+                    "description": "A local identifier or name that for the material sample collected. Refers to the original material collected or to any derived sub-samples."
                 },
                 "samp_size": {
-                    "$ref": "#/$defs/QuantityValue",
+                    "$ref": "#/$defs/TextValue",
                     "description": "The total amount or size (volume (ml), mass (g) or area (m2) ) of sample collected."
                 },
                 "samp_store_dur": {
@@ -896,7 +898,7 @@
                 },
                 "samp_store_temp": {
                     "$ref": "#/$defs/QuantityValue",
-                    "description": "Temperature at which sample was stored, e.g. -80 degree Celsius"
+                    "description": "Temperature at which the sample was stored (degrees are assumed)"
                 },
                 "samp_taxon_id": {
                     "$ref": "#/$defs/TextValue",
@@ -972,8 +974,8 @@
                     "description": "A globally unique identifier assigned to the biological sample."
                 },
                 "specific_ecosystem": {
-                    "description": "Specific ecosystems represent specific features of the environment like aphotic zone in an ocean or gastric mucosa within a host digestive system. Specific ecosystem is in position 5/5 in a GOLD path.",
-                    "type": "string"
+                    "$ref": "#/$defs/TextValue",
+                    "description": "Specific ecosystems represent specific features of the environment like aphotic zone in an ocean or gastric mucosa within a host digestive system. Specific ecosystem is in position 5/5 in a GOLD path."
                 },
                 "start_date_inc": {
                     "description": "Date the incubation was started. Only relevant for incubation samples.",
@@ -985,7 +987,7 @@
                 },
                 "store_cond": {
                     "$ref": "#/$defs/TextValue",
-                    "description": "Explain how and for how long the soil sample was stored before DNA extraction (fresh/frozen/other)."
+                    "description": "Explain how the soil sample is stored (fresh/frozen/other)."
                 },
                 "subsurface_depth": {
                     "$ref": "#/$defs/QuantityValue"
@@ -1030,8 +1032,8 @@
                     "description": "Total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen"
                 },
                 "tot_nitro_cont_meth": {
-                    "description": "Reference or method used in determining the total nitrogen",
-                    "type": "string"
+                    "$ref": "#/$defs/TextValue",
+                    "description": "Reference or method used in determining the total nitrogen"
                 },
                 "tot_nitro_content": {
                     "$ref": "#/$defs/QuantityValue",
@@ -1054,13 +1056,13 @@
                     "type": "string"
                 },
                 "water_cont_soil_meth": {
-                    "description": "Reference or method used in determining the water content of soil",
-                    "type": "string"
+                    "$ref": "#/$defs/TextValue",
+                    "description": "Reference or method used in determining the water content of soil"
                 },
                 "water_content": {
                     "description": "Water content measurement",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/QuantityValue"
                     },
                     "type": "array"
                 },
@@ -1079,9 +1081,21 @@
             "required": [
                 "part_of",
                 "id",
+                "collection_date",
+                "depth",
+                "elev",
                 "env_broad_scale",
                 "env_local_scale",
-                "env_medium"
+                "env_medium",
+                "samp_store_temp",
+                "store_cond",
+                "ecosystem",
+                "ecosystem_category",
+                "ecosystem_type",
+                "ecosystem_subtype",
+                "specific_ecosystem",
+                "growth_facil",
+                "source_mat_id"
             ],
             "title": "Biosample",
             "type": "object"
