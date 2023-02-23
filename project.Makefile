@@ -33,11 +33,11 @@ shuttle_cleanup:
 #assets/mixs_regen/slots_associated_with_omics_processing.tsv:
 #	$(RUN) get_slots_from_class --class_name OmicsProcessing --output_file $@
 
-assets/mixs_regen/slots_associated_with_biosample.tsv::
-	yq '.classes.Biosample.slots.[]' src/schema/nmdc.yaml > $@
+assets/mixs_regen/slots_associated_with_biosample.tsv: src/schema/nmdc.yaml
+	yq '.classes.Biosample.slots.[]' $< > $@
 
-assets/mixs_regen/slots_associated_with_omics_processing.tsv::
-	yq '.classes.OmicsProcessing.slots.[]' src/schema/nmdc.yaml > $@
+assets/mixs_regen/slots_associated_with_omics_processing.tsv: src/schema/nmdc.yaml
+	yq '.classes.OmicsProcessing.slots.[]' $< > $@
 
 assets/mixs_regen/slots_associated_with_biosample_omics_processing.tsv: \
 assets/mixs_regen/slots_associated_with_biosample.tsv \

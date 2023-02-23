@@ -77,20 +77,24 @@ create-data-harmonizer:
 
 all: site
 
-mixs_baks_del:
-	rm -rf src/schema/mixs.yaml \
-src/schema/mixs.yaml.bak \
-src/schema/nmdc.yaml.bak
+mixs-baks-cleanup:
+	rm -rf \
+	src/schema/mixs.yaml \
+	src/schema/mixs.yaml.bak \
+	src/schema/nmdc.yaml.bak
+
+src/schema/nmdc_no_bs_usage.yaml: src/schema/nmdc.yaml
 	#yq -i 'del(.classes.Biosample.slot_usage)' src/schema/nmdc.yaml
-	poetry run python nmdc_schema/remove_usages_keep_comments.py
-	- [ -f src/schema/nmdc_no_bs_usage.yaml ] && mv src/schema/nmdc.yaml src/schema/nmdc.yaml.bak
-	- [ -f src/schema/nmdc_no_bs_usage.yaml ] && mv src/schema/mixs.yaml src/schema/mixs.yaml.bak
+	$(RUN) python nmdc_schema/remove_usages_keep_comments.py
+	- [ -f $@ ] && mv $< src/schema/nmdc.yaml.bak
+	- [ -f $@ ] && mv src/schema/nmdc_no_bs_usage.yaml $<
 	sleep 3
 
-.PHONY: mixs_baks_del shuttle_cleanup
+.PHONY: mixs-baks-cleanup shuttle_cleanup
 
-site_prep: clean examples-clean mixs_baks_del shuttle_cleanup \
-src/schema/mixs.yaml
+site-cleanup: clean examples-clean mixs-baks-cleanup shuttle_cleanup
+
+site-prep:site-cleanup src/schema/nmdc_no_bs_usage.yaml src/schema/mixs.yaml
 	sleep 3
 
 site: site_prep gen-project gendoc \
