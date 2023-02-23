@@ -2,13 +2,13 @@ import pprint
 
 import yaml
 
-with open("../src/schema/nmdc.yaml", 'r') as stream:
+with open("src/schema/nmdc.yaml", 'r') as stream:
     try:
         schema_dict = yaml.safe_load(stream)
     except yaml.YAMLError as e:
         print(e)
 
-with open("../src/data/valid/Biosample-exhaustive.yaml", 'r') as stream:
+with open("src/data/valid/Biosample-exhaustive.yaml", 'r') as stream:
     try:
         big_data_dict = yaml.safe_load(stream)
     except yaml.YAMLError as e:

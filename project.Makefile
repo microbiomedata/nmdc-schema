@@ -182,3 +182,7 @@ schemasheets/populated_tsv/slots.tsv:
 #  --append-sheet / --no-append-sheet
 #  --overwrite / --no-overwrite    If set, then
 #  --unique-slots / --no-unique-slots
+
+
+missing_slots_from_exhaustive_data::
+	$(RUN) python nmdc_schema/still_not_exhasutive.py
