@@ -97,9 +97,16 @@ site-cleanup: clean examples-clean mixs-baks-cleanup shuttle_cleanup
 site-prep:site-cleanup src/schema/nmdc_no_bs_usage.yaml src/schema/mixs.yaml
 	sleep 3
 
-site: site_prep gen-project gendoc \
-project/nmdc_schema_merged.yaml project/nmdc_materialized_patterns.yaml project/nmdc_materialized_patterns.schema.json \
+site: site-prep gen-project gendoc \
+project/nmdc_schema_merged.yaml project/nmdc_materialized_patterns.yaml project/nmdc_materialized_patterns.schema.json
 # may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy
+	# just can't seem to tell pyproject.toml to bundle artifacts like these
+	#   so reverting to copying into the module
+	cp project/jsonschema/nmdc.schema.json                   $(PYMODEL)
+	cp project/nmdc_materialized_patterns.schema.json        $(PYMODEL)
+	cp project/nmdc_materialized_patterns.yaml               $(PYMODEL)
+	cp project/nmdc_schema_merged.yaml                       $(PYMODEL)
+	cp sssom/gold-to-mixs.sssom.tsv                          $(PYMODEL)
 
 %.yaml: gen-project
 
@@ -275,19 +282,5 @@ src/data/output: project/nmdc_materialized_patterns.yaml
 		--output-directory $@ \
 		--schema $< > $@/README.md
 
-#		--input-formats json \
-#		--input-formats yaml \
+combined-extras: site src/data/output
 
-#.PHONY: extras_prep
-#extras_prep: examples-clean gen-project gendoc \
-#project/nmdc_schema_merged.yaml project/nmdc_materialized_patterns.yaml project/nmdc_materialized_patterns.schema.json
-#	# just can't seem to tell pyproject.toml to bundle artifacts like these
-#	#   so reverting to copying into the module
-#	cp project/jsonschema/nmdc.schema.json                   $(PYMODEL)
-#	cp project/nmdc_materialized_patterns.schema.json        $(PYMODEL)
-#	cp project/nmdc_materialized_patterns.yaml               $(PYMODEL)
-#	cp project/nmdc_schema_merged.yaml                       $(PYMODEL)
-#	cp sssom/gold-to-mixs.sssom.tsv                          $(PYMODEL)
-#
-#combined-extras: extras_prep src/data/output
-#

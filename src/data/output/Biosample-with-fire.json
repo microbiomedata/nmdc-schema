@@ -1,0 +1,44 @@
+{
+  "id": "nmdc:bsm-99-dtTMNb",
+  "depth": {
+    "has_raw_value": "xyz"
+  },
+  "ecosystem": "xyz",
+  "ecosystem_category": "xyz",
+  "ecosystem_subtype": "xyz",
+  "ecosystem_type": "xyz",
+  "elev": 123.0,
+  "env_broad_scale": {
+    "has_raw_value": "ENVO:00002030",
+    "term": {
+      "id": "ENVO:00002030"
+    }
+  },
+  "env_local_scale": {
+    "has_raw_value": "ENVO:00002169",
+    "term": {
+      "id": "ENVO:00002169"
+    }
+  },
+  "env_medium": {
+    "has_raw_value": "ENVO:00005792",
+    "term": {
+      "id": "ENVO:00005792"
+    }
+  },
+  "growth_facil": "xyz",
+  "samp_store_temp": {
+    "has_raw_value": "xyz"
+  },
+  "source_mat_id": "xyz",
+  "specific_ecosystem": "xyz",
+  "store_cond": "xyz",
+  "collection_date": {
+    "has_raw_value": "xyz"
+  },
+  "fire": "1871-10-01 to 1871-10-31",
+  "part_of": [
+    "gold:Gs0110115"
+  ],
+  "@type": "Biosample"
+}
