@@ -362,7 +362,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000122
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   agrochem_addition:
     name: agrochem_addition
     annotations:
@@ -436,7 +436,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000607
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   al_sat_meth:
     name: al_sat_meth
     annotations:
@@ -481,7 +481,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000421
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   alkalinity_method:
     name: alkalinity_method
     annotations:
@@ -525,7 +525,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000490
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   alt:
     name: alt
     annotations:
@@ -547,7 +547,7 @@ slots:
     is_a: environment field
     slot_uri: MIXS:0000094
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   aminopept_act:
     name: aminopept_act
     annotations:
@@ -570,7 +570,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000172
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   ammonium:
     name: ammonium
     annotations:
@@ -593,7 +593,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000427
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   annual_precpt:
     name: annual_precpt
     annotations:
@@ -617,7 +617,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000644
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   annual_temp:
     name: annual_temp
     annotations:
@@ -640,7 +640,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000642
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   antibiotic_regm:
     name: antibiotic_regm
     annotations:
@@ -789,7 +789,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000173
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   bathroom_count:
     name: bathroom_count
     annotations:
@@ -945,7 +945,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000175
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   bromide:
     name: bromide
     annotations:
@@ -968,7 +968,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000176
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   calcium:
     name: calcium
     annotations:
@@ -991,7 +991,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000432
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   carb_nitro_ratio:
     name: carb_nitro_ratio
     annotations:
@@ -1011,7 +1011,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000310
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   chem_administration:
     name: chem_administration
     annotations:
@@ -1131,7 +1131,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000429
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   chlorophyll:
     name: chlorophyll
     annotations:
@@ -1154,7 +1154,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000177
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   climate_environment:
     name: climate_environment
     annotations:
@@ -1346,7 +1346,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000435
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   depth:
     name: depth
     annotations:
@@ -1365,7 +1365,7 @@ slots:
     is_a: environment field
     slot_uri: MIXS:0000018
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diether_lipids:
     name: diether_lipids
     annotations:
@@ -1414,7 +1414,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000436
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_hydrogen:
     name: diss_hydrogen
     annotations:
@@ -1437,7 +1437,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000179
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_inorg_carb:
     name: diss_inorg_carb
     annotations:
@@ -1461,7 +1461,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000434
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_inorg_phosp:
     name: diss_inorg_phosp
     annotations:
@@ -1484,7 +1484,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000106
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_org_carb:
     name: diss_org_carb
     annotations:
@@ -1508,7 +1508,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000433
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_org_nitro:
     name: diss_org_nitro
     annotations:
@@ -1532,7 +1532,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000162
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   diss_oxygen:
     name: diss_oxygen
     annotations:
@@ -1555,7 +1555,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000119
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   drainage_class:
     name: drainage_class
     annotations:
@@ -1595,7 +1595,7 @@ slots:
     is_a: environment field
     slot_uri: MIXS:0000093
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   elevator:
     name: elevator
     annotations:
@@ -2098,7 +2098,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000137
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   gravity:
     name: gravity
     annotations:
@@ -2789,7 +2789,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000431
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   max_occup:
     name: max_occup
     annotations:
@@ -2832,7 +2832,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000498
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   mean_peak_frict_vel:
     name: mean_peak_frict_vel
     annotations:
@@ -2855,7 +2855,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000502
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   mineral_nutr_regm:
     name: mineral_nutr_regm
     annotations:
@@ -2953,7 +2953,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000425
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   nitrite:
     name: nitrite
     annotations:
@@ -2976,7 +2976,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000426
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   non_min_nutr_regm:
     name: non_min_nutr_regm
     annotations:
@@ -3199,7 +3199,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000204
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   org_nitro:
     name: org_nitro
     annotations:
@@ -3222,7 +3222,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000205
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   org_particles:
     name: org_particles
     annotations:
@@ -3317,7 +3317,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000515
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   particle_class:
     name: particle_class
     annotations:
@@ -3485,7 +3485,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000516
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   ph:
     name: ph
     annotations:
@@ -3574,7 +3574,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000505
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   phosplipid_fatt_acid:
     name: phosplipid_fatt_acid
     annotations:
@@ -3742,7 +3742,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000430
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   pres_animal_insect:
     name: pres_animal_insect
     annotations:
@@ -3787,7 +3787,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000412
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   prev_land_use_meth:
     name: prev_land_use_meth
     annotations:
@@ -3928,7 +3928,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000182
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   rel_to_oxygen:
     name: rel_to_oxygen
     annotations:
@@ -4307,7 +4307,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000183
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   salinity_meth:
     name: salinity_meth
     annotations:
@@ -4563,7 +4563,7 @@ slots:
     is_a: nucleic acid sequence source field
     slot_uri: MIXS:0000001
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   samp_store_dur:
     name: samp_store_dur
     annotations:
@@ -4628,7 +4628,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000110
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   samp_taxon_id:
     name: samp_taxon_id
     annotations:
@@ -4744,7 +4744,7 @@ slots:
     is_a: nucleic acid sequence source field
     slot_uri: MIXS:0000111
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   saturates_pc:
     name: saturates_pc
     annotations:
@@ -4796,7 +4796,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000645
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   season_temp:
     name: season_temp
     annotations:
@@ -4819,7 +4819,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000643
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   seq_meth:
     name: seq_meth
     annotations:
@@ -4944,7 +4944,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000735
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   size_frac_up:
     name: size_frac_up
     annotations:
@@ -4968,7 +4968,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000736
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   slope_aspect:
     name: slope_aspect
     annotations:
@@ -4994,7 +4994,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000647
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   slope_gradient:
     name: slope_gradient
     annotations:
@@ -5019,7 +5019,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000646
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   sodium:
     name: sodium
     annotations:
@@ -5042,7 +5042,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000428
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   soil_texture_meth:
     name: soil_texture_meth
     annotations:
@@ -5233,7 +5233,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000423
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   sulfide:
     name: sulfide
     annotations:
@@ -5256,7 +5256,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000424
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   suspend_solids:
     name: suspend_solids
     annotations:
@@ -5339,7 +5339,7 @@ slots:
     is_a: environment field
     slot_uri: MIXS:0000113
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tidal_stage:
     name: tidal_stage
     annotations:
@@ -5402,7 +5402,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000525
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tot_depth_water_col:
     name: tot_depth_water_col
     annotations:
@@ -5425,7 +5425,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000634
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tot_diss_nitro:
     name: tot_diss_nitro
     annotations:
@@ -5449,7 +5449,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000744
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tot_nitro_cont_meth:
     name: tot_nitro_cont_meth
     annotations:
@@ -5493,7 +5493,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000530
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tot_org_c_meth:
     name: tot_org_c_meth
     annotations:
@@ -5538,7 +5538,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000533
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   tot_phosp:
     name: tot_phosp
     annotations:
@@ -5562,7 +5562,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000117
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   viscosity:
     name: viscosity
     annotations:
@@ -5657,7 +5657,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000185
     multivalued: false
-    range: quantity value
+    range: QuantityValue
   water_temp_regm:
     name: water_temp_regm
     annotations:
@@ -5768,13 +5768,13 @@ slots:
   has numeric value:
     name: has numeric value
     from_schema: http://w3id.org/mixs/ranges
-    owner: quantity value
+    owner: QuantityValue
     range: double
   has raw value:
     name: has raw value
     from_schema: http://w3id.org/mixs/ranges
     string_serialization: '{has numeric value} {has unit}'
-    owner: quantity value
+    owner: QuantityValue
   investigation field:
     name: investigation field
     description: field describing aspect of the investigation/study to which the sample
@@ -5794,7 +5794,7 @@ slots:
     name: has unit
     description: Example "m"
     from_schema: http://w3id.org/mixs/ranges
-    owner: quantity value
+    owner: QuantityValue
 classes:
   placeholder_class:
     name: placeholder_class
@@ -6063,7 +6063,7 @@ classes:
         domain_of:
         - built environment
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       agrochem_addition:
         name: agrochem_addition
         description: Addition of fertilizers, pesticides, etc. - amount and time of
@@ -6128,7 +6128,7 @@ classes:
         domain_of:
         - soil
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
         required: false
       al_sat_meth:
         name: al_sat_meth
@@ -6180,7 +6180,7 @@ classes:
         - hydrocarbon resources-fluids_swabs
         - hydrocarbon resources-cores
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       alkalinity_method:
         name: alkalinity_method
         annotations:
@@ -6238,7 +6238,7 @@ classes:
         - sediment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       alt:
         name: alt
         annotations:
@@ -6288,7 +6288,7 @@ classes:
         - air
         - core
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       aminopept_act:
         name: aminopept_act
         annotations:
@@ -6318,7 +6318,7 @@ classes:
         - sediment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       ammonium:
         name: ammonium
         annotations:
@@ -6351,7 +6351,7 @@ classes:
         - hydrocarbon resources-fluids_swabs
         - hydrocarbon resources-cores
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       annual_precpt:
         name: annual_precpt
         description: The average of all annual precipitation values known, or an estimated
@@ -6368,7 +6368,7 @@ classes:
         - agriculture
         - soil
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
         required: false
       annual_temp:
         name: annual_temp
@@ -6384,7 +6384,7 @@ classes:
         - agriculture
         - soil
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
         required: false
       antibiotic_regm:
         name: antibiotic_regm
@@ -6569,7 +6569,7 @@ classes:
         - sediment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       bathroom_count:
         name: bathroom_count
         annotations:
@@ -6771,7 +6771,7 @@ classes:
         - sediment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       bromide:
         name: bromide
         annotations:
@@ -6802,7 +6802,7 @@ classes:
         - miscellaneous natural or artificial environment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       calcium:
         name: calcium
         annotations:
@@ -6835,7 +6835,7 @@ classes:
         - hydrocarbon resources-fluids_swabs
         - hydrocarbon resources-cores
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       carb_nitro_ratio:
         name: carb_nitro_ratio
         annotations:
@@ -6862,7 +6862,7 @@ classes:
         - sediment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       chem_administration:
         name: chem_administration
         annotations:
@@ -7029,7 +7029,7 @@ classes:
         - hydrocarbon resources-fluids_swabs
         - hydrocarbon resources-cores
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       chlorophyll:
         name: chlorophyll
         annotations:
@@ -7060,7 +7060,7 @@ classes:
         - miscellaneous natural or artificial environment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       climate_environment:
         name: climate_environment
         annotations:
@@ -7295,7 +7295,7 @@ classes:
         - hydrocarbon resources-fluids_swabs
         - hydrocarbon resources-cores
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       depth:
         name: depth
         description: The vertical distance below local surface, e.g. for sediment
@@ -7334,7 +7334,7 @@ classes:
         - air
         - core
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
         required: true
       diether_lipids:
         name: diether_lipids
@@ -7402,7 +7402,7 @@ classes:
         - hydrocarbon resources-fluids_swabs
         - hydrocarbon resources-cores
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       diss_hydrogen:
         name: diss_hydrogen
         annotations:
@@ -7433,7 +7433,7 @@ classes:
         - miscellaneous natural or artificial environment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       diss_inorg_carb:
         name: diss_inorg_carb
         annotations:
@@ -7467,7 +7467,7 @@ classes:
         - hydrocarbon resources-fluids_swabs
         - hydrocarbon resources-cores
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       diss_inorg_phosp:
         name: diss_inorg_phosp
         annotations:
@@ -7497,7 +7497,7 @@ classes:
         - hydrocarbon resources-fluids_swabs
         - hydrocarbon resources-cores
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       diss_org_carb:
         name: diss_org_carb
         annotations:
@@ -7530,7 +7530,7 @@ classes:
         - hydrocarbon resources-fluids_swabs
         - hydrocarbon resources-cores
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       diss_org_nitro:
         name: diss_org_nitro
         annotations:
@@ -7562,7 +7562,7 @@ classes:
         - miscellaneous natural or artificial environment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       diss_oxygen:
         name: diss_oxygen
         annotations:
@@ -7593,7 +7593,7 @@ classes:
         - miscellaneous natural or artificial environment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       drainage_class:
         name: drainage_class
         description: Drainage classification from a standard system such as the USDA
@@ -7650,7 +7650,7 @@ classes:
         - air
         - core
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
         required: true
       elevator:
         name: elevator
@@ -8338,7 +8338,7 @@ classes:
         - sediment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       gravity:
         name: gravity
         annotations:
@@ -9191,7 +9191,7 @@ classes:
         - hydrocarbon resources-fluids_swabs
         - hydrocarbon resources-cores
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       max_occup:
         name: max_occup
         annotations:
@@ -9246,7 +9246,7 @@ classes:
         - sediment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       mean_peak_frict_vel:
         name: mean_peak_frict_vel
         annotations:
@@ -9276,7 +9276,7 @@ classes:
         - sediment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       mineral_nutr_regm:
         name: mineral_nutr_regm
         annotations:
@@ -9413,7 +9413,7 @@ classes:
         - hydrocarbon resources-fluids_swabs
         - hydrocarbon resources-cores
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       nitrite:
         name: nitrite
         annotations:
@@ -9446,7 +9446,7 @@ classes:
         - hydrocarbon resources-fluids_swabs
         - hydrocarbon resources-cores
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       non_min_nutr_regm:
         name: non_min_nutr_regm
         annotations:
@@ -9721,7 +9721,7 @@ classes:
         - miscellaneous natural or artificial environment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
         required: false
       org_nitro:
         name: org_nitro
@@ -9740,7 +9740,7 @@ classes:
         - miscellaneous natural or artificial environment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
         required: false
       org_particles:
         name: org_particles
@@ -9896,7 +9896,7 @@ classes:
         - sediment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       particle_class:
         name: particle_class
         annotations:
@@ -10127,7 +10127,7 @@ classes:
         - sediment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       ph:
         name: ph
         description: Ph measurement of the sample, or liquid portion of sample, or
@@ -10232,7 +10232,7 @@ classes:
         - miscellaneous natural or artificial environment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       phosplipid_fatt_acid:
         name: phosplipid_fatt_acid
         annotations:
@@ -10444,7 +10444,7 @@ classes:
         - hydrocarbon resources-fluids_swabs
         - hydrocarbon resources-cores
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       pres_animal_insect:
         name: pres_animal_insect
         annotations:
@@ -10505,7 +10505,7 @@ classes:
         - hydrocarbon resources-fluids_swabs
         - hydrocarbon resources-cores
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       prev_land_use_meth:
         name: prev_land_use_meth
         description: Reference or method used in determining previous land use and
@@ -10661,7 +10661,7 @@ classes:
         - sediment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       rel_to_oxygen:
         name: rel_to_oxygen
         description: Is this organism an aerobe, anaerobe? Please note that aerobic
@@ -11144,7 +11144,7 @@ classes:
         - host-associated
         - air
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       salinity_meth:
         name: salinity_meth
         description: Reference or method used in determining salinity
@@ -11465,7 +11465,7 @@ classes:
         - MIMAG
         - MIUVIG
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
         recommended: true
       samp_store_dur:
         name: samp_store_dur
@@ -11594,7 +11594,7 @@ classes:
         - host-associated
         - air
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       samp_taxon_id:
         name: samp_taxon_id
         description: NCBI taxon id of the sample.  Maybe be a single taxon or mixed
@@ -11740,7 +11740,7 @@ classes:
         - MIMAG
         - MIUVIG
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
         required: false
       saturates_pc:
         name: saturates_pc
@@ -11793,7 +11793,7 @@ classes:
         - food-farm environment
         - soil
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
         required: false
       season_temp:
         name: season_temp
@@ -11810,7 +11810,7 @@ classes:
         - food-farm environment
         - soil
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
         required: false
       seq_meth:
         name: seq_meth
@@ -11963,7 +11963,7 @@ classes:
         - food-farm environment
         - water
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       size_frac_up:
         name: size_frac_up
         annotations:
@@ -11994,7 +11994,7 @@ classes:
         - food-farm environment
         - water
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       slope_aspect:
         name: slope_aspect
         description: The direction a slope faces. While looking down a slope use a
@@ -12012,7 +12012,7 @@ classes:
         - agriculture
         - soil
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
         required: false
       slope_gradient:
         name: slope_gradient
@@ -12030,7 +12030,7 @@ classes:
         - agriculture
         - soil
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
         required: false
       sodium:
         name: sodium
@@ -12065,7 +12065,7 @@ classes:
         - hydrocarbon resources-fluids_swabs
         - hydrocarbon resources-cores
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       soil_texture_meth:
         name: soil_texture_meth
         description: Reference or method used in determining soil texture
@@ -12271,7 +12271,7 @@ classes:
         - hydrocarbon resources-fluids_swabs
         - hydrocarbon resources-cores
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       sulfide:
         name: sulfide
         annotations:
@@ -12304,7 +12304,7 @@ classes:
         - hydrocarbon resources-fluids_swabs
         - hydrocarbon resources-cores
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       suspend_solids:
         name: suspend_solids
         annotations:
@@ -12425,7 +12425,7 @@ classes:
         - air
         - core
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
         required: false
       tidal_stage:
         name: tidal_stage
@@ -12498,7 +12498,7 @@ classes:
         - sediment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       tot_depth_water_col:
         name: tot_depth_water_col
         annotations:
@@ -12527,7 +12527,7 @@ classes:
         - water
         - sediment
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       tot_diss_nitro:
         name: tot_diss_nitro
         annotations:
@@ -12557,7 +12557,7 @@ classes:
         domain_of:
         - water
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       tot_nitro_cont_meth:
         name: tot_nitro_cont_meth
         description: Reference or method used in determining the total nitrogen
@@ -12591,7 +12591,7 @@ classes:
         - sediment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
         required: false
       tot_org_c_meth:
         name: tot_org_c_meth
@@ -12629,7 +12629,7 @@ classes:
         - sediment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
         required: false
       tot_phosp:
         name: tot_phosp
@@ -12661,7 +12661,7 @@ classes:
         - hydrocarbon resources-fluids_swabs
         - hydrocarbon resources-cores
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
       viscosity:
         name: viscosity
         annotations:
@@ -12756,7 +12756,7 @@ classes:
         - sediment
         - microbial mat_biofilm
         slot_group: .nan
-        range: quantity value
+        range: QuantityValue
         required: false
       water_temp_regm:
         name: water_temp_regm
@@ -12878,8 +12878,8 @@ classes:
         - built environment
         slot_group: .nan
         range: string
-  quantity value:
-    name: quantity value
+  QuantityValue:
+    name: QuantityValue
     description: used to record a measurement
     from_schema: http://w3id.org/mixs/ranges
     attributes:

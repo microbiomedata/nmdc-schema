@@ -996,24 +996,30 @@ enums:
         text: soil
       water_extract_soil:
         text: water_extract_soil
-  rel_to_oxygen_enum:
-    name: rel_to_oxygen_enum
+  oxy_stat_samp_enum:
+    name: oxy_stat_samp_enum
     from_schema: https://microbiomedata/schema
     permissible_values:
-      aerobe:
-        text: aerobe
-      anaerobe:
-        text: anaerobe
-      facultative:
-        text: facultative
-      microaerophilic:
-        text: microaerophilic
-      microanaerobe:
-        text: microanaerobe
-      obligate aerobe:
-        text: obligate aerobe
-      obligate anaerobe:
-        text: obligate anaerobe
+      aerobic:
+        text: aerobic
+      anaerobic:
+        text: anaerobic
+      other:
+        text: other
+  samp_md_enum:
+    name: samp_md_enum
+    from_schema: https://microbiomedata/schema
+    permissible_values:
+      DF:
+        text: DF
+      RT:
+        text: RT
+      KB:
+        text: KB
+      MSL:
+        text: MSL
+      other:
+        text: other
   biotic_relationship_enum:
     name: biotic_relationship_enum
     from_schema: https://microbiomedata/schema
@@ -1026,16 +1032,6 @@ enums:
         text: commensal
       symbiont:
         text: symbiont
-  oxy_stat_samp_enum:
-    name: oxy_stat_samp_enum
-    from_schema: https://microbiomedata/schema
-    permissible_values:
-      aerobic:
-        text: aerobic
-      anaerobic:
-        text: anaerobic
-      other:
-        text: other
   tidal_stage_enum:
     name: tidal_stage_enum
     from_schema: https://microbiomedata/schema
@@ -1048,6 +1044,28 @@ enums:
         text: flood tide
       high tide:
         text: high tide
+  plant_growth_med_enum:
+    name: plant_growth_med_enum
+    from_schema: https://microbiomedata/schema
+    permissible_values:
+      other artificial liquid medium:
+        text: other artificial liquid medium
+      other artificial solid medium:
+        text: other artificial solid medium
+      peat moss:
+        text: peat moss
+      perlite:
+        text: perlite
+      pumice:
+        text: pumice
+      sand:
+        text: sand
+      soil:
+        text: soil
+      vermiculite:
+        text: vermiculite
+      water:
+        text: water
   organism_count_enum:
     name: organism_count_enum
     from_schema: https://microbiomedata/schema
@@ -1058,76 +1076,6 @@ enums:
         text: MPN
       other:
         text: other
-  profile_position_enum:
-    name: profile_position_enum
-    from_schema: https://microbiomedata/schema
-    permissible_values:
-      summit:
-        text: summit
-      shoulder:
-        text: shoulder
-      backslope:
-        text: backslope
-      footslope:
-        text: footslope
-      toeslope:
-        text: toeslope
-  fao_class_enum:
-    name: fao_class_enum
-    from_schema: https://microbiomedata/schema
-    permissible_values:
-      Acrisols:
-        text: Acrisols
-      Andosols:
-        text: Andosols
-      Arenosols:
-        text: Arenosols
-      Cambisols:
-        text: Cambisols
-      Chernozems:
-        text: Chernozems
-      Ferralsols:
-        text: Ferralsols
-      Fluvisols:
-        text: Fluvisols
-      Gleysols:
-        text: Gleysols
-      Greyzems:
-        text: Greyzems
-      Gypsisols:
-        text: Gypsisols
-      Histosols:
-        text: Histosols
-      Kastanozems:
-        text: Kastanozems
-      Lithosols:
-        text: Lithosols
-      Luvisols:
-        text: Luvisols
-      Nitosols:
-        text: Nitosols
-      Phaeozems:
-        text: Phaeozems
-      Planosols:
-        text: Planosols
-      Podzols:
-        text: Podzols
-      Podzoluvisols:
-        text: Podzoluvisols
-      Rankers:
-        text: Rankers
-      Regosols:
-        text: Regosols
-      Rendzinas:
-        text: Rendzinas
-      Solonchaks:
-        text: Solonchaks
-      Solonetz:
-        text: Solonetz
-      Vertisols:
-        text: Vertisols
-      Yermosols:
-        text: Yermosols
   tillage_enum:
     name: tillage_enum
     from_schema: https://microbiomedata/schema
@@ -1150,6 +1098,24 @@ enums:
         text: mouldboard
       disc plough:
         text: disc plough
+  rel_to_oxygen_enum:
+    name: rel_to_oxygen_enum
+    from_schema: https://microbiomedata/schema
+    permissible_values:
+      aerobe:
+        text: aerobe
+      anaerobe:
+        text: anaerobe
+      facultative:
+        text: facultative
+      microaerophilic:
+        text: microaerophilic
+      microanaerobe:
+        text: microanaerobe
+      obligate aerobe:
+        text: obligate aerobe
+      obligate anaerobe:
+        text: obligate anaerobe
   cur_land_use_enum:
     name: cur_land_use_enum
     from_schema: https://microbiomedata/schema
@@ -1225,6 +1191,22 @@ enums:
         text: swamp (permanent or semi-permanent water body dominated by woody plants)
       crop trees (nuts,fruit,christmas trees,nursery trees):
         text: crop trees (nuts,fruit,christmas trees,nursery trees)
+  freq_clean_enum:
+    name: freq_clean_enum
+    from_schema: https://microbiomedata/schema
+    permissible_values:
+      Daily:
+        text: Daily
+      Weekly:
+        text: Weekly
+      Monthly:
+        text: Monthly
+      Quarterly:
+        text: Quarterly
+      Annually:
+        text: Annually
+      other:
+        text: other
   drainage_class_enum:
     name: drainage_class_enum
     from_schema: https://microbiomedata/schema
@@ -1241,6 +1223,76 @@ enums:
         text: well
       excessively drained:
         text: excessively drained
+  profile_position_enum:
+    name: profile_position_enum
+    from_schema: https://microbiomedata/schema
+    permissible_values:
+      summit:
+        text: summit
+      shoulder:
+        text: shoulder
+      backslope:
+        text: backslope
+      footslope:
+        text: footslope
+      toeslope:
+        text: toeslope
+  fao_class_enum:
+    name: fao_class_enum
+    from_schema: https://microbiomedata/schema
+    permissible_values:
+      Acrisols:
+        text: Acrisols
+      Andosols:
+        text: Andosols
+      Arenosols:
+        text: Arenosols
+      Cambisols:
+        text: Cambisols
+      Chernozems:
+        text: Chernozems
+      Ferralsols:
+        text: Ferralsols
+      Fluvisols:
+        text: Fluvisols
+      Gleysols:
+        text: Gleysols
+      Greyzems:
+        text: Greyzems
+      Gypsisols:
+        text: Gypsisols
+      Histosols:
+        text: Histosols
+      Kastanozems:
+        text: Kastanozems
+      Lithosols:
+        text: Lithosols
+      Luvisols:
+        text: Luvisols
+      Nitosols:
+        text: Nitosols
+      Phaeozems:
+        text: Phaeozems
+      Planosols:
+        text: Planosols
+      Podzols:
+        text: Podzols
+      Podzoluvisols:
+        text: Podzoluvisols
+      Rankers:
+        text: Rankers
+      Regosols:
+        text: Regosols
+      Rendzinas:
+        text: Rendzinas
+      Solonchaks:
+        text: Solonchaks
+      Solonetz:
+        text: Solonetz
+      Vertisols:
+        text: Vertisols
+      Yermosols:
+        text: Yermosols
 slots:
   zinc:
     name: zinc
@@ -4052,6 +4104,30 @@ slots:
     string_serialization: '{integer}'
     slot_group: EMSL
     recommended: true
+  abs_air_humidity:
+    name: abs_air_humidity
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: gram per gram, kilogram per kilogram, kilogram, pound
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Actual mass of water vapor - mh20 - present in the air water vapor
+      mixture
+    title: absolute air humidity
+    examples:
+    - value: 9 gram per gram
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - absolute air humidity
+    is_a: core field
+    slot_uri: MIXS:0000122
+    multivalued: false
+    range: QuantityValue
   agrochem_addition:
     name: agrochem_addition
     annotations:
@@ -4075,7 +4151,7 @@ slots:
     string_serialization: '{text};{float} {unit};{timestamp}'
     slot_uri: MIXS:0000639
     multivalued: true
-    range: TextValue
+    range: string
   air_temp_regm:
     name: air_temp_regm
     annotations:
@@ -4102,7 +4178,7 @@ slots:
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000551
     multivalued: true
-    range: TextValue
+    range: string
   al_sat:
     name: al_sat
     annotations:
@@ -4146,7 +4222,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000324
     multivalued: false
-    range: TextValue
+    range: string
   alkalinity:
     name: alkalinity
     annotations:
@@ -4191,7 +4267,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: MIXS:0000298
     multivalued: false
-    range: TextValue
+    range: string
   alkyl_diethers:
     name: alkyl_diethers
     annotations:
@@ -4330,6 +4406,132 @@ slots:
     slot_uri: MIXS:0000642
     multivalued: false
     range: QuantityValue
+  antibiotic_regm:
+    name: antibiotic_regm
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: antibiotic name;antibiotic amount;treatment interval and duration
+      preferred_unit:
+        tag: preferred_unit
+        value: milligram
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Information about treatment involving antibiotic administration;
+      should include the name of antibiotic, amount administered, treatment regimen
+      including how many times the treatment was repeated, how long each treatment
+      lasted, and the start and end time of the entire treatment; can include multiple
+      antibiotic regimens
+    title: antibiotic regimen
+    examples:
+    - value: penicillin;5 milligram;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - antibiotic regimen
+    is_a: core field
+    string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
+    slot_uri: MIXS:0000553
+    multivalued: true
+    range: string
+  aromatics_pc:
+    name: aromatics_pc
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: percent
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: 'Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis
+      method that divides¬†crude oil¬†components according to their polarizability
+      and polarity. There are three main methods to obtain SARA results. The most
+      popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source:
+      https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)'
+    title: aromatics wt%
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - aromatics wt%
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0000133
+    multivalued: false
+    range: string
+  asphaltenes_pc:
+    name: asphaltenes_pc
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: percent
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: 'Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis
+      method that divides¬†crude oil¬†components according to their polarizability
+      and polarity. There are three main methods to obtain SARA results. The most
+      popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source:
+      https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)'
+    title: asphaltenes wt%
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - asphaltenes wt%
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0000135
+    multivalued: false
+    range: string
+  atmospheric_data:
+    name: atmospheric_data
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: atmospheric data name;measurement value
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Measurement of atmospheric data; can include multiple data
+    title: atmospheric data
+    examples:
+    - value: wind speed;9 knots
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - atmospheric data
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0001097
+    multivalued: true
+    range: string
+  avg_occup:
+    name: avg_occup
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Daily average occupancy of room. Indicate the number of person(s)
+      daily occupying the sampling room.
+    title: average daily occupancy
+    examples:
+    - value: '2'
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - average daily occupancy
+    is_a: core field
+    slot_uri: MIXS:0000775
+    multivalued: false
+    range: double
   bacteria_carb_prod:
     name: bacteria_carb_prod
     annotations:
@@ -4353,6 +4555,97 @@ slots:
     slot_uri: MIXS:0000173
     multivalued: false
     range: QuantityValue
+  bathroom_count:
+    name: bathroom_count
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The number of bathrooms in the building
+    title: bathroom count
+    examples:
+    - value: '1'
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - bathroom count
+    is_a: core field
+    slot_uri: MIXS:0000776
+    multivalued: false
+    range: integer
+  bedroom_count:
+    name: bedroom_count
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The number of bedrooms in the building
+    title: bedroom count
+    examples:
+    - value: '2'
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - bedroom count
+    is_a: core field
+    slot_uri: MIXS:0000777
+    multivalued: false
+    range: integer
+  biocide_admin_method:
+    name: biocide_admin_method
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value;frequency;duration;duration
+      preferred_unit:
+        tag: preferred_unit
+        value: milligram per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Method of biocide administration (dose, frequency, duration, time
+      elapsed between last biociding and sampling) (e.g. 150 mg/l; weekly; 4 hr; 3
+      days)
+    title: biocide administration method
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - biocide administration method
+    is_a: core field
+    string_serialization: '{float} {unit};{Rn/start_time/end_time/duration};{duration}'
+    slot_uri: MIXS:0000456
+    multivalued: false
+    range: string
+  biomass:
+    name: biomass
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: biomass type;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: ton, kilogram, gram
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Amount of biomass; should include the name for the part of biomass
+      measured, e.g. Microbial, total. Can include multiple measurements
+    title: biomass
+    examples:
+    - value: total;20 gram
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - biomass
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0000174
+    multivalued: true
+    range: string
   biotic_regm:
     name: biotic_regm
     annotations:
@@ -4374,7 +4667,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: MIXS:0001038
     multivalued: false
-    range: TextValue
+    range: string
   biotic_relationship:
     name: biotic_relationship
     annotations:
@@ -4507,7 +4800,60 @@ slots:
     string_serialization: '{termLabel} {[termID]};{timestamp}'
     slot_uri: MIXS:0000751
     multivalued: true
-    range: ControlledTermValue
+    range: string
+  chem_mutagen:
+    name: chem_mutagen
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: mutagen name;mutagen amount;treatment interval and duration
+      preferred_unit:
+        tag: preferred_unit
+        value: milligram per liter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Treatment involving use of mutagens; should include the name of mutagen,
+      amount administered, treatment regimen including how many times the treatment
+      was repeated, how long each treatment lasted, and the start and end time of
+      the entire treatment; can include multiple mutagen regimens
+    title: chemical mutagen
+    examples:
+    - value: nitrous acid;0.5 milligram per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - chemical mutagen
+    is_a: core field
+    string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
+    slot_uri: MIXS:0000555
+    multivalued: true
+    range: string
+  chem_treat_method:
+    name: chem_treat_method
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value;frequency;duration;duration
+      preferred_unit:
+        tag: preferred_unit
+        value: milligram per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Method of chemical administration(dose, frequency, duration, time
+      elapsed between administration and sampling) (e.g. 50 mg/l; twice a week; 1
+      hr; 0 days)
+    title: chemical treatment method
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - chemical treatment method
+    is_a: core field
+    string_serialization: '{float} {unit};{Rn/start_time/end_time/duration};{duration};{duration}'
+    slot_uri: MIXS:0000457
+    multivalued: false
+    range: string
   chimera_check:
     name: chimera_check
     annotations:
@@ -4527,7 +4873,7 @@ slots:
     string_serialization: '{software};{version};{parameters}'
     slot_uri: MIXS:0000052
     multivalued: false
-    range: TextValue
+    range: string
   chloride:
     name: chloride
     annotations:
@@ -4597,7 +4943,7 @@ slots:
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0001040
     multivalued: true
-    range: TextValue
+    range: string
   collection_date:
     name: collection_date
     annotations:
@@ -4617,7 +4963,27 @@ slots:
     is_a: environment field
     slot_uri: MIXS:0000011
     multivalued: false
-    range: TimestampValue
+    range: date
+  cool_syst_id:
+    name: cool_syst_id
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: unique identifier
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The cooling system identifier
+    title: cooling system identifier
+    examples:
+    - value: '12345'
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - cooling system identifier
+    is_a: core field
+    slot_uri: MIXS:0000785
+    multivalued: false
+    range: integer
   crop_rotation:
     name: crop_rotation
     annotations:
@@ -4638,7 +5004,7 @@ slots:
     string_serialization: '{boolean};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000318
     multivalued: false
-    range: TextValue
+    range: string
   cur_land_use:
     name: cur_land_use
     annotations:
@@ -4680,7 +5046,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: MIXS:0000312
     multivalued: false
-    range: TextValue
+    range: string
   cur_vegetation_meth:
     name: cur_vegetation_meth
     annotations:
@@ -4701,7 +5067,27 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000314
     multivalued: false
-    range: TextValue
+    range: string
+  date_last_rain:
+    name: date_last_rain
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: timestamp
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The date of the last time it rained
+    title: date last rain
+    examples:
+    - value: 2018-05-11:T14:30Z
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - date last rain
+    is_a: core field
+    slot_uri: MIXS:0000786
+    multivalued: false
+    range: date
   density:
     name: density
     annotations:
@@ -4745,6 +5131,31 @@ slots:
     slot_uri: MIXS:0000018
     multivalued: false
     range: QuantityValue
+  diether_lipids:
+    name: diether_lipids
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: diether lipid name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: nanogram per liter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Concentration of diether lipids; can include multiple types of diether
+      lipids
+    title: diether lipids
+    examples:
+    - value: 0.2 nanogram per liter
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - diether lipids
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0000178
+    multivalued: true
+    range: string
   diss_carb_dioxide:
     name: diss_carb_dioxide
     annotations:
@@ -4950,6 +5361,52 @@ slots:
     slot_uri: MIXS:0000093
     multivalued: false
     range: QuantityValue
+  elevator:
+    name: elevator
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The number of elevators within the built structure
+    title: elevator count
+    examples:
+    - value: '2'
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - elevator count
+    is_a: core field
+    slot_uri: MIXS:0000799
+    multivalued: false
+    range: integer
+  emulsions:
+    name: emulsions
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: emulsion name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: gram per liter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Amount or concentration of substances such as paints, adhesives,
+      mayonnaise, hair colorants, emulsified oils, etc.; can include multiple emulsion
+      types
+    title: emulsions
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - emulsions
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0000660
+    multivalued: true
+    range: string
   env_broad_scale:
     name: env_broad_scale
     annotations:
@@ -4974,7 +5431,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000012
     multivalued: false
-    range: ControlledIdentifiedTermValue
+    range: string
   env_local_scale:
     name: env_local_scale
     annotations:
@@ -5001,7 +5458,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000013
     multivalued: false
-    range: ControlledIdentifiedTermValue
+    range: string
   env_medium:
     name: env_medium
     annotations:
@@ -5028,7 +5485,47 @@ slots:
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000014
     multivalued: false
-    range: ControlledIdentifiedTermValue
+    range: string
+  escalator:
+    name: escalator
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The number of escalators within the built structure
+    title: escalator count
+    examples:
+    - value: '4'
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - escalator count
+    is_a: core field
+    slot_uri: MIXS:0000800
+    multivalued: false
+    range: integer
+  exp_pipe:
+    name: exp_pipe
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The number of exposed pipes in the room
+    title: exposed pipes
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - exposed pipes
+    is_a: core field
+    slot_uri: MIXS:0000220
+    multivalued: false
+    range: integer
   experimental_factor:
     name: experimental_factor
     annotations:
@@ -5051,7 +5548,27 @@ slots:
     string_serialization: '{termLabel} {[termID]}|{text}'
     slot_uri: MIXS:0000008
     multivalued: false
-    range: ControlledTermValue
+    range: string
+  ext_door:
+    name: ext_door
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The number of exterior doors in the built structure
+    title: exterior door count
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - exterior door count
+    is_a: core field
+    slot_uri: MIXS:0000170
+    multivalued: false
+    range: integer
   extreme_event:
     name: extreme_event
     annotations:
@@ -5071,7 +5588,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000320
     multivalued: false
-    range: TimestampValue
+    range: date
   fao_class:
     name: fao_class
     annotations:
@@ -5093,6 +5610,34 @@ slots:
     slot_uri: MIXS:0001083
     multivalued: false
     range: fao_class_enum
+  fertilizer_regm:
+    name: fertilizer_regm
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: fertilizer name;fertilizer amount;treatment interval and duration
+      preferred_unit:
+        tag: preferred_unit
+        value: gram, mole per liter, milligram per liter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Information about treatment involving the use of fertilizers; should
+      include the name of fertilizer, amount administered, treatment regimen including
+      how many times the treatment was repeated, how long each treatment lasted, and
+      the start and end time of the entire treatment; can include multiple fertilizer
+      regimens
+    title: fertilizer regimen
+    examples:
+    - value: urea;0.6 milligram per liter;R2/2018-05-11:T14:30/2018-05-11T19:30/P1H30M
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - fertilizer regimen
+    is_a: core field
+    string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
+    slot_uri: MIXS:0000556
+    multivalued: true
+    range: string
   fire:
     name: fire
     annotations:
@@ -5112,7 +5657,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0001086
     multivalued: false
-    range: TimestampValue
+    range: date
   flooding:
     name: flooding
     annotations:
@@ -5132,7 +5677,96 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000319
     multivalued: false
-    range: TimestampValue
+    range: date
+  floor_count:
+    name: floor_count
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The number of floors in the building, including basements and mechanical
+      penthouse
+    title: floor count
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - floor count
+    is_a: core field
+    slot_uri: MIXS:0000225
+    multivalued: false
+    range: integer
+  freq_clean:
+    name: freq_clean
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: enumeration or {text}
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The number of times the sample location is cleaned. Frequency of
+      cleaning might be on a Daily basis, Weekly, Monthly, Quarterly or Annually.
+    title: frequency of cleaning
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - frequency of cleaning
+    is_a: core field
+    slot_uri: MIXS:0000226
+    multivalued: false
+    range: freq_clean_enum
+  freq_cook:
+    name: freq_cook
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The number of times a meal is cooked per week
+    title: frequency of cooking
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - frequency of cooking
+    is_a: core field
+    slot_uri: MIXS:0000227
+    multivalued: false
+    range: integer
+  fungicide_regm:
+    name: fungicide_regm
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: fungicide name;fungicide amount;treatment interval and duration
+      preferred_unit:
+        tag: preferred_unit
+        value: gram, mole per liter, milligram per liter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Information about treatment involving use of fungicides; should include
+      the name of fungicide, amount administered, treatment regimen including how
+      many times the treatment was repeated, how long each treatment lasted, and the
+      start and end time of the entire treatment; can include multiple fungicide regimens
+    title: fungicide regimen
+    examples:
+    - value: bifonazole;1 mole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - fungicide regimen
+    is_a: core field
+    string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
+    slot_uri: MIXS:0000557
+    multivalued: true
+    range: string
   gaseous_environment:
     name: gaseous_environment
     annotations:
@@ -5159,7 +5793,32 @@ slots:
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000558
     multivalued: true
-    range: TextValue
+    range: string
+  gaseous_substances:
+    name: gaseous_substances
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: gaseous substance name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: micromole per liter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Amount or concentration of substances such as hydrogen sulfide, carbon
+      dioxide, methane, etc.; can include multiple substances
+    title: gaseous substances
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - gaseous substances
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0000661
+    multivalued: true
+    range: string
   geo_loc_name:
     name: geo_loc_name
     annotations:
@@ -5181,7 +5840,7 @@ slots:
     string_serialization: '{term}: {term}, {text}'
     slot_uri: MIXS:0000010
     multivalued: false
-    range: TextValue
+    range: string
   glucosidase_act:
     name: glucosidase_act
     annotations:
@@ -5205,6 +5864,34 @@ slots:
     slot_uri: MIXS:0000137
     multivalued: false
     range: QuantityValue
+  gravity:
+    name: gravity
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: gravity factor value;treatment interval and duration
+      preferred_unit:
+        tag: preferred_unit
+        value: meter per square second, g
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Information about treatment involving use of gravity factor to study
+      various types of responses in presence, absence or modified levels of gravity;
+      treatment regimen including how many times the treatment was repeated, how long
+      each treatment lasted, and the start and end time of the entire treatment; can
+      include multiple treatments
+    title: gravity
+    examples:
+    - value: 12 g;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - gravity
+    is_a: core field
+    string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
+    slot_uri: MIXS:0000559
+    multivalued: true
+    range: string
   growth_facil:
     name: growth_facil
     annotations:
@@ -5227,7 +5914,144 @@ slots:
     string_serialization: '{text}|{termLabel} {[termID]}'
     slot_uri: MIXS:0001043
     multivalued: false
-    range: ControlledTermValue
+    range: string
+  growth_hormone_regm:
+    name: growth_hormone_regm
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: growth hormone name;growth hormone amount;treatment interval and duration
+      preferred_unit:
+        tag: preferred_unit
+        value: gram, mole per liter, milligram per liter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Information about treatment involving use of growth hormones; should
+      include the name of growth hormone, amount administered, treatment regimen including
+      how many times the treatment was repeated, how long each treatment lasted, and
+      the start and end time of the entire treatment; can include multiple growth
+      hormone regimens
+    title: growth hormone regimen
+    examples:
+    - value: abscisic acid;0.5 milligram per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - growth hormone regimen
+    is_a: core field
+    string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
+    slot_uri: MIXS:0000560
+    multivalued: true
+    range: string
+  hall_count:
+    name: hall_count
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The total count of hallways and cooridors in the built structure
+    title: hallway/corridor count
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - hallway/corridor count
+    is_a: core field
+    slot_uri: MIXS:0000228
+    multivalued: false
+    range: integer
+  hcr_pressure:
+    name: hcr_pressure
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value range
+      preferred_unit:
+        tag: preferred_unit
+        value: atmosphere, kilopascal
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Original pressure of the hydrocarbon resource
+    title: hydrocarbon resource original pressure
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - hydrocarbon resource original pressure
+    is_a: core field
+    string_serialization: '{float} - {float} {unit}'
+    slot_uri: MIXS:0000395
+    multivalued: false
+    range: string
+  hcr_temp:
+    name: hcr_temp
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value range
+      preferred_unit:
+        tag: preferred_unit
+        value: degree Celsius
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Original temperature of the hydrocarbon resource
+    title: hydrocarbon resource original temperature
+    examples:
+    - value: 150-295 degree Celsius
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - hydrocarbon resource original temperature
+    is_a: core field
+    string_serialization: '{float} - {float} {unit}'
+    slot_uri: MIXS:0000393
+    multivalued: false
+    range: string
+  heat_sys_deliv_meth:
+    name: heat_sys_deliv_meth
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: enumeration
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The method by which the heat is delivered through the system
+    title: heating system delivery method
+    examples:
+    - value: radiant
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - heating system delivery method
+    is_a: core field
+    string_serialization: '[conductive|radiant]'
+    slot_uri: MIXS:0000812
+    multivalued: false
+    range: string
+  heat_system_id:
+    name: heat_system_id
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: unique identifier
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The heating system identifier
+    title: heating system identifier
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - heating system identifier
+    is_a: core field
+    slot_uri: MIXS:0000833
+    multivalued: false
+    range: integer
   heavy_metals:
     name: heavy_metals
     annotations:
@@ -5252,7 +6076,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000652
     multivalued: true
-    range: TextValue
+    range: string
   heavy_metals_meth:
     name: heavy_metals_meth
     annotations:
@@ -5273,7 +6097,176 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000343
     multivalued: false
-    range: TextValue
+    range: string
+  herbicide_regm:
+    name: herbicide_regm
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: herbicide name;herbicide amount;treatment interval and duration
+      preferred_unit:
+        tag: preferred_unit
+        value: gram, mole per liter, milligram per liter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Information about treatment involving use of herbicides; information
+      about treatment involving use of growth hormones; should include the name of
+      herbicide, amount administered, treatment regimen including how many times the
+      treatment was repeated, how long each treatment lasted, and the start and end
+      time of the entire treatment; can include multiple regimens
+    title: herbicide regimen
+    examples:
+    - value: atrazine;10 milligram per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - herbicide regimen
+    is_a: core field
+    string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
+    slot_uri: MIXS:0000561
+    multivalued: true
+    range: string
+  host_body_product:
+    name: host_body_product
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: FMA or UBERON
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Substance produced by the body, e.g. Stool, mucus, where the sample
+      was obtained from. For foundational model of anatomy ontology (fma) or Uber-anatomy
+      ontology (UBERON) terms, please see https://www.ebi.ac.uk/ols/ontologies/fma
+      or https://www.ebi.ac.uk/ols/ontologies/uberon
+    title: host body product
+    examples:
+    - value: Portion of mucus [fma66938]
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - host body product
+    is_a: core field
+    string_serialization: '{termLabel} {[termID]}'
+    slot_uri: MIXS:0000888
+    multivalued: false
+    range: string
+  host_body_site:
+    name: host_body_site
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: FMA or UBERON
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Name of body site where the sample was obtained from, such as a specific
+      organ or tissue (tongue, lung etc...). For foundational model of anatomy ontology
+      (fma) (v 4.11.0) or Uber-anatomy ontology (UBERON) (v releases/2014-06-15) terms,
+      please see http://purl.bioontology.org/ontology/FMA or http://purl.bioontology.org/ontology/UBERON
+    title: host body site
+    examples:
+    - value: gill [UBERON:0002535]
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - host body site
+    is_a: core field
+    string_serialization: '{termLabel} {[termID]}'
+    slot_uri: MIXS:0000867
+    multivalued: false
+    range: string
+  host_family_relation:
+    name: host_family_relation
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: relationship type;arbitrary identifier
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Familial relationships to other hosts in the same study; can include
+      multiple relationships
+    title: host family relationship
+    examples:
+    - value: offspring;Mussel25
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - host family relationship
+    is_a: core field
+    string_serialization: '{text};{text}'
+    slot_uri: MIXS:0000872
+    multivalued: true
+    range: string
+  host_phenotype:
+    name: host_phenotype
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PATO or HP
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Phenotype of human or other host. For phenotypic quality ontology
+      (pato) (v 2018-03-27) terms, please see http://purl.bioontology.org/ontology/pato.
+      For Human Phenotype Ontology (HP) (v 2018-06-13) please see http://purl.bioontology.org/ontology/HP
+    title: host phenotype
+    examples:
+    - value: elongated [PATO:0001154]
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - host phenotype
+    is_a: core field
+    string_serialization: '{termLabel} {[termID]}'
+    slot_uri: MIXS:0000874
+    multivalued: false
+    range: string
+  host_subspecf_genlin:
+    name: host_subspecf_genlin
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: Genetic lineage below lowest rank of NCBI taxonomy, which is subspecies,
+          e.g. serovar, biotype, ecotype, variety, cultivar.
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Information about the genetic distinctness of the host organism below
+      the subspecies level e.g., serovar, serotype, biotype, ecotype, variety, cultivar,
+      or any relevant genetic typing schemes like Group I plasmid. Subspecies should
+      not be recorded in this term, but in the NCBI taxonomy. Supply both the lineage
+      name and the lineage rank separated by a colon, e.g., biovar:abc123.
+    title: host subspecific genetic lineage
+    examples:
+    - value: 'serovar:Newport, variety:glabrum, cultivar: Red Delicious'
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - host subspecific genetic lineage
+    is_a: core field
+    string_serialization: '{rank name}:{text}'
+    slot_uri: MIXS:0001318
+    multivalued: true
+    range: string
+  host_symbiont:
+    name: host_symbiont
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: species name or common name
+      occurrence:
+        tag: occurrence
+        value: m
+    description: The taxonomic name of the organism(s) found living in mutualistic,
+      commensalistic, or parasitic symbiosis with the specific host.
+    title: observed host symbionts
+    examples:
+    - value: flukeworms
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - observed host symbionts
+    is_a: core field
+    string_serialization: '{text}'
+    slot_uri: MIXS:0001298
+    multivalued: true
+    range: string
   host_taxid:
     name: host_taxid
     annotations:
@@ -5294,7 +6287,7 @@ slots:
     string_serialization: '{NCBI taxid}'
     slot_uri: MIXS:0000250
     multivalued: false
-    range: TextValue
+    range: string
   humidity_regm:
     name: humidity_regm
     annotations:
@@ -5322,7 +6315,73 @@ slots:
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000568
     multivalued: true
-    range: TextValue
+    range: string
+  inorg_particles:
+    name: inorg_particles
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: inorganic particle name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: mole per liter, milligram per liter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Concentration of particles such as sand, grit, metal particles, ceramics,
+      etc.; can include multiple particles
+    title: inorganic particles
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - inorganic particles
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0000664
+    multivalued: true
+    range: string
+  iw_bt_date_well:
+    name: iw_bt_date_well
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: timestamp
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Injection water breakthrough date per well following a secondary
+      and/or tertiary recovery
+    title: injection water breakthrough date of specific well
+    examples:
+    - value: '2018-05-11'
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - injection water breakthrough date of specific well
+    is_a: core field
+    slot_uri: MIXS:0001010
+    multivalued: false
+    range: date
+  last_clean:
+    name: last_clean
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: timestamp
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The last time the floor was cleaned (swept, mopped, vacuumed)
+    title: last time swept/mopped/vacuumed
+    examples:
+    - value: 2018-05-11:T14:30Z
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - last time swept/mopped/vacuumed
+    is_a: core field
+    slot_uri: MIXS:0000814
+    multivalued: false
+    range: date
   lat_lon:
     name: lat_lon
     annotations:
@@ -5341,7 +6400,7 @@ slots:
     string_serialization: '{float} {float}'
     slot_uri: MIXS:0000009
     multivalued: false
-    range: GeolocationValue
+    range: string
   light_regm:
     name: light_regm
     annotations:
@@ -5366,7 +6425,7 @@ slots:
     string_serialization: '{text};{float} {unit};{float} {unit}'
     slot_uri: MIXS:0000569
     multivalued: false
-    range: TextValue
+    range: string
   link_addit_analys:
     name: link_addit_analys
     annotations:
@@ -5387,7 +6446,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000340
     multivalued: false
-    range: TextValue
+    range: string
   link_class_info:
     name: link_class_info
     annotations:
@@ -5408,7 +6467,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000329
     multivalued: false
-    range: TextValue
+    range: string
   link_climate_info:
     name: link_climate_info
     annotations:
@@ -5429,7 +6488,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000328
     multivalued: false
-    range: TextValue
+    range: string
   local_class:
     name: local_class
     annotations:
@@ -5450,7 +6509,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: MIXS:0000330
     multivalued: false
-    range: TextValue
+    range: string
   local_class_meth:
     name: local_class_meth
     annotations:
@@ -5471,7 +6530,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000331
     multivalued: false
-    range: TextValue
+    range: string
   magnesium:
     name: magnesium
     annotations:
@@ -5496,6 +6555,26 @@ slots:
     slot_uri: MIXS:0000431
     multivalued: false
     range: QuantityValue
+  max_occup:
+    name: max_occup
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The maximum amount of people allowed in the indoor environment
+    title: maximum occupancy
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - maximum occupancy
+    is_a: core field
+    slot_uri: MIXS:0000229
+    multivalued: false
+    range: integer
   mean_frict_vel:
     name: mean_frict_vel
     annotations:
@@ -5542,6 +6621,35 @@ slots:
     slot_uri: MIXS:0000502
     multivalued: false
     range: QuantityValue
+  mineral_nutr_regm:
+    name: mineral_nutr_regm
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: mineral nutrient name;mineral nutrient amount;treatment interval and
+          duration
+      preferred_unit:
+        tag: preferred_unit
+        value: gram, mole per liter, milligram per liter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Information about treatment involving the use of mineral supplements;
+      should include the name of mineral nutrient, amount administered, treatment
+      regimen including how many times the treatment was repeated, how long each treatment
+      lasted, and the start and end time of the entire treatment; can include multiple
+      mineral nutrient regimens
+    title: mineral nutrient regimen
+    examples:
+    - value: potassium;15 gram;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - mineral nutrient regimen
+    is_a: core field
+    string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
+    slot_uri: MIXS:0000570
+    multivalued: true
+    range: string
   misc_param:
     name: misc_param
     annotations:
@@ -5563,7 +6671,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000752
     multivalued: true
-    range: TextValue
+    range: string
   n_alkanes:
     name: n_alkanes
     annotations:
@@ -5587,7 +6695,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000503
     multivalued: true
-    range: TextValue
+    range: string
   nitrate:
     name: nitrate
     annotations:
@@ -5634,6 +6742,35 @@ slots:
     slot_uri: MIXS:0000426
     multivalued: false
     range: QuantityValue
+  non_min_nutr_regm:
+    name: non_min_nutr_regm
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: non-mineral nutrient name;non-mineral nutrient amount;treatment interval
+          and duration
+      preferred_unit:
+        tag: preferred_unit
+        value: gram, mole per liter, milligram per liter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Information about treatment involving the exposure of plant to non-mineral
+      nutrient such as oxygen, hydrogen or carbon; should include the name of non-mineral
+      nutrient, amount administered, treatment regimen including how many times the
+      treatment was repeated, how long each treatment lasted, and the start and end
+      time of the entire treatment; can include multiple non-mineral nutrient regimens
+    title: non-mineral nutrient regimen
+    examples:
+    - value: carbon dioxide;10 mole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - non-mineral nutrient regimen
+    is_a: core field
+    string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
+    slot_uri: MIXS:0000571
+    multivalued: true
+    range: string
   nucl_acid_amp:
     name: nucl_acid_amp
     annotations:
@@ -5653,7 +6790,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000038
     multivalued: false
-    range: TextValue
+    range: string
   nucl_acid_ext:
     name: nucl_acid_ext
     annotations:
@@ -5673,7 +6810,138 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000037
     multivalued: false
-    range: TextValue
+    range: string
+  number_pets:
+    name: number_pets
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The number of pets residing in the sampled space
+    title: number of pets
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - number of pets
+    is_a: core field
+    slot_uri: MIXS:0000231
+    multivalued: false
+    range: integer
+  number_plants:
+    name: number_plants
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The number of plant(s) in the sampling space
+    title: number of houseplants
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - number of houseplants
+    is_a: core field
+    slot_uri: MIXS:0000230
+    multivalued: false
+    range: integer
+  number_resident:
+    name: number_resident
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The number of individuals currently occupying in the sampling location
+    title: number of residents
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - number of residents
+    is_a: core field
+    slot_uri: MIXS:0000232
+    multivalued: false
+    range: integer
+  occup_density_samp:
+    name: occup_density_samp
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Average number of occupants at time of sampling per square footage
+    title: occupant density at sampling
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - occupant density at sampling
+    is_a: core field
+    slot_uri: MIXS:0000217
+    multivalued: false
+    range: double
+  occup_samp:
+    name: occup_samp
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Number of occupants present at time of sample within the given space
+    title: occupancy at sampling
+    examples:
+    - value: '10'
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - occupancy at sampling
+    is_a: core field
+    slot_uri: MIXS:0000772
+    multivalued: false
+    range: integer
+  org_count_qpcr_info:
+    name: org_count_qpcr_info
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: gene name;FWD:forward primer sequence;REV:reverse primer sequence;initial
+          denaturation:degrees_minutes;denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
+          elongation:degrees_minutes; total cycles
+      preferred_unit:
+        tag: preferred_unit
+        value: number of cells per gram (or ml or cm^2)
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: 'If qpcr was used for the cell count, the target gene name, the primer
+      sequence and the cycling conditions should also be provided. (Example: 16S rrna;
+      FWD:ACGTAGCTATGACGT REV:GTGCTAGTCGAGTAC; initial denaturation:90C_5min; denaturation:90C_2min;
+      annealing:52C_30 sec; elongation:72C_30 sec; 90 C for 1 min; final elongation:72C_5min;
+      30 cycles)'
+    title: organism count qPCR information
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - organism count qPCR information
+    is_a: core field
+    string_serialization: '{text};FWD:{dna};REV:{dna};initial denaturation:degrees_minutes;denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
+      elongation:degrees_minutes; total cycles'
+    slot_uri: MIXS:0000099
+    multivalued: false
+    range: string
   org_matter:
     name: org_matter
     annotations:
@@ -5720,6 +6988,31 @@ slots:
     slot_uri: MIXS:0000205
     multivalued: false
     range: QuantityValue
+  org_particles:
+    name: org_particles
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: particle name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: gram per liter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Concentration of particles such as faeces, hairs, food, vomit, paper
+      fibers, plant material, humus, etc.
+    title: organic particles
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - organic particles
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0000665
+    multivalued: true
+    range: string
   organism_count:
     name: organism_count
     annotations:
@@ -5746,7 +7039,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000103
     multivalued: true
-    range: QuantityValue
+    range: organism_count_enum
   oxy_stat_samp:
     name: oxy_stat_samp
     annotations:
@@ -5790,6 +7083,32 @@ slots:
     slot_uri: MIXS:0000515
     multivalued: false
     range: QuantityValue
+  particle_class:
+    name: particle_class
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: particle name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: micrometer
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Particles are classified, based on their size, into six general categories:clay,
+      silt, sand, gravel, cobbles, and boulders; should include amount of particle
+      preceded by the name of the particle type; can include multiple values
+    title: particle classification
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - particle classification
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0000206
+    multivalued: true
+    range: string
   pcr_cond:
     name: pcr_cond
     annotations:
@@ -5810,7 +7129,7 @@ slots:
       elongation:degrees_minutes;total cycles
     slot_uri: MIXS:0000049
     multivalued: false
-    range: TextValue
+    range: string
   pcr_primers:
     name: pcr_primers
     annotations:
@@ -5831,7 +7150,32 @@ slots:
     string_serialization: FWD:{dna};REV:{dna}
     slot_uri: MIXS:0000046
     multivalued: false
-    range: TextValue
+    range: string
+  permeability:
+    name: permeability
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value range
+      preferred_unit:
+        tag: preferred_unit
+        value: mD
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: 'Measure of the ability of a hydrocarbon resource to allow fluids
+      to pass through it. (Additional information: https://en.wikipedia.org/wiki/Permeability_(earth_sciences))'
+    title: permeability
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - permeability
+    is_a: core field
+    string_serialization: '{integer} - {integer} {unit}'
+    slot_uri: MIXS:0000404
+    multivalued: false
+    range: string
   perturbation:
     name: perturbation
     annotations:
@@ -5855,7 +7199,35 @@ slots:
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000754
     multivalued: true
-    range: TextValue
+    range: string
+  pesticide_regm:
+    name: pesticide_regm
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: pesticide name;pesticide amount;treatment interval and duration
+      preferred_unit:
+        tag: preferred_unit
+        value: gram, mole per liter, milligram per liter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Information about treatment involving use of insecticides; should
+      include the name of pesticide, amount administered, treatment regimen including
+      how many times the treatment was repeated, how long each treatment lasted, and
+      the start and end time of the entire treatment; can include multiple pesticide
+      regimens
+    title: pesticide regimen
+    examples:
+    - value: pyrethrum;0.6 milligram per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - pesticide regimen
+    is_a: core field
+    string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
+    slot_uri: MIXS:0000573
+    multivalued: true
+    range: string
   petroleum_hydrocarb:
     name: petroleum_hydrocarb
     annotations:
@@ -5920,7 +7292,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0001106
     multivalued: false
-    range: TextValue
+    range: string
   phaeopigments:
     name: phaeopigments
     annotations:
@@ -5944,7 +7316,7 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000180
     multivalued: true
-    range: TextValue
+    range: string
   phosphate:
     name: phosphate
     annotations:
@@ -5991,7 +7363,81 @@ slots:
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000181
     multivalued: true
-    range: TextValue
+    range: string
+  plant_growth_med:
+    name: plant_growth_med
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: EO or enumeration
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Specification of the media for growing the plants or tissue cultured
+      samples, e.g. soil, aeroponic, hydroponic, in vitro solid culture medium, in
+      vitro liquid culture medium. Recommended value is a specific value from EO:plant
+      growth medium (follow this link for terms http://purl.obolibrary.org/obo/EO_0007147)
+      or other controlled vocabulary
+    title: plant growth medium
+    examples:
+    - value: hydroponic plant culture media [EO:0007067]
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - plant growth medium
+    is_a: core field
+    slot_uri: MIXS:0001057
+    multivalued: false
+    range: plant_growth_med_enum
+  plant_struc:
+    name: plant_struc
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PO
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Name of plant structure the sample was obtained from; for Plant Ontology
+      (PO) (v releases/2017-12-14) terms, see http://purl.bioontology.org/ontology/PO,
+      e.g. petiole epidermis (PO_0000051). If an individual flower is sampled, the
+      sex of it can be recorded here.
+    title: plant structure
+    examples:
+    - value: epidermis [PO:0005679]
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - plant structure
+    is_a: core field
+    string_serialization: '{termLabel} {[termID]}'
+    slot_uri: MIXS:0001060
+    multivalued: false
+    range: string
+  pollutants:
+    name: pollutants
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: pollutant name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: gram, mole per liter, milligram per liter, microgram per cubic meter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Pollutant types and, amount or concentrations measured at the time
+      of sampling; can report multiple pollutants by entering numeric values preceded
+      by name of pollutant
+    title: pollutants
+    examples:
+    - value: lead;0.15 microgram per cubic meter
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - pollutants
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0000107
+    multivalued: true
+    range: string
   pool_dna_extracts:
     name: pool_dna_extracts
     annotations:
@@ -6013,7 +7459,32 @@ slots:
     string_serialization: '{boolean};{integer}'
     slot_uri: MIXS:0000325
     multivalued: false
-    range: TextValue
+    range: string
+  porosity:
+    name: porosity
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value or range
+      preferred_unit:
+        tag: preferred_unit
+        value: percentage
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Porosity of deposited sediment is volume of voids divided by the
+      total volume of sample
+    title: porosity
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - porosity
+    is_a: core field
+    string_serialization: '{float} - {float} {unit}'
+    slot_uri: MIXS:0000211
+    multivalued: false
+    range: string
   potassium:
     name: potassium
     annotations:
@@ -6037,6 +7508,28 @@ slots:
     slot_uri: MIXS:0000430
     multivalued: false
     range: QuantityValue
+  pres_animal_insect:
+    name: pres_animal_insect
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: enumeration;count
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The type and number of animals or insects present in the sampling
+      space.
+    title: presence of pets, animals, or insects
+    examples:
+    - value: cat;5
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - presence of pets, animals, or insects
+    is_a: core field
+    slot_uri: MIXS:0000819
+    multivalued: false
+    range: string
+    pattern: ^(cat|dog|rodent|snake|other);\d+$
   pressure:
     name: pressure
     annotations:
@@ -6060,6 +7553,47 @@ slots:
     slot_uri: MIXS:0000412
     multivalued: false
     range: QuantityValue
+  prev_land_use_meth:
+    name: prev_land_use_meth
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID,DOI or url
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Reference or method used in determining previous land use and dates
+    title: history/previous land use method
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - history/previous land use method
+    is_a: core field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: MIXS:0000316
+    multivalued: false
+    range: string
+  prod_start_date:
+    name: prod_start_date
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: timestamp
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Date of field's first production
+    title: production start date
+    examples:
+    - value: '2018-05-11'
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - production start date
+    is_a: core field
+    slot_uri: MIXS:0001008
+    multivalued: false
+    range: date
   profile_position:
     name: profile_position
     annotations:
@@ -6081,6 +7615,61 @@ slots:
     slot_uri: MIXS:0001084
     multivalued: false
     range: profile_position_enum
+  radiation_regm:
+    name: radiation_regm
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: radiation type name;radiation amount;treatment interval and duration
+      preferred_unit:
+        tag: preferred_unit
+        value: rad, gray
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Information about treatment involving exposure of plant or a plant
+      part to a particular radiation regimen; should include the radiation type, amount
+      or intensity administered, treatment regimen including how many times the treatment
+      was repeated, how long each treatment lasted, and the start and end time of
+      the entire treatment; can include multiple radiation regimens
+    title: radiation regimen
+    examples:
+    - value: gamma radiation;60 gray;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - radiation regimen
+    is_a: core field
+    string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
+    slot_uri: MIXS:0000575
+    multivalued: true
+    range: string
+  rainfall_regm:
+    name: rainfall_regm
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value;treatment interval and duration
+      preferred_unit:
+        tag: preferred_unit
+        value: millimeter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Information about treatment involving an exposure to a given amount
+      of rainfall, treatment regimen including how many times the treatment was repeated,
+      how long each treatment lasted, and the start and end time of the entire treatment;
+      can include multiple regimens
+    title: rainfall regimen
+    examples:
+    - value: 15 millimeter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - rainfall regimen
+    is_a: core field
+    string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
+    slot_uri: MIXS:0000576
+    multivalued: true
+    range: string
   redox_potential:
     name: redox_potential
     annotations:
@@ -6105,6 +7694,357 @@ slots:
     slot_uri: MIXS:0000182
     multivalued: false
     range: QuantityValue
+  rel_to_oxygen:
+    name: rel_to_oxygen
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: enumeration
+    description: Is this organism an aerobe, anaerobe? Please note that aerobic and
+      anaerobic are valid descriptors for microbial environments
+    title: relationship to oxygen
+    examples:
+    - value: aerobe
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - relationship to oxygen
+    is_a: nucleic acid sequence source field
+    slot_uri: MIXS:0000015
+    multivalued: false
+    range: rel_to_oxygen_enum
+  resins_pc:
+    name: resins_pc
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: percent
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: 'Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis
+      method that divides¬†crude oil¬†components according to their polarizability
+      and polarity. There are three main methods to obtain SARA results. The most
+      popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source:
+      https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)'
+    title: resins wt%
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - resins wt%
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0000134
+    multivalued: false
+    range: string
+  room_architec_elem:
+    name: room_architec_elem
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: free text
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The unique details and component parts that, together, form the architecture
+      of a distinguisahable space within a built structure
+    title: room architectural elements
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - room architectural elements
+    is_a: core field
+    string_serialization: '{text}'
+    slot_uri: MIXS:0000233
+    multivalued: false
+    range: string
+  room_count:
+    name: room_count
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The total count of rooms in the built structure including all room
+      types
+    title: room count
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - room count
+    is_a: core field
+    slot_uri: MIXS:0000234
+    multivalued: false
+    range: integer
+  room_dim:
+    name: room_dim
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: meter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The length, width and height of sampling room
+    title: room dimensions
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - room dimensions
+    is_a: core field
+    string_serialization: '{integer} {unit} x {integer} {unit} x {integer} {unit}'
+    slot_uri: MIXS:0000192
+    multivalued: false
+    range: string
+  room_door_dist:
+    name: room_door_dist
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: meter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Distance between doors (meters) in the hallway between the sampling
+      room and adjacent rooms
+    title: room door distance
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - room door distance
+    is_a: core field
+    string_serialization: '{integer} {unit}'
+    slot_uri: MIXS:0000193
+    multivalued: false
+    range: string
+  room_net_area:
+    name: room_net_area
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: square feet, square meter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The net floor area of sampling room. Net area excludes wall thicknesses
+    title: room net area
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - room net area
+    is_a: core field
+    string_serialization: '{integer} {unit}'
+    slot_uri: MIXS:0000194
+    multivalued: false
+    range: string
+  room_occup:
+    name: room_occup
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Count of room occupancy at time of sampling
+    title: room occupancy
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - room occupancy
+    is_a: core field
+    slot_uri: MIXS:0000236
+    multivalued: false
+    range: integer
+  room_vol:
+    name: room_vol
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: cubic feet, cubic meter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Volume of sampling room
+    title: room volume
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - room volume
+    is_a: core field
+    string_serialization: '{integer} {unit}'
+    slot_uri: MIXS:0000195
+    multivalued: false
+    range: string
+  root_med_carbon:
+    name: root_med_carbon
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: carbon source name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: milligram per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Source of organic carbon in the culture rooting medium; e.g. sucrose.
+    title: rooting medium carbon
+    examples:
+    - value: sucrose
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - rooting medium carbon
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0000577
+    multivalued: false
+    range: string
+  root_med_macronutr:
+    name: root_med_macronutr
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: macronutrient name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: milligram per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Measurement of the culture rooting medium macronutrients (N,P, K,
+      Ca, Mg, S); e.g. KH2PO4 (170¬†mg/L).
+    title: rooting medium macronutrients
+    examples:
+    - value: KH2PO4;170¬†milligram per liter
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - rooting medium macronutrients
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0000578
+    multivalued: false
+    range: string
+  root_med_micronutr:
+    name: root_med_micronutr
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: micronutrient name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: milligram per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Measurement of the culture rooting medium micronutrients (Fe, Mn,
+      Zn, B, Cu, Mo); e.g. H3BO3 (6.2¬†mg/L).
+    title: rooting medium micronutrients
+    examples:
+    - value: H3BO3;6.2¬†milligram per liter
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - rooting medium micronutrients
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0000579
+    multivalued: false
+    range: string
+  root_med_ph:
+    name: root_med_ph
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: pH measurement of the culture rooting medium; e.g. 5.5.
+    title: rooting medium pH
+    examples:
+    - value: '7.5'
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - rooting medium pH
+    is_a: core field
+    slot_uri: MIXS:0001062
+    multivalued: false
+    range: double
+  root_med_regl:
+    name: root_med_regl
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: regulator name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: milligram per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Growth regulators in the culture rooting medium such as cytokinins,
+      auxins, gybberellins, abscisic acid; e.g. 0.5¬†mg/L NAA.
+    title: rooting medium regulators
+    examples:
+    - value: abscisic acid;0.75 milligram per liter
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - rooting medium regulators
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0000581
+    multivalued: false
+    range: string
+  root_med_suppl:
+    name: root_med_suppl
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: supplement name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: milligram per liter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Organic supplements of the culture rooting medium, such as vitamins,
+      amino acids, organic acids, antibiotics activated charcoal; e.g. nicotinic acid
+      (0.5¬†mg/L).
+    title: rooting medium organic supplements
+    examples:
+    - value: nicotinic acid;0.5 milligram per liter
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - rooting medium organic supplements
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0000580
+    multivalued: false
+    range: string
   salinity:
     name: salinity
     annotations:
@@ -6153,7 +8093,55 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000341
     multivalued: false
-    range: TextValue
+    range: string
+  salt_regm:
+    name: salt_regm
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: salt name;salt amount;treatment interval and duration
+      preferred_unit:
+        tag: preferred_unit
+        value: gram, microgram, mole per liter, gram per liter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Information about treatment involving use of salts as supplement
+      to liquid and soil growth media; should include the name of salt, amount administered,
+      treatment regimen including how many times the treatment was repeated, how long
+      each treatment lasted, and the start and end time of the entire treatment; can
+      include multiple salt regimens
+    title: salt regimen
+    examples:
+    - value: NaCl;5 gram per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - salt regimen
+    is_a: core field
+    string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
+    slot_uri: MIXS:0000582
+    multivalued: true
+    range: string
+  samp_collec_device:
+    name: samp_collec_device
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: device name
+    description: The device used to collect an environmental sample. This field accepts
+      terms listed under environmental sampling device (http://purl.obolibrary.org/obo/ENVO).
+      This field also accepts terms listed under specimen collection device (http://purl.obolibrary.org/obo/GENEPIO_0002094).
+    title: sample collection device
+    examples:
+    - value: swab, biopsy, niskin bottle, push core, drag swab [GENEPIO:0002713]
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - sample collection device
+    is_a: nucleic acid sequence source field
+    string_serialization: '{termLabel} {[termID]}|{text}'
+    slot_uri: MIXS:0000002
+    multivalued: false
+    range: string
   samp_collec_method:
     name: samp_collec_method
     annotations:
@@ -6170,6 +8158,36 @@ slots:
     is_a: nucleic acid sequence source field
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
     slot_uri: MIXS:0001225
+    multivalued: false
+    range: string
+  samp_loc_corr_rate:
+    name: samp_loc_corr_rate
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value range
+      preferred_unit:
+        tag: preferred_unit
+        value: millimeter per year
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Metal corrosion rate is the speed of metal deterioration due to environmental
+      conditions. As environmental conditions change corrosion rates change accordingly.
+      Therefore, long term corrosion rates are generally more informative than short
+      term rates and for that reason they are preferred during reporting. In the case
+      of suspected MIC, corrosion rate measurements at the time of sampling might
+      provide insights into the involvement of certain microbial community members
+      in MIC as well as potential microbial interplays
+    title: corrosion rate at sample location
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - corrosion rate at sample location
+    is_a: core field
+    string_serialization: '{float} - {float} {unit}'
+    slot_uri: MIXS:0000136
     multivalued: false
     range: string
   samp_mat_process:
@@ -6191,7 +8209,35 @@ slots:
     string_serialization: '{text}'
     slot_uri: MIXS:0000016
     multivalued: false
-    range: ControlledTermValue
+    range: string
+  samp_md:
+    name: samp_md
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value;enumeration
+      preferred_unit:
+        tag: preferred_unit
+        value: meter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: In non deviated well, measured depth is equal to the true vertical
+      depth, TVD (TVD=TVDSS plus the reference or datum it refers to). In deviated
+      wells, the MD is the length of trajectory of the borehole measured from the
+      same reference or datum. Common datums used are ground level (GL), drilling
+      rig floor (DF), rotary table (RT), kelly bushing (KB) and mean sea level (MSL).
+      If "other" is specified, please propose entry in "additional info" field
+    title: sample measured depth
+    examples:
+    - value: 1534 meter;MSL
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - sample measured depth
+    is_a: core field
+    slot_uri: MIXS:0000413
+    multivalued: false
+    range: samp_md_enum
   samp_name:
     name: samp_name
     annotations:
@@ -6216,6 +8262,52 @@ slots:
     slot_uri: MIXS:0001107
     multivalued: false
     range: string
+  samp_preserv:
+    name: samp_preserv
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: milliliter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Preservative added to the sample (e.g. Rnalater, alcohol, formaldehyde,
+      etc.). Where appropriate include volume added (e.g. Rnalater; 2 ml)
+    title: preservative added to sample
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - preservative added to sample
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0000463
+    multivalued: false
+    range: string
+  samp_room_id:
+    name: samp_room_id
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Sampling room number. This ID should be consistent with the designations
+      on the building floor plans
+    title: sampling room ID or name
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - sampling room ID or name
+    is_a: core field
+    slot_uri: MIXS:0000244
+    multivalued: false
+    range: integer
   samp_size:
     name: samp_size
     annotations:
@@ -6257,7 +8349,7 @@ slots:
     string_serialization: '{duration}'
     slot_uri: MIXS:0000116
     multivalued: false
-    range: TextValue
+    range: string
   samp_store_loc:
     name: samp_store_loc
     annotations:
@@ -6278,7 +8370,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: MIXS:0000755
     multivalued: false
-    range: TextValue
+    range: string
   samp_store_temp:
     name: samp_store_temp
     annotations:
@@ -6321,7 +8413,81 @@ slots:
     string_serialization: '{text} [NCBI:txid]'
     slot_uri: MIXS:0001320
     multivalued: false
-    range: TextValue
+    range: string
+  samp_time_out:
+    name: samp_time_out
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: time
+      preferred_unit:
+        tag: preferred_unit
+        value: hour
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The recent and long term history of outside sampling
+    title: sampling time outside
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - sampling time outside
+    is_a: core field
+    slot_uri: MIXS:0000196
+    multivalued: false
+    range: double
+  samp_transport_cond:
+    name: samp_transport_cond
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: days;degree Celsius
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Sample transport duration (in days or hrs) and temperature the sample
+      was exposed to (e.g. 5.5 days; 20 ¬∞C)
+    title: sample transport conditions
+    examples:
+    - value: 5 days;-20 degree Celsius
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - sample transport conditions
+    is_a: core field
+    string_serialization: '{float} {unit};{float} {unit}'
+    slot_uri: MIXS:0000410
+    multivalued: false
+    range: string
+  samp_tvdss:
+    name: samp_tvdss
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value or measurement value range
+      preferred_unit:
+        tag: preferred_unit
+        value: meter
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Depth of the sample i.e. The vertical distance between the sea level
+      and the sampled position in the subsurface. Depth can be reported as an interval
+      for subsurface samples e.g. 1325.75-1362.25 m
+    title: sample true vertical depth subsea
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - sample true vertical depth subsea
+    is_a: core field
+    string_serialization: '{float}-{float} {unit}'
+    slot_uri: MIXS:0000409
+    multivalued: false
+    range: string
   samp_vol_we_dna_ext:
     name: samp_vol_we_dna_ext
     annotations:
@@ -6344,6 +8510,34 @@ slots:
     slot_uri: MIXS:0000111
     multivalued: false
     range: QuantityValue
+  saturates_pc:
+    name: saturates_pc
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: percent
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: 'Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis
+      method that divides¬†crude oil¬†components according to their polarizability
+      and polarity. There are three main methods to obtain SARA results. The most
+      popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source:
+      https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)'
+    title: saturates wt%
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - saturates wt%
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0000131
+    multivalued: false
+    range: string
   season_precpt:
     name: season_precpt
     annotations:
@@ -6409,7 +8603,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}|{text}'
     slot_uri: MIXS:0000050
     multivalued: false
-    range: TextValue
+    range: string
   seq_quality_check:
     name: seq_quality_check
     annotations:
@@ -6430,7 +8624,28 @@ slots:
     string_serialization: '[none|manually edited]'
     slot_uri: MIXS:0000051
     multivalued: false
-    range: TextValue
+    range: string
+  shad_dev_water_mold:
+    name: shad_dev_water_mold
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: enumeration
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Signs of the presence of mold or mildew on the shading device
+    title: shading device signs of water/mold
+    examples:
+    - value: no presence of mold visible
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - shading device signs of water/mold
+    is_a: core field
+    string_serialization: '[presence of mold visible|no presence of mold visible]'
+    slot_uri: MIXS:0000834
+    multivalued: false
+    range: string
   sieving:
     name: sieving
     annotations:
@@ -6452,7 +8667,25 @@ slots:
     string_serialization: '{{text}|{float} {unit}};{float} {unit}'
     slot_uri: MIXS:0000322
     multivalued: false
-    range: TextValue
+    range: string
+  size_frac:
+    name: size_frac
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: filter size value range
+    description: Filtering pore size used in sample preparation
+    title: size fraction selected
+    examples:
+    - value: 0-0.22 micrometer
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - size fraction selected
+    is_a: nucleic acid sequence source field
+    string_serialization: '{float}-{float} {unit}'
+    slot_uri: MIXS:0000017
+    multivalued: false
+    range: string
   size_frac_low:
     name: size_frac_low
     annotations:
@@ -6575,6 +8808,27 @@ slots:
     slot_uri: MIXS:0000428
     multivalued: false
     range: QuantityValue
+  soil_texture_meth:
+    name: soil_texture_meth
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID,DOI or url
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Reference or method used in determining soil texture
+    title: soil texture method
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - soil texture method
+    is_a: core field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: MIXS:0000336
+    multivalued: false
+    range: string
   soil_type:
     name: soil_type
     annotations:
@@ -6597,7 +8851,7 @@ slots:
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000332
     multivalued: false
-    range: TextValue
+    range: string
   soil_type_meth:
     name: soil_type_meth
     annotations:
@@ -6619,7 +8873,57 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000334
     multivalued: false
-    range: TextValue
+    range: string
+  soluble_inorg_mat:
+    name: soluble_inorg_mat
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: soluble inorganic material name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: gram, microgram, mole per liter, gram per liter, parts per million
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Concentration of substances such as ammonia, road-salt, sea-salt,
+      cyanide, hydrogen sulfide, thiocyanates, thiosulfates, etc.
+    title: soluble inorganic material
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - soluble inorganic material
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0000672
+    multivalued: true
+    range: string
+  soluble_org_mat:
+    name: soluble_org_mat
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: soluble organic material name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: gram, microgram, mole per liter, gram per liter, parts per million
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Concentration of substances such as urea, fruit sugars, soluble proteins,
+      drugs, pharmaceuticals, etc.
+    title: soluble organic material
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - soluble organic material
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0000673
+    multivalued: true
+    range: string
   source_mat_id:
     name: source_mat_id
     annotations:
@@ -6649,7 +8953,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: MIXS:0000026
     multivalued: false
-    range: TextValue
+    range: string
   store_cond:
     name: store_cond
     annotations:
@@ -6671,7 +8975,7 @@ slots:
     string_serialization: '{text};{duration}'
     slot_uri: MIXS:0000327
     multivalued: false
-    range: TextValue
+    range: string
   sulfate:
     name: sulfate
     annotations:
@@ -6718,6 +9022,32 @@ slots:
     slot_uri: MIXS:0000424
     multivalued: false
     range: QuantityValue
+  suspend_solids:
+    name: suspend_solids
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: suspended solid name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: gram, microgram, milligram per liter, mole per liter, gram per liter,
+          part per million
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Concentration of substances including a wide variety of material,
+      such as silt, decaying plant and animal matter; can include multiple substances
+    title: suspended solids
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - suspended solids
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0000150
+    multivalued: true
+    range: string
   target_gene:
     name: target_gene
     annotations:
@@ -6735,7 +9065,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: MIXS:0000044
     multivalued: false
-    range: TextValue
+    range: string
   target_subfragment:
     name: target_subfragment
     annotations:
@@ -6754,7 +9084,7 @@ slots:
     string_serialization: '{text}'
     slot_uri: MIXS:0000045
     multivalued: false
-    range: TextValue
+    range: string
   temp:
     name: temp
     annotations:
@@ -6949,7 +9279,7 @@ slots:
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000337
     multivalued: false
-    range: TextValue
+    range: string
   tot_org_carb:
     name: tot_org_carb
     annotations:
@@ -6998,6 +9328,57 @@ slots:
     slot_uri: MIXS:0000117
     multivalued: false
     range: QuantityValue
+  viscosity:
+    name: viscosity
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: cP at degree Celsius
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: A measure of oil's resistance¬†to gradual deformation by¬†shear stress¬†or¬†tensile
+      stress (e.g. 3.5 cp; 100 ¬∞C)
+    title: viscosity
+    examples:
+    - value: ''
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - viscosity
+    is_a: core field
+    string_serialization: '{float} {unit};{float} {unit}'
+    slot_uri: MIXS:0000126
+    multivalued: false
+    range: string
+  volatile_org_comp:
+    name: volatile_org_comp
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: volatile organic compound name;measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: microgram per cubic meter, parts per million, nanogram per liter
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Concentration of carbon-based chemicals that easily evaporate at
+      room temperature; can report multiple volatile organic compounds by entering
+      numeric values preceded by name of compound
+    title: volatile organic compounds
+    examples:
+    - value: formaldehyde;500 nanogram per liter
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - volatile organic compounds
+    is_a: core field
+    string_serialization: '{text};{float} {unit}'
+    slot_uri: MIXS:0000115
+    multivalued: true
+    range: string
   water_cont_soil_meth:
     name: water_cont_soil_meth
     annotations:
@@ -7042,6 +9423,33 @@ slots:
     slot_uri: MIXS:0000185
     multivalued: false
     range: QuantityValue
+  water_temp_regm:
+    name: water_temp_regm
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value;treatment interval and duration
+      preferred_unit:
+        tag: preferred_unit
+        value: degree Celsius
+      occurrence:
+        tag: occurrence
+        value: m
+    description: Information about treatment involving an exposure to water with varying
+      degree of temperature, treatment regimen including how many times the treatment
+      was repeated, how long each treatment lasted, and the start and end time of
+      the entire treatment; can include multiple regimens
+    title: water temperature regimen
+    examples:
+    - value: 15 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    from_schema: https://microbiomedata/schema
+    aliases:
+    - water temperature regimen
+    is_a: core field
+    string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
+    slot_uri: MIXS:0000590
+    multivalued: true
+    range: string
   watering_regm:
     name: watering_regm
     annotations:
@@ -7068,72 +9476,65 @@ slots:
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000591
     multivalued: true
-    range: TextValue
-  rel_to_oxygen:
-    name: rel_to_oxygen
+    range: string
+  window_open_freq:
+    name: window_open_freq
     annotations:
       expected_value:
         tag: expected_value
-        value: enumeration
-    description: Is this organism an aerobe, anaerobe? Please note that aerobic and
-      anaerobic are valid descriptors for microbial environments
-    title: relationship to oxygen
+        value: value
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: The number of times windows are opened per week
+    title: window open frequency
     examples:
-    - value: aerobe
+    - value: ''
     from_schema: https://microbiomedata/schema
     aliases:
-    - relationship to oxygen
-    is_a: nucleic acid sequence source field
-    slot_uri: MIXS:0000015
+    - window open frequency
+    is_a: core field
+    slot_uri: MIXS:0000246
     multivalued: false
-    range: rel_to_oxygen_enum
-  abs_air_humidity:
-    name: abs_air_humidity
+    range: integer
+  window_size:
+    name: window_size
     annotations:
       expected_value:
         tag: expected_value
         value: measurement value
       preferred_unit:
         tag: preferred_unit
-        value: gram per gram, kilogram per kilogram, kilogram, pound
+        value: inch, meter
       occurrence:
         tag: occurrence
         value: '1'
-    description: Actual mass of water vapor - mh20 - present in the air water vapor
-      mixture
-    title: absolute air humidity
+    description: The window's length and width
+    title: window area/size
     examples:
-    - value: 9 gram per gram
+    - value: ''
     from_schema: https://microbiomedata/schema
     aliases:
-    - absolute air humidity
+    - window area/size
     is_a: core field
-    slot_uri: MIXS:0000122
+    string_serialization: '{float} {unit} x {float} {unit}'
+    slot_uri: MIXS:0000224
     multivalued: false
-    range: QuantityValue
+    range: string
+  sequencing field:
+    name: sequencing field
+    from_schema: https://microbiomedata/schema
+    abstract: true
   environment field:
     name: environment field
     description: field describing environmental aspect of a sample
     from_schema: https://microbiomedata/schema
     abstract: true
-  core field:
-    name: core field
-    description: basic fields
-    from_schema: https://microbiomedata/schema
-    abstract: true
-  sequencing field:
-    name: sequencing field
-    from_schema: https://microbiomedata/schema
-    abstract: true
-  nucleic acid sequence source field:
-    name: nucleic acid sequence source field
-    from_schema: https://microbiomedata/schema
-    abstract: true
-  has unit:
-    name: has unit
-    description: Example "m"
+  has numeric value:
+    name: has numeric value
     from_schema: https://microbiomedata/schema
     owner: QuantityValue
+    range: double
   has raw value:
     name: has raw value
     from_schema: https://microbiomedata/schema
@@ -7145,411 +9546,20 @@ slots:
       belongs
     from_schema: https://microbiomedata/schema
     abstract: true
-  has numeric value:
-    name: has numeric value
+  nucleic acid sequence source field:
+    name: nucleic acid sequence source field
+    from_schema: https://microbiomedata/schema
+    abstract: true
+  core field:
+    name: core field
+    description: basic fields
+    from_schema: https://microbiomedata/schema
+    abstract: true
+  has unit:
+    name: has unit
+    description: Example "m"
     from_schema: https://microbiomedata/schema
     owner: QuantityValue
-    range: double
-  antibiotic_regm:
-    name: antibiotic_regm
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  aromatics_pc:
-    name: aromatics_pc
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  asphaltenes_pc:
-    name: asphaltenes_pc
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  atmospheric_data:
-    name: atmospheric_data
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  avg_occup:
-    name: avg_occup
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  bathroom_count:
-    name: bathroom_count
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  bedroom_count:
-    name: bedroom_count
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  biocide_admin_method:
-    name: biocide_admin_method
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  biomass:
-    name: biomass
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  chem_mutagen:
-    name: chem_mutagen
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  chem_treat_method:
-    name: chem_treat_method
-    from_schema: https://microbiomedata/schema
-    range: string
-  cool_syst_id:
-    name: cool_syst_id
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  date_last_rain:
-    name: date_last_rain
-    from_schema: https://microbiomedata/schema
-    range: TimestampValue
-  diether_lipids:
-    name: diether_lipids
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  elevator:
-    name: elevator
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  emulsions:
-    name: emulsions
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  escalator:
-    name: escalator
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  exp_pipe:
-    name: exp_pipe
-    from_schema: https://microbiomedata/schema
-    range: QuantityValue
-  ext_door:
-    name: ext_door
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  fertilizer_regm:
-    name: fertilizer_regm
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  floor_count:
-    name: floor_count
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  freq_clean:
-    name: freq_clean
-    from_schema: https://microbiomedata/schema
-    range: QuantityValue
-  freq_cook:
-    name: freq_cook
-    from_schema: https://microbiomedata/schema
-    range: QuantityValue
-  fungicide_regm:
-    name: fungicide_regm
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  gaseous_substances:
-    name: gaseous_substances
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  gravity:
-    name: gravity
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  growth_hormone_regm:
-    name: growth_hormone_regm
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  hall_count:
-    name: hall_count
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  hcr_pressure:
-    name: hcr_pressure
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  hcr_temp:
-    name: hcr_temp
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  heat_sys_deliv_meth:
-    name: heat_sys_deliv_meth
-    from_schema: https://microbiomedata/schema
-    range: string
-  heat_system_id:
-    name: heat_system_id
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  herbicide_regm:
-    name: herbicide_regm
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  host_body_product:
-    name: host_body_product
-    from_schema: https://microbiomedata/schema
-    range: ControlledTermValue
-  host_body_site:
-    name: host_body_site
-    from_schema: https://microbiomedata/schema
-    range: ControlledTermValue
-  host_family_relation:
-    name: host_family_relation
-    from_schema: https://microbiomedata/schema
-    range: string
-  host_phenotype:
-    name: host_phenotype
-    from_schema: https://microbiomedata/schema
-    range: ControlledTermValue
-  host_subspecf_genlin:
-    name: host_subspecf_genlin
-    from_schema: https://microbiomedata/schema
-    range: string
-  host_symbiont:
-    name: host_symbiont
-    from_schema: https://microbiomedata/schema
-    range: string
-  inorg_particles:
-    name: inorg_particles
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  iw_bt_date_well:
-    name: iw_bt_date_well
-    from_schema: https://microbiomedata/schema
-    range: TimestampValue
-  last_clean:
-    name: last_clean
-    from_schema: https://microbiomedata/schema
-    range: TimestampValue
-  max_occup:
-    name: max_occup
-    from_schema: https://microbiomedata/schema
-    range: QuantityValue
-  micro_biomass_meth:
-    name: micro_biomass_meth
-    from_schema: https://microbiomedata/schema
-    range: string
-  mineral_nutr_regm:
-    name: mineral_nutr_regm
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  non_min_nutr_regm:
-    name: non_min_nutr_regm
-    from_schema: https://microbiomedata/schema
-    range: string
-  number_pets:
-    name: number_pets
-    from_schema: https://microbiomedata/schema
-    range: QuantityValue
-  number_plants:
-    name: number_plants
-    from_schema: https://microbiomedata/schema
-    range: QuantityValue
-  number_resident:
-    name: number_resident
-    from_schema: https://microbiomedata/schema
-    range: QuantityValue
-  occup_density_samp:
-    name: occup_density_samp
-    from_schema: https://microbiomedata/schema
-    range: QuantityValue
-  occup_samp:
-    name: occup_samp
-    from_schema: https://microbiomedata/schema
-    range: QuantityValue
-  org_count_qpcr_info:
-    name: org_count_qpcr_info
-    from_schema: https://microbiomedata/schema
-    range: string
-  org_particles:
-    name: org_particles
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  particle_class:
-    name: particle_class
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  permeability:
-    name: permeability
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  pesticide_regm:
-    name: pesticide_regm
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  plant_growth_med:
-    name: plant_growth_med
-    from_schema: https://microbiomedata/schema
-    range: ControlledTermValue
-  plant_struc:
-    name: plant_struc
-    from_schema: https://microbiomedata/schema
-    range: ControlledTermValue
-  pollutants:
-    name: pollutants
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  porosity:
-    name: porosity
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  pres_animal_insect:
-    name: pres_animal_insect
-    from_schema: https://microbiomedata/schema
-    range: string
-  prev_land_use_meth:
-    name: prev_land_use_meth
-    from_schema: https://microbiomedata/schema
-    range: string
-  prod_start_date:
-    name: prod_start_date
-    from_schema: https://microbiomedata/schema
-    range: TimestampValue
-  radiation_regm:
-    name: radiation_regm
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  rainfall_regm:
-    name: rainfall_regm
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  resins_pc:
-    name: resins_pc
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  room_architec_elem:
-    name: room_architec_elem
-    from_schema: https://microbiomedata/schema
-    range: string
-  room_count:
-    name: room_count
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  room_dim:
-    name: room_dim
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  room_door_dist:
-    name: room_door_dist
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  room_net_area:
-    name: room_net_area
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  room_occup:
-    name: room_occup
-    from_schema: https://microbiomedata/schema
-    range: QuantityValue
-  room_vol:
-    name: room_vol
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  root_med_carbon:
-    name: root_med_carbon
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  root_med_macronutr:
-    name: root_med_macronutr
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  root_med_micronutr:
-    name: root_med_micronutr
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  root_med_ph:
-    name: root_med_ph
-    from_schema: https://microbiomedata/schema
-    range: QuantityValue
-  root_med_regl:
-    name: root_med_regl
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  root_med_suppl:
-    name: root_med_suppl
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  salt_regm:
-    name: salt_regm
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  samp_collec_device:
-    name: samp_collec_device
-    from_schema: https://microbiomedata/schema
-    range: string
-  samp_loc_corr_rate:
-    name: samp_loc_corr_rate
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  samp_md:
-    name: samp_md
-    from_schema: https://microbiomedata/schema
-    range: QuantityValue
-  samp_preserv:
-    name: samp_preserv
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  samp_room_id:
-    name: samp_room_id
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  samp_time_out:
-    name: samp_time_out
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  samp_transport_cond:
-    name: samp_transport_cond
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  samp_tvdss:
-    name: samp_tvdss
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  saturates_pc:
-    name: saturates_pc
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  shad_dev_water_mold:
-    name: shad_dev_water_mold
-    from_schema: https://microbiomedata/schema
-    range: string
-  size_frac:
-    name: size_frac
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  soil_texture_meth:
-    name: soil_texture_meth
-    from_schema: https://microbiomedata/schema
-    range: string
-  soluble_inorg_mat:
-    name: soluble_inorg_mat
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  soluble_org_mat:
-    name: soluble_org_mat
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  suspend_solids:
-    name: suspend_solids
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  viscosity:
-    name: viscosity
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  volatile_org_comp:
-    name: volatile_org_comp
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  water_temp_regm:
-    name: water_temp_regm
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  window_open_freq:
-    name: window_open_freq
-    from_schema: https://microbiomedata/schema
-    range: TextValue
-  window_size:
-    name: window_size
-    from_schema: https://microbiomedata/schema
-    range: TextValue
   has_part:
     name: has_part
     from_schema: https://microbiomedata/schema
@@ -8024,134 +10034,113 @@ classes:
     - nitrite_nitrogen
     - lbc_thirty
     - lbceq
+    - abs_air_humidity
+    - antibiotic_regm
+    - aromatics_pc
+    - asphaltenes_pc
+    - atmospheric_data
+    - avg_occup
+    - bathroom_count
+    - bedroom_count
+    - biocide_admin_method
+    - biomass
+    - chem_mutagen
+    - chem_treat_method
+    - cool_syst_id
+    - date_last_rain
+    - diether_lipids
+    - elevator
+    - emulsions
+    - escalator
+    - exp_pipe
+    - ext_door
+    - fertilizer_regm
+    - floor_count
+    - freq_clean
+    - freq_cook
+    - fungicide_regm
+    - gaseous_substances
+    - gravity
+    - growth_hormone_regm
+    - hall_count
+    - hcr_pressure
+    - hcr_temp
+    - heat_sys_deliv_meth
+    - heat_system_id
+    - herbicide_regm
+    - host_body_product
+    - host_body_site
+    - host_family_relation
+    - host_phenotype
+    - host_subspecf_genlin
+    - host_symbiont
+    - inorg_particles
+    - iw_bt_date_well
+    - last_clean
+    - max_occup
+    - mineral_nutr_regm
+    - non_min_nutr_regm
+    - number_pets
+    - number_plants
+    - number_resident
+    - occup_density_samp
+    - occup_samp
+    - org_count_qpcr_info
+    - org_particles
+    - particle_class
+    - permeability
+    - pesticide_regm
+    - plant_growth_med
+    - plant_struc
+    - pollutants
+    - porosity
+    - pres_animal_insect
+    - prev_land_use_meth
+    - prod_start_date
+    - radiation_regm
+    - rainfall_regm
+    - rel_to_oxygen
+    - resins_pc
+    - room_architec_elem
+    - room_count
+    - room_dim
+    - room_door_dist
+    - room_net_area
+    - room_occup
+    - room_vol
+    - root_med_carbon
+    - root_med_macronutr
+    - root_med_micronutr
+    - root_med_ph
+    - root_med_regl
+    - root_med_suppl
+    - salt_regm
+    - samp_collec_device
+    - samp_loc_corr_rate
+    - samp_md
+    - samp_preserv
+    - samp_room_id
+    - samp_time_out
+    - samp_transport_cond
+    - samp_tvdss
+    - saturates_pc
+    - shad_dev_water_mold
+    - size_frac
+    - soil_texture_meth
+    - soluble_inorg_mat
+    - soluble_org_mat
+    - suspend_solids
+    - viscosity
+    - volatile_org_comp
+    - water_temp_regm
+    - window_open_freq
+    - window_size
     slot_usage:
-      elev:
-        name: elev
-        title: elevation, meters
-        comments:
-        - All elevations must be reported in meters. Provide the numerical portion
-          only.
-        examples:
-        - value: '100'
-        range: float
-      oxy_stat_samp:
-        name: oxy_stat_samp
-        notes:
-        - this is now a hybrid of the oxy_stat_samp semantics and the rel_to_oxygen
-          enumeration
-        range: rel_to_oxygen_enum
-      id:
-        name: id
-        description: An NMDC assigned unique identifier for a biosample submitted
-          to NMDC.
-        required: true
-        pattern: ^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
-        structured_pattern:
-          syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}{id_version}{id_locus}'
-          interpolated: true
-      gold_biosample_identifiers:
-        name: gold_biosample_identifiers
-        annotations:
-          display_hint:
-            tag: display_hint
-            value: Provide the GOLD biosample IDs associated with this biosample.
-        description: Unique identifier for a biosample submitted to GOLD that matches
-          the NMDC submitted biosample
-        comments:
-        - This is the ID provided by GOLD that starts with 'GB'
-      alternative_identifiers:
-        name: alternative_identifiers
-        description: Unique identifier for a biosample submitted to additional resources.
-          Matches the entity that has been submitted to NMDC
-      lat_lon:
-        name: lat_lon
-        description: This is currently a required field but it's not clear if this
-          should be required for human hosts
-        notes:
-        - required where?
-      env_broad_scale:
-        name: env_broad_scale
-        required: true
-      env_local_scale:
-        name: env_local_scale
-        required: true
-      env_medium:
-        name: env_medium
-        required: true
-      part_of:
-        name: part_of
-        required: true
-      fire:
-        name: fire
-        annotations:
-          expected_value:
-            tag: expected_value
-            value: date string
-        todos:
-        - is "to" acceptable? Is there a better way to request that be written?
-        - This is no longer matching the listed IRI from GSC. When NMDC has its own
-          slots, map this to the MIxS slot
-        comments:
-        - Provide the date the fire occurred. If extended burning occurred provide
-          the date range.
-        examples:
-        - value: '1871-10-10'
-        - value: 1871-10-01 to 1871-10-31
-        range: string
-        pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$
-      flooding:
-        name: flooding
-        annotations:
-          expected_value:
-            tag: expected_value
-            value: date string
-        todos:
-        - is "to" acceptable? Is there a better way to request that be written?
-        - What about if the "day" isn't known? Is this ok?
-        - This is no longer matching the listed IRI from GSC. When NMDC has its own
-          slots, map this to the MIxS slot
-        comments:
-        - Provide the date the flood occurred. If extended flooding occurred provide
-          the date range.
-        examples:
-        - value: '1927-04-15'
-        - value: 1927-04 to 1927-05
-        range: string
-      extreme_event:
-        name: extreme_event
-        annotations:
-          expected_value:
-            tag: expected_value
-            value: date, string
-        todos:
-        - This is no longer matching the listed IRI from GSC. When NMDC has its own
-          slots, map this to the MIxS slot
-        examples:
-        - value: 1980-05-18, volcanic eruption
-        range: string
-      slope_aspect:
-        name: slope_aspect
-        description: The direction a slope faces. While looking down a slope use a
-          compass to record the direction you are facing (direction or degrees). -
-          This measure provides an indication of sun and wind exposure that will influence
-          soil temperature and evapotranspiration.
-        todos:
-        - This is no longer matching the listed IRI from GSC. When NMDC has its own
-          slots, map this to the MIxS slot
-        comments:
-        - Aspect is the orientation of slope, measured clockwise in degrees from 0
-          to 360, where 0 is north-facing, 90 is east-facing, 180 is south-facing,
-          and 270 is west-facing.
-        examples:
-        - value: '35'
-      slope_gradient:
-        name: slope_gradient
-        todos:
-        - Slope is a percent. How does the validation work? Check to correct examples
-        examples:
-        - value: 10%
-        - value: 10 %
-        - value: '0.1'
+      agrochem_addition:
+        name: agrochem_addition
+      air_temp_regm:
+        name: air_temp_regm
+        recommended: true
       al_sat:
         name: al_sat
         description: The relative abundance of aluminum in the sample
@@ -8163,12 +10152,21 @@ classes:
         - I think it's weird the way GSC writes the title. I recommend this change.
           Thoughts? I would argue this isn't an extreme unusual property. It's just
           a biogeochemical measurement.
+        - This is no longer matching the listed IRI from GSC. When NMDC has its own
+          slots, map this to the MIxS slot
+        - Example & validation. Can we make rules that 27% & 27 % & 0.27 will validate?
+        - I think it's weird the way GSC writes the title. I recommend this change.
+          Thoughts? I would argue this isn't an extreme unusual property. It's just
+          a biogeochemical measurement.
         comments:
         - Aluminum saturation is the percentage of the CEC occupies by aluminum. Like
           all cations, aluminum held by the cation exchange complex is in equilibrium
           with aluminum in the soil solution.
+        - Aluminum saturation is the percentage of the CEC occupies by aluminum. Like
+          all cations, aluminum held by the cation exchange complex is in equilibrium
+          with aluminum in the soil solution.
         examples:
-        - value: 27%
+        - value: '0.27'
       al_sat_meth:
         name: al_sat_meth
         description: Reference or method used in determining Aluminum saturation
@@ -8178,17 +10176,86 @@ classes:
           slots, map this to the MIxS slot
         - I think it's weird the way GSC writes the title. I recommend this change.
           Thoughts?
+        - This is no longer matching the listed IRI from GSC. When NMDC has its own
+          slots, map this to the MIxS slot
+        - I think it's weird the way GSC writes the title. I recommend this change.
+          Thoughts?
         comments:
+        - Required when aluminum saturation is provided.
         - Required when aluminum saturation is provided.
         examples:
         - value: https://doi.org/10.1371/journal.pone.0176357
+      alt:
+        name: alt
+        recommended: true
       annual_precpt:
         name: annual_precpt
         todos:
         - This is no longer matching the listed IRI from GSC, added example. When
           NMDC has its own slots, map this to the MIxS slot
+        - This is no longer matching the listed IRI from GSC, added example. When
+          NMDC has its own slots, map this to the MIxS slot
         examples:
         - value: 8.94 inch
+      antibiotic_regm:
+        name: antibiotic_regm
+      aromatics_pc:
+        name: aromatics_pc
+      asphaltenes_pc:
+        name: asphaltenes_pc
+      atmospheric_data:
+        name: atmospheric_data
+      avg_occup:
+        name: avg_occup
+      bathroom_count:
+        name: bathroom_count
+      bedroom_count:
+        name: bedroom_count
+      biocide_admin_method:
+        name: biocide_admin_method
+      biomass:
+        name: biomass
+      biotic_regm:
+        name: biotic_regm
+        recommended: true
+      carb_nitro_ratio:
+        name: carb_nitro_ratio
+        range: float
+      chem_administration:
+        name: chem_administration
+        range: ControlledTermValue
+        recommended: true
+      chem_mutagen:
+        name: chem_mutagen
+      chem_treat_method:
+        name: chem_treat_method
+      climate_environment:
+        name: climate_environment
+        todos:
+        - description says "can include multiple climates" but multivalued is set
+          to false
+        - add examples, I need to see some examples to add correctly formatted example.
+        - description says "can include multiple climates" but multivalued is set
+          to false
+        - add examples, I need to see some examples to add correctly formatted example.
+        recommended: true
+      collection_date:
+        name: collection_date
+        description: The date of sampling
+        notes:
+        - MIxS collection_date accepts (truncated) ISO8601. DH taking arb precision
+          date only
+        - Use modified term (amended definition)
+        - MIxS collection_date accepts (truncated) ISO8601. DH taking arb precision
+          date only
+        - Use modified term (amended definition)
+        examples:
+        - value: 2021-04-15; 2021-04; 2021
+        string_serialization: '{date, arbitrary precision}'
+        range: TimestampValue
+        required: true
+      cool_syst_id:
+        name: cool_syst_id
       cur_vegetation:
         name: cur_vegetation
         description: Vegetation classification from one or more standard classification
@@ -8197,7 +10264,13 @@ classes:
         - This is no longer matching the listed IRI from GSC. When NMDC has its own
           slots, map this to the MIxS slot
         - Recommend changing this from text value to some king of ontology?
+        - This is no longer matching the listed IRI from GSC. When NMDC has its own
+          slots, map this to the MIxS slot
+        - Recommend changing this from text value to some king of ontology?
         comments:
+        - Values provided here can be specific species of vegetation or vegetation
+          regions
+        - See for vegetation regions- https://education.nationalgeographic.org/resource/vegetation-region
         - Values provided here can be specific species of vegetation or vegetation
           regions
         - See for vegetation regions- https://education.nationalgeographic.org/resource/vegetation-region
@@ -8212,10 +10285,223 @@ classes:
           slots, map this to the MIxS slot
         - I'm not sure this is a DOI, PMID, or URI. Should pool the community and
           find out how they accomplish this if provided.
+        - This is no longer matching the listed IRI from GSC. When NMDC has its own
+          slots, map this to the MIxS slot
+        - I'm not sure this is a DOI, PMID, or URI. Should pool the community and
+          find out how they accomplish this if provided.
         comments:
+        - Required when current vegetation is provided.
         - Required when current vegetation is provided.
         examples:
         - value: https://doi.org/10.1111/j.1654-109X.2011.01154.x
+      date_last_rain:
+        name: date_last_rain
+        range: TimestampValue
+      depth:
+        name: depth
+        title: depth, meters
+        notes:
+        - Use modified term
+        - Use modified term
+        comments:
+        - All depths must be reported in meters. Provide the numerical portion only.
+        - All depths must be reported in meters. Provide the numerical portion only.
+        examples:
+        - value: 0-0.1; 1
+        string_serialization: '{float}|{float}-{float}'
+        required: true
+      diether_lipids:
+        name: diether_lipids
+      ecosystem:
+        name: ecosystem
+        required: true
+      ecosystem_category:
+        name: ecosystem_category
+        required: true
+      ecosystem_subtype:
+        name: ecosystem_subtype
+        required: true
+      ecosystem_type:
+        name: ecosystem_type
+        required: true
+      elev:
+        name: elev
+        title: elevation, meters
+        comments:
+        - All elevations must be reported in meters. Provide the numerical portion
+          only.
+        - All elevations must be reported in meters. Provide the numerical portion
+          only.
+        examples:
+        - value: '100'
+        range: float
+        required: true
+      elevator:
+        name: elevator
+      emulsions:
+        name: emulsions
+      env_broad_scale:
+        name: env_broad_scale
+        description: 'In this field, report which major environmental system your
+          sample or specimen came from. The systems identified should have a coarse
+          spatial grain, to provide the general environmental context of where the
+          sampling was done (e.g. were you in the desert or a rainforest?). We recommend
+          using subclasses of ENVO''s biome class: http://purl.obolibrary.org/obo/ENVO_00000428.
+          Format (one term): termLabel [termID], Format (multiple terms): termLabel
+          [termID]|termLabel [termID]|termLabel [termID]. Example: Annotating a water
+          sample from the photic zone in middle of the Atlantic Ocean, consider: oceanic
+          epipelagic zone biome [ENVO:01000033]. Example: Annotating a sample from
+          the Amazon rainforest consider: tropical moist broadleaf forest biome [ENVO:01000228].
+          If needed, request new terms on the ENVO tracker, identified here: http://www.obofoundry.org/ontology/envo.html'
+        notes:
+        - range changed to enumeration late in makefile, so this is modified (but
+          "sample ID" anyway)
+        - range changed to enumeration late in makefile, so this is modified (but
+          "sample ID" anyway)
+        range: ControlledIdentifiedTermValue
+        required: true
+      env_local_scale:
+        name: env_local_scale
+        notes:
+        - range changed to enumeration late in makefile, so this is modified (but
+          "sample ID" anyway)
+        - range changed to enumeration late in makefile, so this is modified (but
+          "sample ID" anyway)
+        range: ControlledIdentifiedTermValue
+        required: true
+      env_medium:
+        name: env_medium
+        notes:
+        - range changed to enumeration late in makefile, so this is modified (but
+          "sample ID" anyway)
+        - range changed to enumeration late in makefile, so this is modified (but
+          "sample ID" anyway)
+        range: ControlledIdentifiedTermValue
+        required: true
+      escalator:
+        name: escalator
+      exp_pipe:
+        name: exp_pipe
+        range: QuantityValue
+      experimental_factor:
+        name: experimental_factor
+        range: ControlledTermValue
+      ext_door:
+        name: ext_door
+      extreme_event:
+        name: extreme_event
+        todos:
+        - may need new range with sub-slots for a date and a descriptive string
+        - This is no longer matching the listed IRI from GSC. When NMDC has its own
+          slots, map this to the MIxS slot
+        - may need new range with sub-slots for a date and a descriptive string
+        - This is no longer matching the listed IRI from GSC. When NMDC has its own
+          slots, map this to the MIxS slot
+        examples:
+        - value: 1980-05-18, volcanic eruption
+      fertilizer_regm:
+        name: fertilizer_regm
+      fire:
+        name: fire
+        todos:
+        - is "to" acceptable? Is there a better way to request that be written?
+        - This is no longer matching the listed IRI from GSC. When NMDC has its own
+          slots, map this to the MIxS slot
+        - may need new range with sub-slots for a date or date range
+        - is "to" acceptable? Is there a better way to request that be written?
+        - This is no longer matching the listed IRI from GSC. When NMDC has its own
+          slots, map this to the MIxS slot
+        - may need new range with sub-slots for a date or date range
+        comments:
+        - Provide the date the fire occurred. If extended burning occurred provide
+          the date range.
+        - Provide the date the fire occurred. If extended burning occurred provide
+          the date range.
+        examples:
+        - value: '1871-10-10'
+        - value: 1871-10-01 to 1871-10-31
+        range: string
+      flooding:
+        name: flooding
+        todos:
+        - is "to" acceptable? Is there a better way to request that be written?
+        - What about if the "day" isn't known? Is this ok?
+        - This is no longer matching the listed IRI from GSC. When NMDC has its own
+          slots, map this to the MIxS slot
+        - may need new range with sub-slots for text or ontology term or enum
+        - is "to" acceptable? Is there a better way to request that be written?
+        - What about if the "day" isn't known? Is this ok?
+        - This is no longer matching the listed IRI from GSC. When NMDC has its own
+          slots, map this to the MIxS slot
+        - may need new range with sub-slots for text or ontology term or enum
+        comments:
+        - Provide the date the flood occurred. If extended flooding occurred provide
+          the date range.
+        - Provide the date the flood occurred. If extended flooding occurred provide
+          the date range.
+        examples:
+        - value: '1927-04-15'
+        - value: 1927-04 to 1927-05
+      floor_count:
+        name: floor_count
+      freq_clean:
+        name: freq_clean
+        range: QuantityValue
+      freq_cook:
+        name: freq_cook
+        range: QuantityValue
+      fungicide_regm:
+        name: fungicide_regm
+      gaseous_environment:
+        name: gaseous_environment
+        todos:
+        - would like to see usage examples for this slot. Requiring micromole/L seems
+          too limiting and doesn't match expected_value value
+        - did I do this right? keep the example that's provided and add another? so
+          as to not override
+        - would like to see usage examples for this slot. Requiring micromole/L seems
+          too limiting and doesn't match expected_value value
+        - did I do this right? keep the example that's provided and add another? so
+          as to not override
+        examples:
+        - value: CO2; 500ppm above ambient; constant
+        - value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+        recommended: true
+      gaseous_substances:
+        name: gaseous_substances
+      geo_loc_name:
+        name: geo_loc_name
+        string_serialization: '{text}: {text}, {text}'
+      gravity:
+        name: gravity
+      growth_facil:
+        name: growth_facil
+        description: 'Type of facility/location where the sample was harvested; controlled
+          vocabulary: growth chamber, open top chamber, glasshouse, experimental garden,
+          field.'
+        todos:
+        - the submission portal has an enum
+        - the submission portal has an enum
+        notes:
+        - 'Removed from description: Alternatively use Crop Ontology (CO) terms'
+        - 'Removed from description: Alternatively use Crop Ontology (CO) terms'
+        required: true
+      growth_hormone_regm:
+        name: growth_hormone_regm
+      hall_count:
+        name: hall_count
+        todos:
+        - is this even present in the mixs subset import?
+        - is this even present in the mixs subset import?
+        range: integer
+      hcr_pressure:
+        name: hcr_pressure
+      hcr_temp:
+        name: hcr_temp
+      heat_sys_deliv_meth:
+        name: heat_sys_deliv_meth
+      heat_system_id:
+        name: heat_system_id
       heavy_metals:
         name: heavy_metals
         description: Heavy metals present in the sample and their concentrations.
@@ -8227,21 +10513,36 @@ classes:
         - I think it's weird the way GSC writes the title. I recommend this change.
           Thoughts? I would argue this isn't an extreme unusual property. It's just
           a biogeochemical measurement.
+        - This is no longer matching the listed IRI from GSC. When NMDC has its own
+          slots, map this to the MIxS slot
+        - Example & validation. Can we make rules that 27% & 27 % & 0.27 will validate?
+        - I think it's weird the way GSC writes the title. I recommend this change.
+          Thoughts? I would argue this isn't an extreme unusual property. It's just
+          a biogeochemical measurement.
         notes:
+        - Changed to multi-valued. In MIxS, you add another column to denote multiple
+          heavy metals. We don't have that ability in the submission portal.
         - Changed to multi-valued. In MIxS, you add another column to denote multiple
           heavy metals. We don't have that ability in the submission portal.
         comments:
         - For multiple heavy metals and concentrations, separate by ;
+        - For multiple heavy metals and concentrations, separate by ;
         examples:
         - value: mercury 0.09 micrograms per gram
         - value: mercury 0.09 ug/g; chromium 0.03 ug/g
+        multivalued: true
       heavy_metals_meth:
         name: heavy_metals_meth
         title: heavy metals method/ extreme unusual properties
         todos:
         - This is no longer matching the listed IRI from GSC. When NMDC has its own
           slots, map this to the MIxS slot
+        - This is no longer matching the listed IRI from GSC. When NMDC has its own
+          slots, map this to the MIxS slot
         comments:
+        - Required when heavy metals are provided
+        - If different methods are used for multiple metals, indicate the metal and
+          method. Separate metals by ;
         - Required when heavy metals are provided
         - If different methods are used for multiple metals, indicate the metal and
           method. Separate metals by ;
@@ -8249,6 +10550,234 @@ classes:
         - value: https://doi.org/10.3390/ijms9040434
         - value: mercury https://doi.org/10.1007/BF01056090; chromium https://doi.org/10.1007/s00216-006-0322-8
         multivalued: true
+      herbicide_regm:
+        name: herbicide_regm
+      horizon_meth:
+        name: horizon_meth
+        title: horizon method
+      host_body_product:
+        name: host_body_product
+        range: ControlledTermValue
+      host_body_site:
+        name: host_body_site
+        range: ControlledTermValue
+      host_family_relation:
+        name: host_family_relation
+      host_phenotype:
+        name: host_phenotype
+        range: ControlledTermValue
+      host_subspecf_genlin:
+        name: host_subspecf_genlin
+      host_symbiont:
+        name: host_symbiont
+      humidity_regm:
+        name: humidity_regm
+        recommended: true
+      inorg_particles:
+        name: inorg_particles
+      iw_bt_date_well:
+        name: iw_bt_date_well
+        range: TimestampValue
+      last_clean:
+        name: last_clean
+        range: TimestampValue
+      lat_lon:
+        name: lat_lon
+        description: This is currently a required field but it's not clear if this
+          should be required for human hosts
+        string_serialization: '{lat lon}'
+        range: GeolocationValue
+      light_regm:
+        name: light_regm
+        recommended: true
+      max_occup:
+        name: max_occup
+        range: QuantityValue
+      micro_biomass_meth:
+        name: micro_biomass_meth
+      mineral_nutr_regm:
+        name: mineral_nutr_regm
+      misc_param:
+        name: misc_param
+      n_alkanes:
+        name: n_alkanes
+      non_min_nutr_regm:
+        name: non_min_nutr_regm
+      number_pets:
+        name: number_pets
+        range: QuantityValue
+      number_plants:
+        name: number_plants
+        range: QuantityValue
+      number_resident:
+        name: number_resident
+        range: QuantityValue
+      occup_density_samp:
+        name: occup_density_samp
+        range: QuantityValue
+      occup_samp:
+        name: occup_samp
+        range: QuantityValue
+      org_count_qpcr_info:
+        name: org_count_qpcr_info
+      org_particles:
+        name: org_particles
+      organism_count:
+        name: organism_count
+        range: QuantityValue
+      oxy_stat_samp:
+        name: oxy_stat_samp
+        notes:
+        - this is now a hybrid of the oxy_stat_samp semantics and the rel_to_oxygen
+          enumeration
+        - this is now a hybrid of the oxy_stat_samp semantics and the rel_to_oxygen
+          enumeration
+        range: rel_to_oxygen_enum
+      particle_class:
+        name: particle_class
+      permeability:
+        name: permeability
+      pesticide_regm:
+        name: pesticide_regm
+      ph:
+        name: ph
+        description: pH measurement of the sample, or liquid portion of sample, or
+          aqueous phase of the fluid
+        notes:
+        - Use modified term
+        - Use modified term
+        string_serialization: '{float}'
+        range: float
+        recommended: true
+        minimum_value: 0
+        maximum_value: 14
+      ph_meth:
+        name: ph_meth
+        comments:
+        - This can include a link to the instrument used or a citation for the method.
+        - This can include a link to the instrument used or a citation for the method.
+        examples:
+        - value: https://www.southernlabware.com/pc9500-benchtop-ph-conductivity-meter-kit-ph-accuracy-2000mv-ph-range-2-000-to-20-000.html?gclid=Cj0KCQiAwJWdBhCYARIsAJc4idCO5vtvbVMf545fcvdROFqa6zjzNSoywNx6K4k9Coo9cCc2pybtvGsaAiR0EALw_wcB
+        - value: https://doi.org/10.2136/sssabookser5.3.c16
+      phaeopigments:
+        name: phaeopigments
+      phosplipid_fatt_acid:
+        name: phosplipid_fatt_acid
+      plant_growth_med:
+        name: plant_growth_med
+        range: ControlledTermValue
+      plant_struc:
+        name: plant_struc
+        range: ControlledTermValue
+      pollutants:
+        name: pollutants
+      porosity:
+        name: porosity
+      pres_animal_insect:
+        name: pres_animal_insect
+      prev_land_use_meth:
+        name: prev_land_use_meth
+      prod_start_date:
+        name: prod_start_date
+        range: TimestampValue
+      radiation_regm:
+        name: radiation_regm
+      rainfall_regm:
+        name: rainfall_regm
+      resins_pc:
+        name: resins_pc
+      room_architec_elem:
+        name: room_architec_elem
+      room_count:
+        name: room_count
+      room_dim:
+        name: room_dim
+      room_door_dist:
+        name: room_door_dist
+      room_net_area:
+        name: room_net_area
+      room_occup:
+        name: room_occup
+        range: QuantityValue
+      room_vol:
+        name: room_vol
+      root_med_carbon:
+        name: root_med_carbon
+      root_med_macronutr:
+        name: root_med_macronutr
+      root_med_micronutr:
+        name: root_med_micronutr
+      root_med_ph:
+        name: root_med_ph
+        range: QuantityValue
+      root_med_regl:
+        name: root_med_regl
+      root_med_suppl:
+        name: root_med_suppl
+      salinity_meth:
+        name: salinity_meth
+        examples:
+        - value: https://doi.org/10.1007/978-1-61779-986-0_28
+      salt_regm:
+        name: salt_regm
+      samp_collec_device:
+        name: samp_collec_device
+        comments:
+        - Report dimensions and details when applicable
+        - Report dimensions and details when applicable
+        recommended: true
+      samp_collec_method:
+        name: samp_collec_method
+        comments:
+        - This can be a citation or description
+        - This can be a citation or description
+      samp_loc_corr_rate:
+        name: samp_loc_corr_rate
+      samp_mat_process:
+        name: samp_mat_process
+        range: ControlledTermValue
+      samp_md:
+        name: samp_md
+        range: QuantityValue
+      samp_name:
+        name: samp_name
+        description: A local identifier or name that for the material sample collected.
+          Refers to the original material collected or to any derived sub-samples.
+        comments:
+        - It can have any format, but we suggest that you make it concise, unique
+          and consistent within your lab, and as informative as possible.
+        - It can have any format, but we suggest that you make it concise, unique
+          and consistent within your lab, and as informative as possible.
+        examples:
+        - value: Rock core CB1178(5-6) from NSW
+      samp_preserv:
+        name: samp_preserv
+      samp_room_id:
+        name: samp_room_id
+      samp_size:
+        name: samp_size
+        comments:
+        - This refers to the TOTAL amount of sample collected from the experiment.
+          NOT the amount sent to each institution or collected for a specific analysis.
+        - This refers to the TOTAL amount of sample collected from the experiment.
+          NOT the amount sent to each institution or collected for a specific analysis.
+        examples:
+        - value: 5 grams; 10 mL
+        string_serialization: '{float} {unit}'
+      samp_store_temp:
+        name: samp_store_temp
+        description: Temperature at which the sample was stored (degrees are assumed)
+        examples:
+        - value: -80 Celsius
+        required: true
+      samp_time_out:
+        name: samp_time_out
+      samp_transport_cond:
+        name: samp_transport_cond
+      samp_tvdss:
+        name: samp_tvdss
+      saturates_pc:
+        name: saturates_pc
       season_precpt:
         name: season_precpt
         title: average seasonal precipitation
@@ -8256,63 +10785,139 @@ classes:
         - This is no longer matching the listed IRI from GSC. When NMDC has its own
           slots, map this to the MIxS slot
         - check validation & examples. always mm? so value only? Or value + unit
+        - This is no longer matching the listed IRI from GSC. When NMDC has its own
+          slots, map this to the MIxS slot
+        - check validation & examples. always mm? so value only? Or value + unit
         notes:
+        - mean and average are the same thing, but it seems like bad practice to not
+          be consistent. Changed mean to average
         - mean and average are the same thing, but it seems like bad practice to not
           be consistent. Changed mean to average
         comments:
         - Seasons are defined as spring (March, April, May), summer (June, July, August),
           autumn (September, October, November) and winter (December, January, February).
+        - Seasons are defined as spring (March, April, May), summer (June, July, August),
+          autumn (September, October, November) and winter (December, January, February).
         examples:
         - value: 0.4 inch
         - value: 10.16 mm
-      water_cont_soil_meth:
-        name: water_cont_soil_meth
+      shad_dev_water_mold:
+        name: shad_dev_water_mold
+      sieving:
+        name: sieving
         todos:
-        - Why is it soil water content method in the name but not the title? Is this
-          slot used in other samples?
-        - Soil water content can be measure MANY ways and often, multiple ways are
-          used in one experiment (gravimetric water content and water holding capacity
-          and water filled pore space, to name a few).
-        - Should this be multi valued? How to we manage and validate this?
+        - check validation and examples
+        - check validation and examples
         comments:
-        - Required if providing water content
+        - Describe how samples were composited or sieved.
+        - Use 'sample link' to indicate which samples were combined.
+        - Describe how samples were composited or sieved.
+        - Use 'sample link' to indicate which samples were combined.
         examples:
-        - value: J. Nat. Prod. Plant Resour., 2012, 2 (4):500-503
-        - value: https://dec.alaska.gov/applications/spar/webcalc/definitions.htm
-      water_content:
-        name: water_content
-        annotations:
-          expected_value:
-            tag: expected_value
-            value: string
-          preferred_unit:
-            tag: preferred_unit
-            value: gram per gram or cubic centimeter per cubic centimeter
+        - value: combined 2 cores
+        - value: 4mm sieved
+        - value: 4 mm sieved and homogenized
+        - value: 50 g
+        - value: 5 cores
+        - value: 2 mm sieved
+        recommended: true
+      size_frac:
+        name: size_frac
+      size_frac_low:
+        name: size_frac_low
+        recommended: true
+      size_frac_up:
+        name: size_frac_up
+        recommended: true
+      slope_aspect:
+        name: slope_aspect
+        description: The direction a slope faces. While looking down a slope use a
+          compass to record the direction you are facing (direction or degrees). -
+          This measure provides an indication of sun and wind exposure that will influence
+          soil temperature and evapotranspiration.
         todos:
-        - value in preferred unit is too limiting. need to change this
-        - check and correct validation so examples are accepted
         - This is no longer matching the listed IRI from GSC. When NMDC has its own
           slots, map this to the MIxS slot
-        - how to manage multiple water content methods?
-        examples:
-        - value: 75%
-        - value: 75 %
-        - value: 0.75 g water/g dry soil
-        - value: 75% water holding capacity
-        - value: 1.1 g fresh weight/ dry weight
-        - value: 10% water filled pore space
-        multivalued: true
-        range: string
-      ph_meth:
-        name: ph_meth
+        - This is no longer matching the listed IRI from GSC. When NMDC has its own
+          slots, map this to the MIxS slot
         comments:
-        - This can include a link to the instrument used or a citation for the method.
+        - Aspect is the orientation of slope, measured clockwise in degrees from 0
+          to 360, where 0 is north-facing, 90 is east-facing, 180 is south-facing,
+          and 270 is west-facing.
+        - Aspect is the orientation of slope, measured clockwise in degrees from 0
+          to 360, where 0 is north-facing, 90 is east-facing, 180 is south-facing,
+          and 270 is west-facing.
         examples:
-        - value: https://www.southernlabware.com/pc9500-benchtop-ph-conductivity-meter-kit-ph-accuracy-2000mv-ph-range-2-000-to-20-000.html?gclid=Cj0KCQiAwJWdBhCYARIsAJc4idCO5vtvbVMf545fcvdROFqa6zjzNSoywNx6K4k9Coo9cCc2pybtvGsaAiR0EALw_wcB
-        - value: https://doi.org/10.2136/sssabookser5.3.c16
+        - value: '35'
+      slope_gradient:
+        name: slope_gradient
+        todos:
+        - Slope is a percent. How does the validation work? Check to correct examples
+        - Slope is a percent. How does the validation work? Check to correct examples
+        examples:
+        - value: 10%
+        - value: 10 %
+        - value: '0.1'
+      soil_texture_meth:
+        name: soil_texture_meth
+      soluble_inorg_mat:
+        name: soluble_inorg_mat
+      soluble_org_mat:
+        name: soluble_org_mat
+      source_mat_id:
+        name: source_mat_id
+        description: A globally unique identifier assigned to the biological sample.
+        todos:
+        - Currently, the comments say to use UUIDs. However, if we implement assigning
+          NMDC identifiers with the minter we don't need to require a GUID. It can
+          be an optional field to fill out only if they already have a resolvable
+          ID.
+        - this is at least on of the unique identifier column in the Data Portal interface,
+          but it can't be a second identifier slot along with Biosample.id in the
+          schema
+        - Currently, the comments say to use UUIDs. However, if we implement assigning
+          NMDC identifiers with the minter we don't need to require a GUID. It can
+          be an optional field to fill out only if they already have a resolvable
+          ID.
+        - this is at least on of the unique identifier column in the Data Portal interface,
+          but it can't be a second identifier slot along with Biosample.id in the
+          schema
+        notes:
+        - The source material IS the Globally Unique ID
+        - The source material IS the Globally Unique ID
+        comments:
+        - Identifiers must be prefixed. Possible FAIR prefixes are IGSNs (http://www.geosamples.org/getigsn),
+          NCBI biosample accession numbers, ARK identifiers (https://arks.org/). These
+          IDs enable linking to derived analytes and subsamples. If you have not assigned
+          FAIR identifiers to your samples, you can generate UUIDs (https://www.uuidgenerator.net/).
+        - Identifiers must be prefixed. Possible FAIR prefixes are IGSNs (http://www.geosamples.org/getigsn),
+          NCBI biosample accession numbers, ARK identifiers (https://arks.org/). These
+          IDs enable linking to derived analytes and subsamples. If you have not assigned
+          FAIR identifiers to your samples, you can generate UUIDs (https://www.uuidgenerator.net/).
+        examples:
+        - value: IGSN:AU1243
+        - value: UUID:24f1467a-40f4-11ed-b878-0242ac120002
+        string_serialization: '{text}:{text}'
+        required: true
+      specific_ecosystem:
+        name: specific_ecosystem
+        required: true
+      store_cond:
+        name: store_cond
+        description: Explain how the soil sample is stored (fresh/frozen/other).
+        todos:
+        - submission schema has an enum
+        - submission schema has an enum
+        required: true
+      suspend_solids:
+        name: suspend_solids
       tot_carb:
         name: tot_carb
         todos:
+        - is this inorganic and organic? both? could use some clarification.
+        - ug/L doesn't seem like the right units. Should check this slots usage in
+          databases and re-evaluate. I couldn't find any references that provided
+          this data in this format
         - is this inorganic and organic? both? could use some clarification.
         - ug/L doesn't seem like the right units. Should check this slots usage in
           databases and re-evaluate. I couldn't find any references that provided
@@ -8336,61 +10941,68 @@ classes:
         name: tot_org_carb
         todos:
         - check description. How are they different?
+        - check description. How are they different?
         examples:
         - value: 5 mg N/ L
-      salinity_meth:
-        name: salinity_meth
-        examples:
-        - value: https://doi.org/10.1007/978-1-61779-986-0_28
-      sieving:
-        name: sieving
+      viscosity:
+        name: viscosity
+      volatile_org_comp:
+        name: volatile_org_comp
+      water_cont_soil_meth:
+        name: water_cont_soil_meth
         todos:
-        - check validation and examples
+        - Why is it soil water content method in the name but not the title? Is this
+          slot used in other samples?
+        - Soil water content can be measure MANY ways and often, multiple ways are
+          used in one experiment (gravimetric water content and water holding capacity
+          and water filled pore space, to name a few).
+        - Should this be multi valued? How to we manage and validate this?
+        - Why is it soil water content method in the name but not the title? Is this
+          slot used in other samples?
+        - Soil water content can be measure MANY ways and often, multiple ways are
+          used in one experiment (gravimetric water content and water holding capacity
+          and water filled pore space, to name a few).
+        - Should this be multi valued? How to we manage and validate this?
         comments:
-        - Describe how samples were composited or sieved.
-        - Use 'sample link' to indicate which samples were combined.
+        - Required if providing water content
+        - Required if providing water content
         examples:
-        - value: combined 2 cores | 4mm sieved
-        - value: 4 mm sieved and homogenized
-        - value: 50 g | 5 cores | 2 mm sieved
-      climate_environment:
-        name: climate_environment
+        - value: J. Nat. Prod. Plant Resour., 2012, 2 (4):500-503
+        - value: https://dec.alaska.gov/applications/spar/webcalc/definitions.htm
+      water_content:
+        name: water_content
         todos:
-        - description says "can include multiple climates" but multivalued is set
-          to false
-        - add examples, i need to see some examples to add correctly formatted example.
-      gaseous_environment:
-        name: gaseous_environment
-        todos:
-        - would like to see usage examples for this slot. Requiring micromole/L seems
-          too limiting and doesn't match expected_value value
-        - did I do this right? keep the example that's provided and add another? so
-          as to not override
+        - value in preferred unit is too limiting. need to change this
+        - check and correct validation so examples are accepted
+        - This is no longer matching the listed IRI from GSC. When NMDC has its own
+          slots, map this to the MIxS slot
+        - how to manage multiple water content methods?
+        - value in preferred unit is too limiting. need to change this
+        - check and correct validation so examples are accepted
+        - This is no longer matching the listed IRI from GSC. When NMDC has its own
+          slots, map this to the MIxS slot
+        - how to manage multiple water content methods?
         examples:
-        - value: CO2; 500ppm above ambient; constant
-        - value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+        - value: 75%
+        - value: 75 %
+        - value: 0.75 g water/g dry soil
+        - value: 75% water holding capacity
+        - value: 1.1 g fresh weight/ dry weight
+        - value: 10% water filled pore space
+        multivalued: true
+        range: QuantityValue
+      water_temp_regm:
+        name: water_temp_regm
       watering_regm:
         name: watering_regm
         examples:
         - value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
         - value: 75% water holding capacity; constant
-      source_mat_id:
-        name: source_mat_id
-        description: A globally unique identifier assigned to the biological sample.
-        title: source material identifier
-        todos:
-        - Currently, the comments say to use UUIDs. However, if we implement assigning
-          NMDC identifiers with the minter we dont need to require a GUID. It can
-          be an optional field to fill out only if they already have a resolvable
-          ID.
-        comments:
-        - Identifiers must be prefixed. Possible FAIR prefixes are IGSNs (http://www.geosamples.org/getigsn),
-          NCBI biosample accession numbers, ARK identifiers (https://arks.org/). These
-          IDs enable linking to derived analytes and subsamples. If you have not assigned
-          FAIR identifiers to your samples, you can generate UUIDs (https://www.uuidgenerator.net/).
-        examples:
-        - value: IGSN:AU1243
-        - value: UUID:24f1467a-40f4-11ed-b878-0242ac120002
+        recommended: true
+      window_open_freq:
+        name: window_open_freq
+      window_size:
+        name: window_size
     unique_keys:
       samp_name_unique_key:
         unique_key_name: samp_name_unique_key

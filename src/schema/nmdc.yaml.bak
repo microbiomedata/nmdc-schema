@@ -596,18 +596,9 @@ classes:
         - Aluminum saturation is the percentage of the CEC occupies by aluminum. Like
           all cations, aluminum held by the cation exchange complex is in equilibrium
           with aluminum in the soil solution.
-        - Aluminum saturation is the percentage of the CEC occupies by aluminum. Like
-          all cations, aluminum held by the cation exchange complex is in equilibrium
-          with aluminum in the soil solution.
         title: aluminum saturation/ extreme unusual properties
         description: The relative abundance of aluminum in the sample
         todos:
-        - This is no longer matching the listed IRI from GSC. When NMDC has its own
-          slots, map this to the MIxS slot
-        - Example & validation. Can we make rules that 27% & 27 % & 0.27 will validate?
-        - I think it's weird the way GSC writes the title. I recommend this change.
-          Thoughts? I would argue this isn't an extreme unusual property. It's just
-          a biogeochemical measurement.
         - This is no longer matching the listed IRI from GSC. When NMDC has its own
           slots, map this to the MIxS slot
         - Example & validation. Can we make rules that 27% & 27 % & 0.27 will validate?
@@ -621,12 +612,7 @@ classes:
         description: Reference or method used in determining Aluminum saturation
         comments:
         - Required when aluminum saturation is provided.
-        - Required when aluminum saturation is provided.
         todos:
-        - This is no longer matching the listed IRI from GSC. When NMDC has its own
-          slots, map this to the MIxS slot
-        - I think it's weird the way GSC writes the title. I recommend this change.
-          Thoughts?
         - This is no longer matching the listed IRI from GSC. When NMDC has its own
           slots, map this to the MIxS slot
         - I think it's weird the way GSC writes the title. I recommend this change.
@@ -637,8 +623,6 @@ classes:
         examples:
         - value: 8.94 inch
         todos:
-        - This is no longer matching the listed IRI from GSC, added example. When
-          NMDC has its own slots, map this to the MIxS slot
         - This is no longer matching the listed IRI from GSC, added example. When
           NMDC has its own slots, map this to the MIxS slot
       antibiotic_regm: {}
@@ -664,18 +648,12 @@ classes:
         - description says "can include multiple climates" but multivalued is set
           to false
         - add examples, I need to see some examples to add correctly formatted example.
-        - description says "can include multiple climates" but multivalued is set
-          to false
-        - add examples, I need to see some examples to add correctly formatted example.
         recommended: true
       collection_date:
         string_serialization: '{date, arbitrary precision}'
         examples:
         - value: 2021-04-15; 2021-04; 2021
         notes:
-        - MIxS collection_date accepts (truncated) ISO8601. DH taking arb precision
-          date only
-        - Use modified term (amended definition)
         - MIxS collection_date accepts (truncated) ISO8601. DH taking arb precision
           date only
         - Use modified term (amended definition)
@@ -692,13 +670,7 @@ classes:
         - This is no longer matching the listed IRI from GSC. When NMDC has its own
           slots, map this to the MIxS slot
         - Recommend changing this from text value to some king of ontology?
-        - This is no longer matching the listed IRI from GSC. When NMDC has its own
-          slots, map this to the MIxS slot
-        - Recommend changing this from text value to some king of ontology?
         comments:
-        - Values provided here can be specific species of vegetation or vegetation
-          regions
-        - See for vegetation regions- https://education.nationalgeographic.org/resource/vegetation-region
         - Values provided here can be specific species of vegetation or vegetation
           regions
         - See for vegetation regions- https://education.nationalgeographic.org/resource/vegetation-region
@@ -709,12 +681,7 @@ classes:
         - value: https://doi.org/10.1111/j.1654-109X.2011.01154.x
         comments:
         - Required when current vegetation is provided.
-        - Required when current vegetation is provided.
         todos:
-        - This is no longer matching the listed IRI from GSC. When NMDC has its own
-          slots, map this to the MIxS slot
-        - I'm not sure this is a DOI, PMID, or URI. Should pool the community and
-          find out how they accomplish this if provided.
         - This is no longer matching the listed IRI from GSC. When NMDC has its own
           slots, map this to the MIxS slot
         - I'm not sure this is a DOI, PMID, or URI. Should pool the community and
@@ -727,10 +694,8 @@ classes:
         - value: 0-0.1; 1
         comments:
         - All depths must be reported in meters. Provide the numerical portion only.
-        - All depths must be reported in meters. Provide the numerical portion only.
         title: depth, meters
         notes:
-        - Use modified term
         - Use modified term
         required: true
       diether_lipids: {}
@@ -746,8 +711,6 @@ classes:
         examples:
         - value: '100'
         comments:
-        - All elevations must be reported in meters. Provide the numerical portion
-          only.
         - All elevations must be reported in meters. Provide the numerical portion
           only.
         title: elevation, meters
@@ -771,22 +734,16 @@ classes:
         notes:
         - range changed to enumeration late in makefile, so this is modified (but
           "sample ID" anyway)
-        - range changed to enumeration late in makefile, so this is modified (but
-          "sample ID" anyway)
         required: true
       env_local_scale:
         range: ControlledIdentifiedTermValue
         notes:
         - range changed to enumeration late in makefile, so this is modified (but
           "sample ID" anyway)
-        - range changed to enumeration late in makefile, so this is modified (but
-          "sample ID" anyway)
         required: true
       env_medium:
         range: ControlledIdentifiedTermValue
         notes:
-        - range changed to enumeration late in makefile, so this is modified (but
-          "sample ID" anyway)
         - range changed to enumeration late in makefile, so this is modified (but
           "sample ID" anyway)
         required: true
@@ -803,9 +760,6 @@ classes:
         - may need new range with sub-slots for a date and a descriptive string
         - This is no longer matching the listed IRI from GSC. When NMDC has its own
           slots, map this to the MIxS slot
-        - may need new range with sub-slots for a date and a descriptive string
-        - This is no longer matching the listed IRI from GSC. When NMDC has its own
-          slots, map this to the MIxS slot
       fertilizer_regm: {}
       fire:
         examples:
@@ -816,13 +770,7 @@ classes:
         - This is no longer matching the listed IRI from GSC. When NMDC has its own
           slots, map this to the MIxS slot
         - may need new range with sub-slots for a date or date range
-        - is "to" acceptable? Is there a better way to request that be written?
-        - This is no longer matching the listed IRI from GSC. When NMDC has its own
-          slots, map this to the MIxS slot
-        - may need new range with sub-slots for a date or date range
         comments:
-        - Provide the date the fire occurred. If extended burning occurred provide
-          the date range.
         - Provide the date the fire occurred. If extended burning occurred provide
           the date range.
         range: string
@@ -836,14 +784,7 @@ classes:
         - This is no longer matching the listed IRI from GSC. When NMDC has its own
           slots, map this to the MIxS slot
         - may need new range with sub-slots for text or ontology term or enum
-        - is "to" acceptable? Is there a better way to request that be written?
-        - What about if the "day" isn't known? Is this ok?
-        - This is no longer matching the listed IRI from GSC. When NMDC has its own
-          slots, map this to the MIxS slot
-        - may need new range with sub-slots for text or ontology term or enum
         comments:
-        - Provide the date the flood occurred. If extended flooding occurred provide
-          the date range.
         - Provide the date the flood occurred. If extended flooding occurred provide
           the date range.
       floor_count: {}
@@ -861,10 +802,6 @@ classes:
           too limiting and doesn't match expected_value value
         - did I do this right? keep the example that's provided and add another? so
           as to not override
-        - would like to see usage examples for this slot. Requiring micromole/L seems
-          too limiting and doesn't match expected_value value
-        - did I do this right? keep the example that's provided and add another? so
-          as to not override
         recommended: true
       gaseous_substances: {}
       geo_loc_name:
@@ -873,9 +810,7 @@ classes:
       growth_facil:
         notes:
         - 'Removed from description: Alternatively use Crop Ontology (CO) terms'
-        - 'Removed from description: Alternatively use Crop Ontology (CO) terms'
         todos:
-        - the submission portal has an enum
         - the submission portal has an enum
         description: 'Type of facility/location where the sample was harvested; controlled
           vocabulary: growth chamber, open top chamber, glasshouse, experimental garden,
@@ -886,7 +821,6 @@ classes:
         range: integer
         todos:
         - is this even present in the mixs subset import?
-        - is this even present in the mixs subset import?
       hcr_pressure: {}
       hcr_temp: {}
       heat_sys_deliv_meth: {}
@@ -895,10 +829,7 @@ classes:
         notes:
         - Changed to multi-valued. In MIxS, you add another column to denote multiple
           heavy metals. We don't have that ability in the submission portal.
-        - Changed to multi-valued. In MIxS, you add another column to denote multiple
-          heavy metals. We don't have that ability in the submission portal.
         comments:
-        - For multiple heavy metals and concentrations, separate by ;
         - For multiple heavy metals and concentrations, separate by ;
         description: Heavy metals present in the sample and their concentrations.
         title: heavy metals/ extreme unusual properties
@@ -906,12 +837,6 @@ classes:
         - value: mercury 0.09 micrograms per gram
         - value: mercury 0.09 ug/g; chromium 0.03 ug/g
         todos:
-        - This is no longer matching the listed IRI from GSC. When NMDC has its own
-          slots, map this to the MIxS slot
-        - Example & validation. Can we make rules that 27% & 27 % & 0.27 will validate?
-        - I think it's weird the way GSC writes the title. I recommend this change.
-          Thoughts? I would argue this isn't an extreme unusual property. It's just
-          a biogeochemical measurement.
         - This is no longer matching the listed IRI from GSC. When NMDC has its own
           slots, map this to the MIxS slot
         - Example & validation. Can we make rules that 27% & 27 % & 0.27 will validate?
@@ -928,12 +853,7 @@ classes:
         - Required when heavy metals are provided
         - If different methods are used for multiple metals, indicate the metal and
           method. Separate metals by ;
-        - Required when heavy metals are provided
-        - If different methods are used for multiple metals, indicate the metal and
-          method. Separate metals by ;
         todos:
-        - This is no longer matching the listed IRI from GSC. When NMDC has its own
-          slots, map this to the MIxS slot
         - This is no longer matching the listed IRI from GSC. When NMDC has its own
           slots, map this to the MIxS slot
         multivalued: true
@@ -989,8 +909,6 @@ classes:
         notes:
         - this is now a hybrid of the oxy_stat_samp semantics and the rel_to_oxygen
           enumeration
-        - this is now a hybrid of the oxy_stat_samp semantics and the rel_to_oxygen
-          enumeration
       particle_class: {}
       permeability: {}
       pesticide_regm: {}
@@ -1003,14 +921,12 @@ classes:
           aqueous phase of the fluid
         notes:
         - Use modified term
-        - Use modified term
         recommended: true
       ph_meth:
         examples:
         - value: https://www.southernlabware.com/pc9500-benchtop-ph-conductivity-meter-kit-ph-accuracy-2000mv-ph-range-2-000-to-20-000.html?gclid=Cj0KCQiAwJWdBhCYARIsAJc4idCO5vtvbVMf545fcvdROFqa6zjzNSoywNx6K4k9Coo9cCc2pybtvGsaAiR0EALw_wcB
         - value: https://doi.org/10.2136/sssabookser5.3.c16
         comments:
-        - This can include a link to the instrument used or a citation for the method.
         - This can include a link to the instrument used or a citation for the method.
       phaeopigments: {}
       phosplipid_fatt_acid: {}
@@ -1049,11 +965,9 @@ classes:
       samp_collec_device:
         comments:
         - Report dimensions and details when applicable
-        - Report dimensions and details when applicable
         recommended: true
       samp_collec_method:
         comments:
-        - This can be a citation or description
         - This can be a citation or description
       samp_loc_corr_rate: {}
       samp_mat_process:
@@ -1066,8 +980,6 @@ classes:
         comments:
         - It can have any format, but we suggest that you make it concise, unique
           and consistent within your lab, and as informative as possible.
-        - It can have any format, but we suggest that you make it concise, unique
-          and consistent within your lab, and as informative as possible.
         examples:
         - value: Rock core CB1178(5-6) from NSW
       samp_preserv: {}
@@ -1077,8 +989,6 @@ classes:
         examples:
         - value: 5 grams; 10 mL
         comments:
-        - This refers to the TOTAL amount of sample collected from the experiment.
-          NOT the amount sent to each institution or collected for a specific analysis.
         - This refers to the TOTAL amount of sample collected from the experiment.
           NOT the amount sent to each institution or collected for a specific analysis.
       samp_store_temp:
@@ -1098,24 +1008,16 @@ classes:
         notes:
         - mean and average are the same thing, but it seems like bad practice to not
           be consistent. Changed mean to average
-        - mean and average are the same thing, but it seems like bad practice to not
-          be consistent. Changed mean to average
         comments:
         - Seasons are defined as spring (March, April, May), summer (June, July, August),
           autumn (September, October, November) and winter (December, January, February).
-        - Seasons are defined as spring (March, April, May), summer (June, July, August),
-          autumn (September, October, November) and winter (December, January, February).
         todos:
-        - This is no longer matching the listed IRI from GSC. When NMDC has its own
-          slots, map this to the MIxS slot
-        - check validation & examples. always mm? so value only? Or value + unit
         - This is no longer matching the listed IRI from GSC. When NMDC has its own
           slots, map this to the MIxS slot
         - check validation & examples. always mm? so value only? Or value + unit
       shad_dev_water_mold: {}
       sieving:
         todos:
-        - check validation and examples
         - check validation and examples
         examples:
         - value: combined 2 cores
@@ -1125,8 +1027,6 @@ classes:
         - value: 5 cores
         - value: 2 mm sieved
         comments:
-        - Describe how samples were composited or sieved.
-        - Use 'sample link' to indicate which samples were combined.
         - Describe how samples were composited or sieved.
         - Use 'sample link' to indicate which samples were combined.
         recommended: true
@@ -1142,16 +1042,11 @@ classes:
         - Aspect is the orientation of slope, measured clockwise in degrees from 0
           to 360, where 0 is north-facing, 90 is east-facing, 180 is south-facing,
           and 270 is west-facing.
-        - Aspect is the orientation of slope, measured clockwise in degrees from 0
-          to 360, where 0 is north-facing, 90 is east-facing, 180 is south-facing,
-          and 270 is west-facing.
         description: The direction a slope faces. While looking down a slope use a
           compass to record the direction you are facing (direction or degrees). -
           This measure provides an indication of sun and wind exposure that will influence
           soil temperature and evapotranspiration.
         todos:
-        - This is no longer matching the listed IRI from GSC. When NMDC has its own
-          slots, map this to the MIxS slot
         - This is no longer matching the listed IRI from GSC. When NMDC has its own
           slots, map this to the MIxS slot
       slope_gradient:
@@ -1160,7 +1055,6 @@ classes:
         - value: 10 %
         - value: '0.1'
         todos:
-        - Slope is a percent. How does the validation work? Check to correct examples
         - Slope is a percent. How does the validation work? Check to correct examples
       soil_texture_meth: {}
       soluble_inorg_mat: {}
@@ -1176,18 +1070,7 @@ classes:
         - this is at least on of the unique identifier column in the Data Portal interface,
           but it can't be a second identifier slot along with Biosample.id in the
           schema
-        - Currently, the comments say to use UUIDs. However, if we implement assigning
-          NMDC identifiers with the minter we don't need to require a GUID. It can
-          be an optional field to fill out only if they already have a resolvable
-          ID.
-        - this is at least on of the unique identifier column in the Data Portal interface,
-          but it can't be a second identifier slot along with Biosample.id in the
-          schema
         comments:
-        - Identifiers must be prefixed. Possible FAIR prefixes are IGSNs (http://www.geosamples.org/getigsn),
-          NCBI biosample accession numbers, ARK identifiers (https://arks.org/). These
-          IDs enable linking to derived analytes and subsamples. If you have not assigned
-          FAIR identifiers to your samples, you can generate UUIDs (https://www.uuidgenerator.net/).
         - Identifiers must be prefixed. Possible FAIR prefixes are IGSNs (http://www.geosamples.org/getigsn),
           NCBI biosample accession numbers, ARK identifiers (https://arks.org/). These
           IDs enable linking to derived analytes and subsamples. If you have not assigned
@@ -1197,7 +1080,6 @@ classes:
         - value: UUID:24f1467a-40f4-11ed-b878-0242ac120002
         notes:
         - The source material IS the Globally Unique ID
-        - The source material IS the Globally Unique ID
         required: true
       specific_ecosystem:
         required: true
@@ -1205,17 +1087,12 @@ classes:
         description: Explain how the soil sample is stored (fresh/frozen/other).
         todos:
         - submission schema has an enum
-        - submission schema has an enum
         required: true
       suspend_solids: {}
       tot_carb:
         examples:
         - value: 1 ug/L
         todos:
-        - is this inorganic and organic? both? could use some clarification.
-        - ug/L doesn't seem like the right units. Should check this slots usage in
-          databases and re-evaluate. I couldn't find any references that provided
-          this data in this format
         - is this inorganic and organic? both? could use some clarification.
         - ug/L doesn't seem like the right units. Should check this slots usage in
           databases and re-evaluate. I couldn't find any references that provided
@@ -1235,7 +1112,6 @@ classes:
         - value: 5 mg N/ L
         todos:
         - check description. How are they different?
-        - check description. How are they different?
       viscosity: {}
       volatile_org_comp: {}
       water_cont_soil_meth:
@@ -1244,14 +1120,7 @@ classes:
         - value: https://dec.alaska.gov/applications/spar/webcalc/definitions.htm
         comments:
         - Required if providing water content
-        - Required if providing water content
         todos:
-        - Why is it soil water content method in the name but not the title? Is this
-          slot used in other samples?
-        - Soil water content can be measure MANY ways and often, multiple ways are
-          used in one experiment (gravimetric water content and water holding capacity
-          and water filled pore space, to name a few).
-        - Should this be multi valued? How to we manage and validate this?
         - Why is it soil water content method in the name but not the title? Is this
           slot used in other samples?
         - Soil water content can be measure MANY ways and often, multiple ways are
@@ -1268,11 +1137,6 @@ classes:
         - value: 10% water filled pore space
         range: QuantityValue
         todos:
-        - value in preferred unit is too limiting. need to change this
-        - check and correct validation so examples are accepted
-        - This is no longer matching the listed IRI from GSC. When NMDC has its own
-          slots, map this to the MIxS slot
-        - how to manage multiple water content methods?
         - value in preferred unit is too limiting. need to change this
         - check and correct validation so examples are accepted
         - This is no longer matching the listed IRI from GSC. When NMDC has its own
