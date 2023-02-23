@@ -124,8 +124,8 @@ biosample_set:
     type: nmdc:Biosample
     part_of:
       - GOLD:Gs0128849
-    #    collection_date:
-    #      has_raw_value: '2011-06-15'
+    collection_date:
+      has_raw_value: '2011-06-15'
     env_broad_scale:
       has_raw_value: ENVO:00002030
       term:
@@ -166,8 +166,8 @@ biosample_set:
     type: nmdc:Biosample
     part_of:
       - GOLD:Gs0128849
-    #    collection_date:
-    #      has_raw_value: '2017-05-24'
+    collection_date:
+      has_raw_value: '2017-05-24'
     env_broad_scale:
       has_raw_value: ENVO:00002030
       term:
@@ -208,8 +208,8 @@ biosample_set:
     type: nmdc:Biosample
     part_of:
       - GOLD:Gs0128849
-    #    collection_date:
-    #      has_raw_value: '2018-01-29'
+    collection_date:
+      has_raw_value: '2018-01-29'
     env_broad_scale:
       has_raw_value: ENVO:00002030
       term:

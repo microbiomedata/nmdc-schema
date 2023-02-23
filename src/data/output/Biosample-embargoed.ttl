@@ -7,6 +7,8 @@
 
 nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     dcterms:isPartOf GOLD:Gs0110115 ;
+    MIXS:0000011 [ a nmdc:TimestampValue ;
+            nmdc:has_raw_value "xyz" ] ;
     MIXS:0000012 [ a nmdc:ControlledIdentifiedTermValue ;
             nmdc:has_raw_value "ENVO:00002030" ;
             nmdc:term ENVO:00002030 ] ;
@@ -16,7 +18,20 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     MIXS:0000014 [ a nmdc:ControlledIdentifiedTermValue ;
             nmdc:has_raw_value "ENVO:00005792" ;
             nmdc:term ENVO:00005792 ] ;
-    nmdc:embargoed true .
+    MIXS:0000018 [ a nmdc:QuantityValue ;
+            nmdc:has_raw_value "xyz" ] ;
+    MIXS:0000026 "xyz" ;
+    MIXS:0000093 "123.0"^^xsd:float ;
+    MIXS:0000110 [ a nmdc:QuantityValue ;
+            nmdc:has_raw_value "xyz" ] ;
+    MIXS:0000327 "xyz" ;
+    MIXS:0001043 "xyz" ;
+    nmdc:ecosystem "xyz" ;
+    nmdc:ecosystem_category "xyz" ;
+    nmdc:ecosystem_subtype "xyz" ;
+    nmdc:ecosystem_type "xyz" ;
+    nmdc:embargoed true ;
+    nmdc:specific_ecosystem "xyz" .
 
 ENVO:00002030 a nmdc:OntologyClass .
 

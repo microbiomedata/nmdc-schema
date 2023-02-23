@@ -4,7 +4,7 @@ import unittest
 
 from nmdc_schema.nmdc import (
     Biosample,
-    ControlledIdentifiedTermValue, OntologyClass, ControlledTermValue,
+    ControlledIdentifiedTermValue, OntologyClass, ControlledTermValue, TimestampValue, QuantityValue,
 )
 
 
@@ -21,6 +21,18 @@ class TestBiosampleInstantiation(unittest.TestCase):
             env_broad_scale=ControlledIdentifiedTermValue(term=OntologyClass(id="ENVO:00000000")),
             env_local_scale=ControlledIdentifiedTermValue(term=OntologyClass(id="ENVO:00000000")),
             env_medium=ControlledIdentifiedTermValue(term=OntologyClass(id="ENVO:00000000")),
+            ecosystem="xyz",
+            ecosystem_category="xyz",
+            ecosystem_subtype="xyz",
+            ecosystem_type="xyz",
+            elev=123,
+            growth_facil="xyz",
+            source_mat_id="xyz",
+            specific_ecosystem="xyz",
+            store_cond="xyz",
+            collection_date=TimestampValue(has_raw_value="xyz"),
+            depth=QuantityValue(has_raw_value="xyz"),
+            samp_store_temp=QuantityValue(has_raw_value="xyz"),
         )
 
     def test_invalid_biosample(self):
@@ -28,9 +40,21 @@ class TestBiosampleInstantiation(unittest.TestCase):
             bs = Biosample(
                 id="x",
                 part_of="x",
-                env_broad_scale=ControlledTermValue(),
-                env_local_scale=ControlledTermValue(),
-                env_medium=ControlledTermValue(),
+                env_broad_scale=ControlledIdentifiedTermValue(),
+                env_local_scale=ControlledIdentifiedTermValue(),
+                env_medium=ControlledIdentifiedTermValue(),
+                ecosystem="xyz",
+                ecosystem_category="xyz",
+                ecosystem_subtype="xyz",
+                ecosystem_type="xyz",
+                elev=123,
+                growth_facil="xyz",
+                source_mat_id="xyz",
+                specific_ecosystem="xyz",
+                store_cond="xyz",
+                collection_date=TimestampValue(has_raw_value="xyz"),
+                depth=QuantityValue(has_raw_value="xyz"),
+                samp_store_temp=QuantityValue(has_raw_value="xyz"),
             )
 
 

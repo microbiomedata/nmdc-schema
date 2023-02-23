@@ -20,6 +20,8 @@ DEST = project
 PYMODEL = $(SCHEMA_NAME)
 EXAMPLEDIR = examples
 
+include project.Makefile
+
 .PHONY: all clean combined-extras examples-clean site test
 
 # note: "help" MUST be the first target in the file,
@@ -74,11 +76,26 @@ create-data-harmonizer:
 	npm init data-harmonizer $(SOURCE_SCHEMA_PATH)
 
 all: site
-site_prep:
-	rm -rf src/schema/mixs.yaml.bak \
-src/schema/nmdc.yaml.bak
 
-site: site_prep src/schema/mixs.yaml src/schema/mixs.yaml gen-project gendoc # may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy
+mixs_baks_del:
+	rm -rf src/schema/mixs.yaml \
+src/schema/mixs.yaml.bak \
+src/schema/nmdc.yaml.bak
+	#yq -i 'del(.classes.Biosample.slot_usage)' src/schema/nmdc.yaml
+	poetry run python nmdc_schema/remove_usages_keep_comments.py
+	- [ -f src/schema/nmdc_no_bs_usage.yaml ] && mv src/schema/nmdc.yaml src/schema/nmdc.yaml.bak
+	- [ -f src/schema/nmdc_no_bs_usage.yaml ] && mv src/schema/mixs.yaml src/schema/mixs.yaml.bak
+	sleep 3
+
+.PHONY: mixs_baks_del shuttle_cleanup
+
+site_prep: clean examples-clean mixs_baks_del shuttle_cleanup \
+src/schema/mixs.yaml
+	sleep 3
+
+site: site_prep gen-project gendoc \
+project/nmdc_schema_merged.yaml project/nmdc_materialized_patterns.yaml project/nmdc_materialized_patterns.schema.json \
+# may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy
 
 %.yaml: gen-project
 
@@ -107,7 +124,7 @@ gen-project: $(PYMODEL)
 		--include python \
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 
-test: combined-extras test-schema test-python
+test: site test-python src/data/output
 
 test-schema:
 	$(RUN) gen-project \
@@ -221,8 +238,6 @@ clean:
 	rm -rf docs/*.md
 	rm -rf docs/*.html
 
-include project.Makefile
-
 examples-clean: clean
 	@echo running examples-clean
 	rm -rf src/data/output project/nmdc_*.yaml
@@ -259,14 +274,16 @@ src/data/output: project/nmdc_materialized_patterns.yaml
 #		--input-formats json \
 #		--input-formats yaml \
 
-combined-extras: examples-clean gen-project gendoc \
-project/nmdc_schema_merged.yaml project/nmdc_materialized_patterns.yaml project/nmdc_materialized_patterns.schema.json \
-src/data/output
-	# just can't seem to tell pyproject.toml to bundle artifacts like these
-	#   so reverting to copying into the module
-	cp project/jsonschema/nmdc.schema.json                   $(PYMODEL)
-	cp project/nmdc_materialized_patterns.schema.json        $(PYMODEL)
-	cp project/nmdc_materialized_patterns.yaml               $(PYMODEL)
-	cp project/nmdc_schema_merged.yaml                       $(PYMODEL)
-	cp sssom/gold-to-mixs.sssom.tsv                          $(PYMODEL)
-
+#.PHONY: extras_prep
+#extras_prep: examples-clean gen-project gendoc \
+#project/nmdc_schema_merged.yaml project/nmdc_materialized_patterns.yaml project/nmdc_materialized_patterns.schema.json
+#	# just can't seem to tell pyproject.toml to bundle artifacts like these
+#	#   so reverting to copying into the module
+#	cp project/jsonschema/nmdc.schema.json                   $(PYMODEL)
+#	cp project/nmdc_materialized_patterns.schema.json        $(PYMODEL)
+#	cp project/nmdc_materialized_patterns.yaml               $(PYMODEL)
+#	cp project/nmdc_schema_merged.yaml                       $(PYMODEL)
+#	cp sssom/gold-to-mixs.sssom.tsv                          $(PYMODEL)
+#
+#combined-extras: extras_prep src/data/output
+#
