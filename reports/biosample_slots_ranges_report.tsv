@@ -1,5 +1,5 @@
 slot_name	slot_range	slot_multivalued	slot_pattern	slot_min	slot_max
-host_taxid	TextValue	False			
+host_taxid	string	False			
 embargoed	boolean				
 collected_from	FieldResearchSite				
 type	string				
@@ -7,19 +7,19 @@ img_identifiers	string	True
 samp_name	string	False			
 biosample_categories	biosample_category_enum	True			
 part_of	NamedThing	True			
-id	string		^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$		
+id	string				
 alternative_identifiers	string	True			
 gold_biosample_identifiers	uriorcurie	True	^GOLD:Gb[0-9]+$		
 insdc_biosample_identifiers	uriorcurie	True	^biosample:SAM[NED]([A-Z])?[0-9]+$		
 emsl_biosample_identifiers	uriorcurie	True			
 igsn_biosample_identifiers	uriorcurie	True			
-agrochem_addition	TextValue	True			
+agrochem_addition	string	True			
 alkalinity	QuantityValue	False			
-alkalinity_method	TextValue	False			
+alkalinity_method	string	False			
 alkyl_diethers	QuantityValue	False			
 alt	QuantityValue	False			
 al_sat	QuantityValue	False			
-al_sat_meth	TextValue	False			
+al_sat_meth	string	False			
 aminopept_act	QuantityValue	False			
 ammonium	QuantityValue	False			
 annual_precpt	QuantityValue	False			
@@ -28,15 +28,15 @@ bacteria_carb_prod	QuantityValue	False
 bishomohopanol	QuantityValue	False			
 bromide	QuantityValue	False			
 calcium	QuantityValue	False			
-carb_nitro_ratio	QuantityValue	False			
+carb_nitro_ratio	float	False			
 chem_administration	ControlledTermValue	True			
 chloride	QuantityValue	False			
 chlorophyll	QuantityValue	False			
 collection_date	TimestampValue	False			
 cur_land_use	cur_land_use_enum	False			
-cur_vegetation	TextValue	False			
-cur_vegetation_meth	TextValue	False			
-crop_rotation	TextValue	False			
+cur_vegetation	string	False			
+cur_vegetation_meth	string	False			
+crop_rotation	string	False			
 density	QuantityValue	False			
 depth	QuantityValue	False			
 diss_carb_dioxide	QuantityValue	False			
@@ -52,25 +52,25 @@ env_package	TextValue
 env_broad_scale	ControlledIdentifiedTermValue	False			
 env_local_scale	ControlledIdentifiedTermValue	False			
 env_medium	ControlledIdentifiedTermValue	False			
-extreme_event	string	False			
+extreme_event	date	False			
 fao_class	fao_class_enum	False			
-fire	string	False	^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$		
-flooding	string	False			
-geo_loc_name	TextValue	False			
+fire	string	False			
+flooding	date	False			
+geo_loc_name	string	False			
 glucosidase_act	QuantityValue	False			
-heavy_metals	TextValue	True			
-heavy_metals_meth	TextValue	True			
+heavy_metals	string	True			
+heavy_metals_meth	string	True			
 lat_lon	GeolocationValue	False			
-link_addit_analys	TextValue	False			
-link_class_info	TextValue	False			
-link_climate_info	TextValue	False			
-local_class	TextValue	False			
-local_class_meth	TextValue	False			
+link_addit_analys	string	False			
+link_class_info	string	False			
+link_climate_info	string	False			
+local_class	string	False			
+local_class_meth	string	False			
 magnesium	QuantityValue	False			
 mean_frict_vel	QuantityValue	False			
 mean_peak_frict_vel	QuantityValue	False			
-misc_param	TextValue	True			
-n_alkanes	TextValue	True			
+misc_param	string	True			
+n_alkanes	string	True			
 nitrate	QuantityValue	False			
 nitrite	QuantityValue	False			
 org_matter	QuantityValue	False			
@@ -78,36 +78,36 @@ org_nitro	QuantityValue	False
 organism_count	QuantityValue	True			
 oxy_stat_samp	rel_to_oxygen_enum	False			
 part_org_carb	QuantityValue	False			
-perturbation	TextValue	True			
+perturbation	string	True			
 petroleum_hydrocarb	QuantityValue	False			
-ph	double	False			
-ph_meth	TextValue	False			
-phaeopigments	TextValue	True			
-phosplipid_fatt_acid	TextValue	True			
-pool_dna_extracts	TextValue	False			
+ph	float	False		0	14
+ph_meth	string	False			
+phaeopigments	string	True			
+phosplipid_fatt_acid	string	True			
+pool_dna_extracts	string	False			
 potassium	QuantityValue	False			
 pressure	QuantityValue	False			
 profile_position	profile_position_enum	False			
 redox_potential	QuantityValue	False			
 salinity	QuantityValue	False			
-salinity_meth	TextValue	False			
+salinity_meth	string	False			
 samp_mat_process	ControlledTermValue	False			
-samp_store_dur	TextValue	False			
-samp_store_loc	TextValue	False			
-samp_taxon_id	TextValue	False			
+samp_store_dur	string	False			
+samp_store_loc	string	False			
+samp_taxon_id	string	False			
 samp_store_temp	QuantityValue	False			
 samp_vol_we_dna_ext	QuantityValue	False			
 season_temp	QuantityValue	False			
 season_precpt	QuantityValue	False			
-sieving	TextValue	False			
+sieving	string	False			
 size_frac_low	QuantityValue	False			
 size_frac_up	QuantityValue	False			
 slope_gradient	QuantityValue	False			
 slope_aspect	QuantityValue	False			
 sodium	QuantityValue	False			
-soil_type	TextValue	False			
-soil_type_meth	TextValue	False			
-store_cond	TextValue	False			
+soil_type	string	False			
+soil_type_meth	string	False			
+store_cond	string	False			
 sulfate	QuantityValue	False			
 sulfide	QuantityValue	False			
 temp	QuantityValue	False			
@@ -117,11 +117,11 @@ tot_carb	QuantityValue	False
 tot_depth_water_col	QuantityValue	False			
 tot_diss_nitro	QuantityValue	False			
 tot_org_carb	QuantityValue	False			
-tot_org_c_meth	TextValue	False			
+tot_org_c_meth	string	False			
 tot_nitro_content	QuantityValue	False			
 tot_nitro_cont_meth	string	False			
 tot_phosp	QuantityValue	False			
-water_content	string	True			
+water_content	QuantityValue	True			
 water_cont_soil_meth	string	False			
 ecosystem	string				
 ecosystem_category	string				
@@ -140,20 +140,20 @@ salinity_category	string
 sample_collection_site	string				
 soluble_iron_micromol	string				
 subsurface_depth	QuantityValue				
-air_temp_regm	TextValue	True			
-biotic_regm	TextValue	False			
+air_temp_regm	string	True			
+biotic_regm	string	False			
 biotic_relationship	biotic_relationship_enum	False			
-climate_environment	TextValue	True			
+climate_environment	string	True			
 experimental_factor	ControlledTermValue	False			
-gaseous_environment	TextValue	True			
-growth_facil	ControlledTermValue	False			
-humidity_regm	TextValue	True			
-light_regm	TextValue	False			
+gaseous_environment	string	True			
+growth_facil	string	False			
+humidity_regm	string	True			
+light_regm	string	False			
 phosphate	QuantityValue	False			
 samp_collec_method	string	False			
 samp_size	QuantityValue	False			
-source_mat_id	TextValue	False			
-watering_regm	TextValue	True			
+source_mat_id	string	False			
+watering_regm	string	True			
 dna_absorb1	string				
 dna_absorb2	string				
 dna_collect_site	string				
@@ -222,5 +222,106 @@ nitrate_nitrogen	QuantityValue
 nitrite_nitrogen	QuantityValue				
 lbc_thirty	QuantityValue				
 lbceq	QuantityValue				
+abs_air_humidity	QuantityValue	False			
+antibiotic_regm	string	True			
+aromatics_pc	string	False			
+asphaltenes_pc	string	False			
+atmospheric_data	string	True			
+avg_occup	double	False			
+bathroom_count	integer	False			
+bedroom_count	integer	False			
+biocide_admin_method	string	False			
+biomass	string	True			
+chem_mutagen	string	True			
+chem_treat_method	string	False			
+cool_syst_id	integer	False			
+date_last_rain	TimestampValue	False			
+diether_lipids	string	True			
+elevator	integer	False			
+emulsions	string	True			
+escalator	integer	False			
+exp_pipe	QuantityValue	False			
+ext_door	integer	False			
+fertilizer_regm	string	True			
+floor_count	integer	False			
+freq_clean	QuantityValue	False			
+freq_cook	QuantityValue	False			
+fungicide_regm	string	True			
+gaseous_substances	string	True			
+gravity	string	True			
+growth_hormone_regm	string	True			
+hall_count	integer	False			
+hcr_pressure	string	False			
+hcr_temp	string	False			
+heat_sys_deliv_meth	string	False			
+heat_system_id	integer	False			
+herbicide_regm	string	True			
+host_body_product	ControlledTermValue	False			
+host_body_site	ControlledTermValue	False			
+host_family_relation	string	True			
+host_phenotype	ControlledTermValue	False			
+host_subspecf_genlin	string	True			
+host_symbiont	string	True			
+inorg_particles	string	True			
+iw_bt_date_well	TimestampValue	False			
+last_clean	TimestampValue	False			
+max_occup	QuantityValue	False			
+mineral_nutr_regm	string	True			
+non_min_nutr_regm	string	True			
+number_pets	QuantityValue	False			
+number_plants	QuantityValue	False			
+number_resident	QuantityValue	False			
+occup_density_samp	QuantityValue	False			
+occup_samp	QuantityValue	False			
+org_count_qpcr_info	string	False			
+org_particles	string	True			
+particle_class	string	True			
+permeability	string	False			
+pesticide_regm	string	True			
+plant_growth_med	ControlledTermValue	False			
+plant_struc	ControlledTermValue	False			
+pollutants	string	True			
+porosity	string	False			
+pres_animal_insect	string	False	^(cat|dog|rodent|snake|other);\d+$		
+prev_land_use_meth	string	False			
+prod_start_date	TimestampValue	False			
+radiation_regm	string	True			
+rainfall_regm	string	True			
+rel_to_oxygen	rel_to_oxygen_enum	False			
+resins_pc	string	False			
+room_architec_elem	string	False			
+room_count	integer	False			
+room_dim	string	False			
+room_door_dist	string	False			
+room_net_area	string	False			
+room_occup	QuantityValue	False			
+room_vol	string	False			
+root_med_carbon	string	False			
+root_med_macronutr	string	False			
+root_med_micronutr	string	False			
+root_med_ph	QuantityValue	False			
+root_med_regl	string	False			
+root_med_suppl	string	False			
+salt_regm	string	True			
+samp_collec_device	string	False			
+samp_loc_corr_rate	string	False			
+samp_md	QuantityValue	False			
+samp_preserv	string	False			
+samp_room_id	integer	False			
+samp_time_out	double	False			
+samp_transport_cond	string	False			
+samp_tvdss	string	False			
+saturates_pc	string	False			
+shad_dev_water_mold	string	False			
+size_frac	string	False			
+soil_texture_meth	string	False			
+soluble_inorg_mat	string	True			
+soluble_org_mat	string	True			
+suspend_solids	string	True			
+viscosity	string	False			
+volatile_org_comp	string	True			
+water_temp_regm	string	True			
+window_open_freq	integer	False			
+window_size	string	False			
 name	string				
 description	string				

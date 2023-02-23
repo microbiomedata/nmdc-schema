@@ -1,4 +1,14 @@
 id: nmdc:bsm-99-dtTMNb
+embargoed: true
+ecosystem: xyz
+ecosystem_category: xyz
+ecosystem_subtype: xyz
+ecosystem_type: xyz
+elev: 123
+growth_facil: xyz
+source_mat_id: xyz
+specific_ecosystem: xyz
+store_cond: xyz
 part_of:
   - gold:Gs0110115
 env_broad_scale:
@@ -13,4 +23,9 @@ env_medium:
   has_raw_value: ENVO:00005792
   term:
     id: ENVO:00005792
-embargoed: true
+collection_date:
+  has_raw_value: xyz
+depth:
+  has_raw_value: xyz
+samp_store_temp:
+  has_raw_value: xyz
