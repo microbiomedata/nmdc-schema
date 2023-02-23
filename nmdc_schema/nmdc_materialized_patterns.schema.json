@@ -510,6 +510,10 @@
                     },
                     "type": "array"
                 },
+                "emsl_store_temp": {
+                    "description": "The temperature at which the sample should be stored upon delivery to EMSL",
+                    "type": "string"
+                },
                 "emulsions": {
                     "description": "Amount or concentration of substances such as paints, adhesives, mayonnaise, hair colorants, emulsified oils, etc.; can include multiple emulsion types",
                     "items": {
@@ -1587,8 +1591,8 @@
                 "store_cond",
                 "ecosystem",
                 "ecosystem_category",
-                "ecosystem_type",
                 "ecosystem_subtype",
+                "ecosystem_type",
                 "specific_ecosystem",
                 "growth_facil",
                 "source_mat_id"

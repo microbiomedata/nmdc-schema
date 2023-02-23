@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-02-23T13:38:32
+# Generation date: 2023-02-23T14:23:05
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -1007,8 +1007,8 @@ class Biosample(MaterialEntity):
     store_cond: str = None
     ecosystem: str = None
     ecosystem_category: str = None
-    ecosystem_type: str = None
     ecosystem_subtype: str = None
+    ecosystem_type: str = None
     specific_ecosystem: str = None
     growth_facil: str = None
     source_mat_id: str = None
@@ -1021,17 +1021,17 @@ class Biosample(MaterialEntity):
     samp_name: Optional[str] = None
     type: Optional[str] = None
     alternative_identifiers: Optional[Union[str, List[str]]] = empty_list()
-    gold_biosample_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
-    insdc_biosample_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     emsl_biosample_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    gold_biosample_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     igsn_biosample_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    insdc_biosample_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     agrochem_addition: Optional[Union[str, List[str]]] = empty_list()
+    al_sat: Optional[Union[dict, "QuantityValue"]] = None
+    al_sat_meth: Optional[str] = None
     alkalinity: Optional[Union[dict, "QuantityValue"]] = None
     alkalinity_method: Optional[str] = None
     alkyl_diethers: Optional[Union[dict, "QuantityValue"]] = None
     alt: Optional[Union[dict, "QuantityValue"]] = None
-    al_sat: Optional[Union[dict, "QuantityValue"]] = None
-    al_sat_meth: Optional[str] = None
     aminopept_act: Optional[Union[dict, "QuantityValue"]] = None
     ammonium: Optional[Union[dict, "QuantityValue"]] = None
     annual_precpt: Optional[Union[dict, "QuantityValue"]] = None
@@ -1045,10 +1045,10 @@ class Biosample(MaterialEntity):
     chloride: Optional[Union[dict, "QuantityValue"]] = None
     chlorophyll: Optional[Union[dict, "QuantityValue"]] = None
     collection_date: Optional[Union[dict, "TimestampValue"]] = None
+    crop_rotation: Optional[str] = None
     cur_land_use: Optional[Union[str, "CurLandUseEnum"]] = None
     cur_vegetation: Optional[str] = None
     cur_vegetation_meth: Optional[str] = None
-    crop_rotation: Optional[str] = None
     density: Optional[Union[dict, "QuantityValue"]] = None
     diss_carb_dioxide: Optional[Union[dict, "QuantityValue"]] = None
     diss_hydrogen: Optional[Union[dict, "QuantityValue"]] = None
@@ -1103,31 +1103,31 @@ class Biosample(MaterialEntity):
     samp_store_loc: Optional[str] = None
     samp_taxon_id: Optional[str] = None
     samp_vol_we_dna_ext: Optional[Union[dict, "QuantityValue"]] = None
-    season_temp: Optional[Union[dict, "QuantityValue"]] = None
     season_precpt: Optional[Union[dict, "QuantityValue"]] = None
+    season_temp: Optional[Union[dict, "QuantityValue"]] = None
     sieving: Optional[str] = None
     size_frac_low: Optional[Union[dict, "QuantityValue"]] = None
     size_frac_up: Optional[Union[dict, "QuantityValue"]] = None
-    slope_gradient: Optional[Union[dict, "QuantityValue"]] = None
     slope_aspect: Optional[Union[dict, "QuantityValue"]] = None
+    slope_gradient: Optional[Union[dict, "QuantityValue"]] = None
     sodium: Optional[Union[dict, "QuantityValue"]] = None
     soil_type: Optional[str] = None
     soil_type_meth: Optional[str] = None
     sulfate: Optional[Union[dict, "QuantityValue"]] = None
     sulfide: Optional[Union[dict, "QuantityValue"]] = None
     temp: Optional[Union[dict, "QuantityValue"]] = None
-    tillage: Optional[Union[Union[str, "TillageEnum"], List[Union[str, "TillageEnum"]]]] = empty_list()
     tidal_stage: Optional[Union[str, "TidalStageEnum"]] = None
+    tillage: Optional[Union[Union[str, "TillageEnum"], List[Union[str, "TillageEnum"]]]] = empty_list()
     tot_carb: Optional[Union[dict, "QuantityValue"]] = None
     tot_depth_water_col: Optional[Union[dict, "QuantityValue"]] = None
     tot_diss_nitro: Optional[Union[dict, "QuantityValue"]] = None
-    tot_org_carb: Optional[Union[dict, "QuantityValue"]] = None
-    tot_org_c_meth: Optional[str] = None
-    tot_nitro_content: Optional[Union[dict, "QuantityValue"]] = None
     tot_nitro_cont_meth: Optional[str] = None
+    tot_nitro_content: Optional[Union[dict, "QuantityValue"]] = None
+    tot_org_c_meth: Optional[str] = None
+    tot_org_carb: Optional[Union[dict, "QuantityValue"]] = None
     tot_phosp: Optional[Union[dict, "QuantityValue"]] = None
-    water_content: Optional[Union[Union[dict, "QuantityValue"], List[Union[dict, "QuantityValue"]]]] = empty_list()
     water_cont_soil_meth: Optional[str] = None
+    water_content: Optional[Union[Union[dict, "QuantityValue"], List[Union[dict, "QuantityValue"]]]] = empty_list()
     add_date: Optional[str] = None
     community: Optional[str] = None
     habitat: Optional[str] = None
@@ -1167,11 +1167,11 @@ class Biosample(MaterialEntity):
     dna_sample_format: Optional[Union[str, "DnaSampleFormatEnum"]] = None
     dna_sample_name: Optional[str] = None
     dna_seq_project: Optional[str] = None
-    dna_seq_project_pi: Optional[str] = None
     dna_seq_project_name: Optional[str] = None
+    dna_seq_project_pi: Optional[str] = None
     dna_volume: Optional[str] = None
-    proposal_dna: Optional[str] = None
     dnase_rna: Optional[Union[str, "DnaseRnaEnum"]] = None
+    proposal_dna: Optional[str] = None
     proposal_rna: Optional[str] = None
     rna_absorb1: Optional[str] = None
     rna_absorb2: Optional[str] = None
@@ -1187,9 +1187,10 @@ class Biosample(MaterialEntity):
     rna_sample_format: Optional[Union[str, "RnaSampleFormatEnum"]] = None
     rna_sample_name: Optional[str] = None
     rna_seq_project: Optional[str] = None
-    rna_seq_project_pi: Optional[str] = None
     rna_seq_project_name: Optional[str] = None
+    rna_seq_project_pi: Optional[str] = None
     rna_volume: Optional[str] = None
+    analysis_type: Optional[Union[Union[str, "AnalysisTypeEnum"], List[Union[str, "AnalysisTypeEnum"]]]] = empty_list()
     collection_date_inc: Optional[str] = None
     collection_time: Optional[str] = None
     collection_time_inc: Optional[str] = None
@@ -1204,22 +1205,22 @@ class Biosample(MaterialEntity):
     non_microb_biomass_method: Optional[str] = None
     org_nitro_method: Optional[str] = None
     other_treatment: Optional[str] = None
+    sample_link: Optional[Union[str, List[str]]] = empty_list()
     start_date_inc: Optional[str] = None
     start_time_inc: Optional[str] = None
+    emsl_store_temp: Optional[str] = None
     project_id: Optional[str] = None
     replicate_number: Optional[str] = None
     sample_shipped: Optional[str] = None
     sample_type: Optional[Union[str, "SampleTypeEnum"]] = None
     technical_reps: Optional[str] = None
-    analysis_type: Optional[Union[Union[str, "AnalysisTypeEnum"], List[Union[str, "AnalysisTypeEnum"]]]] = empty_list()
-    sample_link: Optional[Union[str, List[str]]] = empty_list()
-    zinc: Optional[Union[dict, "QuantityValue"]] = None
-    manganese: Optional[Union[dict, "QuantityValue"]] = None
     ammonium_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
-    nitrate_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
-    nitrite_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
     lbc_thirty: Optional[Union[dict, "QuantityValue"]] = None
     lbceq: Optional[Union[dict, "QuantityValue"]] = None
+    manganese: Optional[Union[dict, "QuantityValue"]] = None
+    nitrate_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
+    nitrite_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
+    zinc: Optional[Union[dict, "QuantityValue"]] = None
     abs_air_humidity: Optional[Union[dict, "QuantityValue"]] = None
     antibiotic_regm: Optional[Union[str, List[str]]] = empty_list()
     aromatics_pc: Optional[str] = None
@@ -1375,15 +1376,15 @@ class Biosample(MaterialEntity):
         if not isinstance(self.ecosystem_category, str):
             self.ecosystem_category = str(self.ecosystem_category)
 
-        if self._is_empty(self.ecosystem_type):
-            self.MissingRequiredField("ecosystem_type")
-        if not isinstance(self.ecosystem_type, str):
-            self.ecosystem_type = str(self.ecosystem_type)
-
         if self._is_empty(self.ecosystem_subtype):
             self.MissingRequiredField("ecosystem_subtype")
         if not isinstance(self.ecosystem_subtype, str):
             self.ecosystem_subtype = str(self.ecosystem_subtype)
+
+        if self._is_empty(self.ecosystem_type):
+            self.MissingRequiredField("ecosystem_type")
+        if not isinstance(self.ecosystem_type, str):
+            self.ecosystem_type = str(self.ecosystem_type)
 
         if self._is_empty(self.specific_ecosystem):
             self.MissingRequiredField("specific_ecosystem")
@@ -1431,25 +1432,31 @@ class Biosample(MaterialEntity):
             self.alternative_identifiers = [self.alternative_identifiers] if self.alternative_identifiers is not None else []
         self.alternative_identifiers = [v if isinstance(v, str) else str(v) for v in self.alternative_identifiers]
 
-        if not isinstance(self.gold_biosample_identifiers, list):
-            self.gold_biosample_identifiers = [self.gold_biosample_identifiers] if self.gold_biosample_identifiers is not None else []
-        self.gold_biosample_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.gold_biosample_identifiers]
-
-        if not isinstance(self.insdc_biosample_identifiers, list):
-            self.insdc_biosample_identifiers = [self.insdc_biosample_identifiers] if self.insdc_biosample_identifiers is not None else []
-        self.insdc_biosample_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.insdc_biosample_identifiers]
-
         if not isinstance(self.emsl_biosample_identifiers, list):
             self.emsl_biosample_identifiers = [self.emsl_biosample_identifiers] if self.emsl_biosample_identifiers is not None else []
         self.emsl_biosample_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.emsl_biosample_identifiers]
+
+        if not isinstance(self.gold_biosample_identifiers, list):
+            self.gold_biosample_identifiers = [self.gold_biosample_identifiers] if self.gold_biosample_identifiers is not None else []
+        self.gold_biosample_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.gold_biosample_identifiers]
 
         if not isinstance(self.igsn_biosample_identifiers, list):
             self.igsn_biosample_identifiers = [self.igsn_biosample_identifiers] if self.igsn_biosample_identifiers is not None else []
         self.igsn_biosample_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.igsn_biosample_identifiers]
 
+        if not isinstance(self.insdc_biosample_identifiers, list):
+            self.insdc_biosample_identifiers = [self.insdc_biosample_identifiers] if self.insdc_biosample_identifiers is not None else []
+        self.insdc_biosample_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.insdc_biosample_identifiers]
+
         if not isinstance(self.agrochem_addition, list):
             self.agrochem_addition = [self.agrochem_addition] if self.agrochem_addition is not None else []
         self.agrochem_addition = [v if isinstance(v, str) else str(v) for v in self.agrochem_addition]
+
+        if self.al_sat is not None and not isinstance(self.al_sat, QuantityValue):
+            self.al_sat = QuantityValue(**as_dict(self.al_sat))
+
+        if self.al_sat_meth is not None and not isinstance(self.al_sat_meth, str):
+            self.al_sat_meth = str(self.al_sat_meth)
 
         if self.alkalinity is not None and not isinstance(self.alkalinity, QuantityValue):
             self.alkalinity = QuantityValue(**as_dict(self.alkalinity))
@@ -1462,12 +1469,6 @@ class Biosample(MaterialEntity):
 
         if self.alt is not None and not isinstance(self.alt, QuantityValue):
             self.alt = QuantityValue(**as_dict(self.alt))
-
-        if self.al_sat is not None and not isinstance(self.al_sat, QuantityValue):
-            self.al_sat = QuantityValue(**as_dict(self.al_sat))
-
-        if self.al_sat_meth is not None and not isinstance(self.al_sat_meth, str):
-            self.al_sat_meth = str(self.al_sat_meth)
 
         if self.aminopept_act is not None and not isinstance(self.aminopept_act, QuantityValue):
             self.aminopept_act = QuantityValue(**as_dict(self.aminopept_act))
@@ -1509,6 +1510,9 @@ class Biosample(MaterialEntity):
         if self.collection_date is not None and not isinstance(self.collection_date, TimestampValue):
             self.collection_date = TimestampValue(**as_dict(self.collection_date))
 
+        if self.crop_rotation is not None and not isinstance(self.crop_rotation, str):
+            self.crop_rotation = str(self.crop_rotation)
+
         if self.cur_land_use is not None and not isinstance(self.cur_land_use, CurLandUseEnum):
             self.cur_land_use = CurLandUseEnum(self.cur_land_use)
 
@@ -1517,9 +1521,6 @@ class Biosample(MaterialEntity):
 
         if self.cur_vegetation_meth is not None and not isinstance(self.cur_vegetation_meth, str):
             self.cur_vegetation_meth = str(self.cur_vegetation_meth)
-
-        if self.crop_rotation is not None and not isinstance(self.crop_rotation, str):
-            self.crop_rotation = str(self.crop_rotation)
 
         if self.density is not None and not isinstance(self.density, QuantityValue):
             self.density = QuantityValue(**as_dict(self.density))
@@ -1691,11 +1692,11 @@ class Biosample(MaterialEntity):
         if self.samp_vol_we_dna_ext is not None and not isinstance(self.samp_vol_we_dna_ext, QuantityValue):
             self.samp_vol_we_dna_ext = QuantityValue(**as_dict(self.samp_vol_we_dna_ext))
 
-        if self.season_temp is not None and not isinstance(self.season_temp, QuantityValue):
-            self.season_temp = QuantityValue(**as_dict(self.season_temp))
-
         if self.season_precpt is not None and not isinstance(self.season_precpt, QuantityValue):
             self.season_precpt = QuantityValue(**as_dict(self.season_precpt))
+
+        if self.season_temp is not None and not isinstance(self.season_temp, QuantityValue):
+            self.season_temp = QuantityValue(**as_dict(self.season_temp))
 
         if self.sieving is not None and not isinstance(self.sieving, str):
             self.sieving = str(self.sieving)
@@ -1706,11 +1707,11 @@ class Biosample(MaterialEntity):
         if self.size_frac_up is not None and not isinstance(self.size_frac_up, QuantityValue):
             self.size_frac_up = QuantityValue(**as_dict(self.size_frac_up))
 
-        if self.slope_gradient is not None and not isinstance(self.slope_gradient, QuantityValue):
-            self.slope_gradient = QuantityValue(**as_dict(self.slope_gradient))
-
         if self.slope_aspect is not None and not isinstance(self.slope_aspect, QuantityValue):
             self.slope_aspect = QuantityValue(**as_dict(self.slope_aspect))
+
+        if self.slope_gradient is not None and not isinstance(self.slope_gradient, QuantityValue):
+            self.slope_gradient = QuantityValue(**as_dict(self.slope_gradient))
 
         if self.sodium is not None and not isinstance(self.sodium, QuantityValue):
             self.sodium = QuantityValue(**as_dict(self.sodium))
@@ -1730,12 +1731,12 @@ class Biosample(MaterialEntity):
         if self.temp is not None and not isinstance(self.temp, QuantityValue):
             self.temp = QuantityValue(**as_dict(self.temp))
 
+        if self.tidal_stage is not None and not isinstance(self.tidal_stage, TidalStageEnum):
+            self.tidal_stage = TidalStageEnum(self.tidal_stage)
+
         if not isinstance(self.tillage, list):
             self.tillage = [self.tillage] if self.tillage is not None else []
         self.tillage = [v if isinstance(v, TillageEnum) else TillageEnum(v) for v in self.tillage]
-
-        if self.tidal_stage is not None and not isinstance(self.tidal_stage, TidalStageEnum):
-            self.tidal_stage = TidalStageEnum(self.tidal_stage)
 
         if self.tot_carb is not None and not isinstance(self.tot_carb, QuantityValue):
             self.tot_carb = QuantityValue(**as_dict(self.tot_carb))
@@ -1746,27 +1747,27 @@ class Biosample(MaterialEntity):
         if self.tot_diss_nitro is not None and not isinstance(self.tot_diss_nitro, QuantityValue):
             self.tot_diss_nitro = QuantityValue(**as_dict(self.tot_diss_nitro))
 
-        if self.tot_org_carb is not None and not isinstance(self.tot_org_carb, QuantityValue):
-            self.tot_org_carb = QuantityValue(**as_dict(self.tot_org_carb))
-
-        if self.tot_org_c_meth is not None and not isinstance(self.tot_org_c_meth, str):
-            self.tot_org_c_meth = str(self.tot_org_c_meth)
+        if self.tot_nitro_cont_meth is not None and not isinstance(self.tot_nitro_cont_meth, str):
+            self.tot_nitro_cont_meth = str(self.tot_nitro_cont_meth)
 
         if self.tot_nitro_content is not None and not isinstance(self.tot_nitro_content, QuantityValue):
             self.tot_nitro_content = QuantityValue(**as_dict(self.tot_nitro_content))
 
-        if self.tot_nitro_cont_meth is not None and not isinstance(self.tot_nitro_cont_meth, str):
-            self.tot_nitro_cont_meth = str(self.tot_nitro_cont_meth)
+        if self.tot_org_c_meth is not None and not isinstance(self.tot_org_c_meth, str):
+            self.tot_org_c_meth = str(self.tot_org_c_meth)
+
+        if self.tot_org_carb is not None and not isinstance(self.tot_org_carb, QuantityValue):
+            self.tot_org_carb = QuantityValue(**as_dict(self.tot_org_carb))
 
         if self.tot_phosp is not None and not isinstance(self.tot_phosp, QuantityValue):
             self.tot_phosp = QuantityValue(**as_dict(self.tot_phosp))
 
+        if self.water_cont_soil_meth is not None and not isinstance(self.water_cont_soil_meth, str):
+            self.water_cont_soil_meth = str(self.water_cont_soil_meth)
+
         if not isinstance(self.water_content, list):
             self.water_content = [self.water_content] if self.water_content is not None else []
         self.water_content = [v if isinstance(v, QuantityValue) else QuantityValue(**as_dict(v)) for v in self.water_content]
-
-        if self.water_cont_soil_meth is not None and not isinstance(self.water_cont_soil_meth, str):
-            self.water_cont_soil_meth = str(self.water_cont_soil_meth)
 
         if self.add_date is not None and not isinstance(self.add_date, str):
             self.add_date = str(self.add_date)
@@ -1890,20 +1891,20 @@ class Biosample(MaterialEntity):
         if self.dna_seq_project is not None and not isinstance(self.dna_seq_project, str):
             self.dna_seq_project = str(self.dna_seq_project)
 
-        if self.dna_seq_project_pi is not None and not isinstance(self.dna_seq_project_pi, str):
-            self.dna_seq_project_pi = str(self.dna_seq_project_pi)
-
         if self.dna_seq_project_name is not None and not isinstance(self.dna_seq_project_name, str):
             self.dna_seq_project_name = str(self.dna_seq_project_name)
+
+        if self.dna_seq_project_pi is not None and not isinstance(self.dna_seq_project_pi, str):
+            self.dna_seq_project_pi = str(self.dna_seq_project_pi)
 
         if self.dna_volume is not None and not isinstance(self.dna_volume, str):
             self.dna_volume = str(self.dna_volume)
 
-        if self.proposal_dna is not None and not isinstance(self.proposal_dna, str):
-            self.proposal_dna = str(self.proposal_dna)
-
         if self.dnase_rna is not None and not isinstance(self.dnase_rna, DnaseRnaEnum):
             self.dnase_rna = DnaseRnaEnum(self.dnase_rna)
+
+        if self.proposal_dna is not None and not isinstance(self.proposal_dna, str):
+            self.proposal_dna = str(self.proposal_dna)
 
         if self.proposal_rna is not None and not isinstance(self.proposal_rna, str):
             self.proposal_rna = str(self.proposal_rna)
@@ -1950,14 +1951,18 @@ class Biosample(MaterialEntity):
         if self.rna_seq_project is not None and not isinstance(self.rna_seq_project, str):
             self.rna_seq_project = str(self.rna_seq_project)
 
-        if self.rna_seq_project_pi is not None and not isinstance(self.rna_seq_project_pi, str):
-            self.rna_seq_project_pi = str(self.rna_seq_project_pi)
-
         if self.rna_seq_project_name is not None and not isinstance(self.rna_seq_project_name, str):
             self.rna_seq_project_name = str(self.rna_seq_project_name)
 
+        if self.rna_seq_project_pi is not None and not isinstance(self.rna_seq_project_pi, str):
+            self.rna_seq_project_pi = str(self.rna_seq_project_pi)
+
         if self.rna_volume is not None and not isinstance(self.rna_volume, str):
             self.rna_volume = str(self.rna_volume)
+
+        if not isinstance(self.analysis_type, list):
+            self.analysis_type = [self.analysis_type] if self.analysis_type is not None else []
+        self.analysis_type = [v if isinstance(v, AnalysisTypeEnum) else AnalysisTypeEnum(v) for v in self.analysis_type]
 
         if self.collection_date_inc is not None and not isinstance(self.collection_date_inc, str):
             self.collection_date_inc = str(self.collection_date_inc)
@@ -2001,11 +2006,18 @@ class Biosample(MaterialEntity):
         if self.other_treatment is not None and not isinstance(self.other_treatment, str):
             self.other_treatment = str(self.other_treatment)
 
+        if not isinstance(self.sample_link, list):
+            self.sample_link = [self.sample_link] if self.sample_link is not None else []
+        self.sample_link = [v if isinstance(v, str) else str(v) for v in self.sample_link]
+
         if self.start_date_inc is not None and not isinstance(self.start_date_inc, str):
             self.start_date_inc = str(self.start_date_inc)
 
         if self.start_time_inc is not None and not isinstance(self.start_time_inc, str):
             self.start_time_inc = str(self.start_time_inc)
+
+        if self.emsl_store_temp is not None and not isinstance(self.emsl_store_temp, str):
+            self.emsl_store_temp = str(self.emsl_store_temp)
 
         if self.project_id is not None and not isinstance(self.project_id, str):
             self.project_id = str(self.project_id)
@@ -2022,22 +2034,17 @@ class Biosample(MaterialEntity):
         if self.technical_reps is not None and not isinstance(self.technical_reps, str):
             self.technical_reps = str(self.technical_reps)
 
-        if not isinstance(self.analysis_type, list):
-            self.analysis_type = [self.analysis_type] if self.analysis_type is not None else []
-        self.analysis_type = [v if isinstance(v, AnalysisTypeEnum) else AnalysisTypeEnum(v) for v in self.analysis_type]
+        if self.ammonium_nitrogen is not None and not isinstance(self.ammonium_nitrogen, QuantityValue):
+            self.ammonium_nitrogen = QuantityValue(**as_dict(self.ammonium_nitrogen))
 
-        if not isinstance(self.sample_link, list):
-            self.sample_link = [self.sample_link] if self.sample_link is not None else []
-        self.sample_link = [v if isinstance(v, str) else str(v) for v in self.sample_link]
+        if self.lbc_thirty is not None and not isinstance(self.lbc_thirty, QuantityValue):
+            self.lbc_thirty = QuantityValue(**as_dict(self.lbc_thirty))
 
-        if self.zinc is not None and not isinstance(self.zinc, QuantityValue):
-            self.zinc = QuantityValue(**as_dict(self.zinc))
+        if self.lbceq is not None and not isinstance(self.lbceq, QuantityValue):
+            self.lbceq = QuantityValue(**as_dict(self.lbceq))
 
         if self.manganese is not None and not isinstance(self.manganese, QuantityValue):
             self.manganese = QuantityValue(**as_dict(self.manganese))
-
-        if self.ammonium_nitrogen is not None and not isinstance(self.ammonium_nitrogen, QuantityValue):
-            self.ammonium_nitrogen = QuantityValue(**as_dict(self.ammonium_nitrogen))
 
         if self.nitrate_nitrogen is not None and not isinstance(self.nitrate_nitrogen, QuantityValue):
             self.nitrate_nitrogen = QuantityValue(**as_dict(self.nitrate_nitrogen))
@@ -2045,11 +2052,8 @@ class Biosample(MaterialEntity):
         if self.nitrite_nitrogen is not None and not isinstance(self.nitrite_nitrogen, QuantityValue):
             self.nitrite_nitrogen = QuantityValue(**as_dict(self.nitrite_nitrogen))
 
-        if self.lbc_thirty is not None and not isinstance(self.lbc_thirty, QuantityValue):
-            self.lbc_thirty = QuantityValue(**as_dict(self.lbc_thirty))
-
-        if self.lbceq is not None and not isinstance(self.lbceq, QuantityValue):
-            self.lbceq = QuantityValue(**as_dict(self.lbceq))
+        if self.zinc is not None and not isinstance(self.zinc, QuantityValue):
+            self.zinc = QuantityValue(**as_dict(self.zinc))
 
         if self.abs_air_humidity is not None and not isinstance(self.abs_air_humidity, QuantityValue):
             self.abs_air_humidity = QuantityValue(**as_dict(self.abs_air_humidity))
@@ -4626,27 +4630,111 @@ class ProcessingInstitutionEnum(EnumDefinitionImpl):
         name="ProcessingInstitutionEnum",
     )
 
-class PlantGrowthMedEnum(EnumDefinitionImpl):
+class OrganismCountEnum(EnumDefinitionImpl):
 
-    perlite = PermissibleValue(text="perlite")
-    pumice = PermissibleValue(text="pumice")
-    sand = PermissibleValue(text="sand")
-    soil = PermissibleValue(text="soil")
-    vermiculite = PermissibleValue(text="vermiculite")
-    water = PermissibleValue(text="water")
+    ATP = PermissibleValue(text="ATP")
+    MPN = PermissibleValue(text="MPN")
+    other = PermissibleValue(text="other")
 
     _defn = EnumDefinition(
-        name="PlantGrowthMedEnum",
+        name="OrganismCountEnum",
+    )
+
+class RelToOxygenEnum(EnumDefinitionImpl):
+
+    aerobe = PermissibleValue(text="aerobe")
+    anaerobe = PermissibleValue(text="anaerobe")
+    facultative = PermissibleValue(text="facultative")
+    microaerophilic = PermissibleValue(text="microaerophilic")
+    microanaerobe = PermissibleValue(text="microanaerobe")
+
+    _defn = EnumDefinition(
+        name="RelToOxygenEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "other artificial liquid medium",
-                PermissibleValue(text="other artificial liquid medium") )
-        setattr(cls, "other artificial solid medium",
-                PermissibleValue(text="other artificial solid medium") )
-        setattr(cls, "peat moss",
-                PermissibleValue(text="peat moss") )
+        setattr(cls, "obligate aerobe",
+                PermissibleValue(text="obligate aerobe") )
+        setattr(cls, "obligate anaerobe",
+                PermissibleValue(text="obligate anaerobe") )
+
+class FaoClassEnum(EnumDefinitionImpl):
+
+    Acrisols = PermissibleValue(text="Acrisols")
+    Andosols = PermissibleValue(text="Andosols")
+    Arenosols = PermissibleValue(text="Arenosols")
+    Cambisols = PermissibleValue(text="Cambisols")
+    Chernozems = PermissibleValue(text="Chernozems")
+    Ferralsols = PermissibleValue(text="Ferralsols")
+    Fluvisols = PermissibleValue(text="Fluvisols")
+    Gleysols = PermissibleValue(text="Gleysols")
+    Greyzems = PermissibleValue(text="Greyzems")
+    Gypsisols = PermissibleValue(text="Gypsisols")
+    Histosols = PermissibleValue(text="Histosols")
+    Kastanozems = PermissibleValue(text="Kastanozems")
+    Lithosols = PermissibleValue(text="Lithosols")
+    Luvisols = PermissibleValue(text="Luvisols")
+    Nitosols = PermissibleValue(text="Nitosols")
+    Phaeozems = PermissibleValue(text="Phaeozems")
+    Planosols = PermissibleValue(text="Planosols")
+    Podzols = PermissibleValue(text="Podzols")
+    Podzoluvisols = PermissibleValue(text="Podzoluvisols")
+    Rankers = PermissibleValue(text="Rankers")
+    Regosols = PermissibleValue(text="Regosols")
+    Rendzinas = PermissibleValue(text="Rendzinas")
+    Solonchaks = PermissibleValue(text="Solonchaks")
+    Solonetz = PermissibleValue(text="Solonetz")
+    Vertisols = PermissibleValue(text="Vertisols")
+    Yermosols = PermissibleValue(text="Yermosols")
+
+    _defn = EnumDefinition(
+        name="FaoClassEnum",
+    )
+
+class SampMdEnum(EnumDefinitionImpl):
+
+    DF = PermissibleValue(text="DF")
+    RT = PermissibleValue(text="RT")
+    KB = PermissibleValue(text="KB")
+    MSL = PermissibleValue(text="MSL")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="SampMdEnum",
+    )
+
+class DrainageClassEnum(EnumDefinitionImpl):
+
+    poorly = PermissibleValue(text="poorly")
+    well = PermissibleValue(text="well")
+
+    _defn = EnumDefinition(
+        name="DrainageClassEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "very poorly",
+                PermissibleValue(text="very poorly") )
+        setattr(cls, "somewhat poorly",
+                PermissibleValue(text="somewhat poorly") )
+        setattr(cls, "moderately well",
+                PermissibleValue(text="moderately well") )
+        setattr(cls, "excessively drained",
+                PermissibleValue(text="excessively drained") )
+
+class ProfilePositionEnum(EnumDefinitionImpl):
+
+    summit = PermissibleValue(text="summit")
+    shoulder = PermissibleValue(text="shoulder")
+    backslope = PermissibleValue(text="backslope")
+    footslope = PermissibleValue(text="footslope")
+    toeslope = PermissibleValue(text="toeslope")
+
+    _defn = EnumDefinition(
+        name="ProfilePositionEnum",
+    )
 
 class CurLandUseEnum(EnumDefinitionImpl):
 
@@ -4719,18 +4807,6 @@ class CurLandUseEnum(EnumDefinitionImpl):
         setattr(cls, "crop trees (nuts,fruit,christmas trees,nursery trees)",
                 PermissibleValue(text="crop trees (nuts,fruit,christmas trees,nursery trees)") )
 
-class SampMdEnum(EnumDefinitionImpl):
-
-    DF = PermissibleValue(text="DF")
-    RT = PermissibleValue(text="RT")
-    KB = PermissibleValue(text="KB")
-    MSL = PermissibleValue(text="MSL")
-    other = PermissibleValue(text="other")
-
-    _defn = EnumDefinition(
-        name="SampMdEnum",
-    )
-
 class BioticRelationshipEnum(EnumDefinitionImpl):
 
     parasite = PermissibleValue(text="parasite")
@@ -4746,87 +4822,6 @@ class BioticRelationshipEnum(EnumDefinitionImpl):
         setattr(cls, "free living",
                 PermissibleValue(text="free living") )
 
-class RelToOxygenEnum(EnumDefinitionImpl):
-
-    aerobe = PermissibleValue(text="aerobe")
-    anaerobe = PermissibleValue(text="anaerobe")
-    facultative = PermissibleValue(text="facultative")
-    microaerophilic = PermissibleValue(text="microaerophilic")
-    microanaerobe = PermissibleValue(text="microanaerobe")
-
-    _defn = EnumDefinition(
-        name="RelToOxygenEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "obligate aerobe",
-                PermissibleValue(text="obligate aerobe") )
-        setattr(cls, "obligate anaerobe",
-                PermissibleValue(text="obligate anaerobe") )
-
-class TidalStageEnum(EnumDefinitionImpl):
-
-    _defn = EnumDefinition(
-        name="TidalStageEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "low tide",
-                PermissibleValue(text="low tide") )
-        setattr(cls, "ebb tide",
-                PermissibleValue(text="ebb tide") )
-        setattr(cls, "flood tide",
-                PermissibleValue(text="flood tide") )
-        setattr(cls, "high tide",
-                PermissibleValue(text="high tide") )
-
-class FaoClassEnum(EnumDefinitionImpl):
-
-    Acrisols = PermissibleValue(text="Acrisols")
-    Andosols = PermissibleValue(text="Andosols")
-    Arenosols = PermissibleValue(text="Arenosols")
-    Cambisols = PermissibleValue(text="Cambisols")
-    Chernozems = PermissibleValue(text="Chernozems")
-    Ferralsols = PermissibleValue(text="Ferralsols")
-    Fluvisols = PermissibleValue(text="Fluvisols")
-    Gleysols = PermissibleValue(text="Gleysols")
-    Greyzems = PermissibleValue(text="Greyzems")
-    Gypsisols = PermissibleValue(text="Gypsisols")
-    Histosols = PermissibleValue(text="Histosols")
-    Kastanozems = PermissibleValue(text="Kastanozems")
-    Lithosols = PermissibleValue(text="Lithosols")
-    Luvisols = PermissibleValue(text="Luvisols")
-    Nitosols = PermissibleValue(text="Nitosols")
-    Phaeozems = PermissibleValue(text="Phaeozems")
-    Planosols = PermissibleValue(text="Planosols")
-    Podzols = PermissibleValue(text="Podzols")
-    Podzoluvisols = PermissibleValue(text="Podzoluvisols")
-    Rankers = PermissibleValue(text="Rankers")
-    Regosols = PermissibleValue(text="Regosols")
-    Rendzinas = PermissibleValue(text="Rendzinas")
-    Solonchaks = PermissibleValue(text="Solonchaks")
-    Solonetz = PermissibleValue(text="Solonetz")
-    Vertisols = PermissibleValue(text="Vertisols")
-    Yermosols = PermissibleValue(text="Yermosols")
-
-    _defn = EnumDefinition(
-        name="FaoClassEnum",
-    )
-
-class ProfilePositionEnum(EnumDefinitionImpl):
-
-    summit = PermissibleValue(text="summit")
-    shoulder = PermissibleValue(text="shoulder")
-    backslope = PermissibleValue(text="backslope")
-    footslope = PermissibleValue(text="footslope")
-    toeslope = PermissibleValue(text="toeslope")
-
-    _defn = EnumDefinition(
-        name="ProfilePositionEnum",
-    )
-
 class FreqCleanEnum(EnumDefinitionImpl):
 
     Daily = PermissibleValue(text="Daily")
@@ -4840,6 +4835,28 @@ class FreqCleanEnum(EnumDefinitionImpl):
         name="FreqCleanEnum",
     )
 
+class PlantGrowthMedEnum(EnumDefinitionImpl):
+
+    perlite = PermissibleValue(text="perlite")
+    pumice = PermissibleValue(text="pumice")
+    sand = PermissibleValue(text="sand")
+    soil = PermissibleValue(text="soil")
+    vermiculite = PermissibleValue(text="vermiculite")
+    water = PermissibleValue(text="water")
+
+    _defn = EnumDefinition(
+        name="PlantGrowthMedEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "other artificial liquid medium",
+                PermissibleValue(text="other artificial liquid medium") )
+        setattr(cls, "other artificial solid medium",
+                PermissibleValue(text="other artificial solid medium") )
+        setattr(cls, "peat moss",
+                PermissibleValue(text="peat moss") )
+
 class OxyStatSampEnum(EnumDefinitionImpl):
 
     aerobic = PermissibleValue(text="aerobic")
@@ -4848,36 +4865,6 @@ class OxyStatSampEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="OxyStatSampEnum",
-    )
-
-class DrainageClassEnum(EnumDefinitionImpl):
-
-    poorly = PermissibleValue(text="poorly")
-    well = PermissibleValue(text="well")
-
-    _defn = EnumDefinition(
-        name="DrainageClassEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "very poorly",
-                PermissibleValue(text="very poorly") )
-        setattr(cls, "somewhat poorly",
-                PermissibleValue(text="somewhat poorly") )
-        setattr(cls, "moderately well",
-                PermissibleValue(text="moderately well") )
-        setattr(cls, "excessively drained",
-                PermissibleValue(text="excessively drained") )
-
-class OrganismCountEnum(EnumDefinitionImpl):
-
-    ATP = PermissibleValue(text="ATP")
-    MPN = PermissibleValue(text="MPN")
-    other = PermissibleValue(text="other")
-
-    _defn = EnumDefinition(
-        name="OrganismCountEnum",
     )
 
 class TillageEnum(EnumDefinitionImpl):
@@ -4903,6 +4890,23 @@ class TillageEnum(EnumDefinitionImpl):
                 PermissibleValue(text="zonal tillage") )
         setattr(cls, "disc plough",
                 PermissibleValue(text="disc plough") )
+
+class TidalStageEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="TidalStageEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "low tide",
+                PermissibleValue(text="low tide") )
+        setattr(cls, "ebb tide",
+                PermissibleValue(text="ebb tide") )
+        setattr(cls, "flood tide",
+                PermissibleValue(text="flood tide") )
+        setattr(cls, "high tide",
+                PermissibleValue(text="high tide") )
 
 class SampleTypeEnum(EnumDefinitionImpl):
 
@@ -6403,29 +6407,29 @@ slots.window_open_freq = Slot(uri=MIXS['0000246'], name="window_open_freq", curi
 slots.window_size = Slot(uri=MIXS['0000224'], name="window_size", curie=MIXS.curie('0000224'),
                    model_uri=NMDC.window_size, domain=None, range=Optional[str])
 
+slots.has_unit = Slot(uri=MIXS.has_unit, name="has unit", curie=MIXS.curie('has_unit'),
+                   model_uri=NMDC.has_unit, domain=None, range=Optional[str])
+
+slots.has_numeric_value = Slot(uri=MIXS.has_numeric_value, name="has numeric value", curie=MIXS.curie('has_numeric_value'),
+                   model_uri=NMDC.has_numeric_value, domain=None, range=Optional[float])
+
+slots.environment_field = Slot(uri=MIXS.environment_field, name="environment field", curie=MIXS.curie('environment_field'),
+                   model_uri=NMDC.environment_field, domain=None, range=Optional[str])
+
+slots.nucleic_acid_sequence_source_field = Slot(uri=MIXS.nucleic_acid_sequence_source_field, name="nucleic acid sequence source field", curie=MIXS.curie('nucleic_acid_sequence_source_field'),
+                   model_uri=NMDC.nucleic_acid_sequence_source_field, domain=None, range=Optional[str])
+
+slots.investigation_field = Slot(uri=MIXS.investigation_field, name="investigation field", curie=MIXS.curie('investigation_field'),
+                   model_uri=NMDC.investigation_field, domain=None, range=Optional[str])
+
+slots.has_raw_value = Slot(uri=MIXS.has_raw_value, name="has raw value", curie=MIXS.curie('has_raw_value'),
+                   model_uri=NMDC.has_raw_value, domain=None, range=Optional[str])
+
 slots.sequencing_field = Slot(uri=MIXS.sequencing_field, name="sequencing field", curie=MIXS.curie('sequencing_field'),
                    model_uri=NMDC.sequencing_field, domain=None, range=Optional[str])
 
 slots.core_field = Slot(uri=MIXS.core_field, name="core field", curie=MIXS.curie('core_field'),
                    model_uri=NMDC.core_field, domain=None, range=Optional[str])
-
-slots.investigation_field = Slot(uri=MIXS.investigation_field, name="investigation field", curie=MIXS.curie('investigation_field'),
-                   model_uri=NMDC.investigation_field, domain=None, range=Optional[str])
-
-slots.nucleic_acid_sequence_source_field = Slot(uri=MIXS.nucleic_acid_sequence_source_field, name="nucleic acid sequence source field", curie=MIXS.curie('nucleic_acid_sequence_source_field'),
-                   model_uri=NMDC.nucleic_acid_sequence_source_field, domain=None, range=Optional[str])
-
-slots.environment_field = Slot(uri=MIXS.environment_field, name="environment field", curie=MIXS.curie('environment_field'),
-                   model_uri=NMDC.environment_field, domain=None, range=Optional[str])
-
-slots.has_unit = Slot(uri=MIXS.has_unit, name="has unit", curie=MIXS.curie('has_unit'),
-                   model_uri=NMDC.has_unit, domain=None, range=Optional[str])
-
-slots.has_raw_value = Slot(uri=MIXS.has_raw_value, name="has raw value", curie=MIXS.curie('has_raw_value'),
-                   model_uri=NMDC.has_raw_value, domain=None, range=Optional[str])
-
-slots.has_numeric_value = Slot(uri=MIXS.has_numeric_value, name="has numeric value", curie=MIXS.curie('has_numeric_value'),
-                   model_uri=NMDC.has_numeric_value, domain=None, range=Optional[float])
 
 slots.emsl_store_temp = Slot(uri=NMDC.emsl_store_temp, name="emsl_store_temp", curie=NMDC.curie('emsl_store_temp'),
                    model_uri=NMDC.emsl_store_temp, domain=None, range=Optional[str])

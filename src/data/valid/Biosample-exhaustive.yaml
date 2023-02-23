@@ -385,6 +385,7 @@ date_last_rain:
 diether_lipids:
   - xyz
 elevator: 50
+emsl_store_temp: xyz
 emulsions:
   - xyz
 escalator: 50

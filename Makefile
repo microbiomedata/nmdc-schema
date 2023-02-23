@@ -94,7 +94,7 @@ src/schema/nmdc_no_bs_usage.yaml: src/schema/nmdc.yaml
 
 site-cleanup: clean examples-clean mixs-baks-cleanup shuttle_cleanup
 
-site-prep:site-cleanup src/schema/nmdc_no_bs_usage.yaml src/schema/mixs.yaml
+site-prep: site-cleanup src/schema/nmdc_no_bs_usage.yaml src/schema/mixs.yaml
 	sleep 3
 
 site: site-prep gen-project gendoc \
