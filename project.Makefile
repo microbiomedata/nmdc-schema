@@ -171,6 +171,14 @@ src/schema/nmdc_with_bs_usages.yaml: src/schema/nmdc.yaml
 		--validation_config_tsv assets/other_mixs_yaml_files/blank_validation_converter.tsv \
 		--yaml_output $@
 
+
+#       id:
+  #        description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
+  #        structured_pattern:
+  #          syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+  #          interpolated: true
+  #        required: true
+
 ####################################################################################################
 
 examples-all: examples-clean src/data/output
