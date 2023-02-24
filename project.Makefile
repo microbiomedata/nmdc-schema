@@ -215,4 +215,10 @@ src/data/output: project/nmdc_materialized_patterns.yaml
 		--output-directory $@ \
 		--schema $< > $@/README.md
 
+####################################################################################################
 
+assets/emp500_biosample_set.json: assets/emp500_biosample_set.yaml
+	$(RUN) linkml-convert \
+		--output $@ \
+		--target-class Database \
+		--schema src/schema/nmdc.yaml $<
