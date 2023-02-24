@@ -77,27 +77,12 @@ create-data-harmonizer:
 
 all: site
 
-mixs-baks-cleanup:
-	rm -rf \
-	src/schema/mixs.yaml \
-	src/schema/mixs.yaml.bak \
-	src/schema/nmdc.yaml.bak
+#site-cleanup: clean examples-clean
+#
+#site-prep: site-cleanup # also nmdc-mixs-update from project.Makefile
 
-src/schema/nmdc_no_bs_usage.yaml: src/schema/nmdc.yaml
-	#yq -i 'del(.classes.Biosample.slot_usage)' src/schema/nmdc.yaml
-	$(RUN) python nmdc_schema/remove_usages_keep_comments.py
-	- [ -f $@ ] && mv $< src/schema/nmdc.yaml.bak
-	- [ -f $@ ] && mv src/schema/nmdc_no_bs_usage.yaml $<
-	sleep 5
-
-.PHONY: mixs-baks-cleanup shuttle_cleanup
-
-site-cleanup: clean examples-clean mixs-baks-cleanup shuttle_cleanup
-
-site-prep: site-cleanup src/schema/nmdc_no_bs_usage.yaml src/schema/mixs.yaml
-	sleep 5
-
-site: site-prep gen-project gendoc \
+# site-prep
+site: clean gen-project gendoc \
 project/nmdc_schema_merged.yaml project/nmdc_materialized_patterns.yaml project/nmdc_materialized_patterns.schema.json
 # may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy
 	# just can't seem to tell pyproject.toml to bundle artifacts like these
@@ -135,7 +120,7 @@ gen-project: $(PYMODEL)
 		--include python \
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 
-test: site test-python src/data/output
+test: test-schema test-python
 
 test-schema:
 	$(RUN) gen-project \
@@ -248,39 +233,4 @@ clean:
 	rm -rf tmp
 	rm -rf docs/*.md
 	rm -rf docs/*.html
-
-examples-clean: clean
-	@echo running examples-clean
-	rm -rf src/data/output project/nmdc_*.yaml
-
-
-project/nmdc_schema_merged.yaml:
-	$(RUN) gen-linkml \
-		--format yaml \
-		--no-materialize-attributes \
-		--no-materialize-patterns \
-		--output $@ $(SOURCE_SCHEMA_PATH)
-
-project/nmdc_materialized_patterns.yaml:
-	$(RUN) gen-linkml \
-		--format yaml \
-		--materialize-patterns \
-		--no-materialize-attributes \
-		--output $@ $(SOURCE_SCHEMA_PATH)
-
-project/nmdc_materialized_patterns.schema.json: project/nmdc_materialized_patterns.yaml
-	$(RUN) gen-json-schema \
-		--closed \
-		--top-class Database $< > $@
-
-src/data/output: project/nmdc_materialized_patterns.yaml
-	@echo making src/data/output
-	mkdir -p $@
-	$(RUN) linkml-run-examples \
-		--counter-example-input-directory src/data/invalid \
-		--input-directory src/data/valid \
-		--output-directory $@ \
-		--schema $< > $@/README.md
-
-combined-extras: site src/data/output
 
