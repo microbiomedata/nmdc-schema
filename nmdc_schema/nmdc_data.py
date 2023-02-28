@@ -52,6 +52,13 @@ def get_nmdc_yaml_string() -> str:
     return nmdc_yaml.decode("utf-8")
 
 
+def get_materialized_nmdc_yaml_string():
+    materialized_nmdc_bytes_io = io.BytesIO(pkgutil.get_data(__name__, "nmdc_materialized_patterns.yaml"))
+    materialized_nmdc_yaml_bytes = materialized_nmdc_bytes_io.getvalue()
+    materialized_nmdc_yaml_string = materialized_nmdc_yaml_bytes.decode("utf-8")
+    return materialized_nmdc_yaml_string
+
+
 def get_nmdc_jsonschema_bytesIO() -> io.BytesIO:
     """Returns the nmdc.schema.json file as bytes steam.
     This function is not intended to be used directly, but it used by other functions
