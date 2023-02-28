@@ -20,7 +20,7 @@ DEST = project
 PYMODEL = $(SCHEMA_NAME)
 EXAMPLEDIR = examples
 
-.PHONY: all clean site-materialized examples-clean site test
+.PHONY: all clean examples-clean site test
 
 # note: "help" MUST be the first target in the file,
 # when the user types "make" they should get help info
@@ -74,7 +74,7 @@ create-data-harmonizer:
 	npm init data-harmonizer $(SOURCE_SCHEMA_PATH)
 
 all: site
-site: clean site-materialized-clean gen-project gendoc nmdc_schema/gold-to-mixs.sssom.tsv
+site: clean site-clean gen-project gendoc nmdc_schema/gold-to-mixs.sssom.tsv
 # may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy
 
 %.yaml: gen-project
@@ -249,12 +249,9 @@ src/data/output: project/nmdc_materialized_patterns.yaml
 		--output-directory $@ \
 		--schema $< > $@/README.md
 
-#		--input-formats json \
-#		--input-formats yaml \
+.PHONY: examples-clean site-copy test-python site-clean test-with-examples
 
-.PHONY: examples-clean site-copy site-materialized test-python site-materialized-clean test-with-examples
-
-site-materialized-clean:
+site-clean:
 	rm -rf nmdc_schema/*.json
 	rm -rf nmdc_schema/*.tsv
 	rm -rf nmdc_schema/*.yaml
