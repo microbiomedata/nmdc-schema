@@ -47,7 +47,7 @@ agrochem_addition:
   - has_raw_value: lime;1 kg/acre;2022-11-16T16:05:42+0000
 alkalinity:
   has_raw_value: 50 milligram per liter
-alkalinity_method: 
+alkalinity_method:
   has_raw_value: https://wrrc.umass.edu/research/projects/acid-rain-monitoring-project/analysis-method-ph-and-alkalinity
 alkyl_diethers:
   has_raw_value: 0.005 mole per liter
@@ -73,8 +73,8 @@ bromide:
   has_raw_value: 0.05 parts per million
 calcium:
   has_raw_value: 0.2 micromole per liter
-carb_nitro_ratio: 
-  has_raw_value: 0.417361111
+carb_nitro_ratio:
+  has_raw_value: "0.417361111"
 chem_administration:
   - has_raw_value: agar [CHEBI:2509];2018-05-11T20:00Z
 chloride:
@@ -121,14 +121,12 @@ env_package:
     class. have asked MIxS to return this term to their model. UPDATE VALIDATION RULES/PATTERN/ENUM!
 
 # quoted or unqquoted OK
-extreme_event:
-  has_raw_value: 2023-01-15
+extreme_event: "2023-01-15"
 fao_class: Fluvisols
 
 fire: 2000-11 to 2000-12
 
-flooding:
-  has_raw_value: 2000-01-15
+flooding: "2000-01-15"
 
 # quotes required to protect colon in value
 geo_loc_name:
@@ -261,8 +259,8 @@ tot_nitro_cont_meth: https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10
 tot_phosp:
   has_raw_value: 0.03 milligram per liter
 water_content:
-  - has_raw_value: MIxS doesn't provide an example 1
-  - has_raw_value: MIxS doesn't provide an example 2
+  - MIxS doesn't provide an example 1
+  - MIxS doesn't provide an example 2
 water_cont_soil_meth: MIxS doesn't provide an example
 ecosystem: unconstrained text. should be validated against the controlled vocabulary,
   by the sample's environmental package. would also be nice to align the CV with MIxS
@@ -277,7 +275,7 @@ habitat: unconstrained text
 host_name: snail is an example value, but unconstrained text is accepted at this point
 location: unconstrained text. should we even keep this slot? check if it ahs been
   used in MongoDB.
-mod_date: 2023-01-25
+mod_date: "2023-01-25"
 ncbi_taxonomy_name: soil metagenome
 proport_woa_temperature: no example from MIxS
 salinity_category: halotolerant is an example from the schema, but MIxS doesn't provide
@@ -297,7 +295,7 @@ experimental_factor:
   has_raw_value: unconstrained text, unlike the MIxS environmental triad
 gaseous_environment:
   - has_raw_value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
-growth_facil: 
+growth_facil:
   has_raw_value: Growth chamber [CO_715:0000189]
 humidity_regm:
   - has_raw_value: 25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
@@ -313,10 +311,10 @@ source_mat_id:
   has_raw_value: MPI012345
 watering_regm:
   - has_raw_value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
-dna_absorb1: 2.02
-dna_absorb2: 2.02
+dna_absorb1: "2.02"
+dna_absorb2: "2.02"
 dna_collect_site: untreated pond water
-dna_concentration: 100
+dna_concentration: "100"
 dna_cont_type: plate
 dna_cont_well: C2
 dna_container_id: Pond_MT_041618
@@ -328,20 +326,20 @@ dna_isolate_meth: phenol/chloroform extraction
 dna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
   (1%)
 dna_project_contact: John Jones
-dna_samp_id: 187654
+dna_samp_id: "187654"
 dna_sample_format: 10 mM Tris-HCl
 dna_sample_name: JGI_pond_041618
-dna_seq_project: 1191234
+dna_seq_project: "1191234"
 dna_seq_project_pi: Jane Johnson
 dna_seq_project_name: JGI Pond metagenomics
-dna_volume: 25
-proposal_dna: 504000
+dna_volume: "25"
+proposal_dna: "504000"
 dnase_rna: 'yes'
-proposal_rna: 504000
-rna_absorb1: 2.02
-rna_absorb2: 2.02
+proposal_rna: "504000"
+rna_absorb1: "2.02"
+rna_absorb2: "2.02"
 rna_collect_site: untreated pond water
-rna_concentration: 100
+rna_concentration: "100"
 rna_cont_type: plate
 rna_cont_well: C2
 rna_container_id: Pond_MT_041618
@@ -349,14 +347,14 @@ rna_isolate_meth: phenol/chloroform extraction
 rna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
   (1%)
 rna_project_contact: John Jones
-rna_samp_id: 187654
+rna_samp_id: "187654"
 rna_sample_format: 10 mM Tris-HCl
 rna_sample_name: JGI_pond_041618
-rna_seq_project: 1191234
+rna_seq_project: "1191234"
 rna_seq_project_pi: Jane Johnson
 rna_seq_project_name: JGI Pond metagenomics
-rna_volume: 25
-collection_date_inc: 2023-01-29
+rna_volume: "25"
+collection_date_inc: "2023-01-29"
 collection_time: 05:42+0000
 collection_time_inc: 13:42+0000
 experimental_factor_other: unconstrained text, but presumably expects 'term label
@@ -372,13 +370,13 @@ non_microb_biomass: insect 0.23 ug; plant 1g
 non_microb_biomass_method: https://doi.org/10.1038/s41467-021-26181-3
 org_nitro_method: https://doi.org/10.1016/0038-0717(85)90144-0
 other_treatment: unconstrained text
-start_date_inc: 2023-01-27
-start_time_inc: 13:42+0000
+start_date_inc: "2023-01-27"
+start_time_inc: "13:42+0000"
 project_id: no example from MIxS
-replicate_number: 1
+replicate_number: "1"
 sample_shipped: 15 g
 sample_type: water_extract_soil
-technical_reps: 2
+technical_reps: "2"
 analysis_type:
   - metabolomics
   - metagenomics
@@ -400,7 +398,7 @@ lbc_thirty:
 lbceq:
   has_raw_value: 1575 mg/kg
 host_taxid:
-  has_raw_value: 9606
+  has_raw_value: "9606"
 
 # abs_air_humidity:
 #   has_raw_value: xyz
@@ -421,7 +419,7 @@ host_taxid:
 # chem_treat_method: xyz
 
 collection_date:
-  has_raw_value: 2018-05-11
+  has_raw_value: "2018-05-11"
 
 # cool_syst_id: 50
 # date_last_rain:

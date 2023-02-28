@@ -20,7 +20,7 @@ DEST = project
 PYMODEL = $(SCHEMA_NAME)
 EXAMPLEDIR = examples
 
-.PHONY: all clean combined-extras examples-clean site test
+.PHONY: all clean site-materialized examples-clean site test
 
 # note: "help" MUST be the first target in the file,
 # when the user types "make" they should get help info
@@ -103,7 +103,7 @@ gen-project: $(PYMODEL)
 		--include python \
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 
-test: combined-extras test-schema test-python
+test: site-materialized test-python src/data/output
 
 test-schema:
 	$(RUN) gen-project \
@@ -219,9 +219,6 @@ clean:
 
 include project.Makefile
 
-examples-clean: clean
-	@echo running examples-clean
-	rm -rf src/data/output project/nmdc_*.yaml
 
 
 project/nmdc_schema_merged.yaml:
@@ -255,9 +252,21 @@ src/data/output: project/nmdc_materialized_patterns.yaml
 #		--input-formats json \
 #		--input-formats yaml \
 
-combined-extras: examples-clean gen-project gendoc \
-project/nmdc_schema_merged.yaml project/nmdc_materialized_patterns.yaml project/nmdc_materialized_patterns.schema.json \
-src/data/output
+.PHONY: examples-clean site-copy site-materialized test-python site-materialized-clean test-with-examples
+
+site-materialized-clean:
+	rm -rf nmdc_schema/*.json
+	rm -rf nmdc_schema/*.tsv
+	rm -rf nmdc_schema/*.yaml
+	rm -rf project/nmdc_*.json
+	rm -rf project/nmdc_*.yaml
+
+site-materialized: site-materialized-clean site \
+project/nmdc_materialized_patterns.schema.json \
+project/nmdc_materialized_patterns.yaml \
+project/nmdc_schema_merged.yaml
+
+site-copy:
 	# just can't seem to tell pyproject.toml to bundle artifacts like these
 	#   so reverting to copying into the module
 	cp project/jsonschema/nmdc.schema.json                   $(PYMODEL)
@@ -266,3 +275,8 @@ src/data/output
 	cp project/nmdc_schema_merged.yaml                       $(PYMODEL)
 	cp sssom/gold-to-mixs.sssom.tsv                          $(PYMODEL)
 
+examples-clean:
+	@echo running examples-clean
+	rm -rf src/data/output
+
+test-with-examples: examples-clean site-materialized test-python src/data/output
