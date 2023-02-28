@@ -251,6 +251,8 @@ classes:
       - input_base_count
       - output_read_count
       - output_base_count
+      - input_read_bases
+      - output_read_bases
     #      - version
     slot_usage:
       input_read_bases:
