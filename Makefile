@@ -74,7 +74,8 @@ create-data-harmonizer:
 	npm init data-harmonizer $(SOURCE_SCHEMA_PATH)
 
 all: site
-site: gen-project gendoc # may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy
+site: clean site-materialized-clean gen-project gendoc nmdc_schema/gold-to-mixs.sssom.tsv
+# may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy
 
 %.yaml: gen-project
 
@@ -102,8 +103,9 @@ gen-project: $(PYMODEL)
 		--include owl \
 		--include python \
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
+		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
-test: site-materialized test-python src/data/output
+test: examples-clean site test-python src/data/output
 
 test-schema:
 	$(RUN) gen-project \
@@ -219,8 +221,6 @@ clean:
 
 include project.Makefile
 
-
-
 project/nmdc_schema_merged.yaml:
 	$(RUN) gen-linkml \
 		--format yaml \
@@ -261,22 +261,20 @@ site-materialized-clean:
 	rm -rf project/nmdc_*.json
 	rm -rf project/nmdc_*.yaml
 
-site-materialized: site-materialized-clean site \
-project/nmdc_materialized_patterns.schema.json \
-project/nmdc_materialized_patterns.yaml \
-project/nmdc_schema_merged.yaml
-
-site-copy:
+nmdc_schema/gold-to-mixs.sssom.tsv: sssom/gold-to-mixs.sssom.tsv nmdc_schema/nmdc_materialized_patterns.schema.json nmdc_schema/nmdc_materialized_patterns.yaml nmdc_schema/nmdc_schema_merged.yaml
 	# just can't seem to tell pyproject.toml to bundle artifacts like these
 	#   so reverting to copying into the module
-	cp project/jsonschema/nmdc.schema.json                   $(PYMODEL)
-	cp project/nmdc_materialized_patterns.schema.json        $(PYMODEL)
-	cp project/nmdc_materialized_patterns.yaml               $(PYMODEL)
-	cp project/nmdc_schema_merged.yaml                       $(PYMODEL)
-	cp sssom/gold-to-mixs.sssom.tsv                          $(PYMODEL)
+	cp $< $@
+
+nmdc_schema/nmdc_materialized_patterns.schema.json: project/nmdc_materialized_patterns.schema.json
+	cp $< $@
+
+nmdc_schema/nmdc_materialized_patterns.yaml: project/nmdc_materialized_patterns.yaml
+	cp $< $@
+
+nmdc_schema/nmdc_schema_merged.yaml: project/nmdc_schema_merged.yaml
+	cp $< $@
 
 examples-clean:
 	@echo running examples-clean
 	rm -rf src/data/output
-
-test-with-examples: examples-clean site-materialized test-python src/data/output

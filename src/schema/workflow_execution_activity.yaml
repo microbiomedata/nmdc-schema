@@ -255,16 +255,6 @@ classes:
       - output_read_bases
     #      - version
     slot_usage:
-      input_read_bases:
-        range: float
-        description: >-
-          TODO
-      output_read_bases:
-        range: float
-        description: >-
-          TODO
-      has_input: { }
-      has_output: { }
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
@@ -562,6 +552,13 @@ slots:
 
   has_calibration: { }
   has_metabolite_quantifications: { }
-  input_read_bases: { }
-  output_read_bases: { }
   version: { }
+  input_read_bases:
+    range: float
+    description: >-
+      TODO
+  output_read_bases:
+    range: float
+    description: >-
+      TODO
+  
