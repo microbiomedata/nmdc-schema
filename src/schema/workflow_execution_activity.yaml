@@ -255,6 +255,8 @@ classes:
       - output_read_bases
     #      - version
     slot_usage:
+      has_input: { }
+      has_output: { }
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
@@ -280,18 +282,13 @@ classes:
     in_subset:
       - workflow subset
     slots:
-      - type
+      - has_calibration
+      - has_metabolite_quantifications
     slot_usage:
       used:
         range: Instrument
         description: >-
           The instrument used to collect the data used in the analysis
-      has_metabolite_quantifications:
-        range: MetaboliteQuantification
-        multivalued: true
-      has_calibration:
-        description: >-
-          TODO: Yuri to fill in
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}"
@@ -302,15 +299,12 @@ classes:
     in_subset:
       - workflow subset
     slots:
-      - type
+      - has_peptide_quantifications
     slot_usage:
       used:
         range: Instrument
         description: >-
           The instrument used to collect the data used in the analysis
-      has_peptide_quantifications:
-        range: PeptideQuantification
-        multivalued: true
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
@@ -321,16 +315,12 @@ classes:
     in_subset:
       - workflow subset
     slots:
-      - type
+      - has_calibration
     slot_usage:
       used:
         range: Instrument
         description: >-
           The instrument used to collect the data used in the analysis
-      has_calibration:
-        range: string
-        description: >-
-          A reference to a file that holds calibration information.
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}"
@@ -341,7 +331,9 @@ slots:
 
   metagenome_assembly_parameter: { }
 
-  has_peptide_quantifications: { }
+  has_peptide_quantifications:
+    range: PeptideQuantification
+    multivalued: true
 
   asm_score:
     is_a: metagenome_assembly_parameter
@@ -550,15 +542,23 @@ slots:
       After QC analysis nucleotide base count number.
     range: float
 
-  has_calibration: { }
-  has_metabolite_quantifications: { }
-  version: { }
-  input_read_bases:
-    range: float
-    description: >-
-      TODO
   output_read_bases:
     range: float
     description: >-
       TODO
-  
+
+  input_read_bases:
+    range: float
+    description: >-
+      TODO      
+
+  has_calibration:
+    range: string
+    description: >-
+      A reference to a file that holds calibration information.
+
+  has_metabolite_quantifications:
+    range: MetaboliteQuantification
+    multivalued: true
+
+  version: { }
