@@ -271,7 +271,7 @@ ecosystem_category: unconstrained text
 ecosystem_type: unconstrained text
 ecosystem_subtype: unconstrained text
 specific_ecosystem: unconstrained text
-add_date: 2021-03-31
+add_date: '2021-03-31'
 community: no_example_from_mixs
 habitat: unconstrained text
 host_name: snail is an example value, but unconstrained text is accepted at this point
