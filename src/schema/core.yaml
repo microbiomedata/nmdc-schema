@@ -269,45 +269,19 @@ classes:
       This is used to link a metabolomics analysis workflow to a specific metabolite
     slots:
       - alternative_identifiers
-    slot_usage:
-      metabolite_quantified:
-        description: >-
-          the specific metabolite identifier
-        range: ChemicalEntity
-      highest_similarity_score:
-        description: >-
-          TODO: Yuri to fill in
-        range: float
+      - highest_similarity_score
+      - metabolite_quantified
 
   PeptideQuantification:
     description: >-
       This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information
-    slot_usage:
-      peptide_sequence:
-        range: string
-      best_protein:
-        description: >-
-          the specific protein identifier most correctly associated with the peptide sequence
-        range: GeneProduct
-      all_proteins:
-        description: >-
-          the list of protein identifiers that are associated with the peptide sequence
-        range: GeneProduct
-        multivalued: true
-      min_q_value:
-        description: >-
-          smallest Q-Value associated with the peptide sequence as provided by MSGFPlus tool
-        range: float
-        see_also:
-          - OBI:0001442
-      peptide_spectral_count:
-        description: >-
-          sum of filter passing MS2 spectra associated with the peptide sequence within a given LC-MS/MS data file
-        range: integer
-      peptide_sum_masic_abundance:
-        description: >-
-          combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the peptide sequence from a given LC-MS/MS data file using the MASIC tool
-        range: integer
+    slots:
+      - all_proteins
+      - best_protein
+      - min_q_value
+      - peptide_sequence
+      - peptide_spectral_count
+      - peptide_sum_masic_abundance
   
   ProteinQuantification:
     description: >-
@@ -714,20 +688,48 @@ slots:
       A list of publications that are associated with the entity.
       The publications SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.
 
+  highest_similarity_score:
+    description: >-
+      TODO: Yuri to fill in
+    range: float
+
+  metabolite_quantified:
+    description: >-
+      the specific metabolite identifier
+    range: ChemicalEntity
+
   all_proteins:
+    description: >-
+      the list of protein identifiers that are associated with the peptide sequence
+    range: GeneProduct
+    multivalued: true
   best_protein:
+    description: >-
+      the specific protein identifier most correctly associated with the peptide sequence
+    range: GeneProduct
+  min_q_value:
+    description: >-
+      smallest Q-Value associated with the peptide sequence as provided by MSGFPlus tool
+    range: float
+    see_also:
+      - OBI:0001442
+  peptide_sequence:
+    range: string
+  peptide_spectral_count:
+    description: >-
+      sum of filter passing MS2 spectra associated with the peptide sequence within a given LC-MS/MS data file
+    range: integer
+  peptide_sum_masic_abundance:
+    description: >-
+      combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the peptide sequence from a given LC-MS/MS data file using the MASIC tool
+    range: integer
+
   chemical_formula:
   inchi_key:
     notes:
       - "key set to false due to rare collisions: Pletnev I, Erin A, McNaught A, Blinov K, Tchekhovskoi D, Heller S (2012) InChIKey collision resistance: an experimental testing. J Cheminform. 4:12"
   inchi:
-  min_q_value:
-  peptide_sequence:
   peptide_sequence_count:
-  peptide_spectral_count:
-  peptide_sum_masic_abundance:
   protein_spectral_count:
   protein_sum_masic_abundance:
   smiles:
-  metabolite_quantified:
-  highest_similarity_score:

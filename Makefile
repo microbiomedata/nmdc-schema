@@ -21,7 +21,7 @@ PYMODEL = $(SCHEMA_NAME)
 EXAMPLEDIR = examples
 TEMPLATEDIR = doc-templates
 
-.PHONY: all clean combined-extras examples-clean site test
+.PHONY: all clean examples-clean site test
 
 # note: "help" MUST be the first target in the file,
 # when the user types "make" they should get help info
@@ -75,7 +75,8 @@ create-data-harmonizer:
 	npm init data-harmonizer $(SOURCE_SCHEMA_PATH)
 
 all: site
-site: gen-project gendoc # may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy
+site: clean site-clean gen-project gendoc nmdc_schema/gold-to-mixs.sssom.tsv
+# may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy
 
 %.yaml: gen-project
 
@@ -103,8 +104,9 @@ gen-project: $(PYMODEL)
 		--include owl \
 		--include python \
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
+		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
-test: combined-extras test-schema test-python
+test: examples-clean site test-python src/data/output
 
 test-schema:
 	$(RUN) gen-project \
@@ -220,11 +222,6 @@ clean:
 
 include project.Makefile
 
-examples-clean: clean
-	@echo running examples-clean
-	rm -rf src/data/output project/nmdc_*.yaml
-
-
 project/nmdc_schema_merged.yaml:
 	$(RUN) gen-linkml \
 		--format yaml \
@@ -253,17 +250,29 @@ src/data/output: project/nmdc_materialized_patterns.yaml
 		--output-directory $@ \
 		--schema $< > $@/README.md
 
-#		--input-formats json \
-#		--input-formats yaml \
+.PHONY: examples-clean site-copy test-python site-clean test-with-examples
 
-combined-extras: examples-clean gen-project gendoc \
-project/nmdc_schema_merged.yaml project/nmdc_materialized_patterns.yaml project/nmdc_materialized_patterns.schema.json \
-src/data/output
+site-clean:
+	rm -rf nmdc_schema/*.json
+	rm -rf nmdc_schema/*.tsv
+	rm -rf nmdc_schema/*.yaml
+	rm -rf project/nmdc_*.json
+	rm -rf project/nmdc_*.yaml
+
+nmdc_schema/gold-to-mixs.sssom.tsv: sssom/gold-to-mixs.sssom.tsv nmdc_schema/nmdc_materialized_patterns.schema.json nmdc_schema/nmdc_materialized_patterns.yaml nmdc_schema/nmdc_schema_merged.yaml
 	# just can't seem to tell pyproject.toml to bundle artifacts like these
 	#   so reverting to copying into the module
-	cp project/jsonschema/nmdc.schema.json                   $(PYMODEL)
-	cp project/nmdc_materialized_patterns.schema.json        $(PYMODEL)
-	cp project/nmdc_materialized_patterns.yaml               $(PYMODEL)
-	cp project/nmdc_schema_merged.yaml                       $(PYMODEL)
-	cp sssom/gold-to-mixs.sssom.tsv                          $(PYMODEL)
+	cp $< $@
 
+nmdc_schema/nmdc_materialized_patterns.schema.json: project/nmdc_materialized_patterns.schema.json
+	cp $< $@
+
+nmdc_schema/nmdc_materialized_patterns.yaml: project/nmdc_materialized_patterns.yaml
+	cp $< $@
+
+nmdc_schema/nmdc_schema_merged.yaml: project/nmdc_schema_merged.yaml
+	cp $< $@
+
+examples-clean:
+	@echo running examples-clean
+	rm -rf src/data/output

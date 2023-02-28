@@ -32,14 +32,23 @@ subsets:
     description: A combination of a checklist and a package
     from_schema: http://w3id.org/mixs/terms
 enums:
-  profile_position_enum:
+  rel_to_oxygen_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      summit: {}
-      shoulder: {}
-      backslope: {}
-      footslope: {}
-      toeslope: {}
+      aerobe: {}
+      anaerobe: {}
+      facultative: {}
+      microaerophilic: {}
+      microanaerobe: {}
+      obligate aerobe: {}
+      obligate anaerobe: {}
+  biotic_relationship_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      free living: {}
+      parasite: {}
+      commensal: {}
+      symbiont: {}
   fao_class_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
@@ -78,29 +87,33 @@ enums:
       moderately well: {}
       well: {}
       excessively drained: {}
-  biotic_relationship_enum:
+  tidal_stage_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      free living: {}
-      parasite: {}
-      commensal: {}
-      symbiont: {}
+      low tide: {}
+      ebb tide: {}
+      flood tide: {}
+      high tide: {}
+  oxy_stat_samp_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      aerobic: {}
+      anaerobic: {}
+      other: {}
   organism_count_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       ATP: {}
       MPN: {}
       other: {}
-  rel_to_oxygen_enum:
+  profile_position_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      aerobe: {}
-      anaerobe: {}
-      facultative: {}
-      microaerophilic: {}
-      microanaerobe: {}
-      obligate aerobe: {}
-      obligate anaerobe: {}
+      summit: {}
+      shoulder: {}
+      backslope: {}
+      footslope: {}
+      toeslope: {}
   cur_land_use_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
@@ -139,13 +152,6 @@ enums:
       rainforest (evergreen forest receiving greater than 406 cm annual rainfall): {}
       swamp (permanent or semi-permanent water body dominated by woody plants): {}
       crop trees (nuts,fruit,christmas trees,nursery trees): {}
-  tidal_stage_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      low tide: {}
-      ebb tide: {}
-      flood tide: {}
-      high tide: {}
   tillage_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
@@ -158,12 +164,6 @@ enums:
       tined: {}
       mouldboard: {}
       disc plough: {}
-  oxy_stat_samp_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      aerobic: {}
-      anaerobic: {}
-      other: {}
 slots:
   agrochem_addition:
     annotations:
@@ -2930,32 +2930,32 @@ slots:
     description: basic fields
     from_schema: http://w3id.org/mixs/terms
     abstract: true
-  sequencing field:
+  nucleic acid sequence source field:
     from_schema: http://w3id.org/mixs/terms
     abstract: true
-  investigation field:
-    description: field describing aspect of the investigation/study to which the sample belongs
+  environment field:
+    description: field describing environmental aspect of a sample
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
+  sequencing field:
     from_schema: http://w3id.org/mixs/terms
     abstract: true
   has unit:
     description: Example "m"
     from_schema: http://w3id.org/mixs/ranges
     owner: QuantityValue
-  has raw value:
-    from_schema: http://w3id.org/mixs/ranges
-    string_serialization: '{has numeric value} {has unit}'
-    owner: QuantityValue
   has numeric value:
     from_schema: http://w3id.org/mixs/ranges
     owner: QuantityValue
     range: double
-  environment field:
-    description: field describing environmental aspect of a sample
+  investigation field:
+    description: field describing aspect of the investigation/study to which the sample belongs
     from_schema: http://w3id.org/mixs/terms
     abstract: true
-  nucleic acid sequence source field:
-    from_schema: http://w3id.org/mixs/terms
-    abstract: true
+  has raw value:
+    from_schema: http://w3id.org/mixs/ranges
+    string_serialization: '{has numeric value} {has unit}'
+    owner: QuantityValue
   antibiotic_regm:
     range: TextValue
   aromatics_pc:

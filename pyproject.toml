@@ -21,6 +21,7 @@ linkml-runtime = "^1.4.5"
 python = "^3.9"
 jupyter = "^1.0.0"
 toml = "^0.10.2"
+check-jsonschema = "^0.21.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0" # "^22.10.0" vs 23.1.0
@@ -43,7 +44,6 @@ strsimpy = "^0.2.1"
 
 #[tool.poetry.dev-dependencies]
 #build = "^0.9.0"
-#check-jsonschema = "^0.19.2"
 #click-log = "^0.4.0"
 #deepdiff = "^6.2.1"
 #docutils = "^0.19"

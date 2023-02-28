@@ -3834,6 +3834,10 @@
                     "description": "The nucleotide base count number of input reads for QC analysis.",
                     "type": "number"
                 },
+                "input_read_bases": {
+                    "description": "TODO",
+                    "type": "number"
+                },
                 "input_read_count": {
                     "description": "The sequence count number of input reads for QC analysis.",
                     "type": "number"
@@ -3844,6 +3848,10 @@
                 },
                 "output_base_count": {
                     "description": "After QC analysis nucleotide base count number.",
+                    "type": "number"
+                },
+                "output_read_bases": {
+                    "description": "TODO",
                     "type": "number"
                 },
                 "output_read_count": {
