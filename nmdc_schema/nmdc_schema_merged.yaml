@@ -1026,52 +1026,6 @@ enums:
         text: commensal
       symbiont:
         text: symbiont
-  oxy_stat_samp_enum:
-    name: oxy_stat_samp_enum
-    from_schema: https://microbiomedata/schema/mixs
-    permissible_values:
-      aerobic:
-        text: aerobic
-      anaerobic:
-        text: anaerobic
-      other:
-        text: other
-  tidal_stage_enum:
-    name: tidal_stage_enum
-    from_schema: https://microbiomedata/schema/mixs
-    permissible_values:
-      low tide:
-        text: low tide
-      ebb tide:
-        text: ebb tide
-      flood tide:
-        text: flood tide
-      high tide:
-        text: high tide
-  organism_count_enum:
-    name: organism_count_enum
-    from_schema: https://microbiomedata/schema/mixs
-    permissible_values:
-      ATP:
-        text: ATP
-      MPN:
-        text: MPN
-      other:
-        text: other
-  profile_position_enum:
-    name: profile_position_enum
-    from_schema: https://microbiomedata/schema/mixs
-    permissible_values:
-      summit:
-        text: summit
-      shoulder:
-        text: shoulder
-      backslope:
-        text: backslope
-      footslope:
-        text: footslope
-      toeslope:
-        text: toeslope
   fao_class_enum:
     name: fao_class_enum
     from_schema: https://microbiomedata/schema/mixs
@@ -1128,28 +1082,68 @@ enums:
         text: Vertisols
       Yermosols:
         text: Yermosols
-  tillage_enum:
-    name: tillage_enum
+  drainage_class_enum:
+    name: drainage_class_enum
     from_schema: https://microbiomedata/schema/mixs
     permissible_values:
-      drill:
-        text: drill
-      cutting disc:
-        text: cutting disc
-      ridge till:
-        text: ridge till
-      strip tillage:
-        text: strip tillage
-      zonal tillage:
-        text: zonal tillage
-      chisel:
-        text: chisel
-      tined:
-        text: tined
-      mouldboard:
-        text: mouldboard
-      disc plough:
-        text: disc plough
+      very poorly:
+        text: very poorly
+      poorly:
+        text: poorly
+      somewhat poorly:
+        text: somewhat poorly
+      moderately well:
+        text: moderately well
+      well:
+        text: well
+      excessively drained:
+        text: excessively drained
+  tidal_stage_enum:
+    name: tidal_stage_enum
+    from_schema: https://microbiomedata/schema/mixs
+    permissible_values:
+      low tide:
+        text: low tide
+      ebb tide:
+        text: ebb tide
+      flood tide:
+        text: flood tide
+      high tide:
+        text: high tide
+  oxy_stat_samp_enum:
+    name: oxy_stat_samp_enum
+    from_schema: https://microbiomedata/schema/mixs
+    permissible_values:
+      aerobic:
+        text: aerobic
+      anaerobic:
+        text: anaerobic
+      other:
+        text: other
+  organism_count_enum:
+    name: organism_count_enum
+    from_schema: https://microbiomedata/schema/mixs
+    permissible_values:
+      ATP:
+        text: ATP
+      MPN:
+        text: MPN
+      other:
+        text: other
+  profile_position_enum:
+    name: profile_position_enum
+    from_schema: https://microbiomedata/schema/mixs
+    permissible_values:
+      summit:
+        text: summit
+      shoulder:
+        text: shoulder
+      backslope:
+        text: backslope
+      footslope:
+        text: footslope
+      toeslope:
+        text: toeslope
   cur_land_use_enum:
     name: cur_land_use_enum
     from_schema: https://microbiomedata/schema/mixs
@@ -1225,22 +1219,28 @@ enums:
         text: swamp (permanent or semi-permanent water body dominated by woody plants)
       crop trees (nuts,fruit,christmas trees,nursery trees):
         text: crop trees (nuts,fruit,christmas trees,nursery trees)
-  drainage_class_enum:
-    name: drainage_class_enum
+  tillage_enum:
+    name: tillage_enum
     from_schema: https://microbiomedata/schema/mixs
     permissible_values:
-      very poorly:
-        text: very poorly
-      poorly:
-        text: poorly
-      somewhat poorly:
-        text: somewhat poorly
-      moderately well:
-        text: moderately well
-      well:
-        text: well
-      excessively drained:
-        text: excessively drained
+      drill:
+        text: drill
+      cutting disc:
+        text: cutting disc
+      ridge till:
+        text: ridge till
+      strip tillage:
+        text: strip tillage
+      zonal tillage:
+        text: zonal tillage
+      chisel:
+        text: chisel
+      tined:
+        text: tined
+      mouldboard:
+        text: mouldboard
+      disc plough:
+        text: disc plough
 slots:
   zinc:
     name: zinc
@@ -7111,22 +7111,22 @@ slots:
     slot_uri: MIXS:0000122
     multivalued: false
     range: QuantityValue
-  environment field:
-    name: environment field
-    description: field describing environmental aspect of a sample
-    from_schema: https://microbiomedata/schema/mixs
-    abstract: true
   core field:
     name: core field
     description: basic fields
     from_schema: https://microbiomedata/schema/mixs
     abstract: true
-  sequencing field:
-    name: sequencing field
-    from_schema: https://microbiomedata/schema/mixs
-    abstract: true
   nucleic acid sequence source field:
     name: nucleic acid sequence source field
+    from_schema: https://microbiomedata/schema/mixs
+    abstract: true
+  environment field:
+    name: environment field
+    description: field describing environmental aspect of a sample
+    from_schema: https://microbiomedata/schema/mixs
+    abstract: true
+  sequencing field:
+    name: sequencing field
     from_schema: https://microbiomedata/schema/mixs
     abstract: true
   has unit:
@@ -7134,22 +7134,22 @@ slots:
     description: Example "m"
     from_schema: https://microbiomedata/schema/mixs
     owner: QuantityValue
-  has raw value:
-    name: has raw value
+  has numeric value:
+    name: has numeric value
     from_schema: https://microbiomedata/schema/mixs
-    string_serialization: '{has numeric value} {has unit}'
     owner: QuantityValue
+    range: double
   investigation field:
     name: investigation field
     description: field describing aspect of the investigation/study to which the sample
       belongs
     from_schema: https://microbiomedata/schema/mixs
     abstract: true
-  has numeric value:
-    name: has numeric value
+  has raw value:
+    name: has raw value
     from_schema: https://microbiomedata/schema/mixs
+    string_serialization: '{has numeric value} {has unit}'
     owner: QuantityValue
-    range: double
   antibiotic_regm:
     name: antibiotic_regm
     from_schema: https://microbiomedata/schema/mixs
@@ -8923,6 +8923,8 @@ classes:
     - input_base_count
     - output_read_count
     - output_base_count
+    - input_read_bases
+    - output_read_bases
     slot_usage:
       input_read_bases:
         name: input_read_bases
