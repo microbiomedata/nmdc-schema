@@ -224,7 +224,7 @@ examples-clean: clean
 	rm -rf src/data/output project/nmdc_*.yaml
 
 
-project/nmdc_schema_merged.yaml:
+project/nmdc_schema_merged.yaml: $(SOURCE_SCHEMA_PATH)
 	$(RUN) gen-linkml \
 		--format yaml \
 		--no-materialize-attributes \
@@ -266,3 +266,12 @@ src/data/output
 	cp project/nmdc_schema_merged.yaml                       $(PYMODEL)
 	cp sssom/gold-to-mixs.sssom.tsv                          $(PYMODEL)
 
+site-materialized: site project/nmdc_schema_merged.yaml \
+project/nmdc_materialized_patterns.yaml project/nmdc_materialized_patterns.schema.json
+	# just can't seem to tell pyproject.toml to bundle artifacts like these
+	#   so reverting to copying into the module
+	cp project/jsonschema/nmdc.schema.json                   $(PYMODEL)
+	cp project/nmdc_materialized_patterns.schema.json        $(PYMODEL)
+	cp project/nmdc_materialized_patterns.yaml               $(PYMODEL)
+	cp project/nmdc_schema_merged.yaml                       $(PYMODEL)
+	cp sssom/gold-to-mixs.sssom.tsv                          $(PYMODEL)

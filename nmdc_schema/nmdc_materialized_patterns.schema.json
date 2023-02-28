@@ -2296,6 +2296,14 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "highest_similarity_score": {
+                    "description": "TODO: Yuri to fill in",
+                    "type": "number"
+                },
+                "metabolite_quantified": {
+                    "description": "the specific metabolite identifier",
+                    "type": "string"
                 }
             },
             "title": "MetaboliteQuantification",
@@ -2318,10 +2326,20 @@
                     "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                     "type": "string"
                 },
+                "has_calibration": {
+                    "description": "A reference to a file that holds calibration information.",
+                    "type": "string"
+                },
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
                         "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_metabolite_quantifications": {
+                    "items": {
+                        "$ref": "#/$defs/MetaboliteQuantification"
                     },
                     "type": "array"
                 },
@@ -2373,11 +2391,11 @@
                 }
             },
             "required": [
-                "type",
                 "execution_resource",
                 "git_url",
                 "has_input",
                 "has_output",
+                "type",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -2785,6 +2803,12 @@
                     },
                     "type": "array"
                 },
+                "has_peptide_quantifications": {
+                    "items": {
+                        "$ref": "#/$defs/PeptideQuantification"
+                    },
+                    "type": "array"
+                },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
@@ -2826,11 +2850,11 @@
                 }
             },
             "required": [
-                "type",
                 "execution_resource",
                 "git_url",
                 "has_input",
                 "has_output",
+                "type",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -3226,6 +3250,10 @@
                     "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                     "type": "string"
                 },
+                "has_calibration": {
+                    "description": "A reference to a file that holds calibration information.",
+                    "type": "string"
+                },
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
@@ -3281,11 +3309,11 @@
                 }
             },
             "required": [
-                "type",
                 "execution_resource",
                 "git_url",
                 "has_input",
                 "has_output",
+                "type",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -3544,6 +3572,34 @@
         "PeptideQuantification": {
             "additionalProperties": false,
             "description": "This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information",
+            "properties": {
+                "all_proteins": {
+                    "description": "the list of protein identifiers that are associated with the peptide sequence",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "best_protein": {
+                    "description": "the specific protein identifier most correctly associated with the peptide sequence",
+                    "type": "string"
+                },
+                "min_q_value": {
+                    "description": "smallest Q-Value associated with the peptide sequence as provided by MSGFPlus tool",
+                    "type": "number"
+                },
+                "peptide_sequence": {
+                    "type": "string"
+                },
+                "peptide_spectral_count": {
+                    "description": "sum of filter passing MS2 spectra associated with the peptide sequence within a given LC-MS/MS data file",
+                    "type": "integer"
+                },
+                "peptide_sum_masic_abundance": {
+                    "description": "combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the peptide sequence from a given LC-MS/MS data file using the MASIC tool",
+                    "type": "integer"
+                }
+            },
             "title": "PeptideQuantification",
             "type": "object"
         },
@@ -3856,6 +3912,10 @@
                     "description": "The nucleotide base count number of input reads for QC analysis.",
                     "type": "number"
                 },
+                "input_read_bases": {
+                    "description": "TODO      ",
+                    "type": "number"
+                },
                 "input_read_count": {
                     "description": "The sequence count number of input reads for QC analysis.",
                     "type": "number"
@@ -3866,6 +3926,10 @@
                 },
                 "output_base_count": {
                     "description": "After QC analysis nucleotide base count number.",
+                    "type": "number"
+                },
+                "output_read_bases": {
+                    "description": "TODO",
                     "type": "number"
                 },
                 "output_read_count": {

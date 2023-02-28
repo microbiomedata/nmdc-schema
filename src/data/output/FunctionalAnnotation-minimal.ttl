@@ -1,5 +1,0 @@
-@prefix nmdc: <https://w3id.org/nmdc/> .
-
-[] a nmdc:FunctionalAnnotation ;
-    nmdc:has_function "KEGG_PATHWAY:abc12345" .
-

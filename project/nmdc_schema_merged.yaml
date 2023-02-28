@@ -996,68 +996,6 @@ enums:
         text: soil
       water_extract_soil:
         text: water_extract_soil
-  rel_to_oxygen_enum:
-    name: rel_to_oxygen_enum
-    from_schema: https://microbiomedata/schema/mixs
-    permissible_values:
-      aerobe:
-        text: aerobe
-      anaerobe:
-        text: anaerobe
-      facultative:
-        text: facultative
-      microaerophilic:
-        text: microaerophilic
-      microanaerobe:
-        text: microanaerobe
-      obligate aerobe:
-        text: obligate aerobe
-      obligate anaerobe:
-        text: obligate anaerobe
-  biotic_relationship_enum:
-    name: biotic_relationship_enum
-    from_schema: https://microbiomedata/schema/mixs
-    permissible_values:
-      free living:
-        text: free living
-      parasite:
-        text: parasite
-      commensal:
-        text: commensal
-      symbiont:
-        text: symbiont
-  oxy_stat_samp_enum:
-    name: oxy_stat_samp_enum
-    from_schema: https://microbiomedata/schema/mixs
-    permissible_values:
-      aerobic:
-        text: aerobic
-      anaerobic:
-        text: anaerobic
-      other:
-        text: other
-  tidal_stage_enum:
-    name: tidal_stage_enum
-    from_schema: https://microbiomedata/schema/mixs
-    permissible_values:
-      low tide:
-        text: low tide
-      ebb tide:
-        text: ebb tide
-      flood tide:
-        text: flood tide
-      high tide:
-        text: high tide
-  organism_count_enum:
-    name: organism_count_enum
-    from_schema: https://microbiomedata/schema/mixs
-    permissible_values:
-      ATP:
-        text: ATP
-      MPN:
-        text: MPN
-      other:
-        text: other
   profile_position_enum:
     name: profile_position_enum
     from_schema: https://microbiomedata/schema/mixs
@@ -1128,28 +1066,62 @@ enums:
         text: Vertisols
       Yermosols:
         text: Yermosols
-  tillage_enum:
-    name: tillage_enum
+  drainage_class_enum:
+    name: drainage_class_enum
     from_schema: https://microbiomedata/schema/mixs
     permissible_values:
-      drill:
-        text: drill
-      cutting disc:
-        text: cutting disc
-      ridge till:
-        text: ridge till
-      strip tillage:
-        text: strip tillage
-      zonal tillage:
-        text: zonal tillage
-      chisel:
-        text: chisel
-      tined:
-        text: tined
-      mouldboard:
-        text: mouldboard
-      disc plough:
-        text: disc plough
+      very poorly:
+        text: very poorly
+      poorly:
+        text: poorly
+      somewhat poorly:
+        text: somewhat poorly
+      moderately well:
+        text: moderately well
+      well:
+        text: well
+      excessively drained:
+        text: excessively drained
+  biotic_relationship_enum:
+    name: biotic_relationship_enum
+    from_schema: https://microbiomedata/schema/mixs
+    permissible_values:
+      free living:
+        text: free living
+      parasite:
+        text: parasite
+      commensal:
+        text: commensal
+      symbiont:
+        text: symbiont
+  organism_count_enum:
+    name: organism_count_enum
+    from_schema: https://microbiomedata/schema/mixs
+    permissible_values:
+      ATP:
+        text: ATP
+      MPN:
+        text: MPN
+      other:
+        text: other
+  rel_to_oxygen_enum:
+    name: rel_to_oxygen_enum
+    from_schema: https://microbiomedata/schema/mixs
+    permissible_values:
+      aerobe:
+        text: aerobe
+      anaerobe:
+        text: anaerobe
+      facultative:
+        text: facultative
+      microaerophilic:
+        text: microaerophilic
+      microanaerobe:
+        text: microanaerobe
+      obligate aerobe:
+        text: obligate aerobe
+      obligate anaerobe:
+        text: obligate anaerobe
   cur_land_use_enum:
     name: cur_land_use_enum
     from_schema: https://microbiomedata/schema/mixs
@@ -1225,22 +1197,50 @@ enums:
         text: swamp (permanent or semi-permanent water body dominated by woody plants)
       crop trees (nuts,fruit,christmas trees,nursery trees):
         text: crop trees (nuts,fruit,christmas trees,nursery trees)
-  drainage_class_enum:
-    name: drainage_class_enum
+  tidal_stage_enum:
+    name: tidal_stage_enum
     from_schema: https://microbiomedata/schema/mixs
     permissible_values:
-      very poorly:
-        text: very poorly
-      poorly:
-        text: poorly
-      somewhat poorly:
-        text: somewhat poorly
-      moderately well:
-        text: moderately well
-      well:
-        text: well
-      excessively drained:
-        text: excessively drained
+      low tide:
+        text: low tide
+      ebb tide:
+        text: ebb tide
+      flood tide:
+        text: flood tide
+      high tide:
+        text: high tide
+  tillage_enum:
+    name: tillage_enum
+    from_schema: https://microbiomedata/schema/mixs
+    permissible_values:
+      drill:
+        text: drill
+      cutting disc:
+        text: cutting disc
+      ridge till:
+        text: ridge till
+      strip tillage:
+        text: strip tillage
+      zonal tillage:
+        text: zonal tillage
+      chisel:
+        text: chisel
+      tined:
+        text: tined
+      mouldboard:
+        text: mouldboard
+      disc plough:
+        text: disc plough
+  oxy_stat_samp_enum:
+    name: oxy_stat_samp_enum
+    from_schema: https://microbiomedata/schema/mixs
+    permissible_values:
+      aerobic:
+        text: aerobic
+      anaerobic:
+        text: anaerobic
+      other:
+        text: other
 slots:
   zinc:
     name: zinc
@@ -2028,6 +2028,8 @@ slots:
   has_peptide_quantifications:
     name: has_peptide_quantifications
     from_schema: https://microbiomedata/schema/workflow_execution_activity
+    multivalued: true
+    range: PeptideQuantification
   asm_score:
     name: asm_score
     description: A score for comparing metagenomic assembly quality from same sample.
@@ -2260,18 +2262,26 @@ slots:
     from_schema: https://microbiomedata/schema/workflow_execution_activity
     is_a: read_qc_analysis_statistic
     range: float
+  output_read_bases:
+    name: output_read_bases
+    description: TODO
+    from_schema: https://microbiomedata/schema/workflow_execution_activity
+    range: float
+  input_read_bases:
+    name: input_read_bases
+    description: 'TODO      '
+    from_schema: https://microbiomedata/schema/workflow_execution_activity
+    range: float
   has_calibration:
     name: has_calibration
+    description: A reference to a file that holds calibration information.
     from_schema: https://microbiomedata/schema/workflow_execution_activity
+    range: string
   has_metabolite_quantifications:
     name: has_metabolite_quantifications
     from_schema: https://microbiomedata/schema/workflow_execution_activity
-  input_read_bases:
-    name: input_read_bases
-    from_schema: https://microbiomedata/schema/workflow_execution_activity
-  output_read_bases:
-    name: output_read_bases
-    from_schema: https://microbiomedata/schema/workflow_execution_activity
+    multivalued: true
+    range: MetaboliteQuantification
   version:
     name: version
     from_schema: https://microbiomedata/schema/workflow_execution_activity
@@ -2719,12 +2729,54 @@ slots:
     from_schema: https://microbiomedata/schema/core
     multivalued: true
     range: string
+  highest_similarity_score:
+    name: highest_similarity_score
+    description: 'TODO: Yuri to fill in'
+    from_schema: https://microbiomedata/schema/core
+    range: float
+  metabolite_quantified:
+    name: metabolite_quantified
+    description: the specific metabolite identifier
+    from_schema: https://microbiomedata/schema/core
+    range: ChemicalEntity
   all_proteins:
     name: all_proteins
+    description: the list of protein identifiers that are associated with the peptide
+      sequence
     from_schema: https://microbiomedata/schema/core
+    multivalued: true
+    range: GeneProduct
   best_protein:
     name: best_protein
+    description: the specific protein identifier most correctly associated with the
+      peptide sequence
     from_schema: https://microbiomedata/schema/core
+    range: GeneProduct
+  min_q_value:
+    name: min_q_value
+    description: smallest Q-Value associated with the peptide sequence as provided
+      by MSGFPlus tool
+    from_schema: https://microbiomedata/schema/core
+    see_also:
+    - OBI:0001442
+    range: float
+  peptide_sequence:
+    name: peptide_sequence
+    from_schema: https://microbiomedata/schema/core
+    range: string
+  peptide_spectral_count:
+    name: peptide_spectral_count
+    description: sum of filter passing MS2 spectra associated with the peptide sequence
+      within a given LC-MS/MS data file
+    from_schema: https://microbiomedata/schema/core
+    range: integer
+  peptide_sum_masic_abundance:
+    name: peptide_sum_masic_abundance
+    description: combined MS1 extracted ion chromatograms derived from MS2 spectra
+      associated with the peptide sequence from a given LC-MS/MS data file using the
+      MASIC tool
+    from_schema: https://microbiomedata/schema/core
+    range: integer
   chemical_formula:
     name: chemical_formula
     from_schema: https://microbiomedata/schema/core
@@ -2738,20 +2790,8 @@ slots:
   inchi:
     name: inchi
     from_schema: https://microbiomedata/schema/core
-  min_q_value:
-    name: min_q_value
-    from_schema: https://microbiomedata/schema/core
-  peptide_sequence:
-    name: peptide_sequence
-    from_schema: https://microbiomedata/schema/core
   peptide_sequence_count:
     name: peptide_sequence_count
-    from_schema: https://microbiomedata/schema/core
-  peptide_spectral_count:
-    name: peptide_spectral_count
-    from_schema: https://microbiomedata/schema/core
-  peptide_sum_masic_abundance:
-    name: peptide_sum_masic_abundance
     from_schema: https://microbiomedata/schema/core
   protein_spectral_count:
     name: protein_spectral_count
@@ -2761,12 +2801,6 @@ slots:
     from_schema: https://microbiomedata/schema/core
   smiles:
     name: smiles
-    from_schema: https://microbiomedata/schema/core
-  metabolite_quantified:
-    name: metabolite_quantified
-    from_schema: https://microbiomedata/schema/core
-  highest_similarity_score:
-    name: highest_similarity_score
     from_schema: https://microbiomedata/schema/core
   external_database_identifiers:
     name: external_database_identifiers
@@ -7111,11 +7145,6 @@ slots:
     slot_uri: MIXS:0000122
     multivalued: false
     range: QuantityValue
-  environment field:
-    name: environment field
-    description: field describing environmental aspect of a sample
-    from_schema: https://microbiomedata/schema/mixs
-    abstract: true
   core field:
     name: core field
     description: basic fields
@@ -7125,8 +7154,10 @@ slots:
     name: sequencing field
     from_schema: https://microbiomedata/schema/mixs
     abstract: true
-  nucleic acid sequence source field:
-    name: nucleic acid sequence source field
+  investigation field:
+    name: investigation field
+    description: field describing aspect of the investigation/study to which the sample
+      belongs
     from_schema: https://microbiomedata/schema/mixs
     abstract: true
   has unit:
@@ -7139,17 +7170,20 @@ slots:
     from_schema: https://microbiomedata/schema/mixs
     string_serialization: '{has numeric value} {has unit}'
     owner: QuantityValue
-  investigation field:
-    name: investigation field
-    description: field describing aspect of the investigation/study to which the sample
-      belongs
-    from_schema: https://microbiomedata/schema/mixs
-    abstract: true
   has numeric value:
     name: has numeric value
     from_schema: https://microbiomedata/schema/mixs
     owner: QuantityValue
     range: double
+  environment field:
+    name: environment field
+    description: field describing environmental aspect of a sample
+    from_schema: https://microbiomedata/schema/mixs
+    abstract: true
+  nucleic acid sequence source field:
+    name: nucleic acid sequence source field
+    from_schema: https://microbiomedata/schema/mixs
+    abstract: true
   antibiotic_regm:
     name: antibiotic_regm
     from_schema: https://microbiomedata/schema/mixs
@@ -8923,15 +8957,9 @@ classes:
     - input_base_count
     - output_read_count
     - output_base_count
+    - input_read_bases
+    - output_read_bases
     slot_usage:
-      input_read_bases:
-        name: input_read_bases
-        description: TODO
-        range: float
-      output_read_bases:
-        name: output_read_bases
-        description: TODO
-        range: float
       has_input:
         name: has_input
       has_output:
@@ -8965,19 +8993,13 @@ classes:
     from_schema: https://microbiomedata/schema/workflow_execution_activity
     is_a: WorkflowExecutionActivity
     slots:
-    - type
+    - has_calibration
+    - has_metabolite_quantifications
     slot_usage:
       used:
         name: used
         description: The instrument used to collect the data used in the analysis
         range: Instrument
-      has_metabolite_quantifications:
-        name: has_metabolite_quantifications
-        multivalued: true
-        range: MetaboliteQuantification
-      has_calibration:
-        name: has_calibration
-        description: 'TODO: Yuri to fill in'
       id:
         name: id
         structured_pattern:
@@ -8990,16 +9012,12 @@ classes:
     from_schema: https://microbiomedata/schema/workflow_execution_activity
     is_a: WorkflowExecutionActivity
     slots:
-    - type
+    - has_peptide_quantifications
     slot_usage:
       used:
         name: used
         description: The instrument used to collect the data used in the analysis
         range: Instrument
-      has_peptide_quantifications:
-        name: has_peptide_quantifications
-        multivalued: true
-        range: PeptideQuantification
       id:
         name: id
         structured_pattern:
@@ -9012,16 +9030,12 @@ classes:
     from_schema: https://microbiomedata/schema/workflow_execution_activity
     is_a: WorkflowExecutionActivity
     slots:
-    - type
+    - has_calibration
     slot_usage:
       used:
         name: used
         description: The instrument used to collect the data used in the analysis
         range: Instrument
-      has_calibration:
-        name: has_calibration
-        description: A reference to a file that holds calibration information.
-        range: string
       id:
         name: id
         structured_pattern:
@@ -9269,53 +9283,20 @@ classes:
     from_schema: https://microbiomedata/schema/core
     slots:
     - alternative_identifiers
-    slot_usage:
-      metabolite_quantified:
-        name: metabolite_quantified
-        description: the specific metabolite identifier
-        range: ChemicalEntity
-      highest_similarity_score:
-        name: highest_similarity_score
-        description: 'TODO: Yuri to fill in'
-        range: float
+    - highest_similarity_score
+    - metabolite_quantified
   PeptideQuantification:
     name: PeptideQuantification
     description: This is used to link a metaproteomics analysis workflow to a specific
       peptide sequence and related information
     from_schema: https://microbiomedata/schema/core
-    slot_usage:
-      peptide_sequence:
-        name: peptide_sequence
-        range: string
-      best_protein:
-        name: best_protein
-        description: the specific protein identifier most correctly associated with
-          the peptide sequence
-        range: GeneProduct
-      all_proteins:
-        name: all_proteins
-        description: the list of protein identifiers that are associated with the
-          peptide sequence
-        multivalued: true
-        range: GeneProduct
-      min_q_value:
-        name: min_q_value
-        description: smallest Q-Value associated with the peptide sequence as provided
-          by MSGFPlus tool
-        see_also:
-        - OBI:0001442
-        range: float
-      peptide_spectral_count:
-        name: peptide_spectral_count
-        description: sum of filter passing MS2 spectra associated with the peptide
-          sequence within a given LC-MS/MS data file
-        range: integer
-      peptide_sum_masic_abundance:
-        name: peptide_sum_masic_abundance
-        description: combined MS1 extracted ion chromatograms derived from MS2 spectra
-          associated with the peptide sequence from a given LC-MS/MS data file using
-          the MASIC tool
-        range: integer
+    slots:
+    - all_proteins
+    - best_protein
+    - min_q_value
+    - peptide_sequence
+    - peptide_spectral_count
+    - peptide_sum_masic_abundance
   ProteinQuantification:
     name: ProteinQuantification
     description: This is used to link a metaproteomics analysis workflow to a specific
