@@ -253,10 +253,8 @@ classes:
       - output_base_count
       - input_read_bases
       - output_read_bases
-    #      - version
+      - version
     slot_usage:
-      has_input: { }
-      has_output: { }
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
