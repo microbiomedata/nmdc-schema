@@ -47,6 +47,12 @@ igsn_biosample_identifiers:
 - any:curie_2
 agrochem_addition:
 - has_raw_value: lime;1 kg/acre;2022-11-16T16:05:42+0000
+air_temp_regm:
+- has_raw_value: 25 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+al_sat:
+  has_raw_value: 0.1 mg/kg
+al_sat_meth:
+  has_raw_value: https://journaljeai.com/index.php/JEAI/article/view/583
 alkalinity:
   has_raw_value: 50 milligram per liter
 alkalinity_method:
@@ -55,10 +61,6 @@ alkyl_diethers:
   has_raw_value: 0.005 mole per liter
 alt:
   has_raw_value: 100 meter
-al_sat:
-  has_raw_value: 0.1 mg/kg
-al_sat_meth:
-  has_raw_value: https://journaljeai.com/index.php/JEAI/article/view/583
 aminopept_act:
   has_raw_value: 0.269 mole per liter per hour
 ammonium:
@@ -69,6 +71,9 @@ annual_temp:
   has_raw_value: 12.5 degree Celsius
 bacteria_carb_prod:
   has_raw_value: 2.53 microgram per liter per hour
+biotic_regm:
+  has_raw_value: sample inoculated with Rhizobium spp. Culture
+biotic_relationship: parasite
 bishomohopanol:
   has_raw_value: 14 microgram per liter
 bromide:
@@ -83,13 +88,15 @@ chloride:
   has_raw_value: 5000 milligram per liter
 chlorophyll:
   has_raw_value: 5 milligram per cubic meter
+climate_environment:
+- has_raw_value: tropical climate;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+crop_rotation:
+  has_raw_value: yes;R2/2017-01-01/2018-12-31/P6M
 cur_land_use: farmstead
 cur_vegetation:
   has_raw_value: MIxS doesn't provide any guidance more specific than "text"
 cur_vegetation_meth:
   has_raw_value: https://link.springer.com/article/10.1023/A:1011975321668
-crop_rotation:
-  has_raw_value: yes;R2/2017-01-01/2018-12-31/P6M
 density:
   has_raw_value: 1000 kilogram per cubic meter
 depth:
@@ -118,21 +125,31 @@ elev: 100.0
 env_package:
   has_raw_value: unconstrained text. should require the name of a MIxS EnvironmentalPackage
     class. have asked MIxS to return this term to their model. UPDATE VALIDATION RULES/PATTERN/ENUM!
+experimental_factor:
+  has_raw_value: unconstrained text, unlike the MIxS environmental triad
 extreme_event: '2023-01-15'
 fao_class: Fluvisols
 fire: 2000-11 to 2000-12
 flooding: '2000-01-15'
+gaseous_environment:
+- has_raw_value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 geo_loc_name:
   has_raw_value: 'USA: Maryland, Bethesda'
 glucosidase_act:
   has_raw_value: 5 mol per liter per hour
+growth_facil:
+  has_raw_value: Growth chamber [CO_715:0000189]
 heavy_metals:
 - has_raw_value: mercury;0.09 micrograms per gram
 - has_raw_value: arsenic;0.09 micrograms per gram
 heavy_metals_meth:
 - has_raw_value: https://link.springer.com/article/10.1007/s42452-019-1578-x
+humidity_regm:
+- has_raw_value: 25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 lat_lon:
   has_raw_value: 50.586825 6.408977
+light_regm:
+  has_raw_value: incandescent light;10 lux;450 nanometer
 link_addit_analys:
   has_raw_value: https://pubmed.ncbi.nlm.nih.gov/2315679/
 link_class_info:
@@ -175,6 +192,8 @@ ph_meth:
   has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9040c.pdf
 phaeopigments:
 - has_raw_value: 2.5 milligram per cubic meter
+phosphate:
+  has_raw_value: 0.7 micromole per liter
 phosplipid_fatt_acid:
 - has_raw_value: 2.98 milligram per liter
 pool_dna_extracts:
@@ -190,31 +209,34 @@ salinity:
   has_raw_value: 25 practical salinity unit
 salinity_meth:
   has_raw_value: PMID:22895776
+samp_collec_method: swabbing
 samp_mat_process:
   has_raw_value: filtering of seawater
+samp_size:
+  has_raw_value: 5 liters
 samp_store_dur:
   has_raw_value: P1Y6M
 samp_store_loc:
   has_raw_value: Freezer no:5
-samp_taxon_id:
-  has_raw_value: soil metagenome [NCBItaxon:410658] but no validation applied yet
 samp_store_temp:
   has_raw_value: -80 degree Celsius
+samp_taxon_id:
+  has_raw_value: soil metagenome [NCBItaxon:410658] but no validation applied yet
 samp_vol_we_dna_ext:
   has_raw_value: 1500 milliliter
-season_temp:
-  has_raw_value: 18 degree Celsius
 season_precpt:
   has_raw_value: 75 millimeters
+season_temp:
+  has_raw_value: 18 degree Celsius
 sieving:
   has_raw_value: MIxS does not provide an example
 size_frac_low:
   has_raw_value: 0.2 micrometer
 size_frac_up:
   has_raw_value: 20 micrometer
-slope_gradient:
-  has_raw_value: MIxS does not provide an example
 slope_aspect:
+  has_raw_value: MIxS does not provide an example
+slope_gradient:
   has_raw_value: MIxS does not provide an example
 sodium:
   has_raw_value: 10.5 milligram per liter
@@ -222,6 +244,8 @@ soil_type:
   has_raw_value: plinthosol [ENVO:00002250]
 soil_type_meth:
   has_raw_value: Frederick series
+source_mat_id:
+  has_raw_value: MPI012345
 store_cond:
   has_raw_value: -20 degree Celsius freezer;P2Y10D
 sulfate:
@@ -230,28 +254,30 @@ sulfide:
   has_raw_value: 2 micromole per liter
 temp:
   has_raw_value: 25 degree Celsius
+tidal_stage: high tide
 tillage:
 - chisel
-tidal_stage: high tide
 tot_carb:
   has_raw_value: MIxS does not provide an example
 tot_depth_water_col:
   has_raw_value: 500 meter
 tot_diss_nitro:
   has_raw_value: 40 microgram per liter
-tot_org_carb:
-  has_raw_value: 2%
-tot_org_c_meth:
-  has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9060a.pdf
+tot_nitro_cont_meth: https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00
 tot_nitro_content:
   has_raw_value: 35 milligrams Nitrogen per kilogram of soil
-tot_nitro_cont_meth: https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00
+tot_org_c_meth:
+  has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9060a.pdf
+tot_org_carb:
+  has_raw_value: 2%
 tot_phosp:
   has_raw_value: 0.03 milligram per liter
+water_cont_soil_meth: MIxS doesn't provide an example
 water_content:
 - MIxS doesn't provide an example 1
 - MIxS doesn't provide an example 2
-water_cont_soil_meth: MIxS doesn't provide an example
+watering_regm:
+- has_raw_value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 ecosystem: unconstrained text. should be validated against the controlled vocabulary,
   by the sample's environmental package. would also be nice to align the CV with MIxS
   environmental triads
@@ -274,32 +300,6 @@ sample_collection_site: unconstrained text
 soluble_iron_micromol: MIxS doesn't provide an example
 subsurface_depth:
   has_raw_value: MIxS does not provide an example
-air_temp_regm:
-- has_raw_value: 25 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
-biotic_regm:
-  has_raw_value: sample inoculated with Rhizobium spp. Culture
-biotic_relationship: parasite
-climate_environment:
-- has_raw_value: tropical climate;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
-experimental_factor:
-  has_raw_value: unconstrained text, unlike the MIxS environmental triad
-gaseous_environment:
-- has_raw_value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
-growth_facil:
-  has_raw_value: Growth chamber [CO_715:0000189]
-humidity_regm:
-- has_raw_value: 25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
-light_regm:
-  has_raw_value: incandescent light;10 lux;450 nanometer
-phosphate:
-  has_raw_value: 0.7 micromole per liter
-samp_collec_method: swabbing
-samp_size:
-  has_raw_value: 5 liters
-source_mat_id:
-  has_raw_value: MPI012345
-watering_regm:
-- has_raw_value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 dna_absorb1: '2.02'
 dna_absorb2: '2.02'
 dna_collect_site: untreated pond water
