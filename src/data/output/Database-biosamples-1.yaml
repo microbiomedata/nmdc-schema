@@ -19,16 +19,16 @@ biosample_set:
   type: nmdc:Biosample
   gold_biosample_identifiers:
   - GOLD:Gb0101224
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: Groundwater
+  ecosystem_type: Freshwater
   geo_loc_name:
     has_raw_value: Lithgow
   lat_lon:
     has_raw_value: -33.460524 150.168149
   samp_taxon_id:
     has_raw_value: coal metagenome [NCBITaxon:1260732]
-  ecosystem: Environmental
-  ecosystem_category: Aquatic
-  ecosystem_type: Freshwater
-  ecosystem_subtype: Groundwater
   specific_ecosystem: Coalbed water
   add_date: 28-JUL-14 12.00.00.000000000 AM
   community: microbial communities
@@ -60,16 +60,16 @@ biosample_set:
   - SIP
   gold_biosample_identifiers:
   - GOLD:Gb0101224
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: Groundwater
+  ecosystem_type: Freshwater
   geo_loc_name:
     has_raw_value: Lithgow
   lat_lon:
     has_raw_value: -33.460524 150.168149
   samp_taxon_id:
     has_raw_value: coal metagenome [NCBITaxon:1260732]
-  ecosystem: Environmental
-  ecosystem_category: Aquatic
-  ecosystem_type: Freshwater
-  ecosystem_subtype: Groundwater
   specific_ecosystem: Coalbed water
   add_date: 28-JUL-14 12.00.00.000000000 AM
   community: microbial communities
@@ -98,16 +98,16 @@ biosample_set:
   type: nmdc:Biosample
   gold_biosample_identifiers:
   - GOLD:Gb0101225
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: Groundwater
+  ecosystem_type: Freshwater
   geo_loc_name:
     has_raw_value: Lithgow
   lat_lon:
     has_raw_value: -33.460524 150.168149
   samp_taxon_id:
     has_raw_value: coal metagenome [NCBITaxon:1260732]
-  ecosystem: Environmental
-  ecosystem_category: Aquatic
-  ecosystem_type: Freshwater
-  ecosystem_subtype: Groundwater
   specific_ecosystem: Coalbed water
   add_date: 28-JUL-14 12.00.00.000000000 AM
   community: microbial communities
@@ -136,16 +136,16 @@ biosample_set:
   type: nmdc:Biosample
   gold_biosample_identifiers:
   - GOLD:Gb0101226
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: Groundwater
+  ecosystem_type: Freshwater
   geo_loc_name:
     has_raw_value: Lithgow
   lat_lon:
     has_raw_value: -33.460524 150.168149
   samp_taxon_id:
     has_raw_value: coal metagenome [NCBITaxon:1260732]
-  ecosystem: Environmental
-  ecosystem_category: Aquatic
-  ecosystem_type: Freshwater
-  ecosystem_subtype: Groundwater
   specific_ecosystem: Coalbed water
   add_date: 28-JUL-14 12.00.00.000000000 AM
   community: microbial communities

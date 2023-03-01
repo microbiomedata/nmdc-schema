@@ -65,6 +65,8 @@ aminopept_act:
   has_raw_value: 0.269 mole per liter per hour
 ammonium:
   has_raw_value: 1.5 milligram per liter
+ammonium_nitrogen:
+  has_raw_value: 0.5 milligram per liter
 annual_precpt:
   has_raw_value: 0.5 milligram per liter
 annual_temp:
@@ -122,7 +124,14 @@ diss_org_nitro:
   has_raw_value: 0.05 micromole per liter
 diss_oxygen:
   has_raw_value: 175 micromole per kilogram
+dna_cont_well: C2
 drainage_class: well
+ecosystem: unconstrained text. should be validated against the controlled vocabulary,
+  by the sample's environmental package. would also be nice to align the CV with MIxS
+  environmental triads
+ecosystem_category: unconstrained text
+ecosystem_subtype: unconstrained text
+ecosystem_type: unconstrained text
 elev: 100.0
 env_package:
   has_raw_value: unconstrained text. should require the name of a MIxS EnvironmentalPackage
@@ -152,6 +161,10 @@ lat_lon:
   has_raw_value: 50.586825 6.408977
   latitude: 50.586825
   longitude: 6.408977
+lbc_thirty:
+  has_raw_value: 543 mg/kg
+lbceq:
+  has_raw_value: 1575 mg/kg
 light_regm:
   has_raw_value: incandescent light;10 lux;450 nanometer
 link_addit_analys:
@@ -166,6 +179,8 @@ local_class_meth:
   has_raw_value: https://www.sciencedirect.com/science/article/abs/pii/S0016706105003083
 magnesium:
   has_raw_value: 52.8 micromole per kilogram
+manganese:
+  has_raw_value: 24.7 mg/kg
 mean_frict_vel:
   has_raw_value: 0.5 meter per second
 mean_peak_frict_vel:
@@ -176,8 +191,12 @@ n_alkanes:
 - has_raw_value: n-hexadecane;100 milligram per liter
 nitrate:
   has_raw_value: 65 micromole per liter
+nitrate_nitrogen:
+  has_raw_value: 0.29 mg/kg
 nitrite:
   has_raw_value: 0.5 micromole per liter
+nitrite_nitrogen:
+  has_raw_value: 1.2 mg/kg
 org_matter:
   has_raw_value: 1.75 milligram per cubic meter
 org_nitro:
@@ -250,6 +269,7 @@ soil_type_meth:
   has_raw_value: Frederick series
 source_mat_id:
   has_raw_value: MPI012345
+specific_ecosystem: unconstrained text
 store_cond:
   has_raw_value: -20 degree Celsius freezer;P2Y10D
 sulfate:
@@ -282,13 +302,8 @@ water_content:
 - MIxS doesn't provide an example 2
 watering_regm:
 - has_raw_value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
-ecosystem: unconstrained text. should be validated against the controlled vocabulary,
-  by the sample's environmental package. would also be nice to align the CV with MIxS
-  environmental triads
-ecosystem_category: unconstrained text
-ecosystem_type: unconstrained text
-ecosystem_subtype: unconstrained text
-specific_ecosystem: unconstrained text
+zinc:
+  has_raw_value: 2.5 mg/kg
 add_date: '2021-03-31'
 community: no_example_from_mixs
 habitat: unconstrained text
@@ -309,7 +324,6 @@ dna_absorb2: '2.02'
 dna_collect_site: untreated pond water
 dna_concentration: '100'
 dna_cont_type: plate
-dna_cont_well: C2
 dna_container_id: Pond_MT_041618
 dna_dnase: 'yes'
 dna_isolate_meth: phenol/chloroform extraction
@@ -373,17 +387,3 @@ analysis_type:
 sample_link:
 - IGSN:DSJ0284
 - any:curie
-zinc:
-  has_raw_value: 2.5 mg/kg
-manganese:
-  has_raw_value: 24.7 mg/kg
-ammonium_nitrogen:
-  has_raw_value: 0.5 milligram per liter
-nitrate_nitrogen:
-  has_raw_value: 0.29 mg/kg
-nitrite_nitrogen:
-  has_raw_value: 1.2 mg/kg
-lbc_thirty:
-  has_raw_value: 543 mg/kg
-lbceq:
-  has_raw_value: 1575 mg/kg

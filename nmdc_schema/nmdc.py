@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-01T13:59:17
+# Generation date: 2023-03-01T18:22:17
 # Schema: NMDC
 #
 # id: https://microbiomedata/schema
@@ -1015,7 +1015,14 @@ class Biosample(MaterialEntity):
     emsl_biosample_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     igsn_biosample_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     abs_air_humidity: Optional[Union[dict, "QuantityValue"]] = None
+    add_recov_method: Optional[Union[dict, "TextValue"]] = None
+    additional_info: Optional[Union[dict, "TextValue"]] = None
+    address: Optional[Union[dict, "TextValue"]] = None
+    adj_room: Optional[Union[dict, "TextValue"]] = None
+    aero_struc: Optional[Union[dict, "TextValue"]] = None
     agrochem_addition: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    air_PM_concen: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    air_temp: Optional[Union[dict, "QuantityValue"]] = None
     air_temp_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     al_sat: Optional[Union[dict, "QuantityValue"]] = None
     al_sat_meth: Optional[Union[dict, "TextValue"]] = None
@@ -1025,115 +1032,244 @@ class Biosample(MaterialEntity):
     alt: Optional[Union[dict, "QuantityValue"]] = None
     aminopept_act: Optional[Union[dict, "QuantityValue"]] = None
     ammonium: Optional[Union[dict, "QuantityValue"]] = None
+    ammonium_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
+    amount_light: Optional[Union[dict, "QuantityValue"]] = None
+    ances_data: Optional[Union[dict, "TextValue"]] = None
     annual_precpt: Optional[Union[dict, "QuantityValue"]] = None
     annual_temp: Optional[Union[dict, "QuantityValue"]] = None
-    antibiotic_regm: Optional[Union[dict, "TextValue"]] = None
+    antibiotic_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    api: Optional[Union[dict, "QuantityValue"]] = None
+    arch_struc: Optional[Union[str, "ArchStrucEnum"]] = None
     aromatics_pc: Optional[Union[dict, "TextValue"]] = None
     asphaltenes_pc: Optional[Union[dict, "TextValue"]] = None
-    atmospheric_data: Optional[Union[dict, "TextValue"]] = None
+    atmospheric_data: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    avg_dew_point: Optional[Union[dict, "QuantityValue"]] = None
     avg_occup: Optional[Union[dict, "TextValue"]] = None
+    avg_temp: Optional[Union[dict, "QuantityValue"]] = None
+    bac_prod: Optional[Union[dict, "QuantityValue"]] = None
+    bac_resp: Optional[Union[dict, "QuantityValue"]] = None
     bacteria_carb_prod: Optional[Union[dict, "QuantityValue"]] = None
+    barometric_press: Optional[Union[dict, "QuantityValue"]] = None
+    basin: Optional[Union[dict, "TextValue"]] = None
     bathroom_count: Optional[Union[dict, "TextValue"]] = None
     bedroom_count: Optional[Union[dict, "TextValue"]] = None
+    benzene: Optional[Union[dict, "QuantityValue"]] = None
+    biochem_oxygen_dem: Optional[Union[dict, "QuantityValue"]] = None
+    biocide: Optional[Union[dict, "TextValue"]] = None
     biocide_admin_method: Optional[Union[dict, "TextValue"]] = None
-    biomass: Optional[Union[dict, "TextValue"]] = None
+    biol_stat: Optional[Union[str, "BiolStatEnum"]] = None
+    biomass: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     biotic_regm: Optional[Union[dict, "TextValue"]] = None
     biotic_relationship: Optional[Union[str, "BioticRelationshipEnum"]] = None
     bishomohopanol: Optional[Union[dict, "QuantityValue"]] = None
+    blood_press_diast: Optional[Union[dict, "QuantityValue"]] = None
+    blood_press_syst: Optional[Union[dict, "QuantityValue"]] = None
     bromide: Optional[Union[dict, "QuantityValue"]] = None
+    build_docs: Optional[Union[str, "BuildDocsEnum"]] = None
+    build_occup_type: Optional[Union[Union[str, "BuildOccupTypeEnum"], List[Union[str, "BuildOccupTypeEnum"]]]] = empty_list()
+    building_setting: Optional[Union[str, "BuildingSettingEnum"]] = None
+    built_struc_age: Optional[Union[dict, "QuantityValue"]] = None
+    built_struc_set: Optional[Union[dict, "TextValue"]] = None
+    built_struc_type: Optional[Union[dict, "TextValue"]] = None
     calcium: Optional[Union[dict, "QuantityValue"]] = None
+    carb_dioxide: Optional[Union[dict, "QuantityValue"]] = None
+    carb_monoxide: Optional[Union[dict, "QuantityValue"]] = None
     carb_nitro_ratio: Optional[Union[dict, "QuantityValue"]] = None
+    ceil_area: Optional[Union[dict, "QuantityValue"]] = None
+    ceil_cond: Optional[Union[str, "CeilCondEnum"]] = None
+    ceil_finish_mat: Optional[Union[str, "CeilFinishMatEnum"]] = None
+    ceil_struc: Optional[Union[dict, "TextValue"]] = None
+    ceil_texture: Optional[Union[str, "CeilTextureEnum"]] = None
+    ceil_thermal_mass: Optional[Union[dict, "QuantityValue"]] = None
+    ceil_type: Optional[Union[str, "CeilTypeEnum"]] = None
+    ceil_water_mold: Optional[Union[dict, "TextValue"]] = None
     chem_administration: Optional[Union[Union[dict, "ControlledTermValue"], List[Union[dict, "ControlledTermValue"]]]] = empty_list()
-    chem_mutagen: Optional[Union[dict, "TextValue"]] = None
+    chem_mutagen: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    chem_oxygen_dem: Optional[Union[dict, "QuantityValue"]] = None
     chem_treat_method: Optional[str] = None
+    chem_treatment: Optional[Union[dict, "TextValue"]] = None
     chimera_check: Optional[Union[dict, "TextValue"]] = None
     chloride: Optional[Union[dict, "QuantityValue"]] = None
     chlorophyll: Optional[Union[dict, "QuantityValue"]] = None
     climate_environment: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     collection_date: Optional[Union[dict, "TimestampValue"]] = None
+    conduc: Optional[Union[dict, "QuantityValue"]] = None
     cool_syst_id: Optional[Union[dict, "TextValue"]] = None
     core_field: Optional[str] = None
     crop_rotation: Optional[Union[dict, "TextValue"]] = None
+    cult_root_med: Optional[Union[dict, "TextValue"]] = None
     cur_land_use: Optional[Union[str, "CurLandUseEnum"]] = None
     cur_vegetation: Optional[Union[dict, "TextValue"]] = None
     cur_vegetation_meth: Optional[Union[dict, "TextValue"]] = None
     date_last_rain: Optional[Union[dict, "TimestampValue"]] = None
     density: Optional[Union[dict, "QuantityValue"]] = None
+    depos_env: Optional[Union[str, "DeposEnvEnum"]] = None
     depth: Optional[Union[dict, "QuantityValue"]] = None
-    diether_lipids: Optional[Union[dict, "TextValue"]] = None
+    dew_point: Optional[Union[dict, "QuantityValue"]] = None
+    diether_lipids: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     diss_carb_dioxide: Optional[Union[dict, "QuantityValue"]] = None
     diss_hydrogen: Optional[Union[dict, "QuantityValue"]] = None
     diss_inorg_carb: Optional[Union[dict, "QuantityValue"]] = None
+    diss_inorg_nitro: Optional[Union[dict, "QuantityValue"]] = None
     diss_inorg_phosp: Optional[Union[dict, "QuantityValue"]] = None
+    diss_iron: Optional[Union[dict, "QuantityValue"]] = None
     diss_org_carb: Optional[Union[dict, "QuantityValue"]] = None
     diss_org_nitro: Optional[Union[dict, "QuantityValue"]] = None
     diss_oxygen: Optional[Union[dict, "QuantityValue"]] = None
+    diss_oxygen_fluid: Optional[Union[dict, "QuantityValue"]] = None
+    dna_cont_well: Optional[str] = None
+    door_comp_type: Optional[Union[str, "DoorCompTypeEnum"]] = None
+    door_cond: Optional[Union[str, "DoorCondEnum"]] = None
+    door_direct: Optional[Union[str, "DoorDirectEnum"]] = None
+    door_loc: Optional[Union[str, "DoorLocEnum"]] = None
+    door_mat: Optional[Union[str, "DoorMatEnum"]] = None
+    door_move: Optional[Union[str, "DoorMoveEnum"]] = None
+    door_size: Optional[Union[dict, "QuantityValue"]] = None
+    door_type: Optional[Union[str, "DoorTypeEnum"]] = None
+    door_type_metal: Optional[Union[str, "DoorTypeMetalEnum"]] = None
+    door_type_wood: Optional[Union[str, "DoorTypeWoodEnum"]] = None
+    door_water_mold: Optional[Union[dict, "TextValue"]] = None
+    down_par: Optional[Union[dict, "QuantityValue"]] = None
     drainage_class: Optional[Union[str, "DrainageClassEnum"]] = None
+    drawings: Optional[Union[str, "DrawingsEnum"]] = None
+    ecosystem: Optional[str] = None
+    ecosystem_category: Optional[str] = None
+    ecosystem_subtype: Optional[str] = None
+    ecosystem_type: Optional[str] = None
+    efficiency_percent: Optional[Union[dict, "QuantityValue"]] = None
     elev: Optional[float] = None
     elevator: Optional[Union[dict, "TextValue"]] = None
-    emulsions: Optional[Union[dict, "TextValue"]] = None
+    emulsions: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     env_package: Optional[Union[dict, "TextValue"]] = None
     environment_field: Optional[str] = None
     escalator: Optional[Union[dict, "TextValue"]] = None
+    ethylbenzene: Optional[Union[dict, "QuantityValue"]] = None
+    exp_duct: Optional[Union[dict, "QuantityValue"]] = None
     exp_pipe: Optional[Union[dict, "QuantityValue"]] = None
     experimental_factor: Optional[Union[dict, "ControlledTermValue"]] = None
     ext_door: Optional[Union[dict, "TextValue"]] = None
+    ext_wall_orient: Optional[Union[str, "ExtWallOrientEnum"]] = None
+    ext_window_orient: Optional[Union[str, "ExtWindowOrientEnum"]] = None
     extreme_event: Optional[str] = None
     fao_class: Optional[Union[str, "FaoClassEnum"]] = None
-    fertilizer_regm: Optional[Union[dict, "TextValue"]] = None
+    fertilizer_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    field: Optional[Union[dict, "TextValue"]] = None
+    filter_type: Optional[Union[Union[str, "FilterTypeEnum"], List[Union[str, "FilterTypeEnum"]]]] = empty_list()
     fire: Optional[str] = None
+    fireplace_type: Optional[Union[dict, "TextValue"]] = None
     flooding: Optional[str] = None
+    floor_age: Optional[Union[dict, "QuantityValue"]] = None
+    floor_area: Optional[Union[dict, "QuantityValue"]] = None
+    floor_cond: Optional[Union[str, "FloorCondEnum"]] = None
     floor_count: Optional[Union[dict, "TextValue"]] = None
+    floor_finish_mat: Optional[Union[str, "FloorFinishMatEnum"]] = None
+    floor_struc: Optional[Union[str, "FloorStrucEnum"]] = None
+    floor_thermal_mass: Optional[Union[dict, "QuantityValue"]] = None
+    floor_water_mold: Optional[Union[str, "FloorWaterMoldEnum"]] = None
+    fluor: Optional[Union[dict, "QuantityValue"]] = None
     freq_clean: Optional[Union[dict, "QuantityValue"]] = None
     freq_cook: Optional[Union[dict, "QuantityValue"]] = None
-    fungicide_regm: Optional[Union[dict, "TextValue"]] = None
+    fungicide_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    furniture: Optional[Union[str, "FurnitureEnum"]] = None
     gaseous_environment: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
-    gaseous_substances: Optional[Union[dict, "TextValue"]] = None
+    gaseous_substances: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    gender_restroom: Optional[Union[str, "GenderRestroomEnum"]] = None
+    genetic_mod: Optional[Union[dict, "TextValue"]] = None
     geo_loc_name: Optional[Union[dict, "TextValue"]] = None
     glucosidase_act: Optional[Union[dict, "QuantityValue"]] = None
-    gravity: Optional[Union[dict, "TextValue"]] = None
+    gravidity: Optional[Union[dict, "TextValue"]] = None
+    gravity: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     growth_facil: Optional[Union[dict, "ControlledTermValue"]] = None
-    growth_hormone_regm: Optional[Union[dict, "TextValue"]] = None
+    growth_habit: Optional[Union[str, "GrowthHabitEnum"]] = None
+    growth_hormone_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     hall_count: Optional[Union[dict, "TextValue"]] = None
+    handidness: Optional[Union[str, "HandidnessEnum"]] = None
     has_numeric_value: Optional[float] = None
     has_raw_value: Optional[str] = None
     has_unit: Optional[str] = None
+    hc_produced: Optional[Union[str, "HcProducedEnum"]] = None
+    hcr: Optional[Union[str, "HcrEnum"]] = None
+    hcr_fw_salinity: Optional[Union[dict, "QuantityValue"]] = None
+    hcr_geol_age: Optional[Union[str, "HcrGeolAgeEnum"]] = None
     hcr_pressure: Optional[Union[dict, "TextValue"]] = None
     hcr_temp: Optional[Union[dict, "TextValue"]] = None
+    heat_cool_type: Optional[Union[Union[str, "HeatCoolTypeEnum"], List[Union[str, "HeatCoolTypeEnum"]]]] = empty_list()
+    heat_deliv_loc: Optional[Union[str, "HeatDelivLocEnum"]] = None
     heat_sys_deliv_meth: Optional[str] = None
     heat_system_id: Optional[Union[dict, "TextValue"]] = None
     heavy_metals: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     heavy_metals_meth: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
-    herbicide_regm: Optional[Union[dict, "TextValue"]] = None
+    height_carper_fiber: Optional[Union[dict, "QuantityValue"]] = None
+    herbicide_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    horizon_meth: Optional[Union[dict, "TextValue"]] = None
+    host_age: Optional[Union[dict, "QuantityValue"]] = None
+    host_body_habitat: Optional[Union[dict, "TextValue"]] = None
     host_body_product: Optional[Union[dict, "ControlledTermValue"]] = None
     host_body_site: Optional[Union[dict, "ControlledTermValue"]] = None
-    host_family_relation: Optional[str] = None
+    host_body_temp: Optional[Union[dict, "QuantityValue"]] = None
+    host_color: Optional[Union[dict, "TextValue"]] = None
+    host_common_name: Optional[Union[dict, "TextValue"]] = None
+    host_diet: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    host_dry_mass: Optional[Union[dict, "QuantityValue"]] = None
+    host_family_relation: Optional[Union[str, List[str]]] = empty_list()
+    host_genotype: Optional[Union[dict, "TextValue"]] = None
+    host_growth_cond: Optional[Union[dict, "TextValue"]] = None
+    host_height: Optional[Union[dict, "QuantityValue"]] = None
+    host_last_meal: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    host_length: Optional[Union[dict, "QuantityValue"]] = None
+    host_life_stage: Optional[Union[dict, "TextValue"]] = None
     host_phenotype: Optional[Union[dict, "ControlledTermValue"]] = None
-    host_subspecf_genlin: Optional[str] = None
-    host_symbiont: Optional[str] = None
+    host_sex: Optional[Union[str, "HostSexEnum"]] = None
+    host_shape: Optional[Union[dict, "TextValue"]] = None
+    host_subject_id: Optional[Union[dict, "TextValue"]] = None
+    host_subspecf_genlin: Optional[Union[str, List[str]]] = empty_list()
+    host_substrate: Optional[Union[dict, "TextValue"]] = None
+    host_symbiont: Optional[Union[str, List[str]]] = empty_list()
+    host_tot_mass: Optional[Union[dict, "QuantityValue"]] = None
+    host_wet_mass: Optional[Union[dict, "QuantityValue"]] = None
+    humidity: Optional[Union[dict, "QuantityValue"]] = None
     humidity_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
-    inorg_particles: Optional[Union[dict, "TextValue"]] = None
+    indoor_space: Optional[Union[str, "IndoorSpaceEnum"]] = None
+    indoor_surf: Optional[Union[str, "IndoorSurfEnum"]] = None
+    indust_eff_percent: Optional[Union[dict, "QuantityValue"]] = None
+    inorg_particles: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    inside_lux: Optional[Union[dict, "QuantityValue"]] = None
+    int_wall_cond: Optional[Union[str, "IntWallCondEnum"]] = None
     investigation_field: Optional[str] = None
     iw_bt_date_well: Optional[Union[dict, "TimestampValue"]] = None
+    iwf: Optional[Union[dict, "QuantityValue"]] = None
     last_clean: Optional[Union[dict, "TimestampValue"]] = None
     lat_lon: Optional[Union[dict, "GeolocationValue"]] = None
+    lbc_thirty: Optional[Union[dict, "QuantityValue"]] = None
+    lbceq: Optional[Union[dict, "QuantityValue"]] = None
+    light_intensity: Optional[Union[dict, "QuantityValue"]] = None
     light_regm: Optional[Union[dict, "TextValue"]] = None
+    light_type: Optional[Union[Union[str, "LightTypeEnum"], List[Union[str, "LightTypeEnum"]]]] = empty_list()
     link_addit_analys: Optional[Union[dict, "TextValue"]] = None
     link_class_info: Optional[Union[dict, "TextValue"]] = None
     link_climate_info: Optional[Union[dict, "TextValue"]] = None
+    lithology: Optional[Union[str, "LithologyEnum"]] = None
     local_class: Optional[Union[dict, "TextValue"]] = None
     local_class_meth: Optional[Union[dict, "TextValue"]] = None
     magnesium: Optional[Union[dict, "QuantityValue"]] = None
+    manganese: Optional[Union[dict, "QuantityValue"]] = None
     max_occup: Optional[Union[dict, "QuantityValue"]] = None
     mean_frict_vel: Optional[Union[dict, "QuantityValue"]] = None
     mean_peak_frict_vel: Optional[Union[dict, "QuantityValue"]] = None
+    mech_struc: Optional[Union[str, "MechStrucEnum"]] = None
+    mechanical_damage: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    methane: Optional[Union[dict, "QuantityValue"]] = None
     micro_biomass_meth: Optional[str] = None
-    mineral_nutr_regm: Optional[Union[dict, "TextValue"]] = None
+    microbial_biomass: Optional[Union[dict, "QuantityValue"]] = None
+    mineral_nutr_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     misc_param: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     n_alkanes: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     nitrate: Optional[Union[dict, "QuantityValue"]] = None
+    nitrate_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
     nitrite: Optional[Union[dict, "QuantityValue"]] = None
-    non_min_nutr_regm: Optional[str] = None
+    nitrite_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
+    nitro: Optional[Union[dict, "QuantityValue"]] = None
+    non_min_nutr_regm: Optional[Union[str, List[str]]] = empty_list()
     nucl_acid_amp: Optional[Union[dict, "TextValue"]] = None
     nucl_acid_ext: Optional[Union[dict, "TextValue"]] = None
     nucleic_acid_sequence_source_field: Optional[str] = None
@@ -1141,124 +1277,249 @@ class Biosample(MaterialEntity):
     number_plants: Optional[Union[dict, "QuantityValue"]] = None
     number_resident: Optional[Union[dict, "QuantityValue"]] = None
     occup_density_samp: Optional[Union[dict, "QuantityValue"]] = None
+    occup_document: Optional[Union[str, "OccupDocumentEnum"]] = None
     occup_samp: Optional[Union[dict, "QuantityValue"]] = None
+    org_carb: Optional[Union[dict, "QuantityValue"]] = None
     org_count_qpcr_info: Optional[str] = None
     org_matter: Optional[Union[dict, "QuantityValue"]] = None
     org_nitro: Optional[Union[dict, "QuantityValue"]] = None
-    org_particles: Optional[Union[dict, "TextValue"]] = None
+    org_particles: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     organism_count: Optional[Union[Union[dict, "QuantityValue"], List[Union[dict, "QuantityValue"]]]] = empty_list()
+    owc_tvdss: Optional[Union[dict, "QuantityValue"]] = None
     oxy_stat_samp: Optional[Union[str, "RelToOxygenEnum"]] = None
+    oxygen: Optional[Union[dict, "QuantityValue"]] = None
     part_org_carb: Optional[Union[dict, "QuantityValue"]] = None
-    particle_class: Optional[Union[dict, "TextValue"]] = None
+    part_org_nitro: Optional[Union[dict, "QuantityValue"]] = None
+    particle_class: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     pcr_cond: Optional[Union[dict, "TextValue"]] = None
     pcr_primers: Optional[Union[dict, "TextValue"]] = None
     permeability: Optional[Union[dict, "TextValue"]] = None
     perturbation: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
-    pesticide_regm: Optional[Union[dict, "TextValue"]] = None
+    pesticide_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     petroleum_hydrocarb: Optional[Union[dict, "QuantityValue"]] = None
     ph: Optional[float] = None
     ph_meth: Optional[Union[dict, "TextValue"]] = None
+    ph_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     phaeopigments: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     phosphate: Optional[Union[dict, "QuantityValue"]] = None
     phosplipid_fatt_acid: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    photon_flux: Optional[Union[dict, "QuantityValue"]] = None
     plant_growth_med: Optional[Union[dict, "ControlledTermValue"]] = None
+    plant_product: Optional[Union[dict, "TextValue"]] = None
+    plant_sex: Optional[Union[str, "PlantSexEnum"]] = None
     plant_struc: Optional[Union[dict, "ControlledTermValue"]] = None
-    pollutants: Optional[Union[dict, "TextValue"]] = None
+    pollutants: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     pool_dna_extracts: Optional[Union[dict, "TextValue"]] = None
     porosity: Optional[Union[dict, "TextValue"]] = None
     potassium: Optional[Union[dict, "QuantityValue"]] = None
+    pour_point: Optional[Union[dict, "QuantityValue"]] = None
+    pre_treatment: Optional[Union[dict, "TextValue"]] = None
     pres_animal_insect: Optional[str] = None
     pressure: Optional[Union[dict, "QuantityValue"]] = None
     prev_land_use_meth: Optional[str] = None
+    previous_land_use: Optional[Union[dict, "TextValue"]] = None
+    primary_prod: Optional[Union[dict, "QuantityValue"]] = None
+    primary_treatment: Optional[Union[dict, "TextValue"]] = None
+    prod_rate: Optional[Union[dict, "QuantityValue"]] = None
     prod_start_date: Optional[Union[dict, "TimestampValue"]] = None
     profile_position: Optional[Union[str, "ProfilePositionEnum"]] = None
-    radiation_regm: Optional[Union[dict, "TextValue"]] = None
-    rainfall_regm: Optional[Union[dict, "TextValue"]] = None
+    quad_pos: Optional[Union[str, "QuadPosEnum"]] = None
+    radiation_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    rainfall_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    reactor_type: Optional[Union[dict, "TextValue"]] = None
     redox_potential: Optional[Union[dict, "QuantityValue"]] = None
+    rel_air_humidity: Optional[Union[dict, "QuantityValue"]] = None
+    rel_humidity_out: Optional[Union[dict, "QuantityValue"]] = None
+    rel_samp_loc: Optional[Union[str, "RelSampLocEnum"]] = None
     rel_to_oxygen: Optional[Union[str, "RelToOxygenEnum"]] = None
+    reservoir: Optional[Union[dict, "TextValue"]] = None
     resins_pc: Optional[Union[dict, "TextValue"]] = None
+    room_air_exch_rate: Optional[Union[dict, "QuantityValue"]] = None
     room_architec_elem: Optional[str] = None
+    room_condt: Optional[Union[str, "RoomCondtEnum"]] = None
+    room_connected: Optional[Union[str, "RoomConnectedEnum"]] = None
     room_count: Optional[Union[dict, "TextValue"]] = None
     room_dim: Optional[Union[dict, "TextValue"]] = None
     room_door_dist: Optional[Union[dict, "TextValue"]] = None
+    room_door_share: Optional[Union[dict, "TextValue"]] = None
+    room_hallway: Optional[Union[dict, "TextValue"]] = None
+    room_loc: Optional[Union[str, "RoomLocEnum"]] = None
+    room_moist_dam_hist: Optional[int] = None
     room_net_area: Optional[Union[dict, "TextValue"]] = None
     room_occup: Optional[Union[dict, "QuantityValue"]] = None
+    room_samp_pos: Optional[Union[str, "RoomSampPosEnum"]] = None
+    room_type: Optional[Union[str, "RoomTypeEnum"]] = None
     room_vol: Optional[Union[dict, "TextValue"]] = None
+    room_wall_share: Optional[Union[dict, "TextValue"]] = None
+    room_window_count: Optional[int] = None
+    root_cond: Optional[Union[dict, "TextValue"]] = None
     root_med_carbon: Optional[Union[dict, "TextValue"]] = None
     root_med_macronutr: Optional[Union[dict, "TextValue"]] = None
     root_med_micronutr: Optional[Union[dict, "TextValue"]] = None
     root_med_ph: Optional[Union[dict, "QuantityValue"]] = None
     root_med_regl: Optional[Union[dict, "TextValue"]] = None
+    root_med_solid: Optional[Union[dict, "TextValue"]] = None
     root_med_suppl: Optional[Union[dict, "TextValue"]] = None
     salinity: Optional[Union[dict, "QuantityValue"]] = None
     salinity_meth: Optional[Union[dict, "TextValue"]] = None
-    salt_regm: Optional[Union[dict, "TextValue"]] = None
+    salt_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    samp_capt_status: Optional[Union[str, "SampCaptStatusEnum"]] = None
     samp_collec_device: Optional[str] = None
     samp_collec_method: Optional[str] = None
+    samp_collect_point: Optional[Union[str, "SampCollectPointEnum"]] = None
+    samp_dis_stage: Optional[Union[str, "SampDisStageEnum"]] = None
+    samp_floor: Optional[Union[str, "SampFloorEnum"]] = None
     samp_loc_corr_rate: Optional[Union[dict, "TextValue"]] = None
     samp_mat_process: Optional[Union[dict, "ControlledTermValue"]] = None
     samp_md: Optional[Union[dict, "QuantityValue"]] = None
     samp_preserv: Optional[Union[dict, "TextValue"]] = None
     samp_room_id: Optional[Union[dict, "TextValue"]] = None
     samp_size: Optional[Union[dict, "QuantityValue"]] = None
+    samp_sort_meth: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     samp_store_dur: Optional[Union[dict, "TextValue"]] = None
     samp_store_loc: Optional[Union[dict, "TextValue"]] = None
     samp_store_temp: Optional[Union[dict, "QuantityValue"]] = None
+    samp_subtype: Optional[Union[str, "SampSubtypeEnum"]] = None
     samp_taxon_id: Optional[Union[dict, "TextValue"]] = None
     samp_time_out: Optional[Union[dict, "TextValue"]] = None
     samp_transport_cond: Optional[Union[dict, "TextValue"]] = None
     samp_tvdss: Optional[Union[dict, "TextValue"]] = None
+    samp_type: Optional[Union[dict, "TextValue"]] = None
     samp_vol_we_dna_ext: Optional[Union[dict, "QuantityValue"]] = None
+    samp_weather: Optional[Union[str, "SampWeatherEnum"]] = None
+    samp_well_name: Optional[Union[dict, "TextValue"]] = None
     saturates_pc: Optional[Union[dict, "TextValue"]] = None
+    season: Optional[Union[dict, "TextValue"]] = None
+    season_environment: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     season_precpt: Optional[Union[dict, "QuantityValue"]] = None
     season_temp: Optional[Union[dict, "QuantityValue"]] = None
+    season_use: Optional[Union[str, "SeasonUseEnum"]] = None
+    secondary_treatment: Optional[Union[dict, "TextValue"]] = None
+    sediment_type: Optional[Union[str, "SedimentTypeEnum"]] = None
     seq_meth: Optional[Union[dict, "TextValue"]] = None
     seq_quality_check: Optional[Union[dict, "TextValue"]] = None
     sequencing_field: Optional[str] = None
+    sewage_type: Optional[Union[dict, "TextValue"]] = None
     shad_dev_water_mold: Optional[str] = None
+    shading_device_cond: Optional[Union[str, "ShadingDeviceCondEnum"]] = None
+    shading_device_loc: Optional[Union[dict, "TextValue"]] = None
+    shading_device_mat: Optional[Union[dict, "TextValue"]] = None
+    shading_device_type: Optional[Union[str, "ShadingDeviceTypeEnum"]] = None
     sieving: Optional[Union[dict, "TextValue"]] = None
+    silicate: Optional[Union[dict, "QuantityValue"]] = None
     size_frac: Optional[Union[dict, "TextValue"]] = None
     size_frac_low: Optional[Union[dict, "QuantityValue"]] = None
     size_frac_up: Optional[Union[dict, "QuantityValue"]] = None
     slope_aspect: Optional[Union[dict, "QuantityValue"]] = None
     slope_gradient: Optional[Union[dict, "QuantityValue"]] = None
+    sludge_retent_time: Optional[Union[dict, "QuantityValue"]] = None
     sodium: Optional[Union[dict, "QuantityValue"]] = None
+    soil_horizon: Optional[Union[str, "SoilHorizonEnum"]] = None
+    soil_text_measure: Optional[Union[dict, "QuantityValue"]] = None
     soil_texture_meth: Optional[str] = None
     soil_type: Optional[Union[dict, "TextValue"]] = None
     soil_type_meth: Optional[Union[dict, "TextValue"]] = None
-    soluble_inorg_mat: Optional[Union[dict, "TextValue"]] = None
-    soluble_org_mat: Optional[Union[dict, "TextValue"]] = None
+    solar_irradiance: Optional[Union[dict, "QuantityValue"]] = None
+    soluble_inorg_mat: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    soluble_org_mat: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    soluble_react_phosp: Optional[Union[dict, "QuantityValue"]] = None
     source_mat_id: Optional[Union[dict, "TextValue"]] = None
+    space_typ_state: Optional[Union[dict, "TextValue"]] = None
+    specific: Optional[Union[str, "SpecificEnum"]] = None
+    specific_ecosystem: Optional[str] = None
+    specific_humidity: Optional[Union[dict, "QuantityValue"]] = None
+    sr_dep_env: Optional[Union[str, "SrDepEnvEnum"]] = None
+    sr_geol_age: Optional[Union[str, "SrGeolAgeEnum"]] = None
+    sr_kerog_type: Optional[Union[str, "SrKerogTypeEnum"]] = None
+    sr_lithology: Optional[Union[str, "SrLithologyEnum"]] = None
+    standing_water_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     store_cond: Optional[Union[dict, "TextValue"]] = None
+    substructure_type: Optional[Union[Union[str, "SubstructureTypeEnum"], List[Union[str, "SubstructureTypeEnum"]]]] = empty_list()
     sulfate: Optional[Union[dict, "QuantityValue"]] = None
+    sulfate_fw: Optional[Union[dict, "QuantityValue"]] = None
     sulfide: Optional[Union[dict, "QuantityValue"]] = None
-    suspend_solids: Optional[Union[dict, "TextValue"]] = None
+    surf_air_cont: Optional[Union[Union[str, "SurfAirContEnum"], List[Union[str, "SurfAirContEnum"]]]] = empty_list()
+    surf_humidity: Optional[Union[dict, "QuantityValue"]] = None
+    surf_material: Optional[Union[str, "SurfMaterialEnum"]] = None
+    surf_moisture: Optional[Union[dict, "QuantityValue"]] = None
+    surf_moisture_ph: Optional[float] = None
+    surf_temp: Optional[Union[dict, "QuantityValue"]] = None
+    suspend_part_matter: Optional[Union[dict, "QuantityValue"]] = None
+    suspend_solids: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    tan: Optional[Union[dict, "QuantityValue"]] = None
     target_gene: Optional[Union[dict, "TextValue"]] = None
     target_subfragment: Optional[Union[dict, "TextValue"]] = None
     temp: Optional[Union[dict, "QuantityValue"]] = None
+    temp_out: Optional[Union[dict, "QuantityValue"]] = None
+    tertiary_treatment: Optional[Union[dict, "TextValue"]] = None
     tidal_stage: Optional[Union[str, "TidalStageEnum"]] = None
     tillage: Optional[Union[Union[str, "TillageEnum"], List[Union[str, "TillageEnum"]]]] = empty_list()
+    tiss_cult_growth_med: Optional[Union[dict, "TextValue"]] = None
+    toluene: Optional[Union[dict, "QuantityValue"]] = None
     tot_carb: Optional[Union[dict, "QuantityValue"]] = None
     tot_depth_water_col: Optional[Union[dict, "QuantityValue"]] = None
     tot_diss_nitro: Optional[Union[dict, "QuantityValue"]] = None
+    tot_inorg_nitro: Optional[Union[dict, "QuantityValue"]] = None
+    tot_iron: Optional[Union[dict, "QuantityValue"]] = None
+    tot_nitro: Optional[Union[dict, "QuantityValue"]] = None
     tot_nitro_cont_meth: Optional[str] = None
     tot_nitro_content: Optional[Union[dict, "QuantityValue"]] = None
     tot_org_c_meth: Optional[Union[dict, "TextValue"]] = None
     tot_org_carb: Optional[Union[dict, "QuantityValue"]] = None
+    tot_part_carb: Optional[Union[dict, "QuantityValue"]] = None
     tot_phosp: Optional[Union[dict, "QuantityValue"]] = None
+    tot_phosphate: Optional[Union[dict, "QuantityValue"]] = None
+    tot_sulfur: Optional[Union[dict, "QuantityValue"]] = None
+    train_line: Optional[Union[str, "TrainLineEnum"]] = None
+    train_stat_loc: Optional[Union[str, "TrainStatLocEnum"]] = None
+    train_stop_loc: Optional[Union[str, "TrainStopLocEnum"]] = None
+    turbidity: Optional[Union[dict, "QuantityValue"]] = None
+    tvdss_of_hcr_press: Optional[Union[dict, "QuantityValue"]] = None
+    tvdss_of_hcr_temp: Optional[Union[dict, "QuantityValue"]] = None
+    typ_occup_density: Optional[float] = None
+    ventilation_rate: Optional[Union[dict, "QuantityValue"]] = None
+    ventilation_type: Optional[Union[dict, "TextValue"]] = None
+    vfa: Optional[Union[dict, "QuantityValue"]] = None
+    vfa_fw: Optional[Union[dict, "QuantityValue"]] = None
+    vis_media: Optional[Union[str, "VisMediaEnum"]] = None
     viscosity: Optional[Union[dict, "TextValue"]] = None
-    volatile_org_comp: Optional[Union[dict, "TextValue"]] = None
+    volatile_org_comp: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    wall_area: Optional[Union[dict, "QuantityValue"]] = None
+    wall_const_type: Optional[Union[str, "WallConstTypeEnum"]] = None
+    wall_finish_mat: Optional[Union[str, "WallFinishMatEnum"]] = None
+    wall_height: Optional[Union[dict, "QuantityValue"]] = None
+    wall_loc: Optional[Union[str, "WallLocEnum"]] = None
+    wall_surf_treatment: Optional[Union[str, "WallSurfTreatmentEnum"]] = None
+    wall_texture: Optional[Union[str, "WallTextureEnum"]] = None
+    wall_thermal_mass: Optional[Union[dict, "QuantityValue"]] = None
+    wall_water_mold: Optional[Union[dict, "TextValue"]] = None
+    wastewater_type: Optional[Union[dict, "TextValue"]] = None
     water_cont_soil_meth: Optional[str] = None
     water_content: Optional[Union[str, List[str]]] = empty_list()
-    water_temp_regm: Optional[Union[dict, "TextValue"]] = None
+    water_current: Optional[Union[dict, "QuantityValue"]] = None
+    water_cut: Optional[Union[dict, "QuantityValue"]] = None
+    water_feat_size: Optional[Union[dict, "QuantityValue"]] = None
+    water_feat_type: Optional[Union[str, "WaterFeatTypeEnum"]] = None
+    water_prod_rate: Optional[Union[dict, "QuantityValue"]] = None
+    water_temp_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     watering_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    weekday: Optional[Union[str, "WeekdayEnum"]] = None
+    win: Optional[Union[dict, "TextValue"]] = None
+    wind_direction: Optional[Union[dict, "TextValue"]] = None
+    wind_speed: Optional[Union[dict, "QuantityValue"]] = None
+    window_cond: Optional[Union[str, "WindowCondEnum"]] = None
+    window_cover: Optional[Union[str, "WindowCoverEnum"]] = None
+    window_horiz_pos: Optional[Union[str, "WindowHorizPosEnum"]] = None
+    window_loc: Optional[Union[str, "WindowLocEnum"]] = None
+    window_mat: Optional[Union[str, "WindowMatEnum"]] = None
     window_open_freq: Optional[Union[dict, "TextValue"]] = None
     window_size: Optional[Union[dict, "TextValue"]] = None
-    ecosystem: Optional[str] = None
-    ecosystem_category: Optional[str] = None
-    ecosystem_type: Optional[str] = None
-    ecosystem_subtype: Optional[str] = None
-    specific_ecosystem: Optional[str] = None
+    window_status: Optional[Union[dict, "TextValue"]] = None
+    window_type: Optional[Union[str, "WindowTypeEnum"]] = None
+    window_vert_pos: Optional[Union[str, "WindowVertPosEnum"]] = None
+    window_water_mold: Optional[Union[dict, "TextValue"]] = None
+    xylene: Optional[Union[dict, "QuantityValue"]] = None
+    zinc: Optional[Union[dict, "QuantityValue"]] = None
     add_date: Optional[str] = None
     community: Optional[str] = None
     habitat: Optional[str] = None
@@ -1276,7 +1537,6 @@ class Biosample(MaterialEntity):
     dna_collect_site: Optional[str] = None
     dna_concentration: Optional[str] = None
     dna_cont_type: Optional[Union[str, "DnaContTypeEnum"]] = None
-    dna_cont_well: Optional[str] = None
     dna_container_id: Optional[str] = None
     dna_dnase: Optional[Union[str, "DnaDnaseEnum"]] = None
     dna_isolate_meth: Optional[str] = None
@@ -1332,13 +1592,6 @@ class Biosample(MaterialEntity):
     technical_reps: Optional[str] = None
     analysis_type: Optional[Union[Union[str, "AnalysisTypeEnum"], List[Union[str, "AnalysisTypeEnum"]]]] = empty_list()
     sample_link: Optional[Union[str, List[str]]] = empty_list()
-    zinc: Optional[Union[dict, "QuantityValue"]] = None
-    manganese: Optional[Union[dict, "QuantityValue"]] = None
-    ammonium_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
-    nitrate_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
-    nitrite_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
-    lbc_thirty: Optional[Union[dict, "QuantityValue"]] = None
-    lbceq: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1416,9 +1669,31 @@ class Biosample(MaterialEntity):
         if self.abs_air_humidity is not None and not isinstance(self.abs_air_humidity, QuantityValue):
             self.abs_air_humidity = QuantityValue(**as_dict(self.abs_air_humidity))
 
+        if self.add_recov_method is not None and not isinstance(self.add_recov_method, TextValue):
+            self.add_recov_method = TextValue(**as_dict(self.add_recov_method))
+
+        if self.additional_info is not None and not isinstance(self.additional_info, TextValue):
+            self.additional_info = TextValue(**as_dict(self.additional_info))
+
+        if self.address is not None and not isinstance(self.address, TextValue):
+            self.address = TextValue(**as_dict(self.address))
+
+        if self.adj_room is not None and not isinstance(self.adj_room, TextValue):
+            self.adj_room = TextValue(**as_dict(self.adj_room))
+
+        if self.aero_struc is not None and not isinstance(self.aero_struc, TextValue):
+            self.aero_struc = TextValue(**as_dict(self.aero_struc))
+
         if not isinstance(self.agrochem_addition, list):
             self.agrochem_addition = [self.agrochem_addition] if self.agrochem_addition is not None else []
         self.agrochem_addition = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.agrochem_addition]
+
+        if not isinstance(self.air_PM_concen, list):
+            self.air_PM_concen = [self.air_PM_concen] if self.air_PM_concen is not None else []
+        self.air_PM_concen = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.air_PM_concen]
+
+        if self.air_temp is not None and not isinstance(self.air_temp, QuantityValue):
+            self.air_temp = QuantityValue(**as_dict(self.air_temp))
 
         if not isinstance(self.air_temp_regm, list):
             self.air_temp_regm = [self.air_temp_regm] if self.air_temp_regm is not None else []
@@ -1448,14 +1723,30 @@ class Biosample(MaterialEntity):
         if self.ammonium is not None and not isinstance(self.ammonium, QuantityValue):
             self.ammonium = QuantityValue(**as_dict(self.ammonium))
 
+        if self.ammonium_nitrogen is not None and not isinstance(self.ammonium_nitrogen, QuantityValue):
+            self.ammonium_nitrogen = QuantityValue(**as_dict(self.ammonium_nitrogen))
+
+        if self.amount_light is not None and not isinstance(self.amount_light, QuantityValue):
+            self.amount_light = QuantityValue(**as_dict(self.amount_light))
+
+        if self.ances_data is not None and not isinstance(self.ances_data, TextValue):
+            self.ances_data = TextValue(**as_dict(self.ances_data))
+
         if self.annual_precpt is not None and not isinstance(self.annual_precpt, QuantityValue):
             self.annual_precpt = QuantityValue(**as_dict(self.annual_precpt))
 
         if self.annual_temp is not None and not isinstance(self.annual_temp, QuantityValue):
             self.annual_temp = QuantityValue(**as_dict(self.annual_temp))
 
-        if self.antibiotic_regm is not None and not isinstance(self.antibiotic_regm, TextValue):
-            self.antibiotic_regm = TextValue(**as_dict(self.antibiotic_regm))
+        if not isinstance(self.antibiotic_regm, list):
+            self.antibiotic_regm = [self.antibiotic_regm] if self.antibiotic_regm is not None else []
+        self.antibiotic_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.antibiotic_regm]
+
+        if self.api is not None and not isinstance(self.api, QuantityValue):
+            self.api = QuantityValue(**as_dict(self.api))
+
+        if self.arch_struc is not None and not isinstance(self.arch_struc, ArchStrucEnum):
+            self.arch_struc = ArchStrucEnum(self.arch_struc)
 
         if self.aromatics_pc is not None and not isinstance(self.aromatics_pc, TextValue):
             self.aromatics_pc = TextValue(**as_dict(self.aromatics_pc))
@@ -1463,14 +1754,33 @@ class Biosample(MaterialEntity):
         if self.asphaltenes_pc is not None and not isinstance(self.asphaltenes_pc, TextValue):
             self.asphaltenes_pc = TextValue(**as_dict(self.asphaltenes_pc))
 
-        if self.atmospheric_data is not None and not isinstance(self.atmospheric_data, TextValue):
-            self.atmospheric_data = TextValue(**as_dict(self.atmospheric_data))
+        if not isinstance(self.atmospheric_data, list):
+            self.atmospheric_data = [self.atmospheric_data] if self.atmospheric_data is not None else []
+        self.atmospheric_data = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.atmospheric_data]
+
+        if self.avg_dew_point is not None and not isinstance(self.avg_dew_point, QuantityValue):
+            self.avg_dew_point = QuantityValue(**as_dict(self.avg_dew_point))
 
         if self.avg_occup is not None and not isinstance(self.avg_occup, TextValue):
             self.avg_occup = TextValue(**as_dict(self.avg_occup))
 
+        if self.avg_temp is not None and not isinstance(self.avg_temp, QuantityValue):
+            self.avg_temp = QuantityValue(**as_dict(self.avg_temp))
+
+        if self.bac_prod is not None and not isinstance(self.bac_prod, QuantityValue):
+            self.bac_prod = QuantityValue(**as_dict(self.bac_prod))
+
+        if self.bac_resp is not None and not isinstance(self.bac_resp, QuantityValue):
+            self.bac_resp = QuantityValue(**as_dict(self.bac_resp))
+
         if self.bacteria_carb_prod is not None and not isinstance(self.bacteria_carb_prod, QuantityValue):
             self.bacteria_carb_prod = QuantityValue(**as_dict(self.bacteria_carb_prod))
+
+        if self.barometric_press is not None and not isinstance(self.barometric_press, QuantityValue):
+            self.barometric_press = QuantityValue(**as_dict(self.barometric_press))
+
+        if self.basin is not None and not isinstance(self.basin, TextValue):
+            self.basin = TextValue(**as_dict(self.basin))
 
         if self.bathroom_count is not None and not isinstance(self.bathroom_count, TextValue):
             self.bathroom_count = TextValue(**as_dict(self.bathroom_count))
@@ -1478,11 +1788,24 @@ class Biosample(MaterialEntity):
         if self.bedroom_count is not None and not isinstance(self.bedroom_count, TextValue):
             self.bedroom_count = TextValue(**as_dict(self.bedroom_count))
 
+        if self.benzene is not None and not isinstance(self.benzene, QuantityValue):
+            self.benzene = QuantityValue(**as_dict(self.benzene))
+
+        if self.biochem_oxygen_dem is not None and not isinstance(self.biochem_oxygen_dem, QuantityValue):
+            self.biochem_oxygen_dem = QuantityValue(**as_dict(self.biochem_oxygen_dem))
+
+        if self.biocide is not None and not isinstance(self.biocide, TextValue):
+            self.biocide = TextValue(**as_dict(self.biocide))
+
         if self.biocide_admin_method is not None and not isinstance(self.biocide_admin_method, TextValue):
             self.biocide_admin_method = TextValue(**as_dict(self.biocide_admin_method))
 
-        if self.biomass is not None and not isinstance(self.biomass, TextValue):
-            self.biomass = TextValue(**as_dict(self.biomass))
+        if self.biol_stat is not None and not isinstance(self.biol_stat, BiolStatEnum):
+            self.biol_stat = BiolStatEnum(self.biol_stat)
+
+        if not isinstance(self.biomass, list):
+            self.biomass = [self.biomass] if self.biomass is not None else []
+        self.biomass = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.biomass]
 
         if self.biotic_regm is not None and not isinstance(self.biotic_regm, TextValue):
             self.biotic_regm = TextValue(**as_dict(self.biotic_regm))
@@ -1493,24 +1816,86 @@ class Biosample(MaterialEntity):
         if self.bishomohopanol is not None and not isinstance(self.bishomohopanol, QuantityValue):
             self.bishomohopanol = QuantityValue(**as_dict(self.bishomohopanol))
 
+        if self.blood_press_diast is not None and not isinstance(self.blood_press_diast, QuantityValue):
+            self.blood_press_diast = QuantityValue(**as_dict(self.blood_press_diast))
+
+        if self.blood_press_syst is not None and not isinstance(self.blood_press_syst, QuantityValue):
+            self.blood_press_syst = QuantityValue(**as_dict(self.blood_press_syst))
+
         if self.bromide is not None and not isinstance(self.bromide, QuantityValue):
             self.bromide = QuantityValue(**as_dict(self.bromide))
+
+        if self.build_docs is not None and not isinstance(self.build_docs, BuildDocsEnum):
+            self.build_docs = BuildDocsEnum(self.build_docs)
+
+        if not isinstance(self.build_occup_type, list):
+            self.build_occup_type = [self.build_occup_type] if self.build_occup_type is not None else []
+        self.build_occup_type = [v if isinstance(v, BuildOccupTypeEnum) else BuildOccupTypeEnum(v) for v in self.build_occup_type]
+
+        if self.building_setting is not None and not isinstance(self.building_setting, BuildingSettingEnum):
+            self.building_setting = BuildingSettingEnum(self.building_setting)
+
+        if self.built_struc_age is not None and not isinstance(self.built_struc_age, QuantityValue):
+            self.built_struc_age = QuantityValue(**as_dict(self.built_struc_age))
+
+        if self.built_struc_set is not None and not isinstance(self.built_struc_set, TextValue):
+            self.built_struc_set = TextValue(**as_dict(self.built_struc_set))
+
+        if self.built_struc_type is not None and not isinstance(self.built_struc_type, TextValue):
+            self.built_struc_type = TextValue(**as_dict(self.built_struc_type))
 
         if self.calcium is not None and not isinstance(self.calcium, QuantityValue):
             self.calcium = QuantityValue(**as_dict(self.calcium))
 
+        if self.carb_dioxide is not None and not isinstance(self.carb_dioxide, QuantityValue):
+            self.carb_dioxide = QuantityValue(**as_dict(self.carb_dioxide))
+
+        if self.carb_monoxide is not None and not isinstance(self.carb_monoxide, QuantityValue):
+            self.carb_monoxide = QuantityValue(**as_dict(self.carb_monoxide))
+
         if self.carb_nitro_ratio is not None and not isinstance(self.carb_nitro_ratio, QuantityValue):
             self.carb_nitro_ratio = QuantityValue(**as_dict(self.carb_nitro_ratio))
+
+        if self.ceil_area is not None and not isinstance(self.ceil_area, QuantityValue):
+            self.ceil_area = QuantityValue(**as_dict(self.ceil_area))
+
+        if self.ceil_cond is not None and not isinstance(self.ceil_cond, CeilCondEnum):
+            self.ceil_cond = CeilCondEnum(self.ceil_cond)
+
+        if self.ceil_finish_mat is not None and not isinstance(self.ceil_finish_mat, CeilFinishMatEnum):
+            self.ceil_finish_mat = CeilFinishMatEnum(self.ceil_finish_mat)
+
+        if self.ceil_struc is not None and not isinstance(self.ceil_struc, TextValue):
+            self.ceil_struc = TextValue(**as_dict(self.ceil_struc))
+
+        if self.ceil_texture is not None and not isinstance(self.ceil_texture, CeilTextureEnum):
+            self.ceil_texture = CeilTextureEnum(self.ceil_texture)
+
+        if self.ceil_thermal_mass is not None and not isinstance(self.ceil_thermal_mass, QuantityValue):
+            self.ceil_thermal_mass = QuantityValue(**as_dict(self.ceil_thermal_mass))
+
+        if self.ceil_type is not None and not isinstance(self.ceil_type, CeilTypeEnum):
+            self.ceil_type = CeilTypeEnum(self.ceil_type)
+
+        if self.ceil_water_mold is not None and not isinstance(self.ceil_water_mold, TextValue):
+            self.ceil_water_mold = TextValue(**as_dict(self.ceil_water_mold))
 
         if not isinstance(self.chem_administration, list):
             self.chem_administration = [self.chem_administration] if self.chem_administration is not None else []
         self.chem_administration = [v if isinstance(v, ControlledTermValue) else ControlledTermValue(**as_dict(v)) for v in self.chem_administration]
 
-        if self.chem_mutagen is not None and not isinstance(self.chem_mutagen, TextValue):
-            self.chem_mutagen = TextValue(**as_dict(self.chem_mutagen))
+        if not isinstance(self.chem_mutagen, list):
+            self.chem_mutagen = [self.chem_mutagen] if self.chem_mutagen is not None else []
+        self.chem_mutagen = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.chem_mutagen]
+
+        if self.chem_oxygen_dem is not None and not isinstance(self.chem_oxygen_dem, QuantityValue):
+            self.chem_oxygen_dem = QuantityValue(**as_dict(self.chem_oxygen_dem))
 
         if self.chem_treat_method is not None and not isinstance(self.chem_treat_method, str):
             self.chem_treat_method = str(self.chem_treat_method)
+
+        if self.chem_treatment is not None and not isinstance(self.chem_treatment, TextValue):
+            self.chem_treatment = TextValue(**as_dict(self.chem_treatment))
 
         if self.chimera_check is not None and not isinstance(self.chimera_check, TextValue):
             self.chimera_check = TextValue(**as_dict(self.chimera_check))
@@ -1528,6 +1913,9 @@ class Biosample(MaterialEntity):
         if self.collection_date is not None and not isinstance(self.collection_date, TimestampValue):
             self.collection_date = TimestampValue(**as_dict(self.collection_date))
 
+        if self.conduc is not None and not isinstance(self.conduc, QuantityValue):
+            self.conduc = QuantityValue(**as_dict(self.conduc))
+
         if self.cool_syst_id is not None and not isinstance(self.cool_syst_id, TextValue):
             self.cool_syst_id = TextValue(**as_dict(self.cool_syst_id))
 
@@ -1536,6 +1924,9 @@ class Biosample(MaterialEntity):
 
         if self.crop_rotation is not None and not isinstance(self.crop_rotation, TextValue):
             self.crop_rotation = TextValue(**as_dict(self.crop_rotation))
+
+        if self.cult_root_med is not None and not isinstance(self.cult_root_med, TextValue):
+            self.cult_root_med = TextValue(**as_dict(self.cult_root_med))
 
         if self.cur_land_use is not None and not isinstance(self.cur_land_use, CurLandUseEnum):
             self.cur_land_use = CurLandUseEnum(self.cur_land_use)
@@ -1552,11 +1943,18 @@ class Biosample(MaterialEntity):
         if self.density is not None and not isinstance(self.density, QuantityValue):
             self.density = QuantityValue(**as_dict(self.density))
 
+        if self.depos_env is not None and not isinstance(self.depos_env, DeposEnvEnum):
+            self.depos_env = DeposEnvEnum(self.depos_env)
+
         if self.depth is not None and not isinstance(self.depth, QuantityValue):
             self.depth = QuantityValue(**as_dict(self.depth))
 
-        if self.diether_lipids is not None and not isinstance(self.diether_lipids, TextValue):
-            self.diether_lipids = TextValue(**as_dict(self.diether_lipids))
+        if self.dew_point is not None and not isinstance(self.dew_point, QuantityValue):
+            self.dew_point = QuantityValue(**as_dict(self.dew_point))
+
+        if not isinstance(self.diether_lipids, list):
+            self.diether_lipids = [self.diether_lipids] if self.diether_lipids is not None else []
+        self.diether_lipids = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.diether_lipids]
 
         if self.diss_carb_dioxide is not None and not isinstance(self.diss_carb_dioxide, QuantityValue):
             self.diss_carb_dioxide = QuantityValue(**as_dict(self.diss_carb_dioxide))
@@ -1567,8 +1965,14 @@ class Biosample(MaterialEntity):
         if self.diss_inorg_carb is not None and not isinstance(self.diss_inorg_carb, QuantityValue):
             self.diss_inorg_carb = QuantityValue(**as_dict(self.diss_inorg_carb))
 
+        if self.diss_inorg_nitro is not None and not isinstance(self.diss_inorg_nitro, QuantityValue):
+            self.diss_inorg_nitro = QuantityValue(**as_dict(self.diss_inorg_nitro))
+
         if self.diss_inorg_phosp is not None and not isinstance(self.diss_inorg_phosp, QuantityValue):
             self.diss_inorg_phosp = QuantityValue(**as_dict(self.diss_inorg_phosp))
+
+        if self.diss_iron is not None and not isinstance(self.diss_iron, QuantityValue):
+            self.diss_iron = QuantityValue(**as_dict(self.diss_iron))
 
         if self.diss_org_carb is not None and not isinstance(self.diss_org_carb, QuantityValue):
             self.diss_org_carb = QuantityValue(**as_dict(self.diss_org_carb))
@@ -1579,8 +1983,68 @@ class Biosample(MaterialEntity):
         if self.diss_oxygen is not None and not isinstance(self.diss_oxygen, QuantityValue):
             self.diss_oxygen = QuantityValue(**as_dict(self.diss_oxygen))
 
+        if self.diss_oxygen_fluid is not None and not isinstance(self.diss_oxygen_fluid, QuantityValue):
+            self.diss_oxygen_fluid = QuantityValue(**as_dict(self.diss_oxygen_fluid))
+
+        if self.dna_cont_well is not None and not isinstance(self.dna_cont_well, str):
+            self.dna_cont_well = str(self.dna_cont_well)
+
+        if self.door_comp_type is not None and not isinstance(self.door_comp_type, DoorCompTypeEnum):
+            self.door_comp_type = DoorCompTypeEnum(self.door_comp_type)
+
+        if self.door_cond is not None and not isinstance(self.door_cond, DoorCondEnum):
+            self.door_cond = DoorCondEnum(self.door_cond)
+
+        if self.door_direct is not None and not isinstance(self.door_direct, DoorDirectEnum):
+            self.door_direct = DoorDirectEnum(self.door_direct)
+
+        if self.door_loc is not None and not isinstance(self.door_loc, DoorLocEnum):
+            self.door_loc = DoorLocEnum(self.door_loc)
+
+        if self.door_mat is not None and not isinstance(self.door_mat, DoorMatEnum):
+            self.door_mat = DoorMatEnum(self.door_mat)
+
+        if self.door_move is not None and not isinstance(self.door_move, DoorMoveEnum):
+            self.door_move = DoorMoveEnum(self.door_move)
+
+        if self.door_size is not None and not isinstance(self.door_size, QuantityValue):
+            self.door_size = QuantityValue(**as_dict(self.door_size))
+
+        if self.door_type is not None and not isinstance(self.door_type, DoorTypeEnum):
+            self.door_type = DoorTypeEnum(self.door_type)
+
+        if self.door_type_metal is not None and not isinstance(self.door_type_metal, DoorTypeMetalEnum):
+            self.door_type_metal = DoorTypeMetalEnum(self.door_type_metal)
+
+        if self.door_type_wood is not None and not isinstance(self.door_type_wood, DoorTypeWoodEnum):
+            self.door_type_wood = DoorTypeWoodEnum(self.door_type_wood)
+
+        if self.door_water_mold is not None and not isinstance(self.door_water_mold, TextValue):
+            self.door_water_mold = TextValue(**as_dict(self.door_water_mold))
+
+        if self.down_par is not None and not isinstance(self.down_par, QuantityValue):
+            self.down_par = QuantityValue(**as_dict(self.down_par))
+
         if self.drainage_class is not None and not isinstance(self.drainage_class, DrainageClassEnum):
             self.drainage_class = DrainageClassEnum(self.drainage_class)
+
+        if self.drawings is not None and not isinstance(self.drawings, DrawingsEnum):
+            self.drawings = DrawingsEnum(self.drawings)
+
+        if self.ecosystem is not None and not isinstance(self.ecosystem, str):
+            self.ecosystem = str(self.ecosystem)
+
+        if self.ecosystem_category is not None and not isinstance(self.ecosystem_category, str):
+            self.ecosystem_category = str(self.ecosystem_category)
+
+        if self.ecosystem_subtype is not None and not isinstance(self.ecosystem_subtype, str):
+            self.ecosystem_subtype = str(self.ecosystem_subtype)
+
+        if self.ecosystem_type is not None and not isinstance(self.ecosystem_type, str):
+            self.ecosystem_type = str(self.ecosystem_type)
+
+        if self.efficiency_percent is not None and not isinstance(self.efficiency_percent, QuantityValue):
+            self.efficiency_percent = QuantityValue(**as_dict(self.efficiency_percent))
 
         if self.elev is not None and not isinstance(self.elev, float):
             self.elev = float(self.elev)
@@ -1588,8 +2052,9 @@ class Biosample(MaterialEntity):
         if self.elevator is not None and not isinstance(self.elevator, TextValue):
             self.elevator = TextValue(**as_dict(self.elevator))
 
-        if self.emulsions is not None and not isinstance(self.emulsions, TextValue):
-            self.emulsions = TextValue(**as_dict(self.emulsions))
+        if not isinstance(self.emulsions, list):
+            self.emulsions = [self.emulsions] if self.emulsions is not None else []
+        self.emulsions = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.emulsions]
 
         if self.env_package is not None and not isinstance(self.env_package, TextValue):
             self.env_package = TextValue(**as_dict(self.env_package))
@@ -1600,6 +2065,12 @@ class Biosample(MaterialEntity):
         if self.escalator is not None and not isinstance(self.escalator, TextValue):
             self.escalator = TextValue(**as_dict(self.escalator))
 
+        if self.ethylbenzene is not None and not isinstance(self.ethylbenzene, QuantityValue):
+            self.ethylbenzene = QuantityValue(**as_dict(self.ethylbenzene))
+
+        if self.exp_duct is not None and not isinstance(self.exp_duct, QuantityValue):
+            self.exp_duct = QuantityValue(**as_dict(self.exp_duct))
+
         if self.exp_pipe is not None and not isinstance(self.exp_pipe, QuantityValue):
             self.exp_pipe = QuantityValue(**as_dict(self.exp_pipe))
 
@@ -1609,23 +2080,64 @@ class Biosample(MaterialEntity):
         if self.ext_door is not None and not isinstance(self.ext_door, TextValue):
             self.ext_door = TextValue(**as_dict(self.ext_door))
 
+        if self.ext_wall_orient is not None and not isinstance(self.ext_wall_orient, ExtWallOrientEnum):
+            self.ext_wall_orient = ExtWallOrientEnum(self.ext_wall_orient)
+
+        if self.ext_window_orient is not None and not isinstance(self.ext_window_orient, ExtWindowOrientEnum):
+            self.ext_window_orient = ExtWindowOrientEnum(self.ext_window_orient)
+
         if self.extreme_event is not None and not isinstance(self.extreme_event, str):
             self.extreme_event = str(self.extreme_event)
 
         if self.fao_class is not None and not isinstance(self.fao_class, FaoClassEnum):
             self.fao_class = FaoClassEnum(self.fao_class)
 
-        if self.fertilizer_regm is not None and not isinstance(self.fertilizer_regm, TextValue):
-            self.fertilizer_regm = TextValue(**as_dict(self.fertilizer_regm))
+        if not isinstance(self.fertilizer_regm, list):
+            self.fertilizer_regm = [self.fertilizer_regm] if self.fertilizer_regm is not None else []
+        self.fertilizer_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.fertilizer_regm]
+
+        if self.field is not None and not isinstance(self.field, TextValue):
+            self.field = TextValue(**as_dict(self.field))
+
+        if not isinstance(self.filter_type, list):
+            self.filter_type = [self.filter_type] if self.filter_type is not None else []
+        self.filter_type = [v if isinstance(v, FilterTypeEnum) else FilterTypeEnum(v) for v in self.filter_type]
 
         if self.fire is not None and not isinstance(self.fire, str):
             self.fire = str(self.fire)
 
+        if self.fireplace_type is not None and not isinstance(self.fireplace_type, TextValue):
+            self.fireplace_type = TextValue(**as_dict(self.fireplace_type))
+
         if self.flooding is not None and not isinstance(self.flooding, str):
             self.flooding = str(self.flooding)
 
+        if self.floor_age is not None and not isinstance(self.floor_age, QuantityValue):
+            self.floor_age = QuantityValue(**as_dict(self.floor_age))
+
+        if self.floor_area is not None and not isinstance(self.floor_area, QuantityValue):
+            self.floor_area = QuantityValue(**as_dict(self.floor_area))
+
+        if self.floor_cond is not None and not isinstance(self.floor_cond, FloorCondEnum):
+            self.floor_cond = FloorCondEnum(self.floor_cond)
+
         if self.floor_count is not None and not isinstance(self.floor_count, TextValue):
             self.floor_count = TextValue(**as_dict(self.floor_count))
+
+        if self.floor_finish_mat is not None and not isinstance(self.floor_finish_mat, FloorFinishMatEnum):
+            self.floor_finish_mat = FloorFinishMatEnum(self.floor_finish_mat)
+
+        if self.floor_struc is not None and not isinstance(self.floor_struc, FloorStrucEnum):
+            self.floor_struc = FloorStrucEnum(self.floor_struc)
+
+        if self.floor_thermal_mass is not None and not isinstance(self.floor_thermal_mass, QuantityValue):
+            self.floor_thermal_mass = QuantityValue(**as_dict(self.floor_thermal_mass))
+
+        if self.floor_water_mold is not None and not isinstance(self.floor_water_mold, FloorWaterMoldEnum):
+            self.floor_water_mold = FloorWaterMoldEnum(self.floor_water_mold)
+
+        if self.fluor is not None and not isinstance(self.fluor, QuantityValue):
+            self.fluor = QuantityValue(**as_dict(self.fluor))
 
         if self.freq_clean is not None and not isinstance(self.freq_clean, QuantityValue):
             self.freq_clean = QuantityValue(**as_dict(self.freq_clean))
@@ -1633,15 +2145,26 @@ class Biosample(MaterialEntity):
         if self.freq_cook is not None and not isinstance(self.freq_cook, QuantityValue):
             self.freq_cook = QuantityValue(**as_dict(self.freq_cook))
 
-        if self.fungicide_regm is not None and not isinstance(self.fungicide_regm, TextValue):
-            self.fungicide_regm = TextValue(**as_dict(self.fungicide_regm))
+        if not isinstance(self.fungicide_regm, list):
+            self.fungicide_regm = [self.fungicide_regm] if self.fungicide_regm is not None else []
+        self.fungicide_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.fungicide_regm]
+
+        if self.furniture is not None and not isinstance(self.furniture, FurnitureEnum):
+            self.furniture = FurnitureEnum(self.furniture)
 
         if not isinstance(self.gaseous_environment, list):
             self.gaseous_environment = [self.gaseous_environment] if self.gaseous_environment is not None else []
         self.gaseous_environment = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.gaseous_environment]
 
-        if self.gaseous_substances is not None and not isinstance(self.gaseous_substances, TextValue):
-            self.gaseous_substances = TextValue(**as_dict(self.gaseous_substances))
+        if not isinstance(self.gaseous_substances, list):
+            self.gaseous_substances = [self.gaseous_substances] if self.gaseous_substances is not None else []
+        self.gaseous_substances = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.gaseous_substances]
+
+        if self.gender_restroom is not None and not isinstance(self.gender_restroom, GenderRestroomEnum):
+            self.gender_restroom = GenderRestroomEnum(self.gender_restroom)
+
+        if self.genetic_mod is not None and not isinstance(self.genetic_mod, TextValue):
+            self.genetic_mod = TextValue(**as_dict(self.genetic_mod))
 
         if self.geo_loc_name is not None and not isinstance(self.geo_loc_name, TextValue):
             self.geo_loc_name = TextValue(**as_dict(self.geo_loc_name))
@@ -1649,17 +2172,28 @@ class Biosample(MaterialEntity):
         if self.glucosidase_act is not None and not isinstance(self.glucosidase_act, QuantityValue):
             self.glucosidase_act = QuantityValue(**as_dict(self.glucosidase_act))
 
-        if self.gravity is not None and not isinstance(self.gravity, TextValue):
-            self.gravity = TextValue(**as_dict(self.gravity))
+        if self.gravidity is not None and not isinstance(self.gravidity, TextValue):
+            self.gravidity = TextValue(**as_dict(self.gravidity))
+
+        if not isinstance(self.gravity, list):
+            self.gravity = [self.gravity] if self.gravity is not None else []
+        self.gravity = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.gravity]
 
         if self.growth_facil is not None and not isinstance(self.growth_facil, ControlledTermValue):
             self.growth_facil = ControlledTermValue(**as_dict(self.growth_facil))
 
-        if self.growth_hormone_regm is not None and not isinstance(self.growth_hormone_regm, TextValue):
-            self.growth_hormone_regm = TextValue(**as_dict(self.growth_hormone_regm))
+        if self.growth_habit is not None and not isinstance(self.growth_habit, GrowthHabitEnum):
+            self.growth_habit = GrowthHabitEnum(self.growth_habit)
+
+        if not isinstance(self.growth_hormone_regm, list):
+            self.growth_hormone_regm = [self.growth_hormone_regm] if self.growth_hormone_regm is not None else []
+        self.growth_hormone_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.growth_hormone_regm]
 
         if self.hall_count is not None and not isinstance(self.hall_count, TextValue):
             self.hall_count = TextValue(**as_dict(self.hall_count))
+
+        if self.handidness is not None and not isinstance(self.handidness, HandidnessEnum):
+            self.handidness = HandidnessEnum(self.handidness)
 
         if self.has_numeric_value is not None and not isinstance(self.has_numeric_value, float):
             self.has_numeric_value = float(self.has_numeric_value)
@@ -1670,11 +2204,30 @@ class Biosample(MaterialEntity):
         if self.has_unit is not None and not isinstance(self.has_unit, str):
             self.has_unit = str(self.has_unit)
 
+        if self.hc_produced is not None and not isinstance(self.hc_produced, HcProducedEnum):
+            self.hc_produced = HcProducedEnum(self.hc_produced)
+
+        if self.hcr is not None and not isinstance(self.hcr, HcrEnum):
+            self.hcr = HcrEnum(self.hcr)
+
+        if self.hcr_fw_salinity is not None and not isinstance(self.hcr_fw_salinity, QuantityValue):
+            self.hcr_fw_salinity = QuantityValue(**as_dict(self.hcr_fw_salinity))
+
+        if self.hcr_geol_age is not None and not isinstance(self.hcr_geol_age, HcrGeolAgeEnum):
+            self.hcr_geol_age = HcrGeolAgeEnum(self.hcr_geol_age)
+
         if self.hcr_pressure is not None and not isinstance(self.hcr_pressure, TextValue):
             self.hcr_pressure = TextValue(**as_dict(self.hcr_pressure))
 
         if self.hcr_temp is not None and not isinstance(self.hcr_temp, TextValue):
             self.hcr_temp = TextValue(**as_dict(self.hcr_temp))
+
+        if not isinstance(self.heat_cool_type, list):
+            self.heat_cool_type = [self.heat_cool_type] if self.heat_cool_type is not None else []
+        self.heat_cool_type = [v if isinstance(v, HeatCoolTypeEnum) else HeatCoolTypeEnum(v) for v in self.heat_cool_type]
+
+        if self.heat_deliv_loc is not None and not isinstance(self.heat_deliv_loc, HeatDelivLocEnum):
+            self.heat_deliv_loc = HeatDelivLocEnum(self.heat_deliv_loc)
 
         if self.heat_sys_deliv_meth is not None and not isinstance(self.heat_sys_deliv_meth, str):
             self.heat_sys_deliv_meth = str(self.heat_sys_deliv_meth)
@@ -1690,8 +2243,21 @@ class Biosample(MaterialEntity):
             self.heavy_metals_meth = [self.heavy_metals_meth] if self.heavy_metals_meth is not None else []
         self.heavy_metals_meth = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.heavy_metals_meth]
 
-        if self.herbicide_regm is not None and not isinstance(self.herbicide_regm, TextValue):
-            self.herbicide_regm = TextValue(**as_dict(self.herbicide_regm))
+        if self.height_carper_fiber is not None and not isinstance(self.height_carper_fiber, QuantityValue):
+            self.height_carper_fiber = QuantityValue(**as_dict(self.height_carper_fiber))
+
+        if not isinstance(self.herbicide_regm, list):
+            self.herbicide_regm = [self.herbicide_regm] if self.herbicide_regm is not None else []
+        self.herbicide_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.herbicide_regm]
+
+        if self.horizon_meth is not None and not isinstance(self.horizon_meth, TextValue):
+            self.horizon_meth = TextValue(**as_dict(self.horizon_meth))
+
+        if self.host_age is not None and not isinstance(self.host_age, QuantityValue):
+            self.host_age = QuantityValue(**as_dict(self.host_age))
+
+        if self.host_body_habitat is not None and not isinstance(self.host_body_habitat, TextValue):
+            self.host_body_habitat = TextValue(**as_dict(self.host_body_habitat))
 
         if self.host_body_product is not None and not isinstance(self.host_body_product, ControlledTermValue):
             self.host_body_product = ControlledTermValue(**as_dict(self.host_body_product))
@@ -1699,27 +2265,102 @@ class Biosample(MaterialEntity):
         if self.host_body_site is not None and not isinstance(self.host_body_site, ControlledTermValue):
             self.host_body_site = ControlledTermValue(**as_dict(self.host_body_site))
 
-        if self.host_family_relation is not None and not isinstance(self.host_family_relation, str):
-            self.host_family_relation = str(self.host_family_relation)
+        if self.host_body_temp is not None and not isinstance(self.host_body_temp, QuantityValue):
+            self.host_body_temp = QuantityValue(**as_dict(self.host_body_temp))
+
+        if self.host_color is not None and not isinstance(self.host_color, TextValue):
+            self.host_color = TextValue(**as_dict(self.host_color))
+
+        if self.host_common_name is not None and not isinstance(self.host_common_name, TextValue):
+            self.host_common_name = TextValue(**as_dict(self.host_common_name))
+
+        if not isinstance(self.host_diet, list):
+            self.host_diet = [self.host_diet] if self.host_diet is not None else []
+        self.host_diet = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.host_diet]
+
+        if self.host_dry_mass is not None and not isinstance(self.host_dry_mass, QuantityValue):
+            self.host_dry_mass = QuantityValue(**as_dict(self.host_dry_mass))
+
+        if not isinstance(self.host_family_relation, list):
+            self.host_family_relation = [self.host_family_relation] if self.host_family_relation is not None else []
+        self.host_family_relation = [v if isinstance(v, str) else str(v) for v in self.host_family_relation]
+
+        if self.host_genotype is not None and not isinstance(self.host_genotype, TextValue):
+            self.host_genotype = TextValue(**as_dict(self.host_genotype))
+
+        if self.host_growth_cond is not None and not isinstance(self.host_growth_cond, TextValue):
+            self.host_growth_cond = TextValue(**as_dict(self.host_growth_cond))
+
+        if self.host_height is not None and not isinstance(self.host_height, QuantityValue):
+            self.host_height = QuantityValue(**as_dict(self.host_height))
+
+        if not isinstance(self.host_last_meal, list):
+            self.host_last_meal = [self.host_last_meal] if self.host_last_meal is not None else []
+        self.host_last_meal = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.host_last_meal]
+
+        if self.host_length is not None and not isinstance(self.host_length, QuantityValue):
+            self.host_length = QuantityValue(**as_dict(self.host_length))
+
+        if self.host_life_stage is not None and not isinstance(self.host_life_stage, TextValue):
+            self.host_life_stage = TextValue(**as_dict(self.host_life_stage))
 
         if self.host_phenotype is not None and not isinstance(self.host_phenotype, ControlledTermValue):
             self.host_phenotype = ControlledTermValue(**as_dict(self.host_phenotype))
 
-        if self.host_subspecf_genlin is not None and not isinstance(self.host_subspecf_genlin, str):
-            self.host_subspecf_genlin = str(self.host_subspecf_genlin)
+        if self.host_sex is not None and not isinstance(self.host_sex, HostSexEnum):
+            self.host_sex = HostSexEnum(self.host_sex)
 
-        if self.host_symbiont is not None and not isinstance(self.host_symbiont, str):
-            self.host_symbiont = str(self.host_symbiont)
+        if self.host_shape is not None and not isinstance(self.host_shape, TextValue):
+            self.host_shape = TextValue(**as_dict(self.host_shape))
+
+        if self.host_subject_id is not None and not isinstance(self.host_subject_id, TextValue):
+            self.host_subject_id = TextValue(**as_dict(self.host_subject_id))
+
+        if not isinstance(self.host_subspecf_genlin, list):
+            self.host_subspecf_genlin = [self.host_subspecf_genlin] if self.host_subspecf_genlin is not None else []
+        self.host_subspecf_genlin = [v if isinstance(v, str) else str(v) for v in self.host_subspecf_genlin]
+
+        if self.host_substrate is not None and not isinstance(self.host_substrate, TextValue):
+            self.host_substrate = TextValue(**as_dict(self.host_substrate))
+
+        if not isinstance(self.host_symbiont, list):
+            self.host_symbiont = [self.host_symbiont] if self.host_symbiont is not None else []
+        self.host_symbiont = [v if isinstance(v, str) else str(v) for v in self.host_symbiont]
 
         if self.host_taxid is not None and not isinstance(self.host_taxid, TextValue):
             self.host_taxid = TextValue(**as_dict(self.host_taxid))
+
+        if self.host_tot_mass is not None and not isinstance(self.host_tot_mass, QuantityValue):
+            self.host_tot_mass = QuantityValue(**as_dict(self.host_tot_mass))
+
+        if self.host_wet_mass is not None and not isinstance(self.host_wet_mass, QuantityValue):
+            self.host_wet_mass = QuantityValue(**as_dict(self.host_wet_mass))
+
+        if self.humidity is not None and not isinstance(self.humidity, QuantityValue):
+            self.humidity = QuantityValue(**as_dict(self.humidity))
 
         if not isinstance(self.humidity_regm, list):
             self.humidity_regm = [self.humidity_regm] if self.humidity_regm is not None else []
         self.humidity_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.humidity_regm]
 
-        if self.inorg_particles is not None and not isinstance(self.inorg_particles, TextValue):
-            self.inorg_particles = TextValue(**as_dict(self.inorg_particles))
+        if self.indoor_space is not None and not isinstance(self.indoor_space, IndoorSpaceEnum):
+            self.indoor_space = IndoorSpaceEnum(self.indoor_space)
+
+        if self.indoor_surf is not None and not isinstance(self.indoor_surf, IndoorSurfEnum):
+            self.indoor_surf = IndoorSurfEnum(self.indoor_surf)
+
+        if self.indust_eff_percent is not None and not isinstance(self.indust_eff_percent, QuantityValue):
+            self.indust_eff_percent = QuantityValue(**as_dict(self.indust_eff_percent))
+
+        if not isinstance(self.inorg_particles, list):
+            self.inorg_particles = [self.inorg_particles] if self.inorg_particles is not None else []
+        self.inorg_particles = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.inorg_particles]
+
+        if self.inside_lux is not None and not isinstance(self.inside_lux, QuantityValue):
+            self.inside_lux = QuantityValue(**as_dict(self.inside_lux))
+
+        if self.int_wall_cond is not None and not isinstance(self.int_wall_cond, IntWallCondEnum):
+            self.int_wall_cond = IntWallCondEnum(self.int_wall_cond)
 
         if self.investigation_field is not None and not isinstance(self.investigation_field, str):
             self.investigation_field = str(self.investigation_field)
@@ -1727,14 +2368,30 @@ class Biosample(MaterialEntity):
         if self.iw_bt_date_well is not None and not isinstance(self.iw_bt_date_well, TimestampValue):
             self.iw_bt_date_well = TimestampValue(**as_dict(self.iw_bt_date_well))
 
+        if self.iwf is not None and not isinstance(self.iwf, QuantityValue):
+            self.iwf = QuantityValue(**as_dict(self.iwf))
+
         if self.last_clean is not None and not isinstance(self.last_clean, TimestampValue):
             self.last_clean = TimestampValue(**as_dict(self.last_clean))
 
         if self.lat_lon is not None and not isinstance(self.lat_lon, GeolocationValue):
             self.lat_lon = GeolocationValue(**as_dict(self.lat_lon))
 
+        if self.lbc_thirty is not None and not isinstance(self.lbc_thirty, QuantityValue):
+            self.lbc_thirty = QuantityValue(**as_dict(self.lbc_thirty))
+
+        if self.lbceq is not None and not isinstance(self.lbceq, QuantityValue):
+            self.lbceq = QuantityValue(**as_dict(self.lbceq))
+
+        if self.light_intensity is not None and not isinstance(self.light_intensity, QuantityValue):
+            self.light_intensity = QuantityValue(**as_dict(self.light_intensity))
+
         if self.light_regm is not None and not isinstance(self.light_regm, TextValue):
             self.light_regm = TextValue(**as_dict(self.light_regm))
+
+        if not isinstance(self.light_type, list):
+            self.light_type = [self.light_type] if self.light_type is not None else []
+        self.light_type = [v if isinstance(v, LightTypeEnum) else LightTypeEnum(v) for v in self.light_type]
 
         if self.link_addit_analys is not None and not isinstance(self.link_addit_analys, TextValue):
             self.link_addit_analys = TextValue(**as_dict(self.link_addit_analys))
@@ -1745,6 +2402,9 @@ class Biosample(MaterialEntity):
         if self.link_climate_info is not None and not isinstance(self.link_climate_info, TextValue):
             self.link_climate_info = TextValue(**as_dict(self.link_climate_info))
 
+        if self.lithology is not None and not isinstance(self.lithology, LithologyEnum):
+            self.lithology = LithologyEnum(self.lithology)
+
         if self.local_class is not None and not isinstance(self.local_class, TextValue):
             self.local_class = TextValue(**as_dict(self.local_class))
 
@@ -1753,6 +2413,9 @@ class Biosample(MaterialEntity):
 
         if self.magnesium is not None and not isinstance(self.magnesium, QuantityValue):
             self.magnesium = QuantityValue(**as_dict(self.magnesium))
+
+        if self.manganese is not None and not isinstance(self.manganese, QuantityValue):
+            self.manganese = QuantityValue(**as_dict(self.manganese))
 
         if self.max_occup is not None and not isinstance(self.max_occup, QuantityValue):
             self.max_occup = QuantityValue(**as_dict(self.max_occup))
@@ -1763,11 +2426,25 @@ class Biosample(MaterialEntity):
         if self.mean_peak_frict_vel is not None and not isinstance(self.mean_peak_frict_vel, QuantityValue):
             self.mean_peak_frict_vel = QuantityValue(**as_dict(self.mean_peak_frict_vel))
 
+        if self.mech_struc is not None and not isinstance(self.mech_struc, MechStrucEnum):
+            self.mech_struc = MechStrucEnum(self.mech_struc)
+
+        if not isinstance(self.mechanical_damage, list):
+            self.mechanical_damage = [self.mechanical_damage] if self.mechanical_damage is not None else []
+        self.mechanical_damage = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.mechanical_damage]
+
+        if self.methane is not None and not isinstance(self.methane, QuantityValue):
+            self.methane = QuantityValue(**as_dict(self.methane))
+
         if self.micro_biomass_meth is not None and not isinstance(self.micro_biomass_meth, str):
             self.micro_biomass_meth = str(self.micro_biomass_meth)
 
-        if self.mineral_nutr_regm is not None and not isinstance(self.mineral_nutr_regm, TextValue):
-            self.mineral_nutr_regm = TextValue(**as_dict(self.mineral_nutr_regm))
+        if self.microbial_biomass is not None and not isinstance(self.microbial_biomass, QuantityValue):
+            self.microbial_biomass = QuantityValue(**as_dict(self.microbial_biomass))
+
+        if not isinstance(self.mineral_nutr_regm, list):
+            self.mineral_nutr_regm = [self.mineral_nutr_regm] if self.mineral_nutr_regm is not None else []
+        self.mineral_nutr_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.mineral_nutr_regm]
 
         if not isinstance(self.misc_param, list):
             self.misc_param = [self.misc_param] if self.misc_param is not None else []
@@ -1780,11 +2457,21 @@ class Biosample(MaterialEntity):
         if self.nitrate is not None and not isinstance(self.nitrate, QuantityValue):
             self.nitrate = QuantityValue(**as_dict(self.nitrate))
 
+        if self.nitrate_nitrogen is not None and not isinstance(self.nitrate_nitrogen, QuantityValue):
+            self.nitrate_nitrogen = QuantityValue(**as_dict(self.nitrate_nitrogen))
+
         if self.nitrite is not None and not isinstance(self.nitrite, QuantityValue):
             self.nitrite = QuantityValue(**as_dict(self.nitrite))
 
-        if self.non_min_nutr_regm is not None and not isinstance(self.non_min_nutr_regm, str):
-            self.non_min_nutr_regm = str(self.non_min_nutr_regm)
+        if self.nitrite_nitrogen is not None and not isinstance(self.nitrite_nitrogen, QuantityValue):
+            self.nitrite_nitrogen = QuantityValue(**as_dict(self.nitrite_nitrogen))
+
+        if self.nitro is not None and not isinstance(self.nitro, QuantityValue):
+            self.nitro = QuantityValue(**as_dict(self.nitro))
+
+        if not isinstance(self.non_min_nutr_regm, list):
+            self.non_min_nutr_regm = [self.non_min_nutr_regm] if self.non_min_nutr_regm is not None else []
+        self.non_min_nutr_regm = [v if isinstance(v, str) else str(v) for v in self.non_min_nutr_regm]
 
         if self.nucl_acid_amp is not None and not isinstance(self.nucl_acid_amp, TextValue):
             self.nucl_acid_amp = TextValue(**as_dict(self.nucl_acid_amp))
@@ -1807,8 +2494,14 @@ class Biosample(MaterialEntity):
         if self.occup_density_samp is not None and not isinstance(self.occup_density_samp, QuantityValue):
             self.occup_density_samp = QuantityValue(**as_dict(self.occup_density_samp))
 
+        if self.occup_document is not None and not isinstance(self.occup_document, OccupDocumentEnum):
+            self.occup_document = OccupDocumentEnum(self.occup_document)
+
         if self.occup_samp is not None and not isinstance(self.occup_samp, QuantityValue):
             self.occup_samp = QuantityValue(**as_dict(self.occup_samp))
+
+        if self.org_carb is not None and not isinstance(self.org_carb, QuantityValue):
+            self.org_carb = QuantityValue(**as_dict(self.org_carb))
 
         if self.org_count_qpcr_info is not None and not isinstance(self.org_count_qpcr_info, str):
             self.org_count_qpcr_info = str(self.org_count_qpcr_info)
@@ -1819,21 +2512,32 @@ class Biosample(MaterialEntity):
         if self.org_nitro is not None and not isinstance(self.org_nitro, QuantityValue):
             self.org_nitro = QuantityValue(**as_dict(self.org_nitro))
 
-        if self.org_particles is not None and not isinstance(self.org_particles, TextValue):
-            self.org_particles = TextValue(**as_dict(self.org_particles))
+        if not isinstance(self.org_particles, list):
+            self.org_particles = [self.org_particles] if self.org_particles is not None else []
+        self.org_particles = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.org_particles]
 
         if not isinstance(self.organism_count, list):
             self.organism_count = [self.organism_count] if self.organism_count is not None else []
         self.organism_count = [v if isinstance(v, QuantityValue) else QuantityValue(**as_dict(v)) for v in self.organism_count]
 
+        if self.owc_tvdss is not None and not isinstance(self.owc_tvdss, QuantityValue):
+            self.owc_tvdss = QuantityValue(**as_dict(self.owc_tvdss))
+
         if self.oxy_stat_samp is not None and not isinstance(self.oxy_stat_samp, RelToOxygenEnum):
             self.oxy_stat_samp = RelToOxygenEnum(self.oxy_stat_samp)
+
+        if self.oxygen is not None and not isinstance(self.oxygen, QuantityValue):
+            self.oxygen = QuantityValue(**as_dict(self.oxygen))
 
         if self.part_org_carb is not None and not isinstance(self.part_org_carb, QuantityValue):
             self.part_org_carb = QuantityValue(**as_dict(self.part_org_carb))
 
-        if self.particle_class is not None and not isinstance(self.particle_class, TextValue):
-            self.particle_class = TextValue(**as_dict(self.particle_class))
+        if self.part_org_nitro is not None and not isinstance(self.part_org_nitro, QuantityValue):
+            self.part_org_nitro = QuantityValue(**as_dict(self.part_org_nitro))
+
+        if not isinstance(self.particle_class, list):
+            self.particle_class = [self.particle_class] if self.particle_class is not None else []
+        self.particle_class = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.particle_class]
 
         if self.pcr_cond is not None and not isinstance(self.pcr_cond, TextValue):
             self.pcr_cond = TextValue(**as_dict(self.pcr_cond))
@@ -1848,8 +2552,9 @@ class Biosample(MaterialEntity):
             self.perturbation = [self.perturbation] if self.perturbation is not None else []
         self.perturbation = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.perturbation]
 
-        if self.pesticide_regm is not None and not isinstance(self.pesticide_regm, TextValue):
-            self.pesticide_regm = TextValue(**as_dict(self.pesticide_regm))
+        if not isinstance(self.pesticide_regm, list):
+            self.pesticide_regm = [self.pesticide_regm] if self.pesticide_regm is not None else []
+        self.pesticide_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.pesticide_regm]
 
         if self.petroleum_hydrocarb is not None and not isinstance(self.petroleum_hydrocarb, QuantityValue):
             self.petroleum_hydrocarb = QuantityValue(**as_dict(self.petroleum_hydrocarb))
@@ -1859,6 +2564,10 @@ class Biosample(MaterialEntity):
 
         if self.ph_meth is not None and not isinstance(self.ph_meth, TextValue):
             self.ph_meth = TextValue(**as_dict(self.ph_meth))
+
+        if not isinstance(self.ph_regm, list):
+            self.ph_regm = [self.ph_regm] if self.ph_regm is not None else []
+        self.ph_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.ph_regm]
 
         if not isinstance(self.phaeopigments, list):
             self.phaeopigments = [self.phaeopigments] if self.phaeopigments is not None else []
@@ -1871,14 +2580,24 @@ class Biosample(MaterialEntity):
             self.phosplipid_fatt_acid = [self.phosplipid_fatt_acid] if self.phosplipid_fatt_acid is not None else []
         self.phosplipid_fatt_acid = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.phosplipid_fatt_acid]
 
+        if self.photon_flux is not None and not isinstance(self.photon_flux, QuantityValue):
+            self.photon_flux = QuantityValue(**as_dict(self.photon_flux))
+
         if self.plant_growth_med is not None and not isinstance(self.plant_growth_med, ControlledTermValue):
             self.plant_growth_med = ControlledTermValue(**as_dict(self.plant_growth_med))
+
+        if self.plant_product is not None and not isinstance(self.plant_product, TextValue):
+            self.plant_product = TextValue(**as_dict(self.plant_product))
+
+        if self.plant_sex is not None and not isinstance(self.plant_sex, PlantSexEnum):
+            self.plant_sex = PlantSexEnum(self.plant_sex)
 
         if self.plant_struc is not None and not isinstance(self.plant_struc, ControlledTermValue):
             self.plant_struc = ControlledTermValue(**as_dict(self.plant_struc))
 
-        if self.pollutants is not None and not isinstance(self.pollutants, TextValue):
-            self.pollutants = TextValue(**as_dict(self.pollutants))
+        if not isinstance(self.pollutants, list):
+            self.pollutants = [self.pollutants] if self.pollutants is not None else []
+        self.pollutants = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.pollutants]
 
         if self.pool_dna_extracts is not None and not isinstance(self.pool_dna_extracts, TextValue):
             self.pool_dna_extracts = TextValue(**as_dict(self.pool_dna_extracts))
@@ -1889,6 +2608,12 @@ class Biosample(MaterialEntity):
         if self.potassium is not None and not isinstance(self.potassium, QuantityValue):
             self.potassium = QuantityValue(**as_dict(self.potassium))
 
+        if self.pour_point is not None and not isinstance(self.pour_point, QuantityValue):
+            self.pour_point = QuantityValue(**as_dict(self.pour_point))
+
+        if self.pre_treatment is not None and not isinstance(self.pre_treatment, TextValue):
+            self.pre_treatment = TextValue(**as_dict(self.pre_treatment))
+
         if self.pres_animal_insect is not None and not isinstance(self.pres_animal_insect, str):
             self.pres_animal_insect = str(self.pres_animal_insect)
 
@@ -1898,29 +2623,70 @@ class Biosample(MaterialEntity):
         if self.prev_land_use_meth is not None and not isinstance(self.prev_land_use_meth, str):
             self.prev_land_use_meth = str(self.prev_land_use_meth)
 
+        if self.previous_land_use is not None and not isinstance(self.previous_land_use, TextValue):
+            self.previous_land_use = TextValue(**as_dict(self.previous_land_use))
+
+        if self.primary_prod is not None and not isinstance(self.primary_prod, QuantityValue):
+            self.primary_prod = QuantityValue(**as_dict(self.primary_prod))
+
+        if self.primary_treatment is not None and not isinstance(self.primary_treatment, TextValue):
+            self.primary_treatment = TextValue(**as_dict(self.primary_treatment))
+
+        if self.prod_rate is not None and not isinstance(self.prod_rate, QuantityValue):
+            self.prod_rate = QuantityValue(**as_dict(self.prod_rate))
+
         if self.prod_start_date is not None and not isinstance(self.prod_start_date, TimestampValue):
             self.prod_start_date = TimestampValue(**as_dict(self.prod_start_date))
 
         if self.profile_position is not None and not isinstance(self.profile_position, ProfilePositionEnum):
             self.profile_position = ProfilePositionEnum(self.profile_position)
 
-        if self.radiation_regm is not None and not isinstance(self.radiation_regm, TextValue):
-            self.radiation_regm = TextValue(**as_dict(self.radiation_regm))
+        if self.quad_pos is not None and not isinstance(self.quad_pos, QuadPosEnum):
+            self.quad_pos = QuadPosEnum(self.quad_pos)
 
-        if self.rainfall_regm is not None and not isinstance(self.rainfall_regm, TextValue):
-            self.rainfall_regm = TextValue(**as_dict(self.rainfall_regm))
+        if not isinstance(self.radiation_regm, list):
+            self.radiation_regm = [self.radiation_regm] if self.radiation_regm is not None else []
+        self.radiation_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.radiation_regm]
+
+        if not isinstance(self.rainfall_regm, list):
+            self.rainfall_regm = [self.rainfall_regm] if self.rainfall_regm is not None else []
+        self.rainfall_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.rainfall_regm]
+
+        if self.reactor_type is not None and not isinstance(self.reactor_type, TextValue):
+            self.reactor_type = TextValue(**as_dict(self.reactor_type))
 
         if self.redox_potential is not None and not isinstance(self.redox_potential, QuantityValue):
             self.redox_potential = QuantityValue(**as_dict(self.redox_potential))
 
+        if self.rel_air_humidity is not None and not isinstance(self.rel_air_humidity, QuantityValue):
+            self.rel_air_humidity = QuantityValue(**as_dict(self.rel_air_humidity))
+
+        if self.rel_humidity_out is not None and not isinstance(self.rel_humidity_out, QuantityValue):
+            self.rel_humidity_out = QuantityValue(**as_dict(self.rel_humidity_out))
+
+        if self.rel_samp_loc is not None and not isinstance(self.rel_samp_loc, RelSampLocEnum):
+            self.rel_samp_loc = RelSampLocEnum(self.rel_samp_loc)
+
         if self.rel_to_oxygen is not None and not isinstance(self.rel_to_oxygen, RelToOxygenEnum):
             self.rel_to_oxygen = RelToOxygenEnum(self.rel_to_oxygen)
+
+        if self.reservoir is not None and not isinstance(self.reservoir, TextValue):
+            self.reservoir = TextValue(**as_dict(self.reservoir))
 
         if self.resins_pc is not None and not isinstance(self.resins_pc, TextValue):
             self.resins_pc = TextValue(**as_dict(self.resins_pc))
 
+        if self.room_air_exch_rate is not None and not isinstance(self.room_air_exch_rate, QuantityValue):
+            self.room_air_exch_rate = QuantityValue(**as_dict(self.room_air_exch_rate))
+
         if self.room_architec_elem is not None and not isinstance(self.room_architec_elem, str):
             self.room_architec_elem = str(self.room_architec_elem)
+
+        if self.room_condt is not None and not isinstance(self.room_condt, RoomCondtEnum):
+            self.room_condt = RoomCondtEnum(self.room_condt)
+
+        if self.room_connected is not None and not isinstance(self.room_connected, RoomConnectedEnum):
+            self.room_connected = RoomConnectedEnum(self.room_connected)
 
         if self.room_count is not None and not isinstance(self.room_count, TextValue):
             self.room_count = TextValue(**as_dict(self.room_count))
@@ -1931,14 +2697,41 @@ class Biosample(MaterialEntity):
         if self.room_door_dist is not None and not isinstance(self.room_door_dist, TextValue):
             self.room_door_dist = TextValue(**as_dict(self.room_door_dist))
 
+        if self.room_door_share is not None and not isinstance(self.room_door_share, TextValue):
+            self.room_door_share = TextValue(**as_dict(self.room_door_share))
+
+        if self.room_hallway is not None and not isinstance(self.room_hallway, TextValue):
+            self.room_hallway = TextValue(**as_dict(self.room_hallway))
+
+        if self.room_loc is not None and not isinstance(self.room_loc, RoomLocEnum):
+            self.room_loc = RoomLocEnum(self.room_loc)
+
+        if self.room_moist_dam_hist is not None and not isinstance(self.room_moist_dam_hist, int):
+            self.room_moist_dam_hist = int(self.room_moist_dam_hist)
+
         if self.room_net_area is not None and not isinstance(self.room_net_area, TextValue):
             self.room_net_area = TextValue(**as_dict(self.room_net_area))
 
         if self.room_occup is not None and not isinstance(self.room_occup, QuantityValue):
             self.room_occup = QuantityValue(**as_dict(self.room_occup))
 
+        if self.room_samp_pos is not None and not isinstance(self.room_samp_pos, RoomSampPosEnum):
+            self.room_samp_pos = RoomSampPosEnum(self.room_samp_pos)
+
+        if self.room_type is not None and not isinstance(self.room_type, RoomTypeEnum):
+            self.room_type = RoomTypeEnum(self.room_type)
+
         if self.room_vol is not None and not isinstance(self.room_vol, TextValue):
             self.room_vol = TextValue(**as_dict(self.room_vol))
+
+        if self.room_wall_share is not None and not isinstance(self.room_wall_share, TextValue):
+            self.room_wall_share = TextValue(**as_dict(self.room_wall_share))
+
+        if self.room_window_count is not None and not isinstance(self.room_window_count, int):
+            self.room_window_count = int(self.room_window_count)
+
+        if self.root_cond is not None and not isinstance(self.root_cond, TextValue):
+            self.root_cond = TextValue(**as_dict(self.root_cond))
 
         if self.root_med_carbon is not None and not isinstance(self.root_med_carbon, TextValue):
             self.root_med_carbon = TextValue(**as_dict(self.root_med_carbon))
@@ -1955,6 +2748,9 @@ class Biosample(MaterialEntity):
         if self.root_med_regl is not None and not isinstance(self.root_med_regl, TextValue):
             self.root_med_regl = TextValue(**as_dict(self.root_med_regl))
 
+        if self.root_med_solid is not None and not isinstance(self.root_med_solid, TextValue):
+            self.root_med_solid = TextValue(**as_dict(self.root_med_solid))
+
         if self.root_med_suppl is not None and not isinstance(self.root_med_suppl, TextValue):
             self.root_med_suppl = TextValue(**as_dict(self.root_med_suppl))
 
@@ -1964,14 +2760,27 @@ class Biosample(MaterialEntity):
         if self.salinity_meth is not None and not isinstance(self.salinity_meth, TextValue):
             self.salinity_meth = TextValue(**as_dict(self.salinity_meth))
 
-        if self.salt_regm is not None and not isinstance(self.salt_regm, TextValue):
-            self.salt_regm = TextValue(**as_dict(self.salt_regm))
+        if not isinstance(self.salt_regm, list):
+            self.salt_regm = [self.salt_regm] if self.salt_regm is not None else []
+        self.salt_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.salt_regm]
+
+        if self.samp_capt_status is not None and not isinstance(self.samp_capt_status, SampCaptStatusEnum):
+            self.samp_capt_status = SampCaptStatusEnum(self.samp_capt_status)
 
         if self.samp_collec_device is not None and not isinstance(self.samp_collec_device, str):
             self.samp_collec_device = str(self.samp_collec_device)
 
         if self.samp_collec_method is not None and not isinstance(self.samp_collec_method, str):
             self.samp_collec_method = str(self.samp_collec_method)
+
+        if self.samp_collect_point is not None and not isinstance(self.samp_collect_point, SampCollectPointEnum):
+            self.samp_collect_point = SampCollectPointEnum(self.samp_collect_point)
+
+        if self.samp_dis_stage is not None and not isinstance(self.samp_dis_stage, SampDisStageEnum):
+            self.samp_dis_stage = SampDisStageEnum(self.samp_dis_stage)
+
+        if self.samp_floor is not None and not isinstance(self.samp_floor, SampFloorEnum):
+            self.samp_floor = SampFloorEnum(self.samp_floor)
 
         if self.samp_loc_corr_rate is not None and not isinstance(self.samp_loc_corr_rate, TextValue):
             self.samp_loc_corr_rate = TextValue(**as_dict(self.samp_loc_corr_rate))
@@ -1994,6 +2803,10 @@ class Biosample(MaterialEntity):
         if self.samp_size is not None and not isinstance(self.samp_size, QuantityValue):
             self.samp_size = QuantityValue(**as_dict(self.samp_size))
 
+        if not isinstance(self.samp_sort_meth, list):
+            self.samp_sort_meth = [self.samp_sort_meth] if self.samp_sort_meth is not None else []
+        self.samp_sort_meth = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.samp_sort_meth]
+
         if self.samp_store_dur is not None and not isinstance(self.samp_store_dur, TextValue):
             self.samp_store_dur = TextValue(**as_dict(self.samp_store_dur))
 
@@ -2002,6 +2815,9 @@ class Biosample(MaterialEntity):
 
         if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, QuantityValue):
             self.samp_store_temp = QuantityValue(**as_dict(self.samp_store_temp))
+
+        if self.samp_subtype is not None and not isinstance(self.samp_subtype, SampSubtypeEnum):
+            self.samp_subtype = SampSubtypeEnum(self.samp_subtype)
 
         if self.samp_taxon_id is not None and not isinstance(self.samp_taxon_id, TextValue):
             self.samp_taxon_id = TextValue(**as_dict(self.samp_taxon_id))
@@ -2015,17 +2831,42 @@ class Biosample(MaterialEntity):
         if self.samp_tvdss is not None and not isinstance(self.samp_tvdss, TextValue):
             self.samp_tvdss = TextValue(**as_dict(self.samp_tvdss))
 
+        if self.samp_type is not None and not isinstance(self.samp_type, TextValue):
+            self.samp_type = TextValue(**as_dict(self.samp_type))
+
         if self.samp_vol_we_dna_ext is not None and not isinstance(self.samp_vol_we_dna_ext, QuantityValue):
             self.samp_vol_we_dna_ext = QuantityValue(**as_dict(self.samp_vol_we_dna_ext))
 
+        if self.samp_weather is not None and not isinstance(self.samp_weather, SampWeatherEnum):
+            self.samp_weather = SampWeatherEnum(self.samp_weather)
+
+        if self.samp_well_name is not None and not isinstance(self.samp_well_name, TextValue):
+            self.samp_well_name = TextValue(**as_dict(self.samp_well_name))
+
         if self.saturates_pc is not None and not isinstance(self.saturates_pc, TextValue):
             self.saturates_pc = TextValue(**as_dict(self.saturates_pc))
+
+        if self.season is not None and not isinstance(self.season, TextValue):
+            self.season = TextValue(**as_dict(self.season))
+
+        if not isinstance(self.season_environment, list):
+            self.season_environment = [self.season_environment] if self.season_environment is not None else []
+        self.season_environment = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.season_environment]
 
         if self.season_precpt is not None and not isinstance(self.season_precpt, QuantityValue):
             self.season_precpt = QuantityValue(**as_dict(self.season_precpt))
 
         if self.season_temp is not None and not isinstance(self.season_temp, QuantityValue):
             self.season_temp = QuantityValue(**as_dict(self.season_temp))
+
+        if self.season_use is not None and not isinstance(self.season_use, SeasonUseEnum):
+            self.season_use = SeasonUseEnum(self.season_use)
+
+        if self.secondary_treatment is not None and not isinstance(self.secondary_treatment, TextValue):
+            self.secondary_treatment = TextValue(**as_dict(self.secondary_treatment))
+
+        if self.sediment_type is not None and not isinstance(self.sediment_type, SedimentTypeEnum):
+            self.sediment_type = SedimentTypeEnum(self.sediment_type)
 
         if self.seq_meth is not None and not isinstance(self.seq_meth, TextValue):
             self.seq_meth = TextValue(**as_dict(self.seq_meth))
@@ -2036,11 +2877,29 @@ class Biosample(MaterialEntity):
         if self.sequencing_field is not None and not isinstance(self.sequencing_field, str):
             self.sequencing_field = str(self.sequencing_field)
 
+        if self.sewage_type is not None and not isinstance(self.sewage_type, TextValue):
+            self.sewage_type = TextValue(**as_dict(self.sewage_type))
+
         if self.shad_dev_water_mold is not None and not isinstance(self.shad_dev_water_mold, str):
             self.shad_dev_water_mold = str(self.shad_dev_water_mold)
 
+        if self.shading_device_cond is not None and not isinstance(self.shading_device_cond, ShadingDeviceCondEnum):
+            self.shading_device_cond = ShadingDeviceCondEnum(self.shading_device_cond)
+
+        if self.shading_device_loc is not None and not isinstance(self.shading_device_loc, TextValue):
+            self.shading_device_loc = TextValue(**as_dict(self.shading_device_loc))
+
+        if self.shading_device_mat is not None and not isinstance(self.shading_device_mat, TextValue):
+            self.shading_device_mat = TextValue(**as_dict(self.shading_device_mat))
+
+        if self.shading_device_type is not None and not isinstance(self.shading_device_type, ShadingDeviceTypeEnum):
+            self.shading_device_type = ShadingDeviceTypeEnum(self.shading_device_type)
+
         if self.sieving is not None and not isinstance(self.sieving, TextValue):
             self.sieving = TextValue(**as_dict(self.sieving))
+
+        if self.silicate is not None and not isinstance(self.silicate, QuantityValue):
+            self.silicate = QuantityValue(**as_dict(self.silicate))
 
         if self.size_frac is not None and not isinstance(self.size_frac, TextValue):
             self.size_frac = TextValue(**as_dict(self.size_frac))
@@ -2057,8 +2916,17 @@ class Biosample(MaterialEntity):
         if self.slope_gradient is not None and not isinstance(self.slope_gradient, QuantityValue):
             self.slope_gradient = QuantityValue(**as_dict(self.slope_gradient))
 
+        if self.sludge_retent_time is not None and not isinstance(self.sludge_retent_time, QuantityValue):
+            self.sludge_retent_time = QuantityValue(**as_dict(self.sludge_retent_time))
+
         if self.sodium is not None and not isinstance(self.sodium, QuantityValue):
             self.sodium = QuantityValue(**as_dict(self.sodium))
+
+        if self.soil_horizon is not None and not isinstance(self.soil_horizon, SoilHorizonEnum):
+            self.soil_horizon = SoilHorizonEnum(self.soil_horizon)
+
+        if self.soil_text_measure is not None and not isinstance(self.soil_text_measure, QuantityValue):
+            self.soil_text_measure = QuantityValue(**as_dict(self.soil_text_measure))
 
         if self.soil_texture_meth is not None and not isinstance(self.soil_texture_meth, str):
             self.soil_texture_meth = str(self.soil_texture_meth)
@@ -2069,26 +2937,95 @@ class Biosample(MaterialEntity):
         if self.soil_type_meth is not None and not isinstance(self.soil_type_meth, TextValue):
             self.soil_type_meth = TextValue(**as_dict(self.soil_type_meth))
 
-        if self.soluble_inorg_mat is not None and not isinstance(self.soluble_inorg_mat, TextValue):
-            self.soluble_inorg_mat = TextValue(**as_dict(self.soluble_inorg_mat))
+        if self.solar_irradiance is not None and not isinstance(self.solar_irradiance, QuantityValue):
+            self.solar_irradiance = QuantityValue(**as_dict(self.solar_irradiance))
 
-        if self.soluble_org_mat is not None and not isinstance(self.soluble_org_mat, TextValue):
-            self.soluble_org_mat = TextValue(**as_dict(self.soluble_org_mat))
+        if not isinstance(self.soluble_inorg_mat, list):
+            self.soluble_inorg_mat = [self.soluble_inorg_mat] if self.soluble_inorg_mat is not None else []
+        self.soluble_inorg_mat = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.soluble_inorg_mat]
+
+        if not isinstance(self.soluble_org_mat, list):
+            self.soluble_org_mat = [self.soluble_org_mat] if self.soluble_org_mat is not None else []
+        self.soluble_org_mat = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.soluble_org_mat]
+
+        if self.soluble_react_phosp is not None and not isinstance(self.soluble_react_phosp, QuantityValue):
+            self.soluble_react_phosp = QuantityValue(**as_dict(self.soluble_react_phosp))
 
         if self.source_mat_id is not None and not isinstance(self.source_mat_id, TextValue):
             self.source_mat_id = TextValue(**as_dict(self.source_mat_id))
 
+        if self.space_typ_state is not None and not isinstance(self.space_typ_state, TextValue):
+            self.space_typ_state = TextValue(**as_dict(self.space_typ_state))
+
+        if self.specific is not None and not isinstance(self.specific, SpecificEnum):
+            self.specific = SpecificEnum(self.specific)
+
+        if self.specific_ecosystem is not None and not isinstance(self.specific_ecosystem, str):
+            self.specific_ecosystem = str(self.specific_ecosystem)
+
+        if self.specific_humidity is not None and not isinstance(self.specific_humidity, QuantityValue):
+            self.specific_humidity = QuantityValue(**as_dict(self.specific_humidity))
+
+        if self.sr_dep_env is not None and not isinstance(self.sr_dep_env, SrDepEnvEnum):
+            self.sr_dep_env = SrDepEnvEnum(self.sr_dep_env)
+
+        if self.sr_geol_age is not None and not isinstance(self.sr_geol_age, SrGeolAgeEnum):
+            self.sr_geol_age = SrGeolAgeEnum(self.sr_geol_age)
+
+        if self.sr_kerog_type is not None and not isinstance(self.sr_kerog_type, SrKerogTypeEnum):
+            self.sr_kerog_type = SrKerogTypeEnum(self.sr_kerog_type)
+
+        if self.sr_lithology is not None and not isinstance(self.sr_lithology, SrLithologyEnum):
+            self.sr_lithology = SrLithologyEnum(self.sr_lithology)
+
+        if not isinstance(self.standing_water_regm, list):
+            self.standing_water_regm = [self.standing_water_regm] if self.standing_water_regm is not None else []
+        self.standing_water_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.standing_water_regm]
+
         if self.store_cond is not None and not isinstance(self.store_cond, TextValue):
             self.store_cond = TextValue(**as_dict(self.store_cond))
+
+        if not isinstance(self.substructure_type, list):
+            self.substructure_type = [self.substructure_type] if self.substructure_type is not None else []
+        self.substructure_type = [v if isinstance(v, SubstructureTypeEnum) else SubstructureTypeEnum(v) for v in self.substructure_type]
 
         if self.sulfate is not None and not isinstance(self.sulfate, QuantityValue):
             self.sulfate = QuantityValue(**as_dict(self.sulfate))
 
+        if self.sulfate_fw is not None and not isinstance(self.sulfate_fw, QuantityValue):
+            self.sulfate_fw = QuantityValue(**as_dict(self.sulfate_fw))
+
         if self.sulfide is not None and not isinstance(self.sulfide, QuantityValue):
             self.sulfide = QuantityValue(**as_dict(self.sulfide))
 
-        if self.suspend_solids is not None and not isinstance(self.suspend_solids, TextValue):
-            self.suspend_solids = TextValue(**as_dict(self.suspend_solids))
+        if not isinstance(self.surf_air_cont, list):
+            self.surf_air_cont = [self.surf_air_cont] if self.surf_air_cont is not None else []
+        self.surf_air_cont = [v if isinstance(v, SurfAirContEnum) else SurfAirContEnum(v) for v in self.surf_air_cont]
+
+        if self.surf_humidity is not None and not isinstance(self.surf_humidity, QuantityValue):
+            self.surf_humidity = QuantityValue(**as_dict(self.surf_humidity))
+
+        if self.surf_material is not None and not isinstance(self.surf_material, SurfMaterialEnum):
+            self.surf_material = SurfMaterialEnum(self.surf_material)
+
+        if self.surf_moisture is not None and not isinstance(self.surf_moisture, QuantityValue):
+            self.surf_moisture = QuantityValue(**as_dict(self.surf_moisture))
+
+        if self.surf_moisture_ph is not None and not isinstance(self.surf_moisture_ph, float):
+            self.surf_moisture_ph = float(self.surf_moisture_ph)
+
+        if self.surf_temp is not None and not isinstance(self.surf_temp, QuantityValue):
+            self.surf_temp = QuantityValue(**as_dict(self.surf_temp))
+
+        if self.suspend_part_matter is not None and not isinstance(self.suspend_part_matter, QuantityValue):
+            self.suspend_part_matter = QuantityValue(**as_dict(self.suspend_part_matter))
+
+        if not isinstance(self.suspend_solids, list):
+            self.suspend_solids = [self.suspend_solids] if self.suspend_solids is not None else []
+        self.suspend_solids = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.suspend_solids]
+
+        if self.tan is not None and not isinstance(self.tan, QuantityValue):
+            self.tan = QuantityValue(**as_dict(self.tan))
 
         if self.target_gene is not None and not isinstance(self.target_gene, TextValue):
             self.target_gene = TextValue(**as_dict(self.target_gene))
@@ -2099,12 +3036,24 @@ class Biosample(MaterialEntity):
         if self.temp is not None and not isinstance(self.temp, QuantityValue):
             self.temp = QuantityValue(**as_dict(self.temp))
 
+        if self.temp_out is not None and not isinstance(self.temp_out, QuantityValue):
+            self.temp_out = QuantityValue(**as_dict(self.temp_out))
+
+        if self.tertiary_treatment is not None and not isinstance(self.tertiary_treatment, TextValue):
+            self.tertiary_treatment = TextValue(**as_dict(self.tertiary_treatment))
+
         if self.tidal_stage is not None and not isinstance(self.tidal_stage, TidalStageEnum):
             self.tidal_stage = TidalStageEnum(self.tidal_stage)
 
         if not isinstance(self.tillage, list):
             self.tillage = [self.tillage] if self.tillage is not None else []
         self.tillage = [v if isinstance(v, TillageEnum) else TillageEnum(v) for v in self.tillage]
+
+        if self.tiss_cult_growth_med is not None and not isinstance(self.tiss_cult_growth_med, TextValue):
+            self.tiss_cult_growth_med = TextValue(**as_dict(self.tiss_cult_growth_med))
+
+        if self.toluene is not None and not isinstance(self.toluene, QuantityValue):
+            self.toluene = QuantityValue(**as_dict(self.toluene))
 
         if self.tot_carb is not None and not isinstance(self.tot_carb, QuantityValue):
             self.tot_carb = QuantityValue(**as_dict(self.tot_carb))
@@ -2114,6 +3063,15 @@ class Biosample(MaterialEntity):
 
         if self.tot_diss_nitro is not None and not isinstance(self.tot_diss_nitro, QuantityValue):
             self.tot_diss_nitro = QuantityValue(**as_dict(self.tot_diss_nitro))
+
+        if self.tot_inorg_nitro is not None and not isinstance(self.tot_inorg_nitro, QuantityValue):
+            self.tot_inorg_nitro = QuantityValue(**as_dict(self.tot_inorg_nitro))
+
+        if self.tot_iron is not None and not isinstance(self.tot_iron, QuantityValue):
+            self.tot_iron = QuantityValue(**as_dict(self.tot_iron))
+
+        if self.tot_nitro is not None and not isinstance(self.tot_nitro, QuantityValue):
+            self.tot_nitro = QuantityValue(**as_dict(self.tot_nitro))
 
         if self.tot_nitro_cont_meth is not None and not isinstance(self.tot_nitro_cont_meth, str):
             self.tot_nitro_cont_meth = str(self.tot_nitro_cont_meth)
@@ -2127,14 +3085,90 @@ class Biosample(MaterialEntity):
         if self.tot_org_carb is not None and not isinstance(self.tot_org_carb, QuantityValue):
             self.tot_org_carb = QuantityValue(**as_dict(self.tot_org_carb))
 
+        if self.tot_part_carb is not None and not isinstance(self.tot_part_carb, QuantityValue):
+            self.tot_part_carb = QuantityValue(**as_dict(self.tot_part_carb))
+
         if self.tot_phosp is not None and not isinstance(self.tot_phosp, QuantityValue):
             self.tot_phosp = QuantityValue(**as_dict(self.tot_phosp))
+
+        if self.tot_phosphate is not None and not isinstance(self.tot_phosphate, QuantityValue):
+            self.tot_phosphate = QuantityValue(**as_dict(self.tot_phosphate))
+
+        if self.tot_sulfur is not None and not isinstance(self.tot_sulfur, QuantityValue):
+            self.tot_sulfur = QuantityValue(**as_dict(self.tot_sulfur))
+
+        if self.train_line is not None and not isinstance(self.train_line, TrainLineEnum):
+            self.train_line = TrainLineEnum(self.train_line)
+
+        if self.train_stat_loc is not None and not isinstance(self.train_stat_loc, TrainStatLocEnum):
+            self.train_stat_loc = TrainStatLocEnum(self.train_stat_loc)
+
+        if self.train_stop_loc is not None and not isinstance(self.train_stop_loc, TrainStopLocEnum):
+            self.train_stop_loc = TrainStopLocEnum(self.train_stop_loc)
+
+        if self.turbidity is not None and not isinstance(self.turbidity, QuantityValue):
+            self.turbidity = QuantityValue(**as_dict(self.turbidity))
+
+        if self.tvdss_of_hcr_press is not None and not isinstance(self.tvdss_of_hcr_press, QuantityValue):
+            self.tvdss_of_hcr_press = QuantityValue(**as_dict(self.tvdss_of_hcr_press))
+
+        if self.tvdss_of_hcr_temp is not None and not isinstance(self.tvdss_of_hcr_temp, QuantityValue):
+            self.tvdss_of_hcr_temp = QuantityValue(**as_dict(self.tvdss_of_hcr_temp))
+
+        if self.typ_occup_density is not None and not isinstance(self.typ_occup_density, float):
+            self.typ_occup_density = float(self.typ_occup_density)
+
+        if self.ventilation_rate is not None and not isinstance(self.ventilation_rate, QuantityValue):
+            self.ventilation_rate = QuantityValue(**as_dict(self.ventilation_rate))
+
+        if self.ventilation_type is not None and not isinstance(self.ventilation_type, TextValue):
+            self.ventilation_type = TextValue(**as_dict(self.ventilation_type))
+
+        if self.vfa is not None and not isinstance(self.vfa, QuantityValue):
+            self.vfa = QuantityValue(**as_dict(self.vfa))
+
+        if self.vfa_fw is not None and not isinstance(self.vfa_fw, QuantityValue):
+            self.vfa_fw = QuantityValue(**as_dict(self.vfa_fw))
+
+        if self.vis_media is not None and not isinstance(self.vis_media, VisMediaEnum):
+            self.vis_media = VisMediaEnum(self.vis_media)
 
         if self.viscosity is not None and not isinstance(self.viscosity, TextValue):
             self.viscosity = TextValue(**as_dict(self.viscosity))
 
-        if self.volatile_org_comp is not None and not isinstance(self.volatile_org_comp, TextValue):
-            self.volatile_org_comp = TextValue(**as_dict(self.volatile_org_comp))
+        if not isinstance(self.volatile_org_comp, list):
+            self.volatile_org_comp = [self.volatile_org_comp] if self.volatile_org_comp is not None else []
+        self.volatile_org_comp = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.volatile_org_comp]
+
+        if self.wall_area is not None and not isinstance(self.wall_area, QuantityValue):
+            self.wall_area = QuantityValue(**as_dict(self.wall_area))
+
+        if self.wall_const_type is not None and not isinstance(self.wall_const_type, WallConstTypeEnum):
+            self.wall_const_type = WallConstTypeEnum(self.wall_const_type)
+
+        if self.wall_finish_mat is not None and not isinstance(self.wall_finish_mat, WallFinishMatEnum):
+            self.wall_finish_mat = WallFinishMatEnum(self.wall_finish_mat)
+
+        if self.wall_height is not None and not isinstance(self.wall_height, QuantityValue):
+            self.wall_height = QuantityValue(**as_dict(self.wall_height))
+
+        if self.wall_loc is not None and not isinstance(self.wall_loc, WallLocEnum):
+            self.wall_loc = WallLocEnum(self.wall_loc)
+
+        if self.wall_surf_treatment is not None and not isinstance(self.wall_surf_treatment, WallSurfTreatmentEnum):
+            self.wall_surf_treatment = WallSurfTreatmentEnum(self.wall_surf_treatment)
+
+        if self.wall_texture is not None and not isinstance(self.wall_texture, WallTextureEnum):
+            self.wall_texture = WallTextureEnum(self.wall_texture)
+
+        if self.wall_thermal_mass is not None and not isinstance(self.wall_thermal_mass, QuantityValue):
+            self.wall_thermal_mass = QuantityValue(**as_dict(self.wall_thermal_mass))
+
+        if self.wall_water_mold is not None and not isinstance(self.wall_water_mold, TextValue):
+            self.wall_water_mold = TextValue(**as_dict(self.wall_water_mold))
+
+        if self.wastewater_type is not None and not isinstance(self.wastewater_type, TextValue):
+            self.wastewater_type = TextValue(**as_dict(self.wastewater_type))
 
         if self.water_cont_soil_meth is not None and not isinstance(self.water_cont_soil_meth, str):
             self.water_cont_soil_meth = str(self.water_cont_soil_meth)
@@ -2143,18 +3177,79 @@ class Biosample(MaterialEntity):
             self.water_content = [self.water_content] if self.water_content is not None else []
         self.water_content = [v if isinstance(v, str) else str(v) for v in self.water_content]
 
-        if self.water_temp_regm is not None and not isinstance(self.water_temp_regm, TextValue):
-            self.water_temp_regm = TextValue(**as_dict(self.water_temp_regm))
+        if self.water_current is not None and not isinstance(self.water_current, QuantityValue):
+            self.water_current = QuantityValue(**as_dict(self.water_current))
+
+        if self.water_cut is not None and not isinstance(self.water_cut, QuantityValue):
+            self.water_cut = QuantityValue(**as_dict(self.water_cut))
+
+        if self.water_feat_size is not None and not isinstance(self.water_feat_size, QuantityValue):
+            self.water_feat_size = QuantityValue(**as_dict(self.water_feat_size))
+
+        if self.water_feat_type is not None and not isinstance(self.water_feat_type, WaterFeatTypeEnum):
+            self.water_feat_type = WaterFeatTypeEnum(self.water_feat_type)
+
+        if self.water_prod_rate is not None and not isinstance(self.water_prod_rate, QuantityValue):
+            self.water_prod_rate = QuantityValue(**as_dict(self.water_prod_rate))
+
+        if not isinstance(self.water_temp_regm, list):
+            self.water_temp_regm = [self.water_temp_regm] if self.water_temp_regm is not None else []
+        self.water_temp_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.water_temp_regm]
 
         if not isinstance(self.watering_regm, list):
             self.watering_regm = [self.watering_regm] if self.watering_regm is not None else []
         self.watering_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.watering_regm]
+
+        if self.weekday is not None and not isinstance(self.weekday, WeekdayEnum):
+            self.weekday = WeekdayEnum(self.weekday)
+
+        if self.win is not None and not isinstance(self.win, TextValue):
+            self.win = TextValue(**as_dict(self.win))
+
+        if self.wind_direction is not None and not isinstance(self.wind_direction, TextValue):
+            self.wind_direction = TextValue(**as_dict(self.wind_direction))
+
+        if self.wind_speed is not None and not isinstance(self.wind_speed, QuantityValue):
+            self.wind_speed = QuantityValue(**as_dict(self.wind_speed))
+
+        if self.window_cond is not None and not isinstance(self.window_cond, WindowCondEnum):
+            self.window_cond = WindowCondEnum(self.window_cond)
+
+        if self.window_cover is not None and not isinstance(self.window_cover, WindowCoverEnum):
+            self.window_cover = WindowCoverEnum(self.window_cover)
+
+        if self.window_horiz_pos is not None and not isinstance(self.window_horiz_pos, WindowHorizPosEnum):
+            self.window_horiz_pos = WindowHorizPosEnum(self.window_horiz_pos)
+
+        if self.window_loc is not None and not isinstance(self.window_loc, WindowLocEnum):
+            self.window_loc = WindowLocEnum(self.window_loc)
+
+        if self.window_mat is not None and not isinstance(self.window_mat, WindowMatEnum):
+            self.window_mat = WindowMatEnum(self.window_mat)
 
         if self.window_open_freq is not None and not isinstance(self.window_open_freq, TextValue):
             self.window_open_freq = TextValue(**as_dict(self.window_open_freq))
 
         if self.window_size is not None and not isinstance(self.window_size, TextValue):
             self.window_size = TextValue(**as_dict(self.window_size))
+
+        if self.window_status is not None and not isinstance(self.window_status, TextValue):
+            self.window_status = TextValue(**as_dict(self.window_status))
+
+        if self.window_type is not None and not isinstance(self.window_type, WindowTypeEnum):
+            self.window_type = WindowTypeEnum(self.window_type)
+
+        if self.window_vert_pos is not None and not isinstance(self.window_vert_pos, WindowVertPosEnum):
+            self.window_vert_pos = WindowVertPosEnum(self.window_vert_pos)
+
+        if self.window_water_mold is not None and not isinstance(self.window_water_mold, TextValue):
+            self.window_water_mold = TextValue(**as_dict(self.window_water_mold))
+
+        if self.xylene is not None and not isinstance(self.xylene, QuantityValue):
+            self.xylene = QuantityValue(**as_dict(self.xylene))
+
+        if self.zinc is not None and not isinstance(self.zinc, QuantityValue):
+            self.zinc = QuantityValue(**as_dict(self.zinc))
 
         if self.ecosystem is not None and not isinstance(self.ecosystem, str):
             self.ecosystem = str(self.ecosystem)
@@ -4679,24 +5774,116 @@ class ProcessingInstitutionEnum(EnumDefinitionImpl):
         name="ProcessingInstitutionEnum",
     )
 
-class RelToOxygenEnum(EnumDefinitionImpl):
+class ExtWindowOrientEnum(EnumDefinitionImpl):
 
-    aerobe = PermissibleValue(text="aerobe")
-    anaerobe = PermissibleValue(text="anaerobe")
-    facultative = PermissibleValue(text="facultative")
-    microaerophilic = PermissibleValue(text="microaerophilic")
-    microanaerobe = PermissibleValue(text="microanaerobe")
+    north = PermissibleValue(text="north")
+    south = PermissibleValue(text="south")
+    east = PermissibleValue(text="east")
+    west = PermissibleValue(text="west")
+    northeast = PermissibleValue(text="northeast")
+    southeast = PermissibleValue(text="southeast")
+    southwest = PermissibleValue(text="southwest")
+    northwest = PermissibleValue(text="northwest")
 
     _defn = EnumDefinition(
-        name="RelToOxygenEnum",
+        name="ExtWindowOrientEnum",
+    )
+
+class IndoorSpaceEnum(EnumDefinitionImpl):
+
+    bedroom = PermissibleValue(text="bedroom")
+    office = PermissibleValue(text="office")
+    bathroom = PermissibleValue(text="bathroom")
+    foyer = PermissibleValue(text="foyer")
+    kitchen = PermissibleValue(text="kitchen")
+    hallway = PermissibleValue(text="hallway")
+    elevator = PermissibleValue(text="elevator")
+
+    _defn = EnumDefinition(
+        name="IndoorSpaceEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "obligate aerobe",
-                PermissibleValue(text="obligate aerobe") )
-        setattr(cls, "obligate anaerobe",
-                PermissibleValue(text="obligate anaerobe") )
+        setattr(cls, "locker room",
+                PermissibleValue(text="locker room") )
+
+class BuildDocsEnum(EnumDefinitionImpl):
+
+    schedule = PermissibleValue(text="schedule")
+    sections = PermissibleValue(text="sections")
+    submittals = PermissibleValue(text="submittals")
+    windows = PermissibleValue(text="windows")
+
+    _defn = EnumDefinition(
+        name="BuildDocsEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "building information model",
+                PermissibleValue(text="building information model") )
+        setattr(cls, "commissioning report",
+                PermissibleValue(text="commissioning report") )
+        setattr(cls, "complaint logs",
+                PermissibleValue(text="complaint logs") )
+        setattr(cls, "contract administration",
+                PermissibleValue(text="contract administration") )
+        setattr(cls, "cost estimate",
+                PermissibleValue(text="cost estimate") )
+        setattr(cls, "janitorial schedules or logs",
+                PermissibleValue(text="janitorial schedules or logs") )
+        setattr(cls, "maintenance plans",
+                PermissibleValue(text="maintenance plans") )
+        setattr(cls, "shop drawings",
+                PermissibleValue(text="shop drawings") )
+        setattr(cls, "ventilation system",
+                PermissibleValue(text="ventilation system") )
+
+class DoorTypeMetalEnum(EnumDefinitionImpl):
+
+    collapsible = PermissibleValue(text="collapsible")
+    hollow = PermissibleValue(text="hollow")
+
+    _defn = EnumDefinition(
+        name="DoorTypeMetalEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "corrugated steel",
+                PermissibleValue(text="corrugated steel") )
+        setattr(cls, "rolling shutters",
+                PermissibleValue(text="rolling shutters") )
+        setattr(cls, "steel plate",
+                PermissibleValue(text="steel plate") )
+
+class DoorTypeWoodEnum(EnumDefinitionImpl):
+
+    battened = PermissibleValue(text="battened")
+    flush = PermissibleValue(text="flush")
+    louvered = PermissibleValue(text="louvered")
+
+    _defn = EnumDefinition(
+        name="DoorTypeWoodEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "bettened and ledged",
+                PermissibleValue(text="bettened and ledged") )
+        setattr(cls, "ledged and braced",
+                PermissibleValue(text="ledged and braced") )
+        setattr(cls, "ledged and framed",
+                PermissibleValue(text="ledged and framed") )
+        setattr(cls, "ledged, braced and frame",
+                PermissibleValue(text="ledged, braced and frame") )
+        setattr(cls, "framed and paneled",
+                PermissibleValue(text="framed and paneled") )
+        setattr(cls, "glashed or sash",
+                PermissibleValue(text="glashed or sash") )
+        setattr(cls, "wire gauged",
+                PermissibleValue(text="wire gauged") )
 
 class BioticRelationshipEnum(EnumDefinitionImpl):
 
@@ -4712,6 +5899,408 @@ class BioticRelationshipEnum(EnumDefinitionImpl):
     def _addvals(cls):
         setattr(cls, "free living",
                 PermissibleValue(text="free living") )
+
+class WindowCondEnum(EnumDefinitionImpl):
+
+    damaged = PermissibleValue(text="damaged")
+    new = PermissibleValue(text="new")
+    rupture = PermissibleValue(text="rupture")
+
+    _defn = EnumDefinition(
+        name="WindowCondEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "needs repair",
+                PermissibleValue(text="needs repair") )
+        setattr(cls, "visible wear",
+                PermissibleValue(text="visible wear") )
+
+class SedimentTypeEnum(EnumDefinitionImpl):
+
+    biogenous = PermissibleValue(text="biogenous")
+    cosmogenous = PermissibleValue(text="cosmogenous")
+    hydrogenous = PermissibleValue(text="hydrogenous")
+    lithogenous = PermissibleValue(text="lithogenous")
+
+    _defn = EnumDefinition(
+        name="SedimentTypeEnum",
+    )
+
+class SrKerogTypeEnum(EnumDefinitionImpl):
+
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="SrKerogTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Type I",
+                PermissibleValue(text="Type I") )
+        setattr(cls, "Type II",
+                PermissibleValue(text="Type II") )
+        setattr(cls, "Type III",
+                PermissibleValue(text="Type III") )
+        setattr(cls, "Type IV",
+                PermissibleValue(text="Type IV") )
+
+class HcProducedEnum(EnumDefinitionImpl):
+
+    Oil = PermissibleValue(text="Oil")
+    Gas = PermissibleValue(text="Gas")
+    Bitumen = PermissibleValue(text="Bitumen")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="HcProducedEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Gas-Condensate",
+                PermissibleValue(text="Gas-Condensate") )
+        setattr(cls, "Coalbed Methane",
+                PermissibleValue(text="Coalbed Methane") )
+
+class GrowthHabitEnum(EnumDefinitionImpl):
+
+    erect = PermissibleValue(text="erect")
+    spreading = PermissibleValue(text="spreading")
+    prostrate = PermissibleValue(text="prostrate")
+
+    _defn = EnumDefinition(
+        name="GrowthHabitEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "semi-erect",
+                PermissibleValue(text="semi-erect") )
+
+class SurfAirContEnum(EnumDefinitionImpl):
+
+    dust = PermissibleValue(text="dust")
+    radon = PermissibleValue(text="radon")
+    nutrients = PermissibleValue(text="nutrients")
+    biocides = PermissibleValue(text="biocides")
+
+    _defn = EnumDefinition(
+        name="SurfAirContEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "organic matter",
+                PermissibleValue(text="organic matter") )
+        setattr(cls, "particulate matter",
+                PermissibleValue(text="particulate matter") )
+        setattr(cls, "volatile organic compounds",
+                PermissibleValue(text="volatile organic compounds") )
+        setattr(cls, "biological contaminants",
+                PermissibleValue(text="biological contaminants") )
+
+class TillageEnum(EnumDefinitionImpl):
+
+    drill = PermissibleValue(text="drill")
+    chisel = PermissibleValue(text="chisel")
+    tined = PermissibleValue(text="tined")
+    mouldboard = PermissibleValue(text="mouldboard")
+
+    _defn = EnumDefinition(
+        name="TillageEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "cutting disc",
+                PermissibleValue(text="cutting disc") )
+        setattr(cls, "ridge till",
+                PermissibleValue(text="ridge till") )
+        setattr(cls, "strip tillage",
+                PermissibleValue(text="strip tillage") )
+        setattr(cls, "zonal tillage",
+                PermissibleValue(text="zonal tillage") )
+        setattr(cls, "disc plough",
+                PermissibleValue(text="disc plough") )
+
+class DoorDirectEnum(EnumDefinitionImpl):
+
+    inward = PermissibleValue(text="inward")
+    outward = PermissibleValue(text="outward")
+    sideways = PermissibleValue(text="sideways")
+
+    _defn = EnumDefinition(
+        name="DoorDirectEnum",
+    )
+
+class WallConstTypeEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="WallConstTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "frame construction",
+                PermissibleValue(text="frame construction") )
+        setattr(cls, "joisted masonry",
+                PermissibleValue(text="joisted masonry") )
+        setattr(cls, "light noncombustible",
+                PermissibleValue(text="light noncombustible") )
+        setattr(cls, "masonry noncombustible",
+                PermissibleValue(text="masonry noncombustible") )
+        setattr(cls, "modified fire resistive",
+                PermissibleValue(text="modified fire resistive") )
+        setattr(cls, "fire resistive",
+                PermissibleValue(text="fire resistive") )
+
+class SampCaptStatusEnum(EnumDefinitionImpl):
+
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="SampCaptStatusEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "active surveillance in response to an outbreak",
+                PermissibleValue(text="active surveillance in response to an outbreak") )
+        setattr(cls, "active surveillance not initiated by an outbreak",
+                PermissibleValue(text="active surveillance not initiated by an outbreak") )
+        setattr(cls, "farm sample",
+                PermissibleValue(text="farm sample") )
+        setattr(cls, "market sample",
+                PermissibleValue(text="market sample") )
+
+class WaterFeatTypeEnum(EnumDefinitionImpl):
+
+    fountain = PermissibleValue(text="fountain")
+    pool = PermissibleValue(text="pool")
+    stream = PermissibleValue(text="stream")
+    waterfall = PermissibleValue(text="waterfall")
+
+    _defn = EnumDefinition(
+        name="WaterFeatTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "standing feature",
+                PermissibleValue(text="standing feature") )
+
+class BuildOccupTypeEnum(EnumDefinitionImpl):
+
+    office = PermissibleValue(text="office")
+    market = PermissibleValue(text="market")
+    restaurant = PermissibleValue(text="restaurant")
+    residence = PermissibleValue(text="residence")
+    school = PermissibleValue(text="school")
+    residential = PermissibleValue(text="residential")
+    commercial = PermissibleValue(text="commercial")
+    airport = PermissibleValue(text="airport")
+
+    _defn = EnumDefinition(
+        name="BuildOccupTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "low rise",
+                PermissibleValue(text="low rise") )
+        setattr(cls, "high rise",
+                PermissibleValue(text="high rise") )
+        setattr(cls, "wood framed",
+                PermissibleValue(text="wood framed") )
+        setattr(cls, "health care",
+                PermissibleValue(text="health care") )
+        setattr(cls, "sports complex",
+                PermissibleValue(text="sports complex") )
+
+class ArchStrucEnum(EnumDefinitionImpl):
+
+    building = PermissibleValue(text="building")
+    shed = PermissibleValue(text="shed")
+    home = PermissibleValue(text="home")
+
+    _defn = EnumDefinition(
+        name="ArchStrucEnum",
+    )
+
+class LightTypeEnum(EnumDefinitionImpl):
+
+    none = PermissibleValue(text="none")
+
+    _defn = EnumDefinition(
+        name="LightTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "natural light",
+                PermissibleValue(text="natural light") )
+        setattr(cls, "electric light",
+                PermissibleValue(text="electric light") )
+        setattr(cls, "desk lamp",
+                PermissibleValue(text="desk lamp") )
+        setattr(cls, "flourescent lights",
+                PermissibleValue(text="flourescent lights") )
+
+class QuadPosEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="QuadPosEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "North side",
+                PermissibleValue(text="North side") )
+        setattr(cls, "West side",
+                PermissibleValue(text="West side") )
+        setattr(cls, "South side",
+                PermissibleValue(text="South side") )
+        setattr(cls, "East side",
+                PermissibleValue(text="East side") )
+
+class CeilCondEnum(EnumDefinitionImpl):
+
+    new = PermissibleValue(text="new")
+    damaged = PermissibleValue(text="damaged")
+    rupture = PermissibleValue(text="rupture")
+
+    _defn = EnumDefinition(
+        name="CeilCondEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "visible wear",
+                PermissibleValue(text="visible wear") )
+        setattr(cls, "needs repair",
+                PermissibleValue(text="needs repair") )
+
+class DrawingsEnum(EnumDefinitionImpl):
+
+    operation = PermissibleValue(text="operation")
+    construction = PermissibleValue(text="construction")
+    bid = PermissibleValue(text="bid")
+    design = PermissibleValue(text="design")
+    diagram = PermissibleValue(text="diagram")
+    sketch = PermissibleValue(text="sketch")
+
+    _defn = EnumDefinition(
+        name="DrawingsEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "as built",
+                PermissibleValue(text="as built") )
+        setattr(cls, "building navigation map",
+                PermissibleValue(text="building navigation map") )
+
+class IndoorSurfEnum(EnumDefinitionImpl):
+
+    cabinet = PermissibleValue(text="cabinet")
+    ceiling = PermissibleValue(text="ceiling")
+    door = PermissibleValue(text="door")
+    shelving = PermissibleValue(text="shelving")
+    window = PermissibleValue(text="window")
+    wall = PermissibleValue(text="wall")
+
+    _defn = EnumDefinition(
+        name="IndoorSurfEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "counter top",
+                PermissibleValue(text="counter top") )
+        setattr(cls, "vent cover",
+                PermissibleValue(text="vent cover") )
+
+class HeatCoolTypeEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="HeatCoolTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "radiant system",
+                PermissibleValue(text="radiant system") )
+        setattr(cls, "heat pump",
+                PermissibleValue(text="heat pump") )
+        setattr(cls, "forced air system",
+                PermissibleValue(text="forced air system") )
+        setattr(cls, "steam forced heat",
+                PermissibleValue(text="steam forced heat") )
+        setattr(cls, "wood stove",
+                PermissibleValue(text="wood stove") )
+
+class FurnitureEnum(EnumDefinitionImpl):
+
+    cabinet = PermissibleValue(text="cabinet")
+    chair = PermissibleValue(text="chair")
+    desks = PermissibleValue(text="desks")
+
+    _defn = EnumDefinition(
+        name="FurnitureEnum",
+    )
+
+class FloorFinishMatEnum(EnumDefinitionImpl):
+
+    tile = PermissibleValue(text="tile")
+    carpet = PermissibleValue(text="carpet")
+    rug = PermissibleValue(text="rug")
+    lineoleum = PermissibleValue(text="lineoleum")
+    stone = PermissibleValue(text="stone")
+    bamboo = PermissibleValue(text="bamboo")
+    cork = PermissibleValue(text="cork")
+    terrazo = PermissibleValue(text="terrazo")
+    concrete = PermissibleValue(text="concrete")
+    none = PermissibleValue(text="none")
+    sealed = PermissibleValue(text="sealed")
+    paint = PermissibleValue(text="paint")
+
+    _defn = EnumDefinition(
+        name="FloorFinishMatEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "wood strip or parquet",
+                PermissibleValue(text="wood strip or parquet") )
+        setattr(cls, "laminate wood",
+                PermissibleValue(text="laminate wood") )
+        setattr(cls, "vinyl composition tile",
+                PermissibleValue(text="vinyl composition tile") )
+        setattr(cls, "sheet vinyl",
+                PermissibleValue(text="sheet vinyl") )
+        setattr(cls, "clear finish",
+                PermissibleValue(text="clear finish") )
+        setattr(cls, "none or unfinished",
+                PermissibleValue(text="none or unfinished") )
+
+class MechStrucEnum(EnumDefinitionImpl):
+
+    subway = PermissibleValue(text="subway")
+    coach = PermissibleValue(text="coach")
+    carriage = PermissibleValue(text="carriage")
+    elevator = PermissibleValue(text="elevator")
+    escalator = PermissibleValue(text="escalator")
+    boat = PermissibleValue(text="boat")
+    train = PermissibleValue(text="train")
+    car = PermissibleValue(text="car")
+    bus = PermissibleValue(text="bus")
+
+    _defn = EnumDefinition(
+        name="MechStrucEnum",
+    )
 
 class FaoClassEnum(EnumDefinitionImpl):
 
@@ -4746,42 +6335,51 @@ class FaoClassEnum(EnumDefinitionImpl):
         name="FaoClassEnum",
     )
 
-class DrainageClassEnum(EnumDefinitionImpl):
+class SrGeolAgeEnum(EnumDefinitionImpl):
 
-    poorly = PermissibleValue(text="poorly")
-    well = PermissibleValue(text="well")
+    Archean = PermissibleValue(text="Archean")
+    Cambrian = PermissibleValue(text="Cambrian")
+    Carboniferous = PermissibleValue(text="Carboniferous")
+    Cenozoic = PermissibleValue(text="Cenozoic")
+    Cretaceous = PermissibleValue(text="Cretaceous")
+    Devonian = PermissibleValue(text="Devonian")
+    Jurassic = PermissibleValue(text="Jurassic")
+    Mesozoic = PermissibleValue(text="Mesozoic")
+    Neogene = PermissibleValue(text="Neogene")
+    Ordovician = PermissibleValue(text="Ordovician")
+    Paleogene = PermissibleValue(text="Paleogene")
+    Paleozoic = PermissibleValue(text="Paleozoic")
+    Permian = PermissibleValue(text="Permian")
+    Precambrian = PermissibleValue(text="Precambrian")
+    Proterozoic = PermissibleValue(text="Proterozoic")
+    Silurian = PermissibleValue(text="Silurian")
+    Triassic = PermissibleValue(text="Triassic")
+    other = PermissibleValue(text="other")
 
     _defn = EnumDefinition(
-        name="DrainageClassEnum",
+        name="SrGeolAgeEnum",
     )
 
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "very poorly",
-                PermissibleValue(text="very poorly") )
-        setattr(cls, "somewhat poorly",
-                PermissibleValue(text="somewhat poorly") )
-        setattr(cls, "moderately well",
-                PermissibleValue(text="moderately well") )
-        setattr(cls, "excessively drained",
-                PermissibleValue(text="excessively drained") )
+class TrainLineEnum(EnumDefinitionImpl):
 
-class TidalStageEnum(EnumDefinitionImpl):
+    red = PermissibleValue(text="red")
+    green = PermissibleValue(text="green")
+    orange = PermissibleValue(text="orange")
 
     _defn = EnumDefinition(
-        name="TidalStageEnum",
+        name="TrainLineEnum",
     )
 
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "low tide",
-                PermissibleValue(text="low tide") )
-        setattr(cls, "ebb tide",
-                PermissibleValue(text="ebb tide") )
-        setattr(cls, "flood tide",
-                PermissibleValue(text="flood tide") )
-        setattr(cls, "high tide",
-                PermissibleValue(text="high tide") )
+class DoorLocEnum(EnumDefinitionImpl):
+
+    north = PermissibleValue(text="north")
+    south = PermissibleValue(text="south")
+    east = PermissibleValue(text="east")
+    west = PermissibleValue(text="west")
+
+    _defn = EnumDefinition(
+        name="DoorLocEnum",
+    )
 
 class OxyStatSampEnum(EnumDefinitionImpl):
 
@@ -4793,26 +6391,799 @@ class OxyStatSampEnum(EnumDefinitionImpl):
         name="OxyStatSampEnum",
     )
 
-class OrganismCountEnum(EnumDefinitionImpl):
+class SrLithologyEnum(EnumDefinitionImpl):
 
-    ATP = PermissibleValue(text="ATP")
-    MPN = PermissibleValue(text="MPN")
+    Clastic = PermissibleValue(text="Clastic")
+    Carbonate = PermissibleValue(text="Carbonate")
+    Coal = PermissibleValue(text="Coal")
+    Biosilicieous = PermissibleValue(text="Biosilicieous")
     other = PermissibleValue(text="other")
 
     _defn = EnumDefinition(
-        name="OrganismCountEnum",
+        name="SrLithologyEnum",
     )
 
-class ProfilePositionEnum(EnumDefinitionImpl):
+class VisMediaEnum(EnumDefinitionImpl):
 
-    summit = PermissibleValue(text="summit")
-    shoulder = PermissibleValue(text="shoulder")
-    backslope = PermissibleValue(text="backslope")
-    footslope = PermissibleValue(text="footslope")
-    toeslope = PermissibleValue(text="toeslope")
+    photos = PermissibleValue(text="photos")
+    videos = PermissibleValue(text="videos")
+    interiors = PermissibleValue(text="interiors")
+    equipment = PermissibleValue(text="equipment")
 
     _defn = EnumDefinition(
-        name="ProfilePositionEnum",
+        name="VisMediaEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "commonly of the building",
+                PermissibleValue(text="commonly of the building") )
+        setattr(cls, "site context (adjacent buildings, vegetation, terrain, streets)",
+                PermissibleValue(text="site context (adjacent buildings, vegetation, terrain, streets)") )
+        setattr(cls, "3D scans",
+                PermissibleValue(text="3D scans") )
+
+class SurfMaterialEnum(EnumDefinitionImpl):
+
+    adobe = PermissibleValue(text="adobe")
+    carpet = PermissibleValue(text="carpet")
+    concrete = PermissibleValue(text="concrete")
+    glass = PermissibleValue(text="glass")
+    metal = PermissibleValue(text="metal")
+    paint = PermissibleValue(text="paint")
+    plastic = PermissibleValue(text="plastic")
+    stone = PermissibleValue(text="stone")
+    stucco = PermissibleValue(text="stucco")
+    tile = PermissibleValue(text="tile")
+    vinyl = PermissibleValue(text="vinyl")
+    wood = PermissibleValue(text="wood")
+
+    _defn = EnumDefinition(
+        name="SurfMaterialEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "cinder blocks",
+                PermissibleValue(text="cinder blocks") )
+        setattr(cls, "hay bales",
+                PermissibleValue(text="hay bales") )
+        setattr(cls, "stainless steel",
+                PermissibleValue(text="stainless steel") )
+
+class FilterTypeEnum(EnumDefinitionImpl):
+
+    HEPA = PermissibleValue(text="HEPA")
+    electrostatic = PermissibleValue(text="electrostatic")
+
+    _defn = EnumDefinition(
+        name="FilterTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "particulate air filter",
+                PermissibleValue(text="particulate air filter") )
+        setattr(cls, "chemical air filter",
+                PermissibleValue(text="chemical air filter") )
+        setattr(cls, "low-MERV pleated media",
+                PermissibleValue(text="low-MERV pleated media") )
+        setattr(cls, "gas-phase or ultraviolet air treatments",
+                PermissibleValue(text="gas-phase or ultraviolet air treatments") )
+
+class FreqCleanEnum(EnumDefinitionImpl):
+
+    Daily = PermissibleValue(text="Daily")
+    Weekly = PermissibleValue(text="Weekly")
+    Monthly = PermissibleValue(text="Monthly")
+    Quarterly = PermissibleValue(text="Quarterly")
+    Annually = PermissibleValue(text="Annually")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="FreqCleanEnum",
+    )
+
+class PlantGrowthMedEnum(EnumDefinitionImpl):
+
+    perlite = PermissibleValue(text="perlite")
+    pumice = PermissibleValue(text="pumice")
+    sand = PermissibleValue(text="sand")
+    soil = PermissibleValue(text="soil")
+    vermiculite = PermissibleValue(text="vermiculite")
+    water = PermissibleValue(text="water")
+
+    _defn = EnumDefinition(
+        name="PlantGrowthMedEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "other artificial liquid medium",
+                PermissibleValue(text="other artificial liquid medium") )
+        setattr(cls, "other artificial solid medium",
+                PermissibleValue(text="other artificial solid medium") )
+        setattr(cls, "peat moss",
+                PermissibleValue(text="peat moss") )
+
+class RoomLocEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="RoomLocEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "corner room",
+                PermissibleValue(text="corner room") )
+        setattr(cls, "interior room",
+                PermissibleValue(text="interior room") )
+        setattr(cls, "exterior wall",
+                PermissibleValue(text="exterior wall") )
+
+class DoorMoveEnum(EnumDefinitionImpl):
+
+    collapsible = PermissibleValue(text="collapsible")
+    folding = PermissibleValue(text="folding")
+    revolving = PermissibleValue(text="revolving")
+    sliding = PermissibleValue(text="sliding")
+    swinging = PermissibleValue(text="swinging")
+
+    _defn = EnumDefinition(
+        name="DoorMoveEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "rolling shutter",
+                PermissibleValue(text="rolling shutter") )
+
+class WindowLocEnum(EnumDefinitionImpl):
+
+    north = PermissibleValue(text="north")
+    south = PermissibleValue(text="south")
+    east = PermissibleValue(text="east")
+    west = PermissibleValue(text="west")
+
+    _defn = EnumDefinition(
+        name="WindowLocEnum",
+    )
+
+class FloorWaterMoldEnum(EnumDefinitionImpl):
+
+    condensation = PermissibleValue(text="condensation")
+
+    _defn = EnumDefinition(
+        name="FloorWaterMoldEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "mold odor",
+                PermissibleValue(text="mold odor") )
+        setattr(cls, "wet floor",
+                PermissibleValue(text="wet floor") )
+        setattr(cls, "water stains",
+                PermissibleValue(text="water stains") )
+        setattr(cls, "wall discoloration",
+                PermissibleValue(text="wall discoloration") )
+        setattr(cls, "floor discoloration",
+                PermissibleValue(text="floor discoloration") )
+        setattr(cls, "ceiling discoloration",
+                PermissibleValue(text="ceiling discoloration") )
+        setattr(cls, "peeling paint or wallpaper",
+                PermissibleValue(text="peeling paint or wallpaper") )
+        setattr(cls, "bulging walls",
+                PermissibleValue(text="bulging walls") )
+
+class HeatDelivLocEnum(EnumDefinitionImpl):
+
+    north = PermissibleValue(text="north")
+    south = PermissibleValue(text="south")
+    east = PermissibleValue(text="east")
+    west = PermissibleValue(text="west")
+
+    _defn = EnumDefinition(
+        name="HeatDelivLocEnum",
+    )
+
+class DoorCompTypeEnum(EnumDefinitionImpl):
+
+    revolving = PermissibleValue(text="revolving")
+    sliding = PermissibleValue(text="sliding")
+    telescopic = PermissibleValue(text="telescopic")
+
+    _defn = EnumDefinition(
+        name="DoorCompTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "metal covered",
+                PermissibleValue(text="metal covered") )
+
+class RoomConnectedEnum(EnumDefinitionImpl):
+
+    attic = PermissibleValue(text="attic")
+    bathroom = PermissibleValue(text="bathroom")
+    closet = PermissibleValue(text="closet")
+    elevator = PermissibleValue(text="elevator")
+    hallway = PermissibleValue(text="hallway")
+    kitchen = PermissibleValue(text="kitchen")
+    office = PermissibleValue(text="office")
+    stairwell = PermissibleValue(text="stairwell")
+
+    _defn = EnumDefinition(
+        name="RoomConnectedEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "conference room",
+                PermissibleValue(text="conference room") )
+        setattr(cls, "examining room",
+                PermissibleValue(text="examining room") )
+        setattr(cls, "mail room",
+                PermissibleValue(text="mail room") )
+
+class WindowCoverEnum(EnumDefinitionImpl):
+
+    blinds = PermissibleValue(text="blinds")
+    curtains = PermissibleValue(text="curtains")
+    none = PermissibleValue(text="none")
+
+    _defn = EnumDefinition(
+        name="WindowCoverEnum",
+    )
+
+class SampFloorEnum(EnumDefinitionImpl):
+
+    basement = PermissibleValue(text="basement")
+    lobby = PermissibleValue(text="lobby")
+
+    _defn = EnumDefinition(
+        name="SampFloorEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "1st floor",
+                PermissibleValue(text="1st floor") )
+        setattr(cls, "2nd floor",
+                PermissibleValue(text="2nd floor") )
+
+class SampWeatherEnum(EnumDefinitionImpl):
+
+    cloudy = PermissibleValue(text="cloudy")
+    foggy = PermissibleValue(text="foggy")
+    hail = PermissibleValue(text="hail")
+    rain = PermissibleValue(text="rain")
+    snow = PermissibleValue(text="snow")
+    sleet = PermissibleValue(text="sleet")
+    sunny = PermissibleValue(text="sunny")
+    windy = PermissibleValue(text="windy")
+
+    _defn = EnumDefinition(
+        name="SampWeatherEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "clear sky",
+                PermissibleValue(text="clear sky") )
+
+class FloorStrucEnum(EnumDefinitionImpl):
+
+    balcony = PermissibleValue(text="balcony")
+    concrete = PermissibleValue(text="concrete")
+
+    _defn = EnumDefinition(
+        name="FloorStrucEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "floating floor",
+                PermissibleValue(text="floating floor") )
+        setattr(cls, "glass floor",
+                PermissibleValue(text="glass floor") )
+        setattr(cls, "raised floor",
+                PermissibleValue(text="raised floor") )
+        setattr(cls, "sprung floor",
+                PermissibleValue(text="sprung floor") )
+        setattr(cls, "wood-framed",
+                PermissibleValue(text="wood-framed") )
+
+class WindowHorizPosEnum(EnumDefinitionImpl):
+
+    left = PermissibleValue(text="left")
+    middle = PermissibleValue(text="middle")
+    right = PermissibleValue(text="right")
+
+    _defn = EnumDefinition(
+        name="WindowHorizPosEnum",
+    )
+
+class SrDepEnvEnum(EnumDefinitionImpl):
+
+    Lacustine = PermissibleValue(text="Lacustine")
+    Fluvioldeltaic = PermissibleValue(text="Fluvioldeltaic")
+    Fluviomarine = PermissibleValue(text="Fluviomarine")
+    Marine = PermissibleValue(text="Marine")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="SrDepEnvEnum",
+    )
+
+class DoorMatEnum(EnumDefinitionImpl):
+
+    aluminum = PermissibleValue(text="aluminum")
+    fiberboard = PermissibleValue(text="fiberboard")
+    fiberglass = PermissibleValue(text="fiberglass")
+    metal = PermissibleValue(text="metal")
+    vinyl = PermissibleValue(text="vinyl")
+    wood = PermissibleValue(text="wood")
+
+    _defn = EnumDefinition(
+        name="DoorMatEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "cellular PVC",
+                PermissibleValue(text="cellular PVC") )
+        setattr(cls, "engineered plastic",
+                PermissibleValue(text="engineered plastic") )
+        setattr(cls, "thermoplastic alloy",
+                PermissibleValue(text="thermoplastic alloy") )
+        setattr(cls, "wood/plastic composite",
+                PermissibleValue(text="wood/plastic composite") )
+
+class WallFinishMatEnum(EnumDefinitionImpl):
+
+    plaster = PermissibleValue(text="plaster")
+    tile = PermissibleValue(text="tile")
+    terrazzo = PermissibleValue(text="terrazzo")
+    wood = PermissibleValue(text="wood")
+    metal = PermissibleValue(text="metal")
+    masonry = PermissibleValue(text="masonry")
+
+    _defn = EnumDefinition(
+        name="WallFinishMatEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "gypsum plaster",
+                PermissibleValue(text="gypsum plaster") )
+        setattr(cls, "veneer plaster",
+                PermissibleValue(text="veneer plaster") )
+        setattr(cls, "gypsum board",
+                PermissibleValue(text="gypsum board") )
+        setattr(cls, "stone facing",
+                PermissibleValue(text="stone facing") )
+        setattr(cls, "acoustical treatment",
+                PermissibleValue(text="acoustical treatment") )
+
+class RoomTypeEnum(EnumDefinitionImpl):
+
+    attic = PermissibleValue(text="attic")
+    bathroom = PermissibleValue(text="bathroom")
+    closet = PermissibleValue(text="closet")
+    elevator = PermissibleValue(text="elevator")
+    hallway = PermissibleValue(text="hallway")
+    kitchen = PermissibleValue(text="kitchen")
+    stairwell = PermissibleValue(text="stairwell")
+    lobby = PermissibleValue(text="lobby")
+    vestibule = PermissibleValue(text="vestibule")
+    laboratory_wet = PermissibleValue(text="laboratory_wet")
+    laboratory_dry = PermissibleValue(text="laboratory_dry")
+    gymnasium = PermissibleValue(text="gymnasium")
+    natatorium = PermissibleValue(text="natatorium")
+    auditorium = PermissibleValue(text="auditorium")
+    lockers = PermissibleValue(text="lockers")
+    cafe = PermissibleValue(text="cafe")
+    warehouse = PermissibleValue(text="warehouse")
+
+    _defn = EnumDefinition(
+        name="RoomTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "conference room",
+                PermissibleValue(text="conference room") )
+        setattr(cls, "examining room",
+                PermissibleValue(text="examining room") )
+        setattr(cls, "mail room",
+                PermissibleValue(text="mail room") )
+        setattr(cls, "private office",
+                PermissibleValue(text="private office") )
+        setattr(cls, "open office",
+                PermissibleValue(text="open office") )
+        setattr(cls, ",restroom",
+                PermissibleValue(text=",restroom") )
+        setattr(cls, "mechanical or electrical room",
+                PermissibleValue(text="mechanical or electrical room") )
+        setattr(cls, "data center",
+                PermissibleValue(text="data center") )
+
+class WeekdayEnum(EnumDefinitionImpl):
+
+    Monday = PermissibleValue(text="Monday")
+    Tuesday = PermissibleValue(text="Tuesday")
+    Wednesday = PermissibleValue(text="Wednesday")
+    Thursday = PermissibleValue(text="Thursday")
+    Friday = PermissibleValue(text="Friday")
+    Saturday = PermissibleValue(text="Saturday")
+    Sunday = PermissibleValue(text="Sunday")
+
+    _defn = EnumDefinition(
+        name="WeekdayEnum",
+    )
+
+class BiolStatEnum(EnumDefinitionImpl):
+
+    wild = PermissibleValue(text="wild")
+    natural = PermissibleValue(text="natural")
+    hybrid = PermissibleValue(text="hybrid")
+    mutant = PermissibleValue(text="mutant")
+
+    _defn = EnumDefinition(
+        name="BiolStatEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "semi-natural",
+                PermissibleValue(text="semi-natural") )
+        setattr(cls, "inbred line",
+                PermissibleValue(text="inbred line") )
+        setattr(cls, "breeder's line",
+                PermissibleValue(text="breeder's line") )
+        setattr(cls, "clonal selection",
+                PermissibleValue(text="clonal selection") )
+
+class RoomCondtEnum(EnumDefinitionImpl):
+
+    new = PermissibleValue(text="new")
+    damaged = PermissibleValue(text="damaged")
+    rupture = PermissibleValue(text="rupture")
+
+    _defn = EnumDefinition(
+        name="RoomCondtEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "visible wear",
+                PermissibleValue(text="visible wear") )
+        setattr(cls, "needs repair",
+                PermissibleValue(text="needs repair") )
+        setattr(cls, "visible signs of mold/mildew",
+                PermissibleValue(text="visible signs of mold/mildew") )
+
+class SpecificEnum(EnumDefinitionImpl):
+
+    operation = PermissibleValue(text="operation")
+    construction = PermissibleValue(text="construction")
+    bid = PermissibleValue(text="bid")
+    design = PermissibleValue(text="design")
+    photos = PermissibleValue(text="photos")
+
+    _defn = EnumDefinition(
+        name="SpecificEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "as built",
+                PermissibleValue(text="as built") )
+
+class SampSubtypeEnum(EnumDefinitionImpl):
+
+    biofilm = PermissibleValue(text="biofilm")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="SampSubtypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "oil phase",
+                PermissibleValue(text="oil phase") )
+        setattr(cls, "water phase",
+                PermissibleValue(text="water phase") )
+        setattr(cls, "not applicable",
+                PermissibleValue(text="not applicable") )
+
+class TrainStatLocEnum(EnumDefinitionImpl):
+
+    riverside = PermissibleValue(text="riverside")
+
+    _defn = EnumDefinition(
+        name="TrainStatLocEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "south station above ground",
+                PermissibleValue(text="south station above ground") )
+        setattr(cls, "south station underground",
+                PermissibleValue(text="south station underground") )
+        setattr(cls, "south station amtrak",
+                PermissibleValue(text="south station amtrak") )
+        setattr(cls, "forest hills",
+                PermissibleValue(text="forest hills") )
+
+class WallSurfTreatmentEnum(EnumDefinitionImpl):
+
+    painted = PermissibleValue(text="painted")
+    paneling = PermissibleValue(text="paneling")
+    stucco = PermissibleValue(text="stucco")
+    fabric = PermissibleValue(text="fabric")
+
+    _defn = EnumDefinition(
+        name="WallSurfTreatmentEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "wall paper",
+                PermissibleValue(text="wall paper") )
+        setattr(cls, "no treatment",
+                PermissibleValue(text="no treatment") )
+
+class HcrGeolAgeEnum(EnumDefinitionImpl):
+
+    Archean = PermissibleValue(text="Archean")
+    Cambrian = PermissibleValue(text="Cambrian")
+    Carboniferous = PermissibleValue(text="Carboniferous")
+    Cenozoic = PermissibleValue(text="Cenozoic")
+    Cretaceous = PermissibleValue(text="Cretaceous")
+    Devonian = PermissibleValue(text="Devonian")
+    Jurassic = PermissibleValue(text="Jurassic")
+    Mesozoic = PermissibleValue(text="Mesozoic")
+    Neogene = PermissibleValue(text="Neogene")
+    Ordovician = PermissibleValue(text="Ordovician")
+    Paleogene = PermissibleValue(text="Paleogene")
+    Paleozoic = PermissibleValue(text="Paleozoic")
+    Permian = PermissibleValue(text="Permian")
+    Precambrian = PermissibleValue(text="Precambrian")
+    Proterozoic = PermissibleValue(text="Proterozoic")
+    Silurian = PermissibleValue(text="Silurian")
+    Triassic = PermissibleValue(text="Triassic")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="HcrGeolAgeEnum",
+    )
+
+class HostSexEnum(EnumDefinitionImpl):
+
+    female = PermissibleValue(text="female")
+    hermaphrodite = PermissibleValue(text="hermaphrodite")
+    male = PermissibleValue(text="male")
+    neuter = PermissibleValue(text="neuter")
+
+    _defn = EnumDefinition(
+        name="HostSexEnum",
+    )
+
+class BuildingSettingEnum(EnumDefinitionImpl):
+
+    urban = PermissibleValue(text="urban")
+    suburban = PermissibleValue(text="suburban")
+    exurban = PermissibleValue(text="exurban")
+    rural = PermissibleValue(text="rural")
+
+    _defn = EnumDefinition(
+        name="BuildingSettingEnum",
+    )
+
+class DeposEnvEnum(EnumDefinitionImpl):
+
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="DeposEnvEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Continental - Alluvial",
+                PermissibleValue(text="Continental - Alluvial") )
+        setattr(cls, "Continental - Aeolian",
+                PermissibleValue(text="Continental - Aeolian") )
+        setattr(cls, "Continental - Fluvial",
+                PermissibleValue(text="Continental - Fluvial") )
+        setattr(cls, "Continental - Lacustrine",
+                PermissibleValue(text="Continental - Lacustrine") )
+        setattr(cls, "Transitional - Deltaic",
+                PermissibleValue(text="Transitional - Deltaic") )
+        setattr(cls, "Transitional - Tidal",
+                PermissibleValue(text="Transitional - Tidal") )
+        setattr(cls, "Transitional - Lagoonal",
+                PermissibleValue(text="Transitional - Lagoonal") )
+        setattr(cls, "Transitional - Beach",
+                PermissibleValue(text="Transitional - Beach") )
+        setattr(cls, "Transitional - Lake",
+                PermissibleValue(text="Transitional - Lake") )
+        setattr(cls, "Marine - Shallow",
+                PermissibleValue(text="Marine - Shallow") )
+        setattr(cls, "Marine - Deep",
+                PermissibleValue(text="Marine - Deep") )
+        setattr(cls, "Marine - Reef",
+                PermissibleValue(text="Marine - Reef") )
+        setattr(cls, "Other - Evaporite",
+                PermissibleValue(text="Other - Evaporite") )
+        setattr(cls, "Other - Glacial",
+                PermissibleValue(text="Other - Glacial") )
+        setattr(cls, "Other - Volcanic",
+                PermissibleValue(text="Other - Volcanic") )
+
+class WindowTypeEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="WindowTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "single-hung sash window",
+                PermissibleValue(text="single-hung sash window") )
+        setattr(cls, "horizontal sash window",
+                PermissibleValue(text="horizontal sash window") )
+        setattr(cls, "fixed window",
+                PermissibleValue(text="fixed window") )
+
+class SoilHorizonEnum(EnumDefinitionImpl):
+
+    Permafrost = PermissibleValue(text="Permafrost")
+
+    _defn = EnumDefinition(
+        name="SoilHorizonEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "O horizon",
+                PermissibleValue(text="O horizon") )
+        setattr(cls, "A horizon",
+                PermissibleValue(text="A horizon") )
+        setattr(cls, "E horizon",
+                PermissibleValue(text="E horizon") )
+        setattr(cls, "B horizon",
+                PermissibleValue(text="B horizon") )
+        setattr(cls, "C horizon",
+                PermissibleValue(text="C horizon") )
+        setattr(cls, "R layer",
+                PermissibleValue(text="R layer") )
+
+class CeilTypeEnum(EnumDefinitionImpl):
+
+    cathedral = PermissibleValue(text="cathedral")
+    dropped = PermissibleValue(text="dropped")
+    concave = PermissibleValue(text="concave")
+    coffered = PermissibleValue(text="coffered")
+    cove = PermissibleValue(text="cove")
+    stretched = PermissibleValue(text="stretched")
+
+    _defn = EnumDefinition(
+        name="CeilTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "barrel-shaped",
+                PermissibleValue(text="barrel-shaped") )
+
+class HandidnessEnum(EnumDefinitionImpl):
+
+    ambidexterity = PermissibleValue(text="ambidexterity")
+
+    _defn = EnumDefinition(
+        name="HandidnessEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "left handedness",
+                PermissibleValue(text="left handedness") )
+        setattr(cls, "mixed-handedness",
+                PermissibleValue(text="mixed-handedness") )
+        setattr(cls, "right handedness",
+                PermissibleValue(text="right handedness") )
+
+class ExtWallOrientEnum(EnumDefinitionImpl):
+
+    north = PermissibleValue(text="north")
+    south = PermissibleValue(text="south")
+    east = PermissibleValue(text="east")
+    west = PermissibleValue(text="west")
+    northeast = PermissibleValue(text="northeast")
+    southeast = PermissibleValue(text="southeast")
+    southwest = PermissibleValue(text="southwest")
+    northwest = PermissibleValue(text="northwest")
+
+    _defn = EnumDefinition(
+        name="ExtWallOrientEnum",
+    )
+
+class OccupDocumentEnum(EnumDefinitionImpl):
+
+    estimate = PermissibleValue(text="estimate")
+    videos = PermissibleValue(text="videos")
+
+    _defn = EnumDefinition(
+        name="OccupDocumentEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "automated count",
+                PermissibleValue(text="automated count") )
+        setattr(cls, "manual count",
+                PermissibleValue(text="manual count") )
+
+class WallTextureEnum(EnumDefinitionImpl):
+
+    knockdown = PermissibleValue(text="knockdown")
+    popcorn = PermissibleValue(text="popcorn")
+    smooth = PermissibleValue(text="smooth")
+    swirl = PermissibleValue(text="swirl")
+
+    _defn = EnumDefinition(
+        name="WallTextureEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "crows feet",
+                PermissibleValue(text="crows feet") )
+        setattr(cls, "crows-foot stomp",
+                PermissibleValue(text="crows-foot stomp") )
+        setattr(cls, "",
+                PermissibleValue(text="") )
+        setattr(cls, "double skip",
+                PermissibleValue(text="double skip") )
+        setattr(cls, "hawk and trowel",
+                PermissibleValue(text="hawk and trowel") )
+        setattr(cls, "orange peel",
+                PermissibleValue(text="orange peel") )
+        setattr(cls, "rosebud stomp",
+                PermissibleValue(text="rosebud stomp") )
+        setattr(cls, "Santa-Fe texture",
+                PermissibleValue(text="Santa-Fe texture") )
+        setattr(cls, "skip trowel",
+                PermissibleValue(text="skip trowel") )
+        setattr(cls, "stomp knockdown",
+                PermissibleValue(text="stomp knockdown") )
+
+class WindowVertPosEnum(EnumDefinitionImpl):
+
+    bottom = PermissibleValue(text="bottom")
+    middle = PermissibleValue(text="middle")
+    top = PermissibleValue(text="top")
+    low = PermissibleValue(text="low")
+    high = PermissibleValue(text="high")
+
+    _defn = EnumDefinition(
+        name="WindowVertPosEnum",
+    )
+
+class SampMdEnum(EnumDefinitionImpl):
+
+    DF = PermissibleValue(text="DF")
+    RT = PermissibleValue(text="RT")
+    KB = PermissibleValue(text="KB")
+    MSL = PermissibleValue(text="MSL")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="SampMdEnum",
     )
 
 class CurLandUseEnum(EnumDefinitionImpl):
@@ -4886,29 +7257,482 @@ class CurLandUseEnum(EnumDefinitionImpl):
         setattr(cls, "crop trees (nuts,fruit,christmas trees,nursery trees)",
                 PermissibleValue(text="crop trees (nuts,fruit,christmas trees,nursery trees)") )
 
-class TillageEnum(EnumDefinitionImpl):
+class CeilTextureEnum(EnumDefinitionImpl):
 
-    drill = PermissibleValue(text="drill")
-    chisel = PermissibleValue(text="chisel")
-    tined = PermissibleValue(text="tined")
-    mouldboard = PermissibleValue(text="mouldboard")
+    knockdown = PermissibleValue(text="knockdown")
+    popcorn = PermissibleValue(text="popcorn")
+    smooth = PermissibleValue(text="smooth")
+    swirl = PermissibleValue(text="swirl")
 
     _defn = EnumDefinition(
-        name="TillageEnum",
+        name="CeilTextureEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "cutting disc",
-                PermissibleValue(text="cutting disc") )
-        setattr(cls, "ridge till",
-                PermissibleValue(text="ridge till") )
-        setattr(cls, "strip tillage",
-                PermissibleValue(text="strip tillage") )
-        setattr(cls, "zonal tillage",
-                PermissibleValue(text="zonal tillage") )
-        setattr(cls, "disc plough",
-                PermissibleValue(text="disc plough") )
+        setattr(cls, "crows feet",
+                PermissibleValue(text="crows feet") )
+        setattr(cls, "crows-foot stomp",
+                PermissibleValue(text="crows-foot stomp") )
+        setattr(cls, "double skip",
+                PermissibleValue(text="double skip") )
+        setattr(cls, "hawk and trowel",
+                PermissibleValue(text="hawk and trowel") )
+        setattr(cls, "orange peel",
+                PermissibleValue(text="orange peel") )
+        setattr(cls, "rosebud stomp",
+                PermissibleValue(text="rosebud stomp") )
+        setattr(cls, "Santa-Fe texture",
+                PermissibleValue(text="Santa-Fe texture") )
+        setattr(cls, "skip trowel",
+                PermissibleValue(text="skip trowel") )
+        setattr(cls, "stomp knockdown",
+                PermissibleValue(text="stomp knockdown") )
+
+class SubstructureTypeEnum(EnumDefinitionImpl):
+
+    crawlspace = PermissibleValue(text="crawlspace")
+    basement = PermissibleValue(text="basement")
+
+    _defn = EnumDefinition(
+        name="SubstructureTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "slab on grade",
+                PermissibleValue(text="slab on grade") )
+
+class HcrEnum(EnumDefinitionImpl):
+
+    Coalbed = PermissibleValue(text="Coalbed")
+    Shale = PermissibleValue(text="Shale")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="HcrEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Oil Reservoir",
+                PermissibleValue(text="Oil Reservoir") )
+        setattr(cls, "Gas Reservoir",
+                PermissibleValue(text="Gas Reservoir") )
+        setattr(cls, "Oil Sand",
+                PermissibleValue(text="Oil Sand") )
+        setattr(cls, "Tight Oil Reservoir",
+                PermissibleValue(text="Tight Oil Reservoir") )
+        setattr(cls, "Tight Gas Reservoir",
+                PermissibleValue(text="Tight Gas Reservoir") )
+
+class SeasonUseEnum(EnumDefinitionImpl):
+
+    Spring = PermissibleValue(text="Spring")
+    Summer = PermissibleValue(text="Summer")
+    Fall = PermissibleValue(text="Fall")
+    Winter = PermissibleValue(text="Winter")
+
+    _defn = EnumDefinition(
+        name="SeasonUseEnum",
+    )
+
+class DoorTypeEnum(EnumDefinitionImpl):
+
+    composite = PermissibleValue(text="composite")
+    metal = PermissibleValue(text="metal")
+    wooden = PermissibleValue(text="wooden")
+
+    _defn = EnumDefinition(
+        name="DoorTypeEnum",
+    )
+
+class RelToOxygenEnum(EnumDefinitionImpl):
+
+    aerobe = PermissibleValue(text="aerobe")
+    anaerobe = PermissibleValue(text="anaerobe")
+    facultative = PermissibleValue(text="facultative")
+    microaerophilic = PermissibleValue(text="microaerophilic")
+    microanaerobe = PermissibleValue(text="microanaerobe")
+
+    _defn = EnumDefinition(
+        name="RelToOxygenEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "obligate aerobe",
+                PermissibleValue(text="obligate aerobe") )
+        setattr(cls, "obligate anaerobe",
+                PermissibleValue(text="obligate anaerobe") )
+
+class TidalStageEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="TidalStageEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "low tide",
+                PermissibleValue(text="low tide") )
+        setattr(cls, "ebb tide",
+                PermissibleValue(text="ebb tide") )
+        setattr(cls, "flood tide",
+                PermissibleValue(text="flood tide") )
+        setattr(cls, "high tide",
+                PermissibleValue(text="high tide") )
+
+class PlantSexEnum(EnumDefinitionImpl):
+
+    Androdioecious = PermissibleValue(text="Androdioecious")
+    Androecious = PermissibleValue(text="Androecious")
+    Androgynous = PermissibleValue(text="Androgynous")
+    Androgynomonoecious = PermissibleValue(text="Androgynomonoecious")
+    Andromonoecious = PermissibleValue(text="Andromonoecious")
+    Bisexual = PermissibleValue(text="Bisexual")
+    Dichogamous = PermissibleValue(text="Dichogamous")
+    Diclinous = PermissibleValue(text="Diclinous")
+    Dioecious = PermissibleValue(text="Dioecious")
+    Gynodioecious = PermissibleValue(text="Gynodioecious")
+    Gynoecious = PermissibleValue(text="Gynoecious")
+    Gynomonoecious = PermissibleValue(text="Gynomonoecious")
+    Hermaphroditic = PermissibleValue(text="Hermaphroditic")
+    Imperfect = PermissibleValue(text="Imperfect")
+    Monoclinous = PermissibleValue(text="Monoclinous")
+    Monoecious = PermissibleValue(text="Monoecious")
+    Perfect = PermissibleValue(text="Perfect")
+    Polygamodioecious = PermissibleValue(text="Polygamodioecious")
+    Polygamomonoecious = PermissibleValue(text="Polygamomonoecious")
+    Polygamous = PermissibleValue(text="Polygamous")
+    Protandrous = PermissibleValue(text="Protandrous")
+    Protogynous = PermissibleValue(text="Protogynous")
+    Subandroecious = PermissibleValue(text="Subandroecious")
+    Subdioecious = PermissibleValue(text="Subdioecious")
+    Subgynoecious = PermissibleValue(text="Subgynoecious")
+    Synoecious = PermissibleValue(text="Synoecious")
+    Trimonoecious = PermissibleValue(text="Trimonoecious")
+    Trioecious = PermissibleValue(text="Trioecious")
+    Unisexual = PermissibleValue(text="Unisexual")
+
+    _defn = EnumDefinition(
+        name="PlantSexEnum",
+    )
+
+class GenderRestroomEnum(EnumDefinitionImpl):
+
+    female = PermissibleValue(text="female")
+    male = PermissibleValue(text="male")
+    unisex = PermissibleValue(text="unisex")
+
+    _defn = EnumDefinition(
+        name="GenderRestroomEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "all gender",
+                PermissibleValue(text="all gender") )
+        setattr(cls, "gender neurtral",
+                PermissibleValue(text="gender neurtral") )
+        setattr(cls, "male and female",
+                PermissibleValue(text="male and female") )
+
+class LithologyEnum(EnumDefinitionImpl):
+
+    Basement = PermissibleValue(text="Basement")
+    Chalk = PermissibleValue(text="Chalk")
+    Chert = PermissibleValue(text="Chert")
+    Coal = PermissibleValue(text="Coal")
+    Conglomerate = PermissibleValue(text="Conglomerate")
+    Diatomite = PermissibleValue(text="Diatomite")
+    Dolomite = PermissibleValue(text="Dolomite")
+    Limestone = PermissibleValue(text="Limestone")
+    Sandstone = PermissibleValue(text="Sandstone")
+    Shale = PermissibleValue(text="Shale")
+    Siltstone = PermissibleValue(text="Siltstone")
+    Volcanic = PermissibleValue(text="Volcanic")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="LithologyEnum",
+    )
+
+class ProfilePositionEnum(EnumDefinitionImpl):
+
+    summit = PermissibleValue(text="summit")
+    shoulder = PermissibleValue(text="shoulder")
+    backslope = PermissibleValue(text="backslope")
+    footslope = PermissibleValue(text="footslope")
+    toeslope = PermissibleValue(text="toeslope")
+
+    _defn = EnumDefinition(
+        name="ProfilePositionEnum",
+    )
+
+class IntWallCondEnum(EnumDefinitionImpl):
+
+    new = PermissibleValue(text="new")
+    damaged = PermissibleValue(text="damaged")
+    rupture = PermissibleValue(text="rupture")
+
+    _defn = EnumDefinition(
+        name="IntWallCondEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "visible wear",
+                PermissibleValue(text="visible wear") )
+        setattr(cls, "needs repair",
+                PermissibleValue(text="needs repair") )
+
+class RelSampLocEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="RelSampLocEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "edge of car",
+                PermissibleValue(text="edge of car") )
+        setattr(cls, "center of car",
+                PermissibleValue(text="center of car") )
+        setattr(cls, "under a seat",
+                PermissibleValue(text="under a seat") )
+
+class RoomSampPosEnum(EnumDefinitionImpl):
+
+    center = PermissibleValue(text="center")
+
+    _defn = EnumDefinition(
+        name="RoomSampPosEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "north corner",
+                PermissibleValue(text="north corner") )
+        setattr(cls, "south corner",
+                PermissibleValue(text="south corner") )
+        setattr(cls, "west corner",
+                PermissibleValue(text="west corner") )
+        setattr(cls, "east corner",
+                PermissibleValue(text="east corner") )
+        setattr(cls, "northeast corner",
+                PermissibleValue(text="northeast corner") )
+        setattr(cls, "northwest corner",
+                PermissibleValue(text="northwest corner") )
+        setattr(cls, "southeast corner",
+                PermissibleValue(text="southeast corner") )
+        setattr(cls, "southwest corner",
+                PermissibleValue(text="southwest corner") )
+
+class WallLocEnum(EnumDefinitionImpl):
+
+    north = PermissibleValue(text="north")
+    south = PermissibleValue(text="south")
+    east = PermissibleValue(text="east")
+    west = PermissibleValue(text="west")
+
+    _defn = EnumDefinition(
+        name="WallLocEnum",
+    )
+
+class DoorCondEnum(EnumDefinitionImpl):
+
+    damaged = PermissibleValue(text="damaged")
+    new = PermissibleValue(text="new")
+    rupture = PermissibleValue(text="rupture")
+
+    _defn = EnumDefinition(
+        name="DoorCondEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "needs repair",
+                PermissibleValue(text="needs repair") )
+        setattr(cls, "visible wear",
+                PermissibleValue(text="visible wear") )
+
+class CeilFinishMatEnum(EnumDefinitionImpl):
+
+    drywall = PermissibleValue(text="drywall")
+    tiles = PermissibleValue(text="tiles")
+    PVC = PermissibleValue(text="PVC")
+    plasterboard = PermissibleValue(text="plasterboard")
+    metal = PermissibleValue(text="metal")
+    fiberglass = PermissibleValue(text="fiberglass")
+    stucco = PermissibleValue(text="stucco")
+    wood = PermissibleValue(text="wood")
+
+    _defn = EnumDefinition(
+        name="CeilFinishMatEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "mineral fibre",
+                PermissibleValue(text="mineral fibre") )
+        setattr(cls, "mineral wool/calcium silicate",
+                PermissibleValue(text="mineral wool/calcium silicate") )
+
+class SampDisStageEnum(EnumDefinitionImpl):
+
+    dissemination = PermissibleValue(text="dissemination")
+    infection = PermissibleValue(text="infection")
+    inoculation = PermissibleValue(text="inoculation")
+    penetration = PermissibleValue(text="penetration")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="SampDisStageEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "growth and reproduction",
+                PermissibleValue(text="growth and reproduction") )
+
+class ShadingDeviceCondEnum(EnumDefinitionImpl):
+
+    damaged = PermissibleValue(text="damaged")
+    new = PermissibleValue(text="new")
+    rupture = PermissibleValue(text="rupture")
+
+    _defn = EnumDefinition(
+        name="ShadingDeviceCondEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "needs repair",
+                PermissibleValue(text="needs repair") )
+        setattr(cls, "visible wear",
+                PermissibleValue(text="visible wear") )
+
+class FloorCondEnum(EnumDefinitionImpl):
+
+    new = PermissibleValue(text="new")
+    damaged = PermissibleValue(text="damaged")
+    rupture = PermissibleValue(text="rupture")
+
+    _defn = EnumDefinition(
+        name="FloorCondEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "visible wear",
+                PermissibleValue(text="visible wear") )
+        setattr(cls, "needs repair",
+                PermissibleValue(text="needs repair") )
+
+class TrainStopLocEnum(EnumDefinitionImpl):
+
+    end = PermissibleValue(text="end")
+    mid = PermissibleValue(text="mid")
+    downtown = PermissibleValue(text="downtown")
+
+    _defn = EnumDefinition(
+        name="TrainStopLocEnum",
+    )
+
+class SampCollectPointEnum(EnumDefinitionImpl):
+
+    well = PermissibleValue(text="well")
+    wellhead = PermissibleValue(text="wellhead")
+    separator = PermissibleValue(text="separator")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="SampCollectPointEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "test well",
+                PermissibleValue(text="test well") )
+        setattr(cls, "drilling rig",
+                PermissibleValue(text="drilling rig") )
+        setattr(cls, "storage tank",
+                PermissibleValue(text="storage tank") )
+
+class DrainageClassEnum(EnumDefinitionImpl):
+
+    poorly = PermissibleValue(text="poorly")
+    well = PermissibleValue(text="well")
+
+    _defn = EnumDefinition(
+        name="DrainageClassEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "very poorly",
+                PermissibleValue(text="very poorly") )
+        setattr(cls, "somewhat poorly",
+                PermissibleValue(text="somewhat poorly") )
+        setattr(cls, "moderately well",
+                PermissibleValue(text="moderately well") )
+        setattr(cls, "excessively drained",
+                PermissibleValue(text="excessively drained") )
+
+class WindowMatEnum(EnumDefinitionImpl):
+
+    clad = PermissibleValue(text="clad")
+    fiberglass = PermissibleValue(text="fiberglass")
+    metal = PermissibleValue(text="metal")
+    vinyl = PermissibleValue(text="vinyl")
+    wood = PermissibleValue(text="wood")
+
+    _defn = EnumDefinition(
+        name="WindowMatEnum",
+    )
+
+class ShadingDeviceTypeEnum(EnumDefinitionImpl):
+
+    tree = PermissibleValue(text="tree")
+    trellis = PermissibleValue(text="trellis")
+
+    _defn = EnumDefinition(
+        name="ShadingDeviceTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "bahama shutters",
+                PermissibleValue(text="bahama shutters") )
+        setattr(cls, "exterior roll blind",
+                PermissibleValue(text="exterior roll blind") )
+        setattr(cls, "gambrel awning",
+                PermissibleValue(text="gambrel awning") )
+        setattr(cls, "hood awning",
+                PermissibleValue(text="hood awning") )
+        setattr(cls, "porchroller awning",
+                PermissibleValue(text="porchroller awning") )
+        setattr(cls, "sarasota shutters",
+                PermissibleValue(text="sarasota shutters") )
+        setattr(cls, "slatted aluminum",
+                PermissibleValue(text="slatted aluminum") )
+        setattr(cls, "solid aluminum awning",
+                PermissibleValue(text="solid aluminum awning") )
+        setattr(cls, "sun screen",
+                PermissibleValue(text="sun screen") )
+        setattr(cls, "venetian awning",
+                PermissibleValue(text="venetian awning") )
+
+class OrganismCountEnum(EnumDefinitionImpl):
+
+    ATP = PermissibleValue(text="ATP")
+    MPN = PermissibleValue(text="MPN")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="OrganismCountEnum",
+    )
 
 class SampleTypeEnum(EnumDefinitionImpl):
 
@@ -5703,8 +8527,32 @@ slots.massive_study_identifiers = Slot(uri=NMDC.massive_study_identifiers, name=
                    model_uri=NMDC.massive_study_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
                    pattern=re.compile(r'^MASSIVE:'))
 
+slots.abs_air_humidity = Slot(uri=MIXS['0000122'], name="abs_air_humidity", curie=MIXS.curie('0000122'),
+                   model_uri=NMDC.abs_air_humidity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.add_recov_method = Slot(uri=MIXS['0001009'], name="add_recov_method", curie=MIXS.curie('0001009'),
+                   model_uri=NMDC.add_recov_method, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.additional_info = Slot(uri=MIXS['0000300'], name="additional_info", curie=MIXS.curie('0000300'),
+                   model_uri=NMDC.additional_info, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.address = Slot(uri=MIXS['0000218'], name="address", curie=MIXS.curie('0000218'),
+                   model_uri=NMDC.address, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.adj_room = Slot(uri=MIXS['0000219'], name="adj_room", curie=MIXS.curie('0000219'),
+                   model_uri=NMDC.adj_room, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.aero_struc = Slot(uri=MIXS['0000773'], name="aero_struc", curie=MIXS.curie('0000773'),
+                   model_uri=NMDC.aero_struc, domain=None, range=Optional[Union[dict, TextValue]])
+
 slots.agrochem_addition = Slot(uri=MIXS['0000639'], name="agrochem_addition", curie=MIXS.curie('0000639'),
                    model_uri=NMDC.agrochem_addition, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.air_PM_concen = Slot(uri=MIXS['0000108'], name="air_PM_concen", curie=MIXS.curie('0000108'),
+                   model_uri=NMDC.air_PM_concen, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.air_temp = Slot(uri=MIXS['0000124'], name="air_temp", curie=MIXS.curie('0000124'),
+                   model_uri=NMDC.air_temp, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.air_temp_regm = Slot(uri=MIXS['0000551'], name="air_temp_regm", curie=MIXS.curie('0000551'),
                    model_uri=NMDC.air_temp_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
@@ -5733,14 +8581,83 @@ slots.aminopept_act = Slot(uri=MIXS['0000172'], name="aminopept_act", curie=MIXS
 slots.ammonium = Slot(uri=MIXS['0000427'], name="ammonium", curie=MIXS.curie('0000427'),
                    model_uri=NMDC.ammonium, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.amount_light = Slot(uri=MIXS['0000140'], name="amount_light", curie=MIXS.curie('0000140'),
+                   model_uri=NMDC.amount_light, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.ances_data = Slot(uri=MIXS['0000247'], name="ances_data", curie=MIXS.curie('0000247'),
+                   model_uri=NMDC.ances_data, domain=None, range=Optional[Union[dict, TextValue]])
+
 slots.annual_precpt = Slot(uri=MIXS['0000644'], name="annual_precpt", curie=MIXS.curie('0000644'),
                    model_uri=NMDC.annual_precpt, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.annual_temp = Slot(uri=MIXS['0000642'], name="annual_temp", curie=MIXS.curie('0000642'),
                    model_uri=NMDC.annual_temp, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.antibiotic_regm = Slot(uri=MIXS['0000553'], name="antibiotic_regm", curie=MIXS.curie('0000553'),
+                   model_uri=NMDC.antibiotic_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.api = Slot(uri=MIXS['0000157'], name="api", curie=MIXS.curie('0000157'),
+                   model_uri=NMDC.api, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.arch_struc = Slot(uri=MIXS['0000774'], name="arch_struc", curie=MIXS.curie('0000774'),
+                   model_uri=NMDC.arch_struc, domain=None, range=Optional[Union[str, "ArchStrucEnum"]])
+
+slots.aromatics_pc = Slot(uri=MIXS['0000133'], name="aromatics_pc", curie=MIXS.curie('0000133'),
+                   model_uri=NMDC.aromatics_pc, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.asphaltenes_pc = Slot(uri=MIXS['0000135'], name="asphaltenes_pc", curie=MIXS.curie('0000135'),
+                   model_uri=NMDC.asphaltenes_pc, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.atmospheric_data = Slot(uri=MIXS['0001097'], name="atmospheric_data", curie=MIXS.curie('0001097'),
+                   model_uri=NMDC.atmospheric_data, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.avg_dew_point = Slot(uri=MIXS['0000141'], name="avg_dew_point", curie=MIXS.curie('0000141'),
+                   model_uri=NMDC.avg_dew_point, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.avg_occup = Slot(uri=MIXS['0000775'], name="avg_occup", curie=MIXS.curie('0000775'),
+                   model_uri=NMDC.avg_occup, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.avg_temp = Slot(uri=MIXS['0000142'], name="avg_temp", curie=MIXS.curie('0000142'),
+                   model_uri=NMDC.avg_temp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.bac_prod = Slot(uri=MIXS['0000683'], name="bac_prod", curie=MIXS.curie('0000683'),
+                   model_uri=NMDC.bac_prod, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.bac_resp = Slot(uri=MIXS['0000684'], name="bac_resp", curie=MIXS.curie('0000684'),
+                   model_uri=NMDC.bac_resp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.bacteria_carb_prod = Slot(uri=MIXS['0000173'], name="bacteria_carb_prod", curie=MIXS.curie('0000173'),
                    model_uri=NMDC.bacteria_carb_prod, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.barometric_press = Slot(uri=MIXS['0000096'], name="barometric_press", curie=MIXS.curie('0000096'),
+                   model_uri=NMDC.barometric_press, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.basin = Slot(uri=MIXS['0000290'], name="basin", curie=MIXS.curie('0000290'),
+                   model_uri=NMDC.basin, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.bathroom_count = Slot(uri=MIXS['0000776'], name="bathroom_count", curie=MIXS.curie('0000776'),
+                   model_uri=NMDC.bathroom_count, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.bedroom_count = Slot(uri=MIXS['0000777'], name="bedroom_count", curie=MIXS.curie('0000777'),
+                   model_uri=NMDC.bedroom_count, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.benzene = Slot(uri=MIXS['0000153'], name="benzene", curie=MIXS.curie('0000153'),
+                   model_uri=NMDC.benzene, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.biochem_oxygen_dem = Slot(uri=MIXS['0000653'], name="biochem_oxygen_dem", curie=MIXS.curie('0000653'),
+                   model_uri=NMDC.biochem_oxygen_dem, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.biocide = Slot(uri=MIXS['0001011'], name="biocide", curie=MIXS.curie('0001011'),
+                   model_uri=NMDC.biocide, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.biocide_admin_method = Slot(uri=MIXS['0000456'], name="biocide_admin_method", curie=MIXS.curie('0000456'),
+                   model_uri=NMDC.biocide_admin_method, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.biol_stat = Slot(uri=MIXS['0000858'], name="biol_stat", curie=MIXS.curie('0000858'),
+                   model_uri=NMDC.biol_stat, domain=None, range=Optional[Union[str, "BiolStatEnum"]])
+
+slots.biomass = Slot(uri=MIXS['0000174'], name="biomass", curie=MIXS.curie('0000174'),
+                   model_uri=NMDC.biomass, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
 
 slots.biotic_regm = Slot(uri=MIXS['0001038'], name="biotic_regm", curie=MIXS.curie('0001038'),
                    model_uri=NMDC.biotic_regm, domain=None, range=Optional[Union[dict, TextValue]])
@@ -5751,17 +8668,83 @@ slots.biotic_relationship = Slot(uri=MIXS['0000028'], name="biotic_relationship"
 slots.bishomohopanol = Slot(uri=MIXS['0000175'], name="bishomohopanol", curie=MIXS.curie('0000175'),
                    model_uri=NMDC.bishomohopanol, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.blood_press_diast = Slot(uri=MIXS['0000258'], name="blood_press_diast", curie=MIXS.curie('0000258'),
+                   model_uri=NMDC.blood_press_diast, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.blood_press_syst = Slot(uri=MIXS['0000259'], name="blood_press_syst", curie=MIXS.curie('0000259'),
+                   model_uri=NMDC.blood_press_syst, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.bromide = Slot(uri=MIXS['0000176'], name="bromide", curie=MIXS.curie('0000176'),
                    model_uri=NMDC.bromide, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.build_docs = Slot(uri=MIXS['0000787'], name="build_docs", curie=MIXS.curie('0000787'),
+                   model_uri=NMDC.build_docs, domain=None, range=Optional[Union[str, "BuildDocsEnum"]])
+
+slots.build_occup_type = Slot(uri=MIXS['0000761'], name="build_occup_type", curie=MIXS.curie('0000761'),
+                   model_uri=NMDC.build_occup_type, domain=None, range=Optional[Union[Union[str, "BuildOccupTypeEnum"], List[Union[str, "BuildOccupTypeEnum"]]]])
+
+slots.building_setting = Slot(uri=MIXS['0000768'], name="building_setting", curie=MIXS.curie('0000768'),
+                   model_uri=NMDC.building_setting, domain=None, range=Optional[Union[str, "BuildingSettingEnum"]])
+
+slots.built_struc_age = Slot(uri=MIXS['0000145'], name="built_struc_age", curie=MIXS.curie('0000145'),
+                   model_uri=NMDC.built_struc_age, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.built_struc_set = Slot(uri=MIXS['0000778'], name="built_struc_set", curie=MIXS.curie('0000778'),
+                   model_uri=NMDC.built_struc_set, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.built_struc_type = Slot(uri=MIXS['0000721'], name="built_struc_type", curie=MIXS.curie('0000721'),
+                   model_uri=NMDC.built_struc_type, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.calcium = Slot(uri=MIXS['0000432'], name="calcium", curie=MIXS.curie('0000432'),
                    model_uri=NMDC.calcium, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.carb_dioxide = Slot(uri=MIXS['0000097'], name="carb_dioxide", curie=MIXS.curie('0000097'),
+                   model_uri=NMDC.carb_dioxide, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.carb_monoxide = Slot(uri=MIXS['0000098'], name="carb_monoxide", curie=MIXS.curie('0000098'),
+                   model_uri=NMDC.carb_monoxide, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.carb_nitro_ratio = Slot(uri=MIXS['0000310'], name="carb_nitro_ratio", curie=MIXS.curie('0000310'),
                    model_uri=NMDC.carb_nitro_ratio, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.ceil_area = Slot(uri=MIXS['0000148'], name="ceil_area", curie=MIXS.curie('0000148'),
+                   model_uri=NMDC.ceil_area, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.ceil_cond = Slot(uri=MIXS['0000779'], name="ceil_cond", curie=MIXS.curie('0000779'),
+                   model_uri=NMDC.ceil_cond, domain=None, range=Optional[Union[str, "CeilCondEnum"]])
+
+slots.ceil_finish_mat = Slot(uri=MIXS['0000780'], name="ceil_finish_mat", curie=MIXS.curie('0000780'),
+                   model_uri=NMDC.ceil_finish_mat, domain=None, range=Optional[Union[str, "CeilFinishMatEnum"]])
+
+slots.ceil_struc = Slot(uri=MIXS['0000782'], name="ceil_struc", curie=MIXS.curie('0000782'),
+                   model_uri=NMDC.ceil_struc, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.ceil_texture = Slot(uri=MIXS['0000783'], name="ceil_texture", curie=MIXS.curie('0000783'),
+                   model_uri=NMDC.ceil_texture, domain=None, range=Optional[Union[str, "CeilTextureEnum"]])
+
+slots.ceil_thermal_mass = Slot(uri=MIXS['0000143'], name="ceil_thermal_mass", curie=MIXS.curie('0000143'),
+                   model_uri=NMDC.ceil_thermal_mass, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.ceil_type = Slot(uri=MIXS['0000784'], name="ceil_type", curie=MIXS.curie('0000784'),
+                   model_uri=NMDC.ceil_type, domain=None, range=Optional[Union[str, "CeilTypeEnum"]])
+
+slots.ceil_water_mold = Slot(uri=MIXS['0000781'], name="ceil_water_mold", curie=MIXS.curie('0000781'),
+                   model_uri=NMDC.ceil_water_mold, domain=None, range=Optional[Union[dict, TextValue]])
+
 slots.chem_administration = Slot(uri=MIXS['0000751'], name="chem_administration", curie=MIXS.curie('0000751'),
                    model_uri=NMDC.chem_administration, domain=None, range=Optional[Union[Union[dict, ControlledTermValue], List[Union[dict, ControlledTermValue]]]])
+
+slots.chem_mutagen = Slot(uri=MIXS['0000555'], name="chem_mutagen", curie=MIXS.curie('0000555'),
+                   model_uri=NMDC.chem_mutagen, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.chem_oxygen_dem = Slot(uri=MIXS['0000656'], name="chem_oxygen_dem", curie=MIXS.curie('0000656'),
+                   model_uri=NMDC.chem_oxygen_dem, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.chem_treat_method = Slot(uri=MIXS['0000457'], name="chem_treat_method", curie=MIXS.curie('0000457'),
+                   model_uri=NMDC.chem_treat_method, domain=None, range=Optional[str])
+
+slots.chem_treatment = Slot(uri=MIXS['0001012'], name="chem_treatment", curie=MIXS.curie('0001012'),
+                   model_uri=NMDC.chem_treatment, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.chimera_check = Slot(uri=MIXS['0000052'], name="chimera_check", curie=MIXS.curie('0000052'),
                    model_uri=NMDC.chimera_check, domain=None, range=Optional[Union[dict, TextValue]])
@@ -5778,8 +8761,17 @@ slots.climate_environment = Slot(uri=MIXS['0001040'], name="climate_environment"
 slots.collection_date = Slot(uri=MIXS['0000011'], name="collection_date", curie=MIXS.curie('0000011'),
                    model_uri=NMDC.collection_date, domain=None, range=Optional[Union[dict, TimestampValue]])
 
+slots.conduc = Slot(uri=MIXS['0000692'], name="conduc", curie=MIXS.curie('0000692'),
+                   model_uri=NMDC.conduc, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.cool_syst_id = Slot(uri=MIXS['0000785'], name="cool_syst_id", curie=MIXS.curie('0000785'),
+                   model_uri=NMDC.cool_syst_id, domain=None, range=Optional[Union[dict, TextValue]])
+
 slots.crop_rotation = Slot(uri=MIXS['0000318'], name="crop_rotation", curie=MIXS.curie('0000318'),
                    model_uri=NMDC.crop_rotation, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.cult_root_med = Slot(uri=MIXS['0001041'], name="cult_root_med", curie=MIXS.curie('0001041'),
+                   model_uri=NMDC.cult_root_med, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.cur_land_use = Slot(uri=MIXS['0001080'], name="cur_land_use", curie=MIXS.curie('0001080'),
                    model_uri=NMDC.cur_land_use, domain=None, range=Optional[Union[str, "CurLandUseEnum"]])
@@ -5790,11 +8782,23 @@ slots.cur_vegetation = Slot(uri=MIXS['0000312'], name="cur_vegetation", curie=MI
 slots.cur_vegetation_meth = Slot(uri=MIXS['0000314'], name="cur_vegetation_meth", curie=MIXS.curie('0000314'),
                    model_uri=NMDC.cur_vegetation_meth, domain=None, range=Optional[Union[dict, TextValue]])
 
+slots.date_last_rain = Slot(uri=MIXS['0000786'], name="date_last_rain", curie=MIXS.curie('0000786'),
+                   model_uri=NMDC.date_last_rain, domain=None, range=Optional[Union[dict, TimestampValue]])
+
 slots.density = Slot(uri=MIXS['0000435'], name="density", curie=MIXS.curie('0000435'),
                    model_uri=NMDC.density, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.depos_env = Slot(uri=MIXS['0000992'], name="depos_env", curie=MIXS.curie('0000992'),
+                   model_uri=NMDC.depos_env, domain=None, range=Optional[Union[str, "DeposEnvEnum"]])
+
 slots.depth = Slot(uri=MIXS['0000018'], name="depth", curie=MIXS.curie('0000018'),
                    model_uri=NMDC.depth, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.dew_point = Slot(uri=MIXS['0000129'], name="dew_point", curie=MIXS.curie('0000129'),
+                   model_uri=NMDC.dew_point, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.diether_lipids = Slot(uri=MIXS['0000178'], name="diether_lipids", curie=MIXS.curie('0000178'),
+                   model_uri=NMDC.diether_lipids, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
 
 slots.diss_carb_dioxide = Slot(uri=MIXS['0000436'], name="diss_carb_dioxide", curie=MIXS.curie('0000436'),
                    model_uri=NMDC.diss_carb_dioxide, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -5805,8 +8809,14 @@ slots.diss_hydrogen = Slot(uri=MIXS['0000179'], name="diss_hydrogen", curie=MIXS
 slots.diss_inorg_carb = Slot(uri=MIXS['0000434'], name="diss_inorg_carb", curie=MIXS.curie('0000434'),
                    model_uri=NMDC.diss_inorg_carb, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.diss_inorg_nitro = Slot(uri=MIXS['0000698'], name="diss_inorg_nitro", curie=MIXS.curie('0000698'),
+                   model_uri=NMDC.diss_inorg_nitro, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.diss_inorg_phosp = Slot(uri=MIXS['0000106'], name="diss_inorg_phosp", curie=MIXS.curie('0000106'),
                    model_uri=NMDC.diss_inorg_phosp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.diss_iron = Slot(uri=MIXS['0000139'], name="diss_iron", curie=MIXS.curie('0000139'),
+                   model_uri=NMDC.diss_iron, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.diss_org_carb = Slot(uri=MIXS['0000433'], name="diss_org_carb", curie=MIXS.curie('0000433'),
                    model_uri=NMDC.diss_org_carb, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -5817,11 +8827,62 @@ slots.diss_org_nitro = Slot(uri=MIXS['0000162'], name="diss_org_nitro", curie=MI
 slots.diss_oxygen = Slot(uri=MIXS['0000119'], name="diss_oxygen", curie=MIXS.curie('0000119'),
                    model_uri=NMDC.diss_oxygen, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.diss_oxygen_fluid = Slot(uri=MIXS['0000438'], name="diss_oxygen_fluid", curie=MIXS.curie('0000438'),
+                   model_uri=NMDC.diss_oxygen_fluid, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.door_comp_type = Slot(uri=MIXS['0000795'], name="door_comp_type", curie=MIXS.curie('0000795'),
+                   model_uri=NMDC.door_comp_type, domain=None, range=Optional[Union[str, "DoorCompTypeEnum"]])
+
+slots.door_cond = Slot(uri=MIXS['0000788'], name="door_cond", curie=MIXS.curie('0000788'),
+                   model_uri=NMDC.door_cond, domain=None, range=Optional[Union[str, "DoorCondEnum"]])
+
+slots.door_direct = Slot(uri=MIXS['0000789'], name="door_direct", curie=MIXS.curie('0000789'),
+                   model_uri=NMDC.door_direct, domain=None, range=Optional[Union[str, "DoorDirectEnum"]])
+
+slots.door_loc = Slot(uri=MIXS['0000790'], name="door_loc", curie=MIXS.curie('0000790'),
+                   model_uri=NMDC.door_loc, domain=None, range=Optional[Union[str, "DoorLocEnum"]])
+
+slots.door_mat = Slot(uri=MIXS['0000791'], name="door_mat", curie=MIXS.curie('0000791'),
+                   model_uri=NMDC.door_mat, domain=None, range=Optional[Union[str, "DoorMatEnum"]])
+
+slots.door_move = Slot(uri=MIXS['0000792'], name="door_move", curie=MIXS.curie('0000792'),
+                   model_uri=NMDC.door_move, domain=None, range=Optional[Union[str, "DoorMoveEnum"]])
+
+slots.door_size = Slot(uri=MIXS['0000158'], name="door_size", curie=MIXS.curie('0000158'),
+                   model_uri=NMDC.door_size, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.door_type = Slot(uri=MIXS['0000794'], name="door_type", curie=MIXS.curie('0000794'),
+                   model_uri=NMDC.door_type, domain=None, range=Optional[Union[str, "DoorTypeEnum"]])
+
+slots.door_type_metal = Slot(uri=MIXS['0000796'], name="door_type_metal", curie=MIXS.curie('0000796'),
+                   model_uri=NMDC.door_type_metal, domain=None, range=Optional[Union[str, "DoorTypeMetalEnum"]])
+
+slots.door_type_wood = Slot(uri=MIXS['0000797'], name="door_type_wood", curie=MIXS.curie('0000797'),
+                   model_uri=NMDC.door_type_wood, domain=None, range=Optional[Union[str, "DoorTypeWoodEnum"]])
+
+slots.door_water_mold = Slot(uri=MIXS['0000793'], name="door_water_mold", curie=MIXS.curie('0000793'),
+                   model_uri=NMDC.door_water_mold, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.down_par = Slot(uri=MIXS['0000703'], name="down_par", curie=MIXS.curie('0000703'),
+                   model_uri=NMDC.down_par, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.drainage_class = Slot(uri=MIXS['0001085'], name="drainage_class", curie=MIXS.curie('0001085'),
                    model_uri=NMDC.drainage_class, domain=None, range=Optional[Union[str, "DrainageClassEnum"]])
 
+slots.drawings = Slot(uri=MIXS['0000798'], name="drawings", curie=MIXS.curie('0000798'),
+                   model_uri=NMDC.drawings, domain=None, range=Optional[Union[str, "DrawingsEnum"]])
+
+slots.efficiency_percent = Slot(uri=MIXS['0000657'], name="efficiency_percent", curie=MIXS.curie('0000657'),
+                   model_uri=NMDC.efficiency_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.elev = Slot(uri=MIXS['0000093'], name="elev", curie=MIXS.curie('0000093'),
                    model_uri=NMDC.elev, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.elevator = Slot(uri=MIXS['0000799'], name="elevator", curie=MIXS.curie('0000799'),
+                   model_uri=NMDC.elevator, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.emulsions = Slot(uri=MIXS['0000660'], name="emulsions", curie=MIXS.curie('0000660'),
+                   model_uri=NMDC.emulsions, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
 
 slots.env_broad_scale = Slot(uri=MIXS['0000012'], name="env_broad_scale", curie=MIXS.curie('0000012'),
                    model_uri=NMDC.env_broad_scale, domain=None, range=Optional[Union[dict, ControlledIdentifiedTermValue]])
@@ -5832,8 +8893,29 @@ slots.env_local_scale = Slot(uri=MIXS['0000013'], name="env_local_scale", curie=
 slots.env_medium = Slot(uri=MIXS['0000014'], name="env_medium", curie=MIXS.curie('0000014'),
                    model_uri=NMDC.env_medium, domain=None, range=Optional[Union[dict, ControlledIdentifiedTermValue]])
 
+slots.escalator = Slot(uri=MIXS['0000800'], name="escalator", curie=MIXS.curie('0000800'),
+                   model_uri=NMDC.escalator, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.ethylbenzene = Slot(uri=MIXS['0000155'], name="ethylbenzene", curie=MIXS.curie('0000155'),
+                   model_uri=NMDC.ethylbenzene, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.exp_duct = Slot(uri=MIXS['0000144'], name="exp_duct", curie=MIXS.curie('0000144'),
+                   model_uri=NMDC.exp_duct, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.exp_pipe = Slot(uri=MIXS['0000220'], name="exp_pipe", curie=MIXS.curie('0000220'),
+                   model_uri=NMDC.exp_pipe, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.experimental_factor = Slot(uri=MIXS['0000008'], name="experimental_factor", curie=MIXS.curie('0000008'),
                    model_uri=NMDC.experimental_factor, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+
+slots.ext_door = Slot(uri=MIXS['0000170'], name="ext_door", curie=MIXS.curie('0000170'),
+                   model_uri=NMDC.ext_door, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.ext_wall_orient = Slot(uri=MIXS['0000817'], name="ext_wall_orient", curie=MIXS.curie('0000817'),
+                   model_uri=NMDC.ext_wall_orient, domain=None, range=Optional[Union[str, "ExtWallOrientEnum"]])
+
+slots.ext_window_orient = Slot(uri=MIXS['0000818'], name="ext_window_orient", curie=MIXS.curie('0000818'),
+                   model_uri=NMDC.ext_window_orient, domain=None, range=Optional[Union[str, "ExtWindowOrientEnum"]])
 
 slots.extreme_event = Slot(uri=MIXS['0000320'], name="extreme_event", curie=MIXS.curie('0000320'),
                    model_uri=NMDC.extreme_event, domain=None, range=Optional[Union[dict, TimestampValue]])
@@ -5841,14 +8923,74 @@ slots.extreme_event = Slot(uri=MIXS['0000320'], name="extreme_event", curie=MIXS
 slots.fao_class = Slot(uri=MIXS['0001083'], name="fao_class", curie=MIXS.curie('0001083'),
                    model_uri=NMDC.fao_class, domain=None, range=Optional[Union[str, "FaoClassEnum"]])
 
+slots.fertilizer_regm = Slot(uri=MIXS['0000556'], name="fertilizer_regm", curie=MIXS.curie('0000556'),
+                   model_uri=NMDC.fertilizer_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.field = Slot(uri=MIXS['0000291'], name="field", curie=MIXS.curie('0000291'),
+                   model_uri=NMDC.field, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.filter_type = Slot(uri=MIXS['0000765'], name="filter_type", curie=MIXS.curie('0000765'),
+                   model_uri=NMDC.filter_type, domain=None, range=Optional[Union[Union[str, "FilterTypeEnum"], List[Union[str, "FilterTypeEnum"]]]])
+
 slots.fire = Slot(uri=MIXS['0001086'], name="fire", curie=MIXS.curie('0001086'),
                    model_uri=NMDC.fire, domain=None, range=Optional[Union[dict, TimestampValue]])
+
+slots.fireplace_type = Slot(uri=MIXS['0000802'], name="fireplace_type", curie=MIXS.curie('0000802'),
+                   model_uri=NMDC.fireplace_type, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.flooding = Slot(uri=MIXS['0000319'], name="flooding", curie=MIXS.curie('0000319'),
                    model_uri=NMDC.flooding, domain=None, range=Optional[Union[dict, TimestampValue]])
 
+slots.floor_age = Slot(uri=MIXS['0000164'], name="floor_age", curie=MIXS.curie('0000164'),
+                   model_uri=NMDC.floor_age, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.floor_area = Slot(uri=MIXS['0000165'], name="floor_area", curie=MIXS.curie('0000165'),
+                   model_uri=NMDC.floor_area, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.floor_cond = Slot(uri=MIXS['0000803'], name="floor_cond", curie=MIXS.curie('0000803'),
+                   model_uri=NMDC.floor_cond, domain=None, range=Optional[Union[str, "FloorCondEnum"]])
+
+slots.floor_count = Slot(uri=MIXS['0000225'], name="floor_count", curie=MIXS.curie('0000225'),
+                   model_uri=NMDC.floor_count, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.floor_finish_mat = Slot(uri=MIXS['0000804'], name="floor_finish_mat", curie=MIXS.curie('0000804'),
+                   model_uri=NMDC.floor_finish_mat, domain=None, range=Optional[Union[str, "FloorFinishMatEnum"]])
+
+slots.floor_struc = Slot(uri=MIXS['0000806'], name="floor_struc", curie=MIXS.curie('0000806'),
+                   model_uri=NMDC.floor_struc, domain=None, range=Optional[Union[str, "FloorStrucEnum"]])
+
+slots.floor_thermal_mass = Slot(uri=MIXS['0000166'], name="floor_thermal_mass", curie=MIXS.curie('0000166'),
+                   model_uri=NMDC.floor_thermal_mass, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.floor_water_mold = Slot(uri=MIXS['0000805'], name="floor_water_mold", curie=MIXS.curie('0000805'),
+                   model_uri=NMDC.floor_water_mold, domain=None, range=Optional[Union[str, "FloorWaterMoldEnum"]])
+
+slots.fluor = Slot(uri=MIXS['0000704'], name="fluor", curie=MIXS.curie('0000704'),
+                   model_uri=NMDC.fluor, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.freq_clean = Slot(uri=MIXS['0000226'], name="freq_clean", curie=MIXS.curie('0000226'),
+                   model_uri=NMDC.freq_clean, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.freq_cook = Slot(uri=MIXS['0000227'], name="freq_cook", curie=MIXS.curie('0000227'),
+                   model_uri=NMDC.freq_cook, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.fungicide_regm = Slot(uri=MIXS['0000557'], name="fungicide_regm", curie=MIXS.curie('0000557'),
+                   model_uri=NMDC.fungicide_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.furniture = Slot(uri=MIXS['0000807'], name="furniture", curie=MIXS.curie('0000807'),
+                   model_uri=NMDC.furniture, domain=None, range=Optional[Union[str, "FurnitureEnum"]])
+
 slots.gaseous_environment = Slot(uri=MIXS['0000558'], name="gaseous_environment", curie=MIXS.curie('0000558'),
                    model_uri=NMDC.gaseous_environment, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.gaseous_substances = Slot(uri=MIXS['0000661'], name="gaseous_substances", curie=MIXS.curie('0000661'),
+                   model_uri=NMDC.gaseous_substances, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.gender_restroom = Slot(uri=MIXS['0000808'], name="gender_restroom", curie=MIXS.curie('0000808'),
+                   model_uri=NMDC.gender_restroom, domain=None, range=Optional[Union[str, "GenderRestroomEnum"]])
+
+slots.genetic_mod = Slot(uri=MIXS['0000859'], name="genetic_mod", curie=MIXS.curie('0000859'),
+                   model_uri=NMDC.genetic_mod, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.geo_loc_name = Slot(uri=MIXS['0000010'], name="geo_loc_name", curie=MIXS.curie('0000010'),
                    model_uri=NMDC.geo_loc_name, domain=None, range=Optional[Union[dict, TextValue]])
@@ -5856,8 +8998,56 @@ slots.geo_loc_name = Slot(uri=MIXS['0000010'], name="geo_loc_name", curie=MIXS.c
 slots.glucosidase_act = Slot(uri=MIXS['0000137'], name="glucosidase_act", curie=MIXS.curie('0000137'),
                    model_uri=NMDC.glucosidase_act, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.gravidity = Slot(uri=MIXS['0000875'], name="gravidity", curie=MIXS.curie('0000875'),
+                   model_uri=NMDC.gravidity, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.gravity = Slot(uri=MIXS['0000559'], name="gravity", curie=MIXS.curie('0000559'),
+                   model_uri=NMDC.gravity, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
 slots.growth_facil = Slot(uri=MIXS['0001043'], name="growth_facil", curie=MIXS.curie('0001043'),
                    model_uri=NMDC.growth_facil, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+
+slots.growth_habit = Slot(uri=MIXS['0001044'], name="growth_habit", curie=MIXS.curie('0001044'),
+                   model_uri=NMDC.growth_habit, domain=None, range=Optional[Union[str, "GrowthHabitEnum"]])
+
+slots.growth_hormone_regm = Slot(uri=MIXS['0000560'], name="growth_hormone_regm", curie=MIXS.curie('0000560'),
+                   model_uri=NMDC.growth_hormone_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.hall_count = Slot(uri=MIXS['0000228'], name="hall_count", curie=MIXS.curie('0000228'),
+                   model_uri=NMDC.hall_count, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.handidness = Slot(uri=MIXS['0000809'], name="handidness", curie=MIXS.curie('0000809'),
+                   model_uri=NMDC.handidness, domain=None, range=Optional[Union[str, "HandidnessEnum"]])
+
+slots.hc_produced = Slot(uri=MIXS['0000989'], name="hc_produced", curie=MIXS.curie('0000989'),
+                   model_uri=NMDC.hc_produced, domain=None, range=Optional[Union[str, "HcProducedEnum"]])
+
+slots.hcr = Slot(uri=MIXS['0000988'], name="hcr", curie=MIXS.curie('0000988'),
+                   model_uri=NMDC.hcr, domain=None, range=Optional[Union[str, "HcrEnum"]])
+
+slots.hcr_fw_salinity = Slot(uri=MIXS['0000406'], name="hcr_fw_salinity", curie=MIXS.curie('0000406'),
+                   model_uri=NMDC.hcr_fw_salinity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.hcr_geol_age = Slot(uri=MIXS['0000993'], name="hcr_geol_age", curie=MIXS.curie('0000993'),
+                   model_uri=NMDC.hcr_geol_age, domain=None, range=Optional[Union[str, "HcrGeolAgeEnum"]])
+
+slots.hcr_pressure = Slot(uri=MIXS['0000395'], name="hcr_pressure", curie=MIXS.curie('0000395'),
+                   model_uri=NMDC.hcr_pressure, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.hcr_temp = Slot(uri=MIXS['0000393'], name="hcr_temp", curie=MIXS.curie('0000393'),
+                   model_uri=NMDC.hcr_temp, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.heat_cool_type = Slot(uri=MIXS['0000766'], name="heat_cool_type", curie=MIXS.curie('0000766'),
+                   model_uri=NMDC.heat_cool_type, domain=None, range=Optional[Union[Union[str, "HeatCoolTypeEnum"], List[Union[str, "HeatCoolTypeEnum"]]]])
+
+slots.heat_deliv_loc = Slot(uri=MIXS['0000810'], name="heat_deliv_loc", curie=MIXS.curie('0000810'),
+                   model_uri=NMDC.heat_deliv_loc, domain=None, range=Optional[Union[str, "HeatDelivLocEnum"]])
+
+slots.heat_sys_deliv_meth = Slot(uri=MIXS['0000812'], name="heat_sys_deliv_meth", curie=MIXS.curie('0000812'),
+                   model_uri=NMDC.heat_sys_deliv_meth, domain=None, range=Optional[str])
+
+slots.heat_system_id = Slot(uri=MIXS['0000833'], name="heat_system_id", curie=MIXS.curie('0000833'),
+                   model_uri=NMDC.heat_system_id, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.heavy_metals = Slot(uri=MIXS['0000652'], name="heavy_metals", curie=MIXS.curie('0000652'),
                    model_uri=NMDC.heavy_metals, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
@@ -5865,17 +9055,137 @@ slots.heavy_metals = Slot(uri=MIXS['0000652'], name="heavy_metals", curie=MIXS.c
 slots.heavy_metals_meth = Slot(uri=MIXS['0000343'], name="heavy_metals_meth", curie=MIXS.curie('0000343'),
                    model_uri=NMDC.heavy_metals_meth, domain=None, range=Optional[Union[dict, TextValue]])
 
+slots.height_carper_fiber = Slot(uri=MIXS['0000167'], name="height_carper_fiber", curie=MIXS.curie('0000167'),
+                   model_uri=NMDC.height_carper_fiber, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.herbicide_regm = Slot(uri=MIXS['0000561'], name="herbicide_regm", curie=MIXS.curie('0000561'),
+                   model_uri=NMDC.herbicide_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.horizon_meth = Slot(uri=MIXS['0000321'], name="horizon_meth", curie=MIXS.curie('0000321'),
+                   model_uri=NMDC.horizon_meth, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_age = Slot(uri=MIXS['0000255'], name="host_age", curie=MIXS.curie('0000255'),
+                   model_uri=NMDC.host_age, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.host_body_habitat = Slot(uri=MIXS['0000866'], name="host_body_habitat", curie=MIXS.curie('0000866'),
+                   model_uri=NMDC.host_body_habitat, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_body_product = Slot(uri=MIXS['0000888'], name="host_body_product", curie=MIXS.curie('0000888'),
+                   model_uri=NMDC.host_body_product, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+
+slots.host_body_site = Slot(uri=MIXS['0000867'], name="host_body_site", curie=MIXS.curie('0000867'),
+                   model_uri=NMDC.host_body_site, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+
+slots.host_body_temp = Slot(uri=MIXS['0000274'], name="host_body_temp", curie=MIXS.curie('0000274'),
+                   model_uri=NMDC.host_body_temp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.host_color = Slot(uri=MIXS['0000260'], name="host_color", curie=MIXS.curie('0000260'),
+                   model_uri=NMDC.host_color, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_common_name = Slot(uri=MIXS['0000248'], name="host_common_name", curie=MIXS.curie('0000248'),
+                   model_uri=NMDC.host_common_name, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_diet = Slot(uri=MIXS['0000869'], name="host_diet", curie=MIXS.curie('0000869'),
+                   model_uri=NMDC.host_diet, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.host_dry_mass = Slot(uri=MIXS['0000257'], name="host_dry_mass", curie=MIXS.curie('0000257'),
+                   model_uri=NMDC.host_dry_mass, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.host_family_relation = Slot(uri=MIXS['0000872'], name="host_family_relation", curie=MIXS.curie('0000872'),
+                   model_uri=NMDC.host_family_relation, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.host_genotype = Slot(uri=MIXS['0000365'], name="host_genotype", curie=MIXS.curie('0000365'),
+                   model_uri=NMDC.host_genotype, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_growth_cond = Slot(uri=MIXS['0000871'], name="host_growth_cond", curie=MIXS.curie('0000871'),
+                   model_uri=NMDC.host_growth_cond, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_height = Slot(uri=MIXS['0000264'], name="host_height", curie=MIXS.curie('0000264'),
+                   model_uri=NMDC.host_height, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.host_last_meal = Slot(uri=MIXS['0000870'], name="host_last_meal", curie=MIXS.curie('0000870'),
+                   model_uri=NMDC.host_last_meal, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.host_length = Slot(uri=MIXS['0000256'], name="host_length", curie=MIXS.curie('0000256'),
+                   model_uri=NMDC.host_length, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.host_life_stage = Slot(uri=MIXS['0000251'], name="host_life_stage", curie=MIXS.curie('0000251'),
+                   model_uri=NMDC.host_life_stage, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_phenotype = Slot(uri=MIXS['0000874'], name="host_phenotype", curie=MIXS.curie('0000874'),
+                   model_uri=NMDC.host_phenotype, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+
+slots.host_sex = Slot(uri=MIXS['0000811'], name="host_sex", curie=MIXS.curie('0000811'),
+                   model_uri=NMDC.host_sex, domain=None, range=Optional[Union[str, "HostSexEnum"]])
+
+slots.host_shape = Slot(uri=MIXS['0000261'], name="host_shape", curie=MIXS.curie('0000261'),
+                   model_uri=NMDC.host_shape, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_subject_id = Slot(uri=MIXS['0000861'], name="host_subject_id", curie=MIXS.curie('0000861'),
+                   model_uri=NMDC.host_subject_id, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_subspecf_genlin = Slot(uri=MIXS['0001318'], name="host_subspecf_genlin", curie=MIXS.curie('0001318'),
+                   model_uri=NMDC.host_subspecf_genlin, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.host_substrate = Slot(uri=MIXS['0000252'], name="host_substrate", curie=MIXS.curie('0000252'),
+                   model_uri=NMDC.host_substrate, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_symbiont = Slot(uri=MIXS['0001298'], name="host_symbiont", curie=MIXS.curie('0001298'),
+                   model_uri=NMDC.host_symbiont, domain=None, range=Optional[Union[str, List[str]]])
+
 slots.host_taxid = Slot(uri=MIXS['0000250'], name="host_taxid", curie=MIXS.curie('0000250'),
                    model_uri=NMDC.host_taxid, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.host_tot_mass = Slot(uri=MIXS['0000263'], name="host_tot_mass", curie=MIXS.curie('0000263'),
+                   model_uri=NMDC.host_tot_mass, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.host_wet_mass = Slot(uri=MIXS['0000567'], name="host_wet_mass", curie=MIXS.curie('0000567'),
+                   model_uri=NMDC.host_wet_mass, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.humidity = Slot(uri=MIXS['0000100'], name="humidity", curie=MIXS.curie('0000100'),
+                   model_uri=NMDC.humidity, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.humidity_regm = Slot(uri=MIXS['0000568'], name="humidity_regm", curie=MIXS.curie('0000568'),
                    model_uri=NMDC.humidity_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
 
+slots.indoor_space = Slot(uri=MIXS['0000763'], name="indoor_space", curie=MIXS.curie('0000763'),
+                   model_uri=NMDC.indoor_space, domain=None, range=Optional[Union[str, "IndoorSpaceEnum"]])
+
+slots.indoor_surf = Slot(uri=MIXS['0000764'], name="indoor_surf", curie=MIXS.curie('0000764'),
+                   model_uri=NMDC.indoor_surf, domain=None, range=Optional[Union[str, "IndoorSurfEnum"]])
+
+slots.indust_eff_percent = Slot(uri=MIXS['0000662'], name="indust_eff_percent", curie=MIXS.curie('0000662'),
+                   model_uri=NMDC.indust_eff_percent, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.inorg_particles = Slot(uri=MIXS['0000664'], name="inorg_particles", curie=MIXS.curie('0000664'),
+                   model_uri=NMDC.inorg_particles, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.inside_lux = Slot(uri=MIXS['0000168'], name="inside_lux", curie=MIXS.curie('0000168'),
+                   model_uri=NMDC.inside_lux, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.int_wall_cond = Slot(uri=MIXS['0000813'], name="int_wall_cond", curie=MIXS.curie('0000813'),
+                   model_uri=NMDC.int_wall_cond, domain=None, range=Optional[Union[str, "IntWallCondEnum"]])
+
+slots.iw_bt_date_well = Slot(uri=MIXS['0001010'], name="iw_bt_date_well", curie=MIXS.curie('0001010'),
+                   model_uri=NMDC.iw_bt_date_well, domain=None, range=Optional[Union[dict, TimestampValue]])
+
+slots.iwf = Slot(uri=MIXS['0000455'], name="iwf", curie=MIXS.curie('0000455'),
+                   model_uri=NMDC.iwf, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.last_clean = Slot(uri=MIXS['0000814'], name="last_clean", curie=MIXS.curie('0000814'),
+                   model_uri=NMDC.last_clean, domain=None, range=Optional[Union[dict, TimestampValue]])
+
 slots.lat_lon = Slot(uri=MIXS['0000009'], name="lat_lon", curie=MIXS.curie('0000009'),
                    model_uri=NMDC.lat_lon, domain=None, range=Optional[Union[dict, GeolocationValue]])
 
+slots.light_intensity = Slot(uri=MIXS['0000706'], name="light_intensity", curie=MIXS.curie('0000706'),
+                   model_uri=NMDC.light_intensity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.light_regm = Slot(uri=MIXS['0000569'], name="light_regm", curie=MIXS.curie('0000569'),
                    model_uri=NMDC.light_regm, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.light_type = Slot(uri=MIXS['0000769'], name="light_type", curie=MIXS.curie('0000769'),
+                   model_uri=NMDC.light_type, domain=None, range=Optional[Union[Union[str, "LightTypeEnum"], List[Union[str, "LightTypeEnum"]]]])
 
 slots.link_addit_analys = Slot(uri=MIXS['0000340'], name="link_addit_analys", curie=MIXS.curie('0000340'),
                    model_uri=NMDC.link_addit_analys, domain=None, range=Optional[Union[dict, TextValue]])
@@ -5886,6 +9196,9 @@ slots.link_class_info = Slot(uri=MIXS['0000329'], name="link_class_info", curie=
 slots.link_climate_info = Slot(uri=MIXS['0000328'], name="link_climate_info", curie=MIXS.curie('0000328'),
                    model_uri=NMDC.link_climate_info, domain=None, range=Optional[Union[dict, TextValue]])
 
+slots.lithology = Slot(uri=MIXS['0000990'], name="lithology", curie=MIXS.curie('0000990'),
+                   model_uri=NMDC.lithology, domain=None, range=Optional[Union[str, "LithologyEnum"]])
+
 slots.local_class = Slot(uri=MIXS['0000330'], name="local_class", curie=MIXS.curie('0000330'),
                    model_uri=NMDC.local_class, domain=None, range=Optional[Union[dict, TextValue]])
 
@@ -5895,11 +9208,32 @@ slots.local_class_meth = Slot(uri=MIXS['0000331'], name="local_class_meth", curi
 slots.magnesium = Slot(uri=MIXS['0000431'], name="magnesium", curie=MIXS.curie('0000431'),
                    model_uri=NMDC.magnesium, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.max_occup = Slot(uri=MIXS['0000229'], name="max_occup", curie=MIXS.curie('0000229'),
+                   model_uri=NMDC.max_occup, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.mean_frict_vel = Slot(uri=MIXS['0000498'], name="mean_frict_vel", curie=MIXS.curie('0000498'),
                    model_uri=NMDC.mean_frict_vel, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.mean_peak_frict_vel = Slot(uri=MIXS['0000502'], name="mean_peak_frict_vel", curie=MIXS.curie('0000502'),
                    model_uri=NMDC.mean_peak_frict_vel, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mech_struc = Slot(uri=MIXS['0000815'], name="mech_struc", curie=MIXS.curie('0000815'),
+                   model_uri=NMDC.mech_struc, domain=None, range=Optional[Union[str, "MechStrucEnum"]])
+
+slots.mechanical_damage = Slot(uri=MIXS['0001052'], name="mechanical_damage", curie=MIXS.curie('0001052'),
+                   model_uri=NMDC.mechanical_damage, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.methane = Slot(uri=MIXS['0000101'], name="methane", curie=MIXS.curie('0000101'),
+                   model_uri=NMDC.methane, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.micro_biomass_meth = Slot(uri=MIXS['0000339'], name="micro_biomass_meth", curie=MIXS.curie('0000339'),
+                   model_uri=NMDC.micro_biomass_meth, domain=None, range=Optional[str])
+
+slots.microbial_biomass = Slot(uri=MIXS['0000650'], name="microbial_biomass", curie=MIXS.curie('0000650'),
+                   model_uri=NMDC.microbial_biomass, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.mineral_nutr_regm = Slot(uri=MIXS['0000570'], name="mineral_nutr_regm", curie=MIXS.curie('0000570'),
+                   model_uri=NMDC.mineral_nutr_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
 
 slots.misc_param = Slot(uri=MIXS['0000752'], name="misc_param", curie=MIXS.curie('0000752'),
                    model_uri=NMDC.misc_param, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
@@ -5913,11 +9247,41 @@ slots.nitrate = Slot(uri=MIXS['0000425'], name="nitrate", curie=MIXS.curie('0000
 slots.nitrite = Slot(uri=MIXS['0000426'], name="nitrite", curie=MIXS.curie('0000426'),
                    model_uri=NMDC.nitrite, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.nitro = Slot(uri=MIXS['0000504'], name="nitro", curie=MIXS.curie('0000504'),
+                   model_uri=NMDC.nitro, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.non_min_nutr_regm = Slot(uri=MIXS['0000571'], name="non_min_nutr_regm", curie=MIXS.curie('0000571'),
+                   model_uri=NMDC.non_min_nutr_regm, domain=None, range=Optional[Union[str, List[str]]])
+
 slots.nucl_acid_amp = Slot(uri=MIXS['0000038'], name="nucl_acid_amp", curie=MIXS.curie('0000038'),
                    model_uri=NMDC.nucl_acid_amp, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.nucl_acid_ext = Slot(uri=MIXS['0000037'], name="nucl_acid_ext", curie=MIXS.curie('0000037'),
                    model_uri=NMDC.nucl_acid_ext, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.number_pets = Slot(uri=MIXS['0000231'], name="number_pets", curie=MIXS.curie('0000231'),
+                   model_uri=NMDC.number_pets, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.number_plants = Slot(uri=MIXS['0000230'], name="number_plants", curie=MIXS.curie('0000230'),
+                   model_uri=NMDC.number_plants, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.number_resident = Slot(uri=MIXS['0000232'], name="number_resident", curie=MIXS.curie('0000232'),
+                   model_uri=NMDC.number_resident, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.occup_density_samp = Slot(uri=MIXS['0000217'], name="occup_density_samp", curie=MIXS.curie('0000217'),
+                   model_uri=NMDC.occup_density_samp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.occup_document = Slot(uri=MIXS['0000816'], name="occup_document", curie=MIXS.curie('0000816'),
+                   model_uri=NMDC.occup_document, domain=None, range=Optional[Union[str, "OccupDocumentEnum"]])
+
+slots.occup_samp = Slot(uri=MIXS['0000772'], name="occup_samp", curie=MIXS.curie('0000772'),
+                   model_uri=NMDC.occup_samp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.org_carb = Slot(uri=MIXS['0000508'], name="org_carb", curie=MIXS.curie('0000508'),
+                   model_uri=NMDC.org_carb, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.org_count_qpcr_info = Slot(uri=MIXS['0000099'], name="org_count_qpcr_info", curie=MIXS.curie('0000099'),
+                   model_uri=NMDC.org_count_qpcr_info, domain=None, range=Optional[str])
 
 slots.org_matter = Slot(uri=MIXS['0000204'], name="org_matter", curie=MIXS.curie('0000204'),
                    model_uri=NMDC.org_matter, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -5925,14 +9289,29 @@ slots.org_matter = Slot(uri=MIXS['0000204'], name="org_matter", curie=MIXS.curie
 slots.org_nitro = Slot(uri=MIXS['0000205'], name="org_nitro", curie=MIXS.curie('0000205'),
                    model_uri=NMDC.org_nitro, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.org_particles = Slot(uri=MIXS['0000665'], name="org_particles", curie=MIXS.curie('0000665'),
+                   model_uri=NMDC.org_particles, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
 slots.organism_count = Slot(uri=MIXS['0000103'], name="organism_count", curie=MIXS.curie('0000103'),
                    model_uri=NMDC.organism_count, domain=None, range=Optional[Union[Union[dict, QuantityValue], List[Union[dict, QuantityValue]]]])
+
+slots.owc_tvdss = Slot(uri=MIXS['0000405'], name="owc_tvdss", curie=MIXS.curie('0000405'),
+                   model_uri=NMDC.owc_tvdss, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.oxy_stat_samp = Slot(uri=MIXS['0000753'], name="oxy_stat_samp", curie=MIXS.curie('0000753'),
                    model_uri=NMDC.oxy_stat_samp, domain=None, range=Optional[Union[str, "OxyStatSampEnum"]])
 
+slots.oxygen = Slot(uri=MIXS['0000104'], name="oxygen", curie=MIXS.curie('0000104'),
+                   model_uri=NMDC.oxygen, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.part_org_carb = Slot(uri=MIXS['0000515'], name="part_org_carb", curie=MIXS.curie('0000515'),
                    model_uri=NMDC.part_org_carb, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.part_org_nitro = Slot(uri=MIXS['0000719'], name="part_org_nitro", curie=MIXS.curie('0000719'),
+                   model_uri=NMDC.part_org_nitro, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.particle_class = Slot(uri=MIXS['0000206'], name="particle_class", curie=MIXS.curie('0000206'),
+                   model_uri=NMDC.particle_class, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
 
 slots.pcr_cond = Slot(uri=MIXS['0000049'], name="pcr_cond", curie=MIXS.curie('0000049'),
                    model_uri=NMDC.pcr_cond, domain=None, range=Optional[Union[dict, TextValue]])
@@ -5940,8 +9319,14 @@ slots.pcr_cond = Slot(uri=MIXS['0000049'], name="pcr_cond", curie=MIXS.curie('00
 slots.pcr_primers = Slot(uri=MIXS['0000046'], name="pcr_primers", curie=MIXS.curie('0000046'),
                    model_uri=NMDC.pcr_primers, domain=None, range=Optional[Union[dict, TextValue]])
 
+slots.permeability = Slot(uri=MIXS['0000404'], name="permeability", curie=MIXS.curie('0000404'),
+                   model_uri=NMDC.permeability, domain=None, range=Optional[Union[dict, TextValue]])
+
 slots.perturbation = Slot(uri=MIXS['0000754'], name="perturbation", curie=MIXS.curie('0000754'),
                    model_uri=NMDC.perturbation, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.pesticide_regm = Slot(uri=MIXS['0000573'], name="pesticide_regm", curie=MIXS.curie('0000573'),
+                   model_uri=NMDC.pesticide_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
 
 slots.petroleum_hydrocarb = Slot(uri=MIXS['0000516'], name="petroleum_hydrocarb", curie=MIXS.curie('0000516'),
                    model_uri=NMDC.petroleum_hydrocarb, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -5952,6 +9337,9 @@ slots.ph = Slot(uri=MIXS['0001001'], name="ph", curie=MIXS.curie('0001001'),
 slots.ph_meth = Slot(uri=MIXS['0001106'], name="ph_meth", curie=MIXS.curie('0001106'),
                    model_uri=NMDC.ph_meth, domain=None, range=Optional[Union[dict, TextValue]])
 
+slots.ph_regm = Slot(uri=MIXS['0001056'], name="ph_regm", curie=MIXS.curie('0001056'),
+                   model_uri=NMDC.ph_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
 slots.phaeopigments = Slot(uri=MIXS['0000180'], name="phaeopigments", curie=MIXS.curie('0000180'),
                    model_uri=NMDC.phaeopigments, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
 
@@ -5961,20 +9349,177 @@ slots.phosphate = Slot(uri=MIXS['0000505'], name="phosphate", curie=MIXS.curie('
 slots.phosplipid_fatt_acid = Slot(uri=MIXS['0000181'], name="phosplipid_fatt_acid", curie=MIXS.curie('0000181'),
                    model_uri=NMDC.phosplipid_fatt_acid, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
 
+slots.photon_flux = Slot(uri=MIXS['0000725'], name="photon_flux", curie=MIXS.curie('0000725'),
+                   model_uri=NMDC.photon_flux, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.plant_growth_med = Slot(uri=MIXS['0001057'], name="plant_growth_med", curie=MIXS.curie('0001057'),
+                   model_uri=NMDC.plant_growth_med, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+
+slots.plant_product = Slot(uri=MIXS['0001058'], name="plant_product", curie=MIXS.curie('0001058'),
+                   model_uri=NMDC.plant_product, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.plant_sex = Slot(uri=MIXS['0001059'], name="plant_sex", curie=MIXS.curie('0001059'),
+                   model_uri=NMDC.plant_sex, domain=None, range=Optional[Union[str, "PlantSexEnum"]])
+
+slots.plant_struc = Slot(uri=MIXS['0001060'], name="plant_struc", curie=MIXS.curie('0001060'),
+                   model_uri=NMDC.plant_struc, domain=None, range=Optional[Union[dict, ControlledTermValue]])
+
+slots.pollutants = Slot(uri=MIXS['0000107'], name="pollutants", curie=MIXS.curie('0000107'),
+                   model_uri=NMDC.pollutants, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
 slots.pool_dna_extracts = Slot(uri=MIXS['0000325'], name="pool_dna_extracts", curie=MIXS.curie('0000325'),
                    model_uri=NMDC.pool_dna_extracts, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.porosity = Slot(uri=MIXS['0000211'], name="porosity", curie=MIXS.curie('0000211'),
+                   model_uri=NMDC.porosity, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.potassium = Slot(uri=MIXS['0000430'], name="potassium", curie=MIXS.curie('0000430'),
                    model_uri=NMDC.potassium, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.pour_point = Slot(uri=MIXS['0000127'], name="pour_point", curie=MIXS.curie('0000127'),
+                   model_uri=NMDC.pour_point, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.pre_treatment = Slot(uri=MIXS['0000348'], name="pre_treatment", curie=MIXS.curie('0000348'),
+                   model_uri=NMDC.pre_treatment, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.pres_animal_insect = Slot(uri=MIXS['0000819'], name="pres_animal_insect", curie=MIXS.curie('0000819'),
+                   model_uri=NMDC.pres_animal_insect, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^(cat|dog|rodent|snake|other);\d+$'))
+
 slots.pressure = Slot(uri=MIXS['0000412'], name="pressure", curie=MIXS.curie('0000412'),
                    model_uri=NMDC.pressure, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.prev_land_use_meth = Slot(uri=MIXS['0000316'], name="prev_land_use_meth", curie=MIXS.curie('0000316'),
+                   model_uri=NMDC.prev_land_use_meth, domain=None, range=Optional[str])
+
+slots.previous_land_use = Slot(uri=MIXS['0000315'], name="previous_land_use", curie=MIXS.curie('0000315'),
+                   model_uri=NMDC.previous_land_use, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.primary_prod = Slot(uri=MIXS['0000728'], name="primary_prod", curie=MIXS.curie('0000728'),
+                   model_uri=NMDC.primary_prod, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.primary_treatment = Slot(uri=MIXS['0000349'], name="primary_treatment", curie=MIXS.curie('0000349'),
+                   model_uri=NMDC.primary_treatment, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.prod_rate = Slot(uri=MIXS['0000452'], name="prod_rate", curie=MIXS.curie('0000452'),
+                   model_uri=NMDC.prod_rate, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.prod_start_date = Slot(uri=MIXS['0001008'], name="prod_start_date", curie=MIXS.curie('0001008'),
+                   model_uri=NMDC.prod_start_date, domain=None, range=Optional[Union[dict, TimestampValue]])
 
 slots.profile_position = Slot(uri=MIXS['0001084'], name="profile_position", curie=MIXS.curie('0001084'),
                    model_uri=NMDC.profile_position, domain=None, range=Optional[Union[str, "ProfilePositionEnum"]])
 
+slots.quad_pos = Slot(uri=MIXS['0000820'], name="quad_pos", curie=MIXS.curie('0000820'),
+                   model_uri=NMDC.quad_pos, domain=None, range=Optional[Union[str, "QuadPosEnum"]])
+
+slots.radiation_regm = Slot(uri=MIXS['0000575'], name="radiation_regm", curie=MIXS.curie('0000575'),
+                   model_uri=NMDC.radiation_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.rainfall_regm = Slot(uri=MIXS['0000576'], name="rainfall_regm", curie=MIXS.curie('0000576'),
+                   model_uri=NMDC.rainfall_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.reactor_type = Slot(uri=MIXS['0000350'], name="reactor_type", curie=MIXS.curie('0000350'),
+                   model_uri=NMDC.reactor_type, domain=None, range=Optional[Union[dict, TextValue]])
+
 slots.redox_potential = Slot(uri=MIXS['0000182'], name="redox_potential", curie=MIXS.curie('0000182'),
                    model_uri=NMDC.redox_potential, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.rel_air_humidity = Slot(uri=MIXS['0000121'], name="rel_air_humidity", curie=MIXS.curie('0000121'),
+                   model_uri=NMDC.rel_air_humidity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.rel_humidity_out = Slot(uri=MIXS['0000188'], name="rel_humidity_out", curie=MIXS.curie('0000188'),
+                   model_uri=NMDC.rel_humidity_out, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.rel_samp_loc = Slot(uri=MIXS['0000821'], name="rel_samp_loc", curie=MIXS.curie('0000821'),
+                   model_uri=NMDC.rel_samp_loc, domain=None, range=Optional[Union[str, "RelSampLocEnum"]])
+
+slots.rel_to_oxygen = Slot(uri=MIXS['0000015'], name="rel_to_oxygen", curie=MIXS.curie('0000015'),
+                   model_uri=NMDC.rel_to_oxygen, domain=None, range=Optional[Union[str, "RelToOxygenEnum"]])
+
+slots.reservoir = Slot(uri=MIXS['0000303'], name="reservoir", curie=MIXS.curie('0000303'),
+                   model_uri=NMDC.reservoir, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.resins_pc = Slot(uri=MIXS['0000134'], name="resins_pc", curie=MIXS.curie('0000134'),
+                   model_uri=NMDC.resins_pc, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.room_air_exch_rate = Slot(uri=MIXS['0000169'], name="room_air_exch_rate", curie=MIXS.curie('0000169'),
+                   model_uri=NMDC.room_air_exch_rate, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.room_architec_elem = Slot(uri=MIXS['0000233'], name="room_architec_elem", curie=MIXS.curie('0000233'),
+                   model_uri=NMDC.room_architec_elem, domain=None, range=Optional[str])
+
+slots.room_condt = Slot(uri=MIXS['0000822'], name="room_condt", curie=MIXS.curie('0000822'),
+                   model_uri=NMDC.room_condt, domain=None, range=Optional[Union[str, "RoomCondtEnum"]])
+
+slots.room_connected = Slot(uri=MIXS['0000826'], name="room_connected", curie=MIXS.curie('0000826'),
+                   model_uri=NMDC.room_connected, domain=None, range=Optional[Union[str, "RoomConnectedEnum"]])
+
+slots.room_count = Slot(uri=MIXS['0000234'], name="room_count", curie=MIXS.curie('0000234'),
+                   model_uri=NMDC.room_count, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.room_dim = Slot(uri=MIXS['0000192'], name="room_dim", curie=MIXS.curie('0000192'),
+                   model_uri=NMDC.room_dim, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.room_door_dist = Slot(uri=MIXS['0000193'], name="room_door_dist", curie=MIXS.curie('0000193'),
+                   model_uri=NMDC.room_door_dist, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.room_door_share = Slot(uri=MIXS['0000242'], name="room_door_share", curie=MIXS.curie('0000242'),
+                   model_uri=NMDC.room_door_share, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.room_hallway = Slot(uri=MIXS['0000238'], name="room_hallway", curie=MIXS.curie('0000238'),
+                   model_uri=NMDC.room_hallway, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.room_loc = Slot(uri=MIXS['0000823'], name="room_loc", curie=MIXS.curie('0000823'),
+                   model_uri=NMDC.room_loc, domain=None, range=Optional[Union[str, "RoomLocEnum"]])
+
+slots.room_moist_dam_hist = Slot(uri=MIXS['0000235'], name="room_moist_dam_hist", curie=MIXS.curie('0000235'),
+                   model_uri=NMDC.room_moist_dam_hist, domain=None, range=Optional[int])
+
+slots.room_net_area = Slot(uri=MIXS['0000194'], name="room_net_area", curie=MIXS.curie('0000194'),
+                   model_uri=NMDC.room_net_area, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.room_occup = Slot(uri=MIXS['0000236'], name="room_occup", curie=MIXS.curie('0000236'),
+                   model_uri=NMDC.room_occup, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.room_samp_pos = Slot(uri=MIXS['0000824'], name="room_samp_pos", curie=MIXS.curie('0000824'),
+                   model_uri=NMDC.room_samp_pos, domain=None, range=Optional[Union[str, "RoomSampPosEnum"]])
+
+slots.room_type = Slot(uri=MIXS['0000825'], name="room_type", curie=MIXS.curie('0000825'),
+                   model_uri=NMDC.room_type, domain=None, range=Optional[Union[str, "RoomTypeEnum"]])
+
+slots.room_vol = Slot(uri=MIXS['0000195'], name="room_vol", curie=MIXS.curie('0000195'),
+                   model_uri=NMDC.room_vol, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.room_wall_share = Slot(uri=MIXS['0000243'], name="room_wall_share", curie=MIXS.curie('0000243'),
+                   model_uri=NMDC.room_wall_share, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.room_window_count = Slot(uri=MIXS['0000237'], name="room_window_count", curie=MIXS.curie('0000237'),
+                   model_uri=NMDC.room_window_count, domain=None, range=Optional[int])
+
+slots.root_cond = Slot(uri=MIXS['0001061'], name="root_cond", curie=MIXS.curie('0001061'),
+                   model_uri=NMDC.root_cond, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.root_med_carbon = Slot(uri=MIXS['0000577'], name="root_med_carbon", curie=MIXS.curie('0000577'),
+                   model_uri=NMDC.root_med_carbon, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.root_med_macronutr = Slot(uri=MIXS['0000578'], name="root_med_macronutr", curie=MIXS.curie('0000578'),
+                   model_uri=NMDC.root_med_macronutr, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.root_med_micronutr = Slot(uri=MIXS['0000579'], name="root_med_micronutr", curie=MIXS.curie('0000579'),
+                   model_uri=NMDC.root_med_micronutr, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.root_med_ph = Slot(uri=MIXS['0001062'], name="root_med_ph", curie=MIXS.curie('0001062'),
+                   model_uri=NMDC.root_med_ph, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.root_med_regl = Slot(uri=MIXS['0000581'], name="root_med_regl", curie=MIXS.curie('0000581'),
+                   model_uri=NMDC.root_med_regl, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.root_med_solid = Slot(uri=MIXS['0001063'], name="root_med_solid", curie=MIXS.curie('0001063'),
+                   model_uri=NMDC.root_med_solid, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.root_med_suppl = Slot(uri=MIXS['0000580'], name="root_med_suppl", curie=MIXS.curie('0000580'),
+                   model_uri=NMDC.root_med_suppl, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.salinity = Slot(uri=MIXS['0000183'], name="salinity", curie=MIXS.curie('0000183'),
                    model_uri=NMDC.salinity, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -5982,17 +9527,50 @@ slots.salinity = Slot(uri=MIXS['0000183'], name="salinity", curie=MIXS.curie('00
 slots.salinity_meth = Slot(uri=MIXS['0000341'], name="salinity_meth", curie=MIXS.curie('0000341'),
                    model_uri=NMDC.salinity_meth, domain=None, range=Optional[Union[dict, TextValue]])
 
+slots.salt_regm = Slot(uri=MIXS['0000582'], name="salt_regm", curie=MIXS.curie('0000582'),
+                   model_uri=NMDC.salt_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.samp_capt_status = Slot(uri=MIXS['0000860'], name="samp_capt_status", curie=MIXS.curie('0000860'),
+                   model_uri=NMDC.samp_capt_status, domain=None, range=Optional[Union[str, "SampCaptStatusEnum"]])
+
+slots.samp_collec_device = Slot(uri=MIXS['0000002'], name="samp_collec_device", curie=MIXS.curie('0000002'),
+                   model_uri=NMDC.samp_collec_device, domain=None, range=Optional[str])
+
 slots.samp_collec_method = Slot(uri=MIXS['0001225'], name="samp_collec_method", curie=MIXS.curie('0001225'),
                    model_uri=NMDC.samp_collec_method, domain=None, range=Optional[str])
+
+slots.samp_collect_point = Slot(uri=MIXS['0001015'], name="samp_collect_point", curie=MIXS.curie('0001015'),
+                   model_uri=NMDC.samp_collect_point, domain=None, range=Optional[Union[str, "SampCollectPointEnum"]])
+
+slots.samp_dis_stage = Slot(uri=MIXS['0000249'], name="samp_dis_stage", curie=MIXS.curie('0000249'),
+                   model_uri=NMDC.samp_dis_stage, domain=None, range=Optional[Union[str, "SampDisStageEnum"]])
+
+slots.samp_floor = Slot(uri=MIXS['0000828'], name="samp_floor", curie=MIXS.curie('0000828'),
+                   model_uri=NMDC.samp_floor, domain=None, range=Optional[Union[str, "SampFloorEnum"]])
+
+slots.samp_loc_corr_rate = Slot(uri=MIXS['0000136'], name="samp_loc_corr_rate", curie=MIXS.curie('0000136'),
+                   model_uri=NMDC.samp_loc_corr_rate, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.samp_mat_process = Slot(uri=MIXS['0000016'], name="samp_mat_process", curie=MIXS.curie('0000016'),
                    model_uri=NMDC.samp_mat_process, domain=None, range=Optional[Union[dict, ControlledTermValue]])
 
+slots.samp_md = Slot(uri=MIXS['0000413'], name="samp_md", curie=MIXS.curie('0000413'),
+                   model_uri=NMDC.samp_md, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.samp_name = Slot(uri=MIXS['0001107'], name="samp_name", curie=MIXS.curie('0001107'),
                    model_uri=NMDC.samp_name, domain=None, range=Optional[str])
 
+slots.samp_preserv = Slot(uri=MIXS['0000463'], name="samp_preserv", curie=MIXS.curie('0000463'),
+                   model_uri=NMDC.samp_preserv, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.samp_room_id = Slot(uri=MIXS['0000244'], name="samp_room_id", curie=MIXS.curie('0000244'),
+                   model_uri=NMDC.samp_room_id, domain=None, range=Optional[Union[dict, TextValue]])
+
 slots.samp_size = Slot(uri=MIXS['0000001'], name="samp_size", curie=MIXS.curie('0000001'),
                    model_uri=NMDC.samp_size, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.samp_sort_meth = Slot(uri=MIXS['0000216'], name="samp_sort_meth", curie=MIXS.curie('0000216'),
+                   model_uri=NMDC.samp_sort_meth, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
 
 slots.samp_store_dur = Slot(uri=MIXS['0000116'], name="samp_store_dur", curie=MIXS.curie('0000116'),
                    model_uri=NMDC.samp_store_dur, domain=None, range=Optional[Union[dict, TextValue]])
@@ -6003,11 +9581,41 @@ slots.samp_store_loc = Slot(uri=MIXS['0000755'], name="samp_store_loc", curie=MI
 slots.samp_store_temp = Slot(uri=MIXS['0000110'], name="samp_store_temp", curie=MIXS.curie('0000110'),
                    model_uri=NMDC.samp_store_temp, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.samp_subtype = Slot(uri=MIXS['0000999'], name="samp_subtype", curie=MIXS.curie('0000999'),
+                   model_uri=NMDC.samp_subtype, domain=None, range=Optional[Union[str, "SampSubtypeEnum"]])
+
 slots.samp_taxon_id = Slot(uri=MIXS['0001320'], name="samp_taxon_id", curie=MIXS.curie('0001320'),
                    model_uri=NMDC.samp_taxon_id, domain=None, range=Optional[Union[dict, TextValue]])
 
+slots.samp_time_out = Slot(uri=MIXS['0000196'], name="samp_time_out", curie=MIXS.curie('0000196'),
+                   model_uri=NMDC.samp_time_out, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.samp_transport_cond = Slot(uri=MIXS['0000410'], name="samp_transport_cond", curie=MIXS.curie('0000410'),
+                   model_uri=NMDC.samp_transport_cond, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.samp_tvdss = Slot(uri=MIXS['0000409'], name="samp_tvdss", curie=MIXS.curie('0000409'),
+                   model_uri=NMDC.samp_tvdss, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.samp_type = Slot(uri=MIXS['0000998'], name="samp_type", curie=MIXS.curie('0000998'),
+                   model_uri=NMDC.samp_type, domain=None, range=Optional[Union[dict, TextValue]])
+
 slots.samp_vol_we_dna_ext = Slot(uri=MIXS['0000111'], name="samp_vol_we_dna_ext", curie=MIXS.curie('0000111'),
                    model_uri=NMDC.samp_vol_we_dna_ext, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.samp_weather = Slot(uri=MIXS['0000827'], name="samp_weather", curie=MIXS.curie('0000827'),
+                   model_uri=NMDC.samp_weather, domain=None, range=Optional[Union[str, "SampWeatherEnum"]])
+
+slots.samp_well_name = Slot(uri=MIXS['0000296'], name="samp_well_name", curie=MIXS.curie('0000296'),
+                   model_uri=NMDC.samp_well_name, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.saturates_pc = Slot(uri=MIXS['0000131'], name="saturates_pc", curie=MIXS.curie('0000131'),
+                   model_uri=NMDC.saturates_pc, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.season = Slot(uri=MIXS['0000829'], name="season", curie=MIXS.curie('0000829'),
+                   model_uri=NMDC.season, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.season_environment = Slot(uri=MIXS['0001068'], name="season_environment", curie=MIXS.curie('0001068'),
+                   model_uri=NMDC.season_environment, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
 
 slots.season_precpt = Slot(uri=MIXS['0000645'], name="season_precpt", curie=MIXS.curie('0000645'),
                    model_uri=NMDC.season_precpt, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -6015,14 +9623,47 @@ slots.season_precpt = Slot(uri=MIXS['0000645'], name="season_precpt", curie=MIXS
 slots.season_temp = Slot(uri=MIXS['0000643'], name="season_temp", curie=MIXS.curie('0000643'),
                    model_uri=NMDC.season_temp, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.season_use = Slot(uri=MIXS['0000830'], name="season_use", curie=MIXS.curie('0000830'),
+                   model_uri=NMDC.season_use, domain=None, range=Optional[Union[str, "SeasonUseEnum"]])
+
+slots.secondary_treatment = Slot(uri=MIXS['0000351'], name="secondary_treatment", curie=MIXS.curie('0000351'),
+                   model_uri=NMDC.secondary_treatment, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.sediment_type = Slot(uri=MIXS['0001078'], name="sediment_type", curie=MIXS.curie('0001078'),
+                   model_uri=NMDC.sediment_type, domain=None, range=Optional[Union[str, "SedimentTypeEnum"]])
+
 slots.seq_meth = Slot(uri=MIXS['0000050'], name="seq_meth", curie=MIXS.curie('0000050'),
                    model_uri=NMDC.seq_meth, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.seq_quality_check = Slot(uri=MIXS['0000051'], name="seq_quality_check", curie=MIXS.curie('0000051'),
                    model_uri=NMDC.seq_quality_check, domain=None, range=Optional[Union[dict, TextValue]])
 
+slots.sewage_type = Slot(uri=MIXS['0000215'], name="sewage_type", curie=MIXS.curie('0000215'),
+                   model_uri=NMDC.sewage_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.shad_dev_water_mold = Slot(uri=MIXS['0000834'], name="shad_dev_water_mold", curie=MIXS.curie('0000834'),
+                   model_uri=NMDC.shad_dev_water_mold, domain=None, range=Optional[str])
+
+slots.shading_device_cond = Slot(uri=MIXS['0000831'], name="shading_device_cond", curie=MIXS.curie('0000831'),
+                   model_uri=NMDC.shading_device_cond, domain=None, range=Optional[Union[str, "ShadingDeviceCondEnum"]])
+
+slots.shading_device_loc = Slot(uri=MIXS['0000832'], name="shading_device_loc", curie=MIXS.curie('0000832'),
+                   model_uri=NMDC.shading_device_loc, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.shading_device_mat = Slot(uri=MIXS['0000245'], name="shading_device_mat", curie=MIXS.curie('0000245'),
+                   model_uri=NMDC.shading_device_mat, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.shading_device_type = Slot(uri=MIXS['0000835'], name="shading_device_type", curie=MIXS.curie('0000835'),
+                   model_uri=NMDC.shading_device_type, domain=None, range=Optional[Union[str, "ShadingDeviceTypeEnum"]])
+
 slots.sieving = Slot(uri=MIXS['0000322'], name="sieving", curie=MIXS.curie('0000322'),
                    model_uri=NMDC.sieving, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.silicate = Slot(uri=MIXS['0000184'], name="silicate", curie=MIXS.curie('0000184'),
+                   model_uri=NMDC.silicate, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.size_frac = Slot(uri=MIXS['0000017'], name="size_frac", curie=MIXS.curie('0000017'),
+                   model_uri=NMDC.size_frac, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.size_frac_low = Slot(uri=MIXS['0000735'], name="size_frac_low", curie=MIXS.curie('0000735'),
                    model_uri=NMDC.size_frac_low, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -6036,8 +9677,20 @@ slots.slope_aspect = Slot(uri=MIXS['0000647'], name="slope_aspect", curie=MIXS.c
 slots.slope_gradient = Slot(uri=MIXS['0000646'], name="slope_gradient", curie=MIXS.curie('0000646'),
                    model_uri=NMDC.slope_gradient, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.sludge_retent_time = Slot(uri=MIXS['0000669'], name="sludge_retent_time", curie=MIXS.curie('0000669'),
+                   model_uri=NMDC.sludge_retent_time, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.sodium = Slot(uri=MIXS['0000428'], name="sodium", curie=MIXS.curie('0000428'),
                    model_uri=NMDC.sodium, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.soil_horizon = Slot(uri=MIXS['0001082'], name="soil_horizon", curie=MIXS.curie('0001082'),
+                   model_uri=NMDC.soil_horizon, domain=None, range=Optional[Union[str, "SoilHorizonEnum"]])
+
+slots.soil_text_measure = Slot(uri=MIXS['0000335'], name="soil_text_measure", curie=MIXS.curie('0000335'),
+                   model_uri=NMDC.soil_text_measure, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.soil_texture_meth = Slot(uri=MIXS['0000336'], name="soil_texture_meth", curie=MIXS.curie('0000336'),
+                   model_uri=NMDC.soil_texture_meth, domain=None, range=Optional[str])
 
 slots.soil_type = Slot(uri=MIXS['0000332'], name="soil_type", curie=MIXS.curie('0000332'),
                    model_uri=NMDC.soil_type, domain=None, range=Optional[Union[dict, TextValue]])
@@ -6045,17 +9698,86 @@ slots.soil_type = Slot(uri=MIXS['0000332'], name="soil_type", curie=MIXS.curie('
 slots.soil_type_meth = Slot(uri=MIXS['0000334'], name="soil_type_meth", curie=MIXS.curie('0000334'),
                    model_uri=NMDC.soil_type_meth, domain=None, range=Optional[Union[dict, TextValue]])
 
+slots.solar_irradiance = Slot(uri=MIXS['0000112'], name="solar_irradiance", curie=MIXS.curie('0000112'),
+                   model_uri=NMDC.solar_irradiance, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.soluble_inorg_mat = Slot(uri=MIXS['0000672'], name="soluble_inorg_mat", curie=MIXS.curie('0000672'),
+                   model_uri=NMDC.soluble_inorg_mat, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.soluble_org_mat = Slot(uri=MIXS['0000673'], name="soluble_org_mat", curie=MIXS.curie('0000673'),
+                   model_uri=NMDC.soluble_org_mat, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.soluble_react_phosp = Slot(uri=MIXS['0000738'], name="soluble_react_phosp", curie=MIXS.curie('0000738'),
+                   model_uri=NMDC.soluble_react_phosp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.source_mat_id = Slot(uri=MIXS['0000026'], name="source_mat_id", curie=MIXS.curie('0000026'),
                    model_uri=NMDC.source_mat_id, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.space_typ_state = Slot(uri=MIXS['0000770'], name="space_typ_state", curie=MIXS.curie('0000770'),
+                   model_uri=NMDC.space_typ_state, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.specific = Slot(uri=MIXS['0000836'], name="specific", curie=MIXS.curie('0000836'),
+                   model_uri=NMDC.specific, domain=None, range=Optional[Union[str, "SpecificEnum"]])
+
+slots.specific_humidity = Slot(uri=MIXS['0000214'], name="specific_humidity", curie=MIXS.curie('0000214'),
+                   model_uri=NMDC.specific_humidity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.sr_dep_env = Slot(uri=MIXS['0000996'], name="sr_dep_env", curie=MIXS.curie('0000996'),
+                   model_uri=NMDC.sr_dep_env, domain=None, range=Optional[Union[str, "SrDepEnvEnum"]])
+
+slots.sr_geol_age = Slot(uri=MIXS['0000997'], name="sr_geol_age", curie=MIXS.curie('0000997'),
+                   model_uri=NMDC.sr_geol_age, domain=None, range=Optional[Union[str, "SrGeolAgeEnum"]])
+
+slots.sr_kerog_type = Slot(uri=MIXS['0000994'], name="sr_kerog_type", curie=MIXS.curie('0000994'),
+                   model_uri=NMDC.sr_kerog_type, domain=None, range=Optional[Union[str, "SrKerogTypeEnum"]])
+
+slots.sr_lithology = Slot(uri=MIXS['0000995'], name="sr_lithology", curie=MIXS.curie('0000995'),
+                   model_uri=NMDC.sr_lithology, domain=None, range=Optional[Union[str, "SrLithologyEnum"]])
+
+slots.standing_water_regm = Slot(uri=MIXS['0001069'], name="standing_water_regm", curie=MIXS.curie('0001069'),
+                   model_uri=NMDC.standing_water_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
 
 slots.store_cond = Slot(uri=MIXS['0000327'], name="store_cond", curie=MIXS.curie('0000327'),
                    model_uri=NMDC.store_cond, domain=None, range=Optional[Union[dict, TextValue]])
 
+slots.substructure_type = Slot(uri=MIXS['0000767'], name="substructure_type", curie=MIXS.curie('0000767'),
+                   model_uri=NMDC.substructure_type, domain=None, range=Optional[Union[Union[str, "SubstructureTypeEnum"], List[Union[str, "SubstructureTypeEnum"]]]])
+
 slots.sulfate = Slot(uri=MIXS['0000423'], name="sulfate", curie=MIXS.curie('0000423'),
                    model_uri=NMDC.sulfate, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.sulfate_fw = Slot(uri=MIXS['0000407'], name="sulfate_fw", curie=MIXS.curie('0000407'),
+                   model_uri=NMDC.sulfate_fw, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.sulfide = Slot(uri=MIXS['0000424'], name="sulfide", curie=MIXS.curie('0000424'),
                    model_uri=NMDC.sulfide, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.surf_air_cont = Slot(uri=MIXS['0000759'], name="surf_air_cont", curie=MIXS.curie('0000759'),
+                   model_uri=NMDC.surf_air_cont, domain=None, range=Optional[Union[Union[str, "SurfAirContEnum"], List[Union[str, "SurfAirContEnum"]]]])
+
+slots.surf_humidity = Slot(uri=MIXS['0000123'], name="surf_humidity", curie=MIXS.curie('0000123'),
+                   model_uri=NMDC.surf_humidity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.surf_material = Slot(uri=MIXS['0000758'], name="surf_material", curie=MIXS.curie('0000758'),
+                   model_uri=NMDC.surf_material, domain=None, range=Optional[Union[str, "SurfMaterialEnum"]])
+
+slots.surf_moisture = Slot(uri=MIXS['0000128'], name="surf_moisture", curie=MIXS.curie('0000128'),
+                   model_uri=NMDC.surf_moisture, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.surf_moisture_ph = Slot(uri=MIXS['0000760'], name="surf_moisture_ph", curie=MIXS.curie('0000760'),
+                   model_uri=NMDC.surf_moisture_ph, domain=None, range=Optional[float])
+
+slots.surf_temp = Slot(uri=MIXS['0000125'], name="surf_temp", curie=MIXS.curie('0000125'),
+                   model_uri=NMDC.surf_temp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.suspend_part_matter = Slot(uri=MIXS['0000741'], name="suspend_part_matter", curie=MIXS.curie('0000741'),
+                   model_uri=NMDC.suspend_part_matter, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.suspend_solids = Slot(uri=MIXS['0000150'], name="suspend_solids", curie=MIXS.curie('0000150'),
+                   model_uri=NMDC.suspend_solids, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.tan = Slot(uri=MIXS['0000120'], name="tan", curie=MIXS.curie('0000120'),
+                   model_uri=NMDC.tan, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.target_gene = Slot(uri=MIXS['0000044'], name="target_gene", curie=MIXS.curie('0000044'),
                    model_uri=NMDC.target_gene, domain=None, range=Optional[Union[dict, TextValue]])
@@ -6066,11 +9788,23 @@ slots.target_subfragment = Slot(uri=MIXS['0000045'], name="target_subfragment", 
 slots.temp = Slot(uri=MIXS['0000113'], name="temp", curie=MIXS.curie('0000113'),
                    model_uri=NMDC.temp, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.temp_out = Slot(uri=MIXS['0000197'], name="temp_out", curie=MIXS.curie('0000197'),
+                   model_uri=NMDC.temp_out, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tertiary_treatment = Slot(uri=MIXS['0000352'], name="tertiary_treatment", curie=MIXS.curie('0000352'),
+                   model_uri=NMDC.tertiary_treatment, domain=None, range=Optional[Union[dict, TextValue]])
+
 slots.tidal_stage = Slot(uri=MIXS['0000750'], name="tidal_stage", curie=MIXS.curie('0000750'),
                    model_uri=NMDC.tidal_stage, domain=None, range=Optional[Union[str, "TidalStageEnum"]])
 
 slots.tillage = Slot(uri=MIXS['0001081'], name="tillage", curie=MIXS.curie('0001081'),
                    model_uri=NMDC.tillage, domain=None, range=Optional[Union[Union[str, "TillageEnum"], List[Union[str, "TillageEnum"]]]])
+
+slots.tiss_cult_growth_med = Slot(uri=MIXS['0001070'], name="tiss_cult_growth_med", curie=MIXS.curie('0001070'),
+                   model_uri=NMDC.tiss_cult_growth_med, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.toluene = Slot(uri=MIXS['0000154'], name="toluene", curie=MIXS.curie('0000154'),
+                   model_uri=NMDC.toluene, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.tot_carb = Slot(uri=MIXS['0000525'], name="tot_carb", curie=MIXS.curie('0000525'),
                    model_uri=NMDC.tot_carb, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -6080,6 +9814,15 @@ slots.tot_depth_water_col = Slot(uri=MIXS['0000634'], name="tot_depth_water_col"
 
 slots.tot_diss_nitro = Slot(uri=MIXS['0000744'], name="tot_diss_nitro", curie=MIXS.curie('0000744'),
                    model_uri=NMDC.tot_diss_nitro, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tot_inorg_nitro = Slot(uri=MIXS['0000745'], name="tot_inorg_nitro", curie=MIXS.curie('0000745'),
+                   model_uri=NMDC.tot_inorg_nitro, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tot_iron = Slot(uri=MIXS['0000105'], name="tot_iron", curie=MIXS.curie('0000105'),
+                   model_uri=NMDC.tot_iron, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tot_nitro = Slot(uri=MIXS['0000102'], name="tot_nitro", curie=MIXS.curie('0000102'),
+                   model_uri=NMDC.tot_nitro, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.tot_nitro_cont_meth = Slot(uri=MIXS['0000338'], name="tot_nitro_cont_meth", curie=MIXS.curie('0000338'),
                    model_uri=NMDC.tot_nitro_cont_meth, domain=None, range=Optional[str])
@@ -6093,8 +9836,89 @@ slots.tot_org_c_meth = Slot(uri=MIXS['0000337'], name="tot_org_c_meth", curie=MI
 slots.tot_org_carb = Slot(uri=MIXS['0000533'], name="tot_org_carb", curie=MIXS.curie('0000533'),
                    model_uri=NMDC.tot_org_carb, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.tot_part_carb = Slot(uri=MIXS['0000747'], name="tot_part_carb", curie=MIXS.curie('0000747'),
+                   model_uri=NMDC.tot_part_carb, domain=None, range=Optional[Union[dict, QuantityValue]])
+
 slots.tot_phosp = Slot(uri=MIXS['0000117'], name="tot_phosp", curie=MIXS.curie('0000117'),
                    model_uri=NMDC.tot_phosp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tot_phosphate = Slot(uri=MIXS['0000689'], name="tot_phosphate", curie=MIXS.curie('0000689'),
+                   model_uri=NMDC.tot_phosphate, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tot_sulfur = Slot(uri=MIXS['0000419'], name="tot_sulfur", curie=MIXS.curie('0000419'),
+                   model_uri=NMDC.tot_sulfur, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.train_line = Slot(uri=MIXS['0000837'], name="train_line", curie=MIXS.curie('0000837'),
+                   model_uri=NMDC.train_line, domain=None, range=Optional[Union[str, "TrainLineEnum"]])
+
+slots.train_stat_loc = Slot(uri=MIXS['0000838'], name="train_stat_loc", curie=MIXS.curie('0000838'),
+                   model_uri=NMDC.train_stat_loc, domain=None, range=Optional[Union[str, "TrainStatLocEnum"]])
+
+slots.train_stop_loc = Slot(uri=MIXS['0000839'], name="train_stop_loc", curie=MIXS.curie('0000839'),
+                   model_uri=NMDC.train_stop_loc, domain=None, range=Optional[Union[str, "TrainStopLocEnum"]])
+
+slots.turbidity = Slot(uri=MIXS['0000191'], name="turbidity", curie=MIXS.curie('0000191'),
+                   model_uri=NMDC.turbidity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tvdss_of_hcr_press = Slot(uri=MIXS['0000397'], name="tvdss_of_hcr_press", curie=MIXS.curie('0000397'),
+                   model_uri=NMDC.tvdss_of_hcr_press, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.tvdss_of_hcr_temp = Slot(uri=MIXS['0000394'], name="tvdss_of_hcr_temp", curie=MIXS.curie('0000394'),
+                   model_uri=NMDC.tvdss_of_hcr_temp, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.typ_occup_density = Slot(uri=MIXS['0000771'], name="typ_occup_density", curie=MIXS.curie('0000771'),
+                   model_uri=NMDC.typ_occup_density, domain=None, range=Optional[float])
+
+slots.ventilation_rate = Slot(uri=MIXS['0000114'], name="ventilation_rate", curie=MIXS.curie('0000114'),
+                   model_uri=NMDC.ventilation_rate, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.ventilation_type = Slot(uri=MIXS['0000756'], name="ventilation_type", curie=MIXS.curie('0000756'),
+                   model_uri=NMDC.ventilation_type, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.vfa = Slot(uri=MIXS['0000152'], name="vfa", curie=MIXS.curie('0000152'),
+                   model_uri=NMDC.vfa, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.vfa_fw = Slot(uri=MIXS['0000408'], name="vfa_fw", curie=MIXS.curie('0000408'),
+                   model_uri=NMDC.vfa_fw, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.vis_media = Slot(uri=MIXS['0000840'], name="vis_media", curie=MIXS.curie('0000840'),
+                   model_uri=NMDC.vis_media, domain=None, range=Optional[Union[str, "VisMediaEnum"]])
+
+slots.viscosity = Slot(uri=MIXS['0000126'], name="viscosity", curie=MIXS.curie('0000126'),
+                   model_uri=NMDC.viscosity, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.volatile_org_comp = Slot(uri=MIXS['0000115'], name="volatile_org_comp", curie=MIXS.curie('0000115'),
+                   model_uri=NMDC.volatile_org_comp, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
+slots.wall_area = Slot(uri=MIXS['0000198'], name="wall_area", curie=MIXS.curie('0000198'),
+                   model_uri=NMDC.wall_area, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.wall_const_type = Slot(uri=MIXS['0000841'], name="wall_const_type", curie=MIXS.curie('0000841'),
+                   model_uri=NMDC.wall_const_type, domain=None, range=Optional[Union[str, "WallConstTypeEnum"]])
+
+slots.wall_finish_mat = Slot(uri=MIXS['0000842'], name="wall_finish_mat", curie=MIXS.curie('0000842'),
+                   model_uri=NMDC.wall_finish_mat, domain=None, range=Optional[Union[str, "WallFinishMatEnum"]])
+
+slots.wall_height = Slot(uri=MIXS['0000221'], name="wall_height", curie=MIXS.curie('0000221'),
+                   model_uri=NMDC.wall_height, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.wall_loc = Slot(uri=MIXS['0000843'], name="wall_loc", curie=MIXS.curie('0000843'),
+                   model_uri=NMDC.wall_loc, domain=None, range=Optional[Union[str, "WallLocEnum"]])
+
+slots.wall_surf_treatment = Slot(uri=MIXS['0000845'], name="wall_surf_treatment", curie=MIXS.curie('0000845'),
+                   model_uri=NMDC.wall_surf_treatment, domain=None, range=Optional[Union[str, "WallSurfTreatmentEnum"]])
+
+slots.wall_texture = Slot(uri=MIXS['0000846'], name="wall_texture", curie=MIXS.curie('0000846'),
+                   model_uri=NMDC.wall_texture, domain=None, range=Optional[Union[str, "WallTextureEnum"]])
+
+slots.wall_thermal_mass = Slot(uri=MIXS['0000222'], name="wall_thermal_mass", curie=MIXS.curie('0000222'),
+                   model_uri=NMDC.wall_thermal_mass, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.wall_water_mold = Slot(uri=MIXS['0000844'], name="wall_water_mold", curie=MIXS.curie('0000844'),
+                   model_uri=NMDC.wall_water_mold, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.wastewater_type = Slot(uri=MIXS['0000353'], name="wastewater_type", curie=MIXS.curie('0000353'),
+                   model_uri=NMDC.wastewater_type, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.water_cont_soil_meth = Slot(uri=MIXS['0000323'], name="water_cont_soil_meth", curie=MIXS.curie('0000323'),
                    model_uri=NMDC.water_cont_soil_meth, domain=None, range=Optional[str])
@@ -6102,20 +9926,77 @@ slots.water_cont_soil_meth = Slot(uri=MIXS['0000323'], name="water_cont_soil_met
 slots.water_content = Slot(uri=MIXS['0000185'], name="water_content", curie=MIXS.curie('0000185'),
                    model_uri=NMDC.water_content, domain=None, range=Optional[Union[dict, QuantityValue]])
 
+slots.water_current = Slot(uri=MIXS['0000203'], name="water_current", curie=MIXS.curie('0000203'),
+                   model_uri=NMDC.water_current, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.water_cut = Slot(uri=MIXS['0000454'], name="water_cut", curie=MIXS.curie('0000454'),
+                   model_uri=NMDC.water_cut, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.water_feat_size = Slot(uri=MIXS['0000223'], name="water_feat_size", curie=MIXS.curie('0000223'),
+                   model_uri=NMDC.water_feat_size, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.water_feat_type = Slot(uri=MIXS['0000847'], name="water_feat_type", curie=MIXS.curie('0000847'),
+                   model_uri=NMDC.water_feat_type, domain=None, range=Optional[Union[str, "WaterFeatTypeEnum"]])
+
+slots.water_prod_rate = Slot(uri=MIXS['0000453'], name="water_prod_rate", curie=MIXS.curie('0000453'),
+                   model_uri=NMDC.water_prod_rate, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.water_temp_regm = Slot(uri=MIXS['0000590'], name="water_temp_regm", curie=MIXS.curie('0000590'),
+                   model_uri=NMDC.water_temp_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
+
 slots.watering_regm = Slot(uri=MIXS['0000591'], name="watering_regm", curie=MIXS.curie('0000591'),
                    model_uri=NMDC.watering_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
 
-slots.rel_to_oxygen = Slot(uri=MIXS['0000015'], name="rel_to_oxygen", curie=MIXS.curie('0000015'),
-                   model_uri=NMDC.rel_to_oxygen, domain=None, range=Optional[Union[str, "RelToOxygenEnum"]])
+slots.weekday = Slot(uri=MIXS['0000848'], name="weekday", curie=MIXS.curie('0000848'),
+                   model_uri=NMDC.weekday, domain=None, range=Optional[Union[str, "WeekdayEnum"]])
 
-slots.abs_air_humidity = Slot(uri=MIXS['0000122'], name="abs_air_humidity", curie=MIXS.curie('0000122'),
-                   model_uri=NMDC.abs_air_humidity, domain=None, range=Optional[Union[dict, QuantityValue]])
+slots.win = Slot(uri=MIXS['0000297'], name="win", curie=MIXS.curie('0000297'),
+                   model_uri=NMDC.win, domain=None, range=Optional[Union[dict, TextValue]])
 
-slots.core_field = Slot(uri=MIXS.core_field, name="core field", curie=MIXS.curie('core_field'),
-                   model_uri=NMDC.core_field, domain=None, range=Optional[str])
+slots.wind_direction = Slot(uri=MIXS['0000757'], name="wind_direction", curie=MIXS.curie('0000757'),
+                   model_uri=NMDC.wind_direction, domain=None, range=Optional[Union[dict, TextValue]])
 
-slots.nucleic_acid_sequence_source_field = Slot(uri=MIXS.nucleic_acid_sequence_source_field, name="nucleic acid sequence source field", curie=MIXS.curie('nucleic_acid_sequence_source_field'),
-                   model_uri=NMDC.nucleic_acid_sequence_source_field, domain=None, range=Optional[str])
+slots.wind_speed = Slot(uri=MIXS['0000118'], name="wind_speed", curie=MIXS.curie('0000118'),
+                   model_uri=NMDC.wind_speed, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.window_cond = Slot(uri=MIXS['0000849'], name="window_cond", curie=MIXS.curie('0000849'),
+                   model_uri=NMDC.window_cond, domain=None, range=Optional[Union[str, "WindowCondEnum"]])
+
+slots.window_cover = Slot(uri=MIXS['0000850'], name="window_cover", curie=MIXS.curie('0000850'),
+                   model_uri=NMDC.window_cover, domain=None, range=Optional[Union[str, "WindowCoverEnum"]])
+
+slots.window_horiz_pos = Slot(uri=MIXS['0000851'], name="window_horiz_pos", curie=MIXS.curie('0000851'),
+                   model_uri=NMDC.window_horiz_pos, domain=None, range=Optional[Union[str, "WindowHorizPosEnum"]])
+
+slots.window_loc = Slot(uri=MIXS['0000852'], name="window_loc", curie=MIXS.curie('0000852'),
+                   model_uri=NMDC.window_loc, domain=None, range=Optional[Union[str, "WindowLocEnum"]])
+
+slots.window_mat = Slot(uri=MIXS['0000853'], name="window_mat", curie=MIXS.curie('0000853'),
+                   model_uri=NMDC.window_mat, domain=None, range=Optional[Union[str, "WindowMatEnum"]])
+
+slots.window_open_freq = Slot(uri=MIXS['0000246'], name="window_open_freq", curie=MIXS.curie('0000246'),
+                   model_uri=NMDC.window_open_freq, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.window_size = Slot(uri=MIXS['0000224'], name="window_size", curie=MIXS.curie('0000224'),
+                   model_uri=NMDC.window_size, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.window_status = Slot(uri=MIXS['0000855'], name="window_status", curie=MIXS.curie('0000855'),
+                   model_uri=NMDC.window_status, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.window_type = Slot(uri=MIXS['0000856'], name="window_type", curie=MIXS.curie('0000856'),
+                   model_uri=NMDC.window_type, domain=None, range=Optional[Union[str, "WindowTypeEnum"]])
+
+slots.window_vert_pos = Slot(uri=MIXS['0000857'], name="window_vert_pos", curie=MIXS.curie('0000857'),
+                   model_uri=NMDC.window_vert_pos, domain=None, range=Optional[Union[str, "WindowVertPosEnum"]])
+
+slots.window_water_mold = Slot(uri=MIXS['0000854'], name="window_water_mold", curie=MIXS.curie('0000854'),
+                   model_uri=NMDC.window_water_mold, domain=None, range=Optional[Union[dict, TextValue]])
+
+slots.xylene = Slot(uri=MIXS['0000156'], name="xylene", curie=MIXS.curie('0000156'),
+                   model_uri=NMDC.xylene, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.investigation_field = Slot(uri=MIXS.investigation_field, name="investigation field", curie=MIXS.curie('investigation_field'),
+                   model_uri=NMDC.investigation_field, domain=None, range=Optional[str])
 
 slots.environment_field = Slot(uri=MIXS.environment_field, name="environment field", curie=MIXS.curie('environment_field'),
                    model_uri=NMDC.environment_field, domain=None, range=Optional[str])
@@ -6123,317 +10004,20 @@ slots.environment_field = Slot(uri=MIXS.environment_field, name="environment fie
 slots.sequencing_field = Slot(uri=MIXS.sequencing_field, name="sequencing field", curie=MIXS.curie('sequencing_field'),
                    model_uri=NMDC.sequencing_field, domain=None, range=Optional[str])
 
+slots.has_raw_value = Slot(uri=MIXS.has_raw_value, name="has raw value", curie=MIXS.curie('has_raw_value'),
+                   model_uri=NMDC.has_raw_value, domain=None, range=Optional[str])
+
+slots.nucleic_acid_sequence_source_field = Slot(uri=MIXS.nucleic_acid_sequence_source_field, name="nucleic acid sequence source field", curie=MIXS.curie('nucleic_acid_sequence_source_field'),
+                   model_uri=NMDC.nucleic_acid_sequence_source_field, domain=None, range=Optional[str])
+
 slots.has_unit = Slot(uri=MIXS.has_unit, name="has unit", curie=MIXS.curie('has_unit'),
                    model_uri=NMDC.has_unit, domain=None, range=Optional[str])
 
 slots.has_numeric_value = Slot(uri=MIXS.has_numeric_value, name="has numeric value", curie=MIXS.curie('has_numeric_value'),
                    model_uri=NMDC.has_numeric_value, domain=None, range=Optional[float])
 
-slots.investigation_field = Slot(uri=MIXS.investigation_field, name="investigation field", curie=MIXS.curie('investigation_field'),
-                   model_uri=NMDC.investigation_field, domain=None, range=Optional[str])
-
-slots.has_raw_value = Slot(uri=MIXS.has_raw_value, name="has raw value", curie=MIXS.curie('has_raw_value'),
-                   model_uri=NMDC.has_raw_value, domain=None, range=Optional[str])
-
-slots.antibiotic_regm = Slot(uri=MIXS.antibiotic_regm, name="antibiotic_regm", curie=MIXS.curie('antibiotic_regm'),
-                   model_uri=NMDC.antibiotic_regm, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.aromatics_pc = Slot(uri=MIXS.aromatics_pc, name="aromatics_pc", curie=MIXS.curie('aromatics_pc'),
-                   model_uri=NMDC.aromatics_pc, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.asphaltenes_pc = Slot(uri=MIXS.asphaltenes_pc, name="asphaltenes_pc", curie=MIXS.curie('asphaltenes_pc'),
-                   model_uri=NMDC.asphaltenes_pc, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.atmospheric_data = Slot(uri=MIXS.atmospheric_data, name="atmospheric_data", curie=MIXS.curie('atmospheric_data'),
-                   model_uri=NMDC.atmospheric_data, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.avg_occup = Slot(uri=MIXS.avg_occup, name="avg_occup", curie=MIXS.curie('avg_occup'),
-                   model_uri=NMDC.avg_occup, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.bathroom_count = Slot(uri=MIXS.bathroom_count, name="bathroom_count", curie=MIXS.curie('bathroom_count'),
-                   model_uri=NMDC.bathroom_count, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.bedroom_count = Slot(uri=MIXS.bedroom_count, name="bedroom_count", curie=MIXS.curie('bedroom_count'),
-                   model_uri=NMDC.bedroom_count, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.biocide_admin_method = Slot(uri=MIXS.biocide_admin_method, name="biocide_admin_method", curie=MIXS.curie('biocide_admin_method'),
-                   model_uri=NMDC.biocide_admin_method, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.biomass = Slot(uri=MIXS.biomass, name="biomass", curie=MIXS.curie('biomass'),
-                   model_uri=NMDC.biomass, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.chem_mutagen = Slot(uri=MIXS.chem_mutagen, name="chem_mutagen", curie=MIXS.curie('chem_mutagen'),
-                   model_uri=NMDC.chem_mutagen, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.chem_treat_method = Slot(uri=MIXS.chem_treat_method, name="chem_treat_method", curie=MIXS.curie('chem_treat_method'),
-                   model_uri=NMDC.chem_treat_method, domain=None, range=Optional[str])
-
-slots.cool_syst_id = Slot(uri=MIXS.cool_syst_id, name="cool_syst_id", curie=MIXS.curie('cool_syst_id'),
-                   model_uri=NMDC.cool_syst_id, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.date_last_rain = Slot(uri=MIXS.date_last_rain, name="date_last_rain", curie=MIXS.curie('date_last_rain'),
-                   model_uri=NMDC.date_last_rain, domain=None, range=Optional[Union[dict, TimestampValue]])
-
-slots.diether_lipids = Slot(uri=MIXS.diether_lipids, name="diether_lipids", curie=MIXS.curie('diether_lipids'),
-                   model_uri=NMDC.diether_lipids, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.elevator = Slot(uri=MIXS.elevator, name="elevator", curie=MIXS.curie('elevator'),
-                   model_uri=NMDC.elevator, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.emulsions = Slot(uri=MIXS.emulsions, name="emulsions", curie=MIXS.curie('emulsions'),
-                   model_uri=NMDC.emulsions, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.escalator = Slot(uri=MIXS.escalator, name="escalator", curie=MIXS.curie('escalator'),
-                   model_uri=NMDC.escalator, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.exp_pipe = Slot(uri=MIXS.exp_pipe, name="exp_pipe", curie=MIXS.curie('exp_pipe'),
-                   model_uri=NMDC.exp_pipe, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.ext_door = Slot(uri=MIXS.ext_door, name="ext_door", curie=MIXS.curie('ext_door'),
-                   model_uri=NMDC.ext_door, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.fertilizer_regm = Slot(uri=MIXS.fertilizer_regm, name="fertilizer_regm", curie=MIXS.curie('fertilizer_regm'),
-                   model_uri=NMDC.fertilizer_regm, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.floor_count = Slot(uri=MIXS.floor_count, name="floor_count", curie=MIXS.curie('floor_count'),
-                   model_uri=NMDC.floor_count, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.freq_clean = Slot(uri=MIXS.freq_clean, name="freq_clean", curie=MIXS.curie('freq_clean'),
-                   model_uri=NMDC.freq_clean, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.freq_cook = Slot(uri=MIXS.freq_cook, name="freq_cook", curie=MIXS.curie('freq_cook'),
-                   model_uri=NMDC.freq_cook, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.fungicide_regm = Slot(uri=MIXS.fungicide_regm, name="fungicide_regm", curie=MIXS.curie('fungicide_regm'),
-                   model_uri=NMDC.fungicide_regm, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.gaseous_substances = Slot(uri=MIXS.gaseous_substances, name="gaseous_substances", curie=MIXS.curie('gaseous_substances'),
-                   model_uri=NMDC.gaseous_substances, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.gravity = Slot(uri=MIXS.gravity, name="gravity", curie=MIXS.curie('gravity'),
-                   model_uri=NMDC.gravity, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.growth_hormone_regm = Slot(uri=MIXS.growth_hormone_regm, name="growth_hormone_regm", curie=MIXS.curie('growth_hormone_regm'),
-                   model_uri=NMDC.growth_hormone_regm, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.hall_count = Slot(uri=MIXS.hall_count, name="hall_count", curie=MIXS.curie('hall_count'),
-                   model_uri=NMDC.hall_count, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.hcr_pressure = Slot(uri=MIXS.hcr_pressure, name="hcr_pressure", curie=MIXS.curie('hcr_pressure'),
-                   model_uri=NMDC.hcr_pressure, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.hcr_temp = Slot(uri=MIXS.hcr_temp, name="hcr_temp", curie=MIXS.curie('hcr_temp'),
-                   model_uri=NMDC.hcr_temp, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.heat_sys_deliv_meth = Slot(uri=MIXS.heat_sys_deliv_meth, name="heat_sys_deliv_meth", curie=MIXS.curie('heat_sys_deliv_meth'),
-                   model_uri=NMDC.heat_sys_deliv_meth, domain=None, range=Optional[str])
-
-slots.heat_system_id = Slot(uri=MIXS.heat_system_id, name="heat_system_id", curie=MIXS.curie('heat_system_id'),
-                   model_uri=NMDC.heat_system_id, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.herbicide_regm = Slot(uri=MIXS.herbicide_regm, name="herbicide_regm", curie=MIXS.curie('herbicide_regm'),
-                   model_uri=NMDC.herbicide_regm, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.host_body_product = Slot(uri=MIXS.host_body_product, name="host_body_product", curie=MIXS.curie('host_body_product'),
-                   model_uri=NMDC.host_body_product, domain=None, range=Optional[Union[dict, ControlledTermValue]])
-
-slots.host_body_site = Slot(uri=MIXS.host_body_site, name="host_body_site", curie=MIXS.curie('host_body_site'),
-                   model_uri=NMDC.host_body_site, domain=None, range=Optional[Union[dict, ControlledTermValue]])
-
-slots.host_family_relation = Slot(uri=MIXS.host_family_relation, name="host_family_relation", curie=MIXS.curie('host_family_relation'),
-                   model_uri=NMDC.host_family_relation, domain=None, range=Optional[str])
-
-slots.host_phenotype = Slot(uri=MIXS.host_phenotype, name="host_phenotype", curie=MIXS.curie('host_phenotype'),
-                   model_uri=NMDC.host_phenotype, domain=None, range=Optional[Union[dict, ControlledTermValue]])
-
-slots.host_subspecf_genlin = Slot(uri=MIXS.host_subspecf_genlin, name="host_subspecf_genlin", curie=MIXS.curie('host_subspecf_genlin'),
-                   model_uri=NMDC.host_subspecf_genlin, domain=None, range=Optional[str])
-
-slots.host_symbiont = Slot(uri=MIXS.host_symbiont, name="host_symbiont", curie=MIXS.curie('host_symbiont'),
-                   model_uri=NMDC.host_symbiont, domain=None, range=Optional[str])
-
-slots.inorg_particles = Slot(uri=MIXS.inorg_particles, name="inorg_particles", curie=MIXS.curie('inorg_particles'),
-                   model_uri=NMDC.inorg_particles, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.iw_bt_date_well = Slot(uri=MIXS.iw_bt_date_well, name="iw_bt_date_well", curie=MIXS.curie('iw_bt_date_well'),
-                   model_uri=NMDC.iw_bt_date_well, domain=None, range=Optional[Union[dict, TimestampValue]])
-
-slots.last_clean = Slot(uri=MIXS.last_clean, name="last_clean", curie=MIXS.curie('last_clean'),
-                   model_uri=NMDC.last_clean, domain=None, range=Optional[Union[dict, TimestampValue]])
-
-slots.max_occup = Slot(uri=MIXS.max_occup, name="max_occup", curie=MIXS.curie('max_occup'),
-                   model_uri=NMDC.max_occup, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.micro_biomass_meth = Slot(uri=MIXS.micro_biomass_meth, name="micro_biomass_meth", curie=MIXS.curie('micro_biomass_meth'),
-                   model_uri=NMDC.micro_biomass_meth, domain=None, range=Optional[str])
-
-slots.mineral_nutr_regm = Slot(uri=MIXS.mineral_nutr_regm, name="mineral_nutr_regm", curie=MIXS.curie('mineral_nutr_regm'),
-                   model_uri=NMDC.mineral_nutr_regm, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.non_min_nutr_regm = Slot(uri=MIXS.non_min_nutr_regm, name="non_min_nutr_regm", curie=MIXS.curie('non_min_nutr_regm'),
-                   model_uri=NMDC.non_min_nutr_regm, domain=None, range=Optional[str])
-
-slots.number_pets = Slot(uri=MIXS.number_pets, name="number_pets", curie=MIXS.curie('number_pets'),
-                   model_uri=NMDC.number_pets, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.number_plants = Slot(uri=MIXS.number_plants, name="number_plants", curie=MIXS.curie('number_plants'),
-                   model_uri=NMDC.number_plants, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.number_resident = Slot(uri=MIXS.number_resident, name="number_resident", curie=MIXS.curie('number_resident'),
-                   model_uri=NMDC.number_resident, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.occup_density_samp = Slot(uri=MIXS.occup_density_samp, name="occup_density_samp", curie=MIXS.curie('occup_density_samp'),
-                   model_uri=NMDC.occup_density_samp, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.occup_samp = Slot(uri=MIXS.occup_samp, name="occup_samp", curie=MIXS.curie('occup_samp'),
-                   model_uri=NMDC.occup_samp, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.org_count_qpcr_info = Slot(uri=MIXS.org_count_qpcr_info, name="org_count_qpcr_info", curie=MIXS.curie('org_count_qpcr_info'),
-                   model_uri=NMDC.org_count_qpcr_info, domain=None, range=Optional[str])
-
-slots.org_particles = Slot(uri=MIXS.org_particles, name="org_particles", curie=MIXS.curie('org_particles'),
-                   model_uri=NMDC.org_particles, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.particle_class = Slot(uri=MIXS.particle_class, name="particle_class", curie=MIXS.curie('particle_class'),
-                   model_uri=NMDC.particle_class, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.permeability = Slot(uri=MIXS.permeability, name="permeability", curie=MIXS.curie('permeability'),
-                   model_uri=NMDC.permeability, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.pesticide_regm = Slot(uri=MIXS.pesticide_regm, name="pesticide_regm", curie=MIXS.curie('pesticide_regm'),
-                   model_uri=NMDC.pesticide_regm, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.plant_growth_med = Slot(uri=MIXS.plant_growth_med, name="plant_growth_med", curie=MIXS.curie('plant_growth_med'),
-                   model_uri=NMDC.plant_growth_med, domain=None, range=Optional[Union[dict, ControlledTermValue]])
-
-slots.plant_struc = Slot(uri=MIXS.plant_struc, name="plant_struc", curie=MIXS.curie('plant_struc'),
-                   model_uri=NMDC.plant_struc, domain=None, range=Optional[Union[dict, ControlledTermValue]])
-
-slots.pollutants = Slot(uri=MIXS.pollutants, name="pollutants", curie=MIXS.curie('pollutants'),
-                   model_uri=NMDC.pollutants, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.porosity = Slot(uri=MIXS.porosity, name="porosity", curie=MIXS.curie('porosity'),
-                   model_uri=NMDC.porosity, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.pres_animal_insect = Slot(uri=MIXS.pres_animal_insect, name="pres_animal_insect", curie=MIXS.curie('pres_animal_insect'),
-                   model_uri=NMDC.pres_animal_insect, domain=None, range=Optional[str])
-
-slots.prev_land_use_meth = Slot(uri=MIXS.prev_land_use_meth, name="prev_land_use_meth", curie=MIXS.curie('prev_land_use_meth'),
-                   model_uri=NMDC.prev_land_use_meth, domain=None, range=Optional[str])
-
-slots.prod_start_date = Slot(uri=MIXS.prod_start_date, name="prod_start_date", curie=MIXS.curie('prod_start_date'),
-                   model_uri=NMDC.prod_start_date, domain=None, range=Optional[Union[dict, TimestampValue]])
-
-slots.radiation_regm = Slot(uri=MIXS.radiation_regm, name="radiation_regm", curie=MIXS.curie('radiation_regm'),
-                   model_uri=NMDC.radiation_regm, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.rainfall_regm = Slot(uri=MIXS.rainfall_regm, name="rainfall_regm", curie=MIXS.curie('rainfall_regm'),
-                   model_uri=NMDC.rainfall_regm, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.resins_pc = Slot(uri=MIXS.resins_pc, name="resins_pc", curie=MIXS.curie('resins_pc'),
-                   model_uri=NMDC.resins_pc, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.room_architec_elem = Slot(uri=MIXS.room_architec_elem, name="room_architec_elem", curie=MIXS.curie('room_architec_elem'),
-                   model_uri=NMDC.room_architec_elem, domain=None, range=Optional[str])
-
-slots.room_count = Slot(uri=MIXS.room_count, name="room_count", curie=MIXS.curie('room_count'),
-                   model_uri=NMDC.room_count, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.room_dim = Slot(uri=MIXS.room_dim, name="room_dim", curie=MIXS.curie('room_dim'),
-                   model_uri=NMDC.room_dim, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.room_door_dist = Slot(uri=MIXS.room_door_dist, name="room_door_dist", curie=MIXS.curie('room_door_dist'),
-                   model_uri=NMDC.room_door_dist, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.room_net_area = Slot(uri=MIXS.room_net_area, name="room_net_area", curie=MIXS.curie('room_net_area'),
-                   model_uri=NMDC.room_net_area, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.room_occup = Slot(uri=MIXS.room_occup, name="room_occup", curie=MIXS.curie('room_occup'),
-                   model_uri=NMDC.room_occup, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.room_vol = Slot(uri=MIXS.room_vol, name="room_vol", curie=MIXS.curie('room_vol'),
-                   model_uri=NMDC.room_vol, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.root_med_carbon = Slot(uri=MIXS.root_med_carbon, name="root_med_carbon", curie=MIXS.curie('root_med_carbon'),
-                   model_uri=NMDC.root_med_carbon, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.root_med_macronutr = Slot(uri=MIXS.root_med_macronutr, name="root_med_macronutr", curie=MIXS.curie('root_med_macronutr'),
-                   model_uri=NMDC.root_med_macronutr, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.root_med_micronutr = Slot(uri=MIXS.root_med_micronutr, name="root_med_micronutr", curie=MIXS.curie('root_med_micronutr'),
-                   model_uri=NMDC.root_med_micronutr, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.root_med_ph = Slot(uri=MIXS.root_med_ph, name="root_med_ph", curie=MIXS.curie('root_med_ph'),
-                   model_uri=NMDC.root_med_ph, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.root_med_regl = Slot(uri=MIXS.root_med_regl, name="root_med_regl", curie=MIXS.curie('root_med_regl'),
-                   model_uri=NMDC.root_med_regl, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.root_med_suppl = Slot(uri=MIXS.root_med_suppl, name="root_med_suppl", curie=MIXS.curie('root_med_suppl'),
-                   model_uri=NMDC.root_med_suppl, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.salt_regm = Slot(uri=MIXS.salt_regm, name="salt_regm", curie=MIXS.curie('salt_regm'),
-                   model_uri=NMDC.salt_regm, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.samp_collec_device = Slot(uri=MIXS.samp_collec_device, name="samp_collec_device", curie=MIXS.curie('samp_collec_device'),
-                   model_uri=NMDC.samp_collec_device, domain=None, range=Optional[str])
-
-slots.samp_loc_corr_rate = Slot(uri=MIXS.samp_loc_corr_rate, name="samp_loc_corr_rate", curie=MIXS.curie('samp_loc_corr_rate'),
-                   model_uri=NMDC.samp_loc_corr_rate, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.samp_md = Slot(uri=MIXS.samp_md, name="samp_md", curie=MIXS.curie('samp_md'),
-                   model_uri=NMDC.samp_md, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.samp_preserv = Slot(uri=MIXS.samp_preserv, name="samp_preserv", curie=MIXS.curie('samp_preserv'),
-                   model_uri=NMDC.samp_preserv, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.samp_room_id = Slot(uri=MIXS.samp_room_id, name="samp_room_id", curie=MIXS.curie('samp_room_id'),
-                   model_uri=NMDC.samp_room_id, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.samp_time_out = Slot(uri=MIXS.samp_time_out, name="samp_time_out", curie=MIXS.curie('samp_time_out'),
-                   model_uri=NMDC.samp_time_out, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.samp_transport_cond = Slot(uri=MIXS.samp_transport_cond, name="samp_transport_cond", curie=MIXS.curie('samp_transport_cond'),
-                   model_uri=NMDC.samp_transport_cond, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.samp_tvdss = Slot(uri=MIXS.samp_tvdss, name="samp_tvdss", curie=MIXS.curie('samp_tvdss'),
-                   model_uri=NMDC.samp_tvdss, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.saturates_pc = Slot(uri=MIXS.saturates_pc, name="saturates_pc", curie=MIXS.curie('saturates_pc'),
-                   model_uri=NMDC.saturates_pc, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.shad_dev_water_mold = Slot(uri=MIXS.shad_dev_water_mold, name="shad_dev_water_mold", curie=MIXS.curie('shad_dev_water_mold'),
-                   model_uri=NMDC.shad_dev_water_mold, domain=None, range=Optional[str])
-
-slots.size_frac = Slot(uri=MIXS.size_frac, name="size_frac", curie=MIXS.curie('size_frac'),
-                   model_uri=NMDC.size_frac, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.soil_texture_meth = Slot(uri=MIXS.soil_texture_meth, name="soil_texture_meth", curie=MIXS.curie('soil_texture_meth'),
-                   model_uri=NMDC.soil_texture_meth, domain=None, range=Optional[str])
-
-slots.soluble_inorg_mat = Slot(uri=MIXS.soluble_inorg_mat, name="soluble_inorg_mat", curie=MIXS.curie('soluble_inorg_mat'),
-                   model_uri=NMDC.soluble_inorg_mat, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.soluble_org_mat = Slot(uri=MIXS.soluble_org_mat, name="soluble_org_mat", curie=MIXS.curie('soluble_org_mat'),
-                   model_uri=NMDC.soluble_org_mat, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.suspend_solids = Slot(uri=MIXS.suspend_solids, name="suspend_solids", curie=MIXS.curie('suspend_solids'),
-                   model_uri=NMDC.suspend_solids, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.viscosity = Slot(uri=MIXS.viscosity, name="viscosity", curie=MIXS.curie('viscosity'),
-                   model_uri=NMDC.viscosity, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.volatile_org_comp = Slot(uri=MIXS.volatile_org_comp, name="volatile_org_comp", curie=MIXS.curie('volatile_org_comp'),
-                   model_uri=NMDC.volatile_org_comp, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.water_temp_regm = Slot(uri=MIXS.water_temp_regm, name="water_temp_regm", curie=MIXS.curie('water_temp_regm'),
-                   model_uri=NMDC.water_temp_regm, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.window_open_freq = Slot(uri=MIXS.window_open_freq, name="window_open_freq", curie=MIXS.curie('window_open_freq'),
-                   model_uri=NMDC.window_open_freq, domain=None, range=Optional[Union[dict, TextValue]])
-
-slots.window_size = Slot(uri=MIXS.window_size, name="window_size", curie=MIXS.curie('window_size'),
-                   model_uri=NMDC.window_size, domain=None, range=Optional[Union[dict, TextValue]])
+slots.core_field = Slot(uri=MIXS.core_field, name="core field", curie=MIXS.curie('core_field'),
+                   model_uri=NMDC.core_field, domain=None, range=Optional[str])
 
 slots.emsl_store_temp = Slot(uri=NMDC.emsl_store_temp, name="emsl_store_temp", curie=NMDC.curie('emsl_store_temp'),
                    model_uri=NMDC.emsl_store_temp, domain=None, range=Optional[str])

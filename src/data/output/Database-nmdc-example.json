@@ -30,16 +30,16 @@
       "gold_biosample_identifiers": [
         "GOLD:Gb0150408"
       ],
+      "ecosystem": "Environmental",
+      "ecosystem_category": "Terrestrial",
+      "ecosystem_subtype": "Wetlands",
+      "ecosystem_type": "Soil",
       "geo_loc_name": {
         "has_raw_value": "Sweden: Stordalen"
       },
       "lat_lon": {
         "has_raw_value": "68.35 19.05"
       },
-      "ecosystem": "Environmental",
-      "ecosystem_category": "Terrestrial",
-      "ecosystem_type": "Soil",
-      "ecosystem_subtype": "Wetlands",
       "specific_ecosystem": "Permafrost",
       "add_date": "17-MAR-17 04.55.54.717000000 PM",
       "community": "microbial communities",
@@ -79,16 +79,16 @@
       "gold_biosample_identifiers": [
         "GOLD:Gb0157174"
       ],
+      "ecosystem": "Environmental",
+      "ecosystem_category": "Terrestrial",
+      "ecosystem_subtype": "Unclassified",
+      "ecosystem_type": "Soil",
       "geo_loc_name": {
         "has_raw_value": "USA: Massachusetts"
       },
       "lat_lon": {
         "has_raw_value": "42.481016 -72.178343"
       },
-      "ecosystem": "Environmental",
-      "ecosystem_category": "Terrestrial",
-      "ecosystem_type": "Soil",
-      "ecosystem_subtype": "Unclassified",
       "specific_ecosystem": "Forest Soil",
       "add_date": "17-AUG-17 05.38.34.719000000 PM",
       "community": "microbial communities",
@@ -128,16 +128,16 @@
       "gold_biosample_identifiers": [
         "GOLD:Gb0188037"
       ],
+      "ecosystem": "Host-associated",
+      "ecosystem_category": "Plants",
+      "ecosystem_subtype": "Soil",
+      "ecosystem_type": "Rhizosphere",
       "geo_loc_name": {
         "has_raw_value": "USA: Seattle, Washington"
       },
       "lat_lon": {
         "has_raw_value": "47.6516 -122.3045"
       },
-      "ecosystem": "Host-associated",
-      "ecosystem_category": "Plants",
-      "ecosystem_type": "Rhizosphere",
-      "ecosystem_subtype": "Soil",
       "specific_ecosystem": "Unclassified",
       "add_date": "29-MAR-18 01.27.40.709000000 PM",
       "community": "microbial communities",

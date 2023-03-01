@@ -460,6 +460,27 @@ metagenome_sequencing_activity_set:
   was_informed_by: gold:Gp0213371
 
 ```
+## Database-MetabolomicsAnalysisActivity-1
+### Input
+```yaml
+metabolomics_analysis_activity_set:
+- ended_at_time: '2021-09-15T10:13:20+00:00'
+  execution_resource: NERSC cori
+  git_url: https://example.org/WorkflowExecutionActivity
+  has_calibration: calibration with 0.01% phosphoric acid
+  has_input:
+  - nmdc:i1
+  - nmdc:i2
+  has_output:
+  - nmdc:o1
+  - nmdc:o2
+  id: nmdc:wfmb-99-ABCDEF
+  name: Metabolomics Analysis Activity for nmdc:wfmb-99-ABCDEF
+  started_at_time: '2021-08-05T14:48:51+00:00'
+  type: WorkflowExecutionActivity
+  was_informed_by: nmdc:a1
+
+```
 ## DataObject-exhaustive
 ### Input
 ```yaml
@@ -1349,6 +1370,25 @@ has_credit_associations:
   applies_to_person:
     orcid: orcid:0000-0001-9076-6066
 id: nmdc:sty-99-WoeqAi
+
+```
+## MetabolomicsAnalysisActivity-1
+### Input
+```yaml
+ended_at_time: '2021-09-15T10:13:20+00:00'
+execution_resource: NERSC cori
+git_url: https://example.org/WorkflowExecutionActivity
+has_calibration: calibration with 0.01% phosphoric acid
+has_input:
+- nmdc:i1
+- nmdc:i2
+has_output:
+- nmdc:o1
+- nmdc:o2
+id: nmdc:wfmb-99-ABCDEF
+started_at_time: '2021-08-05T14:48:51+00:00'
+type: WorkflowExecutionActivity
+was_informed_by: nmdc:a1
 
 ```
 ## Biosample-minimal
