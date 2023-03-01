@@ -1,15 +1,11 @@
 add_date
-alternative_identifiers
 chimera_check
-description
 gold_sequencing_project_identifiers
 has_input
 has_output
-id
 insdc_experiment_identifiers
 instrument_name
 mod_date
-name
 ncbi_project_name
 nucl_acid_amp
 nucl_acid_ext

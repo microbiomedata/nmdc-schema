@@ -6,7 +6,12 @@ SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 
 .PHONY: mixs_deepdiff shuttle_cleanup
 
+src/schema/mixs.yaml: shuttle_cleanup src/schema/mixs.yaml.new
+	mv $(word 2,$^) $@
+	rm -rf src/schema/mixs.yaml.new.bak
+
 shuttle_cleanup:
+	#cp src/schema/mixs.yaml src/schema/mixs.yaml.bak
 	rm -rf assets/mixs_regen/import_slots_regardless_gen.tsv
 	rm -rf assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv
 	rm -rf assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing_augmented.tsv
@@ -17,17 +22,22 @@ shuttle_cleanup:
 	rm -rf assets/mixs_regen/slots_associated_with_biosample.tsv
 	rm -rf assets/mixs_regen/slots_associated_with_biosample_omics_processing.tsv
 	rm -rf assets/mixs_regen/slots_associated_with_omics_processing.tsv
+	rm -rf src/schema/mixs.yaml
+	rm -rf src/schema/mixs.yaml.new
+	rm -rf src/schema/mixs.yaml.new.bak
 	mkdir -p assets/mixs_regen
 	echo "do not delete this placeholder file" > assets/mixs_regen/placeholder.txt
 
-assets/mixs_regen/mixs_slots_used_in_schema.tsv:
-	$(RUN) get_mixs_slots_used_in_schema --output_file $@
+#assets/mixs_regen/mixs_slots_used_in_schema.tsv:
+#	$(RUN) get_mixs_slots_used_in_schema --output_file $@
 
 assets/mixs_regen/slots_associated_with_biosample.tsv:
-	$(RUN) get_slots_from_class --class_name Biosample --output_file $@
+#	$(RUN) get_slots_from_class --class_name Biosample --output_file $@
+	yq '.classes.Biosample.slots.[]' src/schema/nmdc.yaml | sort | tee $@
 
 assets/mixs_regen/slots_associated_with_omics_processing.tsv:
-	$(RUN) get_slots_from_class --class_name OmicsProcessing --output_file $@
+	#$(RUN) get_slots_from_class --class_name OmicsProcessing --output_file $@
+	yq '.classes.OmicsProcessing.slots.[]' src/schema/nmdc.yaml | sort | tee $@
 
 assets/mixs_regen/slots_associated_with_biosample_omics_processing.tsv: \
 assets/mixs_regen/slots_associated_with_biosample.tsv \
@@ -40,15 +50,15 @@ assets/mixs_regen/slots_associated_with_biosample_omics_processing.tsv
 		--slot_list_file $< \
 		--output_file $@
 
-assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing_augmented.tsv: \
-assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv
-	cp $< $@
-	echo "rel_to_oxygen" >> $@
-	echo "abs_air_humidity" >> $@
+#assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing_augmented.tsv: \
+#assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv
+#	cp $< $@
+#	echo "rel_to_oxygen" >> $@
+#	echo "abs_air_humidity" >> $@
 
 
 assets/mixs_regen/import_slots_regardless_gen.tsv: \
-assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing_augmented.tsv
+assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv
 	$(RUN) generate_import_slots_regardless --input_file $< --output_file $@
 
 assets/mixs_regen/mixs_subset.yaml: assets/mixs_regen/import_slots_regardless_gen.tsv
@@ -57,13 +67,13 @@ assets/mixs_regen/mixs_subset.yaml: assets/mixs_regen/import_slots_regardless_ge
 		--config_tsv $< \
 		--yaml_output $@
 
-src/schema/mixs.yaml: assets/mixs_regen/mixs_subset.yaml
+src/schema/mixs.yaml.new: assets/mixs_regen/mixs_subset.yaml
 	# the majority of operations
 	# change the https://github.com/GenomicsStandardsConsortium/mixs/blob/main/model/schema/mixs.yaml ranges
 	# to match https://github.com/microbiomedata/nmdc-schema/blame/e681592b20f98dab0cf89278b2b3c2f5e0754adf/src/schema/mixs.yaml
 	#   from Apr 2022 ?
 	# add the same thing for other attributes like ...
-	mv src/schema/mixs.yaml src/schema/mixs.yaml.bak
+	#mv $@ src/schema/mixs.yaml.bak
 	sed 's/quantity value/QuantityValue/' $< > $@
 	sed -i.bak 's/range: string/range: TextValue/' $@
 	sed -i.bak 's/range: text value/range: TextValue/' $@
@@ -206,6 +216,7 @@ src/schema/mixs.yaml: assets/mixs_regen/mixs_subset.yaml
 	yq -i 'del(.enums.[].permissible_values.[].text)'  $@
 	yq -i 'del(.slots.[].name)'  $@
 	yq -i 'del(.subsets.[].name)'  $@
+	yq -i 'del(.slots.add_recov_method.pattern)'  $@
 	rm -rf assets/mixs_subset_repaired.yaml.bak
 
 mixs_deepdiff: src/schema/mixs.yaml
@@ -292,3 +303,19 @@ schemasheets/populated_tsv/slots.tsv:
 #  --append-sheet / --no-append-sheet
 #  --overwrite / --no-overwrite    If set, then
 #  --unique-slots / --no-unique-slots
+
+
+check-jsonschema: nmdc_schema/nmdc_materialized_patterns.schema.json
+	$(RUN) check-jsonschema --schemafile $< src/data/invalid/Database-Biosample-invalid_range.yaml
+
+
+# Define a variable for the directory containing the YAML data files
+YAML_DIR_VALID := src/data/valid/
+
+# Define a variable for the list of YAML data files
+YAML_DATABASE_FILES_VALID := $(wildcard $(YAML_DIR_VALID)Database*.yaml)
+
+# Define a new target that depends on all YAML data files and runs check-jsonschema on each file
+jsonschema-check-all-valid-databases: $(YAML_DATABASE_FILES_VALID)
+	$(foreach yaml_file,$^,echo $(yaml_file) ; $(RUN) check-jsonschema \
+		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $(yaml_file);)
