@@ -115,6 +115,10 @@
             "additionalProperties": false,
             "description": "Biological source material which can be characterized by an experiment.",
             "properties": {
+                "abs_air_humidity": {
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "Actual mass of water vapor - mh20 - present in the air water vapor mixture"
+                },
                 "add_date": {
                     "description": "The date on which the information was added to the database.",
                     "type": "string"
@@ -191,9 +195,36 @@
                     "$ref": "#/$defs/QuantityValue",
                     "description": "Mean annual temperature"
                 },
+                "antibiotic_regm": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "aromatics_pc": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "asphaltenes_pc": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "atmospheric_data": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "avg_occup": {
+                    "$ref": "#/$defs/TextValue"
+                },
                 "bacteria_carb_prod": {
                     "$ref": "#/$defs/QuantityValue",
                     "description": "Measurement of bacterial carbon production"
+                },
+                "bathroom_count": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "bedroom_count": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "biocide_admin_method": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "biomass": {
+                    "$ref": "#/$defs/TextValue"
                 },
                 "biosample_categories": {
                     "items": {
@@ -231,6 +262,16 @@
                         "$ref": "#/$defs/ControlledTermValue"
                     },
                     "type": "array"
+                },
+                "chem_mutagen": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "chem_treat_method": {
+                    "type": "string"
+                },
+                "chimera_check": {
+                    "$ref": "#/$defs/TextValue",
+                    "description": "Tool(s) used for chimera checking, including version number and parameters, to discover and remove chimeric sequences. A chimeric sequence is comprised of two or more phylogenetically distinct parent sequences."
                 },
                 "chloride": {
                     "$ref": "#/$defs/QuantityValue",
@@ -270,6 +311,13 @@
                 "community": {
                     "type": "string"
                 },
+                "cool_syst_id": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "core_field": {
+                    "description": "basic fields",
+                    "type": "string"
+                },
                 "crop_rotation": {
                     "$ref": "#/$defs/TextValue",
                     "description": "Whether or not crop is rotated, and if yes, rotation schedule"
@@ -286,6 +334,9 @@
                     "$ref": "#/$defs/TextValue",
                     "description": "Reference or method used in vegetation classification"
                 },
+                "date_last_rain": {
+                    "$ref": "#/$defs/TimestampValue"
+                },
                 "density": {
                     "$ref": "#/$defs/QuantityValue",
                     "description": "Density of the sample, which is its mass per unit volume (aka volumetric mass density)"
@@ -297,6 +348,9 @@
                 "description": {
                     "description": "a human-readable description of a thing",
                     "type": "string"
+                },
+                "diether_lipids": {
+                    "$ref": "#/$defs/TextValue"
                 },
                 "diss_carb_dioxide": {
                     "$ref": "#/$defs/QuantityValue",
@@ -420,6 +474,9 @@
                     "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit.",
                     "type": "number"
                 },
+                "elevator": {
+                    "$ref": "#/$defs/TextValue"
+                },
                 "embargoed": {
                     "description": "If true, the data are embargoed and not available for public access.",
                     "type": "boolean"
@@ -430,6 +487,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "emulsions": {
+                    "$ref": "#/$defs/TextValue"
                 },
                 "env_broad_scale": {
                     "$ref": "#/$defs/ControlledIdentifiedTermValue",
@@ -447,6 +507,16 @@
                     "$ref": "#/$defs/TextValue",
                     "description": "MIxS extension for reporting of measurements and observations obtained from one or more of the environments where the sample was obtained. All environmental packages listed here are further defined in separate subtables. By giving the name of the environmental package, a selection of fields can be made from the subtables and can be reported"
                 },
+                "environment_field": {
+                    "description": "field describing environmental aspect of a sample",
+                    "type": "string"
+                },
+                "escalator": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "exp_pipe": {
+                    "$ref": "#/$defs/QuantityValue"
+                },
                 "experimental_factor": {
                     "$ref": "#/$defs/ControlledTermValue",
                     "description": "Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms, please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI"
@@ -455,6 +525,9 @@
                     "description": "Other details about your sample that you feel can't be accurately represented in the available columns.",
                     "type": "string"
                 },
+                "ext_door": {
+                    "$ref": "#/$defs/TextValue"
+                },
                 "extreme_event": {
                     "description": "Unusual physical events that may have affected microbial populations",
                     "type": "string"
@@ -462,6 +535,9 @@
                 "fao_class": {
                     "$ref": "#/$defs/FaoClassEnum",
                     "description": "Soil classification from the FAO World Reference Database for Soil Resources. The list can be found at http://www.fao.org/nr/land/sols/soil/wrb-soil-maps/reference-groups"
+                },
+                "fertilizer_regm": {
+                    "$ref": "#/$defs/TextValue"
                 },
                 "filter_method": {
                     "description": "Type of filter used or how the sample was filtered",
@@ -476,12 +552,27 @@
                     "description": "Historical and/or physical evidence of flooding",
                     "type": "string"
                 },
+                "floor_count": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "freq_clean": {
+                    "$ref": "#/$defs/QuantityValue"
+                },
+                "freq_cook": {
+                    "$ref": "#/$defs/QuantityValue"
+                },
+                "fungicide_regm": {
+                    "$ref": "#/$defs/TextValue"
+                },
                 "gaseous_environment": {
                     "description": "Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens",
                     "items": {
                         "$ref": "#/$defs/TextValue"
                     },
                     "type": "array"
+                },
+                "gaseous_substances": {
+                    "$ref": "#/$defs/TextValue"
                 },
                 "geo_loc_name": {
                     "$ref": "#/$defs/TextValue",
@@ -499,12 +590,43 @@
                     },
                     "type": "array"
                 },
+                "gravity": {
+                    "$ref": "#/$defs/TextValue"
+                },
                 "growth_facil": {
                     "$ref": "#/$defs/ControlledTermValue",
                     "description": "Type of facility where the sampled plant was grown; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field. Alternatively use Crop Ontology (CO) terms, see http://www.cropontology.org/ontology/CO_715/Crop%20Research"
                 },
+                "growth_hormone_regm": {
+                    "$ref": "#/$defs/TextValue"
+                },
                 "habitat": {
                     "type": "string"
+                },
+                "hall_count": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "has_numeric_value": {
+                    "type": "number"
+                },
+                "has_raw_value": {
+                    "type": "string"
+                },
+                "has_unit": {
+                    "description": "Example \"m\"",
+                    "type": "string"
+                },
+                "hcr_pressure": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "hcr_temp": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "heat_sys_deliv_meth": {
+                    "type": "string"
+                },
+                "heat_system_id": {
+                    "$ref": "#/$defs/TextValue"
                 },
                 "heavy_metals": {
                     "description": "Heavy metals present in the sample and their concentrations.",
@@ -520,7 +642,28 @@
                     },
                     "type": "array"
                 },
+                "herbicide_regm": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "host_body_product": {
+                    "$ref": "#/$defs/ControlledTermValue"
+                },
+                "host_body_site": {
+                    "$ref": "#/$defs/ControlledTermValue"
+                },
+                "host_family_relation": {
+                    "type": "string"
+                },
                 "host_name": {
+                    "type": "string"
+                },
+                "host_phenotype": {
+                    "$ref": "#/$defs/ControlledTermValue"
+                },
+                "host_subspecf_genlin": {
+                    "type": "string"
+                },
+                "host_symbiont": {
                     "type": "string"
                 },
                 "host_taxid": {
@@ -553,6 +696,9 @@
                     },
                     "type": "array"
                 },
+                "inorg_particles": {
+                    "$ref": "#/$defs/TextValue"
+                },
                 "insdc_biosample_identifiers": {
                     "description": "identifiers for corresponding sample in INSDC",
                     "items": {
@@ -561,9 +707,19 @@
                     },
                     "type": "array"
                 },
+                "investigation_field": {
+                    "description": "field describing aspect of the investigation/study to which the sample belongs",
+                    "type": "string"
+                },
                 "isotope_exposure": {
                     "description": "List isotope exposure or addition applied to your sample.",
                     "type": "string"
+                },
+                "iw_bt_date_well": {
+                    "$ref": "#/$defs/TimestampValue"
+                },
+                "last_clean": {
+                    "$ref": "#/$defs/TimestampValue"
                 },
                 "lat_lon": {
                     "$ref": "#/$defs/GeolocationValue",
@@ -612,6 +768,9 @@
                     "$ref": "#/$defs/QuantityValue",
                     "description": "Concentration of manganese in the sample"
                 },
+                "max_occup": {
+                    "$ref": "#/$defs/QuantityValue"
+                },
                 "mean_frict_vel": {
                     "$ref": "#/$defs/QuantityValue",
                     "description": "Measurement of mean friction velocity"
@@ -622,6 +781,9 @@
                 },
                 "micro_biomass_c_meth": {
                     "description": "Reference or method used in determining microbial biomass carbon",
+                    "type": "string"
+                },
+                "micro_biomass_meth": {
                     "type": "string"
                 },
                 "micro_biomass_n_meth": {
@@ -635,6 +797,9 @@
                 "microbial_biomass_n": {
                     "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer.",
                     "type": "string"
+                },
+                "mineral_nutr_regm": {
+                    "$ref": "#/$defs/TextValue"
                 },
                 "misc_param": {
                     "description": "Any other measurement performed or parameter collected, that is not listed here",
@@ -685,6 +850,38 @@
                     "description": "Reference or method used in determining biomass",
                     "type": "string"
                 },
+                "non_min_nutr_regm": {
+                    "type": "string"
+                },
+                "nucl_acid_amp": {
+                    "$ref": "#/$defs/TextValue",
+                    "description": "A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the enzymatic amplification (PCR, TMA, NASBA) of specific nucleic acids"
+                },
+                "nucl_acid_ext": {
+                    "$ref": "#/$defs/TextValue",
+                    "description": "A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the material separation to recover the nucleic acid fraction from a sample"
+                },
+                "nucleic_acid_sequence_source_field": {
+                    "type": "string"
+                },
+                "number_pets": {
+                    "$ref": "#/$defs/QuantityValue"
+                },
+                "number_plants": {
+                    "$ref": "#/$defs/QuantityValue"
+                },
+                "number_resident": {
+                    "$ref": "#/$defs/QuantityValue"
+                },
+                "occup_density_samp": {
+                    "$ref": "#/$defs/QuantityValue"
+                },
+                "occup_samp": {
+                    "$ref": "#/$defs/QuantityValue"
+                },
+                "org_count_qpcr_info": {
+                    "type": "string"
+                },
                 "org_matter": {
                     "$ref": "#/$defs/QuantityValue",
                     "description": "Concentration of organic matter"
@@ -696,6 +893,9 @@
                 "org_nitro_method": {
                     "description": "Method used for obtaining organic nitrogen",
                     "type": "string"
+                },
+                "org_particles": {
+                    "$ref": "#/$defs/TextValue"
                 },
                 "organism_count": {
                     "description": "Total cell count of any organism (or group of organisms) per gram, volume or area of sample, should include name of organism followed by count. The method that was used for the enumeration (e.g. qPCR, atp, mpn, etc.) Should also be provided. (example: total prokaryotes; 3.5e7 cells per ml; qpcr)",
@@ -723,12 +923,29 @@
                     "$ref": "#/$defs/QuantityValue",
                     "description": "Concentration of particulate organic carbon"
                 },
+                "particle_class": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "pcr_cond": {
+                    "$ref": "#/$defs/TextValue",
+                    "description": "Description of reaction conditions and components of PCR in the form of 'initial denaturation:94degC_1.5min; annealing=...'"
+                },
+                "pcr_primers": {
+                    "$ref": "#/$defs/TextValue",
+                    "description": "PCR primers that were used to amplify the sequence of the targeted gene, locus or subfragment. This field should contain all the primers used for a single PCR reaction if multiple forward or reverse primers are present in a single PCR reaction. The primer sequence should be reported in uppercase letters"
+                },
+                "permeability": {
+                    "$ref": "#/$defs/TextValue"
+                },
                 "perturbation": {
                     "description": "Type of perturbation, e.g. chemical administration, physical disturbance, etc., coupled with perturbation regimen including how many times the perturbation was repeated, how long each perturbation lasted, and the start and end time of the entire perturbation period; can include multiple perturbation types",
                     "items": {
                         "$ref": "#/$defs/TextValue"
                     },
                     "type": "array"
+                },
+                "pesticide_regm": {
+                    "$ref": "#/$defs/TextValue"
                 },
                 "petroleum_hydrocarb": {
                     "$ref": "#/$defs/QuantityValue",
@@ -760,17 +977,38 @@
                     },
                     "type": "array"
                 },
+                "plant_growth_med": {
+                    "$ref": "#/$defs/ControlledTermValue"
+                },
+                "plant_struc": {
+                    "$ref": "#/$defs/ControlledTermValue"
+                },
+                "pollutants": {
+                    "$ref": "#/$defs/TextValue"
+                },
                 "pool_dna_extracts": {
                     "$ref": "#/$defs/TextValue",
                     "description": "Indicate whether multiple DNA extractions were mixed. If the answer yes, the number of extracts that were pooled should be given"
+                },
+                "porosity": {
+                    "$ref": "#/$defs/TextValue"
                 },
                 "potassium": {
                     "$ref": "#/$defs/QuantityValue",
                     "description": "Concentration of potassium in the sample"
                 },
+                "pres_animal_insect": {
+                    "type": "string"
+                },
                 "pressure": {
                     "$ref": "#/$defs/QuantityValue",
                     "description": "Pressure to which the sample is subject to, in atmospheres"
+                },
+                "prev_land_use_meth": {
+                    "type": "string"
+                },
+                "prod_start_date": {
+                    "$ref": "#/$defs/TimestampValue"
                 },
                 "profile_position": {
                     "$ref": "#/$defs/ProfilePositionEnum",
@@ -789,13 +1027,26 @@
                 "proposal_rna": {
                     "type": "string"
                 },
+                "radiation_regm": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "rainfall_regm": {
+                    "$ref": "#/$defs/TextValue"
+                },
                 "redox_potential": {
                     "$ref": "#/$defs/QuantityValue",
                     "description": "Redox potential, measured relative to a hydrogen cell, indicating oxidation or reduction potential"
                 },
+                "rel_to_oxygen": {
+                    "$ref": "#/$defs/RelToOxygenEnum",
+                    "description": "Is this organism an aerobe, anaerobe? Please note that aerobic and anaerobic are valid descriptors for microbial environments"
+                },
                 "replicate_number": {
                     "description": "If sending biological replicates, indicate the rep number here.",
                     "type": "string"
+                },
+                "resins_pc": {
+                    "$ref": "#/$defs/TextValue"
                 },
                 "rna_absorb1": {
                     "description": "260/280 measurement of RNA sample purity",
@@ -861,6 +1112,45 @@
                 "rna_volume": {
                     "type": "string"
                 },
+                "room_architec_elem": {
+                    "type": "string"
+                },
+                "room_count": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "room_dim": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "room_door_dist": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "room_net_area": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "room_occup": {
+                    "$ref": "#/$defs/QuantityValue"
+                },
+                "room_vol": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "root_med_carbon": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "root_med_macronutr": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "root_med_micronutr": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "root_med_ph": {
+                    "$ref": "#/$defs/QuantityValue"
+                },
+                "root_med_regl": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "root_med_suppl": {
+                    "$ref": "#/$defs/TextValue"
+                },
                 "salinity": {
                     "$ref": "#/$defs/QuantityValue",
                     "description": "The total concentration of all dissolved salts in a liquid or solid sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater."
@@ -873,17 +1163,35 @@
                     "$ref": "#/$defs/TextValue",
                     "description": "Reference or method used in determining salinity"
                 },
+                "salt_regm": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "samp_collec_device": {
+                    "type": "string"
+                },
                 "samp_collec_method": {
                     "description": "The method employed for collecting the sample.",
                     "type": "string"
+                },
+                "samp_loc_corr_rate": {
+                    "$ref": "#/$defs/TextValue"
                 },
                 "samp_mat_process": {
                     "$ref": "#/$defs/ControlledTermValue",
                     "description": "A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed."
                 },
+                "samp_md": {
+                    "$ref": "#/$defs/QuantityValue"
+                },
                 "samp_name": {
                     "description": "A local identifier or name that for the material sample used for extracting nucleic acids, and subsequent sequencing. It can refer either to the original material collected or to any derived sub-samples. It can have any format, but we suggest that you make it concise, unique and consistent within your lab, and as informative as possible. INSDC requires every sample name from a single Submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to sample_name.",
                     "type": "string"
+                },
+                "samp_preserv": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "samp_room_id": {
+                    "$ref": "#/$defs/TextValue"
                 },
                 "samp_size": {
                     "$ref": "#/$defs/QuantityValue",
@@ -904,6 +1212,15 @@
                 "samp_taxon_id": {
                     "$ref": "#/$defs/TextValue",
                     "description": "NCBI taxon id of the sample.  Maybe be a single taxon or mixed taxa sample. Use 'synthetic metagenome\u2019 for mock community/positive controls, or 'blank sample' for negative controls."
+                },
+                "samp_time_out": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "samp_transport_cond": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "samp_tvdss": {
+                    "$ref": "#/$defs/TextValue"
                 },
                 "samp_vol_we_dna_ext": {
                     "$ref": "#/$defs/QuantityValue",
@@ -927,6 +1244,9 @@
                     "$ref": "#/$defs/SampleTypeEnum",
                     "description": "Type of sample being submitted"
                 },
+                "saturates_pc": {
+                    "$ref": "#/$defs/TextValue"
+                },
                 "season_precpt": {
                     "$ref": "#/$defs/QuantityValue",
                     "description": "The average of all seasonal precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps."
@@ -935,9 +1255,26 @@
                     "$ref": "#/$defs/QuantityValue",
                     "description": "Mean seasonal temperature"
                 },
+                "seq_meth": {
+                    "$ref": "#/$defs/TextValue",
+                    "description": "Sequencing machine used. Where possible the term should be taken from the OBI list of DNA sequencers (http://purl.obolibrary.org/obo/OBI_0400103)."
+                },
+                "seq_quality_check": {
+                    "$ref": "#/$defs/TextValue",
+                    "description": "Indicate if the sequence has been called by automatic systems (none) or undergone a manual editing procedure (e.g. by inspecting the raw data or chromatograms). Applied only for sequences that are not submitted to SRA,ENA or DRA"
+                },
+                "sequencing_field": {
+                    "type": "string"
+                },
+                "shad_dev_water_mold": {
+                    "type": "string"
+                },
                 "sieving": {
                     "$ref": "#/$defs/TextValue",
                     "description": "Collection design of pooled samples and/or sieve size and amount of sample sieved"
+                },
+                "size_frac": {
+                    "$ref": "#/$defs/TextValue"
                 },
                 "size_frac_low": {
                     "$ref": "#/$defs/QuantityValue",
@@ -959,6 +1296,9 @@
                     "$ref": "#/$defs/QuantityValue",
                     "description": "Sodium concentration in the sample"
                 },
+                "soil_texture_meth": {
+                    "type": "string"
+                },
                 "soil_type": {
                     "$ref": "#/$defs/TextValue",
                     "description": "Description of the soil type or classification. This field accepts terms under soil (http://purl.obolibrary.org/obo/ENVO_00001998).  Multiple terms can be separated by pipes."
@@ -967,8 +1307,14 @@
                     "$ref": "#/$defs/TextValue",
                     "description": "Reference or method used in determining soil series name or other lower-level classification"
                 },
+                "soluble_inorg_mat": {
+                    "$ref": "#/$defs/TextValue"
+                },
                 "soluble_iron_micromol": {
                     "type": "string"
+                },
+                "soluble_org_mat": {
+                    "$ref": "#/$defs/TextValue"
                 },
                 "source_mat_id": {
                     "$ref": "#/$defs/TextValue",
@@ -1000,6 +1346,17 @@
                 "sulfide": {
                     "$ref": "#/$defs/QuantityValue",
                     "description": "Concentration of sulfide in the sample"
+                },
+                "suspend_solids": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "target_gene": {
+                    "$ref": "#/$defs/TextValue",
+                    "description": "Targeted gene or locus name for marker gene studies"
+                },
+                "target_subfragment": {
+                    "$ref": "#/$defs/TextValue",
+                    "description": "Name of subfragment of a gene or locus. Important to e.g. identify special regions on marker genes like V6 on 16S rRNA"
                 },
                 "technical_reps": {
                     "description": "If sending technical replicates of the same sample, indicate the replicate count.",
@@ -1056,6 +1413,12 @@
                     "description": "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.",
                     "type": "string"
                 },
+                "viscosity": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "volatile_org_comp": {
+                    "$ref": "#/$defs/TextValue"
+                },
                 "water_cont_soil_meth": {
                     "description": "Reference or method used in determining the water content of soil",
                     "type": "string"
@@ -1067,12 +1430,21 @@
                     },
                     "type": "array"
                 },
+                "water_temp_regm": {
+                    "$ref": "#/$defs/TextValue"
+                },
                 "watering_regm": {
                     "description": "Information about treatment involving an exposure to watering frequencies, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens",
                     "items": {
                         "$ref": "#/$defs/TextValue"
                     },
                     "type": "array"
+                },
+                "window_open_freq": {
+                    "$ref": "#/$defs/TextValue"
+                },
+                "window_size": {
+                    "$ref": "#/$defs/TextValue"
                 },
                 "zinc": {
                     "$ref": "#/$defs/QuantityValue",
@@ -2296,6 +2668,14 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "highest_similarity_score": {
+                    "description": "TODO: Yuri to fill in",
+                    "type": "number"
+                },
+                "metabolite_quantified": {
+                    "description": "the specific metabolite identifier",
+                    "type": "string"
                 }
             },
             "title": "MetaboliteQuantification",
@@ -2318,10 +2698,20 @@
                     "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                     "type": "string"
                 },
+                "has_calibration": {
+                    "description": "A reference to a file that holds calibration information.",
+                    "type": "string"
+                },
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
                         "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_metabolite_quantifications": {
+                    "items": {
+                        "$ref": "#/$defs/MetaboliteQuantification"
                     },
                     "type": "array"
                 },
@@ -2373,11 +2763,11 @@
                 }
             },
             "required": [
-                "type",
                 "execution_resource",
                 "git_url",
                 "has_input",
                 "has_output",
+                "type",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -2785,6 +3175,12 @@
                     },
                     "type": "array"
                 },
+                "has_peptide_quantifications": {
+                    "items": {
+                        "$ref": "#/$defs/PeptideQuantification"
+                    },
+                    "type": "array"
+                },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
@@ -2826,11 +3222,11 @@
                 }
             },
             "required": [
-                "type",
                 "execution_resource",
                 "git_url",
                 "has_input",
                 "has_output",
+                "type",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -3226,6 +3622,10 @@
                     "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                     "type": "string"
                 },
+                "has_calibration": {
+                    "description": "A reference to a file that holds calibration information.",
+                    "type": "string"
+                },
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
@@ -3281,11 +3681,11 @@
                 }
             },
             "required": [
-                "type",
                 "execution_resource",
                 "git_url",
                 "has_input",
                 "has_output",
+                "type",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -3544,6 +3944,34 @@
         "PeptideQuantification": {
             "additionalProperties": false,
             "description": "This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information",
+            "properties": {
+                "all_proteins": {
+                    "description": "the list of protein identifiers that are associated with the peptide sequence",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "best_protein": {
+                    "description": "the specific protein identifier most correctly associated with the peptide sequence",
+                    "type": "string"
+                },
+                "min_q_value": {
+                    "description": "smallest Q-Value associated with the peptide sequence as provided by MSGFPlus tool",
+                    "type": "number"
+                },
+                "peptide_sequence": {
+                    "type": "string"
+                },
+                "peptide_spectral_count": {
+                    "description": "sum of filter passing MS2 spectra associated with the peptide sequence within a given LC-MS/MS data file",
+                    "type": "integer"
+                },
+                "peptide_sum_masic_abundance": {
+                    "description": "combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the peptide sequence from a given LC-MS/MS data file using the MASIC tool",
+                    "type": "integer"
+                }
+            },
             "title": "PeptideQuantification",
             "type": "object"
         },
@@ -3856,6 +4284,10 @@
                     "description": "The nucleotide base count number of input reads for QC analysis.",
                     "type": "number"
                 },
+                "input_read_bases": {
+                    "description": "TODO      ",
+                    "type": "number"
+                },
                 "input_read_count": {
                     "description": "The sequence count number of input reads for QC analysis.",
                     "type": "number"
@@ -3866,6 +4298,10 @@
                 },
                 "output_base_count": {
                     "description": "After QC analysis nucleotide base count number.",
+                    "type": "number"
+                },
+                "output_read_bases": {
+                    "description": "TODO",
                     "type": "number"
                 },
                 "output_read_count": {
@@ -4553,5 +4989,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "v7.4.10"
+    "version": "v7.4.11"
 }

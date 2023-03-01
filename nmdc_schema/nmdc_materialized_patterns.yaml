@@ -20,7 +20,7 @@ notes:
 - resuming use of part_of to link Biosamples to Studies. eg releasing sample_link
   from that role
 id: https://microbiomedata/schema
-version: v7.4.10
+version: v7.4.11
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   COG:
@@ -2028,6 +2028,8 @@ slots:
   has_peptide_quantifications:
     name: has_peptide_quantifications
     from_schema: https://microbiomedata/schema
+    multivalued: true
+    range: PeptideQuantification
   asm_score:
     name: asm_score
     description: A score for comparing metagenomic assembly quality from same sample.
@@ -2260,18 +2262,26 @@ slots:
     from_schema: https://microbiomedata/schema
     is_a: read_qc_analysis_statistic
     range: float
+  output_read_bases:
+    name: output_read_bases
+    description: TODO
+    from_schema: https://microbiomedata/schema
+    range: float
+  input_read_bases:
+    name: input_read_bases
+    description: 'TODO      '
+    from_schema: https://microbiomedata/schema
+    range: float
   has_calibration:
     name: has_calibration
+    description: A reference to a file that holds calibration information.
     from_schema: https://microbiomedata/schema
+    range: string
   has_metabolite_quantifications:
     name: has_metabolite_quantifications
     from_schema: https://microbiomedata/schema
-  input_read_bases:
-    name: input_read_bases
-    from_schema: https://microbiomedata/schema
-  output_read_bases:
-    name: output_read_bases
-    from_schema: https://microbiomedata/schema
+    multivalued: true
+    range: MetaboliteQuantification
   version:
     name: version
     from_schema: https://microbiomedata/schema
@@ -2719,12 +2729,54 @@ slots:
     from_schema: https://microbiomedata/schema
     multivalued: true
     range: string
+  highest_similarity_score:
+    name: highest_similarity_score
+    description: 'TODO: Yuri to fill in'
+    from_schema: https://microbiomedata/schema
+    range: float
+  metabolite_quantified:
+    name: metabolite_quantified
+    description: the specific metabolite identifier
+    from_schema: https://microbiomedata/schema
+    range: ChemicalEntity
   all_proteins:
     name: all_proteins
+    description: the list of protein identifiers that are associated with the peptide
+      sequence
     from_schema: https://microbiomedata/schema
+    multivalued: true
+    range: GeneProduct
   best_protein:
     name: best_protein
+    description: the specific protein identifier most correctly associated with the
+      peptide sequence
     from_schema: https://microbiomedata/schema
+    range: GeneProduct
+  min_q_value:
+    name: min_q_value
+    description: smallest Q-Value associated with the peptide sequence as provided
+      by MSGFPlus tool
+    from_schema: https://microbiomedata/schema
+    see_also:
+    - OBI:0001442
+    range: float
+  peptide_sequence:
+    name: peptide_sequence
+    from_schema: https://microbiomedata/schema
+    range: string
+  peptide_spectral_count:
+    name: peptide_spectral_count
+    description: sum of filter passing MS2 spectra associated with the peptide sequence
+      within a given LC-MS/MS data file
+    from_schema: https://microbiomedata/schema
+    range: integer
+  peptide_sum_masic_abundance:
+    name: peptide_sum_masic_abundance
+    description: combined MS1 extracted ion chromatograms derived from MS2 spectra
+      associated with the peptide sequence from a given LC-MS/MS data file using the
+      MASIC tool
+    from_schema: https://microbiomedata/schema
+    range: integer
   chemical_formula:
     name: chemical_formula
     from_schema: https://microbiomedata/schema
@@ -2738,20 +2790,8 @@ slots:
   inchi:
     name: inchi
     from_schema: https://microbiomedata/schema
-  min_q_value:
-    name: min_q_value
-    from_schema: https://microbiomedata/schema
-  peptide_sequence:
-    name: peptide_sequence
-    from_schema: https://microbiomedata/schema
   peptide_sequence_count:
     name: peptide_sequence_count
-    from_schema: https://microbiomedata/schema
-  peptide_spectral_count:
-    name: peptide_spectral_count
-    from_schema: https://microbiomedata/schema
-  peptide_sum_masic_abundance:
-    name: peptide_sum_masic_abundance
     from_schema: https://microbiomedata/schema
   protein_spectral_count:
     name: protein_spectral_count
@@ -2761,12 +2801,6 @@ slots:
     from_schema: https://microbiomedata/schema
   smiles:
     name: smiles
-    from_schema: https://microbiomedata/schema
-  metabolite_quantified:
-    name: metabolite_quantified
-    from_schema: https://microbiomedata/schema
-  highest_similarity_score:
-    name: highest_similarity_score
     from_schema: https://microbiomedata/schema
   external_database_identifiers:
     name: external_database_identifiers
@@ -7815,32 +7849,53 @@ classes:
     - insdc_biosample_identifiers
     - emsl_biosample_identifiers
     - igsn_biosample_identifiers
+    - abs_air_humidity
     - agrochem_addition
+    - air_temp_regm
+    - al_sat
+    - al_sat_meth
     - alkalinity
     - alkalinity_method
     - alkyl_diethers
     - alt
-    - al_sat
-    - al_sat_meth
     - aminopept_act
     - ammonium
     - annual_precpt
     - annual_temp
+    - antibiotic_regm
+    - aromatics_pc
+    - asphaltenes_pc
+    - atmospheric_data
+    - avg_occup
     - bacteria_carb_prod
+    - bathroom_count
+    - bedroom_count
+    - biocide_admin_method
+    - biomass
+    - biotic_regm
+    - biotic_relationship
     - bishomohopanol
     - bromide
     - calcium
     - carb_nitro_ratio
     - chem_administration
+    - chem_mutagen
+    - chem_treat_method
+    - chimera_check
     - chloride
     - chlorophyll
+    - climate_environment
     - collection_date
+    - cool_syst_id
+    - core field
+    - crop_rotation
     - cur_land_use
     - cur_vegetation
     - cur_vegetation_meth
-    - crop_rotation
+    - date_last_rain
     - density
     - depth
+    - diether_lipids
     - diss_carb_dioxide
     - diss_hydrogen
     - diss_inorg_carb
@@ -7850,81 +7905,195 @@ classes:
     - diss_oxygen
     - drainage_class
     - elev
-    - env_package
+    - elevator
+    - emulsions
     - env_broad_scale
     - env_local_scale
     - env_medium
+    - env_package
+    - environment field
+    - escalator
+    - exp_pipe
+    - experimental_factor
+    - ext_door
     - extreme_event
     - fao_class
+    - fertilizer_regm
     - fire
     - flooding
+    - floor_count
+    - freq_clean
+    - freq_cook
+    - fungicide_regm
+    - gaseous_environment
+    - gaseous_substances
     - geo_loc_name
     - glucosidase_act
+    - gravity
+    - growth_facil
+    - growth_hormone_regm
+    - hall_count
+    - has numeric value
+    - has raw value
+    - has unit
+    - hcr_pressure
+    - hcr_temp
+    - heat_sys_deliv_meth
+    - heat_system_id
     - heavy_metals
     - heavy_metals_meth
+    - herbicide_regm
+    - host_body_product
+    - host_body_site
+    - host_family_relation
+    - host_phenotype
+    - host_subspecf_genlin
+    - host_symbiont
+    - host_taxid
+    - humidity_regm
+    - inorg_particles
+    - investigation field
+    - iw_bt_date_well
+    - last_clean
     - lat_lon
+    - light_regm
     - link_addit_analys
     - link_class_info
     - link_climate_info
     - local_class
     - local_class_meth
     - magnesium
+    - max_occup
     - mean_frict_vel
     - mean_peak_frict_vel
+    - micro_biomass_meth
+    - mineral_nutr_regm
     - misc_param
     - n_alkanes
     - nitrate
     - nitrite
+    - non_min_nutr_regm
+    - nucl_acid_amp
+    - nucl_acid_ext
+    - nucleic acid sequence source field
+    - number_pets
+    - number_plants
+    - number_resident
+    - occup_density_samp
+    - occup_samp
+    - org_count_qpcr_info
     - org_matter
     - org_nitro
+    - org_particles
     - organism_count
     - oxy_stat_samp
     - part_org_carb
+    - particle_class
+    - pcr_cond
+    - pcr_primers
+    - permeability
     - perturbation
+    - pesticide_regm
     - petroleum_hydrocarb
     - ph
     - ph_meth
     - phaeopigments
+    - phosphate
     - phosplipid_fatt_acid
+    - plant_growth_med
+    - plant_struc
+    - pollutants
     - pool_dna_extracts
+    - porosity
     - potassium
+    - pres_animal_insect
     - pressure
+    - prev_land_use_meth
+    - prod_start_date
     - profile_position
+    - radiation_regm
+    - rainfall_regm
     - redox_potential
+    - rel_to_oxygen
+    - resins_pc
+    - room_architec_elem
+    - room_count
+    - room_dim
+    - room_door_dist
+    - room_net_area
+    - room_occup
+    - room_vol
+    - root_med_carbon
+    - root_med_macronutr
+    - root_med_micronutr
+    - root_med_ph
+    - root_med_regl
+    - root_med_suppl
     - salinity
     - salinity_meth
+    - salt_regm
+    - samp_collec_device
+    - samp_collec_method
+    - samp_loc_corr_rate
     - samp_mat_process
+    - samp_md
+    - samp_name
+    - samp_preserv
+    - samp_room_id
+    - samp_size
     - samp_store_dur
     - samp_store_loc
-    - samp_taxon_id
     - samp_store_temp
+    - samp_taxon_id
+    - samp_time_out
+    - samp_transport_cond
+    - samp_tvdss
     - samp_vol_we_dna_ext
-    - season_temp
+    - saturates_pc
     - season_precpt
+    - season_temp
+    - seq_meth
+    - seq_quality_check
+    - sequencing field
+    - shad_dev_water_mold
     - sieving
+    - size_frac
     - size_frac_low
     - size_frac_up
-    - slope_gradient
     - slope_aspect
+    - slope_gradient
     - sodium
+    - soil_texture_meth
     - soil_type
     - soil_type_meth
+    - soluble_inorg_mat
+    - soluble_org_mat
+    - source_mat_id
     - store_cond
     - sulfate
     - sulfide
+    - suspend_solids
+    - target_gene
+    - target_subfragment
     - temp
-    - tillage
     - tidal_stage
+    - tillage
     - tot_carb
     - tot_depth_water_col
     - tot_diss_nitro
-    - tot_org_carb
-    - tot_org_c_meth
-    - tot_nitro_content
     - tot_nitro_cont_meth
+    - tot_nitro_content
+    - tot_org_c_meth
+    - tot_org_carb
     - tot_phosp
-    - water_content
+    - viscosity
+    - volatile_org_comp
     - water_cont_soil_meth
+    - water_content
+    - water_temp_regm
+    - watering_regm
+    - window_open_freq
+    - window_size
     - ecosystem
     - ecosystem_category
     - ecosystem_type
@@ -8940,19 +9109,8 @@ classes:
     - output_base_count
     - input_read_bases
     - output_read_bases
+    - version
     slot_usage:
-      input_read_bases:
-        name: input_read_bases
-        description: TODO
-        range: float
-      output_read_bases:
-        name: output_read_bases
-        description: TODO
-        range: float
-      has_input:
-        name: has_input
-      has_output:
-        name: has_output
       id:
         name: id
         pattern: ^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
@@ -8984,19 +9142,13 @@ classes:
     from_schema: https://microbiomedata/schema
     is_a: WorkflowExecutionActivity
     slots:
-    - type
+    - has_calibration
+    - has_metabolite_quantifications
     slot_usage:
       used:
         name: used
         description: The instrument used to collect the data used in the analysis
         range: Instrument
-      has_metabolite_quantifications:
-        name: has_metabolite_quantifications
-        multivalued: true
-        range: MetaboliteQuantification
-      has_calibration:
-        name: has_calibration
-        description: 'TODO: Yuri to fill in'
       id:
         name: id
         pattern: ^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
@@ -9010,16 +9162,12 @@ classes:
     from_schema: https://microbiomedata/schema
     is_a: WorkflowExecutionActivity
     slots:
-    - type
+    - has_peptide_quantifications
     slot_usage:
       used:
         name: used
         description: The instrument used to collect the data used in the analysis
         range: Instrument
-      has_peptide_quantifications:
-        name: has_peptide_quantifications
-        multivalued: true
-        range: PeptideQuantification
       id:
         name: id
         pattern: ^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
@@ -9033,16 +9181,12 @@ classes:
     from_schema: https://microbiomedata/schema
     is_a: WorkflowExecutionActivity
     slots:
-    - type
+    - has_calibration
     slot_usage:
       used:
         name: used
         description: The instrument used to collect the data used in the analysis
         range: Instrument
-      has_calibration:
-        name: has_calibration
-        description: A reference to a file that holds calibration information.
-        range: string
       id:
         name: id
         pattern: ^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
@@ -9295,53 +9439,20 @@ classes:
     from_schema: https://microbiomedata/schema
     slots:
     - alternative_identifiers
-    slot_usage:
-      metabolite_quantified:
-        name: metabolite_quantified
-        description: the specific metabolite identifier
-        range: ChemicalEntity
-      highest_similarity_score:
-        name: highest_similarity_score
-        description: 'TODO: Yuri to fill in'
-        range: float
+    - highest_similarity_score
+    - metabolite_quantified
   PeptideQuantification:
     name: PeptideQuantification
     description: This is used to link a metaproteomics analysis workflow to a specific
       peptide sequence and related information
     from_schema: https://microbiomedata/schema
-    slot_usage:
-      peptide_sequence:
-        name: peptide_sequence
-        range: string
-      best_protein:
-        name: best_protein
-        description: the specific protein identifier most correctly associated with
-          the peptide sequence
-        range: GeneProduct
-      all_proteins:
-        name: all_proteins
-        description: the list of protein identifiers that are associated with the
-          peptide sequence
-        multivalued: true
-        range: GeneProduct
-      min_q_value:
-        name: min_q_value
-        description: smallest Q-Value associated with the peptide sequence as provided
-          by MSGFPlus tool
-        see_also:
-        - OBI:0001442
-        range: float
-      peptide_spectral_count:
-        name: peptide_spectral_count
-        description: sum of filter passing MS2 spectra associated with the peptide
-          sequence within a given LC-MS/MS data file
-        range: integer
-      peptide_sum_masic_abundance:
-        name: peptide_sum_masic_abundance
-        description: combined MS1 extracted ion chromatograms derived from MS2 spectra
-          associated with the peptide sequence from a given LC-MS/MS data file using
-          the MASIC tool
-        range: integer
+    slots:
+    - all_proteins
+    - best_protein
+    - min_q_value
+    - peptide_sequence
+    - peptide_spectral_count
+    - peptide_sum_masic_abundance
   ProteinQuantification:
     name: ProteinQuantification
     description: This is used to link a metaproteomics analysis workflow to a specific
