@@ -20,8 +20,8 @@ shuttle_cleanup:
 	mkdir -p assets/mixs_regen
 	echo "do not delete this placeholder file" > assets/mixs_regen/placeholder.txt
 
-assets/mixs_regen/mixs_slots_used_in_schema.tsv:
-	$(RUN) get_mixs_slots_used_in_schema --output_file $@
+#assets/mixs_regen/mixs_slots_used_in_schema.tsv:
+#	$(RUN) get_mixs_slots_used_in_schema --output_file $@
 
 assets/mixs_regen/slots_associated_with_biosample.tsv:
 	$(RUN) get_slots_from_class --class_name Biosample --output_file $@
@@ -40,15 +40,15 @@ assets/mixs_regen/slots_associated_with_biosample_omics_processing.tsv
 		--slot_list_file $< \
 		--output_file $@
 
-assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing_augmented.tsv: \
-assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv
-	cp $< $@
-	echo "rel_to_oxygen" >> $@
-	echo "abs_air_humidity" >> $@
+#assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing_augmented.tsv: \
+#assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv
+#	cp $< $@
+#	echo "rel_to_oxygen" >> $@
+#	echo "abs_air_humidity" >> $@
 
 
 assets/mixs_regen/import_slots_regardless_gen.tsv: \
-assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing_augmented.tsv
+assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv
 	$(RUN) generate_import_slots_regardless --input_file $< --output_file $@
 
 assets/mixs_regen/mixs_subset.yaml: assets/mixs_regen/import_slots_regardless_gen.tsv
