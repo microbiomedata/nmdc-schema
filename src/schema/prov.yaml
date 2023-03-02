@@ -1,4 +1,4 @@
-id: https://microbiomedata/schema/prov
+id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/prov
 name: NMDC-PROV
 title: NMDC Rendering of prov schema
 description: >-

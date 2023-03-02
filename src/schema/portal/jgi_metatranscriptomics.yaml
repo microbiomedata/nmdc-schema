@@ -3,7 +3,7 @@ description: This file defines terms that appear in the 'JGI-Metatranscriptomics
   section of the NMDC sample metadata submission portal, which is implemented with
   DataHarmonizer as of Spring 2022
 title: 'NMDC Schema supplement for Submission Portal: JGI-Metatranscriptomics'
-id: https://microbiomedata/schema/jgi_metatranscriptomics
+id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/portal/jgi_metatranscriptomics
 imports:
   - linkml:types
 license: 'license: https://creativecommons.org/publicdomain/zero/1.0/'

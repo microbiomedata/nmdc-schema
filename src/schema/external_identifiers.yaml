@@ -1,4 +1,4 @@
-id: https://microbiomedata/schema/external_identifiers
+id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/external_identifiers
 name: external_identifiers
 title: NMDC External Identifiers
 description: >-

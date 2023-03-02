@@ -1,4 +1,4 @@
-id: https://microbiomedata/schema/workflow_execution_activity
+id: raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/workflow_execution_activity
 name: NMDC-Workflow-Execution
 title: Workflow Execution Activities module for NMDC Schema
 

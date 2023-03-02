@@ -4,7 +4,7 @@ notes:
   - removed several MIxS terms/slots that were sharing slot uris; commented out Biosample assignments
   - note that the NMDC submission schema in sheets_and_friends takes its MIxS terms from https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml and then potentially modifies them. Ideally this file would contain MIxS terms, essentially ready-to-use
   - yet another source of MIxS terms is the incomplete https://github.com/GenomicsStandardsConsortium/mixs/tree/issue-511-tested-schemasheets
-id: https://microbiomedata/schema/mixs
+id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs
 imports:
   - basic_slots
 prefixes:
