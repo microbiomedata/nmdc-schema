@@ -44,7 +44,7 @@ subsets:
   investigation: { }
   nucleic acid sequence source: { }
   sequencing: { }
-  soil: { }
+#  soil: { }
 
 types:
 
