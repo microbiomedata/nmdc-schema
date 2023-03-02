@@ -8,7 +8,7 @@ license = "MIT"
 name = "nmdc_schema"
 readme = "README.md"
 repository = "https://github.com/microbiomedata/nmdc-schema"
-version = "7.4.12"
+version = "7.4.13"
 authors = [
     "Bill Duncan <wdduncan@gmail.com>",
     "Chris Mungall <cjmungall@lbl.gov>",
@@ -33,11 +33,7 @@ mkdocs-mermaid2-plugin = "^0.6.0"
 pandasql = "^0.7.3" # might be able to replace this?
 pygsheets = "^2.0.6" # why are we importing this, when we're alredy using cogs?
 python-dotenv = "^0.21.1"
-schemasheets = "^0.1.18" # ^0.1.0" vs 0.1.17
-
-#Because schemasheets (0.1.17) depends on linkml (>=1.3,<1.4)
-# and no versions of schemasheets match >0.1.17,<0.2.0, schemasheets (>=0.1.17,<0.2.0) requires linkml (>=1.3,<1.4).
-#So, because nmdc-schema depends on both linkml (^1.4.4) and schemasheets (^0.1.17), version solving failed.
+schemasheets = "^0.1.18"
 
 sheets_and_friends = "^0.1.11"
 strsimpy = "^0.2.1"
