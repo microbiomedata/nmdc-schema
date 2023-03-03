@@ -1,4 +1,4 @@
-id: https://microbiomedata/schema/basic_slots
+id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/basic_slots
 name: NMDC-Basic-Slots
 title: Basic Slots for NMDC Schema
 description: >-

@@ -1,4 +1,4 @@
-id: https://microbiomedata/schema/sample_prep
+id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/sample_prep
 name: sample_prep
 title: NMDC sample prep schema
 description: Material and activity classes for describing sample preparation, in support of EMSL, Monet, MANA, etc.

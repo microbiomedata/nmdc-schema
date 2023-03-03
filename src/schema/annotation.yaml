@@ -1,4 +1,4 @@
-id: https://microbiomedata/schema/annotation
+id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/annotation
 name: NMDC-Annotation
 title: Annotation Module for NMDC Schema
 description: >-

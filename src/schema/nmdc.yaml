@@ -1,4 +1,4 @@
-id: https://microbiomedata/schema
+id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
 name: NMDC
 title: NMDC Schema
 
@@ -1444,7 +1444,7 @@ enums:
         meaning: https://www.neonscience.org
 
   file type enum:
-    from_schema: https://microbiomedata/schema
+#    from_schema: https://microbiomedata/schema
     permissible_values:
 
       Metagenome Raw Reads:

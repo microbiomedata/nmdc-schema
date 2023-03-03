@@ -1,4 +1,4 @@
-id: https://microbiomedata/schema/core
+id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/core
 name: NMDC-Core
 title: NMDC Schema Core Types
 description: >-
