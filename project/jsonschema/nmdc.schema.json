@@ -7298,7 +7298,7 @@
             "type": "object"
         }
     },
-    "$id": "https://microbiomedata/schema",
+    "$id": "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": true,
     "allOf": [
