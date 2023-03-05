@@ -8,10 +8,9 @@ imports:
   - linkml:types
 license: 'license: https://creativecommons.org/publicdomain/zero/1.0/'
 prefixes:
-  - prefix_prefix: linkml
-    prefix_reference: https://w3id.org/linkml/
-  - prefix_prefix: nmdc
-    prefix_reference: https://w3id.org/nmdc/
+  linkml: https://w3id.org/linkml/
+  nmdc: https://w3id.org/nmdc/
+  nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
 default_prefix: nmdc
 default_range: string
 slots:

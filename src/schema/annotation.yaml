@@ -21,8 +21,9 @@ prefixes:
   COG: https://unknown.to.linter.org/
   EC: https://unknown.to.linter.org/
   GO: http://purl.obolibrary.org/obo/GO_
-  KEGG_PATHWAY: http://identifiers.org/kegg.pathway/
+  KEGG.ORTHOLOGY: http://identifiers.org/kegg.orthology/
   KEGG.REACTION: http://identifiers.org/kegg.reaction/
+  KEGG_PATHWAY: http://identifiers.org/kegg.pathway/
   MetaCyc: https://identifiers.org/metacyc.reaction/
   MetaNetX: https://unknown.to.linter.org/
   RHEA: http://identifiers.org/rhea/
@@ -31,7 +32,7 @@ prefixes:
   biolink: https://w3id.org/biolink/vocab/
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
-  KEGG.ORTHOLOGY: http://identifiers.org/kegg.orthology/
+  nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
 
 default_prefix: nmdc
 

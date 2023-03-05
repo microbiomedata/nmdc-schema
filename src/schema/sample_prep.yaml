@@ -9,11 +9,12 @@ see_also:
 prefixes:
   CHEBI: http://purl.obolibrary.org/obo/CHEBI_
   CHMO: http://purl.obolibrary.org/obo/CHMO_
-  GOLD: http://identifiers.org/gold/
   OBI: http://purl.obolibrary.org/obo/OBI_
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
-  prov: http://www.w3.org/ns/prov#
+  nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
+#  GOLD: http://identifiers.org/gold/
+#  prov: http://www.w3.org/ns/prov#
 
 default_prefix: nmdc
 default_range: string
