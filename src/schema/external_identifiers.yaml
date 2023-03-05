@@ -12,8 +12,9 @@ prefixes:
   GOLD: http://identifiers.org/gold/
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
-  prov: http://www.w3.org/ns/prov#
+  nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
   skos: http://www.w3.org/2004/02/skos/core#
+#  prov: http://www.w3.org/ns/prov#
 
 # WARNING:Namespaces:MASSIVE namespace is already mapped to http://identifiers.org/massive/ -
 #   Mapping to https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task= ignored

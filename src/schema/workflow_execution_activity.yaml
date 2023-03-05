@@ -16,6 +16,7 @@ default_curi_maps:
 prefixes:
   nmdc: https://w3id.org/nmdc/
   linkml: https://w3id.org/linkml/
+  nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
 
 imports:
   - basic_slots
