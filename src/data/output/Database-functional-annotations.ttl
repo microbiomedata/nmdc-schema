@@ -2,33 +2,33 @@
 
 [] a nmdc:Database ;
     nmdc:functional_annotation_set [ a nmdc:FunctionalAnnotation ;
-            nmdc:has_function "KEGG.REACTION:R00100" ],
-        [ a nmdc:FunctionalAnnotation ;
-            nmdc:has_function "SUPFAM:SSF57615" ],
-        [ a nmdc:FunctionalAnnotation ;
-            nmdc:has_function "MetaCyc:RXN-14904" ],
-        [ a nmdc:FunctionalAnnotation ;
-            nmdc:has_function "RHEA:12345" ],
-        [ a nmdc:FunctionalAnnotation ;
-            nmdc:has_function "SEED:Biotin_biosynthesis" ],
-        [ a nmdc:FunctionalAnnotation ;
-            nmdc:has_function "TIGRFAM:TIGR00010" ],
-        [ a nmdc:FunctionalAnnotation ;
-            nmdc:has_function "KEGG.ORTHOLOGY:K00001" ],
+            nmdc:has_function "PFAM:PF11779" ],
         [ a nmdc:FunctionalAnnotation ;
             nmdc:has_function "PANTHER.FAMILY:PTHR12345" ],
         [ a nmdc:FunctionalAnnotation ;
-            nmdc:has_function "EGGNOG:veNOG12876" ],
-        [ a nmdc:FunctionalAnnotation ;
-            nmdc:has_function "GO:0032571" ],
-        [ a nmdc:FunctionalAnnotation ;
-            nmdc:has_function "MetaNetX:MNXR101574" ],
-        [ a nmdc:FunctionalAnnotation ;
             nmdc:has_function "KEGG_PATHWAY:rsk00410" ],
+        [ a nmdc:FunctionalAnnotation ;
+            nmdc:has_function "RHEA:12345" ],
+        [ a nmdc:FunctionalAnnotation ;
+            nmdc:has_function "TIGRFAM:TIGR00010" ],
+        [ a nmdc:FunctionalAnnotation ;
+            nmdc:has_function "SUPFAM:SSF57615" ],
         [ a nmdc:FunctionalAnnotation ;
             nmdc:has_function "CATH:1.10.10.200" ],
         [ a nmdc:FunctionalAnnotation ;
-            nmdc:has_function "EC:1.1.1.1" ],
+            nmdc:has_function "MetaNetX:MNXR101574" ],
         [ a nmdc:FunctionalAnnotation ;
-            nmdc:has_function "PFAM:PF11779" ] .
+            nmdc:has_function "KEGG.ORTHOLOGY:K00001" ],
+        [ a nmdc:FunctionalAnnotation ;
+            nmdc:has_function "MetaCyc:RXN-14904" ],
+        [ a nmdc:FunctionalAnnotation ;
+            nmdc:has_function "EGGNOG:veNOG12876" ],
+        [ a nmdc:FunctionalAnnotation ;
+            nmdc:has_function "KEGG.REACTION:R00100" ],
+        [ a nmdc:FunctionalAnnotation ;
+            nmdc:has_function "SEED:Biotin_biosynthesis" ],
+        [ a nmdc:FunctionalAnnotation ;
+            nmdc:has_function "GO:0032571" ],
+        [ a nmdc:FunctionalAnnotation ;
+            nmdc:has_function "EC:1.1.1.1" ] .
 
