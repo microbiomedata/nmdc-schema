@@ -17,10 +17,11 @@ authors = [
 ]
 
 [tool.poetry.dependencies]
-linkml-runtime = "^1.4.9"
 python = "^3.9"
 # see https://github.com/microbiomedata/nmdc-schema/issues/820
 linkml = "^1.4.10"
+# linkml-runtime 1.4.6 doesn't seem to exit; 1.4.7+ has problems making a schemaview form a URL, if the root has imports
+linkml-runtime = "1.4.5"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0"
@@ -36,9 +37,13 @@ pandasql = "^0.7.3" # might be able to replace this?
 pygsheets = "^2.0.6" # why are we importing this, when we're alredy using cogs?
 python-dotenv = "^0.21.0"
 schemasheets = "^0.1.18"
-sheets_and_friends = "^0.3.0"
-strsimpy = "^0.2.1"
-toml = "^0.10.2"
+strsimpy = "*"
+toml = "*"
+
+sheets_and_friends = "^0.4.0"
+## /Users/MAM/Documents/gitrepos/sheets_and_friends
+## /home/mark/gitrepos/sheets_and_friends
+#sheets-and-friends = { path = "/home/mark/gitrepos/sheets_and_friends", develop = true }
 
 [tool.poetry-dynamic-versioning]
 enable = false

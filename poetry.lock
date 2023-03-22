@@ -1928,14 +1928,14 @@ linkml-runtime = ">=1.1.6"
 
 [[package]]
 name = "linkml-runtime"
-version = "1.4.9"
+version = "1.4.5"
 description = "Runtime environment for LinkML, the Linked open data modeling language"
 category = "main"
 optional = false
 python-versions = ">=3.7.6,<4.0.0"
 files = [
-    {file = "linkml_runtime-1.4.9-py3-none-any.whl", hash = "sha256:62bf8618ddf362be0f173f2fa1821c3e29309c897b8f1e2f83fb41dc599e72a6"},
-    {file = "linkml_runtime-1.4.9.tar.gz", hash = "sha256:64c383ce05351b0dce18fcbbdb38884f180466968dcf09c90689e1bfa72d4aa4"},
+    {file = "linkml-runtime-1.4.5.tar.gz", hash = "sha256:bdb6260dfd9b050a6edce8e72061e77e7080471d5d53e694805cb948c8c9f473"},
+    {file = "linkml_runtime-1.4.5-py3-none-any.whl", hash = "sha256:fc1149c59e038a45e5d46c677a19b5dfc15dedce3ef967eed2ee3e0958fd2e49"},
 ]
 
 [package.dependencies]
@@ -3917,20 +3917,20 @@ testing-integration = ["build[virtualenv]", "filelock (>=3.4.0)", "jaraco.envs (
 
 [[package]]
 name = "sheets-and-friends"
-version = "0.3.0"
+version = "0.4.0"
 description = "Create a LinkML model with as-is imported slots, imported but modified slots (via yq), or newly minted slots (via schemasheets)"
 category = "dev"
 optional = false
 python-versions = ">=3.9,<4.0"
 files = [
-    {file = "sheets_and_friends-0.3.0-py3-none-any.whl", hash = "sha256:90bb66a57b91ee953271c3a889bf7274c70b5f3d4833617511890670f75bf38e"},
-    {file = "sheets_and_friends-0.3.0.tar.gz", hash = "sha256:797b17fb1851d2807c3cf39116d6b748dbf56b319bfe7c5356d6995361da5674"},
+    {file = "sheets_and_friends-0.4.0-py3-none-any.whl", hash = "sha256:419fd8f34721f44dbc9bb2419af2ade26968ff0a423d21628b0b36c1dea152ef"},
+    {file = "sheets_and_friends-0.4.0.tar.gz", hash = "sha256:7650accd153363f6649c77695c9b3834fd818e3cf5baf50cf9c8c61ea650d0b7"},
 ]
 
 [package.dependencies]
 click_log = "*"
 glom = ">=23.1.1,<24.0.0"
-linkml-runtime = ">=1.4.9,<2.0.0"
+linkml-runtime = "1.4.5"
 pandas = ">=1.3.4,<2.0.0"
 pandasql = ">=0.7.3,<0.8.0"
 pygsheets = ">=2.0.5,<3.0.0"
@@ -4854,4 +4854,4 @@ docs = ["linkml"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "8a8b6e170be303d5df5b1e0fe58433d4f9a6747562dfedba34ed494bf2216311"
+content-hash = "d6c2e3088a53a89cebe9fd099192ef57965d72223a6ef75833d34faf24bca5f6"
