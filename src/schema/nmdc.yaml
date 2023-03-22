@@ -25,7 +25,7 @@ description: >-
    * the NMDC schema itself
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: v7.4.13
+version: v7.4.15
 prefixes:
   EFO: http://identifiers.org/efo/
   ISA: https://unknown.to.linter.org/

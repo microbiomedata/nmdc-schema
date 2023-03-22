@@ -50,18 +50,18 @@ enable = false
 vcs = "git"
 style = "pep440"
 
-[tool.poetry-dynamic-versioning.substitution]
-files = [
-    "*.py",
-    "src/**/__init__.py",
-    "src/**/__version__.py",
-    "src/**/_version.py",
-    "src/schema/nmdc.yaml"
-]
-patterns = [
-    "(^\\s*__version__\\s*(?::.*?)?=\\s*['\\\"])[^'\\\"]*(['\\\"])",
-    "(^version:\\s*['\\\"]?)[^'\\\"]*?(['\\\"]?)$"
-]
+#[tool.poetry-dynamic-versioning.substitution]
+#files = [
+#    "*.py",
+#    "src/**/__init__.py",
+#    "src/**/__version__.py",
+#    "src/**/_version.py",
+#    "src/schema/nmdc.yaml"
+#]
+#patterns = [
+#    "(^\\s*__version__\\s*(?::.*?)?=\\s*['\\\"])[^'\\\"]*(['\\\"])",
+#    "(^version:\\s*['\\\"]?)[^'\\\"]*?(['\\\"]?)$"
+#]
 
 [build-system]
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
