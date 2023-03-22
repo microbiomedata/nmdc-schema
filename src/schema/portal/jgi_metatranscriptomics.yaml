@@ -73,6 +73,7 @@ slots:
     from_schema: https://example.com/nmdc_dh
     rank: 7
     string_serialization: '{float}'
+    range: float
     slot_group: JGI-Metatranscriptomics
     recommended: true
   rna_absorb2:
@@ -85,6 +86,7 @@ slots:
     from_schema: https://example.com/nmdc_dh
     rank: 8
     string_serialization: '{float}'
+    range: float
     slot_group: JGI-Metatranscriptomics
     recommended: true
   rna_collect_site:
@@ -107,6 +109,7 @@ slots:
     from_schema: https://example.com/nmdc_dh
     rank: 5
     string_serialization: '{float}'
+    range: float
     slot_group: JGI-Metatranscriptomics
     recommended: true
     minimum_value: 0

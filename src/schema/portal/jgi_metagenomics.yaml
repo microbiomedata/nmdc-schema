@@ -51,6 +51,7 @@ slots:
     from_schema: https://example.com/nmdc_dh
     rank: 7
     string_serialization: '{float}'
+    range: float
     slot_group: JGI-Metagenomics
     recommended: true
   dna_absorb2:
@@ -63,6 +64,7 @@ slots:
     from_schema: https://example.com/nmdc_dh
     rank: 8
     string_serialization: '{float}'
+    range: float
     slot_group: JGI-Metagenomics
     recommended: true
   dna_collect_site:
@@ -85,6 +87,7 @@ slots:
     from_schema: https://example.com/nmdc_dh
     rank: 5
     string_serialization: '{float}'
+    range: float
     slot_group: JGI-Metagenomics
     recommended: true
     minimum_value: 0
@@ -254,6 +257,7 @@ slots:
     from_schema: https://example.com/nmdc_dh
     rank: 6
     string_serialization: '{float}'
+    range: float
     slot_group: JGI-Metagenomics
     recommended: true
     minimum_value: 0
