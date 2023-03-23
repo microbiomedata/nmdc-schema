@@ -40,7 +40,6 @@ slots:
     description: A unique identifier to assign parent-child, subsample, or sibling
       samples. This is relevant when a sample or other material was used to generate
       the new sample.
-    title: sample linkage
     comments:
       - 'This field allows multiple entries separated by ; (Examples: Soil collected
       from the field will link with the soil used in an incubation. The soil a plant
@@ -49,8 +48,10 @@ slots:
     examples:
       - value: IGSN:DSJ0284
     from_schema: https://example.com/nmdc_dh
-    rank: 5
-    string_serialization: '{text}:{text}'
-    slot_group: Sample ID
-    recommended: true
     multivalued: true
+    range: string
+    rank: 5
+    recommended: true
+    slot_group: Sample ID
+    string_serialization: '{text}:{text}'
+    title: sample linkage
