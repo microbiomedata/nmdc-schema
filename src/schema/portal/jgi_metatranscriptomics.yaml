@@ -266,5 +266,6 @@ slots:
     from_schema: https://example.com/nmdc_dh
     rank: 6
     string_serialization: '{float}'
+    range: float
     slot_group: JGI-Metatranscriptomics
     recommended: true
