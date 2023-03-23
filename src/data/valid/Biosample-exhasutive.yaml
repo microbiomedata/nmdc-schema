@@ -310,10 +310,10 @@ source_mat_id:
   has_raw_value: MPI012345
 watering_regm:
   - has_raw_value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
-dna_absorb1: '2.02'
-dna_absorb2: '2.02'
+dna_absorb1: 2.02
+dna_absorb2: 2.02
 dna_collect_site: untreated pond water
-dna_concentration: '100'
+dna_concentration: 100
 dna_cont_type: plate
 dna_cont_well: C2
 dna_container_id: Pond_MT_041618
@@ -328,14 +328,14 @@ dna_sample_name: JGI_pond_041618
 dna_seq_project: '1191234'
 dna_seq_project_pi: Jane Johnson
 dna_seq_project_name: JGI Pond metagenomics
-dna_volume: '25'
+dna_volume: 25
 proposal_dna: '504000'
 dnase_rna: 'yes'
 proposal_rna: '504000'
-rna_absorb1: '2.02'
-rna_absorb2: '2.02'
+rna_absorb1: 2.02
+rna_absorb2: 2.02
 rna_collect_site: untreated pond water
-rna_concentration: '100'
+rna_concentration: 100
 rna_cont_type: plate
 rna_cont_well: C2
 rna_container_id: Pond_MT_041618
@@ -349,7 +349,7 @@ rna_sample_name: JGI_pond_041618
 rna_seq_project: '1191234'
 rna_seq_project_pi: Jane Johnson
 rna_seq_project_name: JGI Pond metagenomics
-rna_volume: '25'
+rna_volume: 25
 collection_date_inc: '2023-01-29'
 collection_time: 05:42+0000
 collection_time_inc: 13:42+0000
