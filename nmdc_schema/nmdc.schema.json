@@ -632,11 +632,11 @@
                 },
                 "dna_absorb1": {
                     "description": "260/280 measurement of DNA sample purity",
-                    "type": "string"
+                    "type": "number"
                 },
                 "dna_absorb2": {
                     "description": "260/230 measurement of DNA sample purity",
-                    "type": "string"
+                    "type": "number"
                 },
                 "dna_collect_site": {
                     "description": "Provide information on the site your DNA sample was collected from",
@@ -645,7 +645,7 @@
                 "dna_concentration": {
                     "maximum": 2000,
                     "minimum": 0,
-                    "type": "string"
+                    "type": "number"
                 },
                 "dna_cont_type": {
                     "$ref": "#/$defs/DnaContTypeEnum",
@@ -695,7 +695,7 @@
                 "dna_volume": {
                     "maximum": 1000,
                     "minimum": 0,
-                    "type": "string"
+                    "type": "number"
                 },
                 "dnase_rna": {
                     "$ref": "#/$defs/DnaseRnaEnum"
@@ -1822,11 +1822,11 @@
                 },
                 "rna_absorb1": {
                     "description": "260/280 measurement of RNA sample purity",
-                    "type": "string"
+                    "type": "number"
                 },
                 "rna_absorb2": {
                     "description": "260/230 measurement of RNA sample purity",
-                    "type": "string"
+                    "type": "number"
                 },
                 "rna_collect_site": {
                     "description": "Provide information on the site your RNA sample was collected from",
@@ -1835,7 +1835,7 @@
                 "rna_concentration": {
                     "maximum": 1000,
                     "minimum": 0,
-                    "type": "string"
+                    "type": "number"
                 },
                 "rna_cont_type": {
                     "$ref": "#/$defs/RnaContTypeEnum",
@@ -1882,7 +1882,7 @@
                     "type": "string"
                 },
                 "rna_volume": {
-                    "type": "string"
+                    "type": "number"
                 },
                 "room_air_exch_rate": {
                     "$ref": "#/$defs/QuantityValue",
@@ -7521,5 +7521,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "v7.4.15"
+    "version": "v7.5.0"
 }

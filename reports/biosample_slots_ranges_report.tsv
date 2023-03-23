@@ -534,10 +534,10 @@ salinity_category	string
 sample_collection_site	string				
 soluble_iron_micromol	string				
 subsurface_depth	QuantityValue				
-dna_absorb1	string				
-dna_absorb2	string				
+dna_absorb1	float				
+dna_absorb2	float				
 dna_collect_site	string				
-dna_concentration	string			0	2000
+dna_concentration	float			0	2000
 dna_cont_type	dna_cont_type_enum				
 dna_container_id	string				
 dna_dnase	dna_dnase_enum				
@@ -550,14 +550,14 @@ dna_sample_name	string
 dna_seq_project	string				
 dna_seq_project_pi	string				
 dna_seq_project_name	string				
-dna_volume	string			0	1000
+dna_volume	float			0	1000
 proposal_dna	string				
 dnase_rna	dnase_rna_enum				
 proposal_rna	string				
-rna_absorb1	string				
-rna_absorb2	string				
+rna_absorb1	float				
+rna_absorb2	float				
 rna_collect_site	string				
-rna_concentration	string			0	1000
+rna_concentration	float			0	1000
 rna_cont_type	rna_cont_type_enum				
 rna_cont_well	string		^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$		
 rna_container_id	string				
@@ -570,7 +570,7 @@ rna_sample_name	string			0	2000
 rna_seq_project	string				
 rna_seq_project_pi	string				
 rna_seq_project_name	string				
-rna_volume	string				
+rna_volume	float				
 collection_date_inc	string				
 collection_time	string				
 collection_time_inc	string				

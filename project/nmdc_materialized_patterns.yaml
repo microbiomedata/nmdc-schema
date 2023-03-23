@@ -20,7 +20,7 @@ notes:
 - resuming use of part_of to link Biosamples to Studies. eg releasing sample_link
   from that role
 id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-version: v7.4.15
+version: v7.5.0
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   EFO:
@@ -975,6 +975,182 @@ enums:
         text: soil
       water_extract_soil:
         text: water_extract_soil
+  ceil_texture_enum:
+    name: ceil_texture_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      crows feet:
+        text: crows feet
+      crows-foot stomp:
+        text: crows-foot stomp
+      double skip:
+        text: double skip
+      hawk and trowel:
+        text: hawk and trowel
+      knockdown:
+        text: knockdown
+      popcorn:
+        text: popcorn
+      orange peel:
+        text: orange peel
+      rosebud stomp:
+        text: rosebud stomp
+      Santa-Fe texture:
+        text: Santa-Fe texture
+      skip trowel:
+        text: skip trowel
+      smooth:
+        text: smooth
+      stomp knockdown:
+        text: stomp knockdown
+      swirl:
+        text: swirl
+  vis_media_enum:
+    name: vis_media_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      photos:
+        text: photos
+      videos:
+        text: videos
+      commonly of the building:
+        text: commonly of the building
+      site context (adjacent buildings, vegetation, terrain, streets):
+        text: site context (adjacent buildings, vegetation, terrain, streets)
+      interiors:
+        text: interiors
+      equipment:
+        text: equipment
+      3D scans:
+        text: 3D scans
+  build_occup_type_enum:
+    name: build_occup_type_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      office:
+        text: office
+      market:
+        text: market
+      restaurant:
+        text: restaurant
+      residence:
+        text: residence
+      school:
+        text: school
+      residential:
+        text: residential
+      commercial:
+        text: commercial
+      low rise:
+        text: low rise
+      high rise:
+        text: high rise
+      wood framed:
+        text: wood framed
+      health care:
+        text: health care
+      airport:
+        text: airport
+      sports complex:
+        text: sports complex
+  light_type_enum:
+    name: light_type_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      natural light:
+        text: natural light
+      electric light:
+        text: electric light
+      desk lamp:
+        text: desk lamp
+      flourescent lights:
+        text: flourescent lights
+      none:
+        text: none
+  samp_weather_enum:
+    name: samp_weather_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      clear sky:
+        text: clear sky
+      cloudy:
+        text: cloudy
+      foggy:
+        text: foggy
+      hail:
+        text: hail
+      rain:
+        text: rain
+      snow:
+        text: snow
+      sleet:
+        text: sleet
+      sunny:
+        text: sunny
+      windy:
+        text: windy
+  samp_dis_stage_enum:
+    name: samp_dis_stage_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      dissemination:
+        text: dissemination
+      growth and reproduction:
+        text: growth and reproduction
+      infection:
+        text: infection
+      inoculation:
+        text: inoculation
+      penetration:
+        text: penetration
+      other:
+        text: other
+  season_use_enum:
+    name: season_use_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      Spring:
+        text: Spring
+      Summer:
+        text: Summer
+      Fall:
+        text: Fall
+      Winter:
+        text: Winter
+  wall_surf_treatment_enum:
+    name: wall_surf_treatment_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      painted:
+        text: painted
+      wall paper:
+        text: wall paper
+      no treatment:
+        text: no treatment
+      paneling:
+        text: paneling
+      stucco:
+        text: stucco
+      fabric:
+        text: fabric
+  ceil_type_enum:
+    name: ceil_type_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      cathedral:
+        text: cathedral
+      dropped:
+        text: dropped
+      concave:
+        text: concave
+      barrel-shaped:
+        text: barrel-shaped
+      coffered:
+        text: coffered
+      cove:
+        text: cove
+      stretched:
+        text: stretched
   door_type_metal_enum:
     name: door_type_metal_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
@@ -989,110 +1165,30 @@ enums:
         text: rolling shutters
       steel plate:
         text: steel plate
-  indoor_surf_enum:
-    name: indoor_surf_enum
+  door_type_wood_enum:
+    name: door_type_wood_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     permissible_values:
-      cabinet:
-        text: cabinet
-      ceiling:
-        text: ceiling
-      counter top:
-        text: counter top
-      door:
-        text: door
-      shelving:
-        text: shelving
-      vent cover:
-        text: vent cover
-      window:
-        text: window
-      wall:
-        text: wall
-  wall_loc_enum:
-    name: wall_loc_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      north:
-        text: north
-      south:
-        text: south
-      east:
-        text: east
-      west:
-        text: west
-  window_cond_enum:
-    name: window_cond_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      damaged:
-        text: damaged
-      needs repair:
-        text: needs repair
-      new:
-        text: new
-      rupture:
-        text: rupture
-      visible wear:
-        text: visible wear
-  heat_cool_type_enum:
-    name: heat_cool_type_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      radiant system:
-        text: radiant system
-      heat pump:
-        text: heat pump
-      forced air system:
-        text: forced air system
-      steam forced heat:
-        text: steam forced heat
-      wood stove:
-        text: wood stove
-  filter_type_enum:
-    name: filter_type_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      particulate air filter:
-        text: particulate air filter
-      chemical air filter:
-        text: chemical air filter
-      low-MERV pleated media:
-        text: low-MERV pleated media
-      HEPA:
-        text: HEPA
-      electrostatic:
-        text: electrostatic
-      gas-phase or ultraviolet air treatments:
-        text: gas-phase or ultraviolet air treatments
-  soil_horizon_enum:
-    name: soil_horizon_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      O horizon:
-        text: O horizon
-      A horizon:
-        text: A horizon
-      E horizon:
-        text: E horizon
-      B horizon:
-        text: B horizon
-      C horizon:
-        text: C horizon
-      R layer:
-        text: R layer
-      Permafrost:
-        text: Permafrost
-  train_stop_loc_enum:
-    name: train_stop_loc_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      end:
-        text: end
-      mid:
-        text: mid
-      downtown:
-        text: downtown
+      bettened and ledged:
+        text: bettened and ledged
+      battened:
+        text: battened
+      ledged and braced:
+        text: ledged and braced
+      ledged and framed:
+        text: ledged and framed
+      ledged, braced and frame:
+        text: ledged, braced and frame
+      framed and paneled:
+        text: framed and paneled
+      glashed or sash:
+        text: glashed or sash
+      flush:
+        text: flush
+      louvered:
+        text: louvered
+      wire gauged:
+        text: wire gauged
   depos_env_enum:
     name: depos_env_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
@@ -1129,56 +1225,22 @@ enums:
         text: Other - Volcanic
       other:
         text: other
-  sediment_type_enum:
-    name: sediment_type_enum
+  sr_kerog_type_enum:
+    name: sr_kerog_type_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     permissible_values:
-      biogenous:
-        text: biogenous
-      cosmogenous:
-        text: cosmogenous
-      hydrogenous:
-        text: hydrogenous
-      lithogenous:
-        text: lithogenous
-  samp_subtype_enum:
-    name: samp_subtype_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      oil phase:
-        text: oil phase
-      water phase:
-        text: water phase
-      biofilm:
-        text: biofilm
-      not applicable:
-        text: not applicable
+      Type I:
+        text: Type I
+      Type II:
+        text: Type II
+      Type III:
+        text: Type III
+      Type IV:
+        text: Type IV
       other:
         text: other
-  tillage_enum:
-    name: tillage_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      drill:
-        text: drill
-      cutting disc:
-        text: cutting disc
-      ridge till:
-        text: ridge till
-      strip tillage:
-        text: strip tillage
-      zonal tillage:
-        text: zonal tillage
-      chisel:
-        text: chisel
-      tined:
-        text: tined
-      mouldboard:
-        text: mouldboard
-      disc plough:
-        text: disc plough
-  ext_window_orient_enum:
-    name: ext_window_orient_enum
+  wall_loc_enum:
+    name: wall_loc_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     permissible_values:
       north:
@@ -1189,650 +1251,42 @@ enums:
         text: east
       west:
         text: west
-      northeast:
-        text: northeast
-      southeast:
-        text: southeast
-      southwest:
-        text: southwest
-      northwest:
-        text: northwest
-  growth_habit_enum:
-    name: growth_habit_enum
+  gender_restroom_enum:
+    name: gender_restroom_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     permissible_values:
-      erect:
-        text: erect
-      semi-erect:
-        text: semi-erect
-      spreading:
-        text: spreading
-      prostrate:
-        text: prostrate
-  shading_device_type_enum:
-    name: shading_device_type_enum
+      all gender:
+        text: all gender
+      female:
+        text: female
+      gender neurtral:
+        text: gender neurtral
+      male:
+        text: male
+      male and female:
+        text: male and female
+      unisex:
+        text: unisex
+  rel_samp_loc_enum:
+    name: rel_samp_loc_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     permissible_values:
-      bahama shutters:
-        text: bahama shutters
-      exterior roll blind:
-        text: exterior roll blind
-      gambrel awning:
-        text: gambrel awning
-      hood awning:
-        text: hood awning
-      porchroller awning:
-        text: porchroller awning
-      sarasota shutters:
-        text: sarasota shutters
-      slatted aluminum:
-        text: slatted aluminum
-      solid aluminum awning:
-        text: solid aluminum awning
-      sun screen:
-        text: sun screen
-      tree:
-        text: tree
-      trellis:
-        text: trellis
-      venetian awning:
-        text: venetian awning
-  hcr_geol_age_enum:
-    name: hcr_geol_age_enum
+      edge of car:
+        text: edge of car
+      center of car:
+        text: center of car
+      under a seat:
+        text: under a seat
+  door_direct_enum:
+    name: door_direct_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     permissible_values:
-      Archean:
-        text: Archean
-      Cambrian:
-        text: Cambrian
-      Carboniferous:
-        text: Carboniferous
-      Cenozoic:
-        text: Cenozoic
-      Cretaceous:
-        text: Cretaceous
-      Devonian:
-        text: Devonian
-      Jurassic:
-        text: Jurassic
-      Mesozoic:
-        text: Mesozoic
-      Neogene:
-        text: Neogene
-      Ordovician:
-        text: Ordovician
-      Paleogene:
-        text: Paleogene
-      Paleozoic:
-        text: Paleozoic
-      Permian:
-        text: Permian
-      Precambrian:
-        text: Precambrian
-      Proterozoic:
-        text: Proterozoic
-      Silurian:
-        text: Silurian
-      Triassic:
-        text: Triassic
-      other:
-        text: other
-  biotic_relationship_enum:
-    name: biotic_relationship_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      free living:
-        text: free living
-      parasite:
-        text: parasite
-      commensal:
-        text: commensal
-      symbiont:
-        text: symbiont
-  fao_class_enum:
-    name: fao_class_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      Acrisols:
-        text: Acrisols
-      Andosols:
-        text: Andosols
-      Arenosols:
-        text: Arenosols
-      Cambisols:
-        text: Cambisols
-      Chernozems:
-        text: Chernozems
-      Ferralsols:
-        text: Ferralsols
-      Fluvisols:
-        text: Fluvisols
-      Gleysols:
-        text: Gleysols
-      Greyzems:
-        text: Greyzems
-      Gypsisols:
-        text: Gypsisols
-      Histosols:
-        text: Histosols
-      Kastanozems:
-        text: Kastanozems
-      Lithosols:
-        text: Lithosols
-      Luvisols:
-        text: Luvisols
-      Nitosols:
-        text: Nitosols
-      Phaeozems:
-        text: Phaeozems
-      Planosols:
-        text: Planosols
-      Podzols:
-        text: Podzols
-      Podzoluvisols:
-        text: Podzoluvisols
-      Rankers:
-        text: Rankers
-      Regosols:
-        text: Regosols
-      Rendzinas:
-        text: Rendzinas
-      Solonchaks:
-        text: Solonchaks
-      Solonetz:
-        text: Solonetz
-      Vertisols:
-        text: Vertisols
-      Yermosols:
-        text: Yermosols
-  window_loc_enum:
-    name: window_loc_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      north:
-        text: north
-      south:
-        text: south
-      east:
-        text: east
-      west:
-        text: west
-  build_occup_type_enum:
-    name: build_occup_type_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      office:
-        text: office
-      market:
-        text: market
-      restaurant:
-        text: restaurant
-      residence:
-        text: residence
-      school:
-        text: school
-      residential:
-        text: residential
-      commercial:
-        text: commercial
-      low rise:
-        text: low rise
-      high rise:
-        text: high rise
-      wood framed:
-        text: wood framed
-      health care:
-        text: health care
-      airport:
-        text: airport
-      sports complex:
-        text: sports complex
-  vis_media_enum:
-    name: vis_media_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      photos:
-        text: photos
-      videos:
-        text: videos
-      commonly of the building:
-        text: commonly of the building
-      site context (adjacent buildings, vegetation, terrain, streets):
-        text: site context (adjacent buildings, vegetation, terrain, streets)
-      interiors:
-        text: interiors
-      equipment:
-        text: equipment
-      3D scans:
-        text: 3D scans
-  floor_cond_enum:
-    name: floor_cond_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      new:
-        text: new
-      visible wear:
-        text: visible wear
-      needs repair:
-        text: needs repair
-      damaged:
-        text: damaged
-      rupture:
-        text: rupture
-  profile_position_enum:
-    name: profile_position_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      summit:
-        text: summit
-      shoulder:
-        text: shoulder
-      backslope:
-        text: backslope
-      footslope:
-        text: footslope
-      toeslope:
-        text: toeslope
-  window_mat_enum:
-    name: window_mat_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      clad:
-        text: clad
-      fiberglass:
-        text: fiberglass
-      metal:
-        text: metal
-      vinyl:
-        text: vinyl
-      wood:
-        text: wood
-  handidness_enum:
-    name: handidness_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      ambidexterity:
-        text: ambidexterity
-      left handedness:
-        text: left handedness
-      mixed-handedness:
-        text: mixed-handedness
-      right handedness:
-        text: right handedness
-  quad_pos_enum:
-    name: quad_pos_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      North side:
-        text: North side
-      West side:
-        text: West side
-      South side:
-        text: South side
-      East side:
-        text: East side
-  indoor_space_enum:
-    name: indoor_space_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      bedroom:
-        text: bedroom
-      office:
-        text: office
-      bathroom:
-        text: bathroom
-      foyer:
-        text: foyer
-      kitchen:
-        text: kitchen
-      locker room:
-        text: locker room
-      hallway:
-        text: hallway
-      elevator:
-        text: elevator
-  window_horiz_pos_enum:
-    name: window_horiz_pos_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      left:
-        text: left
-      middle:
-        text: middle
-      right:
-        text: right
-  furniture_enum:
-    name: furniture_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      cabinet:
-        text: cabinet
-      chair:
-        text: chair
-      desks:
-        text: desks
-  train_line_enum:
-    name: train_line_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      red:
-        text: red
-      green:
-        text: green
-      orange:
-        text: orange
-  door_mat_enum:
-    name: door_mat_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      aluminum:
-        text: aluminum
-      cellular PVC:
-        text: cellular PVC
-      engineered plastic:
-        text: engineered plastic
-      fiberboard:
-        text: fiberboard
-      fiberglass:
-        text: fiberglass
-      metal:
-        text: metal
-      thermoplastic alloy:
-        text: thermoplastic alloy
-      vinyl:
-        text: vinyl
-      wood:
-        text: wood
-      wood/plastic composite:
-        text: wood/plastic composite
-  season_use_enum:
-    name: season_use_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      Spring:
-        text: Spring
-      Summer:
-        text: Summer
-      Fall:
-        text: Fall
-      Winter:
-        text: Winter
-  samp_dis_stage_enum:
-    name: samp_dis_stage_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      dissemination:
-        text: dissemination
-      growth and reproduction:
-        text: growth and reproduction
-      infection:
-        text: infection
-      inoculation:
-        text: inoculation
-      penetration:
-        text: penetration
-      other:
-        text: other
-  mech_struc_enum:
-    name: mech_struc_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      subway:
-        text: subway
-      coach:
-        text: coach
-      carriage:
-        text: carriage
-      elevator:
-        text: elevator
-      escalator:
-        text: escalator
-      boat:
-        text: boat
-      train:
-        text: train
-      car:
-        text: car
-      bus:
-        text: bus
-  floor_struc_enum:
-    name: floor_struc_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      balcony:
-        text: balcony
-      floating floor:
-        text: floating floor
-      glass floor:
-        text: glass floor
-      raised floor:
-        text: raised floor
-      sprung floor:
-        text: sprung floor
-      wood-framed:
-        text: wood-framed
-      concrete:
-        text: concrete
-  biol_stat_enum:
-    name: biol_stat_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      wild:
-        text: wild
-      natural:
-        text: natural
-      semi-natural:
-        text: semi-natural
-      inbred line:
-        text: inbred line
-      breeder's line:
-        text: breeder's line
-      hybrid:
-        text: hybrid
-      clonal selection:
-        text: clonal selection
-      mutant:
-        text: mutant
-  occup_document_enum:
-    name: occup_document_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      automated count:
-        text: automated count
-      estimate:
-        text: estimate
-      manual count:
-        text: manual count
-      videos:
-        text: videos
-  plant_growth_med_enum:
-    name: plant_growth_med_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      other artificial liquid medium:
-        text: other artificial liquid medium
-      other artificial solid medium:
-        text: other artificial solid medium
-      peat moss:
-        text: peat moss
-      perlite:
-        text: perlite
-      pumice:
-        text: pumice
-      sand:
-        text: sand
-      soil:
-        text: soil
-      vermiculite:
-        text: vermiculite
-      water:
-        text: water
-  wall_texture_enum:
-    name: wall_texture_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      crows feet:
-        text: crows feet
-      crows-foot stomp:
-        text: crows-foot stomp
-      ? ''
-      : text: ''
-      double skip:
-        text: double skip
-      hawk and trowel:
-        text: hawk and trowel
-      knockdown:
-        text: knockdown
-      popcorn:
-        text: popcorn
-      orange peel:
-        text: orange peel
-      rosebud stomp:
-        text: rosebud stomp
-      Santa-Fe texture:
-        text: Santa-Fe texture
-      skip trowel:
-        text: skip trowel
-      smooth:
-        text: smooth
-      stomp knockdown:
-        text: stomp knockdown
-      swirl:
-        text: swirl
-  room_condt_enum:
-    name: room_condt_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      new:
-        text: new
-      visible wear:
-        text: visible wear
-      needs repair:
-        text: needs repair
-      damaged:
-        text: damaged
-      rupture:
-        text: rupture
-      visible signs of mold/mildew:
-        text: visible signs of mold/mildew
-  samp_weather_enum:
-    name: samp_weather_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      clear sky:
-        text: clear sky
-      cloudy:
-        text: cloudy
-      foggy:
-        text: foggy
-      hail:
-        text: hail
-      rain:
-        text: rain
-      snow:
-        text: snow
-      sleet:
-        text: sleet
-      sunny:
-        text: sunny
-      windy:
-        text: windy
-  heat_deliv_loc_enum:
-    name: heat_deliv_loc_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      north:
-        text: north
-      south:
-        text: south
-      east:
-        text: east
-      west:
-        text: west
-  window_type_enum:
-    name: window_type_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      single-hung sash window:
-        text: single-hung sash window
-      horizontal sash window:
-        text: horizontal sash window
-      fixed window:
-        text: fixed window
-  sr_lithology_enum:
-    name: sr_lithology_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      Clastic:
-        text: Clastic
-      Carbonate:
-        text: Carbonate
-      Coal:
-        text: Coal
-      Biosilicieous:
-        text: Biosilicieous
-      other:
-        text: other
-  window_cover_enum:
-    name: window_cover_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      blinds:
-        text: blinds
-      curtains:
-        text: curtains
-      none:
-        text: none
-  shading_device_cond_enum:
-    name: shading_device_cond_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      damaged:
-        text: damaged
-      needs repair:
-        text: needs repair
-      new:
-        text: new
-      rupture:
-        text: rupture
-      visible wear:
-        text: visible wear
-  water_feat_type_enum:
-    name: water_feat_type_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      fountain:
-        text: fountain
-      pool:
-        text: pool
-      standing feature:
-        text: standing feature
-      stream:
-        text: stream
-      waterfall:
-        text: waterfall
-  oxy_stat_samp_enum:
-    name: oxy_stat_samp_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      aerobic:
-        text: aerobic
-      anaerobic:
-        text: anaerobic
-      other:
-        text: other
-  samp_floor_enum:
-    name: samp_floor_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      1st floor:
-        text: 1st floor
-      2nd floor:
-        text: 2nd floor
-      basement:
-        text: basement
-      lobby:
-        text: lobby
+      inward:
+        text: inward
+      outward:
+        text: outward
+      sideways:
+        text: sideways
   surf_material_enum:
     name: surf_material_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
@@ -1867,52 +1321,232 @@ enums:
         text: vinyl
       wood:
         text: wood
-  surf_air_cont_enum:
-    name: surf_air_cont_enum
+  samp_capt_status_enum:
+    name: samp_capt_status_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     permissible_values:
-      dust:
-        text: dust
-      organic matter:
-        text: organic matter
-      particulate matter:
-        text: particulate matter
-      volatile organic compounds:
-        text: volatile organic compounds
-      biological contaminants:
-        text: biological contaminants
-      radon:
-        text: radon
-      nutrients:
-        text: nutrients
-      biocides:
-        text: biocides
-  building_setting_enum:
-    name: building_setting_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      urban:
-        text: urban
-      suburban:
-        text: suburban
-      exurban:
-        text: exurban
-      rural:
-        text: rural
-  samp_md_enum:
-    name: samp_md_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      DF:
-        text: DF
-      RT:
-        text: RT
-      KB:
-        text: KB
-      MSL:
-        text: MSL
+      active surveillance in response to an outbreak:
+        text: active surveillance in response to an outbreak
+      active surveillance not initiated by an outbreak:
+        text: active surveillance not initiated by an outbreak
+      farm sample:
+        text: farm sample
+      market sample:
+        text: market sample
       other:
         text: other
+  tillage_enum:
+    name: tillage_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      drill:
+        text: drill
+      cutting disc:
+        text: cutting disc
+      ridge till:
+        text: ridge till
+      strip tillage:
+        text: strip tillage
+      zonal tillage:
+        text: zonal tillage
+      chisel:
+        text: chisel
+      tined:
+        text: tined
+      mouldboard:
+        text: mouldboard
+      disc plough:
+        text: disc plough
+  window_type_enum:
+    name: window_type_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      single-hung sash window:
+        text: single-hung sash window
+      horizontal sash window:
+        text: horizontal sash window
+      fixed window:
+        text: fixed window
+  tidal_stage_enum:
+    name: tidal_stage_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      low tide:
+        text: low tide
+      ebb tide:
+        text: ebb tide
+      flood tide:
+        text: flood tide
+      high tide:
+        text: high tide
+  heat_deliv_loc_enum:
+    name: heat_deliv_loc_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      north:
+        text: north
+      south:
+        text: south
+      east:
+        text: east
+      west:
+        text: west
+  organism_count_enum:
+    name: organism_count_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      ATP:
+        text: ATP
+      MPN:
+        text: MPN
+      other:
+        text: other
+  train_stop_loc_enum:
+    name: train_stop_loc_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      end:
+        text: end
+      mid:
+        text: mid
+      downtown:
+        text: downtown
+  window_loc_enum:
+    name: window_loc_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      north:
+        text: north
+      south:
+        text: south
+      east:
+        text: east
+      west:
+        text: west
+  door_cond_enum:
+    name: door_cond_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      damaged:
+        text: damaged
+      needs repair:
+        text: needs repair
+      new:
+        text: new
+      rupture:
+        text: rupture
+      visible wear:
+        text: visible wear
+  samp_floor_enum:
+    name: samp_floor_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      1st floor:
+        text: 1st floor
+      2nd floor:
+        text: 2nd floor
+      basement:
+        text: basement
+      lobby:
+        text: lobby
+  door_mat_enum:
+    name: door_mat_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      aluminum:
+        text: aluminum
+      cellular PVC:
+        text: cellular PVC
+      engineered plastic:
+        text: engineered plastic
+      fiberboard:
+        text: fiberboard
+      fiberglass:
+        text: fiberglass
+      metal:
+        text: metal
+      thermoplastic alloy:
+        text: thermoplastic alloy
+      vinyl:
+        text: vinyl
+      wood:
+        text: wood
+      wood/plastic composite:
+        text: wood/plastic composite
+  floor_finish_mat_enum:
+    name: floor_finish_mat_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      tile:
+        text: tile
+      wood strip or parquet:
+        text: wood strip or parquet
+      carpet:
+        text: carpet
+      rug:
+        text: rug
+      laminate wood:
+        text: laminate wood
+      lineoleum:
+        text: lineoleum
+      vinyl composition tile:
+        text: vinyl composition tile
+      sheet vinyl:
+        text: sheet vinyl
+      stone:
+        text: stone
+      bamboo:
+        text: bamboo
+      cork:
+        text: cork
+      terrazo:
+        text: terrazo
+      concrete:
+        text: concrete
+      none:
+        text: none
+      sealed:
+        text: sealed
+      clear finish:
+        text: clear finish
+      paint:
+        text: paint
+      none or unfinished:
+        text: none or unfinished
+  profile_position_enum:
+    name: profile_position_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      summit:
+        text: summit
+      shoulder:
+        text: shoulder
+      backslope:
+        text: backslope
+      footslope:
+        text: footslope
+      toeslope:
+        text: toeslope
+  substructure_type_enum:
+    name: substructure_type_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      crawlspace:
+        text: crawlspace
+      slab on grade:
+        text: slab on grade
+      basement:
+        text: basement
+  window_cover_enum:
+    name: window_cover_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      blinds:
+        text: blinds
+      curtains:
+        text: curtains
+      none:
+        text: none
   drainage_class_enum:
     name: drainage_class_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
@@ -2004,64 +1638,124 @@ enums:
         text: swamp (permanent or semi-permanent water body dominated by woody plants)
       crop trees (nuts,fruit,christmas trees,nursery trees):
         text: crop trees (nuts,fruit,christmas trees,nursery trees)
-  light_type_enum:
-    name: light_type_enum
+  weekday_enum:
+    name: weekday_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     permissible_values:
-      natural light:
-        text: natural light
-      electric light:
-        text: electric light
-      desk lamp:
-        text: desk lamp
-      flourescent lights:
-        text: flourescent lights
-      none:
-        text: none
-  ceil_texture_enum:
-    name: ceil_texture_enum
+      Monday:
+        text: Monday
+      Tuesday:
+        text: Tuesday
+      Wednesday:
+        text: Wednesday
+      Thursday:
+        text: Thursday
+      Friday:
+        text: Friday
+      Saturday:
+        text: Saturday
+      Sunday:
+        text: Sunday
+  biotic_relationship_enum:
+    name: biotic_relationship_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     permissible_values:
-      crows feet:
-        text: crows feet
-      crows-foot stomp:
-        text: crows-foot stomp
-      double skip:
-        text: double skip
-      hawk and trowel:
-        text: hawk and trowel
-      knockdown:
-        text: knockdown
-      popcorn:
-        text: popcorn
-      orange peel:
-        text: orange peel
-      rosebud stomp:
-        text: rosebud stomp
-      Santa-Fe texture:
-        text: Santa-Fe texture
-      skip trowel:
-        text: skip trowel
-      smooth:
-        text: smooth
-      stomp knockdown:
-        text: stomp knockdown
-      swirl:
-        text: swirl
-  ceil_cond_enum:
-    name: ceil_cond_enum
+      free living:
+        text: free living
+      parasite:
+        text: parasite
+      commensal:
+        text: commensal
+      symbiont:
+        text: symbiont
+  indoor_surf_enum:
+    name: indoor_surf_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     permissible_values:
-      new:
-        text: new
-      visible wear:
-        text: visible wear
-      needs repair:
-        text: needs repair
-      damaged:
-        text: damaged
-      rupture:
-        text: rupture
+      cabinet:
+        text: cabinet
+      ceiling:
+        text: ceiling
+      counter top:
+        text: counter top
+      door:
+        text: door
+      shelving:
+        text: shelving
+      vent cover:
+        text: vent cover
+      window:
+        text: window
+      wall:
+        text: wall
+  heat_cool_type_enum:
+    name: heat_cool_type_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      radiant system:
+        text: radiant system
+      heat pump:
+        text: heat pump
+      forced air system:
+        text: forced air system
+      steam forced heat:
+        text: steam forced heat
+      wood stove:
+        text: wood stove
+  sr_lithology_enum:
+    name: sr_lithology_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      Clastic:
+        text: Clastic
+      Carbonate:
+        text: Carbonate
+      Coal:
+        text: Coal
+      Biosilicieous:
+        text: Biosilicieous
+      other:
+        text: other
+  wall_finish_mat_enum:
+    name: wall_finish_mat_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      plaster:
+        text: plaster
+      gypsum plaster:
+        text: gypsum plaster
+      veneer plaster:
+        text: veneer plaster
+      gypsum board:
+        text: gypsum board
+      tile:
+        text: tile
+      terrazzo:
+        text: terrazzo
+      stone facing:
+        text: stone facing
+      acoustical treatment:
+        text: acoustical treatment
+      wood:
+        text: wood
+      metal:
+        text: metal
+      masonry:
+        text: masonry
+  sr_dep_env_enum:
+    name: sr_dep_env_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      Lacustine:
+        text: Lacustine
+      Fluvioldeltaic:
+        text: Fluvioldeltaic
+      Fluviomarine:
+        text: Fluviomarine
+      Marine:
+        text: Marine
+      other:
+        text: other
   room_connected_enum:
     name: room_connected_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
@@ -2088,6 +1782,194 @@ enums:
         text: office
       stairwell:
         text: stairwell
+  furniture_enum:
+    name: furniture_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      cabinet:
+        text: cabinet
+      chair:
+        text: chair
+      desks:
+        text: desks
+  ceil_cond_enum:
+    name: ceil_cond_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      new:
+        text: new
+      visible wear:
+        text: visible wear
+      needs repair:
+        text: needs repair
+      damaged:
+        text: damaged
+      rupture:
+        text: rupture
+  lithology_enum:
+    name: lithology_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      Basement:
+        text: Basement
+      Chalk:
+        text: Chalk
+      Chert:
+        text: Chert
+      Coal:
+        text: Coal
+      Conglomerate:
+        text: Conglomerate
+      Diatomite:
+        text: Diatomite
+      Dolomite:
+        text: Dolomite
+      Limestone:
+        text: Limestone
+      Sandstone:
+        text: Sandstone
+      Shale:
+        text: Shale
+      Siltstone:
+        text: Siltstone
+      Volcanic:
+        text: Volcanic
+      other:
+        text: other
+  ext_window_orient_enum:
+    name: ext_window_orient_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      north:
+        text: north
+      south:
+        text: south
+      east:
+        text: east
+      west:
+        text: west
+      northeast:
+        text: northeast
+      southeast:
+        text: southeast
+      southwest:
+        text: southwest
+      northwest:
+        text: northwest
+  int_wall_cond_enum:
+    name: int_wall_cond_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      new:
+        text: new
+      visible wear:
+        text: visible wear
+      needs repair:
+        text: needs repair
+      damaged:
+        text: damaged
+      rupture:
+        text: rupture
+  rel_to_oxygen_enum:
+    name: rel_to_oxygen_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      aerobe:
+        text: aerobe
+      anaerobe:
+        text: anaerobe
+      facultative:
+        text: facultative
+      microaerophilic:
+        text: microaerophilic
+      microanaerobe:
+        text: microanaerobe
+      obligate aerobe:
+        text: obligate aerobe
+      obligate anaerobe:
+        text: obligate anaerobe
+  freq_clean_enum:
+    name: freq_clean_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      Daily:
+        text: Daily
+      Weekly:
+        text: Weekly
+      Monthly:
+        text: Monthly
+      Quarterly:
+        text: Quarterly
+      Annually:
+        text: Annually
+      other:
+        text: other
+  train_stat_loc_enum:
+    name: train_stat_loc_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      south station above ground:
+        text: south station above ground
+      south station underground:
+        text: south station underground
+      south station amtrak:
+        text: south station amtrak
+      forest hills:
+        text: forest hills
+      riverside:
+        text: riverside
+  door_loc_enum:
+    name: door_loc_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      north:
+        text: north
+      south:
+        text: south
+      east:
+        text: east
+      west:
+        text: west
+  soil_horizon_enum:
+    name: soil_horizon_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      O horizon:
+        text: O horizon
+      A horizon:
+        text: A horizon
+      E horizon:
+        text: E horizon
+      B horizon:
+        text: B horizon
+      C horizon:
+        text: C horizon
+      R layer:
+        text: R layer
+      Permafrost:
+        text: Permafrost
+  plant_growth_med_enum:
+    name: plant_growth_med_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      other artificial liquid medium:
+        text: other artificial liquid medium
+      other artificial solid medium:
+        text: other artificial solid medium
+      peat moss:
+        text: peat moss
+      perlite:
+        text: perlite
+      pumice:
+        text: pumice
+      sand:
+        text: sand
+      soil:
+        text: soil
+      vermiculite:
+        text: vermiculite
+      water:
+        text: water
   room_samp_pos_enum:
     name: room_samp_pos_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
@@ -2110,112 +1992,134 @@ enums:
         text: southwest corner
       center:
         text: center
-  door_type_enum:
-    name: door_type_enum
+  building_setting_enum:
+    name: building_setting_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     permissible_values:
-      composite:
-        text: composite
-      metal:
-        text: metal
-      wooden:
-        text: wooden
-  sr_geol_age_enum:
-    name: sr_geol_age_enum
+      urban:
+        text: urban
+      suburban:
+        text: suburban
+      exurban:
+        text: exurban
+      rural:
+        text: rural
+  samp_md_enum:
+    name: samp_md_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     permissible_values:
-      Archean:
-        text: Archean
-      Cambrian:
-        text: Cambrian
-      Carboniferous:
-        text: Carboniferous
-      Cenozoic:
-        text: Cenozoic
-      Cretaceous:
-        text: Cretaceous
-      Devonian:
-        text: Devonian
-      Jurassic:
-        text: Jurassic
-      Mesozoic:
-        text: Mesozoic
-      Neogene:
-        text: Neogene
-      Ordovician:
-        text: Ordovician
-      Paleogene:
-        text: Paleogene
-      Paleozoic:
-        text: Paleozoic
-      Permian:
-        text: Permian
-      Precambrian:
-        text: Precambrian
-      Proterozoic:
-        text: Proterozoic
-      Silurian:
-        text: Silurian
-      Triassic:
-        text: Triassic
+      DF:
+        text: DF
+      RT:
+        text: RT
+      KB:
+        text: KB
+      MSL:
+        text: MSL
       other:
         text: other
-  wall_surf_treatment_enum:
-    name: wall_surf_treatment_enum
+  ext_wall_orient_enum:
+    name: ext_wall_orient_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     permissible_values:
-      painted:
-        text: painted
-      wall paper:
-        text: wall paper
-      no treatment:
-        text: no treatment
-      paneling:
-        text: paneling
-      stucco:
-        text: stucco
-      fabric:
-        text: fabric
-  floor_finish_mat_enum:
-    name: floor_finish_mat_enum
+      north:
+        text: north
+      south:
+        text: south
+      east:
+        text: east
+      west:
+        text: west
+      northeast:
+        text: northeast
+      southeast:
+        text: southeast
+      southwest:
+        text: southwest
+      northwest:
+        text: northwest
+  growth_habit_enum:
+    name: growth_habit_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     permissible_values:
-      tile:
-        text: tile
-      wood strip or parquet:
-        text: wood strip or parquet
-      carpet:
-        text: carpet
-      rug:
-        text: rug
-      laminate wood:
-        text: laminate wood
-      lineoleum:
-        text: lineoleum
-      vinyl composition tile:
-        text: vinyl composition tile
-      sheet vinyl:
-        text: sheet vinyl
-      stone:
-        text: stone
-      bamboo:
-        text: bamboo
-      cork:
-        text: cork
-      terrazo:
-        text: terrazo
-      concrete:
-        text: concrete
-      none:
-        text: none
-      sealed:
-        text: sealed
-      clear finish:
-        text: clear finish
-      paint:
-        text: paint
-      none or unfinished:
-        text: none or unfinished
+      erect:
+        text: erect
+      semi-erect:
+        text: semi-erect
+      spreading:
+        text: spreading
+      prostrate:
+        text: prostrate
+  fao_class_enum:
+    name: fao_class_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      Acrisols:
+        text: Acrisols
+      Andosols:
+        text: Andosols
+      Arenosols:
+        text: Arenosols
+      Cambisols:
+        text: Cambisols
+      Chernozems:
+        text: Chernozems
+      Ferralsols:
+        text: Ferralsols
+      Fluvisols:
+        text: Fluvisols
+      Gleysols:
+        text: Gleysols
+      Greyzems:
+        text: Greyzems
+      Gypsisols:
+        text: Gypsisols
+      Histosols:
+        text: Histosols
+      Kastanozems:
+        text: Kastanozems
+      Lithosols:
+        text: Lithosols
+      Luvisols:
+        text: Luvisols
+      Nitosols:
+        text: Nitosols
+      Phaeozems:
+        text: Phaeozems
+      Planosols:
+        text: Planosols
+      Podzols:
+        text: Podzols
+      Podzoluvisols:
+        text: Podzoluvisols
+      Rankers:
+        text: Rankers
+      Regosols:
+        text: Regosols
+      Rendzinas:
+        text: Rendzinas
+      Solonchaks:
+        text: Solonchaks
+      Solonetz:
+        text: Solonetz
+      Vertisols:
+        text: Vertisols
+      Yermosols:
+        text: Yermosols
+  floor_cond_enum:
+    name: floor_cond_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      new:
+        text: new
+      visible wear:
+        text: visible wear
+      needs repair:
+        text: needs repair
+      damaged:
+        text: damaged
+      rupture:
+        text: rupture
   door_move_enum:
     name: door_move_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
@@ -2232,48 +2136,8 @@ enums:
         text: sliding
       swinging:
         text: swinging
-  room_loc_enum:
-    name: room_loc_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      corner room:
-        text: corner room
-      interior room:
-        text: interior room
-      exterior wall:
-        text: exterior wall
-  freq_clean_enum:
-    name: freq_clean_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      Daily:
-        text: Daily
-      Weekly:
-        text: Weekly
-      Monthly:
-        text: Monthly
-      Quarterly:
-        text: Quarterly
-      Annually:
-        text: Annually
-      other:
-        text: other
-  sr_dep_env_enum:
-    name: sr_dep_env_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      Lacustine:
-        text: Lacustine
-      Fluvioldeltaic:
-        text: Fluvioldeltaic
-      Fluviomarine:
-        text: Fluviomarine
-      Marine:
-        text: Marine
-      other:
-        text: other
-  door_cond_enum:
-    name: door_cond_enum
+  window_cond_enum:
+    name: window_cond_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     permissible_values:
       damaged:
@@ -2286,42 +2150,6 @@ enums:
         text: rupture
       visible wear:
         text: visible wear
-  ceil_type_enum:
-    name: ceil_type_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      cathedral:
-        text: cathedral
-      dropped:
-        text: dropped
-      concave:
-        text: concave
-      barrel-shaped:
-        text: barrel-shaped
-      coffered:
-        text: coffered
-      cove:
-        text: cove
-      stretched:
-        text: stretched
-  weekday_enum:
-    name: weekday_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      Monday:
-        text: Monday
-      Tuesday:
-        text: Tuesday
-      Wednesday:
-        text: Wednesday
-      Thursday:
-        text: Thursday
-      Friday:
-        text: Friday
-      Saturday:
-        text: Saturday
-      Sunday:
-        text: Sunday
   room_type_enum:
     name: room_type_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
@@ -2376,98 +2204,50 @@ enums:
         text: cafe
       warehouse:
         text: warehouse
-  arch_struc_enum:
-    name: arch_struc_enum
+  filter_type_enum:
+    name: filter_type_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     permissible_values:
-      building:
-        text: building
-      shed:
-        text: shed
-      home:
-        text: home
-  door_loc_enum:
-    name: door_loc_enum
+      particulate air filter:
+        text: particulate air filter
+      chemical air filter:
+        text: chemical air filter
+      low-MERV pleated media:
+        text: low-MERV pleated media
+      HEPA:
+        text: HEPA
+      electrostatic:
+        text: electrostatic
+      gas-phase or ultraviolet air treatments:
+        text: gas-phase or ultraviolet air treatments
+  water_feat_type_enum:
+    name: water_feat_type_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     permissible_values:
-      north:
-        text: north
-      south:
-        text: south
-      east:
-        text: east
-      west:
-        text: west
-  organism_count_enum:
-    name: organism_count_enum
+      fountain:
+        text: fountain
+      pool:
+        text: pool
+      standing feature:
+        text: standing feature
+      stream:
+        text: stream
+      waterfall:
+        text: waterfall
+  window_mat_enum:
+    name: window_mat_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     permissible_values:
-      ATP:
-        text: ATP
-      MPN:
-        text: MPN
-      other:
-        text: other
-  samp_collect_point_enum:
-    name: samp_collect_point_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      well:
-        text: well
-      test well:
-        text: test well
-      drilling rig:
-        text: drilling rig
-      wellhead:
-        text: wellhead
-      separator:
-        text: separator
-      storage tank:
-        text: storage tank
-      other:
-        text: other
-  wall_finish_mat_enum:
-    name: wall_finish_mat_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      plaster:
-        text: plaster
-      gypsum plaster:
-        text: gypsum plaster
-      veneer plaster:
-        text: veneer plaster
-      gypsum board:
-        text: gypsum board
-      tile:
-        text: tile
-      terrazzo:
-        text: terrazzo
-      stone facing:
-        text: stone facing
-      acoustical treatment:
-        text: acoustical treatment
-      wood:
-        text: wood
+      clad:
+        text: clad
+      fiberglass:
+        text: fiberglass
       metal:
         text: metal
-      masonry:
-        text: masonry
-  specific_enum:
-    name: specific_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      operation:
-        text: operation
-      as built:
-        text: as built
-      construction:
-        text: construction
-      bid:
-        text: bid
-      design:
-        text: design
-      photos:
-        text: photos
+      vinyl:
+        text: vinyl
+      wood:
+        text: wood
   plant_sex_enum:
     name: plant_sex_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
@@ -2530,54 +2310,6 @@ enums:
         text: Trioecious
       Unisexual:
         text: Unisexual
-  rel_to_oxygen_enum:
-    name: rel_to_oxygen_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      aerobe:
-        text: aerobe
-      anaerobe:
-        text: anaerobe
-      facultative:
-        text: facultative
-      microaerophilic:
-        text: microaerophilic
-      microanaerobe:
-        text: microanaerobe
-      obligate aerobe:
-        text: obligate aerobe
-      obligate anaerobe:
-        text: obligate anaerobe
-  wall_const_type_enum:
-    name: wall_const_type_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      frame construction:
-        text: frame construction
-      joisted masonry:
-        text: joisted masonry
-      light noncombustible:
-        text: light noncombustible
-      masonry noncombustible:
-        text: masonry noncombustible
-      modified fire resistive:
-        text: modified fire resistive
-      fire resistive:
-        text: fire resistive
-  int_wall_cond_enum:
-    name: int_wall_cond_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      new:
-        text: new
-      visible wear:
-        text: visible wear
-      needs repair:
-        text: needs repair
-      damaged:
-        text: damaged
-      rupture:
-        text: rupture
   hcr_enum:
     name: hcr_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
@@ -2598,6 +2330,490 @@ enums:
         text: Tight Gas Reservoir
       other:
         text: other
+  window_horiz_pos_enum:
+    name: window_horiz_pos_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      left:
+        text: left
+      middle:
+        text: middle
+      right:
+        text: right
+  floor_struc_enum:
+    name: floor_struc_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      balcony:
+        text: balcony
+      floating floor:
+        text: floating floor
+      glass floor:
+        text: glass floor
+      raised floor:
+        text: raised floor
+      sprung floor:
+        text: sprung floor
+      wood-framed:
+        text: wood-framed
+      concrete:
+        text: concrete
+  indoor_space_enum:
+    name: indoor_space_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      bedroom:
+        text: bedroom
+      office:
+        text: office
+      bathroom:
+        text: bathroom
+      foyer:
+        text: foyer
+      kitchen:
+        text: kitchen
+      locker room:
+        text: locker room
+      hallway:
+        text: hallway
+      elevator:
+        text: elevator
+  shading_device_type_enum:
+    name: shading_device_type_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      bahama shutters:
+        text: bahama shutters
+      exterior roll blind:
+        text: exterior roll blind
+      gambrel awning:
+        text: gambrel awning
+      hood awning:
+        text: hood awning
+      porchroller awning:
+        text: porchroller awning
+      sarasota shutters:
+        text: sarasota shutters
+      slatted aluminum:
+        text: slatted aluminum
+      solid aluminum awning:
+        text: solid aluminum awning
+      sun screen:
+        text: sun screen
+      tree:
+        text: tree
+      trellis:
+        text: trellis
+      venetian awning:
+        text: venetian awning
+  room_loc_enum:
+    name: room_loc_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      corner room:
+        text: corner room
+      interior room:
+        text: interior room
+      exterior wall:
+        text: exterior wall
+  biol_stat_enum:
+    name: biol_stat_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      wild:
+        text: wild
+      natural:
+        text: natural
+      semi-natural:
+        text: semi-natural
+      inbred line:
+        text: inbred line
+      breeder's line:
+        text: breeder's line
+      hybrid:
+        text: hybrid
+      clonal selection:
+        text: clonal selection
+      mutant:
+        text: mutant
+  specific_enum:
+    name: specific_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      operation:
+        text: operation
+      as built:
+        text: as built
+      construction:
+        text: construction
+      bid:
+        text: bid
+      design:
+        text: design
+      photos:
+        text: photos
+  wall_texture_enum:
+    name: wall_texture_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      crows feet:
+        text: crows feet
+      crows-foot stomp:
+        text: crows-foot stomp
+      ? ''
+      : text: ''
+      double skip:
+        text: double skip
+      hawk and trowel:
+        text: hawk and trowel
+      knockdown:
+        text: knockdown
+      popcorn:
+        text: popcorn
+      orange peel:
+        text: orange peel
+      rosebud stomp:
+        text: rosebud stomp
+      Santa-Fe texture:
+        text: Santa-Fe texture
+      skip trowel:
+        text: skip trowel
+      smooth:
+        text: smooth
+      stomp knockdown:
+        text: stomp knockdown
+      swirl:
+        text: swirl
+  quad_pos_enum:
+    name: quad_pos_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      North side:
+        text: North side
+      West side:
+        text: West side
+      South side:
+        text: South side
+      East side:
+        text: East side
+  samp_subtype_enum:
+    name: samp_subtype_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      oil phase:
+        text: oil phase
+      water phase:
+        text: water phase
+      biofilm:
+        text: biofilm
+      not applicable:
+        text: not applicable
+      other:
+        text: other
+  sediment_type_enum:
+    name: sediment_type_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      biogenous:
+        text: biogenous
+      cosmogenous:
+        text: cosmogenous
+      hydrogenous:
+        text: hydrogenous
+      lithogenous:
+        text: lithogenous
+  door_type_enum:
+    name: door_type_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      composite:
+        text: composite
+      metal:
+        text: metal
+      wooden:
+        text: wooden
+  mech_struc_enum:
+    name: mech_struc_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      subway:
+        text: subway
+      coach:
+        text: coach
+      carriage:
+        text: carriage
+      elevator:
+        text: elevator
+      escalator:
+        text: escalator
+      boat:
+        text: boat
+      train:
+        text: train
+      car:
+        text: car
+      bus:
+        text: bus
+  occup_document_enum:
+    name: occup_document_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      automated count:
+        text: automated count
+      estimate:
+        text: estimate
+      manual count:
+        text: manual count
+      videos:
+        text: videos
+  shading_device_cond_enum:
+    name: shading_device_cond_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      damaged:
+        text: damaged
+      needs repair:
+        text: needs repair
+      new:
+        text: new
+      rupture:
+        text: rupture
+      visible wear:
+        text: visible wear
+  hc_produced_enum:
+    name: hc_produced_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      Oil:
+        text: Oil
+      Gas-Condensate:
+        text: Gas-Condensate
+      Gas:
+        text: Gas
+      Bitumen:
+        text: Bitumen
+      Coalbed Methane:
+        text: Coalbed Methane
+      other:
+        text: other
+  oxy_stat_samp_enum:
+    name: oxy_stat_samp_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      aerobic:
+        text: aerobic
+      anaerobic:
+        text: anaerobic
+      other:
+        text: other
+  sr_geol_age_enum:
+    name: sr_geol_age_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      Archean:
+        text: Archean
+      Cambrian:
+        text: Cambrian
+      Carboniferous:
+        text: Carboniferous
+      Cenozoic:
+        text: Cenozoic
+      Cretaceous:
+        text: Cretaceous
+      Devonian:
+        text: Devonian
+      Jurassic:
+        text: Jurassic
+      Mesozoic:
+        text: Mesozoic
+      Neogene:
+        text: Neogene
+      Ordovician:
+        text: Ordovician
+      Paleogene:
+        text: Paleogene
+      Paleozoic:
+        text: Paleozoic
+      Permian:
+        text: Permian
+      Precambrian:
+        text: Precambrian
+      Proterozoic:
+        text: Proterozoic
+      Silurian:
+        text: Silurian
+      Triassic:
+        text: Triassic
+      other:
+        text: other
+  handidness_enum:
+    name: handidness_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      ambidexterity:
+        text: ambidexterity
+      left handedness:
+        text: left handedness
+      mixed-handedness:
+        text: mixed-handedness
+      right handedness:
+        text: right handedness
+  window_vert_pos_enum:
+    name: window_vert_pos_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      bottom:
+        text: bottom
+      middle:
+        text: middle
+      top:
+        text: top
+      low:
+        text: low
+      high:
+        text: high
+  samp_collect_point_enum:
+    name: samp_collect_point_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      well:
+        text: well
+      test well:
+        text: test well
+      drilling rig:
+        text: drilling rig
+      wellhead:
+        text: wellhead
+      separator:
+        text: separator
+      storage tank:
+        text: storage tank
+      other:
+        text: other
+  surf_air_cont_enum:
+    name: surf_air_cont_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      dust:
+        text: dust
+      organic matter:
+        text: organic matter
+      particulate matter:
+        text: particulate matter
+      volatile organic compounds:
+        text: volatile organic compounds
+      biological contaminants:
+        text: biological contaminants
+      radon:
+        text: radon
+      nutrients:
+        text: nutrients
+      biocides:
+        text: biocides
+  drawings_enum:
+    name: drawings_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      operation:
+        text: operation
+      as built:
+        text: as built
+      construction:
+        text: construction
+      bid:
+        text: bid
+      design:
+        text: design
+      building navigation map:
+        text: building navigation map
+      diagram:
+        text: diagram
+      sketch:
+        text: sketch
+  hcr_geol_age_enum:
+    name: hcr_geol_age_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      Archean:
+        text: Archean
+      Cambrian:
+        text: Cambrian
+      Carboniferous:
+        text: Carboniferous
+      Cenozoic:
+        text: Cenozoic
+      Cretaceous:
+        text: Cretaceous
+      Devonian:
+        text: Devonian
+      Jurassic:
+        text: Jurassic
+      Mesozoic:
+        text: Mesozoic
+      Neogene:
+        text: Neogene
+      Ordovician:
+        text: Ordovician
+      Paleogene:
+        text: Paleogene
+      Paleozoic:
+        text: Paleozoic
+      Permian:
+        text: Permian
+      Precambrian:
+        text: Precambrian
+      Proterozoic:
+        text: Proterozoic
+      Silurian:
+        text: Silurian
+      Triassic:
+        text: Triassic
+      other:
+        text: other
+  floor_water_mold_enum:
+    name: floor_water_mold_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      mold odor:
+        text: mold odor
+      wet floor:
+        text: wet floor
+      water stains:
+        text: water stains
+      wall discoloration:
+        text: wall discoloration
+      floor discoloration:
+        text: floor discoloration
+      ceiling discoloration:
+        text: ceiling discoloration
+      peeling paint or wallpaper:
+        text: peeling paint or wallpaper
+      bulging walls:
+        text: bulging walls
+      condensation:
+        text: condensation
+  train_line_enum:
+    name: train_line_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      red:
+        text: red
+      green:
+        text: green
+      orange:
+        text: orange
+  host_sex_enum:
+    name: host_sex_enum
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    permissible_values:
+      female:
+        text: female
+      hermaphrodite:
+        text: hermaphrodite
+      male:
+        text: male
+      neuter:
+        text: neuter
   build_docs_enum:
     name: build_docs_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
@@ -2628,56 +2844,44 @@ enums:
         text: ventilation system
       windows:
         text: windows
-  hc_produced_enum:
-    name: hc_produced_enum
+  arch_struc_enum:
+    name: arch_struc_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     permissible_values:
-      Oil:
-        text: Oil
-      Gas-Condensate:
-        text: Gas-Condensate
-      Gas:
-        text: Gas
-      Bitumen:
-        text: Bitumen
-      Coalbed Methane:
-        text: Coalbed Methane
-      other:
-        text: other
-  ext_wall_orient_enum:
-    name: ext_wall_orient_enum
+      building:
+        text: building
+      shed:
+        text: shed
+      home:
+        text: home
+  room_condt_enum:
+    name: room_condt_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     permissible_values:
-      north:
-        text: north
-      south:
-        text: south
-      east:
-        text: east
-      west:
-        text: west
-      northeast:
-        text: northeast
-      southeast:
-        text: southeast
-      southwest:
-        text: southwest
-      northwest:
-        text: northwest
-  train_stat_loc_enum:
-    name: train_stat_loc_enum
+      new:
+        text: new
+      visible wear:
+        text: visible wear
+      needs repair:
+        text: needs repair
+      damaged:
+        text: damaged
+      rupture:
+        text: rupture
+      visible signs of mold/mildew:
+        text: visible signs of mold/mildew
+  door_comp_type_enum:
+    name: door_comp_type_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     permissible_values:
-      south station above ground:
-        text: south station above ground
-      south station underground:
-        text: south station underground
-      south station amtrak:
-        text: south station amtrak
-      forest hills:
-        text: forest hills
-      riverside:
-        text: riverside
+      metal covered:
+        text: metal covered
+      revolving:
+        text: revolving
+      sliding:
+        text: sliding
+      telescopic:
+        text: telescopic
   ceil_finish_mat_enum:
     name: ceil_finish_mat_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
@@ -2702,226 +2906,22 @@ enums:
         text: mineral wool/calcium silicate
       wood:
         text: wood
-  sr_kerog_type_enum:
-    name: sr_kerog_type_enum
+  wall_const_type_enum:
+    name: wall_const_type_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     permissible_values:
-      Type I:
-        text: Type I
-      Type II:
-        text: Type II
-      Type III:
-        text: Type III
-      Type IV:
-        text: Type IV
-      other:
-        text: other
-  door_comp_type_enum:
-    name: door_comp_type_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      metal covered:
-        text: metal covered
-      revolving:
-        text: revolving
-      sliding:
-        text: sliding
-      telescopic:
-        text: telescopic
-  lithology_enum:
-    name: lithology_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      Basement:
-        text: Basement
-      Chalk:
-        text: Chalk
-      Chert:
-        text: Chert
-      Coal:
-        text: Coal
-      Conglomerate:
-        text: Conglomerate
-      Diatomite:
-        text: Diatomite
-      Dolomite:
-        text: Dolomite
-      Limestone:
-        text: Limestone
-      Sandstone:
-        text: Sandstone
-      Shale:
-        text: Shale
-      Siltstone:
-        text: Siltstone
-      Volcanic:
-        text: Volcanic
-      other:
-        text: other
-  gender_restroom_enum:
-    name: gender_restroom_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      all gender:
-        text: all gender
-      female:
-        text: female
-      gender neurtral:
-        text: gender neurtral
-      male:
-        text: male
-      male and female:
-        text: male and female
-      unisex:
-        text: unisex
-  samp_capt_status_enum:
-    name: samp_capt_status_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      active surveillance in response to an outbreak:
-        text: active surveillance in response to an outbreak
-      active surveillance not initiated by an outbreak:
-        text: active surveillance not initiated by an outbreak
-      farm sample:
-        text: farm sample
-      market sample:
-        text: market sample
-      other:
-        text: other
-  window_vert_pos_enum:
-    name: window_vert_pos_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      bottom:
-        text: bottom
-      middle:
-        text: middle
-      top:
-        text: top
-      low:
-        text: low
-      high:
-        text: high
-  drawings_enum:
-    name: drawings_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      operation:
-        text: operation
-      as built:
-        text: as built
-      construction:
-        text: construction
-      bid:
-        text: bid
-      design:
-        text: design
-      building navigation map:
-        text: building navigation map
-      diagram:
-        text: diagram
-      sketch:
-        text: sketch
-  tidal_stage_enum:
-    name: tidal_stage_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      low tide:
-        text: low tide
-      ebb tide:
-        text: ebb tide
-      flood tide:
-        text: flood tide
-      high tide:
-        text: high tide
-  rel_samp_loc_enum:
-    name: rel_samp_loc_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      edge of car:
-        text: edge of car
-      center of car:
-        text: center of car
-      under a seat:
-        text: under a seat
-  door_type_wood_enum:
-    name: door_type_wood_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      bettened and ledged:
-        text: bettened and ledged
-      battened:
-        text: battened
-      ledged and braced:
-        text: ledged and braced
-      ledged and framed:
-        text: ledged and framed
-      ledged, braced and frame:
-        text: ledged, braced and frame
-      framed and paneled:
-        text: framed and paneled
-      glashed or sash:
-        text: glashed or sash
-      flush:
-        text: flush
-      louvered:
-        text: louvered
-      wire gauged:
-        text: wire gauged
-  floor_water_mold_enum:
-    name: floor_water_mold_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      mold odor:
-        text: mold odor
-      wet floor:
-        text: wet floor
-      water stains:
-        text: water stains
-      wall discoloration:
-        text: wall discoloration
-      floor discoloration:
-        text: floor discoloration
-      ceiling discoloration:
-        text: ceiling discoloration
-      peeling paint or wallpaper:
-        text: peeling paint or wallpaper
-      bulging walls:
-        text: bulging walls
-      condensation:
-        text: condensation
-  substructure_type_enum:
-    name: substructure_type_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      crawlspace:
-        text: crawlspace
-      slab on grade:
-        text: slab on grade
-      basement:
-        text: basement
-  host_sex_enum:
-    name: host_sex_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      female:
-        text: female
-      hermaphrodite:
-        text: hermaphrodite
-      male:
-        text: male
-      neuter:
-        text: neuter
-  door_direct_enum:
-    name: door_direct_enum
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    permissible_values:
-      inward:
-        text: inward
-      outward:
-        text: outward
-      sideways:
-        text: sideways
+      frame construction:
+        text: frame construction
+      joisted masonry:
+        text: joisted masonry
+      light noncombustible:
+        text: light noncombustible
+      masonry noncombustible:
+        text: masonry noncombustible
+      modified fire resistive:
+        text: modified fire resistive
+      fire resistive:
+        text: fire resistive
 slots:
   zinc:
     name: zinc
@@ -5229,6 +5229,7 @@ slots:
     rank: 7
     string_serialization: '{float}'
     slot_group: JGI-Metatranscriptomics
+    range: float
     recommended: true
   rna_absorb2:
     name: rna_absorb2
@@ -5242,6 +5243,7 @@ slots:
     rank: 8
     string_serialization: '{float}'
     slot_group: JGI-Metatranscriptomics
+    range: float
     recommended: true
   rna_collect_site:
     name: rna_collect_site
@@ -5266,6 +5268,7 @@ slots:
     rank: 5
     string_serialization: '{float}'
     slot_group: JGI-Metatranscriptomics
+    range: float
     recommended: true
     minimum_value: 0
     maximum_value: 1000
@@ -5436,6 +5439,7 @@ slots:
     rank: 6
     string_serialization: '{float}'
     slot_group: JGI-Metatranscriptomics
+    range: float
     recommended: true
   dna_absorb1:
     name: dna_absorb1
@@ -5449,6 +5453,7 @@ slots:
     rank: 7
     string_serialization: '{float}'
     slot_group: JGI-Metagenomics
+    range: float
     recommended: true
   dna_absorb2:
     name: dna_absorb2
@@ -5462,6 +5467,7 @@ slots:
     rank: 8
     string_serialization: '{float}'
     slot_group: JGI-Metagenomics
+    range: float
     recommended: true
   dna_collect_site:
     name: dna_collect_site
@@ -5486,6 +5492,7 @@ slots:
     rank: 5
     string_serialization: '{float}'
     slot_group: JGI-Metagenomics
+    range: float
     recommended: true
     minimum_value: 0
     maximum_value: 2000
@@ -5670,6 +5677,7 @@ slots:
     rank: 6
     string_serialization: '{float}'
     slot_group: JGI-Metagenomics
+    range: float
     recommended: true
     minimum_value: 0
     maximum_value: 1000
@@ -16766,6 +16774,31 @@ slots:
     slot_uri: MIXS:0000156
     multivalued: false
     range: QuantityValue
+  has raw value:
+    name: has raw value
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    string_serialization: '{has numeric value} {has unit}'
+    owner: QuantityValue
+  environment field:
+    name: environment field
+    description: field describing environmental aspect of a sample
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    abstract: true
+  nucleic acid sequence source field:
+    name: nucleic acid sequence source field
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    abstract: true
+  investigation field:
+    name: investigation field
+    description: field describing aspect of the investigation/study to which the sample
+      belongs
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    abstract: true
+  has unit:
+    name: has unit
+    description: Example "m"
+    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+    owner: QuantityValue
   core field:
     name: core field
     description: basic fields
@@ -16780,31 +16813,6 @@ slots:
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
     owner: QuantityValue
     range: double
-  has unit:
-    name: has unit
-    description: Example "m"
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    owner: QuantityValue
-  nucleic acid sequence source field:
-    name: nucleic acid sequence source field
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    abstract: true
-  investigation field:
-    name: investigation field
-    description: field describing aspect of the investigation/study to which the sample
-      belongs
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    abstract: true
-  environment field:
-    name: environment field
-    description: field describing environmental aspect of a sample
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    abstract: true
-  has raw value:
-    name: has raw value
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
-    string_serialization: '{has numeric value} {has unit}'
-    owner: QuantityValue
   has_part:
     name: has_part
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
