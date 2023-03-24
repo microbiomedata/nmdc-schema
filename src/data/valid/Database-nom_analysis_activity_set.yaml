@@ -1,0 +1,25 @@
+nom_analysis_activity_set:
+  - execution_resource: xxx
+    git_url: xxx
+    has_input:
+      - xxx
+      - zzz
+    has_output:
+      - xxx
+      - zzz
+    type: xxx
+    started_at_time: 2018-11-13T20:20:39+00:00
+    ended_at_time: 2018-11-13T20:20:39+00:00
+    was_informed_by: xxx
+  - execution_resource: xxx
+    git_url: xxx
+    has_input:
+      - xxx
+      - zzz
+    has_output:
+      - xxx
+      - zzz
+    type: xxx
+    started_at_time: 2018-11-13T20:20:39+00:00
+    ended_at_time: 2018-11-13T20:20:39+00:00
+    was_informed_by: xxx
