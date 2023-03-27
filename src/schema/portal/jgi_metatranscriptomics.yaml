@@ -19,11 +19,11 @@ enums:
 #    permissible_values:
 #      'no':
 #      'yes':
-  rna_cont_type_enum:
-    from_schema: https://example.com/nmdc_dh
-    permissible_values:
-      plate:
-      tube:
+#  rna_cont_type_enum:
+#    from_schema: https://example.com/nmdc_dh
+#    permissible_values:
+#      plate:
+#      tube:
   rna_sample_format_enum:
     from_schema: https://example.com/nmdc_dh
     permissible_values:
@@ -122,7 +122,7 @@ slots:
     from_schema: https://example.com/nmdc_dh
     rank: 10
     slot_group: JGI-Metatranscriptomics
-    range: rna_cont_type_enum
+    range: JgiContTypeEnum
     recommended: true
   rna_cont_well:
     title: RNA plate position

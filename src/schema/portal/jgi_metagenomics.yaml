@@ -14,11 +14,11 @@ prefixes:
 default_prefix: nmdc
 default_range: string
 enums:
-  dna_cont_type_enum:
-    from_schema: https://example.com/nmdc_dh
-    permissible_values:
-      plate:
-      tube:
+#  dna_cont_type_enum:
+#    from_schema: https://example.com/nmdc_dh
+#    permissible_values:
+#      plate:
+#      tube:
 #  dna_dnase_enum:
 #    from_schema: https://example.com/nmdc_dh
 #    permissible_values:
@@ -100,7 +100,7 @@ slots:
     from_schema: https://example.com/nmdc_dh
     rank: 10
     slot_group: JGI-Metagenomics
-    range: dna_cont_type_enum
+    range: JgiContTypeEnum
     recommended: true
   dna_cont_well:
     title: DNA plate position
