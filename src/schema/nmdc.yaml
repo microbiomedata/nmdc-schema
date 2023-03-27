@@ -40,22 +40,22 @@ prefixes:
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   skos: http://www.w3.org/2004/02/skos/core#
   xsd: http://www.w3.org/2001/XMLSchema#
-#  COG: https://unknown.to.linter.org/
-#  EC: https://unknown.to.linter.org/
-#  GOLD: http://identifiers.org/gold/
-#  IMG.TAXON: http://identifiers.org/img.taxon/
-#  MIXS: https://w3id.org/mixs/
-#  MS: http://purl.obolibrary.org/obo/MS_
-#  MetaCyc: https://identifiers.org/metacyc.reaction/
-#  MetaNetX: https://unknown.to.linter.org/
-#  RetroRules: https://unknown.to.linter.org/
-#  UniProtKB: https://identifiers.org/uniprot/
-#  biolink: https://w3id.org/biolink/vocab/
-#  dcterms: http://purl.org/dc/terms/
-#  emsl: https://unknown.to.linter.org/
-#  gtpo: https://unknown.to.linter.org/
-#  igsn: https://app.geosamples.org/sample/igsn/
-#  insdc.srs: https://unknown.to.linter.org/
+  #  COG: https://unknown.to.linter.org/
+  #  EC: https://unknown.to.linter.org/
+  #  GOLD: http://identifiers.org/gold/
+  #  IMG.TAXON: http://identifiers.org/img.taxon/
+  #  MIXS: https://w3id.org/mixs/
+  #  MS: http://purl.obolibrary.org/obo/MS_
+  #  MetaCyc: https://identifiers.org/metacyc.reaction/
+  #  MetaNetX: https://unknown.to.linter.org/
+  #  RetroRules: https://unknown.to.linter.org/
+  #  UniProtKB: https://identifiers.org/uniprot/
+  #  biolink: https://w3id.org/biolink/vocab/
+  #  dcterms: http://purl.org/dc/terms/
+  #  emsl: https://unknown.to.linter.org/
+  #  gtpo: https://unknown.to.linter.org/
+  #  igsn: https://app.geosamples.org/sample/igsn/
+  #  insdc.srs: https://unknown.to.linter.org/
   jgi: https://unknown.to.linter.org/
 #  mgnify: https://unknown.to.linter.org/
 #  qud: http://qudt.org/1.1/schema/qudt#
@@ -1420,6 +1420,10 @@ classes:
     class_uri: prov:Association
 
 enums:
+  JgiContTypeEnum:
+    permissible_values:
+      plate: { }
+      tube: { }
   YesNoEnum:
     name: YesNoEnum
     description: replaces DnaDnaseEnum and DnaseRnaEnum
@@ -1454,7 +1458,7 @@ enums:
         meaning: https://www.neonscience.org
 
   file type enum:
-#    from_schema: https://microbiomedata/schema
+    #    from_schema: https://microbiomedata/schema
     permissible_values:
 
       Metagenome Raw Reads:
