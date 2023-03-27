@@ -1420,6 +1420,15 @@ classes:
     class_uri: prov:Association
 
 enums:
+  YesNoEnum:
+    name: YesNoEnum
+    description: replaces DnaDnaseEnum and DnaseRnaEnum
+    from_schema: https://example.com/nmdc_submission_schema
+    permissible_values:
+      'no':
+        text: 'no'
+      'yes':
+        text: 'yes'
   biosample_category_enum:
     description: Funding-based, sample location-based, or experimental method-based defined categories
     aliases:

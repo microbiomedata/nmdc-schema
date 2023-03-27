@@ -19,11 +19,11 @@ enums:
     permissible_values:
       plate:
       tube:
-  dna_dnase_enum:
-    from_schema: https://example.com/nmdc_dh
-    permissible_values:
-      'no':
-      'yes':
+#  dna_dnase_enum:
+#    from_schema: https://example.com/nmdc_dh
+#    permissible_values:
+#      'no':
+#      'yes':
   dna_sample_format_enum:
     from_schema: https://example.com/nmdc_dh
     permissible_values:
@@ -138,7 +138,7 @@ slots:
     from_schema: https://example.com/nmdc_dh
     rank: 13
     slot_group: JGI-Metagenomics
-    range: dna_dnase_enum
+    range: YesNoEnum
     recommended: true
   dna_isolate_meth:
     description: Describe the method/protocol/kit used to extract DNA/RNA.
