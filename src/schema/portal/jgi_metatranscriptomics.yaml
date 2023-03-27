@@ -14,11 +14,11 @@ prefixes:
 default_prefix: nmdc
 default_range: string
 enums:
-  dnase_rna_enum:
-    from_schema: https://example.com/nmdc_dh
-    permissible_values:
-      'no':
-      'yes':
+#  dnase_rna_enum:
+#    from_schema: https://example.com/nmdc_dh
+#    permissible_values:
+#      'no':
+#      'yes':
   rna_cont_type_enum:
     from_schema: https://example.com/nmdc_dh
     permissible_values:
@@ -49,7 +49,7 @@ slots:
     from_schema: https://example.com/nmdc_dh
     rank: 13
     slot_group: JGI-Metatranscriptomics
-    range: dnase_rna_enum
+    range: YesNoEnum
     recommended: true
   proposal_rna:
     title: RNA proposal ID
