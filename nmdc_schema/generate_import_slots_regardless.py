@@ -8,7 +8,8 @@ class ImportSlotsRegardless:
 
     static_value_dict = {
         "source class": "soil MIMS",
-        "source file or URL": "https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml",
+        # "source file or URL": "https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml",
+        "source file or URL": "https://raw.githubusercontent.com/microbiomedata/mixs/1da849346a80b717810a02d7c8ed74a22bcd84de/model/schema/mixs.yaml",
         "slot": "",
         "section": "",
         "column order": "",
