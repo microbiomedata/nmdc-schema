@@ -1,0 +1,15 @@
+{
+  "study_set": [
+    {
+      "id": "nmdc:sty-11-abc",
+      "name": "name isn't actually required",
+      "abstract": "abstract isn't actually required"
+    },
+    {
+      "id": "nmdc:sty-11-zzz",
+      "name": "name isn't actually required",
+      "abstract": "abstract isn't actually required"
+    }
+  ],
+  "@type": "Database"
+}
