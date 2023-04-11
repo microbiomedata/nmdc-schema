@@ -5538,7 +5538,7 @@ slots:
     annotations:
       expected_value:
         tag: expected_value
-        value: decimal degrees,  limit to 8 decimal points
+        value: decimal degrees, limit to 8 decimal points
     description: The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees and in WGS84 system
     title: geographic location (latitude and longitude)
     examples:
