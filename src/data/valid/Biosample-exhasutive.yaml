@@ -134,8 +134,8 @@ heavy_metals_meth:
   - has_raw_value: https://link.springer.com/article/10.1007/s42452-019-1578-x
 lat_lon:
   has_raw_value: 50.586825 6.408977
-#  latitude: 50.586825
-#  longitude: 6.408977
+  latitude: 50.586825
+  longitude: 6.408977
 link_addit_analys:
   has_raw_value: https://pubmed.ncbi.nlm.nih.gov/2315679/
 link_class_info:
