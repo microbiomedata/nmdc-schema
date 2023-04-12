@@ -1983,6 +1983,8 @@ slots:
   related_identifiers:
     title: Related Identifiers
     description: Identifiers assigned to a thing that is similar to that which is represented in NMDC. Related identifier are not an identical match and may have some variation.
+    range: uriorcurie
+    multivalued: true
   emsl_proposal_identifier:
     title: EMSL Proposal Identifier
     description: The proposal number assigned to the EMSL awarded study that relates to that which is represented in NMDC.

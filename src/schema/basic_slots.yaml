@@ -98,7 +98,7 @@ slots:
       The distinction between description and alternative descriptions is application-specific.
   
   alternative_identifiers:
-    range: string
+    range: uriorcurie
     multivalued: true
     description: >-
       A list of alternative identifiers for the entity.

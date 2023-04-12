@@ -45,27 +45,33 @@ slots:
     is_a: alternative_identifiers
     abstract: true
     multivalued: true
+    range: uriorcurie
     description: Link to corresponding identifier in external database
     comments:
       - The value of this field is always a registered CURIE
     notes:
       - "had tried ranges of  external identifier and string"
-    range: uriorcurie
     close_mappings:
       - skos:closeMatch
 
   gold_identifiers:
     mixin: true
+    range: uriorcurie
+    multivalued: true
     see_also:
       - https://gold.jgi.doe.gov/
 
   mgnify_identifiers:
     mixin: true
+    range: uriorcurie
+    multivalued: true
     see_also:
       - https://www.ebi.ac.uk/metagenomics/
 
   insdc_identifiers:
     mixin: true
+    range: uriorcurie
+    multivalued: true
     aliases:
       - EBI identifiers
       - NCBI identifiers
@@ -83,10 +89,14 @@ slots:
 
   study_identifiers:
     abstract: true
+    range: uriorcurie
+    multivalued: true
     is_a: external_database_identifiers
 
   insdc_sra_ena_study_identifiers:
     is_a: study_identifiers
+    range: uriorcurie
+    multivalued: true
     mixins:
       - insdc_identifiers
     aliases:
@@ -94,7 +104,6 @@ slots:
       - NCBI SRA identifiers
       - DDBJ SRA identifiers
     pattern: "^insdc.sra:(E|D|S)RP[0-9]{6,}$"
-    multivalued: true
     description: identifiers for corresponding project in INSDC SRA / ENA
     examples:
       - value: https://identifiers.org/insdc.sra:SRP121659
@@ -106,6 +115,8 @@ slots:
 
   insdc_bioproject_identifiers:
     is_a: insdc_identifiers
+    range: uriorcurie
+    multivalued: true
     mixins:
       - insdc_identifiers
     aliases:
@@ -124,10 +135,11 @@ slots:
 
   gold_study_identifiers:
     is_a: study_identifiers
+    range: uriorcurie
+    multivalued: true
     mixins:
       - gold_identifiers
     pattern: "^GOLD:Gs[0-9]+$"
-    multivalued: true
     description: identifiers for corresponding project(s) in GOLD
     comments:
       - uses the prefix GS (but possibly in a different case)
@@ -139,6 +151,8 @@ slots:
 
   mgnify_project_identifiers:
     is_a: insdc_identifiers
+    range: uriorcurie
+    multivalued: true
     pattern: "^mgnify.proj:[A-Z]+[0-9]+$"
     description: identifiers for corresponding project in MGnify
     examples:
@@ -149,13 +163,16 @@ slots:
   biosample_identifiers:
     abstract: true
     is_a: external_database_identifiers
+    range: uriorcurie
+    multivalued: true
 
   gold_biosample_identifiers:
     is_a: biosample_identifiers
+    range: uriorcurie
+    multivalued: true
     mixins:
       - gold_identifiers
     pattern: "^GOLD:Gb[0-9]+$"
-    multivalued: true
     description: identifiers for corresponding sample in GOLD
     examples:
       - value: https://identifiers.org/gold:Gb0312930
@@ -163,6 +180,8 @@ slots:
 
   insdc_biosample_identifiers:
     is_a: biosample_identifiers
+    range: uriorcurie
+    multivalued: true
     mixins:
       - insdc_identifiers
     aliases:
@@ -170,7 +189,6 @@ slots:
       - NCBI biosample identifiers
       - DDBJ biosample identifiers
     pattern: "^biosample:SAM[NED]([A-Z])?[0-9]+$"
-    multivalued: true
     description: identifiers for corresponding sample in INSDC
     examples:
       - value: https://identifiers.org/biosample:SAMEA5989477
@@ -184,6 +202,8 @@ slots:
 
   insdc_secondary_sample_identifiers:
     is_a: biosample_identifiers
+    range: uriorcurie
+    multivalued: true
     mixins:
       - insdc_identifiers
     pattern: "^biosample:(E|D|S)RS[0-9]{6,}$"
@@ -200,19 +220,24 @@ slots:
   omics_processing_identifiers:
     abstract: true
     is_a: external_database_identifiers
+    range: uriorcurie
+    multivalued: true
 
   gold_sequencing_project_identifiers:
     is_a: omics_processing_identifiers
+    range: uriorcurie
+    multivalued: true
     mixins:
       - gold_identifiers
     pattern: "^GOLD:Gp[0-9]+$"
-    multivalued: true
     description: identifiers for corresponding sequencing project in GOLD
     examples:
       - value: https://identifiers.org/gold:Gp0108335
 
   insdc_experiment_identifiers:
     is_a: external_database_identifiers
+    range: uriorcurie
+    multivalued: true
     pattern: "^insdc.sra:(E|D|S)RX[0-9]{6,}$"
     mixins:
       - insdc_identifiers
@@ -223,19 +248,24 @@ slots:
   analysis_identifiers:
     abstract: true
     is_a: external_database_identifiers
+    range: uriorcurie
+    multivalued: true
 
   gold_analysis_project_identifiers:
     is_a: analysis_identifiers
+    range: uriorcurie
+    multivalued: true
     mixins:
       - gold_identifiers
     pattern: "^GOLD:Ga[0-9]+$"
-    multivalued: true
     description: identifiers for corresponding analysis project in GOLD
     examples:
       - value: https://identifiers.org/gold:Ga0526289
 
   insdc_analysis_identifiers:
     is_a: analysis_identifiers
+    range: uriorcurie
+    multivalued: true
     comments:
       - in INSDC this is a run but it corresponds to a GOLD analysis
     pattern: "^insdc.sra:(E|D|S)RR[0-9]{6,}$"
@@ -249,6 +279,8 @@ slots:
 
   mgnify_analysis_identifiers:
     is_a: analysis_identifiers
+    range: uriorcurie
+    multivalued: true
     notes:
       - 'removed pattern: "^mgnify:MGYA[0-9]+$" ## TODO https://github.com/bioregistry/bioregistry/issues/109'
     mixins:
@@ -261,19 +293,27 @@ slots:
 
   assembly_identifiers:
     abstract: true
+    range: uriorcurie
+    multivalued: true
 
   insdc_assembly_identifiers:
     is_a: assembly_identifiers
+    range: uriorcurie
+    multivalued: true
     pattern: "^insdc.sra:[A-Z]+[0-9]+(\\.[0-9]+)?$"
     mixins:
       - insdc_identifiers
 
   massive_identifiers:
     mixin: true
+    range: uriorcurie
+    multivalued: true
     description: identifiers for entities according to MASSIVE
 
   massive_study_identifiers:
     is_a: study_identifiers
+    range: uriorcurie
+    multivalued: true
     mixins:
       - massive_identifiers
     pattern: "^MASSIVE:"
