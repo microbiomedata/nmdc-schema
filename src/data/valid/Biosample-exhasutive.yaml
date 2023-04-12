@@ -25,8 +25,8 @@ embargoed: true
 collected_from: nmdc:unconstrained_site_identifier_string
 type: nmdc:Biosample. change this to require a class name or an enumeration
 img_identifiers:
-  - any string 1
-  - any string 2
+  - prefix:any string 1
+  - prefix:any string 2
 #samp_name:
 #  has_raw_value: see also name
 samp_name: see also name
@@ -40,8 +40,8 @@ insdc_biosample_identifiers:
   - biosample:SAMN123456789
   - biosample:SAMN000
 emsl_biosample_identifiers:
-  - any_string
-  - seriously_anything
+  - prefix:any_string
+  - sprefix:eriously_anything
 igsn_biosample_identifiers:
   - any:curie_1
   - any:curie_2
