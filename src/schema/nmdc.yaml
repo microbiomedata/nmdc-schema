@@ -1988,6 +1988,7 @@ slots:
   emsl_proposal_identifier:
     title: EMSL Proposal Identifier
     description: The proposal number assigned to the EMSL awarded study that relates to that which is represented in NMDC.
+    range: uriorcurie
   emsl_proposal_doi:
     title: EMSL Proposal DOI
     description: The proposal DOI assigned to the awarded EMSL study.
