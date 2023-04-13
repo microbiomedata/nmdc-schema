@@ -6,8 +6,7 @@ alternative_identifiers:
   - nmdc:any string A2
 related_identifiers:
 - nmdc:any string R1
-emsl_proposal_identifier:
-- nmdc:any string EP1
+emsl_proposal_identifier: nmdc:any string EP1
 emsl_proposal_doi: any string
 gold_study_identifiers:
   - GOLD:Gs12345
