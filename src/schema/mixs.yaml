@@ -17,6 +17,9 @@ prefixes:
   linkml:
     prefix_prefix: linkml
     prefix_reference: https://w3id.org/linkml/
+  NCBITaxon:
+    prefix_prefix: NCBITaxon
+    prefix_reference: https://bioregistry.io/registry/ncbitaxon
 default_prefix: MIXS
 subsets:
   mixs_environmental_triad:
@@ -5252,15 +5255,15 @@ slots:
     description: NCBI taxon id of the host, e.g. 9606
     title: host taxid
     examples:
-      - value: '7955'
+      - value: 'NCBITaxon:7955'
     from_schema: http://w3id.org/mixs/terms
     aliases:
       - host taxid
     is_a: core field
-    string_serialization: '{NCBI taxid}'
+    string_serialization: 'NCBITaxon:{integer}'
     slot_uri: MIXS:0000250
     multivalued: false
-    range: TextValue
+    range: ControlledIdentifiedTermValue
   host_tot_mass:
     annotations:
       expected_value:
@@ -8344,15 +8347,15 @@ slots:
     description: NCBI taxon id of the sample.  Maybe be a single taxon or mixed taxa sample. Use 'synthetic metagenome’ for mock community/positive controls, or 'blank sample' for negative controls.
     title: Taxonomy ID of DNA sample
     examples:
-      - value: Gut Metagenome [NCBI:txid749906]
+      - value: gut metagenome [NCBITaxon:749906]
     from_schema: http://w3id.org/mixs/terms
     aliases:
       - Taxonomy ID of DNA sample
     is_a: investigation field
-    string_serialization: '{text} [NCBI:txid]'
+    string_serialization: '{text} [NCBITaxon:{integer}]'
     slot_uri: MIXS:0001320
     multivalued: false
-    range: TextValue
+    range: ControlledIdentifiedTermValue
   samp_time_out:
     annotations:
       expected_value:
