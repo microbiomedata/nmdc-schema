@@ -2,11 +2,12 @@ id: nmdc:sty-11-ab
 name: see also description, title, objective, various alternatives
 description: see also name, title, objective, various alternatives
 alternative_identifiers:
-  - prefix:any string A1
-  - prefix:any string A2
+  - nmdc:any string A1
+  - nmdc:any string A2
 related_identifiers:
-- prefix:any string R1
-emsl_proposal_identifier: prefix:any string EP1
+- nmdc:any string R1
+emsl_proposal_identifier:
+- nmdc:any string EP1
 emsl_proposal_doi: any string
 gold_study_identifiers:
   - GOLD:Gs12345

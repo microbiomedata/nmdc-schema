@@ -4,8 +4,8 @@ name: Sample Exhaustive Biosample instance. Although all of these values should 
   have this particular combination of values.
 description: unconstrained text
 alternative_identifiers:
-  - any_string
-  - seriously_anything
+  - nmdc:any_string
+  - nmdc:seriously_anything
 part_of:
   - nmdc:unconstrained_study_identifier_string1_needs_pattern_materialization_what_about_referential_integrity
   - nmdc:unconstrained_study_identifier_string2
@@ -25,8 +25,8 @@ embargoed: true
 collected_from: nmdc:unconstrained_site_identifier_string
 type: nmdc:Biosample. change this to require a class name or an enumeration
 img_identifiers:
-  - prefix:any string 1
-  - prefix:any string 2
+  - nmdc:any string 1
+  - nmdc:any string 2
 #samp_name:
 #  has_raw_value: see also name
 samp_name: see also name
@@ -40,11 +40,11 @@ insdc_biosample_identifiers:
   - biosample:SAMN123456789
   - biosample:SAMN000
 emsl_biosample_identifiers:
-  - prefix:any_string
-  - sprefix:eriously_anything
+  - nmdc:any_string
+  - nmdc:seriously_anything
 igsn_biosample_identifiers:
-  - any:curie_1
-  - any:curie_2
+  - nmdc:curie_1
+  - nmdc:curie_2
 agrochem_addition:
   - has_raw_value: lime;1 kg/acre;2022-11-16T16:05:42+0000
 alkalinity:
@@ -134,8 +134,8 @@ heavy_metals_meth:
   - has_raw_value: https://link.springer.com/article/10.1007/s42452-019-1578-x
 lat_lon:
   has_raw_value: 50.586825 6.408977
-#  latitude: 50.586825
-#  longitude: 6.408977
+  latitude: 50.586825
+  longitude: 6.408977
 link_addit_analys:
   has_raw_value: https://pubmed.ncbi.nlm.nih.gov/2315679/
 link_class_info:
