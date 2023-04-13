@@ -36,6 +36,9 @@ biosample_set:
     ncbi_taxonomy_name: coal metagenome
     samp_taxon_id:
       has_raw_value: coal metagenome [NCBITaxon:1260732]
+      term:
+        id: NCBITaxon:1260732
+        name: coal metagenome
     sample_collection_site: Lithgow State Coal Mine
   - id: nmdc:bsm-99-AtTUOs
     gold_biosample_identifiers:
@@ -77,6 +80,9 @@ biosample_set:
     ncbi_taxonomy_name: coal metagenome
     samp_taxon_id:
       has_raw_value: coal metagenome [NCBITaxon:1260732]
+      term:
+        id: NCBITaxon:1260732
+        name: coal metagenome
     sample_collection_site: Lithgow State Coal Mine
   - id: nmdc:bsm-99-eBVHjN
     gold_biosample_identifiers:
@@ -115,6 +121,9 @@ biosample_set:
     ncbi_taxonomy_name: coal metagenome
     samp_taxon_id:
       has_raw_value: coal metagenome [NCBITaxon:1260732]
+      term:
+        id: NCBITaxon:1260732
+        name: coal metagenome
     sample_collection_site: Lithgow State Coal Mine
   - id: nmdc:bsm-99-TDPHTh
     gold_biosample_identifiers:
@@ -153,4 +162,7 @@ biosample_set:
     ncbi_taxonomy_name: coal metagenome
     samp_taxon_id:
       has_raw_value: coal metagenome [NCBITaxon:1260732]
+      term:
+        id: NCBITaxon:1260732
+        name: coal metagenome
     sample_collection_site: Lithgow State Coal Mine
