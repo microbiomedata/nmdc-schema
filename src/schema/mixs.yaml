@@ -19,7 +19,7 @@ prefixes:
     prefix_reference: https://w3id.org/linkml/
   NCBITaxon:
     prefix_prefix: NCBITaxon
-    prefix_reference: https://bioregistry.io/registry/ncbitaxon
+    prefix_reference: http://purl.obolibrary.org/obo/NCBITaxon_
 default_prefix: MIXS
 subsets:
   mixs_environmental_triad:
