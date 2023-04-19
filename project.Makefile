@@ -320,3 +320,54 @@ YAML_DATABASE_FILES_VALID := $(wildcard $(YAML_DIR_VALID)Database*.yaml)
 jsonschema-check-all-valid-databases: $(YAML_DATABASE_FILES_VALID)
 	$(foreach yaml_file,$^,echo $(yaml_file) ; $(RUN) check-jsonschema \
 		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $(yaml_file);)
+
+src/data/dev/output: project/nmdc_materialized_patterns.yaml
+	@echo making src/data/output
+	mkdir -p $@
+	$(RUN) linkml-run-examples \
+		--counter-example-input-directory src/data/dev/invalid \
+		--input-directory src/data/dev/valid \
+		--output-directory $@ \
+		--output-formats json \
+		--schema $< > $@/README.md
+
+dev-validation-clean:
+	rm -rf src/data/dev/output
+
+
+# Define a variable for the directory containing the YAML data files
+DEV_YAML_DIR_VALID := src/data/dev/valid/
+
+# Define a variable for the directory containing the YAML data files
+DEV_YAML_DIR_INVALID := src/data/dev/invalid/
+
+# Define a variable for the list of YAML data files
+DEV_YAML_DATABASE_FILES_VALID := $(wildcard $(DEV_YAML_DIR_VALID)Database*.yaml)
+
+# Define a variable for the list of YAML data files
+DEV_YAML_DATABASE_FILES_INVALID := $(wildcard $(DEV_YAML_DIR_INVALID)Database*.yaml)
+
+# Define a new target that depends on all YAML data files and runs check-jsonschema on each file
+dev-jsonschema-check-all-valid-databases: $(DEV_YAML_DATABASE_FILES_VALID)
+	$(foreach yaml_file,$^,echo $(yaml_file) ; $(RUN) check-jsonschema \
+		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $(yaml_file);)
+
+
+# this continues even if check-jsonschema fails
+# probably should have avoided the foreach loop and used target wildcards
+dev-jsonschema-check-all-invalid-databases: $(DEV_YAML_DATABASE_FILES_INVALID)
+	$(foreach yaml_file,$^,echo $(yaml_file) ; $(RUN) check-jsonschema \
+		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $(yaml_file);)
+
+
+dev-validation-all: dev-validation-clean \
+src/data/dev/output \
+dev-jsonschema-check-all-valid-databases \
+dev-jsonschema-check-all-invalid-databases
+	- $(RUN) linkml-validate \
+		--target-class Database \
+		--schema nmdc_schema/nmdc_materialized_patterns.yaml src/data/dev/invalid/Database-Study-missing-id.yaml
+	- $(RUN) linkml-validate \
+		--target-class Database \
+		--schema nmdc_schema/nmdc_materialized_patterns.yaml src/data/dev/Database-Study-dupe-id.yaml
+

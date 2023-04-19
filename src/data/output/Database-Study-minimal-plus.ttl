@@ -1,0 +1,14 @@
+@prefix nmdc: <https://w3id.org/nmdc/> .
+
+nmdc:sty-11-abc a nmdc:Study ;
+    nmdc:abstract "abstract isn't actually required" ;
+    nmdc:name "name isn't actually required" .
+
+nmdc:sty-11-zzz a nmdc:Study ;
+    nmdc:abstract "abstract isn't actually required" ;
+    nmdc:name "name isn't actually required" .
+
+[] a nmdc:Database ;
+    nmdc:study_set nmdc:sty-11-abc,
+        nmdc:sty-11-zzz .
+

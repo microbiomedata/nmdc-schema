@@ -1425,6 +1425,18 @@ functional_annotation_set:
 - has_function: PANTHER.FAMILY:PTHR12345
 
 ```
+## Database-Study-minimal-plus
+### Input
+```yaml
+study_set:
+- abstract: abstract isn't actually required
+  id: nmdc:sty-11-abc
+  name: name isn't actually required
+- abstract: abstract isn't actually required
+  id: nmdc:sty-11-zzz
+  name: name isn't actually required
+
+```
 ## DataObject-minimal
 ### Input
 ```yaml
@@ -2327,6 +2339,17 @@ omics_processing_set:
   type: nmdc:OmicsProcessing
 
 ```
+## Database-Study-missing-id
+### Input
+```yaml
+study_set:
+- abstract: abstract isn't actually required
+  name: name isn't actually required
+- abstract: abstract isn't actually required
+  id: nmdc:sty-11-zzz
+  name: name isn't actually required
+
+```
 ## Database-biosample_mismatch_regex
 ### Input
 ```yaml
@@ -2613,21 +2636,6 @@ biosample_set:
   type: nmdc:Biosample
 
 ```
-## Study-invalid-1
-### Input
-```yaml
-has_credit_associations:
-- applied_role: Value Not In Enum 1
-  applies_to_person:
-    orcid: orcid:0000-0002-1825-00
-  type: credit association
-- applied_role: ValueNotInEnum2
-  applies_to_person:
-    orcid: orcid:0000-0001-9076-6066
-  type: credit association
-id: example:123
-
-```
 ## Database-biosample_missing_required_field
 ### Input
 ```yaml
@@ -2779,6 +2787,21 @@ functional_annotation_set:
 - has_function: KEGG_PATHWAY:iIiIiIiI
 
 ```
+## Study-invalid-id-pattern
+### Input
+```yaml
+has_credit_associations:
+- applied_role: Value Not In Enum 1
+  applies_to_person:
+    orcid: orcid:0000-0002-1825-00
+  type: credit association
+- applied_role: ValueNotInEnum2
+  applies_to_person:
+    orcid: orcid:0000-0001-9076-6066
+  type: credit association
+id: example:123
+
+```
 ## DataObject-invalid-data_object_type
 ### Input
 ```yaml
@@ -2834,6 +2857,18 @@ started_at_time: '2021-08-05T14:48:51+00:00'
 type: nmdc:MetagenomeSequencing
 version: v1.0.0
 was_informed_by: gold:Gp0213371
+
+```
+## Database-Study-bad-id-pattern
+### Input
+```yaml
+study_set:
+- abstract: abstract isn't actually required
+  id: study:1
+  name: name isn't actually required
+- abstract: abstract isn't actually required
+  id: nmdc:sty-11-zzz
+  name: name isn't actually required
 
 ```
 ## Biosample-invalid_fire

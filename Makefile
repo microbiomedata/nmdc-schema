@@ -250,8 +250,6 @@ src/data/output: project/nmdc_materialized_patterns.yaml
 		--output-directory $@ \
 		--schema $< > $@/README.md
 
-
-
 site-clean:
 	rm -rf nmdc_schema/*.json
 	rm -rf nmdc_schema/*.tsv
