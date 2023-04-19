@@ -192,14 +192,14 @@ files = [
 
 [[package]]
 name = "beautifulsoup4"
-version = "4.12.0"
+version = "4.12.1"
 description = "Screen-scraping library"
 category = "dev"
 optional = false
 python-versions = ">=3.6.0"
 files = [
-    {file = "beautifulsoup4-4.12.0-py3-none-any.whl", hash = "sha256:2130a5ad7f513200fae61a17abb5e338ca980fa28c439c0571014bc0217e9591"},
-    {file = "beautifulsoup4-4.12.0.tar.gz", hash = "sha256:c5fceeaec29d09c84970e47c65f2f0efe57872f7cff494c9691a26ec0ff13234"},
+    {file = "beautifulsoup4-4.12.1-py3-none-any.whl", hash = "sha256:e44795bb4f156d94abb5fbc56efff871c1045bfef72e9efe77558db9f9616ac3"},
+    {file = "beautifulsoup4-4.12.1.tar.gz", hash = "sha256:c7bdbfb20a0dbe09518b96a809d93351b2e2bcb8046c0809466fa6632a10c257"},
 ]
 
 [package.dependencies]
@@ -655,14 +655,14 @@ requests = ">=2.23.0"
 
 [[package]]
 name = "cruft"
-version = "2.12.0"
+version = "2.14.0"
 description = "Allows you to maintain all the necessary cruft for packaging and building projects separate from the code you intentionally write. Built on-top of CookieCutter."
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "cruft-2.12.0-py3-none-any.whl", hash = "sha256:29c46b34e518412c905bc41eb9812d122e7f2ca0173b584df85b05929adfc1be"},
-    {file = "cruft-2.12.0.tar.gz", hash = "sha256:57455d33a60684c945d501dcea2b1c57dc0fb200a0090f07c83da1603382cbb1"},
+    {file = "cruft-2.14.0-py3-none-any.whl", hash = "sha256:c3888897f38b91938509b74446e902ba6cd38169138ff2516fb04b0f01e6386f"},
+    {file = "cruft-2.14.0.tar.gz", hash = "sha256:ba3d976de1cad437b6a92239b6ec844ea8547e09de796ef505d320c356c45de5"},
 ]
 
 [package.dependencies]
@@ -1062,14 +1062,14 @@ uritemplate = ">=3.0.1,<5"
 
 [[package]]
 name = "google-auth"
-version = "2.17.1"
+version = "2.17.2"
 description = "Google Authentication Library"
 category = "dev"
 optional = false
 python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*"
 files = [
-    {file = "google-auth-2.17.1.tar.gz", hash = "sha256:8f379b46bad381ad2a0b989dfb0c13ad28d3c2a79f27348213f8946a1d15d55a"},
-    {file = "google_auth-2.17.1-py2.py3-none-any.whl", hash = "sha256:357ff22a75b4c0f6093470f21816a825d2adee398177569824e37b6c10069e19"},
+    {file = "google-auth-2.17.2.tar.gz", hash = "sha256:295c80ebb95eac74003c07a696cf3ef6b414e9230ae8894f3843f8215fd2aa56"},
+    {file = "google_auth-2.17.2-py2.py3-none-any.whl", hash = "sha256:544536a43d44dff0f64222e4d027d124989fcb9c10979687e589e1694fba9c94"},
 ]
 
 [package.dependencies]
@@ -1232,14 +1232,14 @@ test = ["objgraph", "psutil"]
 
 [[package]]
 name = "gspread"
-version = "5.7.2"
+version = "5.8.0"
 description = "Google Spreadsheets Python API"
 category = "dev"
 optional = false
 python-versions = ">=3.6, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 files = [
-    {file = "gspread-5.7.2-py3-none-any.whl", hash = "sha256:dbeedd08c6a7f7b0bfc1a54e17c29205362250c77bf98e11125c5d99fd7f4ba7"},
-    {file = "gspread-5.7.2.tar.gz", hash = "sha256:ce76f9c16b88ccb792350142224a59afa8e69f7463f3d3417148cbe892efc7cb"},
+    {file = "gspread-5.8.0-py3-none-any.whl", hash = "sha256:b6125120049fd92a3e1e7544ac395f336cec3ff8be04550cf737d90af007685d"},
+    {file = "gspread-5.8.0.tar.gz", hash = "sha256:f9739e2b839d7fa1f8a5f0cf0d4ee68c776e2fbf4bfe3167ad2e910bd588fb44"},
 ]
 
 [package.dependencies]
@@ -1870,20 +1870,18 @@ version = "1.5.0"
 description = "Linked Open Data Modeling Language"
 category = "main"
 optional = false
-python-versions = ">=3.7.6,<4.0.0"
-files = [
-    {file = "linkml-1.5.0-py3-none-any.whl", hash = "sha256:8f8d23f7f7bd6a10a5130d28ea576f7ceccd14e123ad4c0365bb53bc58664ba0"},
-    {file = "linkml-1.5.0.tar.gz", hash = "sha256:120fac9dd5a27d3dabc5e45fdeaf0b2fe187fe5f59bf7bc0806ebb5a884e6942"},
-]
+python-versions = "^3.7.6"
+files = []
+develop = true
 
 [package.dependencies]
-antlr4-python3-runtime = ">=4.9.0,<4.10"
+antlr4-python3-runtime = "<4.10,==4.*,>=4.9.0"
 click = ">=7.0"
 graphviz = ">=0.10.1"
 hbreader = "*"
 isodate = ">=0.6.0"
-jinja2 = ">=3.1.0"
-jsonasobj2 = ">=1.0.3,<2.0.0"
+jinja2 = ">= 3.1.0"
+jsonasobj2 = "==1.*,>=1.0.0,>=1.0.3"
 jsonschema = {version = ">=4.0.0", extras = ["format"]}
 linkml-dataops = "*"
 linkml-runtime = ">=1.5.0"
@@ -1891,7 +1889,7 @@ myst-parser = "*"
 openpyxl = "*"
 parse = "*"
 prefixcommons = ">=0.1.7"
-prefixmaps = ">=0.1.3,<0.2.0"
+prefixmaps = "^0.1.3"
 pydantic = "*"
 pyjsg = ">=0.11.6"
 pyshex = ">=0.7.20"
@@ -1903,11 +1901,15 @@ requests = ">=2.22"
 sphinx-click = "*"
 sphinx-rtd-theme = "*"
 sqlalchemy = ">=1.4.31"
-tox = ">=3.25.1,<4.0.0"
+tox = "^3.25.1"
 watchdog = ">=0.9.0"
 
 [package.extras]
 docs = ["furo[docs] (>=2022.9.29,<2023.0.0)", "sphinx", "sphinxcontrib-mermaid[docs] (>=0.7.1,<0.8.0)"]
+
+[package.source]
+type = "directory"
+url = "../linkml"
 
 [[package]]
 name = "linkml-dataops"
@@ -1934,25 +1936,27 @@ version = "1.5.0"
 description = "Runtime environment for LinkML, the Linked open data modeling language"
 category = "main"
 optional = false
-python-versions = ">=3.7.6,<4.0.0"
-files = [
-    {file = "linkml_runtime-1.5.0-py3-none-any.whl", hash = "sha256:ddc3d224d9db39be2df33a02718cd75462942009454aca7f828b726129357a37"},
-    {file = "linkml_runtime-1.5.0.tar.gz", hash = "sha256:dd80aec72f6d3226b39415cf4aa8cdda482dc73fcc227f938c6fff72afd80b20"},
-]
+python-versions = "^3.7.6"
+files = []
+develop = true
 
 [package.dependencies]
 click = "*"
-curies = ">=0.4.0,<0.5.0"
+curies = "^0.4.0"
 deprecated = "*"
 hbreader = "*"
 json-flattener = ">=0.1.9"
-jsonasobj2 = ">=1.0.4,<2.0.0"
+jsonasobj2 = "==1.*,>=1.0.0,>=1.0.4"
 jsonschema = ">=3.2.0"
 prefixcommons = ">=0.1.12"
 prefixmaps = ">=0.1.4"
 pyyaml = "*"
 rdflib = ">=6.0.0"
 requests = "*"
+
+[package.source]
+type = "directory"
+url = "../linkml-runtime"
 
 [[package]]
 name = "markdown"
@@ -2273,14 +2277,14 @@ testing-docutils = ["pygments", "pytest (>=7,<8)", "pytest-param-files (>=0.3.4,
 
 [[package]]
 name = "nbclassic"
-version = "0.5.4"
+version = "0.5.5"
 description = "Jupyter Notebook as a Jupyter Server extension."
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "nbclassic-0.5.4-py3-none-any.whl", hash = "sha256:df78e4ba143f35084ad060deec16cb1d4839dde47bfdbc4232beb7071a6d70ea"},
-    {file = "nbclassic-0.5.4.tar.gz", hash = "sha256:312b3f7d7ff2e6c261d51799bb12e6493498ab47d3469d3a01015d5533fd4d2b"},
+    {file = "nbclassic-0.5.5-py3-none-any.whl", hash = "sha256:47791b04dbcb89bf7fde910a3d848fd4793a4248a8936202453631a87da37d51"},
+    {file = "nbclassic-0.5.5.tar.gz", hash = "sha256:d2c91adc7909b0270c73e3e253d3687a6704b4f0a94bc156a37c85eba09f4d37"},
 ]
 
 [package.dependencies]
@@ -4836,4 +4840,4 @@ docs = []
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "54cfd091b9ee6fcfa12aa2c9e690f04384a5c1e855ed26adf0d2cec8368a03ce"
+content-hash = "fc8ac4d36d06608eb8798d0843c1c7931c7792367414ed94a183801874e77b2a"
