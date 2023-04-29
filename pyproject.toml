@@ -19,9 +19,11 @@ authors = [
 [tool.poetry.dependencies]
 python = "^3.9"
 # see https://github.com/microbiomedata/nmdc-schema/issues/820
-linkml = "^1.4.0"
+#linkml = "^1.4.0"
+linkml = "1.4.11"
 # linkml-runtime 1.4.6 doesn't seem to exit; 1.4.7+ has problems making a schemaview form a URL, if the root has imports
-linkml-runtime = "^1.4.0"
+#linkml-runtime = "^1.4.0"
+linkml-runtime = "1.4.9"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0"
