@@ -538,9 +538,9 @@ dna_absorb1	float
 dna_absorb2	float				
 dna_collect_site	string				
 dna_concentration	float			0	2000
-dna_cont_type	dna_cont_type_enum				
+dna_cont_type	JgiContTypeEnum				
 dna_container_id	string				
-dna_dnase	dna_dnase_enum				
+dna_dnase	YesNoEnum				
 dna_isolate_meth	string				
 dna_organisms	string				
 dna_project_contact	string				
@@ -552,13 +552,13 @@ dna_seq_project_pi	string
 dna_seq_project_name	string				
 dna_volume	float			0	1000
 proposal_dna	string				
-dnase_rna	dnase_rna_enum				
+dnase_rna	YesNoEnum				
 proposal_rna	string				
 rna_absorb1	float				
 rna_absorb2	float				
 rna_collect_site	string				
 rna_concentration	float			0	1000
-rna_cont_type	rna_cont_type_enum				
+rna_cont_type	JgiContTypeEnum				
 rna_cont_well	string		^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$		
 rna_container_id	string				
 rna_isolate_meth	string				
