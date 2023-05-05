@@ -650,7 +650,7 @@
                     "type": "number"
                 },
                 "dna_cont_type": {
-                    "$ref": "#/$defs/DnaContTypeEnum",
+                    "$ref": "#/$defs/JgiContTypeEnum",
                     "description": "Tube or plate (96-well)"
                 },
                 "dna_cont_well": {
@@ -661,7 +661,7 @@
                     "type": "string"
                 },
                 "dna_dnase": {
-                    "$ref": "#/$defs/DnaDnaseEnum"
+                    "$ref": "#/$defs/YesNoEnum"
                 },
                 "dna_isolate_meth": {
                     "description": "Describe the method/protocol/kit used to extract DNA/RNA.",
@@ -700,7 +700,7 @@
                     "type": "number"
                 },
                 "dnase_rna": {
-                    "$ref": "#/$defs/DnaseRnaEnum"
+                    "$ref": "#/$defs/YesNoEnum"
                 },
                 "door_comp_type": {
                     "$ref": "#/$defs/DoorCompTypeEnum",
@@ -1841,7 +1841,7 @@
                     "type": "number"
                 },
                 "rna_cont_type": {
-                    "$ref": "#/$defs/RnaContTypeEnum",
+                    "$ref": "#/$defs/JgiContTypeEnum",
                     "description": "Tube or plate (96-well)"
                 },
                 "rna_cont_well": {
@@ -3197,6 +3197,7 @@
                 }
             },
             "required": [
+                "id",
                 "name",
                 "description"
             ],
@@ -3432,24 +3433,6 @@
             "title": "DissolvingActivity",
             "type": "object"
         },
-        "DnaContTypeEnum": {
-            "description": "",
-            "enum": [
-                "plate",
-                "tube"
-            ],
-            "title": "DnaContTypeEnum",
-            "type": "string"
-        },
-        "DnaDnaseEnum": {
-            "description": "",
-            "enum": [
-                "no",
-                "yes"
-            ],
-            "title": "DnaDnaseEnum",
-            "type": "string"
-        },
         "DnaSampleFormatEnum": {
             "description": "",
             "enum": [
@@ -3467,15 +3450,6 @@
                 "Gentegra-RNA"
             ],
             "title": "DnaSampleFormatEnum",
-            "type": "string"
-        },
-        "DnaseRnaEnum": {
-            "description": "",
-            "enum": [
-                "no",
-                "yes"
-            ],
-            "title": "DnaseRnaEnum",
             "type": "string"
         },
         "DoorCompTypeEnum": {
@@ -4232,6 +4206,15 @@
             "title": "IntegerValue",
             "type": "object"
         },
+        "JgiContTypeEnum": {
+            "description": "",
+            "enum": [
+                "plate",
+                "tube"
+            ],
+            "title": "JgiContTypeEnum",
+            "type": "string"
+        },
         "LabDevice": {
             "additionalProperties": false,
             "description": "",
@@ -4450,6 +4433,7 @@
                 "git_url",
                 "has_input",
                 "has_output",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -4496,6 +4480,9 @@
                     "type": "string"
                 }
             },
+            "required": [
+                "id"
+            ],
             "title": "MaterialSample",
             "type": "object"
         },
@@ -4648,6 +4635,7 @@
                 "has_input",
                 "has_output",
                 "type",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -4739,6 +4727,7 @@
                 "git_url",
                 "has_input",
                 "has_output",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -4934,6 +4923,7 @@
                 "git_url",
                 "has_input",
                 "has_output",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -5017,6 +5007,7 @@
                 "has_input",
                 "has_output",
                 "type",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -5107,6 +5098,7 @@
                 "has_input",
                 "has_output",
                 "type",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -5190,6 +5182,7 @@
                 "git_url",
                 "has_input",
                 "has_output",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -5566,6 +5559,7 @@
                 "has_input",
                 "has_output",
                 "type",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -5717,7 +5711,8 @@
                 }
             },
             "required": [
-                "has_input"
+                "has_input",
+                "id"
             ],
             "title": "OmicsProcessing",
             "type": "object"
@@ -6191,6 +6186,7 @@
                 "git_url",
                 "has_input",
                 "has_output",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -6298,6 +6294,7 @@
                 "git_url",
                 "has_input",
                 "has_output",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -6327,15 +6324,6 @@
                 "obligate anaerobe"
             ],
             "title": "RelToOxygenEnum",
-            "type": "string"
-        },
-        "RnaContTypeEnum": {
-            "description": "",
-            "enum": [
-                "plate",
-                "tube"
-            ],
-            "title": "RnaContTypeEnum",
             "type": "string"
         },
         "RnaSampleFormatEnum": {
@@ -6887,6 +6875,9 @@
                     "type": "array"
                 }
             },
+            "required": [
+                "id"
+            ],
             "title": "Study",
             "type": "object"
         },
@@ -7314,12 +7305,22 @@
                 "has_input",
                 "has_output",
                 "type",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
             ],
             "title": "WorkflowExecutionActivity",
             "type": "object"
+        },
+        "YesNoEnum": {
+            "description": "replaces DnaDnaseEnum and DnaseRnaEnum",
+            "enum": [
+                "no",
+                "yes"
+            ],
+            "title": "YesNoEnum",
+            "type": "string"
         }
     },
     "$id": "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc",
