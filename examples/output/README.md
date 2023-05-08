@@ -69,6 +69,8 @@ biosample_set:
   id: nmdc:bsm-99-dtTMNb
   lat_lon:
     has_raw_value: -33.460524 150.168149
+    latitude: -33.460524
+    longitude: 150.168149
   location: from the Lithgow State Coal Mine, New South Wales, Australia
   mod_date: 26-AUG-16 01.50.27.000000000 PM
   name: Lithgow State Coal Mine Calcium nutrients (early)
@@ -110,6 +112,8 @@ biosample_set:
   id: nmdc:bsm-99-AtTUOs
   lat_lon:
     has_raw_value: -33.460524 150.168149
+    latitude: -33.460524
+    longitude: 150.168149
   location: from the Lithgow State Coal Mine, New South Wales, Australia
   mod_date: 26-AUG-16 01.50.27.000000000 PM
   name: Lithgow State Coal Mine Calcium nutrients (early)
@@ -148,6 +152,8 @@ biosample_set:
   id: nmdc:bsm-99-eBVHjN
   lat_lon:
     has_raw_value: -33.460524 150.168149
+    latitude: -33.460524
+    longitude: 150.168149
   location: from the Lithgow State Coal Mine, New South Wales, Australia
   mod_date: 26-AUG-16 01.50.27.000000000 PM
   name: Lithgow State Coal Mine Calcium nutrients Extra
@@ -186,6 +192,8 @@ biosample_set:
   id: nmdc:bsm-99-TDPHTh
   lat_lon:
     has_raw_value: -33.460524 150.168149
+    latitude: -33.460524
+    longitude: 150.168149
   location: from the Lithgow State Coal Mine, New South Wales, Australia
   mod_date: 26-AUG-16 01.50.27.000000000 PM
   name: Lithgow State Coal Mine Calcium nutrients
@@ -205,6 +213,27 @@ biosample_set:
 has_function: KEGG_PATHWAY:abc12345
 subject: nmdc:gene_product_1
 was_generated_by: nmdc:activity_1
+
+```
+## Database-biosamples-minimal
+### Input
+```yaml
+biosample_set:
+- env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  id: nmdc:bsm-99-dtTMNb
+  part_of:
+  - gold:Gs0110115
 
 ```
 ## DataObject-2
@@ -939,6 +968,8 @@ insdc_biosample_identifiers:
 isotope_exposure: 13C glucose
 lat_lon:
   has_raw_value: 50.586825 6.408977
+  latitude: 50.586825
+  longitude: 6.408977
 lbc_thirty:
   has_raw_value: 543 mg/kg
 lbceq:
@@ -1986,6 +2017,8 @@ biosample_set:
   id: nmdc:bsm-99-isqhuW
   lat_lon:
     has_raw_value: 68.35 19.05
+    latitude: 68.35
+    longitude: 19.05
   location: Stordalen Mire, Sweden
   mod_date: 08-JAN-20 02.49.23.000000000 PM
   name: Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG
@@ -2025,6 +2058,8 @@ biosample_set:
   id: nmdc:bsm-99-dge3H9
   lat_lon:
     has_raw_value: 42.481016 -72.178343
+    latitude: 42.481016
+    longitude: -72.178343
   location: Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United
     States
   mod_date: 08-JAN-20 02.49.23.000000000 PM
@@ -2066,6 +2101,8 @@ biosample_set:
   id: nmdc:bsm-99-dc6tg6
   lat_lon:
     has_raw_value: 47.6516 -122.3045
+    latitude: 47.6516
+    longitude: -122.3045
   location: University of Washington, Seatle, WA, United States
   mod_date: 08-JAN-20 02.49.25.000000000 PM
   name: Rhizosphere microbial communities from Carex aquatilis grown in University
@@ -2325,6 +2362,54 @@ omics_processing_set:
   - gold:Gs0112340
   processing_institution: JGI
   type: nmdc:OmicsProcessing
+
+```
+## Database-biosamples-lat_lon-with-GLV-missing-latitude
+### Input
+```yaml
+biosample_set:
+- env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  id: nmdc:bsm-99-dtTMNb
+  lat_lon:
+    has_raw_value: -33.460524 150.168149
+    longitude: 150.168149
+  part_of:
+  - gold:Gs0110115
+
+```
+## Database-biosamples-lat_lon-with-GLV-missing-longitude
+### Input
+```yaml
+biosample_set:
+- env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  id: nmdc:bsm-99-dtTMNb
+  lat_lon:
+    has_raw_value: -33.460524 150.168149
+    latitude: -33.460524
+  part_of:
+  - gold:Gs0110115
 
 ```
 ## Database-biosample_mismatch_regex

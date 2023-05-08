@@ -157,6 +157,8 @@ humidity_regm:
 - has_raw_value: 25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 lat_lon:
   has_raw_value: 50.586825 6.408977
+  latitude: 50.586825
+  longitude: 6.408977
 lbc_thirty:
   has_raw_value: 543 mg/kg
 lbceq:

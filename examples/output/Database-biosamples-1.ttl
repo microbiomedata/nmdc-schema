@@ -3,12 +3,15 @@
 @prefix MIXS: <https://w3id.org/mixs/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix wgs84: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 nmdc:bsm-99-AtTUOs a nmdc:Biosample ;
     dcterms:description "Bulk Aqueous phase filtered water" ;
     dcterms:isPartOf GOLD:Gs0110115 ;
     MIXS:0000009 [ a nmdc:GeolocationValue ;
+            wgs84:lat -33.460524 ;
+            wgs84:long 150.168149 ;
             nmdc:has_raw_value "-33.460524 150.168149" ] ;
     MIXS:0000010 [ a nmdc:TextValue ;
             nmdc:has_raw_value "Lithgow" ] ;
@@ -45,6 +48,8 @@ nmdc:bsm-99-TDPHTh a nmdc:Biosample ;
     dcterms:description "Bulk Aqueous phase filtered water" ;
     dcterms:isPartOf GOLD:Gs0110115 ;
     MIXS:0000009 [ a nmdc:GeolocationValue ;
+            wgs84:lat -33.460524 ;
+            wgs84:long 150.168149 ;
             nmdc:has_raw_value "-33.460524 150.168149" ] ;
     MIXS:0000010 [ a nmdc:TextValue ;
             nmdc:has_raw_value "Lithgow" ] ;
@@ -79,6 +84,8 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     dcterms:description "Bulk Aqueous phase filtered water" ;
     dcterms:isPartOf GOLD:Gs0110115 ;
     MIXS:0000009 [ a nmdc:GeolocationValue ;
+            wgs84:lat -33.460524 ;
+            wgs84:long 150.168149 ;
             nmdc:has_raw_value "-33.460524 150.168149" ] ;
     MIXS:0000010 [ a nmdc:TextValue ;
             nmdc:has_raw_value "Lithgow" ] ;
@@ -113,6 +120,8 @@ nmdc:bsm-99-eBVHjN a nmdc:Biosample ;
     dcterms:description "Bulk Aqueous phase filtered water" ;
     dcterms:isPartOf GOLD:Gs0110115 ;
     MIXS:0000009 [ a nmdc:GeolocationValue ;
+            wgs84:lat -33.460524 ;
+            wgs84:long 150.168149 ;
             nmdc:has_raw_value "-33.460524 150.168149" ] ;
     MIXS:0000010 [ a nmdc:TextValue ;
             nmdc:has_raw_value "Lithgow" ] ;

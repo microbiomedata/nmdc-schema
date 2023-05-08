@@ -3954,7 +3954,7 @@
             "description": "A normalized value for a location on the earth's surface",
             "properties": {
                 "has_raw_value": {
-                    "description": "The raw value for a  geolocation should follow {lat} {long}",
+                    "description": "The raw value for a  geolocation should follow {latitude} {longitude}",
                     "type": "string"
                 },
                 "latitude": {
@@ -3969,6 +3969,10 @@
                     "type": "string"
                 }
             },
+            "required": [
+                "latitude",
+                "longitude"
+            ],
             "title": "GeolocationValue",
             "type": "object"
         },
