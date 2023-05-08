@@ -1,0 +1,76 @@
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix OBI: <http://purl.obolibrary.org/obo/OBI_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+nmdc:matsm-99-KaZog6 a nmdc:MaterialSample ;
+    dcterms:description "something at the end of a reaction" ;
+    nmdc:name "monet_data:derive_5" .
+
+nmdc:matsm-99-KyiIwv a nmdc:MaterialSample ;
+    dcterms:description "something at the beginning of a reaction" ;
+    nmdc:name "monet_data:derive_4" .
+
+nmdc:matsm-99-PVhTGD a nmdc:MaterialSample ;
+    dcterms:description "a soil biosample" ;
+    nmdc:name "monet_data:soil_1" .
+
+nmdc:matsm-99-j670OL a nmdc:MaterialSample ;
+    dcterms:description "monet_data:somextract_6 dissolved in 30 mL of water" ;
+    nmdc:name "monet_data:somextract_7" .
+
+nmdc:matsm-99-m7PfV8 a nmdc:MaterialSample ;
+    dcterms:description "a 6 gram aliquot of monet_data:soil_1" ;
+    nmdc:name "nmdc:matsm-b1fb4ff1-e59b-4e2b-a8f9-b95ea6ba4135" .
+
+[] a nmdc:Database ;
+    nmdc:dissolving_activity_set [ a CHMO:0002773 ;
+            nmdc:dissolution_aided_by [ a nmdc:LabDevice ;
+                    nmdc:activity_speed [ a nmdc:QuantityValue ;
+                            nmdc:has_numeric_value 8e+02 ;
+                            nmdc:has_unit "RPM" ] ;
+                    nmdc:activity_time [ a nmdc:QuantityValue ;
+                            nmdc:has_numeric_value 2e+00 ;
+                            nmdc:has_unit "hours" ] ;
+                    nmdc:device_type "orbital_shaker" ] ;
+            nmdc:dissolution_reagent "deionized_water" ;
+            nmdc:dissolution_volume [ a nmdc:QuantityValue ;
+                    nmdc:has_numeric_value 3e+01 ;
+                    nmdc:has_unit "mL" ] ;
+            nmdc:dissolved_in [ a nmdc:MaterialContainer ;
+                    nmdc:container_size [ a nmdc:QuantityValue ;
+                            nmdc:has_numeric_value 5e+01 ;
+                            nmdc:has_unit "mL" ] ;
+                    nmdc:container_type "screw_top_conical" ] ;
+            nmdc:material_input nmdc:matsm-b1fb4ff1-e59b-4e2b-a8f9-b95ea6ba4135 ;
+            nmdc:material_output nmdc:matsm-181a7a0a-4b04-4a22-9b89-db53e2ccdc99 ] ;
+    nmdc:material_sample_set nmdc:matsm-99-KaZog6,
+        nmdc:matsm-99-KyiIwv,
+        nmdc:matsm-99-PVhTGD,
+        nmdc:matsm-99-j670OL,
+        nmdc:matsm-99-m7PfV8 ;
+    nmdc:material_sampling_activity_set [ a OBI:0000744 ;
+            nmdc:amount_collected [ a nmdc:QuantityValue ;
+                    nmdc:has_numeric_value 6e+00 ;
+                    nmdc:has_unit "grams" ] ;
+            nmdc:biosample_input nmdc:matsm-bfc5b458-1c62-44e7-886a-dd3a2cc7ad67 ;
+            nmdc:collected_into [ a nmdc:MaterialContainer ;
+                    nmdc:container_size [ a nmdc:QuantityValue ;
+                            nmdc:has_numeric_value 5e+01 ;
+                            nmdc:has_unit "mL" ] ;
+                    nmdc:container_type "screw_top_conical" ] ;
+            nmdc:material_output nmdc:matsm-b1fb4ff1-e59b-4e2b-a8f9-b95ea6ba4135 ;
+            nmdc:sampling_method "weighing" ] ;
+    nmdc:reaction_activity_set [ a nmdc:ReactionActivity ;
+            nmdc:material_input nmdc:matsm-31380f3c-cea3-4f68-a8c6-cd84efa5e622 ;
+            nmdc:material_output nmdc:matsm-9fe9277b-454a-4257-a825-3b4725df665e ;
+            nmdc:reaction_aided_by [ a nmdc:LabDevice ;
+                    nmdc:activity_temperature [ a nmdc:QuantityValue ;
+                            nmdc:has_numeric_value 3.7e+01 ;
+                            nmdc:has_unit "degrees Celsius" ] ;
+                    nmdc:activity_time [ a nmdc:QuantityValue ;
+                            nmdc:has_numeric_value 1.5e+00 ;
+                            nmdc:has_unit "hours" ] ;
+                    nmdc:device_type "thermomixer" ] ] .
+
