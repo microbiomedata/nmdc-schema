@@ -271,8 +271,6 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     nmdc:dna_absorb2 "2.02"^^xsd:float ;
     nmdc:dna_collect_site "untreated pond water" ;
     nmdc:dna_concentration "100.0"^^xsd:float ;
-    nmdc:dna_cont_type "plate" ;
-    nmdc:dna_cont_well "C2" ;
     nmdc:dna_container_id "Pond_MT_041618" ;
     nmdc:dna_dnase "yes" ;
     nmdc:dna_isolate_meth "phenol/chloroform extraction" ;
