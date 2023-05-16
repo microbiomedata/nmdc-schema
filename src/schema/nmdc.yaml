@@ -227,7 +227,8 @@ classes:
   Biosample:
     rules:
 
-      - description: DNA samples shipped to JGI for metagenomic analysis in tubes can't have any value for their plate position.
+      - title: dna_well_requires_plate
+        description: DNA samples shipped to JGI for metagenomic analysis in tubes can't have any value for their plate position.
         preconditions:
           slot_conditions:
             dna_cont_well:
@@ -237,7 +238,8 @@ classes:
             dna_cont_type:
               equals_string: plate
 
-      - description: DNA samples in plates must have a plate position that matches the regex.
+      - title: dna_plate_requires_well
+        description: DNA samples in plates must have a plate position that matches the regex.
           Note the requirement for an empty string in the tube case.
           Waiting for value_present validation to be added to runtime
         preconditions:
@@ -250,7 +252,8 @@ classes:
               pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
 
 
-      - description: RNA samples shipped to JGI for metagenomic analysis in tubes can't have any value for their plate position.
+      - title: rna_well_requires_plate
+        description: RNA samples shipped to JGI for metagenomic analysis in tubes can't have any value for their plate position.
         preconditions:
           slot_conditions:
             rna_cont_well:
@@ -260,7 +263,8 @@ classes:
             rna_cont_type:
               equals_string: plate
 
-      - description: RNA samples in plates must have a plate position that matches the regex.
+      - title: rna_plate_requires_well
+        description: RNA samples in plates must have a plate position that matches the regex.
           Note the requirement for an empty string in the tube case.
           Waiting for value_present validation to be added to runtime
         preconditions:

@@ -28,17 +28,6 @@ nmdc:wfmag-99-5MiDJM a nmdc:MagsAnalysisActivity ;
             nmdc:num_t_rna 1 ;
             nmdc:number_of_contig 11 ],
         [ a nmdc:MagBin ;
-            nmdc:bin_name "bins.2" ;
-            nmdc:bin_quality "LQ" ;
-            nmdc:completeness "51.25"^^xsd:float ;
-            nmdc:contamination "10.34"^^xsd:float ;
-            nmdc:gene_count 2548 ;
-            nmdc:num_16s 0 ;
-            nmdc:num_23s 0 ;
-            nmdc:num_5s 1 ;
-            nmdc:num_t_rna 26 ;
-            nmdc:number_of_contig 426 ],
-        [ a nmdc:MagBin ;
             nmdc:bin_name "bins.1" ;
             nmdc:bin_quality "LQ" ;
             nmdc:completeness "11.42"^^xsd:float ;
@@ -48,7 +37,18 @@ nmdc:wfmag-99-5MiDJM a nmdc:MagsAnalysisActivity ;
             nmdc:num_23s 0 ;
             nmdc:num_5s 1 ;
             nmdc:num_t_rna 1 ;
-            nmdc:number_of_contig 52 ] ;
+            nmdc:number_of_contig 52 ],
+        [ a nmdc:MagBin ;
+            nmdc:bin_name "bins.2" ;
+            nmdc:bin_quality "LQ" ;
+            nmdc:completeness "51.25"^^xsd:float ;
+            nmdc:contamination "10.34"^^xsd:float ;
+            nmdc:gene_count 2548 ;
+            nmdc:num_16s 0 ;
+            nmdc:num_23s 0 ;
+            nmdc:num_5s 1 ;
+            nmdc:num_t_rna 26 ;
+            nmdc:number_of_contig 426 ] ;
     nmdc:name "MAGs activiity 1781_86101" ;
     nmdc:started_at_time "2021-01-10T00:00:00+00:00"^^xsd:dateTime ;
     nmdc:too_short_contig_num 159810 ;
