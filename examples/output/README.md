@@ -1,43 +1,3 @@
-## Database-nom_analysis_activity_set
-### Input
-```yaml
-nom_analysis_activity_set:
-- ended_at_time: '2018-11-13T20:20:39+00:00'
-  execution_resource: xxx
-  git_url: xxx
-  has_input:
-  - nmdc:1
-  - nmdc:2
-  has_output:
-  - nmdc:3
-  - nmdc:4
-  id: nmdc:wfnom-99-abcdefg
-  started_at_time: '2018-11-13T20:20:39+00:00'
-  type: xxx
-  was_informed_by: nmdc:act-99-abcdefg
-
-```
-## Biosample-embargoed
-### Input
-```yaml
-embargoed: true
-env_broad_scale:
-  has_raw_value: ENVO:00002030
-  term:
-    id: ENVO:00002030
-env_local_scale:
-  has_raw_value: ENVO:00002169
-  term:
-    id: ENVO:00002169
-env_medium:
-  has_raw_value: ENVO:00005792
-  term:
-    id: ENVO:00005792
-id: nmdc:bsm-99-dtTMNb
-part_of:
-- gold:Gs0110115
-
-```
 ## Database-biosamples-1
 ### Input
 ```yaml
@@ -207,102 +167,6 @@ biosample_set:
   type: nmdc:Biosample
 
 ```
-## FunctionalAnnotation-exhaustive
-### Input
-```yaml
-has_function: KEGG_PATHWAY:abc12345
-subject: nmdc:gene_product_1
-was_generated_by: nmdc:activity_1
-
-```
-## Database-biosamples-minimal
-### Input
-```yaml
-biosample_set:
-- env_broad_scale:
-    has_raw_value: ENVO:00002030
-    term:
-      id: ENVO:00002030
-  env_local_scale:
-    has_raw_value: ENVO:00002169
-    term:
-      id: ENVO:00002169
-  env_medium:
-    has_raw_value: ENVO:00005792
-    term:
-      id: ENVO:00005792
-  id: nmdc:bsm-99-dtTMNb
-  part_of:
-  - gold:Gs0110115
-
-```
-## DataObject-2
-### Input
-```yaml
-description: Assembled scaffold fasta for gold:Gp0061273
-file_size_bytes: 205297945
-id: nmdc:dobj-99-PqBJvW
-name: assembly_scaffolds.fna
-type: nmdc:DataObject
-
-```
-## Database-multiple-paths
-### Input
-```yaml
-biosample_set:
-- env_broad_scale:
-    has_raw_value: ENVO:00002030
-    term:
-      id: ENVO:00002030
-  env_local_scale:
-    has_raw_value: ENVO:00002169
-    term:
-      id: ENVO:00002169
-  env_medium:
-    has_raw_value: ENVO:00005792
-    term:
-      id: ENVO:00005792
-  id: nmdc:bsm-99-dtTMNb
-  name: real biosample from the field
-  part_of:
-  - gold:Gs0110115
-- env_broad_scale:
-    has_raw_value: ENVO:00002030
-    term:
-      id: ENVO:00002030
-  env_local_scale:
-    has_raw_value: ENVO:00002169
-    term:
-      id: ENVO:00002169
-  env_medium:
-    has_raw_value: ENVO:00005792
-    term:
-      id: ENVO:00005792
-  id: nmdc:bsm-99-XYZ
-  name: one DNA library, like an analytical sample
-  part_of:
-  - gold:Gs0110115
-omics_processing_set:
-- add_date: 30-OCT-14 12.00.00.000000000 AM
-  alternative_identifiers:
-  - gold:Gp0108335
-  has_input:
-  - gold:Gb0108335
-  has_output:
-  - jgi:551a20d30d878525404e90d5
-  id: nmdc:omprc-99-zUCd5N
-  mod_date: 22-MAY-20 06.13.12.927000000 PM
-  name: a process in which a biosample was sequenced?
-  ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
-    carbon transformations - Permafrost 712P3D
-  omics_type:
-    has_raw_value: Metagenome
-  part_of:
-  - gold:Gs0112340
-  processing_institution: JGI
-  type: nmdc:OmicsProcessing
-
-```
 ## Database-biosamples-sites
 ### Input
 ```yaml
@@ -465,125 +329,116 @@ field_research_site_set:
   name: BESC-13-CL2_39_29
 
 ```
-## FunctionalAnnotation-minimal
+## Database-mags-activities
 ### Input
 ```yaml
-has_function: KEGG_PATHWAY:abc12345
-
-```
-## Database-omics-processings
-### Input
-```yaml
-omics_processing_set:
-- add_date: 30-OCT-14 12.00.00.000000000 AM
-  alternative_identifiers:
-  - gold:Gp0108335
+mags_activity_set:
+- binned_contig_num: 489
+  ended_at_time: '2021-01-10T00:00:00+00:00'
+  execution_resource: NERSC - Cori
+  git_url: https://img.jgi.doe.gov
   has_input:
-  - gold:Gb0108335
+  - nmdc:0a3d00715d01ad7b8f3aee59b674dfe9
+  - nmdc:668d207be5ea844f988fbfb2813564cc
+  - nmdc:b7e9c8d0bffdd13ace6f862a61fa87d2
   has_output:
-  - jgi:551a20d30d878525404e90d5
-  id: nmdc:omprc-99-zUCd5N
-  mod_date: 22-MAY-20 06.13.12.927000000 PM
-  name: Thawing permafrost microbial communities from the Arctic, studying carbon
-    transformations - Permafrost 712P3D
-  ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
-    carbon transformations - Permafrost 712P3D
-  omics_type:
-    has_raw_value: Metagenome
-  part_of:
-  - gold:Gs0112340
-  processing_institution: JGI
-  type: nmdc:OmicsProcessing
-- add_date: 30-OCT-14 12.00.00.000000000 AM
-  alternative_identifiers:
-  - gold:Gp0108340
+  - nmdc:818f5a47d1371295f9313909ea12eb50
+  - nmdc:e0b7421514f976cb7ad8c343cf3077a9
+  - nmdc:a755bb87aded36aefbd8022506a793c7
+  - nmdc:1346fe25b6ff22180eb3a51204e0b1fc
+  id: nmdc:wfmag-99-5MiDJM
+  input_contig_num: 169782
+  low_depth_contig_num: 0
+  mags_list:
+  - bin_name: bins.1
+    bin_quality: LQ
+    completeness: 11.42
+    contamination: 0.21
+    gene_count: 250
+    num_16s: 0
+    num_23s: 0
+    num_5s: 1
+    num_t_rna: 1
+    number_of_contig: 52
+  - bin_name: bins.2
+    bin_quality: LQ
+    completeness: 51.25
+    contamination: 10.34
+    gene_count: 2548
+    num_16s: 0
+    num_23s: 0
+    num_5s: 1
+    num_t_rna: 26
+    number_of_contig: 426
+  - bin_name: bins.3
+    bin_quality: LQ
+    completeness: 2
+    contamination: 0
+    gene_count: 294
+    num_16s: 0
+    num_23s: 0
+    num_5s: 0
+    num_t_rna: 1
+    number_of_contig: 11
+  name: MAGs activiity 1781_86101
+  started_at_time: '2021-01-10T00:00:00+00:00'
+  too_short_contig_num: 159810
+  type: nmdc:MAGsAnalysisActivity
+  unbinned_contig_num: 9483
+  was_informed_by: gold:Gp0115663
+- binned_contig_num: 206
+  ended_at_time: '2021-01-10T00:00:00+00:00'
+  execution_resource: NERSC - Cori
+  git_url: https://img.jgi.doe.gov
   has_input:
-  - gold:Gb0108340
+  - nmdc:b78f599c21fb31b00d3f8a3c56daeb88
+  - nmdc:662dc676b0b5a486248357f5b887c18b
+  - nmdc:bc034c7024043ea88b44d0897bb5bece
   has_output:
-  - jgi:551a20d50d878525404e90d7
-  id: nmdc:omprc-99-gKlQlF
-  mod_date: 22-MAY-20 06.10.59.590000000 PM
-  name: Thawing permafrost microbial communities from the Arctic, studying carbon
-    transformations - Permafrost 612S3M
-  ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
-    carbon transformations - Permafrost 612S3M
-  omics_type:
-    has_raw_value: Metagenome
-  part_of:
-  - gold:Gs0112340
-  processing_institution: JGI
-  type: nmdc:OmicsProcessing
-- add_date: 30-OCT-14 12.00.00.000000000 AM
-  alternative_identifiers:
-  - gold:Gp0108341
-  has_input:
-  - gold:Gb0108341
-  has_output:
-  - jgi:551a20d90d878525404e90e1
-  id: nmdc:omprc-99-5kgIJR
-  mod_date: 22-MAY-20 06.09.46.171000000 PM
-  name: Thawing permafrost microbial communities from the Arctic, studying carbon
-    transformations - Permafrost 712S3S
-  ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
-    carbon transformations - Permafrost 712S3S
-  omics_type:
-    has_raw_value: Metagenome
-  part_of:
-  - gold:Gs0112340
-  processing_institution: JGI
-  type: nmdc:OmicsProcessing
-
-```
-## DataObject-1
-### Input
-```yaml
-description: Metagenome Contig Coverage Stats for gold:Gp0061273
-file_size_bytes: 32787380
-id: nmdc:dobj-99-izwYW6
-name: mapping_stats.txt
-type: nmdc:DataObject
-
-```
-## Database-with-MetagenomeSequencingActivity
-### Input
-```yaml
-metagenome_sequencing_activity_set:
-- ended_at_time: '2021-09-15T10:13:20+00:00'
-  execution_resource: JGI
-  git_url: ''
-  has_input:
-  - nmdc:unvalidated_placeholder
-  has_output:
-  - nmdc:22afa3d49b73eaec2e9787a6b88fbdc3
-  id: nmdc:wfmsa-99-qwertyuiop
-  name: Sequencing Activity for nmdc:mga0vx38
-  part_of:
-  - nmdc:mga0vx38
-  started_at_time: '2021-08-05T14:48:51+00:00'
-  type: nmdc:MetagenomeSequencing
-  version: v1.0.0
-  was_informed_by: gold:Gp0213371
-
-```
-## Database-MetabolomicsAnalysisActivity-1
-### Input
-```yaml
-metabolomics_analysis_activity_set:
-- ended_at_time: '2021-09-15T10:13:20+00:00'
-  execution_resource: NERSC cori
-  git_url: https://example.org/WorkflowExecutionActivity
-  has_calibration: calibration with 0.01% phosphoric acid
-  has_input:
-  - nmdc:i1
-  - nmdc:i2
-  has_output:
-  - nmdc:o1
-  - nmdc:o2
-  id: nmdc:wfmb-99-ABCDEF
-  name: Metabolomics Analysis Activity for nmdc:wfmb-99-ABCDEF
-  started_at_time: '2021-08-05T14:48:51+00:00'
-  type: WorkflowExecutionActivity
-  was_informed_by: nmdc:a1
+  - nmdc:c24915651cfdfc91f3e6b5bac679c3af
+  - nmdc:e8ec230bfe68a272b34540e7f5ab5b2b
+  - nmdc:474fa29bd39452fa80f5a32e9e6be6f4
+  - nmdc:9800add41d26829494265ba81a100c53
+  id: nmdc:wfmag-99-VOgM5i
+  input_contig_num: 78376
+  low_depth_contig_num: 0
+  mags_list:
+  - bin_name: bins.1
+    bin_quality: LQ
+    completeness: 25.86
+    contamination: 0
+    gene_count: 401
+    num_16s: 0
+    num_23s: 0
+    num_5s: 0
+    num_t_rna: 4
+    number_of_contig: 74
+  - bin_name: bins.2
+    bin_quality: LQ
+    completeness: 0
+    contamination: 0
+    gene_count: 383
+    num_16s: 0
+    num_23s: 0
+    num_5s: 0
+    num_t_rna: 5
+    number_of_contig: 74
+  - bin_name: bins.3
+    bin_quality: LQ
+    completeness: 17.61
+    contamination: 0
+    gene_count: 313
+    num_16s: 0
+    num_23s: 0
+    num_5s: 0
+    num_t_rna: 7
+    number_of_contig: 58
+  name: MAGs activiity 1781_86089
+  started_at_time: '2021-01-10T00:00:00+00:00'
+  too_short_contig_num: 75364
+  type: nmdc:MAGsAnalysisActivity
+  unbinned_contig_num: 2806
+  was_informed_by: gold:Gp0115664
 
 ```
 ## DataObject-exhaustive
@@ -604,45 +459,226 @@ url: http://example.com
 was_generated_by: nmdc:invalid_id
 
 ```
-## Biosample-minimal-2
+## Study-exhaustive
 ### Input
 ```yaml
-env_broad_scale:
-  has_raw_value: ENVO:00002030
-  term:
-    id: ENVO:00002030
-env_local_scale:
-  has_raw_value: ENVO:00002169
-  term:
-    id: ENVO:00002169
-env_medium:
-  has_raw_value: ENVO:00005792
-  term:
-    id: ENVO:00005792
-id: nmdc:bsm-99-dtTMNb
-part_of:
-- gold:Gs0110115
+abstract: Nothing was studied.
+alternative_descriptions:
+- any string 1
+- any string 2
+alternative_identifiers:
+- any string A1
+- any string A2
+alternative_names:
+- any string 1
+- any string 2
+alternative_titles:
+- any string 1
+- any string 2
+description: see also name, title, objective, various alternatives
+doi:
+  has_raw_value: https://doi.org/10.1126/science.1058040
+ecosystem: unconstrained text. should be validated against the controlled vocabulary,
+  by the sample's environmental package. would also be nice to align the CV with MIxS
+  environmental triads
+ecosystem_category: unconstrained text
+ecosystem_subtype: unconstrained text
+ecosystem_type: unconstrained text
+emsl_proposal_doi: any string
+emsl_proposal_identifier: any string EP1
+ess_dive_datasets:
+- any string 1
+- any string 2
+funding_sources:
+- any string 1
+- any string 2
+gold_study_identifiers:
+- GOLD:Gs12345
+- GOLD:Gs90909
+has_credit_associations:
+- applied_role: Funding acquisition
+  applied_roles:
+  - Supervision
+  - Conceptualization
+  applies_to_person:
+    email: jcventer@jcvi.org
+    has_raw_value: Craig Venter
+    name: J. Craig Venter
+    orcid: ORCID:0000-0002-7086-765X
+    profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
+    was_generated_by: nmdc:any_string_1
+    websites:
+    - https://www.jcvi.org/
+    - https://www.jcvi.org/about/j-craig-venter
+  type: any string
+- applied_roles:
+  - Investigation
+  - Supervision
+  applies_to_person:
+    name: Tanja Davidsen
+id: nmdc:sty-11-ab
+mgnify_project_identifiers: mgnify.proj:ABC123
+name: see also description, title, objective, various alternatives
+objective: This record, an instance of class Study from the nmdc-schema was had authored,
+  so that the NMDC team would have at least one instance, using all slots, with a
+  mixture of reasonable values and minimally compliant values.
+principal_investigator:
+  email: jcventer@jcvi.org
+  has_raw_value: Craig Venter
+  name: J. Craig Venter
+  orcid: ORCID:0000-0002-7086-765X
+  profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
+  was_generated_by: nmdc:any_string_1
+  websites:
+  - https://www.jcvi.org/
+  - https://www.jcvi.org/about/j-craig-venter
+publications:
+- any string 1
+- any string 2
+related_identifiers: any string R1
+relevant_protocols:
+- any string 1
+- any string 2
+specific_ecosystem: unconstrained text
+study_image:
+- description: Photo of Craig Venter Institute, Rockville, Maryland
+  display_order: '1'
+  has_raw_value: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
+  was_generated_by: nmdc:any_string_1
+- description: Photo of Craig Venter Institute, La Jolla, California
+  display_order: '2'
+  has_raw_value: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
+  url: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
+  was_generated_by: nmdc:any_string_1
+title: Sample Exhaustive Biosample instance. Although all of these values should pass
+  validation, that does not mean that any Biosample of any type would necessarily
+  have this particular combination of values.
+type: any string
+websites:
+- https://w3id.org/nmdc
+- https://w3id.org/linkml
 
 ```
-## Biosample-with-fire
+## Database-sample-prep
 ### Input
 ```yaml
-env_broad_scale:
-  has_raw_value: ENVO:00002030
-  term:
-    id: ENVO:00002030
-env_local_scale:
-  has_raw_value: ENVO:00002169
-  term:
-    id: ENVO:00002169
-env_medium:
-  has_raw_value: ENVO:00005792
-  term:
-    id: ENVO:00005792
-fire: 1871-10-01 to 1871-10-31
-id: nmdc:bsm-99-dtTMNb
-part_of:
-- gold:Gs0110115
+dissolving_activity_set:
+- dissolution_aided_by:
+    activity_speed:
+      has_numeric_value: 800
+      has_unit: RPM
+    activity_time:
+      has_numeric_value: 2
+      has_unit: hours
+    device_type: orbital_shaker
+  dissolution_reagent: deionized_water
+  dissolution_volume:
+    has_numeric_value: 30
+    has_unit: mL
+  dissolved_in:
+    container_size:
+      has_numeric_value: 50
+      has_unit: mL
+    container_type: screw_top_conical
+  material_input: nmdc:matsm-b1fb4ff1-e59b-4e2b-a8f9-b95ea6ba4135
+  material_output: nmdc:matsm-181a7a0a-4b04-4a22-9b89-db53e2ccdc99
+material_sample_set:
+- description: a soil biosample
+  id: nmdc:matsm-99-PVhTGD
+  name: monet_data:soil_1
+- description: a 6 gram aliquot of monet_data:soil_1
+  id: nmdc:matsm-99-m7PfV8
+  name: nmdc:matsm-b1fb4ff1-e59b-4e2b-a8f9-b95ea6ba4135
+- description: monet_data:somextract_6 dissolved in 30 mL of water
+  id: nmdc:matsm-99-j670OL
+  name: monet_data:somextract_7
+- description: something at the beginning of a reaction
+  id: nmdc:matsm-99-KyiIwv
+  name: monet_data:derive_4
+- description: something at the end of a reaction
+  id: nmdc:matsm-99-KaZog6
+  name: monet_data:derive_5
+material_sampling_activity_set:
+- amount_collected:
+    has_numeric_value: 6
+    has_unit: grams
+  biosample_input: nmdc:matsm-bfc5b458-1c62-44e7-886a-dd3a2cc7ad67
+  collected_into:
+    container_size:
+      has_numeric_value: 50
+      has_unit: mL
+    container_type: screw_top_conical
+  material_output: nmdc:matsm-b1fb4ff1-e59b-4e2b-a8f9-b95ea6ba4135
+  sampling_method: weighing
+reaction_activity_set:
+- material_input: nmdc:matsm-31380f3c-cea3-4f68-a8c6-cd84efa5e622
+  material_output: nmdc:matsm-9fe9277b-454a-4257-a825-3b4725df665e
+  reaction_aided_by:
+    activity_temperature:
+      has_numeric_value: 37
+      has_unit: degrees Celsius
+    activity_time:
+      has_numeric_value: 1.5
+      has_unit: hours
+    device_type: thermomixer
+
+```
+## Database-multiple-paths
+### Input
+```yaml
+biosample_set:
+- env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  id: nmdc:bsm-99-dtTMNb
+  name: real biosample from the field
+  part_of:
+  - gold:Gs0110115
+- env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  id: nmdc:bsm-99-XYZ
+  name: one DNA library, like an analytical sample
+  part_of:
+  - gold:Gs0110115
+omics_processing_set:
+- add_date: 30-OCT-14 12.00.00.000000000 AM
+  alternative_identifiers:
+  - gold:Gp0108335
+  has_input:
+  - gold:Gb0108335
+  has_output:
+  - jgi:551a20d30d878525404e90d5
+  id: nmdc:omprc-99-zUCd5N
+  mod_date: 22-MAY-20 06.13.12.927000000 PM
+  name: a process in which a biosample was sequenced?
+  ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
+    carbon transformations - Permafrost 712P3D
+  omics_type:
+    has_raw_value: Metagenome
+  part_of:
+  - gold:Gs0112340
+  processing_institution: JGI
+  type: nmdc:OmicsProcessing
 
 ```
 ## Database-metagenome-assembly
@@ -780,12 +816,1186 @@ metagenome_assembly_set:
   was_informed_by: gold:Gp0061275
 
 ```
+## Database-biosample-exhasutive
+### Input
+```yaml
+biosample_set:
+- abs_air_humidity:
+    has_raw_value: xxx
+  add_date: '2021-03-31'
+  add_recov_method:
+    has_raw_value: xxx
+  additional_info:
+    has_raw_value: xxx
+  address:
+    has_raw_value: xxx
+  adj_room:
+    has_raw_value: xxx
+  aero_struc:
+    has_raw_value: xxx
+  agrochem_addition:
+  - has_raw_value: lime;1 kg/acre;2022-11-16T16:05:42+0000
+  air_PM_concen:
+  - has_raw_value: xxx
+  air_temp:
+    has_raw_value: xxx
+  air_temp_regm:
+  - has_raw_value: 25 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+  al_sat:
+    has_raw_value: 0.1 mg/kg
+  al_sat_meth:
+    has_raw_value: https://journaljeai.com/index.php/JEAI/article/view/583
+  alkalinity:
+    has_raw_value: 50 milligram per liter
+  alkalinity_method:
+    has_raw_value: https://wrrc.umass.edu/research/projects/acid-rain-monitoring-project/analysis-method-ph-and-alkalinity
+  alkyl_diethers:
+    has_raw_value: 0.005 mole per liter
+  alt:
+    has_raw_value: 100 meter
+  alternative_identifiers:
+  - any_string
+  - seriously_anything
+  aminopept_act:
+    has_raw_value: 0.269 mole per liter per hour
+  ammonium:
+    has_raw_value: 1.5 milligram per liter
+  ammonium_nitrogen:
+    has_raw_value: 0.5 milligram per liter
+  amount_light:
+    has_raw_value: xxx
+  analysis_type:
+  - metabolomics
+  - metagenomics
+  ances_data:
+    has_raw_value: xxx
+  annual_precpt:
+    has_raw_value: 0.5 milligram per liter
+  annual_temp:
+    has_raw_value: 12.5 degree Celsius
+  antibiotic_regm:
+  - has_raw_value: xxx
+  api:
+    has_raw_value: xxx
+  arch_struc: building
+  aromatics_pc:
+    has_raw_value: xxx
+  asphaltenes_pc:
+    has_raw_value: xxx
+  atmospheric_data:
+  - has_raw_value: xxx
+  avg_dew_point:
+    has_raw_value: xxx
+  avg_occup:
+    has_raw_value: xxx
+  avg_temp:
+    has_raw_value: xxx
+  bac_prod:
+    has_raw_value: xxx
+  bac_resp:
+    has_raw_value: xxx
+  bacteria_carb_prod:
+    has_raw_value: 2.53 microgram per liter per hour
+  barometric_press:
+    has_raw_value: xxx
+  basin:
+    has_raw_value: xxx
+  bathroom_count:
+    has_raw_value: xxx
+  bedroom_count:
+    has_raw_value: xxx
+  benzene:
+    has_raw_value: xxx
+  biochem_oxygen_dem:
+    has_raw_value: xxx
+  biocide:
+    has_raw_value: xxx
+  biocide_admin_method:
+    has_raw_value: xxx
+  biol_stat: wild
+  biomass:
+  - has_raw_value: xxx
+  biosample_categories:
+  - LTER
+  - FICUS
+  biotic_regm:
+    has_raw_value: sample inoculated with Rhizobium spp. Culture
+  biotic_relationship: parasite
+  bishomohopanol:
+    has_raw_value: 14 microgram per liter
+  blood_press_diast:
+    has_raw_value: xxx
+  blood_press_syst:
+    has_raw_value: xxx
+  bromide:
+    has_raw_value: 0.05 parts per million
+  build_docs: building information model
+  build_occup_type:
+  - office
+  building_setting: urban
+  built_struc_age:
+    has_raw_value: xxx
+  built_struc_set:
+    has_raw_value: xxx
+  built_struc_type:
+    has_raw_value: xxx
+  calcium:
+    has_raw_value: 0.2 micromole per liter
+  carb_dioxide:
+    has_raw_value: xxx
+  carb_monoxide:
+    has_raw_value: xxx
+  carb_nitro_ratio:
+    has_raw_value: '0.417361111'
+  ceil_area:
+    has_raw_value: xxx
+  ceil_cond: new
+  ceil_finish_mat: drywall
+  ceil_struc:
+    has_raw_value: xxx
+  ceil_texture: crows feet
+  ceil_thermal_mass:
+    has_raw_value: xxx
+  ceil_type: cathedral
+  ceil_water_mold:
+    has_raw_value: xxx
+  chem_administration:
+  - has_raw_value: agar [CHEBI:2509];2018-05-11T20:00Z
+  chem_mutagen:
+  - has_raw_value: xxx
+  chem_oxygen_dem:
+    has_raw_value: xxx
+  chem_treat_method: xxx
+  chem_treatment:
+    has_raw_value: xxx
+  chimera_check:
+    has_raw_value: xxx
+  chloride:
+    has_raw_value: 5000 milligram per liter
+  chlorophyll:
+    has_raw_value: 5 milligram per cubic meter
+  climate_environment:
+  - has_raw_value: tropical climate;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+  collected_from: nmdc:unconstrained_site_identifier_string
+  collection_date:
+    has_raw_value: xxx
+  collection_date_inc: '2023-01-29'
+  collection_time: 05:42+0000
+  collection_time_inc: 13:42+0000
+  community: no_example_from_mixs
+  conduc:
+    has_raw_value: xxx
+  cool_syst_id:
+    has_raw_value: xxx
+  crop_rotation:
+    has_raw_value: yes;R2/2017-01-01/2018-12-31/P6M
+  cult_root_med:
+    has_raw_value: xxx
+  cur_land_use: farmstead
+  cur_vegetation:
+    has_raw_value: MIxS doesn't provide any guidance more specific than "text"
+  cur_vegetation_meth:
+    has_raw_value: https://link.springer.com/article/10.1023/A:1011975321668
+  date_last_rain:
+    has_raw_value: xxx
+  density:
+    has_raw_value: 1000 kilogram per cubic meter
+  depos_env: other
+  depth:
+    has_maximum_numeric_value: 2.5
+    has_minimum_numeric_value: 1.5
+    has_numeric_value: 2.0
+    has_raw_value: 1.5 to 2.5 meters (that may not be the pattern the submission schema
+      expects). Extractions below require external migration logic.
+    has_unit: meter
+  description: unconstrained text
+  dew_point:
+    has_raw_value: xxx
+  diether_lipids:
+  - has_raw_value: xxx
+  diss_carb_dioxide:
+    has_raw_value: 5 milligram per liter
+  diss_hydrogen:
+    has_raw_value: 0.3 micromole per liter
+  diss_inorg_carb:
+    has_raw_value: 2059 micromole per kilogram
+  diss_inorg_nitro:
+    has_raw_value: xxx
+  diss_inorg_phosp:
+    has_raw_value: 56.5 micromole per liter
+  diss_iron:
+    has_raw_value: xxx
+  diss_org_carb:
+    has_raw_value: 197 micromole per liter
+  diss_org_nitro:
+    has_raw_value: 0.05 micromole per liter
+  diss_oxygen:
+    has_raw_value: 175 micromole per kilogram
+  diss_oxygen_fluid:
+    has_raw_value: xxx
+  dna_absorb1: 2.02
+  dna_absorb2: 2.02
+  dna_collect_site: untreated pond water
+  dna_concentration: 100
+  dna_cont_type: plate
+  dna_cont_well: C2
+  dna_container_id: Pond_MT_041618
+  dna_dnase: 'yes'
+  dna_isolate_meth: phenol/chloroform extraction
+  dna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
+    (1%)
+  dna_project_contact: John Jones
+  dna_samp_id: '187654'
+  dna_sample_format: 10 mM Tris-HCl
+  dna_sample_name: JGI_pond_041618
+  dna_seq_project: '1191234'
+  dna_seq_project_name: JGI Pond metagenomics
+  dna_seq_project_pi: Jane Johnson
+  dna_volume: 25
+  dnase_rna: 'yes'
+  door_comp_type: revolving
+  door_cond: damaged
+  door_direct: inward
+  door_loc: north
+  door_mat: aluminum
+  door_move: collapsible
+  door_size:
+    has_raw_value: xxx
+  door_type: composite
+  door_type_metal: collapsible
+  door_type_wood: battened
+  door_water_mold:
+    has_raw_value: xxx
+  down_par:
+    has_raw_value: xxx
+  drainage_class: well
+  drawings: operation
+  ecosystem: unconstrained text. should be validated against the controlled vocabulary,
+    by the sample's environmental package. would also be nice to align the CV with
+    MIxS environmental triads
+  ecosystem_category: unconstrained text
+  ecosystem_subtype: unconstrained text
+  ecosystem_type: unconstrained text
+  efficiency_percent:
+    has_raw_value: xxx
+  elev: 100
+  elevator:
+    has_raw_value: xxx
+  embargoed: true
+  emsl_biosample_identifiers:
+  - any_string
+  - seriously_anything
+  emulsions:
+  - has_raw_value: xxx
+  env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  env_package:
+    has_raw_value: unconstrained text. should require the name of a MIxS EnvironmentalPackage
+      class. have asked MIxS to return this term to their model. UPDATE VALIDATION
+      RULES/PATTERN/ENUM!
+  escalator:
+    has_raw_value: xxx
+  ethylbenzene:
+    has_raw_value: xxx
+  exp_duct:
+    has_raw_value: xxx
+  exp_pipe:
+    has_raw_value: xxx
+  experimental_factor:
+    has_raw_value: unconstrained text, unlike the MIxS environmental triad
+  experimental_factor_other: unconstrained text, but presumably expects 'term label
+    [term id]'
+  ext_door:
+    has_raw_value: xxx
+  ext_wall_orient: north
+  ext_window_orient: north
+  extreme_event: '2023-01-15'
+  fao_class: Fluvisols
+  fertilizer_regm:
+  - has_raw_value: xxx
+  field:
+    has_raw_value: xxx
+  filter_method: Basix PES, 13-100-106 FisherSci is an example value, but unconstrained
+    text is accepted at this point
+  filter_type:
+  - HEPA
+  fire: 2000-11 to 2000-12
+  fireplace_type:
+    has_raw_value: xxx
+  flooding: '2000-01-15'
+  floor_age:
+    has_raw_value: xxx
+  floor_area:
+    has_raw_value: xxx
+  floor_cond: new
+  floor_count:
+    has_raw_value: xxx
+  floor_finish_mat: tile
+  floor_struc: balcony
+  floor_thermal_mass:
+    has_raw_value: xxx
+  floor_water_mold: condensation
+  fluor:
+    has_raw_value: xxx
+  freq_clean:
+    has_raw_value: xxx
+  freq_cook:
+    has_raw_value: xxx
+  fungicide_regm:
+  - has_raw_value: xxx
+  furniture: cabinet
+  gaseous_environment:
+  - has_raw_value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+  gaseous_substances:
+  - has_raw_value: xxx
+  gender_restroom: female
+  genetic_mod:
+    has_raw_value: xxx
+  geo_loc_name:
+    has_raw_value: 'USA: Maryland, Bethesda'
+  glucosidase_act:
+    has_raw_value: 5 mol per liter per hour
+  gold_biosample_identifiers:
+  - GOLD:Gb123456789
+  - GOLD:Gb90909090
+  gravidity:
+    has_raw_value: xxx
+  gravity:
+  - has_raw_value: xxx
+  growth_facil:
+    has_raw_value: Growth chamber [CO_715:0000189]
+  growth_habit: erect
+  growth_hormone_regm:
+  - has_raw_value: xxx
+  habitat: unconstrained text
+  hall_count:
+    has_raw_value: xxx
+  handidness: ambidexterity
+  hc_produced: Oil
+  hcr: Shale
+  hcr_fw_salinity:
+    has_raw_value: xxx
+  hcr_geol_age: Archean
+  hcr_pressure:
+    has_raw_value: xxx
+  hcr_temp:
+    has_raw_value: xxx
+  heat_cool_type:
+  - radiant system
+  heat_deliv_loc: north
+  heat_sys_deliv_meth: xxx
+  heat_system_id:
+    has_raw_value: xxx
+  heavy_metals:
+  - has_raw_value: mercury;0.09 micrograms per gram
+  - has_raw_value: arsenic;0.09 micrograms per gram
+  heavy_metals_meth:
+  - has_raw_value: https://link.springer.com/article/10.1007/s42452-019-1578-x
+  height_carper_fiber:
+    has_raw_value: xxx
+  herbicide_regm:
+  - has_raw_value: xxx
+  horizon_meth:
+    has_raw_value: xxx
+  host_age:
+    has_raw_value: xxx
+  host_body_habitat:
+    has_raw_value: xxx
+  host_body_product:
+    has_raw_value: xxx
+  host_body_site:
+    has_raw_value: xxx
+  host_body_temp:
+    has_raw_value: xxx
+  host_color:
+    has_raw_value: xxx
+  host_common_name:
+    has_raw_value: xxx
+  host_diet:
+  - has_raw_value: xxx
+  host_dry_mass:
+    has_raw_value: xxx
+  host_family_relation:
+  - xxx
+  host_genotype:
+    has_raw_value: xxx
+  host_growth_cond:
+    has_raw_value: xxx
+  host_height:
+    has_raw_value: xxx
+  host_last_meal:
+  - has_raw_value: xxx
+  host_length:
+    has_raw_value: xxx
+  host_life_stage:
+    has_raw_value: xxx
+  host_name: snail is an example value, but unconstrained text is accepted at this
+    point
+  host_phenotype:
+    has_raw_value: xxx
+  host_sex: female
+  host_shape:
+    has_raw_value: xxx
+  host_subject_id:
+    has_raw_value: xxx
+  host_subspecf_genlin:
+  - xxx
+  host_substrate:
+    has_raw_value: xxx
+  host_symbiont:
+  - xxx
+  host_taxid:
+    has_raw_value: '9606'
+  host_tot_mass:
+    has_raw_value: xxx
+  host_wet_mass:
+    has_raw_value: xxx
+  humidity:
+    has_raw_value: xxx
+  humidity_regm:
+  - has_raw_value: 25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+  id: nmdc:bsm-99-dtTMNb
+  igsn_biosample_identifiers:
+  - any:curie_1
+  - any:curie_2
+  img_identifiers:
+  - any string 1
+  - any string 2
+  indoor_space: bedroom
+  indoor_surf: cabinet
+  indust_eff_percent:
+    has_raw_value: xxx
+  inorg_particles:
+  - has_raw_value: xxx
+  insdc_biosample_identifiers:
+  - biosample:SAMN123456789
+  - biosample:SAMN000
+  inside_lux:
+    has_raw_value: xxx
+  int_wall_cond: new
+  isotope_exposure: 13C glucose
+  iw_bt_date_well:
+    has_raw_value: xxx
+  iwf:
+    has_raw_value: xxx
+  last_clean:
+    has_raw_value: xxx
+  lat_lon:
+    has_raw_value: 50.586825 6.408977
+    latitude: 50.586825
+    longitude: 6.408977
+  lbc_thirty:
+    has_raw_value: 543 mg/kg
+  lbceq:
+    has_raw_value: 1575 mg/kg
+  light_intensity:
+    has_raw_value: xxx
+  light_regm:
+    has_raw_value: incandescent light;10 lux;450 nanometer
+  light_type:
+  - none
+  link_addit_analys:
+    has_raw_value: https://pubmed.ncbi.nlm.nih.gov/2315679/
+  link_class_info:
+    has_raw_value: https://wisconsindot.gov/Documents/doing-bus/eng-consultants/cnslt-rsrces/geotechmanual/gt-03-03.pdf
+  link_climate_info:
+    has_raw_value: https://www.int-res.com/abstracts/cr/v14/n3/p161-173/
+  lithology: Basement
+  local_class:
+    has_raw_value: jicama soil
+  local_class_meth:
+    has_raw_value: https://www.sciencedirect.com/science/article/abs/pii/S0016706105003083
+  location: unconstrained text. should we even keep this slot? check if it ahs been
+    used in MongoDB.
+  magnesium:
+    has_raw_value: 52.8 micromole per kilogram
+  manganese:
+    has_raw_value: 24.7 mg/kg
+  max_occup:
+    has_raw_value: xxx
+  mean_frict_vel:
+    has_raw_value: 0.5 meter per second
+  mean_peak_frict_vel:
+    has_raw_value: 1 meter per second
+  mech_struc: subway
+  mechanical_damage:
+  - has_raw_value: xxx
+  methane:
+    has_raw_value: xxx
+  micro_biomass_c_meth: https://acsess.onlinelibrary.wiley.com/doi/abs/10.2136/sssaspecpub49.c12
+  micro_biomass_meth: xxx
+  micro_biomass_n_meth: https://acsess.onlinelibrary.wiley.com/doi/abs/10.2136/sssaspecpub49.c12
+  microbial_biomass:
+    has_raw_value: xxx
+  microbial_biomass_c: 0.05 ug C/g dry soil
+  microbial_biomass_n: 0.05 ug N/g dry soil
+  mineral_nutr_regm:
+  - has_raw_value: xxx
+  misc_param:
+  - has_raw_value: Bicarbonate ion concentration;2075 micromole per kilogram
+  mod_date: '2023-01-25'
+  n_alkanes:
+  - has_raw_value: n-hexadecane;100 milligram per liter
+  name: Sample Exhaustive Biosample instance. Although all of these values should
+    pass validation, that does not mean that any Biosample of any type would necessarily
+    have this particular combination of values.
+  ncbi_taxonomy_name: soil metagenome
+  nitrate:
+    has_raw_value: 65 micromole per liter
+  nitrate_nitrogen:
+    has_raw_value: 0.29 mg/kg
+  nitrite:
+    has_raw_value: 0.5 micromole per liter
+  nitrite_nitrogen:
+    has_raw_value: 1.2 mg/kg
+  nitro:
+    has_raw_value: xxx
+  non_microb_biomass: insect 0.23 ug; plant 1g
+  non_microb_biomass_method: https://doi.org/10.1038/s41467-021-26181-3
+  non_min_nutr_regm:
+  - xxx
+  nucl_acid_amp:
+    has_raw_value: xxx
+  nucl_acid_ext:
+    has_raw_value: xxx
+  number_pets:
+    has_raw_value: xxx
+  number_plants:
+    has_raw_value: xxx
+  number_resident:
+    has_raw_value: xxx
+  occup_density_samp:
+    has_raw_value: xxx
+  occup_document: estimate
+  occup_samp:
+    has_raw_value: xxx
+  org_carb:
+    has_raw_value: xxx
+  org_count_qpcr_info: xxx
+  org_matter:
+    has_raw_value: 1.75 milligram per cubic meter
+  org_nitro:
+    has_raw_value: 4 micromole per liter
+  org_nitro_method: https://doi.org/10.1016/0038-0717(85)90144-0
+  org_particles:
+  - has_raw_value: xxx
+  organism_count:
+  - has_raw_value: ATP
+  other_treatment: unconstrained text
+  owc_tvdss:
+    has_raw_value: xxx
+  oxy_stat_samp: aerobe
+  oxygen:
+    has_raw_value: xxx
+  part_of:
+  - nmdc:unconstrained_study_identifier_string1_needs_pattern_materialization_what_about_referential_integrity
+  - nmdc:unconstrained_study_identifier_string2
+  part_org_carb:
+    has_raw_value: 1.92 micromole per liter
+  part_org_nitro:
+    has_raw_value: xxx
+  particle_class:
+  - has_raw_value: xxx
+  pcr_cond:
+    has_raw_value: xxx
+  pcr_primers:
+    has_raw_value: xxx
+  permeability:
+    has_raw_value: xxx
+  perturbation:
+  - has_raw_value: antibiotic addition;R2/2018-05-11T14:30Z/2018-05-11T19:30Z/P1H30M
+  pesticide_regm:
+  - has_raw_value: xxx
+  petroleum_hydrocarb:
+    has_raw_value: 0.05 micromole per liter
+  ph: 99.99
+  ph_meth:
+    has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9040c.pdf
+  ph_regm:
+  - has_raw_value: xxx
+  phaeopigments:
+  - has_raw_value: 2.5 milligram per cubic meter
+  phosphate:
+    has_raw_value: 0.7 micromole per liter
+  phosplipid_fatt_acid:
+  - has_raw_value: 2.98 milligram per liter
+  photon_flux:
+    has_raw_value: xxx
+  plant_growth_med:
+    has_raw_value: xxx
+  plant_product:
+    has_raw_value: xxx
+  plant_sex: Androdioecious
+  plant_struc:
+    has_raw_value: xxx
+  pollutants:
+  - has_raw_value: xxx
+  pool_dna_extracts:
+    has_raw_value: yes, 5
+  porosity:
+    has_raw_value: xxx
+  potassium:
+    has_raw_value: 463 milligram per liter
+  pour_point:
+    has_raw_value: xxx
+  pre_treatment:
+    has_raw_value: xxx
+  pres_animal_insect: cat;3
+  pressure:
+    has_raw_value: 50 atmosphere
+  prev_land_use_meth: xxx
+  previous_land_use:
+    has_raw_value: xxx
+  primary_prod:
+    has_raw_value: xxx
+  primary_treatment:
+    has_raw_value: xxx
+  prod_rate:
+    has_raw_value: xxx
+  prod_start_date:
+    has_raw_value: xxx
+  profile_position: summit
+  project_id: no example from MIxS
+  proport_woa_temperature: no example from MIxS
+  proposal_dna: '504000'
+  proposal_rna: '504000'
+  quad_pos: North side
+  radiation_regm:
+  - has_raw_value: xxx
+  rainfall_regm:
+  - has_raw_value: xxx
+  reactor_type:
+    has_raw_value: xxx
+  redox_potential:
+    has_raw_value: 300 millivolt
+  rel_air_humidity:
+    has_raw_value: xxx
+  rel_humidity_out:
+    has_raw_value: xxx
+  rel_samp_loc: edge of car
+  rel_to_oxygen: aerobe
+  replicate_number: '1'
+  reservoir:
+    has_raw_value: xxx
+  resins_pc:
+    has_raw_value: xxx
+  rna_absorb1: 2.02
+  rna_absorb2: 2.02
+  rna_collect_site: untreated pond water
+  rna_concentration: 100
+  rna_cont_type: plate
+  rna_cont_well: C2
+  rna_container_id: Pond_MT_041618
+  rna_isolate_meth: phenol/chloroform extraction
+  rna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
+    (1%)
+  rna_project_contact: John Jones
+  rna_samp_id: '187654'
+  rna_sample_format: 10 mM Tris-HCl
+  rna_sample_name: JGI_pond_041618
+  rna_seq_project: '1191234'
+  rna_seq_project_name: JGI Pond metagenomics
+  rna_seq_project_pi: Jane Johnson
+  rna_volume: 25
+  room_air_exch_rate:
+    has_raw_value: xxx
+  room_architec_elem: xxx
+  room_condt: new
+  room_connected: attic
+  room_count:
+    has_raw_value: xxx
+  room_dim:
+    has_raw_value: xxx
+  room_door_dist:
+    has_raw_value: xxx
+  room_door_share:
+    has_raw_value: xxx
+  room_hallway:
+    has_raw_value: xxx
+  room_loc: corner room
+  room_moist_dam_hist: 123
+  room_net_area:
+    has_raw_value: xxx
+  room_occup:
+    has_raw_value: xxx
+  room_samp_pos: north corner
+  room_type: attic
+  room_vol:
+    has_raw_value: xxx
+  room_wall_share:
+    has_raw_value: xxx
+  room_window_count: 123
+  root_cond:
+    has_raw_value: xxx
+  root_med_carbon:
+    has_raw_value: xxx
+  root_med_macronutr:
+    has_raw_value: xxx
+  root_med_micronutr:
+    has_raw_value: xxx
+  root_med_ph:
+    has_raw_value: xxx
+  root_med_regl:
+    has_raw_value: xxx
+  root_med_solid:
+    has_raw_value: xxx
+  root_med_suppl:
+    has_raw_value: xxx
+  salinity:
+    has_raw_value: 25 practical salinity unit
+  salinity_category: halotolerant is an example from the schema, but MIxS doesn't
+    provide this slot any more
+  salinity_meth:
+    has_raw_value: PMID:22895776
+  salt_regm:
+  - has_raw_value: xxx
+  samp_capt_status: other
+  samp_collec_device: xxx
+  samp_collec_method: swabbing
+  samp_collect_point: well
+  samp_dis_stage: dissemination
+  samp_floor: basement
+  samp_loc_corr_rate:
+    has_raw_value: xxx
+  samp_mat_process:
+    has_raw_value: filtering of seawater
+  samp_md:
+    has_raw_value: xxx
+  samp_name: see also name
+  samp_preserv:
+    has_raw_value: xxx
+  samp_room_id:
+    has_raw_value: xxx
+  samp_size:
+    has_raw_value: 5 liters
+  samp_sort_meth:
+  - has_raw_value: xxx
+  samp_store_dur:
+    has_raw_value: P1Y6M
+  samp_store_loc:
+    has_raw_value: Freezer no:5
+  samp_store_temp:
+    has_raw_value: -80 degree Celsius
+  samp_subtype: biofilm
+  samp_taxon_id:
+    has_raw_value: soil metagenome [NCBItaxon:410658] but no validation applied yet
+  samp_time_out:
+    has_raw_value: xxx
+  samp_transport_cond:
+    has_raw_value: xxx
+  samp_tvdss:
+    has_raw_value: xxx
+  samp_type:
+    has_raw_value: xxx
+  samp_vol_we_dna_ext:
+    has_raw_value: 1500 milliliter
+  samp_weather: cloudy
+  samp_well_name:
+    has_raw_value: xxx
+  sample_collection_site: unconstrained text
+  sample_link:
+  - IGSN:DSJ0284
+  - any:curie
+  sample_shipped: 15 g
+  sample_type: water_extract_soil
+  saturates_pc:
+    has_raw_value: xxx
+  season:
+    has_raw_value: xxx
+  season_environment:
+  - has_raw_value: xxx
+  season_precpt:
+    has_raw_value: 75 millimeters
+  season_temp:
+    has_raw_value: 18 degree Celsius
+  season_use: Spring
+  secondary_treatment:
+    has_raw_value: xxx
+  sediment_type: biogenous
+  seq_meth:
+    has_raw_value: xxx
+  seq_quality_check:
+    has_raw_value: xxx
+  sewage_type:
+    has_raw_value: xxx
+  shad_dev_water_mold: xxx
+  shading_device_cond: damaged
+  shading_device_loc:
+    has_raw_value: xxx
+  shading_device_mat:
+    has_raw_value: xxx
+  shading_device_type: tree
+  sieving:
+    has_raw_value: MIxS does not provide an example
+  silicate:
+    has_raw_value: xxx
+  size_frac:
+    has_raw_value: xxx
+  size_frac_low:
+    has_raw_value: 0.2 micrometer
+  size_frac_up:
+    has_raw_value: 20 micrometer
+  slope_aspect:
+    has_raw_value: MIxS does not provide an example
+  slope_gradient:
+    has_raw_value: MIxS does not provide an example
+  sludge_retent_time:
+    has_raw_value: xxx
+  sodium:
+    has_raw_value: 10.5 milligram per liter
+  soil_horizon: O horizon
+  soil_text_measure:
+    has_raw_value: xxx
+  soil_texture_meth: xxx
+  soil_type:
+    has_raw_value: plinthosol [ENVO:00002250]
+  soil_type_meth:
+    has_raw_value: Frederick series
+  solar_irradiance:
+    has_raw_value: xxx
+  soluble_inorg_mat:
+  - has_raw_value: xxx
+  soluble_iron_micromol: MIxS doesn't provide an example
+  soluble_org_mat:
+  - has_raw_value: xxx
+  soluble_react_phosp:
+    has_raw_value: xxx
+  source_mat_id:
+    has_raw_value: MPI012345
+  space_typ_state:
+    has_raw_value: xxx
+  specific: operation
+  specific_ecosystem: unconstrained text
+  specific_humidity:
+    has_raw_value: xxx
+  sr_dep_env: Lacustine
+  sr_geol_age: Archean
+  sr_kerog_type: other
+  sr_lithology: Clastic
+  standing_water_regm:
+  - has_raw_value: xxx
+  start_date_inc: '2023-01-27'
+  start_time_inc: 13:42+0000
+  store_cond:
+    has_raw_value: -20 degree Celsius freezer;P2Y10D
+  substructure_type:
+  - basement
+  subsurface_depth:
+    has_raw_value: MIxS does not provide an example
+  sulfate:
+    has_raw_value: 5 micromole per liter
+  sulfate_fw:
+    has_raw_value: xxx
+  sulfide:
+    has_raw_value: 2 micromole per liter
+  surf_air_cont:
+  - dust
+  surf_humidity:
+    has_raw_value: xxx
+  surf_material: adobe
+  surf_moisture:
+    has_raw_value: xxx
+  surf_moisture_ph: 123
+  surf_temp:
+    has_raw_value: xxx
+  suspend_part_matter:
+    has_raw_value: xxx
+  suspend_solids:
+  - has_raw_value: xxx
+  tan:
+    has_raw_value: xxx
+  target_gene:
+    has_raw_value: xxx
+  target_subfragment:
+    has_raw_value: xxx
+  technical_reps: '2'
+  temp:
+    has_raw_value: 25 degree Celsius
+  temp_out:
+    has_raw_value: xxx
+  tertiary_treatment:
+    has_raw_value: xxx
+  tidal_stage: high tide
+  tillage:
+  - chisel
+  tiss_cult_growth_med:
+    has_raw_value: xxx
+  toluene:
+    has_raw_value: xxx
+  tot_carb:
+    has_raw_value: MIxS does not provide an example
+  tot_depth_water_col:
+    has_raw_value: 500 meter
+  tot_diss_nitro:
+    has_raw_value: 40 microgram per liter
+  tot_inorg_nitro:
+    has_raw_value: xxx
+  tot_iron:
+    has_raw_value: xxx
+  tot_nitro:
+    has_raw_value: xxx
+  tot_nitro_cont_meth: https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00
+  tot_nitro_content:
+    has_raw_value: 35 milligrams Nitrogen per kilogram of soil
+  tot_org_c_meth:
+    has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9060a.pdf
+  tot_org_carb:
+    has_raw_value: 2%
+  tot_part_carb:
+    has_raw_value: xxx
+  tot_phosp:
+    has_raw_value: 0.03 milligram per liter
+  tot_phosphate:
+    has_raw_value: xxx
+  tot_sulfur:
+    has_raw_value: xxx
+  train_line: red
+  train_stat_loc: south station above ground
+  train_stop_loc: end
+  turbidity:
+    has_raw_value: xxx
+  tvdss_of_hcr_press:
+    has_raw_value: xxx
+  tvdss_of_hcr_temp:
+    has_raw_value: xxx
+  typ_occup_density: 123
+  type: nmdc:Biosample. change this to require a class name or an enumeration
+  ventilation_rate:
+    has_raw_value: xxx
+  ventilation_type:
+    has_raw_value: xxx
+  vfa:
+    has_raw_value: xxx
+  vfa_fw:
+    has_raw_value: xxx
+  vis_media: photos
+  viscosity:
+    has_raw_value: xxx
+  volatile_org_comp:
+  - has_raw_value: xxx
+  wall_area:
+    has_raw_value: xxx
+  wall_const_type: frame construction
+  wall_finish_mat: plaster
+  wall_height:
+    has_raw_value: xxx
+  wall_loc: north
+  wall_surf_treatment: painted
+  wall_texture: knockdown
+  wall_thermal_mass:
+    has_raw_value: xxx
+  wall_water_mold:
+    has_raw_value: xxx
+  wastewater_type:
+    has_raw_value: xxx
+  water_cont_soil_meth: MIxS doesn't provide an example
+  water_content:
+  - MIxS doesn't provide an example 1
+  - MIxS doesn't provide an example 2
+  water_current:
+    has_raw_value: xxx
+  water_cut:
+    has_raw_value: xxx
+  water_feat_size:
+    has_raw_value: xxx
+  water_feat_type: fountain
+  water_prod_rate:
+    has_raw_value: xxx
+  water_temp_regm:
+  - has_raw_value: xxx
+  watering_regm:
+  - has_raw_value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+  weekday: Monday
+  win:
+    has_raw_value: xxx
+  wind_direction:
+    has_raw_value: xxx
+  wind_speed:
+    has_raw_value: xxx
+  window_cond: damaged
+  window_cover: blinds
+  window_horiz_pos: left
+  window_loc: north
+  window_mat: fiberglass
+  window_open_freq:
+    has_raw_value: xxx
+  window_size:
+    has_raw_value: xxx
+  window_status:
+    has_raw_value: xxx
+  window_type: single-hung sash window
+  window_vert_pos: bottom
+  window_water_mold:
+    has_raw_value: xxx
+  xylene:
+    has_raw_value: xxx
+  zinc:
+    has_raw_value: 2.5 mg/kg
+
+```
+## Database-omics-processings
+### Input
+```yaml
+omics_processing_set:
+- add_date: 30-OCT-14 12.00.00.000000000 AM
+  alternative_identifiers:
+  - gold:Gp0108335
+  has_input:
+  - gold:Gb0108335
+  has_output:
+  - jgi:551a20d30d878525404e90d5
+  id: nmdc:omprc-99-zUCd5N
+  mod_date: 22-MAY-20 06.13.12.927000000 PM
+  name: Thawing permafrost microbial communities from the Arctic, studying carbon
+    transformations - Permafrost 712P3D
+  ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
+    carbon transformations - Permafrost 712P3D
+  omics_type:
+    has_raw_value: Metagenome
+  part_of:
+  - gold:Gs0112340
+  processing_institution: JGI
+  type: nmdc:OmicsProcessing
+- add_date: 30-OCT-14 12.00.00.000000000 AM
+  alternative_identifiers:
+  - gold:Gp0108340
+  has_input:
+  - gold:Gb0108340
+  has_output:
+  - jgi:551a20d50d878525404e90d7
+  id: nmdc:omprc-99-gKlQlF
+  mod_date: 22-MAY-20 06.10.59.590000000 PM
+  name: Thawing permafrost microbial communities from the Arctic, studying carbon
+    transformations - Permafrost 612S3M
+  ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
+    carbon transformations - Permafrost 612S3M
+  omics_type:
+    has_raw_value: Metagenome
+  part_of:
+  - gold:Gs0112340
+  processing_institution: JGI
+  type: nmdc:OmicsProcessing
+- add_date: 30-OCT-14 12.00.00.000000000 AM
+  alternative_identifiers:
+  - gold:Gp0108341
+  has_input:
+  - gold:Gb0108341
+  has_output:
+  - jgi:551a20d90d878525404e90e1
+  id: nmdc:omprc-99-5kgIJR
+  mod_date: 22-MAY-20 06.09.46.171000000 PM
+  name: Thawing permafrost microbial communities from the Arctic, studying carbon
+    transformations - Permafrost 712S3S
+  ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
+    carbon transformations - Permafrost 712S3S
+  omics_type:
+    has_raw_value: Metagenome
+  part_of:
+  - gold:Gs0112340
+  processing_institution: JGI
+  type: nmdc:OmicsProcessing
+
+```
+## DataObject-1
+### Input
+```yaml
+description: Metagenome Contig Coverage Stats for gold:Gp0061273
+file_size_bytes: 32787380
+id: nmdc:dobj-99-izwYW6
+name: mapping_stats.txt
+type: nmdc:DataObject
+
+```
+## Study-minimal
+### Input
+```yaml
+id: nmdc:sty-11-ab
+
+```
+## Database-pooling_set-minimal
+### Input
+```yaml
+pooling_set:
+- id: bare:value
+  name: first pooling process
+
+```
+## DataObject-minimal
+### Input
+```yaml
+description: Crispr Terms for nmdc:ann0vx38
+id: nmdc:dobj-11-dtTMNb
+name: Crispr Terms
+
+```
+## Pooling-exhaustive
+### Input
+```yaml
+alternative_identifiers:
+- bare:xxx
+description: xxx
+has_inputs:
+- bare:xxx
+- bare:yyy
+has_outputs:
+- bare:xxx
+id: bare:value
+name: first pooling process
+
+```
+## Database-biosamples-minimal
+### Input
+```yaml
+biosample_set:
+- env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  id: nmdc:bsm-99-dtTMNb
+  part_of:
+  - gold:Gs0110115
+
+```
 ## Biosample-exhasutive
 ### Input
 ```yaml
+abs_air_humidity:
+  has_raw_value: xxx
 add_date: '2021-03-31'
+add_recov_method:
+  has_raw_value: xxx
+additional_info:
+  has_raw_value: xxx
+address:
+  has_raw_value: xxx
+adj_room:
+  has_raw_value: xxx
+aero_struc:
+  has_raw_value: xxx
 agrochem_addition:
 - has_raw_value: lime;1 kg/acre;2022-11-16T16:05:42+0000
+air_PM_concen:
+- has_raw_value: xxx
+air_temp:
+  has_raw_value: xxx
 air_temp_regm:
 - has_raw_value: 25 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 al_sat:
@@ -809,15 +2019,59 @@ ammonium:
   has_raw_value: 1.5 milligram per liter
 ammonium_nitrogen:
   has_raw_value: 0.5 milligram per liter
+amount_light:
+  has_raw_value: xxx
 analysis_type:
 - metabolomics
 - metagenomics
+ances_data:
+  has_raw_value: xxx
 annual_precpt:
   has_raw_value: 0.5 milligram per liter
 annual_temp:
   has_raw_value: 12.5 degree Celsius
+antibiotic_regm:
+- has_raw_value: xxx
+api:
+  has_raw_value: xxx
+arch_struc: building
+aromatics_pc:
+  has_raw_value: xxx
+asphaltenes_pc:
+  has_raw_value: xxx
+atmospheric_data:
+- has_raw_value: xxx
+avg_dew_point:
+  has_raw_value: xxx
+avg_occup:
+  has_raw_value: xxx
+avg_temp:
+  has_raw_value: xxx
+bac_prod:
+  has_raw_value: xxx
+bac_resp:
+  has_raw_value: xxx
 bacteria_carb_prod:
   has_raw_value: 2.53 microgram per liter per hour
+barometric_press:
+  has_raw_value: xxx
+basin:
+  has_raw_value: xxx
+bathroom_count:
+  has_raw_value: xxx
+bedroom_count:
+  has_raw_value: xxx
+benzene:
+  has_raw_value: xxx
+biochem_oxygen_dem:
+  has_raw_value: xxx
+biocide:
+  has_raw_value: xxx
+biocide_admin_method:
+  has_raw_value: xxx
+biol_stat: wild
+biomass:
+- has_raw_value: xxx
 biosample_categories:
 - LTER
 - FICUS
@@ -826,14 +2080,53 @@ biotic_regm:
 biotic_relationship: parasite
 bishomohopanol:
   has_raw_value: 14 microgram per liter
+blood_press_diast:
+  has_raw_value: xxx
+blood_press_syst:
+  has_raw_value: xxx
 bromide:
   has_raw_value: 0.05 parts per million
+build_docs: building information model
+build_occup_type:
+- office
+building_setting: urban
+built_struc_age:
+  has_raw_value: xxx
+built_struc_set:
+  has_raw_value: xxx
+built_struc_type:
+  has_raw_value: xxx
 calcium:
   has_raw_value: 0.2 micromole per liter
+carb_dioxide:
+  has_raw_value: xxx
+carb_monoxide:
+  has_raw_value: xxx
 carb_nitro_ratio:
   has_raw_value: '0.417361111'
+ceil_area:
+  has_raw_value: xxx
+ceil_cond: new
+ceil_finish_mat: drywall
+ceil_struc:
+  has_raw_value: xxx
+ceil_texture: crows feet
+ceil_thermal_mass:
+  has_raw_value: xxx
+ceil_type: cathedral
+ceil_water_mold:
+  has_raw_value: xxx
 chem_administration:
 - has_raw_value: agar [CHEBI:2509];2018-05-11T20:00Z
+chem_mutagen:
+- has_raw_value: xxx
+chem_oxygen_dem:
+  has_raw_value: xxx
+chem_treat_method: xxx
+chem_treatment:
+  has_raw_value: xxx
+chimera_check:
+  has_raw_value: xxx
 chloride:
   has_raw_value: 5000 milligram per liter
 chlorophyll:
@@ -841,19 +2134,30 @@ chlorophyll:
 climate_environment:
 - has_raw_value: tropical climate;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 collected_from: nmdc:unconstrained_site_identifier_string
+collection_date:
+  has_raw_value: xxx
 collection_date_inc: '2023-01-29'
 collection_time: 05:42+0000
 collection_time_inc: 13:42+0000
 community: no_example_from_mixs
+conduc:
+  has_raw_value: xxx
+cool_syst_id:
+  has_raw_value: xxx
 crop_rotation:
   has_raw_value: yes;R2/2017-01-01/2018-12-31/P6M
+cult_root_med:
+  has_raw_value: xxx
 cur_land_use: farmstead
 cur_vegetation:
   has_raw_value: MIxS doesn't provide any guidance more specific than "text"
 cur_vegetation_meth:
   has_raw_value: https://link.springer.com/article/10.1023/A:1011975321668
+date_last_rain:
+  has_raw_value: xxx
 density:
   has_raw_value: 1000 kilogram per cubic meter
+depos_env: other
 depth:
   has_maximum_numeric_value: 2.5
   has_minimum_numeric_value: 1.5
@@ -862,20 +2166,30 @@ depth:
     expects). Extractions below require external migration logic.
   has_unit: meter
 description: unconstrained text
+dew_point:
+  has_raw_value: xxx
+diether_lipids:
+- has_raw_value: xxx
 diss_carb_dioxide:
   has_raw_value: 5 milligram per liter
 diss_hydrogen:
   has_raw_value: 0.3 micromole per liter
 diss_inorg_carb:
   has_raw_value: 2059 micromole per kilogram
+diss_inorg_nitro:
+  has_raw_value: xxx
 diss_inorg_phosp:
   has_raw_value: 56.5 micromole per liter
+diss_iron:
+  has_raw_value: xxx
 diss_org_carb:
   has_raw_value: 197 micromole per liter
 diss_org_nitro:
   has_raw_value: 0.05 micromole per liter
 diss_oxygen:
   has_raw_value: 175 micromole per kilogram
+diss_oxygen_fluid:
+  has_raw_value: xxx
 dna_absorb1: 2.02
 dna_absorb2: 2.02
 dna_collect_site: untreated pond water
@@ -896,18 +2210,40 @@ dna_seq_project_name: JGI Pond metagenomics
 dna_seq_project_pi: Jane Johnson
 dna_volume: 25
 dnase_rna: 'yes'
+door_comp_type: revolving
+door_cond: damaged
+door_direct: inward
+door_loc: north
+door_mat: aluminum
+door_move: collapsible
+door_size:
+  has_raw_value: xxx
+door_type: composite
+door_type_metal: collapsible
+door_type_wood: battened
+door_water_mold:
+  has_raw_value: xxx
+down_par:
+  has_raw_value: xxx
 drainage_class: well
+drawings: operation
 ecosystem: unconstrained text. should be validated against the controlled vocabulary,
   by the sample's environmental package. would also be nice to align the CV with MIxS
   environmental triads
 ecosystem_category: unconstrained text
 ecosystem_subtype: unconstrained text
 ecosystem_type: unconstrained text
+efficiency_percent:
+  has_raw_value: xxx
 elev: 100
+elevator:
+  has_raw_value: xxx
 embargoed: true
 emsl_biosample_identifiers:
 - any_string
 - seriously_anything
+emulsions:
+- has_raw_value: xxx
 env_broad_scale:
   has_raw_value: ENVO:00002030
   term:
@@ -923,18 +2259,64 @@ env_medium:
 env_package:
   has_raw_value: unconstrained text. should require the name of a MIxS EnvironmentalPackage
     class. have asked MIxS to return this term to their model. UPDATE VALIDATION RULES/PATTERN/ENUM!
+escalator:
+  has_raw_value: xxx
+ethylbenzene:
+  has_raw_value: xxx
+exp_duct:
+  has_raw_value: xxx
+exp_pipe:
+  has_raw_value: xxx
 experimental_factor:
   has_raw_value: unconstrained text, unlike the MIxS environmental triad
 experimental_factor_other: unconstrained text, but presumably expects 'term label
   [term id]'
+ext_door:
+  has_raw_value: xxx
+ext_wall_orient: north
+ext_window_orient: north
 extreme_event: '2023-01-15'
 fao_class: Fluvisols
+fertilizer_regm:
+- has_raw_value: xxx
+field:
+  has_raw_value: xxx
 filter_method: Basix PES, 13-100-106 FisherSci is an example value, but unconstrained
   text is accepted at this point
+filter_type:
+- HEPA
 fire: 2000-11 to 2000-12
+fireplace_type:
+  has_raw_value: xxx
 flooding: '2000-01-15'
+floor_age:
+  has_raw_value: xxx
+floor_area:
+  has_raw_value: xxx
+floor_cond: new
+floor_count:
+  has_raw_value: xxx
+floor_finish_mat: tile
+floor_struc: balcony
+floor_thermal_mass:
+  has_raw_value: xxx
+floor_water_mold: condensation
+fluor:
+  has_raw_value: xxx
+freq_clean:
+  has_raw_value: xxx
+freq_cook:
+  has_raw_value: xxx
+fungicide_regm:
+- has_raw_value: xxx
+furniture: cabinet
 gaseous_environment:
 - has_raw_value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+gaseous_substances:
+- has_raw_value: xxx
+gender_restroom: female
+genetic_mod:
+  has_raw_value: xxx
 geo_loc_name:
   has_raw_value: 'USA: Maryland, Bethesda'
 glucosidase_act:
@@ -942,17 +2324,99 @@ glucosidase_act:
 gold_biosample_identifiers:
 - GOLD:Gb123456789
 - GOLD:Gb90909090
+gravidity:
+  has_raw_value: xxx
+gravity:
+- has_raw_value: xxx
 growth_facil:
   has_raw_value: Growth chamber [CO_715:0000189]
+growth_habit: erect
+growth_hormone_regm:
+- has_raw_value: xxx
 habitat: unconstrained text
+hall_count:
+  has_raw_value: xxx
+handidness: ambidexterity
+hc_produced: Oil
+hcr: Shale
+hcr_fw_salinity:
+  has_raw_value: xxx
+hcr_geol_age: Archean
+hcr_pressure:
+  has_raw_value: xxx
+hcr_temp:
+  has_raw_value: xxx
+heat_cool_type:
+- radiant system
+heat_deliv_loc: north
+heat_sys_deliv_meth: xxx
+heat_system_id:
+  has_raw_value: xxx
 heavy_metals:
 - has_raw_value: mercury;0.09 micrograms per gram
 - has_raw_value: arsenic;0.09 micrograms per gram
 heavy_metals_meth:
 - has_raw_value: https://link.springer.com/article/10.1007/s42452-019-1578-x
+height_carper_fiber:
+  has_raw_value: xxx
+herbicide_regm:
+- has_raw_value: xxx
+horizon_meth:
+  has_raw_value: xxx
+host_age:
+  has_raw_value: xxx
+host_body_habitat:
+  has_raw_value: xxx
+host_body_product:
+  has_raw_value: xxx
+host_body_site:
+  has_raw_value: xxx
+host_body_temp:
+  has_raw_value: xxx
+host_color:
+  has_raw_value: xxx
+host_common_name:
+  has_raw_value: xxx
+host_diet:
+- has_raw_value: xxx
+host_dry_mass:
+  has_raw_value: xxx
+host_family_relation:
+- xxx
+host_genotype:
+  has_raw_value: xxx
+host_growth_cond:
+  has_raw_value: xxx
+host_height:
+  has_raw_value: xxx
+host_last_meal:
+- has_raw_value: xxx
+host_length:
+  has_raw_value: xxx
+host_life_stage:
+  has_raw_value: xxx
 host_name: snail is an example value, but unconstrained text is accepted at this point
+host_phenotype:
+  has_raw_value: xxx
+host_sex: female
+host_shape:
+  has_raw_value: xxx
+host_subject_id:
+  has_raw_value: xxx
+host_subspecf_genlin:
+- xxx
+host_substrate:
+  has_raw_value: xxx
+host_symbiont:
+- xxx
 host_taxid:
   has_raw_value: '9606'
+host_tot_mass:
+  has_raw_value: xxx
+host_wet_mass:
+  has_raw_value: xxx
+humidity:
+  has_raw_value: xxx
 humidity_regm:
 - has_raw_value: 25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 id: nmdc:bsm-99-dtTMNb
@@ -962,10 +2426,25 @@ igsn_biosample_identifiers:
 img_identifiers:
 - any string 1
 - any string 2
+indoor_space: bedroom
+indoor_surf: cabinet
+indust_eff_percent:
+  has_raw_value: xxx
+inorg_particles:
+- has_raw_value: xxx
 insdc_biosample_identifiers:
 - biosample:SAMN123456789
 - biosample:SAMN000
+inside_lux:
+  has_raw_value: xxx
+int_wall_cond: new
 isotope_exposure: 13C glucose
+iw_bt_date_well:
+  has_raw_value: xxx
+iwf:
+  has_raw_value: xxx
+last_clean:
+  has_raw_value: xxx
 lat_lon:
   has_raw_value: 50.586825 6.408977
   latitude: 50.586825
@@ -974,14 +2453,19 @@ lbc_thirty:
   has_raw_value: 543 mg/kg
 lbceq:
   has_raw_value: 1575 mg/kg
+light_intensity:
+  has_raw_value: xxx
 light_regm:
   has_raw_value: incandescent light;10 lux;450 nanometer
+light_type:
+- none
 link_addit_analys:
   has_raw_value: https://pubmed.ncbi.nlm.nih.gov/2315679/
 link_class_info:
   has_raw_value: https://wisconsindot.gov/Documents/doing-bus/eng-consultants/cnslt-rsrces/geotechmanual/gt-03-03.pdf
 link_climate_info:
   has_raw_value: https://www.int-res.com/abstracts/cr/v14/n3/p161-173/
+lithology: Basement
 local_class:
   has_raw_value: jicama soil
 local_class_meth:
@@ -992,14 +2476,26 @@ magnesium:
   has_raw_value: 52.8 micromole per kilogram
 manganese:
   has_raw_value: 24.7 mg/kg
+max_occup:
+  has_raw_value: xxx
 mean_frict_vel:
   has_raw_value: 0.5 meter per second
 mean_peak_frict_vel:
   has_raw_value: 1 meter per second
+mech_struc: subway
+mechanical_damage:
+- has_raw_value: xxx
+methane:
+  has_raw_value: xxx
 micro_biomass_c_meth: https://acsess.onlinelibrary.wiley.com/doi/abs/10.2136/sssaspecpub49.c12
+micro_biomass_meth: xxx
 micro_biomass_n_meth: https://acsess.onlinelibrary.wiley.com/doi/abs/10.2136/sssaspecpub49.c12
+microbial_biomass:
+  has_raw_value: xxx
 microbial_biomass_c: 0.05 ug C/g dry soil
 microbial_biomass_n: 0.05 ug N/g dry soil
+mineral_nutr_regm:
+- has_raw_value: xxx
 misc_param:
 - has_raw_value: Bicarbonate ion concentration;2075 micromole per kilogram
 mod_date: '2023-01-25'
@@ -1017,49 +2513,137 @@ nitrite:
   has_raw_value: 0.5 micromole per liter
 nitrite_nitrogen:
   has_raw_value: 1.2 mg/kg
+nitro:
+  has_raw_value: xxx
 non_microb_biomass: insect 0.23 ug; plant 1g
 non_microb_biomass_method: https://doi.org/10.1038/s41467-021-26181-3
+non_min_nutr_regm:
+- xxx
+nucl_acid_amp:
+  has_raw_value: xxx
+nucl_acid_ext:
+  has_raw_value: xxx
+number_pets:
+  has_raw_value: xxx
+number_plants:
+  has_raw_value: xxx
+number_resident:
+  has_raw_value: xxx
+occup_density_samp:
+  has_raw_value: xxx
+occup_document: estimate
+occup_samp:
+  has_raw_value: xxx
+org_carb:
+  has_raw_value: xxx
+org_count_qpcr_info: xxx
 org_matter:
   has_raw_value: 1.75 milligram per cubic meter
 org_nitro:
   has_raw_value: 4 micromole per liter
 org_nitro_method: https://doi.org/10.1016/0038-0717(85)90144-0
+org_particles:
+- has_raw_value: xxx
 organism_count:
 - has_raw_value: ATP
 other_treatment: unconstrained text
+owc_tvdss:
+  has_raw_value: xxx
 oxy_stat_samp: aerobe
+oxygen:
+  has_raw_value: xxx
 part_of:
 - nmdc:unconstrained_study_identifier_string1_needs_pattern_materialization_what_about_referential_integrity
 - nmdc:unconstrained_study_identifier_string2
 part_org_carb:
   has_raw_value: 1.92 micromole per liter
+part_org_nitro:
+  has_raw_value: xxx
+particle_class:
+- has_raw_value: xxx
+pcr_cond:
+  has_raw_value: xxx
+pcr_primers:
+  has_raw_value: xxx
+permeability:
+  has_raw_value: xxx
 perturbation:
 - has_raw_value: antibiotic addition;R2/2018-05-11T14:30Z/2018-05-11T19:30Z/P1H30M
+pesticide_regm:
+- has_raw_value: xxx
 petroleum_hydrocarb:
   has_raw_value: 0.05 micromole per liter
 ph: 99.99
 ph_meth:
   has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9040c.pdf
+ph_regm:
+- has_raw_value: xxx
 phaeopigments:
 - has_raw_value: 2.5 milligram per cubic meter
 phosphate:
   has_raw_value: 0.7 micromole per liter
 phosplipid_fatt_acid:
 - has_raw_value: 2.98 milligram per liter
+photon_flux:
+  has_raw_value: xxx
+plant_growth_med:
+  has_raw_value: xxx
+plant_product:
+  has_raw_value: xxx
+plant_sex: Androdioecious
+plant_struc:
+  has_raw_value: xxx
+pollutants:
+- has_raw_value: xxx
 pool_dna_extracts:
   has_raw_value: yes, 5
+porosity:
+  has_raw_value: xxx
 potassium:
   has_raw_value: 463 milligram per liter
+pour_point:
+  has_raw_value: xxx
+pre_treatment:
+  has_raw_value: xxx
+pres_animal_insect: cat;3
 pressure:
   has_raw_value: 50 atmosphere
+prev_land_use_meth: xxx
+previous_land_use:
+  has_raw_value: xxx
+primary_prod:
+  has_raw_value: xxx
+primary_treatment:
+  has_raw_value: xxx
+prod_rate:
+  has_raw_value: xxx
+prod_start_date:
+  has_raw_value: xxx
 profile_position: summit
 project_id: no example from MIxS
 proport_woa_temperature: no example from MIxS
 proposal_dna: '504000'
 proposal_rna: '504000'
+quad_pos: North side
+radiation_regm:
+- has_raw_value: xxx
+rainfall_regm:
+- has_raw_value: xxx
+reactor_type:
+  has_raw_value: xxx
 redox_potential:
   has_raw_value: 300 millivolt
+rel_air_humidity:
+  has_raw_value: xxx
+rel_humidity_out:
+  has_raw_value: xxx
+rel_samp_loc: edge of car
+rel_to_oxygen: aerobe
 replicate_number: '1'
+reservoir:
+  has_raw_value: xxx
+resins_pc:
+  has_raw_value: xxx
 rna_absorb1: 2.02
 rna_absorb2: 2.02
 rna_collect_site: untreated pond water
@@ -1078,40 +2662,140 @@ rna_seq_project: '1191234'
 rna_seq_project_name: JGI Pond metagenomics
 rna_seq_project_pi: Jane Johnson
 rna_volume: 25
+room_air_exch_rate:
+  has_raw_value: xxx
+room_architec_elem: xxx
+room_condt: new
+room_connected: attic
+room_count:
+  has_raw_value: xxx
+room_dim:
+  has_raw_value: xxx
+room_door_dist:
+  has_raw_value: xxx
+room_door_share:
+  has_raw_value: xxx
+room_hallway:
+  has_raw_value: xxx
+room_loc: corner room
+room_moist_dam_hist: 123
+room_net_area:
+  has_raw_value: xxx
+room_occup:
+  has_raw_value: xxx
+room_samp_pos: north corner
+room_type: attic
+room_vol:
+  has_raw_value: xxx
+room_wall_share:
+  has_raw_value: xxx
+room_window_count: 123
+root_cond:
+  has_raw_value: xxx
+root_med_carbon:
+  has_raw_value: xxx
+root_med_macronutr:
+  has_raw_value: xxx
+root_med_micronutr:
+  has_raw_value: xxx
+root_med_ph:
+  has_raw_value: xxx
+root_med_regl:
+  has_raw_value: xxx
+root_med_solid:
+  has_raw_value: xxx
+root_med_suppl:
+  has_raw_value: xxx
 salinity:
   has_raw_value: 25 practical salinity unit
 salinity_category: halotolerant is an example from the schema, but MIxS doesn't provide
   this slot any more
 salinity_meth:
   has_raw_value: PMID:22895776
+salt_regm:
+- has_raw_value: xxx
+samp_capt_status: other
+samp_collec_device: xxx
 samp_collec_method: swabbing
+samp_collect_point: well
+samp_dis_stage: dissemination
+samp_floor: basement
+samp_loc_corr_rate:
+  has_raw_value: xxx
 samp_mat_process:
   has_raw_value: filtering of seawater
+samp_md:
+  has_raw_value: xxx
 samp_name: see also name
+samp_preserv:
+  has_raw_value: xxx
+samp_room_id:
+  has_raw_value: xxx
 samp_size:
   has_raw_value: 5 liters
+samp_sort_meth:
+- has_raw_value: xxx
 samp_store_dur:
   has_raw_value: P1Y6M
 samp_store_loc:
   has_raw_value: Freezer no:5
 samp_store_temp:
   has_raw_value: -80 degree Celsius
+samp_subtype: biofilm
 samp_taxon_id:
   has_raw_value: soil metagenome [NCBItaxon:410658] but no validation applied yet
+samp_time_out:
+  has_raw_value: xxx
+samp_transport_cond:
+  has_raw_value: xxx
+samp_tvdss:
+  has_raw_value: xxx
+samp_type:
+  has_raw_value: xxx
 samp_vol_we_dna_ext:
   has_raw_value: 1500 milliliter
+samp_weather: cloudy
+samp_well_name:
+  has_raw_value: xxx
 sample_collection_site: unconstrained text
 sample_link:
 - IGSN:DSJ0284
 - any:curie
 sample_shipped: 15 g
 sample_type: water_extract_soil
+saturates_pc:
+  has_raw_value: xxx
+season:
+  has_raw_value: xxx
+season_environment:
+- has_raw_value: xxx
 season_precpt:
   has_raw_value: 75 millimeters
 season_temp:
   has_raw_value: 18 degree Celsius
+season_use: Spring
+secondary_treatment:
+  has_raw_value: xxx
+sediment_type: biogenous
+seq_meth:
+  has_raw_value: xxx
+seq_quality_check:
+  has_raw_value: xxx
+sewage_type:
+  has_raw_value: xxx
+shad_dev_water_mold: xxx
+shading_device_cond: damaged
+shading_device_loc:
+  has_raw_value: xxx
+shading_device_mat:
+  has_raw_value: xxx
+shading_device_type: tree
 sieving:
   has_raw_value: MIxS does not provide an example
+silicate:
+  has_raw_value: xxx
+size_frac:
+  has_raw_value: xxx
 size_frac_low:
   has_raw_value: 0.2 micrometer
 size_frac_up:
@@ -1120,38 +2804,101 @@ slope_aspect:
   has_raw_value: MIxS does not provide an example
 slope_gradient:
   has_raw_value: MIxS does not provide an example
+sludge_retent_time:
+  has_raw_value: xxx
 sodium:
   has_raw_value: 10.5 milligram per liter
+soil_horizon: O horizon
+soil_text_measure:
+  has_raw_value: xxx
+soil_texture_meth: xxx
 soil_type:
   has_raw_value: plinthosol [ENVO:00002250]
 soil_type_meth:
   has_raw_value: Frederick series
+solar_irradiance:
+  has_raw_value: xxx
+soluble_inorg_mat:
+- has_raw_value: xxx
 soluble_iron_micromol: MIxS doesn't provide an example
+soluble_org_mat:
+- has_raw_value: xxx
+soluble_react_phosp:
+  has_raw_value: xxx
 source_mat_id:
   has_raw_value: MPI012345
+space_typ_state:
+  has_raw_value: xxx
+specific: operation
 specific_ecosystem: unconstrained text
+specific_humidity:
+  has_raw_value: xxx
+sr_dep_env: Lacustine
+sr_geol_age: Archean
+sr_kerog_type: other
+sr_lithology: Clastic
+standing_water_regm:
+- has_raw_value: xxx
 start_date_inc: '2023-01-27'
 start_time_inc: 13:42+0000
 store_cond:
   has_raw_value: -20 degree Celsius freezer;P2Y10D
+substructure_type:
+- basement
 subsurface_depth:
   has_raw_value: MIxS does not provide an example
 sulfate:
   has_raw_value: 5 micromole per liter
+sulfate_fw:
+  has_raw_value: xxx
 sulfide:
   has_raw_value: 2 micromole per liter
+surf_air_cont:
+- dust
+surf_humidity:
+  has_raw_value: xxx
+surf_material: adobe
+surf_moisture:
+  has_raw_value: xxx
+surf_moisture_ph: 123
+surf_temp:
+  has_raw_value: xxx
+suspend_part_matter:
+  has_raw_value: xxx
+suspend_solids:
+- has_raw_value: xxx
+tan:
+  has_raw_value: xxx
+target_gene:
+  has_raw_value: xxx
+target_subfragment:
+  has_raw_value: xxx
 technical_reps: '2'
 temp:
   has_raw_value: 25 degree Celsius
+temp_out:
+  has_raw_value: xxx
+tertiary_treatment:
+  has_raw_value: xxx
 tidal_stage: high tide
 tillage:
 - chisel
+tiss_cult_growth_med:
+  has_raw_value: xxx
+toluene:
+  has_raw_value: xxx
 tot_carb:
   has_raw_value: MIxS does not provide an example
 tot_depth_water_col:
   has_raw_value: 500 meter
 tot_diss_nitro:
   has_raw_value: 40 microgram per liter
+tot_inorg_nitro:
+  has_raw_value: xxx
+tot_iron:
+  has_raw_value: xxx
+tot_nitro:
+  has_raw_value: xxx
 tot_nitro_cont_meth: https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00
 tot_nitro_content:
   has_raw_value: 35 milligrams Nitrogen per kilogram of soil
@@ -1159,346 +2906,172 @@ tot_org_c_meth:
   has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9060a.pdf
 tot_org_carb:
   has_raw_value: 2%
+tot_part_carb:
+  has_raw_value: xxx
 tot_phosp:
   has_raw_value: 0.03 milligram per liter
+tot_phosphate:
+  has_raw_value: xxx
+tot_sulfur:
+  has_raw_value: xxx
+train_line: red
+train_stat_loc: south station above ground
+train_stop_loc: end
+turbidity:
+  has_raw_value: xxx
+tvdss_of_hcr_press:
+  has_raw_value: xxx
+tvdss_of_hcr_temp:
+  has_raw_value: xxx
+typ_occup_density: 123
 type: nmdc:Biosample. change this to require a class name or an enumeration
+ventilation_rate:
+  has_raw_value: xxx
+ventilation_type:
+  has_raw_value: xxx
+vfa:
+  has_raw_value: xxx
+vfa_fw:
+  has_raw_value: xxx
+vis_media: photos
+viscosity:
+  has_raw_value: xxx
+volatile_org_comp:
+- has_raw_value: xxx
+wall_area:
+  has_raw_value: xxx
+wall_const_type: frame construction
+wall_finish_mat: plaster
+wall_height:
+  has_raw_value: xxx
+wall_loc: north
+wall_surf_treatment: painted
+wall_texture: knockdown
+wall_thermal_mass:
+  has_raw_value: xxx
+wall_water_mold:
+  has_raw_value: xxx
+wastewater_type:
+  has_raw_value: xxx
 water_cont_soil_meth: MIxS doesn't provide an example
 water_content:
 - MIxS doesn't provide an example 1
 - MIxS doesn't provide an example 2
+water_current:
+  has_raw_value: xxx
+water_cut:
+  has_raw_value: xxx
+water_feat_size:
+  has_raw_value: xxx
+water_feat_type: fountain
+water_prod_rate:
+  has_raw_value: xxx
+water_temp_regm:
+- has_raw_value: xxx
 watering_regm:
 - has_raw_value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+weekday: Monday
+win:
+  has_raw_value: xxx
+wind_direction:
+  has_raw_value: xxx
+wind_speed:
+  has_raw_value: xxx
+window_cond: damaged
+window_cover: blinds
+window_horiz_pos: left
+window_loc: north
+window_mat: fiberglass
+window_open_freq:
+  has_raw_value: xxx
+window_size:
+  has_raw_value: xxx
+window_status:
+  has_raw_value: xxx
+window_type: single-hung sash window
+window_vert_pos: bottom
+window_water_mold:
+  has_raw_value: xxx
+xylene:
+  has_raw_value: xxx
 zinc:
   has_raw_value: 2.5 mg/kg
 
 ```
-## MetagenomeSequencingActivity-from-metagenome_seequencing_activity_json
+## DataObject-2
 ### Input
 ```yaml
-ended_at_time: '2021-09-15T10:13:20+00:00'
-execution_resource: JGI
-git_url: ''
-has_input:
-- nmdc:unvalidated_placeholder
-has_output:
-- nmdc:22afa3d49b73eaec2e9787a6b88fbdc3
-id: nmdc:wfmsa-99-qwertyuiop
-name: Sequencing Activity for nmdc:mga0vx38
+description: Assembled scaffold fasta for gold:Gp0061273
+file_size_bytes: 205297945
+id: nmdc:dobj-99-PqBJvW
+name: assembly_scaffolds.fna
+type: nmdc:DataObject
+
+```
+## Biosample-embargoed
+### Input
+```yaml
+embargoed: true
+env_broad_scale:
+  has_raw_value: ENVO:00002030
+  term:
+    id: ENVO:00002030
+env_local_scale:
+  has_raw_value: ENVO:00002169
+  term:
+    id: ENVO:00002169
+env_medium:
+  has_raw_value: ENVO:00005792
+  term:
+    id: ENVO:00005792
+id: nmdc:bsm-99-dtTMNb
 part_of:
-- nmdc:mga0vx38
-started_at_time: '2021-08-05T14:48:51+00:00'
-type: nmdc:MetagenomeSequencing
-version: v1.0.0
-was_informed_by: gold:Gp0213371
+- gold:Gs0110115
 
 ```
-## Study-minimal
+## Database-MetabolomicsAnalysisActivity-1
 ### Input
 ```yaml
-id: nmdc:sty-11-ab
-
-```
-## Study-exhaustive
-### Input
-```yaml
-abstract: Nothing was studied.
-alternative_descriptions:
-- any string 1
-- any string 2
-alternative_identifiers:
-- any string A1
-- any string A2
-alternative_names:
-- any string 1
-- any string 2
-alternative_titles:
-- any string 1
-- any string 2
-description: see also name, title, objective, various alternatives
-doi:
-  has_raw_value: https://doi.org/10.1126/science.1058040
-ecosystem: unconstrained text. should be validated against the controlled vocabulary,
-  by the sample's environmental package. would also be nice to align the CV with MIxS
-  environmental triads
-ecosystem_category: unconstrained text
-ecosystem_subtype: unconstrained text
-ecosystem_type: unconstrained text
-emsl_proposal_doi: any string
-emsl_proposal_identifier: any string EP1
-ess_dive_datasets:
-- any string 1
-- any string 2
-funding_sources:
-- any string 1
-- any string 2
-gold_study_identifiers:
-- GOLD:Gs12345
-- GOLD:Gs90909
-has_credit_associations:
-- applied_role: Funding acquisition
-  applied_roles:
-  - Supervision
-  - Conceptualization
-  applies_to_person:
-    email: jcventer@jcvi.org
-    has_raw_value: Craig Venter
-    name: J. Craig Venter
-    orcid: ORCID:0000-0002-7086-765X
-    profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
-    was_generated_by: nmdc:any_string_1
-    websites:
-    - https://www.jcvi.org/
-    - https://www.jcvi.org/about/j-craig-venter
-  type: any string
-- applied_roles:
-  - Investigation
-  - Supervision
-  applies_to_person:
-    name: Tanja Davidsen
-id: nmdc:sty-11-ab
-mgnify_project_identifiers: mgnify.proj:ABC123
-name: see also description, title, objective, various alternatives
-objective: This record, an instance of class Study from the nmdc-schema was had authored,
-  so that the NMDC team would have at least one instance, using all slots, with a
-  mixture of reasonable values and minimally compliant values.
-principal_investigator:
-  email: jcventer@jcvi.org
-  has_raw_value: Craig Venter
-  name: J. Craig Venter
-  orcid: ORCID:0000-0002-7086-765X
-  profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
-  was_generated_by: nmdc:any_string_1
-  websites:
-  - https://www.jcvi.org/
-  - https://www.jcvi.org/about/j-craig-venter
-publications:
-- any string 1
-- any string 2
-related_identifiers: any string R1
-relevant_protocols:
-- any string 1
-- any string 2
-specific_ecosystem: unconstrained text
-study_image:
-- description: Photo of Craig Venter Institute, Rockville, Maryland
-  display_order: '1'
-  has_raw_value: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
-  url: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
-  was_generated_by: nmdc:any_string_1
-- description: Photo of Craig Venter Institute, La Jolla, California
-  display_order: '2'
-  has_raw_value: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
-  url: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
-  was_generated_by: nmdc:any_string_1
-title: Sample Exhaustive Biosample instance. Although all of these values should pass
-  validation, that does not mean that any Biosample of any type would necessarily
-  have this particular combination of values.
-type: any string
-websites:
-- https://w3id.org/nmdc
-- https://w3id.org/linkml
-
-```
-## OmicsProcessing-1
-### Input
-```yaml
-add_date: 30-OCT-14 12.00.00.000000000 AM
-alternative_identifiers:
-- gold:Gp0108335
-has_input:
-- gold:Gb0108335
-has_output:
-- jgi:551a20d30d878525404e90d5
-id: nmdc:omprc-99-zUCd5N
-mod_date: 22-MAY-20 06.13.12.927000000 PM
-name: Thawing permafrost microbial communities from the Arctic, studying carbon transformations
-  - Permafrost 712P3D
-ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
-  carbon transformations - Permafrost 712P3D
-omics_type:
-  has_raw_value: Metagenome
-part_of:
-- gold:Gs0112340
-processing_institution: JGI
-type: nmdc:OmicsProcessing
-
-```
-## Database-mags-activities
-### Input
-```yaml
-mags_activity_set:
-- binned_contig_num: 489
-  ended_at_time: '2021-01-10T00:00:00+00:00'
-  execution_resource: NERSC - Cori
-  git_url: https://img.jgi.doe.gov
+metabolomics_analysis_activity_set:
+- ended_at_time: '2021-09-15T10:13:20+00:00'
+  execution_resource: NERSC cori
+  git_url: https://example.org/WorkflowExecutionActivity
+  has_calibration: calibration with 0.01% phosphoric acid
   has_input:
-  - nmdc:0a3d00715d01ad7b8f3aee59b674dfe9
-  - nmdc:668d207be5ea844f988fbfb2813564cc
-  - nmdc:b7e9c8d0bffdd13ace6f862a61fa87d2
+  - nmdc:i1
+  - nmdc:i2
   has_output:
-  - nmdc:818f5a47d1371295f9313909ea12eb50
-  - nmdc:e0b7421514f976cb7ad8c343cf3077a9
-  - nmdc:a755bb87aded36aefbd8022506a793c7
-  - nmdc:1346fe25b6ff22180eb3a51204e0b1fc
-  id: nmdc:wfmag-99-5MiDJM
-  input_contig_num: 169782
-  low_depth_contig_num: 0
-  mags_list:
-  - bin_name: bins.1
-    bin_quality: LQ
-    completeness: 11.42
-    contamination: 0.21
-    gene_count: 250
-    num_16s: 0
-    num_23s: 0
-    num_5s: 1
-    num_t_rna: 1
-    number_of_contig: 52
-  - bin_name: bins.2
-    bin_quality: LQ
-    completeness: 51.25
-    contamination: 10.34
-    gene_count: 2548
-    num_16s: 0
-    num_23s: 0
-    num_5s: 1
-    num_t_rna: 26
-    number_of_contig: 426
-  - bin_name: bins.3
-    bin_quality: LQ
-    completeness: 2
-    contamination: 0
-    gene_count: 294
-    num_16s: 0
-    num_23s: 0
-    num_5s: 0
-    num_t_rna: 1
-    number_of_contig: 11
-  name: MAGs activiity 1781_86101
-  started_at_time: '2021-01-10T00:00:00+00:00'
-  too_short_contig_num: 159810
-  type: nmdc:MAGsAnalysisActivity
-  unbinned_contig_num: 9483
-  was_informed_by: gold:Gp0115663
-- binned_contig_num: 206
-  ended_at_time: '2021-01-10T00:00:00+00:00'
-  execution_resource: NERSC - Cori
-  git_url: https://img.jgi.doe.gov
+  - nmdc:o1
+  - nmdc:o2
+  id: nmdc:wfmb-99-ABCDEF
+  name: Metabolomics Analysis Activity for nmdc:wfmb-99-ABCDEF
+  started_at_time: '2021-08-05T14:48:51+00:00'
+  type: WorkflowExecutionActivity
+  was_informed_by: nmdc:a1
+
+```
+## Database-with-MetagenomeSequencingActivity
+### Input
+```yaml
+metagenome_sequencing_activity_set:
+- ended_at_time: '2021-09-15T10:13:20+00:00'
+  execution_resource: JGI
+  git_url: ''
   has_input:
-  - nmdc:b78f599c21fb31b00d3f8a3c56daeb88
-  - nmdc:662dc676b0b5a486248357f5b887c18b
-  - nmdc:bc034c7024043ea88b44d0897bb5bece
+  - nmdc:unvalidated_placeholder
   has_output:
-  - nmdc:c24915651cfdfc91f3e6b5bac679c3af
-  - nmdc:e8ec230bfe68a272b34540e7f5ab5b2b
-  - nmdc:474fa29bd39452fa80f5a32e9e6be6f4
-  - nmdc:9800add41d26829494265ba81a100c53
-  id: nmdc:wfmag-99-VOgM5i
-  input_contig_num: 78376
-  low_depth_contig_num: 0
-  mags_list:
-  - bin_name: bins.1
-    bin_quality: LQ
-    completeness: 25.86
-    contamination: 0
-    gene_count: 401
-    num_16s: 0
-    num_23s: 0
-    num_5s: 0
-    num_t_rna: 4
-    number_of_contig: 74
-  - bin_name: bins.2
-    bin_quality: LQ
-    completeness: 0
-    contamination: 0
-    gene_count: 383
-    num_16s: 0
-    num_23s: 0
-    num_5s: 0
-    num_t_rna: 5
-    number_of_contig: 74
-  - bin_name: bins.3
-    bin_quality: LQ
-    completeness: 17.61
-    contamination: 0
-    gene_count: 313
-    num_16s: 0
-    num_23s: 0
-    num_5s: 0
-    num_t_rna: 7
-    number_of_contig: 58
-  name: MAGs activiity 1781_86089
-  started_at_time: '2021-01-10T00:00:00+00:00'
-  too_short_contig_num: 75364
-  type: nmdc:MAGsAnalysisActivity
-  unbinned_contig_num: 2806
-  was_informed_by: gold:Gp0115664
+  - nmdc:22afa3d49b73eaec2e9787a6b88fbdc3
+  id: nmdc:wfmsa-99-qwertyuiop
+  name: Sequencing Activity for nmdc:mga0vx38
+  part_of:
+  - nmdc:mga0vx38
+  started_at_time: '2021-08-05T14:48:51+00:00'
+  type: nmdc:MetagenomeSequencing
+  version: v1.0.0
+  was_informed_by: gold:Gp0213371
 
 ```
-## Database-functional-annotations
-### Input
-```yaml
-functional_annotation_set:
-- has_function: KEGG_PATHWAY:rsk00410
-- has_function: KEGG.REACTION:R00100
-- has_function: RHEA:12345
-- has_function: MetaCyc:RXN-14904
-- has_function: EC:1.1.1.1
-- has_function: GO:0032571
-- has_function: MetaNetX:MNXR101574
-- has_function: SEED:Biotin_biosynthesis
-- has_function: KEGG.ORTHOLOGY:K00001
-- has_function: EGGNOG:veNOG12876
-- has_function: PFAM:PF11779
-- has_function: TIGRFAM:TIGR00010
-- has_function: SUPFAM:SSF57615
-- has_function: CATH:1.10.10.200
-- has_function: PANTHER.FAMILY:PTHR12345
-
-```
-## DataObject-minimal
-### Input
-```yaml
-description: Crispr Terms for nmdc:ann0vx38
-id: nmdc:dobj-11-dtTMNb
-name: Crispr Terms
-
-```
-## Study-credit-1
-### Input
-```yaml
-has_credit_associations:
-- applied_roles:
-  - Data curation
-  applies_to_person:
-    orcid: orcid:0000-0002-1825-00
-- applied_roles:
-  - Software
-  applies_to_person:
-    orcid: orcid:0000-0001-9076-6066
-id: nmdc:sty-99-WoeqAi
-
-```
-## MetabolomicsAnalysisActivity-1
-### Input
-```yaml
-ended_at_time: '2021-09-15T10:13:20+00:00'
-execution_resource: NERSC cori
-git_url: https://example.org/WorkflowExecutionActivity
-has_calibration: calibration with 0.01% phosphoric acid
-has_input:
-- nmdc:i1
-- nmdc:i2
-has_output:
-- nmdc:o1
-- nmdc:o2
-id: nmdc:wfmb-99-ABCDEF
-started_at_time: '2021-08-05T14:48:51+00:00'
-type: WorkflowExecutionActivity
-was_informed_by: nmdc:a1
-
-```
-## Biosample-minimal
+## Biosample-minimal-2
 ### Input
 ```yaml
 env_broad_scale:
@@ -1516,6 +3089,25 @@ env_medium:
 id: nmdc:bsm-99-dtTMNb
 part_of:
 - gold:Gs0110115
+
+```
+## Database-nom_analysis_activity_set
+### Input
+```yaml
+nom_analysis_activity_set:
+- ended_at_time: '2018-11-13T20:20:39+00:00'
+  execution_resource: xxx
+  git_url: xxx
+  has_input:
+  - nmdc:1
+  - nmdc:2
+  has_output:
+  - nmdc:3
+  - nmdc:4
+  id: nmdc:wfnom-99-abcdefg
+  started_at_time: '2018-11-13T20:20:39+00:00'
+  type: xxx
+  was_informed_by: nmdc:act-99-abcdefg
 
 ```
 ## Biosample-exhaustive-issue-796-bye-yq-for-7-4-10
@@ -1912,6 +3504,46 @@ zinc:
   has_raw_value: 2.5 mg/kg
 
 ```
+## OmicsProcessing-1
+### Input
+```yaml
+add_date: 30-OCT-14 12.00.00.000000000 AM
+alternative_identifiers:
+- gold:Gp0108335
+has_input:
+- gold:Gb0108335
+has_output:
+- jgi:551a20d30d878525404e90d5
+id: nmdc:omprc-99-zUCd5N
+mod_date: 22-MAY-20 06.13.12.927000000 PM
+name: Thawing permafrost microbial communities from the Arctic, studying carbon transformations
+  - Permafrost 712P3D
+ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
+  carbon transformations - Permafrost 712P3D
+omics_type:
+  has_raw_value: Metagenome
+part_of:
+- gold:Gs0112340
+processing_institution: JGI
+type: nmdc:OmicsProcessing
+
+```
+## Database-pooling_set-exhaustive
+### Input
+```yaml
+pooling_set:
+- alternative_identifiers:
+  - bare:xxx
+  description: xxx
+  has_inputs:
+  - bare:xxx
+  - bare:yyy
+  has_outputs:
+  - bare:xxx
+  id: bare:value
+  name: first pooling process
+
+```
 ## DataObject-3
 ### Input
 ```yaml
@@ -1920,70 +3552,6 @@ file_size_bytes: 32787380
 id: nmdc:dobj-99-izwYW6
 name: mapping_stats.txt
 type: nmdc:DataObject
-
-```
-## Database-sample-prep
-### Input
-```yaml
-dissolving_activity_set:
-- dissolution_aided_by:
-    activity_speed:
-      has_numeric_value: 800
-      has_unit: RPM
-    activity_time:
-      has_numeric_value: 2
-      has_unit: hours
-    device_type: orbital_shaker
-  dissolution_reagent: deionized_water
-  dissolution_volume:
-    has_numeric_value: 30
-    has_unit: mL
-  dissolved_in:
-    container_size:
-      has_numeric_value: 50
-      has_unit: mL
-    container_type: screw_top_conical
-  material_input: nmdc:matsm-b1fb4ff1-e59b-4e2b-a8f9-b95ea6ba4135
-  material_output: nmdc:matsm-181a7a0a-4b04-4a22-9b89-db53e2ccdc99
-material_sample_set:
-- description: a soil biosample
-  id: nmdc:matsm-99-PVhTGD
-  name: monet_data:soil_1
-- description: a 6 gram aliquot of monet_data:soil_1
-  id: nmdc:matsm-99-m7PfV8
-  name: nmdc:matsm-b1fb4ff1-e59b-4e2b-a8f9-b95ea6ba4135
-- description: monet_data:somextract_6 dissolved in 30 mL of water
-  id: nmdc:matsm-99-j670OL
-  name: monet_data:somextract_7
-- description: something at the beginning of a reaction
-  id: nmdc:matsm-99-KyiIwv
-  name: monet_data:derive_4
-- description: something at the end of a reaction
-  id: nmdc:matsm-99-KaZog6
-  name: monet_data:derive_5
-material_sampling_activity_set:
-- amount_collected:
-    has_numeric_value: 6
-    has_unit: grams
-  biosample_input: nmdc:matsm-bfc5b458-1c62-44e7-886a-dd3a2cc7ad67
-  collected_into:
-    container_size:
-      has_numeric_value: 50
-      has_unit: mL
-    container_type: screw_top_conical
-  material_output: nmdc:matsm-b1fb4ff1-e59b-4e2b-a8f9-b95ea6ba4135
-  sampling_method: weighing
-reaction_activity_set:
-- material_input: nmdc:matsm-31380f3c-cea3-4f68-a8c6-cd84efa5e622
-  material_output: nmdc:matsm-9fe9277b-454a-4257-a825-3b4725df665e
-  reaction_aided_by:
-    activity_temperature:
-      has_numeric_value: 37
-      has_unit: degrees Celsius
-    activity_time:
-      has_numeric_value: 1.5
-      has_unit: hours
-    device_type: thermomixer
 
 ```
 ## Database-nmdc-example
@@ -2249,16 +3817,56 @@ study_set:
   type: nmdc:Study
 
 ```
-## FunctionalAnnotation-invalid-function
+## Pooling-minimal
 ### Input
 ```yaml
-has_function: KEGG_PATHWAY:XOXOXOXO
+id: bare:value
+name: first pooling process
 
 ```
-## Biosample-non_boolean_embargo
+## MetabolomicsAnalysisActivity-1
 ### Input
 ```yaml
-embargoed: 999
+ended_at_time: '2021-09-15T10:13:20+00:00'
+execution_resource: NERSC cori
+git_url: https://example.org/WorkflowExecutionActivity
+has_calibration: calibration with 0.01% phosphoric acid
+has_input:
+- nmdc:i1
+- nmdc:i2
+has_output:
+- nmdc:o1
+- nmdc:o2
+id: nmdc:wfmb-99-ABCDEF
+started_at_time: '2021-08-05T14:48:51+00:00'
+type: WorkflowExecutionActivity
+was_informed_by: nmdc:a1
+
+```
+## Biosample-with-fire
+### Input
+```yaml
+env_broad_scale:
+  has_raw_value: ENVO:00002030
+  term:
+    id: ENVO:00002030
+env_local_scale:
+  has_raw_value: ENVO:00002169
+  term:
+    id: ENVO:00002169
+env_medium:
+  has_raw_value: ENVO:00005792
+  term:
+    id: ENVO:00005792
+fire: 1871-10-01 to 1871-10-31
+id: nmdc:bsm-99-dtTMNb
+part_of:
+- gold:Gs0110115
+
+```
+## Biosample-minimal
+### Input
+```yaml
 env_broad_scale:
   has_raw_value: ENVO:00002030
   term:
@@ -2276,99 +3884,88 @@ part_of:
 - gold:Gs0110115
 
 ```
-## Database-nom_analysis_activity_set-invalid-string-ended_at_time
+## MetagenomeSequencingActivity-from-metagenome_seequencing_activity_json
 ### Input
 ```yaml
-nom_analysis_activity_set:
-- ended_at_time: '2018-11-13T20:20:39+00:00'
-  execution_resource: xxx
-  git_url: xxx
-  has_input:
-  - nmdc:1
-  - nmdc:2
-  has_output:
-  - nmdc:3
-  - nmdc:4
-  id: nmdc:wfnom-99-abcdefg
-  started_at_time: 2018-11-111
-  type: xxx
-  was_informed_by: nmdc:act-99-abcdefg
+ended_at_time: '2021-09-15T10:13:20+00:00'
+execution_resource: JGI
+git_url: ''
+has_input:
+- nmdc:unvalidated_placeholder
+has_output:
+- nmdc:22afa3d49b73eaec2e9787a6b88fbdc3
+id: nmdc:wfmsa-99-qwertyuiop
+name: Sequencing Activity for nmdc:mga0vx38
+part_of:
+- nmdc:mga0vx38
+started_at_time: '2021-08-05T14:48:51+00:00'
+type: nmdc:MetagenomeSequencing
+version: v1.0.0
+was_informed_by: gold:Gp0213371
 
 ```
-## DataObject-no-id-or-name
+## Study-credit-1
 ### Input
 ```yaml
-description: Crispr Terms for nmdc:ann0vx38
+has_credit_associations:
+- applied_roles:
+  - Data curation
+  applies_to_person:
+    orcid: orcid:0000-0002-1825-00
+- applied_roles:
+  - Software
+  applies_to_person:
+    orcid: orcid:0000-0001-9076-6066
+id: nmdc:sty-99-WoeqAi
 
 ```
-## Database-invalid-omics-processing
+## FunctionalAnnotation-exhaustive
 ### Input
 ```yaml
-omics_processing_set:
-- add_date: 30-OCT-14 12.00.00.000000000 AM
-  alternative_identifiers:
-  - gold:Gp0108335
-  has_input:
-  - gold:Gb0108335
-  has_output:
-  - jgi:551a20d30d878525404e90d5
-  id: nmdc:omprc-99-zUCd5N
-  mod_date: 22-MAY-20 06.13.12.927000000 PM
-  name: Thawing permafrost microbial communities from the Arctic, studying carbon
-    transformations - Permafrost 712P3D
-  ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
-    carbon transformations - Permafrost 712P3D
-  omics_type:
-    has_awesome_value: Metagenome
-  part_of:
-  - gold:Gs0112340
-  processing_institution: JGI
-  type: nmdc:OmicsProcessing
-- add_date: 30-OCT-14 12.00.00.000000000 AM
-  alternative_identifiers:
-  - gold:Gp0108340
-  has_input:
-  - gold:Gb0108340
-  has_output:
-  - jgi:551a20d50d878525404e90d7
-  id: nmdc:omprc-99-gKlQlF
-  mod_date: 22-MAY-20 06.10.59.590000000 PM
-  name: Thawing permafrost microbial communities from the Arctic, studying carbon
-    transformations - Permafrost 612S3M
-  ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
-    carbon transformations - Permafrost 612S3M
-  omics_type:
-    has_raw_value: Metagenome
-  part_of:
-  - gold:Gs0112340
-  processing_institution: JGI
-  type: nmdc:OmicsProcessing
-- add_date: 30-OCT-14 12.00.00.000000000 AM
-  alternative_identifiers:
-  - gold:Gp0108341
-  has_input:
-  - gold:Gb0108341
-  has_output:
-  - jgi:551a20d90d878525404e90e1
-  id: nmdc:omprc-99-5kgIJR
-  mod_date: 22-MAY-20 06.09.46.171000000 PM
-  name: Thawing permafrost microbial communities from the Arctic, studying carbon
-    transformations - Permafrost 712S3S
-  ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
-    carbon transformations - Permafrost 712S3S
-  omics_type:
-    has_raw_value: Metagenome
-  part_of:
-  - gold:Gs0112340
-  processing_institution: JGI
-  type: nmdc:OmicsProcessing
+has_function: KEGG_PATHWAY:abc12345
+subject: nmdc:gene_product_1
+was_generated_by: nmdc:activity_1
 
 ```
-## Database-biosamples-lat_lon-with-GLV-missing-latitude
+## FunctionalAnnotation-minimal
+### Input
+```yaml
+has_function: KEGG_PATHWAY:abc12345
+
+```
+## Database-functional-annotations
+### Input
+```yaml
+functional_annotation_set:
+- has_function: KEGG_PATHWAY:rsk00410
+- has_function: KEGG.REACTION:R00100
+- has_function: RHEA:12345
+- has_function: MetaCyc:RXN-14904
+- has_function: EC:1.1.1.1
+- has_function: GO:0032571
+- has_function: MetaNetX:MNXR101574
+- has_function: SEED:Biotin_biosynthesis
+- has_function: KEGG.ORTHOLOGY:K00001
+- has_function: EGGNOG:veNOG12876
+- has_function: PFAM:PF11779
+- has_function: TIGRFAM:TIGR00010
+- has_function: SUPFAM:SSF57615
+- has_function: CATH:1.10.10.200
+- has_function: PANTHER.FAMILY:PTHR12345
+
+```
+## Database-Biosample-invalid_range
 ### Input
 ```yaml
 biosample_set:
-- env_broad_scale:
+- add_date: 28-JUL-14 12.00.00.000000000 AM
+  community: microbial communities
+  description: Bulk Aqueous phase filtered water
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: Groundwater
+  ecosystem_type: Freshwater
+  env_broad_scale:
     has_raw_value: ENVO:00002030
     term:
       id: ENVO:00002030
@@ -2380,12 +3977,137 @@ biosample_set:
     has_raw_value: ENVO:00005792
     term:
       id: ENVO:00005792
-  id: nmdc:bsm-99-dtTMNb
+  geo_loc_name:
+    has_raw_value: Lithgow
+  gold_biosample_identifiers:
+  - gold:Gb0101224
+  habitat: Coalbed water
+  id: nmdc:bsm-6057d02c-664c-41c9-8486-3624ca845747
+  lat_lon:
+    has_raw_value: 100
+    latitude: '-33.460524'
+    longitude: '150.168149'
+  location: from the Lithgow State Coal Mine, New South Wales, Australia
+  mod_date: 26-AUG-16 01.50.27.000000000 PM
+  name: Lithgow State Coal Mine Calcium nutrients (early)
+  ncbi_taxonomy_name: coal metagenome
+  part_of:
+  - gold:Gs0128849
+  sample_collection_site: Lithgow State Coal Mine
+  specific_ecosystem: Coalbed water
+  type: nmdc:Biosample
+- add_date: 28-JUL-14 12.00.00.000000000 AM
+  community: microbial communities
+  description: Bulk Aqueous phase filtered water
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: Groundwater
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  geo_loc_name:
+    has_raw_value: Lithgow
+  gold_biosample_identifiers:
+  - gold:Gb0101225
+  habitat: Coalbed water
+  id: nmdc:bsm-e924072f-98b5-4f88-a796-a7ba1d8ddd92
   lat_lon:
     has_raw_value: -33.460524 150.168149
+    latitude: -33.460524
     longitude: 150.168149
+  location: from the Lithgow State Coal Mine, New South Wales, Australia
+  mod_date: 26-AUG-16 01.50.27.000000000 PM
+  name: Lithgow State Coal Mine Calcium nutrients Extra
+  ncbi_taxonomy_name: coal metagenome
   part_of:
-  - gold:Gs0110115
+  - gold:Gs0128849
+  sample_collection_site: Lithgow State Coal Mine
+  specific_ecosystem: Coalbed water
+  type: nmdc:Biosample
+- add_date: 28-JUL-14 12.00.00.000000000 AM
+  community: microbial communities
+  description: Bulk Aqueous phase filtered water
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: Groundwater
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  geo_loc_name:
+    has_raw_value: Lithgow
+  gold_biosample_identifiers:
+  - gold:Gb0101226
+  habitat: Coalbed water
+  id: nmdc:bsm-61c3332d-f654-4db8-8d2f-59475894daa5
+  lat_lon:
+    has_raw_value: -33.460524 150.168149
+    latitude: -33.460524
+    longitude: 150.168149
+  location: from the Lithgow State Coal Mine, New South Wales, Australia
+  mod_date: 26-AUG-16 01.50.27.000000000 PM
+  name: Lithgow State Coal Mine Calcium nutrients
+  ncbi_taxonomy_name: coal metagenome
+  part_of:
+  - gold:Gs0128849
+  sample_collection_site: Lithgow State Coal Mine
+  specific_ecosystem: Coalbed water
+  type: nmdc:Biosample
+
+```
+## Biosample-invalid_fire
+### Input
+```yaml
+env_broad_scale:
+  has_raw_value: ENVO:00002030
+  term:
+    id: ENVO:00002030
+env_local_scale:
+  has_raw_value: ENVO:00002169
+  term:
+    id: ENVO:00002169
+env_medium:
+  has_raw_value: ENVO:00005792
+  term:
+    id: ENVO:00005792
+fire: like a volcano
+id: nmdc:bsm-99-dtTMNb
+part_of:
+- gold:Gs0110115
+
+```
+## Study-invalid-1
+### Input
+```yaml
+has_credit_associations:
+- applied_role: Value Not In Enum 1
+  applies_to_person:
+    orcid: orcid:0000-0002-1825-00
+  type: credit association
+- applied_role: ValueNotInEnum2
+  applies_to_person:
+    orcid: orcid:0000-0001-9076-6066
+  type: credit association
+id: example:123
 
 ```
 ## Database-biosamples-lat_lon-with-GLV-missing-longitude
@@ -2410,6 +4132,58 @@ biosample_set:
     latitude: -33.460524
   part_of:
   - gold:Gs0110115
+
+```
+## Database-invalid-studies
+### Input
+```yaml
+study_set:
+- baz: blah
+  description: Using analytical expertise at both the JGI and EMSL, we plan to follow
+    successional patterns of protein expression
+  doi:
+    has_raw_value: 10.25585/1487760
+  ecosystem: Host-associated
+  ecosystem_category: Plants
+  ecosystem_subtype: Soil
+  ecosystem_type: Rhizosphere
+  foo: bar
+  id: gold:Gs0110115
+  name: Avena fatua rhizosphere microbial communities from Hopland, California, USA,
+    for root-enhanced decomposition of organic matter studies
+  principal_investigator_name:
+    has_raw_value: Mary Firestone
+  specific_ecosystem: Unclassified
+  type: nmdc:Study
+- description: We propose to utilize the unique resources at EMSL and the JGI to obtain
+    a better understanding of the phylogenetic and functional diversity of cyanobacteria
+  doi:
+    has_raw_value: 10.25585/1487758
+  ecosystem: Host-associated
+  ecosystem_category: Microbial
+  ecosystem_subtype: Unclassified
+  ecosystem_type: Bacteria
+  id: gold:Gs0110132
+  name: Cyanobacterial communities from the Joint Genome Institute, California, USA
+  principal_investigator_name:
+    has_raw_value: Matthias Hess
+  specific_ecosystem: Unclassified
+  type: nmdc:Study
+- description: A fundamental challenge of microbial environmental science is to understand
+    how earth systems will respond to climate change
+  doi:
+    has_raw_value: 10.25585/1487764
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Wetlands
+  ecosystem_type: Soil
+  id: gold:Gs0112340
+  name: Thawing permafrost microbial communities from the Arctic, studying carbon
+    transformations
+  principal_investigator_name:
+    has_raw_value: Virginia Rich
+  specific_ecosystem: Permafrost
+  type: nmdc:Study
 
 ```
 ## Database-biosample_mismatch_regex
@@ -2533,10 +4307,9 @@ biosample_set:
   type: nmdc:Biosample
 
 ```
-## Biosample-invalid-embargoed
+## Biosample-missing-id
 ### Input
 ```yaml
-embargoed: 999
 env_broad_scale:
   has_raw_value: ENVO:00002030
   term:
@@ -2549,7 +4322,6 @@ env_medium:
   has_raw_value: ENVO:00005792
   term:
     id: ENVO:00005792
-id: nmdc:bsm-99-dtTMNb
 part_of:
 - gold:Gs0110115
 
@@ -2578,18 +4350,11 @@ processing_institution: JGI
 type: nmdc:OmicsProcessing
 
 ```
-## Database-Biosample-invalid_range
+## Database-biosamples-lat_lon-with-GLV-missing-latitude
 ### Input
 ```yaml
 biosample_set:
-- add_date: 28-JUL-14 12.00.00.000000000 AM
-  community: microbial communities
-  description: Bulk Aqueous phase filtered water
-  ecosystem: Environmental
-  ecosystem_category: Aquatic
-  ecosystem_subtype: Groundwater
-  ecosystem_type: Freshwater
-  env_broad_scale:
+- env_broad_scale:
     has_raw_value: ENVO:00002030
     term:
       id: ENVO:00002030
@@ -2601,388 +4366,12 @@ biosample_set:
     has_raw_value: ENVO:00005792
     term:
       id: ENVO:00005792
-  geo_loc_name:
-    has_raw_value: Lithgow
-  gold_biosample_identifiers:
-  - gold:Gb0101224
-  habitat: Coalbed water
-  id: nmdc:bsm-6057d02c-664c-41c9-8486-3624ca845747
+  id: nmdc:bsm-99-dtTMNb
   lat_lon:
-    has_raw_value: 100
-    latitude: '-33.460524'
-    longitude: '150.168149'
-  location: from the Lithgow State Coal Mine, New South Wales, Australia
-  mod_date: 26-AUG-16 01.50.27.000000000 PM
-  name: Lithgow State Coal Mine Calcium nutrients (early)
-  ncbi_taxonomy_name: coal metagenome
+    has_raw_value: -33.460524 150.168149
+    longitude: 150.168149
   part_of:
-  - gold:Gs0128849
-  sample_collection_site: Lithgow State Coal Mine
-  specific_ecosystem: Coalbed water
-  type: nmdc:Biosample
-- add_date: 28-JUL-14 12.00.00.000000000 AM
-  community: microbial communities
-  description: Bulk Aqueous phase filtered water
-  ecosystem: Environmental
-  ecosystem_category: Aquatic
-  ecosystem_subtype: Groundwater
-  ecosystem_type: Freshwater
-  env_broad_scale:
-    has_raw_value: ENVO:00002030
-    term:
-      id: ENVO:00002030
-  env_local_scale:
-    has_raw_value: ENVO:00002169
-    term:
-      id: ENVO:00002169
-  env_medium:
-    has_raw_value: ENVO:00005792
-    term:
-      id: ENVO:00005792
-  geo_loc_name:
-    has_raw_value: Lithgow
-  gold_biosample_identifiers:
-  - gold:Gb0101225
-  habitat: Coalbed water
-  id: nmdc:bsm-e924072f-98b5-4f88-a796-a7ba1d8ddd92
-  lat_lon:
-    has_raw_value: -33.460524 150.168149
-    latitude: -33.460524
-    longitude: 150.168149
-  location: from the Lithgow State Coal Mine, New South Wales, Australia
-  mod_date: 26-AUG-16 01.50.27.000000000 PM
-  name: Lithgow State Coal Mine Calcium nutrients Extra
-  ncbi_taxonomy_name: coal metagenome
-  part_of:
-  - gold:Gs0128849
-  sample_collection_site: Lithgow State Coal Mine
-  specific_ecosystem: Coalbed water
-  type: nmdc:Biosample
-- add_date: 28-JUL-14 12.00.00.000000000 AM
-  community: microbial communities
-  description: Bulk Aqueous phase filtered water
-  ecosystem: Environmental
-  ecosystem_category: Aquatic
-  ecosystem_subtype: Groundwater
-  ecosystem_type: Freshwater
-  env_broad_scale:
-    has_raw_value: ENVO:00002030
-    term:
-      id: ENVO:00002030
-  env_local_scale:
-    has_raw_value: ENVO:00002169
-    term:
-      id: ENVO:00002169
-  env_medium:
-    has_raw_value: ENVO:00005792
-    term:
-      id: ENVO:00005792
-  geo_loc_name:
-    has_raw_value: Lithgow
-  gold_biosample_identifiers:
-  - gold:Gb0101226
-  habitat: Coalbed water
-  id: nmdc:bsm-61c3332d-f654-4db8-8d2f-59475894daa5
-  lat_lon:
-    has_raw_value: -33.460524 150.168149
-    latitude: -33.460524
-    longitude: 150.168149
-  location: from the Lithgow State Coal Mine, New South Wales, Australia
-  mod_date: 26-AUG-16 01.50.27.000000000 PM
-  name: Lithgow State Coal Mine Calcium nutrients
-  ncbi_taxonomy_name: coal metagenome
-  part_of:
-  - gold:Gs0128849
-  sample_collection_site: Lithgow State Coal Mine
-  specific_ecosystem: Coalbed water
-  type: nmdc:Biosample
-
-```
-## Study-invalid-1
-### Input
-```yaml
-has_credit_associations:
-- applied_role: Value Not In Enum 1
-  applies_to_person:
-    orcid: orcid:0000-0002-1825-00
-  type: credit association
-- applied_role: ValueNotInEnum2
-  applies_to_person:
-    orcid: orcid:0000-0001-9076-6066
-  type: credit association
-id: example:123
-
-```
-## Database-biosample_missing_required_field
-### Input
-```yaml
-biosample_set:
-- add_date: 28-JUL-14 12.00.00.000000000 AM
-  community: microbial communities
-  description: Bulk Aqueous phase filtered water
-  ecosystem: Environmental
-  ecosystem_category: Aquatic
-  ecosystem_subtype: Groundwater
-  ecosystem_type: Freshwater
-  env_broad_scale:
-    has_raw_value: ENVO:00002030
-    term:
-      id: ENVO:00002030
-  env_local_scale:
-    has_raw_value: ENVO:00002169
-    term:
-      id: ENVO:00002169
-  env_medium:
-    has_raw_value: ENVO:00005792
-    term:
-      id: ENVO:00005792
-  geo_loc_name:
-    has_raw_value: Lithgow
-  habitat: Coalbed water
-  lat_lon:
-    has_raw_value: -33.460524 150.168149
-    latitude: -33.460524
-    longitude: 150.168149
-  location: from the Lithgow State Coal Mine, New South Wales, Australia
-  mod_date: 26-AUG-16 01.50.27.000000000 PM
-  name: Lithgow State Coal Mine Calcium nutrients (early)
-  ncbi_taxonomy_name: coal metagenome
-  sample_collection_site: Lithgow State Coal Mine
-  specific_ecosystem: Coalbed water
-  type: nmdc:Biosample
-- add_date: 28-JUL-14 12.00.00.000000000 AM
-  community: microbial communities
-  description: Bulk Aqueous phase filtered water
-  ecosystem: Environmental
-  ecosystem_category: Aquatic
-  ecosystem_subtype: Groundwater
-  ecosystem_type: Freshwater
-  env_broad_scale:
-    has_raw_value: ENVO:00002030
-    term:
-      id: ENVO:00002030
-  env_local_scale:
-    has_raw_value: ENVO:00002169
-    term:
-      id: ENVO:00002169
-  env_medium:
-    has_raw_value: ENVO:00005792
-    term:
-      id: ENVO:00005792
-  geo_loc_name:
-    has_raw_value: Lithgow
-  habitat: Coalbed water
-  lat_lon:
-    has_raw_value: -33.460524 150.168149
-    latitude: -33.460524
-    longitude: 150.168149
-  location: from the Lithgow State Coal Mine, New South Wales, Australia
-  mod_date: 26-AUG-16 01.50.27.000000000 PM
-  name: Lithgow State Coal Mine Calcium nutrients Extra
-  ncbi_taxonomy_name: coal metagenome
-  sample_collection_site: Lithgow State Coal Mine
-  specific_ecosystem: Coalbed water
-  type: nmdc:Biosample
-- add_date: 28-JUL-14 12.00.00.000000000 AM
-  community: microbial communities
-  description: Bulk Aqueous phase filtered water
-  ecosystem: Environmental
-  ecosystem_category: Aquatic
-  ecosystem_subtype: Groundwater
-  ecosystem_type: Freshwater
-  env_broad_scale:
-    has_raw_value: ENVO:00002030
-    term:
-      id: ENVO:00002030
-  env_local_scale:
-    has_raw_value: ENVO:00002169
-    term:
-      id: ENVO:00002169
-  env_medium:
-    has_raw_value: ENVO:00005792
-    term:
-      id: ENVO:00005792
-  geo_loc_name:
-    has_raw_value: Lithgow
-  habitat: Coalbed water
-  lat_lon:
-    has_raw_value: -33.460524 150.168149
-    latitude: -33.460524
-    longitude: 150.168149
-  location: from the Lithgow State Coal Mine, New South Wales, Australia
-  mod_date: 26-AUG-16 01.50.27.000000000 PM
-  name: Lithgow State Coal Mine Calcium nutrients
-  ncbi_taxonomy_name: coal metagenome
-  sample_collection_site: Lithgow State Coal Mine
-  specific_ecosystem: Coalbed water
-  type: nmdc:Biosample
-
-```
-## MetagenomeSequencingActivity-no_parthood
-### Input
-```yaml
-ended_at_time: '2021-09-15T10:13:20+00:00'
-execution_resource: JGI
-git_url: ''
-has_input:
-- nmdc:unvalidated_placeholder
-has_output:
-- nmdc:22afa3d49b73eaec2e9787a6b88fbdc3
-id: nmdc:wfmsa-99-qwertyuiop
-name: Sequencing Activity for nmdc:mga0vx38
-part_of: null
-started_at_time: '2021-08-05T14:48:51+00:00'
-type: nmdc:MetagenomeSequencing
-version: v1.0.0
-was_informed_by: gold:Gp0213371
-
-```
-## Database-nom_analysis_activity_set-non-string-ended_at_time
-### Input
-```yaml
-nom_analysis_activity_set:
-- ended_at_time: '2018-11-13T20:20:39+00:00'
-  execution_resource: xxx
-  git_url: xxx
-  has_input:
-  - nmdc:1
-  - nmdc:2
-  has_output:
-  - nmdc:3
-  - nmdc:4
-  id: nmdc:wfnom-99-abcdefg
-  started_at_time: 2018-11-13 20:20:39+00:00
-  type: xxx
-  was_informed_by: nmdc:act-99-abcdefg
-
-```
-## Database-invalid-functional-annotations
-### Input
-```yaml
-functional_annotation_set:
-- has_function: KEGG_PATHWAY:XOXOXOXO
-- has_function: KEGG_PATHWAY:iIiIiIiI
-
-```
-## DataObject-invalid-data_object_type
-### Input
-```yaml
-alternative_identifiers:
-- prefix:value1
-- prefix:value2
-compression_type: any string
-data_object_type: undefined permissible value for `file type enum`
-description: Crispr Terms for nmdc:ann0vx38
-file_size_bytes: 1234
-id: nmdc:dobj-11-dtTMNb
-md5_checksum: 22afa3d49b73eaec2e9787a6b88fbdc3
-name: Crispr Terms
-type: nmdc:DataObject
-url: http://example.com
-was_generated_by: nmdc:invalid_id
-
-```
-## Biosample-missing-id
-### Input
-```yaml
-env_broad_scale:
-  has_raw_value: ENVO:00002030
-  term:
-    id: ENVO:00002030
-env_local_scale:
-  has_raw_value: ENVO:00002169
-  term:
-    id: ENVO:00002169
-env_medium:
-  has_raw_value: ENVO:00005792
-  term:
-    id: ENVO:00005792
-part_of:
-- gold:Gs0110115
-
-```
-## MetagenomeSequencingActivity-bad_id
-### Input
-```yaml
-ended_at_time: '2021-09-15T10:13:20+00:00'
-execution_resource: JGI
-git_url: ''
-has_input:
-- nmdc:unvalidated_placeholder
-has_output:
-- nmdc:22afa3d49b73eaec2e9787a6b88fbdc3
-id: nmdc:107ade35423143e39dc30b12832ac759
-name: Sequencing Activity for nmdc:mga0vx38
-part_of:
-- nmdc:mga0vx38
-started_at_time: '2021-08-05T14:48:51+00:00'
-type: nmdc:MetagenomeSequencing
-version: v1.0.0
-was_informed_by: gold:Gp0213371
-
-```
-## Biosample-invalid_fire
-### Input
-```yaml
-env_broad_scale:
-  has_raw_value: ENVO:00002030
-  term:
-    id: ENVO:00002030
-env_local_scale:
-  has_raw_value: ENVO:00002169
-  term:
-    id: ENVO:00002169
-env_medium:
-  has_raw_value: ENVO:00005792
-  term:
-    id: ENVO:00005792
-fire: like a volcano
-id: nmdc:bsm-99-dtTMNb
-part_of:
-- gold:Gs0110115
-
-```
-## Biosample-incomplete_napa_id
-### Input
-```yaml
-add_date: 28-JUL-14 12.00.00.000000000 AM
-community: microbial communities
-description: Bulk Aqueous phase filtered water
-ecosystem: Environmental
-ecosystem_category: Aquatic
-ecosystem_subtype: Groundwater
-ecosystem_type: Freshwater
-env_broad_scale:
-  has_raw_value: ENVO:00002030
-  term:
-    id: ENVO:00002030
-env_local_scale:
-  has_raw_value: ENVO:00002169
-  term:
-    id: ENVO:00002169
-env_medium:
-  has_raw_value: ENVO:00005792
-  term:
-    id: ENVO:00005792
-geo_loc_name:
-  has_raw_value: Lithgow
-gold_biosample_identifiers:
-- gold:Gb0101224
-habitat: Coalbed water
-id: nmdc:bsm-
-lat_lon:
-  has_raw_value: -33.460524 150.168149
-  latitude: -33.460524
-  longitude: 150.168149
-location: from the Lithgow State Coal Mine, New South Wales, Australia
-mod_date: 26-AUG-16 01.50.27.000000000 PM
-name: Lithgow State Coal Mine Calcium nutrients (early)
-ncbi_taxonomy_name: coal metagenome
-part_of:
-- gold:Gs0110115
-sample_collection_site: Lithgow State Coal Mine
-specific_ecosystem: Coalbed water
-type: nmdc:Biosample
+  - gold:Gs0110115
 
 ```
 ## Database-biosample_single_multi_value_mixup
@@ -3107,56 +4496,56 @@ biosample_set:
   type: nmdc:Biosample
 
 ```
-## Database-invalid-studies
+## Database-nom_analysis_activity_set-non-string-ended_at_time
 ### Input
 ```yaml
-study_set:
-- baz: blah
-  description: Using analytical expertise at both the JGI and EMSL, we plan to follow
-    successional patterns of protein expression
-  doi:
-    has_raw_value: 10.25585/1487760
-  ecosystem: Host-associated
-  ecosystem_category: Plants
-  ecosystem_subtype: Soil
-  ecosystem_type: Rhizosphere
-  foo: bar
-  id: gold:Gs0110115
-  name: Avena fatua rhizosphere microbial communities from Hopland, California, USA,
-    for root-enhanced decomposition of organic matter studies
-  principal_investigator_name:
-    has_raw_value: Mary Firestone
-  specific_ecosystem: Unclassified
-  type: nmdc:Study
-- description: We propose to utilize the unique resources at EMSL and the JGI to obtain
-    a better understanding of the phylogenetic and functional diversity of cyanobacteria
-  doi:
-    has_raw_value: 10.25585/1487758
-  ecosystem: Host-associated
-  ecosystem_category: Microbial
-  ecosystem_subtype: Unclassified
-  ecosystem_type: Bacteria
-  id: gold:Gs0110132
-  name: Cyanobacterial communities from the Joint Genome Institute, California, USA
-  principal_investigator_name:
-    has_raw_value: Matthias Hess
-  specific_ecosystem: Unclassified
-  type: nmdc:Study
-- description: A fundamental challenge of microbial environmental science is to understand
-    how earth systems will respond to climate change
-  doi:
-    has_raw_value: 10.25585/1487764
-  ecosystem: Environmental
-  ecosystem_category: Terrestrial
-  ecosystem_subtype: Wetlands
-  ecosystem_type: Soil
-  id: gold:Gs0112340
-  name: Thawing permafrost microbial communities from the Arctic, studying carbon
-    transformations
-  principal_investigator_name:
-    has_raw_value: Virginia Rich
-  specific_ecosystem: Permafrost
-  type: nmdc:Study
+nom_analysis_activity_set:
+- ended_at_time: '2018-11-13T20:20:39+00:00'
+  execution_resource: xxx
+  git_url: xxx
+  has_input:
+  - nmdc:1
+  - nmdc:2
+  has_output:
+  - nmdc:3
+  - nmdc:4
+  id: nmdc:wfnom-99-abcdefg
+  started_at_time: 2018-11-13 20:20:39+00:00
+  type: xxx
+  was_informed_by: nmdc:act-99-abcdefg
+
+```
+## Database-invalid-functional-annotations
+### Input
+```yaml
+functional_annotation_set:
+- has_function: KEGG_PATHWAY:XOXOXOXO
+- has_function: KEGG_PATHWAY:iIiIiIiI
+
+```
+## FunctionalAnnotation-invalid-function
+### Input
+```yaml
+has_function: KEGG_PATHWAY:XOXOXOXO
+
+```
+## Database-nom_analysis_activity_set-invalid-string-ended_at_time
+### Input
+```yaml
+nom_analysis_activity_set:
+- ended_at_time: '2018-11-13T20:20:39+00:00'
+  execution_resource: xxx
+  git_url: xxx
+  has_input:
+  - nmdc:1
+  - nmdc:2
+  has_output:
+  - nmdc:3
+  - nmdc:4
+  id: nmdc:wfnom-99-abcdefg
+  started_at_time: 2018-11-111
+  type: xxx
+  was_informed_by: nmdc:act-99-abcdefg
 
 ```
 ## Database-biosample_undeclared_slot
@@ -3278,5 +4667,321 @@ biosample_set:
   sample_collection_site: Lithgow State Coal Mine
   specific_ecosystem: Coalbed water
   type: nmdc:Biosample
+
+```
+## Biosample-incomplete_napa_id
+### Input
+```yaml
+add_date: 28-JUL-14 12.00.00.000000000 AM
+community: microbial communities
+description: Bulk Aqueous phase filtered water
+ecosystem: Environmental
+ecosystem_category: Aquatic
+ecosystem_subtype: Groundwater
+ecosystem_type: Freshwater
+env_broad_scale:
+  has_raw_value: ENVO:00002030
+  term:
+    id: ENVO:00002030
+env_local_scale:
+  has_raw_value: ENVO:00002169
+  term:
+    id: ENVO:00002169
+env_medium:
+  has_raw_value: ENVO:00005792
+  term:
+    id: ENVO:00005792
+geo_loc_name:
+  has_raw_value: Lithgow
+gold_biosample_identifiers:
+- gold:Gb0101224
+habitat: Coalbed water
+id: nmdc:bsm-
+lat_lon:
+  has_raw_value: -33.460524 150.168149
+  latitude: -33.460524
+  longitude: 150.168149
+location: from the Lithgow State Coal Mine, New South Wales, Australia
+mod_date: 26-AUG-16 01.50.27.000000000 PM
+name: Lithgow State Coal Mine Calcium nutrients (early)
+ncbi_taxonomy_name: coal metagenome
+part_of:
+- gold:Gs0110115
+sample_collection_site: Lithgow State Coal Mine
+specific_ecosystem: Coalbed water
+type: nmdc:Biosample
+
+```
+## MetagenomeSequencingActivity-no_parthood
+### Input
+```yaml
+ended_at_time: '2021-09-15T10:13:20+00:00'
+execution_resource: JGI
+git_url: ''
+has_input:
+- nmdc:unvalidated_placeholder
+has_output:
+- nmdc:22afa3d49b73eaec2e9787a6b88fbdc3
+id: nmdc:wfmsa-99-qwertyuiop
+name: Sequencing Activity for nmdc:mga0vx38
+part_of: null
+started_at_time: '2021-08-05T14:48:51+00:00'
+type: nmdc:MetagenomeSequencing
+version: v1.0.0
+was_informed_by: gold:Gp0213371
+
+```
+## MetagenomeSequencingActivity-bad_id
+### Input
+```yaml
+ended_at_time: '2021-09-15T10:13:20+00:00'
+execution_resource: JGI
+git_url: ''
+has_input:
+- nmdc:unvalidated_placeholder
+has_output:
+- nmdc:22afa3d49b73eaec2e9787a6b88fbdc3
+id: nmdc:107ade35423143e39dc30b12832ac759
+name: Sequencing Activity for nmdc:mga0vx38
+part_of:
+- nmdc:mga0vx38
+started_at_time: '2021-08-05T14:48:51+00:00'
+type: nmdc:MetagenomeSequencing
+version: v1.0.0
+was_informed_by: gold:Gp0213371
+
+```
+## Biosample-non_boolean_embargo
+### Input
+```yaml
+embargoed: 999
+env_broad_scale:
+  has_raw_value: ENVO:00002030
+  term:
+    id: ENVO:00002030
+env_local_scale:
+  has_raw_value: ENVO:00002169
+  term:
+    id: ENVO:00002169
+env_medium:
+  has_raw_value: ENVO:00005792
+  term:
+    id: ENVO:00005792
+id: nmdc:bsm-99-dtTMNb
+part_of:
+- gold:Gs0110115
+
+```
+## Database-biosample_missing_required_field
+### Input
+```yaml
+biosample_set:
+- add_date: 28-JUL-14 12.00.00.000000000 AM
+  community: microbial communities
+  description: Bulk Aqueous phase filtered water
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: Groundwater
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  geo_loc_name:
+    has_raw_value: Lithgow
+  habitat: Coalbed water
+  lat_lon:
+    has_raw_value: -33.460524 150.168149
+    latitude: -33.460524
+    longitude: 150.168149
+  location: from the Lithgow State Coal Mine, New South Wales, Australia
+  mod_date: 26-AUG-16 01.50.27.000000000 PM
+  name: Lithgow State Coal Mine Calcium nutrients (early)
+  ncbi_taxonomy_name: coal metagenome
+  sample_collection_site: Lithgow State Coal Mine
+  specific_ecosystem: Coalbed water
+  type: nmdc:Biosample
+- add_date: 28-JUL-14 12.00.00.000000000 AM
+  community: microbial communities
+  description: Bulk Aqueous phase filtered water
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: Groundwater
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  geo_loc_name:
+    has_raw_value: Lithgow
+  habitat: Coalbed water
+  lat_lon:
+    has_raw_value: -33.460524 150.168149
+    latitude: -33.460524
+    longitude: 150.168149
+  location: from the Lithgow State Coal Mine, New South Wales, Australia
+  mod_date: 26-AUG-16 01.50.27.000000000 PM
+  name: Lithgow State Coal Mine Calcium nutrients Extra
+  ncbi_taxonomy_name: coal metagenome
+  sample_collection_site: Lithgow State Coal Mine
+  specific_ecosystem: Coalbed water
+  type: nmdc:Biosample
+- add_date: 28-JUL-14 12.00.00.000000000 AM
+  community: microbial communities
+  description: Bulk Aqueous phase filtered water
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: Groundwater
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  geo_loc_name:
+    has_raw_value: Lithgow
+  habitat: Coalbed water
+  lat_lon:
+    has_raw_value: -33.460524 150.168149
+    latitude: -33.460524
+    longitude: 150.168149
+  location: from the Lithgow State Coal Mine, New South Wales, Australia
+  mod_date: 26-AUG-16 01.50.27.000000000 PM
+  name: Lithgow State Coal Mine Calcium nutrients
+  ncbi_taxonomy_name: coal metagenome
+  sample_collection_site: Lithgow State Coal Mine
+  specific_ecosystem: Coalbed water
+  type: nmdc:Biosample
+
+```
+## Database-invalid-omics-processing
+### Input
+```yaml
+omics_processing_set:
+- add_date: 30-OCT-14 12.00.00.000000000 AM
+  alternative_identifiers:
+  - gold:Gp0108335
+  has_input:
+  - gold:Gb0108335
+  has_output:
+  - jgi:551a20d30d878525404e90d5
+  id: nmdc:omprc-99-zUCd5N
+  mod_date: 22-MAY-20 06.13.12.927000000 PM
+  name: Thawing permafrost microbial communities from the Arctic, studying carbon
+    transformations - Permafrost 712P3D
+  ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
+    carbon transformations - Permafrost 712P3D
+  omics_type:
+    has_awesome_value: Metagenome
+  part_of:
+  - gold:Gs0112340
+  processing_institution: JGI
+  type: nmdc:OmicsProcessing
+- add_date: 30-OCT-14 12.00.00.000000000 AM
+  alternative_identifiers:
+  - gold:Gp0108340
+  has_input:
+  - gold:Gb0108340
+  has_output:
+  - jgi:551a20d50d878525404e90d7
+  id: nmdc:omprc-99-gKlQlF
+  mod_date: 22-MAY-20 06.10.59.590000000 PM
+  name: Thawing permafrost microbial communities from the Arctic, studying carbon
+    transformations - Permafrost 612S3M
+  ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
+    carbon transformations - Permafrost 612S3M
+  omics_type:
+    has_raw_value: Metagenome
+  part_of:
+  - gold:Gs0112340
+  processing_institution: JGI
+  type: nmdc:OmicsProcessing
+- add_date: 30-OCT-14 12.00.00.000000000 AM
+  alternative_identifiers:
+  - gold:Gp0108341
+  has_input:
+  - gold:Gb0108341
+  has_output:
+  - jgi:551a20d90d878525404e90e1
+  id: nmdc:omprc-99-5kgIJR
+  mod_date: 22-MAY-20 06.09.46.171000000 PM
+  name: Thawing permafrost microbial communities from the Arctic, studying carbon
+    transformations - Permafrost 712S3S
+  ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
+    carbon transformations - Permafrost 712S3S
+  omics_type:
+    has_raw_value: Metagenome
+  part_of:
+  - gold:Gs0112340
+  processing_institution: JGI
+  type: nmdc:OmicsProcessing
+
+```
+## Biosample-invalid-embargoed
+### Input
+```yaml
+embargoed: 999
+env_broad_scale:
+  has_raw_value: ENVO:00002030
+  term:
+    id: ENVO:00002030
+env_local_scale:
+  has_raw_value: ENVO:00002169
+  term:
+    id: ENVO:00002169
+env_medium:
+  has_raw_value: ENVO:00005792
+  term:
+    id: ENVO:00005792
+id: nmdc:bsm-99-dtTMNb
+part_of:
+- gold:Gs0110115
+
+```
+## DataObject-invalid-data_object_type
+### Input
+```yaml
+alternative_identifiers:
+- prefix:value1
+- prefix:value2
+compression_type: any string
+data_object_type: undefined permissible value for `file type enum`
+description: Crispr Terms for nmdc:ann0vx38
+file_size_bytes: 1234
+id: nmdc:dobj-11-dtTMNb
+md5_checksum: 22afa3d49b73eaec2e9787a6b88fbdc3
+name: Crispr Terms
+type: nmdc:DataObject
+url: http://example.com
+was_generated_by: nmdc:invalid_id
+
+```
+## DataObject-no-id-or-name
+### Input
+```yaml
+description: Crispr Terms for nmdc:ann0vx38
 
 ```

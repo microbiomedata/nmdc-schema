@@ -1,0 +1,12 @@
+pooling_set:
+  - id: bare:value
+    name: first pooling process
+    alternative_identifiers:
+      - bare:xxx
+    description: xxx
+    has_inputs:
+      - bare:xxx
+      - bare:yyy
+    has_outputs:
+      - bare:xxx
+    # participating_agent: xxx # Agent isn't a named thing and doesn't have an ID so must be inlined
