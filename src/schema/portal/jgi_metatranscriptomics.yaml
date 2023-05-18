@@ -14,16 +14,16 @@ prefixes:
 default_prefix: nmdc
 default_range: string
 enums:
-#  dnase_rna_enum:
-#    from_schema: https://example.com/nmdc_dh
-#    permissible_values:
-#      'no':
-#      'yes':
-#  rna_cont_type_enum:
-#    from_schema: https://example.com/nmdc_dh
-#    permissible_values:
-#      plate:
-#      tube:
+  #  dnase_rna_enum:
+  #    from_schema: https://example.com/nmdc_dh
+  #    permissible_values:
+  #      'no':
+  #      'yes':
+  #  rna_cont_type_enum:
+  #    from_schema: https://example.com/nmdc_dh
+  #    permissible_values:
+  #      plate:
+  #      tube:
   rna_sample_format_enum:
     from_schema: https://example.com/nmdc_dh
     permissible_values:
@@ -148,7 +148,8 @@ slots:
       - value: Pond_MT_041618
     from_schema: https://example.com/nmdc_dh
     rank: 9
-    string_serialization: '{text}'
+    #    string_serialization: '{text}'
+    string_serialization: '{text < 20 characters}'
     slot_group: JGI-Metatranscriptomics
     recommended: true
   rna_isolate_meth:
