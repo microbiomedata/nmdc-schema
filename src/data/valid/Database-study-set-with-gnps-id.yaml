@@ -16,3 +16,5 @@ study_set:
     doi:
       has_raw_value: 10.25585/1488217
     type: nmdc:Study
+    gnps_task_identifiers:
+      - "gnps.task:4b848c342a4f4abc871bdf8a09a60807"

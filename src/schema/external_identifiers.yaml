@@ -144,6 +144,24 @@ slots:
     examples:
       - value: https://identifiers.org/mgnify.proj:MGYS00005757
 
+  gnps_identifiers:
+    mixin: true
+
+  gnps_task_identifiers:
+    is_a: study_identifiers
+    mixins:
+      - gnps_identifiers
+    title: GNPS task identifiers
+    description: identifiers that link a NMDC study to a web-based report about metabolomics analysis progress and results
+    comments:
+      - this could be considered a related identifier, as the metabolomics progress and results aren't a study per se
+      - this identifier was registered with bioregistry but not identifiers.org
+    see_also:
+      - https://microbiomedata.github.io/nmdc-schema/MetabolomicsAnalysisActivity/
+    examples:
+      - value: gnps.task:4b848c342a4f4abc871bdf8a09a60807
+    pattern: "^gnps\\.task:[a-f0-9]+$"
+
   ## samples
 
   biosample_identifiers:

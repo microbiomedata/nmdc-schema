@@ -40,6 +40,8 @@ prefixes:
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   skos: http://www.w3.org/2004/02/skos/core#
   xsd: http://www.w3.org/2001/XMLSchema#
+  gnps.task: "https://bioregistry.io/reference/gnps.task:"
+  # or gnps.task could expand to https://gnps.ucsd.edu/ProteoSAFe/status.jsp?task=
   #  COG: https://unknown.to.linter.org/
   #  EC: https://unknown.to.linter.org/
   #  GOLD: http://identifiers.org/gold/
@@ -1231,6 +1233,7 @@ classes:
 
       ## Alternative IDs
       - alternative_identifiers
+      - gnps_task_identifiers
 
       ## Related IDs
       - related_identifiers
