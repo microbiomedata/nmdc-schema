@@ -218,6 +218,8 @@ src/schema/mixs.yaml.new: assets/mixs_regen/mixs_subset.yaml
 	yq -i 'del(.subsets.[].name)'  $@
 	yq -i 'del(.slots.add_recov_method.pattern)'  $@
 	yq -i '.id |= "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml"' $@
+	# add "M horizon" to soil_horizon_enum
+	yq -i '.enums.soil_horizon_enum.permissible_values.["M horizon"] = {}'  $@
 	rm -rf assets/mixs_subset_repaired.yaml.bak
 
 mixs_deepdiff: src/schema/mixs.yaml
