@@ -37,7 +37,9 @@
         "has_raw_value": "Lithgow"
       },
       "lat_lon": {
-        "has_raw_value": "-33.460524 150.168149"
+        "has_raw_value": "-33.460524 150.168149",
+        "latitude": -33.460524,
+        "longitude": 150.168149
       },
       "samp_taxon_id": {
         "has_raw_value": "coal metagenome [NCBITaxon:1260732]"
@@ -92,7 +94,9 @@
         "has_raw_value": "Lithgow"
       },
       "lat_lon": {
-        "has_raw_value": "-33.460524 150.168149"
+        "has_raw_value": "-33.460524 150.168149",
+        "latitude": -33.460524,
+        "longitude": 150.168149
       },
       "samp_taxon_id": {
         "has_raw_value": "coal metagenome [NCBITaxon:1260732]"
@@ -143,7 +147,9 @@
         "has_raw_value": "Lithgow"
       },
       "lat_lon": {
-        "has_raw_value": "-33.460524 150.168149"
+        "has_raw_value": "-33.460524 150.168149",
+        "latitude": -33.460524,
+        "longitude": 150.168149
       },
       "samp_taxon_id": {
         "has_raw_value": "coal metagenome [NCBITaxon:1260732]"
@@ -194,7 +200,9 @@
         "has_raw_value": "Lithgow"
       },
       "lat_lon": {
-        "has_raw_value": "-33.460524 150.168149"
+        "has_raw_value": "-33.460524 150.168149",
+        "latitude": -33.460524,
+        "longitude": 150.168149
       },
       "samp_taxon_id": {
         "has_raw_value": "coal metagenome [NCBITaxon:1260732]"

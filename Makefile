@@ -21,7 +21,7 @@ PYMODEL = $(SCHEMA_NAME)
 EXAMPLEDIR = examples
 TEMPLATEDIR = doc-templates
 
-.PHONY: all clean examples-clean site test examples-clean site-copy test-python site-clean test-with-examples
+.PHONY: all clean site test examples-clean site-copy test-python site-clean test-with-examples
 
 # note: "help" MUST be the first target in the file,
 # when the user types "make" they should get help info
@@ -106,7 +106,7 @@ gen-project: $(PYMODEL)
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
-test: examples-clean site test-python src/data/output jsonschema-check-all-valid-databases
+test: examples-clean site test-python jsonschema-check-all-valid-databases examples/output
 
 test-schema:
 	$(RUN) gen-project \
@@ -241,17 +241,6 @@ project/nmdc_materialized_patterns.schema.json: project/nmdc_materialized_patter
 		--closed \
 		--top-class Database $< > $@
 
-src/data/output: project/nmdc_materialized_patterns.yaml
-	@echo making src/data/output
-	mkdir -p $@
-	$(RUN) linkml-run-examples \
-		--counter-example-input-directory src/data/invalid \
-		--input-directory src/data/valid \
-		--output-directory $@ \
-		--schema $< > $@/README.md
-
-
-
 site-clean:
 	rm -rf nmdc_schema/*.json
 	rm -rf nmdc_schema/*.tsv
@@ -273,6 +262,3 @@ nmdc_schema/nmdc_materialized_patterns.yaml: project/nmdc_materialized_patterns.
 nmdc_schema/nmdc_schema_merged.yaml: project/nmdc_schema_merged.yaml
 	cp $< $@
 
-examples-clean:
-	@echo running examples-clean
-	rm -rf src/data/output

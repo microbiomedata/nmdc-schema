@@ -4,12 +4,15 @@
 @prefix RetroRules: <https://unknown.to.linter.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix wgs84: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 nmdc:bsm-99-dc6tg6 a nmdc:Biosample ;
     dcterms:description "Rhizosphere microbial communities from Carex aquatilis grown in submerged peat from a thermokarst bog, University of Washington, Seatle, WA, United States" ;
     dcterms:isPartOf GOLD:Gs0128849 ;
     MIXS:0000009 [ a nmdc:GeolocationValue ;
+            wgs84:lat 47.6516 ;
+            wgs84:long -122.3045 ;
             nmdc:has_raw_value "47.6516 -122.3045" ] ;
     MIXS:0000010 [ a nmdc:TextValue ;
             nmdc:has_raw_value "USA: Seattle, Washington" ] ;
@@ -44,6 +47,8 @@ nmdc:bsm-99-dge3H9 a nmdc:Biosample ;
     dcterms:description "Forest soil from Barre Woods Harvard Forest LTER site was incubated at 10C with heavy water. Sample is from a control plot at ambient soil temperature, organic horizon - top 4cm of soil" ;
     dcterms:isPartOf GOLD:Gs0128849 ;
     MIXS:0000009 [ a nmdc:GeolocationValue ;
+            wgs84:lat 42.481016 ;
+            wgs84:long -72.178343 ;
             nmdc:has_raw_value "42.481016 -72.178343" ] ;
     MIXS:0000010 [ a nmdc:TextValue ;
             nmdc:has_raw_value "USA: Massachusetts" ] ;
@@ -77,6 +82,8 @@ nmdc:bsm-99-isqhuW a nmdc:Biosample ;
     dcterms:description "Permafrost microbial communities from Stordalen Mire, Sweden" ;
     dcterms:isPartOf GOLD:Gs0128849 ;
     MIXS:0000009 [ a nmdc:GeolocationValue ;
+            wgs84:lat 68.35 ;
+            wgs84:long 19.05 ;
             nmdc:has_raw_value "68.35 19.05" ] ;
     MIXS:0000010 [ a nmdc:TextValue ;
             nmdc:has_raw_value "Sweden: Stordalen" ] ;

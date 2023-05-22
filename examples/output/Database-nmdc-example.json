@@ -38,7 +38,9 @@
         "has_raw_value": "Sweden: Stordalen"
       },
       "lat_lon": {
-        "has_raw_value": "68.35 19.05"
+        "has_raw_value": "68.35 19.05",
+        "latitude": 68.35,
+        "longitude": 19.05
       },
       "specific_ecosystem": "Permafrost",
       "add_date": "17-MAR-17 04.55.54.717000000 PM",
@@ -87,7 +89,9 @@
         "has_raw_value": "USA: Massachusetts"
       },
       "lat_lon": {
-        "has_raw_value": "42.481016 -72.178343"
+        "has_raw_value": "42.481016 -72.178343",
+        "latitude": 42.481016,
+        "longitude": -72.178343
       },
       "specific_ecosystem": "Forest Soil",
       "add_date": "17-AUG-17 05.38.34.719000000 PM",
@@ -136,7 +140,9 @@
         "has_raw_value": "USA: Seattle, Washington"
       },
       "lat_lon": {
-        "has_raw_value": "47.6516 -122.3045"
+        "has_raw_value": "47.6516 -122.3045",
+        "latitude": 47.6516,
+        "longitude": -122.3045
       },
       "specific_ecosystem": "Unclassified",
       "add_date": "29-MAR-18 01.27.40.709000000 PM",

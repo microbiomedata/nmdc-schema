@@ -122,7 +122,6 @@ diss_org_nitro:
   has_raw_value: 0.05 micromole per liter
 diss_oxygen:
   has_raw_value: 175 micromole per kilogram
-dna_cont_well: C2
 drainage_class: well
 ecosystem: unconstrained text. should be validated against the controlled vocabulary,
   by the sample's environmental package. would also be nice to align the CV with MIxS
@@ -157,6 +156,8 @@ humidity_regm:
 - has_raw_value: 25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 lat_lon:
   has_raw_value: 50.586825 6.408977
+  latitude: 50.586825
+  longitude: 6.408977
 lbc_thirty:
   has_raw_value: 543 mg/kg
 lbceq:
@@ -319,7 +320,6 @@ dna_absorb1: 2.02
 dna_absorb2: 2.02
 dna_collect_site: untreated pond water
 dna_concentration: 100.0
-dna_cont_type: plate
 dna_container_id: Pond_MT_041618
 dna_dnase: 'yes'
 dna_isolate_meth: phenol/chloroform extraction
@@ -340,8 +340,6 @@ rna_absorb1: 2.02
 rna_absorb2: 2.02
 rna_collect_site: untreated pond water
 rna_concentration: 100.0
-rna_cont_type: plate
-rna_cont_well: C2
 rna_container_id: Pond_MT_041618
 rna_isolate_meth: phenol/chloroform extraction
 rna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles

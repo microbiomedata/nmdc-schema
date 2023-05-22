@@ -138,6 +138,96 @@
         },
         "Biosample": {
             "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "dna_cont_well": {
+                                "pattern": ".+"
+                            }
+                        },
+                        "required": [
+                            "dna_cont_well"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "dna_cont_type": {
+                                "const": "plate"
+                            }
+                        },
+                        "required": [
+                            "dna_cont_type"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "dna_cont_type": {
+                                "const": "plate"
+                            }
+                        },
+                        "required": [
+                            "dna_cont_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "dna_cont_well": {
+                                "pattern": "^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$"
+                            }
+                        },
+                        "required": [
+                            "dna_cont_well"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "rna_cont_well": {
+                                "pattern": ".+"
+                            }
+                        },
+                        "required": [
+                            "rna_cont_well"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "rna_cont_type": {
+                                "const": "plate"
+                            }
+                        },
+                        "required": [
+                            "rna_cont_type"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "rna_cont_type": {
+                                "const": "plate"
+                            }
+                        },
+                        "required": [
+                            "rna_cont_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "rna_cont_well": {
+                                "pattern": "^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$"
+                            }
+                        },
+                        "required": [
+                            "rna_cont_well"
+                        ]
+                    }
+                }
+            ],
             "description": "Biological source material which can be characterized by an experiment.",
             "properties": {
                 "abs_air_humidity": {
@@ -650,7 +740,7 @@
                     "type": "number"
                 },
                 "dna_cont_type": {
-                    "$ref": "#/$defs/DnaContTypeEnum",
+                    "$ref": "#/$defs/JgiContTypeEnum",
                     "description": "Tube or plate (96-well)"
                 },
                 "dna_cont_well": {
@@ -661,7 +751,7 @@
                     "type": "string"
                 },
                 "dna_dnase": {
-                    "$ref": "#/$defs/DnaDnaseEnum"
+                    "$ref": "#/$defs/YesNoEnum"
                 },
                 "dna_isolate_meth": {
                     "description": "Describe the method/protocol/kit used to extract DNA/RNA.",
@@ -700,7 +790,7 @@
                     "type": "number"
                 },
                 "dnase_rna": {
-                    "$ref": "#/$defs/DnaseRnaEnum"
+                    "$ref": "#/$defs/YesNoEnum"
                 },
                 "door_comp_type": {
                     "$ref": "#/$defs/DoorCompTypeEnum",
@@ -1841,7 +1931,7 @@
                     "type": "number"
                 },
                 "rna_cont_type": {
-                    "$ref": "#/$defs/RnaContTypeEnum",
+                    "$ref": "#/$defs/JgiContTypeEnum",
                     "description": "Tube or plate (96-well)"
                 },
                 "rna_cont_well": {
@@ -3197,6 +3287,7 @@
                 }
             },
             "required": [
+                "id",
                 "name",
                 "description"
             ],
@@ -3432,24 +3523,6 @@
             "title": "DissolvingActivity",
             "type": "object"
         },
-        "DnaContTypeEnum": {
-            "description": "",
-            "enum": [
-                "plate",
-                "tube"
-            ],
-            "title": "DnaContTypeEnum",
-            "type": "string"
-        },
-        "DnaDnaseEnum": {
-            "description": "",
-            "enum": [
-                "no",
-                "yes"
-            ],
-            "title": "DnaDnaseEnum",
-            "type": "string"
-        },
         "DnaSampleFormatEnum": {
             "description": "",
             "enum": [
@@ -3467,15 +3540,6 @@
                 "Gentegra-RNA"
             ],
             "title": "DnaSampleFormatEnum",
-            "type": "string"
-        },
-        "DnaseRnaEnum": {
-            "description": "",
-            "enum": [
-                "no",
-                "yes"
-            ],
-            "title": "DnaseRnaEnum",
             "type": "string"
         },
         "DoorCompTypeEnum": {
@@ -3987,7 +4051,7 @@
             "description": "A normalized value for a location on the earth's surface",
             "properties": {
                 "has_raw_value": {
-                    "description": "The raw value for a  geolocation should follow {lat} {long}",
+                    "description": "The raw value for a  geolocation should follow {latitude} {longitude}",
                     "type": "string"
                 },
                 "latitude": {
@@ -4002,6 +4066,10 @@
                     "type": "string"
                 }
             },
+            "required": [
+                "latitude",
+                "longitude"
+            ],
             "title": "GeolocationValue",
             "type": "object"
         },
@@ -4232,6 +4300,15 @@
             "title": "IntegerValue",
             "type": "object"
         },
+        "JgiContTypeEnum": {
+            "description": "",
+            "enum": [
+                "plate",
+                "tube"
+            ],
+            "title": "JgiContTypeEnum",
+            "type": "string"
+        },
         "LabDevice": {
             "additionalProperties": false,
             "description": "",
@@ -4450,6 +4527,7 @@
                 "git_url",
                 "has_input",
                 "has_output",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -4496,6 +4574,9 @@
                     "type": "string"
                 }
             },
+            "required": [
+                "id"
+            ],
             "title": "MaterialSample",
             "type": "object"
         },
@@ -4648,6 +4729,7 @@
                 "has_input",
                 "has_output",
                 "type",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -4739,6 +4821,7 @@
                 "git_url",
                 "has_input",
                 "has_output",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -4934,6 +5017,7 @@
                 "git_url",
                 "has_input",
                 "has_output",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -5017,6 +5101,7 @@
                 "has_input",
                 "has_output",
                 "type",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -5107,6 +5192,7 @@
                 "has_input",
                 "has_output",
                 "type",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -5190,6 +5276,7 @@
                 "git_url",
                 "has_input",
                 "has_output",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -5566,6 +5653,7 @@
                 "has_input",
                 "has_output",
                 "type",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -5717,7 +5805,8 @@
                 }
             },
             "required": [
-                "has_input"
+                "has_input",
+                "id"
             ],
             "title": "OmicsProcessing",
             "type": "object"
@@ -6191,6 +6280,7 @@
                 "git_url",
                 "has_input",
                 "has_output",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -6298,6 +6388,7 @@
                 "git_url",
                 "has_input",
                 "has_output",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -6327,15 +6418,6 @@
                 "obligate anaerobe"
             ],
             "title": "RelToOxygenEnum",
-            "type": "string"
-        },
-        "RnaContTypeEnum": {
-            "description": "",
-            "enum": [
-                "plate",
-                "tube"
-            ],
-            "title": "RnaContTypeEnum",
             "type": "string"
         },
         "RnaSampleFormatEnum": {
@@ -6615,7 +6697,8 @@
                 "B horizon",
                 "C horizon",
                 "R layer",
-                "Permafrost"
+                "Permafrost",
+                "M horizon"
             ],
             "title": "SoilHorizonEnum",
             "type": "string"
@@ -6789,6 +6872,14 @@
                     },
                     "type": "array"
                 },
+                "gnps_task_identifiers": {
+                    "description": "identifiers that link a NMDC study to a web-based report about metabolomics analysis progress and results",
+                    "items": {
+                        "pattern": "^gnps\\.task:[a-f0-9]+$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "gold_study_identifiers": {
                     "description": "identifiers for corresponding project(s) in GOLD",
                     "items": {
@@ -6887,6 +6978,9 @@
                     "type": "array"
                 }
             },
+            "required": [
+                "id"
+            ],
             "title": "Study",
             "type": "object"
         },
@@ -7314,69 +7408,28 @@
                 "has_input",
                 "has_output",
                 "type",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
             ],
             "title": "WorkflowExecutionActivity",
             "type": "object"
+        },
+        "YesNoEnum": {
+            "description": "replaces DnaDnaseEnum and DnaseRnaEnum",
+            "enum": [
+                "no",
+                "yes"
+            ],
+            "title": "YesNoEnum",
+            "type": "string"
         }
     },
     "$id": "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": false,
-    "allOf": [
-        {
-            "if": {
-                "properties": {
-                    "dna_cont_type": {
-                        "const": "tube"
-                    }
-                },
-                "required": [
-                    "dna_cont_type"
-                ]
-            },
-            "then": {
-                "properties": {
-                    "dna_cont_well": {
-                        "not": {
-                            "anyOf": [
-                                {
-                                    "pattern": ".+"
-                                }
-                            ]
-                        }
-                    }
-                },
-                "required": [
-                    "dna_cont_well"
-                ]
-            }
-        },
-        {
-            "if": {
-                "properties": {
-                    "dna_cont_type": {
-                        "const": "plate"
-                    }
-                },
-                "required": [
-                    "dna_cont_type"
-                ]
-            },
-            "then": {
-                "properties": {
-                    "dna_cont_well": {
-                        "pattern": "^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$"
-                    }
-                },
-                "required": [
-                    "dna_cont_well"
-                ]
-            }
-        }
-    ],
+    "description": "An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest",
     "metamodel_version": "1.7.0",
     "properties": {
         "activity_set": {

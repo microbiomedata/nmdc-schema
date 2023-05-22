@@ -426,7 +426,11 @@ classes:
     slot_usage:
       has_raw_value:
         description: >-
-          The raw value for a  geolocation should follow {lat} {long}
+          The raw value for a  geolocation should follow {latitude} {longitude}
+      latitude:
+        required: true
+      longitude:
+        required: true
     mappings:
       - schema:GeoCoordinates
 
@@ -547,6 +551,8 @@ slots:
     description: >-
       latitude
     slot_uri: wgs84:lat
+    examples:
+      - value: -33.460524
     mappings:
       - schema:latitude
 
@@ -556,6 +562,8 @@ slots:
     description: >-
       longitude
     slot_uri: wgs84:long
+    examples:
+      - value: 150.168149
     mappings:
       - schema:longitude
 
