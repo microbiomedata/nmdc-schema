@@ -934,6 +934,27 @@ name: mapping_stats.txt
 type: nmdc:DataObject
 
 ```
+## Biosample-soil_horizon
+### Input
+```yaml
+env_broad_scale:
+  has_raw_value: ENVO:00002030
+  term:
+    id: ENVO:00002030
+env_local_scale:
+  has_raw_value: ENVO:00002169
+  term:
+    id: ENVO:00002169
+env_medium:
+  has_raw_value: ENVO:00005792
+  term:
+    id: ENVO:00005792
+id: nmdc:bsm-99-dtTMNb
+part_of:
+- gold:Gs0110115
+soil_horizon: M horizon
+
+```
 ## Study-minimal
 ### Input
 ```yaml
@@ -1883,6 +1904,31 @@ part_of:
 - gold:Gs0112340
 processing_institution: JGI
 type: nmdc:OmicsProcessing
+
+```
+## Database-study-set-with-gnps-id
+### Input
+```yaml
+study_set:
+- description: Thawing permafrost is one of the largest soil carbon pools on the planet.
+    The goal of this project is to study microbial communities that participate in
+    the soil carbon cycle.
+  doi:
+    has_raw_value: 10.25585/1488217
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Wetlands
+  ecosystem_type: Soil
+  gnps_task_identifiers:
+  - gnps.task:4b848c342a4f4abc871bdf8a09a60807
+  gold_study_identifiers:
+  - GOLD:Gs0128849
+  id: nmdc:sty-99-FkQIsc
+  name: Permafrost microbial communities from Stordalen Mire, Sweden
+  principal_investigator:
+    has_raw_value: Virginia Rich
+  specific_ecosystem: Permafrost
+  type: nmdc:Study
 
 ```
 ## DataObject-3

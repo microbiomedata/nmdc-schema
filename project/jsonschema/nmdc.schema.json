@@ -6675,7 +6675,8 @@
                 "B horizon",
                 "C horizon",
                 "R layer",
-                "Permafrost"
+                "Permafrost",
+                "M horizon"
             ],
             "title": "SoilHorizonEnum",
             "type": "string"
@@ -6845,6 +6846,14 @@
                 },
                 "funding_sources": {
                     "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "gnps_task_identifiers": {
+                    "description": "identifiers that link a NMDC study to a web-based report about metabolomics analysis progress and results",
+                    "items": {
+                        "pattern": "^gnps\\.task:[a-f0-9]+$",
                         "type": "string"
                     },
                     "type": "array"
