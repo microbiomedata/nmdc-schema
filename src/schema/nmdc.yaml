@@ -40,6 +40,7 @@ prefixes:
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   skos: http://www.w3.org/2004/02/skos/core#
   xsd: http://www.w3.org/2001/XMLSchema#
+  NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
   #  COG: https://unknown.to.linter.org/
   #  EC: https://unknown.to.linter.org/
   #  GOLD: http://identifiers.org/gold/
