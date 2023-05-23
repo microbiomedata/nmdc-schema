@@ -7,12 +7,16 @@ enums:
       badlands: { }
       cities: { }
       conifers:
+        annotations:
+          originally: conifers (e.g. pine,spruce,fir,cypress)
         examples:
           - value: cypress
           - value: fir
           - value: pine
           - value: spruce
       crop trees:
+        annotations:
+          originally: crop trees (nuts,fruit,christmas trees,nursery trees)
         examples:
           - value: christmas trees
           - value: fruit
@@ -21,6 +25,8 @@ enums:
       farmstead: { }
       gravel: { }
       hardwoods:
+        annotations:
+          originally: hardwoods (e.g. oak,hickory,elm,aspen)
         examples:
           - value: aspen
           - value: elm
@@ -28,16 +34,22 @@ enums:
           - value: oak
       hayland: { }
       horticultural plants:
+        annotations:
+          originally: horticultural plants (e.g. tulips)
         examples:
           - value: tulips
       industrial areas: { }
       intermixed hardwood and conifers: { }
       marshlands:
+        annotations:
+          originally: marshlands (grass,sedges,rushes)
         examples:
           - value: grass
           - value: rushes
           - value: sedgees
       meadows:
+        annotations:
+          originally: meadows (grasses,alfalfa,fescue,bromegrass,timothy)
         examples:
           - value: alfalfa
           - value: bromegrass
@@ -48,10 +60,14 @@ enums:
       mudflats: { }
       oil waste areas: { }
       pastureland:
+        annotations:
+          originally: pastureland (grasslands used for livestock grazing)
         comments:
           - grasslands used for livestock grazing
       permanent snow or ice: { }
       rainforest:
+        annotations:
+          originally: rainforest (evergreen forest receiving greater than 406 cm annual rainfall)
         comments:
           - evergreen forest receiving greater than 406 cm annual rainfall
       rangeland: { }
@@ -62,11 +78,15 @@ enums:
       salt flats: { }
       sand: { }
       shrub crops:
+        annotations:
+          originally: shrub crops (blueberries,nursery ornamentals,filberts)
         examples:
           - value: blueberries
           - value: filberts
           - value: nursery ornamentals
       shrub land:
+        annotations:
+          originally: shrub land (e.g. mesquite,sage-brush,creosote bush,shrub oak,eucalyptus)
         examples:
           - value: creosote bush
           - value: eucalyptus
@@ -75,6 +95,8 @@ enums:
           - value: shrub oak
       small grains: { }
       successional shrub land:
+        annotations:
+          originally: successional shrub land (tree saplings,hazels,sumacs,chokecherry,shrub dogwoods,blackberries)
         examples:
           - value: blackberries
           - value: chokecherry
@@ -83,46 +105,25 @@ enums:
           - value: sumacs
           - value: tree saplings
       swamp:
+        annotations:
+          originally: swamp (permanent or semi-permanent water body dominated by woody plants)
         comments:
           - permanent or semi-permanent water body dominated by woody plants
       tropical:
+        annotations:
+          originally: tropical (e.g. mangrove,palms)
         examples:
           - value: mangrove
           - value: palms
       tundra:
+        annotations:
+          originally: tundra (mosses,lichens)
         examples:
           - value: lichens
           - value: mosses
       vegetable crops: { }
       vine crops:
+        annotations:
+          originally: vine crops (grapes)
         examples:
           - value: grapes
-      #        aliases
-      #        alt_descriptions
-      #        annotations
-      #        broad_mappings
-      #        close_mappings
-      #        comments
-      #        deprecated
-      #        deprecated_element_has_exact_replacement
-      #        deprecated_element_has_possible_replacement
-      #        description
-      #        exact_mappings
-      #        extensions
-      #        from_schema
-      #        imported_from
-      #        in_language
-      #        in_subset
-      #        mappings
-      #        meaning
-      #        narrow_mappings
-      #        notes
-      #        rank
-      #        related_mappings
-      #        see_also
-      #        source
-      #        structured_aliases
-      #        text
-      #        title
-      #        todos
-      #        unit
