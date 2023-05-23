@@ -1260,6 +1260,7 @@ classes:
 
       ## Alternative IDs
       - alternative_identifiers
+      - gnps_task_identifiers
 
       ## Related IDs
       - related_identifiers
