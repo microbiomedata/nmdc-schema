@@ -218,14 +218,29 @@ src/schema/mixs.yaml.new: assets/mixs_regen/mixs_subset.yaml
 	yq -i 'del(.subsets.[].name)'  $@
 	yq -i 'del(.slots.add_recov_method.pattern)'  $@
 	yq -i '.id |= "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml"' $@
+
+	# update host_taxid and samp_taxon_id. may want to flatten to a string or URIORCURIE eventually
+	yq -i 'del(.slots.host_taxid.examples)'  $@
+	yq -i 'del(.slots.host_taxid.string_serialization)'  $@
+	yq -i 'del(.slots.samp_taxon_id.examples)'  $@
+	yq -i 'del(.slots.samp_taxon_id.string_serialization)'  $@
+	yq -i 'del(.slots.host_taxid.comments |= ["Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value"])'  $@
+	yq -i 'del(.slots.samp_taxon_id.comments |= ["coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value"])'  $@
+	yq -i 'del(.slots.samp_taxon_id.range = "ControlledIdentifiedTermValue")'  $@
+	yq -i 'del(.slots.host_taxid.range = "ControlledIdentifiedTermValue")'  $@
+
 	# add "M horizon" to soil_horizon_enum
 	yq -i '.enums.soil_horizon_enum.permissible_values.["M horizon"] = {}'  $@
+
 	# inject re-structured cur_land_use_enum
 	#   using '| cat > ' because yq doesn't seem to like redirecting out to a file
 	yq eval-all \
 		'select(fileIndex==1).enums.cur_land_use_enum = select(fileIndex==0).enums.cur_land_use_enum | select(fileIndex==1)' \
 		assets/other_mixs_yaml_files/cur_land_use_enum.yaml $@ | cat > $@.newer
 	mv $@.newer $@
+
+
+
 	rm -rf assets/mixs_subset_repaired.yaml.bak
 	rm -rf src/schema/mixs.yaml.new.raw2
 

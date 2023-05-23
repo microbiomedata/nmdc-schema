@@ -200,7 +200,10 @@ samp_store_dur:
 samp_store_loc:
   has_raw_value: Freezer no:5
 samp_taxon_id:
-  has_raw_value: soil metagenome [NCBItaxon:410658] but no validation applied yet
+  has_raw_value: soil metagenome [NCBItaxon:410658]
+  term:
+    id: NCBItaxon:410658
+    name: soil metagenome
 samp_store_temp:
   has_raw_value: -80 degree Celsius
 samp_vol_we_dna_ext:
@@ -394,4 +397,7 @@ lbc_thirty:
 lbceq:
   has_raw_value: 1575 mg/kg
 host_taxid:
-  has_raw_value: "9606"
+  has_raw_value: "NCBITaxon:9606"
+  term:
+    id: NCBITaxon:9606
+
