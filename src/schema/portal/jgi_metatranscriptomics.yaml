@@ -270,3 +270,5 @@ slots:
     range: float
     slot_group: JGI-Metatranscriptomics
     recommended: true
+    minimum_value: 0
+    maximum_value: 1000
