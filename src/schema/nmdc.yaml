@@ -40,8 +40,7 @@ prefixes:
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   skos: http://www.w3.org/2004/02/skos/core#
   xsd: http://www.w3.org/2001/XMLSchema#
-  gnps.task: "https://bioregistry.io/reference/gnps.task:"
-  # or gnps.task could expand to https://gnps.ucsd.edu/ProteoSAFe/status.jsp?task=
+  NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
   #  COG: https://unknown.to.linter.org/
   #  EC: https://unknown.to.linter.org/
   #  GOLD: http://identifiers.org/gold/
@@ -227,6 +226,7 @@ classes:
       - removed id_prefixes value of GOLD, since we are now using pattern-based id validation
 
   Biosample:
+
     rules:
 
       - title: dna_well_requires_plate
@@ -277,6 +277,13 @@ classes:
           slot_conditions:
             rna_cont_well:
               pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+
+    unique_keys:
+      samp_name_unique_key:
+        notes:
+          - "id is already required to be unique because it is the identifier in Biosample's parent class, NamedThing. Remember, notes like this could be exposed to end users. CJM suggested YAML # comment"
+        unique_key_slots:
+          - samp_name
 
     is_a: MaterialEntity
     in_subset:
