@@ -22,7 +22,9 @@ env_medium:
   term:
     id: ENVO:00005792
 host_taxid:
-  has_raw_value: '9606'
+  has_raw_value: NCBITaxon:9606
+  term:
+    id: NCBITaxon:9606
 embargoed: true
 collected_from: nmdc:unconstrained_site_identifier_string
 type: nmdc:Biosample. change this to require a class name or an enumeration
@@ -243,7 +245,10 @@ samp_store_loc:
 samp_store_temp:
   has_raw_value: -80 degree Celsius
 samp_taxon_id:
-  has_raw_value: soil metagenome [NCBItaxon:410658] but no validation applied yet
+  has_raw_value: soil metagenome [NCBItaxon:410658]
+  term:
+    id: NCBItaxon:410658
+    name: soil metagenome
 samp_vol_we_dna_ext:
   has_raw_value: 1500 milliliter
 season_precpt:

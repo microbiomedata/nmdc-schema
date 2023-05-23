@@ -1029,129 +1029,41 @@ enums:
   cur_land_use_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      badlands: {}
       cities: {}
-      conifers:
-        annotations:
-          originally: conifers (e.g. pine,spruce,fir,cypress)
-        examples:
-          - value: cypress
-          - value: fir
-          - value: pine
-          - value: spruce
-      crop trees:
-        annotations:
-          originally: crop trees (nuts,fruit,christmas trees,nursery trees)
-        examples:
-          - value: christmas trees
-          - value: fruit
-          - value: nursery trees
-          - value: nuts
       farmstead: {}
-      gravel: {}
-      hardwoods:
-        annotations:
-          originally: hardwoods (e.g. oak,hickory,elm,aspen)
-        examples:
-          - value: aspen
-          - value: elm
-          - value: hickory
-          - value: oak
-      hayland: {}
-      horticultural plants:
-        annotations:
-          originally: horticultural plants (e.g. tulips)
-        examples:
-          - value: tulips
       industrial areas: {}
-      intermixed hardwood and conifers: {}
-      marshlands:
-        annotations:
-          originally: marshlands (grass,sedges,rushes)
-        examples:
-          - value: grass
-          - value: rushes
-          - value: sedgees
-      meadows:
-        annotations:
-          originally: meadows (grasses,alfalfa,fescue,bromegrass,timothy)
-        examples:
-          - value: alfalfa
-          - value: bromegrass
-          - value: fescue
-          - value: grasses
-          - value: timothy
-      mines/quarries: {}
-      mudflats: {}
-      oil waste areas: {}
-      pastureland:
-        annotations:
-          originally: pastureland (grasslands used for livestock grazing)
-        comments:
-          - grasslands used for livestock grazing
-      permanent snow or ice: {}
-      rainforest:
-        annotations:
-          originally: rainforest (evergreen forest receiving greater than 406 cm annual rainfall)
-        comments:
-          - evergreen forest receiving greater than 406 cm annual rainfall
-      rangeland: {}
       roads/railroads: {}
       rock: {}
-      row crops: {}
-      saline seeps: {}
-      salt flats: {}
       sand: {}
-      shrub crops:
-        annotations:
-          originally: shrub crops (blueberries,nursery ornamentals,filberts)
-        examples:
-          - value: blueberries
-          - value: filberts
-          - value: nursery ornamentals
-      shrub land:
-        annotations:
-          originally: shrub land (e.g. mesquite,sage-brush,creosote bush,shrub oak,eucalyptus)
-        examples:
-          - value: creosote bush
-          - value: eucalyptus
-          - value: mesquite
-          - value: sage-brush
-          - value: shrub oak
+      gravel: {}
+      mudflats: {}
+      salt flats: {}
+      badlands: {}
+      permanent snow or ice: {}
+      saline seeps: {}
+      mines/quarries: {}
+      oil waste areas: {}
       small grains: {}
-      successional shrub land:
-        annotations:
-          originally: successional shrub land (tree saplings,hazels,sumacs,chokecherry,shrub dogwoods,blackberries)
-        examples:
-          - value: blackberries
-          - value: chokecherry
-          - value: hazels
-          - value: shrub dogwoods
-          - value: sumacs
-          - value: tree saplings
-      swamp:
-        annotations:
-          originally: swamp (permanent or semi-permanent water body dominated by woody plants)
-        comments:
-          - permanent or semi-permanent water body dominated by woody plants
-      tropical:
-        annotations:
-          originally: tropical (e.g. mangrove,palms)
-        examples:
-          - value: mangrove
-          - value: palms
-      tundra:
-        annotations:
-          originally: tundra (mosses,lichens)
-        examples:
-          - value: lichens
-          - value: mosses
+      row crops: {}
       vegetable crops: {}
-      vine crops:
-        annotations:
-          originally: vine crops (grapes)
-        examples:
-          - value: grapes
+      horticultural plants (e.g. tulips): {}
+      marshlands (grass,sedges,rushes): {}
+      tundra (mosses,lichens): {}
+      rangeland: {}
+      pastureland (grasslands used for livestock grazing): {}
+      hayland: {}
+      meadows (grasses,alfalfa,fescue,bromegrass,timothy): {}
+      shrub land (e.g. mesquite,sage-brush,creosote bush,shrub oak,eucalyptus): {}
+      successional shrub land (tree saplings,hazels,sumacs,chokecherry,shrub dogwoods,blackberries): {}
+      shrub crops (blueberries,nursery ornamentals,filberts): {}
+      vine crops (grapes): {}
+      conifers (e.g. pine,spruce,fir,cypress): {}
+      hardwoods (e.g. oak,hickory,elm,aspen): {}
+      intermixed hardwood and conifers: {}
+      tropical (e.g. mangrove,palms): {}
+      rainforest (evergreen forest receiving greater than 406 cm annual rainfall): {}
+      swamp (permanent or semi-permanent water body dominated by woody plants): {}
+      crop trees (nuts,fruit,christmas trees,nursery trees): {}
   int_wall_cond_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:

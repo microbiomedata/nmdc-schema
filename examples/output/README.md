@@ -39,6 +39,9 @@ biosample_set:
   - gold:Gs0110115
   samp_taxon_id:
     has_raw_value: coal metagenome [NCBITaxon:1260732]
+    term:
+      id: NCBITaxon:1260732
+      name: coal metagenome
   sample_collection_site: Lithgow State Coal Mine
   specific_ecosystem: Coalbed water
   type: nmdc:Biosample
@@ -82,6 +85,9 @@ biosample_set:
   - gold:Gs0110115
   samp_taxon_id:
     has_raw_value: coal metagenome [NCBITaxon:1260732]
+    term:
+      id: NCBITaxon:1260732
+      name: coal metagenome
   sample_collection_site: Lithgow State Coal Mine
   specific_ecosystem: Coalbed water
   type: nmdc:Biosample
@@ -122,6 +128,9 @@ biosample_set:
   - gold:Gs0110115
   samp_taxon_id:
     has_raw_value: coal metagenome [NCBITaxon:1260732]
+    term:
+      id: NCBITaxon:1260732
+      name: coal metagenome
   sample_collection_site: Lithgow State Coal Mine
   specific_ecosystem: Coalbed water
   type: nmdc:Biosample
@@ -162,6 +171,9 @@ biosample_set:
   - gold:Gs0110115
   samp_taxon_id:
     has_raw_value: coal metagenome [NCBITaxon:1260732]
+    term:
+      id: NCBITaxon:1260732
+      name: coal metagenome
   sample_collection_site: Lithgow State Coal Mine
   specific_ecosystem: Coalbed water
   type: nmdc:Biosample
@@ -1160,7 +1172,9 @@ heavy_metals_meth:
 - has_raw_value: https://link.springer.com/article/10.1007/s42452-019-1578-x
 host_name: snail is an example value, but unconstrained text is accepted at this point
 host_taxid:
-  has_raw_value: '9606'
+  has_raw_value: NCBITaxon:9606
+  term:
+    id: NCBITaxon:9606
 humidity_regm:
 - has_raw_value: 25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 id: nmdc:bsm-99-dtTMNb
@@ -1303,7 +1317,10 @@ samp_store_loc:
 samp_store_temp:
   has_raw_value: -80 degree Celsius
 samp_taxon_id:
-  has_raw_value: soil metagenome [NCBItaxon:410658] but no validation applied yet
+  has_raw_value: soil metagenome [NCBItaxon:410658]
+  term:
+    id: NCBItaxon:410658
+    name: soil metagenome
 samp_vol_we_dna_ext:
   has_raw_value: 1500 milliliter
 sample_collection_site: unconstrained text
@@ -1662,7 +1679,9 @@ heavy_metals_meth:
 - has_raw_value: https://link.springer.com/article/10.1007/s42452-019-1578-x
 host_name: snail is an example value, but unconstrained text is accepted at this point
 host_taxid:
-  has_raw_value: '9606'
+  has_raw_value: NCBITaxon:9606
+  term:
+    id: NCBITaxon:9606
 humidity_regm:
 - has_raw_value: 25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 id: nmdc:bsm-99-dtTMNb
@@ -1807,7 +1826,10 @@ samp_store_loc:
 samp_store_temp:
   has_raw_value: -80 degree Celsius
 samp_taxon_id:
-  has_raw_value: soil metagenome [NCBItaxon:410658] but no validation applied yet
+  has_raw_value: soil metagenome [NCBItaxon:410658]
+  term:
+    id: NCBItaxon:410658
+    name: soil metagenome
 samp_vol_we_dna_ext:
   has_raw_value: 1500 milliliter
 sample_collection_site: unconstrained text

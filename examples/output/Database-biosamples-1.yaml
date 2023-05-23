@@ -31,6 +31,9 @@ biosample_set:
     longitude: 150.168149
   samp_taxon_id:
     has_raw_value: coal metagenome [NCBITaxon:1260732]
+    term:
+      id: NCBITaxon:1260732
+      name: coal metagenome
   specific_ecosystem: Coalbed water
   add_date: 28-JUL-14 12.00.00.000000000 AM
   community: microbial communities
@@ -74,6 +77,9 @@ biosample_set:
     longitude: 150.168149
   samp_taxon_id:
     has_raw_value: coal metagenome [NCBITaxon:1260732]
+    term:
+      id: NCBITaxon:1260732
+      name: coal metagenome
   specific_ecosystem: Coalbed water
   add_date: 28-JUL-14 12.00.00.000000000 AM
   community: microbial communities
@@ -114,6 +120,9 @@ biosample_set:
     longitude: 150.168149
   samp_taxon_id:
     has_raw_value: coal metagenome [NCBITaxon:1260732]
+    term:
+      id: NCBITaxon:1260732
+      name: coal metagenome
   specific_ecosystem: Coalbed water
   add_date: 28-JUL-14 12.00.00.000000000 AM
   community: microbial communities
@@ -154,6 +163,9 @@ biosample_set:
     longitude: 150.168149
   samp_taxon_id:
     has_raw_value: coal metagenome [NCBITaxon:1260732]
+    term:
+      id: NCBITaxon:1260732
+      name: coal metagenome
   specific_ecosystem: Coalbed water
   add_date: 28-JUL-14 12.00.00.000000000 AM
   community: microbial communities
