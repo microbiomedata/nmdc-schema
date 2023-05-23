@@ -226,8 +226,8 @@ src/schema/mixs.yaml.new: assets/mixs_regen/mixs_subset.yaml
 	yq -i 'del(.slots.samp_taxon_id.string_serialization)'  $@
 	yq -i 'del(.slots.host_taxid.comments |= ["Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value"])'  $@
 	yq -i 'del(.slots.samp_taxon_id.comments |= ["coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value"])'  $@
-	yq -i 'del(.slots.samp_taxon_id.range = "ControlledIdentifiedTermValue"'  $@
-	yq -i 'del(.slots.host_taxid.range = "ControlledIdentifiedTermValue"'  $@
+	yq -i 'del(.slots.samp_taxon_id.range = "ControlledIdentifiedTermValue")'  $@
+	yq -i 'del(.slots.host_taxid.range = "ControlledIdentifiedTermValue")'  $@
 	rm -rf assets/mixs_subset_repaired.yaml.bak
 
 mixs_deepdiff: src/schema/mixs.yaml
