@@ -1660,7 +1660,7 @@ enums:
       KO_EC Annotation GFF:
         description: GFF3 format file with KO_EC
         annotations:
-          file_name_pattern: '[GOLD-AP]_ko_ec.tsv'
+          file_name_pattern: '[GOLD-AP]_ko_ec.gff'
 
       Product Names:
         description: Product names file
@@ -1675,7 +1675,7 @@ enums:
       Crispr Terms:
         description: Crispr Terms
         annotations:
-          file_name_pattern: '[GOLD-AP]_gene_phylogeny.tsv'
+          file_name_pattern: '[GOLD-AP]_crt.crisprs'
 
       Clusters of Orthologous Groups (COG) Annotation GFF:
         description: GFF3 format file with COGs
