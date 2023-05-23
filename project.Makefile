@@ -6,27 +6,26 @@ SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 
 .PHONY: mixs_deepdiff shuttle_cleanup
 
-src/schema/mixs.yaml: shuttle_cleanup src/schema/mixs.yaml.new
+src/schema/mixs.yaml: shuttle_cleanup assets/mixs_regen/mixs_subset_modified_inj_land_use.yaml
 	mv $(word 2,$^) $@
-	rm -rf src/schema/mixs.yaml.new.bak
+	rm -rf assets/mixs_regen/mixs_subset_modified.yaml.bak
 
 shuttle_cleanup:
-	#cp src/schema/mixs.yaml src/schema/mixs.yaml.bak
 	rm -rf assets/mixs_regen/import_slots_regardless_gen.tsv
 	rm -rf assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv
 	rm -rf assets/mixs_regen/mixs_slots_associated_with_biosample_omics_processing_augmented.tsv
 	rm -rf assets/mixs_regen/mixs_slots_used_in_schema.tsv
 	rm -rf assets/mixs_regen/mixs_subset.yaml
+	rm -rf assets/mixs_regen/mixs_subset_modified.yaml
+	rm -rf assets/mixs_regen/mixs_subset_modified.yaml.bak
 	rm -rf assets/mixs_regen/mixs_subset_repaired.yaml
 	rm -rf assets/mixs_regen/mixs_subset_repaired.yaml.bak
 	rm -rf assets/mixs_regen/slots_associated_with_biosample.tsv
 	rm -rf assets/mixs_regen/slots_associated_with_biosample_omics_processing.tsv
 	rm -rf assets/mixs_regen/slots_associated_with_omics_processing.tsv
 	rm -rf src/schema/mixs.yaml
-	rm -rf src/schema/mixs.yaml.new
-	rm -rf src/schema/mixs.yaml.new.bak
 	mkdir -p assets/mixs_regen
-	echo "do not delete this placeholder file" > assets/mixs_regen/placeholder.txt
+	touch assets/mixs_regen/.gitkeep
 
 #assets/mixs_regen/mixs_slots_used_in_schema.tsv:
 #	$(RUN) get_mixs_slots_used_in_schema --output_file $@
@@ -67,19 +66,18 @@ assets/mixs_regen/mixs_subset.yaml: assets/mixs_regen/import_slots_regardless_ge
 		--config_tsv $< \
 		--yaml_output $@
 
-src/schema/mixs.yaml.new: assets/mixs_regen/mixs_subset.yaml
+assets/mixs_regen/mixs_subset_modified.yaml: assets/mixs_regen/mixs_subset.yaml
 	# the majority of operations
 	# change the https://github.com/GenomicsStandardsConsortium/mixs/blob/main/model/schema/mixs.yaml ranges
 	# to match https://github.com/microbiomedata/nmdc-schema/blame/e681592b20f98dab0cf89278b2b3c2f5e0754adf/src/schema/mixs.yaml
 	#   from Apr 2022 ?
-	# add the same thing for other attributes like ...
-	#mv $@ src/schema/mixs.yaml.bak
 	sed 's/quantity value/QuantityValue/' $< > $@
 	sed -i.bak 's/range: string/range: TextValue/' $@
 	sed -i.bak 's/range: text value/range: TextValue/' $@
     # what prefix do we want to use? mixs.yaml uses MIXS as a prefix for slot_uris
 	#sed -i.bak 's/slot_uri: MIXS:/slot_uri: mixs:/' $@
 	#sed -i.bak 's/slot_uri: mixs:/slot_uri: MIXS:/' $@
+	#yq -i '.slots.ph.range |= "QuantityValue"' $@
 	yq -i '.slots.agrochem_addition.range |= "TextValue"' $@
 	yq -i '.slots.air_temp_regm.range |= "TextValue"' $@
 	yq -i '.slots.antibiotic_regm.range |= "TextValue"' $@
@@ -157,7 +155,6 @@ src/schema/mixs.yaml.new: assets/mixs_regen/mixs_subset.yaml
 	yq -i '.slots.particle_class.range |= "TextValue"' $@
 	yq -i '.slots.permeability.range |= "TextValue"' $@
 	yq -i '.slots.pesticide_regm.range |= "TextValue"' $@
-	#yq -i '.slots.ph.range |= "QuantityValue"' $@
 	yq -i '.slots.phaeopigments.range |= "TextValue"' $@
 	yq -i '.slots.phosplipid_fatt_acid.range |= "TextValue"' $@
 	yq -i '.slots.plant_growth_med.range |= "ControlledTermValue"' $@
@@ -215,34 +212,33 @@ src/schema/mixs.yaml.new: assets/mixs_regen/mixs_subset.yaml
 	yq -i 'del(.enums.[].name)'  $@
 	yq -i 'del(.enums.[].permissible_values.[].text)'  $@
 	yq -i 'del(.slots.[].name)'  $@
-	yq -i 'del(.subsets.[].name)'  $@
 	yq -i 'del(.slots.add_recov_method.pattern)'  $@
+	yq -i 'del(.subsets.[].name)'  $@
 	yq -i '.id |= "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml"' $@
 
-	# update host_taxid and samp_taxon_id. may want to flatten to a string or URIORCURIE eventually
+#	# update host_taxid and samp_taxon_id. may want to flatten to a string or URIORCURIE eventually
 	yq -i 'del(.slots.host_taxid.examples)'  $@
 	yq -i 'del(.slots.host_taxid.string_serialization)'  $@
 	yq -i 'del(.slots.samp_taxon_id.examples)'  $@
 	yq -i 'del(.slots.samp_taxon_id.string_serialization)'  $@
-	yq -i 'del(.slots.host_taxid.comments |= ["Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value"])'  $@
-	yq -i 'del(.slots.samp_taxon_id.comments |= ["coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value"])'  $@
-	yq -i 'del(.slots.samp_taxon_id.range = "ControlledIdentifiedTermValue")'  $@
-	yq -i 'del(.slots.host_taxid.range = "ControlledIdentifiedTermValue")'  $@
+	yq -i '.slots.host_taxid.comments |= ["Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value"]'  $@
+	yq -i '.slots.host_taxid.range = "ControlledIdentifiedTermValue"'  $@
+	yq -i '.slots.samp_taxon_id.comments |= ["coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value"]'  $@
+	yq -i '.slots.samp_taxon_id.range = "ControlledIdentifiedTermValue"'  $@
 
 	# add "M horizon" to soil_horizon_enum
 	yq -i '.enums.soil_horizon_enum.permissible_values.["M horizon"] = {}'  $@
+	rm -rf assets/mixs_regen/mixs_subset_modified.yaml.bak
 
+
+assets/mixs_regen/mixs_subset_modified_inj_land_use.yaml: assets/other_mixs_yaml_files/cur_land_use_enum.yaml assets/mixs_regen/mixs_subset_modified.yaml
 	# inject re-structured cur_land_use_enum
 	#   using '| cat > ' because yq doesn't seem to like redirecting out to a file
 	yq eval-all \
 		'select(fileIndex==1).enums.cur_land_use_enum = select(fileIndex==0).enums.cur_land_use_enum | select(fileIndex==1)' \
-		assets/other_mixs_yaml_files/cur_land_use_enum.yaml $@ | cat > $@.newer
-	mv $@.newer $@
+		$^ | cat > $@
 
 
-
-	rm -rf assets/mixs_subset_repaired.yaml.bak
-	rm -rf src/schema/mixs.yaml.new.raw2
 
 mixs_deepdiff: src/schema/mixs.yaml
 	mv src/schema/mixs.yaml.bak src/schema/mixs.bak.yaml
