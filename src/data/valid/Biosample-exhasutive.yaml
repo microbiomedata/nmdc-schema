@@ -134,8 +134,8 @@ heavy_metals_meth:
   - has_raw_value: https://link.springer.com/article/10.1007/s42452-019-1578-x
 lat_lon:
   has_raw_value: 50.586825 6.408977
-#  latitude: 50.586825
-#  longitude: 6.408977
+  latitude: 50.586825
+  longitude: 6.408977
 link_addit_analys:
   has_raw_value: https://pubmed.ncbi.nlm.nih.gov/2315679/
 link_class_info:
@@ -317,8 +317,8 @@ dna_absorb1: 2.02
 dna_absorb2: 2.02
 dna_collect_site: untreated pond water
 dna_concentration: 100
-dna_cont_type: plate
-dna_cont_well: C2
+#dna_cont_type: plate
+#dna_cont_well: C2
 dna_container_id: Pond_MT_041618
 dna_dnase: 'yes'
 dna_isolate_meth: phenol/chloroform extraction
@@ -339,8 +339,8 @@ rna_absorb1: 2.02
 rna_absorb2: 2.02
 rna_collect_site: untreated pond water
 rna_concentration: 100
-rna_cont_type: plate
-rna_cont_well: C2
+#rna_cont_type: plate
+#rna_cont_well: C2
 rna_container_id: Pond_MT_041618
 rna_isolate_meth: phenol/chloroform extraction
 rna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles

@@ -23,6 +23,8 @@ biosample_set:
       has_raw_value: Lithgow
     lat_lon:
       has_raw_value: "-33.460524 150.168149"
+      latitude: -33.460524
+      longitude: 150.168149
     ecosystem: Environmental
     ecosystem_category: Aquatic
     ecosystem_type: Freshwater
@@ -67,6 +69,8 @@ biosample_set:
       has_raw_value: Lithgow
     lat_lon:
       has_raw_value: "-33.460524 150.168149"
+      latitude: -33.460524
+      longitude: 150.168149
     ecosystem: Environmental
     ecosystem_category: Aquatic
     ecosystem_type: Freshwater
@@ -108,6 +112,8 @@ biosample_set:
       has_raw_value: Lithgow
     lat_lon:
       has_raw_value: "-33.460524 150.168149"
+      latitude: -33.460524
+      longitude: 150.168149
     ecosystem: Environmental
     ecosystem_category: Aquatic
     ecosystem_type: Freshwater
@@ -149,6 +155,8 @@ biosample_set:
       has_raw_value: Lithgow
     lat_lon:
       has_raw_value: "-33.460524 150.168149"
+      latitude: -33.460524
+      longitude: 150.168149
     ecosystem: Environmental
     ecosystem_category: Aquatic
     ecosystem_type: Freshwater
