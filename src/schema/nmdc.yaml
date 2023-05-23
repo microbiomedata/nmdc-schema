@@ -171,6 +171,7 @@ classes:
       - "might correspond to GOLD's identifier on a page like https://gold.jgi.doe.gov/biosample?id=Gb0305833"
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -192,6 +193,7 @@ classes:
         range: Biosample
         required: true
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -219,6 +221,7 @@ classes:
       description:
         required: true
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -979,11 +982,11 @@ classes:
         range: rel_to_oxygen_enum
 
       id:
+        required: true
         description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
         structured_pattern:
           syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-        required: true
       gold_biosample_identifiers:
         description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
         comments: This is the ID provided by GOLD that starts with 'GB'
@@ -1300,6 +1303,7 @@ classes:
 
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -1375,6 +1379,7 @@ classes:
       - has_input
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:bsmprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -1425,6 +1430,7 @@ classes:
 
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true

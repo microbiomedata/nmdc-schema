@@ -25,6 +25,7 @@ imports:
 
 slots:
   id:
+    required: true
     identifier: true
     range: uriorcurie
     description: >-

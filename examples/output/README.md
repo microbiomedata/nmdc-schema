@@ -981,6 +981,30 @@ id: nmdc:dobj-11-dtTMNb
 name: Crispr Terms
 
 ```
+## ReadQcAnalysisActivity-1
+### Input
+```yaml
+ended_at_time: '2021-09-15T10:13:20+00:00'
+execution_resource: execution_resource1
+git_url: git_url1
+has_input:
+- jgi:534819030d87850d7aea2a16
+has_output:
+- nmdc:ae40d7ae535c92b6d347915d8b1ac125
+- nmdc:bd723452a107e973fcc6734ff7894bb9
+id: nmdc:wfrqc-99-ABCDEF
+input_base_count: 300.0
+input_read_bases: 300.0
+input_read_count: 10.0
+name: name1
+output_base_count: 100.0
+output_read_bases: 100.0
+output_read_count: 3.0
+started_at_time: '2021-08-05T14:48:51+00:00'
+type: type1
+was_informed_by: gold:Gp0061273
+
+```
 ## Database-biosamples-minimal
 ### Input
 ```yaml
@@ -1505,6 +1529,19 @@ nom_analysis_activity_set:
   started_at_time: '2018-11-13T20:20:39+00:00'
   type: xxx
   was_informed_by: nmdc:act-99-abcdefg
+
+```
+## DataObject-MB-unknown-enum-pv
+### Input
+```yaml
+data_object_type: Crispr Terms
+description: Crispr Terms for nmdc:ann0vx38
+file_size_bytes: 1234
+id: nmdc:dobj-11-dtTMNb
+md5_checksum: 22afa3d49b73eaec2e9787a6b88fbdc3
+name: Crispr Terms
+type: nmdc:DataObject
+url: http://example.com
 
 ```
 ## Biosample-exhaustive-issue-796-bye-yq-for-7-4-10
@@ -3565,6 +3602,29 @@ omics_processing_set:
   - gold:Gs0112340
   processing_institution: JGI
   type: nmdc:OmicsProcessing
+
+```
+## OmicsProcessing-no-id
+### Input
+```yaml
+add_date: 30-OCT-14 12.00.00.000000000 AM
+alternative_identifiers:
+- gold:Gp0108335
+has_input:
+- gold:Gb0108335
+has_output:
+- jgi:551a20d30d878525404e90d5
+mod_date: 22-MAY-20 06.13.12.927000000 PM
+name: Thawing permafrost microbial communities from the Arctic, studying carbon transformations
+  - Permafrost 712P3D
+ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
+  carbon transformations - Permafrost 712P3D
+omics_type:
+  has_raw_value: Metagenome
+part_of:
+- gold:Gs0112340
+processing_institution: JGI
+type: nmdc:OmicsProcessing
 
 ```
 ## Biosample-invalid-embargoed

@@ -2,19 +2,15 @@ id: nmdc:wfrqc-99-ABCDEF
 name: name1
 started_at_time: '2021-08-05T14:48:51+00:00'
 ended_at_time: '2021-09-15T10:13:20+00:00'
-was_informed_by: was_informed_by1
-was_associated_with: nmdc:wf-99-ABCDEF
-used: used1
+was_informed_by: gold:Gp0061273
 execution_resource: execution_resource1
 git_url: git_url1
 has_input:
-- input1
+- jgi:534819030d87850d7aea2a16
 has_output:
-- output1
+- nmdc:ae40d7ae535c92b6d347915d8b1ac125
+- nmdc:bd723452a107e973fcc6734ff7894bb9
 type: type1
-part_of:
-- part_of1
-version: version1
 input_read_count: 10.0
 input_base_count: 300.0
 output_read_count: 3.0

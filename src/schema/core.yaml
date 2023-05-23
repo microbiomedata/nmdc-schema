@@ -106,6 +106,7 @@ classes:
     title: Analytical Sample
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:ansm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -118,6 +119,7 @@ classes:
       - BCO sample collection site ?
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:site-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -225,6 +227,7 @@ classes:
       - "not yet in use"
     slot_usage:
       id:
+        required: true
         description: >-
           Should be an ORCID. Specify in CURIE format. E.g ORCID:0000-1111-...
   
@@ -261,6 +264,7 @@ classes:
       - OBI:0000485
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
