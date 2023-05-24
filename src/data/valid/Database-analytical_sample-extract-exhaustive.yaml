@@ -3,11 +3,13 @@ analytical_sample_set:
     name: WOOD_024-M-20190715-COMP-DNA1
     description: Extracted DNA from WOOD_024-M-20190715-COMP
     type: nmdc:AnalyticalSample
+    #extract type value OBI_0001051
+    extract_type: DNA extract
     alternative_identifiers: 
       - 19S_31_2826
     #is was_informed_by the right slot? The value of this slot should be the id from a PlannedProcess (ie extraction)
     was_informed_by: nmdc:extr-1235
-    # units for nucl_acid_concentration will use nanogramsPerMicroliter 
+    # units for nucl_acid_concentration will use nanogram per microliter 
     nucleic_acid_concentration:  #http://purl.obolibrary.org/obo/NCIT_C171277
        has_numeric_value: 47.0  
        detection_instrument: Quantus
