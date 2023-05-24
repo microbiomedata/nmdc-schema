@@ -10,6 +10,7 @@ extraction_set:
 #cardinality of outputs should be 1-many, may want to fractionate samples or keep supernatant
     has_outputs:
       - bare:xxx
+    #range for processing_institution should be processing_institution_enum
     processing_institution: Battelle Memorial Institute
     #updating protocol info to be nested
     protocol:
@@ -21,23 +22,13 @@ extraction_set:
     sample_mass: #http://purl.obolibrary.org/obo/MS_1000004
       has_numeric_value: 0.25
       has_unit: gram #http://purl.obolibrary.org/obo/UO_0000021
-    # units for nucl_acid_concentration will use nanogramsPerMicroliter 
-    #move to analytical sample
-    nucleic_acid_concentration:  #http://purl.obolibrary.org/obo/NCIT_C171277
-       has_numeric_value: 47.0  
-       detection_instrument: Quantus
-    #nucl_acid_quant_instrument should have range of TBD enum 
-    #move to analytical sample
-    #replace nucl_acid_purity w/biomaterial_purity https://ontobee.org/ontology/PATO?iri=http://purl.obolibrary.org/obo/PATO_0001339
-    biomaterial_purity: 2 
-    #nucl_acid_purity: 2
-    #based on qaqc criteria for a given process does the output 'Pass' or 'Fail' https://www.ebi.ac.uk/ols/ontologies/edam/terms?iri=http%3A%2F%2Fedamontology.org%2Fdata_3914&lang=en&viewMode=All&siblings=false
+    #based on qaqc criteria for a given process does the output 'Pass' or 'Failed' https://www.ebi.ac.uk/ols/ontologies/edam/terms?iri=http%3A%2F%2Fedamontology.org%2Fdata_3914&lang=en&viewMode=All&siblings=false
     quality_control_report: 
-      #status range should be enum
+      #status range should be new status_enum with possible values of 'Pass' or Failed'
       status: Pass
     #leaving as extraction_method to make the model generic, other option considered was 'Nucleic Acid Extraction Method' http://purl.obolibrary.org/obo/NCIT_C177560
     extraction_method: phenol/chloroform extraction
-    #extraction_type should have range of TBD enum 
+    #extraction_type should have range of dna_extraction_enum with possible values of 'DNA extraction', 'RNA extraction', 'protein extraction'
     #http://purl.obolibrary.org/obo/OBI_0000257
     extraction_type: DNA extraction 
     #not needed at this time
