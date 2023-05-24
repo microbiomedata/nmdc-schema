@@ -10,7 +10,7 @@ extraction_set:
 #cardinality of outputs should be 1-many, may want to fractionate samples or keep supernatant
     has_outputs:
       - bare:xxx
-    processing_institution: Battelle Applied Genomics
+    processing_institution: Battelle Memorial Institute
     #updating protocol info to be nested
     protocol:
       name: BMI_dnaExtractionSOP_v7
