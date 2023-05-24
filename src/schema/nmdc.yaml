@@ -146,6 +146,8 @@ classes:
       - date_created
       - etl_software_version
       - metatranscriptome_activity_set
+      - analytical_sample_set
+      - extraction_set
 
     slot_usage:
       date_created:
