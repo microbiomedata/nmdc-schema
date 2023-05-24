@@ -1807,7 +1807,17 @@ enums:
         notes:
           - replaces Environmental Molecular Science Laboratory
           - replaces Environmental Molecular Sciences Lab
+      ANL:
 
+        title: Argonne National Laboratory
+        meaning: https://ror.org/05gvnxz63
+      Battelle:
+
+        title: Battelle Memorial Institute
+        meaning: https://ror.org/01h5tnr73
+
+        
+         
 slots:
 
   zinc:
