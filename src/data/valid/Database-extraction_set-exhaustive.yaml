@@ -18,7 +18,7 @@ extraction_set:
       nucl_acid_ext: https://data.neonscience.org/documents/10179/2431540/BMI_dnaExtractionSOP_v7/61204962-bb01-a0b9-3354-ccdaab5132c3
     #extraction_date http://purl.obolibrary.org/obo/OBI_0003081
     extraction_date: 2019-11-08
-    #range for sample_mass should be QuantityValue for more generic modeling. ie soil will be in grams, water in gram/ml
+    #range for sample_mass should be QuantityValue for more generic modeling. ie soil will be in gram, water in gram/ml
     sample_mass: #http://purl.obolibrary.org/obo/MS_1000004
       has_numeric_value: 0.25
       has_unit: gram #http://purl.obolibrary.org/obo/UO_0000021
