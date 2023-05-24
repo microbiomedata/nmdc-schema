@@ -1,0 +1,25 @@
+#example populated by w/example mostly from NEON.D16.WREF.DP1.10107.001.mms_metagenomeDnaExtraction.2019-06.expanded.20230113T225219Z.csv
+dna_extraction_set:
+  - id: bare:value
+    name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
+    description: DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7
+    has_inputs: bare:xxx
+#cardinality of outputs should be 1-many, may want to fractionate samples or keep supernatant
+    has_outputs:
+      - bare:xxx
+    processing_institution: Battelle Applied Genomics
+    nucl_acid_ext: https://data.neonscience.org/documents/10179/2431540/BMI_dnaExtractionSOP_v7/61204962-bb01-a0b9-3354-ccdaab5132c3
+    protocol_name: BMI_dnaExtractionSOP_v7
+    process_date: 2019-11-08
+    #hardcode units for sample_mass to gram or make range QuantityValue?
+    sample_mass: 0.25
+    #hardcode units for nucl_acid_concentration to nanogramsPerMicroliter or make range QuantityValue?
+    nucl_acid_concentration: 47.0
+    nucl_acid_quant_method: Quantus
+    #nucl_acid_purity
+    #nucl_acid_range
+    #based on qaqc criteria for a given process does the output 'Pass' or 'Fail' 
+    process_status: Pass
+    protocol_materials:
+      - { material_name : DNeasy 96 PowerSoil Pro Kit, material_vendor: Qiagen, catalog_number: 47017 }
+      - { material_name : X-Pierce Film, material_vendor: Sigma Aldrich, catalog_number: Z722502-100EA }
