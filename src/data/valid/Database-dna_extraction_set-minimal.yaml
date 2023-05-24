@@ -1,8 +1,8 @@
 #example populated by w/example mostly from NEON.D16.WREF.DP1.10107.001.mms_metagenomeDnaExtraction.2019-06.expanded.20230113T225219Z.csv
-dna_extraction_set:
+extraction_set:
   - id: bare:value
     name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
-    has_inputs: bare:xxx
+    has_input: bare:xxx
 #cardinality of outputs should be 1-many, may want to fractionate samples or keep supernatant
     has_outputs:
       - bare:yyy
