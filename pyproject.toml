@@ -21,6 +21,7 @@ python = "^3.9"
 # see https://github.com/microbiomedata/nmdc-schema/issues/820
 linkml = "^1.5.2"
 linkml-runtime = "^1.5.2"
+gen-pop-linkml2sheets = "^0.1.8"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0"
