@@ -12,7 +12,7 @@ analytical_sample_set:
     # units for nucl_acid_concentration will use nanogram per microliter 
     nucleic_acid_concentration:  #http://purl.obolibrary.org/obo/NCIT_C171277
        has_numeric_value: 47.0  
-       detection_instrument: Promega Quantus Fluorometer
-    #nucl_acid_quant_instrument should have range of TBD enum. Recommended possible values 'Promega Quantus Fluorometer', 'other', 'Quant-iT PicoGreen', 'Qubit'
+       instrument_name: Promega Quantus Fluorometer
+    #instrument_name for Class AnalyticalSample should have range of TBD enum. Recommended possible values 'Promega Quantus Fluorometer', 'other', 'Quant-iT PicoGreen', 'Qubit'
     #replace nucl_acid_purity w/biomaterial_purity https://ontobee.org/ontology/PATO?iri=http://purl.obolibrary.org/obo/PATO_0001339
     biomaterial_purity: 2 
