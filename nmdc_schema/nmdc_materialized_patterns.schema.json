@@ -30,7 +30,7 @@
                     "$ref": "#/$defs/Agent"
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "required": [
@@ -47,7 +47,7 @@
                     "$ref": "#/$defs/Agent"
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "title": "Agent",
@@ -115,7 +115,7 @@
                     "type": "string"
                 },
                 "was_generated_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "title": "AttributeValue",
@@ -598,7 +598,7 @@
                 },
                 "collected_from": {
                     "description": "The Site from which a Biosample was collected",
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "collection_date": {
                     "$ref": "#/$defs/TimestampValue",
@@ -1680,7 +1680,7 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -1975,6 +1975,8 @@
                     "type": "string"
                 },
                 "rna_volume": {
+                    "maximum": 1000,
+                    "minimum": 0,
                     "type": "number"
                 },
                 "room_air_exch_rate": {
@@ -2851,7 +2853,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -2895,7 +2897,7 @@
                     "type": "string"
                 },
                 "was_generated_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "title": "BooleanValue",
@@ -3062,13 +3064,13 @@
                 },
                 "has_inputs": {
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
                 "has_outputs": {
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -3114,7 +3116,7 @@
                     "description": "pointer to an ontology class"
                 },
                 "was_generated_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "required": [
@@ -3136,7 +3138,7 @@
                     "description": "pointer to an ontology class"
                 },
                 "was_generated_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "title": "ControlledTermValue",
@@ -3283,7 +3285,7 @@
                     "type": "string"
                 },
                 "was_generated_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "required": [
@@ -3514,10 +3516,10 @@
                     "$ref": "#/$defs/MaterialContainer"
                 },
                 "material_input": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "material_output": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "title": "DissolvingActivity",
@@ -3977,11 +3979,11 @@
                     "type": "string"
                 },
                 "subject": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "was_generated_by": {
                     "description": "provenance for the annotation.",
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "title": "FunctionalAnnotation",
@@ -4063,7 +4065,7 @@
                     "type": "number"
                 },
                 "was_generated_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "required": [
@@ -4202,7 +4204,7 @@
                     "type": "string"
                 },
                 "was_generated_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "title": "ImageValue",
@@ -4294,7 +4296,7 @@
                     "type": "string"
                 },
                 "was_generated_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "title": "IntegerValue",
@@ -4453,14 +4455,14 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
                 "has_output": {
                     "description": "An output biosample to a processing step",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -4488,7 +4490,7 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -4515,10 +4517,10 @@
                 },
                 "was_associated_with": {
                     "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "required": [
@@ -4588,13 +4590,13 @@
                     "$ref": "#/$defs/QuantityValue"
                 },
                 "biosample_input": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "collected_into": {
                     "$ref": "#/$defs/MaterialContainer"
                 },
                 "material_output": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "sampling_method": {
                     "$ref": "#/$defs/SamplingMethodEnum"
@@ -4636,7 +4638,7 @@
                 },
                 "metabolite_quantified": {
                     "description": "the specific metabolite identifier",
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "title": "MetaboliteQuantification",
@@ -4666,7 +4668,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -4679,7 +4681,7 @@
                 "has_output": {
                     "description": "An output biosample to a processing step",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -4695,7 +4697,7 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -4710,17 +4712,17 @@
                 },
                 "used": {
                     "description": "The instrument used to collect the data used in the analysis",
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "version": {
                     "type": "string"
                 },
                 "was_associated_with": {
                     "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "required": [
@@ -4765,14 +4767,14 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
                 "has_output": {
                     "description": "An output biosample to a processing step",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -4788,7 +4790,7 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -4809,10 +4811,10 @@
                 },
                 "was_associated_with": {
                     "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "required": [
@@ -4901,14 +4903,14 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
                 "has_output": {
                     "description": "An output biosample to a processing step",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -4936,7 +4938,7 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -5005,10 +5007,10 @@
                 },
                 "was_associated_with": {
                     "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "required": [
@@ -5045,14 +5047,14 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
                 "has_output": {
                     "description": "An output biosample to a processing step",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -5068,7 +5070,7 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -5089,10 +5091,10 @@
                 },
                 "was_associated_with": {
                     "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "required": [
@@ -5129,14 +5131,14 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
                 "has_output": {
                     "description": "An output biosample to a processing step",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -5158,7 +5160,7 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -5173,17 +5175,17 @@
                 },
                 "used": {
                     "description": "The instrument used to collect the data used in the analysis",
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "version": {
                     "type": "string"
                 },
                 "was_associated_with": {
                     "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "required": [
@@ -5220,14 +5222,14 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
                 "has_output": {
                     "description": "An output biosample to a processing step",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -5243,7 +5245,7 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -5264,10 +5266,10 @@
                 },
                 "was_associated_with": {
                     "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "required": [
@@ -5312,14 +5314,14 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
                 "has_output": {
                     "description": "An output biosample to a processing step",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -5335,7 +5337,7 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -5356,10 +5358,10 @@
                 },
                 "was_associated_with": {
                     "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "required": [
@@ -5448,14 +5450,14 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
                 "has_output": {
                     "description": "An output biosample to a processing step",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -5483,7 +5485,7 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -5552,10 +5554,10 @@
                 },
                 "was_associated_with": {
                     "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "required": [
@@ -5596,14 +5598,14 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
                 "has_output": {
                     "description": "An output biosample to a processing step",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -5619,7 +5621,7 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -5634,17 +5636,17 @@
                 },
                 "used": {
                     "description": "The instrument used to collect the data used in the analysis",
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "version": {
                     "type": "string"
                 },
                 "was_associated_with": {
                     "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "required": [
@@ -5706,14 +5708,14 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
                 "has_output": {
                     "description": "An output biosample to a processing step",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -5759,7 +5761,7 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -5928,13 +5930,13 @@
                 "all_proteins": {
                     "description": "the list of protein identifiers that are associated with the peptide sequence",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
                 "best_protein": {
                     "description": "the specific protein identifier most correctly associated with the peptide sequence",
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "min_q_value": {
                     "description": "smallest Q-Value associated with the peptide sequence as provided by MSGFPlus tool",
@@ -6010,7 +6012,7 @@
                     "type": "string"
                 },
                 "was_generated_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "websites": {
                     "description": "A list of websites that are associated with the entity.",
@@ -6139,7 +6141,7 @@
                     "type": "string"
                 },
                 "was_generated_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "title": "QuantityValue",
@@ -6180,10 +6182,10 @@
             "description": "",
             "properties": {
                 "material_input": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "material_output": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "reaction_aided_by": {
                     "$ref": "#/$defs/LabDevice"
@@ -6224,14 +6226,14 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
                 "has_output": {
                     "description": "An output biosample to a processing step",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -6247,7 +6249,7 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -6268,10 +6270,10 @@
                 },
                 "was_associated_with": {
                     "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "required": [
@@ -6308,14 +6310,14 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
                 "has_output": {
                     "description": "An output biosample to a processing step",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -6355,7 +6357,7 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -6376,10 +6378,10 @@
                 },
                 "was_associated_with": {
                     "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "required": [
@@ -7044,7 +7046,7 @@
                     "type": "string"
                 },
                 "was_generated_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "title": "TextValue",
@@ -7086,7 +7088,7 @@
                     "type": "string"
                 },
                 "was_generated_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "title": "TimestampValue",
@@ -7133,7 +7135,7 @@
                     "type": "string"
                 },
                 "was_generated_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "title": "UrlValue",
@@ -7352,14 +7354,14 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
                 "has_output": {
                     "description": "An output biosample to a processing step",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -7375,7 +7377,7 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
-                        "type": "string"
+                        "type": "uriorcurie"
                     },
                     "type": "array"
                 },
@@ -7396,10 +7398,10 @@
                 },
                 "was_associated_with": {
                     "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
+                    "type": "uriorcurie"
                 },
                 "was_informed_by": {
-                    "type": "string"
+                    "type": "uriorcurie"
                 }
             },
             "required": [
