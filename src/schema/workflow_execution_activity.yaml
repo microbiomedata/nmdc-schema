@@ -77,6 +77,7 @@ classes:
         required: true
       version:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -120,6 +121,7 @@ classes:
       - insdc_assembly_identifiers
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -159,6 +161,7 @@ classes:
       - insdc_assembly_identifiers
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -173,6 +176,7 @@ classes:
       - workflow subset
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -186,6 +190,7 @@ classes:
       - workflow subset
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -200,6 +205,7 @@ classes:
       - type
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -221,6 +227,7 @@ classes:
       - mags_list
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -235,6 +242,7 @@ classes:
     slots: [ ]
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -257,6 +265,7 @@ classes:
       - version
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -271,6 +280,7 @@ classes:
       - type
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -289,6 +299,7 @@ classes:
         description: >-
           The instrument used to collect the data used in the analysis
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -305,6 +316,7 @@ classes:
         description: >-
           The instrument used to collect the data used in the analysis
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -321,6 +333,7 @@ classes:
         description: >-
           The instrument used to collect the data used in the analysis
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true

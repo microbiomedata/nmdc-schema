@@ -29,7 +29,10 @@
     }
   },
   "host_taxid": {
-    "has_raw_value": "9606"
+    "has_raw_value": "NCBITaxon:9606",
+    "term": {
+      "id": "NCBITaxon:9606"
+    }
   },
   "embargoed": true,
   "collected_from": "nmdc:unconstrained_site_identifier_string",
@@ -181,7 +184,6 @@
   "diss_oxygen": {
     "has_raw_value": "175 micromole per kilogram"
   },
-  "dna_cont_well": "C2",
   "drainage_class": "well",
   "ecosystem": "unconstrained text. should be validated against the controlled vocabulary, by the sample's environmental package. would also be nice to align the CV with MIxS environmental triads",
   "ecosystem_category": "unconstrained text",
@@ -369,7 +371,11 @@
     "has_raw_value": "-80 degree Celsius"
   },
   "samp_taxon_id": {
-    "has_raw_value": "soil metagenome [NCBItaxon:410658] but no validation applied yet"
+    "has_raw_value": "soil metagenome [NCBItaxon:410658]",
+    "term": {
+      "id": "NCBItaxon:410658",
+      "name": "soil metagenome"
+    }
   },
   "samp_vol_we_dna_ext": {
     "has_raw_value": "1500 milliliter"
@@ -477,7 +483,6 @@
   "dna_absorb2": 2.02,
   "dna_collect_site": "untreated pond water",
   "dna_concentration": 100.0,
-  "dna_cont_type": "plate",
   "dna_container_id": "Pond_MT_041618",
   "dna_dnase": "yes",
   "dna_isolate_meth": "phenol/chloroform extraction",

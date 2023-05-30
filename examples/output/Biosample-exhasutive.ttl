@@ -1,5 +1,6 @@
 @prefix ENVO: <http://purl.obolibrary.org/obo/ENVO_> .
 @prefix MIXS: <https://w3id.org/mixs/> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix wgs84: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
@@ -309,8 +310,9 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     MIXS:0000248 [ a nmdc:TextValue ;
             nmdc:has_raw_value "xxx" ] ;
     MIXS:0000249 "dissemination" ;
-    MIXS:0000250 [ a nmdc:TextValue ;
-            nmdc:has_raw_value "9606" ] ;
+    MIXS:0000250 [ a nmdc:ControlledIdentifiedTermValue ;
+            nmdc:has_raw_value "NCBITaxon:9606" ;
+            nmdc:term NCBITaxon:9606 ] ;
     MIXS:0000251 [ a nmdc:TextValue ;
             nmdc:has_raw_value "xxx" ] ;
     MIXS:0000252 [ a nmdc:TextValue ;
@@ -579,9 +581,9 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     MIXS:0000650 [ a nmdc:QuantityValue ;
             nmdc:has_raw_value "xxx" ] ;
     MIXS:0000652 [ a nmdc:TextValue ;
-            nmdc:has_raw_value "mercury;0.09 micrograms per gram" ],
+            nmdc:has_raw_value "arsenic;0.09 micrograms per gram" ],
         [ a nmdc:TextValue ;
-            nmdc:has_raw_value "arsenic;0.09 micrograms per gram" ] ;
+            nmdc:has_raw_value "mercury;0.09 micrograms per gram" ] ;
     MIXS:0000653 [ a nmdc:QuantityValue ;
             nmdc:has_raw_value "xxx" ] ;
     MIXS:0000656 [ a nmdc:QuantityValue ;
@@ -871,8 +873,9 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     MIXS:0001225 "swabbing" ;
     MIXS:0001298 "xxx" ;
     MIXS:0001318 "xxx" ;
-    MIXS:0001320 [ a nmdc:TextValue ;
-            nmdc:has_raw_value "soil metagenome [NCBItaxon:410658] but no validation applied yet" ] ;
+    MIXS:0001320 [ a nmdc:ControlledIdentifiedTermValue ;
+            nmdc:has_raw_value "soil metagenome [NCBItaxon:410658]" ;
+            nmdc:term NCBITaxon:410658 ] ;
     nmdc:add_date "2021-03-31" ;
     nmdc:alternative_identifiers "any_string",
         "seriously_anything" ;
@@ -891,8 +894,6 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     nmdc:dna_absorb2 "2.02"^^xsd:float ;
     nmdc:dna_collect_site "untreated pond water" ;
     nmdc:dna_concentration "100.0"^^xsd:float ;
-    nmdc:dna_cont_type "plate" ;
-    nmdc:dna_cont_well "C2" ;
     nmdc:dna_container_id "Pond_MT_041618" ;
     nmdc:dna_dnase "yes" ;
     nmdc:dna_isolate_meth "phenol/chloroform extraction" ;
@@ -932,7 +933,7 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
             nmdc:has_raw_value "543 mg/kg" ] ;
     nmdc:lbceq [ a nmdc:QuantityValue ;
             nmdc:has_raw_value "1575 mg/kg" ] ;
-    nmdc:location "unconstrained text. should we even keep this slot? check if it ahs been used in MongoDB." ;
+    nmdc:location "unconstrained text. should we even keep this slot? check if it has been used in MongoDB." ;
     nmdc:manganese [ a nmdc:QuantityValue ;
             nmdc:has_raw_value "24.7 mg/kg" ] ;
     nmdc:micro_biomass_c_meth "https://acsess.onlinelibrary.wiley.com/doi/abs/10.2136/sssaspecpub49.c12" ;
@@ -942,8 +943,6 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     nmdc:mod_date "2023-01-25" ;
     nmdc:name "Sample Exhaustive Biosample instance. Although all of these values should pass validation, that does not mean that any Biosample of any type would necessarily have this particular combination of values." ;
     nmdc:ncbi_taxonomy_name "soil metagenome" ;
-    nmdc:nitrate_nitrogen [ a nmdc:QuantityValue ;
-            nmdc:has_raw_value "0.29 mg/kg" ] ;
     nmdc:nitrite_nitrogen [ a nmdc:QuantityValue ;
             nmdc:has_raw_value "1.2 mg/kg" ] ;
     nmdc:non_microb_biomass "insect 0.23 ug; plant 1g" ;
@@ -959,8 +958,6 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     nmdc:rna_absorb2 "2.02"^^xsd:float ;
     nmdc:rna_collect_site "untreated pond water" ;
     nmdc:rna_concentration "100.0"^^xsd:float ;
-    nmdc:rna_cont_type "plate" ;
-    nmdc:rna_cont_well "C2" ;
     nmdc:rna_container_id "Pond_MT_041618" ;
     nmdc:rna_isolate_meth "phenol/chloroform extraction" ;
     nmdc:rna_organisms "expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles (1%)" ;
@@ -994,4 +991,9 @@ ENVO:00002030 a nmdc:OntologyClass .
 ENVO:00002169 a nmdc:OntologyClass .
 
 ENVO:00005792 a nmdc:OntologyClass .
+
+NCBITaxon:410658 a nmdc:OntologyClass ;
+    nmdc:name "soil metagenome" .
+
+NCBITaxon:9606 a nmdc:OntologyClass .
 

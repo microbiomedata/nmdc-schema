@@ -15,8 +15,6 @@ SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 SOURCE_SCHEMA_DIR = $(dir $(SOURCE_SCHEMA_PATH))
 SRC = src
 DEST = project
-#PYMODEL = $(SRC)/$(SCHEMA_NAME)/datamodel
-#PYMODEL = $(SRC)/$(SCHEMA_NAME)
 PYMODEL = $(SCHEMA_NAME)
 EXAMPLEDIR = examples
 TEMPLATEDIR = doc-templates
@@ -83,9 +81,9 @@ site: clean site-clean src/schema/mixs.yaml gen-project gendoc nmdc_schema/gold-
 # was deploy: all mkd-gh-deploy
 deploy: gendoc mkd-gh-deploy
 
-# In future this will be done by conversion
-gen-examples:
-	cp src/data/examples/* $(EXAMPLEDIR)
+## In future this will be done by conversion
+#gen-examples:
+#	cp src/data/examples/* $(EXAMPLEDIR)
 
 gen-project: $(PYMODEL)
 	# added inclusion/exclusion parameters here, in test rule, and in project directories constant
@@ -106,7 +104,7 @@ gen-project: $(PYMODEL)
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
-test: examples-clean site test-python examples/output jsonschema-check-all-valid-databases
+test: examples-clean site test-python jsonschema-check-all-valid-databases examples/output
 
 test-schema:
 	$(RUN) gen-project \
@@ -134,15 +132,15 @@ lint:
 check-config:
 	@(grep my-datamodel about.yaml > /dev/null && printf "\n**Project not configured**:\n\n - Remember to edit 'about.yaml'\n\n" || exit 0)
 
-convert-examples-to-%:
-	$(patsubst %, $(RUN) linkml-convert % -s $(SOURCE_SCHEMA_PATH) -C Person, $(shell find src/data/examples -name "*.yaml"))
-
-examples/%.yaml: src/data/examples/%.yaml
-	$(RUN) linkml-convert -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
-examples/%.json: src/data/examples/%.yaml
-	$(RUN) linkml-convert -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
-examples/%.ttl: src/data/examples/%.yaml
-	$(RUN) linkml-convert -P EXAMPLE=http://example.org/ -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
+#convert-examples-to-%:
+#	$(patsubst %, $(RUN) linkml-convert % -s $(SOURCE_SCHEMA_PATH) -C Person, $(shell find src/data/examples -name "*.yaml"))
+#
+#examples/%.yaml: src/data/examples/%.yaml
+#	$(RUN) linkml-convert -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
+#examples/%.json: src/data/examples/%.yaml
+#	$(RUN) linkml-convert -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
+#examples/%.ttl: src/data/examples/%.yaml
+#	$(RUN) linkml-convert -P EXAMPLE=http://example.org/ -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
 
 # Test documentation locally
 serve: mkd-serve

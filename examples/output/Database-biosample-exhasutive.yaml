@@ -23,7 +23,9 @@ biosample_set:
     term:
       id: ENVO:00005792
   host_taxid:
-    has_raw_value: '9606'
+    has_raw_value: NCBITaxon:9606
+    term:
+      id: NCBITaxon:9606
   embargoed: true
   collected_from: nmdc:unconstrained_site_identifier_string
   type: nmdc:Biosample. change this to require a class name or an enumeration
@@ -243,7 +245,6 @@ biosample_set:
     has_raw_value: 175 micromole per kilogram
   diss_oxygen_fluid:
     has_raw_value: xxx
-  dna_cont_well: C2
   door_comp_type: revolving
   door_cond: damaged
   door_direct: inward
@@ -493,8 +494,6 @@ biosample_set:
   - has_raw_value: n-hexadecane;100 milligram per liter
   nitrate:
     has_raw_value: 65 micromole per liter
-  nitrate_nitrogen:
-    has_raw_value: 0.29 mg/kg
   nitrite:
     has_raw_value: 0.5 micromole per liter
   nitrite_nitrogen:
@@ -696,7 +695,10 @@ biosample_set:
     has_raw_value: -80 degree Celsius
   samp_subtype: biofilm
   samp_taxon_id:
-    has_raw_value: soil metagenome [NCBItaxon:410658] but no validation applied yet
+    has_raw_value: soil metagenome [NCBItaxon:410658]
+    term:
+      id: NCBItaxon:410658
+      name: soil metagenome
   samp_time_out:
     has_raw_value: xxx
   samp_transport_cond:
@@ -941,7 +943,7 @@ biosample_set:
   habitat: unconstrained text
   host_name: snail is an example value, but unconstrained text is accepted at this
     point
-  location: unconstrained text. should we even keep this slot? check if it ahs been
+  location: unconstrained text. should we even keep this slot? check if it has been
     used in MongoDB.
   mod_date: '2023-01-25'
   ncbi_taxonomy_name: soil metagenome
@@ -956,7 +958,6 @@ biosample_set:
   dna_absorb2: 2.02
   dna_collect_site: untreated pond water
   dna_concentration: 100.0
-  dna_cont_type: plate
   dna_container_id: Pond_MT_041618
   dna_dnase: 'yes'
   dna_isolate_meth: phenol/chloroform extraction
@@ -977,8 +978,6 @@ biosample_set:
   rna_absorb2: 2.02
   rna_collect_site: untreated pond water
   rna_concentration: 100.0
-  rna_cont_type: plate
-  rna_cont_well: C2
   rna_container_id: Pond_MT_041618
   rna_isolate_meth: phenol/chloroform extraction
   rna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles

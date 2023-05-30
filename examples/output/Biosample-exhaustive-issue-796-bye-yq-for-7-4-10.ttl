@@ -1,5 +1,6 @@
 @prefix ENVO: <http://purl.obolibrary.org/obo/ENVO_> .
 @prefix MIXS: <https://w3id.org/mixs/> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix wgs84: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
@@ -90,8 +91,9 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
             nmdc:has_raw_value "1.75 milligram per cubic meter" ] ;
     MIXS:0000205 [ a nmdc:QuantityValue ;
             nmdc:has_raw_value "4 micromole per liter" ] ;
-    MIXS:0000250 [ a nmdc:TextValue ;
-            nmdc:has_raw_value "9606" ] ;
+    MIXS:0000250 [ a nmdc:ControlledIdentifiedTermValue ;
+            nmdc:has_raw_value "NCBITaxon:9606" ;
+            nmdc:term NCBITaxon:9606 ] ;
     MIXS:0000298 [ a nmdc:TextValue ;
             nmdc:has_raw_value "https://wrrc.umass.edu/research/projects/acid-rain-monitoring-project/analysis-method-ph-and-alkalinity" ] ;
     MIXS:0000310 [ a nmdc:QuantityValue ;
@@ -215,9 +217,9 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     MIXS:0000647 [ a nmdc:QuantityValue ;
             nmdc:has_raw_value "MIxS does not provide an example" ] ;
     MIXS:0000652 [ a nmdc:TextValue ;
-            nmdc:has_raw_value "arsenic;0.09 micrograms per gram" ],
+            nmdc:has_raw_value "mercury;0.09 micrograms per gram" ],
         [ a nmdc:TextValue ;
-            nmdc:has_raw_value "mercury;0.09 micrograms per gram" ] ;
+            nmdc:has_raw_value "arsenic;0.09 micrograms per gram" ] ;
     MIXS:0000735 [ a nmdc:QuantityValue ;
             nmdc:has_raw_value "0.2 micrometer" ] ;
     MIXS:0000736 [ a nmdc:QuantityValue ;
@@ -251,8 +253,9 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
             nmdc:has_raw_value "https://www.epa.gov/sites/production/files/2015-12/documents/9040c.pdf" ] ;
     MIXS:0001107 "see also name" ;
     MIXS:0001225 "swabbing" ;
-    MIXS:0001320 [ a nmdc:TextValue ;
-            nmdc:has_raw_value "soil metagenome [NCBItaxon:410658] but no validation applied yet" ] ;
+    MIXS:0001320 [ a nmdc:ControlledIdentifiedTermValue ;
+            nmdc:has_raw_value "soil metagenome [NCBItaxon:410658]" ;
+            nmdc:term NCBITaxon:410658 ] ;
     nmdc:add_date "2021-03-31" ;
     nmdc:alternative_identifiers "any_string",
         "seriously_anything" ;
@@ -271,8 +274,6 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     nmdc:dna_absorb2 "2.02"^^xsd:float ;
     nmdc:dna_collect_site "untreated pond water" ;
     nmdc:dna_concentration "100.0"^^xsd:float ;
-    nmdc:dna_cont_type "plate" ;
-    nmdc:dna_cont_well "C2" ;
     nmdc:dna_container_id "Pond_MT_041618" ;
     nmdc:dna_dnase "yes" ;
     nmdc:dna_isolate_meth "phenol/chloroform extraction" ;
@@ -374,4 +375,9 @@ ENVO:00002030 a nmdc:OntologyClass .
 ENVO:00002169 a nmdc:OntologyClass .
 
 ENVO:00005792 a nmdc:OntologyClass .
+
+NCBITaxon:410658 a nmdc:OntologyClass ;
+    nmdc:name "soil metagenome" .
+
+NCBITaxon:9606 a nmdc:OntologyClass .
 

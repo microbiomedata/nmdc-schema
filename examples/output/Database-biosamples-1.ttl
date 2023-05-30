@@ -1,6 +1,7 @@
 @prefix ENVO: <http://purl.obolibrary.org/obo/ENVO_> .
 @prefix GOLD: <http://identifiers.org/gold/> .
 @prefix MIXS: <https://w3id.org/mixs/> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix wgs84: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
@@ -24,8 +25,9 @@ nmdc:bsm-99-AtTUOs a nmdc:Biosample ;
     MIXS:0000014 [ a nmdc:ControlledIdentifiedTermValue ;
             nmdc:has_raw_value "ENVO:00005792" ;
             nmdc:term ENVO:00005792 ] ;
-    MIXS:0001320 [ a nmdc:TextValue ;
-            nmdc:has_raw_value "coal metagenome [NCBITaxon:1260732]" ] ;
+    MIXS:0001320 [ a nmdc:ControlledIdentifiedTermValue ;
+            nmdc:has_raw_value "coal metagenome [NCBITaxon:1260732]" ;
+            nmdc:term NCBITaxon:1260732 ] ;
     nmdc:add_date "28-JUL-14 12.00.00.000000000 AM" ;
     nmdc:biosample_categories "LTER",
         "SIP" ;
@@ -62,8 +64,9 @@ nmdc:bsm-99-TDPHTh a nmdc:Biosample ;
     MIXS:0000014 [ a nmdc:ControlledIdentifiedTermValue ;
             nmdc:has_raw_value "ENVO:00005792" ;
             nmdc:term ENVO:00005792 ] ;
-    MIXS:0001320 [ a nmdc:TextValue ;
-            nmdc:has_raw_value "coal metagenome [NCBITaxon:1260732]" ] ;
+    MIXS:0001320 [ a nmdc:ControlledIdentifiedTermValue ;
+            nmdc:has_raw_value "coal metagenome [NCBITaxon:1260732]" ;
+            nmdc:term NCBITaxon:1260732 ] ;
     nmdc:add_date "28-JUL-14 12.00.00.000000000 AM" ;
     nmdc:community "microbial communities" ;
     nmdc:ecosystem "Environmental" ;
@@ -98,8 +101,9 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     MIXS:0000014 [ a nmdc:ControlledIdentifiedTermValue ;
             nmdc:has_raw_value "ENVO:00005792" ;
             nmdc:term ENVO:00005792 ] ;
-    MIXS:0001320 [ a nmdc:TextValue ;
-            nmdc:has_raw_value "coal metagenome [NCBITaxon:1260732]" ] ;
+    MIXS:0001320 [ a nmdc:ControlledIdentifiedTermValue ;
+            nmdc:has_raw_value "coal metagenome [NCBITaxon:1260732]" ;
+            nmdc:term NCBITaxon:1260732 ] ;
     nmdc:add_date "28-JUL-14 12.00.00.000000000 AM" ;
     nmdc:community "microbial communities" ;
     nmdc:ecosystem "Environmental" ;
@@ -134,8 +138,9 @@ nmdc:bsm-99-eBVHjN a nmdc:Biosample ;
     MIXS:0000014 [ a nmdc:ControlledIdentifiedTermValue ;
             nmdc:has_raw_value "ENVO:00005792" ;
             nmdc:term ENVO:00005792 ] ;
-    MIXS:0001320 [ a nmdc:TextValue ;
-            nmdc:has_raw_value "coal metagenome [NCBITaxon:1260732]" ] ;
+    MIXS:0001320 [ a nmdc:ControlledIdentifiedTermValue ;
+            nmdc:has_raw_value "coal metagenome [NCBITaxon:1260732]" ;
+            nmdc:term NCBITaxon:1260732 ] ;
     nmdc:add_date "28-JUL-14 12.00.00.000000000 AM" ;
     nmdc:community "microbial communities" ;
     nmdc:ecosystem "Environmental" ;
@@ -157,6 +162,9 @@ ENVO:00002030 a nmdc:OntologyClass .
 ENVO:00002169 a nmdc:OntologyClass .
 
 ENVO:00005792 a nmdc:OntologyClass .
+
+NCBITaxon:1260732 a nmdc:OntologyClass ;
+    nmdc:name "coal metagenome" .
 
 [] a nmdc:Database ;
     nmdc:biosample_set nmdc:bsm-99-AtTUOs,
