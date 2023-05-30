@@ -1,3 +1,48 @@
+pooling_set:
+  - id: bare:ps1
+    name: first pooling process
+    alternative_identifiers:
+      - bare:ps1_alt_id
+    description: This is the first pooling process that has ever occurred on earth
+    has_inputs:
+      - nmdc:bsm-99-abcdef1
+      - nmdc:bsm-99-abcdef2
+      - nmdc:bsm-99-abcdef3
+    has_outputs:
+      - bare:pool_out_1
+    # participating_agent: xxx # Agent isn't a named thing and doesn't have an ID so must be inlined
+processed_sample_set:
+  - id: bare:pool_out_1
+    name: first processed sample set
+  - id: bare:dna_extract_1
+    name: first DNA extract
+  - id: bare:library_1
+    name: first library
+dna_extraction_set:
+  - id: bare:des1
+    name: first dna extraction set
+    has_inputs:
+      - bare:pool_out_1
+    has_outputs:
+      - bare:dna_extract_1
+
+#example populated by w/example mostly from NEON.D05.TREE.DP1.10107.001.mms_metagenomeSequencing.2017-07.expanded.20230113T225024Z.csv
+#library preparation OBI:0000711
+# Alicia has been
+#   - calling the Database -> set of libraries "library_preparation_set"
+#   - using single-valued "has_input" and "has_output" slots
+library_preparation_set:
+  - id: bare:lcs1
+    name: DNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1
+    #    has_input: bare:xxx
+    #    has_output: bare:xxy
+    #library_type should be enum "DNA", "RNA"
+    library_type: DNA
+    has_inputs:
+      - bare:dna_extract_1
+    has_outputs:
+      - bare:library_1
+
 biosample_set:
   - id: nmdc:bsm-99-abcdef1
     part_of:

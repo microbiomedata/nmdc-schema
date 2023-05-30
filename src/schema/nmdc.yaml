@@ -120,6 +120,9 @@ classes:
       translated to JSON-Schema this is the 'root' object. It should contain pointers
       to other objects of interest
     slots:
+      - library_preparation_set
+      - processed_sample_set
+      - dna_extraction_set
       - activity_set
       - biosample_set
       - data_object_set
@@ -167,6 +170,21 @@ classes:
       has_outputs:
         minimum_cardinality: 1
         maximum_cardinality: 1
+
+  DnaExtraction:
+    is_a: PlannedProcess # from core.yaml
+    slots:
+      - has_inputs
+      - has_outputs
+
+  LibraryPreparation:
+    aliases:
+      - LibraryConstruction
+    is_a: PlannedProcess # from core.yaml
+    slots:
+      - has_inputs
+      - has_outputs
+      - library_type
 
   FieldResearchSite:
     aliases:
@@ -1469,6 +1487,12 @@ classes:
     class_uri: prov:Association
 
 enums:
+  LIBRARY_TYPE_ENUM:
+    # start using the right case for enum names
+    permissible_values:
+      DNA: { }
+      RNA: { }
+
   JgiContTypeEnum:
     permissible_values:
       plate: { }
@@ -1822,6 +1846,36 @@ enums:
           - replaces Environmental Molecular Sciences Lab
 
 slots:
+
+  library_type:
+    title: library type
+    examples:
+      - value: DNA
+    range: LIBRARY_TYPE_ENUM
+
+
+  processed_sample_set:
+    mixins: object_set
+    domain: Database
+    range: ProcessedSample
+    multivalued: true
+    description: This property links a database object to the set of processed samples within it.
+
+  dna_extraction_set:
+    mixins: object_set
+    domain: Database
+    range: DnaExtraction
+    multivalued: true
+    description: This property links a database object to the set of DNA extractions within it.
+
+  library_preparation_set:
+    aliases:
+      - library_construction_set
+    mixins: object_set
+    domain: Database
+    range: LibraryPreparation
+    multivalued: true
+    description: This property links a database object to the set of DNA extractions within it.
 
   zinc:
     aliases:
