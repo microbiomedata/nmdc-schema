@@ -319,3 +319,23 @@ YAML_DATABASE_FILES_VALID := $(wildcard $(YAML_DIR_VALID)Database*.yaml)
 jsonschema-check-all-valid-databases: $(YAML_DATABASE_FILES_VALID)
 	$(foreach yaml_file,$^,echo $(yaml_file) ; $(RUN) check-jsonschema \
 		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $(yaml_file);)
+
+examples/output/Biosample-exhasutive_report.yaml: src/data/valid/Biosample-exhasutive.yaml
+	poetry run exhaustion-check \
+		--class-name Biosample \
+		--instance-yaml-file $< \
+		--output-yaml-file $@ \
+		--schema-path src/schema/nmdc.yaml
+
+
+examples/output/Pooling-minimal-report.yaml: src/data/valid/Pooling-minimal.yaml
+	poetry run exhaustion-check \
+		--class-name Pooling \
+		--instance-yaml-file $< \
+		--output-yaml-file $@ \
+		--schema-path src/schema/nmdc.yaml
+
+examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosample-exhasutive.yaml
+	poetry run pretty-sort-yaml \
+		-i $< \
+		-o $@

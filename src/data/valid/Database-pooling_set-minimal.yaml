@@ -1,0 +1,4 @@
+pooling_set:
+  - id: bare:value
+    name: first pooling process
+

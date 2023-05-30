@@ -146,6 +146,7 @@ classes:
       - date_created
       - etl_software_version
       - metatranscriptome_activity_set
+      - pooling_set
 
     slot_usage:
       date_created:
@@ -154,6 +155,18 @@ classes:
         description: TODO
       metatranscriptome_activity_set:
         description: TODO
+
+  Pooling:
+    is_a: PlannedProcess # from core.yaml
+    slots:
+      - has_inputs
+      - has_outputs
+    slot_usage:
+      has_inputs:
+        minimum_cardinality: 2
+      has_outputs:
+        minimum_cardinality: 1
+        maximum_cardinality: 1
 
   FieldResearchSite:
     aliases:
@@ -2219,6 +2232,13 @@ slots:
     multivalued: true
     description: This property links a database object to the set of omics processings
       within it.
+
+  pooling_set:
+    mixins: object_set
+    domain: Database # doesn't that come from object_set
+    range: Pooling
+    multivalued: true # doesn't that come from object_set
+
   omics_type:
     range: ControlledTermValue
     description: The type of omics data
