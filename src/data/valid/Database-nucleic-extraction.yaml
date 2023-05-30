@@ -1,7 +1,7 @@
 #example populated by w/example mostly from NEON.D16.WREF.DP1.10107.001.mms_metagenomeDnaExtraction.2019-06.expanded.20230113T225219Z.csv
 
 #extraction http://purl.obolibrary.org/obo/OBI_0302884
-nucleic_acid_extraction_set:
+extraction_set:
   - id: bare:value
     name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
     description: DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7

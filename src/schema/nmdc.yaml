@@ -122,7 +122,7 @@ classes:
     slots:
       - library_preparation_set
       - processed_sample_set
-      - nucleic_acid_extraction_set
+      - extraction_set
       - activity_set
       - biosample_set
       - data_object_set
@@ -171,7 +171,7 @@ classes:
         minimum_cardinality: 1
         maximum_cardinality: 1
 
-  NucleicAcidExtraction:
+  Extraction:
     is_a: PlannedProcess # from core.yaml
     slots:
       - extraction_date
@@ -1908,12 +1908,12 @@ slots:
     multivalued: true
     description: This property links a database object to the set of processed samples within it.
 
-  nucleic_acid_extraction_set:
+  extraction_set:
     mixins: object_set
     domain: Database
-    range: NucleicAcidExtraction
+    range: Extraction
     multivalued: true
-    description: This property links a database object to the set of DNA extractions within it.
+    description: This property links a database object to the set of extractions within it.
 
   library_preparation_set:
     aliases:
