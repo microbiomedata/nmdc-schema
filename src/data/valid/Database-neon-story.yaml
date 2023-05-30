@@ -18,7 +18,7 @@ processed_sample_set:
     name: first DNA extract
   - id: bare:library_1
     name: first library
-dna_extraction_set:
+nucleic_acid_extraction_set:
   - id: bare:des1
     name: first dna extraction set
     has_inputs:

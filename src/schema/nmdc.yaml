@@ -122,7 +122,7 @@ classes:
     slots:
       - library_preparation_set
       - processed_sample_set
-      - dna_extraction_set
+      - nucleic_acid_extraction_set
       - activity_set
       - biosample_set
       - data_object_set
@@ -171,20 +171,33 @@ classes:
         minimum_cardinality: 1
         maximum_cardinality: 1
 
-  DnaExtraction:
+  NucleicAcidExtraction:
     is_a: PlannedProcess # from core.yaml
     slots:
-      - has_inputs
+      - extraction_date
+      - extraction_method
+      - extraction_type
+      - has_input
       - has_outputs
+      - processing_institution
+      - protocol
+      - quality_control_report
+      - sample_mass
 
   LibraryPreparation:
     aliases:
       - LibraryConstruction
     is_a: PlannedProcess # from core.yaml
     slots:
-      - has_inputs
-      - has_outputs
+      - has_input
+      - has_output
       - library_type
+      - library_preparation_kit
+      - pcr_cycles
+      - processed_date
+      - processing_institution
+    exact_mappings:
+      - OBI:0000711
 
   FieldResearchSite:
     aliases:
@@ -1489,6 +1502,7 @@ classes:
 enums:
   LIBRARY_TYPE_ENUM:
     # start using the right case for enum names
+    # we have other slots which need a DNA or RNA answer, so maybe we should make this enum name more generic
     permissible_values:
       DNA: { }
       RNA: { }
@@ -1844,8 +1858,36 @@ enums:
         notes:
           - replaces Environmental Molecular Science Laboratory
           - replaces Environmental Molecular Sciences Lab
+      Battelle:
+        title: Battelle Memorial Institute
+        meaning: https://ror.org/01h5tnr73
+
 
 slots:
+
+  library_preparation_kit:
+    range: string
+  #    exact_mappings:
+  #      - GENEPIO:0001450
+  processed_date:
+    #    range: date
+    range: string
+  extraction_date:
+    #    range: date
+    range: string
+  extraction_method: { }
+  extraction_type: { }
+  protocol: { }
+  quality_control_report:
+  # strucutre
+
+  pcr_cycles:
+    range: integer
+    exact_mappings:
+      - OBI:0002475
+  sample_mass:
+    range: QuantityValue
+
 
   library_type:
     title: library type
@@ -1861,10 +1903,10 @@ slots:
     multivalued: true
     description: This property links a database object to the set of processed samples within it.
 
-  dna_extraction_set:
+  nucleic_acid_extraction_set:
     mixins: object_set
     domain: Database
-    range: DnaExtraction
+    range: NucleicAcidExtraction
     multivalued: true
     description: This property links a database object to the set of DNA extractions within it.
 
