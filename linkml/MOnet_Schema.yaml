@@ -1,0 +1,1885 @@
+name: MOnet_schema
+id: https://MOnet/schema ##temporary ask yuri if this is ok for the ID or what to use
+prefixes:                                  
+  linkml: https://w3id.org/linkml/
+  xsd:
+    prefix_prefix: xsd
+    prefix_reference: http://www.w3.org/2001/XMLSchema#
+imports:
+  - linkml:types
+  - AnalysisActivity
+default_range: string
+
+classes:
+#  MetaProteomicsAnalysisActivity:
+#    description: >-
+#      Schema for MetaProteomicsAnalysisActivity table
+#    is_a: AnalysisActivity
+#    slots:
+#      - has_peptide_quantifications_id
+        #foreign db key
+      #has peptide quantifications relationship
+      
+  User:
+    description: >-
+      FileTypeEnum schema
+    slots:
+      - id
+      - username
+      - email
+      - telephone_no
+      - password_hash
+
+  AlembicVersion:
+    description: >-
+      AlembicVersion schema
+    slots:
+      - id
+      - version_num
+  
+  FileTypeEnum:
+    description: >-
+      FileTypeEnum schema
+    slots:
+      - id
+      - file_type_enum
+
+  MagBin:
+    description: >-
+      MagBin schema
+    slots:
+      - id
+      - bin_name
+      - bin_quality
+      - completeness
+      - contamination
+      - gene_count
+      - gtdbtk_class
+      - gtdbtk_domain
+      - gtdbtk_family
+      - gtdbtk_genus
+      - gtdbtk_order
+      - gtdbtk_phylum
+      - gtdbtk_species
+      - num_16s
+      - num_32s
+      - num_5s
+      - num_tRNA
+      - number_of_contig
+      - type
+
+  MetaboliteQuantification:
+    description: >-
+      MetaboliteQuantification Schema
+    slots:
+      - id
+      - description
+      - alternative_identifiers
+      - highest_similarity_score
+      - metabolite_quantified
+
+
+  model:
+    description: >-
+      model schema
+    slots:
+      - id
+      - username
+      - email
+      - telephone_no
+      - password_hash
+
+  MolecularData:
+    description: >-
+      MolecularData schema
+    slots:
+      - id
+      - inchikey
+      - name
+      - formula
+      - casno
+      - inchi
+      - chebi
+      - smiles
+      - kegg
+      - iupac_name
+      - traditional_name
+      - common_name
+      - match_nme
+
+#  NomAnalysisActivity:
+#    description: >-
+#      NomAnalysisActivity Schema
+#    is_a: AnalysisActivity
+#    slots:
+#      - has_calibration
+#      - description
+
+  OntologyClass:
+    description: >-
+      OntologyClass schema
+    slots:
+      - id
+      - description
+      - alternative_identifiers
+      - name
+
+  PeptideQuantification:
+    description: >-
+      PeptideQuantification Schema
+    slots:
+      - id
+      - description
+      - all_proteins
+      - best_protein
+      - min_q_value
+      - peptide_sequence
+      - peptide_spectral_count
+      - peptide_sum_masic_abundance
+
+  WorkFlowExecutionActivity:
+    description: >-
+      WRITE DESCRIPTION
+    attributes:
+      - id
+      - description
+      - ended_at_time
+      - execution_resource
+      - git_url
+      - has_input
+      - has_output
+      - name
+      - part_of
+      - started_at_time
+      - type
+      - used
+      - was_associated_with
+      - was_informed_by
+
+  #inherits analysis Activity
+  #metabolomicsAnalysisActivity:
+  #  description: >-
+  #    MetabolomicsAnalysisActivity schema
+  #  is_a: AnalysisActivity
+  #  slots:
+  #    - has_calibration
+  #    - has_metabolite_quantifications_id
+      
+#  MAGsAnalysisActivity:
+#    description: >-
+#      MAGsAnalysisActivity schema
+#    is_a: AnalysisActivity
+#    slots:
+#      - binned_contig_num
+#      - input_contig_num
+#      - lowDepth_contig_num
+#      - too_short_contig_num
+#      - unbinned_contig_num
+#      - mags_list_id
+      #mags_list relationship
+
+  dataObject: 
+    description: >-
+      dataObject schema
+    slots:
+      - id
+      - description
+      - alternative_identifiers
+      - compression_type
+      - file_size_bytes
+      - md5_checksum
+      - name
+      - type
+      - url
+      - was_generated_by
+      - data_object_type_id
+
+  massSpectrumObject: 
+    description: >-
+      MassSpectrumObject schema
+    slots:
+      - id
+      - type
+      - source
+      - version
+      - collision_energy
+      - precursor_ion
+      - peak_count
+      - rt
+      - mz
+      - abundance
+      - polarity
+      - molecular_data_id
+
+  detectionActivity: 
+    description: >-
+      detectionActivity schema
+    slots:
+      - id
+      - type
+      - analyzer
+      - acquisition
+      - ioniztion
+      - rawdata_url
+      - spectrum_id
+
+  quantityValue: 
+    description: >-
+      QuantityValue schema
+    slots:
+      - id
+      - description
+      - has_numeric_value
+      - has_minimum_numeric_value
+      - has_maximum_numeric_value
+      - has_raw_value
+      - type
+      - has_unit
+      - was_generated_by
+
+  separationActivity: 
+    description: >-
+      separationActivity schema
+    slots:
+      - id
+      - type
+      - column
+      - mobile_phase
+      - gradient
+      - flow_rate
+      - instrument_name
+      - column_temp
+      - sample_chamber_temp
+      - detection_id
+
+  labDevice: 
+    description: >-
+      labDevice schema
+    slots:
+      - id
+      - description
+      - device_type
+      - activity_time_id
+      - activity_speed_id
+
+  containerType: 
+    description: >-
+      containerType schema
+    slots:
+      - id
+      - description
+      - was_generated_by
+      - container_size_id
+      - container_type
+
+  personValue: 
+    description: >-
+      personValue schema
+    slots:
+      - id
+      - email
+      - description
+      - has_raw_value
+      - name
+      - orcid
+      - profile_image_url
+      - type
+      - was_generated_by
+      - websites
+
+  textValue: 
+    description: >-
+      textValue schema
+    slots:
+      - id
+      - description
+      - language
+      - has_raw_value
+      - type
+      - was_generated_by
+
+  timestampValue: 
+    description: >-
+      timestampValue schema
+    slots:
+      - id
+      - description
+      - has_raw_value
+      - type
+      - was_generated_by
+
+  controlledTermValue: 
+    description: >-
+      ControlledTermValue schema
+    slots:
+      - id
+      - description
+      - has_raw_value
+      - was_generated_by
+      - type
+
+  geolocationValue: 
+    description: >-
+      geolocationValue schema
+    slots:
+      - id
+      - description
+      - has_raw_value
+      - latitude
+      - longitude
+      - type
+      - was_generated_by
+
+  sampleOperations: 
+    description: >-
+      sampleOperations schema
+    slots:
+      - id
+      - type
+      - detection_id
+      - separation_id
+      - analyte_id
+      - container_type
+      - volume_unit
+      - sample_state
+      - volume
+      - analyte_volume
+      - source_mat_id
+      - derivatization
+      - derivatization_agent
+      - device
+      - unit
+      - celsius_temperature
+      - duration
+      - mixing
+      - sample_volume
+      - speed
+      - concentration
+      - dry
+      - value
+      - sample_mass
+      - starting_amount
+      - acid
+      - pH
+      - filter
+      - material_pore_size
+      - conditioning
+      - conditioning_volume
+      - separation_method
+      - container_size
+      - extractant
+      - material_component_separation
+      - analytical-solution
+      - instrument
+      - sieve_size
+      - reactant
+
+  sampleProcessing: 
+    description: >-
+      sampleProcessing schema
+    slots:
+      - id
+      - description
+      - GOLD_sequencing_project_identifier
+      - INSDC_experiment_identifiers
+      - alternative_identifiers
+      - add_date
+      - mod_date
+      - has_input
+      - has_output
+      - instrument_name
+      - name
+      - ncbi_project_name
+      - part_of
+      - processing_institution
+      - type
+      - omics_type_id
+      - chimera_check_id
+      - nucl_acid_amp_id
+      - nucl_acid_ext_id
+      - pcr_cond_id
+      - pcr_primers_id
+      - principal_investigator_id
+      - samp_vol_we_dna_ext_id
+      - seq_meth_id
+      - seq_quality_check_id
+      - target_gene_id
+      - target_subfragment_id
+
+  bioSample: 
+    description: >-
+      bioSample schema
+    slots:
+      - id
+      - identifier
+      - technical_reps
+      - replicate_number
+      - collection_date_inc
+      - collection_time
+      - collection_tim_inc
+      - community
+      - description
+      - canary
+      - alternative_identifiers
+      - add_date
+      - mod_date
+      - dna_absorb1
+      - dna_absorb2
+      - dna_collect_site
+      - dna_cont_well
+      - dna_container_id
+      - dna_concentration
+      - dna_isolate_meth
+      - dna_organisms
+      - dna_project_contact
+      - dna_samp_ID
+      - dna_sample_format
+      - dna_sample_name
+      - dna_seq_project
+      - dna_seq_project_PI
+      - dna_seq_project_name
+      - dnase_rna
+      - dna_volume
+      - ecosystem
+      - ecosystem_category
+      - ecosystem_subtype
+      - ecosystem_type
+      - experimental_factor_other
+      - EMSL_store_temp
+      - filter_method
+      - GOLD_sample_identifiers
+      - host_name
+      - other_treatment
+      - org_nitro_method
+      - INSDC_biosample_identifiers
+      - INSDC_secondary_sample_identifiers
+      - isotope_exposure
+      - location
+      - specific_ecosystem
+      - habitat
+      - micro_biomass_C_meth
+      - micro_biomass_N_meth
+      - micro_biomass_meth
+      - microbial_biomass_N
+      - microbial_biomass_C
+      - non_microb_biomass
+      - non_microb_biomass_method
+      - name
+      - ncbi_taxonomy_name
+      - salinity_category
+      - part_of
+      - project_id
+      - proport_woa_temperature
+      - proposal_dna
+      - proposal_rna
+      - rna_absorb1
+      - rna_absorb2
+      - rna_collect_site
+      - rna_concentration
+      - rna_cont_type
+      - rna_cont_well
+      - rna_container_ID
+      - rna_isolate_meth
+      - rna_organisms
+      - rna_project_contact
+      - rna_samp_ID
+      - rna_sample_format
+      - rna_sample_name
+      - rna_seq_project
+      - rna_seq_project_PI
+      - rna_seq_project_name
+      - rna_volume
+      - type
+      - analysis_type
+      - dna_cont_type
+      - dna_dnase
+      - samp_collec_method
+      - sample_collection_site
+      - sample_link
+      - sample_shipped
+      - sample_type
+      - soil_texture_meth
+      - soluble_iron_micromol
+      - start_date_inc
+      - start_time_inc
+      - tot_nitro_cont_meth
+      - water_cont_soil_meth
+      - env_broad_scale_id
+      - env_local_scale_id
+      - env_medium_id
+      - alt_id
+      - air_temp_regm_id
+      - aminopept_act_id
+      - ammonium_id
+      - ammonium_nitrogen_id
+      - annual_precpt_id
+      - annual_temp_id
+      - bacteria_carb_prod_id
+      - bishomohopanol_id
+      - bromide_id
+      - calcium_id
+      - carb_nitro_ratio_id
+      - chloride_id
+      - chlorophyll_id
+      - collection_date_id
+      - crop_rotation_id
+      - density_id
+      - diss_carb_dioxide_id
+      - diss_hydrogen_id
+      - diss_inorg_carb_id
+      - diss_inorg_phosp_id
+      - diss_org_carb_id
+      - diss_org_nitro_id
+      - diss_oxygen_id
+      - elev_id
+      - glucosidase_act_id
+      - GrowthFacil_id
+      - humidity_regm_id
+      - magnesium_id
+      - manganese_id
+      - mean_frict_vel_id
+      - mean_peak_frict_vel_id
+      - microbial_biomass_id
+      - microbial_biomass_meth_id
+      - misc_param_id
+      - n_alkanse_id
+      - nitrate_id
+      - nitrate_nitrogen_id
+      - nitrite_id
+      - nitrite_nitrogen
+      - org_matter_id
+      - org_nitro_id
+      - organism_count_id
+      - samp_store_temp_id
+      - part_org-carb_id
+      - petroleum_hydrocarb_id
+      - ph_id
+      - ph_meth_id
+      - phaeopigments_id
+      - phosphate_id
+      - phosplipid_fatt_acid_id
+      - pool_dna_extracts_id
+      - potassium_id
+      - pressure_id
+      - profile_position_id
+      - redox_potential_id
+      - salinity_id
+      - samp_vol_we_dna_ext_id
+      - season_precpt_id
+      - season_temp_id
+      - sieving_id
+      - size_frac_low_id
+      - size_frac_up_id
+      - slope_aspect_id
+      - slope_gradient_id
+      - sodium_id
+      - soil_text_measure_id
+      - subsurface_depth_id
+      - subsurface_depth2_id
+      - sulfate_id
+      - sulfide_id
+      - temp_id
+      - texture_id
+      - tot_carb_id
+      - tot_depth_water_col_id
+      - tot_diss_nitro_id
+      - tot_nitro_content_id
+      - tot_org_carb_id
+      - water_content_id
+      - watering_regm_id
+      - zinc_id
+      - agrochem_addition_id
+      - al_sat_id
+      - al_sat_meth_id
+      - alkalinity_id
+      - alkalinity_method_id
+      - alkyl_diethers_id
+      - biotic_regm_id
+      - biotic_relationship_id
+      - climate_environment_id
+      - cur_land_us_id
+      - cur_vegetation_id
+      - cur_vegetation_meth_id
+      - depth_id
+      - depth2_id
+      - drainage_class_id
+      - env_package_id
+      - extreme_event_id
+      - experiemental_factor_id
+      - fao_class_id
+      - fire_id
+      - flooding_id
+      - gaseous_environment_id
+      - geo_loc_name_id
+      - growth_facil_id
+      - heavy_metals_meth_id
+      - heavy_metals_id
+      - horizon_id
+      - horizon_meth_id
+      - lat_Ion_id
+      - lbc_thirty_id
+      - lbceq_id
+      - light_regm_id
+      - link_addit_analysis_id
+      - link_class_info_id
+      - link_climate_info_id
+      - local_class_id
+      - local_class_meth_id
+      - rel_to_oxygen_id
+      - samp_size_id
+      - samp_collect_device_id
+      - samp_mat_process_id
+      - soil_type_id
+      - soil_type_meth_id
+      - source_mat_id
+      - salinity_meth_id
+      - samp_store_dur_id
+      - samp_store_loc_id
+      - store_cond_id
+      - tidal_stage_id
+      - perturbation_id
+      - chem_administration_id
+      - oxy_stat_samp_id
+      - texture_meth_id
+      - tot_org_c_meth_id
+      - tillage_id
+      - previous_land_use_id
+      - previous_land_use_meth_id
+      - sample_operations_id
+
+  DataProduct: 
+    description: >-
+      DataProduct schema
+    slots:
+      - id
+      - type #product enum
+      - has_input #foreign key, integer
+      - has_output #multivalued, str
+
+  FTICRProduct: 
+    description: >-
+      FTICRProduct schema
+    is_a: DataProduct
+    slots:
+      - Index
+      - mz
+      - Calibrated_mz
+      - Calculated_mz
+      - Peak_Height
+      - Resolving_Power
+      - SN
+      - Ion_Charge
+      - mz_Error_ppm
+      - mz_Error_Score
+      - Isotopologue_Similarity
+      - Confidence_Score
+      - DBE
+      - HC
+      - OC
+      - Heteroatom_Class
+      - Ion_Type
+      - Is_Isotopologue
+      - Mono_Isotopic_Index
+      - Molecular_Formula
+      - C
+      - H
+      - O
+      - S
+      - N
+      - C13
+      - S34
+      - P
+      - O18
+      - O17
+
+  TomographyProduct: 
+    description: >-
+      TomographyProduct schema
+    is_a: DataProduct
+    slots:
+      - Site
+      - Core
+      - Core_Section
+      - Rep
+      - UniqueID
+      - Sample_ID #end of declared attr
+      - ROI_volume_xyz
+      - Voxel_size
+      - connected_pores
+      - pore_size_distribution_1
+      - pore_size_distribution_2
+      - pore_size_distribution_3
+      - pore_size_distribution_4
+      - pore_size_distribution_5
+      - pore_size_distribution_6
+      - pore_size_distribution_7
+      - pore_size_distribution_8
+      - pore_size_distribution_9
+      - pore_size_distribution_10
+      - pore_size_distribution_11
+      - pore_size_distribution_12
+      - pore_size_min
+      - pore_size_max
+      - pore_size_mean
+      - pore_size_median
+      - pore_size_variance
+      - pore_volume_mean
+      - pore_volume_fraction
+      - wet_bulk_density
+      - pnm_abs_permeability_x
+      - pnm_total_flow_rate_x
+      - pnm_tortuosity_x
+      - pnm_abs_permeability_y
+      - pnm_total_flow_rate_y
+      - pnm_tortuosity_y
+      - pnm_abs_permeability_z
+      - pnm_total_flow_rate_z
+      - pnm_tortuosity_z
+
+  MicrobialbiomassProduct: 
+    description: >-
+      microbialBiomassProduct schema
+    is_a: DataProduct
+    slots:
+      - Site
+      - Core
+      - Core_Section
+      - Rep
+      - UniqueID #end of declared_attr
+      - uuid
+      - source
+      - salt_extractable_C_mg_per_g
+      - salt_extractable_N_mg_per_g
+      - MBC_mg_per_g
+      - MBN_mg_per_g
+
+  NPionsProduct: 
+    description: >-
+      NPionsProduct schema
+    is_a: DataProduct
+    slots:
+      - Site
+      - Core
+      - Core_Section
+      - Rep
+      - UniqueID #end of declared attr
+      - Kuo_Lab_num
+      - Start_Dep_inch
+      - End_Dep_inch
+      - Field_ID
+      - NO3_N_ppm
+      - NH4_N_ppm
+      - Vol_L
+      - Wet_mass_g
+      - Wet_mass_to_dry_mass
+      - NO3_N_mg_per_kg
+      - NH4_n_mg_per_kg
+
+  pHProduct: 
+    description: >-
+      pHProduct schema
+    is_a: DataProduct
+    slots:
+      - Site
+      - Core
+      - Core_Section
+      - Rep
+      - UniqueID #end of declared attr
+      - Lab_ID
+      - pH_metho
+      - soil_mass_g
+      - water_vol_ml
+      - pH
+      - pH_Temperature_C
+
+  RespirationEnzTextureProduct: 
+    description: >-
+      RespirationEnzTextureProduct schema
+    is_a: DataProduct
+    slots:
+      - Site
+      - Core
+      - Core_Section
+      - Rep
+      - UniqueID #end of declared attr
+      - Testing_Lab
+      - Sample
+      - Sand_pct
+      - Silt_pct
+      - Clay_pct
+      - β_glucosidase_µg_pNP_per_g_per_h
+      - Soil_Resperation_ppm_CO2_C_24hr
+
+  WEOMProduct: 
+    description: >-
+      WEOMProduct schema
+    is_a: DataProduct
+    slots:
+      - Site
+      - Core
+      - Core_Section
+      - Rep
+      - Unique_ID #end of declared attr
+      - NPOC_mg_per_L
+      - TN_mg_per_L
+      - Mass_g
+      - Vol_L
+      - NPOC_mg_per_
+      - TN_mg_per_g
+
+
+
+enums:
+  FileType:
+    permissible_values:
+      FT ICR-MS Analysis Results:
+      GC-MS Metabolomics Results:
+      Metaproteomics Workflow Statistics:
+      Protein Report:
+      Peptide Report:
+      Unfiltered Metaproteomics Results:
+      Read Count and RPKM:
+      QC non-rRNA R2:
+      QC non-rRNA R1:
+      Metagenome Bins:
+      CheckM Statistics:
+      GOTTCHA2 Krona Plot:
+      Kraken2 Krona Plot:
+      Centrifuge Krona Plot:
+      Kraken2 Classification Report:
+      Kraken2 Taxonomic Classification:
+      Centrifuge Classification Report:
+      Centrifuge Taxonomic Classification:
+      Structural Annotation GFF:
+      Functional Annotation GFF:
+      Annotation Amino Acid FASTA:
+      Annotation Enzyme Commission:
+      Annotation KEGG Orthology:
+      Assembly Coverage BAM:
+      Assembly AGP:
+      Assembly Scaffolds:
+      Assembly Contigs:
+      Assembly Coverage Stats:
+      Filtered Sequencing Reads:
+      QC Statistics:
+      TIGRFam Annotation GFF:
+      Clusters of Orthologous Groups (COG) Annotation GFF:
+      CATH FunFams (Functional Families) Annotation GFF:
+      SUPERFam Annotation GFF:
+      SMART Annotation GFF:
+      Pfam Annotation GFF:
+      Direct Infusion FT ICR-MS Raw Data:
+
+  devicetypeenum:
+    permissible_values:
+      orbital_shaker:
+      thermomixer:
+
+  containertypeenum:
+    permissible_values:
+      screw_top_conical:
+
+  processinginstitutionenum:
+    permissible_values:
+      EMSL:
+      JGI:
+      USCD:
+
+  analysistypeenum:
+    permissible_values:
+      culture environmental:
+      mixed culture:
+      plant associated:
+      pore water:
+      pure culture:
+      sediment:
+      soil:
+      water:
+      water extract biosolid:
+      water extract soil:
+  
+  sampletypeenum:
+    permissible_values:
+      soil:
+      water_extract_soil:
+
+  singlecelllysisappr:
+    permissible_values:
+      chemical:
+      enzymatic:
+      physical:
+      combination:
+
+  dnaconttypeenum:
+    permissible_values:
+      plate:
+      tube:
+
+  dnadnaseenum:
+    permissible_values:
+      yes:
+      no:
+  
+  dnasampleformatenum:
+    permissible_values:
+      10 mM Tris-HCl:
+      DNAStable:
+      Ethanol:
+      Low EDTA TE:
+      MDA reaction buffer:
+      PBS:
+      Pellet:
+      RNAStable:
+      TE:
+      Water:
+    
+  dnasernaenum:
+    permissible_values:
+      yes:
+      no:
+  
+  liblayoutenum:
+    permissible_values:
+      natural light:
+      electric light:
+      desk lamp:
+      flourescent light:
+      none:
+
+  rnaconttypeenum:
+    permissible_values:
+      tube:
+      plate:
+
+  rnasampleformatenum:
+    permissible_values:
+      10 mM Tris-HCl:
+      DNAStable:
+      Ethanol:
+      Low EDTA TE:
+      MDA reaction buffer:
+      PBS:
+      Pellet:
+      RNAStable:
+      TE:
+      Water:
+
+  method:
+    permissible_values:
+      lcMSmetabolomicsMethod:
+      fTICRapexAcquitisionMethod:
+      gravimetricWaterContentMethod:
+      phMethod:
+      weomMethod:
+      hydraulicPropertiesMethod:
+      microbialbiomassMethod:
+      xrayComputedTomographyMethod:
+      regenMethod:
+      kuoMethod:
+    
+  product:
+    permissible_values:
+      fticrProduct:
+      tomographyProduct:
+      microbialBiomassProduct:
+      npionsProduct:
+      pHproduct:
+      respirationEnzTextureProduct:
+      weomProduct:
+      hydraulicProperties:
+
+
+slots:
+  id:
+    range: integer
+    identifier: true
+    description: "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI"
+  execution_resource:
+    description: "Example: NERSC-Cori"
+  git_url:
+    description: "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1"
+  #has_input:
+  #  multivalued: true
+  #  description: "An input to a process."
+  has_output:
+    multivalued: true
+    description: "An output biosample to a processing step"
+  name:
+    description: "A human readable label for an entity"
+  part_of:
+    multivalued: true
+    description: "Links a resource to another resource that either logically or physically includes it."
+  started_at_time:
+    range: datetime
+  #type:
+  #  description: "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects."
+  used:
+    description: "The instrument used to collect the data used in the analysis"
+  ended_at_time:
+    range: datetime 
+  was_associated_with:
+    description: "the agent/entity associated with the generation of the file"
+  was_informed_by:
+  method_version:
+  methodfilepath:
+  methodloadfromfile:
+  methodname:
+  processchain:
+  samplename:
+  sampledescription:
+  date:
+  userlevel:
+  version:
+  has_peptide_quantifications_id:
+    range: integer
+  username:
+  email:
+  telephone_no:
+  password_hash:
+  version_num:
+  file_type_enum:
+        range: FileType
+  bin_name:
+  bin_quality:
+  completeness:
+    range: double
+  contamination:
+    range: double
+  gene_count:
+    range: integer
+  gtdbtk_class:
+  gtdbtk_domain:
+  gtdbtk_family:
+  gtdbtk_genus:
+  gtdbtk_order:
+  gtdbtk_phylum:
+  gtdbtk_species:
+  num_16s:
+    range: integer
+  num_32s:
+    range: integer
+  num_5s:
+    range: integer
+  num_tRNA:
+    range: integer
+  number_of_contig:
+    range: integer
+  #type:
+  #  description: An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.
+  #description:
+  #  description: This is used to link a metabolomics analysis workflow to a specific metabolite
+  #alternative_identifiers:
+  #  multivalued: true
+  #  description: This is used to link a metabolomics analysis workflow to a specific metabolite
+  highest_similarity_score:
+    range: integer
+    description: TODO; Yuri to fill in
+  metabolite_quantified:
+    description: The specific metabolite identifier
+  #email:
+  #telephone_no:
+  #password_hash:
+  inchikey:
+  #name:
+  formula:
+  casno:
+  inchi:
+  chebi:
+  smiles:
+  kegg:
+  iupac_name:
+  traditional_name:
+  common_name:
+  match_nme:
+  #has_calibration:
+  #    description: "A reference to a file that holds calibration information."
+  #description:
+  #  description: A human-readable description of a thing.
+  #alternative_identifiers:
+  #  multivalued: true 
+  #  description: A list of alternative identifiers for the entity.
+  #name:
+  #description:
+  #  description: This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information
+  all_proteins:
+    range: string 
+    multivalued: true
+    description: the list of protein identifiers that are associated with the peptide sequence
+  best_protein:
+    description: the specific protein identifier most correctly associated with the peptide sequence
+  min_q_value:
+    range: double #investigate this data type for linkml (was numeric now using double) ##triage
+    description: smallest Q-Value associated with the peptide sequence as provided by MSGFPlus tool
+  peptide_sequence:
+  peptide_spectral_count:
+    range: integer
+    description: sum of filter passing MS2 spectra associated with the peptide sequence within a given LC-MS/MS data file
+  peptide_sum_masic_abundance:
+    range: double
+    description: combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the peptide sequence from a given LC-MS/MS data file using the MASIC tool
+  #description:
+  #    description: Represents an instance of an execution of a particular workflow
+  has_input:
+    multivalued: true
+    description: "An input to a process."
+  #has_output:
+  #  multivalued: true
+  #  description: "An output biosample to a processing step"
+  #name:
+    #description: "A human readable label for an entity"
+  #part_of:
+  #  multivalued: true 
+  #  description: "Links a resource to another resource that either logically or physically includes it."
+  #started_at_time:
+  #  range: datetime
+  #type:
+  #  description: "An optional string that specifies the type object. This is used to allow for seraches for different kinds of objects."
+  #used:
+  #was_associated_with:
+  #  description: "the agent/entity associated with teh generation of the file."
+  #was_informed_by:
+  #has_calibration:
+  #has_metabolite_quantifications_id:
+  #  range: integer
+    #db foreign key
+  #relationship to has_metabolite_quantifications
+  #has_metabolite_quantifications_id:
+  #  range: integer
+    #db foreign key
+  #relationship to has_metabolite_quantifications
+  #description:
+  #alternative_identifiers:
+  #  multivalued: true
+  compression_type:
+  file_size_bytes:
+    range: integer
+  md5_checksum:
+  #name:
+  #type:
+  url:
+  was_generated_by:
+  data_object_type_id:
+    range: integer
+  #type:
+  source:
+  #version:
+  collision_energy:
+  precursor_ion:
+    range: double
+  peak_count:
+    range: integer
+  rt:
+    range: double
+  mz:
+    range: bytea #unsure what to do with this type ##triage
+  abundance:
+    range: bytea
+  polarity:
+  molecular_data_id:
+    range: integer
+  #type:
+  analyzer:
+  acquisition:
+  ioniztion:
+  rawdata_url:
+  spectrum_id:
+    range: integer
+  #description:
+  has_numeric_value:
+    range: double #was numeric
+  has_minimum_numeric_value:
+    range: double #numeric
+  has_maximum_numeric_value:
+    range: double #numeric
+  has_raw_value:
+  #type:
+  has_unit:
+  #was_generated_by:
+  #type:
+    #range: separation_types ##triage figure out how to do this, make custom type
+  column:
+  mobile_phase:
+  gradient:
+  flow_rate:
+  instrument_name:
+  column_temp:
+    range: integer
+  sample_chamber_temp:
+    range: integer
+  detection_id:
+    range: integer
+  #description:
+  device_type:
+    range: devicetypeenum
+  activity_time_id:
+    range: integer
+  activity_speed_id:
+    range: integer
+  #description:
+  #was_generated_by:
+  container_size_id:
+    range: integer
+  container_type:
+    range: containertypeenum
+  #email:
+  #description:
+  #has_raw_value:
+  #name:
+  orcid:
+  profile_image_url:
+  #type:
+  #was_generated_by:
+  websites:
+    multivalued: true
+  #description:
+  language:
+  #has_raw_value:
+  #type:
+  #was_generated_by:
+  #description:
+  #has_raw_value:
+  #type:
+  #was_generated_by:
+  #description:
+  #has_raw_value:
+  #was_generated_by:
+  #type:
+  #description:
+  #has_raw_value:
+  latitude:
+    range: double #numeric
+  longitude:
+  #type:
+  #was_generated_by:
+  #type:
+  #detection_id:
+  #  range: integer
+  separation_id:
+    range: integer
+  analyte_id:
+    range: integer
+  #container_type:
+  volume_unit:
+  sample_state:
+  volume:
+    range: integer
+  analyte_volume:
+    range: integer
+  source_mat_id:
+    range: integer
+  derivatization:
+    range: integer
+  derivatization_agent:
+    range: integer
+  device:
+    range: integer
+  unit:
+    range: integer
+  celsius_temperature:
+    range: integer
+  duration:
+    range: integer
+  mixing:
+    range: integer
+  sample_volume:
+    range: integer
+  speed:
+    range: integer
+  concentration:
+    range: integer
+  dry:
+  value:
+    range: integer
+  sample_mass:
+    range: integer
+  starting_amount:
+    range: integer
+  acid:
+  pH:
+    range: integer
+  filter:
+  material_pore_size:
+    range: integer
+  conditioning:
+    range: integer
+  conditioning_volume:
+    range: integer
+  separation_method:
+    range: integer
+  container_size:
+    range: integer
+  extractant:
+    range: integer
+  material_component_separation:
+  analytical-solution:
+    range: integer
+  instrument:
+    range: integer
+  sieve_size:
+    range: integer
+  reactant:
+    range: integer
+  #description:
+  GOLD_sequencing_project_identifier:
+    multivalued: true
+  INSDC_experiment_identifiers:
+    multivalued: true
+  #alternative_identifiers:
+  #  multivalued: true
+  add_date:
+  mod_date:
+  #has_input:
+  #  multivalued: true
+  #has_output:
+  #  multivalued: true
+  #instrument_name:
+  #name:
+  ncbi_project_name:
+  #part_of:
+  #  multivalued: true
+  processing_institution:
+    range: processinginstitutionenum
+  #type:
+  omics_type_id:
+    range: integer
+  chimera_check_id:
+    range: integer
+  nucl_acid_amp_id:
+    range: integer
+  nucl_acid_ext_id:
+    range: integer
+  pcr_cond_id:
+    range: integer
+  pcr_primers_id:
+    range: integer
+  principal_investigator_id:
+    range: integer
+  samp_vol_we_dna_ext_id:
+    range: integer
+  seq_meth_id:
+    range: integer
+  seq_quality_check_id:
+    range: integer
+  target_gene_id:
+    range: integer
+  target_subfragment_id:
+    range: integer
+  identifier:
+  technical_reps:
+    range: integer
+  replicate_number:
+    range: integer
+  collection_date_inc:
+  collection_time:
+    range: datetime
+  collection_tim_inc:
+    range: datetime
+  community:
+  description:
+  canary:
+  alternative_identifiers:
+    multivalued: true
+  #add_date:
+  #  range: datetime
+  #mod_date:
+  #  range: datetime
+  dna_absorb1:
+  dna_absorb2:
+  dna_collect_site:
+  dna_cont_well:
+  dna_container_id:
+  dna_concentration:
+  dna_isolate_meth:
+  dna_organisms:
+  dna_project_contact:
+  dna_samp_ID:
+  dna_sample_format:
+    range: dnasampleformatenum
+  dna_sample_name:
+  dna_seq_project:
+  dna_seq_project_PI:
+  dna_seq_project_name:
+  dnase_rna:
+    range: dnasernaenum
+  dna_volume:
+  ecosystem:
+  ecosystem_category:
+  ecosystem_subtype:
+  ecosystem_type:
+  experimental_factor_other:
+  EMSL_store_temp:
+  filter_method:
+  GOLD_sample_identifiers:
+    multivalued: true
+  host_name:
+  other_treatment:
+  org_nitro_method:
+  INSDC_biosample_identifiers:
+    multivalued: true
+  INSDC_secondary_sample_identifiers:
+    multivalued: true
+  isotope_exposure:
+  location:
+  specific_ecosystem:
+  habitat:
+  micro_biomass_C_meth:
+  micro_biomass_N_meth:
+  micro_biomass_meth:
+  microbial_biomass_N:
+  microbial_biomass_C:
+  non_microb_biomass:
+  non_microb_biomass_method:
+  #name:
+  ncbi_taxonomy_name:
+  salinity_category:
+  #part_of:
+  #  multivalued: true
+  project_id:
+  proport_woa_temperature:
+  proposal_dna:
+  proposal_rna:
+  rna_absorb1:
+  rna_absorb2:
+  rna_collect_site:
+  rna_concentration:
+  rna_cont_type:
+    range: rnaconttypeenum
+  rna_cont_well:
+  rna_container_ID:
+  rna_isolate_meth:
+  rna_organisms:
+  rna_project_contact:
+  rna_samp_ID:
+  rna_sample_format:
+    range: rnasampleformatenum
+  rna_sample_name:
+  rna_seq_project:
+  rna_seq_project_PI:
+  rna_seq_project_name:
+  rna_volume:
+  #type:
+  analysis_type:
+    range: analysistypeenum
+  dna_cont_type:
+    range: dnaconttypeenum
+  dna_dnase:
+    range: dnadnaseenum
+  samp_collec_method:
+  sample_collection_site:
+  sample_link:
+    multivalued: true
+  sample_shipped:
+  sample_type:
+    range: sampletypeenum
+  soil_texture_meth:
+  soluble_iron_micromol:
+  start_date_inc:
+  start_time_inc:
+  tot_nitro_cont_meth:
+  water_cont_soil_meth:
+  env_broad_scale_id:
+    range: integer
+  env_local_scale_id:
+    range: integer
+  env_medium_id:
+    range: integer
+  alt_id:
+    range: integer
+  air_temp_regm_id:
+    range: integer
+  aminopept_act_id:
+    range: integer
+  ammonium_id:
+    range: integer
+  ammonium_nitrogen_id:
+    range: integer
+  annual_precpt_id:
+    range: integer
+  annual_temp_id:
+    range: integer
+  bacteria_carb_prod_id:
+    range: integer
+  bishomohopanol_id:
+    range: integer
+  bromide_id:
+    range: integer
+  calcium_id:
+    range: integer
+  carb_nitro_ratio_id:
+    range: integer
+  chloride_id:
+    range: integer
+  chlorophyll_id:
+    range: integer
+  collection_date_id:
+    range: integer
+  crop_rotation_id:
+    range: integer
+  density_id:
+    range: integer
+  diss_carb_dioxide_id:
+    range: integer
+  diss_hydrogen_id:
+    range: integer
+  diss_inorg_carb_id:
+    range: integer
+  diss_inorg_phosp_id:
+    range: integer
+  diss_org_carb_id:
+    range: integer
+  diss_org_nitro_id:
+    range: integer
+  diss_oxygen_id:
+    range: integer
+  elev_id:
+    range: integer
+  glucosidase_act_id:
+    range: integer
+  GrowthFacil_id:
+    range: integer
+  humidity_regm_id:
+    range: integer
+  magnesium_id:
+    range: integer
+  manganese_id:
+    range: integer
+  mean_frict_vel_id:
+    range: integer
+  mean_peak_frict_vel_id:
+    range: integer
+  microbial_biomass_id:
+    range: integer
+  microbial_biomass_meth_id:
+    range: integer
+  misc_param_id:
+    range: integer
+  n_alkanse_id:
+    range: integer
+  nitrate_id:
+    range: integer
+  nitrate_nitrogen_id:
+    range: integer
+  nitrite_id:
+    range: integer
+  nitrite_nitrogen:
+    range: integer
+  org_matter_id:
+    range: integer
+  org_nitro_id:
+    range: integer
+  organism_count_id:
+    range: integer
+  samp_store_temp_id:
+    range: integer
+  part_org-carb_id:
+    range: integer
+  petroleum_hydrocarb_id:
+    range: integer
+  ph_id:
+    range: integer
+  ph_meth_id:
+    range: integer
+  phaeopigments_id:
+    range: integer
+  phosphate_id:
+    range: integer
+  phosplipid_fatt_acid_id:
+    range: integer
+  pool_dna_extracts_id:
+    range: integer
+  potassium_id:
+    range: integer
+  pressure_id:
+    range: integer
+  profile_position_id:  
+    range: integer
+  redox_potential_id:
+    range: integer
+  salinity_id:
+    range: integer
+  #samp_vol_we_dna_ext_id:
+  #  range: integer
+  season_precpt_id:
+    range: integer
+  season_temp_id:
+    range: integer
+  sieving_id:
+    range: integer
+  size_frac_low_id:
+    range: integer
+  size_frac_up_id:
+    range: integer
+  slope_aspect_id:
+    range: integer
+  slope_gradient_id:
+    range: integer
+  sodium_id:  
+    range: integer
+  soil_text_measure_id:
+    range: integer
+  subsurface_depth_id:
+    range: integer
+  subsurface_depth2_id:
+    range: integer
+  sulfate_id:
+    range: integer
+  sulfide_id:
+    range: integer
+  temp_id:
+    range: integer
+  texture_id:
+    range: integer
+  tot_carb_id:
+    range: integer
+  tot_depth_water_col_id:
+    range: integer
+  tot_diss_nitro_id:
+    range: integer
+  tot_nitro_content_id:
+    range: integer
+  tot_org_carb_id:
+    range: integer
+  water_content_id:
+    range: integer
+  watering_regm_id:
+    range: integer
+  zinc_id:
+    range: integer
+  agrochem_addition_id:
+    range: integer
+  al_sat_id:
+    range: integer
+  al_sat_meth_id:
+    range: integer
+  alkalinity_id:
+    range: integer
+  alkalinity_method_id:
+    range: integer
+  alkyl_diethers_id:
+    range: integer
+  biotic_regm_id:
+    range: integer
+  biotic_relationship_id:
+    range: integer
+  climate_environment_id:
+    range: integer
+  cur_land_us_id:
+    range: integer
+  cur_vegetation_id:
+    range: integer
+  cur_vegetation_meth_id:
+    range: integer
+  depth_id:
+    range: integer
+  depth2_id:
+    range: integer
+  drainage_class_id:
+    range: integer
+  env_package_id:
+    range: integer
+  extreme_event_id:
+    range: integer
+  experiemental_factor_id:
+    range: integer
+  fao_class_id:
+    range: integer
+  fire_id:
+    range: integer
+  flooding_id:
+    range: integer
+  gaseous_environment_id:
+    range: integer
+  geo_loc_name_id:
+    range: integer
+  growth_facil_id:
+    range: integer
+  heavy_metals_meth_id:
+    range: integer
+  heavy_metals_id:
+    range: integer
+  horizon_id:
+    range: integer
+  horizon_meth_id:
+    range: integer
+  lat_Ion_id:
+    range: integer
+  lbc_thirty_id:
+    range: integer
+  lbceq_id:
+    range: integer
+  light_regm_id:
+    range: integer
+  link_addit_analysis_id:
+    range: integer
+  link_class_info_id:
+    range: integer
+  link_climate_info_id:
+    range: integer
+  local_class_id:
+    range: integer
+  local_class_meth_id:  
+    range: integer
+  rel_to_oxygen_id:
+    range: integer
+  samp_size_id:
+    range: integer
+  samp_collect_device_id:
+    range: integer
+  samp_mat_process_id:
+    range: integer
+  soil_type_id:
+    range: integer
+  soil_type_meth_id:
+    range: integer
+  #source_mat_id:
+  #  range: integer
+  salinity_meth_id:
+    range: integer
+  samp_store_dur_id:
+    range: integer
+  samp_store_loc_id:
+    range: integer
+  store_cond_id:
+    range: integer
+  tidal_stage_id:
+    range: integer
+  perturbation_id:
+    range: integer
+  chem_administration_id:
+    range: integer
+  oxy_stat_samp_id:
+    range: integer
+  texture_meth_id:
+    range: integer
+  tot_org_c_meth_id:
+    range: integer
+  tillage_id:
+    range: integer
+  previous_land_use_id:
+    range: integer
+  previous_land_use_meth_id:
+    range: integer
+  sample_operations_id: 
+    range: integer
+  Index: #product slots
+  Calibrated_mz:
+  Calculated_mz:
+  Peak_Height:
+  Resolving_Power:
+  SN:
+  Ion_Charge:
+  mz_Error_ppm:
+  mz_Error_Score:
+  Isotopologue_Similarity:
+  Confidence_Score:
+  DBE:
+  HC:
+  OC:
+  Heteroatom_Class:
+  Ion_Type:
+  Is_Isotopologue:
+  Mono_Isotopic_Index:
+  Molecular_Formula:
+  C:
+  H:
+  O:
+  S:
+  N:
+  C13:
+  S34:
+  P:
+  O18:
+  O17:
+  Site:
+  Core:
+  Core_Section:
+  Rep:
+  UniqueID:
+  Sample_ID:
+  ROI_volume_xyz:
+  Voxel_size:
+  connected_pores:
+  pore_size_distribution_1:
+  pore_size_distribution_2:
+  pore_size_distribution_3:
+  pore_size_distribution_4:
+  pore_size_distribution_5:
+  pore_size_distribution_6:
+  pore_size_distribution_7:
+  pore_size_distribution_8:
+  pore_size_distribution_9:
+  pore_size_distribution_10:
+  pore_size_distribution_11:
+  pore_size_distribution_12:
+  pore_size_min:
+  pore_size_max:
+  pore_size_mean:
+  pore_size_median:
+  pore_size_variance:
+  pore_volume_mean:
+  pore_volume_fraction:
+  wet_bulk_density:
+  pnm_abs_permeability_x:
+  pnm_total_flow_rate_x:
+  pnm_tortuosity_x:
+  pnm_abs_permeability_y:
+  pnm_total_flow_rate_y:
+  pnm_tortuosity_y:
+  pnm_abs_permeability_z:
+  pnm_total_flow_rate_z:
+  pnm_tortuosity_z:
+  uuid:
+  #source:
+  salt_extractable_C_mg_per_g:
+  salt_extractable_N_mg_per_g:
+  MBC_mg_per_g:
+  MBN_mg_per_g:
+  Kuo_Lab_num:
+  Start_Dep_inch:
+  End_Dep_inch:
+  Field_ID:
+  NO3_N_ppm:
+  NH4_N_ppm:
+  Vol_L:
+  Wet_mass_g:
+  Wet_mass_to_dry_mass:
+  NO3_N_mg_per_kg:
+  NH4_n_mg_per_kg:
+  Lab_ID:
+  pH_metho:
+  soil_mass_g:
+  water_vol_ml:
+  #pH:
+  pH_Temperature_C:
+  Testing_Lab:
+  Sample:
+  Sand_pct:
+  Silt_pct:
+  Clay_pct:
+  β_glucosidase_µg_pNP_per_g_per_h:
+  Soil_Resperation_ppm_CO2_C_24hr:
+  Unique_ID:
+  NPOC_mg_per_L:
+  TN_mg_per_L:
+  Mass_g:
+  #Vol_L:
+  NPOC_mg_per_:
+  TN_mg_per_g:
+
+
+  #conflicts
+  # Instrument (string vs Int)
+  # Type (string vs specific enum, also separation types enum)
+  #
+  # multiple instances
+  # type, email, telephone_no, password_hash, name, description, alternative_identifiers, has_input, has_output, part_of, started_at_time, used,
+  # was_associated_with, was_informed_by, has_metabolite_quantifications_id, was_generated_by, has_raw_value, detection_id, container_type, instrument_name,
+  # add_date, mod_date, 
+  #
+  #how to represent bytea in linkml
+  # string? will be a custom type
+  #
+  #How to represent numeric
+  # String? float/double with extra string value to specify precision?
+
+  #add sample operations 
