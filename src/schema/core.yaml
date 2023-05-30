@@ -101,6 +101,10 @@ classes:
     is_a: NamedThing
     title: Material Entity
 
+  ProcessedSample:
+    is_a: MaterialEntity
+    title: Processed Sample
+
   AnalyticalSample:
     is_a: MaterialEntity
     title: Analytical Sample

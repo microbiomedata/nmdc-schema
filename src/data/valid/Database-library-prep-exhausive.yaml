@@ -1,0 +1,48 @@
+#example populated by w/example mostly from NEON.D05.TREE.DP1.10107.001.mms_metagenomeSequencing.2017-07.expanded.20230113T225024Z.csv
+
+library_preparation_set:
+  - id: bare:value
+    name: DNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1
+    description: DNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP BMI_metagenomicsSequencingSOP_v2
+    has_input:
+      - bare:xxx
+    has_output:
+      - bare:xxx
+
+    processing_institution: Battelle
+
+    #updating protocol info to be nested
+    #    protocol:
+    #      name: BMI_metagenomicsSequencingSOP_v2
+    #      url: https://data.neonscience.org/documents/-/document_library_display/kV4WWrbEEM2s/view_file/2951787
+
+    #library_preparation_kit GENEPIO:0001450
+    library_preparation_kit: KAPA HyperPrep Kit
+    processed_date: '2018-09-26'
+
+    pcr_cycles: 0
+    library_type: DNA
+
+  #rna library not strictly required for NEON but rna_seq_type needed for MetatranscriptomeAnnotationActivity
+  - id: bare:value2
+    name: RNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1
+    description: RNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP XX
+    has_input:
+      - bare:xxy
+    has_output:
+      - bare:xxz
+    #range for processing_institution should be processing_institution_enum
+    processing_institution: Battelle
+    #    #updating protocol info to be nested
+    #    protocol:
+    #      name: XXX
+    #      url: https://data.neonscience.org/documents/-/document_library_display/kV4WWrbEEM2s/view_file/2951787
+    #library_preparation_kit GENEPIO:0001450
+    library_preparation_kit: TruSeq RNA Library Prep Kit v2
+    processed_date: '2018-09-26'
+    #pcr cycles OBI:0002475
+    pcr_cycles: 12
+    #library_type should be enum "DNA", "RNA"
+    library_type: RNA
+    #use enum for rna_seq_type, needed for "Stranded RNA-seq, R1 is forward, R2 is reversed", "Stranded RNA-seq, R2 is forward, R1 is reversed", "non-stranded RNA-seq"
+    #rna_seq_type: Stranded RNA-seq, R2 is forward, R1 is reversed
