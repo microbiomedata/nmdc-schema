@@ -190,14 +190,19 @@ classes:
     is_a: PlannedProcess # from core.yaml
     slots:
       - has_input
-      - has_output
+      - has_outputs
       - library_type
       - library_preparation_kit
       - pcr_cycles
       - processed_date
       - processing_institution
-    exact_mappings:
+    close_mappings:
       - OBI:0000711
+    comments:
+      - OBI:0000711 specifies a DNA input (but not ONLY a DNA input)
+    slot_usage:
+      has_input:
+        required: true
 
   FieldResearchSite:
     aliases:

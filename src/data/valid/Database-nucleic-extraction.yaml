@@ -7,7 +7,7 @@ nucleic_acid_extraction_set:
     description: DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7
 
     #enforce analytical sample typecode?
-    # MAM do you mean that this entityt should ahve an id pattern including a typecode
+    # MAM do you mean that this entity should have an id pattern including a typecode
     #  or do you mean that the typecode of the inputs should be checked?
     #    I think what yoiu're trying to do is better implemented by specifying
     #      the range of has_input for this class, as a slot_usage

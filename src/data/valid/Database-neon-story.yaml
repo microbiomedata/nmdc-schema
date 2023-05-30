@@ -18,6 +18,8 @@ processed_sample_set:
     name: first DNA extract
   - id: bare:library_1
     name: first library
+# generic extraction set
+# include non-nucleic acid permissible values in the extraction type enumeration
 nucleic_acid_extraction_set:
   - id: bare:des1
     name: first dna extraction set
@@ -38,7 +40,7 @@ library_preparation_set:
     #    has_output: bare:xxy
     #library_type should be enum "DNA", "RNA"
     library_type: DNA
-    has_inputs:
+    has_input:
       - bare:dna_extract_1
     has_outputs:
       - bare:library_1
