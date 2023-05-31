@@ -1,0 +1,77 @@
+#example built from comprehensive.toml of EMSL Analytical Processes
+
+#extraction
+#not aiming generalizing the sample operations themselves, instead detailing a chain of activities
+#extraction_method: chloroform extraction
+sample_operation:
+  - id: bare:value
+    name: comprehensive general sample prep protocol
+    description: Procedure for a general chloroform extraction for metabolites with derivatization for GC-MS analysis
+    has_input: bare:xxx
+    has_outputs:
+      - bare:xxx
+    processing_institution: Battelle Memorial Institute
+    #activity sub class
+    extraction_activity:
+      id: bare:1
+      source_material: cell:1
+      solvent : ammonium bicarbonate buffer
+      concentration: { numeric_value = '150', unit = 'mM' } # QuantityValue
+      volume: { numeric_value = '150', unit = 'µL' } # QuantityValue
+    # activity subclass
+    solubilization_activity:
+      id: bare:2
+      source_material: bare:1
+      solvent: chloroform/methanol
+      concentration: 
+        has_numeric_value: 2/1
+        has_unit: v/v
+      volume: 
+        has_numeric_value: 600
+        has_unit: µL
+    # activity subclass
+    mixing_activity:
+      id: bare:3
+      source_material: bare:2
+      shaker: 
+        has_numeric_value: 10
+        has_unit: seconds
+    # activity subclass
+    sample_handling_activity:
+      id: bare:4
+      source_material: bare:3
+      activity:
+        has_type: ice
+        has_numeric_value: 5
+        has_unit: minutes
+    # activity subclass
+    mixing_activity:
+      id: bare:5
+      source_material: bare:4
+      shaker: 
+        has_type: vortex
+        has_numeric_value: 10 
+        has_unit: seconds
+    # activity subclass
+    centrifugation_activity:
+      id: bare:6
+      source_material: bare:5
+      centrifuge: 
+        speed: 13,0000
+          has_numeric_value: 10
+          has_unit: minutes
+    # activity subclass
+    transfer_activity:
+      id: bare:7
+      source_material: bare:6
+      type: supernatant
+    # activity subclass
+    sample_storage_activity:
+      id: bare:8
+      source_material: bare:7
+      temperature: 
+        has_numeric_value: -20
+        has_unit: C
+
+# to derivatization activities from here
+
