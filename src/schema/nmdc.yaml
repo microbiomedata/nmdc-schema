@@ -1042,9 +1042,9 @@ classes:
         examples:
           value: 100
       oxy_stat_samp:
-        notes:
-          - this is now a hybrid of the oxy_stat_samp semantics and the rel_to_oxygen enumeration
-        range: rel_to_oxygen_enum
+        #        notes:
+        #          - this is now a hybrid of the oxy_stat_samp semantics and the rel_to_oxygen enumeration
+        range: oxy_stat_samp_enum
 
       id:
         required: true
