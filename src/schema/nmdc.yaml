@@ -1635,7 +1635,7 @@ enums:
       Metagenome Bins Info File:
         description: File containing version information on the binning workflow
         annotations:
-          file_name_pattern: '[mag_wf_activity_id]_bin.info
+          file_name_pattern: '[mag_wf_activity_id]_bin.info'
 
       CheckM Statistics:
         description: CheckM statistics report
