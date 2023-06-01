@@ -1625,7 +1625,7 @@ enums:
       Metagenome Bins:
         description: Metagenome bin contigs fasta
 
-      Metagenome Bins File: 
+      Metagenome Bins File:
         description: Compressed file containing all metagenome bins and associated files
         annotations:
           file_name_pattern:
@@ -1637,10 +1637,9 @@ enums:
 
       Read Based Analysis Info File:
         description: File containing reads based analysis information
-          file_name_pattern:
-            tag: file_name_pattern
-            value: 'profiler.info'
- 
+        annotations:
+          file_name_pattern: 'profiler.info'
+
       GTDBTK Bacterial Summary:
         description: GTDBTK bacterial summary
 
@@ -1805,28 +1804,12 @@ enums:
         annotations:
           file_name_pattern: '[GOLD-AP]_rfam_ncrna_tmrna.gff'
 
-      KO_EC Annotation GFF:
-        description: GFF3 format file with KO_EC
-        annotations:
-          file_name_pattern: '[GOLD-AP]_ko_ec.gff'
 
-      Product Names:
-        description: Product names file
-        annotations:
-          file_name_pattern: '[GOLD-AP]_product_names.tsv'
-
-      Gene Phylogeny tsv:
-        description: Gene Phylogeny tsv
-        annotations:
-          file_name_pattern: '[GOLD-AP]_gene_phylogeny.tsv'
 
       Crispr Terms:
         description: Crispr Terms
         annotations:
           file_name_pattern: '[GOLD-AP]_crt.crisprs'
-
-      Clusters of Orthologous Groups (COG) Annotation GFF:
-          file_name_pattern: '[GOLD-AP]_ko_ec.gff'
 
       Product Names:
         description: Product names file
@@ -1842,6 +1825,12 @@ enums:
         description: GFF3 format file with COGs
         annotations:
           file_name_pattern: '[GOLD-AP]_cog.gff'
+
+
+      KO_EC Annotation GFF:
+        description: GFF3 format file with KO_EC
+        annotations:
+          file_name_pattern: '[GOLD-AP]_ko_ec.gff'
 
       CATH FunFams (Functional Families) Annotation GFF:
         description: GFF3 format file with CATH FunFams
@@ -1945,6 +1934,25 @@ enums:
 
 
 slots:
+
+  ecosystem_path_id:
+    range: string
+    description: A unique id representing the GOLD classifers associated with a sample.
+  habitat:
+    range: string
+  location:
+    range: string
+  community:
+    range: string
+  ncbi_taxonomy_name:
+    range: string
+  ncbi_project_name:
+    range: string
+  sample_collection_site:
+    range: string
+  sample_collection_year:
+    range: integer
+  sample_collection_month:
 
   status:
     range: StatusEnum
@@ -2520,10 +2528,11 @@ slots:
   add_date:
     range: string
     description: The date on which the information was added to the database.
+
   mod_date:
     range: string
     description: The last date on which the database information was modified.
-    range: integer
+
   sample_collection_day:
     range: integer
   sample_collection_hour:
