@@ -26,7 +26,7 @@ extraction_set:
       - bare:pool_out_1
     has_outputs:
       - bare:dna_extract_1
-    extraction_type: DNA
+    extraction_target: DNA
 
 #example populated by w/example mostly from NEON.D05.TREE.DP1.10107.001.mms_metagenomeSequencing.2017-07.expanded.20230113T225024Z.csv
 #library preparation OBI:0000711
@@ -40,7 +40,7 @@ library_preparation_set:
     #    has_output: bare:xxy
     #library_type should be enum "DNA", "RNA"
     library_type: DNA
-    has_input:
+    has_inputs:
       - bare:dna_extract_1
     has_outputs:
       - bare:library_1

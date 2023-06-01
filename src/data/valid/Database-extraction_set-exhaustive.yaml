@@ -5,47 +5,33 @@ extraction_set:
   - id: bare:value
     name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
     description: DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7
-
     #enforce analytical sample typecode?
-    # MAM do you mean that this entity should have an id pattern including a typecode
-    #  or do you mean that the typecode of the inputs should be checked?
-    #    I think what yoiu're trying to do is better implemented by specifying
-    #      the range of has_input for this class, as a slot_usage
-    # this still doesn't solve referential integrity
     has_inputs:
       - bare:xxx
-
     #cardinality of outputs should be 1-many, may want to fractionate samples or keep supernatant
     has_outputs:
       - bare:xxx
-
+    #range for processing_institution should be processing_institution_enum
     processing_institution: Battelle
-
-    #    #updating protocol info to be nested
-    #    protocol:
-    #      name: BMI_dnaExtractionSOP_v7
-    #      nucl_acid_ext: https://data.neonscience.org/documents/10179/2431540/BMI_dnaExtractionSOP_v7/61204962-bb01-a0b9-3354-ccdaab5132c3
-
+    #updating protocol info to be nested
+    protocol_link:
+      name: BMI_dnaExtractionSOP_v7
+      url: https://data.neonscience.org/documents/10179/2431540/BMI_dnaExtractionSOP_v7/61204962-bb01-a0b9-3354-ccdaab5132c3
     #extraction_date http://purl.obolibrary.org/obo/OBI_0003081
-    extraction_date: '2019-11-08'
-
+    extraction_date: "2019-11-08"
+    #range for sample_mass should be QuantityValue for more generic modeling. ie soil will be in gram, water in gram/ml
     sample_mass: #http://purl.obolibrary.org/obo/MS_1000004
       has_numeric_value: 0.25
       has_unit: gram #http://purl.obolibrary.org/obo/UO_0000021
-
     #based on qaqc criteria for a given process does the output 'Pass' or 'Failed' https://www.ebi.ac.uk/ols/ontologies/edam/terms?iri=http%3A%2F%2Fedamontology.org%2Fdata_3914&lang=en&viewMode=All&siblings=false
-
-    #    quality_control_report:
-    #      #status range should be new status_enum with possible values of 'Pass' or Failed'
-    #      status: Pass
-
+    quality_control_report:
+      #status range should be new status_enum with possible values of 'Pass' or Failed'
+      status: pass
     #leaving as extraction_method to make the model generic, other option considered was 'Nucleic Acid Extraction Method' http://purl.obolibrary.org/obo/NCIT_C177560
     extraction_method: phenol/chloroform extraction
-
     #extraction_type should have range of dna_extraction_enum with possible values of 'DNA extraction', 'RNA extraction', 'protein extraction'
     #http://purl.obolibrary.org/obo/OBI_0000257
     extraction_target: DNA
-
     #not needed at this time
     #protocol_materials:
     #  - { material_name : DNeasy 96 PowerSoil Pro Kit, material_vendor: Qiagen, catalog_number: 47017 }
