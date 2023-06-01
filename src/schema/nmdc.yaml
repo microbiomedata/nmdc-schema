@@ -1625,12 +1625,17 @@ enums:
       Metagenome Bins:
         description: Metagenome bin contigs fasta
 
-      Metagenome Bins File:
+      Metagenome Bins Compression File:
         description: Compressed file containing all metagenome bins and associated files
         annotations:
           file_name_pattern:
             tag: file_name_pattern
             value: '[mag_wf_activity_id]_hqmq_bin.zip'
+
+      Metagenome Bins Info File:
+        description: File containing version information on the binning workflow
+        annotations:
+          file_name_pattern: '[mag_wf_activity_id]_bin.info
 
       CheckM Statistics:
         description: CheckM statistics report
