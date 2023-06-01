@@ -1625,8 +1625,20 @@ enums:
       Metagenome Bins:
         description: Metagenome bin contigs fasta
 
+      Metagenome Bins File:
+        description: Compressed file containing all metagenome bins and associated files
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[mag_wf_activity_id]_hqmq_bin.zip'
+
       CheckM Statistics:
         description: CheckM statistics report
+
+      Read Based Analysis Info File:
+        description: File containing reads based analysis information
+        annotations:
+          file_name_pattern: 'profiler.info'
 
       GTDBTK Bacterial Summary:
         description: GTDBTK bacterial summary
@@ -1741,6 +1753,11 @@ enums:
         description: Reads QC result fastq (clean data)
         annotations:
           file_name_pattern: '/.+?(?=filter)/filter-METAGENOME.fastq.gz '
+      
+      Read Filtering Info File:
+        description: File containing read filtering information
+        annotations:
+          file_name_pattern: '[rqc_wf_activity_id]_readsQC.info'
 
       QC Statistics:
         description: Reads QC summary statistics
@@ -1787,10 +1804,12 @@ enums:
         annotations:
           file_name_pattern: '[GOLD-AP]_rfam_ncrna_tmrna.gff'
 
-      KO_EC Annotation GFF:
-        description: GFF3 format file with KO_EC
+
+
+      Crispr Terms:
+        description: Crispr Terms
         annotations:
-          file_name_pattern: '[GOLD-AP]_ko_ec.tsv'
+          file_name_pattern: '[GOLD-AP]_crt.crisprs'
 
       Product Names:
         description: Product names file
@@ -1802,15 +1821,16 @@ enums:
         annotations:
           file_name_pattern: '[GOLD-AP]_gene_phylogeny.tsv'
 
-      Crispr Terms:
-        description: Crispr Terms
-        annotations:
-          file_name_pattern: '[GOLD-AP]_gene_phylogeny.tsv'
-
       Clusters of Orthologous Groups (COG) Annotation GFF:
         description: GFF3 format file with COGs
         annotations:
           file_name_pattern: '[GOLD-AP]_cog.gff'
+
+
+      KO_EC Annotation GFF:
+        description: GFF3 format file with KO_EC
+        annotations:
+          file_name_pattern: '[GOLD-AP]_ko_ec.gff'
 
       CATH FunFams (Functional Families) Annotation GFF:
         description: GFF3 format file with CATH FunFams
@@ -1914,6 +1934,25 @@ enums:
 
 
 slots:
+
+  ecosystem_path_id:
+    range: string
+    description: A unique id representing the GOLD classifers associated with a sample.
+  habitat:
+    range: string
+  location:
+    range: string
+  community:
+    range: string
+  ncbi_taxonomy_name:
+    range: string
+  ncbi_project_name:
+    range: string
+  sample_collection_site:
+    range: string
+  sample_collection_year:
+    range: integer
+  sample_collection_month:
 
   status:
     range: StatusEnum
@@ -2489,28 +2528,11 @@ slots:
   add_date:
     range: string
     description: The date on which the information was added to the database.
+
   mod_date:
     range: string
     description: The last date on which the database information was modified.
-  ecosystem_path_id:
-    range: string
-    description: A unique id representing the GOLD classifers associated with a sample.
-  habitat:
-    range: string
-  location:
-    range: string
-  community:
-    range: string
-  ncbi_taxonomy_name:
-    range: string
-  ncbi_project_name:
-    range: string
-  sample_collection_site:
-    range: string
-  sample_collection_year:
-    range: integer
-  sample_collection_month:
-    range: integer
+
   sample_collection_day:
     range: integer
   sample_collection_hour:
