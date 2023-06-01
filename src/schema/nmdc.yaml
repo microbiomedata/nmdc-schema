@@ -1764,10 +1764,15 @@ enums:
         annotations:
           file_name_pattern: '[rqc_wf_activity_id]_readsQC.info'
 
+      QC Statistics Extended:
+        description: Extended report including methods and results for read filtering
+        annotations:
+          file_name_pattern: '/.+?(?=filter)/filtered-report.txt'
+
       QC Statistics:
         description: Reads QC summary statistics
         annotations:
-          file_name_pattern: '/.+?(?=filter)/filtered-report.txt'
+          file_name_pattern: '[rqc_wf_activity_id]_filterStats2.txt
 
       TIGRFam Annotation GFF:
         description: GFF3 format file with TIGRfam
