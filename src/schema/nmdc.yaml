@@ -1772,7 +1772,7 @@ enums:
       QC Statistics:
         description: Reads QC summary statistics
         annotations:
-          file_name_pattern: '[rqc_wf_activity_id]_filterStats2.txt
+          file_name_pattern: '[rqc_wf_activity_id]_filterStats2.txt'
 
       TIGRFam Annotation GFF:
         description: GFF3 format file with TIGRfam
