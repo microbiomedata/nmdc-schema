@@ -1,5 +1,5 @@
 slot_name	slot_range	slot_multivalued	slot_pattern	slot_min	slot_max
-host_taxid	TextValue	False			
+host_taxid	ControlledIdentifiedTermValue	False			
 embargoed	boolean				
 collected_from	FieldResearchSite				
 type	string				
@@ -7,7 +7,7 @@ img_identifiers	string	True
 samp_name	string	False			
 biosample_categories	biosample_category_enum	True			
 part_of	NamedThing	True			
-id	string		^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$		
+id	uriorcurie		^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$		
 alternative_identifiers	string	True			
 gold_biosample_identifiers	uriorcurie	True	^GOLD:Gb[0-9]+$		
 insdc_biosample_identifiers	uriorcurie	True	^biosample:SAM[NED]([A-Z])?[0-9]+$		
@@ -382,7 +382,7 @@ samp_store_dur	TextValue	False
 samp_store_loc	TextValue	False			
 samp_store_temp	QuantityValue	False			
 samp_subtype	samp_subtype_enum	False			
-samp_taxon_id	TextValue	False			
+samp_taxon_id	ControlledIdentifiedTermValue	False			
 samp_time_out	TextValue	False			
 samp_transport_cond	TextValue	False			
 samp_tvdss	TextValue	False			
@@ -538,9 +538,9 @@ dna_absorb1	float
 dna_absorb2	float				
 dna_collect_site	string				
 dna_concentration	float			0	2000
-dna_cont_type	dna_cont_type_enum				
+dna_cont_type	JgiContTypeEnum				
 dna_container_id	string				
-dna_dnase	dna_dnase_enum				
+dna_dnase	YesNoEnum				
 dna_isolate_meth	string				
 dna_organisms	string				
 dna_project_contact	string				
@@ -552,13 +552,13 @@ dna_seq_project_pi	string
 dna_seq_project_name	string				
 dna_volume	float			0	1000
 proposal_dna	string				
-dnase_rna	dnase_rna_enum				
+dnase_rna	YesNoEnum				
 proposal_rna	string				
 rna_absorb1	float				
 rna_absorb2	float				
 rna_collect_site	string				
 rna_concentration	float			0	1000
-rna_cont_type	rna_cont_type_enum				
+rna_cont_type	JgiContTypeEnum				
 rna_cont_well	string		^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$		
 rna_container_id	string				
 rna_isolate_meth	string				
@@ -570,7 +570,7 @@ rna_sample_name	string			0	2000
 rna_seq_project	string				
 rna_seq_project_pi	string				
 rna_seq_project_name	string				
-rna_volume	float				
+rna_volume	float			0	1000
 collection_date_inc	string				
 collection_time	string				
 collection_time_inc	string				

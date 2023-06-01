@@ -25,7 +25,9 @@ imports:
 
 slots:
   id:
+    required: true
     identifier: true
+    range: uriorcurie
     description: >-
       A unique identifier for a thing.
       Must be either a CURIE shorthand for a URI or a complete URI

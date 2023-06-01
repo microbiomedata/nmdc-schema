@@ -101,11 +101,16 @@ classes:
     is_a: NamedThing
     title: Material Entity
 
+  ProcessedSample:
+    is_a: MaterialEntity
+    title: Processed Sample
+
   AnalyticalSample:
     is_a: MaterialEntity
     title: Analytical Sample
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:ansm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -118,6 +123,7 @@ classes:
       - BCO sample collection site ?
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:site-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -225,6 +231,7 @@ classes:
       - "not yet in use"
     slot_usage:
       id:
+        required: true
         description: >-
           Should be an ORCID. Specify in CURIE format. E.g ORCID:0000-1111-...
   
@@ -261,6 +268,7 @@ classes:
       - OBI:0000485
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -426,7 +434,11 @@ classes:
     slot_usage:
       has_raw_value:
         description: >-
-          The raw value for a  geolocation should follow {lat} {long}
+          The raw value for a  geolocation should follow {latitude} {longitude}
+      latitude:
+        required: true
+      longitude:
+        required: true
     mappings:
       - schema:GeoCoordinates
 
@@ -547,6 +559,8 @@ slots:
     description: >-
       latitude
     slot_uri: wgs84:lat
+    examples:
+      - value: -33.460524
     mappings:
       - schema:latitude
 
@@ -556,6 +570,8 @@ slots:
     description: >-
       longitude
     slot_uri: wgs84:long
+    examples:
+      - value: 150.168149
     mappings:
       - schema:longitude
 

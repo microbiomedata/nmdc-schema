@@ -650,7 +650,7 @@
                     "type": "number"
                 },
                 "dna_cont_type": {
-                    "$ref": "#/$defs/DnaContTypeEnum",
+                    "$ref": "#/$defs/JgiContTypeEnum",
                     "description": "Tube or plate (96-well)"
                 },
                 "dna_cont_well": {
@@ -661,7 +661,7 @@
                     "type": "string"
                 },
                 "dna_dnase": {
-                    "$ref": "#/$defs/DnaDnaseEnum"
+                    "$ref": "#/$defs/YesNoEnum"
                 },
                 "dna_isolate_meth": {
                     "description": "Describe the method/protocol/kit used to extract DNA/RNA.",
@@ -700,7 +700,7 @@
                     "type": "number"
                 },
                 "dnase_rna": {
-                    "$ref": "#/$defs/DnaseRnaEnum"
+                    "$ref": "#/$defs/YesNoEnum"
                 },
                 "door_comp_type": {
                     "$ref": "#/$defs/DoorCompTypeEnum",
@@ -1226,7 +1226,7 @@
                     "type": "array"
                 },
                 "host_taxid": {
-                    "$ref": "#/$defs/TextValue",
+                    "$ref": "#/$defs/ControlledIdentifiedTermValue",
                     "description": "NCBI taxon id of the host, e.g. 9606"
                 },
                 "host_tot_mass": {
@@ -1841,7 +1841,7 @@
                     "type": "number"
                 },
                 "rna_cont_type": {
-                    "$ref": "#/$defs/RnaContTypeEnum",
+                    "$ref": "#/$defs/JgiContTypeEnum",
                     "description": "Tube or plate (96-well)"
                 },
                 "rna_cont_well": {
@@ -1885,6 +1885,8 @@
                     "type": "string"
                 },
                 "rna_volume": {
+                    "maximum": 1000,
+                    "minimum": 0,
                     "type": "number"
                 },
                 "room_air_exch_rate": {
@@ -2086,7 +2088,7 @@
                     "description": "Name of sample sub-type. For example if \"sample type\" is \"Produced Water\" then subtype could be \"Oil Phase\" or \"Water Phase\". If \"other\" is specified, please propose entry in \"additional info\" field"
                 },
                 "samp_taxon_id": {
-                    "$ref": "#/$defs/TextValue",
+                    "$ref": "#/$defs/ControlledIdentifiedTermValue",
                     "description": "NCBI taxon id of the sample.  Maybe be a single taxon or mixed taxa sample. Use 'synthetic metagenome\u2019 for mock community/positive controls, or 'blank sample' for negative controls."
                 },
                 "samp_time_out": {
@@ -3106,41 +3108,41 @@
         "CurLandUseEnum": {
             "description": "",
             "enum": [
+                "badlands",
                 "cities",
+                "conifers",
+                "crop trees",
                 "farmstead",
+                "gravel",
+                "hardwoods",
+                "hayland",
+                "horticultural plants",
                 "industrial areas",
+                "intermixed hardwood and conifers",
+                "marshlands",
+                "meadows",
+                "mines/quarries",
+                "mudflats",
+                "oil waste areas",
+                "pastureland",
+                "permanent snow or ice",
+                "rainforest",
+                "rangeland",
                 "roads/railroads",
                 "rock",
-                "sand",
-                "gravel",
-                "mudflats",
-                "salt flats",
-                "badlands",
-                "permanent snow or ice",
-                "saline seeps",
-                "mines/quarries",
-                "oil waste areas",
-                "small grains",
                 "row crops",
+                "saline seeps",
+                "salt flats",
+                "sand",
+                "shrub crops",
+                "shrub land",
+                "small grains",
+                "successional shrub land",
+                "swamp",
+                "tropical",
+                "tundra",
                 "vegetable crops",
-                "horticultural plants (e.g. tulips)",
-                "marshlands (grass,sedges,rushes)",
-                "tundra (mosses,lichens)",
-                "rangeland",
-                "pastureland (grasslands used for livestock grazing)",
-                "hayland",
-                "meadows (grasses,alfalfa,fescue,bromegrass,timothy)",
-                "shrub land (e.g. mesquite,sage-brush,creosote bush,shrub oak,eucalyptus)",
-                "successional shrub land (tree saplings,hazels,sumacs,chokecherry,shrub dogwoods,blackberries)",
-                "shrub crops (blueberries,nursery ornamentals,filberts)",
-                "vine crops (grapes)",
-                "conifers (e.g. pine,spruce,fir,cypress)",
-                "hardwoods (e.g. oak,hickory,elm,aspen)",
-                "intermixed hardwood and conifers",
-                "tropical (e.g. mangrove,palms)",
-                "rainforest (evergreen forest receiving greater than 406 cm annual rainfall)",
-                "swamp (permanent or semi-permanent water body dominated by woody plants)",
-                "crop trees (nuts,fruit,christmas trees,nursery trees)"
+                "vine crops"
             ],
             "title": "CurLandUseEnum",
             "type": "string"
@@ -3197,6 +3199,7 @@
                 }
             },
             "required": [
+                "id",
                 "name",
                 "description"
             ],
@@ -3343,6 +3346,12 @@
                     },
                     "type": "array"
                 },
+                "pooling_set": {
+                    "items": {
+                        "$ref": "#/$defs/Pooling"
+                    },
+                    "type": "array"
+                },
                 "reaction_activity_set": {
                     "items": {
                         "$ref": "#/$defs/ReactionActivity"
@@ -3432,24 +3441,6 @@
             "title": "DissolvingActivity",
             "type": "object"
         },
-        "DnaContTypeEnum": {
-            "description": "",
-            "enum": [
-                "plate",
-                "tube"
-            ],
-            "title": "DnaContTypeEnum",
-            "type": "string"
-        },
-        "DnaDnaseEnum": {
-            "description": "",
-            "enum": [
-                "no",
-                "yes"
-            ],
-            "title": "DnaDnaseEnum",
-            "type": "string"
-        },
         "DnaSampleFormatEnum": {
             "description": "",
             "enum": [
@@ -3467,15 +3458,6 @@
                 "Gentegra-RNA"
             ],
             "title": "DnaSampleFormatEnum",
-            "type": "string"
-        },
-        "DnaseRnaEnum": {
-            "description": "",
-            "enum": [
-                "no",
-                "yes"
-            ],
-            "title": "DnaseRnaEnum",
             "type": "string"
         },
         "DoorCompTypeEnum": {
@@ -3987,7 +3969,7 @@
             "description": "A normalized value for a location on the earth's surface",
             "properties": {
                 "has_raw_value": {
-                    "description": "The raw value for a  geolocation should follow {lat} {long}",
+                    "description": "The raw value for a  geolocation should follow {latitude} {longitude}",
                     "type": "string"
                 },
                 "latitude": {
@@ -4002,6 +3984,10 @@
                     "type": "string"
                 }
             },
+            "required": [
+                "latitude",
+                "longitude"
+            ],
             "title": "GeolocationValue",
             "type": "object"
         },
@@ -4232,6 +4218,15 @@
             "title": "IntegerValue",
             "type": "object"
         },
+        "JgiContTypeEnum": {
+            "description": "",
+            "enum": [
+                "plate",
+                "tube"
+            ],
+            "title": "JgiContTypeEnum",
+            "type": "string"
+        },
         "LabDevice": {
             "additionalProperties": false,
             "description": "",
@@ -4450,6 +4445,7 @@
                 "git_url",
                 "has_input",
                 "has_output",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -4496,6 +4492,9 @@
                     "type": "string"
                 }
             },
+            "required": [
+                "id"
+            ],
             "title": "MaterialSample",
             "type": "object"
         },
@@ -4648,6 +4647,7 @@
                 "has_input",
                 "has_output",
                 "type",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -4739,6 +4739,7 @@
                 "git_url",
                 "has_input",
                 "has_output",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -4934,6 +4935,7 @@
                 "git_url",
                 "has_input",
                 "has_output",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -5017,6 +5019,7 @@
                 "has_input",
                 "has_output",
                 "type",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -5107,6 +5110,7 @@
                 "has_input",
                 "has_output",
                 "type",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -5190,6 +5194,7 @@
                 "git_url",
                 "has_input",
                 "has_output",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -5566,6 +5571,7 @@
                 "has_input",
                 "has_output",
                 "type",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -5717,7 +5723,8 @@
                 }
             },
             "required": [
-                "has_input"
+                "has_input",
+                "id"
             ],
             "title": "OmicsProcessing",
             "type": "object"
@@ -5986,6 +5993,54 @@
             "title": "PlantSexEnum",
             "type": "string"
         },
+        "Pooling": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": "string"
+                },
+                "has_inputs": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "minItems": 2,
+                    "type": "array"
+                },
+                "has_outputs": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "maxItems": 1,
+                    "minItems": 1,
+                    "type": "array"
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": "string"
+                },
+                "participating_agent": {
+                    "$ref": "#/$defs/Agent"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Pooling",
+            "type": "object"
+        },
         "ProcessingInstitutionEnum": {
             "description": "",
             "enum": [
@@ -6191,6 +6246,7 @@
                 "git_url",
                 "has_input",
                 "has_output",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -6298,6 +6354,7 @@
                 "git_url",
                 "has_input",
                 "has_output",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
@@ -6327,15 +6384,6 @@
                 "obligate anaerobe"
             ],
             "title": "RelToOxygenEnum",
-            "type": "string"
-        },
-        "RnaContTypeEnum": {
-            "description": "",
-            "enum": [
-                "plate",
-                "tube"
-            ],
-            "title": "RnaContTypeEnum",
             "type": "string"
         },
         "RnaSampleFormatEnum": {
@@ -6615,7 +6663,8 @@
                 "B horizon",
                 "C horizon",
                 "R layer",
-                "Permafrost"
+                "Permafrost",
+                "M horizon"
             ],
             "title": "SoilHorizonEnum",
             "type": "string"
@@ -6789,6 +6838,14 @@
                     },
                     "type": "array"
                 },
+                "gnps_task_identifiers": {
+                    "description": "identifiers that link a NMDC study to a web-based report about metabolomics analysis progress and results",
+                    "items": {
+                        "pattern": "^gnps\\.task:[a-f0-9]+$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "gold_study_identifiers": {
                     "description": "identifiers for corresponding project(s) in GOLD",
                     "items": {
@@ -6887,6 +6944,9 @@
                     "type": "array"
                 }
             },
+            "required": [
+                "id"
+            ],
             "title": "Study",
             "type": "object"
         },
@@ -7314,12 +7374,22 @@
                 "has_input",
                 "has_output",
                 "type",
+                "id",
                 "started_at_time",
                 "ended_at_time",
                 "was_informed_by"
             ],
             "title": "WorkflowExecutionActivity",
             "type": "object"
+        },
+        "YesNoEnum": {
+            "description": "replaces DnaDnaseEnum and DnaseRnaEnum",
+            "enum": [
+                "no",
+                "yes"
+            ],
+            "title": "YesNoEnum",
+            "type": "string"
         }
     },
     "$id": "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc",
@@ -7329,28 +7399,22 @@
         {
             "if": {
                 "properties": {
-                    "dna_cont_type": {
-                        "const": "tube"
-                    }
-                },
-                "required": [
-                    "dna_cont_type"
-                ]
-            },
-            "then": {
-                "properties": {
                     "dna_cont_well": {
-                        "not": {
-                            "anyOf": [
-                                {
-                                    "pattern": ".+"
-                                }
-                            ]
-                        }
+                        "pattern": ".+"
                     }
                 },
                 "required": [
                     "dna_cont_well"
+                ]
+            },
+            "then": {
+                "properties": {
+                    "dna_cont_type": {
+                        "const": "plate"
+                    }
+                },
+                "required": [
+                    "dna_cont_type"
                 ]
             }
         },
@@ -7373,6 +7437,50 @@
                 },
                 "required": [
                     "dna_cont_well"
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "rna_cont_well": {
+                        "pattern": ".+"
+                    }
+                },
+                "required": [
+                    "rna_cont_well"
+                ]
+            },
+            "then": {
+                "properties": {
+                    "rna_cont_type": {
+                        "const": "plate"
+                    }
+                },
+                "required": [
+                    "rna_cont_type"
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "rna_cont_type": {
+                        "const": "plate"
+                    }
+                },
+                "required": [
+                    "rna_cont_type"
+                ]
+            },
+            "then": {
+                "properties": {
+                    "rna_cont_well": {
+                        "pattern": "^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$"
+                    }
+                },
+                "required": [
+                    "rna_cont_well"
                 ]
             }
         }
@@ -7512,6 +7620,12 @@
             "description": "This property links a database object to the set of omics processings within it.",
             "items": {
                 "$ref": "#/$defs/OmicsProcessing"
+            },
+            "type": "array"
+        },
+        "pooling_set": {
+            "items": {
+                "$ref": "#/$defs/Pooling"
             },
             "type": "array"
         },

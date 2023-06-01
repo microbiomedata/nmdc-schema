@@ -142,6 +142,8 @@ biosample_set:
       has_raw_value: 'Sweden: Stordalen'
     lat_lon:
       has_raw_value: 68.35 19.05
+      latitude: 68.35
+      longitude: 19.05
     ecosystem: Environmental
     ecosystem_category: Terrestrial
     ecosystem_type: Soil
@@ -184,6 +186,8 @@ biosample_set:
       has_raw_value: 'USA: Massachusetts'
     lat_lon:
       has_raw_value: 42.481016 -72.178343
+      latitude: 42.481016
+      longitude: -72.178343
     ecosystem: Environmental
     ecosystem_category: Terrestrial
     ecosystem_type: Soil
@@ -226,6 +230,8 @@ biosample_set:
       has_raw_value: 'USA: Seattle, Washington'
     lat_lon:
       has_raw_value: 47.6516 -122.3045
+      latitude: 47.6516
+      longitude: -122.3045
     ecosystem: Host-associated
     ecosystem_category: Plants
     ecosystem_type: Rhizosphere

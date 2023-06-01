@@ -40,6 +40,7 @@ prefixes:
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   skos: http://www.w3.org/2004/02/skos/core#
   xsd: http://www.w3.org/2001/XMLSchema#
+  NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
   #  COG: https://unknown.to.linter.org/
   #  EC: https://unknown.to.linter.org/
   #  GOLD: http://identifiers.org/gold/
@@ -119,6 +120,9 @@ classes:
       translated to JSON-Schema this is the 'root' object. It should contain pointers
       to other objects of interest
     slots:
+      - library_preparation_set
+      - processed_sample_set
+      - extraction_set
       - activity_set
       - biosample_set
       - data_object_set
@@ -145,6 +149,8 @@ classes:
       - date_created
       - etl_software_version
       - metatranscriptome_activity_set
+      - pooling_set
+      - extraction_set
 
     slot_usage:
       date_created:
@@ -153,6 +159,66 @@ classes:
         description: TODO
       metatranscriptome_activity_set:
         description: TODO
+
+  Pooling:
+    is_a: PlannedProcess # from core.yaml
+    slots:
+      - has_inputs
+      - has_outputs
+    slot_usage:
+      has_inputs:
+        minimum_cardinality: 2
+      has_outputs:
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+
+  Extraction:
+    is_a: PlannedProcess # from core.yaml
+    slots:
+      - extraction_date
+      - extraction_method
+      - extraction_target
+      - processing_institution
+      - protocol_link
+      - quality_control_report
+      - sample_mass
+    slot_usage:
+      has_inputs:
+        required: true
+      has_outputs:
+        required: true
+
+  Protocol:
+    #    is_a: NamedThing
+    slots:
+      - url
+      - name
+
+  QualityControlReport:
+    #    is_a: NamedThing
+    slots:
+      - status
+      - name
+
+  LibraryPreparation:
+    aliases:
+      - LibraryConstruction
+    is_a: PlannedProcess # from core.yaml
+    slots:
+      - library_type
+      - library_preparation_kit
+      - pcr_cycles
+      - processed_date
+      - processing_institution
+    close_mappings:
+      - OBI:0000711
+    comments:
+      - OBI:0000711 specifies a DNA input (but not ONLY a DNA input)
+    slot_usage:
+      has_inputs:
+        required: true
+      has_outputs:
+        required: true
 
   FieldResearchSite:
     aliases:
@@ -170,6 +236,7 @@ classes:
       - "might correspond to GOLD's identifier on a page like https://gold.jgi.doe.gov/biosample?id=Gb0305833"
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -191,6 +258,7 @@ classes:
         range: Biosample
         required: true
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -218,6 +286,7 @@ classes:
       description:
         required: true
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -225,21 +294,24 @@ classes:
       - removed id_prefixes value of GOLD, since we are now using pattern-based id validation
 
   Biosample:
+
     rules:
-      - description: Samples in tubes can't have a plate position.
-          But plate_position currently does have to be asserted as an empty string.
-          Can't be null, None, un-asserted,etc.
-          Had wanted to use value_present, but that may not be implemented in the linkml-runtime yet.
+
+      - title: dna_well_requires_plate
+        description: DNA samples shipped to JGI for metagenomic analysis in tubes can't have any value for their plate position.
         preconditions:
           slot_conditions:
-            dna_cont_type:
-              equals_string: tube
+            dna_cont_well:
+              pattern: ".+"
         postconditions:
           slot_conditions:
-            dna_cont_well:
-              none_of:
-                pattern: ".+"
-      - description: Samples in plates must have a plate position that matches the regex. Note the requirement for an empty string in the tube case. Waiting for value_present validation to be added to runtime
+            dna_cont_type:
+              equals_string: plate
+
+      - title: dna_plate_requires_well
+        description: DNA samples in plates must have a plate position that matches the regex.
+          Note the requirement for an empty string in the tube case.
+          Waiting for value_present validation to be added to runtime
         preconditions:
           slot_conditions:
             dna_cont_type:
@@ -247,6 +319,31 @@ classes:
         postconditions:
           slot_conditions:
             dna_cont_well:
+              pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+
+
+      - title: rna_well_requires_plate
+        description: RNA samples shipped to JGI for metagenomic analysis in tubes can't have any value for their plate position.
+        preconditions:
+          slot_conditions:
+            rna_cont_well:
+              pattern: ".+"
+        postconditions:
+          slot_conditions:
+            rna_cont_type:
+              equals_string: plate
+
+      - title: rna_plate_requires_well
+        description: RNA samples in plates must have a plate position that matches the regex.
+          Note the requirement for an empty string in the tube case.
+          Waiting for value_present validation to be added to runtime
+        preconditions:
+          slot_conditions:
+            rna_cont_type:
+              equals_string: plate
+        postconditions:
+          slot_conditions:
+            rna_cont_well:
               pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
 
     unique_keys:
@@ -950,11 +1047,11 @@ classes:
         range: rel_to_oxygen_enum
 
       id:
+        required: true
         description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
         structured_pattern:
           syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-        required: true
       gold_biosample_identifiers:
         description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
         comments: This is the ID provided by GOLD that starts with 'GB'
@@ -1231,6 +1328,7 @@ classes:
 
       ## Alternative IDs
       - alternative_identifiers
+      - gnps_task_identifiers
 
       ## Related IDs
       - related_identifiers
@@ -1270,6 +1368,7 @@ classes:
 
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -1345,6 +1444,7 @@ classes:
       - has_input
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:bsmprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -1395,6 +1495,7 @@ classes:
 
     slot_usage:
       id:
+        required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -1420,10 +1521,39 @@ classes:
     class_uri: prov:Association
 
 enums:
+
+  StatusEnum:
+    permissible_values:
+      pass: { }
+      fail: { }
+  #      accepted: { }
+  #      archived: { }
+  #      deleted: { }
+  #      draft: { }
+  #      rejected: { }
+  #      submitted: { }
+  #      superseded: { }
+  #      withdrawn: { }
+
+  ExtractionTargetEnum:
+    permissible_values:
+      DNA: { }
+      RNA: { }
+      metabolite: { }
+      protein: { }
+
+  LibraryTypeEnum:
+    # start using the right case for enum names
+    # we have other slots which need a DNA or RNA answer, so maybe we should make this enum name more generic
+    permissible_values:
+      DNA: { }
+      RNA: { }
+
   JgiContTypeEnum:
     permissible_values:
       plate: { }
       tube: { }
+
   YesNoEnum:
     name: YesNoEnum
     description: replaces DnaDnaseEnum and DnaseRnaEnum
@@ -1803,7 +1933,81 @@ enums:
           - replaces Environmental Molecular Science Laboratory
           - replaces Environmental Molecular Sciences Lab
 
+      Battelle:
+        title: Battelle Memorial Institute
+        meaning: https://ror.org/01h5tnr73
+
+      ANL:
+        title: Argonne National Laboratory
+        meaning: https://ror.org/05gvnxz63
+
+
+
+
 slots:
+
+  status:
+    range: StatusEnum
+
+  library_preparation_kit:
+    range: string
+  #    exact_mappings:
+  #      - GENEPIO:0001450
+  processed_date:
+    #    range: date
+    range: string
+  extraction_date:
+    #    range: date
+    range: string
+  extraction_method: { }
+  extraction_target:
+    range: ExtractionTargetEnum
+  protocol_link:
+    range: Protocol
+    #    range: integer
+    # see also relevant_protocol string slot # this name avoids case-insensitive clash with Protocol class
+  quality_control_report:
+    #    range: integer
+    range: QualityControlReport
+  # structure
+
+  pcr_cycles:
+    range: integer
+    exact_mappings:
+      - OBI:0002475
+  sample_mass:
+    range: QuantityValue
+
+
+  library_type:
+    title: library type
+    examples:
+      - value: DNA
+    range: LibraryTypeEnum
+
+
+  processed_sample_set:
+    mixins: object_set
+    domain: Database
+    range: ProcessedSample
+    multivalued: true
+    description: This property links a database object to the set of processed samples within it.
+
+  extraction_set:
+    mixins: object_set
+    domain: Database
+    range: Extraction
+    multivalued: true
+    description: This property links a database object to the set of extractions within it.
+
+  library_preparation_set:
+    aliases:
+      - library_construction_set
+    mixins: object_set
+    domain: Database
+    range: LibraryPreparation
+    multivalued: true
+    description: This property links a database object to the set of DNA extractions within it.
 
   zinc:
     aliases:
@@ -2214,6 +2418,13 @@ slots:
     multivalued: true
     description: This property links a database object to the set of omics processings
       within it.
+
+  pooling_set:
+    mixins: object_set
+    domain: Database # doesn't that come from object_set
+    range: Pooling
+    multivalued: true # doesn't that come from object_set
+
   omics_type:
     range: ControlledTermValue
     description: The type of omics data
