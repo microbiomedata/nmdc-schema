@@ -19,8 +19,8 @@ authors = [
 [tool.poetry.dependencies]
 python = "^3.9"
 # see https://github.com/microbiomedata/nmdc-schema/issues/820
-linkml = "^1.5.2"
-linkml-runtime = "^1.5.2"
+linkml = "1.5.2"
+linkml-runtime = "1.5.2"
 exhaustion-check = "^0.1.1"
 
 [tool.poetry.group.dev.dependencies]

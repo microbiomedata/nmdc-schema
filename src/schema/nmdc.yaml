@@ -122,7 +122,7 @@ classes:
     slots:
       - library_preparation_set
       - processed_sample_set
-      - nucleic_acid_extraction_set
+      - extraction_set
       - activity_set
       - biosample_set
       - data_object_set
@@ -150,6 +150,7 @@ classes:
       - etl_software_version
       - metatranscriptome_activity_set
       - pooling_set
+      - extraction_set
 
     slot_usage:
       date_created:
@@ -171,33 +172,53 @@ classes:
         minimum_cardinality: 1
         maximum_cardinality: 1
 
-  NucleicAcidExtraction:
+  Extraction:
     is_a: PlannedProcess # from core.yaml
     slots:
       - extraction_date
       - extraction_method
-      - extraction_type
-      - has_input
-      - has_outputs
+      - extraction_target
       - processing_institution
-      - protocol
+      - protocol_link
       - quality_control_report
       - sample_mass
+    slot_usage:
+      has_inputs:
+        required: true
+      has_outputs:
+        required: true
+
+  Protocol:
+    #    is_a: NamedThing
+    slots:
+      - url
+      - name
+
+  QualityControlReport:
+    #    is_a: NamedThing
+    slots:
+      - status
+      - name
 
   LibraryPreparation:
     aliases:
       - LibraryConstruction
     is_a: PlannedProcess # from core.yaml
     slots:
-      - has_input
-      - has_output
       - library_type
       - library_preparation_kit
       - pcr_cycles
       - processed_date
       - processing_institution
-    exact_mappings:
+    close_mappings:
       - OBI:0000711
+    comments:
+      - OBI:0000711 specifies a DNA input (but not ONLY a DNA input)
+    slot_usage:
+      has_inputs:
+        required: true
+      has_outputs:
+        required: true
 
   FieldResearchSite:
     aliases:
@@ -1500,7 +1521,28 @@ classes:
     class_uri: prov:Association
 
 enums:
-  LIBRARY_TYPE_ENUM:
+
+  StatusEnum:
+    permissible_values:
+      pass: { }
+      fail: { }
+  #      accepted: { }
+  #      archived: { }
+  #      deleted: { }
+  #      draft: { }
+  #      rejected: { }
+  #      submitted: { }
+  #      superseded: { }
+  #      withdrawn: { }
+
+  ExtractionTargetEnum:
+    permissible_values:
+      DNA: { }
+      RNA: { }
+      metabolite: { }
+      protein: { }
+
+  LibraryTypeEnum:
     # start using the right case for enum names
     # we have other slots which need a DNA or RNA answer, so maybe we should make this enum name more generic
     permissible_values:
@@ -1511,6 +1553,7 @@ enums:
     permissible_values:
       plate: { }
       tube: { }
+
   YesNoEnum:
     name: YesNoEnum
     description: replaces DnaDnaseEnum and DnaseRnaEnum
@@ -1858,12 +1901,22 @@ enums:
         notes:
           - replaces Environmental Molecular Science Laboratory
           - replaces Environmental Molecular Sciences Lab
+
       Battelle:
         title: Battelle Memorial Institute
         meaning: https://ror.org/01h5tnr73
 
+      ANL:
+        title: Argonne National Laboratory
+        meaning: https://ror.org/05gvnxz63
+
+
+
 
 slots:
+
+  status:
+    range: StatusEnum
 
   library_preparation_kit:
     range: string
@@ -1876,10 +1929,16 @@ slots:
     #    range: date
     range: string
   extraction_method: { }
-  extraction_type: { }
-  protocol: { }
+  extraction_target:
+    range: ExtractionTargetEnum
+  protocol_link:
+    range: Protocol
+    #    range: integer
+    # see also relevant_protocol string slot # this name avoids case-insensitive clash with Protocol class
   quality_control_report:
-  # strucutre
+    #    range: integer
+    range: QualityControlReport
+  # structure
 
   pcr_cycles:
     range: integer
@@ -1893,7 +1952,7 @@ slots:
     title: library type
     examples:
       - value: DNA
-    range: LIBRARY_TYPE_ENUM
+    range: LibraryTypeEnum
 
 
   processed_sample_set:
@@ -1903,12 +1962,12 @@ slots:
     multivalued: true
     description: This property links a database object to the set of processed samples within it.
 
-  nucleic_acid_extraction_set:
+  extraction_set:
     mixins: object_set
     domain: Database
-    range: NucleicAcidExtraction
+    range: Extraction
     multivalued: true
-    description: This property links a database object to the set of DNA extractions within it.
+    description: This property links a database object to the set of extractions within it.
 
   library_preparation_set:
     aliases:

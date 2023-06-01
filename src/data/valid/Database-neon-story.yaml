@@ -18,13 +18,15 @@ processed_sample_set:
     name: first DNA extract
   - id: bare:library_1
     name: first library
-nucleic_acid_extraction_set:
+
+extraction_set:
   - id: bare:des1
     name: first dna extraction set
     has_inputs:
       - bare:pool_out_1
     has_outputs:
       - bare:dna_extract_1
+    extraction_target: DNA
 
 #example populated by w/example mostly from NEON.D05.TREE.DP1.10107.001.mms_metagenomeSequencing.2017-07.expanded.20230113T225024Z.csv
 #library preparation OBI:0000711
@@ -33,7 +35,7 @@ nucleic_acid_extraction_set:
 #   - using single-valued "has_input" and "has_output" slots
 library_preparation_set:
   - id: bare:lcs1
-    name: DNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1
+    name: DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1
     #    has_input: bare:xxx
     #    has_output: bare:xxy
     #library_type should be enum "DNA", "RNA"
