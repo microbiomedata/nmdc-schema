@@ -41,6 +41,8 @@ python-dotenv = "^0.21.0"
 schemasheets = "^0.1.18"
 strsimpy = "*"
 toml = "*"
+exhaustion-check = "^0.1.1"
+pymongo = "^4.3.3"
 
 sheets_and_friends = "^0.5.0"
 ## /Users/MAM/Documents/gitrepos/sheets_and_friends
@@ -87,6 +89,7 @@ mixs_slot_text_mining = "nmdc_schema.mixs_slot_text_mining:cli"
 nmdc-data = "nmdc_schema.nmdc_data:cli"
 nmdc-version = "nmdc_schema.nmdc_version:cli"
 slot_roster = "nmdc_schema.slot_roster:cli"
+mongodb_exporter = "nmdc_schema.mongodb_exporter:export_to_yaml"
 
 #validate-nmdc-json is deprecated by check-json-schema, which is in turn deprereated by run-linkml-examples
 #validate-nmdc-json = "nmdc_schema.validate_nmdc_json:cli"

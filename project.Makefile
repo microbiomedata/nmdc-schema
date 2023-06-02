@@ -352,3 +352,8 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosampl
 		-i $< \
 		-o $@
 
+local/study_set.yaml:
+	$(RUN) mongodb_exporter \
+		--mongo-collection study_set \
+		--output-dir local
+
