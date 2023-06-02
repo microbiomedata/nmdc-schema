@@ -14,16 +14,16 @@ prefixes:
 default_prefix: nmdc
 default_range: string
 enums:
-#  dna_cont_type_enum:
-#    from_schema: https://example.com/nmdc_dh
-#    permissible_values:
-#      plate:
-#      tube:
-#  dna_dnase_enum:
-#    from_schema: https://example.com/nmdc_dh
-#    permissible_values:
-#      'no':
-#      'yes':
+  #  dna_cont_type_enum:
+  #    from_schema: https://example.com/nmdc_dh
+  #    permissible_values:
+  #      plate:
+  #      tube:
+  #  dna_dnase_enum:
+  #    from_schema: https://example.com/nmdc_dh
+  #    permissible_values:
+  #      'no':
+  #      'yes':
   dna_sample_format_enum:
     from_schema: https://example.com/nmdc_dh
     permissible_values:
@@ -250,7 +250,7 @@ slots:
   dna_volume:
     title: DNA volume in ul
     comments:
-      - Units must be in uL. Enter the numerical part only. Value must 0-1000. Values
+      - Units must be in uL. Enter the numerical part only. Value must be 0-1000. Values
         <25 by special permission only.
     examples:
       - value: '25'
@@ -260,7 +260,7 @@ slots:
     range: float
     slot_group: JGI-Metagenomics
     recommended: true
-    minimum_value: 0
+    minimum_value: 25
     maximum_value: 1000
   proposal_dna:
     title: DNA proposal ID
