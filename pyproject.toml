@@ -21,7 +21,7 @@ python = "^3.9"
 # see https://github.com/microbiomedata/nmdc-schema/issues/820
 linkml = "1.5.2"
 linkml-runtime = "1.5.2"
-exhaustion-check = "^0.1.1"
+
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0"
@@ -39,6 +39,8 @@ python-dotenv = "^0.21.0"
 schemasheets = "^0.1.18"
 strsimpy = "*"
 toml = "*"
+exhaustion-check = "^0.1.1"
+pymongo = "^4.3.3"
 
 sheets_and_friends = "^0.5.0"
 ## /Users/MAM/Documents/gitrepos/sheets_and_friends
