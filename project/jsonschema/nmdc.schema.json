@@ -136,96 +136,6 @@
         },
         "Biosample": {
             "additionalProperties": false,
-            "allOf": [
-                {
-                    "if": {
-                        "properties": {
-                            "dna_cont_well": {
-                                "pattern": ".+"
-                            }
-                        },
-                        "required": [
-                            "dna_cont_well"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "dna_cont_type": {
-                                "const": "plate"
-                            }
-                        },
-                        "required": [
-                            "dna_cont_type"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "dna_cont_type": {
-                                "const": "plate"
-                            }
-                        },
-                        "required": [
-                            "dna_cont_type"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "dna_cont_well": {
-                                "pattern": "^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$"
-                            }
-                        },
-                        "required": [
-                            "dna_cont_well"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "rna_cont_well": {
-                                "pattern": ".+"
-                            }
-                        },
-                        "required": [
-                            "rna_cont_well"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "rna_cont_type": {
-                                "const": "plate"
-                            }
-                        },
-                        "required": [
-                            "rna_cont_type"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "rna_cont_type": {
-                                "const": "plate"
-                            }
-                        },
-                        "required": [
-                            "rna_cont_type"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "rna_cont_well": {
-                                "pattern": "^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$"
-                            }
-                        },
-                        "required": [
-                            "rna_cont_well"
-                        ]
-                    }
-                }
-            ],
             "description": "Biological source material which can be characterized by an experiment.",
             "properties": {
                 "abs_air_humidity": {
@@ -1972,6 +1882,8 @@
                     "type": "string"
                 },
                 "rna_volume": {
+                    "maximum": 1000,
+                    "minimum": 0,
                     "type": "number"
                 },
                 "room_air_exch_rate": {
@@ -3425,6 +3337,12 @@
                     "description": "This property links a database object to the set of omics processings within it.",
                     "items": {
                         "$ref": "#/$defs/OmicsProcessing"
+                    },
+                    "type": "array"
+                },
+                "pooling_set": {
+                    "items": {
+                        "$ref": "#/$defs/Pooling"
                     },
                     "type": "array"
                 },
@@ -6055,6 +5973,54 @@
             "title": "PlantSexEnum",
             "type": "string"
         },
+        "Pooling": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": "string"
+                },
+                "has_inputs": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "minItems": 2,
+                    "type": "array"
+                },
+                "has_outputs": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "maxItems": 1,
+                    "minItems": 1,
+                    "type": "array"
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": "string"
+                },
+                "participating_agent": {
+                    "$ref": "#/$defs/Agent"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Pooling",
+            "type": "object"
+        },
         "ProcessingInstitutionEnum": {
             "description": "",
             "enum": [
@@ -7405,7 +7371,96 @@
     "$id": "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": true,
-    "description": "An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest",
+    "allOf": [
+        {
+            "if": {
+                "properties": {
+                    "dna_cont_well": {
+                        "pattern": ".+"
+                    }
+                },
+                "required": [
+                    "dna_cont_well"
+                ]
+            },
+            "then": {
+                "properties": {
+                    "dna_cont_type": {
+                        "const": "plate"
+                    }
+                },
+                "required": [
+                    "dna_cont_type"
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "dna_cont_type": {
+                        "const": "plate"
+                    }
+                },
+                "required": [
+                    "dna_cont_type"
+                ]
+            },
+            "then": {
+                "properties": {
+                    "dna_cont_well": {
+                        "pattern": "^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$"
+                    }
+                },
+                "required": [
+                    "dna_cont_well"
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "rna_cont_well": {
+                        "pattern": ".+"
+                    }
+                },
+                "required": [
+                    "rna_cont_well"
+                ]
+            },
+            "then": {
+                "properties": {
+                    "rna_cont_type": {
+                        "const": "plate"
+                    }
+                },
+                "required": [
+                    "rna_cont_type"
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "rna_cont_type": {
+                        "const": "plate"
+                    }
+                },
+                "required": [
+                    "rna_cont_type"
+                ]
+            },
+            "then": {
+                "properties": {
+                    "rna_cont_well": {
+                        "pattern": "^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$"
+                    }
+                },
+                "required": [
+                    "rna_cont_well"
+                ]
+            }
+        }
+    ],
     "metamodel_version": "1.7.0",
     "properties": {
         "activity_set": {
@@ -7541,6 +7596,12 @@
             "description": "This property links a database object to the set of omics processings within it.",
             "items": {
                 "$ref": "#/$defs/OmicsProcessing"
+            },
+            "type": "array"
+        },
+        "pooling_set": {
+            "items": {
+                "$ref": "#/$defs/Pooling"
             },
             "type": "array"
         },

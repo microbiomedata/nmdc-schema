@@ -570,7 +570,7 @@ rna_sample_name	string			0	2000
 rna_seq_project	string				
 rna_seq_project_pi	string				
 rna_seq_project_name	string				
-rna_volume	float				
+rna_volume	float			0	1000
 collection_date_inc	string				
 collection_time	string				
 collection_time_inc	string				

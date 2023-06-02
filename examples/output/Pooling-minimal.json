@@ -1,0 +1,5 @@
+{
+  "id": "bare:value",
+  "name": "first pooling process",
+  "@type": "Pooling"
+}

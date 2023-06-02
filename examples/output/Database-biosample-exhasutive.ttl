@@ -6,6 +6,17 @@
 @prefix wgs84: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+ENVO:00002030 a nmdc:OntologyClass .
+
+ENVO:00002169 a nmdc:OntologyClass .
+
+ENVO:00005792 a nmdc:OntologyClass .
+
+NCBITaxon:410658 a nmdc:OntologyClass ;
+    nmdc:name "soil metagenome" .
+
+NCBITaxon:9606 a nmdc:OntologyClass .
+
 nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     dcterms:description "unconstrained text" ;
     dcterms:isPartOf nmdc:unconstrained_study_identifier_string1_needs_pattern_materialization_what_about_referential_integrity,
@@ -986,14 +997,6 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     nmdc:zinc [ a nmdc:QuantityValue ;
             nmdc:has_raw_value "2.5 mg/kg" ] .
 
-ENVO:00002030 a nmdc:OntologyClass .
-
-ENVO:00002169 a nmdc:OntologyClass .
-
-ENVO:00005792 a nmdc:OntologyClass .
-
-NCBITaxon:410658 a nmdc:OntologyClass ;
-    nmdc:name "soil metagenome" .
-
-NCBITaxon:9606 a nmdc:OntologyClass .
+[] a nmdc:Database ;
+    nmdc:biosample_set nmdc:bsm-99-dtTMNb .
 

@@ -320,6 +320,7 @@ jsonschema-check-all-valid-databases: $(YAML_DATABASE_FILES_VALID)
 	$(foreach yaml_file,$^,echo $(yaml_file) ; $(RUN) check-jsonschema \
 		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $(yaml_file);)
 
+
 local/usage_template.tsv: src/schema/nmdc.yaml
 	mkdir -p $(@D)
 	$(RUN) generate_and_populate_template \
@@ -330,3 +331,24 @@ local/usage_template.tsv: src/schema/nmdc.yaml
 		 --meta-model-excel-file local/meta.xlsx \
 		 --meta-path https://raw.githubusercontent.com/linkml/linkml-model/main/linkml_model/model/schema/meta.yaml \
 		 --source-schema-path $<
+
+examples/output/Biosample-exhasutive_report.yaml: src/data/valid/Biosample-exhasutive.yaml
+	poetry run exhaustion-check \
+		--class-name Biosample \
+		--instance-yaml-file $< \
+		--output-yaml-file $@ \
+		--schema-path src/schema/nmdc.yaml
+
+
+examples/output/Pooling-minimal-report.yaml: src/data/valid/Pooling-minimal.yaml
+	poetry run exhaustion-check \
+		--class-name Pooling \
+		--instance-yaml-file $< \
+		--output-yaml-file $@ \
+		--schema-path src/schema/nmdc.yaml
+
+examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosample-exhasutive.yaml
+	poetry run pretty-sort-yaml \
+		-i $< \
+		-o $@
+
