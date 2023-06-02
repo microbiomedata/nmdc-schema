@@ -320,6 +320,18 @@ jsonschema-check-all-valid-databases: $(YAML_DATABASE_FILES_VALID)
 	$(foreach yaml_file,$^,echo $(yaml_file) ; $(RUN) check-jsonschema \
 		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $(yaml_file);)
 
+
+local/usage_template.tsv: src/schema/nmdc.yaml
+	mkdir -p $(@D)
+	$(RUN) generate_and_populate_template \
+		 --base-class slot_definition \
+		 --columns-to-insert class \
+		 --columns-to-insert slot \
+		 --destination-template $@ \
+		 --meta-model-excel-file local/meta.xlsx \
+		 --meta-path https://raw.githubusercontent.com/linkml/linkml-model/main/linkml_model/model/schema/meta.yaml \
+		 --source-schema-path $<
+
 examples/output/Biosample-exhasutive_report.yaml: src/data/valid/Biosample-exhasutive.yaml
 	poetry run exhaustion-check \
 		--class-name Biosample \
@@ -344,3 +356,4 @@ local/study_set.yaml:
 	$(RUN) mongodb_exporter \
 		--mongo-collection study_set \
 		--output-dir local
+
