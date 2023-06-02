@@ -330,4 +330,3 @@ local/usage_template.tsv: src/schema/nmdc.yaml
 		 --meta-model-excel-file local/meta.xlsx \
 		 --meta-path https://raw.githubusercontent.com/linkml/linkml-model/main/linkml_model/model/schema/meta.yaml \
 		 --source-schema-path $<
-	rm -rf
