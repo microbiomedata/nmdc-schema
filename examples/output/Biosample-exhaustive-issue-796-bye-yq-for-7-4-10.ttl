@@ -231,7 +231,7 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
             nmdc:has_raw_value "agar [CHEBI:2509];2018-05-11T20:00Z" ] ;
     MIXS:0000752 [ a nmdc:TextValue ;
             nmdc:has_raw_value "Bicarbonate ion concentration;2075 micromole per kilogram" ] ;
-    MIXS:0000753 "aerobe" ;
+    MIXS:0000753 "aerobic" ;
     MIXS:0000754 [ a nmdc:TextValue ;
             nmdc:has_raw_value "antibiotic addition;R2/2018-05-11T14:30Z/2018-05-11T19:30Z/P1H30M" ] ;
     MIXS:0000755 [ a nmdc:TextValue ;

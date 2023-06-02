@@ -810,7 +810,7 @@
       "owc_tvdss": {
         "has_raw_value": "xxx"
       },
-      "oxy_stat_samp": "aerobe",
+      "oxy_stat_samp": "aerobic",
       "oxygen": {
         "has_raw_value": "xxx"
       },
@@ -947,7 +947,6 @@
         "has_raw_value": "xxx"
       },
       "rel_samp_loc": "edge of car",
-      "rel_to_oxygen": "aerobe",
       "reservoir": {
         "has_raw_value": "xxx"
       },

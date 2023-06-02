@@ -306,7 +306,7 @@
       "has_raw_value": "ATP"
     }
   ],
-  "oxy_stat_samp": "aerobe",
+  "oxy_stat_samp": "aerobic",
   "part_org_carb": {
     "has_raw_value": "1.92 micromole per liter"
   },

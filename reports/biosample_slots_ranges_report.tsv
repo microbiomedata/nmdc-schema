@@ -288,7 +288,7 @@ org_nitro	QuantityValue	False
 org_particles	TextValue	True			
 organism_count	QuantityValue	True			
 owc_tvdss	QuantityValue	False			
-oxy_stat_samp	rel_to_oxygen_enum	False			
+oxy_stat_samp	oxy_stat_samp_enum	False			
 oxygen	QuantityValue	False			
 part_org_carb	QuantityValue	False			
 part_org_nitro	QuantityValue	False			
@@ -333,7 +333,6 @@ redox_potential	QuantityValue	False
 rel_air_humidity	QuantityValue	False			
 rel_humidity_out	QuantityValue	False			
 rel_samp_loc	rel_samp_loc_enum	False			
-rel_to_oxygen	rel_to_oxygen_enum	False			
 reservoir	TextValue	False			
 resins_pc	TextValue	False			
 room_air_exch_rate	QuantityValue	False			
@@ -550,7 +549,7 @@ dna_sample_name	string
 dna_seq_project	string				
 dna_seq_project_pi	string				
 dna_seq_project_name	string				
-dna_volume	float			0	1000
+dna_volume	float			25	1000
 proposal_dna	string				
 dnase_rna	YesNoEnum				
 proposal_rna	string				
@@ -570,7 +569,7 @@ rna_sample_name	string			0	2000
 rna_seq_project	string				
 rna_seq_project_pi	string				
 rna_seq_project_name	string				
-rna_volume	float			0	1000
+rna_volume	float			25	1000
 collection_date_inc	string				
 collection_time	string				
 collection_time_inc	string				
