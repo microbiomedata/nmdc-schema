@@ -9,12 +9,12 @@ todos:
   - "## section delimiters should be subsets"
 
 prefixes:
+  #  prov: http://www.w3.org/ns/prov#
   GOLD: http://identifiers.org/gold/
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
   nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
   skos: http://www.w3.org/2004/02/skos/core#
-#  prov: http://www.w3.org/ns/prov#
 
 # WARNING:Namespaces:MASSIVE namespace is already mapped to http://identifiers.org/massive/ -
 #   Mapping to https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task= ignored
@@ -49,7 +49,7 @@ slots:
     comments:
       - The value of this field is always a registered CURIE
     notes:
-      - "had tried ranges of  external identifier and string"
+      - "had tried ranges of external identifier and string"
     range: uriorcurie
     close_mappings:
       - skos:closeMatch
@@ -302,3 +302,10 @@ slots:
     see_also:
       - https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=83574f41458a4b259621d5c32a4d82f9
 
+  neon_identifiers:
+    mixin: true
+    description: identifiers for entities according to NEON
+
+  jgi_portal_identifiers:
+    mixin: true
+    description: identifiers for entities according to JGI Portal
