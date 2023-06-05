@@ -1,0 +1,15 @@
+@prefix RetroRules: <https://unknown.to.linter.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+
+RetroRules:value a nmdc:Pooling ;
+    dcterms:description "xxx" ;
+    nmdc:alternative_identifiers "bare:xxx" ;
+    nmdc:has_inputs RetroRules:xxx,
+        RetroRules:yyy ;
+    nmdc:has_outputs RetroRules:xxx ;
+    nmdc:name "first pooling process" .
+
+[] a nmdc:Database ;
+    nmdc:pooling_set RetroRules:value .
+
