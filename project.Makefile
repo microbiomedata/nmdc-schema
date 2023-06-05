@@ -321,11 +321,11 @@ jsonschema-check-all-valid-databases: $(YAML_DATABASE_FILES_VALID)
 		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $(yaml_file);)
 
 
+# 		 --columns-to-insert class
 local/usage_template.tsv: src/schema/nmdc.yaml
 	mkdir -p $(@D)
 	$(RUN) generate_and_populate_template \
 		 --base-class slot_definition \
-		 --columns-to-insert class \
 		 --columns-to-insert slot \
 		 --destination-template $@ \
 		 --meta-model-excel-file local/meta.xlsx \
