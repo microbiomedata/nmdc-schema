@@ -1,6 +1,0 @@
-@prefix RetroRules: <https://unknown.to.linter.org/> .
-@prefix nmdc: <https://w3id.org/nmdc/> .
-
-RetroRules:value a nmdc:Pooling ;
-    nmdc:name "first pooling process" .
-
