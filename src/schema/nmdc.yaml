@@ -724,7 +724,7 @@ classes:
       - rel_air_humidity
       - rel_humidity_out
       - rel_samp_loc
-      - rel_to_oxygen
+      #      - rel_to_oxygen
       - reservoir
       - resins_pc
       - room_air_exch_rate
@@ -1042,9 +1042,9 @@ classes:
         examples:
           value: 100
       oxy_stat_samp:
-        notes:
-          - this is now a hybrid of the oxy_stat_samp semantics and the rel_to_oxygen enumeration
-        range: rel_to_oxygen_enum
+        #        notes:
+        #          - this is now a hybrid of the oxy_stat_samp semantics and the rel_to_oxygen enumeration
+        range: oxy_stat_samp_enum
 
       id:
         required: true
@@ -1625,12 +1625,17 @@ enums:
       Metagenome Bins:
         description: Metagenome bin contigs fasta
 
-      Metagenome Bins File:
+      Metagenome Bins Compression File:
         description: Compressed file containing all metagenome bins and associated files
         annotations:
           file_name_pattern:
             tag: file_name_pattern
             value: '[mag_wf_activity_id]_hqmq_bin.zip'
+
+      Metagenome Bins Info File:
+        description: File containing version information on the binning workflow
+        annotations:
+          file_name_pattern: '[mag_wf_activity_id]_bin.info'
 
       CheckM Statistics:
         description: CheckM statistics report
@@ -1759,10 +1764,15 @@ enums:
         annotations:
           file_name_pattern: '[rqc_wf_activity_id]_readsQC.info'
 
+      QC Statistics Extended:
+        description: Extended report including methods and results for read filtering
+        annotations:
+          file_name_pattern: '/.+?(?=filter)/filtered-report.txt'
+
       QC Statistics:
         description: Reads QC summary statistics
         annotations:
-          file_name_pattern: '/.+?(?=filter)/filtered-report.txt'
+          file_name_pattern: '[rqc_wf_activity_id]_filterStats2.txt'
 
       TIGRFam Annotation GFF:
         description: GFF3 format file with TIGRfam

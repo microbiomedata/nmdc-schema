@@ -1,0 +1,11 @@
+@prefix RetroRules: <https://unknown.to.linter.org/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+
+RetroRules:value a nmdc:Extraction ;
+    nmdc:has_inputs RetroRules:xxx ;
+    nmdc:has_outputs RetroRules:yyy ;
+    nmdc:name "DNA extraction of NEON sample WREF_072-O-20190618-COMP" .
+
+[] a nmdc:Database ;
+    nmdc:extraction_set RetroRules:value .
+

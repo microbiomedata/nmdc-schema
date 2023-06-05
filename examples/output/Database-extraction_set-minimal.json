@@ -1,0 +1,15 @@
+{
+  "extraction_set": [
+    {
+      "id": "bare:value",
+      "name": "DNA extraction of NEON sample WREF_072-O-20190618-COMP",
+      "has_inputs": [
+        "bare:xxx"
+      ],
+      "has_outputs": [
+        "bare:yyy"
+      ]
+    }
+  ],
+  "@type": "Database"
+}

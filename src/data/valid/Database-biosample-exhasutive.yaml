@@ -251,7 +251,7 @@ biosample_set:
       has_raw_value: 4 micromole per liter
     organism_count:
       - has_raw_value: ATP
-    oxy_stat_samp: aerobe
+    oxy_stat_samp: aerobic
     part_org_carb:
       has_raw_value: 1.92 micromole per liter
     perturbation:
@@ -376,7 +376,6 @@ biosample_set:
       has_raw_value: incandescent light;10 lux;450 nanometer
     phosphate:
       has_raw_value: 0.7 micromole per liter
-    #rel_to_oxygen
     #samp_collec_method:
     #  has_raw_value: swabbing
     samp_collec_method: swabbing
@@ -773,7 +772,7 @@ biosample_set:
     rel_humidity_out:
       has_raw_value: xxx
     rel_samp_loc: edge of car
-    rel_to_oxygen: aerobe
+    #    rel_to_oxygen: aerobe
     replicate_number: '1'
     reservoir:
       has_raw_value: xxx
