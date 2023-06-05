@@ -1,0 +1,81 @@
+library_preparation_set:
+- id: bare:lcs1
+  name: DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1
+  has_inputs:
+  - bare:dna_extract_1
+  has_outputs:
+  - bare:library_1
+  library_type: DNA
+processed_sample_set:
+- id: bare:pool_out_1
+  name: first processed sample set
+- id: bare:dna_extract_1
+  name: first DNA extract
+- id: bare:library_1
+  name: first library
+extraction_set:
+- id: bare:des1
+  name: first dna extraction set
+  has_inputs:
+  - bare:pool_out_1
+  has_outputs:
+  - bare:dna_extract_1
+  extraction_target: DNA
+biosample_set:
+- id: nmdc:bsm-99-abcdef1
+  part_of:
+  - gold:Gs0110115
+  env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+- id: nmdc:bsm-99-abcdef2
+  part_of:
+  - gold:Gs0110115
+  env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+- id: nmdc:bsm-99-abcdef3
+  part_of:
+  - gold:Gs0110115
+  env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+pooling_set:
+- id: bare:ps1
+  name: first pooling process
+  description: This is the first pooling process that has ever occurred on earth
+  alternative_identifiers:
+  - bare:ps1_alt_id
+  has_inputs:
+  - nmdc:bsm-99-abcdef1
+  - nmdc:bsm-99-abcdef2
+  - nmdc:bsm-99-abcdef3
+  has_outputs:
+  - bare:pool_out_1
