@@ -260,7 +260,7 @@ slots:
   rna_volume:
     title: RNA volume in ul
     comments:
-      - Units must be in uL. Enter the numerical part only. Value must 0-1000. Values
+      - Units must be in uL. Enter the numerical part only. Value must be 0-1000. Values
         <25 by special permission only.
     examples:
       - value: '25'
@@ -270,5 +270,5 @@ slots:
     range: float
     slot_group: JGI-Metatranscriptomics
     recommended: true
-    minimum_value: 0
+    minimum_value: 25
     maximum_value: 1000
