@@ -12,11 +12,11 @@ extraction_set:
     #    I think what yoiu're trying to do is better implemented by specifying
     #      the range of has_input for this class, as a slot_usage
     # this still doesn't solve referential integrity
-    has_inputs:
+    has_input:
       - bare:xxx
 
     #cardinality of outputs should be 1-many, may want to fractionate samples or keep supernatant
-    has_outputs:
+    has_output:
       - bare:xxx
 
     processing_institution: Battelle

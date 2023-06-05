@@ -6,10 +6,10 @@ extraction_set:
     name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
     description: DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7
     #enforce analytical sample typecode?
-    has_inputs:
+    has_input:
       - bare:xxx
     #cardinality of outputs should be 1-many, may want to fractionate samples or keep supernatant
-    has_outputs:
+    has_output:
       - bare:xxx
     #range for processing_institution should be processing_institution_enum
     processing_institution: Battelle

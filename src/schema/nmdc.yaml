@@ -163,12 +163,12 @@ classes:
   Pooling:
     is_a: PlannedProcess # from core.yaml
     slots:
-      - has_inputs
-      - has_outputs
+      - has_input
+      - has_output
     slot_usage:
-      has_inputs:
+      has_input:
         minimum_cardinality: 2
-      has_outputs:
+      has_output:
         minimum_cardinality: 1
         maximum_cardinality: 1
 
@@ -183,9 +183,9 @@ classes:
       - quality_control_report
       - sample_mass
     slot_usage:
-      has_inputs:
+      has_input:
         required: true
-      has_outputs:
+      has_output:
         required: true
 
   Protocol:
@@ -215,9 +215,9 @@ classes:
     comments:
       - OBI:0000711 specifies a DNA input (but not ONLY a DNA input)
     slot_usage:
-      has_inputs:
+      has_input:
         required: true
-      has_outputs:
+      has_output:
         required: true
 
   FieldResearchSite:
@@ -245,16 +245,16 @@ classes:
     is_a: PlannedProcess
     title: Collecting Biosamples From Site
     slots:
-      - has_inputs
-      - has_outputs
+      - has_input
+      - has_output
     comments:
       - "this illustrates implementing a Biosample relation with a process class"
     slot_usage:
-      has_inputs:
+      has_input:
         range: Site
         #        range: NamedThing
         required: true
-      has_outputs:
+      has_output:
         range: Biosample
         required: true
       id:

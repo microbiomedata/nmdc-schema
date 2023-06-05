@@ -134,8 +134,8 @@ classes:
     is_a: NamedThing
     title: Planned Process
     slots:
-      - has_inputs
-      - has_outputs
+      - has_input
+      - has_output
       - participating_agent
 
   OntologyClass:
@@ -484,15 +484,15 @@ slots:
   gtdbtk_species:
     range: string
 
-  has_inputs:
-    domain: PlannedProcess
-    multivalued: true
-    range: NamedThing
+#  has_inputs:
+#    domain: PlannedProcess
+#    multivalued: true
+#    range: NamedThing
 
-  has_outputs:
-    domain: PlannedProcess
-    multivalued: true
-    range: NamedThing
+#  has_outputs:
+#    domain: PlannedProcess
+#    multivalued: true
+#    range: NamedThing
 
   participating_agent:
     domain: PlannedProcess

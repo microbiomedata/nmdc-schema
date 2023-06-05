@@ -3,9 +3,9 @@ name: first pooling process
 alternative_identifiers:
   - bare:xxx
 description: xxx
-has_inputs:
+has_input:
   - bare:xxx
   - bare:yyy
-has_outputs:
+has_output:
   - bare:xxx
 # participating_agent: xxx # Agent isn't a named thing and doesn't have an ID so must be inlined

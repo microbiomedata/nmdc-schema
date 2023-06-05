@@ -4,9 +4,9 @@ library_preparation_set:
   - id: bare:value
     name: DNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1
     description: DNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP BMI_metagenomicsSequencingSOP_v2
-    has_inputs:
+    has_input:
       - bare:xxx
-    has_outputs:
+    has_output:
       - bare:xxx
 
     processing_institution: Battelle
@@ -27,9 +27,9 @@ library_preparation_set:
   - id: bare:value2
     name: RNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1
     description: RNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP XX
-    has_inputs:
+    has_input:
       - bare:xxy
-    has_outputs:
+    has_output:
       - bare:xxz
     #range for processing_institution should be processing_institution_enum
     processing_institution: Battelle

@@ -4,11 +4,11 @@ pooling_set:
     alternative_identifiers:
       - bare:ps1_alt_id
     description: This is the first pooling process that has ever occurred on earth
-    has_inputs:
+    has_input:
       - nmdc:bsm-99-abcdef1
       - nmdc:bsm-99-abcdef2
       - nmdc:bsm-99-abcdef3
-    has_outputs:
+    has_output:
       - bare:pool_out_1
     # participating_agent: xxx # Agent isn't a named thing and doesn't have an ID so must be inlined
 processed_sample_set:
@@ -22,9 +22,9 @@ processed_sample_set:
 extraction_set:
   - id: bare:des1
     name: first dna extraction set
-    has_inputs:
+    has_input:
       - bare:pool_out_1
-    has_outputs:
+    has_output:
       - bare:dna_extract_1
     extraction_target: DNA
 
@@ -40,9 +40,9 @@ library_preparation_set:
     #    has_output: bare:xxy
     #library_type should be enum "DNA", "RNA"
     library_type: DNA
-    has_inputs:
+    has_input:
       - bare:dna_extract_1
-    has_outputs:
+    has_output:
       - bare:library_1
 
 biosample_set:
