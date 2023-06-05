@@ -175,7 +175,9 @@ classes:
   Extraction:
     is_a: PlannedProcess # from core.yaml
     slots:
-      - extraction_date
+      # - extraction_date
+      - start_date
+      - end_date
       - extraction_method
       - extraction_target
       - processing_institution
@@ -208,7 +210,9 @@ classes:
       - library_type
       - library_preparation_kit
       - pcr_cycles
-      - processed_date
+      # - processed_date
+      - start_date
+      - end_date
       - processing_institution
     close_mappings:
       - OBI:0000711
@@ -1971,12 +1975,12 @@ slots:
     range: string
   #    exact_mappings:
   #      - GENEPIO:0001450
-  processed_date:
-    #    range: date
-    range: string
-  extraction_date:
-    #    range: date
-    range: string
+  #  processed_date: # can we move this or infer this from the date of some other process?
+  #    #    range: date
+  #    range: string
+  #  extraction_date: # replacing with start_ and end_date
+  #    #    range: date
+  #    range: string
   extraction_method: { }
   extraction_target:
     range: ExtractionTargetEnum
