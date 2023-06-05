@@ -81,7 +81,7 @@ slots:
       The distinction between title and alternative titles is application-specific.
     exact_mappings:
       - dcterms:alternative
-  
+
   alternative_names:
     range: string
     multivalued: true
@@ -98,10 +98,28 @@ slots:
     description: >-
       A list of alternative descriptions for the entity.
       The distinction between description and alternative descriptions is application-specific.
-  
+
   alternative_identifiers:
     range: string
     multivalued: true
     description: >-
       A list of alternative identifiers for the entity.
+
+  start_date:
+    range: string
+    description: The date on which any process or activity was started
+    comments:
+      - We are using string representations of dates until all components of our ecosystem can handle ISO 8610 dates
+      - The date should be formatted as YYYY-MM-DD
+    todos:
+      - add date string validation pattern
+
+  end_date:
+    range: string
+    description: The date on which any process or activity was ended
+    comments:
+      - We are using string representations of dates until all components of our ecosystem can handle ISO 8610 dates
+      - The date should be formatted as YYYY-MM-DD
+    todos:
+      - add date string validation pattern
 

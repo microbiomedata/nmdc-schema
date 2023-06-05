@@ -27,7 +27,9 @@ extraction_set:
     #      nucl_acid_ext: https://data.neonscience.org/documents/10179/2431540/BMI_dnaExtractionSOP_v7/61204962-bb01-a0b9-3354-ccdaab5132c3
 
     #extraction_date http://purl.obolibrary.org/obo/OBI_0003081
-    extraction_date: '2019-11-08'
+    #    extraction_date: '2019-11-08'
+    start_date: '2019-11-08'
+    end_date: '2019-11-08'
 
     sample_mass: #http://purl.obolibrary.org/obo/MS_1000004
       has_numeric_value: 0.25
@@ -49,4 +51,4 @@ extraction_set:
     #not needed at this time
     #protocol_materials:
     #  - { material_name : DNeasy 96 PowerSoil Pro Kit, material_vendor: Qiagen, catalog_number: 47017 }
-    #  - { material_name : X-Pierce Film, material_vendor: Sigma Aldrich, catalog_number: Z722502-100EA }
+    #  - { material_name : X-Pierce Film, material_vendor: Sigma Aldrich, catalog_number: Z722502-100EA }`

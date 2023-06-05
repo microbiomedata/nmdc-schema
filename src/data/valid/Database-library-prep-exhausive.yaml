@@ -18,7 +18,9 @@ library_preparation_set:
 
     #library_preparation_kit GENEPIO:0001450
     library_preparation_kit: KAPA HyperPrep Kit
-    processed_date: '2018-09-26'
+    #    processed_date: '2018-09-26'
+    start_date: '2018-09-26'
+    end_date: '2018-09-26'
 
     pcr_cycles: 0
     library_type: DNA
@@ -39,7 +41,9 @@ library_preparation_set:
     #      url: https://data.neonscience.org/documents/-/document_library_display/kV4WWrbEEM2s/view_file/2951787
     #library_preparation_kit GENEPIO:0001450
     library_preparation_kit: TruSeq RNA Library Prep Kit v2
-    processed_date: '2018-09-26'
+    #    processed_date: '2018-09-26'
+    start_date: '2018-09-26'
+    end_date: '2018-09-26'
     #pcr cycles OBI:0002475
     pcr_cycles: 12
     #library_type should be enum "DNA", "RNA"

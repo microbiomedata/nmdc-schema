@@ -10,7 +10,9 @@ notes:
   - "removed PR: http://identifiers.org/pr/ prefix assignment"
 
 prefixes:
+  #  igsnvoc: https://igsn.org/voc/v1/
   #  mixs: https://w3id.org/mixs/
+  #  skos: http://www.w3.org/2004/02/skos/core#
   KEGG.COMPOUND: http://identifiers.org/kegg.compound/
   UniProtKB: https://identifiers.org/uniprot/
   biolink: https://w3id.org/biolink/vocab/
@@ -24,8 +26,6 @@ prefixes:
   schema: http://schema.org/
   sio: http://semanticscience.org/resource/SIO_
   wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
-#  igsnvoc: https://igsn.org/voc/v1/
-#  skos: http://www.w3.org/2004/02/skos/core#
 
 default_prefix: nmdc
 default_range: string
@@ -33,7 +33,6 @@ default_range: string
 default_curi_maps:
   - obo_context
   - idot_context
-
 
 imports:
   - basic_slots
@@ -45,7 +44,7 @@ subsets:
   investigation: { }
   nucleic acid sequence source: { }
   sequencing: { }
-#  soil: { }
+  #  soil: { }
 
 types:
 
@@ -79,8 +78,6 @@ types:
     mappings:
       - qud:Unit
       - UO:0000000
-
-
 
 classes:
 
