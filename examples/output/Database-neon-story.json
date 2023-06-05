@@ -3,10 +3,10 @@
     {
       "id": "bare:lcs1",
       "name": "DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1",
-      "has_inputs": [
+      "has_input": [
         "bare:dna_extract_1"
       ],
-      "has_outputs": [
+      "has_output": [
         "bare:library_1"
       ],
       "library_type": "DNA"
@@ -30,10 +30,10 @@
     {
       "id": "bare:des1",
       "name": "first dna extraction set",
-      "has_inputs": [
+      "has_input": [
         "bare:pool_out_1"
       ],
-      "has_outputs": [
+      "has_output": [
         "bare:dna_extract_1"
       ],
       "extraction_target": "DNA"
@@ -121,12 +121,12 @@
       "alternative_identifiers": [
         "bare:ps1_alt_id"
       ],
-      "has_inputs": [
+      "has_input": [
         "nmdc:bsm-99-abcdef1",
         "nmdc:bsm-99-abcdef2",
         "nmdc:bsm-99-abcdef3"
       ],
-      "has_outputs": [
+      "has_output": [
         "bare:pool_out_1"
       ]
     }

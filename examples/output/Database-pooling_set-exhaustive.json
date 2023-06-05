@@ -7,11 +7,11 @@
       "alternative_identifiers": [
         "bare:xxx"
       ],
-      "has_inputs": [
+      "has_input": [
         "bare:xxx",
         "bare:yyy"
       ],
-      "has_outputs": [
+      "has_output": [
         "bare:xxx"
       ]
     }

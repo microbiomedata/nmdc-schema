@@ -3054,13 +3054,15 @@
                     "description": "a human-readable description of a thing",
                     "type": "string"
                 },
-                "has_inputs": {
+                "has_input": {
+                    "description": "An input to a process.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
-                "has_outputs": {
+                "has_output": {
+                    "description": "An output biosample to a processing step",
                     "items": {
                         "type": "string"
                     },
@@ -3079,8 +3081,8 @@
                 }
             },
             "required": [
-                "has_inputs",
-                "has_outputs",
+                "has_input",
+                "has_output",
                 "id"
             ],
             "title": "CollectingBiosamplesFromSite",
@@ -3777,7 +3779,8 @@
                     "description": "a human-readable description of a thing",
                     "type": "string"
                 },
-                "extraction_date": {
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
                     "type": "string"
                 },
                 "extraction_method": {
@@ -3786,13 +3789,15 @@
                 "extraction_target": {
                     "$ref": "#/$defs/ExtractionTargetEnum"
                 },
-                "has_inputs": {
+                "has_input": {
+                    "description": "An input to a process.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
-                "has_outputs": {
+                "has_output": {
+                    "description": "An output biosample to a processing step",
                     "items": {
                         "type": "string"
                     },
@@ -3821,11 +3826,15 @@
                 },
                 "sample_mass": {
                     "$ref": "#/$defs/QuantityValue"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": "string"
                 }
             },
             "required": [
-                "has_inputs",
-                "has_outputs",
+                "has_input",
+                "has_output",
                 "id"
             ],
             "title": "Extraction",
@@ -4446,13 +4455,19 @@
                     "description": "a human-readable description of a thing",
                     "type": "string"
                 },
-                "has_inputs": {
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": "string"
+                },
+                "has_input": {
+                    "description": "An input to a process.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
-                "has_outputs": {
+                "has_output": {
+                    "description": "An output biosample to a processing step",
                     "items": {
                         "type": "string"
                     },
@@ -4478,17 +4493,18 @@
                 "pcr_cycles": {
                     "type": "integer"
                 },
-                "processed_date": {
-                    "type": "string"
-                },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": "string"
                 }
             },
             "required": [
-                "has_inputs",
-                "has_outputs",
+                "has_input",
+                "has_output",
                 "id"
             ],
             "title": "LibraryPreparation",
@@ -6252,14 +6268,16 @@
                     "description": "a human-readable description of a thing",
                     "type": "string"
                 },
-                "has_inputs": {
+                "has_input": {
+                    "description": "An input to a process.",
                     "items": {
                         "type": "string"
                     },
                     "minItems": 2,
                     "type": "array"
                 },
-                "has_outputs": {
+                "has_output": {
+                    "description": "An output biosample to a processing step",
                     "items": {
                         "type": "string"
                     },

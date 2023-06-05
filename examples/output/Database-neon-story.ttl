@@ -7,23 +7,23 @@
 
 RetroRules:des1 a nmdc:Extraction ;
     nmdc:extraction_target "DNA" ;
-    nmdc:has_inputs RetroRules:pool_out_1 ;
-    nmdc:has_outputs RetroRules:dna_extract_1 ;
+    nmdc:has_input RetroRules:pool_out_1 ;
+    nmdc:has_output RetroRules:dna_extract_1 ;
     nmdc:name "first dna extraction set" .
 
 RetroRules:lcs1 a nmdc:LibraryPreparation ;
-    nmdc:has_inputs RetroRules:dna_extract_1 ;
-    nmdc:has_outputs RetroRules:library_1 ;
+    nmdc:has_input RetroRules:dna_extract_1 ;
+    nmdc:has_output RetroRules:library_1 ;
     nmdc:library_type "DNA" ;
     nmdc:name "DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1" .
 
 RetroRules:ps1 a nmdc:Pooling ;
     dcterms:description "This is the first pooling process that has ever occurred on earth" ;
     nmdc:alternative_identifiers "bare:ps1_alt_id" ;
-    nmdc:has_inputs nmdc:bsm-99-abcdef1,
+    nmdc:has_input nmdc:bsm-99-abcdef1,
         nmdc:bsm-99-abcdef2,
         nmdc:bsm-99-abcdef3 ;
-    nmdc:has_outputs RetroRules:pool_out_1 ;
+    nmdc:has_output RetroRules:pool_out_1 ;
     nmdc:name "first pooling process" .
 
 RetroRules:library_1 a nmdc:ProcessedSample ;

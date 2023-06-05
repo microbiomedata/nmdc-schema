@@ -3,25 +3,27 @@ library_preparation_set:
   name: DNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1
   description: DNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP
     BMI_metagenomicsSequencingSOP_v2
-  has_inputs:
+  has_input:
   - bare:xxx
-  has_outputs:
+  has_output:
   - bare:xxx
   library_type: DNA
   library_preparation_kit: KAPA HyperPrep Kit
   pcr_cycles: 0
-  processed_date: '2018-09-26'
+  start_date: '2018-09-26'
+  end_date: '2018-09-26'
   processing_institution: Battelle
 - id: bare:value2
   name: RNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1
   description: RNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP
     XX
-  has_inputs:
+  has_input:
   - bare:xxy
-  has_outputs:
+  has_output:
   - bare:xxz
   library_type: RNA
   library_preparation_kit: TruSeq RNA Library Prep Kit v2
   pcr_cycles: 12
-  processed_date: '2018-09-26'
+  start_date: '2018-09-26'
+  end_date: '2018-09-26'
   processing_institution: Battelle

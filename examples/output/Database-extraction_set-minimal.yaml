@@ -1,7 +1,7 @@
 extraction_set:
 - id: bare:value
   name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
-  has_inputs:
+  has_input:
   - bare:xxx
-  has_outputs:
+  has_output:
   - bare:yyy

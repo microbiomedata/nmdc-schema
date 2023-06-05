@@ -136,9 +136,9 @@ mags_activity_set:
 ### Input
 ```yaml
 extraction_set:
-- has_inputs:
+- has_input:
   - bare:xxx
-  has_outputs:
+  has_output:
   - bare:yyy
   id: bare:value
   name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
@@ -1163,16 +1163,16 @@ biosample_set:
   - gold:Gs0110115
 extraction_set:
 - extraction_target: DNA
-  has_inputs:
+  has_input:
   - bare:pool_out_1
-  has_outputs:
+  has_output:
   - bare:dna_extract_1
   id: bare:des1
   name: first dna extraction set
 library_preparation_set:
-- has_inputs:
+- has_input:
   - bare:dna_extract_1
-  has_outputs:
+  has_output:
   - bare:library_1
   id: bare:lcs1
   library_type: DNA
@@ -1181,11 +1181,11 @@ pooling_set:
 - alternative_identifiers:
   - bare:ps1_alt_id
   description: This is the first pooling process that has ever occurred on earth
-  has_inputs:
+  has_input:
   - nmdc:bsm-99-abcdef1
   - nmdc:bsm-99-abcdef2
   - nmdc:bsm-99-abcdef3
-  has_outputs:
+  has_output:
   - bare:pool_out_1
   id: bare:ps1
   name: first pooling process
@@ -2541,17 +2541,17 @@ biosample_set:
   part_of:
   - nmdc:sty-99-U21mUX
 collecting_biosamples_from_site_set:
-- has_inputs:
+- has_input:
   - nmdc:frsite-99-SPreao
-  has_outputs:
+  has_output:
   - nmdc:bsm-99-J9FcnC
   - nmdc:bsm-99-BdlWdQ
   - nmdc:bsm-99-vn74Wq
   id: nmdc:clsite-99-Cq00d1
   name: Collection of biosamples from BESC-13-CL1_35_33
-- has_inputs:
+- has_input:
   - nmdc:frsite-99-h2mYFG
-  has_outputs:
+  has_output:
   - nmdc:bsm-99-P8FdpS
   - nmdc:bsm-99-ugBwz3
   - nmdc:bsm-99-tN5lxM
@@ -3920,30 +3920,32 @@ name: Crispr Terms
 library_preparation_set:
 - description: DNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP
     BMI_metagenomicsSequencingSOP_v2
-  has_inputs:
+  end_date: '2018-09-26'
+  has_input:
   - bare:xxx
-  has_outputs:
+  has_output:
   - bare:xxx
   id: bare:value
   library_preparation_kit: KAPA HyperPrep Kit
   library_type: DNA
   name: DNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1
   pcr_cycles: 0
-  processed_date: '2018-09-26'
   processing_institution: Battelle
+  start_date: '2018-09-26'
 - description: RNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP
     XX
-  has_inputs:
+  end_date: '2018-09-26'
+  has_input:
   - bare:xxy
-  has_outputs:
+  has_output:
   - bare:xxz
   id: bare:value2
   library_preparation_kit: TruSeq RNA Library Prep Kit v2
   library_type: RNA
   name: RNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1
   pcr_cycles: 12
-  processed_date: '2018-09-26'
   processing_institution: Battelle
+  start_date: '2018-09-26'
 
 ```
 ## Database-multiple-paths
@@ -4065,10 +4067,10 @@ pooling_set:
 - alternative_identifiers:
   - bare:xxx
   description: xxx
-  has_inputs:
+  has_input:
   - bare:xxx
   - bare:yyy
-  has_outputs:
+  has_output:
   - bare:xxx
   id: bare:value
   name: first pooling process
@@ -4087,10 +4089,10 @@ name: first pooling process
 alternative_identifiers:
 - bare:xxx
 description: xxx
-has_inputs:
+has_input:
 - bare:xxx
 - bare:yyy
-has_outputs:
+has_output:
 - bare:xxx
 id: bare:value
 name: first pooling process
@@ -4177,12 +4179,12 @@ functional_annotation_set:
 ```yaml
 extraction_set:
 - description: DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7
-  extraction_date: '2019-11-08'
+  end_date: '2019-11-08'
   extraction_method: phenol/chloroform extraction
   extraction_target: DNA
-  has_inputs:
+  has_input:
   - bare:xxx
-  has_outputs:
+  has_output:
   - bare:xxx
   id: bare:value
   name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
@@ -4190,6 +4192,7 @@ extraction_set:
   sample_mass:
     has_numeric_value: 0.25
     has_unit: gram
+  start_date: '2019-11-08'
 
 ```
 ## Database-extraction_set-exhaustive
@@ -4197,12 +4200,12 @@ extraction_set:
 ```yaml
 extraction_set:
 - description: DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7
-  extraction_date: '2019-11-08'
+  end_date: '2019-11-08'
   extraction_method: phenol/chloroform extraction
   extraction_target: DNA
-  has_inputs:
+  has_input:
   - bare:xxx
-  has_outputs:
+  has_output:
   - bare:xxx
   id: bare:value
   name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
@@ -4215,6 +4218,7 @@ extraction_set:
   sample_mass:
     has_numeric_value: 0.25
     has_unit: gram
+  start_date: '2019-11-08'
 
 ```
 ## Database-study-set-with-gnps-id

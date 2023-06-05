@@ -5,9 +5,9 @@
 RetroRules:value a nmdc:Pooling ;
     dcterms:description "xxx" ;
     nmdc:alternative_identifiers "bare:xxx" ;
-    nmdc:has_inputs RetroRules:xxx,
+    nmdc:has_input RetroRules:xxx,
         RetroRules:yyy ;
-    nmdc:has_outputs RetroRules:xxx ;
+    nmdc:has_output RetroRules:xxx ;
     nmdc:name "first pooling process" .
 
 [] a nmdc:Database ;
