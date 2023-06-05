@@ -233,10 +233,9 @@ classes:
 
 slots:
 
-  has_part: { }
-
   chemical:
     description: from reaction participant class
+
   stoichiometry:
     description: from reaction participant class
 
@@ -262,23 +261,26 @@ slots:
     comments:
       - "For features that cross the origin of a circular feature (e.g. most bacterial genomes, plasmids, and some viral genomes), the requirement for start to be less than or equal to end is satisfied by making end = the position of the end + the length of the landmark feature."
 
-  direction:
-  encodes:
-  end:
-  feature_type:
-  is_balanced:
-  is_diastereoselective:
-  is_fully_characterized:
-  is_stereo:
-  is_transport:
-  left_participants:
-  phase:
-  right_participants:
   seqid:
     todos:
       - "change range from string to object"
-  smarts_string:
-  start:
+
   strand:
     todos:
       - "set the range to an enum?"
+
+  direction: { }
+  encodes: { }
+  end: { }
+  feature_type: { }
+  has_part: { }
+  is_balanced: { }
+  is_diastereoselective: { }
+  is_fully_characterized: { }
+  is_stereo: { }
+  is_transport: { }
+  left_participants: { }
+  phase: { }
+  right_participants: { }
+  smarts_string: { }
+  start: { }
