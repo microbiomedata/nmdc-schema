@@ -139,7 +139,10 @@ classes:
     slots:
       - has_input
       - has_output
-      - participating_agent
+      - protocol_link
+      - start_date
+      - end_date
+      # - participating_agent
 
   OntologyClass:
     is_a: NamedThing
