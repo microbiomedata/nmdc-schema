@@ -357,3 +357,5 @@ local/study_set.yaml:
 		--mongo-collection study_set \
 		--output-dir local
 
+local/envo.db:
+	$(RUN) semsql download envo -o $@
