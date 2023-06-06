@@ -3923,6 +3923,8 @@
             "description": "",
             "enum": [
                 "Metagenome Raw Reads",
+                "Metagenome Raw Read 1",
+                "Metagenome Raw Read 2",
                 "FT ICR-MS Analysis Results",
                 "GC-MS Metabolomics Results",
                 "Metaproteomics Workflow Statistics",
@@ -7919,5 +7921,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "v7.5.0"
+    "version": "v7.6.0"
 }
