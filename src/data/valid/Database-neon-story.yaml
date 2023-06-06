@@ -1,5 +1,5 @@
 pooling_set:
-  - id: bare:ps1
+  - id: nmdc:poolp-99-abcdef
     name: first pooling process
     alternative_identifiers:
       - bare:ps1_alt_id
@@ -9,23 +9,23 @@ pooling_set:
       - nmdc:bsm-99-abcdef2
       - nmdc:bsm-99-abcdef3
     has_output:
-      - bare:pool_out_1
+      - nmdc:procsm-99-pooled
     # participating_agent: xxx # Agent isn't a named thing and doesn't have an ID so must be inlined
 processed_sample_set:
-  - id: bare:pool_out_1
+  - id: nmdc:procsm-99-xyz1
     name: first processed sample set
-  - id: bare:dna_extract_1
+  - id: nmdc:procsm-99-xyz2
     name: first DNA extract
-  - id: bare:library_1
+  - id: nmdc:procsm-99-xyz3
     name: first library
 
 extraction_set:
-  - id: bare:des1
+  - id: nmdc:extrp-99-abcdef
     name: first dna extraction set
     has_input:
-      - bare:pool_out_1
+      - nmdc:procsm-99-pooled
     has_output:
-      - bare:dna_extract_1
+      - nmdc:procsm-99-extract
     extraction_target: DNA
 
 #example populated by w/example mostly from NEON.D05.TREE.DP1.10107.001.mms_metagenomeSequencing.2017-07.expanded.20230113T225024Z.csv
@@ -34,16 +34,14 @@ extraction_set:
 #   - calling the Database -> set of libraries "library_preparation_set"
 #   - using single-valued "has_input" and "has_output" slots
 library_preparation_set:
-  - id: bare:lcs1
+  - id: nmdc:libprp-99-abcdef
     name: DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1
-    #    has_input: bare:xxx
-    #    has_output: bare:xxy
     #library_type should be enum "DNA", "RNA"
     library_type: DNA
     has_input:
-      - bare:dna_extract_1
+      - nmdc:procsm-99-extract
     has_output:
-      - bare:library_1
+      - nmdc:procsm-99-library
 
 biosample_set:
   - id: nmdc:bsm-99-abcdef1
