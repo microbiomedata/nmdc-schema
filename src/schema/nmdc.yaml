@@ -25,7 +25,7 @@ description: >-
    * the NMDC schema itself
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: v7.5.0
+version: v7.6.0
 prefixes:
   EFO: http://identifiers.org/efo/
   ISA: https://unknown.to.linter.org/
@@ -1601,7 +1601,21 @@ enums:
 
       Metagenome Raw Reads:
         annotations:
-          file_name_pattern: '/.+?(?=fastq)/fastq.gz'
+          file_name_pattern: '^\.fastq(\.gz)?$'
+
+      Metagenome Raw Read 1:
+        description: Read 1 raw sequencing data, aka forward reads
+        examples:
+          value: "BMI_H25VYBGXH_19S_31WellG1_R1.fastq.gz"
+        annotations:
+          file_name_pattern: '^.+_R1\.fastq(\.gz)?$'
+      
+      Metagenome Raw Read 2:
+        description: Read 2 raw sequencing data, aka reverse reads
+        examples:
+          value: "BMI_H25VYBGXH_19S_31WellG1_R2.fastq.gz"
+        annotations:
+          file_name_pattern: '^.+_R2\.fastq(\.gz)?$'
 
       FT ICR-MS Analysis Results:
         description: FT ICR-MS-based molecular formula assignment results table
