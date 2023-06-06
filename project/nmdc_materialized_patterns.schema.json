@@ -3058,6 +3058,10 @@
                     "description": "a human-readable description of a thing",
                     "type": "string"
                 },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": "string"
+                },
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
@@ -3081,8 +3085,12 @@
                     "description": "A human readable label for an entity",
                     "type": "string"
                 },
-                "participating_agent": {
-                    "$ref": "#/$defs/Agent"
+                "protocol_link": {
+                    "$ref": "#/$defs/Protocol"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": "string"
                 }
             },
             "required": [
@@ -3811,14 +3819,12 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^(nmdc):extrp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                     "type": "string"
                 },
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": "string"
-                },
-                "participating_agent": {
-                    "$ref": "#/$defs/Agent"
                 },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
@@ -4483,6 +4489,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                     "type": "string"
                 },
                 "library_preparation_kit": {
@@ -4495,15 +4502,15 @@
                     "description": "A human readable label for an entity",
                     "type": "string"
                 },
-                "participating_agent": {
-                    "$ref": "#/$defs/Agent"
-                },
                 "pcr_cycles": {
                     "type": "integer"
                 },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
+                },
+                "protocol_link": {
+                    "$ref": "#/$defs/Protocol"
                 },
                 "start_date": {
                     "description": "The date on which any process or activity was started",
@@ -6288,6 +6295,10 @@
                     "description": "a human-readable description of a thing",
                     "type": "string"
                 },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": "string"
+                },
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
@@ -6307,14 +6318,19 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^(nmdc):poolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                     "type": "string"
                 },
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": "string"
                 },
-                "participating_agent": {
-                    "$ref": "#/$defs/Agent"
+                "protocol_link": {
+                    "$ref": "#/$defs/Protocol"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": "string"
                 }
             },
             "required": [
@@ -6340,6 +6356,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                     "type": "string"
                 },
                 "name": {

@@ -3,19 +3,7 @@
 @prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-RetroRules:value a nmdc:LibraryPreparation ;
-    dcterms:description "DNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP BMI_metagenomicsSequencingSOP_v2" ;
-    nmdc:end_date "2018-09-26" ;
-    nmdc:has_input RetroRules:xxx ;
-    nmdc:has_output RetroRules:xxx ;
-    nmdc:library_preparation_kit "KAPA HyperPrep Kit" ;
-    nmdc:library_type "DNA" ;
-    nmdc:name "DNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1" ;
-    nmdc:pcr_cycles 0 ;
-    nmdc:processing_institution "Battelle" ;
-    nmdc:start_date "2018-09-26" .
-
-RetroRules:value2 a nmdc:LibraryPreparation ;
+nmdc:libprp-99-xxx1 a nmdc:LibraryPreparation ;
     dcterms:description "RNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP XX" ;
     nmdc:end_date "2018-09-26" ;
     nmdc:has_input RetroRules:xxy ;
@@ -27,7 +15,19 @@ RetroRules:value2 a nmdc:LibraryPreparation ;
     nmdc:processing_institution "Battelle" ;
     nmdc:start_date "2018-09-26" .
 
+nmdc:libprp-99-xxx2 a nmdc:LibraryPreparation ;
+    dcterms:description "DNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP BMI_metagenomicsSequencingSOP_v2" ;
+    nmdc:end_date "2018-09-26" ;
+    nmdc:has_input RetroRules:xxx ;
+    nmdc:has_output RetroRules:xxx ;
+    nmdc:library_preparation_kit "KAPA HyperPrep Kit" ;
+    nmdc:library_type "DNA" ;
+    nmdc:name "DNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1" ;
+    nmdc:pcr_cycles 0 ;
+    nmdc:processing_institution "Battelle" ;
+    nmdc:start_date "2018-09-26" .
+
 [] a nmdc:Database ;
-    nmdc:library_preparation_set RetroRules:value,
-        RetroRules:value2 .
+    nmdc:library_preparation_set nmdc:libprp-99-xxx1,
+        nmdc:libprp-99-xxx2 .
 

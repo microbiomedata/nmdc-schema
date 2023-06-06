@@ -3054,6 +3054,10 @@
                     "description": "a human-readable description of a thing",
                     "type": "string"
                 },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": "string"
+                },
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
@@ -3076,8 +3080,12 @@
                     "description": "A human readable label for an entity",
                     "type": "string"
                 },
-                "participating_agent": {
-                    "$ref": "#/$defs/Agent"
+                "protocol_link": {
+                    "$ref": "#/$defs/Protocol"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": "string"
                 }
             },
             "required": [
@@ -3811,9 +3819,6 @@
                     "description": "A human readable label for an entity",
                     "type": "string"
                 },
-                "participating_agent": {
-                    "$ref": "#/$defs/Agent"
-                },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
@@ -4487,15 +4492,15 @@
                     "description": "A human readable label for an entity",
                     "type": "string"
                 },
-                "participating_agent": {
-                    "$ref": "#/$defs/Agent"
-                },
                 "pcr_cycles": {
                     "type": "integer"
                 },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
+                },
+                "protocol_link": {
+                    "$ref": "#/$defs/Protocol"
                 },
                 "start_date": {
                     "description": "The date on which any process or activity was started",
@@ -6268,6 +6273,10 @@
                     "description": "a human-readable description of a thing",
                     "type": "string"
                 },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": "string"
+                },
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
@@ -6293,8 +6302,12 @@
                     "description": "A human readable label for an entity",
                     "type": "string"
                 },
-                "participating_agent": {
-                    "$ref": "#/$defs/Agent"
+                "protocol_link": {
+                    "$ref": "#/$defs/Protocol"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": "string"
                 }
             },
             "required": [

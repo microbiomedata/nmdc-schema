@@ -1,5 +1,5 @@
 pooling_set:
-- id: bare:value
+- id: nmdc:poolp-9x9-1x
   name: first pooling process
   description: xxx
   alternative_identifiers:

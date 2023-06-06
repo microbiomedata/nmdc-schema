@@ -2,7 +2,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
 
-RetroRules:value a nmdc:Pooling ;
+nmdc:poolp-9x9-1x a nmdc:Pooling ;
     dcterms:description "xxx" ;
     nmdc:alternative_identifiers "bare:xxx" ;
     nmdc:has_input RetroRules:xxx,
@@ -11,5 +11,5 @@ RetroRules:value a nmdc:Pooling ;
     nmdc:name "first pooling process" .
 
 [] a nmdc:Database ;
-    nmdc:pooling_set RetroRules:value .
+    nmdc:pooling_set nmdc:poolp-9x9-1x .
 

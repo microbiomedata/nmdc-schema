@@ -140,7 +140,7 @@ extraction_set:
   - bare:xxx
   has_output:
   - bare:yyy
-  id: bare:value
+  id: nmdc:extrp-99-abcdef
   name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
 
 ```
@@ -1164,17 +1164,17 @@ biosample_set:
 extraction_set:
 - extraction_target: DNA
   has_input:
-  - bare:pool_out_1
+  - nmdc:procsm-99-pooled
   has_output:
-  - bare:dna_extract_1
-  id: bare:des1
+  - nmdc:procsm-99-extract
+  id: nmdc:extrp-99-abcdef
   name: first dna extraction set
 library_preparation_set:
 - has_input:
-  - bare:dna_extract_1
+  - nmdc:procsm-99-extract
   has_output:
-  - bare:library_1
-  id: bare:lcs1
+  - nmdc:procsm-99-library
+  id: nmdc:libprp-99-abcdef
   library_type: DNA
   name: DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1
 pooling_set:
@@ -1186,15 +1186,15 @@ pooling_set:
   - nmdc:bsm-99-abcdef2
   - nmdc:bsm-99-abcdef3
   has_output:
-  - bare:pool_out_1
-  id: bare:ps1
+  - nmdc:procsm-99-pooled
+  id: nmdc:poolp-99-abcdef
   name: first pooling process
 processed_sample_set:
-- id: bare:pool_out_1
+- id: nmdc:procsm-99-xyz1
   name: first processed sample set
-- id: bare:dna_extract_1
+- id: nmdc:procsm-99-xyz2
   name: first DNA extract
-- id: bare:library_1
+- id: nmdc:procsm-99-xyz3
   name: first library
 
 ```
@@ -3721,7 +3721,7 @@ was_informed_by: nmdc:a1
 ### Input
 ```yaml
 pooling_set:
-- id: bare:value
+- id: nmdc:poolp-9x9-1x
   name: first pooling process
 
 ```
@@ -3925,7 +3925,7 @@ library_preparation_set:
   - bare:xxx
   has_output:
   - bare:xxx
-  id: bare:value
+  id: nmdc:libprp-99-xxx2
   library_preparation_kit: KAPA HyperPrep Kit
   library_type: DNA
   name: DNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1
@@ -3939,7 +3939,7 @@ library_preparation_set:
   - bare:xxy
   has_output:
   - bare:xxz
-  id: bare:value2
+  id: nmdc:libprp-99-xxx1
   library_preparation_kit: TruSeq RNA Library Prep Kit v2
   library_type: RNA
   name: RNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1
@@ -4072,14 +4072,14 @@ pooling_set:
   - bare:yyy
   has_output:
   - bare:xxx
-  id: bare:value
+  id: nmdc:poolp-9x9-1x
   name: first pooling process
 
 ```
 ## Pooling-minimal
 ### Input
 ```yaml
-id: bare:value
+id: nmdc:poolp-9x9-1x
 name: first pooling process
 
 ```
@@ -4094,7 +4094,7 @@ has_input:
 - bare:yyy
 has_output:
 - bare:xxx
-id: bare:value
+id: nmdc:poolp-9x9-1x
 name: first pooling process
 
 ```
@@ -4186,7 +4186,7 @@ extraction_set:
   - bare:xxx
   has_output:
   - bare:xxx
-  id: bare:value
+  id: nmdc:extrp-99-abcdef
   name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
   processing_institution: Battelle
   sample_mass:
@@ -4207,7 +4207,7 @@ extraction_set:
   - bare:xxx
   has_output:
   - bare:xxx
-  id: bare:value
+  id: nmdc:extrp-99-abcdef
   name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
   processing_institution: Battelle
   protocol_link:

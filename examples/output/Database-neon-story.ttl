@@ -1,32 +1,37 @@
 @prefix ENVO: <http://purl.obolibrary.org/obo/ENVO_> .
 @prefix GOLD: <http://identifiers.org/gold/> .
 @prefix MIXS: <https://w3id.org/mixs/> .
-@prefix RetroRules: <https://unknown.to.linter.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
 
-RetroRules:des1 a nmdc:Extraction ;
+nmdc:extrp-99-abcdef a nmdc:Extraction ;
     nmdc:extraction_target "DNA" ;
-    nmdc:has_input RetroRules:pool_out_1 ;
-    nmdc:has_output RetroRules:dna_extract_1 ;
+    nmdc:has_input nmdc:procsm-99-pooled ;
+    nmdc:has_output nmdc:procsm-99-extract ;
     nmdc:name "first dna extraction set" .
 
-RetroRules:lcs1 a nmdc:LibraryPreparation ;
-    nmdc:has_input RetroRules:dna_extract_1 ;
-    nmdc:has_output RetroRules:library_1 ;
+nmdc:libprp-99-abcdef a nmdc:LibraryPreparation ;
+    nmdc:has_input nmdc:procsm-99-extract ;
+    nmdc:has_output nmdc:procsm-99-library ;
     nmdc:library_type "DNA" ;
     nmdc:name "DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1" .
 
-RetroRules:ps1 a nmdc:Pooling ;
+nmdc:poolp-99-abcdef a nmdc:Pooling ;
     dcterms:description "This is the first pooling process that has ever occurred on earth" ;
     nmdc:alternative_identifiers "bare:ps1_alt_id" ;
     nmdc:has_input nmdc:bsm-99-abcdef1,
         nmdc:bsm-99-abcdef2,
         nmdc:bsm-99-abcdef3 ;
-    nmdc:has_output RetroRules:pool_out_1 ;
+    nmdc:has_output nmdc:procsm-99-pooled ;
     nmdc:name "first pooling process" .
 
-RetroRules:library_1 a nmdc:ProcessedSample ;
+nmdc:procsm-99-xyz1 a nmdc:ProcessedSample ;
+    nmdc:name "first processed sample set" .
+
+nmdc:procsm-99-xyz2 a nmdc:ProcessedSample ;
+    nmdc:name "first DNA extract" .
+
+nmdc:procsm-99-xyz3 a nmdc:ProcessedSample ;
     nmdc:name "first library" .
 
 nmdc:bsm-99-abcdef1 a nmdc:Biosample ;
@@ -71,20 +76,14 @@ ENVO:00002169 a nmdc:OntologyClass .
 
 ENVO:00005792 a nmdc:OntologyClass .
 
-RetroRules:dna_extract_1 a nmdc:ProcessedSample ;
-    nmdc:name "first DNA extract" .
-
-RetroRules:pool_out_1 a nmdc:ProcessedSample ;
-    nmdc:name "first processed sample set" .
-
 [] a nmdc:Database ;
     nmdc:biosample_set nmdc:bsm-99-abcdef1,
         nmdc:bsm-99-abcdef2,
         nmdc:bsm-99-abcdef3 ;
-    nmdc:extraction_set RetroRules:des1 ;
-    nmdc:library_preparation_set RetroRules:lcs1 ;
-    nmdc:pooling_set RetroRules:ps1 ;
-    nmdc:processed_sample_set RetroRules:dna_extract_1,
-        RetroRules:library_1,
-        RetroRules:pool_out_1 .
+    nmdc:extraction_set nmdc:extrp-99-abcdef ;
+    nmdc:library_preparation_set nmdc:libprp-99-abcdef ;
+    nmdc:pooling_set nmdc:poolp-99-abcdef ;
+    nmdc:processed_sample_set nmdc:procsm-99-xyz1,
+        nmdc:procsm-99-xyz2,
+        nmdc:procsm-99-xyz3 .
 
