@@ -163,10 +163,6 @@ classes:
   Pooling:
     is_a: PlannedProcess # from core.yaml
     slots:
-      - has_input
-      - has_output
-      - start_date
-      - end_date
     slot_usage:
       has_input:
         minimum_cardinality: 2
@@ -182,9 +178,6 @@ classes:
   Extraction:
     is_a: PlannedProcess # from core.yaml
     slots:
-      # - extraction_date
-      - start_date
-      - end_date
       - extraction_method
       - extraction_target
       - processing_institution
@@ -219,12 +212,9 @@ classes:
       - LibraryConstruction
     is_a: PlannedProcess # from core.yaml
     slots:
-      - library_type
       - library_preparation_kit
+      - library_type
       - pcr_cycles
-      # - processed_date
-      - start_date
-      - end_date
       - processing_institution
     close_mappings:
       - OBI:0000711
@@ -265,9 +255,6 @@ classes:
   CollectingBiosamplesFromSite:
     is_a: PlannedProcess
     title: Collecting Biosamples From Site
-    slots:
-      - has_input
-      - has_output
     comments:
       - "this illustrates implementing a Biosample relation with a process class"
     slot_usage:
