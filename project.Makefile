@@ -290,7 +290,7 @@ assets/mixs_slots_by_submission_class.tsv: assets/sheets-for-nmdc-submission-sch
   		--in_file $< \
   		--out_file $@
 
-assets/boolean_usages.tsv:
+local/boolean_usages.tsv:
 	$(RUN) boolean_usages \
 		--out_file $@
 
@@ -321,15 +321,15 @@ jsonschema-check-all-valid-databases: $(YAML_DATABASE_FILES_VALID)
 		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $(yaml_file);)
 
 
-# 		 --columns-to-insert class
 local/usage_template.tsv: src/schema/nmdc.yaml
 	mkdir -p $(@D)
 	$(RUN) generate_and_populate_template \
 		 --base-class slot_definition \
-		 --columns-to-insert slot \
+		 --columns-to-insert class \
 		 --destination-template $@ \
 		 --meta-model-excel-file local/meta.xlsx \
 		 --meta-path https://raw.githubusercontent.com/linkml/linkml-model/main/linkml_model/model/schema/meta.yaml \
+ 		 --columns-to-insert slot \
 		 --source-schema-path $<
 
 examples/output/Biosample-exhasutive_report.yaml: src/data/valid/Biosample-exhasutive.yaml
