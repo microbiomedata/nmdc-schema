@@ -2,7 +2,7 @@
 
 #extraction http://purl.obolibrary.org/obo/OBI_0302884
 extraction_set:
-  - id: bare:value
+  - id: nmdc:extrp-99-abcdef
     name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
     description: DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7
 

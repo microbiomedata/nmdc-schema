@@ -101,6 +101,12 @@ classes:
   ProcessedSample:
     is_a: MaterialEntity
     title: Processed Sample
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
 
   AnalyticalSample:
     is_a: MaterialEntity
@@ -481,15 +487,15 @@ slots:
   gtdbtk_species:
     range: string
 
-#  has_inputs:
-#    domain: PlannedProcess
-#    multivalued: true
-#    range: NamedThing
+  #  has_inputs:
+  #    domain: PlannedProcess
+  #    multivalued: true
+  #    range: NamedThing
 
-#  has_outputs:
-#    domain: PlannedProcess
-#    multivalued: true
-#    range: NamedThing
+  #  has_outputs:
+  #    domain: PlannedProcess
+  #    multivalued: true
+  #    range: NamedThing
 
   participating_agent:
     domain: PlannedProcess

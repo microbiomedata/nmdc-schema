@@ -165,12 +165,19 @@ classes:
     slots:
       - has_input
       - has_output
+      - start_date
+      - end_date
     slot_usage:
       has_input:
         minimum_cardinality: 2
       has_output:
         minimum_cardinality: 1
         maximum_cardinality: 1
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
 
   Extraction:
     is_a: PlannedProcess # from core.yaml
@@ -189,6 +196,11 @@ classes:
         required: true
       has_output:
         required: true
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
 
   Protocol:
     #    is_a: NamedThing
@@ -223,6 +235,11 @@ classes:
         required: true
       has_output:
         required: true
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
 
   FieldResearchSite:
     aliases:
