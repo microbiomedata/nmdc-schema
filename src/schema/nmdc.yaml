@@ -1602,6 +1602,16 @@ enums:
       Metagenome Raw Reads:
         annotations:
           file_name_pattern: '/.+?(?=fastq)/fastq.gz'
+      Metagenome Raw Read 1:
+        description: Read 1 raw sequencing data
+        annotations:
+          file_name_pattern: '/.+?R1(?=fastq)/fastq.gz'
+      
+      Metagenome Raw Read 2:
+        description: Read 2 raw sequencing data
+        annotations:
+          file_name_pattern: '/.+?R2(?=fastq)/fastq.gz'
+          
 
       FT ICR-MS Analysis Results:
         description: FT ICR-MS-based molecular formula assignment results table
