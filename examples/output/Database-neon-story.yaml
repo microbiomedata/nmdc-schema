@@ -1,25 +1,25 @@
 library_preparation_set:
-- id: bare:lcs1
+- id: nmdc:libprp-99-abcdef
   name: DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1
   has_input:
-  - bare:dna_extract_1
+  - nmdc:procsm-99-extract
   has_output:
-  - bare:library_1
+  - nmdc:procsm-99-library
   library_type: DNA
 processed_sample_set:
-- id: bare:pool_out_1
+- id: nmdc:procsm-99-xyz1
   name: first processed sample set
-- id: bare:dna_extract_1
+- id: nmdc:procsm-99-xyz2
   name: first DNA extract
-- id: bare:library_1
+- id: nmdc:procsm-99-xyz3
   name: first library
 extraction_set:
-- id: bare:des1
+- id: nmdc:extrp-99-abcdef
   name: first dna extraction set
   has_input:
-  - bare:pool_out_1
+  - nmdc:procsm-99-pooled
   has_output:
-  - bare:dna_extract_1
+  - nmdc:procsm-99-extract
   extraction_target: DNA
 biosample_set:
 - id: nmdc:bsm-99-abcdef1
@@ -68,7 +68,7 @@ biosample_set:
     term:
       id: ENVO:00005792
 pooling_set:
-- id: bare:ps1
+- id: nmdc:poolp-99-abcdef
   name: first pooling process
   description: This is the first pooling process that has ever occurred on earth
   alternative_identifiers:
@@ -78,4 +78,4 @@ pooling_set:
   - nmdc:bsm-99-abcdef2
   - nmdc:bsm-99-abcdef3
   has_output:
-  - bare:pool_out_1
+  - nmdc:procsm-99-pooled
