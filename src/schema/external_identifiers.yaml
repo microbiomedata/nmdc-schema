@@ -113,7 +113,6 @@ slots:
     mixins:
       - neon_identifiers
 
-
   insdc_sra_ena_study_identifiers:
     is_a: study_identifiers
     mixins:
@@ -216,10 +215,10 @@ slots:
     abstract: true
     is_a: external_database_identifiers
 
-    neon_biosample_identifiers:
-      is_a: biosample_identifiers
-      mixins:
-        - neon_identifiers
+  neon_biosample_identifiers:
+    is_a: biosample_identifiers
+    mixins:
+      - neon_identifiers
 
   gold_biosample_identifiers:
     is_a: biosample_identifiers
