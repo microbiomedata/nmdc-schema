@@ -3907,8 +3907,23 @@
                     },
                     "type": "array"
                 },
+                "cur_vegetation": {
+                    "$ref": "#/$defs/TextValue",
+                    "description": "Vegetation classification from one or more standard classification systems, or agricultural crop"
+                },
                 "description": {
                     "description": "a human-readable description of a thing",
+                    "type": "string"
+                },
+                "elev": {
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit."
+                },
+                "geo_loc_name": {
+                    "$ref": "#/$defs/TextValue",
+                    "description": "The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)"
+                },
+                "habitat": {
                     "type": "string"
                 },
                 "id": {
@@ -3916,9 +3931,37 @@
                     "pattern": "^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                     "type": "string"
                 },
+                "lat_lon": {
+                    "$ref": "#/$defs/GeolocationValue",
+                    "description": "The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees and in WGS84 system"
+                },
+                "local_class": {
+                    "$ref": "#/$defs/TextValue",
+                    "description": "Soil classification based on local soil classification system"
+                },
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": "string"
+                },
+                "neon_deims_sdr_link": {
+                    "type": "string"
+                },
+                "neon_eco_type": {
+                    "type": "string"
+                },
+                "neon_soil_type": {
+                    "type": "string"
+                },
+                "part_of": {
+                    "description": "Links a resource to another resource that either logically or physically includes it.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "soil_type": {
+                    "$ref": "#/$defs/TextValue",
+                    "description": "Description of the soil type or classification. This field accepts terms under soil (http://purl.obolibrary.org/obo/ENVO_00001998).  Multiple terms can be separated by pipes."
                 }
             },
             "required": [
@@ -7181,7 +7224,10 @@
                 },
                 "emsl_proposal_identifier": {
                     "description": "The proposal number assigned to the EMSL awarded study that relates to that which is represented in NMDC.",
-                    "type": "string"
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "ess_dive_datasets": {
                     "description": "List of ESS-DIVE dataset DOIs",
@@ -7226,8 +7272,11 @@
                 },
                 "insdc_bioproject_identifiers": {
                     "description": "Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.",
-                    "pattern": "^bioproject:PRJ[DEN][A-Z][0-9]+$",
-                    "type": "string"
+                    "items": {
+                        "pattern": "^bioproject:PRJ[DEN][A-Z][0-9]+$",
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "massive_study_identifiers": {
                     "description": "identifiers for corresponding study in MASSIVE",
@@ -7239,8 +7288,11 @@
                 },
                 "mgnify_project_identifiers": {
                     "description": "identifiers for corresponding project in MGnify",
-                    "pattern": "^mgnify.proj:[A-Z]+[0-9]+$",
-                    "type": "string"
+                    "items": {
+                        "pattern": "^mgnify.proj:[A-Z]+[0-9]+$",
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "name": {
                     "description": "A human readable label for an entity",

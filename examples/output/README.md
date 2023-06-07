@@ -2275,7 +2275,8 @@ ecosystem_category: unconstrained text
 ecosystem_subtype: unconstrained text
 ecosystem_type: unconstrained text
 emsl_proposal_doi: any string
-emsl_proposal_identifier: any string EP1
+emsl_proposal_identifier:
+- nmdc:sty-99-abcdef
 ess_dive_datasets:
 - any string 1
 - any string 2
@@ -2307,7 +2308,8 @@ has_credit_associations:
   applies_to_person:
     name: Tanja Davidsen
 id: nmdc:sty-11-ab
-mgnify_project_identifiers: mgnify.proj:ABC123
+mgnify_project_identifiers:
+- mgnify.proj:ABC123
 name: see also description, title, objective, various alternatives
 objective: This record, an instance of class Study from the nmdc-schema was had authored,
   so that the NMDC team would have at least one instance, using all slots, with a
