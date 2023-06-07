@@ -127,7 +127,7 @@ test-python:
 	$(RUN) python -m unittest discover
 
 lint:
-	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH) | tee assets/misc/lint.log
+	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH) | tee local/lint.log
 
 check-config:
 	@(grep my-datamodel about.yaml > /dev/null && printf "\n**Project not configured**:\n\n - Remember to edit 'about.yaml'\n\n" || exit 0)
