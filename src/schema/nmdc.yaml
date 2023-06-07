@@ -1938,16 +1938,16 @@ enums:
       - use ROR meanings like https://ror.org/0168r3w48 for UCSD
     from_schema: NMDC_enums_roundtrip
     permissible_values:
-      UCSD:
 
+      UCSD:
         title: University of California, San Diego
         meaning: https://ror.org/0168r3w48
-      JGI:
 
+      JGI:
         title: Joint Genome Institute
         meaning: https://ror.org/04xm1d337
-      EMSL:
 
+      EMSL:
         title: Environmental Molecular Sciences Laboratory
         meaning: https://ror.org/04rc0xn13
         notes:
@@ -1963,9 +1963,16 @@ enums:
         meaning: https://ror.org/05gvnxz63
 
 
-
-
 slots:
+
+  img_identifiers:
+    title: IMG Identifiers
+    description: >-
+      A list of identifiers that relate the biosample to records in the IMG database.
+    multivalued: true
+    todos:
+      - add is_a or mixin modeling
+      - what are the class of IMG records?!
 
   ecosystem_path_id:
     range: string
@@ -2018,36 +2025,11 @@ slots:
   sample_mass:
     range: QuantityValue
 
-
   library_type:
     title: library type
     examples:
       - value: DNA
     range: LibraryTypeEnum
-
-
-  processed_sample_set:
-    mixins: object_set
-    domain: Database
-    range: ProcessedSample
-    multivalued: true
-    description: This property links a database object to the set of processed samples within it.
-
-  extraction_set:
-    mixins: object_set
-    domain: Database
-    range: Extraction
-    multivalued: true
-    description: This property links a database object to the set of extractions within it.
-
-  library_preparation_set:
-    aliases:
-      - library_construction_set
-    mixins: object_set
-    domain: Database
-    range: LibraryPreparation
-    multivalued: true
-    description: This property links a database object to the set of DNA extractions within it.
 
   zinc:
     aliases:
@@ -2217,36 +2199,6 @@ slots:
       - add an OBO slot_uri ?
 
 
-  emsl_project_identifier: { }
-  img_identifiers:
-    title: IMG Identifiers
-    description: >-
-      A list of identifiers that relate the biosample to records in the IMG database.
-    multivalued: true
-    todos:
-      - add is_a or mixin modeling
-      - what are the class of IMG records?!
-
-  emsl_biosample_identifiers:
-    title: EMSL Biosample Identifiers
-    description: >-
-      A list of identifiers for the biosample from the EMSL database.  This is
-      used to link the biosample, as modeled by NMDC, to the biosample in the planned EMSL NEXUS database.
-    multivalued: true
-    is_a: biosample_identifiers
-    todos:
-      - removed "planned" once NEXUS is online
-      - make an emsl identifiers mixin
-      - determine real expansion for emsl prefix
-
-  igsn_biosample_identifiers:
-    title: IGSN Biosample Identifiers
-    description: >-
-      A list of identifiers for the biosample from the IGSN database.
-    multivalued: true
-    is_a: biosample_identifiers
-    todos:
-      - make an igsn identifiers mixin
   biosample_categories:
     title: Categories the biosample belongs to
     range: biosample_category_enum
@@ -2258,9 +2210,7 @@ slots:
   related_identifiers:
     title: Related Identifiers
     description: Identifiers assigned to a thing that is similar to that which is represented in NMDC. Related identifier are not an identical match and may have some variation.
-  emsl_proposal_identifier:
-    title: EMSL Proposal Identifier
-    description: The proposal number assigned to the EMSL awarded study that relates to that which is represented in NMDC.
+
   emsl_proposal_doi:
     title: EMSL Proposal DOI
     description: The proposal DOI assigned to the awarded EMSL study.
@@ -2323,6 +2273,7 @@ slots:
       investigator role... do we need to define the OBI prefix?
     required: true
     slot_uri: prov:agent
+
   object_set:
     mixin: true
     domain: Database
@@ -2458,12 +2409,31 @@ slots:
     multivalued: true
     description: This property links a database object to the set of omics processings
       within it.
-
   pooling_set:
     mixins: object_set
     domain: Database # doesn't that come from object_set
     range: Pooling
     multivalued: true # doesn't that come from object_set
+  processed_sample_set:
+    mixins: object_set
+    domain: Database
+    range: ProcessedSample
+    multivalued: true
+    description: This property links a database object to the set of processed samples within it.
+  extraction_set:
+    mixins: object_set
+    domain: Database
+    range: Extraction
+    multivalued: true
+    description: This property links a database object to the set of extractions within it.
+  library_preparation_set:
+    aliases:
+      - library_construction_set
+    mixins: object_set
+    domain: Database
+    range: LibraryPreparation
+    multivalued: true
+    description: This property links a database object to the set of DNA extractions within it.
 
   omics_type:
     range: ControlledTermValue
