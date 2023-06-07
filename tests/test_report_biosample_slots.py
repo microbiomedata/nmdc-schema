@@ -8,7 +8,7 @@ from linkml_runtime import SchemaView
 ROOT = os.path.join(os.path.dirname(__file__), '..')
 PROJ_DIR = os.path.join(ROOT, "project")
 SCHEMA_FILE = os.path.join(PROJ_DIR, 'nmdc_materialized_patterns.yaml')
-REPORTS_DIR = os.path.join(ROOT, "reports")
+REPORTS_DIR = os.path.join(ROOT, "local")
 BIOSAMPLE_SLOTS_RANGES_FILE = os.path.join(REPORTS_DIR, 'biosample_slots_ranges_report.tsv')
 
 

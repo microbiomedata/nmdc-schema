@@ -359,3 +359,28 @@ local/study_set.yaml:
 
 local/envo.db:
 	$(RUN) semsql download envo -o $@
+
+check_neon_vs_jsonschema: nmdc_schema/nmdc_materialized_patterns.schema.json local/neon_in_nmdc.yaml
+	$(RUN) check-jsonschema --schemafile $^
+
+validate_neon: nmdc_schema/nmdc_materialized_patterns.yaml local/neon_in_nmdc.yaml
+	$(RUN)  linkml-validate --schema $^
+
+local/neon_in_nmdc.ttl: nmdc_schema/nmdc_materialized_patterns.yaml local/neon_in_nmdc.yaml
+	$(RUN) linkml-convert \
+		--output $@ \
+		--schema $^
+
+local/neon_eco_type.tsv: local/neon_in_nmdc.ttl assets/neon_eco_type.rq
+	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
+
+local/neon_soil_type.tsv: local/neon_in_nmdc.ttl assets/neon_soil_type.rq
+	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
+
+local/local_class_in_neon.tsv: local/neon_in_nmdc.ttl assets/local_class_in_neon.rq
+	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
+
+local/cur_vegetation_in_neon.tsv: local/neon_in_nmdc.ttl assets/cur_vegetation_in_neon.rq
+	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
+
+

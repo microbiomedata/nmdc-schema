@@ -245,6 +245,20 @@ classes:
         the same plant were obtained at the same site. In this case, the site would
         correspond to one tree.
       - "might correspond to GOLD's identifier on a page like https://gold.jgi.doe.gov/biosample?id=Gb0305833"
+    slots:
+      # - nlcd_2001
+      # - soil_type_order
+      - cur_vegetation
+      - elev
+      - geo_loc_name
+      - habitat # gold term... enumerated values?
+      - lat_lon
+      - local_class
+      - neon_deims_sdr_link # short-term addition for neon
+      - neon_eco_type # short-term addition for neon
+      - neon_soil_type # short-term addition for neon
+      - part_of
+      - soil_type
     slot_usage:
       id:
         required: true
@@ -380,6 +394,7 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
+      #  - nlcd_2001
       - host_taxid
       - embargoed
       - collected_from
@@ -1609,7 +1624,7 @@ enums:
           value: "BMI_H25VYBGXH_19S_31WellG1_R1.fastq.gz"
         annotations:
           file_name_pattern: '^.+_R1\.fastq(\.gz)?$'
-      
+
       Metagenome Raw Read 2:
         description: Read 2 raw sequencing data, aka reverse reads
         examples:
@@ -1780,7 +1795,7 @@ enums:
         description: Reads QC result fastq (clean data)
         annotations:
           file_name_pattern: '/.+?(?=filter)/filter-METAGENOME.fastq.gz '
-      
+
       Read Filtering Info File:
         description: File containing read filtering information
         annotations:
@@ -1963,9 +1978,15 @@ enums:
         meaning: https://ror.org/05gvnxz63
 
 
-
-
 slots:
+
+  neon_deims_sdr_link:
+    range: string
+  neon_eco_type:
+    range: string
+  neon_soil_type:
+    range: string
+
 
   ecosystem_path_id:
     range: string
