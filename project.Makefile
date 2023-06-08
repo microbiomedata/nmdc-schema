@@ -243,6 +243,8 @@ project/nmdc_schema_generated.yaml: $(SOURCE_SCHEMA_PATH)
 		--format yaml $<
 
 examples/output: project/nmdc_schema_generated.yaml
+	# WARNING:root:No datatype specified for : external identifier, using plain Literal
+	# https://github.com/linkml/linkml-runtime/blob/6556a3e5a5fc4d4d2bca279443d7b42a9a3efbd6/linkml_runtime/dumpers/rdflib_dumper.py#L99
 	mkdir -p $@
 	$(RUN) linkml-run-examples \
 		--schema $< \
