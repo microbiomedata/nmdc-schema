@@ -9,9 +9,9 @@ notes:
   - "should type be required for WorkflowExecutionActivity ?"
   - "changed misspelled schema name and title to 'Execution'"
 
-default_curi_maps:
-  - obo_context
-  - idot_context
+#default_curi_maps:
+#  - obo_context
+#  - idot_context
 
 prefixes:
   nmdc: https://w3id.org/nmdc/
@@ -55,10 +55,10 @@ classes:
       - "inlining of was_associated_with values allows for collections (strings?) of WorkflowExecutionActivity id values"
 
     slot_usage:
-      was_associated_with:
-        description: >-
-          the agent/entity associated with the generation of the file
-        range: WorkflowExecutionActivity
+#      was_associated_with:
+#        description: >-
+#          the agent/entity associated with the generation of the file
+#        range: WorkflowExecutionActivity
       started_at_time:
         required: true
       ended_at_time:

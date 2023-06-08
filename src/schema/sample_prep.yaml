@@ -19,9 +19,9 @@ prefixes:
 default_prefix: nmdc
 default_range: string
 
-default_curi_maps:
-  - obo_context
-  - idot_context
+#default_curi_maps:
+#  - obo_context
+#  - idot_context
 
 notes:
   - "circular nmdc import is for slot biosample_input with range: Biosample"

@@ -4,14 +4,9 @@ title: NMDC Schema
 
 notes:
   - "MetaCyc expansion assumes we're talking about metacyc reactions and not genes, compounds etc."
-  - "removed/commented out the confusing 'identifier' slot"
-  - "removed/commented out all mentions and definitions of depth2 and subsurface_depth2"
-  - "depth2 should now be migrated to the has_maximum_value part of depth"
-  - "slots requested for Bioscales, but already available for Biosample : tot_phosp, tot_carb, tot_nitro_content, pH"
   - "informal ## section delimiters should be replaced with subsets ?"
   - "commented out insdc_biosample_identifiers insdc_secondary_sample_identifiers... need better understanding of id patterns (at least)"
   - "commented out several MIxS terms assigned to Biosample because the definitions of those terms were commented out in mixs.yaml dues to shared slot uris"
-  - "resuming use of part_of to link Biosamples to Studies. eg releasing sample_link from that role"
 
 
 description: >-
@@ -29,9 +24,11 @@ version: v7.6.0
 prefixes:
   EFO: http://identifiers.org/efo/
   ISA: https://unknown.to.linter.org/
+  NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
   NCIT: http://purl.obolibrary.org/obo/NCIT_
   OBI: http://purl.obolibrary.org/obo/OBI_
   bare: https://unknown.to.linter.org/
+  jgi: https://unknown.to.linter.org/
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
   nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
@@ -40,7 +37,6 @@ prefixes:
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   skos: http://www.w3.org/2004/02/skos/core#
   xsd: http://www.w3.org/2001/XMLSchema#
-  NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
   #  COG: https://unknown.to.linter.org/
   #  EC: https://unknown.to.linter.org/
   #  GOLD: http://identifiers.org/gold/
@@ -57,11 +53,10 @@ prefixes:
   #  gtpo: https://unknown.to.linter.org/
   #  igsn: https://app.geosamples.org/sample/igsn/
   #  insdc.srs: https://unknown.to.linter.org/
-  jgi: https://unknown.to.linter.org/
-#  mgnify: https://unknown.to.linter.org/
-#  qud: http://qudt.org/1.1/schema/qudt#
-#  schema: http://schema.org/
-#  wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
+  #  mgnify: https://unknown.to.linter.org/
+  #  qud: http://qudt.org/1.1/schema/qudt#
+  #  schema: http://schema.org/
+  #  wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
 
 
 default_prefix: nmdc
@@ -196,13 +191,11 @@ classes:
           interpolated: true
 
   Protocol:
-    #    is_a: NamedThing
     slots:
       - url
       - name
 
   QualityControlReport:
-    #    is_a: NamedThing
     slots:
       - status
       - name
@@ -246,8 +239,6 @@ classes:
         correspond to one tree.
       - "might correspond to GOLD's identifier on a page like https://gold.jgi.doe.gov/biosample?id=Gb0305833"
     slots:
-      # - nlcd_2001
-      # - soil_type_order
       - cur_vegetation
       - elev
       - geo_loc_name
@@ -394,7 +385,8 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
-      #  - nlcd_2001
+
+      - neon_biosample_identifiers
       - host_taxid
       - embargoed
       - collected_from
@@ -747,7 +739,6 @@ classes:
       - rel_air_humidity
       - rel_humidity_out
       - rel_samp_loc
-      #      - rel_to_oxygen
       - reservoir
       - resins_pc
       - room_air_exch_rate
@@ -1065,8 +1056,6 @@ classes:
         examples:
           value: 100
       oxy_stat_samp:
-        #        notes:
-        #          - this is now a hybrid of the oxy_stat_samp semantics and the rel_to_oxygen enumeration
         range: oxy_stat_samp_enum
 
       id:
@@ -1345,7 +1334,11 @@ classes:
       embl.ena: A study (project) groups together data submitted to the archive and
         controls its release date. A study accession is typically used when citing
         data submitted to ENA
+
     slots:
+
+      - neon_study_identifiers
+
       ## Identifiers
       - id
 
@@ -1354,39 +1347,38 @@ classes:
       - gnps_task_identifiers
 
       ## Related IDs
-      - related_identifiers
-      - emsl_proposal_identifier
-      - emsl_proposal_doi
-      - gold_study_identifiers
       #- insdc_bioproject_identifiers
       #- insdc_sra_ena_study_identifiers
-      - mgnify_project_identifiers
-
-      - ecosystem
-      - ecosystem_category
-      - ecosystem_type
-      - ecosystem_subtype
-      - specific_ecosystem
-      - principal_investigator
-      - doi
-      - title
-      - alternative_titles
+      - abstract
       - alternative_descriptions
       - alternative_names
-      - abstract
-      - objective
-      - websites
-      - publications
-      - ess_dive_datasets
-      - type
-      - relevant_protocols
-      - funding_sources
-      - has_credit_associations
-      - study_image
+      - alternative_titles
+      - doi
+      - ecosystem
+      - ecosystem_category
+      - ecosystem_subtype
+      - ecosystem_type
       - emsl_project_identifier
+      - emsl_proposal_doi
+      - emsl_proposal_identifier
+      - ess_dive_datasets
+      - funding_sources
+      - gold_study_identifiers
+      - has_credit_associations
       - insdc_bioproject_identifiers
-      - notes
       - massive_study_identifiers
+      - mgnify_project_identifiers
+      - notes
+      - objective
+      - principal_investigator
+      - publications
+      - related_identifiers
+      - relevant_protocols
+      - specific_ecosystem
+      - study_image
+      - title
+      - type
+      - websites
 
 
     slot_usage:
@@ -1402,11 +1394,11 @@ classes:
         annotations:
           display_hint: DOI associated with the data in this study. This is required when data is already generated.
       name:
-        description:
+
         annotations:
           display_hint: Provide a name for the study your samples will belong with.
       websites:
-        description:
+
         annotations:
           display_hint: Link to the Principal Investigator's research lab webpage
             or the study webpage associated with this collection of samples.
@@ -1416,13 +1408,13 @@ classes:
         annotations:
           display_hint: Provide a brief description of your study.
       notes:
-        description:
+
         annotations:
           display_hint: Add any additional notes or comments about this study.
       alternative_identifiers:
         description: Unique identifier for a study submitted to additional resources. Matches that which has been submitted to NMDC
       alternative_names:
-        description:
+
         annotations:
           display_hint: Project, study, or sample set names the are also associated with this submission
             or other names / identifiers for this study.
@@ -1493,28 +1485,28 @@ classes:
       - The ID prefix for objects coming from GOLD will be gold:Gp
     slots:
       - add_date
-      - mod_date
+      - chimera_check
+      - gold_sequencing_project_identifiers
       - has_input
       - has_output
+      - insdc_experiment_identifiers
       - instrument_name
+      - mod_date
       - ncbi_project_name
+      - nucl_acid_amp
+      - nucl_acid_ext
       - omics_type
       - part_of
+      - pcr_cond
+      - pcr_primers
       - principal_investigator
       - processing_institution
-      - type
-      - gold_sequencing_project_identifiers
-      - insdc_experiment_identifiers
       - samp_vol_we_dna_ext
-      - nucl_acid_ext
-      - nucl_acid_amp
-      - target_gene
-      - target_subfragment
-      - pcr_primers
-      - pcr_cond
       - seq_meth
       - seq_quality_check
-      - chimera_check
+      - target_gene
+      - target_subfragment
+      - type
 
     slot_usage:
       id:
@@ -1611,7 +1603,6 @@ enums:
         meaning: https://www.neonscience.org
 
   file type enum:
-    #    from_schema: https://microbiomedata/schema
     permissible_values:
 
       Metagenome Raw Reads:
@@ -1850,8 +1841,6 @@ enums:
         description: GFF3 format file with TMRNA
         annotations:
           file_name_pattern: '[GOLD-AP]_rfam_ncrna_tmrna.gff'
-
-
 
       Crispr Terms:
         description: Crispr Terms
@@ -2190,10 +2179,6 @@ slots:
       subtables and can be reported
     in_subset:
       - mixs extension
-    #      from_schema: https://microbiomedata/schema/mixs
-    #      source: https://microbiomedata/schema/mixs
-    #      see_also:
-    #        - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     range: TextValue
   #      pattern: '[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon
@@ -2294,7 +2279,7 @@ slots:
       to relate to principal investigator slot? could include OBI:0000103 principal
       investigator role... do we need to define the OBI prefix?
     required: true
-    slot_uri: prov:agent
+  #    slot_uri: prov:agent
 
   object_set:
     mixin: true
@@ -2481,6 +2466,7 @@ slots:
   instrument_name:
     description: >-
       The name of the instrument that was used for processing the sample.
+
   ## GOLD PATHS
   gold_path_field:
     is_a: attribute

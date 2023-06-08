@@ -9,9 +9,9 @@ default_range: string
 see_also:
   - https://github.com/microbiomedata/nmdc-metadata/issues/176
 
-default_curi_maps:
-  - obo_context
-  - idot_context
+#default_curi_maps:
+#  - obo_context
+#  - idot_context
 
 notes:
   - Removed slot_uri of rdf:type from type slot. Is OntologyClass an appropriate range?

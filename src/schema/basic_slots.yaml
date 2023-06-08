@@ -16,9 +16,9 @@ prefixes:
 default_prefix: nmdc
 default_range: string
 
-default_curi_maps:
-  - obo_context
-  - idot_context
+#default_curi_maps:
+#  - obo_context
+#  - idot_context
 
 imports:
   - core
@@ -100,10 +100,11 @@ slots:
       The distinction between description and alternative descriptions is application-specific.
 
   alternative_identifiers:
-    range: string
+    range: uriorcurie
     multivalued: true
     description: >-
       A list of alternative identifiers for the entity.
+    pattern: '^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$'
 
   start_date:
     range: string
