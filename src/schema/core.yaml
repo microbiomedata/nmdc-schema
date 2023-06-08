@@ -3,26 +3,25 @@ name: NMDC-Core
 title: NMDC Schema Core Types
 description: >-
   Schema for National Microbiome Data Collaborative (NMDC), Core Types
+
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
-notes:
-  - "removed MS: http://purl.obolibrary.org/obo/MS_ prefix assignment"
-  - "removed PR: http://identifiers.org/pr/ prefix assignment"
+imports:
+  - basic_slots
+  - prov
 
 prefixes:
-  #  igsnvoc: https://igsn.org/voc/v1/
-  #  mixs: https://w3id.org/mixs/
-  #  skos: http://www.w3.org/2004/02/skos/core#
-  KEGG.COMPOUND: http://identifiers.org/kegg.compound/
-  UniProtKB: https://identifiers.org/uniprot/
+  KEGG.COMPOUND: http://identifiers.org/kegg.compound/ # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld#L336
+  dcterms: http://purl.org/dc/terms/ # https://github.com/prefixcommons/biocontext/blob/master/registry/semweb_context.jsonld#L5
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#  # https://github.com/prefixcommons/biocontext/blob/master/registry/semweb_context.jsonld
+
+  UniProtKB: https://identifiers.org/uniprot/ # "UNIPROT": "http://identifiers.org/uniprot/", in https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+
   biolink: https://w3id.org/biolink/vocab/
-  dcterms: http://purl.org/dc/terms/
-  gtpo: https://unknown.to.linter.org/
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
   nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
   qud: http://qudt.org/1.1/schema/qudt#
-  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   schema: http://schema.org/
   sio: http://semanticscience.org/resource/SIO_
   wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
@@ -33,11 +32,6 @@ default_range: string
 #default_curi_maps:
 #  - obo_context
 #  - idot_context
-
-imports:
-  - basic_slots
-  - linkml:types
-  - prov
 
 subsets:
   environment: { }
@@ -229,17 +223,17 @@ classes:
         annotations:
           display_hint: First name, middle initial, and last name of this person.
 
-#  Person:
-#    is_a: NamedThing
-#    description: >-
-#      represents a person, such as a researcher
-#    notes:
-#      - "not yet in use"
-#    slot_usage:
-#      id:
-#        required: true
-#        description: >-
-#          Should be an ORCID. Specify in CURIE format. E.g ORCID:0000-1111-...
+  #  Person:
+  #    is_a: NamedThing
+  #    description: >-
+  #      represents a person, such as a researcher
+  #    notes:
+  #      - "not yet in use"
+  #    slot_usage:
+  #      id:
+  #        required: true
+  #        description: >-
+  #          Should be an ORCID. Specify in CURIE format. E.g ORCID:0000-1111-...
   
   MagBin:
     slots:
@@ -500,9 +494,9 @@ slots:
   #    multivalued: true
   #    range: NamedThing
 
-#  participating_agent:
-#    domain: PlannedProcess
-#    range: Agent
+  #  participating_agent:
+  #    domain: PlannedProcess
+  #    range: Agent
 
 
   language:

@@ -4,15 +4,20 @@ description: This file defines terms that appear in the 'JGI-Metagenomics' secti
   as of Spring 2022
 title: 'NMDC Schema supplement for Submission Portal: JGI-Metagenomics'
 id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/portal/jgi_metagenomics
+
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
 imports:
   - linkml:types
-license: 'license: https://creativecommons.org/publicdomain/zero/1.0/'
+
 prefixes:
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
   nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
+
 default_prefix: nmdc
 default_range: string
+
 enums:
   #  dna_cont_type_enum:
   #    from_schema: https://example.com/nmdc_dh
@@ -27,18 +32,18 @@ enums:
   dna_sample_format_enum:
     from_schema: https://example.com/nmdc_dh
     permissible_values:
-      10 mM Tris-HCl:
-      DNAStable:
-      Ethanol:
-      Low EDTA TE:
-      MDA reaction buffer:
-      PBS:
-      Pellet:
-      RNAStable:
-      TE:
-      Water:
-      Gentegra-DNA:
-      Gentegra-RNA:
+      10 mM Tris-HCl: { }
+      DNAStable: { }
+      Ethanol: { }
+      Low EDTA TE: { }
+      MDA reaction buffer: { }
+      PBS: { }
+      Pellet: { }
+      RNAStable: { }
+      TE: { }
+      Water: { }
+      Gentegra-DNA: { }
+      Gentegra-RNA: { }
 
 slots:
   dna_absorb1:
@@ -250,8 +255,8 @@ slots:
   dna_volume:
     title: DNA volume in ul
     comments:
-      - Units must be in uL. Enter the numerical part only. Value must be 0-1000. Values
-        <25 by special permission only.
+      - Units must be in uL. Enter the numerical part only. Value must be 0-1000. 
+        This form accepts values < 25, but JGI may refuse to process them unless permission has been granted by a project manager
     examples:
       - value: '25'
     from_schema: https://example.com/nmdc_dh
@@ -260,7 +265,7 @@ slots:
     range: float
     slot_group: JGI-Metagenomics
     recommended: true
-    minimum_value: 25
+    minimum_value: 0
     maximum_value: 1000
   proposal_dna:
     title: DNA proposal ID

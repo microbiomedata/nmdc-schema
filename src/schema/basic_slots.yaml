@@ -4,24 +4,20 @@ title: Basic Slots for NMDC Schema
 description: >-
   Basic Linkml slots that are used across the Schema for National Microbiome Data Collaborative (NMDC).
   Examples include "id", "name", "description". These slots have primitive data types (e.g., sting) as ranges.
+
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
-  dcterms: http://purl.org/dc/terms/
+  dcterms: http://purl.org/dc/terms/ # https://github.com/prefixcommons/biocontext/blob/master/registry/semweb_context.jsonld
+
+  skos: http://www.w3.org/2004/02/skos/core#
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
   nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
-  skos: http://www.w3.org/2004/02/skos/core#
+
 
 default_prefix: nmdc
 default_range: string
-
-#default_curi_maps:
-#  - obo_context
-#  - idot_context
-
-imports:
-  - core
 
 slots:
   id:
@@ -123,4 +119,10 @@ slots:
       - The date should be formatted as YYYY-MM-DD
     todos:
       - add date string validation pattern
+
+  protocol_link:
+    range: Protocol
+    #    range: integer
+    # see also relevant_protocol string slot # this name avoids case-insensitive clash with Protocol class
+
 

@@ -1,11 +1,6 @@
-name: mixs-schema
-title: MIxS Schema
-id: https://microbiomedata/schema/mixs
-
-#default_range: string
-
-imports:
-  - basic_slots
+name: mixs-schema-subset
+title: MIxS Schema Subset for NMDC
+id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs
 
 subsets:
   mixs_environmental_triad:
@@ -15,7 +10,7 @@ subsets:
 notes:
   - removed several MIxS terms/slots that were sharing slot uris; commented out Biosample assignments
   - note that the NMDC submission schema in sheets_and_friends takes its MIxS terms from https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml and then potentially modifies them. Ideally this file would contain MIxS terms, essentially ready-to-use
-  - yet another source of MIxS terms is the incomplete https://github.com/GenomicsStandardsConsortium/mixs/tree/issue-511-tested-schemasheets
+  - multiple LinkML representations of MIxS are currently available and one will be blessed soon
 
 prefixes:
   nmdc: https://w3id.org/nmdc/
