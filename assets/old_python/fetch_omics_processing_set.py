@@ -9,7 +9,7 @@ load_dotenv("../../local/.env")
 
 id_inst_file = "../omics_processing_id_inst.tsv"
 
-mongo_pw = os.getenv("MONGO_PW")
+mongo_pw = os.getenv("SOURCE_MONGO_PASS")
 
 client = MongoClient(
     f"mongodb://mam:{mongo_pw}@localhost:27027/?authSource=admin&readPreference=primary&directConnection=true&ssl=false"
