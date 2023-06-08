@@ -21,7 +21,12 @@ description: >-
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 version: v7.6.0
+
 prefixes:
+  emsl.project: "https://bioregistry.io/reference/emsl.project:"
+  jgi.proposal: "https://bioregistry.io/reference/jgi.proposal:"
+  neon: http://example.org/neon/
+
   EFO: http://identifiers.org/efo/
   ISA: https://unknown.to.linter.org/
   NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
