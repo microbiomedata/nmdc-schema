@@ -30,9 +30,9 @@ prefixes:
 default_prefix: nmdc
 default_range: string
 
-default_curi_maps:
-  - obo_context
-  - idot_context
+#default_curi_maps:
+#  - obo_context
+#  - idot_context
 
 imports:
   - basic_slots
@@ -229,17 +229,17 @@ classes:
         annotations:
           display_hint: First name, middle initial, and last name of this person.
 
-  Person:
-    is_a: NamedThing
-    description: >-
-      represents a person, such as a researcher
-    notes:
-      - "not yet in use"
-    slot_usage:
-      id:
-        required: true
-        description: >-
-          Should be an ORCID. Specify in CURIE format. E.g ORCID:0000-1111-...
+#  Person:
+#    is_a: NamedThing
+#    description: >-
+#      represents a person, such as a researcher
+#    notes:
+#      - "not yet in use"
+#    slot_usage:
+#      id:
+#        required: true
+#        description: >-
+#          Should be an ORCID. Specify in CURIE format. E.g ORCID:0000-1111-...
   
   MagBin:
     slots:
@@ -500,9 +500,9 @@ slots:
   #    multivalued: true
   #    range: NamedThing
 
-  participating_agent:
-    domain: PlannedProcess
-    range: Agent
+#  participating_agent:
+#    domain: PlannedProcess
+#    range: Agent
 
 
   language:

@@ -23,9 +23,9 @@ prefixes:
 default_prefix: nmdc
 default_range: string
 
-default_curi_maps:
-  - obo_context
-  - idot_context
+#default_curi_maps:
+#  - obo_context
+#  - idot_context
 
 imports:
   - basic_slots
@@ -38,19 +38,21 @@ types:
       A CURIE representing an external identifier
     see_also:
       - https://microbiomedata.github.io/nmdc-schema/identifiers.html
+    pattern: '^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$'
 
 slots:
 
   external_database_identifiers:
-    is_a: alternative_identifiers
     abstract: true
-    multivalued: true
     description: Link to corresponding identifier in external database
+    is_a: alternative_identifiers
+    multivalued: true
+    pattern: '^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$'
+    range: external identifier
     comments:
       - The value of this field is always a registered CURIE
     notes:
       - "had tried ranges of external identifier and string"
-    range: uriorcurie
     close_mappings:
       - skos:closeMatch
 
@@ -122,7 +124,6 @@ slots:
       - NCBI SRA identifiers
       - DDBJ SRA identifiers
     pattern: "^insdc.sra:(E|D|S)RP[0-9]{6,}$"
-    multivalued: true
     description: identifiers for corresponding project in INSDC SRA / ENA
     examples:
       - value: https://identifiers.org/insdc.sra:SRP121659
@@ -155,7 +156,6 @@ slots:
     mixins:
       - gold_identifiers
     pattern: "^GOLD:Gs[0-9]+$"
-    multivalued: true
     description: identifiers for corresponding project(s) in GOLD
     comments:
       - uses the prefix GS (but possibly in a different case)
@@ -225,7 +225,6 @@ slots:
     mixins:
       - gold_identifiers
     pattern: "^GOLD:Gb[0-9]+$"
-    multivalued: true
     description: identifiers for corresponding sample in GOLD
     examples:
       - value: https://identifiers.org/gold:Gb0312930
@@ -239,7 +238,6 @@ slots:
       - NCBI biosample identifiers
       - DDBJ biosample identifiers
     pattern: "^biosample:SAM[NED]([A-Z])?[0-9]+$"
-    multivalued: true
     description: identifiers for corresponding sample in INSDC
     examples:
       - value: https://identifiers.org/biosample:SAMEA5989477
@@ -269,7 +267,6 @@ slots:
     description: >-
       A list of identifiers for the biosample from the EMSL database.  This is
       used to link the biosample, as modeled by NMDC, to the biosample in the planned EMSL NEXUS database.
-    multivalued: true
     is_a: biosample_identifiers
     mixins:
       - emsl_identifiers
@@ -282,7 +279,6 @@ slots:
     title: IGSN Biosample Identifiers
     description: >-
       A list of identifiers for the biosample from the IGSN database.
-    multivalued: true
     is_a: biosample_identifiers
     mixins:
       - igsn_identifiers
@@ -298,7 +294,6 @@ slots:
     mixins:
       - gold_identifiers
     pattern: "^GOLD:Gp[0-9]+$"
-    multivalued: true
     description: identifiers for corresponding sequencing project in GOLD
     examples:
       - value: https://identifiers.org/gold:Gp0108335
@@ -320,7 +315,6 @@ slots:
     mixins:
       - gold_identifiers
     pattern: "^GOLD:Ga[0-9]+$"
-    multivalued: true
     description: identifiers for corresponding analysis project in GOLD
     examples:
       - value: https://identifiers.org/gold:Ga0526289
