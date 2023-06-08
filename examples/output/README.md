@@ -561,70 +561,6 @@ study_set:
   type: nmdc:Study
 
 ```
-## Database-sample-prep
-### Input
-```yaml
-dissolving_activity_set:
-- dissolution_aided_by:
-    activity_speed:
-      has_numeric_value: 800
-      has_unit: RPM
-    activity_time:
-      has_numeric_value: 2
-      has_unit: hours
-    device_type: orbital_shaker
-  dissolution_reagent: deionized_water
-  dissolution_volume:
-    has_numeric_value: 30
-    has_unit: mL
-  dissolved_in:
-    container_size:
-      has_numeric_value: 50
-      has_unit: mL
-    container_type: screw_top_conical
-  material_input: nmdc:matsm-b1fb4ff1-e59b-4e2b-a8f9-b95ea6ba4135
-  material_output: nmdc:matsm-181a7a0a-4b04-4a22-9b89-db53e2ccdc99
-material_sample_set:
-- description: a soil biosample
-  id: nmdc:matsm-99-PVhTGD
-  name: monet_data:soil_1
-- description: a 6 gram aliquot of monet_data:soil_1
-  id: nmdc:matsm-99-m7PfV8
-  name: nmdc:matsm-b1fb4ff1-e59b-4e2b-a8f9-b95ea6ba4135
-- description: monet_data:somextract_6 dissolved in 30 mL of water
-  id: nmdc:matsm-99-j670OL
-  name: monet_data:somextract_7
-- description: something at the beginning of a reaction
-  id: nmdc:matsm-99-KyiIwv
-  name: monet_data:derive_4
-- description: something at the end of a reaction
-  id: nmdc:matsm-99-KaZog6
-  name: monet_data:derive_5
-material_sampling_activity_set:
-- amount_collected:
-    has_numeric_value: 6
-    has_unit: grams
-  biosample_input: nmdc:matsm-bfc5b458-1c62-44e7-886a-dd3a2cc7ad67
-  collected_into:
-    container_size:
-      has_numeric_value: 50
-      has_unit: mL
-    container_type: screw_top_conical
-  material_output: nmdc:matsm-b1fb4ff1-e59b-4e2b-a8f9-b95ea6ba4135
-  sampling_method: weighing
-reaction_activity_set:
-- material_input: nmdc:matsm-31380f3c-cea3-4f68-a8c6-cd84efa5e622
-  material_output: nmdc:matsm-9fe9277b-454a-4257-a825-3b4725df665e
-  reaction_aided_by:
-    activity_temperature:
-      has_numeric_value: 37
-      has_unit: degrees Celsius
-    activity_time:
-      has_numeric_value: 1.5
-      has_unit: hours
-    device_type: thermomixer
-
-```
 ## Biosample-embargoed
 ### Input
 ```yaml
@@ -691,8 +627,7 @@ alkyl_diethers:
 alt:
   has_raw_value: 100 meter
 alternative_identifiers:
-- any_string
-- seriously_anything
+- bare:abc123
 aminopept_act:
   has_raw_value: 0.269 mole per liter per hour
 ammonium:
@@ -796,8 +731,7 @@ ecosystem_type: unconstrained text
 elev: 100
 embargoed: true
 emsl_biosample_identifiers:
-- any_string
-- seriously_anything
+- bare:abc123
 env_broad_scale:
   has_raw_value: ENVO:00002030
   term:
@@ -852,8 +786,7 @@ igsn_biosample_identifiers:
 - any:curie_1
 - any:curie_2
 img_identifiers:
-- any string 1
-- any string 2
+- bare:abc123
 insdc_biosample_identifiers:
 - biosample:SAMN123456789
 - biosample:SAMN000
@@ -1235,8 +1168,7 @@ alkyl_diethers:
 alt:
   has_raw_value: 100 meter
 alternative_identifiers:
-- any_string
-- seriously_anything
+- bare:abc123
 aminopept_act:
   has_raw_value: 0.269 mole per liter per hour
 ammonium:
@@ -1462,8 +1394,7 @@ elevator:
   has_raw_value: xxx
 embargoed: true
 emsl_biosample_identifiers:
-- any_string
-- seriously_anything
+- bare:abc123
 emulsions:
 - has_raw_value: xxx
 env_broad_scale:
@@ -1648,8 +1579,7 @@ igsn_biosample_identifiers:
 - any:curie_1
 - any:curie_2
 img_identifiers:
-- any string 1
-- any string 2
+- bare:abc123
 indoor_space: bedroom
 indoor_surf: cabinet
 indust_eff_percent:
@@ -2257,8 +2187,7 @@ alternative_descriptions:
 - any string 1
 - any string 2
 alternative_identifiers:
-- any string A1
-- any string A2
+- bare:abc1
 alternative_names:
 - any string 1
 - any string 2
@@ -2276,7 +2205,7 @@ ecosystem_subtype: unconstrained text
 ecosystem_type: unconstrained text
 emsl_proposal_doi: any string
 emsl_proposal_identifier:
-- nmdc:sty-99-abcdef
+- bare:abc1
 ess_dive_datasets:
 - any string 1
 - any string 2
@@ -2691,8 +2620,7 @@ biosample_set:
   alt:
     has_raw_value: 100 meter
   alternative_identifiers:
-  - any_string
-  - seriously_anything
+  - bare:abc123
   aminopept_act:
     has_raw_value: 0.269 mole per liter per hour
   ammonium:
@@ -2918,8 +2846,7 @@ biosample_set:
     has_raw_value: xxx
   embargoed: true
   emsl_biosample_identifiers:
-  - any_string
-  - seriously_anything
+  - bare:abc123
   emulsions:
   - has_raw_value: xxx
   env_broad_scale:
@@ -3106,8 +3033,7 @@ biosample_set:
   - any:curie_1
   - any:curie_2
   img_identifiers:
-  - any string 1
-  - any string 2
+  - bare:abc123
   indoor_space: bedroom
   indoor_surf: cabinet
   indust_eff_percent:
@@ -5100,28 +5026,6 @@ part_of:
 sample_collection_site: Lithgow State Coal Mine
 specific_ecosystem: Coalbed water
 type: nmdc:Biosample
-
-```
-## Database-biosamples-low-rna_volume
-### Input
-```yaml
-biosample_set:
-- env_broad_scale:
-    has_raw_value: ENVO:00002030
-    term:
-      id: ENVO:00002030
-  env_local_scale:
-    has_raw_value: ENVO:00002169
-    term:
-      id: ENVO:00002169
-  env_medium:
-    has_raw_value: ENVO:00005792
-    term:
-      id: ENVO:00005792
-  id: nmdc:bsm-99-dtTMNb
-  part_of:
-  - gold:Gs0110115
-  rna_volume: 12
 
 ```
 ## Biosample-missing-id

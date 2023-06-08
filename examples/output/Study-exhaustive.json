@@ -3,46 +3,9 @@
   "name": "see also description, title, objective, various alternatives",
   "description": "see also name, title, objective, various alternatives",
   "alternative_identifiers": [
-    "any string A1",
-    "any string A2"
+    "bare:abc1"
   ],
-  "related_identifiers": "any string R1",
-  "emsl_proposal_identifier": [
-    "nmdc:sty-99-abcdef"
-  ],
-  "emsl_proposal_doi": "any string",
-  "gold_study_identifiers": [
-    "GOLD:Gs12345",
-    "GOLD:Gs90909"
-  ],
-  "mgnify_project_identifiers": [
-    "mgnify.proj:ABC123"
-  ],
-  "ecosystem": "unconstrained text. should be validated against the controlled vocabulary, by the sample's environmental package. would also be nice to align the CV with MIxS environmental triads",
-  "ecosystem_category": "unconstrained text",
-  "ecosystem_type": "unconstrained text",
-  "ecosystem_subtype": "unconstrained text",
-  "specific_ecosystem": "unconstrained text",
-  "principal_investigator": {
-    "has_raw_value": "Craig Venter",
-    "was_generated_by": "nmdc:any_string_1",
-    "orcid": "ORCID:0000-0002-7086-765X",
-    "profile_image_url": "https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg",
-    "email": "jcventer@jcvi.org",
-    "name": "J. Craig Venter",
-    "websites": [
-      "https://www.jcvi.org/",
-      "https://www.jcvi.org/about/j-craig-venter"
-    ]
-  },
-  "doi": {
-    "has_raw_value": "https://doi.org/10.1126/science.1058040"
-  },
-  "title": "Sample Exhaustive Biosample instance. Although all of these values should pass validation, that does not mean that any Biosample of any type would necessarily have this particular combination of values.",
-  "alternative_titles": [
-    "any string 1",
-    "any string 2"
-  ],
+  "abstract": "Nothing was studied.",
   "alternative_descriptions": [
     "any string 1",
     "any string 2"
@@ -51,28 +14,32 @@
     "any string 1",
     "any string 2"
   ],
-  "abstract": "Nothing was studied.",
-  "objective": "This record, an instance of class Study from the nmdc-schema was had authored, so that the NMDC team would have at least one instance, using all slots, with a mixture of reasonable values and minimally compliant values.",
-  "websites": [
-    "https://w3id.org/nmdc",
-    "https://w3id.org/linkml"
-  ],
-  "publications": [
+  "alternative_titles": [
     "any string 1",
     "any string 2"
+  ],
+  "doi": {
+    "has_raw_value": "https://doi.org/10.1126/science.1058040"
+  },
+  "ecosystem": "unconstrained text. should be validated against the controlled vocabulary, by the sample's environmental package. would also be nice to align the CV with MIxS environmental triads",
+  "ecosystem_category": "unconstrained text",
+  "ecosystem_subtype": "unconstrained text",
+  "ecosystem_type": "unconstrained text",
+  "emsl_proposal_doi": "any string",
+  "emsl_proposal_identifier": [
+    "bare:abc1"
   ],
   "ess_dive_datasets": [
-    "any string 1",
-    "any string 2"
-  ],
-  "type": "any string",
-  "relevant_protocols": [
     "any string 1",
     "any string 2"
   ],
   "funding_sources": [
     "any string 1",
     "any string 2"
+  ],
+  "gold_study_identifiers": [
+    "GOLD:Gs12345",
+    "GOLD:Gs90909"
   ],
   "has_credit_associations": [
     {
@@ -105,6 +72,32 @@
       ]
     }
   ],
+  "mgnify_project_identifiers": [
+    "mgnify.proj:ABC123"
+  ],
+  "objective": "This record, an instance of class Study from the nmdc-schema was had authored, so that the NMDC team would have at least one instance, using all slots, with a mixture of reasonable values and minimally compliant values.",
+  "principal_investigator": {
+    "has_raw_value": "Craig Venter",
+    "was_generated_by": "nmdc:any_string_1",
+    "orcid": "ORCID:0000-0002-7086-765X",
+    "profile_image_url": "https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg",
+    "email": "jcventer@jcvi.org",
+    "name": "J. Craig Venter",
+    "websites": [
+      "https://www.jcvi.org/",
+      "https://www.jcvi.org/about/j-craig-venter"
+    ]
+  },
+  "publications": [
+    "any string 1",
+    "any string 2"
+  ],
+  "related_identifiers": "any string R1",
+  "relevant_protocols": [
+    "any string 1",
+    "any string 2"
+  ],
+  "specific_ecosystem": "unconstrained text",
   "study_image": [
     {
       "has_raw_value": "https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg",
@@ -120,6 +113,12 @@
       "description": "Photo of Craig Venter Institute, La Jolla, California",
       "display_order": "2"
     }
+  ],
+  "title": "Sample Exhaustive Biosample instance. Although all of these values should pass validation, that does not mean that any Biosample of any type would necessarily have this particular combination of values.",
+  "type": "any string",
+  "websites": [
+    "https://w3id.org/nmdc",
+    "https://w3id.org/linkml"
   ],
   "@type": "Study"
 }

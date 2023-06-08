@@ -25,9 +25,6 @@
                 "used": {
                     "type": "string"
                 },
-                "was_associated_with": {
-                    "$ref": "#/$defs/Agent"
-                },
                 "was_informed_by": {
                     "type": "string"
                 }
@@ -36,20 +33,6 @@
                 "id"
             ],
             "title": "Activity",
-            "type": "object"
-        },
-        "Agent": {
-            "additionalProperties": false,
-            "description": "a provence-generating agent",
-            "properties": {
-                "acted_on_behalf_of": {
-                    "$ref": "#/$defs/Agent"
-                },
-                "was_informed_by": {
-                    "type": "string"
-                }
-            },
-            "title": "Agent",
             "type": "object"
         },
         "AnalysisTypeEnum": {
@@ -71,6 +54,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -308,6 +292,7 @@
                 "alternative_identifiers": {
                     "description": "Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -784,7 +769,7 @@
                 },
                 "dna_volume": {
                     "maximum": 1000,
-                    "minimum": 25,
+                    "minimum": 0,
                     "type": "number"
                 },
                 "dnase_rna": {
@@ -881,6 +866,7 @@
                 "emsl_biosample_identifiers": {
                     "description": "A list of identifiers for the biosample from the EMSL database.  This is used to link the biosample, as modeled by NMDC, to the biosample in the planned EMSL NEXUS database.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -1343,6 +1329,7 @@
                 "igsn_biosample_identifiers": {
                     "description": "A list of identifiers for the biosample from the IGSN database.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -1350,6 +1337,7 @@
                 "img_identifiers": {
                     "description": "A list of identifiers that relate the biosample to records in the IMG database.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -1553,6 +1541,13 @@
                 },
                 "ncbi_taxonomy_name": {
                     "type": "string"
+                },
+                "neon_biosample_identifiers": {
+                    "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "nitrate": {
                     "$ref": "#/$defs/QuantityValue",
@@ -1969,7 +1964,7 @@
                 },
                 "rna_volume": {
                     "maximum": 1000,
-                    "minimum": 25,
+                    "minimum": 0,
                     "type": "number"
                 },
                 "room_air_exch_rate": {
@@ -2835,6 +2830,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -3016,6 +3012,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -3046,6 +3043,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -3245,6 +3243,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -3719,6 +3718,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -3779,6 +3779,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -3896,6 +3897,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -4024,6 +4026,7 @@
                 "Crispr Terms",
                 "Product Names",
                 "Gene Phylogeny tsv",
+                "Lineage sdb",
                 "Clusters of Orthologous Groups (COG) Annotation GFF",
                 "KO_EC Annotation GFF",
                 "CATH FunFams (Functional Families) Annotation GFF",
@@ -4179,6 +4182,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -4407,6 +4411,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -4497,6 +4502,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -4752,10 +4758,6 @@
                 "version": {
                     "type": "string"
                 },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
-                },
                 "was_informed_by": {
                     "type": "string"
                 }
@@ -4795,6 +4797,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -4824,9 +4827,6 @@
             "properties": {
                 "amount_collected": {
                     "$ref": "#/$defs/QuantityValue"
-                },
-                "biosample_input": {
-                    "type": "string"
                 },
                 "collected_into": {
                     "$ref": "#/$defs/MaterialContainer"
@@ -4864,6 +4864,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -4952,10 +4953,6 @@
                 "version": {
                     "type": "string"
                 },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
-                },
                 "was_informed_by": {
                     "type": "string"
                 }
@@ -5041,10 +5038,6 @@
                     "type": "string"
                 },
                 "version": {
-                    "type": "string"
-                },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
                     "type": "string"
                 },
                 "was_informed_by": {
@@ -5238,10 +5231,6 @@
                 "version": {
                     "type": "string"
                 },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
-                },
                 "was_informed_by": {
                     "type": "string"
                 }
@@ -5319,10 +5308,6 @@
                     "type": "string"
                 },
                 "version": {
-                    "type": "string"
-                },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
                     "type": "string"
                 },
                 "was_informed_by": {
@@ -5411,10 +5396,6 @@
                 "version": {
                     "type": "string"
                 },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
-                },
                 "was_informed_by": {
                     "type": "string"
                 }
@@ -5492,10 +5473,6 @@
                     "type": "string"
                 },
                 "version": {
-                    "type": "string"
-                },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
                     "type": "string"
                 },
                 "was_informed_by": {
@@ -5583,10 +5560,6 @@
                     "type": "string"
                 },
                 "version": {
-                    "type": "string"
-                },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
                     "type": "string"
                 },
                 "was_informed_by": {
@@ -5780,10 +5753,6 @@
                 "version": {
                     "type": "string"
                 },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
-                },
                 "was_informed_by": {
                     "type": "string"
                 }
@@ -5868,10 +5837,6 @@
                 "version": {
                     "type": "string"
                 },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
-                },
                 "was_informed_by": {
                     "type": "string"
                 }
@@ -5912,6 +5877,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6046,6 +6012,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6086,6 +6053,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6126,6 +6094,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6181,36 +6150,6 @@
                 }
             },
             "title": "PeptideQuantification",
-            "type": "object"
-        },
-        "Person": {
-            "additionalProperties": false,
-            "description": "represents a person, such as a researcher",
-            "properties": {
-                "alternative_identifiers": {
-                    "description": "A list of alternative identifiers for the entity.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "description": {
-                    "description": "a human-readable description of a thing",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "Should be an ORCID. Specify in CURIE format. E.g ORCID:0000-1111-...",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "A human readable label for an entity",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id"
-            ],
-            "title": "Person",
             "type": "object"
         },
         "PersonValue": {
@@ -6310,6 +6249,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6368,6 +6308,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6500,6 +6441,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6613,10 +6555,6 @@
                 "version": {
                     "type": "string"
                 },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
-                },
                 "was_informed_by": {
                     "type": "string"
                 }
@@ -6718,10 +6656,6 @@
                     "type": "string"
                 },
                 "version": {
-                    "type": "string"
-                },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
                     "type": "string"
                 },
                 "was_informed_by": {
@@ -7146,6 +7080,7 @@
                 "alternative_identifiers": {
                     "description": "Unique identifier for a study submitted to additional resources. Matches that which has been submitted to NMDC",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7199,6 +7134,7 @@
                 "emsl_proposal_identifier": {
                     "description": "The proposal number assigned to the EMSL awarded study that relates to that which is represented in NMDC.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7270,6 +7206,13 @@
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": "string"
+                },
+                "neon_study_identifiers": {
+                    "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "notes": {
                     "description": "from study class",
@@ -7740,10 +7683,6 @@
                     "type": "string"
                 },
                 "version": {
-                    "type": "string"
-                },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
                     "type": "string"
                 },
                 "was_informed_by": {

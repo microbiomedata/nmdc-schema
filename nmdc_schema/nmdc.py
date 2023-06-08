@@ -1,15 +1,15 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-06-07T19:26:43
+# Generation date: 2023-06-08T16:19:09
 # Schema: NMDC
 #
 # id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
 # description: Schema for National Microbiome Data Collaborative (NMDC).
-#   This schema is organized into distinct modules:
+#   This schema is organized into multiple modules, such as:
 #
 #    * a set of core types for representing data values
-#    * the mixs schema (auto-translated from mixs excel)
-#    * annotation schema
-#    * the NMDC schema itself
+#    * a subset of the mixs schema
+#    * an annotation schema
+#    * the NMDC schema itself, into which the other modules are imported
 # license: https://creativecommons.org/publicdomain/zero/1.0/
 
 import dataclasses
@@ -42,15 +42,15 @@ CATH = CurieNamespace('CATH', 'http://identifiers.org/cath/')
 CHEBI = CurieNamespace('CHEBI', 'http://purl.obolibrary.org/obo/CHEBI_')
 CHEMBL_COMPOUND = CurieNamespace('CHEMBL_COMPOUND', 'http://identifiers.org/chembl.compound/')
 CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
-COG = CurieNamespace('COG', 'https://unknown.to.linter.org/')
+COG = CurieNamespace('COG', 'https://bioregistry.io/reference/cog:')
 DRUGBANK = CurieNamespace('DRUGBANK', 'http://identifiers.org/drugbank/')
-EC = CurieNamespace('EC', 'https://unknown.to.linter.org/')
+EC = CurieNamespace('EC', 'https://bioregistry.io/reference/eccode:')
 EFO = CurieNamespace('EFO', 'http://identifiers.org/efo/')
 EGGNOG = CurieNamespace('EGGNOG', 'http://identifiers.org/eggnog/')
 FBCV = CurieNamespace('FBcv', 'http://purl.obolibrary.org/obo/FBcv_')
 GO = CurieNamespace('GO', 'http://purl.obolibrary.org/obo/GO_')
 HMDB = CurieNamespace('HMDB', 'http://identifiers.org/hmdb/')
-ISA = CurieNamespace('ISA', 'https://unknown.to.linter.org/')
+ISA = CurieNamespace('ISA', 'http://example.com/isa/')
 KEGG_COMPOUND = CurieNamespace('KEGG_COMPOUND', 'http://identifiers.org/kegg.compound/')
 KEGG_ORTHOLOGY = CurieNamespace('KEGG_ORTHOLOGY', 'http://identifiers.org/kegg.orthology/')
 KEGG_REACTION = CurieNamespace('KEGG_REACTION', 'http://identifiers.org/kegg.reaction/')
@@ -58,8 +58,7 @@ KEGG_PATHWAY = CurieNamespace('KEGG_PATHWAY', 'http://identifiers.org/kegg.pathw
 MESH = CurieNamespace('MESH', 'http://identifiers.org/mesh/')
 MIXS = CurieNamespace('MIXS', 'https://w3id.org/mixs/')
 METACYC = CurieNamespace('MetaCyc', 'https://identifiers.org/metacyc.reaction/')
-METANETX = CurieNamespace('MetaNetX', 'https://unknown.to.linter.org/')
-NCBITAXON = CurieNamespace('NCBITaxon', 'http://purl.obolibrary.org/obo/NCBITaxon_')
+METANETX = CurieNamespace('MetaNetX', 'http://example.com/metanetx/')
 NCIT = CurieNamespace('NCIT', 'http://purl.obolibrary.org/obo/NCIT_')
 OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
 PANTHER_FAMILY = CurieNamespace('PANTHER_FAMILY', 'http://identifiers.org/panther.family/')
@@ -68,7 +67,7 @@ PR = CurieNamespace('PR', 'http://purl.obolibrary.org/obo/PR_')
 PUBCHEM_COMPOUND = CurieNamespace('PUBCHEM_COMPOUND', 'http://identifiers.org/pubchem.compound/')
 RHEA = CurieNamespace('RHEA', 'http://identifiers.org/rhea/')
 RO = CurieNamespace('RO', 'http://purl.obolibrary.org/obo/RO_')
-RETRORULES = CurieNamespace('RetroRules', 'https://unknown.to.linter.org/')
+RETRORULES = CurieNamespace('RetroRules', 'http://example.com/retrorules/')
 SEED = CurieNamespace('SEED', 'http://identifiers.org/seed/')
 SIO = CurieNamespace('SIO', 'http://semanticscience.org/resource/SIO_')
 SUPFAM = CurieNamespace('SUPFAM', 'http://identifiers.org/supfam/')
@@ -77,9 +76,14 @@ UNIPROTKB = CurieNamespace('UniProtKB', 'https://identifiers.org/uniprot/')
 BARE = CurieNamespace('bare', 'https://unknown.to.linter.org/')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
-GTPO = CurieNamespace('gtpo', 'https://unknown.to.linter.org/')
-JGI = CurieNamespace('jgi', 'https://unknown.to.linter.org/')
+EMSL_PROJECT = CurieNamespace('emsl_project', 'https://bioregistry.io/reference/emsl.project:')
+GTPO = CurieNamespace('gtpo', 'http://example.com/gtpo/')
+IGSN = CurieNamespace('igsn', 'https://app.geosamples.org/sample/igsn/')
+JGI = CurieNamespace('jgi', 'http://example.com/jgi/')
+JGI_PROPOSAL = CurieNamespace('jgi_proposal', 'https://bioregistry.io/reference/jgi.proposal:')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
+MGNIFY_PROJ = CurieNamespace('mgnify_proj', 'https://identifiers.org/mgnify.proj:')
+NEON_SCHEMA = CurieNamespace('neon_schema', 'http://example.org/neon/schema/')
 NMDC = CurieNamespace('nmdc', 'https://w3id.org/nmdc/')
 NMDC_YAML = CurieNamespace('nmdc_yaml', 'https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
@@ -223,10 +227,6 @@ class EnvironmentalMaterialTermId(OntologyClassId):
     pass
 
 
-class PersonId(NamedThingId):
-    pass
-
-
 class InstrumentId(NamedThingId):
     pass
 
@@ -239,11 +239,11 @@ class GeneProductId(NamedThingId):
     pass
 
 
-class ActivityId(URIorCURIE):
+class MaterialSampleId(NamedThingId):
     pass
 
 
-class MaterialSampleId(NamedThingId):
+class ActivityId(URIorCURIE):
     pass
 
 
@@ -637,7 +637,7 @@ class NamedThing(YAMLRoot):
     id: Union[str, NamedThingId] = None
     name: Optional[str] = None
     description: Optional[str] = None
-    alternative_identifiers: Optional[Union[str, List[str]]] = empty_list()
+    alternative_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -653,7 +653,7 @@ class NamedThing(YAMLRoot):
 
         if not isinstance(self.alternative_identifiers, list):
             self.alternative_identifiers = [self.alternative_identifiers] if self.alternative_identifiers is not None else []
-        self.alternative_identifiers = [v if isinstance(v, str) else str(v) for v in self.alternative_identifiers]
+        self.alternative_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.alternative_identifiers]
 
         super().__post_init__(**kwargs)
 
@@ -736,38 +736,39 @@ class Study(NamedThing):
     class_model_uri: ClassVar[URIRef] = NMDC.Study
 
     id: Union[str, StudyId] = None
-    alternative_identifiers: Optional[Union[str, List[str]]] = empty_list()
-    gnps_task_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
-    related_identifiers: Optional[str] = None
-    emsl_proposal_identifier: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
-    emsl_proposal_doi: Optional[str] = None
-    gold_study_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
-    mgnify_project_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
-    ecosystem: Optional[str] = None
-    ecosystem_category: Optional[str] = None
-    ecosystem_type: Optional[str] = None
-    ecosystem_subtype: Optional[str] = None
-    specific_ecosystem: Optional[str] = None
-    principal_investigator: Optional[Union[dict, "PersonValue"]] = None
-    doi: Optional[Union[dict, "AttributeValue"]] = None
-    title: Optional[str] = None
-    alternative_titles: Optional[Union[str, List[str]]] = empty_list()
+    neon_study_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    alternative_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    gnps_task_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    abstract: Optional[str] = None
     alternative_descriptions: Optional[Union[str, List[str]]] = empty_list()
     alternative_names: Optional[Union[str, List[str]]] = empty_list()
-    abstract: Optional[str] = None
-    objective: Optional[str] = None
-    websites: Optional[Union[str, List[str]]] = empty_list()
-    publications: Optional[Union[str, List[str]]] = empty_list()
-    ess_dive_datasets: Optional[Union[str, List[str]]] = empty_list()
-    type: Optional[str] = None
-    relevant_protocols: Optional[Union[str, List[str]]] = empty_list()
-    funding_sources: Optional[Union[str, List[str]]] = empty_list()
-    has_credit_associations: Optional[Union[Union[dict, "CreditAssociation"], List[Union[dict, "CreditAssociation"]]]] = empty_list()
-    study_image: Optional[Union[Union[dict, "ImageValue"], List[Union[dict, "ImageValue"]]]] = empty_list()
+    alternative_titles: Optional[Union[str, List[str]]] = empty_list()
+    doi: Optional[Union[dict, "AttributeValue"]] = None
+    ecosystem: Optional[str] = None
+    ecosystem_category: Optional[str] = None
+    ecosystem_subtype: Optional[str] = None
+    ecosystem_type: Optional[str] = None
     emsl_project_identifier: Optional[str] = None
-    insdc_bioproject_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    emsl_proposal_doi: Optional[str] = None
+    emsl_proposal_identifier: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    ess_dive_datasets: Optional[Union[str, List[str]]] = empty_list()
+    funding_sources: Optional[Union[str, List[str]]] = empty_list()
+    gold_study_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    has_credit_associations: Optional[Union[Union[dict, "CreditAssociation"], List[Union[dict, "CreditAssociation"]]]] = empty_list()
+    insdc_bioproject_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    massive_study_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    mgnify_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     notes: Optional[str] = None
-    massive_study_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    objective: Optional[str] = None
+    principal_investigator: Optional[Union[dict, "PersonValue"]] = None
+    publications: Optional[Union[str, List[str]]] = empty_list()
+    related_identifiers: Optional[str] = None
+    relevant_protocols: Optional[Union[str, List[str]]] = empty_list()
+    specific_ecosystem: Optional[str] = None
+    study_image: Optional[Union[Union[dict, "ImageValue"], List[Union[dict, "ImageValue"]]]] = empty_list()
+    title: Optional[str] = None
+    type: Optional[str] = None
+    websites: Optional[Union[str, List[str]]] = empty_list()
     name: Optional[str] = None
     description: Optional[str] = None
 
@@ -777,59 +778,20 @@ class Study(NamedThing):
         if not isinstance(self.id, StudyId):
             self.id = StudyId(self.id)
 
+        if not isinstance(self.neon_study_identifiers, list):
+            self.neon_study_identifiers = [self.neon_study_identifiers] if self.neon_study_identifiers is not None else []
+        self.neon_study_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.neon_study_identifiers]
+
         if not isinstance(self.alternative_identifiers, list):
             self.alternative_identifiers = [self.alternative_identifiers] if self.alternative_identifiers is not None else []
-        self.alternative_identifiers = [v if isinstance(v, str) else str(v) for v in self.alternative_identifiers]
+        self.alternative_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.alternative_identifiers]
 
         if not isinstance(self.gnps_task_identifiers, list):
             self.gnps_task_identifiers = [self.gnps_task_identifiers] if self.gnps_task_identifiers is not None else []
-        self.gnps_task_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.gnps_task_identifiers]
+        self.gnps_task_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.gnps_task_identifiers]
 
-        if self.related_identifiers is not None and not isinstance(self.related_identifiers, str):
-            self.related_identifiers = str(self.related_identifiers)
-
-        if not isinstance(self.emsl_proposal_identifier, list):
-            self.emsl_proposal_identifier = [self.emsl_proposal_identifier] if self.emsl_proposal_identifier is not None else []
-        self.emsl_proposal_identifier = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.emsl_proposal_identifier]
-
-        if self.emsl_proposal_doi is not None and not isinstance(self.emsl_proposal_doi, str):
-            self.emsl_proposal_doi = str(self.emsl_proposal_doi)
-
-        if not isinstance(self.gold_study_identifiers, list):
-            self.gold_study_identifiers = [self.gold_study_identifiers] if self.gold_study_identifiers is not None else []
-        self.gold_study_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.gold_study_identifiers]
-
-        if not isinstance(self.mgnify_project_identifiers, list):
-            self.mgnify_project_identifiers = [self.mgnify_project_identifiers] if self.mgnify_project_identifiers is not None else []
-        self.mgnify_project_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.mgnify_project_identifiers]
-
-        if self.ecosystem is not None and not isinstance(self.ecosystem, str):
-            self.ecosystem = str(self.ecosystem)
-
-        if self.ecosystem_category is not None and not isinstance(self.ecosystem_category, str):
-            self.ecosystem_category = str(self.ecosystem_category)
-
-        if self.ecosystem_type is not None and not isinstance(self.ecosystem_type, str):
-            self.ecosystem_type = str(self.ecosystem_type)
-
-        if self.ecosystem_subtype is not None and not isinstance(self.ecosystem_subtype, str):
-            self.ecosystem_subtype = str(self.ecosystem_subtype)
-
-        if self.specific_ecosystem is not None and not isinstance(self.specific_ecosystem, str):
-            self.specific_ecosystem = str(self.specific_ecosystem)
-
-        if self.principal_investigator is not None and not isinstance(self.principal_investigator, PersonValue):
-            self.principal_investigator = PersonValue(**as_dict(self.principal_investigator))
-
-        if self.doi is not None and not isinstance(self.doi, AttributeValue):
-            self.doi = AttributeValue(**as_dict(self.doi))
-
-        if self.title is not None and not isinstance(self.title, str):
-            self.title = str(self.title)
-
-        if not isinstance(self.alternative_titles, list):
-            self.alternative_titles = [self.alternative_titles] if self.alternative_titles is not None else []
-        self.alternative_titles = [v if isinstance(v, str) else str(v) for v in self.alternative_titles]
+        if self.abstract is not None and not isinstance(self.abstract, str):
+            self.abstract = str(self.abstract)
 
         if not isinstance(self.alternative_descriptions, list):
             self.alternative_descriptions = [self.alternative_descriptions] if self.alternative_descriptions is not None else []
@@ -839,56 +801,99 @@ class Study(NamedThing):
             self.alternative_names = [self.alternative_names] if self.alternative_names is not None else []
         self.alternative_names = [v if isinstance(v, str) else str(v) for v in self.alternative_names]
 
-        if self.abstract is not None and not isinstance(self.abstract, str):
-            self.abstract = str(self.abstract)
+        if not isinstance(self.alternative_titles, list):
+            self.alternative_titles = [self.alternative_titles] if self.alternative_titles is not None else []
+        self.alternative_titles = [v if isinstance(v, str) else str(v) for v in self.alternative_titles]
 
-        if self.objective is not None and not isinstance(self.objective, str):
-            self.objective = str(self.objective)
+        if self.doi is not None and not isinstance(self.doi, AttributeValue):
+            self.doi = AttributeValue(**as_dict(self.doi))
 
-        if not isinstance(self.websites, list):
-            self.websites = [self.websites] if self.websites is not None else []
-        self.websites = [v if isinstance(v, str) else str(v) for v in self.websites]
+        if self.ecosystem is not None and not isinstance(self.ecosystem, str):
+            self.ecosystem = str(self.ecosystem)
 
-        if not isinstance(self.publications, list):
-            self.publications = [self.publications] if self.publications is not None else []
-        self.publications = [v if isinstance(v, str) else str(v) for v in self.publications]
+        if self.ecosystem_category is not None and not isinstance(self.ecosystem_category, str):
+            self.ecosystem_category = str(self.ecosystem_category)
+
+        if self.ecosystem_subtype is not None and not isinstance(self.ecosystem_subtype, str):
+            self.ecosystem_subtype = str(self.ecosystem_subtype)
+
+        if self.ecosystem_type is not None and not isinstance(self.ecosystem_type, str):
+            self.ecosystem_type = str(self.ecosystem_type)
+
+        if self.emsl_project_identifier is not None and not isinstance(self.emsl_project_identifier, str):
+            self.emsl_project_identifier = str(self.emsl_project_identifier)
+
+        if self.emsl_proposal_doi is not None and not isinstance(self.emsl_proposal_doi, str):
+            self.emsl_proposal_doi = str(self.emsl_proposal_doi)
+
+        if not isinstance(self.emsl_proposal_identifier, list):
+            self.emsl_proposal_identifier = [self.emsl_proposal_identifier] if self.emsl_proposal_identifier is not None else []
+        self.emsl_proposal_identifier = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.emsl_proposal_identifier]
 
         if not isinstance(self.ess_dive_datasets, list):
             self.ess_dive_datasets = [self.ess_dive_datasets] if self.ess_dive_datasets is not None else []
         self.ess_dive_datasets = [v if isinstance(v, str) else str(v) for v in self.ess_dive_datasets]
 
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
-
-        if not isinstance(self.relevant_protocols, list):
-            self.relevant_protocols = [self.relevant_protocols] if self.relevant_protocols is not None else []
-        self.relevant_protocols = [v if isinstance(v, str) else str(v) for v in self.relevant_protocols]
-
         if not isinstance(self.funding_sources, list):
             self.funding_sources = [self.funding_sources] if self.funding_sources is not None else []
         self.funding_sources = [v if isinstance(v, str) else str(v) for v in self.funding_sources]
+
+        if not isinstance(self.gold_study_identifiers, list):
+            self.gold_study_identifiers = [self.gold_study_identifiers] if self.gold_study_identifiers is not None else []
+        self.gold_study_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.gold_study_identifiers]
 
         if not isinstance(self.has_credit_associations, list):
             self.has_credit_associations = [self.has_credit_associations] if self.has_credit_associations is not None else []
         self.has_credit_associations = [v if isinstance(v, CreditAssociation) else CreditAssociation(**as_dict(v)) for v in self.has_credit_associations]
 
-        if not isinstance(self.study_image, list):
-            self.study_image = [self.study_image] if self.study_image is not None else []
-        self.study_image = [v if isinstance(v, ImageValue) else ImageValue(**as_dict(v)) for v in self.study_image]
-
-        if self.emsl_project_identifier is not None and not isinstance(self.emsl_project_identifier, str):
-            self.emsl_project_identifier = str(self.emsl_project_identifier)
-
         if not isinstance(self.insdc_bioproject_identifiers, list):
             self.insdc_bioproject_identifiers = [self.insdc_bioproject_identifiers] if self.insdc_bioproject_identifiers is not None else []
-        self.insdc_bioproject_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.insdc_bioproject_identifiers]
+        self.insdc_bioproject_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.insdc_bioproject_identifiers]
+
+        if not isinstance(self.massive_study_identifiers, list):
+            self.massive_study_identifiers = [self.massive_study_identifiers] if self.massive_study_identifiers is not None else []
+        self.massive_study_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.massive_study_identifiers]
+
+        if not isinstance(self.mgnify_project_identifiers, list):
+            self.mgnify_project_identifiers = [self.mgnify_project_identifiers] if self.mgnify_project_identifiers is not None else []
+        self.mgnify_project_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.mgnify_project_identifiers]
 
         if self.notes is not None and not isinstance(self.notes, str):
             self.notes = str(self.notes)
 
-        if not isinstance(self.massive_study_identifiers, list):
-            self.massive_study_identifiers = [self.massive_study_identifiers] if self.massive_study_identifiers is not None else []
-        self.massive_study_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.massive_study_identifiers]
+        if self.objective is not None and not isinstance(self.objective, str):
+            self.objective = str(self.objective)
+
+        if self.principal_investigator is not None and not isinstance(self.principal_investigator, PersonValue):
+            self.principal_investigator = PersonValue(**as_dict(self.principal_investigator))
+
+        if not isinstance(self.publications, list):
+            self.publications = [self.publications] if self.publications is not None else []
+        self.publications = [v if isinstance(v, str) else str(v) for v in self.publications]
+
+        if self.related_identifiers is not None and not isinstance(self.related_identifiers, str):
+            self.related_identifiers = str(self.related_identifiers)
+
+        if not isinstance(self.relevant_protocols, list):
+            self.relevant_protocols = [self.relevant_protocols] if self.relevant_protocols is not None else []
+        self.relevant_protocols = [v if isinstance(v, str) else str(v) for v in self.relevant_protocols]
+
+        if self.specific_ecosystem is not None and not isinstance(self.specific_ecosystem, str):
+            self.specific_ecosystem = str(self.specific_ecosystem)
+
+        if not isinstance(self.study_image, list):
+            self.study_image = [self.study_image] if self.study_image is not None else []
+        self.study_image = [v if isinstance(v, ImageValue) else ImageValue(**as_dict(v)) for v in self.study_image]
+
+        if self.title is not None and not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if self.type is not None and not isinstance(self.type, str):
+            self.type = str(self.type)
+
+        if not isinstance(self.websites, list):
+            self.websites = [self.websites] if self.websites is not None else []
+        self.websites = [v if isinstance(v, str) else str(v) for v in self.websites]
 
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
@@ -942,28 +947,28 @@ class OmicsProcessing(BiosampleProcessing):
 
     id: Union[str, OmicsProcessingId] = None
     add_date: Optional[str] = None
-    mod_date: Optional[str] = None
+    chimera_check: Optional[Union[dict, "TextValue"]] = None
+    gold_sequencing_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     has_input: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
     has_output: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
+    insdc_experiment_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     instrument_name: Optional[str] = None
+    mod_date: Optional[str] = None
     ncbi_project_name: Optional[str] = None
+    nucl_acid_amp: Optional[Union[dict, "TextValue"]] = None
+    nucl_acid_ext: Optional[Union[dict, "TextValue"]] = None
     omics_type: Optional[Union[dict, "ControlledTermValue"]] = None
     part_of: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
+    pcr_cond: Optional[Union[dict, "TextValue"]] = None
+    pcr_primers: Optional[Union[dict, "TextValue"]] = None
     principal_investigator: Optional[Union[dict, "PersonValue"]] = None
     processing_institution: Optional[Union[str, "ProcessingInstitutionEnum"]] = None
-    type: Optional[str] = None
-    gold_sequencing_project_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
-    insdc_experiment_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     samp_vol_we_dna_ext: Optional[Union[dict, "QuantityValue"]] = None
-    nucl_acid_ext: Optional[Union[dict, "TextValue"]] = None
-    nucl_acid_amp: Optional[Union[dict, "TextValue"]] = None
-    target_gene: Optional[Union[dict, "TextValue"]] = None
-    target_subfragment: Optional[Union[dict, "TextValue"]] = None
-    pcr_primers: Optional[Union[dict, "TextValue"]] = None
-    pcr_cond: Optional[Union[dict, "TextValue"]] = None
     seq_meth: Optional[Union[dict, "TextValue"]] = None
     seq_quality_check: Optional[Union[dict, "TextValue"]] = None
-    chimera_check: Optional[Union[dict, "TextValue"]] = None
+    target_gene: Optional[Union[dict, "TextValue"]] = None
+    target_subfragment: Optional[Union[dict, "TextValue"]] = None
+    type: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -980,8 +985,12 @@ class OmicsProcessing(BiosampleProcessing):
         if self.add_date is not None and not isinstance(self.add_date, str):
             self.add_date = str(self.add_date)
 
-        if self.mod_date is not None and not isinstance(self.mod_date, str):
-            self.mod_date = str(self.mod_date)
+        if self.chimera_check is not None and not isinstance(self.chimera_check, TextValue):
+            self.chimera_check = TextValue(**as_dict(self.chimera_check))
+
+        if not isinstance(self.gold_sequencing_project_identifiers, list):
+            self.gold_sequencing_project_identifiers = [self.gold_sequencing_project_identifiers] if self.gold_sequencing_project_identifiers is not None else []
+        self.gold_sequencing_project_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.gold_sequencing_project_identifiers]
 
         if not isinstance(self.has_input, list):
             self.has_input = [self.has_input] if self.has_input is not None else []
@@ -991,11 +1000,24 @@ class OmicsProcessing(BiosampleProcessing):
             self.has_output = [self.has_output] if self.has_output is not None else []
         self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
 
+        if not isinstance(self.insdc_experiment_identifiers, list):
+            self.insdc_experiment_identifiers = [self.insdc_experiment_identifiers] if self.insdc_experiment_identifiers is not None else []
+        self.insdc_experiment_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.insdc_experiment_identifiers]
+
         if self.instrument_name is not None and not isinstance(self.instrument_name, str):
             self.instrument_name = str(self.instrument_name)
 
+        if self.mod_date is not None and not isinstance(self.mod_date, str):
+            self.mod_date = str(self.mod_date)
+
         if self.ncbi_project_name is not None and not isinstance(self.ncbi_project_name, str):
             self.ncbi_project_name = str(self.ncbi_project_name)
+
+        if self.nucl_acid_amp is not None and not isinstance(self.nucl_acid_amp, TextValue):
+            self.nucl_acid_amp = TextValue(**as_dict(self.nucl_acid_amp))
+
+        if self.nucl_acid_ext is not None and not isinstance(self.nucl_acid_ext, TextValue):
+            self.nucl_acid_ext = TextValue(**as_dict(self.nucl_acid_ext))
 
         if self.omics_type is not None and not isinstance(self.omics_type, ControlledTermValue):
             self.omics_type = ControlledTermValue(**as_dict(self.omics_type))
@@ -1004,43 +1026,20 @@ class OmicsProcessing(BiosampleProcessing):
             self.part_of = [self.part_of] if self.part_of is not None else []
         self.part_of = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.part_of]
 
+        if self.pcr_cond is not None and not isinstance(self.pcr_cond, TextValue):
+            self.pcr_cond = TextValue(**as_dict(self.pcr_cond))
+
+        if self.pcr_primers is not None and not isinstance(self.pcr_primers, TextValue):
+            self.pcr_primers = TextValue(**as_dict(self.pcr_primers))
+
         if self.principal_investigator is not None and not isinstance(self.principal_investigator, PersonValue):
             self.principal_investigator = PersonValue(**as_dict(self.principal_investigator))
 
         if self.processing_institution is not None and not isinstance(self.processing_institution, ProcessingInstitutionEnum):
             self.processing_institution = ProcessingInstitutionEnum(self.processing_institution)
 
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
-
-        if not isinstance(self.gold_sequencing_project_identifiers, list):
-            self.gold_sequencing_project_identifiers = [self.gold_sequencing_project_identifiers] if self.gold_sequencing_project_identifiers is not None else []
-        self.gold_sequencing_project_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.gold_sequencing_project_identifiers]
-
-        if not isinstance(self.insdc_experiment_identifiers, list):
-            self.insdc_experiment_identifiers = [self.insdc_experiment_identifiers] if self.insdc_experiment_identifiers is not None else []
-        self.insdc_experiment_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.insdc_experiment_identifiers]
-
         if self.samp_vol_we_dna_ext is not None and not isinstance(self.samp_vol_we_dna_ext, QuantityValue):
             self.samp_vol_we_dna_ext = QuantityValue(**as_dict(self.samp_vol_we_dna_ext))
-
-        if self.nucl_acid_ext is not None and not isinstance(self.nucl_acid_ext, TextValue):
-            self.nucl_acid_ext = TextValue(**as_dict(self.nucl_acid_ext))
-
-        if self.nucl_acid_amp is not None and not isinstance(self.nucl_acid_amp, TextValue):
-            self.nucl_acid_amp = TextValue(**as_dict(self.nucl_acid_amp))
-
-        if self.target_gene is not None and not isinstance(self.target_gene, TextValue):
-            self.target_gene = TextValue(**as_dict(self.target_gene))
-
-        if self.target_subfragment is not None and not isinstance(self.target_subfragment, TextValue):
-            self.target_subfragment = TextValue(**as_dict(self.target_subfragment))
-
-        if self.pcr_primers is not None and not isinstance(self.pcr_primers, TextValue):
-            self.pcr_primers = TextValue(**as_dict(self.pcr_primers))
-
-        if self.pcr_cond is not None and not isinstance(self.pcr_cond, TextValue):
-            self.pcr_cond = TextValue(**as_dict(self.pcr_cond))
 
         if self.seq_meth is not None and not isinstance(self.seq_meth, TextValue):
             self.seq_meth = TextValue(**as_dict(self.seq_meth))
@@ -1048,8 +1047,14 @@ class OmicsProcessing(BiosampleProcessing):
         if self.seq_quality_check is not None and not isinstance(self.seq_quality_check, TextValue):
             self.seq_quality_check = TextValue(**as_dict(self.seq_quality_check))
 
-        if self.chimera_check is not None and not isinstance(self.chimera_check, TextValue):
-            self.chimera_check = TextValue(**as_dict(self.chimera_check))
+        if self.target_gene is not None and not isinstance(self.target_gene, TextValue):
+            self.target_gene = TextValue(**as_dict(self.target_gene))
+
+        if self.target_subfragment is not None and not isinstance(self.target_subfragment, TextValue):
+            self.target_subfragment = TextValue(**as_dict(self.target_subfragment))
+
+        if self.type is not None and not isinstance(self.type, str):
+            self.type = str(self.type)
 
         super().__post_init__(**kwargs)
 
@@ -1082,18 +1087,19 @@ class Biosample(MaterialEntity):
     env_broad_scale: Union[dict, "ControlledIdentifiedTermValue"] = None
     env_local_scale: Union[dict, "ControlledIdentifiedTermValue"] = None
     env_medium: Union[dict, "ControlledIdentifiedTermValue"] = None
+    neon_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     host_taxid: Optional[Union[dict, "ControlledIdentifiedTermValue"]] = None
     embargoed: Optional[Union[bool, Bool]] = None
     collected_from: Optional[Union[str, FieldResearchSiteId]] = None
     type: Optional[str] = None
-    img_identifiers: Optional[Union[str, List[str]]] = empty_list()
+    img_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     samp_name: Optional[str] = None
     biosample_categories: Optional[Union[Union[str, "BiosampleCategoryEnum"], List[Union[str, "BiosampleCategoryEnum"]]]] = empty_list()
-    alternative_identifiers: Optional[Union[str, List[str]]] = empty_list()
-    gold_biosample_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
-    insdc_biosample_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
-    emsl_biosample_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
-    igsn_biosample_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    alternative_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    gold_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    insdc_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    emsl_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    igsn_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     abs_air_humidity: Optional[Union[dict, "QuantityValue"]] = None
     add_recov_method: Optional[Union[dict, "TextValue"]] = None
     additional_info: Optional[Union[dict, "TextValue"]] = None
@@ -1699,6 +1705,10 @@ class Biosample(MaterialEntity):
         if not isinstance(self.env_medium, ControlledIdentifiedTermValue):
             self.env_medium = ControlledIdentifiedTermValue(**as_dict(self.env_medium))
 
+        if not isinstance(self.neon_biosample_identifiers, list):
+            self.neon_biosample_identifiers = [self.neon_biosample_identifiers] if self.neon_biosample_identifiers is not None else []
+        self.neon_biosample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.neon_biosample_identifiers]
+
         if self.host_taxid is not None and not isinstance(self.host_taxid, ControlledIdentifiedTermValue):
             self.host_taxid = ControlledIdentifiedTermValue(**as_dict(self.host_taxid))
 
@@ -1713,7 +1723,7 @@ class Biosample(MaterialEntity):
 
         if not isinstance(self.img_identifiers, list):
             self.img_identifiers = [self.img_identifiers] if self.img_identifiers is not None else []
-        self.img_identifiers = [v if isinstance(v, str) else str(v) for v in self.img_identifiers]
+        self.img_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.img_identifiers]
 
         if self.samp_name is not None and not isinstance(self.samp_name, str):
             self.samp_name = str(self.samp_name)
@@ -1727,23 +1737,23 @@ class Biosample(MaterialEntity):
 
         if not isinstance(self.alternative_identifiers, list):
             self.alternative_identifiers = [self.alternative_identifiers] if self.alternative_identifiers is not None else []
-        self.alternative_identifiers = [v if isinstance(v, str) else str(v) for v in self.alternative_identifiers]
+        self.alternative_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.alternative_identifiers]
 
         if not isinstance(self.gold_biosample_identifiers, list):
             self.gold_biosample_identifiers = [self.gold_biosample_identifiers] if self.gold_biosample_identifiers is not None else []
-        self.gold_biosample_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.gold_biosample_identifiers]
+        self.gold_biosample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.gold_biosample_identifiers]
 
         if not isinstance(self.insdc_biosample_identifiers, list):
             self.insdc_biosample_identifiers = [self.insdc_biosample_identifiers] if self.insdc_biosample_identifiers is not None else []
-        self.insdc_biosample_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.insdc_biosample_identifiers]
+        self.insdc_biosample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.insdc_biosample_identifiers]
 
         if not isinstance(self.emsl_biosample_identifiers, list):
             self.emsl_biosample_identifiers = [self.emsl_biosample_identifiers] if self.emsl_biosample_identifiers is not None else []
-        self.emsl_biosample_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.emsl_biosample_identifiers]
+        self.emsl_biosample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.emsl_biosample_identifiers]
 
         if not isinstance(self.igsn_biosample_identifiers, list):
             self.igsn_biosample_identifiers = [self.igsn_biosample_identifiers] if self.igsn_biosample_identifiers is not None else []
-        self.igsn_biosample_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.igsn_biosample_identifiers]
+        self.igsn_biosample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.igsn_biosample_identifiers]
 
         if self.abs_air_humidity is not None and not isinstance(self.abs_air_humidity, QuantityValue):
             self.abs_air_humidity = QuantityValue(**as_dict(self.abs_air_humidity))
@@ -4278,29 +4288,6 @@ class PersonValue(AttributeValue):
 
 
 @dataclass
-class Person(NamedThing):
-    """
-    represents a person, such as a researcher
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMDC.Person
-    class_class_curie: ClassVar[str] = "nmdc:Person"
-    class_name: ClassVar[str] = "Person"
-    class_model_uri: ClassVar[URIRef] = NMDC.Person
-
-    id: Union[str, PersonId] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, PersonId):
-            self.id = PersonId(self.id)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
 class MagBin(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -4429,14 +4416,14 @@ class MetaboliteQuantification(YAMLRoot):
     class_name: ClassVar[str] = "MetaboliteQuantification"
     class_model_uri: ClassVar[URIRef] = NMDC.MetaboliteQuantification
 
-    alternative_identifiers: Optional[Union[str, List[str]]] = empty_list()
+    alternative_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     highest_similarity_score: Optional[float] = None
     metabolite_quantified: Optional[Union[str, ChemicalEntityId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if not isinstance(self.alternative_identifiers, list):
             self.alternative_identifiers = [self.alternative_identifiers] if self.alternative_identifiers is not None else []
-        self.alternative_identifiers = [v if isinstance(v, str) else str(v) for v in self.alternative_identifiers]
+        self.alternative_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.alternative_identifiers]
 
         if self.highest_similarity_score is not None and not isinstance(self.highest_similarity_score, float):
             self.highest_similarity_score = float(self.highest_similarity_score)
@@ -4756,78 +4743,6 @@ class GeolocationValue(AttributeValue):
 
 
 @dataclass
-class Activity(YAMLRoot):
-    """
-    a provence-generating activity
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMDC.Activity
-    class_class_curie: ClassVar[str] = "nmdc:Activity"
-    class_name: ClassVar[str] = "Activity"
-    class_model_uri: ClassVar[URIRef] = NMDC.Activity
-
-    id: Union[str, ActivityId] = None
-    name: Optional[str] = None
-    started_at_time: Optional[Union[str, XSDDateTime]] = None
-    ended_at_time: Optional[Union[str, XSDDateTime]] = None
-    was_informed_by: Optional[Union[str, ActivityId]] = None
-    was_associated_with: Optional[Union[dict, "Agent"]] = None
-    used: Optional[str] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ActivityId):
-            self.id = ActivityId(self.id)
-
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
-
-        if self.started_at_time is not None and not isinstance(self.started_at_time, XSDDateTime):
-            self.started_at_time = XSDDateTime(self.started_at_time)
-
-        if self.ended_at_time is not None and not isinstance(self.ended_at_time, XSDDateTime):
-            self.ended_at_time = XSDDateTime(self.ended_at_time)
-
-        if self.was_informed_by is not None and not isinstance(self.was_informed_by, ActivityId):
-            self.was_informed_by = ActivityId(self.was_informed_by)
-
-        if self.was_associated_with is not None and not isinstance(self.was_associated_with, Agent):
-            self.was_associated_with = Agent(**as_dict(self.was_associated_with))
-
-        if self.used is not None and not isinstance(self.used, str):
-            self.used = str(self.used)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class Agent(YAMLRoot):
-    """
-    a provence-generating agent
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMDC.Agent
-    class_class_curie: ClassVar[str] = "nmdc:Agent"
-    class_name: ClassVar[str] = "Agent"
-    class_model_uri: ClassVar[URIRef] = NMDC.Agent
-
-    acted_on_behalf_of: Optional[Union[dict, "Agent"]] = None
-    was_informed_by: Optional[Union[str, ActivityId]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.acted_on_behalf_of is not None and not isinstance(self.acted_on_behalf_of, Agent):
-            self.acted_on_behalf_of = Agent(**as_dict(self.acted_on_behalf_of))
-
-        if self.was_informed_by is not None and not isinstance(self.was_informed_by, ActivityId):
-            self.was_informed_by = ActivityId(self.was_informed_by)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
 class DissolvingActivity(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -4948,7 +4863,6 @@ class MaterialSamplingActivity(YAMLRoot):
 
     amount_collected: Optional[Union[dict, QuantityValue]] = None
     collected_into: Optional[Union[dict, MaterialContainer]] = None
-    biosample_input: Optional[Union[str, BiosampleId]] = None
     material_output: Optional[Union[str, MaterialSampleId]] = None
     sampling_method: Optional[Union[str, "SamplingMethodEnum"]] = None
 
@@ -4958,9 +4872,6 @@ class MaterialSamplingActivity(YAMLRoot):
 
         if self.collected_into is not None and not isinstance(self.collected_into, MaterialContainer):
             self.collected_into = MaterialContainer(**as_dict(self.collected_into))
-
-        if self.biosample_input is not None and not isinstance(self.biosample_input, BiosampleId):
-            self.biosample_input = BiosampleId(self.biosample_input)
 
         if self.material_output is not None and not isinstance(self.material_output, MaterialSampleId):
             self.material_output = MaterialSampleId(self.material_output)
@@ -5006,6 +4917,49 @@ class ReactionActivity(YAMLRoot):
 
 
 @dataclass
+class Activity(YAMLRoot):
+    """
+    a provence-generating activity
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC.Activity
+    class_class_curie: ClassVar[str] = "nmdc:Activity"
+    class_name: ClassVar[str] = "Activity"
+    class_model_uri: ClassVar[URIRef] = NMDC.Activity
+
+    id: Union[str, ActivityId] = None
+    name: Optional[str] = None
+    started_at_time: Optional[Union[str, XSDDateTime]] = None
+    ended_at_time: Optional[Union[str, XSDDateTime]] = None
+    was_informed_by: Optional[Union[str, ActivityId]] = None
+    used: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ActivityId):
+            self.id = ActivityId(self.id)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.started_at_time is not None and not isinstance(self.started_at_time, XSDDateTime):
+            self.started_at_time = XSDDateTime(self.started_at_time)
+
+        if self.ended_at_time is not None and not isinstance(self.ended_at_time, XSDDateTime):
+            self.ended_at_time = XSDDateTime(self.ended_at_time)
+
+        if self.was_informed_by is not None and not isinstance(self.was_informed_by, ActivityId):
+            self.was_informed_by = ActivityId(self.was_informed_by)
+
+        if self.used is not None and not isinstance(self.used, str):
+            self.used = str(self.used)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class WorkflowExecutionActivity(Activity):
     """
     Represents an instance of an execution of a particular workflow
@@ -5028,7 +4982,6 @@ class WorkflowExecutionActivity(Activity):
     was_informed_by: Union[str, ActivityId] = None
     part_of: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
     version: Optional[str] = None
-    was_associated_with: Optional[Union[str, WorkflowExecutionActivityId]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -5084,9 +5037,6 @@ class WorkflowExecutionActivity(Activity):
 
         if self.version is not None and not isinstance(self.version, str):
             self.version = str(self.version)
-
-        if self.was_associated_with is not None and not isinstance(self.was_associated_with, WorkflowExecutionActivityId):
-            self.was_associated_with = WorkflowExecutionActivityId(self.was_associated_with)
 
         super().__post_init__(**kwargs)
 
@@ -5398,7 +5348,7 @@ class MetagenomeAnnotationActivity(WorkflowExecutionActivity):
     ended_at_time: Union[str, XSDDateTime] = None
     was_informed_by: Union[str, ActivityId] = None
     type: Optional[str] = None
-    gold_analysis_project_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    gold_analysis_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -5411,7 +5361,7 @@ class MetagenomeAnnotationActivity(WorkflowExecutionActivity):
 
         if not isinstance(self.gold_analysis_project_identifiers, list):
             self.gold_analysis_project_identifiers = [self.gold_analysis_project_identifiers] if self.gold_analysis_project_identifiers is not None else []
-        self.gold_analysis_project_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.gold_analysis_project_identifiers]
+        self.gold_analysis_project_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.gold_analysis_project_identifiers]
 
         super().__post_init__(**kwargs)
 
@@ -5434,7 +5384,7 @@ class MetatranscriptomeAnnotationActivity(WorkflowExecutionActivity):
     ended_at_time: Union[str, XSDDateTime] = None
     was_informed_by: Union[str, ActivityId] = None
     type: Optional[str] = None
-    gold_analysis_project_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    gold_analysis_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -5447,7 +5397,7 @@ class MetatranscriptomeAnnotationActivity(WorkflowExecutionActivity):
 
         if not isinstance(self.gold_analysis_project_identifiers, list):
             self.gold_analysis_project_identifiers = [self.gold_analysis_project_identifiers] if self.gold_analysis_project_identifiers is not None else []
-        self.gold_analysis_project_identifiers = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.gold_analysis_project_identifiers]
+        self.gold_analysis_project_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.gold_analysis_project_identifiers]
 
         super().__post_init__(**kwargs)
 
@@ -6110,6 +6060,10 @@ class FileTypeEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="Gene Phylogeny tsv",
                 description="Gene Phylogeny tsv"))
+        setattr(cls, "Lineage sdb",
+            PermissibleValue(
+                text="Lineage sdb",
+                description="phylogeny at the contig level"))
         setattr(cls, "Clusters of Orthologous Groups (COG) Annotation GFF",
             PermissibleValue(
                 text="Clusters of Orthologous Groups (COG) Annotation GFF",
@@ -6236,173 +6190,65 @@ class ProcessingInstitutionEnum(EnumDefinitionImpl):
         name="ProcessingInstitutionEnum",
     )
 
-class SampCollectPointEnum(EnumDefinitionImpl):
+class SrDepEnvEnum(EnumDefinitionImpl):
 
-    well = PermissibleValue(text="well")
-    wellhead = PermissibleValue(text="wellhead")
-    separator = PermissibleValue(text="separator")
+    Lacustine = PermissibleValue(text="Lacustine")
+    Fluvioldeltaic = PermissibleValue(text="Fluvioldeltaic")
+    Fluviomarine = PermissibleValue(text="Fluviomarine")
+    Marine = PermissibleValue(text="Marine")
     other = PermissibleValue(text="other")
 
     _defn = EnumDefinition(
-        name="SampCollectPointEnum",
+        name="SrDepEnvEnum",
     )
 
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "test well",
-            PermissibleValue(text="test well"))
-        setattr(cls, "drilling rig",
-            PermissibleValue(text="drilling rig"))
-        setattr(cls, "storage tank",
-            PermissibleValue(text="storage tank"))
+class FloorCondEnum(EnumDefinitionImpl):
 
-class RelSampLocEnum(EnumDefinitionImpl):
-
-    _defn = EnumDefinition(
-        name="RelSampLocEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "edge of car",
-            PermissibleValue(text="edge of car"))
-        setattr(cls, "center of car",
-            PermissibleValue(text="center of car"))
-        setattr(cls, "under a seat",
-            PermissibleValue(text="under a seat"))
-
-class WindowCondEnum(EnumDefinitionImpl):
-
-    damaged = PermissibleValue(text="damaged")
     new = PermissibleValue(text="new")
+    damaged = PermissibleValue(text="damaged")
     rupture = PermissibleValue(text="rupture")
 
     _defn = EnumDefinition(
-        name="WindowCondEnum",
+        name="FloorCondEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "needs repair",
-            PermissibleValue(text="needs repair"))
         setattr(cls, "visible wear",
             PermissibleValue(text="visible wear"))
-
-class WindowHorizPosEnum(EnumDefinitionImpl):
-
-    left = PermissibleValue(text="left")
-    middle = PermissibleValue(text="middle")
-    right = PermissibleValue(text="right")
-
-    _defn = EnumDefinition(
-        name="WindowHorizPosEnum",
-    )
-
-class ShadingDeviceCondEnum(EnumDefinitionImpl):
-
-    damaged = PermissibleValue(text="damaged")
-    new = PermissibleValue(text="new")
-    rupture = PermissibleValue(text="rupture")
-
-    _defn = EnumDefinition(
-        name="ShadingDeviceCondEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
         setattr(cls, "needs repair",
             PermissibleValue(text="needs repair"))
-        setattr(cls, "visible wear",
-            PermissibleValue(text="visible wear"))
 
-class SpecificEnum(EnumDefinitionImpl):
-
-    operation = PermissibleValue(text="operation")
-    construction = PermissibleValue(text="construction")
-    bid = PermissibleValue(text="bid")
-    design = PermissibleValue(text="design")
-    photos = PermissibleValue(text="photos")
+class WallConstTypeEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
-        name="SpecificEnum",
+        name="WallConstTypeEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "as built",
-            PermissibleValue(text="as built"))
+        setattr(cls, "frame construction",
+            PermissibleValue(text="frame construction"))
+        setattr(cls, "joisted masonry",
+            PermissibleValue(text="joisted masonry"))
+        setattr(cls, "light noncombustible",
+            PermissibleValue(text="light noncombustible"))
+        setattr(cls, "masonry noncombustible",
+            PermissibleValue(text="masonry noncombustible"))
+        setattr(cls, "modified fire resistive",
+            PermissibleValue(text="modified fire resistive"))
+        setattr(cls, "fire resistive",
+            PermissibleValue(text="fire resistive"))
 
-class CeilTypeEnum(EnumDefinitionImpl):
+class FurnitureEnum(EnumDefinitionImpl):
 
-    cathedral = PermissibleValue(text="cathedral")
-    dropped = PermissibleValue(text="dropped")
-    concave = PermissibleValue(text="concave")
-    coffered = PermissibleValue(text="coffered")
-    cove = PermissibleValue(text="cove")
-    stretched = PermissibleValue(text="stretched")
-
-    _defn = EnumDefinition(
-        name="CeilTypeEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "barrel-shaped",
-            PermissibleValue(text="barrel-shaped"))
-
-class CeilFinishMatEnum(EnumDefinitionImpl):
-
-    drywall = PermissibleValue(text="drywall")
-    tiles = PermissibleValue(text="tiles")
-    PVC = PermissibleValue(text="PVC")
-    plasterboard = PermissibleValue(text="plasterboard")
-    metal = PermissibleValue(text="metal")
-    fiberglass = PermissibleValue(text="fiberglass")
-    stucco = PermissibleValue(text="stucco")
-    wood = PermissibleValue(text="wood")
+    cabinet = PermissibleValue(text="cabinet")
+    chair = PermissibleValue(text="chair")
+    desks = PermissibleValue(text="desks")
 
     _defn = EnumDefinition(
-        name="CeilFinishMatEnum",
+        name="FurnitureEnum",
     )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "mineral fibre",
-            PermissibleValue(text="mineral fibre"))
-        setattr(cls, "mineral wool/calcium silicate",
-            PermissibleValue(text="mineral wool/calcium silicate"))
-
-class SampDisStageEnum(EnumDefinitionImpl):
-
-    dissemination = PermissibleValue(text="dissemination")
-    infection = PermissibleValue(text="infection")
-    inoculation = PermissibleValue(text="inoculation")
-    penetration = PermissibleValue(text="penetration")
-    other = PermissibleValue(text="other")
-
-    _defn = EnumDefinition(
-        name="SampDisStageEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "growth and reproduction",
-            PermissibleValue(text="growth and reproduction"))
-
-class GrowthHabitEnum(EnumDefinitionImpl):
-
-    erect = PermissibleValue(text="erect")
-    spreading = PermissibleValue(text="spreading")
-    prostrate = PermissibleValue(text="prostrate")
-
-    _defn = EnumDefinition(
-        name="GrowthHabitEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "semi-erect",
-            PermissibleValue(text="semi-erect"))
 
 class SampWeatherEnum(EnumDefinitionImpl):
 
@@ -6424,6 +6270,89 @@ class SampWeatherEnum(EnumDefinitionImpl):
         setattr(cls, "clear sky",
             PermissibleValue(text="clear sky"))
 
+class RoomConnectedEnum(EnumDefinitionImpl):
+
+    attic = PermissibleValue(text="attic")
+    bathroom = PermissibleValue(text="bathroom")
+    closet = PermissibleValue(text="closet")
+    elevator = PermissibleValue(text="elevator")
+    hallway = PermissibleValue(text="hallway")
+    kitchen = PermissibleValue(text="kitchen")
+    office = PermissibleValue(text="office")
+    stairwell = PermissibleValue(text="stairwell")
+
+    _defn = EnumDefinition(
+        name="RoomConnectedEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "conference room",
+            PermissibleValue(text="conference room"))
+        setattr(cls, "examining room",
+            PermissibleValue(text="examining room"))
+        setattr(cls, "mail room",
+            PermissibleValue(text="mail room"))
+
+class DoorDirectEnum(EnumDefinitionImpl):
+
+    inward = PermissibleValue(text="inward")
+    outward = PermissibleValue(text="outward")
+    sideways = PermissibleValue(text="sideways")
+
+    _defn = EnumDefinition(
+        name="DoorDirectEnum",
+    )
+
+class QuadPosEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="QuadPosEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "North side",
+            PermissibleValue(text="North side"))
+        setattr(cls, "West side",
+            PermissibleValue(text="West side"))
+        setattr(cls, "South side",
+            PermissibleValue(text="South side"))
+        setattr(cls, "East side",
+            PermissibleValue(text="East side"))
+
+class ShadingDeviceTypeEnum(EnumDefinitionImpl):
+
+    tree = PermissibleValue(text="tree")
+    trellis = PermissibleValue(text="trellis")
+
+    _defn = EnumDefinition(
+        name="ShadingDeviceTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "bahama shutters",
+            PermissibleValue(text="bahama shutters"))
+        setattr(cls, "exterior roll blind",
+            PermissibleValue(text="exterior roll blind"))
+        setattr(cls, "gambrel awning",
+            PermissibleValue(text="gambrel awning"))
+        setattr(cls, "hood awning",
+            PermissibleValue(text="hood awning"))
+        setattr(cls, "porchroller awning",
+            PermissibleValue(text="porchroller awning"))
+        setattr(cls, "sarasota shutters",
+            PermissibleValue(text="sarasota shutters"))
+        setattr(cls, "slatted aluminum",
+            PermissibleValue(text="slatted aluminum"))
+        setattr(cls, "solid aluminum awning",
+            PermissibleValue(text="solid aluminum awning"))
+        setattr(cls, "sun screen",
+            PermissibleValue(text="sun screen"))
+        setattr(cls, "venetian awning",
+            PermissibleValue(text="venetian awning"))
+
 class ExtWallOrientEnum(EnumDefinitionImpl):
 
     north = PermissibleValue(text="north")
@@ -6439,198 +6368,112 @@ class ExtWallOrientEnum(EnumDefinitionImpl):
         name="ExtWallOrientEnum",
     )
 
-class BiolStatEnum(EnumDefinitionImpl):
+class CeilTextureEnum(EnumDefinitionImpl):
 
-    wild = PermissibleValue(text="wild")
-    natural = PermissibleValue(text="natural")
-    hybrid = PermissibleValue(text="hybrid")
-    mutant = PermissibleValue(text="mutant")
+    knockdown = PermissibleValue(text="knockdown")
+    popcorn = PermissibleValue(text="popcorn")
+    smooth = PermissibleValue(text="smooth")
+    swirl = PermissibleValue(text="swirl")
 
     _defn = EnumDefinition(
-        name="BiolStatEnum",
+        name="CeilTextureEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "semi-natural",
-            PermissibleValue(text="semi-natural"))
-        setattr(cls, "inbred line",
-            PermissibleValue(text="inbred line"))
-        setattr(cls, "breeder's line",
-            PermissibleValue(text="breeder's line"))
-        setattr(cls, "clonal selection",
-            PermissibleValue(text="clonal selection"))
+        setattr(cls, "crows feet",
+            PermissibleValue(text="crows feet"))
+        setattr(cls, "crows-foot stomp",
+            PermissibleValue(text="crows-foot stomp"))
+        setattr(cls, "double skip",
+            PermissibleValue(text="double skip"))
+        setattr(cls, "hawk and trowel",
+            PermissibleValue(text="hawk and trowel"))
+        setattr(cls, "orange peel",
+            PermissibleValue(text="orange peel"))
+        setattr(cls, "rosebud stomp",
+            PermissibleValue(text="rosebud stomp"))
+        setattr(cls, "Santa-Fe texture",
+            PermissibleValue(text="Santa-Fe texture"))
+        setattr(cls, "skip trowel",
+            PermissibleValue(text="skip trowel"))
+        setattr(cls, "stomp knockdown",
+            PermissibleValue(text="stomp knockdown"))
 
-class TillageEnum(EnumDefinitionImpl):
+class SedimentTypeEnum(EnumDefinitionImpl):
 
-    drill = PermissibleValue(text="drill")
-    chisel = PermissibleValue(text="chisel")
-    tined = PermissibleValue(text="tined")
-    mouldboard = PermissibleValue(text="mouldboard")
-
-    _defn = EnumDefinition(
-        name="TillageEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "cutting disc",
-            PermissibleValue(text="cutting disc"))
-        setattr(cls, "ridge till",
-            PermissibleValue(text="ridge till"))
-        setattr(cls, "strip tillage",
-            PermissibleValue(text="strip tillage"))
-        setattr(cls, "zonal tillage",
-            PermissibleValue(text="zonal tillage"))
-        setattr(cls, "disc plough",
-            PermissibleValue(text="disc plough"))
-
-class DeposEnvEnum(EnumDefinitionImpl):
-
-    other = PermissibleValue(text="other")
+    biogenous = PermissibleValue(text="biogenous")
+    cosmogenous = PermissibleValue(text="cosmogenous")
+    hydrogenous = PermissibleValue(text="hydrogenous")
+    lithogenous = PermissibleValue(text="lithogenous")
 
     _defn = EnumDefinition(
-        name="DeposEnvEnum",
+        name="SedimentTypeEnum",
     )
 
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "Continental - Alluvial",
-            PermissibleValue(text="Continental - Alluvial"))
-        setattr(cls, "Continental - Aeolian",
-            PermissibleValue(text="Continental - Aeolian"))
-        setattr(cls, "Continental - Fluvial",
-            PermissibleValue(text="Continental - Fluvial"))
-        setattr(cls, "Continental - Lacustrine",
-            PermissibleValue(text="Continental - Lacustrine"))
-        setattr(cls, "Transitional - Deltaic",
-            PermissibleValue(text="Transitional - Deltaic"))
-        setattr(cls, "Transitional - Tidal",
-            PermissibleValue(text="Transitional - Tidal"))
-        setattr(cls, "Transitional - Lagoonal",
-            PermissibleValue(text="Transitional - Lagoonal"))
-        setattr(cls, "Transitional - Beach",
-            PermissibleValue(text="Transitional - Beach"))
-        setattr(cls, "Transitional - Lake",
-            PermissibleValue(text="Transitional - Lake"))
-        setattr(cls, "Marine - Shallow",
-            PermissibleValue(text="Marine - Shallow"))
-        setattr(cls, "Marine - Deep",
-            PermissibleValue(text="Marine - Deep"))
-        setattr(cls, "Marine - Reef",
-            PermissibleValue(text="Marine - Reef"))
-        setattr(cls, "Other - Evaporite",
-            PermissibleValue(text="Other - Evaporite"))
-        setattr(cls, "Other - Glacial",
-            PermissibleValue(text="Other - Glacial"))
-        setattr(cls, "Other - Volcanic",
-            PermissibleValue(text="Other - Volcanic"))
+class WindowCondEnum(EnumDefinitionImpl):
 
-class ExtWindowOrientEnum(EnumDefinitionImpl):
-
-    north = PermissibleValue(text="north")
-    south = PermissibleValue(text="south")
-    east = PermissibleValue(text="east")
-    west = PermissibleValue(text="west")
-    northeast = PermissibleValue(text="northeast")
-    southeast = PermissibleValue(text="southeast")
-    southwest = PermissibleValue(text="southwest")
-    northwest = PermissibleValue(text="northwest")
-
-    _defn = EnumDefinition(
-        name="ExtWindowOrientEnum",
-    )
-
-class SubstructureTypeEnum(EnumDefinitionImpl):
-
-    crawlspace = PermissibleValue(text="crawlspace")
-    basement = PermissibleValue(text="basement")
-
-    _defn = EnumDefinition(
-        name="SubstructureTypeEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "slab on grade",
-            PermissibleValue(text="slab on grade"))
-
-class ArchStrucEnum(EnumDefinitionImpl):
-
-    building = PermissibleValue(text="building")
-    shed = PermissibleValue(text="shed")
-    home = PermissibleValue(text="home")
-
-    _defn = EnumDefinition(
-        name="ArchStrucEnum",
-    )
-
-class FloorCondEnum(EnumDefinitionImpl):
-
-    new = PermissibleValue(text="new")
     damaged = PermissibleValue(text="damaged")
+    new = PermissibleValue(text="new")
     rupture = PermissibleValue(text="rupture")
 
     _defn = EnumDefinition(
-        name="FloorCondEnum",
+        name="WindowCondEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "visible wear",
-            PermissibleValue(text="visible wear"))
         setattr(cls, "needs repair",
             PermissibleValue(text="needs repair"))
+        setattr(cls, "visible wear",
+            PermissibleValue(text="visible wear"))
 
-class DrainageClassEnum(EnumDefinitionImpl):
+class IndoorSurfEnum(EnumDefinitionImpl):
 
-    poorly = PermissibleValue(text="poorly")
-    well = PermissibleValue(text="well")
+    cabinet = PermissibleValue(text="cabinet")
+    ceiling = PermissibleValue(text="ceiling")
+    door = PermissibleValue(text="door")
+    shelving = PermissibleValue(text="shelving")
+    window = PermissibleValue(text="window")
+    wall = PermissibleValue(text="wall")
 
     _defn = EnumDefinition(
-        name="DrainageClassEnum",
+        name="IndoorSurfEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "very poorly",
-            PermissibleValue(text="very poorly"))
-        setattr(cls, "somewhat poorly",
-            PermissibleValue(text="somewhat poorly"))
-        setattr(cls, "moderately well",
-            PermissibleValue(text="moderately well"))
-        setattr(cls, "excessively drained",
-            PermissibleValue(text="excessively drained"))
+        setattr(cls, "counter top",
+            PermissibleValue(text="counter top"))
+        setattr(cls, "vent cover",
+            PermissibleValue(text="vent cover"))
 
-class HeatCoolTypeEnum(EnumDefinitionImpl):
+class DoorTypeWoodEnum(EnumDefinitionImpl):
+
+    battened = PermissibleValue(text="battened")
+    flush = PermissibleValue(text="flush")
+    louvered = PermissibleValue(text="louvered")
 
     _defn = EnumDefinition(
-        name="HeatCoolTypeEnum",
+        name="DoorTypeWoodEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "radiant system",
-            PermissibleValue(text="radiant system"))
-        setattr(cls, "heat pump",
-            PermissibleValue(text="heat pump"))
-        setattr(cls, "forced air system",
-            PermissibleValue(text="forced air system"))
-        setattr(cls, "steam forced heat",
-            PermissibleValue(text="steam forced heat"))
-        setattr(cls, "wood stove",
-            PermissibleValue(text="wood stove"))
-
-class SeasonUseEnum(EnumDefinitionImpl):
-
-    Spring = PermissibleValue(text="Spring")
-    Summer = PermissibleValue(text="Summer")
-    Fall = PermissibleValue(text="Fall")
-    Winter = PermissibleValue(text="Winter")
-
-    _defn = EnumDefinition(
-        name="SeasonUseEnum",
-    )
+        setattr(cls, "bettened and ledged",
+            PermissibleValue(text="bettened and ledged"))
+        setattr(cls, "ledged and braced",
+            PermissibleValue(text="ledged and braced"))
+        setattr(cls, "ledged and framed",
+            PermissibleValue(text="ledged and framed"))
+        setattr(cls, "ledged, braced and frame",
+            PermissibleValue(text="ledged, braced and frame"))
+        setattr(cls, "framed and paneled",
+            PermissibleValue(text="framed and paneled"))
+        setattr(cls, "glashed or sash",
+            PermissibleValue(text="glashed or sash"))
+        setattr(cls, "wire gauged",
+            PermissibleValue(text="wire gauged"))
 
 class DoorMatEnum(EnumDefinitionImpl):
 
@@ -6655,6 +6498,347 @@ class DoorMatEnum(EnumDefinitionImpl):
             PermissibleValue(text="thermoplastic alloy"))
         setattr(cls, "wood/plastic composite",
             PermissibleValue(text="wood/plastic composite"))
+
+class PlantGrowthMedEnum(EnumDefinitionImpl):
+
+    perlite = PermissibleValue(text="perlite")
+    pumice = PermissibleValue(text="pumice")
+    sand = PermissibleValue(text="sand")
+    soil = PermissibleValue(text="soil")
+    vermiculite = PermissibleValue(text="vermiculite")
+    water = PermissibleValue(text="water")
+
+    _defn = EnumDefinition(
+        name="PlantGrowthMedEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "other artificial liquid medium",
+            PermissibleValue(text="other artificial liquid medium"))
+        setattr(cls, "other artificial solid medium",
+            PermissibleValue(text="other artificial solid medium"))
+        setattr(cls, "peat moss",
+            PermissibleValue(text="peat moss"))
+
+class OrganismCountEnum(EnumDefinitionImpl):
+
+    ATP = PermissibleValue(text="ATP")
+    MPN = PermissibleValue(text="MPN")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="OrganismCountEnum",
+    )
+
+class ProfilePositionEnum(EnumDefinitionImpl):
+
+    summit = PermissibleValue(text="summit")
+    shoulder = PermissibleValue(text="shoulder")
+    backslope = PermissibleValue(text="backslope")
+    footslope = PermissibleValue(text="footslope")
+    toeslope = PermissibleValue(text="toeslope")
+
+    _defn = EnumDefinition(
+        name="ProfilePositionEnum",
+    )
+
+class CeilTypeEnum(EnumDefinitionImpl):
+
+    cathedral = PermissibleValue(text="cathedral")
+    dropped = PermissibleValue(text="dropped")
+    concave = PermissibleValue(text="concave")
+    coffered = PermissibleValue(text="coffered")
+    cove = PermissibleValue(text="cove")
+    stretched = PermissibleValue(text="stretched")
+
+    _defn = EnumDefinition(
+        name="CeilTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "barrel-shaped",
+            PermissibleValue(text="barrel-shaped"))
+
+class SampCollectPointEnum(EnumDefinitionImpl):
+
+    well = PermissibleValue(text="well")
+    wellhead = PermissibleValue(text="wellhead")
+    separator = PermissibleValue(text="separator")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="SampCollectPointEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "test well",
+            PermissibleValue(text="test well"))
+        setattr(cls, "drilling rig",
+            PermissibleValue(text="drilling rig"))
+        setattr(cls, "storage tank",
+            PermissibleValue(text="storage tank"))
+
+class IntWallCondEnum(EnumDefinitionImpl):
+
+    new = PermissibleValue(text="new")
+    damaged = PermissibleValue(text="damaged")
+    rupture = PermissibleValue(text="rupture")
+
+    _defn = EnumDefinition(
+        name="IntWallCondEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "visible wear",
+            PermissibleValue(text="visible wear"))
+        setattr(cls, "needs repair",
+            PermissibleValue(text="needs repair"))
+
+class RoomCondtEnum(EnumDefinitionImpl):
+
+    new = PermissibleValue(text="new")
+    damaged = PermissibleValue(text="damaged")
+    rupture = PermissibleValue(text="rupture")
+
+    _defn = EnumDefinition(
+        name="RoomCondtEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "visible wear",
+            PermissibleValue(text="visible wear"))
+        setattr(cls, "needs repair",
+            PermissibleValue(text="needs repair"))
+        setattr(cls, "visible signs of mold/mildew",
+            PermissibleValue(text="visible signs of mold/mildew"))
+
+class FloorFinishMatEnum(EnumDefinitionImpl):
+
+    tile = PermissibleValue(text="tile")
+    carpet = PermissibleValue(text="carpet")
+    rug = PermissibleValue(text="rug")
+    lineoleum = PermissibleValue(text="lineoleum")
+    stone = PermissibleValue(text="stone")
+    bamboo = PermissibleValue(text="bamboo")
+    cork = PermissibleValue(text="cork")
+    terrazo = PermissibleValue(text="terrazo")
+    concrete = PermissibleValue(text="concrete")
+    none = PermissibleValue(text="none")
+    sealed = PermissibleValue(text="sealed")
+    paint = PermissibleValue(text="paint")
+
+    _defn = EnumDefinition(
+        name="FloorFinishMatEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "wood strip or parquet",
+            PermissibleValue(text="wood strip or parquet"))
+        setattr(cls, "laminate wood",
+            PermissibleValue(text="laminate wood"))
+        setattr(cls, "vinyl composition tile",
+            PermissibleValue(text="vinyl composition tile"))
+        setattr(cls, "sheet vinyl",
+            PermissibleValue(text="sheet vinyl"))
+        setattr(cls, "clear finish",
+            PermissibleValue(text="clear finish"))
+        setattr(cls, "none or unfinished",
+            PermissibleValue(text="none or unfinished"))
+
+class SrGeolAgeEnum(EnumDefinitionImpl):
+
+    Archean = PermissibleValue(text="Archean")
+    Cambrian = PermissibleValue(text="Cambrian")
+    Carboniferous = PermissibleValue(text="Carboniferous")
+    Cenozoic = PermissibleValue(text="Cenozoic")
+    Cretaceous = PermissibleValue(text="Cretaceous")
+    Devonian = PermissibleValue(text="Devonian")
+    Jurassic = PermissibleValue(text="Jurassic")
+    Mesozoic = PermissibleValue(text="Mesozoic")
+    Neogene = PermissibleValue(text="Neogene")
+    Ordovician = PermissibleValue(text="Ordovician")
+    Paleogene = PermissibleValue(text="Paleogene")
+    Paleozoic = PermissibleValue(text="Paleozoic")
+    Permian = PermissibleValue(text="Permian")
+    Precambrian = PermissibleValue(text="Precambrian")
+    Proterozoic = PermissibleValue(text="Proterozoic")
+    Silurian = PermissibleValue(text="Silurian")
+    Triassic = PermissibleValue(text="Triassic")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="SrGeolAgeEnum",
+    )
+
+class SampSubtypeEnum(EnumDefinitionImpl):
+
+    biofilm = PermissibleValue(text="biofilm")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="SampSubtypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "oil phase",
+            PermissibleValue(text="oil phase"))
+        setattr(cls, "water phase",
+            PermissibleValue(text="water phase"))
+        setattr(cls, "not applicable",
+            PermissibleValue(text="not applicable"))
+
+class TrainStatLocEnum(EnumDefinitionImpl):
+
+    riverside = PermissibleValue(text="riverside")
+
+    _defn = EnumDefinition(
+        name="TrainStatLocEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "south station above ground",
+            PermissibleValue(text="south station above ground"))
+        setattr(cls, "south station underground",
+            PermissibleValue(text="south station underground"))
+        setattr(cls, "south station amtrak",
+            PermissibleValue(text="south station amtrak"))
+        setattr(cls, "forest hills",
+            PermissibleValue(text="forest hills"))
+
+class MechStrucEnum(EnumDefinitionImpl):
+
+    subway = PermissibleValue(text="subway")
+    coach = PermissibleValue(text="coach")
+    carriage = PermissibleValue(text="carriage")
+    elevator = PermissibleValue(text="elevator")
+    escalator = PermissibleValue(text="escalator")
+    boat = PermissibleValue(text="boat")
+    train = PermissibleValue(text="train")
+    car = PermissibleValue(text="car")
+    bus = PermissibleValue(text="bus")
+
+    _defn = EnumDefinition(
+        name="MechStrucEnum",
+    )
+
+class BuildingSettingEnum(EnumDefinitionImpl):
+
+    urban = PermissibleValue(text="urban")
+    suburban = PermissibleValue(text="suburban")
+    exurban = PermissibleValue(text="exurban")
+    rural = PermissibleValue(text="rural")
+
+    _defn = EnumDefinition(
+        name="BuildingSettingEnum",
+    )
+
+class HcProducedEnum(EnumDefinitionImpl):
+
+    Oil = PermissibleValue(text="Oil")
+    Gas = PermissibleValue(text="Gas")
+    Bitumen = PermissibleValue(text="Bitumen")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="HcProducedEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Gas-Condensate",
+            PermissibleValue(text="Gas-Condensate"))
+        setattr(cls, "Coalbed Methane",
+            PermissibleValue(text="Coalbed Methane"))
+
+class RoomSampPosEnum(EnumDefinitionImpl):
+
+    center = PermissibleValue(text="center")
+
+    _defn = EnumDefinition(
+        name="RoomSampPosEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "north corner",
+            PermissibleValue(text="north corner"))
+        setattr(cls, "south corner",
+            PermissibleValue(text="south corner"))
+        setattr(cls, "west corner",
+            PermissibleValue(text="west corner"))
+        setattr(cls, "east corner",
+            PermissibleValue(text="east corner"))
+        setattr(cls, "northeast corner",
+            PermissibleValue(text="northeast corner"))
+        setattr(cls, "northwest corner",
+            PermissibleValue(text="northwest corner"))
+        setattr(cls, "southeast corner",
+            PermissibleValue(text="southeast corner"))
+        setattr(cls, "southwest corner",
+            PermissibleValue(text="southwest corner"))
+
+class FloorWaterMoldEnum(EnumDefinitionImpl):
+
+    condensation = PermissibleValue(text="condensation")
+
+    _defn = EnumDefinition(
+        name="FloorWaterMoldEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "mold odor",
+            PermissibleValue(text="mold odor"))
+        setattr(cls, "wet floor",
+            PermissibleValue(text="wet floor"))
+        setattr(cls, "water stains",
+            PermissibleValue(text="water stains"))
+        setattr(cls, "wall discoloration",
+            PermissibleValue(text="wall discoloration"))
+        setattr(cls, "floor discoloration",
+            PermissibleValue(text="floor discoloration"))
+        setattr(cls, "ceiling discoloration",
+            PermissibleValue(text="ceiling discoloration"))
+        setattr(cls, "peeling paint or wallpaper",
+            PermissibleValue(text="peeling paint or wallpaper"))
+        setattr(cls, "bulging walls",
+            PermissibleValue(text="bulging walls"))
+
+class DoorCondEnum(EnumDefinitionImpl):
+
+    damaged = PermissibleValue(text="damaged")
+    new = PermissibleValue(text="new")
+    rupture = PermissibleValue(text="rupture")
+
+    _defn = EnumDefinition(
+        name="DoorCondEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "needs repair",
+            PermissibleValue(text="needs repair"))
+        setattr(cls, "visible wear",
+            PermissibleValue(text="visible wear"))
+
+class SeasonUseEnum(EnumDefinitionImpl):
+
+    Spring = PermissibleValue(text="Spring")
+    Summer = PermissibleValue(text="Summer")
+    Fall = PermissibleValue(text="Fall")
+    Winter = PermissibleValue(text="Winter")
+
+    _defn = EnumDefinition(
+        name="SeasonUseEnum",
+    )
 
 class CurLandUseEnum(EnumDefinitionImpl):
 
@@ -6718,24 +6902,48 @@ class CurLandUseEnum(EnumDefinitionImpl):
         setattr(cls, "vine crops",
             PermissibleValue(text="vine crops"))
 
-class GenderRestroomEnum(EnumDefinitionImpl):
+class WallSurfTreatmentEnum(EnumDefinitionImpl):
 
-    female = PermissibleValue(text="female")
-    male = PermissibleValue(text="male")
-    unisex = PermissibleValue(text="unisex")
+    painted = PermissibleValue(text="painted")
+    paneling = PermissibleValue(text="paneling")
+    stucco = PermissibleValue(text="stucco")
+    fabric = PermissibleValue(text="fabric")
 
     _defn = EnumDefinition(
-        name="GenderRestroomEnum",
+        name="WallSurfTreatmentEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "all gender",
-            PermissibleValue(text="all gender"))
-        setattr(cls, "gender neurtral",
-            PermissibleValue(text="gender neurtral"))
-        setattr(cls, "male and female",
-            PermissibleValue(text="male and female"))
+        setattr(cls, "wall paper",
+            PermissibleValue(text="wall paper"))
+        setattr(cls, "no treatment",
+            PermissibleValue(text="no treatment"))
+
+class SoilHorizonEnum(EnumDefinitionImpl):
+
+    Permafrost = PermissibleValue(text="Permafrost")
+
+    _defn = EnumDefinition(
+        name="SoilHorizonEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "O horizon",
+            PermissibleValue(text="O horizon"))
+        setattr(cls, "A horizon",
+            PermissibleValue(text="A horizon"))
+        setattr(cls, "E horizon",
+            PermissibleValue(text="E horizon"))
+        setattr(cls, "B horizon",
+            PermissibleValue(text="B horizon"))
+        setattr(cls, "C horizon",
+            PermissibleValue(text="C horizon"))
+        setattr(cls, "R layer",
+            PermissibleValue(text="R layer"))
+        setattr(cls, "M horizon",
+            PermissibleValue(text="M horizon"))
 
 class HcrEnum(EnumDefinitionImpl):
 
@@ -6760,80 +6968,17 @@ class HcrEnum(EnumDefinitionImpl):
         setattr(cls, "Tight Gas Reservoir",
             PermissibleValue(text="Tight Gas Reservoir"))
 
-class OrganismCountEnum(EnumDefinitionImpl):
+class WindowVertPosEnum(EnumDefinitionImpl):
 
-    ATP = PermissibleValue(text="ATP")
-    MPN = PermissibleValue(text="MPN")
-    other = PermissibleValue(text="other")
-
-    _defn = EnumDefinition(
-        name="OrganismCountEnum",
-    )
-
-class SrLithologyEnum(EnumDefinitionImpl):
-
-    Clastic = PermissibleValue(text="Clastic")
-    Carbonate = PermissibleValue(text="Carbonate")
-    Coal = PermissibleValue(text="Coal")
-    Biosilicieous = PermissibleValue(text="Biosilicieous")
-    other = PermissibleValue(text="other")
+    bottom = PermissibleValue(text="bottom")
+    middle = PermissibleValue(text="middle")
+    top = PermissibleValue(text="top")
+    low = PermissibleValue(text="low")
+    high = PermissibleValue(text="high")
 
     _defn = EnumDefinition(
-        name="SrLithologyEnum",
+        name="WindowVertPosEnum",
     )
-
-class TidalStageEnum(EnumDefinitionImpl):
-
-    _defn = EnumDefinition(
-        name="TidalStageEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "low tide",
-            PermissibleValue(text="low tide"))
-        setattr(cls, "ebb tide",
-            PermissibleValue(text="ebb tide"))
-        setattr(cls, "flood tide",
-            PermissibleValue(text="flood tide"))
-        setattr(cls, "high tide",
-            PermissibleValue(text="high tide"))
-
-class WallSurfTreatmentEnum(EnumDefinitionImpl):
-
-    painted = PermissibleValue(text="painted")
-    paneling = PermissibleValue(text="paneling")
-    stucco = PermissibleValue(text="stucco")
-    fabric = PermissibleValue(text="fabric")
-
-    _defn = EnumDefinition(
-        name="WallSurfTreatmentEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "wall paper",
-            PermissibleValue(text="wall paper"))
-        setattr(cls, "no treatment",
-            PermissibleValue(text="no treatment"))
-
-class DoorTypeMetalEnum(EnumDefinitionImpl):
-
-    collapsible = PermissibleValue(text="collapsible")
-    hollow = PermissibleValue(text="hollow")
-
-    _defn = EnumDefinition(
-        name="DoorTypeMetalEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "corrugated steel",
-            PermissibleValue(text="corrugated steel"))
-        setattr(cls, "rolling shutters",
-            PermissibleValue(text="rolling shutters"))
-        setattr(cls, "steel plate",
-            PermissibleValue(text="steel plate"))
 
 class WeekdayEnum(EnumDefinitionImpl):
 
@@ -6848,6 +6993,276 @@ class WeekdayEnum(EnumDefinitionImpl):
     _defn = EnumDefinition(
         name="WeekdayEnum",
     )
+
+class RoomLocEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="RoomLocEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "corner room",
+            PermissibleValue(text="corner room"))
+        setattr(cls, "interior room",
+            PermissibleValue(text="interior room"))
+        setattr(cls, "exterior wall",
+            PermissibleValue(text="exterior wall"))
+
+class TrainLineEnum(EnumDefinitionImpl):
+
+    red = PermissibleValue(text="red")
+    green = PermissibleValue(text="green")
+    orange = PermissibleValue(text="orange")
+
+    _defn = EnumDefinition(
+        name="TrainLineEnum",
+    )
+
+class DoorMoveEnum(EnumDefinitionImpl):
+
+    collapsible = PermissibleValue(text="collapsible")
+    folding = PermissibleValue(text="folding")
+    revolving = PermissibleValue(text="revolving")
+    sliding = PermissibleValue(text="sliding")
+    swinging = PermissibleValue(text="swinging")
+
+    _defn = EnumDefinition(
+        name="DoorMoveEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "rolling shutter",
+            PermissibleValue(text="rolling shutter"))
+
+class WallFinishMatEnum(EnumDefinitionImpl):
+
+    plaster = PermissibleValue(text="plaster")
+    tile = PermissibleValue(text="tile")
+    terrazzo = PermissibleValue(text="terrazzo")
+    wood = PermissibleValue(text="wood")
+    metal = PermissibleValue(text="metal")
+    masonry = PermissibleValue(text="masonry")
+
+    _defn = EnumDefinition(
+        name="WallFinishMatEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "gypsum plaster",
+            PermissibleValue(text="gypsum plaster"))
+        setattr(cls, "veneer plaster",
+            PermissibleValue(text="veneer plaster"))
+        setattr(cls, "gypsum board",
+            PermissibleValue(text="gypsum board"))
+        setattr(cls, "stone facing",
+            PermissibleValue(text="stone facing"))
+        setattr(cls, "acoustical treatment",
+            PermissibleValue(text="acoustical treatment"))
+
+class DeposEnvEnum(EnumDefinitionImpl):
+
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="DeposEnvEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Continental - Alluvial",
+            PermissibleValue(text="Continental - Alluvial"))
+        setattr(cls, "Continental - Aeolian",
+            PermissibleValue(text="Continental - Aeolian"))
+        setattr(cls, "Continental - Fluvial",
+            PermissibleValue(text="Continental - Fluvial"))
+        setattr(cls, "Continental - Lacustrine",
+            PermissibleValue(text="Continental - Lacustrine"))
+        setattr(cls, "Transitional - Deltaic",
+            PermissibleValue(text="Transitional - Deltaic"))
+        setattr(cls, "Transitional - Tidal",
+            PermissibleValue(text="Transitional - Tidal"))
+        setattr(cls, "Transitional - Lagoonal",
+            PermissibleValue(text="Transitional - Lagoonal"))
+        setattr(cls, "Transitional - Beach",
+            PermissibleValue(text="Transitional - Beach"))
+        setattr(cls, "Transitional - Lake",
+            PermissibleValue(text="Transitional - Lake"))
+        setattr(cls, "Marine - Shallow",
+            PermissibleValue(text="Marine - Shallow"))
+        setattr(cls, "Marine - Deep",
+            PermissibleValue(text="Marine - Deep"))
+        setattr(cls, "Marine - Reef",
+            PermissibleValue(text="Marine - Reef"))
+        setattr(cls, "Other - Evaporite",
+            PermissibleValue(text="Other - Evaporite"))
+        setattr(cls, "Other - Glacial",
+            PermissibleValue(text="Other - Glacial"))
+        setattr(cls, "Other - Volcanic",
+            PermissibleValue(text="Other - Volcanic"))
+
+class VisMediaEnum(EnumDefinitionImpl):
+
+    photos = PermissibleValue(text="photos")
+    videos = PermissibleValue(text="videos")
+    interiors = PermissibleValue(text="interiors")
+    equipment = PermissibleValue(text="equipment")
+
+    _defn = EnumDefinition(
+        name="VisMediaEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "commonly of the building",
+            PermissibleValue(text="commonly of the building"))
+        setattr(cls, "site context (adjacent buildings, vegetation, terrain, streets)",
+            PermissibleValue(text="site context (adjacent buildings, vegetation, terrain, streets)"))
+        setattr(cls, "3D scans",
+            PermissibleValue(text="3D scans"))
+
+class DrawingsEnum(EnumDefinitionImpl):
+
+    operation = PermissibleValue(text="operation")
+    construction = PermissibleValue(text="construction")
+    bid = PermissibleValue(text="bid")
+    design = PermissibleValue(text="design")
+    diagram = PermissibleValue(text="diagram")
+    sketch = PermissibleValue(text="sketch")
+
+    _defn = EnumDefinition(
+        name="DrawingsEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "as built",
+            PermissibleValue(text="as built"))
+        setattr(cls, "building navigation map",
+            PermissibleValue(text="building navigation map"))
+
+class CeilFinishMatEnum(EnumDefinitionImpl):
+
+    drywall = PermissibleValue(text="drywall")
+    tiles = PermissibleValue(text="tiles")
+    PVC = PermissibleValue(text="PVC")
+    plasterboard = PermissibleValue(text="plasterboard")
+    metal = PermissibleValue(text="metal")
+    fiberglass = PermissibleValue(text="fiberglass")
+    stucco = PermissibleValue(text="stucco")
+    wood = PermissibleValue(text="wood")
+
+    _defn = EnumDefinition(
+        name="CeilFinishMatEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "mineral fibre",
+            PermissibleValue(text="mineral fibre"))
+        setattr(cls, "mineral wool/calcium silicate",
+            PermissibleValue(text="mineral wool/calcium silicate"))
+
+class WaterFeatTypeEnum(EnumDefinitionImpl):
+
+    fountain = PermissibleValue(text="fountain")
+    pool = PermissibleValue(text="pool")
+    stream = PermissibleValue(text="stream")
+    waterfall = PermissibleValue(text="waterfall")
+
+    _defn = EnumDefinition(
+        name="WaterFeatTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "standing feature",
+            PermissibleValue(text="standing feature"))
+
+class DoorLocEnum(EnumDefinitionImpl):
+
+    north = PermissibleValue(text="north")
+    south = PermissibleValue(text="south")
+    east = PermissibleValue(text="east")
+    west = PermissibleValue(text="west")
+
+    _defn = EnumDefinition(
+        name="DoorLocEnum",
+    )
+
+class LightTypeEnum(EnumDefinitionImpl):
+
+    none = PermissibleValue(text="none")
+
+    _defn = EnumDefinition(
+        name="LightTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "natural light",
+            PermissibleValue(text="natural light"))
+        setattr(cls, "electric light",
+            PermissibleValue(text="electric light"))
+        setattr(cls, "desk lamp",
+            PermissibleValue(text="desk lamp"))
+        setattr(cls, "flourescent lights",
+            PermissibleValue(text="flourescent lights"))
+
+class OxyStatSampEnum(EnumDefinitionImpl):
+
+    aerobic = PermissibleValue(text="aerobic")
+    anaerobic = PermissibleValue(text="anaerobic")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="OxyStatSampEnum",
+    )
+
+class ArchStrucEnum(EnumDefinitionImpl):
+
+    building = PermissibleValue(text="building")
+    shed = PermissibleValue(text="shed")
+    home = PermissibleValue(text="home")
+
+    _defn = EnumDefinition(
+        name="ArchStrucEnum",
+    )
+
+class SpecificEnum(EnumDefinitionImpl):
+
+    operation = PermissibleValue(text="operation")
+    construction = PermissibleValue(text="construction")
+    bid = PermissibleValue(text="bid")
+    design = PermissibleValue(text="design")
+    photos = PermissibleValue(text="photos")
+
+    _defn = EnumDefinition(
+        name="SpecificEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "as built",
+            PermissibleValue(text="as built"))
+
+class OccupDocumentEnum(EnumDefinitionImpl):
+
+    estimate = PermissibleValue(text="estimate")
+    videos = PermissibleValue(text="videos")
+
+    _defn = EnumDefinition(
+        name="OccupDocumentEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "automated count",
+            PermissibleValue(text="automated count"))
+        setattr(cls, "manual count",
+            PermissibleValue(text="manual count"))
 
 class FilterTypeEnum(EnumDefinitionImpl):
 
@@ -6869,17 +7284,41 @@ class FilterTypeEnum(EnumDefinitionImpl):
         setattr(cls, "gas-phase or ultraviolet air treatments",
             PermissibleValue(text="gas-phase or ultraviolet air treatments"))
 
-class OxyStatSampEnum(EnumDefinitionImpl):
+class SubstructureTypeEnum(EnumDefinitionImpl):
 
-    aerobic = PermissibleValue(text="aerobic")
-    anaerobic = PermissibleValue(text="anaerobic")
+    crawlspace = PermissibleValue(text="crawlspace")
+    basement = PermissibleValue(text="basement")
+
+    _defn = EnumDefinition(
+        name="SubstructureTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "slab on grade",
+            PermissibleValue(text="slab on grade"))
+
+class LithologyEnum(EnumDefinitionImpl):
+
+    Basement = PermissibleValue(text="Basement")
+    Chalk = PermissibleValue(text="Chalk")
+    Chert = PermissibleValue(text="Chert")
+    Coal = PermissibleValue(text="Coal")
+    Conglomerate = PermissibleValue(text="Conglomerate")
+    Diatomite = PermissibleValue(text="Diatomite")
+    Dolomite = PermissibleValue(text="Dolomite")
+    Limestone = PermissibleValue(text="Limestone")
+    Sandstone = PermissibleValue(text="Sandstone")
+    Shale = PermissibleValue(text="Shale")
+    Siltstone = PermissibleValue(text="Siltstone")
+    Volcanic = PermissibleValue(text="Volcanic")
     other = PermissibleValue(text="other")
 
     _defn = EnumDefinition(
-        name="OxyStatSampEnum",
+        name="LithologyEnum",
     )
 
-class WindowLocEnum(EnumDefinitionImpl):
+class WallLocEnum(EnumDefinitionImpl):
 
     north = PermissibleValue(text="north")
     south = PermissibleValue(text="south")
@@ -6887,18 +7326,111 @@ class WindowLocEnum(EnumDefinitionImpl):
     west = PermissibleValue(text="west")
 
     _defn = EnumDefinition(
-        name="WindowLocEnum",
+        name="WallLocEnum",
     )
 
-class DoorTypeEnum(EnumDefinitionImpl):
+class DrainageClassEnum(EnumDefinitionImpl):
 
-    composite = PermissibleValue(text="composite")
-    metal = PermissibleValue(text="metal")
-    wooden = PermissibleValue(text="wooden")
+    poorly = PermissibleValue(text="poorly")
+    well = PermissibleValue(text="well")
 
     _defn = EnumDefinition(
-        name="DoorTypeEnum",
+        name="DrainageClassEnum",
     )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "very poorly",
+            PermissibleValue(text="very poorly"))
+        setattr(cls, "somewhat poorly",
+            PermissibleValue(text="somewhat poorly"))
+        setattr(cls, "moderately well",
+            PermissibleValue(text="moderately well"))
+        setattr(cls, "excessively drained",
+            PermissibleValue(text="excessively drained"))
+
+class BioticRelationshipEnum(EnumDefinitionImpl):
+
+    parasite = PermissibleValue(text="parasite")
+    commensal = PermissibleValue(text="commensal")
+    symbiont = PermissibleValue(text="symbiont")
+
+    _defn = EnumDefinition(
+        name="BioticRelationshipEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "free living",
+            PermissibleValue(text="free living"))
+
+class WindowCoverEnum(EnumDefinitionImpl):
+
+    blinds = PermissibleValue(text="blinds")
+    curtains = PermissibleValue(text="curtains")
+    none = PermissibleValue(text="none")
+
+    _defn = EnumDefinition(
+        name="WindowCoverEnum",
+    )
+
+class FloorStrucEnum(EnumDefinitionImpl):
+
+    balcony = PermissibleValue(text="balcony")
+    concrete = PermissibleValue(text="concrete")
+
+    _defn = EnumDefinition(
+        name="FloorStrucEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "floating floor",
+            PermissibleValue(text="floating floor"))
+        setattr(cls, "glass floor",
+            PermissibleValue(text="glass floor"))
+        setattr(cls, "raised floor",
+            PermissibleValue(text="raised floor"))
+        setattr(cls, "sprung floor",
+            PermissibleValue(text="sprung floor"))
+        setattr(cls, "wood-framed",
+            PermissibleValue(text="wood-framed"))
+
+class TidalStageEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="TidalStageEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "low tide",
+            PermissibleValue(text="low tide"))
+        setattr(cls, "ebb tide",
+            PermissibleValue(text="ebb tide"))
+        setattr(cls, "flood tide",
+            PermissibleValue(text="flood tide"))
+        setattr(cls, "high tide",
+            PermissibleValue(text="high tide"))
+
+class IndoorSpaceEnum(EnumDefinitionImpl):
+
+    bedroom = PermissibleValue(text="bedroom")
+    office = PermissibleValue(text="office")
+    bathroom = PermissibleValue(text="bathroom")
+    foyer = PermissibleValue(text="foyer")
+    kitchen = PermissibleValue(text="kitchen")
+    hallway = PermissibleValue(text="hallway")
+    elevator = PermissibleValue(text="elevator")
+
+    _defn = EnumDefinition(
+        name="IndoorSpaceEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "locker room",
+            PermissibleValue(text="locker room"))
 
 class HeatDelivLocEnum(EnumDefinitionImpl):
 
@@ -6911,42 +7443,303 @@ class HeatDelivLocEnum(EnumDefinitionImpl):
         name="HeatDelivLocEnum",
     )
 
-class FurnitureEnum(EnumDefinitionImpl):
+class SurfMaterialEnum(EnumDefinitionImpl):
 
-    cabinet = PermissibleValue(text="cabinet")
-    chair = PermissibleValue(text="chair")
-    desks = PermissibleValue(text="desks")
+    adobe = PermissibleValue(text="adobe")
+    carpet = PermissibleValue(text="carpet")
+    concrete = PermissibleValue(text="concrete")
+    glass = PermissibleValue(text="glass")
+    metal = PermissibleValue(text="metal")
+    paint = PermissibleValue(text="paint")
+    plastic = PermissibleValue(text="plastic")
+    stone = PermissibleValue(text="stone")
+    stucco = PermissibleValue(text="stucco")
+    tile = PermissibleValue(text="tile")
+    vinyl = PermissibleValue(text="vinyl")
+    wood = PermissibleValue(text="wood")
 
     _defn = EnumDefinition(
-        name="FurnitureEnum",
-    )
-
-class FloorWaterMoldEnum(EnumDefinitionImpl):
-
-    condensation = PermissibleValue(text="condensation")
-
-    _defn = EnumDefinition(
-        name="FloorWaterMoldEnum",
+        name="SurfMaterialEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "mold odor",
-            PermissibleValue(text="mold odor"))
-        setattr(cls, "wet floor",
-            PermissibleValue(text="wet floor"))
-        setattr(cls, "water stains",
-            PermissibleValue(text="water stains"))
-        setattr(cls, "wall discoloration",
-            PermissibleValue(text="wall discoloration"))
-        setattr(cls, "floor discoloration",
-            PermissibleValue(text="floor discoloration"))
-        setattr(cls, "ceiling discoloration",
-            PermissibleValue(text="ceiling discoloration"))
-        setattr(cls, "peeling paint or wallpaper",
-            PermissibleValue(text="peeling paint or wallpaper"))
-        setattr(cls, "bulging walls",
-            PermissibleValue(text="bulging walls"))
+        setattr(cls, "cinder blocks",
+            PermissibleValue(text="cinder blocks"))
+        setattr(cls, "hay bales",
+            PermissibleValue(text="hay bales"))
+        setattr(cls, "stainless steel",
+            PermissibleValue(text="stainless steel"))
+
+class SampFloorEnum(EnumDefinitionImpl):
+
+    basement = PermissibleValue(text="basement")
+    lobby = PermissibleValue(text="lobby")
+
+    _defn = EnumDefinition(
+        name="SampFloorEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "1st floor",
+            PermissibleValue(text="1st floor"))
+        setattr(cls, "2nd floor",
+            PermissibleValue(text="2nd floor"))
+
+class WindowTypeEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="WindowTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "single-hung sash window",
+            PermissibleValue(text="single-hung sash window"))
+        setattr(cls, "horizontal sash window",
+            PermissibleValue(text="horizontal sash window"))
+        setattr(cls, "fixed window",
+            PermissibleValue(text="fixed window"))
+
+class WindowLocEnum(EnumDefinitionImpl):
+
+    north = PermissibleValue(text="north")
+    south = PermissibleValue(text="south")
+    east = PermissibleValue(text="east")
+    west = PermissibleValue(text="west")
+
+    _defn = EnumDefinition(
+        name="WindowLocEnum",
+    )
+
+class HandidnessEnum(EnumDefinitionImpl):
+
+    ambidexterity = PermissibleValue(text="ambidexterity")
+
+    _defn = EnumDefinition(
+        name="HandidnessEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "left handedness",
+            PermissibleValue(text="left handedness"))
+        setattr(cls, "mixed-handedness",
+            PermissibleValue(text="mixed-handedness"))
+        setattr(cls, "right handedness",
+            PermissibleValue(text="right handedness"))
+
+class GenderRestroomEnum(EnumDefinitionImpl):
+
+    female = PermissibleValue(text="female")
+    male = PermissibleValue(text="male")
+    unisex = PermissibleValue(text="unisex")
+
+    _defn = EnumDefinition(
+        name="GenderRestroomEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "all gender",
+            PermissibleValue(text="all gender"))
+        setattr(cls, "gender neurtral",
+            PermissibleValue(text="gender neurtral"))
+        setattr(cls, "male and female",
+            PermissibleValue(text="male and female"))
+
+class GrowthHabitEnum(EnumDefinitionImpl):
+
+    erect = PermissibleValue(text="erect")
+    spreading = PermissibleValue(text="spreading")
+    prostrate = PermissibleValue(text="prostrate")
+
+    _defn = EnumDefinition(
+        name="GrowthHabitEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "semi-erect",
+            PermissibleValue(text="semi-erect"))
+
+class FreqCleanEnum(EnumDefinitionImpl):
+
+    Daily = PermissibleValue(text="Daily")
+    Weekly = PermissibleValue(text="Weekly")
+    Monthly = PermissibleValue(text="Monthly")
+    Quarterly = PermissibleValue(text="Quarterly")
+    Annually = PermissibleValue(text="Annually")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="FreqCleanEnum",
+    )
+
+class HcrGeolAgeEnum(EnumDefinitionImpl):
+
+    Archean = PermissibleValue(text="Archean")
+    Cambrian = PermissibleValue(text="Cambrian")
+    Carboniferous = PermissibleValue(text="Carboniferous")
+    Cenozoic = PermissibleValue(text="Cenozoic")
+    Cretaceous = PermissibleValue(text="Cretaceous")
+    Devonian = PermissibleValue(text="Devonian")
+    Jurassic = PermissibleValue(text="Jurassic")
+    Mesozoic = PermissibleValue(text="Mesozoic")
+    Neogene = PermissibleValue(text="Neogene")
+    Ordovician = PermissibleValue(text="Ordovician")
+    Paleogene = PermissibleValue(text="Paleogene")
+    Paleozoic = PermissibleValue(text="Paleozoic")
+    Permian = PermissibleValue(text="Permian")
+    Precambrian = PermissibleValue(text="Precambrian")
+    Proterozoic = PermissibleValue(text="Proterozoic")
+    Silurian = PermissibleValue(text="Silurian")
+    Triassic = PermissibleValue(text="Triassic")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="HcrGeolAgeEnum",
+    )
+
+class WindowMatEnum(EnumDefinitionImpl):
+
+    clad = PermissibleValue(text="clad")
+    fiberglass = PermissibleValue(text="fiberglass")
+    metal = PermissibleValue(text="metal")
+    vinyl = PermissibleValue(text="vinyl")
+    wood = PermissibleValue(text="wood")
+
+    _defn = EnumDefinition(
+        name="WindowMatEnum",
+    )
+
+class SurfAirContEnum(EnumDefinitionImpl):
+
+    dust = PermissibleValue(text="dust")
+    radon = PermissibleValue(text="radon")
+    nutrients = PermissibleValue(text="nutrients")
+    biocides = PermissibleValue(text="biocides")
+
+    _defn = EnumDefinition(
+        name="SurfAirContEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "organic matter",
+            PermissibleValue(text="organic matter"))
+        setattr(cls, "particulate matter",
+            PermissibleValue(text="particulate matter"))
+        setattr(cls, "volatile organic compounds",
+            PermissibleValue(text="volatile organic compounds"))
+        setattr(cls, "biological contaminants",
+            PermissibleValue(text="biological contaminants"))
+
+class SrKerogTypeEnum(EnumDefinitionImpl):
+
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="SrKerogTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Type I",
+            PermissibleValue(text="Type I"))
+        setattr(cls, "Type II",
+            PermissibleValue(text="Type II"))
+        setattr(cls, "Type III",
+            PermissibleValue(text="Type III"))
+        setattr(cls, "Type IV",
+            PermissibleValue(text="Type IV"))
+
+class WallTextureEnum(EnumDefinitionImpl):
+
+    knockdown = PermissibleValue(text="knockdown")
+    popcorn = PermissibleValue(text="popcorn")
+    smooth = PermissibleValue(text="smooth")
+    swirl = PermissibleValue(text="swirl")
+
+    _defn = EnumDefinition(
+        name="WallTextureEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "crows feet",
+            PermissibleValue(text="crows feet"))
+        setattr(cls, "crows-foot stomp",
+            PermissibleValue(text="crows-foot stomp"))
+        setattr(cls, "",
+            PermissibleValue(text=""))
+        setattr(cls, "double skip",
+            PermissibleValue(text="double skip"))
+        setattr(cls, "hawk and trowel",
+            PermissibleValue(text="hawk and trowel"))
+        setattr(cls, "orange peel",
+            PermissibleValue(text="orange peel"))
+        setattr(cls, "rosebud stomp",
+            PermissibleValue(text="rosebud stomp"))
+        setattr(cls, "Santa-Fe texture",
+            PermissibleValue(text="Santa-Fe texture"))
+        setattr(cls, "skip trowel",
+            PermissibleValue(text="skip trowel"))
+        setattr(cls, "stomp knockdown",
+            PermissibleValue(text="stomp knockdown"))
+
+class TillageEnum(EnumDefinitionImpl):
+
+    drill = PermissibleValue(text="drill")
+    chisel = PermissibleValue(text="chisel")
+    tined = PermissibleValue(text="tined")
+    mouldboard = PermissibleValue(text="mouldboard")
+
+    _defn = EnumDefinition(
+        name="TillageEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "cutting disc",
+            PermissibleValue(text="cutting disc"))
+        setattr(cls, "ridge till",
+            PermissibleValue(text="ridge till"))
+        setattr(cls, "strip tillage",
+            PermissibleValue(text="strip tillage"))
+        setattr(cls, "zonal tillage",
+            PermissibleValue(text="zonal tillage"))
+        setattr(cls, "disc plough",
+            PermissibleValue(text="disc plough"))
+
+class BuildOccupTypeEnum(EnumDefinitionImpl):
+
+    office = PermissibleValue(text="office")
+    market = PermissibleValue(text="market")
+    restaurant = PermissibleValue(text="restaurant")
+    residence = PermissibleValue(text="residence")
+    school = PermissibleValue(text="school")
+    residential = PermissibleValue(text="residential")
+    commercial = PermissibleValue(text="commercial")
+    airport = PermissibleValue(text="airport")
+
+    _defn = EnumDefinition(
+        name="BuildOccupTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "low rise",
+            PermissibleValue(text="low rise"))
+        setattr(cls, "high rise",
+            PermissibleValue(text="high rise"))
+        setattr(cls, "wood framed",
+            PermissibleValue(text="wood framed"))
+        setattr(cls, "health care",
+            PermissibleValue(text="health care"))
+        setattr(cls, "sports complex",
+            PermissibleValue(text="sports complex"))
 
 class PlantSexEnum(EnumDefinitionImpl):
 
@@ -6984,191 +7777,15 @@ class PlantSexEnum(EnumDefinitionImpl):
         name="PlantSexEnum",
     )
 
-class BuildOccupTypeEnum(EnumDefinitionImpl):
+class DoorTypeEnum(EnumDefinitionImpl):
 
-    office = PermissibleValue(text="office")
-    market = PermissibleValue(text="market")
-    restaurant = PermissibleValue(text="restaurant")
-    residence = PermissibleValue(text="residence")
-    school = PermissibleValue(text="school")
-    residential = PermissibleValue(text="residential")
-    commercial = PermissibleValue(text="commercial")
-    airport = PermissibleValue(text="airport")
-
-    _defn = EnumDefinition(
-        name="BuildOccupTypeEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "low rise",
-            PermissibleValue(text="low rise"))
-        setattr(cls, "high rise",
-            PermissibleValue(text="high rise"))
-        setattr(cls, "wood framed",
-            PermissibleValue(text="wood framed"))
-        setattr(cls, "health care",
-            PermissibleValue(text="health care"))
-        setattr(cls, "sports complex",
-            PermissibleValue(text="sports complex"))
-
-class RoomLocEnum(EnumDefinitionImpl):
-
-    _defn = EnumDefinition(
-        name="RoomLocEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "corner room",
-            PermissibleValue(text="corner room"))
-        setattr(cls, "interior room",
-            PermissibleValue(text="interior room"))
-        setattr(cls, "exterior wall",
-            PermissibleValue(text="exterior wall"))
-
-class WallLocEnum(EnumDefinitionImpl):
-
-    north = PermissibleValue(text="north")
-    south = PermissibleValue(text="south")
-    east = PermissibleValue(text="east")
-    west = PermissibleValue(text="west")
-
-    _defn = EnumDefinition(
-        name="WallLocEnum",
-    )
-
-class SurfMaterialEnum(EnumDefinitionImpl):
-
-    adobe = PermissibleValue(text="adobe")
-    carpet = PermissibleValue(text="carpet")
-    concrete = PermissibleValue(text="concrete")
-    glass = PermissibleValue(text="glass")
+    composite = PermissibleValue(text="composite")
     metal = PermissibleValue(text="metal")
-    paint = PermissibleValue(text="paint")
-    plastic = PermissibleValue(text="plastic")
-    stone = PermissibleValue(text="stone")
-    stucco = PermissibleValue(text="stucco")
-    tile = PermissibleValue(text="tile")
-    vinyl = PermissibleValue(text="vinyl")
-    wood = PermissibleValue(text="wood")
+    wooden = PermissibleValue(text="wooden")
 
     _defn = EnumDefinition(
-        name="SurfMaterialEnum",
+        name="DoorTypeEnum",
     )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "cinder blocks",
-            PermissibleValue(text="cinder blocks"))
-        setattr(cls, "hay bales",
-            PermissibleValue(text="hay bales"))
-        setattr(cls, "stainless steel",
-            PermissibleValue(text="stainless steel"))
-
-class ProfilePositionEnum(EnumDefinitionImpl):
-
-    summit = PermissibleValue(text="summit")
-    shoulder = PermissibleValue(text="shoulder")
-    backslope = PermissibleValue(text="backslope")
-    footslope = PermissibleValue(text="footslope")
-    toeslope = PermissibleValue(text="toeslope")
-
-    _defn = EnumDefinition(
-        name="ProfilePositionEnum",
-    )
-
-class HcrGeolAgeEnum(EnumDefinitionImpl):
-
-    Archean = PermissibleValue(text="Archean")
-    Cambrian = PermissibleValue(text="Cambrian")
-    Carboniferous = PermissibleValue(text="Carboniferous")
-    Cenozoic = PermissibleValue(text="Cenozoic")
-    Cretaceous = PermissibleValue(text="Cretaceous")
-    Devonian = PermissibleValue(text="Devonian")
-    Jurassic = PermissibleValue(text="Jurassic")
-    Mesozoic = PermissibleValue(text="Mesozoic")
-    Neogene = PermissibleValue(text="Neogene")
-    Ordovician = PermissibleValue(text="Ordovician")
-    Paleogene = PermissibleValue(text="Paleogene")
-    Paleozoic = PermissibleValue(text="Paleozoic")
-    Permian = PermissibleValue(text="Permian")
-    Precambrian = PermissibleValue(text="Precambrian")
-    Proterozoic = PermissibleValue(text="Proterozoic")
-    Silurian = PermissibleValue(text="Silurian")
-    Triassic = PermissibleValue(text="Triassic")
-    other = PermissibleValue(text="other")
-
-    _defn = EnumDefinition(
-        name="HcrGeolAgeEnum",
-    )
-
-class WindowTypeEnum(EnumDefinitionImpl):
-
-    _defn = EnumDefinition(
-        name="WindowTypeEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "single-hung sash window",
-            PermissibleValue(text="single-hung sash window"))
-        setattr(cls, "horizontal sash window",
-            PermissibleValue(text="horizontal sash window"))
-        setattr(cls, "fixed window",
-            PermissibleValue(text="fixed window"))
-
-class MechStrucEnum(EnumDefinitionImpl):
-
-    subway = PermissibleValue(text="subway")
-    coach = PermissibleValue(text="coach")
-    carriage = PermissibleValue(text="carriage")
-    elevator = PermissibleValue(text="elevator")
-    escalator = PermissibleValue(text="escalator")
-    boat = PermissibleValue(text="boat")
-    train = PermissibleValue(text="train")
-    car = PermissibleValue(text="car")
-    bus = PermissibleValue(text="bus")
-
-    _defn = EnumDefinition(
-        name="MechStrucEnum",
-    )
-
-class WindowVertPosEnum(EnumDefinitionImpl):
-
-    bottom = PermissibleValue(text="bottom")
-    middle = PermissibleValue(text="middle")
-    top = PermissibleValue(text="top")
-    low = PermissibleValue(text="low")
-    high = PermissibleValue(text="high")
-
-    _defn = EnumDefinition(
-        name="WindowVertPosEnum",
-    )
-
-class RoomConnectedEnum(EnumDefinitionImpl):
-
-    attic = PermissibleValue(text="attic")
-    bathroom = PermissibleValue(text="bathroom")
-    closet = PermissibleValue(text="closet")
-    elevator = PermissibleValue(text="elevator")
-    hallway = PermissibleValue(text="hallway")
-    kitchen = PermissibleValue(text="kitchen")
-    office = PermissibleValue(text="office")
-    stairwell = PermissibleValue(text="stairwell")
-
-    _defn = EnumDefinition(
-        name="RoomConnectedEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "conference room",
-            PermissibleValue(text="conference room"))
-        setattr(cls, "examining room",
-            PermissibleValue(text="examining room"))
-        setattr(cls, "mail room",
-            PermissibleValue(text="mail room"))
 
 class RoomTypeEnum(EnumDefinitionImpl):
 
@@ -7213,64 +7830,74 @@ class RoomTypeEnum(EnumDefinitionImpl):
         setattr(cls, "data center",
             PermissibleValue(text="data center"))
 
-class BuildDocsEnum(EnumDefinitionImpl):
+class SrLithologyEnum(EnumDefinitionImpl):
 
-    schedule = PermissibleValue(text="schedule")
-    sections = PermissibleValue(text="sections")
-    submittals = PermissibleValue(text="submittals")
-    windows = PermissibleValue(text="windows")
-
-    _defn = EnumDefinition(
-        name="BuildDocsEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "building information model",
-            PermissibleValue(text="building information model"))
-        setattr(cls, "commissioning report",
-            PermissibleValue(text="commissioning report"))
-        setattr(cls, "complaint logs",
-            PermissibleValue(text="complaint logs"))
-        setattr(cls, "contract administration",
-            PermissibleValue(text="contract administration"))
-        setattr(cls, "cost estimate",
-            PermissibleValue(text="cost estimate"))
-        setattr(cls, "janitorial schedules or logs",
-            PermissibleValue(text="janitorial schedules or logs"))
-        setattr(cls, "maintenance plans",
-            PermissibleValue(text="maintenance plans"))
-        setattr(cls, "shop drawings",
-            PermissibleValue(text="shop drawings"))
-        setattr(cls, "ventilation system",
-            PermissibleValue(text="ventilation system"))
-
-class HcProducedEnum(EnumDefinitionImpl):
-
-    Oil = PermissibleValue(text="Oil")
-    Gas = PermissibleValue(text="Gas")
-    Bitumen = PermissibleValue(text="Bitumen")
+    Clastic = PermissibleValue(text="Clastic")
+    Carbonate = PermissibleValue(text="Carbonate")
+    Coal = PermissibleValue(text="Coal")
+    Biosilicieous = PermissibleValue(text="Biosilicieous")
     other = PermissibleValue(text="other")
 
     _defn = EnumDefinition(
-        name="HcProducedEnum",
+        name="SrLithologyEnum",
+    )
+
+class HostSexEnum(EnumDefinitionImpl):
+
+    female = PermissibleValue(text="female")
+    hermaphrodite = PermissibleValue(text="hermaphrodite")
+    male = PermissibleValue(text="male")
+    neuter = PermissibleValue(text="neuter")
+
+    _defn = EnumDefinition(
+        name="HostSexEnum",
+    )
+
+class BiolStatEnum(EnumDefinitionImpl):
+
+    wild = PermissibleValue(text="wild")
+    natural = PermissibleValue(text="natural")
+    hybrid = PermissibleValue(text="hybrid")
+    mutant = PermissibleValue(text="mutant")
+
+    _defn = EnumDefinition(
+        name="BiolStatEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "Gas-Condensate",
-            PermissibleValue(text="Gas-Condensate"))
-        setattr(cls, "Coalbed Methane",
-            PermissibleValue(text="Coalbed Methane"))
+        setattr(cls, "semi-natural",
+            PermissibleValue(text="semi-natural"))
+        setattr(cls, "inbred line",
+            PermissibleValue(text="inbred line"))
+        setattr(cls, "breeder's line",
+            PermissibleValue(text="breeder's line"))
+        setattr(cls, "clonal selection",
+            PermissibleValue(text="clonal selection"))
 
-class IntWallCondEnum(EnumDefinitionImpl):
+class ExtWindowOrientEnum(EnumDefinitionImpl):
+
+    north = PermissibleValue(text="north")
+    south = PermissibleValue(text="south")
+    east = PermissibleValue(text="east")
+    west = PermissibleValue(text="west")
+    northeast = PermissibleValue(text="northeast")
+    southeast = PermissibleValue(text="southeast")
+    southwest = PermissibleValue(text="southwest")
+    northwest = PermissibleValue(text="northwest")
+
+    _defn = EnumDefinition(
+        name="ExtWindowOrientEnum",
+    )
+
+class CeilCondEnum(EnumDefinitionImpl):
 
     new = PermissibleValue(text="new")
     damaged = PermissibleValue(text="damaged")
     rupture = PermissibleValue(text="rupture")
 
     _defn = EnumDefinition(
-        name="IntWallCondEnum",
+        name="CeilCondEnum",
     )
 
     @classmethod
@@ -7280,146 +7907,62 @@ class IntWallCondEnum(EnumDefinitionImpl):
         setattr(cls, "needs repair",
             PermissibleValue(text="needs repair"))
 
-class VisMediaEnum(EnumDefinitionImpl):
-
-    photos = PermissibleValue(text="photos")
-    videos = PermissibleValue(text="videos")
-    interiors = PermissibleValue(text="interiors")
-    equipment = PermissibleValue(text="equipment")
-
-    _defn = EnumDefinition(
-        name="VisMediaEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "commonly of the building",
-            PermissibleValue(text="commonly of the building"))
-        setattr(cls, "site context (adjacent buildings, vegetation, terrain, streets)",
-            PermissibleValue(text="site context (adjacent buildings, vegetation, terrain, streets)"))
-        setattr(cls, "3D scans",
-            PermissibleValue(text="3D scans"))
-
-class HandidnessEnum(EnumDefinitionImpl):
-
-    ambidexterity = PermissibleValue(text="ambidexterity")
-
-    _defn = EnumDefinition(
-        name="HandidnessEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "left handedness",
-            PermissibleValue(text="left handedness"))
-        setattr(cls, "mixed-handedness",
-            PermissibleValue(text="mixed-handedness"))
-        setattr(cls, "right handedness",
-            PermissibleValue(text="right handedness"))
-
-class IndoorSurfEnum(EnumDefinitionImpl):
-
-    cabinet = PermissibleValue(text="cabinet")
-    ceiling = PermissibleValue(text="ceiling")
-    door = PermissibleValue(text="door")
-    shelving = PermissibleValue(text="shelving")
-    window = PermissibleValue(text="window")
-    wall = PermissibleValue(text="wall")
-
-    _defn = EnumDefinition(
-        name="IndoorSurfEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "counter top",
-            PermissibleValue(text="counter top"))
-        setattr(cls, "vent cover",
-            PermissibleValue(text="vent cover"))
-
-class RoomCondtEnum(EnumDefinitionImpl):
-
-    new = PermissibleValue(text="new")
-    damaged = PermissibleValue(text="damaged")
-    rupture = PermissibleValue(text="rupture")
-
-    _defn = EnumDefinition(
-        name="RoomCondtEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "visible wear",
-            PermissibleValue(text="visible wear"))
-        setattr(cls, "needs repair",
-            PermissibleValue(text="needs repair"))
-        setattr(cls, "visible signs of mold/mildew",
-            PermissibleValue(text="visible signs of mold/mildew"))
-
-class TrainStopLocEnum(EnumDefinitionImpl):
-
-    end = PermissibleValue(text="end")
-    mid = PermissibleValue(text="mid")
-    downtown = PermissibleValue(text="downtown")
-
-    _defn = EnumDefinition(
-        name="TrainStopLocEnum",
-    )
-
-class WallFinishMatEnum(EnumDefinitionImpl):
-
-    plaster = PermissibleValue(text="plaster")
-    tile = PermissibleValue(text="tile")
-    terrazzo = PermissibleValue(text="terrazzo")
-    wood = PermissibleValue(text="wood")
-    metal = PermissibleValue(text="metal")
-    masonry = PermissibleValue(text="masonry")
-
-    _defn = EnumDefinition(
-        name="WallFinishMatEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "gypsum plaster",
-            PermissibleValue(text="gypsum plaster"))
-        setattr(cls, "veneer plaster",
-            PermissibleValue(text="veneer plaster"))
-        setattr(cls, "gypsum board",
-            PermissibleValue(text="gypsum board"))
-        setattr(cls, "stone facing",
-            PermissibleValue(text="stone facing"))
-        setattr(cls, "acoustical treatment",
-            PermissibleValue(text="acoustical treatment"))
-
-class SrDepEnvEnum(EnumDefinitionImpl):
-
-    Lacustine = PermissibleValue(text="Lacustine")
-    Fluvioldeltaic = PermissibleValue(text="Fluvioldeltaic")
-    Fluviomarine = PermissibleValue(text="Fluviomarine")
-    Marine = PermissibleValue(text="Marine")
-    other = PermissibleValue(text="other")
-
-    _defn = EnumDefinition(
-        name="SrDepEnvEnum",
-    )
-
-class DoorMoveEnum(EnumDefinitionImpl):
+class DoorTypeMetalEnum(EnumDefinitionImpl):
 
     collapsible = PermissibleValue(text="collapsible")
-    folding = PermissibleValue(text="folding")
-    revolving = PermissibleValue(text="revolving")
-    sliding = PermissibleValue(text="sliding")
-    swinging = PermissibleValue(text="swinging")
+    hollow = PermissibleValue(text="hollow")
 
     _defn = EnumDefinition(
-        name="DoorMoveEnum",
+        name="DoorTypeMetalEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "rolling shutter",
-            PermissibleValue(text="rolling shutter"))
+        setattr(cls, "corrugated steel",
+            PermissibleValue(text="corrugated steel"))
+        setattr(cls, "rolling shutters",
+            PermissibleValue(text="rolling shutters"))
+        setattr(cls, "steel plate",
+            PermissibleValue(text="steel plate"))
+
+class SampMdEnum(EnumDefinitionImpl):
+
+    DF = PermissibleValue(text="DF")
+    RT = PermissibleValue(text="RT")
+    KB = PermissibleValue(text="KB")
+    MSL = PermissibleValue(text="MSL")
+    other = PermissibleValue(text="other")
+
+    _defn = EnumDefinition(
+        name="SampMdEnum",
+    )
+
+class ShadingDeviceCondEnum(EnumDefinitionImpl):
+
+    damaged = PermissibleValue(text="damaged")
+    new = PermissibleValue(text="new")
+    rupture = PermissibleValue(text="rupture")
+
+    _defn = EnumDefinition(
+        name="ShadingDeviceCondEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "needs repair",
+            PermissibleValue(text="needs repair"))
+        setattr(cls, "visible wear",
+            PermissibleValue(text="visible wear"))
+
+class WindowHorizPosEnum(EnumDefinitionImpl):
+
+    left = PermissibleValue(text="left")
+    middle = PermissibleValue(text="middle")
+    right = PermissibleValue(text="right")
+
+    _defn = EnumDefinition(
+        name="WindowHorizPosEnum",
+    )
 
 class FaoClassEnum(EnumDefinitionImpl):
 
@@ -7454,452 +7997,79 @@ class FaoClassEnum(EnumDefinitionImpl):
         name="FaoClassEnum",
     )
 
-class IndoorSpaceEnum(EnumDefinitionImpl):
+class BuildDocsEnum(EnumDefinitionImpl):
 
-    bedroom = PermissibleValue(text="bedroom")
-    office = PermissibleValue(text="office")
-    bathroom = PermissibleValue(text="bathroom")
-    foyer = PermissibleValue(text="foyer")
-    kitchen = PermissibleValue(text="kitchen")
-    hallway = PermissibleValue(text="hallway")
-    elevator = PermissibleValue(text="elevator")
+    schedule = PermissibleValue(text="schedule")
+    sections = PermissibleValue(text="sections")
+    submittals = PermissibleValue(text="submittals")
+    windows = PermissibleValue(text="windows")
 
     _defn = EnumDefinition(
-        name="IndoorSpaceEnum",
+        name="BuildDocsEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "locker room",
-            PermissibleValue(text="locker room"))
+        setattr(cls, "building information model",
+            PermissibleValue(text="building information model"))
+        setattr(cls, "commissioning report",
+            PermissibleValue(text="commissioning report"))
+        setattr(cls, "complaint logs",
+            PermissibleValue(text="complaint logs"))
+        setattr(cls, "contract administration",
+            PermissibleValue(text="contract administration"))
+        setattr(cls, "cost estimate",
+            PermissibleValue(text="cost estimate"))
+        setattr(cls, "janitorial schedules or logs",
+            PermissibleValue(text="janitorial schedules or logs"))
+        setattr(cls, "maintenance plans",
+            PermissibleValue(text="maintenance plans"))
+        setattr(cls, "shop drawings",
+            PermissibleValue(text="shop drawings"))
+        setattr(cls, "ventilation system",
+            PermissibleValue(text="ventilation system"))
 
-class SedimentTypeEnum(EnumDefinitionImpl):
-
-    biogenous = PermissibleValue(text="biogenous")
-    cosmogenous = PermissibleValue(text="cosmogenous")
-    hydrogenous = PermissibleValue(text="hydrogenous")
-    lithogenous = PermissibleValue(text="lithogenous")
-
-    _defn = EnumDefinition(
-        name="SedimentTypeEnum",
-    )
-
-class HostSexEnum(EnumDefinitionImpl):
-
-    female = PermissibleValue(text="female")
-    hermaphrodite = PermissibleValue(text="hermaphrodite")
-    male = PermissibleValue(text="male")
-    neuter = PermissibleValue(text="neuter")
-
-    _defn = EnumDefinition(
-        name="HostSexEnum",
-    )
-
-class QuadPosEnum(EnumDefinitionImpl):
+class RelSampLocEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
-        name="QuadPosEnum",
+        name="RelSampLocEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "North side",
-            PermissibleValue(text="North side"))
-        setattr(cls, "West side",
-            PermissibleValue(text="West side"))
-        setattr(cls, "South side",
-            PermissibleValue(text="South side"))
-        setattr(cls, "East side",
-            PermissibleValue(text="East side"))
+        setattr(cls, "edge of car",
+            PermissibleValue(text="edge of car"))
+        setattr(cls, "center of car",
+            PermissibleValue(text="center of car"))
+        setattr(cls, "under a seat",
+            PermissibleValue(text="under a seat"))
 
-class FloorFinishMatEnum(EnumDefinitionImpl):
+class TrainStopLocEnum(EnumDefinitionImpl):
 
-    tile = PermissibleValue(text="tile")
-    carpet = PermissibleValue(text="carpet")
-    rug = PermissibleValue(text="rug")
-    lineoleum = PermissibleValue(text="lineoleum")
-    stone = PermissibleValue(text="stone")
-    bamboo = PermissibleValue(text="bamboo")
-    cork = PermissibleValue(text="cork")
-    terrazo = PermissibleValue(text="terrazo")
-    concrete = PermissibleValue(text="concrete")
-    none = PermissibleValue(text="none")
-    sealed = PermissibleValue(text="sealed")
-    paint = PermissibleValue(text="paint")
+    end = PermissibleValue(text="end")
+    mid = PermissibleValue(text="mid")
+    downtown = PermissibleValue(text="downtown")
 
     _defn = EnumDefinition(
-        name="FloorFinishMatEnum",
+        name="TrainStopLocEnum",
     )
 
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "wood strip or parquet",
-            PermissibleValue(text="wood strip or parquet"))
-        setattr(cls, "laminate wood",
-            PermissibleValue(text="laminate wood"))
-        setattr(cls, "vinyl composition tile",
-            PermissibleValue(text="vinyl composition tile"))
-        setattr(cls, "sheet vinyl",
-            PermissibleValue(text="sheet vinyl"))
-        setattr(cls, "clear finish",
-            PermissibleValue(text="clear finish"))
-        setattr(cls, "none or unfinished",
-            PermissibleValue(text="none or unfinished"))
+class SampDisStageEnum(EnumDefinitionImpl):
 
-class TrainStatLocEnum(EnumDefinitionImpl):
-
-    riverside = PermissibleValue(text="riverside")
-
-    _defn = EnumDefinition(
-        name="TrainStatLocEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "south station above ground",
-            PermissibleValue(text="south station above ground"))
-        setattr(cls, "south station underground",
-            PermissibleValue(text="south station underground"))
-        setattr(cls, "south station amtrak",
-            PermissibleValue(text="south station amtrak"))
-        setattr(cls, "forest hills",
-            PermissibleValue(text="forest hills"))
-
-class TrainLineEnum(EnumDefinitionImpl):
-
-    red = PermissibleValue(text="red")
-    green = PermissibleValue(text="green")
-    orange = PermissibleValue(text="orange")
-
-    _defn = EnumDefinition(
-        name="TrainLineEnum",
-    )
-
-class OccupDocumentEnum(EnumDefinitionImpl):
-
-    estimate = PermissibleValue(text="estimate")
-    videos = PermissibleValue(text="videos")
-
-    _defn = EnumDefinition(
-        name="OccupDocumentEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "automated count",
-            PermissibleValue(text="automated count"))
-        setattr(cls, "manual count",
-            PermissibleValue(text="manual count"))
-
-class SrKerogTypeEnum(EnumDefinitionImpl):
-
+    dissemination = PermissibleValue(text="dissemination")
+    infection = PermissibleValue(text="infection")
+    inoculation = PermissibleValue(text="inoculation")
+    penetration = PermissibleValue(text="penetration")
     other = PermissibleValue(text="other")
 
     _defn = EnumDefinition(
-        name="SrKerogTypeEnum",
+        name="SampDisStageEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "Type I",
-            PermissibleValue(text="Type I"))
-        setattr(cls, "Type II",
-            PermissibleValue(text="Type II"))
-        setattr(cls, "Type III",
-            PermissibleValue(text="Type III"))
-        setattr(cls, "Type IV",
-            PermissibleValue(text="Type IV"))
-
-class SoilHorizonEnum(EnumDefinitionImpl):
-
-    Permafrost = PermissibleValue(text="Permafrost")
-
-    _defn = EnumDefinition(
-        name="SoilHorizonEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "O horizon",
-            PermissibleValue(text="O horizon"))
-        setattr(cls, "A horizon",
-            PermissibleValue(text="A horizon"))
-        setattr(cls, "E horizon",
-            PermissibleValue(text="E horizon"))
-        setattr(cls, "B horizon",
-            PermissibleValue(text="B horizon"))
-        setattr(cls, "C horizon",
-            PermissibleValue(text="C horizon"))
-        setattr(cls, "R layer",
-            PermissibleValue(text="R layer"))
-        setattr(cls, "M horizon",
-            PermissibleValue(text="M horizon"))
-
-class SampFloorEnum(EnumDefinitionImpl):
-
-    basement = PermissibleValue(text="basement")
-    lobby = PermissibleValue(text="lobby")
-
-    _defn = EnumDefinition(
-        name="SampFloorEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "1st floor",
-            PermissibleValue(text="1st floor"))
-        setattr(cls, "2nd floor",
-            PermissibleValue(text="2nd floor"))
-
-class DrawingsEnum(EnumDefinitionImpl):
-
-    operation = PermissibleValue(text="operation")
-    construction = PermissibleValue(text="construction")
-    bid = PermissibleValue(text="bid")
-    design = PermissibleValue(text="design")
-    diagram = PermissibleValue(text="diagram")
-    sketch = PermissibleValue(text="sketch")
-
-    _defn = EnumDefinition(
-        name="DrawingsEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "as built",
-            PermissibleValue(text="as built"))
-        setattr(cls, "building navigation map",
-            PermissibleValue(text="building navigation map"))
-
-class WallConstTypeEnum(EnumDefinitionImpl):
-
-    _defn = EnumDefinition(
-        name="WallConstTypeEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "frame construction",
-            PermissibleValue(text="frame construction"))
-        setattr(cls, "joisted masonry",
-            PermissibleValue(text="joisted masonry"))
-        setattr(cls, "light noncombustible",
-            PermissibleValue(text="light noncombustible"))
-        setattr(cls, "masonry noncombustible",
-            PermissibleValue(text="masonry noncombustible"))
-        setattr(cls, "modified fire resistive",
-            PermissibleValue(text="modified fire resistive"))
-        setattr(cls, "fire resistive",
-            PermissibleValue(text="fire resistive"))
-
-class ShadingDeviceTypeEnum(EnumDefinitionImpl):
-
-    tree = PermissibleValue(text="tree")
-    trellis = PermissibleValue(text="trellis")
-
-    _defn = EnumDefinition(
-        name="ShadingDeviceTypeEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "bahama shutters",
-            PermissibleValue(text="bahama shutters"))
-        setattr(cls, "exterior roll blind",
-            PermissibleValue(text="exterior roll blind"))
-        setattr(cls, "gambrel awning",
-            PermissibleValue(text="gambrel awning"))
-        setattr(cls, "hood awning",
-            PermissibleValue(text="hood awning"))
-        setattr(cls, "porchroller awning",
-            PermissibleValue(text="porchroller awning"))
-        setattr(cls, "sarasota shutters",
-            PermissibleValue(text="sarasota shutters"))
-        setattr(cls, "slatted aluminum",
-            PermissibleValue(text="slatted aluminum"))
-        setattr(cls, "solid aluminum awning",
-            PermissibleValue(text="solid aluminum awning"))
-        setattr(cls, "sun screen",
-            PermissibleValue(text="sun screen"))
-        setattr(cls, "venetian awning",
-            PermissibleValue(text="venetian awning"))
-
-class WindowMatEnum(EnumDefinitionImpl):
-
-    clad = PermissibleValue(text="clad")
-    fiberglass = PermissibleValue(text="fiberglass")
-    metal = PermissibleValue(text="metal")
-    vinyl = PermissibleValue(text="vinyl")
-    wood = PermissibleValue(text="wood")
-
-    _defn = EnumDefinition(
-        name="WindowMatEnum",
-    )
-
-class DoorCompTypeEnum(EnumDefinitionImpl):
-
-    revolving = PermissibleValue(text="revolving")
-    sliding = PermissibleValue(text="sliding")
-    telescopic = PermissibleValue(text="telescopic")
-
-    _defn = EnumDefinition(
-        name="DoorCompTypeEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "metal covered",
-            PermissibleValue(text="metal covered"))
-
-class DoorCondEnum(EnumDefinitionImpl):
-
-    damaged = PermissibleValue(text="damaged")
-    new = PermissibleValue(text="new")
-    rupture = PermissibleValue(text="rupture")
-
-    _defn = EnumDefinition(
-        name="DoorCondEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "needs repair",
-            PermissibleValue(text="needs repair"))
-        setattr(cls, "visible wear",
-            PermissibleValue(text="visible wear"))
-
-class DoorLocEnum(EnumDefinitionImpl):
-
-    north = PermissibleValue(text="north")
-    south = PermissibleValue(text="south")
-    east = PermissibleValue(text="east")
-    west = PermissibleValue(text="west")
-
-    _defn = EnumDefinition(
-        name="DoorLocEnum",
-    )
-
-class BuildingSettingEnum(EnumDefinitionImpl):
-
-    urban = PermissibleValue(text="urban")
-    suburban = PermissibleValue(text="suburban")
-    exurban = PermissibleValue(text="exurban")
-    rural = PermissibleValue(text="rural")
-
-    _defn = EnumDefinition(
-        name="BuildingSettingEnum",
-    )
-
-class LithologyEnum(EnumDefinitionImpl):
-
-    Basement = PermissibleValue(text="Basement")
-    Chalk = PermissibleValue(text="Chalk")
-    Chert = PermissibleValue(text="Chert")
-    Coal = PermissibleValue(text="Coal")
-    Conglomerate = PermissibleValue(text="Conglomerate")
-    Diatomite = PermissibleValue(text="Diatomite")
-    Dolomite = PermissibleValue(text="Dolomite")
-    Limestone = PermissibleValue(text="Limestone")
-    Sandstone = PermissibleValue(text="Sandstone")
-    Shale = PermissibleValue(text="Shale")
-    Siltstone = PermissibleValue(text="Siltstone")
-    Volcanic = PermissibleValue(text="Volcanic")
-    other = PermissibleValue(text="other")
-
-    _defn = EnumDefinition(
-        name="LithologyEnum",
-    )
-
-class WaterFeatTypeEnum(EnumDefinitionImpl):
-
-    fountain = PermissibleValue(text="fountain")
-    pool = PermissibleValue(text="pool")
-    stream = PermissibleValue(text="stream")
-    waterfall = PermissibleValue(text="waterfall")
-
-    _defn = EnumDefinition(
-        name="WaterFeatTypeEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "standing feature",
-            PermissibleValue(text="standing feature"))
-
-class SrGeolAgeEnum(EnumDefinitionImpl):
-
-    Archean = PermissibleValue(text="Archean")
-    Cambrian = PermissibleValue(text="Cambrian")
-    Carboniferous = PermissibleValue(text="Carboniferous")
-    Cenozoic = PermissibleValue(text="Cenozoic")
-    Cretaceous = PermissibleValue(text="Cretaceous")
-    Devonian = PermissibleValue(text="Devonian")
-    Jurassic = PermissibleValue(text="Jurassic")
-    Mesozoic = PermissibleValue(text="Mesozoic")
-    Neogene = PermissibleValue(text="Neogene")
-    Ordovician = PermissibleValue(text="Ordovician")
-    Paleogene = PermissibleValue(text="Paleogene")
-    Paleozoic = PermissibleValue(text="Paleozoic")
-    Permian = PermissibleValue(text="Permian")
-    Precambrian = PermissibleValue(text="Precambrian")
-    Proterozoic = PermissibleValue(text="Proterozoic")
-    Silurian = PermissibleValue(text="Silurian")
-    Triassic = PermissibleValue(text="Triassic")
-    other = PermissibleValue(text="other")
-
-    _defn = EnumDefinition(
-        name="SrGeolAgeEnum",
-    )
-
-class SampSubtypeEnum(EnumDefinitionImpl):
-
-    biofilm = PermissibleValue(text="biofilm")
-    other = PermissibleValue(text="other")
-
-    _defn = EnumDefinition(
-        name="SampSubtypeEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "oil phase",
-            PermissibleValue(text="oil phase"))
-        setattr(cls, "water phase",
-            PermissibleValue(text="water phase"))
-        setattr(cls, "not applicable",
-            PermissibleValue(text="not applicable"))
-
-class WindowCoverEnum(EnumDefinitionImpl):
-
-    blinds = PermissibleValue(text="blinds")
-    curtains = PermissibleValue(text="curtains")
-    none = PermissibleValue(text="none")
-
-    _defn = EnumDefinition(
-        name="WindowCoverEnum",
-    )
-
-class FloorStrucEnum(EnumDefinitionImpl):
-
-    balcony = PermissibleValue(text="balcony")
-    concrete = PermissibleValue(text="concrete")
-
-    _defn = EnumDefinition(
-        name="FloorStrucEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "floating floor",
-            PermissibleValue(text="floating floor"))
-        setattr(cls, "glass floor",
-            PermissibleValue(text="glass floor"))
-        setattr(cls, "raised floor",
-            PermissibleValue(text="raised floor"))
-        setattr(cls, "sprung floor",
-            PermissibleValue(text="sprung floor"))
-        setattr(cls, "wood-framed",
-            PermissibleValue(text="wood-framed"))
+        setattr(cls, "growth and reproduction",
+            PermissibleValue(text="growth and reproduction"))
 
 class SampCaptStatusEnum(EnumDefinitionImpl):
 
@@ -7920,255 +8090,39 @@ class SampCaptStatusEnum(EnumDefinitionImpl):
         setattr(cls, "market sample",
             PermissibleValue(text="market sample"))
 
-class BioticRelationshipEnum(EnumDefinitionImpl):
+class DoorCompTypeEnum(EnumDefinitionImpl):
 
-    parasite = PermissibleValue(text="parasite")
-    commensal = PermissibleValue(text="commensal")
-    symbiont = PermissibleValue(text="symbiont")
+    revolving = PermissibleValue(text="revolving")
+    sliding = PermissibleValue(text="sliding")
+    telescopic = PermissibleValue(text="telescopic")
 
     _defn = EnumDefinition(
-        name="BioticRelationshipEnum",
+        name="DoorCompTypeEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "free living",
-            PermissibleValue(text="free living"))
+        setattr(cls, "metal covered",
+            PermissibleValue(text="metal covered"))
 
-class RoomSampPosEnum(EnumDefinitionImpl):
-
-    center = PermissibleValue(text="center")
+class HeatCoolTypeEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
-        name="RoomSampPosEnum",
+        name="HeatCoolTypeEnum",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "north corner",
-            PermissibleValue(text="north corner"))
-        setattr(cls, "south corner",
-            PermissibleValue(text="south corner"))
-        setattr(cls, "west corner",
-            PermissibleValue(text="west corner"))
-        setattr(cls, "east corner",
-            PermissibleValue(text="east corner"))
-        setattr(cls, "northeast corner",
-            PermissibleValue(text="northeast corner"))
-        setattr(cls, "northwest corner",
-            PermissibleValue(text="northwest corner"))
-        setattr(cls, "southeast corner",
-            PermissibleValue(text="southeast corner"))
-        setattr(cls, "southwest corner",
-            PermissibleValue(text="southwest corner"))
-
-class DoorTypeWoodEnum(EnumDefinitionImpl):
-
-    battened = PermissibleValue(text="battened")
-    flush = PermissibleValue(text="flush")
-    louvered = PermissibleValue(text="louvered")
-
-    _defn = EnumDefinition(
-        name="DoorTypeWoodEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "bettened and ledged",
-            PermissibleValue(text="bettened and ledged"))
-        setattr(cls, "ledged and braced",
-            PermissibleValue(text="ledged and braced"))
-        setattr(cls, "ledged and framed",
-            PermissibleValue(text="ledged and framed"))
-        setattr(cls, "ledged, braced and frame",
-            PermissibleValue(text="ledged, braced and frame"))
-        setattr(cls, "framed and paneled",
-            PermissibleValue(text="framed and paneled"))
-        setattr(cls, "glashed or sash",
-            PermissibleValue(text="glashed or sash"))
-        setattr(cls, "wire gauged",
-            PermissibleValue(text="wire gauged"))
-
-class CeilCondEnum(EnumDefinitionImpl):
-
-    new = PermissibleValue(text="new")
-    damaged = PermissibleValue(text="damaged")
-    rupture = PermissibleValue(text="rupture")
-
-    _defn = EnumDefinition(
-        name="CeilCondEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "visible wear",
-            PermissibleValue(text="visible wear"))
-        setattr(cls, "needs repair",
-            PermissibleValue(text="needs repair"))
-
-class DoorDirectEnum(EnumDefinitionImpl):
-
-    inward = PermissibleValue(text="inward")
-    outward = PermissibleValue(text="outward")
-    sideways = PermissibleValue(text="sideways")
-
-    _defn = EnumDefinition(
-        name="DoorDirectEnum",
-    )
-
-class PlantGrowthMedEnum(EnumDefinitionImpl):
-
-    perlite = PermissibleValue(text="perlite")
-    pumice = PermissibleValue(text="pumice")
-    sand = PermissibleValue(text="sand")
-    soil = PermissibleValue(text="soil")
-    vermiculite = PermissibleValue(text="vermiculite")
-    water = PermissibleValue(text="water")
-
-    _defn = EnumDefinition(
-        name="PlantGrowthMedEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "other artificial liquid medium",
-            PermissibleValue(text="other artificial liquid medium"))
-        setattr(cls, "other artificial solid medium",
-            PermissibleValue(text="other artificial solid medium"))
-        setattr(cls, "peat moss",
-            PermissibleValue(text="peat moss"))
-
-class FreqCleanEnum(EnumDefinitionImpl):
-
-    Daily = PermissibleValue(text="Daily")
-    Weekly = PermissibleValue(text="Weekly")
-    Monthly = PermissibleValue(text="Monthly")
-    Quarterly = PermissibleValue(text="Quarterly")
-    Annually = PermissibleValue(text="Annually")
-    other = PermissibleValue(text="other")
-
-    _defn = EnumDefinition(
-        name="FreqCleanEnum",
-    )
-
-class SurfAirContEnum(EnumDefinitionImpl):
-
-    dust = PermissibleValue(text="dust")
-    radon = PermissibleValue(text="radon")
-    nutrients = PermissibleValue(text="nutrients")
-    biocides = PermissibleValue(text="biocides")
-
-    _defn = EnumDefinition(
-        name="SurfAirContEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "organic matter",
-            PermissibleValue(text="organic matter"))
-        setattr(cls, "particulate matter",
-            PermissibleValue(text="particulate matter"))
-        setattr(cls, "volatile organic compounds",
-            PermissibleValue(text="volatile organic compounds"))
-        setattr(cls, "biological contaminants",
-            PermissibleValue(text="biological contaminants"))
-
-class SampMdEnum(EnumDefinitionImpl):
-
-    DF = PermissibleValue(text="DF")
-    RT = PermissibleValue(text="RT")
-    KB = PermissibleValue(text="KB")
-    MSL = PermissibleValue(text="MSL")
-    other = PermissibleValue(text="other")
-
-    _defn = EnumDefinition(
-        name="SampMdEnum",
-    )
-
-class LightTypeEnum(EnumDefinitionImpl):
-
-    none = PermissibleValue(text="none")
-
-    _defn = EnumDefinition(
-        name="LightTypeEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "natural light",
-            PermissibleValue(text="natural light"))
-        setattr(cls, "electric light",
-            PermissibleValue(text="electric light"))
-        setattr(cls, "desk lamp",
-            PermissibleValue(text="desk lamp"))
-        setattr(cls, "flourescent lights",
-            PermissibleValue(text="flourescent lights"))
-
-class CeilTextureEnum(EnumDefinitionImpl):
-
-    knockdown = PermissibleValue(text="knockdown")
-    popcorn = PermissibleValue(text="popcorn")
-    smooth = PermissibleValue(text="smooth")
-    swirl = PermissibleValue(text="swirl")
-
-    _defn = EnumDefinition(
-        name="CeilTextureEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "crows feet",
-            PermissibleValue(text="crows feet"))
-        setattr(cls, "crows-foot stomp",
-            PermissibleValue(text="crows-foot stomp"))
-        setattr(cls, "double skip",
-            PermissibleValue(text="double skip"))
-        setattr(cls, "hawk and trowel",
-            PermissibleValue(text="hawk and trowel"))
-        setattr(cls, "orange peel",
-            PermissibleValue(text="orange peel"))
-        setattr(cls, "rosebud stomp",
-            PermissibleValue(text="rosebud stomp"))
-        setattr(cls, "Santa-Fe texture",
-            PermissibleValue(text="Santa-Fe texture"))
-        setattr(cls, "skip trowel",
-            PermissibleValue(text="skip trowel"))
-        setattr(cls, "stomp knockdown",
-            PermissibleValue(text="stomp knockdown"))
-
-class WallTextureEnum(EnumDefinitionImpl):
-
-    knockdown = PermissibleValue(text="knockdown")
-    popcorn = PermissibleValue(text="popcorn")
-    smooth = PermissibleValue(text="smooth")
-    swirl = PermissibleValue(text="swirl")
-
-    _defn = EnumDefinition(
-        name="WallTextureEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "crows feet",
-            PermissibleValue(text="crows feet"))
-        setattr(cls, "crows-foot stomp",
-            PermissibleValue(text="crows-foot stomp"))
-        setattr(cls, "",
-            PermissibleValue(text=""))
-        setattr(cls, "double skip",
-            PermissibleValue(text="double skip"))
-        setattr(cls, "hawk and trowel",
-            PermissibleValue(text="hawk and trowel"))
-        setattr(cls, "orange peel",
-            PermissibleValue(text="orange peel"))
-        setattr(cls, "rosebud stomp",
-            PermissibleValue(text="rosebud stomp"))
-        setattr(cls, "Santa-Fe texture",
-            PermissibleValue(text="Santa-Fe texture"))
-        setattr(cls, "skip trowel",
-            PermissibleValue(text="skip trowel"))
-        setattr(cls, "stomp knockdown",
-            PermissibleValue(text="stomp knockdown"))
+        setattr(cls, "radiant system",
+            PermissibleValue(text="radiant system"))
+        setattr(cls, "heat pump",
+            PermissibleValue(text="heat pump"))
+        setattr(cls, "forced air system",
+            PermissibleValue(text="forced air system"))
+        setattr(cls, "steam forced heat",
+            PermissibleValue(text="steam forced heat"))
+        setattr(cls, "wood stove",
+            PermissibleValue(text="wood stove"))
 
 class SampleTypeEnum(EnumDefinitionImpl):
 
@@ -8302,7 +8256,8 @@ slots.neon_soil_type = Slot(uri=NMDC.neon_soil_type, name="neon_soil_type", curi
                    model_uri=NMDC.neon_soil_type, domain=None, range=Optional[str])
 
 slots.img_identifiers = Slot(uri=NMDC.img_identifiers, name="img_identifiers", curie=NMDC.curie('img_identifiers'),
-                   model_uri=NMDC.img_identifiers, domain=None, range=Optional[Union[str, List[str]]])
+                   model_uri=NMDC.img_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$'))
 
 slots.ecosystem_path_id = Slot(uri=NMDC.ecosystem_path_id, name="ecosystem_path_id", curie=NMDC.curie('ecosystem_path_id'),
                    model_uri=NMDC.ecosystem_path_id, domain=None, range=Optional[str])
@@ -8342,9 +8297,6 @@ slots.extraction_method = Slot(uri=NMDC.extraction_method, name="extraction_meth
 
 slots.extraction_target = Slot(uri=NMDC.extraction_target, name="extraction_target", curie=NMDC.curie('extraction_target'),
                    model_uri=NMDC.extraction_target, domain=None, range=Optional[Union[str, "ExtractionTargetEnum"]])
-
-slots.protocol_link = Slot(uri=NMDC.protocol_link, name="protocol_link", curie=NMDC.curie('protocol_link'),
-                   model_uri=NMDC.protocol_link, domain=None, range=Optional[Union[dict, Protocol]])
 
 slots.quality_control_report = Slot(uri=NMDC.quality_control_report, name="quality_control_report", curie=NMDC.curie('quality_control_report'),
                    model_uri=NMDC.quality_control_report, domain=None, range=Optional[Union[dict, QualityControlReport]])
@@ -8430,7 +8382,7 @@ slots.applied_role = Slot(uri=PROV.hadRole, name="applied_role", curie=PROV.curi
 slots.applied_roles = Slot(uri=NMDC.applied_roles, name="applied_roles", curie=NMDC.curie('applied_roles'),
                    model_uri=NMDC.applied_roles, domain=CreditAssociation, range=Union[Union[str, "CreditEnum"], List[Union[str, "CreditEnum"]]])
 
-slots.applies_to_person = Slot(uri=PROV.agent, name="applies_to_person", curie=PROV.curie('agent'),
+slots.applies_to_person = Slot(uri=NMDC.applies_to_person, name="applies_to_person", curie=NMDC.curie('applies_to_person'),
                    model_uri=NMDC.applies_to_person, domain=CreditAssociation, range=Union[dict, "PersonValue"])
 
 slots.object_set = Slot(uri=NMDC.object_set, name="object_set", curie=NMDC.curie('object_set'),
@@ -8655,39 +8607,6 @@ slots.smarts_string = Slot(uri=NMDC.smarts_string, name="smarts_string", curie=N
 slots.start = Slot(uri=NMDC.start, name="start", curie=NMDC.curie('start'),
                    model_uri=NMDC.start, domain=None, range=Optional[str])
 
-slots.id = Slot(uri=NMDC.id, name="id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.id, domain=None, range=URIRef)
-
-slots.name = Slot(uri=NMDC.name, name="name", curie=NMDC.curie('name'),
-                   model_uri=NMDC.name, domain=None, range=Optional[str])
-
-slots.description = Slot(uri=DCTERMS.description, name="description", curie=DCTERMS.curie('description'),
-                   model_uri=NMDC.description, domain=None, range=Optional[str])
-
-slots.type = Slot(uri=NMDC.type, name="type", curie=NMDC.curie('type'),
-                   model_uri=NMDC.type, domain=None, range=Optional[str])
-
-slots.title = Slot(uri=NMDC.title, name="title", curie=NMDC.curie('title'),
-                   model_uri=NMDC.title, domain=None, range=Optional[str])
-
-slots.alternative_titles = Slot(uri=NMDC.alternative_titles, name="alternative_titles", curie=NMDC.curie('alternative_titles'),
-                   model_uri=NMDC.alternative_titles, domain=None, range=Optional[Union[str, List[str]]])
-
-slots.alternative_names = Slot(uri=NMDC.alternative_names, name="alternative_names", curie=NMDC.curie('alternative_names'),
-                   model_uri=NMDC.alternative_names, domain=None, range=Optional[Union[str, List[str]]])
-
-slots.alternative_descriptions = Slot(uri=NMDC.alternative_descriptions, name="alternative_descriptions", curie=NMDC.curie('alternative_descriptions'),
-                   model_uri=NMDC.alternative_descriptions, domain=None, range=Optional[Union[str, List[str]]])
-
-slots.alternative_identifiers = Slot(uri=NMDC.alternative_identifiers, name="alternative_identifiers", curie=NMDC.curie('alternative_identifiers'),
-                   model_uri=NMDC.alternative_identifiers, domain=None, range=Optional[Union[str, List[str]]])
-
-slots.start_date = Slot(uri=NMDC.start_date, name="start_date", curie=NMDC.curie('start_date'),
-                   model_uri=NMDC.start_date, domain=None, range=Optional[str])
-
-slots.end_date = Slot(uri=NMDC.end_date, name="end_date", curie=NMDC.curie('end_date'),
-                   model_uri=NMDC.end_date, domain=None, range=Optional[str])
-
 slots.total_bases = Slot(uri=NMDC.total_bases, name="total_bases", curie=NMDC.curie('total_bases'),
                    model_uri=NMDC.total_bases, domain=None, range=Optional[str])
 
@@ -8744,9 +8663,6 @@ slots.gtdbtk_genus = Slot(uri=NMDC.gtdbtk_genus, name="gtdbtk_genus", curie=NMDC
 
 slots.gtdbtk_species = Slot(uri=NMDC.gtdbtk_species, name="gtdbtk_species", curie=NMDC.curie('gtdbtk_species'),
                    model_uri=NMDC.gtdbtk_species, domain=None, range=Optional[str])
-
-slots.participating_agent = Slot(uri=NMDC.participating_agent, name="participating_agent", curie=NMDC.curie('participating_agent'),
-                   model_uri=NMDC.participating_agent, domain=PlannedProcess, range=Optional[Union[dict, "Agent"]])
 
 slots.language = Slot(uri=NMDC.language, name="language", curie=NMDC.curie('language'),
                    model_uri=NMDC.language, domain=None, range=Optional[str])
@@ -8881,7 +8797,8 @@ slots.smiles = Slot(uri=NMDC.smiles, name="smiles", curie=NMDC.curie('smiles'),
                    model_uri=NMDC.smiles, domain=None, range=Optional[str])
 
 slots.external_database_identifiers = Slot(uri=NMDC.external_database_identifiers, name="external_database_identifiers", curie=NMDC.curie('external_database_identifiers'),
-                   model_uri=NMDC.external_database_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]])
+                   model_uri=NMDC.external_database_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$'))
 
 slots.igsn_identifiers = Slot(uri=NMDC.igsn_identifiers, name="igsn_identifiers", curie=NMDC.curie('igsn_identifiers'),
                    model_uri=NMDC.igsn_identifiers, domain=None, range=Optional[str])
@@ -8911,86 +8828,96 @@ slots.gnps_identifiers = Slot(uri=NMDC.gnps_identifiers, name="gnps_identifiers"
                    model_uri=NMDC.gnps_identifiers, domain=None, range=Optional[str])
 
 slots.study_identifiers = Slot(uri=NMDC.study_identifiers, name="study_identifiers", curie=NMDC.curie('study_identifiers'),
-                   model_uri=NMDC.study_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]])
+                   model_uri=NMDC.study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$'))
 
 slots.neon_study_identifiers = Slot(uri=NMDC.neon_study_identifiers, name="neon_study_identifiers", curie=NMDC.curie('neon_study_identifiers'),
-                   model_uri=NMDC.neon_study_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]])
+                   model_uri=NMDC.neon_study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$'))
 
 slots.insdc_sra_ena_study_identifiers = Slot(uri=NMDC.insdc_sra_ena_study_identifiers, name="insdc_sra_ena_study_identifiers", curie=NMDC.curie('insdc_sra_ena_study_identifiers'),
-                   model_uri=NMDC.insdc_sra_ena_study_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   model_uri=NMDC.insdc_sra_ena_study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^insdc.sra:(E|D|S)RP[0-9]{6,}$'))
 
 slots.insdc_bioproject_identifiers = Slot(uri=NMDC.insdc_bioproject_identifiers, name="insdc_bioproject_identifiers", curie=NMDC.curie('insdc_bioproject_identifiers'),
-                   model_uri=NMDC.insdc_bioproject_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   model_uri=NMDC.insdc_bioproject_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^bioproject:PRJ[DEN][A-Z][0-9]+$'))
 
 slots.gold_study_identifiers = Slot(uri=NMDC.gold_study_identifiers, name="gold_study_identifiers", curie=NMDC.curie('gold_study_identifiers'),
-                   model_uri=NMDC.gold_study_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   model_uri=NMDC.gold_study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^GOLD:Gs[0-9]+$'))
 
 slots.mgnify_project_identifiers = Slot(uri=NMDC.mgnify_project_identifiers, name="mgnify_project_identifiers", curie=NMDC.curie('mgnify_project_identifiers'),
-                   model_uri=NMDC.mgnify_project_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   model_uri=NMDC.mgnify_project_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^mgnify.proj:[A-Z]+[0-9]+$'))
 
 slots.gnps_task_identifiers = Slot(uri=NMDC.gnps_task_identifiers, name="gnps_task_identifiers", curie=NMDC.curie('gnps_task_identifiers'),
-                   model_uri=NMDC.gnps_task_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   model_uri=NMDC.gnps_task_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^gnps\.task:[a-f0-9]+$'))
 
 slots.massive_study_identifiers = Slot(uri=NMDC.massive_study_identifiers, name="massive_study_identifiers", curie=NMDC.curie('massive_study_identifiers'),
-                   model_uri=NMDC.massive_study_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   model_uri=NMDC.massive_study_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^MASSIVE:'))
 
 slots.emsl_proposal_identifier = Slot(uri=NMDC.emsl_proposal_identifier, name="emsl_proposal_identifier", curie=NMDC.curie('emsl_proposal_identifier'),
-                   model_uri=NMDC.emsl_proposal_identifier, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]])
+                   model_uri=NMDC.emsl_proposal_identifier, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$'))
 
 slots.biosample_identifiers = Slot(uri=NMDC.biosample_identifiers, name="biosample_identifiers", curie=NMDC.curie('biosample_identifiers'),
-                   model_uri=NMDC.biosample_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]])
+                   model_uri=NMDC.biosample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$'))
 
 slots.neon_biosample_identifiers = Slot(uri=NMDC.neon_biosample_identifiers, name="neon_biosample_identifiers", curie=NMDC.curie('neon_biosample_identifiers'),
-                   model_uri=NMDC.neon_biosample_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]])
+                   model_uri=NMDC.neon_biosample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$'))
 
 slots.gold_biosample_identifiers = Slot(uri=NMDC.gold_biosample_identifiers, name="gold_biosample_identifiers", curie=NMDC.curie('gold_biosample_identifiers'),
-                   model_uri=NMDC.gold_biosample_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   model_uri=NMDC.gold_biosample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^GOLD:Gb[0-9]+$'))
 
 slots.insdc_biosample_identifiers = Slot(uri=NMDC.insdc_biosample_identifiers, name="insdc_biosample_identifiers", curie=NMDC.curie('insdc_biosample_identifiers'),
-                   model_uri=NMDC.insdc_biosample_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   model_uri=NMDC.insdc_biosample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^biosample:SAM[NED]([A-Z])?[0-9]+$'))
 
 slots.insdc_secondary_sample_identifiers = Slot(uri=NMDC.insdc_secondary_sample_identifiers, name="insdc_secondary_sample_identifiers", curie=NMDC.curie('insdc_secondary_sample_identifiers'),
-                   model_uri=NMDC.insdc_secondary_sample_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   model_uri=NMDC.insdc_secondary_sample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^biosample:(E|D|S)RS[0-9]{6,}$'))
 
 slots.emsl_biosample_identifiers = Slot(uri=NMDC.emsl_biosample_identifiers, name="emsl_biosample_identifiers", curie=NMDC.curie('emsl_biosample_identifiers'),
-                   model_uri=NMDC.emsl_biosample_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]])
+                   model_uri=NMDC.emsl_biosample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$'))
 
 slots.igsn_biosample_identifiers = Slot(uri=NMDC.igsn_biosample_identifiers, name="igsn_biosample_identifiers", curie=NMDC.curie('igsn_biosample_identifiers'),
-                   model_uri=NMDC.igsn_biosample_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]])
+                   model_uri=NMDC.igsn_biosample_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$'))
 
 slots.omics_processing_identifiers = Slot(uri=NMDC.omics_processing_identifiers, name="omics_processing_identifiers", curie=NMDC.curie('omics_processing_identifiers'),
-                   model_uri=NMDC.omics_processing_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]])
+                   model_uri=NMDC.omics_processing_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$'))
 
 slots.gold_sequencing_project_identifiers = Slot(uri=NMDC.gold_sequencing_project_identifiers, name="gold_sequencing_project_identifiers", curie=NMDC.curie('gold_sequencing_project_identifiers'),
-                   model_uri=NMDC.gold_sequencing_project_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   model_uri=NMDC.gold_sequencing_project_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^GOLD:Gp[0-9]+$'))
 
 slots.insdc_experiment_identifiers = Slot(uri=NMDC.insdc_experiment_identifiers, name="insdc_experiment_identifiers", curie=NMDC.curie('insdc_experiment_identifiers'),
-                   model_uri=NMDC.insdc_experiment_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   model_uri=NMDC.insdc_experiment_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^insdc.sra:(E|D|S)RX[0-9]{6,}$'))
 
 slots.analysis_identifiers = Slot(uri=NMDC.analysis_identifiers, name="analysis_identifiers", curie=NMDC.curie('analysis_identifiers'),
-                   model_uri=NMDC.analysis_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]])
+                   model_uri=NMDC.analysis_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$'))
 
 slots.gold_analysis_project_identifiers = Slot(uri=NMDC.gold_analysis_project_identifiers, name="gold_analysis_project_identifiers", curie=NMDC.curie('gold_analysis_project_identifiers'),
-                   model_uri=NMDC.gold_analysis_project_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   model_uri=NMDC.gold_analysis_project_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^GOLD:Ga[0-9]+$'))
 
 slots.insdc_analysis_identifiers = Slot(uri=NMDC.insdc_analysis_identifiers, name="insdc_analysis_identifiers", curie=NMDC.curie('insdc_analysis_identifiers'),
-                   model_uri=NMDC.insdc_analysis_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   model_uri=NMDC.insdc_analysis_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^insdc.sra:(E|D|S)RR[0-9]{6,}$'))
 
 slots.mgnify_analysis_identifiers = Slot(uri=NMDC.mgnify_analysis_identifiers, name="mgnify_analysis_identifiers", curie=NMDC.curie('mgnify_analysis_identifiers'),
-                   model_uri=NMDC.mgnify_analysis_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]])
+                   model_uri=NMDC.mgnify_analysis_identifiers, domain=None, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
+                   pattern=re.compile(r'^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$'))
 
 slots.assembly_identifiers = Slot(uri=NMDC.assembly_identifiers, name="assembly_identifiers", curie=NMDC.curie('assembly_identifiers'),
                    model_uri=NMDC.assembly_identifiers, domain=None, range=Optional[str])
@@ -10467,11 +10394,20 @@ slots.window_water_mold = Slot(uri=MIXS['0000854'], name="window_water_mold", cu
 slots.xylene = Slot(uri=MIXS['0000156'], name="xylene", curie=MIXS.curie('0000156'),
                    model_uri=NMDC.xylene, domain=None, range=Optional[Union[dict, QuantityValue]])
 
-slots.environment_field = Slot(uri=MIXS.environment_field, name="environment field", curie=MIXS.curie('environment_field'),
-                   model_uri=NMDC.environment_field, domain=None, range=Optional[str])
+slots.has_raw_value = Slot(uri=MIXS.has_raw_value, name="has raw value", curie=MIXS.curie('has_raw_value'),
+                   model_uri=NMDC.has_raw_value, domain=None, range=Optional[str])
+
+slots.core_field = Slot(uri=MIXS.core_field, name="core field", curie=MIXS.curie('core_field'),
+                   model_uri=NMDC.core_field, domain=None, range=Optional[str])
 
 slots.sequencing_field = Slot(uri=MIXS.sequencing_field, name="sequencing field", curie=MIXS.curie('sequencing_field'),
                    model_uri=NMDC.sequencing_field, domain=None, range=Optional[str])
+
+slots.environment_field = Slot(uri=MIXS.environment_field, name="environment field", curie=MIXS.curie('environment_field'),
+                   model_uri=NMDC.environment_field, domain=None, range=Optional[str])
+
+slots.has_numeric_value = Slot(uri=MIXS.has_numeric_value, name="has numeric value", curie=MIXS.curie('has_numeric_value'),
+                   model_uri=NMDC.has_numeric_value, domain=None, range=Optional[float])
 
 slots.nucleic_acid_sequence_source_field = Slot(uri=MIXS.nucleic_acid_sequence_source_field, name="nucleic acid sequence source field", curie=MIXS.curie('nucleic_acid_sequence_source_field'),
                    model_uri=NMDC.nucleic_acid_sequence_source_field, domain=None, range=Optional[str])
@@ -10479,17 +10415,8 @@ slots.nucleic_acid_sequence_source_field = Slot(uri=MIXS.nucleic_acid_sequence_s
 slots.investigation_field = Slot(uri=MIXS.investigation_field, name="investigation field", curie=MIXS.curie('investigation_field'),
                    model_uri=NMDC.investigation_field, domain=None, range=Optional[str])
 
-slots.core_field = Slot(uri=MIXS.core_field, name="core field", curie=MIXS.curie('core_field'),
-                   model_uri=NMDC.core_field, domain=None, range=Optional[str])
-
-slots.has_numeric_value = Slot(uri=MIXS.has_numeric_value, name="has numeric value", curie=MIXS.curie('has_numeric_value'),
-                   model_uri=NMDC.has_numeric_value, domain=None, range=Optional[float])
-
 slots.has_unit = Slot(uri=MIXS.has_unit, name="has unit", curie=MIXS.curie('has_unit'),
                    model_uri=NMDC.has_unit, domain=None, range=Optional[str])
-
-slots.has_raw_value = Slot(uri=MIXS.has_raw_value, name="has raw value", curie=MIXS.curie('has_raw_value'),
-                   model_uri=NMDC.has_raw_value, domain=None, range=Optional[str])
 
 slots.emsl_store_temp = Slot(uri=NMDC.emsl_store_temp, name="emsl_store_temp", curie=NMDC.curie('emsl_store_temp'),
                    model_uri=NMDC.emsl_store_temp, domain=None, range=Optional[str])
@@ -10679,29 +10606,6 @@ slots.analysis_type = Slot(uri=NMDC.analysis_type, name="analysis_type", curie=N
 slots.sample_link = Slot(uri=NMDC.sample_link, name="sample_link", curie=NMDC.curie('sample_link'),
                    model_uri=NMDC.sample_link, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.started_at_time = Slot(uri=NMDC.started_at_time, name="started_at_time", curie=NMDC.curie('started_at_time'),
-                   model_uri=NMDC.started_at_time, domain=None, range=Optional[Union[str, XSDDateTime]], mappings = [PROV.startedAtTime],
-                   pattern=re.compile(r'^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$'))
-
-slots.ended_at_time = Slot(uri=NMDC.ended_at_time, name="ended_at_time", curie=NMDC.curie('ended_at_time'),
-                   model_uri=NMDC.ended_at_time, domain=None, range=Optional[Union[str, XSDDateTime]], mappings = [PROV.endedAtTime],
-                   pattern=re.compile(r'^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$'))
-
-slots.was_informed_by = Slot(uri=NMDC.was_informed_by, name="was_informed_by", curie=NMDC.curie('was_informed_by'),
-                   model_uri=NMDC.was_informed_by, domain=None, range=Optional[Union[str, ActivityId]], mappings = [PROV.wasInformedBy])
-
-slots.was_associated_with = Slot(uri=NMDC.was_associated_with, name="was_associated_with", curie=NMDC.curie('was_associated_with'),
-                   model_uri=NMDC.was_associated_with, domain=None, range=Optional[Union[dict, Agent]], mappings = [PROV.wasAssociatedWith])
-
-slots.acted_on_behalf_of = Slot(uri=NMDC.acted_on_behalf_of, name="acted_on_behalf_of", curie=NMDC.curie('acted_on_behalf_of'),
-                   model_uri=NMDC.acted_on_behalf_of, domain=None, range=Optional[Union[dict, Agent]], mappings = [PROV.actedOnBehalfOf])
-
-slots.was_generated_by = Slot(uri=NMDC.was_generated_by, name="was_generated_by", curie=NMDC.curie('was_generated_by'),
-                   model_uri=NMDC.was_generated_by, domain=None, range=Optional[Union[str, ActivityId]], mappings = [PROV.wasGeneratedBy])
-
-slots.used = Slot(uri=NMDC.used, name="used", curie=NMDC.curie('used'),
-                   model_uri=NMDC.used, domain=Activity, range=Optional[str], mappings = [PROV.used])
-
 slots.dissolving_activity_set = Slot(uri=NMDC.dissolving_activity_set, name="dissolving_activity_set", curie=NMDC.curie('dissolving_activity_set'),
                    model_uri=NMDC.dissolving_activity_set, domain=None, range=Optional[Union[Union[dict, DissolvingActivity], List[Union[dict, DissolvingActivity]]]])
 
@@ -10725,9 +10629,6 @@ slots.dissolution_volume = Slot(uri=NMDC.dissolution_volume, name="dissolution_v
 
 slots.dissolved_in = Slot(uri=NMDC.dissolved_in, name="dissolved_in", curie=NMDC.curie('dissolved_in'),
                    model_uri=NMDC.dissolved_in, domain=None, range=Optional[Union[dict, MaterialContainer]])
-
-slots.biosample_input = Slot(uri=NMDC.biosample_input, name="biosample_input", curie=NMDC.curie('biosample_input'),
-                   model_uri=NMDC.biosample_input, domain=None, range=Optional[Union[str, BiosampleId]])
 
 slots.material_input = Slot(uri=NMDC.material_input, name="material_input", curie=NMDC.curie('material_input'),
                    model_uri=NMDC.material_input, domain=None, range=Optional[Union[str, MaterialSampleId]])
@@ -10906,6 +10807,60 @@ slots.has_metabolite_quantifications = Slot(uri=NMDC.has_metabolite_quantificati
 slots.version = Slot(uri=NMDC.version, name="version", curie=NMDC.curie('version'),
                    model_uri=NMDC.version, domain=None, range=Optional[str])
 
+slots.id = Slot(uri=NMDC.id, name="id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.id, domain=None, range=URIRef)
+
+slots.name = Slot(uri=NMDC.name, name="name", curie=NMDC.curie('name'),
+                   model_uri=NMDC.name, domain=None, range=Optional[str])
+
+slots.description = Slot(uri=DCTERMS.description, name="description", curie=DCTERMS.curie('description'),
+                   model_uri=NMDC.description, domain=None, range=Optional[str])
+
+slots.type = Slot(uri=NMDC.type, name="type", curie=NMDC.curie('type'),
+                   model_uri=NMDC.type, domain=None, range=Optional[str])
+
+slots.title = Slot(uri=NMDC.title, name="title", curie=NMDC.curie('title'),
+                   model_uri=NMDC.title, domain=None, range=Optional[str])
+
+slots.alternative_titles = Slot(uri=NMDC.alternative_titles, name="alternative_titles", curie=NMDC.curie('alternative_titles'),
+                   model_uri=NMDC.alternative_titles, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.alternative_names = Slot(uri=NMDC.alternative_names, name="alternative_names", curie=NMDC.curie('alternative_names'),
+                   model_uri=NMDC.alternative_names, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.alternative_descriptions = Slot(uri=NMDC.alternative_descriptions, name="alternative_descriptions", curie=NMDC.curie('alternative_descriptions'),
+                   model_uri=NMDC.alternative_descriptions, domain=None, range=Optional[Union[str, List[str]]])
+
+slots.alternative_identifiers = Slot(uri=NMDC.alternative_identifiers, name="alternative_identifiers", curie=NMDC.curie('alternative_identifiers'),
+                   model_uri=NMDC.alternative_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   pattern=re.compile(r'^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$'))
+
+slots.start_date = Slot(uri=NMDC.start_date, name="start_date", curie=NMDC.curie('start_date'),
+                   model_uri=NMDC.start_date, domain=None, range=Optional[str])
+
+slots.end_date = Slot(uri=NMDC.end_date, name="end_date", curie=NMDC.curie('end_date'),
+                   model_uri=NMDC.end_date, domain=None, range=Optional[str])
+
+slots.protocol_link = Slot(uri=NMDC.protocol_link, name="protocol_link", curie=NMDC.curie('protocol_link'),
+                   model_uri=NMDC.protocol_link, domain=None, range=Optional[Union[dict, Protocol]])
+
+slots.started_at_time = Slot(uri=NMDC.started_at_time, name="started_at_time", curie=NMDC.curie('started_at_time'),
+                   model_uri=NMDC.started_at_time, domain=None, range=Optional[Union[str, XSDDateTime]], mappings = [PROV.startedAtTime],
+                   pattern=re.compile(r'^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$'))
+
+slots.ended_at_time = Slot(uri=NMDC.ended_at_time, name="ended_at_time", curie=NMDC.curie('ended_at_time'),
+                   model_uri=NMDC.ended_at_time, domain=None, range=Optional[Union[str, XSDDateTime]], mappings = [PROV.endedAtTime],
+                   pattern=re.compile(r'^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$'))
+
+slots.was_informed_by = Slot(uri=NMDC.was_informed_by, name="was_informed_by", curie=NMDC.curie('was_informed_by'),
+                   model_uri=NMDC.was_informed_by, domain=None, range=Optional[Union[str, ActivityId]], mappings = [PROV.wasInformedBy])
+
+slots.was_generated_by = Slot(uri=NMDC.was_generated_by, name="was_generated_by", curie=NMDC.curie('was_generated_by'),
+                   model_uri=NMDC.was_generated_by, domain=None, range=Optional[Union[str, ActivityId]], mappings = [PROV.wasGeneratedBy])
+
+slots.used = Slot(uri=NMDC.used, name="used", curie=NMDC.curie('used'),
+                   model_uri=NMDC.used, domain=Activity, range=Optional[str], mappings = [PROV.used])
+
 slots.Database_date_created = Slot(uri=NMDC.date_created, name="Database_date_created", curie=NMDC.curie('date_created'),
                    model_uri=NMDC.Database_date_created, domain=Database, range=Optional[str])
 
@@ -10973,11 +10928,12 @@ slots.Biosample_id = Slot(uri=NMDC.id, name="Biosample_id", curie=NMDC.curie('id
                    model_uri=NMDC.Biosample_id, domain=Biosample, range=Union[str, BiosampleId])
 
 slots.Biosample_gold_biosample_identifiers = Slot(uri=NMDC.gold_biosample_identifiers, name="Biosample_gold_biosample_identifiers", curie=NMDC.curie('gold_biosample_identifiers'),
-                   model_uri=NMDC.Biosample_gold_biosample_identifiers, domain=Biosample, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   model_uri=NMDC.Biosample_gold_biosample_identifiers, domain=Biosample, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^GOLD:Gb[0-9]+$'))
 
 slots.Biosample_alternative_identifiers = Slot(uri=NMDC.alternative_identifiers, name="Biosample_alternative_identifiers", curie=NMDC.curie('alternative_identifiers'),
-                   model_uri=NMDC.Biosample_alternative_identifiers, domain=Biosample, range=Optional[Union[str, List[str]]])
+                   model_uri=NMDC.Biosample_alternative_identifiers, domain=Biosample, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   pattern=re.compile(r'^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$'))
 
 slots.Biosample_lat_lon = Slot(uri=MIXS['0000009'], name="Biosample_lat_lon", curie=MIXS.curie('0000009'),
                    model_uri=NMDC.Biosample_lat_lon, domain=Biosample, range=Optional[Union[dict, "GeolocationValue"]])
@@ -11095,7 +11051,8 @@ slots.Study_notes = Slot(uri=NMDC.notes, name="Study_notes", curie=NMDC.curie('n
                    model_uri=NMDC.Study_notes, domain=Study, range=Optional[str])
 
 slots.Study_alternative_identifiers = Slot(uri=NMDC.alternative_identifiers, name="Study_alternative_identifiers", curie=NMDC.curie('alternative_identifiers'),
-                   model_uri=NMDC.Study_alternative_identifiers, domain=Study, range=Optional[Union[str, List[str]]])
+                   model_uri=NMDC.Study_alternative_identifiers, domain=Study, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   pattern=re.compile(r'^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$'))
 
 slots.Study_alternative_names = Slot(uri=NMDC.alternative_names, name="Study_alternative_names", curie=NMDC.curie('alternative_names'),
                    model_uri=NMDC.Study_alternative_names, domain=Study, range=Optional[Union[str, List[str]]])
@@ -11104,7 +11061,7 @@ slots.Study_related_identifiers = Slot(uri=NMDC.related_identifiers, name="Study
                    model_uri=NMDC.Study_related_identifiers, domain=Study, range=Optional[str])
 
 slots.Study_insdc_bioproject_identifiers = Slot(uri=NMDC.insdc_bioproject_identifiers, name="Study_insdc_bioproject_identifiers", curie=NMDC.curie('insdc_bioproject_identifiers'),
-                   model_uri=NMDC.Study_insdc_bioproject_identifiers, domain=Study, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
+                   model_uri=NMDC.Study_insdc_bioproject_identifiers, domain=Study, range=Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]],
                    pattern=re.compile(r'^bioproject:PRJ[DEN][A-Z][0-9]+$'))
 
 slots.Study_emsl_project_identifier = Slot(uri=NMDC.emsl_project_identifier, name="Study_emsl_project_identifier", curie=NMDC.curie('emsl_project_identifier'),
@@ -11228,9 +11185,6 @@ slots.PersonValue_has_raw_value = Slot(uri=NMDC.has_raw_value, name="PersonValue
 slots.PersonValue_name = Slot(uri=NMDC.name, name="PersonValue_name", curie=NMDC.curie('name'),
                    model_uri=NMDC.PersonValue_name, domain=PersonValue, range=Optional[str])
 
-slots.Person_id = Slot(uri=NMDC.id, name="Person_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.Person_id, domain=Person, range=Union[str, PersonId])
-
 slots.Instrument_id = Slot(uri=NMDC.id, name="Instrument_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Instrument_id, domain=Instrument, range=Union[str, InstrumentId])
 
@@ -11273,9 +11227,6 @@ slots.GeolocationValue_latitude = Slot(uri=WGS84.lat, name="GeolocationValue_lat
 slots.GeolocationValue_longitude = Slot(uri=WGS84.long, name="GeolocationValue_longitude", curie=WGS84.curie('long'),
                    model_uri=NMDC.GeolocationValue_longitude, domain=GeolocationValue, range=float, mappings = [SCHEMA.longitude])
 
-slots.Activity_id = Slot(uri=NMDC.id, name="Activity_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.Activity_id, domain=Activity, range=Union[str, ActivityId])
-
 slots.DissolvingActivity_material_input = Slot(uri=NMDC.material_input, name="DissolvingActivity_material_input", curie=NMDC.curie('material_input'),
                    model_uri=NMDC.DissolvingActivity_material_input, domain=DissolvingActivity, range=Optional[Union[str, MaterialSampleId]])
 
@@ -11291,9 +11242,6 @@ slots.MaterialSamplingActivity_amount_collected = Slot(uri=NMDC.amount_collected
 slots.MaterialSamplingActivity_collected_into = Slot(uri=NMDC.collected_into, name="MaterialSamplingActivity_collected_into", curie=NMDC.curie('collected_into'),
                    model_uri=NMDC.MaterialSamplingActivity_collected_into, domain=MaterialSamplingActivity, range=Optional[Union[dict, MaterialContainer]])
 
-slots.MaterialSamplingActivity_biosample_input = Slot(uri=NMDC.biosample_input, name="MaterialSamplingActivity_biosample_input", curie=NMDC.curie('biosample_input'),
-                   model_uri=NMDC.MaterialSamplingActivity_biosample_input, domain=MaterialSamplingActivity, range=Optional[Union[str, BiosampleId]])
-
 slots.MaterialSamplingActivity_material_output = Slot(uri=NMDC.material_output, name="MaterialSamplingActivity_material_output", curie=NMDC.curie('material_output'),
                    model_uri=NMDC.MaterialSamplingActivity_material_output, domain=MaterialSamplingActivity, range=Optional[Union[str, MaterialSampleId]])
 
@@ -11308,9 +11256,6 @@ slots.ReactionActivity_material_output = Slot(uri=NMDC.material_output, name="Re
 
 slots.ReactionActivity_reaction_time = Slot(uri=NMDC.reaction_time, name="ReactionActivity_reaction_time", curie=NMDC.curie('reaction_time'),
                    model_uri=NMDC.ReactionActivity_reaction_time, domain=ReactionActivity, range=Optional[Union[dict, QuantityValue]])
-
-slots.WorkflowExecutionActivity_was_associated_with = Slot(uri=NMDC.was_associated_with, name="WorkflowExecutionActivity_was_associated_with", curie=NMDC.curie('was_associated_with'),
-                   model_uri=NMDC.WorkflowExecutionActivity_was_associated_with, domain=WorkflowExecutionActivity, range=Optional[Union[str, WorkflowExecutionActivityId]], mappings = [PROV.wasAssociatedWith])
 
 slots.WorkflowExecutionActivity_started_at_time = Slot(uri=NMDC.started_at_time, name="WorkflowExecutionActivity_started_at_time", curie=NMDC.curie('started_at_time'),
                    model_uri=NMDC.WorkflowExecutionActivity_started_at_time, domain=WorkflowExecutionActivity, range=Union[str, XSDDateTime], mappings = [PROV.startedAtTime],
@@ -11388,3 +11333,6 @@ slots.NomAnalysisActivity_used = Slot(uri=NMDC.used, name="NomAnalysisActivity_u
 
 slots.NomAnalysisActivity_id = Slot(uri=NMDC.id, name="NomAnalysisActivity_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.NomAnalysisActivity_id, domain=NomAnalysisActivity, range=Union[str, NomAnalysisActivityId])
+
+slots.Activity_id = Slot(uri=NMDC.id, name="Activity_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.Activity_id, domain=Activity, range=Union[str, ActivityId])

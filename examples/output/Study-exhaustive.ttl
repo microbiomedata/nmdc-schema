@@ -7,12 +7,10 @@
 nmdc:sty-11-ab a nmdc:Study ;
     dcterms:description "see also name, title, objective, various alternatives" ;
     prov:qualifiedAssociation [ a prov:Association ;
-            prov:agent [ a nmdc:PersonValue ;
-                    nmdc:name "Tanja Davidsen" ] ;
-            nmdc:applied_roles "Investigation",
-                "Supervision" ],
-        [ a prov:Association ;
-            prov:agent [ a nmdc:PersonValue ;
+            prov:hadRole "Funding acquisition" ;
+            nmdc:applied_roles "Conceptualization",
+                "Supervision" ;
+            nmdc:applies_to_person [ a nmdc:PersonValue ;
                     schema1:email "jcventer@jcvi.org" ;
                     nmdc:has_raw_value "Craig Venter" ;
                     nmdc:name "J. Craig Venter" ;
@@ -21,15 +19,16 @@ nmdc:sty-11-ab a nmdc:Study ;
                     nmdc:was_generated_by nmdc:any_string_1 ;
                     nmdc:websites "https://www.jcvi.org/",
                         "https://www.jcvi.org/about/j-craig-venter" ] ;
-            prov:hadRole "Funding acquisition" ;
-            nmdc:applied_roles "Conceptualization",
+            nmdc:type "any string" ],
+        [ a prov:Association ;
+            nmdc:applied_roles "Investigation",
                 "Supervision" ;
-            nmdc:type "any string" ] ;
+            nmdc:applies_to_person [ a nmdc:PersonValue ;
+                    nmdc:name "Tanja Davidsen" ] ] ;
     nmdc:abstract "Nothing was studied." ;
     nmdc:alternative_descriptions "any string 1",
         "any string 2" ;
-    nmdc:alternative_identifiers "any string A1",
-        "any string A2" ;
+    nmdc:alternative_identifiers "bare:abc1"^^xsd:anyURI ;
     nmdc:alternative_names "any string 1",
         "any string 2" ;
     nmdc:alternative_titles "any string 1",
@@ -41,14 +40,14 @@ nmdc:sty-11-ab a nmdc:Study ;
     nmdc:ecosystem_subtype "unconstrained text" ;
     nmdc:ecosystem_type "unconstrained text" ;
     nmdc:emsl_proposal_doi "any string" ;
-    nmdc:emsl_proposal_identifier "nmdc:sty-99-abcdef"^^xsd:anyURI ;
+    nmdc:emsl_proposal_identifier "bare:abc1" ;
     nmdc:ess_dive_datasets "any string 1",
         "any string 2" ;
     nmdc:funding_sources "any string 1",
         "any string 2" ;
-    nmdc:gold_study_identifiers "GOLD:Gs12345"^^xsd:anyURI,
-        "GOLD:Gs90909"^^xsd:anyURI ;
-    nmdc:mgnify_project_identifiers "mgnify.proj:ABC123"^^xsd:anyURI ;
+    nmdc:gold_study_identifiers "GOLD:Gs12345",
+        "GOLD:Gs90909" ;
+    nmdc:mgnify_project_identifiers "mgnify.proj:ABC123" ;
     nmdc:name "see also description, title, objective, various alternatives" ;
     nmdc:objective "This record, an instance of class Study from the nmdc-schema was had authored, so that the NMDC team would have at least one instance, using all slots, with a mixture of reasonable values and minimally compliant values." ;
     nmdc:principal_investigator [ a nmdc:PersonValue ;
@@ -67,16 +66,16 @@ nmdc:sty-11-ab a nmdc:Study ;
         "any string 2" ;
     nmdc:specific_ecosystem "unconstrained text" ;
     nmdc:study_image [ a nmdc:ImageValue ;
-            dcterms:description "Photo of Craig Venter Institute, Rockville, Maryland" ;
-            nmdc:display_order "1" ;
-            nmdc:has_raw_value "https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg" ;
-            nmdc:url "https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg" ;
-            nmdc:was_generated_by nmdc:any_string_1 ],
-        [ a nmdc:ImageValue ;
             dcterms:description "Photo of Craig Venter Institute, La Jolla, California" ;
             nmdc:display_order "2" ;
             nmdc:has_raw_value "https://today.ucsd.edu/news_uploads/140213ventor2.jpg" ;
             nmdc:url "https://today.ucsd.edu/news_uploads/140213ventor2.jpg" ;
+            nmdc:was_generated_by nmdc:any_string_1 ],
+        [ a nmdc:ImageValue ;
+            dcterms:description "Photo of Craig Venter Institute, Rockville, Maryland" ;
+            nmdc:display_order "1" ;
+            nmdc:has_raw_value "https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg" ;
+            nmdc:url "https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg" ;
             nmdc:was_generated_by nmdc:any_string_1 ] ;
     nmdc:title "Sample Exhaustive Biosample instance. Although all of these values should pass validation, that does not mean that any Biosample of any type would necessarily have this particular combination of values." ;
     nmdc:type "any string" ;

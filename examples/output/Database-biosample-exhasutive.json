@@ -5,8 +5,7 @@
       "name": "Sample Exhaustive Biosample instance. Although all of these values should pass validation, that does not mean that any Biosample of any type would necessarily have this particular combination of values.",
       "description": "unconstrained text",
       "alternative_identifiers": [
-        "any_string",
-        "seriously_anything"
+        "bare:abc123"
       ],
       "part_of": [
         "nmdc:unconstrained_study_identifier_string1_needs_pattern_materialization_what_about_referential_integrity",
@@ -40,8 +39,7 @@
       "collected_from": "nmdc:unconstrained_site_identifier_string",
       "type": "nmdc:Biosample. change this to require a class name or an enumeration",
       "img_identifiers": [
-        "any string 1",
-        "any string 2"
+        "bare:abc123"
       ],
       "samp_name": "see also name",
       "biosample_categories": [
@@ -57,8 +55,7 @@
         "biosample:SAMN000"
       ],
       "emsl_biosample_identifiers": [
-        "any_string",
-        "seriously_anything"
+        "bare:abc123"
       ],
       "igsn_biosample_identifiers": [
         "any:curie_1",
