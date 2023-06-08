@@ -302,10 +302,10 @@ MIXS_YAML_PERL_CURATED_Q = src/schema/other_mixs_yaml_files/mixs_legacy.yaml
 
 SCHEMA_FILE = $(MIXS_YAML_FROM_SHEETS_AND_FRIENDS)
 
-schemasheets/populated_tsv/slots.tsv:
-	$(RUN) linkml2sheets \
-		--output-directory $(dir $@) \
-		--schema $(SCHEMA_FILE) schemasheets/schemasheets_templates/slots.tsv
+#schemasheets/populated_tsv/slots.tsv:
+#	$(RUN) linkml2sheets \
+#		--output-directory $(dir $@) \
+#		--schema $(SCHEMA_FILE) schemasheets/schemasheets_templates/slots.tsv
 
 check-jsonschema: nmdc_schema/nmdc_materialized_patterns.schema.json
 	$(RUN) check-jsonschema --schemafile $< src/data/invalid/Database-Biosample-invalid_range.yaml
@@ -373,16 +373,16 @@ local/neon_in_nmdc.ttl: nmdc_schema/nmdc_materialized_patterns.yaml local/neon_i
 		--output $@ \
 		--schema $^
 
-local/neon_eco_type.tsv: local/neon_in_nmdc.ttl assets/neon_eco_type.rq
+local/neon_eco_type.tsv: local/neon_in_nmdc.ttl assets/sparql/neon_eco_type.rq
 	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
 
-local/neon_soil_type.tsv: local/neon_in_nmdc.ttl assets/neon_soil_type.rq
+local/neon_soil_type.tsv: local/neon_in_nmdc.ttl assets/sparql/neon_soil_type.rq
 	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
 
-local/local_class_in_neon.tsv: local/neon_in_nmdc.ttl assets/local_class_in_neon.rq
+local/local_class_in_neon.tsv: local/neon_in_nmdc.ttl assets/sparql/local_class_in_neon.rq
 	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
 
-local/cur_vegetation_in_neon.tsv: local/neon_in_nmdc.ttl assets/cur_vegetation_in_neon.rq
+local/cur_vegetation_in_neon.tsv: local/neon_in_nmdc.ttl assets/sparql/cur_vegetation_in_neon.rq
 	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
 
 

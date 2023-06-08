@@ -2,32 +2,31 @@ id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema
 name: sample_prep
 title: NMDC sample prep schema
 description: Material and activity classes for describing sample preparation, in support of EMSL, Monet, MANA, etc.
+
 license: https://creativecommons.org/publicdomain/zero/1.0/
+
 see_also:
   - https://gitlab.pnnl.gov/MoNET/analytical-processes/-/blob/main/organicmatterextraction.toml
 
+#notes:
+#  - "circular nmdc import is for slot biosample_input with range: Biosample"
+
+imports:
+  - core
+#  - nmdc
+
 prefixes:
-  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
-  CHMO: http://purl.obolibrary.org/obo/CHMO_
-  OBI: http://purl.obolibrary.org/obo/OBI_
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_ # in https://github.com/prefixcommons/biocontext/blob/master/registry/obo_context.jsonld
+  CHMO: http://purl.obolibrary.org/obo/CHMO_ # in https://github.com/prefixcommons/biocontext/blob/master/registry/obo_context.jsonld
+  OBI: http://purl.obolibrary.org/obo/OBI_ # in https://github.com/prefixcommons/biocontext/blob/master/registry/obo_context.jsonld
+
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
   nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
-#  GOLD: http://identifiers.org/gold/
-#  prov: http://www.w3.org/ns/prov#
 
 default_prefix: nmdc
 default_range: string
 
-#default_curi_maps:
-#  - obo_context
-#  - idot_context
-
-notes:
-  - "circular nmdc import is for slot biosample_input with range: Biosample"
-imports:
-  - basic_slots
-  - nmdc
 
 enums:
   ContainerTypeEnum:
@@ -104,9 +103,9 @@ slots:
       - container
     range: MaterialContainer
     inlined: true
-  biosample_input:
-    title: biosample input
-    range: Biosample
+  #  biosample_input:
+  #    title: biosample input
+  #    range: Biosample
   material_input:
     title: material input
     range: MaterialSample
@@ -217,7 +216,7 @@ classes:
     slots:
       - amount_collected
       - collected_into
-      - biosample_input
+      #      - biosample_input
       - material_output
       - sampling_method
     slot_usage:
@@ -229,11 +228,11 @@ classes:
           - weighing-activity.contanier
         range: MaterialContainer
         inlined: true
-      biosample_input:
-        examples:
-          - value: soil:1
-        aliases:
-          - weighing-activity.source_material
+      #      biosample_input:
+      #        examples:
+      #          - value: soil:1
+      #        aliases:
+      #          - weighing-activity.source_material
       material_output:
         examples:
           - value: somextract:6
