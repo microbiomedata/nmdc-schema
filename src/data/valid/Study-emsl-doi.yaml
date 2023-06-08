@@ -2,6 +2,7 @@ id: nmdc:sty-11-ab
 #prefix for https://doi.org/ is registered at identifiers.org and bioregisty.io as 'doi'
 #ie https://bioregistry.io/doi:10.46936/intm.proj.2021.60141/60000423 resolves to https://doi.org/10.46936/intm.proj.2021.60141/60000423
 # which then resolves to https://www.osti.gov/award-doi-service/biblio/10.46936/intm.proj.2021.60141/60000423
+#per EMSL NEXUS team proper terminology is emsl_project_doi not emsl_proposal_doi
 emsl_proposal_doi: 
       - doi:10.46936/intm.proj.2021.60141/60000423
 
