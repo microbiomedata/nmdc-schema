@@ -151,9 +151,9 @@ omics_processing_set:
   has_input:
   - GOLD:Gb0157174
   add_date: 17-AUG-17 05.08.38.451000000 PM
-  mod_date: 16-OCT-20 02.04.01.374000000 AM
   has_output:
   - jgi:599c3a117ded5e41edd7da77
+  mod_date: 16-OCT-20 02.04.01.374000000 AM
   ncbi_project_name: Forest soil microbial communities from Barre Woods Harvard Forest
     LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O
   omics_type:
@@ -170,9 +170,9 @@ omics_processing_set:
   has_input:
   - GOLD:Gb0150408
   add_date: 17-MAR-17 04.55.44.822000000 PM
-  mod_date: 22-MAY-20 06.38.19.576000000 PM
   has_output:
   - jgi:58b653757ded5e7a2af951c4
+  mod_date: 22-MAY-20 06.38.19.576000000 PM
   ncbi_project_name: Permafrost microbial communities from Stordalen Mire, Sweden
     - 611E1M metaG
   omics_type:
@@ -191,9 +191,9 @@ omics_processing_set:
   has_input:
   - GOLD:Gb0188037
   add_date: 29-MAR-18 01.27.30.036000000 PM
-  mod_date: 04-APR-20 08.26.35.067000000 AM
   has_output:
   - jgi:5baa816646d1e63f764deb37
+  mod_date: 04-APR-20 08.26.35.067000000 AM
   ncbi_project_name: Rhizosphere microbial communities from Carex aquatilis grown
     in University of Washington, Seatle, WA, United States - 4-1-23 metaG
   omics_type:
@@ -208,17 +208,17 @@ study_set:
   description: Thawing permafrost is one of the largest soil carbon pools on the planet.
     The goal of this project is to study microbial communities that participate in
     the soil carbon cycle.
-  gold_study_identifiers:
-  - GOLD:Gs0128849
-  ecosystem: Environmental
-  ecosystem_category: Terrestrial
-  ecosystem_type: Soil
-  ecosystem_subtype: Wetlands
-  specific_ecosystem: Permafrost
-  principal_investigator:
-    has_raw_value: Virginia Rich
   doi:
     has_raw_value: 10.25585/1488217
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Wetlands
+  ecosystem_type: Soil
+  gold_study_identifiers:
+  - GOLD:Gs0128849
+  principal_investigator:
+    has_raw_value: Virginia Rich
+  specific_ecosystem: Permafrost
   type: nmdc:Study
 - id: nmdc:sty-99-oJmAOs
   name: Forest soil microbial communities from Barre Woods Harvard Forest LTER site,
@@ -226,17 +226,17 @@ study_set:
   description: The goal of this study is to learn the molecular mechanisms underlying
     changes in the temperature sensitive respiration response of forest soils to long-term
     experimental warming
-  gold_study_identifiers:
-  - GOLD:Gs0130354
-  ecosystem: Environmental
-  ecosystem_category: Terrestrial
-  ecosystem_type: Soil
-  ecosystem_subtype: Unclassified
-  specific_ecosystem: Forest Soil
-  principal_investigator:
-    has_raw_value: Jeffrey Blanchard
   doi:
     has_raw_value: 10.25585/1488215
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Unclassified
+  ecosystem_type: Soil
+  gold_study_identifiers:
+  - GOLD:Gs0130354
+  principal_investigator:
+    has_raw_value: Jeffrey Blanchard
+  specific_ecosystem: Forest Soil
   type: nmdc:Study
 - id: nmdc:sty-99-3bQQ4j
   name: Rhizosphere microbial communities from Carex aquatilis grown in University
@@ -244,15 +244,15 @@ study_set:
   description: The goal of this study is to advance understanding of the response
     of methane production and methane oxidation to changes in plant productivity so
     that modeled representations of these processes and interactions can be improved.
-  gold_study_identifiers:
-  - GOLD:Gs0134277
-  ecosystem: Host-associated
-  ecosystem_category: Plants
-  ecosystem_type: Roots
-  ecosystem_subtype: Rhizosphere
-  specific_ecosystem: Soil
-  principal_investigator:
-    has_raw_value: Rebecca Neumann
   doi:
     has_raw_value: 10.25585/1488209
+  ecosystem: Host-associated
+  ecosystem_category: Plants
+  ecosystem_subtype: Rhizosphere
+  ecosystem_type: Roots
+  gold_study_identifiers:
+  - GOLD:Gs0134277
+  principal_investigator:
+    has_raw_value: Rebecca Neumann
+  specific_ecosystem: Soil
   type: nmdc:Study

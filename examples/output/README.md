@@ -132,6 +132,18 @@ mags_activity_set:
   was_informed_by: gold:Gp0115664
 
 ```
+## Database-extraction_set-minimal
+### Input
+```yaml
+extraction_set:
+- has_input:
+  - bare:xxx
+  has_output:
+  - bare:yyy
+  id: nmdc:extrp-99-abcdef
+  name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
+
+```
 ## Database-metagenome-assembly
 ### Input
 ```yaml
@@ -549,70 +561,6 @@ study_set:
   type: nmdc:Study
 
 ```
-## Database-sample-prep
-### Input
-```yaml
-dissolving_activity_set:
-- dissolution_aided_by:
-    activity_speed:
-      has_numeric_value: 800
-      has_unit: RPM
-    activity_time:
-      has_numeric_value: 2
-      has_unit: hours
-    device_type: orbital_shaker
-  dissolution_reagent: deionized_water
-  dissolution_volume:
-    has_numeric_value: 30
-    has_unit: mL
-  dissolved_in:
-    container_size:
-      has_numeric_value: 50
-      has_unit: mL
-    container_type: screw_top_conical
-  material_input: nmdc:matsm-b1fb4ff1-e59b-4e2b-a8f9-b95ea6ba4135
-  material_output: nmdc:matsm-181a7a0a-4b04-4a22-9b89-db53e2ccdc99
-material_sample_set:
-- description: a soil biosample
-  id: nmdc:matsm-99-PVhTGD
-  name: monet_data:soil_1
-- description: a 6 gram aliquot of monet_data:soil_1
-  id: nmdc:matsm-99-m7PfV8
-  name: nmdc:matsm-b1fb4ff1-e59b-4e2b-a8f9-b95ea6ba4135
-- description: monet_data:somextract_6 dissolved in 30 mL of water
-  id: nmdc:matsm-99-j670OL
-  name: monet_data:somextract_7
-- description: something at the beginning of a reaction
-  id: nmdc:matsm-99-KyiIwv
-  name: monet_data:derive_4
-- description: something at the end of a reaction
-  id: nmdc:matsm-99-KaZog6
-  name: monet_data:derive_5
-material_sampling_activity_set:
-- amount_collected:
-    has_numeric_value: 6
-    has_unit: grams
-  biosample_input: nmdc:matsm-bfc5b458-1c62-44e7-886a-dd3a2cc7ad67
-  collected_into:
-    container_size:
-      has_numeric_value: 50
-      has_unit: mL
-    container_type: screw_top_conical
-  material_output: nmdc:matsm-b1fb4ff1-e59b-4e2b-a8f9-b95ea6ba4135
-  sampling_method: weighing
-reaction_activity_set:
-- material_input: nmdc:matsm-31380f3c-cea3-4f68-a8c6-cd84efa5e622
-  material_output: nmdc:matsm-9fe9277b-454a-4257-a825-3b4725df665e
-  reaction_aided_by:
-    activity_temperature:
-      has_numeric_value: 37
-      has_unit: degrees Celsius
-    activity_time:
-      has_numeric_value: 1.5
-      has_unit: hours
-    device_type: thermomixer
-
-```
 ## Biosample-embargoed
 ### Input
 ```yaml
@@ -679,8 +627,7 @@ alkyl_diethers:
 alt:
   has_raw_value: 100 meter
 alternative_identifiers:
-- any_string
-- seriously_anything
+- bare:abc123
 aminopept_act:
   has_raw_value: 0.269 mole per liter per hour
 ammonium:
@@ -784,8 +731,7 @@ ecosystem_type: unconstrained text
 elev: 100
 embargoed: true
 emsl_biosample_identifiers:
-- any_string
-- seriously_anything
+- bare:abc123
 env_broad_scale:
   has_raw_value: ENVO:00002030
   term:
@@ -840,8 +786,7 @@ igsn_biosample_identifiers:
 - any:curie_1
 - any:curie_2
 img_identifiers:
-- any string 1
-- any string 2
+- bare:abc123
 insdc_biosample_identifiers:
 - biosample:SAMN123456789
 - biosample:SAMN000
@@ -907,7 +852,7 @@ org_nitro_method: https://doi.org/10.1016/0038-0717(85)90144-0
 organism_count:
 - has_raw_value: ATP
 other_treatment: unconstrained text
-oxy_stat_samp: aerobe
+oxy_stat_samp: aerobic
 part_of:
 - nmdc:unconstrained_study_identifier_string1_needs_pattern_materialization_what_about_referential_integrity
 - nmdc:unconstrained_study_identifier_string2
@@ -1055,6 +1000,15 @@ zinc:
   has_raw_value: 2.5 mg/kg
 
 ```
+## Database-study_set-emsl_project_doi
+### Input
+```yaml
+study_set:
+- emsl_project_dois:
+  - doi:10.46936/intm.proj.2021.60141/60000423
+  id: nmdc:sty-11-ab
+
+```
 ## Biosample-soil_horizon
 ### Input
 ```yaml
@@ -1149,6 +1103,41 @@ biosample_set:
   id: nmdc:bsm-99-abcdef3
   part_of:
   - gold:Gs0110115
+extraction_set:
+- extraction_target: DNA
+  has_input:
+  - nmdc:procsm-99-pooled
+  has_output:
+  - nmdc:procsm-99-extract
+  id: nmdc:extrp-99-abcdef
+  name: first dna extraction set
+library_preparation_set:
+- has_input:
+  - nmdc:procsm-99-extract
+  has_output:
+  - nmdc:procsm-99-library
+  id: nmdc:libprp-99-abcdef
+  library_type: DNA
+  name: DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1
+pooling_set:
+- alternative_identifiers:
+  - bare:ps1_alt_id
+  description: This is the first pooling process that has ever occurred on earth
+  has_input:
+  - nmdc:bsm-99-abcdef1
+  - nmdc:bsm-99-abcdef2
+  - nmdc:bsm-99-abcdef3
+  has_output:
+  - nmdc:procsm-99-pooled
+  id: nmdc:poolp-99-abcdef
+  name: first pooling process
+processed_sample_set:
+- id: nmdc:procsm-99-xyz1
+  name: first processed sample set
+- id: nmdc:procsm-99-xyz2
+  name: first DNA extract
+- id: nmdc:procsm-99-xyz3
+  name: first library
 
 ```
 ## Biosample-exhasutive
@@ -1188,8 +1177,7 @@ alkyl_diethers:
 alt:
   has_raw_value: 100 meter
 alternative_identifiers:
-- any_string
-- seriously_anything
+- bare:abc123
 aminopept_act:
   has_raw_value: 0.269 mole per liter per hour
 ammonium:
@@ -1415,8 +1403,7 @@ elevator:
   has_raw_value: xxx
 embargoed: true
 emsl_biosample_identifiers:
-- any_string
-- seriously_anything
+- bare:abc123
 emulsions:
 - has_raw_value: xxx
 env_broad_scale:
@@ -1601,8 +1588,7 @@ igsn_biosample_identifiers:
 - any:curie_1
 - any:curie_2
 img_identifiers:
-- any string 1
-- any string 2
+- bare:abc123
 indoor_space: bedroom
 indoor_surf: cabinet
 indust_eff_percent:
@@ -1724,7 +1710,7 @@ organism_count:
 other_treatment: unconstrained text
 owc_tvdss:
   has_raw_value: xxx
-oxy_stat_samp: aerobe
+oxy_stat_samp: aerobic
 oxygen:
   has_raw_value: xxx
 part_of:
@@ -1813,7 +1799,6 @@ rel_air_humidity:
 rel_humidity_out:
   has_raw_value: xxx
 rel_samp_loc: edge of car
-rel_to_oxygen: aerobe
 replicate_number: '1'
 reservoir:
   has_raw_value: xxx
@@ -2211,8 +2196,7 @@ alternative_descriptions:
 - any string 1
 - any string 2
 alternative_identifiers:
-- any string A1
-- any string A2
+- bare:abc1
 alternative_names:
 - any string 1
 - any string 2
@@ -2228,8 +2212,6 @@ ecosystem: unconstrained text. should be validated against the controlled vocabu
 ecosystem_category: unconstrained text
 ecosystem_subtype: unconstrained text
 ecosystem_type: unconstrained text
-emsl_proposal_doi: any string
-emsl_proposal_identifier: any string EP1
 ess_dive_datasets:
 - any string 1
 - any string 2
@@ -2261,7 +2243,8 @@ has_credit_associations:
   applies_to_person:
     name: Tanja Davidsen
 id: nmdc:sty-11-ab
-mgnify_project_identifiers: mgnify.proj:ABC123
+mgnify_project_identifiers:
+- mgnify.proj:ABC123
 name: see also description, title, objective, various alternatives
 objective: This record, an instance of class Study from the nmdc-schema was had authored,
   so that the NMDC team would have at least one instance, using all slots, with a
@@ -2495,17 +2478,17 @@ biosample_set:
   part_of:
   - nmdc:sty-99-U21mUX
 collecting_biosamples_from_site_set:
-- has_inputs:
+- has_input:
   - nmdc:frsite-99-SPreao
-  has_outputs:
+  has_output:
   - nmdc:bsm-99-J9FcnC
   - nmdc:bsm-99-BdlWdQ
   - nmdc:bsm-99-vn74Wq
   id: nmdc:clsite-99-Cq00d1
   name: Collection of biosamples from BESC-13-CL1_35_33
-- has_inputs:
+- has_input:
   - nmdc:frsite-99-h2mYFG
-  has_outputs:
+  has_output:
   - nmdc:bsm-99-P8FdpS
   - nmdc:bsm-99-ugBwz3
   - nmdc:bsm-99-tN5lxM
@@ -2643,8 +2626,7 @@ biosample_set:
   alt:
     has_raw_value: 100 meter
   alternative_identifiers:
-  - any_string
-  - seriously_anything
+  - bare:abc123
   aminopept_act:
     has_raw_value: 0.269 mole per liter per hour
   ammonium:
@@ -2870,8 +2852,7 @@ biosample_set:
     has_raw_value: xxx
   embargoed: true
   emsl_biosample_identifiers:
-  - any_string
-  - seriously_anything
+  - bare:abc123
   emulsions:
   - has_raw_value: xxx
   env_broad_scale:
@@ -3058,8 +3039,7 @@ biosample_set:
   - any:curie_1
   - any:curie_2
   img_identifiers:
-  - any string 1
-  - any string 2
+  - bare:abc123
   indoor_space: bedroom
   indoor_surf: cabinet
   indust_eff_percent:
@@ -3181,7 +3161,7 @@ biosample_set:
   other_treatment: unconstrained text
   owc_tvdss:
     has_raw_value: xxx
-  oxy_stat_samp: aerobe
+  oxy_stat_samp: aerobic
   oxygen:
     has_raw_value: xxx
   part_of:
@@ -3270,7 +3250,6 @@ biosample_set:
   rel_humidity_out:
     has_raw_value: xxx
   rel_samp_loc: edge of car
-  rel_to_oxygen: aerobe
   replicate_number: '1'
   reservoir:
     has_raw_value: xxx
@@ -3676,7 +3655,7 @@ was_informed_by: nmdc:a1
 ### Input
 ```yaml
 pooling_set:
-- id: bare:value
+- id: nmdc:poolp-9x9-1x
   name: first pooling process
 
 ```
@@ -3869,6 +3848,40 @@ id: nmdc:dobj-11-dtTMNb
 name: Crispr Terms
 
 ```
+## Database-library-prep-exhausive
+### Input
+```yaml
+library_preparation_set:
+- description: DNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP
+    BMI_metagenomicsSequencingSOP_v2
+  end_date: '2018-09-26'
+  has_input:
+  - bare:xxx
+  has_output:
+  - bare:xxx
+  id: nmdc:libprp-99-xxx2
+  library_preparation_kit: KAPA HyperPrep Kit
+  library_type: DNA
+  name: DNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1
+  pcr_cycles: 0
+  processing_institution: Battelle
+  start_date: '2018-09-26'
+- description: RNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP
+    XX
+  end_date: '2018-09-26'
+  has_input:
+  - bare:xxy
+  has_output:
+  - bare:xxz
+  id: nmdc:libprp-99-xxx1
+  library_preparation_kit: TruSeq RNA Library Prep Kit v2
+  library_type: RNA
+  name: RNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1
+  pcr_cycles: 12
+  processing_institution: Battelle
+  start_date: '2018-09-26'
+
+```
 ## Database-multiple-paths
 ### Input
 ```yaml
@@ -3988,19 +4001,19 @@ pooling_set:
 - alternative_identifiers:
   - bare:xxx
   description: xxx
-  has_inputs:
+  has_input:
   - bare:xxx
   - bare:yyy
-  has_outputs:
+  has_output:
   - bare:xxx
-  id: bare:value
+  id: nmdc:poolp-9x9-1x
   name: first pooling process
 
 ```
 ## Pooling-minimal
 ### Input
 ```yaml
-id: bare:value
+id: nmdc:poolp-9x9-1x
 name: first pooling process
 
 ```
@@ -4010,12 +4023,12 @@ name: first pooling process
 alternative_identifiers:
 - bare:xxx
 description: xxx
-has_inputs:
+has_input:
 - bare:xxx
 - bare:yyy
-has_outputs:
+has_output:
 - bare:xxx
-id: bare:value
+id: nmdc:poolp-9x9-1x
 name: first pooling process
 
 ```
@@ -4093,6 +4106,53 @@ functional_annotation_set:
 - has_function: SUPFAM:SSF57615
 - has_function: CATH:1.10.10.200
 - has_function: PANTHER.FAMILY:PTHR12345
+
+```
+## Database-nucleic-extraction
+### Input
+```yaml
+extraction_set:
+- description: DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7
+  end_date: '2019-11-08'
+  extraction_method: phenol/chloroform extraction
+  extraction_target: DNA
+  has_input:
+  - bare:xxx
+  has_output:
+  - bare:xxx
+  id: nmdc:extrp-99-abcdef
+  name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
+  processing_institution: Battelle
+  sample_mass:
+    has_numeric_value: 0.25
+    has_unit: gram
+  start_date: '2019-11-08'
+
+```
+## Database-extraction_set-exhaustive
+### Input
+```yaml
+extraction_set:
+- description: DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7
+  end_date: '2019-11-08'
+  extraction_method: phenol/chloroform extraction
+  extraction_target: DNA
+  has_input:
+  - bare:xxx
+  has_output:
+  - bare:xxx
+  id: nmdc:extrp-99-abcdef
+  name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
+  processing_institution: Battelle
+  protocol_link:
+    name: BMI_dnaExtractionSOP_v7
+    url: https://data.neonscience.org/documents/10179/2431540/BMI_dnaExtractionSOP_v7/61204962-bb01-a0b9-3354-ccdaab5132c3
+  quality_control_report:
+    status: pass
+  sample_mass:
+    has_numeric_value: 0.25
+    has_unit: gram
+  start_date: '2019-11-08'
 
 ```
 ## Database-study-set-with-gnps-id
@@ -4189,6 +4249,28 @@ omics_processing_set:
   - gold:Gs0112340
   processing_institution: JGI
   type: nmdc:OmicsProcessing
+
+```
+## Database-biosamples-high-rna_volume
+### Input
+```yaml
+biosample_set:
+- env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  id: nmdc:bsm-99-dtTMNb
+  part_of:
+  - gold:Gs0110115
+  rna_volume: 1200
 
 ```
 ## Database-invalid-omics-processing
@@ -5215,6 +5297,15 @@ biosample_set:
   sample_collection_site: Lithgow State Coal Mine
   specific_ecosystem: Coalbed water
   type: nmdc:Biosample
+
+```
+## Database-study_set-bad-emsl-doi-slot-name
+### Input
+```yaml
+study_set:
+- emsl_proposal_dois:
+  - doi:10.46936/intm.proj.2021.60141/60000423
+  id: nmdc:sty-11-ab
 
 ```
 ## Database-biosamples-lat_lon-with-GLV-missing-longitude

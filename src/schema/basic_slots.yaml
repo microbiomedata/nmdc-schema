@@ -4,24 +4,20 @@ title: Basic Slots for NMDC Schema
 description: >-
   Basic Linkml slots that are used across the Schema for National Microbiome Data Collaborative (NMDC).
   Examples include "id", "name", "description". These slots have primitive data types (e.g., sting) as ranges.
+
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
-  dcterms: http://purl.org/dc/terms/
+  dcterms: http://purl.org/dc/terms/ # https://github.com/prefixcommons/biocontext/blob/master/registry/semweb_context.jsonld
+
+  skos: http://www.w3.org/2004/02/skos/core#
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
   nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
-  skos: http://www.w3.org/2004/02/skos/core#
+
 
 default_prefix: nmdc
 default_range: string
-
-default_curi_maps:
-  - obo_context
-  - idot_context
-
-imports:
-  - core
 
 slots:
   id:
@@ -81,7 +77,7 @@ slots:
       The distinction between title and alternative titles is application-specific.
     exact_mappings:
       - dcterms:alternative
-  
+
   alternative_names:
     range: string
     multivalued: true
@@ -98,10 +94,41 @@ slots:
     description: >-
       A list of alternative descriptions for the entity.
       The distinction between description and alternative descriptions is application-specific.
-  
+
   alternative_identifiers:
-    range: string
+    range: uriorcurie
     multivalued: true
     description: >-
       A list of alternative identifiers for the entity.
+    pattern: '^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$'
 
+  start_date:
+    range: string
+    description: The date on which any process or activity was started
+    comments:
+      - We are using string representations of dates until all components of our ecosystem can handle ISO 8610 dates
+      - The date should be formatted as YYYY-MM-DD
+    todos:
+      - add date string validation pattern
+
+  end_date:
+    range: string
+    description: The date on which any process or activity was ended
+    comments:
+      - We are using string representations of dates until all components of our ecosystem can handle ISO 8610 dates
+      - The date should be formatted as YYYY-MM-DD
+    todos:
+      - add date string validation pattern
+
+  protocol_link:
+    range: Protocol
+    #    range: integer
+    # see also relevant_protocol string slot # this name avoids case-insensitive clash with Protocol class
+
+
+  # some parent properties for biosamples, which will be subtyped in multiples modules
+
+  nucleic_acid_concentration:
+    range: InstrumentValue
+  biomaterial_purity:
+    range: QuantityValue

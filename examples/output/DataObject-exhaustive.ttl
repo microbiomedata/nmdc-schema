@@ -4,8 +4,8 @@
 
 nmdc:dobj-11-dtTMNb a nmdc:DataObject ;
     dcterms:description "Crispr Terms for nmdc:ann0vx38" ;
-    nmdc:alternative_identifiers "prefix:value1",
-        "prefix:value2" ;
+    nmdc:alternative_identifiers "prefix:value1"^^xsd:anyURI,
+        "prefix:value2"^^xsd:anyURI ;
     nmdc:compression_type "any string" ;
     nmdc:data_object_type "Crispr Terms" ;
     nmdc:file_size_bytes "1234"^^xsd:long ;

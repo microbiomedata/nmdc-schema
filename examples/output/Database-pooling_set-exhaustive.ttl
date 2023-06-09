@@ -1,15 +1,16 @@
-@prefix RetroRules: <https://unknown.to.linter.org/> .
+@prefix bare: <https://unknown.to.linter.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-RetroRules:value a nmdc:Pooling ;
+nmdc:poolp-9x9-1x a nmdc:Pooling ;
     dcterms:description "xxx" ;
-    nmdc:alternative_identifiers "bare:xxx" ;
-    nmdc:has_inputs RetroRules:xxx,
-        RetroRules:yyy ;
-    nmdc:has_outputs RetroRules:xxx ;
+    nmdc:alternative_identifiers "bare:xxx"^^xsd:anyURI ;
+    nmdc:has_input bare:xxx,
+        bare:yyy ;
+    nmdc:has_output bare:xxx ;
     nmdc:name "first pooling process" .
 
 [] a nmdc:Database ;
-    nmdc:pooling_set RetroRules:value .
+    nmdc:pooling_set nmdc:poolp-9x9-1x .
 

@@ -4,24 +4,33 @@ description: This file defines terms that appear in the 'Sample ID' section of t
   as of Spring 2022
 title: 'NMDC Schema supplement for Submission Portal: Sample ID'
 id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/portal/sample_id
+
 imports:
   - linkml:types
-license: 'license: https://creativecommons.org/publicdomain/zero/1.0/'
+
+todos:
+  - the two remaining slots in this module, analysis_type and sample_link aren't really sample identifiers
+
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
 prefixes:
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
   nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
+
 default_prefix: nmdc
 default_range: string
+
 enums:
   analysis_type_enum:
     from_schema: https://example.com/nmdc_dh
     permissible_values:
-      metabolomics:
-      metagenomics:
-      metaproteomics:
-      metatranscriptomics:
-      natural organic matter:
+      metabolomics: { }
+      metagenomics: { }
+      metaproteomics: { }
+      metatranscriptomics: { }
+      natural organic matter: { }
+
 slots:
   analysis_type:
     description: Select all the data types associated or available for this biosample
@@ -36,6 +45,7 @@ slots:
     slot_group: Sample ID
     range: analysis_type_enum
     recommended: true
+
   sample_link:
     description: A unique identifier to assign parent-child, subsample, or sibling
       samples. This is relevant when a sample or other material was used to generate

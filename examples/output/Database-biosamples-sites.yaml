@@ -141,17 +141,17 @@ field_research_site_set:
 collecting_biosamples_from_site_set:
 - id: nmdc:clsite-99-Cq00d1
   name: Collection of biosamples from BESC-13-CL1_35_33
-  has_inputs:
+  has_input:
   - nmdc:frsite-99-SPreao
-  has_outputs:
+  has_output:
   - nmdc:bsm-99-J9FcnC
   - nmdc:bsm-99-BdlWdQ
   - nmdc:bsm-99-vn74Wq
 - id: nmdc:clsite-99-yzmLBN
   name: Collection of biosamples from BESC-13-CL2_39_29
-  has_inputs:
+  has_input:
   - nmdc:frsite-99-h2mYFG
-  has_outputs:
+  has_output:
   - nmdc:bsm-99-P8FdpS
   - nmdc:bsm-99-ugBwz3
   - nmdc:bsm-99-tN5lxM

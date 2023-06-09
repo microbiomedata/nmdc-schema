@@ -1,15 +1,15 @@
 {
-  "id": "bare:value",
+  "id": "nmdc:poolp-9x9-1x",
   "name": "first pooling process",
   "description": "xxx",
   "alternative_identifiers": [
     "bare:xxx"
   ],
-  "has_inputs": [
+  "has_input": [
     "bare:xxx",
     "bare:yyy"
   ],
-  "has_outputs": [
+  "has_output": [
     "bare:xxx"
   ],
   "@type": "Pooling"

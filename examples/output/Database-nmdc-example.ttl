@@ -1,8 +1,8 @@
 @prefix ENVO: <http://purl.obolibrary.org/obo/ENVO_> .
 @prefix GOLD: <http://identifiers.org/gold/> .
 @prefix MIXS: <https://w3id.org/mixs/> .
-@prefix RetroRules: <https://unknown.to.linter.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix jgi: <http://example.com/jgi/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix wgs84: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -32,7 +32,7 @@ nmdc:bsm-99-dc6tg6 a nmdc:Biosample ;
     nmdc:ecosystem_category "Plants" ;
     nmdc:ecosystem_subtype "Soil" ;
     nmdc:ecosystem_type "Rhizosphere" ;
-    nmdc:gold_biosample_identifiers "GOLD:Gb0188037"^^xsd:anyURI ;
+    nmdc:gold_biosample_identifiers "GOLD:Gb0188037" ;
     nmdc:habitat "rhizosphere" ;
     nmdc:host_name "Carex aquatilis" ;
     nmdc:location "University of Washington, Seatle, WA, United States" ;
@@ -68,7 +68,7 @@ nmdc:bsm-99-dge3H9 a nmdc:Biosample ;
     nmdc:ecosystem_category "Terrestrial" ;
     nmdc:ecosystem_subtype "Unclassified" ;
     nmdc:ecosystem_type "Soil" ;
-    nmdc:gold_biosample_identifiers "GOLD:Gb0157174"^^xsd:anyURI ;
+    nmdc:gold_biosample_identifiers "GOLD:Gb0157174" ;
     nmdc:habitat "soil" ;
     nmdc:location "Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United States" ;
     nmdc:mod_date "08-JAN-20 02.49.23.000000000 PM" ;
@@ -103,7 +103,7 @@ nmdc:bsm-99-isqhuW a nmdc:Biosample ;
     nmdc:ecosystem_category "Terrestrial" ;
     nmdc:ecosystem_subtype "Wetlands" ;
     nmdc:ecosystem_type "Soil" ;
-    nmdc:gold_biosample_identifiers "GOLD:Gb0150408"^^xsd:anyURI ;
+    nmdc:gold_biosample_identifiers "GOLD:Gb0150408" ;
     nmdc:habitat "Fen" ;
     nmdc:location "Stordalen Mire, Sweden" ;
     nmdc:mod_date "08-JAN-20 02.49.23.000000000 PM" ;
@@ -135,9 +135,9 @@ nmdc:omprc-99-9XUVVF a nmdc:OmicsProcessing ;
     dcterms:description "Forest soil from Barre Woods Harvard Forest LTER site was incubated at 10C with heavy water. Sample is from a control plot at ambient soil temperature, organic horizon - top 4cm of soil" ;
     dcterms:isPartOf GOLD:Gs0130354 ;
     nmdc:add_date "17-AUG-17 05.08.38.451000000 PM" ;
-    nmdc:alternative_identifiers "GOLD:Gp0225767" ;
+    nmdc:alternative_identifiers "GOLD:Gp0225767"^^xsd:anyURI ;
     nmdc:has_input GOLD:Gb0157174 ;
-    nmdc:has_output RetroRules:599c3a117ded5e41edd7da77 ;
+    nmdc:has_output jgi:599c3a117ded5e41edd7da77 ;
     nmdc:mod_date "16-OCT-20 02.04.01.374000000 AM" ;
     nmdc:name "Forest soil microbial communities from Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O" ;
     nmdc:ncbi_project_name "Forest soil microbial communities from Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O" ;
@@ -150,9 +150,9 @@ nmdc:omprc-99-MVW1FV a nmdc:OmicsProcessing ;
     dcterms:description "Rhizosphere microbial communities from Carex aquatilis grown in submerged peat from a thermokarst bog, University of Washington, Seatle, WA, United States" ;
     dcterms:isPartOf GOLD:Gs0134277 ;
     nmdc:add_date "29-MAR-18 01.27.30.036000000 PM" ;
-    nmdc:alternative_identifiers "GOLD:Gp0306221" ;
+    nmdc:alternative_identifiers "GOLD:Gp0306221"^^xsd:anyURI ;
     nmdc:has_input GOLD:Gb0188037 ;
-    nmdc:has_output RetroRules:5baa816646d1e63f764deb37 ;
+    nmdc:has_output jgi:5baa816646d1e63f764deb37 ;
     nmdc:mod_date "04-APR-20 08.26.35.067000000 AM" ;
     nmdc:name "Rhizosphere microbial communities from Carex aquatilis grown in University of Washington, Seatle, WA, United States - 4-1-23 metaG" ;
     nmdc:ncbi_project_name "Rhizosphere microbial communities from Carex aquatilis grown in University of Washington, Seatle, WA, United States - 4-1-23 metaG" ;
@@ -165,9 +165,9 @@ nmdc:omprc-99-dk9vgI a nmdc:OmicsProcessing ;
     dcterms:description "Permafrost microbial communities from Stordalen Mire, Sweden" ;
     dcterms:isPartOf GOLD:Gs0128849 ;
     nmdc:add_date "17-MAR-17 04.55.44.822000000 PM" ;
-    nmdc:alternative_identifiers "GOLD:Gp0208560" ;
+    nmdc:alternative_identifiers "GOLD:Gp0208560"^^xsd:anyURI ;
     nmdc:has_input GOLD:Gb0150408 ;
-    nmdc:has_output RetroRules:58b653757ded5e7a2af951c4 ;
+    nmdc:has_output jgi:58b653757ded5e7a2af951c4 ;
     nmdc:mod_date "22-MAY-20 06.38.19.576000000 PM" ;
     nmdc:name "Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG" ;
     nmdc:ncbi_project_name "Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG" ;
@@ -184,7 +184,7 @@ nmdc:sty-99-3bQQ4j a nmdc:Study ;
     nmdc:ecosystem_category "Plants" ;
     nmdc:ecosystem_subtype "Rhizosphere" ;
     nmdc:ecosystem_type "Roots" ;
-    nmdc:gold_study_identifiers "GOLD:Gs0134277"^^xsd:anyURI ;
+    nmdc:gold_study_identifiers "GOLD:Gs0134277" ;
     nmdc:name "Rhizosphere microbial communities from Carex aquatilis grown in University of Washington, Seatle, WA, United States" ;
     nmdc:principal_investigator [ a nmdc:PersonValue ;
             nmdc:has_raw_value "Rebecca Neumann" ] ;
@@ -199,7 +199,7 @@ nmdc:sty-99-FkQIsc a nmdc:Study ;
     nmdc:ecosystem_category "Terrestrial" ;
     nmdc:ecosystem_subtype "Wetlands" ;
     nmdc:ecosystem_type "Soil" ;
-    nmdc:gold_study_identifiers "GOLD:Gs0128849"^^xsd:anyURI ;
+    nmdc:gold_study_identifiers "GOLD:Gs0128849" ;
     nmdc:name "Permafrost microbial communities from Stordalen Mire, Sweden" ;
     nmdc:principal_investigator [ a nmdc:PersonValue ;
             nmdc:has_raw_value "Virginia Rich" ] ;
@@ -214,7 +214,7 @@ nmdc:sty-99-oJmAOs a nmdc:Study ;
     nmdc:ecosystem_category "Terrestrial" ;
     nmdc:ecosystem_subtype "Unclassified" ;
     nmdc:ecosystem_type "Soil" ;
-    nmdc:gold_study_identifiers "GOLD:Gs0130354"^^xsd:anyURI ;
+    nmdc:gold_study_identifiers "GOLD:Gs0130354" ;
     nmdc:name "Forest soil microbial communities from Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United States" ;
     nmdc:principal_investigator [ a nmdc:PersonValue ;
             nmdc:has_raw_value "Jeffrey Blanchard" ] ;

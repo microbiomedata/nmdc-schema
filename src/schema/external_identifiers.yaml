@@ -3,32 +3,29 @@ name: external_identifiers
 title: NMDC External Identifiers
 description: >-
   External identifiers
+
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 todos:
   - "## section delimiters should be subsets"
 
+imports:
+  - basic_slots
+
 prefixes:
+  # none of these are registered in prefix commons
   GOLD: http://identifiers.org/gold/
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
   nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
   skos: http://www.w3.org/2004/02/skos/core#
-#  prov: http://www.w3.org/ns/prov#
-
-# WARNING:Namespaces:MASSIVE namespace is already mapped to http://identifiers.org/massive/ -
-#   Mapping to https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task= ignored
-
 
 default_prefix: nmdc
 default_range: string
 
-default_curi_maps:
-  - obo_context
-  - idot_context
-
-imports:
-  - basic_slots
+#default_curi_maps:
+#  - obo_context
+#  - idot_context
 
 types:
 
@@ -38,26 +35,48 @@ types:
       A CURIE representing an external identifier
     see_also:
       - https://microbiomedata.github.io/nmdc-schema/identifiers.html
+    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$'
 
 slots:
 
   external_database_identifiers:
-    is_a: alternative_identifiers
     abstract: true
-    multivalued: true
     description: Link to corresponding identifier in external database
+    is_a: alternative_identifiers
+    multivalued: true
+    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$'
+    range: external identifier
     comments:
       - The value of this field is always a registered CURIE
     notes:
-      - "had tried ranges of  external identifier and string"
-    range: uriorcurie
+      - "had tried ranges of external identifier and string"
     close_mappings:
       - skos:closeMatch
+
+  img_identifiers:
+    title: IMG Identifiers
+    is_a: external_database_identifiers
+    description: >-
+      A list of identifiers that relate the biosample to records in the IMG database.
+    #    multivalued: true
+    todos:
+      - add is_a or mixin modeling, like other external_database_identifiers
+      - what class would IMG records belong to?! Are they Studies, Biosamples, or something else?
+  #    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$' # DOI-like pattern. Could be more conservative if we leave this out of the external_database_identifiers hierarchy
+  #    range: external identifier # or uriorcurie directly, as opposed to by-type-inheritance
+
+  # mixins
+
+  igsn_identifiers:
+    mixin: true
 
   gold_identifiers:
     mixin: true
     see_also:
       - https://gold.jgi.doe.gov/
+
+  emsl_identifiers:
+    mixin: true
 
   mgnify_identifiers:
     mixin: true
@@ -79,11 +98,31 @@ slots:
       - https://www.insdc.org/
       - https://ena-docs.readthedocs.io/en/latest/submit/general-guide/accessions.html
 
+  massive_identifiers:
+    mixin: true
+    description: identifiers for entities according to MASSIVE
+
+  neon_identifiers:
+    mixin: true
+    description: identifiers for entities according to NEON
+
+  jgi_portal_identifiers:
+    mixin: true
+    description: identifiers for entities according to JGI Portal
+
+  gnps_identifiers:
+    mixin: true
+
   ## studies
 
   study_identifiers:
     abstract: true
     is_a: external_database_identifiers
+
+  neon_study_identifiers:
+    is_a: study_identifiers
+    mixins:
+      - neon_identifiers
 
   insdc_sra_ena_study_identifiers:
     is_a: study_identifiers
@@ -94,7 +133,6 @@ slots:
       - NCBI SRA identifiers
       - DDBJ SRA identifiers
     pattern: "^insdc.sra:(E|D|S)RP[0-9]{6,}$"
-    multivalued: true
     description: identifiers for corresponding project in INSDC SRA / ENA
     examples:
       - value: https://identifiers.org/insdc.sra:SRP121659
@@ -105,7 +143,7 @@ slots:
       - https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=studies
 
   insdc_bioproject_identifiers:
-    is_a: insdc_identifiers
+    is_a: study_identifiers
     mixins:
       - insdc_identifiers
     aliases:
@@ -127,7 +165,6 @@ slots:
     mixins:
       - gold_identifiers
     pattern: "^GOLD:Gs[0-9]+$"
-    multivalued: true
     description: identifiers for corresponding project(s) in GOLD
     comments:
       - uses the prefix GS (but possibly in a different case)
@@ -138,14 +175,13 @@ slots:
     title: GOLD Study Identifiers
 
   mgnify_project_identifiers:
-    is_a: insdc_identifiers
+    is_a: study_identifiers
+    mixins:
+      - mgnify_identifiers
     pattern: "^mgnify.proj:[A-Z]+[0-9]+$"
     description: identifiers for corresponding project in MGnify
     examples:
       - value: https://identifiers.org/mgnify.proj:MGYS00005757
-
-  gnps_identifiers:
-    mixin: true
 
   gnps_task_identifiers:
     is_a: study_identifiers
@@ -162,22 +198,55 @@ slots:
       - value: gnps.task:4b848c342a4f4abc871bdf8a09a60807
     pattern: "^gnps\\.task:[a-f0-9]+$"
 
+  massive_study_identifiers:
+    is_a: study_identifiers
+    mixins:
+      - massive_identifiers
+    pattern: "^MASSIVE:"
+    todos:
+      - prefix not defined yet
+    description: identifiers for corresponding study in MASSIVE
+    examples:
+      - value: MASSIVE:MSV000090886
+        description: MASSIVE id for MASSIVE's metabolomics analysis of Gb0305843, resolvable with prefix http://identifiers.org/massive/
+    see_also:
+      - https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=83574f41458a4b259621d5c32a4d82f9
+
+  #  emsl_proposal_identifier:
+  #    is_a: study_identifiers
+  #    mixins:
+  #      - emsl_identifiers
+  #    title: EMSL Proposal Identifier
+  #    description: The proposal number assigned to the EMSL awarded study that relates to that which is represented in NMDC.
+
+
+  emsl_project_dois:
+    is_a: study_identifiers
+    mixins:
+      - emsl_identifiers
+    title: EMSL Project DOI
+    description: A DOI that resolves to a EMSL Research Campaign page.
+
+
   ## samples
 
   biosample_identifiers:
     abstract: true
     is_a: external_database_identifiers
 
+  neon_biosample_identifiers:
+    is_a: biosample_identifiers
+    mixins:
+      - neon_identifiers
+
   gold_biosample_identifiers:
     is_a: biosample_identifiers
     mixins:
       - gold_identifiers
     pattern: "^GOLD:Gb[0-9]+$"
-    multivalued: true
     description: identifiers for corresponding sample in GOLD
     examples:
       - value: https://identifiers.org/gold:Gb0312930
-
 
   insdc_biosample_identifiers:
     is_a: biosample_identifiers
@@ -188,7 +257,6 @@ slots:
       - NCBI biosample identifiers
       - DDBJ biosample identifiers
     pattern: "^biosample:SAM[NED]([A-Z])?[0-9]+$"
-    multivalued: true
     description: identifiers for corresponding sample in INSDC
     examples:
       - value: https://identifiers.org/biosample:SAMEA5989477
@@ -213,6 +281,27 @@ slots:
       - value: https://identifiers.org/insdc.sra:DRS166340
         description: I13_N_5-10 sample from Soil fungal diversity along elevational gradients
 
+  emsl_biosample_identifiers:
+    title: EMSL Biosample Identifiers
+    description: >-
+      A list of identifiers for the biosample from the EMSL database.  This is
+      used to link the biosample, as modeled by NMDC, to the biosample in the planned EMSL NEXUS database.
+    is_a: biosample_identifiers
+    mixins:
+      - emsl_identifiers
+    todos:
+      - removed "planned" once NEXUS is online
+      - make an emsl identifiers mixin
+      - determine real expansion for emsl prefix
+
+  igsn_biosample_identifiers:
+    title: IGSN Biosample Identifiers
+    description: >-
+      A list of identifiers for the biosample from the IGSN database.
+    is_a: biosample_identifiers
+    mixins:
+      - igsn_identifiers
+
   ## OmicsProcessing
 
   omics_processing_identifiers:
@@ -224,7 +313,6 @@ slots:
     mixins:
       - gold_identifiers
     pattern: "^GOLD:Gp[0-9]+$"
-    multivalued: true
     description: identifiers for corresponding sequencing project in GOLD
     examples:
       - value: https://identifiers.org/gold:Gp0108335
@@ -234,7 +322,6 @@ slots:
     pattern: "^insdc.sra:(E|D|S)RX[0-9]{6,}$"
     mixins:
       - insdc_identifiers
-
 
   ## analysis run
 
@@ -247,7 +334,6 @@ slots:
     mixins:
       - gold_identifiers
     pattern: "^GOLD:Ga[0-9]+$"
-    multivalued: true
     description: identifiers for corresponding analysis project in GOLD
     examples:
       - value: https://identifiers.org/gold:Ga0526289
@@ -263,7 +349,6 @@ slots:
       - value: https://www.ebi.ac.uk/metagenomics/runs/DRR218479
         description: Illumina MiSeq paired end sequencing of SAMD00212331
       - value: https://www.ebi.ac.uk/ena/browser/view/ERR436051
-
 
   mgnify_analysis_identifiers:
     is_a: analysis_identifiers
@@ -286,19 +371,10 @@ slots:
     mixins:
       - insdc_identifiers
 
-  massive_identifiers:
-    mixin: true
-    description: identifiers for entities according to MASSIVE
-
-  massive_study_identifiers:
-    is_a: study_identifiers
-    mixins:
-      - massive_identifiers
-    pattern: "^MASSIVE:"
-    description: identifiers for corresponding study in MASSIVE
-    examples:
-      - value: MASSIVE:MSV000090886
-        description: MASSIVE id for MASSIVE's metabolomics analysis of Gb0305843, resolvable with prefix http://identifiers.org/massive/
-    see_also:
-      - https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=83574f41458a4b259621d5c32a4d82f9
-
+#  # EMSL
+#
+#  emsl_project_identifier:
+#    see_also:
+#      - emsl_proposal_identifier
+#    comments:
+#      - this is also associated with class Study!

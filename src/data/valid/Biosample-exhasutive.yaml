@@ -32,8 +32,7 @@ alkyl_diethers:
 alt:
   has_raw_value: 100 meter
 alternative_identifiers:
-  - any_string
-  - seriously_anything
+  - generic:abc123
 aminopept_act:
   has_raw_value: 0.269 mole per liter per hour
 ammonium:
@@ -250,7 +249,7 @@ org_nitro:
   has_raw_value: 4 micromole per liter
 organism_count:
   - has_raw_value: ATP
-oxy_stat_samp: aerobe
+oxy_stat_samp: aerobic
 part_org_carb:
   has_raw_value: 1.92 micromole per liter
 perturbation:
@@ -375,7 +374,7 @@ light_regm:
   has_raw_value: incandescent light;10 lux;450 nanometer
 phosphate:
   has_raw_value: 0.7 micromole per liter
-#rel_to_oxygen
+
 #samp_collec_method:
 #  has_raw_value: swabbing
 samp_collec_method: swabbing
@@ -429,8 +428,7 @@ elevator:
   has_raw_value: xxx
 embargoed: true
 emsl_biosample_identifiers:
-  - any_string
-  - seriously_anything
+  - generic:abc123
 emulsions:
   - has_raw_value: xxx
 env_broad_scale:
@@ -605,8 +603,7 @@ igsn_biosample_identifiers:
   - any:curie_1
   - any:curie_2
 img_identifiers:
-  - any string 1
-  - any string 2
+  - generic:abc123
 indoor_space: bedroom
 indoor_surf: cabinet
 indust_eff_percent:
@@ -772,7 +769,7 @@ rel_air_humidity:
 rel_humidity_out:
   has_raw_value: xxx
 rel_samp_loc: edge of car
-rel_to_oxygen: aerobe
+#rel_to_oxygen: aerobe
 replicate_number: '1'
 reservoir:
   has_raw_value: xxx

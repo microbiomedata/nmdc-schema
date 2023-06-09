@@ -4,68 +4,95 @@ title: NMDC Schema
 
 notes:
   - "MetaCyc expansion assumes we're talking about metacyc reactions and not genes, compounds etc."
-  - "removed/commented out the confusing 'identifier' slot"
-  - "removed/commented out all mentions and definitions of depth2 and subsurface_depth2"
-  - "depth2 should now be migrated to the has_maximum_value part of depth"
-  - "slots requested for Bioscales, but already available for Biosample : tot_phosp, tot_carb, tot_nitro_content, pH"
   - "informal ## section delimiters should be replaced with subsets ?"
   - "commented out insdc_biosample_identifiers insdc_secondary_sample_identifiers... need better understanding of id patterns (at least)"
   - "commented out several MIxS terms assigned to Biosample because the definitions of those terms were commented out in mixs.yaml dues to shared slot uris"
-  - "resuming use of part_of to link Biosamples to Studies. eg releasing sample_link from that role"
 
 
 description: >-
   Schema for National Microbiome Data Collaborative (NMDC).
   
-  This schema is organized into distinct modules:
+  This schema is organized into multiple modules, such as:
   
    * a set of core types for representing data values
-   * the mixs schema (auto-translated from mixs excel)
-   * annotation schema
-   * the NMDC schema itself
+   * a subset of the mixs schema
+   * an annotation schema
+   * the NMDC schema itself, into which the other modules are imported
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: v7.5.0
+version: v7.6.1
+
+imports:
+  - annotation
+  - core
+  - external_identifiers
+  - linkml:types
+  - mixs
+  - portal/emsl
+  - portal/jgi_metagenomics
+  - portal/jgi_metatranscriptomics
+  - portal/mixs_inspired
+  - portal/sample_id
+  - sample_prep
+  - workflow_execution_activity
+
+
 prefixes:
-  EFO: http://identifiers.org/efo/
-  ISA: https://unknown.to.linter.org/
-  NCIT: http://purl.obolibrary.org/obo/NCIT_
-  OBI: http://purl.obolibrary.org/obo/OBI_
-  bare: https://unknown.to.linter.org/
+  emsl.project: "https://bioregistry.io/reference/emsl.project:"
+  gnps.task: "https://bioregistry.io/reference/gnps.task:"
+  jgi.proposal: "https://bioregistry.io/reference/jgi.proposal:"
+  neon.identifier: http://example.org/neon/identifier/
+  neon.schema: http://example.org/neon/schema/
+
+  generic: https://example.com/generic/
+
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
   nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
-  prov: http://www.w3.org/ns/prov#
-  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
-  rdfs: http://www.w3.org/2000/01/rdf-schema#
-  skos: http://www.w3.org/2004/02/skos/core#
-  xsd: http://www.w3.org/2001/XMLSchema#
-  NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
-  #  COG: https://unknown.to.linter.org/
-  #  EC: https://unknown.to.linter.org/
-  #  GOLD: http://identifiers.org/gold/
-  #  IMG.TAXON: http://identifiers.org/img.taxon/
-  #  MIXS: https://w3id.org/mixs/
-  #  MS: http://purl.obolibrary.org/obo/MS_
-  #  MetaCyc: https://identifiers.org/metacyc.reaction/
-  #  MetaNetX: https://unknown.to.linter.org/
-  #  RetroRules: https://unknown.to.linter.org/
-  #  UniProtKB: https://identifiers.org/uniprot/
-  #  biolink: https://w3id.org/biolink/vocab/
-  #  dcterms: http://purl.org/dc/terms/
-  #  emsl: https://unknown.to.linter.org/
-  #  gtpo: https://unknown.to.linter.org/
-  #  igsn: https://app.geosamples.org/sample/igsn/
-  #  insdc.srs: https://unknown.to.linter.org/
-  jgi: https://unknown.to.linter.org/
-#  mgnify: https://unknown.to.linter.org/
-#  qud: http://qudt.org/1.1/schema/qudt#
-#  schema: http://schema.org/
-#  wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
 
+  skos: http://www.w3.org/2004/02/skos/core#
+  igsn: https://app.geosamples.org/sample/igsn/
+
+  prov: http://www.w3.org/ns/prov# # https://github.com/prefixcommons/biocontext/blob/master/registry/semweb_context.jsonld
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# # https://github.com/prefixcommons/biocontext/blob/master/registry/semweb_context.jsonld
+  rdfs: http://www.w3.org/2000/01/rdf-schema# # https://github.com/prefixcommons/biocontext/blob/master/registry/semweb_context.jsonld
+  xsd: http://www.w3.org/2001/XMLSchema# # https://github.com/prefixcommons/biocontext/blob/master/registry/semweb_context.jsonld
+  EFO: http://identifiers.org/efo/ # in https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld but assertion still required
+
+  # IMG.TAXON in https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  # MASSIVE in https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld # Mapping to https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task= ignored
+  # MS: in https://github.com/prefixcommons/biocontext/blob/master/registry/obo_context.jsonld and https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  # PR: in https://github.com/prefixcommons/biocontext/blob/master/registry/obo_context.jsonld and https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  # bioregistry has chemical compartment and reaction sub-namespaces for MetaNetX
+
+  MetaNetX: http://example.com/metanetx/
+
+  # NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_ in https://github.com/prefixcommons/biocontext/blob/master/registry/obo_context.jsonld
+  # NCIT: http://purl.obolibrary.org/obo/NCIT_  in https://github.com/prefixcommons/biocontext/blob/master/registry/obo_context.jsonld
+  # OBI: http://purl.obolibrary.org/obo/OBI_ in https://github.com/prefixcommons/biocontext/blob/master/registry/obo_context.jsonld
+
+  # MIXS: https://w3id.org/mixs/
+  # mixs: https://w3id.org/mixs/  # are we going to point to their terms when we have modified them?
+
+  ISA: http://example.com/isa/
+  RetroRules: http://example.com/retrorules/
+  gtpo: http://example.com/gtpo/
+  jgi: http://example.com/jgi/
+
+  # igsnvoc: https://igsn.org/voc/v1/
+  # insdc.srs: ???
+  # mgnify: ???
+
+  mgnify.proj: "https://identifiers.org/mgnify.proj:"
 
 default_prefix: nmdc
 default_range: string
+
+# https://linkml.io/linkml-model/docs/default_curi_maps/
+#   ordered list of prefixcommon biocontexts to be fetched to resolve id prefixes and inline prefix variables
+#   https://github.com/prefixcommons/biocontext/tree/master/registry
+#   what about bioregistry
+#   what about identifiers.org
 
 default_curi_maps:
   - obo_context
@@ -77,21 +104,6 @@ emit_prefixes:
   - skos
   - xsd
 
-imports:
-  - annotation
-  - basic_slots
-  - core
-  - external_identifiers
-  - linkml:types
-  - mixs
-  - portal/emsl
-  - portal/jgi_metagenomics
-  - portal/jgi_metatranscriptomics
-  - portal/mixs_inspired
-  - portal/sample_id
-  - prov
-  - sample_prep
-  - workflow_execution_activity
 
 settings:
   id_nmdc_prefix: "^(nmdc)"
@@ -163,19 +175,21 @@ classes:
   Pooling:
     is_a: PlannedProcess # from core.yaml
     slots:
-      - has_inputs
-      - has_outputs
     slot_usage:
-      has_inputs:
+      has_input:
         minimum_cardinality: 2
-      has_outputs:
+      has_output:
         minimum_cardinality: 1
         maximum_cardinality: 1
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
 
   Extraction:
     is_a: PlannedProcess # from core.yaml
     slots:
-      - extraction_date
       - extraction_method
       - extraction_target
       - processing_institution
@@ -183,19 +197,22 @@ classes:
       - quality_control_report
       - sample_mass
     slot_usage:
-      has_inputs:
+      has_input:
         required: true
-      has_outputs:
+      has_output:
         required: true
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
 
   Protocol:
-    #    is_a: NamedThing
     slots:
       - url
       - name
 
   QualityControlReport:
-    #    is_a: NamedThing
     slots:
       - status
       - name
@@ -205,20 +222,24 @@ classes:
       - LibraryConstruction
     is_a: PlannedProcess # from core.yaml
     slots:
-      - library_type
       - library_preparation_kit
+      - library_type
       - pcr_cycles
-      - processed_date
       - processing_institution
     close_mappings:
       - OBI:0000711
     comments:
       - OBI:0000711 specifies a DNA input (but not ONLY a DNA input)
     slot_usage:
-      has_inputs:
+      has_input:
         required: true
-      has_outputs:
+      has_output:
         required: true
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
 
   FieldResearchSite:
     aliases:
@@ -234,6 +255,18 @@ classes:
         the same plant were obtained at the same site. In this case, the site would
         correspond to one tree.
       - "might correspond to GOLD's identifier on a page like https://gold.jgi.doe.gov/biosample?id=Gb0305833"
+    slots:
+      - cur_vegetation
+      - elev
+      - geo_loc_name
+      - habitat # gold term... enumerated values?
+      - lat_lon
+      - local_class
+      - neon_deims_sdr_link # short-term addition for neon
+      - neon_eco_type # short-term addition for neon
+      - neon_soil_type # short-term addition for neon
+      - part_of
+      - soil_type
     slot_usage:
       id:
         required: true
@@ -244,17 +277,14 @@ classes:
   CollectingBiosamplesFromSite:
     is_a: PlannedProcess
     title: Collecting Biosamples From Site
-    slots:
-      - has_inputs
-      - has_outputs
     comments:
       - "this illustrates implementing a Biosample relation with a process class"
     slot_usage:
-      has_inputs:
+      has_input:
         range: Site
         #        range: NamedThing
         required: true
-      has_outputs:
+      has_output:
         range: Biosample
         required: true
       id:
@@ -372,6 +402,8 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
+
+      - neon_biosample_identifiers
       - host_taxid
       - embargoed
       - collected_from
@@ -724,7 +756,6 @@ classes:
       - rel_air_humidity
       - rel_humidity_out
       - rel_samp_loc
-      - rel_to_oxygen
       - reservoir
       - resins_pc
       - room_air_exch_rate
@@ -1042,9 +1073,7 @@ classes:
         examples:
           value: 100
       oxy_stat_samp:
-        notes:
-          - this is now a hybrid of the oxy_stat_samp semantics and the rel_to_oxygen enumeration
-        range: rel_to_oxygen_enum
+        range: oxy_stat_samp_enum
 
       id:
         required: true
@@ -1073,6 +1102,7 @@ classes:
         required: true
       part_of:
         required: true
+        range: Study
       fire:
         comments:
           - Provide the date the fire occurred. If extended burning occurred provide the date range.
@@ -1322,7 +1352,13 @@ classes:
       embl.ena: A study (project) groups together data submitted to the archive and
         controls its release date. A study accession is typically used when citing
         data submitted to ENA
+
     slots:
+
+      - emsl_project_dois
+
+      - neon_study_identifiers
+
       ## Identifiers
       - id
 
@@ -1331,39 +1367,38 @@ classes:
       - gnps_task_identifiers
 
       ## Related IDs
-      - related_identifiers
-      - emsl_proposal_identifier
-      - emsl_proposal_doi
-      - gold_study_identifiers
       #- insdc_bioproject_identifiers
       #- insdc_sra_ena_study_identifiers
-      - mgnify_project_identifiers
-
-      - ecosystem
-      - ecosystem_category
-      - ecosystem_type
-      - ecosystem_subtype
-      - specific_ecosystem
-      - principal_investigator
-      - doi
-      - title
-      - alternative_titles
+      - abstract
       - alternative_descriptions
       - alternative_names
-      - abstract
-      - objective
-      - websites
-      - publications
+      - alternative_titles
+      - doi
+      - ecosystem
+      - ecosystem_category
+      - ecosystem_subtype
+      - ecosystem_type
+      #      - emsl_project_identifier
+      #      - emsl_proposal_doi
+      #      - emsl_proposal_identifier
       - ess_dive_datasets
-      - type
-      - relevant_protocols
       - funding_sources
+      - gold_study_identifiers
       - has_credit_associations
-      - study_image
-      - emsl_project_identifier
       - insdc_bioproject_identifiers
-      - notes
       - massive_study_identifiers
+      - mgnify_project_identifiers
+      - notes
+      - objective
+      - principal_investigator
+      - publications
+      - related_identifiers
+      - relevant_protocols
+      - specific_ecosystem
+      - study_image
+      - title
+      - type
+      - websites
 
 
     slot_usage:
@@ -1379,11 +1414,11 @@ classes:
         annotations:
           display_hint: DOI associated with the data in this study. This is required when data is already generated.
       name:
-        description:
+
         annotations:
           display_hint: Provide a name for the study your samples will belong with.
       websites:
-        description:
+
         annotations:
           display_hint: Link to the Principal Investigator's research lab webpage
             or the study webpage associated with this collection of samples.
@@ -1393,13 +1428,13 @@ classes:
         annotations:
           display_hint: Provide a brief description of your study.
       notes:
-        description:
+
         annotations:
           display_hint: Add any additional notes or comments about this study.
       alternative_identifiers:
         description: Unique identifier for a study submitted to additional resources. Matches that which has been submitted to NMDC
       alternative_names:
-        description:
+
         annotations:
           display_hint: Project, study, or sample set names the are also associated with this submission
             or other names / identifiers for this study.
@@ -1409,10 +1444,10 @@ classes:
         description: Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.
         annotations:
           display_hint: Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title.
-      emsl_project_identifier:
-        description: The EMSL project ID that relates to the NMDC submitted study
-      emsl_proposal_doi:
-        description: The DOI for the EMSL awarded study that relates to the NMDC submitted study
+    #      emsl_project_identifier:
+    #        description: The EMSL project ID that relates to the NMDC submitted study
+    #      emsl_proposal_doi:
+    #        description: The DOI for the EMSL awarded study that relates to the NMDC submitted study
     exact_mappings:
       - SIO:001066
       - NCIT:C63536
@@ -1470,28 +1505,28 @@ classes:
       - The ID prefix for objects coming from GOLD will be gold:Gp
     slots:
       - add_date
-      - mod_date
+      - chimera_check
+      - gold_sequencing_project_identifiers
       - has_input
       - has_output
+      - insdc_experiment_identifiers
       - instrument_name
+      - mod_date
       - ncbi_project_name
+      - nucl_acid_amp
+      - nucl_acid_ext
       - omics_type
       - part_of
+      - pcr_cond
+      - pcr_primers
       - principal_investigator
       - processing_institution
-      - type
-      - gold_sequencing_project_identifiers
-      - insdc_experiment_identifiers
       - samp_vol_we_dna_ext
-      - nucl_acid_ext
-      - nucl_acid_amp
-      - target_gene
-      - target_subfragment
-      - pcr_primers
-      - pcr_cond
       - seq_meth
       - seq_quality_check
-      - chimera_check
+      - target_gene
+      - target_subfragment
+      - type
 
     slot_usage:
       id:
@@ -1588,12 +1623,25 @@ enums:
         meaning: https://www.neonscience.org
 
   file type enum:
-    #    from_schema: https://microbiomedata/schema
     permissible_values:
 
       Metagenome Raw Reads:
         annotations:
-          file_name_pattern: '/.+?(?=fastq)/fastq.gz'
+          file_name_pattern: '^\.fastq(\.gz)?$'
+
+      Metagenome Raw Read 1:
+        description: Read 1 raw sequencing data, aka forward reads
+        examples:
+          value: "BMI_H25VYBGXH_19S_31WellG1_R1.fastq.gz"
+        annotations:
+          file_name_pattern: '^.+_R1\.fastq(\.gz)?$'
+
+      Metagenome Raw Read 2:
+        description: Read 2 raw sequencing data, aka reverse reads
+        examples:
+          value: "BMI_H25VYBGXH_19S_31WellG1_R2.fastq.gz"
+        annotations:
+          file_name_pattern: '^.+_R2\.fastq(\.gz)?$'
 
       FT ICR-MS Analysis Results:
         description: FT ICR-MS-based molecular formula assignment results table
@@ -1625,8 +1673,25 @@ enums:
       Metagenome Bins:
         description: Metagenome bin contigs fasta
 
+      Metagenome Bins Compression File:
+        description: Compressed file containing all metagenome bins and associated files
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[mag_wf_activity_id]_hqmq_bin.zip'
+
+      Metagenome Bins Info File:
+        description: File containing version information on the binning workflow
+        annotations:
+          file_name_pattern: '[mag_wf_activity_id]_bin.info'
+
       CheckM Statistics:
         description: CheckM statistics report
+
+      Read Based Analysis Info File:
+        description: File containing reads based analysis information
+        annotations:
+          file_name_pattern: 'profiler.info'
 
       GTDBTK Bacterial Summary:
         description: GTDBTK bacterial summary
@@ -1742,10 +1807,20 @@ enums:
         annotations:
           file_name_pattern: '/.+?(?=filter)/filter-METAGENOME.fastq.gz '
 
+      Read Filtering Info File:
+        description: File containing read filtering information
+        annotations:
+          file_name_pattern: '[rqc_wf_activity_id]_readsQC.info'
+
+      QC Statistics Extended:
+        description: Extended report including methods and results for read filtering
+        annotations:
+          file_name_pattern: '/.+?(?=filter)/filtered-report.txt'
+
       QC Statistics:
         description: Reads QC summary statistics
         annotations:
-          file_name_pattern: '/.+?(?=filter)/filtered-report.txt'
+          file_name_pattern: '[rqc_wf_activity_id]_filterStats2.txt'
 
       TIGRFam Annotation GFF:
         description: GFF3 format file with TIGRfam
@@ -1787,10 +1862,10 @@ enums:
         annotations:
           file_name_pattern: '[GOLD-AP]_rfam_ncrna_tmrna.gff'
 
-      KO_EC Annotation GFF:
-        description: GFF3 format file with KO_EC
+      Crispr Terms:
+        description: Crispr Terms
         annotations:
-          file_name_pattern: '[GOLD-AP]_ko_ec.tsv'
+          file_name_pattern: '[GOLD-AP]_crt.crisprs'
 
       Product Names:
         description: Product names file
@@ -1802,15 +1877,21 @@ enums:
         annotations:
           file_name_pattern: '[GOLD-AP]_gene_phylogeny.tsv'
 
-      Crispr Terms:
-        description: Crispr Terms
+      Lineage sdb:
+        description: phylogeny at the contig level
         annotations:
-          file_name_pattern: '[GOLD-AP]_gene_phylogeny.tsv'
+          file_name_pattern: '[GOLD-AP].contigLin.assembled.sdb'
 
       Clusters of Orthologous Groups (COG) Annotation GFF:
         description: GFF3 format file with COGs
         annotations:
           file_name_pattern: '[GOLD-AP]_cog.gff'
+
+
+      KO_EC Annotation GFF:
+        description: GFF3 format file with KO_EC
+        annotations:
+          file_name_pattern: '[GOLD-AP]_ko_ec.gff'
 
       CATH FunFams (Functional Families) Annotation GFF:
         description: GFF3 format file with CATH FunFams
@@ -1886,16 +1967,16 @@ enums:
       - use ROR meanings like https://ror.org/0168r3w48 for UCSD
     from_schema: NMDC_enums_roundtrip
     permissible_values:
-      UCSD:
 
+      UCSD:
         title: University of California, San Diego
         meaning: https://ror.org/0168r3w48
-      JGI:
 
+      JGI:
         title: Joint Genome Institute
         meaning: https://ror.org/04xm1d337
-      EMSL:
 
+      EMSL:
         title: Environmental Molecular Sciences Laboratory
         meaning: https://ror.org/04rc0xn13
         notes:
@@ -1911,9 +1992,33 @@ enums:
         meaning: https://ror.org/05gvnxz63
 
 
-
-
 slots:
+
+  neon_deims_sdr_link:
+    range: string
+  neon_eco_type:
+    range: string
+  neon_soil_type:
+    range: string
+
+  ecosystem_path_id:
+    range: string
+    description: A unique id representing the GOLD classifers associated with a sample.
+  habitat:
+    range: string
+  location:
+    range: string
+  community:
+    range: string
+  ncbi_taxonomy_name:
+    range: string
+  ncbi_project_name:
+    range: string
+  sample_collection_site:
+    range: string
+  sample_collection_year:
+    range: integer
+  sample_collection_month:
 
   status:
     range: StatusEnum
@@ -1922,19 +2027,16 @@ slots:
     range: string
   #    exact_mappings:
   #      - GENEPIO:0001450
-  processed_date:
-    #    range: date
-    range: string
-  extraction_date:
-    #    range: date
-    range: string
+  #  processed_date: # can we move this or infer this from the date of some other process?
+  #    #    range: date
+  #    range: string
+  #  extraction_date: # replacing with start_ and end_date
+  #    #    range: date
+  #    range: string
   extraction_method: { }
   extraction_target:
     range: ExtractionTargetEnum
-  protocol_link:
-    range: Protocol
-    #    range: integer
-    # see also relevant_protocol string slot # this name avoids case-insensitive clash with Protocol class
+
   quality_control_report:
     #    range: integer
     range: QualityControlReport
@@ -1947,36 +2049,11 @@ slots:
   sample_mass:
     range: QuantityValue
 
-
   library_type:
     title: library type
     examples:
       - value: DNA
     range: LibraryTypeEnum
-
-
-  processed_sample_set:
-    mixins: object_set
-    domain: Database
-    range: ProcessedSample
-    multivalued: true
-    description: This property links a database object to the set of processed samples within it.
-
-  extraction_set:
-    mixins: object_set
-    domain: Database
-    range: Extraction
-    multivalued: true
-    description: This property links a database object to the set of extractions within it.
-
-  library_preparation_set:
-    aliases:
-      - library_construction_set
-    mixins: object_set
-    domain: Database
-    range: LibraryPreparation
-    multivalued: true
-    description: This property links a database object to the set of DNA extractions within it.
 
   zinc:
     aliases:
@@ -2115,10 +2192,6 @@ slots:
       subtables and can be reported
     in_subset:
       - mixs extension
-    #      from_schema: https://microbiomedata/schema/mixs
-    #      source: https://microbiomedata/schema/mixs
-    #      see_also:
-    #        - https://github.com/microbiomedata/nmdc-schema/blob/issue-291-mixs-submod/util/rebuild_mixs_yaml.py
     is_a: attribute
     range: TextValue
   #      pattern: '[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon
@@ -2146,36 +2219,6 @@ slots:
       - add an OBO slot_uri ?
 
 
-  emsl_project_identifier: { }
-  img_identifiers:
-    title: IMG Identifiers
-    description: >-
-      A list of identifiers that relate the biosample to records in the IMG database.
-    multivalued: true
-    todos:
-      - add is_a or mixin modeling
-      - what are the class of IMG records?!
-
-  emsl_biosample_identifiers:
-    title: EMSL Biosample Identifiers
-    description: >-
-      A list of identifiers for the biosample from the EMSL database.  This is
-      used to link the biosample, as modeled by NMDC, to the biosample in the planned EMSL NEXUS database.
-    multivalued: true
-    is_a: biosample_identifiers
-    todos:
-      - removed "planned" once NEXUS is online
-      - make an emsl identifiers mixin
-      - determine real expansion for emsl prefix
-
-  igsn_biosample_identifiers:
-    title: IGSN Biosample Identifiers
-    description: >-
-      A list of identifiers for the biosample from the IGSN database.
-    multivalued: true
-    is_a: biosample_identifiers
-    todos:
-      - make an igsn identifiers mixin
   biosample_categories:
     title: Categories the biosample belongs to
     range: biosample_category_enum
@@ -2187,12 +2230,10 @@ slots:
   related_identifiers:
     title: Related Identifiers
     description: Identifiers assigned to a thing that is similar to that which is represented in NMDC. Related identifier are not an identical match and may have some variation.
-  emsl_proposal_identifier:
-    title: EMSL Proposal Identifier
-    description: The proposal number assigned to the EMSL awarded study that relates to that which is represented in NMDC.
-  emsl_proposal_doi:
-    title: EMSL Proposal DOI
-    description: The proposal DOI assigned to the awarded EMSL study.
+
+  #  emsl_proposal_doi:
+  #    title: EMSL Proposal DOI
+  #    description: The proposal DOI assigned to the awarded EMSL study.
 
   #- insdc_bioproject_identifiers
   #- insdc_sra_ena_study_identifiers
@@ -2251,7 +2292,8 @@ slots:
       to relate to principal investigator slot? could include OBI:0000103 principal
       investigator role... do we need to define the OBI prefix?
     required: true
-    slot_uri: prov:agent
+  #    slot_uri: prov:agent
+
   object_set:
     mixin: true
     domain: Database
@@ -2387,12 +2429,31 @@ slots:
     multivalued: true
     description: This property links a database object to the set of omics processings
       within it.
-
   pooling_set:
     mixins: object_set
     domain: Database # doesn't that come from object_set
     range: Pooling
     multivalued: true # doesn't that come from object_set
+  processed_sample_set:
+    mixins: object_set
+    domain: Database
+    range: ProcessedSample
+    multivalued: true
+    description: This property links a database object to the set of processed samples within it.
+  extraction_set:
+    mixins: object_set
+    domain: Database
+    range: Extraction
+    multivalued: true
+    description: This property links a database object to the set of extractions within it.
+  library_preparation_set:
+    aliases:
+      - library_construction_set
+    mixins: object_set
+    domain: Database
+    range: LibraryPreparation
+    multivalued: true
+    description: This property links a database object to the set of DNA extractions within it.
 
   omics_type:
     range: ControlledTermValue
@@ -2418,6 +2479,7 @@ slots:
   instrument_name:
     description: >-
       The name of the instrument that was used for processing the sample.
+
   ## GOLD PATHS
   gold_path_field:
     is_a: attribute
@@ -2489,28 +2551,11 @@ slots:
   add_date:
     range: string
     description: The date on which the information was added to the database.
+
   mod_date:
     range: string
     description: The last date on which the database information was modified.
-  ecosystem_path_id:
-    range: string
-    description: A unique id representing the GOLD classifers associated with a sample.
-  habitat:
-    range: string
-  location:
-    range: string
-  community:
-    range: string
-  ncbi_taxonomy_name:
-    range: string
-  ncbi_project_name:
-    range: string
-  sample_collection_site:
-    range: string
-  sample_collection_year:
-    range: integer
-  sample_collection_month:
-    range: integer
+
   sample_collection_day:
     range: integer
   sample_collection_hour:

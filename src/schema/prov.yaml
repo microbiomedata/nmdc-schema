@@ -3,25 +3,21 @@ name: NMDC-PROV
 title: NMDC Rendering of prov schema
 description: >-
   See https://www.w3.org/TR/prov-o/
+
 license: https://creativecommons.org/publicdomain/zero/1.0/
-
-prefixes:
-  linkml: https://w3id.org/linkml/
-  nmdc: https://w3id.org/nmdc/
-  prov: http://www.w3.org/ns/prov#
-  nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
-
-default_prefix: nmdc
-default_range: string
-
-default_curi_maps:
-  - obo_context
-  - idot_context
-
 
 imports:
   - basic_slots
 
+prefixes:
+  prov: http://www.w3.org/ns/prov# # in https://github.com/prefixcommons/biocontext/blob/master/registry/semweb_context.jsonld
+
+  linkml: https://w3id.org/linkml/
+  nmdc: https://w3id.org/nmdc/
+  nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
+
+default_prefix: nmdc
+default_range: string
 
 classes:
 
@@ -33,7 +29,7 @@ classes:
       - started_at_time
       - ended_at_time
       - was_informed_by
-      - was_associated_with
+      #      - was_associated_with
       - used
     mappings:
       - prov:Activity
@@ -46,13 +42,13 @@ classes:
           syntax: "{id_nmdc_prefix}:act-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-  Agent:
-    description: "a provence-generating agent"
-    slots:
-      - acted_on_behalf_of
-      - was_informed_by
-    mappings:
-      - prov:Agent
+#  Agent:
+#    description: "a provence-generating agent"
+#    slots:
+#      - acted_on_behalf_of
+#      - was_informed_by
+#    mappings:
+#      - prov:Agent
 
 slots:
 
@@ -79,15 +75,15 @@ slots:
     mappings:
       - prov:wasInformedBy
 
-  was_associated_with:
-    range: Agent
-    mappings:
-      - prov:wasAssociatedWith
+  #  was_associated_with:
+  #    range: Agent
+  #    mappings:
+  #      - prov:wasAssociatedWith
 
-  acted_on_behalf_of:
-    range: Agent
-    mappings:
-      - prov:actedOnBehalfOf
+  #  acted_on_behalf_of:
+  #    range: Agent
+  #    mappings:
+  #      - prov:actedOnBehalfOf
 
   was_generated_by:
     range: Activity

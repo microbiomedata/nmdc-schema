@@ -243,6 +243,8 @@ project/nmdc_schema_generated.yaml: $(SOURCE_SCHEMA_PATH)
 		--format yaml $<
 
 examples/output: project/nmdc_schema_generated.yaml
+	# WARNING:root:No datatype specified for : external identifier, using plain Literal
+	# https://github.com/linkml/linkml-runtime/blob/6556a3e5a5fc4d4d2bca279443d7b42a9a3efbd6/linkml_runtime/dumpers/rdflib_dumper.py#L99
 	mkdir -p $@
 	$(RUN) linkml-run-examples \
 		--schema $< \
@@ -270,12 +272,12 @@ assets/slot_annotations_diffs.tsv: assets/other_mixs_yaml_files/mixs_new.yaml as
 		--anno_diff_tsv_out $@ \
 		--slot_diff_yaml_out $(patsubst %.tsv,%.yaml,$@)
 
-assets/slot_roster.tsv:
-	$(RUN) slot_roster \
-		--input_paths "https://raw.githubusercontent.com/microbiomedata/sheets_and_friends/main/artifacts/nmdc_submission_schema.yaml" \
-		--input_paths "https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml" \
-		--input_paths "src/schema/nmdc.yaml" \
-		--output_tsv $@
+#assets/slot_roster.tsv:
+#	$(RUN) slot_roster \
+#		--input_paths "https://raw.githubusercontent.com/microbiomedata/sheets_and_friends/main/artifacts/nmdc_submission_schema.yaml" \
+#		--input_paths "https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml" \
+#		--input_paths "src/schema/nmdc.yaml" \
+#		--output_tsv $@
 
 assets/MIxS_6_term_updates_dtm.tsv: \
 assets/MIxS_6_term_updates_MIxS6_Core-_Final_clean.tsv \
@@ -290,9 +292,9 @@ assets/mixs_slots_by_submission_class.tsv: assets/sheets-for-nmdc-submission-sch
   		--in_file $< \
   		--out_file $@
 
-assets/boolean_usages.tsv:
-	$(RUN) boolean_usages \
-		--out_file $@
+#local/boolean_usages.tsv:
+#	$(RUN) boolean_usages \
+#		--out_file $@
 
 MIXS_YAML_FROM_SHEETS_AND_FRIENDS = src/schema/mixs.yaml
 MIXS_YAML_MARK_OLDER_PYTHON = src/schema/mixs_new.yaml
@@ -300,10 +302,10 @@ MIXS_YAML_PERL_CURATED_Q = src/schema/other_mixs_yaml_files/mixs_legacy.yaml
 
 SCHEMA_FILE = $(MIXS_YAML_FROM_SHEETS_AND_FRIENDS)
 
-schemasheets/populated_tsv/slots.tsv:
-	$(RUN) linkml2sheets \
-		--output-directory $(dir $@) \
-		--schema $(SCHEMA_FILE) schemasheets/schemasheets_templates/slots.tsv
+#schemasheets/populated_tsv/slots.tsv:
+#	$(RUN) linkml2sheets \
+#		--output-directory $(dir $@) \
+#		--schema $(SCHEMA_FILE) schemasheets/schemasheets_templates/slots.tsv
 
 check-jsonschema: nmdc_schema/nmdc_materialized_patterns.schema.json
 	$(RUN) check-jsonschema --schemafile $< src/data/invalid/Database-Biosample-invalid_range.yaml
@@ -319,6 +321,18 @@ YAML_DATABASE_FILES_VALID := $(wildcard $(YAML_DIR_VALID)Database*.yaml)
 jsonschema-check-all-valid-databases: $(YAML_DATABASE_FILES_VALID)
 	$(foreach yaml_file,$^,echo $(yaml_file) ; $(RUN) check-jsonschema \
 		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $(yaml_file);)
+
+
+local/usage_template.tsv: src/schema/nmdc.yaml
+	mkdir -p $(@D)
+	$(RUN) generate_and_populate_template \
+		 --base-class slot_definition \
+		 --columns-to-insert class \
+		 --destination-template $@ \
+		 --meta-model-excel-file local/meta.xlsx \
+		 --meta-path https://raw.githubusercontent.com/linkml/linkml-model/main/linkml_model/model/schema/meta.yaml \
+ 		 --columns-to-insert slot \
+		 --source-schema-path $<
 
 examples/output/Biosample-exhasutive_report.yaml: src/data/valid/Biosample-exhasutive.yaml
 	poetry run exhaustion-check \
@@ -339,3 +353,51 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosampl
 	poetry run pretty-sort-yaml \
 		-i $< \
 		-o $@
+
+# # # #
+
+local/selected_mongodb_contents.yaml:
+	$(RUN) mongodb_exporter \
+		--selected-collections biosample_set
+
+generate-mongodb-vs-schema-report: clean-mongodb-vs-schema-report check-mongodb-contents
+
+.PHONY: check-mongodb-contents clean-mongodb-vs-schema-report clean-mongodb-vs-schema-report
+
+clean-mongodb-vs-schema-report:
+	rm -f local/mongodb_vs_schema_report.yaml
+
+check-mongodb-contents: local/selected_mongodb_contents.yaml
+	$(RUN) check-jsonschema \
+		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $<
+
+# # # #
+
+local/envo.db:
+	$(RUN) semsql download envo -o $@
+
+check_neon_vs_jsonschema: nmdc_schema/nmdc_materialized_patterns.schema.json local/neon_in_nmdc.yaml
+	$(RUN) check-jsonschema --schemafile $^
+
+validate_neon: nmdc_schema/nmdc_materialized_patterns.yaml local/neon_in_nmdc.yaml
+	$(RUN)  linkml-validate --schema $^
+
+local/neon_in_nmdc.ttl: nmdc_schema/nmdc_materialized_patterns.yaml local/neon_in_nmdc.yaml
+	$(RUN) linkml-convert \
+		--output $@ \
+		--schema $^
+
+local/neon_eco_type.tsv: local/neon_in_nmdc.ttl assets/sparql/neon_eco_type.rq
+	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
+
+local/neon_soil_type.tsv: local/neon_in_nmdc.ttl assets/sparql/neon_soil_type.rq
+	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
+
+local/local_class_in_neon.tsv: local/neon_in_nmdc.ttl assets/sparql/local_class_in_neon.rq
+	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
+
+local/cur_vegetation_in_neon.tsv: local/neon_in_nmdc.ttl assets/sparql/cur_vegetation_in_neon.rq
+	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
+
+local/prefix_report.yaml: nmdc_schema/nmdc_materialized_patterns.yaml
+	$(RUN) gen-prefix-map  $< | yq  -P | cat > $@

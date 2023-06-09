@@ -1,3 +1,5 @@
+notebooks/neon_cache.sqlite
+
 site/
 docs/*md
 docs/types/

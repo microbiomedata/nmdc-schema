@@ -1,27 +1,24 @@
-id: raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/workflow_execution_activity
+id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/workflow_execution_activity
 name: NMDC-Workflow-Execution
 title: Workflow Execution Activities module for NMDC Schema
 
-default_prefix: nmdc
-default_range: string
+license: https://creativecommons.org/publicdomain/zero/1.0/
 
 notes:
-  - "should type be required for WorkflowExecutionActivity ?"
+  - "should type be required for WorkflowExecutionActivity ?  What would the range be ?"
   - "changed misspelled schema name and title to 'Execution'"
 
-default_curi_maps:
-  - obo_context
-  - idot_context
+imports:
+  - external_identifiers
+  - core
 
 prefixes:
   nmdc: https://w3id.org/nmdc/
   linkml: https://w3id.org/linkml/
   nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
 
-imports:
-  - basic_slots
-  - external_identifiers
-  - prov
+default_prefix: nmdc
+default_range: string
 
 subsets:
   workflow subset:
@@ -55,10 +52,10 @@ classes:
       - "inlining of was_associated_with values allows for collections (strings?) of WorkflowExecutionActivity id values"
 
     slot_usage:
-      was_associated_with:
-        description: >-
-          the agent/entity associated with the generation of the file
-        range: WorkflowExecutionActivity
+      #      was_associated_with:
+      #        description: >-
+      #          the agent/entity associated with the generation of the file
+      #        range: WorkflowExecutionActivity
       started_at_time:
         required: true
       ended_at_time:

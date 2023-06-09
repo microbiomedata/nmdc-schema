@@ -231,7 +231,7 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
             nmdc:has_raw_value "agar [CHEBI:2509];2018-05-11T20:00Z" ] ;
     MIXS:0000752 [ a nmdc:TextValue ;
             nmdc:has_raw_value "Bicarbonate ion concentration;2075 micromole per kilogram" ] ;
-    MIXS:0000753 "aerobe" ;
+    MIXS:0000753 "aerobic" ;
     MIXS:0000754 [ a nmdc:TextValue ;
             nmdc:has_raw_value "antibiotic addition;R2/2018-05-11T14:30Z/2018-05-11T19:30Z/P1H30M" ] ;
     MIXS:0000755 [ a nmdc:TextValue ;
@@ -257,8 +257,7 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
             nmdc:has_raw_value "soil metagenome [NCBItaxon:410658]" ;
             nmdc:term NCBITaxon:410658 ] ;
     nmdc:add_date "2021-03-31" ;
-    nmdc:alternative_identifiers "any_string",
-        "seriously_anything" ;
+    nmdc:alternative_identifiers "bare:abc123"^^xsd:anyURI ;
     nmdc:ammonium_nitrogen [ a nmdc:QuantityValue ;
             nmdc:has_raw_value "0.5 milligram per liter" ] ;
     nmdc:analysis_type "metabolomics",
@@ -292,22 +291,20 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     nmdc:ecosystem_subtype "unconstrained text" ;
     nmdc:ecosystem_type "unconstrained text" ;
     nmdc:embargoed true ;
-    nmdc:emsl_biosample_identifiers "any_string"^^xsd:anyURI,
-        "seriously_anything"^^xsd:anyURI ;
+    nmdc:emsl_biosample_identifiers "bare:abc123" ;
     nmdc:env_package [ a nmdc:TextValue ;
             nmdc:has_raw_value "unconstrained text. should require the name of a MIxS EnvironmentalPackage class. have asked MIxS to return this term to their model. UPDATE VALIDATION RULES/PATTERN/ENUM!" ] ;
     nmdc:experimental_factor_other "unconstrained text, but presumably expects 'term label [term id]'" ;
     nmdc:filter_method "Basix PES, 13-100-106 FisherSci is an example value, but unconstrained text is accepted at this point" ;
-    nmdc:gold_biosample_identifiers "GOLD:Gb123456789"^^xsd:anyURI,
-        "GOLD:Gb90909090"^^xsd:anyURI ;
+    nmdc:gold_biosample_identifiers "GOLD:Gb123456789",
+        "GOLD:Gb90909090" ;
     nmdc:habitat "unconstrained text" ;
     nmdc:host_name "snail is an example value, but unconstrained text is accepted at this point" ;
-    nmdc:igsn_biosample_identifiers "any:curie_1"^^xsd:anyURI,
-        "any:curie_2"^^xsd:anyURI ;
-    nmdc:img_identifiers "any string 1",
-        "any string 2" ;
-    nmdc:insdc_biosample_identifiers "biosample:SAMN000"^^xsd:anyURI,
-        "biosample:SAMN123456789"^^xsd:anyURI ;
+    nmdc:igsn_biosample_identifiers "any:curie_1",
+        "any:curie_2" ;
+    nmdc:img_identifiers "bare:abc123" ;
+    nmdc:insdc_biosample_identifiers "biosample:SAMN000",
+        "biosample:SAMN123456789" ;
     nmdc:isotope_exposure "13C glucose" ;
     nmdc:lbc_thirty [ a nmdc:QuantityValue ;
             nmdc:has_raw_value "543 mg/kg" ] ;

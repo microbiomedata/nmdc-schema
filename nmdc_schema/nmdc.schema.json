@@ -25,9 +25,6 @@
                 "used": {
                     "type": "string"
                 },
-                "was_associated_with": {
-                    "$ref": "#/$defs/Agent"
-                },
                 "was_informed_by": {
                     "type": "string"
                 }
@@ -36,20 +33,6 @@
                 "id"
             ],
             "title": "Activity",
-            "type": "object"
-        },
-        "Agent": {
-            "additionalProperties": false,
-            "description": "a provence-generating agent",
-            "properties": {
-                "acted_on_behalf_of": {
-                    "$ref": "#/$defs/Agent"
-                },
-                "was_informed_by": {
-                    "type": "string"
-                }
-            },
-            "title": "Agent",
             "type": "object"
         },
         "AnalysisTypeEnum": {
@@ -71,6 +54,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -136,6 +120,96 @@
         },
         "Biosample": {
             "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "dna_cont_well": {
+                                "pattern": ".+"
+                            }
+                        },
+                        "required": [
+                            "dna_cont_well"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "dna_cont_type": {
+                                "const": "plate"
+                            }
+                        },
+                        "required": [
+                            "dna_cont_type"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "dna_cont_type": {
+                                "const": "plate"
+                            }
+                        },
+                        "required": [
+                            "dna_cont_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "dna_cont_well": {
+                                "pattern": "^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$"
+                            }
+                        },
+                        "required": [
+                            "dna_cont_well"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "rna_cont_well": {
+                                "pattern": ".+"
+                            }
+                        },
+                        "required": [
+                            "rna_cont_well"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "rna_cont_type": {
+                                "const": "plate"
+                            }
+                        },
+                        "required": [
+                            "rna_cont_type"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "rna_cont_type": {
+                                "const": "plate"
+                            }
+                        },
+                        "required": [
+                            "rna_cont_type"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "rna_cont_well": {
+                                "pattern": "^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$"
+                            }
+                        },
+                        "required": [
+                            "rna_cont_well"
+                        ]
+                    }
+                }
+            ],
             "description": "Biological source material which can be characterized by an experiment.",
             "properties": {
                 "abs_air_humidity": {
@@ -218,6 +292,7 @@
                 "alternative_identifiers": {
                     "description": "Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -791,6 +866,7 @@
                 "emsl_biosample_identifiers": {
                     "description": "A list of identifiers for the biosample from the EMSL database.  This is used to link the biosample, as modeled by NMDC, to the biosample in the planned EMSL NEXUS database.",
                     "items": {
+                        "pattern": "^[a-zA-Z0-9]+:[a-zA-Z0-9_][a-zA-Z0-9_\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -1253,6 +1329,7 @@
                 "igsn_biosample_identifiers": {
                     "description": "A list of identifiers for the biosample from the IGSN database.",
                     "items": {
+                        "pattern": "^[a-zA-Z0-9]+:[a-zA-Z0-9_][a-zA-Z0-9_\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -1260,6 +1337,7 @@
                 "img_identifiers": {
                     "description": "A list of identifiers that relate the biosample to records in the IMG database.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -1464,6 +1542,13 @@
                 "ncbi_taxonomy_name": {
                     "type": "string"
                 },
+                "neon_biosample_identifiers": {
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9]+:[a-zA-Z0-9_][a-zA-Z0-9_\\/\\.]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "nitrate": {
                     "$ref": "#/$defs/QuantityValue",
                     "description": "Concentration of nitrate in the sample"
@@ -1577,7 +1662,7 @@
                     "description": "Depth of the original oil water contact (OWC) zone (average) (m TVDSS)"
                 },
                 "oxy_stat_samp": {
-                    "$ref": "#/$defs/RelToOxygenEnum",
+                    "$ref": "#/$defs/OxyStatSampEnum",
                     "description": "Oxygenation status of sample"
                 },
                 "oxygen": {
@@ -1803,10 +1888,6 @@
                 "rel_samp_loc": {
                     "$ref": "#/$defs/RelSampLocEnum",
                     "description": "The sampling location within the train car"
-                },
-                "rel_to_oxygen": {
-                    "$ref": "#/$defs/RelToOxygenEnum",
-                    "description": "Is this organism an aerobe, anaerobe? Please note that aerobic and anaerobic are valid descriptors for microbial environments"
                 },
                 "replicate_number": {
                     "description": "If sending biological replicates, indicate the rep number here.",
@@ -2749,6 +2830,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -2930,6 +3012,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -2960,6 +3043,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -2968,13 +3052,19 @@
                     "description": "a human-readable description of a thing",
                     "type": "string"
                 },
-                "has_inputs": {
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": "string"
+                },
+                "has_input": {
+                    "description": "An input to a process.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
-                "has_outputs": {
+                "has_output": {
+                    "description": "An output biosample to a processing step",
                     "items": {
                         "type": "string"
                     },
@@ -2988,13 +3078,17 @@
                     "description": "A human readable label for an entity",
                     "type": "string"
                 },
-                "participating_agent": {
-                    "$ref": "#/$defs/Agent"
+                "protocol_link": {
+                    "$ref": "#/$defs/Protocol"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": "string"
                 }
             },
             "required": [
-                "has_inputs",
-                "has_outputs",
+                "has_input",
+                "has_output",
                 "id"
             ],
             "title": "CollectingBiosamplesFromSite",
@@ -3149,6 +3243,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -3245,6 +3340,13 @@
                     "description": "TODO",
                     "type": "string"
                 },
+                "extraction_set": {
+                    "description": "This property links a database object to the set of extractions within it.",
+                    "items": {
+                        "$ref": "#/$defs/Extraction"
+                    },
+                    "type": "array"
+                },
                 "field_research_site_set": {
                     "items": {
                         "$ref": "#/$defs/FieldResearchSite"
@@ -3262,6 +3364,13 @@
                     "description": "This property links a database object to the set of all features",
                     "items": {
                         "$ref": "#/$defs/GenomeFeature"
+                    },
+                    "type": "array"
+                },
+                "library_preparation_set": {
+                    "description": "This property links a database object to the set of DNA extractions within it.",
+                    "items": {
+                        "$ref": "#/$defs/LibraryPreparation"
                     },
                     "type": "array"
                 },
@@ -3343,6 +3452,13 @@
                 "pooling_set": {
                     "items": {
                         "$ref": "#/$defs/Pooling"
+                    },
+                    "type": "array"
+                },
+                "processed_sample_set": {
+                    "description": "This property links a database object to the set of processed samples within it.",
+                    "items": {
+                        "$ref": "#/$defs/ProcessedSample"
                     },
                     "type": "array"
                 },
@@ -3602,6 +3718,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -3655,6 +3772,91 @@
             "title": "ExtWindowOrientEnum",
             "type": "string"
         },
+        "Extraction": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": "string"
+                },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": "string"
+                },
+                "extraction_method": {
+                    "type": "string"
+                },
+                "extraction_target": {
+                    "$ref": "#/$defs/ExtractionTargetEnum"
+                },
+                "has_input": {
+                    "description": "An input to a process.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_output": {
+                    "description": "An output biosample to a processing step",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": "string"
+                },
+                "processing_institution": {
+                    "$ref": "#/$defs/ProcessingInstitutionEnum",
+                    "description": "The organization that processed the sample."
+                },
+                "protocol_link": {
+                    "$ref": "#/$defs/Protocol"
+                },
+                "quality_control_report": {
+                    "$ref": "#/$defs/QualityControlReport"
+                },
+                "sample_mass": {
+                    "$ref": "#/$defs/QuantityValue"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "has_input",
+                "has_output",
+                "id"
+            ],
+            "title": "Extraction",
+            "type": "object"
+        },
+        "ExtractionTargetEnum": {
+            "description": "",
+            "enum": [
+                "DNA",
+                "RNA",
+                "metabolite",
+                "protein"
+            ],
+            "title": "ExtractionTargetEnum",
+            "type": "string"
+        },
         "FaoClassEnum": {
             "description": "",
             "enum": [
@@ -3695,21 +3897,65 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
                 },
+                "cur_vegetation": {
+                    "$ref": "#/$defs/TextValue",
+                    "description": "Vegetation classification from one or more standard classification systems, or agricultural crop"
+                },
                 "description": {
                     "description": "a human-readable description of a thing",
+                    "type": "string"
+                },
+                "elev": {
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit."
+                },
+                "geo_loc_name": {
+                    "$ref": "#/$defs/TextValue",
+                    "description": "The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)"
+                },
+                "habitat": {
                     "type": "string"
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
                 },
+                "lat_lon": {
+                    "$ref": "#/$defs/GeolocationValue",
+                    "description": "The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees and in WGS84 system"
+                },
+                "local_class": {
+                    "$ref": "#/$defs/TextValue",
+                    "description": "Soil classification based on local soil classification system"
+                },
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": "string"
+                },
+                "neon_deims_sdr_link": {
+                    "type": "string"
+                },
+                "neon_eco_type": {
+                    "type": "string"
+                },
+                "neon_soil_type": {
+                    "type": "string"
+                },
+                "part_of": {
+                    "description": "Links a resource to another resource that either logically or physically includes it.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "soil_type": {
+                    "$ref": "#/$defs/TextValue",
+                    "description": "Description of the soil type or classification. This field accepts terms under soil (http://purl.obolibrary.org/obo/ENVO_00001998).  Multiple terms can be separated by pipes."
                 }
             },
             "required": [
@@ -3722,6 +3968,8 @@
             "description": "",
             "enum": [
                 "Metagenome Raw Reads",
+                "Metagenome Raw Read 1",
+                "Metagenome Raw Read 2",
                 "FT ICR-MS Analysis Results",
                 "GC-MS Metabolomics Results",
                 "Metaproteomics Workflow Statistics",
@@ -3732,7 +3980,10 @@
                 "QC non-rRNA R2",
                 "QC non-rRNA R1",
                 "Metagenome Bins",
+                "Metagenome Bins Compression File",
+                "Metagenome Bins Info File",
                 "CheckM Statistics",
+                "Read Based Analysis Info File",
                 "GTDBTK Bacterial Summary",
                 "GTDBTK Archaeal Summary",
                 "GOTTCHA2 Krona Plot",
@@ -3761,6 +4012,8 @@
                 "Contig Mapping File",
                 "Error Corrected Reads",
                 "Filtered Sequencing Reads",
+                "Read Filtering Info File",
+                "QC Statistics Extended",
                 "QC Statistics",
                 "TIGRFam Annotation GFF",
                 "CRT Annotation GFF",
@@ -3770,11 +4023,12 @@
                 "Misc Annotation GFF",
                 "RFAM Annotation GFF",
                 "TMRNA Annotation GFF",
-                "KO_EC Annotation GFF",
+                "Crispr Terms",
                 "Product Names",
                 "Gene Phylogeny tsv",
-                "Crispr Terms",
+                "Lineage sdb",
                 "Clusters of Orthologous Groups (COG) Annotation GFF",
+                "KO_EC Annotation GFF",
                 "CATH FunFams (Functional Families) Annotation GFF",
                 "SUPERFam Annotation GFF",
                 "SMART Annotation GFF",
@@ -3928,6 +4182,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -4156,6 +4411,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -4238,6 +4494,86 @@
             },
             "title": "LabDevice",
             "type": "object"
+        },
+        "LibraryPreparation": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": "string"
+                },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": "string"
+                },
+                "has_input": {
+                    "description": "An input to a process.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_output": {
+                    "description": "An output biosample to a processing step",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "library_preparation_kit": {
+                    "type": "string"
+                },
+                "library_type": {
+                    "$ref": "#/$defs/LibraryTypeEnum"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": "string"
+                },
+                "pcr_cycles": {
+                    "type": "integer"
+                },
+                "processing_institution": {
+                    "$ref": "#/$defs/ProcessingInstitutionEnum",
+                    "description": "The organization that processed the sample."
+                },
+                "protocol_link": {
+                    "$ref": "#/$defs/Protocol"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "has_input",
+                "has_output",
+                "id"
+            ],
+            "title": "LibraryPreparation",
+            "type": "object"
+        },
+        "LibraryTypeEnum": {
+            "description": "",
+            "enum": [
+                "DNA",
+                "RNA"
+            ],
+            "title": "LibraryTypeEnum",
+            "type": "string"
         },
         "LightTypeEnum": {
             "description": "",
@@ -4422,10 +4758,6 @@
                 "version": {
                     "type": "string"
                 },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
-                },
                 "was_informed_by": {
                     "type": "string"
                 }
@@ -4465,6 +4797,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -4494,9 +4827,6 @@
             "properties": {
                 "amount_collected": {
                     "$ref": "#/$defs/QuantityValue"
-                },
-                "biosample_input": {
-                    "type": "string"
                 },
                 "collected_into": {
                     "$ref": "#/$defs/MaterialContainer"
@@ -4534,6 +4864,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -4622,10 +4953,6 @@
                 "version": {
                     "type": "string"
                 },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
-                },
                 "was_informed_by": {
                     "type": "string"
                 }
@@ -4711,10 +5038,6 @@
                     "type": "string"
                 },
                 "version": {
-                    "type": "string"
-                },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
                     "type": "string"
                 },
                 "was_informed_by": {
@@ -4908,10 +5231,6 @@
                 "version": {
                     "type": "string"
                 },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
-                },
                 "was_informed_by": {
                     "type": "string"
                 }
@@ -4989,10 +5308,6 @@
                     "type": "string"
                 },
                 "version": {
-                    "type": "string"
-                },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
                     "type": "string"
                 },
                 "was_informed_by": {
@@ -5081,10 +5396,6 @@
                 "version": {
                     "type": "string"
                 },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
-                },
                 "was_informed_by": {
                     "type": "string"
                 }
@@ -5162,10 +5473,6 @@
                     "type": "string"
                 },
                 "version": {
-                    "type": "string"
-                },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
                     "type": "string"
                 },
                 "was_informed_by": {
@@ -5253,10 +5560,6 @@
                     "type": "string"
                 },
                 "version": {
-                    "type": "string"
-                },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
                     "type": "string"
                 },
                 "was_informed_by": {
@@ -5450,10 +5753,6 @@
                 "version": {
                     "type": "string"
                 },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
-                },
                 "was_informed_by": {
                     "type": "string"
                 }
@@ -5538,10 +5837,6 @@
                 "version": {
                     "type": "string"
                 },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
-                },
                 "was_informed_by": {
                     "type": "string"
                 }
@@ -5582,6 +5877,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -5716,6 +6012,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -5756,6 +6053,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -5796,6 +6094,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -5851,36 +6150,6 @@
                 }
             },
             "title": "PeptideQuantification",
-            "type": "object"
-        },
-        "Person": {
-            "additionalProperties": false,
-            "description": "represents a person, such as a researcher",
-            "properties": {
-                "alternative_identifiers": {
-                    "description": "A list of alternative identifiers for the entity.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "description": {
-                    "description": "a human-readable description of a thing",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "Should be an ORCID. Specify in CURIE format. E.g ORCID:0000-1111-...",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "A human readable label for an entity",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id"
-            ],
-            "title": "Person",
             "type": "object"
         },
         "PersonValue": {
@@ -5980,6 +6249,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -5988,14 +6258,20 @@
                     "description": "a human-readable description of a thing",
                     "type": "string"
                 },
-                "has_inputs": {
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": "string"
+                },
+                "has_input": {
+                    "description": "An input to a process.",
                     "items": {
                         "type": "string"
                     },
                     "minItems": 2,
                     "type": "array"
                 },
-                "has_outputs": {
+                "has_output": {
+                    "description": "An output biosample to a processing step",
                     "items": {
                         "type": "string"
                     },
@@ -6011,8 +6287,12 @@
                     "description": "A human readable label for an entity",
                     "type": "string"
                 },
-                "participating_agent": {
-                    "$ref": "#/$defs/Agent"
+                "protocol_link": {
+                    "$ref": "#/$defs/Protocol"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": "string"
                 }
             },
             "required": [
@@ -6021,12 +6301,54 @@
             "title": "Pooling",
             "type": "object"
         },
+        "ProcessedSample": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": "string"
+                },
+                "dna_absorb1": {
+                    "description": "260/280 measurement of DNA sample purity",
+                    "type": "number"
+                },
+                "dna_concentration": {
+                    "maximum": 2000,
+                    "minimum": 0,
+                    "type": "number"
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "ProcessedSample",
+            "type": "object"
+        },
         "ProcessingInstitutionEnum": {
             "description": "",
             "enum": [
                 "UCSD",
                 "JGI",
-                "EMSL"
+                "EMSL",
+                "Battelle",
+                "ANL"
             ],
             "title": "ProcessingInstitutionEnum",
             "type": "string"
@@ -6049,6 +6371,21 @@
             "title": "ProteinQuantification",
             "type": "object"
         },
+        "Protocol": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "title": "Protocol",
+            "type": "object"
+        },
         "QuadPosEnum": {
             "description": "",
             "enum": [
@@ -6059,6 +6396,21 @@
             ],
             "title": "QuadPosEnum",
             "type": "string"
+        },
+        "QualityControlReport": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": "string"
+                },
+                "status": {
+                    "$ref": "#/$defs/StatusEnum"
+                }
+            },
+            "title": "QualityControlReport",
+            "type": "object"
         },
         "QuantityValue": {
             "additionalProperties": false,
@@ -6098,6 +6450,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6211,10 +6564,6 @@
                 "version": {
                     "type": "string"
                 },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
-                },
                 "was_informed_by": {
                     "type": "string"
                 }
@@ -6318,10 +6667,6 @@
                 "version": {
                     "type": "string"
                 },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
-                },
                 "was_informed_by": {
                     "type": "string"
                 }
@@ -6348,20 +6693,6 @@
                 "under a seat"
             ],
             "title": "RelSampLocEnum",
-            "type": "string"
-        },
-        "RelToOxygenEnum": {
-            "description": "",
-            "enum": [
-                "aerobe",
-                "anaerobe",
-                "facultative",
-                "microaerophilic",
-                "microanaerobe",
-                "obligate aerobe",
-                "obligate anaerobe"
-            ],
-            "title": "RelToOxygenEnum",
             "type": "string"
         },
         "RnaSampleFormatEnum": {
@@ -6731,6 +7062,15 @@
             "title": "SrLithologyEnum",
             "type": "string"
         },
+        "StatusEnum": {
+            "description": "",
+            "enum": [
+                "pass",
+                "fail"
+            ],
+            "title": "StatusEnum",
+            "type": "string"
+        },
         "Study": {
             "additionalProperties": false,
             "description": "A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.",
@@ -6749,6 +7089,7 @@
                 "alternative_identifiers": {
                     "description": "Unique identifier for a study submitted to additional resources. Matches that which has been submitted to NMDC",
                     "items": {
+                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6791,17 +7132,13 @@
                     "description": "Ecosystem types represent things having common characteristics within the Ecosystem Category. These common characteristics based grouping is still broad but specific to the characteristics of a given environment. Ecosystem type is in position 3/5 in a GOLD path.",
                     "type": "string"
                 },
-                "emsl_project_identifier": {
-                    "description": "The EMSL project ID that relates to the NMDC submitted study",
-                    "type": "string"
-                },
-                "emsl_proposal_doi": {
-                    "description": "The DOI for the EMSL awarded study that relates to the NMDC submitted study",
-                    "type": "string"
-                },
-                "emsl_proposal_identifier": {
-                    "description": "The proposal number assigned to the EMSL awarded study that relates to that which is represented in NMDC.",
-                    "type": "string"
+                "emsl_project_dois": {
+                    "description": "A DOI that resolves to a EMSL Research Campaign page.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9]+:[a-zA-Z0-9_][a-zA-Z0-9_\\/\\.]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "ess_dive_datasets": {
                     "description": "List of ESS-DIVE dataset DOIs",
@@ -6845,8 +7182,11 @@
                 },
                 "insdc_bioproject_identifiers": {
                     "description": "Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.",
-                    "pattern": "^bioproject:PRJ[DEN][A-Z][0-9]+$",
-                    "type": "string"
+                    "items": {
+                        "pattern": "^bioproject:PRJ[DEN][A-Z][0-9]+$",
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "massive_study_identifiers": {
                     "description": "identifiers for corresponding study in MASSIVE",
@@ -6858,12 +7198,22 @@
                 },
                 "mgnify_project_identifiers": {
                     "description": "identifiers for corresponding project in MGnify",
-                    "pattern": "^mgnify.proj:[A-Z]+[0-9]+$",
-                    "type": "string"
+                    "items": {
+                        "pattern": "^mgnify.proj:[A-Z]+[0-9]+$",
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": "string"
+                },
+                "neon_study_identifiers": {
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9]+:[a-zA-Z0-9_][a-zA-Z0-9_\\/\\.]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "notes": {
                     "description": "from study class",
@@ -7336,10 +7686,6 @@
                 "version": {
                     "type": "string"
                 },
-                "was_associated_with": {
-                    "description": "the agent/entity associated with the generation of the file",
-                    "type": "string"
-                },
                 "was_informed_by": {
                     "type": "string"
                 }
@@ -7371,96 +7717,7 @@
     "$id": "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": true,
-    "allOf": [
-        {
-            "if": {
-                "properties": {
-                    "dna_cont_well": {
-                        "pattern": ".+"
-                    }
-                },
-                "required": [
-                    "dna_cont_well"
-                ]
-            },
-            "then": {
-                "properties": {
-                    "dna_cont_type": {
-                        "const": "plate"
-                    }
-                },
-                "required": [
-                    "dna_cont_type"
-                ]
-            }
-        },
-        {
-            "if": {
-                "properties": {
-                    "dna_cont_type": {
-                        "const": "plate"
-                    }
-                },
-                "required": [
-                    "dna_cont_type"
-                ]
-            },
-            "then": {
-                "properties": {
-                    "dna_cont_well": {
-                        "pattern": "^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$"
-                    }
-                },
-                "required": [
-                    "dna_cont_well"
-                ]
-            }
-        },
-        {
-            "if": {
-                "properties": {
-                    "rna_cont_well": {
-                        "pattern": ".+"
-                    }
-                },
-                "required": [
-                    "rna_cont_well"
-                ]
-            },
-            "then": {
-                "properties": {
-                    "rna_cont_type": {
-                        "const": "plate"
-                    }
-                },
-                "required": [
-                    "rna_cont_type"
-                ]
-            }
-        },
-        {
-            "if": {
-                "properties": {
-                    "rna_cont_type": {
-                        "const": "plate"
-                    }
-                },
-                "required": [
-                    "rna_cont_type"
-                ]
-            },
-            "then": {
-                "properties": {
-                    "rna_cont_well": {
-                        "pattern": "^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$"
-                    }
-                },
-                "required": [
-                    "rna_cont_well"
-                ]
-            }
-        }
-    ],
+    "description": "An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest",
     "metamodel_version": "1.7.0",
     "properties": {
         "activity_set": {
@@ -7504,6 +7761,13 @@
             "description": "TODO",
             "type": "string"
         },
+        "extraction_set": {
+            "description": "This property links a database object to the set of extractions within it.",
+            "items": {
+                "$ref": "#/$defs/Extraction"
+            },
+            "type": "array"
+        },
         "field_research_site_set": {
             "items": {
                 "$ref": "#/$defs/FieldResearchSite"
@@ -7521,6 +7785,13 @@
             "description": "This property links a database object to the set of all features",
             "items": {
                 "$ref": "#/$defs/GenomeFeature"
+            },
+            "type": "array"
+        },
+        "library_preparation_set": {
+            "description": "This property links a database object to the set of DNA extractions within it.",
+            "items": {
+                "$ref": "#/$defs/LibraryPreparation"
             },
             "type": "array"
         },
@@ -7605,6 +7876,13 @@
             },
             "type": "array"
         },
+        "processed_sample_set": {
+            "description": "This property links a database object to the set of processed samples within it.",
+            "items": {
+                "$ref": "#/$defs/ProcessedSample"
+            },
+            "type": "array"
+        },
         "reaction_activity_set": {
             "items": {
                 "$ref": "#/$defs/ReactionActivity"
@@ -7635,5 +7913,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "v7.5.0"
+    "version": "v7.6.1"
 }

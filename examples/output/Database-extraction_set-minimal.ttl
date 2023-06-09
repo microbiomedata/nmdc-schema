@@ -1,0 +1,11 @@
+@prefix bare: <https://unknown.to.linter.org/> .
+@prefix nmdc: <https://w3id.org/nmdc/> .
+
+nmdc:extrp-99-abcdef a nmdc:Extraction ;
+    nmdc:has_input bare:xxx ;
+    nmdc:has_output bare:yyy ;
+    nmdc:name "DNA extraction of NEON sample WREF_072-O-20190618-COMP" .
+
+[] a nmdc:Database ;
+    nmdc:extraction_set nmdc:extrp-99-abcdef .
+
