@@ -1999,17 +1999,6 @@ slots:
   neon_soil_type:
     range: string
 
-  img_identifiers:
-    title: IMG Identifiers
-    description: >-
-      A list of identifiers that relate the biosample to records in the IMG database.
-    multivalued: true
-    todos:
-      - add is_a or mixin modeling, like other external_database_identifiers
-      - what class would IMG records belong to?! Are they Studies, Biosamples, or something else?
-    pattern: '^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$'
-    range: external identifier # or uriorcurie directly, as opposed to by-type-inheritance
-
   ecosystem_path_id:
     range: string
     description: A unique id representing the GOLD classifers associated with a sample.

@@ -53,6 +53,18 @@ slots:
     close_mappings:
       - skos:closeMatch
 
+  img_identifiers:
+    title: IMG Identifiers
+    is_a: external_database_identifiers
+    description: >-
+      A list of identifiers that relate the biosample to records in the IMG database.
+    #    multivalued: true
+    todos:
+      - add is_a or mixin modeling, like other external_database_identifiers
+      - what class would IMG records belong to?! Are they Studies, Biosamples, or something else?
+  #    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$' # DOI-like pattern. Could be more conservative if we leave this out of the external_database_identifiers hierarchy
+  #    range: external identifier # or uriorcurie directly, as opposed to by-type-inheritance
+
   # mixins
 
   igsn_identifiers:
