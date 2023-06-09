@@ -399,4 +399,5 @@ local/local_class_in_neon.tsv: local/neon_in_nmdc.ttl assets/sparql/local_class_
 local/cur_vegetation_in_neon.tsv: local/neon_in_nmdc.ttl assets/sparql/cur_vegetation_in_neon.rq
 	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
 
-
+local/prefix_report.yaml: src/schema/nmdc.yaml
+	$(RUN) gen-prefix-map  $< | yq  -P | cat > $@
