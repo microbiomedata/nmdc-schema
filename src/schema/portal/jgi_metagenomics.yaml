@@ -3,7 +3,7 @@ description: This file defines terms that appear in the 'JGI-Metagenomics' secti
   of the NMDC sample metadata submission portal, which is implemented with DataHarmonizer
   as of Spring 2022
 title: 'NMDC Schema supplement for Submission Portal: JGI-Metagenomics'
-id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/portal/jgi_metagenomics
+id: https://w3id.org/nmdc/portal/jgi_metagenomics
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -14,7 +14,6 @@ imports:
 prefixes:
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
-  nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
 
 default_prefix: nmdc
 default_range: string

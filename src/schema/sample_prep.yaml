@@ -1,4 +1,4 @@
-id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/sample_prep
+id: https://w3id.org/nmdc/sample_prep
 name: sample_prep
 title: NMDC sample prep schema
 description: Material and activity classes for describing sample preparation, in support of EMSL, Monet, MANA, etc.
@@ -22,7 +22,6 @@ prefixes:
 
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
-  nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
 
 default_prefix: nmdc
 default_range: string

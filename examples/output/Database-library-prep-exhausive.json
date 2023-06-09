@@ -5,10 +5,10 @@
       "name": "DNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1",
       "description": "DNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP BMI_metagenomicsSequencingSOP_v2",
       "has_input": [
-        "bare:xxx"
+        "generic:xxx"
       ],
       "has_output": [
-        "bare:xxx"
+        "generic:xxx"
       ],
       "start_date": "2018-09-26",
       "end_date": "2018-09-26",
@@ -22,10 +22,10 @@
       "name": "RNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1",
       "description": "RNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP XX",
       "has_input": [
-        "bare:xxy"
+        "generic:xxy"
       ],
       "has_output": [
-        "bare:xxz"
+        "generic:xxz"
       ],
       "start_date": "2018-09-26",
       "end_date": "2018-09-26",

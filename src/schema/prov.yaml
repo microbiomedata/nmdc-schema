@@ -1,4 +1,4 @@
-id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/prov
+id: https://w3id.org/nmdc/prov
 name: NMDC-PROV
 title: NMDC Rendering of prov schema
 description: >-
@@ -14,7 +14,6 @@ prefixes:
 
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
-  nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
 
 default_prefix: nmdc
 default_range: string

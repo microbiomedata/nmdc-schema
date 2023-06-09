@@ -3,7 +3,7 @@ description: This file defines terms that appear in the 'MIxS Inspired' section 
   the NMDC sample metadata submission portal, which is implemented with DataHarmonizer
   as of Spring 2022
 title: 'NMDC Schema supplement for Submission Portal: MIxS Inspired'
-id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/portal/mixs_inspired
+id: https://w3id.org/nmdc/portal/mixs_inspired
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -13,7 +13,6 @@ imports:
 prefixes:
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
-  nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
 
 default_prefix: nmdc
 default_range: string

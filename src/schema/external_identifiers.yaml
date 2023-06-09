@@ -1,4 +1,4 @@
-id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/external_identifiers
+id: https://w3id.org/nmdc/external_identifiers
 name: external_identifiers
 title: NMDC External Identifiers
 description: >-
@@ -17,7 +17,7 @@ prefixes:
   GOLD: http://identifiers.org/gold/
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
-  nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
+
   skos: http://www.w3.org/2004/02/skos/core#
 
 default_prefix: nmdc
@@ -62,7 +62,7 @@ slots:
     todos:
       - add is_a or mixin modeling, like other external_database_identifiers
       - what class would IMG records belong to?! Are they Studies, Biosamples, or something else?
-  #    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$' # DOI-like pattern. Could be more conservative if we leave this out of the external_database_identifiers hierarchy
+    pattern: '^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$' # DOI-like pattern. Could be more conservative if we leave this out of the external_database_identifiers hierarchy
   #    range: external identifier # or uriorcurie directly, as opposed to by-type-inheritance
 
   # mixins

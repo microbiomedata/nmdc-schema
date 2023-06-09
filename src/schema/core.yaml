@@ -1,4 +1,4 @@
-id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/core
+id: https://w3id.org/nmdc/core
 name: NMDC-Core
 title: NMDC Schema Core Types
 description: >-
@@ -20,7 +20,7 @@ prefixes:
   biolink: https://w3id.org/biolink/vocab/
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
-  nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
+
   qud: http://qudt.org/1.1/schema/qudt#
   schema: http://schema.org/
   sio: http://semanticscience.org/resource/SIO_

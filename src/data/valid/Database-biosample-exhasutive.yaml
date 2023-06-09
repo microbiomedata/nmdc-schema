@@ -603,7 +603,7 @@ biosample_set:
       - any:curie_1
       - any:curie_2
     img_identifiers:
-    - generic:abc123
+      - img.taxon:abc123
     indoor_space: bedroom
     indoor_surf: cabinet
     indust_eff_percent:

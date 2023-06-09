@@ -4,10 +4,10 @@
       "id": "nmdc:extrp-99-abcdef",
       "name": "DNA extraction of NEON sample WREF_072-O-20190618-COMP",
       "has_input": [
-        "bare:xxx"
+        "generic:xxx"
       ],
       "has_output": [
-        "bare:yyy"
+        "generic:yyy"
       ]
     }
   ],

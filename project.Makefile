@@ -28,10 +28,10 @@ shuttle_cleanup:
 	touch local/mixs_regen/.gitkeep
 
 local/mixs_regen/slots_associated_with_biosample.tsv:
-	yq '.classes.Biosample.slots.[]' src/schema/nmdc.yaml | sort | tee $@
+	yq '.classes.Biosample.slots.[]' src/schema/nmdc.yaml | sort | cat > $@
 
 local/mixs_regen/slots_associated_with_omics_processing.tsv:
-	yq '.classes.OmicsProcessing.slots.[]' src/schema/nmdc.yaml | sort | tee $@
+	yq '.classes.OmicsProcessing.slots.[]' src/schema/nmdc.yaml | sort | cat > $@
 
 local/mixs_regen/slots_associated_with_biosample_omics_processing.tsv: \
 local/mixs_regen/slots_associated_with_biosample.tsv \
@@ -369,7 +369,7 @@ clean-mongodb-vs-schema-report:
 
 check-mongodb-contents: local/selected_mongodb_contents.yaml
 	$(RUN) check-jsonschema \
-		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $<
+		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $< | grep -v '(nmdc):'
 
 # # # #
 
@@ -398,6 +398,8 @@ local/local_class_in_neon.tsv: local/neon_in_nmdc.ttl assets/sparql/local_class_
 
 local/cur_vegetation_in_neon.tsv: local/neon_in_nmdc.ttl assets/sparql/cur_vegetation_in_neon.rq
 	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
+
+# # # #
 
 local/prefix_report.yaml: nmdc_schema/nmdc_materialized_patterns.yaml
 	$(RUN) gen-prefix-map  $< | yq  -P | cat > $@

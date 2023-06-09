@@ -1,4 +1,4 @@
-id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc
+id: https://w3id.org/nmdc/nmdc
 name: NMDC
 title: NMDC Schema
 
@@ -20,7 +20,7 @@ description: >-
    * the NMDC schema itself, into which the other modules are imported
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: v7.6.1
+version: v7.6.2
 
 imports:
   - annotation
@@ -38,61 +38,31 @@ imports:
 
 
 prefixes:
-  emsl.project: "https://bioregistry.io/reference/emsl.project:"
-  gnps.task: "https://bioregistry.io/reference/gnps.task:"
-  jgi.proposal: "https://bioregistry.io/reference/jgi.proposal:"
+  EFO: http://www.ebi.ac.uk/efo/
+  ISA: http://example.com/isa/
+  MetaNetX: http://example.com/metanetx/
+  RetroRules: http://example.com/retrorules/
+  emsl.project: "https://bioregistry.io/emsl.project:"
+  generic: https://example.com/generic/
+  gnps.task: "https://bioregistry.io/gnps.task:"
+  gtpo: http://example.com/gtpo/
+  igsn: https://app.geosamples.org/sample/igsn/
+  jgi.proposal: "https://bioregistry.io/jgi.proposal:"
+  jgi: http://example.com/jgi/
+  linkml: https://w3id.org/linkml/
+  mgnify.proj: "https://identifiers.org/mgnify.proj:"
   neon.identifier: http://example.org/neon/identifier/
   neon.schema: http://example.org/neon/schema/
-
-  generic: https://example.com/generic/
-
-  linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
-  nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
-
   skos: http://www.w3.org/2004/02/skos/core#
-  igsn: https://app.geosamples.org/sample/igsn/
 
-  prov: http://www.w3.org/ns/prov# # https://github.com/prefixcommons/biocontext/blob/master/registry/semweb_context.jsonld
-  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# # https://github.com/prefixcommons/biocontext/blob/master/registry/semweb_context.jsonld
-  rdfs: http://www.w3.org/2000/01/rdf-schema# # https://github.com/prefixcommons/biocontext/blob/master/registry/semweb_context.jsonld
-  xsd: http://www.w3.org/2001/XMLSchema# # https://github.com/prefixcommons/biocontext/blob/master/registry/semweb_context.jsonld
-  EFO: http://identifiers.org/efo/ # in https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld but assertion still required
-
-  # IMG.TAXON in https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
-  # MASSIVE in https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld # Mapping to https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task= ignored
-  # MS: in https://github.com/prefixcommons/biocontext/blob/master/registry/obo_context.jsonld and https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
-  # PR: in https://github.com/prefixcommons/biocontext/blob/master/registry/obo_context.jsonld and https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
-  # bioregistry has chemical compartment and reaction sub-namespaces for MetaNetX
-
-  MetaNetX: http://example.com/metanetx/
-
-  # NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_ in https://github.com/prefixcommons/biocontext/blob/master/registry/obo_context.jsonld
-  # NCIT: http://purl.obolibrary.org/obo/NCIT_  in https://github.com/prefixcommons/biocontext/blob/master/registry/obo_context.jsonld
-  # OBI: http://purl.obolibrary.org/obo/OBI_ in https://github.com/prefixcommons/biocontext/blob/master/registry/obo_context.jsonld
-
-  # MIXS: https://w3id.org/mixs/
-  # mixs: https://w3id.org/mixs/  # are we going to point to their terms when we have modified them?
-
-  ISA: http://example.com/isa/
-  RetroRules: http://example.com/retrorules/
-  gtpo: http://example.com/gtpo/
-  jgi: http://example.com/jgi/
-
-  # igsnvoc: https://igsn.org/voc/v1/
-  # insdc.srs: ???
-  # mgnify: ???
-
-  mgnify.proj: "https://identifiers.org/mgnify.proj:"
+  prov: http://www.w3.org/ns/prov#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
 
 default_prefix: nmdc
 default_range: string
-
-# https://linkml.io/linkml-model/docs/default_curi_maps/
-#   ordered list of prefixcommon biocontexts to be fetched to resolve id prefixes and inline prefix variables
-#   https://github.com/prefixcommons/biocontext/tree/master/registry
-#   what about bioregistry
-#   what about identifiers.org
 
 default_curi_maps:
   - obo_context
