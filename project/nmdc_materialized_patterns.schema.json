@@ -7783,7 +7783,7 @@
             "type": "string"
         }
     },
-    "$id": "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/nmdc",
+    "$id": "https://w3id.org/nmdc/nmdc",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": false,
     "description": "An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest",
@@ -7982,5 +7982,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "v7.6.1"
+    "version": "v7.6.2"
 }

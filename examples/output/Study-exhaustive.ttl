@@ -64,16 +64,16 @@ nmdc:sty-11-ab a nmdc:Study ;
         "any string 2" ;
     nmdc:specific_ecosystem "unconstrained text" ;
     nmdc:study_image [ a nmdc:ImageValue ;
-            dcterms:description "Photo of Craig Venter Institute, Rockville, Maryland" ;
-            nmdc:display_order "1" ;
-            nmdc:has_raw_value "https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg" ;
-            nmdc:url "https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg" ;
-            nmdc:was_generated_by nmdc:any_string_1 ],
-        [ a nmdc:ImageValue ;
             dcterms:description "Photo of Craig Venter Institute, La Jolla, California" ;
             nmdc:display_order "2" ;
             nmdc:has_raw_value "https://today.ucsd.edu/news_uploads/140213ventor2.jpg" ;
             nmdc:url "https://today.ucsd.edu/news_uploads/140213ventor2.jpg" ;
+            nmdc:was_generated_by nmdc:any_string_1 ],
+        [ a nmdc:ImageValue ;
+            dcterms:description "Photo of Craig Venter Institute, Rockville, Maryland" ;
+            nmdc:display_order "1" ;
+            nmdc:has_raw_value "https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg" ;
+            nmdc:url "https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg" ;
             nmdc:was_generated_by nmdc:any_string_1 ] ;
     nmdc:title "Sample Exhaustive Biosample instance. Although all of these values should pass validation, that does not mean that any Biosample of any type would necessarily have this particular combination of values." ;
     nmdc:type "any string" ;
