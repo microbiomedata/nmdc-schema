@@ -1,4 +1,4 @@
-id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/annotation
+id: https://w3id.org/nmdc/annotation
 name: NMDC-Annotation
 title: Annotation Module for NMDC Schema
 description: >-
@@ -18,8 +18,8 @@ imports:
 
 
 prefixes:
-  COG: "https://bioregistry.io/reference/cog:" # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
-  EC: "https://bioregistry.io/reference/eccode:" # "EC-CODE": "http://identifiers.org/ec-code/", in https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  COG: "https://bioregistry.io/cog:" # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  EC: "https://bioregistry.io/eccode:" # "EC-CODE": "http://identifiers.org/ec-code/", in https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
   GO: http://purl.obolibrary.org/obo/GO_ # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
   KEGG.ORTHOLOGY: http://identifiers.org/kegg.orthology/  # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
   KEGG.REACTION: http://identifiers.org/kegg.reaction/ # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
@@ -31,7 +31,7 @@ prefixes:
   biolink: https://w3id.org/biolink/vocab/
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
-  nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
+
 
 default_prefix: nmdc
 default_range: string

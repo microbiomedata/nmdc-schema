@@ -1,4 +1,4 @@
-id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/workflow_execution_activity
+id: https://w3id.org/nmdc/workflow_execution_activity
 name: NMDC-Workflow-Execution
 title: Workflow Execution Activities module for NMDC Schema
 
@@ -15,7 +15,6 @@ imports:
 prefixes:
   nmdc: https://w3id.org/nmdc/
   linkml: https://w3id.org/linkml/
-  nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
 
 default_prefix: nmdc
 default_range: string

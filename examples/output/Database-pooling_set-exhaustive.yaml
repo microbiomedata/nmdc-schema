@@ -3,9 +3,9 @@ pooling_set:
   name: first pooling process
   description: xxx
   alternative_identifiers:
-  - bare:xxx
+  - generic:xxx
   has_input:
-  - bare:xxx
-  - bare:yyy
+  - generic:xxx
+  - generic:yyy
   has_output:
-  - bare:xxx
+  - generic:xxx

@@ -591,9 +591,9 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     MIXS:0000650 [ a nmdc:QuantityValue ;
             nmdc:has_raw_value "xxx" ] ;
     MIXS:0000652 [ a nmdc:TextValue ;
-            nmdc:has_raw_value "arsenic;0.09 micrograms per gram" ],
+            nmdc:has_raw_value "mercury;0.09 micrograms per gram" ],
         [ a nmdc:TextValue ;
-            nmdc:has_raw_value "mercury;0.09 micrograms per gram" ] ;
+            nmdc:has_raw_value "arsenic;0.09 micrograms per gram" ] ;
     MIXS:0000653 [ a nmdc:QuantityValue ;
             nmdc:has_raw_value "xxx" ] ;
     MIXS:0000656 [ a nmdc:QuantityValue ;
@@ -887,7 +887,7 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
             nmdc:has_raw_value "soil metagenome [NCBItaxon:410658]" ;
             nmdc:term NCBITaxon:410658 ] ;
     nmdc:add_date "2021-03-31" ;
-    nmdc:alternative_identifiers "bare:abc123"^^xsd:anyURI ;
+    nmdc:alternative_identifiers "generic:abc123"^^xsd:anyURI ;
     nmdc:ammonium_nitrogen [ a nmdc:QuantityValue ;
             nmdc:has_raw_value "0.5 milligram per liter" ] ;
     nmdc:analysis_type "metabolomics",
@@ -921,7 +921,7 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     nmdc:ecosystem_subtype "unconstrained text" ;
     nmdc:ecosystem_type "unconstrained text" ;
     nmdc:embargoed true ;
-    nmdc:emsl_biosample_identifiers "bare:abc123" ;
+    nmdc:emsl_biosample_identifiers "generic:abc123" ;
     nmdc:env_package [ a nmdc:TextValue ;
             nmdc:has_raw_value "unconstrained text. should require the name of a MIxS EnvironmentalPackage class. have asked MIxS to return this term to their model. UPDATE VALIDATION RULES/PATTERN/ENUM!" ] ;
     nmdc:experimental_factor_other "unconstrained text, but presumably expects 'term label [term id]'" ;
@@ -932,7 +932,7 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     nmdc:host_name "snail is an example value, but unconstrained text is accepted at this point" ;
     nmdc:igsn_biosample_identifiers "any:curie_1",
         "any:curie_2" ;
-    nmdc:img_identifiers "bare:abc123" ;
+    nmdc:img_identifiers "img.taxon:abc123" ;
     nmdc:insdc_biosample_identifiers "biosample:SAMN000",
         "biosample:SAMN123456789" ;
     nmdc:isotope_exposure "13C glucose" ;

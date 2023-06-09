@@ -6,25 +6,31 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 nmdc:extrp-99-abcdef a nmdc:Extraction ;
+    nmdc:end_date "2021-01-15" ;
     nmdc:extraction_target "DNA" ;
     nmdc:has_input nmdc:procsm-99-pooled ;
     nmdc:has_output nmdc:procsm-99-extract ;
-    nmdc:name "first dna extraction set" .
+    nmdc:name "first dna extraction set" ;
+    nmdc:start_date "2021-01-15" .
 
 nmdc:libprp-99-abcdef a nmdc:LibraryPreparation ;
+    nmdc:end_date "2021-01-15" ;
     nmdc:has_input nmdc:procsm-99-extract ;
     nmdc:has_output nmdc:procsm-99-library ;
     nmdc:library_type "DNA" ;
-    nmdc:name "DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1" .
+    nmdc:name "DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1" ;
+    nmdc:start_date "2021-01-15" .
 
 nmdc:poolp-99-abcdef a nmdc:Pooling ;
     dcterms:description "This is the first pooling process that has ever occurred on earth" ;
-    nmdc:alternative_identifiers "bare:ps1_alt_id"^^xsd:anyURI ;
+    nmdc:alternative_identifiers "generic:ps1_alt_id"^^xsd:anyURI ;
+    nmdc:end_date "2021-01-14" ;
     nmdc:has_input nmdc:bsm-99-abcdef1,
         nmdc:bsm-99-abcdef2,
         nmdc:bsm-99-abcdef3 ;
     nmdc:has_output nmdc:procsm-99-pooled ;
-    nmdc:name "first pooling process" .
+    nmdc:name "first pooling process" ;
+    nmdc:start_date "2021-01-14" .
 
 nmdc:procsm-99-xyz1 a nmdc:ProcessedSample ;
     nmdc:name "first processed sample set" .

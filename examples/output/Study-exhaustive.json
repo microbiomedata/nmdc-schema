@@ -3,7 +3,7 @@
   "name": "see also description, title, objective, various alternatives",
   "description": "see also name, title, objective, various alternatives",
   "alternative_identifiers": [
-    "bare:abc1"
+    "generic:abc1"
   ],
   "abstract": "Nothing was studied.",
   "alternative_descriptions": [

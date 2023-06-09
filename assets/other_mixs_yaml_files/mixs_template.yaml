@@ -1,6 +1,6 @@
 name: mixs-schema-subset
 title: MIxS Schema Subset for NMDC
-id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs
+id: https://w3id.org/nmdc/mixs
 
 subsets:
   mixs_environmental_triad:

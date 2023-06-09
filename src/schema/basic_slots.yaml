@@ -1,4 +1,4 @@
-id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/basic_slots
+id: https://w3id.org/nmdc/basic_slots
 name: NMDC-Basic-Slots
 title: Basic Slots for NMDC Schema
 description: >-
@@ -13,8 +13,6 @@ prefixes:
   skos: http://www.w3.org/2004/02/skos/core#
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
-  nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
-
 
 default_prefix: nmdc
 default_range: string

@@ -24,7 +24,7 @@ embargoed: true
 collected_from: nmdc:unconstrained_site_identifier_string
 type: nmdc:Biosample. change this to require a class name or an enumeration
 img_identifiers:
-  - generic:abc123
+  - img.taxon:abc123
 samp_name: see also name
 biosample_categories:
   - LTER

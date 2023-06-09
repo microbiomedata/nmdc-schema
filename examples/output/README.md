@@ -137,9 +137,9 @@ mags_activity_set:
 ```yaml
 extraction_set:
 - has_input:
-  - bare:xxx
+  - generic:xxx
   has_output:
-  - bare:yyy
+  - generic:yyy
   id: nmdc:extrp-99-abcdef
   name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
 
@@ -627,7 +627,7 @@ alkyl_diethers:
 alt:
   has_raw_value: 100 meter
 alternative_identifiers:
-- bare:abc123
+- generic:abc123
 aminopept_act:
   has_raw_value: 0.269 mole per liter per hour
 ammonium:
@@ -731,7 +731,7 @@ ecosystem_type: unconstrained text
 elev: 100
 embargoed: true
 emsl_biosample_identifiers:
-- bare:abc123
+- generic:abc123
 env_broad_scale:
   has_raw_value: ENVO:00002030
   term:
@@ -786,7 +786,7 @@ igsn_biosample_identifiers:
 - any:curie_1
 - any:curie_2
 img_identifiers:
-- bare:abc123
+- img.taxon:abc123
 insdc_biosample_identifiers:
 - biosample:SAMN123456789
 - biosample:SAMN000
@@ -1000,6 +1000,22 @@ zinc:
   has_raw_value: 2.5 mg/kg
 
 ```
+## Database-processed_sample-extract-exhaustive
+### Input
+```yaml
+processed_sample_set:
+- biomaterial_purity:
+    has_numeric_value: 2
+  description: Extracted DNA from WOOD_024-M-20190715-COMP
+  external_database_identifiers:
+  - neon.identifier:19S_31_2826
+  id: nmdc:procsm-99-dtTMNb
+  name: WOOD_024-M-20190715-COMP-DNA1
+  nucleic_acid_concentration:
+    has_numeric_value: 47.0
+    instrument_name: Promega Quantus Fluorometer
+
+```
 ## Database-study_set-emsl_project_doi
 ### Input
 ```yaml
@@ -1104,25 +1120,30 @@ biosample_set:
   part_of:
   - gold:Gs0110115
 extraction_set:
-- extraction_target: DNA
+- end_date: '2021-01-15'
+  extraction_target: DNA
   has_input:
   - nmdc:procsm-99-pooled
   has_output:
   - nmdc:procsm-99-extract
   id: nmdc:extrp-99-abcdef
   name: first dna extraction set
+  start_date: '2021-01-15'
 library_preparation_set:
-- has_input:
+- end_date: '2021-01-15'
+  has_input:
   - nmdc:procsm-99-extract
   has_output:
   - nmdc:procsm-99-library
   id: nmdc:libprp-99-abcdef
   library_type: DNA
   name: DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1
+  start_date: '2021-01-15'
 pooling_set:
 - alternative_identifiers:
-  - bare:ps1_alt_id
+  - generic:ps1_alt_id
   description: This is the first pooling process that has ever occurred on earth
+  end_date: '2021-01-14'
   has_input:
   - nmdc:bsm-99-abcdef1
   - nmdc:bsm-99-abcdef2
@@ -1131,6 +1152,7 @@ pooling_set:
   - nmdc:procsm-99-pooled
   id: nmdc:poolp-99-abcdef
   name: first pooling process
+  start_date: '2021-01-14'
 processed_sample_set:
 - id: nmdc:procsm-99-xyz1
   name: first processed sample set
@@ -1177,7 +1199,7 @@ alkyl_diethers:
 alt:
   has_raw_value: 100 meter
 alternative_identifiers:
-- bare:abc123
+- generic:abc123
 aminopept_act:
   has_raw_value: 0.269 mole per liter per hour
 ammonium:
@@ -1403,7 +1425,7 @@ elevator:
   has_raw_value: xxx
 embargoed: true
 emsl_biosample_identifiers:
-- bare:abc123
+- generic:abc123
 emulsions:
 - has_raw_value: xxx
 env_broad_scale:
@@ -1588,7 +1610,7 @@ igsn_biosample_identifiers:
 - any:curie_1
 - any:curie_2
 img_identifiers:
-- bare:abc123
+- img.taxon:abc123
 indoor_space: bedroom
 indoor_surf: cabinet
 indust_eff_percent:
@@ -2196,7 +2218,7 @@ alternative_descriptions:
 - any string 1
 - any string 2
 alternative_identifiers:
-- bare:abc1
+- generic:abc1
 alternative_names:
 - any string 1
 - any string 2
@@ -2626,7 +2648,7 @@ biosample_set:
   alt:
     has_raw_value: 100 meter
   alternative_identifiers:
-  - bare:abc123
+  - generic:abc123
   aminopept_act:
     has_raw_value: 0.269 mole per liter per hour
   ammonium:
@@ -2852,7 +2874,7 @@ biosample_set:
     has_raw_value: xxx
   embargoed: true
   emsl_biosample_identifiers:
-  - bare:abc123
+  - generic:abc123
   emulsions:
   - has_raw_value: xxx
   env_broad_scale:
@@ -3039,7 +3061,7 @@ biosample_set:
   - any:curie_1
   - any:curie_2
   img_identifiers:
-  - bare:abc123
+  - img.taxon:abc123
   indoor_space: bedroom
   indoor_surf: cabinet
   indust_eff_percent:
@@ -3856,9 +3878,9 @@ library_preparation_set:
     BMI_metagenomicsSequencingSOP_v2
   end_date: '2018-09-26'
   has_input:
-  - bare:xxx
+  - generic:xxx
   has_output:
-  - bare:xxx
+  - generic:xxx
   id: nmdc:libprp-99-xxx2
   library_preparation_kit: KAPA HyperPrep Kit
   library_type: DNA
@@ -3870,9 +3892,9 @@ library_preparation_set:
     XX
   end_date: '2018-09-26'
   has_input:
-  - bare:xxy
+  - generic:xxy
   has_output:
-  - bare:xxz
+  - generic:xxz
   id: nmdc:libprp-99-xxx1
   library_preparation_kit: TruSeq RNA Library Prep Kit v2
   library_type: RNA
@@ -3999,13 +4021,13 @@ id: nmdc:sty-99-WoeqAi
 ```yaml
 pooling_set:
 - alternative_identifiers:
-  - bare:xxx
+  - generic:xxx
   description: xxx
   has_input:
-  - bare:xxx
-  - bare:yyy
+  - generic:xxx
+  - generic:yyy
   has_output:
-  - bare:xxx
+  - generic:xxx
   id: nmdc:poolp-9x9-1x
   name: first pooling process
 
@@ -4017,17 +4039,24 @@ id: nmdc:poolp-9x9-1x
 name: first pooling process
 
 ```
+## Database-processed_sample-minimal
+### Input
+```yaml
+processed_sample_set:
+- id: nmdc:procsm-99-dtTMNb
+
+```
 ## Pooling-exhaustive
 ### Input
 ```yaml
 alternative_identifiers:
-- bare:xxx
+- generic:xxx
 description: xxx
 has_input:
-- bare:xxx
-- bare:yyy
+- generic:xxx
+- generic:yyy
 has_output:
-- bare:xxx
+- generic:xxx
 id: nmdc:poolp-9x9-1x
 name: first pooling process
 
@@ -4117,9 +4146,9 @@ extraction_set:
   extraction_method: phenol/chloroform extraction
   extraction_target: DNA
   has_input:
-  - bare:xxx
+  - generic:xxx
   has_output:
-  - bare:xxx
+  - generic:xxx
   id: nmdc:extrp-99-abcdef
   name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
   processing_institution: Battelle
@@ -4138,9 +4167,9 @@ extraction_set:
   extraction_method: phenol/chloroform extraction
   extraction_target: DNA
   has_input:
-  - bare:xxx
+  - generic:xxx
   has_output:
-  - bare:xxx
+  - generic:xxx
   id: nmdc:extrp-99-abcdef
   name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
   processing_institution: Battelle
@@ -4824,6 +4853,29 @@ nom_analysis_activity_set:
   started_at_time: 2018-11-13 20:20:39+00:00
   type: xxx
   was_informed_by: nmdc:act-99-abcdefg
+
+```
+## Database-plannedprocess-incorrect _date_slot
+### Input
+```yaml
+extraction_set:
+- extraction_date: 2021-01-15
+  extraction_target: DNA
+  has_inputs:
+  - bare:pool_out_1
+  has_outputs:
+  - bare:dna_extract_1
+  id: bare:des1
+  name: first dna extraction set
+library_preparation_set:
+- has_inputs:
+  - bare:dna_extract_1
+  has_outputs:
+  - bare:library_1
+  id: bare:lcs1
+  library_type: DNA
+  name: DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1
+  processed_date: 2021-01-15
 
 ```
 ## Database-nom_analysis_activity_set-invalid-string-ended_at_time

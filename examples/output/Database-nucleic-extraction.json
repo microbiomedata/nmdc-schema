@@ -5,10 +5,10 @@
       "name": "DNA extraction of NEON sample WREF_072-O-20190618-COMP",
       "description": "DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7",
       "has_input": [
-        "bare:xxx"
+        "generic:xxx"
       ],
       "has_output": [
-        "bare:xxx"
+        "generic:xxx"
       ],
       "start_date": "2019-11-08",
       "end_date": "2019-11-08",

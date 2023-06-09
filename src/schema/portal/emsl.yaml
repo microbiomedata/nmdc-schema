@@ -3,7 +3,7 @@ description: This file defines terms that appear in the 'EMSL' section of the NM
   sample metadata submission portal, which is implemented with DataHarmonizer as of
   Spring 2022
 title: 'NMDC Schema supplement for Submission Portal: EMSL'
-id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/portal/emsl
+id: https://w3id.org/nmdc/portal/emsl
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -13,7 +13,6 @@ imports:
 prefixes:
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
-  nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
 
 default_prefix: nmdc
 default_range: string
