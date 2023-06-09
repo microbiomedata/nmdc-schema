@@ -1373,9 +1373,9 @@ classes:
       - ecosystem_category
       - ecosystem_subtype
       - ecosystem_type
-      - emsl_project_identifier
-      - emsl_proposal_doi
-      - emsl_proposal_identifier
+      #      - emsl_project_identifier
+      #      - emsl_proposal_doi
+      #      - emsl_proposal_identifier
       - ess_dive_datasets
       - funding_sources
       - gold_study_identifiers
@@ -1439,10 +1439,10 @@ classes:
         description: Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.
         annotations:
           display_hint: Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title.
-      emsl_project_identifier:
-        description: The EMSL project ID that relates to the NMDC submitted study
-      emsl_proposal_doi:
-        description: The DOI for the EMSL awarded study that relates to the NMDC submitted study
+    #      emsl_project_identifier:
+    #        description: The EMSL project ID that relates to the NMDC submitted study
+    #      emsl_proposal_doi:
+    #        description: The DOI for the EMSL awarded study that relates to the NMDC submitted study
     exact_mappings:
       - SIO:001066
       - NCIT:C63536
@@ -1873,7 +1873,7 @@ enums:
           file_name_pattern: '[GOLD-AP]_gene_phylogeny.tsv'
 
       Lineage sdb:
-        description:  phylogeny at the contig level
+        description: phylogeny at the contig level
         annotations:
           file_name_pattern: '[GOLD-AP].contigLin.assembled.sdb'
 
@@ -2237,9 +2237,9 @@ slots:
     title: Related Identifiers
     description: Identifiers assigned to a thing that is similar to that which is represented in NMDC. Related identifier are not an identical match and may have some variation.
 
-  emsl_proposal_doi:
-    title: EMSL Proposal DOI
-    description: The proposal DOI assigned to the awarded EMSL study.
+  #  emsl_proposal_doi:
+  #    title: EMSL Proposal DOI
+  #    description: The proposal DOI assigned to the awarded EMSL study.
 
   #- insdc_bioproject_identifiers
   #- insdc_sra_ena_study_identifiers
