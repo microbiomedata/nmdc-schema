@@ -4,9 +4,9 @@ description: see also name, title, objective, various alternatives
 alternative_identifiers:
   - bare:abc1
 related_identifiers: any string R1
-emsl_proposal_identifier:
-  - bare:abc1
-emsl_proposal_doi: any string
+#emsl_proposal_identifier:
+#  - bare:abc1
+#emsl_proposal_doi: any string
 gold_study_identifiers:
   - GOLD:Gs12345
   - GOLD:Gs90909
