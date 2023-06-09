@@ -95,6 +95,9 @@ classes:
   ProcessedSample:
     is_a: MaterialEntity
     title: Processed Sample
+    slots:
+      - dna_concentration
+      - dna_absorb1
     slot_usage:
       id:
         required: true
