@@ -77,10 +77,13 @@ build-backend = "poetry_dynamic_versioning.backend"
 docs = ["mkdocs-material"]
 
 [tool.poetry.scripts]
-boolean_usages = "nmdc_schema.boolean_usages:cli"
+#boolean_usages = "nmdc_schema.boolean_usages:cli"
+#get_class_usages = "nmdc_schema.get_class_usages:main"
+#slot_roster = "nmdc_schema.slot_roster:cli"
+#validate-nmdc-json = "nmdc_schema.validate_nmdc_json:cli"
+#validate-nmdc-json is deprecated by check-jsonschema, which is in turn deprereated by run-linkml-examples
 fetch-nmdc-schema = "nmdc_schema.nmdc_data:get_nmdc_jsonschema"
 generate_import_slots_regardless = "nmdc_schema.generate_import_slots_regardless:main"
-get_class_usages = "nmdc_schema.get_class_usages:main"
 get_mixs_slots_matching_slot_list = "nmdc_schema.get_mixs_slots_matching_slot_list:main"
 get_mixs_slots_used_in_schema = "nmdc_schema.get_mixs_slots_used_in_schema:main"
 get_slots_from_class = "nmdc_schema.get_slots_from_class:main"
@@ -88,13 +91,9 @@ minimal_get_submissions = "nmdc_schema.minimal_get_submissions:cli"
 mixs_coverage = "nmdc_schema.mixs_coverage:cli"
 mixs_deep_diff = "nmdc_schema.mixs_deep_diff:cli"
 mixs_slot_text_mining = "nmdc_schema.mixs_slot_text_mining:cli"
+mongodb_exporter = "nmdc_schema.mongodb_exporter:export_to_yaml"
 nmdc-data = "nmdc_schema.nmdc_data:cli"
 nmdc-version = "nmdc_schema.nmdc_version:cli"
-slot_roster = "nmdc_schema.slot_roster:cli"
-mongodb_exporter = "nmdc_schema.mongodb_exporter:export_to_yaml"
-
-#validate-nmdc-json is deprecated by check-json-schema, which is in turn deprereated by run-linkml-examples
-#validate-nmdc-json = "nmdc_schema.validate_nmdc_json:cli"
 
 #classifiers = [
 #    "Development Status :: 4 - Beta",

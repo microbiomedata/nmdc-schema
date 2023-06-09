@@ -1439,10 +1439,10 @@ classes:
         description: Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.
         annotations:
           display_hint: Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title.
-      emsl_project_identifier:
-        description: The EMSL project ID that relates to the NMDC submitted study
-      emsl_proposal_doi:
-        description: The DOI for the EMSL awarded study that relates to the NMDC submitted study
+#      emsl_project_identifier:
+#        description: The EMSL project ID that relates to the NMDC submitted study
+#      emsl_proposal_doi:
+#        description: The DOI for the EMSL awarded study that relates to the NMDC submitted study
     exact_mappings:
       - SIO:001066
       - NCIT:C63536
@@ -2237,9 +2237,9 @@ slots:
     title: Related Identifiers
     description: Identifiers assigned to a thing that is similar to that which is represented in NMDC. Related identifier are not an identical match and may have some variation.
 
-  emsl_proposal_doi:
-    title: EMSL Proposal DOI
-    description: The proposal DOI assigned to the awarded EMSL study.
+#  emsl_proposal_doi:
+#    title: EMSL Proposal DOI
+#    description: The proposal DOI assigned to the awarded EMSL study.
 
   #- insdc_bioproject_identifiers
   #- insdc_sra_ena_study_identifiers
