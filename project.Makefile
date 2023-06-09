@@ -272,12 +272,12 @@ assets/slot_annotations_diffs.tsv: assets/other_mixs_yaml_files/mixs_new.yaml as
 		--anno_diff_tsv_out $@ \
 		--slot_diff_yaml_out $(patsubst %.tsv,%.yaml,$@)
 
-assets/slot_roster.tsv:
-	$(RUN) slot_roster \
-		--input_paths "https://raw.githubusercontent.com/microbiomedata/sheets_and_friends/main/artifacts/nmdc_submission_schema.yaml" \
-		--input_paths "https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml" \
-		--input_paths "src/schema/nmdc.yaml" \
-		--output_tsv $@
+#assets/slot_roster.tsv:
+#	$(RUN) slot_roster \
+#		--input_paths "https://raw.githubusercontent.com/microbiomedata/sheets_and_friends/main/artifacts/nmdc_submission_schema.yaml" \
+#		--input_paths "https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml" \
+#		--input_paths "src/schema/nmdc.yaml" \
+#		--output_tsv $@
 
 assets/MIxS_6_term_updates_dtm.tsv: \
 assets/MIxS_6_term_updates_MIxS6_Core-_Final_clean.tsv \
@@ -292,9 +292,9 @@ assets/mixs_slots_by_submission_class.tsv: assets/sheets-for-nmdc-submission-sch
   		--in_file $< \
   		--out_file $@
 
-local/boolean_usages.tsv:
-	$(RUN) boolean_usages \
-		--out_file $@
+#local/boolean_usages.tsv:
+#	$(RUN) boolean_usages \
+#		--out_file $@
 
 MIXS_YAML_FROM_SHEETS_AND_FRIENDS = src/schema/mixs.yaml
 MIXS_YAML_MARK_OLDER_PYTHON = src/schema/mixs_new.yaml

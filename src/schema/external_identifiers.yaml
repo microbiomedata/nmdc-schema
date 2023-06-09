@@ -200,12 +200,20 @@ slots:
     see_also:
       - https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=83574f41458a4b259621d5c32a4d82f9
 
-  emsl_proposal_identifier:
+  #  emsl_proposal_identifier:
+  #    is_a: study_identifiers
+  #    mixins:
+  #      - emsl_identifiers
+  #    title: EMSL Proposal Identifier
+  #    description: The proposal number assigned to the EMSL awarded study that relates to that which is represented in NMDC.
+
+
+  emsl_project_doi:
     is_a: study_identifiers
     mixins:
       - emsl_identifiers
-    title: EMSL Proposal Identifier
-    description: The proposal number assigned to the EMSL awarded study that relates to that which is represented in NMDC.
+    title: EMSL Project DOI
+    description: A DOI that resolves to a EMSL Research Campaign page.
 
 
   ## samples
@@ -351,10 +359,10 @@ slots:
     mixins:
       - insdc_identifiers
 
-  # EMSL
-
-  emsl_project_identifier:
-    see_also:
-      - emsl_proposal_identifier
-    comments:
-      - this is also associated with class Study!
+#  # EMSL
+#
+#  emsl_project_identifier:
+#    see_also:
+#      - emsl_proposal_identifier
+#    comments:
+#      - this is also associated with class Study!
