@@ -25,10 +25,6 @@
   "ecosystem_category": "unconstrained text",
   "ecosystem_subtype": "unconstrained text",
   "ecosystem_type": "unconstrained text",
-  "emsl_proposal_doi": "any string",
-  "emsl_proposal_identifier": [
-    "bare:abc1"
-  ],
   "ess_dive_datasets": [
     "any string 1",
     "any string 2"

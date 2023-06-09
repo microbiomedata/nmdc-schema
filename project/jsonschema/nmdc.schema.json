@@ -866,7 +866,7 @@
                 "emsl_biosample_identifiers": {
                     "description": "A list of identifiers for the biosample from the EMSL database.  This is used to link the biosample, as modeled by NMDC, to the biosample in the planned EMSL NEXUS database.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9]+:[a-zA-Z0-9_][a-zA-Z0-9_\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -1329,7 +1329,7 @@
                 "igsn_biosample_identifiers": {
                     "description": "A list of identifiers for the biosample from the IGSN database.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9]+:[a-zA-Z0-9_][a-zA-Z0-9_\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -1544,7 +1544,7 @@
                 },
                 "neon_biosample_identifiers": {
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9]+:[a-zA-Z0-9_][a-zA-Z0-9_\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6317,6 +6317,15 @@
                     "description": "a human-readable description of a thing",
                     "type": "string"
                 },
+                "dna_absorb1": {
+                    "description": "260/280 measurement of DNA sample purity",
+                    "type": "number"
+                },
+                "dna_concentration": {
+                    "maximum": 2000,
+                    "minimum": 0,
+                    "type": "number"
+                },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "type": "string"
@@ -7123,18 +7132,10 @@
                     "description": "Ecosystem types represent things having common characteristics within the Ecosystem Category. These common characteristics based grouping is still broad but specific to the characteristics of a given environment. Ecosystem type is in position 3/5 in a GOLD path.",
                     "type": "string"
                 },
-                "emsl_project_identifier": {
-                    "description": "The EMSL project ID that relates to the NMDC submitted study",
-                    "type": "string"
-                },
-                "emsl_proposal_doi": {
-                    "description": "The DOI for the EMSL awarded study that relates to the NMDC submitted study",
-                    "type": "string"
-                },
-                "emsl_proposal_identifier": {
-                    "description": "The proposal number assigned to the EMSL awarded study that relates to that which is represented in NMDC.",
+                "emsl_project_dois": {
+                    "description": "A DOI that resolves to a EMSL Research Campaign page.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9]+:[a-zA-Z0-9_][a-zA-Z0-9_\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7209,7 +7210,7 @@
                 },
                 "neon_study_identifiers": {
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9]+:[a-zA-Z0-9_][a-zA-Z0-9_\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7912,5 +7913,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "v7.6.0"
+    "version": "v7.6.1"
 }

@@ -1000,6 +1000,15 @@ zinc:
   has_raw_value: 2.5 mg/kg
 
 ```
+## Database-study_set-emsl_project_doi
+### Input
+```yaml
+study_set:
+- emsl_project_dois:
+  - doi:10.46936/intm.proj.2021.60141/60000423
+  id: nmdc:sty-11-ab
+
+```
 ## Biosample-soil_horizon
 ### Input
 ```yaml
@@ -2203,9 +2212,6 @@ ecosystem: unconstrained text. should be validated against the controlled vocabu
 ecosystem_category: unconstrained text
 ecosystem_subtype: unconstrained text
 ecosystem_type: unconstrained text
-emsl_proposal_doi: any string
-emsl_proposal_identifier:
-- bare:abc1
 ess_dive_datasets:
 - any string 1
 - any string 2
@@ -5291,6 +5297,15 @@ biosample_set:
   sample_collection_site: Lithgow State Coal Mine
   specific_ecosystem: Coalbed water
   type: nmdc:Biosample
+
+```
+## Database-study_set-bad-emsl-doi-slot-name
+### Input
+```yaml
+study_set:
+- emsl_proposal_dois:
+  - doi:10.46936/intm.proj.2021.60141/60000423
+  id: nmdc:sty-11-ab
 
 ```
 ## Database-biosamples-lat_lon-with-GLV-missing-longitude
