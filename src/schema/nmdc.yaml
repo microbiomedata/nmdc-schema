@@ -1100,6 +1100,7 @@ classes:
         required: true
       part_of:
         required: true
+        range: Study
       fire:
         comments:
           - Provide the date the fire occurred. If extended burning occurred provide the date range.
