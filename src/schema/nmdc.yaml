@@ -1352,6 +1352,8 @@ classes:
 
     slots:
 
+      - emsl_project_dois
+
       - neon_study_identifiers
 
       ## Identifiers
