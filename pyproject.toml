@@ -91,7 +91,7 @@ minimal_get_submissions = "nmdc_schema.minimal_get_submissions:cli"
 mixs_coverage = "nmdc_schema.mixs_coverage:cli"
 mixs_deep_diff = "nmdc_schema.mixs_deep_diff:cli"
 mixs_slot_text_mining = "nmdc_schema.mixs_slot_text_mining:cli"
-mongodb_exporter = "nmdc_schema.mongodb_exporter:export_to_yaml"
+mongodb_exporter = "nmdc_schema.mongodb_direct_to_nmdc_Database_file:export_to_yaml"
 nmdc-data = "nmdc_schema.nmdc_data:cli"
 nmdc-version = "nmdc_schema.nmdc_version:cli"
 

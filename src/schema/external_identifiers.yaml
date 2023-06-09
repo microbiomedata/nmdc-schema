@@ -35,7 +35,7 @@ types:
       A CURIE representing an external identifier
     see_also:
       - https://microbiomedata.github.io/nmdc-schema/identifiers.html
-    pattern: '^[a-zA-Z0-9]+:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$'
+    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$'
 
 slots:
 
@@ -44,7 +44,7 @@ slots:
     description: Link to corresponding identifier in external database
     is_a: alternative_identifiers
     multivalued: true
-    pattern: '^[a-zA-Z0-9]+:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$'
+    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$'
     range: external identifier
     comments:
       - The value of this field is always a registered CURIE

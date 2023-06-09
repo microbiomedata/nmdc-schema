@@ -354,10 +354,24 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosampl
 		-i $< \
 		-o $@
 
-local/study_set.yaml:
+# # # #
+
+local/selected_mongodb_contents.yaml:
 	$(RUN) mongodb_exporter \
-		--mongo-collection study_set \
-		--output-dir local
+		--selected-collections biosample_set
+
+generate-mongodb-vs-schema-report: clean-mongodb-vs-schema-report check-mongodb-contents
+
+.PHONY: check-mongodb-contents clean-mongodb-vs-schema-report clean-mongodb-vs-schema-report
+
+clean-mongodb-vs-schema-report:
+	rm -f local/mongodb_vs_schema_report.yaml
+
+check-mongodb-contents: local/selected_mongodb_contents.yaml
+	$(RUN) check-jsonschema \
+		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $<
+
+# # # #
 
 local/envo.db:
 	$(RUN) semsql download envo -o $@
