@@ -96,8 +96,11 @@ classes:
     is_a: MaterialEntity
     title: Processed Sample
     slots:
-      - dna_concentration
+      - biomaterial_purity
       - dna_absorb1
+      - dna_concentration
+      - external_database_identifiers
+      - nucleic_acid_concentration
     slot_usage:
       id:
         required: true
@@ -160,6 +163,14 @@ classes:
       type:
         description: >-
           An optional string that specified the type of object.
+
+  InstrumentValue:
+    is_a: AttributeValue
+    slots:
+      - has_unit
+      - has_numeric_value
+      - instrument_name
+
 
   QuantityValue:
     is_a: AttributeValue

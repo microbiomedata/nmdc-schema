@@ -4,7 +4,7 @@ name: Sample Exhaustive Biosample instance. Although all of these values should 
   have this particular combination of values.
 description: unconstrained text
 alternative_identifiers:
-  - bare:abc123
+  - generic:abc123
 part_of:
   - nmdc:unconstrained_study_identifier_string1_needs_pattern_materialization_what_about_referential_integrity
   - nmdc:unconstrained_study_identifier_string2
@@ -24,7 +24,7 @@ embargoed: true
 collected_from: nmdc:unconstrained_site_identifier_string
 type: nmdc:Biosample. change this to require a class name or an enumeration
 img_identifiers:
-  - bare:abc123
+  - generic:abc123
 samp_name: see also name
 biosample_categories:
   - LTER
@@ -36,7 +36,7 @@ insdc_biosample_identifiers:
   - biosample:SAMN123456789
   - biosample:SAMN000
 emsl_biosample_identifiers:
-  - bare:abc123
+  - generic:abc123
 igsn_biosample_identifiers:
   - any:curie_1
   - any:curie_2

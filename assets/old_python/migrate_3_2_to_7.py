@@ -291,7 +291,7 @@ def cli(dotenv_file: str, schema_file: str, max_collection_bytes: int, last_doc_
                 if 'id' in document and document['id']:
                     if ":" not in document['id']:
                         logger.error(f"illegal {collection_name_lc} document id: {document['id']}")
-                        document['id'] = f"bare:{document['id']}"
+                        document['id'] = f"generic:{document['id']}"
                         document['id'] = document['id'].strip()
 
                     # todo migrations not handled by name_replacements

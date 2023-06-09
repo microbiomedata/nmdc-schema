@@ -39,10 +39,12 @@ imports:
 
 prefixes:
   emsl.project: "https://bioregistry.io/reference/emsl.project:"
+  gnps.task: "https://bioregistry.io/reference/gnps.task:"
   jgi.proposal: "https://bioregistry.io/reference/jgi.proposal:"
+  neon.identifier: http://example.org/neon/identifier/
   neon.schema: http://example.org/neon/schema/
 
-  bare: https://unknown.to.linter.org/
+  generic: https://example.com/generic/
 
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/

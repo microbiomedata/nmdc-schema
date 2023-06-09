@@ -32,7 +32,7 @@ alkyl_diethers:
 alt:
   has_raw_value: 100 meter
 alternative_identifiers:
-  - bare:abc123
+  - generic:abc123
 aminopept_act:
   has_raw_value: 0.269 mole per liter per hour
 ammonium:
@@ -428,7 +428,7 @@ elevator:
   has_raw_value: xxx
 embargoed: true
 emsl_biosample_identifiers:
-  - bare:abc123
+  - generic:abc123
 emulsions:
   - has_raw_value: xxx
 env_broad_scale:
@@ -603,7 +603,7 @@ igsn_biosample_identifiers:
   - any:curie_1
   - any:curie_2
 img_identifiers:
-  - bare:abc123
+  - generic:abc123
 indoor_space: bedroom
 indoor_surf: cabinet
 indust_eff_percent:

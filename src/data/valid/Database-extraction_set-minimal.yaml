@@ -3,7 +3,7 @@ extraction_set:
   - id: nmdc:extrp-99-abcdef
     name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
     has_input:
-      - bare:xxx
+      - generic:xxx
     #cardinality of outputs should be 1-many, may want to fractionate samples or keep supernatant
     has_output:
-      - bare:yyy
+      - generic:yyy

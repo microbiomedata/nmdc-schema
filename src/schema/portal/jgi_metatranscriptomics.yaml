@@ -9,6 +9,7 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 
 imports:
   - linkml:types
+  - basic_slots
 
 prefixes:
   linkml: https://w3id.org/linkml/
@@ -69,6 +70,7 @@ slots:
     slot_group: JGI-Metatranscriptomics
     recommended: true
   rna_absorb1:
+    is_a: biomaterial_purity
     description: 260/280 measurement of RNA sample purity
     title: RNA absorbance 260/280
     comments:
@@ -82,6 +84,7 @@ slots:
     slot_group: JGI-Metatranscriptomics
     recommended: true
   rna_absorb2:
+    is_a: biomaterial_purity
     description: 260/230 measurement of RNA sample purity
     title: RNA absorbance 260/230
     comments:
@@ -105,6 +108,8 @@ slots:
     slot_group: JGI-Metatranscriptomics
     recommended: true
   rna_concentration:
+    see_also:
+      nmdc:nucleic_acid_concentration
     title: RNA concentration in ng/ul
     comments:
       - Units must be in ng/uL. Enter the numerical part only. Must be calculated using

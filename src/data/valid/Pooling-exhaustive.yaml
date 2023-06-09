@@ -1,11 +1,11 @@
 id: nmdc:poolp-9x9-1x
 name: first pooling process
 alternative_identifiers:
-  - bare:xxx
+  - generic:xxx
 description: xxx
 has_input:
-  - bare:xxx
-  - bare:yyy
+  - generic:xxx
+  - generic:yyy
 has_output:
-  - bare:xxx
+  - generic:xxx
 # participating_agent: xxx # Agent isn't a named thing and doesn't have an ID so must be inlined

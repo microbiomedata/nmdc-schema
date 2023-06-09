@@ -13,11 +13,11 @@ extraction_set:
     #      the range of has_input for this class, as a slot_usage
     # this still doesn't solve referential integrity
     has_input:
-      - bare:xxx
+      - generic:xxx
 
     #cardinality of outputs should be 1-many, may want to fractionate samples or keep supernatant
     has_output:
-      - bare:xxx
+      - generic:xxx
 
     processing_institution: Battelle
 

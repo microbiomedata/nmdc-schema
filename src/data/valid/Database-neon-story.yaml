@@ -2,7 +2,7 @@ pooling_set:
   - id: nmdc:poolp-99-abcdef
     name: first pooling process
     alternative_identifiers:
-      - bare:ps1_alt_id
+      - generic:ps1_alt_id
     description: This is the first pooling process that has ever occurred on earth
     has_input:
       - nmdc:bsm-99-abcdef1
@@ -11,6 +11,9 @@ pooling_set:
     has_output:
       - nmdc:procsm-99-pooled
     # participating_agent: xxx # Agent isn't a named thing and doesn't have an ID so must be inlined
+    #using generic start and end dates for planned processes http://purl.obolibrary.org/obo/OBI_0002471
+    start_date: "2021-01-14"
+    end_date: "2021-01-14"
 processed_sample_set:
   - id: nmdc:procsm-99-xyz1
     name: first processed sample set
@@ -27,6 +30,8 @@ extraction_set:
     has_output:
       - nmdc:procsm-99-extract
     extraction_target: DNA
+    start_date: "2021-01-15"
+    end_date: "2021-01-15"
 
 #example populated by w/example mostly from NEON.D05.TREE.DP1.10107.001.mms_metagenomeSequencing.2017-07.expanded.20230113T225024Z.csv
 #library preparation OBI:0000711
@@ -38,6 +43,8 @@ library_preparation_set:
     name: DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1
     #library_type should be enum "DNA", "RNA"
     library_type: DNA
+    start_date: "2021-01-15"
+    end_date: "2021-01-15"
     has_input:
       - nmdc:procsm-99-extract
     has_output:
