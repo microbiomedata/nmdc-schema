@@ -12,8 +12,8 @@ pooling_set:
       - bare:pool_out_1
     # participating_agent: xxx # Agent isn't a named thing and doesn't have an ID so must be inlined
     #using generic start and end dates for planned processes http://purl.obolibrary.org/obo/OBI_0002471
-    date_process_started: 2021-01-14
-    date_process_ended: 2021-01-14
+    start_date: "2021-01-14"
+    end_date: "2021-01-14"
 processed_sample_set:
   - id: bare:pool_out_1
     name: first processed sample set
@@ -30,8 +30,8 @@ extraction_set:
     has_outputs:
       - bare:dna_extract_1
     extraction_target: DNA
-    date_process_started: 2021-01-15
-    date_process_ended: 2021-01-15
+    start_date: 2021-01-15
+    end_date: 2021-01-15
 
 #example populated by w/example mostly from NEON.D05.TREE.DP1.10107.001.mms_metagenomeSequencing.2017-07.expanded.20230113T225024Z.csv
 #library preparation OBI:0000711
@@ -49,8 +49,8 @@ library_preparation_set:
       - bare:dna_extract_1
     has_outputs:
       - bare:library_1
-    date_process_started: 2021-01-15
-    date_process_ended: 2021-01-15
+    start_date: 2021-01-15
+    end_date: 2021-01-15
 
 biosample_set:
   - id: nmdc:bsm-99-abcdef1
