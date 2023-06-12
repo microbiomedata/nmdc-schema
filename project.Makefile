@@ -358,7 +358,7 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosampl
 
 local/selected_mongodb_contents.yaml:
 	$(RUN) mongodb_exporter \
-		--selected-collections biosample_set
+		--selected-collections omics_processing_set
 
 generate-mongodb-vs-schema-report: clean-mongodb-vs-schema-report check-mongodb-contents
 
