@@ -1,4 +1,5 @@
 notebooks/neon_cache.sqlite
+neon_cache.sqlite
 
 site/
 docs/*md
