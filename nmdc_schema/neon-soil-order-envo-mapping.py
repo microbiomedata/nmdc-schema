@@ -1,132 +1,125 @@
-import re
-
-import yaml
+import os
 import sqlite3
+
+import requests
 import pandas as pd
 import click
+import requests_cache
+from dotenv import load_dotenv
 
 
-# Hugh has already provided a partial, highly curated mapping
-# Harry is looking into oaklib/ontogpt solutions
+# https://en.wikipedia.org/wiki/USDA_soil_taxonomy
 
 
-# nlcd metadata is included in each release from the
-#   Multi-Resolution Land Characteristics (MRLC) Consortium
-# this page highlights the MRLC land cover releases for the Continental US
-#   https://www.mrlc.gov/data?f%5B0%5D=category%3ALand%20Cover&f%5B1%5D=region%3Aconus
-# make sure we are using the same version an NEON
-# Here I will illustrate the use of "NLCD 2019 Land Cover (CONUS)"
-# click on the faint "More" link in the lower right-hand corner of the  "NLCD 2019 Land Cover (CONUS)" tile
-# click on the "Metadata" link
-# that will take you to an XML document wth sections like
+def remove_trailing_char(string, removal_char):
+    if string.endswith(removal_char):
+        return string.rstrip(removal_char)
+    else:
+        return string
 
-# what's edom?
-# are there any other authorities on this subject?
-# envthes?
 
-# <attrdomv>
-#   <edom>
-#     <edomv>43</edomv>
-#       <edomvd>Mixed Forest - Areas dominated by trees generally greater than 5 meters tall, and greater than 20% of total vegetation cover. Neither deciduous nor evergreen species are greater than 75 percent of total tree cover.</edomvd>
-#       <edomvds>NLCD Legend Land Cover Class Descriptions</edomvds>
-#   </edom>
-# </attrdomv>
+def load_vars_from_env_file(env_file) -> None:
+    load_dotenv(env_file)
 
-# have not been able to parse that file with newbie style XML parsing
-# so start by downloading and converting to YAML with local/nlcd_2019_land_cover_l48_20210604.yaml
-#   in project.Makefile
 
-# ABBY_002.basePlot.bgc
-# namedLocation in sls_soilCoreCollection.csv -> location lookup
-#   https://data.neonscience.org/api/v0/locations/ABBY_002.basePlot.bgc
-# locationProperties
-#       {
-#         "locationPropertyName": "Value for Soil type order",
-#         "locationPropertyValue": "Andisols"
-#       },
+def get_neon_token() -> str:
+    return os.getenv("NEON_TOKEN")
 
 
 @click.command()
-@click.option('--nlcd-yaml', default='local/nlcd_2019_land_cover_l48_20210604.yaml', help='Path to NLCD YAML file')
 @click.option('--envo-sqlite', default='local/envo.db', help='Path to ENVO SQLite database file')
-@click.option('--neon-nlcd-envo-mappings-tsv', default='local/neon-nlcd-envo-mappings.tsv',
+@click.option("--dotenv-file", type=click.Path(exists=True), default="local/.env", help="Path to .env file")
+@click.option('--soil-core-collection-csv-in', default='local/sls_soilCoreCollection.csv',
+              help='Path to sls_soilCoreCollection.csv')
+@click.option('--neon-site-envo-soil-mappings-tsv', default='local/neon-site-envo-soil-mappings.tsv',
               help='Path to output TSV file')
-def generate_nlcd_envo_mappings(nlcd_yaml, envo_sqlite, neon_nlcd_envo_mappings_tsv):
-    with open(nlcd_yaml, "r") as stream:
-        try:
-            nlcd_dict = yaml.safe_load(stream)
-        except yaml.YAMLError as exc:
-            print(exc)
+def generate_soil_order_envo_mappings(envo_sqlite, soil_core_collection_csv_in, dotenv_file,
+                                      neon_site_envo_soil_mappings_tsv):
+    load_vars_from_env_file(dotenv_file)
 
-    detailed_attrs = nlcd_dict['metadata']['eainfo']['detailed']['attr']
+    url_base = "https://data.neonscience.org/api/v0/locations"
 
-    edoms = []
-    for detailed_attr in detailed_attrs:
-        if detailed_attr['attrdefs'] == 'NLCD Legend Land Cover Class Descriptions':
-            edoms = detailed_attr['attrdomv']
-            break
+    token = get_neon_token()
 
-    edom_lod = []
-    for edom in edoms:
-        extracted_portion = edom['edom']['edomvd'].split(' -')[0]
+    headers = {'X-API-Token': token}
 
-        # Remove whitespace and punctuation, and split into words
-        words = re.findall(r'\w+', extracted_portion)
+    requests_cache.install_cache('neon_cache', backend='sqlite', expire_after=43200)  # 12 hours
 
-        # Convert to lower camel case
-        lower_camel_case = words[0].lower() + ''.join(word.capitalize() for word in words[1:])
+    sls_soilCoreCollection_frame = pd.read_csv(soil_core_collection_csv_in, low_memory=False)
+    named_location_counts = sls_soilCoreCollection_frame['namedLocation'].value_counts()
+    # print(named_location_counts)
 
-        envo_style_alt_id = f"NLCD:{edom['edom']['edomv']}"
+    named_locations_unique_list = named_location_counts.index.tolist()
+    named_locations_unique_list.sort()
 
-        edom_dict = {
-            "envo_style_alt_id": envo_style_alt_id,
-            "full_desc": edom['edom']['edomvd'],
-            "num_key": edom['edom']['edomv'],
-            'extractedPortion': extracted_portion,
-            'lowerCamelCase': lower_camel_case,
+    location_count = len(named_locations_unique_list)
+
+    soil_types_lod = []
+    for idx, i in enumerate(named_locations_unique_list):
+        print(f"{i} = {idx + 1} of {location_count}")
+
+        soil_type_dict = {
+            "envo_label_style": "soil",
+            "site": i,
         }
-        edom_lod.append(edom_dict)
 
-    # Define the field names based on the keys in the dictionaries
-    fieldnames = edom_lod[0].keys()
+        url = f"{url_base}/{i}"
 
-    # convert that list of dictionaries into a pandas dataframe
-    edom_df = pd.DataFrame(edom_lod)
+        response = requests.get(url, headers=headers).json()
+
+        if 'data' not in response:
+            print("Skipping", i)
+            continue
+
+        location_properties_list = response['data']['locationProperties']
+        for location_property in location_properties_list:
+
+            if location_property['locationPropertyName'] == 'Value for Soil type order':
+                neon_style = location_property['locationPropertyValue']
+                envo_label_style = remove_trailing_char(neon_style.lower(), 's')
+                soil_type_dict = {
+                    "envo_label_style": envo_label_style,
+                    "site": i,
+                    "site_soil_type_order": location_property['locationPropertyValue'],
+                }
+                continue
+        soil_types_lod.append(soil_type_dict)
+
+    # pprint.pprint(soil_types_lod)
+
+    site_soil_types_frame = pd.DataFrame(soil_types_lod)
+
+    soil_types_frame = site_soil_types_frame[['envo_label_style', 'site_soil_type_order']].copy()
+    soil_types_frame.drop_duplicates(inplace=True)
 
     envo_nlcd_alt_mappings_q = """
-    select
-        s1.subject, s1.value, s2.value
-    from
-        statements s1
-    join statements s2 on s1.subject = s2.subject 
-    where
-        s1.predicate  = 'oio:hasAlternativeId' and s1.value like 'NLCD:%'
-        and s2.predicate = "rdfs:label"
+select
+	ee.subject , s.value 
+from
+	entailed_edge ee
+join statements s on
+	s.subject = ee.subject
+where
+	ee."object" = "ENVO:00001998"
+	and ee.predicate = "rdfs:subClassOf"
+	and s.predicate = "rdfs:label"
     """
 
     conn = sqlite3.connect(envo_sqlite)
     c = conn.cursor()
     c.execute(envo_nlcd_alt_mappings_q)
-    envo_nlcd_alt_mappings = c.fetchall()
+    envo_soil_labels = c.fetchall()
     conn.close()
 
     # turn the sqlite results into a pandas dataframe
-    envo_nlcd_alt_mappings_df = pd.DataFrame(envo_nlcd_alt_mappings,
-                                             columns=['envo_term', 'nlcd_mapping', 'envo_label'])
+    envo_soil_labels_frame = pd.DataFrame(envo_soil_labels,
+                                          columns=['envo_term', 'envo_label'])
 
-    merged_df = pd.merge(edom_df, envo_nlcd_alt_mappings_df, left_on='envo_style_alt_id', right_on='nlcd_mapping',
+    merged_df = pd.merge(soil_types_frame, envo_soil_labels_frame, left_on='envo_label_style', right_on='envo_label',
                          how='outer')
 
-    merged_df.to_csv(neon_nlcd_envo_mappings_tsv, index=False, sep='\t')
-
-    sls_soilCoreCollection_frame = pd.read_csv('local/sls_soilCoreCollection.csv', low_memory=False)
-    named_location_counts = sls_soilCoreCollection_frame['namedLocation'].value_counts()
-    print(named_location_counts)
-    named_locations_unique_list = named_location_counts.index.tolist()
-    named_locations_unique_list.sort()
-    for named_location in named_locations_unique_list:
-        print(named_location)
+    merged_df.to_csv(neon_site_envo_soil_mappings_tsv, index=False, sep='\t')
 
 
 if __name__ == '__main__':
-    generate_nlcd_envo_mappings()
+    generate_soil_order_envo_mappings()
