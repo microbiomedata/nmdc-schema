@@ -2446,9 +2446,7 @@ slots:
       - value: gzip
     todos:
       - consider enum
-  instrument_name:
-    description: >-
-      The name of the instrument that was used for processing the sample.
+
 
   ## GOLD PATHS
   gold_path_field:

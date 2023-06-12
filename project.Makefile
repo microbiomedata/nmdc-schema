@@ -367,7 +367,7 @@ generate-mongodb-vs-schema-report: clean-mongodb-vs-schema-report check-mongodb-
 clean-mongodb-vs-schema-report:
 	rm -f local/mongodb_vs_schema_report.yaml
 
-check-mongodb-contents: local/selected_mongodb_contents.yaml
+check-mongodb-contents: local/selected_mongodb_contents_omixs_processing-set.yaml
 	$(RUN) check-jsonschema \
 		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $< | grep -v '(nmdc):'
 
