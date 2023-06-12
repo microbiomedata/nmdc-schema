@@ -130,3 +130,30 @@ slots:
     range: InstrumentValue
   biomaterial_purity:
     range: QuantityValue
+
+  instrument_name:
+    description: >-
+      The name of the instrument that was used for processing the sample.
+#    range: instrument_name_enum
+
+#enums:
+#  instrument_name_enum:
+#    todos:
+#      - remove "21T Agilent"
+#    permissible_values:
+#      - 12T_FTICR_B
+#      - 15T_FTICR
+#      - 21T Agilent
+#      - 21T_Agilent
+#      - Agilent_GC_MS_01
+#      - Illumina HiSeq
+#      - Illumina HiSeq 2500
+#      - Illumina HiSeq 2500-1TB
+#      - Illumina NextSeq 550
+#      - Illumina NovaSeq
+#      - Illumina NovaSeq S4
+#      - QExactHF03
+#      - QExactP02
+#      - VOrbiETD04
+
+

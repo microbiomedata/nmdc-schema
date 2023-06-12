@@ -3,11 +3,11 @@
 
 nmdc:sty-99-WoeqAi a nmdc:Study ;
     prov:qualifiedAssociation [ a prov:Association ;
-            nmdc:applied_roles "Software" ;
-            nmdc:applies_to_person [ a nmdc:PersonValue ;
-                    nmdc:orcid "orcid:0000-0001-9076-6066" ] ],
-        [ a prov:Association ;
             nmdc:applied_roles "Data curation" ;
             nmdc:applies_to_person [ a nmdc:PersonValue ;
-                    nmdc:orcid "orcid:0000-0002-1825-00" ] ] .
+                    nmdc:orcid "orcid:0000-0002-1825-00" ] ],
+        [ a prov:Association ;
+            nmdc:applied_roles "Software" ;
+            nmdc:applies_to_person [ a nmdc:PersonValue ;
+                    nmdc:orcid "orcid:0000-0001-9076-6066" ] ] .
 
