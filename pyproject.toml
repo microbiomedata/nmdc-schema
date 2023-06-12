@@ -26,6 +26,7 @@ linkml = "1.5.2"
 linkml-runtime = "1.5.2"
 
 
+
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0"
 check-jsonschema = "^0.21.0"
@@ -44,7 +45,10 @@ strsimpy = "*"
 toml = "*"
 exhaustion-check = "^0.1.1"
 pymongo = "^4.3.3"
-oaklib = "*"
+oaklib = "0.5.6"
+#nltk = "^3.8.1"
+#scikit-learn = "^1.2.2"
+#xmltodict = "^0.13.0"
 
 sheets_and_friends = "^0.5.0"
 ## /Users/MAM/Documents/gitrepos/sheets_and_friends
@@ -94,6 +98,7 @@ mixs_slot_text_mining = "nmdc_schema.mixs_slot_text_mining:cli"
 mongodb_exporter = "nmdc_schema.mongodb_direct_to_nmdc_Database_file:export_to_yaml"
 nmdc-data = "nmdc_schema.nmdc_data:cli"
 nmdc-version = "nmdc_schema.nmdc_version:cli"
+get_neon-nlcd-envo-mapping = "nmdc_schema.neon-nlcd-envo-mapping:generate_nlcd_envo_mappings"
 
 #classifiers = [
 #    "Development Status :: 4 - Beta",
