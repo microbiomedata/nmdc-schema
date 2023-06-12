@@ -403,3 +403,22 @@ local/cur_vegetation_in_neon.tsv: local/neon_in_nmdc.ttl assets/sparql/cur_veget
 
 local/prefix_report.yaml: nmdc_schema/nmdc_materialized_patterns.yaml
 	$(RUN) gen-prefix-map  $< | yq  -P | cat > $@
+
+# # # #
+
+local/nlcd_2019_land_cover_l48_20210604.xml:
+	curl -o $@ https://www.mrlc.gov/downloads/sciweb1/shared/mrlc/metadata/nlcd_2019_land_cover_l48_20210604.xml
+
+
+local/nlcd_2019_land_cover_l48_20210604.yaml: local/nlcd_2019_land_cover_l48_20210604.xml
+	yq -p=xml -oy '.' $< > $@
+
+
+local/neon-nlcd-envo-mappings.tsv: local/nlcd_2019_land_cover_l48_20210604.yaml local/envo.db
+	$(RUN)  get_neon-nlcd-envo-mapping \
+		--nlcd-yaml $(word 1, $^) \
+		--envo-sqlite $(word 2, $^) \
+		--neon-nlcd-envo-mappings-tsv $@
+
+local/neon-soil-order-envo-mapping.tsv:
+	$(RUN) python nmdc_schema/neon-soil-order-envo-mapping.py
