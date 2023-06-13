@@ -1568,7 +1568,7 @@ enums:
         text: 'no'
       'yes':
         text: 'yes'
-  biosample_category_enum:
+  BiosampleCategoryEnum:
     description: Funding-based, sample location-based, or experimental method-based defined categories
     aliases:
       - category tag
@@ -2191,7 +2191,7 @@ slots:
 
   biosample_categories:
     title: Categories the biosample belongs to
-    range: biosample_category_enum
+    range: BiosampleCategoryEnum
     multivalued: true
   date_created:
     description: from database class
