@@ -62,10 +62,7 @@ local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml
 	sed 's/quantity value/QuantityValue/' $< > $@
 	sed -i.bak 's/range: string/range: TextValue/' $@
 	sed -i.bak 's/range: text value/range: TextValue/' $@
-    # what prefix do we want to use? mixs.yaml uses MIXS as a prefix for slot_uris
-	#sed -i.bak 's/slot_uri: MIXS:/slot_uri: mixs:/' $@
-	#sed -i.bak 's/slot_uri: mixs:/slot_uri: MIXS:/' $@
-	#yq -i '.slots.ph.range |= "QuantityValue"' $@
+
 	yq -i '.slots.agrochem_addition.range |= "TextValue"' $@
 	yq -i '.slots.air_temp_regm.range |= "TextValue"' $@
 	yq -i '.slots.antibiotic_regm.range |= "TextValue"' $@
@@ -196,12 +193,14 @@ local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml
 	yq -i '.slots.watering_regm.range |= "TextValue"' $@
 	yq -i '.slots.window_open_freq.range |= "TextValue"' $@
 	yq -i '.slots.window_size.range |= "TextValue"' $@
+
 	yq -i 'del(.classes)' $@
 	yq -i 'del(.enums.[].name)'  $@
 	yq -i 'del(.enums.[].permissible_values.[].text)'  $@
 	yq -i 'del(.slots.[].name)'  $@
 	yq -i 'del(.slots.add_recov_method.pattern)'  $@
 	yq -i 'del(.subsets.[].name)'  $@
+
 	yq -i '.id |= "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml"' $@
 
 #	# update host_taxid and samp_taxon_id. may want to flatten to a string or URIORCURIE eventually
@@ -209,10 +208,12 @@ local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml
 	yq -i 'del(.slots.host_taxid.string_serialization)'  $@
 	yq -i 'del(.slots.samp_taxon_id.examples)'  $@
 	yq -i 'del(.slots.samp_taxon_id.string_serialization)'  $@
+
 	yq -i '.slots.host_taxid.comments |= ["Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value"]'  $@
 	yq -i '.slots.host_taxid.range = "ControlledIdentifiedTermValue"'  $@
 	yq -i '.slots.samp_taxon_id.comments |= ["coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value"]'  $@
 	yq -i '.slots.samp_taxon_id.range = "ControlledIdentifiedTermValue"'  $@
+
 
 	# add "M horizon" to soil_horizon_enum
 	yq -i '.enums.soil_horizon_enum.permissible_values.["M horizon"] = {}'  $@
@@ -243,8 +244,6 @@ project/nmdc_schema_generated.yaml: $(SOURCE_SCHEMA_PATH)
 		--format yaml $<
 
 examples/output: project/nmdc_schema_generated.yaml
-	# WARNING:root:No datatype specified for : external identifier, using plain Literal
-	# https://github.com/linkml/linkml-runtime/blob/6556a3e5a5fc4d4d2bca279443d7b42a9a3efbd6/linkml_runtime/dumpers/rdflib_dumper.py#L99
 	mkdir -p $@
 	$(RUN) linkml-run-examples \
 		--schema $< \
@@ -272,13 +271,6 @@ assets/slot_annotations_diffs.tsv: assets/other_mixs_yaml_files/mixs_new.yaml as
 		--anno_diff_tsv_out $@ \
 		--slot_diff_yaml_out $(patsubst %.tsv,%.yaml,$@)
 
-#assets/slot_roster.tsv:
-#	$(RUN) slot_roster \
-#		--input_paths "https://raw.githubusercontent.com/microbiomedata/sheets_and_friends/main/artifacts/nmdc_submission_schema.yaml" \
-#		--input_paths "https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml" \
-#		--input_paths "src/schema/nmdc.yaml" \
-#		--output_tsv $@
-
 assets/MIxS_6_term_updates_dtm.tsv: \
 assets/MIxS_6_term_updates_MIxS6_Core-_Final_clean.tsv \
 assets/MIxS_6_term_updates_MIxS6_packages_-_Final_clean.tsv
@@ -292,20 +284,9 @@ assets/mixs_slots_by_submission_class.tsv: assets/sheets-for-nmdc-submission-sch
   		--in_file $< \
   		--out_file $@
 
-#local/boolean_usages.tsv:
-#	$(RUN) boolean_usages \
-#		--out_file $@
-
 MIXS_YAML_FROM_SHEETS_AND_FRIENDS = src/schema/mixs.yaml
-MIXS_YAML_MARK_OLDER_PYTHON = src/schema/mixs_new.yaml
-MIXS_YAML_PERL_CURATED_Q = src/schema/other_mixs_yaml_files/mixs_legacy.yaml
 
 SCHEMA_FILE = $(MIXS_YAML_FROM_SHEETS_AND_FRIENDS)
-
-#schemasheets/populated_tsv/slots.tsv:
-#	$(RUN) linkml2sheets \
-#		--output-directory $(dir $@) \
-#		--schema $(SCHEMA_FILE) schemasheets/schemasheets_templates/slots.tsv
 
 check-jsonschema: nmdc_schema/nmdc_materialized_patterns.schema.json
 	$(RUN) check-jsonschema --schemafile $< src/data/invalid/Database-Biosample-invalid_range.yaml
@@ -356,20 +337,66 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosampl
 
 # # # #
 
-local/selected_mongodb_contents.yaml:
+local/mongodb-collection-report.txt:
+	$(RUN) mongodb_exporter > $@
+
+## OK, just large!
+#		--selected-collections metaproteomics_analysis_activity_set
+
+# fails check-jsonschema
+#  metabolomics_analysis_activity_set:
+#    several alternative_identifiers values do not match '^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$'
+#    some prefix:None identifiers
+#    incompatible date-times
+#    ChemicalEntity may be under-constrained
+
+local/selected_mongodb_contents.json:
 	$(RUN) mongodb_exporter \
-		--selected-collections omics_processing_set
+		--selected-collections data_object_set \
 
-generate-mongodb-vs-schema-report: clean-mongodb-vs-schema-report check-mongodb-contents
 
-.PHONY: check-mongodb-contents clean-mongodb-vs-schema-report clean-mongodb-vs-schema-report
+# all good (with repairs and schema loosening)
+#		--selected-collections biosample_set \
+#		--selected-collections field_research_site_set \
+#		--selected-collections mags_activity_set \
+#		--selected-collections metagenome_annotation_activity_set \
+#		--selected-collections metagenome_assembly_set \
+#		--selected-collections metatranscriptome_activity_set
+#		--selected-collections nom_analysis_activity_set \
+#		--selected-collections omics_processing_set \
+#		--selected-collections read_based_taxonomy_analysis_activity_set \
+#		--selected-collections read_qc_analysis_activity_set \
+#		--selected-collections study_set \
 
-clean-mongodb-vs-schema-report:
-	rm -f local/mongodb_vs_schema_report.yaml
+dump-validate-report-convert-mongodb: mongodb-cleanup \
+local/selected_mongodb_contents_jsonschema_check.txt \
+linkml-validate-mongodb local/selected_mongodb_contents.ttl
 
-check-mongodb-contents: local/selected_mongodb_contents_omixs_processing-set.yaml
+.PHONY: clean-mongodb-vs-schema-report
+
+mongodb-cleanup:
+	rm -rf local/selected_mongodb_contents.json
+	rm -rf local/selected_mongodb_contents.ttl
+	rm -rf local/selected_mongodb_contents.yaml
+	rm -rf local/selected_mongodb_contents_jsonschema_check.txt
+
+local/selected_mongodb_contents_jsonschema_check.txt: local/selected_mongodb_contents.json
 	$(RUN) check-jsonschema \
-		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $< | grep -v '(nmdc):'
+		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $< | grep -v '(nmdc):' > $@
+
+linkml-validate-mongodb: local/selected_mongodb_contents.json
+	$(RUN) linkml-validate --schema nmdc_schema/nmdc_materialized_patterns.yaml $<
+
+# linkml conversion to RDF/TTL debugging by line number easier in YAML
+#  why not just writing YAML from mongodb_exporter?
+#  doesn't seem to handle 64 bit numbers well
+local/selected_mongodb_contents.yaml: local/selected_mongodb_contents.json
+	cat $< | yq  -P  | cat > $@
+
+local/selected_mongodb_contents.ttl: local/selected_mongodb_contents.yaml
+	$(RUN) linkml-convert \
+		--schema nmdc_schema/nmdc_materialized_patterns.yaml \
+		--output $@ $<
 
 # # # #
 
