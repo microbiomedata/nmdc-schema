@@ -1,5 +1,7 @@
+import json
 import os
 import pprint
+import re
 
 import yaml
 import click
@@ -133,6 +135,8 @@ def get_collection_stats(mongo_db, collection_list):
               help='Path to root YAML file in the nmdc-schema')
 def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mongo_port, admin_db, output_yaml,
                    schema_file, root_class):
+    apply_latest_repairs = True
+
     db = access_database(env_file, mongo_db_name, mongo_host, mongo_port, admin_db)
 
     database = {}
@@ -164,18 +168,181 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
             #     pprint.pprint(coll_stat_v)
 
     for selected_collection in selected_collections:
+        print(f"Exporting collection {selected_collection}")
         # todo will need some error handling here
         collection_stats = get_collection_stats(db, [selected_collection])
 
         print(f"You requested an export of collection {selected_collection}.")
         print(f"Its collection stats are {collection_stats}")
         doc_list = get_doc_list(db, selected_collection)
-        database[selected_collection] = doc_list
-        # pprint.pprint(database)
 
-    # Save documents to YAML file
-    with open(output_yaml, 'w') as f:
-        yaml.dump(database, f)
+        # # # #
+
+        # extract [] enclosed portion of  'samp_taxon_id': {'has_raw_value': 'lake water metagenome [NCBITaxon:1647806]'},
+        #   and assign to samp_taxon_id.term.id
+        if apply_latest_repairs and selected_collection == 'biosample_set':
+            for doc in doc_list:
+
+                taxon_slot = 'samp_taxon_id'
+                if taxon_slot in doc and 'has_raw_value' in doc[taxon_slot]:
+                    raw_value = doc[taxon_slot]['has_raw_value']
+                    result = re.findall(r'\[(.*?)\]', raw_value)
+
+                    if result:
+                        extracted_text = result[0]
+                        if 'term' not in doc[taxon_slot]:
+                            doc[taxon_slot]['term'] = {'id': extracted_text}
+                        else:
+                            if 'id' not in doc[taxon_slot]['term']:
+                                doc[taxon_slot]['term'] = {'id': extracted_text}
+                            else:
+                                doc[taxon_slot]['term']['id'] = extracted_text
+
+                taxon_slot = 'host_taxid'
+                if taxon_slot in doc and 'has_raw_value' in doc[taxon_slot] and doc[taxon_slot]['has_raw_value'] == str(
+                        int(
+                            doc[taxon_slot]['has_raw_value'])):
+                    extracted_text = doc[taxon_slot]['has_raw_value']
+                    replacement_text = f"NCBITaxon:{extracted_text}"
+                    if 'term' not in doc[taxon_slot]:
+                        doc[taxon_slot]['term'] = {'id': replacement_text}
+                    else:
+                        if 'id' not in doc[taxon_slot]['term']:
+                            doc[taxon_slot]['term'] = {'id': replacement_text}
+                        else:
+                            doc[taxon_slot]['term']['id'] = replacement_text
+
+                # some mixs triad values have label + id term.ids
+                # todo repetitive code
+                for slot in ['env_broad_scale', 'env_local_scale', 'env_medium']:
+                    if slot in doc and 'term' in doc[slot] and 'id' in doc[slot]['term']:
+                        raw_value = doc[slot]['term']['id']
+                        result = re.findall(r'\[(.*?)\]', raw_value)
+                        if result:
+                            extracted_text = result[0]
+                            doc[slot]['term']['id'] = extracted_text
+                        # some mixs triad term.id values are prefix_local instead of prefix:local
+                        if "_" in doc[slot]['term']['id']:
+                            extracted_text = ':'.join(doc[slot]['term']['id'].split("_"))
+                            doc[slot]['term']['id'] = extracted_text
+
+                # growth_facil.term.id: 'field'
+                if 'growth_facil' in doc and 'term' in doc['growth_facil'] and 'id' in doc['growth_facil']['term']:
+                    raw_value = doc['growth_facil']['term']['id']
+                    if raw_value == 'field':
+                        doc['growth_facil'] = {
+                            'has_raw_value': 'field',
+                            'term': {
+                                "name": "field",
+                                'id': 'ENVO:01000352'
+
+                            }
+                        }
+        # eliminate None values
+        if apply_latest_repairs:
+            slots_to_del_if_none = [
+                'asm_score',
+                'binned_contig_num',
+                'contig_bp',
+                'contigs',
+                'ctg_l50',
+                'ctg_l90',
+                'ctg_logsum',
+                'ctg_max',
+                'ctg_n50',
+                'ctg_n90',
+                'ctg_powsum',
+                'gap_pct',
+                'gc_avg',
+                'gc_std',
+                'input_base_count',
+                'input_contig_num',
+                'input_read_bases',
+                'input_read_count',
+                'low_depth_contig_num',
+                'num_aligned_reads',
+                'num_input_reads',
+                'output_base_count',
+                'output_read_bases',
+                'output_read_count',
+                'scaf_bp',
+                'scaf_l50',
+                'scaf_l90',
+                'scaf_l_gt50k',
+                'scaf_logsum',
+                'scaf_max',
+                'scaf_n50',
+                'scaf_n90',
+                'scaf_n_gt50k',
+                'scaf_pct_gt50k',
+                'scaf_powsum',
+                'scaffolds',
+                'too_short_contig_num',
+                'unbinned_contig_num',
+                "insdc_assembly_identifiers",
+                "compression_type",
+                "was_generated_by",
+            ]
+            for doc in doc_list:
+                for slot in slots_to_del_if_none:
+                    if slot in doc:
+                        if not doc[slot]:
+                            del doc[slot]
+
+        #  part ofs require prefix:local CURIEs
+        if apply_latest_repairs:
+            problem_slots = ['part_of']
+            for doc in doc_list:
+                for slot in problem_slots:
+                    if slot in doc:
+                        slotvals = doc[slot]
+                        replacements = []
+                        for slotval in slotvals:
+                            if slotval.count('_') == 1 and ':' not in slotval:
+                                modified_string = slotval.replace('_', ':')
+                            else:
+                                modified_string = slotval
+                            replacements.append(modified_string)
+                        doc[slot] = replacements
+
+        # ids must be curies
+        if apply_latest_repairs:
+            problem_slots = ['id']
+            for doc in doc_list:
+                for slot in problem_slots:
+                    if slot in doc:
+                        slotval = doc[slot]
+                        if ":" not in slotval:
+                            doc[slot] = f"generic:{slotval}"
+
+        # if apply_latest_repairs and selected_collection == 'metabolomics_analysis_activity_set':
+        #     for doc in doc_list:
+        #         id_val = doc['id']
+        #         if 'has_metabolite_quantifications' in doc:
+        #             metabolite_quantifications = doc['has_metabolite_quantifications']
+        #             if type(metabolite_quantifications) != list:
+        #                 print(type(metabolite_quantifications))
+        #             else:
+        #                 for metabolite_quantification in metabolite_quantifications:
+        #                     if "alternative_identifiers" in metabolite_quantification:
+        #                         for alternative_identifier in metabolite_quantification["alternative_identifiers"]:
+        #                             alt_id_parts = alternative_identifier.split(":")
+        #                             if alt_id_parts[1] in ['', 'None']:
+        #                                 print(
+        #                                     f"attempting to remove illegal metabolite_quantifications alternative identifier local portion '{alt_id_parts[1]}' in {id_val}'s {alternative_identifier}")
+        #                                 # metabolite_quantification["alternative_identifiers"].remove(
+        #                                 #     alternative_identifier)
+
+        database[selected_collection] = doc_list
+
+    # # Save documents to YAML file
+    # with open(output_yaml, 'w') as f:
+    #     yaml.dump(database, f)
+
+    # save documents to JSON file with pretty printing/indentation
+    output_json = output_yaml.replace(".yaml", ".json")
+    with open(output_json, 'w') as f:
+        json.dump(database, f, indent=2)
 
 
 if __name__ == '__main__':
