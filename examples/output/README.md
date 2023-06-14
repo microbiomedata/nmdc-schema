@@ -4836,25 +4836,6 @@ biosample_set:
   type: nmdc:Biosample
 
 ```
-## Database-nom_analysis_activity_set-non-string-ended_at_time
-### Input
-```yaml
-nom_analysis_activity_set:
-- ended_at_time: '2018-11-13T20:20:39+00:00'
-  execution_resource: xxx
-  git_url: xxx
-  has_input:
-  - nmdc:1
-  - nmdc:2
-  has_output:
-  - nmdc:3
-  - nmdc:4
-  id: nmdc:wfnom-99-abcdefg
-  started_at_time: 2018-11-13 20:20:39+00:00
-  type: xxx
-  was_informed_by: nmdc:act-99-abcdefg
-
-```
 ## Database-plannedprocess-incorrect _date_slot
 ### Input
 ```yaml
@@ -4876,25 +4857,6 @@ library_preparation_set:
   library_type: DNA
   name: DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1
   processed_date: 2021-01-15
-
-```
-## Database-nom_analysis_activity_set-invalid-string-ended_at_time
-### Input
-```yaml
-nom_analysis_activity_set:
-- ended_at_time: '2018-11-13T20:20:39+00:00'
-  execution_resource: xxx
-  git_url: xxx
-  has_input:
-  - nmdc:1
-  - nmdc:2
-  has_output:
-  - nmdc:3
-  - nmdc:4
-  id: nmdc:wfnom-99-abcdefg
-  started_at_time: 2018-11-111
-  type: xxx
-  was_informed_by: nmdc:act-99-abcdefg
 
 ```
 ## Database-biosample_single_multi_value_mixup
@@ -5208,26 +5170,6 @@ biosample_set:
   sample_collection_site: Lithgow State Coal Mine
   specific_ecosystem: Coalbed water
   type: nmdc:Biosample
-
-```
-## MetagenomeSequencingActivity-bad_id
-### Input
-```yaml
-ended_at_time: '2021-09-15T10:13:20+00:00'
-execution_resource: JGI
-git_url: ''
-has_input:
-- nmdc:unvalidated_placeholder
-has_output:
-- nmdc:22afa3d49b73eaec2e9787a6b88fbdc3
-id: nmdc:107ade35423143e39dc30b12832ac759
-name: Sequencing Activity for nmdc:mga0vx38
-part_of:
-- nmdc:mga0vx38
-started_at_time: '2021-08-05T14:48:51+00:00'
-type: nmdc:MetagenomeSequencing
-version: v1.0.0
-was_informed_by: gold:Gp0213371
 
 ```
 ## Database-biosample_undeclared_slot

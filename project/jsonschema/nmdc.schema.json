@@ -5,7 +5,6 @@
             "description": "a provence-generating activity",
             "properties": {
                 "ended_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -18,7 +17,6 @@
                     "type": "string"
                 },
                 "started_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -54,7 +52,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -292,7 +290,7 @@
                 "alternative_identifiers": {
                     "description": "Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -866,7 +864,7 @@
                 "emsl_biosample_identifiers": {
                     "description": "A list of identifiers for the biosample from the EMSL database.  This is used to link the biosample, as modeled by NMDC, to the biosample in the planned EMSL NEXUS database.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\/\\.]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -1329,7 +1327,7 @@
                 "igsn_biosample_identifiers": {
                     "description": "A list of identifiers for the biosample from the IGSN database.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\/\\.]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -1544,7 +1542,7 @@
                 },
                 "neon_biosample_identifiers": {
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\/\\.]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -2830,7 +2828,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -3012,7 +3010,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -3023,6 +3021,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                     "type": "string"
                 },
                 "name": {
@@ -3043,7 +3042,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -3243,7 +3242,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -3718,7 +3717,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -3729,6 +3728,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                     "type": "string"
                 },
                 "name": {
@@ -3779,7 +3779,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -3897,7 +3897,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -4182,7 +4182,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -4411,7 +4411,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -4529,7 +4529,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -4711,7 +4711,6 @@
                     "type": "integer"
                 },
                 "ended_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -4765,7 +4764,6 @@
                     "type": "array"
                 },
                 "started_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -4797,8 +4795,7 @@
                 "has_output",
                 "id",
                 "started_at_time",
-                "ended_at_time",
-                "was_informed_by"
+                "ended_at_time"
             ],
             "title": "MagsAnalysisActivity",
             "type": "object"
@@ -4824,7 +4821,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -4891,7 +4888,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -4913,7 +4910,6 @@
             "description": "",
             "properties": {
                 "ended_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -4965,7 +4961,6 @@
                     "type": "array"
                 },
                 "started_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -4974,7 +4969,6 @@
                     "type": "string"
                 },
                 "used": {
-                    "description": "The instrument used to collect the data used in the analysis",
                     "type": "string"
                 },
                 "version": {
@@ -4992,8 +4986,7 @@
                 "type",
                 "id",
                 "started_at_time",
-                "ended_at_time",
-                "was_informed_by"
+                "ended_at_time"
             ],
             "title": "MetabolomicsAnalysisActivity",
             "type": "object"
@@ -5003,7 +4996,6 @@
             "description": "A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs",
             "properties": {
                 "ended_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -5053,7 +5045,6 @@
                     "type": "array"
                 },
                 "started_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -5079,8 +5070,7 @@
                 "has_output",
                 "id",
                 "started_at_time",
-                "ended_at_time",
-                "was_informed_by"
+                "ended_at_time"
             ],
             "title": "MetagenomeAnnotationActivity",
             "type": "object"
@@ -5130,7 +5120,6 @@
                     "type": "number"
                 },
                 "ended_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -5244,7 +5233,6 @@
                     "type": "number"
                 },
                 "started_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -5270,8 +5258,7 @@
                 "has_output",
                 "id",
                 "started_at_time",
-                "ended_at_time",
-                "was_informed_by"
+                "ended_at_time"
             ],
             "title": "MetagenomeAssembly",
             "type": "object"
@@ -5281,7 +5268,6 @@
             "description": "Initial sequencing activity that precedes any analysis.  This activity has output(s) that are the raw sequencing data.",
             "properties": {
                 "ended_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -5323,7 +5309,6 @@
                     "type": "array"
                 },
                 "started_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -5349,8 +5334,7 @@
                 "type",
                 "id",
                 "started_at_time",
-                "ended_at_time",
-                "was_informed_by"
+                "ended_at_time"
             ],
             "title": "MetagenomeSequencingActivity",
             "type": "object"
@@ -5360,7 +5344,6 @@
             "description": "",
             "properties": {
                 "ended_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -5408,7 +5391,6 @@
                     "type": "array"
                 },
                 "started_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -5417,7 +5399,6 @@
                     "type": "string"
                 },
                 "used": {
-                    "description": "The instrument used to collect the data used in the analysis",
                     "type": "string"
                 },
                 "version": {
@@ -5435,8 +5416,7 @@
                 "type",
                 "id",
                 "started_at_time",
-                "ended_at_time",
-                "was_informed_by"
+                "ended_at_time"
             ],
             "title": "MetaproteomicsAnalysisActivity",
             "type": "object"
@@ -5446,7 +5426,6 @@
             "description": "A metatranscriptome activity that e.g. pools assembly and annotation activity.",
             "properties": {
                 "ended_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -5488,7 +5467,6 @@
                     "type": "array"
                 },
                 "started_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -5514,8 +5492,7 @@
                 "has_output",
                 "id",
                 "started_at_time",
-                "ended_at_time",
-                "was_informed_by"
+                "ended_at_time"
             ],
             "title": "MetatranscriptomeActivity",
             "type": "object"
@@ -5525,7 +5502,6 @@
             "description": "",
             "properties": {
                 "ended_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -5575,7 +5551,6 @@
                     "type": "array"
                 },
                 "started_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -5601,8 +5576,7 @@
                 "has_output",
                 "id",
                 "started_at_time",
-                "ended_at_time",
-                "was_informed_by"
+                "ended_at_time"
             ],
             "title": "MetatranscriptomeAnnotationActivity",
             "type": "object"
@@ -5652,7 +5626,6 @@
                     "type": "number"
                 },
                 "ended_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -5766,7 +5739,6 @@
                     "type": "number"
                 },
                 "started_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -5792,8 +5764,7 @@
                 "type",
                 "id",
                 "started_at_time",
-                "ended_at_time",
-                "was_informed_by"
+                "ended_at_time"
             ],
             "title": "MetatranscriptomeAssembly",
             "type": "object"
@@ -5803,7 +5774,6 @@
             "description": "",
             "properties": {
                 "ended_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -5849,7 +5819,6 @@
                     "type": "array"
                 },
                 "started_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -5858,7 +5827,6 @@
                     "type": "string"
                 },
                 "used": {
-                    "description": "The instrument used to collect the data used in the analysis",
                     "type": "string"
                 },
                 "version": {
@@ -5876,8 +5844,7 @@
                 "type",
                 "id",
                 "started_at_time",
-                "ended_at_time",
-                "was_informed_by"
+                "ended_at_time"
             ],
             "title": "NomAnalysisActivity",
             "type": "object"
@@ -5904,7 +5871,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6039,7 +6006,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6050,6 +6017,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                     "type": "string"
                 },
                 "name": {
@@ -6080,7 +6048,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6091,6 +6059,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                     "type": "string"
                 },
                 "name": {
@@ -6121,7 +6090,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6132,6 +6101,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                     "type": "string"
                 },
                 "name": {
@@ -6276,7 +6246,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6335,7 +6305,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6359,7 +6329,7 @@
                 "external_database_identifiers": {
                     "description": "Link to corresponding identifier in external database",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\/\\.]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6491,7 +6461,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6502,6 +6472,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                     "type": "string"
                 },
                 "name": {
@@ -6549,7 +6520,6 @@
             "description": "A workflow execution activity that performs taxonomy classification using sequencing reads",
             "properties": {
                 "ended_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -6591,7 +6561,6 @@
                     "type": "array"
                 },
                 "started_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -6617,8 +6586,7 @@
                 "has_output",
                 "id",
                 "started_at_time",
-                "ended_at_time",
-                "was_informed_by"
+                "ended_at_time"
             ],
             "title": "ReadBasedTaxonomyAnalysisActivity",
             "type": "object"
@@ -6628,7 +6596,6 @@
             "description": "A workflow execution activity that performs quality control on raw Illumina reads including quality trimming, artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant removal",
             "properties": {
                 "ended_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -6694,7 +6661,6 @@
                     "type": "array"
                 },
                 "started_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -6720,8 +6686,7 @@
                 "has_output",
                 "id",
                 "started_at_time",
-                "ended_at_time",
-                "was_informed_by"
+                "ended_at_time"
             ],
             "title": "ReadQcAnalysisActivity",
             "type": "object"
@@ -7130,7 +7095,7 @@
                 "alternative_identifiers": {
                     "description": "Unique identifier for a study submitted to additional resources. Matches that which has been submitted to NMDC",
                     "items": {
-                        "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7176,7 +7141,7 @@
                 "emsl_project_dois": {
                     "description": "A DOI that resolves to a EMSL Research Campaign page.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\/\\.]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7251,7 +7216,7 @@
                 },
                 "neon_study_identifiers": {
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\/\\.]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7671,7 +7636,6 @@
             "description": "Represents an instance of an execution of a particular workflow",
             "properties": {
                 "ended_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -7713,7 +7677,6 @@
                     "type": "array"
                 },
                 "started_at_time": {
-                    "format": "date-time",
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
                 },
@@ -7739,8 +7702,7 @@
                 "type",
                 "id",
                 "started_at_time",
-                "ended_at_time",
-                "was_informed_by"
+                "ended_at_time"
             ],
             "title": "WorkflowExecutionActivity",
             "type": "object"

@@ -4,7 +4,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 nmdc:wfrqc-99-ABCDEF a nmdc:ReadQcAnalysisActivity ;
-    nmdc:ended_at_time "2021-09-15T10:13:20+00:00"^^xsd:dateTime ;
+    nmdc:ended_at_time "2021-09-15T10:13:20+00:00" ;
     nmdc:execution_resource "execution_resource1" ;
     nmdc:git_url "git_url1" ;
     nmdc:has_input jgi:534819030d87850d7aea2a16 ;
@@ -17,7 +17,7 @@ nmdc:wfrqc-99-ABCDEF a nmdc:ReadQcAnalysisActivity ;
     nmdc:output_base_count "100.0"^^xsd:float ;
     nmdc:output_read_bases "100.0"^^xsd:float ;
     nmdc:output_read_count "3.0"^^xsd:float ;
-    nmdc:started_at_time "2021-08-05T14:48:51+00:00"^^xsd:dateTime ;
+    nmdc:started_at_time "2021-08-05T14:48:51+00:00" ;
     nmdc:type "type1" ;
     nmdc:was_informed_by GOLD:Gp0061273 .
 

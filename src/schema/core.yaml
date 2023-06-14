@@ -104,9 +104,9 @@ classes:
     slot_usage:
       id:
         required: true
-  #        structured_pattern:
-  #          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-  #          interpolated: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
 
   AnalyticalSample:
     is_a: MaterialEntity
@@ -114,9 +114,9 @@ classes:
     slot_usage:
       id:
         required: true
-  #        structured_pattern:
-  #          syntax: "{id_nmdc_prefix}:ansm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-  #          interpolated: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:ansm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
 
   Site:
     abstract: true
@@ -127,9 +127,9 @@ classes:
     slot_usage:
       id:
         required: true
-  #        structured_pattern:
-  #          syntax: "{id_nmdc_prefix}:site-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-  #          interpolated: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:site-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
 
   PlannedProcess:
     abstract: true
@@ -286,9 +286,9 @@ classes:
     slot_usage:
       id:
         required: true
-  #        structured_pattern:
-  #          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-  #          interpolated: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
 
   MetaboliteQuantification:
     description: >-
