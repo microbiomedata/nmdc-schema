@@ -11,9 +11,9 @@ imports:
   - prov
 
 prefixes:
-  KEGG.COMPOUND: http://identifiers.org/kegg.compound/ # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld#L336
-  dcterms: http://purl.org/dc/terms/ # https://github.com/prefixcommons/biocontext/blob/master/registry/semweb_context.jsonld#L5
-  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#  # https://github.com/prefixcommons/biocontext/blob/master/registry/semweb_context.jsonld
+  KEGG.COMPOUND: http://identifiers.org/kegg.compound/
+  dcterms: http://purl.org/dc/terms/
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
 
   UniProtKB: https://identifiers.org/uniprot/ # "UNIPROT": "http://identifiers.org/uniprot/", in https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
 

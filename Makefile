@@ -93,13 +93,13 @@ gen-project: $(PYMODEL)
 		--exclude jsonld \
 		--exclude jsonldcontext \
 		--exclude markdown \
-		--exclude prefixmap \
 		--exclude proto \
 		--exclude shacl \
 		--exclude shex \
 		--exclude sqlddl \
 		--include jsonschema \
 		--include owl \
+		--include prefixmap \
 		--include python \
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)

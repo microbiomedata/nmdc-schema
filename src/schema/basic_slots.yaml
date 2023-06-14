@@ -8,7 +8,7 @@ description: >-
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
-  dcterms: http://purl.org/dc/terms/ # https://github.com/prefixcommons/biocontext/blob/master/registry/semweb_context.jsonld
+  dcterms: http://purl.org/dc/terms/
 
   skos: http://www.w3.org/2004/02/skos/core#
   linkml: https://w3id.org/linkml/

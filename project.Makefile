@@ -401,8 +401,8 @@ local/cur_vegetation_in_neon.tsv: local/neon_in_nmdc.ttl assets/sparql/cur_veget
 
 # # # #
 
-local/prefix_report.yaml: nmdc_schema/nmdc_materialized_patterns.yaml
-	$(RUN) gen-prefix-map  $< | yq  -P | cat > $@
+#local/prefix_report.yaml: nmdc_schema/nmdc_materialized_patterns.yaml
+#	$(RUN) gen-prefix-map  $< | yq  -P | cat > $@
 
 # # # #
 
