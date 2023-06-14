@@ -438,8 +438,8 @@ enums:
         text: 'no'
       'yes':
         text: 'yes'
-  biosample_category_enum:
-    name: biosample_category_enum
+  BiosampleCategoryEnum:
+    name: BiosampleCategoryEnum
     description: Funding-based, sample location-based, or experimental method-based
       defined categories
     notes:
@@ -3421,7 +3421,7 @@ slots:
     title: Categories the biosample belongs to
     from_schema: https://w3id.org/nmdc/nmdc
     multivalued: true
-    range: biosample_category_enum
+    range: BiosampleCategoryEnum
   date_created:
     name: date_created
     description: from database class
