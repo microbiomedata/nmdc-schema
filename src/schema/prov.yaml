@@ -30,16 +30,18 @@ classes:
       - was_informed_by
       #      - was_associated_with
       - used
+    notes:
+      - removed was_associated_with because we are trying to avoid instantiating id-less Agents
     mappings:
       - prov:Activity
     slot_usage:
       id:
         required: true
-        structured_pattern:
-          todos:
-            - remove the static pattern once the minter can generate ids that satisfy this structured_pattern and gen-linkml can expand the structured_pattern
-          syntax: "{id_nmdc_prefix}:act-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
+#        structured_pattern:
+#          todos:
+#            - remove the static pattern once the minter can generate ids that satisfy this structured_pattern and gen-linkml can expand the structured_pattern
+#          syntax: "{id_nmdc_prefix}:act-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+#          interpolated: true
 
 #  Agent:
 #    description: "a provence-generating agent"
@@ -52,7 +54,7 @@ classes:
 slots:
 
   started_at_time:
-    range: datetime
+    #    range: datetime
     pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
     notes: >-
       The regex for ISO-8601 format was taken from here: https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/
@@ -61,7 +63,7 @@ slots:
       - prov:startedAtTime
 
   ended_at_time:
-    range: datetime
+    #    range: datetime
     pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
     notes: >-
       The regex for ISO-8601 format was taken from here: https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/
@@ -91,5 +93,7 @@ slots:
 
   used:
     domain: Activity
+    # some Instrument slot usages, but those require a CURIE, not a bare string
+    # this is being used more like instrument_name
     mappings:
       - prov:used

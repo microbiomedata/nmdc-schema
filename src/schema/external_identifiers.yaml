@@ -29,13 +29,14 @@ default_range: string
 
 types:
 
-  external identifier:
+  external_identifier:
     typeof: uriorcurie
+    uri: xsd:anyURI # isn't that inherited from typeof: uriorcurie? WARNING:root:No datatype specified for : external identifier, using plain Literal
     description: >-
       A CURIE representing an external identifier
     see_also:
       - https://microbiomedata.github.io/nmdc-schema/identifiers.html
-    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$'
+    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.]*$'
 
 slots:
 
@@ -44,8 +45,8 @@ slots:
     description: Link to corresponding identifier in external database
     is_a: alternative_identifiers
     multivalued: true
-    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$'
-    range: external identifier
+    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.]*$'
+    range: external_identifier
     comments:
       - The value of this field is always a registered CURIE
     notes:
@@ -63,7 +64,7 @@ slots:
       - add is_a or mixin modeling, like other external_database_identifiers
       - what class would IMG records belong to?! Are they Studies, Biosamples, or something else?
     pattern: '^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$' # DOI-like pattern. Could be more conservative if we leave this out of the external_database_identifiers hierarchy
-  #    range: external identifier # or uriorcurie directly, as opposed to by-type-inheritance
+  #    range: external_identifier # or uriorcurie directly, as opposed to by-type-inheritance
 
   # mixins
 
