@@ -156,9 +156,9 @@ classes:
         maximum_cardinality: 1
       id:
         required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
+#        structured_pattern:
+#          syntax: "{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+#          interpolated: true
 
   Extraction:
     is_a: PlannedProcess # from core.yaml
@@ -176,9 +176,9 @@ classes:
         required: true
       id:
         required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
+#        structured_pattern:
+#          syntax: "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+#          interpolated: true
 
   Protocol:
     slots:
@@ -210,9 +210,9 @@ classes:
         required: true
       id:
         required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
+#        structured_pattern:
+#          syntax: "{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+#          interpolated: true
 
   FieldResearchSite:
     aliases:
@@ -243,9 +243,9 @@ classes:
     slot_usage:
       id:
         required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
+#        structured_pattern:
+#          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+#          interpolated: true
 
   CollectingBiosamplesFromSite:
     is_a: PlannedProcess
@@ -262,9 +262,9 @@ classes:
         required: true
       id:
         required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
+#        structured_pattern:
+#          syntax: "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+#          interpolated: true
 
 
   DataObject:
@@ -290,9 +290,9 @@ classes:
         required: true
       id:
         required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
+#        structured_pattern:
+#          syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+#          interpolated: true
     comments:
       - removed id_prefixes value of GOLD, since we are now using pattern-based id validation
 
@@ -1051,9 +1051,9 @@ classes:
       id:
         required: true
         description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
+#        structured_pattern:
+#          syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+#          interpolated: true
       gold_biosample_identifiers:
         description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
         comments: This is the ID provided by GOLD that starts with 'GB'
@@ -1377,9 +1377,9 @@ classes:
     slot_usage:
       id:
         required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
+#        structured_pattern:
+#          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+#          interpolated: true
 
       doi:
         description: >-
@@ -1453,9 +1453,9 @@ classes:
     slot_usage:
       id:
         required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:bsmprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
+#        structured_pattern:
+#          syntax: "{id_nmdc_prefix}:bsmprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+#          interpolated: true
       has_input:
         range: Biosample
     broad_mappings:
@@ -1504,9 +1504,9 @@ classes:
     slot_usage:
       id:
         required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
+#        structured_pattern:
+#          syntax: "{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+#          interpolated: true
       has_input:
         required: true
     broad_mappings:
