@@ -1894,7 +1894,7 @@ enums:
       Raw Compressed Metagenome Interleaved Paired-End Reads:
         description: Raw sequencing reads from a metagenome that is in interleaved paired-end format and compressed using GNU zip format.
 
-  credit enum:
+  CreditEnum:
     permissible_values:
       Conceptualization:
         description: Conceptualization
@@ -1931,7 +1931,7 @@ enums:
         description: the person(s) who enter study and biosample metadata into the NMDC submission portal
         meaning: EFO:0001741
     comments:
-      - credit enums come from https://casrai.org/credit/
+      - CreditEnums come from https://casrai.org/credit/
   processing_institution_enum:
     notes:
       - This will become the range of processing_institution.omics processing
@@ -2244,13 +2244,13 @@ slots:
     range: string
   applied_role:
     domain: CreditAssociation
-    range: credit enum
+    range: CreditEnum
     slot_uri: prov:hadRole
     deprecated: A credit association may have multiple roles. So, use the applied
       roles slot.
   applied_roles:
     domain: CreditAssociation
-    range: credit enum
+    range: CreditEnum
     multivalued: true
     required: true
     annotations:
