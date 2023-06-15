@@ -150,7 +150,7 @@ classes:
       - The identifiers for terms from external ontologies can't have their ids constrained to the nmdc namespace
     slot_usage:
       id:
-        pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.]*$'
+        pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
 
   EnvironmentalMaterialTerm:
     is_a: OntologyClass

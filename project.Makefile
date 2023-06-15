@@ -340,47 +340,44 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosampl
 local/mongodb-collection-report.txt:
 	$(RUN) mongodb_exporter > $@
 
-## OK, just large!
-#		--selected-collections metaproteomics_analysis_activity_set
-
-# fails check-jsonschema
-#  metabolomics_analysis_activity_set:
-#    several alternative_identifiers values do not match '^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.]*$'
-#    some prefix:None identifiers
-#    incompatible date-times
-#    ChemicalEntity may be under-constrained
+## large!
+#  needs repairs in nested paths
+#		--selected-collections metaproteomics_analysis_activity_set # 'document_count': 52, 'size_in_bytes': 208015260
 
 local/selected_mongodb_contents.json:
 	$(RUN) mongodb_exporter \
+		--max-docs-per-coll 100_000 \
+		--selected-collections biosample_set \
 		--selected-collections data_object_set \
-
-
-# all good (with repairs and schema loosening)
-#		--selected-collections biosample_set \
-#		--selected-collections field_research_site_set \
-#		--selected-collections mags_activity_set \
-#		--selected-collections metagenome_annotation_activity_set \
-#		--selected-collections metagenome_assembly_set \
-#		--selected-collections metatranscriptome_activity_set
-#		--selected-collections nom_analysis_activity_set \
-#		--selected-collections omics_processing_set \
-#		--selected-collections read_based_taxonomy_analysis_activity_set \
-#		--selected-collections read_qc_analysis_activity_set \
-#		--selected-collections study_set \
+		--selected-collections field_research_site_set \
+		--selected-collections mags_activity_set \
+		--selected-collections metabolomics_analysis_activity_set \
+		--selected-collections metagenome_annotation_activity_set \
+		--selected-collections metagenome_assembly_set \
+		--selected-collections metatranscriptome_activity_set \
+		--selected-collections nom_analysis_activity_set \
+		--selected-collections omics_processing_set \
+		--selected-collections read_based_taxonomy_analysis_activity_set \
+		--selected-collections read_qc_analysis_activity_set \
+		--selected-collections study_set \
 
 dump-validate-report-convert-mongodb: mongodb-cleanup \
 local/selected_mongodb_contents_jsonschema_check.txt \
-linkml-validate-mongodb local/selected_mongodb_contents.ttl
+linkml-validate-mongodb local/selected_mongodb_contents.ttl.gz
 
 .PHONY: clean-mongodb-vs-schema-report
 
 mongodb-cleanup:
+	date
 	rm -rf local/selected_mongodb_contents.json
 	rm -rf local/selected_mongodb_contents.ttl
+	rm -rf local/selected_mongodb_contents.ttl.gz
 	rm -rf local/selected_mongodb_contents.yaml
 	rm -rf local/selected_mongodb_contents_jsonschema_check.txt
 
 local/selected_mongodb_contents_jsonschema_check.txt: local/selected_mongodb_contents.json
+	# ignore error messages about (nmdc): prefixes, because they are almost certainly about
+	#   temporarily acceptable `id` violations
 	$(RUN) check-jsonschema \
 		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $< | grep -v '(nmdc):' > $@
 
@@ -397,6 +394,10 @@ local/selected_mongodb_contents.ttl: local/selected_mongodb_contents.yaml
 	$(RUN) linkml-convert \
 		--schema nmdc_schema/nmdc_materialized_patterns.yaml \
 		--output $@ $<
+	riot --validate $@
+
+local/selected_mongodb_contents.ttl.gz: local/selected_mongodb_contents.ttl
+	gzip -c $< > $@
 
 # # # #
 
@@ -425,11 +426,6 @@ local/local_class_in_neon.tsv: local/neon_in_nmdc.ttl assets/sparql/local_class_
 
 local/cur_vegetation_in_neon.tsv: local/neon_in_nmdc.ttl assets/sparql/cur_vegetation_in_neon.rq
 	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
-
-# # # #
-
-#local/prefix_report.yaml: nmdc_schema/nmdc_materialized_patterns.yaml
-#	$(RUN) gen-prefix-map  $< | yq  -P | cat > $@
 
 # # # #
 

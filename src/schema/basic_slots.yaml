@@ -98,7 +98,7 @@ slots:
     multivalued: true
     description: >-
       A list of alternative identifiers for the entity.
-    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.]*$'
+    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
 
   start_date:
     range: string
