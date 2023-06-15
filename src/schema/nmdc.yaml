@@ -1568,6 +1568,7 @@ enums:
         text: 'no'
       'yes':
         text: 'yes'
+
   BiosampleCategoryEnum:
     description: Funding-based, sample location-based, or experimental method-based defined categories
     aliases:
@@ -1592,7 +1593,7 @@ enums:
         title: National Science Foundation's National Ecological Observatory Network
         meaning: https://www.neonscience.org
 
-  file type enum:
+  FileTypeEnum:
     permissible_values:
 
       Metagenome Raw Reads:
@@ -2434,7 +2435,7 @@ slots:
     notes:
       - "was the range string at one point? the values in MongoDB don't look like NMDC classes"
   data_object_type:
-    range: file type enum
+    range: FileTypeEnum
     description: The type of file represented by the data object.
     examples:
       - value: FT ICR-MS Analysis Results
