@@ -340,13 +340,9 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosampl
 local/mongodb-collection-report.txt:
 	$(RUN) mongodb_exporter > $@
 
-## large!
-#  needs repairs in nested paths
-#		--selected-collections metaproteomics_analysis_activity_set # 'document_count': 52, 'size_in_bytes': 208015260
-
 local/selected_mongodb_contents.json:
 	$(RUN) mongodb_exporter \
-		--max-docs-per-coll 100_000 \
+		--max-docs-per-coll 1_000_000 \
 		--selected-collections biosample_set \
 		--selected-collections data_object_set \
 		--selected-collections field_research_site_set \
@@ -354,6 +350,7 @@ local/selected_mongodb_contents.json:
 		--selected-collections metabolomics_analysis_activity_set \
 		--selected-collections metagenome_annotation_activity_set \
 		--selected-collections metagenome_assembly_set \
+		--selected-collections metaproteomics_analysis_activity_set \
 		--selected-collections metatranscriptome_activity_set \
 		--selected-collections nom_analysis_activity_set \
 		--selected-collections omics_processing_set \
@@ -397,6 +394,7 @@ local/selected_mongodb_contents.ttl: local/selected_mongodb_contents.yaml
 	riot --validate $@
 
 local/selected_mongodb_contents.ttl.gz: local/selected_mongodb_contents.ttl
+	date
 	gzip -c $< > $@
 
 # # # #

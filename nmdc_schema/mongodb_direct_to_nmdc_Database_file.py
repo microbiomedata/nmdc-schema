@@ -13,6 +13,27 @@ import urllib.parse
 from pymongo.errors import OperationFailure
 
 
+def fix_curie(raw_curie):
+    if ':' not in raw_curie:
+        if raw_curie.count('_') > 0:
+            modified_string = raw_curie.replace('_', ':', 1)
+        else:
+            modified_string = f"generic:{raw_curie}"
+    else:
+        curie_parts = raw_curie.split(':')
+        if len(curie_parts) == 1 or curie_parts[1] == '' or curie_parts[1] == 'None' or curie_parts[1] == 'none':
+            # if this is a term id, there may be an appropriate root term
+            #   should be handled downstream
+            print(f"Warning: {raw_curie} is essentially prefix-only")
+        modified_string = raw_curie
+    # or urlencoding?
+    # explicitly look for the string '\t'... may not want to keep the 't' part!
+    tidied_string = re.sub(r'[^a-zA-Z0-9\-_.,:]', '', modified_string)
+    if tidied_string != modified_string:
+        print(f"tidied {modified_string} to {tidied_string}")
+    return tidied_string
+
+
 def access_database(env_file, mongo_db_name, mongo_host, mongo_port, admin_db):
     # Load MongoDB credentials from .env file
     load_dotenv(env_file)
@@ -84,7 +105,7 @@ def get_synonymous_collection_db_slots(mongo_db, schema_view: SchemaView, class_
     return synonymous_collection_names
 
 
-def get_doc_list(mongodb, collection_name):
+def get_doc_list(mongodb, collection_name, max_docs_per_coll):
     # print(collection_name)
 
     collection = mongodb[collection_name]
@@ -92,7 +113,7 @@ def get_doc_list(mongodb, collection_name):
     if collection is None:
         print(f"Could not find collection {collection_name}")
 
-    documents = collection.find()
+    documents = collection.find().limit(max_docs_per_coll)
     doc_list = list(documents)
 
     prob_key = "_id"
@@ -129,14 +150,15 @@ def get_collection_stats(mongo_db, collection_list):
 @click.option('--mongo-host', default="localhost", help='MongoDB host name/address')
 @click.option('--mongo-port', default=27777, help='MongoDB port')
 @click.option('--admin-db', default="admin", help='MongoDB authentication source')
-@click.option('--output-yaml', type=click.Path(), default='local/selected_mongodb_contents.yaml',
+@click.option('--output-json', type=click.Path(), default='local/selected_mongodb_contents.json',
               help="Output directory. Exported file's name will be based on the collection name.")
 @click.option('--schema-file', type=click.Path(), default='src/schema/nmdc.yaml',
               help='Path to root YAML file in the nmdc-schema')
-def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mongo_port, admin_db, output_yaml,
-                   schema_file, root_class):
-    apply_latest_repairs = True
-
+@click.option('--max-docs-per-coll', default=100_000, help='Maximum number of documents to retrieve per collection')
+@click.option('--apply-latest-repairs', default=True,
+              help='Apply latest repairs to documents from the selected collections.')
+def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mongo_port, admin_db, output_json,
+                   schema_file, root_class, max_docs_per_coll, apply_latest_repairs):
     db = access_database(env_file, mongo_db_name, mongo_host, mongo_port, admin_db)
 
     database = {}
@@ -144,6 +166,7 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
     if len(selected_collections) == 0:
         # just export all of them?
         # use a limit on document_count or size_in_bytes?
+        # for now, just report the all (schema-relevant?) collection stats
 
         nmdc_view = SchemaView(schema_file)
 
@@ -174,7 +197,7 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
 
         print(f"You requested an export of collection {selected_collection}.")
         print(f"Its collection stats are {collection_stats}")
-        doc_list = get_doc_list(db, selected_collection)
+        doc_list = get_doc_list(db, selected_collection, max_docs_per_coll)
 
         # # # #
 
@@ -212,7 +235,7 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                         else:
                             doc[taxon_slot]['term']['id'] = replacement_text
 
-                # some mixs triad values have label + id term.ids
+                # some mixs triad values have been populated with label + id term.ids
                 # todo repetitive code
                 for slot in ['env_broad_scale', 'env_local_scale', 'env_medium']:
                     if slot in doc and 'term' in doc[slot] and 'id' in doc[slot]['term']:
@@ -290,57 +313,78 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                             del doc[slot]
 
         #  part ofs require prefix:local CURIEs
+        #  these problem slots are all multivalued
+        # nned to fix has_peptide_quantifications.all_proteins
         if apply_latest_repairs:
-            problem_slots = ['part_of']
+            problem_slots = ['id', 'part_of', 'has_input', 'has_output']
             for doc in doc_list:
                 for slot in problem_slots:
-                    if slot in doc:
+                    if slot in doc and type(doc[slot]) == list:
                         slotvals = doc[slot]
                         replacements = []
-                        for slotval in slotvals:
-                            if slotval.count('_') == 1 and ':' not in slotval:
-                                modified_string = slotval.replace('_', ':')
-                            else:
-                                modified_string = slotval
-                            replacements.append(modified_string)
+                        for raw_slotval in slotvals:
+                            replacements.append(fix_curie(raw_slotval))
                         doc[slot] = replacements
+                    elif slot in doc:
+                        fixed_slotval = fix_curie(doc[slot])
+                        doc[slot] = fixed_slotval
 
-        # ids must be curies
-        if apply_latest_repairs:
-            problem_slots = ['id']
+        if apply_latest_repairs and selected_collection == 'metabolomics_analysis_activity_set':
+            # why are the objects of nmdc:alternative_identifiers typed "cas:3685-26-5"^^xsd:anyURI ?
+            # should we accept prefix-only objects of nmdc:metabolite_quantified like 'CHEBI:' ?
             for doc in doc_list:
-                for slot in problem_slots:
-                    if slot in doc:
-                        slotval = doc[slot]
-                        if ":" not in slotval:
-                            doc[slot] = f"generic:{slotval}"
+                id_val = doc['id']
+                if 'has_metabolite_quantifications' in doc:
+                    accepted_mqs = []
+                    for mq in doc['has_metabolite_quantifications']:
+                        if 'alternative_identifiers' in mq:
+                            raw_ais = mq['alternative_identifiers']
+                            accepted_ais = []
+                            for ai in raw_ais:
+                                alt_id_parts = ai.split(":")
+                                if alt_id_parts[1] in ['', 'None']:
+                                    print(f"{id_val}: {ai}")
+                                else:
+                                    accepted_ais.append(fix_curie(ai))
+                            mq['alternative_identifiers'] = accepted_ais
+                        accepted_mqs.append(mq)
+                    doc['has_metabolite_quantifications'] = accepted_mqs
 
-        # if apply_latest_repairs and selected_collection == 'metabolomics_analysis_activity_set':
-        #     for doc in doc_list:
-        #         id_val = doc['id']
-        #         if 'has_metabolite_quantifications' in doc:
-        #             metabolite_quantifications = doc['has_metabolite_quantifications']
-        #             if type(metabolite_quantifications) != list:
-        #                 print(type(metabolite_quantifications))
-        #             else:
-        #                 for metabolite_quantification in metabolite_quantifications:
-        #                     if "alternative_identifiers" in metabolite_quantification:
-        #                         for alternative_identifier in metabolite_quantification["alternative_identifiers"]:
-        #                             alt_id_parts = alternative_identifier.split(":")
-        #                             if alt_id_parts[1] in ['', 'None']:
-        #                                 print(
-        #                                     f"attempting to remove illegal metabolite_quantifications alternative identifier local portion '{alt_id_parts[1]}' in {id_val}'s {alternative_identifier}")
-        #                                 # metabolite_quantification["alternative_identifiers"].remove(
-        #                                 #     alternative_identifier)
+        if apply_latest_repairs and selected_collection == 'metaproteomics_analysis_activity_set':
+            for doc in doc_list:
+                if 'has_peptide_quantifications' in doc:
+                    repaired_pqs = []
+                    for pq in doc['has_peptide_quantifications']:
+                        if 'all_proteins' in pq:
+                            repaired_aps = []
+                            for ap in pq['all_proteins']:
+                                if ":" not in ap:
+                                    # uss fix_curie, which will create a Contaminant prefix,
+                                    #   which will have to be added to the schema
+                                    # or just prefix with generic: ?
+                                    # Contaminant_ALBU_BOVIN
+                                    # Contaminant_CTRA_BOVIN
+                                    # Contaminant_K1C10_HUMAN
+                                    # Contaminant_TRYP_BOVIN
+                                    # repaired_ap = f"generic:{ap}"
+                                    repaired_aps.append(fix_curie(ap))
+                                else:
+                                    repaired_aps.append(ap)
+                            pq['all_proteins'] = repaired_aps
+                        if 'best_protein' in pq:
+                            bp = pq['best_protein']
+                            if ":" not in bp:
+                                pq['best_protein'] = fix_curie(bp)
+                            else:
+                                pq['best_protein'] = bp
+                        repaired_pqs.append(pq)
+                    doc['has_peptide_quantifications'] = repaired_pqs
 
         database[selected_collection] = doc_list
 
-    # # Save documents to YAML file
-    # with open(output_yaml, 'w') as f:
-    #     yaml.dump(database, f)
-
-    # save documents to JSON file with pretty printing/indentation
-    output_json = output_yaml.replace(".yaml", ".json")
+    # # save documents to JSON file with pretty printing/indentation
+    # # avoids complaints about 64-bit numbers in YAML?
+    # output_json = output_yaml.replace(".yaml", ".json")
     with open(output_json, 'w') as f:
         json.dump(database, f, indent=2)
 
