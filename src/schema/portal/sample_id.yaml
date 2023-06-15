@@ -21,7 +21,7 @@ default_prefix: nmdc
 default_range: string
 
 enums:
-  analysis_type_enum:
+  AnalysisTypeEnum:
     from_schema: https://example.com/nmdc_dh
     permissible_values:
       metabolomics: { }
@@ -42,7 +42,7 @@ slots:
     rank: 3
     multivalued: true
     slot_group: Sample ID
-    range: analysis_type_enum
+    range: AnalysisTypeEnum
     recommended: true
 
   sample_link:
