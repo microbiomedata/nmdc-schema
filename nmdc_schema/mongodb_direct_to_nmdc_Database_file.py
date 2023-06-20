@@ -3,14 +3,17 @@ import os
 import pprint
 import re
 
-import yaml
 import click
+import click_log
+from dotenv import load_dotenv
 from linkml_runtime import SchemaView
 from pymongo import MongoClient
-from dotenv import load_dotenv
-import urllib.parse
-
 from pymongo.errors import OperationFailure
+
+import logging
+
+logger = logging.getLogger(__name__)
+click_log.basic_config(logger)
 
 
 # don't just change the id, also change referents
@@ -146,6 +149,7 @@ def get_collection_stats(mongo_db, collection_list):
 
 
 @click.command()
+@click_log.simple_verbosity_option(logger)
 @click.option('--env-file', type=click.Path(), default='local/.env', help='Path to .env file')
 @click.option('--mongo-db-name', default="nmdc", help='MongoDB database name')
 @click.option('--selected-collections', multiple=True, help='MongoDB collection name')
