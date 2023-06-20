@@ -340,6 +340,9 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosampl
 local/mongodb-collection-report.txt:
 	$(RUN) mongodb_exporter > $@
 
+#		--max-docs-per-coll 1_000_000
+# 		--selected-collections metaproteomics_analysis_activity_set \
+
 local/selected_mongodb_contents.json:
 	$(RUN) mongodb_exporter \
 		--max-docs-per-coll 1_000_000 \
@@ -356,7 +359,8 @@ local/selected_mongodb_contents.json:
 		--selected-collections omics_processing_set \
 		--selected-collections read_based_taxonomy_analysis_activity_set \
 		--selected-collections read_qc_analysis_activity_set \
-		--selected-collections study_set \
+		--selected-collections study_set | tee local/selected_mongodb_contents.log
+
 
 dump-validate-report-convert-mongodb: mongodb-cleanup \
 local/selected_mongodb_contents_jsonschema_check.txt \

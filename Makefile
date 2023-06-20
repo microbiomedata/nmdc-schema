@@ -101,10 +101,12 @@ gen-project: $(PYMODEL)
 		--include owl \
 		--include prefixmap \
 		--include python \
+		--include rdf \
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
 test: examples-clean site test-python jsonschema-check-all-valid-databases examples/output
+only_test: examples-clean test-python jsonschema-check-all-valid-databases examples/output
 
 test-schema:
 	$(RUN) gen-project \

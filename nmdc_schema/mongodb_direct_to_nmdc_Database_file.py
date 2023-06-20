@@ -13,6 +13,8 @@ import urllib.parse
 from pymongo.errors import OperationFailure
 
 
+# don't just change the id, also change referents
+
 def fix_curie(raw_curie):
     if ':' not in raw_curie:
         if raw_curie.count('_') > 0:
@@ -24,13 +26,14 @@ def fix_curie(raw_curie):
         if len(curie_parts) == 1 or curie_parts[1] == '' or curie_parts[1] == 'None' or curie_parts[1] == 'none':
             # if this is a term id, there may be an appropriate root term
             #   should be handled downstream
-            print(f"Warning: {raw_curie} is essentially prefix-only")
+            # print(f"Warning: {raw_curie} is essentially prefix-only")
+            pass
         modified_string = raw_curie
     # or urlencoding?
     # explicitly look for the string '\t'... may not want to keep the 't' part!
     tidied_string = re.sub(r'[^a-zA-Z0-9\-_.,:]', '', modified_string)
-    if tidied_string != modified_string:
-        print(f"tidied {modified_string} to {tidied_string}")
+    # if tidied_string != modified_string:
+    #     print(f"tidied {modified_string} to {tidied_string}")
     return tidied_string
 
 
@@ -127,7 +130,7 @@ def get_doc_list(mongodb, collection_name, max_docs_per_coll):
 def get_collection_stats(mongo_db, collection_list):
     selected_stats = {}
     for collection_name in collection_list:
-        print(f"retrieving stats for collection {collection_name}")
+        # print(f"retrieving stats for collection {collection_name}")
 
         for_selected_stats = {}
 
@@ -163,6 +166,7 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
 
     database = {}
 
+    # no collections selected, so just summarize all of them
     if len(selected_collections) == 0:
         # just export all of them?
         # use a limit on document_count or size_in_bytes?
@@ -190,22 +194,26 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
             #     print(f"Collection {coll_stat_k} is not defined in the schema.")
             #     pprint.pprint(coll_stat_v)
 
+    # now start exporting
     for selected_collection in selected_collections:
-        print(f"Exporting collection {selected_collection}")
+        # print(f"Exporting collection {selected_collection}, with the following stats: {collection_stats")
         # todo will need some error handling here
         collection_stats = get_collection_stats(db, [selected_collection])
 
-        print(f"You requested an export of collection {selected_collection}.")
-        print(f"Its collection stats are {collection_stats}")
+        # print(f"You requested an export of collection {selected_collection}.")
+        # print(f"Its collection stats are {collection_stats}")
+        print(f"Exporting collection {selected_collection}, with the following stats: {collection_stats}")
         doc_list = get_doc_list(db, selected_collection, max_docs_per_coll)
 
-        # # # #
+        # # # # REPAIRS # # # #
 
         # extract [] enclosed portion of  'samp_taxon_id': {'has_raw_value': 'lake water metagenome [NCBITaxon:1647806]'},
         #   and assign to samp_taxon_id.term.id
         if apply_latest_repairs and selected_collection == 'biosample_set':
             for doc in doc_list:
 
+                # REPAIR: extract Biosample samp_taxon_id term id from raw value if necessary
+                #   these are external terms and don't require referential integrity withing the database
                 taxon_slot = 'samp_taxon_id'
                 if taxon_slot in doc and 'has_raw_value' in doc[taxon_slot]:
                     raw_value = doc[taxon_slot]['has_raw_value']
@@ -221,6 +229,9 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                             else:
                                 doc[taxon_slot]['term']['id'] = extracted_text
 
+                # REPAIR: extract Biosample host_taxid term id from raw value if necessary
+                #   not using fix_curie
+                #   these are external terms and don't require referential integrity withing the database
                 taxon_slot = 'host_taxid'
                 if taxon_slot in doc and 'has_raw_value' in doc[taxon_slot] and doc[taxon_slot]['has_raw_value'] == str(
                         int(
@@ -235,7 +246,10 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                         else:
                             doc[taxon_slot]['term']['id'] = replacement_text
 
-                # some mixs triad values have been populated with label + id term.ids
+                # REPAIR: Biosample 'env_broad_scale', 'env_local_scale' and 'env_medium' ids must be id only,
+                #   not label + value, like you would find in has_raw_value
+                #   not using fix_curie
+                #   these are external terms and don't require referential integrity withing the database
                 # todo repetitive code
                 for slot in ['env_broad_scale', 'env_local_scale', 'env_medium']:
                     if slot in doc and 'term' in doc[slot] and 'id' in doc[slot]['term']:
@@ -249,7 +263,9 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                             extracted_text = ':'.join(doc[slot]['term']['id'].split("_"))
                             doc[slot]['term']['id'] = extracted_text
 
-                # growth_facil.term.id: 'field'
+                # REPAIR: Biosample growth_facil.term.id: must be an id, not a string like 'field'
+                #   not using fix_curie
+                #   these are external terms and don't require referential integrity withing the database
                 if 'growth_facil' in doc and 'term' in doc['growth_facil'] and 'id' in doc['growth_facil']['term']:
                     raw_value = doc['growth_facil']['term']['id']
                     if raw_value == 'field':
@@ -261,7 +277,8 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
 
                             }
                         }
-        # eliminate None values
+        # REPAIR: Biosample eliminate None value assertions for any slot from the root of any document in any collection
+        #   not using fix_curie
         if apply_latest_repairs:
             slots_to_del_if_none = [
                 'asm_score',
@@ -312,9 +329,10 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                         if not doc[slot]:
                             del doc[slot]
 
-        #  part ofs require prefix:local CURIEs
+        # REPAIR: 'id', 'part_of', 'has_input', 'has_output' in any document requires prefix:local CURIEs
         #  these problem slots are all multivalued
-        # nned to fix has_peptide_quantifications.all_proteins
+        # may require referential integrity checks, possibly via addition of other slots
+        # tricky deep repairs... maybe better in some other framework/database?
         if apply_latest_repairs:
             problem_slots = ['id', 'part_of', 'has_input', 'has_output']
             for doc in doc_list:
@@ -323,15 +341,24 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                         slotvals = doc[slot]
                         replacements = []
                         for raw_slotval in slotvals:
-                            replacements.append(fix_curie(raw_slotval))
+                            fixed_slotval = fix_curie(raw_slotval)
+                            if fixed_slotval != raw_slotval:
+                                print(
+                                    f"{selected_collection} {doc['id']} {slot} [{raw_slotval}] -> {fixed_slotval}")
+                            replacements.append(fixed_slotval)
                         doc[slot] = replacements
                     elif slot in doc:
+                        raw_slotval = doc[slot]
                         fixed_slotval = fix_curie(doc[slot])
+                        if raw_slotval != fixed_slotval:
+                            print(
+                                f"{selected_collection} {doc['id']} {slot} {raw_slotval} -> {fixed_slotval}")
                         doc[slot] = fixed_slotval
 
+        # REPAIR: alternative identifiers must use prefix:local CURIEs
+        #   these are external terms and don't require referential integrity withing the database
+        # why are the objects of nmdc:alternative_identifiers typed like "cas:3685-26-5"^^xsd:anyURI ?
         if apply_latest_repairs and selected_collection == 'metabolomics_analysis_activity_set':
-            # why are the objects of nmdc:alternative_identifiers typed "cas:3685-26-5"^^xsd:anyURI ?
-            # should we accept prefix-only objects of nmdc:metabolite_quantified like 'CHEBI:' ?
             for doc in doc_list:
                 id_val = doc['id']
                 if 'has_metabolite_quantifications' in doc:
@@ -343,13 +370,24 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                             for ai in raw_ais:
                                 alt_id_parts = ai.split(":")
                                 if alt_id_parts[1] in ['', 'None']:
-                                    print(f"{id_val}: {ai}")
+                                    # verbose mode only
+                                    # print(
+                                    #     f"{selected_collection} {id_val} has_metabolite_quantifications.alternative_identifiers has un-redeemable metabolite identifier: [{ai}]")
+                                    pass
                                 else:
-                                    accepted_ais.append(fix_curie(ai))
+                                    # not even using fix_curie yet
+                                    raw_slotval = ai
+                                    fixed_slotval = fix_curie(raw_slotval)
+                                    if raw_slotval != fixed_slotval:
+                                        print(
+                                            f"{selected_collection} {id_val} has_metabolite_quantifications.alternative_identifiers [{raw_slotval}] -> {fixed_slotval}")
+                                    accepted_ais.append(fixed_slotval)
                             mq['alternative_identifiers'] = accepted_ais
                         accepted_mqs.append(mq)
                     doc['has_metabolite_quantifications'] = accepted_mqs
 
+        # REPAIR: slots that refer to instances of another class,
+        #   even if that class is never instantiated, must use prefix:local CURIEs
         if apply_latest_repairs and selected_collection == 'metaproteomics_analysis_activity_set':
             for doc in doc_list:
                 if 'has_peptide_quantifications' in doc:
@@ -359,15 +397,22 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                             repaired_aps = []
                             for ap in pq['all_proteins']:
                                 if ":" not in ap:
-                                    # uss fix_curie, which will create a Contaminant prefix,
+                                    # use fix_curie, which will create a Contaminant prefix,
                                     #   which will have to be added to the schema
                                     # or just prefix with generic: ?
-                                    # Contaminant_ALBU_BOVIN
+                                    # Contaminant_ALBU_BOVIN -> X -> https://www.uniprot.org/uniprotkb/P02769/entry
                                     # Contaminant_CTRA_BOVIN
                                     # Contaminant_K1C10_HUMAN
                                     # Contaminant_TRYP_BOVIN
                                     # repaired_ap = f"generic:{ap}"
-                                    repaired_aps.append(fix_curie(ap))
+                                    raw_slotval = ap
+                                    fixed_slotval = fix_curie(ap)
+                                    # log the original collection, id, and value plus the repaired value
+                                    if raw_slotval != fixed_slotval:
+                                        print(
+                                            f"{selected_collection} {doc['id']} has_peptide_quantifications.all_proteins [{raw_slotval}] -> {fixed_slotval}")
+
+                                    repaired_aps.append(fixed_slotval)
                                 else:
                                     repaired_aps.append(ap)
                             pq['all_proteins'] = repaired_aps
@@ -375,6 +420,8 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                             bp = pq['best_protein']
                             if ":" not in bp:
                                 pq['best_protein'] = fix_curie(bp)
+                                print(
+                                    f"{selected_collection} {doc['id']} has_peptide_quantifications.all_proteins {raw_slotval} -> {fixed_slotval}")
                             else:
                                 pq['best_protein'] = bp
                         repaired_pqs.append(pq)
