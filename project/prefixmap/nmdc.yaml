@@ -5,6 +5,7 @@
    "CHEMBL.COMPOUND": "http://identifiers.org/chembl.compound/",
    "CHMO": "http://purl.obolibrary.org/obo/CHMO_",
    "COG": "https://bioregistry.io/cog:",
+   "Contaminant": "http://example.org/contaminant/",
    "DRUGBANK": "http://identifiers.org/drugbank/",
    "EC": "https://bioregistry.io/eccode:",
    "EFO": "http://www.ebi.ac.uk/efo/",
