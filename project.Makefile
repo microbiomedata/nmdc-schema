@@ -337,15 +337,23 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosampl
 
 # # # #
 
-local/mongodb-collection-report.txt:
-	$(RUN) mongodb_exporter > $@
+.PHONY: mongodb-cleanup dump-validate-report-convert-mongodb linkml-validate-mongodb
 
-#		--max-docs-per-coll 1_000_000
-# 		--selected-collections metaproteomics_analysis_activity_set \
+dump-validate-report-convert-mongodb: mongodb-cleanup accepting_legacy_ids_all \
+local/mongodb-collection-report.txt \
+local/selected_mongodb_contents.json \
+local/selected_mongodb_contents_jsonschema_check.txt \
+linkml-validate-mongodb \
+local/selected_mongodb_contents.yaml \
+local/selected_mongodb_contents.ttl \
+local/selected_mongodb_contents.ttl.gz
 
 local/selected_mongodb_contents.json:
 	$(RUN) mongodb_exporter \
+		--curie-fix \
 		--max-docs-per-coll 1_000_000 \
+		--non-nmdc-id-fixes \
+		--output-json $@ \
 		--selected-collections biosample_set \
 		--selected-collections data_object_set \
 		--selected-collections field_research_site_set \
@@ -359,42 +367,38 @@ local/selected_mongodb_contents.json:
 		--selected-collections omics_processing_set \
 		--selected-collections read_based_taxonomy_analysis_activity_set \
 		--selected-collections read_qc_analysis_activity_set \
-		--selected-collections study_set | tee local/selected_mongodb_contents.log
-
-
-dump-validate-report-convert-mongodb: mongodb-cleanup \
-local/selected_mongodb_contents_jsonschema_check.txt \
-linkml-validate-mongodb local/selected_mongodb_contents.ttl.gz
-
-.PHONY: clean-mongodb-vs-schema-report
+		--selected-collections study_set 2>&1  | tee local/selected_mongodb_contents.log
 
 mongodb-cleanup:
 	date
+	rm -rf local/mongodb-collection-report.txt
 	rm -rf local/selected_mongodb_contents.json
+	rm -rf local/selected_mongodb_contents.log
 	rm -rf local/selected_mongodb_contents.ttl
 	rm -rf local/selected_mongodb_contents.ttl.gz
 	rm -rf local/selected_mongodb_contents.yaml
 	rm -rf local/selected_mongodb_contents_jsonschema_check.txt
 
-local/selected_mongodb_contents_jsonschema_check.txt: local/selected_mongodb_contents.json
-	# ignore error messages about (nmdc): prefixes, because they are almost certainly about
-	#   temporarily acceptable `id` violations
-	$(RUN) check-jsonschema \
-		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $< | grep -v '(nmdc):' > $@
+local/mongodb-collection-report.txt:
+	$(RUN) mongodb_exporter 2>&1 | tee $@
 
-linkml-validate-mongodb: local/selected_mongodb_contents.json
-	$(RUN) linkml-validate --schema nmdc_schema/nmdc_materialized_patterns.yaml $<
+local/selected_mongodb_contents_jsonschema_check.txt: nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json local/selected_mongodb_contents.json
+	$(RUN) check-jsonschema --schemafile  $^ | tee $@
 
-# linkml conversion to RDF/TTL debugging by line number easier in YAML
+linkml-validate-mongodb: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/selected_mongodb_contents.json
+	$(RUN) linkml-validate --schema $^
+
+# linkml conversion to RDF/TTL
+#  debugging by line number easier in YAML
 #  why not just writing YAML from mongodb_exporter?
 #  doesn't seem to handle 64 bit numbers well
 local/selected_mongodb_contents.yaml: local/selected_mongodb_contents.json
 	cat $< | yq  -P  | cat > $@
 
-local/selected_mongodb_contents.ttl: local/selected_mongodb_contents.yaml
+local/selected_mongodb_contents.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/selected_mongodb_contents.yaml
 	$(RUN) linkml-convert \
-		--schema nmdc_schema/nmdc_materialized_patterns.yaml \
-		--output $@ $<
+		--output $@ \
+		--schema $^
 	riot --validate $@
 
 local/selected_mongodb_contents.ttl.gz: local/selected_mongodb_contents.ttl
@@ -447,3 +451,77 @@ local/neon-nlcd-envo-mappings.tsv: local/nlcd_2019_land_cover_l48_20210604.yaml 
 
 local/neon-soil-order-envo-mapping.tsv:
 	$(RUN) python nmdc_schema/neon-soil-order-envo-mapping.py
+
+# # # #
+
+.PHONY: accepting_legacy_ids_all accepting_legacy_ids_cleanup
+
+accepting_legacy_ids_all: accepting_legacy_ids_cleanup \
+nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json nmdc_schema/nmdc_schema_accepting_legacy_ids.py
+
+accepting_legacy_ids_cleanup:
+	rm -rf nmdc_schema/nmdc_schema_accepting_legacy_ids*
+
+# --useuris / --metauris
+nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml: src/schema/nmdc.yaml
+	$(RUN) gen-linkml \
+		--format yaml \
+		--mergeimports \
+		--metadata \
+		--no-materialize-attributes \
+		--no-materialize-patterns \
+		--useuris \
+		--output $@ $<
+	# probably should have made a list of classes and then looped over a parameterized version of this
+	# could also assert that the range is string
+	yq -i '(.classes[] | select(.name == "Biosample") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "Biosample") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "DataObject") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "DataObject") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MagsAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MagsAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetabolomicsAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetabolomicsAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetagenomeAnnotationActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetagenomeAnnotationActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetagenomeAssembly") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetagenomeAssembly") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetagenomeSequencingActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetagenomeSequencingActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetaproteomicsAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetaproteomicsAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetatranscriptomeActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetatranscriptomeActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetatranscriptomeAnnotationActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetatranscriptomeAnnotationActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetatranscriptomeAssembly") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetatranscriptomeAssembly") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "NomAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "NomAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "ReadBasedTaxonomyAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "ReadBasedTaxonomyAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "ReadQcAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "ReadQcAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "Study") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "Study") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+
+	$(RUN) gen-linkml \
+		--format yaml \
+		--mergeimports \
+		--metadata \
+		--no-materialize-attributes \
+		--materialize-patterns \
+		--useuris \
+		--output $@.temp $@
+
+	mv $@.temp $@
+
+nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+	$(RUN) gen-json-schema \
+		--closed $< > $@
+
+nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+	$(RUN) gen-python --validate $< > $@
+	$(RUN) python nmdc_schema/use_more_tolerant_schema.py
