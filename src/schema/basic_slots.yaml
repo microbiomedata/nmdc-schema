@@ -33,6 +33,7 @@ slots:
     examples:
       - value: nmdc:mgmag-00-x012.1_7_c1
         description: 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248'
+    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
 
   name:
     range: string
