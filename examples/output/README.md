@@ -5067,6 +5067,24 @@ part_of:
 - gold:Gs0110115
 
 ```
+## Database-Biosample-invalid_id
+### Input
+```yaml
+biosample_set:
+- env_broad_scale:
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    term:
+      id: ENVO:00002169
+  env_medium:
+    term:
+      id: ENVO:00005792
+  id: local
+  part_of:
+  - gold:Gs0128849
+
+```
 ## Database-biosample_missing_required_field
 ### Input
 ```yaml

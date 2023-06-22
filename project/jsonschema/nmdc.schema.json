@@ -10,6 +10,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -63,6 +64,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -1322,6 +1324,7 @@
                 },
                 "id": {
                     "description": "An NMDC assigned unique identifier for a biosample submitted to NMDC.",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "igsn_biosample_identifiers": {
@@ -2846,6 +2849,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -3071,6 +3075,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -3265,6 +3270,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "md5_checksum": {
@@ -3814,6 +3820,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -3923,6 +3930,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "lat_lon": {
@@ -4193,6 +4201,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -4422,6 +4431,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -4558,6 +4568,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "library_preparation_kit": {
@@ -4738,6 +4749,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "input_contig_num": {
@@ -4832,6 +4844,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -4947,6 +4960,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -5031,6 +5045,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -5159,6 +5174,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "insdc_assembly_identifiers": {
@@ -5295,6 +5311,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -5377,6 +5394,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -5453,6 +5471,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -5537,6 +5556,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -5665,6 +5685,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "insdc_assembly_identifiers": {
@@ -5805,6 +5826,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -5908,6 +5930,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "insdc_experiment_identifiers": {
@@ -6278,6 +6301,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -6336,6 +6360,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -6547,6 +6572,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -6623,6 +6649,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "input_base_count": {
@@ -7184,6 +7211,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "insdc_bioproject_identifiers": {
@@ -7663,6 +7691,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
                 "name": {
@@ -7916,5 +7945,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "v7.6.5"
+    "version": "v7.7.0"
 }

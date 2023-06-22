@@ -20,7 +20,7 @@ description: >-
    * the NMDC schema itself, into which the other modules are imported
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: v7.6.7
+version: v7.7.0
 
 imports:
   - annotation

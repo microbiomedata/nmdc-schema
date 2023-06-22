@@ -17470,9 +17470,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
   Biosample:
     name: Biosample
@@ -18145,9 +18145,9 @@ classes:
         description: An NMDC assigned unique identifier for a biosample submitted
           to NMDC.
         required: true
-        pattern: ^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
       gold_biosample_identifiers:
         name: gold_biosample_identifiers
@@ -18634,9 +18634,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
       doi:
         name: doi
@@ -18772,9 +18772,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):omprc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
       has_input:
         name: has_input
@@ -18902,9 +18902,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
   MetatranscriptomeAssembly:
     name: MetatranscriptomeAssembly
@@ -18945,9 +18945,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
   MetagenomeAnnotationActivity:
     name: MetagenomeAnnotationActivity
@@ -18964,9 +18964,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
   MetatranscriptomeAnnotationActivity:
     name: MetatranscriptomeAnnotationActivity
@@ -18981,9 +18981,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
   MetatranscriptomeActivity:
     name: MetatranscriptomeActivity
@@ -18999,9 +18999,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
   MagsAnalysisActivity:
     name: MagsAnalysisActivity
@@ -19024,9 +19024,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
   MetagenomeSequencingActivity:
     name: MetagenomeSequencingActivity
@@ -19041,9 +19041,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmsa-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
   ReadQcAnalysisActivity:
     name: ReadQcAnalysisActivity
@@ -19069,9 +19069,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
   ReadBasedTaxonomyAnalysisActivity:
     name: ReadBasedTaxonomyAnalysisActivity
@@ -19088,9 +19088,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
   MetabolomicsAnalysisActivity:
     name: MetabolomicsAnalysisActivity
@@ -19105,9 +19105,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
   MetaproteomicsAnalysisActivity:
     name: MetaproteomicsAnalysisActivity
@@ -19123,9 +19123,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
   NomAnalysisActivity:
     name: NomAnalysisActivity
@@ -19141,9 +19141,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
   NamedThing:
     name: NamedThing
@@ -19917,7 +19917,7 @@ classes:
         - Note to be consistent with the rest of the NMDC schema we use the PROV annotation
           model, rather than GPAD
         range: MetagenomeAnnotationActivity
-source_file: src/schema/nmdc.yaml
+source_file: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
 settings:
   id_nmdc_prefix:
     setting_key: id_nmdc_prefix

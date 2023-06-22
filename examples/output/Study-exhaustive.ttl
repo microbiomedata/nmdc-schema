@@ -7,11 +7,6 @@
 nmdc:sty-11-ab a nmdc:Study ;
     dcterms:description "see also name, title, objective, various alternatives" ;
     prov:qualifiedAssociation [ a prov:Association ;
-            nmdc:applied_roles "Investigation",
-                "Supervision" ;
-            nmdc:applies_to_person [ a nmdc:PersonValue ;
-                    nmdc:name "Tanja Davidsen" ] ],
-        [ a prov:Association ;
             prov:hadRole "Funding acquisition" ;
             nmdc:applied_roles "Conceptualization",
                 "Supervision" ;
@@ -24,7 +19,12 @@ nmdc:sty-11-ab a nmdc:Study ;
                     nmdc:was_generated_by nmdc:any_string_1 ;
                     nmdc:websites "https://www.jcvi.org/",
                         "https://www.jcvi.org/about/j-craig-venter" ] ;
-            nmdc:type "any string" ] ;
+            nmdc:type "any string" ],
+        [ a prov:Association ;
+            nmdc:applied_roles "Investigation",
+                "Supervision" ;
+            nmdc:applies_to_person [ a nmdc:PersonValue ;
+                    nmdc:name "Tanja Davidsen" ] ] ;
     nmdc:abstract "Nothing was studied." ;
     nmdc:alternative_descriptions "any string 1",
         "any string 2" ;
