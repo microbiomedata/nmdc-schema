@@ -47,7 +47,7 @@ def fix_curie(raw_curie):
         if len(curie_parts) == 1 or curie_parts[1] == '' or curie_parts[1] == 'None' or curie_parts[1] == 'none':
             # if this is a term id, there may be an appropriate root term
             #   should be handled downstream
-            # print(f"Warning: {raw_curie} is essentially prefix-only")
+            logger.debug(f"Warning: {raw_curie} is essentially prefix-only")
             pass
         modified_string = raw_curie
     # or urlencoding?
@@ -208,9 +208,9 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
             if coll_stat_k in collections_to_check['intersection']:
                 logger.info(f"Collection {coll_stat_k} is defined in the schema.")
                 logger.info(pprint.pformat(coll_stat_v))
-            # else:
-            #     print(f"Collection {coll_stat_k} is not defined in the schema.")
-            #     pprint.pprint(coll_stat_v)
+            else:
+                logger.debug(f"Collection {coll_stat_k} is not defined in the schema.")
+                # pprint.pprint(coll_stat_v)
 
     # now start exporting
     for selected_collection in selected_collections:
@@ -243,12 +243,13 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                                 logger.info(f"for {doc['id']}, setting the term id of {taxon_slot} to {extracted_text}")
                                 doc[taxon_slot]['term'] = {'id': extracted_text}
                             else:
-                                logger.info(
-                                    f"for {doc['id']}, replacing the previous {taxon_slot} term id of {doc[taxon_slot]['term']['id']} with {extracted_text}")
-                                doc[taxon_slot]['term']['id'] = extracted_text
+                                if extracted_text != doc[taxon_slot]['term']['id']:
+                                    logger.info(
+                                        f"for {doc['id']}, replacing the previous {taxon_slot} term id of {doc[taxon_slot]['term']['id']} with {extracted_text}")
+                                    doc[taxon_slot]['term']['id'] = extracted_text
                     else:
                         # if there was a value in the taxon slot, wwe should report it
-                        logger.info(f"for {doc['id']}, no term id found in {taxon_slot}")
+                        logger.debug(f"for {doc['id']}, no term id found in {taxon_slot}")
 
                 # REPAIR: extract Biosample host_taxid term id from raw value if necessary
                 #   not using fix_curie
@@ -267,12 +268,13 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                             logger.info(f"for {doc['id']}, setting the term id of {taxon_slot} to {replacement_text}")
                             doc[taxon_slot]['term'] = {'id': replacement_text}
                         else:
-                            logger.info(
-                                f"for {doc['id']}, replacing the previous {taxon_slot} term id of {doc[taxon_slot]['term']['id']} with {extracted_text}")
-                            doc[taxon_slot]['term']['id'] = replacement_text
+                            if replacement_text != doc[taxon_slot]['term']['id']:
+                                logger.info(
+                                    f"for {doc['id']}, replacing the previous {taxon_slot} term id of {doc[taxon_slot]['term']['id']} with {extracted_text}")
+                                doc[taxon_slot]['term']['id'] = replacement_text
                 else:
                     # if there was a value in the taxon slot, wwe should logger.info it out
-                    logger.info(f"for {doc['id']}, no term id found in {taxon_slot}")
+                    logger.debug(f"for {doc['id']}, no term id found in {taxon_slot}")
 
                 # REPAIR: Biosample 'env_broad_scale', 'env_local_scale' and 'env_medium' ids must be id only,
                 #   not label + value, like you would find in has_raw_value
@@ -280,10 +282,10 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                 #   these are external terms and don't require referential integrity withing the database
                 # todo repetitive code
                 for slot in ['env_broad_scale', 'env_local_scale', 'env_medium']:
-                    logger.info(f"checking {slot} in {doc['id']}")
+                    # logger.info(f"checking {slot} in {doc['id']}")
                     if slot in doc and 'term' in doc[slot] and 'id' in doc[slot]['term']:
                         raw_value = doc[slot]['term']['id']
-                        logger.info(f"raw_value is {raw_value}")
+                        # logger.info(f"raw_value is {raw_value}")
                         # case 1: raw_value includes a label, and the id is enclosed in square brackets
                         result = re.findall(r'\[(.*?)\]', raw_value)
                         if result:
@@ -299,9 +301,10 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                         if 'term' in doc[slot]:
                             if 'id' in doc[slot]['term']:
                                 # carefully check these replacements. maybe we want to keep the original ids
-                                logger.info(
-                                    f"for {doc['id']}, replacing {slot} term id of {doc[slot]['term']['id']} with {colonified}")
-                                doc[slot]['term']['id'] = colonified
+                                if colonified != doc[slot]['term']['id']:
+                                    logger.info(
+                                        f"for {doc['id']}, replacing {slot} term id of {doc[slot]['term']['id']} with {colonified}")
+                                    doc[slot]['term']['id'] = colonified
                             else:
                                 logger.info(f"for {doc['id']}, setting {slot} term id to {colonified}")
                                 doc[slot]['term']['id'] = colonified
@@ -378,7 +381,7 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                 for slot in slots_to_del_if_none:
                     if slot in doc:
                         if not doc[slot]:
-                            logger.info(f"for {doc['id']}, deleting {slot} because it is None")
+                            logger.debug(f"for {doc['id']}, deleting {slot} because it is None")
                             del doc[slot]
 
         # REPAIR: Biosample eliminate None value assertions for any slot from the root of any document in any collection
@@ -425,10 +428,8 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                             for ai in raw_ais:
                                 alt_id_parts = ai.split(":")
                                 if alt_id_parts[1] in ['', 'None']:
-                                    # verbose mode only
-                                    # print(
-                                    #     f"{selected_collection} {id_val} has_metabolite_quantifications.alternative_identifiers has un-redeemable metabolite identifier: [{ai}]")
-                                    pass
+                                    logger.debug(
+                                        f"{selected_collection} {id_val} has_metabolite_quantifications.alternative_identifiers has un-redeemable metabolite identifier: [{ai}]")
                                 else:
                                     # not even using fix_curie yet
                                     raw_slotval = ai

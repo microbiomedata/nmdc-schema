@@ -339,7 +339,9 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosampl
 
 .PHONY: mongodb-cleanup dump-validate-report-convert-mongodb linkml-validate-mongodb
 
-dump-validate-report-convert-mongodb: mongodb-cleanup accepting_legacy_ids_all \
+# accepting_legacy_ids_all
+
+dump-validate-report-convert-mongodb: mongodb-cleanup  \
 local/mongodb-collection-report.txt \
 local/selected_mongodb_contents.json \
 local/selected_mongodb_contents_jsonschema_check.txt \
@@ -350,7 +352,7 @@ local/selected_mongodb_contents.ttl.gz
 
 local/selected_mongodb_contents.json:
 	$(RUN) mongodb_exporter \
-		--curie-fix \
+		--no-curie-fix \
 		--max-docs-per-coll 1_000_000 \
 		--non-nmdc-id-fixes \
 		--output-json $@ \
@@ -389,16 +391,20 @@ linkml-validate-mongodb: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local
 	$(RUN) linkml-validate --schema $^
 
 # linkml conversion to RDF/TTL
-#  debugging by line number easier in YAML
-#  why not just writing YAML from mongodb_exporter?
-#  doesn't seem to handle 64 bit numbers well
+# this is a SLOW step. maybe linkmml-convert would be faster, BUT
+#  debugging by line number easier with YAML input YAML, and we don't have YAML yet
+#  why not just write YAML from mongodb_exporter?
+#    doesn't seem to handle 64 bit numbers well
 local/selected_mongodb_contents.yaml: local/selected_mongodb_contents.json
 	cat $< | yq  -P  | cat > $@
 
+
 local/selected_mongodb_contents.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/selected_mongodb_contents.yaml
+	# this is a SLOW step
 	$(RUN) linkml-convert \
 		--output $@ \
 		--schema $^
+	# this is actually pretty fast
 	riot --validate $@
 
 local/selected_mongodb_contents.ttl.gz: local/selected_mongodb_contents.ttl
