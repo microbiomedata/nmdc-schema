@@ -49,7 +49,7 @@ omics_processing_set:
   omics_type:
     has_raw_value: Metagenome
   part_of:
-  - sty-11-34xj1150
+  - nmdc:sty-11-34xj1150
   processing_institution: Battelle
   type: nmdc:OmicsProcessing
 read_qc_analysis_activity_set:
