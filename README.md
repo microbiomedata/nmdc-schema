@@ -39,7 +39,8 @@ primer provides some the context for this project.
 **New system requirement: [Mike Farah's GO-based yq](https://github.com/mikefarah/yq)**
 
 Some optional components use the Java-based [ROBOT](http://robot.obolibrary.org/), which might be replaced with Jena arq
-in the future.
+in the future. Jena riot is also a part of the MongoDB dumping, repairing and validation workflow, if the user wishes
+to generate and validate RDF/TTL.
 
 See [MAINTAINERS.md](MAINTAINERS.md) for instructions on maintaining and updating the schema.
 
