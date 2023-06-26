@@ -307,7 +307,7 @@ DP1.10107.001	mms_metagenomeDnaExtraction	testMethod	close_mapping	Extraction	pr
 DP1.10107.001	mms_metagenomeDnaExtraction	sampleMaterial	exact_mapping	Biosample	env_package			Need more information/an example of what this looks like.
 DP1.10107.001	mms_metagenomeDnaExtraction	sampleMass	exact_mapping	Extraction	sample_mass.has_numeric_value		gram	
 DP1.10107.001	mms_metagenomeDnaExtraction	nucleicAcidConcentration	broad_mapping	Extraction	dna_concentration		nanogramsPerMicroliter	
-DP1.10107.001	mms_metagenomeDnaExtraction	nucleicAcidQuantMethod						
+DP1.10107.001	mms_metagenomeDnaExtraction	nucleicAcidQuantMethod	exact_mapping	ProcessedSample	nucleic_acid_concentration.instrument_name			Mapping added by Brynn on 06/26/2023
 DP1.10107.001	mms_metagenomeDnaExtraction	nucleicAcidPurity	related_mapping	Extraction	dna_absorb1			
 DP1.10107.001	mms_metagenomeDnaExtraction	nucleicAcidRange						
 DP1.10107.001	mms_metagenomeDnaExtraction	dnaPooledStatus	narrow_mapping	Extraction	pool_dna_extracts.has_raw_value			NEON field does not look like it includes the number of extracts (NMDC includes this number in slot).
