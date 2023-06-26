@@ -151,7 +151,7 @@ classes:
     slots:
     slot_usage:
       has_input:
-        minimum_cardinality: 2
+        minimum_cardinality: 1 # was 2, which make intuitive sense, but some NEON data says "I pooled one sample"
       has_output:
         minimum_cardinality: 1
         maximum_cardinality: 1
