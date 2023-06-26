@@ -358,6 +358,13 @@ local/selected_mongodb_contents.json.gz
 
 local/selected_mongodb_contents.json:
 	$(RUN) mongodb_exporter \
+		--schema-file src/schema/nmdc.yaml \
+		--root-class Database \
+		--env-file local/.env \
+		--mongo-db-name nmdc \
+		--mongo-host localhost \
+		--mongo-port 27777 \
+		--admin-db admin \
 		--no-curie-fix \
 		--non-nmdc-id-fixes \
 		--max-docs-per-coll 1_000_000 \
@@ -376,6 +383,18 @@ local/selected_mongodb_contents.json:
 		--selected-collections read_based_taxonomy_analysis_activity_set \
 		--selected-collections read_qc_analysis_activity_set \
 		--selected-collections study_set 2>&1  | tee local/selected_mongodb_contents.log
+
+  #@click.option('--admin-db', default="admin", help='MongoDB authentication source')
+  ## @click.option('--output-json', type=click.Path(), default='local/selected_mongodb_contents.json',
+  ##               help="Output directory. Exported file's name will be based on the collection name.")
+  #@click.option('--output-json', type=click.Path(), help="Output file.")
+  #@click.option('--schema-file', type=click.Path(), default='src/schema/nmdc.yaml',
+  #              help='Path to root YAML file in the nmdc-schema')
+  #@click.option('--max-docs-per-coll', default=100_000, help='Maximum number of documents to retrieve per collection')
+  #@click.option('--non-nmdc-id-fixes/--no-non-nmdc-id-fixes', default=True,
+  #              help="Apply repairs that don't alter ids for nmdc-schema instances")
+  #@click.option('--curie-fix/--no-curie-fix', default=False,
+  #              help='Remove end-of-line characters from nmdc-schema ids')
 
 local/selected_mongodb_contents.json.gz: local/selected_mongodb_contents.json
 	gzip -c $< > $@
