@@ -344,15 +344,23 @@ local/mongodb-collection-report.txt \
 local/selected_mongodb_contents.json \
 local/selected_mongodb_contents_jsonschema_check.txt \
 linkml-validate-mongodb \
+local/selected_mongodb_contents.json.gz \
 local/selected_mongodb_contents.yaml \
 local/selected_mongodb_contents.ttl \
 local/selected_mongodb_contents.ttl.gz
 
+dump-validate-report-mongodb: mongodb-cleanup accepting_legacy_ids_all \
+local/mongodb-collection-report.txt \
+local/selected_mongodb_contents.json \
+local/selected_mongodb_contents_jsonschema_check.txt \
+linkml-validate-mongodb \
+local/selected_mongodb_contents.json.gz
+
 local/selected_mongodb_contents.json:
 	$(RUN) mongodb_exporter \
-		--curie-fix \
-		--max-docs-per-coll 1_000_000 \
+		--no-curie-fix \
 		--non-nmdc-id-fixes \
+		--max-docs-per-coll 1_000_000 \
 		--output-json $@ \
 		--selected-collections biosample_set \
 		--selected-collections data_object_set \
@@ -369,10 +377,15 @@ local/selected_mongodb_contents.json:
 		--selected-collections read_qc_analysis_activity_set \
 		--selected-collections study_set 2>&1  | tee local/selected_mongodb_contents.log
 
+local/selected_mongodb_contents.json.gz: local/selected_mongodb_contents.json
+	gzip -c $< > $@
+
+
 mongodb-cleanup:
 	date
 	rm -rf local/mongodb-collection-report.txt
 	rm -rf local/selected_mongodb_contents.json
+	rm -rf local/selected_mongodb_contents.json.gz
 	rm -rf local/selected_mongodb_contents.log
 	rm -rf local/selected_mongodb_contents.ttl
 	rm -rf local/selected_mongodb_contents.ttl.gz
