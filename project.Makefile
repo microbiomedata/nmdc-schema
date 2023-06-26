@@ -346,6 +346,7 @@ local/selected_mongodb_contents_jsonschema_check.txt \
 linkml-validate-mongodb \
 local/selected_mongodb_contents.json.gz \
 local/selected_mongodb_contents.yaml \
+local/selected_mongodb_contents.yaml.gz \
 local/selected_mongodb_contents.ttl \
 local/selected_mongodb_contents.ttl.gz
 
@@ -357,6 +358,7 @@ linkml-validate-mongodb \
 local/selected_mongodb_contents.json.gz
 
 local/selected_mongodb_contents.json:
+	# approximately 2 minute
 	$(RUN) mongodb_exporter \
 		--schema-file src/schema/nmdc.yaml \
 		--root-class Database \
@@ -384,18 +386,6 @@ local/selected_mongodb_contents.json:
 		--selected-collections read_qc_analysis_activity_set \
 		--selected-collections study_set 2>&1  | tee local/selected_mongodb_contents.log
 
-  #@click.option('--admin-db', default="admin", help='MongoDB authentication source')
-  ## @click.option('--output-json', type=click.Path(), default='local/selected_mongodb_contents.json',
-  ##               help="Output directory. Exported file's name will be based on the collection name.")
-  #@click.option('--output-json', type=click.Path(), help="Output file.")
-  #@click.option('--schema-file', type=click.Path(), default='src/schema/nmdc.yaml',
-  #              help='Path to root YAML file in the nmdc-schema')
-  #@click.option('--max-docs-per-coll', default=100_000, help='Maximum number of documents to retrieve per collection')
-  #@click.option('--non-nmdc-id-fixes/--no-non-nmdc-id-fixes', default=True,
-  #              help="Apply repairs that don't alter ids for nmdc-schema instances")
-  #@click.option('--curie-fix/--no-curie-fix', default=False,
-  #              help='Remove end-of-line characters from nmdc-schema ids')
-
 local/selected_mongodb_contents.json.gz: local/selected_mongodb_contents.json
 	gzip -c $< > $@
 
@@ -414,23 +404,32 @@ mongodb-cleanup:
 local/mongodb-collection-report.txt:
 	$(RUN) mongodb_exporter 2>&1 | tee $@
 
-local/selected_mongodb_contents_jsonschema_check.txt: nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json local/selected_mongodb_contents.json
+local/selected_mongodb_contents_jsonschema_check.txt: nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json \
+local/selected_mongodb_contents.json
+	# < 5 minutes ?
 	$(RUN) check-jsonschema --schemafile  $^ | tee $@
 
 linkml-validate-mongodb: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/selected_mongodb_contents.json
+	# < 5 minutes ?
 	$(RUN) linkml-validate --schema $^
 
-# linkml conversion to RDF/TTL
-#  debugging by line number easier in YAML
+# slow linkml conversion from JSON to RDF/TTL
+#  ~ 12 minutes
+#  makes debugging other conversions by input line number easier
 #  why not just writing YAML from mongodb_exporter?
 #  doesn't seem to handle 64 bit numbers well
 local/selected_mongodb_contents.yaml: local/selected_mongodb_contents.json
 	cat $< | yq  -P  | cat > $@
 
+local/selected_mongodb_contents.yaml.gz: local/selected_mongodb_contents.yaml
+	gzip -c $< > $@
+
 local/selected_mongodb_contents.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/selected_mongodb_contents.yaml
+	# ~ 15 minutes ?
 	$(RUN) linkml-convert \
 		--output $@ \
 		--schema $^
+	# relatively fast
 	riot --validate $@
 
 local/selected_mongodb_contents.ttl.gz: local/selected_mongodb_contents.ttl
