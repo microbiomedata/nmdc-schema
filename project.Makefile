@@ -426,6 +426,7 @@ local/selected_mongodb_contents.yaml.gz: local/selected_mongodb_contents.yaml
 
 local/selected_mongodb_contents.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/selected_mongodb_contents.yaml
 	# ~ 15 minutes ?
+	#  requires mongodb_exporter to be run in --curie-fix mode
 	$(RUN) linkml-convert \
 		--output $@ \
 		--schema $^
