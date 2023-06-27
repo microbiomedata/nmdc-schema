@@ -337,18 +337,8 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosampl
 
 # # # #
 
-.PHONY: mongodb-cleanup dump-validate-report-convert-mongodb linkml-validate-mongodb
-
-dump-validate-report-convert-mongodb: mongodb-cleanup accepting_legacy_ids_all \
-local/mongodb-collection-report.txt \
-local/selected_mongodb_contents.json \
-local/selected_mongodb_contents_jsonschema_check.txt \
-linkml-validate-mongodb \
-local/selected_mongodb_contents.json.gz \
-local/selected_mongodb_contents.yaml \
-local/selected_mongodb_contents.yaml.gz \
-local/selected_mongodb_contents.ttl \
-local/selected_mongodb_contents.ttl.gz
+.PHONY: mongodb-cleanup dump-validate-report-convert-mongodb \
+dump-validate-report-convert-mongodb linkml-validate-mongodb
 
 dump-validate-report-mongodb: mongodb-cleanup accepting_legacy_ids_all \
 local/mongodb-collection-report.txt \
@@ -356,6 +346,42 @@ local/selected_mongodb_contents.json \
 local/selected_mongodb_contents_jsonschema_check.txt \
 linkml-validate-mongodb \
 local/selected_mongodb_contents.json.gz
+
+dump-validate-report-convert-mongodb: mongodb-cleanup \
+local/selected_mongodb_contents.yaml \
+local/selected_mongodb_contents.yaml.gz \
+local/selected_mongodb_contents.ttl \
+local/selected_mongodb_contents.ttl.gz
+
+local/selected_mongodb_contents_fully_repaired.json:
+	# approximately 2 minute
+	$(RUN) mongodb_exporter \
+		--schema-file src/schema/nmdc.yaml \
+		--root-class Database \
+		--env-file local/.env \
+		--mongo-db-name nmdc \
+		--mongo-host localhost \
+		--mongo-port 27777 \
+		--admin-db admin \
+		--curie-fix \
+		--non-nmdc-id-fixes \
+		--max-docs-per-coll 1_000_000 \
+		--output-json $@ \
+		--selected-collections biosample_set \
+		--selected-collections data_object_set \
+		--selected-collections field_research_site_set \
+		--selected-collections mags_activity_set \
+		--selected-collections metabolomics_analysis_activity_set \
+		--selected-collections metagenome_annotation_activity_set \
+		--selected-collections metagenome_assembly_set \
+		--selected-collections metaproteomics_analysis_activity_set \
+		--selected-collections metatranscriptome_activity_set \
+		--selected-collections nom_analysis_activity_set \
+		--selected-collections omics_processing_set \
+		--selected-collections read_based_taxonomy_analysis_activity_set \
+		--selected-collections read_qc_analysis_activity_set \
+		--selected-collections study_set 2>&1  | tee local/selected_mongodb_contents.log
+
 
 local/selected_mongodb_contents.json:
 	# approximately 2 minute
@@ -399,6 +425,7 @@ mongodb-cleanup:
 	rm -rf local/selected_mongodb_contents.ttl
 	rm -rf local/selected_mongodb_contents.ttl.gz
 	rm -rf local/selected_mongodb_contents.yaml
+	rm -rf local/selected_mongodb_contents.yaml.gz
 	rm -rf local/selected_mongodb_contents_jsonschema_check.txt
 
 local/mongodb-collection-report.txt:
@@ -418,13 +445,14 @@ linkml-validate-mongodb: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local
 #  makes debugging other conversions by input line number easier
 #  why not just writing YAML from mongodb_exporter?
 #  doesn't seem to handle 64 bit numbers well
-local/selected_mongodb_contents.yaml: local/selected_mongodb_contents.json
+local/selected_mongodb_contents_fully_repaired.yaml: local/selected_mongodb_contents_fully_repaired.json
 	cat $< | yq  -P  | cat > $@
 
-local/selected_mongodb_contents.yaml.gz: local/selected_mongodb_contents.yaml
+local/selected_mongodb_contents_fully_repaired.yaml.gz: local/selected_mongodb_contents_fully_repaired.yaml
 	gzip -c $< > $@
 
-local/selected_mongodb_contents.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/selected_mongodb_contents.yaml
+local/selected_mongodb_contents_fully_repaired.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml \
+local/selected_mongodb_contents_fully_repaired.yaml
 	# ~ 15 minutes ?
 	#  requires mongodb_exporter to be run in --curie-fix mode
 	$(RUN) linkml-convert \
@@ -433,7 +461,7 @@ local/selected_mongodb_contents.ttl: nmdc_schema/nmdc_schema_accepting_legacy_id
 	# relatively fast
 	riot --validate $@
 
-local/selected_mongodb_contents.ttl.gz: local/selected_mongodb_contents.ttl
+local/selected_mongodb_contents_fully_repaired.ttl.gz: local/selected_mongodb_contents_fully_repaired.ttl
 	date
 	gzip -c $< > $@
 
