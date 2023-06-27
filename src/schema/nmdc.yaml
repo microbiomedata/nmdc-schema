@@ -2520,6 +2520,8 @@ slots:
   doi:
     is_a: attribute
     range: AttributeValue
+    annotations:
+      on_hover: show details
   add_date:
     range: string
     description: The date on which the information was added to the database.
