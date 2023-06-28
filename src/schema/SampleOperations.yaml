@@ -7,6 +7,9 @@ prefixes:
     prefix_reference: http://www.w3.org/2001/XMLSchema#
 imports:
   - linkml:types
+  - core
+  - NMDC
+  
 default_range: string
 
 classes:
@@ -256,6 +259,16 @@ classes:
       - duration
       - mixing
       - speed
+
+  labDevice: 
+    description: >-
+      labDevice schema
+    slots:
+      - id
+      - description **
+      - device_type
+      - activity_time_id
+      - activity_speed_id
   
 
 
@@ -307,7 +320,13 @@ enums:
       ChemicalReactionActivity:
         text: 'Chemical Reaction Activity'
 
-#Ask how to make things nullable
+  devicetypeenum:
+    permissible_values:
+      orbital_shaker:
+        text: 'Orbital Shaker'
+      thermomixer:
+        text: 'Thermomixer'
+
 slots:
   id:
     range: integer
@@ -319,7 +338,7 @@ slots:
   separation_id:
     range: integer
   has_input:
-    range: BioSample #I think this is right, but it might not be. Ask about quantity value and biosample defs
+    range: BioSample 
   analyte_id:
     range: integer
     description: "Unique identifier for the analytical sample resulting from the extraction activity"
@@ -366,7 +385,7 @@ slots:
   duration:
     range: quantityValue
   mixing:
-    range: labDevice #this schema is made, just not in this file. Ask how this should be imported or if it will
+    range: labDevice 
   sample_volume:
     range: quantityValue
   speed:
@@ -427,3 +446,10 @@ slots:
   reactant:
     range: float
     description: A substance that is consumed in the course of a chemical reaction. It is sometimes known, especially in the older literature, as a reagent, but this term is better used in a more specialized sense as a test substance that is added to a system in order to bring about a reaction or to see whether a reaction occurs (e.g. an analytical reagent).
+  description:
+  device_type:
+    range: devicetypeenum
+  activity_time_id:
+    range: integer
+  activity_speed_id:
+    range: integer
