@@ -1,614 +1,614 @@
-data_product	neon_table	neon_field_name	match_type	nmdc_class	nmdc_slot	static_value	neon_units	notes
-DP1.10086.001	bgc_CNiso_externalSummary	uid						Exclude
-DP1.10086.001	bgc_CNiso_externalSummary	analyte						Exclude
-DP1.10086.001	bgc_CNiso_externalSummary	analyteUnits						Exclude
-DP1.10086.001	bgc_CNiso_externalSummary	sampleType						Exclude
-DP1.10086.001	bgc_CNiso_externalSummary	qaReferenceID						Exclude
-DP1.10086.001	bgc_CNiso_externalSummary	analyteKnownValue						Exclude
-DP1.10086.001	bgc_CNiso_externalSummary	analyteObservedValue						Exclude
-DP1.10086.001	bgc_CNiso_externalSummary	analyteAbsoluteError						Exclude
-DP1.10086.001	bgc_CNiso_externalSummary	analyteStandardDeviation						Exclude
-DP1.10086.001	bgc_CNiso_externalSummary	analyteMetricsCount						Exclude
-DP1.10086.001	bgc_CNiso_externalSummary	qaReportingStartDate						Exclude
-DP1.10086.001	bgc_CNiso_externalSummary	qaReportingEndDate						Exclude
-DP1.10086.001	bgc_CNiso_externalSummary	laboratoryName						Exclude
-DP1.10086.001	bgc_CNiso_externalSummary	instrument						Exclude
-DP1.10086.001	bgc_CNiso_externalSummary	testMethod						Exclude
-DP1.10086.001	bgc_CNiso_externalSummary	method						Exclude
-DP1.10086.001	bgc_CNiso_externalSummary	dataQF						Exclude
-DP1.10086.001	ntr_externalLab	uid						Exclude
-DP1.10086.001	ntr_externalLab	namedLocation						inherited from sls_soilCoreCollection
-DP1.10086.001	ntr_externalLab	domainID						inherited from sls_soilCoreCollection
-DP1.10086.001	ntr_externalLab	siteID						inherited from sls_soilCoreCollection
-DP1.10086.001	ntr_externalLab	plotID						inherited from sls_soilCoreCollection
-DP1.10086.001	ntr_externalLab	startDate						inherited from sls_soilCoreCollection
-DP1.10086.001	ntr_externalLab	collectDate						inherited from sls_soilCoreCollection
-DP1.10086.001	ntr_externalLab	sampleID						inherited from sls_soilCoreCollection
-DP1.10086.001	ntr_externalLab	sampleCode						inherited from sls_soilCoreCollection
-DP1.10086.001	ntr_externalLab	kclSampleID						inherited from ntr_internalLab
-DP1.10086.001	ntr_externalLab	kclSampleCode						inherited from ntr_internalLab
-DP1.10086.001	ntr_externalLab	sampleCondition						
-DP1.10086.001	ntr_externalLab	ammoniumNAnalysisDate						
-DP1.10086.001	ntr_externalLab	kclAmmoniumNConc	narrow_mapping	Biosample	ammonium_nitrogen.has_numeric_value		mg/L	
-DP1.10086.001	ntr_externalLab	ammoniumNRepNum	narrow_mapping	Biosample	replicate_number			
-DP1.10086.001	ntr_externalLab	ammoniumNQF						
-DP1.10086.001	ntr_externalLab	ammoniumNRemarks						Exclude
-DP1.10086.001	ntr_externalLab	nitrateNitriteNAnalysisDate						
-DP1.10086.001	ntr_externalLab	kclNitrateNitriteNConc	exact_mapping	Biosample	tot_nitro_content.has_numeric_value		milligramsPerLiter	
-DP1.10086.001	ntr_externalLab	nitrateNitriteNRepNum	narrow_mapping	Biosample	replicate_number			
-DP1.10086.001	ntr_externalLab	nitrateNitriteNQF						
-DP1.10086.001	ntr_externalLab	nitrateNitriteNRemarks						Exclude
-DP1.10086.001	ntr_externalLab	laboratoryName						
-DP1.10086.001	ntr_externalLab	ammoniumNMethod						
-DP1.10086.001	ntr_externalLab	ammoniumNInstrument						
-DP1.10086.001	ntr_externalLab	ammoniumNAnalyzedBy						Exclude
-DP1.10086.001	ntr_externalLab	ammoniumNReviewedBy						Exclude
-DP1.10086.001	ntr_externalLab	nitrateNitriteNMethod						
-DP1.10086.001	ntr_externalLab	nitrateNitriteNInstrument						
-DP1.10086.001	ntr_externalLab	nitrateNitriteNAnalyzedBy						Exclude
-DP1.10086.001	ntr_externalLab	nitrateNitriteNReviewedBy						Exclude
-DP1.10086.001	ntr_externalLab	dataQF						
-DP1.10086.001	ntr_externalSummary	uid						Exclude
-DP1.10086.001	ntr_externalSummary	analyte						Exclude
-DP1.10086.001	ntr_externalSummary	analyteUnits						Exclude
-DP1.10086.001	ntr_externalSummary	sampleType						Exclude
-DP1.10086.001	ntr_externalSummary	qaReferenceID						Exclude
-DP1.10086.001	ntr_externalSummary	lotID						Exclude
-DP1.10086.001	ntr_externalSummary	analyteKnownValue						Exclude
-DP1.10086.001	ntr_externalSummary	analyteObservedValue						Exclude
-DP1.10086.001	ntr_externalSummary	analytePercentRecovery						Exclude
-DP1.10086.001	ntr_externalSummary	analyteStandardDeviation						Exclude
-DP1.10086.001	ntr_externalSummary	methodDetectionLimit						Exclude
-DP1.10086.001	ntr_externalSummary	analyteMetricsCount						Exclude
-DP1.10086.001	ntr_externalSummary	qaReportingStartDate						Exclude
-DP1.10086.001	ntr_externalSummary	qaReportingEndDate						Exclude
-DP1.10086.001	ntr_externalSummary	laboratoryName						Exclude
-DP1.10086.001	ntr_externalSummary	instrument						Exclude
-DP1.10086.001	ntr_externalSummary	method						Exclude
-DP1.10086.001	ntr_externalSummary	dataQF						Exclude
-DP1.10086.001	ntr_internalLab	uid						Exclude
-DP1.10086.001	ntr_internalLab	namedLocation						inherited from sls_soilCoreCollection
-DP1.10086.001	ntr_internalLab	domainID						inherited from sls_soilCoreCollection
-DP1.10086.001	ntr_internalLab	siteID						inherited from sls_soilCoreCollection
-DP1.10086.001	ntr_internalLab	plotID						inherited from sls_soilCoreCollection
-DP1.10086.001	ntr_internalLab	plotType						inherited from sls_soilCoreCollection
-DP1.10086.001	ntr_internalLab	startDate						inherited from sls_soilCoreCollection
-DP1.10086.001	ntr_internalLab	collectDate						inherited from sls_soilCoreCollection
-DP1.10086.001	ntr_internalLab	samplingProtocolVersion						inherited from sls_soilCoreCollection
-DP1.10086.001	ntr_internalLab	sampleID						inherited from sls_soilCoreCollection
-DP1.10086.001	ntr_internalLab	sampleCode						inherited from sls_soilCoreCollection
-DP1.10086.001	ntr_internalLab	kclSampleID						
-DP1.10086.001	ntr_internalLab	kclSampleCode						
-DP1.10086.001	ntr_internalLab	incubationPairID						
-DP1.10086.001	ntr_internalLab	nTransBoutType						inherited from sls_soilCoreCollection
-DP1.10086.001	ntr_internalLab	incubationLength	related_mapping	Biosample	collection_date_inc			NMDC requires date, NEON is in days.
-DP1.10086.001	ntr_internalLab	extractionStartDate						
-DP1.10086.001	ntr_internalLab	kclReferenceID						
-DP1.10086.001	ntr_internalLab	soilFreshMass	exact_mapping	Biosample	samp_size.has_numeric_value		gram	
-DP1.10086.001	ntr_internalLab	kclVolume						
-DP1.10086.001	ntr_internalLab	extractionEndDate						
-DP1.10086.001	ntr_internalLab	sampleCondition						
-DP1.10086.001	ntr_internalLab	remarks						Exclude
-DP1.10086.001	ntr_internalLab	processedBy						Exclude
-DP1.10086.001	ntr_internalLab	recordedBy						Exclude
-DP1.10086.001	ntr_internalLab	dataQF						
-DP1.10086.001	ntr_internalLabBlanks	uid						Exclude
-DP1.10086.001	ntr_internalLabBlanks	domainID						Exclude
-DP1.10086.001	ntr_internalLabBlanks	siteID						Exclude
-DP1.10086.001	ntr_internalLabBlanks	extractionStartDate						Exclude
-DP1.10086.001	ntr_internalLabBlanks	extractionEndDate						Exclude
-DP1.10086.001	ntr_internalLabBlanks	kclReferenceID						Exclude
-DP1.10086.001	ntr_internalLabBlanks	kclBlank1ID						Exclude
-DP1.10086.001	ntr_internalLabBlanks	kclBlank1Code						Exclude
-DP1.10086.001	ntr_internalLabBlanks	kclBlank2ID						Exclude
-DP1.10086.001	ntr_internalLabBlanks	kclBlank2Code						Exclude
-DP1.10086.001	ntr_internalLabBlanks	kclBlank3ID						Exclude
-DP1.10086.001	ntr_internalLabBlanks	kclBlank3Code						Exclude
-DP1.10086.001	ntr_internalLabBlanks	remarks						Exclude
-DP1.10086.001	ntr_internalLabBlanks	dataQF						Exclude
-DP1.10086.001	sls_bgcSubsampling	uid						Exclude
-DP1.10086.001	sls_bgcSubsampling	domainID						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_bgcSubsampling	siteID						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_bgcSubsampling	plotID						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_bgcSubsampling	namedLocation						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_bgcSubsampling	startDate						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_bgcSubsampling	collectDate						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_bgcSubsampling	samplingProtocolVersion						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_bgcSubsampling	horizon						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_bgcSubsampling	ovenStartDate						
-DP1.10086.001	sls_bgcSubsampling	ovenEndDate						
-DP1.10086.001	sls_bgcSubsampling	sampleID						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_bgcSubsampling	sampleCode						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_bgcSubsampling	cnSampleID						
-DP1.10086.001	sls_bgcSubsampling	cnSampleCode						
-DP1.10086.001	sls_bgcSubsampling	bgcArchiveID						
-DP1.10086.001	sls_bgcSubsampling	bgcArchiveCode						
-DP1.10086.001	sls_bgcSubsampling	bgcArchiveMass						
-DP1.10086.001	sls_bgcSubsampling	toxicodendronPossible						
-DP1.10086.001	sls_bgcSubsampling	sampleCondition						
-DP1.10086.001	sls_bgcSubsampling	bgcRemarks						Exclude
-DP1.10086.001	sls_bgcSubsampling	processedBy						Exclude
-DP1.10086.001	sls_bgcSubsampling	bgcDataQF						
-DP1.10086.001	sls_metagenomicsPooling	uid						Exclude
-DP1.10086.001	sls_metagenomicsPooling	domainID						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_metagenomicsPooling	siteID						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_metagenomicsPooling	plotID						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_metagenomicsPooling	namedLocation						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_metagenomicsPooling	startDate	exact_mapping	Pooling	start_date			earliest start date of sampleIDs in genomicsPooledIDList
-DP1.10086.001	sls_metagenomicsPooling	collectDate	exact_mapping	Pooling	end_date			latest collect date of sampleIDs in genomicsPooledIDList
-DP1.10086.001	sls_metagenomicsPooling	eventID						
-DP1.10086.001	sls_metagenomicsPooling	samplingProtocolVersion	close_mapping	Pooling	protocol_link.name			inherited from sls_soilCoreCollection
-DP1.10086.001	sls_metagenomicsPooling	genomicsPooledIDList	close_mapping	Pooling	has_input			
-DP1.10086.001	sls_metagenomicsPooling	genomicsPooledIDList	related_mapping	Biosample	sample_link			genomicsPooledIDList values need to be split by | and prefixed with NEON: since they are IDs
-DP1.10086.001	sls_metagenomicsPooling	genomicsSampleID	exact_mapping	Pooling	has_output.id			
-DP1.10086.001	sls_metagenomicsPooling	genomicsSampleCode						
-DP1.10086.001	sls_metagenomicsPooling	sampleCondition						
-DP1.10086.001	sls_metagenomicsPooling	processedBy						Exclude
-DP1.10086.001	sls_metagenomicsPooling	remarks						Exclude
-DP1.10086.001	sls_metagenomicsPooling	genomicsDataQF						
-DP1.10086.001	sls_soilChemistry	uid						Exclude
-DP1.10086.001	sls_soilChemistry	analysisDate						
-DP1.10086.001	sls_soilChemistry	namedLocation						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilChemistry	domainID						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilChemistry	siteID						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilChemistry	plotID						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilChemistry	plotType						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilChemistry	startDate						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilChemistry	collectDate						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilChemistry	sampleID						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilChemistry	sampleCode						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilChemistry	cnSampleID						
-DP1.10086.001	sls_soilChemistry	cnSampleCode						
-DP1.10086.001	sls_soilChemistry	sampleType	exact_mapping	Biosample	env_package.has_raw_value			soil
-DP1.10086.001	sls_soilChemistry	acidTreatment						
-DP1.10086.001	sls_soilChemistry	co2Trapped						
-DP1.10086.001	sls_soilChemistry	d15N						
-DP1.10086.001	sls_soilChemistry	organicd13C						
-DP1.10086.001	sls_soilChemistry	nitrogenPercent	close_mapping	Biosample	nitro.has_numeric_value		percent	
-DP1.10086.001	sls_soilChemistry	organicCPercent	close_mapping	Biosample	org_carb.has_numeric_value		percent	
-DP1.10086.001	sls_soilChemistry	CNratio	narrow_mapping	Biosample	carb_nitro_ratio.has_numeric_value			
-DP1.10086.001	sls_soilChemistry	cnIsotopeQF						
-DP1.10086.001	sls_soilChemistry	cnPercentQF						
-DP1.10086.001	sls_soilChemistry	isotopeAccuracyQF						
-DP1.10086.001	sls_soilChemistry	percentAccuracyQF						
-DP1.10086.001	sls_soilChemistry	analyticalRepNumber	close_mapping	Biosample	replicate_number			
-DP1.10086.001	sls_soilChemistry	remarks						Exclude
-DP1.10086.001	sls_soilChemistry	laboratoryName						Exclude
-DP1.10086.001	sls_soilChemistry	testMethod	broad_mapping	Biosample	tot_org_c_meth			
-DP1.10086.001	sls_soilChemistry	instrument						
-DP1.10086.001	sls_soilChemistry	analyzedBy						Exclude
-DP1.10086.001	sls_soilChemistry	reviewedBy						Exclude
-DP1.10086.001	sls_soilChemistry	dataQF						
-DP1.10086.001	sls_soilCoreCollection	uid						Exclude
-DP1.10086.001	sls_soilCoreCollection	domainID						
-DP1.10086.001	sls_soilCoreCollection	siteID	related_mapping	Biosample	geo_loc_name			use siteID to pull location information from NEON API (Mark)
-DP1.10086.001	sls_soilCoreCollection	plotID	related_mapping	Biosample	env_broad_scale			use plotID to pull environmental triad information (Mark/Hugh)
-DP1.10086.001	sls_soilCoreCollection	namedLocation						
-DP1.10086.001	sls_soilCoreCollection	plotType						
-DP1.10086.001	sls_soilCoreCollection	nlcdClass	related_mapping	Biosample	env_broad_scale			determined by Mark/Hugh plot environment information work
-DP1.10086.001	sls_soilCoreCollection	subplotID	related_mapping	Biosample	env_broad_scale			use with plotID to pull environmental triad information (Mark/Hugh)
-DP1.10086.001	sls_soilCoreCollection	subplotID	related_mapping	Biosample	sample_link			Biosamples sharing subplotID and collectionDate are linked
-DP1.10086.001	sls_soilCoreCollection	coreCoordinateX						
-DP1.10086.001	sls_soilCoreCollection	coreCoordinateY						
-DP1.10086.001	sls_soilCoreCollection	geodeticDatum						Exclude
-DP1.10086.001	sls_soilCoreCollection	decimalLatitude	narrow_mapping	Biosample	lat_lon.latitude			Biosample.lat_lon
-DP1.10086.001	sls_soilCoreCollection	decimalLongitude	narrow_mapping	Biosample	lat_lon.longitude			Biosample.lat_lon
-DP1.10086.001	sls_soilCoreCollection	coordinateUncertainty						
-DP1.10086.001	sls_soilCoreCollection	elevation	exact_mapping	Biosample	elev		meter	
-DP1.10086.001	sls_soilCoreCollection	elevationUncertainty						
-DP1.10086.001	sls_soilCoreCollection	samplingProtocolVersion	related_mapping	Biosample	samp_collec_method			
-DP1.10086.001	sls_soilCoreCollection	samplingProtocolVersion	related_mapping	Biosample	micro_biomass_meth			
-DP1.10086.001	sls_soilCoreCollection	samplingProtocolVersion	related_mapping	Biosample	water_cont_soil_meth			
-DP1.10086.001	sls_soilCoreCollection	startDate						first value of collection_date range
-DP1.10086.001	sls_soilCoreCollection	collectDate	exact_mapping	Biosample	collection_date			last value of collection_date range
-DP1.10086.001	sls_soilCoreCollection	sampleTiming	close_mapping	Biosample	season			
-DP1.10086.001	sls_soilCoreCollection	biophysicalCriteria						
-DP1.10086.001	sls_soilCoreCollection	eventID						
-DP1.10086.001	sls_soilCoreCollection	standingWaterDepth						
-DP1.10086.001	sls_soilCoreCollection	nTransBoutType						
-DP1.10086.001	sls_soilCoreCollection	boutType						
-DP1.10086.001	sls_soilCoreCollection	samplingImpractical						
-DP1.10086.001	sls_soilCoreCollection	incubationMethod						
-DP1.10086.001	sls_soilCoreCollection	incubationCondition						
-DP1.10086.001	sls_soilCoreCollection	sampleID	exact_mapping	Biosample	samp_name			Unique per plot, per horizon, per collectDate
-DP1.10086.001	sls_soilCoreCollection	sampleCode						NEON barcode
-DP1.10086.001	sls_soilCoreCollection	toxicodendronPossible						
-DP1.10086.001	sls_soilCoreCollection	horizon	exact_mapping	Biosample	soil_horizon			"Append "" horizon"" at the end of the horizon value"
-DP1.10086.001	sls_soilCoreCollection	horizonDetails						
-DP1.10086.001	sls_soilCoreCollection	soilTemp	narrow_mapping	Biosample	temp.has_numeric_value		degree	"Neon's variable file lists units as ""degree"". Does not specify F or C."
-DP1.10086.001	sls_soilCoreCollection	litterDepth						
-DP1.10086.001	sls_soilCoreCollection	sampleTopDepth	close_mapping	Biosample	depth.has_maximum_numeric_value		centimeter	first value of depth interval
-DP1.10086.001	sls_soilCoreCollection	sampleBottomDepth	close_mapping	Biosample	depth.has_minimum_numeric_value		centimeter	last value of depth interval
-DP1.10086.001	sls_soilCoreCollection	sampleExtent						
-DP1.10086.001	sls_soilCoreCollection	soilSamplingDevice	exact_mapping	Biosample	samp_collec_device			
-DP1.10086.001	sls_soilCoreCollection	soilCoreCount						
-DP1.10086.001	sls_soilCoreCollection	geneticSampleID						related to NEON genetic sample archive process, not metagenomics
-DP1.10086.001	sls_soilCoreCollection	geneticSampleCode						
-DP1.10086.001	sls_soilCoreCollection	geneticSampleCondition						
-DP1.10086.001	sls_soilCoreCollection	geneticSamplePrepMethod						
-DP1.10086.001	sls_soilCoreCollection	geneticArchiveSample1ID						
-DP1.10086.001	sls_soilCoreCollection	geneticArchiveSample1Code						
-DP1.10086.001	sls_soilCoreCollection	geneticArchiveSample2ID						
-DP1.10086.001	sls_soilCoreCollection	geneticArchiveSample2Code						
-DP1.10086.001	sls_soilCoreCollection	geneticArchiveSample3ID						
-DP1.10086.001	sls_soilCoreCollection	geneticArchiveSample3Code						
-DP1.10086.001	sls_soilCoreCollection	geneticArchiveSample4ID						
-DP1.10086.001	sls_soilCoreCollection	geneticArchiveSample4Code						
-DP1.10086.001	sls_soilCoreCollection	geneticArchiveSample5ID						
-DP1.10086.001	sls_soilCoreCollection	geneticArchiveSample5Code						
-DP1.10086.001	sls_soilCoreCollection	geneticArchiveSamplePrepMethod						
-DP1.10086.001	sls_soilCoreCollection	geneticArchiveContainer						
-DP1.10086.001	sls_soilCoreCollection	biomassID						
-DP1.10086.001	sls_soilCoreCollection	biomassCode						
-DP1.10086.001	sls_soilCoreCollection	biomassSampleCondition						
-DP1.10086.001	sls_soilCoreCollection	remarks						Exclude
-DP1.10086.001	sls_soilCoreCollection	collectedBy						Exclude
-DP1.10086.001	sls_soilCoreCollection	dataQF						
-DP1.10086.001	sls_soilMoisture	uid						Exclude
-DP1.10086.001	sls_soilMoisture	domainID						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilMoisture	siteID						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilMoisture	plotID						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilMoisture	namedLocation						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilMoisture	startDate						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilMoisture	collectDate						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilMoisture	sampleID						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilMoisture	sampleCode						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilMoisture	moistureSampleID						
-DP1.10086.001	sls_soilMoisture	samplingProtocolVersion						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilMoisture	horizon						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilMoisture	ovenStartDate						
-DP1.10086.001	sls_soilMoisture	ovenEndDate						
-DP1.10086.001	sls_soilMoisture	boatMass						
-DP1.10086.001	sls_soilMoisture	freshMassBoatMass						
-DP1.10086.001	sls_soilMoisture	dryMassBoatMass						
-DP1.10086.001	sls_soilMoisture	soilMoisture	exact_mapping	Biosample	water_content.has_numeric_value			Neon does not list units of soil moisture.
-DP1.10086.001	sls_soilMoisture	dryMassFraction						
-DP1.10086.001	sls_soilMoisture	sampleCondition						
-DP1.10086.001	sls_soilMoisture	smRemarks						Exclude
-DP1.10086.001	sls_soilMoisture	smMeasuredBy						Exclude
-DP1.10086.001	sls_soilMoisture	smDataQF						
-DP1.10086.001	sls_soilpH	uid						Exclude
-DP1.10086.001	sls_soilpH	domainID						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilpH	siteID						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilpH	plotID						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilpH	namedLocation						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilpH	startDate						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilpH	collectDate						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilpH	processedDate						
-DP1.10086.001	sls_soilpH	sampleID						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilpH	sampleCode						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilpH	pHSampleID						
-DP1.10086.001	sls_soilpH	samplingProtocolVersion						inherited from sls_soilCoreCollection. Removed mapping to pH_meth on 6/21/2023
-DP1.10086.001	sls_soilpH	horizon						inherited from sls_soilCoreCollection
-DP1.10086.001	sls_soilpH	soilInWaterpH	narrow_mapping	Biosample	ph			
-DP1.10086.001	sls_soilpH	soilInCaClpH						
-DP1.10086.001	sls_soilpH	pHSoilInWaterMass						
-DP1.10086.001	sls_soilpH	pHWaterVol						
-DP1.10086.001	sls_soilpH	waterpHRatio						
-DP1.10086.001	sls_soilpH	pHSoilInCaClMass						
-DP1.10086.001	sls_soilpH	pHCaClVol						
-DP1.10086.001	sls_soilpH	caclpHRatio						
-DP1.10086.001	sls_soilpH	pHRemarks						Exclude
-DP1.10086.001	sls_soilpH	pHMeasuredBy						Exclude
-DP1.10086.001	sls_soilpH	pHDataQF						
-DP1.10107.001	mms_metagenomeDnaExtraction	uid						Exclude
-DP1.10107.001	mms_metagenomeDnaExtraction	domainID						inherited from sls_soilCoreCollection/Pooling
-DP1.10107.001	mms_metagenomeDnaExtraction	siteID						inherited from sls_soilCoreCollection/Pooling
-DP1.10107.001	mms_metagenomeDnaExtraction	namedLocation						inherited from sls_soilCoreCollection/Pooling
-DP1.10107.001	mms_metagenomeDnaExtraction	laboratoryName	exact_mapping	Extraction	processing_institution			
-DP1.10107.001	mms_metagenomeDnaExtraction	collectDate	close_mapping	Extraction	start_date			inherited from sls_metagenomicsPooling:collectDate
-DP1.10107.001	mms_metagenomeDnaExtraction	processedDate	exact_mapping	Extraction	end_date			
-DP1.10107.001	mms_metagenomeDnaExtraction	genomicsSampleID	exact_mapping	Extraction	has_input			
-DP1.10107.001	mms_metagenomeDnaExtraction	deprecatedVialID						
-DP1.10107.001	mms_metagenomeDnaExtraction	dnaSampleID	exact_mapping	Extraction	has_output			
-DP1.10107.001	mms_metagenomeDnaExtraction	internalLabID						
-DP1.10107.001	mms_metagenomeDnaExtraction	sequenceAnalysisType	exact_mapping	Biosample	analysis_type			"Exclude ""marker_genes"", import ""metagenomics"""
-DP1.10107.001	mms_metagenomeDnaExtraction	testMethod	close_mapping	Extraction	protocol_link.name			Document library https://data.neonscience.org/documents
-DP1.10107.001	mms_metagenomeDnaExtraction	sampleMaterial	exact_mapping	Biosample	env_package			Need more information/an example of what this looks like.
-DP1.10107.001	mms_metagenomeDnaExtraction	sampleMass	exact_mapping	Extraction	sample_mass.has_numeric_value		gram	
-DP1.10107.001	mms_metagenomeDnaExtraction	nucleicAcidConcentration	broad_mapping	Extraction	dna_concentration		nanogramsPerMicroliter	
-DP1.10107.001	mms_metagenomeDnaExtraction	nucleicAcidQuantMethod	exact_mapping	ProcessedSample	nucleic_acid_concentration.instrument_name			Mapping added by Brynn on 06/26/2023
-DP1.10107.001	mms_metagenomeDnaExtraction	nucleicAcidPurity	related_mapping	Extraction	dna_absorb1			
-DP1.10107.001	mms_metagenomeDnaExtraction	nucleicAcidRange						
-DP1.10107.001	mms_metagenomeDnaExtraction	dnaPooledStatus	narrow_mapping	Extraction	pool_dna_extracts.has_raw_value			NEON field does not look like it includes the number of extracts (NMDC includes this number in slot).
-DP1.10107.001	mms_metagenomeDnaExtraction	qaqcStatus	exact_mapping	Extraction	quality_control_report.status			
-DP1.10107.001	mms_metagenomeDnaExtraction	dnaProcessedBy						Exclude
-DP1.10107.001	mms_metagenomeDnaExtraction	remarks						Exclude
-DP1.10107.001	mms_metagenomeDnaExtraction	dataQF						
-DP1.10107.001	mms_metagenomeSequencing	uid						Exclude
-DP1.10107.001	mms_metagenomeSequencing	domainID						inherited from mms_metagenomeDnaExtraction
-DP1.10107.001	mms_metagenomeSequencing	siteID						inherited from mms_metagenomeDnaExtraction
-DP1.10107.001	mms_metagenomeSequencing	namedLocation						inherited from mms_metagenomeDnaExtraction
-DP1.10107.001	mms_metagenomeSequencing	collectDate	close_mapping	LibraryPreparation	start_date			all Neon's collectDates refer to the Pooling table collect dates.
-DP1.10107.001	mms_metagenomeSequencing	laboratoryName	exact_mapping	LibraryPreparation	processing_institution			
-DP1.10107.001	mms_metagenomeSequencing	sequencingFacilityID	close_mapping	OmicsProcessing	processing_institution			Who sequenced the sample, vs laboratoryName is who processed the sample.
-DP1.10107.001	mms_metagenomeSequencing	processedDate	exact_mapping	LibraryPreparation	end_date			
-DP1.10107.001	mms_metagenomeSequencing	dnaSampleID	exact_mapping	LibraryPreparation	has_input			inherited from mms_metagenomeDnaExtraction
-DP1.10107.001	mms_metagenomeSequencing	internalLabID						
-DP1.10107.001	mms_metagenomeSequencing	barcodeSequence						
-DP1.10107.001	mms_metagenomeSequencing	instrument_model	narrow_mapping	OmicsProcessing	instrument_name			
-DP1.10107.001	mms_metagenomeSequencing	sequencingMethod						"Neon data example is ""Illumina"""
-DP1.10107.001	mms_metagenomeSequencing	investigation_type	close_mapping	OmicsProcessing	omics_type.term			
-DP1.10107.001	mms_metagenomeSequencing	sequencingConcentration						
-DP1.10107.001	mms_metagenomeSequencing	labPrepMethod	close_mapping	LibraryPreparation	protocol_link.name			LabPrepMethod and SequencingProtocol for NEON appear to be the same thing.
-DP1.10107.001	mms_metagenomeSequencing	sequencingProtocol						LabPrepMethod and SequencingProtocol for NEON appear to be the same thing.
-DP1.10107.001	mms_metagenomeSequencing	illuminaAdapterKit	related_mapping	OmicsProcessing	pcr_primers			The name of the adapter kit used. User would have to search the adapter kit documentation for primer sequences, they are not directly provided.
-DP1.10107.001	mms_metagenomeSequencing	illuminaIndex1						
-DP1.10107.001	mms_metagenomeSequencing	illuminaIndex2						
-DP1.10107.001	mms_metagenomeSequencing	sequencerRunID						
-DP1.10107.001	mms_metagenomeSequencing	sampleTotalReadNumber						
-DP1.10107.001	mms_metagenomeSequencing	sampleFilteredReadNumber						
-DP1.10107.001	mms_metagenomeSequencing	ncbiProjectID	close_mapping	OmicsProcessing	ncbi_project_name			
-DP1.10107.001	mms_metagenomeSequencing	analyzedBy						Exclude
-DP1.10107.001	mms_metagenomeSequencing	remarks						Exclude
-DP1.10107.001	mms_metagenomeSequencing	dataQF						
-DP1.10107.001	mms_rawDataFiles	uid						Exclude
-DP1.10107.001	mms_rawDataFiles	domainID						inherited from sls_soilCoreCollection
-DP1.10107.001	mms_rawDataFiles	siteID						inherited from sls_soilCoreCollection
-DP1.10107.001	mms_rawDataFiles	namedLocation						inherited from sls_soilCoreCollection
-DP1.10107.001	mms_rawDataFiles	laboratoryName						inherited from mms_metagenomeSequencing
-DP1.10107.001	mms_rawDataFiles	sequencingFacilityID						inherited from mms_metagenomeSequencing
-DP1.10107.001	mms_rawDataFiles	startDate						
-DP1.10107.001	mms_rawDataFiles	endDate						
-DP1.10107.001	mms_rawDataFiles	sequencerRunID						inherited from mms_metagenomeSequencing
-DP1.10107.001	mms_rawDataFiles	dnaSampleID						inherited from mms_metagenomeSequencing
-DP1.10107.001	mms_rawDataFiles	dnaSampleCode						
-DP1.10107.001	mms_rawDataFiles	internalLabID						
-DP1.10107.001	mms_rawDataFiles	rawDataFileName	exact_mapping	OmicsProcessing	name			
-DP1.10107.001	mms_rawDataFiles	rawDataFileDescription	exact_mapping	OmicsProcessing	description			
-DP1.10107.001	mms_rawDataFiles	rawDataFilePath	broad_mapping	OmicsProcessing	data_object_type			
-DP1.10107.001	mms_rawDataFiles	remarks						Exclude
-DP1.10107.001	mms_rawDataFiles	dataQF						
-				Biosample	env_broad_scale.term.id	ENVO:00000446		
-				Biosample	env_broad_scale.term.name	terrestrial biome		
-				Biosample	env_medium.term.id	ENVO:00001998		
-				Biosample	env_medium.term.name	soil		
-DP1.20281.00	amc_fieldGenetic	uid						Exclude
-DP1.20281.00	amc_fieldGenetic	domainID						inherited from amc_fieldSuperParent table.
-DP1.20281.00	amc_fieldGenetic	siteID						inherited from amc_fieldSuperParent table.
-DP1.20281.00	amc_fieldGenetic	namedLocation						inherited from amc_fieldSuperParent table.
-DP1.20281.00	amc_fieldGenetic	collectDate						inherited from amc_fieldSuperParent table.
-DP1.20281.00	amc_fieldGenetic	parentSampleID						inherited from amc_fieldSuperParent table.
-DP1.20281.00	amc_fieldGenetic	parentSampleCode						exclude
-DP1.20281.00	amc_fieldGenetic	archiveSampleCond						exclude
-DP1.20281.00	amc_fieldGenetic	archiveID						exclude
-DP1.20281.00	amc_fieldGenetic	archiveSampleCode						exclude
-DP1.20281.00	amc_fieldGenetic	archiveFilteredSampleVolume						exclude
-DP1.20281.00	amc_fieldGenetic	geneticSampleCond						
-DP1.20281.00	amc_fieldGenetic	geneticSampleID						The same as genomicsSampleId from the metagenomics table, which is being mapped to has_input for the Extraction class.
-DP1.20281.00	amc_fieldGenetic	geneticSampleCode						
-DP1.20281.00	amc_fieldGenetic	geneticFilteredSampleVolume	exact_mapping	Biosample	samp_size.has_numeric_value		milliliter	Alicia mentioned this will map and filtration will be ignored.
-DP1.20281.00	amc_fieldGenetic	metagenomicsCollected						Exclude
-DP1.20281.00	amc_fieldGenetic	metagenomicSampleCond						Exclude
-DP1.20281.00	amc_fieldGenetic	metagenomicSampleID						Exclude
-DP1.20281.00	amc_fieldGenetic	metagenomicSampleCode						Exclude
-DP1.20281.00	amc_fieldGenetic	metagenomicFilteredSampleVolume						Exclude
-DP1.20281.00	amc_fieldGenetic	sampleMaterial	exact_mapping	Biosample	env_package.has_raw_value	water		
-DP1.20281.00	amc_fieldGenetic	remarks						Exclude
-DP1.20281.00	amc_fieldGenetic	dataQF						
-DP1.20281.00	amc_fieldSuperParent	uid						exclude
-DP1.20281.00	amc_fieldSuperParent	domainID						
-DP1.20281.00	amc_fieldSuperParent	siteID	related_mapping	Biosample	geo_loc_name			use siteID to pull location information from NEON API (Mark)
-DP1.20281.00	amc_fieldSuperParent	namedLocation						exclude
-DP1.20281.00	amc_fieldSuperParent	decimalLatitude	exact_mapping	Biosample	lat_lon.latitude			
-DP1.20281.00	amc_fieldSuperParent	decimalLongitude	exact_mapping	Biosample	lat_lon.longitude			
-DP1.20281.00	amc_fieldSuperParent	coordinateUncertainty						
-DP1.20281.00	amc_fieldSuperParent	additionalCoordUncertainty						
-DP1.20281.00	amc_fieldSuperParent	elevation	exact_mapping	Biosample	elev.has_numeric_value		meter	
-DP1.20281.00	amc_fieldSuperParent	elevationUncertainty						
-DP1.20281.00	amc_fieldSuperParent	geodeticDatum						Exclude
-DP1.20281.00	amc_fieldSuperParent	altLocation						
-DP1.20281.00	amc_fieldSuperParent	altLatitude	exact_mapping	Biosample	lat_lon.latitude			if a value is present, supersedes amc_fieldSuperParent.decimalLatitude
-DP1.20281.00	amc_fieldSuperParent	altLongitude	exact_mapping	Biosample	lat_lon.longitude			if a value is present, supersedes amc_fieldSuperParent.decimalLongitude
-DP1.20281.00	amc_fieldSuperParent	altCoordinateUncertainty						
-DP1.20281.00	amc_fieldSuperParent	altGeodeticDatum						Exclude
-DP1.20281.00	amc_fieldSuperParent	collectDate	exact_mapping	Biosample	collection_date			
-DP1.20281.00	amc_fieldSuperParent	aquaticSiteType	close_mapping	Biosample	env_local_scale			Related to Envo triad determination. See here: https://github.com/microbiomedata/nmdc-schema/blob/main/assets/neon_mixs_env_triad_mappings/neon-nlcd-local-broad-mappings.tsv
-DP1.20281.00	amc_fieldSuperParent	samplingImpractical						
-DP1.20281.00	amc_fieldSuperParent	microbeSamplesCollected						
-DP1.20281.00	amc_fieldSuperParent	parentSampleID						
-DP1.20281.00	amc_fieldSuperParent	parentSampleCode						
-DP1.20281.00	amc_fieldSuperParent	eventID						
-DP1.20281.00	amc_fieldSuperParent	samplerType	exact_mapping	Biosample	samp_collec_device			
-DP1.20281.00	amc_fieldSuperParent	dissolvedOxygen	exact_mapping	Biosample	diss_oxygen.has_numeric_value		milligramsPerLiter	
-DP1.20281.00	amc_fieldSuperParent	dissolvedOxygenSaturation						
-DP1.20281.00	amc_fieldSuperParent	specificConductance	exact_mapping	Biosample	conduc.has_numeric_value		microsiemensPerCentimeter	
-DP1.20281.00	amc_fieldSuperParent	waterTemp	exact_mapping	Biosample	temp.has_numeric_value		celsius	
-DP1.20281.00	amc_fieldSuperParent	amcSamplingProtocolVersion	exact_mapping	CollectingBiosamplesFromSite	protocol_link.name			
-DP1.20281.00	amc_fieldSuperParent	lowerSegmentDepth	narrow_mapping	Biosample	depth.has_minimum_numeric_value		meter	lowerSegmentDepth will need to be combined with upperSegmentDepth to give an interval and map to nmdc depth.
-DP1.20281.00	amc_fieldSuperParent	upperSegmentDepth	narrow_mapping	Biosample	depth.has_maximum_numeric_value		meter	See comment for lowerSegmentDepth
-DP1.20281.00	amc_fieldSuperParent	maxDepth						
-DP1.20281.00	amc_fieldSuperParent	lakeSampleDepth1						
-DP1.20281.00	amc_fieldSuperParent	lakeSampleDepth2						
-DP1.20281.00	amc_fieldSuperParent	aCollectedBy						Exclude
-DP1.20281.00	amc_fieldSuperParent	bCollectedBy						Exclude
-DP1.20281.00	amc_fieldSuperParent	remarks						Exclude
-DP1.20281.00	amc_fieldSuperParent	fieldDataQF						
-DP1.20281.00	mms_swMetagenomeDnaExtraction	uid						Exclude
-DP1.20281.00	mms_swMetagenomeDnaExtraction	domainID						inherited from amc_fieldSuperParent
-DP1.20281.00	mms_swMetagenomeDnaExtraction	siteID						inherited from amc_fieldSuperParent
-DP1.20281.00	mms_swMetagenomeDnaExtraction	namedLocation						inherited from amc_fieldSuperParent
-DP1.20281.00	mms_swMetagenomeDnaExtraction	laboratoryName	exact_mapping	Extraction	processing_institution			
-DP1.20281.00	mms_swMetagenomeDnaExtraction	collectDate						inherited from amc_fieldSuperParent
-DP1.20281.00	mms_swMetagenomeDnaExtraction	processedDate	exact_mapping	Extraction	end_date			
-DP1.20281.00	mms_swMetagenomeDnaExtraction	genomicsSampleID	exact_mapping	Extraction	has_input			matches amc_fieldGenetic.geneticSampleID
-DP1.20281.00	mms_swMetagenomeDnaExtraction	deprecatedVialID						
-DP1.20281.00	mms_swMetagenomeDnaExtraction	dnaSampleID	exact_mapping	Extraction	has_output			
-DP1.20281.00	mms_swMetagenomeDnaExtraction	internalLabID						
-DP1.20281.00	mms_swMetagenomeDnaExtraction	sequenceAnalysisType	exact_mapping	Biosample	analysis_type			"Exclude ""marker_genes"", import ""metagenomics"""
-DP1.20281.00	mms_swMetagenomeDnaExtraction	testMethod	exact_mapping	Extraction	protocol_link.name			Document library https://data.neonscience.org/documents
-DP1.20281.00	mms_swMetagenomeDnaExtraction	sampleMaterial						Captured from fieldGenetic table and will map to env_package in the Biosample class.
-DP1.20281.00	mms_swMetagenomeDnaExtraction	sampleMass	exact_mapping	Extraction	sample_mass.has_numeric_value		gram	
-DP1.20281.00	mms_swMetagenomeDnaExtraction	samplePercent						
-DP1.20281.00	mms_swMetagenomeDnaExtraction	nucleicAcidConcentration	exact_mapping	ProcessedSample	nucleic_acid_concentration.has_numeric_value		nanogramsPerMicroliter	
-DP1.20281.00	mms_swMetagenomeDnaExtraction	nucleicAcidQuantMethod						
-DP1.20281.00	mms_swMetagenomeDnaExtraction	nucleicAcidPurity	exact_mapping	ProcessedSample	biomaterial_purity.has_numeric_value			
-DP1.20281.00	mms_swMetagenomeDnaExtraction	nucleicAcidRange						
-DP1.20281.00	mms_swMetagenomeDnaExtraction	dnaPooledStatus	broad_mapping	ProcessedSample	pool_dna_extracts			NEON field does not look like it includes the number of extracts (NMDC includes this number in slot).
-DP1.20281.00	mms_swMetagenomeDnaExtraction	qaqcStatus	exact_mapping	Extraction	quality_control_report.status			
-DP1.20281.00	mms_swMetagenomeDnaExtraction	dnaProcessedBy						Exclude
-DP1.20281.00	mms_swMetagenomeDnaExtraction	remarks						Exclude
-DP1.20281.00	mms_swMetagenomeDnaExtraction	dataQF						
-DP1.20281.00	mms_swMetagenomeSequencing	uid						Exclude
-DP1.20281.00	mms_swMetagenomeSequencing	domainID						inherited from amc_fieldSuperParent table.
-DP1.20281.00	mms_swMetagenomeSequencing	siteID						inherited from amc_fieldSuperParent table.
-DP1.20281.00	mms_swMetagenomeSequencing	namedLocation						inherited from amc_fieldSuperParent table.
-DP1.20281.00	mms_swMetagenomeSequencing	collectDate						inherited from amc_fieldSuperParent table.
-DP1.20281.00	mms_swMetagenomeSequencing	laboratoryName	exact_mapping	LibraryPreparation	processing_institution			
-DP1.20281.00	mms_swMetagenomeSequencing	sequencingFacilityID	exact_mapping	OmicsProcessing	processing_institution			Although it is an ID, the data values are names, so mapping is exact.
-DP1.20281.00	mms_swMetagenomeSequencing	processedDate	exact_mapping	LibraryPreparation	end_date			
-DP1.20281.00	mms_swMetagenomeSequencing	dnaSampleID	exact_mapping	LibraryPreparation	has_input			inherited from mms_swMetagenomeDnaExtraction
-DP1.20281.00	mms_swMetagenomeSequencing	internalLabID						
-DP1.20281.00	mms_swMetagenomeSequencing	barcodeSequence						
-DP1.20281.00	mms_swMetagenomeSequencing	instrument_model	narrow_mapping	OmicsProcessing	instrument_name			
-DP1.20281.00	mms_swMetagenomeSequencing	sequencingMethod						"Neon data example is ""Illumina"""
-DP1.20281.00	mms_swMetagenomeSequencing	investigation_type	close_mapping	OmicsProcessing	omics_type			
-DP1.20281.00	mms_swMetagenomeSequencing	sequencingConcentration						
-DP1.20281.00	mms_swMetagenomeSequencing	labPrepMethod	exact_mapping	LibraryPreparation	protocol_link.name			LabPrepMethod and SequencingProtocol for NEON appear to be the same thing.
-DP1.20281.00	mms_swMetagenomeSequencing	sequencingProtocol						LabPrepMethod and SequencingProtocol for NEON appear to be the same thing.
-DP1.20281.00	mms_swMetagenomeSequencing	illuminaAdapterKit	related_mapping	OmicsProcessing	pcr_primers			The name of the adapter kit used. User would have to search the adapter kit documentation for primer sequences, they are not directly provided.
-DP1.20281.00	mms_swMetagenomeSequencing	illuminaIndex1						
-DP1.20281.00	mms_swMetagenomeSequencing	illuminaIndex2						
-DP1.20281.00	mms_swMetagenomeSequencing	sequencerRunID						
-DP1.20281.00	mms_swMetagenomeSequencing	qaqcStatus	exact_mapping	LibraryPreparation	quality_control_report.status			
-DP1.20281.00	mms_swMetagenomeSequencing	sampleTotalReadNumber						
-DP1.20281.00	mms_swMetagenomeSequencing	sampleFilteredReadNumber						
-DP1.20281.00	mms_swMetagenomeSequencing	ncbiProjectID	close_mapping	OmicsProcessing	ncbi_project_name			
-DP1.20281.00	mms_swMetagenomeSequencing	analyzedBy						Exclude
-DP1.20281.00	mms_swMetagenomeSequencing	remarks						Exclude
-DP1.20281.00	mms_swMetagenomeSequencing	dataQF						
-DP1.20281.00	mms_swRawDataFiles	uid						Exclude
-DP1.20281.00	mms_swRawDataFiles	domainID						inherited from amc_fieldSuperParent table.
-DP1.20281.00	mms_swRawDataFiles	siteID						inherited from amc_fieldSuperParent table.
-DP1.20281.00	mms_swRawDataFiles	namedLocation						inherited from amc_fieldSuperParent table.
-DP1.20281.00	mms_swRawDataFiles	laboratoryName						inherited from mms_swMetagenomeSequencing
-DP1.20281.00	mms_swRawDataFiles	sequencingFacilityID						inherited from mms_swMetagenomeSequencing
-DP1.20281.00	mms_swRawDataFiles	startDate						
-DP1.20281.00	mms_swRawDataFiles	collectDate						inherited from amc_fieldSuperParent table.
-DP1.20281.00	mms_swRawDataFiles	sequencerRunID						inherited from mms_swMetagenomeSequencing
-DP1.20281.00	mms_swRawDataFiles	dnaSampleID						inherited from mms_swMetagenomeSequencing
-DP1.20281.00	mms_swRawDataFiles	dnaSampleCode						
-DP1.20281.00	mms_swRawDataFiles	internalLabID						
-DP1.20281.00	mms_swRawDataFiles	rawDataFileName	exact_mapping	OmicsProcessing	name			
-DP1.20281.00	mms_swRawDataFiles	rawDataFileDescription	exact_mapping	OmicsProcessing	description			
-DP1.20281.00	mms_swRawDataFiles	rawDataFilePath	broad_mapping	OmicsProcessing	data_object_type			Extract file extension out of file path.
-DP1.20281.00	mms_swRawDataFiles	remarks						Exclude
-DP1.20281.00	mms_swRawDataFiles	dataQF						
-DP1.20279.00	amb_fieldParent	uid						Exclude
-DP1.20279.00	amb_fieldParent	domainID						
-DP1.20279.00	amb_fieldParent	siteID	related_mapping	Biosample	geo_loc_name			use siteID to pull location information from NEON API (Mark)
-DP1.20279.00	amb_fieldParent	namedLocation						Exclude
-DP1.20279.00	amb_fieldParent	aquaticSiteType	close_mapping	Biosample	env_broad_scale			Related to Envo triad determination. See github issue: https://github.com/microbiomedata/issues/issues/274
-DP1.20279.00	amb_fieldParent	decimalLatitude	exact_mapping	Biosample	lat_lon.latitude		decimalDegree	
-DP1.20279.00	amb_fieldParent	decimalLongitude	exact_mapping	Biosample	lat_lon.longitude		decimalDegree	
-DP1.20279.00	amb_fieldParent	coordinateUncertainty					meter	
-DP1.20279.00	amb_fieldParent	elevation	exact_mapping	Biosample	elev.has_numeric_value		meter	
-DP1.20279.00	amb_fieldParent	elevationUncertainty					meter	
-DP1.20279.00	amb_fieldParent	geodeticDatum						Exclude
-DP1.20279.00	amb_fieldParent	collectDate	exact_mapping	Biosample	collection_date			
-DP1.20279.00	amb_fieldParent	eventID						
-DP1.20279.00	amb_fieldParent	sampleID	exact_mapping	Biosample	samp_name			
-DP1.20279.00	amb_fieldParent	sampleCode						
-DP1.20279.00	amb_fieldParent	samplingImpractical						
-DP1.20279.00	amb_fieldParent	habitatType	related_mapping	Biosample	env_local_scale			See github issue: https://github.com/microbiomedata/issues/issues/274
-DP1.20279.00	amb_fieldParent	sampleNumber						
-DP1.20279.00	amb_fieldParent	aquMicrobeType						
-DP1.20279.00	amb_fieldParent	aquMicrobeScrubArea					squareMeter	
-DP1.20279.00	amb_fieldParent	samplingProtocolVersion	exact_mapping	CollectingBiosamplesFromSite	protocol_link.Protocol.name			
-DP1.20279.00	amb_fieldParent	substratumSizeClass						
-DP1.20279.00	amb_fieldParent	fieldSampleVolume	exact_mapping	Biosample	samp_size.has_numeric_value		milliliter	
-DP1.20279.00	amb_fieldParent	remarks						Exclude
-DP1.20279.00	amb_fieldParent	collectedBy						Exclude
-DP1.20279.00	amb_fieldParent	recordedBy						Exclude
-DP1.20279.00	amb_fieldParent	archiveSampleCond						
-DP1.20279.00	amb_fieldParent	archiveID						
-DP1.20279.00	amb_fieldParent	archiveSampleCode						
-DP1.20279.00	amb_fieldParent	archiveFilteredSampleVolume					milliliter	
-DP1.20279.00	amb_fieldParent	geneticSampleCond						
-DP1.20279.00	amb_fieldParent	geneticSampleID						matches mms_benthicMetagenomeDnaExtraction.geneticSampleID
-DP1.20279.00	amb_fieldParent	geneticSampleCode						
-DP1.20279.00	amb_fieldParent	geneticFilteredSampleVolume					milliliter	
-DP1.20279.00	amb_fieldParent	metagenomicSampleCond						Exclude
-DP1.20279.00	amb_fieldParent	metagenomicsCollected						Exclude
-DP1.20279.00	amb_fieldParent	metagenomicSampleID						Exclude
-DP1.20279.00	amb_fieldParent	metagenomicSampleCode						Exclude
-DP1.20279.00	amb_fieldParent	metagenomicFilteredSampleVolume					milliliter	Exclude
-DP1.20279.00	amb_fieldParent	sampleMaterial	close_mapping	Biosample	env_medium			Per discussion in NEON weekly meeting. See github issue: https://github.com/microbiomedata/issues/issues/274
-DP1.20279.00	amb_fieldParent	labSampleMedium						
-DP1.20279.00	amb_fieldParent	dataQF						
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	uid						Exclude
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	domainID						inherited from amb_fieldParent
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	siteID						inherited from amb_fieldParent
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	namedLocation						inherited from amb_fieldParent
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	laboratoryName	exact_mapping	Extraction	processing_institution			
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	collectDate	close_mapping	Extraction	start_date			inherited from amb_fieldParent
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	processedDate	exact_mapping	Extraction	end_date			
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	genomicsSampleID	exact_mapping	Extraction	has_input			matches amb_fieldParent.geneticSampleID
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	genomicsSampleCode						
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	deprecatedVialID						
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	dnaSampleID	exact_mapping	Extraction	has_output			
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	dnaSampleCode						
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	internalLabID						
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	sequenceAnalysisType	exact_mapping	Biosample	analysis_type			"Exclude ""marker_genes"", import ""metagenomics"""
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	testMethod	exact_mapping	Extraction	protocol_link.name			Document library https://data.neonscience.org/documents
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	sampleMaterial						Inherited from amb_fieldParent
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	sampleMass	exact_mapping	Extraction	sample_mass.has_numeric_value		gram	
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	samplePercent					percent	
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	nucleicAcidConcentration	exact_mapping	ProcessedSample	nucleic_acid_concentration.has_numeric_value		nanogramsPerMicroliter	
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	nucleicAcidQuantMethod						
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	nucleicAcidPurity	exact_mapping	ProcessedSample	biomaterial_purity			
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	nucleicAcidRange						
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	dnaPooledStatus	broad_mapping	ProcessedSample	pool_dna_extracts			NEON field does not look like it includes the number of extracts (NMDC includes this number in slot).
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	qaqcStatus	exact_mapping	Extraction	quality_control_report.status			
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	dnaProcessedBy						Exclude
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	remarks						Exclude
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	dataQF						
-DP1.20279.00	mms_benthicMetagenomeSequencing	uid						Exclude
-DP1.20279.00	mms_benthicMetagenomeSequencing	domainID						Inherited from amb_fieldParent
-DP1.20279.00	mms_benthicMetagenomeSequencing	siteID						Inherited from amb_fieldParent
-DP1.20279.00	mms_benthicMetagenomeSequencing	namedLocation						Inherited from amb_fieldParent
-DP1.20279.00	mms_benthicMetagenomeSequencing	collectDate						
-DP1.20279.00	mms_benthicMetagenomeSequencing	laboratoryName	exact_mapping	LibraryPreparation	processing_institution			
-DP1.20279.00	mms_benthicMetagenomeSequencing	sequencingFacilityID	exact_mapping	OmicsProcessing	processing_institution			Although it is an ID, the data values are names, so mapping is exact.
-DP1.20279.00	mms_benthicMetagenomeSequencing	processedDate	exact_mapping	LibraryPreparation	end_date			
-DP1.20279.00	mms_benthicMetagenomeSequencing	dnaSampleID	exact_mapping	LibraryPreparation	has_input			inherited from mms_swMetagenomeDnaExtraction
-DP1.20279.00	mms_benthicMetagenomeSequencing	dnaSampleCode						
-DP1.20279.00	mms_benthicMetagenomeSequencing	internalLabID						
-DP1.20279.00	mms_benthicMetagenomeSequencing	barcodeSequence						
-DP1.20279.00	mms_benthicMetagenomeSequencing	instrument_model	narrow_mapping	OmicsProcessing	instrument_name			"Neon data example is ""Illumina"""
-DP1.20279.00	mms_benthicMetagenomeSequencing	sequencingMethod						
-DP1.20279.00	mms_benthicMetagenomeSequencing	investigation_type	close_mapping	OmicsProcessing	omics_type			
-DP1.20279.00	mms_benthicMetagenomeSequencing	sequencingConcentration					nanogramsPerMicroliter	
-DP1.20279.00	mms_benthicMetagenomeSequencing	labPrepMethod	close_mapping	LibraryPreparation	protocol_link.name			LabPrepMethod and SequencingProtocol for NEON appear to be the same thing.
-DP1.20279.00	mms_benthicMetagenomeSequencing	sequencingProtocol						LabPrepMethod and SequencingProtocol for NEON appear to be the same thing.
-DP1.20279.00	mms_benthicMetagenomeSequencing	illuminaAdapterKit	related_mapping	OmicsProcessing	pcr_primers			The name of the adapter kit used.
-DP1.20279.00	mms_benthicMetagenomeSequencing	illuminaIndex1						
-DP1.20279.00	mms_benthicMetagenomeSequencing	illuminaIndex2						
-DP1.20279.00	mms_benthicMetagenomeSequencing	sequencerRunID						
-DP1.20279.00	mms_benthicMetagenomeSequencing	qaqcStatus	exact_mapping	LibraryPreparation	quality_control_report.status			
-DP1.20279.00	mms_benthicMetagenomeSequencing	sampleTotalReadNumber					number	
-DP1.20279.00	mms_benthicMetagenomeSequencing	sampleFilteredReadNumber					number	
-DP1.20279.00	mms_benthicMetagenomeSequencing	averageFilteredReadQuality						
-DP1.20279.00	mms_benthicMetagenomeSequencing	ambiguousBasesNumber					number	
-DP1.20279.00	mms_benthicMetagenomeSequencing	ncbiProjectID	close_mapping	OmicsProcessing	ncbi_project_name			
-DP1.20279.00	mms_benthicMetagenomeSequencing	processedSeqFileName						Exclude
-DP1.20279.00	mms_benthicMetagenomeSequencing	analyzedBy						Exclude
-DP1.20279.00	mms_benthicMetagenomeSequencing	remarks						Exclude
-DP1.20279.00	mms_benthicMetagenomeSequencing	dataQF						
-DP1.20279.00	mms_benthicRawDataFiles	uid						Exclude
-DP1.20279.00	mms_benthicRawDataFiles	domainID						Inherited from amb_fieldParent
-DP1.20279.00	mms_benthicRawDataFiles	siteID						Inherited from amb_fieldParent
-DP1.20279.00	mms_benthicRawDataFiles	namedLocation						Inherited from amb_fieldParent
-DP1.20279.00	mms_benthicRawDataFiles	laboratoryName						Inherited from amb_fieldParent
-DP1.20279.00	mms_benthicRawDataFiles	sequencingFacilityID						Inherited from amb_fieldParent
-DP1.20279.00	mms_benthicRawDataFiles	setDate						
-DP1.20279.00	mms_benthicRawDataFiles	collectDate						
-DP1.20279.00	mms_benthicRawDataFiles	sequencerRunID						inherited from mms_benthicMetagenomeSequencing
-DP1.20279.00	mms_benthicRawDataFiles	dnaSampleID						inherited from mms_benthicMetagenomeSequencing
-DP1.20279.00	mms_benthicRawDataFiles	dnaSampleCode						
-DP1.20279.00	mms_benthicRawDataFiles	internalLabID						
-DP1.20279.00	mms_benthicRawDataFiles	rawDataFileName	exact_mapping	OmicsProcessing	name			
-DP1.20279.00	mms_benthicRawDataFiles	rawDataFileDescription	exact_mapping	OmicsProcessing	description			
-DP1.20279.00	mms_benthicRawDataFiles	rawDataFilePath	broad_mapping	OmicsProcessing	data_object_type			Extract file extension out of file path.
-DP1.20279.00	mms_benthicRawDataFiles	remarks						Exclude
-DP1.20279.00	mms_benthicRawDataFiles	dataQF						
+data_product	neon_table	neon_field_name	match_type	nmdc_class	nmdc_slot	static_value	neon_units	nmdc_units	notes
+DP1.10086.001	bgc_CNiso_externalSummary	uid							Exclude
+DP1.10086.001	bgc_CNiso_externalSummary	analyte							Exclude
+DP1.10086.001	bgc_CNiso_externalSummary	analyteUnits							Exclude
+DP1.10086.001	bgc_CNiso_externalSummary	sampleType							Exclude
+DP1.10086.001	bgc_CNiso_externalSummary	qaReferenceID							Exclude
+DP1.10086.001	bgc_CNiso_externalSummary	analyteKnownValue							Exclude
+DP1.10086.001	bgc_CNiso_externalSummary	analyteObservedValue							Exclude
+DP1.10086.001	bgc_CNiso_externalSummary	analyteAbsoluteError							Exclude
+DP1.10086.001	bgc_CNiso_externalSummary	analyteStandardDeviation							Exclude
+DP1.10086.001	bgc_CNiso_externalSummary	analyteMetricsCount							Exclude
+DP1.10086.001	bgc_CNiso_externalSummary	qaReportingStartDate							Exclude
+DP1.10086.001	bgc_CNiso_externalSummary	qaReportingEndDate							Exclude
+DP1.10086.001	bgc_CNiso_externalSummary	laboratoryName							Exclude
+DP1.10086.001	bgc_CNiso_externalSummary	instrument							Exclude
+DP1.10086.001	bgc_CNiso_externalSummary	testMethod							Exclude
+DP1.10086.001	bgc_CNiso_externalSummary	method							Exclude
+DP1.10086.001	bgc_CNiso_externalSummary	dataQF							Exclude
+DP1.10086.001	ntr_externalLab	uid							Exclude
+DP1.10086.001	ntr_externalLab	namedLocation							inherited from sls_soilCoreCollection
+DP1.10086.001	ntr_externalLab	domainID							inherited from sls_soilCoreCollection
+DP1.10086.001	ntr_externalLab	siteID							inherited from sls_soilCoreCollection
+DP1.10086.001	ntr_externalLab	plotID							inherited from sls_soilCoreCollection
+DP1.10086.001	ntr_externalLab	startDate							inherited from sls_soilCoreCollection
+DP1.10086.001	ntr_externalLab	collectDate							inherited from sls_soilCoreCollection
+DP1.10086.001	ntr_externalLab	sampleID							inherited from sls_soilCoreCollection
+DP1.10086.001	ntr_externalLab	sampleCode							inherited from sls_soilCoreCollection
+DP1.10086.001	ntr_externalLab	kclSampleID							inherited from ntr_internalLab
+DP1.10086.001	ntr_externalLab	kclSampleCode							inherited from ntr_internalLab
+DP1.10086.001	ntr_externalLab	sampleCondition							
+DP1.10086.001	ntr_externalLab	ammoniumNAnalysisDate							
+DP1.10086.001	ntr_externalLab	kclAmmoniumNConc	narrow_mapping	Biosample	ammonium_nitrogen.has_numeric_value		mg/L		
+DP1.10086.001	ntr_externalLab	ammoniumNRepNum	narrow_mapping	Biosample	replicate_number				
+DP1.10086.001	ntr_externalLab	ammoniumNQF							
+DP1.10086.001	ntr_externalLab	ammoniumNRemarks							Exclude
+DP1.10086.001	ntr_externalLab	nitrateNitriteNAnalysisDate							
+DP1.10086.001	ntr_externalLab	kclNitrateNitriteNConc	exact_mapping	Biosample	tot_nitro_content.has_numeric_value		mg/L		
+DP1.10086.001	ntr_externalLab	nitrateNitriteNRepNum	narrow_mapping	Biosample	replicate_number				
+DP1.10086.001	ntr_externalLab	nitrateNitriteNQF							
+DP1.10086.001	ntr_externalLab	nitrateNitriteNRemarks							Exclude
+DP1.10086.001	ntr_externalLab	laboratoryName							
+DP1.10086.001	ntr_externalLab	ammoniumNMethod							
+DP1.10086.001	ntr_externalLab	ammoniumNInstrument							
+DP1.10086.001	ntr_externalLab	ammoniumNAnalyzedBy							Exclude
+DP1.10086.001	ntr_externalLab	ammoniumNReviewedBy							Exclude
+DP1.10086.001	ntr_externalLab	nitrateNitriteNMethod							
+DP1.10086.001	ntr_externalLab	nitrateNitriteNInstrument							
+DP1.10086.001	ntr_externalLab	nitrateNitriteNAnalyzedBy							Exclude
+DP1.10086.001	ntr_externalLab	nitrateNitriteNReviewedBy							Exclude
+DP1.10086.001	ntr_externalLab	dataQF							
+DP1.10086.001	ntr_externalSummary	uid							Exclude
+DP1.10086.001	ntr_externalSummary	analyte							Exclude
+DP1.10086.001	ntr_externalSummary	analyteUnits							Exclude
+DP1.10086.001	ntr_externalSummary	sampleType							Exclude
+DP1.10086.001	ntr_externalSummary	qaReferenceID							Exclude
+DP1.10086.001	ntr_externalSummary	lotID							Exclude
+DP1.10086.001	ntr_externalSummary	analyteKnownValue							Exclude
+DP1.10086.001	ntr_externalSummary	analyteObservedValue							Exclude
+DP1.10086.001	ntr_externalSummary	analytePercentRecovery							Exclude
+DP1.10086.001	ntr_externalSummary	analyteStandardDeviation							Exclude
+DP1.10086.001	ntr_externalSummary	methodDetectionLimit							Exclude
+DP1.10086.001	ntr_externalSummary	analyteMetricsCount							Exclude
+DP1.10086.001	ntr_externalSummary	qaReportingStartDate							Exclude
+DP1.10086.001	ntr_externalSummary	qaReportingEndDate							Exclude
+DP1.10086.001	ntr_externalSummary	laboratoryName							Exclude
+DP1.10086.001	ntr_externalSummary	instrument							Exclude
+DP1.10086.001	ntr_externalSummary	method							Exclude
+DP1.10086.001	ntr_externalSummary	dataQF							Exclude
+DP1.10086.001	ntr_internalLab	uid							Exclude
+DP1.10086.001	ntr_internalLab	namedLocation							inherited from sls_soilCoreCollection
+DP1.10086.001	ntr_internalLab	domainID							inherited from sls_soilCoreCollection
+DP1.10086.001	ntr_internalLab	siteID							inherited from sls_soilCoreCollection
+DP1.10086.001	ntr_internalLab	plotID							inherited from sls_soilCoreCollection
+DP1.10086.001	ntr_internalLab	plotType							inherited from sls_soilCoreCollection
+DP1.10086.001	ntr_internalLab	startDate							inherited from sls_soilCoreCollection
+DP1.10086.001	ntr_internalLab	collectDate							inherited from sls_soilCoreCollection
+DP1.10086.001	ntr_internalLab	samplingProtocolVersion							inherited from sls_soilCoreCollection
+DP1.10086.001	ntr_internalLab	sampleID							inherited from sls_soilCoreCollection
+DP1.10086.001	ntr_internalLab	sampleCode							inherited from sls_soilCoreCollection
+DP1.10086.001	ntr_internalLab	kclSampleID							
+DP1.10086.001	ntr_internalLab	kclSampleCode							
+DP1.10086.001	ntr_internalLab	incubationPairID							
+DP1.10086.001	ntr_internalLab	nTransBoutType							inherited from sls_soilCoreCollection
+DP1.10086.001	ntr_internalLab	incubationLength	related_mapping	Biosample	collection_date_inc				NMDC requires date, NEON is in days.
+DP1.10086.001	ntr_internalLab	extractionStartDate							
+DP1.10086.001	ntr_internalLab	kclReferenceID							
+DP1.10086.001	ntr_internalLab	soilFreshMass	exact_mapping	Biosample	samp_size.has_numeric_value		g		
+DP1.10086.001	ntr_internalLab	kclVolume							
+DP1.10086.001	ntr_internalLab	extractionEndDate							
+DP1.10086.001	ntr_internalLab	sampleCondition							
+DP1.10086.001	ntr_internalLab	remarks							Exclude
+DP1.10086.001	ntr_internalLab	processedBy							Exclude
+DP1.10086.001	ntr_internalLab	recordedBy							Exclude
+DP1.10086.001	ntr_internalLab	dataQF							
+DP1.10086.001	ntr_internalLabBlanks	uid							Exclude
+DP1.10086.001	ntr_internalLabBlanks	domainID							Exclude
+DP1.10086.001	ntr_internalLabBlanks	siteID							Exclude
+DP1.10086.001	ntr_internalLabBlanks	extractionStartDate							Exclude
+DP1.10086.001	ntr_internalLabBlanks	extractionEndDate							Exclude
+DP1.10086.001	ntr_internalLabBlanks	kclReferenceID							Exclude
+DP1.10086.001	ntr_internalLabBlanks	kclBlank1ID							Exclude
+DP1.10086.001	ntr_internalLabBlanks	kclBlank1Code							Exclude
+DP1.10086.001	ntr_internalLabBlanks	kclBlank2ID							Exclude
+DP1.10086.001	ntr_internalLabBlanks	kclBlank2Code							Exclude
+DP1.10086.001	ntr_internalLabBlanks	kclBlank3ID							Exclude
+DP1.10086.001	ntr_internalLabBlanks	kclBlank3Code							Exclude
+DP1.10086.001	ntr_internalLabBlanks	remarks							Exclude
+DP1.10086.001	ntr_internalLabBlanks	dataQF							Exclude
+DP1.10086.001	sls_bgcSubsampling	uid							Exclude
+DP1.10086.001	sls_bgcSubsampling	domainID							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_bgcSubsampling	siteID							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_bgcSubsampling	plotID							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_bgcSubsampling	namedLocation							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_bgcSubsampling	startDate							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_bgcSubsampling	collectDate							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_bgcSubsampling	samplingProtocolVersion							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_bgcSubsampling	horizon							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_bgcSubsampling	ovenStartDate							
+DP1.10086.001	sls_bgcSubsampling	ovenEndDate							
+DP1.10086.001	sls_bgcSubsampling	sampleID							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_bgcSubsampling	sampleCode							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_bgcSubsampling	cnSampleID							
+DP1.10086.001	sls_bgcSubsampling	cnSampleCode							
+DP1.10086.001	sls_bgcSubsampling	bgcArchiveID							
+DP1.10086.001	sls_bgcSubsampling	bgcArchiveCode							
+DP1.10086.001	sls_bgcSubsampling	bgcArchiveMass							
+DP1.10086.001	sls_bgcSubsampling	toxicodendronPossible							
+DP1.10086.001	sls_bgcSubsampling	sampleCondition							
+DP1.10086.001	sls_bgcSubsampling	bgcRemarks							Exclude
+DP1.10086.001	sls_bgcSubsampling	processedBy							Exclude
+DP1.10086.001	sls_bgcSubsampling	bgcDataQF							
+DP1.10086.001	sls_metagenomicsPooling	uid							Exclude
+DP1.10086.001	sls_metagenomicsPooling	domainID							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_metagenomicsPooling	siteID							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_metagenomicsPooling	plotID							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_metagenomicsPooling	namedLocation							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_metagenomicsPooling	startDate	exact_mapping	Pooling	start_date				earliest start date of sampleIDs in genomicsPooledIDList
+DP1.10086.001	sls_metagenomicsPooling	collectDate	exact_mapping	Pooling	end_date				latest collect date of sampleIDs in genomicsPooledIDList
+DP1.10086.001	sls_metagenomicsPooling	eventID							
+DP1.10086.001	sls_metagenomicsPooling	samplingProtocolVersion	close_mapping	Pooling	protocol_link.name				inherited from sls_soilCoreCollection
+DP1.10086.001	sls_metagenomicsPooling	genomicsPooledIDList	close_mapping	Pooling	has_input				
+DP1.10086.001	sls_metagenomicsPooling	genomicsPooledIDList	related_mapping	Biosample	sample_link				genomicsPooledIDList values need to be split by | and prefixed with NEON: since they are IDs
+DP1.10086.001	sls_metagenomicsPooling	genomicsSampleID	exact_mapping	Pooling	has_output.id				
+DP1.10086.001	sls_metagenomicsPooling	genomicsSampleCode							
+DP1.10086.001	sls_metagenomicsPooling	sampleCondition							
+DP1.10086.001	sls_metagenomicsPooling	processedBy							Exclude
+DP1.10086.001	sls_metagenomicsPooling	remarks							Exclude
+DP1.10086.001	sls_metagenomicsPooling	genomicsDataQF							
+DP1.10086.001	sls_soilChemistry	uid							Exclude
+DP1.10086.001	sls_soilChemistry	analysisDate							
+DP1.10086.001	sls_soilChemistry	namedLocation							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilChemistry	domainID							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilChemistry	siteID							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilChemistry	plotID							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilChemistry	plotType							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilChemistry	startDate							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilChemistry	collectDate							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilChemistry	sampleID							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilChemistry	sampleCode							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilChemistry	cnSampleID							
+DP1.10086.001	sls_soilChemistry	cnSampleCode							
+DP1.10086.001	sls_soilChemistry	sampleType	exact_mapping	Biosample	env_package.has_raw_value				soil
+DP1.10086.001	sls_soilChemistry	acidTreatment							
+DP1.10086.001	sls_soilChemistry	co2Trapped							
+DP1.10086.001	sls_soilChemistry	d15N							
+DP1.10086.001	sls_soilChemistry	organicd13C							
+DP1.10086.001	sls_soilChemistry	nitrogenPercent	close_mapping	Biosample	nitro.has_numeric_value		percent		
+DP1.10086.001	sls_soilChemistry	organicCPercent	close_mapping	Biosample	org_carb.has_numeric_value		percent		
+DP1.10086.001	sls_soilChemistry	CNratio	narrow_mapping	Biosample	carb_nitro_ratio.has_numeric_value				
+DP1.10086.001	sls_soilChemistry	cnIsotopeQF							
+DP1.10086.001	sls_soilChemistry	cnPercentQF							
+DP1.10086.001	sls_soilChemistry	isotopeAccuracyQF							
+DP1.10086.001	sls_soilChemistry	percentAccuracyQF							
+DP1.10086.001	sls_soilChemistry	analyticalRepNumber	close_mapping	Biosample	replicate_number				
+DP1.10086.001	sls_soilChemistry	remarks							Exclude
+DP1.10086.001	sls_soilChemistry	laboratoryName							Exclude
+DP1.10086.001	sls_soilChemistry	testMethod	broad_mapping	Biosample	tot_org_c_meth				
+DP1.10086.001	sls_soilChemistry	instrument							
+DP1.10086.001	sls_soilChemistry	analyzedBy							Exclude
+DP1.10086.001	sls_soilChemistry	reviewedBy							Exclude
+DP1.10086.001	sls_soilChemistry	dataQF							
+DP1.10086.001	sls_soilCoreCollection	uid							Exclude
+DP1.10086.001	sls_soilCoreCollection	domainID							
+DP1.10086.001	sls_soilCoreCollection	siteID	related_mapping	Biosample	geo_loc_name				use siteID to pull location information from NEON API (Mark)
+DP1.10086.001	sls_soilCoreCollection	plotID	related_mapping	Biosample	env_broad_scale				use plotID to pull environmental triad information (Mark/Hugh)
+DP1.10086.001	sls_soilCoreCollection	namedLocation							
+DP1.10086.001	sls_soilCoreCollection	plotType							
+DP1.10086.001	sls_soilCoreCollection	nlcdClass	related_mapping	Biosample	env_broad_scale				determined by Mark/Hugh plot environment information work
+DP1.10086.001	sls_soilCoreCollection	subplotID	related_mapping	Biosample	env_broad_scale				use with plotID to pull environmental triad information (Mark/Hugh)
+DP1.10086.001	sls_soilCoreCollection	subplotID	related_mapping	Biosample	sample_link				Biosamples sharing subplotID and collectionDate are linked
+DP1.10086.001	sls_soilCoreCollection	coreCoordinateX							
+DP1.10086.001	sls_soilCoreCollection	coreCoordinateY							
+DP1.10086.001	sls_soilCoreCollection	geodeticDatum							Exclude
+DP1.10086.001	sls_soilCoreCollection	decimalLatitude	narrow_mapping	Biosample	lat_lon.latitude				Biosample.lat_lon
+DP1.10086.001	sls_soilCoreCollection	decimalLongitude	narrow_mapping	Biosample	lat_lon.longitude				Biosample.lat_lon
+DP1.10086.001	sls_soilCoreCollection	coordinateUncertainty							
+DP1.10086.001	sls_soilCoreCollection	elevation	exact_mapping	Biosample	elev		m		
+DP1.10086.001	sls_soilCoreCollection	elevationUncertainty							
+DP1.10086.001	sls_soilCoreCollection	samplingProtocolVersion	related_mapping	Biosample	samp_collec_method				
+DP1.10086.001	sls_soilCoreCollection	samplingProtocolVersion	related_mapping	Biosample	micro_biomass_meth				
+DP1.10086.001	sls_soilCoreCollection	samplingProtocolVersion	related_mapping	Biosample	water_cont_soil_meth				
+DP1.10086.001	sls_soilCoreCollection	startDate							first value of collection_date range
+DP1.10086.001	sls_soilCoreCollection	collectDate	exact_mapping	Biosample	collection_date				last value of collection_date range
+DP1.10086.001	sls_soilCoreCollection	sampleTiming	close_mapping	Biosample	season				
+DP1.10086.001	sls_soilCoreCollection	biophysicalCriteria							
+DP1.10086.001	sls_soilCoreCollection	eventID							
+DP1.10086.001	sls_soilCoreCollection	standingWaterDepth							
+DP1.10086.001	sls_soilCoreCollection	nTransBoutType							
+DP1.10086.001	sls_soilCoreCollection	boutType							
+DP1.10086.001	sls_soilCoreCollection	samplingImpractical							
+DP1.10086.001	sls_soilCoreCollection	incubationMethod							
+DP1.10086.001	sls_soilCoreCollection	incubationCondition							
+DP1.10086.001	sls_soilCoreCollection	sampleID	exact_mapping	Biosample	samp_name				Unique per plot, per horizon, per collectDate
+DP1.10086.001	sls_soilCoreCollection	sampleCode							NEON barcode
+DP1.10086.001	sls_soilCoreCollection	toxicodendronPossible							
+DP1.10086.001	sls_soilCoreCollection	horizon	exact_mapping	Biosample	soil_horizon				"Append "" horizon"" at the end of the horizon value"
+DP1.10086.001	sls_soilCoreCollection	horizonDetails							
+DP1.10086.001	sls_soilCoreCollection	soilTemp	narrow_mapping	Biosample	temp.has_numeric_value		degree		"Neon's variable file lists units as ""degree"". Does not specify F or C."
+DP1.10086.001	sls_soilCoreCollection	litterDepth							
+DP1.10086.001	sls_soilCoreCollection	sampleTopDepth	close_mapping	Biosample	depth.has_maximum_numeric_value		cm	m	first value of depth interval
+DP1.10086.001	sls_soilCoreCollection	sampleBottomDepth	close_mapping	Biosample	depth.has_minimum_numeric_value		cm	m	last value of depth interval
+DP1.10086.001	sls_soilCoreCollection	sampleExtent							
+DP1.10086.001	sls_soilCoreCollection	soilSamplingDevice	exact_mapping	Biosample	samp_collec_device				
+DP1.10086.001	sls_soilCoreCollection	soilCoreCount							
+DP1.10086.001	sls_soilCoreCollection	geneticSampleID							related to NEON genetic sample archive process, not metagenomics
+DP1.10086.001	sls_soilCoreCollection	geneticSampleCode							
+DP1.10086.001	sls_soilCoreCollection	geneticSampleCondition							
+DP1.10086.001	sls_soilCoreCollection	geneticSamplePrepMethod							
+DP1.10086.001	sls_soilCoreCollection	geneticArchiveSample1ID							
+DP1.10086.001	sls_soilCoreCollection	geneticArchiveSample1Code							
+DP1.10086.001	sls_soilCoreCollection	geneticArchiveSample2ID							
+DP1.10086.001	sls_soilCoreCollection	geneticArchiveSample2Code							
+DP1.10086.001	sls_soilCoreCollection	geneticArchiveSample3ID							
+DP1.10086.001	sls_soilCoreCollection	geneticArchiveSample3Code							
+DP1.10086.001	sls_soilCoreCollection	geneticArchiveSample4ID							
+DP1.10086.001	sls_soilCoreCollection	geneticArchiveSample4Code							
+DP1.10086.001	sls_soilCoreCollection	geneticArchiveSample5ID							
+DP1.10086.001	sls_soilCoreCollection	geneticArchiveSample5Code							
+DP1.10086.001	sls_soilCoreCollection	geneticArchiveSamplePrepMethod							
+DP1.10086.001	sls_soilCoreCollection	geneticArchiveContainer							
+DP1.10086.001	sls_soilCoreCollection	biomassID							
+DP1.10086.001	sls_soilCoreCollection	biomassCode							
+DP1.10086.001	sls_soilCoreCollection	biomassSampleCondition							
+DP1.10086.001	sls_soilCoreCollection	remarks							Exclude
+DP1.10086.001	sls_soilCoreCollection	collectedBy							Exclude
+DP1.10086.001	sls_soilCoreCollection	dataQF							
+DP1.10086.001	sls_soilMoisture	uid							Exclude
+DP1.10086.001	sls_soilMoisture	domainID							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilMoisture	siteID							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilMoisture	plotID							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilMoisture	namedLocation							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilMoisture	startDate							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilMoisture	collectDate							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilMoisture	sampleID							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilMoisture	sampleCode							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilMoisture	moistureSampleID							
+DP1.10086.001	sls_soilMoisture	samplingProtocolVersion							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilMoisture	horizon							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilMoisture	ovenStartDate							
+DP1.10086.001	sls_soilMoisture	ovenEndDate							
+DP1.10086.001	sls_soilMoisture	boatMass							
+DP1.10086.001	sls_soilMoisture	freshMassBoatMass							
+DP1.10086.001	sls_soilMoisture	dryMassBoatMass							
+DP1.10086.001	sls_soilMoisture	soilMoisture	exact_mapping	Biosample	water_content.has_numeric_value		g of water/ g of dry soil		Neon does not list units of soil moisture.
+DP1.10086.001	sls_soilMoisture	dryMassFraction							
+DP1.10086.001	sls_soilMoisture	sampleCondition							
+DP1.10086.001	sls_soilMoisture	smRemarks							Exclude
+DP1.10086.001	sls_soilMoisture	smMeasuredBy							Exclude
+DP1.10086.001	sls_soilMoisture	smDataQF							
+DP1.10086.001	sls_soilpH	uid							Exclude
+DP1.10086.001	sls_soilpH	domainID							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilpH	siteID							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilpH	plotID							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilpH	namedLocation							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilpH	startDate							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilpH	collectDate							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilpH	processedDate							
+DP1.10086.001	sls_soilpH	sampleID							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilpH	sampleCode							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilpH	pHSampleID							
+DP1.10086.001	sls_soilpH	samplingProtocolVersion							inherited from sls_soilCoreCollection. Removed mapping to pH_meth on 6/21/2023
+DP1.10086.001	sls_soilpH	horizon							inherited from sls_soilCoreCollection
+DP1.10086.001	sls_soilpH	soilInWaterpH	narrow_mapping	Biosample	ph				
+DP1.10086.001	sls_soilpH	soilInCaClpH							
+DP1.10086.001	sls_soilpH	pHSoilInWaterMass							
+DP1.10086.001	sls_soilpH	pHWaterVol							
+DP1.10086.001	sls_soilpH	waterpHRatio							
+DP1.10086.001	sls_soilpH	pHSoilInCaClMass							
+DP1.10086.001	sls_soilpH	pHCaClVol							
+DP1.10086.001	sls_soilpH	caclpHRatio							
+DP1.10086.001	sls_soilpH	pHRemarks							Exclude
+DP1.10086.001	sls_soilpH	pHMeasuredBy							Exclude
+DP1.10086.001	sls_soilpH	pHDataQF							
+DP1.10107.001	mms_metagenomeDnaExtraction	uid							Exclude
+DP1.10107.001	mms_metagenomeDnaExtraction	domainID							inherited from sls_soilCoreCollection/Pooling
+DP1.10107.001	mms_metagenomeDnaExtraction	siteID							inherited from sls_soilCoreCollection/Pooling
+DP1.10107.001	mms_metagenomeDnaExtraction	namedLocation							inherited from sls_soilCoreCollection/Pooling
+DP1.10107.001	mms_metagenomeDnaExtraction	laboratoryName	exact_mapping	Extraction	processing_institution				
+DP1.10107.001	mms_metagenomeDnaExtraction	collectDate	close_mapping	Extraction	start_date				inherited from sls_metagenomicsPooling:collectDate
+DP1.10107.001	mms_metagenomeDnaExtraction	processedDate	exact_mapping	Extraction	end_date				
+DP1.10107.001	mms_metagenomeDnaExtraction	genomicsSampleID	exact_mapping	Extraction	has_input				
+DP1.10107.001	mms_metagenomeDnaExtraction	deprecatedVialID							
+DP1.10107.001	mms_metagenomeDnaExtraction	dnaSampleID	exact_mapping	Extraction	has_output				
+DP1.10107.001	mms_metagenomeDnaExtraction	internalLabID							
+DP1.10107.001	mms_metagenomeDnaExtraction	sequenceAnalysisType	exact_mapping	Biosample	analysis_type				"Exclude ""marker_genes"", import ""metagenomics"""
+DP1.10107.001	mms_metagenomeDnaExtraction	testMethod	close_mapping	Extraction	protocol_link.name				Document library https://data.neonscience.org/documents
+DP1.10107.001	mms_metagenomeDnaExtraction	sampleMaterial	exact_mapping	Biosample	env_package				Need more information/an example of what this looks like.
+DP1.10107.001	mms_metagenomeDnaExtraction	sampleMass	exact_mapping	Extraction	sample_mass.has_numeric_value		g		
+DP1.10107.001	mms_metagenomeDnaExtraction	nucleicAcidConcentration	broad_mapping	Extraction	dna_concentration		ng/uL		
+DP1.10107.001	mms_metagenomeDnaExtraction	nucleicAcidQuantMethod	exact_mapping	ProcessedSample	nucleic_acid_concentration.instrument_name				Mapping added by Brynn on 06/26/2023
+DP1.10107.001	mms_metagenomeDnaExtraction	nucleicAcidPurity	related_mapping	Extraction	dna_absorb1				
+DP1.10107.001	mms_metagenomeDnaExtraction	nucleicAcidRange							
+DP1.10107.001	mms_metagenomeDnaExtraction	dnaPooledStatus	narrow_mapping	Extraction	pool_dna_extracts.has_raw_value				NEON field does not look like it includes the number of extracts (NMDC includes this number in slot).
+DP1.10107.001	mms_metagenomeDnaExtraction	qaqcStatus	exact_mapping	Extraction	quality_control_report.status				
+DP1.10107.001	mms_metagenomeDnaExtraction	dnaProcessedBy							Exclude
+DP1.10107.001	mms_metagenomeDnaExtraction	remarks							Exclude
+DP1.10107.001	mms_metagenomeDnaExtraction	dataQF							
+DP1.10107.001	mms_metagenomeSequencing	uid							Exclude
+DP1.10107.001	mms_metagenomeSequencing	domainID							inherited from mms_metagenomeDnaExtraction
+DP1.10107.001	mms_metagenomeSequencing	siteID							inherited from mms_metagenomeDnaExtraction
+DP1.10107.001	mms_metagenomeSequencing	namedLocation							inherited from mms_metagenomeDnaExtraction
+DP1.10107.001	mms_metagenomeSequencing	collectDate	close_mapping	LibraryPreparation	start_date				all Neon's collectDates refer to the Pooling table collect dates.
+DP1.10107.001	mms_metagenomeSequencing	laboratoryName	exact_mapping	LibraryPreparation	processing_institution				
+DP1.10107.001	mms_metagenomeSequencing	sequencingFacilityID	close_mapping	OmicsProcessing	processing_institution				Who sequenced the sample, vs laboratoryName is who processed the sample.
+DP1.10107.001	mms_metagenomeSequencing	processedDate	exact_mapping	LibraryPreparation	end_date				
+DP1.10107.001	mms_metagenomeSequencing	dnaSampleID	exact_mapping	LibraryPreparation	has_input				inherited from mms_metagenomeDnaExtraction
+DP1.10107.001	mms_metagenomeSequencing	internalLabID							
+DP1.10107.001	mms_metagenomeSequencing	barcodeSequence							
+DP1.10107.001	mms_metagenomeSequencing	instrument_model	narrow_mapping	OmicsProcessing	instrument_name				
+DP1.10107.001	mms_metagenomeSequencing	sequencingMethod							"Neon data example is ""Illumina"""
+DP1.10107.001	mms_metagenomeSequencing	investigation_type	close_mapping	OmicsProcessing	omics_type.term				
+DP1.10107.001	mms_metagenomeSequencing	sequencingConcentration							
+DP1.10107.001	mms_metagenomeSequencing	labPrepMethod	close_mapping	LibraryPreparation	protocol_link.name				LabPrepMethod and SequencingProtocol for NEON appear to be the same thing.
+DP1.10107.001	mms_metagenomeSequencing	sequencingProtocol							LabPrepMethod and SequencingProtocol for NEON appear to be the same thing.
+DP1.10107.001	mms_metagenomeSequencing	illuminaAdapterKit	related_mapping	OmicsProcessing	pcr_primers				The name of the adapter kit used. User would have to search the adapter kit documentation for primer sequences, they are not directly provided.
+DP1.10107.001	mms_metagenomeSequencing	illuminaIndex1							
+DP1.10107.001	mms_metagenomeSequencing	illuminaIndex2							
+DP1.10107.001	mms_metagenomeSequencing	sequencerRunID							
+DP1.10107.001	mms_metagenomeSequencing	sampleTotalReadNumber							
+DP1.10107.001	mms_metagenomeSequencing	sampleFilteredReadNumber							
+DP1.10107.001	mms_metagenomeSequencing	ncbiProjectID	close_mapping	OmicsProcessing	ncbi_project_name				
+DP1.10107.001	mms_metagenomeSequencing	analyzedBy							Exclude
+DP1.10107.001	mms_metagenomeSequencing	remarks							Exclude
+DP1.10107.001	mms_metagenomeSequencing	dataQF							
+DP1.10107.001	mms_rawDataFiles	uid							Exclude
+DP1.10107.001	mms_rawDataFiles	domainID							inherited from sls_soilCoreCollection
+DP1.10107.001	mms_rawDataFiles	siteID							inherited from sls_soilCoreCollection
+DP1.10107.001	mms_rawDataFiles	namedLocation							inherited from sls_soilCoreCollection
+DP1.10107.001	mms_rawDataFiles	laboratoryName							inherited from mms_metagenomeSequencing
+DP1.10107.001	mms_rawDataFiles	sequencingFacilityID							inherited from mms_metagenomeSequencing
+DP1.10107.001	mms_rawDataFiles	startDate							
+DP1.10107.001	mms_rawDataFiles	endDate							
+DP1.10107.001	mms_rawDataFiles	sequencerRunID							inherited from mms_metagenomeSequencing
+DP1.10107.001	mms_rawDataFiles	dnaSampleID							inherited from mms_metagenomeSequencing
+DP1.10107.001	mms_rawDataFiles	dnaSampleCode							
+DP1.10107.001	mms_rawDataFiles	internalLabID							
+DP1.10107.001	mms_rawDataFiles	rawDataFileName	exact_mapping	OmicsProcessing	name				
+DP1.10107.001	mms_rawDataFiles	rawDataFileDescription	exact_mapping	OmicsProcessing	description				
+DP1.10107.001	mms_rawDataFiles	rawDataFilePath	broad_mapping	OmicsProcessing	data_object_type				
+DP1.10107.001	mms_rawDataFiles	remarks							Exclude
+DP1.10107.001	mms_rawDataFiles	dataQF							
+				Biosample	env_broad_scale.term.id	ENVO:00000446			
+				Biosample	env_broad_scale.term.name	terrestrial biome			
+				Biosample	env_medium.term.id	ENVO:00001998			
+				Biosample	env_medium.term.name	soil			
+DP1.20281.00	amc_fieldGenetic	uid							Exclude
+DP1.20281.00	amc_fieldGenetic	domainID							inherited from amc_fieldSuperParent table.
+DP1.20281.00	amc_fieldGenetic	siteID							inherited from amc_fieldSuperParent table.
+DP1.20281.00	amc_fieldGenetic	namedLocation							inherited from amc_fieldSuperParent table.
+DP1.20281.00	amc_fieldGenetic	collectDate							inherited from amc_fieldSuperParent table.
+DP1.20281.00	amc_fieldGenetic	parentSampleID							inherited from amc_fieldSuperParent table.
+DP1.20281.00	amc_fieldGenetic	parentSampleCode							exclude
+DP1.20281.00	amc_fieldGenetic	archiveSampleCond							exclude
+DP1.20281.00	amc_fieldGenetic	archiveID							exclude
+DP1.20281.00	amc_fieldGenetic	archiveSampleCode							exclude
+DP1.20281.00	amc_fieldGenetic	archiveFilteredSampleVolume							exclude
+DP1.20281.00	amc_fieldGenetic	geneticSampleCond							
+DP1.20281.00	amc_fieldGenetic	geneticSampleID							The same as genomicsSampleId from the metagenomics table, which is being mapped to has_input for the Extraction class.
+DP1.20281.00	amc_fieldGenetic	geneticSampleCode							
+DP1.20281.00	amc_fieldGenetic	geneticFilteredSampleVolume	exact_mapping	Biosample	samp_size.has_numeric_value		mL		Alicia mentioned this will map and filtration will be ignored.
+DP1.20281.00	amc_fieldGenetic	metagenomicsCollected							Exclude
+DP1.20281.00	amc_fieldGenetic	metagenomicSampleCond							Exclude
+DP1.20281.00	amc_fieldGenetic	metagenomicSampleID							Exclude
+DP1.20281.00	amc_fieldGenetic	metagenomicSampleCode							Exclude
+DP1.20281.00	amc_fieldGenetic	metagenomicFilteredSampleVolume							Exclude
+DP1.20281.00	amc_fieldGenetic	sampleMaterial	exact_mapping	Biosample	env_package.has_raw_value	water			
+DP1.20281.00	amc_fieldGenetic	remarks							Exclude
+DP1.20281.00	amc_fieldGenetic	dataQF							
+DP1.20281.00	amc_fieldSuperParent	uid							exclude
+DP1.20281.00	amc_fieldSuperParent	domainID							
+DP1.20281.00	amc_fieldSuperParent	siteID	related_mapping	Biosample	geo_loc_name				use siteID to pull location information from NEON API (Mark)
+DP1.20281.00	amc_fieldSuperParent	namedLocation							exclude
+DP1.20281.00	amc_fieldSuperParent	decimalLatitude	exact_mapping	Biosample	lat_lon.latitude				
+DP1.20281.00	amc_fieldSuperParent	decimalLongitude	exact_mapping	Biosample	lat_lon.longitude				
+DP1.20281.00	amc_fieldSuperParent	coordinateUncertainty							
+DP1.20281.00	amc_fieldSuperParent	additionalCoordUncertainty							
+DP1.20281.00	amc_fieldSuperParent	elevation	exact_mapping	Biosample	elev.has_numeric_value		m		
+DP1.20281.00	amc_fieldSuperParent	elevationUncertainty							
+DP1.20281.00	amc_fieldSuperParent	geodeticDatum							Exclude
+DP1.20281.00	amc_fieldSuperParent	altLocation							
+DP1.20281.00	amc_fieldSuperParent	altLatitude	exact_mapping	Biosample	lat_lon.latitude				if a value is present, supersedes amc_fieldSuperParent.decimalLatitude
+DP1.20281.00	amc_fieldSuperParent	altLongitude	exact_mapping	Biosample	lat_lon.longitude				if a value is present, supersedes amc_fieldSuperParent.decimalLongitude
+DP1.20281.00	amc_fieldSuperParent	altCoordinateUncertainty							
+DP1.20281.00	amc_fieldSuperParent	altGeodeticDatum							Exclude
+DP1.20281.00	amc_fieldSuperParent	collectDate	exact_mapping	Biosample	collection_date				
+DP1.20281.00	amc_fieldSuperParent	aquaticSiteType	close_mapping	Biosample	env_local_scale				Related to Envo triad determination. See here: https://github.com/microbiomedata/nmdc-schema/blob/main/assets/neon_mixs_env_triad_mappings/neon-nlcd-local-broad-mappings.tsv
+DP1.20281.00	amc_fieldSuperParent	samplingImpractical							
+DP1.20281.00	amc_fieldSuperParent	microbeSamplesCollected							
+DP1.20281.00	amc_fieldSuperParent	parentSampleID							
+DP1.20281.00	amc_fieldSuperParent	parentSampleCode							
+DP1.20281.00	amc_fieldSuperParent	eventID							
+DP1.20281.00	amc_fieldSuperParent	samplerType	exact_mapping	Biosample	samp_collec_device				
+DP1.20281.00	amc_fieldSuperParent	dissolvedOxygen	exact_mapping	Biosample	diss_oxygen.has_numeric_value		mg/L		
+DP1.20281.00	amc_fieldSuperParent	dissolvedOxygenSaturation							
+DP1.20281.00	amc_fieldSuperParent	specificConductance	exact_mapping	Biosample	conduc.has_numeric_value		uS/cm		
+DP1.20281.00	amc_fieldSuperParent	waterTemp	exact_mapping	Biosample	temp.has_numeric_value		C		
+DP1.20281.00	amc_fieldSuperParent	amcSamplingProtocolVersion	exact_mapping	CollectingBiosamplesFromSite	protocol_link.name				
+DP1.20281.00	amc_fieldSuperParent	lowerSegmentDepth	narrow_mapping	Biosample	depth.has_minimum_numeric_value		m		lowerSegmentDepth will need to be combined with upperSegmentDepth to give an interval and map to nmdc depth.
+DP1.20281.00	amc_fieldSuperParent	upperSegmentDepth	narrow_mapping	Biosample	depth.has_maximum_numeric_value		m		See comment for lowerSegmentDepth
+DP1.20281.00	amc_fieldSuperParent	maxDepth							
+DP1.20281.00	amc_fieldSuperParent	lakeSampleDepth1							
+DP1.20281.00	amc_fieldSuperParent	lakeSampleDepth2							
+DP1.20281.00	amc_fieldSuperParent	aCollectedBy							Exclude
+DP1.20281.00	amc_fieldSuperParent	bCollectedBy							Exclude
+DP1.20281.00	amc_fieldSuperParent	remarks							Exclude
+DP1.20281.00	amc_fieldSuperParent	fieldDataQF							
+DP1.20281.00	mms_swMetagenomeDnaExtraction	uid							Exclude
+DP1.20281.00	mms_swMetagenomeDnaExtraction	domainID							inherited from amc_fieldSuperParent
+DP1.20281.00	mms_swMetagenomeDnaExtraction	siteID							inherited from amc_fieldSuperParent
+DP1.20281.00	mms_swMetagenomeDnaExtraction	namedLocation							inherited from amc_fieldSuperParent
+DP1.20281.00	mms_swMetagenomeDnaExtraction	laboratoryName	exact_mapping	Extraction	processing_institution				
+DP1.20281.00	mms_swMetagenomeDnaExtraction	collectDate							inherited from amc_fieldSuperParent
+DP1.20281.00	mms_swMetagenomeDnaExtraction	processedDate	exact_mapping	Extraction	end_date				
+DP1.20281.00	mms_swMetagenomeDnaExtraction	genomicsSampleID	exact_mapping	Extraction	has_input				matches amc_fieldGenetic.geneticSampleID
+DP1.20281.00	mms_swMetagenomeDnaExtraction	deprecatedVialID							
+DP1.20281.00	mms_swMetagenomeDnaExtraction	dnaSampleID	exact_mapping	Extraction	has_output				
+DP1.20281.00	mms_swMetagenomeDnaExtraction	internalLabID							
+DP1.20281.00	mms_swMetagenomeDnaExtraction	sequenceAnalysisType	exact_mapping	Biosample	analysis_type				"Exclude ""marker_genes"", import ""metagenomics"""
+DP1.20281.00	mms_swMetagenomeDnaExtraction	testMethod	exact_mapping	Extraction	protocol_link.name				Document library https://data.neonscience.org/documents
+DP1.20281.00	mms_swMetagenomeDnaExtraction	sampleMaterial							Captured from fieldGenetic table and will map to env_package in the Biosample class.
+DP1.20281.00	mms_swMetagenomeDnaExtraction	sampleMass	exact_mapping	Extraction	sample_mass.has_numeric_value		g		
+DP1.20281.00	mms_swMetagenomeDnaExtraction	samplePercent							
+DP1.20281.00	mms_swMetagenomeDnaExtraction	nucleicAcidConcentration	exact_mapping	ProcessedSample	nucleic_acid_concentration.has_numeric_value		ng/uL		
+DP1.20281.00	mms_swMetagenomeDnaExtraction	nucleicAcidQuantMethod							
+DP1.20281.00	mms_swMetagenomeDnaExtraction	nucleicAcidPurity	exact_mapping	ProcessedSample	biomaterial_purity.has_numeric_value				
+DP1.20281.00	mms_swMetagenomeDnaExtraction	nucleicAcidRange							
+DP1.20281.00	mms_swMetagenomeDnaExtraction	dnaPooledStatus	broad_mapping	ProcessedSample	pool_dna_extracts				NEON field does not look like it includes the number of extracts (NMDC includes this number in slot).
+DP1.20281.00	mms_swMetagenomeDnaExtraction	qaqcStatus	exact_mapping	Extraction	quality_control_report.status				
+DP1.20281.00	mms_swMetagenomeDnaExtraction	dnaProcessedBy							Exclude
+DP1.20281.00	mms_swMetagenomeDnaExtraction	remarks							Exclude
+DP1.20281.00	mms_swMetagenomeDnaExtraction	dataQF							
+DP1.20281.00	mms_swMetagenomeSequencing	uid							Exclude
+DP1.20281.00	mms_swMetagenomeSequencing	domainID							inherited from amc_fieldSuperParent table.
+DP1.20281.00	mms_swMetagenomeSequencing	siteID							inherited from amc_fieldSuperParent table.
+DP1.20281.00	mms_swMetagenomeSequencing	namedLocation							inherited from amc_fieldSuperParent table.
+DP1.20281.00	mms_swMetagenomeSequencing	collectDate							inherited from amc_fieldSuperParent table.
+DP1.20281.00	mms_swMetagenomeSequencing	laboratoryName	exact_mapping	LibraryPreparation	processing_institution				
+DP1.20281.00	mms_swMetagenomeSequencing	sequencingFacilityID	exact_mapping	OmicsProcessing	processing_institution				Although it is an ID, the data values are names, so mapping is exact.
+DP1.20281.00	mms_swMetagenomeSequencing	processedDate	exact_mapping	LibraryPreparation	end_date				
+DP1.20281.00	mms_swMetagenomeSequencing	dnaSampleID	exact_mapping	LibraryPreparation	has_input				inherited from mms_swMetagenomeDnaExtraction
+DP1.20281.00	mms_swMetagenomeSequencing	internalLabID							
+DP1.20281.00	mms_swMetagenomeSequencing	barcodeSequence							
+DP1.20281.00	mms_swMetagenomeSequencing	instrument_model	narrow_mapping	OmicsProcessing	instrument_name				
+DP1.20281.00	mms_swMetagenomeSequencing	sequencingMethod							"Neon data example is ""Illumina"""
+DP1.20281.00	mms_swMetagenomeSequencing	investigation_type	close_mapping	OmicsProcessing	omics_type				
+DP1.20281.00	mms_swMetagenomeSequencing	sequencingConcentration							
+DP1.20281.00	mms_swMetagenomeSequencing	labPrepMethod	exact_mapping	LibraryPreparation	protocol_link.name				LabPrepMethod and SequencingProtocol for NEON appear to be the same thing.
+DP1.20281.00	mms_swMetagenomeSequencing	sequencingProtocol							LabPrepMethod and SequencingProtocol for NEON appear to be the same thing.
+DP1.20281.00	mms_swMetagenomeSequencing	illuminaAdapterKit	related_mapping	OmicsProcessing	pcr_primers				The name of the adapter kit used. User would have to search the adapter kit documentation for primer sequences, they are not directly provided.
+DP1.20281.00	mms_swMetagenomeSequencing	illuminaIndex1							
+DP1.20281.00	mms_swMetagenomeSequencing	illuminaIndex2							
+DP1.20281.00	mms_swMetagenomeSequencing	sequencerRunID							
+DP1.20281.00	mms_swMetagenomeSequencing	qaqcStatus	exact_mapping	LibraryPreparation	quality_control_report.status				
+DP1.20281.00	mms_swMetagenomeSequencing	sampleTotalReadNumber							
+DP1.20281.00	mms_swMetagenomeSequencing	sampleFilteredReadNumber							
+DP1.20281.00	mms_swMetagenomeSequencing	ncbiProjectID	close_mapping	OmicsProcessing	ncbi_project_name				
+DP1.20281.00	mms_swMetagenomeSequencing	analyzedBy							Exclude
+DP1.20281.00	mms_swMetagenomeSequencing	remarks							Exclude
+DP1.20281.00	mms_swMetagenomeSequencing	dataQF							
+DP1.20281.00	mms_swRawDataFiles	uid							Exclude
+DP1.20281.00	mms_swRawDataFiles	domainID							inherited from amc_fieldSuperParent table.
+DP1.20281.00	mms_swRawDataFiles	siteID							inherited from amc_fieldSuperParent table.
+DP1.20281.00	mms_swRawDataFiles	namedLocation							inherited from amc_fieldSuperParent table.
+DP1.20281.00	mms_swRawDataFiles	laboratoryName							inherited from mms_swMetagenomeSequencing
+DP1.20281.00	mms_swRawDataFiles	sequencingFacilityID							inherited from mms_swMetagenomeSequencing
+DP1.20281.00	mms_swRawDataFiles	startDate							
+DP1.20281.00	mms_swRawDataFiles	collectDate							inherited from amc_fieldSuperParent table.
+DP1.20281.00	mms_swRawDataFiles	sequencerRunID							inherited from mms_swMetagenomeSequencing
+DP1.20281.00	mms_swRawDataFiles	dnaSampleID							inherited from mms_swMetagenomeSequencing
+DP1.20281.00	mms_swRawDataFiles	dnaSampleCode							
+DP1.20281.00	mms_swRawDataFiles	internalLabID							
+DP1.20281.00	mms_swRawDataFiles	rawDataFileName	exact_mapping	OmicsProcessing	name				
+DP1.20281.00	mms_swRawDataFiles	rawDataFileDescription	exact_mapping	OmicsProcessing	description				
+DP1.20281.00	mms_swRawDataFiles	rawDataFilePath	broad_mapping	OmicsProcessing	data_object_type				Extract file extension out of file path.
+DP1.20281.00	mms_swRawDataFiles	remarks							Exclude
+DP1.20281.00	mms_swRawDataFiles	dataQF							
+DP1.20279.00	amb_fieldParent	uid							Exclude
+DP1.20279.00	amb_fieldParent	domainID							
+DP1.20279.00	amb_fieldParent	siteID	related_mapping	Biosample	geo_loc_name				use siteID to pull location information from NEON API (Mark)
+DP1.20279.00	amb_fieldParent	namedLocation							Exclude
+DP1.20279.00	amb_fieldParent	aquaticSiteType	close_mapping	Biosample	env_broad_scale				Related to Envo triad determination. See github issue: https://github.com/microbiomedata/issues/issues/274
+DP1.20279.00	amb_fieldParent	decimalLatitude	exact_mapping	Biosample	lat_lon.latitude		decimalDegree		
+DP1.20279.00	amb_fieldParent	decimalLongitude	exact_mapping	Biosample	lat_lon.longitude		decimalDegree		
+DP1.20279.00	amb_fieldParent	coordinateUncertainty					m		
+DP1.20279.00	amb_fieldParent	elevation	exact_mapping	Biosample	elev.has_numeric_value		m		
+DP1.20279.00	amb_fieldParent	elevationUncertainty					m		
+DP1.20279.00	amb_fieldParent	geodeticDatum							Exclude
+DP1.20279.00	amb_fieldParent	collectDate	exact_mapping	Biosample	collection_date				
+DP1.20279.00	amb_fieldParent	eventID							
+DP1.20279.00	amb_fieldParent	sampleID	exact_mapping	Biosample	samp_name				
+DP1.20279.00	amb_fieldParent	sampleCode							
+DP1.20279.00	amb_fieldParent	samplingImpractical							
+DP1.20279.00	amb_fieldParent	habitatType	related_mapping	Biosample	env_local_scale				See github issue: https://github.com/microbiomedata/issues/issues/274
+DP1.20279.00	amb_fieldParent	sampleNumber							
+DP1.20279.00	amb_fieldParent	aquMicrobeType							
+DP1.20279.00	amb_fieldParent	aquMicrobeScrubArea					squareMeter		
+DP1.20279.00	amb_fieldParent	samplingProtocolVersion	exact_mapping	CollectingBiosamplesFromSite	protocol_link.Protocol.name				
+DP1.20279.00	amb_fieldParent	substratumSizeClass							
+DP1.20279.00	amb_fieldParent	fieldSampleVolume	exact_mapping	Biosample	samp_size.has_numeric_value		mL		
+DP1.20279.00	amb_fieldParent	remarks							Exclude
+DP1.20279.00	amb_fieldParent	collectedBy							Exclude
+DP1.20279.00	amb_fieldParent	recordedBy							Exclude
+DP1.20279.00	amb_fieldParent	archiveSampleCond							
+DP1.20279.00	amb_fieldParent	archiveID							
+DP1.20279.00	amb_fieldParent	archiveSampleCode							
+DP1.20279.00	amb_fieldParent	archiveFilteredSampleVolume					mL		
+DP1.20279.00	amb_fieldParent	geneticSampleCond							
+DP1.20279.00	amb_fieldParent	geneticSampleID							matches mms_benthicMetagenomeDnaExtraction.geneticSampleID
+DP1.20279.00	amb_fieldParent	geneticSampleCode							
+DP1.20279.00	amb_fieldParent	geneticFilteredSampleVolume					mL		
+DP1.20279.00	amb_fieldParent	metagenomicSampleCond							Exclude
+DP1.20279.00	amb_fieldParent	metagenomicsCollected							Exclude
+DP1.20279.00	amb_fieldParent	metagenomicSampleID							Exclude
+DP1.20279.00	amb_fieldParent	metagenomicSampleCode							Exclude
+DP1.20279.00	amb_fieldParent	metagenomicFilteredSampleVolume					mL		Exclude
+DP1.20279.00	amb_fieldParent	sampleMaterial	close_mapping	Biosample	env_medium				Per discussion in NEON weekly meeting. See github issue: https://github.com/microbiomedata/issues/issues/274
+DP1.20279.00	amb_fieldParent	labSampleMedium							
+DP1.20279.00	amb_fieldParent	dataQF							
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	uid							Exclude
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	domainID							inherited from amb_fieldParent
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	siteID							inherited from amb_fieldParent
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	namedLocation							inherited from amb_fieldParent
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	laboratoryName	exact_mapping	Extraction	processing_institution				
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	collectDate	close_mapping	Extraction	start_date				inherited from amb_fieldParent
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	processedDate	exact_mapping	Extraction	end_date				
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	genomicsSampleID	exact_mapping	Extraction	has_input				matches amb_fieldParent.geneticSampleID
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	genomicsSampleCode							
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	deprecatedVialID							
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	dnaSampleID	exact_mapping	Extraction	has_output				
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	dnaSampleCode							
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	internalLabID							
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	sequenceAnalysisType	exact_mapping	Biosample	analysis_type				"Exclude ""marker_genes"", import ""metagenomics"""
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	testMethod	exact_mapping	Extraction	protocol_link.name				Document library https://data.neonscience.org/documents
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	sampleMaterial							Inherited from amb_fieldParent
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	sampleMass	exact_mapping	Extraction	sample_mass.has_numeric_value		g		
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	samplePercent					percent		
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	nucleicAcidConcentration	exact_mapping	ProcessedSample	nucleic_acid_concentration.has_numeric_value		ng/uL		
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	nucleicAcidQuantMethod							
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	nucleicAcidPurity	exact_mapping	ProcessedSample	biomaterial_purity				
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	nucleicAcidRange							
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	dnaPooledStatus	broad_mapping	ProcessedSample	pool_dna_extracts				NEON field does not look like it includes the number of extracts (NMDC includes this number in slot).
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	qaqcStatus	exact_mapping	Extraction	quality_control_report.status				
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	dnaProcessedBy							Exclude
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	remarks							Exclude
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	dataQF							
+DP1.20279.00	mms_benthicMetagenomeSequencing	uid							Exclude
+DP1.20279.00	mms_benthicMetagenomeSequencing	domainID							Inherited from amb_fieldParent
+DP1.20279.00	mms_benthicMetagenomeSequencing	siteID							Inherited from amb_fieldParent
+DP1.20279.00	mms_benthicMetagenomeSequencing	namedLocation							Inherited from amb_fieldParent
+DP1.20279.00	mms_benthicMetagenomeSequencing	collectDate							
+DP1.20279.00	mms_benthicMetagenomeSequencing	laboratoryName	exact_mapping	LibraryPreparation	processing_institution				
+DP1.20279.00	mms_benthicMetagenomeSequencing	sequencingFacilityID	exact_mapping	OmicsProcessing	processing_institution				Although it is an ID, the data values are names, so mapping is exact.
+DP1.20279.00	mms_benthicMetagenomeSequencing	processedDate	exact_mapping	LibraryPreparation	end_date				
+DP1.20279.00	mms_benthicMetagenomeSequencing	dnaSampleID	exact_mapping	LibraryPreparation	has_input				inherited from mms_swMetagenomeDnaExtraction
+DP1.20279.00	mms_benthicMetagenomeSequencing	dnaSampleCode							
+DP1.20279.00	mms_benthicMetagenomeSequencing	internalLabID							
+DP1.20279.00	mms_benthicMetagenomeSequencing	barcodeSequence							
+DP1.20279.00	mms_benthicMetagenomeSequencing	instrument_model	narrow_mapping	OmicsProcessing	instrument_name				"Neon data example is ""Illumina"""
+DP1.20279.00	mms_benthicMetagenomeSequencing	sequencingMethod							
+DP1.20279.00	mms_benthicMetagenomeSequencing	investigation_type	close_mapping	OmicsProcessing	omics_type				
+DP1.20279.00	mms_benthicMetagenomeSequencing	sequencingConcentration					ng/uL		
+DP1.20279.00	mms_benthicMetagenomeSequencing	labPrepMethod	close_mapping	LibraryPreparation	protocol_link.name				LabPrepMethod and SequencingProtocol for NEON appear to be the same thing.
+DP1.20279.00	mms_benthicMetagenomeSequencing	sequencingProtocol							LabPrepMethod and SequencingProtocol for NEON appear to be the same thing.
+DP1.20279.00	mms_benthicMetagenomeSequencing	illuminaAdapterKit	related_mapping	OmicsProcessing	pcr_primers				The name of the adapter kit used.
+DP1.20279.00	mms_benthicMetagenomeSequencing	illuminaIndex1							
+DP1.20279.00	mms_benthicMetagenomeSequencing	illuminaIndex2							
+DP1.20279.00	mms_benthicMetagenomeSequencing	sequencerRunID							
+DP1.20279.00	mms_benthicMetagenomeSequencing	qaqcStatus	exact_mapping	LibraryPreparation	quality_control_report.status				
+DP1.20279.00	mms_benthicMetagenomeSequencing	sampleTotalReadNumber					number		
+DP1.20279.00	mms_benthicMetagenomeSequencing	sampleFilteredReadNumber					number		
+DP1.20279.00	mms_benthicMetagenomeSequencing	averageFilteredReadQuality							
+DP1.20279.00	mms_benthicMetagenomeSequencing	ambiguousBasesNumber					number		
+DP1.20279.00	mms_benthicMetagenomeSequencing	ncbiProjectID	close_mapping	OmicsProcessing	ncbi_project_name				
+DP1.20279.00	mms_benthicMetagenomeSequencing	processedSeqFileName							Exclude
+DP1.20279.00	mms_benthicMetagenomeSequencing	analyzedBy							Exclude
+DP1.20279.00	mms_benthicMetagenomeSequencing	remarks							Exclude
+DP1.20279.00	mms_benthicMetagenomeSequencing	dataQF							
+DP1.20279.00	mms_benthicRawDataFiles	uid							Exclude
+DP1.20279.00	mms_benthicRawDataFiles	domainID							Inherited from amb_fieldParent
+DP1.20279.00	mms_benthicRawDataFiles	siteID							Inherited from amb_fieldParent
+DP1.20279.00	mms_benthicRawDataFiles	namedLocation							Inherited from amb_fieldParent
+DP1.20279.00	mms_benthicRawDataFiles	laboratoryName							Inherited from amb_fieldParent
+DP1.20279.00	mms_benthicRawDataFiles	sequencingFacilityID							Inherited from amb_fieldParent
+DP1.20279.00	mms_benthicRawDataFiles	setDate							
+DP1.20279.00	mms_benthicRawDataFiles	collectDate							
+DP1.20279.00	mms_benthicRawDataFiles	sequencerRunID							inherited from mms_benthicMetagenomeSequencing
+DP1.20279.00	mms_benthicRawDataFiles	dnaSampleID							inherited from mms_benthicMetagenomeSequencing
+DP1.20279.00	mms_benthicRawDataFiles	dnaSampleCode							
+DP1.20279.00	mms_benthicRawDataFiles	internalLabID							
+DP1.20279.00	mms_benthicRawDataFiles	rawDataFileName	exact_mapping	OmicsProcessing	name				
+DP1.20279.00	mms_benthicRawDataFiles	rawDataFileDescription	exact_mapping	OmicsProcessing	description				
+DP1.20279.00	mms_benthicRawDataFiles	rawDataFilePath	broad_mapping	OmicsProcessing	data_object_type				Extract file extension out of file path.
+DP1.20279.00	mms_benthicRawDataFiles	remarks							Exclude
+DP1.20279.00	mms_benthicRawDataFiles	dataQF							
