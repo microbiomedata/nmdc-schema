@@ -342,23 +342,6 @@ DP1.10107.001	mms_metagenomeSequencing	ncbiProjectID	close_mapping	OmicsProcessi
 DP1.10107.001	mms_metagenomeSequencing	analyzedBy							Exclude
 DP1.10107.001	mms_metagenomeSequencing	remarks							Exclude
 DP1.10107.001	mms_metagenomeSequencing	dataQF							
-DP1.10107.001	mms_rawDataFiles	uid							Exclude
-DP1.10107.001	mms_rawDataFiles	domainID							inherited from sls_soilCoreCollection
-DP1.10107.001	mms_rawDataFiles	siteID							inherited from sls_soilCoreCollection
-DP1.10107.001	mms_rawDataFiles	namedLocation							inherited from sls_soilCoreCollection
-DP1.10107.001	mms_rawDataFiles	laboratoryName							inherited from mms_metagenomeSequencing
-DP1.10107.001	mms_rawDataFiles	sequencingFacilityID							inherited from mms_metagenomeSequencing
-DP1.10107.001	mms_rawDataFiles	startDate							
-DP1.10107.001	mms_rawDataFiles	endDate							
-DP1.10107.001	mms_rawDataFiles	sequencerRunID							inherited from mms_metagenomeSequencing
-DP1.10107.001	mms_rawDataFiles	dnaSampleID							inherited from mms_metagenomeSequencing
-DP1.10107.001	mms_rawDataFiles	dnaSampleCode							
-DP1.10107.001	mms_rawDataFiles	internalLabID							
-DP1.10107.001	mms_rawDataFiles	rawDataFileName	exact_mapping	OmicsProcessing	name				
-DP1.10107.001	mms_rawDataFiles	rawDataFileDescription	exact_mapping	OmicsProcessing	description				
-DP1.10107.001	mms_rawDataFiles	rawDataFilePath	broad_mapping	OmicsProcessing	data_object_type				
-DP1.10107.001	mms_rawDataFiles	remarks							Exclude
-DP1.10107.001	mms_rawDataFiles	dataQF							
 				Biosample	env_broad_scale.term.id	ENVO:00000446			
 				Biosample	env_broad_scale.term.name	terrestrial biome			
 				Biosample	env_medium.term.id	ENVO:00001998			
@@ -477,23 +460,6 @@ DP1.20281.00	mms_swMetagenomeSequencing	ncbiProjectID	close_mapping	OmicsProcess
 DP1.20281.00	mms_swMetagenomeSequencing	analyzedBy							Exclude
 DP1.20281.00	mms_swMetagenomeSequencing	remarks							Exclude
 DP1.20281.00	mms_swMetagenomeSequencing	dataQF							
-DP1.20281.00	mms_swRawDataFiles	uid							Exclude
-DP1.20281.00	mms_swRawDataFiles	domainID							inherited from amc_fieldSuperParent table.
-DP1.20281.00	mms_swRawDataFiles	siteID							inherited from amc_fieldSuperParent table.
-DP1.20281.00	mms_swRawDataFiles	namedLocation							inherited from amc_fieldSuperParent table.
-DP1.20281.00	mms_swRawDataFiles	laboratoryName							inherited from mms_swMetagenomeSequencing
-DP1.20281.00	mms_swRawDataFiles	sequencingFacilityID							inherited from mms_swMetagenomeSequencing
-DP1.20281.00	mms_swRawDataFiles	startDate							
-DP1.20281.00	mms_swRawDataFiles	collectDate							inherited from amc_fieldSuperParent table.
-DP1.20281.00	mms_swRawDataFiles	sequencerRunID							inherited from mms_swMetagenomeSequencing
-DP1.20281.00	mms_swRawDataFiles	dnaSampleID							inherited from mms_swMetagenomeSequencing
-DP1.20281.00	mms_swRawDataFiles	dnaSampleCode							
-DP1.20281.00	mms_swRawDataFiles	internalLabID							
-DP1.20281.00	mms_swRawDataFiles	rawDataFileName	exact_mapping	OmicsProcessing	name				
-DP1.20281.00	mms_swRawDataFiles	rawDataFileDescription	exact_mapping	OmicsProcessing	description				
-DP1.20281.00	mms_swRawDataFiles	rawDataFilePath	broad_mapping	OmicsProcessing	data_object_type				Extract file extension out of file path.
-DP1.20281.00	mms_swRawDataFiles	remarks							Exclude
-DP1.20281.00	mms_swRawDataFiles	dataQF							
 DP1.20279.00	amb_fieldParent	uid							Exclude
 DP1.20279.00	amb_fieldParent	domainID							
 DP1.20279.00	amb_fieldParent	siteID	related_mapping	Biosample	geo_loc_name				use siteID to pull location information from NEON API (Mark)
@@ -595,20 +561,3 @@ DP1.20279.00	mms_benthicMetagenomeSequencing	processedSeqFileName							Exclude
 DP1.20279.00	mms_benthicMetagenomeSequencing	analyzedBy							Exclude
 DP1.20279.00	mms_benthicMetagenomeSequencing	remarks							Exclude
 DP1.20279.00	mms_benthicMetagenomeSequencing	dataQF							
-DP1.20279.00	mms_benthicRawDataFiles	uid							Exclude
-DP1.20279.00	mms_benthicRawDataFiles	domainID							Inherited from amb_fieldParent
-DP1.20279.00	mms_benthicRawDataFiles	siteID							Inherited from amb_fieldParent
-DP1.20279.00	mms_benthicRawDataFiles	namedLocation							Inherited from amb_fieldParent
-DP1.20279.00	mms_benthicRawDataFiles	laboratoryName							Inherited from amb_fieldParent
-DP1.20279.00	mms_benthicRawDataFiles	sequencingFacilityID							Inherited from amb_fieldParent
-DP1.20279.00	mms_benthicRawDataFiles	setDate							
-DP1.20279.00	mms_benthicRawDataFiles	collectDate							
-DP1.20279.00	mms_benthicRawDataFiles	sequencerRunID							inherited from mms_benthicMetagenomeSequencing
-DP1.20279.00	mms_benthicRawDataFiles	dnaSampleID							inherited from mms_benthicMetagenomeSequencing
-DP1.20279.00	mms_benthicRawDataFiles	dnaSampleCode							
-DP1.20279.00	mms_benthicRawDataFiles	internalLabID							
-DP1.20279.00	mms_benthicRawDataFiles	rawDataFileName	exact_mapping	OmicsProcessing	name				
-DP1.20279.00	mms_benthicRawDataFiles	rawDataFileDescription	exact_mapping	OmicsProcessing	description				
-DP1.20279.00	mms_benthicRawDataFiles	rawDataFilePath	broad_mapping	OmicsProcessing	data_object_type				Extract file extension out of file path.
-DP1.20279.00	mms_benthicRawDataFiles	remarks							Exclude
-DP1.20279.00	mms_benthicRawDataFiles	dataQF							
