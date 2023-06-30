@@ -1,27 +1,21 @@
-id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/basic_slots
+id: https://w3id.org/nmdc/basic_slots
 name: NMDC-Basic-Slots
 title: Basic Slots for NMDC Schema
 description: >-
   Basic Linkml slots that are used across the Schema for National Microbiome Data Collaborative (NMDC).
   Examples include "id", "name", "description". These slots have primitive data types (e.g., sting) as ranges.
+
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
   dcterms: http://purl.org/dc/terms/
+
+  skos: http://www.w3.org/2004/02/skos/core#
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
-  nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
-  skos: http://www.w3.org/2004/02/skos/core#
 
 default_prefix: nmdc
 default_range: string
-
-default_curi_maps:
-  - obo_context
-  - idot_context
-
-imports:
-  - core
 
 slots:
   id:
@@ -39,6 +33,7 @@ slots:
     examples:
       - value: nmdc:mgmag-00-x012.1_7_c1
         description: 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248'
+    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
 
   name:
     range: string
@@ -81,7 +76,7 @@ slots:
       The distinction between title and alternative titles is application-specific.
     exact_mappings:
       - dcterms:alternative
-  
+
   alternative_names:
     range: string
     multivalued: true
@@ -98,10 +93,68 @@ slots:
     description: >-
       A list of alternative descriptions for the entity.
       The distinction between description and alternative descriptions is application-specific.
-  
+
   alternative_identifiers:
-    range: string
+    range: uriorcurie
     multivalued: true
     description: >-
       A list of alternative identifiers for the entity.
+    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
+
+  start_date:
+    range: string
+    description: The date on which any process or activity was started
+    comments:
+      - We are using string representations of dates until all components of our ecosystem can handle ISO 8610 dates
+      - The date should be formatted as YYYY-MM-DD
+    todos:
+      - add date string validation pattern
+
+  end_date:
+    range: string
+    description: The date on which any process or activity was ended
+    comments:
+      - We are using string representations of dates until all components of our ecosystem can handle ISO 8610 dates
+      - The date should be formatted as YYYY-MM-DD
+    todos:
+      - add date string validation pattern
+
+  protocol_link:
+    range: Protocol
+    #    range: integer
+    # see also relevant_protocol string slot # this name avoids case-insensitive clash with Protocol class
+
+
+  # some parent properties for biosamples, which will be subtyped in multiples modules
+
+  nucleic_acid_concentration:
+    range: InstrumentValue
+  biomaterial_purity:
+    range: QuantityValue
+
+  instrument_name:
+    description: >-
+      The name of the instrument that was used for processing the sample.
+#    range: instrument_name_enum
+
+#enums:
+#  instrument_name_enum:
+#    todos:
+#      - remove "21T Agilent"
+#    permissible_values:
+#      - 12T_FTICR_B
+#      - 15T_FTICR
+#      - 21T Agilent
+#      - 21T_Agilent
+#      - Agilent_GC_MS_01
+#      - Illumina HiSeq
+#      - Illumina HiSeq 2500
+#      - Illumina HiSeq 2500-1TB
+#      - Illumina NextSeq 550
+#      - Illumina NovaSeq
+#      - Illumina NovaSeq S4
+#      - QExactHF03
+#      - QExactP02
+#      - VOrbiETD04
+
 

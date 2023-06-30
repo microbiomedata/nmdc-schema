@@ -1,0 +1,24 @@
+extraction_set:
+  - id: bare:des1
+    name: first dna extraction set
+    has_inputs:
+      - bare:pool_out_1
+    has_outputs:
+      - bare:dna_extract_1
+    extraction_target: DNA
+    #we should replace slot extraction_date for Class extraction with generic date (ie http://purl.obolibrary.org/obo/OBI_0002471)
+    extraction_date: 2021-01-15    
+
+library_preparation_set:
+  - id: bare:lcs1
+    name: DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1
+    #    has_input: bare:xxx
+    #    has_output: bare:xxy
+    #library_type should be enum "DNA", "RNA"
+    library_type: DNA
+    has_inputs:
+      - bare:dna_extract_1
+    has_outputs:
+      - bare:library_1
+    processed_date: 2021-01-15
+   

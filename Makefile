@@ -93,18 +93,20 @@ gen-project: $(PYMODEL)
 		--exclude jsonld \
 		--exclude jsonldcontext \
 		--exclude markdown \
-		--exclude prefixmap \
 		--exclude proto \
 		--exclude shacl \
 		--exclude shex \
 		--exclude sqlddl \
 		--include jsonschema \
 		--include owl \
+		--include prefixmap \
 		--include python \
+		--include rdf \
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
 test: examples-clean site test-python jsonschema-check-all-valid-databases examples/output
+only_test: examples-clean test-python jsonschema-check-all-valid-databases examples/output
 
 test-schema:
 	$(RUN) gen-project \
@@ -127,7 +129,7 @@ test-python:
 	$(RUN) python -m unittest discover
 
 lint:
-	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH) | tee assets/misc/lint.log
+	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH) > local/lint.log
 
 check-config:
 	@(grep my-datamodel about.yaml > /dev/null && printf "\n**Project not configured**:\n\n - Remember to edit 'about.yaml'\n\n" || exit 0)

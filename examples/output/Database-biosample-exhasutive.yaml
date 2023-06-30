@@ -5,8 +5,7 @@ biosample_set:
     have this particular combination of values.
   description: unconstrained text
   alternative_identifiers:
-  - any_string
-  - seriously_anything
+  - generic:abc123
   part_of:
   - nmdc:unconstrained_study_identifier_string1_needs_pattern_materialization_what_about_referential_integrity
   - nmdc:unconstrained_study_identifier_string2
@@ -30,8 +29,7 @@ biosample_set:
   collected_from: nmdc:unconstrained_site_identifier_string
   type: nmdc:Biosample. change this to require a class name or an enumeration
   img_identifiers:
-  - any string 1
-  - any string 2
+  - img.taxon:abc123
   samp_name: see also name
   biosample_categories:
   - LTER
@@ -43,8 +41,7 @@ biosample_set:
   - biosample:SAMN123456789
   - biosample:SAMN000
   emsl_biosample_identifiers:
-  - any_string
-  - seriously_anything
+  - generic:abc123
   igsn_biosample_identifiers:
   - any:curie_1
   - any:curie_2
@@ -530,7 +527,7 @@ biosample_set:
   - has_raw_value: ATP
   owc_tvdss:
     has_raw_value: xxx
-  oxy_stat_samp: aerobe
+  oxy_stat_samp: aerobic
   oxygen:
     has_raw_value: xxx
   part_org_carb:
@@ -612,7 +609,6 @@ biosample_set:
   rel_humidity_out:
     has_raw_value: xxx
   rel_samp_loc: edge of car
-  rel_to_oxygen: aerobe
   reservoir:
     has_raw_value: xxx
   resins_pc:

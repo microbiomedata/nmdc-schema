@@ -28,10 +28,10 @@ shuttle_cleanup:
 	touch local/mixs_regen/.gitkeep
 
 local/mixs_regen/slots_associated_with_biosample.tsv:
-	yq '.classes.Biosample.slots.[]' src/schema/nmdc.yaml | sort | tee $@
+	yq '.classes.Biosample.slots.[]' src/schema/nmdc.yaml | sort | cat > $@
 
 local/mixs_regen/slots_associated_with_omics_processing.tsv:
-	yq '.classes.OmicsProcessing.slots.[]' src/schema/nmdc.yaml | sort | tee $@
+	yq '.classes.OmicsProcessing.slots.[]' src/schema/nmdc.yaml | sort | cat > $@
 
 local/mixs_regen/slots_associated_with_biosample_omics_processing.tsv: \
 local/mixs_regen/slots_associated_with_biosample.tsv \
@@ -62,10 +62,7 @@ local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml
 	sed 's/quantity value/QuantityValue/' $< > $@
 	sed -i.bak 's/range: string/range: TextValue/' $@
 	sed -i.bak 's/range: text value/range: TextValue/' $@
-    # what prefix do we want to use? mixs.yaml uses MIXS as a prefix for slot_uris
-	#sed -i.bak 's/slot_uri: MIXS:/slot_uri: mixs:/' $@
-	#sed -i.bak 's/slot_uri: mixs:/slot_uri: MIXS:/' $@
-	#yq -i '.slots.ph.range |= "QuantityValue"' $@
+
 	yq -i '.slots.agrochem_addition.range |= "TextValue"' $@
 	yq -i '.slots.air_temp_regm.range |= "TextValue"' $@
 	yq -i '.slots.antibiotic_regm.range |= "TextValue"' $@
@@ -196,12 +193,14 @@ local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml
 	yq -i '.slots.watering_regm.range |= "TextValue"' $@
 	yq -i '.slots.window_open_freq.range |= "TextValue"' $@
 	yq -i '.slots.window_size.range |= "TextValue"' $@
+
 	yq -i 'del(.classes)' $@
 	yq -i 'del(.enums.[].name)'  $@
 	yq -i 'del(.enums.[].permissible_values.[].text)'  $@
 	yq -i 'del(.slots.[].name)'  $@
 	yq -i 'del(.slots.add_recov_method.pattern)'  $@
 	yq -i 'del(.subsets.[].name)'  $@
+
 	yq -i '.id |= "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml"' $@
 
 #	# update host_taxid and samp_taxon_id. may want to flatten to a string or URIORCURIE eventually
@@ -209,10 +208,12 @@ local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml
 	yq -i 'del(.slots.host_taxid.string_serialization)'  $@
 	yq -i 'del(.slots.samp_taxon_id.examples)'  $@
 	yq -i 'del(.slots.samp_taxon_id.string_serialization)'  $@
+
 	yq -i '.slots.host_taxid.comments |= ["Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value"]'  $@
 	yq -i '.slots.host_taxid.range = "ControlledIdentifiedTermValue"'  $@
 	yq -i '.slots.samp_taxon_id.comments |= ["coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value"]'  $@
 	yq -i '.slots.samp_taxon_id.range = "ControlledIdentifiedTermValue"'  $@
+
 
 	# add "M horizon" to soil_horizon_enum
 	yq -i '.enums.soil_horizon_enum.permissible_values.["M horizon"] = {}'  $@
@@ -270,13 +271,6 @@ assets/slot_annotations_diffs.tsv: assets/other_mixs_yaml_files/mixs_new.yaml as
 		--anno_diff_tsv_out $@ \
 		--slot_diff_yaml_out $(patsubst %.tsv,%.yaml,$@)
 
-assets/slot_roster.tsv:
-	$(RUN) slot_roster \
-		--input_paths "https://raw.githubusercontent.com/microbiomedata/sheets_and_friends/main/artifacts/nmdc_submission_schema.yaml" \
-		--input_paths "https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml" \
-		--input_paths "src/schema/nmdc.yaml" \
-		--output_tsv $@
-
 assets/MIxS_6_term_updates_dtm.tsv: \
 assets/MIxS_6_term_updates_MIxS6_Core-_Final_clean.tsv \
 assets/MIxS_6_term_updates_MIxS6_packages_-_Final_clean.tsv
@@ -290,20 +284,9 @@ assets/mixs_slots_by_submission_class.tsv: assets/sheets-for-nmdc-submission-sch
   		--in_file $< \
   		--out_file $@
 
-assets/boolean_usages.tsv:
-	$(RUN) boolean_usages \
-		--out_file $@
-
 MIXS_YAML_FROM_SHEETS_AND_FRIENDS = src/schema/mixs.yaml
-MIXS_YAML_MARK_OLDER_PYTHON = src/schema/mixs_new.yaml
-MIXS_YAML_PERL_CURATED_Q = src/schema/other_mixs_yaml_files/mixs_legacy.yaml
 
 SCHEMA_FILE = $(MIXS_YAML_FROM_SHEETS_AND_FRIENDS)
-
-schemasheets/populated_tsv/slots.tsv:
-	$(RUN) linkml2sheets \
-		--output-directory $(dir $@) \
-		--schema $(SCHEMA_FILE) schemasheets/schemasheets_templates/slots.tsv
 
 check-jsonschema: nmdc_schema/nmdc_materialized_patterns.schema.json
 	$(RUN) check-jsonschema --schemafile $< src/data/invalid/Database-Biosample-invalid_range.yaml
@@ -319,6 +302,18 @@ YAML_DATABASE_FILES_VALID := $(wildcard $(YAML_DIR_VALID)Database*.yaml)
 jsonschema-check-all-valid-databases: $(YAML_DATABASE_FILES_VALID)
 	$(foreach yaml_file,$^,echo $(yaml_file) ; $(RUN) check-jsonschema \
 		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $(yaml_file);)
+
+
+local/usage_template.tsv: src/schema/nmdc.yaml
+	mkdir -p $(@D)
+	$(RUN) generate_and_populate_template \
+		 --base-class slot_definition \
+		 --columns-to-insert class \
+		 --destination-template $@ \
+		 --meta-model-excel-file local/meta.xlsx \
+		 --meta-path https://raw.githubusercontent.com/linkml/linkml-model/main/linkml_model/model/schema/meta.yaml \
+ 		 --columns-to-insert slot \
+		 --source-schema-path $<
 
 examples/output/Biosample-exhasutive_report.yaml: src/data/valid/Biosample-exhasutive.yaml
 	poetry run exhaustion-check \
@@ -339,3 +334,254 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosampl
 	poetry run pretty-sort-yaml \
 		-i $< \
 		-o $@
+
+# # # #
+
+.PHONY: mongodb-cleanup dump-validate-report-convert-mongodb \
+dump-validate-report-convert-mongodb linkml-validate-mongodb
+
+dump-validate-report-mongodb: mongodb-cleanup accepting_legacy_ids_all \
+local/mongodb-collection-report.txt \
+local/selected_mongodb_contents.json \
+local/selected_mongodb_contents_jsonschema_check.txt \
+linkml-validate-mongodb \
+local/selected_mongodb_contents.json.gz
+
+dump-validate-report-convert-mongodb: mongodb-cleanup \
+local/selected_mongodb_contents.yaml \
+local/selected_mongodb_contents.yaml.gz \
+local/selected_mongodb_contents.ttl \
+local/selected_mongodb_contents.ttl.gz
+
+local/selected_mongodb_contents_fully_repaired.json:
+	# approximately 2 minute
+	$(RUN) mongodb_exporter \
+		--schema-file src/schema/nmdc.yaml \
+		--root-class Database \
+		--env-file local/.env \
+		--mongo-db-name nmdc \
+		--mongo-host localhost \
+		--mongo-port 27777 \
+		--admin-db admin \
+		--curie-fix \
+		--non-nmdc-id-fixes \
+		--max-docs-per-coll 1_000_000 \
+		--output-json $@ \
+		--selected-collections biosample_set \
+		--selected-collections data_object_set \
+		--selected-collections field_research_site_set \
+		--selected-collections mags_activity_set \
+		--selected-collections metabolomics_analysis_activity_set \
+		--selected-collections metagenome_annotation_activity_set \
+		--selected-collections metagenome_assembly_set \
+		--selected-collections metaproteomics_analysis_activity_set \
+		--selected-collections metatranscriptome_activity_set \
+		--selected-collections nom_analysis_activity_set \
+		--selected-collections omics_processing_set \
+		--selected-collections read_based_taxonomy_analysis_activity_set \
+		--selected-collections read_qc_analysis_activity_set \
+		--selected-collections study_set 2>&1  | tee local/selected_mongodb_contents.log
+
+
+local/selected_mongodb_contents.json:
+	# approximately 2 minute
+	$(RUN) mongodb_exporter \
+		--schema-file src/schema/nmdc.yaml \
+		--root-class Database \
+		--env-file local/.env \
+		--mongo-db-name nmdc \
+		--mongo-host localhost \
+		--mongo-port 27777 \
+		--admin-db admin \
+		--no-curie-fix \
+		--non-nmdc-id-fixes \
+		--max-docs-per-coll 1_000_000 \
+		--output-json $@ \
+		--selected-collections biosample_set \
+		--selected-collections data_object_set \
+		--selected-collections field_research_site_set \
+		--selected-collections mags_activity_set \
+		--selected-collections metabolomics_analysis_activity_set \
+		--selected-collections metagenome_annotation_activity_set \
+		--selected-collections metagenome_assembly_set \
+		--selected-collections metaproteomics_analysis_activity_set \
+		--selected-collections metatranscriptome_activity_set \
+		--selected-collections nom_analysis_activity_set \
+		--selected-collections omics_processing_set \
+		--selected-collections read_based_taxonomy_analysis_activity_set \
+		--selected-collections read_qc_analysis_activity_set \
+		--selected-collections study_set 2>&1  | tee local/selected_mongodb_contents.log
+
+local/selected_mongodb_contents.json.gz: local/selected_mongodb_contents.json
+	gzip -c $< > $@
+
+
+mongodb-cleanup:
+	date
+	rm -rf local/mongodb-collection-report.txt
+	rm -rf local/selected_mongodb_contents.json
+	rm -rf local/selected_mongodb_contents.json.gz
+	rm -rf local/selected_mongodb_contents.log
+	rm -rf local/selected_mongodb_contents.ttl
+	rm -rf local/selected_mongodb_contents.ttl.gz
+	rm -rf local/selected_mongodb_contents.yaml
+	rm -rf local/selected_mongodb_contents.yaml.gz
+	rm -rf local/selected_mongodb_contents_jsonschema_check.txt
+
+local/mongodb-collection-report.txt:
+	$(RUN) mongodb_exporter 2>&1 | tee $@
+
+local/selected_mongodb_contents_jsonschema_check.txt: nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json \
+local/selected_mongodb_contents.json
+	# < 5 minutes ?
+	$(RUN) check-jsonschema --schemafile  $^ | tee $@
+
+linkml-validate-mongodb: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/selected_mongodb_contents.json
+	# < 5 minutes ?
+	$(RUN) linkml-validate --schema $^
+
+# slow linkml conversion from JSON to RDF/TTL
+#  ~ 12 minutes
+#  makes debugging other conversions by input line number easier
+#  why not just writing YAML from mongodb_exporter?
+#  doesn't seem to handle 64 bit numbers well
+local/selected_mongodb_contents_fully_repaired.yaml: local/selected_mongodb_contents_fully_repaired.json
+	cat $< | yq  -P  | cat > $@
+
+local/selected_mongodb_contents_fully_repaired.yaml.gz: local/selected_mongodb_contents_fully_repaired.yaml
+	gzip -c $< > $@
+
+local/selected_mongodb_contents_fully_repaired.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml \
+local/selected_mongodb_contents_fully_repaired.yaml
+	# ~ 15 minutes ?
+	#  requires mongodb_exporter to be run in --curie-fix mode
+	$(RUN) linkml-convert \
+		--output $@ \
+		--schema $^
+	# relatively fast
+	riot --validate $@
+
+local/selected_mongodb_contents_fully_repaired.ttl.gz: local/selected_mongodb_contents_fully_repaired.ttl
+	date
+	gzip -c $< > $@
+
+# # # #
+
+local/envo.db:
+	$(RUN) semsql download envo -o $@
+
+check_neon_vs_jsonschema: nmdc_schema/nmdc_materialized_patterns.schema.json local/neon_in_nmdc.yaml
+	$(RUN) check-jsonschema --schemafile $^
+
+validate_neon: nmdc_schema/nmdc_materialized_patterns.yaml local/neon_in_nmdc.yaml
+	$(RUN)  linkml-validate --schema $^
+
+local/neon_in_nmdc.ttl: nmdc_schema/nmdc_materialized_patterns.yaml local/neon_in_nmdc.yaml
+	$(RUN) linkml-convert \
+		--output $@ \
+		--schema $^
+
+local/neon_eco_type.tsv: local/neon_in_nmdc.ttl assets/sparql/neon_eco_type.rq
+	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
+
+local/neon_soil_type.tsv: local/neon_in_nmdc.ttl assets/sparql/neon_soil_type.rq
+	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
+
+local/local_class_in_neon.tsv: local/neon_in_nmdc.ttl assets/sparql/local_class_in_neon.rq
+	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
+
+local/cur_vegetation_in_neon.tsv: local/neon_in_nmdc.ttl assets/sparql/cur_vegetation_in_neon.rq
+	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
+
+# # # #
+
+local/nlcd_2019_land_cover_l48_20210604.xml:
+	curl -o $@ https://www.mrlc.gov/downloads/sciweb1/shared/mrlc/metadata/nlcd_2019_land_cover_l48_20210604.xml
+
+
+local/nlcd_2019_land_cover_l48_20210604.yaml: local/nlcd_2019_land_cover_l48_20210604.xml
+	yq -p=xml -oy '.' $< > $@
+
+
+local/neon-nlcd-envo-mappings.tsv: local/nlcd_2019_land_cover_l48_20210604.yaml local/envo.db
+	$(RUN)  get_neon-nlcd-envo-mapping \
+		--nlcd-yaml $(word 1, $^) \
+		--envo-sqlite $(word 2, $^) \
+		--neon-nlcd-envo-mappings-tsv $@
+
+local/neon-soil-order-envo-mapping.tsv:
+	$(RUN) python nmdc_schema/neon-soil-order-envo-mapping.py
+
+# # # #
+
+.PHONY: accepting_legacy_ids_all accepting_legacy_ids_cleanup
+
+accepting_legacy_ids_all: accepting_legacy_ids_cleanup \
+nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json nmdc_schema/nmdc_schema_accepting_legacy_ids.py
+
+accepting_legacy_ids_cleanup:
+	rm -rf nmdc_schema/nmdc_schema_accepting_legacy_ids*
+
+# --useuris / --metauris
+nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml: src/schema/nmdc.yaml
+	$(RUN) gen-linkml \
+		--format yaml \
+		--mergeimports \
+		--metadata \
+		--no-materialize-attributes \
+		--no-materialize-patterns \
+		--useuris \
+		--output $@ $<
+	# probably should have made a list of classes and then looped over a parameterized version of this
+	# could also assert that the range is string
+	yq -i '(.classes[] | select(.name == "Biosample") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "Biosample") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "DataObject") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "DataObject") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MagsAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MagsAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetabolomicsAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetabolomicsAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetagenomeAnnotationActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetagenomeAnnotationActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetagenomeAssembly") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetagenomeAssembly") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetagenomeSequencingActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetagenomeSequencingActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetaproteomicsAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetaproteomicsAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetatranscriptomeActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetatranscriptomeActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetatranscriptomeAnnotationActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetatranscriptomeAnnotationActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetatranscriptomeAssembly") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetatranscriptomeAssembly") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "NomAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "NomAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "ReadBasedTaxonomyAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "ReadBasedTaxonomyAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "ReadQcAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "ReadQcAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "Study") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "Study") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+
+	$(RUN) gen-linkml \
+		--format yaml \
+		--mergeimports \
+		--metadata \
+		--no-materialize-attributes \
+		--materialize-patterns \
+		--useuris \
+		--output $@.temp $@
+
+	mv $@.temp $@
+
+nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+	$(RUN) gen-json-schema \
+		--closed $< > $@
+
+nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+	$(RUN) gen-python --validate $< > $@
+	$(RUN) python nmdc_schema/use_more_tolerant_schema.py

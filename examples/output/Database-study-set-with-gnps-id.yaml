@@ -6,15 +6,15 @@ study_set:
     the soil carbon cycle.
   gnps_task_identifiers:
   - gnps.task:4b848c342a4f4abc871bdf8a09a60807
-  gold_study_identifiers:
-  - GOLD:Gs0128849
-  ecosystem: Environmental
-  ecosystem_category: Terrestrial
-  ecosystem_type: Soil
-  ecosystem_subtype: Wetlands
-  specific_ecosystem: Permafrost
-  principal_investigator:
-    has_raw_value: Virginia Rich
   doi:
     has_raw_value: 10.25585/1488217
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Wetlands
+  ecosystem_type: Soil
+  gold_study_identifiers:
+  - GOLD:Gs0128849
+  principal_investigator:
+    has_raw_value: Virginia Rich
+  specific_ecosystem: Permafrost
   type: nmdc:Study

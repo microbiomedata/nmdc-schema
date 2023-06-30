@@ -1,46 +1,41 @@
-id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/annotation
+id: https://w3id.org/nmdc/annotation
 name: NMDC-Annotation
 title: Annotation Module for NMDC Schema
 description: >-
   This module in the schema is for representing annotations including functional annotations of proteins and other gene products,
   as well as controlled terms for describing things like metabolites
-default_range: string
+
+license: https://creativecommons.org/publicdomain/zero/1.0/
 
 see_also:
   - https://github.com/microbiomedata/nmdc-metadata/issues/176
 
-default_curi_maps:
-  - obo_context
-  - idot_context
-
 notes:
   - Removed slot_uri of rdf:type from type slot. Is OntologyClass an appropriate range?
 
+imports:
+  - core
+
 
 prefixes:
-  COG: https://unknown.to.linter.org/
-  EC: https://unknown.to.linter.org/
-  GO: http://purl.obolibrary.org/obo/GO_
-  KEGG.ORTHOLOGY: http://identifiers.org/kegg.orthology/
-  KEGG.REACTION: http://identifiers.org/kegg.reaction/
-  KEGG_PATHWAY: http://identifiers.org/kegg.pathway/
-  MetaCyc: https://identifiers.org/metacyc.reaction/
-  MetaNetX: https://unknown.to.linter.org/
-  RHEA: http://identifiers.org/rhea/
-  RetroRules: https://unknown.to.linter.org/
-  SEED: http://identifiers.org/seed/
+  COG: "https://bioregistry.io/cog:" # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  EC: "https://bioregistry.io/eccode:" # "EC-CODE": "http://identifiers.org/ec-code/", in https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  GO: http://purl.obolibrary.org/obo/GO_ # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  KEGG.ORTHOLOGY: http://identifiers.org/kegg.orthology/  # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  KEGG.REACTION: http://identifiers.org/kegg.reaction/ # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  KEGG_PATHWAY: http://identifiers.org/kegg.pathway/ # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  MetaCyc: https://identifiers.org/metacyc.reaction/ # "METACYC.REACTION": "http://identifiers.org/metacyc.reaction/", in https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  RHEA: http://identifiers.org/rhea/ # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  SEED: http://identifiers.org/seed/ # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+
   biolink: https://w3id.org/biolink/vocab/
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
-  nmdc_yaml: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/
+
 
 default_prefix: nmdc
+default_range: string
 
-imports:
-  - basic_slots
-  - core
-  - prov
-  - workflow_execution_activity
 
 classes:
   GenomeFeature:
@@ -233,10 +228,9 @@ classes:
 
 slots:
 
-  has_part: { }
-
   chemical:
     description: from reaction participant class
+
   stoichiometry:
     description: from reaction participant class
 
@@ -262,23 +256,26 @@ slots:
     comments:
       - "For features that cross the origin of a circular feature (e.g. most bacterial genomes, plasmids, and some viral genomes), the requirement for start to be less than or equal to end is satisfied by making end = the position of the end + the length of the landmark feature."
 
-  direction:
-  encodes:
-  end:
-  feature_type:
-  is_balanced:
-  is_diastereoselective:
-  is_fully_characterized:
-  is_stereo:
-  is_transport:
-  left_participants:
-  phase:
-  right_participants:
   seqid:
     todos:
       - "change range from string to object"
-  smarts_string:
-  start:
+
   strand:
     todos:
       - "set the range to an enum?"
+
+  direction: { }
+  encodes: { }
+  end: { }
+  feature_type: { }
+  has_part: { }
+  is_balanced: { }
+  is_diastereoselective: { }
+  is_fully_characterized: { }
+  is_stereo: { }
+  is_transport: { }
+  left_participants: { }
+  phase: { }
+  right_participants: { }
+  smarts_string: { }
+  start: { }

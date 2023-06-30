@@ -1,0 +1,13 @@
+neon_site_soil_type_order	envo_label_style	envo_match_by_label	note	envo_id	envo_label	env_medium	sweet	envThes
+Andisols	andisol		spelling difference	ENVO:00002232	andosol	andosol [ENVO:00002232]		
+Gelisols	gelisol		related synonym	ENVO:00002236	cryosol	cryosol [ENVO:00002236]		
+Histosols	histosol	ENVO:00002243		ENVO:00002243	histosol	histosol [ENVO:00002243]		
+Spodosols	spodosol		spelling difference	ENVO:00002257	podzol	podzol [ENVO:00002257]		
+Alfisols	alfisol		default value	ENVO:00001998	soil	soil [ENVO:00001998]	http://sweetontology.net/realmSoil/Alfisol	
+Aridisols	aridisol		default value	ENVO:00001998	soil	soil [ENVO:00001998]	http://sweetontology.net/realmSoil/Aridisol	
+Entisols	entisol		default value	ENVO:00001998	soil	soil [ENVO:00001998]	http://sweetontology.net/realmSoil/Entisol	
+Inceptisols	inceptisol		default value	ENVO:00001998	soil	soil [ENVO:00001998]	http://sweetontology.net/realmSoil/Inceptisol	
+Mollisols	mollisol		default value	ENVO:00001998	soil	soil [ENVO:00001998]	http://sweetontology.net/realmSoil/Mollisol	
+	soil	ENVO:00001998	default value	ENVO:00001998	soil	soil [ENVO:00001998]		
+Ultisols	ultisol	ENVO:01001397		ENVO:01001397	ultisol	ultisol [ENVO:01001397]		
+Vertisols	vertisol	ENVO:00002254		ENVO:00002254	vertisol	vertisol [ENVO:00002254]		

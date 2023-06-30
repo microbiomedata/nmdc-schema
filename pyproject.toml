@@ -8,20 +8,24 @@ license = "MIT"
 name = "nmdc_schema"
 readme = "README.md"
 repository = "https://github.com/microbiomedata/nmdc-schema"
-version = "7.5.0"
+version = "7.7.1"
 authors = [
     "Bill Duncan <wdduncan@gmail.com>",
     "Chris Mungall <cjmungall@lbl.gov>",
     "Mark Andrew Miller <MAM@lbl.gov>",
+    "Patrick Kalita <pkalita@lbl.gov>",
     "Sujay Patil <spatil@lbl.gov>",
 ]
 
 [tool.poetry.dependencies]
 python = "^3.9"
 # see https://github.com/microbiomedata/nmdc-schema/issues/820
-linkml = "^1.5.2"
-linkml-runtime = "^1.5.2"
 exhaustion-check = "^0.1.1"
+gen-pop-linkml2sheets = "^0.1.8"
+
+linkml = "^1.5.6"
+linkml-runtime = "^1.5.4"
+
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0"
@@ -39,6 +43,12 @@ python-dotenv = "^0.21.0"
 schemasheets = "^0.1.18"
 strsimpy = "*"
 toml = "*"
+exhaustion-check = "^0.1.1"
+pymongo = "^4.3.3"
+oaklib = "0.5.6"
+#nltk = "^3.8.1"
+#scikit-learn = "^1.2.2"
+#xmltodict = "^0.13.0"
 
 sheets_and_friends = "^0.5.0"
 ## /Users/MAM/Documents/gitrepos/sheets_and_friends
@@ -71,10 +81,13 @@ build-backend = "poetry_dynamic_versioning.backend"
 docs = ["mkdocs-material"]
 
 [tool.poetry.scripts]
-boolean_usages = "nmdc_schema.boolean_usages:cli"
+#boolean_usages = "nmdc_schema.boolean_usages:cli"
+#get_class_usages = "nmdc_schema.get_class_usages:main"
+#slot_roster = "nmdc_schema.slot_roster:cli"
+#validate-nmdc-json = "nmdc_schema.validate_nmdc_json:cli"
+#validate-nmdc-json is deprecated by check-jsonschema, which is in turn deprereated by run-linkml-examples
 fetch-nmdc-schema = "nmdc_schema.nmdc_data:get_nmdc_jsonschema"
 generate_import_slots_regardless = "nmdc_schema.generate_import_slots_regardless:main"
-get_class_usages = "nmdc_schema.get_class_usages:main"
 get_mixs_slots_matching_slot_list = "nmdc_schema.get_mixs_slots_matching_slot_list:main"
 get_mixs_slots_used_in_schema = "nmdc_schema.get_mixs_slots_used_in_schema:main"
 get_slots_from_class = "nmdc_schema.get_slots_from_class:main"
@@ -82,12 +95,10 @@ minimal_get_submissions = "nmdc_schema.minimal_get_submissions:cli"
 mixs_coverage = "nmdc_schema.mixs_coverage:cli"
 mixs_deep_diff = "nmdc_schema.mixs_deep_diff:cli"
 mixs_slot_text_mining = "nmdc_schema.mixs_slot_text_mining:cli"
+mongodb_exporter = "nmdc_schema.mongodb_direct_to_nmdc_Database_file:export_to_yaml"
 nmdc-data = "nmdc_schema.nmdc_data:cli"
 nmdc-version = "nmdc_schema.nmdc_version:cli"
-slot_roster = "nmdc_schema.slot_roster:cli"
-
-#validate-nmdc-json is deprecated by check-json-schema, which is in turn deprereated by run-linkml-examples
-#validate-nmdc-json = "nmdc_schema.validate_nmdc_json:cli"
+get_neon-nlcd-envo-mapping = "nmdc_schema.neon_nlcd_envo_mapping:generate_nlcd_envo_mappings"
 
 #classifiers = [
 #    "Development Status :: 4 - Beta",

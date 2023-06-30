@@ -5,15 +5,15 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 nmdc:clsite-99-Cq00d1 a nmdc:CollectingBiosamplesFromSite ;
-    nmdc:has_inputs nmdc:frsite-99-SPreao ;
-    nmdc:has_outputs nmdc:bsm-99-BdlWdQ,
+    nmdc:has_input nmdc:frsite-99-SPreao ;
+    nmdc:has_output nmdc:bsm-99-BdlWdQ,
         nmdc:bsm-99-J9FcnC,
         nmdc:bsm-99-vn74Wq ;
     nmdc:name "Collection of biosamples from BESC-13-CL1_35_33" .
 
 nmdc:clsite-99-yzmLBN a nmdc:CollectingBiosamplesFromSite ;
-    nmdc:has_inputs nmdc:frsite-99-h2mYFG ;
-    nmdc:has_outputs nmdc:bsm-99-P8FdpS,
+    nmdc:has_input nmdc:frsite-99-h2mYFG ;
+    nmdc:has_output nmdc:bsm-99-P8FdpS,
         nmdc:bsm-99-tN5lxM,
         nmdc:bsm-99-ugBwz3 ;
     nmdc:name "Collection of biosamples from BESC-13-CL2_39_29" .

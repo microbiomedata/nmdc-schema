@@ -1,23 +1,23 @@
 #example populated by w/example mostly from NEON.D16.WREF.DP1.10107.001.mms_metagenomeDnaExtraction.2019-06.expanded.20230113T225219Z.csv
 
 #extraction http://purl.obolibrary.org/obo/OBI_0302884
-nucleic_acid_extraction_set:
-  - id: bare:value
+extraction_set:
+  - id: nmdc:extrp-99-abcdef
     name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
     description: DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7
 
     #enforce analytical sample typecode?
-    # MAM do you mean that this entityt should ahve an id pattern including a typecode
+    # MAM do you mean that this entity should have an id pattern including a typecode
     #  or do you mean that the typecode of the inputs should be checked?
     #    I think what yoiu're trying to do is better implemented by specifying
     #      the range of has_input for this class, as a slot_usage
     # this still doesn't solve referential integrity
     has_input:
-      - bare:xxx
+      - generic:xxx
 
     #cardinality of outputs should be 1-many, may want to fractionate samples or keep supernatant
-    has_outputs:
-      - bare:xxx
+    has_output:
+      - generic:xxx
 
     processing_institution: Battelle
 
@@ -27,7 +27,9 @@ nucleic_acid_extraction_set:
     #      nucl_acid_ext: https://data.neonscience.org/documents/10179/2431540/BMI_dnaExtractionSOP_v7/61204962-bb01-a0b9-3354-ccdaab5132c3
 
     #extraction_date http://purl.obolibrary.org/obo/OBI_0003081
-    extraction_date: '2019-11-08'
+    #    extraction_date: '2019-11-08'
+    start_date: '2019-11-08'
+    end_date: '2019-11-08'
 
     sample_mass: #http://purl.obolibrary.org/obo/MS_1000004
       has_numeric_value: 0.25
@@ -44,9 +46,9 @@ nucleic_acid_extraction_set:
 
     #extraction_type should have range of dna_extraction_enum with possible values of 'DNA extraction', 'RNA extraction', 'protein extraction'
     #http://purl.obolibrary.org/obo/OBI_0000257
-    extraction_type: DNA extraction
+    extraction_target: DNA
 
     #not needed at this time
     #protocol_materials:
     #  - { material_name : DNeasy 96 PowerSoil Pro Kit, material_vendor: Qiagen, catalog_number: 47017 }
-    #  - { material_name : X-Pierce Film, material_vendor: Sigma Aldrich, catalog_number: Z722502-100EA }
+    #  - { material_name : X-Pierce Film, material_vendor: Sigma Aldrich, catalog_number: Z722502-100EA }`
