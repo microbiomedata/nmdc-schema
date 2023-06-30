@@ -348,10 +348,10 @@ linkml-validate-mongodb \
 local/selected_mongodb_contents.json.gz
 
 dump-validate-report-convert-mongodb: mongodb-cleanup \
-local/selected_mongodb_contents.yaml \
-local/selected_mongodb_contents.yaml.gz \
-local/selected_mongodb_contents.ttl \
-local/selected_mongodb_contents.ttl.gz
+local/selected_mongodb_contents_fully_repaired.yaml \
+local/selected_mongodb_contents_fully_repaired.yaml.gz \
+local/selected_mongodb_contents_fully_repaired.ttl \
+local/selected_mongodb_contents_fully_repaired.ttl.gz
 
 local/selected_mongodb_contents_fully_repaired.json:
 	# approximately 2 minute
