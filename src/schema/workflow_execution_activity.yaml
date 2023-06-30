@@ -15,6 +15,7 @@ imports:
 prefixes:
   nmdc: https://w3id.org/nmdc/
   linkml: https://w3id.org/linkml/
+  EFO: http://www.ebi.ac.uk/efo/
 
 default_prefix: nmdc
 default_range: string

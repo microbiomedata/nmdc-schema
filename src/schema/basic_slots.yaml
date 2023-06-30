@@ -9,7 +9,7 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
   dcterms: http://purl.org/dc/terms/
-
+  EFO: http://www.ebi.ac.uk/efo/
   skos: http://www.w3.org/2004/02/skos/core#
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
@@ -135,7 +135,60 @@ slots:
   instrument_name:
     description: >-
       The name of the instrument that was used for processing the sample.
-#    range: instrument_name_enum
+  #    range: instrument_name_enum
+
+  doi:
+    is_a: attribute
+    range: AttributeValue
+    annotations:
+      on_hover: show details
+
+  ess_dive_datasets:
+    multivalued: true
+    description: List of ESS-DIVE dataset DOIs
+
+  funding_sources:
+    multivalued: true
+    range: string
+
+  notes:
+    description: from study class
+
+  principal_investigator:
+    aliases:
+      - PI
+    is_a: attribute
+    range: PersonValue
+    description: Principal Investigator who led the study and/or generated the dataset.
+
+  relevant_protocols:
+    multivalued: true
+    range: string
+
+  applies_to_person:
+    domain: CreditAssociation
+    range: PersonValue
+    todos: prov:agent takes an Agent object. Is a person value an Agent? Also try
+      to relate to principal investigator slot? could include OBI:0000103 principal
+      investigator role... do we need to define the OBI prefix?
+    required: true
+  #    slot_uri: prov:agent
+
+  applied_role:
+    domain: CreditAssociation
+    range: credit enum
+    slot_uri: prov:hadRole
+    deprecated: A credit association may have multiple roles. So, use the applied
+      roles slot.
+
+  applied_roles:
+    domain: CreditAssociation
+    range: credit enum
+    multivalued: true
+    required: true
+    annotations:
+      display_hint: >-
+        Identify all CRediT roles associated with this contributor. CRediT Information: https://info.orcid.org/credit-for-research-contribution ; CRediT: https://credit.niso.org/
 
 #enums:
 #  instrument_name_enum:
@@ -156,5 +209,4 @@ slots:
 #      - QExactHF03
 #      - QExactP02
 #      - VOrbiETD04
-
 

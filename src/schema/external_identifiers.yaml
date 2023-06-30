@@ -11,6 +11,7 @@ todos:
 
 imports:
   - basic_slots
+  - mixs
 
 prefixes:
   # none of these are registered in prefix commons
@@ -19,6 +20,7 @@ prefixes:
   nmdc: https://w3id.org/nmdc/
 
   skos: http://www.w3.org/2004/02/skos/core#
+  EFO: http://www.ebi.ac.uk/efo/
 
 default_prefix: nmdc
 default_range: string

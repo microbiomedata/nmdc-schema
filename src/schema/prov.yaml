@@ -11,7 +11,7 @@ imports:
 
 prefixes:
   prov: http://www.w3.org/ns/prov#
-
+  EFO: http://www.ebi.ac.uk/efo/
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
 

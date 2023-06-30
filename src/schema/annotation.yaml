@@ -18,6 +18,7 @@ imports:
 
 
 prefixes:
+  EFO: http://www.ebi.ac.uk/efo/
   COG: "https://bioregistry.io/cog:" # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
   EC: "https://bioregistry.io/eccode:" # "EC-CODE": "http://identifiers.org/ec-code/", in https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
   GO: http://purl.obolibrary.org/obo/GO_ # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld

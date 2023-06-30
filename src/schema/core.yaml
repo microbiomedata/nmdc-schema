@@ -11,6 +11,7 @@ imports:
   - prov
 
 prefixes:
+  EFO: http://www.ebi.ac.uk/efo/
   KEGG.COMPOUND: http://identifiers.org/kegg.compound/
   dcterms: http://purl.org/dc/terms/
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
@@ -39,6 +40,12 @@ subsets:
   nucleic acid sequence source: { }
   sequencing: { }
   #  soil: { }
+  sample subset:
+    description: Subset consisting of entities linked to the processing of samples.  Currently,
+      this subset consists of study, omics process, and biosample.
+  data object subset:
+    description: Subset consisting of the data objects that either inputs or outputs
+      of processes or workflows.
 
 types:
 
@@ -72,6 +79,46 @@ types:
     mappings:
       - qud:Unit
       - UO:0000000
+
+enums:
+  credit enum:
+    permissible_values:
+      Conceptualization:
+        description: Conceptualization
+      Data curation:
+        description: Data curation
+      Formal Analysis:
+        description: Formal Analysis
+      Funding acquisition:
+        description: Funding acquisition
+      Investigation:
+        description: Investigation
+      Methodology:
+        description: Methodology
+      Project administration:
+        description: Project administration
+      Resources:
+        description: Resources
+      Software:
+        description: Software
+      Supervision:
+        description: Supervision
+      Validation:
+        description: Validation
+      Visualization:
+        description: Visualization
+      Writing original draft:
+        description: "Writing \u2013 original draft"
+      Writing review and editing:
+        description: "Writing \u2013 review & editing"
+      Principal Investigator:
+        description: principal investigator role
+        meaning: OBI:0000103
+      Submitter:
+        description: the person(s) who enter study and biosample metadata into the NMDC submission portal
+        meaning: EFO:0001741
+    comments:
+      - credit enums come from https://casrai.org/credit/
 
 classes:
 
@@ -459,6 +506,193 @@ classes:
     mappings:
       - schema:GeoCoordinates
 
+  FieldResearchSite:
+    aliases:
+      - research plot
+    description: A site, outside of a laboratory, from which biosamples may be collected.
+    is_a: Site
+    title: Field Research Site
+    comments:
+      - Provides grouping of biosamples at level that's more specific than belonging
+        to the same study
+      - be very clear that this could be part of a larger site
+      - In Bioscales, one might say that rhizosphere soil and bulk soil from around
+        the same plant were obtained at the same site. In this case, the site would
+        correspond to one tree.
+      - "might correspond to GOLD's identifier on a page like https://gold.jgi.doe.gov/biosample?id=Gb0305833"
+    slots:
+      - cur_vegetation
+      - elev
+      - geo_loc_name
+      - habitat # gold term... enumerated values?
+      - lat_lon
+      - local_class
+      - neon_deims_sdr_link # short-term addition for neon
+      - neon_eco_type # short-term addition for neon
+      - neon_soil_type # short-term addition for neon
+      - part_of
+      - soil_type
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+
+  Protocol:
+    slots:
+      - url
+      - name
+
+  Study:
+    is_a: NamedThing
+    in_subset:
+      - sample subset
+    aliases:
+      - proposal
+      - research proposal
+      - research study
+      - investigation
+      - project
+      - umbrella project
+    description: >-
+      A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.
+    alt_descriptions:
+      embl.ena: A study (project) groups together data submitted to the archive and
+        controls its release date. A study accession is typically used when citing
+        data submitted to ENA
+
+    slots:
+
+      - emsl_project_dois
+
+      - neon_study_identifiers
+
+      ## Identifiers
+      - id
+
+      ## Alternative IDs
+      - alternative_identifiers
+      - gnps_task_identifiers
+
+      ## Related IDs
+      #- insdc_bioproject_identifiers
+      #- insdc_sra_ena_study_identifiers
+      - abstract
+      - alternative_descriptions
+      - alternative_names
+      - alternative_titles
+      - doi
+      - ecosystem
+      - ecosystem_category
+      - ecosystem_subtype
+      - ecosystem_type
+      #      - emsl_project_identifier
+      #      - emsl_proposal_doi
+      #      - emsl_proposal_identifier
+      - ess_dive_datasets
+      - funding_sources
+      - gold_study_identifiers
+      - has_credit_associations
+      - insdc_bioproject_identifiers
+      - massive_study_identifiers
+      - mgnify_project_identifiers
+      - notes
+      - objective
+      - principal_investigator
+      - publications
+      - related_identifiers
+      - relevant_protocols
+      - specific_ecosystem
+      - study_image
+      - title
+      - type
+      - websites
+
+
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+
+      doi:
+        description: >-
+          The dataset citation for this study
+        annotations:
+          display_hint: DOI associated with the data in this study. This is required when data is already generated.
+      name:
+
+        annotations:
+          display_hint: Provide a name for the study your samples will belong with.
+      websites:
+
+        annotations:
+          display_hint: Link to the Principal Investigator's research lab webpage
+            or the study webpage associated with this collection of samples.
+            Multiple links can be provided.
+      description:
+        description: A brief summary that details the study you're submitted to NMDC
+        annotations:
+          display_hint: Provide a brief description of your study.
+      notes:
+
+        annotations:
+          display_hint: Add any additional notes or comments about this study.
+      alternative_identifiers:
+        description: Unique identifier for a study submitted to additional resources. Matches that which has been submitted to NMDC
+      alternative_names:
+
+        annotations:
+          display_hint: Project, study, or sample set names the are also associated with this submission
+            or other names / identifiers for this study.
+      related_identifiers:
+        description: Unique identifier for a study submitted to additional resources. Similar, but not necessarily identical to that which has been submitted to NMDC
+      insdc_bioproject_identifiers:
+        description: Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.
+        annotations:
+          display_hint: Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title.
+    #      emsl_project_identifier:
+    #        description: The EMSL project ID that relates to the NMDC submitted study
+    #      emsl_proposal_doi:
+    #        description: The DOI for the EMSL awarded study that relates to the NMDC submitted study
+    exact_mappings:
+      - SIO:001066
+      - NCIT:C63536
+      - OBI:0000066
+      - ISA:Study
+    close_mappings:
+      - NCIT:C41198
+      - ISA:Investigation
+    broad_mappings:
+      - prov:Activity
+    todos:
+      - determine how to get data values for submitted_to_insdc, investigation_type,
+        experimental_factor
+      - project_name is redundant with name, so excluding it
+    notes:
+      - "sample GOLD link https://identifiers.org/gold:Gs0110115"
+      - "sample insdc.srs link https://www.ebi.ac.uk/ena/browser/view/PRJEB45055 ?"
+      - "sample mgnify link https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757"
+      - "GOLD, insdc.srs and mgnify are reasonable prefixes for alternative study identifiers, but no longer for the Study.id"
+
+  CreditAssociation:
+    aliases:
+      - study role
+      - credit table
+      - associated researchers
+    description: >-
+      This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role (https://casrai.org/credit/) and for a person value
+      Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0
+    slots:
+      - applies_to_person
+      - applied_role
+      - applied_roles
+      - type
+    class_uri: prov:Association
+
+
 slots:
   total_bases:
     todos:
@@ -767,3 +1001,24 @@ slots:
   protein_spectral_count:
   protein_sum_masic_abundance:
   smiles:
+
+  study_image:
+    domain: Study
+    range: ImageValue
+    multivalued: true
+    inlined: true
+    description: Links a study to one or more images.
+
+  has_credit_associations:
+    domain: Study
+    range: CreditAssociation
+    multivalued: true
+    notes:
+      - 'had just been "inlined: true"'
+    inlined_as_list: true
+    description: 'This slot links a study to a credit association.  The credit association
+      will be linked to a person value and to a CRediT Contributor Roles term. Overall
+      semantics: person should get credit X for their participation in the study'
+    slot_uri: prov:qualifiedAssociation
+    annotations:
+      display_hint: Other researchers associated with this study.
