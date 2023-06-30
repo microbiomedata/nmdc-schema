@@ -585,3 +585,8 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json: nmdc_schema/nmdc_schem
 nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
 	$(RUN) gen-python --validate $< > $@
 	$(RUN) python nmdc_schema/use_more_tolerant_schema.py
+
+validate-samp-ops-data:
+	$(RUN) linkml-validate \
+		--schema src/schema/sample_operations.yaml \
+		--target-class SiteSamplingActivity src/data/valid/SiteSamplingActivity-1.yaml

@@ -1,0 +1,481 @@
+id: https://w3id.org/nmdc/sample_operations
+name: sample-operations
+title: NMDC Sample Operations module
+description: Processes by which samples can be prepared for analyses
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  sampops: https://w3id.org/nmdc/sample_operations/
+  nmdc: https://w3id.org/nmdc/
+  EFO: http://www.ebi.ac.uk/efo/
+
+default_prefix: sampops # or maybe nmdc?
+
+imports:
+  - linkml:types
+  - biosample
+
+default_range: string
+
+classes:
+  SampleOperation:
+    description: >-
+      Parent class of all sample operations
+    todos:
+      - see also various PlannedProcesses and Activities
+      - at the very minimum, this should inherit id, name and description from NamedThing
+      - no has_output? is this still being considered against detection_id?
+      - we should reuse the has_input and has_output from the schema that preceded this
+    slots:
+      - id
+      - detection_id
+      - has_input
+      - separation_id
+      - operation_type
+
+  SiteSamplingActivity:
+    description: >-
+      A process that outlines a defined site from which soil cores were gathered
+    is_a: SampleOperation
+    todos:
+      - lat and long should be replaced with the lat_long slot, which has a path to lat and lon.
+      - elev should also be inherited
+      - existing temp instead of soil_temp?
+    slots:
+      - analyte_id
+      - core_collector
+      - date_time_collected
+      - elev
+      - lat
+      - long
+      - site_code
+      - site_definition
+      - site_name_long
+      - soil_temperature
+      - source_mat_id
+      - vegetation
+      - vol_water_content
+      - weather
+
+  DerivativeActivity:
+    description: >-
+      A technique used in chemistry which transforms a chemical compound into a product (the reaction's derivative) of 
+      similar chemical structure, called a derivative. That compound has properties more amenable to 
+      a particular analytical method. Some samples analyzed by GC require derivatization in order to 
+      make them suitable for analysis. Compounds that have poor volatility, poor thermal stability, or 
+      that can be adsorbed in the injector will exhibit non-reproducible peak areas, heights, and shapes. 
+      Other compounds that respond poorly on a specific detector may need to be “tagged” with 
+      a different functional group to improve detection.
+    is_a: SampleOperation
+    slots:
+      - analyte_id
+      - celsius_temperature
+      - concentration
+      - container_type
+      - derivatization
+      - derivatization_agent
+      - device
+      - duration
+      - mixing
+      - sample_volume
+      - source_mat_id
+      - speed
+      - unit
+      - volume
+      - volume_unit
+
+  SampleDrying:
+    description: >-
+      The process of removing a solvent from a substance.
+    is_a: SampleOperation
+    slots:
+      - analyte_id
+      - dry
+      - duration
+      - sample_mass
+      - source_mat_id
+      - unit
+      - value
+
+  SubsamplingActivity:
+    description: >-
+      A subsample may be: (a) a portion of the sample obtained by selection or division; 
+      (b) an individual unit of the lot taken as part of the sample; (c) the final unit of multistage sampling. 
+      The term 'subsample' is used either in the sense of a 'sample of a sample' or as a synonym for 'unit'. 
+      In practice, the meaning is usually apparent from the context or is defined.
+    is_a: SampleOperation
+    slots:
+      - analyte_id
+      - container_size
+      - container_type
+      - sample_mass
+      - source_mat_id
+      - starting_amount
+      - volume
+      - volume_unit
+
+  AcidificationActivity:
+    description: >-
+      Activity of modifying the pH of a sample or solution via addition of some acid.
+    is_a: SampleOperation
+    slots:
+      - acid
+      - analyte_id
+      - concentration
+      - ph # is this the target pH desired by the activity, or the observed end pH? The latter is a property of the output sample, not the activity
+      - source_mat_id
+      - unit
+      - volume
+      - volume_unit
+
+  ReactionActivity:
+    description: >-
+      A process which uses or consumes chemical/molecular entities to generate other molecular entities.
+    is_a: SampleOperation
+    slots:
+      - analyte_id
+      - celsius_temperature
+      - container_type
+      - duration
+      - mixing
+      - source_mat_id
+      - speed
+      - unit
+
+  FiltrationActivity:
+    description: >-
+      The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, 
+      usually by forcing a carrier gas or liquid through a porous medium.
+    is_a: SampleOperation
+    slots:
+      - analyte_id
+      - analyte_volume
+      - conditioning
+      - conditioning_volume
+      - container_size
+      - container_type
+      - filter
+      - material_pore_size
+      - separation_method
+      - source_mat_id
+      - unit
+      - volume
+      - volume_unit
+
+  ExtractionActivity:
+    description: >-
+      A material separation in which a desired component of an input material is separated from the remainder
+    is_a: SampleOperation
+    slots:
+      - analyte_id
+      - concentration
+      - container_size
+      - container_type
+      - duration
+      - extractant
+      - mixing
+      - sample_volume
+      - source_mat_id
+      - speed
+      - unit
+      - volume
+      - volume_unit
+
+  AliquotActivity:
+    description: >-
+      Pertaining to a portion of the whole; any one of two or more samples of something, of the same volume or weight.
+    is_a: SampleOperation
+    slots:
+      - analyte_id
+      - container_size
+      - container_type
+      - source_mat_id
+      - starting_amount
+      - volume
+      - volume_unit
+
+  PhaseSeparationActivity:
+    description: >-
+      The process by which a single solid (liquid) phase separates into two or more new phases.
+    is_a: SampleOperation
+    slots:
+      - analyte_id
+      - analyte_volume
+      - duration
+      - material_component_separation
+      - source_mat_id
+      - unit
+      - value
+
+  #  AnalyticalSample:
+  #    description: >-
+  #      A liquid bulk product produced according to specified lab protocols, from a sample or analyte, intended for further analysis.
+  #    is_a: SampleOperation
+  #    slots:
+  #      - analyte_id
+  #      - analyte_volume
+  #      - concentration
+  #      - container_type
+  #      - sample_state
+  #      - volume
+  #      - volume_unit
+
+  AnalyteStorage:
+    description: >-
+      The act, process and logistical considerations of the physical or environmental conditions under which the analytical sample is maintained.
+    is_a: SampleOperation
+    slots:
+      - analyte_id
+      - analyte_volume
+      - celsius_temperature
+      - sample_mass
+      - source_mat_id
+
+  PhMeasurement:
+    description: >-
+      The measurement of pH, the negative logarithm to base ten of the hydrogen ion activity in a solution. Operationally the pH of a solution X, pH(X), is measured relative to that of a standard reference solution, pH(S), and defined as pH(X) = pH(S) - (E(X) - E(S))/(RT/F)ln 10, where E(X) and E(S) are the electromotive forces measured in cells containing the solution X and the reference solution respectively.
+    is_a: SampleOperation
+    slots:
+      - analyte_id
+      - analytical_solution
+      - container_type
+      - duration
+      - instrument
+      - mixing
+      - sample_volume
+      - source_mat_id
+      - speed
+      - unit
+      - volume
+      - volume_unit
+
+  MixingActivity:
+    description: >-
+      The combining of components, particles or layers into a more homogeneous state. The mixing may be achieved manually or mechanically by shifting the material with stirrers or pumps or by revolving or shaking the container. The process must not permit segregation of particles of different size or properties. Homogeneity may be considered to have been achieved in a practical sense when the sampling error of the processed portion is negligible compared to the total error of the measurement system.
+    is_a: SampleOperation
+    slots:
+      - analyte_id
+      - duration
+      - mixing
+      - source_mat_id
+      - unit
+
+  SievingActivity:
+    description: >-
+      A sample is passed through a sieve to reach a specific particle size and remove anything that can't be passed through that size.
+    is_a: SampleOperation
+    slots:
+      - analyte_id
+      - sieve_size
+      - source_mat_id
+
+  ChemicalReactionActivity:
+    description: >-
+      A process which uses or consumes chemical/molecular entities to generate other molecular entities
+    is_a: SampleOperation
+    slots:
+      - analyte_id
+      - celsius_temperature
+      - container_type
+      - duration
+      - mixing
+      - reactant
+      - source_mat_id
+      - speed
+      - unit
+
+  LabDevice:
+    description: A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.
+    exact_mappings:
+      - OBI:0000968
+    slots:
+      - id
+      - activity_speed_id # how can an activity speed or time have its own identifier?
+      - activity_time_id
+      - description
+      - device_type
+
+enums:
+  ContainerTypeEnum:
+    permissible_values:
+      screw_top_conical:
+        description: 'screw_top_concial tube'
+
+  SolventEnum:
+    permissible_values:
+      deionized_water:
+        description: 'Deionized Water'
+      methanol:
+        description: 'methanol'
+      chloroform:
+        description: 'chloroform'
+
+  ActivityEnum:
+    permissible_values:
+      aliquot_activity:
+        description: 'Aliquot Activity'
+      extraction_activity:
+        description: 'Extraction Activity'
+      phase_separation:
+        description: 'Phase Separation'
+      filtration_activity:
+        description: 'Filtration Activity'
+      acidification_activity:
+        description: 'Acidification Activity'
+      analyte_storage:
+        description: 'Analyte Storage'
+      derivatization_activity:
+        description: 'Derivatization Activity'
+      sample_drying:
+        description: 'Sample Drying'
+      reaction_activity:
+        description: 'Reaction Activity'
+      subsampling_activity:
+        description: 'Subsampling Activity'
+      ph_measurement:
+        description: 'Ph Measurement'
+      mixing_activity:
+        description: 'Mixing Activity'
+      sieving_activity:
+        description: 'Sieving Activity'
+      chemical_reaction_activity:
+        description: 'Chemical Reaction Activity'
+
+  DeviceTypeEnum:
+    permissible_values:
+      orbital_shaker:
+        description: 'Orbital Shaker'
+      thermomixer:
+        description: 'Thermomixer'
+
+slots:
+  #  id:
+  #    range: integer
+  #    description: "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI" # so it can't be an integer
+
+  operation_type:
+    range: ActivityEnum
+
+  detection_id: # these need descriptions
+    range: integer
+  separation_id: # these need descriptions
+    range: integer
+  #  has_input:
+  #    range: Biosample
+  analyte_id: # this should be expressed as an output
+    range: integer
+    description: "Unique identifier for the analytical sample resulting from the extraction activity" # this should be expressed as an output
+  #  source_mat_id: # input,right?
+  #    range: integer
+  #    description: "A unique identifier assigned to the material sample that was used in the extraction activity"
+  site_code: # these need descriptions, range, etc.
+  site_name_long: # these need descriptions, range, etc.
+  core_collector: # these need descriptions, range, etc.
+  date_time_collected:
+    range: datetime
+    description: "24 hr format"
+  lat: # see reuse of existing terms above
+  long: # see reuse of existing terms above
+  #  elev: # see reuse of existing terms above
+  #    range: integer
+  #    description: "in meters" # we should use LinkMLs unit property here
+  soil_temperature:
+    range: float
+    description: "in celsius"  # we should use LinkMLs unit property here
+  vol_water_content:
+    range: float
+  vegetation: # these need descriptions, range, etc.
+  weather: # these need descriptions, range, etc.
+  site_definition:
+    description: "Defintion of a site. Size. i.e. 10 sq.m." # that;s not the definition of a site. What else might you want to say besides the area>
+  derivatization:
+    range: float
+    description: "A technique used in chemistry which transforms a chemical compound into a product ( the reaction's derivative) of similar chemical structure, called a derivative. That compount has properties more amenable to a particular analytical method. Some samples analyzed by GC require derivatization in order to make them suitable for analysis. Compounds that have poor volatility. poor thermal stability, or that can be adsorbed in the injector will exhibit nonreproducible peak areas, heights, and shapes. other compounds that respond poorly on a specific detector may need to be 'tagged' with a different function group to improve detection."
+  derivatization_agent:
+    range: float
+    description: "A chemical entity which is used in a material combination process known as derivatization and which consists in adding chemical groups to a molecule in an attempt to make it more volatile and therefore amenable to gas-chromatography mass spectrometry."
+  device:
+    description: "A material entity that is designed to perform a function in a scientific investigation, but is not a reagent."
+  container_type:
+    range: ContainerTypeEnum
+    description: "The vessel the sample was stored and extracted in"
+  volume_unit:
+    range: float
+    description: "A unit which is a standard measure of the amount of space occupied by any substance, whether solid, liquid, or gas."
+  unit: # should use LinkMLs unit property on a slot-by-slot basis
+    range: float
+    description: "Particular quantity, defined and adopted by convention, with which other quantities of the same kind are compared in order to express their magnitudes relative to that quantity. Units have conventionally assigned names and symbols."
+  duration: # or could be a ISO8601 perisod string
+    range: QuantityValue
+  mixing: # under which circumstances would you use the device slot and not the mixing slot?
+    range: LabDevice
+  sample_volume:
+    range: QuantityValue
+  speed:
+    range: QuantityValue
+  volume:
+    range: QuantityValue
+  concentration:
+    range: QuantityValue
+  celsius_temperature:
+    range: QuantityValue
+  dry:
+    description: "The act of removing moisture from something"
+  sample_mass:
+    range: float
+    description: "Total mass of sample used"
+  value:
+    range: QuantityValue
+  starting_amount:
+    range: QuantityValue
+    description: "Mass with units"
+  container_size:
+    range: QuantityValue
+  acid:
+    description: "A molecular entity or chemical species capable of donating a hydron (proton) (see Brønsted acid) or capable of forming a covalent bond with an electron pair (see Lewis acid)."
+  #  ph:
+  #    aliases:
+  #      - pH
+  #    range: float
+  #    description: "Quantity of dimension one used to express on a scale from 0 to 14 the amount-of-substance concentration of hydrogen ion of dilute aqueous solution, calculated as the logarithm of the reciprocal of hydrogen-ion concentration in gram atoms per liter."
+  filter:
+    description: "A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained. Filters are made with a variety of materials: cellulose and derivatives, glass fibre, ceramic, synthetic plastics and fibres. Filters may be naturally porous or be made so by mechanical or other means. Membrane/ceramic filters are prepared with highly controlled pore size in a sheet of suitable material such as polyfluoroethylene, polycarbonate or cellulose esters. Nylon mesh is sometimes used for reinforcement. The pores constitute 80–85% of the filter volume commonly and several pore sizes are available for air sampling (0.45−0.8 μm are commonly employed)."
+  material_pore_size:
+    range: float
+    description: "A quantitative or qualitative measurement of the physical dimensions of the pores in a material."
+  conditioning:
+    range: float
+    description: "Preliminary treatment of either phase with a suitable solution of the other phase (in the absence of main extractable solute(s)) so that when the subsequent equilibration is carried out changes in the (volume) phase ratio or in the concentrations of other components are minimized."
+  analyte_volume:
+    range: QuantityValue
+    description: "The volume in microliters (ul) of the aliquot(s) derived from the analyte(s) shipped for sequencing and characterization."
+  conditioning_volume:
+    range: ContainerTypeEnum
+  separation_method:
+    range: ContainerTypeEnum
+  extractant:
+    range: SolventEnum
+    description: "The active component(s) primarily responsible for transfer of a solute from one phase to the other."
+  material_component_separation:
+    range: float
+    description: "A material processing in which components of an input material become segregated in space"
+  sample_state:
+    description: "The chemical phase of a pure sample, or the state of a mixed sample."
+  analytical_solution:
+    range: float
+    description: "The solution prepared from the test portion for the analytical procedure. The proportions of test portion and solvent are normally known."
+  instrument:
+    description: "Description of the instrument or the mass spectrometer"
+  sieve_size:
+    range: QuantityValue
+  reactant:
+    range: float
+  #    description: A substance that is consumed in the course of a chemical reaction. It is sometimes known, especially in the older literature, as a reagent, but this term is better used in a more specialized sense as a test substance that is added to a system in order to bring about a reaction or to see whether a reaction occurs (e.g. an analytical reagent).
+  #  description:
+  device_type:
+    range: DeviceTypeEnum
+  activity_time_id:
+    range: integer
+  activity_speed_id:
+    range: integer

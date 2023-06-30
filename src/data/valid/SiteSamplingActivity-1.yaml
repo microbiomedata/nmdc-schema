@@ -1,0 +1,5 @@
+id: "generic:a1"
+analyte_id: 123
+elev:
+  has_numeric_value: 500
+  has_unit: meter
