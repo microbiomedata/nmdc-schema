@@ -8,12 +8,11 @@ notes:
   - "commented out insdc_biosample_identifiers insdc_secondary_sample_identifiers... need better understanding of id patterns (at least)"
   - "commented out several MIxS terms assigned to Biosample because the definitions of those terms were commented out in mixs.yaml dues to shared slot uris"
 
-
 description: >-
   Schema for National Microbiome Data Collaborative (NMDC).
-  
+
   This schema is organized into multiple modules, such as:
-  
+
    * a set of core types for representing data values
    * a subset of the mixs schema
    * an annotation schema
@@ -35,7 +34,6 @@ imports:
   - portal/sample_id
   - sample_prep
   - workflow_execution_activity
-
 
 prefixes:
   EFO: http://www.ebi.ac.uk/efo/
@@ -78,7 +76,6 @@ emit_prefixes:
   - skos
   - xsd
 
-
 settings:
   id_nmdc_prefix: "^(nmdc)"
   id_shoulder: "([0-9][a-z]{0,6}[0-9])"
@@ -88,20 +85,21 @@ settings:
 
 subsets:
   sample subset:
-    description: Subset consisting of entities linked to the processing of samples.  Currently,
+    description:
+      Subset consisting of entities linked to the processing of samples.  Currently,
       this subset consists of study, omics process, and biosample.
   data object subset:
-    description: Subset consisting of the data objects that either inputs or outputs
+    description:
+      Subset consisting of the data objects that either inputs or outputs
       of processes or workflows.
 
-
 classes:
-
   Database:
     tree_root: true
     aliases:
       - NMDC metadata object
-    description: An abstract holder for any set of metadata and data. It does not
+    description:
+      An abstract holder for any set of metadata and data. It does not
       need to correspond to an actual managed database top level holder class. When
       translated to JSON-Schema this is the 'root' object. It should contain pointers
       to other objects of interest
@@ -267,13 +265,13 @@ classes:
           syntax: "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-
   DataObject:
     is_a: NamedThing
     in_subset:
       - data object subset
-    description: 'An object that primarily consists of symbols that represent information.   Files,
-      records, and omics data are examples of data objects.'
+    description:
+      "An object that primarily consists of symbols that represent information.   Files,
+      records, and omics data are examples of data objects."
     notes:
       - removed previous id_prefixes value of GOLD, since we are now using pattern-based id validation
     slots:
@@ -298,9 +296,7 @@ classes:
       - removed id_prefixes value of GOLD, since we are now using pattern-based id validation
 
   Biosample:
-
     rules:
-
       - title: dna_well_requires_plate
         description: DNA samples shipped to JGI for metagenomic analysis in tubes can't have any value for their plate position.
         preconditions:
@@ -313,7 +309,8 @@ classes:
               equals_string: plate
 
       - title: dna_plate_requires_well
-        description: DNA samples in plates must have a plate position that matches the regex.
+        description:
+          DNA samples in plates must have a plate position that matches the regex.
           Note the requirement for an empty string in the tube case.
           Waiting for value_present validation to be added to runtime
         preconditions:
@@ -324,7 +321,6 @@ classes:
           slot_conditions:
             dna_cont_well:
               pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
-
 
       - title: rna_well_requires_plate
         description: RNA samples shipped to JGI for metagenomic analysis in tubes can't have any value for their plate position.
@@ -338,7 +334,8 @@ classes:
               equals_string: plate
 
       - title: rna_plate_requires_well
-        description: RNA samples in plates must have a plate position that matches the regex.
+        description:
+          RNA samples in plates must have a plate position that matches the regex.
           Note the requirement for an empty string in the tube case.
           Waiting for value_present validation to be added to runtime
         preconditions:
@@ -372,11 +369,11 @@ classes:
     notes:
       - removed previous id_prefixes value of GOLD, since we are now using pattern-based id validation
     alt_descriptions:
-      embl.ena: A sample contains information about the sequenced source material.
+      embl.ena:
+        A sample contains information about the sequenced source material.
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
-
       - neon_biosample_identifiers
       - host_taxid
       - embargoed
@@ -941,7 +938,6 @@ classes:
       - soluble_iron_micromol
       - subsurface_depth
 
-
       ## MIxS terms initially used in
       ## sample metadata submission portal (aka DataHarmonizer)
       - air_temp_regm
@@ -1064,7 +1060,8 @@ classes:
         description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
 
       lat_lon:
-        description: This is currently a required field but it's not clear if this
+        description:
+          This is currently a required field but it's not clear if this
           should be required for human hosts
         notes:
           - required where?
@@ -1116,7 +1113,8 @@ classes:
           - value: 35
         comments:
           - Aspect is the orientation of slope, measured clockwise in degrees from 0 to 360, where 0 is north-facing, 90 is east-facing, 180 is south-facing, and 270 is west-facing.
-        description: The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees).
+        description:
+          The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees).
           - This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.
         todos:
           - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
@@ -1153,7 +1151,8 @@ classes:
         todos:
           - This is no longer matching the listed IRI from GSC, added example. When NMDC has its own slots, map this to the MIxS slot
       cur_vegetation:
-        description: Vegetation classification from one or more standard classification
+        description:
+          Vegetation classification from one or more standard classification
           systems, or agricultural crop
         comments:
           - Values provided here can be specific species of vegetation or vegetation regions
@@ -1323,12 +1322,12 @@ classes:
     description: >-
       A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.
     alt_descriptions:
-      embl.ena: A study (project) groups together data submitted to the archive and
+      embl.ena:
+        A study (project) groups together data submitted to the archive and
         controls its release date. A study accession is typically used when citing
         data submitted to ENA
 
     slots:
-
       - emsl_project_dois
 
       - neon_study_identifiers
@@ -1347,7 +1346,9 @@ classes:
       - alternative_descriptions
       - alternative_names
       - alternative_titles
-      - doi
+      - award_dois
+      - dataset_dois
+      - publication_dois
       - ecosystem
       - ecosystem_category
       - ecosystem_subtype
@@ -1365,7 +1366,6 @@ classes:
       - notes
       - objective
       - principal_investigator
-      - publications
       - related_identifiers
       - relevant_protocols
       - specific_ecosystem
@@ -1374,7 +1374,6 @@ classes:
       - type
       - websites
 
-
     slot_usage:
       id:
         required: true
@@ -1382,19 +1381,28 @@ classes:
           syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-      doi:
+      award_dois:
         description: >-
-          The dataset citation for this study
+          The award citation(s) for this study.
         annotations:
-          display_hint: DOI associated with the data in this study. This is required when data is already generated.
+          display_hint: DOI(s) associated with the awards for this study.
+      dataset_dois:
+        description: >-
+          The dataset citation(s) for this study
+        annotations:
+          display_hint: DOI(s) associated with the data in this study. This is required when data is already generated.
+      publication_dois:
+        description: >-
+          The publication citation(s) associated with this study.
+        annotations:
+          display_hint: DOI(s) associated with the publications related to this study.
       name:
-
         annotations:
           display_hint: Provide a name for the study your samples will belong with.
       websites:
-
         annotations:
-          display_hint: Link to the Principal Investigator's research lab webpage
+          display_hint:
+            Link to the Principal Investigator's research lab webpage
             or the study webpage associated with this collection of samples.
             Multiple links can be provided.
       description:
@@ -1402,15 +1410,14 @@ classes:
         annotations:
           display_hint: Provide a brief description of your study.
       notes:
-
         annotations:
           display_hint: Add any additional notes or comments about this study.
       alternative_identifiers:
         description: Unique identifier for a study submitted to additional resources. Matches that which has been submitted to NMDC
       alternative_names:
-
         annotations:
-          display_hint: Project, study, or sample set names the are also associated with this submission
+          display_hint:
+            Project, study, or sample set names the are also associated with this submission
             or other names / identifiers for this study.
       related_identifiers:
         description: Unique identifier for a study submitted to additional resources. Similar, but not necessarily identical to that which has been submitted to NMDC
@@ -1446,7 +1453,8 @@ classes:
     aliases:
       - material processing
     is_a: NamedThing
-    description: A process that takes one or more biosamples as inputs and generates
+    description:
+      A process that takes one or more biosamples as inputs and generates
       one or as outputs. Examples of outputs include samples cultivated from another
       sample or data objects created by instruments runs.
     slots:
@@ -1473,7 +1481,8 @@ classes:
     description: >-
       The methods and processes used to generate omics data from a biosample or organism.
     alt_descriptions:
-      embl.ena: An experiment contains information about a sequencing experiment including
+      embl.ena:
+        An experiment contains information about a sequencing experiment including
         library and instrument details.
     comments:
       - The ID prefix for objects coming from GOLD will be gold:Gp
@@ -1530,11 +1539,10 @@ classes:
     class_uri: prov:Association
 
 enums:
-
   StatusEnum:
     permissible_values:
-      pass: { }
-      fail: { }
+      pass: {}
+      fail: {}
   #      accepted: { }
   #      archived: { }
   #      deleted: { }
@@ -1546,32 +1554,32 @@ enums:
 
   ExtractionTargetEnum:
     permissible_values:
-      DNA: { }
-      RNA: { }
-      metabolite: { }
-      protein: { }
+      DNA: {}
+      RNA: {}
+      metabolite: {}
+      protein: {}
 
   LibraryTypeEnum:
     # start using the right case for enum names
     # we have other slots which need a DNA or RNA answer, so maybe we should make this enum name more generic
     permissible_values:
-      DNA: { }
-      RNA: { }
+      DNA: {}
+      RNA: {}
 
   JgiContTypeEnum:
     permissible_values:
-      plate: { }
-      tube: { }
+      plate: {}
+      tube: {}
 
   YesNoEnum:
     name: YesNoEnum
     description: replaces DnaDnaseEnum and DnaseRnaEnum
     from_schema: https://example.com/nmdc_submission_schema
     permissible_values:
-      'no':
-        text: 'no'
-      'yes':
-        text: 'yes'
+      "no":
+        text: "no"
+      "yes":
+        text: "yes"
   BiosampleCategoryEnum:
     description: Funding-based, sample location-based, or experimental method-based defined categories
     aliases:
@@ -1584,7 +1592,7 @@ enums:
       LTER:
         title: National Science Foundation's Long Term Ecological Research Network
         meaning: https://lternet.edu/
-      SIP: { }
+      SIP: {}
       SFA:
         title: Department of Energy Office of Science Biological and Environmental Research Program Laboratory Science Focus Areas
         description: Science Focus Area projects funded through the Department of Energy Office of Science Biological and Environmental Research Program
@@ -1598,7 +1606,6 @@ enums:
 
   file type enum:
     permissible_values:
-
       Metagenome Raw Reads:
         annotations:
           file_name_pattern: '^\.fastq(\.gz)?$'
@@ -1652,12 +1659,12 @@ enums:
         annotations:
           file_name_pattern:
             tag: file_name_pattern
-            value: '[mag_wf_activity_id]_hqmq_bin.zip'
+            value: "[mag_wf_activity_id]_hqmq_bin.zip"
 
       Metagenome Bins Info File:
         description: File containing version information on the binning workflow
         annotations:
-          file_name_pattern: '[mag_wf_activity_id]_bin.info'
+          file_name_pattern: "[mag_wf_activity_id]_bin.info"
 
       CheckM Statistics:
         description: CheckM statistics report
@@ -1665,7 +1672,7 @@ enums:
       Read Based Analysis Info File:
         description: File containing reads based analysis information
         annotations:
-          file_name_pattern: 'profiler.info'
+          file_name_pattern: "profiler.info"
 
       GTDBTK Bacterial Summary:
         description: GTDBTK bacterial summary
@@ -1706,47 +1713,47 @@ enums:
       Structural Annotation GFF:
         description: GFF3 format file with structural annotations
         annotations:
-          file_name_pattern: '[GOLD-AP]_structural_annotation.gff'
+          file_name_pattern: "[GOLD-AP]_structural_annotation.gff"
 
       Structural Annotation Stats Json:
         description: Structural annotations stats json
         annotations:
-          file_name_pattern: '[GOLD-AP]_structural_annotation_stats.json'
+          file_name_pattern: "[GOLD-AP]_structural_annotation_stats.json"
 
       Functional Annotation GFF:
         description: GFF3 format file with functional annotations
         annotations:
-          file_name_pattern: '[GOLD-AP]_functional_annotation.gff'
+          file_name_pattern: "[GOLD-AP]_functional_annotation.gff"
 
       Annotation Info File:
         description: File containing annotation info
         annotations:
-          file_name_pattern: '[GOLD-AP]_imgap.info'
+          file_name_pattern: "[GOLD-AP]_imgap.info"
 
       Annotation Amino Acid FASTA:
         description: FASTA amino acid file for annotated proteins
         annotations:
-          file_name_pattern: '[GOLD-AP]_proteins.faa'
+          file_name_pattern: "[GOLD-AP]_proteins.faa"
 
       Annotation Enzyme Commission:
         description: Tab delimited file for EC annotation
         annotations:
-          file_name_pattern: '[GOLD-AP]_ec.tsv'
+          file_name_pattern: "[GOLD-AP]_ec.tsv"
 
       Annotation KEGG Orthology:
         description: Tab delimited file for KO annotation
         annotations:
-          file_name_pattern: '[GOLD-AP]_ko.tsv'
+          file_name_pattern: "[GOLD-AP]_ko.tsv"
 
       Assembly Info File:
         description: File containing assembly info
         annotations:
-          file_name_pattern: 'README.txt'
+          file_name_pattern: "README.txt"
 
       Assembly Coverage BAM:
         description: Sorted bam file of reads mapping back to the final assembly
         annotations:
-          file_name_pattern: '[GOLD-AP]_pairedMapped.sam.gz'
+          file_name_pattern: "[GOLD-AP]_pairedMapped.sam.gz"
 
       Assembly AGP:
         description: An AGP format file that describes the assembly
@@ -1754,144 +1761,144 @@ enums:
       Assembly Scaffolds:
         description: Final assembly scaffolds fasta
         annotations:
-          file_name_pattern: '[GOLD-AP]_assembly.contigs.fasta'
+          file_name_pattern: "[GOLD-AP]_assembly.contigs.fasta"
 
       Assembly Contigs:
         description: Final assembly contigs fasta
         annotations:
-          file_name_pattern: 'assembly.contigs.fasta'
+          file_name_pattern: "assembly.contigs.fasta"
 
       Assembly Coverage Stats:
         description: Assembled contigs coverage information
         annotations:
-          file_name_pattern: '[GOLD-AP]_pairedMapped_sorted.bam.cov'
+          file_name_pattern: "[GOLD-AP]_pairedMapped_sorted.bam.cov"
 
       Contig Mapping File:
         description: Contig mappings between contigs and scaffolds
         annotations:
-          file_name_pattern: '[GOLD-AP]_contig_names_mapping.tsv'
+          file_name_pattern: "[GOLD-AP]_contig_names_mapping.tsv"
 
       Error Corrected Reads:
         description: Error corrected reads fastq
         annotations:
-          file_name_pattern: 'input.corr.fastq.gz'
+          file_name_pattern: "input.corr.fastq.gz"
 
       Filtered Sequencing Reads:
         description: Reads QC result fastq (clean data)
         annotations:
-          file_name_pattern: '/.+?(?=filter)/filter-METAGENOME.fastq.gz '
+          file_name_pattern: "/.+?(?=filter)/filter-METAGENOME.fastq.gz "
 
       Read Filtering Info File:
         description: File containing read filtering information
         annotations:
-          file_name_pattern: '[rqc_wf_activity_id]_readsQC.info'
+          file_name_pattern: "[rqc_wf_activity_id]_readsQC.info"
 
       QC Statistics Extended:
         description: Extended report including methods and results for read filtering
         annotations:
-          file_name_pattern: '/.+?(?=filter)/filtered-report.txt'
+          file_name_pattern: "/.+?(?=filter)/filtered-report.txt"
 
       QC Statistics:
         description: Reads QC summary statistics
         annotations:
-          file_name_pattern: '[rqc_wf_activity_id]_filterStats2.txt'
+          file_name_pattern: "[rqc_wf_activity_id]_filterStats2.txt"
 
       TIGRFam Annotation GFF:
         description: GFF3 format file with TIGRfam
         annotations:
-          file_name_pattern: '[GOLD-AP]_tigrfam.gff'
+          file_name_pattern: "[GOLD-AP]_tigrfam.gff"
 
       CRT Annotation GFF:
         description: GFF3 format file with CRT
         annotations:
-          file_name_pattern: '[GOLD-AP]_crt.gff'
+          file_name_pattern: "[GOLD-AP]_crt.gff"
 
       Genemark Annotation GFF:
         description: GFF3 format file with Genemark
         annotations:
-          file_name_pattern: '[GOLD-AP]_genemark.gff'
+          file_name_pattern: "[GOLD-AP]_genemark.gff"
 
       Prodigal Annotation GFF:
         description: GFF3 format file with Prodigal
         annotations:
-          file_name_pattern: '[GOLD-AP]_prodigal.gff'
+          file_name_pattern: "[GOLD-AP]_prodigal.gff"
 
       TRNA Annotation GFF:
         description: GFF3 format file with TRNA
         annotations:
-          file_name_pattern: '[GOLD-AP]_trna.gff'
+          file_name_pattern: "[GOLD-AP]_trna.gff"
 
       Misc Annotation GFF:
         description: GFF3 format file with Misc
         annotations:
-          file_name_pattern: '[GOLD-AP]_rfam_misc_bind_misc_feature_regulatory.gff'
+          file_name_pattern: "[GOLD-AP]_rfam_misc_bind_misc_feature_regulatory.gff"
 
       RFAM Annotation GFF:
         description: GFF3 format file with RFAM
         annotations:
-          file_name_pattern: '[GOLD-AP]_rfam.gff'
+          file_name_pattern: "[GOLD-AP]_rfam.gff"
 
       TMRNA Annotation GFF:
         description: GFF3 format file with TMRNA
         annotations:
-          file_name_pattern: '[GOLD-AP]_rfam_ncrna_tmrna.gff'
+          file_name_pattern: "[GOLD-AP]_rfam_ncrna_tmrna.gff"
 
       Crispr Terms:
         description: Crispr Terms
         annotations:
-          file_name_pattern: '[GOLD-AP]_crt.crisprs'
+          file_name_pattern: "[GOLD-AP]_crt.crisprs"
 
       Product Names:
         description: Product names file
         annotations:
-          file_name_pattern: '[GOLD-AP]_product_names.tsv'
+          file_name_pattern: "[GOLD-AP]_product_names.tsv"
 
       Gene Phylogeny tsv:
         description: Gene Phylogeny tsv
         annotations:
-          file_name_pattern: '[GOLD-AP]_gene_phylogeny.tsv'
+          file_name_pattern: "[GOLD-AP]_gene_phylogeny.tsv"
 
       Lineage sdb:
         description: phylogeny at the contig level
         annotations:
-          file_name_pattern: '[GOLD-AP].contigLin.assembled.sdb'
+          file_name_pattern: "[GOLD-AP].contigLin.assembled.sdb"
 
       Clusters of Orthologous Groups (COG) Annotation GFF:
         description: GFF3 format file with COGs
         annotations:
-          file_name_pattern: '[GOLD-AP]_cog.gff'
-
+          file_name_pattern: "[GOLD-AP]_cog.gff"
 
       KO_EC Annotation GFF:
         description: GFF3 format file with KO_EC
         annotations:
-          file_name_pattern: '[GOLD-AP]_ko_ec.gff'
+          file_name_pattern: "[GOLD-AP]_ko_ec.gff"
 
       CATH FunFams (Functional Families) Annotation GFF:
         description: GFF3 format file with CATH FunFams
         annotations:
-          file_name_pattern: '[GOLD-AP]_cath_funfam.gff'
+          file_name_pattern: "[GOLD-AP]_cath_funfam.gff"
 
       SUPERFam Annotation GFF:
         description: GFF3 format file with SUPERFam
         annotations:
-          file_name_pattern: '[GOLD-AP]_supfam.gff'
+          file_name_pattern: "[GOLD-AP]_supfam.gff"
 
       SMART Annotation GFF:
         description: GFF3 format file with SMART
         annotations:
-          file_name_pattern: '[GOLD-AP]_smart.gff'
+          file_name_pattern: "[GOLD-AP]_smart.gff"
 
       Pfam Annotation GFF:
         description: GFF3 format file with Pfam
         annotations:
-          file_name_pattern: '[GOLD-AP]_pfam.gff'
+          file_name_pattern: "[GOLD-AP]_pfam.gff"
 
       Annotation Statistics:
         description: Annotation statistics report
 
       Direct Infusion FT ICR-MS Raw Data:
-        description: Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance
+        description:
+          Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance
           mass spectrometry raw data acquired in broadband full scan mode
 
       Raw Compressed Metagenome Interleaved Paired-End Reads:
@@ -1941,7 +1948,6 @@ enums:
       - use ROR meanings like https://ror.org/0168r3w48 for UCSD
     from_schema: NMDC_enums_roundtrip
     permissible_values:
-
       UCSD:
         title: University of California, San Diego
         meaning: https://ror.org/0168r3w48
@@ -1965,9 +1971,7 @@ enums:
         title: Argonne National Laboratory
         meaning: https://ror.org/05gvnxz63
 
-
 slots:
-
   neon_deims_sdr_link:
     range: string
   neon_eco_type:
@@ -2007,7 +2011,7 @@ slots:
   #  extraction_date: # replacing with start_ and end_date
   #    #    range: date
   #    range: string
-  extraction_method: { }
+  extraction_method: {}
   extraction_target:
     range: ExtractionTargetEnum
 
@@ -2035,7 +2039,7 @@ slots:
     annotations:
       expected_value: measurement value
       preferred_unit: mg/kg (ppm)
-      occurrence: '1'
+      occurrence: "1"
     description: Concentration of zinc in the sample
     title: zinc
     examples:
@@ -2050,7 +2054,7 @@ slots:
     annotations:
       expected_value: measurement value
       preferred_unit: mg/kg (ppm)
-      occurrence: '1'
+      occurrence: "1"
     description: Concentration of manganese in the sample
     title: manganese
     examples:
@@ -2067,7 +2071,7 @@ slots:
     annotations:
       expected_value: measurement value
       preferred_unit: mg/kg
-      occurrence: '1'
+      occurrence: "1"
     description: Concentration of ammonium nitrogen in the sample
     title: ammonium nitrogen
     examples:
@@ -2086,7 +2090,7 @@ slots:
     annotations:
       expected_value: measurement value
       preferred_unit: mg/kg
-      occurrence: '1'
+      occurrence: "1"
     description: Concentration of nitrate nitrogen in the sample
     title: nitrate_nitrogen
     examples:
@@ -2103,7 +2107,7 @@ slots:
     annotations:
       expected_value: measurement value
       preferred_unit: mg/kg
-      occurrence: '1'
+      occurrence: "1"
     description: Concentration of nitrite nitrogen in the sample
     title: nitrite_nitrogen
     examples:
@@ -2123,7 +2127,7 @@ slots:
     annotations:
       expected_value: measurement value
       preferred_unit: ppm CaCO3/pH
-      occurrence: '1'
+      occurrence: "1"
     description: lime buffer capacity, determined after 30 minute incubation
     title: lime buffer capacity (at 30 minutes)
     examples:
@@ -2143,7 +2147,7 @@ slots:
     annotations:
       expected_value: measurement value
       preferred_unit: ppm CaCO3/pH
-      occurrence: '1'
+      occurrence: "1"
     description: lime buffer capacity, determined at equilibrium after 5 day incubation
     title: lime buffer capacity (after 5 day incubation)
     examples:
@@ -2153,13 +2157,13 @@ slots:
     is_a: attribute
     range: QuantityValue
 
-
   env_package:
     aliases:
       - environmental package
     #      mappings:
     #        - mixs:env_package
-    description: MIxS extension for reporting of measurements and observations obtained
+    description:
+      MIxS extension for reporting of measurements and observations obtained
       from one or more of the environments where the sample was obtained. All environmental
       packages listed here are further defined in separate subtables. By giving the
       name of the environmental package, a selection of fields can be made from the
@@ -2191,7 +2195,6 @@ slots:
       - this illustrates implementing a Biosample relation with a (binary) slot
     todos:
       - add an OBO slot_uri ?
-
 
   biosample_categories:
     title: Categories the biosample belongs to
@@ -2227,9 +2230,10 @@ slots:
     notes:
       - 'had just been "inlined: true"'
     inlined_as_list: true
-    description: 'This slot links a study to a credit association.  The credit association
+    description:
+      "This slot links a study to a credit association.  The credit association
       will be linked to a person value and to a CRediT Contributor Roles term. Overall
-      semantics: person should get credit X for their participation in the study'
+      semantics: person should get credit X for their participation in the study"
     slot_uri: prov:qualifiedAssociation
     annotations:
       display_hint: Other researchers associated with this study.
@@ -2249,7 +2253,8 @@ slots:
     domain: CreditAssociation
     range: credit enum
     slot_uri: prov:hadRole
-    deprecated: A credit association may have multiple roles. So, use the applied
+    deprecated:
+      A credit association may have multiple roles. So, use the applied
       roles slot.
   applied_roles:
     domain: CreditAssociation
@@ -2262,7 +2267,8 @@ slots:
   applies_to_person:
     domain: CreditAssociation
     range: PersonValue
-    todos: prov:agent takes an Agent object. Is a person value an Agent? Also try
+    todos:
+      prov:agent takes an Agent object. Is a person value an Agent? Also try
       to relate to principal investigator slot? could include OBI:0000103 principal
       investigator role... do we need to define the OBI prefix?
     required: true
@@ -2273,7 +2279,8 @@ slots:
     domain: Database
     multivalued: true
     inlined_as_list: true
-    description: Applies to a property that links a database object to a set of objects.
+    description:
+      Applies to a property that links a database object to a set of objects.
       This is necessary in a json document to provide context for a list, and to allow
       for a single json object that combines multiple object types
   biosample_set:
@@ -2281,14 +2288,16 @@ slots:
     domain: Database
     range: Biosample
     multivalued: true
-    description: This property links a database object to the set of samples within
+    description:
+      This property links a database object to the set of samples within
       it.
   study_set:
     mixins: object_set
     domain: Database
     range: Study
     multivalued: true
-    description: This property links a database object to the set of studies within
+    description:
+      This property links a database object to the set of studies within
       it.
   field_research_site_set:
     inlined_as_list: true
@@ -2305,7 +2314,8 @@ slots:
     domain: Database
     range: DataObject
     multivalued: true
-    description: This property links a database object to the set of data objects
+    description:
+      This property links a database object to the set of data objects
       within it.
   genome_feature_set:
     mixins: object_set
@@ -2318,7 +2328,8 @@ slots:
     domain: Database
     range: FunctionalAnnotation
     multivalued: true
-    description: This property links a database object to the set of all functional
+    description:
+      This property links a database object to the set of all functional
       annotations
   activity_set:
     mixins: object_set
@@ -2331,56 +2342,64 @@ slots:
     domain: Database
     range: MagsAnalysisActivity
     multivalued: true
-    description: This property links a database object to the set of MAGs analysis
+    description:
+      This property links a database object to the set of MAGs analysis
       activities.
   metabolomics_analysis_activity_set:
     mixins: object_set
     domain: Database
     range: MetabolomicsAnalysisActivity
     multivalued: true
-    description: This property links a database object to the set of metabolomics
+    description:
+      This property links a database object to the set of metabolomics
       analysis activities.
   metaproteomics_analysis_activity_set:
     mixins: object_set
     domain: Database
     range: MetaproteomicsAnalysisActivity
     multivalued: true
-    description: This property links a database object to the set of metaproteomics
+    description:
+      This property links a database object to the set of metaproteomics
       analysis activities.
   metagenome_annotation_activity_set:
     mixins: object_set
     domain: Database
     range: MetagenomeAnnotationActivity
     multivalued: true
-    description: This property links a database object to the set of metagenome annotation
+    description:
+      This property links a database object to the set of metagenome annotation
       activities.
   metagenome_assembly_set:
     mixins: object_set
     domain: Database
     range: MetagenomeAssembly
     multivalued: true
-    description: This property links a database object to the set of metagenome assembly
+    description:
+      This property links a database object to the set of metagenome assembly
       activities.
   metagenome_sequencing_activity_set:
     mixins: object_set
     domain: Database
     range: MetagenomeSequencingActivity
     multivalued: true
-    description: This property links a database object to the set of metagenome sequencing
+    description:
+      This property links a database object to the set of metagenome sequencing
       activities.
   metatranscriptome_activity_set:
     mixins: object_set
     domain: Database
     range: MetatranscriptomeActivity
     multivalued: true
-    description: This property links a database object to the set of metatranscriptome
+    description:
+      This property links a database object to the set of metatranscriptome
       analysis activities.
   read_qc_analysis_activity_set:
     mixins: object_set
     domain: Database
     range: ReadQcAnalysisActivity
     multivalued: true
-    description: This property links a database object to the set of read QC analysis
+    description:
+      This property links a database object to the set of read QC analysis
       activities.
   read_based_taxonomy_analysis_activity_set:
     mixins: object_set
@@ -2394,14 +2413,16 @@ slots:
     domain: Database
     range: NomAnalysisActivity
     multivalued: true
-    description: This property links a database object to the set of natural organic
+    description:
+      This property links a database object to the set of natural organic
       matter (NOM) analysis activities.
   omics_processing_set:
     mixins: object_set
     domain: Database
     range: OmicsProcessing
     multivalued: true
-    description: This property links a database object to the set of omics processings
+    description:
+      This property links a database object to the set of omics processings
       within it.
   pooling_set:
     mixins: object_set
@@ -2451,7 +2472,6 @@ slots:
     todos:
       - consider enum
 
-
   ## GOLD PATHS
   gold_path_field:
     is_a: attribute
@@ -2461,10 +2481,12 @@ slots:
       This is a grouping for any of the gold path fields
   ecosystem:
     is_a: gold_path_field
-    description: An ecosystem is a combination of a physical environment (abiotic
+    description:
+      An ecosystem is a combination of a physical environment (abiotic
       factors) and all the organisms (biotic factors) that interact with this environment.
       Ecosystem is in position 1/5 in a GOLD path.
-    comments: The abiotic factors play a profound role on the type and composition
+    comments:
+      The abiotic factors play a profound role on the type and composition
       of organisms in a given environment. The GOLD Ecosystem at the top of the five-level
       classification system is aimed at capturing the broader environment from which
       an organism or environmental sample is collected. The three broad groups under
@@ -2474,21 +2496,25 @@ slots:
     see_also: https://gold.jgi.doe.gov/help
   ecosystem_category:
     is_a: gold_path_field
-    description: Ecosystem categories represent divisions within the ecosystem based
+    description:
+      Ecosystem categories represent divisions within the ecosystem based
       on specific characteristics of the environment from where an organism or sample
       is isolated. Ecosystem category is in position 2/5 in a GOLD path.
-    comments: The Environmental ecosystem (for example) is divided into Air, Aquatic
+    comments:
+      The Environmental ecosystem (for example) is divided into Air, Aquatic
       and Terrestrial. Ecosystem categories for Host-associated samples can be individual
       hosts or phyla and for engineered samples it may be manipulated environments
       like bioreactors, solid waste etc.
     see_also: https://gold.jgi.doe.gov/help
   ecosystem_type:
     is_a: gold_path_field
-    description: Ecosystem types represent things having common characteristics within
+    description:
+      Ecosystem types represent things having common characteristics within
       the Ecosystem Category. These common characteristics based grouping is still
       broad but specific to the characteristics of a given environment. Ecosystem
       type is in position 3/5 in a GOLD path.
-    comments: The Aquatic ecosystem category (for example) may have ecosystem types
+    comments:
+      The Aquatic ecosystem category (for example) may have ecosystem types
       like Marine or Thermal springs etc. Ecosystem category Air may have Indoor air
       or Outdoor air as different Ecosystem Types. In the case of Host-associated
       samples, ecosystem type can represent Respiratory system, Digestive system,
@@ -2496,19 +2522,23 @@ slots:
     see_also: https://gold.jgi.doe.gov/help
   ecosystem_subtype:
     is_a: gold_path_field
-    description: Ecosystem subtypes represent further subdivision of Ecosystem types
+    description:
+      Ecosystem subtypes represent further subdivision of Ecosystem types
       into more distinct subtypes. Ecosystem subtype is in position 4/5 in a GOLD
       path.
-    comments: Ecosystem Type Marine (Environmental -> Aquatic -> Marine) is further
+    comments:
+      Ecosystem Type Marine (Environmental -> Aquatic -> Marine) is further
       divided (for example) into Intertidal zone, Coastal, Pelagic, Intertidal zone
       etc. in the Ecosystem subtype category.
     see_also: https://gold.jgi.doe.gov/help
   specific_ecosystem:
     is_a: gold_path_field
-    description: Specific ecosystems represent specific features of the environment
+    description:
+      Specific ecosystems represent specific features of the environment
       like aphotic zone in an ocean or gastric mucosa within a host digestive system.
       Specific ecosystem is in position 5/5 in a GOLD path.
-    comments: Specific ecosystems help to define samples based on very specific characteristics
+    comments:
+      Specific ecosystems help to define samples based on very specific characteristics
       of an environment under the five-level classification system.
     see_also: https://gold.jgi.doe.gov/help
   principal_investigator:
@@ -2519,9 +2549,23 @@ slots:
     description: Principal Investigator who led the study and/or generated the dataset.
   doi:
     is_a: attribute
-    range: AttributeValue
+    range: uriorcurie
+    abstract: true
+    multivalued: true
+    description:
+      The DOIs that are associated with the entity. This is a grouping for any of the
+      doi fields.
     annotations:
       on_hover: show details
+  award_dois:
+    is_a: doi
+    description: The award DOI(s) that are associated with the entity.
+  dataset_dois:
+    is_a: doi
+    description: The dataset DOI(s) that are associated with the entity.
+  publication_dois:
+    is_a: doi
+    description: The publication DOI(s) that are associated with the entity.
   add_date:
     range: string
     description: The date on which the information was added to the database.
@@ -2537,8 +2581,9 @@ slots:
   sample_collection_minute:
     range: integer
   salinity_category:
-    description: 'Categorical description of the sample''s salinity. Examples: halophile,
-      halotolerant, hypersaline, huryhaline'
+    description:
+      "Categorical description of the sample's salinity. Examples: halophile,
+      halotolerant, hypersaline, huryhaline"
     range: string
     see_also:
       - https://github.com/microbiomedata/nmdc-metadata/pull/297
