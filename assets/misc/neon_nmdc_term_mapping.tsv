@@ -424,7 +424,7 @@ DP1.20281.00	mms_swMetagenomeDnaExtraction	sampleMaterial							Captured from fi
 DP1.20281.00	mms_swMetagenomeDnaExtraction	sampleMass	exact_mapping	Extraction	sample_mass.has_numeric_value		g		
 DP1.20281.00	mms_swMetagenomeDnaExtraction	samplePercent							
 DP1.20281.00	mms_swMetagenomeDnaExtraction	nucleicAcidConcentration	broad_mapping	ProcessedSample	nucleic_acid_concentration.has_numeric_value		ng/uL		
-DP1.20281.00	mms_swMetagenomeDnaExtraction	nucleicAcidQuantMethod							
+DP1.20281.00	mms_swMetagenomeDnaExtraction	nucleicAcidQuantMethod	exact_mapping	ProcessedSample	nucleic_acid_concentration.instrument_name				
 DP1.20281.00	mms_swMetagenomeDnaExtraction	nucleicAcidPurity	exact_mapping	ProcessedSample	biomaterial_purity.has_numeric_value				
 DP1.20281.00	mms_swMetagenomeDnaExtraction	nucleicAcidRange							
 DP1.20281.00	mms_swMetagenomeDnaExtraction	dnaPooledStatus	broad_mapping	ProcessedSample	pool_dna_extracts				NEON field does not look like it includes the number of extracts (NMDC includes this number in slot).
@@ -521,7 +521,7 @@ DP1.20279.00	mms_benthicMetagenomeDnaExtraction	sampleMaterial							Inherited f
 DP1.20279.00	mms_benthicMetagenomeDnaExtraction	sampleMass	exact_mapping	Extraction	sample_mass.has_numeric_value		g		
 DP1.20279.00	mms_benthicMetagenomeDnaExtraction	samplePercent					percent		
 DP1.20279.00	mms_benthicMetagenomeDnaExtraction	nucleicAcidConcentration	exact_mapping	ProcessedSample	nucleic_acid_concentration.has_numeric_value		ng/uL		
-DP1.20279.00	mms_benthicMetagenomeDnaExtraction	nucleicAcidQuantMethod							
+DP1.20279.00	mms_benthicMetagenomeDnaExtraction	nucleicAcidQuantMethod	exact_mapping	ProcessedSample	nucleic_acid_concentration.instrument_name				
 DP1.20279.00	mms_benthicMetagenomeDnaExtraction	nucleicAcidPurity	exact_mapping	ProcessedSample	biomaterial_purity.has_numeric.value				
 DP1.20279.00	mms_benthicMetagenomeDnaExtraction	nucleicAcidRange							
 DP1.20279.00	mms_benthicMetagenomeDnaExtraction	dnaPooledStatus	broad_mapping	ProcessedSample	pool_dna_extracts				NEON field does not look like it includes the number of extracts (NMDC includes this number in slot).
