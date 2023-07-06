@@ -1,0 +1,5 @@
+sample_ops_set:
+  - id: generic:123
+    name: g123
+  - id: generic:555
+    name: g555

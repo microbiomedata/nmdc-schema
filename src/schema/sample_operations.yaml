@@ -4,59 +4,74 @@ title: NMDC Sample Operations module
 description: Processes by which samples can be prepared for analyses
 
 prefixes:
+  EFO: http://www.ebi.ac.uk/efo/ # linter warning  Schema maps prefix 'EFO' to namespace 'http://www.ebi.ac.uk/efo/' instead of namespace 'http://identifiers.org/efo/'  (canonical_prefixes)
   linkml: https://w3id.org/linkml/
-  xsd: http://www.w3.org/2001/XMLSchema#
-  sampops: https://w3id.org/nmdc/sample_operations/
   nmdc: https://w3id.org/nmdc/
-  EFO: http://www.ebi.ac.uk/efo/
+  xsd: http://www.w3.org/2001/XMLSchema#
 
-default_prefix: sampops # or maybe nmdc?
+subsets:
+  sample_operations_subset:
+    description: from EMSL, primarily motivated by metabolomics, but likely useful for other concerns too
+
+default_prefix: nmdc
 
 imports:
   - linkml:types
-  - biosample
+  - nmdc
 
 default_range: string
 
 classes:
   SampleOperation:
+    is_a: PlannedProcess # MAM
+    in_subset: sample_operations_subset
+    aliases:
+      - material processing
+    class_uri: OBI:0000094 # MAM planned process -> material processing
     description: >-
       Parent class of all sample operations
-    todos:
+    todos: # MAM
       - see also various PlannedProcesses and Activities
       - at the very minimum, this should inherit id, name and description from NamedThing
       - no has_output? is this still being considered against detection_id?
       - we should reuse the has_input and has_output from the schema that preceded this
+      - what external (OBI)? term could we map this to? OBI:0000094 ? has_specified_output some processed material... how would that relate to site sampling?
+      - description of "Parent class of all sample operations" just restates what one can determine form the ia_a statements
     slots:
-      - id
+      #      - has_input
+      #      - id
       - detection_id
-      - has_input
+      - operation_type # why is this required or even beneficial? there is a class corresponding to each of the ActivityEnum permissible values
       - separation_id
-      - operation_type
 
   SiteSamplingActivity:
     description: >-
       A process that outlines a defined site from which soil cores were gathered
-    is_a: SampleOperation
+    #    is_a: SampleOperation # MAM
+    is_a: PlannedProcess # MAM
+    in_subset: sample_operations_subset
     todos:
       - lat and long should be replaced with the lat_long slot, which has a path to lat and lon.
       - elev should also be inherited
       - existing temp instead of soil_temp?
+      - does this only apply to collection soil cores?
     slots:
       - analyte_id
       - core_collector
       - date_time_collected
       - elev
-      - lat
-      - long
+      - lat_lon # MAM
       - site_code
       - site_definition
       - site_name_long
-      - soil_temperature
       - source_mat_id
+      - temp
       - vegetation
       - vol_water_content
       - weather
+  #      - lat
+  #      - long
+  #      - soil_temperature
 
   DerivativeActivity:
     description: >-
@@ -68,7 +83,9 @@ classes:
       Other compounds that respond poorly on a specific detector may need to be “tagged” with 
       a different functional group to improve detection.
     is_a: SampleOperation
+    in_subset: sample_operations_subset
     slots:
+      #      - unit
       - analyte_id
       - celsius_temperature
       - concentration
@@ -81,21 +98,21 @@ classes:
       - sample_volume
       - source_mat_id
       - speed
-      - unit
       - volume
-      - volume_unit
+  #      - volume_unit
 
   SampleDrying:
     description: >-
       The process of removing a solvent from a substance.
     is_a: SampleOperation
+    in_subset: sample_operations_subset
     slots:
+      #      - unit
       - analyte_id
       - dry
       - duration
       - sample_mass
       - source_mat_id
-      - unit
       - value
 
   SubsamplingActivity:
@@ -105,6 +122,7 @@ classes:
       The term 'subsample' is used either in the sense of a 'sample of a sample' or as a synonym for 'unit'. 
       In practice, the meaning is usually apparent from the context or is defined.
     is_a: SampleOperation
+    in_subset: sample_operations_subset
     slots:
       - analyte_id
       - container_size
@@ -113,26 +131,28 @@ classes:
       - source_mat_id
       - starting_amount
       - volume
-      - volume_unit
+  #      - volume_unit
 
   AcidificationActivity:
     description: >-
       Activity of modifying the pH of a sample or solution via addition of some acid.
     is_a: SampleOperation
+    in_subset: sample_operations_subset
     slots:
+      #      - unit
       - acid
       - analyte_id
       - concentration
       - ph # is this the target pH desired by the activity, or the observed end pH? The latter is a property of the output sample, not the activity
       - source_mat_id
-      - unit
       - volume
-      - volume_unit
+  #      - volume_unit
 
   ReactionActivity:
     description: >-
       A process which uses or consumes chemical/molecular entities to generate other molecular entities.
     is_a: SampleOperation
+    in_subset: sample_operations_subset
     slots:
       - analyte_id
       - celsius_temperature
@@ -141,14 +161,16 @@ classes:
       - mixing
       - source_mat_id
       - speed
-      - unit
+  #      - unit
 
   FiltrationActivity:
     description: >-
       The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, 
       usually by forcing a carrier gas or liquid through a porous medium.
     is_a: SampleOperation
+    in_subset: sample_operations_subset
     slots:
+      #      - unit
       - analyte_id
       - analyte_volume
       - conditioning
@@ -159,15 +181,16 @@ classes:
       - material_pore_size
       - separation_method
       - source_mat_id
-      - unit
       - volume
-      - volume_unit
+  #      - volume_unit
 
   ExtractionActivity:
     description: >-
       A material separation in which a desired component of an input material is separated from the remainder
     is_a: SampleOperation
+    in_subset: sample_operations_subset
     slots:
+      #      - unit
       - analyte_id
       - concentration
       - container_size
@@ -178,14 +201,14 @@ classes:
       - sample_volume
       - source_mat_id
       - speed
-      - unit
       - volume
-      - volume_unit
+  #      - volume_unit
 
   AliquotActivity:
     description: >-
       Pertaining to a portion of the whole; any one of two or more samples of something, of the same volume or weight.
     is_a: SampleOperation
+    in_subset: sample_operations_subset
     slots:
       - analyte_id
       - container_size
@@ -193,19 +216,20 @@ classes:
       - source_mat_id
       - starting_amount
       - volume
-      - volume_unit
+  #      - volume_unit
 
   PhaseSeparationActivity:
     description: >-
       The process by which a single solid (liquid) phase separates into two or more new phases.
     is_a: SampleOperation
+    in_subset: sample_operations_subset
     slots:
       - analyte_id
       - analyte_volume
       - duration
       - material_component_separation
       - source_mat_id
-      - unit
+      #      - unit
       - value
 
   #  AnalyticalSample:
@@ -225,6 +249,7 @@ classes:
     description: >-
       The act, process and logistical considerations of the physical or environmental conditions under which the analytical sample is maintained.
     is_a: SampleOperation
+    in_subset: sample_operations_subset
     slots:
       - analyte_id
       - analyte_volume
@@ -235,7 +260,9 @@ classes:
   PhMeasurement:
     description: >-
       The measurement of pH, the negative logarithm to base ten of the hydrogen ion activity in a solution. Operationally the pH of a solution X, pH(X), is measured relative to that of a standard reference solution, pH(S), and defined as pH(X) = pH(S) - (E(X) - E(S))/(RT/F)ln 10, where E(X) and E(S) are the electromotive forces measured in cells containing the solution X and the reference solution respectively.
-    is_a: SampleOperation
+    #    is_a: SampleOperation # MAM
+    is_a: PlannedProcess # MAM
+    in_subset: sample_operations_subset
     slots:
       - analyte_id
       - analytical_solution
@@ -246,25 +273,27 @@ classes:
       - sample_volume
       - source_mat_id
       - speed
-      - unit
+      #      - unit
       - volume
-      - volume_unit
+  #      - volume_unit
 
   MixingActivity:
     description: >-
       The combining of components, particles or layers into a more homogeneous state. The mixing may be achieved manually or mechanically by shifting the material with stirrers or pumps or by revolving or shaking the container. The process must not permit segregation of particles of different size or properties. Homogeneity may be considered to have been achieved in a practical sense when the sampling error of the processed portion is negligible compared to the total error of the measurement system.
     is_a: SampleOperation
+    in_subset: sample_operations_subset
     slots:
       - analyte_id
       - duration
       - mixing
       - source_mat_id
-      - unit
+  #      - unit
 
   SievingActivity:
     description: >-
       A sample is passed through a sieve to reach a specific particle size and remove anything that can't be passed through that size.
     is_a: SampleOperation
+    in_subset: sample_operations_subset
     slots:
       - analyte_id
       - sieve_size
@@ -274,6 +303,7 @@ classes:
     description: >-
       A process which uses or consumes chemical/molecular entities to generate other molecular entities
     is_a: SampleOperation
+    in_subset: sample_operations_subset
     slots:
       - analyte_id
       - celsius_temperature
@@ -283,14 +313,15 @@ classes:
       - reactant
       - source_mat_id
       - speed
-      - unit
+  #      - unit
 
   LabDevice:
+    is_a: MaterialEntity # MAM
     description: A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.
     exact_mappings:
       - OBI:0000968
     slots:
-      - id
+      #      - id
       - activity_speed_id # how can an activity speed or time have its own identifier?
       - activity_time_id
       - description
@@ -302,7 +333,7 @@ enums:
       screw_top_conical:
         description: 'screw_top_concial tube'
 
-  SolventEnum:
+  SolventEnum: # either add meaning, or change the slots in this Domain to use a CURIe instead of the enum
     permissible_values:
       deionized_water:
         description: 'Deionized Water'
@@ -311,7 +342,7 @@ enums:
       chloroform:
         description: 'chloroform'
 
-  ActivityEnum:
+  ActivityEnum: # what are these good for? If something is instantiated as a PhaseSeparation, why do we need to know that it's type is phase_separation?
     permissible_values:
       aliquot_activity:
         description: 'Aliquot Activity'
@@ -342,7 +373,7 @@ enums:
       chemical_reaction_activity:
         description: 'Chemical Reaction Activity'
 
-  DeviceTypeEnum:
+  DeviceTypeEnum: # add meanings
     permissible_values:
       orbital_shaker:
         description: 'Orbital Shaker'
@@ -355,7 +386,7 @@ slots:
   #    description: "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI" # so it can't be an integer
 
   operation_type:
-    range: ActivityEnum
+#    range: ActivityEnum
 
   detection_id: # these need descriptions
     range: integer
@@ -400,12 +431,12 @@ slots:
   container_type:
     range: ContainerTypeEnum
     description: "The vessel the sample was stored and extracted in"
-  volume_unit:
-    range: float
-    description: "A unit which is a standard measure of the amount of space occupied by any substance, whether solid, liquid, or gas."
-  unit: # should use LinkMLs unit property on a slot-by-slot basis
-    range: float
-    description: "Particular quantity, defined and adopted by convention, with which other quantities of the same kind are compared in order to express their magnitudes relative to that quantity. Units have conventionally assigned names and symbols."
+  #  volume_unit: # why does volume get it's own unit?
+  #    range: float
+  #    description: "A unit which is a standard measure of the amount of space occupied by any substance, whether solid, liquid, or gas."
+  #  unit: # should use LinkMLs unit property on a slot-by-slot basis, or use Quantity values
+  #    range: float
+  #    description: "Particular quantity, defined and adopted by convention, with which other quantities of the same kind are compared in order to express their magnitudes relative to that quantity. Units have conventionally assigned names and symbols."
   duration: # or could be a ISO8601 perisod string
     range: QuantityValue
   mixing: # under which circumstances would you use the device slot and not the mixing slot?
@@ -422,9 +453,9 @@ slots:
     range: QuantityValue
   dry:
     description: "The act of removing moisture from something"
-  sample_mass:
-    range: float
-    description: "Total mass of sample used"
+  #  sample_mass:
+  #    range: float
+  #    description: "Total mass of sample used"
   value:
     range: QuantityValue
   starting_amount:

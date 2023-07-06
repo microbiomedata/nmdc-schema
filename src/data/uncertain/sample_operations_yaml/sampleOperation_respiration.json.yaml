@@ -1,0 +1,60 @@
+title: Soil Respiration - Carbon Dioxide Brust Test
+protocol_url: https://pnnl.sharepoint.com/sites/EMSL/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FEMSL%2FShared%20Documents%2FScience%20and%20Technology%2FScience%20Areas%2FEnvironmental%20Transformations%20%26%20Interactions%20Group%2FResearch%20Campaigns%2FFY21%2F1000%20Soil%20Pilot%2Fprotocols%2FSHL%5FProtocol%5FRespiration%5FBurst%2Epdf&parent=%2Fsites%2FEMSL%2FShared%20Documents%2FScience%20and%20Technology%2FScience%20Areas%2FEnvironmental%20Transformations%20%26%20Interactions%20Group%2FResearch%20Campaigns%2FFY21%2F1000%20Soil%20Pilot%2Fprotocols
+protocol_doi: ""
+sieving-activity:
+  id: sresp:1
+  source_material: soil:1
+  opening:
+    numeric_value: 2
+    unit: mm
+  screen_size: 10
+evaporation-activity:
+  id: sresp:2
+  source_material: sresp:1
+  weight:
+    numeric_value: unknown
+    unit: unknown
+  temperature:
+    numeric_value: 35
+    unit: C
+  time:
+    numeric_value:
+      - 48
+      - 72
+    unit: hours
+  instrument: drying oven
+  contanier:
+    type: weighing tin
+    volume: unknown
+    unit: unknown
+weighing-activity:
+  id: sresp:3
+  source_material: sresp:2
+  weight:
+    numeric_value: 40
+    unit: grams
+  contanier:
+    type: sample cup
+    volume: 100
+    unit: mL
+rewetting-activity:
+  id: somspe:4
+  solvent: deionized water
+  volume:
+    numeric_value: unknown
+    unit: mL
+  contanier:
+    type: squeeze bottle
+    volume: "700"
+    unit: mL
+detection-activity:
+  id: sresp:5
+  source_material: sresp:4
+  instrument: Picarro CO2 Isotope Analyzer
+  weight:
+    numeric_value: 40
+    unit: grams
+  contanier:
+    type: glass canning jar
+    volume: "100"
+    unit: mL

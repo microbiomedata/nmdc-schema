@@ -1,0 +1,69 @@
+title: Organic Matter Solid Phase Extraction Analytical Processes
+protocol_url: https://pnnl.sharepoint.com/sites/EMSL/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FEMSL%2FShared%20Documents%2FScience%20and%20Technology%2FScience%20Areas%2FEnvironmental%20Transformations%20%26%20Interactions%20Group%2FResearch%20Campaigns%2FFY21%2F1000%20Soil%20Pilot%2Fprotocols%2FFTICR%2DMS%2FFTICRMS%2DGilsonAutomatedSPESOP%2D130521%2D1547%2D150%2Epdf&parent=%2Fsites%2FEMSL%2FShared%20Documents%2FScience%20and%20Technology%2FScience%20Areas%2FEnvironmental%20Transformations%20%26%20Interactions%20Group%2FResearch%20Campaigns%2FFY21%2F1000%20Soil%20Pilot%2Fprotocols%2FFTICR%2DMS
+protocol_doi: ""
+stationary_phase:
+  id: somspe:1
+  material: unknown
+mobile_phase:
+  id: somspe:2
+  solvent: methanol
+  volume:
+    numeric_value: "700"
+    unit: mL
+  contanier:
+    type: solvent bottle
+    volume: "700"
+    unit: mL
+  "2":
+    id: somspe:3
+    solvent: water
+    modifier:
+      type: cloridic acid
+      concentration:
+        numeric_value: "10"
+        unit: mM
+    volume:
+      numeric_value: "700"
+      unit: mL
+    contanier:
+      type: solvent bottle
+      volume: "700"
+      unit: mL
+  "3":
+    id: somspe:4
+    solvent: water
+    volume:
+      numeric_value: "1000"
+      unit: mL
+    contanier:
+      type: solvent bottle
+      volume: "1000"
+      unit: mL
+dissolution-activity:
+  id: somspe:5
+  source_material: somextract:4
+  solvent: deionized water
+  volume:
+    numeric_value: "5"
+    unit: mL
+  contanier:
+    type: olympus tube
+    volume: "15"
+    unit: mL
+  shaker: "null"
+acidification-activity:
+  id: somspe:6
+  source_material: somspe:5
+  acid: cloridic acid
+  concentration:
+    numeric_value: "37"
+    unit: percentile
+  volume:
+    numeric_value: "5"
+    unit: uL
+  ph: "2"
+separation-activity:
+  source_material: somspe:5
+  volume:
+    numeric_value: "5"
+    unit: mL

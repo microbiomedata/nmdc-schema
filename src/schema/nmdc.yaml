@@ -33,7 +33,8 @@ imports:
   - portal/jgi_metatranscriptomics
   - portal/mixs_inspired
   - portal/sample_id
-  - sample_prep
+  - sample_operations
+  #  - sample_prep # MAM made this before Anastasiya and James made sample_operations
   - workflow_execution_activity
 
 
@@ -106,37 +107,38 @@ classes:
       translated to JSON-Schema this is the 'root' object. It should contain pointers
       to other objects of interest
     slots:
-      - library_preparation_set
-      - processed_sample_set
-      - extraction_set
+      #      - dissolving_activity_set
+      #      - material_sample_set
+      #      - material_sampling_activity_set
+      #      - reaction_activity_set
       - activity_set
       - biosample_set
+      - collecting_biosamples_from_site_set
       - data_object_set
-      - dissolving_activity_set
+      - date_created
+      - etl_software_version
+      - extraction_set
+      - extraction_set
+      - field_research_site_set
       - functional_annotation_set
       - genome_feature_set
+      - library_preparation_set
       - mags_activity_set
-      - material_sample_set
-      - material_sampling_activity_set
       - metabolomics_analysis_activity_set
       - metagenome_annotation_activity_set
       - metagenome_assembly_set
       - metagenome_sequencing_activity_set
       - metaproteomics_analysis_activity_set
       - metatranscriptome_activity_set
+      - metatranscriptome_activity_set
       - nom_analysis_activity_set
       - omics_processing_set
-      - reaction_activity_set
-      - read_qc_analysis_activity_set
-      - read_based_taxonomy_analysis_activity_set
-      - study_set
-      - field_research_site_set
-      - collecting_biosamples_from_site_set
-      - date_created
-      - etl_software_version
-      - metatranscriptome_activity_set
       - pooling_set
-      - extraction_set
+      - processed_sample_set
+      - read_based_taxonomy_analysis_activity_set
+      - read_qc_analysis_activity_set
+      - study_set
+      - sample_ops_set
 
     slot_usage:
       date_created:
@@ -2267,6 +2269,15 @@ slots:
       investigator role... do we need to define the OBI prefix?
     required: true
   #    slot_uri: prov:agent
+
+  sample_ops_set:
+    mixins: object_set
+    domain: Database
+    range: SampleOperation
+    multivalued: true
+    inlined_as_list: true
+    description: This property links a database object to the set of sample operations
+      within it.
 
   object_set:
     mixin: true

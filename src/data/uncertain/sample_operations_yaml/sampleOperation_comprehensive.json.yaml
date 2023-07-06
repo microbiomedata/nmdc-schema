@@ -1,0 +1,163 @@
+title: 'comprehensive general sample prep protocol '
+author: ""
+section: Metabolomics
+updated: 08/10/2022
+protocol_url: ""
+protocol_doi: ""
+description: Procedure for a general chloroform extraction for metabolites with derivatization for GC-MS analysis
+extraction-activity:
+  id: comp:1
+  source_material: cell:1
+  solvent: ammonium bicarbonate buffer
+  concentration:
+    numeric_value: "150"
+    unit: mM
+  volume:
+    numeric_value: "150"
+    unit: ÂµL
+solubilization-activity:
+  id: comp:2
+  source_material: comp:1
+  solvent: chloroform/methanol
+  concentration:
+    numeric_value: 2/1
+    unit: v/v
+  volume:
+    numeric_value: "600"
+    unit: ÂµL
+mixing-activity:
+  id: comp:3
+  source_material: comp:2
+  shaker:
+    numeric_value: "10"
+    unit: sec
+sample-handling-activity:
+  id: comp:4
+  source_material: comp:3
+  activity:
+    type: ice
+    numeric_value: "5"
+    unit: minutes
+mixing-activity1:
+  id: comp:5
+  source_material: comp:4
+  shaker:
+    type: vortex
+    numeric_value: "10"
+    unit: sec
+centrifugation-activity:
+  id: comp:6
+  source_material: comp:5
+  centrifuge:
+    speed: 13,0000
+    numeric_value: "10"
+    unit: minutes
+transfer-activity:
+  id: comp:7
+  source_material: comp:6
+  type: supernatant
+sample-storage-activity1:
+  id: comp:8
+  source_material: comp:7
+  temperature:
+    numeric_value: "-20"
+    unit: C
+sample-drying-activity:
+  id: comp:9
+  source_material: comp:8
+  temperature:
+    numeric_value: "20"
+    unit: C
+solubilization-activity1:
+  id: comp:10
+  source_material: comp:9
+  solvent: methoxyamine
+  volume:
+    numeric_value: "20"
+    unit: ÂµL
+  contanier:
+    type: auto sampler vial
+    numeric_value: "1.5"
+    unit: mL
+  shaker:
+    type: vortex
+    numeric_value: "30"
+    unit: seconds
+    speed: "5"
+reaction-activity:
+  id: comp:11
+  source_material: comp:10
+  shaker:
+    type: thermomixer
+    numeric_value: "1000"
+    unit: rpm
+  temperature:
+    numeric_value: "37"
+    unit: C
+  time:
+    numeric_value: "1.5"
+    unit: hours
+mixing-activity2:
+  id: comp:12
+  source_material: comp:11
+  frequency: "1"
+centrifugation-activity1:
+  id: comp:13
+  source_material: comp:12
+  centrifuge:
+    type: vacuum
+    numeric_value: "1"
+    unit: minutes
+    speed: "1000"
+solubilization-activity2:
+  id: comp:14
+  source_material: comp:13
+  solvent:
+    type: MSTFA
+    concentration: 1%
+    reagent: TMCS
+  syringe:
+    type: Hamilton
+  volume:
+    numeric_value: "80"
+    unit: ÂµL
+  shaker:
+    type: vortex
+    numeric_value: "10"
+    unit: seconds
+reaction-activity1:
+  id: comp:15
+  source_material: comp:14
+  shaker:
+    type: thermomixer
+    numeric_value: "1000"
+    unit: rpm
+  temperature:
+    numeric_value: "37"
+    unit: C
+  time:
+    numeric_value: "30"
+    unit: minutes
+mixing-activity3:
+  id: comp:16
+  source_material: comp:15
+  frequency: "1"
+centrifugation-activity2:
+  id: comp:17
+  source_material: comp:16
+  centrifuge:
+    type: vacuum
+    numeric_value: "5"
+    unit: minutes
+    speed: "2000"
+transfer-activity1:
+  id: comp:18
+  source_material: comp:17
+  source_container:
+    type: auto sampler vial
+    numeric_value: "1.5"
+    unit: mL
+  container:
+    type: glass insert vial
+    numeric_value: "300"
+    unit: ÂµL
