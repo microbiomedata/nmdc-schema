@@ -28,7 +28,7 @@ classes:
     aliases:
       - material processing
     class_uri: OBI:0000094 # MAM planned process -> material processing
-    description: >-
+    description: >- # we already know this structurally 
       Parent class of all sample operations
     todos: # MAM
       - see also various PlannedProcesses and Activities
@@ -45,36 +45,41 @@ classes:
       - separation_id
 
   SiteSamplingActivity:
+    # class_uri ?
+    see_also:
+      - https://microbiomedata.github.io/nmdc-schema/collected_from/
+      - https://microbiomedata.github.io/nmdc-schema/CollectingBiosamplesFromSite/
     description: >-
       A process that outlines a defined site from which soil cores were gathered
     #    is_a: SampleOperation # MAM
     is_a: PlannedProcess # MAM
     in_subset: sample_operations_subset
     todos:
-      - lat and long should be replaced with the lat_long slot, which has a path to lat and lon.
+      - lat and long should be replaced with the lat_lon slot, which has a path to lat and lon.
       - elev should also be inherited
       - existing temp instead of soil_temp?
       - does this only apply to collection soil cores?
     slots:
       - analyte_id
-      - core_collector
+      - core_collector # collection device?
       - date_time_collected
       - elev
       - lat_lon # MAM
-      - site_code
-      - site_definition
-      - site_name_long
+      - site_code # attribute of a https://microbiomedata.github.io/nmdc-schema/FieldResearchSite/ ?
+      - site_definition # attribute of a https://microbiomedata.github.io/nmdc-schema/FieldResearchSite/ ?
+      - site_name_long # attribute of a https://microbiomedata.github.io/nmdc-schema/FieldResearchSite/ ?
       - source_mat_id
       - temp
-      - vegetation
-      - vol_water_content
-      - weather
+      - vegetation # see https://microbiomedata.github.io/nmdc-schema/cur_vegetation/
+      - vol_water_content # see https://microbiomedata.github.io/nmdc-schema/water_content/
+      - weather # see https://microbiomedata.github.io/nmdc-schema/samp_weather/
   #      - lat
   #      - long
   #      - soil_temperature
 
   DerivativeActivity:
-    description: >-
+    class_uri: MSIO:0000111 # MAM ... didn't Montana look these up? DO we still have that document?
+    description: >- # MAM let's use a briefer description
       A technique used in chemistry which transforms a chemical compound into a product (the reaction's derivative) of 
       similar chemical structure, called a derivative. That compound has properties more amenable to 
       a particular analytical method. Some samples analyzed by GC require derivatization in order to 
@@ -87,7 +92,7 @@ classes:
     slots:
       #      - unit
       - analyte_id
-      - celsius_temperature
+      - temp
       - concentration
       - container_type
       - derivatization
@@ -102,6 +107,7 @@ classes:
   #      - volume_unit
 
   SampleDrying:
+    class_uri: CHMO:0001549 # MAM
     description: >-
       The process of removing a solvent from a substance.
     is_a: SampleOperation
@@ -155,7 +161,7 @@ classes:
     in_subset: sample_operations_subset
     slots:
       - analyte_id
-      - celsius_temperature
+      - temp
       - container_type
       - duration
       - mixing
@@ -164,6 +170,7 @@ classes:
   #      - unit
 
   FiltrationActivity:
+    # OBI:0302885 or CHMO:0001640
     description: >-
       The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, 
       usually by forcing a carrier gas or liquid through a porous medium.
@@ -185,6 +192,8 @@ classes:
   #      - volume_unit
 
   ExtractionActivity:
+    see_also:
+      - https://microbiomedata.github.io/nmdc-schema/Extraction/
     description: >-
       A material separation in which a desired component of an input material is separated from the remainder
     is_a: SampleOperation
@@ -246,6 +255,7 @@ classes:
   #      - volume_unit
 
   AnalyteStorage:
+    # OBI:0302893
     description: >-
       The act, process and logistical considerations of the physical or environmental conditions under which the analytical sample is maintained.
     is_a: SampleOperation
@@ -253,11 +263,12 @@ classes:
     slots:
       - analyte_id
       - analyte_volume
-      - celsius_temperature
+      - temp
       - sample_mass
       - source_mat_id
 
   PhMeasurement:
+    # CHMO:0002354
     description: >-
       The measurement of pH, the negative logarithm to base ten of the hydrogen ion activity in a solution. Operationally the pH of a solution X, pH(X), is measured relative to that of a standard reference solution, pH(S), and defined as pH(X) = pH(S) - (E(X) - E(S))/(RT/F)ln 10, where E(X) and E(S) are the electromotive forces measured in cells containing the solution X and the reference solution respectively.
     #    is_a: SampleOperation # MAM
@@ -278,6 +289,7 @@ classes:
   #      - volume_unit
 
   MixingActivity:
+    # CHMO:0001685
     description: >-
       The combining of components, particles or layers into a more homogeneous state. The mixing may be achieved manually or mechanically by shifting the material with stirrers or pumps or by revolving or shaking the container. The process must not permit segregation of particles of different size or properties. Homogeneity may be considered to have been achieved in a practical sense when the sampling error of the processed portion is negligible compared to the total error of the measurement system.
     is_a: SampleOperation
@@ -306,7 +318,7 @@ classes:
     in_subset: sample_operations_subset
     slots:
       - analyte_id
-      - celsius_temperature
+      - temp
       - container_type
       - duration
       - mixing
@@ -316,6 +328,7 @@ classes:
   #      - unit
 
   LabDevice:
+    # OBI:0000968
     is_a: MaterialEntity # MAM
     description: A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.
     exact_mappings:
@@ -342,36 +355,37 @@ enums:
       chloroform:
         description: 'chloroform'
 
-  ActivityEnum: # what are these good for? If something is instantiated as a PhaseSeparation, why do we need to know that it's type is phase_separation?
-    permissible_values:
-      aliquot_activity:
-        description: 'Aliquot Activity'
-      extraction_activity:
-        description: 'Extraction Activity'
-      phase_separation:
-        description: 'Phase Separation'
-      filtration_activity:
-        description: 'Filtration Activity'
-      acidification_activity:
-        description: 'Acidification Activity'
-      analyte_storage:
-        description: 'Analyte Storage'
-      derivatization_activity:
-        description: 'Derivatization Activity'
-      sample_drying:
-        description: 'Sample Drying'
-      reaction_activity:
-        description: 'Reaction Activity'
-      subsampling_activity:
-        description: 'Subsampling Activity'
-      ph_measurement:
-        description: 'Ph Measurement'
-      mixing_activity:
-        description: 'Mixing Activity'
-      sieving_activity:
-        description: 'Sieving Activity'
-      chemical_reaction_activity:
-        description: 'Chemical Reaction Activity'
+  ## see operation_type
+  #  ActivityEnum: # what are these good for? If something is instantiated as a PhaseSeparation, why do we need to know that it's type is phase_separation?
+  #    permissible_values:
+  #      aliquot_activity:
+  #        description: 'Aliquot Activity'
+  #      extraction_activity:
+  #        description: 'Extraction Activity'
+  #      phase_separation:
+  #        description: 'Phase Separation'
+  #      filtration_activity:
+  #        description: 'Filtration Activity'
+  #      acidification_activity:
+  #        description: 'Acidification Activity'
+  #      analyte_storage:
+  #        description: 'Analyte Storage'
+  #      derivatization_activity:
+  #        description: 'Derivatization Activity'
+  #      sample_drying:
+  #        description: 'Sample Drying'
+  #      reaction_activity:
+  #        description: 'Reaction Activity'
+  #      subsampling_activity:
+  #        description: 'Subsampling Activity'
+  #      ph_measurement:
+  #        description: 'Ph Measurement'
+  #      mixing_activity:
+  #        description: 'Mixing Activity'
+  #      sieving_activity:
+  #        description: 'Sieving Activity'
+  #      chemical_reaction_activity:
+  #        description: 'Chemical Reaction Activity'
 
   DeviceTypeEnum: # add meanings
     permissible_values:
@@ -386,40 +400,67 @@ slots:
   #    description: "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI" # so it can't be an integer
 
   operation_type:
-#    range: ActivityEnum
+    # do we want to only have a single collection for sample operations?
+    # so data that could be instantiated as a subclass of SampleOperation would be directly instantiated a s a SampleOperation
+    # and then typed?
+    # we could require that the operation_type is a class uri from the schema, specifically a subclass of SampleOperation
+    # how do we enforce that?
+    # may not be safe to allow bare local-only values,
+    #   with the assumption that some default prefix is going to appear in all serializations
+    # if successful, propagate to other type-like slots across the schema
+    # use a consistent name
+    # do we then want to assert slot_uri: rdf:type?
+    designates_type: true
+    pattern: ^[A-Za-z][A-Za-z0-9_]*:[A-Za-z0-9_]+$ # or requires nmdc prefix?
+    range: uriorcurie
+    slot_uri: rdf:type # serialized like ?s a "nmdc:MixingActivity"^^xsd:anyURI
+  #    range: ActivityEnum
 
   detection_id: # these need descriptions
     range: integer
+
   separation_id: # these need descriptions
     range: integer
+
   #  has_input:
   #    range: Biosample
-  analyte_id: # this should be expressed as an output
+
+  analyte_id: # this should be expressed as an output, right?
     range: integer
     description: "Unique identifier for the analytical sample resulting from the extraction activity" # this should be expressed as an output
+
   #  source_mat_id: # input,right?
   #    range: integer
   #    description: "A unique identifier assigned to the material sample that was used in the extraction activity"
+
   site_code: # these need descriptions, range, etc.
+
   site_name_long: # these need descriptions, range, etc.
+
   core_collector: # these need descriptions, range, etc.
+
   date_time_collected:
     range: datetime
     description: "24 hr format"
-  lat: # see reuse of existing terms above
-  long: # see reuse of existing terms above
+
+  #  lat: # see reuse of existing terms above
+  #  long: # see reuse of existing terms above
+
   #  elev: # see reuse of existing terms above
   #    range: integer
   #    description: "in meters" # we should use LinkMLs unit property here
-  soil_temperature:
+
+  #  soil_temperature:
+  #    range: float
+  #    description: "in celsius"  # we should use LinkMLs unit property here
+
+  vol_water_content: # see https://microbiomedata.github.io/nmdc-schema/water_content/
     range: float
-    description: "in celsius"  # we should use LinkMLs unit property here
-  vol_water_content:
-    range: float
+
   vegetation: # these need descriptions, range, etc.
   weather: # these need descriptions, range, etc.
   site_definition:
-    description: "Defintion of a site. Size. i.e. 10 sq.m." # that;s not the definition of a site. What else might you want to say besides the area>
+    description: "Defintion of a site. Size. i.e. 10 sq.m." # MAM that's not a definition of a site. What else might you want to say besides the area>
   derivatization:
     range: float
     description: "A technique used in chemistry which transforms a chemical compound into a product ( the reaction's derivative) of similar chemical structure, called a derivative. That compount has properties more amenable to a particular analytical method. Some samples analyzed by GC require derivatization in order to make them suitable for analysis. Compounds that have poor volatility. poor thermal stability, or that can be adsorbed in the injector will exhibit nonreproducible peak areas, heights, and shapes. other compounds that respond poorly on a specific detector may need to be 'tagged' with a different function group to improve detection."
@@ -449,8 +490,8 @@ slots:
     range: QuantityValue
   concentration:
     range: QuantityValue
-  celsius_temperature:
-    range: QuantityValue
+  #  celsius_temperature: # MAM replace with temp
+  #    range: QuantityValue
   dry:
     description: "The act of removing moisture from something"
   #  sample_mass:

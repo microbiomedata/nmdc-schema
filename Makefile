@@ -105,8 +105,15 @@ gen-project: $(PYMODEL)
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
-test: examples-clean site test-python jsonschema-check-all-valid-databases examples/output
-only_test: examples-clean test-python jsonschema-check-all-valid-databases examples/output
+test: site-test
+site-test: site only-test
+only-test: examples-clean test-python jsonschema-check-all-valid-databases examples/output
+project-test: project-clean gen-project gendoc only-test
+.PHONY: examples-clean gen-project gendoc jsonschema-check-all-valid-databases only-test project-clean project-test site site-test test test-python
+project-clean:
+	rm -rf $(DEST)
+	mkdir -p $(DEST)
+	touch $(DEST).gitkeep
 
 test-schema:
 	$(RUN) gen-project \
