@@ -340,6 +340,21 @@ classes:
       - description
       - device_type
 
+  WeighingActivity:
+    #OBI:0000070 #OBI for 'assay'
+    description: >-
+      A process that collects the weight of a substance/material, along with metadata about the weighing activity itself.
+    is_a: SampleOperation
+    in_subset: sample_operations_subset
+    slots:
+      - analyte_id
+      - source_mat_id
+      - weighing_device
+      - container_type
+      - has_input
+      - has_ouput #I think this should be the correct slot to store the final weight
+      # - volume #might be helpful information but also might be extraneous and un-needed or stored elsewhere
+
 enums:
   ContainerTypeEnum:
     permissible_values:
@@ -467,7 +482,7 @@ slots:
   derivatization_agent:
     range: float
     description: "A chemical entity which is used in a material combination process known as derivatization and which consists in adding chemical groups to a molecule in an attempt to make it more volatile and therefore amenable to gas-chromatography mass spectrometry."
-  device:
+  device: #Should this have a range of LabDevice? I'm not sure exactly what the difference would be -James
     description: "A material entity that is designed to perform a function in a scientific investigation, but is not a reagent."
   container_type:
     range: ContainerTypeEnum
@@ -482,7 +497,7 @@ slots:
     range: QuantityValue
   mixing: # under which circumstances would you use the device slot and not the mixing slot?
     range: LabDevice
-  sample_volume:
+  sample_volume: #I'm not sure what 'sample_volume' is representing vs 'volume' -James
     range: QuantityValue
   speed:
     range: QuantityValue
@@ -537,7 +552,7 @@ slots:
   analytical_solution:
     range: float
     description: "The solution prepared from the test portion for the analytical procedure. The proportions of test portion and solvent are normally known."
-  instrument:
+  instrument: #what makes this different from a LabDevice and device? -James
     description: "Description of the instrument or the mass spectrometer"
   sieve_size:
     range: QuantityValue
@@ -551,3 +566,8 @@ slots:
     range: integer
   activity_speed_id:
     range: integer
+
+  #new weighing activity slot
+  weighing_device:
+    description: A LabDevice used for the purpose of weighing a substance/material.
+    range: LabDevice
