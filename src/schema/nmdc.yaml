@@ -2547,6 +2547,7 @@ slots:
     aliases:
       - DOIs
       - digital object identifiers
+    pattern: '^doi:10.\d{2,9}/.*$'
 
   award_dois:
     is_a: dois
