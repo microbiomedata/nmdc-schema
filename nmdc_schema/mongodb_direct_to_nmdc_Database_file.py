@@ -486,6 +486,15 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                         repaired_pqs.append(pq)
                     doc['has_peptide_quantifications'] = repaired_pqs
 
+        if non_nmdc_id_fixes and selected_collection == 'study_set': 
+            for doc in doc_list:
+                doi_slot = 'doi'
+                if doi_slot in doc and 'has_raw_value' in doc[doi_slot]:
+                    logger.info(f"for {doc['id']} in {selected_collection}, removing 'has_raw_value slot from doi slot'")
+                    doc[doi_slot] = doc[doi_slot].pop('has_raw_value')
+                    logger.info(f"for {doc['id']} in {selected_collection} changing 'doi' slot name to 'award_dois' and updating award_dois slot value to a curie")
+                    doc['award_dois'] = doc.pop(doi_slot).replace('https://doi.org/', 'doi:').split() 
+
         database[selected_collection] = doc_list
 
     # # save documents to JSON file with pretty formatting/indentation
