@@ -493,7 +493,9 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                     logger.info(f"for {doc['id']} in {selected_collection}, removing 'has_raw_value slot from doi slot'")
                     doc[doi_slot] = doc[doi_slot].pop('has_raw_value')
                     logger.info(f"for {doc['id']} in {selected_collection} changing 'doi' slot name to 'award_dois' and updating award_dois slot value to a curie")
-                    doc['award_dois'] = doc.pop(doi_slot).replace('https://doi.org/', 'doi:').split() 
+                    doc['award_dois'] = doc.pop(doi_slot)
+                    doc['award_dois'] = 'doi:'+doc['award_dois'][doc['award_dois'].find('10'):]
+                    
 
         database[selected_collection] = doc_list
 
