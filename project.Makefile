@@ -585,3 +585,6 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json: nmdc_schema/nmdc_schem
 nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
 	$(RUN) gen-python --validate $< > $@
 	$(RUN) python nmdc_schema/use_more_tolerant_schema.py
+
+local/study_set_doi.tsv:
+	$(RUN) python nmdc_schema/get_study_doi_report.py
