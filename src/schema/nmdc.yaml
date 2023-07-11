@@ -1332,6 +1332,7 @@ classes:
       - emsl_project_dois
 
       - neon_study_identifiers
+      - jgi_portal_study_identifiers
 
       ## Identifiers
       - id
