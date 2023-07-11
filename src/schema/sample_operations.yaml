@@ -341,19 +341,29 @@ classes:
       - device_type
 
   WeighingActivity:
-    #OBI:0000070 #OBI for 'assay'
+    class_uri: OBI:0000445
     description: >-
       A process that collects the weight of a substance/material, along with metadata about the weighing activity itself.
     is_a: SampleOperation
     in_subset: sample_operations_subset
+    slot_usage:
+      has_input:
+        comments:
+          - 'The id of the  material being weighed'
+          - "That's the default behaviour"
+      sample_mass:
+        comments:
+          - 'The mass, as an inlined QuantityValue, of the material being weighed'
+          - "not the id of some stand-alone entity"
     slots:
-      - analyte_id
-      - source_mat_id
+      #      - analyte_id
+      #      - source_mat_id
       - weighing_device
       - container_type
-      - has_input
-      - has_ouput #I think this should be the correct slot to store the final weight
-      # - volume #might be helpful information but also might be extraneous and un-needed or stored elsewhere
+      - sample_mass
+#      - has_input
+#      - has_ouput #I think this should be the correct slot to store the final weight
+#      # - volume #might be helpful information but also might be extraneous and un-needed or stored elsewhere
 
 enums:
   ContainerTypeEnum:
@@ -485,6 +495,7 @@ slots:
   device: #Should this have a range of LabDevice? I'm not sure exactly what the difference would be -James
     description: "A material entity that is designed to perform a function in a scientific investigation, but is not a reagent."
   container_type:
+    required: true
     range: ContainerTypeEnum
     description: "The vessel the sample was stored and extracted in"
   #  volume_unit: # why does volume get it's own unit?

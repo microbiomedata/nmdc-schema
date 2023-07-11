@@ -139,6 +139,7 @@ classes:
       - read_qc_analysis_activity_set
       - study_set
       - sample_ops_set
+      - weighing_act_set
 
     slot_usage:
       date_created:
@@ -2277,6 +2278,15 @@ slots:
     multivalued: true
     inlined_as_list: true
     description: This property links a database object to the set of sample operations
+      within it.
+
+  weighing_act_set:
+    mixins: object_set
+    domain: Database
+    range: WeighingActivity
+    multivalued: true
+    inlined_as_list: true
+    description: This property links a database object to the set of weighing activities
       within it.
 
   object_set:
