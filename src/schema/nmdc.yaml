@@ -1851,10 +1851,10 @@ enums:
         annotations:
           file_name_pattern: '[GOLD-AP]_gene_phylogeny.tsv'
 
-      Lineage sdb:
-        description: phylogeny at the contig level
+      Scaffold Lineage tsv:
+        description: phylogeny at the scaffold level
         annotations:
-          file_name_pattern: '[GOLD-AP].contigLin.assembled.sdb'
+          file_name_pattern: '[GOLD-AP]_scaffold_lineage.tsv'
 
       Clusters of Orthologous Groups (COG) Annotation GFF:
         description: GFF3 format file with COGs
