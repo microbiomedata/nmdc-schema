@@ -4034,7 +4034,7 @@
                 "Crispr Terms",
                 "Product Names",
                 "Gene Phylogeny tsv",
-                "Lineage sdb",
+                "Scaffold Lineage tsv",
                 "Clusters of Orthologous Groups (COG) Annotation GFF",
                 "KO_EC Annotation GFF",
                 "CATH FunFams (Functional Families) Annotation GFF",
@@ -7222,6 +7222,14 @@
                     },
                     "type": "array"
                 },
+                "jgi_portal_study_identifiers": {
+                    "description": "identifiers that link a NMDC study to a web-based report about a JGI sequencing project",
+                    "items": {
+                        "pattern": "^jgi.proposal:\\d+$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "massive_study_identifiers": {
                     "description": "identifiers for corresponding study in MASSIVE",
                     "items": {
@@ -7945,5 +7953,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "v7.7.1"
+    "version": "v7.7.2"
 }
