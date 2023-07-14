@@ -1,8 +1,0 @@
-prefix nmdc: <https://w3id.org/nmdc/>
-prefix xsd: <http://www.w3.org/2001/XMLSchema#>
-
-select *
-where {
-  ?s a ?t .
-  bind(iri(?t) as ?type)
-}
