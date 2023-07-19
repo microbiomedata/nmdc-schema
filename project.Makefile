@@ -340,6 +340,10 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosampl
 .PHONY: mongodb-cleanup dump-validate-report-convert-mongodb \
 dump-validate-report-convert-mongodb linkml-validate-mongodb
 
+# recommended setup:
+#   1. . ~/sshproxy.sh -u <NERSC USER NAME>
+#   2. ssh -i ~/.ssh/nersc -L27777:mongo-loadbalancer.nmdc.production.svc.spin.nersc.org:27017 -o ServerAliveInterval=60 {YOUR_NERSC_USERNAME}@dtn01.nersc.gov
+
 dump-validate-report-mongodb: mongodb-cleanup accepting_legacy_ids_all \
 local/mongodb-collection-report.txt \
 local/selected_mongodb_contents.json \
