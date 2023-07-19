@@ -1328,7 +1328,6 @@ classes:
         data submitted to ENA
 
     slots:
-
       - emsl_project_dois
 
       - neon_study_identifiers
@@ -2546,6 +2545,7 @@ slots:
     description: >-
       A digital object identifier, which is intended to persistantly identify some resource on the web.
     multivalued: true
+    abstract: true
     aliases:
       - DOIs
       - digital object identifiers
@@ -2562,10 +2562,9 @@ slots:
       One or more DOIs that links a study, or similar entiry, to information about the funding authority.
     examples:
       - value: doi:10.46936/10.25585/60000880
-        description: award_dois link to to an award document. Should not be used to link to datasets or publications.
-    todos:
-      - what makes something an award document? can we give counter examples of a DOI that might be confused as an award document, but really isn't?
-
+        description:
+          award_dois link to to an award document. Should not be used to link to datasets or publications.
+          For example, doi:10.15485/1577267 is not an award doi, but a dataset doi.
 
   dataset_dois:
     is_a: dois
@@ -2600,6 +2599,13 @@ slots:
       - emsl_identifiers
     title: EMSL Project DOI
     description: One or more DOIs that links to an EMSL Research Campaign page.
+    examples:
+      - value: doi:10.46936/intm.proj.2021.6014
+        description:
+          emsl_project_dois link to the document outlining the EMSL specific award for the project.
+          Should not be used to link to datasets or publications.
+    todos:
+      - Make as a subproperty of award_dois
 
   mod_date:
     range: string
