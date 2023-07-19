@@ -1530,8 +1530,8 @@ classes:
 enums:
   StatusEnum:
     permissible_values:
-      pass: { }
-      fail: { }
+      pass: {}
+      fail: {}
   #      accepted: { }
   #      archived: { }
   #      deleted: { }
@@ -1543,22 +1543,22 @@ enums:
 
   ExtractionTargetEnum:
     permissible_values:
-      DNA: { }
-      RNA: { }
-      metabolite: { }
-      protein: { }
+      DNA: {}
+      RNA: {}
+      metabolite: {}
+      protein: {}
 
   LibraryTypeEnum:
     # start using the right case for enum names
     # we have other slots which need a DNA or RNA answer, so maybe we should make this enum name more generic
     permissible_values:
-      DNA: { }
-      RNA: { }
+      DNA: {}
+      RNA: {}
 
   JgiContTypeEnum:
     permissible_values:
-      plate: { }
-      tube: { }
+      plate: {}
+      tube: {}
 
   YesNoEnum:
     name: YesNoEnum
@@ -1581,7 +1581,7 @@ enums:
       LTER:
         title: National Science Foundation's Long Term Ecological Research Network
         meaning: https://lternet.edu/
-      SIP: { }
+      SIP: {}
       SFA:
         title: Department of Energy Office of Science Biological and Environmental Research Program Laboratory Science Focus Areas
         description: Science Focus Area projects funded through the Department of Energy Office of Science Biological and Environmental Research Program
@@ -2000,7 +2000,7 @@ slots:
   #  extraction_date: # replacing with start_ and end_date
   #    #    range: date
   #    range: string
-  extraction_method: { }
+  extraction_method: {}
   extraction_target:
     range: ExtractionTargetEnum
 
@@ -2566,6 +2566,7 @@ slots:
     todos:
       - what makes something an award document? can we give counter examples of a DOI that might be confused as an award document, but really isn't?
 
+
   dataset_dois:
     is_a: dois
     description: >-
@@ -2583,7 +2584,8 @@ slots:
     description: One or more DOIs that links a study, or similar entity, to a publication.
     examples:
       - value: doi:10.1126/science.1058040
-        description: publication_dois link to a prose document, preferably a peer-reviewed journal article.
+        description:
+          publication_dois link to a prose document, preferably a peer-reviewed journal article.
           Should not be used to link to datasets or administrative information like funding requests or awards
 
   add_date:
