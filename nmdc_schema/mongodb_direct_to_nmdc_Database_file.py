@@ -7,6 +7,7 @@ import click
 import click_log
 from dotenv import load_dotenv
 from linkml_runtime import SchemaView
+from linkml_runtime.dumpers import yaml_dumper
 from pymongo import MongoClient
 from pymongo.errors import OperationFailure
 
@@ -28,6 +29,8 @@ uniprot_mnemonic_to_id = {
     "TRYP_BOVIN": "P00760",  # todo not sure about this
     "TRYP_PIG": "P00761",
 }
+
+intersection_key = "collections that contain instances of nmdc-schema classes"
 
 
 # todo: in general, don't just change the id, also change referents
@@ -87,9 +90,9 @@ def set_arithmetic(set1, set2, set1_name='set 1 only', set2_name='set 2 only'):
     set2_only = set2 - set1
     intersection = set1.intersection(set2)
     temp = {
-        set1_name: set1_only,
-        set2_name: set2_only,
-        'intersection': intersection
+        f"{set1_name} only": set1_only,
+        f"{set2_name} only": set2_only,
+        intersection_key: intersection
     }
     return temp
 
@@ -196,7 +199,7 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
 
         logger.info(pprint.pformat(collections_to_check))
 
-        mongo_collections = list(collections_to_check['intersection']) + list(collections_to_check['mongo'])
+        mongo_collections = list(collections_to_check[intersection_key]) + list(collections_to_check['mongo only'])
 
         mongo_collections.sort()
 
@@ -205,7 +208,7 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
         # # collection_stats = sorted(collection_stats.items(), key=lambda x: x[1]['size_in_bytes'])
 
         for coll_stat_k, coll_stat_v in collection_stats.items():
-            if coll_stat_k in collections_to_check['intersection']:
+            if coll_stat_k in collections_to_check[intersection_key]:
                 logger.info(f"Collection {coll_stat_k} is defined in the schema.")
                 logger.info(pprint.pformat(coll_stat_v))
             else:
@@ -486,16 +489,94 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                         repaired_pqs.append(pq)
                     doc['has_peptide_quantifications'] = repaired_pqs
 
-        if non_nmdc_id_fixes and selected_collection == 'study_set': 
+        # MAM most of these comments are about poor decisions I made in the overall design of this script
+        # everything after the first `if` this should be a function
+        # the first `if` constrains the repair to one collection form MongoDB,
+        #   which corresponds to one clas from the schema
+        if non_nmdc_id_fixes and selected_collection == 'study_set':
+
+            # # why does this have to be recreated here?
+            # nmdc_view = SchemaView(schema_file)
+            #
+            # # get range and multivalued from slot as used in class
+            # # from nmdc_view
+            # current_slot = nmdc_view.get_slot(selected_collection)
+            # current_range = current_slot.range
+            # print(current_range)
+
+            # next we iterate over all documents in the collection ie all instances of the class
             for doc in doc_list:
-                doi_slot = 'doi'
-                if doi_slot in doc and 'has_raw_value' in doc[doi_slot]:
-                    logger.info(f"for {doc['id']} in {selected_collection}, removing 'has_raw_value slot from doi slot'")
-                    doc[doi_slot] = doc[doi_slot].pop('has_raw_value')
-                    logger.info(f"for {doc['id']} in {selected_collection} changing 'doi' slot name to 'award_dois' and updating award_dois slot value to a curie")
-                    doc['award_dois'] = doc.pop(doi_slot)
-                    doc['award_dois'] = 'doi:'+doc['award_dois'][doc['award_dois'].find('10'):]
-                    
+                # doi_slot = 'doi'
+                # making that more generalizable
+                target_slot = 'doi'
+
+                # this could also be a separate function
+
+                # we want to extract the legacy `doi` values and assert them in one of the new `dois` subproperties
+                # matching the expectation of that new slot
+
+                # how will we know which of the `dois` subproperties it should go into?
+                # here we are assuming all legacy Study.dois are award_dois
+                # how could we confirm that?
+                destination_slot = 'award_dois'
+
+                # # do not leave this slow step in production
+                # # it does illustrate the required destination format
+                # cis = nmdc_view.induced_slot(destination_slot, current_range)
+
+                # print(f"{cis.multivalued = }")
+                # print(f"{cis.pattern = }")
+                # print(f"{cis.range = }")
+
+                # cis.multivalued = True
+                # cis.pattern = '^doi:10.\\d{2,9}/.*$'
+                # cis.range = 'uriorcurie'
+
+                if target_slot in doc and 'has_raw_value' in doc[target_slot]:
+                    source_data_structure = doc[target_slot]['has_raw_value']
+
+                    # print(type(source_data_structure)) # all appear to be strings
+                    logger.info(f"{source_data_structure = }")
+
+                    # https://doi.org/10.25585/1487763
+                    # https://doi.org/10.25585/1488099
+                    # https://doi.org/10.25585/1487765
+                    # https://doi.org/10.25585/1488160
+                    # https://doi.org/10.46936/10.25585/60001061
+                    # https://doi.org/10.46936/10.25585/60001198
+                    # https://doi.org/10.46936/10.25585/60001289
+                    # https://doi.org/10.25585/1488224
+                    # https://doi.org/10.25585/1488096
+                    # https://doi.org/10.46936/10.25585/60000762
+                    # https://doi.org/10.46936/10.25585/60000017
+                    # https://dx.doi.org/10.46936/intm.proj.2021.60141/60000423
+
+                    # we want to extract everything after the following pattern
+                    # and add the /10. prefix back on
+
+                    pattern = r'^https?:\/\/[a-zA-Z\.]+\/10\.'
+                    match = re.search(pattern, source_data_structure)
+                    if match:
+                        start_index = match.end()
+                        as_curie = f"doi:10.{source_data_structure[start_index:]}"
+                        logger.info(f"{as_curie = }")
+                    else:
+                        logger.warning(
+                            "doi URL not found in {source_data_structure} from Study {doc['id']}")
+
+                    del doc[target_slot]
+
+                    # the schema now expects `dois` subproperties to be multivalues,
+                    #   so assert it as a list of length one
+                    doc[destination_slot] = [as_curie]
+
+                    # logger.info(
+                    #     f"for {doc['id']} in {selected_collection}, removing 'has_raw_value slot from doi slot'")
+                    # doc[target_slot] = doc[target_slot].pop('has_raw_value')
+                    # logger.info(
+                    #     f"for {doc['id']} in {selected_collection} changing 'doi' slot name to 'award_dois' and updating award_dois slot value to a curie")
+                    # doc['award_dois'] = doc.pop(doi_slot)
+                    # doc['award_dois'] = 'doi:' + doc['award_dois'][doc['award_dois'].find('10'):]
 
         database[selected_collection] = doc_list
 

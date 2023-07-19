@@ -120,6 +120,19 @@ slots:
     abstract: true
     is_a: external_database_identifiers
 
+  jgi_portal_study_identifiers:
+    is_a: study_identifiers
+    mixins:
+      - jgi_portal_identifiers
+    id_prefixes:
+      - jgi.proposal
+    pattern: '^jgi.proposal:\d+$'
+    comments:
+      - Could this could be considered a related identifier?
+      - this identifier was registered with bioregistry but not identifiers.org
+    title: JGI Portal Study identifiers
+    description: identifiers that link a NMDC study to a web-based report about a JGI sequencing project
+
   neon_study_identifiers:
     is_a: study_identifiers
     mixins:

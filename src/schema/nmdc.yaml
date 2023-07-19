@@ -1328,9 +1328,11 @@ classes:
         data submitted to ENA
 
     slots:
+
       - emsl_project_dois
 
       - neon_study_identifiers
+      - jgi_portal_study_identifiers
 
       ## Identifiers
       - id
@@ -2558,13 +2560,23 @@ slots:
     is_a: dois
     description: >-
       One or more DOIs that links a study, or similar entiry, to information about the funding authority.
+    examples:
+      - value: doi:10.46936/10.25585/60000880
+        description: award_dois link to to an award document. Should not be used to link to datasets or publications.
+    todos:
+      - what makes something an award document? can we give counter examples of a DOI that might be confused as an award document, but really isn't?
 
   dataset_dois:
     is_a: dois
     description: >-
       One or more DOIs that links a study, or similar entity, to the generated data.
-    annotations:
-      display_hint: DOI associated with the data in this study. This is required when data is already generated.
+    #    annotations:
+    #      display_hint: DOI associated with the data in this study. This is required when data is already generated.
+    examples:
+      - value: doi:10.15485/1577267
+        description:
+          dataset_dois link to data encoded in a defined structure (as defined by DataCite).
+          Should not be used to link to publications or administrative information like funding requests or awards.
 
   publication_dois:
     is_a: dois
