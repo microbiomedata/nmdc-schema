@@ -1528,8 +1528,8 @@ classes:
 enums:
   StatusEnum:
     permissible_values:
-      pass: { }
-      fail: { }
+      pass: {}
+      fail: {}
   #      accepted: { }
   #      archived: { }
   #      deleted: { }
@@ -1541,22 +1541,22 @@ enums:
 
   ExtractionTargetEnum:
     permissible_values:
-      DNA: { }
-      RNA: { }
-      metabolite: { }
-      protein: { }
+      DNA: {}
+      RNA: {}
+      metabolite: {}
+      protein: {}
 
   LibraryTypeEnum:
     # start using the right case for enum names
     # we have other slots which need a DNA or RNA answer, so maybe we should make this enum name more generic
     permissible_values:
-      DNA: { }
-      RNA: { }
+      DNA: {}
+      RNA: {}
 
   JgiContTypeEnum:
     permissible_values:
-      plate: { }
-      tube: { }
+      plate: {}
+      tube: {}
 
   YesNoEnum:
     name: YesNoEnum
@@ -1579,7 +1579,7 @@ enums:
       LTER:
         title: National Science Foundation's Long Term Ecological Research Network
         meaning: https://lternet.edu/
-      SIP: { }
+      SIP: {}
       SFA:
         title: Department of Energy Office of Science Biological and Environmental Research Program Laboratory Science Focus Areas
         description: Science Focus Area projects funded through the Department of Energy Office of Science Biological and Environmental Research Program
@@ -1998,7 +1998,7 @@ slots:
   #  extraction_date: # replacing with start_ and end_date
   #    #    range: date
   #    range: string
-  extraction_method: { }
+  extraction_method: {}
   extraction_target:
     range: ExtractionTargetEnum
 
@@ -2558,6 +2558,9 @@ slots:
     is_a: dois
     description: >-
       One or more DOIs that links a study, or similar entiry, to information about the funding authority.
+    examples:
+      - value: doi:10.46936/10.25585/60000880
+        description: award_dois link to to an award document. Should not be used to link to datasets or publications.
 
   dataset_dois:
     is_a: dois
@@ -2565,13 +2568,19 @@ slots:
       One or more DOIs that links a study, or similar entity, to the generated data.
     annotations:
       display_hint: DOI associated with the data in this study. This is required when data is already generated.
+    examples:
+      - value: doi:10.15485/1577267
+        description:
+          dataset_dois link to data encoded in a defined structure (as defined by DataCite).
+          Should not be used to link to publications or administrative information like funding requests or awards.
 
   publication_dois:
     is_a: dois
     description: One or more DOIs that links a study, or similar entity, to a publication.
     examples:
       - value: doi:10.1126/science.1058040
-        description: publication_dois link to a prose document, preferably a peer-reviewed journal article.
+        description:
+          publication_dois link to a prose document, preferably a peer-reviewed journal article.
           Should not be used to link to datasets or administrative information like funding requests or awards
 
   add_date:
