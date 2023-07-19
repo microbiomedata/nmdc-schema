@@ -2548,6 +2548,11 @@ slots:
       - DOIs
       - digital object identifiers
     pattern: '^doi:10.\d{2,9}/.*$'
+    see_also:
+      - https://schema.datacite.org/meta/kernel-4.4/doc/DataCite-MetadataKernel_v4.4.pdf
+      - https://api.crossref.org/types
+    comments:
+      - See especially the resourceTypeGeneral section of the DataCite pdf, on pp48-53 as of 2023-07-19
 
   award_dois:
     is_a: dois
@@ -2564,6 +2569,11 @@ slots:
   publication_dois:
     is_a: dois
     description: One or more DOIs that links a study, or similar entity, to a publication.
+    examples:
+      - value: doi:10.1126/science.1058040
+        description: publication_dois link to a prose document, preferably a peer-reviewed journal article.
+          Should not be used to link to datasets or administrative information like funding requests or awards
+
   add_date:
     range: string
     description: The date on which the information was added to the database.
