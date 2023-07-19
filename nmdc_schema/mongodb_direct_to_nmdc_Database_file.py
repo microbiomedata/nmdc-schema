@@ -100,7 +100,8 @@ def get_synonymous_collection_db_slots(mongo_db, schema_view: SchemaView, class_
     class_slot_names.sort()
 
     # incomplete attempt to fiter out views
-    collections = [coll['name'] for coll in mongo_db.list_collections() if 'viewOn' not in coll]
+    collections = [coll['name']
+                   for coll in mongo_db.list_collections() if 'viewOn' not in coll]
 
     collections.sort()
 
@@ -110,13 +111,15 @@ def get_synonymous_collection_db_slots(mongo_db, schema_view: SchemaView, class_
         try:
             # Check if the collection is a view
             if mongo_db[collection].count_documents({}) > 0:
-                logger.info(f"Collection {collection} is accessible to this user and is not a view.")
+                logger.info(
+                    f"Collection {collection} is accessible to this user and is not a view.")
                 filtered_collections.append(collection)
             else:
                 logger.info(f"Collection {collection} is a view.")
         except OperationFailure as e:
             if e.code == 13:  # Unauthorized error code
-                logger.info(f"Collection {collection} is unauthorized for this user.")
+                logger.info(
+                    f"Collection {collection} is unauthorized for this user.")
                 continue
             raise e
 
@@ -180,7 +183,8 @@ def get_collection_stats(mongo_db, collection_list):
               help='Remove end-of-line characters from nmdc-schema ids')
 def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mongo_port, admin_db, output_json,
                    schema_file, root_class, max_docs_per_coll, non_nmdc_id_fixes, curie_fix):
-    db = access_database(env_file, mongo_db_name, mongo_host, mongo_port, admin_db)
+    db = access_database(env_file, mongo_db_name,
+                         mongo_host, mongo_port, admin_db)
 
     database = {}
 
@@ -192,11 +196,13 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
 
         nmdc_view = SchemaView(schema_file)
 
-        collections_to_check = get_synonymous_collection_db_slots(db, nmdc_view, root_class)
+        collections_to_check = get_synonymous_collection_db_slots(
+            db, nmdc_view, root_class)
 
         logger.info(pprint.pformat(collections_to_check))
 
-        mongo_collections = list(collections_to_check['intersection']) + list(collections_to_check['mongo'])
+        mongo_collections = list(
+            collections_to_check['intersection']) + list(collections_to_check['mongo'])
 
         mongo_collections.sort()
 
@@ -206,17 +212,20 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
 
         for coll_stat_k, coll_stat_v in collection_stats.items():
             if coll_stat_k in collections_to_check['intersection']:
-                logger.info(f"Collection {coll_stat_k} is defined in the schema.")
+                logger.info(
+                    f"Collection {coll_stat_k} is defined in the schema.")
                 logger.info(pprint.pformat(coll_stat_v))
             else:
-                logger.debug(f"Collection {coll_stat_k} is not defined in the schema.")
+                logger.debug(
+                    f"Collection {coll_stat_k} is not defined in the schema.")
                 # pprint.pprint(coll_stat_v)
 
     # now start exporting
     for selected_collection in selected_collections:
         # todo will need some error handling here
         collection_stats = get_collection_stats(db, [selected_collection])
-        logger.info(f"Exporting collection {selected_collection}, with the following stats: {collection_stats}")
+        logger.info(
+            f"Exporting collection {selected_collection}, with the following stats: {collection_stats}")
         doc_list = get_doc_list(db, selected_collection, max_docs_per_coll)
 
         # # # # REPAIRS # # # #
@@ -236,12 +245,15 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                     if result:
                         extracted_text = result[0]
                         if 'term' not in doc[taxon_slot]:
-                            logger.info(f"for {doc['id']}, setting the term id of {taxon_slot} to {extracted_text}")
+                            logger.info(
+                                f"for {doc['id']}, setting the term id of {taxon_slot} to {extracted_text}")
                             doc[taxon_slot]['term'] = {'id': extracted_text}
                         else:
                             if 'id' not in doc[taxon_slot]['term']:
-                                logger.info(f"for {doc['id']}, setting the term id of {taxon_slot} to {extracted_text}")
-                                doc[taxon_slot]['term'] = {'id': extracted_text}
+                                logger.info(
+                                    f"for {doc['id']}, setting the term id of {taxon_slot} to {extracted_text}")
+                                doc[taxon_slot]['term'] = {
+                                    'id': extracted_text}
                             else:
                                 if extracted_text != doc[taxon_slot]['term']['id']:
                                     logger.info(
@@ -249,7 +261,8 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                                     doc[taxon_slot]['term']['id'] = extracted_text
                     else:
                         # if there was a value in the taxon slot, wwe should report it
-                        logger.debug(f"for {doc['id']}, no term id found in {taxon_slot}")
+                        logger.debug(
+                            f"for {doc['id']}, no term id found in {taxon_slot}")
 
                 # REPAIR: extract Biosample host_taxid term id from raw value if necessary
                 #   not using fix_curie
@@ -261,11 +274,13 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                     extracted_text = doc[taxon_slot]['has_raw_value']
                     replacement_text = f"NCBITaxon:{extracted_text}"
                     if 'term' not in doc[taxon_slot]:
-                        logger.info(f"for {doc['id']}, setting the term id of {taxon_slot} to {replacement_text}")
+                        logger.info(
+                            f"for {doc['id']}, setting the term id of {taxon_slot} to {replacement_text}")
                         doc[taxon_slot]['term'] = {'id': replacement_text}
                     else:
                         if 'id' not in doc[taxon_slot]['term']:
-                            logger.info(f"for {doc['id']}, setting the term id of {taxon_slot} to {replacement_text}")
+                            logger.info(
+                                f"for {doc['id']}, setting the term id of {taxon_slot} to {replacement_text}")
                             doc[taxon_slot]['term'] = {'id': replacement_text}
                         else:
                             if replacement_text != doc[taxon_slot]['term']['id']:
@@ -274,7 +289,8 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                                 doc[taxon_slot]['term']['id'] = replacement_text
                 else:
                     # if there was a value in the taxon slot, wwe should logger.info it out
-                    logger.debug(f"for {doc['id']}, no term id found in {taxon_slot}")
+                    logger.debug(
+                        f"for {doc['id']}, no term id found in {taxon_slot}")
 
                 # REPAIR: Biosample 'env_broad_scale', 'env_local_scale' and 'env_medium' ids must be id only,
                 #   not label + value, like you would find in has_raw_value
@@ -306,13 +322,16 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                                         f"for {doc['id']}, replacing {slot} term id of {doc[slot]['term']['id']} with {colonified}")
                                     doc[slot]['term']['id'] = colonified
                             else:
-                                logger.info(f"for {doc['id']}, setting {slot} term id to {colonified}")
+                                logger.info(
+                                    f"for {doc['id']}, setting {slot} term id to {colonified}")
                                 doc[slot]['term']['id'] = colonified
                         else:
-                            logger.info(f"for {doc['id']}, setting {slot} term id to {colonified}")
+                            logger.info(
+                                f"for {doc['id']}, setting {slot} term id to {colonified}")
                             doc[slot]['term'] = {'id': colonified}
                     else:
-                        logger.info(f"checking {doc['id']} does not have a {slot}")
+                        logger.info(
+                            f"checking {doc['id']} does not have a {slot}")
 
                 # REPAIR: Biosample growth_facil.term.id: must be an id, not a string like 'field'
                 #   not using fix_curie
@@ -381,7 +400,8 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                 for slot in slots_to_del_if_none:
                     if slot in doc:
                         if not doc[slot]:
-                            logger.debug(f"for {doc['id']}, deleting {slot} because it is None")
+                            logger.debug(
+                                f"for {doc['id']}, deleting {slot} because it is None")
                             del doc[slot]
 
         # REPAIR: Biosample eliminate None value assertions for any slot from the root of any document in any collection
@@ -464,7 +484,8 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                             for ap in pq['all_proteins']:
                                 if ":" not in ap:
                                     if ap.startswith("Contaminant_"):
-                                        as_up_contam = convert_contam_string_to_curie(ap)
+                                        as_up_contam = convert_contam_string_to_curie(
+                                            ap)
                                         # log the original collection, id, and value plus the repaired value
                                         if as_up_contam != ap:
                                             logger.info(
@@ -477,7 +498,8 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                             bp = pq['best_protein']
                             if ":" not in bp:
                                 if bp.startswith("Contaminant_"):
-                                    as_up_contam = convert_contam_string_to_curie(bp)
+                                    as_up_contam = convert_contam_string_to_curie(
+                                        bp)
                                     pq['best_protein'] = as_up_contam
                                     logger.info(
                                         f"{selected_collection} {doc['id']} has_peptide_quantifications.best_proteins {bp} -> {as_up_contam}")
@@ -486,16 +508,18 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                         repaired_pqs.append(pq)
                     doc['has_peptide_quantifications'] = repaired_pqs
 
-        if non_nmdc_id_fixes and selected_collection == 'study_set': 
+        if non_nmdc_id_fixes and selected_collection == 'study_set':
             for doc in doc_list:
                 doi_slot = 'doi'
                 if doi_slot in doc and 'has_raw_value' in doc[doi_slot]:
-                    logger.info(f"for {doc['id']} in {selected_collection}, removing 'has_raw_value slot from doi slot'")
+                    logger.info(
+                        f"for {doc['id']} in {selected_collection}, removing 'has_raw_value slot from doi slot'")
                     doc[doi_slot] = doc[doi_slot].pop('has_raw_value')
-                    logger.info(f"for {doc['id']} in {selected_collection} changing 'doi' slot name to 'award_dois' and updating award_dois slot value to a curie")
+                    logger.info(
+                        f"for {doc['id']} in {selected_collection} changing 'doi' slot name to 'award_dois', making multivalued, and updating value to a curie")
                     doc['award_dois'] = doc.pop(doi_slot)
-                    doc['award_dois'] = 'doi:'+doc['award_dois'][doc['award_dois'].find('10'):]
-                    
+                    doc['award_dois'] = (
+                        'doi:'+doc['award_dois'][doc['award_dois'].find('10'):]).split()
 
         database[selected_collection] = doc_list
 
