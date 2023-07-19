@@ -13,8 +13,8 @@ study_set:
     specific_ecosystem: Permafrost
     principal_investigator:
       has_raw_value: Virginia Rich
-    doi:
-      has_raw_value: 10.25585/1488217
+    award_dois:
+      - doi:10.25585/1488217
     type: nmdc:Study
     gnps_task_identifiers:
       - "gnps.task:4b848c342a4f4abc871bdf8a09a60807"

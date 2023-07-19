@@ -220,14 +220,7 @@ slots:
   #    title: EMSL Proposal Identifier
   #    description: The proposal number assigned to the EMSL awarded study that relates to that which is represented in NMDC.
 
-
-  emsl_project_dois:
-    is_a: study_identifiers
-    mixins:
-      - emsl_identifiers
-    title: EMSL Project DOI
-    description: A DOI that resolves to a EMSL Research Campaign page.
-
+  # moving emsl_project_dois from external_identifiers.yaml to nmdc.yaml and re-rooting in `dois` with new pattern
 
   ## samples
 

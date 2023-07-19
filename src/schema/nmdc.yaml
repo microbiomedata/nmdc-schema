@@ -1528,8 +1528,8 @@ classes:
 enums:
   StatusEnum:
     permissible_values:
-      pass: {}
-      fail: {}
+      pass: { }
+      fail: { }
   #      accepted: { }
   #      archived: { }
   #      deleted: { }
@@ -1541,22 +1541,22 @@ enums:
 
   ExtractionTargetEnum:
     permissible_values:
-      DNA: {}
-      RNA: {}
-      metabolite: {}
-      protein: {}
+      DNA: { }
+      RNA: { }
+      metabolite: { }
+      protein: { }
 
   LibraryTypeEnum:
     # start using the right case for enum names
     # we have other slots which need a DNA or RNA answer, so maybe we should make this enum name more generic
     permissible_values:
-      DNA: {}
-      RNA: {}
+      DNA: { }
+      RNA: { }
 
   JgiContTypeEnum:
     permissible_values:
-      plate: {}
-      tube: {}
+      plate: { }
+      tube: { }
 
   YesNoEnum:
     name: YesNoEnum
@@ -1579,7 +1579,7 @@ enums:
       LTER:
         title: National Science Foundation's Long Term Ecological Research Network
         meaning: https://lternet.edu/
-      SIP: {}
+      SIP: { }
       SFA:
         title: Department of Energy Office of Science Biological and Environmental Research Program Laboratory Science Focus Areas
         description: Science Focus Area projects funded through the Department of Energy Office of Science Biological and Environmental Research Program
@@ -1998,7 +1998,7 @@ slots:
   #  extraction_date: # replacing with start_ and end_date
   #    #    range: date
   #    range: string
-  extraction_method: {}
+  extraction_method: { }
   extraction_target:
     range: ExtractionTargetEnum
 
@@ -2567,6 +2567,15 @@ slots:
   add_date:
     range: string
     description: The date on which the information was added to the database.
+
+  # moving emsl_project_dois from external_identifiers.yaml to nmdc.yaml and re-rooting in `dois` with new pattern
+  emsl_project_dois:
+    is_a: dois
+    #    is_a: study_identifiers
+    mixins:
+      - emsl_identifiers
+    title: EMSL Project DOI
+    description: One or more DOIs that links to an EMSL Research Campaign page.
 
   mod_date:
     range: string
