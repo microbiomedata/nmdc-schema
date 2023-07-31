@@ -1,0 +1,57 @@
+sample_ops_set:
+  - id: sresp:1
+    source_mat_id: soil:1
+    sieve_size:
+      has_unit: mm
+      has_numeric_value: 10
+    #no slot for screen_size. One should be added
+    operation_type: 'nmdc:SievingActivity'
+  - id: sresp:2
+    source_mat_id: sresp:1
+    starting_amount:
+      has_unit: unknown
+      has_numeric_value: unknown
+    temp:
+      has_unit: C
+      has_numeric_value: 35
+    duration:
+      has_unit: hours
+      has_numeric_value: 48 #there are 2 values but I don't think this can be multivalued
+    instrument: drying oven
+    container_type: weighing tin
+    container_volume:
+      has_unit: unknown
+      has_numeric_value: unknown
+    operation_type: 'nmdc:SubsamplingActivity'
+  - id: sresp:3
+    source_mat_id: sresp:2
+    starting_amount:
+      has_unit: grams
+      has_numeric_value: 40
+    container_type: sample cup
+    container_volume:
+      has_unit: mL
+      has_numeric_value: 100
+    operation_type: 'nmdc:SubsamplingActivty'
+  - id: somspe:4 #rewetting activity
+    extractant: deionized water
+    volume:
+      has_unit: mL
+      has_numeric_value: unknown
+    container_type: squeeze bottle
+    container_volume:
+      has_unit: mL
+      has_numeric_Value: 700
+    operation_type: 'nmdc:ExtractionActivity'
+  - id: sresp:5
+    source_mat_id: sresp:4
+    instrument: Picarro CO2 Isotope Analyzer
+    starting_amount:
+      has_unit: grams
+      has_numeric_value: 40
+    container_type: glass canning jar
+    container_volume:
+      has_unit: mL
+      has_numeric_value: 100
+    operation_type: 'nmdc:SubsamplingActivity'
+  

@@ -1,0 +1,53 @@
+sample_ops_set:
+  - id: ffcu:1
+    extractant: MeOH/H2O
+    concentration:
+      has_unit: ratio
+      has_numeric_value: 80/20
+    volume:
+      has_unit: ÂµL
+      has_numeric_value: 300
+    duration:
+      has_unit: minutes
+      has_numeric_value: 10
+    operation_type: 'nmdc:ExtractionActivity'
+  - id: ffcu:2
+    source_mat_id: ffcu:1
+    mixing:
+      activity_time_id:
+        has_unit: minutes
+        has_numeric_value: 1
+      device_type: vortex
+    operation_type: 'nmdc:MixingActivity'
+  - id: ffcu:3
+    source_mat_id: ffcu:2
+    duration:
+      has_unit: minutes
+      has_numeric_value: 3
+    value: 4500
+    operation_type: 'nmdc:PhaseSeparationActivity'
+  - id: ffcu:4
+    conditioning: pre-condition
+    container_type: PTFE 96-well filter plate
+    container_volume:
+      has_unit: Âµm
+      has_numeric_value: 0.02
+    #there are 2 solvents that don't seem to fit any of the slots
+    operation_type: 'nmdc:FiltrationActivity'
+  - id: ffcu:5
+    source_mat_id: ffcu:3
+    volume:
+      has_unit: ÂµL
+      has_numeric_value: 200
+    operation_type: 'nmdc:SubsamplingActivity'
+  - id: ffcu:6
+    source_mat_id: ffcu:5
+    #Slots ofr this filtration activity don't match filtrationActivity in schema
+  - id: ffcu:7
+    source_mat_id: ffcu:6
+    #again, not sure what to do with transfer activity classes
+  - id: ffcu:8
+    source_mat_id: ffcu:7
+    temp:
+      has_unit: C
+      has_numeric_value: -20

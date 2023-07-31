@@ -1,0 +1,156 @@
+sample_ops_set:
+  - id: comp:1
+    source_mat_id: cell:1
+    extractant: ammonium bicarbonate buffer
+    concentration:
+      has_unit: mM
+      has_numeric_value: 150
+    volume:
+      has_unit: ÂµL
+      has_numeric_value: 150
+    operation_type: 'nmdc:ExtractionActivity'
+  - id: comp:2
+    source_mat_id: comp:1
+    extractant: chloroform
+    concentration:
+      has_unit: v/v
+      has_numeric_value: 2/1
+    volume:
+      has_unit: ÂµL
+      has_numeric_value: 600
+    operation_type: 'nmdc:ExtractionActivity'
+  - id: comp:3
+    source_mat_id: comp:2
+    mixing:
+      activity_time_id:
+      has_unit: sec
+      has_numeric_value: 10
+    operation_type: 'nmdc:MixingActivity'
+  - id: comp:4
+    source_mat_id: comp:3 #sample-handling-activity
+    #not sure what 'activity' is supposed to be
+  - id: comp:5
+    source_mat_id: comp:4
+    mixing:
+      device_type: vortex
+      activity_time_id:
+        has_unit: sec
+        has_numeric_value: 10
+    operation_type: 'nmdc:MixingActivity'
+  - id: comp:6
+    source_mat_id: comp_5
+    value: 13,000
+    duration: 
+      has_unit: minutes
+      has_numeric_value: 10
+    operation_type: 'nmdc:PhaseSeparationActivity'
+  - id: comp:7 #not sure this is correct
+    source_mat_id: comp:6
+    material_component_separation: supernatant
+    operation_type: 'nmdc:PhaseSeparationActivity'
+  - id: comp:8
+    source_mat_id: comp:7
+    temp:
+      has_unit: C
+      has_numeric_value: -20
+    operation_type: 'nmdc:AnalyteStorage'
+  - id: comp:9
+    source_mat_id: comp:8
+    temp:
+      has_unit: C
+      has_numeric_value: 20
+    operation_type: 'nmdc:SubsamplingActivity'
+  - id: comp:10
+    source_mat_id: comp:9
+    extractant: methoxyamine
+    volume:
+      has_unit: ÂµL
+      has_numeric_value: 20
+    container_type: auto sampler vial
+    container_size:
+      has_unit: mL
+      has_numeric_value: 1.5
+    mixing:
+      device_type: vortex
+      activity_speed_id:
+        has_numeric_value: 5
+      activity_time_id:
+        has_unit: seconds
+        has_numeric_value: 30
+    operation_type: 'nmdc:ExtractionActivity'
+  - id: comp:11
+    source_mat_id: comp:10
+    mixing:
+      device_type: thermomixer
+      activity_speed_value:
+        has_unit: rpm
+        has_numeric_value: 1000
+    temp:
+      has_unit: C
+      has_numeric_value: 37
+    duration:
+      has_unit: hours
+      has_numeric_value: 1.5
+    operation_type: 'nmdc:ReactionActivity'
+  - id: comp:12
+    source_mat_id: comp:11
+    #should be a mixing activity
+    #not sure what frequency slot is
+  - id: comp:13
+    source_mat_id: comp:12
+    duration:
+      has_unit: minutes
+      has_numeric_value: 1
+    value: 1000
+    material_component_separation: vacuum
+    operation_type: 'nmdc:PhaseSeparationActivity'
+  - id: comp:14
+  #not sure what to do with 'syringe' slot. Nothing maps to that
+    source_mat_id: comp:13
+    extractant: MSTFA #there's a reagent piece of information that I don't know where to put
+    concentration: 
+      has_unit: percent
+      has_numeric_value: 1
+    volume:
+      has_unit: ÂµL
+      has_numeric_value: 80
+    mixing:
+      device_type: vortex
+      activity_time_id:
+        has_unit: seconds
+        has_numeric_value: 10
+    operation_type: 'nmdc:ExtractionActivity'
+  - id: comp:15
+    source_mat_id: comp:14
+    mixing:
+      device_type: thermomixer
+      activity_speed_id:
+        has_unit: rpm
+        has_numeric_value: 1000
+    temp:
+      has_unit: C
+      has_numeric_value: 37
+    duration:
+      has_unit: minutes
+      has_numeric_value: 30
+    operation_type: 'nmdc:ReactionActivity'
+  - id: comp:16
+    source_mat_id: comp:15
+    #another frequency slot
+  - id: comp:17
+    source_mat_id: comp:16
+    material_component_separation: vacuum
+    duration:
+      has_unit: minutes
+      has_numeric_value: 5
+    value: 2000
+    operation_type: 'nmdc:PhaseSeparationActivity'
+  - id: comp:18 #not sure what to do with the container and source_container
+    source_mat_id: comp:17
+
+
+
+
+
+
+    

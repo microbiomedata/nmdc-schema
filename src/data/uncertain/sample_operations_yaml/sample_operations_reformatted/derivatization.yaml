@@ -1,0 +1,93 @@
+sample_ops_set:
+  - id: derive:1 #there's a solute slot that I'm not sure what to map to
+    extractant: methoxyamine
+    concentration:
+      has_unit: mg/mL
+      has_numeric_value: 30
+    operation_type: 'nmdc:ExtractionActivity'
+  - id: derive:2
+    temp:
+      has_unit: C
+      has_numeric_value: -10
+    operation_type: 'nmdc:AnalyteStorage'
+  - id: derive:3
+    source_mat_id: derive:2
+    temp:
+      has_unit: C
+      has_numeric_value: 20
+    operation_type: "nmdc:SampleDrying"
+  - id: derive:4
+    source_mat_id: derive:3
+    extractant: methoxyamine
+    volume:
+      has_unit: ÂµL
+      has_numeric_value: 20
+    container_type: auto sampler vial
+    container_volume:
+      has_unit: mL
+      has_numeric_value: 1.5
+    mixing:
+      device_type: vortex
+    operation_type: 'nmdc:ExtractionActivity'
+  - id: derive:5
+    source_mat_id: derive:4
+    mixing:
+      device_type: thermomixer
+      activity_speed_id:
+        has_unit: rpm
+        has_numeric_value: 1000
+    temp:
+      has_unit: C
+      has_numeric_value: 37
+    duration:
+      has_unit: hours
+      has_numeric_value: 1.5
+    operation_type: 'nmdc:ReactionActivity'
+  - id: derive:6
+    source_mat_id: derive:5
+    #frequency slot, not sure what to do with this. mixing activity
+  - id: derive:7
+    source_mat_id: derive:6
+    material_component_separation: vacuum
+    operation_type: 'nmdc:PhaseSeparationActivity'
+  - id: derive:8
+    source_mat_id: derive:7
+    extractant: MSTFA #there's a reagent piece of information that I don't know where to put
+    concentration: 
+      has_unit: percent
+      has_numeric_value: 1
+    volume:
+      has_unit: ÂµL
+      has_numeric_value: 80
+    mixing:
+      device_type: vortex
+      activity_time_id:
+        has_unit: seconds
+        has_numeric_value: 20
+    operation_type: 'nmdc:ExtractionActivity'
+  - id: derive:9
+    source_mat_id: derive:8
+    mixing:
+      device_type: thermomixer
+      activity_speed_id:
+        has_unit: rpm
+        has_numeric_value: 1000
+    temp:
+      has_unit: C
+      has_numeric_value: 37
+    duration:
+      has_unit: minutes
+      has_numeric_value: 30
+    operation_type: 'nmdc:ReactionActivity'
+  - id: derive:10
+    source_mat_id: derive:9
+    #another frequency/mixing activity
+  - id: derive:11
+    source_mat_id: derive:10
+    material_component_separation: vacuum evaporator
+    operation_type: 'nmdc:PhaseSeparationActivity'
+  - id: derive:12
+    source_mat_id: derive:11
+    #not sur what to do with transfer activity things. container and source container
+
+    

@@ -118,8 +118,9 @@ classes:
       - dry
       - duration
       - sample_mass
-      - source_mat_id
+      - source_mat_idƒsub
       - value
+      - temp #added for example data files
 
   SubsamplingActivity:
     description: >-
@@ -137,6 +138,9 @@ classes:
       - source_mat_id
       - starting_amount
       - volume
+      - temp #this and below slots were added for gravimetricwatercontent data file. No classes seemed to have all the slots for 'evaporation-activity'
+      - duration
+      - instrument
   #      - volume_unit
 
   AcidificationActivity:
@@ -370,6 +374,30 @@ enums:
     permissible_values:
       screw_top_conical:
         description: 'screw_top_concial tube'
+      HDPE_bottle:
+        description: 'HDPE bottle'
+      weighing_tin:
+        description : 'weighing tin'
+      PTFE_96_well_filter_plate:
+        description: 'PTFE 96-well filter plate'
+      V_bottom_conical_tubes:
+        description: 'V-bottom conical tubes'
+      falcon_tube:
+        description: 'falcon tube'
+      Buchner_funnel:
+        description: 'Buchner funnel'
+      Glass_scintillation_vial:
+        description: 'glass scintillation vials'
+      Olympus:
+        description: 'Olympus'
+      centrifuge_tube:
+        description: 'centrifuge tube'
+      sample_cup:
+        description: 'sample cup'
+      squeeze_bottle:
+        description: 'squeeze bottle'
+      glass_canning_jar:
+        description: 'glass canning jar'
 
   SolventEnum: # either add meaning, or change the slots in this Domain to use a CURIe instead of the enum
     permissible_values:
@@ -379,6 +407,20 @@ enums:
         description: 'methanol'
       chloroform:
         description: 'chloroform'
+      ammonium_bicarbonate_buffer:
+        description: 'ammonium bicarbonate buffer'
+      methoxyamine:
+        description: 'methoxyamine'
+      MeOH/H2O:
+        description: 'MeOH/H2O'
+      Potassium_sulfate:
+        description: 'Potassium Sulfate'
+      ethanol_free_chloroform:
+        description: 'ethanol-free chloroform'
+      bray_extract_solution:
+        description: 'bray extract solution'
+      olsen_extract_solution:
+        description: 'olsen extract solution'
 
   ## see operation_type
   #  ActivityEnum: # what are these good for? If something is instantiated as a PhaseSeparation, why do we need to know that it's type is phase_separation?
@@ -413,11 +455,13 @@ enums:
   #        description: 'Chemical Reaction Activity'
 
   DeviceTypeEnum: # add meanings
-    permissible_values:
+    permissible_values:ƒ
       orbital_shaker:
         description: 'Orbital Shaker'
       thermomixer:
         description: 'Thermomixer'
+      vorte:
+        description: "Vortex"
 
 slots:
   #  id:
@@ -555,13 +599,14 @@ slots:
   extractant:
     range: SolventEnum
     description: "The active component(s) primarily responsible for transfer of a solute from one phase to the other."
-  material_component_separation:
-    range: float
+  material_component_separation: #should this be a float? in the example data anything that maps to this is a string
+    range: string
+    #range: float
     description: "A material processing in which components of an input material become segregated in space"
   sample_state:
     description: "The chemical phase of a pure sample, or the state of a mixed sample."
   analytical_solution:
-    range: float
+    range: string #was float but exmple data implied this should be a string or an enum
     description: "The solution prepared from the test portion for the analytical procedure. The proportions of test portion and solvent are normally known."
   instrument: #what makes this different from a LabDevice and device? -James
     description: "Description of the instrument or the mass spectrometer"
@@ -573,10 +618,10 @@ slots:
   #  description:
   device_type:
     range: DeviceTypeEnum
-  activity_time_id:
-    range: integer
+  activity_time_id: #this and the below speed should probably be quantity values
+    range: QuantityValue
   activity_speed_id:
-    range: integer
+    range: QuantityValue
 
   #new weighing activity slot
   weighing_device:

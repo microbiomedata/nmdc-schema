@@ -1,0 +1,58 @@
+sample_ops_set:
+  - id: pbrayer:1
+    source_mat_id: soil:1
+    starting_amount:
+      has_unit: grams
+      has_numeric_value: 2
+    container_type: centrifuge tube
+    container_volume:
+      has_unit: mL
+      has_numeric_value: 50
+    operation_type: 'nmdc:SubsamplingActivity'
+  - id: pbrayer:2
+    source_mat_id: pbrayer:2
+    extractant: bray extract solution
+    volume:
+      has_unit: mL
+      has_numeric_value: 14
+    concentration:
+      has_unit: unknown
+      has_numeric_value: unknown
+    mixing:
+      devic_type: orbital_mixer
+      activity_time_id:
+        has_unit: minutes
+        has_numeric_value: 5
+      activity_speed_id:
+        has_unit: RPM
+        has_numeric_value: 1000
+    container_type: centrifuge tube
+    container_volume:
+      has_unit: mL
+      has_numeric_value: 50
+    operation_type: 'nmdc:ExtractionActivity'
+  - id: pbrayer:centrifugation
+    source_mat_id: pbrayer:2
+    duration:
+      has_unit: minutes
+      has_numeric_value: 8
+    value: 4000 #no where to put RPM
+    operation_type: 'nmdc:PhaseSeparationActivity'
+  - id: pbrayer:3
+    volume:
+      has_unit: mL
+      has_numeric_value: unknown
+    container_type: centrifuge tupe
+    container_volume:
+      has_unit: mL
+      has_numeric_value: 15
+    operation_type: 'nmdc:PhaseSeparationActivity'
+  - id: pbrayer:4
+    source_mat_id: pbrayer:3
+    temp:
+      has_unit: C
+      has_numeric_value: -20
+    volume:
+      has_unit: uL
+      has_numeric_value: 2
+    operation_type: 'nmdc:AnalyteStorage'

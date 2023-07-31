@@ -1,0 +1,28 @@
+sample_ops_set:
+  - id: gwatercontent:1
+    source_mat_id: soil:1
+    starting_amount:
+      has_unit: grams
+      has_numeric_value: 10
+    container_type: weighing_tin
+    container_size:
+      has_unit: null #unknown in file
+      has_numeric_value: null #also unknown
+    operation_type: "nmdc:SubsamplingActivity"
+  - id: gwatercontent:2
+    source_mat_id: gwatercontent:1
+    starting_amounts:
+      has_unit: grams
+      has_numeric_value: 10
+    temp:
+      has_unit: C
+      has_numeric_value: 100
+    duration:
+      has_unit: hours
+      has_numeric_value: 24
+    instrument: drying_oven
+    container_type: weighing_tine
+    container_size:
+      has_unit: null #these are unkown as well
+      has_numeric_value: null
+    operation_type: "nmdc:SubsamplingActivity"

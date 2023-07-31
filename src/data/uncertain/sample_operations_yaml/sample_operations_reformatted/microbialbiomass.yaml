@@ -1,0 +1,240 @@
+sample_ops_set:
+  - id: microbiomass:1
+    source_mat_id: soil:1
+    starting_amount:
+      has_unit: grams
+      has_numeric_value: 8
+    container_type: V-bottom conical tubes
+    container_size:
+      has_unit: mL
+      has_numeric_value: 50
+    operation_type: "nmdc:SubsamplingActivity"
+  - id: microbiomass:3
+    source_mat_id: microbiomass:1
+    extractant: Potassium sulfate
+    concentration: #these were part of the solvent slot but solvent only takes a single string. There are additional concentrations and volumes but not enough slots for all of them
+      has_unit: mM
+      has_numeric_value: 0.05
+    volume:
+      has_unit: mL
+      has_numeric_value: 24
+    container_type: V-bottom conical tubes
+    container_volume:
+      has_unit: mL
+      has_numeric_value: 50
+    mixing:
+      device_type: orbital_shaker
+      activity_speed_id:
+        has_unit: RPM
+        has_numeric_value: 200
+      activity_time_id:
+        has_unit: hours
+        has_numeric_value: 2
+    operation_type: "nmdc:ExtractionActivity"
+  - id: microbiomass:4 
+    source_mat_id: microbiomass:3
+    duration:
+      has_unit: minutes
+      has_numerical_value: 20
+    value: 4000 #the unit is RPM but there's not anywhere to put that in the current schema
+    container_type: V-bottom conical tube
+    container_volume:
+      has_unit: mL
+      has_numeric_value: 50
+    operation_type: 'nmdc:PhaseSeparationActivity'
+  - id: microbiomass:5 #deriving the next couple from 'centrifugation' class in example file
+    volume:
+      has_unit: mL
+      has_numeric_value: 5
+    container_type: falcon tube
+    container_volume:
+      has_unit: mL
+      has_numeric_value: 15
+    operation_type: 'nmdc:PhaseSeparationActivity'
+  - id: microbiomass:6
+    volume:
+      has_unit: mL
+      has_numeric_value: 5
+    container_type: V-bottom conical tube
+    container_volume:
+      has_unit: mL
+      volume: 50
+    operation_type: 'nmdc:PhaseSeparationActivity'
+  - id: microbiomass:14
+    volume:
+      has_unit: mL
+      has_numeric_value: 5
+    container_type: falcon tube
+    container_volume:
+      has_unit: mL
+      has_numerical_value: 15
+    operation_type: 'nmdc:PhaseSeparationActivity'
+  - id: microbiomass:15
+    volume:
+      has_unit: mL
+      has_numeric_value: 5
+    container_type: V-bottom conical tube
+    container_volume:
+      has_unit: mL
+      has_numerical_value: 50
+    operation_type: 'nmdc:PhaseSeparationActivity'
+  - id: microbiomass:2
+    source_mat_id: microbiomass:5
+    volume:
+      has_unit: mL
+      has_numeric_value: 20
+    separation_method: Buchner Funnel #there is some info about the funnel but no where to put it (it says unknown so probably fine to leave out)
+    filter: paper 
+    material_pore_size:
+      has_unit: um
+      has_numeric_value: 42.5
+    container_type: glass scintillation vial
+    container_volume:
+      has_unit: mL
+      has_numeric_value: 20
+    conditioning: #this is listed as a float but it seems like it shouldn't be
+    conditioning_volume: #This is listed as a container type which seems wrong as well
+    operation_type: 'nmdc:FiltrationActivity'
+  - id: microbiomas:7
+    source_mat_id: microbiomass:6
+    acid: phosphoric acid
+    concentration:
+      has_unit: unknown
+      has_numeric_value: unknown
+    volume:
+      has_unit: drops
+      has_numeric_value: 2
+    ph: uknown
+    operation_type: 'nmdc:AcidificationActivity'
+  - id: microbiomass:8
+    source_mat_id: microbiomass:5
+    acid: phosphoric acid
+    concentration:
+      has_unit: uknown
+      has_numeric_value: uknown
+    volume:
+      has_unit: drops
+      has_numeric_value: 2
+    ph: unknown
+    operation_type: 'nmdc:AcidificationActivity'
+  - id: microbiomass:9
+    source_material: microbiomass:7
+    temp:
+      has_unit: C
+      has_numeric_value: -20
+    analyte_volume:
+      has_unit: uL
+      has_numeric_value:
+    operation_type: 'nmdc:AnalyteStorage'
+  - id: microbiomass:10
+    source_material: microbiomass:9
+    temp:
+      has_unit: C
+      has_numeric_value: -20
+    analyte_volume:
+      has_unit: uL
+      has_numeric_value:
+    operation_type: 'nmdc:AnalyteStorage'
+  - id: microbiomass:18
+    source_material: microbiomass:17
+    temp:
+      has_unit: C
+      has_numeric_value: -20
+    analyte_volume:
+      has_unit: uL
+      has_numeric_value:
+    operation_type: 'nmdc:AnalyteStorage'
+  - id: microbiomass:11
+    source_mat_id: microbiomass:10
+    extractant: ethanol-free chloroform
+    duration:
+      has_unit: hours
+      has_numeric_value: 24
+    concentration: 
+      has_unit: null
+      has_numeric_value: null
+    volume:
+      has_unit: mL
+      has_numeric_value: 2
+    container_type: V-bottom conical tubes
+    container_volume:
+      has_unit: mL
+      has_numeric_value: 50
+    mixing:
+      device_type: orbital_shaker
+      activity_speed_id:
+        has_unit: RPM
+        has_numeric_value: 200
+      activity_time_id:
+        has_unit: hours
+        has_numeric_value: 2
+    operation_type: "nmdc:ExtractionActivity"
+  - id: microbiomass:12
+    source_mat_id: microbiomass:11
+    extractant: Potassium sulfate
+    duration:
+      has_unit: hours
+      has_numeric_value: 24
+    concentration: 
+      has_unit: mM
+      has_numeric_value: 0.05
+    volume:
+      has_unit: mL
+      has_numeric_value: 24 #there's another volume but no where to put it
+    container_type: V-bottom conical tubes
+    container_volume:
+      has_unit: mL
+      has_numeric_value: 50
+    mixing:
+      device_type: orbital_shaker
+      activity_speed_id:
+        has_unit: RPM
+        has_numeric_value: 200
+      activity_time_id:
+        has_unit: hours
+        has_numeric_value: 2
+    operation_type: "nmdc:ExtractionActivity"
+  - id: microbiomass:13 
+    source_mat_id: microbiomass:12
+    duration:
+      has_unit: minutes
+      has_numerical_value: 20
+    value: 4000 #the unit is RPM but there's not anywhere to put that in the current schema
+    container_type: V-bottom conical tube
+    container_volume:
+      has_unit: mL
+      has_numeric_value: 50
+    operation_type: 'nmdc:PhaseSeparationActivity'
+  - id: microbiomass:16
+    source_mat_id: microbiomass:14
+    volume:
+      has_unit: mL
+      has_numeric_value: 20
+    separation_method: Buchner Funnel #there is some info about the funnel but no where to put it (it says unknown so probably fine to leave out)
+    filter: paper 
+    material_pore_size:
+      has_unit: um
+      has_numeric_value: 42.5
+    container_type: glass scintillation vial
+    container_volume:
+      has_unit: mL
+      has_numeric_value: 20
+    conditioning: #this is listed as a float but it seems like it shouldn't be
+    conditioning_volume: #This is listed as a container type which seems wrong as well
+    operation_type: 'nmdc:FiltrationActivity'
+  - id: microbiomass:17
+    source_mat_id: microbiomass:16
+    acid: phosphoric acid
+    concentration:
+      has_unit: uknown
+      has_numeric_value: uknown
+    volume:
+      has_unit: drops
+      has_numeric_value: 2
+    ph: unknown
+    operation_type: 'nmdc:AcidificationActivity'
+  
+
+    
+
+    

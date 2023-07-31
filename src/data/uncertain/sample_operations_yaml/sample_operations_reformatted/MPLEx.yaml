@@ -1,0 +1,59 @@
+sample_ops_set:
+  - id: mplex:1
+    analyte_volume:
+      has_unit: g
+      has_numeric_value: 1
+    container_type: Olympus
+    container_volume:
+      has_unit: mL
+      has_numeric_value:: 50
+    temp:
+      has_unit: C
+      has_numeric_value: -70
+    operation_type: "nmdc:AnalyteStorage"
+  - id: mplex:2 #there is an instrument slot that doesn't fit
+    source_mat_id: mplex:1
+    extractant: MeOH/H2O
+    concentration:
+      has_unit: ratio
+      has_numeric_value: 4/3
+    volume:
+      has_unit: mL
+      has_numeric_value: 15
+    mixing:
+      device_type: vortex
+    operation_type: "nmdc:ReactionActivity"
+  - id: mplex:3
+    source_mat_id: mplex:2
+    extractant: chloroform #temp listed as ice-cold not sure how to
+    volume:
+      has_unit: mL
+      has_numeric_value: 18.5
+    mixing:
+      device_type: vortex
+      activity_time_id:
+        has_unit: minutes
+        has_numeric_value: 1
+    operation_type: "nmdc:ReactionActivity"
+  - id: mplex:4
+    source_mat_id: mplex:3
+    #sample handling activity. not sure what this maps to, or activity slot
+  - id: mplex:5
+    source_mat_id: mplex:4
+    mixing:
+      device_type: vortex
+      activity_time_id:
+        has_unit: minutes
+        has_numeric_value: 1
+    operation_type: 'nmdc:MixingActivity'
+  - id: mplex:6
+    source_mat_id: mplex:5
+    value: 5000
+    duration:
+      has_unit: minutes
+      has_numeric_value: 10
+    temp:
+      has_unit: C
+      has_numeric_value: 4
+    operation_type: 'nmdc:PhaseSeparationActivity'
+  - id: derive:12 #transfer activity, also seems like it's maybe in the wrong file

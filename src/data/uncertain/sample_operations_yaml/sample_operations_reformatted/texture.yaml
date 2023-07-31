@@ -1,0 +1,33 @@
+
+#what to use for id here?
+sample_ops_set:
+  - id: texture:1
+    analyte_id: texture:1
+    source_mat_id: soil:1
+    sieve_size:
+      has_unit: mm
+      has_numeric_value: 2
+    operation_type: "nmdc:SievingActivity"
+  - id: texture:2
+    analyte_id: texture:2
+    source_mat_id: texture:1
+    starting_amount: 
+      has_unit: grams
+      has_numeric_value: 50
+    container_type: "HDPE bottle"
+    container_size:
+      has_unit: mL
+      has_numeric_value: 500 
+    operation_type: "nmdc:SubsampleActivity"
+  - id: texture:3
+    analyte_id: texture:3
+    source_mat_id: texture:2
+    #type: oxidation
+    #solvent
+    #reagent
+    time:
+    container_type:
+    container_size:
+    operation_type: "nmdc:ChemicalReactionActivity"
+    #There are 2 more reaction activity classes in the data file to be rewritten here
+    #Also a detection activity
