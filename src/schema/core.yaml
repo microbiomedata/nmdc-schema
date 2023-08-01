@@ -34,14 +34,13 @@ default_range: string
 #  - idot_context
 
 subsets:
-  environment: { }
-  investigation: { }
-  nucleic acid sequence source: { }
-  sequencing: { }
+  environment: {}
+  investigation: {}
+  nucleic acid sequence source: {}
+  sequencing: {}
   #  soil: { }
 
 types:
-
   bytes:
     description: >-
       An integer value that corresponds to a size in bytes
@@ -49,7 +48,7 @@ types:
     uri: xsd:long
     see_also:
       - UO:0000233
-  
+
   decimal degree:
     description: >-
       A decimal degree expresses latitude or longitude as decimal fractions.
@@ -74,7 +73,6 @@ types:
       - UO:0000000
 
 classes:
-
   NamedThing:
     description: "a databased entity or concept/class"
     abstract: true
@@ -174,7 +172,6 @@ classes:
       - has_numeric_value
       - instrument_name
 
-
   QuantityValue:
     is_a: AttributeValue
     description: >-
@@ -194,8 +191,7 @@ classes:
       has_numeric_value:
         description: >-
           The number part of the quantity
-        range:
-          double
+        range: double
     mappings:
       - schema:QuantityValue
 
@@ -207,7 +203,7 @@ classes:
       - url
       - description
       - display_order
-  
+
   PersonValue:
     is_a: AttributeValue
     description: >-
@@ -251,7 +247,7 @@ classes:
   #        required: true
   #        description: >-
   #          Should be an ORCID. Specify in CURIE format. E.g ORCID:0000-1111-...
-  
+
   MagBin:
     slots:
       - bin_name
@@ -308,7 +304,7 @@ classes:
       - peptide_sequence
       - peptide_spectral_count
       - peptide_sum_masic_abundance
-  
+
   ProteinQuantification:
     description: >-
       This is used to link a metaproteomics analysis workflow to a specific protein
@@ -515,14 +511,13 @@ slots:
   #    domain: PlannedProcess
   #    range: Agent
 
-
   language:
     range: language code
     description: >-
       Should use ISO 639-1 code e.g. "en", "fr"
 
   attribute:
-    aliases: [ 'field', 'property', 'template field', 'key', 'characteristic' ]
+    aliases: ["field", "property", "template field", "key", "characteristic"]
     abstract: true
     description: >-
       A attribute of a biosample. Examples: depth, habitat, material.
@@ -553,7 +548,7 @@ slots:
     mappings:
       - qud:quantityValue
       - schema:value
-  
+
   has_minimum_numeric_value:
     is_a: has_numeric_value
     description: >-
@@ -563,13 +558,13 @@ slots:
     is_a: has_numeric_value
     description: >-
       The maximum value part, expressed as number, of the quantity value when the value covers a range.
-  
+
   has_boolean_value:
     description: >-
       Links a quantity value to a boolean
     range: boolean
     multivalued: false
-  
+
   latitude:
     domain: GeolocationValue
     range: decimal degree
@@ -624,9 +619,9 @@ slots:
       A url that points to an image of a person.
     domain: PersonValue
     range: string
-  
+
   has_input:
-    aliases: [ 'input' ]
+    aliases: ["input"]
     domain: NamedThing
     range: NamedThing
     multivalued: true
@@ -634,7 +629,7 @@ slots:
       An input to a process.
 
   has_output:
-    aliases: [ 'output' ]
+    aliases: ["output"]
     domain: NamedThing
     range: NamedThing
     multivalued: true
@@ -642,14 +637,14 @@ slots:
       An output biosample to a processing step
 
   part_of:
-    aliases: [ 'is part of' ]
+    aliases: ["is part of"]
     range: NamedThing
     domain: NamedThing
     multivalued: true
     slot_uri: dcterms:isPartOf
     description: >-
       Links a resource to another resource that either logically or physically includes it.
-  
+
   execution_resource:
     is_a: attribute
     description: >-
@@ -660,7 +655,7 @@ slots:
     range: string
     notes:
       - See issue 207 - this clashes with the mixs field
-  
+
   display_order:
     is_a: attribute
     description: >-
@@ -677,19 +672,12 @@ slots:
     range: bytes
     description: >-
       Size of the file in bytes
-  
+
   md5_checksum:
     is_a: attribute
     range: string
     description: >-
       MD5 checksum of file (pre-compressed)
-  
-  abstract:
-    range: string
-    description: >-
-      The abstract of manuscript/grant associated with the entity; i.e., a summary of the resource.
-    exact_mappings:
-      - dcterms:abstract
 
   keywords:
     range: string
@@ -699,7 +687,7 @@ slots:
       Keywords SHOULD come from controlled vocabularies, including MESH, ENVO.
     mappings:
       - dcterms:subject
-  
+
   objective:
     range: string
     multivalued: false
