@@ -683,13 +683,6 @@ slots:
     range: string
     description: >-
       MD5 checksum of file (pre-compressed)
-  
-  abstract:
-    range: string
-    description: >-
-      The abstract of manuscript/grant associated with the entity; i.e., a summary of the resource.
-    exact_mappings:
-      - dcterms:abstract
 
   keywords:
     range: string
