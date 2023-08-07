@@ -74,7 +74,7 @@ reaction-activity2:
     speed:
       numeric_value: low
       unit: unknown
-blank:
+blank: #blanking the instrument, may be able to be left out.
   id: texture:5
   solvent: deionized water
   reagant:

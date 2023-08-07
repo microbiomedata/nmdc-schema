@@ -185,7 +185,7 @@ classes:
       - analyte_id
       - analyte_volume
       - conditioning
-      - conditioning_volume
+      #- conditioning_volume #moving this to new conditioning class
       - container_size
       - container_type
       - filter
@@ -194,6 +194,19 @@ classes:
       - source_mat_id
       - volume
   #      - volume_unit
+
+  ConditioningActivity:
+    #Look up obi
+    description: >-
+      Holds information relating to a conditioning process. This class is used for filtration
+      activity. Holds the solvent, concentration, container, and volume
+    is_a: SampleOperation
+    slots:
+      - solvent
+      - concentration
+      - volume
+      - container_type
+      - container_size
 
   ExtractionActivity:
     see_also:
@@ -587,13 +600,13 @@ slots:
     range: float
     description: "A quantitative or qualitative measurement of the physical dimensions of the pores in a material."
   conditioning:
-    range: float
+    range: ConditioningActivity
     description: "Preliminary treatment of either phase with a suitable solution of the other phase (in the absence of main extractable solute(s)) so that when the subsequent equilibration is carried out changes in the (volume) phase ratio or in the concentrations of other components are minimized."
   analyte_volume:
     range: QuantityValue
     description: "The volume in microliters (ul) of the aliquot(s) derived from the analyte(s) shipped for sequencing and characterization."
-  conditioning_volume:
-    range: ContainerTypeEnum
+  #conditioning_volume: #changing for conditioning
+  #  range: ContainerTypeEnum
   separation_method:
     range: ContainerTypeEnum
   extractant:
@@ -627,3 +640,6 @@ slots:
   weighing_device:
     description: A LabDevice used for the purpose of weighing a substance/material.
     range: LabDevice
+  solvent:
+    range: SolventEnum
+    description: A solvent used in conditioning

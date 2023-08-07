@@ -30,7 +30,7 @@ dissolution-activity:
     type: falcon tube
     volume: "50"
     unit: mL
-ph-standards:
+ph-standards: #Wait for more info
   ph:
     - 4.01
     - 7
