@@ -36,7 +36,9 @@ sample_ops_set:
     duration:
       has_unit: minutes
       has_numeric_value: 8
-    value: 6000 #no place to put rpm
+    value: 
+      has_numeric_value: 6000
+      has_unit: RPM
     operation_type: 'nmdc:PhaseSeparationActivity'
   - id: somextract:1
     volume:
@@ -108,6 +110,7 @@ sample_ops_set:
     volume:
       has_unit: mL
       has_numeric_value: 20
+    separation_method: syringe #funnel slot?
     filter: paper
     material_pore_size:
       has_unit: um
@@ -116,7 +119,8 @@ sample_ops_set:
     container_volume:
       has_unit: mL
       has_numeric_value: 15
-    #conditioning: deionized water #this is a float but seems like it should be something else
-    #conditioning_volume:
-    #  has_unit: mL
-    #  has_numeric_value: 50
+    conditioning:
+      solvent: deionized water
+      volume:
+        has_numeric_value: 50
+        has_unit: mL

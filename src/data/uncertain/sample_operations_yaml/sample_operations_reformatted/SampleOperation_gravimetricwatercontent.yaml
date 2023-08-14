@@ -21,7 +21,7 @@ sample_ops_set:
       has_unit: hours
       has_numeric_value: 24
     instrument: drying_oven
-    container_type: weighing_tine
+    container_type: weighing_tin
     container_size:
       has_unit: null #these are unkown as well
       has_numeric_value: null

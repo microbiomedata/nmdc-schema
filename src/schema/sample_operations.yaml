@@ -171,6 +171,7 @@ classes:
       - mixing
       - source_mat_id
       - speed
+      - instrument
   #      - unit
 
   FiltrationActivity:
@@ -195,13 +196,14 @@ classes:
       - volume
   #      - volume_unit
 
-  ConditioningActivity:
+  ConditioningValue:
     #Look up obi
     description: >-
       Holds information relating to a conditioning process. This class is used for filtration
       activity. Holds the solvent, concentration, container, and volume
     is_a: SampleOperation
     slots:
+      - conditioning_type
       - solvent
       - concentration
       - volume
@@ -228,6 +230,7 @@ classes:
       - source_mat_id
       - speed
       - volume
+      - solute
   #      - volume_unit
 
   AliquotActivity:
@@ -257,6 +260,19 @@ classes:
       - source_mat_id
       #      - unit
       - value
+      - modifier #all below added for organicmatter spe
+      - material
+      - solvent
+      - volume
+      - container_type
+      - container_volume
+
+  ModifierValue:
+    description: >-
+      The modification being done to a sample during phase separation.
+    slots:
+      - modifier_substance
+      - concentration
 
   #  AnalyticalSample:
   #    description: >-
@@ -326,6 +342,7 @@ classes:
     slots:
       - analyte_id
       - sieve_size
+      - screen_size
       - source_mat_id
 
   ChemicalReactionActivity:
@@ -343,6 +360,17 @@ classes:
       - source_mat_id
       - speed
   #      - unit
+      - reagent
+      - reaction_type
+      - volume
+      
+  ReagentValue:
+    description: >-
+      Contains information about a reagent used in a chemical reaction activity
+    slots:
+      - reagent_type
+      - volume
+      - concentration
 
   LabDevice:
     # OBI:0000968
@@ -357,27 +385,39 @@ classes:
       - description
       - device_type
 
-  WeighingActivity:
-    class_uri: OBI:0000445
-    description: >-
-      A process that collects the weight of a substance/material, along with metadata about the weighing activity itself.
+  TransferActivity:
+    #Needs OBI
     is_a: SampleOperation
-    in_subset: sample_operations_subset
-    slot_usage:
-      has_input:
-        comments:
-          - 'The id of the  material being weighed'
-          - "That's the default behaviour"
-      sample_mass:
-        comments:
-          - 'The mass, as an inlined QuantityValue, of the material being weighed'
-          - "not the id of some stand-alone entity"
+    description: An activity documenting the transfer of a substance from one container to another
     slots:
+      - source_mat_id
+      - container_type
+      - container_size
+      - source_container_type
+      - source_container_size
+      - transfer_type
+
+  #WeighingActivity:
+  #  class_uri: OBI:0000445
+  #  description: >-
+  #    A process that collects the weight of a substance/material, along with metadata about the weighing activity itself.
+  #  is_a: SampleOperation
+  #  in_subset: sample_operations_subset
+  #  slot_usage:
+  #    has_input:
+  #      comments:
+  #        - 'The id of the  material being weighed'
+  #        - "That's the default behaviour"
+  #    sample_mass:
+  #      comments:
+  #        - 'The mass, as an inlined QuantityValue, of the material being weighed'
+  #        - "not the id of some stand-alone entity"
+  #  slots:
       #      - analyte_id
       #      - source_mat_id
-      - weighing_device
-      - container_type
-      - sample_mass
+  #    - weighing_device
+  #    - container_type
+  #    - sample_mass
 #      - has_input
 #      - has_ouput #I think this should be the correct slot to store the final weight
 #      # - volume #might be helpful information but also might be extraneous and un-needed or stored elsewhere
@@ -411,6 +451,16 @@ enums:
         description: 'squeeze bottle'
       glass_canning_jar:
         description: 'glass canning jar'
+      auto_sampler_vial:
+        description: 'auto sampler vial'
+      glass_insert_vial:
+        description: 'glass insert vial'
+      water_vials:
+        description: 'water vials'
+      syringe:
+        description: 'syringe'
+      solvent_bottle:
+        description: 'solvent bottle'
 
   SolventEnum: # either add meaning, or change the slots in this Domain to use a CURIe instead of the enum
     permissible_values:
@@ -434,6 +484,10 @@ enums:
         description: 'bray extract solution'
       olsen_extract_solution:
         description: 'olsen extract solution'
+      Milli_Q_H2O:
+        description: 'Milli-Q H2O'
+      ultrapure_water:
+        description: 'ultrapure water'
 
   ## see operation_type
   #  ActivityEnum: # what are these good for? If something is instantiated as a PhaseSeparation, why do we need to know that it's type is phase_separation?
@@ -473,8 +527,10 @@ enums:
         description: 'Orbital Shaker'
       thermomixer:
         description: 'Thermomixer'
-      vorte:
+      vortex:
         description: "Vortex"
+      Agitation_plunger:
+        description: "Agitation plunger"
 
 slots:
   #  id:
@@ -600,8 +656,9 @@ slots:
     range: float
     description: "A quantitative or qualitative measurement of the physical dimensions of the pores in a material."
   conditioning:
-    range: ConditioningActivity
+    range: ConditioningValue
     description: "Preliminary treatment of either phase with a suitable solution of the other phase (in the absence of main extractable solute(s)) so that when the subsequent equilibration is carried out changes in the (volume) phase ratio or in the concentrations of other components are minimized."
+    multivalued: true
   analyte_volume:
     range: QuantityValue
     description: "The volume in microliters (ul) of the aliquot(s) derived from the analyte(s) shipped for sequencing and characterization."
@@ -626,7 +683,8 @@ slots:
   sieve_size:
     range: QuantityValue
   reactant:
-    range: float
+    range: string
+    description: The reactant in a ChemicalReactionActivity
   #    description: A substance that is consumed in the course of a chemical reaction. It is sometimes known, especially in the older literature, as a reagent, but this term is better used in a more specialized sense as a test substance that is added to a system in order to bring about a reaction or to see whether a reaction occurs (e.g. an analytical reagent).
   #  description:
   device_type:
@@ -635,11 +693,50 @@ slots:
     range: QuantityValue
   activity_speed_id:
     range: QuantityValue
-
+  syringe:
+    range: string
+    description: The type of syringe used in an activity
+  source_container_type:
+    range: ContainerTypeEnum
+    description: The source container a substance is being transferred from
+  source_cintainer_size:
+    range: QuantityValue
+    description: The size of the source container given with a number and unit
   #new weighing activity slot
-  weighing_device:
-    description: A LabDevice used for the purpose of weighing a substance/material.
-    range: LabDevice
+  #weighing_device:
+  #  description: A LabDevice used for the purpose of weighing a substance/material.
+  #  range: LabDevice
   solvent:
     range: SolventEnum
     description: A solvent used in conditioning
+    multivalued: true
+  solute: #double check the range on this
+    range: string
+    description: The solute in an extraction
+  conditioning_type:
+    range: string
+    description: The type of conditioning being applied
+  transfer_type:
+    range: string
+    description: The type of transfer being performed
+  modifier:
+    range: ModifierValue
+    description: A modifier to a phase separation
+  modifier_substance:
+    range: string
+    description: The type of modification being done
+  material:
+    range: string
+    description: Material for a phase separation
+  screen_size:
+    range: QuantityValue
+    description: The size of the screen in a sieve
+  reagent:
+    range: ReagentValue
+    description: Information regarding the reagent in a ChemicalReactionActivity
+  reagent_type:
+    range: string
+    description: the type of reagent being used
+  reaction_type:
+    range: string
+    descriptoin: The type of reaction happening in a ChemicalreactionActivity

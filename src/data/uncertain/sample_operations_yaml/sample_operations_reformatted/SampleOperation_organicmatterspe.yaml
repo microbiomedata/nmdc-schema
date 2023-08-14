@@ -1,4 +1,42 @@
-sample_ops_set: #wasn't sure what to do with stationary/mobile phase classes
+sample_ops_set: 
+  - id: somspe:1
+    material: unknown
+    operation_type: 'nmdc:PhaseSeparationActivity'
+  - id: somspe:2
+    solvent: methanol
+    volume:
+      has_numeric_value: 700
+      has_unit: mL
+    container_type: solvent bottle
+    container_volume:
+      has_numeric_value: 700
+      has_unit: mL
+    operation_type: 'nmdc:PhaseSeparationActivity'
+  - id: somspe:3
+    solvent: water
+    modifier:
+      modifier_substance: cloridic acid
+      concentration:
+        has_numeric_value: 10
+        has_unit: mM
+    volume:
+      has_numeric_value: 700
+      has_unit: mL
+    container_type: solvent bottle
+    container_volume:
+      has_numeric_value: 700
+      has_unit: mL
+    operation_type: 'nmdc:PhaseSeparationActivity'
+  - id: somspe:4
+    solvent: water
+    volume:
+      has_numeric_value: 1000
+      has_unit: mL
+    container_type: solvent bottle
+    container_volume:
+      has_numeric_value: 1000
+      has_unit: mL
+    operation_type: 'nmdc:PhaseSeparationActivity'
   - id: somspe:5
     source_mat_id: somextract:4
     extractant: deionized water

@@ -1,9 +1,10 @@
 sample_ops_set:
-  - id: derive:1 #there's a solute slot that I'm not sure what to map to
+  - id: derive:1 
     extractant: methoxyamine
     concentration:
       has_unit: mg/mL
       has_numeric_value: 30
+    solute: pyridine
     operation_type: 'nmdc:ExtractionActivity'
   - id: derive:2
     temp:
@@ -45,7 +46,10 @@ sample_ops_set:
     operation_type: 'nmdc:ReactionActivity'
   - id: derive:6
     source_mat_id: derive:5
-    #frequency slot, not sure what to do with this. mixing activity
+    duration:
+      has_numeric_value: 1
+      has_raw_value: '1'
+    operation_type: 'nmdc:MixingActivity'
   - id: derive:7
     source_mat_id: derive:6
     material_component_separation: vacuum
@@ -81,13 +85,24 @@ sample_ops_set:
     operation_type: 'nmdc:ReactionActivity'
   - id: derive:10
     source_mat_id: derive:9
-    #another frequency/mixing activity
+    duration:
+      has_raw_value: '1'
+      has_numeric_value: 1
+    operation_type: 'nmdc:MixingActivity'
   - id: derive:11
     source_mat_id: derive:10
     material_component_separation: vacuum evaporator
     operation_type: 'nmdc:PhaseSeparationActivity'
   - id: derive:12
     source_mat_id: derive:11
-    #not sur what to do with transfer activity things. container and source container
+    source_container_type: auto sampler vial
+    source_container_size: 
+      has_numeric_value: 1.5
+      has_unit: mL
+    container_type: glass insert vial
+    container_size:
+      has_numeric_value: 300
+      has_unit: ÂµL
+    operation_type: 'nmdc:TransferActivity'
 
     

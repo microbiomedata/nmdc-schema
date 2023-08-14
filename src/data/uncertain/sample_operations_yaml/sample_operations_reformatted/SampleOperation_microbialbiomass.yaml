@@ -12,12 +12,15 @@ sample_ops_set:
   - id: microbiomass:3
     source_mat_id: microbiomass:1
     extractant: Potassium sulfate
-    concentration: #these were part of the solvent slot but solvent only takes a single string. There are additional concentrations and volumes but not enough slots for all of them
+    concentration: 
       has_unit: mM
       has_numeric_value: 0.05
     volume:
       has_unit: mL
-      has_numeric_value: 24
+      has_numeric_value: 24 
+    sample_volume:
+      has_unit: mL
+      has_numeric_value: 5
     container_type: V-bottom conical tubes
     container_volume:
       has_unit: mL
@@ -36,7 +39,9 @@ sample_ops_set:
     duration:
       has_unit: minutes
       has_numerical_value: 20
-    value: 4000 #the unit is RPM but there's not anywhere to put that in the current schema
+    value: 
+      has_unit: RPM
+      has_numeric_value: 4000
     container_type: V-bottom conical tube
     container_volume:
       has_unit: mL
@@ -92,8 +97,18 @@ sample_ops_set:
     container_volume:
       has_unit: mL
       has_numeric_value: 20
-    conditioning: #this is listed as a float but it seems like it shouldn't be
-    conditioning_volume: #This is listed as a container type which seems wrong as well
+    conditioning: 
+      - solvent: Potassium Sulfate
+        concentration:
+          has_numeric_value: 0.05
+          has_unit: mM
+        volume:
+          has_numeric_value: 50
+          has unit: mL
+      - solvent: ultrapure water
+        volume:
+          has_numeric_value: 50
+          has_unit: mL
     operation_type: 'nmdc:FiltrationActivity'
   - id: microbiomas:7
     source_mat_id: microbiomass:6
@@ -199,7 +214,9 @@ sample_ops_set:
     duration:
       has_unit: minutes
       has_numerical_value: 20
-    value: 4000 #the unit is RPM but there's not anywhere to put that in the current schema
+    value: 
+      has_numeric_value: 4000
+      has_unit: RPM
     container_type: V-bottom conical tube
     container_volume:
       has_unit: mL
@@ -219,8 +236,18 @@ sample_ops_set:
     container_volume:
       has_unit: mL
       has_numeric_value: 20
-    conditioning: #this is listed as a float but it seems like it shouldn't be
-    conditioning_volume: #This is listed as a container type which seems wrong as well
+    conditioning: 
+      - solvent: Potassium Sulfate
+        concentration:
+          has_numeric_value: 0.05
+          has_unit: mM
+        volume:
+          has_numeric_value: 50
+          has unit: mL
+      - solvent: ultrapure water
+        volume:
+          has_numeric_value: 50
+          has_unit: mL
     operation_type: 'nmdc:FiltrationActivity'
   - id: microbiomass:17
     source_mat_id: microbiomass:16

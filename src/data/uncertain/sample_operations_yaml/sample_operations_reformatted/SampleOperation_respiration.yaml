@@ -4,7 +4,8 @@ sample_ops_set:
     sieve_size:
       has_unit: mm
       has_numeric_value: 10
-    #no slot for screen_size. One should be added
+    screen_size:
+      has_numeric_value: 10
     operation_type: 'nmdc:SievingActivity'
   - id: sresp:2
     source_mat_id: sresp:1

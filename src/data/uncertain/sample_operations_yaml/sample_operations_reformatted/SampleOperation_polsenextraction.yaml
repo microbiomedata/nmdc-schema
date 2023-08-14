@@ -36,12 +36,14 @@ sample_ops_set:
     duration:
       has_unit: minutes
       has_numeric_value: 8
-    value: 4000 #no slot for unit, RPM
+    value:
+      has_numeric_value: 4000
+      has_unit: RPM
     operation_type: 'nmdc:PhaseSeparationActivity'
   - id: polsen:3
     volume:
       has_unit: mL
-      has_numeric_value: uknown
+      has_numeric_value: unknown
     container_type: centrifuge tube
     container_volume:
       has_unit: mL

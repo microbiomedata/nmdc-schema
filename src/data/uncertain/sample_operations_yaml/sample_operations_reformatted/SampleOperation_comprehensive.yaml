@@ -14,7 +14,7 @@ sample_ops_set:
     extractant: chloroform
     concentration:
       has_unit: v/v
-      has_numeric_value: 2/1
+      has_raw_value: 2/1
     volume:
       has_unit: ÂµL
       has_numeric_value: 600
@@ -94,8 +94,10 @@ sample_ops_set:
     operation_type: 'nmdc:ReactionActivity'
   - id: comp:12
     source_mat_id: comp:11
-    #should be a mixing activity
-    #not sure what frequency slot is
+    duration: 
+      has_raw_value: "1"
+      has_numeric_value: 1
+    operation_type: 'nmdc:MixingActivity'
   - id: comp:13
     source_mat_id: comp:12
     duration:
@@ -105,9 +107,9 @@ sample_ops_set:
     material_component_separation: vacuum
     operation_type: 'nmdc:PhaseSeparationActivity'
   - id: comp:14
-  #not sure what to do with 'syringe' slot. Nothing maps to that
     source_mat_id: comp:13
     extractant: MSTFA #there's a reagent piece of information that I don't know where to put
+    syringe: Hamilton
     concentration: 
       has_unit: percent
       has_numeric_value: 1
@@ -136,7 +138,10 @@ sample_ops_set:
     operation_type: 'nmdc:ReactionActivity'
   - id: comp:16
     source_mat_id: comp:15
-    #another frequency slot
+    duration: 
+      has_raw_value: "1"
+      has_numeric_value: 1
+    operation_type: 'nmdc:MixingActivity'
   - id: comp:17
     source_mat_id: comp:16
     material_component_separation: vacuum
@@ -145,12 +150,14 @@ sample_ops_set:
       has_numeric_value: 5
     value: 2000
     operation_type: 'nmdc:PhaseSeparationActivity'
-  - id: comp:18 #not sure what to do with the container and source_container
+  - id: comp:18 
     source_mat_id: comp:17
-
-
-
-
-
-
-    
+    source_container_type: auto sampler vial
+    source_container_size:
+      has_numeric_value: 1.5
+      has_unit: mL
+    container_type: glass insert vial
+    container_size:
+      has_numeric_value: 300
+      has_unit: ÂµL
+    operation_type: 'nmdc:TransferActivity'

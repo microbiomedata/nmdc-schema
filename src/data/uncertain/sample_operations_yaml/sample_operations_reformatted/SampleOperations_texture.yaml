@@ -1,0 +1,73 @@
+
+sample_ops_set:
+  - id: texture:1
+    source_mat_id: soil:1
+    sieve_size:
+      has_unit: mm
+      has_numeric_value: 2
+    screen_size:
+      has_numeric_value: 10
+    operation_type: "nmdc:SievingActivity"
+  - id: texture:2
+    source_mat_id: texture:1
+    starting_amount: 
+      has_unit: grams
+      has_numeric_value: 50
+    container_type: "HDPE bottle"
+    container_size:
+      has_unit: mL
+      has_numeric_value: 500 
+    operation_type: "nmdc:SubsampleActivity"
+  - id: texture:3
+    source_mat_id: texture:2
+    reaction_type: oxidation
+    reactant: deionized water #not sure this is right
+    reagent:
+      reagent_type: peroxide
+      volume:
+        has_numeric_value: 5
+        has_unit: mL
+      concentration:
+        has_numeric_value: 30
+        has_unit: percentile
+    volume:
+      has_numeric_value: 50
+      has_unit: mL
+    duration:
+      has_numeric_value: 12
+      has_unit: hours
+    container_type: HDPE bottle
+    container_size:
+      has_numeric_value: 500
+      has_unit: mL
+    operation_type: "nmdc:ChemicalReactionActivity"
+  - id: texture:4
+    source_mat_id: texture:3
+    reaction_type: emulsification
+    reactant: deionized water #not sure this is right
+    reagent:
+      reagent_type: sodium hexametaphosphate
+      volume:
+        has_numeric_value: 5
+        has_unit: mL
+      concentration:
+        has_numeric_value: 10
+        has_unit: percentile
+    volume:
+      has_numeric_value: 50
+      has_unit: mL
+    duration:
+      has_numeric_value: 12
+      has_unit: hours
+    container_type: HDPE bottle
+    container_size:
+      has_numeric_value: 500
+      has_unit: mL
+    mixing:
+      device_type: Agitation plunger
+      activity_time_id:
+        has_numeric_value: 12
+        has_unit: hours
+      activity_speed_id:
+        has_raw_value: low
+    operation_type: "nmdc:ChemicalReactionActivity"
