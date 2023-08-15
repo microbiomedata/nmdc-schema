@@ -101,6 +101,7 @@ classes:
       - dna_concentration
       - external_database_identifiers
       - nucleic_acid_concentration
+      - type
     slot_usage:
       id:
         required: true
@@ -142,6 +143,7 @@ classes:
       - protocol_link
       - start_date
       - end_date
+      - type
       # - participating_agent
 
   OntologyClass:
