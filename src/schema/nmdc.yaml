@@ -160,6 +160,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+      type:
+        pattern: "nmdc:Pooling"
 
   Extraction:
     is_a: PlannedProcess # from core.yaml
@@ -180,6 +182,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+      type:
+        pattern: "nmdc:Extraction"
 
   Protocol:
     slots:
@@ -214,6 +218,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+      type:
+        pattern: "nmdc:LibraryPreparation"
 
   FieldResearchSite:
     aliases:
