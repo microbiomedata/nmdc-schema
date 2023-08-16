@@ -3,12 +3,12 @@ TIMED_RUN=time $(RUN)
 
 JENA_APPS_DIR=/usr/local/bin
 
-NMDC_DATA_FILE=neon_jgi_soil_metadata_2023-08-15-04-36_retyped.json # library preparation instances had ...procsm... ids
+NMDC_DATA_FILE=local-sparql/neon_jgi_soil_metadata_2023-08-15-04-36_retyped.json # library preparation instances had ...procsm... ids
 
-SCHEMA_FILE=../nmdc_schema/nmdc_materialized_patterns.yaml
+SCHEMA_FILE=nmdc_schema/nmdc_materialized_patterns.yaml
 SCHEMA_CLASS=Database
 
-SPARQL_QUERY_FILE=extraction-input-type-counts.rq
+SPARQL_QUERY_FILE=local-sparql/extraction-input-type-counts.rq
 
 .PHONY: sparql-all rdf-clean
 
