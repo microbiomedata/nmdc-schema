@@ -2241,6 +2241,20 @@ slots:
   funding_sources:
     multivalued: true
     range: string
+    description: >-
+      A list of organizations, along with the award numbers, that underwrite financial support for projects of 
+      a particular type. Typically, they process applications and award funds to the chosen qualified 
+      applicants.
+    pattern: ^.{1,150}$
+    comments:
+      - Include only the name of the funding organization and the award or contract number.
+    examples:
+      - value: National Sciences Foundation Dimensions of Biodiversity (award no. 1342701)
+      - value: >-
+          U.S. Department of Energy, Office of Science, Office of Biological and Environmental Research 
+          (BER) under contract DE-AC05-00OR2275
+    close_mappings:
+      - NCIT:C39409
   applied_role:
     domain: CreditAssociation
     range: credit enum
