@@ -1,0 +1,10 @@
+PREFIX  nmdc: <https://w3id.org/nmdc/>
+
+SELECT  ?inptype (COUNT(?e) AS ?proccount)
+WHERE
+  { ?e  a               nmdc:Extraction ;
+        nmdc:has_input  ?i .
+    ?i  a               ?inptype
+  }
+GROUP BY ?inptype
+ORDER BY DESC(?proccount)
