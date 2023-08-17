@@ -7108,10 +7108,6 @@
             "additionalProperties": false,
             "description": "A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.",
             "properties": {
-                "abstract": {
-                    "description": "The abstract of manuscript/grant associated with the entity; i.e., a summary of the resource.",
-                    "type": "string"
-                },
                 "alternative_descriptions": {
                     "description": "A list of alternative descriptions for the entity. The distinction between description and alternative descriptions is application-specific.",
                     "items": {
@@ -7142,7 +7138,7 @@
                     "type": "array"
                 },
                 "description": {
-                    "description": "A brief summary that details the study you're submitted to NMDC",
+                    "description": "A brief, link-free summary of a Study",
                     "type": "string"
                 },
                 "doi": {
@@ -7181,7 +7177,9 @@
                     "type": "array"
                 },
                 "funding_sources": {
+                    "description": "A list of organizations, along with the award numbers, that underwrite financial support for projects of  a particular type. Typically, they process applications and award funds to the chosen qualified  applicants.",
                     "items": {
+                        "pattern": "^.{1,200}$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7953,5 +7951,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "v7.7.2"
+    "version": "v7.7.6"
 }
