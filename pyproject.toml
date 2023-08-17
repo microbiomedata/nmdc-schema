@@ -8,7 +8,7 @@ license = "MIT"
 name = "nmdc_schema"
 readme = "README.md"
 repository = "https://github.com/microbiomedata/nmdc-schema"
-version = "7.7.2"
+version = "7.7.4"
 authors = [
     "Bill Duncan <wdduncan@gmail.com>",
     "Chris Mungall <cjmungall@lbl.gov>",
@@ -22,6 +22,7 @@ python = "^3.9"
 # see https://github.com/microbiomedata/nmdc-schema/issues/820
 exhaustion-check = "^0.1.1"
 gen-pop-linkml2sheets = "^0.1.8"
+rdflib = "^6.2.0"
 
 linkml = "^1.5.6"
 linkml-runtime = "^1.5.4"

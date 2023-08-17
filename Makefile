@@ -91,12 +91,12 @@ gen-project: $(PYMODEL)
 		--exclude excel \
 		--exclude graphql \
 		--exclude jsonld \
-		--exclude jsonldcontext \
 		--exclude markdown \
 		--exclude proto \
 		--exclude shacl \
 		--exclude shex \
 		--exclude sqlddl \
+		--include jsonldcontext \
 		--include jsonschema \
 		--include owl \
 		--include prefixmap \

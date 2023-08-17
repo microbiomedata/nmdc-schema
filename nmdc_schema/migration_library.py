@@ -77,7 +77,7 @@ class NmdcDatabase:
             # xc =
 
             # x = rdf_dumper.dumps(element=instance, contexts=self.context_obj)
-            x = rdf_dumper.as_rdf_graph(element=instance, contexts="../nmdc_schema/nmdc_context.jsonld")
+            x = rdf_dumper.as_rdf_graph(element=instance, contexts="../project/jsonschema/nmdc.schema.json")
             print(x)
 
     def iterate_over_database_sets(self):
