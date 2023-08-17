@@ -1344,7 +1344,6 @@ classes:
       ## Related IDs
       #- insdc_bioproject_identifiers
       #- insdc_sra_ena_study_identifiers
-      - abstract
       - alternative_descriptions
       - alternative_names
       - alternative_titles
