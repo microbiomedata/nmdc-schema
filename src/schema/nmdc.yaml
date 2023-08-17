@@ -1040,6 +1040,7 @@ classes:
         range: float
         comments:
           - All elevations must be reported in meters. Provide the numerical portion only.
+          - Please use https://www.advancedconverter.com/map-tools/find-altitude-by-coordinates, if needed, to help estimate the elevation based on latitude and longitude coordinates.
         examples:
           value: 100
       oxy_stat_samp:
