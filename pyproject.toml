@@ -22,6 +22,7 @@ python = "^3.9"
 # see https://github.com/microbiomedata/nmdc-schema/issues/820
 exhaustion-check = "^0.1.1"
 gen-pop-linkml2sheets = "^0.1.8"
+rdflib = "^6.3.0"
 
 linkml = "^1.5.6"
 linkml-runtime = "^1.5.4"
