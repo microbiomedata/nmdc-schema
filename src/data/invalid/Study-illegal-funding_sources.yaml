@@ -57,6 +57,6 @@ relevant_protocols:
   - any string 1
   - any string 2
 funding_sources:
-  - This is an example of a funding source with too long of a description. Funding sources should be no more than 150 characters. Any longer is unnecessary and excessive.
+  - This is an example of a funding source with too long of a description. Funding sources should be no more than 150 characters. Any longer is unnecessary and excessive. Its very very very very very very very very very long.
   - any string 2
 
