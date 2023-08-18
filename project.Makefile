@@ -288,8 +288,9 @@ MIXS_YAML_FROM_SHEETS_AND_FRIENDS = src/schema/mixs.yaml
 
 SCHEMA_FILE = $(MIXS_YAML_FROM_SHEETS_AND_FRIENDS)
 
-check-jsonschema: nmdc_schema/nmdc_materialized_patterns.schema.json
-	$(RUN) check-jsonschema --schemafile $< src/data/invalid/Database-Biosample-invalid_range.yaml
+# switch to linkml-validate and or run-linkml-examples
+#check-jsonschema: nmdc_schema/nmdc_materialized_patterns.schema.json
+#	$(RUN) check-jsonschema --schemafile $< src/data/invalid/Database-Biosample-invalid_range.yaml
 
 
 # Define a variable for the directory containing the YAML data files
@@ -298,10 +299,11 @@ YAML_DIR_VALID := src/data/valid/
 # Define a variable for the list of YAML data files
 YAML_DATABASE_FILES_VALID := $(wildcard $(YAML_DIR_VALID)Database*.yaml)
 
-# Define a new target that depends on all YAML data files and runs check-jsonschema on each file
-jsonschema-check-all-valid-databases: $(YAML_DATABASE_FILES_VALID)
-	$(foreach yaml_file,$^,echo $(yaml_file) ; $(RUN) check-jsonschema \
-		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $(yaml_file);)
+# switch to linkml-validate and or run-linkml-examples
+## Define a new target that depends on all YAML data files and runs check-jsonschema on each file
+#jsonschema-check-all-valid-databases: $(YAML_DATABASE_FILES_VALID)
+#	$(foreach yaml_file,$^,echo $(yaml_file) ; $(RUN) check-jsonschema \
+#		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $(yaml_file);)
 
 
 local/usage_template.tsv: src/schema/nmdc.yaml
@@ -348,10 +350,10 @@ linkml-validate-mongodb \
 local/selected_mongodb_contents.json.gz
 
 dump-validate-report-convert-mongodb: mongodb-cleanup \
-local/selected_mongodb_contents.yaml \
-local/selected_mongodb_contents.yaml.gz \
-local/selected_mongodb_contents.ttl \
-local/selected_mongodb_contents.ttl.gz
+local/selected_mongodb_contents_fully_repaired.yaml \
+local/selected_mongodb_contents_fully_repaired.yaml.gz \
+local/selected_mongodb_contents_fully_repaired.ttl \
+local/selected_mongodb_contents_fully_repaired.ttl.gz
 
 local/selected_mongodb_contents_fully_repaired.json:
 	# approximately 2 minute
@@ -431,10 +433,11 @@ mongodb-cleanup:
 local/mongodb-collection-report.txt:
 	$(RUN) mongodb_exporter 2>&1 | tee $@
 
-local/selected_mongodb_contents_jsonschema_check.txt: nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json \
-local/selected_mongodb_contents.json
-	# < 5 minutes ?
-	$(RUN) check-jsonschema --schemafile  $^ | tee $@
+# switch to linkml-validate and or run-linkml-examples
+#local/selected_mongodb_contents_jsonschema_check.txt: nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json \
+#local/selected_mongodb_contents.json
+#	# < 5 minutes ?
+#	$(RUN) check-jsonschema --schemafile  $^ | tee $@
 
 linkml-validate-mongodb: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/selected_mongodb_contents.json
 	# < 5 minutes ?
@@ -470,8 +473,9 @@ local/selected_mongodb_contents_fully_repaired.ttl.gz: local/selected_mongodb_co
 local/envo.db:
 	$(RUN) semsql download envo -o $@
 
-check_neon_vs_jsonschema: nmdc_schema/nmdc_materialized_patterns.schema.json local/neon_in_nmdc.yaml
-	$(RUN) check-jsonschema --schemafile $^
+# switch to linkml-validate and or run-linkml-examples
+#check_neon_vs_jsonschema: nmdc_schema/nmdc_materialized_patterns.schema.json local/neon_in_nmdc.yaml
+#	$(RUN) check-jsonschema --schemafile $^
 
 validate_neon: nmdc_schema/nmdc_materialized_patterns.yaml local/neon_in_nmdc.yaml
 	$(RUN)  linkml-validate --schema $^

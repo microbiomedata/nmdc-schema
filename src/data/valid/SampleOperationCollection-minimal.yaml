@@ -1,0 +1,6 @@
+entries:
+  - id: example:123
+    name: abc
+    description: abc
+#    has_input: abc
+#    has_output: abc

@@ -85,7 +85,7 @@ deploy: gendoc mkd-gh-deploy
 #gen-examples:
 #	cp src/data/examples/* $(EXAMPLEDIR)
 
-gen-project: $(PYMODEL)
+gen-project: $(PYMODEL) project/nmdc_materialized_patterns.yaml
 	# added inclusion/exclusion parameters here, in test rule, and in project directories constant
 	$(RUN) gen-project \
 		--exclude excel \
@@ -229,14 +229,17 @@ clean:
 
 include project.Makefile
 
-project/nmdc_schema_merged.yaml:
+project:
+	mkdir -p $@
+
+project/nmdc_schema_merged.yaml: project
 	$(RUN) gen-linkml \
 		--format yaml \
 		--no-materialize-attributes \
 		--no-materialize-patterns \
 		--output $@ $(SOURCE_SCHEMA_PATH)
 
-project/nmdc_materialized_patterns.yaml:
+project/nmdc_materialized_patterns.yaml: project
 	$(RUN) gen-linkml \
 		--format yaml \
 		--materialize-patterns \

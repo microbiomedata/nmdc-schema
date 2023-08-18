@@ -2213,7 +2213,6 @@ biosample_set:
 ## Study-exhaustive
 ### Input
 ```yaml
-abstract: Nothing was studied.
 alternative_descriptions:
 - any string 1
 - any string 2
@@ -3971,6 +3970,20 @@ name: mapping_stats.txt
 type: nmdc:DataObject
 
 ```
+## Database-multi-id-study
+### Input
+```yaml
+study_set:
+- gnps_task_identifiers:
+  - gnps.task:4b848c342a4f4abc871bdf8a09a60807
+  - gnps.task:51cc733a80ed41139ecdd1bedf3c01af
+  - gnps.task:8062948726c543dba53ec58c0f1ebb25
+  - gnps.task:f8efbde4cc154db6a4cf269072d42d40
+  id: nmdc:sty-11-r2h77870
+  jgi_portal_study_identifiers:
+  - jgi.proposal:507130
+
+```
 ## DataObject-2
 ### Input
 ```yaml
@@ -4759,6 +4772,71 @@ part_of:
 - gold:Gs0110115
 
 ```
+## Study-illegal-funding_sources
+### Input
+```yaml
+abstract: Nothing was studied.
+alternative_descriptions:
+- any string 1
+- any string 2
+alternative_names:
+- any string 1
+- any string 2
+alternative_titles:
+- any string 1
+- any string 2
+description: see also name, title, objective, various alternatives
+ecosystem: unconstrained text. should be validated against the controlled vocabulary,
+  by the sample's environmental package. would also be nice to align the CV with MIxS
+  environmental triads
+ecosystem_category: unconstrained text
+ecosystem_subtype: unconstrained text
+ecosystem_type: unconstrained text
+ess_dive_datasets:
+- any string 1
+- any string 2
+funding_sources:
+- This is an example of a funding source with too long of a description. Funding sources
+  should be no more than 150 characters. Any longer is unnecessary and excessive.
+  Its very very very very very very very very very long.
+- any string 2
+gold_study_identifiers:
+- GOLD:Gs12345
+- GOLD:Gs90909
+id: nmdc:sty-11-ab
+mgnify_project_identifiers:
+- mgnify.proj:ABC123
+name: see also description, title, objective, various alternatives
+objective: This record, an instance of class Study from the nmdc-schema was had authored,
+  so that the NMDC team would have at least one instance, using all slots, with a
+  mixture of reasonable values and minimally compliant values.
+principal_investigator:
+  email: jcventer@jcvi.org
+  has_raw_value: Craig Venter
+  name: J. Craig Venter
+  orcid: ORCID:0000-0002-7086-765X
+  profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
+  was_generated_by: nmdc:any_string_1
+  websites:
+  - https://www.jcvi.org/
+  - https://www.jcvi.org/about/j-craig-venter
+publications:
+- any string 1
+- any string 2
+related_identifiers: any string R1
+relevant_protocols:
+- any string 1
+- any string 2
+specific_ecosystem: unconstrained text
+title: Sample Exhaustive Biosample instance. Although all of these values should pass
+  validation, that does not mean that any Biosample of any type would necessarily
+  have this particular combination of values.
+type: any string
+websites:
+- https://w3id.org/nmdc
+- https://w3id.org/linkml
+
+```
 ## Biosample-invalid-embargoed
 ### Input
 ```yaml
@@ -5506,6 +5584,93 @@ biosample_set:
   id: nmdc:bsm-99-dtTMNb
   part_of:
   - gold:Gs0110115
+
+```
+## Study-include-abstract
+### Input
+```yaml
+study_set:
+- abstract: This study is about a thing.
+  alternative_descriptions:
+  - any string 1
+  - any string 2
+  alternative_identifiers:
+  - generic:abc1
+  alternative_names:
+  - any string 1
+  - any string 2
+  alternative_titles:
+  - any string 1
+  - any string 2
+  description: see also name, title, objective, various alternatives
+  ecosystem: unconstrained text. should be validated against the controlled vocabulary,
+    by the sample's environmental package. would also be nice to align the CV with
+    MIxS environmental triads
+  ecosystem_category: unconstrained text
+  ecosystem_subtype: unconstrained text
+  ecosystem_type: unconstrained text
+  ess_dive_datasets:
+  - any string 1
+  - any string 2
+  funding_sources:
+  - any string 1
+  - any string 2
+  gold_study_identifiers:
+  - GOLD:Gs12345
+  - GOLD:Gs90909
+  has_credit_associations:
+  - applied_role: Funding acquisition
+    applied_roles:
+    - Supervision
+    - Conceptualization
+    applies_to_person:
+      email: jcventer@jcvi.org
+      has_raw_value: Craig Venter
+      name: J. Craig Venter
+      orcid: ORCID:0000-0002-7086-765X
+      profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
+      was_generated_by: nmdc:any_string_1
+      websites:
+      - https://www.jcvi.org/
+      - https://www.jcvi.org/about/j-craig-venter
+    type: any string
+  - applied_roles:
+    - Investigation
+    - Supervision
+    applies_to_person:
+      name: Tanja Davidsen
+  id: nmdc:sty-11-ab
+  mgnify_project_identifiers:
+  - mgnify.proj:ABC123
+  name: see also description, title, objective, various alternatives
+  objective: This record, an instance of class Study from the nmdc-schema was had
+    authored, so that the NMDC team would have at least one instance, using all slots,
+    with a mixture of reasonable values and minimally compliant values.
+  principal_investigator:
+    email: jcventer@jcvi.org
+    has_raw_value: Craig Venter
+    name: J. Craig Venter
+    orcid: ORCID:0000-0002-7086-765X
+    profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
+    was_generated_by: nmdc:any_string_1
+    websites:
+    - https://www.jcvi.org/
+    - https://www.jcvi.org/about/j-craig-venter
+  publications:
+  - any string 1
+  - any string 2
+  related_identifiers: any string R1
+  relevant_protocols:
+  - any string 1
+  - any string 2
+  specific_ecosystem: unconstrained text
+  title: Sample Exhaustive Biosample instance. Although all of these values should
+    pass validation, that does not mean that any Biosample of any type would necessarily
+    have this particular combination of values.
+  type: any string
+  websites:
+  - https://w3id.org/nmdc
+  - https://w3id.org/linkml
 
 ```
 ## Database-invalid-functional-annotations

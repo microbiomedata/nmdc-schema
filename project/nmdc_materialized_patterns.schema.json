@@ -46,6 +46,75 @@
             "title": "AnalysisTypeEnum",
             "type": "string"
         },
+        "AnalyteStorage": {
+            "additionalProperties": false,
+            "description": "Information about storing a sample including volume, temperature, and the storage container.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "analyte_volume": {
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "The volume of an analyte used, stored, or prepared."
+                },
+                "container_type": {
+                    "description": "A type of container. i.e. test tube, falcon tube, etc.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": "string"
+                },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": "string"
+                },
+                "has_input": {
+                    "description": "An input to a process.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_output": {
+                    "description": "An output biosample to a processing step",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": "string"
+                },
+                "protocol_link": {
+                    "$ref": "#/$defs/Protocol"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": "string"
+                },
+                "temp": {
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "A temperature, given in Fahrenheit or Celsius."
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "AnalyteStorage",
+            "type": "object"
+        },
         "AnalyticalSample": {
             "additionalProperties": false,
             "description": "",
@@ -3098,14 +3167,6 @@
             "title": "CollectingBiosamplesFromSite",
             "type": "object"
         },
-        "ContainerTypeEnum": {
-            "description": "",
-            "enum": [
-                "screw_top_conical"
-            ],
-            "title": "ContainerTypeEnum",
-            "type": "string"
-        },
         "ControlledIdentifiedTermValue": {
             "additionalProperties": false,
             "description": "A controlled term or class from an ontology, requiring the presence of term with an id",
@@ -3335,12 +3396,6 @@
                     "description": "TODO",
                     "type": "string"
                 },
-                "dissolving_activity_set": {
-                    "items": {
-                        "$ref": "#/$defs/DissolvingActivity"
-                    },
-                    "type": "array"
-                },
                 "etl_software_version": {
                     "description": "TODO",
                     "type": "string"
@@ -3383,18 +3438,6 @@
                     "description": "This property links a database object to the set of MAGs analysis activities.",
                     "items": {
                         "$ref": "#/$defs/MagsAnalysisActivity"
-                    },
-                    "type": "array"
-                },
-                "material_sample_set": {
-                    "items": {
-                        "$ref": "#/$defs/MaterialSample"
-                    },
-                    "type": "array"
-                },
-                "material_sampling_activity_set": {
-                    "items": {
-                        "$ref": "#/$defs/MaterialSamplingActivity"
                     },
                     "type": "array"
                 },
@@ -3467,12 +3510,6 @@
                     },
                     "type": "array"
                 },
-                "reaction_activity_set": {
-                    "items": {
-                        "$ref": "#/$defs/ReactionActivity"
-                    },
-                    "type": "array"
-                },
                 "read_based_taxonomy_analysis_activity_set": {
                     "description": "This property links a database object to the set of read based analysis activities.",
                     "items": {
@@ -3520,41 +3557,6 @@
             ],
             "title": "DeposEnvEnum",
             "type": "string"
-        },
-        "DeviceTypeEnum": {
-            "description": "",
-            "enum": [
-                "orbital_shaker",
-                "thermomixer"
-            ],
-            "title": "DeviceTypeEnum",
-            "type": "string"
-        },
-        "DissolvingActivity": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "dissolution_aided_by": {
-                    "$ref": "#/$defs/LabDevice"
-                },
-                "dissolution_reagent": {
-                    "$ref": "#/$defs/SolventEnum"
-                },
-                "dissolution_volume": {
-                    "$ref": "#/$defs/QuantityValue"
-                },
-                "dissolved_in": {
-                    "$ref": "#/$defs/MaterialContainer"
-                },
-                "material_input": {
-                    "type": "string"
-                },
-                "material_output": {
-                    "type": "string"
-                }
-            },
-            "title": "DissolvingActivity",
-            "type": "object"
         },
         "DnaSampleFormatEnum": {
             "description": "",
@@ -4034,7 +4036,7 @@
                 "Crispr Terms",
                 "Product Names",
                 "Gene Phylogeny tsv",
-                "Lineage sdb",
+                "Scaffold Lineage tsv",
                 "Clusters of Orthologous Groups (COG) Annotation GFF",
                 "KO_EC Annotation GFF",
                 "CATH FunFams (Functional Families) Annotation GFF",
@@ -4512,26 +4514,6 @@
             "title": "JgiContTypeEnum",
             "type": "string"
         },
-        "LabDevice": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "activity_speed": {
-                    "$ref": "#/$defs/QuantityValue"
-                },
-                "activity_temperature": {
-                    "$ref": "#/$defs/QuantityValue"
-                },
-                "activity_time": {
-                    "$ref": "#/$defs/QuantityValue"
-                },
-                "device_type": {
-                    "$ref": "#/$defs/DeviceTypeEnum"
-                }
-            },
-            "title": "LabDevice",
-            "type": "object"
-        },
         "LibraryPreparation": {
             "additionalProperties": false,
             "description": "",
@@ -4810,72 +4792,6 @@
                 "ended_at_time"
             ],
             "title": "MagsAnalysisActivity",
-            "type": "object"
-        },
-        "MaterialContainer": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "container_size": {
-                    "$ref": "#/$defs/QuantityValue"
-                },
-                "container_type": {
-                    "$ref": "#/$defs/ContainerTypeEnum"
-                }
-            },
-            "title": "MaterialContainer",
-            "type": "object"
-        },
-        "MaterialSample": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "alternative_identifiers": {
-                    "description": "A list of alternative identifiers for the entity.",
-                    "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "description": {
-                    "description": "a human-readable description of a thing",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(nmdc):matsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "A human readable label for an entity",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id"
-            ],
-            "title": "MaterialSample",
-            "type": "object"
-        },
-        "MaterialSamplingActivity": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "amount_collected": {
-                    "$ref": "#/$defs/QuantityValue"
-                },
-                "collected_into": {
-                    "$ref": "#/$defs/MaterialContainer"
-                },
-                "material_output": {
-                    "type": "string"
-                },
-                "sampling_method": {
-                    "$ref": "#/$defs/SamplingMethodEnum"
-                }
-            },
-            "title": "MaterialSamplingActivity",
             "type": "object"
         },
         "MechStrucEnum": {
@@ -6511,29 +6427,6 @@
             "title": "Reaction",
             "type": "object"
         },
-        "ReactionActivity": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "material_input": {
-                    "type": "string"
-                },
-                "material_output": {
-                    "type": "string"
-                },
-                "reaction_aided_by": {
-                    "$ref": "#/$defs/LabDevice"
-                },
-                "reaction_temperature": {
-                    "type": "string"
-                },
-                "reaction_time": {
-                    "$ref": "#/$defs/QuantityValue"
-                }
-            },
-            "title": "ReactionActivity",
-            "type": "object"
-        },
         "ReactionParticipant": {
             "additionalProperties": false,
             "description": "Instances of this link a reaction to a chemical entity participant",
@@ -6926,6 +6819,77 @@
             "title": "SampWeatherEnum",
             "type": "string"
         },
+        "SampleOperation": {
+            "additionalProperties": false,
+            "description": "A planned process in which a metabolimiccs sample is either the input or output",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": "string"
+                },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": "string"
+                },
+                "has_input": {
+                    "description": "An input to a process.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_output": {
+                    "description": "An output biosample to a processing step",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": "string"
+                },
+                "protocol_link": {
+                    "$ref": "#/$defs/Protocol"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "SampleOperation",
+            "type": "object"
+        },
+        "SampleOperationCollection": {
+            "additionalProperties": false,
+            "description": "A holder for SampleOperation objects",
+            "properties": {
+                "entries": {
+                    "items": {
+                        "$ref": "#/$defs/SampleOperation"
+                    },
+                    "type": "array"
+                }
+            },
+            "title": "SampleOperationCollection",
+            "type": "object"
+        },
         "SampleTypeEnum": {
             "description": "",
             "enum": [
@@ -6933,14 +6897,6 @@
                 "water_extract_soil"
             ],
             "title": "SampleTypeEnum",
-            "type": "string"
-        },
-        "SamplingMethodEnum": {
-            "description": "",
-            "enum": [
-                "weighing"
-            ],
-            "title": "SamplingMethodEnum",
             "type": "string"
         },
         "SeasonUseEnum": {
@@ -7009,16 +6965,6 @@
                 "M horizon"
             ],
             "title": "SoilHorizonEnum",
-            "type": "string"
-        },
-        "SolventEnum": {
-            "description": "",
-            "enum": [
-                "deionized_water",
-                "methanol",
-                "chloroform"
-            ],
-            "title": "SolventEnum",
             "type": "string"
         },
         "SpecificEnum": {
@@ -7108,10 +7054,6 @@
             "additionalProperties": false,
             "description": "A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.",
             "properties": {
-                "abstract": {
-                    "description": "The abstract of manuscript/grant associated with the entity; i.e., a summary of the resource.",
-                    "type": "string"
-                },
                 "alternative_descriptions": {
                     "description": "A list of alternative descriptions for the entity. The distinction between description and alternative descriptions is application-specific.",
                     "items": {
@@ -7142,7 +7084,7 @@
                     "type": "array"
                 },
                 "description": {
-                    "description": "A brief summary that details the study you're submitted to NMDC",
+                    "description": "A brief, link-free summary of a Study",
                     "type": "string"
                 },
                 "doi": {
@@ -7181,7 +7123,9 @@
                     "type": "array"
                 },
                 "funding_sources": {
+                    "description": "A list of organizations, along with the award numbers, that underwrite financial support for projects of  a particular type. Typically, they process applications and award funds to the chosen qualified  applicants.",
                     "items": {
+                        "pattern": "^.{1,200}$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7218,6 +7162,14 @@
                     "description": "Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.",
                     "items": {
                         "pattern": "^bioproject:PRJ[DEN][A-Z][0-9]+$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "jgi_portal_study_identifiers": {
+                    "description": "identifiers that link a NMDC study to a web-based report about a JGI sequencing project",
+                    "items": {
+                        "pattern": "^jgi.proposal:\\d+$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7783,12 +7735,6 @@
             "description": "TODO",
             "type": "string"
         },
-        "dissolving_activity_set": {
-            "items": {
-                "$ref": "#/$defs/DissolvingActivity"
-            },
-            "type": "array"
-        },
         "etl_software_version": {
             "description": "TODO",
             "type": "string"
@@ -7831,18 +7777,6 @@
             "description": "This property links a database object to the set of MAGs analysis activities.",
             "items": {
                 "$ref": "#/$defs/MagsAnalysisActivity"
-            },
-            "type": "array"
-        },
-        "material_sample_set": {
-            "items": {
-                "$ref": "#/$defs/MaterialSample"
-            },
-            "type": "array"
-        },
-        "material_sampling_activity_set": {
-            "items": {
-                "$ref": "#/$defs/MaterialSamplingActivity"
             },
             "type": "array"
         },
@@ -7915,12 +7849,6 @@
             },
             "type": "array"
         },
-        "reaction_activity_set": {
-            "items": {
-                "$ref": "#/$defs/ReactionActivity"
-            },
-            "type": "array"
-        },
         "read_based_taxonomy_analysis_activity_set": {
             "description": "This property links a database object to the set of read based analysis activities.",
             "items": {
@@ -7945,5 +7873,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "v7.7.1"
+    "version": "v7.7.6"
 }

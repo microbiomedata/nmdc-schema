@@ -43,7 +43,6 @@ alternative_descriptions:
 alternative_names:
   - any string 1
   - any string 2
-abstract: Nothing was studied.
 objective: This record, an instance of class Study from the nmdc-schema was had authored,
   so that the NMDC team would have at least one instance, using all slots, with a
   mixture of reasonable values and minimally compliant values.
