@@ -33,7 +33,7 @@ imports:
   - portal/jgi_metatranscriptomics
   - portal/mixs_inspired
   - portal/sample_id
-  - sample_operations
+  #  - sample_operations
   #  - sample_prep # MAM made this before Anastasiya and James made sample_operations
   - workflow_execution_activity
 
