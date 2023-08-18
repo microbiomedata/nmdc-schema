@@ -595,6 +595,7 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepti
 
 mongo_as_unvalidated_nmdc_database.yaml: # 15 minutes / 900 seconds
 	time $(RUN) pure_export \
+		--selected-collections biosample_set \
 		--output-yaml $@ \
 		--max-docs-per-coll 3 \
 		--page-size 1_000
