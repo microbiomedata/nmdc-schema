@@ -94,6 +94,21 @@ subsets:
       of processes or workflows.
 
 classes:
+
+# functional_annotation_agg
+#  {
+  #    "_id" : ObjectId("61e330026bbc2d53c15fd3c3"),
+  #    "metagenome_annotation_id" : "nmdc:8253bcdcd0387177ff895c38a047c719",
+  #    "gene_function_id" : "KEGG.ORTHOLOGY:K00627",
+  #    "count" : NumberInt(120)
+  #}
+
+  FunctionalAnnotationAggMember:
+    slots:
+      - metagenome_annotation_id
+      - gene_function_id
+      - count
+
   Database:
     tree_root: true
     aliases:
@@ -104,6 +119,7 @@ classes:
       translated to JSON-Schema this is the 'root' object. It should contain pointers
       to other objects of interest
     slots:
+      - functional_annotation_agg
       - library_preparation_set
       - processed_sample_set
       - extraction_set
@@ -1964,6 +1980,20 @@ enums:
         meaning: https://ror.org/05gvnxz63
 
 slots:
+
+#  for FunctionalAnnotationAggMember:
+  metagenome_annotation_id:
+    range: WorkflowExecutionActivity
+  gene_function_id:
+    range: uriorcurie
+  count:
+    range: integer
+  functional_annotation_agg:
+    range: FunctionalAnnotationAggMember
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
   neon_deims_sdr_link:
     range: string
   neon_eco_type:
@@ -2245,7 +2275,7 @@ slots:
       A list of organizations, along with the award numbers, that underwrite financial support for projects of 
       a particular type. Typically, they process applications and award funds to the chosen qualified 
       applicants.
-    pattern: ^.{1,200}$
+#    pattern: ^.{1,200}$
     comments:
       - Include only the name of the funding organization and the award or contract number.
     examples:
