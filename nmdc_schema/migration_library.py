@@ -67,20 +67,6 @@ def load_yaml_file(filename):
     return data
 
 
-def read_file_into_string(file_path):
-    """Reads the contents of a file into a string.
-
-    Args:
-      file_path: The path to the file to read.
-
-    Returns:
-      A string containing the contents of the file.
-    """
-    with open(file_path, "r") as f:
-        file_content = f.read()
-    return file_content
-
-
 class NmdcDatabase:
     def __init__(self, schema_path, yaml_data_path):
         print("Loading schema...")

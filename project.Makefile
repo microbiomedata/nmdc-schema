@@ -586,28 +586,88 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepti
 	$(RUN) gen-python --validate $< > $@
 	$(RUN) python nmdc_schema/use_more_tolerant_schema.py
 
-# ----
+# ---- tested
 
-#  		--selected-collections biosample_set \
-#		--selected-collections omics_processing_set \
-#		--selected-collections study_set \
-#  		--selected-collections nonsense_set
+#	--selected-collections biosample_set \
+#	--selected-collections extraction_set \
+#	--selected-collections field_research_site_set \
+#	--selected-collections library_preparation_set \
+#	--selected-collections mags_activity_set \
+#	--selected-collections metabolomics_analysis_activity_set \
+#	--selected-collections metaproteomics_analysis_activity_set, # 52 very large documents
+#	--selected-collections nom_analysis_activity_set \
+#	--selected-collections omics_processing_set \
+#	--selected-collections processed_sample_set \
+#	--selected-collections read_based_taxonomy_analysis_activity_set \
+#	--selected-collections study_set \
 
-mongo_as_unvalidated_nmdc_database.yaml: # 15 minutes / 900 seconds
+# ---- problems
+
+#	--selected-collections data_object_set \ # large/slow AND has CURIe errors
+
+
+#	--selected-collections metagenome_annotation_activity_set # ValueError: File "mongo_as_unvalidated_nmdc_database.yaml", line 17992, col 5: Unknown CURIE prefix: @base
+#	--selected-collections metagenome_assembly_set # has CURIe errors
+#	--selected-collections metagenome_sequencing_activity_set # has CURIe errors
+#	--selected-collections metatranscriptome_activity_set
+#	--selected-collections read_qc_analysis_activity_set # has CURIe errors
+
+#		--selected-collections nonsense_set
+#		--max-docs-per-coll 999_999
+
+make-rdf: clean-rdf local/mongo_as_nmdc_database_validation.log local/mongo_as_nmdc_database.ttl
+
+clean-rdf:
+	rm -rf \
+		local/mongo_as_nmdc_database.ttl \
+		local/mongo_as_nmdc_database_validation.log \
+		local/mongo_as_unvalidated_nmdc_database.yaml \
+		local/rdf_safe.yaml
+
+# 5e220105f8713dbb00a38eb3013b0f93
+# jsonschema.exceptions.ValidationError: 'nmdc:img.taxon3300046691' does not match '^img\\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\\/\\.]*$'
+
+local/mongo_as_unvalidated_nmdc_database.yaml: # 15 minutes / 900 seconds
 	time $(RUN) pure_export \
-		--selected-collections biosample_set \
+		--max-docs-per-coll 999999 \
 		--output-yaml $@ \
-		--max-docs-per-coll 3 \
-		--page-size 1_000
+		--page-size 3000 \
+		--schema-file nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml \
+		--selected-collections biosample_set \
+		--selected-collections data_object_set \
+		--selected-collections extraction_set \
+		--selected-collections field_research_site_set \
+		--selected-collections library_preparation_set \
+		--selected-collections mags_activity_set \
+		--selected-collections metabolomics_analysis_activity_set \
+		--selected-collections metagenome_annotation_activity_set \
+		--selected-collections metagenome_assembly_set \
+		--selected-collections metagenome_sequencing_activity_set  \
+		--selected-collections metaproteomics_analysis_activity_set \
+		--selected-collections metatranscriptome_activity_set \
+		--selected-collections nom_analysis_activity_set \
+		--selected-collections omics_processing_set \
+		--selected-collections processed_sample_set \
+		--selected-collections read_based_taxonomy_analysis_activity_set \
+		--selected-collections read_qc_analysis_activity_set \
+		--selected-collections study_set
 
-mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml mongo_as_unvalidated_nmdc_database.yaml
+
+local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	# nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml or nmdc_schema/nmdc_materialized_patterns.yaml
 	# 14 minutes
 	time $(RUN) linkml-validate --schema $^ > $@
 
-mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml mongo_as_unvalidated_nmdc_database.yaml
+local/rdf_safe.yaml:
+	time $(RUN) migration-recursion \
+		--schema-path nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml \
+		--input-path local/mongo_as_unvalidated_nmdc_database.yaml \
+		--output-path local/rdf_safe.yaml
+
+local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/rdf_safe.yaml
+	# mongo_as_unvalidated_nmdc_database.yaml
 	time $(RUN) linkml-convert --output $@ --schema $^
 	time riot --validate $@
-#	arq --data $@ --query all.rq
-#	# if riot says the file is ok and it loads into a local GraphDB instance, then why doesn't it load into GraphDB on SPIN?
-#	# also, what about functional annotations?
+
+
+
