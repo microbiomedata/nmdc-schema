@@ -1,0 +1,9 @@
+weighing_act_set:
+  - id: generic:123
+    operation_type: "nmdc:WeighingActivity"
+    container_type: screw_top_conical
+    sample_mass:
+      has_numeric_value: 10
+      has_unit: grams
+
+

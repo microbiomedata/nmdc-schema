@@ -3,7 +3,6 @@ name: see also description, title, objective, various alternatives
 description: see also name, title, objective, various alternatives
 alternative_identifiers:
 - generic:abc1
-abstract: Nothing was studied.
 alternative_descriptions:
 - any string 1
 - any string 2

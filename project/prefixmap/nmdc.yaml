@@ -3,7 +3,6 @@
    "CATH": "http://identifiers.org/cath/",
    "CHEBI": "http://purl.obolibrary.org/obo/CHEBI_",
    "CHEMBL.COMPOUND": "http://identifiers.org/chembl.compound/",
-   "CHMO": "http://purl.obolibrary.org/obo/CHMO_",
    "COG": "https://bioregistry.io/cog:",
    "Contaminant": "http://example.org/contaminant/",
    "DRUGBANK": "http://identifiers.org/drugbank/",
@@ -48,6 +47,7 @@
    "jgi.proposal": "https://bioregistry.io/jgi.proposal:",
    "linkml": "https://w3id.org/linkml/",
    "mgnify.proj": "https://identifiers.org/mgnify.proj:",
+   "minimal_metab": "https://w3id.org/microbiomedata/minimal-metab/",
    "neon.identifier": "http://example.org/neon/identifier/",
    "neon.schema": "http://example.org/neon/schema/",
    "nmdc": "https://w3id.org/nmdc/",
@@ -60,16 +60,19 @@
    "skos": "http://www.w3.org/2004/02/skos/core#",
    "wgs84": "http://www.w3.org/2003/01/geo/wgs84_pos#",
    "xsd": "http://www.w3.org/2001/XMLSchema#",
+   "AnalyteStorage": {
+      "@id": "minimal_metab:AnalyteStorage"
+   },
    "CreditAssociation": {
       "@id": "prov:Association"
    },
-   "DissolvingActivity": {
-      "@id": "CHMO:0002773"
-   },
-   "MaterialSamplingActivity": {
-      "@id": "OBI:0000744"
-   },
    "PlannedProcess": {
       "@id": "OBI:0000011"
+   },
+   "SampleOperation": {
+      "@id": "minimal_metab:SampleOperation"
+   },
+   "SampleOperationCollection": {
+      "@id": "minimal_metab:SampleOperationCollection"
    }
 }

@@ -1,0 +1,68 @@
+id: https://w3id.org/microbiomedata/minimal-metab
+name: minimal_metab
+title: minimal metabolomics LinkML model
+description: minimal metabolomics portion of nmdc-schema
+license: MIT
+see_also:
+  - https://microbiomedata.github.io/minimal-metab
+
+prefixes:
+  minimal_metab: https://w3id.org/microbiomedata/minimal-metab/
+  linkml: https://w3id.org/linkml/
+  example: https://example.org/
+  qud: http://qudt.org/1.1/schema/qudt#
+  UO: http://purl.obolibrary.org/obo/UO_
+
+default_prefix: minimal_metab
+default_range: string
+
+imports:
+  - linkml:types
+
+classes:
+
+  SampleOperation:
+    is_a: PlannedProcess
+    description: >-
+      A planned process in which a metabolimiccs sample is either the input or output
+
+  SampleOperationCollection:
+    #    tree_root: true # a schema can only have one tree_root. It's Database for the nmdc-schema. THis was copied over from the minimal-metal repo
+    description: >-
+      A holder for SampleOperation objects
+    attributes:
+      entries:
+        range: SampleOperation
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+
+  AnalyteStorage:
+    is_a: SampleOperation
+    description: >-
+      Information about storing a sample including volume, temperature, and the storage container.
+    slots:
+      - analyte_volume
+      - temp
+      - container_type
+    slot_usage:
+      temp:
+        description: >-
+          A temperature, given in Fahrenheit or Celsius.
+
+
+slots:
+  analyte_volume:
+    range: QuantityValue
+    description: >-
+      The volume of an analyte used, stored, or prepared.
+  container_type: # todo this should probably be an enumeration
+    range: string
+    description: >-
+      A type of container. i.e. test tube, falcon tube, etc.
+
+
+enums: { }
+
+
+types:
