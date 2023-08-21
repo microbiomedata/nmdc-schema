@@ -46,7 +46,7 @@ sample_ops_set:
   - id: ffcu:6
     source_mat_id: ffcu:5
     #Slots for this filtration activity don't match filtrationActivity in schema
-  - id: ffcu:7
+  - id: ffcu:7 #aliquot activity
     source_mat_id: ffcu:6
     container_type: water vials
     operation_type: 'nmdc:TransferActivity'

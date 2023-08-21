@@ -205,7 +205,7 @@ dissolution-activity3:
     volume:
       numeric_value: "24"
       unit: mL
-  volume:
+  volume: #sample volume
     numeric_value: "5"
     unit: mL
   contanier:

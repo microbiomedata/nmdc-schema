@@ -27,8 +27,14 @@ sample_ops_set:
       has_numeric_value: 10
     operation_type: 'nmdc:MixingActivity'
   - id: comp:4
-    source_mat_id: comp:3 #sample-handling-activity
-    #not sure what 'activity' is supposed to be
+    source_mat_id: comp:3 
+    temp:
+      has_raw_value: ice
+    duration:
+      has_raw_value: 5 minutes
+      has_numeric_value: 5
+      has_unit: minutes
+    operation_type: 'nmdc:AnalyteStorage'
   - id: comp:5
     source_mat_id: comp:4
     mixing:
@@ -44,7 +50,7 @@ sample_ops_set:
       has_unit: minutes
       has_numeric_value: 10
     operation_type: 'nmdc:PhaseSeparationActivity'
-  - id: comp:7 #not sure this is correct
+  - id: comp:7 
     source_mat_id: comp:6
     material_component_separation: supernatant
     operation_type: 'nmdc:PhaseSeparationActivity'
@@ -108,10 +114,11 @@ sample_ops_set:
     operation_type: 'nmdc:PhaseSeparationActivity'
   - id: comp:14
     source_mat_id: comp:13
-    extractant: MSTFA #there's a reagent piece of information that I don't know where to put
+    extractant: MSTFA 
     syringe: Hamilton
     concentration: 
-      has_unit: percent
+      has_raw_value: 1% TMCS
+      has_unit: percent TMCS
       has_numeric_value: 1
     volume:
       has_unit: ÂµL
@@ -160,4 +167,4 @@ sample_ops_set:
     container_size:
       has_numeric_value: 300
       has_unit: ÂµL
-    operation_type: 'nmdc:TransferActivity'
+    operation_type: 'nmdc:AliquotActivity'

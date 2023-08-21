@@ -113,7 +113,7 @@ solubilization-activity2:
   id: comp:14
   source_material: comp:13
   solvent:
-    type: MSTFA
+    type: MSTFA 
     concentration: 1%
     reagent: TMCS
   syringe:

@@ -105,12 +105,12 @@ sample_ops_set:
       has_unit: uL
       has_numeric_value: 15
     operation_type: 'nmdc:AnalyteStorage'
-  - id: filtration:1 #there's a funnel slot that doesn't match anything
+  - id: filtration:1 
     source_mat_id: somextract:5
     volume:
       has_unit: mL
       has_numeric_value: 20
-    separation_method: syringe #funnel slot?
+    separation_method: syringe
     filter: paper
     material_pore_size:
       has_unit: um

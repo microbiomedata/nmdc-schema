@@ -56,9 +56,10 @@ sample_ops_set:
     operation_type: 'nmdc:PhaseSeparationActivity'
   - id: derive:8
     source_mat_id: derive:7
-    extractant: MSTFA #there's a reagent piece of information that I don't know where to put
+    extractant: MSTFA 
     concentration: 
-      has_unit: percent
+      has_raw_value: 1% TMCS
+      has_unit: percent TMCS
       has_numeric_value: 1
     volume:
       has_unit: ÂµL

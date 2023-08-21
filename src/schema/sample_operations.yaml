@@ -196,12 +196,11 @@ classes:
       - volume
   #      - volume_unit
 
-  ConditioningValue:
+  ConditioningValue: 
     #Look up obi
     description: >-
       Holds information relating to a conditioning process. This class is used for filtration
       activity. Holds the solvent, concentration, container, and volume
-    is_a: SampleOperation
     slots:
       - conditioning_type
       - solvent
@@ -245,6 +244,8 @@ classes:
       - source_mat_id
       - starting_amount
       - volume
+      - source_container_type
+      - source_container_size
   #      - volume_unit
 
   PhaseSeparationActivity:
@@ -299,6 +300,7 @@ classes:
       - temp
       - sample_mass
       - source_mat_id
+      - duration
 
   PhMeasurement:
     # CHMO:0002354
@@ -385,42 +387,6 @@ classes:
       - description
       - device_type
 
-  TransferActivity:
-    #Needs OBI
-    is_a: SampleOperation
-    description: An activity documenting the transfer of a substance from one container to another
-    slots:
-      - source_mat_id
-      - container_type
-      - container_size
-      - source_container_type
-      - source_container_size
-      - transfer_type
-
-  #WeighingActivity:
-  #  class_uri: OBI:0000445
-  #  description: >-
-  #    A process that collects the weight of a substance/material, along with metadata about the weighing activity itself.
-  #  is_a: SampleOperation
-  #  in_subset: sample_operations_subset
-  #  slot_usage:
-  #    has_input:
-  #      comments:
-  #        - 'The id of the  material being weighed'
-  #        - "That's the default behaviour"
-  #    sample_mass:
-  #      comments:
-  #        - 'The mass, as an inlined QuantityValue, of the material being weighed'
-  #        - "not the id of some stand-alone entity"
-  #  slots:
-      #      - analyte_id
-      #      - source_mat_id
-  #    - weighing_device
-  #    - container_type
-  #    - sample_mass
-#      - has_input
-#      - has_ouput #I think this should be the correct slot to store the final weight
-#      # - volume #might be helpful information but also might be extraneous and un-needed or stored elsewhere
 
 enums:
   ContainerTypeEnum:

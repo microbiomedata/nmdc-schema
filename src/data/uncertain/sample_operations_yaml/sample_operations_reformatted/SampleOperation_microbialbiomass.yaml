@@ -88,7 +88,7 @@ sample_ops_set:
     volume:
       has_unit: mL
       has_numeric_value: 20
-    separation_method: Buchner Funnel #there is some info about the funnel but no where to put it (it says unknown so probably fine to leave out)
+    separation_method: Buchner Funnel 
     filter: paper 
     material_pore_size:
       has_unit: um
@@ -195,7 +195,10 @@ sample_ops_set:
       has_numeric_value: 0.05
     volume:
       has_unit: mL
-      has_numeric_value: 24 #there's another volume but no where to put it
+      has_numeric_value: 24 
+    sample_volume:
+      has_numeric_value: "5"
+      has_unit: mL
     container_type: V-bottom conical tubes
     container_volume:
       has_unit: mL
@@ -227,7 +230,7 @@ sample_ops_set:
     volume:
       has_unit: mL
       has_numeric_value: 20
-    separation_method: Buchner Funnel #there is some info about the funnel but no where to put it (it says unknown so probably fine to leave out)
+    separation_method: Buchner Funnel 
     filter: paper 
     material_pore_size:
       has_unit: um
