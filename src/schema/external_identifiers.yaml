@@ -127,11 +127,18 @@ slots:
     id_prefixes:
       - jgi.proposal
     pattern: '^jgi.proposal:\d+$'
+    examples:
+      - value: jgi.proposal:507130
     comments:
       - Could this could be considered a related identifier?
       - this identifier was registered with bioregistry but not identifiers.org
+      - Curie suffix is the Site Award Number from an OSTI award page
+      - Site Award Number 507130 == award doi doi:10.46936/10.25585/60000017 -- GOLD study identifier GOLD:Gs0154044
+      - bioregistry.io/jgi.proposal:507130 ==https://genome.jgi.doe.gov/portal/BioDefcarcycling/BioDefcarcycling.info.html
     title: JGI Portal Study identifiers
-    description: identifiers that link a NMDC study to a web-based report about a JGI sequencing project
+    description: >-
+      Identifiers that link a NMDC study to a website hosting raw and analyzed data for a JGI proposal. 
+      The suffix of the curie can used to query the GOLD API and is interoperable with an award DOI from OSTI and a GOLD study identifier.
 
   neon_study_identifiers:
     is_a: study_identifiers
@@ -233,14 +240,7 @@ slots:
   #    title: EMSL Proposal Identifier
   #    description: The proposal number assigned to the EMSL awarded study that relates to that which is represented in NMDC.
 
-
-  emsl_project_dois:
-    is_a: study_identifiers
-    mixins:
-      - emsl_identifiers
-    title: EMSL Project DOI
-    description: A DOI that resolves to a EMSL Research Campaign page.
-
+  # moving emsl_project_dois from external_identifiers.yaml to nmdc.yaml and re-rooting in `dois` with new pattern
 
   ## samples
 

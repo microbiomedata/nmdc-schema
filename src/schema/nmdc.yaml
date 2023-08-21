@@ -95,14 +95,6 @@ subsets:
 
 classes:
 
-# functional_annotation_agg
-#  {
-  #    "_id" : ObjectId("61e330026bbc2d53c15fd3c3"),
-  #    "metagenome_annotation_id" : "nmdc:8253bcdcd0387177ff895c38a047c719",
-  #    "gene_function_id" : "KEGG.ORTHOLOGY:K00627",
-  #    "count" : NumberInt(120)
-  #}
-
   FunctionalAnnotationAggMember:
     slots:
       - metagenome_annotation_id
@@ -1363,8 +1355,10 @@ classes:
       - alternative_descriptions
       - alternative_names
       - alternative_titles
-      - doi
       - description
+      - award_dois
+      - dataset_dois
+      - publication_dois
       - ecosystem
       - ecosystem_category
       - ecosystem_subtype
@@ -1398,11 +1392,6 @@ classes:
           syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-      doi:
-        description: >-
-          The dataset citation for this study
-        annotations:
-          display_hint: DOI associated with the data in this study. This is required when data is already generated.
       name:
         annotations:
           display_hint: Provide a name for the study your samples will belong with.
@@ -1981,7 +1970,7 @@ enums:
 
 slots:
 
-#  for FunctionalAnnotationAggMember:
+  #  for FunctionalAnnotationAggMember:
   metagenome_annotation_id:
     range: WorkflowExecutionActivity
   gene_function_id:
@@ -2275,7 +2264,7 @@ slots:
       A list of organizations, along with the award numbers, that underwrite financial support for projects of 
       a particular type. Typically, they process applications and award funds to the chosen qualified 
       applicants.
-#    pattern: ^.{1,200}$
+    #    pattern: ^.{1,200}$
     comments:
       - Include only the name of the funding organization and the award or contract number.
     examples:
@@ -2583,14 +2572,77 @@ slots:
     is_a: attribute
     range: PersonValue
     description: Principal Investigator who led the study and/or generated the dataset.
-  doi:
-    is_a: attribute
-    range: AttributeValue
-    annotations:
-      on_hover: show details
+
+  dois:
+    # is_a: attribute
+    todos:
+      - the previous doi slot was an attribute, but attribute seems committed to biosamples
+      - should we assert a parent term here?
+    range: uriorcurie
+    description: >-
+      A digital object identifier, which is intended to persistantly identify some resource on the web.
+    multivalued: true
+    abstract: true
+    aliases:
+      - DOIs
+      - digital object identifiers
+    pattern: '^doi:10.\d{2,9}/.*$'
+    see_also:
+      - https://schema.datacite.org/meta/kernel-4.4/doc/DataCite-MetadataKernel_v4.4.pdf
+      - https://api.crossref.org/types
+    comments:
+      - See especially the resourceTypeGeneral section of the DataCite pdf, on pp48-53 as of 2023-07-19
+
+  award_dois:
+    is_a: dois
+    description: >-
+      One or more DOIs that links a study, or similar entiry, to information about the funding authority.
+    examples:
+      - value: doi:10.46936/10.25585/60000880
+        description:
+          award_dois link to to an award document. Should not be used to link to datasets or publications.
+          For example, doi:10.15485/1577267 is not an award doi, but a dataset doi.
+
+  dataset_dois:
+    is_a: dois
+    description: >-
+      One or more DOIs that links a study, or similar entity, to the generated data.
+    #    annotations:
+    #      display_hint: DOI associated with the data in this study. This is required when data is already generated.
+    examples:
+      - value: doi:10.15485/1577267
+        description:
+          dataset_dois link to data encoded in a defined structure (as defined by DataCite).
+          Should not be used to link to publications or administrative information like funding requests or awards.
+
+  publication_dois:
+    is_a: dois
+    description: One or more DOIs that links a study, or similar entity, to a publication.
+    examples:
+      - value: doi:10.1126/science.1058040
+        description:
+          publication_dois link to a prose document, preferably a peer-reviewed journal article.
+          Should not be used to link to datasets or administrative information like funding requests or awards
+
   add_date:
     range: string
     description: The date on which the information was added to the database.
+
+  # moving emsl_project_dois from external_identifiers.yaml to nmdc.yaml and re-rooting in `dois` with new pattern
+  emsl_project_dois:
+    is_a: dois
+    #    is_a: study_identifiers
+    mixins:
+      - emsl_identifiers
+    title: EMSL Project DOI
+    description: One or more DOIs that links to an EMSL Research Campaign page.
+    examples:
+      - value: doi:10.46936/intm.proj.2021.6014
+        description:
+          emsl_project_dois link to the document outlining the EMSL specific award for the project.
+          Should not be used to link to datasets or publications.
+    todos:
+      - Make as a subproperty of award_dois
 
   mod_date:
     range: string

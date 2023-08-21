@@ -340,6 +340,10 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosampl
 .PHONY: mongodb-cleanup dump-validate-report-convert-mongodb \
 dump-validate-report-convert-mongodb linkml-validate-mongodb
 
+# recommended setup:
+#   1. . ~/sshproxy.sh -u <NERSC USER NAME>
+#   2. ssh -i ~/.ssh/nersc -L27777:mongo-loadbalancer.nmdc.production.svc.spin.nersc.org:27017 -o ServerAliveInterval=60 {YOUR_NERSC_USERNAME}@dtn01.nersc.gov
+
 dump-validate-report-mongodb: mongodb-cleanup accepting_legacy_ids_all \
 local/mongodb-collection-report.txt \
 local/selected_mongodb_contents.json \
@@ -586,6 +590,8 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepti
 	$(RUN) gen-python --validate $< > $@
 	$(RUN) python nmdc_schema/use_more_tolerant_schema.py
 
+# ----
+
 make-rdf: clean-rdf local/mongo_as_nmdc_database_validation.log local/mongo_as_nmdc_database.ttl
 
 clean-rdf:
@@ -642,5 +648,8 @@ local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.y
 	time $(RUN) linkml-convert --output $@ --schema $^
 	time riot --validate $@
 
+# ----
 
+local/study_set_doi.tsv:
+	$(RUN) python nmdc_schema/get_study_doi_report.py
 
