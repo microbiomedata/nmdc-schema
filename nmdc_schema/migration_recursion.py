@@ -1,13 +1,23 @@
+import logging
 import pprint
 import re
 
 import click
+import click_log
 import yaml
 from linkml_runtime import SchemaView
 from linkml_runtime.dumpers import yaml_dumper
 
+logger = logging.getLogger(__name__)
+click_log.basic_config(logger)
+
+
 # dois repair
-# logging
+# todo: log before and after states of migration
+
+def migrate_studies_7_7_2_to_dev(retrieved_study):  # esp dois
+    pass
+    # return migrated_study
 
 
 curie_regex = r'^[a-zA-Z_][a-zA-Z0-9_-]*:[a-zA-Z0-9_][a-zA-Z0-9_.-]*$'
@@ -96,9 +106,10 @@ def main(schema_path, input_path, output_path):
     total_dict = load_yaml_file(input_path)
     end_dict = {}
     for tdk, tdv in total_dict.items():
-        print(tdk)
+        logger.info(f"Starting migration of {tdk}")
         end_dict[tdk] = apply_changes_recursively_by_key(tdv, set(migrateable_slots))
 
+    logger.info(f"Saving migrated data to {output_path}")
     with open(output_path, "w") as f:
         yaml.dump(end_dict, f)
 

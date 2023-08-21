@@ -4,13 +4,12 @@ import pprint
 
 import click
 import click_log
+import requests
 from dotenv import load_dotenv
 from linkml_runtime import SchemaView
 from linkml_runtime.dumpers import yaml_dumper
 from pymongo import MongoClient
 from pymongo.errors import OperationFailure
-
-import requests
 
 logger = logging.getLogger(__name__)
 click_log.basic_config(logger)
@@ -30,6 +29,7 @@ click_log.basic_config(logger)
 # ssh -i ~/.ssh/nersc -L27777:mongo-loadbalancer.nmdc.production.svc.spin.nersc.org:27017 -o ServerAliveInterval=60 <NERSC_USER_NAME>@dtn01.nersc.gov
 #  You can use a local port other than 27777 if you want. Just be consistent in the rest of this setup.
 
+
 def set_arithmetic(set1, set2, set1_name='set 1 only', set2_name='set 2 only'):
     set1_only = set1 - set2
     set2_only = set2 - set1
@@ -46,11 +46,14 @@ class FastAPIClient:
     def __init__(self, base_url):
         self.base_url = base_url
 
-    def _make_request(self, method, endpoint, params=None, data=None):
+    def get_docs_from_fastapi(self, method, endpoint, params=None, data=None):
         url = f"{self.base_url}/{endpoint}"
-        response = requests.request(method, url, params=params, json=data)
-        response.raise_for_status()
-        return response.json()
+        try:
+            response = requests.request(method, url, params=params, json=data)
+            response.raise_for_status()
+            return response.json()
+        except Exception as e:
+            logger.warning(f"{e}")
 
     def get_paginated_data(self, endpoint, params, max_docs=None, results_key='resources',
                            continuation_key='next_page_token', continuation_parameter='page_token'):
@@ -58,23 +61,27 @@ class FastAPIClient:
         data = []
 
         while True:
-            response = self._make_request('GET', endpoint, params=params)
-            temp = response[results_key]
-            data.extend(temp)
-            data_len = len(data)
-            logger.info(f"Retrieved {data_len} entries out of {max_docs} from {endpoint}")
-            if data_len >= max_docs:
-                break
+            response = self.get_docs_from_fastapi('GET', endpoint, params=params)
+            if response and results_key in response:
+                temp = response[results_key]
+                data.extend(temp)
+                data_len = len(data)
+                logger.info(f"Retrieved {data_len} entries out of {max_docs} from {endpoint}")
+                if data_len >= max_docs:
+                    break
 
-            if continuation_key in response:
-                params[continuation_parameter] = response[continuation_key]
+                if continuation_key in response:
+                    params[continuation_parameter] = response[continuation_key]
+                else:
+                    break
             else:
+                # logger.warning(f"FastAPI request to {endpoint} failed. Might work as a pymongo query.")
                 break
 
         return data
 
 
-class MongoContents:
+class PyMongoClient:
 
     def __init__(self, env_file, mongo_db_name, mongo_host, mongo_port, admin_db, auth_mechanism='SCRAM-SHA-256',
                  direct_connection=True):
@@ -156,16 +163,43 @@ class MongoContents:
 
         return selected_stats
 
+    def get_docs_from_pymongo(self, collection_name, max_docs_per_coll):
+        collection = self.db[collection_name]
+
+        if collection is None:
+            logger.info(f"Could not find collection {collection_name}")
+
+        documents = collection.find().limit(max_docs_per_coll)
+        doc_list = list(documents)
+
+        prob_key = "_id"
+        for doc in doc_list:
+            if prob_key in doc:
+                del doc[prob_key]
+
+        return doc_list
+
 
 class ViewHelper:
     def __init__(self, schema_path):
         self.view = SchemaView(schema_path)
 
-    def get_class_slots(self, class_name):
-        class_slots = self.view.class_induced_slots(class_name)
-        class_slot_names = [s.name for s in class_slots]
+    def get_class_slots(self, class_name, include_scalars=False):
+        class_slot_objs = self.view.class_induced_slots(class_name)
+        class_slot_obj_dict = {s.name: s for s in class_slot_objs}
+        class_slot_names = [s.name for s in class_slot_objs]
+        acceptable_slots = []
+        for i in class_slot_names:
+            slot_obj = class_slot_obj_dict[i]
+            # logger.info(f"{i = } {slot_obj.multivalued = }")
+            if slot_obj.multivalued or include_scalars:
+                # logger.info(f"Adding {i} to ")
+                acceptable_slots.append(i)
+            else:
+                logger.warning(
+                    f"Skipping {class_name} slot {i} because it is not multivalued and include_scalars is False.")
         class_slot_names.sort()
-        return class_slot_names
+        return acceptable_slots
 
 
 @click.command()
@@ -208,7 +242,7 @@ def cli(
         output_yaml,
 
 ):
-    nmdc_db_obj = MongoContents(
+    nmdc_pymongo_client = PyMongoClient(
         admin_db=admin_db,
         auth_mechanism='SCRAM-SHA-256',
         direct_connection=True,
@@ -217,17 +251,17 @@ def cli(
         mongo_host=mongo_host,
         mongo_port=mongo_port,
     )
-    logger.info(f"{nmdc_db_obj.collections = }")
+    # logger.info(f"{nmdc_pymongo_client.collections = }")
 
     nmdc_helper = ViewHelper(schema_file)
 
-    logger.info(f"{nmdc_helper.view.schema.name = }")
+    # logger.info(f"{nmdc_helper.view.schema.name = }")
 
     root_class_slots = nmdc_helper.get_class_slots(root_class)
 
-    logger.info(f"{root_class_slots = }")
+    # logger.info(f"{root_class_slots = }")
 
-    schema_vs_mongo_collections = set_arithmetic(set(root_class_slots), set(nmdc_db_obj.collections),
+    schema_vs_mongo_collections = set_arithmetic(set(root_class_slots), set(nmdc_pymongo_client.collections),
                                                  set1_name='schema',
                                                  set2_name='mongo')
 
@@ -242,31 +276,33 @@ def cli(
         logger.debug(f"available_vs_selected_collections = ")
         logger.debug(pprint.pformat(available_vs_selected_collections))
         available_selected_collections = available_vs_selected_collections['intersection']
-        logger.warning(
-            f"Some requested collections are not available: {available_vs_selected_collections['selected only']}")
+        if available_vs_selected_collections['selected only']:
+            logger.warning(
+                f"Some requested collections are not available: {available_vs_selected_collections['selected only']}")
     else:
         available_selected_collections = schema_vs_mongo_collections['intersection']
     available_selected_collections.sort()
     logger.info(f"available_selected_collections = ")
     logger.info(pprint.pformat(available_selected_collections))
 
-    nmdc_db_obj.selected_collections = available_selected_collections
+    nmdc_pymongo_client.selected_collections = available_selected_collections
 
-    # collection_stats = nmdc_db_obj.get_collection_stats()
+    # collection_stats = nmdc_pymongo_client.get_collection_stats()
 
-    client = FastAPIClient(client_base_url)
+    nmdc_fastapi_client = FastAPIClient(client_base_url)
 
     if max_docs_per_coll < page_size:
         page_size = max_docs_per_coll
 
     nmdc_database_object = {}
-    for current_collection in nmdc_db_obj.selected_collections:
+    for current_collection in nmdc_pymongo_client.selected_collections:
         logger.info(f"Attempting to get collection stats from {current_collection}")
 
-        current_coll_obj = nmdc_db_obj.db[current_collection]
+        current_coll_obj = nmdc_pymongo_client.db[current_collection]
         est_doc_count = current_coll_obj.estimated_document_count()
 
-        logger.info(f"estimated_document_count = {est_doc_count}") # it would also be nice to report collection size or avg size/doc but I haven't figured how to do that quickly yet
+        logger.info(
+            f"estimated_document_count = {est_doc_count}")  # it would also be nice to report collection size or avg size/doc but I haven't figured how to do that quickly yet
 
         #     # collection_stats = current_coll_obj.estimated_document_count()
         #     collection_stats = current_coll_obj.stats()
@@ -282,23 +318,24 @@ def cli(
         }
         max_docs = max_docs_per_coll
 
-        # if max_docs_per_coll > collection_stats[current_collection]['document_count']:
-        #     max_docs = collection_stats[current_collection]['document_count']
-
         if max_docs_per_coll > est_doc_count:
             max_docs = est_doc_count
 
         logger.info(
             f"Attempting to get {max_docs} documents from {endpoint_name} in pages of {page_size}.")
 
-        #     logger.info(pprint.pformat(collection_stats[current_collection]))
+        paginated_data = nmdc_fastapi_client.get_paginated_data(endpoint=endpoint_name, params=params_string,
+                                                                max_docs=max_docs)
 
-        paginated_data = client.get_paginated_data(endpoint=endpoint_name, params=params_string,
-                                                   max_docs=max_docs)
-
-        # logger.info(pprint.pformat(paginated_data))
-
-        nmdc_database_object[current_collection] = paginated_data
+        if paginated_data:
+            nmdc_database_object[current_collection] = paginated_data
+        else:  # todo needs safer programming like try/except
+            logger.warning(f"FastAPI request to {endpoint_name} appears to have failed. Trying as a PyMongo query.")
+            direct_data_all = nmdc_pymongo_client.get_docs_from_pymongo(current_collection, max_docs)
+            if direct_data_all:
+                logger.info(
+                    f"Successfully retrieved {len(direct_data_all)} documents from {current_collection} via PyMongo")
+                nmdc_database_object[current_collection] = direct_data_all
 
     logger.info(f"Writing {output_yaml}")
     yaml_dumper.dump(nmdc_database_object, output_yaml)
