@@ -46,6 +46,9 @@ class FastAPIClient:
     def __init__(self, base_url):
         self.base_url = base_url
 
+    def get_collection_stats_from_fastapi(self):
+        pass
+
     def get_docs_from_fastapi(self, method, endpoint, params=None, data=None):
         url = f"{self.base_url}/{endpoint}"
         try:
@@ -98,7 +101,7 @@ class PyMongoClient:
         self.db = self.create_database_obj()
         logger.debug(pprint.pformat(self.__dict__))
         logger.info("MongoDB database object created. Now attempting to get collection names.")
-        self.collections = self.get_collection_names()
+        self.collections = self.get_collection_names_from_pymongo()
         logger.info(f"Found {len(self.collections)} collections in MongoDB database {self.mongo_db_name}")
 
     def create_database_obj(self):
@@ -122,7 +125,7 @@ class PyMongoClient:
 
         return db
 
-    def get_collection_names(self):
+    def get_collection_names_from_pymongo(self):
 
         collections = self.db.list_collections()
 

@@ -1,0 +1,18 @@
+# use a more standardized format like JSON-LD contexts,
+# or just extract this from the schema?
+#   project/prefixmap/nmdc.yaml
+# although some of the prefixes may not be  defined in teh schema yet?!
+
+"KEGG.ORTHOLOGY": "http://identifiers.org/kegg.orthology/" # yes
+"cas": "http://identifiers.org/cas/" # yes
+"gnps.task": "https://bioregistry.io/gnps.task:" # yes
+"jgi.proposal": "https://bioregistry.io/jgi.proposal:" # yes
+
+"MASSIVE": "http://example.com/" # yes
+"doi": "https://example.org/doi/" # "doi": "http://example.com/"
+
+"kegg": "https://example.org/kegg/" # no, only uppercase KEGG.*
+
+"biosample": "https://example.org/biosample/" # no
+"gold": "https://example.org/gold/" # no
+"img.taxon": "https://example.org/img.taxon/" # no

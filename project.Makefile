@@ -601,8 +601,6 @@ clean-rdf:
 		local/mongo_as_nmdc_rdf_safe.yaml \
 		local/mongo_as_unvalidated_nmdc_database.yaml
 
-  # 		--selected-collections metaproteomics_analysis_activity_set # only ~ 50 docuemtns, but they are huge
-
 #  		--selected-collections biosample_set \
 #  		--selected-collections data_object_set \
 #  		--selected-collections extraction_set \
@@ -621,34 +619,18 @@ clean-rdf:
 #  		--selected-collections processed_sample_set \
 #  		--selected-collections read_based_taxonomy_analysis_activity_set \
 #  		--selected-collections read_qc_analysis_activity_set \
+#  		--selected-collections study_set
 
 local/mongo_as_unvalidated_nmdc_database.yaml: # 15 minutes / 900 seconds
+	date
 	time $(RUN) pure_export \
-		--max-docs-per-coll 20 \
+		--max-docs-per-coll 10000000 \
 		--output-yaml $@ \
-		--page-size 10 \
-		--schema-file nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml \
-  		--selected-collections biosample_set \
-  		--selected-collections data_object_set \
-  		--selected-collections extraction_set \
-  		--selected-collections field_research_site_set \
-  		--selected-collections functional_annotation_agg \
-  		--selected-collections library_preparation_set \
-  		--selected-collections mags_activity_set \
-  		--selected-collections metabolomics_analysis_activity_set \
-  		--selected-collections metagenome_annotation_activity_set \
-  		--selected-collections metagenome_assembly_set \
-  		--selected-collections metagenome_sequencing_activity_set  \
-  		--selected-collections metaproteomics_analysis_activity_set \
-  		--selected-collections metatranscriptome_activity_set \
-  		--selected-collections nom_analysis_activity_set \
-  		--selected-collections omics_processing_set \
-  		--selected-collections processed_sample_set \
-  		--selected-collections read_based_taxonomy_analysis_activity_set \
-  		--selected-collections read_qc_analysis_activity_set \
-  		--selected-collections study_set
+		--page-size 10000 \
+  		--selected-collections biosample_set
 
 local/mongo_as_nmdc_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
+	date
 	time $(RUN) migration-recursion \
 		--schema-path $(word 1,$^) \
 		--input-path $(word 2,$^) \
@@ -657,6 +639,7 @@ local/mongo_as_nmdc_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.
 local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_rdf_safe.yaml
 	# nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml or nmdc_schema/nmdc_materialized_patterns.yaml
 	# 14 minutes
+	date
 	time $(RUN) linkml-validate --schema $^ > $@
 
 local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_rdf_safe.yaml
@@ -664,13 +647,25 @@ local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.y
 	#   nmdc schema
 	#   protein ontology
 	#   selected branches of NCBI taxonomy?
+	date
 	time $(RUN) linkml-convert --output $@ --schema $^
 	time riot --validate $@
 
+local/all-except-proteomics-and-functional-annotations/mongo_as_nmdc_database_cuire_repaired.ttl: local/all-except-proteomics-and-functional-annotations/mongo_as_nmdc_database.ttl
+	date
+	time $(RUN)  anyuri-strings-to-iris \
+		--input-ttl $< \
+		--prefixes-yaml assets/misc/extra_prefix_expansions.yaml \
+		--output-ttl $@
 
 # todo remove funding_sources char limit
-# todo make award_dois CURIes
-# allow different api base addresses
+# todo allow different api base addresses
+# todo skip migration of some collections?
+# todo: still getting anyurl typed string statement objects in RDF
+# todo graphdb visual graph for including blank nodes
+# todo: add start time reporting
+# todo switch to API method for getting collection names and stats: https://api.microbiomedata.org/nmdcschema/collection_stats
+
 # ----
 
 local/study_set_doi.tsv:

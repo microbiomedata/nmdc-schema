@@ -102,6 +102,7 @@ nmdc-data = "nmdc_schema.nmdc_data:cli"
 nmdc-version = "nmdc_schema.nmdc_version:cli"
 get_neon-nlcd-envo-mapping = "nmdc_schema.neon_nlcd_envo_mapping:generate_nlcd_envo_mappings"
 migration-recursion = 'nmdc_schema.migration_recursion:main'
+anyuri-strings-to-iris = 'nmdc_schema.anyuri_strings_to_iris:expand_curies'
 
 #classifiers = [
 #    "Development Status :: 4 - Beta",
