@@ -1227,8 +1227,6 @@ classes:
         multivalued: true
         range: string
         examples:
-          - value: 75%
-          - value: 75 %
           - value: 0.75 g water/g dry soil
           - value: 75% water holding capacity
           - value: 1.1 g fresh weight/ dry weight
