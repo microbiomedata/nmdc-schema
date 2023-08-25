@@ -1,0 +1,435 @@
+name: SampleOperationsSchema
+id: https://MOnet/schema ##Temporary for now, ask what to use here. 
+prefixes:                                  
+  linkml: https://w3id.org/linkml/
+  xsd:
+    prefix_prefix: xsd
+    prefix_reference: http://www.w3.org/2001/XMLSchema#
+imports:
+  - linkml:types
+  - core
+  - NMDC
+  
+default_range: string
+
+classes:
+  SampleOperations:
+    description: >-
+      SampleOperations schema
+    slots:
+      - id
+      - type
+      - detection_id
+      - separation_id
+      - has_input
+
+  DerivativeActivity:
+    description: >-
+      A technique used in chemistry which transforms a chemical compound into a product (the reaction's derivate) of similar chemical structure, called a derivative. That compound has properties more amenable to a particular analytical method. Some samples analyzed by GC require derivatization in order to make them suitable for analysis. Compounds that have poor volatility, poor thermal stability, or that can be adsorbed in the injector will exhibit nonreproducible peak areas, heights, and shapes. Other compounds that respond poorly on a specific detector may need to be “tagged” with a different functional group to improve detection.
+    is_a: SampleOperations
+    slots:
+      - analyte_id
+      - source_mat_id
+      - derivatization
+      - derivatization_agent
+      - device
+      - container_type
+      - volume_unit
+      - unit
+      - duration
+      - mixing
+      - sample_volume
+      - speed
+      - volume
+      - concentration
+      - celsius_temperature
+
+  SampleDrying:
+    description: >-
+      The process of removing a solvent from a substance.
+    is_a: SampleOperations
+    slots:
+      - analyte_id
+      - source_mat_id
+      - dry
+      - unit
+      - sample_mass
+      - duration
+      - value
+
+  SubsamplingActivity:
+    description: >-
+      A subsample may be: (a) a portion of the sample obtained by selection or division; (b) an individual unit of the lot taken as part of the sample; (c) the final unit of multistage sampling. The term 'subsample' is used either in the sense of a 'sample of a sample' or as a synonym for 'unit'. In practice, the meaning is usually apparent from the context or is defined.
+    is_a: SampleOperations
+    slots:
+      - analyte_id
+      - source_mat_id
+      - volume_unit
+      - container_type
+      - sample_mass
+      - starting_amount
+      - container_size
+      - volume
+
+  AcidificationActivity:
+    description: >-
+      Activity of modifying the pH of a sample or solution via addition of some acid.
+    is_a: SampleOperations
+    slots:
+      - analyte_id
+      - source_mat_id
+      - volume_unit
+      - unit
+      - acid
+      - pH
+      - volume
+      - concentration
+
+  ReactionActivity:
+    description: >-
+      A process which uses or consumes chemical/molecular entities to generate other molecular entities.
+    is_a: SampleOperations
+    slots:
+      - analyte_id
+      - source_mat_id
+      - unit
+      - container_type
+      - duration
+      - mixing
+      - speed
+      - celsius_temperature
+
+  FiltrationActivity:
+    description: >-
+      The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by forcing a carrier gas or liquid through a porous medium.
+    is_a: SampleOperations
+    slots:
+      - analyte_id
+      - source_mat_id
+      - container_type
+      - volume_unit
+      - unit
+      - filter
+      - material_pore_size
+      - conditioning
+      - analyte_volume
+      - conditioning_volume
+      - separation_method
+      - container_size
+      - volume
+
+  ExtractionActivity:
+    description: >-
+      A material separation in which a desired component of an input material is separated from the remainder
+    is_a: SampleOperations
+    slots:
+      - analyte_id
+      - source_mat_id
+      - container_type
+      - volume_unit
+      - unit
+      - extractant
+      - concentration
+      - container_size
+      - duration
+      - mixing
+      - sample_volume
+      - speed
+      - volume
+
+  AliquotActivity:
+    description: >-
+      Pertaining to a portion of the whole; any one of two or more samples of something, of the same volume or weight.
+    is_a: SampleOperations
+    slots:
+      - analyte_id
+      - source_mat_id
+      - container_type
+      - volume_unit
+      - volume
+      - container_size
+      - starting_amount
+
+  PhaseSeparationActivity:
+    description: >-
+      The process by which a single solid (liquid) phase separates into two or more new phases.
+    is_a: SampleOperations
+    slots:
+      - analyte_id
+      - source_mat_id
+      - unit
+      - material_component_separation
+      - analyte_volume
+      - duration
+      - value
+
+  AnalyticalSample:
+    description: >-
+      A liquid bulk product produced according to specified lab protocols, from a sample or analyte, intended for further analysis.
+    is_a: SampleOperations
+    slots:
+      - analyte_id
+      - container_type
+      - volume_unit
+      - sample_state
+      - volume
+      - analyte_volume
+      - concentration
+
+  AnalyteStorage:
+    description: >-
+      The act, process and logistical considerations of the physical or environmental conditions under which the analytical sample is maintained.
+    is_a: SampleOperations
+    slots:
+      - analyte_id
+      - source_mat_id
+      - sample_mass
+      - analyte_volume 
+      - celsius_temperature
+
+  PhMeasurement:
+    description: >-
+      The measurement of pH, the negative logarithm to base ten of the hydrogen ion activity in a solution. Operationally the pH of a solution X, pH(X), is measured relative to that of a standard reference solution, pH(S), and defined as pH(X) = pH(S) - (E(X) - E(S))/(RT/F)ln 10, where E(X) and E(S) are the electromotive forces measured in cells containing the solution X and the reference solution respectively.
+    is_a: SampleOperations
+    slots:
+      - analyte_id
+      - source_mat_id
+      - analytical_solution
+      - sample_volume
+      - container_type
+      - unit
+      - volume_unit
+      - instrument
+      - duration
+      - mixing
+      - speed
+      - volume
+
+  MixingActivity:
+    description: >-
+      The combining of components, particles or layers into a more homogeneous state. The mixing may be achieved manually or mechanically by shifting the material with stirrers or pumps or by revolving or shaking the container. The process must not permit segregation of particles of different size or properties. Homogeneity may be considered to have been achieved in a practical sense when the sampling error of the processed portion is negligible compared to the total error of the measurement system.
+    is_a: SampleOperations
+    slots:
+      - analyte_id
+      - source_mat_id
+      - unit
+      - duration
+      - mixing 
+
+  SievingActivity:
+    description: >-
+      A sample is passed through a sieve to reach a specific particle size and remove anything that can't be passed through that size.
+    is_a: SampleOperations
+    slots:
+      - analyte_id
+      - source_mat_id
+      - sieve_size   
+
+  ChemicalReactionActivity:
+    description: >-
+      A process which uses or consumes chemical/molecular entities to generate other molecular entities
+    is_a: SampleOperations
+    slots:
+      - analyte_id
+      - source_mat_id
+      - reactant
+      - container_type
+      - unit
+      - celsius_temperature
+      - duration
+      - mixing
+      - speed
+
+  labDevice: 
+    description: >-
+      labDevice schema
+    slots:
+      - id
+      - description **
+      - device_type
+      - activity_time_id
+      - activity_speed_id
+  
+
+
+enums:
+  ContainerTypeEnum:
+    permissible_values:
+      screw_top_conical:
+        text: 'screw_top_concial tube'
+
+  SolventEnum:
+    permissible_values:
+      deionized_water:
+        text: 'Deionized Water'
+      methanol:
+        text: 'methanol'
+      chloroform:
+        text: 'chloroform'
+
+  Activity:
+    permissible_values:
+      AliquotActivity:
+        text: 'Aliquot Activity'
+      ExtractionActivity  :
+        text: 'Extraction Activity'
+      PhaseSeparation:
+        text: 'Phase Separation'
+      FiltrationActivity:
+        text: 'Filtration Activity'
+      AcidificationActivity:
+        text: 'Acidification Activity'
+      AnalyteStorage:
+        text: 'Analyte Storage'
+      AnalyticalSample:
+        text: 'Analytical Sample'
+      DerivatizationActivity:
+        text: 'Derivatization Activity'
+      SampleDrying:
+        text: 'Sample Drying'
+      ReactionActivity:
+        text: 'Reaction Activity'
+      SubsamplingActivity:
+        text: 'Subsampling Activity'
+      PhMeasurement:
+        text: 'Ph Measurement'
+      MixingActivity:
+        text: 'Mixing Activity'
+      SievingActivity:
+        text: 'Sieving Activity'
+      ChemicalReactionActivity:
+        text: 'Chemical Reaction Activity'
+
+  devicetypeenum:
+    permissible_values:
+      orbital_shaker:
+        text: 'Orbital Shaker'
+      thermomixer:
+        text: 'Thermomixer'
+
+slots:
+  id:
+    range: integer
+    description: "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI"
+  type:
+    range: Activity
+  detection_id:
+    range: integer
+  separation_id:
+    range: integer
+  has_input:
+    range: BioSample 
+  analyte_id:
+    range: integer
+    description: "Unique identifier for the analytical sample resulting from the extraction activity"
+  source_mat_id:
+    range: integer
+    description: "A unique identifier assigned to the material sample that was used in the extraction activity"
+  Site_Code:
+  Site_Name_Long:
+  Core_collector:
+  DateTime_Collected:
+    range: datetime
+    description: "24 hr format"
+  Lat:
+  Long:
+  Elev:
+    range: integer
+    description: "in meters"
+  Soil_Temperature:
+    range: float
+    description: "in celsius"
+  VolWaterContent:
+    range: float
+  Vegetation:
+  Weather:
+  SiteDefinition:
+    description: "Defintion of a site. Size. i.e. 10 sq.m."
+  derivatization:
+    range: float
+    description: "A technique used in chemistry which transforms a chemical compound into a product ( the reaction's derivate) of similar chemical structure, called a derivative. That compount has properties more amenable to a particular analytical method. Some samples analyzed by GC require derivatization in order to make them suitable for analysis. Compounds that have poor volatility. poor thermal stability, or that can be adsorbed in the injector will exhibit nonreproducible peak areas, heights, and shapes. other compounds that respond poorly on a specific detector may need to be 'tagged' with a different function group to improve detection."
+  derivatization_agent:
+    range: float
+    description: "A chemical entity which is used in a material combination process known as derivatization and which consists in adding chemical groups to a molecule in an attempt to make it more volatile and therefore amenable to gas-chromatography mass spectrometry."
+  device:
+    description: "A material entity that is designed to perform a function in a scientific investigation, but is not a reagent."
+  container_type:
+    range: ContainerTypeEnum
+    description: "The vessel the sample was stored and extracted in"
+  volume_unit:
+    range: float
+    description: "A unit which is a standard measure of the amount of space occupied by any substance, whether solid, liquid, or gas."
+  unit:
+    range: float
+    description: "Particular quantity, defined and adopted by convention, with which other quanitities of the same kind are compared in order to express their magnitudes relative to that quantity. Units have conventionally assigned names and symbols."
+  duration:
+    range: quantityValue
+  mixing:
+    range: labDevice 
+  sample_volume:
+    range: quantityValue
+  speed:
+    range: quantityValue
+  volume:
+    range: quantityValue
+  concentration:
+    range: quantityValue
+  celsius_temperature:
+    range: quantityValue
+  dry:
+    description: "The act of removing moisture from something"
+  sample_mass:
+    range: float
+    description: "Total mass of sample used"
+  value:
+    range: quantityValue
+  starting_amount:
+    range: quantityValue
+    description: "Mass with units"
+  container_size:
+    range: quantityValue
+  acid:
+    description: "A molecular entity or chemical species capable of donating a hydron (proton) (see Brønsted acid) or capable of forming a covalent bond with an electron pair (see Lewis acid)."
+  pH:
+    range: float
+    description: "Quantity of dimension one used to express on a scale from 0 to 14 the amount-of-substance concentration of hydrogen ion of dilute aqueous solution, calculated as the logarithm of the reciprocal of hydrogen-ion concentration in gram atoms per liter."
+  filter:
+    description: "A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained. Filters are made with a variety of materials: cellulose and derivatives, glass fibre, ceramic, synthetic plastics and fibres. Filters may be naturally porous or be made so by mechanical or other means. Membrane/ceramic filters are prepared with highly controlled pore size in a sheet of suitable material such as polyfluoroethylene, polycarbonate or cellulose esters. Nylon mesh is sometimes used for reinforcement. The pores constitute 80–85% of the filter volume commonly and several pore sizes are available for air sampling (0.45−0.8 μm are commonly employed)."
+  material_pore_size:
+    range: float
+    description: "A quantitative or qualitative measurement of the physical dimensions of the pores in a material."
+  conditioning:
+    range: float
+    description: "Preliminary treatment of either phase with a suitable solution of the other phase (in the absence of main extractable solute(s)) so that when the subsequent equilibration is carried out changes in the (volume) phase ratio or in the concentrations of other components are minimized."
+  analyte_volume:
+    range: quantityValue
+    description: "The volume in microliters (ul) of the aliquot(s) derived from the analyte(s) shipped for sequencing and characterization."
+  conditioning_volume:
+    range: containerType
+  separation_method:
+    range: containerType
+  extractant:
+    range: SolvenEnum
+    description: "The active component(s) primarily responsible for transfer of a solute from one phase to the other."
+  material_component_separation:
+    range: float
+    description: "A material processing in which components of an input material become segregated in space"
+  sample_state:
+    description: "The chemical phase of a pure sample, or the state of a mixed sample."
+  analytical_solution:
+    range: float
+    description: "The solution prepared from the test portion for the analytical procedure. The proportions of test portion and solvent are normally known."
+  instrument:
+    description: "Description of the instrument or the mass spectrometer"
+  sieve_size:
+    range: quantityValue
+  reactant:
+    range: float
+    description: A substance that is consumed in the course of a chemical reaction. It is sometimes known, especially in the older literature, as a reagent, but this term is better used in a more specialized sense as a test substance that is added to a system in order to bring about a reaction or to see whether a reaction occurs (e.g. an analytical reagent).
+  description:
+  device_type:
+    range: devicetypeenum
+  activity_time_id:
+    range: integer
+  activity_speed_id:
+    range: integer
