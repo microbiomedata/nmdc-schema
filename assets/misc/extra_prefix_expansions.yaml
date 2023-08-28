@@ -1,7 +1,10 @@
 # use a more standardized format like JSON-LD contexts,
 # or just extract this from the schema?
 #   project/prefixmap/nmdc.yaml
-# although some of the prefixes may not be  defined in teh schema yet?!
+# although some of the prefixes may not be  defined in the schema yet?!
+
+# todo: project/prefixmap/nmdc.yaml is mislabeled JSON
+# todo: see also nmdc_schema/class_sparql.py
 
 "KEGG.ORTHOLOGY": "http://identifiers.org/kegg.orthology/" # yes
 "cas": "http://identifiers.org/cas/" # yes

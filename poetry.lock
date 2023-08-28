@@ -5222,6 +5222,22 @@ files = [
 ]
 
 [[package]]
+name = "sparql-dataframe"
+version = "0.4"
+description = "Convert SPARQL results to Pandas dataframes"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "sparql_dataframe-0.4-py3-none-any.whl", hash = "sha256:3512f898526cea55ccefd0d4535774458ee385faa0dffdcc2751e8d54aa73228"},
+    {file = "sparql_dataframe-0.4.tar.gz", hash = "sha256:b9e1e722d02989ae21269574fc9cf22f572e209d5aa129527b7a97cb020588f3"},
+]
+
+[package.dependencies]
+pandas = ">=0.22.0"
+SPARQLWrapper = ">=1.8.1"
+
+[[package]]
 name = "sparqlslurper"
 version = "0.5.1"
 description = "SPARQL Slurper for rdflib"
@@ -5943,4 +5959,4 @@ docs = []
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "273c34b498600b06e48e26f42ba2c2094106645540298bdb68775a73d4ac46ec"
+content-hash = "76ded34a7214708b090400ba77c45d053d38746a0d8b9fda92b4a86e99240bd9"
