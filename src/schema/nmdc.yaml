@@ -277,7 +277,7 @@ classes:
       be used as a superclass for more specific sample operations.
     slots:
       - id
-      - type
+      - operation_type
       - has_input
       - has_output
     slot_usage:
@@ -2317,8 +2317,10 @@ slots:
     range: integer
     exact_mappings:
       - OBI:0002475
+  
   sample_mass:
     range: QuantityValue
+    description: "Total mass of sample used"
 
   library_type:
     title: library type
@@ -2648,9 +2650,6 @@ slots:
     range: quantityValue
   dry:
     description: "The act of removing moisture from something"
-  sample_mass:
-    range: float
-    description: "Total mass of sample used"
   value:
     range: quantityValue
   starting_amount:
