@@ -6,15 +6,22 @@ import pandas as pd
 import sparql_dataframe
 from curies import Converter
 from linkml_runtime import SchemaView
+from linkml_runtime.dumpers import yaml_dumper
+
+from io import StringIO
+
+import pandas as pd
+
+from SPARQLWrapper import SPARQLWrapper, CSV, SELECT, POST, POSTDIRECTLY
 
 pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 
-# todo unpack bank node objects
-# todo report class types even if blank node doesn't need to be unpacked
+# todo unpack bank node objects RECURSIVELY
 # todo https://w3id.org/mixs/ or https://w3id.org/mixs-6-2-rc/ ?
-# todo support for constraints, like omics processing is part of study ???
+# todo support for MULTIPLE constraints
 # todo make more of these essentially CONSTANT declarations click options, directly or via a config file
+# todo be on the lookout for "http" or GraphDB's default blank node prefix: "_:genid-" in the output (TSV)
 
 prefixmaps_json_file = "../project/prefixmap/nmdc.yaml"  # todo oops
 with open(prefixmaps_json_file, "r") as f:
@@ -26,10 +33,12 @@ for pk, pv in raw_prefixmaps_dict.items():
         filtered_prefixmaps_dict[pk] = pv
 
 supplementary_prefix_maps = {
+    "BIOSAMPLE": "https://example.org/biosample/",
+    "ENVO": "http://purl.obolibrary.org/obo/ENVO_",
     "GOLD": 'http://identifiers.org/gold/',
     "GOLD2": "https://example.org/gold/",
+    "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_",
     "img.taxon": "https://example.org/img.taxon/",
-    "BIOSAMPLE": "https://example.org/biosample/",
 }
 
 overwrite_prefix_maps = {
@@ -155,6 +164,25 @@ def get_values_at_indices(list1, indices):
     return values_at_indices
 
 
+def get_sparql_dataframe(endpoint, query, post=False):
+    sparql = SPARQLWrapper(endpoint)
+    sparql.setQuery(query)
+    if sparql.queryType != SELECT:
+        raise QueryException("Only SPARQL SELECT queries are supported.")
+
+    if post:
+        sparql.setOnlyConneg(True)
+        sparql.addCustomHttpHeader("Content-type", "application/sparql-query")
+        sparql.addCustomHttpHeader("Accept", "text/csv")
+        sparql.setMethod(POST)
+        sparql.setRequestMethod(POSTDIRECTLY)
+
+    sparql.setReturnFormat(CSV)
+    results = sparql.query().convert()
+    _csv = StringIO(results.decode('utf-8'))
+    return pd.read_csv(_csv, sep=",", low_memory=False)
+
+
 class LinkMLClassSparqlQuery:
     def __init__(self, target_class_name, graph_name, schema_file, make_distinct=False, do_group_concat=False,
                  concatenation_suffix="_cat", do_not_query=("id", "type")):
@@ -257,6 +285,29 @@ class LinkMLClassSparqlQuery:
             self.vars_to_select.append(f"?{slot_dict['slot_slug']}_type")
             self.groupers.append(f"?{slot_dict['slot_slug']}_type")
             lines.append(slot_type_query)
+            range_slot = self.schema_view.get_identifier_slot(slot_dict['range'])
+            if range_slot:
+                # range_identifier = range_slot.name
+                # print(f"{range_identifier = }")
+                pass
+            else:
+                print(f"Also will need to account for {slot_dict['slot_slug']} -> {slot_dict['range']}'s slots")
+                additional_slots = self.schema_view.class_induced_slots(slot_dict['range'])
+                additional_slot_names = [i.name for i in additional_slots]
+                for additional_slot_name in additional_slot_names:
+                    additional_triple_pattern = f"optional {{ ?{slot_dict['slot_slug']} nmdc:{additional_slot_name} ?{slot_dict['slot_slug']}_{additional_slot_name} . }} . "
+                    print(f"\t{additional_triple_pattern = }")
+                    lines.append(additional_triple_pattern)
+                    self.vars_to_select.append(f"?{slot_dict['slot_slug']}_{additional_slot_name}")
+                    self.groupers.append(f"?{slot_dict['slot_slug']}_{additional_slot_name}")
+                    # todo don't assume nmdc: prefix (also look for slot uri)
+                    # todo reuse code already in this script
+                    # todo recurse!
+                    # todo don't assume optional
+                    # todo account for multivalued slots esp in the context of outer multivalueds
+                    # todo account for blank nodes ?
+                    # todo add these variables to the select line
+
         lines.append(line_suffix)
 
         lines_pasted = "\n".join(lines)
@@ -270,6 +321,10 @@ class LinkMLClassSparqlQuery:
             print(f"slot: {slot.name}")
 
 
+class QueryException(Exception):
+    pass
+
+
 @click.command()
 @click.option("--concatenation-suffix", default="_cat")
 @click.option("--do-group-concat", is_flag=True, default=True)
@@ -277,8 +332,8 @@ class LinkMLClassSparqlQuery:
 @click.option("--graph-name", default="mongodb://mongo-loadbalancer.nmdc.production.svc.spin.nersc.gov:27017")
 @click.option("--make-distinct", is_flag=True, default=False)
 @click.option("--schema-file", default="nmdc_schema_accepting_legacy_ids.yaml")
-@click.option("--target-class-name", default="OmicsProcessing")
-@click.option("--target-p-o-constraint", default="dcterms:isPartOf nmdc:sty-11-34xj1150")
+@click.option("--target-class-name", default="Biosample")
+@click.option("--target-p-o-constraint", default="dcterms:isPartOf q")
 def main(target_class_name, graph_name, make_distinct, do_group_concat, concatenation_suffix, do_not_query,
          schema_file, target_p_o_constraint):
     query_support = LinkMLClassSparqlQuery(
@@ -319,8 +374,10 @@ def main(target_class_name, graph_name, make_distinct, do_group_concat, concaten
     query_support.triple_patterns.sort()
     for i in query_support.triple_patterns:
         query_support_string_lines.append(i)
-        if target_p_o_constraint:
-            query_support_string_lines.append(f"?{query_support.target_class_name} {target_p_o_constraint} . ")
+
+    if target_p_o_constraint:
+        query_support_string_lines.append(f"?{query_support.target_class_name} {target_p_o_constraint} . ")
+
     query_support_string_lines.append("}")
 
     if query_support.graph_name:
@@ -337,21 +394,24 @@ def main(target_class_name, graph_name, make_distinct, do_group_concat, concaten
     print("\n")
     print(query_support_string)
 
-    df = sparql_dataframe.get(sparql_endpoint, query_support_string, post=True)
+    df = get_sparql_dataframe(sparql_endpoint, query_support_string, post=True)
 
     for dfc in list(df.columns):
         # print(f"{dfc = }")
         df = contact_column(df, f"{dfc}")
 
-    # todo add empty column removal back in re blank nodes
-
     if target_p_o_constraint:
         target_p_o_constraint_parts = target_p_o_constraint.split(" ")
-        df[target_p_o_constraint_parts[0]] = target_p_o_constraint_parts[1]
+        constraint_label = target_p_o_constraint_parts[0]
+        constraint_label = replace_colons_and_whitespace(constraint_label)
+        constraint_value = target_p_o_constraint_parts[1]
+        # df[constraint_label] = constraint_value
+        new_column = pd.Series([constraint_value] * len(df), name=f"{target_class_name}_{constraint_label}")
+        df = pd.concat([df, new_column], axis=1)
+
+        df = df.dropna(axis=1, how='all')
 
     df.to_csv(f"{target_class_name}.tsv", index=False, sep="\t")
-
-    # todo be on the lookout for "http" or GraphDB's default blank node prefix: "_:genid-"
 
 
 if __name__ == "__main__":
