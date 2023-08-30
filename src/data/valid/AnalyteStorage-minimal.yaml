@@ -8,8 +8,8 @@ analyte_volume:
   has_numeric_value: 30
   has_unit: 'mL'
 container_type: 'Falcon tube'
-analyte_id: 12
-source_mat_id: example:321
+has_output: example:456
+has_input: example:321
 duration:
   has_raw_value: '20 minutes'
   has_numeric_value: 20

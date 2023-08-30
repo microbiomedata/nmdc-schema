@@ -1,0 +1,27 @@
+id: PSA:01
+has_input: input:123
+has_output: output:456
+material_component_separation: filter
+analyte_volume:
+  has_numeric_value: 15
+  has_unit: mL
+duration:
+  has_numeric_value: 100000
+  has_unit: seconds
+value:
+  has_numeric_value: 15
+  has_unit: mL
+modifier:
+  modifier_substance: sulfuric acid
+  concentration:
+    has_numeric_value: 5
+    has_unit: percent
+material: paper
+solvent: methanol
+volume:
+  has_numeric_value: 15
+  has_unit: mL
+container_type: Falcon tube
+container_size:
+  has_numeric_value: 30
+  has_unit: mL

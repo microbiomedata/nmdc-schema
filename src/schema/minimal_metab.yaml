@@ -524,6 +524,8 @@ slots:
     mixins: object_set
     range: PhaseSeparationActivity
     multivalued: True
+    inlined_as_list: True
+    inlined: True
     description: The phase separation activities that make up the steps in a sample operation
   AnalyteStorageList:
     mixins: object_set
@@ -551,7 +553,7 @@ slots:
     multivalued: True
     description: The chemical reaction activity activities that make up the steps in a sample operation
 
-
+#Touch up descriptions, potentially add ontology meaning tag
 enums: 
   ContainerTypeEnum:
     permissible_values:
@@ -572,7 +574,7 @@ enums:
       Glass scintillation vial:
         description: 'glass scintillation vials'
       Olympus:
-        description: 'Olympus'
+        description: 'Olympus conical tube'
       centrifuge tube:
         description: 'centrifuge tube'
       sample cup:

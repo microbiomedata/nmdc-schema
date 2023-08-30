@@ -1,0 +1,29 @@
+id: filtration:123
+has_input: input:123
+has_output: output:456
+container_type: Olympus
+filter: paper filter
+material_pore_size: 0.05
+conditioning:
+  conditioning_type: filter conditioning
+  solvent: chloroform
+  concentration:
+    has_numeric_value: 30
+    has_unit: percent
+  volume:
+    has_numeric_value: 35
+    has_unit: mL
+  container_type: auto sampler vial
+  container_size:
+    has_numeric_value: 50
+    has_unit: mL
+analyte_volume:
+  has_numeric_value: 30
+  has_unit: L
+separation_method: Olympus
+container_size:
+  has_numeric_value: 50
+  has_unit: L
+volume:
+  has_numeric_value: 20
+  has_unit: mL
