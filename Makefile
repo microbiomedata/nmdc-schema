@@ -209,14 +209,12 @@ clean:
 include project.Makefile
 
 # custom
-site-clean:
+site-clean: clean
 	rm -rf nmdc_schema/*.json
 	rm -rf nmdc_schema/*.tsv
 	rm -rf nmdc_schema/*.yaml
-	rm -rf project/nmdc_*.json
-	rm -rf project/nmdc_*.yaml
 
-squeaky-clean: clean OmicsProcessing-clean accepting-legacy-ids-clean examples-clean mongodb-clean rdf-clean site-clean # does not include shuttle-clean or mixs-yaml-clean
+squeaky-clean: clean OmicsProcessing-clean accepting-legacy-ids-clean examples-clean mongodb-clean rdf-clean shuttle-clean site-clean # does not include mixs-yaml-clean
 
 project/nmdc_schema_merged.yaml:
 	$(RUN) gen-linkml \

@@ -19,6 +19,7 @@ examples-clean:
 
 mixs-yaml-clean:
 	rm -rf src/schema/mixs.yaml
+	rm -rf local/mixs_regen/mixs_subset_modified.yaml
 
 mongodb-clean:
 	date
@@ -38,7 +39,7 @@ shuttle-clean:
 	rm -rf local/mixs_regen/mixs_slots_associated_with_biosample_omics_processing_augmented.tsv
 	rm -rf local/mixs_regen/mixs_slots_used_in_schema.tsv
 	rm -rf local/mixs_regen/mixs_subset.yaml
-	rm -rf local/mixs_regen/mixs_subset_modified.yaml
+	#rm -rf local/mixs_regen/mixs_subset_modified.yaml # triggers complete regeneration
 	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
 	rm -rf local/mixs_regen/mixs_subset_repaired.yaml
 	rm -rf local/mixs_regen/mixs_subset_repaired.yaml.bak
