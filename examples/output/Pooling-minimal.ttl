@@ -1,0 +1,5 @@
+@prefix nmdc: <https://w3id.org/nmdc/> .
+
+nmdc:poolp-9x9-1x a nmdc:Pooling ;
+    nmdc:name "first pooling process" .
+
