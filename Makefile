@@ -103,8 +103,8 @@ gen-project: $(PYMODEL) src/schema/mixs.yaml
 		mv project/prefixmap/nmdc.yaml project/prefixmap/nmdc.json # todo this is too hardcoded and makes assumptions bout the file's existence
 
 # jsonschema-check-all-valid-databases
-test: examples-clean site test-python examples/output
-only-test: examples-clean test-python examples/output
+test: examples-clean site accepting-legacy-ids-all test-python examples/output
+only-test: examples-clean accepting-legacy-ids-all test-python examples/output
 
 test-schema:
 	# keep these in sync between PROJECT_FOLDERS and the includes/excludes for gen-project and test-schema
