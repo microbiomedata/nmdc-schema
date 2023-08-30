@@ -1,0 +1,9 @@
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+nmdc:sty-11-ab a nmdc:Study ;
+    nmdc:emsl_project_dois "doi:10.46936/intm.proj.2021.60141/60000423"^^xsd:anyURI .
+
+[] a nmdc:Database ;
+    nmdc:study_set nmdc:sty-11-ab .
+
