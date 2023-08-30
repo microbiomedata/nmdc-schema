@@ -1,0 +1,926 @@
+PREFIX CAS: <http://identifiers.org/cas/>
+PREFIX CATH: <http://identifiers.org/cath/>
+PREFIX CHEBI: <http://purl.obolibrary.org/obo/CHEBI_>
+PREFIX CHEMBL.COMPOUND: <http://identifiers.org/chembl.compound/>
+PREFIX CHMO: <http://purl.obolibrary.org/obo/CHMO_>
+PREFIX COG: <https://bioregistry.io/cog:>
+PREFIX Contaminant: <http://example.org/contaminant/>
+PREFIX DRUGBANK: <http://identifiers.org/drugbank/>
+PREFIX EC: <https://bioregistry.io/eccode:>
+PREFIX EFO: <http://www.ebi.ac.uk/efo/>
+PREFIX EGGNOG: <http://identifiers.org/eggnog/>
+PREFIX FBcv: <http://purl.obolibrary.org/obo/FBcv_>
+PREFIX GO: <http://purl.obolibrary.org/obo/GO_>
+PREFIX HMDB: <http://identifiers.org/hmdb/>
+PREFIX ISA: <http://example.com/isa/>
+PREFIX KEGG.COMPOUND: <http://identifiers.org/kegg.compound/>
+PREFIX KEGG.ORTHOLOGY: <http://identifiers.org/kegg.orthology/>
+PREFIX KEGG.REACTION: <http://identifiers.org/kegg.reaction/>
+PREFIX KEGG_PATHWAY: <http://identifiers.org/kegg.pathway/>
+PREFIX MASSIVE: <https://bioregistry.io/reference/massive:>
+PREFIX MESH: <http://identifiers.org/mesh/>
+PREFIX MIXS: <https://w3id.org/mixs/>
+PREFIX MetaCyc: <https://identifiers.org/metacyc.reaction/>
+PREFIX MetaNetX: <http://example.com/metanetx/>
+PREFIX NCIT: <http://purl.obolibrary.org/obo/NCIT_>
+PREFIX OBI: <http://purl.obolibrary.org/obo/OBI_>
+PREFIX PANTHER.FAMILY: <http://identifiers.org/panther.family/>
+PREFIX PFAM: <http://identifiers.org/pfam/>
+PREFIX PR: <http://purl.obolibrary.org/obo/PR_>
+PREFIX PUBCHEM.COMPOUND: <http://identifiers.org/pubchem.compound/>
+PREFIX RHEA: <http://identifiers.org/rhea/>
+PREFIX RO: <http://purl.obolibrary.org/obo/RO_>
+PREFIX RetroRules: <http://example.com/retrorules/>
+PREFIX SEED: <http://identifiers.org/seed/>
+PREFIX SIO: <http://example.com/sio_lowercase:>
+PREFIX SUPFAM: <http://identifiers.org/supfam/>
+PREFIX TIGRFAM: <http://identifiers.org/tigrfam/>
+PREFIX UniProtKB: <https://identifiers.org/uniprot/>
+PREFIX biolink: <https://w3id.org/biolink/vocab/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX doi: <https://bioregistry.io/reference/doi:>
+PREFIX emsl: <http://example.org/emsl_in_mongodb/>
+PREFIX emsl.project: <https://bioregistry.io/emsl.project:>
+PREFIX generic: <https://example.com/generic/>
+PREFIX gnps.task: <https://bioregistry.io/gnps.task:>
+PREFIX gtpo: <http://example.com/gtpo/>
+PREFIX igsn: <https://app.geosamples.org/sample/igsn/>
+PREFIX jgi: <http://example.com/jgi/>
+PREFIX jgi.proposal: <https://bioregistry.io/jgi.proposal:>
+PREFIX linkml: <https://w3id.org/linkml/>
+PREFIX mgnify.proj: <https://identifiers.org/mgnify.proj:>
+PREFIX neon.identifier: <http://example.org/neon/identifier/>
+PREFIX neon.schema: <http://example.org/neon/schema/>
+PREFIX nmdc: <https://w3id.org/nmdc/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX qud: <http://qudt.org/1.1/schema/qudt#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX sio: <https://bioregistry.io/reference/sio:>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX wgs84: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX BIOSAMPLE: <https://example.org/biosample/>
+PREFIX ENVO: <http://purl.obolibrary.org/obo/ENVO_>
+PREFIX GOLD: <http://identifiers.org/gold/>
+PREFIX GOLD2: <https://example.org/gold/>
+PREFIX NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_>
+PREFIX img.taxon: <https://example.org/img.taxon/>
+
+SELECT DISTINCT ?Biosample (group_concat(distinct ?Biosample_host_taxid_rdf_type; SEPARATOR='|') as ?Biosample_host_taxid_rdf_types) (group_concat(distinct ?Biosample_host_taxid_term; SEPARATOR='|') as ?Biosample_host_taxid_terms) (group_concat(distinct ?Biosample_host_taxid_has_raw_value; SEPARATOR='|') as ?Biosample_host_taxid_has_raw_values) (group_concat(distinct ?Biosample_host_taxid_was_generated_by; SEPARATOR='|') as ?Biosample_host_taxid_was_generated_bys) (group_concat(distinct ?Biosample_collected_from_rdf_type; SEPARATOR='|') as ?Biosample_collected_from_rdf_types) ?Biosample_collected_from ?Biosample_type (group_concat(distinct ?Biosample_img_identifiers; SEPARATOR='|') as ?Biosample_img_identifierss) ?Biosample_samp_name (group_concat(distinct ?Biosample_biosample_categories; SEPARATOR='|') as ?Biosample_biosample_categoriess) (group_concat(distinct ?Biosample_part_of_rdf_type; SEPARATOR='|') as ?Biosample_part_of_rdf_types) (group_concat(distinct ?Biosample_part_of; SEPARATOR='|') as ?Biosample_part_ofs) (group_concat(distinct ?Biosample_alternative_identifiers; SEPARATOR='|') as ?Biosample_alternative_identifierss) (group_concat(distinct ?Biosample_gold_biosample_identifiers; SEPARATOR='|') as ?Biosample_gold_biosample_identifierss) (group_concat(distinct ?Biosample_insdc_biosample_identifiers; SEPARATOR='|') as ?Biosample_insdc_biosample_identifierss) (group_concat(distinct ?Biosample_emsl_biosample_identifiers; SEPARATOR='|') as ?Biosample_emsl_biosample_identifierss) (group_concat(distinct ?Biosample_ammonium_nitrogen_rdf_type; SEPARATOR='|') as ?Biosample_ammonium_nitrogen_rdf_types) (group_concat(distinct ?Biosample_ammonium_nitrogen_has_unit; SEPARATOR='|') as ?Biosample_ammonium_nitrogen_has_units) (group_concat(distinct ?Biosample_ammonium_nitrogen_has_numeric_value; SEPARATOR='|') as ?Biosample_ammonium_nitrogen_has_numeric_values) (group_concat(distinct ?Biosample_ammonium_nitrogen_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_ammonium_nitrogen_has_minimum_numeric_values) (group_concat(distinct ?Biosample_ammonium_nitrogen_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_ammonium_nitrogen_has_maximum_numeric_values) (group_concat(distinct ?Biosample_ammonium_nitrogen_has_raw_value; SEPARATOR='|') as ?Biosample_ammonium_nitrogen_has_raw_values) (group_concat(distinct ?Biosample_ammonium_nitrogen_was_generated_by; SEPARATOR='|') as ?Biosample_ammonium_nitrogen_was_generated_bys) (group_concat(distinct ?Biosample_calcium_rdf_type; SEPARATOR='|') as ?Biosample_calcium_rdf_types) (group_concat(distinct ?Biosample_calcium_has_unit; SEPARATOR='|') as ?Biosample_calcium_has_units) (group_concat(distinct ?Biosample_calcium_has_numeric_value; SEPARATOR='|') as ?Biosample_calcium_has_numeric_values) (group_concat(distinct ?Biosample_calcium_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_calcium_has_minimum_numeric_values) (group_concat(distinct ?Biosample_calcium_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_calcium_has_maximum_numeric_values) (group_concat(distinct ?Biosample_calcium_has_raw_value; SEPARATOR='|') as ?Biosample_calcium_has_raw_values) (group_concat(distinct ?Biosample_calcium_was_generated_by; SEPARATOR='|') as ?Biosample_calcium_was_generated_bys) (group_concat(distinct ?Biosample_carb_nitro_ratio_rdf_type; SEPARATOR='|') as ?Biosample_carb_nitro_ratio_rdf_types) (group_concat(distinct ?Biosample_carb_nitro_ratio_has_unit; SEPARATOR='|') as ?Biosample_carb_nitro_ratio_has_units) (group_concat(distinct ?Biosample_carb_nitro_ratio_has_numeric_value; SEPARATOR='|') as ?Biosample_carb_nitro_ratio_has_numeric_values) (group_concat(distinct ?Biosample_carb_nitro_ratio_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_carb_nitro_ratio_has_minimum_numeric_values) (group_concat(distinct ?Biosample_carb_nitro_ratio_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_carb_nitro_ratio_has_maximum_numeric_values) (group_concat(distinct ?Biosample_carb_nitro_ratio_has_raw_value; SEPARATOR='|') as ?Biosample_carb_nitro_ratio_has_raw_values) (group_concat(distinct ?Biosample_carb_nitro_ratio_was_generated_by; SEPARATOR='|') as ?Biosample_carb_nitro_ratio_was_generated_bys) (group_concat(distinct ?Biosample_collection_date_rdf_type; SEPARATOR='|') as ?Biosample_collection_date_rdf_types) (group_concat(distinct ?Biosample_collection_date_has_raw_value; SEPARATOR='|') as ?Biosample_collection_date_has_raw_values) (group_concat(distinct ?Biosample_collection_date_was_generated_by; SEPARATOR='|') as ?Biosample_collection_date_was_generated_bys) (group_concat(distinct ?Biosample_cur_vegetation_rdf_type; SEPARATOR='|') as ?Biosample_cur_vegetation_rdf_types) (group_concat(distinct ?Biosample_cur_vegetation_language; SEPARATOR='|') as ?Biosample_cur_vegetation_languages) (group_concat(distinct ?Biosample_cur_vegetation_has_raw_value; SEPARATOR='|') as ?Biosample_cur_vegetation_has_raw_values) (group_concat(distinct ?Biosample_cur_vegetation_was_generated_by; SEPARATOR='|') as ?Biosample_cur_vegetation_was_generated_bys) (group_concat(distinct ?Biosample_depth_rdf_type; SEPARATOR='|') as ?Biosample_depth_rdf_types) (group_concat(distinct ?Biosample_depth_has_unit; SEPARATOR='|') as ?Biosample_depth_has_units) (group_concat(distinct ?Biosample_depth_has_numeric_value; SEPARATOR='|') as ?Biosample_depth_has_numeric_values) (group_concat(distinct ?Biosample_depth_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_depth_has_minimum_numeric_values) (group_concat(distinct ?Biosample_depth_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_depth_has_maximum_numeric_values) (group_concat(distinct ?Biosample_depth_has_raw_value; SEPARATOR='|') as ?Biosample_depth_has_raw_values) (group_concat(distinct ?Biosample_depth_was_generated_by; SEPARATOR='|') as ?Biosample_depth_was_generated_bys) ?Biosample_ecosystem ?Biosample_ecosystem_category ?Biosample_ecosystem_subtype ?Biosample_ecosystem_type ?Biosample_elev (group_concat(distinct ?Biosample_env_broad_scale_rdf_type; SEPARATOR='|') as ?Biosample_env_broad_scale_rdf_types) (group_concat(distinct ?Biosample_env_broad_scale_term; SEPARATOR='|') as ?Biosample_env_broad_scale_terms) (group_concat(distinct ?Biosample_env_broad_scale_has_raw_value; SEPARATOR='|') as ?Biosample_env_broad_scale_has_raw_values) (group_concat(distinct ?Biosample_env_broad_scale_was_generated_by; SEPARATOR='|') as ?Biosample_env_broad_scale_was_generated_bys) (group_concat(distinct ?Biosample_env_local_scale_rdf_type; SEPARATOR='|') as ?Biosample_env_local_scale_rdf_types) (group_concat(distinct ?Biosample_env_local_scale_term; SEPARATOR='|') as ?Biosample_env_local_scale_terms) (group_concat(distinct ?Biosample_env_local_scale_has_raw_value; SEPARATOR='|') as ?Biosample_env_local_scale_has_raw_values) (group_concat(distinct ?Biosample_env_local_scale_was_generated_by; SEPARATOR='|') as ?Biosample_env_local_scale_was_generated_bys) (group_concat(distinct ?Biosample_env_medium_rdf_type; SEPARATOR='|') as ?Biosample_env_medium_rdf_types) (group_concat(distinct ?Biosample_env_medium_term; SEPARATOR='|') as ?Biosample_env_medium_terms) (group_concat(distinct ?Biosample_env_medium_has_raw_value; SEPARATOR='|') as ?Biosample_env_medium_has_raw_values) (group_concat(distinct ?Biosample_env_medium_was_generated_by; SEPARATOR='|') as ?Biosample_env_medium_was_generated_bys) (group_concat(distinct ?Biosample_env_package_rdf_type; SEPARATOR='|') as ?Biosample_env_package_rdf_types) (group_concat(distinct ?Biosample_env_package_language; SEPARATOR='|') as ?Biosample_env_package_languages) (group_concat(distinct ?Biosample_env_package_has_raw_value; SEPARATOR='|') as ?Biosample_env_package_has_raw_values) (group_concat(distinct ?Biosample_env_package_was_generated_by; SEPARATOR='|') as ?Biosample_env_package_was_generated_bys) (group_concat(distinct ?Biosample_geo_loc_name_rdf_type; SEPARATOR='|') as ?Biosample_geo_loc_name_rdf_types) (group_concat(distinct ?Biosample_geo_loc_name_language; SEPARATOR='|') as ?Biosample_geo_loc_name_languages) (group_concat(distinct ?Biosample_geo_loc_name_has_raw_value; SEPARATOR='|') as ?Biosample_geo_loc_name_has_raw_values) (group_concat(distinct ?Biosample_geo_loc_name_was_generated_by; SEPARATOR='|') as ?Biosample_geo_loc_name_was_generated_bys) (group_concat(distinct ?Biosample_growth_facil_rdf_type; SEPARATOR='|') as ?Biosample_growth_facil_rdf_types) (group_concat(distinct ?Biosample_growth_facil_term; SEPARATOR='|') as ?Biosample_growth_facil_terms) (group_concat(distinct ?Biosample_growth_facil_has_raw_value; SEPARATOR='|') as ?Biosample_growth_facil_has_raw_values) (group_concat(distinct ?Biosample_growth_facil_was_generated_by; SEPARATOR='|') as ?Biosample_growth_facil_was_generated_bys) (group_concat(distinct ?Biosample_lat_lon_rdf_type; SEPARATOR='|') as ?Biosample_lat_lon_rdf_types) (group_concat(distinct ?Biosample_lat_lon_latitude; SEPARATOR='|') as ?Biosample_lat_lon_latitudes) (group_concat(distinct ?Biosample_lat_lon_longitude; SEPARATOR='|') as ?Biosample_lat_lon_longitudes) (group_concat(distinct ?Biosample_lat_lon_has_raw_value; SEPARATOR='|') as ?Biosample_lat_lon_has_raw_values) (group_concat(distinct ?Biosample_lat_lon_was_generated_by; SEPARATOR='|') as ?Biosample_lat_lon_was_generated_bys) (group_concat(distinct ?Biosample_lbc_thirty_rdf_type; SEPARATOR='|') as ?Biosample_lbc_thirty_rdf_types) (group_concat(distinct ?Biosample_lbc_thirty_has_unit; SEPARATOR='|') as ?Biosample_lbc_thirty_has_units) (group_concat(distinct ?Biosample_lbc_thirty_has_numeric_value; SEPARATOR='|') as ?Biosample_lbc_thirty_has_numeric_values) (group_concat(distinct ?Biosample_lbc_thirty_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_lbc_thirty_has_minimum_numeric_values) (group_concat(distinct ?Biosample_lbc_thirty_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_lbc_thirty_has_maximum_numeric_values) (group_concat(distinct ?Biosample_lbc_thirty_has_raw_value; SEPARATOR='|') as ?Biosample_lbc_thirty_has_raw_values) (group_concat(distinct ?Biosample_lbc_thirty_was_generated_by; SEPARATOR='|') as ?Biosample_lbc_thirty_was_generated_bys) (group_concat(distinct ?Biosample_lbceq_rdf_type; SEPARATOR='|') as ?Biosample_lbceq_rdf_types) (group_concat(distinct ?Biosample_lbceq_has_unit; SEPARATOR='|') as ?Biosample_lbceq_has_units) (group_concat(distinct ?Biosample_lbceq_has_numeric_value; SEPARATOR='|') as ?Biosample_lbceq_has_numeric_values) (group_concat(distinct ?Biosample_lbceq_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_lbceq_has_minimum_numeric_values) (group_concat(distinct ?Biosample_lbceq_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_lbceq_has_maximum_numeric_values) (group_concat(distinct ?Biosample_lbceq_has_raw_value; SEPARATOR='|') as ?Biosample_lbceq_has_raw_values) (group_concat(distinct ?Biosample_lbceq_was_generated_by; SEPARATOR='|') as ?Biosample_lbceq_was_generated_bys) (group_concat(distinct ?Biosample_magnesium_rdf_type; SEPARATOR='|') as ?Biosample_magnesium_rdf_types) (group_concat(distinct ?Biosample_magnesium_has_unit; SEPARATOR='|') as ?Biosample_magnesium_has_units) (group_concat(distinct ?Biosample_magnesium_has_numeric_value; SEPARATOR='|') as ?Biosample_magnesium_has_numeric_values) (group_concat(distinct ?Biosample_magnesium_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_magnesium_has_minimum_numeric_values) (group_concat(distinct ?Biosample_magnesium_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_magnesium_has_maximum_numeric_values) (group_concat(distinct ?Biosample_magnesium_has_raw_value; SEPARATOR='|') as ?Biosample_magnesium_has_raw_values) (group_concat(distinct ?Biosample_magnesium_was_generated_by; SEPARATOR='|') as ?Biosample_magnesium_was_generated_bys) (group_concat(distinct ?Biosample_manganese_rdf_type; SEPARATOR='|') as ?Biosample_manganese_rdf_types) (group_concat(distinct ?Biosample_manganese_has_unit; SEPARATOR='|') as ?Biosample_manganese_has_units) (group_concat(distinct ?Biosample_manganese_has_numeric_value; SEPARATOR='|') as ?Biosample_manganese_has_numeric_values) (group_concat(distinct ?Biosample_manganese_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_manganese_has_minimum_numeric_values) (group_concat(distinct ?Biosample_manganese_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_manganese_has_maximum_numeric_values) (group_concat(distinct ?Biosample_manganese_has_raw_value; SEPARATOR='|') as ?Biosample_manganese_has_raw_values) (group_concat(distinct ?Biosample_manganese_was_generated_by; SEPARATOR='|') as ?Biosample_manganese_was_generated_bys) ?Biosample_micro_biomass_meth (group_concat(distinct ?Biosample_nitrate_rdf_type; SEPARATOR='|') as ?Biosample_nitrate_rdf_types) (group_concat(distinct ?Biosample_nitrate_has_unit; SEPARATOR='|') as ?Biosample_nitrate_has_units) (group_concat(distinct ?Biosample_nitrate_has_numeric_value; SEPARATOR='|') as ?Biosample_nitrate_has_numeric_values) (group_concat(distinct ?Biosample_nitrate_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_nitrate_has_minimum_numeric_values) (group_concat(distinct ?Biosample_nitrate_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_nitrate_has_maximum_numeric_values) (group_concat(distinct ?Biosample_nitrate_has_raw_value; SEPARATOR='|') as ?Biosample_nitrate_has_raw_values) (group_concat(distinct ?Biosample_nitrate_was_generated_by; SEPARATOR='|') as ?Biosample_nitrate_was_generated_bys) (group_concat(distinct ?Biosample_nitrate_nitrogen_rdf_type; SEPARATOR='|') as ?Biosample_nitrate_nitrogen_rdf_types) (group_concat(distinct ?Biosample_nitrate_nitrogen_has_unit; SEPARATOR='|') as ?Biosample_nitrate_nitrogen_has_units) (group_concat(distinct ?Biosample_nitrate_nitrogen_has_numeric_value; SEPARATOR='|') as ?Biosample_nitrate_nitrogen_has_numeric_values) (group_concat(distinct ?Biosample_nitrate_nitrogen_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_nitrate_nitrogen_has_minimum_numeric_values) (group_concat(distinct ?Biosample_nitrate_nitrogen_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_nitrate_nitrogen_has_maximum_numeric_values) (group_concat(distinct ?Biosample_nitrate_nitrogen_has_raw_value; SEPARATOR='|') as ?Biosample_nitrate_nitrogen_has_raw_values) (group_concat(distinct ?Biosample_nitrate_nitrogen_was_generated_by; SEPARATOR='|') as ?Biosample_nitrate_nitrogen_was_generated_bys) (group_concat(distinct ?Biosample_nitrite_nitrogen_rdf_type; SEPARATOR='|') as ?Biosample_nitrite_nitrogen_rdf_types) (group_concat(distinct ?Biosample_nitrite_nitrogen_has_unit; SEPARATOR='|') as ?Biosample_nitrite_nitrogen_has_units) (group_concat(distinct ?Biosample_nitrite_nitrogen_has_numeric_value; SEPARATOR='|') as ?Biosample_nitrite_nitrogen_has_numeric_values) (group_concat(distinct ?Biosample_nitrite_nitrogen_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_nitrite_nitrogen_has_minimum_numeric_values) (group_concat(distinct ?Biosample_nitrite_nitrogen_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_nitrite_nitrogen_has_maximum_numeric_values) (group_concat(distinct ?Biosample_nitrite_nitrogen_has_raw_value; SEPARATOR='|') as ?Biosample_nitrite_nitrogen_has_raw_values) (group_concat(distinct ?Biosample_nitrite_nitrogen_was_generated_by; SEPARATOR='|') as ?Biosample_nitrite_nitrogen_was_generated_bys) (group_concat(distinct ?Biosample_nitro_rdf_type; SEPARATOR='|') as ?Biosample_nitro_rdf_types) (group_concat(distinct ?Biosample_nitro_has_unit; SEPARATOR='|') as ?Biosample_nitro_has_units) (group_concat(distinct ?Biosample_nitro_has_numeric_value; SEPARATOR='|') as ?Biosample_nitro_has_numeric_values) (group_concat(distinct ?Biosample_nitro_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_nitro_has_minimum_numeric_values) (group_concat(distinct ?Biosample_nitro_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_nitro_has_maximum_numeric_values) (group_concat(distinct ?Biosample_nitro_has_raw_value; SEPARATOR='|') as ?Biosample_nitro_has_raw_values) (group_concat(distinct ?Biosample_nitro_was_generated_by; SEPARATOR='|') as ?Biosample_nitro_was_generated_bys) (group_concat(distinct ?Biosample_org_carb_rdf_type; SEPARATOR='|') as ?Biosample_org_carb_rdf_types) (group_concat(distinct ?Biosample_org_carb_has_unit; SEPARATOR='|') as ?Biosample_org_carb_has_units) (group_concat(distinct ?Biosample_org_carb_has_numeric_value; SEPARATOR='|') as ?Biosample_org_carb_has_numeric_values) (group_concat(distinct ?Biosample_org_carb_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_org_carb_has_minimum_numeric_values) (group_concat(distinct ?Biosample_org_carb_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_org_carb_has_maximum_numeric_values) (group_concat(distinct ?Biosample_org_carb_has_raw_value; SEPARATOR='|') as ?Biosample_org_carb_has_raw_values) (group_concat(distinct ?Biosample_org_carb_was_generated_by; SEPARATOR='|') as ?Biosample_org_carb_was_generated_bys) ?Biosample_ph (group_concat(distinct ?Biosample_potassium_rdf_type; SEPARATOR='|') as ?Biosample_potassium_rdf_types) (group_concat(distinct ?Biosample_potassium_has_unit; SEPARATOR='|') as ?Biosample_potassium_has_units) (group_concat(distinct ?Biosample_potassium_has_numeric_value; SEPARATOR='|') as ?Biosample_potassium_has_numeric_values) (group_concat(distinct ?Biosample_potassium_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_potassium_has_minimum_numeric_values) (group_concat(distinct ?Biosample_potassium_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_potassium_has_maximum_numeric_values) (group_concat(distinct ?Biosample_potassium_has_raw_value; SEPARATOR='|') as ?Biosample_potassium_has_raw_values) (group_concat(distinct ?Biosample_potassium_was_generated_by; SEPARATOR='|') as ?Biosample_potassium_was_generated_bys) (group_concat(distinct ?Biosample_salinity_rdf_type; SEPARATOR='|') as ?Biosample_salinity_rdf_types) (group_concat(distinct ?Biosample_salinity_has_unit; SEPARATOR='|') as ?Biosample_salinity_has_units) (group_concat(distinct ?Biosample_salinity_has_numeric_value; SEPARATOR='|') as ?Biosample_salinity_has_numeric_values) (group_concat(distinct ?Biosample_salinity_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_salinity_has_minimum_numeric_values) (group_concat(distinct ?Biosample_salinity_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_salinity_has_maximum_numeric_values) (group_concat(distinct ?Biosample_salinity_has_raw_value; SEPARATOR='|') as ?Biosample_salinity_has_raw_values) (group_concat(distinct ?Biosample_salinity_was_generated_by; SEPARATOR='|') as ?Biosample_salinity_was_generated_bys) ?Biosample_samp_collec_device ?Biosample_samp_collec_method (group_concat(distinct ?Biosample_samp_store_temp_rdf_type; SEPARATOR='|') as ?Biosample_samp_store_temp_rdf_types) (group_concat(distinct ?Biosample_samp_store_temp_has_unit; SEPARATOR='|') as ?Biosample_samp_store_temp_has_units) (group_concat(distinct ?Biosample_samp_store_temp_has_numeric_value; SEPARATOR='|') as ?Biosample_samp_store_temp_has_numeric_values) (group_concat(distinct ?Biosample_samp_store_temp_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_samp_store_temp_has_minimum_numeric_values) (group_concat(distinct ?Biosample_samp_store_temp_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_samp_store_temp_has_maximum_numeric_values) (group_concat(distinct ?Biosample_samp_store_temp_has_raw_value; SEPARATOR='|') as ?Biosample_samp_store_temp_has_raw_values) (group_concat(distinct ?Biosample_samp_store_temp_was_generated_by; SEPARATOR='|') as ?Biosample_samp_store_temp_was_generated_bys) (group_concat(distinct ?Biosample_samp_taxon_id_rdf_type; SEPARATOR='|') as ?Biosample_samp_taxon_id_rdf_types) (group_concat(distinct ?Biosample_samp_taxon_id_term; SEPARATOR='|') as ?Biosample_samp_taxon_id_terms) (group_concat(distinct ?Biosample_samp_taxon_id_has_raw_value; SEPARATOR='|') as ?Biosample_samp_taxon_id_has_raw_values) (group_concat(distinct ?Biosample_samp_taxon_id_was_generated_by; SEPARATOR='|') as ?Biosample_samp_taxon_id_was_generated_bys) (group_concat(distinct ?Biosample_sieving_rdf_type; SEPARATOR='|') as ?Biosample_sieving_rdf_types) (group_concat(distinct ?Biosample_sieving_language; SEPARATOR='|') as ?Biosample_sieving_languages) (group_concat(distinct ?Biosample_sieving_has_raw_value; SEPARATOR='|') as ?Biosample_sieving_has_raw_values) (group_concat(distinct ?Biosample_sieving_was_generated_by; SEPARATOR='|') as ?Biosample_sieving_was_generated_bys) ?Biosample_soil_horizon ?Biosample_specific_ecosystem (group_concat(distinct ?Biosample_store_cond_rdf_type; SEPARATOR='|') as ?Biosample_store_cond_rdf_types) (group_concat(distinct ?Biosample_store_cond_language; SEPARATOR='|') as ?Biosample_store_cond_languages) (group_concat(distinct ?Biosample_store_cond_has_raw_value; SEPARATOR='|') as ?Biosample_store_cond_has_raw_values) (group_concat(distinct ?Biosample_store_cond_was_generated_by; SEPARATOR='|') as ?Biosample_store_cond_was_generated_bys) (group_concat(distinct ?Biosample_temp_rdf_type; SEPARATOR='|') as ?Biosample_temp_rdf_types) (group_concat(distinct ?Biosample_temp_has_unit; SEPARATOR='|') as ?Biosample_temp_has_units) (group_concat(distinct ?Biosample_temp_has_numeric_value; SEPARATOR='|') as ?Biosample_temp_has_numeric_values) (group_concat(distinct ?Biosample_temp_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_temp_has_minimum_numeric_values) (group_concat(distinct ?Biosample_temp_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_temp_has_maximum_numeric_values) (group_concat(distinct ?Biosample_temp_has_raw_value; SEPARATOR='|') as ?Biosample_temp_has_raw_values) (group_concat(distinct ?Biosample_temp_was_generated_by; SEPARATOR='|') as ?Biosample_temp_was_generated_bys) (group_concat(distinct ?Biosample_tot_nitro_rdf_type; SEPARATOR='|') as ?Biosample_tot_nitro_rdf_types) (group_concat(distinct ?Biosample_tot_nitro_has_unit; SEPARATOR='|') as ?Biosample_tot_nitro_has_units) (group_concat(distinct ?Biosample_tot_nitro_has_numeric_value; SEPARATOR='|') as ?Biosample_tot_nitro_has_numeric_values) (group_concat(distinct ?Biosample_tot_nitro_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_tot_nitro_has_minimum_numeric_values) (group_concat(distinct ?Biosample_tot_nitro_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_tot_nitro_has_maximum_numeric_values) (group_concat(distinct ?Biosample_tot_nitro_has_raw_value; SEPARATOR='|') as ?Biosample_tot_nitro_has_raw_values) (group_concat(distinct ?Biosample_tot_nitro_was_generated_by; SEPARATOR='|') as ?Biosample_tot_nitro_was_generated_bys) (group_concat(distinct ?Biosample_tot_nitro_content_rdf_type; SEPARATOR='|') as ?Biosample_tot_nitro_content_rdf_types) (group_concat(distinct ?Biosample_tot_nitro_content_has_unit; SEPARATOR='|') as ?Biosample_tot_nitro_content_has_units) (group_concat(distinct ?Biosample_tot_nitro_content_has_numeric_value; SEPARATOR='|') as ?Biosample_tot_nitro_content_has_numeric_values) (group_concat(distinct ?Biosample_tot_nitro_content_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_tot_nitro_content_has_minimum_numeric_values) (group_concat(distinct ?Biosample_tot_nitro_content_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_tot_nitro_content_has_maximum_numeric_values) (group_concat(distinct ?Biosample_tot_nitro_content_has_raw_value; SEPARATOR='|') as ?Biosample_tot_nitro_content_has_raw_values) (group_concat(distinct ?Biosample_tot_nitro_content_was_generated_by; SEPARATOR='|') as ?Biosample_tot_nitro_content_was_generated_bys) (group_concat(distinct ?Biosample_tot_org_carb_rdf_type; SEPARATOR='|') as ?Biosample_tot_org_carb_rdf_types) (group_concat(distinct ?Biosample_tot_org_carb_has_unit; SEPARATOR='|') as ?Biosample_tot_org_carb_has_units) (group_concat(distinct ?Biosample_tot_org_carb_has_numeric_value; SEPARATOR='|') as ?Biosample_tot_org_carb_has_numeric_values) (group_concat(distinct ?Biosample_tot_org_carb_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_tot_org_carb_has_minimum_numeric_values) (group_concat(distinct ?Biosample_tot_org_carb_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_tot_org_carb_has_maximum_numeric_values) (group_concat(distinct ?Biosample_tot_org_carb_has_raw_value; SEPARATOR='|') as ?Biosample_tot_org_carb_has_raw_values) (group_concat(distinct ?Biosample_tot_org_carb_was_generated_by; SEPARATOR='|') as ?Biosample_tot_org_carb_was_generated_bys) (group_concat(distinct ?Biosample_tot_phosp_rdf_type; SEPARATOR='|') as ?Biosample_tot_phosp_rdf_types) (group_concat(distinct ?Biosample_tot_phosp_has_unit; SEPARATOR='|') as ?Biosample_tot_phosp_has_units) (group_concat(distinct ?Biosample_tot_phosp_has_numeric_value; SEPARATOR='|') as ?Biosample_tot_phosp_has_numeric_values) (group_concat(distinct ?Biosample_tot_phosp_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_tot_phosp_has_minimum_numeric_values) (group_concat(distinct ?Biosample_tot_phosp_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_tot_phosp_has_maximum_numeric_values) (group_concat(distinct ?Biosample_tot_phosp_has_raw_value; SEPARATOR='|') as ?Biosample_tot_phosp_has_raw_values) (group_concat(distinct ?Biosample_tot_phosp_was_generated_by; SEPARATOR='|') as ?Biosample_tot_phosp_was_generated_bys) (group_concat(distinct ?Biosample_water_content; SEPARATOR='|') as ?Biosample_water_contents) (group_concat(distinct ?Biosample_zinc_rdf_type; SEPARATOR='|') as ?Biosample_zinc_rdf_types) (group_concat(distinct ?Biosample_zinc_has_unit; SEPARATOR='|') as ?Biosample_zinc_has_units) (group_concat(distinct ?Biosample_zinc_has_numeric_value; SEPARATOR='|') as ?Biosample_zinc_has_numeric_values) (group_concat(distinct ?Biosample_zinc_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_zinc_has_minimum_numeric_values) (group_concat(distinct ?Biosample_zinc_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_zinc_has_maximum_numeric_values) (group_concat(distinct ?Biosample_zinc_has_raw_value; SEPARATOR='|') as ?Biosample_zinc_has_raw_values) (group_concat(distinct ?Biosample_zinc_was_generated_by; SEPARATOR='|') as ?Biosample_zinc_was_generated_bys) ?Biosample_add_date ?Biosample_community ?Biosample_habitat ?Biosample_host_name ?Biosample_location ?Biosample_mod_date ?Biosample_ncbi_taxonomy_name ?Biosample_sample_collection_site (group_concat(distinct ?Biosample_subsurface_depth_rdf_type; SEPARATOR='|') as ?Biosample_subsurface_depth_rdf_types) (group_concat(distinct ?Biosample_subsurface_depth_has_unit; SEPARATOR='|') as ?Biosample_subsurface_depth_has_units) (group_concat(distinct ?Biosample_subsurface_depth_has_numeric_value; SEPARATOR='|') as ?Biosample_subsurface_depth_has_numeric_values) (group_concat(distinct ?Biosample_subsurface_depth_has_minimum_numeric_value; SEPARATOR='|') as ?Biosample_subsurface_depth_has_minimum_numeric_values) (group_concat(distinct ?Biosample_subsurface_depth_has_maximum_numeric_value; SEPARATOR='|') as ?Biosample_subsurface_depth_has_maximum_numeric_values) (group_concat(distinct ?Biosample_subsurface_depth_has_raw_value; SEPARATOR='|') as ?Biosample_subsurface_depth_has_raw_values) (group_concat(distinct ?Biosample_subsurface_depth_was_generated_by; SEPARATOR='|') as ?Biosample_subsurface_depth_was_generated_bys) ?Biosample_collection_time (group_concat(distinct ?Biosample_analysis_type; SEPARATOR='|') as ?Biosample_analysis_types) (group_concat(distinct ?Biosample_sample_link; SEPARATOR='|') as ?Biosample_sample_links) ?Biosample_name ?Biosample_description
+WHERE {
+   ?Biosample rdf:type nmdc:Biosample . 
+   OPTIONAL {
+      ?Biosample MIXS:0000250 ?Biosample_host_taxid . 
+      OPTIONAL {
+         ?Biosample_host_taxid rdf:type ?Biosample_host_taxid_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_host_taxid nmdc:term ?Biosample_host_taxid_term . 
+      }
+      OPTIONAL {
+         ?Biosample_host_taxid nmdc:has_raw_value ?Biosample_host_taxid_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_host_taxid nmdc:was_generated_by ?Biosample_host_taxid_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample nmdc:collected_from ?Biosample_collected_from . 
+      OPTIONAL {
+         ?Biosample_collected_from rdf:type ?Biosample_collected_from_rdf_type . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample nmdc:type ?Biosample_type . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:img_identifiers ?Biosample_img_identifiers . 
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0001107 ?Biosample_samp_name . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:biosample_categories ?Biosample_biosample_categories . 
+   }
+   ?Biosample dcterms:isPartOf ?Biosample_part_of . 
+   OPTIONAL {
+      ?Biosample_part_of rdf:type ?Biosample_part_of_rdf_type . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:alternative_identifiers ?Biosample_alternative_identifiers . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:gold_biosample_identifiers ?Biosample_gold_biosample_identifiers . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:insdc_biosample_identifiers ?Biosample_insdc_biosample_identifiers . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:emsl_biosample_identifiers ?Biosample_emsl_biosample_identifiers . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:ammonium_nitrogen ?Biosample_ammonium_nitrogen . 
+      OPTIONAL {
+         ?Biosample_ammonium_nitrogen rdf:type ?Biosample_ammonium_nitrogen_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_ammonium_nitrogen nmdc:has_unit ?Biosample_ammonium_nitrogen_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_ammonium_nitrogen nmdc:has_numeric_value ?Biosample_ammonium_nitrogen_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_ammonium_nitrogen nmdc:has_minimum_numeric_value ?Biosample_ammonium_nitrogen_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_ammonium_nitrogen nmdc:has_maximum_numeric_value ?Biosample_ammonium_nitrogen_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_ammonium_nitrogen nmdc:has_raw_value ?Biosample_ammonium_nitrogen_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_ammonium_nitrogen nmdc:was_generated_by ?Biosample_ammonium_nitrogen_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000432 ?Biosample_calcium . 
+      OPTIONAL {
+         ?Biosample_calcium rdf:type ?Biosample_calcium_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_calcium nmdc:has_unit ?Biosample_calcium_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_calcium nmdc:has_numeric_value ?Biosample_calcium_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_calcium nmdc:has_minimum_numeric_value ?Biosample_calcium_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_calcium nmdc:has_maximum_numeric_value ?Biosample_calcium_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_calcium nmdc:has_raw_value ?Biosample_calcium_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_calcium nmdc:was_generated_by ?Biosample_calcium_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000310 ?Biosample_carb_nitro_ratio . 
+      OPTIONAL {
+         ?Biosample_carb_nitro_ratio rdf:type ?Biosample_carb_nitro_ratio_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_carb_nitro_ratio nmdc:has_unit ?Biosample_carb_nitro_ratio_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_carb_nitro_ratio nmdc:has_numeric_value ?Biosample_carb_nitro_ratio_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_carb_nitro_ratio nmdc:has_minimum_numeric_value ?Biosample_carb_nitro_ratio_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_carb_nitro_ratio nmdc:has_maximum_numeric_value ?Biosample_carb_nitro_ratio_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_carb_nitro_ratio nmdc:has_raw_value ?Biosample_carb_nitro_ratio_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_carb_nitro_ratio nmdc:was_generated_by ?Biosample_carb_nitro_ratio_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000011 ?Biosample_collection_date . 
+      OPTIONAL {
+         ?Biosample_collection_date rdf:type ?Biosample_collection_date_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_collection_date nmdc:has_raw_value ?Biosample_collection_date_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_collection_date nmdc:was_generated_by ?Biosample_collection_date_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000312 ?Biosample_cur_vegetation . 
+      OPTIONAL {
+         ?Biosample_cur_vegetation rdf:type ?Biosample_cur_vegetation_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_cur_vegetation nmdc:language ?Biosample_cur_vegetation_language . 
+      }
+      OPTIONAL {
+         ?Biosample_cur_vegetation nmdc:has_raw_value ?Biosample_cur_vegetation_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_cur_vegetation nmdc:was_generated_by ?Biosample_cur_vegetation_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000018 ?Biosample_depth . 
+      OPTIONAL {
+         ?Biosample_depth rdf:type ?Biosample_depth_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_depth nmdc:has_unit ?Biosample_depth_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_depth nmdc:has_numeric_value ?Biosample_depth_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_depth nmdc:has_minimum_numeric_value ?Biosample_depth_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_depth nmdc:has_maximum_numeric_value ?Biosample_depth_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_depth nmdc:has_raw_value ?Biosample_depth_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_depth nmdc:was_generated_by ?Biosample_depth_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample nmdc:ecosystem ?Biosample_ecosystem . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:ecosystem_category ?Biosample_ecosystem_category . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:ecosystem_subtype ?Biosample_ecosystem_subtype . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:ecosystem_type ?Biosample_ecosystem_type . 
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000093 ?Biosample_elev . 
+   }
+   ?Biosample MIXS:0000012 ?Biosample_env_broad_scale . 
+   OPTIONAL {
+      ?Biosample_env_broad_scale rdf:type ?Biosample_env_broad_scale_rdf_type . 
+   }
+   OPTIONAL {
+      ?Biosample_env_broad_scale nmdc:term ?Biosample_env_broad_scale_term . 
+   }
+   OPTIONAL {
+      ?Biosample_env_broad_scale nmdc:has_raw_value ?Biosample_env_broad_scale_has_raw_value . 
+   }
+   OPTIONAL {
+      ?Biosample_env_broad_scale nmdc:was_generated_by ?Biosample_env_broad_scale_was_generated_by . 
+   }
+   ?Biosample MIXS:0000013 ?Biosample_env_local_scale . 
+   OPTIONAL {
+      ?Biosample_env_local_scale rdf:type ?Biosample_env_local_scale_rdf_type . 
+   }
+   OPTIONAL {
+      ?Biosample_env_local_scale nmdc:term ?Biosample_env_local_scale_term . 
+   }
+   OPTIONAL {
+      ?Biosample_env_local_scale nmdc:has_raw_value ?Biosample_env_local_scale_has_raw_value . 
+   }
+   OPTIONAL {
+      ?Biosample_env_local_scale nmdc:was_generated_by ?Biosample_env_local_scale_was_generated_by . 
+   }
+   ?Biosample MIXS:0000014 ?Biosample_env_medium . 
+   OPTIONAL {
+      ?Biosample_env_medium rdf:type ?Biosample_env_medium_rdf_type . 
+   }
+   OPTIONAL {
+      ?Biosample_env_medium nmdc:term ?Biosample_env_medium_term . 
+   }
+   OPTIONAL {
+      ?Biosample_env_medium nmdc:has_raw_value ?Biosample_env_medium_has_raw_value . 
+   }
+   OPTIONAL {
+      ?Biosample_env_medium nmdc:was_generated_by ?Biosample_env_medium_was_generated_by . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:env_package ?Biosample_env_package . 
+      OPTIONAL {
+         ?Biosample_env_package rdf:type ?Biosample_env_package_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_env_package nmdc:language ?Biosample_env_package_language . 
+      }
+      OPTIONAL {
+         ?Biosample_env_package nmdc:has_raw_value ?Biosample_env_package_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_env_package nmdc:was_generated_by ?Biosample_env_package_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000010 ?Biosample_geo_loc_name . 
+      OPTIONAL {
+         ?Biosample_geo_loc_name rdf:type ?Biosample_geo_loc_name_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_geo_loc_name nmdc:language ?Biosample_geo_loc_name_language . 
+      }
+      OPTIONAL {
+         ?Biosample_geo_loc_name nmdc:has_raw_value ?Biosample_geo_loc_name_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_geo_loc_name nmdc:was_generated_by ?Biosample_geo_loc_name_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0001043 ?Biosample_growth_facil . 
+      OPTIONAL {
+         ?Biosample_growth_facil rdf:type ?Biosample_growth_facil_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_growth_facil nmdc:term ?Biosample_growth_facil_term . 
+      }
+      OPTIONAL {
+         ?Biosample_growth_facil nmdc:has_raw_value ?Biosample_growth_facil_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_growth_facil nmdc:was_generated_by ?Biosample_growth_facil_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000009 ?Biosample_lat_lon . 
+      OPTIONAL {
+         ?Biosample_lat_lon rdf:type ?Biosample_lat_lon_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_lat_lon wgs84:lat ?Biosample_lat_lon_latitude . 
+      }
+      OPTIONAL {
+         ?Biosample_lat_lon wgs84:long ?Biosample_lat_lon_longitude . 
+      }
+      OPTIONAL {
+         ?Biosample_lat_lon nmdc:has_raw_value ?Biosample_lat_lon_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_lat_lon nmdc:was_generated_by ?Biosample_lat_lon_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample nmdc:lbc_thirty ?Biosample_lbc_thirty . 
+      OPTIONAL {
+         ?Biosample_lbc_thirty rdf:type ?Biosample_lbc_thirty_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_lbc_thirty nmdc:has_unit ?Biosample_lbc_thirty_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_lbc_thirty nmdc:has_numeric_value ?Biosample_lbc_thirty_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_lbc_thirty nmdc:has_minimum_numeric_value ?Biosample_lbc_thirty_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_lbc_thirty nmdc:has_maximum_numeric_value ?Biosample_lbc_thirty_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_lbc_thirty nmdc:has_raw_value ?Biosample_lbc_thirty_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_lbc_thirty nmdc:was_generated_by ?Biosample_lbc_thirty_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample nmdc:lbceq ?Biosample_lbceq . 
+      OPTIONAL {
+         ?Biosample_lbceq rdf:type ?Biosample_lbceq_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_lbceq nmdc:has_unit ?Biosample_lbceq_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_lbceq nmdc:has_numeric_value ?Biosample_lbceq_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_lbceq nmdc:has_minimum_numeric_value ?Biosample_lbceq_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_lbceq nmdc:has_maximum_numeric_value ?Biosample_lbceq_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_lbceq nmdc:has_raw_value ?Biosample_lbceq_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_lbceq nmdc:was_generated_by ?Biosample_lbceq_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000431 ?Biosample_magnesium . 
+      OPTIONAL {
+         ?Biosample_magnesium rdf:type ?Biosample_magnesium_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_magnesium nmdc:has_unit ?Biosample_magnesium_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_magnesium nmdc:has_numeric_value ?Biosample_magnesium_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_magnesium nmdc:has_minimum_numeric_value ?Biosample_magnesium_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_magnesium nmdc:has_maximum_numeric_value ?Biosample_magnesium_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_magnesium nmdc:has_raw_value ?Biosample_magnesium_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_magnesium nmdc:was_generated_by ?Biosample_magnesium_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample nmdc:manganese ?Biosample_manganese . 
+      OPTIONAL {
+         ?Biosample_manganese rdf:type ?Biosample_manganese_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_manganese nmdc:has_unit ?Biosample_manganese_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_manganese nmdc:has_numeric_value ?Biosample_manganese_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_manganese nmdc:has_minimum_numeric_value ?Biosample_manganese_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_manganese nmdc:has_maximum_numeric_value ?Biosample_manganese_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_manganese nmdc:has_raw_value ?Biosample_manganese_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_manganese nmdc:was_generated_by ?Biosample_manganese_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000339 ?Biosample_micro_biomass_meth . 
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000425 ?Biosample_nitrate . 
+      OPTIONAL {
+         ?Biosample_nitrate rdf:type ?Biosample_nitrate_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_nitrate nmdc:has_unit ?Biosample_nitrate_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_nitrate nmdc:has_numeric_value ?Biosample_nitrate_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_nitrate nmdc:has_minimum_numeric_value ?Biosample_nitrate_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_nitrate nmdc:has_maximum_numeric_value ?Biosample_nitrate_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_nitrate nmdc:has_raw_value ?Biosample_nitrate_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_nitrate nmdc:was_generated_by ?Biosample_nitrate_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample nmdc:nitrate_nitrogen ?Biosample_nitrate_nitrogen . 
+      OPTIONAL {
+         ?Biosample_nitrate_nitrogen rdf:type ?Biosample_nitrate_nitrogen_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_nitrate_nitrogen nmdc:has_unit ?Biosample_nitrate_nitrogen_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_nitrate_nitrogen nmdc:has_numeric_value ?Biosample_nitrate_nitrogen_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_nitrate_nitrogen nmdc:has_minimum_numeric_value ?Biosample_nitrate_nitrogen_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_nitrate_nitrogen nmdc:has_maximum_numeric_value ?Biosample_nitrate_nitrogen_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_nitrate_nitrogen nmdc:has_raw_value ?Biosample_nitrate_nitrogen_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_nitrate_nitrogen nmdc:was_generated_by ?Biosample_nitrate_nitrogen_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample nmdc:nitrite_nitrogen ?Biosample_nitrite_nitrogen . 
+      OPTIONAL {
+         ?Biosample_nitrite_nitrogen rdf:type ?Biosample_nitrite_nitrogen_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_nitrite_nitrogen nmdc:has_unit ?Biosample_nitrite_nitrogen_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_nitrite_nitrogen nmdc:has_numeric_value ?Biosample_nitrite_nitrogen_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_nitrite_nitrogen nmdc:has_minimum_numeric_value ?Biosample_nitrite_nitrogen_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_nitrite_nitrogen nmdc:has_maximum_numeric_value ?Biosample_nitrite_nitrogen_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_nitrite_nitrogen nmdc:has_raw_value ?Biosample_nitrite_nitrogen_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_nitrite_nitrogen nmdc:was_generated_by ?Biosample_nitrite_nitrogen_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000504 ?Biosample_nitro . 
+      OPTIONAL {
+         ?Biosample_nitro rdf:type ?Biosample_nitro_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_nitro nmdc:has_unit ?Biosample_nitro_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_nitro nmdc:has_numeric_value ?Biosample_nitro_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_nitro nmdc:has_minimum_numeric_value ?Biosample_nitro_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_nitro nmdc:has_maximum_numeric_value ?Biosample_nitro_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_nitro nmdc:has_raw_value ?Biosample_nitro_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_nitro nmdc:was_generated_by ?Biosample_nitro_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000508 ?Biosample_org_carb . 
+      OPTIONAL {
+         ?Biosample_org_carb rdf:type ?Biosample_org_carb_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_org_carb nmdc:has_unit ?Biosample_org_carb_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_org_carb nmdc:has_numeric_value ?Biosample_org_carb_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_org_carb nmdc:has_minimum_numeric_value ?Biosample_org_carb_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_org_carb nmdc:has_maximum_numeric_value ?Biosample_org_carb_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_org_carb nmdc:has_raw_value ?Biosample_org_carb_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_org_carb nmdc:was_generated_by ?Biosample_org_carb_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0001001 ?Biosample_ph . 
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000430 ?Biosample_potassium . 
+      OPTIONAL {
+         ?Biosample_potassium rdf:type ?Biosample_potassium_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_potassium nmdc:has_unit ?Biosample_potassium_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_potassium nmdc:has_numeric_value ?Biosample_potassium_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_potassium nmdc:has_minimum_numeric_value ?Biosample_potassium_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_potassium nmdc:has_maximum_numeric_value ?Biosample_potassium_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_potassium nmdc:has_raw_value ?Biosample_potassium_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_potassium nmdc:was_generated_by ?Biosample_potassium_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000183 ?Biosample_salinity . 
+      OPTIONAL {
+         ?Biosample_salinity rdf:type ?Biosample_salinity_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_salinity nmdc:has_unit ?Biosample_salinity_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_salinity nmdc:has_numeric_value ?Biosample_salinity_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_salinity nmdc:has_minimum_numeric_value ?Biosample_salinity_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_salinity nmdc:has_maximum_numeric_value ?Biosample_salinity_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_salinity nmdc:has_raw_value ?Biosample_salinity_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_salinity nmdc:was_generated_by ?Biosample_salinity_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000002 ?Biosample_samp_collec_device . 
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0001225 ?Biosample_samp_collec_method . 
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000110 ?Biosample_samp_store_temp . 
+      OPTIONAL {
+         ?Biosample_samp_store_temp rdf:type ?Biosample_samp_store_temp_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_samp_store_temp nmdc:has_unit ?Biosample_samp_store_temp_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_samp_store_temp nmdc:has_numeric_value ?Biosample_samp_store_temp_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_samp_store_temp nmdc:has_minimum_numeric_value ?Biosample_samp_store_temp_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_samp_store_temp nmdc:has_maximum_numeric_value ?Biosample_samp_store_temp_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_samp_store_temp nmdc:has_raw_value ?Biosample_samp_store_temp_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_samp_store_temp nmdc:was_generated_by ?Biosample_samp_store_temp_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0001320 ?Biosample_samp_taxon_id . 
+      OPTIONAL {
+         ?Biosample_samp_taxon_id rdf:type ?Biosample_samp_taxon_id_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_samp_taxon_id nmdc:term ?Biosample_samp_taxon_id_term . 
+      }
+      OPTIONAL {
+         ?Biosample_samp_taxon_id nmdc:has_raw_value ?Biosample_samp_taxon_id_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_samp_taxon_id nmdc:was_generated_by ?Biosample_samp_taxon_id_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000322 ?Biosample_sieving . 
+      OPTIONAL {
+         ?Biosample_sieving rdf:type ?Biosample_sieving_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_sieving nmdc:language ?Biosample_sieving_language . 
+      }
+      OPTIONAL {
+         ?Biosample_sieving nmdc:has_raw_value ?Biosample_sieving_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_sieving nmdc:was_generated_by ?Biosample_sieving_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0001082 ?Biosample_soil_horizon . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:specific_ecosystem ?Biosample_specific_ecosystem . 
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000327 ?Biosample_store_cond . 
+      OPTIONAL {
+         ?Biosample_store_cond rdf:type ?Biosample_store_cond_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_store_cond nmdc:language ?Biosample_store_cond_language . 
+      }
+      OPTIONAL {
+         ?Biosample_store_cond nmdc:has_raw_value ?Biosample_store_cond_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_store_cond nmdc:was_generated_by ?Biosample_store_cond_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000113 ?Biosample_temp . 
+      OPTIONAL {
+         ?Biosample_temp rdf:type ?Biosample_temp_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_temp nmdc:has_unit ?Biosample_temp_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_temp nmdc:has_numeric_value ?Biosample_temp_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_temp nmdc:has_minimum_numeric_value ?Biosample_temp_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_temp nmdc:has_maximum_numeric_value ?Biosample_temp_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_temp nmdc:has_raw_value ?Biosample_temp_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_temp nmdc:was_generated_by ?Biosample_temp_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000102 ?Biosample_tot_nitro . 
+      OPTIONAL {
+         ?Biosample_tot_nitro rdf:type ?Biosample_tot_nitro_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_nitro nmdc:has_unit ?Biosample_tot_nitro_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_nitro nmdc:has_numeric_value ?Biosample_tot_nitro_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_nitro nmdc:has_minimum_numeric_value ?Biosample_tot_nitro_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_nitro nmdc:has_maximum_numeric_value ?Biosample_tot_nitro_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_nitro nmdc:has_raw_value ?Biosample_tot_nitro_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_nitro nmdc:was_generated_by ?Biosample_tot_nitro_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000530 ?Biosample_tot_nitro_content . 
+      OPTIONAL {
+         ?Biosample_tot_nitro_content rdf:type ?Biosample_tot_nitro_content_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_nitro_content nmdc:has_unit ?Biosample_tot_nitro_content_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_nitro_content nmdc:has_numeric_value ?Biosample_tot_nitro_content_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_nitro_content nmdc:has_minimum_numeric_value ?Biosample_tot_nitro_content_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_nitro_content nmdc:has_maximum_numeric_value ?Biosample_tot_nitro_content_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_nitro_content nmdc:has_raw_value ?Biosample_tot_nitro_content_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_nitro_content nmdc:was_generated_by ?Biosample_tot_nitro_content_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000533 ?Biosample_tot_org_carb . 
+      OPTIONAL {
+         ?Biosample_tot_org_carb rdf:type ?Biosample_tot_org_carb_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_org_carb nmdc:has_unit ?Biosample_tot_org_carb_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_org_carb nmdc:has_numeric_value ?Biosample_tot_org_carb_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_org_carb nmdc:has_minimum_numeric_value ?Biosample_tot_org_carb_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_org_carb nmdc:has_maximum_numeric_value ?Biosample_tot_org_carb_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_org_carb nmdc:has_raw_value ?Biosample_tot_org_carb_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_org_carb nmdc:was_generated_by ?Biosample_tot_org_carb_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000117 ?Biosample_tot_phosp . 
+      OPTIONAL {
+         ?Biosample_tot_phosp rdf:type ?Biosample_tot_phosp_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_phosp nmdc:has_unit ?Biosample_tot_phosp_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_phosp nmdc:has_numeric_value ?Biosample_tot_phosp_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_phosp nmdc:has_minimum_numeric_value ?Biosample_tot_phosp_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_phosp nmdc:has_maximum_numeric_value ?Biosample_tot_phosp_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_phosp nmdc:has_raw_value ?Biosample_tot_phosp_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_tot_phosp nmdc:was_generated_by ?Biosample_tot_phosp_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample MIXS:0000185 ?Biosample_water_content . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:zinc ?Biosample_zinc . 
+      OPTIONAL {
+         ?Biosample_zinc rdf:type ?Biosample_zinc_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_zinc nmdc:has_unit ?Biosample_zinc_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_zinc nmdc:has_numeric_value ?Biosample_zinc_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_zinc nmdc:has_minimum_numeric_value ?Biosample_zinc_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_zinc nmdc:has_maximum_numeric_value ?Biosample_zinc_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_zinc nmdc:has_raw_value ?Biosample_zinc_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_zinc nmdc:was_generated_by ?Biosample_zinc_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample nmdc:add_date ?Biosample_add_date . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:community ?Biosample_community . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:habitat ?Biosample_habitat . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:host_name ?Biosample_host_name . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:location ?Biosample_location . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:mod_date ?Biosample_mod_date . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:ncbi_taxonomy_name ?Biosample_ncbi_taxonomy_name . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:sample_collection_site ?Biosample_sample_collection_site . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:subsurface_depth ?Biosample_subsurface_depth . 
+      OPTIONAL {
+         ?Biosample_subsurface_depth rdf:type ?Biosample_subsurface_depth_rdf_type . 
+      }
+      OPTIONAL {
+         ?Biosample_subsurface_depth nmdc:has_unit ?Biosample_subsurface_depth_has_unit . 
+      }
+      OPTIONAL {
+         ?Biosample_subsurface_depth nmdc:has_numeric_value ?Biosample_subsurface_depth_has_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_subsurface_depth nmdc:has_minimum_numeric_value ?Biosample_subsurface_depth_has_minimum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_subsurface_depth nmdc:has_maximum_numeric_value ?Biosample_subsurface_depth_has_maximum_numeric_value . 
+      }
+      OPTIONAL {
+         ?Biosample_subsurface_depth nmdc:has_raw_value ?Biosample_subsurface_depth_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Biosample_subsurface_depth nmdc:was_generated_by ?Biosample_subsurface_depth_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Biosample nmdc:collection_time ?Biosample_collection_time . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:analysis_type ?Biosample_analysis_type . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:sample_link ?Biosample_sample_link . 
+   }
+   OPTIONAL {
+      ?Biosample nmdc:name ?Biosample_name . 
+   }
+   OPTIONAL {
+      ?Biosample dcterms:description ?Biosample_description . 
+   }
+   ?Biosample dcterms:isPartOf nmdc:sty-11-34xj1150 . 
+}
+GROUP BY ?Biosample ?Biosample_collected_from ?Biosample_type ?Biosample_samp_name ?Biosample_ecosystem ?Biosample_ecosystem_category ?Biosample_ecosystem_subtype ?Biosample_ecosystem_type ?Biosample_elev ?Biosample_micro_biomass_meth ?Biosample_ph ?Biosample_samp_collec_device ?Biosample_samp_collec_method ?Biosample_soil_horizon ?Biosample_specific_ecosystem ?Biosample_add_date ?Biosample_community ?Biosample_habitat ?Biosample_host_name ?Biosample_location ?Biosample_mod_date ?Biosample_ncbi_taxonomy_name ?Biosample_sample_collection_site ?Biosample_collection_time ?Biosample_name ?Biosample_description

@@ -1,3 +1,18 @@
+# routine: make squeaky-clean all only-test
+# for regenrating src/schema/mixs.yaml: make squeaky-clean mixs-yaml-clean all only-test
+
+# for releases: git add -f examples nmdc_schema project src
+examples/output/
+nmdc_schema/*json
+nmdc_schema/*yaml
+nmdc_schema/nmdc.py
+nmdc_schema/nmdc_materialized_patterns*
+nmdc_schema/nmdc_schema_accepting_legacy_ids*
+project/
+src/schema/mixs.yaml
+nmdc_schema/gold-to-mixs.sssom.tsv
+
+
 notebooks/neon_cache.sqlite
 neon_cache.sqlite
 

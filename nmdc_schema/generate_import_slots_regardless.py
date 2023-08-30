@@ -42,7 +42,7 @@ class ImportSlotsRegardless:
 
 
 @click.command()
-@click.option("--input_file", required=True, help="input file path from get_mixs_slots_used_in_schema")
+@click.option("--input_file", required=True, help="input file path from get-mixs-slots-used-in-schema")
 @click.option("--output_file", required=True, help="output file path for sheets_and_friends")
 def main(output_file, input_file):
     import_slots = ImportSlotsRegardless()

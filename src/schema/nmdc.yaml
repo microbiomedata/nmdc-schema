@@ -19,7 +19,7 @@ description: >-
    * the NMDC schema itself, into which the other modules are imported
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: v7.7.6
+version: v7.8.0 # pyproject.toml says "7.8.0"
 
 imports:
   - annotation
@@ -36,11 +36,16 @@ imports:
   - workflow_execution_activity
 
 prefixes:
+  Contaminant: http://example.org/contaminant/ # present in MongoDB
   EFO: http://www.ebi.ac.uk/efo/
   ISA: http://example.com/isa/
+  KEGG.ORTHOLOGY: http://identifiers.org/kegg.orthology/  # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  MASSIVE: http://example.com/
   MetaNetX: http://example.com/metanetx/
   RetroRules: http://example.com/retrorules/
+  doi: http://example.com/
   emsl.project: "https://bioregistry.io/emsl.project:"
+  emsl: http://example.org/emsl_in_mongodb/ # present in MongoDB
   generic: https://example.com/generic/
   gnps.task: "https://bioregistry.io/gnps.task:"
   gtpo: http://example.com/gtpo/
@@ -52,16 +57,11 @@ prefixes:
   neon.identifier: http://example.org/neon/identifier/
   neon.schema: http://example.org/neon/schema/
   nmdc: https://w3id.org/nmdc/
-  skos: http://www.w3.org/2004/02/skos/core#
-
   prov: http://www.w3.org/ns/prov#
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
+  skos: http://www.w3.org/2004/02/skos/core#
   xsd: http://www.w3.org/2001/XMLSchema#
-
-  # present in MongoDB
-  emsl: http://example.org/emsl_in_mongodb/
-  Contaminant: http://example.org/contaminant/
 
 default_prefix: nmdc
 default_range: string
@@ -94,6 +94,13 @@ subsets:
       of processes or workflows.
 
 classes:
+
+  FunctionalAnnotationAggMember:
+    slots:
+      - metagenome_annotation_id
+      - gene_function_id
+      - count
+
   Database:
     tree_root: true
     aliases:
@@ -104,6 +111,7 @@ classes:
       translated to JSON-Schema this is the 'root' object. It should contain pointers
       to other objects of interest
     slots:
+      - functional_annotation_agg
       - library_preparation_set
       - processed_sample_set
       - extraction_set
@@ -1057,6 +1065,7 @@ classes:
         comments: This is the ID provided by GOLD that starts with 'GB'
         annotations:
           display_hint: Provide the GOLD biosample IDs associated with this biosample.
+        range: uriorcurie
       alternative_identifiers:
         description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
 
@@ -1347,8 +1356,10 @@ classes:
       - alternative_descriptions
       - alternative_names
       - alternative_titles
-      - doi
       - description
+      - award_dois
+      - dataset_dois
+      - publication_dois
       - ecosystem
       - ecosystem_category
       - ecosystem_subtype
@@ -1382,11 +1393,6 @@ classes:
           syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-      doi:
-        description: >-
-          The dataset citation for this study
-        annotations:
-          display_hint: DOI associated with the data in this study. This is required when data is already generated.
       name:
         annotations:
           display_hint: Provide a name for the study your samples will belong with.
@@ -1964,6 +1970,20 @@ enums:
         meaning: https://ror.org/05gvnxz63
 
 slots:
+
+  #  for FunctionalAnnotationAggMember:
+  metagenome_annotation_id:
+    range: WorkflowExecutionActivity
+  gene_function_id:
+    range: uriorcurie
+  count:
+    range: integer
+  functional_annotation_agg:
+    range: FunctionalAnnotationAggMember
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
   neon_deims_sdr_link:
     range: string
   neon_eco_type:
@@ -2245,7 +2265,7 @@ slots:
       A list of organizations, along with the award numbers, that underwrite financial support for projects of 
       a particular type. Typically, they process applications and award funds to the chosen qualified 
       applicants.
-    pattern: ^.{1,200}$
+    #    pattern: ^.{1,200}$
     comments:
       - Include only the name of the funding organization and the award or contract number.
     examples:
@@ -2553,14 +2573,77 @@ slots:
     is_a: attribute
     range: PersonValue
     description: Principal Investigator who led the study and/or generated the dataset.
-  doi:
-    is_a: attribute
-    range: AttributeValue
-    annotations:
-      on_hover: show details
+
+  dois:
+    # is_a: attribute
+    todos:
+      - the previous doi slot was an attribute, but attribute seems committed to biosamples
+      - should we assert a parent term here?
+    range: uriorcurie
+    description: >-
+      A digital object identifier, which is intended to persistantly identify some resource on the web.
+    multivalued: true
+    abstract: true
+    aliases:
+      - DOIs
+      - digital object identifiers
+    pattern: '^doi:10.\d{2,9}/.*$'
+    see_also:
+      - https://schema.datacite.org/meta/kernel-4.4/doc/DataCite-MetadataKernel_v4.4.pdf
+      - https://api.crossref.org/types
+    comments:
+      - See especially the resourceTypeGeneral section of the DataCite pdf, on pp48-53 as of 2023-07-19
+
+  award_dois:
+    is_a: dois
+    description: >-
+      One or more DOIs that links a study, or similar entiry, to information about the funding authority.
+    examples:
+      - value: doi:10.46936/10.25585/60000880
+        description:
+          award_dois link to to an award document. Should not be used to link to datasets or publications.
+          For example, doi:10.15485/1577267 is not an award doi, but a dataset doi.
+
+  dataset_dois:
+    is_a: dois
+    description: >-
+      One or more DOIs that links a study, or similar entity, to the generated data.
+    #    annotations:
+    #      display_hint: DOI associated with the data in this study. This is required when data is already generated.
+    examples:
+      - value: doi:10.15485/1577267
+        description:
+          dataset_dois link to data encoded in a defined structure (as defined by DataCite).
+          Should not be used to link to publications or administrative information like funding requests or awards.
+
+  publication_dois:
+    is_a: dois
+    description: One or more DOIs that links a study, or similar entity, to a publication.
+    examples:
+      - value: doi:10.1126/science.1058040
+        description:
+          publication_dois link to a prose document, preferably a peer-reviewed journal article.
+          Should not be used to link to datasets or administrative information like funding requests or awards
+
   add_date:
     range: string
     description: The date on which the information was added to the database.
+
+  # moving emsl_project_dois from external_identifiers.yaml to nmdc.yaml and re-rooting in `dois` with new pattern
+  emsl_project_dois:
+    is_a: dois
+    #    is_a: study_identifiers
+    mixins:
+      - emsl_identifiers
+    title: EMSL Project DOI
+    description: One or more DOIs that links to an EMSL Research Campaign page.
+    examples:
+      - value: doi:10.46936/intm.proj.2021.6014
+        description:
+          emsl_project_dois link to the document outlining the EMSL specific award for the project.
+          Should not be used to link to datasets or publications.
+    todos:
+      - Make as a subproperty of award_dois
 
   mod_date:
     range: string

@@ -13,8 +13,8 @@ study_set:
     specific_ecosystem: Permafrost
     principal_investigator:
       has_raw_value: Virginia Rich
-    doi:
-      has_raw_value: 10.25585/1488217
+    award_dois:
+      - doi:10.25585/1488217 # https://doi.org/10.25585/1488217 / https://www.osti.gov/dataexplorer/biblio/dataset/1488217 -> https://genome.jgi.doe.gov/portal/Somoldmmetaomics/Somoldmmetaomics.info.html
     type: nmdc:Study
   - id: nmdc:sty-99-oJmAOs
     gold_study_identifiers:
@@ -31,8 +31,8 @@ study_set:
     specific_ecosystem: Forest Soil
     principal_investigator:
       has_raw_value: Jeffrey Blanchard
-    doi:
-      has_raw_value: 10.25585/1488215
+    award_dois:
+      - doi:10.25585/1488215 # https://www.osti.gov/dataexplorer/biblio/dataset/1488215 -> https://genome.jgi.doe.gov/portal/Molmecexpwarming/Molmecexpwarming.info.html
     type: nmdc:Study
   - id: nmdc:sty-99-3bQQ4j
     gold_study_identifiers:
@@ -49,8 +49,8 @@ study_set:
     specific_ecosystem: Soil
     principal_investigator:
       has_raw_value: Rebecca Neumann
-    doi:
-      has_raw_value: 10.25585/1488209
+    award_dois:
+      - doi:10.25585/1488209 # https://www.osti.gov/dataexplorer/biblio/dataset/1488209 -> https://genome.jgi.doe.gov/portal/ARhifrWetlands/ARhifrWetlands.info.html
     type: nmdc:Study
 omics_processing_set:
   - id: nmdc:omprc-99-9XUVVF
