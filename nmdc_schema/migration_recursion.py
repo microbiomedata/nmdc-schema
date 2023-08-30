@@ -22,7 +22,7 @@ doi_url_pattern = r'^https?:\/\/[a-zA-Z\.]+\/10\.'
 curie_pattern = r'^[a-zA-Z_][a-zA-Z0-9_-]*:[a-zA-Z0-9_][a-zA-Z0-9_.-]*$'
 
 
-def migrate_studies_7_7_2_to_bleeding_edge(retrieved_study):
+def migrate_studies_7_7_2_to_7_8(retrieved_study):
     logger.info(f"Starting migration of {retrieved_study['id']}")
     if "doi" in retrieved_study:
         # logger.info(f"Before migration: {pprint.pformat(retrieved_study['doi'])}")
@@ -127,7 +127,7 @@ def main(schema_path, input_path, output_path):
         if tdk == "study_set":
             logger.info(f"Would start {tdk}-specific migrations")
             for current_study in tdv:
-                migrate_studies_7_7_2_to_bleeding_edge(current_study)
+                migrate_studies_7_7_2_to_7_8(current_study)
 
     logger.info(f"Saving migrated data to {output_path}")
     with open(output_path, "w") as f:

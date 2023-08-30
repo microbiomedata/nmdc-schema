@@ -328,8 +328,6 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosampl
 
 # # # #
 
-# # # #
-
 local/envo.db:
 	$(RUN) semsql download envo -o $@
 
