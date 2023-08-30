@@ -1,0 +1,200 @@
+PREFIX CAS: <http://identifiers.org/cas/>
+PREFIX CATH: <http://identifiers.org/cath/>
+PREFIX CHEBI: <http://purl.obolibrary.org/obo/CHEBI_>
+PREFIX CHEMBL.COMPOUND: <http://identifiers.org/chembl.compound/>
+PREFIX CHMO: <http://purl.obolibrary.org/obo/CHMO_>
+PREFIX COG: <https://bioregistry.io/cog:>
+PREFIX Contaminant: <http://example.org/contaminant/>
+PREFIX DRUGBANK: <http://identifiers.org/drugbank/>
+PREFIX EC: <https://bioregistry.io/eccode:>
+PREFIX EFO: <http://www.ebi.ac.uk/efo/>
+PREFIX EGGNOG: <http://identifiers.org/eggnog/>
+PREFIX FBcv: <http://purl.obolibrary.org/obo/FBcv_>
+PREFIX GO: <http://purl.obolibrary.org/obo/GO_>
+PREFIX HMDB: <http://identifiers.org/hmdb/>
+PREFIX ISA: <http://example.com/isa/>
+PREFIX KEGG.COMPOUND: <http://identifiers.org/kegg.compound/>
+PREFIX KEGG.ORTHOLOGY: <http://identifiers.org/kegg.orthology/>
+PREFIX KEGG.REACTION: <http://identifiers.org/kegg.reaction/>
+PREFIX KEGG_PATHWAY: <http://identifiers.org/kegg.pathway/>
+PREFIX MASSIVE: <https://bioregistry.io/reference/massive:>
+PREFIX MESH: <http://identifiers.org/mesh/>
+PREFIX MIXS: <https://w3id.org/mixs/>
+PREFIX MetaCyc: <https://identifiers.org/metacyc.reaction/>
+PREFIX MetaNetX: <http://example.com/metanetx/>
+PREFIX NCIT: <http://purl.obolibrary.org/obo/NCIT_>
+PREFIX OBI: <http://purl.obolibrary.org/obo/OBI_>
+PREFIX PANTHER.FAMILY: <http://identifiers.org/panther.family/>
+PREFIX PFAM: <http://identifiers.org/pfam/>
+PREFIX PR: <http://purl.obolibrary.org/obo/PR_>
+PREFIX PUBCHEM.COMPOUND: <http://identifiers.org/pubchem.compound/>
+PREFIX RHEA: <http://identifiers.org/rhea/>
+PREFIX RO: <http://purl.obolibrary.org/obo/RO_>
+PREFIX RetroRules: <http://example.com/retrorules/>
+PREFIX SEED: <http://identifiers.org/seed/>
+PREFIX SIO: <http://example.com/sio_lowercase:>
+PREFIX SUPFAM: <http://identifiers.org/supfam/>
+PREFIX TIGRFAM: <http://identifiers.org/tigrfam/>
+PREFIX UniProtKB: <https://identifiers.org/uniprot/>
+PREFIX biolink: <https://w3id.org/biolink/vocab/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX doi: <https://bioregistry.io/reference/doi:>
+PREFIX emsl: <http://example.org/emsl_in_mongodb/>
+PREFIX emsl.project: <https://bioregistry.io/emsl.project:>
+PREFIX generic: <https://example.com/generic/>
+PREFIX gnps.task: <https://bioregistry.io/gnps.task:>
+PREFIX gtpo: <http://example.com/gtpo/>
+PREFIX igsn: <https://app.geosamples.org/sample/igsn/>
+PREFIX jgi: <http://example.com/jgi/>
+PREFIX jgi.proposal: <https://bioregistry.io/jgi.proposal:>
+PREFIX linkml: <https://w3id.org/linkml/>
+PREFIX mgnify.proj: <https://identifiers.org/mgnify.proj:>
+PREFIX neon.identifier: <http://example.org/neon/identifier/>
+PREFIX neon.schema: <http://example.org/neon/schema/>
+PREFIX nmdc: <https://w3id.org/nmdc/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX qud: <http://qudt.org/1.1/schema/qudt#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX sio: <https://bioregistry.io/reference/sio:>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX wgs84: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX BIOSAMPLE: <https://example.org/biosample/>
+PREFIX ENVO: <http://purl.obolibrary.org/obo/ENVO_>
+PREFIX GOLD: <http://identifiers.org/gold/>
+PREFIX GOLD2: <https://example.org/gold/>
+PREFIX NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_>
+PREFIX doi2: <https://example.org/doi/>
+PREFIX doi3: <https://doi.org/>
+PREFIX img.taxon: <https://example.org/img.taxon/>
+
+SELECT DISTINCT ?Study (group_concat(distinct ?Study_jgi_portal_study_identifiers; SEPARATOR='|') as ?Study_jgi_portal_study_identifierss) (group_concat(distinct ?Study_gnps_task_identifiers; SEPARATOR='|') as ?Study_gnps_task_identifierss) ?Study_description (group_concat(distinct ?Study_award_dois; SEPARATOR='|') as ?Study_award_doiss) ?Study_ecosystem ?Study_ecosystem_category ?Study_ecosystem_subtype ?Study_ecosystem_type (group_concat(distinct ?Study_ess_dive_datasets; SEPARATOR='|') as ?Study_ess_dive_datasetss) (group_concat(distinct ?Study_funding_sources; SEPARATOR='|') as ?Study_funding_sourcess) (group_concat(distinct ?Study_gold_study_identifiers; SEPARATOR='|') as ?Study_gold_study_identifierss) (group_concat(distinct ?Study_has_credit_associations_rdf_type; SEPARATOR='|') as ?Study_has_credit_associations_rdf_types) (group_concat(distinct ?Study_has_credit_associations_applies_to_person; SEPARATOR='|') as ?Study_has_credit_associations_applies_to_persons) (group_concat(distinct ?Study_has_credit_associations_applied_role; SEPARATOR='|') as ?Study_has_credit_associations_applied_roles) (group_concat(distinct ?Study_has_credit_associations_applied_roles; SEPARATOR='|') as ?Study_has_credit_associations_applied_roless) (group_concat(distinct ?Study_has_credit_associations_type; SEPARATOR='|') as ?Study_has_credit_associations_types) (group_concat(distinct ?Study_massive_study_identifiers; SEPARATOR='|') as ?Study_massive_study_identifierss) (group_concat(distinct ?Study_principal_investigator_rdf_type; SEPARATOR='|') as ?Study_principal_investigator_rdf_types) (group_concat(distinct ?Study_principal_investigator_orcid; SEPARATOR='|') as ?Study_principal_investigator_orcids) (group_concat(distinct ?Study_principal_investigator_profile_image_url; SEPARATOR='|') as ?Study_principal_investigator_profile_image_urls) (group_concat(distinct ?Study_principal_investigator_email; SEPARATOR='|') as ?Study_principal_investigator_emails) (group_concat(distinct ?Study_principal_investigator_name; SEPARATOR='|') as ?Study_principal_investigator_names) (group_concat(distinct ?Study_principal_investigator_websites; SEPARATOR='|') as ?Study_principal_investigator_websitess) (group_concat(distinct ?Study_principal_investigator_has_raw_value; SEPARATOR='|') as ?Study_principal_investigator_has_raw_values) (group_concat(distinct ?Study_principal_investigator_was_generated_by; SEPARATOR='|') as ?Study_principal_investigator_was_generated_bys) (group_concat(distinct ?Study_publications; SEPARATOR='|') as ?Study_publicationss) (group_concat(distinct ?Study_relevant_protocols; SEPARATOR='|') as ?Study_relevant_protocolss) ?Study_specific_ecosystem (group_concat(distinct ?Study_study_image_rdf_type; SEPARATOR='|') as ?Study_study_image_rdf_types) (group_concat(distinct ?Study_study_image_url; SEPARATOR='|') as ?Study_study_image_urls) (group_concat(distinct ?Study_study_image_description; SEPARATOR='|') as ?Study_study_image_descriptions) (group_concat(distinct ?Study_study_image_display_order; SEPARATOR='|') as ?Study_study_image_display_orders) (group_concat(distinct ?Study_study_image_has_raw_value; SEPARATOR='|') as ?Study_study_image_has_raw_values) (group_concat(distinct ?Study_study_image_was_generated_by; SEPARATOR='|') as ?Study_study_image_was_generated_bys) ?Study_title ?Study_type (group_concat(distinct ?Study_websites; SEPARATOR='|') as ?Study_websitess) ?Study_name
+WHERE {
+   ?Study rdf:type nmdc:Study . 
+   OPTIONAL {
+      ?Study nmdc:jgi_portal_study_identifiers ?Study_jgi_portal_study_identifiers . 
+   }
+   OPTIONAL {
+      ?Study nmdc:gnps_task_identifiers ?Study_gnps_task_identifiers . 
+   }
+   OPTIONAL {
+      ?Study dcterms:description ?Study_description . 
+   }
+   OPTIONAL {
+      ?Study nmdc:award_dois ?Study_award_dois . 
+   }
+   OPTIONAL {
+      ?Study nmdc:ecosystem ?Study_ecosystem . 
+   }
+   OPTIONAL {
+      ?Study nmdc:ecosystem_category ?Study_ecosystem_category . 
+   }
+   OPTIONAL {
+      ?Study nmdc:ecosystem_subtype ?Study_ecosystem_subtype . 
+   }
+   OPTIONAL {
+      ?Study nmdc:ecosystem_type ?Study_ecosystem_type . 
+   }
+   OPTIONAL {
+      ?Study nmdc:ess_dive_datasets ?Study_ess_dive_datasets . 
+   }
+   OPTIONAL {
+      ?Study nmdc:funding_sources ?Study_funding_sources . 
+   }
+   OPTIONAL {
+      ?Study nmdc:gold_study_identifiers ?Study_gold_study_identifiers . 
+   }
+   OPTIONAL {
+      ?Study prov:qualifiedAssociation ?Study_has_credit_associations . 
+      OPTIONAL {
+         ?Study_has_credit_associations rdf:type ?Study_has_credit_associations_rdf_type . 
+      }
+      OPTIONAL {
+         ?Study_has_credit_associations nmdc:applies_to_person ?Study_has_credit_associations_applies_to_person . 
+      }
+      OPTIONAL {
+         ?Study_has_credit_associations prov:hadRole ?Study_has_credit_associations_applied_role . 
+      }
+      OPTIONAL {
+         ?Study_has_credit_associations nmdc:applied_roles ?Study_has_credit_associations_applied_roles . 
+      }
+      OPTIONAL {
+         ?Study_has_credit_associations nmdc:type ?Study_has_credit_associations_type . 
+      }
+   }
+   OPTIONAL {
+      ?Study nmdc:massive_study_identifiers ?Study_massive_study_identifiers . 
+   }
+   OPTIONAL {
+      ?Study nmdc:principal_investigator ?Study_principal_investigator . 
+      OPTIONAL {
+         ?Study_principal_investigator rdf:type ?Study_principal_investigator_rdf_type . 
+      }
+      OPTIONAL {
+         ?Study_principal_investigator nmdc:orcid ?Study_principal_investigator_orcid . 
+      }
+      OPTIONAL {
+         ?Study_principal_investigator nmdc:profile_image_url ?Study_principal_investigator_profile_image_url . 
+      }
+      OPTIONAL {
+         ?Study_principal_investigator schema:email ?Study_principal_investigator_email . 
+      }
+      OPTIONAL {
+         ?Study_principal_investigator nmdc:name ?Study_principal_investigator_name . 
+      }
+      OPTIONAL {
+         ?Study_principal_investigator nmdc:websites ?Study_principal_investigator_websites . 
+      }
+      OPTIONAL {
+         ?Study_principal_investigator nmdc:has_raw_value ?Study_principal_investigator_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Study_principal_investigator nmdc:was_generated_by ?Study_principal_investigator_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Study nmdc:publications ?Study_publications . 
+   }
+   OPTIONAL {
+      ?Study nmdc:relevant_protocols ?Study_relevant_protocols . 
+   }
+   OPTIONAL {
+      ?Study nmdc:specific_ecosystem ?Study_specific_ecosystem . 
+   }
+   OPTIONAL {
+      ?Study nmdc:study_image ?Study_study_image . 
+      OPTIONAL {
+         ?Study_study_image rdf:type ?Study_study_image_rdf_type . 
+      }
+      OPTIONAL {
+         ?Study_study_image nmdc:url ?Study_study_image_url . 
+      }
+      OPTIONAL {
+         ?Study_study_image dcterms:description ?Study_study_image_description . 
+      }
+      OPTIONAL {
+         ?Study_study_image nmdc:display_order ?Study_study_image_display_order . 
+      }
+      OPTIONAL {
+         ?Study_study_image nmdc:has_raw_value ?Study_study_image_has_raw_value . 
+      }
+      OPTIONAL {
+         ?Study_study_image nmdc:was_generated_by ?Study_study_image_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?Study nmdc:title ?Study_title . 
+   }
+   OPTIONAL {
+      ?Study nmdc:type ?Study_type . 
+   }
+   OPTIONAL {
+      ?Study nmdc:websites ?Study_websites . 
+   }
+   OPTIONAL {
+      ?Study nmdc:name ?Study_name . 
+   }
+}
+GROUP BY ?Study ?Study_description ?Study_ecosystem ?Study_ecosystem_category ?Study_ecosystem_subtype ?Study_ecosystem_type ?Study_specific_ecosystem ?Study_title ?Study_type ?Study_name

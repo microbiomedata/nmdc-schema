@@ -19,7 +19,7 @@ description: >-
    * the NMDC schema itself, into which the other modules are imported
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: v7.7.6
+version: v7.7.7 # pyproject.toml says "7.7.7"
 
 imports:
   - annotation
@@ -36,11 +36,16 @@ imports:
   - workflow_execution_activity
 
 prefixes:
+  Contaminant: http://example.org/contaminant/ # present in MongoDB
   EFO: http://www.ebi.ac.uk/efo/
   ISA: http://example.com/isa/
+  KEGG.ORTHOLOGY: http://identifiers.org/kegg.orthology/  # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  MASSIVE: http://example.com/
   MetaNetX: http://example.com/metanetx/
   RetroRules: http://example.com/retrorules/
+  doi: http://example.com/
   emsl.project: "https://bioregistry.io/emsl.project:"
+  emsl: http://example.org/emsl_in_mongodb/ # present in MongoDB
   generic: https://example.com/generic/
   gnps.task: "https://bioregistry.io/gnps.task:"
   gtpo: http://example.com/gtpo/
@@ -52,16 +57,11 @@ prefixes:
   neon.identifier: http://example.org/neon/identifier/
   neon.schema: http://example.org/neon/schema/
   nmdc: https://w3id.org/nmdc/
-  skos: http://www.w3.org/2004/02/skos/core#
-
   prov: http://www.w3.org/ns/prov#
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
+  skos: http://www.w3.org/2004/02/skos/core#
   xsd: http://www.w3.org/2001/XMLSchema#
-
-  # present in MongoDB
-  emsl: http://example.org/emsl_in_mongodb/
-  Contaminant: http://example.org/contaminant/
 
 default_prefix: nmdc
 default_range: string
@@ -1065,6 +1065,7 @@ classes:
         comments: This is the ID provided by GOLD that starts with 'GB'
         annotations:
           display_hint: Provide the GOLD biosample IDs associated with this biosample.
+        range: uriorcurie
       alternative_identifiers:
         description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
 

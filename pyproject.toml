@@ -1,5 +1,7 @@
 [tool.poetry]
-#include = ["README.md", "src/nmdc-schema/schema", "project"]
+
+#include = ["README.md", "src/nmdc-schema/schema", "project"] # https://python-poetry.org/docs/pyproject/#include-and-exclude # Explicitly declaring entries in include will negate VCS' ignore settings.
+
 description = "Schema resources for the National Microbiome Data Collaborative (NMDC)"
 documentation = "https://microbiomedata.github.io/nmdc-schema/"
 homepage = "https://microbiomedata.github.io/nmdc-schema/"
@@ -8,7 +10,7 @@ license = "MIT"
 name = "nmdc_schema"
 readme = "README.md"
 repository = "https://github.com/microbiomedata/nmdc-schema"
-version = "7.7.6"
+version = "7.7.7" # nmdc.yaml says v7.7.7
 authors = [
     "Bill Duncan <wdduncan@gmail.com>",
     "Chris Mungall <cjmungall@lbl.gov>",
@@ -17,41 +19,43 @@ authors = [
     "Sujay Patil <spatil@lbl.gov>",
 ]
 
-[tool.poetry.dependencies]
-python = "^3.9"
-# see https://github.com/microbiomedata/nmdc-schema/issues/820
-exhaustion-check = "^0.1.1"
-gen-pop-linkml2sheets = "^0.1.8"
-rdflib = "^6.2.0"
+# "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication", # should be populated by poetry build
+# https://pypi.org/classifiers/
 
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3 :: Only",
+]
+
+[tool.poetry.dependencies]
 linkml = "^1.5.6"
 linkml-runtime = "^1.5.4"
+python = "^3.9"
 
-
-[tool.poetry.group.dev.dependencies]
+[tool.poetry.group.dev.dependencies] # are any of these really required as non-dev dependencies?
 black = "^23.1.0"
-check-jsonschema = "^0.21.0"
 click-log = "^0.4.0"
 cruft = "^2.12.0"
 deepdiff = "^6.2.1"
-jupyter = "^1.0.0"
+exhaustion-check = "^0.1.1" # for exhaustion-check, pretty-sort-yaml (also get-first-of-first)
+gen-pop-linkml2sheets = "^0.1.8" # for generate_and_populate_template, deprecated by schemasheets linkml2schemasheets-template
 mkdocs = "^1.4.2"
 mkdocs-material = "^9.0.12"
 mkdocs-mermaid2-plugin = "^0.6.0"
-pandasql = "^0.7.3" # might be able to replace this?
-pygsheets = "^2.0.6" # why are we importing this, when we're alredy using cogs?
-python-dotenv = "^0.21.0"
-schemasheets = "^0.1.18"
-strsimpy = "*"
-toml = "*"
-exhaustion-check = "^0.1.1"
-pymongo = "^4.3.3"
 oaklib = "0.5.6"
-#nltk = "^3.8.1"
-#scikit-learn = "^1.2.2"
-#xmltodict = "^0.13.0"
-
+pymongo = "^4.3.3"
+python-dotenv = "^0.21.0"
+rdflib = "^6.2.0" # some LinkML componenets are not compatable with rdflib 7+ yet
+schemasheets = "^0.1.18"
 sheets_and_friends = "^0.5.0"
+sparql-burger = "^1.0.2"
+sparql-dataframe = "^0.4"
+strsimpy = "0.2.1"
+toml = "0.10.2"
+
+## cheat sheet for other ways of loading a dev dependency. add github branch method.
 ## /Users/MAM/Documents/gitrepos/sheets_and_friends
 ## /home/mark/gitrepos/sheets_and_friends
 #sheets-and-friends = { path = "/home/mark/gitrepos/sheets_and_friends", develop = true }
@@ -82,32 +86,17 @@ build-backend = "poetry_dynamic_versioning.backend"
 docs = ["mkdocs-material"]
 
 [tool.poetry.scripts]
-#boolean_usages = "nmdc_schema.boolean_usages:cli"
-#get_class_usages = "nmdc_schema.get_class_usages:main"
-#slot_roster = "nmdc_schema.slot_roster:cli"
-#validate-nmdc-json = "nmdc_schema.validate_nmdc_json:cli"
-#validate-nmdc-json is deprecated by check-jsonschema, which is in turn deprereated by run-linkml-examples
+anyuri-strings-to-iris = 'nmdc_schema.anyuri_strings_to_iris:expand_curies'
+class-sparql = "nmdc_schema.class_sparql:main"
 fetch-nmdc-schema = "nmdc_schema.nmdc_data:get_nmdc_jsonschema"
-generate_import_slots_regardless = "nmdc_schema.generate_import_slots_regardless:main"
-get_mixs_slots_matching_slot_list = "nmdc_schema.get_mixs_slots_matching_slot_list:main"
-get_mixs_slots_used_in_schema = "nmdc_schema.get_mixs_slots_used_in_schema:main"
-get_slots_from_class = "nmdc_schema.get_slots_from_class:main"
-minimal_get_submissions = "nmdc_schema.minimal_get_submissions:cli"
-mixs_coverage = "nmdc_schema.mixs_coverage:cli"
-mixs_deep_diff = "nmdc_schema.mixs_deep_diff:cli"
-mixs_slot_text_mining = "nmdc_schema.mixs_slot_text_mining:cli"
-mongodb_exporter = "nmdc_schema.mongodb_direct_to_nmdc_Database_file:export_to_yaml"
-pure_export = "nmdc_schema.mongo_dump_api_emph:cli"
+generate-import-slots-regardless = "nmdc_schema.generate_import_slots_regardless:main"
+get-mixs-slots-matching-slot-list = "nmdc_schema.get_mixs_slots_matching_slot_list:main"
+get-mixs-slots-used-in-schema = "nmdc_schema.get_mixs_slots_used_in_schema:main" # see nmdc_schema/generate_import_slots_regardless.py
+get-slots-from-class = "nmdc_schema.get_slots_from_class:main" # see tests/test_getters.py
+migration-recursion = 'nmdc_schema.migration_recursion:main'
 nmdc-data = "nmdc_schema.nmdc_data:cli"
 nmdc-version = "nmdc_schema.nmdc_version:cli"
-get_neon-nlcd-envo-mapping = "nmdc_schema.neon_nlcd_envo_mapping:generate_nlcd_envo_mappings"
-migration-recursion = 'nmdc_schema.migration_recursion:main'
-anyuri-strings-to-iris = 'nmdc_schema.anyuri_strings_to_iris:expand_curies'
+pure-export = "nmdc_schema.mongo_dump_api_emph:cli"
+test-more-tolerant-schema = "nmdc_schema.test_more_tolerant_schema:do_test"
+get-study-doi-report = "nmdc_schema.get_study_doi_report:get_dois"
 
-#classifiers = [
-#    "Development Status :: 4 - Beta",
-#    "Programming Language :: Python :: 3 :: Only",
-#    "Intended Audience :: Developers",
-#    "Intended Audience :: Science/Research",
-#    "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
-#]

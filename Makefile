@@ -19,7 +19,7 @@ PYMODEL = $(SCHEMA_NAME)
 EXAMPLEDIR = examples
 TEMPLATEDIR = doc-templates
 
-.PHONY: all clean site test examples-clean site-copy test-python site-clean test-with-examples
+.PHONY: all clean examples-clean install site site-clean site-copy squeaky-clean test test-python test-with-examples
 
 # note: "help" MUST be the first target in the file,
 # when the user types "make" they should get help info
@@ -41,12 +41,12 @@ status: check-config
 	@echo "Source: $(SOURCE_SCHEMA_PATH)"
 
 # generate products and add everything to github
-setup: install gen-project gen-examples gendoc git-init-add
+setup: install gen-project gendoc git-init-add
 
 # install any dependencies required for building
 install:
 	poetry install
-.PHONY: install
+
 
 # ---
 # Project Synchronization
@@ -81,10 +81,6 @@ site: clean site-clean gen-project gendoc nmdc_schema/gold-to-mixs.sssom.tsv
 # was deploy: all mkd-gh-deploy
 deploy: gendoc mkd-gh-deploy
 
-## In future this will be done by conversion
-#gen-examples:
-#	cp src/data/examples/* $(EXAMPLEDIR)
-
 gen-project: $(PYMODEL) src/schema/mixs.yaml
 	# keep these in sync between PROJECT_FOLDERS and the includes/excludes for gen-project and test-schema
 	$(RUN) gen-project \
@@ -106,8 +102,9 @@ gen-project: $(PYMODEL) src/schema/mixs.yaml
 		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 		mv project/prefixmap/nmdc.yaml project/prefixmap/nmdc.json # todo this is too hardcoded and makes assumptions bout the file's existence
 
-test: examples-clean site test-python jsonschema-check-all-valid-databases examples/output
-only-test: examples-clean test-python jsonschema-check-all-valid-databases examples/output
+# jsonschema-check-all-valid-databases
+test: examples-clean site test-python examples/output
+only-test: examples-clean test-python examples/output
 
 test-schema:
 	# keep these in sync between PROJECT_FOLDERS and the includes/excludes for gen-project and test-schema
@@ -137,23 +134,12 @@ lint:
 check-config:
 	@(grep my-datamodel about.yaml > /dev/null && printf "\n**Project not configured**:\n\n - Remember to edit 'about.yaml'\n\n" || exit 0)
 
-#convert-examples-to-%:
-#	$(patsubst %, $(RUN) linkml-convert % -s $(SOURCE_SCHEMA_PATH) -C Person, $(shell find src/data/examples -name "*.yaml"))
-#
-#examples/%.yaml: src/data/examples/%.yaml
-#	$(RUN) linkml-convert -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
-#examples/%.json: src/data/examples/%.yaml
-#	$(RUN) linkml-convert -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
-#examples/%.ttl: src/data/examples/%.yaml
-#	$(RUN) linkml-convert -P EXAMPLE=http://example.org/ -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
-
 # Test documentation locally
 serve: mkd-serve
 
 # Python datamodel
 $(PYMODEL):
 	mkdir -p $@
-
 
 $(DOCDIR):
 	mkdir -p $@
@@ -163,7 +149,6 @@ gendoc: $(DOCDIR)
 	cp $(SRC)/docs/*md $(DOCDIR) ; \
 	cp -r $(SRC)/docs/images $(DOCDIR) ; \
 	$(RUN) gen-doc -d $(DOCDIR) --template-directory $(SRC)/$(TEMPLATEDIR) $(SOURCE_SCHEMA_PATH)
-	#mv $(DOCDIR)/TEMP.md $(DOCDIR)/temp.md
 
 testdoc: gendoc serve
 
@@ -188,9 +173,9 @@ git-add: .cruft.json
 		MAINTAINERS.md \
 		Makefile \
 		README.md \
+		RELEASE_NOTES_v7.7.2_to_v7.7.7.md \
 		about.yaml \
 		assets \
-		examples \
 		images \
 		mkdocs.yml \
 		nmdc_schema \
@@ -199,16 +184,14 @@ git-add: .cruft.json
 		project.Makefile \
 		project/ \
 		pyproject.toml \
-		reports \
 		src/ \
-		sssom \
 		tests \
-		util \
 		utils
 	git add $(patsubst %, project/%, $(PROJECT_FOLDERS))
 
 git-commit:
 	git commit -m 'Initial commit' -a
+
 git-status:
 	git status
 
@@ -224,6 +207,16 @@ clean:
 	rm -rf docs/*.html
 
 include project.Makefile
+
+# custom
+site-clean:
+	rm -rf nmdc_schema/*.json
+	rm -rf nmdc_schema/*.tsv
+	rm -rf nmdc_schema/*.yaml
+	rm -rf project/nmdc_*.json
+	rm -rf project/nmdc_*.yaml
+
+squeaky-clean: clean OmicsProcessing-clean accepting-legacy-ids-clean examples-clean mongodb-clean rdf-clean site-clean # does not include shuttle-clean or mixs-yaml-clean
 
 project/nmdc_schema_merged.yaml:
 	$(RUN) gen-linkml \
@@ -244,14 +237,8 @@ project/nmdc_materialized_patterns.schema.json: project/nmdc_materialized_patter
 		--closed \
 		--top-class Database $< > $@
 
-site-clean:
-	rm -rf nmdc_schema/*.json
-	rm -rf nmdc_schema/*.tsv
-	rm -rf nmdc_schema/*.yaml
-	rm -rf project/nmdc_*.json
-	rm -rf project/nmdc_*.yaml
-
-nmdc_schema/gold-to-mixs.sssom.tsv: sssom/gold-to-mixs.sssom.tsv nmdc_schema/nmdc_materialized_patterns.schema.json nmdc_schema/nmdc_materialized_patterns.yaml nmdc_schema/nmdc_schema_merged.yaml
+nmdc_schema/gold-to-mixs.sssom.tsv: sssom/gold-to-mixs.sssom.tsv nmdc_schema/nmdc_materialized_patterns.schema.json \
+nmdc_schema/nmdc_materialized_patterns.yaml nmdc_schema/nmdc_schema_merged.yaml
 	# just can't seem to tell pyproject.toml to bundle artifacts like these
 	#   so reverting to copying into the module
 	cp $< $@
@@ -264,7 +251,3 @@ nmdc_schema/nmdc_materialized_patterns.yaml: project/nmdc_materialized_patterns.
 
 nmdc_schema/nmdc_schema_merged.yaml: project/nmdc_schema_merged.yaml
 	cp $< $@
-
-.PHONY: squeaky-clean
-
-squeaky-clean: clean accepting-legacy-ids-clean rdf-clean examples-clean mongodb-clean site-clean # doe not include shuttle-clean or mixs-yaml-clean
