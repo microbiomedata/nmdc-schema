@@ -1,31 +1,39 @@
-sample_ops_set:
+id: mplex:00
+operation_type: mplex
+has_input: none
+AnalyteStorageList:
   - id: mplex:1
     analyte_volume:
       has_unit: g
       has_numeric_value: 1
     container_type: Olympus
-    container_volume:
+    container_size:
       has_unit: mL
-      has_numeric_value:: 50
+      has_numeric_value: 50
     temp:
       has_unit: C
       has_numeric_value: -70
-    operation_type: "nmdc:AnalyteStorage"
-  - id: mplex:2 #there is an instrument slot that doesn't fit remove instrument slot #mixing activity
-    source_mat_id: mplex:1
+  - id: mplex:4
+    has_input: mplex:3
+    activity_type: ice
+    duration:
+      has_numeric_value: 5
+      has_unit: minutes
+ReactionList:
+  - id: mplex:2
+    has_input: mplex:1
     extractant: MeOH/H2O
     concentration:
       has_unit: ratio
-      has_numeric_value: 4/3
+      has_numeric_value: 1.333
     volume:
       has_unit: mL
       has_numeric_value: 15
     mixing:
-      device_type: vortex
+      device_type: Vortex
     instrument: Omni Homogenizer, disposable probes
-    operation_type: "nmdc:ReactionActivity"
   - id: mplex:3
-    source_mat_id: mplex:2
+    has_input: mplex:2
     extractant: chloroform 
     temp: 
       has_raw_value: ice cold
@@ -33,33 +41,31 @@ sample_ops_set:
       has_unit: mL
       has_numeric_value: 18.5
     mixing:
-      device_type: vortex
-      activity_time_id:
+      device_type: Vortex
+      activity_time:
         has_unit: minutes
         has_numeric_value: 1
-    operation_type: "nmdc:ReactionActivity"
-  - id: mplex:4
-    source_mat_id: mplex:3
-    #sample handling activity. not sure what this maps to, or activity slot
+MixingList:
   - id: mplex:5
-    source_mat_id: mplex:4
+    has_input: mplex:4
     mixing:
-      device_type: vortex
-      activity_time_id:
+      device_type: Vortex
+      activity_time:
         has_unit: minutes
         has_numeric_value: 1
-    operation_type: 'nmdc:MixingActivity'
+PhaseSeparationList:
   - id: mplex:6
-    source_mat_id: mplex:5
-    value: 5000
+    has_input: mplex:5
+    value: 
+      has_unit: RPM
+      has_numeric_value: 5000
     duration:
       has_unit: minutes
       has_numeric_value: 10
     temp:
       has_unit: C
       has_numeric_value: 4
-    operation_type: 'nmdc:PhaseSeparationActivity'
+AliquotList:
   - id: derive:12 
-    source_mat_id: derive:11
-    type: supernatant
-    operation_type: 'nmdc:TransferActivity'
+    has_input: derive:11
+    transfer_type: supernatant
