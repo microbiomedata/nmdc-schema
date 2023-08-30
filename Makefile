@@ -73,7 +73,7 @@ create-data-harmonizer:
 	npm init data-harmonizer $(SOURCE_SCHEMA_PATH)
 
 all: site
-site: clean site-clean src/schema/mixs.yaml gen-project gendoc nmdc_schema/gold-to-mixs.sssom.tsv
+site: clean site-clean gen-project gendoc nmdc_schema/gold-to-mixs.sssom.tsv
 # may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy
 
 %.yaml: gen-project
@@ -85,8 +85,8 @@ deploy: gendoc mkd-gh-deploy
 #gen-examples:
 #	cp src/data/examples/* $(EXAMPLEDIR)
 
-gen-project: $(PYMODEL)
-	# added inclusion/exclusion parameters here, in test rule, and in project directories constant
+gen-project: $(PYMODEL) src/schema/mixs.yaml
+	# keep these in sync between PROJECT_FOLDERS and the includes/excludes for gen-project and test-schema
 	$(RUN) gen-project \
 		--exclude excel \
 		--exclude graphql \
@@ -104,25 +104,28 @@ gen-project: $(PYMODEL)
 		--include rdf \
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
+		mv project/prefixmap/nmdc.yaml project/prefixmap/nmdc.json # todo this is too hardcoded and makes assumptions bout the file's existence
 
 test: examples-clean site test-python jsonschema-check-all-valid-databases examples/output
-only_test: examples-clean test-python jsonschema-check-all-valid-databases examples/output
+only-test: examples-clean test-python jsonschema-check-all-valid-databases examples/output
 
 test-schema:
+	# keep these in sync between PROJECT_FOLDERS and the includes/excludes for gen-project and test-schema
 	$(RUN) gen-project \
 		--exclude excel \
 		--exclude graphql \
 		--exclude jsonld \
-		--exclude jsonldcontext \
 		--exclude markdown \
-		--exclude prefixmap \
 		--exclude proto \
 		--exclude shacl \
 		--exclude shex \
 		--exclude sqlddl \
+		--include jsonldcontext \
 		--include jsonschema \
 		--include owl \
+		--include prefixmap \
 		--include python \
+		--include rdf \
 		-d tmp $(SOURCE_SCHEMA_PATH)
 
 test-python:
@@ -168,8 +171,8 @@ MKDOCS = $(RUN) mkdocs
 mkd-%:
 	$(MKDOCS) $*
 
-#PROJECT_FOLDERS = sqlschema shex shacl protobuf prefixmap owl jsonschema jsonld graphql excel
-PROJECT_FOLDERS = owl jsonschema
+# keep these in sync between PROJECT_FOLDERS and the includes/excludes for gen-project and test-schema
+PROJECT_FOLDERS = jsonldcontext jsonschema owl prefixmap python rdf
 git-init-add: git-init git-add git-commit git-status
 git-init:
 	git init
@@ -202,8 +205,8 @@ git-add: .cruft.json
 		tests \
 		util \
 		utils
-
 	git add $(patsubst %, project/%, $(PROJECT_FOLDERS))
+
 git-commit:
 	git commit -m 'Initial commit' -a
 git-status:
@@ -262,3 +265,6 @@ nmdc_schema/nmdc_materialized_patterns.yaml: project/nmdc_materialized_patterns.
 nmdc_schema/nmdc_schema_merged.yaml: project/nmdc_schema_merged.yaml
 	cp $< $@
 
+.PHONY: squeaky-clean
+
+squeaky-clean: clean accepting-legacy-ids-clean rdf-clean examples-clean mongodb-clean site-clean # doe not include shuttle-clean or mixs-yaml-clean
