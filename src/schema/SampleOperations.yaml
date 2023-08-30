@@ -14,22 +14,38 @@ default_range: string
 
 classes:
   SampleOperations:
+    is_a: PlannedProcess
+    title: Sample Operations
     description: >-
-      SampleOperations schema
+      A planned process that is performed on a sample.  This class is intended to
+      be used as a superclass for more specific sample operations.
     slots:
       - id
-      - type
-      - detection_id
-      - separation_id
+      - operation_type
       - has_input
+      - has_output
+    slot_usage:
+      has_input:
+        range: Biosample
+        required: true
+      has_output:
+        range: ProcessedSample
+        required: true
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:sops-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+      type:
+        required: false
 
   DerivativeActivity:
     description: >-
       A technique used in chemistry which transforms a chemical compound into a product (the reaction's derivate) of similar chemical structure, called a derivative. That compound has properties more amenable to a particular analytical method. Some samples analyzed by GC require derivatization in order to make them suitable for analysis. Compounds that have poor volatility, poor thermal stability, or that can be adsorbed in the injector will exhibit nonreproducible peak areas, heights, and shapes. Other compounds that respond poorly on a specific detector may need to be “tagged” with a different functional group to improve detection.
-    is_a: SampleOperations
+    is_a: PlannedProcess
     slots:
-      - analyte_id
-      - source_mat_id
+      - has_input
+      - has_output
       - derivatization
       - derivatization_agent
       - device
@@ -47,10 +63,10 @@ classes:
   SampleDrying:
     description: >-
       The process of removing a solvent from a substance.
-    is_a: SampleOperations
+    is_a: PlannedProcess
     slots:
-      - analyte_id
-      - source_mat_id
+      - has_input
+      - has_output
       - dry
       - unit
       - sample_mass
@@ -60,10 +76,10 @@ classes:
   SubsamplingActivity:
     description: >-
       A subsample may be: (a) a portion of the sample obtained by selection or division; (b) an individual unit of the lot taken as part of the sample; (c) the final unit of multistage sampling. The term 'subsample' is used either in the sense of a 'sample of a sample' or as a synonym for 'unit'. In practice, the meaning is usually apparent from the context or is defined.
-    is_a: SampleOperations
+    is_a: PlannedProcess
     slots:
-      - analyte_id
-      - source_mat_id
+      - has_input
+      - has_output
       - volume_unit
       - container_type
       - sample_mass
@@ -74,10 +90,10 @@ classes:
   AcidificationActivity:
     description: >-
       Activity of modifying the pH of a sample or solution via addition of some acid.
-    is_a: SampleOperations
+    is_a: PlannedProcess
     slots:
-      - analyte_id
-      - source_mat_id
+      - has_input
+      - has_output
       - volume_unit
       - unit
       - acid
@@ -88,10 +104,10 @@ classes:
   ReactionActivity:
     description: >-
       A process which uses or consumes chemical/molecular entities to generate other molecular entities.
-    is_a: SampleOperations
+    is_a: PlannedProcess
     slots:
-      - analyte_id
-      - source_mat_id
+      - has_input
+      - has_output
       - unit
       - container_type
       - duration
@@ -102,10 +118,10 @@ classes:
   FiltrationActivity:
     description: >-
       The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by forcing a carrier gas or liquid through a porous medium.
-    is_a: SampleOperations
+    is_a: PlannedProcess
     slots:
-      - analyte_id
-      - source_mat_id
+      - has_input
+      - has_output
       - container_type
       - volume_unit
       - unit
@@ -121,10 +137,10 @@ classes:
   ExtractionActivity:
     description: >-
       A material separation in which a desired component of an input material is separated from the remainder
-    is_a: SampleOperations
+    is_a: PlannedProcess
     slots:
-      - analyte_id
-      - source_mat_id
+      - has_input
+      - has_output
       - container_type
       - volume_unit
       - unit
@@ -140,10 +156,10 @@ classes:
   AliquotActivity:
     description: >-
       Pertaining to a portion of the whole; any one of two or more samples of something, of the same volume or weight.
-    is_a: SampleOperations
+    is_a: PlannedProcess
     slots:
-      - analyte_id
-      - source_mat_id
+      - has_input
+      - has_output
       - container_type
       - volume_unit
       - volume
@@ -153,10 +169,10 @@ classes:
   PhaseSeparationActivity:
     description: >-
       The process by which a single solid (liquid) phase separates into two or more new phases.
-    is_a: SampleOperations
+    is_a: PlannedProcess
     slots:
-      - analyte_id
-      - source_mat_id
+      - has_input
+      - has_output
       - unit
       - material_component_separation
       - analyte_volume
@@ -166,9 +182,9 @@ classes:
   AnalyticalSample:
     description: >-
       A liquid bulk product produced according to specified lab protocols, from a sample or analyte, intended for further analysis.
-    is_a: SampleOperations
+    is_a: PlannedProcess
     slots:
-      - analyte_id
+      - has_input
       - container_type
       - volume_unit
       - sample_state
@@ -179,10 +195,10 @@ classes:
   AnalyteStorage:
     description: >-
       The act, process and logistical considerations of the physical or environmental conditions under which the analytical sample is maintained.
-    is_a: SampleOperations
+    is_a: PlannedProcess
     slots:
-      - analyte_id
-      - source_mat_id
+      - has_input
+      - has_output
       - sample_mass
       - analyte_volume 
       - celsius_temperature
@@ -190,10 +206,10 @@ classes:
   PhMeasurement:
     description: >-
       The measurement of pH, the negative logarithm to base ten of the hydrogen ion activity in a solution. Operationally the pH of a solution X, pH(X), is measured relative to that of a standard reference solution, pH(S), and defined as pH(X) = pH(S) - (E(X) - E(S))/(RT/F)ln 10, where E(X) and E(S) are the electromotive forces measured in cells containing the solution X and the reference solution respectively.
-    is_a: SampleOperations
+    is_a: PlannedProcess
     slots:
-      - analyte_id
-      - source_mat_id
+      - has_input
+      - has_output
       - analytical_solution
       - sample_volume
       - container_type
@@ -208,10 +224,10 @@ classes:
   MixingActivity:
     description: >-
       The combining of components, particles or layers into a more homogeneous state. The mixing may be achieved manually or mechanically by shifting the material with stirrers or pumps or by revolving or shaking the container. The process must not permit segregation of particles of different size or properties. Homogeneity may be considered to have been achieved in a practical sense when the sampling error of the processed portion is negligible compared to the total error of the measurement system.
-    is_a: SampleOperations
+    is_a: PlannedProcess
     slots:
-      - analyte_id
-      - source_mat_id
+      - has_input
+      - has_output
       - unit
       - duration
       - mixing 
@@ -219,19 +235,19 @@ classes:
   SievingActivity:
     description: >-
       A sample is passed through a sieve to reach a specific particle size and remove anything that can't be passed through that size.
-    is_a: SampleOperations
+    is_a: PlannedProcess
     slots:
-      - analyte_id
-      - source_mat_id
+      - has_input
+      - has_output
       - sieve_size   
 
   ChemicalReactionActivity:
     description: >-
       A process which uses or consumes chemical/molecular entities to generate other molecular entities
-    is_a: SampleOperations
+    is_a: PlannedProcess
     slots:
-      - analyte_id
-      - source_mat_id
+      - has_input
+      - has_output
       - reactant
       - container_type
       - unit

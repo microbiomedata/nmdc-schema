@@ -2,67 +2,633 @@ id: https://w3id.org/microbiomedata/minimal-metab
 name: minimal_metab
 title: minimal metabolomics LinkML model
 description: minimal metabolomics portion of nmdc-schema
-license: MIT
 see_also:
   - https://microbiomedata.github.io/minimal-metab
 
 prefixes:
-  minimal_metab: https://w3id.org/microbiomedata/minimal-metab/
+  nmdc: https://w3id.org/nmdc/
+  EFO: http://www.ebi.ac.uk/efo/
+  xsd: http://www.w3.org/2001/XMLSchema#
   linkml: https://w3id.org/linkml/
   example: https://example.org/
   qud: http://qudt.org/1.1/schema/qudt#
   UO: http://purl.obolibrary.org/obo/UO_
 
-default_prefix: minimal_metab
+default_prefix: nmdc
 default_range: string
 
 imports:
   - linkml:types
+  - nmdc
 
 classes:
-
+  
   SampleOperation:
     is_a: PlannedProcess
+    title: Sample Operations
     description: >-
-      A planned process in which a metabolimiccs sample is either the input or output
-
-  SampleOperationCollection:
-    #    tree_root: true # a schema can only have one tree_root. It's Database for the nmdc-schema. THis was copied over from the minimal-metal repo
-    description: >-
-      A holder for SampleOperation objects
-    attributes:
-      entries:
-        range: SampleOperation
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
-
-  AnalyteStorage:
-    is_a: SampleOperation
-    description: >-
-      Information about storing a sample including volume, temperature, and the storage container.
+      A planned process that is performed on a sample.  This class is intended to
+      be used as a superclass for more specific sample operations.
     slots:
-      - analyte_volume
-      - temp
+      - id
+      - operation_type
+      - DerivativeList
+      - SampleDryingList
+      - SubsamplingList
+      - AcidificationList
+      - ReactionList
+      - FiltrationList
+      - ExtractionList
+      - AliquotList
+      - PhaseSeparationList
+      - AnalyteStorageList
+      - PhMeasurementList
+      - MixingList
+      - SievingList
+      - ChemicalReactionList
+    slot_usage:
+      has_input: #commenting out for now, is this supposed to be a biosample id or a full biosample?
+        #range: Biosample
+        required: true
+    #  has_output: #not sure what processed sample is
+    #    range: ProcessedSample
+    #    required: true
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:sops-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+      type:
+        required: false
+  
+  DerivativeActivity:
+    description: >-
+          A technique used in chemistry which transforms a chemical compound into a product (the reaction's derivate) of similar chemical structure, called a derivative. That compound has properties more amenable to a particular analytical method. Some samples analyzed by GC require derivatization in order to make them suitable for analysis. Compounds that have poor volatility, poor thermal stability, or that can be adsorbed in the injector will exhibit nonreproducible peak areas, heights, and shapes. Other compounds that respond poorly on a specific detector may need to be “tagged” with a different functional group to improve detection.
+    is_a: PlannedProcess
+    slots:
+      - has_input
+      - has_output
+      - derivatization
+      - derivatization_agent
+      - device
       - container_type
+      - duration
+      - mixing
+      - sample_volume
+      - speed
+      - volume 
+      - concentration
     slot_usage:
       temp:
         description: >-
-          A temperature, given in Fahrenheit or Celsius.
+          A temperature, given in Celsius.
 
+  SampleDrying:
+    class_uri: CHMO:0001549 # MAM
+    description: >-
+      The process of removing a solvent from a substance.
+    is_a: PlannedProcess
+    slots:
+      - has_input
+      - has_output
+      - dry
+      - duration
+      - sample_mass
+      - value
+    slot_usage:
+      temp:
+        description: >-
+          A temperature, given in Celsius.
+
+  SubsamplingActivity:
+    description: >-
+      A subsample may be: (a) a portion of the sample obtained by selection or division; 
+      (b) an individual unit of the lot taken as part of the sample; (c) the final unit of multistage sampling. 
+      The term 'subsample' is used either in the sense of a 'sample of a sample' or as a synonym for 'unit'. 
+      In practice, the meaning is usually apparent from the context or is defined.
+    is_a: SampleOperation
+    slots:
+      - has_input
+      - has_output
+      - container_size
+      - container_type
+      - sample_mass
+      - starting_amount
+      - volume
+      - duration
+      - instrument
+    slot_usage:
+      temp:
+        description: >-
+          A temperature, given in Celsius
+
+  AcidificationActivity:
+    description: >-
+      Activity of modifying the pH of a sample or solution via addition of some acid.
+    is_a: PlannedProcess
+    slots:
+      - has_input
+      - has_output
+      - acid
+      - ph
+      - volume
+      - concentration
+
+  ReactionActivity:
+    description: >-
+      A process which uses or consumes chemical/molecular entities to generate other molecular entities.
+    is_a: PlannedProcess
+    slots:
+      - has_input
+      - has_output
+      - container_type
+      - duration
+      - mixing
+      - speed
+      - instrument
+      - volume #double check these next couple
+      - concentration
+      - extractant
+    slot_usage:
+      temp:
+        description: >-
+          A temperature, given in Celsius.
+
+  AnalyteStorage:
+    is_a: PlannedProcess
+    description: >-
+      The act, process and logistical considerations of the physical or environmental conditions under which the analytical sample is maintained.
+    slots:
+      - activity_type
+      - analyte_volume
+      - temp
+      - container_type
+      - container_size
+      - sample_mass
+      - has_input
+      - has_output
+      - duration
+    slot_usage:
+      temp:
+        description: >-
+          A temperature, given in Celsius.
+
+  FiltrationActivity:
+    description: >-
+      The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by forcing a carrier gas or liquid through a porous medium.
+    is_a: PlannedProcess
+    slots:
+      - has_input
+      - has_output
+      - container_type
+      - filter
+      - material_pore_size
+      - conditioning
+      - analyte_volume
+      - separation_method
+      - container_size
+      - volume
+
+  ConditioningValue: 
+    #Look up obi
+    description: >-
+      Holds information relating to a conditioning process. This class is used for filtration
+      activity. Holds the solvent, concentration, container, and volume
+    slots:
+      - conditioning_type
+      - solvent
+      - concentration
+      - volume
+      - container_type
+      - container_size
+
+  ExtractionActivity:
+    description: >-
+      A material separation in which a desired component of an input material is separated from the remainder
+    is_a: PlannedProcess
+    slots:
+      - has_input
+      - has_output
+      - container_type
+      - extractant
+      - concentration
+      - container_size
+      - duration
+      - mixing
+      - sample_volume
+      - speed
+      - volume
+      - solute
+
+  AliquotActivity:
+    description: >-
+      Pertaining to a portion of the whole; any one of two or more samples of something, of the same volume or weight.
+    is_a: PlannedProcess
+    slots:
+      - has_input
+      - has_output
+      - container_type
+      - volume
+      - container_size
+      - starting_amount
+      - source_container_size
+      - source_container_type
+      - transfer_type
+
+  PhaseSeparationActivity:
+    description: >-
+      The process by which a single solid (liquid) phase separates into two or more new phases.
+    is_a: PlannedProcess
+    slots:
+      - has_input
+      - has_output
+      - material_component_separation
+      - analyte_volume
+      - duration
+      - value
+      - modifier
+      - material
+      - solvent
+      - volume
+      - container_type
+      - container_size
+    slot_usage:
+      temp:
+        description: >-
+          A temperature, given in Celsius.
+
+  ModifierValue:
+    description: >-
+      The modification being done to a sample during phase separation.
+    slots:
+      - modifier_substance
+      - concentration
+
+  #AnalyticalSample:
+  #  description: >-
+  #    A liquid bulk product produced according to specified lab protocols, from a sample or analyte, intended for further analysis.
+  #  is_a: PlannedProcess
+  #  slots:
+  #    - has_input
+  #    - container_type
+  #    - sample_state
+  #    - volume
+  #    - analyte_volume
+  #    - concentration
+  
+  PhMeasurement:
+    description: >-
+      The measurement of pH, the negative logarithm to base ten of the hydrogen ion activity in a solution. Operationally the pH of a solution X, pH(X), is measured relative to that of a standard reference solution, pH(S), and defined as pH(X) = pH(S) - (E(X) - E(S))/(RT/F)ln 10, where E(X) and E(S) are the electromotive forces measured in cells containing the solution X and the reference solution respectively.
+    is_a: PlannedProcess
+    slots:
+      - has_input
+      - has_output
+      - analytical_solution
+      - sample_volume
+      - container_type
+      - instrument
+      - duration
+      - mixing
+      - speed
+      - volume
+
+  MixingActivity:
+    description: >-
+      The combining of components, particles or layers into a more homogeneous state. The mixing may be achieved manually or mechanically by shifting the material with stirrers or pumps or by revolving or shaking the container. The process must not permit segregation of particles of different size or properties. Homogeneity may be considered to have been achieved in a practical sense when the sampling error of the processed portion is negligible compared to the total error of the measurement system.
+    is_a: PlannedProcess
+    slots:
+      - has_input
+      - has_output
+      - duration
+      - mixing
+
+  SievingActivity:
+    description: >-
+      A sample is passed through a sieve to reach a specific particle size and remove anything that can't be passed through that size.
+    is_a: PlannedProcess
+    slots:
+      - has_input
+      - has_output
+      - sieve_size
+      - screen_size
+
+  LabDevice:
+    # OBI:0000968 
+    description: A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.
+    exact_mappings:
+      - OBI:0000968
+    slots:
+      - activity_speed 
+      - activity_time
+      - activity_temperature
+      - description
+      - device_type
+
+  ReagentValue:
+    description: >-
+      Contains information about a reagent used in a chemical reaction activity
+    slots:
+      - reagent_type
+      - volume
+      - concentration
+
+  ChemicalReactionActivity:
+    description: >-
+      A process which uses or consumes chemical/molecular entities to generate other molecular entities
+    is_a: PlannedProcess
+    slots:
+      - has_input
+      - has_output
+      - reactant
+      - container_type
+      - duration
+      - mixing
+      - speed
+      - reagent
+      - reaction_type
+      - volume
+    slot_usage:
+      temp:
+        description: >-
+          A temperature, given in Celsius.
 
 slots:
   analyte_volume:
     range: QuantityValue
     description: >-
       The volume of an analyte used, stored, or prepared.
-  container_type: # todo this should probably be an enumeration
-    range: string
+  container_type:
+    range: ContainerTypeEnum
     description: >-
       A type of container. i.e. test tube, falcon tube, etc.
+  container_size:
+    range: QuantityValue
+    description: The volume of the container an analyte is stored in or an activity takes place in
+  duration: # or could be a ISO8601 perisod string
+    range: QuantityValue
+    description: The duration of an activity, e.x. '2 hours' or '35 minutes'
+  derivatization:
+    range: float
+    description: "A technique used in chemistry which transforms a chemical compound into a product ( the reaction's derivate) of similar chemical structure, called a derivative. That compount has properties more amenable to a particular analytical method. Some samples analyzed by GC require derivatization in order to make them suitable for analysis. Compounds that have poor volatility. poor thermal stability, or that can be adsorbed in the injector will exhibit nonreproducible peak areas, heights, and shapes. other compounds that respond poorly on a specific detector may need to be 'tagged' with a different function group to improve detection."
+  derivatization_agent:
+    range: float
+    description: "A chemical entity which is used in a material combination process known as derivatization and which consists in adding chemical groups to a molecule in an attempt to make it more volatile and therefore amenable to gas-chromatography mass spectrometry."
+  device:
+    description: "A material entity that is designed to perform a function in a scientific investigation, but is not a reagent."
+  mixing:
+    range: LabDevice 
+    description: The lab device used for a mixing action in an activity
+  sample_volume:
+    range: QuantityValue
+  speed: 
+    range: QuantityValue
+  volume:
+    range: QuantityValue
+  concentration:
+    range: QuantityValue
+    description: The concentration of a substance used in an activity
+  activity_speed:
+    range: QuantityValue
+    description: The speed use in a lab device for an activity.
+  activity_time:
+    range: QuantityValue
+    description: The duration that an activity was run on a lab device.
+  activity_temperature:
+    range: QuantityValue
+    description: The temperature a lab device was set to for an activity.
+  device_type:
+    range: DeviceTypeEnum
+    description: The type of device being used for an activity
+  dry:
+    description: The act of removing moisture from something
+  value: #not sure what this is supposed to actually be
+    range: QuantityValue
+  starting_amount:
+    range: QuantityValue
+    description: The starting amount of analyte used in an activity
+  instrument:
+    description: "Description of the instrument or the mass spectrometer"
+  acid: 
+    description: "A molecular entity or chemical species capable of donating a hydron (proton) (see Brønsted acid) or capable of forming a covalent bond with an electron pair (see Lewis acid)."
+  conditioning_type:
+    range: string
+  solvent:
+    range: SolventEnum
+    description: A solvent used in conditioning
+    multivalued: true
+  filter:
+    description: "A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained. Filters are made with a variety of materials: cellulose and derivatives, glass fibre, ceramic, synthetic plastics and fibres. Filters may be naturally porous or be made so by mechanical or other means. Membrane/ceramic filters are prepared with highly controlled pore size in a sheet of suitable material such as polyfluoroethylene, polycarbonate or cellulose esters. Nylon mesh is sometimes used for reinforcement. The pores constitute 80–85% of the filter volume commonly and several pore sizes are available for air sampling (0.45−0.8 μm are commonly employed)."
+  material_pore_size:
+    range: float
+    description: "A quantitative or qualitative measurement of the physical dimensions of the pores in a material."
+  separation_method:
+    range: ContainerTypeEnum
+  conditioning:
+    range: ConditioningValue
+    description: "Preliminary treatment of either phase with a suitable solution of the other phase (in the absence of main extractable solute(s)) so that when the subsequent equilibration is carried out changes in the (volume) phase ratio or in the concentrations of other components are minimized."
+    multivalued: true
+  extractant:
+    range: SolventEnum
+    description: "The active component(s) primarily responsible for transfer of a solute from one phase to the other."
+  solute: #double check the range on this
+    range: string
+    description: The solute in an extraction
+  source_container_type:
+    range: ContainerTypeEnum
+    description: The source container a substance is being transferred from
+  source_container_size:
+    range: QuantityValue
+    description: The size of the source container given with a number and unit
+  modifier:
+    range: ModifierValue
+    description: A modifier to a phase separation
+  modifier_substance:
+    range: string
+    description: The type of modification being done
+  material_component_separation: 
+    range: string
+    description: "A material processing in which components of an input material become segregated in space"
+  material:
+    range: string
+    description: Material for a phase separation
+  analytical_solution:
+    range: string
+    description: "The solution prepared from the test portion for the analytical procedure. The proportions of test portion and solvent are normally known."
+  sieve_size:
+    range: QuantityValue
+  screen_size:
+    range: QuantityValue
+    description: The size of the screen in a sieve
+  reagent_type:
+    range: string
+    description: the type of reagent being used
+  reactant:
+    range: string
+    description: The reactant in a ChemicalReactionActivity
+  reagent:
+    range: ReagentValue
+    description: Information regarding the reagent in a ChemicalReactionActivity
+  reaction_type:
+    range: string
+    description: The type of reaction happening in a ChemicalreactionActivity
+  operation_type: #check this
+    range: string
+    description: The sample operation protocol being followed
+  transfer_type:
+    range: string
+    description: The type of transfer being performed during an aliquot activity
+  activity_type:
+    range: string
+    description: The type of sub activity being performed if applicable. i.e. 'ice' when handling a sample in storage
+  DerivativeList:
+    mixins: object_set
+    range: DerivativeActivity
+    multivalued: True
+    description: The derivative activities that make up the steps in a sample operation
+  SampleDryingList:
+    mixins: object_set
+    range: SampleDrying
+    multivalued: True
+    description: The sample drying activities that make up the steps in a sample operation
+  SubsamplingList:
+    mixins: object_set
+    range: SubsamplingActivity
+    multivalued: True
+    description: The subsampling activities that make up the steps in a sample operation
+  AcidificationList:
+    mixins: object_set
+    range: AcidificationActivity
+    multivalued: True
+    description: The acidification activities that make up the steps in a sample operation
+  ReactionList:
+    mixins: object_set
+    range: ReactionActivity
+    multivalued: True
+    description: The Reaction activities that make up the steps in a sample operation
+  FiltrationList:
+    mixins: object_set
+    range: FiltrationActivity
+    multivalued: True
+    description: The Filtration activities that make up the steps in a sample operation
+  ExtractionList:
+    mixins: object_set
+    range: ExtractionActivity
+    multivalued: True
+    description: The extraction activities that make up the steps in a sample operation
+  AliquotList:
+    mixins: object_set
+    range: AliquotActivity
+    multivalued: True
+    description: The Aliquot activities that make up the steps in a sample operation
+  PhaseSeparationList:
+    mixins: object_set
+    range: PhaseSeparationActivity
+    multivalued: True
+    description: The phase separation activities that make up the steps in a sample operation
+  AnalyteStorageList:
+    mixins: object_set
+    range: AnalyteStorage
+    multivalued: True
+    description: The analyte storage activities that make up the steps in a sample operation
+  PhMeasurementList:
+    mixins: object_set
+    range: PhMeasurement
+    multivalued: True
+    description: The PhMeasurement activities that make up the steps in a sample operation
+  MixingList:
+    mixins: object_set
+    range: MixingActivity
+    multivalued: True
+    description: The mixing activities that make up the steps in a sample operation
+  SievingList:
+    mixins: object_set
+    range: SievingActivity
+    multivalued: True
+    description: The sieving activities that make up the steps in a sample operation
+  ChemicalReactionList:
+    mixins: object_set
+    range: ChemicalReactionActivity
+    multivalued: True
+    description: The chemical reaction activity activities that make up the steps in a sample operation
 
 
-enums: { }
+enums: 
+  ContainerTypeEnum:
+    permissible_values:
+      screw top conical:
+        description: 'screw_top_concial tube'
+      HDPE bottle:
+        description: 'HDPE bottle'
+      weighing tin:
+        description : 'weighing tin'
+      PTFE 96 well filter plate:
+        description: 'PTFE 96-well filter plate'
+      V bottom conical tubes:
+        description: 'V-bottom conical tubes'
+      Falcon tube:
+        description: 'falcon tube'
+      Buchner funnel:
+        description: 'Buchner funnel'
+      Glass scintillation vial:
+        description: 'glass scintillation vials'
+      Olympus:
+        description: 'Olympus'
+      centrifuge tube:
+        description: 'centrifuge tube'
+      sample cup:
+        description: 'sample cup'
+      squeeze bottle:
+        description: 'squeeze bottle'
+      glass canning jar:
+        description: 'glass canning jar'
+      auto sampler vial:
+        description: 'auto sampler vial'
+      glass insert vial:
+        description: 'glass insert vial'
+      water vials:
+        description: 'water vials'
+      syringe:
+        description: 'syringe'
+      solvent bottle:
+        description: 'solvent bottle'
+
+  DeviceTypeEnum: 
+    permissible_values:
+      Orbital Shaker:
+        description: 'Orbital Shaker'
+      Thermomixer:
+        description: 'Thermomixer'
+      Vortex:
+        description: "Vortex"
+      Agitation plunger:
+        description: "Agitation plunger"
+
+  SolventEnum: 
+    permissible_values:
+      Deionized Water:
+        description: 'Deionized Water'
+      methanol:
+        description: 'methanol'
+      chloroform:
+        description: 'chloroform'
+      ammonium bicarbonate buffer:
+        description: 'ammonium bicarbonate buffer'
+      methoxyamine:
+        description: 'methoxyamine'
+      MeOH/H2O:
+        description: 'MeOH/H2O'
+      Potassium sulfate:
+        description: 'Potassium Sulfate'
+      ethanol free chloroform:
+        description: 'ethanol-free chloroform'
+      bray extract solution:
+        description: 'bray extract solution'
+      olsen extract solution:
+        description: 'olsen extract solution'
+      Milli Q H2O:
+        description: 'Milli-Q H2O'
+      ultrapure water:
+        description: 'ultrapure water'
 
 
 types:
