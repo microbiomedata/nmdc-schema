@@ -1329,8 +1329,12 @@ classes:
       - investigation
       - project
       - umbrella project
+      - research inititative
     description: >-
       A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.
+    comments: Study can include both consortia and studies.
+    close_mappings: 
+      - NCIT:C15429
     alt_descriptions:
       embl.ena:
         A study (project) groups together data submitted to the archive and
@@ -1371,11 +1375,13 @@ classes:
       - funding_sources
       - gold_study_identifiers
       - has_credit_associations
+      - initiative_type
       - insdc_bioproject_identifiers
       - massive_study_identifiers
       - mgnify_project_identifiers
       - notes
       - objective
+      - part_of
       - principal_investigator
       - publications
       - related_identifiers
@@ -1427,6 +1433,10 @@ classes:
     #        description: The EMSL project ID that relates to the NMDC submitted study
     #      emsl_proposal_doi:
     #        description: The DOI for the EMSL awarded study that relates to the NMDC submitted study
+      part_of:
+        description: Links a study or consortium to a parent study or consortium.
+        comments: Value is the id of the parent study or consortium.
+        range: Study
     exact_mappings:
       - SIO:001066
       - NCIT:C63536
@@ -1968,6 +1978,20 @@ enums:
       ANL:
         title: Argonne National Laboratory
         meaning: https://ror.org/05gvnxz63
+  
+  InitiativeTypeEnum:
+    permissible_values:
+      study:
+        description: A detailed examination, analysis, or critical inspection of a hypothesis-driven experiment.
+        close_mappings: 
+          - NCIT:C63536
+      consortium:
+        description: >- 
+          A group formed to undertake a venture that is beyond the capabilities of the individual members. Each member of the 
+          consortium brings a high level of expertise in a specific area to ensure the successful completion of the project.
+        comments: A consortium has collections of data, those data do not come from a hypothesis-driven experiment.
+        exact_mappings: 
+          - NCIT:C61538
 
 slots:
 
@@ -2299,6 +2323,9 @@ slots:
       investigator role... do we need to define the OBI prefix?
     required: true
   #    slot_uri: prov:agent
+  initiative_type:
+    description: The type of research initiative
+    range: InitiativeTypeEnum
 
   object_set:
     mixin: true
