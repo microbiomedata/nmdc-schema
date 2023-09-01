@@ -2328,6 +2328,7 @@ slots:
   initiative_type:
     description: The type of research initiative
     range: InitiativeTypeEnum
+    required: true
 
   object_set:
     mixin: true
