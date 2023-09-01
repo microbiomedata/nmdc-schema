@@ -1338,9 +1338,7 @@ classes:
         A study (project) groups together data submitted to the archive and
         controls its release date. A study accession is typically used when citing
         data submitted to ENA
-    todos:
-      - potentially change the class name from Study to ResearchInitiative to make more semantically accurate and clear; encompassing instances of studies and consortia.
-
+    
     slots:
       - emsl_project_dois
 
@@ -1451,6 +1449,8 @@ classes:
       - determine how to get data values for submitted_to_insdc, investigation_type,
         experimental_factor
       - project_name is redundant with name, so excluding it
+      - potentially change the class name from Study to ResearchInitiative to make more semantically accurate and clear; encompassing instances of studies and consortia.
+
     notes:
       - "sample GOLD link https://identifiers.org/gold:Gs0110115"
       - "sample insdc.srs link https://www.ebi.ac.uk/ena/browser/view/PRJEB45055 ?"
