@@ -1333,8 +1333,6 @@ classes:
     description: >-
       A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.
     comments: The Study class can include both consortia and studies.
-    close_mappings: 
-      - NCIT:C15429
     alt_descriptions:
       embl.ena:
         A study (project) groups together data submitted to the archive and
