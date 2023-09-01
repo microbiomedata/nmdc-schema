@@ -1332,7 +1332,7 @@ classes:
       - research inititative
     description: >-
       A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.
-    comments: Study can include both consortia and studies.
+    comments: The Study class can include both consortia and studies.
     close_mappings: 
       - NCIT:C15429
     alt_descriptions:
@@ -1340,6 +1340,8 @@ classes:
         A study (project) groups together data submitted to the archive and
         controls its release date. A study accession is typically used when citing
         data submitted to ENA
+    todos:
+      - potentially change the class name from Study to ResearchInitiative to make more semantically accurate and clear; encompassing instances of studies and consortia.
 
     slots:
       - emsl_project_dois
