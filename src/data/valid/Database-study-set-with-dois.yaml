@@ -1,42 +1,28 @@
 study_set:
-  - id: "nmdc:sty-11-34xj1150"
-    name: "National Ecological Observatory Network: soil metagenomes (DP1.10107.001)"
-    description: The National Science Foundation's National Ecological Observatory Network (NEON) is a continental-scale observation facility operated by Battelle and designed to collect long-term open access ecological data to better understand how U.S. ecosystems are changing.
+  - id: nmdc:sty-99-FkQIsc
     gold_study_identifiers:
-      - GOLD:Gs0144570
-      - GOLD:Gs0161344
+      - GOLD:Gs0128849
+    name: Permafrost microbial communities from Stordalen Mire, Sweden
+    description:
+      Thawing permafrost is one of the largest soil carbon pools on the planet.
+      The goal of this project is to study microbial communities that participate in
+      the soil carbon cycle.
+    ecosystem: Environmental
+    ecosystem_category: Terrestrial
+    ecosystem_type: Soil
+    ecosystem_subtype: Wetlands
+    specific_ecosystem: Permafrost
     principal_investigator:
-      has_raw_value: Kate Thibault
-      email: kthibault@battelleecology.org
-      name: Kate Thibault
-      orcid: orcid:0000-0003-3477-6424
-      profile_image_url: https://portal.nersc.gov/project/m3408/profile_images/thibault_katy.jpg
-    title: "National Ecological Observatory Network: soil metagenomes (DP1.10107.001)"
-    type: "nmdc:Study"
-    websites:
-      - https://www.neonscience.org/
-      - https://data.neonscience.org/data-products/DP1.10107.001
-      - https://data.neonscience.org/api/v0/documents/NEON.DOC.014048vO
-      - https://data.neonscience.org/api/v0/documents/NEON_metagenomes_userGuide_vE.pdf
-    study_image: 
-      - url: https://portal.nersc.gov/project/m3408/profile_images/nmdc_sty-11-34xj1150.jpg
-    funding_sources: 
-      - "NSF#1724433 National Ecological Observatory Network: Operations Activities"
-  - id: "nmdc:sty-11-hht5sb92"
-    name: "National Ecological Observatory Network: surface water metagenomes (DP1.20281.001)"
-    type: "nmdc:Study"
-    title: "National Ecological Observatory Network: surface water metagenomes (DP1.20281.001)"
-    description: The National Science Foundation's National Ecological Observatory Network (NEON) is a continental-scale observation facility operated by Battelle and designed to collect long-term open access ecological data to better understand how U.S. ecosystems are changing.
-    websites: 
-      - https://www.neonscience.org/
-      - https://data.neonscience.org/data-products/DP1.20281.001
-      - https://data.neonscience.org/api/v0/documents/NEON_metagenomes_userGuide_vE.pdf
-    funding_sources:
-      - "NSF#1724433 National Ecological Observatory Network: Operations Activities"
-    principal_investigator: 
-      name: Kate Thibault
-      email: kthibault@battelleecology.org
-      orcid: orcid:0000-0003-3477-6424
-      has_raw_value: Kate Thibault
-    study_image:
-      - url: https://portal.nersc.gov/project/m3408/profile_images/nmdc_sty-11-34xj1150.jpg
+      has_raw_value: Virginia Rich
+    award_dois:
+      - doi:10.25585/1487763
+      - doi:10.25585/1487765
+    publication_dois:
+      - doi:10.21/FQSQT4T3
+      - doi:10.1016/j.foodchem.2008.11.065
+    dataset_dois:
+      - doi:10.1333/s00897980202a
+      - doi:10.1093/acprof:oso/9780195159561.001.1
+    type: nmdc:Study
+    gnps_task_identifiers:
+      - "gnps.task:4b848c342a4f4abc871bdf8a09a60807"
