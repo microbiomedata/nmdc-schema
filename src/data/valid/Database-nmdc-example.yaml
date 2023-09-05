@@ -16,6 +16,7 @@ study_set:
     award_dois:
       - doi:10.25585/1488217 # https://doi.org/10.25585/1488217 / https://www.osti.gov/dataexplorer/biblio/dataset/1488217 -> https://genome.jgi.doe.gov/portal/Somoldmmetaomics/Somoldmmetaomics.info.html
     type: nmdc:Study
+    initiative_type: study
   - id: nmdc:sty-99-oJmAOs
     gold_study_identifiers:
       - GOLD:Gs0130354
@@ -34,6 +35,7 @@ study_set:
     award_dois:
       - doi:10.25585/1488215 # https://www.osti.gov/dataexplorer/biblio/dataset/1488215 -> https://genome.jgi.doe.gov/portal/Molmecexpwarming/Molmecexpwarming.info.html
     type: nmdc:Study
+    initiative_type: consortium
   - id: nmdc:sty-99-3bQQ4j
     gold_study_identifiers:
       - GOLD:Gs0134277
@@ -52,6 +54,7 @@ study_set:
     award_dois:
       - doi:10.25585/1488209 # https://www.osti.gov/dataexplorer/biblio/dataset/1488209 -> https://genome.jgi.doe.gov/portal/ARhifrWetlands/ARhifrWetlands.info.html
     type: nmdc:Study
+    initiative_type: study
 omics_processing_set:
   - id: nmdc:omprc-99-9XUVVF
     alternative_identifiers:
