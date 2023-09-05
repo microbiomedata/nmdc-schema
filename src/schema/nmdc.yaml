@@ -1436,11 +1436,8 @@ classes:
         comments: Value is the id of the parent study or consortium.
         range: Study
     exact_mappings:
-      - SIO:001066
-      - NCIT:C63536
       - OBI:0000066
-      - ISA:Study
-    close_mappings:
+      - SIO:000747
       - NCIT:C41198
       - ISA:Investigation
     broad_mappings:
@@ -1983,8 +1980,12 @@ enums:
     permissible_values:
       study:
         description: A detailed examination, analysis, or critical inspection of a hypothesis-driven experiment.
-        close_mappings: 
+        exact_mappings: 
+          - SIO:001066
           - NCIT:C63536
+          - ISA:Study
+        close_mappings:
+          - OBI:0000355
       consortium:
         description: >- 
           A group formed to undertake a venture that is beyond the capabilities of the individual members. Each member of the 
