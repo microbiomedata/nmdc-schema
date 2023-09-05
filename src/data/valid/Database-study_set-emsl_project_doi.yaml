@@ -6,3 +6,4 @@ study_set:
     #per EMSL NEXUS team suggested terminology is emsl_project_doi not emsl_proposal_doi
     emsl_project_dois:
       - doi:10.46936/intm.proj.2021.60141/60000423
+    initiative_type: study
