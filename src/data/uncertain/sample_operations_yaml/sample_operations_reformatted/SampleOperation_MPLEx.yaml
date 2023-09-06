@@ -1,8 +1,7 @@
-id: mplex:00
 operation_type: mplex
-has_input: none
 AnalyteStorageList:
   - id: mplex:1
+    has_input: temp:input #didn't have an input in the original file, but it's required
     analyte_volume:
       has_unit: g
       has_numeric_value: 1

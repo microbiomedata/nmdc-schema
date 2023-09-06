@@ -22,7 +22,7 @@ imports:
   - nmdc
 
 classes:
-  
+
   SampleOperation:
     is_a: PlannedProcess
     title: Sample Operations
@@ -31,6 +31,26 @@ classes:
       be used as a superclass for more specific sample operations.
     slots:
       - id
+    slot_usage:
+      has_input: 
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:sops-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+        required: true
+      has_output:
+        range: ProcessedSample #full processed sample class, needs to be modified
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:sops-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+      type:
+        required: false
+
+  SampleOperationsCollection:
+    description: >-
+      A collection of sample operations, together making a protocol
+    slots:
       - operation_type
       - DerivativeList
       - SampleDryingList
@@ -46,25 +66,11 @@ classes:
       - MixingList
       - SievingList
       - ChemicalReactionList
-    slot_usage:
-      has_input: #commenting out for now, is this supposed to be a biosample id or a full biosample?
-        #range: Biosample
-        required: true
-    #  has_output: #not sure what processed sample is
-    #    range: ProcessedSample
-    #    required: true
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:sops-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
-      type:
-        required: false
   
   DerivativeActivity:
     description: >-
-          A technique used in chemistry which transforms a chemical compound into a product (the reaction's derivate) of similar chemical structure, called a derivative. That compound has properties more amenable to a particular analytical method. Some samples analyzed by GC require derivatization in order to make them suitable for analysis. Compounds that have poor volatility, poor thermal stability, or that can be adsorbed in the injector will exhibit nonreproducible peak areas, heights, and shapes. Other compounds that respond poorly on a specific detector may need to be “tagged” with a different functional group to improve detection.
-    is_a: PlannedProcess
+      A technique used in chemistry which transforms a chemical compound into a product (the reaction's derivate) of similar chemical structure, called a derivative. That compound has properties more amenable to a particular analytical method. Some samples analyzed by GC require derivatization in order to make them suitable for analysis. Compounds that have poor volatility, poor thermal stability, or that can be adsorbed in the injector will exhibit nonreproducible peak areas, heights, and shapes. Other compounds that respond poorly on a specific detector may need to be “tagged” with a different functional group to improve detection.
+    is_a: SampleOperation
     slots:
       - has_input
       - has_output
@@ -87,7 +93,7 @@ classes:
     class_uri: CHMO:0001549 # MAM
     description: >-
       The process of removing a solvent from a substance.
-    is_a: PlannedProcess
+    is_a: SampleOperation
     slots:
       - has_input
       - has_output
@@ -125,7 +131,7 @@ classes:
   AcidificationActivity:
     description: >-
       Activity of modifying the pH of a sample or solution via addition of some acid.
-    is_a: PlannedProcess
+    is_a: SampleOperation
     slots:
       - has_input
       - has_output
@@ -137,7 +143,7 @@ classes:
   ReactionActivity:
     description: >-
       A process which uses or consumes chemical/molecular entities to generate other molecular entities.
-    is_a: PlannedProcess
+    is_a: SampleOperation
     slots:
       - has_input
       - has_output
@@ -155,7 +161,7 @@ classes:
           A temperature, given in Celsius.
 
   AnalyteStorage:
-    is_a: PlannedProcess
+    is_a: SampleOperation
     description: >-
       The act, process and logistical considerations of the physical or environmental conditions under which the analytical sample is maintained.
     slots:
@@ -176,7 +182,7 @@ classes:
   FiltrationActivity:
     description: >-
       The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by forcing a carrier gas or liquid through a porous medium.
-    is_a: PlannedProcess
+    is_a: SampleOperation
     slots:
       - has_input
       - has_output
@@ -205,7 +211,7 @@ classes:
   ExtractionActivity:
     description: >-
       A material separation in which a desired component of an input material is separated from the remainder
-    is_a: PlannedProcess
+    is_a: SampleOperation
     slots:
       - has_input
       - has_output
@@ -223,7 +229,7 @@ classes:
   AliquotActivity:
     description: >-
       Pertaining to a portion of the whole; any one of two or more samples of something, of the same volume or weight.
-    is_a: PlannedProcess
+    is_a: SampleOperation
     slots:
       - has_input
       - has_output
@@ -238,7 +244,7 @@ classes:
   PhaseSeparationActivity:
     description: >-
       The process by which a single solid (liquid) phase separates into two or more new phases.
-    is_a: PlannedProcess
+    is_a: SampleOperation
     slots:
       - has_input
       - has_output
@@ -267,7 +273,7 @@ classes:
   #AnalyticalSample:
   #  description: >-
   #    A liquid bulk product produced according to specified lab protocols, from a sample or analyte, intended for further analysis.
-  #  is_a: PlannedProcess
+  #  is_a: SampleOperation
   #  slots:
   #    - has_input
   #    - container_type
@@ -279,7 +285,7 @@ classes:
   PhMeasurement:
     description: >-
       The measurement of pH, the negative logarithm to base ten of the hydrogen ion activity in a solution. Operationally the pH of a solution X, pH(X), is measured relative to that of a standard reference solution, pH(S), and defined as pH(X) = pH(S) - (E(X) - E(S))/(RT/F)ln 10, where E(X) and E(S) are the electromotive forces measured in cells containing the solution X and the reference solution respectively.
-    is_a: PlannedProcess
+    is_a: SampleOperation
     slots:
       - has_input
       - has_output
@@ -295,7 +301,7 @@ classes:
   MixingActivity:
     description: >-
       The combining of components, particles or layers into a more homogeneous state. The mixing may be achieved manually or mechanically by shifting the material with stirrers or pumps or by revolving or shaking the container. The process must not permit segregation of particles of different size or properties. Homogeneity may be considered to have been achieved in a practical sense when the sampling error of the processed portion is negligible compared to the total error of the measurement system.
-    is_a: PlannedProcess
+    is_a: SampleOperation
     slots:
       - has_input
       - has_output
@@ -305,7 +311,7 @@ classes:
   SievingActivity:
     description: >-
       A sample is passed through a sieve to reach a specific particle size and remove anything that can't be passed through that size.
-    is_a: PlannedProcess
+    is_a: SampleOperation
     slots:
       - has_input
       - has_output
@@ -335,7 +341,7 @@ classes:
   ChemicalReactionActivity:
     description: >-
       A process which uses or consumes chemical/molecular entities to generate other molecular entities
-    is_a: PlannedProcess
+    is_a: SampleOperation
     slots:
       - has_input
       - has_output
@@ -552,6 +558,7 @@ slots:
     range: ChemicalReactionActivity
     multivalued: True
     description: The chemical reaction activity activities that make up the steps in a sample operation
+
 
 #Touch up descriptions, potentially add ontology meaning tag
 enums: 
