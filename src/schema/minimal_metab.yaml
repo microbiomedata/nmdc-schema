@@ -47,11 +47,11 @@ classes:
       type:
         required: false
 
-  SampleOperationsCollection:
+  SampleOperationsCollection: 
     description: >-
       A collection of sample operations, together making a protocol
     slots:
-      - operation_type
+      - operation_type #enumerate the values for this
       - DerivativeList
       - SampleDryingList
       - SubsamplingList
@@ -477,8 +477,8 @@ slots:
   reaction_type:
     range: string
     description: The type of reaction happening in a ChemicalreactionActivity
-  operation_type: #check this
-    range: string
+  operation_type: 
+    range: operationEnum
     description: The sample operation protocol being followed
   transfer_type:
     range: string
@@ -638,6 +638,22 @@ enums:
         description: 'Milli-Q H2O'
       ultrapure water:
         description: 'ultrapure water'
+
+  operationEnum:
+    permissible_values:
+      MPLEx:
+      Comprehensive:
+      Derivatiztion:
+      Filter clean up:
+      Gravimetric water content:
+      Microbial biomass:
+      Organic matter extraction:
+      Organic matter spe:
+      Pbray extraction:
+      pH:
+      Polsen extraction:
+      Respiration:
+      Texture:
 
 
 types:
