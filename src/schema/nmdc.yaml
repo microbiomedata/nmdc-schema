@@ -257,6 +257,9 @@ classes:
   CollectingBiosamplesFromSite:
     is_a: PlannedProcess
     title: Collecting Biosamples From Site
+    description: Describes the process of collecting a biosample from its site of origin.
+    todos:
+      - Re-evaluate the slot name & title. Suggestion, BiosampleCollection or BiosampleCollectionActivity
     comments:
       - "this illustrates implementing a Biosample relation with a process class"
     slot_usage:
@@ -2258,6 +2261,10 @@ slots:
   relevant_protocols:
     multivalued: true
     range: string
+    description: A plan specification which has sufficient level of detail and quantitative information to communicate it between investigation agents, so that different investigation agents will reliably be able to independently reproduce the process.
+    todos:
+      - The description is from OBI, https://www.ebi.ac.uk/ols4/ontologies/efo/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FOBI_0000272, http://purl.obolibrary.org/obo/OBI_0000272
+      - Is this an alias or a source?
   funding_sources:
     multivalued: true
     range: string
