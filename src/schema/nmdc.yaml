@@ -112,6 +112,7 @@ classes:
       translated to JSON-Schema this is the 'root' object. It should contain pointers
       to other objects of interest
     slots:
+      - collection_consortium_set
       - functional_annotation_agg
       - library_preparation_set
       - processed_sample_set
@@ -1317,19 +1318,16 @@ classes:
       - NCIT:C43412
       - http://purl.obolibrary.org/obo/FBcv_0003024
 
-  Study:
+  ResearchInitiative:
     is_a: NamedThing
+    aliases:
+      - project
+      - proposal
+      - umbrella project
     in_subset:
       - sample subset
-    aliases:
-      - proposal
-      - research proposal
-      - research study
-      - investigation
-      - project
-      - umbrella project
     description: >-
-      A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.
+      Research initiatives include hypothesis driven research projects as well as sample or data collection consortia
     alt_descriptions:
       embl.ena:
         A study (project) groups together data submitted to the archive and
@@ -1337,7 +1335,6 @@ classes:
         data submitted to ENA
 
     slots:
-      - initiative_type
       - emsl_project_dois
 
       - neon_study_identifiers
@@ -1447,6 +1444,25 @@ classes:
       - "sample mgnify link https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757"
       - "GOLD, insdc.srs and mgnify are reasonable prefixes for alternative study identifiers, but no longer for the Study.id"
 
+
+  Study:
+    is_a: ResearchInitiative
+    description: A research initiative that attempts to test a hypothesis.
+      Will usually include the collection of sample, preparation, analysis, and reporting
+    aliases:
+      - investigation
+      - research proposal
+      - research study
+
+  CollectionConsortium:
+    is_a: ResearchInitiative
+    description: A research initiative in which a number of people or organizations collaborate
+      in order to collect samples meeting some defined criteria, which will then used in a multiple studies.
+    aliases:
+      - consortia
+      - consortium
+      - umbrella project
+
   BiosampleProcessing:
     aliases:
       - material processing
@@ -1537,14 +1553,6 @@ classes:
     class_uri: prov:Association
 
 enums:
-  ResearchInitiativeTypeEnum:
-#    contributors:
-#      - "ORCID:0000-0003-2452-6384"
-#      - "ORCID:0009-0004-8906-5907"
-#      - "ORCID:0000-0001-9076-6066"
-    permissible_values:
-      hypothesis_based_study: { }
-      sample_or_data_collection_consortium: { }
 
   StatusEnum:
     permissible_values:
@@ -1980,14 +1988,6 @@ enums:
 
 slots:
 
-  initiative_type:
-    description: a categorical clarification of an initiative's type
-    comments:
-      - Can clarify if Study instances are really sample/data collection consortia
-      - Whether this slot is required or not might be better determined in a class' slot_usage
-    range: ResearchInitiativeTypeEnum
-    required: true
-
   #  for FunctionalAnnotationAggMember:
   metagenome_annotation_id:
     range: WorkflowExecutionActivity
@@ -2326,6 +2326,15 @@ slots:
       Applies to a property that links a database object to a set of objects.
       This is necessary in a json document to provide context for a list, and to allow
       for a single json object that combines multiple object types
+
+  collection_consortium_set:
+    mixins: object_set
+    domain: Database
+    range: CollectionConsortium
+    multivalued: true
+    description:
+      This property links a database object to the set of collection consortia within it.
+
   biosample_set:
     mixins: object_set
     domain: Database

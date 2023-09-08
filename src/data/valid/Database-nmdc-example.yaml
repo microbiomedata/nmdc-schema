@@ -1,6 +1,5 @@
 study_set:
   - id: nmdc:sty-99-FkQIsc
-    initiative_type: hypothesis_based_study
     gold_study_identifiers:
       - GOLD:Gs0128849
     name: Permafrost microbial communities from Stordalen Mire, Sweden
@@ -18,7 +17,6 @@ study_set:
       - doi:10.25585/1488217 # https://doi.org/10.25585/1488217 / https://www.osti.gov/dataexplorer/biblio/dataset/1488217 -> https://genome.jgi.doe.gov/portal/Somoldmmetaomics/Somoldmmetaomics.info.html
     type: nmdc:Study
   - id: nmdc:sty-99-oJmAOs
-    initiative_type: hypothesis_based_study
     gold_study_identifiers:
       - GOLD:Gs0130354
     name: Forest soil microbial communities from Barre Woods Harvard Forest LTER site,
@@ -37,7 +35,6 @@ study_set:
       - doi:10.25585/1488215 # https://www.osti.gov/dataexplorer/biblio/dataset/1488215 -> https://genome.jgi.doe.gov/portal/Molmecexpwarming/Molmecexpwarming.info.html
     type: nmdc:Study
   - id: nmdc:sty-99-3bQQ4j
-    initiative_type: hypothesis_based_study
     gold_study_identifiers:
       - GOLD:Gs0134277
     name: Rhizosphere microbial communities from Carex aquatilis grown in University

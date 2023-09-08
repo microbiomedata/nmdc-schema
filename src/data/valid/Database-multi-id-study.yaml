@@ -5,7 +5,6 @@
 #  https://genome.jgi.doe.gov/portal/BioDefcarcycling/BioDefcarcycling.info.html
 study_set:
   - id: nmdc:sty-11-r2h77870
-    initiative_type: hypothesis_based_study
     jgi_portal_study_identifiers:
       - jgi.proposal:507130
     gnps_task_identifiers:

@@ -1,5 +1,4 @@
 id: example:123
-initiative_type: hypothesis_based_study
 has_credit_associations:
   - type: credit association
     applied_role: Value Not In Enum 1
