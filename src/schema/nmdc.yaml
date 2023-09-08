@@ -42,6 +42,7 @@ prefixes:
   KEGG.ORTHOLOGY: http://identifiers.org/kegg.orthology/  # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
   MASSIVE: http://example.com/
   MetaNetX: http://example.com/metanetx/
+  ORCID: https://orcid.org/
   RetroRules: http://example.com/retrorules/
   doi: http://example.com/
   emsl.project: "https://bioregistry.io/emsl.project:"
@@ -1336,6 +1337,7 @@ classes:
         data submitted to ENA
 
     slots:
+      - initiative_type
       - emsl_project_dois
 
       - neon_study_identifiers
@@ -1535,6 +1537,15 @@ classes:
     class_uri: prov:Association
 
 enums:
+  ResearchInitiativeTypeEnum:
+#    contributors:
+#      - "ORCID:0000-0003-2452-6384"
+#      - "ORCID:0009-0004-8906-5907"
+#      - "ORCID:0000-0001-9076-6066"
+    permissible_values:
+      hypothesis_based_study: { }
+      sample_or_data_collection_consortium: { }
+
   StatusEnum:
     permissible_values:
       pass: { }
@@ -1968,6 +1979,14 @@ enums:
         meaning: https://ror.org/05gvnxz63
 
 slots:
+
+  initiative_type:
+    description: a categorical clarification of an initiative's type
+    comments:
+      - Can clarify if Study instances are really sample/data collection consortia
+      - Whether this slot is required or not might be better determined in a class' slot_usage
+    range: ResearchInitiativeTypeEnum
+    required: true
 
   #  for FunctionalAnnotationAggMember:
   metagenome_annotation_id:
