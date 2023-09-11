@@ -175,7 +175,7 @@ classes:
       - processing_institution
       - protocol_link
       - quality_control_report
-      - sample_mass
+      - input_mass
     slot_usage:
       has_input:
         required: true
@@ -2034,7 +2034,16 @@ slots:
     range: integer
     exact_mappings:
       - OBI:0002475
-  sample_mass:
+
+  input_mass:
+    title: sample mass used
+    description: Total mass of sample used in activity.
+    aliases: 
+      - sample mass
+      - sample weight
+    exact_mappings:
+      - MS:1000004
+      - AFO:/result#AFR_0001982
     range: QuantityValue
 
   library_type:
