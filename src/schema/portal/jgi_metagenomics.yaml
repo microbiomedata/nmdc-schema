@@ -176,6 +176,8 @@ slots:
     comments:
       - Do not edit these values. A template will be provided by NMDC in which these
         values have been pre-filled.
+    todos:
+      - make this slot locked / un-editable in NMDC submission portal
     examples:
       - value: John Jones
     from_schema: https://example.com/nmdc_dh
@@ -192,6 +194,8 @@ slots:
     comments:
       - Do not edit these values. A template will be provided by NMDC in which these
         values have been pre-filled.
+    todos:
+      - make this slot locked / un-editable in NMDC submission portal
     examples:
       - value: '187654'
     from_schema: https://example.com/nmdc_dh
@@ -225,6 +229,8 @@ slots:
     comments:
       - Do not edit these values. A template will be provided by NMDC in which these
         values have been pre-filled.
+    todos:
+      - make this slot locked / un-editable in NMDC submission portal
     examples:
       - value: '1191234'
     from_schema: https://example.com/nmdc_dh
@@ -237,6 +243,8 @@ slots:
     comments:
       - Do not edit these values. A template will be provided by NMDC in which these
         values have been pre-filled.
+    todos:
+      - make this slot locked / un-editable in NMDC submission portal
     examples:
       - value: Jane Johnson
     from_schema: https://example.com/nmdc_dh
@@ -249,6 +257,9 @@ slots:
     comments:
       - Do not edit these values. A template will be provided by NMDC in which these
         values have been pre-filled.
+    todos:
+      - make this slot locked / un-editable in NMDC submission portal
+      - Confirm if this is the name users send to JGI before getting the sample ID an project ID.
     examples:
       - value: JGI Pond metagenomics
     from_schema: https://example.com/nmdc_dh
@@ -276,6 +287,8 @@ slots:
     comments:
       - Do not edit these values. A template will be provided by NMDC in which these
         values have been pre-filled.
+    todos:
+      - make this slot locked / un-editable in NMDC submission portal
     examples:
       - value: '504000'
     from_schema: https://example.com/nmdc_dh
