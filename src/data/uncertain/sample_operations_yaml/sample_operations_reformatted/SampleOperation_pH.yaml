@@ -1,32 +1,32 @@
-sample_ops_set:
+operation_type: pH
+SubsamplingList:
   - id: ph:1
-    source_mat_id: soil:1
+    has_input: nmdc:bsm-99-oW43DzG0 #This is an example biosample ID and does not represent a real biosample
     starting_amount:
       has_unit: grams
       has_numeric_value: 20
-    container_type: falcon tube
-    container_volume:
+    container_type: Falcon tube
+    container_size:
       has_unit: mL
       has_numeric_value: 50
-    operation_type: 'nmdc:SubsamplingActivity'
+PhMeasurementList:
   - id: ph:2
-    source_mat_id: ph:1
+    has_input: nmdc:procsm-11-05g48p90 #this and below processed sample IDs are examples and do not represent an actual sample
     analytical_solution: deionized water
     volume:
       has_unit: mL
       has_numeric_value: 20
     mixing:
-      device_type: orbital_shaker
-      activity_time_id:
+      device_type: Orbital Shaker
+      activity_time:
         has_unit: minutes
         has_numeric_value: 15
-      activity_speed_id:
+      activity_speed:
         has_unit: RPM
         has_numeric_value: 1000
-    container_type: falcon tube
-    container_volume:
+    container_type: Falcon tube
+    container_size:
       has_unit: mL
       has_numeric_value: 50
-    operation_type: 'nmdc:PhMeasurement'
  # ph-standards class in example data doesn't map to anything. not sure what to do with this data
   # - id: ph:2 detection activity. Not sure what to do with this as well either #should be ph3

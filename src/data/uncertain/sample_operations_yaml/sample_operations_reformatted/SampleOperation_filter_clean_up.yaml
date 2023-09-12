@@ -1,58 +1,61 @@
-sample_ops_set:
+operation_type: Filter clean up
+ExtractionList:
   - id: ffcu:1
+    has_input: nmdc:bsm-99-oW43DzG0 #This is an example biosample ID and does not represent a real biosample
     extractant: MeOH/H2O
     concentration:
       has_unit: ratio
-      has_numeric_value: 80/20
+      has_raw_value: 80/20
     volume:
       has_unit: ÂµL
       has_numeric_value: 300
     duration:
       has_unit: minutes
       has_numeric_value: 10
-    operation_type: 'nmdc:ExtractionActivity'
-  - id: ffcu:2
-    source_mat_id: ffcu:1
+MixingList:
+  - id: nmdc:procsm-11-05g48p90 #this and below processed sample IDs are examples and do not represent an actual sample
+    has_input: nmdc:procsm-11-05g48p901
     mixing:
-      activity_time_id:
+      activity_time:
         has_unit: minutes
         has_numeric_value: 1
-      device_type: vortex
-    operation_type: 'nmdc:MixingActivity'
+      device_type: Vortex
+PhaseSeparationList:
   - id: ffcu:3
-    source_mat_id: ffcu:2
+    has_input: nmdc:procsm-11-05g48p902
     duration:
       has_unit: minutes
       has_numeric_value: 3
-    value: 4500
-    operation_type: 'nmdc:PhaseSeparationActivity'
+    value: 
+      has_numeric_value: 4500
+FiltrationList:
   - id: ffcu:4
+    has_input: nmdc:procsm-11-05g48p9000
     conditioning:
       conditioning_type: pre-condition
       solvent: 
         - MeOH 
         - Milli-Q H2O
     container_type: PTFE 96-well filter plate
-    container_volume:
+    container_size:
       has_unit: Âµm
       has_numeric_value: 0.02
-    operation_type: 'nmdc:FiltrationActivity'
+SubsamplingList:
   - id: ffcu:5
-    source_mat_id: ffcu:3
+    has_input: nmdc:procsm-11-05g48p903
     volume:
       has_unit: ÂµL
       has_numeric_value: 200
-    operation_type: 'nmdc:SubsamplingActivity'
-  - id: ffcu:6
-    source_mat_id: ffcu:5
-    #Slots for this filtration activity don't match filtrationActivity in schema
+ # - id: ffcu:6
+ #   has_input: nmdc:procsm-11-05g48p905
+ #   #Slots for this filtration activity don't match filtrationActivity in schema
+AliquotList:
   - id: ffcu:7 #aliquot activity
-    source_mat_id: ffcu:6
+    has_input: nmdc:procsm-11-05g48p906
     container_type: water vials
-    operation_type: 'nmdc:TransferActivity'
+AnalyteStorageList:
   - id: ffcu:8
-    source_mat_id: ffcu:7
+    has_input: nmdc:procsm-11-05g48p907
     temp:
       has_unit: C
       has_numeric_value: -20
-    operation_type: 'nmdc:AnalyteStorage'

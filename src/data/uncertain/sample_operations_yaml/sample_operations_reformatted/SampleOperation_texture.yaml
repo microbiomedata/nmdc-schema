@@ -1,25 +1,26 @@
 
-sample_ops_set:
+operation_type: Texture
+SievingList:
   - id: texture:1
-    source_mat_id: soil:1
+    has_input: nmdc:bsm-99-oW43DzG0 #This is an example biosample ID and does not represent a real biosample
     sieve_size:
       has_unit: mm
       has_numeric_value: 2
     screen_size:
       has_numeric_value: 10
-    operation_type: "nmdc:SievingActivity"
+SubsamplingList:
   - id: texture:2
-    source_mat_id: texture:1
+    has_input: nmdc:procsm-11-05g48p90 #this and below processed sample IDs are examples and do not represent an actual sample
     starting_amount: 
       has_unit: grams
       has_numeric_value: 50
-    container_type: "HDPE bottle"
+    container_type: HDPE bottle
     container_size:
       has_unit: mL
       has_numeric_value: 500 
-    operation_type: "nmdc:SubsampleActivity"
+ChemicalReactionList:
   - id: texture:3
-    source_mat_id: texture:2
+    has_input: nmdc:procsm-11-05g48p90 
     reaction_type: oxidation
     reactant: deionized water #not sure this is right
     reagent:
@@ -40,9 +41,8 @@ sample_ops_set:
     container_size:
       has_numeric_value: 500
       has_unit: mL
-    operation_type: "nmdc:ChemicalReactionActivity"
   - id: texture:4
-    source_mat_id: texture:3
+    has_input: nmdc:procsm-11-05g48p90
     reaction_type: emulsification
     reactant: deionized water #not sure this is right
     reagent:
@@ -65,9 +65,8 @@ sample_ops_set:
       has_unit: mL
     mixing:
       device_type: Agitation plunger
-      activity_time_id:
+      activity_time:
         has_numeric_value: 12
         has_unit: hours
-      activity_speed_id:
+      activity_speed:
         has_raw_value: low
-    operation_type: "nmdc:ChemicalReactionActivity"

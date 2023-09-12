@@ -1,19 +1,21 @@
-sample_ops_set: 
+operation_type: Organic matter spe 
+PhaseSeparationList:
   - id: somspe:1
+    has_input: nmdc:bsm-99-oW43DzG0 #This is an example biosample ID and does not represent a real biosample
     material: unknown
-    operation_type: 'nmdc:PhaseSeparationActivity'
   - id: somspe:2
+    has_input: nmdc:procsm-11-05g48p90 #this and below processed sample IDs are examples and do not represent an actual sample
     solvent: methanol
     volume:
       has_numeric_value: 700
       has_unit: mL
     container_type: solvent bottle
-    container_volume:
+    container_size:
       has_numeric_value: 700
       has_unit: mL
-    operation_type: 'nmdc:PhaseSeparationActivity'
   - id: somspe:3
-    solvent: water
+    has_input: nmdc:procsm-11-05g48p90
+    solvent: Water
     modifier:
       modifier_substance: cloridic acid
       concentration:
@@ -23,33 +25,38 @@ sample_ops_set:
       has_numeric_value: 700
       has_unit: mL
     container_type: solvent bottle
-    container_volume:
+    container_size:
       has_numeric_value: 700
       has_unit: mL
-    operation_type: 'nmdc:PhaseSeparationActivity'
   - id: somspe:4
-    solvent: water
+    has_input: nmdc:procsm-11-05g48p90
+    solvent: Water
     volume:
       has_numeric_value: 1000
       has_unit: mL
     container_type: solvent bottle
-    container_volume:
+    container_size:
       has_numeric_value: 1000
       has_unit: mL
-    operation_type: 'nmdc:PhaseSeparationActivity'
+  - id: somspe:6 #no id listed
+    has_input: nmdc:procsm-11-05g48p90
+    volume:
+      has_unit: mL
+      has_numeric_value: 5
+ExtractionList:
   - id: somspe:5
-    source_mat_id: somextract:4
-    extractant: deionized water
+    has_input: nmdc:procsm-11-05g48p90
+    extractant: Deionized Water
     volume:
       has_unit: mL
       has_numeric_value: 5
     container_type: Olympus
-    container_volume:
+    container_size:
       has_unit: mL
       has_numeric_value: 15
-    operation_type: 'nmdc:ExtractionActivity'
+AcidificationList:
   - id: somspe:6
-    source_mat_id: somspe:5
+    has_input: nmdc:procsm-11-05g48p90
     acid: cloridic acid
     concentration:
       has_unit: percentile
@@ -58,10 +65,4 @@ sample_ops_set:
       has_unit: uL
       has_numeric_value: 5
     ph: 2
-    operation_type: 'nmdc:AcidificationActivity'
-  - id: somspe:6 #no id listed
-    volume:
-      has_unit: mL
-      has_numeric_value: 5
-    operation_type: 'nmdc:PhaseSeparationActivity'
     
