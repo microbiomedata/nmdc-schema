@@ -41,7 +41,7 @@ def migrate_extractions_7_8_to_NEXT(retrieved_extraction):
     # change slot name from sample_mass to input_mass
     if "sample_mass" in retrieved_extraction:
         retrieved_extraction['input_mass'] = retrieved_extraction.pop('sample_mass')
-        return retrieved_extraction
+    return retrieved_extraction
 
 def check_and_normalize_one_curie(curie_string):
     if not is_valid_curie(curie_string):
