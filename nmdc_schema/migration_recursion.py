@@ -35,7 +35,7 @@ def migrate_studies_7_7_2_to_7_8(retrieved_study):
         del retrieved_study["doi"]
     return retrieved_study
 
-def migrate_extractions_7_8_to_NEXT(retrieved_extraction):
+def migrate_extractions_7_8_0_to_NEXT(retrieved_extraction):
     logger.info(f"Starting migration of {retrieved_extraction['id']}")
 
     # change slot name from sample_mass to input_mass
@@ -138,7 +138,7 @@ def main(schema_path, input_path, output_path):
         if tdk == "extraction_set":
             logger.info(f"Would start {tdk}-specific migrations")
             for current_extraction in tdv:
-                migrate_extractions_7_8_to_NEXT(current_extraction)
+                migrate_extractions_7_8_0_to_NEXT(current_extraction)
 
     logger.info(f"Saving migrated data to {output_path}")
     with open(output_path, "w") as f:
