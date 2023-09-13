@@ -397,8 +397,8 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml: src/schema/nmdc.yaml
 	yq -i '(.classes[] | select(.name == "ReadBasedTaxonomyAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "ReadQcAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "ReadQcAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "ResearchInitiative") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "ResearchInitiative") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "Study") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "Study") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
 
 	$(RUN) gen-linkml \
 		--format yaml \

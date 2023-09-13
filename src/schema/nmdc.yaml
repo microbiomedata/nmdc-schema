@@ -87,7 +87,7 @@ subsets:
   sample subset:
     description:
       Subset consisting of entities linked to the processing of samples.  Currently,
-      this subset consists of research initiative, omics process, and biosample.
+      this subset consists of study, omics process, and biosample.
   data object subset:
     description:
       Subset consisting of the data objects that either inputs or outputs
@@ -229,7 +229,7 @@ classes:
     title: Field Research Site
     comments:
       - Provides grouping of biosamples at level that's more specific than belonging
-        to the same research initiative.
+        to the same study
       - be very clear that this could be part of a larger site
       - In Bioscales, one might say that rhizosphere soil and bulk soil from around
         the same plant were obtained at the same site. In this case, the site would
@@ -1083,7 +1083,7 @@ classes:
         required: true
       part_of:
         required: true
-        range: ResearchInitiative
+        range: Study
       fire:
         comments:
           - Provide the date the fire occurred. If extended burning occurred provide the date range.
@@ -1318,7 +1318,7 @@ classes:
       - NCIT:C43412
       - http://purl.obolibrary.org/obo/FBcv_0003024
 
-  ResearchInitiative:
+  Study:
     is_a: NamedThing
     in_subset:
       - sample subset
@@ -1330,10 +1330,9 @@ classes:
       - project
       - umbrella project
       - research inititative
-      - consortium
     description: >-
-      A research initiative summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.
-    comments: The research initiative class can include both consortia and studies.
+      A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.
+    comments: The Study class can include both consortia and studies.
     alt_descriptions:
       embl.ena:
         A study (project) groups together data submitted to the archive and
@@ -1400,32 +1399,32 @@ classes:
 
       name:
         annotations:
-          display_hint: Provide a name for the research initiative your samples will belong with.
+          display_hint: Provide a name for the study your samples will belong with.
       websites:
         annotations:
           display_hint:
             Link to the Principal Investigator's research lab webpage
-            or the research initiative's webpage associated with this collection of samples.
+            or the study webpage associated with this collection of samples.
             Multiple links can be provided.
       description:
-        description: A brief, link-free summary of a research initiative.
+        description: A brief, link-free summary of a Study
         annotations:
-          display_hint: Provide a brief description of your research initiative.
-        comments: Include links in other ResearchInitiative slots, such as websites or dois.
+          display_hint: Provide a brief description of your study.
+        comments: Include links in other Study slots, such as websites or dois.
       notes:
         annotations:
-          display_hint: Add any additional notes or comments about this research initiative.
+          display_hint: Add any additional notes or comments about this study.
       alternative_identifiers:
-        description: Unique identifier for a research initiative submitted to additional resources. Matches that which has been submitted to NMDC
+        description: Unique identifier for a study submitted to additional resources. Matches that which has been submitted to NMDC
       alternative_names:
         annotations:
           display_hint:
             Project, study, or sample set names the are also associated with this submission
-            or other names / identifiers for this research initiative.
+            or other names / identifiers for this study.
       related_identifiers:
-        description: Unique identifier for a research initiative submitted to additional resources. Similar, but not necessarily identical to that which has been submitted to NMDC
+        description: Unique identifier for a study submitted to additional resources. Similar, but not necessarily identical to that which has been submitted to NMDC
       insdc_bioproject_identifiers:
-        description: Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted research initiative.
+        description: Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.
         annotations:
           display_hint: Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title.
     #      emsl_project_identifier:
@@ -1433,9 +1432,9 @@ classes:
     #      emsl_proposal_doi:
     #        description: The DOI for the EMSL awarded study that relates to the NMDC submitted study
       part_of:
-        description: Links a research initiative, such as a study or consortium, to a parent research initiative.
-        comments: Value is the id of the parent research initiative.
-        range: ResearchInitiative
+        description: Links a study or consortium to a parent study or consortium.
+        comments: Value is the id of the parent study or consortium.
+        range: Study
     exact_mappings:
       - OBI:0000066
       - SIO:000747
@@ -1447,12 +1446,13 @@ classes:
       - determine how to get data values for submitted_to_insdc, investigation_type,
         experimental_factor
       - project_name is redundant with name, so excluding it
+      - potentially change the class name from Study to ResearchInitiative to make more semantically accurate and clear; encompassing instances of studies and consortia.
 
     notes:
       - "sample GOLD link https://identifiers.org/gold:Gs0110115"
       - "sample insdc.srs link https://www.ebi.ac.uk/ena/browser/view/PRJEB45055 ?"
       - "sample mgnify link https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757"
-      - "GOLD, insdc.srs and mgnify are reasonable prefixes for alternative research initiative identifiers, but no longer for the ResearchInitiative.id"
+      - "GOLD, insdc.srs and mgnify are reasonable prefixes for alternative study identifiers, but no longer for the Study.id"
 
   BiosampleProcessing:
     aliases:
@@ -1943,7 +1943,7 @@ enums:
         description: principal investigator role
         meaning: OBI:0000103
       Submitter:
-        description: the person(s) who enter research initiative and biosample metadata into the NMDC submission portal
+        description: the person(s) who enter study and biosample metadata into the NMDC submission portal
         meaning: EFO:0001741
     comments:
       - credit enums come from https://casrai.org/credit/
@@ -2222,7 +2222,7 @@ slots:
       - make this required?
       - first apply to Biosample
       - try to apply to all Biosamples in a particular nmdc-server SubmissionMetadata?
-      - applying to a ResearchInitiative may not be granular enough
+      - applying to a Study may nto be granular enough
 
   collected_from:
     description: The Site from which a Biosample was collected
@@ -2253,7 +2253,7 @@ slots:
   #- insdc_sra_ena_study_identifiers
 
   notes:
-    description: from ResearchInitiative class
+    description: from study class
 
   canary:
     description: a slot that can be added and removed as evidence that schema changes have propagated to other systems
@@ -2261,25 +2261,25 @@ slots:
     multivalued: true
     description: List of ESS-DIVE dataset DOIs
   has_credit_associations:
-    domain: ResearchInitiative
+    domain: Study
     range: CreditAssociation
     multivalued: true
     notes:
       - 'had just been "inlined: true"'
     inlined_as_list: true
     description:
-      "This slot links a research initiative to a credit association.  The credit association
+      "This slot links a study to a credit association.  The credit association
       will be linked to a person value and to a CRediT Contributor Roles term. Overall
       semantics: person should get credit X for their participation in the study"
     slot_uri: prov:qualifiedAssociation
     annotations:
-      display_hint: Other researchers associated with this research initiative.
+      display_hint: Other researchers associated with this study.
   study_image:
-    domain: ResearchInitiative
+    domain: Study
     range: ImageValue
     multivalued: true
     inlined: true
-    description: Links a research initiative to one or more images.
+    description: Links a study to one or more images.
   relevant_protocols:
     multivalued: true
     range: string
@@ -2349,10 +2349,10 @@ slots:
   study_set:
     mixins: object_set
     domain: Database
-    range: ResearchInitiative
+    range: Study
     multivalued: true
     description:
-      This property links a database object to the set of research initiatives within
+      This property links a database object to the set of studies within
       it.
   field_research_site_set:
     inlined_as_list: true
@@ -2626,7 +2626,7 @@ slots:
   award_dois:
     is_a: dois
     description: >-
-      One or more DOIs that links a research initiative, or similar entity, to information about the funding authority.
+      One or more DOIs that links a study, or similar entiry, to information about the funding authority.
     examples:
       - value: doi:10.46936/10.25585/60000880
         description:
@@ -2636,7 +2636,7 @@ slots:
   dataset_dois:
     is_a: dois
     description: >-
-      One or more DOIs that links research initiative, or similar entity, to the generated data.
+      One or more DOIs that links a study, or similar entity, to the generated data.
     #    annotations:
     #      display_hint: DOI associated with the data in this study. This is required when data is already generated.
     examples:
@@ -2647,7 +2647,7 @@ slots:
 
   publication_dois:
     is_a: dois
-    description: One or more DOIs that links a research initiative, or similar entity, to a publication.
+    description: One or more DOIs that links a study, or similar entity, to a publication.
     examples:
       - value: doi:10.1126/science.1058040
         description:

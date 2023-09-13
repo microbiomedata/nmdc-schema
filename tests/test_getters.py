@@ -20,7 +20,7 @@ class Getters(unittest.TestCase):
         self.assertIsNotNone(schema_slots)
 
     def test_get_slots_from_class(self):
-        class_name = "ResearchInitiative"
+        class_name = "Study"
         class_slot_getter = ClassSlotsGetter()
         class_slots = class_slot_getter.get_class_slots(class_name)
         self.assertIsNotNone(class_slots)
