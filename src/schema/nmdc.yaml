@@ -1332,7 +1332,7 @@ classes:
       - research inititative
     description: >-
       A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.
-    comments: The Study class can include both consortia and studies.
+    comments: The Study class can include both consortia and research studies.
     alt_descriptions:
       embl.ena:
         A study (project) groups together data submitted to the archive and
@@ -1373,7 +1373,7 @@ classes:
       - funding_sources
       - gold_study_identifiers
       - has_credit_associations
-      - initiative_type
+      - study_category
       - insdc_bioproject_identifiers
       - massive_study_identifiers
       - mgnify_project_identifiers
@@ -1446,7 +1446,6 @@ classes:
       - determine how to get data values for submitted_to_insdc, investigation_type,
         experimental_factor
       - project_name is redundant with name, so excluding it
-      - potentially change the class name from Study to ResearchInitiative to make more semantically accurate and clear; encompassing instances of studies and consortia.
 
     notes:
       - "sample GOLD link https://identifiers.org/gold:Gs0110115"
@@ -1976,9 +1975,9 @@ enums:
         title: Argonne National Laboratory
         meaning: https://ror.org/05gvnxz63
   
-  InitiativeTypeEnum:
+  StudyCategoryEnum:
     permissible_values:
-      study:
+      research_study:
         description: A detailed examination, analysis, or critical inspection of a hypothesis-driven experiment.
         exact_mappings: 
           - SIO:001066
@@ -2324,10 +2323,9 @@ slots:
       investigator role... do we need to define the OBI prefix?
     required: true
   #    slot_uri: prov:agent
-  initiative_type:
+  study_category:
     description: The type of research initiative
-    range: InitiativeTypeEnum
-    required: true
+    range: StudyCategoryEnum
 
   object_set:
     mixin: true

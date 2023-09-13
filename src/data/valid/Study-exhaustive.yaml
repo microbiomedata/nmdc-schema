@@ -94,6 +94,6 @@ study_image:
     url: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
     description: Photo of Craig Venter Institute, La Jolla, California
     display_order: '2'
-initiative_type: study
+study_category: research_study
 part_of: 
   - nmdc:sty-11-34xj1157
