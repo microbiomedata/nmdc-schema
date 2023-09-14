@@ -2043,7 +2043,6 @@ slots:
       - sample weight
     exact_mappings:
       - MS:1000004
-      - AFO:/result#AFR_0001982
     range: QuantityValue
 
   library_type:
