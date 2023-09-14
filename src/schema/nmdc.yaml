@@ -153,8 +153,11 @@ classes:
         description: TODO
 
   Pooling:
-    is_a: PlannedProcess # from core.yaml
+    is_a: BiosampleProcessing # from core.yaml
+    description: physical combination of several instances of like material.
     slots:
+    exact_mappings:
+      - OBI:0600016
     slot_usage:
       has_input:
         minimum_cardinality: 2
@@ -168,7 +171,10 @@ classes:
           interpolated: true
 
   Extraction:
-    is_a: PlannedProcess # from core.yaml
+    is_a: BiosampleProcessing # from core.yaml
+    description: A material separation in which a desired component of an input material is separated from the remainder.
+    exact_mappings: 
+      - OBI:0302884
     slots:
       - extraction_method
       - extraction_target
@@ -197,10 +203,10 @@ classes:
       - status
       - name
 
-  LibraryPreparation:
+  LibraryPreparation: 
     aliases:
       - LibraryConstruction
-    is_a: PlannedProcess # from core.yaml
+    is_a: BiosampleProcessing # from core.yaml
     slots:
       - library_preparation_kit
       - library_type
@@ -259,6 +265,8 @@ classes:
     title: Collecting Biosamples From Site
     comments:
       - "this illustrates implementing a Biosample relation with a process class"
+    close_mappings:
+      - OBI:0000744
     slot_usage:
       has_input:
         range: Site
@@ -1448,11 +1456,11 @@ classes:
   BiosampleProcessing:
     aliases:
       - material processing
-    is_a: NamedThing
+    is_a: PlannedProcess
     description:
       A process that takes one or more biosamples as inputs and generates
-      one or as outputs. Examples of outputs include samples cultivated from another
-      sample or data objects created by instruments runs.
+      one or more materials as outputs. An example of an output include samples cultivated from another
+      sample.
     slots:
       - has_input
     slot_usage:
@@ -1471,7 +1479,7 @@ classes:
       - omics assay
       - sequencing project
       - experiment
-    is_a: BiosampleProcessing
+    is_a: PlannedProcess
     in_subset:
       - sample subset
     description: >-
@@ -1482,6 +1490,8 @@ classes:
         library and instrument details.
     comments:
       - The ID prefix for objects coming from GOLD will be gold:Gp
+    broad_mappings: 
+      - OBI:0000070
     slots:
       - add_date
       - chimera_check
