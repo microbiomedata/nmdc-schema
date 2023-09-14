@@ -1490,8 +1490,6 @@ classes:
         library and instrument details.
     comments:
       - The ID prefix for objects coming from GOLD will be gold:Gp
-    broad_mappings: 
-      - OBI:0000070
     slots:
       - add_date
       - chimera_check
