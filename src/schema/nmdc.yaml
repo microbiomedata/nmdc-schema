@@ -1459,7 +1459,7 @@ classes:
     is_a: PlannedProcess
     description:
       A process that takes one or more biosamples as inputs and generates
-      one or more materials as outputs. An example of an output include samples cultivated from another
+      one or more biosamples as outputs. An example of an output includes samples cultivated from another
       sample.
     slots:
       - has_input
