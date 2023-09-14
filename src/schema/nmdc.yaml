@@ -5,7 +5,7 @@ title: NMDC Schema
 notes:
   - "informal ## section delimiters should be replaced with subsets ?"
   - "commented out insdc_biosample_identifiers insdc_secondary_sample_identifiers... need better understanding of id patterns (at least)"
-  - not importing any MIxS terms where the realtionship between the name (SCN) and the id isn't 1:1
+  - not importing any MIxS terms where the relationship between the name (SCN) and the id isn't 1:1
 description: >-
   Schema for National Microbiome Data Collaborative (NMDC).
 
@@ -88,12 +88,13 @@ imports:
 # make local/mongo_as_unvalidated_nmdc_database.yaml local/mongo_as_nmdc_database_rdf_safe.yaml local/mongo_as_nmdc_database_validation.log
 # make squeaky-clean ?
 # make all test
-# time poetry run linkml-convert --output local/mongo_as_nmdc_database.ttl --schema nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
-# anyuri conversion
+# date ; time poetry run linkml-convert --output local/mongo_as_nmdc_database.ttl --schema nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
+# date; time poetry run anyuri-strings-to-iris --input-ttl local/mongo_as_nmdc_database.ttl --jsonld-context-jsons assets/misc/data_prefix_expansions.context.json --output-ttl local/mongo_as_nmdc_database_cuire_repaired.ttl
 
 prefixes:
+  UBERON: "http://purl.obolibrary.org/obo/UBERON_"
   PO: "http://purl.obolibrary.org/obo/PO_"
-  AFO: "http://example.org/UNKNOWN/AFO/" # no expansion at https://bioregistry.io/registry/afo
+  #  AFO: "http://example.org/UNKNOWN/AFO/" # no expansion at https://bioregistry.io/registry/afo
   CAS: "https://bioregistry.io/cas:"
   CATH: "https://bioregistry.io/cath:"
   CHEBI: "http://purl.obolibrary.org/obo/CHEBI_"
@@ -127,7 +128,6 @@ prefixes:
   biosample: "https://identifiers.org/biosample:"
   doi: "https://identifiers.org/doi:"
   emsl.project: "https://bioregistry.io/emsl.project:"
-  emsl: http://example.org/emsl_in_mongodb/ # present in MongoDB
   generic: https://example.org/generic/
   gnps.task: "https://bioregistry.io/gnps.task:"
   gtpo: http://example.org/gtpo/
@@ -2138,7 +2138,7 @@ slots:
       - sample weight
     exact_mappings:
       - MS:1000004
-      - AFO:/result#AFR_0001982
+    #      - AFO:/result#AFR_0001982 # reconsidering use of AFO mappings in https://github.com/microbiomedata/nmdc-schema/issues/1113
     range: QuantityValue
 
   library_type:

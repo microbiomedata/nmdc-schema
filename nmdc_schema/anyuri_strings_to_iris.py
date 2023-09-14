@@ -1,45 +1,70 @@
+import json
+import pprint
+
 import click
-import yaml
 from rdflib import Graph, term, XSD, URIRef, Namespace
 
 
-def read_yaml_file(file_path):
+def read_json_file(file_path):
     with open(file_path, "r") as f:
-        yaml_data = yaml.safe_load(f)
-    return yaml_data
+        json_data = json.load(f)
+    return json_data
+
+
+def context_json_to_rdflib_namespaces(context_dict, graph):
+    pprint.pprint(context_dict)
+    context = context_dict["@context"]
+    for k, v in context.items():
+
+        if isinstance(v, dict):
+            if '@prefix' in v and "@id" in v and v['@prefix'] and v['@id']:
+                # flattened_context[k] = v['@id']
+                graph.namespace_manager.bind(k, Namespace(v['@id']), override=False)
+            else:
+                if '@id' in v:
+                    print(f"not asserting a prefix expansion for {k}, which has the element id {v['@id']}")
+                else:
+                    print(f"not asserting a prefix expansion for {k}, which is an element name and an element id")
+        elif isinstance(v, str):
+            graph.namespace_manager.bind(k, Namespace(v), override=False)
 
 
 @click.command()
 @click.option(
     "-i",
     "--input-ttl",
+    required=True,
     type=click.Path(exists=True, dir_okay=False),
-    required=True
 )
 @click.option(
     "-o",
     "--output-ttl",
+    required=True,
     type=click.Path(dir_okay=False),
-    required=True
 )
 @click.option(
     "-p",
-    "--prefixes-yaml",
+    "--jsonld-context-jsons",
+    multiple=True,
+    required=True,
     type=click.Path(dir_okay=False),
-    required=True
 )
-def expand_curies(input_ttl, output_ttl, prefixes_yaml):
+def expand_curies(input_ttl, output_ttl, jsonld_context_jsons):
     """Expand CURIE literals in an RDF graph to their full URI references."""
+
     graph = Graph()
+
+    for jsonld_context_file in jsonld_context_jsons:
+        print(jsonld_context_file)
+        context_dict = read_json_file(jsonld_context_file)
+        context_json_to_rdflib_namespaces(context_dict, graph)
+
+    for i in graph.namespace_manager.namespaces():
+        print(i)
+
     print(f"Loading {input_ttl}")
     graph.parse(input_ttl, format="ttl")
     print(f"Loaded {input_ttl}")
-
-    prefix_expansions = read_yaml_file(prefixes_yaml)
-
-    for k, v in prefix_expansions.items():
-        print(f"Binding '{k}' to <{v}>")
-        graph.namespace_manager.bind(k, Namespace(v), override=False)
 
     print("Iterating over triples")
     for s, p, o in graph:

@@ -1,0 +1,15 @@
+{
+  "comments": {
+    "description": "Prefixes/URI bases that appear in MongoDB but are not defined in the schema",
+    "generation_date": "2023-09-14T00:00:00",
+    "source": "nmdc.yaml"
+  },
+  "@context": {
+    "cas": "http://identifiers.org/cas/",
+    "emsl": "http://example.org/emsl_in_mongodb/",
+    "gold": "https://identifiers.org/gold:"
+  }
+}
+
+
+

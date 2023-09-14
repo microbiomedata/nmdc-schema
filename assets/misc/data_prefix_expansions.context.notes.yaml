@@ -1,13 +1,12 @@
-"KEGG.ORTHOLOGY": "http://identifiers.org/kegg.orthology/" # yes
-"MASSIVE": "https://bioregistry.io/reference/massive:" # yes # https://bioregistry.io/reference/massive:MSV000082131
+#"KEGG.ORTHOLOGY": "http://identifiers.org/kegg.orthology/" # yes
+"MASSIVE": "https://bioregistry.io/reference/massive:" # yes # https: //bioregistry.io/reference/massive:MSV000082131
 "biosample": "https://identifiers.org/biosample:" # yes
 "doi": "https://identifiers.org/doi:" # yes
 "gnps.task": "https://bioregistry.io/gnps.task:" # yes
 "img.taxon": "https://identifiers.org/img.taxon:" # yes
 "jgi.proposal": "https://bioregistry.io/jgi.proposal:" # yes
+"kegg": "https://identifiers.org/kegg/:" # yes plus uppercase KEGG.*
 
 "cas": "http://identifiers.org/cas/" # no, only uppercase
 "gold": "https://identifiers.org/gold:" # no, uppercase only
-"kegg": "https://identifiers.org/kegg/:" # no, only uppercase KEGG.*
-"massive": "https://bioregistry.io/reference/massive:" # no only uppercase
-
+#"massive": "https://bioregistry.io/reference/massive:" # no only uppercase

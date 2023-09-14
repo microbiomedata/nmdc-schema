@@ -483,11 +483,13 @@ local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.y
 	time $(RUN) linkml-convert --output $@ --schema $^
 	time riot --validate $@ # < 1 minute
 
+
 local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.ttl
 	date # 287.91 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) anyuri-strings-to-iris \
 		--input-ttl $< \
-		--prefixes-yaml assets/misc/extra_prefix_expansions.yaml \
+		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
+		--jsonld-context-jsons assets/misc/extra_prefix_expansions.json \
 		--output-ttl $@
 
 # todo: add start time reporting
