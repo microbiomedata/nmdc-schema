@@ -31,7 +31,7 @@ extraction_set:
     start_date: '2019-11-08'
     end_date: '2019-11-08'
 
-    sample_mass: #http://purl.obolibrary.org/obo/MS_1000004
+    input_mass: #http://purl.obolibrary.org/obo/MS_1000004
       has_numeric_value: 0.25
       has_unit: gram #http://purl.obolibrary.org/obo/UO_0000021
 

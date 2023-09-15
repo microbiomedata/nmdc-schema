@@ -35,6 +35,13 @@ def migrate_studies_7_7_2_to_7_8(retrieved_study):
         del retrieved_study["doi"]
     return retrieved_study
 
+def migrate_extractions_7_8_0_to_NEXT(retrieved_extraction):
+    logger.info(f"Starting migration of {retrieved_extraction['id']}")
+
+    # change slot name from sample_mass to input_mass
+    if "sample_mass" in retrieved_extraction:
+        retrieved_extraction['input_mass'] = retrieved_extraction.pop('sample_mass')
+    return retrieved_extraction
 
 def check_and_normalize_one_curie(curie_string):
     if not is_valid_curie(curie_string):
@@ -56,7 +63,7 @@ def is_valid_curie(curie_string):
 
 def normalize_curie(curie_string, forced_prefix="nmdc"):
     # Remove any characters that are not allowed in a CURIE
-    curie_cleaned = re.sub(r'[^a-zA-Z0-9:_.-]', '', curie_string)
+    curie_cleaned = re.sub(r'[^a-zA-Z0-9:_./-]', '', curie_string)
 
     # Add the "nmdc" prefix if no prefix is present
     if ':' not in curie_cleaned:
@@ -128,6 +135,10 @@ def main(schema_path, input_path, output_path):
             logger.info(f"Would start {tdk}-specific migrations")
             for current_study in tdv:
                 migrate_studies_7_7_2_to_7_8(current_study)
+        if tdk == "extraction_set":
+            logger.info(f"Would start {tdk}-specific migrations")
+            for current_extraction in tdv:
+                migrate_extractions_7_8_0_to_NEXT(current_extraction)
 
     logger.info(f"Saving migrated data to {output_path}")
     with open(output_path, "w") as f:
