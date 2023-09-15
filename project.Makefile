@@ -489,8 +489,9 @@ local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.tt
 	time $(RUN) anyuri-strings-to-iris \
 		--input-ttl $< \
 		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
-		--jsonld-context-jsons assets/misc/extra_prefix_expansions.json \
+		--jsonld-context-jsons assets/misc/data_prefix_expansions.context.jsonld \
 		--output-ttl $@
+	time riot --validate $@ # < 1 minute
 
 # todo: add start time reporting
 # todo: allow different api base addresses

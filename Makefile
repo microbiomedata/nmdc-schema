@@ -223,7 +223,7 @@ project/nmdc_schema_merged.yaml:
 		--no-materialize-patterns \
 		--output $@ $(SOURCE_SCHEMA_PATH)
 	mkdir -p project/prefixmap
-	gen-prefix-map \
+	$(RUN) gen-prefix-map \
 		--output project/prefixmap/nmdc.json \
 	  	--mergeimports $@
 

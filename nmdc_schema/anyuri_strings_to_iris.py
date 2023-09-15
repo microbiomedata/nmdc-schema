@@ -12,19 +12,22 @@ def read_json_file(file_path):
 
 
 def context_json_to_rdflib_namespaces(context_dict, graph):
-    pprint.pprint(context_dict)
+    # pprint.pprint(context_dict)
     context = context_dict["@context"]
     for k, v in context.items():
 
+        if k == "id":
+            continue
+
         if isinstance(v, dict):
             if '@prefix' in v and "@id" in v and v['@prefix'] and v['@id']:
-                # flattened_context[k] = v['@id']
                 graph.namespace_manager.bind(k, Namespace(v['@id']), override=False)
             else:
-                if '@id' in v:
-                    print(f"not asserting a prefix expansion for {k}, which has the element id {v['@id']}")
-                else:
-                    print(f"not asserting a prefix expansion for {k}, which is an element name and an element id")
+                pass
+                # if '@id' in v:
+                #     print(f"not asserting a prefix expansion for {k}, which has the element id {v['@id']}")
+                # else:
+                #     print(f"not asserting a prefix expansion for {k}, which is an element name and an element id")
         elif isinstance(v, str):
             graph.namespace_manager.bind(k, Namespace(v), override=False)
 

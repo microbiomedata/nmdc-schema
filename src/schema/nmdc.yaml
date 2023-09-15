@@ -127,6 +127,7 @@ prefixes:
   UO: "http://purl.obolibrary.org/obo/UO_"
   biosample: "https://identifiers.org/biosample:"
   doi: "https://identifiers.org/doi:"
+  emsl: "http://example.org/emsl_in_mongodb/"
   emsl.project: "https://bioregistry.io/emsl.project:"
   generic: https://example.org/generic/
   gnps.task: "https://bioregistry.io/gnps.task:"
