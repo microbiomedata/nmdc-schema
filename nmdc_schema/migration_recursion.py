@@ -64,7 +64,7 @@ def is_valid_curie(curie_string):
 def normalize_curie(curie_string, forced_prefix="nmdc"):
     # Remove any characters that are not allowed in a CURIE
     # todo add logging!
-    curie_cleaned = re.sub(r'[^a-zA-Z0-9:_.-/]', '', curie_string)
+    curie_cleaned = re.sub(r'[^a-zA-Z0-9:_./-]', '', curie_string)
 
     # Add the "nmdc" prefix if no prefix is present
     if ':' not in curie_cleaned:
