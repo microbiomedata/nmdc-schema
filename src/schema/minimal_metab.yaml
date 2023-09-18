@@ -24,7 +24,7 @@ imports:
 classes:
 
   SampleOperation:
-    is_a: PlannedProcess
+    is_a: BiosampleProcessing #was PlannedProcess, biosample processing is in main but not this branch so this won't validate unless changed to PlannedProcess
     title: Sample Operations
     description: >-
       A planned process that is performed on a sample.  This class is intended to
@@ -324,18 +324,18 @@ classes:
       - has_output
       - sieve_size
       - screen_size
-
-  LabDevice:
-    # OBI:0000968 
-    description: A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.
-    exact_mappings:
-      - OBI:0000968
-    slots:
-      - activity_speed 
-      - activity_time
-      - activity_temperature
-      - description
-      - device_type
+  # needs to be commented out when merging, LabDevice doesn't exist in this branch but does in main
+  #LabDevice:
+  #  # OBI:0000968 
+  #  description: A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.
+  #  exact_mappings:
+  #    - OBI:0000968
+  #  slots:
+  #    - activity_speed 
+  #    - activity_time
+  #    - activity_temperature
+  #    - description
+  #    - device_type
 
   ReagentValue:
     description: >-
