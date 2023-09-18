@@ -13,18 +13,13 @@ imports:
   - basic_slots
 
 prefixes:
-  # none of these are registered in prefix commons
-  GOLD: "https://bioregistry.io/gold:"
+  gold: "https://bioregistry.io/gold:"
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
   skos: http://www.w3.org/2004/02/skos/core#
 
 default_prefix: nmdc
 default_range: string
-
-#default_curi_maps:
-#  - obo_context
-#  - idot_context
 
 types:
 
@@ -131,7 +126,7 @@ slots:
     comments:
       - Could this could be considered a related identifier?
       - Curie suffix is the Site Award Number from an OSTI award page
-      - Site Award Number 507130 == award doi doi:10.46936/10.25585/60000017 -- GOLD study identifier GOLD:Gs0154044
+      - Site Award Number 507130 == award doi doi:10.46936/10.25585/60000017 -- GOLD study identifier gold:Gs0154044
       - bioregistry.io/jgi.proposal:507130 ==https://genome.jgi.doe.gov/portal/BioDefcarcycling/BioDefcarcycling.info.html
     title: JGI Portal Study identifiers
     description: >-
@@ -183,7 +178,7 @@ slots:
     is_a: study_identifiers
     mixins:
       - gold_identifiers
-    pattern: "^GOLD:Gs[0-9]+$"
+    pattern: "^gold:Gs[0-9]+$"
     description: identifiers for corresponding project(s) in GOLD
     comments:
       - uses the prefix GS (but possibly in a different case)
@@ -255,7 +250,7 @@ slots:
     is_a: biosample_identifiers
     mixins:
       - gold_identifiers
-    pattern: "^GOLD:Gb[0-9]+$"
+    pattern: "^gold:Gb[0-9]+$"
     description: identifiers for corresponding sample in GOLD
     examples:
       - value: https://bioregistry.io/gold:Gb0312930
@@ -323,7 +318,7 @@ slots:
     is_a: omics_processing_identifiers
     mixins:
       - gold_identifiers
-    pattern: "^GOLD:Gp[0-9]+$"
+    pattern: "^gold:Gp[0-9]+$"
     description: identifiers for corresponding sequencing project in GOLD
     examples:
       - value: https://bioregistry.io/gold:Gp0108335
@@ -344,7 +339,7 @@ slots:
     is_a: analysis_identifiers
     mixins:
       - gold_identifiers
-    pattern: "^GOLD:Ga[0-9]+$"
+    pattern: "^gold:Ga[0-9]+$"
     description: identifiers for corresponding analysis project in GOLD
     examples:
       - value: https://bioregistry.io/gold:Ga0526289

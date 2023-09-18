@@ -419,25 +419,6 @@ make-rdf: rdf-clean local/mongo_as_nmdc_database_validation.log local/mongo_as_n
 #   		--selected-collections functional_annotation_agg \ # huge, no publically avaiaible reference data (kegg)
 #   		--selected-collections metaproteomics_analysis_activity_set \ # next slowest
 
-#		--selected-collections biosample_set \
-#  		--selected-collections data_object_set \
-#  		--selected-collections extraction_set \
-#  		--selected-collections field_research_site_set \
-#  		--selected-collections library_preparation_set \
-#  		--selected-collections mags_activity_set \
-#  		--selected-collections metabolomics_analysis_activity_set \
-#  		--selected-collections metagenome_annotation_activity_set \
-#  		--selected-collections metagenome_assembly_set \
-#  		--selected-collections metagenome_sequencing_activity_set  \
-#  		--selected-collections metatranscriptome_activity_set \
-#  		--selected-collections nom_analysis_activity_set \
-#  		--selected-collections omics_processing_set \
-#  		--selected-collections pooling_set \
-#  		--selected-collections processed_sample_set \
-#  		--selected-collections read_based_taxonomy_analysis_activity_set \
-#  		--selected-collections read_qc_analysis_activity_set \
-#  		--selected-collections study_set \
-
 
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
@@ -484,12 +465,12 @@ local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.y
 	# WARNING: java.io.tmpdir directory does not exist
 
 # todo: still getting anyurl typed string statement objects in RDF. I added a workarround in anyuri-strings-to-iris
+
 local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.ttl
 	date
 	time $(RUN) anyuri-strings-to-iris \
 		--input-ttl $< \
 		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
-		--jsonld-context-jsons assets/misc/data_prefix_expansions.context.jsonld \
 		--emsl-biosample-uuid-replacement emsl_biosample_uuid_like \
 		--output-ttl $@
 	# todo: CANT SEEM TO GET RIOT TO COMPLETE WITHOUT
@@ -503,7 +484,11 @@ local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.tt
 OmicsProcessing-to-catted-Biosamples.tsv: assets/sparql/OmicsProcessing-to-catted-Biosamples.rq nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
 	$(RUN) class-sparql \
 		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
-		--jsonld-context-jsons assets/misc/data_prefix_expansions.context.jsonld \
+		--query-file $<
+
+assets/sparql/undesc-ununsed-slots.tsv: assets/sparql/undesc-ununsed-slots.rq nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+	$(RUN) class-sparql \
+		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
 		--query-file $<
 
 OmicsProcessing-all: OmicsProcessing-clean OmicsProcessing.tsv OmicsProcessing-to-catted-Biosamples.tsv
@@ -514,7 +499,6 @@ OmicsProcessing.tsv: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
 		--do-group-concat \
 		--graph-name "mongodb://mongo-loadbalancer.nmdc.production.svc.spin.nersc.gov:27017" \
 		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
-		--jsonld-context-jsons assets/misc/data_prefix_expansions.context.jsonld \
 		--schema-file  $< \
 		--target-class-name $(firstword $(subst ., ,$(lastword $(subst /, ,$@)))) \
 		--target-p-o-constraint "dcterms:isPartOf nmdc:sty-11-34xj1150"
@@ -527,3 +511,41 @@ doi_report.tsv:
 
 enchillada: squeaky-clean all test make-rdf OmicsProcessing-all
 
+severe_make.log: make.log
+	egrep -v "^INFO:root:" $< > $@
+
+counts-initial-cas-lc.txt: local/mongo_as_unvalidated_nmdc_database.yaml # 103212
+	- grep -c 'cas:' $< > $@
+
+counts-initial-cas-uc.txt: local/mongo_as_unvalidated_nmdc_database.yaml # 0
+	- grep -c 'CAS:' $< > $@
+
+counts-initial-gold-lc.txt: local/mongo_as_unvalidated_nmdc_database.yaml # 50878
+	- grep -c 'gold:' $< > $@
+
+ counts-initial-gold-uc.txt: local/mongo_as_unvalidated_nmdc_database.yaml # 3060
+	- grep -c 'GOLD:' $< > $@
+
+counts-migrated-cas-lc.txt: local/mongo_as_nmdc_database_rdf_safe.yaml # 103212
+	- grep -c 'cas:' $< > $@
+
+counts-migrated-cas-uc.txt: local/mongo_as_nmdc_database_rdf_safe.yaml # 0
+	- grep -c 'CAS:' $< > $@
+
+counts-migrated-gold-lc.txt: local/mongo_as_nmdc_database_rdf_safe.yaml # 50878
+	- grep -c 'gold:' $< > $@
+
+ counts-migrated-gold-uc.txt: local/mongo_as_nmdc_database_rdf_safe.yaml # 1704
+	- grep -c 'GOLD:' $< > $@
+
+problem-prefix-counts-clean:
+	rm -rf counts-initial-cas-lc.txt counts-initial-cas-uc.txt \
+		counts-initial-gold-lc.txt counts-initial-gold-uc.txt \
+		counts-migrated-cas-lc.txt counts-migrated-cas-uc.txt \
+		counts-migrated-gold-lc.txt counts-migrated-gold-uc.txt
+
+
+problem-prefix-counts-all: problem-prefix-counts-clean counts-initial-cas-lc.txt counts-initial-cas-uc.txt \
+counts-initial-gold-lc.txt counts-initial-gold-uc.txt \
+counts-migrated-cas-lc.txt counts-migrated-cas-uc.txt \
+counts-migrated-gold-lc.txt counts-migrated-gold-uc.txt

@@ -38,7 +38,7 @@ prefixes:
   UBERON: "http://purl.obolibrary.org/obo/UBERON_"
   PO: "http://purl.obolibrary.org/obo/PO_"
   #  AFO: "http://example.org/UNKNOWN/AFO/" # no expansion at https://bioregistry.io/registry/afo
-  CAS: "https://bioregistry.io/cas:"
+  cas: "https://bioregistry.io/cas:"
   CATH: "https://bioregistry.io/cath:"
   CHEBI: "http://purl.obolibrary.org/obo/CHEBI_"
   CHEMBL.COMPOUND: "https://bioregistry.io/chembl.compound:" # https://bioregistry.io/chembl.compound:CHEMBL465070
@@ -70,7 +70,6 @@ prefixes:
   UO: "http://purl.obolibrary.org/obo/UO_"
   biosample: "https://bioregistry.io/biosample:"
   doi: "https://bioregistry.io/doi:"
-  emsl: "http://example.org/emsl_in_mongodb/"
   emsl.project: "https://bioregistry.io/emsl.project:"
   generic: https://example.org/generic/
   gnps.task: "https://bioregistry.io/gnps.task:"
@@ -90,6 +89,8 @@ prefixes:
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   skos: http://www.w3.org/2004/02/skos/core#
   xsd: http://www.w3.org/2001/XMLSchema#
+  emsl: "http://example.org/emsl_biosample_in_mongodb/"
+  emsl_biosample_uuid_like: "http://example.org/emsl_biosample_uuid_like/"
 
 
 default_prefix: nmdc
@@ -105,14 +106,14 @@ emit_prefixes:
   - skos
   - xsd
   - KEGG.ORTHOLOGY
-  - CAS
+  - cas
   - gnps.task
   - jgi.proposal
   - MASSIVE
   - doi
   - kegg
   - biosample
-  - GOLD
+  - gold
   - img.taxon
 
 settings:
@@ -2038,7 +2039,7 @@ slots:
 
   ecosystem_path_id:
     range: string
-    description: A unique id representing the GOLD classifers associated with a sample.
+    description: A unique id representing the GOLD classifiers associated with a sample.
   habitat:
     range: string
   location:

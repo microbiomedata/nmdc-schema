@@ -52,11 +52,6 @@ def expand_curies(input_ttl, output_ttl, jsonld_context_jsons, emsl_biosample_uu
     for prefix, uri_prefix in converter.prefix_map.items():
         graph.bind(prefix, rdflib.Namespace(uri_prefix), override=False, replace=False)
 
-    # nsm = graph.namespace_manager
-    # nss = nsm.namespaces()
-    # for n_s in nss:
-    #     print(n_s)
-
     print(f"Loading {input_ttl}")
     graph.parse(input_ttl, format="ttl")
     print(f"Loaded {input_ttl}")

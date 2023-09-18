@@ -29,9 +29,6 @@ prefixes:
 default_prefix: nmdc
 default_range: string
 
-#default_curi_maps:
-#  - obo_context
-#  - idot_context
 
 subsets:
   environment: { }
@@ -364,7 +361,7 @@ classes:
     see_also:
       - https://bioconductor.org/packages/devel/data/annotation/vignettes/metaboliteIDmapping/inst/doc/metaboliteIDmapping.html
     id_prefixes:
-      - CAS
+      - cas
       - CHEBI
       - CHEMBL.COMPOUND
       - DRUGBANK

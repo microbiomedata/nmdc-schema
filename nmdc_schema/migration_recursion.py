@@ -41,18 +41,80 @@ class Migrator:
             retrieved_extraction['input_mass'] = retrieved_extraction.pop('sample_mass')
         return retrieved_extraction
 
+    def migrate_uc_gold_sequencing_project_identifiers_7_8_0_to_NEXT(self, retrieved_omics_processing):
+
+        migrated_gold_identifiers = []
+        if "gold_sequencing_project_identifiers" in retrieved_omics_processing and retrieved_omics_processing[
+            "gold_sequencing_project_identifiers"]:
+            for i in retrieved_omics_processing["gold_sequencing_project_identifiers"]:
+                logger.info(f"migrating gold_sequencing_project_identifiers {i}")
+                curie_parts = i.split(':')
+                curie_prefix = curie_parts[0]
+                curie_local_id = curie_parts[1]
+
+                if curie_prefix == "GOLD":
+                    migrated_gold_identifiers.append(f"gold:{curie_local_id}")
+                else:
+                    migrated_gold_identifiers.append(i)
+        retrieved_omics_processing["gold_sequencing_project_identifiers"] = migrated_gold_identifiers
+
+        return retrieved_omics_processing
+
+    def migrate_uc_gold_biosample_identifiers_7_8_0_to_NEXT(self, retrieved_biosample):
+
+        # todo refactor? this shouldn't be long-lived code
+
+        migrated_gold_identifiers = []
+        if "gold_biosample_identifiers" in retrieved_biosample and retrieved_biosample[
+            "gold_biosample_identifiers"]:
+            for i in retrieved_biosample["gold_biosample_identifiers"]:
+                logger.info(f"migrating gold_biosample_identifiers {i}")
+                curie_parts = i.split(':')
+                curie_prefix = curie_parts[0]
+                curie_local_id = curie_parts[1]
+
+                if curie_prefix == "GOLD":
+                    migrated_gold_identifiers.append(f"gold:{curie_local_id}")
+                else:
+                    migrated_gold_identifiers.append(i)
+        retrieved_biosample["gold_biosample_identifiers"] = migrated_gold_identifiers
+
+        return retrieved_biosample
+
+    def migrate_uc_gold_study_identifiers_7_8_0_to_NEXT(self, retrieved_study):
+
+        # todo refactor? this shouldn't be long-lived code
+
+        migrated_gold_identifiers = []
+        if "gold_study_identifiers" in retrieved_study and retrieved_study[
+            "gold_study_identifiers"]:
+            for i in retrieved_study["gold_study_identifiers"]:
+                logger.info(f"migrating gold_study_identifiers {i}")
+                curie_parts = i.split(':')
+                curie_prefix = curie_parts[0]
+                curie_local_id = curie_parts[1]
+
+                if curie_prefix == "GOLD":
+                    migrated_gold_identifiers.append(f"gold:{curie_local_id}")
+                else:
+                    migrated_gold_identifiers.append(i)
+        retrieved_study["gold_study_identifiers"] = migrated_gold_identifiers
+
+        return retrieved_study
+
     def check_and_normalize_one_curie(self, curie_string):
         if not self.is_valid_curie(curie_string):
             curie_string = self.normalize_curie(curie_string)
+
         return curie_string
 
     def is_valid_curie(self, curie_string):
         if curie_string == "None":
             pass
-            # print("curie_string = 'None'")  # at what point do these get converted from None values to 'None' strings?
+            # logger.info("curie_string = 'None'")  # at what point do these get converted from None values to 'None' strings?
         elif '\n' in curie_string or '\r' in curie_string:
             pass
-            # print("curie_string contains newline characters")
+            # logger.info("curie_string contains newline characters")
         else:
             match = re.match(curie_pattern, curie_string)
             return match is not None
@@ -140,6 +202,18 @@ def main(schema_path, input_path, output_path, salvage_prefix):
             logger.info(f"Starting {tdk}-specific migrations")
             for current_extraction in tdv:
                 migrator.migrate_extractions_7_8_0_to_NEXT(current_extraction)
+        if tdk == "omics_processing_set":
+            logger.info(f"Starting {tdk}-specific migrations")
+            for current_omics_processing in tdv:
+                migrator.migrate_uc_gold_sequencing_project_identifiers_7_8_0_to_NEXT(current_omics_processing)
+        if tdk == "biosample_set":
+            logger.info(f"Starting {tdk}-specific migrations")
+            for current_biosample in tdv:
+                migrator.migrate_uc_gold_biosample_identifiers_7_8_0_to_NEXT(current_biosample)
+        if tdk == "study_set":
+            logger.info(f"Starting {tdk}-specific migrations")
+            for current_study in tdv:
+                migrator.migrate_uc_gold_study_identifiers_7_8_0_to_NEXT(current_study)
 
     logger.info(f"Saving migrated data to {output_path}")
     with open(output_path, "w") as f:

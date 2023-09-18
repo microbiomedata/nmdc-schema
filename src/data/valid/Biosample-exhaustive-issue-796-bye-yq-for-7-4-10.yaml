@@ -30,8 +30,8 @@ biosample_categories:
   - LTER
   - FICUS
 gold_biosample_identifiers:
-  - GOLD:Gb123456789
-  - GOLD:Gb90909090
+  - gold:Gb123456789
+  - gold:Gb90909090
 insdc_biosample_identifiers:
   - biosample:SAMN123456789
   - biosample:SAMN000
