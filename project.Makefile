@@ -10,6 +10,7 @@ mongodb-clean rdf-clean shuttle-clean squeaky-clean
 
 OmicsProcessing-clean:
 	rm -rf OmicsProcessing.tsv
+	rm -rf OmicsProcessing-to-catted-Biosamples.tsv
 
 accepting-legacy-ids-clean:
 	rm -rf nmdc_schema/nmdc_schema_accepting_legacy_ids*
@@ -28,9 +29,10 @@ mongodb-clean:
 
 rdf-clean:
 	rm -rf \
+		OmicsProcessing.rq \
 		local/mongo_as_nmdc_database.ttl \
-		local/mongo_as_nmdc_database_validation.log \
 		local/mongo_as_nmdc_database_rdf_safe.yaml \
+		local/mongo_as_nmdc_database_validation.log \
 		local/mongo_as_unvalidated_nmdc_database.yaml
 
 shuttle-clean:
@@ -82,10 +84,9 @@ local/mixs_regen/mixs_subset.yaml: local/mixs_regen/import_slots_regardless_gen.
 		--yaml_output $@
 
 local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml
-	# the majority of operations
-	# change the https://github.com/GenomicsStandardsConsortium/mixs/blob/main/model/schema/mixs.yaml ranges
-	# to match https://github.com/microbiomedata/nmdc-schema/blame/e681592b20f98dab0cf89278b2b3c2f5e0754adf/src/schema/mixs.yaml
-	#   from Apr 2022 ?
+	# switching to TextValue may not add any value. the other range changes do improve the structure of the data.
+	# ironically changing back to strings for the submission-schema, data harmonizer, submission portal etc.
+	# may switch source of truth to the MIxS 6.2.2 release candidate
 	sed 's/quantity value/QuantityValue/' $< > $@
 	sed -i.bak 's/range: string/range: TextValue/' $@
 	sed -i.bak 's/range: text value/range: TextValue/' $@
@@ -275,26 +276,6 @@ examples/output: project/nmdc_schema_generated.yaml
 		--counter-example-input-directory src/data/invalid \
 		--output-directory $@ > $@/README.md
 
-
-#assets/MIxS_6_term_updates_MIxS6_Core-_Final_clean.tsv:
-#	curl -L "https://docs.google.com/spreadsheets/d/1QDeeUcDqXes69Y2RjU2aWgOpCVWo5OVsBX9MKmMqi_o/export?gid=178015749&format=tsv" > $@
-#
-#assets/MIxS_6_term_updates_MIxS6_packages_-_Final_clean.tsv:
-#	curl -L "https://docs.google.com/spreadsheets/d/1QDeeUcDqXes69Y2RjU2aWgOpCVWo5OVsBX9MKmMqi_o/export?gid=750683809&format=tsv" > $@
-#
-#assets/sheets-for-nmdc-submission-schema_import_slots_regardless.tsv:
-#	curl -L "https://docs.google.com/spreadsheets/d/1_TSuvEUX68g_o3r1d9wvOYMMbZ3vO4eluvAd2wNJoSU/export?gid=1742830620&format=tsv" > $@
-
-MIXS_YAML_FROM_SHEETS_AND_FRIENDS = src/schema/mixs.yaml
-
-SCHEMA_FILE = $(MIXS_YAML_FROM_SHEETS_AND_FRIENDS)
-
-# Define a variable for the directory containing the YAML data files
-YAML_DIR_VALID := src/data/valid/
-
-# Define a variable for the list of YAML data files
-YAML_DATABASE_FILES_VALID := $(wildcard $(YAML_DIR_VALID)Database*.yaml)
-
 local/usage_template.tsv: src/schema/nmdc.yaml
 	mkdir -p $(@D)
 	$(RUN) generate_and_populate_template \
@@ -399,8 +380,6 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml: src/schema/nmdc.yaml
 	yq -i '(.classes[] | select(.name == "ReadQcAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "Study") | .slot_usage.id.pattern) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "Study") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	# TEMPORARY
-	yq -i '(.slots[] | select(.name == "dois") | .pattern) = ".*"' $@
 
 
 	$(RUN) gen-linkml \
@@ -431,11 +410,34 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepti
 # todo mongodb collection stats vs Database slots report
 # todo convert to json
 # todo compress large files
+# todo: allow different api base addresses
+# todo: switch to API method for getting collection names and stats: https://api.microbiomedata.org/nmdcschema/collection_stats # partially implemented
+# todo: add start time reporting
 
 make-rdf: rdf-clean local/mongo_as_nmdc_database_validation.log local/mongo_as_nmdc_database_cuire_repaired.ttl
 
 #   		--selected-collections functional_annotation_agg \ # huge, no publically avaiaible reference data (kegg)
 #   		--selected-collections metaproteomics_analysis_activity_set \ # next slowest
+
+#		--selected-collections biosample_set \
+#  		--selected-collections data_object_set \
+#  		--selected-collections extraction_set \
+#  		--selected-collections field_research_site_set \
+#  		--selected-collections library_preparation_set \
+#  		--selected-collections mags_activity_set \
+#  		--selected-collections metabolomics_analysis_activity_set \
+#  		--selected-collections metagenome_annotation_activity_set \
+#  		--selected-collections metagenome_assembly_set \
+#  		--selected-collections metagenome_sequencing_activity_set  \
+#  		--selected-collections metatranscriptome_activity_set \
+#  		--selected-collections nom_analysis_activity_set \
+#  		--selected-collections omics_processing_set \
+#  		--selected-collections pooling_set \
+#  		--selected-collections processed_sample_set \
+#  		--selected-collections read_based_taxonomy_analysis_activity_set \
+#  		--selected-collections read_qc_analysis_activity_set \
+#  		--selected-collections study_set \
+
 
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
@@ -467,6 +469,7 @@ local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_le
 	time $(RUN) migration-recursion \
 		--schema-path $(word 1,$^) \
 		--input-path $(word 2,$^) \
+		--salvage-prefix nmdc \
 		--output-path $@
 
 local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
@@ -475,52 +478,44 @@ local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_l
 	time $(RUN) linkml-validate --schema $^ > $@
 
 local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
-	# todo what reference ontologies do we want to include? kegg, but from where?
-	#   nmdc schema, envo, mixs, chebi
-	#   selected branches of NCBI taxonomy? protein ontology?
-	#   kegg :-(
 	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-convert --output $@ --schema $^
 	time riot --validate $@ # < 1 minute
+	# WARNING: java.io.tmpdir directory does not exist
 
-
+# todo: still getting anyurl typed string statement objects in RDF. I added a workarround in anyuri-strings-to-iris
 local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.ttl
-	date # 287.91 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
+	date
 	time $(RUN) anyuri-strings-to-iris \
 		--input-ttl $< \
 		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
 		--jsonld-context-jsons assets/misc/data_prefix_expansions.context.jsonld \
+		--emsl-biosample-uuid-replacement emsl_biosample_uuid_like \
 		--output-ttl $@
-	time riot --validate $@ # < 1 minute
-
-# todo: add start time reporting
-# todo: allow different api base addresses
-# todo: skip migration of some collections?
-# todo: still getting anyurl typed string statement objects in RDF ? I added a fix in anyuri-strings-to-iris
-# todo: switch to API method for getting collection names and stats: https://api.microbiomedata.org/nmdcschema/collection_stats # partially implemented
+	# todo: CANT SEEM TO GET RIOT TO COMPLETE WITHOUT
+	#/bin/sh: /Users/MAM: is a directory
+	#make: *** [local/mongo_as_nmdc_database_cuire_repaired.ttl] Error 126
+	#	~ riot --validate $@ # < 1 minute
+	date
 
 # ----
-
-# todo: graphdb visual graph for including blank nodes
-# todo: remove funding_sources char limit
-
-# ----
-
-#project/prefixmap/nmdc.json: gen-project
 
 OmicsProcessing-to-catted-Biosamples.tsv: assets/sparql/OmicsProcessing-to-catted-Biosamples.rq nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
 	$(RUN) class-sparql \
+		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
+		--jsonld-context-jsons assets/misc/data_prefix_expansions.context.jsonld \
 		--query-file $<
 
-OmicsProcessing-all: OmicsProcessing-clean OmicsProcessing.tsv
+OmicsProcessing-all: OmicsProcessing-clean OmicsProcessing.tsv OmicsProcessing-to-catted-Biosamples.tsv
 
-OmicsProcessing.tsv: project/prefixmap/nmdc.json nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+OmicsProcessing.tsv: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
 	$(RUN) class-sparql  \
 		--concatenation-suffix s \
 		--do-group-concat \
 		--graph-name "mongodb://mongo-loadbalancer.nmdc.production.svc.spin.nersc.gov:27017" \
-		--prefix-maps-json $(word 1,$^) \
-		--schema-file  $(word 2,$^) \
+		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
+		--jsonld-context-jsons assets/misc/data_prefix_expansions.context.jsonld \
+		--schema-file  $< \
 		--target-class-name $(firstword $(subst ., ,$(lastword $(subst /, ,$@)))) \
 		--target-p-o-constraint "dcterms:isPartOf nmdc:sty-11-34xj1150"
 
@@ -528,4 +523,7 @@ OmicsProcessing.tsv: project/prefixmap/nmdc.json nmdc_schema/nmdc_schema_accepti
 
 doi_report.tsv:
 	$(RUN) get-study-doi-report
+
+
+enchillada: squeaky-clean all test make-rdf OmicsProcessing-all
 

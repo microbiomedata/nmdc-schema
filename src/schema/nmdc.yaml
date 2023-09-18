@@ -33,63 +33,6 @@ imports:
   - sample_prep
   - workflow_execution_activity
 
-# PREFIX, id and CURIe notes
-# prefix definitions have to account for prefixes and base URIs used in the schema nd in the data
-# look out for http://example.org/UNKNOWN/  and example. here and in the data
-# bioregistry or identifiers.org?
-# uppercase or lowercase?
-# WARNING:root:Prefix case mismatch - supplied: cas expected: CAS
-# WARNING:root:Prefix case mismatch - supplied: massive expected: MASSIVE
-# WARNING:root:Prefix case mismatch - supplied: gold expected: GOLD
-# see also project/jsonld/nmdc.context.jsonld
-# see also project/prefixmap/nmdc.json
-#   gen-prefix-map doesn't merge
-#   emits JSON content into a file with teh .yaml extension by default
-#   so regenerating it from the merged schema as part of `project/nmdc_schema_merged.yaml` in `Makefile`
-# why do project/jsonld/nmdc.context.jsonld and project/prefixmap/nmdc.json look so different?
-# see also nmdc_schema/class_sparql.py
-# see also nmdc_schema/anyuri_strings_to_iris.py (which applies but doesn't assert prefix expansions)
-# see also nmdc_schema/migration_recursion.py which
-#   adds the nmdc prefix to totally bare CURIes
-#   converts CURIes with the UUID prefix into true <urn:uuid:...> IRIs
-# also check validation `pattern`s and id_prefixes
-# eliminate use of default_curi_maps
-# MetaCyc expansion assumes we're talking about metacyc reactions and not genes, compounds etc.
-# doesn't look like all the emit_prefixes are making it into the OWL output
-
-## see also local/lint.log
-#  warning  Schema maps prefix 'CAS' to namespace 'https://bioregistry.io/cas:' instead of namespace 'http://identifiers.org/cas/'  (canonical_prefixes)
-#  warning  Schema maps prefix 'CATH' to namespace 'https://bioregistry.io/cath:' instead of namespace 'http://identifiers.org/cath/'  (canonical_prefixes)
-#  warning  Schema maps prefix 'CHEMBL.COMPOUND' to namespace 'https://bioregistry.io/chembl.compound:' instead of namespace 'http://identifiers.org/chembl.compound/'  (canonical_prefixes)
-#  warning  Schema maps prefix 'DRUGBANK' to namespace 'https://bioregistry.io/drugbank:' instead of namespace 'http://identifiers.org/drugbank/'  (canonical_prefixes)
-#  warning  Schema maps prefix 'EFO' to namespace 'http://www.ebi.ac.uk/efo/' instead of namespace 'http://identifiers.org/efo/'  (canonical_prefixes)
-#  warning  Schema maps prefix 'EGGNOG' to namespace 'https://bioregistry.io/eggnog:' instead of namespace 'http://identifiers.org/eggnog/'  (canonical_prefixes)
-#  warning  Schema maps prefix 'HMDB' to namespace 'https://bioregistry.io/hmdb:' instead of namespace 'http://identifiers.org/hmdb/'  (canonical_prefixes)
-#  warning  Schema maps prefix 'MASSIVE' to namespace 'https://bioregistry.io/reference/massive:' instead of namespace 'http://identifiers.org/massive/'  (canonical_prefixes)
-#  warning  Schema maps prefix 'MESH' to namespace 'https://bioregistry.io/mesh:' instead of namespace 'http://identifiers.org/mesh/'  (canonical_prefixes)
-#  warning  Schema maps prefix 'PANTHER.FAMILY' to namespace 'https://bioregistry.io/panther.family:' instead of namespace 'http://identifiers.org/panther.family/'  (canonical_prefixes)
-#  warning  Schema maps prefix 'PFAM' to namespace 'https://bioregistry.io/pfam:' instead of namespace 'http://identifiers.org/pfam/'  (canonical_prefixes)
-#  warning  Schema maps prefix 'PUBCHEM.COMPOUND' to namespace 'https://bioregistry.io/pubchem.compound:' instead of namespace 'http://identifiers.org/pubchem.compound/'  (canonical_prefixes)
-#  warning  Schema maps prefix 'SUPFAM' to namespace 'https://bioregistry.io/supfam:' instead of namespace 'http://identifiers.org/supfam/'  (canonical_prefixes)
-#  warning  Schema maps prefix 'TIGRFAM' to namespace 'https://bioregistry.io/tigrfam:' instead of namespace 'http://identifiers.org/tigrfam/'  (canonical_prefixes)
-#  warning  Schema maps prefix 'rdf' to namespace 'http://www.w3.org/1999/02/22-rdf-syntax-ns#' instead of using prefix 'RDF'  (canonical_prefixes)
-#  warning  Schema maps prefix 'rdfs' to namespace 'http://www.w3.org/2000/01/rdf-schema#' instead of using prefix 'RDFS'  (canonical_prefixes)
-
-## different expansion in other yaml modules
-#  KEGG.COMPOUND: "https://bioregistry.io/kegg.compound:" # https://bioregistry.io/kegg.compound:C12345"
-#  KEGG.REACTION: "https://bioregistry.io/kegg.reaction:" # https://bioregistry.io/kegg.reaction:R00100"
-#  KEGG_PATHWAY: "https://bioregistry.io/kegg.pathway:" # https://bioregistry.io/kegg.pathway:rsk00410
-#  MetaCyc: "https://bioregistry.io/metacyc.compound:" # https://bioregistry.io/metacyc.compound:CPD-10330 # are we sure we always mean compounds?
-#  RHEA: "https://bioregistry.io/rhea:"
-#  SEED: "https://bioregistry.io/seed:" # https://bioregistry.io/seed:Biotin_biosynthesis"
-#  UniProtKB: "https://bioregistry.io/uniprot:" # https://bioregistry.io/uniprot:P0DP23"
-
-# make rdf-clean ?
-# make local/mongo_as_unvalidated_nmdc_database.yaml local/mongo_as_nmdc_database_rdf_safe.yaml local/mongo_as_nmdc_database_validation.log
-# make squeaky-clean ?
-# make all test
-# date ; time poetry run linkml-convert --output local/mongo_as_nmdc_database.ttl --schema nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
-# date; time poetry run anyuri-strings-to-iris --input-ttl local/mongo_as_nmdc_database.ttl --jsonld-context-jsons assets/misc/data_prefix_expansions.context.json --output-ttl local/mongo_as_nmdc_database_cuire_repaired.ttl
 
 prefixes:
   UBERON: "http://purl.obolibrary.org/obo/UBERON_"
@@ -109,7 +52,7 @@ prefixes:
   GO: "http://purl.obolibrary.org/obo/GO_"
   HMDB: "https://bioregistry.io/hmdb:" # https://bioregistry.io/hmdb:HMDB00001
   ISA: http://example.org/isa/
-  KEGG.ORTHOLOGY: http://identifiers.org/kegg.orthology/  # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  KEGG.ORTHOLOGY: "https://bioregistry.io/kegg.orthology:"  # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
   MASSIVE: "https://bioregistry.io/reference/massive:"
   MESH: "https://bioregistry.io/mesh:" # https://bioregistry.io/mesh:C063233
   MS: "http://purl.obolibrary.org/obo/MS_"
@@ -125,20 +68,20 @@ prefixes:
   SUPFAM: "https://bioregistry.io/supfam:" # 	https://bioregistry.io/supfam:SSF57615
   TIGRFAM: "https://bioregistry.io/tigrfam:" # https://bioregistry.io/tigrfam:TIGR00010
   UO: "http://purl.obolibrary.org/obo/UO_"
-  biosample: "https://identifiers.org/biosample:"
-  doi: "https://identifiers.org/doi:"
+  biosample: "https://bioregistry.io/biosample:"
+  doi: "https://bioregistry.io/doi:"
   emsl: "http://example.org/emsl_in_mongodb/"
   emsl.project: "https://bioregistry.io/emsl.project:"
   generic: https://example.org/generic/
   gnps.task: "https://bioregistry.io/gnps.task:"
   gtpo: http://example.org/gtpo/
   igsn: https://app.geosamples.org/sample/igsn/
-  img.taxon: "https://identifiers.org/img.taxon:"
+  img.taxon: "https://bioregistry.io/img.taxon:"
   jgi.proposal: "https://bioregistry.io/jgi.proposal:"
   jgi: http://example.org/jgi/
-  kegg: "https://identifiers.org/kegg:"
+  kegg: "https://bioregistry.io/kegg:" # https://bioregistry.io/kegg:hsa00190
   linkml: https://w3id.org/linkml/
-  mgnify.proj: "https://identifiers.org/mgnify.proj:"
+  mgnify.proj: "https://bioregistry.io/mgnify.proj:"
   neon.identifier: http://example.org/neon/identifier/
   neon.schema: http://example.org/neon/schema/
   nmdc: https://w3id.org/nmdc/
@@ -344,9 +287,9 @@ classes:
       - habitat # gold term... enumerated values?
       - lat_lon
       - local_class
-      - neon_deims_sdr_link # short-term addition for neon
-      - neon_eco_type # short-term addition for neon
-      - neon_soil_type # short-term addition for neon
+      #      - neon_deims_sdr_link # short-term addition for neon
+      #      - neon_eco_type # short-term addition for neon
+      #      - neon_soil_type # short-term addition for neon
       - part_of
       - soil_type
     slot_usage:
@@ -1544,7 +1487,7 @@ classes:
         experimental_factor
       - project_name is redundant with name, so excluding it
     notes:
-      - "sample GOLD link https://identifiers.org/gold:Gs0110115"
+      - "sample GOLD link https://bioregistry.io/gold:Gs0110115"
       - "sample insdc.srs link https://www.ebi.ac.uk/ena/browser/view/PRJEB45055 ?"
       - "sample mgnify link https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757"
       - "GOLD, insdc.srs and mgnify are reasonable prefixes for alternative study identifiers, but no longer for the Study.id"

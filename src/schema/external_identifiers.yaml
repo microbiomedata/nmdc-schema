@@ -14,7 +14,7 @@ imports:
 
 prefixes:
   # none of these are registered in prefix commons
-  GOLD: http://identifiers.org/gold/
+  GOLD: "https://bioregistry.io/gold:"
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
   skos: http://www.w3.org/2004/02/skos/core#
@@ -130,7 +130,6 @@ slots:
       - value: jgi.proposal:507130
     comments:
       - Could this could be considered a related identifier?
-      - this identifier was registered with bioregistry but not identifiers.org
       - Curie suffix is the Site Award Number from an OSTI award page
       - Site Award Number 507130 == award doi doi:10.46936/10.25585/60000017 -- GOLD study identifier GOLD:Gs0154044
       - bioregistry.io/jgi.proposal:507130 ==https://genome.jgi.doe.gov/portal/BioDefcarcycling/BioDefcarcycling.info.html
@@ -155,7 +154,7 @@ slots:
     pattern: "^insdc.sra:(E|D|S)RP[0-9]{6,}$"
     description: identifiers for corresponding project in INSDC SRA / ENA
     examples:
-      - value: https://identifiers.org/insdc.sra:SRP121659
+      - value: https://bioregistry.io/insdc.sra:SRP121659
         description: Avena fatua rhizosphere microbial communities - H1_Rhizo_Litter_2 metatranscriptome
     see_also:
       - https://github.com/bioregistry/bioregistry/issues/109
@@ -174,7 +173,7 @@ slots:
     comments:
       - these are distinct IDs from INSDC SRA/ENA project identifiers, but are usually(?) one to one
     examples:
-      - value: https://identifiers.org/bioproject:PRJNA366857
+      - value: https://bioregistry.io/bioproject:PRJNA366857
         description: Avena fatua rhizosphere microbial communities - H1_Rhizo_Litter_2 metatranscriptome
     see_also:
       - https://www.ncbi.nlm.nih.gov/bioproject/
@@ -189,7 +188,7 @@ slots:
     comments:
       - uses the prefix GS (but possibly in a different case)
     examples:
-      - value: https://identifiers.org/gold:Gs0110115
+      - value: https://bioregistry.io/gold:Gs0110115
     see_also:
       - https://gold.jgi.doe.gov/studies
     title: GOLD Study Identifiers
@@ -201,7 +200,7 @@ slots:
     pattern: "^mgnify.proj:[A-Z]+[0-9]+$"
     description: identifiers for corresponding project in MGnify
     examples:
-      - value: https://identifiers.org/mgnify.proj:MGYS00005757
+      - value: https://bioregistry.io/mgnify.proj:MGYS00005757
 
   gnps_task_identifiers:
     is_a: study_identifiers
@@ -259,7 +258,7 @@ slots:
     pattern: "^GOLD:Gb[0-9]+$"
     description: identifiers for corresponding sample in GOLD
     examples:
-      - value: https://identifiers.org/gold:Gb0312930
+      - value: https://bioregistry.io/gold:Gb0312930
 
   insdc_biosample_identifiers:
     is_a: biosample_identifiers
@@ -272,8 +271,8 @@ slots:
     pattern: "^biosample:SAM[NED]([A-Z])?[0-9]+$"
     description: identifiers for corresponding sample in INSDC
     examples:
-      - value: https://identifiers.org/biosample:SAMEA5989477
-      - value: https://identifiers.org/biosample:SAMD00212331
+      - value: https://bioregistry.io/biosample:SAMEA5989477
+      - value: https://bioregistry.io/biosample:SAMD00212331
         description: I13_N_5-10 sample from Soil fungal diversity along elevational gradients
     see_also:
       - https://github.com/bioregistry/bioregistry/issues/108
@@ -291,7 +290,7 @@ slots:
       - "ENA redirects these to primary IDs, e.g. https://www.ebi.ac.uk/ena/browser/view/DRS166340 -> SAMD00212331"
       - MGnify uses these as their primary sample IDs
     examples:
-      - value: https://identifiers.org/insdc.sra:DRS166340
+      - value: https://bioregistry.io/insdc.sra:DRS166340
         description: I13_N_5-10 sample from Soil fungal diversity along elevational gradients
 
   emsl_biosample_identifiers:
@@ -304,7 +303,6 @@ slots:
       - emsl_identifiers
     todos:
       - removed "planned" once NEXUS is online
-      - make an emsl identifiers mixin
       - determine real expansion for emsl prefix
 
   igsn_biosample_identifiers:
@@ -328,7 +326,7 @@ slots:
     pattern: "^GOLD:Gp[0-9]+$"
     description: identifiers for corresponding sequencing project in GOLD
     examples:
-      - value: https://identifiers.org/gold:Gp0108335
+      - value: https://bioregistry.io/gold:Gp0108335
 
   insdc_experiment_identifiers:
     is_a: external_database_identifiers
@@ -349,7 +347,7 @@ slots:
     pattern: "^GOLD:Ga[0-9]+$"
     description: identifiers for corresponding analysis project in GOLD
     examples:
-      - value: https://identifiers.org/gold:Ga0526289
+      - value: https://bioregistry.io/gold:Ga0526289
 
   insdc_analysis_identifiers:
     is_a: analysis_identifiers

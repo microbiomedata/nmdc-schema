@@ -19,14 +19,14 @@ imports:
 
 prefixes:
   COG: "https://bioregistry.io/cog:" # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
-  EC: "https://bioregistry.io/eccode:" # "EC-CODE": "http://identifiers.org/ec-code/", in https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  EC: "https://bioregistry.io/eccode:"
   GO: http://purl.obolibrary.org/obo/GO_ # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
-  KEGG.ORTHOLOGY: http://identifiers.org/kegg.orthology/  # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
-  KEGG.REACTION: http://identifiers.org/kegg.reaction/ # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
-  KEGG_PATHWAY: http://identifiers.org/kegg.pathway/ # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
-  MetaCyc: https://identifiers.org/metacyc.reaction/ # "METACYC.REACTION": "http://identifiers.org/metacyc.reaction/", in https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
-  RHEA: http://identifiers.org/rhea/ # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
-  SEED: http://identifiers.org/seed/ # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  KEGG.ORTHOLOGY: "https://bioregistry.io/kegg.orthology:"  # https://bioregistry.io/kegg.orthology:K00001
+  KEGG.REACTION: "https://bioregistry.io/kegg.reaction:" # https://bioregistry.io/kegg.reaction:R00100
+  KEGG_PATHWAY: "https://bioregistry.io/kegg.pathway:" # https://bioregistry.io/kegg.pathway:rsk00410
+  MetaCyc: "https://bioregistry.io/metacyc.compound:" # https://bioregistry.io/metacyc.compound:CPD-10330
+  RHEA: "https://bioregistry.io/rhea:" # https://bioregistry.io/rhea:12345
+  SEED: "https://bioregistry.io/seed:" # https://bioregistry.io/seed:Biotin_biosynthesis
 
   biolink: https://w3id.org/biolink/vocab/
   linkml: https://w3id.org/linkml/

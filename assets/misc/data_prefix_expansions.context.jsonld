@@ -5,9 +5,10 @@
     "source": "nmdc.yaml"
   },
   "@context": {
-    "cas": "http://identifiers.org/cas/",
+    "cas": "https://bioregistry.io/cas:",
     "emsl": "http://example.org/emsl_in_mongodb/",
-    "gold": "https://identifiers.org/gold:"
+    "emsl_biosample_uuid_like": "http://example.org/emsl_biosample_uuid_like/",
+    "gold": "https://bioregistry.io/gold:"
   }
 }
 

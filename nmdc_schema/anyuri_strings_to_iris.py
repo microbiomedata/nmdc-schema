@@ -1,35 +1,9 @@
 import json
-import pprint
 
 import click
+import curies
+import rdflib
 from rdflib import Graph, term, XSD, URIRef, Namespace
-
-
-def read_json_file(file_path):
-    with open(file_path, "r") as f:
-        json_data = json.load(f)
-    return json_data
-
-
-def context_json_to_rdflib_namespaces(context_dict, graph):
-    # pprint.pprint(context_dict)
-    context = context_dict["@context"]
-    for k, v in context.items():
-
-        if k == "id":
-            continue
-
-        if isinstance(v, dict):
-            if '@prefix' in v and "@id" in v and v['@prefix'] and v['@id']:
-                graph.namespace_manager.bind(k, Namespace(v['@id']), override=False)
-            else:
-                pass
-                # if '@id' in v:
-                #     print(f"not asserting a prefix expansion for {k}, which has the element id {v['@id']}")
-                # else:
-                #     print(f"not asserting a prefix expansion for {k}, which is an element name and an element id")
-        elif isinstance(v, str):
-            graph.namespace_manager.bind(k, Namespace(v), override=False)
 
 
 @click.command()
@@ -52,18 +26,36 @@ def context_json_to_rdflib_namespaces(context_dict, graph):
     required=True,
     type=click.Path(dir_okay=False),
 )
-def expand_curies(input_ttl, output_ttl, jsonld_context_jsons):
+@click.option(
+    "-p",
+    "--emsl-biosample-uuid-replacement",
+    required=True,
+    help="A prefix, from one of the jsonld-context-jsons, that should replace the UUID prefix used in some emsl_biosample_identifiers values",
+)
+def expand_curies(input_ttl, output_ttl, jsonld_context_jsons, emsl_biosample_uuid_replacement):
     """Expand CURIE literals in an RDF graph to their full URI references."""
 
     graph = Graph()
 
+    for_chaining = []
     for jsonld_context_file in jsonld_context_jsons:
-        print(jsonld_context_file)
-        context_dict = read_json_file(jsonld_context_file)
-        context_json_to_rdflib_namespaces(context_dict, graph)
+        print(f"Loading prefixes from {jsonld_context_file}")
+        with open(jsonld_context_file) as json_file:
+            temp_dict = json.load(json_file)
+        if '@context' in temp_dict and '@vocab' in temp_dict['@context']:  # todo make a list of excluded keys
+            del temp_dict['@context']['@vocab']
+        temp_context = curies.load_jsonld_context(temp_dict)
+        for_chaining.append(temp_context)
 
-    for i in graph.namespace_manager.namespaces():
-        print(i)
+    converter = curies.chain(for_chaining)
+
+    for prefix, uri_prefix in converter.prefix_map.items():
+        graph.bind(prefix, rdflib.Namespace(uri_prefix), override=False, replace=False)
+
+    # nsm = graph.namespace_manager
+    # nss = nsm.namespaces()
+    # for n_s in nss:
+    #     print(n_s)
 
     print(f"Loading {input_ttl}")
     graph.parse(input_ttl, format="ttl")
@@ -72,15 +64,30 @@ def expand_curies(input_ttl, output_ttl, jsonld_context_jsons):
     print("Iterating over triples")
     for s, p, o in graph:
         if o.__class__ == term.Literal and o.datatype == XSD.anyURI:
-            obj_curie_string_parts = o.value.split(":")
-            if obj_curie_string_parts[0] == "UUID" and obj_curie_string_parts[1]:
-                bare_uuid = URIRef(f"urn:uuid:{obj_curie_string_parts[1]}")
-                graph.add((s, p, bare_uuid))
-                graph.remove((s, p, o))
+            o_str = str(o)
+            curie_parts = o_str.split(":")
+            current_prefix = curie_parts[0]
+            current_suffix = curie_parts[1]
+            as_true_curie = None
+            if current_prefix == "UUID" and current_suffix:
+                if str(p) == "https://w3id.org/nmdc/emsl_biosample_identifiers":
+                    as_true_curie = (
+                        URIRef(graph.namespace_manager.expand_curie(
+                            f"{emsl_biosample_uuid_replacement}:{current_suffix}")))
             else:
-                as_true_curie = URIRef(graph.namespace_manager.expand_curie(o.value))
-                graph.add((s, p, as_true_curie))
-                graph.remove((s, p, o))
+                try:
+                    as_true_curie = URIRef(graph.namespace_manager.expand_curie(o_str))
+                except Exception as e:
+                    if current_prefix.isupper():
+                        as_true_curie = URIRef(
+                            graph.namespace_manager.expand_curie(f"{current_prefix.lower()}:{current_suffix}"))
+                    elif current_prefix.islower():
+                        as_true_curie = URIRef(
+                            graph.namespace_manager.expand_curie(f"{current_prefix.upper()}:{current_suffix}"))
+                    else:
+                        print(e)
+            graph.add((s, p, as_true_curie))
+            graph.remove((s, p, o))
 
     print(f"Serializing to {output_ttl}")
     graph.serialize(

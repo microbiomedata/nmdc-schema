@@ -11,11 +11,11 @@ imports:
   - prov
 
 prefixes:
-  KEGG.COMPOUND: http://identifiers.org/kegg.compound/
+  KEGG.COMPOUND: "https://bioregistry.io/kegg.compound:"
   dcterms: http://purl.org/dc/terms/
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
 
-  UniProtKB: https://identifiers.org/uniprot/ # "UNIPROT": "http://identifiers.org/uniprot/", in https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  UniProtKB: "https://bioregistry.io/uniprot:" # https://bioregistry.io/uniprot:P0DP23
 
   biolink: https://w3id.org/biolink/vocab/
   linkml: https://w3id.org/linkml/
@@ -23,7 +23,7 @@ prefixes:
 
   qud: http://qudt.org/1.1/schema/qudt#
   schema: http://schema.org/
-  sio: http://semanticscience.org/resource/SIO_
+  SIO: http://semanticscience.org/resource/SIO_
   wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
 
 default_prefix: nmdc
@@ -700,7 +700,7 @@ slots:
       The scientific objectives associated with the entity.
       It SHOULD correspond to scientific norms for objectives field in a structured abstract.
     mappings:
-      - sio:000337
+      - SIO:000337
 
   websites:
     range: string
