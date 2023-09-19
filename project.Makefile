@@ -443,7 +443,8 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
   		--selected-collections processed_sample_set \
   		--selected-collections read_based_taxonomy_analysis_activity_set \
   		--selected-collections read_qc_analysis_activity_set \
-  		--selected-collections study_set
+  		--selected-collections study_set \
+  		--selected-collections metaproteomics_analysis_activity_set
 
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
@@ -506,8 +507,11 @@ OmicsProcessing.tsv: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
 doi_report.tsv:
 	$(RUN) get-study-doi-report
 
+# ----
 
 enchillada: squeaky-clean all test make-rdf OmicsProcessing-all
+
+# ----
 
 severe_make.log: make.log
 	egrep -v "^INFO:root:" $< > $@
@@ -541,7 +545,6 @@ problem-prefix-counts-clean:
 		counts-initial-gold-lc.txt counts-initial-gold-uc.txt \
 		counts-migrated-cas-lc.txt counts-migrated-cas-uc.txt \
 		counts-migrated-gold-lc.txt counts-migrated-gold-uc.txt
-
 
 problem-prefix-counts-all: problem-prefix-counts-clean counts-initial-cas-lc.txt counts-initial-cas-uc.txt \
 counts-initial-gold-lc.txt counts-initial-gold-uc.txt \
