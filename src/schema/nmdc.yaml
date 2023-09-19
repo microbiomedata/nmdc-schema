@@ -1375,14 +1375,16 @@ classes:
       - investigation
       - project
       - umbrella project
+      - research inititative
     description: >-
       A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.
+    comments: The Study class can include both consortia and research studies.
     alt_descriptions:
       embl.ena:
         A study (project) groups together data submitted to the archive and
         controls its release date. A study accession is typically used when citing
         data submitted to ENA
-
+    
     slots:
       - emsl_project_dois
 
@@ -1417,11 +1419,13 @@ classes:
       - funding_sources
       - gold_study_identifiers
       - has_credit_associations
+      - study_category
       - insdc_bioproject_identifiers
       - massive_study_identifiers
       - mgnify_project_identifiers
       - notes
       - objective
+      - part_of
       - principal_investigator
       - publications
       - related_identifiers
@@ -1473,12 +1477,13 @@ classes:
     #        description: The EMSL project ID that relates to the NMDC submitted study
     #      emsl_proposal_doi:
     #        description: The DOI for the EMSL awarded study that relates to the NMDC submitted study
+      part_of:
+        description: Links a study or consortium to a parent study or consortium.
+        comments: Value is the id of the parent study or consortium.
+        range: Study
     exact_mappings:
-      - SIO:001066
-      - NCIT:C63536
       - OBI:0000066
-      - ISA:Study
-    close_mappings:
+      - SIO:000747
       - NCIT:C41198
       - ISA:Investigation
     broad_mappings:
@@ -1487,6 +1492,7 @@ classes:
       - determine how to get data values for submitted_to_insdc, investigation_type,
         experimental_factor
       - project_name is redundant with name, so excluding it
+
     notes:
       - "sample GOLD link https://bioregistry.io/gold:Gs0110115"
       - "sample insdc.srs link https://www.ebi.ac.uk/ena/browser/view/PRJEB45055 ?"
@@ -2014,6 +2020,24 @@ enums:
       ANL:
         title: Argonne National Laboratory
         meaning: https://ror.org/05gvnxz63
+  
+  StudyCategoryEnum:
+    permissible_values:
+      research_study:
+        description: A detailed examination, analysis, or critical inspection of a hypothesis-driven experiment.
+        exact_mappings: 
+          - SIO:001066
+          - NCIT:C63536
+          - ISA:Study
+        close_mappings:
+          - OBI:0000355
+      consortium:
+        description: >- 
+          A group formed to undertake a venture that is beyond the capabilities of the individual members. Each member of the 
+          consortium brings a high level of expertise in a specific area to ensure the successful completion of the project.
+        comments: A consortium has collections of data, those data do not come from a hypothesis-driven experiment.
+        exact_mappings: 
+          - NCIT:C61538
 
 slots:
 
@@ -2354,6 +2378,9 @@ slots:
       investigator role... do we need to define the OBI prefix?
     required: true
   #    slot_uri: prov:agent
+  study_category:
+    description: The type of research initiative
+    range: StudyCategoryEnum
 
   object_set:
     mixin: true
