@@ -53,12 +53,10 @@ slots:
     is_a: external_database_identifiers
     description: >-
       A list of identifiers that relate the biosample to records in the IMG database.
-    #    multivalued: true
     todos:
       - add is_a or mixin modeling, like other external_database_identifiers
       - what class would IMG records belong to?! Are they Studies, Biosamples, or something else?
     pattern: '^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$' # DOI-like pattern. Could be more conservative if we leave this out of the external_database_identifiers hierarchy
-  #    range: external_identifier # or uriorcurie directly, as opposed to by-type-inheritance
 
   # mixins
 
@@ -232,8 +230,6 @@ slots:
   #      - emsl_identifiers
   #    title: EMSL Proposal Identifier
   #    description: The proposal number assigned to the EMSL awarded study that relates to that which is represented in NMDC.
-
-  # moving emsl_project_dois from external_identifiers.yaml to nmdc.yaml and re-rooting in `dois` with new pattern
 
   ## samples
 

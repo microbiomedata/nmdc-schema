@@ -31,6 +31,7 @@ rdf-clean:
 	rm -rf \
 		OmicsProcessing.rq \
 		local/mongo_as_nmdc_database.ttl \
+		local/mongo_as_nmdc_database_cuire_repaired.ttl \
 		local/mongo_as_nmdc_database_rdf_safe.yaml \
 		local/mongo_as_nmdc_database_validation.log \
 		local/mongo_as_unvalidated_nmdc_database.yaml
@@ -416,9 +417,32 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepti
 
 make-rdf: rdf-clean local/mongo_as_nmdc_database_validation.log local/mongo_as_nmdc_database_cuire_repaired.ttl
 
+temp:
+
 #   		--selected-collections functional_annotation_agg \ # huge, no publically avaiaible reference data (kegg)
 #   		--selected-collections metaproteomics_analysis_activity_set \ # next slowest
 
+#    		--selected-collections biosample_set \
+#     		--selected-collections data_object_set \
+#    		--selected-collections extraction_set \
+#    		--selected-collections field_research_site_set \
+#    		--selected-collections library_preparation_set \
+#    		--selected-collections mags_activity_set \
+#    		--selected-collections metabolomics_analysis_activity_set \
+#    		--selected-collections metagenome_annotation_activity_set \
+#    		--selected-collections metagenome_assembly_set \
+#    		--selected-collections metagenome_sequencing_activity_set  \
+#    		--selected-collections metatranscriptome_activity_set \
+#    		--selected-collections nom_analysis_activity_set \
+#    		--selected-collections omics_processing_set \
+#    		--selected-collections pooling_set \
+#    		--selected-collections processed_sample_set \
+#    		--selected-collections read_based_taxonomy_analysis_activity_set \
+#    		--selected-collections read_qc_analysis_activity_set \
+#    		--selected-collections study_set
+
+# nom_analysis_activity_set
+# used
 
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
@@ -427,24 +451,24 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--output-yaml $@ \
 		--page-size 10000 \
 		--selected-collections biosample_set \
-  		--selected-collections data_object_set \
-  		--selected-collections extraction_set \
-  		--selected-collections field_research_site_set \
-  		--selected-collections library_preparation_set \
-  		--selected-collections mags_activity_set \
-  		--selected-collections metabolomics_analysis_activity_set \
-  		--selected-collections metagenome_annotation_activity_set \
-  		--selected-collections metagenome_assembly_set \
-  		--selected-collections metagenome_sequencing_activity_set  \
-  		--selected-collections metatranscriptome_activity_set \
-  		--selected-collections nom_analysis_activity_set \
-  		--selected-collections omics_processing_set \
-  		--selected-collections pooling_set \
-  		--selected-collections processed_sample_set \
-  		--selected-collections read_based_taxonomy_analysis_activity_set \
-  		--selected-collections read_qc_analysis_activity_set \
-  		--selected-collections study_set \
-  		--selected-collections metaproteomics_analysis_activity_set
+		--selected-collections data_object_set \
+		--selected-collections extraction_set \
+		--selected-collections field_research_site_set \
+		--selected-collections library_preparation_set \
+		--selected-collections mags_activity_set \
+		--selected-collections metabolomics_analysis_activity_set \
+		--selected-collections metagenome_annotation_activity_set \
+		--selected-collections metagenome_assembly_set \
+		--selected-collections metagenome_sequencing_activity_set  \
+		--selected-collections metatranscriptome_activity_set \
+		--selected-collections nom_analysis_activity_set \
+		--selected-collections omics_processing_set \
+		--selected-collections pooling_set \
+		--selected-collections processed_sample_set \
+		--selected-collections read_based_taxonomy_analysis_activity_set \
+		--selected-collections read_qc_analysis_activity_set \
+		--selected-collections study_set
+
 
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set

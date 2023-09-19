@@ -16,16 +16,14 @@ imports:
 #  - nmdc
 
 prefixes:
-  CHEBI: http://purl.obolibrary.org/obo/CHEBI_ # in https://github.com/prefixcommons/biocontext/blob/master/registry/obo_context.jsonld
-  CHMO: http://purl.obolibrary.org/obo/CHMO_ # in https://github.com/prefixcommons/biocontext/blob/master/registry/obo_context.jsonld
-  OBI: http://purl.obolibrary.org/obo/OBI_ # in https://github.com/prefixcommons/biocontext/blob/master/registry/obo_context.jsonld
-
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
+  CHMO: http://purl.obolibrary.org/obo/CHMO_
+  OBI: http://purl.obolibrary.org/obo/OBI_
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
 
 default_prefix: nmdc
 default_range: string
-
 
 enums:
   ContainerTypeEnum:
@@ -146,6 +144,8 @@ slots:
     inlined: true
   collected_into:
     title: collected into
+    range: MaterialContainer
+    inlined: true
 
   sampling_method:
     title: sampling method
@@ -159,6 +159,8 @@ slots:
     inlined: true
   reaction_temperature:
   reaction_time:
+    range: QuantityValue
+    inlined: true
 
 
 classes:
@@ -177,11 +179,9 @@ classes:
       material_input:
         examples:
           - value: somextract:6
-        range: MaterialSample
       material_output:
         examples:
           - value: somextract:7
-        range: MaterialSample
     class_uri: CHMO:0002773
   LabDevice:
     title: Lab device
@@ -225,8 +225,6 @@ classes:
       collected_into:
         aliases:
           - weighing-activity.contanier
-        range: MaterialContainer
-        inlined: true
       #      biosample_input:
       #        examples:
       #          - value: soil:1
@@ -237,8 +235,6 @@ classes:
           - value: somextract:6
         aliases:
           - weighing-activity.id
-        range: MaterialSample
-      sampling_method:
     class_uri: OBI:0000744
 
   ReactionActivity:
@@ -252,13 +248,7 @@ classes:
       - reaction_temperature
       - reaction_time
     slot_usage:
-      material_input:
-        range: MaterialSample
-      material_output:
-        range: MaterialSample
       reaction_time:
         todos:
           - constrain units
           - align with activity_time
-        range: QuantityValue
-        inlined: true

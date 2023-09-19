@@ -6,7 +6,6 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 
 notes:
   - "should type be required for WorkflowExecutionActivity ?  What would the range be ?"
-  - "changed misspelled schema name and title to 'Execution'"
 
 imports:
   - external_identifiers
@@ -46,15 +45,8 @@ classes:
       - part_of
       - type
       - version
-    notes:
-      - MAM I don't think this is a reasonable override of the global range of Agent, but commenting that line out does not, on its own, fix the conversion to SQLite
-      - "inlining of was_associated_with values allows for collections (strings?) of WorkflowExecutionActivity id values"
 
     slot_usage:
-      #      was_associated_with:
-      #        description: >-
-      #          the agent/entity associated with the generation of the file
-      #        range: WorkflowExecutionActivity
       started_at_time:
         required: true
       ended_at_time:
@@ -65,13 +57,10 @@ classes:
         required: true
       has_output:
         required: true
-      #      was_informed_by:
-      #        required: true
       execution_resource:
         required: true
       type:
         required: true
-      version:
       id:
         required: true
         structured_pattern:
@@ -235,7 +224,6 @@ classes:
     is_a: WorkflowExecutionActivity
     in_subset:
       - workflow subset
-    slots: [ ]
     slot_usage:
       id:
         required: true
@@ -290,10 +278,6 @@ classes:
       - has_calibration
       - has_metabolite_quantifications
     slot_usage:
-      #      used:
-      #        range: Instrument
-      #        description: >-
-      #          The instrument used to collect the data used in the analysis
       id:
         required: true
         structured_pattern:
@@ -308,9 +292,8 @@ classes:
       - has_peptide_quantifications
     slot_usage:
       used:
-      #        range: Instrument
-      #        description: >-
-      #          The instrument used to collect the data used in the analysis
+        range: Instrument
+        description: The instrument used to collect the data used in the analysis
       id:
         required: true
         structured_pattern:
@@ -325,9 +308,9 @@ classes:
       - has_calibration
     slot_usage:
       used:
-      #        range: Instrument
-      #        description: >-
-      #          The instrument used to collect the data used in the analysis
+        range: string
+        #        range: Instrument
+        description: The instrument used to collect the data used in the analysis
       id:
         required: true
         structured_pattern:
@@ -337,7 +320,8 @@ classes:
 
 slots:
 
-  metagenome_assembly_parameter: { }
+  metagenome_assembly_parameter:
+    abstract: true
 
   has_peptide_quantifications:
     range: PeptideQuantification
@@ -505,7 +489,8 @@ slots:
       The sequence count number of input reads aligned to assembled contigs.
     range: float
 
-  read_qc_analysis_statistic: { }
+  read_qc_analysis_statistic:
+    abstract: true
 
   mags_list:
     range: MagBin

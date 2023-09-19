@@ -186,11 +186,14 @@ classes:
 
     slot_usage:
       date_created:
-        description: TODO
+        todos:
+          - description
       etl_software_version:
-        description: TODO
+        todos:
+          - description
       metatranscriptome_activity_set:
-        description: TODO
+        todos:
+          - description
 
   Pooling:
     is_a: BiosampleProcessing # from core.yaml
@@ -310,7 +313,6 @@ classes:
     slot_usage:
       has_input:
         range: Site
-        #        range: NamedThing
         required: true
       has_output:
         range: Biosample
@@ -1099,6 +1101,7 @@ classes:
           - Please use https://www.advancedconverter.com/map-tools/find-altitude-by-coordinates, if needed, to help estimate the elevation based on latitude and longitude coordinates.
         examples:
           value: 100
+
       oxy_stat_samp:
         range: oxy_stat_samp_enum
 
@@ -1108,12 +1111,14 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+
       gold_biosample_identifiers:
         description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
         comments: This is the ID provided by GOLD that starts with 'GB'
         annotations:
           display_hint: Provide the GOLD biosample IDs associated with this biosample.
         range: uriorcurie
+
       alternative_identifiers:
         description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
 
@@ -1132,6 +1137,7 @@ classes:
       part_of:
         required: true
         range: Study
+
       fire:
         comments:
           - Provide the date the fire occurred. If extended burning occurred provide the date range.
@@ -1180,7 +1186,7 @@ classes:
         examples:
           - value: 10%
           - value: 10 %
-          - value: 0.10
+          - value: '0.10'
         todos:
           - Slope is a percent. How does the validation work? Check to correct examples
       al_sat:
@@ -1473,10 +1479,10 @@ classes:
         description: Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.
         annotations:
           display_hint: Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title.
-    #      emsl_project_identifier:
-    #        description: The EMSL project ID that relates to the NMDC submitted study
-    #      emsl_proposal_doi:
-    #        description: The DOI for the EMSL awarded study that relates to the NMDC submitted study
+      #      emsl_project_identifier:
+      #        description: The EMSL project ID that relates to the NMDC submitted study
+      #      emsl_proposal_doi:
+      #        description: The DOI for the EMSL awarded study that relates to the NMDC submitted study
       part_of:
         description: Links a study or consortium to a parent study or consortium.
         comments: Value is the id of the parent study or consortium.
@@ -2025,18 +2031,18 @@ enums:
     permissible_values:
       research_study:
         description: A detailed examination, analysis, or critical inspection of a hypothesis-driven experiment.
-        exact_mappings: 
+        exact_mappings:
           - SIO:001066
           - NCIT:C63536
           - ISA:Study
         close_mappings:
           - OBI:0000355
       consortium:
-        description: >- 
+        description: >-
           A group formed to undertake a venture that is beyond the capabilities of the individual members. Each member of the 
           consortium brings a high level of expertise in a specific area to ensure the successful completion of the project.
         comments: A consortium has collections of data, those data do not come from a hypothesis-driven experiment.
-        exact_mappings: 
+        exact_mappings:
           - NCIT:C61538
 
 slots:

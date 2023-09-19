@@ -1,8 +1,7 @@
 id: https://w3id.org/nmdc/prov
 name: NMDC-PROV
 title: NMDC Rendering of prov schema
-description: >-
-  See https://www.w3.org/TR/prov-o/
+description: See https://www.w3.org/TR/prov-o/
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -11,7 +10,6 @@ imports:
 
 prefixes:
   prov: http://www.w3.org/ns/prov#
-
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
 
@@ -28,7 +26,6 @@ classes:
       - started_at_time
       - ended_at_time
       - was_informed_by
-      #      - was_associated_with
       - used
     notes:
       - removed was_associated_with because we are trying to avoid instantiating id-less Agents
@@ -40,14 +37,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:act-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-
-#  Agent:
-#    description: "a provence-generating agent"
-#    slots:
-#      - acted_on_behalf_of
-#      - was_informed_by
-#    mappings:
-#      - prov:Agent
 
 slots:
 
@@ -73,16 +62,6 @@ slots:
     range: Activity
     mappings:
       - prov:wasInformedBy
-
-  #  was_associated_with:
-  #    range: Agent
-  #    mappings:
-  #      - prov:wasAssociatedWith
-
-  #  acted_on_behalf_of:
-  #    range: Agent
-  #    mappings:
-  #      - prov:actedOnBehalfOf
 
   was_generated_by:
     range: Activity
