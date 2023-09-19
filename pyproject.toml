@@ -31,7 +31,8 @@ classifiers = [
 linkml = "^1.5.6"
 linkml-runtime = "^1.5.4"
 python = "^3.9"
-ppprint = "^0.1.0"
+#ppprint = "^0.1.0"
+click-log = "^0.4.0"
 
 [tool.poetry.group.dev.dependencies] # are some of these actually required as non-dev dependencies?
 black = "^23.1.0"
