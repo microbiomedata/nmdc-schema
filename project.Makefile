@@ -461,7 +461,8 @@ local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_l
 local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
 	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-convert --output $@ --schema $^
-	time riot --validate $@ # < 1 minute
+	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
+	- riot --validate $@ # < 1 minute
 	# WARNING: java.io.tmpdir directory does not exist
 
 # todo: still getting anyurl typed string statement objects in RDF. I added a workarround in anyuri-strings-to-iris
@@ -473,10 +474,7 @@ local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.tt
 		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
 		--emsl-biosample-uuid-replacement emsl_biosample_uuid_like \
 		--output-ttl $@
-	# todo: CANT SEEM TO GET RIOT TO COMPLETE WITHOUT
-	#/bin/sh: /Users/MAM: is a directory
-	#make: *** [local/mongo_as_nmdc_database_cuire_repaired.ttl] Error 126
-	#	~ riot --validate $@ # < 1 minute
+	- riot --validate $@ # < 1 minute
 	date
 
 # ----
