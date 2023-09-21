@@ -33,7 +33,7 @@ class Migrator:
     #         del retrieved_study["doi"]
     #     return retrieved_study
 
-    def migrate_extractions_7_8_0_to_NEXT(self, retrieved_extraction):
+    def migrate_extractions_7_8_0_to_8_0_0(self, retrieved_extraction):
         logger.info(f"Starting migration of {retrieved_extraction['id']}")
 
         # change slot name from sample_mass to input_mass
@@ -41,7 +41,7 @@ class Migrator:
             retrieved_extraction['input_mass'] = retrieved_extraction.pop('sample_mass')
         return retrieved_extraction
 
-    def migrate_uc_gold_sequencing_project_identifiers_7_8_0_to_NEXT(self, retrieved_omics_processing):
+    def migrate_uc_gold_sequencing_project_identifiers_7_8_0_to_8_0_0(self, retrieved_omics_processing):
 
         migrated_gold_identifiers = []
         if "gold_sequencing_project_identifiers" in retrieved_omics_processing and retrieved_omics_processing[
@@ -60,7 +60,7 @@ class Migrator:
 
         return retrieved_omics_processing
 
-    def migrate_uc_gold_biosample_identifiers_7_8_0_to_NEXT(self, retrieved_biosample):
+    def migrate_uc_gold_biosample_identifiers_7_8_0_to_8_0_0(self, retrieved_biosample):
 
         # todo refactor? this shouldn't be long-lived code
 
@@ -81,7 +81,7 @@ class Migrator:
 
         return retrieved_biosample
 
-    def migrate_uc_gold_study_identifiers_7_8_0_to_NEXT(self, retrieved_study):
+    def migrate_uc_gold_study_identifiers_7_8_0_to_8_0_0(self, retrieved_study):
 
         # todo refactor? this shouldn't be long-lived code
 
@@ -201,19 +201,19 @@ def main(schema_path, input_path, output_path, salvage_prefix):
         if tdk == "extraction_set":
             logger.info(f"Starting {tdk}-specific migrations")
             for current_extraction in tdv:
-                migrator.migrate_extractions_7_8_0_to_NEXT(current_extraction)
+                migrator.migrate_extractions_7_8_0_to_8_0_0(current_extraction)
         if tdk == "omics_processing_set":
             logger.info(f"Starting {tdk}-specific migrations")
             for current_omics_processing in tdv:
-                migrator.migrate_uc_gold_sequencing_project_identifiers_7_8_0_to_NEXT(current_omics_processing)
+                migrator.migrate_uc_gold_sequencing_project_identifiers_7_8_0_to_8_0_0(current_omics_processing)
         if tdk == "biosample_set":
             logger.info(f"Starting {tdk}-specific migrations")
             for current_biosample in tdv:
-                migrator.migrate_uc_gold_biosample_identifiers_7_8_0_to_NEXT(current_biosample)
+                migrator.migrate_uc_gold_biosample_identifiers_7_8_0_to_8_0_0(current_biosample)
         if tdk == "study_set":
             logger.info(f"Starting {tdk}-specific migrations")
             for current_study in tdv:
-                migrator.migrate_uc_gold_study_identifiers_7_8_0_to_NEXT(current_study)
+                migrator.migrate_uc_gold_study_identifiers_7_8_0_to_8_0_0(current_study)
 
     logger.info(f"Saving migrated data to {output_path}")
     with open(output_path, "w") as f:
