@@ -18,7 +18,7 @@ biosample_set:
       id: ENVO:00005792
   type: nmdc:Biosample
   gold_biosample_identifiers:
-  - GOLD:Gb0101224
+  - gold:Gb0101224
   ecosystem: Environmental
   ecosystem_category: Aquatic
   ecosystem_subtype: Groundwater
@@ -64,7 +64,7 @@ biosample_set:
   - LTER
   - SIP
   gold_biosample_identifiers:
-  - GOLD:Gb0101224
+  - gold:Gb0101224
   ecosystem: Environmental
   ecosystem_category: Aquatic
   ecosystem_subtype: Groundwater
@@ -107,7 +107,7 @@ biosample_set:
       id: ENVO:00005792
   type: nmdc:Biosample
   gold_biosample_identifiers:
-  - GOLD:Gb0101225
+  - gold:Gb0101225
   ecosystem: Environmental
   ecosystem_category: Aquatic
   ecosystem_subtype: Groundwater
@@ -150,7 +150,7 @@ biosample_set:
       id: ENVO:00005792
   type: nmdc:Biosample
   gold_biosample_identifiers:
-  - GOLD:Gb0101226
+  - gold:Gb0101226
   ecosystem: Environmental
   ecosystem_category: Aquatic
   ecosystem_subtype: Groundwater

@@ -13,13 +13,14 @@ nmdc:sty-99-FkQIsc a nmdc:Study ;
     nmdc:ecosystem_subtype "Wetlands" ;
     nmdc:ecosystem_type "Soil" ;
     nmdc:gnps_task_identifiers "gnps.task:4b848c342a4f4abc871bdf8a09a60807"^^xsd:anyURI ;
-    nmdc:gold_study_identifiers "GOLD:Gs0128849"^^xsd:anyURI ;
+    nmdc:gold_study_identifiers "gold:Gs0128849"^^xsd:anyURI ;
     nmdc:name "Permafrost microbial communities from Stordalen Mire, Sweden" ;
     nmdc:principal_investigator [ a nmdc:PersonValue ;
             nmdc:has_raw_value "Virginia Rich" ] ;
     nmdc:publication_dois "doi:10.1016/j.foodchem.2008.11.065"^^xsd:anyURI,
         "doi:10.21/FQSQT4T3"^^xsd:anyURI ;
     nmdc:specific_ecosystem "Permafrost" ;
+    nmdc:study_category "research_study" ;
     nmdc:type "nmdc:Study" .
 
 [] a nmdc:Database ;

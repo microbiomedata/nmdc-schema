@@ -1,5 +1,5 @@
-@prefix GOLD: <http://identifiers.org/gold/> .
-@prefix jgi: <http://example.com/jgi/> .
+@prefix gold: <https://bioregistry.io/gold:> .
+@prefix jgi: <http://example.org/jgi/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -19,5 +19,5 @@ nmdc:wfrqc-99-ABCDEF a nmdc:ReadQcAnalysisActivity ;
     nmdc:output_read_count "3.0"^^xsd:float ;
     nmdc:started_at_time "2021-08-05T14:48:51+00:00" ;
     nmdc:type "type1" ;
-    nmdc:was_informed_by GOLD:Gp0061273 .
+    nmdc:was_informed_by gold:Gp0061273 .
 

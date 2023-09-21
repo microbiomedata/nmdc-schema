@@ -1,5 +1,5 @@
-@prefix GOLD: <http://identifiers.org/gold/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix gold: <https://bioregistry.io/gold:> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
 
 nmdc:wfmsa-99-qwertyuiop a nmdc:MetagenomeSequencingActivity ;
@@ -13,7 +13,7 @@ nmdc:wfmsa-99-qwertyuiop a nmdc:MetagenomeSequencingActivity ;
     nmdc:started_at_time "2021-08-05T14:48:51+00:00" ;
     nmdc:type "nmdc:MetagenomeSequencing" ;
     nmdc:version "v1.0.0" ;
-    nmdc:was_informed_by GOLD:Gp0213371 .
+    nmdc:was_informed_by gold:Gp0213371 .
 
 [] a nmdc:Database ;
     nmdc:metagenome_sequencing_activity_set nmdc:wfmsa-99-qwertyuiop .

@@ -13,7 +13,8 @@ study_set:
   ecosystem_subtype: Wetlands
   ecosystem_type: Soil
   gold_study_identifiers:
-  - GOLD:Gs0128849
+  - gold:Gs0128849
+  study_category: research_study
   principal_investigator:
     has_raw_value: Virginia Rich
   specific_ecosystem: Permafrost
