@@ -1,13 +1,14 @@
 import json
 import os
+import pprint
 import re
 from io import StringIO
 
 import click
+import curies
 import pandas as pd
 # import sparql_dataframe # copied and pasted, for addition of low_memory=False
 from SPARQLWrapper import SPARQLWrapper, CSV, SELECT, POST, POSTDIRECTLY
-from curies import Converter
 from linkml_runtime import SchemaView
 
 from SPARQLBurger.SPARQLQueryBuilder import *
@@ -15,36 +16,16 @@ from SPARQLBurger.SPARQLQueryBuilder import *
 pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 
+
 # todo unpack bank node objects RECURSIVELY
 # todo https://w3id.org/mixs/ or https://w3id.org/mixs-6-2-rc/ ?
 # todo support for MULTIPLE constraints
-# todo make the extra prefix definitions click options, directly or via a config file
 # todo (manually) be on the lookout for "http" or GraphDB's default blank node prefix: "_:genid-" in the output (TSV)
 #  suggests that more prefix definitions are needed
-# todo including a lot of prefixes that won't be used
+# todo may add a lot of prefixes that won't be used
 
 # todo reuse code already in this script
 # todo don't assume optional or multivalued
-
-supplementary_prefix_maps = {
-    "BIOSAMPLE": "https://example.org/biosample/",
-    "ENVO": "http://purl.obolibrary.org/obo/ENVO_",
-    "GOLD": 'http://identifiers.org/gold/',
-    "GOLD2": "https://example.org/gold/",
-    "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_",
-    "doi2": "https://example.org/doi/",
-    "doi3": "https://doi.org/",
-    "img.taxon": "https://example.org/img.taxon/",
-}
-
-overwrite_prefix_maps = {
-    "MASSIVE": "https://bioregistry.io/reference/massive:",
-    # todo bioregistry and idot? prefer lowercase prefixes
-    "SIO": "http://example.com/sio_lowercase:",
-    "doi": "https://bioregistry.io/reference/doi:",
-    "sio": "https://bioregistry.io/reference/sio:",
-    # todo The DOI resolution factsheet specifies that https://doi.org/DOI is the preferred format:
-}
 
 
 def replace_colons_and_whitespace(any_string):
@@ -113,7 +94,7 @@ class LinkMLClassSparqlQuery:
                  concatenation_suffix,
                  do_not_query,
                  graph_name,  # not being used by sparqlburger ?
-                 prefix_maps_json,
+                 jsonld_context_jsons,
                  schema_file,
                  sparql_endpoint,
                  target_class_name,
@@ -132,8 +113,7 @@ class LinkMLClassSparqlQuery:
         self.graph_name = graph_name
         self.groupers = []
         self.make_distinct = make_distinct
-        self.prefix_maps_json = prefix_maps_json
-        self.prefixes_string = ""
+        self.jsonld_context_jsons = jsonld_context_jsons
         self.schema_file = schema_file
         self.select_line = []
         self.slot_dict = {}
@@ -145,8 +125,14 @@ class LinkMLClassSparqlQuery:
         self.target_p_o_constraint = target_p_o_constraint
 
     def get_class_slot_usage(self, class_name):
+        # todo add prefixes
+        #  loop over self.converter
+        prefix_lines = []
+        for pref_k, expansion_v in self.converter.prefix_map.items():
+            prefix_lines.append(f"PREFIX {pref_k}: <{expansion_v}>")
+        prefix_block = "\n".join(prefix_lines)
         class_slot_usage_query = f"""
-        \n{self.prefixes_string}\n
+        {prefix_block}
         select ?p (count(?{class_name}) as ?count) 
         where  {{ 
           ?{class_name} a nmdc:{class_name} ; 
@@ -195,26 +181,28 @@ class LinkMLClassSparqlQuery:
             return any_url
 
     def populate_prefix_maps(self):
-        with open(self.prefix_maps_json, "r") as f:
-            raw_prefixmaps_dict = json.load(f)
 
-        filtered_prefixmaps_dict = {}
-        for pk, pv in raw_prefixmaps_dict.items():
-            if type(pv) == str:
-                filtered_prefixmaps_dict[pk] = pv
+        # https://curies.readthedocs.io/en/latest/tutorial.html#loading-a-context
 
-        for sk, sv in overwrite_prefix_maps.items():
-            filtered_prefixmaps_dict[sk] = sv
+        # this could be simplified and can explicitly handle upper/lower case prefixes
+        # https://curies.readthedocs.io/en/latest/tutorial.html#standardization
+        # we're not using rdflib here, but for future reference
+        # https://curies.readthedocs.io/en/latest/tutorial.html#integrating-with-rdflib
+        # also
+        # https://pypi.org/project/SPARQL-Burger/
+        #   select_query.add_prefix
 
-        for sk, sv in supplementary_prefix_maps.items():
-            filtered_prefixmaps_dict[sk] = sv
+        for_chaining = []
+        for jsonld_context_json in self.jsonld_context_jsons:
+            print(f"Loading prefixes from {jsonld_context_json}")
+            with open(jsonld_context_json) as json_file:
+                temp_dict = json.load(json_file)
+            if '@context' in temp_dict and '@vocab' in temp_dict['@context']:
+                del temp_dict['@context']['@vocab']
+            temp_context = curies.load_jsonld_context(temp_dict)
+            for_chaining.append(temp_context)
 
-        self.converter = Converter.from_prefix_map(filtered_prefixmaps_dict)
-
-        prefixes_list = []
-        for k, v in filtered_prefixmaps_dict.items():
-            prefixes_list.append(f"PREFIX {k}: <{v}>")
-        self.prefixes_string = "\n".join(prefixes_list)
+        self.converter = curies.chain(for_chaining)
 
     def characterize_slot(self, slot_name, all_usage=None):
         local_schema_view = self.schema_view
@@ -386,7 +374,13 @@ class QueryException(Exception):
 @click.option("--do-not-query", multiple=True)
 @click.option("--graph-name", default="mongodb://mongo-loadbalancer.nmdc.production.svc.spin.nersc.gov:27017")
 @click.option("--make-distinct", is_flag=True)
-@click.option("--prefix-maps-json", default="project/prefixmap/nmdc.json")
+@click.option(
+    "-p",
+    "--jsonld-context-jsons",
+    multiple=True,
+    required=False,
+    type=click.Path(dir_okay=False),
+)
 @click.option("--query-file", help="Optional SPARQL query file. Bypasses class-based query building.")
 @click.option("--schema-file", default="nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml")
 @click.option("--sparql-endpoint", default="https://graphdb-dev.microbiomedata.org/repositories/nmdc-metadata")
@@ -399,12 +393,12 @@ def main(
         do_not_query,
         graph_name,
         make_distinct,
-        prefix_maps_json,
         query_file,
         schema_file,
         sparql_endpoint,
         target_class_name,
         target_p_o_constraint,
+        jsonld_context_jsons,
 ):
     # SETUP
     query_support = LinkMLClassSparqlQuery(
@@ -413,8 +407,7 @@ def main(
         do_not_query=do_not_query,
         graph_name=graph_name,  # sparql burger is not named graph aware
         make_distinct=make_distinct,  # sparql burger mode is not using this but could
-        prefix_maps_json=prefix_maps_json,
-        # could also get prefixes from schemaview? but this could make things faster for query file mode
+        jsonld_context_jsons=jsonld_context_jsons,
         schema_file=schema_file,  # todo decouple schemaview construction for sake of bquery_file mode?
         sparql_endpoint=sparql_endpoint,
         target_class_name=target_class_name,

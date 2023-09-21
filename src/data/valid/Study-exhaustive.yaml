@@ -8,8 +8,8 @@ related_identifiers: any string R1
 #  - generic:abc1
 #emsl_proposal_doi: any string
 gold_study_identifiers:
-  - GOLD:Gs12345
-  - GOLD:Gs90909
+  - gold:Gs12345
+  - gold:Gs90909
 mgnify_project_identifiers:
   - mgnify.proj:ABC123
 ecosystem: unconstrained text. should be validated against the controlled vocabulary,
