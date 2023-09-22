@@ -31,7 +31,7 @@ nmdc:bsm-99-BdlWdQ a nmdc:Biosample ;
             nmdc:has_raw_value "ENVO:00005792" ;
             nmdc:term ENVO:00005792 ] ;
     nmdc:collected_from nmdc:frsite-99-SPreao ;
-    nmdc:gold_biosample_identifiers "GOLD:Gb0291692"^^xsd:anyURI ;
+    nmdc:gold_biosample_identifiers "gold:Gb0291692"^^xsd:anyURI ;
     nmdc:name "Rhizosphere soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL1_35_33" .
 
 nmdc:bsm-99-J9FcnC a nmdc:Biosample ;
@@ -47,7 +47,7 @@ nmdc:bsm-99-J9FcnC a nmdc:Biosample ;
             nmdc:has_raw_value "ENVO:00005792" ;
             nmdc:term ENVO:00005792 ] ;
     nmdc:collected_from nmdc:frsite-99-SPreao ;
-    nmdc:gold_biosample_identifiers "GOLD:Gb0305833"^^xsd:anyURI ;
+    nmdc:gold_biosample_identifiers "gold:Gb0305833"^^xsd:anyURI ;
     nmdc:name "Root microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL1_35_33 endosphere" .
 
 nmdc:bsm-99-P8FdpS a nmdc:Biosample ;
@@ -63,7 +63,7 @@ nmdc:bsm-99-P8FdpS a nmdc:Biosample ;
             nmdc:has_raw_value "ENVO:00005792" ;
             nmdc:term ENVO:00005792 ] ;
     nmdc:collected_from nmdc:frsite-99-h2mYFG ;
-    nmdc:gold_biosample_identifiers "GOLD:Gb0305834"^^xsd:anyURI ;
+    nmdc:gold_biosample_identifiers "gold:Gb0305834"^^xsd:anyURI ;
     nmdc:name "Root microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL2_39_29 endosphere" .
 
 nmdc:bsm-99-tN5lxM a nmdc:Biosample ;
@@ -79,7 +79,7 @@ nmdc:bsm-99-tN5lxM a nmdc:Biosample ;
             nmdc:has_raw_value "ENVO:00005792" ;
             nmdc:term ENVO:00005792 ] ;
     nmdc:collected_from nmdc:frsite-99-h2mYFG ;
-    nmdc:gold_biosample_identifiers "GOLD:Gb0291583"^^xsd:anyURI ;
+    nmdc:gold_biosample_identifiers "gold:Gb0291583"^^xsd:anyURI ;
     nmdc:name "Bulk soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL2_39_29" .
 
 nmdc:bsm-99-ugBwz3 a nmdc:Biosample ;
@@ -95,7 +95,7 @@ nmdc:bsm-99-ugBwz3 a nmdc:Biosample ;
             nmdc:has_raw_value "ENVO:00005792" ;
             nmdc:term ENVO:00005792 ] ;
     nmdc:collected_from nmdc:frsite-99-h2mYFG ;
-    nmdc:gold_biosample_identifiers "GOLD:Gb0291693"^^xsd:anyURI ;
+    nmdc:gold_biosample_identifiers "gold:Gb0291693"^^xsd:anyURI ;
     nmdc:name "Rhizosphere soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL2_39_29" .
 
 nmdc:bsm-99-vn74Wq a nmdc:Biosample ;
@@ -111,7 +111,7 @@ nmdc:bsm-99-vn74Wq a nmdc:Biosample ;
             nmdc:has_raw_value "ENVO:00005792" ;
             nmdc:term ENVO:00005792 ] ;
     nmdc:collected_from nmdc:frsite-99-SPreao ;
-    nmdc:gold_biosample_identifiers "GOLD:Gb0291582"^^xsd:anyURI ;
+    nmdc:gold_biosample_identifiers "gold:Gb0291582"^^xsd:anyURI ;
     nmdc:name "Bulk soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL1_35_33" .
 
 nmdc:frsite-99-SPreao a nmdc:FieldResearchSite ;

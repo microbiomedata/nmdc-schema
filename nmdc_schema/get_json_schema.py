@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-A simple script to show how to retrive the jsonschema from the nmdc-schema library.
+A simple script to show how to retrieve the jsonschema from the nmdc-schema library.
 """
 if __name__ == "__main__":
     from nmdc_schema.validate_nmdc_json import get_nmdc_schema

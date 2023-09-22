@@ -1,31 +1,63 @@
 ## Add your own custom Makefile targets here
+
+RIOT=~/apache-jena/bin/riot
 RUN=poetry run
 
 SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
 SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 
-.PHONY: mixs_deepdiff shuttle_cleanup
+.PHONY: OmicsProcessing-clean accepting-legacy-ids-all accepting-legacy-ids-clean \
+dump-validate-report-convert-mongodb examples-clean linkml-validate-mongodb mixs-yaml-clean mixs-deepdiff \
+mongodb-clean rdf-clean shuttle-clean squeaky-clean
 
-src/schema/mixs.yaml: shuttle_cleanup local/mixs_regen/mixs_subset_modified_inj_land_use.yaml
-	mv $(word 2,$^) $@
-	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
+OmicsProcessing-clean:
+	rm -rf OmicsProcessing.tsv
+	rm -rf OmicsProcessing-to-catted-Biosamples.tsv
 
-shuttle_cleanup:
+accepting-legacy-ids-clean:
+	rm -rf nmdc_schema/nmdc_schema_accepting_legacy_ids*
+
+examples-clean:
+	rm -rf examples/output
+
+mixs-yaml-clean:
+	rm -rf src/schema/mixs.yaml
+	rm -rf local/mixs_regen/mixs_subset_modified.yaml
+
+mongodb-clean:
+	date
+	rm -rf local/mongo_as_nmdc_database*
+	rm -rf local/mongo_as_unvalidated_nmdc_database.yaml
+
+rdf-clean:
+	rm -rf \
+		OmicsProcessing.rq \
+		local/mongo_as_nmdc_database.ttl \
+		local/mongo_as_nmdc_database_cuire_repaired.ttl \
+		local/mongo_as_nmdc_database_rdf_safe.yaml \
+		local/mongo_as_nmdc_database_validation.log \
+		local/mongo_as_unvalidated_nmdc_database.yaml
+
+shuttle-clean:
 	rm -rf local/mixs_regen/import_slots_regardless_gen.tsv
 	rm -rf local/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv
 	rm -rf local/mixs_regen/mixs_slots_associated_with_biosample_omics_processing_augmented.tsv
 	rm -rf local/mixs_regen/mixs_slots_used_in_schema.tsv
 	rm -rf local/mixs_regen/mixs_subset.yaml
-	rm -rf local/mixs_regen/mixs_subset_modified.yaml
+	#rm -rf local/mixs_regen/mixs_subset_modified.yaml # triggers complete regeneration
 	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
 	rm -rf local/mixs_regen/mixs_subset_repaired.yaml
 	rm -rf local/mixs_regen/mixs_subset_repaired.yaml.bak
 	rm -rf local/mixs_regen/slots_associated_with_biosample.tsv
 	rm -rf local/mixs_regen/slots_associated_with_biosample_omics_processing.tsv
 	rm -rf local/mixs_regen/slots_associated_with_omics_processing.tsv
-	rm -rf src/schema/mixs.yaml
 	mkdir -p local/mixs_regen
 	touch local/mixs_regen/.gitkeep
+
+
+src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_subset_modified_inj_land_use.yaml
+	mv $(word 2,$^) $@
+	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
 
 local/mixs_regen/slots_associated_with_biosample.tsv:
 	yq '.classes.Biosample.slots.[]' src/schema/nmdc.yaml | sort | cat > $@
@@ -40,13 +72,13 @@ local/mixs_regen/slots_associated_with_omics_processing.tsv
 
 local/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv: \
 local/mixs_regen/slots_associated_with_biosample_omics_processing.tsv
-	$(RUN) get_mixs_slots_matching_slot_list \
+	$(RUN) get-mixs-slots-matching-slot-list \
 		--slot_list_file $< \
 		--output_file $@
 
 local/mixs_regen/import_slots_regardless_gen.tsv: \
 local/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv
-	$(RUN) generate_import_slots_regardless --input_file $< --output_file $@
+	$(RUN) generate-import-slots-regardless --input_file $< --output_file $@
 
 local/mixs_regen/mixs_subset.yaml: local/mixs_regen/import_slots_regardless_gen.tsv
 	$(RUN) do_shuttle \
@@ -55,10 +87,9 @@ local/mixs_regen/mixs_subset.yaml: local/mixs_regen/import_slots_regardless_gen.
 		--yaml_output $@
 
 local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml
-	# the majority of operations
-	# change the https://github.com/GenomicsStandardsConsortium/mixs/blob/main/model/schema/mixs.yaml ranges
-	# to match https://github.com/microbiomedata/nmdc-schema/blame/e681592b20f98dab0cf89278b2b3c2f5e0754adf/src/schema/mixs.yaml
-	#   from Apr 2022 ?
+	# switching to TextValue may not add any value. the other range changes do improve the structure of the data.
+	# ironically changing back to strings for the submission-schema, data harmonizer, submission portal etc.
+	# may switch source of truth to the MIxS 6.2.2 release candidate
 	sed 's/quantity value/QuantityValue/' $< > $@
 	sed -i.bak 's/range: string/range: TextValue/' $@
 	sed -i.bak 's/range: text value/range: TextValue/' $@
@@ -227,13 +258,10 @@ local/mixs_regen/mixs_subset_modified_inj_land_use.yaml: assets/other_mixs_yaml_
 		'select(fileIndex==1).enums.cur_land_use_enum = select(fileIndex==0).enums.cur_land_use_enum | select(fileIndex==1)' \
 		$^ | cat > $@
 
-mixs_deepdiff: src/schema/mixs.yaml
+mixs-deepdiff: src/schema/mixs.yaml
 	mv src/schema/mixs.yaml.bak src/schema/mixs.bak.yaml
 	$(RUN) deep diff src/schema/mixs.bak.yaml $^
 	mv src/schema/mixs.bak.yaml src/schema/mixs.yaml.bak
-
-examples-clean:
-	rm -rf examples/output
 
 project/nmdc_schema_generated.yaml: $(SOURCE_SCHEMA_PATH)
 	# the need for this may be eliminated by adding mandatory pattern materialization to gen-json-schema
@@ -250,61 +278,6 @@ examples/output: project/nmdc_schema_generated.yaml
 		--input-directory src/data/valid \
 		--counter-example-input-directory src/data/invalid \
 		--output-directory $@ > $@/README.md
-
-
-assets/MIxS_6_term_updates_MIxS6_Core-_Final_clean.tsv:
-	curl -L "https://docs.google.com/spreadsheets/d/1QDeeUcDqXes69Y2RjU2aWgOpCVWo5OVsBX9MKmMqi_o/export?gid=178015749&format=tsv" > $@
-
-assets/MIxS_6_term_updates_MIxS6_packages_-_Final_clean.tsv:
-	curl -L "https://docs.google.com/spreadsheets/d/1QDeeUcDqXes69Y2RjU2aWgOpCVWo5OVsBX9MKmMqi_o/export?gid=750683809&format=tsv" > $@
-
-assets/sheets-for-nmdc-submission-schema_import_slots_regardless.tsv:
-	curl -L "https://docs.google.com/spreadsheets/d/1_TSuvEUX68g_o3r1d9wvOYMMbZ3vO4eluvAd2wNJoSU/export?gid=1742830620&format=tsv" > $@
-
-
-assets/slot_annotations_diffs.tsv: assets/other_mixs_yaml_files/mixs_new.yaml assets/other_mixs_yaml_files/mixs_legacy.yaml
-	$(RUN) mixs_deep_diff \
-		--include_descriptions True \
-		--shingle_size 2 \
-		--current_mixs_module_in $< \
-		--legacy_mixs_module_in $(word 2,$^)  \
-		--anno_diff_tsv_out $@ \
-		--slot_diff_yaml_out $(patsubst %.tsv,%.yaml,$@)
-
-assets/MIxS_6_term_updates_dtm.tsv: \
-assets/MIxS_6_term_updates_MIxS6_Core-_Final_clean.tsv \
-assets/MIxS_6_term_updates_MIxS6_packages_-_Final_clean.tsv
-	$(RUN) mixs_slot_text_mining \
-		--core_file $< \
-		--packages_file $(word 2,$^) \
-		--output_file $@
-
-assets/mixs_slots_by_submission_class.tsv: assets/sheets-for-nmdc-submission-schema_import_slots_regardless.tsv
-	$(RUN) mixs_coverage \
-  		--in_file $< \
-  		--out_file $@
-
-MIXS_YAML_FROM_SHEETS_AND_FRIENDS = src/schema/mixs.yaml
-
-SCHEMA_FILE = $(MIXS_YAML_FROM_SHEETS_AND_FRIENDS)
-
-# switch to linkml-validate and or run-linkml-examples
-#check-jsonschema: nmdc_schema/nmdc_materialized_patterns.schema.json
-#	$(RUN) check-jsonschema --schemafile $< src/data/invalid/Database-Biosample-invalid_range.yaml
-
-
-# Define a variable for the directory containing the YAML data files
-YAML_DIR_VALID := src/data/valid/
-
-# Define a variable for the list of YAML data files
-YAML_DATABASE_FILES_VALID := $(wildcard $(YAML_DIR_VALID)Database*.yaml)
-
-# switch to linkml-validate and or run-linkml-examples
-## Define a new target that depends on all YAML data files and runs check-jsonschema on each file
-#jsonschema-check-all-valid-databases: $(YAML_DATABASE_FILES_VALID)
-#	$(foreach yaml_file,$^,echo $(yaml_file) ; $(RUN) check-jsonschema \
-#		--schemafile nmdc_schema/nmdc_materialized_patterns.schema.json $(yaml_file);)
-
 
 local/usage_template.tsv: src/schema/nmdc.yaml
 	mkdir -p $(@D)
@@ -339,192 +312,32 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosampl
 
 # # # #
 
-.PHONY: mongodb-cleanup dump-validate-report-convert-mongodb \
-dump-validate-report-convert-mongodb linkml-validate-mongodb
-
-dump-validate-report-mongodb: mongodb-cleanup accepting_legacy_ids_all \
-local/mongodb-collection-report.txt \
-local/selected_mongodb_contents.json \
-local/selected_mongodb_contents_jsonschema_check.txt \
-linkml-validate-mongodb \
-local/selected_mongodb_contents.json.gz
-
-dump-validate-report-convert-mongodb: mongodb-cleanup \
-local/selected_mongodb_contents_fully_repaired.yaml \
-local/selected_mongodb_contents_fully_repaired.yaml.gz \
-local/selected_mongodb_contents_fully_repaired.ttl \
-local/selected_mongodb_contents_fully_repaired.ttl.gz
-
-local/selected_mongodb_contents_fully_repaired.json:
-	# approximately 2 minute
-	$(RUN) mongodb_exporter \
-		--schema-file src/schema/nmdc.yaml \
-		--root-class Database \
-		--env-file local/.env \
-		--mongo-db-name nmdc \
-		--mongo-host localhost \
-		--mongo-port 27777 \
-		--admin-db admin \
-		--curie-fix \
-		--non-nmdc-id-fixes \
-		--max-docs-per-coll 1_000_000 \
-		--output-json $@ \
-		--selected-collections biosample_set \
-		--selected-collections data_object_set \
-		--selected-collections field_research_site_set \
-		--selected-collections mags_activity_set \
-		--selected-collections metabolomics_analysis_activity_set \
-		--selected-collections metagenome_annotation_activity_set \
-		--selected-collections metagenome_assembly_set \
-		--selected-collections metaproteomics_analysis_activity_set \
-		--selected-collections metatranscriptome_activity_set \
-		--selected-collections nom_analysis_activity_set \
-		--selected-collections omics_processing_set \
-		--selected-collections read_based_taxonomy_analysis_activity_set \
-		--selected-collections read_qc_analysis_activity_set \
-		--selected-collections study_set 2>&1  | tee local/selected_mongodb_contents.log
-
-
-local/selected_mongodb_contents.json:
-	# approximately 2 minute
-	$(RUN) mongodb_exporter \
-		--schema-file src/schema/nmdc.yaml \
-		--root-class Database \
-		--env-file local/.env \
-		--mongo-db-name nmdc \
-		--mongo-host localhost \
-		--mongo-port 27777 \
-		--admin-db admin \
-		--no-curie-fix \
-		--non-nmdc-id-fixes \
-		--max-docs-per-coll 1_000_000 \
-		--output-json $@ \
-		--selected-collections biosample_set \
-		--selected-collections data_object_set \
-		--selected-collections field_research_site_set \
-		--selected-collections mags_activity_set \
-		--selected-collections metabolomics_analysis_activity_set \
-		--selected-collections metagenome_annotation_activity_set \
-		--selected-collections metagenome_assembly_set \
-		--selected-collections metaproteomics_analysis_activity_set \
-		--selected-collections metatranscriptome_activity_set \
-		--selected-collections nom_analysis_activity_set \
-		--selected-collections omics_processing_set \
-		--selected-collections read_based_taxonomy_analysis_activity_set \
-		--selected-collections read_qc_analysis_activity_set \
-		--selected-collections study_set 2>&1  | tee local/selected_mongodb_contents.log
-
-local/selected_mongodb_contents.json.gz: local/selected_mongodb_contents.json
-	gzip -c $< > $@
-
-
-mongodb-cleanup:
-	date
-	rm -rf local/mongodb-collection-report.txt
-	rm -rf local/selected_mongodb_contents.json
-	rm -rf local/selected_mongodb_contents.json.gz
-	rm -rf local/selected_mongodb_contents.log
-	rm -rf local/selected_mongodb_contents.ttl
-	rm -rf local/selected_mongodb_contents.ttl.gz
-	rm -rf local/selected_mongodb_contents.yaml
-	rm -rf local/selected_mongodb_contents.yaml.gz
-	rm -rf local/selected_mongodb_contents_jsonschema_check.txt
-
-local/mongodb-collection-report.txt:
-	$(RUN) mongodb_exporter 2>&1 | tee $@
-
-# switch to linkml-validate and or run-linkml-examples
-#local/selected_mongodb_contents_jsonschema_check.txt: nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json \
-#local/selected_mongodb_contents.json
-#	# < 5 minutes ?
-#	$(RUN) check-jsonschema --schemafile  $^ | tee $@
-
-linkml-validate-mongodb: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/selected_mongodb_contents.json
-	# < 5 minutes ?
-	$(RUN) linkml-validate --schema $^
-
-# slow linkml conversion from JSON to RDF/TTL
-#  ~ 12 minutes
-#  makes debugging other conversions by input line number easier
-#  why not just writing YAML from mongodb_exporter?
-#  doesn't seem to handle 64 bit numbers well
-local/selected_mongodb_contents_fully_repaired.yaml: local/selected_mongodb_contents_fully_repaired.json
-	cat $< | yq  -P  | cat > $@
-
-local/selected_mongodb_contents_fully_repaired.yaml.gz: local/selected_mongodb_contents_fully_repaired.yaml
-	gzip -c $< > $@
-
-local/selected_mongodb_contents_fully_repaired.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml \
-local/selected_mongodb_contents_fully_repaired.yaml
-	# ~ 15 minutes ?
-	#  requires mongodb_exporter to be run in --curie-fix mode
-	$(RUN) linkml-convert \
-		--output $@ \
-		--schema $^
-	# relatively fast
-	riot --validate $@
-
-local/selected_mongodb_contents_fully_repaired.ttl.gz: local/selected_mongodb_contents_fully_repaired.ttl
-	date
-	gzip -c $< > $@
-
-# # # #
-
 local/envo.db:
 	$(RUN) semsql download envo -o $@
 
-# switch to linkml-validate and or run-linkml-examples
-#check_neon_vs_jsonschema: nmdc_schema/nmdc_materialized_patterns.schema.json local/neon_in_nmdc.yaml
-#	$(RUN) check-jsonschema --schemafile $^
+# # # #
 
-validate_neon: nmdc_schema/nmdc_materialized_patterns.yaml local/neon_in_nmdc.yaml
-	$(RUN)  linkml-validate --schema $^
-
-local/neon_in_nmdc.ttl: nmdc_schema/nmdc_materialized_patterns.yaml local/neon_in_nmdc.yaml
-	$(RUN) linkml-convert \
-		--output $@ \
-		--schema $^
-
-local/neon_eco_type.tsv: local/neon_in_nmdc.ttl assets/sparql/neon_eco_type.rq
-	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
-
-local/neon_soil_type.tsv: local/neon_in_nmdc.ttl assets/sparql/neon_soil_type.rq
-	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
-
-local/local_class_in_neon.tsv: local/neon_in_nmdc.ttl assets/sparql/local_class_in_neon.rq
-	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
-
-local/cur_vegetation_in_neon.tsv: local/neon_in_nmdc.ttl assets/sparql/cur_vegetation_in_neon.rq
-	$(RUN) robot query --input $(word 1,$^) --query $(word 2,$^) $@
+#local/nlcd_2019_land_cover_l48_20210604.xml:
+#	curl -o $@ https://www.mrlc.gov/downloads/sciweb1/shared/mrlc/metadata/nlcd_2019_land_cover_l48_20210604.xml
+#
+#
+#local/nlcd_2019_land_cover_l48_20210604.yaml: local/nlcd_2019_land_cover_l48_20210604.xml
+#	yq -p=xml -oy '.' $< > $@
+#
+#
+#local/neon-nlcd-envo-mappings.tsv: local/nlcd_2019_land_cover_l48_20210604.yaml local/envo.db
+#	$(RUN)  get_neon-nlcd-envo-mapping \
+#		--nlcd-yaml $(word 1, $^) \
+#		--envo-sqlite $(word 2, $^) \
+#		--neon-nlcd-envo-mappings-tsv $@
+#
+#local/neon-soil-order-envo-mapping.tsv:
+#	$(RUN) python nmdc_schema/neon-soil-order-envo-mapping.py
 
 # # # #
 
-local/nlcd_2019_land_cover_l48_20210604.xml:
-	curl -o $@ https://www.mrlc.gov/downloads/sciweb1/shared/mrlc/metadata/nlcd_2019_land_cover_l48_20210604.xml
-
-
-local/nlcd_2019_land_cover_l48_20210604.yaml: local/nlcd_2019_land_cover_l48_20210604.xml
-	yq -p=xml -oy '.' $< > $@
-
-
-local/neon-nlcd-envo-mappings.tsv: local/nlcd_2019_land_cover_l48_20210604.yaml local/envo.db
-	$(RUN)  get_neon-nlcd-envo-mapping \
-		--nlcd-yaml $(word 1, $^) \
-		--envo-sqlite $(word 2, $^) \
-		--neon-nlcd-envo-mappings-tsv $@
-
-local/neon-soil-order-envo-mapping.tsv:
-	$(RUN) python nmdc_schema/neon-soil-order-envo-mapping.py
-
-# # # #
-
-.PHONY: accepting_legacy_ids_all accepting_legacy_ids_cleanup
-
-accepting_legacy_ids_all: accepting_legacy_ids_cleanup \
+accepting-legacy-ids-all: accepting-legacy-ids-clean \
 nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json nmdc_schema/nmdc_schema_accepting_legacy_ids.py
-
-accepting_legacy_ids_cleanup:
-	rm -rf nmdc_schema/nmdc_schema_accepting_legacy_ids*
 
 # --useuris / --metauris
 nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml: src/schema/nmdc.yaml
@@ -571,6 +384,7 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml: src/schema/nmdc.yaml
 	yq -i '(.classes[] | select(.name == "Study") | .slot_usage.id.pattern) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "Study") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
 
+
 	$(RUN) gen-linkml \
 		--format yaml \
 		--mergeimports \
@@ -587,10 +401,156 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json: nmdc_schema/nmdc_schem
 		--closed $< > $@
 
 nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
-	$(RUN) gen-python --validate $< > $@
-	$(RUN) python nmdc_schema/use_more_tolerant_schema.py
+	$(RUN) gen-python --log_level ERROR --validate $< > $@ # todo doesn't honor --log_level
+	$(RUN) test-more-tolerant-schema
 
-validate-samp-ops-data:
-	$(RUN) linkml-validate \
-		--schema src/schema/sample_operations.yaml \
-		--target-class SiteSamplingActivity src/data/valid/SiteSamplingActivity-1.yaml
+# ----
+
+# recommended setup:
+#   1. . ~/sshproxy.sh -u <NERSC USER NAME>
+#   2. ssh -i ~/.ssh/nersc -L27777:mongo-loadbalancer.nmdc.production.svc.spin.nersc.org:27017 -o ServerAliveInterval=60 {YOUR_NERSC_USERNAME}@dtn01.nersc.gov
+
+# todo mongodb collection stats vs Database slots report
+# todo convert to json
+# todo compress large files
+# todo: allow different api base addresses
+# todo: switch to API method for getting collection names and stats: https://api.microbiomedata.org/nmdcschema/collection_stats # partially implemented
+# todo: add start time reporting
+
+make-rdf: rdf-clean local/mongo_as_nmdc_database_validation.log local/mongo_as_nmdc_database_cuire_repaired.ttl
+
+temp:
+
+#   		--selected-collections functional_annotation_agg \ # huge, no publically avaiaible reference data (kegg)
+#   		--selected-collections metaproteomics_analysis_activity_set \ # next slowest
+
+local/mongo_as_unvalidated_nmdc_database.yaml:
+	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
+	time $(RUN) pure-export \
+		--max-docs-per-coll 10000000 \
+		--output-yaml $@ \
+		--page-size 10000 \
+		--selected-collections biosample_set \
+		--selected-collections data_object_set \
+		--selected-collections extraction_set \
+		--selected-collections field_research_site_set \
+		--selected-collections library_preparation_set \
+		--selected-collections mags_activity_set \
+		--selected-collections metabolomics_analysis_activity_set \
+		--selected-collections metagenome_annotation_activity_set \
+		--selected-collections metagenome_assembly_set \
+		--selected-collections metagenome_sequencing_activity_set  \
+		--selected-collections metatranscriptome_activity_set \
+		--selected-collections nom_analysis_activity_set \
+		--selected-collections omics_processing_set \
+		--selected-collections pooling_set \
+		--selected-collections processed_sample_set \
+		--selected-collections read_based_taxonomy_analysis_activity_set \
+		--selected-collections read_qc_analysis_activity_set \
+		--selected-collections study_set
+
+
+local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
+	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
+	time $(RUN) migration-recursion \
+		--schema-path $(word 1,$^) \
+		--input-path $(word 2,$^) \
+		--salvage-prefix nmdc \
+		--output-path $@
+
+local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
+	# nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml or nmdc_schema/nmdc_materialized_patterns.yaml
+	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_activity_set
+	time $(RUN) linkml-validate --schema $^ > $@
+
+local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
+	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
+	time $(RUN) linkml-convert --output $@ --schema $^
+	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
+	- $(RIOT) --validate $@ # < 1 minute
+	# WARNING: java.io.tmpdir directory does not exist
+
+# todo: still getting anyurl typed string statement objects in RDF. I added a workarround in anyuri-strings-to-iris
+
+local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.ttl
+	date
+	time $(RUN) anyuri-strings-to-iris \
+		--input-ttl $< \
+		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
+		--emsl-biosample-uuid-replacement emsl_biosample_uuid_like \
+		--output-ttl $@
+	-# $(RIOT) --validate # < 1 minute
+	date
+
+# ----
+
+OmicsProcessing-to-catted-Biosamples.tsv: assets/sparql/OmicsProcessing-to-catted-Biosamples.rq nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+	$(RUN) class-sparql \
+		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
+		--query-file $<
+
+assets/sparql/undesc-ununsed-slots.tsv: assets/sparql/undesc-ununsed-slots.rq nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+	$(RUN) class-sparql \
+		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
+		--query-file $<
+
+OmicsProcessing-all: OmicsProcessing-clean OmicsProcessing.tsv OmicsProcessing-to-catted-Biosamples.tsv
+
+OmicsProcessing.tsv: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+	$(RUN) class-sparql  \
+		--concatenation-suffix s \
+		--do-group-concat \
+		--graph-name "mongodb://mongo-loadbalancer.nmdc.production.svc.spin.nersc.gov:27017" \
+		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
+		--schema-file  $< \
+		--target-class-name $(firstword $(subst ., ,$(lastword $(subst /, ,$@)))) \
+		--target-p-o-constraint "dcterms:isPartOf nmdc:sty-11-34xj1150"
+
+## ----
+#
+#doi_report.tsv:
+#	$(RUN) get-study-doi-report
+#
+## ----
+#
+#enchillada: squeaky-clean all test make-rdf OmicsProcessing-all
+#
+## ----
+#
+#severe_make.log: make.log
+#	egrep -v "^INFO:root:" $< > $@
+#
+#counts-initial-cas-lc.txt: local/mongo_as_unvalidated_nmdc_database.yaml # 103212
+#	- grep -c 'cas:' $< > $@
+#
+#counts-initial-cas-uc.txt: local/mongo_as_unvalidated_nmdc_database.yaml # 0
+#	- grep -c 'CAS:' $< > $@
+#
+#counts-initial-gold-lc.txt: local/mongo_as_unvalidated_nmdc_database.yaml # 50878
+#	- grep -c 'gold:' $< > $@
+#
+# counts-initial-gold-uc.txt: local/mongo_as_unvalidated_nmdc_database.yaml # 3060
+#	- grep -c 'GOLD:' $< > $@
+#
+#counts-migrated-cas-lc.txt: local/mongo_as_nmdc_database_rdf_safe.yaml # 103212
+#	- grep -c 'cas:' $< > $@
+#
+#counts-migrated-cas-uc.txt: local/mongo_as_nmdc_database_rdf_safe.yaml # 0
+#	- grep -c 'CAS:' $< > $@
+#
+#counts-migrated-gold-lc.txt: local/mongo_as_nmdc_database_rdf_safe.yaml # 50878
+#	- grep -c 'gold:' $< > $@
+#
+# counts-migrated-gold-uc.txt: local/mongo_as_nmdc_database_rdf_safe.yaml # 1704
+#	- grep -c 'GOLD:' $< > $@
+#
+#problem-prefix-counts-clean:
+#	rm -rf counts-initial-cas-lc.txt counts-initial-cas-uc.txt \
+#		counts-initial-gold-lc.txt counts-initial-gold-uc.txt \
+#		counts-migrated-cas-lc.txt counts-migrated-cas-uc.txt \
+#		counts-migrated-gold-lc.txt counts-migrated-gold-uc.txt
+#
+#problem-prefix-counts-all: problem-prefix-counts-clean counts-initial-cas-lc.txt counts-initial-cas-uc.txt \
+#counts-initial-gold-lc.txt counts-initial-gold-uc.txt \
+#counts-migrated-cas-lc.txt counts-migrated-cas-uc.txt \
+#counts-migrated-gold-lc.txt counts-migrated-gold-uc.txt

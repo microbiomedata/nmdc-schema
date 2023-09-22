@@ -27,7 +27,7 @@
       },
       "type": "nmdc:Biosample",
       "gold_biosample_identifiers": [
-        "GOLD:Gb0101224"
+        "gold:Gb0101224"
       ],
       "ecosystem": "Environmental",
       "ecosystem_category": "Aquatic",
@@ -88,7 +88,7 @@
         "SIP"
       ],
       "gold_biosample_identifiers": [
-        "GOLD:Gb0101224"
+        "gold:Gb0101224"
       ],
       "ecosystem": "Environmental",
       "ecosystem_category": "Aquatic",
@@ -145,7 +145,7 @@
       },
       "type": "nmdc:Biosample",
       "gold_biosample_identifiers": [
-        "GOLD:Gb0101225"
+        "gold:Gb0101225"
       ],
       "ecosystem": "Environmental",
       "ecosystem_category": "Aquatic",
@@ -202,7 +202,7 @@
       },
       "type": "nmdc:Biosample",
       "gold_biosample_identifiers": [
-        "GOLD:Gb0101226"
+        "gold:Gb0101226"
       ],
       "ecosystem": "Environmental",
       "ecosystem_category": "Aquatic",

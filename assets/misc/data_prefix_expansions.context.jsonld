@@ -1,0 +1,13 @@
+{
+  "comments": {
+    "description": "Prefixes/URI bases that appear in MongoDB but are not defined in the schema",
+    "generation_date": "2023-09-14T00:00:00",
+    "source": "nmdc.yaml"
+  },
+  "@context": {
+    "emsl": "http://example.org/emsl_biosample_in_mongodb/",
+    "emsl_biosample_uuid_like": "http://example.org/emsl_biosample_uuid_like/",
+    "GOLD": "https://bioregistry.io/gold:"
+  }
+}
+

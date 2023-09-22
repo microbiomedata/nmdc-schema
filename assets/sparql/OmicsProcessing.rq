@@ -1,0 +1,167 @@
+PREFIX cas: <http://identifiers.org/cas/:>
+PREFIX emsl: <http://example.org/emsl_in_mongodb/>
+PREFIX emsl_biosample_uuid_like: <http://example.org/emsl_biosample_uuid_like/>
+PREFIX gold: <https://identifiers.org/gold:>
+PREFIX CAS: <https://bioregistry.io/cas:>
+PREFIX CATH: <https://bioregistry.io/cath:>
+PREFIX CHEBI: <http://purl.obolibrary.org/obo/CHEBI_>
+PREFIX CHEMBL.COMPOUND: <https://bioregistry.io/chembl.compound:>
+PREFIX CHMO: <http://purl.obolibrary.org/obo/CHMO_>
+PREFIX COG: <https://bioregistry.io/cog:>
+PREFIX Contaminant: <http://example.org/contaminant/>
+PREFIX DRUGBANK: <https://bioregistry.io/drugbank:>
+PREFIX EC: <https://bioregistry.io/eccode:>
+PREFIX EFO: <http://www.ebi.ac.uk/efo/>
+PREFIX EGGNOG: <https://bioregistry.io/eggnog:>
+PREFIX ENVO: <http://purl.obolibrary.org/obo/ENVO_>
+PREFIX FBcv: <http://purl.obolibrary.org/obo/FBcv_>
+PREFIX GO: <http://purl.obolibrary.org/obo/GO_>
+PREFIX GOLD: <https://bioregistry.io/gold:>
+PREFIX HMDB: <https://bioregistry.io/hmdb:>
+PREFIX ISA: <http://example.org/isa/>
+PREFIX KEGG.COMPOUND: <https://bioregistry.io/kegg.compound:>
+PREFIX KEGG.ORTHOLOGY: <https://bioregistry.io/kegg.orthology:>
+PREFIX KEGG.REACTION: <https://bioregistry.io/kegg.reaction:>
+PREFIX KEGG_PATHWAY: <https://bioregistry.io/kegg.pathway:>
+PREFIX MASSIVE: <https://bioregistry.io/reference/massive:>
+PREFIX MESH: <https://bioregistry.io/mesh:>
+PREFIX MIXS: <https://w3id.org/mixs/>
+PREFIX MS: <http://purl.obolibrary.org/obo/MS_>
+PREFIX MetaCyc: <https://bioregistry.io/metacyc.compound:>
+PREFIX MetaNetX: <http://example.org/metanetx/>
+PREFIX NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_>
+PREFIX NCIT: <http://purl.obolibrary.org/obo/NCIT_>
+PREFIX OBI: <http://purl.obolibrary.org/obo/OBI_>
+PREFIX PANTHER.FAMILY: <https://bioregistry.io/panther.family:>
+PREFIX PFAM: <https://bioregistry.io/pfam:>
+PREFIX PO: <http://purl.obolibrary.org/obo/PO_>
+PREFIX PR: <http://purl.obolibrary.org/obo/PR_>
+PREFIX PUBCHEM.COMPOUND: <https://bioregistry.io/pubchem.compound:>
+PREFIX RHEA: <https://bioregistry.io/rhea:>
+PREFIX RO: <http://purl.obolibrary.org/obo/RO_>
+PREFIX RetroRules: <http://example.org/retrorules/>
+PREFIX SEED: <https://bioregistry.io/seed:>
+PREFIX SIO: <http://semanticscience.org/resource/SIO_>
+PREFIX SUPFAM: <https://bioregistry.io/supfam:>
+PREFIX TIGRFAM: <https://bioregistry.io/tigrfam:>
+PREFIX UBERON: <http://purl.obolibrary.org/obo/UBERON_>
+PREFIX UO: <http://purl.obolibrary.org/obo/UO_>
+PREFIX UniProtKB: <https://bioregistry.io/uniprot:>
+PREFIX biolink: <https://w3id.org/biolink/vocab/>
+PREFIX biosample: <https://bioregistry.io/biosample:>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX doi: <https://bioregistry.io/doi:>
+PREFIX emsl.project: <https://bioregistry.io/emsl.project:>
+PREFIX generic: <https://example.org/generic/>
+PREFIX gnps.task: <https://bioregistry.io/gnps.task:>
+PREFIX gtpo: <http://example.org/gtpo/>
+PREFIX igsn: <https://app.geosamples.org/sample/igsn/>
+PREFIX img.taxon: <https://bioregistry.io/img.taxon:>
+PREFIX jgi: <http://example.org/jgi/>
+PREFIX jgi.proposal: <https://bioregistry.io/jgi.proposal:>
+PREFIX kegg: <https://bioregistry.io/kegg:>
+PREFIX linkml: <https://w3id.org/linkml/>
+PREFIX mgnify.proj: <https://bioregistry.io/mgnify.proj:>
+PREFIX neon.identifier: <http://example.org/neon/identifier/>
+PREFIX neon.schema: <http://example.org/neon/schema/>
+PREFIX nmdc: <https://w3id.org/nmdc/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX qud: <http://qudt.org/1.1/schema/qudt#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX wgs84: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT DISTINCT ?OmicsProcessing ?OmicsProcessing_add_date (group_concat(distinct ?OmicsProcessing_gold_sequencing_project_identifiers; SEPARATOR='|') as ?OmicsProcessing_gold_sequencing_project_identifierss) (group_concat(distinct ?OmicsProcessing_has_input_rdf_type; SEPARATOR='|') as ?OmicsProcessing_has_input_rdf_types) (group_concat(distinct ?OmicsProcessing_has_input; SEPARATOR='|') as ?OmicsProcessing_has_inputs) (group_concat(distinct ?OmicsProcessing_has_output_rdf_type; SEPARATOR='|') as ?OmicsProcessing_has_output_rdf_types) (group_concat(distinct ?OmicsProcessing_has_output; SEPARATOR='|') as ?OmicsProcessing_has_outputs) ?OmicsProcessing_instrument_name ?OmicsProcessing_mod_date ?OmicsProcessing_ncbi_project_name (group_concat(distinct ?OmicsProcessing_omics_type_rdf_type; SEPARATOR='|') as ?OmicsProcessing_omics_type_rdf_types) (group_concat(distinct ?OmicsProcessing_omics_type_term; SEPARATOR='|') as ?OmicsProcessing_omics_type_terms) (group_concat(distinct ?OmicsProcessing_omics_type_has_raw_value; SEPARATOR='|') as ?OmicsProcessing_omics_type_has_raw_values) (group_concat(distinct ?OmicsProcessing_omics_type_was_generated_by; SEPARATOR='|') as ?OmicsProcessing_omics_type_was_generated_bys) (group_concat(distinct ?OmicsProcessing_part_of_rdf_type; SEPARATOR='|') as ?OmicsProcessing_part_of_rdf_types) (group_concat(distinct ?OmicsProcessing_part_of; SEPARATOR='|') as ?OmicsProcessing_part_ofs) (group_concat(distinct ?OmicsProcessing_principal_investigator_rdf_type; SEPARATOR='|') as ?OmicsProcessing_principal_investigator_rdf_types) (group_concat(distinct ?OmicsProcessing_principal_investigator_orcid; SEPARATOR='|') as ?OmicsProcessing_principal_investigator_orcids) (group_concat(distinct ?OmicsProcessing_principal_investigator_profile_image_url; SEPARATOR='|') as ?OmicsProcessing_principal_investigator_profile_image_urls) (group_concat(distinct ?OmicsProcessing_principal_investigator_email; SEPARATOR='|') as ?OmicsProcessing_principal_investigator_emails) (group_concat(distinct ?OmicsProcessing_principal_investigator_name; SEPARATOR='|') as ?OmicsProcessing_principal_investigator_names) (group_concat(distinct ?OmicsProcessing_principal_investigator_websites; SEPARATOR='|') as ?OmicsProcessing_principal_investigator_websitess) (group_concat(distinct ?OmicsProcessing_principal_investigator_has_raw_value; SEPARATOR='|') as ?OmicsProcessing_principal_investigator_has_raw_values) (group_concat(distinct ?OmicsProcessing_principal_investigator_was_generated_by; SEPARATOR='|') as ?OmicsProcessing_principal_investigator_was_generated_bys) ?OmicsProcessing_processing_institution ?OmicsProcessing_type ?OmicsProcessing_name ?OmicsProcessing_description
+WHERE {
+   ?OmicsProcessing rdf:type nmdc:OmicsProcessing . 
+   OPTIONAL {
+      ?OmicsProcessing nmdc:add_date ?OmicsProcessing_add_date . 
+   }
+   OPTIONAL {
+      ?OmicsProcessing nmdc:gold_sequencing_project_identifiers ?OmicsProcessing_gold_sequencing_project_identifiers . 
+   }
+   ?OmicsProcessing nmdc:has_input ?OmicsProcessing_has_input . 
+   OPTIONAL {
+      ?OmicsProcessing_has_input rdf:type ?OmicsProcessing_has_input_rdf_type . 
+   }
+   OPTIONAL {
+      ?OmicsProcessing nmdc:has_output ?OmicsProcessing_has_output . 
+      OPTIONAL {
+         ?OmicsProcessing_has_output rdf:type ?OmicsProcessing_has_output_rdf_type . 
+      }
+   }
+   OPTIONAL {
+      ?OmicsProcessing nmdc:instrument_name ?OmicsProcessing_instrument_name . 
+   }
+   OPTIONAL {
+      ?OmicsProcessing nmdc:mod_date ?OmicsProcessing_mod_date . 
+   }
+   OPTIONAL {
+      ?OmicsProcessing nmdc:ncbi_project_name ?OmicsProcessing_ncbi_project_name . 
+   }
+   OPTIONAL {
+      ?OmicsProcessing nmdc:omics_type ?OmicsProcessing_omics_type . 
+      OPTIONAL {
+         ?OmicsProcessing_omics_type rdf:type ?OmicsProcessing_omics_type_rdf_type . 
+      }
+      OPTIONAL {
+         ?OmicsProcessing_omics_type nmdc:term ?OmicsProcessing_omics_type_term . 
+      }
+      OPTIONAL {
+         ?OmicsProcessing_omics_type nmdc:has_raw_value ?OmicsProcessing_omics_type_has_raw_value . 
+      }
+      OPTIONAL {
+         ?OmicsProcessing_omics_type nmdc:was_generated_by ?OmicsProcessing_omics_type_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?OmicsProcessing dcterms:isPartOf ?OmicsProcessing_part_of . 
+      OPTIONAL {
+         ?OmicsProcessing_part_of rdf:type ?OmicsProcessing_part_of_rdf_type . 
+      }
+   }
+   OPTIONAL {
+      ?OmicsProcessing nmdc:principal_investigator ?OmicsProcessing_principal_investigator . 
+      OPTIONAL {
+         ?OmicsProcessing_principal_investigator rdf:type ?OmicsProcessing_principal_investigator_rdf_type . 
+      }
+      OPTIONAL {
+         ?OmicsProcessing_principal_investigator nmdc:orcid ?OmicsProcessing_principal_investigator_orcid . 
+      }
+      OPTIONAL {
+         ?OmicsProcessing_principal_investigator nmdc:profile_image_url ?OmicsProcessing_principal_investigator_profile_image_url . 
+      }
+      OPTIONAL {
+         ?OmicsProcessing_principal_investigator schema:email ?OmicsProcessing_principal_investigator_email . 
+      }
+      OPTIONAL {
+         ?OmicsProcessing_principal_investigator nmdc:name ?OmicsProcessing_principal_investigator_name . 
+      }
+      OPTIONAL {
+         ?OmicsProcessing_principal_investigator nmdc:websites ?OmicsProcessing_principal_investigator_websites . 
+      }
+      OPTIONAL {
+         ?OmicsProcessing_principal_investigator nmdc:has_raw_value ?OmicsProcessing_principal_investigator_has_raw_value . 
+      }
+      OPTIONAL {
+         ?OmicsProcessing_principal_investigator nmdc:was_generated_by ?OmicsProcessing_principal_investigator_was_generated_by . 
+      }
+   }
+   OPTIONAL {
+      ?OmicsProcessing nmdc:processing_institution ?OmicsProcessing_processing_institution . 
+   }
+   OPTIONAL {
+      ?OmicsProcessing nmdc:type ?OmicsProcessing_type . 
+   }
+   OPTIONAL {
+      ?OmicsProcessing nmdc:name ?OmicsProcessing_name . 
+   }
+   OPTIONAL {
+      ?OmicsProcessing dcterms:description ?OmicsProcessing_description . 
+   }
+   ?OmicsProcessing dcterms:isPartOf nmdc:sty-11-34xj1150 . 
+}
+GROUP BY ?OmicsProcessing ?OmicsProcessing_add_date ?OmicsProcessing_instrument_name ?OmicsProcessing_mod_date ?OmicsProcessing_ncbi_project_name ?OmicsProcessing_processing_institution ?OmicsProcessing_type ?OmicsProcessing_name ?OmicsProcessing_description

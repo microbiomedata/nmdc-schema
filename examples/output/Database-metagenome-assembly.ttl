@@ -1,4 +1,4 @@
-@prefix GOLD: <http://identifiers.org/gold/> .
+@prefix gold: <https://bioregistry.io/gold:> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -42,7 +42,7 @@ nmdc:wfmgas-99-B7Vogx a nmdc:MetagenomeAssembly ;
     nmdc:scaffolds "429340.0"^^xsd:float ;
     nmdc:started_at_time "2020-03-24T00:00:00+00:00" ;
     nmdc:type "nmdc:MetagenomeAssembly" ;
-    nmdc:was_informed_by GOLD:Gp0061273 .
+    nmdc:was_informed_by gold:Gp0061273 .
 
 nmdc:wfmgas-99-CvgXTq a nmdc:MetagenomeAssembly ;
     nmdc:asm_score "3.196"^^xsd:float ;
@@ -84,7 +84,7 @@ nmdc:wfmgas-99-CvgXTq a nmdc:MetagenomeAssembly ;
     nmdc:scaffolds "747801.0"^^xsd:float ;
     nmdc:started_at_time "2020-03-25T00:00:00+00:00" ;
     nmdc:type "nmdc:MetagenomeAssembly" ;
-    nmdc:was_informed_by GOLD:Gp0061274 .
+    nmdc:was_informed_by gold:Gp0061274 .
 
 nmdc:wfmgas-99-L9Z34K a nmdc:MetagenomeAssembly ;
     nmdc:asm_score "3.527"^^xsd:float ;
@@ -126,7 +126,7 @@ nmdc:wfmgas-99-L9Z34K a nmdc:MetagenomeAssembly ;
     nmdc:scaffolds "607951.0"^^xsd:float ;
     nmdc:started_at_time "2020-03-25T00:00:00+00:00" ;
     nmdc:type "nmdc:MetagenomeAssembly" ;
-    nmdc:was_informed_by GOLD:Gp0061275 .
+    nmdc:was_informed_by gold:Gp0061275 .
 
 [] a nmdc:Database ;
     nmdc:metagenome_assembly_set nmdc:wfmgas-99-B7Vogx,

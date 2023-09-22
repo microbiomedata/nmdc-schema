@@ -12,8 +12,8 @@ alternative_names:
 alternative_titles:
 - any string 1
 - any string 2
-doi:
-  has_raw_value: https://doi.org/10.1126/science.1058040
+publication_dois:
+- doi:10.1126/science.1058040
 ecosystem: unconstrained text. should be validated against the controlled vocabulary,
   by the sample's environmental package. would also be nice to align the CV with MIxS
   environmental triads
@@ -27,16 +27,16 @@ funding_sources:
 - any string 1
 - any string 2
 gold_study_identifiers:
-- GOLD:Gs12345
-- GOLD:Gs90909
+- gold:Gs12345
+- gold:Gs90909
 has_credit_associations:
 - applies_to_person:
     has_raw_value: Craig Venter
     was_generated_by: nmdc:any_string_1
-    orcid: ORCID:0000-0002-7086-765X
-    profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
     email: jcventer@jcvi.org
     name: J. Craig Venter
+    orcid: ORCID:0000-0002-7086-765X
+    profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
     websites:
     - https://www.jcvi.org/
     - https://www.jcvi.org/about/j-craig-venter
@@ -50,18 +50,21 @@ has_credit_associations:
   applied_roles:
   - Investigation
   - Supervision
+study_category: research_study
 mgnify_project_identifiers:
 - mgnify.proj:ABC123
 objective: This record, an instance of class Study from the nmdc-schema was had authored,
   so that the NMDC team would have at least one instance, using all slots, with a
   mixture of reasonable values and minimally compliant values.
+part_of:
+- nmdc:sty-11-34xj1157
 principal_investigator:
   has_raw_value: Craig Venter
   was_generated_by: nmdc:any_string_1
-  orcid: ORCID:0000-0002-7086-765X
-  profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
   email: jcventer@jcvi.org
   name: J. Craig Venter
+  orcid: ORCID:0000-0002-7086-765X
+  profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
   websites:
   - https://www.jcvi.org/
   - https://www.jcvi.org/about/j-craig-venter

@@ -19,14 +19,14 @@ imports:
 
 prefixes:
   COG: "https://bioregistry.io/cog:" # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
-  EC: "https://bioregistry.io/eccode:" # "EC-CODE": "http://identifiers.org/ec-code/", in https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  EC: "https://bioregistry.io/eccode:"
   GO: http://purl.obolibrary.org/obo/GO_ # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
-  KEGG.ORTHOLOGY: http://identifiers.org/kegg.orthology/  # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
-  KEGG.REACTION: http://identifiers.org/kegg.reaction/ # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
-  KEGG_PATHWAY: http://identifiers.org/kegg.pathway/ # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
-  MetaCyc: https://identifiers.org/metacyc.reaction/ # "METACYC.REACTION": "http://identifiers.org/metacyc.reaction/", in https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
-  RHEA: http://identifiers.org/rhea/ # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
-  SEED: http://identifiers.org/seed/ # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  KEGG.ORTHOLOGY: "https://bioregistry.io/kegg.orthology:"  # https://bioregistry.io/kegg.orthology:K00001
+  KEGG.REACTION: "https://bioregistry.io/kegg.reaction:" # https://bioregistry.io/kegg.reaction:R00100
+  KEGG_PATHWAY: "https://bioregistry.io/kegg.pathway:" # https://bioregistry.io/kegg.pathway:rsk00410
+  MetaCyc: "https://bioregistry.io/metacyc.compound:" # https://bioregistry.io/metacyc.compound:CPD-10330
+  RHEA: "https://bioregistry.io/rhea:" # https://bioregistry.io/rhea:12345
+  SEED: "https://bioregistry.io/seed:" # https://bioregistry.io/seed:Biotin_biosynthesis
 
   biolink: https://w3id.org/biolink/vocab/
   linkml: https://w3id.org/linkml/
@@ -45,52 +45,25 @@ classes:
       - corresponds to an entry in GFF3
     see_also:
       - https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md
+    slots:
+      - encodes
+      - end
+      - feature_type
+      - phase
+      - seqid
+      - start
+      - strand
+      - type
     slot_usage:
       seqid:
-        description: The ID of the landmark used to establish the coordinate system for the current feature.
-        range: string
         required: true
       type:
         range: OntologyClass
-        description: >-
-          A type from the sequence ontology
+        description: A type from the sequence ontology
       start:
-        is_a: gff_coordinate
-        description: The start of the feature in positive 1-based integer coordinates
         required: true
-        close_mappings:
-          - biolink:start_interbase_coordinate
       end:
-        is_a: gff_coordinate
-        description: The end of the feature in positive 1-based integer coordinates
-        comments: >-
-          - "constraint: end > start"
-          - "For features that cross the origin of a circular feature,  end = the position of the end + the length of the landmark feature."
         required: true
-        close_mappings:
-          - biolink:end_interbase_coordinate
-      strand:
-        description: >-
-          The strand on which a feature is located. Has a value of '+' (sense strand or forward strand) or '-' (anti-sense strand or reverse strand).
-        exact_mappings:
-          - biolink:strand
-      phase:
-        range: integer
-        minimum_value: 0
-        maximum_value: 0
-        description: >-
-          The phase for a coding sequence entity. For example, phase of a CDS as represented in a GFF3 with a value of 0, 1 or 2.
-        exact_mappings:
-          - biolink:phase
-      encodes:
-        range: GeneProduct
-        description: >-
-          The gene product encoded by this feature.
-          Typically this is used for a CDS feature or gene feature which will encode a protein.
-          It can also be used by a nc transcript ot gene feature that encoded a ncRNA
-      feature_type:
-        description: >-
-          TODO: Yuri to write
 
   FunctionalAnnotationTerm:
     aliases:
@@ -111,12 +84,8 @@ classes:
     is_a: FunctionalAnnotationTerm
     description: >-
       A pathway is a sequence of steps/reactions carried out by an organism or community of organisms
-    slot_usage:
-      has_part:
-        range: Reaction
-        multivalued: true
-        description: >-
-          A pathway can be broken down to a series of reaction step
+    slots:
+      - has_part
     id_prefixes:
       - KEGG_PATHWAY
       - COG
@@ -128,32 +97,16 @@ classes:
     description: >-
       An individual biochemical transformation carried out by a functional unit of an organism, in which a collection of substrates are transformed into a collection of products.
       Can also represent transporters
-    slot_usage:
-      left_participants:
-        is_a: has_participants
-        multivalued: true
-        range: ReactionParticipant
-      right_participants:
-        is_a: has_participants
-        multivalued: true
-        range: ReactionParticipant
-      direction:
-        description: >-
-          One of l->r, r->l, bidirectional, neutral
-      smarts_string:
-        range: string
-      is_diastereoselective:
-        range: boolean
-      is_stereo:
-        range: boolean
-      is_balanced:
-        range: boolean
-      is_transport:
-        range: boolean
-      is_fully_characterized:
-        range: boolean
-        description: >-
-          False if includes R-groups
+    slots:
+      - direction
+      - is_balanced
+      - is_diastereoselective
+      - is_fully_characterized
+      - is_stereo
+      - is_transport
+      - left_participants
+      - right_participants
+      - smarts_string
     id_prefixes:
       - KEGG.REACTION
       - RHEA
@@ -167,13 +120,10 @@ classes:
       - biolink:MolecularActivity
 
   ReactionParticipant:
-    description: >-
-      Instances of this link a reaction to a chemical entity participant
-    slot_usage:
-      chemical:
-        range: ChemicalEntity
-      stoichiometry:
-        range: integer
+    description: Instances of this link a reaction to a chemical entity participant
+    slots:
+      - chemical
+      - stoichiometry
 
   OrthologyGroup:
     is_a: FunctionalAnnotationTerm
@@ -203,26 +153,23 @@ classes:
       - https://img.jgi.doe.gov/docs/functional-annotation.pdf
       - https://github.com/microbiomedata/mg_annotation/blob/master/functional-annotation.wdl
     slots:
-      - was_generated_by
-      - subject
       - has_function
+      - subject
+      - was_generated_by
     slot_usage:
       has_function:
-        pattern: "^(KEGG_PATHWAY:\\w{2,4}\\d{5}|KEGG.REACTION:R\\d+|RHEA:\\d{5}|MetaCyc:[A-Za-z0-9+_.%-:]+|EC:\\d{1,2}(\\.\\d{0,3}){0,3}|GO:\\d{7}|MetaNetX:(MNXR\\d+|EMPTY)|SEED:\\w+|KEGG\\.ORTHOLOGY:K\\d+|EGGNOG:\\w+|PFAM:PF\\d{5}|TIGRFAM:TIGR\\d+|SUPFAM:\\w+|CATH:[1-6]\\.[0-9]+\\.[0-9]+\\.[0-9]+|PANTHER.FAMILY:PTHR\\d{5}(\\:SF\\d{1,3})?)$"
         notes:
           - this slot had been called id
           - "Still missing patterns for COG and RetroRules."
           - "These patterns aren't tied to the listed prefixes. A discussion about that possibility had been started, including the question of whether these lists are intended to be open examples or closed"
       type:
         range: OntologyClass
-        description: >-
-          TODO
+        description: TODO
       was_generated_by:
-        description: >-
-          provenance for the annotation.
+        description: provenance for the annotation.
+        notes: To be consistent with the rest of the NMDC schema we use the PROV annotation model, rather than GPAD
         range: MetagenomeAnnotationActivity
-        notes:
-          - Note to be consistent with the rest of the NMDC schema we use the PROV annotation model, rather than GPAD
+    #        required: true
     narrow_mappings:
       - biolink:GeneToGoTermAssociation
 
@@ -230,9 +177,11 @@ slots:
 
   chemical:
     description: from reaction participant class
+    range: ChemicalEntity
 
   stoichiometry:
     description: from reaction participant class
+    range: integer
 
   subject:
     range: GeneProduct
@@ -243,6 +192,8 @@ slots:
       - "the range for has_function was asserted as functional_annotation_term/FunctionalAnnotationTerm,"
       - "but is actually taking string arguments in MongoDB,"
       - "and those are frequently fulltext, not CURIEs. MAM 2021-06-23"
+    pattern: "^(KEGG_PATHWAY:\\w{2,4}\\d{5}|KEGG.REACTION:R\\d+|RHEA:\\d{5}|MetaCyc:[A-Za-z0-9+_.%-:]+|EC:\\d{1,2}(\\.\\d{0,3}){0,3}|GO:\\d{7}|MetaNetX:(MNXR\\d+|EMPTY)|SEED:\\w+|KEGG\\.ORTHOLOGY:K\\d+|EGGNOG:\\w+|PFAM:PF\\d{5}|TIGRFAM:TIGR\\d+|SUPFAM:\\w+|CATH:[1-6]\\.[0-9]+\\.[0-9]+\\.[0-9]+|PANTHER.FAMILY:PTHR\\d{5}(\\:SF\\d{1,3})?)$"
+
 
   has_participants:
     abstract: true
@@ -257,25 +208,72 @@ slots:
       - "For features that cross the origin of a circular feature (e.g. most bacterial genomes, plasmids, and some viral genomes), the requirement for start to be less than or equal to end is satisfied by making end = the position of the end + the length of the landmark feature."
 
   seqid:
+    description: The ID of the landmark used to establish the coordinate system for the current feature.
+    range: string
     todos:
       - "change range from string to object"
 
   strand:
     todos:
       - "set the range to an enum?"
+    description: >-
+      The strand on which a feature is located. Has a value of '+' (sense strand or forward strand) or '-' (anti-sense strand or reverse strand).
+    exact_mappings:
+      - biolink:strand
 
-  direction: { }
-  encodes: { }
-  end: { }
-  feature_type: { }
-  has_part: { }
-  is_balanced: { }
-  is_diastereoselective: { }
-  is_fully_characterized: { }
-  is_stereo: { }
-  is_transport: { }
-  left_participants: { }
-  phase: { }
-  right_participants: { }
-  smarts_string: { }
-  start: { }
+  direction:
+    description: One of l->r, r->l, bidirectional, neutral
+  encodes:
+    range: GeneProduct
+    description: >-
+      The gene product encoded by this feature.
+      Typically this is used for a CDS feature or gene feature which will encode a protein.
+      It can also be used by a nc transcript ot gene feature that encoded a ncRNA
+  end:
+    is_a: gff_coordinate
+    description: The end of the feature in positive 1-based integer coordinates
+    comments: >-
+      - "constraint: end > start"
+      - "For features that cross the origin of a circular feature,  end = the position of the end + the length of the landmark feature."
+    close_mappings:
+      - biolink:end_interbase_coordinate
+  feature_type:
+    description: "TODO: Yuri to write"
+  has_part:
+    range: Reaction
+    multivalued: true
+    description: A pathway can be broken down to a series of reaction step
+  is_balanced:
+    range: boolean
+  is_diastereoselective:
+    range: boolean
+  is_fully_characterized:
+    range: boolean
+    description: False if includes R-groups
+  is_stereo:
+    range: boolean
+  is_transport:
+    range: boolean
+  left_participants:
+    is_a: has_participants
+    multivalued: true
+    range: ReactionParticipant
+  phase:
+    range: integer
+    minimum_value: 0
+    maximum_value: 2
+    description: >-
+      The phase for a coding sequence entity. For example, phase of a CDS as represented in a GFF3 with a value of 0, 1 or 2.
+    exact_mappings:
+      - biolink:phase
+  right_participants:
+    is_a: has_participants
+    multivalued: true
+    range: ReactionParticipant
+  smarts_string:
+    range: string
+  start:
+    is_a: gff_coordinate
+    description: The start of the feature in positive 1-based integer coordinates
+    close_mappings: biolink:start_interbase_coordinate
+

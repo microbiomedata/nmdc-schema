@@ -6,7 +6,7 @@ biosample_set:
       Oregon, USA
     collected_from: nmdc:frsite-99-SPreao
     gold_biosample_identifiers:
-      - GOLD:Gb0305833
+      - gold:Gb0305833
     part_of:
       - nmdc:sty-99-U21mUX
     env_broad_scale:
@@ -28,7 +28,7 @@ biosample_set:
       in Clatskanie, Oregon, USA
     collected_from: nmdc:frsite-99-SPreao
     gold_biosample_identifiers:
-      - GOLD:Gb0291692
+      - gold:Gb0291692
     part_of:
       - nmdc:sty-99-U21mUX
     env_broad_scale:
@@ -50,7 +50,7 @@ biosample_set:
       Oregon, USA
     collected_from: nmdc:frsite-99-SPreao
     gold_biosample_identifiers:
-      - GOLD:Gb0291582
+      - gold:Gb0291582
     part_of:
       - nmdc:sty-99-U21mUX
     env_broad_scale:
@@ -72,7 +72,7 @@ biosample_set:
       Oregon, USA
     collected_from: nmdc:frsite-99-h2mYFG
     gold_biosample_identifiers:
-      - GOLD:Gb0305834
+      - gold:Gb0305834
     part_of:
       - nmdc:sty-99-U21mUX
     env_broad_scale:
@@ -94,7 +94,7 @@ biosample_set:
       in Clatskanie, Oregon, USA
     collected_from: nmdc:frsite-99-h2mYFG
     gold_biosample_identifiers:
-      - GOLD:Gb0291693
+      - gold:Gb0291693
     part_of:
       - nmdc:sty-99-U21mUX
     env_broad_scale:
@@ -116,7 +116,7 @@ biosample_set:
       Oregon, USA
     collected_from: nmdc:frsite-99-h2mYFG
     gold_biosample_identifiers:
-      - GOLD:Gb0291583
+      - gold:Gb0291583
     part_of:
       - nmdc:sty-99-U21mUX
     env_broad_scale:

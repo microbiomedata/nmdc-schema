@@ -505,8 +505,8 @@ geo_loc_name:
 glucosidase_act:
   has_raw_value: 5 mol per liter per hour
 gold_biosample_identifiers:
-  - GOLD:Gb123456789
-  - GOLD:Gb90909090
+  - gold:Gb123456789
+  - gold:Gb90909090
 gravidity:
   has_raw_value: xxx
 gravity:

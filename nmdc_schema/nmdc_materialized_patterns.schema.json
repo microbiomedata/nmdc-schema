@@ -1134,7 +1134,7 @@
                 "gold_biosample_identifiers": {
                     "description": "Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample",
                     "items": {
-                        "pattern": "^GOLD:Gb[0-9]+$",
+                        "pattern": "^gold:Gb[0-9]+$",
                         "type": "string"
                     },
                     "type": "array"
@@ -2895,7 +2895,7 @@
         },
         "BiosampleProcessing": {
             "additionalProperties": false,
-            "description": "A process that takes one or more biosamples as inputs and generates one or as outputs. Examples of outputs include samples cultivated from another sample or data objects created by instruments runs.",
+            "description": "A process that takes one or more biosamples as inputs and generates one or more biosamples as outputs. An example of an output includes samples cultivated from another sample.",
             "properties": {
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
@@ -2909,8 +2909,19 @@
                     "description": "a human-readable description of a thing",
                     "type": "string"
                 },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": "string"
+                },
                 "has_input": {
                     "description": "An input to a process.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_output": {
+                    "description": "An output biosample to a processing step",
                     "items": {
                         "type": "string"
                     },
@@ -2923,6 +2934,13 @@
                 },
                 "name": {
                     "description": "A human readable label for an entity",
+                    "type": "string"
+                },
+                "protocol_link": {
+                    "$ref": "#/$defs/Protocol"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
                     "type": "string"
                 }
             },
@@ -3088,6 +3106,10 @@
                     },
                     "type": "array"
                 },
+                "chemical_formula": {
+                    "description": "A generic grouping for molecular formulae and empirical formulae",
+                    "type": "string"
+                },
                 "description": {
                     "description": "a human-readable description of a thing",
                     "type": "string"
@@ -3097,9 +3119,22 @@
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
+                "inchi": {
+                    "type": "string"
+                },
+                "inchi_key": {
+                    "type": "string"
+                },
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": "string"
+                },
+                "smiles": {
+                    "description": "A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
@@ -3393,11 +3428,11 @@
                     "type": "array"
                 },
                 "date_created": {
-                    "description": "TODO",
+                    "description": "from database class",
                     "type": "string"
                 },
                 "etl_software_version": {
-                    "description": "TODO",
+                    "description": "from database class",
                     "type": "string"
                 },
                 "extraction_set": {
@@ -3410,6 +3445,12 @@
                 "field_research_site_set": {
                     "items": {
                         "$ref": "#/$defs/FieldResearchSite"
+                    },
+                    "type": "array"
+                },
+                "functional_annotation_agg": {
+                    "items": {
+                        "$ref": "#/$defs/FunctionalAnnotationAggMember"
                     },
                     "type": "array"
                 },
@@ -3477,7 +3518,7 @@
                     "type": "array"
                 },
                 "metatranscriptome_activity_set": {
-                    "description": "TODO",
+                    "description": "This property links a database object to the set of metatranscriptome analysis activities.",
                     "items": {
                         "$ref": "#/$defs/MetatranscriptomeActivity"
                     },
@@ -3782,7 +3823,7 @@
         },
         "Extraction": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A material separation in which a desired component of an input material is separated from the remainder.",
             "properties": {
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
@@ -3825,6 +3866,10 @@
                     "pattern": "^(nmdc):extrp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                     "type": "string"
                 },
+                "input_mass": {
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "Total mass of sample used in activity."
+                },
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": "string"
@@ -3838,9 +3883,6 @@
                 },
                 "quality_control_report": {
                     "$ref": "#/$defs/QualityControlReport"
-                },
-                "sample_mass": {
-                    "$ref": "#/$defs/QuantityValue"
                 },
                 "start_date": {
                     "description": "The date on which any process or activity was started",
@@ -3945,15 +3987,6 @@
                 },
                 "name": {
                     "description": "A human readable label for an entity",
-                    "type": "string"
-                },
-                "neon_deims_sdr_link": {
-                    "type": "string"
-                },
-                "neon_eco_type": {
-                    "type": "string"
-                },
-                "neon_soil_type": {
                     "type": "string"
                 },
                 "part_of": {
@@ -4162,6 +4195,23 @@
             "title": "FunctionalAnnotation",
             "type": "object"
         },
+        "FunctionalAnnotationAggMember": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "gene_function_id": {
+                    "type": "string"
+                },
+                "metagenome_annotation_id": {
+                    "type": "string"
+                }
+            },
+            "title": "FunctionalAnnotationAggMember",
+            "type": "object"
+        },
         "FurnitureEnum": {
             "description": "",
             "enum": [
@@ -4220,6 +4270,49 @@
         "GenomeFeature": {
             "additionalProperties": false,
             "description": "A feature localized to an interval along a genome",
+            "properties": {
+                "encodes": {
+                    "description": "The gene product encoded by this feature. Typically this is used for a CDS feature or gene feature which will encode a protein. It can also be used by a nc transcript ot gene feature that encoded a ncRNA",
+                    "type": "string"
+                },
+                "end": {
+                    "description": "The end of the feature in positive 1-based integer coordinates",
+                    "minimum": 1,
+                    "type": "integer"
+                },
+                "feature_type": {
+                    "description": "TODO: Yuri to write",
+                    "type": "string"
+                },
+                "phase": {
+                    "description": "The phase for a coding sequence entity. For example, phase of a CDS as represented in a GFF3 with a value of 0, 1 or 2.",
+                    "maximum": 2,
+                    "minimum": 0,
+                    "type": "integer"
+                },
+                "seqid": {
+                    "description": "The ID of the landmark used to establish the coordinate system for the current feature.",
+                    "type": "string"
+                },
+                "start": {
+                    "description": "The start of the feature in positive 1-based integer coordinates",
+                    "minimum": 1,
+                    "type": "integer"
+                },
+                "strand": {
+                    "description": "The strand on which a feature is located. Has a value of '+' (sense strand or forward strand) or '-' (anti-sense strand or reverse strand).",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "A type from the sequence ontology",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "end",
+                "seqid",
+                "start"
+            ],
             "title": "GenomeFeature",
             "type": "object"
         },
@@ -4228,7 +4321,7 @@
             "description": "A normalized value for a location on the earth's surface",
             "properties": {
                 "has_raw_value": {
-                    "description": "The raw value for a  geolocation should follow {latitude} {longitude}",
+                    "description": "The raw value for a geolocation should follow {latitude} {longitude}",
                     "type": "string"
                 },
                 "latitude": {
@@ -4708,11 +4801,9 @@
                     "type": "string"
                 },
                 "execution_resource": {
-                    "description": "Example: NERSC-Cori",
                     "type": "string"
                 },
                 "git_url": {
-                    "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                     "type": "string"
                 },
                 "has_input": {
@@ -4823,7 +4914,6 @@
                     "type": "array"
                 },
                 "highest_similarity_score": {
-                    "description": "TODO: Yuri to fill in",
                     "type": "number"
                 },
                 "metabolite_quantified": {
@@ -4843,11 +4933,9 @@
                     "type": "string"
                 },
                 "execution_resource": {
-                    "description": "Example: NERSC-Cori",
                     "type": "string"
                 },
                 "git_url": {
-                    "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                     "type": "string"
                 },
                 "has_calibration": {
@@ -4930,17 +5018,15 @@
                     "type": "string"
                 },
                 "execution_resource": {
-                    "description": "Example: NERSC-Cori",
                     "type": "string"
                 },
                 "git_url": {
-                    "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                     "type": "string"
                 },
                 "gold_analysis_project_identifiers": {
                     "description": "identifiers for corresponding analysis project in GOLD",
                     "items": {
-                        "pattern": "^GOLD:Ga[0-9]+$",
+                        "pattern": "^gold:Ga[0-9]+$",
                         "type": "string"
                     },
                     "type": "array"
@@ -5055,7 +5141,6 @@
                     "type": "string"
                 },
                 "execution_resource": {
-                    "description": "Example: NERSC-Cori",
                     "type": "string"
                 },
                 "gap_pct": {
@@ -5071,7 +5156,6 @@
                     "type": "number"
                 },
                 "git_url": {
-                    "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                     "type": "string"
                 },
                 "has_input": {
@@ -5204,11 +5288,9 @@
                     "type": "string"
                 },
                 "execution_resource": {
-                    "description": "Example: NERSC-Cori",
                     "type": "string"
                 },
                 "git_url": {
-                    "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                     "type": "string"
                 },
                 "has_input": {
@@ -5281,11 +5363,9 @@
                     "type": "string"
                 },
                 "execution_resource": {
-                    "description": "Example: NERSC-Cori",
                     "type": "string"
                 },
                 "git_url": {
-                    "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                     "type": "string"
                 },
                 "has_input": {
@@ -5333,6 +5413,7 @@
                     "type": "string"
                 },
                 "used": {
+                    "description": "The instrument used to collect the data used in the analysis",
                     "type": "string"
                 },
                 "version": {
@@ -5364,11 +5445,9 @@
                     "type": "string"
                 },
                 "execution_resource": {
-                    "description": "Example: NERSC-Cori",
                     "type": "string"
                 },
                 "git_url": {
-                    "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                     "type": "string"
                 },
                 "has_input": {
@@ -5441,17 +5520,15 @@
                     "type": "string"
                 },
                 "execution_resource": {
-                    "description": "Example: NERSC-Cori",
                     "type": "string"
                 },
                 "git_url": {
-                    "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                     "type": "string"
                 },
                 "gold_analysis_project_identifiers": {
                     "description": "identifiers for corresponding analysis project in GOLD",
                     "items": {
-                        "pattern": "^GOLD:Ga[0-9]+$",
+                        "pattern": "^gold:Ga[0-9]+$",
                         "type": "string"
                     },
                     "type": "array"
@@ -5566,7 +5643,6 @@
                     "type": "string"
                 },
                 "execution_resource": {
-                    "description": "Example: NERSC-Cori",
                     "type": "string"
                 },
                 "gap_pct": {
@@ -5582,7 +5658,6 @@
                     "type": "number"
                 },
                 "git_url": {
-                    "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                     "type": "string"
                 },
                 "has_input": {
@@ -5715,11 +5790,9 @@
                     "type": "string"
                 },
                 "execution_resource": {
-                    "description": "Example: NERSC-Cori",
                     "type": "string"
                 },
                 "git_url": {
-                    "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                     "type": "string"
                 },
                 "has_calibration": {
@@ -5765,6 +5838,7 @@
                     "type": "string"
                 },
                 "used": {
+                    "description": "The instrument used to collect the data used in the analysis",
                     "type": "string"
                 },
                 "version": {
@@ -5822,10 +5896,14 @@
                     "description": "a human-readable description of a thing",
                     "type": "string"
                 },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": "string"
+                },
                 "gold_sequencing_project_identifiers": {
                     "description": "identifiers for corresponding sequencing project in GOLD",
                     "items": {
-                        "pattern": "^GOLD:Gp[0-9]+$",
+                        "pattern": "^gold:Gp[0-9]+$",
                         "type": "string"
                     },
                     "type": "array"
@@ -5906,6 +5984,9 @@
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
                 },
+                "protocol_link": {
+                    "$ref": "#/$defs/Protocol"
+                },
                 "samp_vol_we_dna_ext": {
                     "$ref": "#/$defs/QuantityValue",
                     "description": "Volume (ml) or mass (g) of total collected sample processed for DNA extraction. Note: total sample collected should be entered under the term Sample Size (MIXS:0000001)."
@@ -5917,6 +5998,10 @@
                 "seq_quality_check": {
                     "$ref": "#/$defs/TextValue",
                     "description": "Indicate if the sequence has been called by automatic systems (none) or undergone a manual editing procedure (e.g. by inspecting the raw data or chromatograms). Applied only for sequences that are not submitted to SRA,ENA or DRA"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": "string"
                 },
                 "target_gene": {
                     "$ref": "#/$defs/TextValue",
@@ -6037,6 +6122,13 @@
                 "description": {
                     "description": "a human-readable description of a thing",
                     "type": "string"
+                },
+                "has_part": {
+                    "description": "A pathway can be broken down to a series of reaction step",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
@@ -6180,7 +6272,7 @@
         },
         "Pooling": {
             "additionalProperties": false,
-            "description": "",
+            "description": "physical combination of several instances of like material.",
             "properties": {
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
@@ -6320,6 +6412,31 @@
         "ProteinQuantification": {
             "additionalProperties": false,
             "description": "This is used to link a metaproteomics analysis workflow to a specific protein",
+            "properties": {
+                "all_proteins": {
+                    "description": "the grouped list of protein identifiers associated with the peptide sequences that were grouped to a best protein",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "best_protein": {
+                    "description": "the specific protein identifier most correctly grouped to its associated peptide sequences",
+                    "type": "string"
+                },
+                "peptide_sequence_count": {
+                    "description": "count of peptide sequences grouped to the best_protein",
+                    "type": "integer"
+                },
+                "protein_spectral_count": {
+                    "description": "sum of filter passing MS2 spectra associated with the best protein within a given LC-MS/MS data file",
+                    "type": "integer"
+                },
+                "protein_sum_masic_abundance": {
+                    "description": "combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the best protein from a given LC-MS/MS data file using the MASIC tool",
+                    "type": "integer"
+                }
+            },
             "title": "ProteinQuantification",
             "type": "object"
         },
@@ -6411,13 +6528,48 @@
                     "description": "a human-readable description of a thing",
                     "type": "string"
                 },
+                "direction": {
+                    "description": "One of l->r, r->l, bidirectional, neutral",
+                    "type": "string"
+                },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
+                "is_balanced": {
+                    "type": "boolean"
+                },
+                "is_diastereoselective": {
+                    "type": "boolean"
+                },
+                "is_fully_characterized": {
+                    "description": "False if includes R-groups",
+                    "type": "boolean"
+                },
+                "is_stereo": {
+                    "type": "boolean"
+                },
+                "is_transport": {
+                    "type": "boolean"
+                },
+                "left_participants": {
+                    "items": {
+                        "$ref": "#/$defs/ReactionParticipant"
+                    },
+                    "type": "array"
+                },
                 "name": {
                     "description": "A human readable label for an entity",
+                    "type": "string"
+                },
+                "right_participants": {
+                    "items": {
+                        "$ref": "#/$defs/ReactionParticipant"
+                    },
+                    "type": "array"
+                },
+                "smarts_string": {
                     "type": "string"
                 }
             },
@@ -6430,6 +6582,16 @@
         "ReactionParticipant": {
             "additionalProperties": false,
             "description": "Instances of this link a reaction to a chemical entity participant",
+            "properties": {
+                "chemical": {
+                    "description": "from reaction participant class",
+                    "type": "string"
+                },
+                "stoichiometry": {
+                    "description": "from reaction participant class",
+                    "type": "integer"
+                }
+            },
             "title": "ReactionParticipant",
             "type": "object"
         },
@@ -6442,11 +6604,9 @@
                     "type": "string"
                 },
                 "execution_resource": {
-                    "description": "Example: NERSC-Cori",
                     "type": "string"
                 },
                 "git_url": {
-                    "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                     "type": "string"
                 },
                 "has_input": {
@@ -6519,11 +6679,9 @@
                     "type": "string"
                 },
                 "execution_resource": {
-                    "description": "Example: NERSC-Cori",
                     "type": "string"
                 },
                 "git_url": {
-                    "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                     "type": "string"
                 },
                 "has_input": {
@@ -7083,13 +7241,25 @@
                     },
                     "type": "array"
                 },
+                "award_dois": {
+                    "description": "One or more DOIs that links a study, or similar entiry, to information about the funding authority.",
+                    "items": {
+                        "pattern": "^doi:10.\\d{2,9}/.*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "dataset_dois": {
+                    "description": "One or more DOIs that links a study, or similar entity, to the generated data.",
+                    "items": {
+                        "pattern": "^doi:10.\\d{2,9}/.*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "description": {
                     "description": "A brief, link-free summary of a Study",
                     "type": "string"
-                },
-                "doi": {
-                    "$ref": "#/$defs/AttributeValue",
-                    "description": "The dataset citation for this study"
                 },
                 "ecosystem": {
                     "description": "An ecosystem is a combination of a physical environment (abiotic factors) and all the organisms (biotic factors) that interact with this environment. Ecosystem is in position 1/5 in a GOLD path.",
@@ -7108,9 +7278,9 @@
                     "type": "string"
                 },
                 "emsl_project_dois": {
-                    "description": "A DOI that resolves to a EMSL Research Campaign page.",
+                    "description": "One or more DOIs that links to an EMSL Research Campaign page.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^doi:10.\\d{2,9}/.*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7125,7 +7295,6 @@
                 "funding_sources": {
                     "description": "A list of organizations, along with the award numbers, that underwrite financial support for projects of  a particular type. Typically, they process applications and award funds to the chosen qualified  applicants.",
                     "items": {
-                        "pattern": "^.{1,200}$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7141,7 +7310,7 @@
                 "gold_study_identifiers": {
                     "description": "identifiers for corresponding project(s) in GOLD",
                     "items": {
-                        "pattern": "^GOLD:Gs[0-9]+$",
+                        "pattern": "^gold:Gs[0-9]+$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7167,7 +7336,7 @@
                     "type": "array"
                 },
                 "jgi_portal_study_identifiers": {
-                    "description": "identifiers that link a NMDC study to a web-based report about a JGI sequencing project",
+                    "description": "Identifiers that link a NMDC study to a website hosting raw and analyzed data for a JGI proposal.  The suffix of the curie can used to query the GOLD API and is interoperable with an award DOI from OSTI and a GOLD study identifier.",
                     "items": {
                         "pattern": "^jgi.proposal:\\d+$",
                         "type": "string"
@@ -7209,9 +7378,24 @@
                     "description": "The scientific objectives associated with the entity. It SHOULD correspond to scientific norms for objectives field in a structured abstract.",
                     "type": "string"
                 },
+                "part_of": {
+                    "description": "Links a study or consortium to a parent study or consortium.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "principal_investigator": {
                     "$ref": "#/$defs/PersonValue",
                     "description": "Principal Investigator who led the study and/or generated the dataset."
+                },
+                "publication_dois": {
+                    "description": "One or more DOIs that links a study, or similar entity, to a publication.",
+                    "items": {
+                        "pattern": "^doi:10.\\d{2,9}/.*$",
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "publications": {
                     "description": "A list of publications that are associated with the entity. The publications SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.",
@@ -7233,6 +7417,10 @@
                 "specific_ecosystem": {
                     "description": "Specific ecosystems represent specific features of the environment like aphotic zone in an ocean or gastric mucosa within a host digestive system. Specific ecosystem is in position 5/5 in a GOLD path.",
                     "type": "string"
+                },
+                "study_category": {
+                    "$ref": "#/$defs/StudyCategoryEnum",
+                    "description": "The type of research initiative"
                 },
                 "study_image": {
                     "description": "Links a study to one or more images.",
@@ -7262,6 +7450,15 @@
             ],
             "title": "Study",
             "type": "object"
+        },
+        "StudyCategoryEnum": {
+            "description": "",
+            "enum": [
+                "research_study",
+                "consortium"
+            ],
+            "title": "StudyCategoryEnum",
+            "type": "string"
         },
         "SubstructureTypeEnum": {
             "description": "",
@@ -7620,11 +7817,9 @@
                     "type": "string"
                 },
                 "execution_resource": {
-                    "description": "Example: NERSC-Cori",
                     "type": "string"
                 },
                 "git_url": {
-                    "description": "Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1",
                     "type": "string"
                 },
                 "has_input": {
@@ -7732,11 +7927,11 @@
             "type": "array"
         },
         "date_created": {
-            "description": "TODO",
+            "description": "from database class",
             "type": "string"
         },
         "etl_software_version": {
-            "description": "TODO",
+            "description": "from database class",
             "type": "string"
         },
         "extraction_set": {
@@ -7749,6 +7944,12 @@
         "field_research_site_set": {
             "items": {
                 "$ref": "#/$defs/FieldResearchSite"
+            },
+            "type": "array"
+        },
+        "functional_annotation_agg": {
+            "items": {
+                "$ref": "#/$defs/FunctionalAnnotationAggMember"
             },
             "type": "array"
         },
@@ -7816,7 +8017,7 @@
             "type": "array"
         },
         "metatranscriptome_activity_set": {
-            "description": "TODO",
+            "description": "This property links a database object to the set of metatranscriptome analysis activities.",
             "items": {
                 "$ref": "#/$defs/MetatranscriptomeActivity"
             },
@@ -7873,5 +8074,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "v7.7.6"
+    "version": "v8.0.0"
 }

@@ -3,11 +3,9 @@ name: NMDC
 title: NMDC Schema
 
 notes:
-  - "MetaCyc expansion assumes we're talking about metacyc reactions and not genes, compounds etc."
   - "informal ## section delimiters should be replaced with subsets ?"
   - "commented out insdc_biosample_identifiers insdc_secondary_sample_identifiers... need better understanding of id patterns (at least)"
-  - "commented out several MIxS terms assigned to Biosample because the definitions of those terms were commented out in mixs.yaml dues to shared slot uris"
-
+  - not importing any MIxS terms where the relationship between the name (SCN) and the id isn't 1:1
 description: >-
   Schema for National Microbiome Data Collaborative (NMDC).
 
@@ -19,7 +17,7 @@ description: >-
    * the NMDC schema itself, into which the other modules are imported
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: v7.7.6
+version: v8.0.0 # GH uses same version string # pyproject.toml says "8.0.0"
 
 imports:
   - annotation
@@ -37,42 +35,84 @@ imports:
   #  - sample_prep # MAM made this before Anastasiya and James made sample_operations
   - workflow_execution_activity
 
+
 prefixes:
+  #  AFO: "http://example.org/UNKNOWN/AFO/" # no expansion at https://bioregistry.io/registry/afo
+  CATH: "https://bioregistry.io/cath:"
+  CHEBI: "http://purl.obolibrary.org/obo/CHEBI_"
+  CHEMBL.COMPOUND: "https://bioregistry.io/chembl.compound:" # https://bioregistry.io/chembl.compound:CHEMBL465070
+  Contaminant: http://example.org/contaminant/ # present in MongoDB
+  DRUGBANK: "https://bioregistry.io/drugbank:" # https://bioregistry.io/drugbank:DB14938
+  EC: "https://bioregistry.io/eccode:" # https://bioregistry.io/eccode:1.1.1.1
   EFO: http://www.ebi.ac.uk/efo/
-  ISA: http://example.com/isa/
-  MetaNetX: http://example.com/metanetx/
-  RetroRules: http://example.com/retrorules/
+  EGGNOG: "https://bioregistry.io/eggnog:" # https://bioregistry.io/eggnog:veNOG12876
+  ENVO: "http://purl.obolibrary.org/obo/ENVO_"
+  FBcv: "http://purl.obolibrary.org/obo/FBcv_"
+  GO: "http://purl.obolibrary.org/obo/GO_"
+  HMDB: "https://bioregistry.io/hmdb:" # https://bioregistry.io/hmdb:HMDB00001
+  ISA: http://example.org/isa/
+  KEGG.ORTHOLOGY: "https://bioregistry.io/kegg.orthology:"  # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  MASSIVE: "https://bioregistry.io/reference/massive:"
+  MESH: "https://bioregistry.io/mesh:" # https://bioregistry.io/mesh:C063233
+  MS: "http://purl.obolibrary.org/obo/MS_"
+  MetaNetX: http://example.org/metanetx/
+  NCBITaxon: "http://purl.obolibrary.org/obo/NCBITaxon_"
+  NCIT: "http://purl.obolibrary.org/obo/NCIT_"
+  PANTHER.FAMILY: "https://bioregistry.io/panther.family:" # https://bioregistry.io/panther.family:PTHR12345
+  PFAM: "https://bioregistry.io/pfam:" # https://bioregistry.io/pfam:PF11779
+  PO: "http://purl.obolibrary.org/obo/PO_"
+  PR: "http://purl.obolibrary.org/obo/PR_"
+  PUBCHEM.COMPOUND: "https://bioregistry.io/pubchem.compound:"
+  RO: "http://purl.obolibrary.org/obo/RO_"
+  RetroRules: http://example.org/retrorules/
+  SUPFAM: "https://bioregistry.io/supfam:" # 	https://bioregistry.io/supfam:SSF57615
+  TIGRFAM: "https://bioregistry.io/tigrfam:" # https://bioregistry.io/tigrfam:TIGR00010
+  UBERON: "http://purl.obolibrary.org/obo/UBERON_"
+  UO: "http://purl.obolibrary.org/obo/UO_"
+  biosample: "https://bioregistry.io/biosample:"
+  cas: "https://bioregistry.io/cas:"
+  doi: "https://bioregistry.io/doi:"
   emsl.project: "https://bioregistry.io/emsl.project:"
-  generic: https://example.com/generic/
+  generic: https://example.org/generic/
   gnps.task: "https://bioregistry.io/gnps.task:"
-  gtpo: http://example.com/gtpo/
+  gtpo: http://example.org/gtpo/
   igsn: https://app.geosamples.org/sample/igsn/
+  img.taxon: "https://bioregistry.io/img.taxon:"
   jgi.proposal: "https://bioregistry.io/jgi.proposal:"
-  jgi: http://example.com/jgi/
+  jgi: http://example.org/jgi/
+  kegg: "https://bioregistry.io/kegg:" # https://bioregistry.io/kegg:hsa00190
   linkml: https://w3id.org/linkml/
-  mgnify.proj: "https://identifiers.org/mgnify.proj:"
+  mgnify.proj: "https://bioregistry.io/mgnify.proj:"
   neon.identifier: http://example.org/neon/identifier/
   neon.schema: http://example.org/neon/schema/
   nmdc: https://w3id.org/nmdc/
-  skos: http://www.w3.org/2004/02/skos/core#
-
   prov: http://www.w3.org/ns/prov#
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
+  skos: http://www.w3.org/2004/02/skos/core#
   xsd: http://www.w3.org/2001/XMLSchema#
+  emsl: "http://example.org/emsl_biosample_in_mongodb/"
+  emsl_biosample_uuid_like: "http://example.org/emsl_biosample_uuid_like/"
 
-  # present in MongoDB
-  emsl: http://example.org/emsl_in_mongodb/
-  Contaminant: http://example.org/contaminant/
 
 default_prefix: nmdc
 default_range: string
 
-default_curi_maps:
-  - obo_context
-  - idot_context
+#default_curi_maps:
+#  - obo_context
+#  - idot_context
 
 emit_prefixes:
+  - KEGG.ORTHOLOGY
+  - MASSIVE
+  - biosample
+  - cas
+  - doi
+  - gnps.task
+  - gold
+  - img.taxon
+  - jgi.proposal
+  - kegg
   - rdf
   - rdfs
   - skos
@@ -96,6 +136,13 @@ subsets:
       of processes or workflows.
 
 classes:
+
+  FunctionalAnnotationAggMember:
+    slots:
+      - metagenome_annotation_id
+      - gene_function_id
+      - count
+
   Database:
     tree_root: true
     aliases:
@@ -106,10 +153,10 @@ classes:
       translated to JSON-Schema this is the 'root' object. It should contain pointers
       to other objects of interest
     slots:
-      #      - dissolving_activity_set
-      #      - material_sample_set
-      #      - material_sampling_activity_set
-      #      - reaction_activity_set
+      - functional_annotation_agg
+      - library_preparation_set
+      - processed_sample_set
+      - extraction_set
       - activity_set
       - biosample_set
       - collecting_biosamples_from_site_set
@@ -142,15 +189,21 @@ classes:
 
     slot_usage:
       date_created:
-        description: TODO
+        todos:
+          - description
       etl_software_version:
-        description: TODO
+        todos:
+          - description
       metatranscriptome_activity_set:
-        description: TODO
+        todos:
+          - description
 
   Pooling:
-    is_a: PlannedProcess # from core.yaml
+    is_a: BiosampleProcessing # from core.yaml
+    description: physical combination of several instances of like material.
     slots:
+    exact_mappings:
+      - OBI:0600016
     slot_usage:
       has_input:
         minimum_cardinality: 2
@@ -164,14 +217,17 @@ classes:
           interpolated: true
 
   Extraction:
-    is_a: PlannedProcess # from core.yaml
+    is_a: BiosampleProcessing # from core.yaml
+    description: A material separation in which a desired component of an input material is separated from the remainder.
+    exact_mappings:
+      - OBI:0302884
     slots:
       - extraction_method
       - extraction_target
       - processing_institution
       - protocol_link
       - quality_control_report
-      - sample_mass
+      - input_mass
     slot_usage:
       has_input:
         required: true
@@ -196,7 +252,7 @@ classes:
   LibraryPreparation:
     aliases:
       - LibraryConstruction
-    is_a: PlannedProcess # from core.yaml
+    is_a: BiosampleProcessing # from core.yaml
     slots:
       - library_preparation_kit
       - library_type
@@ -238,9 +294,9 @@ classes:
       - habitat # gold term... enumerated values?
       - lat_lon
       - local_class
-      - neon_deims_sdr_link # short-term addition for neon
-      - neon_eco_type # short-term addition for neon
-      - neon_soil_type # short-term addition for neon
+      #      - neon_deims_sdr_link # short-term addition for neon
+      #      - neon_eco_type # short-term addition for neon
+      #      - neon_soil_type # short-term addition for neon
       - part_of
       - soil_type
     slot_usage:
@@ -255,10 +311,11 @@ classes:
     title: Collecting Biosamples From Site
     comments:
       - "this illustrates implementing a Biosample relation with a process class"
+    close_mappings:
+      - OBI:0000744
     slot_usage:
       has_input:
         range: Site
-        #        range: NamedThing
         required: true
       has_output:
         range: Biosample
@@ -1047,6 +1104,7 @@ classes:
           - Please use https://www.advancedconverter.com/map-tools/find-altitude-by-coordinates, if needed, to help estimate the elevation based on latitude and longitude coordinates.
         examples:
           value: 100
+
       oxy_stat_samp:
         range: oxy_stat_samp_enum
 
@@ -1056,11 +1114,14 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+
       gold_biosample_identifiers:
         description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
         comments: This is the ID provided by GOLD that starts with 'GB'
         annotations:
           display_hint: Provide the GOLD biosample IDs associated with this biosample.
+        range: uriorcurie
+
       alternative_identifiers:
         description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
 
@@ -1079,6 +1140,7 @@ classes:
       part_of:
         required: true
         range: Study
+
       fire:
         comments:
           - Provide the date the fire occurred. If extended burning occurred provide the date range.
@@ -1127,7 +1189,7 @@ classes:
         examples:
           - value: 10%
           - value: 10 %
-          - value: 0.10
+          - value: '0.10'
         todos:
           - Slope is a percent. How does the validation work? Check to correct examples
       al_sat:
@@ -1231,8 +1293,6 @@ classes:
         multivalued: true
         range: string
         examples:
-          - value: 75%
-          - value: 75 %
           - value: 0.75 g water/g dry soil
           - value: 75% water holding capacity
           - value: 1.1 g fresh weight/ dry weight
@@ -1324,14 +1384,16 @@ classes:
       - investigation
       - project
       - umbrella project
+      - research inititative
     description: >-
       A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.
+    comments: The Study class can include both consortia and research studies.
     alt_descriptions:
       embl.ena:
         A study (project) groups together data submitted to the archive and
         controls its release date. A study accession is typically used when citing
         data submitted to ENA
-
+    
     slots:
       - emsl_project_dois
 
@@ -1351,8 +1413,10 @@ classes:
       - alternative_descriptions
       - alternative_names
       - alternative_titles
-      - doi
       - description
+      - award_dois
+      - dataset_dois
+      - publication_dois
       - ecosystem
       - ecosystem_category
       - ecosystem_subtype
@@ -1364,11 +1428,13 @@ classes:
       - funding_sources
       - gold_study_identifiers
       - has_credit_associations
+      - study_category
       - insdc_bioproject_identifiers
       - massive_study_identifiers
       - mgnify_project_identifiers
       - notes
       - objective
+      - part_of
       - principal_investigator
       - publications
       - related_identifiers
@@ -1386,11 +1452,6 @@ classes:
           syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-      doi:
-        description: >-
-          The dataset citation for this study
-        annotations:
-          display_hint: DOI associated with the data in this study. This is required when data is already generated.
       name:
         annotations:
           display_hint: Provide a name for the study your samples will belong with.
@@ -1421,16 +1482,17 @@ classes:
         description: Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.
         annotations:
           display_hint: Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title.
-    #      emsl_project_identifier:
-    #        description: The EMSL project ID that relates to the NMDC submitted study
-    #      emsl_proposal_doi:
-    #        description: The DOI for the EMSL awarded study that relates to the NMDC submitted study
+      #      emsl_project_identifier:
+      #        description: The EMSL project ID that relates to the NMDC submitted study
+      #      emsl_proposal_doi:
+      #        description: The DOI for the EMSL awarded study that relates to the NMDC submitted study
+      part_of:
+        description: Links a study or consortium to a parent study or consortium.
+        comments: Value is the id of the parent study or consortium.
+        range: Study
     exact_mappings:
-      - SIO:001066
-      - NCIT:C63536
       - OBI:0000066
-      - ISA:Study
-    close_mappings:
+      - SIO:000747
       - NCIT:C41198
       - ISA:Investigation
     broad_mappings:
@@ -1439,8 +1501,9 @@ classes:
       - determine how to get data values for submitted_to_insdc, investigation_type,
         experimental_factor
       - project_name is redundant with name, so excluding it
+
     notes:
-      - "sample GOLD link https://identifiers.org/gold:Gs0110115"
+      - "sample GOLD link https://bioregistry.io/gold:Gs0110115"
       - "sample insdc.srs link https://www.ebi.ac.uk/ena/browser/view/PRJEB45055 ?"
       - "sample mgnify link https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757"
       - "GOLD, insdc.srs and mgnify are reasonable prefixes for alternative study identifiers, but no longer for the Study.id"
@@ -1448,11 +1511,11 @@ classes:
   BiosampleProcessing:
     aliases:
       - material processing
-    is_a: NamedThing
+    is_a: PlannedProcess
     description:
       A process that takes one or more biosamples as inputs and generates
-      one or as outputs. Examples of outputs include samples cultivated from another
-      sample or data objects created by instruments runs.
+      one or more biosamples as outputs. An example of an output includes samples cultivated from another
+      sample.
     slots:
       - has_input
     slot_usage:
@@ -1471,7 +1534,7 @@ classes:
       - omics assay
       - sequencing project
       - experiment
-    is_a: BiosampleProcessing
+    is_a: PlannedProcess
     in_subset:
       - sample subset
     description: >-
@@ -1966,8 +2029,40 @@ enums:
       ANL:
         title: Argonne National Laboratory
         meaning: https://ror.org/05gvnxz63
+  
+  StudyCategoryEnum:
+    permissible_values:
+      research_study:
+        description: A detailed examination, analysis, or critical inspection of a hypothesis-driven experiment.
+        exact_mappings:
+          - SIO:001066
+          - NCIT:C63536
+          - ISA:Study
+        close_mappings:
+          - OBI:0000355
+      consortium:
+        description: >-
+          A group formed to undertake a venture that is beyond the capabilities of the individual members. Each member of the 
+          consortium brings a high level of expertise in a specific area to ensure the successful completion of the project.
+        comments: A consortium has collections of data, those data do not come from a hypothesis-driven experiment.
+        exact_mappings:
+          - NCIT:C61538
 
 slots:
+
+  #  for FunctionalAnnotationAggMember:
+  metagenome_annotation_id:
+    range: WorkflowExecutionActivity
+  gene_function_id:
+    range: uriorcurie
+  count:
+    range: integer
+  functional_annotation_agg:
+    range: FunctionalAnnotationAggMember
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+
   neon_deims_sdr_link:
     range: string
   neon_eco_type:
@@ -1977,7 +2072,7 @@ slots:
 
   ecosystem_path_id:
     range: string
-    description: A unique id representing the GOLD classifers associated with a sample.
+    description: A unique id representing the GOLD classifiers associated with a sample.
   habitat:
     range: string
   location:
@@ -2020,8 +2115,16 @@ slots:
     range: integer
     exact_mappings:
       - OBI:0002475
-  
-  sample_mass:
+
+  input_mass:
+    title: sample mass used
+    description: Total mass of sample used in activity.
+    aliases:
+      - sample mass
+      - sample weight
+    exact_mappings:
+      - MS:1000004
+    #      - AFO:/result#AFR_0001982 # reconsidering use of AFO mappings in https://github.com/microbiomedata/nmdc-schema/issues/1113
     range: QuantityValue
     description: "Total mass of sample used"
 
@@ -2251,7 +2354,7 @@ slots:
       A list of organizations, along with the award numbers, that underwrite financial support for projects of 
       a particular type. Typically, they process applications and award funds to the chosen qualified 
       applicants.
-    pattern: ^.{1,200}$
+    #    pattern: ^.{1,200}$
     comments:
       - Include only the name of the funding organization and the award or contract number.
     examples:
@@ -2285,6 +2388,10 @@ slots:
       investigator role... do we need to define the OBI prefix?
     required: true
   #    slot_uri: prov:agent
+  study_category:
+    description: The type of research initiative
+    range: StudyCategoryEnum
+
   object_set:
     mixin: true
     domain: Database
@@ -2558,14 +2665,77 @@ slots:
     is_a: attribute
     range: PersonValue
     description: Principal Investigator who led the study and/or generated the dataset.
-  doi:
-    is_a: attribute
-    range: AttributeValue
-    annotations:
-      on_hover: show details
+
+  dois:
+    # is_a: attribute
+    todos:
+      - the previous doi slot was an attribute, but attribute seems committed to biosamples
+      - should we assert a parent term here?
+    range: uriorcurie
+    description: >-
+      A digital object identifier, which is intended to persistantly identify some resource on the web.
+    multivalued: true
+    abstract: true
+    aliases:
+      - DOIs
+      - digital object identifiers
+    pattern: '^doi:10.\d{2,9}/.*$'
+    see_also:
+      - https://schema.datacite.org/meta/kernel-4.4/doc/DataCite-MetadataKernel_v4.4.pdf
+      - https://api.crossref.org/types
+    comments:
+      - See especially the resourceTypeGeneral section of the DataCite pdf, on pp48-53 as of 2023-07-19
+
+  award_dois:
+    is_a: dois
+    description: >-
+      One or more DOIs that links a study, or similar entiry, to information about the funding authority.
+    examples:
+      - value: doi:10.46936/10.25585/60000880
+        description:
+          award_dois link to to an award document. Should not be used to link to datasets or publications.
+          For example, doi:10.15485/1577267 is not an award doi, but a dataset doi.
+
+  dataset_dois:
+    is_a: dois
+    description: >-
+      One or more DOIs that links a study, or similar entity, to the generated data.
+    #    annotations:
+    #      display_hint: DOI associated with the data in this study. This is required when data is already generated.
+    examples:
+      - value: doi:10.15485/1577267
+        description:
+          dataset_dois link to data encoded in a defined structure (as defined by DataCite).
+          Should not be used to link to publications or administrative information like funding requests or awards.
+
+  publication_dois:
+    is_a: dois
+    description: One or more DOIs that links a study, or similar entity, to a publication.
+    examples:
+      - value: doi:10.1126/science.1058040
+        description:
+          publication_dois link to a prose document, preferably a peer-reviewed journal article.
+          Should not be used to link to datasets or administrative information like funding requests or awards
+
   add_date:
     range: string
     description: The date on which the information was added to the database.
+
+  # moving emsl_project_dois from external_identifiers.yaml to nmdc.yaml and re-rooting in `dois` with new pattern
+  emsl_project_dois:
+    is_a: dois
+    #    is_a: study_identifiers
+    mixins:
+      - emsl_identifiers
+    title: EMSL Project DOI
+    description: One or more DOIs that links to an EMSL Research Campaign page.
+    examples:
+      - value: doi:10.46936/intm.proj.2021.6014
+        description:
+          emsl_project_dois link to the document outlining the EMSL specific award for the project.
+          Should not be used to link to datasets or publications.
+    todos:
+      - Make as a subproperty of award_dois
 
   mod_date:
     range: string

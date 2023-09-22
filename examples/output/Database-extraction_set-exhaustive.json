@@ -4,6 +4,7 @@
       "id": "nmdc:extrp-99-abcdef",
       "name": "DNA extraction of NEON sample WREF_072-O-20190618-COMP",
       "description": "DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7",
+      "end_date": "2019-11-08",
       "has_input": [
         "generic:xxx"
       ],
@@ -15,16 +16,15 @@
         "name": "BMI_dnaExtractionSOP_v7"
       },
       "start_date": "2019-11-08",
-      "end_date": "2019-11-08",
       "extraction_method": "phenol/chloroform extraction",
       "extraction_target": "DNA",
       "processing_institution": "Battelle",
       "quality_control_report": {
         "status": "pass"
       },
-      "sample_mass": {
-        "has_unit": "gram",
-        "has_numeric_value": 0.25
+      "input_mass": {
+        "has_numeric_value": 0.25,
+        "has_unit": "gram"
       }
     }
   ],

@@ -6,6 +6,7 @@
 
 nmdc:sty-11-ab a nmdc:Study ;
     dcterms:description "see also name, title, objective, various alternatives" ;
+    dcterms:isPartOf nmdc:sty-11-34xj1157 ;
     prov:qualifiedAssociation [ a prov:Association ;
             nmdc:applied_roles "Investigation",
                 "Supervision" ;
@@ -32,8 +33,6 @@ nmdc:sty-11-ab a nmdc:Study ;
         "any string 2" ;
     nmdc:alternative_titles "any string 1",
         "any string 2" ;
-    nmdc:doi [ a nmdc:AttributeValue ;
-            nmdc:has_raw_value "https://doi.org/10.1126/science.1058040" ] ;
     nmdc:ecosystem "unconstrained text. should be validated against the controlled vocabulary, by the sample's environmental package. would also be nice to align the CV with MIxS environmental triads" ;
     nmdc:ecosystem_category "unconstrained text" ;
     nmdc:ecosystem_subtype "unconstrained text" ;
@@ -42,8 +41,8 @@ nmdc:sty-11-ab a nmdc:Study ;
         "any string 2" ;
     nmdc:funding_sources "any string 1",
         "any string 2" ;
-    nmdc:gold_study_identifiers "GOLD:Gs12345"^^xsd:anyURI,
-        "GOLD:Gs90909"^^xsd:anyURI ;
+    nmdc:gold_study_identifiers "gold:Gs12345"^^xsd:anyURI,
+        "gold:Gs90909"^^xsd:anyURI ;
     nmdc:mgnify_project_identifiers "mgnify.proj:ABC123"^^xsd:anyURI ;
     nmdc:name "see also description, title, objective, various alternatives" ;
     nmdc:objective "This record, an instance of class Study from the nmdc-schema was had authored, so that the NMDC team would have at least one instance, using all slots, with a mixture of reasonable values and minimally compliant values." ;
@@ -56,12 +55,14 @@ nmdc:sty-11-ab a nmdc:Study ;
             nmdc:was_generated_by nmdc:any_string_1 ;
             nmdc:websites "https://www.jcvi.org/",
                 "https://www.jcvi.org/about/j-craig-venter" ] ;
+    nmdc:publication_dois "doi:10.1126/science.1058040"^^xsd:anyURI ;
     nmdc:publications "any string 1",
         "any string 2" ;
     nmdc:related_identifiers "any string R1" ;
     nmdc:relevant_protocols "any string 1",
         "any string 2" ;
     nmdc:specific_ecosystem "unconstrained text" ;
+    nmdc:study_category "research_study" ;
     nmdc:study_image [ a nmdc:ImageValue ;
             dcterms:description "Photo of Craig Venter Institute, Rockville, Maryland" ;
             nmdc:display_order "1" ;

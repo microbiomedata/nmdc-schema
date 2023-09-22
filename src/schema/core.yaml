@@ -1,8 +1,7 @@
 id: https://w3id.org/nmdc/core
 name: NMDC-Core
 title: NMDC Schema Core Types
-description: >-
-  Schema for National Microbiome Data Collaborative (NMDC), Core Types
+description: Schema for National Microbiome Data Collaborative (NMDC), Core Types
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -11,27 +10,21 @@ imports:
   - prov
 
 prefixes:
-  KEGG.COMPOUND: http://identifiers.org/kegg.compound/
-  dcterms: http://purl.org/dc/terms/
-  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
-
-  UniProtKB: https://identifiers.org/uniprot/ # "UNIPROT": "http://identifiers.org/uniprot/", in https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
-
+  KEGG.COMPOUND: "https://bioregistry.io/kegg.compound:"
+  SIO: http://semanticscience.org/resource/SIO_
+  UniProtKB: "https://bioregistry.io/uniprot:" # https://bioregistry.io/uniprot:P0DP23
   biolink: https://w3id.org/biolink/vocab/
+  dcterms: http://purl.org/dc/terms/
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
-
   qud: http://qudt.org/1.1/schema/qudt#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   schema: http://schema.org/
-  sio: http://semanticscience.org/resource/SIO_
   wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
 
 default_prefix: nmdc
 default_range: string
 
-#default_curi_maps:
-#  - obo_context
-#  - idot_context
 
 subsets:
   environment: { }
@@ -43,24 +36,21 @@ subsets:
 types:
 
   bytes:
-    description: >-
-      An integer value that corresponds to a size in bytes
+    description: An integer value that corresponds to a size in bytes
     base: int
     uri: xsd:long
     see_also:
       - UO:0000233
   
   decimal degree:
-    description: >-
-      A decimal degree expresses latitude or longitude as decimal fractions.
+    description: A decimal degree expresses latitude or longitude as decimal fractions.
     uri: xsd:decimal
     base: float
     see_also:
       - https://en.wikipedia.org/wiki/Decimal_degrees
 
   language code:
-    description: >-
-      A language code conforming to ISO_639-1
+    description: A language code conforming to ISO_639-1
     see_also:
       - https://en.wikipedia.org/wiki/ISO_639-1
     base: str
@@ -137,11 +127,11 @@ classes:
     is_a: NamedThing
     title: Planned Process
     slots:
+      - end_date
       - has_input
       - has_output
       - protocol_link
       - start_date
-      - end_date
       # - participating_agent
 
   OntologyClass:
@@ -164,8 +154,7 @@ classes:
       - was_generated_by
     slot_usage:
       type:
-        description: >-
-          An optional string that specified the type of object.
+        description: An optional string that specified the type of object.
 
   InstrumentValue:
     is_a: AttributeValue
@@ -177,32 +166,27 @@ classes:
 
   QuantityValue:
     is_a: AttributeValue
-    description: >-
-      A simple quantity, e.g. 2cm
+    description: A simple quantity, e.g. 2cm
     slots:
-      - has_unit
-      - has_numeric_value
-      - has_minimum_numeric_value
       - has_maximum_numeric_value
+      - has_minimum_numeric_value
+      - has_numeric_value
+      - has_raw_value
+      - has_unit
     slot_usage:
       has_raw_value:
-        description: >-
-          Unnormalized atomic string representation, should in syntax {number} {unit}
+        description: Unnormalized atomic string representation, should in syntax {number} {unit}
       has_unit:
-        description: >-
-          The unit of the quantity
+        description: The unit of the quantity
       has_numeric_value:
-        description: >-
-          The number part of the quantity
-        range:
-          double
+        description: The number part of the quantity
+        range: double
     mappings:
       - schema:QuantityValue
 
   ImageValue:
     is_a: AttributeValue
-    description: >-
-      An attribute value representing an image.
+    description: An attribute value representing an image.
     slots:
       - url
       - description
@@ -210,13 +194,12 @@ classes:
   
   PersonValue:
     is_a: AttributeValue
-    description: >-
-      An attribute value representing a person
+    description: An attribute value representing a person
     slots:
-      - orcid
-      - profile_image_url
       - email
       - name
+      - orcid
+      - profile_image_url
       - websites
     todos:
       - add additional fields e.g for institution
@@ -229,28 +212,15 @@ classes:
         annotations:
           display_hint: Email address for this person.
       has_raw_value:
-        description: >-
-          The full name of the Investigator in format FIRST LAST.
-        notes: >-
-          May eventually be deprecated in favor of "name".
+        description: The full name of the Investigator in format FIRST LAST.
+        notes:
+          - May eventually be deprecated in favor of "name".
       name:
         description: >-
           The full name of the Investigator.
           It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
         annotations:
           display_hint: First name, middle initial, and last name of this person.
-
-  #  Person:
-  #    is_a: NamedThing
-  #    description: >-
-  #      represents a person, such as a researcher
-  #    notes:
-  #      - "not yet in use"
-  #    slot_usage:
-  #      id:
-  #        required: true
-  #        description: >-
-  #          Should be an ORCID. Specify in CURIE format. E.g ORCID:0000-1111-...
   
   MagBin:
     slots:
@@ -291,16 +261,14 @@ classes:
           interpolated: true
 
   MetaboliteQuantification:
-    description: >-
-      This is used to link a metabolomics analysis workflow to a specific metabolite
+    description: This is used to link a metabolomics analysis workflow to a specific metabolite
     slots:
       - alternative_identifiers
       - highest_similarity_score
       - metabolite_quantified
 
   PeptideQuantification:
-    description: >-
-      This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information
+    description: This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information
     slots:
       - all_proteins
       - best_protein
@@ -310,30 +278,18 @@ classes:
       - peptide_sum_masic_abundance
   
   ProteinQuantification:
-    description: >-
-      This is used to link a metaproteomics analysis workflow to a specific protein
+    description: This is used to link a metaproteomics analysis workflow to a specific protein
+    slots:
+      - all_proteins
+      - best_protein
+      - peptide_sequence_count
+      - protein_spectral_count
+      - protein_sum_masic_abundance
     slot_usage:
       best_protein:
-        description: >-
-          the specific protein identifier most correctly grouped to its associated peptide sequences
-        range: GeneProduct
+        description: the specific protein identifier most correctly grouped to its associated peptide sequences
       all_proteins:
-        description: >-
-          the grouped list of protein identifiers associated with the peptide sequences that were grouped to a best protein
-        range: GeneProduct
-        multivalued: true
-      peptide_sequence_count:
-        description: >-
-          count of peptide sequences grouped to the best_protein
-        range: integer
-      protein_spectral_count:
-        description: >-
-          sum of filter passing MS2 spectra associated with the best protein within a given LC-MS/MS data file
-        range: integer
-      protein_sum_masic_abundance:
-        description: >-
-          combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the best protein from a given LC-MS/MS data file using the MASIC tool
-        range: integer
+        description: the grouped list of protein identifiers associated with the peptide sequences that were grouped to a best protein
 
   ChemicalEntity:
     aliases:
@@ -347,24 +303,16 @@ classes:
       There may be different terms for distinct acid-base forms, protonation states
     comments:
       - As with the parent OntologyClass, we will not assign an nmdc id pattern or typecode to this class.
-    slot_usage:
-      inchi:
-        range: string
-      inchi_key:
-        range: string
-      smiles:
-        description: >-
-          A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.
-        multivalued: true
-        range: string
-      chemical_formula:
-        description: >-
-          A generic grouping for molecular formulae and empirical formulae
-        range: string
+    slots:
+      - chemical_formula
+      - inchi
+      - inchi_key
+      - smiles
+
     see_also:
       - https://bioconductor.org/packages/devel/data/annotation/vignettes/metaboliteIDmapping/inst/doc/metaboliteIDmapping.html
     id_prefixes:
-      - CAS
+      - cas
       - CHEBI
       - CHEMBL.COMPOUND
       - DRUGBANK
@@ -377,8 +325,7 @@ classes:
 
   GeneProduct:
     is_a: NamedThing
-    description: >-
-      A molecule encoded by a gene that has an evolved function
+    description: A molecule encoded by a gene that has an evolved function
     notes:
       - we may include a more general gene product class in future to allow for ncRNA annotation
     id_prefixes:
@@ -390,41 +337,35 @@ classes:
 
   TextValue:
     is_a: AttributeValue
-    description: >-
-      A basic string value
+    description: A basic string value
     slots:
       - language
 
   UrlValue:
     is_a: AttributeValue
-    description: >-
-      A value that is a string that conforms to URL syntax
+    description: A value that is a string that conforms to URL syntax
 
   TimestampValue:
     is_a: AttributeValue
-    description: >-
-      A value that is a timestamp. The range should be ISO-8601
+    description: A value that is a timestamp. The range should be ISO-8601
     notes:
       - "removed the following slots: year, month, day"
 
   IntegerValue:
     is_a: AttributeValue
-    description: >-
-      A value that is an integer
+    description: A value that is an integer
     slots:
       - has_numeric_value
 
   BooleanValue:
     is_a: AttributeValue
-    description: >-
-      A value that is a boolean
+    description: A value that is a boolean
     slots:
       - has_boolean_value
 
   ControlledTermValue:
     is_a: AttributeValue
-    description: >-
-      A controlled term or class from an ontology
+    description: A controlled term or class from an ontology
     slots:
       - term
     todos:
@@ -441,8 +382,7 @@ classes:
 
   GeolocationValue:
     is_a: AttributeValue
-    description: >-
-      A normalized value for a location on the earth's surface
+    description: A normalized value for a location on the earth's surface
     slots:
       - latitude
       - longitude
@@ -450,8 +390,7 @@ classes:
       - "what did 'to_str: {latitude} {longitude}' mean?"
     slot_usage:
       has_raw_value:
-        description: >-
-          The raw value for a  geolocation should follow {latitude} {longitude}
+        description: The raw value for a geolocation should follow {latitude} {longitude}
       latitude:
         required: true
       longitude:
@@ -501,43 +440,30 @@ slots:
   gtdbtk_species:
     range: string
 
-  #  has_inputs:
-  #    domain: PlannedProcess
-  #    multivalued: true
-  #    range: NamedThing
-
-  #  has_outputs:
-  #    domain: PlannedProcess
-  #    multivalued: true
-  #    range: NamedThing
-
-  #  participating_agent:
-  #    domain: PlannedProcess
-  #    range: Agent
-
-
   language:
     range: language code
-    description: >-
-      Should use ISO 639-1 code e.g. "en", "fr"
+    description: Should use ISO 639-1 code e.g. "en", "fr"
 
   attribute:
-    aliases: [ 'field', 'property', 'template field', 'key', 'characteristic' ]
+    aliases:
+      - field
+      - property
+      - template field
+      - key
+      - characteristic
     abstract: true
     description: >-
       A attribute of a biosample. Examples: depth, habitat, material.
       For NMDC, attributes SHOULD be mapped to terms within a MIxS template
 
   has_raw_value:
-    description: >-
-      The value that was specified for an annotation in raw form, i.e. a string. E.g. "2 cm" or "2-4 cm"
+    description: The value that was specified for an annotation in raw form, i.e. a string. E.g. "2 cm" or "2-4 cm"
     multivalued: false
     domain: AttributeValue
     range: string
 
   has_unit:
-    description: >-
-      Links a QuantityValue to a unit
+    description: Links a QuantityValue to a unit
     aliases:
       - scale
     range: unit
@@ -546,8 +472,7 @@ slots:
       - schema:unitCode
 
   has_numeric_value:
-    description: >-
-      Links a quantity value to a number
+    description: Links a quantity value to a number
     multivalued: false
     range: float
     mappings:
@@ -556,25 +481,21 @@ slots:
   
   has_minimum_numeric_value:
     is_a: has_numeric_value
-    description: >-
-      The minimum value part, expressed as number, of the quantity value when the value covers a range.
+    description: The minimum value part, expressed as number, of the quantity value when the value covers a range.
 
   has_maximum_numeric_value:
     is_a: has_numeric_value
-    description: >-
-      The maximum value part, expressed as number, of the quantity value when the value covers a range.
+    description: The maximum value part, expressed as number, of the quantity value when the value covers a range.
   
   has_boolean_value:
-    description: >-
-      Links a quantity value to a boolean
+    description: Links a quantity value to a boolean
     range: boolean
     multivalued: false
   
   latitude:
     domain: GeolocationValue
     range: decimal degree
-    description: >-
-      latitude
+    description: latitude
     slot_uri: wgs84:lat
     examples:
       - value: -33.460524
@@ -584,8 +505,7 @@ slots:
   longitude:
     domain: GeolocationValue
     range: decimal degree
-    description: >-
-      longitude
+    description: longitude
     slot_uri: wgs84:long
     examples:
       - value: 150.168149
@@ -595,15 +515,13 @@ slots:
   term:
     domain: ControlledTermValue
     range: OntologyClass
-    description: >-
-      pointer to an ontology class
+    description: pointer to an ontology class
     inlined: true
     notes:
       - "removed 'slot_uri: rdf:type'"
 
   orcid:
-    description: >-
-      The ORCID of a person.
+    description: The ORCID of a person.
     domain: PersonValue
     range: string
 
@@ -615,18 +533,17 @@ slots:
     slot_uri: schema:email
 
   alternate_emails:
-    description: >-
-      One or more other email addresses for an entity.
+    description: One or more other email addresses for an entity.
     range: string
 
   profile_image_url:
-    description: >-
-      A url that points to an image of a person.
+    description: A url that points to an image of a person.
     domain: PersonValue
     range: string
   
   has_input:
-    aliases: [ 'input' ]
+    aliases:
+      - input
     domain: NamedThing
     range: NamedThing
     multivalued: true
@@ -634,26 +551,26 @@ slots:
       An input to a process.
 
   has_output:
-    aliases: [ 'output' ]
+    aliases:
+      - output
     domain: NamedThing
     range: NamedThing
     multivalued: true
-    description: >-
-      An output biosample to a processing step
+    description: An output biosample to a processing step
 
   part_of:
-    aliases: [ 'is part of' ]
+    aliases:
+      - is part of
     range: NamedThing
     domain: NamedThing
     multivalued: true
     slot_uri: dcterms:isPartOf
-    description: >-
-      Links a resource to another resource that either logically or physically includes it.
+    description: Links a resource to another resource that either logically or physically includes it.
   
   execution_resource:
     is_a: attribute
-    description: >-
-      Example: NERSC-Cori
+    examples:
+      - value: NERSC-Cori
 
   url:
     is_a: attribute
@@ -663,26 +580,23 @@ slots:
   
   display_order:
     is_a: attribute
-    description: >-
-      When rendering information, this attribute to specify the order in which the information should be rendered.
+    description: When rendering information, this attribute to specify the order in which the information should be rendered.
 
   git_url:
     is_a: attribute
     range: string
-    description: >-
-      Example: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1
+    examples:
+      - value: "https://github.com/microbiomedata/mg_annotation/releases/tag/0.1"
 
   file_size_bytes:
     is_a: attribute
     range: bytes
-    description: >-
-      Size of the file in bytes
+    description: Size of the file in bytes
   
   md5_checksum:
     is_a: attribute
     range: string
-    description: >-
-      MD5 checksum of file (pre-compressed)
+    description: MD5 checksum of file (pre-compressed)
 
   keywords:
     range: string
@@ -700,13 +614,12 @@ slots:
       The scientific objectives associated with the entity.
       It SHOULD correspond to scientific norms for objectives field in a structured abstract.
     mappings:
-      - sio:000337
+      - SIO:000337
 
   websites:
     range: string
     multivalued: true
-    description: >-
-      A list of websites that are associated with the entity.
+    description: A list of websites that are associated with the entity.
 
   publications:
     range: string
@@ -716,35 +629,30 @@ slots:
       The publications SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.
 
   highest_similarity_score:
-    description: >-
-      TODO: Yuri to fill in
+    todos:
+      - Yuri to fill in description
     range: float
 
   metabolite_quantified:
-    description: >-
-      the specific metabolite identifier
+    description: the specific metabolite identifier
     range: ChemicalEntity
 
   all_proteins:
-    description: >-
-      the list of protein identifiers that are associated with the peptide sequence
+    description: the list of protein identifiers that are associated with the peptide sequence
     range: GeneProduct
     multivalued: true
   best_protein:
-    description: >-
-      the specific protein identifier most correctly associated with the peptide sequence
+    description: the specific protein identifier most correctly associated with the peptide sequence
     range: GeneProduct
   min_q_value:
-    description: >-
-      smallest Q-Value associated with the peptide sequence as provided by MSGFPlus tool
+    description: smallest Q-Value associated with the peptide sequence as provided by MSGFPlus tool
     range: float
     see_also:
       - OBI:0001442
   peptide_sequence:
     range: string
   peptide_spectral_count:
-    description: >-
-      sum of filter passing MS2 spectra associated with the peptide sequence within a given LC-MS/MS data file
+    description: sum of filter passing MS2 spectra associated with the peptide sequence within a given LC-MS/MS data file
     range: integer
   peptide_sum_masic_abundance:
     description: >-
@@ -752,11 +660,27 @@ slots:
     range: integer
 
   chemical_formula:
+    description: A generic grouping for molecular formulae and empirical formulae
+    range: string
+
   inchi_key:
+    range: string
     notes:
       - "key set to false due to rare collisions: Pletnev I, Erin A, McNaught A, Blinov K, Tchekhovskoi D, Heller S (2012) InChIKey collision resistance: an experimental testing. J Cheminform. 4:12"
   inchi:
+    range: string
   peptide_sequence_count:
+    description: count of peptide sequences grouped to the best_protein
+    range: integer
   protein_spectral_count:
+    description: sum of filter passing MS2 spectra associated with the best protein within a given LC-MS/MS data file
+    range: integer
   protein_sum_masic_abundance:
+    description: >-
+      combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the best protein from a given LC-MS/MS data file using the MASIC tool
+    range: integer
   smiles:
+    description: >-
+      A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.
+    multivalued: true
+    range: string

@@ -8,8 +8,8 @@ related_identifiers: any string R1
 #  - generic:abc1
 #emsl_proposal_doi: any string
 gold_study_identifiers:
-  - GOLD:Gs12345
-  - GOLD:Gs90909
+  - gold:Gs12345
+  - gold:Gs90909
 mgnify_project_identifiers:
   - mgnify.proj:ABC123
 ecosystem: unconstrained text. should be validated against the controlled vocabulary,
@@ -29,8 +29,8 @@ principal_investigator:
   websites:
     - https://www.jcvi.org/
     - https://www.jcvi.org/about/j-craig-venter
-doi:
-  has_raw_value: https://doi.org/10.1126/science.1058040
+publication_dois:
+  - doi:10.1126/science.1058040
 title: Sample Exhaustive Biosample instance. Although all of these values should pass
   validation, that does not mean that any Biosample of any type would necessarily
   have this particular combination of values.
@@ -94,3 +94,6 @@ study_image:
     url: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
     description: Photo of Craig Venter Institute, La Jolla, California
     display_order: '2'
+study_category: research_study
+part_of: 
+  - nmdc:sty-11-34xj1157

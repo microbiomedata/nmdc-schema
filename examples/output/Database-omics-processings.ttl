@@ -1,14 +1,14 @@
-@prefix GOLD: <http://identifiers.org/gold/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix jgi: <http://example.com/jgi/> .
+@prefix gold: <https://bioregistry.io/gold:> .
+@prefix jgi: <http://example.org/jgi/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 nmdc:omprc-99-5kgIJR a nmdc:OmicsProcessing ;
-    dcterms:isPartOf GOLD:Gs0112340 ;
+    dcterms:isPartOf gold:Gs0112340 ;
     nmdc:add_date "30-OCT-14 12.00.00.000000000 AM" ;
     nmdc:alternative_identifiers "gold:Gp0108341"^^xsd:anyURI ;
-    nmdc:has_input GOLD:Gb0108341 ;
+    nmdc:has_input gold:Gb0108341 ;
     nmdc:has_output jgi:551a20d90d878525404e90e1 ;
     nmdc:mod_date "22-MAY-20 06.09.46.171000000 PM" ;
     nmdc:name "Thawing permafrost microbial communities from the Arctic, studying carbon transformations - Permafrost 712S3S" ;
@@ -19,10 +19,10 @@ nmdc:omprc-99-5kgIJR a nmdc:OmicsProcessing ;
     nmdc:type "nmdc:OmicsProcessing" .
 
 nmdc:omprc-99-gKlQlF a nmdc:OmicsProcessing ;
-    dcterms:isPartOf GOLD:Gs0112340 ;
+    dcterms:isPartOf gold:Gs0112340 ;
     nmdc:add_date "30-OCT-14 12.00.00.000000000 AM" ;
     nmdc:alternative_identifiers "gold:Gp0108340"^^xsd:anyURI ;
-    nmdc:has_input GOLD:Gb0108340 ;
+    nmdc:has_input gold:Gb0108340 ;
     nmdc:has_output jgi:551a20d50d878525404e90d7 ;
     nmdc:mod_date "22-MAY-20 06.10.59.590000000 PM" ;
     nmdc:name "Thawing permafrost microbial communities from the Arctic, studying carbon transformations - Permafrost 612S3M" ;
@@ -33,10 +33,10 @@ nmdc:omprc-99-gKlQlF a nmdc:OmicsProcessing ;
     nmdc:type "nmdc:OmicsProcessing" .
 
 nmdc:omprc-99-zUCd5N a nmdc:OmicsProcessing ;
-    dcterms:isPartOf GOLD:Gs0112340 ;
+    dcterms:isPartOf gold:Gs0112340 ;
     nmdc:add_date "30-OCT-14 12.00.00.000000000 AM" ;
     nmdc:alternative_identifiers "gold:Gp0108335"^^xsd:anyURI ;
-    nmdc:has_input GOLD:Gb0108335 ;
+    nmdc:has_input gold:Gb0108335 ;
     nmdc:has_output jgi:551a20d30d878525404e90d5 ;
     nmdc:mod_date "22-MAY-20 06.13.12.927000000 PM" ;
     nmdc:name "Thawing permafrost microbial communities from the Arctic, studying carbon transformations - Permafrost 712P3D" ;
