@@ -28,6 +28,7 @@ imports:
   - portal/emsl
   - portal/jgi_metagenomics
   - portal/jgi_metatranscriptomics
+  - portal/jgi_metatranscriptomics
   - portal/mixs_inspired
   - portal/sample_id
   - minimal_metab
@@ -2119,6 +2120,7 @@ slots:
   input_mass:
     title: sample mass used
     description: Total mass of sample used in activity.
+#    description: "Total mass of sample used"
     aliases:
       - sample mass
       - sample weight
@@ -2126,7 +2128,7 @@ slots:
       - MS:1000004
     #      - AFO:/result#AFR_0001982 # reconsidering use of AFO mappings in https://github.com/microbiomedata/nmdc-schema/issues/1113
     range: QuantityValue
-    description: "Total mass of sample used"
+
 
   library_type:
     title: library type
