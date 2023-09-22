@@ -1433,7 +1433,6 @@ classes:
       - objective
       - part_of
       - principal_investigator
-      - publications
       - related_identifiers
       - relevant_protocols
       - specific_ecosystem
@@ -2707,6 +2706,8 @@ slots:
   publication_dois:
     is_a: dois
     description: One or more DOIs that links a study, or similar entity, to a publication.
+    aliases:
+    - publications
     examples:
       - value: doi:10.1126/science.1058040
         description:

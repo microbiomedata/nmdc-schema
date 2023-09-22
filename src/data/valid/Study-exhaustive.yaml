@@ -49,9 +49,6 @@ objective: This record, an instance of class Study from the nmdc-schema was had 
 websites:
   - https://w3id.org/nmdc
   - https://w3id.org/linkml
-publications:
-  - any string 1
-  - any string 2
 ess_dive_datasets:
   - any string 1
   - any string 2
