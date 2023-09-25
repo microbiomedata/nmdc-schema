@@ -1,8 +1,0 @@
-sample_ops_set:
-  - id: generic:123
-    name: g123
-    operation_type: "nmdc:MixingActivity"
-  - id: generic:555
-    name: g555
-  - id: gwatercontent:1
-    operation_type: "nmdc:MixingActivity"
