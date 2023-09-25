@@ -38,7 +38,7 @@ classes:
           interpolated: true
         required: true
       has_output:
-        range: ProcessedSample #full processed sample class, needs to be modified
+        range: ProcessedSample
       id:
         required: true
         structured_pattern:
@@ -47,6 +47,8 @@ classes:
       type:
         required: false
 
+  #slots could be moved into NMDC database class
+  #derivative_set naming style, linkml-lint for naming convention
   SampleOperationsCollection: 
     description: >-
       A collection of sample operations, together making a protocol
@@ -471,6 +473,7 @@ slots:
     description: "The solution prepared from the test portion for the analytical procedure. The proportions of test portion and solvent are normally known."
   sieve_size:
     range: QuantityValue
+    description: The size of the sieve used for separation.
   screen_size:
     range: QuantityValue
     description: The size of the screen in a sieve
