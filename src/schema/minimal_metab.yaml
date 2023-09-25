@@ -20,17 +20,19 @@ default_range: string
 imports:
   - linkml:types
   - nmdc
+  - sample_prep
 
 classes:
 
   SampleOperation:
-    is_a: BiosampleProcessing #was PlannedProcess, biosample processing is in main but not this branch so this won't validate unless changed to PlannedProcess
+    is_a: BiosampleProcessing 
     title: Sample Operations
     description: >-
       A planned process that is performed on a sample.  This class is intended to
       be used as a superclass for more specific sample operations.
     slots:
       - id
+      - type
     slot_usage:
       has_input: 
         structured_pattern:
@@ -49,25 +51,26 @@ classes:
 
   #slots could be moved into NMDC database class
   #derivative_set naming style, linkml-lint for naming convention
+  #change nulls in data files
   SampleOperationsCollection: 
     description: >-
       A collection of sample operations, together making a protocol
     slots:
       - operation_type
-      - DerivativeList
-      - SampleDryingList
-      - SubsamplingList
-      - AcidificationList
-      - ReactionList
-      - FiltrationList
-      - ExtractionList
-      - AliquotList
-      - PhaseSeparationList
-      - AnalyteStorageList
-      - PhMeasurementList
-      - MixingList
-      - SievingList
-      - ChemicalReactionList
+      - derivative_list
+      - sampledrying_list
+      - subsampling_list
+      - acidification_list
+      - reaction_list
+      - filtration_list
+      - extraction_list
+      - aliquot_list
+      - phaseseparation_list
+      - analytestorage_list
+      - phmeasurement_list
+      - mixing_list
+      - sieving_list
+      - chemicalreaction_list
   
   DerivativeActivity:
     description: >-
@@ -102,7 +105,7 @@ classes:
       - has_output
       - dry
       - duration
-      - sample_mass
+      - input_mass
       - value
       - temp
     slot_usage:
@@ -122,7 +125,7 @@ classes:
       - has_output
       - container_size
       - container_type
-      - sample_mass
+      - input_mass
       - starting_amount
       - volume
       - duration
@@ -176,7 +179,7 @@ classes:
       - temp
       - container_type
       - container_size
-      - sample_mass
+      - input_mass
       - has_input
       - has_output
       - duration
@@ -397,10 +400,13 @@ slots:
     description: The lab device used for a mixing action in an activity
   sample_volume:
     range: QuantityValue
+    description: The volume of the input sample.
   speed: 
     range: QuantityValue
+    description: Tbe speed the device is running at. For example 3000 RPM.
   volume:
     range: QuantityValue
+    description: The volume of the solvent/solute being used, not the input.
   concentration:
     range: QuantityValue
     description: The concentration of a substance used in an activity
@@ -420,6 +426,7 @@ slots:
     description: The act of removing moisture from something
   value: #not sure what this is supposed to actually be
     range: QuantityValue
+    description: Value of a field, can represent different things.
   starting_amount:
     range: QuantityValue
     description: The starting amount of analyte used in an activity
@@ -429,6 +436,7 @@ slots:
     description: "A molecular entity or chemical species capable of donating a hydron (proton) (see Brønsted acid) or capable of forming a covalent bond with an electron pair (see Lewis acid)."
   conditioning_type:
     range: string
+    description: The type of conditioning applied to a filter, device, etc.
   solvent:
     range: SolventEnum
     description: A solvent used in conditioning
@@ -440,6 +448,7 @@ slots:
     description: "A quantitative or qualitative measurement of the physical dimensions of the pores in a material."
   separation_method:
     range: ContainerTypeEnum
+    description: The method that was used to separate a substance from a solution or mixture.
   conditioning:
     range: ConditioningValue
     description: "Preliminary treatment of either phase with a suitable solution of the other phase (in the absence of main extractable solute(s)) so that when the subsequent equilibration is carried out changes in the (volume) phase ratio or in the concentrations of other components are minimized."
@@ -490,7 +499,7 @@ slots:
     range: string
     description: The type of reaction happening in a ChemicalreactionActivity
   operation_type: 
-    range: operationEnum
+    range: OperationEnum
     description: The sample operation protocol being followed
   transfer_type:
     range: string
@@ -498,74 +507,74 @@ slots:
   activity_type:
     range: string
     description: The type of sub activity being performed if applicable. i.e. 'ice' when handling a sample in storage
-  DerivativeList:
+  derivative_list:
     mixins: object_set
     range: DerivativeActivity
     multivalued: True
     description: The derivative activities that make up the steps in a sample operation
-  SampleDryingList:
+  sampledrying_list:
     mixins: object_set
     range: SampleDrying
     multivalued: True
     description: The sample drying activities that make up the steps in a sample operation
-  SubsamplingList:
+  subsampling_list:
     mixins: object_set
     range: SubsamplingActivity
     multivalued: True
     description: The subsampling activities that make up the steps in a sample operation
-  AcidificationList:
+  acidification_list:
     mixins: object_set
     range: AcidificationActivity
     multivalued: True
     description: The acidification activities that make up the steps in a sample operation
-  ReactionList:
+  reaction_list:
     mixins: object_set
     range: ReactionActivity
     multivalued: True
     description: The Reaction activities that make up the steps in a sample operation
-  FiltrationList:
+  filtration_list:
     mixins: object_set
     range: FiltrationActivity
     multivalued: True
     description: The Filtration activities that make up the steps in a sample operation
-  ExtractionList:
+  extraction_list:
     mixins: object_set
     range: ExtractionActivity
     multivalued: True
     description: The extraction activities that make up the steps in a sample operation
-  AliquotList:
+  aliquot_list:
     mixins: object_set
     range: AliquotActivity
     multivalued: True
     description: The Aliquot activities that make up the steps in a sample operation
-  PhaseSeparationList:
+  phaseseparation_list:
     mixins: object_set
     range: PhaseSeparationActivity
     multivalued: True
     inlined_as_list: True
     inlined: True
     description: The phase separation activities that make up the steps in a sample operation
-  AnalyteStorageList:
+  analytestorage_list:
     mixins: object_set
     range: AnalyteStorage
     multivalued: True
     description: The analyte storage activities that make up the steps in a sample operation
-  PhMeasurementList:
+  phmeasurement_list:
     mixins: object_set
     range: PhMeasurement
     multivalued: True
     description: The PhMeasurement activities that make up the steps in a sample operation
-  MixingList:
+  mixing_list:
     mixins: object_set
     range: MixingActivity
     multivalued: True
     description: The mixing activities that make up the steps in a sample operation
-  SievingList:
+  sieving_list:
     mixins: object_set
     range: SievingActivity
     multivalued: True
     description: The sieving activities that make up the steps in a sample operation
-  ChemicalReactionList:
+  chemicalreaction_list:
     mixins: object_set
     range: ChemicalReactionActivity
     multivalued: True
@@ -575,6 +584,7 @@ slots:
 #Touch up descriptions, potentially add ontology meaning tag
 enums: 
   ContainerTypeEnum:
+    description: The permitted types of containers used in processing metabolomic samples.
     permissible_values:
       screw top conical:
       HDPE bottle:
@@ -597,6 +607,7 @@ enums:
       Hamilton:
 
   DeviceTypeEnum: 
+    description: The devices permissible for use in processing metabolomic samples.
     permissible_values:
       Orbital Shaker:
       Thermomixer:
@@ -605,6 +616,7 @@ enums:
       Drying oven:
 
   SolventEnum: 
+    description: The solvents that may be used in processing metabolomic samples.
     permissible_values:
       Deionized Water:
       methanol:
@@ -623,7 +635,8 @@ enums:
       cloridic acid:
       Water:
 
-  operationEnum:
+  OperationEnum:
+    description: The possible protocols that may be followed.
     permissible_values:
       MPLEx:
       Comprehensive:
