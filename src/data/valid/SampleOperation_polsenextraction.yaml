@@ -1,5 +1,5 @@
 operation_type: Polsen extraction
-SubsamplingList:
+subsampling_list:
   - id: polsen:1
     has_input: nmdc:bsm-99-oW43DzG0 #This is an example biosample ID and does not represent a real biosample
     starting_amount:
@@ -18,16 +18,13 @@ SubsamplingList:
     container_size:
       has_unit: mL
       has_numeric_value: 50
-ExtractionList:
+extraction_list:
   - id: polsen:2
     has_input: nmdc:procsm-11-05g48p90
     extractant: olsen extract solution
     volume:
       has_unit: mL
       has_numeric_value: 20
-    concentration:
-      has_unit: unknown
-      has_raw_value: unknown
     mixing:
       device_type: Orbital Shaker
       activity_time:
@@ -40,7 +37,7 @@ ExtractionList:
     container_size:
       has_unit: mL
       has_numeric_value: 50
-PhaseSeparationList:
+phaseseparation_list:
   - id: polsen:centrifugation #not sure if this and the below should be combined
     has_input: nmdc:procsm-11-05g48p90
     duration:
@@ -49,7 +46,7 @@ PhaseSeparationList:
     value:
       has_numeric_value: 4000
       has_unit: RPM
-AnalyteStorageList:
+analytestorage_list:
   - id: polsen:4
     has_input: nmdc:procsm-11-05g48p90
     temp:

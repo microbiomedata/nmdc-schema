@@ -1,5 +1,5 @@
 operation_type: Organic matter spe 
-PhaseSeparationList:
+phaseseparation_list:
   - id: somspe:1
     has_input: nmdc:bsm-99-oW43DzG0 #This is an example biosample ID and does not represent a real biosample
     material: unknown
@@ -43,7 +43,7 @@ PhaseSeparationList:
     volume:
       has_unit: mL
       has_numeric_value: 5
-ExtractionList:
+extraction_list:
   - id: somspe:5
     has_input: nmdc:procsm-11-05g48p90
     extractant: Deionized Water
@@ -54,7 +54,7 @@ ExtractionList:
     container_size:
       has_unit: mL
       has_numeric_value: 15
-AcidificationList:
+acidification_list:
   - id: somspe:6
     has_input: nmdc:procsm-11-05g48p90
     acid: cloridic acid

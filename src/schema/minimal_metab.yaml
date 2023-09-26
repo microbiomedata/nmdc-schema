@@ -50,8 +50,8 @@ classes:
         required: false
 
   #slots could be moved into NMDC database class
-  #derivative_set naming style, linkml-lint for naming convention
   #change nulls in data files
+  #conflicts in reaction activity
   SampleOperationsCollection: 
     description: >-
       A collection of sample operations, together making a protocol
