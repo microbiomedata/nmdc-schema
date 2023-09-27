@@ -1123,11 +1123,9 @@ classes:
         description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
 
       lat_lon:
-        description:
-          This is currently a required field but it's not clear if this
-          should be required for human hosts
-        notes:
-          - required where?
+        todos:
+          - This is currently a required field but it's not clear if this
+            should be required for human hosts
       env_broad_scale:
         required: true
       env_local_scale:
