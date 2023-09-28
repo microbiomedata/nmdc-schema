@@ -132,6 +132,9 @@ subsets:
     description:
       Subset consisting of the data objects that either inputs or outputs
       of processes or workflows.
+  data portal subset: 
+    description:
+      Subset consisting of entities that Kitware/nmdc-server use to populate the data portal.
 
 classes:
 
@@ -2705,6 +2708,8 @@ slots:
 
   publication_dois:
     is_a: dois
+    in_subset:
+      - data portal subset
     description: One or more DOIs that links a study, or similar entity, to a publication.
     aliases:
     - publications
