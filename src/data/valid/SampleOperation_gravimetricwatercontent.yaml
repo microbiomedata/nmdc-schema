@@ -6,7 +6,6 @@ subsampling_list:
       has_unit: grams
       has_numeric_value: 10
     container_type: weighing tin
-    container_size:
   - id: gwatercontent:2
     has_input: nmdc:procsm-11-05g48p90 #this and below processed sample IDs are examples and do not represent an actual sample
     starting_amount:
