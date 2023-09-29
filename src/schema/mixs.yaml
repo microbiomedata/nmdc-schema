@@ -11216,10 +11216,6 @@ slots:
     description: field describing aspect of the investigation/study to which the sample belongs
     from_schema: http://w3id.org/mixs/terms
     abstract: true
-  core field:
-    description: basic fields
-    from_schema: http://w3id.org/mixs/terms
-    abstract: true
   nucleic acid sequence source field:
     from_schema: http://w3id.org/mixs/terms
     abstract: true
