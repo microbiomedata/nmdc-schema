@@ -31,7 +31,6 @@ classes:
       A planned process that is performed on a sample.  This class is intended to
       be used as a superclass for more specific sample operations.
     slots:
-      - id
       - type
     slot_usage:
       has_input: 
@@ -50,28 +49,44 @@ classes:
         required: false
 
   #slots could be moved into NMDC database class
-  #change nulls in data files
+  #sample_operations_set > how do we have a range that encompasses multiple classes?
   #conflicts in reaction activity
-  SampleOperationsCollection: 
-    description: >-
-      A collection of sample operations, together making a protocol
+  #instrument vs labdevice references
+  #lab device fields possibly in activities and not lab device
+  #instrument slot? exists already
+  #SampleOperationsCollection: 
+  #  description: >-
+  #    A collection of sample operations, together making a protocol
+  #  slots:
+  #    - operation_type
+  #    - derivative_operations
+  #    - sampledrying_operations
+  #    - subsampling_operations
+  #    - acidification_operations
+  #    - reaction_operations
+  #    - filtration_operations
+  #    - extraction_operations
+  #    - aliquot_operations
+  #    - phaseseparation_operations
+  #    - analytestorage_operations
+  #    - phmeasurement_operations
+  #    - mixing_operations
+  #    - sieving_operations
+  #    - chemicalreaction_operations
+
+  MicrobialBiomassDetermination:
+    description: >- 
+      These are the steps used in following the Microbial Biomass protocol.
+    #is_a: Not sure what this should inherit from, SampleOperation, PlannedProcess, BiosampleProcessing?  
     slots:
-      - operation_type
-      - derivative_list
-      - sampledrying_list
-      - subsampling_list
-      - acidification_list
-      - reaction_list
-      - filtration_list
-      - extraction_list
-      - aliquot_list
-      - phaseseparation_list
-      - analytestorage_list
-      - phmeasurement_list
-      - mixing_list
-      - sieving_list
-      - chemicalreaction_list
-  
+      - subsampling_operations
+      - extraction_operations
+      - phaseseparation_operations
+      - filtration_operations
+      - acidification_operations
+      - analytestorage_operations
+    
+
   DerivativeActivity:
     description: >-
       A technique used in chemistry which transforms a chemical compound into a product (the reaction's derivate) of similar chemical structure, called a derivative. That compound has properties more amenable to a particular analytical method. Some samples analyzed by GC require derivatization in order to make them suitable for analysis. Compounds that have poor volatility, poor thermal stability, or that can be adsorbed in the injector will exhibit nonreproducible peak areas, heights, and shapes. Other compounds that respond poorly on a specific detector may need to be “tagged” with a different functional group to improve detection.
@@ -498,86 +513,84 @@ slots:
   reaction_type:
     range: string
     description: The type of reaction happening in a ChemicalreactionActivity
-  operation_type: 
-    range: OperationEnum
-    description: The sample operation protocol being followed
+  #operation_type: 
+  #  range: OperationEnum
+  #  description: The sample operation protocol being followed
   transfer_type:
     range: string
     description: The type of transfer being performed during an aliquot activity
   activity_type:
     range: string
     description: The type of sub activity being performed if applicable. i.e. 'ice' when handling a sample in storage
-  derivative_list:
-    mixins: object_set
+  derivative_operations:
     range: DerivativeActivity
     multivalued: True
+    inlined_as_list: true
     description: The derivative activities that make up the steps in a sample operation
-  sampledrying_list:
-    mixins: object_set
+  sampledrying_operations:
     range: SampleDrying
-    multivalued: True
+    multivalued: true
+    inlined_as_list: true
     description: The sample drying activities that make up the steps in a sample operation
-  subsampling_list:
-    mixins: object_set
+  subsampling_operations:
     range: SubsamplingActivity
-    multivalued: True
+    multivalued: true
+    inlined_as_list: true
     description: The subsampling activities that make up the steps in a sample operation
-  acidification_list:
-    mixins: object_set
+  acidification_operations:
     range: AcidificationActivity
-    multivalued: True
+    multivalued: true
+    inlined_as_list: true
     description: The acidification activities that make up the steps in a sample operation
-  reaction_list:
-    mixins: object_set
+  reaction_operations:
     range: ReactionActivity
-    multivalued: True
+    multivalued: true
+    inlined_as_list: true
     description: The Reaction activities that make up the steps in a sample operation
-  filtration_list:
-    mixins: object_set
+  filtration_operations:
     range: FiltrationActivity
-    multivalued: True
+    multivalued: true
+    inlined_as_list: true
     description: The Filtration activities that make up the steps in a sample operation
-  extraction_list:
-    mixins: object_set
+  extraction_operations:
     range: ExtractionActivity
-    multivalued: True
+    multivalued: true
+    inlined_as_list: true
     description: The extraction activities that make up the steps in a sample operation
-  aliquot_list:
-    mixins: object_set
+  aliquot_operations:
     range: AliquotActivity
-    multivalued: True
+    multivalued: true
+    inlined_as_list: true
     description: The Aliquot activities that make up the steps in a sample operation
-  phaseseparation_list:
-    mixins: object_set
+  phaseseparation_operations:
     range: PhaseSeparationActivity
-    multivalued: True
-    inlined_as_list: True
-    inlined: True
+    multivalued: true
+    inlined_as_list: true
     description: The phase separation activities that make up the steps in a sample operation
-  analytestorage_list:
-    mixins: object_set
+  analytestorage_operations:
     range: AnalyteStorage
-    multivalued: True
+    multivalued: true
+    inlined_as_list: true
     description: The analyte storage activities that make up the steps in a sample operation
-  phmeasurement_list:
-    mixins: object_set
+  phmeasurement_operations:
     range: PhMeasurement
-    multivalued: True
+    multivalued: true
+    inlined_as_list: true
     description: The PhMeasurement activities that make up the steps in a sample operation
-  mixing_list:
-    mixins: object_set
+  mixing_operations:
     range: MixingActivity
-    multivalued: True
+    multivalued: true
+    inlined_as_list: true
     description: The mixing activities that make up the steps in a sample operation
-  sieving_list:
-    mixins: object_set
+  sieving_operations:
     range: SievingActivity
-    multivalued: True
+    multivalued: true
+    inlined_as_list: true
     description: The sieving activities that make up the steps in a sample operation
-  chemicalreaction_list:
-    mixins: object_set
+  chemicalreaction_operations:
     range: ChemicalReactionActivity
-    multivalued: True
+    multivalued: true
+    inlined_as_list: true
     description: The chemical reaction activity activities that make up the steps in a sample operation
 
 
