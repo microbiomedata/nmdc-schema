@@ -1,0 +1,4 @@
+sample_preparation_set:
+  - has_input: generic:1
+    has_output: generic:2
+    type: nmdc:Sieving
