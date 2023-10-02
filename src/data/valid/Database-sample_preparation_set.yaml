@@ -1,4 +1,25 @@
 sample_preparation_set:
-  - has_input: generic:1
-    has_output: generic:2
-    type: nmdc:Sieving
+  - id: generic:Sieving_1
+    designated_class: nmdc:Sieving
+    mesh_size_mm: 3.0
+    has_input:
+      - generic:Biosample_1
+    has_output:
+      - generic:fines_1
+      - generic:coarse_1
+  - id: generic:Suspending_1
+    designated_class: nmdc:Suspending
+    has_input:
+      - generic:fines_1
+    has_output:
+      - generic:suspension_1
+    stir_rate_rpm: 1000
+    stir_time_min: 10
+  - id: generic:Filtering_1
+    designated_class: nmdc:Filtering
+    has_input:
+      - generic:suspension_1
+    has_output:
+      - generic:filtrate_1
+      - generic:oversize_1
+    paper_grade: grade_3

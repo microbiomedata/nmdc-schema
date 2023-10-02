@@ -554,3 +554,9 @@ OmicsProcessing.tsv: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
 #counts-initial-gold-lc.txt counts-initial-gold-uc.txt \
 #counts-migrated-cas-lc.txt counts-migrated-cas-uc.txt \
 #counts-migrated-gold-lc.txt counts-migrated-gold-uc.txt
+
+.PHONY: validate-sample-prep
+
+validate-sample-prep: src/schema/nmdc.yaml src/data/valid/Database-sample_preparation_set.yaml
+	$(RUN) linkml-validate \
+		--schema $^

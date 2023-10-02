@@ -20,6 +20,7 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 version: v8.0.0 # GH uses same version string # pyproject.toml says "8.0.0"
 
 imports:
+  - polymorphic_sample_prep_container
   - annotation
   - core
   - external_identifiers
@@ -151,6 +152,7 @@ classes:
       translated to JSON-Schema this is the 'root' object. It should contain pointers
       to other objects of interest
     slots:
+      - sample_preparation_set
       - functional_annotation_agg
       - library_preparation_set
       - processed_sample_set

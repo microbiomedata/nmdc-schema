@@ -3,8 +3,9 @@ name: polymorphic_sample_prep_container
 title: polymorphic sample prep container
 description: an example of putting subclasses in a polymorphic container
 
-#comments:
-#  - redefining Database and object_set so importing nmdc.yaml won't be necessary during development
+comments:
+  - Chris would prefer more lumping via an enumerated type designator
+#  - unhelpful error message {'id': 'generic:Suspending_1', 'designated_class': 'nmdc:Suspending', 'has_input': [ 'generic:fines_1' ], 'has_output': [ 'generic:suspension_1' ] } "is not valid under any of the given schemas"
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -17,44 +18,77 @@ default_range: string
 
 imports:
   - linkml:types
-  - nmdc
 
 classes:
   SamplePreparation:
     is_a: PlannedProcess
+    slots:
+      - designated_class
 
   Sieving:
     is_a: SamplePreparation
     class_uri: nmdc:Sieving
     comments:
       - Removes rocks from soil samples
+    slots:
+      - mesh_size_mm
 
   Suspending:
     is_a: SamplePreparation
     class_uri: nmdc:Suspending
     comments:
       - Suspends the sieved portion of soil samples in water
+    slots:
+      - stir_rate_rpm
+      - stir_time_min
 
   Filtering:
     is_a: SamplePreparation
     class_uri: nmdc:Filtering
     comments:
       - Separates the suspended portion of soil samples from the water
-
-#  Database:
-#    tree_root: true
-#    slots:
-#      - sample_preparation_set
+    slots:
+      - paper_grade
 
 slots:
   sample_preparation_set:
     mixins:
       - object_set
+    domain: Database
     range: SamplePreparation
+  mesh_size_mm:
+    domain: Sieving
+    range: float
+    required: true
+    comments:
+      - The mesh size, in millimeters, used for sieving
+  designated_class:
+    range: uriorcurie
+    slot_uri: rdf:type
+    designates_type: true
+    required: true
+    comments:
+      - The type of the object being designated
+      - normally I would just call this slot type, but it looks like that might have some impact on legacy modeling
+      - see https://microbiomedata.github.io/nmdc-schema/type/
+  stir_rate_rpm:
+    domain: Suspending
+    range: float
+    required: true
+  stir_time_min:
+    domain: Suspending
+    range: float
+    required: true
+  paper_grade:
+    domain: Filtering
+    range: PaperGrade
+    required: true
 
-#  object_set:
-#    mixin: true
-#    domain: Database
-#    multivalued: true
-#    inlined_as_list: true
-
+enums:
+  PaperGrade:
+    permissible_values:
+      - grade_1
+      - grade_2
+      - grade_3
+      - grade_4
+      - grade_602_h
