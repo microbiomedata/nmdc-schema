@@ -560,3 +560,14 @@ OmicsProcessing.tsv: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
 validate-sample-prep: src/schema/nmdc.yaml src/data/valid/Database-sample_preparation_set.yaml
 	$(RUN) linkml-validate \
 		--schema $^
+
+examples/output/Database-sample_preparation_set.ttl: src/schema/nmdc.yaml src/data/valid/Database-sample_preparation_set.yaml
+	$(RUN) linkml-convert --output $@ --schema $^
+	# https://www.easyrdf.org/converter can convert to .dot
+	# https://dreampuf.github.io/GraphvizOnline can convert .dot to .svg, .png, etc.
+	# does obographviz have good support ofr visualizing data like this?
+
+examples/output/Database-sample_preparation_set.png: examples/output/Database-sample_preparation_set.ttl
+	$(RUN) python nmdc_schema/submit_to_ldf_rdf_grapher.py \
+		--input-turtle $< \
+		--output-png $@
