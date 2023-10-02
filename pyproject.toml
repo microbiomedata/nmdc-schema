@@ -28,8 +28,8 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-linkml = "^1.5.6"
-linkml-runtime = "^1.5.4"
+linkml = "^1.5.0"
+linkml-runtime = "^1.5.0"
 python = "^3.9"
 click-log = "^0.4.0"
 
