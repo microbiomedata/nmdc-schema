@@ -11,7 +11,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: v8.0.0
+version: v8.1.0
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   CATH:
@@ -347,6 +347,10 @@ types:
   string:
     name: string
     description: A character string
+    notes:
+    - In RDF serializations, a slot with range of string is treated as a literal or
+      type xsd:string.   If you are authoring schemas in LinkML YAML, the type is
+      referenced with the lower case "string".
     from_schema: https://w3id.org/nmdc/nmdc
     exact_mappings:
     - schema:Text
@@ -355,6 +359,9 @@ types:
   integer:
     name: integer
     description: An integer
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "integer".
     from_schema: https://w3id.org/nmdc/nmdc
     exact_mappings:
     - schema:Integer
@@ -363,6 +370,9 @@ types:
   boolean:
     name: boolean
     description: A binary (true or false) value
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "boolean".
     from_schema: https://w3id.org/nmdc/nmdc
     exact_mappings:
     - schema:Boolean
@@ -372,6 +382,9 @@ types:
   float:
     name: float
     description: A real number that conforms to the xsd:float specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "float".
     from_schema: https://w3id.org/nmdc/nmdc
     exact_mappings:
     - schema:Float
@@ -380,6 +393,9 @@ types:
   double:
     name: double
     description: A real number that conforms to the xsd:double specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "double".
     from_schema: https://w3id.org/nmdc/nmdc
     close_mappings:
     - schema:Float
@@ -389,6 +405,9 @@ types:
     name: decimal
     description: A real number with arbitrary precision that conforms to the xsd:decimal
       specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "decimal".
     from_schema: https://w3id.org/nmdc/nmdc
     broad_mappings:
     - schema:Number
@@ -400,17 +419,21 @@ types:
       particular day
     notes:
     - URI is dateTime because OWL reasoners do not work with straight date or time
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "time".
     from_schema: https://w3id.org/nmdc/nmdc
     exact_mappings:
     - schema:Time
     base: XSDTime
-    uri: xsd:dateTime
+    uri: xsd:time
     repr: str
   date:
     name: date
     description: a date (year, month and day) in an idealized calendar
     notes:
     - URI is dateTime because OWL reasoners don't work with straight date or time
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "date".
     from_schema: https://w3id.org/nmdc/nmdc
     exact_mappings:
     - schema:Date
@@ -420,6 +443,9 @@ types:
   datetime:
     name: datetime
     description: The combination of a date and time
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "datetime".
     from_schema: https://w3id.org/nmdc/nmdc
     exact_mappings:
     - schema:DateTime
@@ -429,6 +455,9 @@ types:
   date_or_datetime:
     name: date_or_datetime
     description: Either a date or a datetime
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "date_or_datetime".
     from_schema: https://w3id.org/nmdc/nmdc
     base: str
     uri: linkml:DateOrDatetime
@@ -436,6 +465,9 @@ types:
   uriorcurie:
     name: uriorcurie
     description: a URI or a CURIE
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "uriorcurie".
     from_schema: https://w3id.org/nmdc/nmdc
     base: URIorCURIE
     uri: xsd:anyURI
@@ -444,6 +476,9 @@ types:
     name: curie
     conforms_to: https://www.w3.org/TR/curie/
     description: a compact URI
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "curie".
     comments:
     - in RDF serializations this MUST be expanded to a URI
     - in non-RDF serializations MAY be serialized as the compact representation
@@ -455,6 +490,9 @@ types:
     name: uri
     conforms_to: https://www.ietf.org/rfc/rfc3987.txt
     description: a complete URI
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "uri".
     comments:
     - in RDF serializations a slot with range of uri is treated as a literal or type
       xsd:anyURI unless it is an identifier or a reference to an identifier, in which
@@ -468,6 +506,9 @@ types:
   ncname:
     name: ncname
     description: Prefix part of CURIE
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "ncname".
     from_schema: https://w3id.org/nmdc/nmdc
     base: NCName
     uri: xsd:string
@@ -475,8 +516,11 @@ types:
   objectidentifier:
     name: objectidentifier
     description: A URI or CURIE that represents an object in the model.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "objectidentifier".
     comments:
-    - Used for inheritence and type checking
+    - Used for inheritance and type checking
     from_schema: https://w3id.org/nmdc/nmdc
     base: ElementIdentifier
     uri: shex:iri
@@ -484,9 +528,51 @@ types:
   nodeidentifier:
     name: nodeidentifier
     description: A URI, CURIE or BNODE that represents a node in a model.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "nodeidentifier".
     from_schema: https://w3id.org/nmdc/nmdc
     base: NodeIdentifier
     uri: shex:nonLiteral
+    repr: str
+  jsonpointer:
+    name: jsonpointer
+    conforms_to: https://datatracker.ietf.org/doc/html/rfc6901
+    description: A string encoding a JSON Pointer. The value of the string MUST conform
+      to JSON Point syntax and SHOULD dereference to a valid object within the current
+      instance document when encoded in tree form.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "jsonpointer".
+    from_schema: https://w3id.org/nmdc/nmdc
+    base: str
+    uri: xsd:string
+    repr: str
+  jsonpath:
+    name: jsonpath
+    conforms_to: https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html
+    description: A string encoding a JSON Path. The value of the string MUST conform
+      to JSON Point syntax and SHOULD dereference to zero or more valid objects within
+      the current instance document when encoded in tree form.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "jsonpath".
+    from_schema: https://w3id.org/nmdc/nmdc
+    base: str
+    uri: xsd:string
+    repr: str
+  sparqlpath:
+    name: sparqlpath
+    conforms_to: https://www.w3.org/TR/sparql11-query/#propertypaths
+    description: A string encoding a SPARQL Property Path. The value of the string
+      MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects
+      within the current instance document when encoded as RDF.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "sparqlpath".
+    from_schema: https://w3id.org/nmdc/nmdc
+    base: str
+    uri: xsd:string
     repr: str
 enums:
   StatusEnum:
@@ -1190,26 +1276,6 @@ enums:
         text: soil
       water_extract_soil:
         text: water_extract_soil
-  door_direct_enum:
-    name: door_direct_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      inward:
-        text: inward
-      outward:
-        text: outward
-      sideways:
-        text: sideways
-  oxy_stat_samp_enum:
-    name: oxy_stat_samp_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      aerobic:
-        text: aerobic
-      anaerobic:
-        text: anaerobic
-      other:
-        text: other
   surf_air_cont_enum:
     name: surf_air_cont_enum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -1230,164 +1296,164 @@ enums:
         text: nutrients
       biocides:
         text: biocides
-  window_vert_pos_enum:
-    name: window_vert_pos_enum
+  water_feat_type_enum:
+    name: water_feat_type_enum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
-      bottom:
-        text: bottom
-      middle:
-        text: middle
-      top:
-        text: top
-      low:
-        text: low
-      high:
-        text: high
-  filter_type_enum:
-    name: filter_type_enum
+      fountain:
+        text: fountain
+      pool:
+        text: pool
+      standing feature:
+        text: standing feature
+      stream:
+        text: stream
+      waterfall:
+        text: waterfall
+  samp_collect_point_enum:
+    name: samp_collect_point_enum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
-      particulate air filter:
-        text: particulate air filter
-      chemical air filter:
-        text: chemical air filter
-      low-MERV pleated media:
-        text: low-MERV pleated media
-      HEPA:
-        text: HEPA
-      electrostatic:
-        text: electrostatic
-      gas-phase or ultraviolet air treatments:
-        text: gas-phase or ultraviolet air treatments
-  rel_samp_loc_enum:
-    name: rel_samp_loc_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      edge of car:
-        text: edge of car
-      center of car:
-        text: center of car
-      under a seat:
-        text: under a seat
-  sediment_type_enum:
-    name: sediment_type_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      biogenous:
-        text: biogenous
-      cosmogenous:
-        text: cosmogenous
-      hydrogenous:
-        text: hydrogenous
-      lithogenous:
-        text: lithogenous
-  occup_document_enum:
-    name: occup_document_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      automated count:
-        text: automated count
-      estimate:
-        text: estimate
-      manual count:
-        text: manual count
-      videos:
-        text: videos
-  room_connected_enum:
-    name: room_connected_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      attic:
-        text: attic
-      bathroom:
-        text: bathroom
-      closet:
-        text: closet
-      conference room:
-        text: conference room
-      elevator:
-        text: elevator
-      examining room:
-        text: examining room
-      hallway:
-        text: hallway
-      kitchen:
-        text: kitchen
-      mail room:
-        text: mail room
-      office:
-        text: office
-      stairwell:
-        text: stairwell
-  quad_pos_enum:
-    name: quad_pos_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      North side:
-        text: North side
-      West side:
-        text: West side
-      South side:
-        text: South side
-      East side:
-        text: East side
-  sr_geol_age_enum:
-    name: sr_geol_age_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      Archean:
-        text: Archean
-      Cambrian:
-        text: Cambrian
-      Carboniferous:
-        text: Carboniferous
-      Cenozoic:
-        text: Cenozoic
-      Cretaceous:
-        text: Cretaceous
-      Devonian:
-        text: Devonian
-      Jurassic:
-        text: Jurassic
-      Mesozoic:
-        text: Mesozoic
-      Neogene:
-        text: Neogene
-      Ordovician:
-        text: Ordovician
-      Paleogene:
-        text: Paleogene
-      Paleozoic:
-        text: Paleozoic
-      Permian:
-        text: Permian
-      Precambrian:
-        text: Precambrian
-      Proterozoic:
-        text: Proterozoic
-      Silurian:
-        text: Silurian
-      Triassic:
-        text: Triassic
+      well:
+        text: well
+      test well:
+        text: test well
+      drilling rig:
+        text: drilling rig
+      wellhead:
+        text: wellhead
+      separator:
+        text: separator
+      storage tank:
+        text: storage tank
       other:
         text: other
-  door_move_enum:
-    name: door_move_enum
+  floor_water_mold_enum:
+    name: floor_water_mold_enum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
-      collapsible:
-        text: collapsible
-      folding:
-        text: folding
-      revolving:
-        text: revolving
-      rolling shutter:
-        text: rolling shutter
-      sliding:
-        text: sliding
-      swinging:
-        text: swinging
+      mold odor:
+        text: mold odor
+      wet floor:
+        text: wet floor
+      water stains:
+        text: water stains
+      wall discoloration:
+        text: wall discoloration
+      floor discoloration:
+        text: floor discoloration
+      ceiling discoloration:
+        text: ceiling discoloration
+      peeling paint or wallpaper:
+        text: peeling paint or wallpaper
+      bulging walls:
+        text: bulging walls
+      condensation:
+        text: condensation
+  wall_texture_enum:
+    name: wall_texture_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      crows feet:
+        text: crows feet
+      crows-foot stomp:
+        text: crows-foot stomp
+      ? ''
+      : text: ''
+      double skip:
+        text: double skip
+      hawk and trowel:
+        text: hawk and trowel
+      knockdown:
+        text: knockdown
+      popcorn:
+        text: popcorn
+      orange peel:
+        text: orange peel
+      rosebud stomp:
+        text: rosebud stomp
+      Santa-Fe texture:
+        text: Santa-Fe texture
+      skip trowel:
+        text: skip trowel
+      smooth:
+        text: smooth
+      stomp knockdown:
+        text: stomp knockdown
+      swirl:
+        text: swirl
+  samp_subtype_enum:
+    name: samp_subtype_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      oil phase:
+        text: oil phase
+      water phase:
+        text: water phase
+      biofilm:
+        text: biofilm
+      not applicable:
+        text: not applicable
+      other:
+        text: other
+  drainage_class_enum:
+    name: drainage_class_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      very poorly:
+        text: very poorly
+      poorly:
+        text: poorly
+      somewhat poorly:
+        text: somewhat poorly
+      moderately well:
+        text: moderately well
+      well:
+        text: well
+      excessively drained:
+        text: excessively drained
+  freq_clean_enum:
+    name: freq_clean_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      Daily:
+        text: Daily
+      Weekly:
+        text: Weekly
+      Monthly:
+        text: Monthly
+      Quarterly:
+        text: Quarterly
+      Annually:
+        text: Annually
+      other:
+        text: other
+  biotic_relationship_enum:
+    name: biotic_relationship_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      free living:
+        text: free living
+      parasite:
+        text: parasite
+      commensal:
+        text: commensal
+      symbiont:
+        text: symbiont
+  light_type_enum:
+    name: light_type_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      natural light:
+        text: natural light
+      electric light:
+        text: electric light
+      desk lamp:
+        text: desk lamp
+      flourescent lights:
+        text: flourescent lights
+      none:
+        text: none
   cur_land_use_enum:
     name: cur_land_use_enum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -1583,8 +1649,496 @@ enums:
             value: vine crops (grapes)
         examples:
         - value: grapes
-  hcr_geol_age_enum:
-    name: hcr_geol_age_enum
+  drawings_enum:
+    name: drawings_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      operation:
+        text: operation
+      as built:
+        text: as built
+      construction:
+        text: construction
+      bid:
+        text: bid
+      design:
+        text: design
+      building navigation map:
+        text: building navigation map
+      diagram:
+        text: diagram
+      sketch:
+        text: sketch
+  indoor_surf_enum:
+    name: indoor_surf_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      cabinet:
+        text: cabinet
+      ceiling:
+        text: ceiling
+      counter top:
+        text: counter top
+      door:
+        text: door
+      shelving:
+        text: shelving
+      vent cover:
+        text: vent cover
+      window:
+        text: window
+      wall:
+        text: wall
+  samp_capt_status_enum:
+    name: samp_capt_status_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      active surveillance in response to an outbreak:
+        text: active surveillance in response to an outbreak
+      active surveillance not initiated by an outbreak:
+        text: active surveillance not initiated by an outbreak
+      farm sample:
+        text: farm sample
+      market sample:
+        text: market sample
+      other:
+        text: other
+  room_loc_enum:
+    name: room_loc_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      corner room:
+        text: corner room
+      interior room:
+        text: interior room
+      exterior wall:
+        text: exterior wall
+  occup_document_enum:
+    name: occup_document_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      automated count:
+        text: automated count
+      estimate:
+        text: estimate
+      manual count:
+        text: manual count
+      videos:
+        text: videos
+  arch_struc_enum:
+    name: arch_struc_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      building:
+        text: building
+      shed:
+        text: shed
+      home:
+        text: home
+  wall_finish_mat_enum:
+    name: wall_finish_mat_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      plaster:
+        text: plaster
+      gypsum plaster:
+        text: gypsum plaster
+      veneer plaster:
+        text: veneer plaster
+      gypsum board:
+        text: gypsum board
+      tile:
+        text: tile
+      terrazzo:
+        text: terrazzo
+      stone facing:
+        text: stone facing
+      acoustical treatment:
+        text: acoustical treatment
+      wood:
+        text: wood
+      metal:
+        text: metal
+      masonry:
+        text: masonry
+  window_mat_enum:
+    name: window_mat_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      clad:
+        text: clad
+      fiberglass:
+        text: fiberglass
+      metal:
+        text: metal
+      vinyl:
+        text: vinyl
+      wood:
+        text: wood
+  int_wall_cond_enum:
+    name: int_wall_cond_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      new:
+        text: new
+      visible wear:
+        text: visible wear
+      needs repair:
+        text: needs repair
+      damaged:
+        text: damaged
+      rupture:
+        text: rupture
+  floor_finish_mat_enum:
+    name: floor_finish_mat_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      tile:
+        text: tile
+      wood strip or parquet:
+        text: wood strip or parquet
+      carpet:
+        text: carpet
+      rug:
+        text: rug
+      laminate wood:
+        text: laminate wood
+      lineoleum:
+        text: lineoleum
+      vinyl composition tile:
+        text: vinyl composition tile
+      sheet vinyl:
+        text: sheet vinyl
+      stone:
+        text: stone
+      bamboo:
+        text: bamboo
+      cork:
+        text: cork
+      terrazo:
+        text: terrazo
+      concrete:
+        text: concrete
+      none:
+        text: none
+      sealed:
+        text: sealed
+      clear finish:
+        text: clear finish
+      paint:
+        text: paint
+      none or unfinished:
+        text: none or unfinished
+  build_docs_enum:
+    name: build_docs_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      building information model:
+        text: building information model
+      commissioning report:
+        text: commissioning report
+      complaint logs:
+        text: complaint logs
+      contract administration:
+        text: contract administration
+      cost estimate:
+        text: cost estimate
+      janitorial schedules or logs:
+        text: janitorial schedules or logs
+      maintenance plans:
+        text: maintenance plans
+      schedule:
+        text: schedule
+      sections:
+        text: sections
+      shop drawings:
+        text: shop drawings
+      submittals:
+        text: submittals
+      ventilation system:
+        text: ventilation system
+      windows:
+        text: windows
+  surf_material_enum:
+    name: surf_material_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      adobe:
+        text: adobe
+      carpet:
+        text: carpet
+      cinder blocks:
+        text: cinder blocks
+      concrete:
+        text: concrete
+      hay bales:
+        text: hay bales
+      glass:
+        text: glass
+      metal:
+        text: metal
+      paint:
+        text: paint
+      plastic:
+        text: plastic
+      stainless steel:
+        text: stainless steel
+      stone:
+        text: stone
+      stucco:
+        text: stucco
+      tile:
+        text: tile
+      vinyl:
+        text: vinyl
+      wood:
+        text: wood
+  tidal_stage_enum:
+    name: tidal_stage_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      low tide:
+        text: low tide
+      ebb tide:
+        text: ebb tide
+      flood tide:
+        text: flood tide
+      high tide:
+        text: high tide
+  window_horiz_pos_enum:
+    name: window_horiz_pos_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      left:
+        text: left
+      middle:
+        text: middle
+      right:
+        text: right
+  train_stop_loc_enum:
+    name: train_stop_loc_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      end:
+        text: end
+      mid:
+        text: mid
+      downtown:
+        text: downtown
+  train_line_enum:
+    name: train_line_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      red:
+        text: red
+      green:
+        text: green
+      orange:
+        text: orange
+  train_stat_loc_enum:
+    name: train_stat_loc_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      south station above ground:
+        text: south station above ground
+      south station underground:
+        text: south station underground
+      south station amtrak:
+        text: south station amtrak
+      forest hills:
+        text: forest hills
+      riverside:
+        text: riverside
+  sr_dep_env_enum:
+    name: sr_dep_env_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      Lacustine:
+        text: Lacustine
+      Fluvioldeltaic:
+        text: Fluvioldeltaic
+      Fluviomarine:
+        text: Fluviomarine
+      Marine:
+        text: Marine
+      other:
+        text: other
+  samp_weather_enum:
+    name: samp_weather_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      clear sky:
+        text: clear sky
+      cloudy:
+        text: cloudy
+      foggy:
+        text: foggy
+      hail:
+        text: hail
+      rain:
+        text: rain
+      snow:
+        text: snow
+      sleet:
+        text: sleet
+      sunny:
+        text: sunny
+      windy:
+        text: windy
+  window_cover_enum:
+    name: window_cover_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      blinds:
+        text: blinds
+      curtains:
+        text: curtains
+      none:
+        text: none
+  room_type_enum:
+    name: room_type_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      attic:
+        text: attic
+      bathroom:
+        text: bathroom
+      closet:
+        text: closet
+      conference room:
+        text: conference room
+      elevator:
+        text: elevator
+      examining room:
+        text: examining room
+      hallway:
+        text: hallway
+      kitchen:
+        text: kitchen
+      mail room:
+        text: mail room
+      private office:
+        text: private office
+      open office:
+        text: open office
+      stairwell:
+        text: stairwell
+      ',restroom':
+        text: ',restroom'
+      lobby:
+        text: lobby
+      vestibule:
+        text: vestibule
+      mechanical or electrical room:
+        text: mechanical or electrical room
+      data center:
+        text: data center
+      laboratory_wet:
+        text: laboratory_wet
+      laboratory_dry:
+        text: laboratory_dry
+      gymnasium:
+        text: gymnasium
+      natatorium:
+        text: natatorium
+      auditorium:
+        text: auditorium
+      lockers:
+        text: lockers
+      cafe:
+        text: cafe
+      warehouse:
+        text: warehouse
+  sediment_type_enum:
+    name: sediment_type_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      biogenous:
+        text: biogenous
+      cosmogenous:
+        text: cosmogenous
+      hydrogenous:
+        text: hydrogenous
+      lithogenous:
+        text: lithogenous
+  fao_class_enum:
+    name: fao_class_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      Acrisols:
+        text: Acrisols
+      Andosols:
+        text: Andosols
+      Arenosols:
+        text: Arenosols
+      Cambisols:
+        text: Cambisols
+      Chernozems:
+        text: Chernozems
+      Ferralsols:
+        text: Ferralsols
+      Fluvisols:
+        text: Fluvisols
+      Gleysols:
+        text: Gleysols
+      Greyzems:
+        text: Greyzems
+      Gypsisols:
+        text: Gypsisols
+      Histosols:
+        text: Histosols
+      Kastanozems:
+        text: Kastanozems
+      Lithosols:
+        text: Lithosols
+      Luvisols:
+        text: Luvisols
+      Nitosols:
+        text: Nitosols
+      Phaeozems:
+        text: Phaeozems
+      Planosols:
+        text: Planosols
+      Podzols:
+        text: Podzols
+      Podzoluvisols:
+        text: Podzoluvisols
+      Rankers:
+        text: Rankers
+      Regosols:
+        text: Regosols
+      Rendzinas:
+        text: Rendzinas
+      Solonchaks:
+        text: Solonchaks
+      Solonetz:
+        text: Solonetz
+      Vertisols:
+        text: Vertisols
+      Yermosols:
+        text: Yermosols
+  ext_window_orient_enum:
+    name: ext_window_orient_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      north:
+        text: north
+      south:
+        text: south
+      east:
+        text: east
+      west:
+        text: west
+      northeast:
+        text: northeast
+      southeast:
+        text: southeast
+      southwest:
+        text: southwest
+      northwest:
+        text: northwest
+  sr_geol_age_enum:
+    name: sr_geol_age_enum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
       Archean:
@@ -1623,22 +2177,266 @@ enums:
         text: Triassic
       other:
         text: other
-  wall_const_type_enum:
-    name: wall_const_type_enum
+  door_move_enum:
+    name: door_move_enum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
-      frame construction:
-        text: frame construction
-      joisted masonry:
-        text: joisted masonry
-      light noncombustible:
-        text: light noncombustible
-      masonry noncombustible:
-        text: masonry noncombustible
-      modified fire resistive:
-        text: modified fire resistive
-      fire resistive:
-        text: fire resistive
+      collapsible:
+        text: collapsible
+      folding:
+        text: folding
+      revolving:
+        text: revolving
+      rolling shutter:
+        text: rolling shutter
+      sliding:
+        text: sliding
+      swinging:
+        text: swinging
+  door_direct_enum:
+    name: door_direct_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      inward:
+        text: inward
+      outward:
+        text: outward
+      sideways:
+        text: sideways
+  ceil_texture_enum:
+    name: ceil_texture_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      crows feet:
+        text: crows feet
+      crows-foot stomp:
+        text: crows-foot stomp
+      double skip:
+        text: double skip
+      hawk and trowel:
+        text: hawk and trowel
+      knockdown:
+        text: knockdown
+      popcorn:
+        text: popcorn
+      orange peel:
+        text: orange peel
+      rosebud stomp:
+        text: rosebud stomp
+      Santa-Fe texture:
+        text: Santa-Fe texture
+      skip trowel:
+        text: skip trowel
+      smooth:
+        text: smooth
+      stomp knockdown:
+        text: stomp knockdown
+      swirl:
+        text: swirl
+  samp_md_enum:
+    name: samp_md_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      DF:
+        text: DF
+      RT:
+        text: RT
+      KB:
+        text: KB
+      MSL:
+        text: MSL
+      other:
+        text: other
+  ceil_type_enum:
+    name: ceil_type_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      cathedral:
+        text: cathedral
+      dropped:
+        text: dropped
+      concave:
+        text: concave
+      barrel-shaped:
+        text: barrel-shaped
+      coffered:
+        text: coffered
+      cove:
+        text: cove
+      stretched:
+        text: stretched
+  wall_loc_enum:
+    name: wall_loc_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      north:
+        text: north
+      south:
+        text: south
+      east:
+        text: east
+      west:
+        text: west
+  door_type_metal_enum:
+    name: door_type_metal_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      collapsible:
+        text: collapsible
+      corrugated steel:
+        text: corrugated steel
+      hollow:
+        text: hollow
+      rolling shutters:
+        text: rolling shutters
+      steel plate:
+        text: steel plate
+  gender_restroom_enum:
+    name: gender_restroom_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      all gender:
+        text: all gender
+      female:
+        text: female
+      gender neurtral:
+        text: gender neurtral
+      male:
+        text: male
+      male and female:
+        text: male and female
+      unisex:
+        text: unisex
+  vis_media_enum:
+    name: vis_media_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      photos:
+        text: photos
+      videos:
+        text: videos
+      commonly of the building:
+        text: commonly of the building
+      site context (adjacent buildings, vegetation, terrain, streets):
+        text: site context (adjacent buildings, vegetation, terrain, streets)
+      interiors:
+        text: interiors
+      equipment:
+        text: equipment
+      3D scans:
+        text: 3D scans
+  window_loc_enum:
+    name: window_loc_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      north:
+        text: north
+      south:
+        text: south
+      east:
+        text: east
+      west:
+        text: west
+  soil_horizon_enum:
+    name: soil_horizon_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      O horizon:
+        text: O horizon
+      A horizon:
+        text: A horizon
+      E horizon:
+        text: E horizon
+      B horizon:
+        text: B horizon
+      C horizon:
+        text: C horizon
+      R layer:
+        text: R layer
+      Permafrost:
+        text: Permafrost
+      M horizon:
+        text: M horizon
+  indoor_space_enum:
+    name: indoor_space_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      bedroom:
+        text: bedroom
+      office:
+        text: office
+      bathroom:
+        text: bathroom
+      foyer:
+        text: foyer
+      kitchen:
+        text: kitchen
+      locker room:
+        text: locker room
+      hallway:
+        text: hallway
+      elevator:
+        text: elevator
+  door_type_enum:
+    name: door_type_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      composite:
+        text: composite
+      metal:
+        text: metal
+      wooden:
+        text: wooden
+  depos_env_enum:
+    name: depos_env_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      Continental - Alluvial:
+        text: Continental - Alluvial
+      Continental - Aeolian:
+        text: Continental - Aeolian
+      Continental - Fluvial:
+        text: Continental - Fluvial
+      Continental - Lacustrine:
+        text: Continental - Lacustrine
+      Transitional - Deltaic:
+        text: Transitional - Deltaic
+      Transitional - Tidal:
+        text: Transitional - Tidal
+      Transitional - Lagoonal:
+        text: Transitional - Lagoonal
+      Transitional - Beach:
+        text: Transitional - Beach
+      Transitional - Lake:
+        text: Transitional - Lake
+      Marine - Shallow:
+        text: Marine - Shallow
+      Marine - Deep:
+        text: Marine - Deep
+      Marine - Reef:
+        text: Marine - Reef
+      Other - Evaporite:
+        text: Other - Evaporite
+      Other - Glacial:
+        text: Other - Glacial
+      Other - Volcanic:
+        text: Other - Volcanic
+      other:
+        text: other
+  sr_lithology_enum:
+    name: sr_lithology_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      Clastic:
+        text: Clastic
+      Carbonate:
+        text: Carbonate
+      Coal:
+        text: Coal
+      Biosilicieous:
+        text: Biosilicieous
+      other:
+        text: other
   plant_sex_enum:
     name: plant_sex_enum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -1701,66 +2499,24 @@ enums:
         text: Trioecious
       Unisexual:
         text: Unisexual
-  ceil_type_enum:
-    name: ceil_type_enum
+  specific_enum:
+    name: specific_enum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
-      cathedral:
-        text: cathedral
-      dropped:
-        text: dropped
-      concave:
-        text: concave
-      barrel-shaped:
-        text: barrel-shaped
-      coffered:
-        text: coffered
-      cove:
-        text: cove
-      stretched:
-        text: stretched
-  floor_finish_mat_enum:
-    name: floor_finish_mat_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      tile:
-        text: tile
-      wood strip or parquet:
-        text: wood strip or parquet
-      carpet:
-        text: carpet
-      rug:
-        text: rug
-      laminate wood:
-        text: laminate wood
-      lineoleum:
-        text: lineoleum
-      vinyl composition tile:
-        text: vinyl composition tile
-      sheet vinyl:
-        text: sheet vinyl
-      stone:
-        text: stone
-      bamboo:
-        text: bamboo
-      cork:
-        text: cork
-      terrazo:
-        text: terrazo
-      concrete:
-        text: concrete
-      none:
-        text: none
-      sealed:
-        text: sealed
-      clear finish:
-        text: clear finish
-      paint:
-        text: paint
-      none or unfinished:
-        text: none or unfinished
-  wall_loc_enum:
-    name: wall_loc_enum
+      operation:
+        text: operation
+      as built:
+        text: as built
+      construction:
+        text: construction
+      bid:
+        text: bid
+      design:
+        text: design
+      photos:
+        text: photos
+  ext_wall_orient_enum:
+    name: ext_wall_orient_enum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
       north:
@@ -1771,148 +2527,16 @@ enums:
         text: east
       west:
         text: west
-  wall_surf_treatment_enum:
-    name: wall_surf_treatment_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      painted:
-        text: painted
-      wall paper:
-        text: wall paper
-      no treatment:
-        text: no treatment
-      paneling:
-        text: paneling
-      stucco:
-        text: stucco
-      fabric:
-        text: fabric
-  window_cond_enum:
-    name: window_cond_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      damaged:
-        text: damaged
-      needs repair:
-        text: needs repair
-      new:
-        text: new
-      rupture:
-        text: rupture
-      visible wear:
-        text: visible wear
-  door_mat_enum:
-    name: door_mat_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      aluminum:
-        text: aluminum
-      cellular PVC:
-        text: cellular PVC
-      engineered plastic:
-        text: engineered plastic
-      fiberboard:
-        text: fiberboard
-      fiberglass:
-        text: fiberglass
-      metal:
-        text: metal
-      thermoplastic alloy:
-        text: thermoplastic alloy
-      vinyl:
-        text: vinyl
-      wood:
-        text: wood
-      wood/plastic composite:
-        text: wood/plastic composite
-  soil_horizon_enum:
-    name: soil_horizon_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      O horizon:
-        text: O horizon
-      A horizon:
-        text: A horizon
-      E horizon:
-        text: E horizon
-      B horizon:
-        text: B horizon
-      C horizon:
-        text: C horizon
-      R layer:
-        text: R layer
-      Permafrost:
-        text: Permafrost
-      M horizon:
-        text: M horizon
-  ceil_finish_mat_enum:
-    name: ceil_finish_mat_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      drywall:
-        text: drywall
-      mineral fibre:
-        text: mineral fibre
-      tiles:
-        text: tiles
-      PVC:
-        text: PVC
-      plasterboard:
-        text: plasterboard
-      metal:
-        text: metal
-      fiberglass:
-        text: fiberglass
-      stucco:
-        text: stucco
-      mineral wool/calcium silicate:
-        text: mineral wool/calcium silicate
-      wood:
-        text: wood
-  shading_device_cond_enum:
-    name: shading_device_cond_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      damaged:
-        text: damaged
-      needs repair:
-        text: needs repair
-      new:
-        text: new
-      rupture:
-        text: rupture
-      visible wear:
-        text: visible wear
-  hc_produced_enum:
-    name: hc_produced_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      Oil:
-        text: Oil
-      Gas-Condensate:
-        text: Gas-Condensate
-      Gas:
-        text: Gas
-      Bitumen:
-        text: Bitumen
-      Coalbed Methane:
-        text: Coalbed Methane
-      other:
-        text: other
-  door_comp_type_enum:
-    name: door_comp_type_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      metal covered:
-        text: metal covered
-      revolving:
-        text: revolving
-      sliding:
-        text: sliding
-      telescopic:
-        text: telescopic
-  window_loc_enum:
-    name: window_loc_enum
+      northeast:
+        text: northeast
+      southeast:
+        text: southeast
+      southwest:
+        text: southwest
+      northwest:
+        text: northwest
+  door_loc_enum:
+    name: door_loc_enum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
       north:
@@ -1923,168 +2547,6 @@ enums:
         text: east
       west:
         text: west
-  sr_lithology_enum:
-    name: sr_lithology_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      Clastic:
-        text: Clastic
-      Carbonate:
-        text: Carbonate
-      Coal:
-        text: Coal
-      Biosilicieous:
-        text: Biosilicieous
-      other:
-        text: other
-  plant_growth_med_enum:
-    name: plant_growth_med_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      other artificial liquid medium:
-        text: other artificial liquid medium
-      other artificial solid medium:
-        text: other artificial solid medium
-      peat moss:
-        text: peat moss
-      perlite:
-        text: perlite
-      pumice:
-        text: pumice
-      sand:
-        text: sand
-      soil:
-        text: soil
-      vermiculite:
-        text: vermiculite
-      water:
-        text: water
-  surf_material_enum:
-    name: surf_material_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      adobe:
-        text: adobe
-      carpet:
-        text: carpet
-      cinder blocks:
-        text: cinder blocks
-      concrete:
-        text: concrete
-      hay bales:
-        text: hay bales
-      glass:
-        text: glass
-      metal:
-        text: metal
-      paint:
-        text: paint
-      plastic:
-        text: plastic
-      stainless steel:
-        text: stainless steel
-      stone:
-        text: stone
-      stucco:
-        text: stucco
-      tile:
-        text: tile
-      vinyl:
-        text: vinyl
-      wood:
-        text: wood
-  ceil_cond_enum:
-    name: ceil_cond_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      new:
-        text: new
-      visible wear:
-        text: visible wear
-      needs repair:
-        text: needs repair
-      damaged:
-        text: damaged
-      rupture:
-        text: rupture
-  building_setting_enum:
-    name: building_setting_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      urban:
-        text: urban
-      suburban:
-        text: suburban
-      exurban:
-        text: exurban
-      rural:
-        text: rural
-  build_occup_type_enum:
-    name: build_occup_type_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      office:
-        text: office
-      market:
-        text: market
-      restaurant:
-        text: restaurant
-      residence:
-        text: residence
-      school:
-        text: school
-      residential:
-        text: residential
-      commercial:
-        text: commercial
-      low rise:
-        text: low rise
-      high rise:
-        text: high rise
-      wood framed:
-        text: wood framed
-      health care:
-        text: health care
-      airport:
-        text: airport
-      sports complex:
-        text: sports complex
-  depos_env_enum:
-    name: depos_env_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      Continental - Alluvial:
-        text: Continental - Alluvial
-      Continental - Aeolian:
-        text: Continental - Aeolian
-      Continental - Fluvial:
-        text: Continental - Fluvial
-      Continental - Lacustrine:
-        text: Continental - Lacustrine
-      Transitional - Deltaic:
-        text: Transitional - Deltaic
-      Transitional - Tidal:
-        text: Transitional - Tidal
-      Transitional - Lagoonal:
-        text: Transitional - Lagoonal
-      Transitional - Beach:
-        text: Transitional - Beach
-      Transitional - Lake:
-        text: Transitional - Lake
-      Marine - Shallow:
-        text: Marine - Shallow
-      Marine - Deep:
-        text: Marine - Deep
-      Marine - Reef:
-        text: Marine - Reef
-      Other - Evaporite:
-        text: Other - Evaporite
-      Other - Glacial:
-        text: Other - Glacial
-      Other - Volcanic:
-        text: Other - Volcanic
-      other:
-        text: other
   profile_position_enum:
     name: profile_position_enum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -2099,122 +2561,6 @@ enums:
         text: footslope
       toeslope:
         text: toeslope
-  furniture_enum:
-    name: furniture_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      cabinet:
-        text: cabinet
-      chair:
-        text: chair
-      desks:
-        text: desks
-  door_type_enum:
-    name: door_type_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      composite:
-        text: composite
-      metal:
-        text: metal
-      wooden:
-        text: wooden
-  tidal_stage_enum:
-    name: tidal_stage_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      low tide:
-        text: low tide
-      ebb tide:
-        text: ebb tide
-      flood tide:
-        text: flood tide
-      high tide:
-        text: high tide
-  door_type_metal_enum:
-    name: door_type_metal_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      collapsible:
-        text: collapsible
-      corrugated steel:
-        text: corrugated steel
-      hollow:
-        text: hollow
-      rolling shutters:
-        text: rolling shutters
-      steel plate:
-        text: steel plate
-  handidness_enum:
-    name: handidness_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      ambidexterity:
-        text: ambidexterity
-      left handedness:
-        text: left handedness
-      mixed-handedness:
-        text: mixed-handedness
-      right handedness:
-        text: right handedness
-  tillage_enum:
-    name: tillage_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      drill:
-        text: drill
-      cutting disc:
-        text: cutting disc
-      ridge till:
-        text: ridge till
-      strip tillage:
-        text: strip tillage
-      zonal tillage:
-        text: zonal tillage
-      chisel:
-        text: chisel
-      tined:
-        text: tined
-      mouldboard:
-        text: mouldboard
-      disc plough:
-        text: disc plough
-  hcr_enum:
-    name: hcr_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      Oil Reservoir:
-        text: Oil Reservoir
-      Gas Reservoir:
-        text: Gas Reservoir
-      Oil Sand:
-        text: Oil Sand
-      Coalbed:
-        text: Coalbed
-      Shale:
-        text: Shale
-      Tight Oil Reservoir:
-        text: Tight Oil Reservoir
-      Tight Gas Reservoir:
-        text: Tight Gas Reservoir
-      other:
-        text: other
-  freq_clean_enum:
-    name: freq_clean_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      Daily:
-        text: Daily
-      Weekly:
-        text: Weekly
-      Monthly:
-        text: Monthly
-      Quarterly:
-        text: Quarterly
-      Annually:
-        text: Annually
-      other:
-        text: other
   growth_habit_enum:
     name: growth_habit_enum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -2239,76 +2585,52 @@ enums:
         text: Fall
       Winter:
         text: Winter
-  sr_dep_env_enum:
-    name: sr_dep_env_enum
+  ceil_finish_mat_enum:
+    name: ceil_finish_mat_enum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
-      Lacustine:
-        text: Lacustine
-      Fluvioldeltaic:
-        text: Fluvioldeltaic
-      Fluviomarine:
-        text: Fluviomarine
-      Marine:
-        text: Marine
-      other:
-        text: other
-  water_feat_type_enum:
-    name: water_feat_type_enum
+      drywall:
+        text: drywall
+      mineral fibre:
+        text: mineral fibre
+      tiles:
+        text: tiles
+      PVC:
+        text: PVC
+      plasterboard:
+        text: plasterboard
+      metal:
+        text: metal
+      fiberglass:
+        text: fiberglass
+      stucco:
+        text: stucco
+      mineral wool/calcium silicate:
+        text: mineral wool/calcium silicate
+      wood:
+        text: wood
+  tillage_enum:
+    name: tillage_enum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
-      fountain:
-        text: fountain
-      pool:
-        text: pool
-      standing feature:
-        text: standing feature
-      stream:
-        text: stream
-      waterfall:
-        text: waterfall
-  substructure_type_enum:
-    name: substructure_type_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      crawlspace:
-        text: crawlspace
-      slab on grade:
-        text: slab on grade
-      basement:
-        text: basement
-  indoor_space_enum:
-    name: indoor_space_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      bedroom:
-        text: bedroom
-      office:
-        text: office
-      bathroom:
-        text: bathroom
-      foyer:
-        text: foyer
-      kitchen:
-        text: kitchen
-      locker room:
-        text: locker room
-      hallway:
-        text: hallway
-      elevator:
-        text: elevator
-  host_sex_enum:
-    name: host_sex_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      female:
-        text: female
-      hermaphrodite:
-        text: hermaphrodite
-      male:
-        text: male
-      neuter:
-        text: neuter
+      drill:
+        text: drill
+      cutting disc:
+        text: cutting disc
+      ridge till:
+        text: ridge till
+      strip tillage:
+        text: strip tillage
+      zonal tillage:
+        text: zonal tillage
+      chisel:
+        text: chisel
+      tined:
+        text: tined
+      mouldboard:
+        text: mouldboard
+      disc plough:
+        text: disc plough
   window_type_enum:
     name: window_type_enum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -2319,452 +2641,8 @@ enums:
         text: horizontal sash window
       fixed window:
         text: fixed window
-  specific_enum:
-    name: specific_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      operation:
-        text: operation
-      as built:
-        text: as built
-      construction:
-        text: construction
-      bid:
-        text: bid
-      design:
-        text: design
-      photos:
-        text: photos
-  fao_class_enum:
-    name: fao_class_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      Acrisols:
-        text: Acrisols
-      Andosols:
-        text: Andosols
-      Arenosols:
-        text: Arenosols
-      Cambisols:
-        text: Cambisols
-      Chernozems:
-        text: Chernozems
-      Ferralsols:
-        text: Ferralsols
-      Fluvisols:
-        text: Fluvisols
-      Gleysols:
-        text: Gleysols
-      Greyzems:
-        text: Greyzems
-      Gypsisols:
-        text: Gypsisols
-      Histosols:
-        text: Histosols
-      Kastanozems:
-        text: Kastanozems
-      Lithosols:
-        text: Lithosols
-      Luvisols:
-        text: Luvisols
-      Nitosols:
-        text: Nitosols
-      Phaeozems:
-        text: Phaeozems
-      Planosols:
-        text: Planosols
-      Podzols:
-        text: Podzols
-      Podzoluvisols:
-        text: Podzoluvisols
-      Rankers:
-        text: Rankers
-      Regosols:
-        text: Regosols
-      Rendzinas:
-        text: Rendzinas
-      Solonchaks:
-        text: Solonchaks
-      Solonetz:
-        text: Solonetz
-      Vertisols:
-        text: Vertisols
-      Yermosols:
-        text: Yermosols
-  floor_struc_enum:
-    name: floor_struc_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      balcony:
-        text: balcony
-      floating floor:
-        text: floating floor
-      glass floor:
-        text: glass floor
-      raised floor:
-        text: raised floor
-      sprung floor:
-        text: sprung floor
-      wood-framed:
-        text: wood-framed
-      concrete:
-        text: concrete
-  wall_texture_enum:
-    name: wall_texture_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      crows feet:
-        text: crows feet
-      crows-foot stomp:
-        text: crows-foot stomp
-      ? ''
-      : text: ''
-      double skip:
-        text: double skip
-      hawk and trowel:
-        text: hawk and trowel
-      knockdown:
-        text: knockdown
-      popcorn:
-        text: popcorn
-      orange peel:
-        text: orange peel
-      rosebud stomp:
-        text: rosebud stomp
-      Santa-Fe texture:
-        text: Santa-Fe texture
-      skip trowel:
-        text: skip trowel
-      smooth:
-        text: smooth
-      stomp knockdown:
-        text: stomp knockdown
-      swirl:
-        text: swirl
-  train_stop_loc_enum:
-    name: train_stop_loc_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      end:
-        text: end
-      mid:
-        text: mid
-      downtown:
-        text: downtown
-  drawings_enum:
-    name: drawings_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      operation:
-        text: operation
-      as built:
-        text: as built
-      construction:
-        text: construction
-      bid:
-        text: bid
-      design:
-        text: design
-      building navigation map:
-        text: building navigation map
-      diagram:
-        text: diagram
-      sketch:
-        text: sketch
-  room_loc_enum:
-    name: room_loc_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      corner room:
-        text: corner room
-      interior room:
-        text: interior room
-      exterior wall:
-        text: exterior wall
-  light_type_enum:
-    name: light_type_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      natural light:
-        text: natural light
-      electric light:
-        text: electric light
-      desk lamp:
-        text: desk lamp
-      flourescent lights:
-        text: flourescent lights
-      none:
-        text: none
-  weekday_enum:
-    name: weekday_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      Monday:
-        text: Monday
-      Tuesday:
-        text: Tuesday
-      Wednesday:
-        text: Wednesday
-      Thursday:
-        text: Thursday
-      Friday:
-        text: Friday
-      Saturday:
-        text: Saturday
-      Sunday:
-        text: Sunday
-  arch_struc_enum:
-    name: arch_struc_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      building:
-        text: building
-      shed:
-        text: shed
-      home:
-        text: home
-  heat_cool_type_enum:
-    name: heat_cool_type_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      radiant system:
-        text: radiant system
-      heat pump:
-        text: heat pump
-      forced air system:
-        text: forced air system
-      steam forced heat:
-        text: steam forced heat
-      wood stove:
-        text: wood stove
-  samp_md_enum:
-    name: samp_md_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      DF:
-        text: DF
-      RT:
-        text: RT
-      KB:
-        text: KB
-      MSL:
-        text: MSL
-      other:
-        text: other
-  ext_wall_orient_enum:
-    name: ext_wall_orient_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      north:
-        text: north
-      south:
-        text: south
-      east:
-        text: east
-      west:
-        text: west
-      northeast:
-        text: northeast
-      southeast:
-        text: southeast
-      southwest:
-        text: southwest
-      northwest:
-        text: northwest
-  mech_struc_enum:
-    name: mech_struc_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      subway:
-        text: subway
-      coach:
-        text: coach
-      carriage:
-        text: carriage
-      elevator:
-        text: elevator
-      escalator:
-        text: escalator
-      boat:
-        text: boat
-      train:
-        text: train
-      car:
-        text: car
-      bus:
-        text: bus
-  ext_window_orient_enum:
-    name: ext_window_orient_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      north:
-        text: north
-      south:
-        text: south
-      east:
-        text: east
-      west:
-        text: west
-      northeast:
-        text: northeast
-      southeast:
-        text: southeast
-      southwest:
-        text: southwest
-      northwest:
-        text: northwest
-  window_cover_enum:
-    name: window_cover_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      blinds:
-        text: blinds
-      curtains:
-        text: curtains
-      none:
-        text: none
-  drainage_class_enum:
-    name: drainage_class_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      very poorly:
-        text: very poorly
-      poorly:
-        text: poorly
-      somewhat poorly:
-        text: somewhat poorly
-      moderately well:
-        text: moderately well
-      well:
-        text: well
-      excessively drained:
-        text: excessively drained
-  window_horiz_pos_enum:
-    name: window_horiz_pos_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      left:
-        text: left
-      middle:
-        text: middle
-      right:
-        text: right
-  samp_subtype_enum:
-    name: samp_subtype_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      oil phase:
-        text: oil phase
-      water phase:
-        text: water phase
-      biofilm:
-        text: biofilm
-      not applicable:
-        text: not applicable
-      other:
-        text: other
-  ceil_texture_enum:
-    name: ceil_texture_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      crows feet:
-        text: crows feet
-      crows-foot stomp:
-        text: crows-foot stomp
-      double skip:
-        text: double skip
-      hawk and trowel:
-        text: hawk and trowel
-      knockdown:
-        text: knockdown
-      popcorn:
-        text: popcorn
-      orange peel:
-        text: orange peel
-      rosebud stomp:
-        text: rosebud stomp
-      Santa-Fe texture:
-        text: Santa-Fe texture
-      skip trowel:
-        text: skip trowel
-      smooth:
-        text: smooth
-      stomp knockdown:
-        text: stomp knockdown
-      swirl:
-        text: swirl
-  room_samp_pos_enum:
-    name: room_samp_pos_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      north corner:
-        text: north corner
-      south corner:
-        text: south corner
-      west corner:
-        text: west corner
-      east corner:
-        text: east corner
-      northeast corner:
-        text: northeast corner
-      northwest corner:
-        text: northwest corner
-      southeast corner:
-        text: southeast corner
-      southwest corner:
-        text: southwest corner
-      center:
-        text: center
-  indoor_surf_enum:
-    name: indoor_surf_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      cabinet:
-        text: cabinet
-      ceiling:
-        text: ceiling
-      counter top:
-        text: counter top
-      door:
-        text: door
-      shelving:
-        text: shelving
-      vent cover:
-        text: vent cover
-      window:
-        text: window
-      wall:
-        text: wall
-  organism_count_enum:
-    name: organism_count_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      ATP:
-        text: ATP
-      MPN:
-        text: MPN
-      other:
-        text: other
-  vis_media_enum:
-    name: vis_media_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      photos:
-        text: photos
-      videos:
-        text: videos
-      commonly of the building:
-        text: commonly of the building
-      site context (adjacent buildings, vegetation, terrain, streets):
-        text: site context (adjacent buildings, vegetation, terrain, streets)
-      interiors:
-        text: interiors
-      equipment:
-        text: equipment
-      3D scans:
-        text: 3D scans
-  room_condt_enum:
-    name: room_condt_enum
+  ceil_cond_enum:
+    name: ceil_cond_enum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
       new:
@@ -2777,124 +2655,60 @@ enums:
         text: damaged
       rupture:
         text: rupture
-      visible signs of mold/mildew:
-        text: visible signs of mold/mildew
-  samp_collect_point_enum:
-    name: samp_collect_point_enum
+  hcr_geol_age_enum:
+    name: hcr_geol_age_enum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
-      well:
-        text: well
-      test well:
-        text: test well
-      drilling rig:
-        text: drilling rig
-      wellhead:
-        text: wellhead
-      separator:
-        text: separator
-      storage tank:
-        text: storage tank
+      Archean:
+        text: Archean
+      Cambrian:
+        text: Cambrian
+      Carboniferous:
+        text: Carboniferous
+      Cenozoic:
+        text: Cenozoic
+      Cretaceous:
+        text: Cretaceous
+      Devonian:
+        text: Devonian
+      Jurassic:
+        text: Jurassic
+      Mesozoic:
+        text: Mesozoic
+      Neogene:
+        text: Neogene
+      Ordovician:
+        text: Ordovician
+      Paleogene:
+        text: Paleogene
+      Paleozoic:
+        text: Paleozoic
+      Permian:
+        text: Permian
+      Precambrian:
+        text: Precambrian
+      Proterozoic:
+        text: Proterozoic
+      Silurian:
+        text: Silurian
+      Triassic:
+        text: Triassic
       other:
         text: other
-  samp_capt_status_enum:
-    name: samp_capt_status_enum
+  door_cond_enum:
+    name: door_cond_enum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
-      active surveillance in response to an outbreak:
-        text: active surveillance in response to an outbreak
-      active surveillance not initiated by an outbreak:
-        text: active surveillance not initiated by an outbreak
-      farm sample:
-        text: farm sample
-      market sample:
-        text: market sample
-      other:
-        text: other
-  room_type_enum:
-    name: room_type_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      attic:
-        text: attic
-      bathroom:
-        text: bathroom
-      closet:
-        text: closet
-      conference room:
-        text: conference room
-      elevator:
-        text: elevator
-      examining room:
-        text: examining room
-      hallway:
-        text: hallway
-      kitchen:
-        text: kitchen
-      mail room:
-        text: mail room
-      private office:
-        text: private office
-      open office:
-        text: open office
-      stairwell:
-        text: stairwell
-      ',restroom':
-        text: ',restroom'
-      lobby:
-        text: lobby
-      vestibule:
-        text: vestibule
-      mechanical or electrical room:
-        text: mechanical or electrical room
-      data center:
-        text: data center
-      laboratory_wet:
-        text: laboratory_wet
-      laboratory_dry:
-        text: laboratory_dry
-      gymnasium:
-        text: gymnasium
-      natatorium:
-        text: natatorium
-      auditorium:
-        text: auditorium
-      lockers:
-        text: lockers
-      cafe:
-        text: cafe
-      warehouse:
-        text: warehouse
-  samp_dis_stage_enum:
-    name: samp_dis_stage_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      dissemination:
-        text: dissemination
-      growth and reproduction:
-        text: growth and reproduction
-      infection:
-        text: infection
-      inoculation:
-        text: inoculation
-      penetration:
-        text: penetration
-      other:
-        text: other
-  floor_cond_enum:
-    name: floor_cond_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      new:
-        text: new
-      visible wear:
-        text: visible wear
-      needs repair:
-        text: needs repair
       damaged:
         text: damaged
+      needs repair:
+        text: needs repair
+      new:
+        text: new
       rupture:
         text: rupture
+      visible wear:
+        text: visible wear
   lithology_enum:
     name: lithology_enum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -2925,6 +2739,216 @@ enums:
         text: Volcanic
       other:
         text: other
+  heat_cool_type_enum:
+    name: heat_cool_type_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      radiant system:
+        text: radiant system
+      heat pump:
+        text: heat pump
+      forced air system:
+        text: forced air system
+      steam forced heat:
+        text: steam forced heat
+      wood stove:
+        text: wood stove
+  building_setting_enum:
+    name: building_setting_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      urban:
+        text: urban
+      suburban:
+        text: suburban
+      exurban:
+        text: exurban
+      rural:
+        text: rural
+  room_condt_enum:
+    name: room_condt_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      new:
+        text: new
+      visible wear:
+        text: visible wear
+      needs repair:
+        text: needs repair
+      damaged:
+        text: damaged
+      rupture:
+        text: rupture
+      visible signs of mold/mildew:
+        text: visible signs of mold/mildew
+  rel_samp_loc_enum:
+    name: rel_samp_loc_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      edge of car:
+        text: edge of car
+      center of car:
+        text: center of car
+      under a seat:
+        text: under a seat
+  wall_surf_treatment_enum:
+    name: wall_surf_treatment_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      painted:
+        text: painted
+      wall paper:
+        text: wall paper
+      no treatment:
+        text: no treatment
+      paneling:
+        text: paneling
+      stucco:
+        text: stucco
+      fabric:
+        text: fabric
+  room_connected_enum:
+    name: room_connected_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      attic:
+        text: attic
+      bathroom:
+        text: bathroom
+      closet:
+        text: closet
+      conference room:
+        text: conference room
+      elevator:
+        text: elevator
+      examining room:
+        text: examining room
+      hallway:
+        text: hallway
+      kitchen:
+        text: kitchen
+      mail room:
+        text: mail room
+      office:
+        text: office
+      stairwell:
+        text: stairwell
+  window_vert_pos_enum:
+    name: window_vert_pos_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      bottom:
+        text: bottom
+      middle:
+        text: middle
+      top:
+        text: top
+      low:
+        text: low
+      high:
+        text: high
+  weekday_enum:
+    name: weekday_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      Monday:
+        text: Monday
+      Tuesday:
+        text: Tuesday
+      Wednesday:
+        text: Wednesday
+      Thursday:
+        text: Thursday
+      Friday:
+        text: Friday
+      Saturday:
+        text: Saturday
+      Sunday:
+        text: Sunday
+  room_samp_pos_enum:
+    name: room_samp_pos_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      north corner:
+        text: north corner
+      south corner:
+        text: south corner
+      west corner:
+        text: west corner
+      east corner:
+        text: east corner
+      northeast corner:
+        text: northeast corner
+      northwest corner:
+        text: northwest corner
+      southeast corner:
+        text: southeast corner
+      southwest corner:
+        text: southwest corner
+      center:
+        text: center
+  door_mat_enum:
+    name: door_mat_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      aluminum:
+        text: aluminum
+      cellular PVC:
+        text: cellular PVC
+      engineered plastic:
+        text: engineered plastic
+      fiberboard:
+        text: fiberboard
+      fiberglass:
+        text: fiberglass
+      metal:
+        text: metal
+      thermoplastic alloy:
+        text: thermoplastic alloy
+      vinyl:
+        text: vinyl
+      wood:
+        text: wood
+      wood/plastic composite:
+        text: wood/plastic composite
+  biol_stat_enum:
+    name: biol_stat_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      wild:
+        text: wild
+      natural:
+        text: natural
+      semi-natural:
+        text: semi-natural
+      inbred line:
+        text: inbred line
+      breeder's line:
+        text: breeder's line
+      hybrid:
+        text: hybrid
+      clonal selection:
+        text: clonal selection
+      mutant:
+        text: mutant
+  floor_struc_enum:
+    name: floor_struc_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      balcony:
+        text: balcony
+      floating floor:
+        text: floating floor
+      glass floor:
+        text: glass floor
+      raised floor:
+        text: raised floor
+      sprung floor:
+        text: sprung floor
+      wood-framed:
+        text: wood-framed
+      concrete:
+        text: concrete
   door_type_wood_enum:
     name: door_type_wood_enum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -2949,128 +2973,88 @@ enums:
         text: louvered
       wire gauged:
         text: wire gauged
-  wall_finish_mat_enum:
-    name: wall_finish_mat_enum
+  organism_count_enum:
+    name: organism_count_enum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
-      plaster:
-        text: plaster
-      gypsum plaster:
-        text: gypsum plaster
-      veneer plaster:
-        text: veneer plaster
-      gypsum board:
-        text: gypsum board
-      tile:
-        text: tile
-      terrazzo:
-        text: terrazzo
-      stone facing:
-        text: stone facing
-      acoustical treatment:
-        text: acoustical treatment
-      wood:
-        text: wood
-      metal:
-        text: metal
-      masonry:
-        text: masonry
-  gender_restroom_enum:
-    name: gender_restroom_enum
+      ATP:
+        text: ATP
+      MPN:
+        text: MPN
+      other:
+        text: other
+  shading_device_cond_enum:
+    name: shading_device_cond_enum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
-      all gender:
-        text: all gender
-      female:
-        text: female
-      gender neurtral:
-        text: gender neurtral
-      male:
-        text: male
-      male and female:
-        text: male and female
-      unisex:
-        text: unisex
-  int_wall_cond_enum:
-    name: int_wall_cond_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      new:
-        text: new
-      visible wear:
-        text: visible wear
-      needs repair:
-        text: needs repair
       damaged:
         text: damaged
+      needs repair:
+        text: needs repair
+      new:
+        text: new
       rupture:
         text: rupture
-  floor_water_mold_enum:
-    name: floor_water_mold_enum
+      visible wear:
+        text: visible wear
+  hcr_enum:
+    name: hcr_enum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
-      mold odor:
-        text: mold odor
-      wet floor:
-        text: wet floor
-      water stains:
-        text: water stains
-      wall discoloration:
-        text: wall discoloration
-      floor discoloration:
-        text: floor discoloration
-      ceiling discoloration:
-        text: ceiling discoloration
-      peeling paint or wallpaper:
-        text: peeling paint or wallpaper
-      bulging walls:
-        text: bulging walls
-      condensation:
-        text: condensation
-  samp_floor_enum:
-    name: samp_floor_enum
+      Oil Reservoir:
+        text: Oil Reservoir
+      Gas Reservoir:
+        text: Gas Reservoir
+      Oil Sand:
+        text: Oil Sand
+      Coalbed:
+        text: Coalbed
+      Shale:
+        text: Shale
+      Tight Oil Reservoir:
+        text: Tight Oil Reservoir
+      Tight Gas Reservoir:
+        text: Tight Gas Reservoir
+      other:
+        text: other
+  mech_struc_enum:
+    name: mech_struc_enum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
-      1st floor:
-        text: 1st floor
-      2nd floor:
-        text: 2nd floor
-      basement:
-        text: basement
-      lobby:
-        text: lobby
-  heat_deliv_loc_enum:
-    name: heat_deliv_loc_enum
+      subway:
+        text: subway
+      coach:
+        text: coach
+      carriage:
+        text: carriage
+      elevator:
+        text: elevator
+      escalator:
+        text: escalator
+      boat:
+        text: boat
+      train:
+        text: train
+      car:
+        text: car
+      bus:
+        text: bus
+  hc_produced_enum:
+    name: hc_produced_enum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
-      north:
-        text: north
-      south:
-        text: south
-      east:
-        text: east
-      west:
-        text: west
-  biol_stat_enum:
-    name: biol_stat_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      wild:
-        text: wild
-      natural:
-        text: natural
-      semi-natural:
-        text: semi-natural
-      inbred line:
-        text: inbred line
-      breeder's line:
-        text: breeder's line
-      hybrid:
-        text: hybrid
-      clonal selection:
-        text: clonal selection
-      mutant:
-        text: mutant
+      Oil:
+        text: Oil
+      Gas-Condensate:
+        text: Gas-Condensate
+      Gas:
+        text: Gas
+      Bitumen:
+        text: Bitumen
+      Coalbed Methane:
+        text: Coalbed Methane
+      other:
+        text: other
   shading_device_type_enum:
     name: shading_device_type_enum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -3099,134 +3083,18 @@ enums:
         text: trellis
       venetian awning:
         text: venetian awning
-  train_stat_loc_enum:
-    name: train_stat_loc_enum
+  quad_pos_enum:
+    name: quad_pos_enum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
-      south station above ground:
-        text: south station above ground
-      south station underground:
-        text: south station underground
-      south station amtrak:
-        text: south station amtrak
-      forest hills:
-        text: forest hills
-      riverside:
-        text: riverside
-  window_mat_enum:
-    name: window_mat_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      clad:
-        text: clad
-      fiberglass:
-        text: fiberglass
-      metal:
-        text: metal
-      vinyl:
-        text: vinyl
-      wood:
-        text: wood
-  samp_weather_enum:
-    name: samp_weather_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      clear sky:
-        text: clear sky
-      cloudy:
-        text: cloudy
-      foggy:
-        text: foggy
-      hail:
-        text: hail
-      rain:
-        text: rain
-      snow:
-        text: snow
-      sleet:
-        text: sleet
-      sunny:
-        text: sunny
-      windy:
-        text: windy
-  biotic_relationship_enum:
-    name: biotic_relationship_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      free living:
-        text: free living
-      parasite:
-        text: parasite
-      commensal:
-        text: commensal
-      symbiont:
-        text: symbiont
-  door_cond_enum:
-    name: door_cond_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      damaged:
-        text: damaged
-      needs repair:
-        text: needs repair
-      new:
-        text: new
-      rupture:
-        text: rupture
-      visible wear:
-        text: visible wear
-  train_line_enum:
-    name: train_line_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      red:
-        text: red
-      green:
-        text: green
-      orange:
-        text: orange
-  build_docs_enum:
-    name: build_docs_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      building information model:
-        text: building information model
-      commissioning report:
-        text: commissioning report
-      complaint logs:
-        text: complaint logs
-      contract administration:
-        text: contract administration
-      cost estimate:
-        text: cost estimate
-      janitorial schedules or logs:
-        text: janitorial schedules or logs
-      maintenance plans:
-        text: maintenance plans
-      schedule:
-        text: schedule
-      sections:
-        text: sections
-      shop drawings:
-        text: shop drawings
-      submittals:
-        text: submittals
-      ventilation system:
-        text: ventilation system
-      windows:
-        text: windows
-  door_loc_enum:
-    name: door_loc_enum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      north:
-        text: north
-      south:
-        text: south
-      east:
-        text: east
-      west:
-        text: west
+      North side:
+        text: North side
+      West side:
+        text: West side
+      South side:
+        text: South side
+      East side:
+        text: East side
   sr_kerog_type_enum:
     name: sr_kerog_type_enum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -3241,6 +3109,224 @@ enums:
         text: Type IV
       other:
         text: other
+  floor_cond_enum:
+    name: floor_cond_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      new:
+        text: new
+      visible wear:
+        text: visible wear
+      needs repair:
+        text: needs repair
+      damaged:
+        text: damaged
+      rupture:
+        text: rupture
+  heat_deliv_loc_enum:
+    name: heat_deliv_loc_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      north:
+        text: north
+      south:
+        text: south
+      east:
+        text: east
+      west:
+        text: west
+  host_sex_enum:
+    name: host_sex_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      female:
+        text: female
+      hermaphrodite:
+        text: hermaphrodite
+      male:
+        text: male
+      neuter:
+        text: neuter
+  window_cond_enum:
+    name: window_cond_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      damaged:
+        text: damaged
+      needs repair:
+        text: needs repair
+      new:
+        text: new
+      rupture:
+        text: rupture
+      visible wear:
+        text: visible wear
+  handidness_enum:
+    name: handidness_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      ambidexterity:
+        text: ambidexterity
+      left handedness:
+        text: left handedness
+      mixed-handedness:
+        text: mixed-handedness
+      right handedness:
+        text: right handedness
+  wall_const_type_enum:
+    name: wall_const_type_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      frame construction:
+        text: frame construction
+      joisted masonry:
+        text: joisted masonry
+      light noncombustible:
+        text: light noncombustible
+      masonry noncombustible:
+        text: masonry noncombustible
+      modified fire resistive:
+        text: modified fire resistive
+      fire resistive:
+        text: fire resistive
+  build_occup_type_enum:
+    name: build_occup_type_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      office:
+        text: office
+      market:
+        text: market
+      restaurant:
+        text: restaurant
+      residence:
+        text: residence
+      school:
+        text: school
+      residential:
+        text: residential
+      commercial:
+        text: commercial
+      low rise:
+        text: low rise
+      high rise:
+        text: high rise
+      wood framed:
+        text: wood framed
+      health care:
+        text: health care
+      airport:
+        text: airport
+      sports complex:
+        text: sports complex
+  oxy_stat_samp_enum:
+    name: oxy_stat_samp_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      aerobic:
+        text: aerobic
+      anaerobic:
+        text: anaerobic
+      other:
+        text: other
+  filter_type_enum:
+    name: filter_type_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      particulate air filter:
+        text: particulate air filter
+      chemical air filter:
+        text: chemical air filter
+      low-MERV pleated media:
+        text: low-MERV pleated media
+      HEPA:
+        text: HEPA
+      electrostatic:
+        text: electrostatic
+      gas-phase or ultraviolet air treatments:
+        text: gas-phase or ultraviolet air treatments
+  samp_floor_enum:
+    name: samp_floor_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      1st floor:
+        text: 1st floor
+      2nd floor:
+        text: 2nd floor
+      basement:
+        text: basement
+      lobby:
+        text: lobby
+  furniture_enum:
+    name: furniture_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      cabinet:
+        text: cabinet
+      chair:
+        text: chair
+      desks:
+        text: desks
+  samp_dis_stage_enum:
+    name: samp_dis_stage_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      dissemination:
+        text: dissemination
+      growth and reproduction:
+        text: growth and reproduction
+      infection:
+        text: infection
+      inoculation:
+        text: inoculation
+      penetration:
+        text: penetration
+      other:
+        text: other
+  substructure_type_enum:
+    name: substructure_type_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      crawlspace:
+        text: crawlspace
+      slab on grade:
+        text: slab on grade
+      basement:
+        text: basement
+  door_comp_type_enum:
+    name: door_comp_type_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      metal covered:
+        text: metal covered
+      revolving:
+        text: revolving
+      sliding:
+        text: sliding
+      telescopic:
+        text: telescopic
+  plant_growth_med_enum:
+    name: plant_growth_med_enum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      other artificial liquid medium:
+        text: other artificial liquid medium
+      other artificial solid medium:
+        text: other artificial solid medium
+      peat moss:
+        text: peat moss
+      perlite:
+        text: perlite
+      pumice:
+        text: pumice
+      sand:
+        text: sand
+      soil:
+        text: soil
+      vermiculite:
+        text: vermiculite
+      water:
+        text: water
 slots:
   metagenome_annotation_id:
     name: metagenome_annotation_id
@@ -5531,8 +5617,6 @@ slots:
     examples:
     - value: 2021-04-15, 2021-04 and 2021 are all acceptable.
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIxS:collection_date
     rank: 2
     string_serialization: '{date, arbitrary precision}'
     slot_group: MIxS Inspired
@@ -5549,8 +5633,6 @@ slots:
     examples:
     - value: 13:33 or 13:33:55
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIxS:collection_date
     rank: 1
     string_serialization: '{time, seconds optional}'
     slot_group: MIxS Inspired
@@ -5568,8 +5650,6 @@ slots:
     examples:
     - value: 13:33 or 13:33:55
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIxS:collection_date
     rank: 3
     string_serialization: '{time, seconds optional}'
     slot_group: MIxS Inspired
@@ -5587,8 +5667,6 @@ slots:
     examples:
     - value: 'experimental treatment: value'
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIxS:experimental_factor|additional_info
     rank: 7
     string_serialization: '{text}'
     slot_group: MIxS Inspired
@@ -5603,8 +5681,6 @@ slots:
     - value: C18
     - value: Basix PES, 13-100-106 FisherSci
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIxS:filter_type
     rank: 6
     string_serialization: '{text}'
     slot_group: MIxS Inspired
@@ -5622,8 +5698,6 @@ slots:
     - value: 13C glucose
     - value: H218O
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIxS:chem_administration
     rank: 16
     string_serialization: '{termLabel} {[termID]}; {timestamp}'
     slot_group: MIxS Inspired
@@ -5640,8 +5714,6 @@ slots:
     - value: https://doi.org/10.1016/0038-0717(87)90052-6
     - value: https://doi.org/10.1016/0038-0717(87)90052-6 | https://www.sciencedirect.com/science/article/abs/pii/0038071787900526
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIxS:micro_biomass_meth
     rank: 11
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_group: MIxS Inspired
@@ -5656,8 +5728,6 @@ slots:
     - value: https://doi.org/10.1016/0038-0717(87)90052-6
     - value: https://doi.org/10.1016/0038-0717(87)90052-6 | https://www.sciencedirect.com/science/article/abs/pii/0038071787900526
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIxS:micro_biomass_meth
     rank: 13
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_group: MIxS Inspired
@@ -5672,8 +5742,6 @@ slots:
     examples:
     - value: 0.05 ug C/g dry soil
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIxS:microbial_biomass
     rank: 10
     string_serialization: '{float} {unit}'
     slot_group: MIxS Inspired
@@ -5688,8 +5756,6 @@ slots:
     examples:
     - value: 0.05 ug N/g dry soil
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIxS:microbial_biomass
     rank: 12
     string_serialization: '{float} {unit}'
     slot_group: MIxS Inspired
@@ -5702,8 +5768,6 @@ slots:
     examples:
     - value: insect 0.23 ug; plant 1g
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIxS:biomass|microbial_biomass
     rank: 8
     string_serialization: '{text};{float} {unit}'
     slot_group: MIxS Inspired
@@ -5716,8 +5780,6 @@ slots:
     examples:
     - value: https://doi.org/10.1038/s41467-021-26181-3
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIxS:microbial_biomass
     rank: 9
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_group: MIxS Inspired
@@ -5730,8 +5792,6 @@ slots:
     examples:
     - value: https://doi.org/10.1016/0038-0717(85)90144-0
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIxS:org_nitro|tot_nitro_cont_meth
     rank: 14
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_group: MIxS Inspired
@@ -5744,8 +5804,6 @@ slots:
     - This is an open text field to provide any treatments that cannot be captured
       in the provided slots.
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIxS:additional_info
     rank: 15
     string_serialization: '{text}'
     slot_group: MIxS Inspired
@@ -5763,8 +5821,6 @@ slots:
     examples:
     - value: 2021-04-15, 2021-04 and 2021 are all acceptable.
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIxS:collection_date
     rank: 4
     string_serialization: '{date, arbitrary precision}'
     slot_group: MIxS Inspired
@@ -5781,8 +5837,6 @@ slots:
     examples:
     - value: 13:33 or 13:33:55
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIxS:collection_date
     rank: 5
     string_serialization: '{time, seconds optional}'
     slot_group: MIxS Inspired
@@ -17361,31 +17415,6 @@ slots:
     slot_uri: MIXS:0000156
     multivalued: false
     range: QuantityValue
-  investigation field:
-    name: investigation field
-    description: field describing aspect of the investigation/study to which the sample
-      belongs
-    from_schema: https://w3id.org/nmdc/nmdc
-    abstract: true
-  core field:
-    name: core field
-    description: basic fields
-    from_schema: https://w3id.org/nmdc/nmdc
-    abstract: true
-  nucleic acid sequence source field:
-    name: nucleic acid sequence source field
-    from_schema: https://w3id.org/nmdc/nmdc
-    abstract: true
-  has numeric value:
-    name: has numeric value
-    from_schema: https://w3id.org/nmdc/nmdc
-    owner: QuantityValue
-    range: double
-  environment field:
-    name: environment field
-    description: field describing environmental aspect of a sample
-    from_schema: https://w3id.org/nmdc/nmdc
-    abstract: true
   has unit:
     name: has unit
     description: Example "m"
@@ -17400,6 +17429,31 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     string_serialization: '{has numeric value} {has unit}'
     owner: QuantityValue
+  core field:
+    name: core field
+    description: basic fields
+    from_schema: https://w3id.org/nmdc/nmdc
+    abstract: true
+  environment field:
+    name: environment field
+    description: field describing environmental aspect of a sample
+    from_schema: https://w3id.org/nmdc/nmdc
+    abstract: true
+  has numeric value:
+    name: has numeric value
+    from_schema: https://w3id.org/nmdc/nmdc
+    owner: QuantityValue
+    range: double
+  nucleic acid sequence source field:
+    name: nucleic acid sequence source field
+    from_schema: https://w3id.org/nmdc/nmdc
+    abstract: true
+  investigation field:
+    name: investigation field
+    description: field describing aspect of the investigation/study to which the sample
+      belongs
+    from_schema: https://w3id.org/nmdc/nmdc
+    abstract: true
   chemical:
     name: chemical
     description: from reaction participant class
@@ -18486,10 +18540,9 @@ classes:
           Matches the entity that has been submitted to NMDC
       lat_lon:
         name: lat_lon
-        description: This is currently a required field but it's not clear if this
-          should be required for human hosts
-        notes:
-        - required where?
+        todos:
+        - This is currently a required field but it's not clear if this should be
+          required for human hosts
       env_broad_scale:
         name: env_broad_scale
         required: true
@@ -19438,7 +19491,6 @@ classes:
       used:
         name: used
         description: The instrument used to collect the data used in the analysis
-        range: Instrument
       id:
         name: id
         required: true
