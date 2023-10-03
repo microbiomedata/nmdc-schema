@@ -6087,13 +6087,13 @@ nmdc:AnalyticalSample a owl:Class,
     rdfs:label "AnalyticalSample" ;
     dcterms:title "Analytical Sample" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:maxCardinality 1 ;
             owl:onProperty nmdc:id ],
         nmdc:MaterialEntity ;
     skos:inScheme nmdc:core .
@@ -6118,10 +6118,10 @@ nmdc:Instrument a owl:Class,
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:id ],
         nmdc:NamedThing ;
     skos:altLabel "device" ;
@@ -6143,10 +6143,10 @@ nmdc:MetatranscriptomeAnnotationActivity a owl:Class,
             owl:minCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:maxCardinality 1 ;
             owl:onProperty nmdc:id ],
         nmdc:WorkflowExecutionActivity ;
     skos:inScheme nmdc:workflow_execution_activity .
@@ -6155,10 +6155,10 @@ nmdc:MetatranscriptomeAssembly a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "MetatranscriptomeAssembly" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
@@ -6190,20 +6190,20 @@ nmdc:ProteinQuantification a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ProteinQuantification" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:best_protein ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:best_protein ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:all_proteins ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:all_proteins ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:best_protein ] ;
+            owl:onProperty nmdc:best_protein ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:best_protein ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:all_proteins ] ;
     skos:definition "This is used to link a metaproteomics analysis workflow to a specific protein" ;
     skos:inScheme nmdc:core .
 
@@ -8708,22 +8708,22 @@ nmdc:CollectingBiosamplesFromSite a owl:Class,
     rdfs:label "CollectingBiosamplesFromSite" ;
     dcterms:title "Collecting Biosamples From Site" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom nmdc:Site ;
-            owl:onProperty nmdc:has_input ],
-        [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:id ],
+            owl:onProperty nmdc:has_input ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty nmdc:has_output ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty nmdc:has_input ],
+            owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom nmdc:Site ;
+            owl:onProperty nmdc:has_input ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
             owl:allValuesFrom nmdc:Biosample ;
@@ -8741,32 +8741,32 @@ nmdc:DataObject a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "DataObject" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty nmdc:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty nmdc:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:name ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:description ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:id ],
+        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty nmdc:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty nmdc:name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:name ],
         nmdc:NamedThing ;
     skos:definition "An object that primarily consists of symbols that represent information.   Files, records, and omics data are examples of data objects." ;
     skos:editorialNote "removed previous id_prefixes value of GOLD, since we are now using pattern-based id validation" ;
@@ -8778,14 +8778,8 @@ nmdc:DissolvingActivity a owl:Class,
     rdfs:label "DissolvingActivity" ;
     dcterms:title "Dissolving activity" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:material_input ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 0 ;
             owl:onProperty nmdc:material_output ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:material_input ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:material_input ],
@@ -8793,8 +8787,14 @@ nmdc:DissolvingActivity a owl:Class,
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:material_output ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:material_output ] ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:material_output ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:material_input ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:material_input ] ;
     skos:altLabel "dissolution-activity" ;
     skos:exactMatch <http://purl.obolibrary.org/obo/CHMO_0002773> ;
     skos:inScheme nmdc:sample_prep .
@@ -8806,20 +8806,20 @@ nmdc:Extraction a owl:Class,
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty nmdc:has_output ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:has_input ],
+        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty nmdc:has_input ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:has_input ],
+            owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:has_output ],
@@ -8835,30 +8835,30 @@ nmdc:FunctionalAnnotation a owl:Class,
         <https://img.jgi.doe.gov/docs/functional-annotation.pdf> ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:has_function ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:was_generated_by ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom nmdc:MetagenomeAnnotationActivity ;
             owl:onProperty nmdc:was_generated_by ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:was_generated_by ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:has_function ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:type ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:was_generated_by ],
         [ a owl:Restriction ;
             owl:allValuesFrom nmdc:OntologyClass ;
             owl:onProperty nmdc:type ],
         [ a owl:Restriction ;
+            owl:allValuesFrom nmdc:MetagenomeAnnotationActivity ;
+            owl:onProperty nmdc:was_generated_by ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty nmdc:has_function ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:has_function ] ;
     skos:definition "An assignment of a function term (e.g. reaction or pathway) that is executed by a gene product, or which the gene product plays an active role in. Functional annotations can be assigned manually by curators, or automatically in workflows. In the context of NMDC, all function annotation is performed automatically, typically using HMM or Blast type methods" ;
     skos:editorialNote "move id slot usage patterns to has_function slot usage?" ;
@@ -8875,25 +8875,16 @@ nmdc:GenomeFeature a owl:Class,
     rdfs:label "GenomeFeature" ;
     rdfs:seeAlso <https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md> ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:end ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:seqid ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:seqid ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom nmdc:OntologyClass ;
-            owl:onProperty nmdc:type ],
+            owl:minCardinality 1 ;
+            owl:onProperty nmdc:start ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:start ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 1 ;
+            owl:onProperty nmdc:seqid ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
             owl:onProperty nmdc:end ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
@@ -8902,14 +8893,23 @@ nmdc:GenomeFeature a owl:Class,
             owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:start ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:allValuesFrom nmdc:OntologyClass ;
+            owl:onProperty nmdc:type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty nmdc:end ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:seqid ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty nmdc:start ] ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:end ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:seqid ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:type ] ;
     skos:definition "A feature localized to an interval along a genome" ;
     skos:inScheme nmdc:annotation ;
     skos:note "corresponds to an entry in GFF3" .
@@ -8931,26 +8931,26 @@ nmdc:LibraryPreparation a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "LibraryPreparation" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 1 ;
             owl:onProperty nmdc:has_input ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty nmdc:has_input ],
+            owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:has_output ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
+            owl:onProperty nmdc:has_output ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty nmdc:has_output ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:has_input ],
         nmdc:BiosampleProcessing ;
     skos:altLabel "LibraryConstruction" ;
     skos:closeMatch <http://purl.obolibrary.org/obo/OBI_0000711> ;
@@ -8984,32 +8984,32 @@ nmdc:MaterialSamplingActivity a owl:Class,
     rdfs:label "MaterialSamplingActivity" ;
     dcterms:title "Material sampling activity" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:amount_collected ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:material_output ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
             owl:onProperty nmdc:collected_into ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:material_output ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:amount_collected ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:material_output ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:collected_into ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:amount_collected ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:collected_into ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:collected_into ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:amount_collected ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty nmdc:material_output ] ;
+            owl:onProperty nmdc:collected_into ] ;
     skos:altLabel "weighing-activity" ;
     skos:exactMatch <http://purl.obolibrary.org/obo/OBI_0000744> ;
     skos:inScheme nmdc:sample_prep .
@@ -9024,13 +9024,13 @@ nmdc:MetabolomicsAnalysisActivity a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "MetabolomicsAnalysisActivity" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty nmdc:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:id ],
         nmdc:WorkflowExecutionActivity ;
     skos:inScheme nmdc:workflow_execution_activity .
@@ -9039,13 +9039,13 @@ nmdc:MetagenomeAssembly a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "MetagenomeAssembly" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty nmdc:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:id ],
         nmdc:WorkflowExecutionActivity ;
     skos:definition "A workflow execution activity that converts sequencing reads into an assembled metagenome." ;
@@ -9057,10 +9057,10 @@ nmdc:MetagenomeSequencingActivity a owl:Class,
     rdfs:label "MetagenomeSequencingActivity" ;
     dcterms:title "Metagenome sequencing activity" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:maxCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
@@ -9073,10 +9073,7 @@ nmdc:MetaproteomicsAnalysisActivity a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "MetaproteomicsAnalysisActivity" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:used ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
@@ -9085,10 +9082,13 @@ nmdc:MetaproteomicsAnalysisActivity a owl:Class,
             owl:minCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:maxCardinality 1 ;
             owl:onProperty nmdc:used ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty nmdc:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty nmdc:used ],
         nmdc:WorkflowExecutionActivity ;
     skos:inScheme nmdc:workflow_execution_activity .
@@ -9113,23 +9113,23 @@ nmdc:NomAnalysisActivity a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "NomAnalysisActivity" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:used ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:used ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty nmdc:used ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 1 ;
             owl:onProperty nmdc:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:used ],
         nmdc:WorkflowExecutionActivity ;
     skos:inScheme nmdc:workflow_execution_activity .
 
@@ -9137,14 +9137,14 @@ nmdc:OmicsProcessing a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "OmicsProcessing" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty nmdc:has_input ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:has_input ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty nmdc:has_input ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:id ],
@@ -9171,16 +9171,7 @@ nmdc:Pooling a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Pooling" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:has_input ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 0 ;
             owl:onProperty nmdc:has_output ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
@@ -9189,8 +9180,17 @@ nmdc:Pooling a owl:Class,
             owl:minCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:has_output ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:has_input ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:id ],
         nmdc:BiosampleProcessing ;
     skos:definition "physical combination of several instances of like material." ;
     skos:exactMatch <http://purl.obolibrary.org/obo/OBI_0600016> ;
@@ -9201,13 +9201,13 @@ nmdc:ProcessedSample a owl:Class,
     rdfs:label "ProcessedSample" ;
     dcterms:title "Processed Sample" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
+            owl:onProperty nmdc:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty nmdc:id ],
         nmdc:MaterialEntity ;
     skos:inScheme nmdc:core .
@@ -9238,10 +9238,10 @@ nmdc:ReactionActivity a owl:Class,
             owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:reaction_time ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
             owl:onProperty nmdc:reaction_time ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
             owl:onProperty nmdc:reaction_time ] ;
     skos:altLabel "reaction-activity" ;
     skos:inScheme nmdc:sample_prep .
@@ -9251,13 +9251,13 @@ nmdc:ReadBasedTaxonomyAnalysisActivity a owl:Class,
     rdfs:label "ReadBasedTaxonomyAnalysisActivity" ;
     dcterms:title "Read based analysis activity" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:id ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:id ],
         nmdc:WorkflowExecutionActivity ;
     skos:definition "A workflow execution activity that performs taxonomy classification using sequencing reads" ;
@@ -9268,10 +9268,10 @@ nmdc:ReadQcAnalysisActivity a owl:Class,
     rdfs:label "ReadQcAnalysisActivity" ;
     dcterms:title "Read quality control analysis activity" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
@@ -10492,13 +10492,13 @@ nmdc:FieldResearchSite a owl:Class,
     rdfs:label "FieldResearchSite" ;
     dcterms:title "Field Research Site" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:id ],
+        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty nmdc:id ],
         nmdc:Site ;
     skos:altLabel "research plot" ;
@@ -11464,10 +11464,10 @@ nmdc:MetagenomeAnnotationActivity a owl:Class,
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 1 ;
             owl:onProperty nmdc:id ],
         nmdc:WorkflowExecutionActivity ;
     skos:definition "A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs" ;
@@ -12264,13 +12264,13 @@ nmdc:Site a owl:Class,
     rdfs:label "Site" ;
     dcterms:title "Site" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 1 ;
             owl:onProperty nmdc:id ],
         nmdc:MaterialEntity ;
     skos:inScheme nmdc:core ;
@@ -13151,9 +13151,6 @@ nmdc:BiosampleProcessing a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "BiosampleProcessing" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:has_input ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
@@ -13161,6 +13158,9 @@ nmdc:BiosampleProcessing a owl:Class,
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
             owl:allValuesFrom nmdc:Biosample ;
+            owl:onProperty nmdc:has_input ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty nmdc:has_input ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
@@ -13190,31 +13190,31 @@ nmdc:GeolocationValue a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "GeolocationValue" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty nmdc:longitude ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:maxCardinality 1 ;
             owl:onProperty nmdc:latitude ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:has_raw_value ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:has_raw_value ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:longitude ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:longitude ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 1 ;
             owl:onProperty nmdc:latitude ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:maxCardinality 1 ;
             owl:onProperty nmdc:has_raw_value ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
+            owl:onProperty nmdc:longitude ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:longitude ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:longitude ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:latitude ],
         nmdc:AttributeValue ;
     skos:definition "A normalized value for a location on the earth's surface" ;
@@ -13233,10 +13233,10 @@ nmdc:MaterialSample a owl:Class,
     rdfs:label "MaterialSample" ;
     dcterms:title "Material sample" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
@@ -13536,122 +13536,281 @@ nmdc:Biosample a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Biosample" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:season_precpt ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:tot_org_c_meth ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:maxCardinality 1 ;
             owl:onProperty nmdc:env_medium ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:cur_vegetation ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:cur_vegetation ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:env_medium ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:env_broad_scale ],
+            owl:onProperty nmdc:al_sat ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:climate_environment ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:alternative_identifiers ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:ph_meth ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:tot_org_carb ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty nmdc:extreme_event ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:slope_aspect ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:tot_nitro_content ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:fire ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:extreme_event ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:watering_regm ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:flooding ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:annual_precpt ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:al_sat ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty nmdc:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:slope_aspect ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:slope_gradient ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:heavy_metals_meth ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:tot_org_carb ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:oxy_stat_samp ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:source_mat_id ],
+            owl:onProperty nmdc:env_broad_scale ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:water_cont_soil_meth ],
+            owl:onProperty nmdc:lat_lon ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:cur_vegetation ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:tot_org_c_meth ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:env_broad_scale ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:alternative_identifiers ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:tot_nitro_cont_meth ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:al_sat_meth ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:flooding ],
+            owl:onProperty nmdc:slope_gradient ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:al_sat ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty nmdc:part_of ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:flooding ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:env_broad_scale ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:tot_nitro_content ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:water_content ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty nmdc:env_broad_scale ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty nmdc:elev ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:season_precpt ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:heavy_metals ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:salinity_meth ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:slope_gradient ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:tot_nitro_content ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:tot_nitro_cont_meth ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty nmdc:salinity_meth ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:ph_meth ],
+            owl:onProperty nmdc:sieving ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:source_mat_id ],
+            owl:onProperty nmdc:tot_org_c_meth ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:watering_regm ],
+            owl:onProperty nmdc:sieving ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty nmdc:env_local_scale ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty nmdc:cur_vegetation_meth ],
+            owl:onProperty nmdc:gold_biosample_identifiers ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom nmdc:OxyStatSampEnum ;
             owl:onProperty nmdc:oxy_stat_samp ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:tot_carb ],
+            owl:onProperty nmdc:water_content ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:slope_aspect ],
+            owl:onProperty nmdc:source_mat_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:annual_precpt ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:tot_nitro_cont_meth ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:heavy_metals ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty nmdc:env_medium ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:cur_vegetation ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty nmdc:tot_nitro_cont_meth ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:cur_vegetation_meth ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:al_sat_meth ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:flooding ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:sieving ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:heavy_metals_meth ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:flooding ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty nmdc:part_of ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:cur_vegetation_meth ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:source_mat_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:fire ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:cur_vegetation_meth ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:tot_org_carb ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:salinity_meth ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom nmdc:Study ;
+            owl:onProperty nmdc:part_of ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:source_mat_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:gaseous_environment ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:annual_precpt ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:ph_meth ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:slope_gradient ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:elev ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:tot_carb ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:gaseous_environment ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:elev ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:lat_lon ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:season_precpt ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:extreme_event ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:tot_nitro_content ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:ph_meth ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:al_sat_meth ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:water_cont_soil_meth ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:water_cont_soil_meth ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:oxy_stat_samp ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty nmdc:gold_biosample_identifiers ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:lat_lon ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:cur_vegetation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:season_precpt ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:env_local_scale ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty nmdc:env_broad_scale ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty nmdc:elev ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:tot_carb ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:slope_aspect ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:tot_carb ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:water_content ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:gold_biosample_identifiers ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
@@ -13659,194 +13818,35 @@ nmdc:Biosample a owl:Class,
                                 owl:withRestrictions ( [ xsd:pattern "^[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?(\\s+to\\s+[12]\\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\\d|3[01]))?)?)?$" ] ) ] ) ] ;
             owl:onProperty nmdc:fire ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:climate_environment ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:climate_environment ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:lat_lon ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom nmdc:OxyStatSampEnum ;
-            owl:onProperty nmdc:oxy_stat_samp ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:tot_carb ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:cur_vegetation_meth ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:tot_carb ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:gold_biosample_identifiers ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:fire ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:ph_meth ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:tot_org_c_meth ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:gaseous_environment ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:sieving ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:gold_biosample_identifiers ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:elev ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:fire ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:annual_precpt ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:heavy_metals ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:env_local_scale ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:env_medium ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:al_sat ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:tot_nitro_cont_meth ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:sieving ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:cur_vegetation_meth ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:annual_precpt ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:slope_gradient ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:env_medium ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:watering_regm ],
         [ a owl:Restriction ;
-            owl:allValuesFrom nmdc:Study ;
-            owl:onProperty nmdc:part_of ],
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:ph_meth ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:al_sat_meth ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:season_precpt ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:extreme_event ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:sieving ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:water_content ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:water_cont_soil_meth ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:tot_org_c_meth ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:al_sat ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:lat_lon ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:slope_aspect ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:heavy_metals_meth ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:tot_org_carb ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:tot_nitro_cont_meth ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:alternative_identifiers ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:al_sat_meth ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:source_mat_id ],
+            owl:onProperty nmdc:climate_environment ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:tot_nitro_content ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:elev ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:heavy_metals ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty nmdc:al_sat_meth ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty nmdc:salinity_meth ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:tot_org_c_meth ],
+            owl:onProperty nmdc:season_precpt ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:extreme_event ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:slope_aspect ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:slope_gradient ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty nmdc:env_local_scale ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:maxCardinality 1 ;
             owl:onProperty nmdc:tot_org_carb ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:gaseous_environment ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty nmdc:flooding ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:annual_precpt ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:alternative_identifiers ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty nmdc:gold_biosample_identifiers ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:heavy_metals_meth ],
+            owl:onProperty nmdc:water_cont_soil_meth ],
         nmdc:MaterialEntity ;
     skos:altLabel "biospecimen",
         "material sample",
@@ -13919,39 +13919,39 @@ nmdc:PersonValue a owl:Class,
     rdfs:label "PersonValue" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:has_raw_value ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:has_raw_value ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty nmdc:email ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty nmdc:orcid ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:orcid ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:orcid ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty nmdc:has_raw_value ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:orcid ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:orcid ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:has_raw_value ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:has_raw_value ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty nmdc:name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:orcid ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:email ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:email ],
         nmdc:AttributeValue ;
     skos:definition "An attribute value representing a person" ;
@@ -14087,13 +14087,13 @@ nmdc:ControlledIdentifiedTermValue a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ControlledIdentifiedTermValue" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty nmdc:term ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:term ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:term ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
             owl:onProperty nmdc:term ],
         nmdc:ControlledTermValue ;
     skos:definition "A controlled term or class from an ontology, requiring the presence of term with an id" ;
@@ -14216,83 +14216,83 @@ nmdc:Study a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Study" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:insdc_bioproject_identifiers ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:part_of ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:notes ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:related_identifiers ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:websites ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:name ],
+            owl:onProperty nmdc:alternative_names ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:websites ],
+            owl:onProperty nmdc:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:notes ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:alternative_identifiers ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:insdc_bioproject_identifiers ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:related_identifiers ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom nmdc:Study ;
+            owl:onProperty nmdc:part_of ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:insdc_bioproject_identifiers ],
+            owl:onProperty nmdc:related_identifiers ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:related_identifiers ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:alternative_names ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:websites ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:alternative_identifiers ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:name ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:description ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 0 ;
             owl:onProperty nmdc:notes ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:insdc_bioproject_identifiers ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:name ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:alternative_names ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:alternative_names ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:insdc_bioproject_identifiers ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:websites ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:related_identifiers ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:notes ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:insdc_bioproject_identifiers ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:related_identifiers ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:part_of ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:alternative_identifiers ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom nmdc:Study ;
-            owl:onProperty nmdc:part_of ],
         nmdc:NamedThing ;
     skos:altLabel "investigation",
         "project",
@@ -14460,15 +14460,15 @@ nmdc:OntologyClass a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "OntologyClass" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:onDatatype xsd:string ;
-                    owl:withRestrictions ( [ xsd:pattern "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$" ] ) ] ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
+            owl:onProperty nmdc:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:onDatatype xsd:string ;
+                    owl:withRestrictions ( [ xsd:pattern "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$" ] ) ] ;
             owl:onProperty nmdc:id ],
         nmdc:NamedThing ;
     skos:editorialNote "The identifiers for terms from external ontologies can't have their ids constrained to the nmdc namespace" ;
@@ -15089,10 +15089,10 @@ nmdc:AttributeValue a owl:Class,
             owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:type ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
             owl:onProperty nmdc:type ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
             owl:onProperty nmdc:type ] ;
     skos:definition "The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic value and the structured value" ;
     skos:inScheme nmdc:core .
@@ -15267,71 +15267,71 @@ nmdc:WorkflowExecutionActivity a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "WorkflowExecutionActivity" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:ended_at_time ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:git_url ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty nmdc:ended_at_time ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty nmdc:has_input ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:git_url ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:ended_at_time ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:execution_resource ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:started_at_time ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty nmdc:execution_resource ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty nmdc:ended_at_time ],
+            owl:onProperty nmdc:started_at_time ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty nmdc:type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty nmdc:id ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty nmdc:has_output ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty nmdc:ended_at_time ],
+            owl:onProperty nmdc:execution_resource ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:execution_resource ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
             owl:onProperty nmdc:git_url ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:has_input ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:has_output ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:execution_resource ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:execution_resource ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:git_url ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty nmdc:git_url ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:started_at_time ],
-        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty nmdc:started_at_time ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty nmdc:type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:ended_at_time ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:has_input ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty nmdc:has_input ],
         nmdc:Activity ;
     skos:altLabel "analysis" ;
     skos:definition "Represents an instance of an execution of a particular workflow" ;
@@ -15512,29 +15512,29 @@ nmdc:Database a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Database" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:etl_software_version ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:date_created ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:etl_software_version ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty nmdc:date_created ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:etl_software_version ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc:etl_software_version ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty nmdc:date_created ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:metatranscriptome_activity_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:etl_software_version ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:metatranscriptome_activity_set ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:date_created ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:etl_software_version ] ;
+            owl:onProperty nmdc:metatranscriptome_activity_set ] ;
     skos:altLabel "NMDC metadata object" ;
     skos:definition "An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest" ;
     skos:inScheme nmdc:nmdc .
@@ -15766,7 +15766,7 @@ nmdc:nmdc a owl:Ontology ;
     rdfs:label "NMDC" ;
     dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
     dcterms:title "NMDC Schema" ;
-    pav:version "v8.0.0" ;
+    pav:version "v8.1.0" ;
     skos:definition """Schema for National Microbiome Data Collaborative (NMDC).
 This schema is organized into multiple modules, such as:
 
@@ -15790,31 +15790,31 @@ nmdc:QuantityValue a owl:Class,
     rdfs:label "QuantityValue" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:has_numeric_value ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:has_raw_value ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty nmdc:has_unit ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:has_unit ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc:has_raw_value ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc:has_numeric_value ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Double ;
             owl:onProperty nmdc:has_numeric_value ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:has_unit ],
+            owl:onProperty nmdc:has_raw_value ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:has_raw_value ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:has_raw_value ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc:has_numeric_value ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc:has_raw_value ],
+            owl:onProperty nmdc:has_unit ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:has_numeric_value ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc:has_unit ],
         nmdc:AttributeValue ;
     skos:definition "A simple quantity, e.g. 2cm" ;
     skos:inScheme nmdc:core ;

@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2023-10-03T11:00:55
+# Generation date: 2023-10-03T12:25:46
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -31,7 +31,7 @@ from linkml_runtime.linkml_model.types import Boolean, Double, Float, Integer, S
 from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE
 
 metamodel_version = "1.7.0"
-version = "v8.0.0"
+version = "v8.1.0"
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
