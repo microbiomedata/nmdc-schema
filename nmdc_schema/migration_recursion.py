@@ -129,18 +129,16 @@ class Migrator_from_7_8_0_to_8_0_0(Migrator):
 
     def rename_sample_mass_field(self, extraction: dict) -> dict:
         logger.info(f"Starting migration of {extraction['id']}")
-
-        # change slot name from sample_mass to input_mass
         if "sample_mass" in extraction:
             extraction['input_mass'] = extraction.pop('sample_mass')
         return extraction
 
     def standardize_letter_casing_of_gold_biosample_identifiers(self, biosample: dict) -> dict:
+        field_name = "gold_biosample_identifiers"
         migrated_gold_identifiers = []
-        if "gold_biosample_identifiers" in biosample and biosample[
-            "gold_biosample_identifiers"]:
-            for i in biosample["gold_biosample_identifiers"]:
-                logger.info(f"migrating gold_biosample_identifiers {i}")
+        if field_name in biosample and biosample[field_name]:
+            for i in biosample[field_name]:
+                logger.info(f"migrating {field_name} {i}")
                 curie_parts = i.split(':')
                 curie_prefix = curie_parts[0]
                 curie_local_id = curie_parts[1]
@@ -149,16 +147,16 @@ class Migrator_from_7_8_0_to_8_0_0(Migrator):
                     migrated_gold_identifiers.append(f"gold:{curie_local_id}")
                 else:
                     migrated_gold_identifiers.append(i)
-        biosample["gold_biosample_identifiers"] = migrated_gold_identifiers
+        biosample[field_name] = migrated_gold_identifiers
 
         return biosample
 
     def standardize_letter_casing_of_gold_sequencing_project_identifiers(self, omics_processing: dict) -> dict:
+        field_name = "gold_sequencing_project_identifiers"        
         migrated_gold_identifiers = []
-        if "gold_sequencing_project_identifiers" in omics_processing and omics_processing[
-            "gold_sequencing_project_identifiers"]:
-            for i in omics_processing["gold_sequencing_project_identifiers"]:
-                logger.info(f"migrating gold_sequencing_project_identifiers {i}")
+        if field_name in omics_processing and omics_processing[field_name]:
+            for i in omics_processing[field_name]:
+                logger.info(f"migrating {field_name} {i}")
                 curie_parts = i.split(':')
                 curie_prefix = curie_parts[0]
                 curie_local_id = curie_parts[1]
@@ -167,16 +165,16 @@ class Migrator_from_7_8_0_to_8_0_0(Migrator):
                     migrated_gold_identifiers.append(f"gold:{curie_local_id}")
                 else:
                     migrated_gold_identifiers.append(i)
-        omics_processing["gold_sequencing_project_identifiers"] = migrated_gold_identifiers
+        omics_processing[field_name] = migrated_gold_identifiers
 
         return omics_processing
 
     def standardize_letter_casing_of_gold_study_identifier(self, study: dict) -> dict:
+        field_name = "gold_study_identifiers"           
         migrated_gold_identifiers = []
-        if "gold_study_identifiers" in study and study[
-            "gold_study_identifiers"]:
-            for i in study["gold_study_identifiers"]:
-                logger.info(f"migrating gold_study_identifiers {i}")
+        if field_name in study and study[field_name]:
+            for i in study[field_name]:
+                logger.info(f"migrating {field_name} {i}")
                 curie_parts = i.split(':')
                 curie_prefix = curie_parts[0]
                 curie_local_id = curie_parts[1]
@@ -185,7 +183,7 @@ class Migrator_from_7_8_0_to_8_0_0(Migrator):
                     migrated_gold_identifiers.append(f"gold:{curie_local_id}")
                 else:
                     migrated_gold_identifiers.append(i)
-        study["gold_study_identifiers"] = migrated_gold_identifiers
+        study[field_name] = migrated_gold_identifiers
 
         return study
 
