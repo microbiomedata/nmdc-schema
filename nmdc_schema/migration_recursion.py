@@ -99,16 +99,16 @@ class Migrator_from_7_7_2_to_7_8_0(Migrator):
             study_set=[self.replace_doi_field_with_award_dois_list_field],
         )
 
-    def replace_doi_field_with_award_dois_list_field(self, retrieved_study):
-        logger.info(f"Starting migration of {retrieved_study['id']}")
-        if "doi" in retrieved_study:
-            match = re.search(doi_url_pattern, retrieved_study["doi"]['has_raw_value'])
+    def replace_doi_field_with_award_dois_list_field(self, study: dict) -> dict:
+        logger.info(f"Starting migration of {study['id']}")
+        if "doi" in study:
+            match = re.search(doi_url_pattern, study["doi"]['has_raw_value'])
             if match:
                 start_index = match.end()
-                as_curie = f"doi:10.{retrieved_study['doi']['has_raw_value'][start_index:]}"
-                retrieved_study["award_dois"] = [as_curie]
-            del retrieved_study["doi"]
-        return retrieved_study
+                as_curie = f"doi:10.{study['doi']['has_raw_value'][start_index:]}"
+                study["award_dois"] = [as_curie]
+            del study["doi"]
+        return study
 
 
 class Migrator_from_7_8_0_to_8_0_0(Migrator):
@@ -127,19 +127,19 @@ class Migrator_from_7_8_0_to_8_0_0(Migrator):
             study_set=[self.standardize_letter_casing_of_gold_study_identifier],
         )
 
-    def rename_sample_mass_field(self, retrieved_extraction: dict) -> dict:
-        logger.info(f"Starting migration of {retrieved_extraction['id']}")
+    def rename_sample_mass_field(self, extraction: dict) -> dict:
+        logger.info(f"Starting migration of {extraction['id']}")
 
         # change slot name from sample_mass to input_mass
-        if "sample_mass" in retrieved_extraction:
-            retrieved_extraction['input_mass'] = retrieved_extraction.pop('sample_mass')
-        return retrieved_extraction
+        if "sample_mass" in extraction:
+            extraction['input_mass'] = extraction.pop('sample_mass')
+        return extraction
 
-    def standardize_letter_casing_of_gold_biosample_identifiers(self, retrieved_biosample: dict) -> dict:
+    def standardize_letter_casing_of_gold_biosample_identifiers(self, biosample: dict) -> dict:
         migrated_gold_identifiers = []
-        if "gold_biosample_identifiers" in retrieved_biosample and retrieved_biosample[
+        if "gold_biosample_identifiers" in biosample and biosample[
             "gold_biosample_identifiers"]:
-            for i in retrieved_biosample["gold_biosample_identifiers"]:
+            for i in biosample["gold_biosample_identifiers"]:
                 logger.info(f"migrating gold_biosample_identifiers {i}")
                 curie_parts = i.split(':')
                 curie_prefix = curie_parts[0]
@@ -149,15 +149,15 @@ class Migrator_from_7_8_0_to_8_0_0(Migrator):
                     migrated_gold_identifiers.append(f"gold:{curie_local_id}")
                 else:
                     migrated_gold_identifiers.append(i)
-        retrieved_biosample["gold_biosample_identifiers"] = migrated_gold_identifiers
+        biosample["gold_biosample_identifiers"] = migrated_gold_identifiers
 
-        return retrieved_biosample
+        return biosample
 
-    def standardize_letter_casing_of_gold_sequencing_project_identifiers(self, retrieved_omics_processing: dict) -> dict:
+    def standardize_letter_casing_of_gold_sequencing_project_identifiers(self, omics_processing: dict) -> dict:
         migrated_gold_identifiers = []
-        if "gold_sequencing_project_identifiers" in retrieved_omics_processing and retrieved_omics_processing[
+        if "gold_sequencing_project_identifiers" in omics_processing and omics_processing[
             "gold_sequencing_project_identifiers"]:
-            for i in retrieved_omics_processing["gold_sequencing_project_identifiers"]:
+            for i in omics_processing["gold_sequencing_project_identifiers"]:
                 logger.info(f"migrating gold_sequencing_project_identifiers {i}")
                 curie_parts = i.split(':')
                 curie_prefix = curie_parts[0]
@@ -167,15 +167,15 @@ class Migrator_from_7_8_0_to_8_0_0(Migrator):
                     migrated_gold_identifiers.append(f"gold:{curie_local_id}")
                 else:
                     migrated_gold_identifiers.append(i)
-        retrieved_omics_processing["gold_sequencing_project_identifiers"] = migrated_gold_identifiers
+        omics_processing["gold_sequencing_project_identifiers"] = migrated_gold_identifiers
 
-        return retrieved_omics_processing
+        return omics_processing
 
-    def standardize_letter_casing_of_gold_study_identifier(self, retrieved_study: dict) -> dict:
+    def standardize_letter_casing_of_gold_study_identifier(self, study: dict) -> dict:
         migrated_gold_identifiers = []
-        if "gold_study_identifiers" in retrieved_study and retrieved_study[
+        if "gold_study_identifiers" in study and study[
             "gold_study_identifiers"]:
-            for i in retrieved_study["gold_study_identifiers"]:
+            for i in study["gold_study_identifiers"]:
                 logger.info(f"migrating gold_study_identifiers {i}")
                 curie_parts = i.split(':')
                 curie_prefix = curie_parts[0]
@@ -185,9 +185,9 @@ class Migrator_from_7_8_0_to_8_0_0(Migrator):
                     migrated_gold_identifiers.append(f"gold:{curie_local_id}")
                 else:
                     migrated_gold_identifiers.append(i)
-        retrieved_study["gold_study_identifiers"] = migrated_gold_identifiers
+        study["gold_study_identifiers"] = migrated_gold_identifiers
 
-        return retrieved_study
+        return study
 
 
 @click.command()
