@@ -133,7 +133,7 @@ class Migrator_from_7_8_0_to_8_0_0(Migrator):
             extraction['input_mass'] = extraction.pop('sample_mass')
         return extraction
 
-    def standardize_letter_casing_of_gold(self, identifiers: List[str]) -> List[str]:
+    def standardize_letter_casing_of_gold_identifiers(self, identifiers: List[str]) -> List[str]:
         """
         Replaces the prefix `GOLD:` with `gold:` in the list of identifiers.
         
@@ -148,6 +148,10 @@ class Migrator_from_7_8_0_to_8_0_0(Migrator):
             curie_prefix = curie_parts[0]  # everything before the first colon
             curie_local_id = curie_parts[1]  # everything after the first colon, assuming there are no more colons
 
+            # Note: `s.split(":", maxsplit=1)` could be used to divide the string at the
+            #       _first_ colon only, so that `parts[1]` contains everything after that.
+            #       See: https://docs.python.org/3/library/stdtypes.html#str.split
+
             if curie_prefix == "GOLD":
                 standardized_identifiers.append(f"gold:{curie_local_id}")
             else:
@@ -158,7 +162,7 @@ class Migrator_from_7_8_0_to_8_0_0(Migrator):
     def standardize_letter_casing_of_gold_biosample_identifiers(self, biosample: dict) -> dict:
         field_name = "gold_biosample_identifiers"
         if field_name in biosample and biosample[field_name]:
-            biosample[field_name] = self.standardize_letter_casing_of_gold(biosample[field_name])
+            biosample[field_name] = self.standardize_letter_casing_of_gold_identifiers(biosample[field_name])
         else:
             biosample[field_name] = []
         return biosample
@@ -166,7 +170,7 @@ class Migrator_from_7_8_0_to_8_0_0(Migrator):
     def standardize_letter_casing_of_gold_sequencing_project_identifiers(self, omics_processing: dict) -> dict:
         field_name = "gold_sequencing_project_identifiers"
         if field_name in omics_processing and omics_processing[field_name]:
-            omics_processing[field_name] = self.standardize_letter_casing_of_gold(omics_processing[field_name])
+            omics_processing[field_name] = self.standardize_letter_casing_of_gold_identifiers(omics_processing[field_name])
         else:
             omics_processing[field_name] = []
         return omics_processing
@@ -174,7 +178,7 @@ class Migrator_from_7_8_0_to_8_0_0(Migrator):
     def standardize_letter_casing_of_gold_study_identifier(self, study: dict) -> dict:
         field_name = "gold_study_identifiers"
         if field_name in study and study[field_name]:
-            study[field_name] = self.standardize_letter_casing_of_gold(study[field_name])
+            study[field_name] = self.standardize_letter_casing_of_gold_identifiers(study[field_name])
         else:
             study[field_name] = []
         return study
