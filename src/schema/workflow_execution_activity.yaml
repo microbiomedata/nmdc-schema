@@ -292,7 +292,7 @@ classes:
       - has_peptide_quantifications
     slot_usage:
       used:
-        range: Instrument
+        # range: Instrument
         description: The instrument used to collect the data used in the analysis
       id:
         required: true
