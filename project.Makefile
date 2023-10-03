@@ -407,19 +407,15 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepti
 # ----
 
 # recommended setup:
-#   1. . ~/sshproxy.sh -u <NERSC USER NAME>
+#   1. . ~/sshproxy.sh -u {YOUR_NERSC_USERNAME}
 #   2. ssh -i ~/.ssh/nersc -L27777:mongo-loadbalancer.nmdc.production.svc.spin.nersc.org:27017 -o ServerAliveInterval=60 {YOUR_NERSC_USERNAME}@dtn01.nersc.gov
 
 # todo mongodb collection stats vs Database slots report
 # todo convert to json
 # todo compress large files
-# todo: allow different api base addresses
 # todo: switch to API method for getting collection names and stats: https://api.microbiomedata.org/nmdcschema/collection_stats # partially implemented
-# todo: add start time reporting
 
 make-rdf: rdf-clean local/mongo_as_nmdc_database_validation.log local/mongo_as_nmdc_database_cuire_repaired.ttl
-
-temp:
 
 #   		--selected-collections functional_annotation_agg \ # huge, no publically avaiaible reference data (kegg)
 #   		--selected-collections metaproteomics_analysis_activity_set \ # next slowest
@@ -427,9 +423,16 @@ temp:
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) pure-export \
+		--client-base-url https://api.microbiomedata.org \
+		--endpoint-prefix nmdcschema \
+		--env-file local/.env \
 		--max-docs-per-coll 10000000 \
+		--mongo-db-name nmdc \
+		--mongo-host localhost \
+		--mongo-port 27777 \
 		--output-yaml $@ \
 		--page-size 10000 \
+		--schema-file src/schema/nmdc.yaml \
 		--selected-collections biosample_set \
 		--selected-collections data_object_set \
 		--selected-collections extraction_set \
@@ -463,12 +466,14 @@ local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_l
 	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-validate --schema $^ > $@
 
+# from riot:
+#   WARNING: java.io.tmpdir directory does not exist
+
 local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
 	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-convert --output $@ --schema $^
 	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
 	- $(RIOT) --validate $@ # < 1 minute
-	# WARNING: java.io.tmpdir directory does not exist
 
 # todo: still getting anyurl typed string statement objects in RDF. I added a workarround in anyuri-strings-to-iris
 
@@ -479,7 +484,8 @@ local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.tt
 		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
 		--emsl-biosample-uuid-replacement emsl_biosample_uuid_like \
 		--output-ttl $@
-	-# $(RIOT) --validate # < 1 minute
+	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
+	- $(RIOT) --validate $@ # < 1 minute
 	date
 
 # ----
