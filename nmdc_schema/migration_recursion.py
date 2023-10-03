@@ -133,58 +133,50 @@ class Migrator_from_7_8_0_to_8_0_0(Migrator):
             extraction['input_mass'] = extraction.pop('sample_mass')
         return extraction
 
+    def standardize_letter_casing_of_gold(self, identifiers: List[str]) -> List[str]:
+        """
+        Replaces the prefix `GOLD:` with `gold:` in the list of identifiers.
+        
+        Note: If the identifier contains more than one colon, everything after the second
+              colon will be discarded.
+        """
+        
+        standardized_identifiers = []
+        for identifier in identifiers:
+            logger.info(f"Original identifier: {identifier}")
+            curie_parts = identifier.split(':')
+            curie_prefix = curie_parts[0]  # everything before the first colon
+            curie_local_id = curie_parts[1]  # everything after the first colon, assuming there are no more colons
+
+            if curie_prefix == "GOLD":
+                standardized_identifiers.append(f"gold:{curie_local_id}")
+            else:
+                standardized_identifiers.append(identifier)
+
+        return standardized_identifiers
+
     def standardize_letter_casing_of_gold_biosample_identifiers(self, biosample: dict) -> dict:
         field_name = "gold_biosample_identifiers"
-        migrated_gold_identifiers = []
         if field_name in biosample and biosample[field_name]:
-            for i in biosample[field_name]:
-                logger.info(f"migrating {field_name} {i}")
-                curie_parts = i.split(':')
-                curie_prefix = curie_parts[0]
-                curie_local_id = curie_parts[1]
-
-                if curie_prefix == "GOLD":
-                    migrated_gold_identifiers.append(f"gold:{curie_local_id}")
-                else:
-                    migrated_gold_identifiers.append(i)
-        biosample[field_name] = migrated_gold_identifiers
-
+            biosample[field_name] = self.standardize_letter_casing_of_gold(biosample[field_name])
+        else:
+            biosample[field_name] = []
         return biosample
 
     def standardize_letter_casing_of_gold_sequencing_project_identifiers(self, omics_processing: dict) -> dict:
-        field_name = "gold_sequencing_project_identifiers"        
-        migrated_gold_identifiers = []
+        field_name = "gold_sequencing_project_identifiers"
         if field_name in omics_processing and omics_processing[field_name]:
-            for i in omics_processing[field_name]:
-                logger.info(f"migrating {field_name} {i}")
-                curie_parts = i.split(':')
-                curie_prefix = curie_parts[0]
-                curie_local_id = curie_parts[1]
-
-                if curie_prefix == "GOLD":
-                    migrated_gold_identifiers.append(f"gold:{curie_local_id}")
-                else:
-                    migrated_gold_identifiers.append(i)
-        omics_processing[field_name] = migrated_gold_identifiers
-
+            omics_processing[field_name] = self.standardize_letter_casing_of_gold(omics_processing[field_name])
+        else:
+            omics_processing[field_name] = []
         return omics_processing
 
     def standardize_letter_casing_of_gold_study_identifier(self, study: dict) -> dict:
-        field_name = "gold_study_identifiers"           
-        migrated_gold_identifiers = []
+        field_name = "gold_study_identifiers"
         if field_name in study and study[field_name]:
-            for i in study[field_name]:
-                logger.info(f"migrating {field_name} {i}")
-                curie_parts = i.split(':')
-                curie_prefix = curie_parts[0]
-                curie_local_id = curie_parts[1]
-
-                if curie_prefix == "GOLD":
-                    migrated_gold_identifiers.append(f"gold:{curie_local_id}")
-                else:
-                    migrated_gold_identifiers.append(i)
-        study[field_name] = migrated_gold_identifiers
-
+            study[field_name] = self.standardize_letter_casing_of_gold(study[field_name])
+        else:
+            study[field_name] = []
         return study
 
 
