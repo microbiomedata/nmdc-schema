@@ -1400,7 +1400,7 @@
                 },
                 "lat_lon": {
                     "$ref": "#/$defs/GeolocationValue",
-                    "description": "This is currently a required field but it's not clear if this should be required for human hosts"
+                    "description": "The geographical origin of the sample as defined by latitude and longitude. The values should be reported in decimal degrees and in WGS84 system"
                 },
                 "lbc_thirty": {
                     "$ref": "#/$defs/QuantityValue",
