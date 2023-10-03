@@ -567,7 +567,15 @@ examples/output/Database-sample_preparation_set.ttl: src/schema/nmdc.yaml src/da
 	# https://dreampuf.github.io/GraphvizOnline can convert .dot to .svg, .png, etc.
 	# does obographviz have good support ofr visualizing data like this?
 
-examples/output/Database-sample_preparation_set.png: examples/output/Database-sample_preparation_set.ttl
+examples/output/Database-sample_preparation_set_cuire_repaired.ttl: examples/output/Database-sample_preparation_set.ttl
+	$(RUN) anyuri-strings-to-iris \
+		--input-ttl $< \
+		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
+		--emsl-biosample-uuid-replacement emsl_biosample_uuid_like \
+		--output-ttl $@
+	-# $(RIOT) --validate # < 1 minute
+
+examples/output/Database-sample_preparation_set.png: examples/output/Database-sample_preparation_set_cuire_repaired.ttl
 	$(RUN) python nmdc_schema/submit_to_ldf_rdf_grapher.py \
 		--input-turtle $< \
 		--output-png $@
