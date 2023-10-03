@@ -1,5 +1,6 @@
 import logging
 import re
+from typing import Dict, List
 
 import click
 import click_log
@@ -16,91 +17,21 @@ curie_pattern = r'^[a-zA-Z_][a-zA-Z0-9_-]*:[a-zA-Z0-9_][a-zA-Z0-9_.-]*$'
 
 
 class Migrator:
+    """Base class containing properties and methods useful to its descendants."""
+
     def __init__(self):
         self.forced_prefix = None
 
-    # # this migration of doi slots in Study objects had been completed
-    # def migrate_studies_7_7_2_to_7_8(self, retrieved_study):
-    #     logger.info(f"Starting migration of {retrieved_study['id']}")
-    #     if "doi" in retrieved_study:
-    #         # logger.info(f"Before migration: {pprint.pformat(retrieved_study['doi'])}")
-    #
-    #         match = re.search(doi_url_pattern, retrieved_study["doi"]['has_raw_value'])
-    #         if match:
-    #             start_index = match.end()
-    #             as_curie = f"doi:10.{retrieved_study['doi']['has_raw_value'][start_index:]}"
-    #             retrieved_study["award_dois"] = [as_curie]
-    #         del retrieved_study["doi"]
-    #     return retrieved_study
-
-    def migrate_extractions_7_8_0_to_8_0_0(self, retrieved_extraction):
-        logger.info(f"Starting migration of {retrieved_extraction['id']}")
-
-        # change slot name from sample_mass to input_mass
-        if "sample_mass" in retrieved_extraction:
-            retrieved_extraction['input_mass'] = retrieved_extraction.pop('sample_mass')
-        return retrieved_extraction
-
-    def migrate_uc_gold_sequencing_project_identifiers_7_8_0_to_8_0_0(self, retrieved_omics_processing):
-
-        migrated_gold_identifiers = []
-        if "gold_sequencing_project_identifiers" in retrieved_omics_processing and retrieved_omics_processing[
-            "gold_sequencing_project_identifiers"]:
-            for i in retrieved_omics_processing["gold_sequencing_project_identifiers"]:
-                logger.info(f"migrating gold_sequencing_project_identifiers {i}")
-                curie_parts = i.split(':')
-                curie_prefix = curie_parts[0]
-                curie_local_id = curie_parts[1]
-
-                if curie_prefix == "GOLD":
-                    migrated_gold_identifiers.append(f"gold:{curie_local_id}")
-                else:
-                    migrated_gold_identifiers.append(i)
-        retrieved_omics_processing["gold_sequencing_project_identifiers"] = migrated_gold_identifiers
-
-        return retrieved_omics_processing
-
-    def migrate_uc_gold_biosample_identifiers_7_8_0_to_8_0_0(self, retrieved_biosample):
-
-        # todo refactor? this shouldn't be long-lived code
-
-        migrated_gold_identifiers = []
-        if "gold_biosample_identifiers" in retrieved_biosample and retrieved_biosample[
-            "gold_biosample_identifiers"]:
-            for i in retrieved_biosample["gold_biosample_identifiers"]:
-                logger.info(f"migrating gold_biosample_identifiers {i}")
-                curie_parts = i.split(':')
-                curie_prefix = curie_parts[0]
-                curie_local_id = curie_parts[1]
-
-                if curie_prefix == "GOLD":
-                    migrated_gold_identifiers.append(f"gold:{curie_local_id}")
-                else:
-                    migrated_gold_identifiers.append(i)
-        retrieved_biosample["gold_biosample_identifiers"] = migrated_gold_identifiers
-
-        return retrieved_biosample
-
-    def migrate_uc_gold_study_identifiers_7_8_0_to_8_0_0(self, retrieved_study):
-
-        # todo refactor? this shouldn't be long-lived code
-
-        migrated_gold_identifiers = []
-        if "gold_study_identifiers" in retrieved_study and retrieved_study[
-            "gold_study_identifiers"]:
-            for i in retrieved_study["gold_study_identifiers"]:
-                logger.info(f"migrating gold_study_identifiers {i}")
-                curie_parts = i.split(':')
-                curie_prefix = curie_parts[0]
-                curie_local_id = curie_parts[1]
-
-                if curie_prefix == "GOLD":
-                    migrated_gold_identifiers.append(f"gold:{curie_local_id}")
-                else:
-                    migrated_gold_identifiers.append(i)
-        retrieved_study["gold_study_identifiers"] = migrated_gold_identifiers
-
-        return retrieved_study
+        # Define a dictionary that maps collections to sequences of transformation functions.
+        #
+        # Note: Each key is a collection name, and each value is a list. Each element of the list is a
+        #       function someone performing a migration could call—in the order listed—to transform a
+        #       single document from conforming to the _initial_ schema of that migration (e.g. v1),
+        #       to conforming to the _final_ schema of that migration (e.g. v2).
+        #
+        # Note: Descendant classes (i.e. inheriting classes) will populate this dictionary.
+        #
+        self.transformations_by_collection: Dict[str, List[callable]] = dict()
 
     def check_and_normalize_one_curie(self, curie_string):
         if not self.is_valid_curie(curie_string):
@@ -153,6 +84,110 @@ class Migrator:
         with open(filename, "r") as f:
             data = yaml.safe_load(f)
         return data
+    
+
+class Migrator_from_7_7_2_to_7_8_0(Migrator):
+    """Methods related to migrating documents from schema 7.7.2 to 7.8.0"""
+
+    def __init__(self) -> None:
+        """Invokes parent constructor and populates collection-to-transformations map."""
+
+        super().__init__()
+
+        # Populate the collection-to-transformations map for this migration.
+        self.transformations_by_collection = dict(
+            study_set=[self.replace_doi_field_with_award_dois_list_field],
+        )
+
+    def replace_doi_field_with_award_dois_list_field(self, retrieved_study):
+        logger.info(f"Starting migration of {retrieved_study['id']}")
+        if "doi" in retrieved_study:
+            match = re.search(doi_url_pattern, retrieved_study["doi"]['has_raw_value'])
+            if match:
+                start_index = match.end()
+                as_curie = f"doi:10.{retrieved_study['doi']['has_raw_value'][start_index:]}"
+                retrieved_study["award_dois"] = [as_curie]
+            del retrieved_study["doi"]
+        return retrieved_study
+
+
+class Migrator_from_7_8_0_to_8_0_0(Migrator):
+    """Methods related to migrating documents from schema 7.8.0 to 8.0.0"""
+
+    def __init__(self) -> None:
+        """Invokes parent constructor and populates collection-to-transformations map."""
+
+        super().__init__()
+
+        # Populate the collection-to-transformations map for this migration.
+        self.transformations_by_collection = dict(
+            biosample_set=[self.standardize_letter_casing_of_gold_biosample_identifiers],
+            extraction_set=[self.rename_sample_mass_field],
+            omics_processing_set=[self.standardize_letter_casing_of_gold_sequencing_project_identifiers],
+            study_set=[self.standardize_letter_casing_of_gold_study_identifier],
+        )
+
+    def rename_sample_mass_field(self, retrieved_extraction: dict) -> dict:
+        logger.info(f"Starting migration of {retrieved_extraction['id']}")
+
+        # change slot name from sample_mass to input_mass
+        if "sample_mass" in retrieved_extraction:
+            retrieved_extraction['input_mass'] = retrieved_extraction.pop('sample_mass')
+        return retrieved_extraction
+
+    def standardize_letter_casing_of_gold_biosample_identifiers(self, retrieved_biosample: dict) -> dict:
+        migrated_gold_identifiers = []
+        if "gold_biosample_identifiers" in retrieved_biosample and retrieved_biosample[
+            "gold_biosample_identifiers"]:
+            for i in retrieved_biosample["gold_biosample_identifiers"]:
+                logger.info(f"migrating gold_biosample_identifiers {i}")
+                curie_parts = i.split(':')
+                curie_prefix = curie_parts[0]
+                curie_local_id = curie_parts[1]
+
+                if curie_prefix == "GOLD":
+                    migrated_gold_identifiers.append(f"gold:{curie_local_id}")
+                else:
+                    migrated_gold_identifiers.append(i)
+        retrieved_biosample["gold_biosample_identifiers"] = migrated_gold_identifiers
+
+        return retrieved_biosample
+
+    def standardize_letter_casing_of_gold_sequencing_project_identifiers(self, retrieved_omics_processing: dict) -> dict:
+        migrated_gold_identifiers = []
+        if "gold_sequencing_project_identifiers" in retrieved_omics_processing and retrieved_omics_processing[
+            "gold_sequencing_project_identifiers"]:
+            for i in retrieved_omics_processing["gold_sequencing_project_identifiers"]:
+                logger.info(f"migrating gold_sequencing_project_identifiers {i}")
+                curie_parts = i.split(':')
+                curie_prefix = curie_parts[0]
+                curie_local_id = curie_parts[1]
+
+                if curie_prefix == "GOLD":
+                    migrated_gold_identifiers.append(f"gold:{curie_local_id}")
+                else:
+                    migrated_gold_identifiers.append(i)
+        retrieved_omics_processing["gold_sequencing_project_identifiers"] = migrated_gold_identifiers
+
+        return retrieved_omics_processing
+
+    def standardize_letter_casing_of_gold_study_identifier(self, retrieved_study: dict) -> dict:
+        migrated_gold_identifiers = []
+        if "gold_study_identifiers" in retrieved_study and retrieved_study[
+            "gold_study_identifiers"]:
+            for i in retrieved_study["gold_study_identifiers"]:
+                logger.info(f"migrating gold_study_identifiers {i}")
+                curie_parts = i.split(':')
+                curie_prefix = curie_parts[0]
+                curie_local_id = curie_parts[1]
+
+                if curie_prefix == "GOLD":
+                    migrated_gold_identifiers.append(f"gold:{curie_local_id}")
+                else:
+                    migrated_gold_identifiers.append(i)
+        retrieved_study["gold_study_identifiers"] = migrated_gold_identifiers
+
+        return retrieved_study
 
 
 @click.command()
