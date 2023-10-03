@@ -417,8 +417,13 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepti
 
 make-rdf: rdf-clean local/mongo_as_nmdc_database_validation.log local/mongo_as_nmdc_database_cuire_repaired.ttl
 
-#   		--selected-collections functional_annotation_agg \ # huge, no publically avaiaible reference data (kegg)
+temp:
+
+#   		--selected-collections functional_annotation_agg \ # huge, no publicly available reference data (kegg)
 #   		--selected-collections metaproteomics_analysis_activity_set \ # next slowest
+
+# when connecting to the dev MongoDB, also use --client-base-url https://api-dev.microbiomedata.org
+# make pre-composed prod and dev makefile tasks! since they require the user to provide a matching mongo port and api url
 
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
