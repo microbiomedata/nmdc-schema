@@ -1436,6 +1436,7 @@ classes:
       - objective
       - part_of
       - principal_investigator
+      # - publications - slot was deprecated 10/04/2023
       - related_identifiers
       - relevant_protocols
       - specific_ecosystem
