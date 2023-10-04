@@ -184,7 +184,7 @@ classes:
       - read_based_taxonomy_analysis_activity_set
       - read_qc_analysis_activity_set
       - study_set
-      - microbial_biomass_set 
+      - microbial_biomass_set
     slot_usage:
       date_created:
         todos:
@@ -878,7 +878,7 @@ classes:
       - soluble_inorg_mat
       - soluble_org_mat
       - soluble_react_phosp
-      - has_output
+      - source_mat_id
       - space_typ_state
       - specific
       - specific_ecosystem
@@ -1014,7 +1014,7 @@ classes:
       - samp_size
       #      - soil_text_measure
       #      - soil_texture_meth
-      - has_output
+      - source_mat_id
       - watering_regm
 
       ## sample metadata submission portal (aka DataHarmonizer) terms (EMSL, JGI, etc.)
@@ -1353,7 +1353,7 @@ classes:
         examples:
           - value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
           - value: 75% water holding capacity; constant
-      has_output:
+      source_mat_id:
         description: A globally unique identifier assigned to the biological sample.
         title: source material identifier
         comments:
@@ -1512,8 +1512,8 @@ classes:
       A process that takes one or more biosamples as inputs and generates
       one or more biosamples as outputs. An example of an output includes samples cultivated from another
       sample.
-    slots:
-      - has_input
+    #    slots:
+    #      - has_input # inherits has_input from PlannedProcess. this declaration is not needed.
     slot_usage:
       id:
         required: true
@@ -1545,8 +1545,8 @@ classes:
       - add_date
       - chimera_check
       - gold_sequencing_project_identifiers
-      - has_input
-      - has_output
+      #      - has_input inherited from PlannedProcess
+      #      - has_output
       - insdc_experiment_identifiers
       - instrument_name
       - mod_date
@@ -2115,7 +2115,7 @@ slots:
   input_mass:
     title: sample mass used
     description: Total mass of sample used in activity.
-#    description: "Total mass of sample used"
+    #    description: "Total mass of sample used"
     aliases:
       - sample mass
       - sample weight

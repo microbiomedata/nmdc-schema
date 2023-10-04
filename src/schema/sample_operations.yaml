@@ -25,7 +25,7 @@ imports:
 classes:
 
   SampleOperation:
-    is_a: BiosampleProcessing 
+    is_a: BiosampleProcessing
     title: Sample Operations
     description: >-
       A planned process that is performed on a sample.  This class is intended to
@@ -33,7 +33,7 @@ classes:
     slots:
       - type
     slot_usage:
-      has_input: 
+      has_input:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:sops-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
@@ -75,17 +75,17 @@ classes:
   #    - chemicalreaction_operations
 
   MicrobialBiomassDetermination:
-    description: >- 
+    description: >-
       These are the steps used in following the Microbial Biomass protocol.
     is_a: SampleOperation
     slots:
       - subsampling_operations
-      - extraction_operation
+      #      - extraction_operation # MAM 2023-10-04 is this supposed to be extraction_operation ?
       - phaseseparation_operations
       - filtration_operations
       - acidification_operations
       - analytestorage_operations
-    
+
 
   DerivativeActivity:
     description: >-
@@ -102,7 +102,7 @@ classes:
       - mixing
       - sample_volume
       - speed
-      - volume 
+      - volume
       - concentration
       - temp
     slot_usage:
@@ -220,7 +220,7 @@ classes:
       - container_size
       - volume
 
-  ConditioningValue: 
+  ConditioningValue:
     #Look up obi
     description: >-
       Holds information relating to a conditioning process. This class is used for filtration
@@ -411,12 +411,12 @@ slots:
   device:
     description: "A material entity that is designed to perform a function in a scientific investigation, but is not a reagent."
   mixing:
-    range: LabDevice 
+    range: LabDevice
     description: The lab device used for a mixing action in an activity
   sample_volume:
     range: QuantityValue
     description: The volume of the input sample.
-  speed: 
+  speed:
     range: QuantityValue
     description: Tbe speed the device is running at. For example 3000 RPM.
   volume:
@@ -447,7 +447,7 @@ slots:
     description: The starting amount of analyte used in an activity
   instrument:
     description: "Description of the instrument or the mass spectrometer"
-  acid: 
+  acid:
     description: "A molecular entity or chemical species capable of donating a hydron (proton) (see Brønsted acid) or capable of forming a covalent bond with an electron pair (see Lewis acid)."
   conditioning_type:
     range: string
@@ -486,7 +486,7 @@ slots:
   modifier_substance:
     range: string
     description: The type of modification being done
-  material_component_separation: 
+  material_component_separation:
     range: string
     description: "A material processing in which components of an input material become segregated in space"
   material:
@@ -595,7 +595,7 @@ slots:
 
 
 #Touch up descriptions, potentially add ontology meaning tag
-enums: 
+enums:
   ContainerTypeEnum:
     description: The permitted types of containers used in processing metabolomic samples.
     permissible_values:
@@ -619,7 +619,7 @@ enums:
       solvent bottle:
       Hamilton:
 
-  DeviceTypeEnum: 
+  DeviceTypeEnum:
     description: The devices permissible for use in processing metabolomic samples.
     permissible_values:
       Orbital Shaker:
@@ -628,7 +628,7 @@ enums:
       Agitation plunger:
       Drying oven:
 
-  SolventEnum: 
+  SolventEnum:
     description: The solvents that may be used in processing metabolomic samples.
     permissible_values:
       Deionized Water:

@@ -229,7 +229,7 @@ project/nmdc_schema_merged.yaml:
 #		--output project/prefixmap/nmdc.json \
 #	  	--mergeimports $@
 
-project/nmdc_materialized_patterns.yaml: project
+project/nmdc_materialized_patterns.yaml: # MAM 2023-10-04 removing "project" dependency
 	$(RUN) gen-linkml \
 		--format yaml \
 		--materialize-patterns \
