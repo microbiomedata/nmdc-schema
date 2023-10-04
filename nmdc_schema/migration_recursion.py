@@ -31,7 +31,11 @@ class MigratorBase:
         #
         # Note: Descendant classes (i.e. inheriting classes) will populate this dictionary.
         #
-        self.transformations_by_collection: Dict[str, List[callable]] = dict()
+        self.transformers_by_collection: Dict[str, List[callable]] = dict()
+
+    def get_transformers_for(self, collection_name: str) -> List[callable]:
+        """Returns the list of transformers defined for the specified collection."""
+        return self.transformers_by_collection.get(collection_name, [])
 
     def check_and_normalize_one_curie(self, curie_string):
         if not self.is_valid_curie(curie_string):
@@ -94,8 +98,8 @@ class Migrator_from_7_7_2_to_7_8_0(MigratorBase):
 
         super().__init__()
 
-        # Populate the collection-to-transformations map for this migration.
-        self.transformations_by_collection = dict(
+        # Populate the collection-to-transformers map for this specific migration.
+        self.transformers_by_collection = dict(
             study_set=[self.replace_doi_field_with_award_dois_list_field],
         )
 
@@ -119,8 +123,8 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
 
         super().__init__()
 
-        # Populate the collection-to-transformations map for this migration.
-        self.transformations_by_collection = dict(
+        # Populate the collection-to-transformers map for this specific migration.
+        self.transformers_by_collection = dict(
             biosample_set=[self.standardize_letter_casing_of_gold_biosample_identifiers],
             extraction_set=[self.rename_sample_mass_field],
             omics_processing_set=[self.standardize_letter_casing_of_gold_sequencing_project_identifiers],
@@ -229,13 +233,14 @@ def main(schema_path, input_path, output_path, salvage_prefix):
 
         end_dict[tdk] = migrator.apply_changes_recursively_by_key(tdv, set(migrateable_slots))
 
-        # If the migration specifies a sequence of transformations for this collection,
-        # apply that sequence of transformations to each document within this collection.
-        if tdk in migrator.transformations_by_collection.keys():
+        # If the migration specifies any transformers for this collection,
+        # apply them—in order—to each document within this collection.
+        transformers = migrator.get_transformers_for(collection_name=tdk)
+        if len(transformers) > 0:
             logger.info(f"Starting {tdk}-specific transformations")
             for document in tdv:
-                for transform in migrator.transformations_by_collection[tdk]:
-                    transform(document)  # modifies the document in place
+                for transformer in transformers:
+                    transformer(document)  # modifies the document in place
 
     logger.info(f"Saving migrated data to {output_path}")
     with open(output_path, "w") as f:
