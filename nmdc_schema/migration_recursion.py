@@ -16,7 +16,7 @@ doi_url_pattern = r'^https?:\/\/[a-zA-Z\.]+\/10\.'
 curie_pattern = r'^[a-zA-Z_][a-zA-Z0-9_-]*:[a-zA-Z0-9_][a-zA-Z0-9_.-]*$'
 
 
-class Migrator:
+class MigratorBase:
     """Base class containing properties and methods useful to its descendants."""
 
     def __init__(self):
@@ -86,7 +86,7 @@ class Migrator:
         return data
     
 
-class Migrator_from_7_7_2_to_7_8_0(Migrator):
+class Migrator_from_7_7_2_to_7_8_0(MigratorBase):
     """Methods related to migrating documents from schema 7.7.2 to 7.8.0"""
 
     def __init__(self) -> None:
@@ -111,7 +111,7 @@ class Migrator_from_7_7_2_to_7_8_0(Migrator):
         return study
 
 
-class Migrator_from_7_8_0_to_8_0_0(Migrator):
+class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
     """Methods related to migrating documents from schema 7.8.0 to 8.0.0"""
 
     def __init__(self) -> None:
