@@ -200,7 +200,11 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
               help=
               "A prefix, defined in the schema, to force for each value that the schema indicates is a CURIE but that has no prefix")
 def main(schema_path, input_path, output_path, salvage_prefix):
-    """TODO: Summarize the script (this comment will appear in the CLI help string)."""
+    """
+    Generates a data file that conforms to a different schema version than the input data file does.
+    
+    See source code for initial and final schema versions.
+    """
 
     migrator = Migrator_from_7_8_0_to_8_0_0()
     migrator.forced_prefix = salvage_prefix
