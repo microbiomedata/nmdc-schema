@@ -207,28 +207,35 @@ class ViewHelper:
 
 @click.command()
 @click_log.simple_verbosity_option(logger)
-@click.option('--admin-db', default="admin", help='MongoDB authentication source')
+@click.option('--admin-db', default="admin", show_default=True, help='MongoDB authentication source')
 @click.option('--env-file', type=click.Path(exists=True), default='local/.env',
-              help='Path to .env file')
+              show_default=True, help='Path to .env file')
 @click.option('--max-docs-per-coll', default=100,
-              help='Maximum number of documents to retrieve per collection')  # was 100_000
-@click.option('--mongo-db-name', default="nmdc", help='MongoDB database name')
-@click.option('--mongo-host', default="localhost", help='MongoDB host name/address')
-@click.option('--mongo-port', default=27777, help='MongoDB port')
+              show_default=True, help='Maximum number of documents to retrieve per collection')  # was 100_000
+@click.option('--mongo-db-name', default="nmdc", show_default=True, help='MongoDB database name')
+@click.option('--mongo-host', default="localhost", show_default=True,
+              help='MongoDB host name/address. Use "localhost" if using an ssh tunnel to ' +
+                   'mongo-loadbalancer.nmdc.production.svc.spin.nersc.org ' +
+                   'or mongo-loadbalancer.nmdc-dev.production.svc.spin.nersc.org')
+@click.option('--mongo-port', default=27777, show_default=True, help='MongoDB port')
 @click.option('--output-yaml', required=True, type=click.Path(),
-              help="Output file.")
-@click.option('--root-class', default="Database", help='Schema class that corresponds to a Mongo Database')
+              show_default=True, help="Output file.")
+@click.option('--root-class', default="Database",
+              show_default=True, help='Schema class that corresponds to a Mongo Database')
 @click.option('--schema-file', type=click.Path(exists=True), default='src/schema/nmdc.yaml',
-              help='Path to root YAML file in the nmdc-schema')
-@click.option('--selected-collections', multiple=True, help='MongoDB collection name')
+              show_default=True,
+              help='Path to root YAML file in the nmdc-schema. ' +
+                   'For determining structure only. No validation in this step.')
+@click.option('--selected-collections', multiple=True, show_default=True, help='MongoDB collection name')
 @click.option('--page-size', default=10,
+              show_default=True,
               help='Number of documents retrieved per FastAPI GET request')  # how many is too many? for what reason? seems like there's some overhead
 @click.option('--client-base-url', default="https://api.microbiomedata.org",
-              help='HTTP(S) path to the FastAPI server')
-@click.option('--client-base-url', default="https://api.microbiomedata.org",
-              help='HTTP(S) path to the FastAPI server')
+              show_default=True,
+              help='HTTP(S) path to the FastAPI server. ' +
+                   'https://api-dev.microbiomedata.org/docs or https://api.microbiomedata.org/docs')
 @click.option('--endpoint-prefix', default="nmdcschema",
-              help='FastAPI path component between the URL and the endpoint name')
+              show_default=True, help='FastAPI path component between the URL and the endpoint name')
 def cli(
         admin_db,
         env_file,
