@@ -1390,7 +1390,7 @@ classes:
         data submitted to ENA
     
     slots:
-      ## emsl_project_dois
+      ## emsl_project_dois - slot was deprecated 10/04/2023
 
       - neon_study_identifiers
       - jgi_portal_study_identifiers
