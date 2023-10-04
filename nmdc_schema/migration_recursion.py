@@ -232,22 +232,30 @@ def main(schema_path, input_path, output_path, salvage_prefix):
         #     logger.info(f"Starting {tdk}-specific migrations")
         #     for current_study in tdv:
         #         migrator.replace_doi_field_with_award_dois_list_field(current_study)
-        if tdk == "extraction_set":
-            logger.info(f"Starting {tdk}-specific migrations")
-            for current_extraction in tdv:
-                migrator.rename_sample_mass_field(current_extraction)
-        if tdk == "omics_processing_set":
-            logger.info(f"Starting {tdk}-specific migrations")
-            for current_omics_processing in tdv:
-                migrator.standardize_letter_casing_of_gold_sequencing_project_identifiers(current_omics_processing)
-        if tdk == "biosample_set":
-            logger.info(f"Starting {tdk}-specific migrations")
-            for current_biosample in tdv:
-                migrator.standardize_letter_casing_of_gold_biosample_identifiers(current_biosample)
-        if tdk == "study_set":
-            logger.info(f"Starting {tdk}-specific migrations")
-            for current_study in tdv:
-                migrator.standardize_letter_casing_of_gold_study_identifier(current_study)
+        # if tdk == "extraction_set":
+        #     logger.info(f"Starting {tdk}-specific migrations")
+        #     for current_extraction in tdv:
+        #         migrator.rename_sample_mass_field(current_extraction)
+        # if tdk == "omics_processing_set":
+        #     logger.info(f"Starting {tdk}-specific migrations")
+        #     for current_omics_processing in tdv:
+        #         migrator.standardize_letter_casing_of_gold_sequencing_project_identifiers(current_omics_processing)
+        # if tdk == "biosample_set":
+        #     logger.info(f"Starting {tdk}-specific migrations")
+        #     for current_biosample in tdv:
+        #         migrator.standardize_letter_casing_of_gold_biosample_identifiers(current_biosample)
+        # if tdk == "study_set":
+        #     logger.info(f"Starting {tdk}-specific migrations")
+        #     for current_study in tdv:
+        #         migrator.standardize_letter_casing_of_gold_study_identifier(current_study)
+
+        # If the migration specifies a sequence of transformations for this collection,
+        # apply that sequence of transformations to each document within this collection.
+        if tdk in migrator.transformations_by_collection.keys():
+            logger.info(f"Starting {tdk}-specific transformations")
+            for document in tdv:
+                for transform in migrator.transformations_by_collection[tdk]:
+                    transform(document)  # modifies the document in place
 
     logger.info(f"Saving migrated data to {output_path}")
     with open(output_path, "w") as f:
