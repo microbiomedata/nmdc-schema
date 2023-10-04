@@ -1,0 +1,23 @@
+id: abc:123
+has_input: input:123
+has_output: output:456
+container_size:
+  has_numeric_value: 200
+  has_unit: mL
+container_type: Olympus
+sample_mass:
+  has_numeric_value: 50
+  has_unit: grams
+starting_amount:
+  has_numeric_value: 10
+  has_unit: mL
+volume:
+  has_numeric_value: 15
+  has_unit: mL
+duration:
+  has_numeric_value: 30
+  has_unit: seconds
+instrument: Thermomixer, this should probably be an enum, right now it's just a string - james
+temp:
+  has_numeric_value: 50
+  has_unit: C

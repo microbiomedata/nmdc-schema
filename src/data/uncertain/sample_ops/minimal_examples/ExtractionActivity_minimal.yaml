@@ -1,0 +1,36 @@
+id: extraction:123
+has_input: input:123
+has_output: output:123
+container_type: PTFE 96 well filter plate
+extractant: Deionized Water
+concentration:
+  has_numeric_value: 20
+  has_unit: percent
+container_size:
+  has_numeric_value: 50
+  has_unit: mL
+duration:
+  has_numeric_value: 15
+  has_unit: minutes
+mixing:
+  activity_speed:
+    has_numeric_value: 1500
+    has_unit: RPM
+  activity_time:
+    has_numeric_value: 5
+    has_unit: minutes
+  activity_temperature:
+    has_numeric_value: 23
+    has_unit: C
+  description: orbital shaker for extraction
+  device_type: Orbital Shaker
+sample_volume:
+  has_numeric_value: 25
+  has_unit: mL
+speed:
+  has_numeric_value: 1500
+  has_unit: RPM
+volume:
+  has_numeric_value: 30
+  has_unit: mL
+solute: sodium bicarbonate

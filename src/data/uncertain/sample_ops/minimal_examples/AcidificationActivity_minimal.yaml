@@ -1,0 +1,11 @@
+id: abc:123
+has_input: input:123
+has_output: output:456
+acid: carbonic acid
+ph: 7.0
+volume:
+  has_numeric_value: 20
+  has_unit: mL
+concentration:
+  has_numeric_value: 0.5
+  has_unit: molar
