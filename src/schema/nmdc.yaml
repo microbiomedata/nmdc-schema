@@ -58,6 +58,7 @@ prefixes:
   MetaNetX: http://example.org/metanetx/
   NCBITaxon: "http://purl.obolibrary.org/obo/NCBITaxon_"
   NCIT: "http://purl.obolibrary.org/obo/NCIT_"
+  OBI: http://purl.obolibrary.org/obo/OBI_
   PANTHER.FAMILY: "https://bioregistry.io/panther.family:" # https://bioregistry.io/panther.family:PTHR12345
   PFAM: "https://bioregistry.io/pfam:" # https://bioregistry.io/pfam:PF11779
   PO: "http://purl.obolibrary.org/obo/PO_"
@@ -184,7 +185,6 @@ classes:
       - read_based_taxonomy_analysis_activity_set
       - read_qc_analysis_activity_set
       - study_set
-      - microbial_biomass_set
       #- microbial_biomass_set
     slot_usage:
       date_created:
