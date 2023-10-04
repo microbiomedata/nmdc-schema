@@ -187,18 +187,21 @@ class Migrator_from_7_8_0_to_8_0_0(Migrator):
 @click.command()
 @click_log.simple_verbosity_option(logger)
 @click.option("--schema-path", default='nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml', required=True, type=str,
-              help="Path to the schema file")
+              help="Path to the schema file to which the input YAML data file conforms")
 @click.option("--input-path", default='local/mongo_as_unvalidated_nmdc_database.yaml', required=True, type=str,
               help="Path to the input YAML data file")
 @click.option("--output-path", default='local/rdf_safe.yaml', required=True, type=str,
-              help="Destination for the YAML data file")
+              help="Path to the output YAML data file")
 @click.option("--salvage-prefix", required=True, type=str,
               help=
-              "A prefix, defined in the schema, to assert for values that are expected to be CURIes but have no prefix")
+              "A prefix, defined in the schema, to force for each value that the schema indicates is a CURIE but that has no prefix")
 def main(schema_path, input_path, output_path, salvage_prefix):
-    migrator = Migrator()
+    """TODO: Summarize the script (this comment will appear in the CLI help string)."""
+
+    migrator = Migrator_from_7_8_0_to_8_0_0()
     migrator.forced_prefix = salvage_prefix
 
+    # Load the schema and determine which of its slots we can migrate.
     logger.info(f"Loading schema from {schema_path}")
     view = SchemaView(schema_path)
     slots = view.all_slots()
@@ -217,32 +220,34 @@ def main(schema_path, input_path, output_path, salvage_prefix):
                     for i in slot_descendants:
                         migrateable_slots.add(i)
 
+    # Load the input data and migrate the fields in it that correspond to those slots.
     logger.info(f"Loading data from {input_path}")
     total_dict = migrator.load_yaml_file(input_path)
     end_dict = {}
     for tdk, tdv in total_dict.items():
         logger.info(f"Starting migration of {tdk}")
+
         end_dict[tdk] = migrator.apply_changes_recursively_by_key(tdv, set(migrateable_slots))
         # if tdk == "study_set":
         #     logger.info(f"Starting {tdk}-specific migrations")
         #     for current_study in tdv:
-        #         migrator.migrate_studies_7_7_2_to_7_8(current_study)
+        #         migrator.replace_doi_field_with_award_dois_list_field(current_study)
         if tdk == "extraction_set":
             logger.info(f"Starting {tdk}-specific migrations")
             for current_extraction in tdv:
-                migrator.migrate_extractions_7_8_0_to_8_0_0(current_extraction)
+                migrator.rename_sample_mass_field(current_extraction)
         if tdk == "omics_processing_set":
             logger.info(f"Starting {tdk}-specific migrations")
             for current_omics_processing in tdv:
-                migrator.migrate_uc_gold_sequencing_project_identifiers_7_8_0_to_8_0_0(current_omics_processing)
+                migrator.standardize_letter_casing_of_gold_sequencing_project_identifiers(current_omics_processing)
         if tdk == "biosample_set":
             logger.info(f"Starting {tdk}-specific migrations")
             for current_biosample in tdv:
-                migrator.migrate_uc_gold_biosample_identifiers_7_8_0_to_8_0_0(current_biosample)
+                migrator.standardize_letter_casing_of_gold_biosample_identifiers(current_biosample)
         if tdk == "study_set":
             logger.info(f"Starting {tdk}-specific migrations")
             for current_study in tdv:
-                migrator.migrate_uc_gold_study_identifiers_7_8_0_to_8_0_0(current_study)
+                migrator.standardize_letter_casing_of_gold_study_identifier(current_study)
 
     logger.info(f"Saving migrated data to {output_path}")
     with open(output_path, "w") as f:
