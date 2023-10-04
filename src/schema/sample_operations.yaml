@@ -77,10 +77,10 @@ classes:
   MicrobialBiomassDetermination:
     description: >- 
       These are the steps used in following the Microbial Biomass protocol.
-    is_a: SampleOperation
+    #is_a: SampleOperation
     slots:
       - subsampling_operations
-      - extraction_operation
+      - extraction_operations
       - phaseseparation_operations
       - filtration_operations
       - acidification_operations
