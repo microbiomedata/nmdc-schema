@@ -17,7 +17,7 @@ description: >-
    * the NMDC schema itself, into which the other modules are imported
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: v8.0.0 # GH uses same version string # pyproject.toml says "8.0.0"
+version: v8.1.0 # GH uses same version string # pyproject.toml says "8.1.0"
 
 imports:
   - annotation
@@ -1124,11 +1124,9 @@ classes:
         description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
 
       lat_lon:
-        description:
-          This is currently a required field but it's not clear if this
-          should be required for human hosts
-        notes:
-          - required where?
+        todos:
+          - This is currently a required field but it's not clear if this
+            should be required for human hosts
       env_broad_scale:
         required: true
       env_local_scale:
