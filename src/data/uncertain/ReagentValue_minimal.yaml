@@ -1,7 +1,0 @@
-reagent_type: Acid
-volume:
-  has_numeric_value: 50
-  has_unit: mL
-concentration:
-  has_numeric_value: 10
-  has_unit: percent

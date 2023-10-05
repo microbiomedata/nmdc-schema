@@ -1,9 +1,0 @@
-id: siev:01
-has_input: input:123
-has_output: output:456
-sieve_size:
-  has_numeric_value: 20
-  has_unit: nm
-screen_size:
-  has_numeric_value: 1
-  has_unit: cm
