@@ -2715,6 +2715,23 @@ slots:
     range: string
     description: The date on which the information was added to the database.
 
+  # moving emsl_project_dois from external_identifiers.yaml to nmdc.yaml and re-rooting in `dois` with new pattern
+  emsl_project_dois:
+    is_a: dois
+    #    is_a: study_identifiers
+    mixins:
+      - emsl_identifiers
+    title: EMSL Project DOI
+    description: One or more DOIs that links to an EMSL Research Campaign page.
+    examples:
+      - value: doi:10.46936/intm.proj.2021.6014
+        description:
+          emsl_project_dois link to the document outlining the EMSL specific award for the project.
+          Should not be used to link to datasets or publications.
+    todos:
+      - Make as a subproperty of award_dois
+    deprecated: deprecated on 10/05/2023. Used by `Study` class and not needed moving forward. All emsl_project_dois are listed under the slot award_dois.
+
   mod_date:
     range: string
     description: The last date on which the database information was modified.
