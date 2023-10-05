@@ -53,6 +53,40 @@ study_coll.update_one(select_legacy_study, napa_study_update)
 check_study_update = { "id":"nmdc:sty-12-85j6kq06"}
 mydoc=study_coll.find(check_study_update)
 
+
+#########################
+#generalized function to update study identifiers to napa format
+#alt slots are already populated in all cases so logic for that is not needed
+
+#mint Class Study IDs using runtime API or manually using the minter endpoint
+#if reading minted IDs from a json file
+study_napa_json="XXXXXXXXXX"
+with open(study_napa_json, 'r') as j:
+     study_napa_ids = json.loads(j.read())
+
+#update_studies_to_napa_standards
+
+def update_studies_to_napa_standards():
+  study_reid_log=open("napa_study_update".txt,"w") 
+  napa_study_counter=0
+  get_legacy_studies={ "id" : {"$regex":"^gold" } }
+  for doc in study_coll.find(get_legacy_studies):
+    select_legacy_study = {"id": doc["id"]}
+    study_target_update = {"$set": { "id": napa_study_ids[napa_study_count] } }
+    if (napa_study_ids[napa_study_count].startswith('nmdc:sty')):
+      #study_coll.update_one(select_legacy_study,study_target_update)
+      study_class_legacy_napa="Study "+ doc["id"] + " " + napa_study_ids[napa_study_count]     
+      print(study_class_legacy_napa)
+      study_reid_log.write(napa_study_update.txt)
+      napa_study_counter=napa_study_counter+1
+    else:
+     print("Did not update issue updating ",doc["id"]) 
+
+#########################
+
+  
+
+
 biosample_coll=mydb["biosample_set"]
 
 ##needed only in testing, update values in gold alt id slots to lowercase. This has been updated in the production version of the schema already
@@ -190,34 +224,61 @@ omics_counter=0
 f_omics_id_mapping = open("Gs0114663_omics_reid.txt", "w")
 f_omics_set_operation =open("Gs0114663_omics_set","w")
 
-#TODO update the omics collection fixes to use arrays for part_of, has_input, alt identifiers
+napa_study="nmdc:sty-12-85j6kq06"
 for doc in omics_coll.find(Gs0114663_legacy_omics):
+  #set list with value of napa study for part_of
+  study_napa_list=[]
+  study_napa_list.append(napa_study)
   #determine what has_input should be
-  if (len(doc["has_input"]) > 1):
-    print("Too many inputs for ",doc["id"])
-  elif(len(doc["has_input"]) == 1):
-    for biosample in doc["has_input"]: 
+  if(isinstance(doc["has_input"],list)):
+    napa_biosample_inputs=[]
+    for biosample in doc["has_input"]:
       if (biosample.startswith('GOLD')):
-        b_alt_id=biosample.replace('GOLD','gold')
-      else:
-        b_alt_id=biosample
-  else:
-    print("has_input not specified for ", doc["id"])
-  target_has_input={"$or":[ {"emsl_biosample_identifiers":b_alt_id}, {"gold_biosample_identifiers":b_alt_id},{"insdc_biosample_identifiers":b_alt_id}]}
-  get_biosample=biosample_coll.find_one(target_has_input)
-  replace_has_input=get_biosample["id"]
-  #set id
+         biosample=biosample.replace('GOLD','gold')
+      target_has_input={"$or":[ {"emsl_biosample_identifiers":biosample}, {"gold_biosample_identifiers":biosample},{"insdc_biosample_identifiers":biosample}]}
+      get_biosample=biosample_coll.find_one(target_has_input)
+      napa_biosample_inputs.append.get_biosample["id"]
+  #set id and alternative ids
   target_omics={"id": doc["id"]}
-  if (doc["id"].startswith('gold')):
-     alt_id_slot="gold_sequencing_project_identifiers"
-  elif  (doc["id"].startswith('GOLD')):
-     alt_id_slot="gold_sequencing_project_identifiers"
-     doc["id"].replace('gold','GOLD')   
-  elif (doc["id"].startswith(('emsl', 'EMSL'))): 
+  #deal with gold omics identifiers
+  if (doc["id"].startswith('gold')): 
+     alt_id_slot="gold_sequencing_project_identifiers" 
+     alt_id=[]
+     alt_id.append.doc["id"]
+     if(doc["gold_sequencing_project_identifiers"]):
+        sorted_existing_gold_alt=doc["gold_sequencing_project_identifiers"].sort()
+        alt_id.sort()
+          if sorted_existing_gold_alt == alt_id:
+             update_alt= False
+          else:
+           print("gold alt ids exist but are not equal", doc["id"],doc["gold_sequencing_project_identifiers"])
+     else:
+        alt_id=[]
+        alt_id.append.doc["id"]
+        update_alt=True
+  #deal with emsl omics identifiers
+  elif (doc["id"].startswith(('emsl'))): 
      alt_id_slot="alternative_identifiers"
+     alt_id=[]
+     alt_id.append.doc["id"]
+     if(doc["alternative_identifiers"]):
+       sorted_existing_alt=doc["alternative_identifiers"].sort
+       alt_id.sort()
+         if sorted_existing_alt == alt_id:
+            update_alt=False
+         else:
+         print("emsl alt ids exist but are not equal", doc["id"],doc["alternative_identifiers"])
+     else:
+        alt_id=[]
+        alt_id.append.doc["id"]
+        update_alt=True        
   else:
-     print("Not sure how to re-id omics_processing_set id ",doc["id"]) 
-  target_update = { "$set": { "id": omics_napa_ids[omics_counter], "part_of":"nmdc:sty-12-85j6kq06", alt_id_slot:doc["id"],"has_input": replace_has_input }}
+    print("Not sure how to re-id omics_processing_set id ",doc["id"]) 
+  #set target update depending on if alt slot exists already or not 
+  if update_alt is True:
+    target_update = { "$set": { "id": omics_napa_ids[omics_counter], "part_of":[study_napa_list], "has_input": [napa_biosample_inputs], alt_id_slot: [alt_id] }}
+  if update_alt is False:
+    target_update = { "$set": { "id": omics_napa_ids[omics_counter], "part_of":[study_napa_list], "has_input": [napa_biosample_inputs]}}
   class_legacy_napa="OmicsProcessing " + doc["id"] + " "+ omics_napa_ids[omics_counter]
   print(class_legacy_napa)
   print(target_update)
