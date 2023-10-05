@@ -1390,7 +1390,7 @@ classes:
         data submitted to ENA
     
     slots:
-      - emsl_project_dois
+      ## emsl_project_dois - slot was deprecated 10/04/2023
 
       - neon_study_identifiers
       - jgi_portal_study_identifiers
@@ -2729,9 +2729,7 @@ slots:
         description:
           emsl_project_dois link to the document outlining the EMSL specific award for the project.
           Should not be used to link to datasets or publications.
-    todos:
-      - Make as a subproperty of award_dois
-
+    deprecated_element_has_exact_replacement: nmdc:award_dois
   mod_date:
     range: string
     description: The last date on which the database information was modified.

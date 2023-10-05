@@ -17,6 +17,10 @@ Versioning for this project is based on [Semantic Versioning](https://semver.org
 - Remove incorrect description of `lat_lon` slot
 - Remove non-monotonic range override on `used` slot of `MetaproteomicsAnalysisActivity` class.
 
+### Removed
+
+- `emsl_project_dois` slot from `Study` class usage. Added deprecation to global slot. 
+
 ## 8.0.0 - 2023-09-21
 
 ### Overhaul of the definition and usage of CURIe prefixes. 
