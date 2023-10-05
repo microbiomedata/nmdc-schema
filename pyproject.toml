@@ -10,7 +10,7 @@ license = "MIT"
 name = "nmdc_schema"
 readme = "README.md"
 repository = "https://github.com/microbiomedata/nmdc-schema"
-version = "8.0.0" # nmdc.yaml and GH say v8.0.0
+version = "8.1.0" # nmdc.yaml and GH say v8.1.0
 authors = [
     "Bill Duncan <wdduncan@gmail.com>",
     "Chris Mungall <cjmungall@lbl.gov>",
@@ -28,12 +28,13 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-linkml = "^1.5.6"
-linkml-runtime = "^1.5.4"
+linkml = "^1.5.0"
+linkml-runtime = "^1.5.0"
 python = "^3.9"
 click-log = "^0.4.0"
 
 [tool.poetry.group.dev.dependencies] # are some of these actually required as non-dev dependencies?
+pydantic = "^1.10.13"
 black = "^23.1.0"
 click-log = "^0.4.0"
 cruft = "^2.12.0"

@@ -17,7 +17,7 @@ description: >-
    * the NMDC schema itself, into which the other modules are imported
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: v8.0.0 # GH uses same version string # pyproject.toml says "8.0.0"
+version: v8.1.0 # GH uses same version string # pyproject.toml says "8.1.0"
 
 imports:
   - annotation
@@ -1126,11 +1126,9 @@ classes:
         description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
 
       lat_lon:
-        description:
-          This is currently a required field but it's not clear if this
-          should be required for human hosts
-        notes:
-          - required where?
+        todos:
+          - This is currently a required field but it's not clear if this
+            should be required for human hosts
       env_broad_scale:
         required: true
       env_local_scale:
@@ -1395,7 +1393,7 @@ classes:
         data submitted to ENA
     
     slots:
-      - emsl_project_dois
+      ## emsl_project_dois - slot was deprecated 10/04/2023
 
       - neon_study_identifiers
       - jgi_portal_study_identifiers
@@ -2737,9 +2735,7 @@ slots:
         description:
           emsl_project_dois link to the document outlining the EMSL specific award for the project.
           Should not be used to link to datasets or publications.
-    todos:
-      - Make as a subproperty of award_dois
-
+    deprecated_element_has_exact_replacement: nmdc:award_dois
   mod_date:
     range: string
     description: The last date on which the database information was modified.
