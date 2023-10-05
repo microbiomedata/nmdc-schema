@@ -621,6 +621,14 @@ slots:
     multivalued: true
     description: A list of websites that are associated with the entity.
 
+  publications:
+    range: string
+    multivalued: true
+    description: >-
+      A list of publications that are associated with the entity.
+      The publications SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.
+    deprecated_element_has_exact_replacement: nmdc:publication_dois
+
   highest_similarity_score:
     todos:
       - Yuri to fill in description
