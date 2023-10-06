@@ -20,6 +20,7 @@ Versioning for this project is based on [Semantic Versioning](https://semver.org
 ### Removed
 
 - `emsl_project_dois` slot from `Study` class usage. Added deprecation to global slot. 
+- `publications` slot from `Study` class usage. Added deprecation to global slot.
 
 ## 8.0.0 - 2023-09-21
 
