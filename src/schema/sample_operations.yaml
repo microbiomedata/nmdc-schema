@@ -32,6 +32,7 @@ classes:
       be used as a superclass for more specific sample operations.
     slots:
       - type
+      - designated_class
     slot_usage:
       has_input:
         structured_pattern:
@@ -479,6 +480,13 @@ slots:
     domain: ProtocolExecution
     range: ProtocolCategoryEnum
     required: true
+  designated_class:
+    range: uriorcurie
+    slot_uri: rdf:type
+    designates_type: true
+    required: true
+    comments:
+      - The type of the object being designated
   sample_operation_set:
     mixins:
       - object_set
@@ -547,16 +555,16 @@ enums:
   ProtocolCategoryEnum:
     description: The possible protocols that may be followed.
     permissible_values:
-      MPLEx:
-      Comprehensive:
-      Derivatization:
-      Filter clean up:
-      Gravimetric water content:
-      Microbial biomass:
-      Organic matter extraction:
-      Organic matter spe:
-      Pbray extraction:
-      pH:
-      Polsen extraction:
-      Respiration:
-      Texture:
+      - MPLEx
+      - Comprehensive
+      - Derivatization
+      - FilterCleanUp
+      - GravimetricWaterContent
+      - MicrobialBiomass
+      - OrganicMatterExtraction
+      - OrganicMatterSpe
+      - PbrayExtraction
+      - pH
+      - PolsenExtraction
+      - Respiration
+      - Texture
