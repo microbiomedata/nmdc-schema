@@ -50,10 +50,9 @@ classes:
 
   #slots could be moved into NMDC database class
   #sample_operations_set > how do we have a range that encompasses multiple classes?
-  #conflicts in reaction activity
   #instrument vs labdevice references
   #lab device fields possibly in activities and not lab device
-  #instrument slot? exists already
+  #instrument slot?
   #SampleOperationsCollection: 
   #  description: >-
   #    A collection of sample operations, together making a protocol
@@ -345,18 +344,17 @@ classes:
       - has_output
       - sieve_size
       - screen_size
-  # needs to be commented out when merging, LabDevice doesn't exist in this branch but does in main
-  #LabDevice:
-  #  # OBI:0000968 
-  #  description: A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.
-  #  exact_mappings:
-  #    - OBI:0000968
-  #  slots:
-  #    - activity_speed 
-  #    - activity_time
-  #    - activity_temperature
-  #    - description
-  #    - device_type
+  LabDevice:
+    # OBI:0000968 
+    description: A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.
+    exact_mappings:
+      - OBI:0000968
+    slots:
+      - activity_speed 
+      - activity_time
+      - activity_temperature
+      - description
+      - device_type
 
   ReagentValue:
     description: >-
@@ -440,7 +438,7 @@ slots:
     description: The type of device being used for an activity
   dry:
     description: The act of removing moisture from something
-  value: #not sure what this is supposed to actually be
+  value: 
     range: QuantityValue
     description: Value of a field, can represent different things.
   starting_amount:

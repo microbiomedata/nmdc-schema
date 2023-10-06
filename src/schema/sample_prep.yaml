@@ -10,6 +10,7 @@ see_also:
 
 #notes:
 #  - "circular nmdc import is for slot biosample_input with range: Biosample"
+# Some slots/enums/classes have been moved to 'sample_operations.yaml' T
 
 imports:
   - core
@@ -26,37 +27,10 @@ default_prefix: nmdc
 default_range: string
 
 enums:
-  #ContainerTypeEnum:
-  #  title: Container type enumeration
-  #  permissible_values:
-  #    screw_top_conical:
-  #      title: Screw top conical tube
-  #      aliases:
-  #        - falcon tube
-  #DeviceTypeEnum:
-  #  title: Shaker type enumeration
-  #  permissible_values:
-  #    orbital_shaker:
-  #      title: Orbital shaker
-  #    thermomixer:
-  #      title: Thermomixer
   SamplingMethodEnum:
     permissible_values:
       weighing:
         title: Weighing
-  #SolventEnum:
-  #  title: Solvent enumeration
-  #  permissible_values:
-  #    deionized_water:
-  #      title: Deionized water
-   #     broad_mappings:
-   #       - CHEBI:15377
-   #   methanol:
-   #     title: Methanol
-   #     meaning: CHEBI:17790
-   #   chloroform:
-   #     title: Chloroform
-   #     meaning: CHEBI:35255
 slots:
   dissolving_activity_set:
     title: dissolving activity set
@@ -109,35 +83,6 @@ slots:
   material_output:
     title: material output
     range: MaterialSample
-  #device_type:
-  #  title: device type
-  #  aliases:
-  #    - shaker type
-  #  range: DeviceTypeEnum
-  #activity_speed:
-  #  title: activity speed
-  #  aliases:
-  #    - shake_speed
-  #  range: QuantityValue
-  #  inlined: true
-  #activity_temperature:
-  #  todos:
-  #    - constrain units
-  #  range: QuantityValue
-  #  inlined: true
-  #activity_time:
-  #  title: activity time
-  #  aliases:
-  #    - shake_time
-  #  range: QuantityValue
-  #  inlined: true
-  #container_size:
-  #  title: container size
-  #  range: QuantityValue
-  #  inlined: true
-  #container_type:
-  #  title: container type
-  #  range: ContainerTypeEnum
   amount_collected:
     title: amount collected
     range: QuantityValue
@@ -183,13 +128,6 @@ classes:
         examples:
           - value: somextract:7
     class_uri: CHMO:0002773
-  LabDevice:
-    title: Lab device
-    slots:
-      - device_type
-      - activity_speed
-      - activity_temperature
-      - activity_time
   MaterialContainer:
     title: Material container
     slots:
@@ -237,18 +175,3 @@ classes:
           - weighing-activity.id
     class_uri: OBI:0000744
 
-  #ReactionActivity:
-  #  title: Reaction activity
-  #  aliases:
-  #    - reaction-activity
-  #  slots:
-  #    - material_input
-  #    - material_output
-  #    - reaction_aided_by
-  #    - reaction_temperature
-  #    - reaction_time
-  #  slot_usage:
-  #    reaction_time:
-  #      todos:
-  #        - constrain units
-  #        - align with activity_time
