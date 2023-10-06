@@ -185,7 +185,6 @@ classes:
       - read_based_taxonomy_analysis_activity_set
       - read_qc_analysis_activity_set
       - study_set
-      - microbial_biomass_set
     slot_usage:
       date_created:
         todos:
@@ -2565,14 +2564,6 @@ slots:
     range: LibraryPreparation
     multivalued: true
     description: This property links a database object to the set of DNA extractions within it.
-  microbial_biomass_set:
-    mixins: object_set
-    domain: Database
-    range: MicrobialBiomassDetermination
-    multivalued: true
-    description:
-      This property links a database object to the set of Microbial Biomass operations within
-      it.
   omics_type:
     range: ControlledTermValue
     description: The type of omics data
