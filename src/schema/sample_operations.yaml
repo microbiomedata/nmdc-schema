@@ -48,46 +48,11 @@ classes:
       type:
         required: false
 
-  #slots could be moved into NMDC database class
-  #sample_operations_set > how do we have a range that encompasses multiple classes?
   #instrument vs labdevice references
   #lab device fields possibly in activities and not lab device
   #instrument slot?
-  #SampleOperationsCollection: 
-  #  description: >-
-  #    A collection of sample operations, together making a protocol
-  #  slots:
-  #    - operation_type
-  #    - derivative_operations
-  #    - sampledrying_operations
-  #    - subsampling_operations
-  #    - acidification_operations
-  #    - reaction_operations
-  #    - filtration_operations
-  #    - extraction_operations
-  #    - aliquot_operations
-  #    - phaseseparation_operations
-  #    - analytestorage_operations
-  #    - phmeasurement_operations
-  #    - mixing_operations
-  #    - sieving_operations
-  #    - chemicalreaction_operations
 
-  MicrobialBiomassDetermination:
-    description: >-
-      These are the steps used in following the Microbial Biomass protocol.
-    #is_a: SampleOperation
-    slots:
-      - subsampling_operations
-      #      - extraction_operation # MAM 2023-10-04 is this supposed to be extraction_operation ?
-      - extraction_operations
-      - phaseseparation_operations
-      - filtration_operations
-      - acidification_operations
-      - analytestorage_operations
-
-
-  DerivativeActivity:
+  DerivatizationProcess:
     description: >-
       A technique used in chemistry which transforms a chemical compound into a product (the reaction's derivate) of similar chemical structure, called a derivative. That compound has properties more amenable to a particular analytical method. Some samples analyzed by GC require derivatization in order to make them suitable for analysis. Compounds that have poor volatility, poor thermal stability, or that can be adsorbed in the injector will exhibit nonreproducible peak areas, heights, and shapes. Other compounds that respond poorly on a specific detector may need to be “tagged” with a different functional group to improve detection.
     is_a: SampleOperation
@@ -128,7 +93,7 @@ classes:
         description: >-
           A temperature, given in Celsius.
 
-  SubsamplingActivity:
+  SubsamplingProcess:
     description: >-
       A subsample may be: (a) a portion of the sample obtained by selection or division; 
       (b) an individual unit of the lot taken as part of the sample; (c) the final unit of multistage sampling. 
@@ -151,9 +116,9 @@ classes:
         description: >-
           A temperature, given in Celsius.
 
-  AcidificationActivity:
+  AcidificationProcess:
     description: >-
-      Activity of modifying the pH of a sample or solution via addition of some acid.
+      Process of modifying the pH of a sample or solution via addition of some acid.
     is_a: SampleOperation
     slots:
       - has_input
@@ -175,7 +140,7 @@ classes:
       - mixing
       - speed
       - instrument
-      - volume #double check these next couple
+      - volume
       - concentration
       - extractant
       - temp
@@ -204,7 +169,7 @@ classes:
         description: >-
           A temperature, given in Celsius.
 
-  FiltrationActivity:
+  FiltrationProcess:
     description: >-
       The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by forcing a carrier gas or liquid through a porous medium.
     is_a: SampleOperation
@@ -233,7 +198,7 @@ classes:
       - container_type
       - container_size
 
-  ExtractionActivity:
+  ExtractionProcess:
     description: >-
       A material separation in which a desired component of an input material is separated from the remainder
     is_a: SampleOperation
@@ -251,7 +216,7 @@ classes:
       - volume
       - solute
 
-  AliquotActivity:
+  AliquotingProcess:
     description: >-
       Pertaining to a portion of the whole; any one of two or more samples of something, of the same volume or weight.
     is_a: SampleOperation
@@ -266,7 +231,7 @@ classes:
       - source_container_type
       - transfer_type
 
-  PhaseSeparationActivity:
+  PhaseSeparationProcess:
     description: >-
       The process by which a single solid (liquid) phase separates into two or more new phases.
     is_a: SampleOperation
@@ -295,20 +260,8 @@ classes:
     slots:
       - modifier_substance
       - concentration
-
-  #AnalyticalSample:
-  #  description: >-
-  #    A liquid bulk product produced according to specified lab protocols, from a sample or analyte, intended for further analysis.
-  #  is_a: SampleOperation
-  #  slots:
-  #    - has_input
-  #    - container_type
-  #    - sample_state
-  #    - volume
-  #    - analyte_volume
-  #    - concentration
   
-  PhMeasurement:
+  PhMeasuringProcess:
     description: >-
       The measurement of pH, the negative logarithm to base ten of the hydrogen ion activity in a solution. Operationally the pH of a solution X, pH(X), is measured relative to that of a standard reference solution, pH(S), and defined as pH(X) = pH(S) - (E(X) - E(S))/(RT/F)ln 10, where E(X) and E(S) are the electromotive forces measured in cells containing the solution X and the reference solution respectively.
     is_a: SampleOperation
@@ -325,7 +278,7 @@ classes:
       - speed
       - volume
 
-  MixingActivity:
+  MixingProcess:
     description: >-
       The combining of components, particles or layers into a more homogeneous state. The mixing may be achieved manually or mechanically by shifting the material with stirrers or pumps or by revolving or shaking the container. The process must not permit segregation of particles of different size or properties. Homogeneity may be considered to have been achieved in a practical sense when the sampling error of the processed portion is negligible compared to the total error of the measurement system.
     is_a: SampleOperation
@@ -335,7 +288,7 @@ classes:
       - duration
       - mixing
 
-  SievingActivity:
+  SievingProcess:
     description: >-
       A sample is passed through a sieve to reach a specific particle size and remove anything that can't be passed through that size.
     is_a: SampleOperation
@@ -364,7 +317,7 @@ classes:
       - volume
       - concentration
 
-  ChemicalReactionActivity:
+  ChemicalReactionProcess:
     description: >-
       A process which uses or consumes chemical/molecular entities to generate other molecular entities
     is_a: SampleOperation
@@ -512,86 +465,12 @@ slots:
   reaction_type:
     range: string
     description: The type of reaction happening in a ChemicalreactionActivity
-  #operation_type: 
-  #  range: OperationEnum
-  #  description: The sample operation protocol being followed
   transfer_type:
     range: string
     description: The type of transfer being performed during an aliquot activity
   activity_type:
     range: string
     description: The type of sub activity being performed if applicable. i.e. 'ice' when handling a sample in storage
-  derivative_operations:
-    range: DerivativeActivity
-    multivalued: True
-    inlined_as_list: true
-    description: The derivative activities that make up the steps in a sample operation
-  sampledrying_operations:
-    range: SampleDrying
-    multivalued: true
-    inlined_as_list: true
-    description: The sample drying activities that make up the steps in a sample operation
-  subsampling_operations:
-    range: SubsamplingActivity
-    multivalued: true
-    inlined_as_list: true
-    description: The subsampling activities that make up the steps in a sample operation
-  acidification_operations:
-    range: AcidificationActivity
-    multivalued: true
-    inlined_as_list: true
-    description: The acidification activities that make up the steps in a sample operation
-  reaction_operations:
-    range: ReactionActivity
-    multivalued: true
-    inlined_as_list: true
-    description: The Reaction activities that make up the steps in a sample operation
-  filtration_operations:
-    range: FiltrationActivity
-    multivalued: true
-    inlined_as_list: true
-    description: The Filtration activities that make up the steps in a sample operation
-  extraction_operations:
-    range: ExtractionActivity
-    multivalued: true
-    inlined_as_list: true
-    description: The extraction activities that make up the steps in a sample operation
-  aliquot_operations:
-    range: AliquotActivity
-    multivalued: true
-    inlined_as_list: true
-    description: The Aliquot activities that make up the steps in a sample operation
-  phaseseparation_operations:
-    range: PhaseSeparationActivity
-    multivalued: true
-    inlined_as_list: true
-    description: The phase separation activities that make up the steps in a sample operation
-  analytestorage_operations:
-    range: AnalyteStorage
-    multivalued: true
-    inlined_as_list: true
-    description: The analyte storage activities that make up the steps in a sample operation
-  phmeasurement_operations:
-    range: PhMeasurement
-    multivalued: true
-    inlined_as_list: true
-    description: The PhMeasurement activities that make up the steps in a sample operation
-  mixing_operations:
-    range: MixingActivity
-    multivalued: true
-    inlined_as_list: true
-    description: The mixing activities that make up the steps in a sample operation
-  sieving_operations:
-    range: SievingActivity
-    multivalued: true
-    inlined_as_list: true
-    description: The sieving activities that make up the steps in a sample operation
-  chemicalreaction_operations:
-    range: ChemicalReactionActivity
-    multivalued: true
-    inlined_as_list: true
-    description: The chemical reaction activity activities that make up the steps in a sample operation
-
 
 #Touch up descriptions, potentially add ontology meaning tag
 enums:
@@ -663,6 +542,3 @@ enums:
       Polsen extraction:
       Respiration:
       Texture:
-
-
-types:
