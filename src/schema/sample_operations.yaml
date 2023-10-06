@@ -48,9 +48,13 @@ classes:
       type:
         required: false
 
-  #instrument vs labdevice references
-  #lab device fields possibly in activities and not lab device
-  #instrument slot?
+  ProtocolExecution:
+    is_a: PlannedProcess
+    description: A PlannedProces that has PlannedProcess parts. Can be used to represent the case of someone following a Protocol
+    slots:
+      - has_part
+      - protocol_execution_category
+      - protocol_link
 
   DerivatizationProcess:
     description: >-
@@ -471,6 +475,20 @@ slots:
   activity_type:
     range: string
     description: The type of sub activity being performed if applicable. i.e. 'ice' when handling a sample in storage
+  protocol_execution_category:
+    domain: ProtocolExecution
+    range: ProtocolCategoryEnum
+    required: true
+  sample_operation_set:
+    mixins:
+      - object_set
+    domain: Database
+    range: SampleOperation
+  protocol_execution_set:
+    mixins:
+      - object_set
+    domain: Database
+    range: ProtocolExecution
 
 #Touch up descriptions, potentially add ontology meaning tag
 enums:
@@ -526,7 +544,7 @@ enums:
       cloridic acid:
       Water:
 
-  OperationEnum:
+  ProtocolCategoryEnum:
     description: The possible protocols that may be followed.
     permissible_values:
       MPLEx:
