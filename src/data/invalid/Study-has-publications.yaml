@@ -39,14 +39,13 @@ alternative_descriptions:
 alternative_names:
   - any string 1
   - any string 2
-abstract: Nothing was studied.
 objective: This record, an instance of class Study from the nmdc-schema was had authored,
   so that the NMDC team would have at least one instance, using all slots, with a
   mixture of reasonable values and minimally compliant values.
 websites:
   - https://w3id.org/nmdc
   - https://w3id.org/linkml
-publication_dois:
+publications:
   - any string 1
   - any string 2
 ess_dive_datasets:
@@ -59,4 +58,3 @@ relevant_protocols:
 funding_sources:
   - This is an example of a funding source with too long of a description. Funding sources should be no more than 150 characters. Any longer is unnecessary and excessive. Its very very very very very very very very very long.
   - any string 2
-
