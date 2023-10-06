@@ -1,3 +1,16 @@
+campaign_set:
+  - id: generic:Campaign_1
+    name: Some name
+    description: Some description
+    has_part:
+      - generic:Sieving_1
+      - generic:Suspending_1
+      - generic:Filtering_1
+    campaign_category: obtaining_solutes
+    protocol_link: # note that Protocols don't have id values, so they are passed in-line, as a dictionary
+      name: Red Velvet Cupcake Protocol
+      url: https://dx.doi.org/10.17504/protocols.io.bbh7ij9n
+
 sample_preparation_set:
   - id: generic:Sieving_1
     designated_class: nmdc:Sieving

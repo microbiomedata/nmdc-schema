@@ -152,6 +152,7 @@ classes:
       translated to JSON-Schema this is the 'root' object. It should contain pointers
       to other objects of interest
     slots:
+      - campaign_set
       - sample_preparation_set
       - functional_annotation_agg
       - library_preparation_set

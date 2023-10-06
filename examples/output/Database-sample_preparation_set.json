@@ -1,0 +1,58 @@
+{
+  "campaign_set": [
+    {
+      "id": "generic:Campaign_1",
+      "name": "Some name",
+      "description": "Some description",
+      "protocol_link": {
+        "url": "https://dx.doi.org/10.17504/protocols.io.bbh7ij9n",
+        "name": "Red Velvet Cupcake Protocol"
+      },
+      "campaign_category": "obtaining_solutes",
+      "has_part": [
+        "generic:Sieving_1",
+        "generic:Suspending_1",
+        "generic:Filtering_1"
+      ]
+    }
+  ],
+  "sample_preparation_set": [
+    {
+      "id": "generic:Sieving_1",
+      "has_input": [
+        "generic:Biosample_1"
+      ],
+      "has_output": [
+        "generic:fines_1",
+        "generic:coarse_1"
+      ],
+      "designated_class": "nmdc:Sieving",
+      "mesh_size_mm": 3.0
+    },
+    {
+      "id": "generic:Suspending_1",
+      "has_input": [
+        "generic:fines_1"
+      ],
+      "has_output": [
+        "generic:suspension_1"
+      ],
+      "designated_class": "nmdc:Suspending",
+      "stir_rate_rpm": 1000.0,
+      "stir_time_min": 10.0
+    },
+    {
+      "id": "generic:Filtering_1",
+      "has_input": [
+        "generic:suspension_1"
+      ],
+      "has_output": [
+        "generic:filtrate_1",
+        "generic:oversize_1"
+      ],
+      "designated_class": "nmdc:Filtering",
+      "paper_grade": "grade_3"
+    }
+  ],
+  "@type": "Database"
+}

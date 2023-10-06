@@ -20,6 +20,17 @@ imports:
   - linkml:types
 
 classes:
+  Campaign:
+    is_a: PlannedProcess # so this inherits all PlannedProcess slots. They do not have to be restated here.
+    description: A PlannedProces that has PlannedProcess parts. Can be used to represent the case of someone following a Protocol
+    slots:
+      - has_part
+      - campaign_category
+      - protocol_link
+    comments:
+      - "MAM 2023-10-06: I am intentionally using a new word here that isn't already overloaded in the model or in our discussions"
+      - We can and should change it
+
   SamplePreparation:
     is_a: PlannedProcess
     slots:
@@ -56,6 +67,11 @@ slots:
       - object_set
     domain: Database
     range: SamplePreparation
+  campaign_set:
+    mixins:
+      - object_set
+    domain: Database
+    range: Campaign
   mesh_size_mm:
     domain: Sieving
     range: float
@@ -83,6 +99,10 @@ slots:
     domain: Filtering
     range: PaperGrade
     required: true
+  campaign_category:
+    domain: Campaign
+    range: CampaignCategoryEnum
+    required: true
 
 enums:
   PaperGrade:
@@ -92,3 +112,7 @@ enums:
       - grade_3
       - grade_4
       - grade_602_h
+  CampaignCategoryEnum:
+    permissible_values:
+      - obtaining_solutes
+      - baking_cake
