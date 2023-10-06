@@ -1377,9 +1377,9 @@ classes:
       - research proposal
       - research study
       - investigation
-      - project
+      - projectß
       - umbrella project
-      - research inititative
+      - research initiative
     description: >-
       A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.
     comments: The Study class can include both consortia and research studies.
