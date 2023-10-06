@@ -2710,7 +2710,7 @@ slots:
   publication_dois:
     is_a: dois
     in_subset:
-      - data portal subset
+      - data_portal_subset
     description: One or more DOIs that links a study, or similar entity, to a publication.
     aliases:
     - publications
