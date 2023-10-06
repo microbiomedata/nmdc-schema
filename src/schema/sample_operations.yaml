@@ -31,7 +31,7 @@ classes:
       A planned process that is performed on a sample.  This class is intended to
       be used as a superclass for more specific sample operations.
     slots:
-      - type
+      #- type
       - designated_class
     slot_usage:
       has_input:
@@ -165,10 +165,7 @@ classes:
       - container_type
       - container_size
       - input_mass
-      - has_input
-      - has_output
       - duration
-      - temp
     slot_usage:
       temp:
         description: >-
@@ -297,11 +294,11 @@ classes:
     description: >-
       A sample is passed through a sieve to reach a specific particle size and remove anything that can't be passed through that size.
     is_a: SampleOperation
+    class_uri: nmdc:SievingProcess
     slots:
-      - has_input
-      - has_output
       - sieve_size
       - screen_size
+
   LabDevice:
     # OBI:0000968 
     description: A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.
