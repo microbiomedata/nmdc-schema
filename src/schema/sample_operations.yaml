@@ -31,7 +31,6 @@ classes:
       A planned process that is performed on a sample.  This class is intended to
       be used as a superclass for more specific sample operations.
     slots:
-      #- type
       - designated_class
     slot_usage:
       has_input:

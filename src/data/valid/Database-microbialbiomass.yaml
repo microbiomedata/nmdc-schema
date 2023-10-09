@@ -1,36 +1,36 @@
-
 protocol_execution_set:
   - id: generic:Campaign_1
     name: Microbial Biomass
     description: An execution of the microbial biomass protocol
     has_part:
-      - microbiomass:1
-      - microbiomass:2
-      - microbiomass:3
-      - microbiomass:4
-      - microbiomass:5
-      - microbiomass:6
-      - microbiomass:7
-      - microbiomass:8
-      - microbiomass:9
-      - microbiomass:10
-      - microbiomass:11
-      - microbiomass:12
-      - microbiomass:13
-      - microbiomass:14
-      - microbiomass:15
-      - microbiomass:16
-      - microbiomass:17
-      - microbiomass:18
+      - nmdc:sops-99-oW43DzG0
+      - nmdc:sops-99-oW43DzG1
+      - nmdc:sops-99-oW43DzG2
+      - nmdc:sops-99-oW43DzG3
+      - nmdc:sops-99-oW43DzG4
+      - nmdc:sops-99-oW43DzG5
+      - nmdc:sops-99-oW43DzG6
+      - nmdc:sops-99-oW43DzG7
+      - nmdc:sops-99-oW43DzG8
+      - nmdc:sops-99-oW43DzG9
+      - nmdc:sops-99-oW43DzG10
+      - nmdc:sops-99-oW43DzG11
+      - nmdc:sops-99-oW43DzG12
+      - nmdc:sops-99-oW43DzG13
+      - nmdc:sops-99-oW43DzG14
+      - nmdc:sops-99-oW43DzG15
+      - nmdc:sops-99-oW43DzG16
+      - nmdc:sops-99-oW43DzG17
     protocol_execution_category: MicrobialBiomass
     protocol_link: # note that Protocols don't have id values, so they are passed in-line, as a dictionary
       name: MicrobialBiomassDetermination
       url: https://dx.doi.org/10.17504/protocols.io.bbh7ij9n #what should this link actually be
+#sample_operation_set:
 sample_operation_set:
-  - id: microbiomass:1
+  - id: nmdc:sops-99-oW43DzG0 #microbiomass:1
     designated_class: nmdc:SubsamplingProcess
     has_input: 
-      - nmdc:bsm-99-oW43DzG0 #This is an example biosample ID and does not represent a real biosample
+      - nmdc:sops-99-oW43DzG1 #This is an example biosample ID and does not represent a real biosample
     starting_amount:
       has_unit: grams
       has_numeric_value: 8
@@ -38,10 +38,10 @@ sample_operation_set:
     container_size:
       has_unit: mL
       has_numeric_value: 50
-  - id: microbiomass:3
+  - id: nmdc:sops-99-oW43DzG2 #microbiomass:3
     designated_class: nmdc:ExtractionProcess
     has_input: 
-      - nmdc:procsm-11-05g48p90 #this and below processed sample IDs are examples and do not represent an actual sample
+      - nmdc:sops-11-05g48p90 #this and below processed sample IDs are examples and do not represent an actual sample
     extractant: Potassium sulfate
     concentration: 
       has_unit: mM
@@ -64,10 +64,10 @@ sample_operation_set:
       activity_time:
         has_unit: hours
         has_numeric_value: 2
-  - id: microbiomass:11
+  - id: nmdc:sops-99-oW43DzG3 #microbiomass:11
     designated_class: nmdc:ExtractionProcess
     has_input: 
-      - nmdc:procsm-11-05g48p9010
+      - nmdc:sops-11-05g48p9010
     extractant: ethanol-free chloroform
     duration:
       has_unit: hours
@@ -87,10 +87,10 @@ sample_operation_set:
       activity_time:
         has_unit: hours
         has_numeric_value: 2
-  - id: microbiomass:12
+  - id: nmdc:sops-99-oW43DzG4 #microbiomass:12
     designated_class: nmdc:ExtractionProcess
     has_input: 
-      - nmdc:procsm-11-05g48p9011
+      - nmdc:sops-11-05g48p9011
     extractant: Potassium sulfate
     duration:
       has_unit: hours
@@ -116,10 +116,10 @@ sample_operation_set:
       activity_time:
         has_unit: hours
         has_numeric_value: 2
-  - id: microbiomass:4 
+  - id: nmdc:sops-99-oW43DzG5 #microbiomass:4 
     designated_class: nmdc:PhaseSeparationProcess
     has_input: 
-      - nmdc:procsm-11-05g48p903
+      - nmdc:sops-11-05g48p903
     duration:
       has_unit: minutes
       has_numeric_value: 20
@@ -130,10 +130,10 @@ sample_operation_set:
     container_size:
       has_unit: mL
       has_numeric_value: 50
-  - id: microbiomass:5
+  - id: nmdc:sops-99-oW43DzG6 #microbiomass:5
     designated_class: nmdc:PhaseSeparationProcess
     has_input: 
-      - nmdc:procsm-11-05g48p905
+      - nmdc:sops-11-05g48p905
     volume:
       has_unit: mL
       has_numeric_value: 5
@@ -141,10 +141,10 @@ sample_operation_set:
     container_size:
       has_unit: mL
       has_numeric_value: 15
-  - id: microbiomass:6
+  - id: nmdc:sops-99-oW43DzG7 #microbiomass:6
     designated_class: nmdc:PhaseSeparationProcess
     has_input: 
-      - nmdc:procsm-11-05g48p904
+      - nmdc:sops-11-05g48p904
     volume:
       has_unit: mL
       has_numeric_value: 5
@@ -152,10 +152,10 @@ sample_operation_set:
     container_size:
       has_unit: mL
       has_numeric_value: 50
-  - id: microbiomass:14
+  - id: nmdc:sops-99-oW43DzG8 #microbiomass:14
     designated_class: nmdc:PhaseSeparationProcess
     has_input: 
-      - nmdc:procsm-11-05g48p901
+      - nmdc:sops-11-05g48p901
     volume:
       has_unit: mL
       has_numeric_value: 5
@@ -163,10 +163,10 @@ sample_operation_set:
     container_size:
       has_unit: mL
       has_numeric_value: 15
-  - id: microbiomass:15
+  - id: nmdc:sops-99-oW43DzG9 #microbiomass:15
     designated_class: nmdc:PhaseSeparationProcess
     has_input: 
-      - nmdc:procsm-11-05g48p903
+      - nmdc:sops-11-05g48p903
     volume:
       has_unit: mL
       has_numeric_value: 5
@@ -174,10 +174,10 @@ sample_operation_set:
     container_size:
       has_unit: mL
       has_numeric_value: 50
-  - id: microbiomass:13 
+  - id: nmdc:sops-99-oW43DzG10 #microbiomass:13 
     designated_class: nmdc:PhaseSeparationProcess
     has_input: 
-      - nmdc:procsm-11-05g48p9012
+      - nmdc:sops-11-05g48p9012
     duration:
       has_unit: minutes
       has_numeric_value: 20
@@ -188,10 +188,10 @@ sample_operation_set:
     container_size:
       has_unit: mL
       has_numeric_value: 50
-  - id: microbiomass:2
+  - id: nmdc:sops-99-oW43DzG11 #microbiomass:2
     designated_class: nmdc:FiltrationProcess
     has_input: 
-      - nmdc:procsm-11-05g48p905
+      - nmdc:sops-11-05g48p905
     volume:
       has_unit: mL
       has_numeric_value: 20
@@ -218,10 +218,10 @@ sample_operation_set:
         volume:
           has_numeric_value: 50
           has_unit: mL
-  - id: microbiomass:16
+  - id: nmdc:sops-99-oW43DzG12 #microbiomass:16
     designated_class: nmdc:FiltrationProcess
     has_input: 
-      - nmdc:procsm-11-05g48p9014
+      - nmdc:sops-11-05g48p9014
     volume:
       has_unit: mL
       has_numeric_value: 20
@@ -248,52 +248,52 @@ sample_operation_set:
         volume:
           has_numeric_value: 50
           has_unit: mL
-  - id: microbiomass:7
+  - id: nmdc:sops-99-oW43DzG13 #nmdc:sops-99-oW43DzG0 #microbiomass:7
     designated_class: nmdc:AcidificationProcess
     has_input: 
-      - nmdc:procsm-11-05g48p906
+      - nmdc:sops-11-05g48p906
     acid: phosphoric acid
     volume:
       has_unit: drops
       has_numeric_value: 2
-  - id: microbiomass:8
+  - id: nmdc:sops-99-oW43DzG14 #microbiomass:8
     designated_class: nmdc:AcidificationProcess
     has_input: 
-      - nmdc:procsm-11-05g48p905
+      - nmdc:sops-11-05g48p905
     acid: phosphoric acid
     volume:
       has_unit: drops
       has_numeric_value: 2
-  - id: microbiomass:17
+  - id: nmdc:sops-99-oW43DzG15 #microbiomass:17
     designated_class: nmdc:AcidificationProcess
     has_input: 
-      - nmdc:procsm-11-05g48p9016
+      - nmdc:sops-11-05g48p9016
     acid: phosphoric acid
     volume:
       has_unit: drops
       has_numeric_value: 2
-  - id: microbiomass:9
+  - id: nmdc:sops-99-oW43DzG16 #microbiomass:9
     designated_class: nmdc:AnalyteStorage
     has_input: 
-      - nmdc:procsm-11-05g48p907
+      - nmdc:sops-11-05g48p907
     temp:
       has_unit: C
       has_numeric_value: -20
     analyte_volume:
       has_unit: uL
-  - id: microbiomass:10
+  - id: nmdc:sops-99-oW43DzG17 #microbiomass:10
     designated_class: nmdc:AnalyteStorage
     has_input: 
-      - nmdc:procsm-11-05g48p909
+      - nmdc:sops-11-05g48p909
     temp:
       has_unit: C
       has_numeric_value: -20
     analyte_volume:
       has_unit: uL
-  - id: microbiomass:18
+  - id: nmdc:sops-99-oW43DzG18 #microbiomass:18
     designated_class: nmdc:AnalyteStorage
     has_input: 
-      - nmdc:procsm-11-05g48p9017
+      - nmdc:sops-11-05g48p9017
     temp:
       has_unit: C
       has_numeric_value: -20
