@@ -39,6 +39,7 @@ class MIxSSlotsGetter:
                               )):
         slot_names = set()
         for url in url_list:
+            # print(url)
             parsed = self.any_mixs_sheet_getter(url)
             per_page_slots = self.extract_vals_from_rows(parsed, var_name)
             slot_names.update(per_page_slots)

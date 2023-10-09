@@ -108,6 +108,7 @@ gen-project: $(PYMODEL) src/schema/mixs.yaml
 
 test: examples-clean site accepting-legacy-ids-all test-python examples/output
 only-test: examples-clean accepting-legacy-ids-all test-python examples/output
+only-examples: examples-clean examples/output
 
 test-schema:
 	# keep these in sync between PROJECT_FOLDERS and the includes/excludes for gen-project and test-schema

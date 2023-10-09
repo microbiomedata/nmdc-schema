@@ -20,8 +20,42 @@ imports:
   - linkml:types
 
 classes:
+
+  DerivatizationProcess:
+    description: >-
+      A technique used in chemistry which transforms a chemical compound into a product (the reaction's derivate), 
+      of similar chemical structure, called a derivative. That compound has properties more amenable 
+      to a particular analytical method.
+    comments:
+      - Some samples analyzed by GC require derivatization in order to make them suitable for analysis.
+        Compounds that have poor volatility, poor thermal stability, or that can be adsorbed in the injector
+        will exhibit non-reproducible peak areas, heights, and shapes. Other compounds that respond poorly
+        on a specific detector may need to be “tagged” with a different functional group to improve detection.
+    todos:
+      - "MAM: The role of the words derivate and derivative are confusing in the description."
+    #    is_a: SampleOperation
+    is_a: SamplePreparation
+    slots:
+      - derivatization_agent
+      - duration
+      - speed
+      - temp_c
+      #      - concentration # "The concentration of a substance used in an activity" MAM how is this an attribute of a process?
+      #      - container_type # "A type of container. i.e. test tube, falcon tube, etc." MAM is this the container in which the derivatization took place?
+      #      - derivatization
+      #      - device
+      #      - has_input # inherited from PlannedProcess or some intermediary
+      #      - has_output # inherited from PlannedProcess or some intermediary
+      #      - mixing
+      #      - sample_volume
+      #      - temp
+      #      - volume
+  #    slot_usage:
+  #      temp:
+  #        description: >-
+  #          A temperature, given in Celsius.
   Campaign:
-    is_a: PlannedProcess # so this inherits all PlannedProcess slots. They do not have to be restated here.
+    is_a: PlannedProcess # this inherits all PlannedProcess slots. They do not have to be restated here.
     description: A PlannedProces that has PlannedProcess parts. Can be used to represent the case of someone following a Protocol
     slots:
       - has_part
@@ -62,6 +96,33 @@ classes:
       - paper_grade
 
 slots:
+  container_type:
+    range: ContainerTypeEnum
+    description: The type of container in which a material entity was stored or processed
+
+  derivatization_agent:
+    #    range: float # MAM how could the range for this be a float!?
+    range: string # would ideally be an external identifier for a chemical entity, or at least an enumeration
+    description: A chemical entity which is used in a derivatization process
+      to add chemical groups to a molecule in an attempt to make it more
+      suitable for analyses like GC-MS. # MAM edited
+  temp_c:
+    description: A temperature, given in Celsius degrees.
+    range: float
+    comments:
+      - if there are cases in which a temperature should be constrained to degrees celsius, then it should not use the QuantityValue range
+    examples:
+      - value: 95
+  duration: # or could be a ISO8601 period string
+    range: QuantityValue
+    #    description: The duration of an activity, e.x. '2 hours' or '35 minutes'
+    description: a period or interval of time
+  speed:
+    range: QuantityValue
+    #    description: Tbe speed the device is running at. For example 3000 RPM.
+    description: A rate of change, such as a number of miles traveled per hour or a number of rotations in one minute
+    todos:
+      - these descriptions have to be generic enough that other classes can use them
   sample_preparation_set:
     mixins:
       - object_set

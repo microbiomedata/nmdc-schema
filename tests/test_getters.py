@@ -25,10 +25,11 @@ class Getters(unittest.TestCase):
         class_slots = class_slot_getter.get_class_slots(class_name)
         self.assertIsNotNone(class_slots)
 
-    def test_get_mixs_slots(self):
-        mg = MIxSSlotsGetter()
-        mixs_slots = mg.get_unique_slot_names()
-        self.assertIsNotNone(mixs_slots)
+    # def test_get_mixs_slots(self): # requires network connection
+    #     pass
+    #     mg = MIxSSlotsGetter()
+    #     mixs_slots = mg.get_unique_slot_names()
+    #     self.assertIsNotNone(mixs_slots)
 
 
 if __name__ == "__main__":

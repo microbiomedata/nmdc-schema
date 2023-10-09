@@ -12,6 +12,20 @@ campaign_set:
       url: https://dx.doi.org/10.17504/protocols.io.bbh7ij9n
 
 sample_preparation_set:
+  - id: generic:DerivatizationProcess_1
+    designated_class: nmdc:DerivatizationProcess
+    has_input:
+      - generic:undefined_1
+    has_output:
+      - generic:undefined_2
+    speed:
+      has_unit: rpm
+      has_numeric_value: 3000
+    duration:
+      has_unit: min
+      has_numeric_value: 10
+    temp_c: 95
+    derivatization_agent: BSTFA
   - id: generic:Sieving_1
     designated_class: nmdc:Sieving
     mesh_size_mm: 3.0
