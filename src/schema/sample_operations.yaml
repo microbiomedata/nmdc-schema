@@ -34,10 +34,11 @@ classes:
       - designated_class
     slot_usage:
       has_input:
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:sops-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
+        #        structured_pattern:
+        #          syntax: "{id_nmdc_prefix}:sops-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+        #          interpolated: true
         required: true
+        range: MaterialEntity
       has_output:
         range: ProcessedSample
       id:
@@ -304,7 +305,7 @@ classes:
     exact_mappings:
       - OBI:0000968
     slots:
-      - activity_speed 
+      - activity_speed
       - activity_time
       - activity_temperature
       - description
@@ -392,7 +393,7 @@ slots:
     description: The type of device being used for an activity
   dry:
     description: The act of removing moisture from something
-  value: 
+  value:
     range: QuantityValue
     description: Value of a field, can represent different things.
   starting_amount:
