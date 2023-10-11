@@ -353,18 +353,12 @@ slots:
   concentration:
     range: QuantityValue
     description: The concentration of a substance used in an activity
-  activity_speed:
-    range: QuantityValue
-    description: The speed use in a lab device for an activity.
-  activity_time:
+  time:
     range: QuantityValue
     description: The duration that an activity was run on a lab device.
   temperature:
     range: QuantityValue
     description: A temperature, given in Celsius.
-  activity_temperature:
-    range: QuantityValue
-    description: The temperature a lab device was set to for an activity.
   device_type:
     range: DeviceTypeEnum
     description: The type of device being used for an activity
