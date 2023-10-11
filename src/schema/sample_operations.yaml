@@ -24,12 +24,14 @@ imports:
 
 classes:
 
-  SampleOperation:
+  MaterialProcessing:
     is_a: BiosampleProcessing
     title: Sample Operations
     description: >-
       A planned process that is performed on a sample.  This class is intended to
       be used as a superclass for more specific sample operations.
+    aliases:
+      - SampleOperation
     slots:
       - designated_class
     slot_usage:
@@ -60,7 +62,7 @@ classes:
   DerivatizationProcess:
     description: >-
       A technique used in chemistry which transforms a chemical compound into a product (the reaction's derivate) of similar chemical structure, called a derivative. That compound has properties more amenable to a particular analytical method. Some samples analyzed by GC require derivatization in order to make them suitable for analysis. Compounds that have poor volatility, poor thermal stability, or that can be adsorbed in the injector will exhibit nonreproducible peak areas, heights, and shapes. Other compounds that respond poorly on a specific detector may need to be “tagged” with a different functional group to improve detection.
-    is_a: SampleOperation
+    is_a: MaterialProcessing
     slots:
       - has_input
       - has_output
@@ -74,17 +76,13 @@ classes:
       - speed
       - volume
       - concentration
-      - temp
-    slot_usage:
-      temp:
-        description: >-
-          A temperature, given in Celsius.
+      - temperature
 
   SampleDrying:
     class_uri: CHMO:0001549 # MAM
     description: >-
       The process of removing a solvent from a substance.
-    is_a: SampleOperation
+    is_a: MaterialProcessing
     slots:
       - has_input
       - has_output
@@ -92,11 +90,7 @@ classes:
       - duration
       - input_mass
       - value
-      - temp
-    slot_usage:
-      temp:
-        description: >-
-          A temperature, given in Celsius.
+      - temperature
 
   SubsamplingProcess:
     description: >-
@@ -104,7 +98,7 @@ classes:
       (b) an individual unit of the lot taken as part of the sample; (c) the final unit of multistage sampling. 
       The term 'subsample' is used either in the sense of a 'sample of a sample' or as a synonym for 'unit'. 
       In practice, the meaning is usually apparent from the context or is defined.
-    is_a: SampleOperation
+    is_a: MaterialProcessing
     slots:
       - has_input
       - has_output
@@ -115,16 +109,12 @@ classes:
       - volume
       - duration
       - instrument
-      - temp
-    slot_usage:
-      temp:
-        description: >-
-          A temperature, given in Celsius.
+      - temperature
 
   AcidificationProcess:
     description: >-
       Process of modifying the pH of a sample or solution via addition of some acid.
-    is_a: SampleOperation
+    is_a: MaterialProcessing
     slots:
       - has_input
       - has_output
@@ -136,7 +126,7 @@ classes:
   ReactionActivity:
     description: >-
       A process which uses or consumes chemical/molecular entities to generate other molecular entities.
-    is_a: SampleOperation
+    is_a: MaterialProcessing
     slots:
       - has_input
       - has_output
@@ -148,33 +138,25 @@ classes:
       - volume
       - concentration
       - extractant
-      - temp
-    slot_usage:
-      temp:
-        description: >-
-          A temperature, given in Celsius.
+      - temperature
 
   AnalyteStorage:
-    is_a: SampleOperation
+    is_a: MaterialProcessing
     description: >-
       The act, process and logistical considerations of the physical or environmental conditions under which the analytical sample is maintained.
     slots:
       - activity_type
       - analyte_volume
-      - temp
+      - temperature
       - container_type
       - container_size
       - input_mass
       - duration
-    slot_usage:
-      temp:
-        description: >-
-          A temperature, given in Celsius.
 
   FiltrationProcess:
     description: >-
       The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by forcing a carrier gas or liquid through a porous medium.
-    is_a: SampleOperation
+    is_a: MaterialProcessing
     slots:
       - has_input
       - has_output
@@ -203,7 +185,7 @@ classes:
   ExtractionProcess:
     description: >-
       A material separation in which a desired component of an input material is separated from the remainder
-    is_a: SampleOperation
+    is_a: MaterialProcessing
     slots:
       - has_input
       - has_output
@@ -221,7 +203,7 @@ classes:
   AliquotingProcess:
     description: >-
       Pertaining to a portion of the whole; any one of two or more samples of something, of the same volume or weight.
-    is_a: SampleOperation
+    is_a: MaterialProcessing
     slots:
       - has_input
       - has_output
@@ -236,7 +218,7 @@ classes:
   PhaseSeparationProcess:
     description: >-
       The process by which a single solid (liquid) phase separates into two or more new phases.
-    is_a: SampleOperation
+    is_a: MaterialProcessing
     slots:
       - has_input
       - has_output
@@ -250,11 +232,7 @@ classes:
       - volume
       - container_type
       - container_size
-      - temp
-    slot_usage:
-      temp:
-        description: >-
-          A temperature, given in Celsius.
+      - temperature
 
   ModifierValue:
     description: >-
@@ -266,7 +244,7 @@ classes:
   PhMeasuringProcess:
     description: >-
       The measurement of pH, the negative logarithm to base ten of the hydrogen ion activity in a solution. Operationally the pH of a solution X, pH(X), is measured relative to that of a standard reference solution, pH(S), and defined as pH(X) = pH(S) - (E(X) - E(S))/(RT/F)ln 10, where E(X) and E(S) are the electromotive forces measured in cells containing the solution X and the reference solution respectively.
-    is_a: SampleOperation
+    is_a: MaterialProcessing
     slots:
       - has_input
       - has_output
@@ -283,7 +261,7 @@ classes:
   MixingProcess:
     description: >-
       The combining of components, particles or layers into a more homogeneous state. The mixing may be achieved manually or mechanically by shifting the material with stirrers or pumps or by revolving or shaking the container. The process must not permit segregation of particles of different size or properties. Homogeneity may be considered to have been achieved in a practical sense when the sampling error of the processed portion is negligible compared to the total error of the measurement system.
-    is_a: SampleOperation
+    is_a: MaterialProcessing
     slots:
       - has_input
       - has_output
@@ -293,7 +271,7 @@ classes:
   SievingProcess:
     description: >-
       A sample is passed through a sieve to reach a specific particle size and remove anything that can't be passed through that size.
-    is_a: SampleOperation
+    is_a: MaterialProcessing
     class_uri: nmdc:SievingProcess
     slots:
       - sieve_size
@@ -305,9 +283,9 @@ classes:
     exact_mappings:
       - OBI:0000968
     slots:
-      - activity_speed
-      - activity_time
-      - activity_temperature
+      - speed
+      - time
+      - temperature
       - description
       - device_type
 
@@ -322,7 +300,7 @@ classes:
   ChemicalReactionProcess:
     description: >-
       A process which uses or consumes chemical/molecular entities to generate other molecular entities
-    is_a: SampleOperation
+    is_a: MaterialProcessing
     slots:
       - has_input
       - has_output
@@ -335,11 +313,7 @@ classes:
       - reagent
       - reaction_type
       - volume
-      - temp
-    slot_usage:
-      temp:
-        description: >-
-          A temperature, given in Celsius.
+      - temperature
 
 slots:
   analyte_volume:
@@ -372,7 +346,7 @@ slots:
     description: The volume of the input sample.
   speed:
     range: QuantityValue
-    description: Tbe speed the device is running at. For example 3000 RPM.
+    description: The speed of a lab activity with a unit measurement. For example 3000 RPM.
   volume:
     range: QuantityValue
     description: The volume of the solvent/solute being used, not the input.
@@ -385,6 +359,9 @@ slots:
   activity_time:
     range: QuantityValue
     description: The duration that an activity was run on a lab device.
+  temperature:
+    range: QuantityValue
+    description: A temperature, given in Celsius.
   activity_temperature:
     range: QuantityValue
     description: The temperature a lab device was set to for an activity.
@@ -400,6 +377,7 @@ slots:
     range: QuantityValue
     description: The starting amount of analyte used in an activity
   instrument:
+    range: Instrument
     description: "Description of the instrument or the mass spectrometer"
   acid:
     description: "A molecular entity or chemical species capable of donating a hydron (proton) (see Brønsted acid) or capable of forming a covalent bond with an electron pair (see Lewis acid)."
@@ -484,11 +462,11 @@ slots:
     required: true
     comments:
       - The type of the object being designated
-  sample_operation_set:
+  material_processing_set:
     mixins:
       - object_set
     domain: Database
-    range: SampleOperation
+    range: MaterialProcessing
   protocol_execution_set:
     mixins:
       - object_set
