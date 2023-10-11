@@ -1,8 +1,0 @@
-{
-  "id": "nmdc:dobj-99-PqBJvW",
-  "name": "assembly_scaffolds.fna",
-  "description": "Assembled scaffold fasta for gold:Gp0061273",
-  "file_size_bytes": 205297945,
-  "type": "nmdc:DataObject",
-  "@type": "DataObject"
-}
