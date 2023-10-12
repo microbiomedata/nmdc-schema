@@ -26,7 +26,7 @@ protocol_execution_set:
       name: MicrobialBiomassDetermination
       url: https://dx.doi.org/10.17504/protocols.io.bbh7ij9n #what should this link actually be
 #sample_operation_set:
-sample_operation_set:
+material_processing_set:
   - id: nmdc:sops-99-oW43DzG0 #microbiomass:1
     designated_class: nmdc:SubsamplingProcess
     has_input: 

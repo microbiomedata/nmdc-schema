@@ -191,7 +191,7 @@ classes:
       - read_qc_analysis_activity_set
       - study_set
       - protocol_execution_set
-      - sample_operation_set
+      - material_processing_set
     slot_usage:
       date_created:
         todos:
