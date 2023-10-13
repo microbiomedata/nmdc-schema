@@ -284,7 +284,7 @@ classes:
       - OBI:0000968
     slots:
       - speed
-      - time
+      - run_time
       - temperature
       - description
       - device_type
@@ -353,7 +353,7 @@ slots:
   concentration:
     range: QuantityValue
     description: The concentration of a substance used in an activity
-  time:
+  run_time:
     range: QuantityValue
     description: The duration that an activity was run on a lab device.
   temperature:
