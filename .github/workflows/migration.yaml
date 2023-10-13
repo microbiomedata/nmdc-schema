@@ -1,12 +1,13 @@
 name: migration-with-java-action
 on: workflow_dispatch
-# wget AND curl?!
-# combine run statements
+# wget or curl?! which is noisier
+# combine run statements?
+# could run jobs in parallel
 jobs:
   migration-with-java-job:
     runs-on: ubuntu-latest
     steps:
-      #      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
       - uses: actions/setup-java@v3
         with:
           distribution: 'corretto'
@@ -15,3 +16,5 @@ jobs:
       - run: wget https://raw.githubusercontent.com/ontodev/robot/master/bin/robot
       - run: sudo chmod u+x robot
       - run: ./robot --version
+      - run: ./robot convert --input project/owl/nmdc.owl.ttl --output project/owl/nmdc.ofn
+      - run: ls -l project/owl/nmdc.ofn
