@@ -11,10 +11,7 @@ jobs:
         with:
           distribution: 'corretto'
           java-version: '17'
-      - run: java --version
       - run: wget https://github.com/ontodev/robot/releases/download/v1.9.5/robot.jar
-      - run: ls -l robot.jar
-      - run: curl https://raw.githubusercontent.com/ontodev/robot/master/bin/robot > robot
+      - run: wget https://raw.githubusercontent.com/ontodev/robot/master/bin/robot
       - run: sudo chmod u+x robot
-      - run: ls -l robot
       - run: ./robot --version
