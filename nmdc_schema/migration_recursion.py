@@ -14,97 +14,10 @@ click_log.basic_config(logger)
 doi_url_pattern = r'^https?:\/\/[a-zA-Z\.]+\/10\.'
 curie_pattern = r'^[a-zA-Z_][a-zA-Z0-9_-]*:[a-zA-Z0-9_][a-zA-Z0-9_.-]*$'
 
-#migration_plan = {
-#
-#}
-
 
 class Migrator:
     def __init__(self):
         self.forced_prefix = None
-
-    # # this migration of doi slots in Study objects had been completed
-    # def migrate_studies_7_7_2_to_7_8(self, retrieved_study):
-    #     logger.info(f"Starting migration of {retrieved_study['id']}")
-    #     if "doi" in retrieved_study:
-    #         # logger.info(f"Before migration: {pprint.pformat(retrieved_study['doi'])}")
-    #
-    #         match = re.search(doi_url_pattern, retrieved_study["doi"]['has_raw_value'])
-    #         if match:
-    #             start_index = match.end()
-    #             as_curie = f"doi:10.{retrieved_study['doi']['has_raw_value'][start_index:]}"
-    #             retrieved_study["award_dois"] = [as_curie]
-    #         del retrieved_study["doi"]
-    #     return retrieved_study
-
-    def migrate_extractions_7_8_0_to_8_0_0(self, retrieved_extraction):
-        logger.info(f"Starting migration of {retrieved_extraction['id']}")
-
-        # change slot name from sample_mass to input_mass
-        if "sample_mass" in retrieved_extraction:
-            retrieved_extraction['input_mass'] = retrieved_extraction.pop('sample_mass')
-        return retrieved_extraction
-
-    def migrate_uc_gold_sequencing_project_identifiers_7_8_0_to_8_0_0(self, retrieved_omics_processing):
-
-        migrated_gold_identifiers = []
-        if "gold_sequencing_project_identifiers" in retrieved_omics_processing and retrieved_omics_processing[
-            "gold_sequencing_project_identifiers"]:
-            for i in retrieved_omics_processing["gold_sequencing_project_identifiers"]:
-                logger.info(f"migrating gold_sequencing_project_identifiers {i}")
-                curie_parts = i.split(':')
-                curie_prefix = curie_parts[0]
-                curie_local_id = curie_parts[1]
-
-                if curie_prefix == "GOLD":
-                    migrated_gold_identifiers.append(f"gold:{curie_local_id}")
-                else:
-                    migrated_gold_identifiers.append(i)
-        retrieved_omics_processing["gold_sequencing_project_identifiers"] = migrated_gold_identifiers
-
-        return retrieved_omics_processing
-
-    def migrate_uc_gold_biosample_identifiers_7_8_0_to_8_0_0(self, retrieved_biosample):
-
-        # todo refactor? this shouldn't be long-lived code
-
-        migrated_gold_identifiers = []
-        if "gold_biosample_identifiers" in retrieved_biosample and retrieved_biosample[
-            "gold_biosample_identifiers"]:
-            for i in retrieved_biosample["gold_biosample_identifiers"]:
-                logger.info(f"migrating gold_biosample_identifiers {i}")
-                curie_parts = i.split(':')
-                curie_prefix = curie_parts[0]
-                curie_local_id = curie_parts[1]
-
-                if curie_prefix == "GOLD":
-                    migrated_gold_identifiers.append(f"gold:{curie_local_id}")
-                else:
-                    migrated_gold_identifiers.append(i)
-        retrieved_biosample["gold_biosample_identifiers"] = migrated_gold_identifiers
-
-        return retrieved_biosample
-
-    def migrate_uc_gold_study_identifiers_7_8_0_to_8_0_0(self, retrieved_study):
-
-        # todo refactor? this shouldn't be long-lived code
-
-        migrated_gold_identifiers = []
-        if "gold_study_identifiers" in retrieved_study and retrieved_study[
-            "gold_study_identifiers"]:
-            for i in retrieved_study["gold_study_identifiers"]:
-                logger.info(f"migrating gold_study_identifiers {i}")
-                curie_parts = i.split(':')
-                curie_prefix = curie_parts[0]
-                curie_local_id = curie_parts[1]
-
-                if curie_prefix == "GOLD":
-                    migrated_gold_identifiers.append(f"gold:{curie_local_id}")
-                else:
-                    migrated_gold_identifiers.append(i)
-        retrieved_study["gold_study_identifiers"] = migrated_gold_identifiers
-
-        return retrieved_study
 
     def check_and_normalize_one_curie(self, curie_string):
         if not self.is_valid_curie(curie_string):
@@ -198,34 +111,6 @@ def main(schema_path, input_path, output_path, salvage_prefix):
     for tdk, tdv in total_dict.items():
         logger.info(f"Starting migration of {tdk}")
         end_dict[tdk] = migrator.apply_changes_recursively_by_key(tdv, set(migrateable_slots))
-        
-        # if tdk == "study_set":
-        #     logger.info(f"Starting {tdk}-specific migrations")
-        #     for current_study in tdv:
-        #         migrator.migrate_studies_7_7_2_to_7_8(current_study)
-        
-        ####
-
-        # if tdk == "biosample_set":
-        #     logger.info(f"Starting {tdk}-specific migrations")
-        #     for current_biosample in tdv:
-        #         migrator.migrate_uc_gold_biosample_identifiers_7_8_0_to_8_0_0(current_biosample)
-
-        # if tdk == "extraction_set":
-        #     logger.info(f"Starting {tdk}-specific migrations")
-        #     for current_extraction in tdv:
-        #         migrator.migrate_extractions_7_8_0_to_8_0_0(current_extraction)
-        
-        # if tdk == "omics_processing_set":
-        #     logger.info(f"Starting {tdk}-specific migrations")
-        #     for current_omics_processing in tdv:
-        #         migrator.migrate_uc_gold_sequencing_project_identifiers_7_8_0_to_8_0_0(current_omics_processing)
-
-        # if tdk == "study_set":
-        #     logger.info(f"Starting {tdk}-specific migrations")
-        #     for current_study in tdv:
-        #         migrator.migrate_uc_gold_study_identifiers_7_8_0_to_8_0_0(current_study)
-
 
     logger.info(f"Saving migrated data to {output_path}")
     with open(output_path, "w") as f:
