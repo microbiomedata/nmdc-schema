@@ -236,6 +236,7 @@ class ViewHelper:
                    'https://api-dev.microbiomedata.org/docs or https://api.microbiomedata.org/docs')
 @click.option('--endpoint-prefix', default="nmdcschema",
               show_default=True, help='FastAPI path component between the URL and the endpoint name')
+@click.option('--collection-check/--skip-collection-check', default=True)
 def cli(
         admin_db,
         env_file,
@@ -250,52 +251,59 @@ def cli(
         max_docs_per_coll,
         page_size,
         output_yaml,
+        collection_check,
 
 ):
-    nmdc_pymongo_client = PyMongoClient(
-        admin_db=admin_db,
-        auth_mechanism='SCRAM-SHA-256',
-        direct_connection=True,
-        env_file=env_file,
-        mongo_db_name=mongo_db_name,
-        mongo_host=mongo_host,
-        mongo_port=mongo_port,
-    )
-    # logger.info(f"{nmdc_pymongo_client.collections = }")
+    # selected_collections = []
+    est_doc_count = 0
+    if collection_check:
+        nmdc_pymongo_client = PyMongoClient(
+            admin_db=admin_db,
+            auth_mechanism='SCRAM-SHA-256',
+            direct_connection=True,
+            env_file=env_file,
+            mongo_db_name=mongo_db_name,
+            mongo_host=mongo_host,
+            mongo_port=mongo_port,
+        )
+        # logger.info(f"{nmdc_pymongo_client.collections = }")
 
-    nmdc_helper = ViewHelper(schema_file)
+        nmdc_helper = ViewHelper(schema_file)
 
-    # logger.info(f"{nmdc_helper.view.schema.name = }")
+        # logger.info(f"{nmdc_helper.view.schema.name = }")
 
-    root_class_slots = nmdc_helper.get_class_slots(root_class)
+        root_class_slots = nmdc_helper.get_class_slots(root_class)
 
-    # logger.info(f"{root_class_slots = }")
+        # logger.info(f"{root_class_slots = }")
 
-    schema_vs_mongo_collections = set_arithmetic(set(root_class_slots), set(nmdc_pymongo_client.collections),
-                                                 set1_name='schema',
-                                                 set2_name='mongo')
+        schema_vs_mongo_collections = set_arithmetic(set(root_class_slots), set(nmdc_pymongo_client.collections),
+                                                     set1_name='schema',
+                                                     set2_name='mongo')
 
-    logger.info(f"schema_vs_mongo_collections = ")
-    logger.info(pprint.pformat(schema_vs_mongo_collections))
+        logger.info(f"schema_vs_mongo_collections = ")
+        logger.info(pprint.pformat(schema_vs_mongo_collections))
 
-    available_selected_collections = []
-    if len(selected_collections) > 0:
-        available_vs_selected_collections = set_arithmetic(set(schema_vs_mongo_collections['intersection']),
-                                                           set(selected_collections), set1_name='available',
-                                                           set2_name='selected')
-        logger.debug(f"available_vs_selected_collections = ")
-        logger.debug(pprint.pformat(available_vs_selected_collections))
-        available_selected_collections = available_vs_selected_collections['intersection']
-        if available_vs_selected_collections['selected only']:
-            logger.warning(
-                f"Some requested collections are not available: {available_vs_selected_collections['selected only']}")
+        available_selected_collections = []
+        if len(selected_collections) > 0:
+            available_vs_selected_collections = set_arithmetic(set(schema_vs_mongo_collections['intersection']),
+                                                               set(selected_collections), set1_name='available',
+                                                               set2_name='selected')
+            logger.debug(f"available_vs_selected_collections = ")
+            logger.debug(pprint.pformat(available_vs_selected_collections))
+            available_selected_collections = available_vs_selected_collections['intersection']
+            if available_vs_selected_collections['selected only']:
+                logger.warning(
+                    f"Some requested collections are not available: {available_vs_selected_collections['selected only']}")
+        else:
+            available_selected_collections = schema_vs_mongo_collections['intersection']
+        available_selected_collections.sort()
+        logger.info(f"available_selected_collections = ")
+        logger.info(pprint.pformat(available_selected_collections))
+
+        selected_collections = available_selected_collections
     else:
-        available_selected_collections = schema_vs_mongo_collections['intersection']
-    available_selected_collections.sort()
-    logger.info(f"available_selected_collections = ")
-    logger.info(pprint.pformat(available_selected_collections))
-
-    nmdc_pymongo_client.selected_collections = available_selected_collections
+        selected_collections = selected_collections
+        logger.info(f"{selected_collections = }")
 
     # collection_stats = nmdc_pymongo_client.get_collection_stats()
 
@@ -305,14 +313,16 @@ def cli(
         page_size = max_docs_per_coll
 
     nmdc_database_object = {}
-    for current_collection in nmdc_pymongo_client.selected_collections:
-        logger.info(f"Attempting to get collection stats from {current_collection}")
+    for current_collection in selected_collections:
 
-        current_coll_obj = nmdc_pymongo_client.db[current_collection]
-        est_doc_count = current_coll_obj.estimated_document_count()
+        if collection_check:
+            logger.info(f"Attempting to get collection stats from {current_collection}")
 
-        logger.info(
-            f"estimated_document_count = {est_doc_count}")  # it would also be nice to report collection size or avg size/doc but I haven't figured how to do that quickly yet
+            current_coll_obj = nmdc_pymongo_client.db[current_collection]
+            est_doc_count = current_coll_obj.estimated_document_count()
+
+            logger.info(
+                f"estimated_document_count = {est_doc_count}")  # it would also be nice to report collection size or avg size/doc but I haven't figured how to do that quickly yet
 
         #     # collection_stats = current_coll_obj.estimated_document_count()
         #     collection_stats = current_coll_obj.stats()

@@ -406,10 +406,6 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepti
 
 # ----
 
-# recommended setup:
-#   1. . ~/sshproxy.sh -u {YOUR_NERSC_USERNAME}
-#   2. ssh -i ~/.ssh/nersc -L27777:mongo-loadbalancer.nmdc.production.svc.spin.nersc.org:27017 -o ServerAliveInterval=60 {YOUR_NERSC_USERNAME}@dtn01.nersc.gov
-
 # todo mongodb collection stats vs Database slots report
 # todo convert to json
 # todo compress large files
@@ -417,45 +413,18 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepti
 
 make-rdf: rdf-clean local/mongo_as_nmdc_database_validation.log local/mongo_as_nmdc_database_cuire_repaired.ttl
 
-temp:
-
-#   		--selected-collections functional_annotation_agg \ # huge, no publicly available reference data (kegg)
-#   		--selected-collections metaproteomics_analysis_activity_set \ # next slowest
-
-# when connecting to the dev MongoDB, also use --client-base-url https://api-dev.microbiomedata.org
-# make pre-composed prod and dev makefile tasks! since they require the user to provide a matching mongo port and api url
-
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) pure-export \
-		--client-base-url https://api.microbiomedata.org \
+		--client-base-url https://api-napa.microbiomedata.org \
 		--endpoint-prefix nmdcschema \
-		--env-file local/.env \
 		--max-docs-per-coll 10000000 \
-		--mongo-db-name nmdc \
-		--mongo-host localhost \
-		--mongo-port 27777 \
 		--output-yaml $@ \
 		--page-size 10000 \
 		--schema-file src/schema/nmdc.yaml \
 		--selected-collections biosample_set \
-		--selected-collections data_object_set \
-		--selected-collections extraction_set \
-		--selected-collections field_research_site_set \
-		--selected-collections library_preparation_set \
-		--selected-collections mags_activity_set \
-		--selected-collections metabolomics_analysis_activity_set \
-		--selected-collections metagenome_annotation_activity_set \
-		--selected-collections metagenome_assembly_set \
-		--selected-collections metagenome_sequencing_activity_set  \
-		--selected-collections metatranscriptome_activity_set \
-		--selected-collections nom_analysis_activity_set \
-		--selected-collections omics_processing_set \
-		--selected-collections pooling_set \
-		--selected-collections processed_sample_set \
-		--selected-collections read_based_taxonomy_analysis_activity_set \
-		--selected-collections read_qc_analysis_activity_set \
-		--selected-collections study_set
+		--selected-collections study_set \
+		--skip-collection-check
 
 
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
@@ -471,16 +440,11 @@ local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_l
 	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-validate --schema $^ > $@
 
-# from riot:
-#   WARNING: java.io.tmpdir directory does not exist
-
 local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
 	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-convert --output $@ --schema $^
-	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
-	- $(RIOT) --validate $@ # < 1 minute
-
-# todo: still getting anyurl typed string statement objects in RDF. I added a workarround in anyuri-strings-to-iris
+#	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
+#	- $(RIOT) --validate $@ # < 1 minute
 
 local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.ttl
 	date
@@ -489,8 +453,8 @@ local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.tt
 		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
 		--emsl-biosample-uuid-replacement emsl_biosample_uuid_like \
 		--output-ttl $@
-	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
-	- $(RIOT) --validate $@ # < 1 minute
+#	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
+#	- $(RIOT) --validate $@ # < 1 minute
 	date
 
 # ----
