@@ -3,6 +3,8 @@ on: workflow_dispatch
 # wget or curl?! which is noisier
 # combine run statements?
 # could run jobs in parallel
+# tdb1.xloader     tdb2.tdbcompact  tdb2.tdbloader   tdb2.tdbstats    tdb2.xloader     tdbdump          tdbloader2       tdbstats
+# tdb2.tdbbackup   tdb2.tdbdump     tdb2.tdbquery    tdb2.tdbupdate   tdbbackup        tdbloader        tdbquery         tdbupdate
 jobs:
   migration-with-java-job:
     runs-on: ubuntu-latest
@@ -15,8 +17,8 @@ jobs:
       - run: wget https://github.com/ontodev/robot/releases/download/v1.9.5/robot.jar
       - run: wget https://raw.githubusercontent.com/ontodev/robot/master/bin/robot
       - run: sudo chmod u+x robot
-      - run: ./robot --version
       - run: ./robot convert --input project/owl/nmdc.owl.ttl --output project/owl/nmdc.ofn
       - run: ls -l project/owl/nmdc.ofn
       - uses: foooomio/setup-jena@v2
       - run: sparql --version
+      - run: tdb2.tdbloader --loc=tdbcontent --graph=http://example.com/tdbcontent/ project/owl/nmdc.owl.ttl
