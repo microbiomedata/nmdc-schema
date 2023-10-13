@@ -18,3 +18,5 @@ jobs:
       - run: ./robot --version
       - run: ./robot convert --input project/owl/nmdc.owl.ttl --output project/owl/nmdc.ofn
       - run: ls -l project/owl/nmdc.ofn
+      - uses: foooomio/setup-jena@v2
+      - run: sparql --version
