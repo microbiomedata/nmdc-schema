@@ -25,7 +25,6 @@ protocol_execution_set:
     protocol_link: # note that Protocols don't have id values, so they are passed in-line, as a dictionary
       name: MicrobialBiomassDetermination
       url: https://dx.doi.org/10.17504/protocols.io.bbh7ij9n #what should this link actually be
-#sample_operation_set:
 material_processing_set:
   - id: nmdc:sops-99-oW43DzG0 #microbiomass:1
     designated_class: nmdc:SubsamplingProcess
@@ -58,10 +57,10 @@ material_processing_set:
       has_numeric_value: 50
     mixing:
       device_type: Orbital Shaker
-      activity_speed:
+      speed:
         has_unit: RPM
         has_numeric_value: 200
-      activity_time:
+      run_time:
         has_unit: hours
         has_numeric_value: 2
   - id: nmdc:sops-99-oW43DzG3 #microbiomass:11
@@ -81,10 +80,10 @@ material_processing_set:
       has_numeric_value: 50
     mixing:
       device_type: Orbital Shaker
-      activity_speed:
+      speed:
         has_unit: RPM
         has_numeric_value: 200
-      activity_time:
+      run_time:
         has_unit: hours
         has_numeric_value: 2
   - id: nmdc:sops-99-oW43DzG4 #microbiomass:12
@@ -110,10 +109,10 @@ material_processing_set:
       has_numeric_value: 50
     mixing:
       device_type: Orbital Shaker
-      activity_speed:
+      speed:
         has_unit: RPM
         has_numeric_value: 200
-      activity_time:
+      run_time:
         has_unit: hours
         has_numeric_value: 2
   - id: nmdc:sops-99-oW43DzG5 #microbiomass:4 
@@ -276,7 +275,7 @@ material_processing_set:
     designated_class: nmdc:AnalyteStorage
     has_input: 
       - nmdc:sops-11-05g48p907
-    temp:
+    temperature:
       has_unit: C
       has_numeric_value: -20
     analyte_volume:
@@ -285,7 +284,7 @@ material_processing_set:
     designated_class: nmdc:AnalyteStorage
     has_input: 
       - nmdc:sops-11-05g48p909
-    temp:
+    temperature:
       has_unit: C
       has_numeric_value: -20
     analyte_volume:
@@ -294,7 +293,7 @@ material_processing_set:
     designated_class: nmdc:AnalyteStorage
     has_input: 
       - nmdc:sops-11-05g48p9017
-    temp:
+    temperature:
       has_unit: C
       has_numeric_value: -20
     analyte_volume:
