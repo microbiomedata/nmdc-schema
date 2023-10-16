@@ -302,8 +302,9 @@ slots:
     range: QuantityValue
     description: The duration of an activity.
     examples:
-      - has_numeric_value: 2
-        has_-unit: hours
+      - value: 
+          has_numeric_value: 2
+          has_unit: hours
   #Double check tehse values
   derivatization:
     description: "A technique used in chemistry which transforms a chemical compound into a product ( the reaction's derivate) of similar chemical structure, called a derivative. That compount has properties more amenable to a particular analytical method. Some samples analyzed by GC require derivatization in order to make them suitable for analysis. Compounds that have poor volatility. poor thermal stability, or that can be adsorbed in the injector will exhibit nonreproducible peak areas, heights, and shapes. other compounds that respond poorly on a specific detector may need to be 'tagged' with a different function group to improve detection."
@@ -321,8 +322,9 @@ slots:
     range: QuantityValue
     description: The speed of a lab activity with a unit measurement.
     examples:
-      - has_numeric_value: 3000
-        has_unit: RPM
+      - value:
+          has_numeric_value: 3000
+          has_unit: RPM
   volume:
     range: QuantityValue
     description: The volume of the solvent/solute being used, not the input.
