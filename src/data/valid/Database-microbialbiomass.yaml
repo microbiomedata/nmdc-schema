@@ -1,7 +1,7 @@
 protocol_execution_set:
   - id: generic:Campaign_1
     name: Microbial Biomass # does this need to be a unique name to the execution?
-    description: An execution of the microbial biomass protocol
+    description: The extraction of microbial biomass and nitrogen from a soil sample.
     has_part:
       - nmdc:sops-99-oW43DzG0
       - nmdc:sops-99-oW43DzG1
@@ -22,14 +22,14 @@ protocol_execution_set:
       - nmdc:sops-99-oW43DzG16
       - nmdc:sops-99-oW43DzG17
     protocol_execution_category: MicrobialBiomass
-    protocol_link: # note that Protocols don't have id values, so they are passed in-line, as a dictionary
+    protocol_link:
       name: Sequential Microbial Biomass and Nitrogen Extraction
       url: https://www.protocols.io/view/sequential-microbial-biomass-and-nitrogen-extracti-q26g7yr6qgwz/v1
 material_processing_set:
   - id: nmdc:sops-99-oW43DzG0 #microbiomass:1
     designated_class: nmdc:SubsamplingProcess
     has_input: 
-      - nmdc:sops-99-oW43DzG1 #This is an example biosample ID and does not represent a real biosample
+      - nmdc:bsm-99-oW43DzG1 #This is an example biosample ID and does not represent a real biosample
     starting_amount:
       has_unit: grams
       has_numeric_value: 8
@@ -40,7 +40,7 @@ material_processing_set:
   - id: nmdc:sops-99-oW43DzG2 #microbiomass:3
     designated_class: nmdc:ExtractionProcess
     has_input: 
-      - nmdc:sops-11-05g48p90 #this and below processed sample IDs are examples and do not represent an actual sample
+      - nmdc:procsm-11-05g48p90 #this and below processed sample IDs are examples and do not represent an actual sample
     extractant: Potassium sulfate
     concentration: 
       has_unit: mM
@@ -66,7 +66,7 @@ material_processing_set:
   - id: nmdc:sops-99-oW43DzG3 #microbiomass:11
     designated_class: nmdc:ExtractionProcess
     has_input: 
-      - nmdc:sops-11-05g48p9010
+      - nmdc:procsm-11-05g48p9010
     extractant: ethanol-free chloroform
     duration:
       has_unit: hours
@@ -89,7 +89,7 @@ material_processing_set:
   - id: nmdc:sops-99-oW43DzG4 #microbiomass:12
     designated_class: nmdc:ExtractionProcess
     has_input: 
-      - nmdc:sops-11-05g48p9011
+      - nmdc:procsm-11-05g48p9011
     extractant: Potassium sulfate
     duration:
       has_unit: hours
@@ -118,7 +118,7 @@ material_processing_set:
   - id: nmdc:sops-99-oW43DzG5 #microbiomass:4 
     designated_class: nmdc:PhaseSeparationProcess
     has_input: 
-      - nmdc:sops-11-05g48p903
+      - nmdc:procsm-11-05g48p903
     duration:
       has_unit: minutes
       has_numeric_value: 20
@@ -132,7 +132,7 @@ material_processing_set:
   - id: nmdc:sops-99-oW43DzG6 #microbiomass:5
     designated_class: nmdc:PhaseSeparationProcess
     has_input: 
-      - nmdc:sops-11-05g48p905
+      - nmdc:procsm-11-05g48p905
     volume:
       has_unit: mL
       has_numeric_value: 5
@@ -143,7 +143,7 @@ material_processing_set:
   - id: nmdc:sops-99-oW43DzG7 #microbiomass:6
     designated_class: nmdc:PhaseSeparationProcess
     has_input: 
-      - nmdc:sops-11-05g48p904
+      - nmdc:procsm-11-05g48p904
     volume:
       has_unit: mL
       has_numeric_value: 5
@@ -154,7 +154,7 @@ material_processing_set:
   - id: nmdc:sops-99-oW43DzG8 #microbiomass:14
     designated_class: nmdc:PhaseSeparationProcess
     has_input: 
-      - nmdc:sops-11-05g48p901
+      - nmdc:procsm-11-05g48p901
     volume:
       has_unit: mL
       has_numeric_value: 5
@@ -165,7 +165,7 @@ material_processing_set:
   - id: nmdc:sops-99-oW43DzG9 #microbiomass:15
     designated_class: nmdc:PhaseSeparationProcess
     has_input: 
-      - nmdc:sops-11-05g48p903
+      - nmdc:procsm-11-05g48p903
     volume:
       has_unit: mL
       has_numeric_value: 5
@@ -190,7 +190,7 @@ material_processing_set:
   - id: nmdc:sops-99-oW43DzG11 #microbiomass:2
     designated_class: nmdc:FiltrationProcess
     has_input: 
-      - nmdc:sops-11-05g48p905
+      - nmdc:procsm-11-05g48p905
     volume:
       has_unit: mL
       has_numeric_value: 20
@@ -220,7 +220,7 @@ material_processing_set:
   - id: nmdc:sops-99-oW43DzG12 #microbiomass:16
     designated_class: nmdc:FiltrationProcess
     has_input: 
-      - nmdc:sops-11-05g48p9014
+      - nmdc:procsm-11-05g48p9014
     volume:
       has_unit: mL
       has_numeric_value: 20
@@ -250,7 +250,7 @@ material_processing_set:
   - id: nmdc:sops-99-oW43DzG13 #nmdc:sops-99-oW43DzG0 #microbiomass:7
     designated_class: nmdc:AcidificationProcess
     has_input: 
-      - nmdc:sops-11-05g48p906
+      - nmdc:procsm-11-05g48p906
     acid: phosphoric acid
     volume:
       has_unit: drops
@@ -258,7 +258,7 @@ material_processing_set:
   - id: nmdc:sops-99-oW43DzG14 #microbiomass:8
     designated_class: nmdc:AcidificationProcess
     has_input: 
-      - nmdc:sops-11-05g48p905
+      - nmdc:procsm-11-05g48p905
     acid: phosphoric acid
     volume:
       has_unit: drops
@@ -266,7 +266,7 @@ material_processing_set:
   - id: nmdc:sops-99-oW43DzG15 #microbiomass:17
     designated_class: nmdc:AcidificationProcess
     has_input: 
-      - nmdc:sops-11-05g48p9016
+      - nmdc:procsm-11-05g48p9016
     acid: phosphoric acid
     volume:
       has_unit: drops
@@ -274,7 +274,7 @@ material_processing_set:
   - id: nmdc:sops-99-oW43DzG16 #microbiomass:9
     designated_class: nmdc:AnalyteStorage
     has_input: 
-      - nmdc:sops-11-05g48p907
+      - nmdc:procsm-11-05g48p907
     temperature:
       has_unit: C
       has_numeric_value: -20
@@ -283,7 +283,7 @@ material_processing_set:
   - id: nmdc:sops-99-oW43DzG17 #microbiomass:10
     designated_class: nmdc:AnalyteStorage
     has_input: 
-      - nmdc:sops-11-05g48p909
+      - nmdc:procsm-11-05g48p909
     temperature:
       has_unit: C
       has_numeric_value: -20
@@ -292,7 +292,7 @@ material_processing_set:
   - id: nmdc:sops-99-oW43DzG18 #microbiomass:18
     designated_class: nmdc:AnalyteStorage
     has_input: 
-      - nmdc:sops-11-05g48p9017
+      - nmdc:procsm-11-05g48p9017
     temperature:
       has_unit: C
       has_numeric_value: -20
