@@ -64,8 +64,6 @@ classes:
       A technique used in chemistry which transforms a chemical compound into a product (the reaction's derivate) of similar chemical structure, called a derivative. That compound has properties more amenable to a particular analytical method. Some samples analyzed by GC require derivatization in order to make them suitable for analysis. Compounds that have poor volatility, poor thermal stability, or that can be adsorbed in the injector will exhibit nonreproducible peak areas, heights, and shapes. Other compounds that respond poorly on a specific detector may need to be “tagged” with a different functional group to improve detection.
     is_a: MaterialProcessing
     slots:
-      - has_input
-      - has_output
       - derivatization
       - derivatization_agent
       - device
@@ -83,8 +81,6 @@ classes:
       The process of removing a solvent from a substance.
     is_a: MaterialProcessing
     slots:
-      - has_input
-      - has_output
       - dry
       - duration
       - input_mass
@@ -99,8 +95,6 @@ classes:
       In practice, the meaning is usually apparent from the context or is defined.
     is_a: MaterialProcessing
     slots:
-      - has_input
-      - has_output
       - container_size
       - container_type
       - input_mass
@@ -115,8 +109,6 @@ classes:
       Process of modifying the pH of a sample or solution via addition of some acid.
     is_a: MaterialProcessing
     slots:
-      - has_input
-      - has_output
       - acid
       - ph
       - volume
@@ -127,8 +119,6 @@ classes:
       A process which uses or consumes chemical/molecular entities to generate other molecular entities.
     is_a: MaterialProcessing
     slots:
-      - has_input
-      - has_output
       - container_type
       - duration
       - mixing
@@ -156,8 +146,6 @@ classes:
       The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by forcing a carrier gas or liquid through a porous medium.
     is_a: MaterialProcessing
     slots:
-      - has_input
-      - has_output
       - container_type
       - filter
       - material_pore_size
@@ -185,8 +173,6 @@ classes:
       A material separation in which a desired component of an input material is separated from the remainder
     is_a: MaterialProcessing
     slots:
-      - has_input
-      - has_output
       - container_type
       - extractant
       - concentration
@@ -202,8 +188,6 @@ classes:
       Pertaining to a portion of the whole; any one of two or more samples of something, of the same volume or weight.
     is_a: MaterialProcessing
     slots:
-      - has_input
-      - has_output
       - container_type
       - volume
       - container_size
@@ -217,8 +201,6 @@ classes:
       The process by which a single solid (liquid) phase separates into two or more new phases.
     is_a: MaterialProcessing
     slots:
-      - has_input
-      - has_output
       - material_component_separation
       - analyte_volume
       - duration
@@ -243,8 +225,6 @@ classes:
       The measurement of pH, the negative logarithm to base ten of the hydrogen ion activity in a solution. Operationally the pH of a solution X, pH(X), is measured relative to that of a standard reference solution, pH(S), and defined as pH(X) = pH(S) - (E(X) - E(S))/(RT/F)ln 10, where E(X) and E(S) are the electromotive forces measured in cells containing the solution X and the reference solution respectively.
     is_a: MaterialProcessing
     slots:
-      - has_input
-      - has_output
       - analytical_solution
       - sample_volume
       - container_type
@@ -259,8 +239,6 @@ classes:
       The combining of components, particles or layers into a more homogeneous state. The mixing may be achieved manually or mechanically by shifting the material with stirrers or pumps or by revolving or shaking the container. The process must not permit segregation of particles of different size or properties. Homogeneity may be considered to have been achieved in a practical sense when the sampling error of the processed portion is negligible compared to the total error of the measurement system.
     is_a: MaterialProcessing
     slots:
-      - has_input
-      - has_output
       - duration
       - mixing
 
@@ -298,8 +276,6 @@ classes:
       A process which uses or consumes chemical/molecular entities to generate other molecular entities
     is_a: MaterialProcessing
     slots:
-      - has_input
-      - has_output
       - reactant
       - container_type
       - container_size
@@ -324,12 +300,14 @@ slots:
     description: The volume of the container an analyte is stored in or an activity takes place in
   duration: # or could be a ISO8601 perisod string
     range: QuantityValue
-    description: The duration of an activity, e.x. '2 hours' or '35 minutes'
+    description: The duration of an activity.
+    examples:
+      - has_numeric_value: 2
+        has_-unit: hours
+  #Double check tehse values
   derivatization:
-    range: float
     description: "A technique used in chemistry which transforms a chemical compound into a product ( the reaction's derivate) of similar chemical structure, called a derivative. That compount has properties more amenable to a particular analytical method. Some samples analyzed by GC require derivatization in order to make them suitable for analysis. Compounds that have poor volatility. poor thermal stability, or that can be adsorbed in the injector will exhibit nonreproducible peak areas, heights, and shapes. other compounds that respond poorly on a specific detector may need to be 'tagged' with a different function group to improve detection."
   derivatization_agent:
-    range: float
     description: "A chemical entity which is used in a material combination process known as derivatization and which consists in adding chemical groups to a molecule in an attempt to make it more volatile and therefore amenable to gas-chromatography mass spectrometry."
   device:
     description: "A material entity that is designed to perform a function in a scientific investigation, but is not a reagent."
@@ -341,7 +319,10 @@ slots:
     description: The volume of the input sample.
   speed:
     range: QuantityValue
-    description: The speed of a lab activity with a unit measurement. For example 3000 RPM.
+    description: The speed of a lab activity with a unit measurement.
+    examples:
+      - has_numeric_value: 3000
+        has_unit: RPM
   volume:
     range: QuantityValue
     description: The volume of the solvent/solute being used, not the input.
@@ -353,7 +334,7 @@ slots:
     description: The duration that an activity was run on a lab device.
   temperature:
     range: QuantityValue
-    description: A temperature, given in Celsius.
+    description: The value of a temperature measurement or temperature used in a process.
   device_type:
     range: DeviceTypeEnum
     description: The type of device being used for an activity
@@ -462,7 +443,6 @@ slots:
     domain: Database
     range: ProtocolExecution
 
-#Touch up descriptions, potentially add ontology meaning tag
 enums:
   ContainerTypeEnum:
     description: The permitted types of containers used in processing metabolomic samples.
