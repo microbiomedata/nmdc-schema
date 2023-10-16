@@ -1,6 +1,6 @@
 protocol_execution_set:
   - id: generic:Campaign_1
-    name: Microbial Biomass
+    name: Microbial Biomass # does this need to be a unique name to the execution?
     description: An execution of the microbial biomass protocol
     has_part:
       - nmdc:sops-99-oW43DzG0
@@ -23,8 +23,8 @@ protocol_execution_set:
       - nmdc:sops-99-oW43DzG17
     protocol_execution_category: MicrobialBiomass
     protocol_link: # note that Protocols don't have id values, so they are passed in-line, as a dictionary
-      name: MicrobialBiomassDetermination
-      url: https://dx.doi.org/10.17504/protocols.io.bbh7ij9n #what should this link actually be
+      name: Sequential Microbial Biomass and Nitrogen Extraction
+      url: https://www.protocols.io/view/sequential-microbial-biomass-and-nitrogen-extracti-q26g7yr6qgwz/v1
 material_processing_set:
   - id: nmdc:sops-99-oW43DzG0 #microbiomass:1
     designated_class: nmdc:SubsamplingProcess

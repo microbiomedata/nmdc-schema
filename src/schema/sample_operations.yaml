@@ -73,7 +73,6 @@ classes:
       - duration
       - mixing
       - sample_volume
-      - speed
       - volume
       - concentration
       - temperature
@@ -133,7 +132,6 @@ classes:
       - container_type
       - duration
       - mixing
-      - speed
       - instrument
       - volume
       - concentration
@@ -196,7 +194,6 @@ classes:
       - duration
       - mixing
       - sample_volume
-      - speed
       - volume
       - solute
 
@@ -255,7 +252,6 @@ classes:
       - instrument
       - duration
       - mixing
-      - speed
       - volume
 
   MixingProcess:
@@ -309,7 +305,6 @@ classes:
       - container_size
       - duration
       - mixing
-      - speed
       - reagent
       - reaction_type
       - volume
