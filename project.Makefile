@@ -432,6 +432,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--mongo-port 27777 \
 		--output-yaml $@ \
 		--page-size 10000 \
+		--skip-collection-check \
 		--schema-file src/schema/nmdc.yaml \
 		--selected-collections biosample_set \
 		--selected-collections data_object_set \
