@@ -132,6 +132,11 @@ subsets:
     description:
       Subset consisting of the data objects that either inputs or outputs
       of processes or workflows.
+  data_portal_subset: 
+    description:
+      Subset consisting of entities that Kitware/nmdc-server use to populate the data portal.
+    comments:
+      - Schema authors are responsible for alerting and supporting Kitware and nmdc-server authors about changes they will have to make if entities labeled with data_portal_subset are modified.
 
 classes:
 
@@ -1379,7 +1384,7 @@ classes:
       - investigation
       - project
       - umbrella project
-      - research inititative
+      - research initiative
     description: >-
       A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.
     comments: The Study class can include both consortia and research studies.
@@ -1390,7 +1395,7 @@ classes:
         data submitted to ENA
     
     slots:
-      - emsl_project_dois
+      ## emsl_project_dois - slot was deprecated 10/04/2023
 
       - neon_study_identifiers
       - jgi_portal_study_identifiers
@@ -1431,7 +1436,7 @@ classes:
       - objective
       - part_of
       - principal_investigator
-      - publications
+      # - publications - slot was deprecated 10/04/2023
       - related_identifiers
       - relevant_protocols
       - specific_ecosystem
@@ -2385,6 +2390,7 @@ slots:
   study_category:
     description: The type of research initiative
     range: StudyCategoryEnum
+    required: true
 
   object_set:
     mixin: true
@@ -2704,7 +2710,11 @@ slots:
 
   publication_dois:
     is_a: dois
+    in_subset:
+      - data_portal_subset
     description: One or more DOIs that links a study, or similar entity, to a publication.
+    aliases:
+    - publications
     examples:
       - value: doi:10.1126/science.1058040
         description:
@@ -2728,9 +2738,7 @@ slots:
         description:
           emsl_project_dois link to the document outlining the EMSL specific award for the project.
           Should not be used to link to datasets or publications.
-    todos:
-      - Make as a subproperty of award_dois
-
+    deprecated_element_has_exact_replacement: nmdc:award_dois
   mod_date:
     range: string
     description: The last date on which the database information was modified.

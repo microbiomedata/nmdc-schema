@@ -49,7 +49,7 @@ study_set:
     websites:
       - https://w3id.org/nmdc
       - https://w3id.org/linkml
-    publications:
+    publication_dois:
       - any string 1
       - any string 2
     ess_dive_datasets:

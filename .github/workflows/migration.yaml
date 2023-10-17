@@ -1,0 +1,33 @@
+name: migration-with-java-action
+on: workflow_dispatch
+# wget or curl?! which is noisier
+# combine run statements?
+# could run some jobs in parallel
+jobs:
+  migration-with-java-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Poetry
+        uses: snok/install-poetry@v1.3
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: poetry install --no-interaction --no-root
+      - name: Install library
+        run: poetry install --no-interaction
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'corretto'
+          java-version: '17'
+      - run: wget https://github.com/ontodev/robot/releases/download/v1.9.5/robot.jar
+      - run: wget https://raw.githubusercontent.com/ontodev/robot/master/bin/robot
+      - run: sudo chmod u+x robot
+      #      - run: ./robot convert --input project/owl/nmdc.owl.ttl --output project/owl/nmdc.ofn
+      #      - run: ls -l project/owl/nmdc.ofn
+      - uses: foooomio/setup-jena@v2
+      - run: make squeaky-clean all test
+      - run: touch local/.env # create empty .env file
+      - run: make make-rdf
+      - run: tdb2.tdbloader --loc=tdbcontent --graph=https://w3id.org/nmdc/nmdc project/owl/nmdc.owl.ttl
+      - run: tdb2.tdbloader --loc=tdbcontent --graph=mongodb://mongo-loadbalancer.nmdc.production.svc.spin.nersc.gov:27017 local/mongo_as_nmdc_database_cuire_repaired.ttl
+      - run: tdb2.tdbquery  --loc=tdbcontent --query=assets/sparql/tdb-test.rq
+      - run: tdb2.tdbquery  --loc=tdbcontent --query=assets/sparql/tdb-graph-list.rq
