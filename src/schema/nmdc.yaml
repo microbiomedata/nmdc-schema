@@ -30,8 +30,9 @@ imports:
   - portal/jgi_metatranscriptomics
   - portal/mixs_inspired
   - portal/sample_id
-  - sample_prep
+  #  - sample_prep
   - workflow_execution_activity
+  - fresh_microbioal_biomass_schema
 
 
 prefixes:
@@ -132,7 +133,7 @@ subsets:
     description:
       Subset consisting of the data objects that either inputs or outputs
       of processes or workflows.
-  data_portal_subset: 
+  data_portal_subset:
     description:
       Subset consisting of entities that Kitware/nmdc-server use to populate the data portal.
     comments:
@@ -156,6 +157,8 @@ classes:
       translated to JSON-Schema this is the 'root' object. It should contain pointers
       to other objects of interest
     slots:
+      - process_set
+      - material_set
       - functional_annotation_agg
       - library_preparation_set
       - processed_sample_set
@@ -163,12 +166,12 @@ classes:
       - activity_set
       - biosample_set
       - data_object_set
-      - dissolving_activity_set
+      #      - dissolving_activity_set
       - functional_annotation_set
       - genome_feature_set
       - mags_activity_set
-      - material_sample_set
-      - material_sampling_activity_set
+      #      - material_sample_set
+      #      - material_sampling_activity_set
       - metabolomics_analysis_activity_set
       - metagenome_annotation_activity_set
       - metagenome_assembly_set
@@ -177,7 +180,7 @@ classes:
       - metatranscriptome_activity_set
       - nom_analysis_activity_set
       - omics_processing_set
-      - reaction_activity_set
+      #      - reaction_activity_set
       - read_qc_analysis_activity_set
       - read_based_taxonomy_analysis_activity_set
       - study_set
@@ -2401,6 +2404,23 @@ slots:
       Applies to a property that links a database object to a set of objects.
       This is necessary in a json document to provide context for a list, and to allow
       for a single json object that combines multiple object types
+
+  process_set:
+    mixins: object_set
+    range: PlannedProcess
+    description:
+      This property links a database object to one or more instances of any NamedThing
+    comments:
+      - only intended for development use
+
+  material_set:
+    mixins: object_set
+    range: MaterialEntity
+    description:
+      This property links a database object to one or more instances of any NamedThing
+    comments:
+      - only intended for development use
+
   biosample_set:
     mixins: object_set
     domain: Database
@@ -2714,7 +2734,7 @@ slots:
       - data_portal_subset
     description: One or more DOIs that links a study, or similar entity, to a publication.
     aliases:
-    - publications
+      - publications
     examples:
       - value: doi:10.1126/science.1058040
         description:

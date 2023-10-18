@@ -1,0 +1,113 @@
+name: fresh_microbioal_biomass_schema
+id: http://example.com/fresh_microbioal_biomass_schema
+comments:
+  - "MAM: I can't visit Protocol_MicB_Nextract.docx at pnnl.sharepoint.com"
+  - "goal: don't include any slots that won't be used to either inform downstream analyses, or to enable useful searching on the DataPortal"
+  - many of these elements can be collapsed into a smaller number or slots and classes, by using categorizing slots that take enumerated values
+see_also:
+  - https://github.com/microbiomedata/nmdc-schema/blob/issue-1153-polymorphic/src/schema/polymorphic_sample_prep_container.yaml
+  - https://github.com/microbiomedata/nmdc-schema/blob/issue-907-metabolink-mergeprep/src/data/uncertain/sample_ops/microbialbiomass.toml
+  - https://pnnl.sharepoint.com/:w:/r/sites/EMSL/_layouts/15/Doc.aspx?sourcedoc=%7BA6BF52E9-12FC-44A9-918D-497CA4651340%7D&file=Protocol_MicB_Nextract.docx&action=default&mobileredirect=true
+
+
+prefixes:
+  nmdc: https://w3id.org/nmdc/
+
+default_prefix: nmdc
+
+classes:
+
+  ProtocolExecution:
+    is_a: PlannedProcess
+    slots:
+      - prep_process_parts
+      - protocol_link
+
+  SamplePreparationProcess:
+    class_uri: nmdc:SamplePreparationProcess
+    is_a: PlannedProcess
+    slots:
+      - designated_class
+
+  WeighingProcess:
+    class_uri: nmdc:WeighingProcess
+    is_a: SamplePreparationProcess
+    slots:
+      - output_mass
+      - output_container
+
+  DissolutionProcess:
+    class_uri: nmdc:DissolutionProcess
+    is_a: SamplePreparationProcess
+    slots:
+      - output_mass
+      - process_container
+      - output_container
+      - used
+      - process_duration
+      - process_solution_volume
+      - process_speed
+      - solution_components
+    slot_usage:
+      used:
+        range:
+          LabDeviceEnum
+
+
+  MaterialStorageContainerValue:
+    is_a: QuantityValue
+    slots:
+      - container_type
+      - solution_components
+
+  Solution:
+    slots:
+      - solution_components
+
+  SolutionComponent:
+    is_a: QuantityValue
+    slots:
+      - component_name
+
+slots:
+  output_mass:
+    range: QuantityValue
+  process_container:
+    range: MaterialStorageContainerValue
+  output_container:
+    range: MaterialStorageContainerValue
+  container_type:
+    range: ContainerTypeEnum
+  solution_components:
+    multivalued: true
+    range: SolutionComponent
+  process_duration:
+    range: QuantityValue
+  process_speed:
+    range: QuantityValue
+  process_solution_volume:
+    range: QuantityValue
+  component_name:
+    range: string
+  designated_class:
+    required: true
+    range: uriorcurie
+    designates_type: true
+  prep_process_parts:
+    multivalued: true
+    range: SamplePreparationProcess
+    minimum_cardinality: 1
+
+
+enums:
+  ContainerTypeEnum:
+    permissible_values:
+      V-bottom conical tubes:
+        comments:
+          - add annotations like meaning
+  LabDeviceEnum:
+    permissible_values:
+      orbital shaker:
+        annotations:
+          possible_pnnl_field: shaker
+          possible_pnnl_value: orbital

@@ -1,0 +1,12 @@
+id: generic:ProtocolExecution-1
+designated_class: nmdc:ProtocolExecution
+name: Sequential Microbial Biomass (Chloroform fumigation direct extraction, CFDE) and N extraction of XYZ
+prep_process_parts:
+  - generic:WeighingProcess-1
+  - generic:DissolutionProcess-1
+protocol_link:
+  url: https://pnnl.sharepoint.com/:w:/r/sites/EMSL/_layouts/15/Doc.aspx?sourcedoc=%7BA6BF52E9-12FC-44A9-918D-497CA4651340%7D&file=Protocol_MicB_Nextract.docx&action=default&mobileredirect=true
+  name: Sequential Microbial Biomass (Chloroform fumigation direct extraction, CFDE) and N extraction
+  # doesn't currently support a protocol_doislot
+  #
+

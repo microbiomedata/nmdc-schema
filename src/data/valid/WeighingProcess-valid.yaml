@@ -1,0 +1,14 @@
+id: generic:WeighingProcess-1
+designated_class: nmdc:WeighingProcess
+name: Some instance of the WeighingProcess class
+has_input:
+  - generic:soil-1
+has_output:
+  - generic:microbiomass-1
+output_mass:
+  has_numeric_value: 8
+  has_unit: g
+output_container:
+  has_numeric_value: 50
+  has_unit: mL
+  container_type: V-bottom conical tubes

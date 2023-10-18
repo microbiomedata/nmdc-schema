@@ -1,0 +1,28 @@
+id: generic:DissolutionProcess-1
+designated_class: nmdc:DissolutionProcess
+name: Some instance of the DissolutionProcess class
+has_input:
+  - generic:microbiomass-1
+solution_components:
+  - component_name: Potassium sulfate
+    has_numeric_value: 5
+    has_unit: mM
+process_solution_volume:
+  has_numeric_value: 24
+  has_unit: mL
+has_output:
+  - generic:microbiomass-3
+process_duration:
+  has_numeric_value: 2
+  has_unit: h
+process_speed:
+  has_numeric_value: 200
+  has_unit: rpm
+#output_mass:
+#  has_numeric_value: 8
+#  has_unit: gram
+process_container:
+  has_numeric_value: 50
+  has_unit: mL
+  container_type: V-bottom conical tubes
+used: orbital shaker

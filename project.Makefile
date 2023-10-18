@@ -290,7 +290,7 @@ local/usage_template.tsv: src/schema/nmdc.yaml
  		 --columns-to-insert slot \
 		 --source-schema-path $<
 
-examples/output/Biosample-exhasutive_report.yaml: src/data/valid/Biosample-exhasutive.yaml
+examples/output/Biosample-exhasutive_report.yaml: src/data/archive/valid
 	poetry run exhaustion-check \
 		--class-name Biosample \
 		--instance-yaml-file $< \
@@ -298,14 +298,14 @@ examples/output/Biosample-exhasutive_report.yaml: src/data/valid/Biosample-exhas
 		--schema-path src/schema/nmdc.yaml
 
 
-examples/output/Pooling-minimal-report.yaml: src/data/valid/Pooling-minimal.yaml
+examples/output/Pooling-minimal-report.yaml: src/data/archive/valid
 	poetry run exhaustion-check \
 		--class-name Pooling \
 		--instance-yaml-file $< \
 		--output-yaml-file $@ \
 		--schema-path src/schema/nmdc.yaml
 
-examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosample-exhasutive.yaml
+examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/archive/valid
 	poetry run pretty-sort-yaml \
 		-i $< \
 		-o $@
