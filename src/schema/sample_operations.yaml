@@ -39,10 +39,11 @@ classes:
         #        structured_pattern:
         #          syntax: "{id_nmdc_prefix}:sops-{id_shoulder}-{id_blade}{id_version}{id_locus}"
         #          interpolated: true
-        required: true
+        #required: true
         range: MaterialEntity
       has_output:
         range: ProcessedSample
+        multivalued: true
       id:
         required: true
         structured_pattern:
@@ -499,7 +500,7 @@ enums:
       Water:
 
   ProtocolCategoryEnum:
-    description: The possible protocols that may be followed.
+    description: The possible protocols that may be followed for metabolomics analysis.
     permissible_values:
       - MPLEx
       - Comprehensive
