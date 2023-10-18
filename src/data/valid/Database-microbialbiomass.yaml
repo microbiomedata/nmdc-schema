@@ -1,6 +1,6 @@
 protocol_execution_set:
   - id: generic:Campaign_1
-    name: Sequential Microbial Biomass and Nitrogen Extraction
+    name: Sequential Microbial Biomass (Chloroform fumigation direct extraction (CFDE) and N extraction
     description: The extraction of microbial biomass and nitrogen from a soil sample.
     has_part:
       - nmdc:sops-99-oW43DzG0
@@ -95,6 +95,9 @@ material_processing_set:
       run_time:
         has_unit: hours
         has_numeric_value: 2
+      temperature:
+        has_unit: C
+        has_numeric_value: 20
     has_output:
       - nmdc:procsm-11-05g48p903
   - id: nmdc:sops-99-oW43DzG5 #microbiomass:4 
@@ -209,7 +212,7 @@ material_processing_set:
     extractant: Potassium sulfate
     duration:
       has_unit: hours
-      has_numeric_value: 24
+      has_numeric_value: 2
     concentration: 
       has_unit: mM
       has_numeric_value: 0.05
@@ -231,6 +234,9 @@ material_processing_set:
       run_time:
         has_unit: hours
         has_numeric_value: 2
+      temperature:
+        has_unit: C
+        has_numeric_value: 20
     has_output:
       - nmdc:procsm-11-05g48p9012
   - id: nmdc:sops-99-oW43DzG10 #microbiomass:13 
