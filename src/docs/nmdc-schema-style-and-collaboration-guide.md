@@ -27,7 +27,7 @@
   their proposed alternative modeling is in general superior
 - Adding modeling that that doesn't informing downstream analyses or searching in the (DataPortal or though an API)
   is an anti-pattern.
-- See also src/docs/prefixes_curies_ids_mappings_etc.md
+- See also `src/docs/prefixes_curies_ids_mappings_etc.md`
 
 ## To Do
 
