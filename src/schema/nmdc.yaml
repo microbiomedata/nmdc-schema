@@ -2696,6 +2696,8 @@ slots:
     examples: 
       - value: doi:10.46936/10.25585/60000880
         value_description: The doi links to an electronic document.
+    exact_mappings:
+      - OBI:0002110
     
 
   dois:
