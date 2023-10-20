@@ -194,6 +194,7 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
             study[field_name] = []
         return study
 
+
 class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
     """
     TUTORIAL: This is an example of a "migrator" class.
