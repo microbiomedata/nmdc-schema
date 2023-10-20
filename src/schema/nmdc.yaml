@@ -1382,6 +1382,11 @@ classes:
       The DOI system is particularly used for electronic documents.
     exact_mappings:
       - OBI:0002110
+    see_also:
+      - https://schema.datacite.org/meta/kernel-4.4/doc/DataCite-MetadataKernel_v4.4.pdf
+      - https://api.crossref.org/types
+    comments:
+      - See especially the resourceTypeGeneral section of the DataCite pdf, on pp48-53 as of 2023-07-19
     slots:
       - doi
       - doi_authority
@@ -2679,6 +2684,19 @@ slots:
     is_a: attribute
     range: PersonValue
     description: Principal Investigator who led the study and/or generated the dataset.
+
+  doi:
+    description: >-
+      A digital object identifier, which is intended to persistantly identify some resource on the web.
+    aliases:
+      - DOI
+      - digital object identifier
+    range: uriorcurie
+    pattern: '^doi:10.\d{2,9}/.*$'
+    examples: 
+      - value: doi:10.46936/10.25585/60000880
+        value_description: The doi links to an electronic document.
+    
 
   dois:
     # is_a: attribute
