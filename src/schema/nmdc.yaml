@@ -2069,14 +2069,34 @@ enums:
 
   DoiProviderEnum:
     permissible values:
-      jgi:
       emsl:
-      osti:
+        aliases:
+          - Environmental Molecular Sciences Laboratory
+          - EMSL
+        meaning: https://ror.org/04rc0xn13
+      jgi:
+        aliases: 
+          - Joint Genome Institute
+          - JGI
+        meaning: https://ror.org/04xm1d337
       kbase:
+        aliases:
+          - KBase
+        meaning: https://ror.org/01znn6x10
+      osti:
+        aliases:
+          - Office of Scientific and Technical Information
+          - OSTI
+        meaning: https://ror.org/031478740
       ess_dive:
+        aliases:
+          - ESS-DIVE
+          - Environmental System Science Data Infrastructure for a Virtual Ecosystem
+        meaning: https://ror.org/01t14bp54
       massive:
-      emsl:
-      jgi:
+        aliases:
+          - MassIVE
+      
 
 slots:
 
