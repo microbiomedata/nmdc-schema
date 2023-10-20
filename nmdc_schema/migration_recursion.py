@@ -1,6 +1,6 @@
 import logging
 import re
-from typing import Dict, List, TypeAlias
+from typing import Dict, List
 
 import click
 import click_log
@@ -14,12 +14,6 @@ click_log.basic_config(logger)
 
 doi_url_pattern = r'^https?:\/\/[a-zA-Z\.]+\/10\.'
 curie_pattern = r'^[a-zA-Z_][a-zA-Z0-9_-]*:[a-zA-Z0-9_][a-zA-Z0-9_.-]*$'
-
-# Type aliases to enhance "self-documenting-ness" of code.
-CollectionName: TypeAlias = str
-TransformationFunction: TypeAlias = callable
-Agenda: TypeAlias = Dict[CollectionName, List[TransformationFunction]]
-
 
 class MigratorBase:
     """Base class containing properties and methods useful to its descendants."""
@@ -38,9 +32,9 @@ class MigratorBase:
         # Note: This dictionary is empty here. It will be populated within the "constructor" functions
         #       of the migration-specific classes (i.e. the classes that inherit from this base class).
         #
-        self.agenda: Agenda = dict()
+        self.agenda: Dict[str, List[callable]] = dict()
 
-    def get_transformers_for(self, collection_name: CollectionName) -> List[TransformationFunction]:
+    def get_transformers_for(self, collection_name: str) -> List[callable]:
         """Returns the list of transformers defined for the specified collection."""
         return self.agenda.get(collection_name, [])
 
