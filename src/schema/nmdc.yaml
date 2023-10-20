@@ -2688,6 +2688,7 @@ slots:
   doi:
     description: >-
       A digital object identifier, which is intended to persistantly identify some resource on the web.
+    required: true
     aliases:
       - DOI
       - digital object identifier
@@ -2698,8 +2699,20 @@ slots:
         value_description: The doi links to an electronic document.
     exact_mappings:
       - OBI:0002110
-    
+    narrow_mappings:
+      - data:1188
 
+  doi_authority:
+    description: >-
+      The authority, or organization, the DOI is registered under.
+    range:
+      - DoiAuthorityEnum
+    close_mappings:
+      - NCIT:C74932
+    examples:
+      - value: ess_dive
+        value_description: The corresponding doi was registered by ESS-DIVE.
+    
   dois:
     # is_a: attribute
     todos:
