@@ -2069,6 +2069,10 @@ enums:
 
   DoiProviderEnum:
     permissible values:
+      jgi:
+      emsl:
+      osti:
+      kbase:
       ess_dive:
       massive:
       emsl:
