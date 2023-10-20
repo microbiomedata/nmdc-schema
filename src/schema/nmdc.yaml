@@ -1389,7 +1389,7 @@ classes:
       - See especially the resourceTypeGeneral section of the DataCite pdf, on pp48-53 as of 2023-07-19
     slots:
       - doi
-      - doi_authority
+      - doi_provider
       - doi_category
     
   Study:
@@ -2067,7 +2067,7 @@ enums:
         exact_mappings:
           - NCIT:C61538
 
-  DoiAuthorityEnum:
+  DoiProviderEnum:
     permissible values:
       ess_dive:
       massive:
@@ -2710,17 +2710,27 @@ slots:
     narrow_mappings:
       - data:1188
 
-  doi_authority:
+  doi_provider:
     description: >-
       The authority, or organization, the DOI is registered under.
     range:
-      - DoiAuthorityEnum
+      - DoiProviderEnum
     close_mappings:
       - NCIT:C74932
     in_subset: data_portal_subset
     examples:
       - value: ess_dive
         value_description: The corresponding doi was registered by ESS-DIVE.
+
+  doi_category:
+    description:
+    range:
+      - DoiCategoryEnum
+    required: true
+    in_subset: data_portal_subset
+    examples:
+      - value: dataset_doi
+        value description: The corresponding doi is a dataset resource.
     
   dois:
     # is_a: attribute
