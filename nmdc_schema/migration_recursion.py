@@ -210,11 +210,13 @@ class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
                   
                   When this "constructor" function runs, it does two things:
                   1. It invokes the base class's "constructor" function; and
-                  2. It populates a dictionary that keeps track of
-                     which transformation functions will be run on
-                     dictionaries from which collections. You can
-                     think of this dictionary as an "agenda" of
-                     transformations that will be performed.
+                  2. It populates a dictionary that keeps track of which
+                     transformation functions will be applied to objects
+                     from which collections. You can think of this as the
+                     "agenda", "itinerary", "plan", or "registry" of
+                     transformations that make up this migration. As
+                     security guards at marathons say, "If it ain't
+                     part of the plan, it ain't gonna be ran."
 
              -->  As part of creating a new "migration" class, you will
                   populate its "agenda."
