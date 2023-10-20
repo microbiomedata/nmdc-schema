@@ -206,17 +206,18 @@ class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
         TUTORIAL: This is the "constructor" function of the class.
                   As is true about the "constructor" function of any class,
                   it runs whenever that class is instantiated, and its job
-                  is to initialize the instance of that class.
+                  is to initialize the newly-created instance of that class.
                   
-                  When this function runs, it does two things:
+                  When this "constructor" function runs, it does two things:
                   1. It invokes the base class's "constructor" function; and
                   2. It populates a dictionary that keeps track of
                      which transformation functions will be run on
                      dictionaries from which collections. You can
-                     think of this dictionary as a "registry."
+                     think of this dictionary as an "agenda" of
+                     transformations that will be performed.
 
              -->  As part of creating a new "migration" class, you will
-                  typically customize the contents of that dictionary.
+                  populate its "agenda."
         """
 
         # Invoke the base class's "constructor" function.
@@ -236,14 +237,14 @@ class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
                   version "X.Y.Z"). That might involve adding a field,
                   converting a string into a list of strings, etc.
                   
-                  When this function runs, it does three things:
+                  When this "transformation" function runs, it does three things:
                   1. It accepts a single dictionary as a parameter.
                   2. It transforms that dictionary.
                   3. It returns the transformed dictionary.
 
               --> As part of creating a new "migration" class, you will
                   typically implement one or more "transformation" functions.
-                  You will also add them to the "registry" of the class.
+                  You will also add them to the "agenda" of the class.
         """
 
         logger.info(f"Transforming study having id: {study['id']}")  # optional log message
