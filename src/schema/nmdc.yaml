@@ -1548,8 +1548,10 @@ classes:
     slots:
       - container_size
       - container_type
-      - volume
       - temperature
+    slot_usage:
+      volume:
+        description: The volume of subsample.
 
   OmicsProcessing:
     aliases:
@@ -2820,7 +2822,7 @@ slots:
 
   volume:
     range: QuantityValue
-    description: The volume of the solvent/solute being used, not the input.
+    description: The volume of a substance.
 
   temperature:
     range: QuantityValue
