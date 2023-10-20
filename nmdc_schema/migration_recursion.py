@@ -1,6 +1,6 @@
 import logging
 import re
-from typing import Dict, List
+from typing import Dict, List, TypeAlias
 
 import click
 import click_log
@@ -15,6 +15,11 @@ click_log.basic_config(logger)
 doi_url_pattern = r'^https?:\/\/[a-zA-Z\.]+\/10\.'
 curie_pattern = r'^[a-zA-Z_][a-zA-Z0-9_-]*:[a-zA-Z0-9_][a-zA-Z0-9_.-]*$'
 
+# Type aliases to enhance "self-documenting-ness" of code.
+CollectionName: TypeAlias = str
+TransformationFunction: TypeAlias = callable
+Agenda: TypeAlias = Dict[CollectionName, List[TransformationFunction]]
+
 
 class MigratorBase:
     """Base class containing properties and methods useful to its descendants."""
@@ -22,20 +27,22 @@ class MigratorBase:
     def __init__(self):
         self.forced_prefix = None
 
-        # Define a dictionary that maps collections to sequences of transformation functions.
+        # Define the "agenda" of transformations that constitute this migration.
+        # 
+        # Note: This is a dictionary that maps a given collection to a list of "transformation" functions.
+        #       Each key is a collection name, and each value is a list. Each element of the list is a
+        #       so-called "transformation" function. A "transformation" function is a function that
+        #       transforms something from one schema version to another. In this case, the "something"
+        #       is a dictionary representing a single document from the specified collection.
         #
-        # Note: Each key is a collection name, and each value is a list. Each element of the list is a
-        #       function someone performing a migration could call—in the order listed—to transform a
-        #       single document from conforming to the _initial_ schema of that migration (e.g. v1),
-        #       to conforming to the _final_ schema of that migration (e.g. v2).
+        # Note: This dictionary is empty here. It will be populated within the "constructor" functions
+        #       of the migration-specific classes (i.e. the classes that inherit from this base class).
         #
-        # Note: Descendant classes (i.e. inheriting classes) will populate this dictionary.
-        #
-        self.transformers_by_collection: Dict[str, List[callable]] = dict()
+        self.agenda: Agenda = dict()
 
-    def get_transformers_for(self, collection_name: str) -> List[callable]:
+    def get_transformers_for(self, collection_name: CollectionName) -> List[TransformationFunction]:
         """Returns the list of transformers defined for the specified collection."""
-        return self.transformers_by_collection.get(collection_name, [])
+        return self.agenda.get(collection_name, [])
 
     def check_and_normalize_one_curie(self, curie_string):
         if not self.is_valid_curie(curie_string):
@@ -98,8 +105,8 @@ class Migrator_from_7_7_2_to_7_8_0(MigratorBase):
 
         super().__init__()
 
-        # Populate the collection-to-transformers map for this specific migration.
-        self.transformers_by_collection = dict(
+        # Populate the "collection-to-transformers" map for this specific migration.
+        self.agenda = dict(
             study_set=[self.replace_doi_field_with_award_dois_list_field],
         )
 
@@ -123,8 +130,8 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
 
         super().__init__()
 
-        # Populate the collection-to-transformers map for this specific migration.
-        self.transformers_by_collection = dict(
+        # Populate the "collection-to-transformers" map for this specific migration.
+        self.agenda = dict(
             biosample_set=[self.standardize_letter_casing_of_gold_biosample_identifiers],
             extraction_set=[self.rename_sample_mass_field],
             omics_processing_set=[self.standardize_letter_casing_of_gold_sequencing_project_identifiers],
@@ -212,11 +219,11 @@ class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
                   typically customize the contents of that dictionary.
         """
 
-        # Invoke the base class's constructor function.
+        # Invoke the base class's "constructor" function.
         super().__init__()
 
-        # Map collections to this class's transformation functions.
-        self.transformers_by_collection = dict(
+        # Populate the "collection-to-transformers" map for this specific migration.
+        self.agenda = dict(
             study_set=[self.allow_multiple_names],
         )
 
