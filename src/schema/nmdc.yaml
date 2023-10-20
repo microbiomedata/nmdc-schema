@@ -1433,9 +1433,7 @@ classes:
       - alternative_names
       - alternative_titles
       - description
-      - award_dois
-      - dataset_dois
-      - publication_dois
+      - associated_dois
       - ecosystem
       - ecosystem_category
       - ecosystem_subtype
@@ -2727,6 +2725,20 @@ slots:
     range: PersonValue
     description: Principal Investigator who led the study and/or generated the dataset.
 
+  associated_dois:
+    description: A list of DOIs associated with a resource, such as a Study.
+    range: Doi
+    multivalued: true
+    examples:
+      value:
+      - doi: doi:10.46936/intm.proj.2021.60141/60000423
+        doi_provider: emsl
+        doi_category: award_doi
+      - doi: doi:10.1101/2022.12.12.520098
+        doi_category: publication_doi
+      value description: provides a list of two DOIs, an EMSL award DOI and a publication DOI.
+
+
   doi:
     description: >-
       A digital object identifier, which is intended to persistantly identify some resource on the web.
@@ -2786,6 +2798,7 @@ slots:
       - https://api.crossref.org/types
     comments:
       - See especially the resourceTypeGeneral section of the DataCite pdf, on pp48-53 as of 2023-07-19
+    deprecated_element_has_exact_replacement: nmdc:associated_dois
 
   award_dois:
     is_a: dois
@@ -2796,6 +2809,7 @@ slots:
         description:
           award_dois link to to an award document. Should not be used to link to datasets or publications.
           For example, doi:10.15485/1577267 is not an award doi, but a dataset doi.
+    deprecated_element_has_exact_replacement: nmdc:associated_dois
 
   dataset_dois:
     is_a: dois
@@ -2808,6 +2822,7 @@ slots:
         description:
           dataset_dois link to data encoded in a defined structure (as defined by DataCite).
           Should not be used to link to publications or administrative information like funding requests or awards.
+    deprecated_element_has_exact_replacement: nmdc:associated_dois
 
   publication_dois:
     is_a: dois
@@ -2821,6 +2836,7 @@ slots:
         description:
           publication_dois link to a prose document, preferably a peer-reviewed journal article.
           Should not be used to link to datasets or administrative information like funding requests or awards
+    deprecated_element_has_exact_replacement: nmdc:associated_dois
 
   add_date:
     range: string
