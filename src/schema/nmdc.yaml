@@ -2727,6 +2727,9 @@ slots:
 
   associated_dois:
     description: A list of DOIs associated with a resource, such as a Study.
+    aliases:
+      - Associated DOIs
+      - Associated digital object identifiers
     range: Doi
     multivalued: true
     examples:
@@ -2737,7 +2740,6 @@ slots:
       - doi: doi:10.1101/2022.12.12.520098
         doi_category: publication_doi
       value description: provides a list of two DOIs, an EMSL award DOI and a publication DOI.
-
 
   doi:
     description: >-
