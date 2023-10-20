@@ -2096,8 +2096,19 @@ enums:
       massive:
         aliases:
           - MassIVE
-      
 
+  DoiCategoryEnum:
+    permissible values:
+      award_doi:
+        description: >-
+        A type of DOI that resolves to a funding authority.
+      dataset_doi:
+        description: >-
+        A type of DOI that resolves to generated data.
+      publication_doi:
+        description: >-
+        A type of DOI that resolves to a publication.
+      
 slots:
 
   #  for FunctionalAnnotationAggMember:
