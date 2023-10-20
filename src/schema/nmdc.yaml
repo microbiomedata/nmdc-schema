@@ -1373,6 +1373,20 @@ classes:
       - NCIT:C43412
       - http://purl.obolibrary.org/obo/FBcv_0003024
 
+  Doi:
+    aliases:
+      - DOIs
+      - digital object identifiers
+    description: >-
+      A centrally registered identifier symbol used to uniquely identify objects given by International DOI Foundation. 
+      The DOI system is particularly used for electronic documents.
+    exact_mappings:
+      - OBI:0002110
+    slots:
+      - doi
+      - doi_authority
+      - doi_category
+    
   Study:
     is_a: NamedThing
     in_subset:
