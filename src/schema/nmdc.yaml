@@ -2732,6 +2732,7 @@ slots:
       - Associated digital object identifiers
     range: Doi
     multivalued: true
+    in_subset: data_portal_subset
     examples:
       value:
       - doi: doi:10.46936/intm.proj.2021.60141/60000423
