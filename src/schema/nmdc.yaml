@@ -2825,8 +2825,6 @@ slots:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
-      - ORCID:0000-0001-9076-6066 #Mark Miller
-      - ORCID:0009-0008-4013-7737 #James Tessmer
 
   container_type:
     range: ContainerTypeEnum
@@ -2835,8 +2833,6 @@ slots:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
-      - ORCID:0000-0001-9076-6066 #Mark Miller
-      - ORCID:0009-0008-4013-7737 #James Tessmer
 
   volume:
     range: QuantityValue
@@ -2844,8 +2840,6 @@ slots:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
-      - ORCID:0000-0001-9076-6066 #Mark Miller
-      - ORCID:0009-0008-4013-7737 #James Tessmer
 
   temperature:
     range: QuantityValue
@@ -2855,5 +2849,3 @@ slots:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
-      - ORCID:0000-0001-9076-6066 #Mark Miller
-      - ORCID:0009-0008-4013-7737 #James Tessmer
