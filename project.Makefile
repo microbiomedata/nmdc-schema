@@ -427,22 +427,25 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--skip-collection-check
 
 
-local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
-	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
-	time $(RUN) migration-recursion \
-		--schema-path $(word 1,$^) \
-		--input-path $(word 2,$^) \
-		--salvage-prefix nmdc \
-		--output-path $@
+#local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
+#	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
+#	time $(RUN) migration-recursion \
+#		--schema-path $(word 1,$^) \
+#		--input-path $(word 2,$^) \
+#		--salvage-prefix nmdc \
+#		--output-path $@
+#
+#local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
+#	# nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml or nmdc_schema/nmdc_materialized_patterns.yaml
+#	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_activity_set
+#	time $(RUN) linkml-validate --schema $^ > $@
 
-local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
-	# nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml or nmdc_schema/nmdc_materialized_patterns.yaml
-	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_activity_set
-	time $(RUN) linkml-validate --schema $^ > $@
-
-local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
+local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
-	time $(RUN) linkml-convert --output $@ --schema $^
+	time $(RUN) linkml-convert \
+		--no-validate \
+		--output $@ \
+		--schema $^
 #	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
 #	- $(RIOT) --validate $@ # < 1 minute
 
@@ -530,6 +533,80 @@ OmicsProcessing.tsv: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
 #counts-migrated-cas-lc.txt counts-migrated-cas-uc.txt \
 #counts-migrated-gold-lc.txt counts-migrated-gold-uc.txt
 
-.PHONY: validate-Gs0114663-study-biosample-ids
 
-validate-Gs0114663-study-biosample-ids: squeaky-clean all test make-rdf
+
+local/unvalidated_nmdc_database_for_Gs0114663.yaml:
+	$(RUN) pure-export \
+		--client-base-url https://api-napa.microbiomedata.org \
+		--endpoint-prefix nmdcschema \
+		--max-docs-per-coll 10000000 \
+		--output-yaml $@ \
+		--page-size 10000 \
+		--schema-file src/schema/nmdc.yaml \
+		--selected-collections biosample_set \
+		--selected-collections study_set \
+		--skip-collection-check
+
+nmdc_schema/nmdc_schema_accepting_uncategorized_studies.yaml: src/schema/nmdc.yaml
+	$(RUN) gen-linkml \
+		--format yaml \
+		--mergeimports \
+		--metadata \
+		--no-materialize-attributes \
+		--no-materialize-patterns \
+		--useuris \
+		--output $@ $<
+	yq -i '(.slots[] | select(.name == "study_category") | .required) = false' $@
+
+
+local/research_study_injected_for_Gs0114663_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_uncategorized_studies.yaml \
+local/unvalidated_nmdc_database_for_Gs0114663.yaml
+	$(RUN) migration-recursion \
+		--schema-path $(word 1,$^) \
+		--input-path $(word 2,$^) \
+		--salvage-prefix nmdc \
+		--output-path $@
+
+local/research_study_injected_for_Gs0114663_rdf_safe.ttl: nmdc_schema/nmdc_schema_accepting_uncategorized_studies.yaml \
+local/research_study_injected_for_Gs0114663_rdf_safe.yaml
+	$(RUN) linkml-convert \
+		--output $@ \
+		--schema $^
+	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
+	$(RIOT) --validate $@
+
+local/research_study_injected_for_Gs0114663_cuire_repaired.ttl: local/research_study_injected_for_Gs0114663_rdf_safe.ttl
+	$(RUN) anyuri-strings-to-iris \
+		--input-ttl $< \
+		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
+		--emsl-biosample-uuid-replacement emsl_biosample_uuid_like \
+		--output-ttl $@
+	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
+	$(RIOT) --validate $@
+
+.PHONY: validate-Gs0114663-study-biosample-ids tdb-steps
+
+validate-Gs0114663-study-biosample-ids: squeaky-clean all test rdf-clean \
+nmdc_schema/nmdc_schema_accepting_uncategorized_studies.yaml \
+local/unvalidated_nmdc_database_for_Gs0114663.yaml \
+local/research_study_injected_for_Gs0114663_rdf_safe.yaml \
+local/research_study_injected_for_Gs0114663_rdf_safe.ttl \
+local/research_study_injected_for_Gs0114663_cuire_repaired.ttl
+
+tdb-steps:
+#	# clean up tdbcontent
+#	~/apache-jena/bin/tdb2.tdbloader \
+#		--loc=tdbcontent \
+#		--graph=https://w3id.org/nmdc/nmdc project/owl/nmdc.owl.ttl
+#	~/apache-jena/bin/tdb2.tdbloader \
+#		--loc=tdbcontent \
+#		--graph=mongodb://mongo-loadbalancer.nmdc.production.svc.spin.nersc.gov:27017 local/research_study_injected_for_Gs0114663_cuire_repaired.ttl
+#	~/apache-jena/bin/tdb2.tdbquery \
+#		--loc=tdbcontent \
+#		--query=assets/sparql/tdb-test.rq
+#	~/apache-jena/bin/tdb2.tdbquery \
+#		--loc=tdbcontent \
+#		--query=assets/sparql/tdb-graph-list.rq
+#	~/apache-jena/bin/tdb2.tdbquery \
+#		--loc=tdbcontent \
+#		--query=assets/sparql/Gs0114663-construct.rq
