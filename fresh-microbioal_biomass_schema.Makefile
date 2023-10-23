@@ -9,13 +9,17 @@ validate_fresh_microbioal_biomass_data
 validate_fresh_microbioal_biomass_data: src/schema/nmdc.yaml
 	$(RUN) linkml-validate \
 		--target-class WeighingProcess \
+		--include-range-class-descendants \
 		--schema $< src/data/valid/WeighingProcess-valid.yaml
 	$(RUN) linkml-validate \
 		--target-class DissolutionProcess \
+		--include-range-class-descendants \
 		--schema $< src/data/valid/DissolutionProcess-valid.yaml
-#	$(RUN) linkml-validate \
-#		--target-class Database \
-#		--schema $< src/data/valid/Database-sample-prep-protocol-execution.yaml
 	$(RUN) linkml-validate \
-		--target-class ProtocolExecution \
+		--target-class Database \
+		--include-range-class-descendants \
 		--schema $< src/data/valid/Database-sample-prep-protocol-execution.yaml
+#	$(RUN) linkml-validate \
+#		--target-class ProtocolExecution \
+#		--include-range-class-descendants \
+#		--schema $< src/data/valid/Database-sample-prep-protocol-execution.yaml

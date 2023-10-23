@@ -76,7 +76,7 @@ classes:
       - alternative_identifiers
 
   MaterialEntity:
-    abstract: true
+    #    abstract: true
     aliases:
       - Material
       - Physical entity
@@ -123,7 +123,7 @@ classes:
           interpolated: true
 
   PlannedProcess:
-    abstract: true
+    #    abstract: true
     class_uri: OBI:0000011
     is_a: NamedThing
     title: Planned Process
