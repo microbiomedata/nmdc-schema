@@ -1386,6 +1386,24 @@ classes:
       - doi
       - doi_provider
       - doi_category
+    rules:
+    - preconditions:
+        slot_conditions:
+          doi_category:
+            name: doi_category
+            equals_string_in:
+              - dataset_doi
+              - award_doi
+      postconditions:
+        slot_conditions:
+          doi_provider:
+            name: doi_provider
+            required: true
+      elseconditions:
+        slot_conditions:
+          doi_provider:
+            name: doi_provider
+            required: false
     
   Study:
     is_a: NamedThing
