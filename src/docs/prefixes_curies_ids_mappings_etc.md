@@ -18,7 +18,7 @@ All metadata gathered and stored by the NMDC community must validate against the
 LinkML uses structures like classes, slots (for relationships and properties), types and enumerations.
 People with object-oriented programming experience might find this familiar.
 
-## The name "LinkML" indicates that it's' a modeling language for linked data.
+## The name "LinkML" indicates that it's a modeling language for linked data.
 
 LinkML schemas generally make good use of terminology from external resources, especially ontologies,
 especially those from the OBO Foundry. In return, LinkML schema elements and the corresponding data should be
