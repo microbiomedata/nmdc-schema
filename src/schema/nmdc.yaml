@@ -2061,37 +2061,43 @@ enums:
           - NCIT:C61538
 
   DoiProviderEnum:
-    permissible values:
+    permissible_values:
       emsl:
         aliases:
           - Environmental Molecular Sciences Laboratory
           - EMSL
+        title: EMSL
         meaning: https://ror.org/04rc0xn13
       jgi:
         aliases: 
           - Joint Genome Institute
           - JGI
+        title: JGI
         meaning: https://ror.org/04xm1d337
       kbase:
         aliases:
           - KBase
+        title: KBase
         meaning: https://ror.org/01znn6x10
       osti:
         aliases:
           - Office of Scientific and Technical Information
           - OSTI
+        title: OSTI
         meaning: https://ror.org/031478740
       ess_dive:
         aliases:
           - ESS-DIVE
           - Environmental System Science Data Infrastructure for a Virtual Ecosystem
+        title: ESS-DIVE
         meaning: https://ror.org/01t14bp54
       massive:
         aliases:
           - MassIVE
+        title: MassIVE
 
   DoiCategoryEnum:
-    permissible values:
+    permissible_values:
       award_doi:
         description: >-
         A type of DOI that resolves to a funding authority.
