@@ -1,5 +1,14 @@
 ## NMDC community principles for contributing to the schema
 
+_Many of these policies come from [Chris Mungall's BBOP Best Practices document](https://berkeleybop.github.io/best_practice/), which also acknowledges various inspiration and sources_
+
+NMDC and the nmdc-schema have some related docuemnts, which may benefit from updating, harmonizastion, or better inter-doc linking
+- https://microbiomedata.org/nmdc-code-of-conduct/
+- https://github.com/microbiomedata/nmdc-schema/blob/main/CODE_OF_CONDUCT.md
+- https://github.com/microbiomedata/nmdc-schema/blob/main/CONTRIBUTING.md
+- https://github.com/microbiomedata/nmdc-schema/blob/main/MAINTAINERS.md
+
+
 ### Meeting style
 
 - Meetings should follow an agenda with small, clear, post-meeting deliverables in mind.
@@ -27,6 +36,7 @@
   to an existing branch, or to create a new branch. The auto-created branch names are based on the entire
   issue title, so it may be challenging to follow all of these guidelines perfectly.
 - A pull request should be made as soon as new content is commited to the branch. It's OK to start the PR in draft mode.
+- The PR should mkention the related issues in the first comment.
 - Issue creators, branch contributors and PR reviewers should work togther from the beginning to optimize
   the current and future impact of the branch on the schema.
 - Issues, branches and PRs should be small and should ahve a short lifecycle so that new content can be merged on a rolling basis.
