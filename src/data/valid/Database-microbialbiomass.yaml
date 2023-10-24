@@ -1,6 +1,6 @@
 protocol_execution_set:
   - id: generic:Campaign_1
-    name: Microbial Biomass # does this need to be a unique name to the execution?
+    name: Sequential Microbial Biomass (Chloroform fumigation direct extraction (CFDE) and N extraction
     description: The extraction of microbial biomass and nitrogen from a soil sample.
     has_part:
       - nmdc:sops-99-oW43DzG0
@@ -37,6 +37,38 @@ material_processing_set:
     container_size:
       has_unit: mL
       has_numeric_value: 50
+    has_output:
+      - nmdc:procsm-11-05g48p90
+  - id: nmdc:sops-99-oW43DzG11 #microbiomass:2
+    designated_class: nmdc:FiltrationProcess
+    has_input: 
+      - nmdc:procsm-11-05g48p905
+    volume:
+      has_unit: mL
+      has_numeric_value: 20
+    separation_method: Buchner funnel 
+    filter: paper 
+    material_pore_size:
+      has_unit: um
+      has_numeric_value: 42.5
+    container_type: Glass scintillation vial
+    container_size:
+      has_unit: mL
+      has_numeric_value: 20
+    conditioning: 
+      - solvent: 
+        - Potassium sulfate
+        concentration:
+          has_numeric_value: 0.05
+          has_unit: mM
+        volume:
+          has_numeric_value: 50
+          has_unit: mL
+      - solvent: 
+          - ultrapure water
+        volume:
+          has_numeric_value: 50
+          has_unit: mL
   - id: nmdc:sops-99-oW43DzG2 #microbiomass:3
     designated_class: nmdc:ExtractionProcess
     has_input: 
@@ -87,6 +119,8 @@ material_processing_set:
       run_time:
         has_unit: hours
         has_numeric_value: 2
+    has_output:
+      - nmdc:procsm-11-05g48p9011
   - id: nmdc:sops-99-oW43DzG4 #microbiomass:12
     designated_class: nmdc:ExtractionProcess
     has_input: 
@@ -94,7 +128,7 @@ material_processing_set:
     extractant: Potassium sulfate
     duration:
       has_unit: hours
-      has_numeric_value: 24
+      has_numeric_value: 2
     concentration: 
       has_unit: mM
       has_numeric_value: 0.05
@@ -116,46 +150,29 @@ material_processing_set:
       run_time:
         has_unit: hours
         has_numeric_value: 2
-  - id: nmdc:sops-99-oW43DzG5 #microbiomass:4 
+      temperature:
+        has_unit: C
+        has_numeric_value: 20
+    has_output:
+      - nmdc:procsm-11-05g48p9012
+  - id: nmdc:sops-99-oW43DzG10 #microbiomass:13 
     designated_class: nmdc:PhaseSeparationProcess
     has_input: 
-      - nmdc:procsm-11-05g48p903
+      - nmdc:procsm-11-05g48p9012
     duration:
       has_unit: minutes
       has_numeric_value: 20
     value: 
-      has_unit: RPM
       has_numeric_value: 4000
-    container_type: V-bottom conical tube
-    container_size:
-      has_unit: mL
-      has_numeric_value: 50
-  - id: nmdc:sops-99-oW43DzG6 #microbiomass:5
-    designated_class: nmdc:PhaseSeparationProcess
-    has_input: 
-      - nmdc:procsm-11-05g48p905
-    volume:
-      has_unit: mL
-      has_numeric_value: 5
-    container_type: Falcon tube
-    container_size:
-      has_unit: mL
-      has_numeric_value: 15
-  - id: nmdc:sops-99-oW43DzG7 #microbiomass:6
-    designated_class: nmdc:PhaseSeparationProcess
-    has_input: 
-      - nmdc:procsm-11-05g48p904
-    volume:
-      has_unit: mL
-      has_numeric_value: 5
+      has_unit: RPM
     container_type: V-bottom conical tube
     container_size:
       has_unit: mL
       has_numeric_value: 50
   - id: nmdc:sops-99-oW43DzG8 #microbiomass:14
     designated_class: nmdc:PhaseSeparationProcess
-    has_input: 
-      - nmdc:procsm-11-05g48p901
+    #has_input: 
+    #  - nmdc:procsm-11-05g48p901
     volume:
       has_unit: mL
       has_numeric_value: 5
@@ -163,10 +180,12 @@ material_processing_set:
     container_size:
       has_unit: mL
       has_numeric_value: 15
+    has_output:
+      - nmdc:procsm-11-05g48p9014
   - id: nmdc:sops-99-oW43DzG9 #microbiomass:15
     designated_class: nmdc:PhaseSeparationProcess
-    has_input: 
-      - nmdc:procsm-11-05g48p903
+    #has_input: 
+    #  - nmdc:procsm-11-05g48p903
     volume:
       has_unit: mL
       has_numeric_value: 5
@@ -174,50 +193,6 @@ material_processing_set:
     container_size:
       has_unit: mL
       has_numeric_value: 50
-  - id: nmdc:sops-99-oW43DzG10 #microbiomass:13 
-    designated_class: nmdc:PhaseSeparationProcess
-    has_input: 
-      - nmdc:sops-11-05g48p9012
-    duration:
-      has_unit: minutes
-      has_numeric_value: 20
-    value: 
-      has_numeric_value: 4000
-      has_unit: RPM
-    container_type: V-bottom conical tube
-    container_size:
-      has_unit: mL
-      has_numeric_value: 50
-  - id: nmdc:sops-99-oW43DzG11 #microbiomass:2
-    designated_class: nmdc:FiltrationProcess
-    has_input: 
-      - nmdc:procsm-11-05g48p905
-    volume:
-      has_unit: mL
-      has_numeric_value: 20
-    separation_method: Buchner funnel 
-    filter: paper 
-    material_pore_size:
-      has_unit: um
-      has_numeric_value: 42.5
-    container_type: Glass scintillation vial
-    container_size:
-      has_unit: mL
-      has_numeric_value: 20
-    conditioning: 
-      - solvent: 
-        - Potassium sulfate
-        concentration:
-          has_numeric_value: 0.05
-          has_unit: mM
-        volume:
-          has_numeric_value: 50
-          has_unit: mL
-      - solvent: 
-          - ultrapure water
-        volume:
-          has_numeric_value: 50
-          has_unit: mL
   - id: nmdc:sops-99-oW43DzG12 #microbiomass:16
     designated_class: nmdc:FiltrationProcess
     has_input: 
@@ -248,22 +223,8 @@ material_processing_set:
         volume:
           has_numeric_value: 50
           has_unit: mL
-  - id: nmdc:sops-99-oW43DzG13 #nmdc:sops-99-oW43DzG0 #microbiomass:7
-    designated_class: nmdc:AcidificationProcess
-    has_input: 
-      - nmdc:procsm-11-05g48p906
-    acid: phosphoric acid
-    volume:
-      has_unit: drops
-      has_numeric_value: 2
-  - id: nmdc:sops-99-oW43DzG14 #microbiomass:8
-    designated_class: nmdc:AcidificationProcess
-    has_input: 
-      - nmdc:procsm-11-05g48p905
-    acid: phosphoric acid
-    volume:
-      has_unit: drops
-      has_numeric_value: 2
+    has_output:
+      - nmdc:procsm-11-05g48p9016
   - id: nmdc:sops-99-oW43DzG15 #microbiomass:17
     designated_class: nmdc:AcidificationProcess
     has_input: 
@@ -272,24 +233,8 @@ material_processing_set:
     volume:
       has_unit: drops
       has_numeric_value: 2
-  - id: nmdc:sops-99-oW43DzG16 #microbiomass:9
-    designated_class: nmdc:AnalyteStorage
-    has_input: 
-      - nmdc:procsm-11-05g48p907
-    temperature:
-      has_unit: C
-      has_numeric_value: -20
-    analyte_volume:
-      has_unit: uL
-  - id: nmdc:sops-99-oW43DzG17 #microbiomass:10
-    designated_class: nmdc:AnalyteStorage
-    has_input: 
-      - nmdc:procsm-11-05g48p909
-    temperature:
-      has_unit: C
-      has_numeric_value: -20
-    analyte_volume:
-      has_unit: uL
+    has_output:
+      - nmdc:procsm-11-05g48p9017
   - id: nmdc:sops-99-oW43DzG18 #microbiomass:18
     designated_class: nmdc:AnalyteStorage
     has_input: 
@@ -299,4 +244,3 @@ material_processing_set:
       has_numeric_value: -20
     analyte_volume:
       has_unit: uL
-

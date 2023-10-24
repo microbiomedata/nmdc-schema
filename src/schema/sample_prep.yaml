@@ -55,7 +55,7 @@ slots:
     title: dissolution aided by
     aliases:
       - shaker
-    range: LabDevice
+    range: PreparativeInstrument
     inlined: true
   dissolution_reagent:
     title: dissolution reagent
@@ -100,7 +100,7 @@ slots:
     title: reaction aided by
     aliases:
       - shaker
-    range: LabDevice
+    range: PreparativeInstrument
     inlined: true
   reaction_temperature:
   reaction_time:

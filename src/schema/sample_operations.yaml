@@ -42,10 +42,11 @@ classes:
         #        structured_pattern:
         #          syntax: "{id_nmdc_prefix}:sops-{id_shoulder}-{id_blade}{id_version}{id_locus}"
         #          interpolated: true
-        required: true
+        #required: true
         range: MaterialEntity
       has_output:
         range: ProcessedSample
+        multivalued: true
       id:
         required: true
         structured_pattern:
@@ -314,7 +315,7 @@ slots:
   device:
     description: "A material entity that is designed to perform a function in a scientific investigation, but is not a reagent."
   mixing:
-    range: LabDevice
+    range: PreparativeInstrument
     description: The lab device used for a mixing action in an activity
   sample_volume:
     range: QuantityValue
@@ -500,7 +501,7 @@ enums:
       Water:
 
   ProtocolCategoryEnum:
-    description: The possible protocols that may be followed.
+    description: The possible protocols that may be followed for metabolomics analysis.
     permissible_values:
       - MPLEx
       - Comprehensive
