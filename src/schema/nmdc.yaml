@@ -91,6 +91,7 @@ prefixes:
   xsd: http://www.w3.org/2001/XMLSchema#
   emsl: "http://example.org/emsl_biosample_in_mongodb/"
   emsl_biosample_uuid_like: "http://example.org/emsl_biosample_uuid_like/"
+  data: "http://edamontology.org/data"
 
 
 default_prefix: nmdc
