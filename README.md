@@ -46,11 +46,19 @@ See [MAINTAINERS.md](MAINTAINERS.md) for instructions on maintaining and updatin
 
 ## Makefiles
 
-Makefiles are specially-formatted text files people can use to tell [`make`](https://www.gnu.org/software/make/manual/make.html#Introduction) (a computer program) how it can _make_ things (e.g. `$ make something`). In the world of Makefiles, those _things_ are called _targets_.
+Makefiles are text files people can use to tell [`make`](https://www.gnu.org/software/make/manual/make.html#Introduction) (a computer program) how it can _make_ things (or—in general—_do_ things). In the world of Makefiles, those _things_ are called _targets_.
 
 This repo contains 2 Makefiles:
 - `Makefile`, based on the generic Makefile from the [LinkML cookiecutter](https://github.com/linkml/linkml-project-cookiecutter)
 - `project.Makefile`, which contains _targets_ that are specific to this project
+
+Here's an example of using `make` in this repo:
+
+```shell
+# Deletes all files in `examples/output`.
+make examples-clean
+```
+> The `examples-clean` _target_ is defined in the `project.Makefile`. In this repo, the `Makefile` `include`s the `project.Makefile`. As a result, `make` has access to the _targets_ defined in both files.
 
 ## Data downloads
 
