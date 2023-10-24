@@ -14,6 +14,24 @@
 - Attendees can contribute in any way, but greater weight will be put on diagrams, and even greater weight on
   examples checked into the nmdc-schema repo, even if they are not fully functional
 
+### GitHub policies
+- Anyone with an idea for improving the schema can [start a new GitHub issue]([url](https://github.com/microbiomedata/nmdc-schema/issues))
+- Issue titles should indicate either
+  - an observable problem
+  - a proposed solution
+- GitHub issue titles and comments should use terminology from the nmdc-schema and the [LinkML metamodel]([url](https://linkml.io/linkml-model/latest/docs/)).
+  Temptation to use pet names for entites in the nmdc-schema may indicate the need to add more aliases.
+- A branch should be opened as soon after the creation of an issue as possible.
+  Branch names are ideally brief and include the issue number and a few keywords from the issue title.
+  The issue creation page has a development section on the far right, which can be used to link the issue
+  to an existing branch, or to create a new branch. The auto-created branch names are based on the entire
+  issue title, so it may be challenging to follow all of these guidelines perfectly.
+- A pull request should be made as soon as new content is commited to the branch. It's OK to start the PR in draft mode.
+- Issue creators, branch contributors and PR reviewers should work togther from the beginning to optimize
+  the current and future impact of the branch on the schema.
+- Issues, branches and PRs should be small and should ahve a short lifecycle so that new content can be merged on a rolling basis.
+  
+
 ### Default modelling style
 
 - All of our modeling and example data should be as clear as possible. Textual annotation on classes,
