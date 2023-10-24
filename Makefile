@@ -23,7 +23,18 @@ TEMPLATEDIR = doc-templates
 
 # note: "help" MUST be the first target in the file,
 # when the user types "make" they should get help info
+
 help: status
+	@echo ""
+	@echo "This project requires that dependencies are loaded into a poetry environment with 'poetry install'"
+	@echo "Most typical usage: 'make squeaky-clean all test'"
+	@echo "Documentation publication is handled by a GitHub merge action"
+	@echo "  but users can generate a local documentation site with 'make testdoc'"
+	@echo "Please excuse the currently verbose logging mode"
+	@echo "make help -- show this help"
+	@echo ""
+
+cookiecutter-help: status
 	@echo ""
 	@echo "make setup -- initial setup (run this first)"
 	@echo "make site -- makes site locally"
@@ -33,7 +44,7 @@ help: status
 	@echo "make testdoc -- builds docs and runs local test server"
 	@echo "make deploy -- deploys site"
 	@echo "make update -- updates linkml version"
-	@echo "make help -- show this help"
+	@echo "make cookiecutter-help -- show this help"
 	@echo ""
 
 status: check-config
