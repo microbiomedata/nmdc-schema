@@ -1,7 +1,5 @@
 id: nmdc:sty-11-ab
 name: see also description, title, objective, various alternatives
-emsl_project_dois: 
-  - "doi:10.25585/1487763"
 description: see also name, title, objective, various alternatives
 alternative_identifiers:
   - generic:abc1
@@ -49,12 +47,10 @@ objective: This record, an instance of class Study from the nmdc-schema was had 
 websites:
   - https://w3id.org/nmdc
   - https://w3id.org/linkml
-publications:
-  - any string 1
-  - any string 2
-ess_dive_datasets:
-  - any string 1
-  - any string 2
+associated_dois:
+  - doi: doi:10.25585/1488209
+    doi_category: dataset_doi
+    doi_provider: osti
 type: any string
 relevant_protocols:
   - any string 1
