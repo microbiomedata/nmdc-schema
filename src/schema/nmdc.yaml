@@ -2121,14 +2121,11 @@ enums:
   DoiCategoryEnum:
     permissible_values:
       award_doi:
-        description: >-
-        A type of DOI that resolves to a funding authority.
+        description: A type of DOI that resolves to a funding authority.
       dataset_doi:
-        description: >-
-        A type of DOI that resolves to generated data.
+        description: A type of DOI that resolves to generated data.
       publication_doi:
-        description: >-
-        A type of DOI that resolves to a publication.
+        description: A type of DOI that resolves to a publication.
     see_also:
       - https://schema.datacite.org/meta/kernel-4.4/doc/DataCite-MetadataKernel_v4.4.pdf
       - https://api.crossref.org/types
@@ -2410,6 +2407,7 @@ slots:
   ess_dive_datasets:
     multivalued: true
     description: List of ESS-DIVE dataset DOIs
+    deprecated_element_has_exact_replacement: nmdc:associated_dois
   has_credit_associations:
     domain: Study
     range: CreditAssociation
@@ -2768,7 +2766,7 @@ slots:
         doi_category: award_doi
       - doi: doi:10.1101/2022.12.12.520098
         doi_category: publication_doi
-      value description: provides a list of two DOIs, an EMSL award DOI and a publication DOI.
+      description: provides a list of two DOIs, an EMSL award DOI and a publication DOI.
 
   doi:
     description: >-
@@ -2782,7 +2780,7 @@ slots:
     pattern: '^doi:10.\d{2,9}/.*$'
     examples: 
       - value: doi:10.46936/10.25585/60000880
-        value_description: The doi links to an electronic document.
+        description: The doi links to an electronic document.
     exact_mappings:
       - OBI:0002110
     narrow_mappings:
@@ -2791,24 +2789,22 @@ slots:
   doi_provider:
     description: >-
       The authority, or organization, the DOI is registered under.
-    range:
-      - DoiProviderEnum
+    range: DoiProviderEnum
     close_mappings:
       - NCIT:C74932
     in_subset: data_portal_subset
     examples:
       - value: ess_dive
-        value_description: The corresponding doi was registered by ESS-DIVE.
+        description: The corresponding doi was registered by ESS-DIVE.
 
   doi_category:
     description:
-    range:
-      - DoiCategoryEnum
+    range: DoiCategoryEnum
     required: true
     in_subset: data_portal_subset
     examples:
       - value: dataset_doi
-        value description: The corresponding doi is a dataset resource type.
+        description: The corresponding doi is a dataset resource type.
     
   dois:
     # is_a: attribute
