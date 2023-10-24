@@ -35,8 +35,8 @@ client = MongoClient(napa_mongo)
 mydb =client['nmdc']
 
 #list database names
-#for db in client.list_database_names():
-#   print(db)
+for db in client.list_database_names():
+   print(db)
 
 #list collections
 #for coll in mydb.list_collection_names():
@@ -224,7 +224,7 @@ omics_counter=0
 f_omics_id_mapping = open("Gs0114663_omics_reid.txt", "w")
 f_omics_set_operation =open("Gs0114663_omics_set","w")
 
-napa_study="nmdc:sty-12-85j6kq06"
+napa_study='nmdc:sty-11-aygzgv51'
 for doc in omics_coll.find(Gs0114663_legacy_omics):
   #set list with value of napa study for part_of
   study_napa_list=[]
@@ -237,54 +237,35 @@ for doc in omics_coll.find(Gs0114663_legacy_omics):
          biosample=biosample.replace('GOLD','gold')
       target_has_input={"$or":[ {"emsl_biosample_identifiers":biosample}, {"gold_biosample_identifiers":biosample},{"insdc_biosample_identifiers":biosample}]}
       get_biosample=biosample_coll.find_one(target_has_input)
-      napa_biosample_inputs.append.get_biosample["id"]
+      napa_biosample_inputs.append(get_biosample["id"])
   #set id and alternative ids
   target_omics={"id": doc["id"]}
-  #deal with gold omics identifiers
+  #deal with gold omics identifiers, for all 485 legacy records all already list gold projects in the gold_sequencing_project_identifiers slot
   if (doc["id"].startswith('gold')): 
-     alt_id_slot="gold_sequencing_project_identifiers" 
-     alt_id=[]
-     alt_id.append.doc["id"]
-     if(doc["gold_sequencing_project_identifiers"]):
-        sorted_existing_gold_alt=doc["gold_sequencing_project_identifiers"].sort()
-        alt_id.sort()
-          if sorted_existing_gold_alt == alt_id:
-             update_alt= False
-          else:
-           print("gold alt ids exist but are not equal", doc["id"],doc["gold_sequencing_project_identifiers"])
-     else:
-        alt_id=[]
-        alt_id.append.doc["id"]
-        update_alt=True
+    update_alt= False
   #deal with emsl omics identifiers
   elif (doc["id"].startswith(('emsl'))): 
      alt_id_slot="alternative_identifiers"
      alt_id=[]
-     alt_id.append.doc["id"]
-     if(doc["alternative_identifiers"]):
-       sorted_existing_alt=doc["alternative_identifiers"].sort
-       alt_id.sort()
-         if sorted_existing_alt == alt_id:
-            update_alt=False
-         else:
-         print("emsl alt ids exist but are not equal", doc["id"],doc["alternative_identifiers"])
-     else:
-        alt_id=[]
-        alt_id.append.doc["id"]
-        update_alt=True        
+     alt_id.append(doc["id"])
+     update_alt=True        
   else:
     print("Not sure how to re-id omics_processing_set id ",doc["id"]) 
   #set target update depending on if alt slot exists already or not 
   if update_alt is True:
-    target_update = { "$set": { "id": omics_napa_ids[omics_counter], "part_of":[study_napa_list], "has_input": [napa_biosample_inputs], alt_id_slot: [alt_id] }}
+    target_omics_update = { "$set": { "id": omics_napa_ids[omics_counter], "part_of":study_napa_list, "has_input": napa_biosample_inputs, alt_id_slot: alt_id }}
   if update_alt is False:
-    target_update = { "$set": { "id": omics_napa_ids[omics_counter], "part_of":[study_napa_list], "has_input": [napa_biosample_inputs]}}
+    target_omics_update = { "$set": { "id": omics_napa_ids[omics_counter], "part_of":study_napa_list, "has_input": napa_biosample_inputs}}
+  omics_coll.update_one(target_omics,target_omics_update)
   class_legacy_napa="OmicsProcessing " + doc["id"] + " "+ omics_napa_ids[omics_counter]
-  print(class_legacy_napa)
-  print(target_update)
-  f_omics_id_mapping.write(class_legacy_napa)
-  #f_omics_set_operation.write(target_update)  
+  #print(class_legacy_napa)
+  #print(target_update)
+  f_omics_id_mapping.write(class_legacy_napa + '\n')
+ # f_omics_set_operation.write(target_update + '\n')  
   omics_counter=omics_counter+1
+
+f_omics_id_mapping.close()
+f_omics_set_operation.close()
 
 #f.close()
 #example regex
@@ -295,5 +276,67 @@ for doc in omics_coll.find(Gs0114663_legacy_omics):
 #collection =nmdc["study_set"]
 #study_count=nmdc.study_set.count()
 #print("The study count is:", study_count)
+output_file=open("new_studies_brynn.txt","w")
+for sty in studies:
+  get_sty=study_coll.find_one({"id":sty})
+  print(get_sty)
 
+##get details on metap records with invalid urls
+missing_urls=open('metap_missing_data_object_records.txt', 'r') 
+Lines = missing_urls.readlines()
+missing_url_list=[]
+for line in Lines:
+#  print(line.strip())
+  select_dobj_target={"url":line.strip()}
+  print(select_dobj_target)
+  dobj_doc=dobj_coll.find_one(select_dobj_target)
+  print(dobj_doc)
+  missing_url_list.append(dobj_doc)
+json_data = dumps(missing_url_list, indent = 2)
+
+with open('missing_data_objects.json', 'w') as file: 
+    file.write(json_data) 
+
+#update test biosample records to (Gs0114663)  use prod minted IDs, not dev
+with open("biosample_prod_Gs0114663.json", 'r') as j:
+     biosample_prod_napa_ids = json.loads(j.read())
+napa_study='nmdc:sty-12-85j6kq06'
+f_biosample_prod_id_mapping = open("Gs0114663_biosample_reid.txt", "w")
+Gs0114663_legacy_emsl_biosample={"part_of":"nmdc:sty-12-85j6kq06", "emsl_biosample_identifiers": { "$exists": True }}
+Gs0114663_legacy_gold_biosample={"part_of":"nmdc:sty-12-85j6kq06", "emsl_biosample_identifiers": { "$exists": False }}
+biosample_prod_counter=0
+for doc in biosample_coll.find(Gs0114663_legacy_emsl_biosample):
+   target_prod_update = { "$set": { "id": biosample_prod_napa_ids[biosample_prod_counter]}}
+   target_prod_biosample={"id": doc["id"]}
+   biosample_coll.update_one(target_prod_biosample,target_prod_update)
+   class_legacy_napa_Gs0114663="Biosample " + biosample_prod_napa_ids[biosample_prod_counter] + " "+ doc["emsl_biosample_identifiers"][0]
+   f_biosample_prod_id_mapping.write(class_legacy_napa_Gs0114663+ '\n')
+   biosample_prod_counter=biosample_prod_counter+1
+
+for doc in biosample_coll.find(Gs0114663_legacy_gold_biosample):
+   target_prod_update = { "$set": { "id": biosample_prod_napa_ids[biosample_prod_counter]}}
+   target_prod_biosample={"id": doc["id"]}
+   biosample_coll.update_one(target_prod_biosample,target_prod_update)
+   class_legacy_napa="Biosample " + biosample_prod_napa_ids[biosample_prod_counter] + " "+ doc["gold_biosample_identifiers"][0]
+   f_biosample_prod_id_mapping.write(class_legacy_napa + '\n')
+   print(class_legacy_napa)
+   biosample_prod_counter=biosample_prod_counter+1
+
+f_biosample_prod_id_mapping.close()  
+#end dev to prod ids for nmdc:sty-12-85j6kq06/gold:Gs0114663
+
+#update nmdc:sty-12-85j6kq06 to a prod id
+study_coll=mydb["study_set"]
+select_dev_napa_study = {"id":"nmdc:sty-12-85j6kq06"}
+napa_prod_study_update = { "$set": { "id": "nmdc:sty-11-aygzgv51" } }
+
+
+study_coll.update_one(select_dev_napa_study, napa_prod_study_update)
+
+
+Gs0114663_dev_biosample={"part_of":"nmdc:sty-12-85j6kq06"}
+for doc in biosample_coll.find(Gs0114663_dev_biosample):
+  target_prod_biosample={"id": doc["id"]}
+  fix_Gs0114663_biosample_part_of= { "$set": { "part_of": ["nmdc:sty-11-aygzgv51"]}}
+  biosample_coll.update_one(target_prod_biosample,fix_Gs0114663_biosample_part_of)
 
