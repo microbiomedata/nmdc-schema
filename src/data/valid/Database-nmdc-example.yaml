@@ -1,7 +1,7 @@
 study_set:
   - id: nmdc:sty-99-FkQIsc
     gold_study_identifiers:
-      - gold:Gs0128849
+      - gold:Gs123456789
     name: Permafrost microbial communities from Stordalen Mire, Sweden
     description: Thawing permafrost is one of the largest soil carbon pools on the planet.
       The goal of this project is to study microbial communities that participate in
@@ -19,7 +19,7 @@ study_set:
     study_category: research_study
   - id: nmdc:sty-99-oJmAOs
     gold_study_identifiers:
-      - gold:Gs0130354
+      - gold:Gs121212
     name: Forest soil microbial communities from Barre Woods Harvard Forest LTER site,
       Petersham, Massachusetts, United States
     description: The goal of this study is to learn the molecular mechanisms underlying
@@ -69,13 +69,13 @@ omics_processing_set:
     add_date: 17-AUG-17 05.08.38.451000000 PM
     mod_date: 16-OCT-20 02.04.01.374000000 AM
     has_output:
-      - jgi:599c3a117ded5e41edd7da77
+      - nmdc:dobj-00-90125
     ncbi_project_name: Forest soil microbial communities from Barre Woods Harvard Forest
       LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O
     omics_type:
       has_raw_value: Metagenome
     part_of:
-      - gold:Gs0130354
+      - nmdc:sty-00-31415
     processing_institution: JGI
     type: nmdc:OmicsProcessing
   - id: nmdc:omprc-99-dk9vgI
@@ -88,13 +88,13 @@ omics_processing_set:
     add_date: 17-MAR-17 04.55.44.822000000 PM
     mod_date: 22-MAY-20 06.38.19.576000000 PM
     has_output:
-      - jgi:58b653757ded5e7a2af951c4
+      - nmdc:dobj-00-pizza
     ncbi_project_name: Permafrost microbial communities from Stordalen Mire, Sweden
       - 611E1M metaG
     omics_type:
       has_raw_value: Metagenome
     part_of:
-      - gold:Gs0128849
+      - nmdc:sty-00-8675309
     processing_institution: JGI
     type: nmdc:OmicsProcessing
   - id: nmdc:omprc-99-MVW1FV
@@ -109,13 +109,13 @@ omics_processing_set:
     add_date: 29-MAR-18 01.27.30.036000000 PM
     mod_date: 04-APR-20 08.26.35.067000000 AM
     has_output:
-      - jgi:5baa816646d1e63f764deb37
+      - nmdc:dobj-00-mobydick
     ncbi_project_name: Rhizosphere microbial communities from Carex aquatilis grown
       in University of Washington, Seatle, WA, United States - 4-1-23 metaG
     omics_type:
       has_raw_value: Metagenome
     part_of:
-      - gold:Gs0134277
+      - nmdc:sty-00-avacado
     processing_institution: JGI
     type: nmdc:OmicsProcessing
 biosample_set:
@@ -126,7 +126,7 @@ biosample_set:
     description: Permafrost microbial communities from Stordalen Mire, Sweden
     type: nmdc:Biosample
     part_of:
-      - gold:Gs0128849
+      - nmdc:sty-00-8675309
     #    collection_date:
     #      has_raw_value: '2011-06-15'
     env_broad_scale:
@@ -170,7 +170,7 @@ biosample_set:
       organic horizon - top 4cm of soil
     type: nmdc:Biosample
     part_of:
-      - gold:Gs0128849
+      - nmdc:sty-00-8675309
     #    collection_date:
     #      has_raw_value: '2017-05-24'
     env_broad_scale:
@@ -214,7 +214,7 @@ biosample_set:
       peat from a thermokarst bog, University of Washington, Seatle, WA, United States
     type: nmdc:Biosample
     part_of:
-      - gold:Gs0128849
+      - nmdc:sty-00-8675309
     #    collection_date:
     #      has_raw_value: '2018-01-29'
     env_broad_scale:

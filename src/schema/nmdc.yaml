@@ -132,7 +132,7 @@ subsets:
     description:
       Subset consisting of the data objects that either inputs or outputs
       of processes or workflows.
-  data_portal_subset: 
+  data_portal_subset:
     description:
       Subset consisting of entities that Kitware/nmdc-server use to populate the data portal.
     comments:
@@ -1140,6 +1140,9 @@ classes:
       part_of:
         required: true
         range: Study
+        inlined: false
+        inlined_as_list: false
+        pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
 
       fire:
         comments:
@@ -1578,6 +1581,14 @@ classes:
           interpolated: true
       has_input:
         required: true
+        comments:
+          - pattern should allow typecode for Biosample and ProcessedSample
+      part_of:
+        range: Study
+        pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
+      has_output:
+        range: DataObject
+        pattern: "^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted DataObject structured_pattern
     broad_mappings:
       - OBI:0000070
       - ISA:Assay
@@ -2714,7 +2725,7 @@ slots:
       - data_portal_subset
     description: One or more DOIs that links a study, or similar entity, to a publication.
     aliases:
-    - publications
+      - publications
     examples:
       - value: doi:10.1126/science.1058040
         description:

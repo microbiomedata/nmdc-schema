@@ -1,8 +1,0 @@
-@prefix nmdc: <https://w3id.org/nmdc/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
-[] a nmdc:FunctionalAnnotationAggMember ;
-    nmdc:count 120 ;
-    nmdc:gene_function_id "KEGG.ORTHOLOGY:K00627"^^xsd:anyURI ;
-    nmdc:metagenome_annotation_id nmdc:8253bcdcd0387177ff895c38a047c719 .
-

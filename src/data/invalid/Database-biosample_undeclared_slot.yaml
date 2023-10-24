@@ -7,7 +7,7 @@ biosample_set:
     description: Bulk Aqueous phase filtered water
     type: nmdc:Biosample
     part_of:
-      - gold:Gs0128849
+      - nmdc:sty-00-8675309
     env_broad_scale:
       has_raw_value: ENVO:00002030
       term:
@@ -45,7 +45,7 @@ biosample_set:
     description: Bulk Aqueous phase filtered water
     type: nmdc:Biosample
     part_of:
-      - gold:Gs0128849
+      - nmdc:sty-00-8675309
     env_broad_scale:
       has_raw_value: ENVO:00002030
       term:
@@ -83,7 +83,7 @@ biosample_set:
     description: Bulk Aqueous phase filtered water
     type: nmdc:Biosample
     part_of:
-      - gold:Gs0128849
+      - nmdc:sty-00-8675309
     env_broad_scale:
       has_raw_value: ENVO:00002030
       term:

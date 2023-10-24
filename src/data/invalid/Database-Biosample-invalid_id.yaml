@@ -1,7 +1,7 @@
 biosample_set:
   - id: local
     part_of:
-      - gold:Gs0128849
+      - nmdc:sty-00-8675309
     env_broad_scale:
       term:
         id: ENVO:00002030

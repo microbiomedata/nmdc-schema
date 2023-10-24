@@ -1,6 +1,6 @@
 id: nmdc:bsm-99-dtTMNb
 part_of:
-  - gold:Gs0110115
+  - nmdc:sty-00-abc123
 env_broad_scale:
   has_raw_value: ENVO:00002030
   term:
