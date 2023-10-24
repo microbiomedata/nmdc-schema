@@ -1391,12 +1391,13 @@ classes:
       - title: dataset_award_dois_required
         description: >-
           If doi_category is a publication_doi, then doi_provider is not required. Otherwise, doi_provider is required.
+        open_world: true
         preconditions:
           slot_conditions:
             doi_category:
-              equals_string_in: 
-                - dataset_doi
-                - award_doi
+              any_of: 
+                - equals_string: dataset_doi
+                - equals_string: award_doi
         postconditions:
           slot_conditions:
             doi_provider:
