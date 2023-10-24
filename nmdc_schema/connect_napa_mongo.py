@@ -267,6 +267,15 @@ for doc in omics_coll.find(Gs0114663_legacy_omics):
 f_omics_id_mapping.close()
 f_omics_set_operation.close()
 
+#update gold project ids for omics_records
+Gs0114663_mgs=open("Gs0114663_mg_omics.txt", 'r')
+for gold_sp_updates in Gs0114663_mgs:
+  gold_sp_info=gold_sp_updates.split()
+  gold_sp_list=[]
+  gold_sp_list.append(gold_sp_info[1])
+  gold_sp_target_id={"id":gold_sp_info[2]}
+  gold_sp_target_update={ "$set": { "gold_sequencing_project_identifiers":gold_sp_list}}
+  omics_coll.update_one(gold_sp_target_id,gold_sp_target_update) 
 #f.close()
 #example regex
 #myquery = { "id": {"$regex" :"^gold*"}}
