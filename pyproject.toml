@@ -99,4 +99,4 @@ nmdc-version = "nmdc_schema.nmdc_version:cli"
 pure-export = "nmdc_schema.mongo_dump_api_emph:cli"
 test-more-tolerant-schema = "nmdc_schema.test_more_tolerant_schema:do_test"
 get-study-doi-report = "nmdc_schema.get_study_doi_report:get_dois"
-
+build-datafile-from-api-requests = "nmdc_schema.build_datafile_from_api_requests:main"

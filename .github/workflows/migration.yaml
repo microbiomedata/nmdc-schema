@@ -27,6 +27,7 @@ jobs:
       - run: make squeaky-clean all test
       - run: touch local/.env # create empty .env file
       - run: make make-rdf
+      #      - run: make validate-Gs0114663-study-biosample-ids
       - run: tdb2.tdbloader --loc=tdbcontent --graph=https://w3id.org/nmdc/nmdc project/owl/nmdc.owl.ttl
       - run: tdb2.tdbloader --loc=tdbcontent --graph=mongodb://mongo-loadbalancer.nmdc.production.svc.spin.nersc.gov:27017 local/mongo_as_nmdc_database_cuire_repaired.ttl
       - run: tdb2.tdbquery  --loc=tdbcontent --query=assets/sparql/tdb-test.rq

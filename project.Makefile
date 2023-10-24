@@ -427,22 +427,25 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--skip-collection-check
 
 
-local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
-	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
-	time $(RUN) migration-recursion \
-		--schema-path $(word 1,$^) \
-		--input-path $(word 2,$^) \
-		--salvage-prefix nmdc \
-		--output-path $@
+#local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
+#	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
+#	time $(RUN) migration-recursion \
+#		--schema-path $(word 1,$^) \
+#		--input-path $(word 2,$^) \
+#		--salvage-prefix nmdc \
+#		--output-path $@
+#
+#local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
+#	# nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml or nmdc_schema/nmdc_materialized_patterns.yaml
+#	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_activity_set
+#	time $(RUN) linkml-validate --schema $^ > $@
 
-local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
-	# nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml or nmdc_schema/nmdc_materialized_patterns.yaml
-	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_activity_set
-	time $(RUN) linkml-validate --schema $^ > $@
-
-local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
+local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
-	time $(RUN) linkml-convert --output $@ --schema $^
+	time $(RUN) linkml-convert \
+		--no-validate \
+		--output $@ \
+		--schema $^
 #	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
 #	- $(RIOT) --validate $@ # < 1 minute
 
@@ -529,3 +532,60 @@ OmicsProcessing.tsv: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
 #counts-initial-gold-lc.txt counts-initial-gold-uc.txt \
 #counts-migrated-cas-lc.txt counts-migrated-cas-uc.txt \
 #counts-migrated-gold-lc.txt counts-migrated-gold-uc.txt
+
+
+#nmdc_schema/nmdc_schema_accepting_uncategorized_studies.yaml: src/schema/nmdc.yaml
+#	$(RUN) gen-linkml \
+#		--format yaml \
+#		--mergeimports \
+#		--metadata \
+#		--no-materialize-attributes \
+#		--no-materialize-patterns \
+#		--useuris \
+#		--output $@ $<
+#	yq -i '(.slots[] | select(.name == "study_category") | .required) = false' $@
+#
+#local/research_study_injected_for_Gs0114663_cuire_repaired.ttl: local/research_study_injected_for_Gs0114663_rdf_safe.ttl
+#	$(RUN) anyuri-strings-to-iris \
+#		--input-ttl $< \
+#		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
+#		--emsl-biosample-uuid-replacement emsl_biosample_uuid_like \
+#		--output-ttl $@
+#	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
+#	$(RIOT) --validate $@
+#
+#tdb-steps:
+##	# clean up tdbcontent
+##	~/apache-jena/bin/tdb2.tdbloader \
+##		--loc=tdbcontent \
+##		--graph=https://w3id.org/nmdc/nmdc project/owl/nmdc.owl.ttl
+##	~/apache-jena/bin/tdb2.tdbloader \
+##		--loc=tdbcontent \
+##		--graph=mongodb://mongo-loadbalancer.nmdc.production.svc.spin.nersc.gov:27017 local/research_study_injected_for_Gs0114663_cuire_repaired.ttl
+##	~/apache-jena/bin/tdb2.tdbquery \
+##		--loc=tdbcontent \
+##		--query=assets/sparql/tdb-test.rq
+##	~/apache-jena/bin/tdb2.tdbquery \
+##		--loc=tdbcontent \
+##		--query=assets/sparql/tdb-graph-list.rq
+##	~/apache-jena/bin/tdb2.tdbquery \
+##		--loc=tdbcontent \
+##		--query=assets/sparql/Gs0114663-construct.rq
+
+validate-filtered-request-all: validate-filtered-request-clean assets/filtered-api-requests/filtered-request-validation-log.txt
+
+.PHONY: validate-filtered-request-all validate-filtered-request-clean
+
+validate-filtered-request-clean:
+	rm -rf assets/filtered-api-requests/*
+
+# user is responsible for providing pre-tested, properly escaped, filtered https://api-napa.microbiomedata.org/docs#/metadata requests
+# todo: explicitly running this through the python interpreter emits less logging
+assets/filtered-api-requests/filtered-request-result.yaml:
+	$(RUN) build-datafile-from-api-requests \
+		--output-file $@ \
+		--api-url "https://api-napa.microbiomedata.org/nmdcschema/study_set?filter=%7B%22id%22%3A%22nmdc%3Asty-11-aygzgv51%22%7D&max_page_size=999999" \
+		--api-url "https://api-napa.microbiomedata.org/nmdcschema/biosample_set?filter=%7B%22part_of%22%3A%22nmdc%3Asty-11-aygzgv51%22%7D&max_page_size=999999"
+
+assets/filtered-api-requests/filtered-request-validation-log.txt: src/schema/nmdc.yaml assets/filtered-api-requests/filtered-request-result.yaml
+	- $(RUN) linkml-validate --schema $^ > $@

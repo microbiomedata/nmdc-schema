@@ -15,6 +15,7 @@ click_log.basic_config(logger)
 doi_url_pattern = r'^https?:\/\/[a-zA-Z\.]+\/10\.'
 curie_pattern = r'^[a-zA-Z_][a-zA-Z0-9_-]*:[a-zA-Z0-9_][a-zA-Z0-9_.-]*$'
 
+
 class MigratorBase:
     """Base class containing properties and methods useful to its descendants."""
 
@@ -89,7 +90,7 @@ class MigratorBase:
         with open(filename, "r") as f:
             data = yaml.safe_load(f)
         return data
-    
+
 
 class Migrator_from_7_7_2_to_7_8_0(MigratorBase):
     """Methods related to migrating documents from schema 7.7.2 to 7.8.0"""
@@ -145,7 +146,7 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
         Note: If the identifier contains more than one colon, everything after the second
               colon will be discarded.
         """
-        
+
         standardized_identifiers = []
         for identifier in identifiers:
             logger.info(f"Original identifier: {identifier}")
@@ -175,7 +176,8 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
     def standardize_letter_casing_of_gold_sequencing_project_identifiers(self, omics_processing: dict) -> dict:
         field_name = "gold_sequencing_project_identifiers"
         if field_name in omics_processing and omics_processing[field_name]:
-            omics_processing[field_name] = self.standardize_letter_casing_of_gold_identifiers(omics_processing[field_name])
+            omics_processing[field_name] = self.standardize_letter_casing_of_gold_identifiers(
+                omics_processing[field_name])
         else:
             omics_processing[field_name] = []
         return omics_processing
@@ -195,7 +197,7 @@ class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
               It was designed for use during developer training and
               to serve as a template for production "migrator" classes.
     """
-    
+
     def __init__(self) -> None:
         """
         TUTORIAL: This is the "constructor" function of the class.
@@ -264,6 +266,23 @@ class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
         return study
 
 
+class Migrator_from_8_0_0_to_research_study_study_category(MigratorBase):
+    def __init__(self) -> None:
+        """Invokes parent constructor and populates collection-to-transformations map."""
+
+        super().__init__()
+
+        # Populate the "collection-to-transformers" map for this specific migration.
+        self.agenda = dict(
+            study_set=[self.force_research_study_study_category],
+        )
+
+    def force_research_study_study_category(self, study: dict) -> dict:
+        logger.info(f"Forcing 'study_category: research_study' on {study['id']}")
+        study['study_category'] = 'research_study'
+        return study
+
+
 @click.command()
 @click_log.simple_verbosity_option(logger)
 @click.option("--schema-path", default='nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml', required=True, type=str,
@@ -282,7 +301,7 @@ def main(schema_path, input_path, output_path, salvage_prefix):
     See source code for initial and final schema versions.
     """
 
-    migrator = Migrator_from_7_8_0_to_8_0_0()
+    migrator = Migrator_from_8_0_0_to_research_study_study_category()
     migrator.forced_prefix = salvage_prefix
 
     # Load the schema and determine which of its slots we can migrate.
