@@ -1,5 +1,7 @@
 id: nmdc:sty-11-ab
 name: see also description, title, objective, various alternatives
+emsl_project_dois: 
+  - "doi:10.25585/1487763"
 description: see also name, title, objective, various alternatives
 alternative_identifiers:
   - generic:abc1
