@@ -34,6 +34,9 @@ classes:
       - SampleOperation
     slots:
       - designated_class
+      - speed
+      - run_time
+      - temperature
     slot_usage:
       has_input:
         #        structured_pattern:
@@ -258,9 +261,6 @@ classes:
     exact_mappings:
       - OBI:0000968
     slots:
-      - speed
-      - run_time
-      - temperature
       - description
       - device_type
 

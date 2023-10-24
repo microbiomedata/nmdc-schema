@@ -57,12 +57,13 @@ material_processing_set:
       has_numeric_value: 50
     mixing:
       device_type: Orbital Shaker
-      speed:
-        has_unit: RPM
-        has_numeric_value: 200
-      run_time:
-        has_unit: hours
-        has_numeric_value: 2
+      # move indent one level up >>
+    speed:
+      has_unit: RPM
+      has_numeric_value: 200
+    run_time:
+      has_unit: hours
+      has_numeric_value: 2
   - id: nmdc:sops-99-oW43DzG3 #microbiomass:11
     designated_class: nmdc:ExtractionProcess
     has_input: 
