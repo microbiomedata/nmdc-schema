@@ -6,8 +6,8 @@ description: unconstrained text
 alternative_identifiers:
   - generic:abc123
 part_of:
-  - nmdc:unconstrained_study_identifier_string1_needs_pattern_materialization_what_about_referential_integrity
-  - nmdc:unconstrained_study_identifier_string2
+  - nmdc:sty-00-987654
+  - nmdc:sty-00-qwerty
 env_broad_scale:
   has_raw_value: ENVO:00002030
   term:

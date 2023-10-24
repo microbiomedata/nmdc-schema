@@ -1,7 +1,7 @@
 study_set:
 - id: nmdc:sty-99-boww8R
   gold_study_identifiers:
-  - gold:Gs0110115
+  - nmdc:sty-00-abc123
   name: Avena fatua rhizosphere microbial communities from Hopland, California, USA,
     for root-enhanced decomposition of organic matter studies
   description: Using analytical expertise at both the JGI and EMSL, we plan to follow
@@ -94,7 +94,7 @@ study_set:
   type: nmdc:Study
 - id: nmdc:sty-99-dkDZYe
   gold_study_identifiers:
-  - gold:Gs0112340
+  - nmdc:sty-00-555xxx
   name: Thawing permafrost microbial communities from the Arctic, studying carbon
     transformations
   description: 'A fundamental challenge of microbial environmental science is to understand
