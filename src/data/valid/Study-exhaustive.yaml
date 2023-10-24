@@ -29,8 +29,15 @@ principal_investigator:
   websites:
     - https://www.jcvi.org/
     - https://www.jcvi.org/about/j-craig-venter
-publication_dois:
-  - doi:10.1126/science.1058040
+associated_dois:
+  - doi: doi:10.1126/science.1058040
+    doi_category: publication_doi
+  - doi: doi:10.1126/science.1456956
+    doi_provider: kbase
+    doi_category: dataset_doi
+  - doi: doi:10.1126/science.1234545
+    doi_provider: jgi
+    doi_category: award_doi
 title: Sample Exhaustive Biosample instance. Although all of these values should pass
   validation, that does not mean that any Biosample of any type would necessarily
   have this particular combination of values.
@@ -49,9 +56,6 @@ objective: This record, an instance of class Study from the nmdc-schema was had 
 websites:
   - https://w3id.org/nmdc
   - https://w3id.org/linkml
-ess_dive_datasets:
-  - any string 1
-  - any string 2
 type: any string
 relevant_protocols:
   - any string 1
