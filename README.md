@@ -38,11 +38,17 @@ primer provides some the context for this project.
 
 **New system requirement: [Mike Farah's GO-based yq](https://github.com/mikefarah/yq)**
 
-Some optional components use the Java-based [ROBOT](http://robot.obolibrary.org/), which might be replaced with Jena arq
-in the future. Jena riot is also a part of the MongoDB dumping, repairing and validation workflow, if the user wishes
+Some optional components use the Java-based [ROBOT](http://robot.obolibrary.org/) or Jena arq.
+Jena riot is also a part of the MongoDB dumping, repairing and validation workflow, if the user wishes
 to generate and validate RDF/TTL.
 
 See [MAINTAINERS.md](MAINTAINERS.md) for instructions on maintaining and updating the schema.
+
+## Makefiles
+
+This repo contains 2 Makefiles:
+- `Makefile`, based on the generic Makefile from the [LinkML cookiecutter](https://github.com/linkml/linkml-project-cookiecutter)
+- `project.Makefile`, which contains targets that are specific to this project
 
 ## Data downloads
 
