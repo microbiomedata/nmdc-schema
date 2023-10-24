@@ -13,8 +13,10 @@ study_set:
     specific_ecosystem: Permafrost
     principal_investigator:
       has_raw_value: Virginia Rich
-    award_dois:
-      - doi:10.25585/1488217 # https://doi.org/10.25585/1488217 / https://www.osti.gov/dataexplorer/biblio/dataset/1488217 -> https://genome.jgi.doe.gov/portal/Somoldmmetaomics/Somoldmmetaomics.info.html
+    associated_dois:
+      - doi: doi:10.25585/1488217 # https://doi.org/10.25585/1488217 / https://www.osti.gov/dataexplorer/biblio/dataset/1488217 -> https://genome.jgi.doe.gov/portal/Somoldmmetaomics/Somoldmmetaomics.info.html
+        doi_category: dataset_doi
+        doi_provider: osti
     type: nmdc:Study
     study_category: research_study
   - id: nmdc:sty-99-oJmAOs
@@ -32,8 +34,10 @@ study_set:
     specific_ecosystem: Forest Soil
     principal_investigator:
       has_raw_value: Jeffrey Blanchard
-    award_dois:
-      - doi:10.25585/1488215 # https://www.osti.gov/dataexplorer/biblio/dataset/1488215 -> https://genome.jgi.doe.gov/portal/Molmecexpwarming/Molmecexpwarming.info.html
+    associated_dois:
+      - doi: doi:10.25585/1488215 # https://www.osti.gov/dataexplorer/biblio/dataset/1488215 -> https://genome.jgi.doe.gov/portal/Molmecexpwarming/Molmecexpwarming.info.html
+        doi_category: dataset_doi
+        doi_provider: osti
     type: nmdc:Study
     study_category: consortium
   - id: nmdc:sty-99-3bQQ4j
@@ -51,8 +55,10 @@ study_set:
     specific_ecosystem: Soil
     principal_investigator:
       has_raw_value: Rebecca Neumann
-    award_dois:
-      - doi:10.25585/1488209 # https://www.osti.gov/dataexplorer/biblio/dataset/1488209 -> https://genome.jgi.doe.gov/portal/ARhifrWetlands/ARhifrWetlands.info.html
+    associated_dois:
+      - doi: doi:10.25585/1488209 # https://www.osti.gov/dataexplorer/biblio/dataset/1488209 -> https://genome.jgi.doe.gov/portal/ARhifrWetlands/ARhifrWetlands.info.html
+        doi_category: dataset_doi
+        doi_provider: osti
     type: nmdc:Study
     study_category: research_study
 omics_processing_set:
