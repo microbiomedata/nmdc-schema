@@ -1,0 +1,1 @@
+✗ 'study_category' is a required property in $.study_set[0]

@@ -1,0 +1,4106 @@
+biosample_set:
+- add_date: '2015-05-28'
+  alternative_identifiers:
+  - img.taxon:3300042754
+  collection_date:
+    has_raw_value: '2014-11-25'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.5
+    has_raw_value: '0.5'
+    has_unit: meter
+  description: Sterilized sand packs were incubated back in the ground and collected
+    at time point T4.
+  ecosystem: Engineered
+  ecosystem_category: Artificial ecosystem
+  ecosystem_subtype: Unclassified
+  ecosystem_type: Sand microcosm
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:01000621
+    term:
+      id: ENVO:01000621
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0115231
+  habitat: sand microcosm
+  id: nmdc:bsm-11-8362vs44
+  insdc_biosample_identifiers:
+  - biosample:SAMN06343877
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: groundwater-surface water interaction zone in Washington, USA
+  mod_date: '2021-06-17'
+  name: Sand microcosm microbial communities from a hyporheic zone in Columbia River,
+    Washington, USA - GW-RW T4_25-Nov-14
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW T4_25-Nov-14
+  sample_collection_site: sand microcosm
+  specific_ecosystem: Unclassified
+  type: nmdc:Biosample
+- add_date: '2015-05-28'
+  alternative_identifiers:
+  - img.taxon:3300042744
+  collection_date:
+    has_raw_value: '2014-09-23'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.5
+    has_raw_value: '0.5'
+    has_unit: meter
+  description: Sterilized sand packs were incubated back in the ground and collected
+    at time point T3.
+  ecosystem: Engineered
+  ecosystem_category: Artificial ecosystem
+  ecosystem_subtype: Unclassified
+  ecosystem_type: Sand microcosm
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:01000621
+    term:
+      id: ENVO:01000621
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0115220
+  habitat: sand microcosm
+  id: nmdc:bsm-11-4qsqg549
+  insdc_biosample_identifiers:
+  - biosample:SAMN06343866
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: groundwater-surface water interaction zone in Washington, USA
+  mod_date: '2021-06-17'
+  name: Sand microcosm microbial communities from a hyporheic zone in Columbia River,
+    Washington, USA - GW-RW T3_23-Sept-14
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW T3_23-Sept-14
+  sample_collection_site: sand microcosm
+  specific_ecosystem: Unclassified
+  type: nmdc:Biosample
+- add_date: '2015-05-28'
+  alternative_identifiers:
+  - img.taxon:3300042791
+  collection_date:
+    has_raw_value: '2014-11-25'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.5
+    has_raw_value: '0.5'
+    has_unit: meter
+  description: Sterilized sand packs were incubated back in the ground and collected
+    at time point T3.
+  ecosystem: Engineered
+  ecosystem_category: Artificial ecosystem
+  ecosystem_subtype: Unclassified
+  ecosystem_type: Sand microcosm
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:01000621
+    term:
+      id: ENVO:01000621
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0115221
+  habitat: sand microcosm
+  id: nmdc:bsm-11-ynevd369
+  insdc_biosample_identifiers:
+  - biosample:SAMN06343867
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: groundwater-surface water interaction zone in Washington, USA
+  mod_date: '2021-06-17'
+  name: Sand microcosm microbial communities from a hyporheic zone in Columbia River,
+    Washington, USA - GW-RW T3_25-Nov-14
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW T3_25-Nov-14
+  sample_collection_site: sand microcosm
+  specific_ecosystem: Unclassified
+  type: nmdc:Biosample
+- add_date: '2015-05-28'
+  alternative_identifiers:
+  - img.taxon:3300042751
+  collection_date:
+    has_raw_value: '2014-05-21'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.5
+    has_raw_value: '0.5'
+    has_unit: meter
+  description: Sterilized sand packs were incubated back in the ground and collected
+    at time point T4.
+  ecosystem: Engineered
+  ecosystem_category: Artificial ecosystem
+  ecosystem_subtype: Unclassified
+  ecosystem_type: Sand microcosm
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:01000621
+    term:
+      id: ENVO:01000621
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0115228
+  habitat: sand microcosm
+  id: nmdc:bsm-11-5xjtzc47
+  insdc_biosample_identifiers:
+  - biosample:SAMN06343874
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: groundwater-surface water interaction zone in Washington, USA
+  mod_date: '2021-06-17'
+  name: Sand microcosm microbial communities from a hyporheic zone in Columbia River,
+    Washington, USA - GW-RW T4_21-May-14
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW T4_21-May-14
+  sample_collection_site: sand microcosm
+  specific_ecosystem: Unclassified
+  type: nmdc:Biosample
+- add_date: '2015-05-28'
+  alternative_identifiers:
+  - img.taxon:3300042748
+  collection_date:
+    has_raw_value: '2014-08-12'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.5
+    has_raw_value: '0.5'
+    has_unit: meter
+  description: Sterilized sand packs were incubated back in the ground and collected
+    at time point T4.
+  ecosystem: Engineered
+  ecosystem_category: Artificial ecosystem
+  ecosystem_subtype: Unclassified
+  ecosystem_type: Sand microcosm
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:01000621
+    term:
+      id: ENVO:01000621
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0115225
+  habitat: sand microcosm
+  id: nmdc:bsm-11-wzdqhh45
+  insdc_biosample_identifiers:
+  - biosample:SAMN06343871
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: groundwater-surface water interaction zone in Washington, USA
+  mod_date: '2021-06-17'
+  name: Sand microcosm microbial communities from a hyporheic zone in Columbia River,
+    Washington, USA - GW-RW T4_12-Aug-14
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW T4_12-Aug-14
+  sample_collection_site: sand microcosm
+  specific_ecosystem: Unclassified
+  type: nmdc:Biosample
+- add_date: '2015-05-28'
+  alternative_identifiers:
+  - img.taxon:3300042750
+  collection_date:
+    has_raw_value: '2014-09-02'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.5
+    has_raw_value: '0.5'
+    has_unit: meter
+  description: Sterilized sand packs were incubated back in the ground and collected
+    at time point T4.
+  ecosystem: Engineered
+  ecosystem_category: Artificial ecosystem
+  ecosystem_subtype: Unclassified
+  ecosystem_type: Sand microcosm
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:01000621
+    term:
+      id: ENVO:01000621
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0115227
+  habitat: sand microcosm
+  id: nmdc:bsm-11-5h7px351
+  insdc_biosample_identifiers:
+  - biosample:SAMN06343873
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: groundwater-surface water interaction zone in Washington, USA
+  mod_date: '2021-06-17'
+  name: Sand microcosm microbial communities from a hyporheic zone in Columbia River,
+    Washington, USA - GW-RW T4_2-Sept-14
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW T4_2-Sept-14
+  sample_collection_site: sand microcosm
+  specific_ecosystem: Unclassified
+  type: nmdc:Biosample
+- add_date: '2015-05-28'
+  alternative_identifiers:
+  - img.taxon:3300042747
+  collection_date:
+    has_raw_value: '2014-06-10'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.5
+    has_raw_value: '0.5'
+    has_unit: meter
+  description: Sterilized sand packs were incubated back in the ground and collected
+    at time point T4.
+  ecosystem: Engineered
+  ecosystem_category: Artificial ecosystem
+  ecosystem_subtype: Unclassified
+  ecosystem_type: Sand microcosm
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:01000621
+    term:
+      id: ENVO:01000621
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0115224
+  habitat: sand microcosm
+  id: nmdc:bsm-11-vg9vy382
+  insdc_biosample_identifiers:
+  - biosample:SAMN06343870
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: groundwater-surface water interaction zone in Washington, USA
+  mod_date: '2021-06-17'
+  name: Sand microcosm microbial communities from a hyporheic zone in Columbia River,
+    Washington, USA - GW-RW T4_10-June-14
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW T4_10-June-14
+  sample_collection_site: sand microcosm
+  specific_ecosystem: Unclassified
+  type: nmdc:Biosample
+- add_date: '2015-05-28'
+  alternative_identifiers:
+  - img.taxon:3300042742
+  collection_date:
+    has_raw_value: '2014-11-25'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.5
+    has_raw_value: '0.5'
+    has_unit: meter
+  description: Sterilized sand packs were incubated back in the ground and collected
+    at time point T2.
+  ecosystem: Engineered
+  ecosystem_category: Artificial ecosystem
+  ecosystem_subtype: Unclassified
+  ecosystem_type: Sand microcosm
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:01000621
+    term:
+      id: ENVO:01000621
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0115218
+  habitat: sand microcosm
+  id: nmdc:bsm-11-qxntpg05
+  insdc_biosample_identifiers:
+  - biosample:SAMN06343864
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: groundwater-surface water interaction zone in Washington, USA
+  mod_date: '2021-06-17'
+  name: Sand microcosm microbial communities from a hyporheic zone in Columbia River,
+    Washington, USA - GW-RW T2_25-Nov-14
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW T2_25-Nov-14
+  sample_collection_site: sand microcosm
+  specific_ecosystem: Unclassified
+  type: nmdc:Biosample
+- add_date: '2015-05-28'
+  alternative_identifiers:
+  - img.taxon:3300042752
+  collection_date:
+    has_raw_value: '2014-07-22'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.5
+    has_raw_value: '0.5'
+    has_unit: meter
+  description: Sterilized sand packs were incubated back in the ground and collected
+    at time point T4.
+  ecosystem: Engineered
+  ecosystem_category: Artificial ecosystem
+  ecosystem_subtype: Unclassified
+  ecosystem_type: Sand microcosm
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:01000621
+    term:
+      id: ENVO:01000621
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0115229
+  habitat: sand microcosm
+  id: nmdc:bsm-11-a5d23e19
+  insdc_biosample_identifiers:
+  - biosample:SAMN06343875
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: groundwater-surface water interaction zone in Washington, USA
+  mod_date: '2021-06-17'
+  name: Sand microcosm microbial communities from a hyporheic zone in Columbia River,
+    Washington, USA- GW-RW T4_22-July-14
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW T4_22-July-14
+  sample_collection_site: sand microcosm
+  specific_ecosystem: Unclassified
+  type: nmdc:Biosample
+- add_date: '2015-05-28'
+  alternative_identifiers:
+  - img.taxon:3300042755
+  collection_date:
+    has_raw_value: '2014-04-30'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.5
+    has_raw_value: '0.5'
+    has_unit: meter
+  description: Sterilized sand packs were incubated back in the ground and collected
+    at time point T4.
+  ecosystem: Engineered
+  ecosystem_category: Artificial ecosystem
+  ecosystem_subtype: Unclassified
+  ecosystem_type: Sand microcosm
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:01000621
+    term:
+      id: ENVO:01000621
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0115232
+  habitat: sand microcosm
+  id: nmdc:bsm-11-j0wbx741
+  insdc_biosample_identifiers:
+  - biosample:SAMN06343878
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: groundwater-surface water interaction zone in Washington, USA
+  mod_date: '2021-06-17'
+  name: Sand microcosm microbial communities from a hyporheic zone in Columbia River,
+    Washington, USA - GW-RW T4_30-Apr-14
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW T4_30-Apr-14
+  sample_collection_site: sand microcosm
+  specific_ecosystem: Unclassified
+  type: nmdc:Biosample
+- add_date: '2015-05-28'
+  alternative_identifiers:
+  - img.taxon:3300042741
+  collection_date:
+    has_raw_value: '2014-09-23'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.5
+    has_raw_value: '0.5'
+    has_unit: meter
+  description: Sterilized sand packs were incubated back in the ground and collected
+    at time point T2.
+  ecosystem: Engineered
+  ecosystem_category: Artificial ecosystem
+  ecosystem_subtype: Unclassified
+  ecosystem_type: Sand microcosm
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:01000621
+    term:
+      id: ENVO:01000621
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0115217
+  habitat: sand microcosm
+  id: nmdc:bsm-11-qq8s6x03
+  insdc_biosample_identifiers:
+  - biosample:SAMN06343863
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: groundwater-surface water interaction zone in Washington, USA
+  mod_date: '2021-06-17'
+  name: Sand microcosm microbial communities from a hyporheic zone in Columbia River,
+    Washington, USA - GW-RW T2_23-Sept-14
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW T2_23-Sept-14
+  sample_collection_site: sand microcosm
+  specific_ecosystem: Unclassified
+  type: nmdc:Biosample
+- add_date: '2015-05-28'
+  alternative_identifiers:
+  - img.taxon:3300042745
+  collection_date:
+    has_raw_value: '2014-04-30'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.5
+    has_raw_value: '0.5'
+    has_unit: meter
+  description: Sterilized sand packs were incubated back in the ground and collected
+    at time point T3.
+  ecosystem: Engineered
+  ecosystem_category: Artificial ecosystem
+  ecosystem_subtype: Unclassified
+  ecosystem_type: Sand microcosm
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:01000621
+    term:
+      id: ENVO:01000621
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0115222
+  habitat: sand microcosm
+  id: nmdc:bsm-11-srz83p34
+  insdc_biosample_identifiers:
+  - biosample:SAMN06343868
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: groundwater-surface water interaction zone in Washington, USA
+  mod_date: '2021-06-17'
+  name: Sand microcosm microbial communities from a hyporheic zone in Columbia River,
+    Washington, USA - GW-RW T3_30-Apr-14
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW T3_30-Apr-14
+  sample_collection_site: sand microcosm
+  specific_ecosystem: Unclassified
+  type: nmdc:Biosample
+- add_date: '2015-05-28'
+  alternative_identifiers:
+  - img.taxon:3300042753
+  collection_date:
+    has_raw_value: '2014-09-23'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.5
+    has_raw_value: '0.5'
+    has_unit: meter
+  description: Sterilized sand packs were incubated back in the ground and collected
+    at time point T4.
+  ecosystem: Engineered
+  ecosystem_category: Artificial ecosystem
+  ecosystem_subtype: Unclassified
+  ecosystem_type: Sand microcosm
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:01000621
+    term:
+      id: ENVO:01000621
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0115230
+  habitat: sand microcosm
+  id: nmdc:bsm-11-pkgtg048
+  insdc_biosample_identifiers:
+  - biosample:SAMN06343876
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: groundwater-surface water interaction zone in Washington, USA
+  mod_date: '2021-06-17'
+  name: Sand microcosm microbial communities from a hyporheic zone in Columbia River,
+    Washington, USA - GW-RW T4_23-Sept-14
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW T4_23-Sept-14
+  sample_collection_site: sand microcosm
+  specific_ecosystem: Unclassified
+  type: nmdc:Biosample
+- add_date: '2015-05-28'
+  alternative_identifiers:
+  - img.taxon:3300042756
+  collection_date:
+    has_raw_value: '2014-11-04'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.5
+    has_raw_value: '0.5'
+    has_unit: meter
+  description: Sterilized sand packs were incubated back in the ground and collected
+    at time point T4.
+  ecosystem: Engineered
+  ecosystem_category: Artificial ecosystem
+  ecosystem_subtype: Unclassified
+  ecosystem_type: Sand microcosm
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:01000621
+    term:
+      id: ENVO:01000621
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0115233
+  habitat: sand microcosm
+  id: nmdc:bsm-11-11219w54
+  insdc_biosample_identifiers:
+  - biosample:SAMN06343879
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: groundwater-surface water interaction zone in Washington, USA
+  mod_date: '2021-06-17'
+  name: Sand microcosm microbial communities from a hyporheic zone in Columbia River,
+    Washington, USA - GW-RW T4_4-Nov-14
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW T4_4-Nov-14
+  sample_collection_site: sand microcosm
+  specific_ecosystem: Unclassified
+  type: nmdc:Biosample
+- add_date: '2015-05-28'
+  alternative_identifiers:
+  - img.taxon:3300042743
+  collection_date:
+    has_raw_value: '2014-04-30'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.5
+    has_raw_value: '0.5'
+    has_unit: meter
+  description: Sterilized sand packs were incubated back in the ground and collected
+    at time point T2.
+  ecosystem: Engineered
+  ecosystem_category: Artificial ecosystem
+  ecosystem_subtype: Unclassified
+  ecosystem_type: Sand microcosm
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:01000621
+    term:
+      id: ENVO:01000621
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0115219
+  habitat: sand microcosm
+  id: nmdc:bsm-11-qjtgh002
+  insdc_biosample_identifiers:
+  - biosample:SAMN06343865
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: groundwater-surface water interaction zone in Washington, USA
+  mod_date: '2021-06-17'
+  name: Sand microcosm microbial communities from a hyporheic zone in Columbia River,
+    Washington, USA - GW-RW T2_30-Apr-14
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW T2_30-Apr-14
+  sample_collection_site: sand microcosm
+  specific_ecosystem: Unclassified
+  type: nmdc:Biosample
+- add_date: '2015-05-28'
+  alternative_identifiers:
+  - img.taxon:3300042746
+  collection_date:
+    has_raw_value: '2014-07-01'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.5
+    has_raw_value: '0.5'
+    has_unit: meter
+  description: Sterilized sand packs were incubated back in the ground and collected
+    at time point T4.
+  ecosystem: Engineered
+  ecosystem_category: Artificial ecosystem
+  ecosystem_subtype: Unclassified
+  ecosystem_type: Sand microcosm
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:01000621
+    term:
+      id: ENVO:01000621
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0115223
+  habitat: sand microcosm
+  id: nmdc:bsm-11-47nxfg85
+  insdc_biosample_identifiers:
+  - biosample:SAMN06343869
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: groundwater-surface water interaction zone in Washington, USA
+  mod_date: '2021-06-17'
+  name: Sand microcosm microbial communities from a hyporheic zone in Columbia River,
+    Washington, USA - GW-RW T4_1-July-14
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW T4_1-July-14
+  sample_collection_site: sand microcosm
+  specific_ecosystem: Unclassified
+  type: nmdc:Biosample
+- add_date: '2015-05-28'
+  alternative_identifiers:
+  - img.taxon:3300042749
+  collection_date:
+    has_raw_value: '2014-10-14'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.5
+    has_raw_value: '0.5'
+    has_unit: meter
+  description: Sterilized sand packs were incubated back in the ground and collected
+    at time point T4.
+  ecosystem: Engineered
+  ecosystem_category: Artificial ecosystem
+  ecosystem_subtype: Unclassified
+  ecosystem_type: Sand microcosm
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:01000621
+    term:
+      id: ENVO:01000621
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0115226
+  habitat: sand microcosm
+  id: nmdc:bsm-11-sdhyr752
+  insdc_biosample_identifiers:
+  - biosample:SAMN06343872
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: groundwater-surface water interaction zone in Washington, USA
+  mod_date: '2021-06-17'
+  name: Sand microcosm microbial communities from a hyporheic zone in Columbia River,
+    Washington, USA - GW-RW T4_14-Oct-14
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW T4_14-Oct-14
+  sample_collection_site: sand microcosm
+  specific_ecosystem: Unclassified
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042757
+  collection_date:
+    has_raw_value: '2015-03-16'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.2
+    has_raw_value: '0.2'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with a lot of
+    surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
+    mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126424
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-r7ggfc16
+  insdc_biosample_identifiers:
+  - biosample:SAMN06266292
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with vegetation nearby
+    in Columbia River, Washington, USA - GW-RW S2_20_30
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S2_20_30
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042759
+  collection_date:
+    has_raw_value: '2015-03-12'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.2
+    has_raw_value: '0.2'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with no vegetation
+    in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126426
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-k3t2wk45
+  insdc_biosample_identifiers:
+  - biosample:SAMN06266284
+  lat_lon:
+    has_raw_value: 46.37380143 -119.2723688
+    latitude: 46.37380143
+    longitude: -119.2723688
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with no vegetation in Columbia
+    River, Washington, USA - GW-RW N1_20_30
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N1_20_30
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042760
+  collection_date:
+    has_raw_value: '2015-03-18'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.4
+    has_raw_value: '0.4'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with no vegetation
+    in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126427
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-mxdygh62
+  insdc_biosample_identifiers:
+  - biosample:SAMN06264429
+  lat_lon:
+    has_raw_value: 46.37379502 -119.2722385
+    latitude: 46.37379502
+    longitude: -119.2722385
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with no vegetation in Columbia
+    River, Washington, USA - GW-RW N3_40_50
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N3_40_50
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042766
+  collection_date:
+    has_raw_value: '2015-03-18'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.4
+    has_raw_value: '0.4'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with a lot of
+    surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
+    mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126433
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-0xprxw22
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267118
+  lat_lon:
+    has_raw_value: 46.37228508 -119.2716818
+    latitude: 46.37228508
+    longitude: -119.2716818
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with vegetation nearby
+    in Columbia River, Washington, USA - GW-RW S3_40_50
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S3_40_50
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042765
+  collection_date:
+    has_raw_value: '2015-03-24'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.2
+    has_raw_value: '0.2'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with a lot of
+    surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
+    mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126432
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-4vqhvw07
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267117
+  lat_lon:
+    has_raw_value: 46.37229149 -119.2718121
+    latitude: 46.37229149
+    longitude: -119.2718121
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with vegetation nearby
+    in Columbia River, Washington, USA - GW-RW S1_20_30
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S1_20_30
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042763
+  collection_date:
+    has_raw_value: '2015-03-18'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.1
+    has_raw_value: '0.1'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with a lot of
+    surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
+    mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126430
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-3sfanv57
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267115
+  lat_lon:
+    has_raw_value: 46.37228508 -119.2716818
+    latitude: 46.37228508
+    longitude: -119.2716818
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with vegetation nearby
+    in Columbia River, Washington, USA - GW-RW S3_10_20
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S3_10_20
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042762
+  collection_date:
+    has_raw_value: '2015-03-18'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0
+    has_raw_value: '0.0'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with a lot of
+    surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
+    mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126429
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-jdsasr43
+  insdc_biosample_identifiers:
+  - biosample:SAMN06264779
+  lat_lon:
+    has_raw_value: 46.37228508 -119.2716818
+    latitude: 46.37228508
+    longitude: -119.2716818
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with vegetation nearby
+    in Columbia River, Washington, USA - GW-RW S3_0_10
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S3_0_10
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042764
+  collection_date:
+    has_raw_value: '2015-03-18'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.3
+    has_raw_value: '0.3'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with no vegetation
+    in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126431
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-3yjh4z33
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267116
+  lat_lon:
+    has_raw_value: 46.37379502 -119.2722385
+    latitude: 46.37379502
+    longitude: -119.2722385
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with no vegetation in Columbia
+    River, Washington, USA - GW-RW N3_30_40
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N3_30_40
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042758
+  collection_date:
+    has_raw_value: '2015-03-18'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.1
+    has_raw_value: '0.1'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with no vegetation
+    in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126425
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-msqbhe76
+  insdc_biosample_identifiers:
+  - biosample:SAMN06265458
+  lat_lon:
+    has_raw_value: 46.37379502 -119.2722385
+    latitude: 46.37379502
+    longitude: -119.2722385
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with no vegetation in Columbia
+    River, Washington, USA - GW-RW N3_10_20
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N3_10_20
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042769
+  collection_date:
+    has_raw_value: '2015-03-12'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.1
+    has_raw_value: '0.1'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with no vegetation
+    in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126436
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-59xteq78
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267121
+  lat_lon:
+    has_raw_value: 46.37380143 -119.2723688
+    latitude: 46.37380143
+    longitude: -119.2723688
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with no vegetation in Columbia
+    River, Washington, USA - GW-RW N1_10_20
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N1_10_20
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042767
+  collection_date:
+    has_raw_value: '2015-03-24'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.3
+    has_raw_value: '0.3'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with a lot of
+    surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
+    mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126434
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-nbgp1x53
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267119
+  lat_lon:
+    has_raw_value: 46.37229149 -119.2718121
+    latitude: 46.37229149
+    longitude: -119.2718121
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with vegetation nearby
+    in Columbia River, Washington, USA - GW-RW S1_30_40
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S1_30_40
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042768
+  collection_date:
+    has_raw_value: '2015-03-12'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.5
+    has_raw_value: '0.5'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with no vegetation
+    in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126435
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-jdgzjq31
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267120
+  lat_lon:
+    has_raw_value: 46.37380273 -119.2723038
+    latitude: 46.37380273
+    longitude: -119.2723038
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with no vegetation in Columbia
+    River, Washington, USA - GW-RW N2_50_60
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N2_50_60
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042770
+  collection_date:
+    has_raw_value: '2015-03-12'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.3
+    has_raw_value: '0.3'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with no vegetation
+    in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126437
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-rtf54942
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267122
+  lat_lon:
+    has_raw_value: 46.37380273 -119.2723038
+    latitude: 46.37380273
+    longitude: -119.2723038
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with no vegetation in Columbia
+    River, Washington, USA - GW-RW N2_30_40
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N2_30_40
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042771
+  collection_date:
+    has_raw_value: '2015-03-24'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0
+    has_raw_value: '0.0'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with a lot of
+    surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
+    mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126438
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-kwfbp795
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267123
+  lat_lon:
+    has_raw_value: 46.37229149 -119.2718121
+    latitude: 46.37229149
+    longitude: -119.2718121
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with vegetation nearby
+    in Columbia River, Washington, USA - GW-RW S1_0_10
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S1_0_10
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042772
+  collection_date:
+    has_raw_value: '2015-03-12'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.4
+    has_raw_value: '0.4'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with no vegetation
+    in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126439
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-pq3zmp51
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267124
+  lat_lon:
+    has_raw_value: 46.37380273 -119.2723038
+    latitude: 46.37380273
+    longitude: -119.2723038
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with no vegetation in Columbia
+    River, Washington, USA - GW-RW N2_40_50
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N2_40_50
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042761
+  collection_date:
+    has_raw_value: '2015-03-24'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.4
+    has_raw_value: '0.4'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with a lot of
+    surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
+    mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126428
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-v0q5ak63
+  insdc_biosample_identifiers:
+  - biosample:SAMN06266285
+  lat_lon:
+    has_raw_value: 46.37229149 -119.2718121
+    latitude: 46.37229149
+    longitude: -119.2718121
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with vegetation nearby
+    in Columbia River, Washington, USA - GW-RW S1_40_50
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S1_40_50
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042773
+  collection_date:
+    has_raw_value: '2015-03-12'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.3
+    has_raw_value: '0.3'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with no vegetation
+    in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126440
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-tzp60785
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267125
+  lat_lon:
+    has_raw_value: 46.37380143 -119.2723688
+    latitude: 46.37380143
+    longitude: -119.2723688
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with no vegetation in Columbia
+    River, Washington, USA - GW-RW N1_30_40
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N1_30_40
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042774
+  collection_date:
+    has_raw_value: '2015-03-18'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.5
+    has_raw_value: '0.5'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with no vegetation
+    in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126441
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-pvcgp635
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267126
+  lat_lon:
+    has_raw_value: 46.37379502 -119.2722385
+    latitude: 46.37379502
+    longitude: -119.2722385
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with no vegetation in Columbia
+    River, Washington, USA - GW-RW N3_50_60
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N3_50_60
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042776
+  collection_date:
+    has_raw_value: '2015-03-12'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0
+    has_raw_value: '0.0'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with no vegetation
+    in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126443
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-qpve9v25
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267128
+  lat_lon:
+    has_raw_value: 46.37380273 -119.2723038
+    latitude: 46.37380273
+    longitude: -119.2723038
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with no vegetation in Columbia
+    River, Washington, USA - GW-RW N2_0_30
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N2_0_30
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042775
+  collection_date:
+    has_raw_value: '2015-03-24'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.1
+    has_raw_value: '0.1'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with a lot of
+    surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
+    mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126442
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-fgtanh42
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267127
+  lat_lon:
+    has_raw_value: 46.37229149 -119.2718121
+    latitude: 46.37229149
+    longitude: -119.2718121
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with vegetation nearby
+    in Columbia River, Washington, USA - GW-RW S1_10_20
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S1_10_20
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042777
+  collection_date:
+    has_raw_value: '2015-03-18'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0
+    has_raw_value: '0.0'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with no vegetation
+    in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126444
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-g079t498
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267129
+  lat_lon:
+    has_raw_value: 46.37380143 -119.2723688
+    latitude: 46.37380143
+    longitude: -119.2723688
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with no vegetation in Columbia
+    River, Washington, USA - GW-RW N1_0_10
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N1_0_10
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042778
+  collection_date:
+    has_raw_value: '2015-03-18'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.3
+    has_raw_value: '0.3'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with a lot of
+    surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
+    mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126445
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-n80sx618
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267130
+  lat_lon:
+    has_raw_value: 46.37228508 -119.2716818
+    latitude: 46.37228508
+    longitude: -119.2716818
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with vegetation nearby
+    in Columbia River, Washington, USA - GW-RW S3_30_40
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S3_30_40
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042792
+  collection_date:
+    has_raw_value: '2015-03-12'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.4
+    has_raw_value: '0.4'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with no vegetation
+    in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126446
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-ffqcqd73
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267131
+  lat_lon:
+    has_raw_value: 46.37380143 -119.2723688
+    latitude: 46.37380143
+    longitude: -119.2723688
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with no vegetation in Columbia
+    River, Washington, USA - GW-RW N1_40_50
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N1_40_50
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042793
+  collection_date:
+    has_raw_value: '2015-03-18'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0
+    has_raw_value: '0.0'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with no vegetation
+    in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126447
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-0n5nks24
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267132
+  lat_lon:
+    has_raw_value: 46.37379502 -119.2722385
+    latitude: 46.37379502
+    longitude: -119.2722385
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with no vegetation in Columbia
+    River, Washington, USA - GW-RW N3_0_10
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N3_0_10
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042794
+  collection_date:
+    has_raw_value: '2015-03-16'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.1
+    has_raw_value: '0.1'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with a lot of
+    surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
+    mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126448
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-q44pjf87
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267133
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with vegetation nearby
+    in Columbia River, Washington, USA - GW-RW S2_10_20
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S2_10_20
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042795
+  collection_date:
+    has_raw_value: '2015-03-24'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.5
+    has_raw_value: '0.5'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with a lot of
+    surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
+    mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126449
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-b7nrtg75
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267134
+  lat_lon:
+    has_raw_value: 46.37228249 -119.2718117
+    latitude: 46.37228249
+    longitude: -119.2718117
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with vegetation nearby
+    in Columbia River, Washington, USA - GW-RW S1_50_60
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S1_50_60
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042796
+  collection_date:
+    has_raw_value: '2015-03-16'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.5
+    has_raw_value: '0.5'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with a lot of
+    surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
+    mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126450
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-7fedgs13
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267135
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with vegetation nearby
+    in Columbia River, Washington, USA - GW-RW S2_50_60
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S2_50_60
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042797
+  collection_date:
+    has_raw_value: '2015-03-18'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.2
+    has_raw_value: '0.2'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with no vegetation
+    in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126452
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-jqzk1523
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267136
+  lat_lon:
+    has_raw_value: 46.37379502 -119.2722385
+    latitude: 46.37379502
+    longitude: -119.2722385
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with no vegetation in Columbia
+    River, Washington, USA - GW-RW N3_20_30
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N3_20_30
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042798
+  collection_date:
+    has_raw_value: '2015-03-16'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0
+    has_raw_value: '0.0'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with a lot of
+    surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
+    mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126454
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-k4wa0808
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267138
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with vegetation nearby
+    in Columbia River, Washington, USA - GW-RW S2_0_10
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S2_0_10
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042812
+  collection_date:
+    has_raw_value: '2015-03-18'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.5
+    has_raw_value: '0.5'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with a lot of
+    surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
+    mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126453
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-xngecc18
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267137
+  lat_lon:
+    has_raw_value: 46.37228508 -119.2716818
+    latitude: 46.37228508
+    longitude: -119.2716818
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with vegetation nearby
+    in Columbia River, Washington, USA - GW-RW S3_50_60
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S3_50_60
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042799
+  collection_date:
+    has_raw_value: '2015-03-16'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.4
+    has_raw_value: '0.4'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with a lot of
+    surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
+    mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126455
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-tpk9x619
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267139
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with vegetation nearby
+    in Columbia River, Washington, USA - GW-RW S2_40_50
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S2_40_50
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042800
+  collection_date:
+    has_raw_value: '2015-03-18'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.2
+    has_raw_value: '0.2'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with a lot of
+    surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
+    mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126456
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-a7fxtx60
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267140
+  lat_lon:
+    has_raw_value: 46.37228508 -119.2716818
+    latitude: 46.37228508
+    longitude: -119.2716818
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with vegetation nearby
+    in Columbia River, Washington, USA - GW-RW S3_20_30
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S3_20_30
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- add_date: '2016-01-11'
+  alternative_identifiers:
+  - img.taxon:3300042801
+  collection_date:
+    has_raw_value: '2016-04-16'
+  community: microbial communities
+  depth:
+    has_numeric_value: 0.3
+    has_raw_value: '0.3'
+    has_unit: meter
+  description: Riverbed sediment samples were collected from an area with a lot of
+    surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
+    mixing zone)
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  env_broad_scale:
+    has_raw_value: ENVO:01000253
+    term:
+      id: ENVO:01000253
+  env_local_scale:
+    has_raw_value: ENVO:00000384
+    term:
+      id: ENVO:00000384
+  env_medium:
+    has_raw_value: ENVO:00002007
+    term:
+      id: ENVO:00002007
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  gold_biosample_identifiers:
+  - gold:Gb0126457
+  habitat: riverbed sediment
+  id: nmdc:bsm-11-mmr87q87
+  insdc_biosample_identifiers:
+  - biosample:SAMN06267141
+  lat_lon:
+    has_raw_value: 46.37228379 -119.2717467
+    latitude: 46.37228379
+    longitude: -119.2717467
+  location: Columbia River, Washington, USA
+  mod_date: '2021-06-17'
+  name: Riverbed sediment microbial communities from areas with vegetation nearby
+    in Columbia River, Washington, USA - GW-RW S2_30_40
+  ncbi_taxonomy_name: sediment metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S2_30_40
+  sample_collection_site: riverbed sediment - zone of subsurface groundwater-surface
+    water mixing (hyporheic zone)
+  specific_ecosystem: Sediment
+  type: nmdc:Biosample
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca2f94-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-fg8jh149
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW N1_20_30
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N1_20_30
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca3070-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-y9qebw84
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW N1_30_40
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N1_30_40
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca2c7e-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-r39v4766
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW N1_00_10
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N1_00_10
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca3340-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-01n4q492
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW N1_40_50
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N1_40_50
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca358e-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-cjxybn89
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW N2_00_30
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N2_00_30
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca3642-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-1pewj990
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW N2_30_40
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N2_30_40
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca2eae-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-6zt5jc55
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW N1_10_20
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N1_10_20
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca3700-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-93raqf43
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW N2_40_50
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N2_40_50
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca3868-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-g0c8gb14
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW N3_00_10
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N3_00_10
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca3e76-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-wvxw7m55
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW N3_40_50
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N3_40_50
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca3b1a-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-6aq1va61
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW N3_10_20
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N3_10_20
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca37b4-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-567met04
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW N2_50_60
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N2_50_60
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca3d04-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-3z48kw62
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW N3_20_30
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N3_20_30
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca3f2a-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-8saj5c05
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW N3_50_60
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N3_50_60
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca4088-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-br7th280
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW S1_10_20
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S1_10_20
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca3dc2-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-5cpjs440
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW N3_30_40
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N3_30_40
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca341c-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-0pragn10
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW N1_50_60
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N1_50_60
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca34da-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-15kmbr67
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW N1_50_60
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW N1_50_60
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca3fd4-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-m0hn5p98
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW S1_00_10
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S1_00_10
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca443e-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-pzv0cf30
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW S1_30_40
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S1_30_40
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca459c-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-rvkpk050
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW S1_40_50
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S1_40_50
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca47e0-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-60ayn103
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW S2_00_10
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S2_00_10
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca4146-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-qyz13338
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW S1_20_30
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S1_20_30
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca489e-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-e3hp0a71
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW S2_10_20
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S2_10_20
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca4d4e-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-1m10my19
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW S2_50_60
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S2_50_60
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca4952-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-pknfsy79
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW S2_20_30
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S2_20_30
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca4f6a-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-5p6f9e18
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW S3_20_30
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S3_20_30
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca46fa-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-pnzwey18
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW S1_50_60
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S1_50_60
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca50c8-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-rrpqa192
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW S3_40_50
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S3_40_50
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca4a38-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-73qw2q23
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW S2_30_40
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S2_30_40
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca4aec-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-vpjt1893
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW S2_40_50
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S2_40_50
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca4e02-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-rs67sh23
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW S3_00_10
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S3_00_10
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca4eb6-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-83ghpk10
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW S3_10_20
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S3_10_20
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca5014-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-ea7re871
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW S3_30_40
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S3_30_40
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+- collection_date:
+    has_raw_value: '2014-04-01'
+  community: microbial communities
+  ecosystem: Environmental
+  ecosystem_category: Terrestrial
+  ecosystem_subtype: Sand
+  ecosystem_type: Soil
+  emsl_biosample_identifiers:
+  - emsl:63ca517c-6647-11eb-ae93-0242ac130002
+  env_broad_scale:
+    has_raw_value: ENVO:00000873
+    term:
+      id: ENVO:00000873
+  env_local_scale:
+    has_raw_value: ENVO:00000022
+    term:
+      id: ENVO:00000022
+  env_medium:
+    has_raw_value: ENVO:01000017
+    term:
+      id: ENVO:01000017
+  geo_loc_name:
+    has_raw_value: 'USA: Columbia River, Washington'
+  habitat: Groundwater sand
+  id: nmdc:bsm-11-hx8grr89
+  lat_lon:
+    has_raw_value: 46.372 -119.272
+    latitude: 46.372
+    longitude: -119.272
+  location: Columbia River, Washington, USA
+  name: Groundwater microbial communities from the Columbia River, Washington, USA
+    - GW-RW S3_50_60
+  ncbi_taxonomy_name: groundwater metagenome
+  part_of:
+  - nmdc:sty-11-aygzgv51
+  samp_name: GW-RW S3_50_60
+  sample_collection_site: sand
+  specific_ecosystem: Unclassified
+study_set:
+- award_dois:
+  - doi:10.25585/1487765
+  - doi:10.46936/jejc.proj.2014.48473/60005497
+  description: "This research project, led by James Stegen at PNNL, aimed to understand\
+    \ how molecular-scale processes govern the biogeochemical function of subsurface\
+    \ groundwater-surface water mixing zones (i.e., the hyporheic zone). This project\
+    \ was conducted along the Columbia River in Eastern Washington State, which exhibits\
+    \ variation in microbiome composition, biogeochemical activity, and substrate\
+    \ biogeochemistry, making it an ideal environment for studying biogeochemical\
+    \ hotspots. To capture a range of biogeochemical activities, samples were collected\
+    \ from areas with dense vegetation and virtually no vegetation.\n\nThis project\u2019\
+    s long-term goal is to develop models that can simulate impacts of disturbance\
+    \ on river corridor hydro-biogeochemistry by understanding fundamental molecular\
+    \ processes that lead to emergent function. This project is part of PNNL\u2019\
+    s River Corridor Hydrobiogeochemistry Science Focus Area (https://www.pnnl.gov/projects/river-corridor-hydrobiogeochemistry-science-focus-area).\n"
+  ecosystem: Environmental
+  ecosystem_category: Aquatic
+  ecosystem_subtype: River
+  ecosystem_type: Freshwater
+  funding_sources:
+  - U.S. Department of Energy, Office of Science, Office of Biological and Environmental
+    Research (BER) under contract DE-AC05-76RL01830 (PNNL))
+  gold_study_identifiers:
+  - gold:Gs0114663
+  has_credit_associations:
+  - applied_roles:
+    - Principal Investigator
+    - Conceptualization
+    - Data curation
+    - Formal Analysis
+    - Funding acquisition
+    - Investigation
+    - Methodology
+    - Project administration
+    - Resources
+    - Supervision
+    - Validation
+    - Writing review and editing
+    applies_to_person:
+      email: James.Stegen@pnnl.gov
+      name: James Stegen
+      orcid: orcid:0000-0001-9135-7424
+  - applied_roles:
+    - Conceptualization
+    - Data curation
+    - Investigation
+    - Methodology
+    - Validation
+    - Writing review and editing
+    applies_to_person:
+      email: tfaily@email.arizona.edu
+      name: Malak Tfaily
+      orcid: orcid:0000-0002-3036-2833
+  - applied_roles:
+    - Investigation
+    - Methodology
+    - Writing review and editing
+    applies_to_person:
+      email: amy.goldman@pnnl.gov
+      name: Amy Goldman
+      orcid: orcid:0000-0003-0490-6451
+  - applied_roles:
+    - Investigation
+    - Methodology
+    - Writing review and editing
+    applies_to_person:
+      email: Lisa.Bramer@pnnl.gov
+      name: Lisa Bramer
+      orcid: orcid:0000-0002-8384-1926
+  - applied_roles:
+    - Investigation
+    - Methodology
+    - Writing review and editing
+    applies_to_person:
+      email: tom.resch@pnnl.gov
+      name: C. Tom Resch
+      orcid: orcid:0000-0002-9143-6277
+  - applied_roles:
+    - Conceptualization
+    - Data curation
+    - Formal Analysis
+    - Investigation
+    - Methodology
+    - Software
+    - Validation
+    - Visualization
+    - Writing original draft
+    - Writing review and editing
+    applies_to_person:
+      email: emily.graham@pnnl.gov
+      name: Emily Graham
+      orcid: orcid:0000-0002-4623-7076
+  - applied_roles:
+    - Data curation
+    - Investigation
+    - Methodology
+    - Resources
+    - Writing review and editing
+    applies_to_person:
+      email: acrump@uidaho.edu
+      name: Alex Crump
+      orcid: orcid:0000-0002-2443-6146
+  - applied_roles:
+    - Data curation
+    - Investigation
+    - Methodology
+    - Resources
+    - Writing review and editing
+    applies_to_person:
+      email: ''
+      name: David Kennedy
+      orcid: ''
+  - applied_roles:
+    - Investigation
+    - Methodology
+    - Resources
+    - Writing review and editing
+    applies_to_person:
+      email: Evan.Arntzen@pnnl.gov
+      name: Evan Amtzen
+      orcid: orcid:0000-0002-9209-5670
+  - applied_roles:
+    - Investigation
+    - Methodology
+    - Resources
+    - Writing review and editing
+    applies_to_person:
+      email: Sarah.Fansler@pnnl.gov
+      name: Sarah Fansler
+      orcid: orcid:0000-0003-4190-907X
+  - applied_roles:
+    - Data curation
+    - Formal Analysis
+    - Investigation
+    - Methodology
+    - Validation
+    - Writing review and editing
+    applies_to_person:
+      email: Samuel.Purvine@pnnl.gov
+      name: Samuel Purvine
+      orcid: orcid:0000-0002-2257-2400
+  - applied_roles:
+    - Investigation
+    - Methodology
+    - Writing review and editing
+    applies_to_person:
+      email: Carrie.Nicora@pnnl.gov
+      name: Carrie Nicora
+      orcid: orcid:0000-0003-2461-9548
+  - applied_roles:
+    - Conceptualization
+    - Formal Analysis
+    - Funding acquisition
+    - Investigation
+    - Methodology
+    - Writing review and editing
+    applies_to_person:
+      email: William.Nelson@pnnl.gov
+      name: William Nelson
+      orcid: orcid:0000-0002-1873-3929
+  id: nmdc:sty-11-aygzgv51
+  name: Riverbed sediment microbial communities from the Columbia River, Washington,
+    USA
+  principal_investigator:
+    has_raw_value: James Stegen
+    orcid: orcid:0000-0001-9135-7424
+    profile_image_url: https://portal.nersc.gov/project/m3408/profile_images/stegen_james.jpg
+  publication_dois:
+  - doi:10.1371/journal.pone.0228165
+  specific_ecosystem: Sediment
+  title: Riverbed sediment microbial communities from the Columbia River, Washington,
+    USA
+  type: nmdc:Study
