@@ -93,7 +93,8 @@ slots:
 
   massive_identifiers:
     mixin: true
-    description: identifiers for entities according to MASSIVE
+    description: identifiers for entities according to MASSIVE\
+    deprecated_element_has_exact_replacement: nmdc:associated_dois
 
   neon_identifiers:
     mixin: true
@@ -214,6 +215,7 @@ slots:
     is_a: study_identifiers
     mixins:
       - massive_identifiers
+    deprecated_element_has_exact_replacement: nmdc:associated_dois
     pattern: "^MASSIVE:"
     todos:
       - prefix not defined yet

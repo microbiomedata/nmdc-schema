@@ -1446,6 +1446,9 @@ classes:
       - alternative_names
       - alternative_titles
       - description
+      #- award_dois - deprecated on 10/24/2023
+      #- dataset_dois - deprecated on 10/24/2023
+      #- publication_dois - deprecated on 10/24/2023
       - associated_dois
       - ecosystem
       - ecosystem_category
@@ -1454,13 +1457,13 @@ classes:
       #      - emsl_project_identifier
       #      - emsl_proposal_doi
       #      - emsl_proposal_identifier
-      - ess_dive_datasets
+      #- ess_dive_datasets - deprecated on 10/24/2023
       - funding_sources
       - gold_study_identifiers
       - has_credit_associations
       - study_category
       - insdc_bioproject_identifiers
-      - massive_study_identifiers
+      #- massive_study_identifiers - deprecated on 10/24/2023
       - mgnify_project_identifiers
       - notes
       - objective
@@ -2112,6 +2115,7 @@ enums:
       massive:
         aliases:
           - MassIVE
+          - Mass Spectrometry Virtual Environment
         title: MassIVE
 
   DoiCategoryEnum:
@@ -2804,7 +2808,7 @@ slots:
     in_subset: data_portal_subset
     examples:
       - value: dataset_doi
-        value description: The corresponding doi is a dataset resource.
+        value description: The corresponding doi is a dataset resource type.
     
   dois:
     # is_a: attribute
