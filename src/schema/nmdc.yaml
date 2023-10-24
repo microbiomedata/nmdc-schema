@@ -1387,27 +1387,20 @@ classes:
       - doi
       - doi_provider
       - doi_category
-    # rules:
-    #   - title: dataset_award_dois_required
-    #     description: >-
-    #       If doi_category is a publication_doi, then doi_provider is not required. Otherwise, doi_provider is required.
-    #     preconditions:
-    #       slot_conditions:
-    #         doi_category:
-    #           any_of: 
-    #             - equals_string: dataset_doi
-    #             - equals_string: award_doi
-    #     postconditions:
-    #       slot_conditions:
-    #         doi_provider:
-    #           required: true
-    #     elseconditions:
-    #       slot_conditions:
-    #         doi_provider:
-    #           required: false
-    todos: >-
-      Uncomment rules to allow for different requirement levels of doi_provider once LinkML bug fixes are released
-      (equals_string_in and elseconditions). 
+    rules:
+      - title: dataset_award_dois_required
+        description: >-
+          If doi_category is a publication_doi, then doi_provider is not required. Otherwise, doi_provider is required.
+        preconditions:
+          slot_conditions:
+            doi_category:
+              any_of: 
+                - equals_string: dataset_doi
+                - equals_string: award_doi
+        postconditions:
+          slot_conditions:
+            doi_provider:
+              required: true
   
   Study:
     is_a: NamedThing
