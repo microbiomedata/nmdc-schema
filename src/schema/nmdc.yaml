@@ -1388,24 +1388,23 @@ classes:
       - doi_provider
       - doi_category
     rules:
-    - preconditions:
-        slot_conditions:
-          doi_category:
-            name: doi_category
-            equals_string_in:
-              - dataset_doi
-              - award_doi
-      postconditions:
-        slot_conditions:
-          doi_provider:
-            name: doi_provider
-            required: true
-      elseconditions:
-        slot_conditions:
-          doi_provider:
-            name: doi_provider
-            required: false
-    
+      - title: dataset_award_dois_required
+        description: >-
+          If doi_category is a publication_doi, then doi_provider is not required. Otherwise, doi_provider is required.
+        preconditions:
+          slot_conditions:
+            doi_category:
+              equals_string_in: 
+                - dataset_doi
+                - award_doi
+        postconditions:
+          slot_conditions:
+            doi_provider:
+              required: true
+        elseconditions:
+          slot_conditions:
+            doi_provider:
+              required: false
   Study:
     is_a: NamedThing
     in_subset:
