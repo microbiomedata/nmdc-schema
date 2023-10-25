@@ -17,7 +17,7 @@ curie_pattern = r'^[a-zA-Z_][a-zA-Z0-9_-]*:[a-zA-Z0-9_][a-zA-Z0-9_.-]*$'
 
 
 class MigratorBase:
-    """Base class containing properties and methods useful to its descendants."""
+    """Base class containing properties and methods related to migrating data between schema versions."""
 
     def __init__(self):
         self.forced_prefix = None
@@ -93,7 +93,7 @@ class MigratorBase:
 
 
 class Migrator_from_7_7_2_to_7_8_0(MigratorBase):
-    """Methods related to migrating documents from schema 7.7.2 to 7.8.0"""
+    """Migrates data from schema 7.7.2 to 7.8.0"""
 
     def __init__(self) -> None:
         """Invokes parent constructor and populates collection-to-transformations map."""
@@ -118,7 +118,7 @@ class Migrator_from_7_7_2_to_7_8_0(MigratorBase):
 
 
 class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
-    """Methods related to migrating documents from schema 7.8.0 to 8.0.0"""
+    """Migrates data from schema 7.8.0 to 8.0.0"""
 
     def __init__(self) -> None:
         """Invokes parent constructor and populates collection-to-transformations map."""
@@ -193,6 +193,8 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
 
 class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
     """
+    Migrates data from schema A.B.C to X.Y.Z
+
     TUTORIAL: This is an example of a "migrator" class.
               It was designed for use during developer training and
               to serve as a template for production "migrator" classes.
@@ -266,7 +268,9 @@ class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
         return study
 
 
-class Migrator_from_8_0_0_to_research_study_study_category(MigratorBase):
+class Migrator_from_8_0_0_to_8_1_0(MigratorBase):
+    """Migrates data from schema 8.0.0 to 8.1.0"""
+
     def __init__(self) -> None:
         """Invokes parent constructor and populates collection-to-transformations map."""
 
@@ -301,7 +305,7 @@ def main(schema_path, input_path, output_path, salvage_prefix):
     See source code for initial and final schema versions.
     """
 
-    migrator = Migrator_from_8_0_0_to_research_study_study_category()
+    migrator = Migrator_from_8_0_0_to_8_1_0()
     migrator.forced_prefix = salvage_prefix
 
     # Load the schema and determine which of its slots we can migrate.
