@@ -27,7 +27,7 @@ TEMPLATEDIR = doc-templates
 help: status
 	@echo ""
 	@echo "This project requires that dependencies are loaded into a poetry environment with 'poetry install'"
-	@echo "Most typical usage: 'make squeaky-clean all test'"
+	@echo "Most typical usage: 'make squeaky-clean all test'" # I removed the `enchilada` convenience target
 	@echo "Documentation publication is handled by a GitHub merge action"
 	@echo "  but users can generate a local documentation site with 'make testdoc'"
 	@echo "Please excuse the currently verbose logging mode"
@@ -266,6 +266,3 @@ nmdc_schema/nmdc_materialized_patterns.yaml: project/nmdc_materialized_patterns.
 
 nmdc_schema/nmdc_schema_merged.yaml: project/nmdc_schema_merged.yaml
 	cp $< $@
-
-
-enchilada: squeaky-clean all test make-rdf OmicsProcessing-all
