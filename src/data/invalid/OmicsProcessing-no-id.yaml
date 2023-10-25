@@ -6,7 +6,7 @@ type: nmdc:OmicsProcessing
 alternative_identifiers:
   - gold:Gp0108335
 has_input:
-  - gold:Gb0108335
+  - nmdc:bsm-00-red
 has_output:
   - nmdc:dobj-00-9n9n9n
 ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying

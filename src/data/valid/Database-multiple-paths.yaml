@@ -37,7 +37,7 @@ omics_processing_set:
       - gold:Gp0108335
     name: a process in which a biosample was sequenced?
     has_input:
-      - gold:Gb0108335
+      - nmdc:bsm-00-red
     add_date: 30-OCT-14 12.00.00.000000000 AM
     mod_date: 22-MAY-20 06.13.12.927000000 PM
     has_output:

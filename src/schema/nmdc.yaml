@@ -1582,6 +1582,7 @@ classes:
           interpolated: true
       has_input:
         required: true
+        pattern: "^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$"
         comments:
           - pattern should allow typecode for Biosample and ProcessedSample
       part_of:
