@@ -65,7 +65,7 @@ omics_processing_set:
       at 10C with heavy water. Sample is from a control plot at ambient soil temperature,
       organic horizon - top 4cm of soil
     has_input:
-      - gold:Gb0157174
+      - nmdc:bsm-00-yellow
     add_date: 17-AUG-17 05.08.38.451000000 PM
     mod_date: 16-OCT-20 02.04.01.374000000 AM
     has_output:
@@ -84,7 +84,7 @@ omics_processing_set:
     name: Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG
     description: Permafrost microbial communities from Stordalen Mire, Sweden
     has_input:
-      - gold:Gb0150408
+      - nmdc:bsm-00-green
     add_date: 17-MAR-17 04.55.44.822000000 PM
     mod_date: 22-MAY-20 06.38.19.576000000 PM
     has_output:
@@ -105,7 +105,7 @@ omics_processing_set:
     description: Rhizosphere microbial communities from Carex aquatilis grown in submerged
       peat from a thermokarst bog, University of Washington, Seatle, WA, United States
     has_input:
-      - gold:Gb0188037
+      - nmdc:bsm-00-blue
     add_date: 29-MAR-18 01.27.30.036000000 PM
     mod_date: 04-APR-20 08.26.35.067000000 AM
     has_output:

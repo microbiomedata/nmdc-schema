@@ -3934,6 +3934,8 @@ omics_processing_set:
 - add_date: '2015-05-28'
   description: Sterilized sand packs were incubated back in the ground and collected
     at time point T2.
+  gold_sequencing_project_identifiers:
+  - gold:Gp0115663
   has_input:
   - nmdc:bsm-11-qq8s6x03
   has_output:
@@ -3955,6 +3957,8 @@ omics_processing_set:
 - add_date: '2015-05-28'
   description: Sterilized sand packs were incubated back in the ground and collected
     at time point T3.
+  gold_sequencing_project_identifiers:
+  - gold:Gp0115666
   has_input:
   - nmdc:bsm-11-4qsqg549
   has_output:
@@ -3976,6 +3980,8 @@ omics_processing_set:
 - add_date: '2015-05-28'
   description: Sterilized sand packs were incubated back in the ground and collected
     at time point T3.
+  gold_sequencing_project_identifiers:
+  - gold:Gp0115668
   has_input:
   - nmdc:bsm-11-srz83p34
   has_output:
@@ -3997,6 +4003,8 @@ omics_processing_set:
 - add_date: '2015-05-28'
   description: Sterilized sand packs were incubated back in the ground and collected
     at time point T4.
+  gold_sequencing_project_identifiers:
+  - gold:Gp0115679
   has_input:
   - nmdc:bsm-11-11219w54
   has_output:
@@ -4018,6 +4026,8 @@ omics_processing_set:
 - add_date: '2015-05-28'
   description: Sterilized sand packs were incubated back in the ground and collected
     at time point T3.
+  gold_sequencing_project_identifiers:
+  - gold:Gp0115667
   has_input:
   - nmdc:bsm-11-ynevd369
   has_output:
@@ -4039,6 +4049,8 @@ omics_processing_set:
 - add_date: '2015-05-28'
   description: Sterilized sand packs were incubated back in the ground and collected
     at time point T2.
+  gold_sequencing_project_identifiers:
+  - gold:Gp0115664
   has_input:
   - nmdc:bsm-11-qxntpg05
   has_output:
@@ -4060,6 +4072,8 @@ omics_processing_set:
 - add_date: '2015-05-28'
   description: Sterilized sand packs were incubated back in the ground and collected
     at time point T4.
+  gold_sequencing_project_identifiers:
+  - gold:Gp0115678
   has_input:
   - nmdc:bsm-11-j0wbx741
   has_output:
@@ -4082,6 +4096,8 @@ omics_processing_set:
   description: Riverbed sediment samples were collected from an area with a lot of
     surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
     mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127623
   has_input:
   - nmdc:bsm-11-r7ggfc16
   has_output:
@@ -4103,6 +4119,8 @@ omics_processing_set:
 - add_date: '2016-01-11'
   description: Riverbed sediment samples were collected from an area with no vegetation
     in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127625
   has_input:
   - nmdc:bsm-11-k3t2wk45
   has_output:
@@ -4124,6 +4142,8 @@ omics_processing_set:
 - add_date: '2016-01-11'
   description: Riverbed sediment samples were collected from an area with no vegetation
     in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127626
   has_input:
   - nmdc:bsm-11-mxdygh62
   has_output:
@@ -4145,6 +4165,8 @@ omics_processing_set:
 - add_date: '2016-01-11'
   description: Riverbed sediment samples were collected from an area with no vegetation
     in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127624
   has_input:
   - nmdc:bsm-11-msqbhe76
   has_output:
@@ -4167,6 +4189,8 @@ omics_processing_set:
   description: Riverbed sediment samples were collected from an area with a lot of
     surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
     mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127629
   has_input:
   - nmdc:bsm-11-3sfanv57
   has_output:
@@ -4189,6 +4213,8 @@ omics_processing_set:
   description: Riverbed sediment samples were collected from an area with a lot of
     surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
     mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127628
   has_input:
   - nmdc:bsm-11-jdsasr43
   has_output:
@@ -4211,6 +4237,8 @@ omics_processing_set:
   description: Riverbed sediment samples were collected from an area with a lot of
     surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
     mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127631
   has_input:
   - nmdc:bsm-11-4vqhvw07
   has_output:
@@ -4232,6 +4260,8 @@ omics_processing_set:
 - add_date: '2016-01-11'
   description: Riverbed sediment samples were collected from an area with no vegetation
     in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127630
   has_input:
   - nmdc:bsm-11-3yjh4z33
   has_output:
@@ -4254,6 +4284,8 @@ omics_processing_set:
   description: Riverbed sediment samples were collected from an area with a lot of
     surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
     mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127633
   has_input:
   - nmdc:bsm-11-nbgp1x53
   has_output:
@@ -4276,6 +4308,8 @@ omics_processing_set:
   description: Riverbed sediment samples were collected from an area with a lot of
     surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
     mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127627
   has_input:
   - nmdc:bsm-11-v0q5ak63
   has_output:
@@ -4298,6 +4332,8 @@ omics_processing_set:
   description: Riverbed sediment samples were collected from an area with a lot of
     surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
     mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127632
   has_input:
   - nmdc:bsm-11-0xprxw22
   has_output:
@@ -4319,6 +4355,8 @@ omics_processing_set:
 - add_date: '2016-01-11'
   description: Riverbed sediment samples were collected from an area with no vegetation
     in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127636
   has_input:
   - nmdc:bsm-11-rtf54942
   has_output:
@@ -4340,6 +4378,8 @@ omics_processing_set:
 - add_date: '2016-01-11'
   description: Riverbed sediment samples were collected from an area with no vegetation
     in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127634
   has_input:
   - nmdc:bsm-11-jdgzjq31
   has_output:
@@ -4361,6 +4401,8 @@ omics_processing_set:
 - add_date: '2016-01-11'
   description: Riverbed sediment samples were collected from an area with no vegetation
     in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127635
   has_input:
   - nmdc:bsm-11-59xteq78
   has_output:
@@ -4383,6 +4425,8 @@ omics_processing_set:
   description: Riverbed sediment samples were collected from an area with a lot of
     surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
     mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127637
   has_input:
   - nmdc:bsm-11-kwfbp795
   has_output:
@@ -4404,6 +4448,8 @@ omics_processing_set:
 - add_date: '2016-01-11'
   description: Riverbed sediment samples were collected from an area with no vegetation
     in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127638
   has_input:
   - nmdc:bsm-11-pq3zmp51
   has_output:
@@ -4425,6 +4471,8 @@ omics_processing_set:
 - add_date: '2015-05-28'
   description: Sterilized sand packs were incubated back in the ground and collected
     at time point T4.
+  gold_sequencing_project_identifiers:
+  - gold:Gp0115670
   has_input:
   - nmdc:bsm-11-vg9vy382
   has_output:
@@ -4446,6 +4494,8 @@ omics_processing_set:
 - add_date: '2015-05-28'
   description: Sterilized sand packs were incubated back in the ground and collected
     at time point T4.
+  gold_sequencing_project_identifiers:
+  - gold:Gp0115674
   has_input:
   - nmdc:bsm-11-5xjtzc47
   has_output:
@@ -4467,6 +4517,8 @@ omics_processing_set:
 - add_date: '2015-05-28'
   description: Sterilized sand packs were incubated back in the ground and collected
     at time point T4.
+  gold_sequencing_project_identifiers:
+  - gold:Gp0115673
   has_input:
   - nmdc:bsm-11-5h7px351
   has_output:
@@ -4488,6 +4540,8 @@ omics_processing_set:
 - add_date: '2015-05-28'
   description: Sterilized sand packs were incubated back in the ground and collected
     at time point T4.
+  gold_sequencing_project_identifiers:
+  - gold:Gp0115671
   has_input:
   - nmdc:bsm-11-wzdqhh45
   has_output:
@@ -4509,6 +4563,8 @@ omics_processing_set:
 - add_date: '2015-05-28'
   description: Sterilized sand packs were incubated back in the ground and collected
     at time point T4.
+  gold_sequencing_project_identifiers:
+  - gold:Gp0115676
   has_input:
   - nmdc:bsm-11-pkgtg048
   has_output:
@@ -4530,6 +4586,8 @@ omics_processing_set:
 - add_date: '2015-05-28'
   description: Sterilized sand packs were incubated back in the ground and collected
     at time point T4.
+  gold_sequencing_project_identifiers:
+  - gold:Gp0115677
   has_input:
   - nmdc:bsm-11-8362vs44
   has_output:
@@ -4551,6 +4609,8 @@ omics_processing_set:
 - add_date: '2015-05-28'
   description: Sterilized sand packs were incubated back in the ground and collected
     at time point T4.
+  gold_sequencing_project_identifiers:
+  - gold:Gp0115675
   has_input:
   - nmdc:bsm-11-a5d23e19
   has_output:
@@ -4572,6 +4632,8 @@ omics_processing_set:
 - add_date: '2015-05-28'
   description: Sterilized sand packs were incubated back in the ground and collected
     at time point T2.
+  gold_sequencing_project_identifiers:
+  - gold:Gp0115665
   has_input:
   - nmdc:bsm-11-qjtgh002
   has_output:
@@ -4593,6 +4655,8 @@ omics_processing_set:
 - add_date: '2015-05-28'
   description: Sterilized sand packs were incubated back in the ground and collected
     at time point T4.
+  gold_sequencing_project_identifiers:
+  - gold:Gp0115669
   has_input:
   - nmdc:bsm-11-47nxfg85
   has_output:
@@ -4614,6 +4678,8 @@ omics_processing_set:
 - add_date: '2015-05-28'
   description: Sterilized sand packs were incubated back in the ground and collected
     at time point T4.
+  gold_sequencing_project_identifiers:
+  - gold:Gp0115672
   has_input:
   - nmdc:bsm-11-sdhyr752
   has_output:
@@ -4635,6 +4701,8 @@ omics_processing_set:
 - add_date: '2016-01-11'
   description: Riverbed sediment samples were collected from an area with no vegetation
     in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127640
   has_input:
   - nmdc:bsm-11-pvcgp635
   has_output:
@@ -4657,6 +4725,8 @@ omics_processing_set:
   description: Riverbed sediment samples were collected from an area with a lot of
     surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
     mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127641
   has_input:
   - nmdc:bsm-11-fgtanh42
   has_output:
@@ -4678,6 +4748,8 @@ omics_processing_set:
 - add_date: '2016-01-11'
   description: Riverbed sediment samples were collected from an area with no vegetation
     in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127643
   has_input:
   - nmdc:bsm-11-g079t498
   has_output:
@@ -4700,6 +4772,8 @@ omics_processing_set:
   description: Riverbed sediment samples were collected from an area with a lot of
     surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
     mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127644
   has_input:
   - nmdc:bsm-11-n80sx618
   has_output:
@@ -4721,6 +4795,8 @@ omics_processing_set:
 - add_date: '2016-01-11'
   description: Riverbed sediment samples were collected from an area with no vegetation
     in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127639
   has_input:
   - nmdc:bsm-11-tzp60785
   has_output:
@@ -4742,6 +4818,8 @@ omics_processing_set:
 - add_date: '2016-01-11'
   description: Riverbed sediment samples were collected from an area with no vegetation
     in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127642
   has_input:
   - nmdc:bsm-11-qpve9v25
   has_output:
@@ -4763,6 +4841,8 @@ omics_processing_set:
 - add_date: '2016-01-11'
   description: Riverbed sediment samples were collected from an area with no vegetation
     in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127646
   has_input:
   - nmdc:bsm-11-0n5nks24
   has_output:
@@ -4785,6 +4865,8 @@ omics_processing_set:
   description: Riverbed sediment samples were collected from an area with a lot of
     surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
     mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127648
   has_input:
   - nmdc:bsm-11-b7nrtg75
   has_output:
@@ -4807,6 +4889,8 @@ omics_processing_set:
   description: Riverbed sediment samples were collected from an area with a lot of
     surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
     mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127647
   has_input:
   - nmdc:bsm-11-q44pjf87
   has_output:
@@ -4828,6 +4912,8 @@ omics_processing_set:
 - add_date: '2016-01-11'
   description: Riverbed sediment samples were collected from an area with no vegetation
     in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127645
   has_input:
   - nmdc:bsm-11-ffqcqd73
   has_output:
@@ -4850,6 +4936,8 @@ omics_processing_set:
   description: Riverbed sediment samples were collected from an area with a lot of
     surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
     mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127649
   has_input:
   - nmdc:bsm-11-7fedgs13
   has_output:
@@ -4872,6 +4960,8 @@ omics_processing_set:
   description: Riverbed sediment samples were collected from an area with a lot of
     surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
     mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127652
   has_input:
   - nmdc:bsm-11-xngecc18
   has_output:
@@ -4894,6 +4984,8 @@ omics_processing_set:
   description: Riverbed sediment samples were collected from an area with a lot of
     surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
     mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127654
   has_input:
   - nmdc:bsm-11-tpk9x619
   has_output:
@@ -4916,6 +5008,8 @@ omics_processing_set:
   description: Riverbed sediment samples were collected from an area with a lot of
     surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
     mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127656
   has_input:
   - nmdc:bsm-11-mmr87q87
   has_output:
@@ -4937,6 +5031,8 @@ omics_processing_set:
 - add_date: '2016-01-11'
   description: Riverbed sediment samples were collected from an area with no vegetation
     in a hyporheic zone (subsurface groundwater - surface water mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127651
   has_input:
   - nmdc:bsm-11-jqzk1523
   has_output:
@@ -4959,6 +5055,8 @@ omics_processing_set:
   description: Riverbed sediment samples were collected from an area with a lot of
     surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
     mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127655
   has_input:
   - nmdc:bsm-11-a7fxtx60
   has_output:
@@ -4981,6 +5079,8 @@ omics_processing_set:
   description: Riverbed sediment samples were collected from an area with a lot of
     surrounding vegetation in a hyporheic zone (subsurface groundwater - surface water
     mixing zone)
+  gold_sequencing_project_identifiers:
+  - gold:Gp0127653
   has_input:
   - nmdc:bsm-11-k4wa0808
   has_output:
