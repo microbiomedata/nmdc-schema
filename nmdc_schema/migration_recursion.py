@@ -278,8 +278,9 @@ class Migrator_from_8_0_0_to_research_study_study_category(MigratorBase):
         )
 
     def force_research_study_study_category(self, study: dict) -> dict:
-        logger.info(f"Forcing 'study_category: research_study' on {study['id']}")
-        study['study_category'] = 'research_study'
+        if 'study_category' not in study:
+            logger.info(f"Forcing 'study_category: research_study' on {study['id']}")
+            study['study_category'] = 'research_study'
         return study
 
 

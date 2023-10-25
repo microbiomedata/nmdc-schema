@@ -36,6 +36,7 @@ imports:
 
 prefixes:
   #  AFO: "http://example.org/UNKNOWN/AFO/" # no expansion at https://bioregistry.io/registry/afo
+  FMA: "http://purl.obolibrary.org/obo/FMA_"
   CATH: "https://bioregistry.io/cath:"
   CHEBI: "http://purl.obolibrary.org/obo/CHEBI_"
   CHEMBL.COMPOUND: "https://bioregistry.io/chembl.compound:" # https://bioregistry.io/chembl.compound:CHEMBL465070
