@@ -155,18 +155,21 @@ classes:
       An abstract holder for any set of metadata and data. It does not
       need to correspond to an actual managed database top level holder class. When
       translated to JSON-Schema this is the 'root' object. It should contain pointers
-      to other objects of interest
+      to other objects of interest. For MongoDB, the lists of objects that Database
+      slots point to correspond to **collections**.
     slots:
+      - planned_process_set
       - functional_annotation_agg
-      - library_preparation_set
-      - processed_sample_set
-      - extraction_set
       - activity_set
       - biosample_set
+      - collecting_biosamples_from_site_set
       - data_object_set
       - dissolving_activity_set
+      - extraction_set
+      - field_research_site_set
       - functional_annotation_set
       - genome_feature_set
+      - library_preparation_set
       - mags_activity_set
       - material_sample_set
       - material_sampling_activity_set
@@ -178,30 +181,16 @@ classes:
       - metatranscriptome_activity_set
       - nom_analysis_activity_set
       - omics_processing_set
-      - reaction_activity_set
-      - read_qc_analysis_activity_set
-      - read_based_taxonomy_analysis_activity_set
-      - study_set
-      - field_research_site_set
-      - collecting_biosamples_from_site_set
-      - date_created
-      - etl_software_version
-      - metatranscriptome_activity_set
       - pooling_set
-      - extraction_set
+      - processed_sample_set
+      - reaction_activity_set
+      - read_based_taxonomy_analysis_activity_set
+      - read_qc_analysis_activity_set
+      - study_set
 
-    slot_usage:
-      date_created:
-        todos:
-          - description
-      etl_software_version:
-        todos:
-          - description
-      metatranscriptome_activity_set:
-        todos:
-          - description
 
   Pooling:
+    class_uri: nmdc:Pooling
     is_a: BiosampleProcessing # from core.yaml
     description: physical combination of several instances of like material.
     slots:
@@ -220,6 +209,7 @@ classes:
           interpolated: true
 
   Extraction:
+    class_uri: nmdc:Extraction
     is_a: BiosampleProcessing # from core.yaml
     description: A material separation in which a desired component of an input material is separated from the remainder.
     exact_mappings:
@@ -253,6 +243,7 @@ classes:
       - name
 
   LibraryPreparation:
+    class_uri: nmdc:LibraryPreparation
     aliases:
       - LibraryConstruction
     is_a: BiosampleProcessing # from core.yaml
@@ -297,9 +288,6 @@ classes:
       - habitat # gold term... enumerated values?
       - lat_lon
       - local_class
-      #      - neon_deims_sdr_link # short-term addition for neon
-      #      - neon_eco_type # short-term addition for neon
-      #      - neon_soil_type # short-term addition for neon
       - part_of
       - soil_type
     slot_usage:
@@ -2063,6 +2051,17 @@ enums:
 
 slots:
 
+  designated_class:
+    range: uriorcurie
+    designates_type: true
+    comments:
+      - MAM prefers to use this functionality in a `type` class and to eliminate '...type...' from the names
+        of any NMDC-owned elements
+      - this would be required on all instances in a polymorphic Database slot, like planned_process_set
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/1048
+      - https://github.com/microbiomedata/nmdc-schema/issues/1233
+
   #  for FunctionalAnnotationAggMember:
   metagenome_annotation_id:
     range: WorkflowExecutionActivity
@@ -2075,13 +2074,6 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
-
-  neon_deims_sdr_link:
-    range: string
-  neon_eco_type:
-    range: string
-  neon_soil_type:
-    range: string
 
   ecosystem_path_id:
     range: string
@@ -2406,179 +2398,142 @@ slots:
     required: true
 
   object_set:
-    mixin: true
     domain: Database
-    multivalued: true
     inlined_as_list: true
+    mixin: true
+    multivalued: true
     description:
       Applies to a property that links a database object to a set of objects.
       This is necessary in a json document to provide context for a list, and to allow
       for a single json object that combines multiple object types
+  planned_process_set:
+    mixins:
+      - object_set
+    range: PlannedProcess
+    description:
+      This property links a database object to the set of planned processes
+      within it.
+    comments:
+      - PlannedProcess instances aggregated by this slot will require the designated_class slot
   biosample_set:
     mixins: object_set
-    domain: Database
     range: Biosample
-    multivalued: true
     description:
       This property links a database object to the set of samples within
       it.
   study_set:
     mixins: object_set
-    domain: Database
     range: Study
-    multivalued: true
     description:
       This property links a database object to the set of studies within
       it.
   field_research_site_set:
-    inlined_as_list: true
-    multivalued: true
+    mixins: object_set
     range: FieldResearchSite
-    domain: Database
   collecting_biosamples_from_site_set:
-    inlined_as_list: true
-    multivalued: true
+    mixins: object_set
     range: CollectingBiosamplesFromSite
-    domain: Database
   data_object_set:
     mixins: object_set
-    domain: Database
     range: DataObject
-    multivalued: true
     description:
       This property links a database object to the set of data objects
       within it.
   genome_feature_set:
     mixins: object_set
-    domain: Database
     range: GenomeFeature
-    multivalued: true
     description: This property links a database object to the set of all features
   functional_annotation_set:
     mixins: object_set
-    domain: Database
     range: FunctionalAnnotation
-    multivalued: true
     description:
       This property links a database object to the set of all functional
       annotations
   activity_set:
     mixins: object_set
-    domain: Database
     range: WorkflowExecutionActivity
-    multivalued: true
     description: This property links a database object to the set of workflow activities.
   mags_activity_set:
     mixins: object_set
-    domain: Database
     range: MagsAnalysisActivity
-    multivalued: true
     description:
       This property links a database object to the set of MAGs analysis
       activities.
   metabolomics_analysis_activity_set:
     mixins: object_set
-    domain: Database
     range: MetabolomicsAnalysisActivity
-    multivalued: true
     description:
       This property links a database object to the set of metabolomics
       analysis activities.
   metaproteomics_analysis_activity_set:
     mixins: object_set
-    domain: Database
     range: MetaproteomicsAnalysisActivity
-    multivalued: true
     description:
       This property links a database object to the set of metaproteomics
       analysis activities.
   metagenome_annotation_activity_set:
     mixins: object_set
-    domain: Database
     range: MetagenomeAnnotationActivity
-    multivalued: true
     description:
       This property links a database object to the set of metagenome annotation
       activities.
   metagenome_assembly_set:
     mixins: object_set
-    domain: Database
     range: MetagenomeAssembly
-    multivalued: true
     description:
       This property links a database object to the set of metagenome assembly
       activities.
   metagenome_sequencing_activity_set:
     mixins: object_set
-    domain: Database
     range: MetagenomeSequencingActivity
-    multivalued: true
     description:
       This property links a database object to the set of metagenome sequencing
       activities.
   metatranscriptome_activity_set:
     mixins: object_set
-    domain: Database
     range: MetatranscriptomeActivity
-    multivalued: true
     description:
       This property links a database object to the set of metatranscriptome
       analysis activities.
   read_qc_analysis_activity_set:
     mixins: object_set
-    domain: Database
     range: ReadQcAnalysisActivity
-    multivalued: true
     description:
       This property links a database object to the set of read QC analysis
       activities.
   read_based_taxonomy_analysis_activity_set:
     mixins: object_set
-    domain: Database
     range: ReadBasedTaxonomyAnalysisActivity
-    multivalued: true
     description: >-
       This property links a database object to the set of read based analysis activities.
   nom_analysis_activity_set:
     mixins: object_set
-    domain: Database
     range: NomAnalysisActivity
-    multivalued: true
     description:
       This property links a database object to the set of natural organic
       matter (NOM) analysis activities.
   omics_processing_set:
     mixins: object_set
-    domain: Database
     range: OmicsProcessing
-    multivalued: true
     description:
       This property links a database object to the set of omics processings
       within it.
   pooling_set:
     mixins: object_set
-    domain: Database # doesn't that come from object_set
     range: Pooling
-    multivalued: true # doesn't that come from object_set
   processed_sample_set:
     mixins: object_set
-    domain: Database
     range: ProcessedSample
-    multivalued: true
     description: This property links a database object to the set of processed samples within it.
   extraction_set:
     mixins: object_set
-    domain: Database
     range: Extraction
-    multivalued: true
     description: This property links a database object to the set of extractions within it.
   library_preparation_set:
     aliases:
       - library_construction_set
     mixins: object_set
-    domain: Database
     range: LibraryPreparation
-    multivalued: true
     description: This property links a database object to the set of DNA extractions within it.
 
   omics_type:

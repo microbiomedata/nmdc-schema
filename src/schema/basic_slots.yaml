@@ -58,6 +58,8 @@ slots:
     examples:
       - value: nmdc:Biosample
       - value: nmdc:Study
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/1233
 
   title:
     range: string

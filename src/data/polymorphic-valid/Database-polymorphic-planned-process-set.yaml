@@ -1,0 +1,9 @@
+planned_process_set:
+  - id: nmdc:poolp-00-123456
+    designated_class: nmdc:Pooling
+  - id: nmdc:extrp-00-999999
+    designated_class: nmdc:Extraction
+  #    extraction_target: XXX
+  - id: nmdc:libprp-00-999999
+    designated_class: nmdc:LibraryPreparation
+#    library_type: XXX
