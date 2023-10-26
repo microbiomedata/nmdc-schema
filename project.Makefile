@@ -517,13 +517,6 @@ OmicsProcessing.tsv: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
 		--target-class-name $(firstword $(subst ., ,$(lastword $(subst /, ,$@)))) \
 		--target-p-o-constraint "dcterms:isPartOf nmdc:sty-11-34xj1150"
 
-## ----
-#
-#doi_report.tsv:
-#	$(RUN) get-study-doi-report
-#
-## ----
-
 #tdb-steps:
 ##	# clean up tdbcontent
 ##	$(JENA_PATH)/tdb2.tdbloader \
