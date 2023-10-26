@@ -3,7 +3,13 @@ planned_process_set:
     designated_class: nmdc:Pooling
   - id: nmdc:extrp-00-999999
     designated_class: nmdc:Extraction
-  #    extraction_target: XXX
+    has_input:
+      - nmdc:bsm-00-435737
+    has_output:
+      - nmdc:procsm-00-0938548
   - id: nmdc:libprp-00-999999
     designated_class: nmdc:LibraryPreparation
-#    library_type: XXX
+    has_input:
+      - nmdc:procsm-00-0938548
+    has_output:
+      - nmdc:procsm-00-sdsdll
