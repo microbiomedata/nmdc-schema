@@ -390,6 +390,10 @@ class Migrator_from_8_1_0_to_9_0_0(MigratorBase):
                 logger.error(
                     f'ERROR: Unexpected value in {slot_name} of {study["id"]} skipping slot deletion')
 
+        # Remove associated_dois if empty (no dois were moved over and the slot is unnecessary)
+        if not study['associated_dois']:
+            del study['associated_dois']
+
         return study
 
 
