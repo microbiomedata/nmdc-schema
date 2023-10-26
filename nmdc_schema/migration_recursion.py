@@ -6,7 +6,7 @@ import click
 import click_log
 import yaml
 from linkml_runtime import SchemaView
-from doi_dicts import award_doi_prov, new_award_dois, award_move_to_data
+from .doi_dicts import award_doi_prov, new_award_dois, award_move_to_data
 
 logger = logging.getLogger(__name__)
 click_log.basic_config(logger)
@@ -375,8 +375,8 @@ class Migrator_from_8_1_0_to_9_0_0(MigratorBase):
                          'award_dois', 'ess_dive_datasets', 'massive_study_identifiers']
 
         # Get dois from associated_dois
-        associated_dois = {entry['doi']
-                           for entry in study.get('associated_dois', [])}
+        associated_dois = [entry['doi']
+                           for entry in study.get('associated_dois', [])]
 
         # Remove the old dois from the old doi slots
         for slot_name in removal_slots:
@@ -386,6 +386,9 @@ class Migrator_from_8_1_0_to_9_0_0(MigratorBase):
             # Remove old doi slots if values are empty
             if not study[slot_name]:
                 del study[slot_name]
+            else:
+                logger.error(
+                    f'ERROR: Unexpected value in {slot_name} of {study["id"]} skipping slot deletion')
 
         return study
 
