@@ -561,3 +561,10 @@ assets/filtered-api-requests/filtered-request-result.yaml:
 assets/filtered-api-requests/filtered-request-validation-log.txt: nmdc_schema/nmdc_materialized_patterns.yaml \
 assets/filtered-api-requests/filtered-request-result.yaml
 	- $(RUN) linkml-validate --schema $^ > $@
+
+.PHONY: validate-polymorphic
+
+validate-polymorphic:
+	$(RUN) linkml-validate \
+		--include-range-class-descendants \
+		--schema src/schema/nmdc.yaml src/data/polymorphic-valid/Database-polymorphic-planned-process-set.yaml

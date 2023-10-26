@@ -132,6 +132,11 @@ classes:
       - has_output
       - protocol_link
       - start_date
+      - designated_class
+    slot_usage:
+      designated_class:
+        comments:
+          - required on all instances in a polymorphic Database slot like planned_process_set
       # - participating_agent
 
   OntologyClass:
