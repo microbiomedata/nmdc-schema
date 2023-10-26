@@ -699,8 +699,8 @@ biosample_set:
     oxygen:
       has_raw_value: xxx
     part_of:
-      - nmdc:unconstrained_study_identifier_string1_needs_pattern_materialization_what_about_referential_integrity
-      - nmdc:unconstrained_study_identifier_string2
+      - nmdc:sty-00-987654
+      - nmdc:sty-00-qwerty
     part_org_nitro:
       has_raw_value: xxx
     particle_class:

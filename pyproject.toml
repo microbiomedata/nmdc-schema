@@ -87,6 +87,7 @@ docs = ["mkdocs-material"]
 
 [tool.poetry.scripts]
 anyuri-strings-to-iris = 'nmdc_schema.anyuri_strings_to_iris:expand_curies'
+build-datafile-from-api-requests = "nmdc_schema.build_datafile_from_api_requests:main"
 class-sparql = "nmdc_schema.class_sparql:main"
 fetch-nmdc-schema = "nmdc_schema.nmdc_data:get_nmdc_jsonschema"
 generate-import-slots-regardless = "nmdc_schema.generate_import_slots_regardless:main"
@@ -98,5 +99,3 @@ nmdc-data = "nmdc_schema.nmdc_data:cli"
 nmdc-version = "nmdc_schema.nmdc_version:cli"
 pure-export = "nmdc_schema.mongo_dump_api_emph:cli"
 test-more-tolerant-schema = "nmdc_schema.test_more_tolerant_schema:do_test"
-get-study-doi-report = "nmdc_schema.get_study_doi_report:get_dois"
-

@@ -5,17 +5,17 @@ omics_processing_set:
     name: Thawing permafrost microbial communities from the Arctic, studying carbon
       transformations - Permafrost 712P3D
     has_input:
-      - gold:Gb0108335
+      - nmdc:bsm-00-red
     add_date: 30-OCT-14 12.00.00.000000000 AM
     mod_date: 22-MAY-20 06.13.12.927000000 PM
     has_output:
-      - jgi:551a20d30d878525404e90d5
+      - nmdc:dobj-00-9n9n9n
     ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
       carbon transformations - Permafrost 712P3D
     omics_type:
       has_raw_value: Metagenome
     part_of:
-      - gold:Gs0112340
+      - nmdc:sty-00-555xxx
     processing_institution: JGI
     type: nmdc:OmicsProcessing
   - id: nmdc:omprc-99-gKlQlF
@@ -24,17 +24,17 @@ omics_processing_set:
     name: Thawing permafrost microbial communities from the Arctic, studying carbon
       transformations - Permafrost 612S3M
     has_input:
-      - gold:Gb0108340
+      - nmdc:bsm-00-orange0
     add_date: 30-OCT-14 12.00.00.000000000 AM
     mod_date: 22-MAY-20 06.10.59.590000000 PM
     has_output:
-      - jgi:551a20d50d878525404e90d7
+      - nmdc:dobj-00-zzzbrxzzz
     ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
       carbon transformations - Permafrost 612S3M
     omics_type:
       has_raw_value: Metagenome
     part_of:
-      - gold:Gs0112340
+      - nmdc:sty-00-555xxx
     processing_institution: JGI
     type: nmdc:OmicsProcessing
   - id: nmdc:omprc-99-5kgIJR
@@ -43,16 +43,16 @@ omics_processing_set:
     name: Thawing permafrost microbial communities from the Arctic, studying carbon
       transformations - Permafrost 712S3S
     has_input:
-      - gold:Gb0108341
+      - nmdc:bsm-00-orange1
     add_date: 30-OCT-14 12.00.00.000000000 AM
     mod_date: 22-MAY-20 06.09.46.171000000 PM
     has_output:
-      - jgi:551a20d90d878525404e90e1
+      - nmdc:dobj-00-thx1198
     ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
       carbon transformations - Permafrost 712S3S
     omics_type:
       has_raw_value: Metagenome
     part_of:
-      - gold:Gs0112340
+      - nmdc:sty-00-555xxx
     processing_institution: JGI
     type: nmdc:OmicsProcessing

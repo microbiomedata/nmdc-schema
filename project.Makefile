@@ -1,6 +1,7 @@
 ## Add your own custom Makefile targets here
 
-RIOT=~/apache-jena/bin/riot
+#RIOT=~/apache-jena/bin/riot
+JENA_PATH=~/apache-jena/bin/
 RUN=poetry run
 
 SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
@@ -352,6 +353,7 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml: src/schema/nmdc.yaml
 	# probably should have made a list of classes and then looped over a parameterized version of this
 	# could also assert that the range is string
 	yq -i '(.classes[] | select(.name == "Biosample") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "Biosample") | .slot_usage.part_of.pattern) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "Biosample") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "DataObject") | .slot_usage.id.pattern) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "DataObject") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
@@ -376,6 +378,9 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml: src/schema/nmdc.yaml
 	yq -i '(.classes[] | select(.name == "NomAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "NomAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.part_of.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.has_input.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.has_output.pattern) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "ReadBasedTaxonomyAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "ReadBasedTaxonomyAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
@@ -406,6 +411,11 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepti
 
 # ----
 
+# this setup is required if you want to retreive any content or statistics from PyMongo
+# pure-export doesn't require a PyMongo connection when run in the --skip-collection-check mode
+#   1. . ~/sshproxy.sh -u {YOUR_NERSC_USERNAME}
+#   2. ssh -i ~/.ssh/nersc -L27777:mongo-loadbalancer.nmdc.production.svc.spin.nersc.org:27017 -o ServerAliveInterval=60 {YOUR_NERSC_USERNAME}@dtn01.nersc.gov
+
 # todo mongodb collection stats vs Database slots report
 # todo convert to json
 # todo compress large files
@@ -413,18 +423,43 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepti
 
 make-rdf: rdf-clean local/mongo_as_nmdc_database_validation.log local/mongo_as_nmdc_database_cuire_repaired.ttl
 
+# could also check --client-base-url https://api-napa.microbiomedata.org
+# but separate validate-filtered-request-all is available for that now
+
+# todo also notes about large collections: functional_annotation_agg and metaproteomics_analysis_activity_set
+
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) pure-export \
-		--client-base-url https://api-napa.microbiomedata.org \
+		--client-base-url https://api.microbiomedata.org \
 		--endpoint-prefix nmdcschema \
+		--env-file local/.env \
 		--max-docs-per-coll 10000000 \
+		--mongo-db-name nmdc \
+		--mongo-host localhost \
+		--mongo-port 27777 \
 		--output-yaml $@ \
 		--page-size 10000 \
 		--schema-file src/schema/nmdc.yaml \
 		--selected-collections biosample_set \
+		--selected-collections data_object_set \
+		--selected-collections extraction_set \
+		--selected-collections field_research_site_set \
+		--selected-collections library_preparation_set \
+		--selected-collections mags_activity_set \
+		--selected-collections metabolomics_analysis_activity_set \
+		--selected-collections metagenome_annotation_activity_set \
+		--selected-collections metagenome_assembly_set \
+		--selected-collections metagenome_sequencing_activity_set  \
+		--selected-collections metatranscriptome_activity_set \
+		--selected-collections nom_analysis_activity_set \
+		--selected-collections omics_processing_set \
+		--selected-collections pooling_set \
+		--selected-collections processed_sample_set \
+		--selected-collections read_based_taxonomy_analysis_activity_set \
+		--selected-collections read_qc_analysis_activity_set \
 		--selected-collections study_set \
-		--skip-collection-check
+		--skip-collection-check \
 
 
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
@@ -443,9 +478,10 @@ local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_l
 local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
 	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-convert --output $@ --schema $^
-#	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
-#	- $(RIOT) --validate $@ # < 1 minute
+	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
+	- $(JENA_PATH)/riot --validate $@ # < 1 minute
 
+# todo: still getting anyurl typed string statement objects in RDF. I added a workarround in anyuri-strings-to-iris
 local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.ttl
 	date
 	time $(RUN) anyuri-strings-to-iris \
@@ -453,8 +489,8 @@ local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.tt
 		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
 		--emsl-biosample-uuid-replacement emsl_biosample_uuid_like \
 		--output-ttl $@
-#	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
-#	- $(RIOT) --validate $@ # < 1 minute
+	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
+	- $(JENA_PATH)/riot --validate $@ # < 1 minute
 	date
 
 # ----
@@ -481,51 +517,47 @@ OmicsProcessing.tsv: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
 		--target-class-name $(firstword $(subst ., ,$(lastword $(subst /, ,$@)))) \
 		--target-p-o-constraint "dcterms:isPartOf nmdc:sty-11-34xj1150"
 
-## ----
-#
-#doi_report.tsv:
-#	$(RUN) get-study-doi-report
-#
-## ----
-#
-#enchillada: squeaky-clean all test make-rdf OmicsProcessing-all
-#
-## ----
-#
-#severe_make.log: make.log
-#	egrep -v "^INFO:root:" $< > $@
-#
-#counts-initial-cas-lc.txt: local/mongo_as_unvalidated_nmdc_database.yaml # 103212
-#	- grep -c 'cas:' $< > $@
-#
-#counts-initial-cas-uc.txt: local/mongo_as_unvalidated_nmdc_database.yaml # 0
-#	- grep -c 'CAS:' $< > $@
-#
-#counts-initial-gold-lc.txt: local/mongo_as_unvalidated_nmdc_database.yaml # 50878
-#	- grep -c 'gold:' $< > $@
-#
-# counts-initial-gold-uc.txt: local/mongo_as_unvalidated_nmdc_database.yaml # 3060
-#	- grep -c 'GOLD:' $< > $@
-#
-#counts-migrated-cas-lc.txt: local/mongo_as_nmdc_database_rdf_safe.yaml # 103212
-#	- grep -c 'cas:' $< > $@
-#
-#counts-migrated-cas-uc.txt: local/mongo_as_nmdc_database_rdf_safe.yaml # 0
-#	- grep -c 'CAS:' $< > $@
-#
-#counts-migrated-gold-lc.txt: local/mongo_as_nmdc_database_rdf_safe.yaml # 50878
-#	- grep -c 'gold:' $< > $@
-#
-# counts-migrated-gold-uc.txt: local/mongo_as_nmdc_database_rdf_safe.yaml # 1704
-#	- grep -c 'GOLD:' $< > $@
-#
-#problem-prefix-counts-clean:
-#	rm -rf counts-initial-cas-lc.txt counts-initial-cas-uc.txt \
-#		counts-initial-gold-lc.txt counts-initial-gold-uc.txt \
-#		counts-migrated-cas-lc.txt counts-migrated-cas-uc.txt \
-#		counts-migrated-gold-lc.txt counts-migrated-gold-uc.txt
-#
-#problem-prefix-counts-all: problem-prefix-counts-clean counts-initial-cas-lc.txt counts-initial-cas-uc.txt \
-#counts-initial-gold-lc.txt counts-initial-gold-uc.txt \
-#counts-migrated-cas-lc.txt counts-migrated-cas-uc.txt \
-#counts-migrated-gold-lc.txt counts-migrated-gold-uc.txt
+#tdb-steps:
+##	# clean up tdbcontent
+##	$(JENA_PATH)/tdb2.tdbloader \
+##		--loc=tdbcontent \
+##		--graph=https://w3id.org/nmdc/nmdc project/owl/nmdc.owl.ttl
+##	$(JENA_PATH)/tdb2.tdbloader \
+##		--loc=tdbcontent \
+##		--graph=mongodb://mongo-loadbalancer.nmdc.production.svc.spin.nersc.gov:27017 local/research_study_injected_for_Gs0114663_cuire_repaired.ttl
+##	$(JENA_PATH)/tdb2.tdbquery \
+##		--loc=tdbcontent \
+##		--query=assets/sparql/tdb-test.rq
+##	$(JENA_PATH)/tdb2.tdbquery \
+##		--loc=tdbcontent \
+##		--query=assets/sparql/tdb-graph-list.rq
+##	$(JENA_PATH)/tdb2.tdbquery \
+##		--loc=tdbcontent \
+##		--query=assets/sparql/Gs0114663-construct.rq
+
+validate-filtered-request-all: validate-filtered-request-clean assets/filtered-api-requests/filtered-request-validation-log.txt
+
+.PHONY: validate-filtered-request-all validate-filtered-request-clean
+
+validate-filtered-request-clean:
+	rm -rf assets/filtered-api-requests/*
+
+# user is responsible for providing pre-tested, properly escaped, filtered https://api-napa.microbiomedata.org/docs#/metadata requests
+# todo: explicitly running this through the python interpreter emits less logging
+assets/filtered-api-requests/filtered-request-result.yaml:
+	$(RUN) build-datafile-from-api-requests \
+		--output-file $@ \
+		--api-url "https://api-napa.microbiomedata.org/nmdcschema/study_set?filter=%7B%22id%22%3A%22nmdc%3Asty-11-aygzgv51%22%7D&max_page_size=999999" \
+		--api-url "https://api-napa.microbiomedata.org/nmdcschema/biosample_set?filter=%7B%22part_of%22%3A%22nmdc%3Asty-11-aygzgv51%22%7D&max_page_size=999999" \
+		--api-url "https://api-napa.microbiomedata.org/nmdcschema/omics_processing_set?filter=%7B%22part_of%22%3A%22nmdc%3Asty-11-aygzgv51%22%7D&max_page_size=999999"
+
+assets/filtered-api-requests/filtered-request-validation-log.txt: nmdc_schema/nmdc_materialized_patterns.yaml \
+assets/filtered-api-requests/filtered-request-result.yaml
+	- $(RUN) linkml-validate --schema $^ > $@
+
+.PHONY: validate-polymorphic
+
+validate-polymorphic:
+	$(RUN) linkml-validate \
+		--include-range-class-descendants \
+		--schema src/schema/nmdc.yaml src/data/polymorphic-valid/Database-polymorphic-planned-process-set.yaml
