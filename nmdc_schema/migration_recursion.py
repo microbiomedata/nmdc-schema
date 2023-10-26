@@ -6,6 +6,7 @@ import click
 import click_log
 import yaml
 from linkml_runtime import SchemaView
+from doi_dicts import award_doi_prov, new_award_dois, award_move_to_data
 
 logger = logging.getLogger(__name__)
 click_log.basic_config(logger)
@@ -23,7 +24,7 @@ class MigratorBase:
         self.forced_prefix = None
 
         # Define the "agenda" of transformations that constitute this migration.
-        # 
+        #
         # Note: This is a dictionary that maps a given collection to a list of "transformation" functions.
         #       Each key is a collection name, and each value is a list. Each element of the list is a
         #       so-called "transformation" function. A "transformation" function is a function that
@@ -79,7 +80,8 @@ class MigratorBase:
             return o
         elif isinstance(o, list):
             return [
-                self.apply_changes_recursively_by_key(v, keys_to_migrate, migration_eligible)
+                self.apply_changes_recursively_by_key(
+                    v, keys_to_migrate, migration_eligible)
                 for v in o
             ]
         else:
@@ -107,7 +109,7 @@ class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
                   As is true about the "constructor" function of any class,
                   it runs whenever that class is instantiated, and its job
                   is to initialize the newly-created instance of that class.
-                  
+
                   When this "constructor" function runs, it does two things:
                   1. It invokes the base class's "constructor" function; and
                   2. It populates a dictionary that keeps track of which
@@ -138,7 +140,7 @@ class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
                   that conforms to the target schema version (in this case,
                   version "X.Y.Z"). That might involve adding a field,
                   converting a string into a list of strings, etc.
-                  
+
                   When this "transformation" function runs, it does three things:
                   1. It accepts a single dictionary as a parameter.
                   2. It transforms that dictionary.
@@ -149,7 +151,8 @@ class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
                   You will also add them to the "agenda" of the class.
         """
 
-        logger.info(f"Transforming study having id: {study['id']}")  # optional log message
+        # optional log message
+        logger.info(f"Transforming study having id: {study['id']}")
 
         # Transform the dictionary.
         #
@@ -161,8 +164,10 @@ class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
         #              a list of strings.
         #
         original_name = study["name"]  # preserve the original value
-        study["names"] = []  # create a new key, whose value is an empty list of names
-        study["names"].append(original_name)  # add the original value to that list
+        # create a new key, whose value is an empty list of names
+        study["names"] = []
+        # add the original value to that list
+        study["names"].append(original_name)
         del study["name"]  # delete the obsolete key
 
         # Return the transformed dictionary.
@@ -204,9 +209,11 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
 
         # Populate the "collection-to-transformers" map for this specific migration.
         self.agenda = dict(
-            biosample_set=[self.standardize_letter_casing_of_gold_biosample_identifiers],
+            biosample_set=[
+                self.standardize_letter_casing_of_gold_biosample_identifiers],
             extraction_set=[self.rename_sample_mass_field],
-            omics_processing_set=[self.standardize_letter_casing_of_gold_sequencing_project_identifiers],
+            omics_processing_set=[
+                self.standardize_letter_casing_of_gold_sequencing_project_identifiers],
             study_set=[self.standardize_letter_casing_of_gold_study_identifier],
         )
 
@@ -219,7 +226,7 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
     def standardize_letter_casing_of_gold_identifiers(self, identifiers: List[str]) -> List[str]:
         """
         Replaces the prefix `GOLD:` with `gold:` in the list of identifiers.
-        
+
         Note: If the identifier contains more than one colon, everything after the second
               colon will be discarded.
         """
@@ -229,7 +236,8 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
             logger.info(f"Original identifier: {identifier}")
             curie_parts = identifier.split(':')
             curie_prefix = curie_parts[0]  # everything before the first colon
-            curie_local_id = curie_parts[1]  # everything after the first colon, assuming there are no more colons
+            # everything after the first colon, assuming there are no more colons
+            curie_local_id = curie_parts[1]
 
             # Note: `s.split(":", maxsplit=1)` could be used to divide the string at the
             #       _first_ colon only, so that `parts[1]` contains everything after that.
@@ -245,7 +253,8 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
     def standardize_letter_casing_of_gold_biosample_identifiers(self, biosample: dict) -> dict:
         field_name = "gold_biosample_identifiers"
         if field_name in biosample and biosample[field_name]:
-            biosample[field_name] = self.standardize_letter_casing_of_gold_identifiers(biosample[field_name])
+            biosample[field_name] = self.standardize_letter_casing_of_gold_identifiers(
+                biosample[field_name])
         else:
             biosample[field_name] = []
         return biosample
@@ -262,7 +271,8 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
     def standardize_letter_casing_of_gold_study_identifier(self, study: dict) -> dict:
         field_name = "gold_study_identifiers"
         if field_name in study and study[field_name]:
-            study[field_name] = self.standardize_letter_casing_of_gold_identifiers(study[field_name])
+            study[field_name] = self.standardize_letter_casing_of_gold_identifiers(
+                study[field_name])
         else:
             study[field_name] = []
         return study
@@ -283,8 +293,103 @@ class Migrator_from_8_0_0_to_8_1_0(MigratorBase):
 
     def force_research_study_study_category(self, study: dict) -> dict:
         if 'study_category' not in study:
-            logger.info(f"Forcing 'study_category: research_study' on {study['id']}")
+            logger.info(
+                f"Forcing 'study_category: research_study' on {study['id']}")
             study['study_category'] = 'research_study'
+        return study
+
+
+class Migrator_from_8_1_0_to_9_0_0(MigratorBase):
+    """Migrates data from schema 8.0.0 to 8.1.0"""
+
+    def __init__(self) -> None:
+        """Invokes parent constructor and populates collection-to-transformations map."""
+
+        super().__init__()
+
+        # Populate the "collection-to-transformers" map for this specific migration.
+        self.agenda = dict(
+            study_set=[self.fix_award_dois, self.fix_pub_dois,
+                       self.fix_massive, self.fix_ess_dive, self.remove_slots],
+        )
+
+    def process_doi(self, study: dict, doi_list, doi_category):
+
+        id_value = study['id']
+        for doi_updates in doi_list:
+            if id_value == doi_updates['id']:
+                new_doi = {
+                    'doi': doi_updates['doi'],
+                    'doi_category': doi_category,
+                    'doi_provider': doi_updates['doi_prov']
+                }
+                study.setdefault('associated_dois', []).append(new_doi)
+
+    def fix_award_dois(self, study: dict):
+        """Move study DOIs into the new associated_dois slot, including moving some from award 
+        to dataset, and add three new award DOIs"""
+
+        self.process_doi(study, award_move_to_data, 'dataset_doi')
+        self.process_doi(study, new_award_dois, 'award_doi')
+        self.process_doi(study, award_doi_prov, 'award_doi')
+
+        return study
+
+    def fix_pub_dois(self, study: dict):
+        """Move publication_dois values to new associated_dois slot"""
+
+        study.setdefault('associated_dois', []).extend(
+            {'doi': pub_doi, 'doi_category': 'publication_doi'}
+            for pub_doi in study.get('publication_dois', [])
+        )
+
+        return study
+
+    def fix_massive(self, study: dict):
+        """Change the one massive_study_identifiers value to a doi and move under new associated_dois slot"""
+
+        mass_id = 'MASSIVE:MSV000090886'
+        mass_doi = 'doi:10.25345/C58K7520G'
+        study.setdefault('associated_dois', []).extend({'doi': mass_doi, 'doi_category': 'dataset_doi', 'doi_provider': 'massive'}
+                                                       for id in study.get('massive_study_identifiers', []) if id == mass_id)
+
+        # remove the massive_study_identifiers slot if the id matches the one to be removed in associated_dois slot
+        for doi_group in study['associated_dois']:
+            if doi_group['doi'] == mass_doi:
+                study.pop('massive_study_identifiers', None)
+
+        return study
+
+    def fix_ess_dive(self, study: dict):
+        """Move ess_dive_datasets values to associated_dois slot"""
+
+        study.setdefault('associated_dois', []).extend(
+            {'doi': dataset_doi, 'doi_category': 'dataset_doi',
+                'doi_provider': 'ess_dive'}
+            for dataset_doi in study.get('ess_dive_datasets', [])
+        )
+
+        return study
+
+    def remove_slots(self, study: dict):
+        """Remove slots that are no longer needed because their values have been moved to the associated_dois slot"""
+
+        removal_slots = ['publication_dois', 'dataset_dois',
+                         'award_dois', 'ess_dive_datasets', 'massive_study_identifiers']
+
+        # Get dois from associated_dois
+        associated_dois = {entry['doi']
+                           for entry in study.get('associated_dois', [])}
+
+        # Remove the old dois from the old doi slots
+        for slot_name in removal_slots:
+            study[slot_name] = [doi for doi in study.get(
+                slot_name, []) if doi not in associated_dois]
+
+            # Remove old doi slots if values are empty
+            if not study[slot_name]:
+                del study[slot_name]
+
         return study
 
 
@@ -297,16 +402,15 @@ class Migrator_from_8_0_0_to_8_1_0(MigratorBase):
 @click.option("--output-path", default='local/rdf_safe.yaml', required=True, type=str,
               help="Path to the output YAML data file")
 @click.option("--salvage-prefix", required=True, type=str,
-              help=
-              "A prefix, defined in the schema, to force for each value that the schema indicates is a CURIE but that has no prefix")
+              help="A prefix, defined in the schema, to force for each value that the schema indicates is a CURIE but that has no prefix")
 def main(schema_path, input_path, output_path, salvage_prefix):
     """
     Generates a data file that conforms to a different schema version than the input data file does.
-    
+
     See source code for initial and final schema versions.
     """
 
-    migrator = Migrator_from_8_0_0_to_8_1_0()
+    migrator = Migrator_from_8_1_0_to_9_0_0()
     migrator.forced_prefix = salvage_prefix
 
     # Load the schema and determine which of its slots we can migrate.
@@ -335,7 +439,8 @@ def main(schema_path, input_path, output_path, salvage_prefix):
     for tdk, tdv in total_dict.items():
         logger.info(f"Starting migration of {tdk}")
 
-        end_dict[tdk] = migrator.apply_changes_recursively_by_key(tdv, set(migrateable_slots))
+        end_dict[tdk] = migrator.apply_changes_recursively_by_key(
+            tdv, set(migrateable_slots))
 
         # If the migration specifies any transformers for this collection,
         # apply them—in order—to each document within this collection.
