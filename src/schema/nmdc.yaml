@@ -2081,7 +2081,7 @@ enums:
           - NCIT:C61538
 
   DoiProviderEnum:
-    see_also: ProcessingInstitutionEnum
+    see_also: nmdc:ProcessingInstitutionEnum
     permissible_values:
       emsl:
         aliases:
