@@ -139,6 +139,7 @@ subsets:
       Subset consisting of entities that Kitware/nmdc-server use to populate the data portal.
     comments:
       - Schema authors are responsible for alerting and supporting Kitware and nmdc-server authors about changes they will have to make if entities labeled with data_portal_subset are modified.
+      - Assignment of the data_portal_subset is incomplete in the schema.
 
 classes:
 
@@ -1376,7 +1377,7 @@ classes:
     exact_mappings:
       - OBI:0002110
     slots:
-      - doi
+      - doi_value
       - doi_provider
       - doi_category
     rules:
@@ -2080,6 +2081,7 @@ enums:
           - NCIT:C61538
 
   DoiProviderEnum:
+    see_also: ProcessingInstitutionEnum
     permissible_values:
       emsl:
         aliases:
@@ -2733,7 +2735,7 @@ slots:
         doi_category: publication_doi
       description: provides a list of two DOIs, an EMSL award DOI and a publication DOI.
 
-  doi:
+  doi_value:
     description: >-
       A digital object identifier, which is intended to persistantly identify some resource on the web.
     required: true

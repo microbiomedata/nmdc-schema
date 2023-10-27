@@ -50,7 +50,7 @@ study_set:
       - https://w3id.org/nmdc
       - https://w3id.org/linkml
     associated_dois:
-      - doi: doi:10.25585/1488209
+      - doi_value: doi:10.25585/1488209
         doi_category: publication_doi
     type: any string
     relevant_protocols:

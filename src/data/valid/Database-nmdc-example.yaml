@@ -14,7 +14,7 @@ study_set:
     principal_investigator:
       has_raw_value: Virginia Rich
     associated_dois:
-      - doi: doi:10.25585/1488217 # https://doi.org/10.25585/1488217 / https://www.osti.gov/dataexplorer/biblio/dataset/1488217 -> https://genome.jgi.doe.gov/portal/Somoldmmetaomics/Somoldmmetaomics.info.html
+      - doi_value: doi:10.25585/1488217 # https://doi.org/10.25585/1488217 / https://www.osti.gov/dataexplorer/biblio/dataset/1488217 -> https://genome.jgi.doe.gov/portal/Somoldmmetaomics/Somoldmmetaomics.info.html
         doi_category: dataset_doi
         doi_provider: osti
     type: nmdc:Study
@@ -35,7 +35,7 @@ study_set:
     principal_investigator:
       has_raw_value: Jeffrey Blanchard
     associated_dois:
-      - doi: doi:10.25585/1488215 # https://www.osti.gov/dataexplorer/biblio/dataset/1488215 -> https://genome.jgi.doe.gov/portal/Molmecexpwarming/Molmecexpwarming.info.html
+      - doi_value: doi:10.25585/1488215 # https://www.osti.gov/dataexplorer/biblio/dataset/1488215 -> https://genome.jgi.doe.gov/portal/Molmecexpwarming/Molmecexpwarming.info.html
         doi_category: dataset_doi
         doi_provider: osti
     type: nmdc:Study
@@ -56,7 +56,7 @@ study_set:
     principal_investigator:
       has_raw_value: Rebecca Neumann
     associated_dois:
-      - doi: doi:10.25585/1488209 # https://www.osti.gov/dataexplorer/biblio/dataset/1488209 -> https://genome.jgi.doe.gov/portal/ARhifrWetlands/ARhifrWetlands.info.html
+      - doi_value: doi:10.25585/1488209 # https://www.osti.gov/dataexplorer/biblio/dataset/1488209 -> https://genome.jgi.doe.gov/portal/ARhifrWetlands/ARhifrWetlands.info.html
         doi_category: dataset_doi
         doi_provider: osti
     type: nmdc:Study

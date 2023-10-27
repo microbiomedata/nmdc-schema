@@ -15,7 +15,7 @@ study_set:
     principal_investigator:
       has_raw_value: Virginia Rich
     associated_dois:
-      - doi: doi:10.25585/1488217
+      - doi_value: doi:10.25585/1488217
         doi_category: award_doi
         doi_provider: emsl
     type: nmdc:Study

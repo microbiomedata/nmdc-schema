@@ -50,7 +50,7 @@ websites:
   - https://w3id.org/nmdc
   - https://w3id.org/linkml
 associated_dois:
-  - doi: doi:10.25585/1488209
+  - doi_value: doi:10.25585/1488209
     doi_category: dataset_doi
     doi_provider: osti
 type: any string
