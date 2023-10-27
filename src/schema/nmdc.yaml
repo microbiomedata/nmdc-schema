@@ -2755,14 +2755,14 @@ slots:
 
   doi_provider:
     description: >-
-      The authority, or organization, the DOI is registered under.
+      The authority, or organization, the DOI is associated with.
     range: DoiProviderEnum
     close_mappings:
       - NCIT:C74932
     in_subset: data_portal_subset
     examples:
       - value: ess_dive
-        description: The corresponding doi was registered by ESS-DIVE.
+        description: The corresponding doi is associated with ESS-DIVE.
 
   doi_category:
     description:
