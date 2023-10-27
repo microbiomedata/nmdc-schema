@@ -26,13 +26,13 @@ default_prefix: nmdc
 default_range: string
 
 enums:
-  ContainerTypeEnum:
-    title: Container type enumeration
-    permissible_values:
-      screw_top_conical:
-        title: Screw top conical tube
-        aliases:
-          - falcon tube
+  #ContainerTypeEnum:
+  #  title: Container type enumeration
+  #  permissible_values:
+  #    screw_top_conical:
+  #      title: Screw top conical tube
+  #      aliases:
+  #        - falcon tube
   DeviceTypeEnum:
     title: Shaker type enumeration
     permissible_values:
@@ -131,13 +131,13 @@ slots:
       - shake_time
     range: QuantityValue
     inlined: true
-  container_size:
-    title: container size
-    range: QuantityValue
-    inlined: true
-  container_type:
-    title: container type
-    range: ContainerTypeEnum
+  #container_size:
+  #  title: container size
+  #  range: QuantityValue
+  #  inlined: true
+  #container_type:
+  #  title: container type
+  #  range: ContainerTypeEnum
   amount_collected:
     title: amount collected
     range: QuantityValue

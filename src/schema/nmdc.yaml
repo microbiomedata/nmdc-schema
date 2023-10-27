@@ -1552,6 +1552,35 @@ classes:
     broad_mappings:
       - OBI:0000094
 
+  SubSamplingProcess:
+    description: >
+      Separating a sample aliquot from the starting material for downstream activity.
+    see_also:
+      - http://purl.obolibrary.org/obo/OBI_0000744
+    todos:
+      - add intermediate class between PlannedProcess and this (MaterialProcessing potentially)
+      - Montana to visit slot descriptions
+      - add 'has_output' usage for processed sample - James
+    notes:
+      - A subsample may be (a) a portion of the sample obtained by selection or division; 
+        (b) an individual unit of the lot taken as part of the sample; (c) the final unit of multistage sampling. 
+        The term 'subsample' is used either in the sense of a 'sample of a sample' or as a synonym for 'unit'. 
+        In practice, the meaning is usually apparent from the context or is defined.
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-8683-0050 #Montana Smith
+      - ORCID:0000-0001-9076-6066 #Mark Miller
+      - ORCID:0009-0008-4013-7737 #James Tessmer
+    is_a: PlannedProcess 
+    slots:
+      - container_size
+      - container_type
+      - temperature
+      - volume
+    slot_usage:
+      volume:
+        description: The volume of subsample.
+
   OmicsProcessing:
     aliases:
       - omics assay
@@ -2132,6 +2161,14 @@ enums:
     comments:
       - See especially the resourceTypeGeneral section of the DataCite pdf, on pp48-53 as of 2023-07-19
       
+  ContainerTypeEnum:
+    description: The permitted types of containers used in processing metabolomic samples.
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-8683-0050 #Montana Smith
+    permissible_values:
+      V-bottom conical tube:
+
 slots:
 
   designated_class:
@@ -2893,3 +2930,34 @@ slots:
 
   completion_date:
     range: string
+
+  container_size:
+    range: QuantityValue
+    description: The volume of the container an analyte is stored in or an activity takes place in
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-8683-0050 #Montana Smith
+
+  container_type:
+    range: ContainerTypeEnum
+    description: >-
+      A type of container. i.e. test tube, falcon tube, etc.
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-8683-0050 #Montana Smith
+
+  volume:
+    range: QuantityValue
+    description: The volume of a substance.
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-8683-0050 #Montana Smith
+
+  temperature:
+    range: QuantityValue
+    notes:
+      - "Not to be confused with the MIXS:0000113"
+    description: The value of a temperature measurement or temperature used in a process.
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-8683-0050 #Montana Smith
