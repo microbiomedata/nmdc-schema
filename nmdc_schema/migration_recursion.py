@@ -6,7 +6,6 @@ import click
 import click_log
 import yaml
 from linkml_runtime import SchemaView
-from .doi_dicts import award_doi_prov, new_award_dois, award_move_to_data
 
 logger = logging.getLogger(__name__)
 click_log.basic_config(logger)
@@ -310,7 +309,7 @@ class Migrator_from_8_1_0_to_9_0_0(MigratorBase):
         # Populate the "collection-to-transformers" map for this specific migration.
         self.agenda = dict(
             study_set=[self.fix_award_dois, self.fix_pub_dois,
-                       self.fix_massive, self.fix_ess_dive, self.remove_slots],
+                       self.fix_massive, self.fix_ess_dive, self.remove_doi_slots],
         )
 
     def process_doi(self, study: dict, doi_list, doi_category):
@@ -329,9 +328,13 @@ class Migrator_from_8_1_0_to_9_0_0(MigratorBase):
          It also changes some DOIs that were incorrectly labeled as award to dataset DOIs.
          It also add three new award DOIs from JGI"""
 
-        self.process_doi(study, award_move_to_data, 'dataset_doi')
-        self.process_doi(study, new_award_dois, 'award_doi')
-        self.process_doi(study, award_doi_prov, 'award_doi')
+        study_doi_data = self.load_yaml_file(
+            filename='assets/misc/study_dois_changes.yaml')
+
+        self.process_doi(
+            study, study_doi_data['award_move_to_data'], 'dataset_doi')
+        self.process_doi(study, study_doi_data['new_award_dois'], 'award_doi')
+        self.process_doi(study, study_doi_data['award_doi_prov'], 'award_doi')
 
         return study
 
@@ -368,7 +371,7 @@ class Migrator_from_8_1_0_to_9_0_0(MigratorBase):
                 'doi_provider': 'ess_dive'}
             for dataset_doi in study.get('ess_dive_datasets', []))
 
-    def remove_slots(self, study: dict):
+    def remove_doi_slots(self, study: dict):
         """Remove slots that are no longer needed because their values have been moved to the associated_dois slot"""
 
         removal_slots = ['publication_dois', 'dataset_dois',
