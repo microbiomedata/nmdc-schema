@@ -92,7 +92,7 @@ prefixes:
   xsd: http://www.w3.org/2001/XMLSchema#
   emsl: "http://example.org/emsl_biosample_in_mongodb/"
   emsl_biosample_uuid_like: "http://example.org/emsl_biosample_uuid_like/"
-  data: "http://edamontology.org/data"
+  edam.data: "http://edamontology.org/data"
 
 
 default_prefix: nmdc
@@ -2749,7 +2749,7 @@ slots:
     exact_mappings:
       - OBI:0002110
     narrow_mappings:
-      - data:1188
+      - edam.data:1188
 
   doi_provider:
     description: >-
