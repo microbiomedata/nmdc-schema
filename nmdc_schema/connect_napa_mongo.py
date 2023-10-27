@@ -349,3 +349,51 @@ for doc in biosample_coll.find(Gs0114663_dev_biosample):
   fix_Gs0114663_biosample_part_of= { "$set": { "part_of": ["nmdc:sty-11-aygzgv51"]}}
   biosample_coll.update_one(target_prod_biosample,fix_Gs0114663_biosample_part_of)
 
+#check lenght of gold project arrays
+gold_project_array_lengths=[]
+omics_with_gold_projects={'id':{'$regex':'^gold'},'gold_sequencing_project_identifiers':{'$exists':True}}
+for doc in omics_coll.find(omics_with_gold_projects):
+  if (len(doc["gold_sequencing_project_identifiers"])) <1:
+    print(doc["id"] +" has an empty  array: part of "+ doc["part_of"][0])
+  elif (len(doc["gold_sequencing_project_identifiers"])) == 1:
+    len_array=1
+  else:
+    print("length unclear")
+
+###############
+#track down records WorkflowExecutionActivity (WEA) records that need to be deleted and their associated data objects
+
+seq_based_collection_list=['read_qc_analysis_activity_set','read_based_taxonomy_analysis_activity_set','metagenome_assembly_set','metagenome_annotation_activity_set','mags_activity_set','metatranscriptome_activity_set']
+
+#open file with list of omics records to delete, this list is derived from a rdf query to check for data refs
+#that list was manually reviewed to determine which WEA to delete vs repair upstream records
+
+data_object_coll=mydb['data_object_set']
+
+target_gp_for_del=open("omics_records_to_delete.txt", 'r')
+for gp in target_gp_for_del:
+  gold_project_id=gp.strip()
+  gold_proj_curie='gold:'+gold_project_id
+  #check to make sure omics_processing_set record doesn't exist
+  if (omics_coll.find_one({'id':gold_proj_curie})):
+     print("omics processing set record exists for "+gold_proj_curie)
+  else:
+    for collection in seq_based_collection_list:
+      wea_coll=mydb[collection]
+      doc=wea_coll.find_one({'was_informed_by': gold_proj_curie})
+      if (doc):
+        print("found "+doc["id"]+" in collection "+ collection)    
+        #wea_to_delete.append(doc)
+        wea_coll.delete_one({'was_informed_by': gold_proj_curie})
+#this method should not be used as there are data objects that need to be removed that are not listed in has_output for the WEA records
+    #if "has_input" in doc.keys():
+    #  for input in doc["has_input"]:
+    #    dobj_to_delete.append(input)
+    #if "has_output" in doc.keys():
+    #  for output in doc["has_output"]:
+    #    dobj_to_delete.append(output)
+      else:
+        print("Could not find WEA records informed by "+gold_project_id+" in collection "+ collection)
+    data_object_coll.delete_many({'description':{'$regex':gold_project_id}})
+###
+#end cleanup of omics records that don't exist
