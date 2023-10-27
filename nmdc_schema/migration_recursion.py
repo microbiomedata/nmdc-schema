@@ -317,7 +317,7 @@ class Migrator_from_8_1_0_to_9_0_0(MigratorBase):
         for doi_updates in doi_list:
             if id_value == doi_updates['id']:
                 new_doi = {
-                    'doi': doi_updates['doi'],
+                    'doi_value': doi_updates['doi'],
                     'doi_category': doi_category,
                     'doi_provider': doi_updates['doi_prov']
                 }
@@ -342,7 +342,7 @@ class Migrator_from_8_1_0_to_9_0_0(MigratorBase):
         """Move publication_dois values to new associated_dois slot"""
 
         study.setdefault('associated_dois', []).extend(
-            {'doi': pub_doi, 'doi_category': 'publication_doi'}
+            {'doi_value': pub_doi, 'doi_category': 'publication_doi'}
             for pub_doi in study.get('publication_dois', [])
         )
 
@@ -353,12 +353,12 @@ class Migrator_from_8_1_0_to_9_0_0(MigratorBase):
 
         mass_id = 'MASSIVE:MSV000090886'
         mass_doi = 'doi:10.25345/C58K7520G'
-        study.setdefault('associated_dois', []).extend({'doi': mass_doi, 'doi_category': 'dataset_doi', 'doi_provider': 'massive'}
+        study.setdefault('associated_dois', []).extend({'doi_value': mass_doi, 'doi_category': 'dataset_doi', 'doi_provider': 'massive'}
                                                        for id in study.get('massive_study_identifiers', []) if id == mass_id)
 
         # remove the massive_study_identifiers slot if the id matches the one to be removed in associated_dois slot
         for doi_group in study['associated_dois']:
-            if doi_group['doi'] == mass_doi:
+            if doi_group['doi_value'] == mass_doi:
                 study.pop('massive_study_identifiers', None)
 
         return study
@@ -367,7 +367,7 @@ class Migrator_from_8_1_0_to_9_0_0(MigratorBase):
         """Move ess_dive_datasets values to associated_dois slot"""
 
         study.setdefault('associated_dois', []).extend(
-            {'doi': dataset_doi, 'doi_category': 'dataset_doi',
+            {'doi_value': dataset_doi, 'doi_category': 'dataset_doi',
                 'doi_provider': 'ess_dive'}
             for dataset_doi in study.get('ess_dive_datasets', []))
 
@@ -378,7 +378,7 @@ class Migrator_from_8_1_0_to_9_0_0(MigratorBase):
                          'award_dois', 'ess_dive_datasets', 'massive_study_identifiers']
 
         # Get dois from associated_dois
-        associated_dois = [entry['doi']
+        associated_dois = [entry['doi_value']
                            for entry in study.get('associated_dois', [])]
 
         # Remove the old dois from the old doi slots
