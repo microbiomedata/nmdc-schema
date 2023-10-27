@@ -2765,7 +2765,8 @@ slots:
         description: The corresponding doi is associated with ESS-DIVE.
 
   doi_category:
-    description:
+    description: >-
+      The resource type the corresponding doi resolves to.
     range: DoiCategoryEnum
     required: true
     in_subset: data_portal_subset
