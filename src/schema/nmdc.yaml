@@ -2784,7 +2784,7 @@ slots:
     pattern: '^doi:10.\d{2,9}/.*$'
     examples: 
       - value: doi:10.46936/10.25585/60000880
-        description: The doi links to an electronic document.
+        description: The DOI links to an electronic document.
     exact_mappings:
       - OBI:0002110
     narrow_mappings:
