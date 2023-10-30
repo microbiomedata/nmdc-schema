@@ -93,7 +93,7 @@ slots:
 
   massive_identifiers:
     mixin: true
-    description: identifiers for entities according to MASSIVE\
+    description: identifiers for entities according to MASSIVE
     deprecated_element_has_exact_replacement: nmdc:associated_dois
 
   neon_identifiers:
