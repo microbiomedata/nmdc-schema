@@ -2809,7 +2809,7 @@ slots:
     in_subset: data_portal_subset
     examples:
       - value: dataset_doi
-        description: The corresponding doi is a dataset resource type.
+        description: The corresponding DOI is a dataset resource type.
     
   dois:
     # is_a: attribute
