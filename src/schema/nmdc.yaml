@@ -2159,7 +2159,7 @@ enums:
       - https://schema.datacite.org/meta/kernel-4.4/doc/DataCite-MetadataKernel_v4.4.pdf
       - https://api.crossref.org/types
     comments:
-      - See especially the resourceTypeGeneral section of the DataCite pdf, on pp48-53 as of 2023-07-19
+      - See especially the resourceTypeGeneral section of the DataCite PDF, on pp48-53 as of 2023-07-19
       
   ContainerTypeEnum:
     description: The permitted types of containers used in processing metabolomic samples.
