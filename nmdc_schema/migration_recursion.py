@@ -312,7 +312,7 @@ class Migrator_from_8_1_0_to_9_0_0(MigratorBase):
                        self.fix_massive, self.fix_ess_dive, self.remove_doi_slots],
         )
 
-    def process_doi(self, study: dict, doi_list, doi_category):
+    def process_doi(self, study: dict, doi_list: list, doi_category: str):
         id_value = study['id']
         for doi_updates in doi_list:
             if id_value == doi_updates['id']:
