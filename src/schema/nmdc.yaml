@@ -2799,7 +2799,7 @@ slots:
     in_subset: data_portal_subset
     examples:
       - value: ess_dive
-        description: The corresponding doi is associated with ESS-DIVE.
+        description: The corresponding DOI is associated with ESS-DIVE.
 
   doi_category:
     description: >-
