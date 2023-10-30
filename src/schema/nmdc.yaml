@@ -2770,7 +2770,7 @@ slots:
         doi_category: award_doi
       - doi: doi:10.1101/2022.12.12.520098
         doi_category: publication_doi
-      description: provides a list of two DOIs, an EMSL award DOI and a publication DOI.
+      description: Provides a list of two DOIs, an EMSL award DOI and a publication DOI.
 
   doi_value:
     description: >-
