@@ -1364,7 +1364,7 @@ classes:
         aliases:
           - Wind_Speed_Mean
         alt_descriptions:
-          -"Wind speed measured at 10 m every 10 seconds, integrated and stored hourly. Arithmetic mean per sampling day reported."
+          -Wind speed measured at 10 m every 10 seconds, integrated and stored hourly. Arithmetic mean per sampling day reported.
 
     exact_mappings:
       - OBI:0000747
