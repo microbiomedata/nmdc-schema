@@ -298,7 +298,7 @@ class Migrator_from_8_0_0_to_8_1_0(MigratorBase):
         return study
 
 
-class Migrator_from_8_1_0_to_9_0_0(MigratorBase):
+class Migrator_from_8_1_1_to_9_0_0(MigratorBase):
     """Migrates data from schema 8.1.0 to 9.0.0"""
 
     def __init__(self) -> None:
@@ -417,7 +417,7 @@ def main(schema_path, input_path, output_path, salvage_prefix):
     See source code for initial and final schema versions.
     """
 
-    migrator = Migrator_from_8_1_0_to_9_0_0()
+    migrator = Migrator_from_8_1_1_to_9_0_0()
     migrator.forced_prefix = salvage_prefix
 
     # Load the schema and determine which of its slots we can migrate.
