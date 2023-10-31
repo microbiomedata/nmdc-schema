@@ -55,10 +55,10 @@ def update_studies_to_napa_standards():
 #if reading minted IDs from a json file
 
 def update_bsm_by_study(napa_sty_id):
-  bsm_reid_log=open(napa_sty_id + "_bsm_update.txt","w")
   bsm_counter=0
   bsm_alt_id_dict={'gold_biosample_identifiers':'gold:','igsn_biosample_identifiers':'igsn:','emsl_biosample_identifiers':'emsl:'}
   legacy_sty=napa_sty_to_legacy(napa_sty_id) 
+  bsm_reid_log=open(legacy_sty + "_bsm_reid.txt","w")
   with open(legacy_sty + "_bsm_napa.json", 'r') as j:
      bsm_napa_ids = json.loads(j.read()) 
   legacy_bsm={"part_of": legacy_sty, "id": {"$ne":"^nmdc:bsm"}}
@@ -101,7 +101,7 @@ def update_bsm_by_study(napa_sty_id):
     print(bsm_target_update)
     #perform biosample update
     bsm_coll.update_one(target_bsm,bsm_target_update) 
-    bsm_reid_log.write(bsm_class_legacy_napa)
+    bsm_reid_log.write(bsm_class_legacy_napa + '\n')
     bsm_counter=bsm_counter+1
   bsm_reid_log.close()
 ################
@@ -121,49 +121,59 @@ def napa_sty_to_legacy(napa_sty_id):
 def update_omics_by_study(napa_sty_id):
   omics_coll=mydb["omics_processing_set"]
   omics_counter=0
+  omics_alt_id_dict={'gold_sequencing_project_identifiers':'gold:','alternative_identifiers':'emsl:'}
   legacy_sty=napa_sty_to_legacy(napa_sty_id)
-  legacy_omics={"part_of": legacy_sty, "id", {"$ne":"^nmdc:omprc"}}
-  with open(legacy_study"_omics_test.json", 'r') as j:
+  legacy_omics={"part_of": legacy_sty, "id": {"$ne":"^nmdc:omprc"}}
+  f_omics_id_mapping = open(legacy_sty+"_omics_reid.txt", "w")
+  with open(legacy_sty+"_omics_napa.json", 'r') as j:
      omics_napa_ids = json.loads(j.read())
-  for doc in omics_coll.find(legacy_omics):
+  for omics_doc in omics_coll.find(legacy_omics):
     #set list with value of napa study for part_of
     study_napa_list=[]
-    study_napa_list.append(napa_study)
+    study_napa_list.append(napa_sty_id)
     #determine what has_input should be
-    if(isinstance(doc["has_input"],list)):
+    if(isinstance(omics_doc["has_input"],list)):
       napa_biosample_inputs=[]
-      for biosample in doc["has_input"]:
-        if (biosample.startswith('GOLD')):
-          biosample=biosample.replace('GOLD','gold')
-          target_has_input={"$or":[ {"emsl_biosample_identifiers":biosample}, {"gold_biosample_identifiers":biosample},{"insdc_biosample_identifiers":biosample}]}
-          get_biosample=biosample_coll.find_one(target_has_input)
-          napa_biosample_inputs.append(get_biosample["id"])
+      for biosample in omics_doc["has_input"]:
+        biosample=biosample.replace('GOLD','gold')
+        target_has_input={"$or":[ {"emsl_biosample_identifiers":biosample}, {"gold_biosample_identifiers":biosample},{"insdc_biosample_identifiers":biosample}]}
+        get_biosample=bsm_coll.find_one(target_has_input)
+        napa_biosample_inputs.append(get_biosample["id"])
     #set id and alternative ids
-    target_omics={"id": doc["id"]}
+    target_omics={"id": omics_doc["id"]}
     #deal with gold omics identifiers, for all 485 legacy records all already list gold projects in the gold_sequencing_project_identifiers slot
-    if (doc["id"].startswith('gold')): 
-      update_alt= False
-    #deal with emsl omics identifiers
-    elif (doc["id"].startswith(('emsl'))): 
-       alt_id_slot="alternative_identifiers"
-       alt_id=[]
-       alt_id.append(doc["id"])
-       update_alt=True        
-    else:
-      print("Not sure how to re-id omics_processing_set id ",doc["id"]) 
+    alt_omics_id=[]
+    for alt_omics_id_slot in omics_alt_id_dict:
+      if omics_doc["id"].startswith(omics_alt_id_dict[alt_omics_id_slot]):
+        if alt_omics_id_slot in omics_doc.keys():
+          if len(omics_doc[alt_omics_id_slot]) == 0:
+            update_alt_omics=True
+            alt_omics_id.append(omics_doc["id"])
+            target_alt_omics_slot=alt_omics_id_slot
+            print ("will update alt id slot is empty"+alt_id_slot_name)
+          elif (len(omics_doc[alt_omics_id_slot]) == 1 and omics_doc[alt_omics_id_slot][0] == omics_doc["id"]):
+            print(alt_omcs_id_slot+" already set for "+omics_doc["id"])
+            update_alt_omics=False
+          else:
+            print("length of array for "+ alt_omics_id_slot +"exists and is greater than 1")
+            update_alt_omics=False
+        else:
+          update_alt_omics=True
+          alt_omics_id.append(omics_doc["id"])
+          target_alt_omics_slot=alt_omics_id_slot
+          print ("will update alt id b/c could not find alt id")
     #set target update depending on if alt slot exists already or not 
-    if update_alt is True:
-      target_omics_update = { "$set": { "id": omics_napa_ids[omics_counter], "part_of":study_napa_list, "has_input": napa_biosample_inputs, alt_id_slot: alt_id }}
-    if update_alt is False:
+    if update_alt_omics is True:
+      target_omics_update = { "$set": { "id": omics_napa_ids[omics_counter], "part_of":study_napa_list, "has_input": napa_biosample_inputs, target_alt_omics_slot: alt_omics_id }}
+    if update_alt_omics is False:
       target_omics_update = { "$set": { "id": omics_napa_ids[omics_counter], "part_of":study_napa_list, "has_input": napa_biosample_inputs}}
+    print(target_omics_update)
     omics_coll.update_one(target_omics,target_omics_update)
-    class_legacy_napa="OmicsProcessing " + doc["id"] + " "+ omics_napa_ids[omics_counter]
+    class_legacy_napa="OmicsProcessing " + omics_doc["id"] + " "+ omics_napa_ids[omics_counter]
     #print(class_legacy_napa)
     #print(target_update)
     f_omics_id_mapping.write(class_legacy_napa + '\n')
- #  f_omics_set_operation.write(target_update + '\n')  
     omics_counter=omics_counter+1
   f_omics_id_mapping.close()
-  f_omics_set_operation.close()
 
 
