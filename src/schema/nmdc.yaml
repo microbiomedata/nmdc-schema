@@ -1727,6 +1727,7 @@ enums:
   file type enum:
     permissible_values:
       Metagenome Raw Reads:
+        description: Single-read raw sequencing data
         annotations:
           file_name_pattern: '^\.fastq(\.gz)?$'
 
