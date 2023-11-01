@@ -1673,6 +1673,7 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
+                        "pattern": "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                         "type": "string"
                     },
                     "type": "array"
@@ -2840,6 +2841,12 @@
                     "description": "a human-readable description of a thing",
                     "type": "string"
                 },
+                "designated_class": {
+                    "enum": [
+                        "nmdc:BiosampleProcessing"
+                    ],
+                    "type": "string"
+                },
                 "end_date": {
                     "description": "The date on which any process or activity was ended",
                     "type": "string"
@@ -3090,6 +3097,12 @@
                     "description": "a human-readable description of a thing",
                     "type": "string"
                 },
+                "designated_class": {
+                    "enum": [
+                        "nmdc:CollectingBiosamplesFromSite"
+                    ],
+                    "type": "string"
+                },
                 "end_date": {
                     "description": "The date on which any process or activity was ended",
                     "type": "string"
@@ -3134,9 +3147,9 @@
             "type": "object"
         },
         "ContainerTypeEnum": {
-            "description": "",
+            "description": "The permitted types of containers used in processing metabolomic samples.",
             "enum": [
-                "screw_top_conical"
+                "V-bottom conical tube"
             ],
             "title": "ContainerTypeEnum",
             "type": "string"
@@ -3337,7 +3350,7 @@
         },
         "Database": {
             "additionalProperties": false,
-            "description": "An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest",
+            "description": "An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest. For MongoDB, the lists of objects that Database slots point to correspond to **collections**.",
             "properties": {
                 "activity_set": {
                     "description": "This property links a database object to the set of workflow activities.",
@@ -3355,7 +3368,11 @@
                 },
                 "collecting_biosamples_from_site_set": {
                     "items": {
-                        "$ref": "#/$defs/CollectingBiosamplesFromSite"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/CollectingBiosamplesFromSite"
+                            }
+                        ]
                     },
                     "type": "array"
                 },
@@ -3366,24 +3383,20 @@
                     },
                     "type": "array"
                 },
-                "date_created": {
-                    "description": "from database class",
-                    "type": "string"
-                },
                 "dissolving_activity_set": {
                     "items": {
                         "$ref": "#/$defs/DissolvingActivity"
                     },
                     "type": "array"
                 },
-                "etl_software_version": {
-                    "description": "from database class",
-                    "type": "string"
-                },
                 "extraction_set": {
                     "description": "This property links a database object to the set of extractions within it.",
                     "items": {
-                        "$ref": "#/$defs/Extraction"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/Extraction"
+                            }
+                        ]
                     },
                     "type": "array"
                 },
@@ -3416,7 +3429,11 @@
                 "library_preparation_set": {
                     "description": "This property links a database object to the set of DNA extractions within it.",
                     "items": {
-                        "$ref": "#/$defs/LibraryPreparation"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/LibraryPreparation"
+                            }
+                        ]
                     },
                     "type": "array"
                 },
@@ -3491,13 +3508,50 @@
                 "omics_processing_set": {
                     "description": "This property links a database object to the set of omics processings within it.",
                     "items": {
-                        "$ref": "#/$defs/OmicsProcessing"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/OmicsProcessing"
+                            }
+                        ]
+                    },
+                    "type": "array"
+                },
+                "planned_process_set": {
+                    "description": "This property links a database object to the set of planned processes within it.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/CollectingBiosamplesFromSite"
+                            },
+                            {
+                                "$ref": "#/$defs/BiosampleProcessing"
+                            },
+                            {
+                                "$ref": "#/$defs/SubSamplingProcess"
+                            },
+                            {
+                                "$ref": "#/$defs/OmicsProcessing"
+                            },
+                            {
+                                "$ref": "#/$defs/Pooling"
+                            },
+                            {
+                                "$ref": "#/$defs/Extraction"
+                            },
+                            {
+                                "$ref": "#/$defs/LibraryPreparation"
+                            }
+                        ]
                     },
                     "type": "array"
                 },
                 "pooling_set": {
                     "items": {
-                        "$ref": "#/$defs/Pooling"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/Pooling"
+                            }
+                        ]
                     },
                     "type": "array"
                 },
@@ -3833,6 +3887,12 @@
                 },
                 "description": {
                     "description": "a human-readable description of a thing",
+                    "type": "string"
+                },
+                "designated_class": {
+                    "enum": [
+                        "nmdc:Extraction"
+                    ],
                     "type": "string"
                 },
                 "end_date": {
@@ -4641,6 +4701,12 @@
                     "description": "a human-readable description of a thing",
                     "type": "string"
                 },
+                "designated_class": {
+                    "enum": [
+                        "nmdc:LibraryPreparation"
+                    ],
+                    "type": "string"
+                },
                 "end_date": {
                     "description": "The date on which any process or activity was ended",
                     "type": "string"
@@ -4908,10 +4974,12 @@
             "description": "",
             "properties": {
                 "container_size": {
-                    "$ref": "#/$defs/QuantityValue"
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "The volume of the container an analyte is stored in or an activity takes place in"
                 },
                 "container_type": {
-                    "$ref": "#/$defs/ContainerTypeEnum"
+                    "$ref": "#/$defs/ContainerTypeEnum",
+                    "description": "A type of container. i.e. test tube, falcon tube, etc."
                 }
             },
             "title": "MaterialContainer",
@@ -5980,6 +6048,12 @@
                     "description": "a human-readable description of a thing",
                     "type": "string"
                 },
+                "designated_class": {
+                    "enum": [
+                        "nmdc:OmicsProcessing"
+                    ],
+                    "type": "string"
+                },
                 "end_date": {
                     "description": "The date on which any process or activity was ended",
                     "type": "string"
@@ -5995,6 +6069,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
+                        "pattern": "^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6002,6 +6077,7 @@
                 "has_output": {
                     "description": "An output biosample to a processing step",
                     "items": {
+                        "pattern": "^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6048,6 +6124,7 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
+                        "pattern": "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6368,6 +6445,12 @@
                 },
                 "description": {
                     "description": "a human-readable description of a thing",
+                    "type": "string"
+                },
+                "designated_class": {
+                    "enum": [
+                        "nmdc:Pooling"
+                    ],
                     "type": "string"
                 },
                 "end_date": {
@@ -7331,14 +7414,6 @@
                     "description": "Ecosystem types represent things having common characteristics within the Ecosystem Category. These common characteristics based grouping is still broad but specific to the characteristics of a given environment. Ecosystem type is in position 3/5 in a GOLD path.",
                     "type": "string"
                 },
-                "emsl_project_dois": {
-                    "description": "One or more DOIs that links to an EMSL Research Campaign page.",
-                    "items": {
-                        "pattern": "^doi:10.\\d{2,9}/.*$",
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "ess_dive_datasets": {
                     "description": "List of ESS-DIVE dataset DOIs",
                     "items": {
@@ -7451,13 +7526,6 @@
                     },
                     "type": "array"
                 },
-                "publications": {
-                    "description": "A list of publications that are associated with the entity. The publications SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "related_identifiers": {
                     "description": "Unique identifier for a study submitted to additional resources. Similar, but not necessarily identical to that which has been submitted to NMDC",
                     "type": "string"
@@ -7500,7 +7568,8 @@
                 }
             },
             "required": [
-                "id"
+                "id",
+                "study_category"
             ],
             "title": "Study",
             "type": "object"
@@ -7513,6 +7582,85 @@
             ],
             "title": "StudyCategoryEnum",
             "type": "string"
+        },
+        "SubSamplingProcess": {
+            "additionalProperties": false,
+            "description": "Separating a sample aliquot from the starting material for downstream activity.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "container_size": {
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "The volume of the container an analyte is stored in or an activity takes place in"
+                },
+                "container_type": {
+                    "$ref": "#/$defs/ContainerTypeEnum",
+                    "description": "A type of container. i.e. test tube, falcon tube, etc."
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": "string"
+                },
+                "designated_class": {
+                    "enum": [
+                        "nmdc:SubSamplingProcess"
+                    ],
+                    "type": "string"
+                },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": "string"
+                },
+                "has_input": {
+                    "description": "An input to a process.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_output": {
+                    "description": "An output biosample to a processing step",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": "string"
+                },
+                "protocol_link": {
+                    "$ref": "#/$defs/Protocol"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": "string"
+                },
+                "temperature": {
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "The value of a temperature measurement or temperature used in a process."
+                },
+                "volume": {
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "The volume of subsample."
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "SubSamplingProcess",
+            "type": "object"
         },
         "SubstructureTypeEnum": {
             "description": "",
@@ -7950,7 +8098,7 @@
     "$id": "https://w3id.org/nmdc/nmdc",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": true,
-    "description": "An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest",
+    "description": "An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest. For MongoDB, the lists of objects that Database slots point to correspond to **collections**.",
     "metamodel_version": "1.7.0",
     "properties": {
         "activity_set": {
@@ -7969,7 +8117,11 @@
         },
         "collecting_biosamples_from_site_set": {
             "items": {
-                "$ref": "#/$defs/CollectingBiosamplesFromSite"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/CollectingBiosamplesFromSite"
+                    }
+                ]
             },
             "type": "array"
         },
@@ -7980,24 +8132,20 @@
             },
             "type": "array"
         },
-        "date_created": {
-            "description": "from database class",
-            "type": "string"
-        },
         "dissolving_activity_set": {
             "items": {
                 "$ref": "#/$defs/DissolvingActivity"
             },
             "type": "array"
         },
-        "etl_software_version": {
-            "description": "from database class",
-            "type": "string"
-        },
         "extraction_set": {
             "description": "This property links a database object to the set of extractions within it.",
             "items": {
-                "$ref": "#/$defs/Extraction"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/Extraction"
+                    }
+                ]
             },
             "type": "array"
         },
@@ -8030,7 +8178,11 @@
         "library_preparation_set": {
             "description": "This property links a database object to the set of DNA extractions within it.",
             "items": {
-                "$ref": "#/$defs/LibraryPreparation"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/LibraryPreparation"
+                    }
+                ]
             },
             "type": "array"
         },
@@ -8105,13 +8257,50 @@
         "omics_processing_set": {
             "description": "This property links a database object to the set of omics processings within it.",
             "items": {
-                "$ref": "#/$defs/OmicsProcessing"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/OmicsProcessing"
+                    }
+                ]
+            },
+            "type": "array"
+        },
+        "planned_process_set": {
+            "description": "This property links a database object to the set of planned processes within it.",
+            "items": {
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/CollectingBiosamplesFromSite"
+                    },
+                    {
+                        "$ref": "#/$defs/BiosampleProcessing"
+                    },
+                    {
+                        "$ref": "#/$defs/SubSamplingProcess"
+                    },
+                    {
+                        "$ref": "#/$defs/OmicsProcessing"
+                    },
+                    {
+                        "$ref": "#/$defs/Pooling"
+                    },
+                    {
+                        "$ref": "#/$defs/Extraction"
+                    },
+                    {
+                        "$ref": "#/$defs/LibraryPreparation"
+                    }
+                ]
             },
             "type": "array"
         },
         "pooling_set": {
             "items": {
-                "$ref": "#/$defs/Pooling"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/Pooling"
+                    }
+                ]
             },
             "type": "array"
         },
@@ -8152,5 +8341,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "v8.1.0"
+    "version": "v8.1.1"
 }
