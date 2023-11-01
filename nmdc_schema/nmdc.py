@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2023-11-01T16:54:30
+# Generation date: 2023-11-01T17:56:58
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -31,7 +31,7 @@ from linkml_runtime.linkml_model.types import Boolean, Double, Float, Integer, S
 from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE
 
 metamodel_version = "1.7.0"
-version = "v8.1.1"
+version = "v8.1.2"
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -86,6 +86,7 @@ BIOSAMPLE = CurieNamespace('biosample', 'https://bioregistry.io/biosample:')
 CAS = CurieNamespace('cas', 'https://bioregistry.io/cas:')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 DOI = CurieNamespace('doi', 'https://bioregistry.io/doi:')
+EDAM_DATA = CurieNamespace('edam_data', 'http://edamontology.org/data')
 EMSL = CurieNamespace('emsl', 'http://example.org/emsl_biosample_in_mongodb/')
 EMSL_PROJECT = CurieNamespace('emsl_project', 'https://bioregistry.io/emsl.project:')
 EMSL_BIOSAMPLE_UUID_LIKE = CurieNamespace('emsl_biosample_uuid_like', 'http://example.org/emsl_biosample_uuid_like/')
@@ -509,6 +510,40 @@ class QualityControlReport(YAMLRoot):
 
 
 @dataclass
+class Doi(YAMLRoot):
+    """
+    A centrally registered identifier symbol used to uniquely identify objects given by the International DOI
+    Foundation. The DOI system is particularly used for electronic documents.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC.Doi
+    class_class_curie: ClassVar[str] = "nmdc:Doi"
+    class_name: ClassVar[str] = "Doi"
+    class_model_uri: ClassVar[URIRef] = NMDC.Doi
+
+    doi_value: Union[str, URIorCURIE] = None
+    doi_category: Union[str, "DoiCategoryEnum"] = None
+    doi_provider: Optional[Union[str, "DoiProviderEnum"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.doi_value):
+            self.MissingRequiredField("doi_value")
+        if not isinstance(self.doi_value, URIorCURIE):
+            self.doi_value = URIorCURIE(self.doi_value)
+
+        if self._is_empty(self.doi_category):
+            self.MissingRequiredField("doi_category")
+        if not isinstance(self.doi_category, DoiCategoryEnum):
+            self.doi_category = DoiCategoryEnum(self.doi_category)
+
+        if self.doi_provider is not None and not isinstance(self.doi_provider, DoiProviderEnum):
+            self.doi_provider = DoiProviderEnum(self.doi_provider)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class CreditAssociation(YAMLRoot):
     """
     This class supports binding associated researchers to studies. There will be at least a slot for a CRediT
@@ -788,19 +823,15 @@ class Study(NamedThing):
     alternative_names: Optional[Union[str, List[str]]] = empty_list()
     alternative_titles: Optional[Union[str, List[str]]] = empty_list()
     description: Optional[str] = None
-    award_dois: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
-    dataset_dois: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
-    publication_dois: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
+    associated_dois: Optional[Union[Union[dict, Doi], List[Union[dict, Doi]]]] = empty_list()
     ecosystem: Optional[str] = None
     ecosystem_category: Optional[str] = None
     ecosystem_subtype: Optional[str] = None
     ecosystem_type: Optional[str] = None
-    ess_dive_datasets: Optional[Union[str, List[str]]] = empty_list()
     funding_sources: Optional[Union[str, List[str]]] = empty_list()
     gold_study_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     has_credit_associations: Optional[Union[Union[dict, "CreditAssociation"], List[Union[dict, "CreditAssociation"]]]] = empty_list()
     insdc_bioproject_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    massive_study_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     mgnify_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     notes: Optional[str] = None
     objective: Optional[str] = None
@@ -857,17 +888,7 @@ class Study(NamedThing):
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if not isinstance(self.award_dois, list):
-            self.award_dois = [self.award_dois] if self.award_dois is not None else []
-        self.award_dois = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.award_dois]
-
-        if not isinstance(self.dataset_dois, list):
-            self.dataset_dois = [self.dataset_dois] if self.dataset_dois is not None else []
-        self.dataset_dois = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.dataset_dois]
-
-        if not isinstance(self.publication_dois, list):
-            self.publication_dois = [self.publication_dois] if self.publication_dois is not None else []
-        self.publication_dois = [v if isinstance(v, URIorCURIE) else URIorCURIE(v) for v in self.publication_dois]
+        self._normalize_inlined_as_dict(slot_name="associated_dois", slot_type=Doi, key_name="doi_value", keyed=False)
 
         if self.ecosystem is not None and not isinstance(self.ecosystem, str):
             self.ecosystem = str(self.ecosystem)
@@ -880,10 +901,6 @@ class Study(NamedThing):
 
         if self.ecosystem_type is not None and not isinstance(self.ecosystem_type, str):
             self.ecosystem_type = str(self.ecosystem_type)
-
-        if not isinstance(self.ess_dive_datasets, list):
-            self.ess_dive_datasets = [self.ess_dive_datasets] if self.ess_dive_datasets is not None else []
-        self.ess_dive_datasets = [v if isinstance(v, str) else str(v) for v in self.ess_dive_datasets]
 
         if not isinstance(self.funding_sources, list):
             self.funding_sources = [self.funding_sources] if self.funding_sources is not None else []
@@ -900,10 +917,6 @@ class Study(NamedThing):
         if not isinstance(self.insdc_bioproject_identifiers, list):
             self.insdc_bioproject_identifiers = [self.insdc_bioproject_identifiers] if self.insdc_bioproject_identifiers is not None else []
         self.insdc_bioproject_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.insdc_bioproject_identifiers]
-
-        if not isinstance(self.massive_study_identifiers, list):
-            self.massive_study_identifiers = [self.massive_study_identifiers] if self.massive_study_identifiers is not None else []
-        self.massive_study_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.massive_study_identifiers]
 
         if not isinstance(self.mgnify_project_identifiers, list):
             self.mgnify_project_identifiers = [self.mgnify_project_identifiers] if self.mgnify_project_identifiers is not None else []
@@ -6341,6 +6354,45 @@ class StudyCategoryEnum(EnumDefinitionImpl):
         name="StudyCategoryEnum",
     )
 
+class DoiProviderEnum(EnumDefinitionImpl):
+
+    emsl = PermissibleValue(
+        text="emsl",
+        meaning=None)
+    jgi = PermissibleValue(
+        text="jgi",
+        meaning=None)
+    kbase = PermissibleValue(
+        text="kbase",
+        meaning=None)
+    osti = PermissibleValue(
+        text="osti",
+        meaning=None)
+    ess_dive = PermissibleValue(
+        text="ess_dive",
+        meaning=None)
+    massive = PermissibleValue(text="massive")
+
+    _defn = EnumDefinition(
+        name="DoiProviderEnum",
+    )
+
+class DoiCategoryEnum(EnumDefinitionImpl):
+
+    award_doi = PermissibleValue(
+        text="award_doi",
+        description="A type of DOI that resolves to a funding authority.")
+    dataset_doi = PermissibleValue(
+        text="dataset_doi",
+        description="A type of DOI that resolves to generated data.")
+    publication_doi = PermissibleValue(
+        text="publication_doi",
+        description="A type of DOI that resolves to a publication.")
+
+    _defn = EnumDefinition(
+        name="DoiCategoryEnum",
+    )
+
 class ContainerTypeEnum(EnumDefinitionImpl):
     """
     The permitted types of containers used in processing metabolomic samples.
@@ -8648,6 +8700,19 @@ slots.specific_ecosystem = Slot(uri=NMDC.specific_ecosystem, name="specific_ecos
 
 slots.principal_investigator = Slot(uri=NMDC.principal_investigator, name="principal_investigator", curie=NMDC.curie('principal_investigator'),
                    model_uri=NMDC.principal_investigator, domain=None, range=Optional[Union[dict, PersonValue]])
+
+slots.associated_dois = Slot(uri=NMDC.associated_dois, name="associated_dois", curie=NMDC.curie('associated_dois'),
+                   model_uri=NMDC.associated_dois, domain=None, range=Optional[Union[Union[dict, Doi], List[Union[dict, Doi]]]])
+
+slots.doi_value = Slot(uri=NMDC.doi_value, name="doi_value", curie=NMDC.curie('doi_value'),
+                   model_uri=NMDC.doi_value, domain=None, range=Union[str, URIorCURIE],
+                   pattern=re.compile(r'^doi:10.\d{2,9}/.*$'))
+
+slots.doi_provider = Slot(uri=NMDC.doi_provider, name="doi_provider", curie=NMDC.curie('doi_provider'),
+                   model_uri=NMDC.doi_provider, domain=None, range=Optional[Union[str, "DoiProviderEnum"]])
+
+slots.doi_category = Slot(uri=NMDC.doi_category, name="doi_category", curie=NMDC.curie('doi_category'),
+                   model_uri=NMDC.doi_category, domain=None, range=Union[str, "DoiCategoryEnum"])
 
 slots.dois = Slot(uri=NMDC.dois, name="dois", curie=NMDC.curie('dois'),
                    model_uri=NMDC.dois, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
