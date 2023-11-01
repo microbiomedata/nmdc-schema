@@ -1,6 +1,9 @@
 # routine: make squeaky-clean all only-test
 # for regenrating src/schema/mixs.yaml: make squeaky-clean mixs-yaml-clean all only-test
 
+tdbcontent/
+tdbcontent
+
 # for releases: git add -f examples nmdc_schema project src
 examples/output/
 nmdc_schema/*json
