@@ -10,6 +10,13 @@ Versioning for this project is based on [Semantic Versioning](https://semver.org
 
 ## Unreleased
 
+### Added
+- `Doi` class with slots `doi_value`, `doi_category`, and `doi_provider`.
+- `DoiProviderEnum` and `DoiCategoryEnum`
+
+### Removed
+- deprecated the following slots: `dois`, `dataset_dois`, `publication_dois`, `award_dois`, `ess_dive_datasets`, `massive_identifiers`, and `massive_study_identifiers`
+
 ## 8.1.0 - 2023-10-03
 
 ### Fixed

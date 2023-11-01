@@ -46,12 +46,10 @@ objective: This record, an instance of class Study from the nmdc-schema was had 
 websites:
   - https://w3id.org/nmdc
   - https://w3id.org/linkml
-publication_dois:
-  - any string 1
-  - any string 2
-ess_dive_datasets:
-  - any string 1
-  - any string 2
+associated_dois:
+  - doi_value: doi:10.25585/1488209
+    doi_category: dataset_doi
+    doi_provider: osti
 type: any string
 relevant_protocols:
   - any string 1

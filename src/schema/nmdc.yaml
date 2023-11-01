@@ -92,6 +92,7 @@ prefixes:
   xsd: http://www.w3.org/2001/XMLSchema#
   emsl: "http://example.org/emsl_biosample_in_mongodb/"
   emsl_biosample_uuid_like: "http://example.org/emsl_biosample_uuid_like/"
+  edam.data: "http://edamontology.org/data"
 
 
 default_prefix: nmdc
@@ -138,6 +139,7 @@ subsets:
       Subset consisting of entities that Kitware/nmdc-server use to populate the data portal.
     comments:
       - Schema authors are responsible for alerting and supporting Kitware and nmdc-server authors about changes they will have to make if entities labeled with data_portal_subset are modified.
+      - Assignment of the data_portal_subset is incomplete in the schema.
 
 classes:
 
@@ -1365,6 +1367,34 @@ classes:
       - NCIT:C43412
       - http://purl.obolibrary.org/obo/FBcv_0003024
 
+  Doi:
+    aliases:
+      - DOIs
+      - digital object identifiers
+    description: >-
+      A centrally registered identifier symbol used to uniquely identify objects given by the International DOI Foundation. 
+      The DOI system is particularly used for electronic documents.
+    exact_mappings:
+      - OBI:0002110
+    slots:
+      - doi_value
+      - doi_provider
+      - doi_category
+    rules:
+      - title: dataset_award_dois_required
+        description: >-
+          If doi_category is a publication_doi, then doi_provider is not required. Otherwise, doi_provider is required.
+        preconditions:
+          slot_conditions:
+            doi_category:
+              any_of: 
+                - equals_string: dataset_doi
+                - equals_string: award_doi
+        postconditions:
+          slot_conditions:
+            doi_provider:
+              required: true
+  
   Study:
     is_a: NamedThing
     in_subset:
@@ -1406,9 +1436,10 @@ classes:
       - alternative_names
       - alternative_titles
       - description
-      - award_dois
-      - dataset_dois
-      - publication_dois
+      #- award_dois - deprecated on 10/24/2023
+      #- dataset_dois - deprecated on 10/24/2023
+      #- publication_dois - deprecated on 10/24/2023
+      - associated_dois
       - ecosystem
       - ecosystem_category
       - ecosystem_subtype
@@ -1416,13 +1447,13 @@ classes:
       #      - emsl_project_identifier
       #      - emsl_proposal_doi
       #      - emsl_proposal_identifier
-      - ess_dive_datasets
+      #- ess_dive_datasets - deprecated on 10/24/2023
       - funding_sources
       - gold_study_identifiers
       - has_credit_associations
       - study_category
       - insdc_bioproject_identifiers
-      - massive_study_identifiers
+      #- massive_study_identifiers - deprecated on 10/24/2023
       - mgnify_project_identifiers
       - notes
       - objective
@@ -2078,6 +2109,58 @@ enums:
         exact_mappings:
           - NCIT:C61538
 
+  DoiProviderEnum:
+    see_also: nmdc:ProcessingInstitutionEnum
+    permissible_values:
+      emsl:
+        aliases:
+          - Environmental Molecular Sciences Laboratory
+          - EMSL
+        title: EMSL
+        meaning: https://ror.org/04rc0xn13
+      jgi:
+        aliases: 
+          - Joint Genome Institute
+          - JGI
+        title: JGI
+        meaning: https://ror.org/04xm1d337
+      kbase:
+        aliases:
+          - KBase
+        title: KBase
+        meaning: https://ror.org/01znn6x10
+      osti:
+        aliases:
+          - Office of Scientific and Technical Information
+          - OSTI
+        title: OSTI
+        meaning: https://ror.org/031478740
+      ess_dive:
+        aliases:
+          - ESS-DIVE
+          - Environmental System Science Data Infrastructure for a Virtual Ecosystem
+        title: ESS-DIVE
+        meaning: https://ror.org/01t14bp54
+      massive:
+        aliases:
+          - MassIVE
+          - Mass Spectrometry Virtual Environment
+        title: MassIVE
+
+  DoiCategoryEnum:
+    permissible_values:
+      award_doi:
+        description: A type of DOI that resolves to a funding authority.
+      dataset_doi:
+        description: A type of DOI that resolves to generated data.
+      publication_doi:
+        description: A type of DOI that resolves to a publication.
+    see_also:
+      - https://schema.datacite.org/meta/kernel-4.4/doc/DataCite-MetadataKernel_v4.4.pdf
+      - https://api.crossref.org/types
+    comments:
+      - See especially the resourceTypeGeneral section of the DataCite PDF, on pp48-53 as of 2023-07-19
+      
   ContainerTypeEnum:
     description: The permitted types of containers used in processing metabolomic samples.
     contributors:
@@ -2365,6 +2448,7 @@ slots:
   ess_dive_datasets:
     multivalued: true
     description: List of ESS-DIVE dataset DOIs
+    deprecated_element_has_exact_replacement: nmdc:associated_dois
   has_credit_associations:
     domain: Study
     range: CreditAssociation
@@ -2671,6 +2755,62 @@ slots:
     range: PersonValue
     description: Principal Investigator who led the study and/or generated the dataset.
 
+  associated_dois:
+    description: A list of DOIs associated with a resource, such as a list of DOIS associated with a Study.
+    aliases:
+      - Associated DOIs
+      - Associated digital object identifiers
+    range: Doi
+    multivalued: true
+    in_subset: data_portal_subset
+    examples:
+      value:
+      - doi: doi:10.46936/intm.proj.2021.60141/60000423
+        doi_provider: emsl
+        doi_category: award_doi
+      - doi: doi:10.1101/2022.12.12.520098
+        doi_category: publication_doi
+      description: Provides a list of two DOIs; specifically, an EMSL award DOI and a publication DOI.
+
+  doi_value:
+    description: >-
+      A digital object identifier, which is intended to persistantly identify some resource on the web.
+    required: true
+    aliases:
+      - DOI
+      - digital object identifier
+    in_subset: data_portal_subset
+    range: uriorcurie
+    pattern: '^doi:10.\d{2,9}/.*$'
+    examples: 
+      - value: doi:10.46936/10.25585/60000880
+        description: The DOI links to an electronic document.
+    exact_mappings:
+      - OBI:0002110
+    narrow_mappings:
+      - edam.data:1188
+
+  doi_provider:
+    description: >-
+      The authority, or organization, the DOI is associated with.
+    range: DoiProviderEnum
+    close_mappings:
+      - NCIT:C74932
+    in_subset: data_portal_subset
+    examples:
+      - value: ess_dive
+        description: The corresponding DOI is associated with ESS-DIVE.
+
+  doi_category:
+    description: >-
+      The resource type the corresponding doi resolves to.
+    range: DoiCategoryEnum
+    required: true
+    in_subset: data_portal_subset
+    examples:
+      - value: dataset_doi
+        description: The corresponding DOI is a dataset resource type.
+    
   dois:
     # is_a: attribute
     todos:
@@ -2690,6 +2830,7 @@ slots:
       - https://api.crossref.org/types
     comments:
       - See especially the resourceTypeGeneral section of the DataCite pdf, on pp48-53 as of 2023-07-19
+    deprecated_element_has_exact_replacement: nmdc:associated_dois
 
   award_dois:
     is_a: dois
@@ -2700,6 +2841,7 @@ slots:
         description:
           award_dois link to to an award document. Should not be used to link to datasets or publications.
           For example, doi:10.15485/1577267 is not an award doi, but a dataset doi.
+    deprecated_element_has_exact_replacement: nmdc:associated_dois
 
   dataset_dois:
     is_a: dois
@@ -2712,6 +2854,7 @@ slots:
         description:
           dataset_dois link to data encoded in a defined structure (as defined by DataCite).
           Should not be used to link to publications or administrative information like funding requests or awards.
+    deprecated_element_has_exact_replacement: nmdc:associated_dois
 
   publication_dois:
     is_a: dois
@@ -2725,6 +2868,7 @@ slots:
         description:
           publication_dois link to a prose document, preferably a peer-reviewed journal article.
           Should not be used to link to datasets or administrative information like funding requests or awards
+    deprecated_element_has_exact_replacement: nmdc:associated_dois
 
   add_date:
     range: string
