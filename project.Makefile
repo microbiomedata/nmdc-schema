@@ -428,6 +428,8 @@ make-rdf: rdf-clean local/mongo_as_nmdc_database_validation.log local/mongo_as_n
 
 # todo also notes about large collections: functional_annotation_agg and metaproteomics_analysis_activity_set
 
+# 		--selected-collections read_qc_analysis_activity_set is empty on 2023-11-02
+
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) pure-export \
@@ -457,7 +459,6 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections pooling_set \
 		--selected-collections processed_sample_set \
 		--selected-collections read_based_taxonomy_analysis_activity_set \
-		--selected-collections read_qc_analysis_activity_set \
 		--selected-collections study_set \
 		--skip-collection-check \
 
