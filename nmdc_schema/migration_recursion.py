@@ -410,14 +410,22 @@ class Migrator_from_8_1_1_to_9_0_0(MigratorBase):
               help="Path to the output YAML data file")
 @click.option("--salvage-prefix", required=True, type=str,
               help="A prefix, defined in the schema, to force for each value that the schema indicates is a CURIE but that has no prefix")
-def main(schema_path, input_path, output_path, salvage_prefix):
+@click.option("--migrator-name", type=str,
+              help="The name of a MigratorBase class that should be used to migrate the data")
+def main(schema_path, input_path, output_path, salvage_prefix, migrator_name):
     """
     Generates a data file that conforms to a different schema version than the input data file does.
 
     See source code for initial and final schema versions.
     """
 
-    migrator = Migrator_from_8_1_1_to_9_0_0()
+    if migrator_name:
+        class_object = globals()[migrator_name]
+        migrator = class_object()
+        print(f"Using migrator: {migrator_name}")
+    else:
+        migrator = Migrator_from_8_1_1_to_9_0_0()
+
     migrator.forced_prefix = salvage_prefix
 
     # Load the schema and determine which of its slots we can migrate.

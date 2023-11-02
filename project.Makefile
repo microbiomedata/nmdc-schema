@@ -421,12 +421,22 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepti
 # todo compress large files
 # todo: switch to API method for getting collection names and stats: https://api.microbiomedata.org/nmdcschema/collection_stats # partially implemented
 
-make-rdf: rdf-clean local/mongo_as_nmdc_database_validation.log local/mongo_as_nmdc_database_cuire_repaired.ttl
+#make-rdf: rdf-clean local/mongo_as_nmdc_database_validation.log local/mongo_as_nmdc_database_cuire_repaired.ttl
 
 # could also check --client-base-url https://api-napa.microbiomedata.org
 # but separate validate-filtered-request-all is available for that now
 
 # todo also notes about large collections: functional_annotation_agg and metaproteomics_analysis_activity_set
+
+.PHONY: brute-force-clean brute-force-all
+
+brute-force-clean:
+	rm -rf local/mongo*.* local/schema_8_1_2.yaml
+
+brute-force-all: brute-force-clean local/mongo_as_nmdc_database_validation1.log local/mongo_as_nmdc_database_validation2.log
+
+local/schema_8_1_2.yaml:
+	wget -O $@ https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v8.1.2/nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
 
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
@@ -441,57 +451,51 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--output-yaml $@ \
 		--page-size 10000 \
 		--schema-file src/schema/nmdc.yaml \
-		--selected-collections biosample_set \
-		--selected-collections data_object_set \
-		--selected-collections extraction_set \
-		--selected-collections field_research_site_set \
-		--selected-collections library_preparation_set \
-		--selected-collections mags_activity_set \
-		--selected-collections metabolomics_analysis_activity_set \
-		--selected-collections metagenome_annotation_activity_set \
-		--selected-collections metagenome_assembly_set \
-		--selected-collections metagenome_sequencing_activity_set  \
-		--selected-collections metatranscriptome_activity_set \
-		--selected-collections nom_analysis_activity_set \
-		--selected-collections omics_processing_set \
-		--selected-collections pooling_set \
-		--selected-collections processed_sample_set \
-		--selected-collections read_based_taxonomy_analysis_activity_set \
-		--selected-collections read_qc_analysis_activity_set \
 		--selected-collections study_set \
 		--skip-collection-check \
 
 
-local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
-	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
-	time $(RUN) migration-recursion \
-		--schema-path $(word 1,$^) \
-		--input-path $(word 2,$^) \
+local/mongo_as_nmdc_database_rdf_safe1.yaml: local/schema_8_1_2.yaml local/mongo_as_unvalidated_nmdc_database.yaml
+	$(RUN) migration-recursion \
+		--input-path local/mongo_as_unvalidated_nmdc_database.yaml \
+		--migrator-name Migrator_from_8_0_0_to_8_1_0 \
+		--output-path local/mongo_as_nmdc_database_rdf_safe1.yaml \
 		--salvage-prefix nmdc \
-		--output-path $@
+		--schema-path local/schema_8_1_2.yaml
 
-local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
-	# nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml or nmdc_schema/nmdc_materialized_patterns.yaml
-	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_activity_set
-	time $(RUN) linkml-validate --schema $^ > $@
+local/mongo_as_nmdc_database_validation1.log: local/schema_8_1_2.yaml local/mongo_as_nmdc_database_rdf_safe1.yaml
+	- $(RUN) linkml-validate \
+		--schema local/schema_8_1_2.yaml local/mongo_as_nmdc_database_rdf_safe1.yaml > local/mongo_as_nmdc_database_validation1.log
 
-local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
-	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
-	time $(RUN) linkml-convert --output $@ --schema $^
-	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
-	- $(JENA_PATH)/riot --validate $@ # < 1 minute
+local/mongo_as_nmdc_database_rdf_safe2.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe1.yaml
+	$(RUN) migration-recursion \
+		--input-path local/mongo_as_nmdc_database_rdf_safe1.yaml \
+		--migrator-name Migrator_from_8_1_1_to_9_0_0 \
+		--output-path local/mongo_as_nmdc_database_rdf_safe2.yaml \
+		--salvage-prefix nmdc \
+		--schema-path nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
 
-# todo: still getting anyurl typed string statement objects in RDF. I added a workarround in anyuri-strings-to-iris
-local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.ttl
-	date
-	time $(RUN) anyuri-strings-to-iris \
-		--input-ttl $< \
-		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
-		--emsl-biosample-uuid-replacement emsl_biosample_uuid_like \
-		--output-ttl $@
-	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
-	- $(JENA_PATH)/riot --validate $@ # < 1 minute
-	date
+local/mongo_as_nmdc_database_validation2.log: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe2.yaml
+	- $(RUN) linkml-validate \
+		--schema nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe2.yaml > local/mongo_as_nmdc_database_validation1.log
+
+#local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
+#	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
+#	time $(RUN) linkml-convert --output $@ --schema $^
+#	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
+#	- $(JENA_PATH)/riot --validate $@ # < 1 minute
+#
+## todo: still getting anyurl typed string statement objects in RDF. I added a workarround in anyuri-strings-to-iris
+#local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.ttl
+#	date
+#	time $(RUN) anyuri-strings-to-iris \
+#		--input-ttl $< \
+#		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
+#		--emsl-biosample-uuid-replacement emsl_biosample_uuid_like \
+#		--output-ttl $@
+#	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
+#	- $(JENA_PATH)/riot --validate $@ # < 1 minute
+#	date
 
 # ----
 
