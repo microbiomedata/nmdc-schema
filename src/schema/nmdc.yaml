@@ -17,7 +17,7 @@ description: >-
    * the NMDC schema itself, into which the other modules are imported
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: v8.1.2 # GH uses same version string # pyproject.toml says "8.1.2"
+version: v9.0.2 # GH uses same version string # pyproject.toml says "9.0.2"
 
 imports:
   - annotation
