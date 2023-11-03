@@ -1,5 +1,5 @@
 # Auto generated from nmdc_schema_accepting_legacy_ids.yaml by pythongen.py version: 0.0.1
-# Generation date: 2023-11-01T18:12:54
+# Generation date: 2023-11-03T14:14:18
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -30,7 +30,7 @@ from linkml_runtime.utils.curienamespace import CurieNamespace
 from linkml_runtime.utils.metamodelcore import Bool, Curie, Decimal, ElementIdentifier, NCName, NodeIdentifier, URI, URIorCURIE, XSDDate, XSDDateTime, XSDTime
 
 metamodel_version = "1.7.0"
-version = "v9.0.2"
+version = "v9.0.4"
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -925,7 +925,9 @@ class Study(NamedThing):
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
-        self._normalize_inlined_as_dict(slot_name="associated_dois", slot_type=Doi, key_name="doi_value", keyed=False)
+        if not isinstance(self.associated_dois, list):
+            self.associated_dois = [self.associated_dois] if self.associated_dois is not None else []
+        self.associated_dois = [v if isinstance(v, Doi) else Doi(**as_dict(v)) for v in self.associated_dois]
 
         if self.ecosystem is not None and not isinstance(self.ecosystem, str):
             self.ecosystem = str(self.ecosystem)
@@ -8719,9 +8721,6 @@ slots.related_identifiers = Slot(uri=NMDC.related_identifiers, name="related_ide
 slots.notes = Slot(uri=NMDC.notes, name="notes", curie=NMDC.curie('notes'),
                    model_uri=NMDC.notes, domain=None, range=Optional[str])
 
-slots.canary = Slot(uri=NMDC.canary, name="canary", curie=NMDC.curie('canary'),
-                   model_uri=NMDC.canary, domain=None, range=Optional[str])
-
 slots.ess_dive_datasets = Slot(uri=NMDC.ess_dive_datasets, name="ess_dive_datasets", curie=NMDC.curie('ess_dive_datasets'),
                    model_uri=NMDC.ess_dive_datasets, domain=None, range=Optional[Union[str, List[str]]])
 
@@ -8855,17 +8854,17 @@ slots.principal_investigator = Slot(uri=NMDC.principal_investigator, name="princ
                    model_uri=NMDC.principal_investigator, domain=None, range=Optional[Union[dict, PersonValue]])
 
 slots.associated_dois = Slot(uri=NMDC.associated_dois, name="associated_dois", curie=NMDC.curie('associated_dois'),
-                   model_uri=NMDC.associated_dois, domain=None, range=Optional[Union[Union[dict, Doi], List[Union[dict, Doi]]]])
+                   model_uri=NMDC.associated_dois, domain=Study, range=Optional[Union[Union[dict, Doi], List[Union[dict, Doi]]]])
 
 slots.doi_value = Slot(uri=NMDC.doi_value, name="doi_value", curie=NMDC.curie('doi_value'),
-                   model_uri=NMDC.doi_value, domain=None, range=Union[str, URIorCURIE],
+                   model_uri=NMDC.doi_value, domain=Doi, range=Union[str, URIorCURIE],
                    pattern=re.compile(r'^doi:10.\d{2,9}/.*$'))
 
 slots.doi_provider = Slot(uri=NMDC.doi_provider, name="doi_provider", curie=NMDC.curie('doi_provider'),
-                   model_uri=NMDC.doi_provider, domain=None, range=Optional[Union[str, "DoiProviderEnum"]])
+                   model_uri=NMDC.doi_provider, domain=Doi, range=Optional[Union[str, "DoiProviderEnum"]])
 
 slots.doi_category = Slot(uri=NMDC.doi_category, name="doi_category", curie=NMDC.curie('doi_category'),
-                   model_uri=NMDC.doi_category, domain=None, range=Union[str, "DoiCategoryEnum"])
+                   model_uri=NMDC.doi_category, domain=Doi, range=Union[str, "DoiCategoryEnum"])
 
 slots.dois = Slot(uri=NMDC.dois, name="dois", curie=NMDC.curie('dois'),
                    model_uri=NMDC.dois, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],

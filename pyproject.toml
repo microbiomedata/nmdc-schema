@@ -10,7 +10,7 @@ license = "MIT"
 name = "nmdc_schema"
 readme = "README.md"
 repository = "https://github.com/microbiomedata/nmdc-schema"
-version = "9.0.2" # nmdc.yaml and GH say v8.1.2
+version = "9.0.4" # nmdc.yaml and GH say v9.0.4
 authors = [
     "Bill Duncan <wdduncan@gmail.com>",
     "Chris Mungall <cjmungall@lbl.gov>",
@@ -32,6 +32,7 @@ linkml = "^1.5.0"
 linkml-runtime = "^1.5.0"
 python = "^3.9"
 click-log = "^0.4.0"
+ruamel-yaml = "^0.18.5"
 
 [tool.poetry.group.dev.dependencies] # are some of these actually required as non-dev dependencies?
 pydantic = "^1.10.13"
