@@ -278,7 +278,7 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
         return study
 
 
-class Migrator_from_8_0_0_to_8_1_2(MigratorBase):
+class Migrator_from_8_0_to_8_1(MigratorBase):
     """previously: Migrates data from schema 8.0.0 to 8.1.0"""
 
     def __init__(self) -> None:
@@ -299,7 +299,7 @@ class Migrator_from_8_0_0_to_8_1_2(MigratorBase):
         return study
 
 
-class Migrator_from_8_1_2_to_9_0_4(MigratorBase):
+class Migrator_from_8_1_to_9_0(MigratorBase):
     """previously: Migrates data from schema 8.1.0 to 9.0.0"""
 
     def __init__(self) -> None:
@@ -460,7 +460,10 @@ def main(schema_path, input_path, output_path, salvage_prefix, migrator_name):
                     for i in slot_descendants:
                         curie_slots.add(i)
 
+    logger.info(curie_slots)
+
     curie_migrator = MigratorBase()
+    curie_migrator.forced_prefix = salvage_prefix
 
     # iterate over collections, applying CURIe fixes
     for tdk, tdv in total_dict.items():

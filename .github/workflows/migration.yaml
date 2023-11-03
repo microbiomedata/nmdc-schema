@@ -24,7 +24,7 @@ jobs:
       #      - run: ./robot convert --input project/owl/nmdc.owl.ttl --output project/owl/nmdc.ofn
       #      - run: ls -l project/owl/nmdc.ofn
       - uses: foooomio/setup-jena@v2
-      - run: make squeaky-clean all test
+      - run: make squeaky-clean all test validate-filtered-request-all validate-polymorphic make-rdf
       - run: touch local/.env # create empty .env file
       - run: make make-rdf
       #      - run: make validate-Gs0114663-study-biosample-ids

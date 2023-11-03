@@ -1131,7 +1131,6 @@ classes:
       part_of:
         required: true
         range: Study
-        inlined: false
         pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
 
       fire:
@@ -1379,20 +1378,20 @@ classes:
       - doi_value
       - doi_provider
       - doi_category
-  #    rules:
-  #      - title: dataset_award_dois_required
-  #        description: >-
-  #          If doi_category is a publication_doi, then doi_provider is not required. Otherwise, doi_provider is required.
-  #        preconditions:
-  #          slot_conditions:
-  #            doi_category:
-  #              any_of:
-  #                - equals_string: dataset_doi
-  #                - equals_string: award_doi
-  #        postconditions:
-  #          slot_conditions:
-  #            doi_provider:
-  #              required: true
+    rules:
+      - title: dataset_award_dois_required
+        description: >-
+          If doi_category is a publication_doi, then doi_provider is not required. Otherwise, doi_provider is required.
+        preconditions:
+          slot_conditions:
+            doi_category:
+              any_of:
+                - equals_string: dataset_doi
+                - equals_string: award_doi
+        postconditions:
+          slot_conditions:
+            doi_provider:
+              required: true
   
   Study:
     is_a: NamedThing
@@ -2776,7 +2775,7 @@ slots:
   doi_value:
     description: >-
       A digital object identifier, which is intended to persistantly identify some resource on the web.
-    #    required: true
+    required: true
     aliases:
       - DOI
       - digital object identifier
@@ -2809,7 +2808,7 @@ slots:
       The resource type the corresponding doi resolves to.
     range: DoiCategoryEnum
     domain: Doi
-    #    required: true
+    required: true
     in_subset: data_portal_subset
     examples:
       - value: dataset_doi
