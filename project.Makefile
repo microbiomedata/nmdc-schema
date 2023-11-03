@@ -436,12 +436,12 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--client-base-url https://api.microbiomedata.org \
 		--endpoint-prefix nmdcschema \
 		--env-file local/.env \
-		--max-docs-per-coll 100 \
+		--max-docs-per-coll 1000000000 \
 		--mongo-db-name nmdc \
 		--mongo-host localhost \
 		--mongo-port 27777 \
 		--output-yaml $@ \
-		--page-size 10000 \
+		--page-size 200000 \
 		--schema-file src/schema/nmdc.yaml \
 		--selected-collections data_object_set \
 		--selected-collections biosample_set \
@@ -493,7 +493,7 @@ local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.tt
 	time $(RUN) anyuri-strings-to-iris \
 		--input-ttl $< \
 		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
-		--emsl-biosample-uuid-replacement emsl_biosample_uuid_like \
+		--emsl-uuid-replacement emsl_uuid_like \
 		--output-ttl $@
 	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
 	- $(JENA_PATH)/riot --validate $@ # < 1 minute

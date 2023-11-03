@@ -1,5 +1,5 @@
 # Auto generated from nmdc_schema_accepting_legacy_ids.yaml by pythongen.py version: 0.0.1
-# Generation date: 2023-11-03T10:23:56
+# Generation date: 2023-11-03T14:14:18
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -30,7 +30,7 @@ from linkml_runtime.utils.curienamespace import CurieNamespace
 from linkml_runtime.utils.metamodelcore import Bool, Curie, Decimal, ElementIdentifier, NCName, NodeIdentifier, URI, URIorCURIE, XSDDate, XSDDateTime, XSDTime
 
 metamodel_version = "1.7.0"
-version = "v9.0.2"
+version = "v9.0.4"
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -675,19 +675,23 @@ class Doi(YAMLRoot):
     class_name: ClassVar[str] = "Doi"
     class_model_uri: ClassVar[URIRef] = NMDC.Doi
 
-    doi_value: Optional[Union[str, URIorCURIE]] = None
+    doi_value: Union[str, URIorCURIE] = None
+    doi_category: Union[str, "DoiCategoryEnum"] = None
     doi_provider: Optional[Union[str, "DoiProviderEnum"]] = None
-    doi_category: Optional[Union[str, "DoiCategoryEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.doi_value is not None and not isinstance(self.doi_value, URIorCURIE):
+        if self._is_empty(self.doi_value):
+            self.MissingRequiredField("doi_value")
+        if not isinstance(self.doi_value, URIorCURIE):
             self.doi_value = URIorCURIE(self.doi_value)
+
+        if self._is_empty(self.doi_category):
+            self.MissingRequiredField("doi_category")
+        if not isinstance(self.doi_category, DoiCategoryEnum):
+            self.doi_category = DoiCategoryEnum(self.doi_category)
 
         if self.doi_provider is not None and not isinstance(self.doi_provider, DoiProviderEnum):
             self.doi_provider = DoiProviderEnum(self.doi_provider)
-
-        if self.doi_category is not None and not isinstance(self.doi_category, DoiCategoryEnum):
-            self.doi_category = DoiCategoryEnum(self.doi_category)
 
         super().__post_init__(**kwargs)
 
@@ -8717,9 +8721,6 @@ slots.related_identifiers = Slot(uri=NMDC.related_identifiers, name="related_ide
 slots.notes = Slot(uri=NMDC.notes, name="notes", curie=NMDC.curie('notes'),
                    model_uri=NMDC.notes, domain=None, range=Optional[str])
 
-slots.canary = Slot(uri=NMDC.canary, name="canary", curie=NMDC.curie('canary'),
-                   model_uri=NMDC.canary, domain=None, range=Optional[str])
-
 slots.ess_dive_datasets = Slot(uri=NMDC.ess_dive_datasets, name="ess_dive_datasets", curie=NMDC.curie('ess_dive_datasets'),
                    model_uri=NMDC.ess_dive_datasets, domain=None, range=Optional[Union[str, List[str]]])
 
@@ -8856,14 +8857,14 @@ slots.associated_dois = Slot(uri=NMDC.associated_dois, name="associated_dois", c
                    model_uri=NMDC.associated_dois, domain=Study, range=Optional[Union[Union[dict, Doi], List[Union[dict, Doi]]]])
 
 slots.doi_value = Slot(uri=NMDC.doi_value, name="doi_value", curie=NMDC.curie('doi_value'),
-                   model_uri=NMDC.doi_value, domain=Doi, range=Optional[Union[str, URIorCURIE]],
+                   model_uri=NMDC.doi_value, domain=Doi, range=Union[str, URIorCURIE],
                    pattern=re.compile(r'^doi:10.\d{2,9}/.*$'))
 
 slots.doi_provider = Slot(uri=NMDC.doi_provider, name="doi_provider", curie=NMDC.curie('doi_provider'),
                    model_uri=NMDC.doi_provider, domain=Doi, range=Optional[Union[str, "DoiProviderEnum"]])
 
 slots.doi_category = Slot(uri=NMDC.doi_category, name="doi_category", curie=NMDC.curie('doi_category'),
-                   model_uri=NMDC.doi_category, domain=Doi, range=Optional[Union[str, "DoiCategoryEnum"]])
+                   model_uri=NMDC.doi_category, domain=Doi, range=Union[str, "DoiCategoryEnum"])
 
 slots.dois = Slot(uri=NMDC.dois, name="dois", curie=NMDC.curie('dois'),
                    model_uri=NMDC.dois, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
