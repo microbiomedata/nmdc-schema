@@ -1725,6 +1725,7 @@ enums:
   file type enum:
     permissible_values:
       Metagenome Raw Reads:
+        description: Interleaved paired-end raw sequencing data
         annotations:
           file_name_pattern: '^\.fastq(\.gz)?$'
 
@@ -2018,9 +2019,6 @@ enums:
         description:
           Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance
           mass spectrometry raw data acquired in broadband full scan mode
-
-      Raw Compressed Metagenome Interleaved Paired-End Reads:
-        description: Raw sequencing reads from a metagenome that is in interleaved paired-end format and compressed using GNU zip format.
 
   credit enum:
     permissible_values:
