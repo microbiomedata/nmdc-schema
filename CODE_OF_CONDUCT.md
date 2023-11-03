@@ -1,10 +1,22 @@
-# Contributor Covenant Code of Conduct
+# NMDC Code of Conduct and Contributor Covenant 
+
+The NMDC is a platform built for and with the microbiome research community. Microbiome data are generated and used by a variety of scientific disciplines, representing a diversity of research questions and researchers asking them. While this heterogeneity creates challenges, we believe that our diversity of data, people, and questions, is also a core strength.
+
+In order to carry out our mission, the NMDC has established a code of conduct that embodies our commitment to promote reproducibility and enhance cross-study comparisons of microbiome data through open science and Findable, Accessible, Interoperable, and Reusable (FAIR) data management best practices. By embracing these principles, the NMDC team, champions, and collaborators create a welcoming and productive community. If you would like to know more, please contact the NMDC at support@microbiomedata.org.
 
 ## Our Pledge
 
-In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to make participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.
+In the interest of fostering an open and welcoming environment, we pledge to make participation in the NMDC project and community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.
 
 ## Our Standards
+
+We commit to the following principles:
+- *Embrace Diversity and Inclusivity*: Celebrate and support our diversity of data, people, and questions, recognizing it as a core strength of our community.
+- *Cultivate a Harassment-Free Environment*: Ensure our community is free from harassment of all kinds, including inappropriate verbal and written language and imagery.
+- *Promote Constructive Engagement*: Engage in constructive, transparent, and inclusive dialogue, allowing diverse perspectives to be shared, supporting new ideas, and providing novel solutions to current challenges.
+- *Demonstrate Professionalism and Positivity*: Celebrate all contributions, understand the learning opportunities in failure, and foster a culture of trust through accountability and transparent communication.
+- *Encourage Collaboration and Shared Ownership*: Advance collaboration with shared ownership across all microbiome research communities, respecting the contributions of every member.
+- *Abide by Community Guidelines*: All community interactions should align with [NMDC's Data Use Policy](https://microbiomedata.org/nmdc-data-use-policy/) and the principles outlined in this document.
 
 Examples of behavior that contributes to creating a positive environment include:
 
@@ -30,7 +42,7 @@ Project maintainers have the right and responsibility to remove, edit, or reject
 
 ## Scope
 
-This Code of Conduct applies both within project spaces and in public spaces when an individual is representing the project or its community. Examples of representing a project or community include using an official project e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event. Representation of a project may be further defined and clarified by project maintainers.
+This Code of Conduct applies within all community spaces, including online forums, mailing lists, collaborative platforms, and events, as well as in public spaces where individuals are representing the community.
 
 ## Enforcement
 
@@ -40,7 +52,7 @@ Project maintainers who do not follow or enforce the Code of Conduct in good fai
 
 ## Attribution
 
-This code of conduct has been derived from the excellent code of conduct of the [ATOM project](https://github.com/atom/atom/blob/master/CODE_OF_CONDUCT.md) which in turn is adapted from the [Contributor Covenant][homepage], version 1.4, available at [https://contributor-covenant.org/version/1/4][version]
+This code of conduct has been derived from the excellent code of conduct of the [ATOM project](https://github.com/atom/atom/blob/master/CODE_OF_CONDUCT.md) which in turn is adapted from the [Contributor Covenant][homepage], version 1.4, available at [https://contributor-covenant.org/version/1/4][version]. It has also been informed by earlier versions of the NMDC code of conduct. 
 
 [homepage]: https://contributor-covenant.org
 [version]: https://contributor-covenant.org/version/1/4/
