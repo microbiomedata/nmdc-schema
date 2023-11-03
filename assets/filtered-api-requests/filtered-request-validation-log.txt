@@ -477,4 +477,5 @@
 ✗ 'emsl:output_512117' does not match '^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$' in $.omics_processing_set[476].has_output[0]
 ✗ 'emsl:output_512118' does not match '^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$' in $.omics_processing_set[477].has_output[0]
 ✗ 'emsl:output_512114' does not match '^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$' in $.omics_processing_set[478].has_output[0]
+✗ Additional properties are not allowed ('award_dois', 'publication_dois' were unexpected) in $.study_set[0]
 ✗ 'study_category' is a required property in $.study_set[0]

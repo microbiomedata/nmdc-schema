@@ -11,7 +11,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: v9.0.2
+version: v9.0.4
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   FMA:
@@ -3757,11 +3757,6 @@ slots:
     name: notes
     description: from study class
     from_schema: https://w3id.org/nmdc/nmdc
-  canary:
-    name: canary
-    description: a slot that can be added and removed as evidence that schema changes
-      have propagated to other systems
-    from_schema: https://w3id.org/nmdc/nmdc
   ess_dive_datasets:
     name: ess_dive_datasets
     description: List of ESS-DIVE dataset DOIs
@@ -4181,8 +4176,10 @@ slots:
     aliases:
     - Associated DOIs
     - Associated digital object identifiers
+    domain: Study
     multivalued: true
     range: Doi
+    inlined_as_list: true
   doi_value:
     name: doi_value
     description: A digital object identifier, which is intended to persistantly identify
@@ -4200,6 +4197,7 @@ slots:
     - OBI:0002110
     narrow_mappings:
     - edam.data:1188
+    domain: Doi
     range: uriorcurie
     required: true
     pattern: ^doi:10.\d{2,9}/.*$
@@ -4214,6 +4212,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     close_mappings:
     - NCIT:C74932
+    domain: Doi
     range: DoiProviderEnum
   doi_category:
     name: doi_category
@@ -4224,6 +4223,7 @@ slots:
     in_subset:
     - data_portal_subset
     from_schema: https://w3id.org/nmdc/nmdc
+    domain: Doi
     range: DoiCategoryEnum
     required: true
   dois:
@@ -18693,8 +18693,6 @@ classes:
         name: part_of
         range: Study
         required: true
-        inlined: false
-        inlined_as_list: false
         pattern: .*
       fire:
         name: fire
@@ -19071,7 +19069,7 @@ classes:
   Doi:
     name: Doi
     description: A centrally registered identifier symbol used to uniquely identify
-      objects given by the International DOI Foundation.  The DOI system is particularly
+      objects given by the International DOI Foundation. The DOI system is particularly
       used for electronic documents.
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:

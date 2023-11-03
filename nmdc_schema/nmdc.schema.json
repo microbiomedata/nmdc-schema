@@ -3672,7 +3672,7 @@
         },
         "Doi": {
             "additionalProperties": false,
-            "description": "A centrally registered identifier symbol used to uniquely identify objects given by the International DOI Foundation.  The DOI system is particularly used for electronic documents.",
+            "description": "A centrally registered identifier symbol used to uniquely identify objects given by the International DOI Foundation. The DOI system is particularly used for electronic documents.",
             "if": {
                 "properties": {
                     "doi_category": {
@@ -8382,5 +8382,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "v9.0.2"
+    "version": "v9.0.4"
 }
