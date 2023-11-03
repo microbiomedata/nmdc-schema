@@ -69,28 +69,29 @@ class MigratorBase:
 
         return curie_normalized
 
-    def apply_changes_recursively_by_key(self, o, keys_to_migrate, migration_eligible=False):
+    def fix_curies_recursively_by_key(self, o, keys_to_migrate, migration_eligible=False):
         if isinstance(o, dict):
             migration_eligible = False
             for k, v in o.items():
-                o[k] = self.apply_changes_recursively_by_key(
+                o[k] = self.fix_curies_recursively_by_key(
                     v, keys_to_migrate, migration_eligible or k in keys_to_migrate
                 )
             return o
         elif isinstance(o, list):
             return [
-                self.apply_changes_recursively_by_key(
+                self.fix_curies_recursively_by_key(
                     v, keys_to_migrate, migration_eligible)
                 for v in o
             ]
         else:
             return self.check_and_normalize_one_curie(o) if migration_eligible else o
 
-    def load_yaml_file(self, filename):
-        """Loads a YAML file into a Python dict."""
-        with open(filename, "r") as f:
-            data = yaml.safe_load(f)
-        return data
+
+def load_yaml_file(filename):
+    """Loads a YAML file into a Python dict."""
+    with open(filename, "r") as f:
+        data = yaml.safe_load(f)
+    return data
 
 
 class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
@@ -277,8 +278,8 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
         return study
 
 
-class Migrator_from_8_0_0_to_8_1_0(MigratorBase):
-    """Migrates data from schema 8.0.0 to 8.1.0"""
+class Migrator_from_8_0_to_8_1(MigratorBase):
+    """previously: Migrates data from schema 8.0.0 to 8.1.0"""
 
     def __init__(self) -> None:
         """Invokes parent constructor and populates collection-to-transformations map."""
@@ -298,8 +299,8 @@ class Migrator_from_8_0_0_to_8_1_0(MigratorBase):
         return study
 
 
-class Migrator_from_8_1_1_to_9_0_0(MigratorBase):
-    """Migrates data from schema 8.1.0 to 9.0.0"""
+class Migrator_from_8_1_to_9_0(MigratorBase):
+    """previously: Migrates data from schema 8.1.0 to 9.0.0"""
 
     def __init__(self) -> None:
         """Invokes parent constructor and populates collection-to-transformations map."""
@@ -328,7 +329,7 @@ class Migrator_from_8_1_1_to_9_0_0(MigratorBase):
          It also changes some DOIs that were incorrectly labeled as award to dataset DOIs.
          It also add three new award DOIs from JGI"""
 
-        study_doi_data = self.load_yaml_file(
+        study_doi_data = load_yaml_file(
             filename='assets/misc/study_dois_changes.yaml')
 
         self.process_doi(
@@ -353,8 +354,9 @@ class Migrator_from_8_1_1_to_9_0_0(MigratorBase):
 
         mass_id = 'MASSIVE:MSV000090886'
         mass_doi = 'doi:10.25345/C58K7520G'
-        study.setdefault('associated_dois', []).extend({'doi_value': mass_doi, 'doi_category': 'dataset_doi', 'doi_provider': 'massive'}
-                                                       for id in study.get('massive_study_identifiers', []) if id == mass_id)
+        study.setdefault('associated_dois', []).extend(
+            {'doi_value': mass_doi, 'doi_category': 'dataset_doi', 'doi_provider': 'massive'}
+            for id in study.get('massive_study_identifiers', []) if id == mass_id)
 
         # remove the massive_study_identifiers slot if the id matches the one to be removed in associated_dois slot
         for doi_group in study['associated_dois']:
@@ -368,7 +370,7 @@ class Migrator_from_8_1_1_to_9_0_0(MigratorBase):
 
         study.setdefault('associated_dois', []).extend(
             {'doi_value': dataset_doi, 'doi_category': 'dataset_doi',
-                'doi_provider': 'ess_dive'}
+             'doi_provider': 'ess_dive'}
             for dataset_doi in study.get('ess_dive_datasets', []))
 
     def remove_doi_slots(self, study: dict):
@@ -410,57 +412,86 @@ class Migrator_from_8_1_1_to_9_0_0(MigratorBase):
               help="Path to the output YAML data file")
 @click.option("--salvage-prefix", required=True, type=str,
               help="A prefix, defined in the schema, to force for each value that the schema indicates is a CURIE but that has no prefix")
-def main(schema_path, input_path, output_path, salvage_prefix):
+@click.option("--migrator-name", type=str, multiple=True,
+              help="The name of a MigratorBase class that should be used to migrate the data")
+def main(schema_path, input_path, output_path, salvage_prefix, migrator_name):
     """
     Generates a data file that conforms to a different schema version than the input data file does.
 
     See source code for initial and final schema versions.
     """
 
-    migrator = Migrator_from_8_1_1_to_9_0_0()
-    migrator.forced_prefix = salvage_prefix
+    migrators = []
+
+    for current_name in migrator_name:
+        try:
+            migrator_class = globals()[current_name]
+            migrators.append(migrator_class)
+            logger.info(f"Will perform {current_name} migration")
+        except KeyError:
+            logger.error(
+                f"ERROR: {current_name} is not a valid migrator class name")
+            continue
+
+    if len(migrators) == 0:
+        logger.info("No valid migrators specified. Will perform default migration")
+        exit()
+
+    # Load the input data
+    logger.info(f"Loading data from {input_path}")
+    total_dict = load_yaml_file(input_path)
 
     # Load the schema and determine which of its slots we can migrate.
     logger.info(f"Loading schema from {schema_path}")
     view = SchemaView(schema_path)
     slots = view.all_slots()
-    migrateable_slots = set()
+    curie_slots = set()
     for sk, sv in slots.items():
         s_range = sv.range
         if s_range == "uriorcurie":
             slot_descendants = view.slot_descendants(sk)
             for i in slot_descendants:
-                migrateable_slots.add(i)
+                curie_slots.add(i)
         elif s_range:
             range_type_name = type(view.get_element(s_range)).class_name
             if range_type_name == "class_definition":
                 if view.get_identifier_slot(s_range):
                     slot_descendants = view.slot_descendants(sk)
                     for i in slot_descendants:
-                        migrateable_slots.add(i)
+                        curie_slots.add(i)
 
-    # Load the input data and migrate the fields in it that correspond to those slots.
-    logger.info(f"Loading data from {input_path}")
-    total_dict = migrator.load_yaml_file(input_path)
-    end_dict = {}
+    logger.info(curie_slots)
+
+    curie_migrator = MigratorBase()
+    curie_migrator.forced_prefix = salvage_prefix
+
+    # iterate over collections, applying CURIe fixes
     for tdk, tdv in total_dict.items():
-        logger.info(f"Starting migration of {tdk}")
+        logger.info(f"Fixing CURIes in {tdk} if necessary")
 
-        end_dict[tdk] = migrator.apply_changes_recursively_by_key(
-            tdv, set(migrateable_slots))
+        total_dict[tdk] = curie_migrator.fix_curies_recursively_by_key(
+            tdv, set(curie_slots))
 
-        # If the migration specifies any transformers for this collection,
-        # apply them—in order—to each document within this collection.
-        transformers = migrator.get_transformers_for(collection_name=tdk)
-        if len(transformers) > 0:
-            logger.info(f"Starting {tdk}-specific transformations")
-            for document in tdv:
-                for transformer in transformers:
-                    transformer(document)  # modifies the document in place
+    # iterate over migrators
+    for current_migrator in migrators:
+        migrator = current_migrator()
+        migrator.forced_prefix = salvage_prefix
 
+        # iterate over collections, applying migration-specific transformations
+        for tdk, tdv in total_dict.items():
+            # If the migration specifies any transformers for this collection,
+            # apply them—in order—to each document within this collection.
+            transformers = migrator.get_transformers_for(collection_name=tdk)
+            if len(transformers) > 0:
+                logger.info(f"Starting {tdk}-specific transformations with {type(migrator)}")
+                for document in tdv:
+                    for transformer in transformers:
+                        transformer(document)  # modifies the document in place
+
+    # all migrations complete. save data.
     logger.info(f"Saving migrated data to {output_path}")
     with open(output_path, "w") as f:
-        yaml.dump(end_dict, f)
+        yaml.dump(total_dict, f)
 
 
 if __name__ == "__main__":

@@ -428,21 +428,23 @@ make-rdf: rdf-clean local/mongo_as_nmdc_database_validation.log local/mongo_as_n
 
 # todo also notes about large collections: functional_annotation_agg and metaproteomics_analysis_activity_set
 
+
+
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) pure-export \
 		--client-base-url https://api.microbiomedata.org \
 		--endpoint-prefix nmdcschema \
 		--env-file local/.env \
-		--max-docs-per-coll 10000000 \
+		--max-docs-per-coll 1000000000 \
 		--mongo-db-name nmdc \
 		--mongo-host localhost \
 		--mongo-port 27777 \
 		--output-yaml $@ \
-		--page-size 10000 \
+		--page-size 200000 \
 		--schema-file src/schema/nmdc.yaml \
-		--selected-collections biosample_set \
 		--selected-collections data_object_set \
+		--selected-collections biosample_set \
 		--selected-collections extraction_set \
 		--selected-collections field_research_site_set \
 		--selected-collections library_preparation_set \
@@ -465,10 +467,14 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) migration-recursion \
+		--migrator-name Migrator_from_8_0_to_8_1 \
+		--migrator-name Migrator_from_8_1_to_9_0 \
 		--schema-path $(word 1,$^) \
 		--input-path $(word 2,$^) \
-		--salvage-prefix nmdc \
+		--salvage-prefix generic \
 		--output-path $@
+
+.PRECIOUS: local/mongo_as_nmdc_database_validation.log
 
 local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
 	# nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml or nmdc_schema/nmdc_materialized_patterns.yaml
@@ -487,7 +493,7 @@ local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.tt
 	time $(RUN) anyuri-strings-to-iris \
 		--input-ttl $< \
 		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
-		--emsl-biosample-uuid-replacement emsl_biosample_uuid_like \
+		--emsl-uuid-replacement emsl_uuid_like \
 		--output-ttl $@
 	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
 	- $(JENA_PATH)/riot --validate $@ # < 1 minute
