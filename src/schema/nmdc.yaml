@@ -1601,6 +1601,7 @@ classes:
       - gold_sequencing_project_identifiers
       - has_input
       - has_output
+      - insdc_bioproject_identifiers
       - insdc_experiment_identifiers
       - instrument_name
       - mod_date
