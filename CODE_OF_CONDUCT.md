@@ -1,12 +1,12 @@
 # NMDC Code of Conduct and Contributor Covenant 
 
-The NMDC is a platform built for and with the microbiome research community. Microbiome data are generated and used by a variety of scientific disciplines, representing a diversity of research questions and researchers asking them. While this heterogeneity creates challenges, we believe that our diversity of data, people, and questions, is also a core strength.
+The NMDC Program builds data infrastructure for and with the microbiome research community. Microbiome data are generated and used by a variety of scientific disciplines, representing a diversity of research questions and researchers asking them. While this heterogeneity creates challenges, we believe that our diversity of data, people, and questions, is also a core strength.
 
-In order to carry out our mission, the NMDC has established a code of conduct that embodies our commitment to promote reproducibility and enhance cross-study comparisons of microbiome data through open science and Findable, Accessible, Interoperable, and Reusable (FAIR) data management best practices. By embracing these principles, the NMDC team, champions, and collaborators create a welcoming and productive community. If you would like to know more, please contact the NMDC at support@microbiomedata.org.
+In order to carry out our mission, the NMDC has established a code of conduct that embodies our commitment to promote reproducibility and enhance cross-study comparisons of microbiome data through open science and Findable, Accessible, Interoperable, and Reusable (FAIR) data management best practices. By embracing these principles, the NMDC team, Ambassadors, Champions, and collaborators create a welcoming and productive community. If you would like to know more, please contact the NMDC at support@microbiomedata.org.
 
 ## Our Pledge
 
-In the interest of fostering an open and welcoming environment, we pledge to make participation in the NMDC project and community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.
+In the interest of fostering an open and welcoming environment, we pledge to make participation in the NMDC program and community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.
 
 ## Our Standards
 
@@ -36,9 +36,9 @@ Examples of unacceptable behavior by participants include:
 
 ## Our Responsibilities
 
-Project maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
+Program maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
 
-Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, or to ban temporarily or permanently any contributor for other behaviors that they deem inappropriate, threatening, offensive, or harmful.
+Program maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, or to ban temporarily or permanently any contributor for other behaviors that they deem inappropriate, threatening, offensive, or harmful.
 
 ## Scope
 
@@ -46,13 +46,13 @@ This Code of Conduct applies within all community spaces, including online forum
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by [contacting the project team](contact.md). All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by [contacting the program team](contact.md). All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The program team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
 
-Project maintainers who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the project's leadership.
+Program maintainers who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the Program's leadership.
 
 ## Attribution
 
-This code of conduct has been derived from the excellent code of conduct of the [ATOM project](https://github.com/atom/atom/blob/master/CODE_OF_CONDUCT.md) which in turn is adapted from the [Contributor Covenant][homepage], version 1.4, available at [https://contributor-covenant.org/version/1/4][version]. It has also been informed by earlier versions of the NMDC code of conduct. 
+This Code of Conduct has been derived from the excellent code of conduct of the [ATOM project](https://github.com/atom/atom/blob/master/CODE_OF_CONDUCT.md) which in turn is adapted from the [Contributor Covenant][homepage], version 1.4, available at [https://contributor-covenant.org/version/1/4][version]. It has also been informed by earlier versions of the NMDC code of conduct. 
 
 [homepage]: https://contributor-covenant.org
 [version]: https://contributor-covenant.org/version/1/4/
