@@ -2088,7 +2088,11 @@ enums:
       ANL:
         title: Argonne National Laboratory
         meaning: https://ror.org/05gvnxz63
-  
+      
+      UCD_Genome_Center:
+        title: University of California, Davis Genome Center 
+        meaning: https://genomecenter.ucdavis.edu/
+        
   StudyCategoryEnum:
     permissible_values:
       research_study:
