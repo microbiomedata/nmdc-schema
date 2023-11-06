@@ -1509,7 +1509,8 @@ classes:
       #        description: The DOI for the EMSL awarded study that relates to the NMDC submitted study
       part_of:
         description: Links a study or consortium to a parent (or umbrella) study or consortium.
-        comments: Value is the id of the umbrella study or consortium.
+        comments: 
+          - Value is the id of the umbrella study or consortium.
         range: Study
     exact_mappings:
       - OBI:0000066
