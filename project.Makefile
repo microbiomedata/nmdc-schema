@@ -443,11 +443,8 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--output-yaml $@ \
 		--page-size 200000 \
 		--schema-file src/schema/nmdc.yaml \
-		--selected-collections data_object_set \
 		--selected-collections biosample_set \
-		--selected-collections extraction_set \
-		--selected-collections field_research_site_set \
-		--selected-collections library_preparation_set \
+		--selected-collections data_object_set \
 		--selected-collections mags_activity_set \
 		--selected-collections metabolomics_analysis_activity_set \
 		--selected-collections metagenome_annotation_activity_set \
@@ -456,8 +453,6 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections metatranscriptome_activity_set \
 		--selected-collections nom_analysis_activity_set \
 		--selected-collections omics_processing_set \
-		--selected-collections pooling_set \
-		--selected-collections processed_sample_set \
 		--selected-collections read_based_taxonomy_analysis_activity_set \
 		--selected-collections read_qc_analysis_activity_set \
 		--selected-collections study_set \
@@ -479,6 +474,9 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 
 local/schema_7_8_0.yaml:
 	wget -O $@ https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v7.8.0/nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+	yq -i '.slots.gold_biosample_identifiers.pattern |= ".*"' $@
+	yq -i '.slots.gold_sequencing_project_identifiers.pattern |= ".*"' $@
+	yq -i '.slots.gold_study_identifiers.pattern |= ".*"' $@ # would be better to assert that the uppercase patterns are acceptable in this situation
 
 .PRECIOUS: local/mongo_as_nmdc_database_validation.log
 
