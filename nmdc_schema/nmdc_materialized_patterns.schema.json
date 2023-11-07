@@ -4208,8 +4208,7 @@
                 "SMART Annotation GFF",
                 "Pfam Annotation GFF",
                 "Annotation Statistics",
-                "Direct Infusion FT ICR-MS Raw Data",
-                "Raw Compressed Metagenome Interleaved Paired-End Reads"
+                "Direct Infusion FT ICR-MS Raw Data"
             ],
             "title": "FileTypeEnum",
             "type": "string"
@@ -6160,6 +6159,14 @@
                     "pattern": "^(nmdc):omprc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                     "type": "string"
                 },
+                "insdc_bioproject_identifiers": {
+                    "description": "identifiers for corresponding project in INSDC Bioproject",
+                    "items": {
+                        "pattern": "^bioproject:PRJ[DEN][A-Z][0-9]+$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "insdc_experiment_identifiers": {
                     "items": {
                         "pattern": "^insdc.sra:(E|D|S)RX[0-9]{6,}$",
@@ -6632,7 +6639,8 @@
                 "JGI",
                 "EMSL",
                 "Battelle",
-                "ANL"
+                "ANL",
+                "UCD_Genome_Center"
             ],
             "title": "ProcessingInstitutionEnum",
             "type": "string"
@@ -7557,7 +7565,7 @@
                     "type": "string"
                 },
                 "part_of": {
-                    "description": "Links a study or consortium to a parent study or consortium.",
+                    "description": "Links a study or consortium to a parent (or umbrella) study or consortium.",
                     "items": {
                         "type": "string"
                     },
@@ -8382,5 +8390,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "v9.0.4"
+    "version": "v9.1.0"
 }

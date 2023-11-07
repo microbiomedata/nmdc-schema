@@ -1,5 +1,5 @@
 # Auto generated from nmdc_schema_accepting_legacy_ids.yaml by pythongen.py version: 0.0.1
-# Generation date: 2023-11-03T21:51:45
+# Generation date: 2023-11-07T14:26:57
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -30,7 +30,7 @@ from linkml_runtime.utils.curienamespace import CurieNamespace
 from linkml_runtime.utils.metamodelcore import Bool, Curie, Decimal, ElementIdentifier, NCName, NodeIdentifier, URI, URIorCURIE, XSDDate, XSDDateTime, XSDTime
 
 metamodel_version = "1.7.0"
-version = "v9.0.4"
+version = "v9.1.0"
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -86,7 +86,7 @@ BIOSAMPLE = CurieNamespace('biosample', 'https://bioregistry.io/biosample:')
 CAS = CurieNamespace('cas', 'https://bioregistry.io/cas:')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 DOI = CurieNamespace('doi', 'https://bioregistry.io/doi:')
-EDAM_DATA = CurieNamespace('edam_data', 'http://edamontology.org/data')
+EDAM_DATA = CurieNamespace('edam_data', 'http://edamontology.org/data_')
 EMSL = CurieNamespace('emsl', 'http://example.org/emsl_in_mongodb/')
 EMSL_PROJECT = CurieNamespace('emsl_project', 'https://bioregistry.io/emsl.project:')
 EMSL_UUID_LIKE = CurieNamespace('emsl_uuid_like', 'http://example.org/emsl_uuid_like/')
@@ -4062,6 +4062,7 @@ class OmicsProcessing(PlannedProcess):
     chimera_check: Optional[Union[dict, "TextValue"]] = None
     gold_sequencing_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     has_output: Optional[Union[Union[str, DataObjectId], List[Union[str, DataObjectId]]]] = empty_list()
+    insdc_bioproject_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     insdc_experiment_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     instrument_name: Optional[str] = None
     mod_date: Optional[str] = None
@@ -4106,6 +4107,10 @@ class OmicsProcessing(PlannedProcess):
         if not isinstance(self.has_output, list):
             self.has_output = [self.has_output] if self.has_output is not None else []
         self.has_output = [v if isinstance(v, DataObjectId) else DataObjectId(v) for v in self.has_output]
+
+        if not isinstance(self.insdc_bioproject_identifiers, list):
+            self.insdc_bioproject_identifiers = [self.insdc_bioproject_identifiers] if self.insdc_bioproject_identifiers is not None else []
+        self.insdc_bioproject_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.insdc_bioproject_identifiers]
 
         if not isinstance(self.insdc_experiment_identifiers, list):
             self.insdc_experiment_identifiers = [self.insdc_experiment_identifiers] if self.insdc_experiment_identifiers is not None else []
@@ -6488,6 +6493,9 @@ class ProcessingInstitutionEnum(EnumDefinitionImpl):
         meaning=None)
     ANL = PermissibleValue(
         text="ANL",
+        meaning=None)
+    UCD_Genome_Center = PermissibleValue(
+        text="UCD_Genome_Center",
         meaning=None)
 
     _defn = EnumDefinition(
