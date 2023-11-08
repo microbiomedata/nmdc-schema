@@ -142,7 +142,14 @@ subsets:
       - Assignment of the data_portal_subset is incomplete in the schema.
 
 classes:
-
+  MetaPFunctionAggMember:
+    description:
+      A class for the metaproteomics aggregation table, used to enable NMDC's data portal KEGG search
+    slots:
+      - metaproteomic_analysis_id
+      - gene_function_id
+      - count
+      - best_protein
   FunctionalAnnotationAggMember:
     slots:
       - metagenome_annotation_id
@@ -162,6 +169,7 @@ classes:
     slots:
       - planned_process_set
       - functional_annotation_agg
+      - metap_gene_function_aggregation
       - activity_set
       - biosample_set
       - collecting_biosamples_from_site_set
@@ -2187,16 +2195,31 @@ slots:
   #  for FunctionalAnnotationAggMember:
   metagenome_annotation_id:
     range: WorkflowExecutionActivity
+    required: true
+    description: The value for slot id for the analysis activity (WorkflowExecutionActivity) that generated functional annotation
   gene_function_id:
     range: uriorcurie
+    required: true
+    description: The identifier for the gene function, ie KEGG.ORTHOLOGY:K00627
   count:
     range: integer
+    required: true
   functional_annotation_agg:
     range: FunctionalAnnotationAggMember
     multivalued: true
     inlined: true
     inlined_as_list: true
-
+  
+  # for metaPFunctional agg  
+  metap_gene_function_aggregation:
+    range: MetaPFunctionAggMember
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  metaproteomic_analysis_id:
+    range: MetaproteomicsAnalysisActivity
+    required: true
+    description: The value for identifier for the metaproteomics analysis activity. 
   ecosystem_path_id:
     range: string
     description: A unique id representing the GOLD classifiers associated with a sample.
