@@ -324,6 +324,8 @@ class Migrator_from_8_1_to_9_0(MigratorBase):
                 }
                 study.setdefault('associated_dois', []).append(new_doi)
 
+        return study
+
     def fix_award_dois(self, study: dict):
         """Moves current DOIs in the award_dois slot to the new associated_dois slot.
          It also changes some DOIs that were incorrectly labeled as award to dataset DOIs.
@@ -372,6 +374,8 @@ class Migrator_from_8_1_to_9_0(MigratorBase):
             {'doi_value': dataset_doi, 'doi_category': 'dataset_doi',
              'doi_provider': 'ess_dive'}
             for dataset_doi in study.get('ess_dive_datasets', []))
+
+        return study
 
     def remove_doi_slots(self, study: dict):
         """Remove slots that are no longer needed because their values have been moved to the associated_dois slot"""
