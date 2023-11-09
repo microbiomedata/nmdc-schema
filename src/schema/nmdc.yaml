@@ -1642,7 +1642,6 @@ classes:
       Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0
     slots:
       - applies_to_person
-      - applied_role
       - applied_roles
       - type
     class_uri: prov:Association
