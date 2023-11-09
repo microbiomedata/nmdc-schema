@@ -1571,6 +1571,8 @@ classes:
       volume:
         description: The volume of subsample.
 
+    FiltrationProcess:
+
   OmicsProcessing:
     aliases:
       - omics assay
