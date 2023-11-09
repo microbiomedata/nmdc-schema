@@ -207,12 +207,20 @@ slots:
     pattern: "^gnps\\.task:[a-f0-9]+$"
 
 
-  #  emsl_proposal_identifier:
-  #    is_a: study_identifiers
-  #    mixins:
-  #      - emsl_identifiers
-  #    title: EMSL Proposal Identifier
-  #    description: The proposal number assigned to the EMSL awarded study that relates to that which is represented in NMDC.
+  emsl_project_identifiers:
+    title: EMSL Project Identifiers
+    is_a: study_identifiers
+    mixins:
+      - emsl_identifiers
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/927#issuecomment-1802136437
+    pattern: "^emsl\\.project:[0-9]+$"
+    examples:
+      - value: emsl.project:60141
+    todos:
+      - is the local portion always an integer?
+      - do we know the minimum and maximum number of digits?
+      - Brynn add description
 
   ## samples
 
@@ -356,10 +364,4 @@ slots:
     mixins:
       - insdc_identifiers
 
-#  # EMSL
-#
-#  emsl_project_identifier:
-#    see_also:
-#      - emsl_proposal_identifier
-#    comments:
-#      - this is also associated with class Study!
+
