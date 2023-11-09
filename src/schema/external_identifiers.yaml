@@ -206,20 +206,6 @@ slots:
       - value: gnps.task:4b848c342a4f4abc871bdf8a09a60807
     pattern: "^gnps\\.task:[a-f0-9]+$"
 
-  massive_study_identifiers:
-    is_a: study_identifiers
-    mixins:
-      - massive_identifiers
-    deprecated_element_has_exact_replacement: nmdc:associated_dois
-    pattern: "^MASSIVE:"
-    todos:
-      - prefix not defined yet
-    description: identifiers for corresponding study in MASSIVE
-    examples:
-      - value: MASSIVE:MSV000090886
-        description: MASSIVE id for MASSIVE's metabolomics analysis of Gb0305843, resolvable with prefix http://identifiers.org/massive/
-    see_also:
-      - https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=83574f41458a4b259621d5c32a4d82f9
 
   #  emsl_proposal_identifier:
   #    is_a: study_identifiers
