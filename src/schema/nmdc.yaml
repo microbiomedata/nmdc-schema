@@ -1583,7 +1583,7 @@ classes:
       - ORCID:0000-0002-8683-0050 #Montana Smith
       - ORCID:0000-0001-9076-6066 #Mark Miller
       - ORCID:0009-0008-4013-7737 #James Tessmer
-    is_a: MaterialProcessing
+    is_a: PlannedProcess
     slots:
       - container_type
       - filter
