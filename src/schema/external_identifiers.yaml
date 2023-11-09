@@ -212,6 +212,7 @@ slots:
     is_a: study_identifiers
     mixins:
       - emsl_identifiers
+    description: an identifier that links to an EMSL user facility project
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/927#issuecomment-1802136437
     pattern: "^emsl\\.project:[0-9]+$"
@@ -220,7 +221,6 @@ slots:
     todos:
       - is the local portion always an integer?
       - do we know the minimum and maximum number of digits?
-      - Brynn add description
 
   ## samples
 
