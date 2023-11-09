@@ -93,6 +93,7 @@ prefixes:
   emsl: "http://example.org/emsl_in_mongodb/"
   emsl_uuid_like: "http://example.org/emsl_uuid_like/"
   edam.data: "http://edamontology.org/data_"
+  OBI: http://purl.obolibrary.org/obo/OBI_
   ORCID: https://orcid.org/
 
 
