@@ -1415,8 +1415,6 @@ classes:
         data submitted to ENA
     
     slots:
-      ## emsl_project_dois - slot was deprecated 10/04/2023
-
       - neon_study_identifiers
       - jgi_portal_study_identifiers
 
@@ -1434,30 +1432,21 @@ classes:
       - alternative_names
       - alternative_titles
       - description
-      #- award_dois - deprecated on 10/24/2023
-      #- dataset_dois - deprecated on 10/24/2023
-      #- publication_dois - deprecated on 10/24/2023
       - associated_dois
       - ecosystem
       - ecosystem_category
       - ecosystem_subtype
       - ecosystem_type
-      #      - emsl_project_identifier
-      #      - emsl_proposal_doi
-      #      - emsl_proposal_identifier
-      #- ess_dive_datasets - deprecated on 10/24/2023
       - funding_sources
       - gold_study_identifiers
       - has_credit_associations
       - study_category
       - insdc_bioproject_identifiers
-      #- massive_study_identifiers - deprecated on 10/24/2023
       - mgnify_project_identifiers
       - notes
       - objective
       - part_of
       - principal_investigator
-      # - publications - slot was deprecated 10/04/2023
       - related_identifiers
       - relevant_protocols
       - specific_ecosystem
@@ -2445,12 +2434,6 @@ slots:
   notes:
     description: from study class
 
-  ess_dive_datasets:
-    multivalued: true
-    # this is moot now that it's deprecated... but what was this slot's range? and ws it really intended to be inlined_as_list?
-    #    inlined_as_list: true
-    description: List of ESS-DIVE dataset DOIs
-    deprecated_element_has_exact_replacement: nmdc:associated_dois
   has_credit_associations:
     domain: Study
     range: CreditAssociation
@@ -2491,13 +2474,6 @@ slots:
           (BER) under contract DE-AC05-00OR2275
     close_mappings:
       - NCIT:C39409
-  applied_role:
-    domain: CreditAssociation
-    range: credit enum
-    slot_uri: prov:hadRole
-    deprecated:
-      A credit association may have multiple roles. So, use the applied
-      roles slot.
   applied_roles:
     domain: CreditAssociation
     range: credit enum
@@ -2839,62 +2815,10 @@ slots:
       - See especially the resourceTypeGeneral section of the DataCite pdf, on pp48-53 as of 2023-07-19
     deprecated_element_has_exact_replacement: nmdc:associated_dois
 
-  award_dois:
-    is_a: dois
-    description: >-
-      One or more DOIs that links a study, or similar entiry, to information about the funding authority.
-    examples:
-      - value: doi:10.46936/10.25585/60000880
-        description:
-          award_dois link to to an award document. Should not be used to link to datasets or publications.
-          For example, doi:10.15485/1577267 is not an award doi, but a dataset doi.
-    deprecated_element_has_exact_replacement: nmdc:associated_dois
-
-  dataset_dois:
-    is_a: dois
-    description: >-
-      One or more DOIs that links a study, or similar entity, to the generated data.
-    #    annotations:
-    #      display_hint: DOI associated with the data in this study. This is required when data is already generated.
-    examples:
-      - value: doi:10.15485/1577267
-        description:
-          dataset_dois link to data encoded in a defined structure (as defined by DataCite).
-          Should not be used to link to publications or administrative information like funding requests or awards.
-    deprecated_element_has_exact_replacement: nmdc:associated_dois
-
-  publication_dois:
-    is_a: dois
-    in_subset:
-      - data_portal_subset
-    description: One or more DOIs that links a study, or similar entity, to a publication.
-    aliases:
-      - publications
-    examples:
-      - value: doi:10.1126/science.1058040
-        description:
-          publication_dois link to a prose document, preferably a peer-reviewed journal article.
-          Should not be used to link to datasets or administrative information like funding requests or awards
-    deprecated_element_has_exact_replacement: nmdc:associated_dois
-
   add_date:
     range: string
     description: The date on which the information was added to the database.
 
-  # moving emsl_project_dois from external_identifiers.yaml to nmdc.yaml and re-rooting in `dois` with new pattern
-  emsl_project_dois:
-    is_a: dois
-    #    is_a: study_identifiers
-    mixins:
-      - emsl_identifiers
-    title: EMSL Project DOI
-    description: One or more DOIs that links to an EMSL Research Campaign page.
-    examples:
-      - value: doi:10.46936/intm.proj.2021.6014
-        description:
-          emsl_project_dois link to the document outlining the EMSL specific award for the project.
-          Should not be used to link to datasets or publications.
-    deprecated_element_has_exact_replacement: nmdc:award_dois
   mod_date:
     range: string
     description: The last date on which the database information was modified.

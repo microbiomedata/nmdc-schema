@@ -13,6 +13,7 @@ imports:
 prefixes:
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
+  MIXS: https://w3id.org/mixs/
 
 default_prefix: nmdc
 default_range: string
@@ -30,8 +31,8 @@ slots:
     examples:
       - value: 2021-04-15, 2021-04 and 2021 are all acceptable.
     from_schema: https://example.com/nmdc_dh
-    #    see_also:
-    #      - MIxS:collection_date
+    see_also:
+      - MIXS:0000011
     rank: 2
     string_serialization: '{date, arbitrary precision}'
     slot_group: MIxS Inspired
@@ -47,8 +48,8 @@ slots:
     examples:
       - value: 13:33 or 13:33:55
     from_schema: https://example.com/nmdc_dh
-    #    see_also:
-    #      - MIxS:collection_date
+    see_also:
+      - MIXS:0000011
     rank: 1
     string_serialization: '{time, seconds optional}'
     slot_group: MIxS Inspired
@@ -65,8 +66,8 @@ slots:
     examples:
       - value: 13:33 or 13:33:55
     from_schema: https://example.com/nmdc_dh
-    #    see_also:
-    #      - MIxS:collection_date
+    see_also:
+      - MIXS:0000011
     rank: 3
     string_serialization: '{time, seconds optional}'
     slot_group: MIxS Inspired
@@ -76,8 +77,9 @@ slots:
       represented in the available columns.
     title: experimental factor- other
     from_schema: https://example.com/nmdc_dh
-    #    see_also:
-    #      - MIxS:experimental_factor|additional_info
+    see_also:
+      - MIXS:0000008
+      - MIXS:0000300
     rank: 7
     string_serialization: '{text}'
     slot_group: MIxS Inspired
@@ -92,8 +94,8 @@ slots:
     description: Type of filter used or how the sample was filtered
     title: filter method
     from_schema: https://example.com/nmdc_dh
-    #    see_also:
-    #      - MIxS:filter_type
+    see_also:
+      - MIXS:0000765
     rank: 6
     string_serialization: '{text}'
     slot_group: MIxS Inspired
@@ -114,8 +116,8 @@ slots:
       - Can we make the H218O correctly super and subscripted?
     title: isotope exposure/addition
     from_schema: https://example.com/nmdc_dh
-    #    see_also:
-    #      - MIxS:chem_administration
+    see_also:
+      - MIXS:0000751
     rank: 16
     string_serialization: '{termLabel} {[termID]}; {timestamp}'
     slot_group: MIxS Inspired
@@ -129,8 +131,8 @@ slots:
     comments:
       - required if "microbial_biomass_c" is provided
     from_schema: https://example.com/nmdc_dh
-    #    see_also:
-    #      - MIxS:micro_biomass_meth
+    see_also:
+      - MIXS:0000339
     rank: 11
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_group: MIxS Inspired
@@ -146,8 +148,8 @@ slots:
     comments:
       - required if "microbial_biomass_n" is provided
     from_schema: https://example.com/nmdc_dh
-    #    see_also:
-    #      - MIxS:micro_biomass_meth
+    see_also:
+      - MIXS:0000339
     rank: 13
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_group: MIxS Inspired
@@ -158,8 +160,8 @@ slots:
       - If you provide this, correction factors used for conversion to the final units and method are required
     title: microbial biomass carbon
     from_schema: https://example.com/nmdc_dh
-    #    see_also:
-    #      - MIxS:microbial_biomass
+    see_also:
+      - MIXS:0000650
     rank: 10
     string_serialization: '{float} {unit}'
     slot_group: MIxS Inspired
@@ -174,8 +176,8 @@ slots:
       - value: 0.05 ug N/g dry soil
     title: microbial biomass nitrogen
     from_schema: https://example.com/nmdc_dh
-    #    see_also:
-    #      - MIxS:microbial_biomass
+    see_also:
+      - MIXS:0000650
     rank: 12
     string_serialization: '{float} {unit}'
     slot_group: MIxS Inspired
@@ -185,8 +187,9 @@ slots:
       by ;
     title: non-microbial biomass
     from_schema: https://example.com/nmdc_dh
-    #    see_also:
-    #      - MIxS:biomass|microbial_biomass
+    see_also:
+      - MIXS:0000174
+      - MIXS:0000650
     rank: 8
     string_serialization: '{text};{float} {unit}'
     slot_group: MIxS Inspired
@@ -198,8 +201,8 @@ slots:
     comments:
       - required if "non-microbial biomass" is provided
     from_schema: https://example.com/nmdc_dh
-    #    see_also:
-    #      - MIxS:microbial_biomass
+    see_also:
+      - MIXS:0000650
     rank: 9
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_group: MIxS Inspired
@@ -213,8 +216,9 @@ slots:
     examples:
       - value: https://doi.org/10.1016/0038-0717(85)90144-0
     from_schema: https://example.com/nmdc_dh
-    #    see_also:
-    #      - MIxS:org_nitro|tot_nitro_cont_meth
+    see_also:
+      - MIXS:0000338
+      - MIXS:0000205
     rank: 14
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_group: MIxS Inspired
@@ -223,15 +227,16 @@ slots:
       to the provided fields
     title: other treatments
     from_schema: https://example.com/nmdc_dh
-    #    see_also:
-    #      - MIxS:additional_info
+    see_also:
+      - MIXS:0000300
     rank: 15
     string_serialization: '{text}'
     slot_group: MIxS Inspired
     recommended: true
     comments:
       - This is an open text field to provide any treatments that cannot be captured in the provided slots.
-  #      - Values entered here will be used to determine potential new slots.
+    notes:
+      - Values entered here will be used to determine potential new slots.
   start_date_inc:
     description: Date the incubation was started. Only relevant for incubation samples.
     title: incubation start date
@@ -243,8 +248,8 @@ slots:
     examples:
       - value: 2021-04-15, 2021-04 and 2021 are all acceptable.
     from_schema: https://example.com/nmdc_dh
-    #    see_also:
-    #      - MIxS:collection_date
+    see_also:
+      - MIXS:0000011
     rank: 4
     string_serialization: '{date, arbitrary precision}'
     slot_group: MIxS Inspired
@@ -260,8 +265,8 @@ slots:
     examples:
       - value: 13:33 or 13:33:55
     from_schema: https://example.com/nmdc_dh
-    #    see_also:
-    #      - MIxS:collection_date
+    see_also:
+      - MIXS:0000011
     rank: 5
     string_serialization: '{time, seconds optional}'
     slot_group: MIxS Inspired

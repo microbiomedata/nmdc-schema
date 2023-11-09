@@ -58,7 +58,7 @@ slots:
       - what class would IMG records belong to?! Are they Studies, Biosamples, or something else?
     pattern: '^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$' # DOI-like pattern. Could be more conservative if we leave this out of the external_database_identifiers hierarchy
 
-  # mixins
+  ## mixins
 
   igsn_identifiers:
     mixin: true
@@ -90,11 +90,6 @@ slots:
     see_also:
       - https://www.insdc.org/
       - https://ena-docs.readthedocs.io/en/latest/submit/general-guide/accessions.html
-
-  massive_identifiers:
-    mixin: true
-    description: identifiers for entities according to MASSIVE
-    deprecated_element_has_exact_replacement: nmdc:associated_dois
 
   neon_identifiers:
     mixin: true
