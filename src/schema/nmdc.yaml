@@ -1498,7 +1498,7 @@ classes:
       #        description: The DOI for the EMSL awarded study that relates to the NMDC submitted study
       part_of:
         description: Links a study or consortium to a parent (or umbrella) study or consortium.
-        comments: 
+        comments:
           - Value is the id of the umbrella study or consortium.
         range: Study
     exact_mappings:
@@ -2078,9 +2078,9 @@ enums:
         meaning: https://ror.org/05gvnxz63
       
       UCD_Genome_Center:
-        title: University of California, Davis Genome Center 
+        title: University of California, Davis Genome Center
         meaning: https://genomecenter.ucdavis.edu/
-        
+
   StudyCategoryEnum:
     permissible_values:
       research_study:
@@ -2792,27 +2792,6 @@ slots:
     examples:
       - value: dataset_doi
         description: The corresponding DOI is a dataset resource type.
-
-  dois:
-    # is_a: attribute
-    todos:
-      - the previous doi slot was an attribute, but attribute seems committed to biosamples
-      - should we assert a parent term here?
-    range: uriorcurie
-    description: >-
-      A digital object identifier, which is intended to persistantly identify some resource on the web.
-    multivalued: true
-    abstract: true
-    aliases:
-      - DOIs
-      - digital object identifiers
-    pattern: '^doi:10.\d{2,9}/.*$'
-    see_also:
-      - https://schema.datacite.org/meta/kernel-4.4/doc/DataCite-MetadataKernel_v4.4.pdf
-      - https://api.crossref.org/types
-    comments:
-      - See especially the resourceTypeGeneral section of the DataCite pdf, on pp48-53 as of 2023-07-19
-    deprecated_element_has_exact_replacement: nmdc:associated_dois
 
   add_date:
     range: string
