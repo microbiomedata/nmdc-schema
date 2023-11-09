@@ -123,11 +123,7 @@ slots:
 
   protocol_link:
     range: Protocol
-    #    range: integer
-    # see also relevant_protocol string slot # this name avoids case-insensitive clash with Protocol class
 
-
-  # some parent properties for biosamples, which will be subtyped in multiples modules
 
   nucleic_acid_concentration:
     range: InstrumentValue

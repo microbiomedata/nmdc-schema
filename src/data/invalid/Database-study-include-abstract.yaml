@@ -73,7 +73,7 @@ study_set:
         applied_roles:
           - Supervision
           - Conceptualization
-        applied_role: Funding acquisition
+          - Funding acquisition
         type: any string
       - applies_to_person:
           name: Tanja Davidsen

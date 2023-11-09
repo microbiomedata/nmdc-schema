@@ -12,7 +12,7 @@ imports:
 prefixes:
   KEGG.COMPOUND: "https://bioregistry.io/kegg.compound:"
   SIO: http://semanticscience.org/resource/SIO_
-  UniProtKB: "https://bioregistry.io/uniprot:" # https://bioregistry.io/uniprot:P0DP23
+  UniProtKB: "https://bioregistry.io/uniprot:"
   biolink: https://w3id.org/biolink/vocab/
   dcterms: http://purl.org/dc/terms/
   linkml: https://w3id.org/linkml/
@@ -32,7 +32,6 @@ subsets:
   investigation: { }
   nucleic acid sequence source: { }
   sequencing: { }
-  #  soil: { }
 
 types:
 
@@ -138,7 +137,6 @@ classes:
       designated_class:
         comments:
           - required on all instances in a polymorphic Database slot like planned_process_set
-      # - participating_agent
 
   OntologyClass:
     is_a: NamedThing
@@ -626,14 +624,6 @@ slots:
     range: string
     multivalued: true
     description: A list of websites that are associated with the entity.
-
-  publications:
-    range: string
-    multivalued: true
-    description: >-
-      A list of publications that are associated with the entity.
-      The publications SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.
-    deprecated_element_has_exact_replacement: nmdc:publication_dois
 
   highest_similarity_score:
     todos:
