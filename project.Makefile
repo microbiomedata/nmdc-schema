@@ -459,15 +459,13 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--skip-collection-check \
 
 
-#local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
-#	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
-#	time $(RUN) migration-recursion \
-#		--migrator-name Migrator_from_8_0_to_8_1 \
-#		--migrator-name Migrator_from_8_1_to_9_0 \
-#		--schema-path $(word 1,$^) \
-#		--input-path $(word 2,$^) \
-#		--salvage-prefix generic \
-#		--output-path $@
+local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
+	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
+	time $(RUN) migration-recursion \
+		--schema-path $(word 1,$^) \
+		--input-path $(word 2,$^) \
+		--salvage-prefix generic \
+		--output-path $@
 
 #local/schema_8_0_0.yaml:
 #	wget -O $@ https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v8.0.0/nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
@@ -480,12 +478,13 @@ local/schema_7_8_0.yaml:
 
 .PRECIOUS: local/mongo_as_nmdc_database_validation.log
 
-local/mongo_as_nmdc_database_validation.log: local/schema_7_8_0.yaml local/mongo_as_unvalidated_nmdc_database.yaml
+local/mongo_as_nmdc_database_validation.log: local/schema_7_8_0.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
 	# nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml or nmdc_schema/nmdc_materialized_patterns.yaml
 	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-validate --schema $^ > $@
 
-local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
+local/mongo_as_nmdc_database.ttl: local/schema_7_8_0.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
+	# nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml or nmdc_schema local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-convert --output $@ --schema $^
 	export _JAVA_OPTIONS=-Djava.io.tmpdir=local

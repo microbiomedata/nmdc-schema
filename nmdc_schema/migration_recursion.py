@@ -435,7 +435,7 @@ def main(schema_path, input_path, output_path, salvage_prefix, migrator_name):
 
     if len(migrators) == 0:
         logger.info("No valid migrators specified. Will perform default migration")
-        exit()
+        # exit()
 
     # Load the input data
     logger.info(f"Loading data from {input_path}")
