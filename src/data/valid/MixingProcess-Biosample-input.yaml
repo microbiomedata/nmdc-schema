@@ -1,0 +1,11 @@
+has_input: 
+  - nmdc:1
+  - nmdc:2
+has_outputs:
+  - nmdc:3
+duration:
+  has_numeric_value: 2
+  has_unit: hours
+mixing:
+  device_type:
+    - Orbital Shaker

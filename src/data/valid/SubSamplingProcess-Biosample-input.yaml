@@ -1,0 +1,19 @@
+has_input: 
+  - nmdc:1
+  - nmdc:2
+has_outputs:
+  - nmdc:3
+container_type:
+  - Falcon Tube
+container_size:
+  has_numeric_value: 50
+  has_unit: mL
+volume:
+  has_numeric_value: 2
+  has_unit: mL
+temperature:
+  has_numeric_value: 20
+  has_unit: C
+input_mass:
+  has_numeric_value: 10
+  has_unit: g
