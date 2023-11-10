@@ -1567,6 +1567,7 @@ classes:
       - container_type
       - temperature
       - volume
+      - input_mass
     slot_usage:
       volume:
         description: The volume of subsample.
