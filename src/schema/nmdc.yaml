@@ -1598,6 +1598,16 @@ classes:
         range: ProcessedSample
         description: The mixed sample.
 
+  PreparativeInstrument:
+    description: A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.
+    aliases:
+      - LabDevice # OBI:0000968
+    exact_mappings:
+      - OBI:0000968
+    slots:
+      - description
+      - device_type
+
   OmicsProcessing:
     aliases:
       - omics assay
