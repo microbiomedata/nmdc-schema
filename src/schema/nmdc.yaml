@@ -1570,6 +1570,32 @@ classes:
     slot_usage:
       volume:
         description: The volume of subsample.
+      has_input:
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+      has_output:
+        range: ProcessedSample
+        description: The subsample.
+
+  MixingProcess:
+    description: >
+      The combining of components, particles or layers into a more homogeneous state. The mixing may be achieved manually or mechanically by shifting the material with stirrers or pumps or by revolving or shaking the container. The process must not permit segregation of particles of different size or properties. Homogeneity may be considered to have been achieved in a practical sense when the sampling error of the processed portion is negligible compared to the total error of the measurement system.
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-8683-0050 #Montana Smith
+    is_a: PlannedProcess
+    slots:
+      - duration
+      - mixing
+    slot_usage:
+      has_input:
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+      has_output:
+        range: ProcessedSample
+        description: The mixed sample.
 
   OmicsProcessing:
     aliases:
@@ -2872,3 +2898,15 @@ slots:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
+
+  mixing:
+    range: PreparativeInstrument
+    description: The lab device used for a mixing action in an activity
+
+  duration: # or could be a ISO8601 perisod string
+    range: QuantityValue
+    description: The duration of an activity.
+    examples:
+      - value: 
+          has_numeric_value: 2
+          has_unit: hours
