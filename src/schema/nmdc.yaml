@@ -1650,6 +1650,20 @@ classes:
     class_uri: prov:Association
 
 enums:
+  DeviceModelEnum:
+    permissible_values:
+      Orbitrap:
+      VortexGenie2:
+      PIPETMAN F144059M:
+
+  DeviceVendorEnum:
+    permissible_values:
+      ThermoFisher:
+      VWR:
+      PerkinElmer:
+      Gilson:
+      ScientificIndustries:
+
   StatusEnum:
     permissible_values:
       pass: { }
@@ -2163,6 +2177,11 @@ enums:
       V-bottom conical tube:
 
 slots:
+
+  model:
+    range: DeviceModelEnum
+  vendor:
+    range: DeviceVendorEnum
 
   designated_class:
     range: uriorcurie
