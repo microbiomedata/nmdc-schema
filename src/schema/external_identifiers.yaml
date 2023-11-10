@@ -215,12 +215,13 @@ slots:
     description: an identifier that links to an EMSL user facility project
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/927#issuecomment-1802136437
-    pattern: "^emsl\\.project:[0-9]+$"
+    pattern: "^emsl\\.project:[0-9]{5}$"
     examples:
       - value: emsl.project:60141
+    notes:
+      - these identifiers are all currently 5 digits long but that could change in the future
     todos:
-      - is the local portion always an integer?
-      - do we know the minimum and maximum number of digits?
+      - elaborate on description
 
   ## samples
 
