@@ -1650,13 +1650,13 @@ classes:
     class_uri: prov:Association
 
 enums:
-  DeviceModelEnum:
+  InstrumentModelEnum:
     permissible_values:
       Orbitrap:
       VortexGenie2:
       PIPETMAN F144059M:
 
-  DeviceVendorEnum:
+  InstrumentVendorEnum:
     permissible_values:
       ThermoFisher:
       VWR:
@@ -2179,9 +2179,9 @@ enums:
 slots:
 
   model:
-    range: DeviceModelEnum
+    range: InstrumentModelEnum
   vendor:
-    range: DeviceVendorEnum
+    range: InstrumentVendorEnum
 
   designated_class:
     range: uriorcurie
