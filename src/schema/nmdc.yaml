@@ -2197,6 +2197,18 @@ enums:
       - ORCID:0000-0002-8683-0050 #Montana Smith
     permissible_values:
       V-bottom conical tube:
+      Falcon Tube:
+      Auto sampler vial:
+      Glass insert vial
+  
+  DeviceTypeEnum:
+    description: The devices permissible for use in processing metabolomic samples.
+    permissible_values:
+      Orbital Shaker:
+      Thermomixer:
+      Vortex:
+      Agitation plunger:
+      Drying oven:
 
 slots:
 
