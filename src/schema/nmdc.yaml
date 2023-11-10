@@ -1417,6 +1417,7 @@ classes:
         data submitted to ENA
     
     slots:
+      - emsl_project_identifiers
       - neon_study_identifiers
       - jgi_portal_study_identifiers
 
