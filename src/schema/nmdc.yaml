@@ -2921,3 +2921,7 @@ slots:
       - value: 
           has_numeric_value: 2
           has_unit: hours
+    
+  device_type:
+    range: DeviceTypeEnum
+    description: The type of device being used for an activity
