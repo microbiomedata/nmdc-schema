@@ -1,6 +1,7 @@
 import logging
 import re
-from typing import Dict, List
+import importlib
+import inspect
 
 import click
 import click_log
@@ -12,32 +13,14 @@ click_log.basic_config(logger)
 
 # todo: log before and after states of migration
 
-doi_url_pattern = r'^https?:\/\/[a-zA-Z\.]+\/10\.'
 curie_pattern = r'^[a-zA-Z_][a-zA-Z0-9_-]*:[a-zA-Z0-9_][a-zA-Z0-9_.-]*$'
 
 
-class MigratorBase:
-    """Base class containing properties and methods related to migrating data between schema versions."""
+class CurieMigrator:
+    """Properties and methods related to migrating CURIE strings."""
 
     def __init__(self):
         self.forced_prefix = None
-
-        # Define the "agenda" of transformations that constitute this migration.
-        #
-        # Note: This is a dictionary that maps a given collection to a list of "transformation" functions.
-        #       Each key is a collection name, and each value is a list. Each element of the list is a
-        #       so-called "transformation" function. A "transformation" function is a function that
-        #       transforms something from one schema version to another. In this case, the "something"
-        #       is a dictionary representing a single document from the specified collection.
-        #
-        # Note: This dictionary is empty here. It will be populated within the "constructor" functions
-        #       of the migration-specific classes (i.e. the classes that inherit from this base class).
-        #
-        self.agenda: Dict[str, List[callable]] = dict()
-
-    def get_transformers_for(self, collection_name: str) -> List[callable]:
-        """Returns the list of transformers defined for the specified collection."""
-        return self.agenda.get(collection_name, [])
 
     def check_and_normalize_one_curie(self, curie_string):
         if not self.is_valid_curie(curie_string):
@@ -94,318 +77,6 @@ def load_yaml_file(filename):
     return data
 
 
-class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
-    """
-    Migrates data from schema A.B.C to X.Y.Z
-
-    TUTORIAL: This is an example of a "migrator" class.
-              It was designed for use during developer training and
-              to serve as a template for production "migrator" classes.
-    """
-
-    def __init__(self) -> None:
-        """
-        TUTORIAL: This is the "constructor" function of the class.
-                  As is true about the "constructor" function of any class,
-                  it runs whenever that class is instantiated, and its job
-                  is to initialize the newly-created instance of that class.
-
-                  When this "constructor" function runs, it does two things:
-                  1. It invokes the base class's "constructor" function; and
-                  2. It populates a dictionary that keeps track of which
-                     transformation functions will be applied to objects
-                     from which collections. You can think of this as the
-                     "agenda", "itinerary", "plan", or "registry" of
-                     transformations that make up this migration. As
-                     security guards at marathons say, "If it ain't
-                     part of the plan, it ain't gonna be ran."
-
-             -->  As part of creating a new "migration" class, you will
-                  populate its "agenda."
-        """
-
-        # Invoke the base class's "constructor" function.
-        super().__init__()
-
-        # Populate the "collection-to-transformers" map for this specific migration.
-        self.agenda = dict(
-            study_set=[self.allow_multiple_names],
-        )
-
-    def allow_multiple_names(self, study: dict) -> dict:
-        """
-        TUTORIAL: This is an example "transformation" function within the class.
-                  Its jobs is to transform a dictionary that conforms to the
-                  initial schema version (in this case, version "A.B.C"), into one
-                  that conforms to the target schema version (in this case,
-                  version "X.Y.Z"). That might involve adding a field,
-                  converting a string into a list of strings, etc.
-
-                  When this "transformation" function runs, it does three things:
-                  1. It accepts a single dictionary as a parameter.
-                  2. It transforms that dictionary.
-                  3. It returns the transformed dictionary.
-
-              --> As part of creating a new "migration" class, you will
-                  typically implement one or more "transformation" functions.
-                  You will also add them to the "agenda" of the class.
-        """
-
-        # optional log message
-        logger.info(f"Transforming study having id: {study['id']}")
-
-        # Transform the dictionary.
-        #
-        # TUTORIAL: In this example scenario, I am pretending that:
-        #           1. In schema version "A.B.C", the `Study` class has a `name` slot,
-        #              which contain a single string.
-        #           2. In schema version "X.Y.Z", the `Study` class no longer has that
-        #              `name` slot. Instead, it has a `names` slot, which contains
-        #              a list of strings.
-        #
-        original_name = study["name"]  # preserve the original value
-        # create a new key, whose value is an empty list of names
-        study["names"] = []
-        # add the original value to that list
-        study["names"].append(original_name)
-        del study["name"]  # delete the obsolete key
-
-        # Return the transformed dictionary.
-        return study
-
-
-class Migrator_from_7_7_2_to_7_8_0(MigratorBase):
-    """Migrates data from schema 7.7.2 to 7.8.0"""
-
-    def __init__(self) -> None:
-        """Invokes parent constructor and populates collection-to-transformations map."""
-
-        super().__init__()
-
-        # Populate the "collection-to-transformers" map for this specific migration.
-        self.agenda = dict(
-            study_set=[self.replace_doi_field_with_award_dois_list_field],
-        )
-
-    def replace_doi_field_with_award_dois_list_field(self, study: dict) -> dict:
-        logger.info(f"Starting migration of {study['id']}")
-        if "doi" in study:
-            match = re.search(doi_url_pattern, study["doi"]['has_raw_value'])
-            if match:
-                start_index = match.end()
-                as_curie = f"doi:10.{study['doi']['has_raw_value'][start_index:]}"
-                study["award_dois"] = [as_curie]
-            del study["doi"]
-        return study
-
-
-class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
-    """Migrates data from schema 7.8.0 to 8.0.0"""
-
-    def __init__(self) -> None:
-        """Invokes parent constructor and populates collection-to-transformations map."""
-
-        super().__init__()
-
-        # Populate the "collection-to-transformers" map for this specific migration.
-        self.agenda = dict(
-            biosample_set=[
-                self.standardize_letter_casing_of_gold_biosample_identifiers],
-            extraction_set=[self.rename_sample_mass_field],
-            omics_processing_set=[
-                self.standardize_letter_casing_of_gold_sequencing_project_identifiers],
-            study_set=[self.standardize_letter_casing_of_gold_study_identifier],
-        )
-
-    def rename_sample_mass_field(self, extraction: dict) -> dict:
-        logger.info(f"Starting migration of {extraction['id']}")
-        if "sample_mass" in extraction:
-            extraction['input_mass'] = extraction.pop('sample_mass')
-        return extraction
-
-    def standardize_letter_casing_of_gold_identifiers(self, identifiers: List[str]) -> List[str]:
-        """
-        Replaces the prefix `GOLD:` with `gold:` in the list of identifiers.
-
-        Note: If the identifier contains more than one colon, everything after the second
-              colon will be discarded.
-        """
-
-        standardized_identifiers = []
-        for identifier in identifiers:
-            logger.info(f"Original identifier: {identifier}")
-            curie_parts = identifier.split(':')
-            curie_prefix = curie_parts[0]  # everything before the first colon
-            # everything after the first colon, assuming there are no more colons
-            curie_local_id = curie_parts[1]
-
-            # Note: `s.split(":", maxsplit=1)` could be used to divide the string at the
-            #       _first_ colon only, so that `parts[1]` contains everything after that.
-            #       See: https://docs.python.org/3/library/stdtypes.html#str.split
-
-            if curie_prefix == "GOLD":
-                standardized_identifiers.append(f"gold:{curie_local_id}")
-            else:
-                standardized_identifiers.append(identifier)
-
-        return standardized_identifiers
-
-    def standardize_letter_casing_of_gold_biosample_identifiers(self, biosample: dict) -> dict:
-        field_name = "gold_biosample_identifiers"
-        if field_name in biosample and biosample[field_name]:
-            biosample[field_name] = self.standardize_letter_casing_of_gold_identifiers(
-                biosample[field_name])
-        else:
-            biosample[field_name] = []
-        return biosample
-
-    def standardize_letter_casing_of_gold_sequencing_project_identifiers(self, omics_processing: dict) -> dict:
-        field_name = "gold_sequencing_project_identifiers"
-        if field_name in omics_processing and omics_processing[field_name]:
-            omics_processing[field_name] = self.standardize_letter_casing_of_gold_identifiers(
-                omics_processing[field_name])
-        else:
-            omics_processing[field_name] = []
-        return omics_processing
-
-    def standardize_letter_casing_of_gold_study_identifier(self, study: dict) -> dict:
-        field_name = "gold_study_identifiers"
-        if field_name in study and study[field_name]:
-            study[field_name] = self.standardize_letter_casing_of_gold_identifiers(
-                study[field_name])
-        else:
-            study[field_name] = []
-        return study
-
-
-class Migrator_from_8_0_to_8_1(MigratorBase):
-    """previously: Migrates data from schema 8.0.0 to 8.1.0"""
-
-    def __init__(self) -> None:
-        """Invokes parent constructor and populates collection-to-transformations map."""
-
-        super().__init__()
-
-        # Populate the "collection-to-transformers" map for this specific migration.
-        self.agenda = dict(
-            study_set=[self.force_research_study_study_category],
-        )
-
-    def force_research_study_study_category(self, study: dict) -> dict:
-        if 'study_category' not in study:
-            logger.info(
-                f"Forcing 'study_category: research_study' on {study['id']}")
-            study['study_category'] = 'research_study'
-        return study
-
-
-class Migrator_from_8_1_to_9_0(MigratorBase):
-    """previously: Migrates data from schema 8.1.0 to 9.0.0"""
-
-    def __init__(self) -> None:
-        """Invokes parent constructor and populates collection-to-transformations map."""
-
-        super().__init__()
-
-        # Populate the "collection-to-transformers" map for this specific migration.
-        self.agenda = dict(
-            study_set=[self.fix_award_dois, self.fix_pub_dois,
-                       self.fix_massive, self.fix_ess_dive, self.remove_doi_slots],
-        )
-
-    def process_doi(self, study: dict, doi_list: list, doi_category: str):
-        id_value = study['id']
-        for doi_updates in doi_list:
-            if id_value == doi_updates['id']:
-                new_doi = {
-                    'doi_value': doi_updates['doi'],
-                    'doi_category': doi_category,
-                    'doi_provider': doi_updates['doi_prov']
-                }
-                study.setdefault('associated_dois', []).append(new_doi)
-
-        return study
-
-    def fix_award_dois(self, study: dict):
-        """Moves current DOIs in the award_dois slot to the new associated_dois slot.
-         It also changes some DOIs that were incorrectly labeled as award to dataset DOIs.
-         It also add three new award DOIs from JGI"""
-
-        study_doi_data = load_yaml_file(
-            filename='assets/misc/study_dois_changes.yaml')
-
-        self.process_doi(
-            study, study_doi_data['award_move_to_data'], 'dataset_doi')
-        self.process_doi(study, study_doi_data['new_award_dois'], 'award_doi')
-        self.process_doi(study, study_doi_data['award_doi_prov'], 'award_doi')
-
-        return study
-
-    def fix_pub_dois(self, study: dict):
-        """Move publication_dois values to new associated_dois slot"""
-
-        study.setdefault('associated_dois', []).extend(
-            {'doi_value': pub_doi, 'doi_category': 'publication_doi'}
-            for pub_doi in study.get('publication_dois', [])
-        )
-
-        return study
-
-    def fix_massive(self, study: dict):
-        """Change the one massive_study_identifiers value to a doi and move under new associated_dois slot"""
-
-        mass_id = 'MASSIVE:MSV000090886'
-        mass_doi = 'doi:10.25345/C58K7520G'
-        study.setdefault('associated_dois', []).extend(
-            {'doi_value': mass_doi, 'doi_category': 'dataset_doi', 'doi_provider': 'massive'}
-            for id in study.get('massive_study_identifiers', []) if id == mass_id)
-
-        # remove the massive_study_identifiers slot if the id matches the one to be removed in associated_dois slot
-        for doi_group in study['associated_dois']:
-            if doi_group['doi_value'] == mass_doi:
-                study.pop('massive_study_identifiers', None)
-
-        return study
-
-    def fix_ess_dive(self, study: dict):
-        """Move ess_dive_datasets values to associated_dois slot"""
-
-        study.setdefault('associated_dois', []).extend(
-            {'doi_value': dataset_doi, 'doi_category': 'dataset_doi',
-             'doi_provider': 'ess_dive'}
-            for dataset_doi in study.get('ess_dive_datasets', []))
-
-        return study
-
-    def remove_doi_slots(self, study: dict):
-        """Remove slots that are no longer needed because their values have been moved to the associated_dois slot"""
-
-        removal_slots = ['publication_dois', 'dataset_dois',
-                         'award_dois', 'ess_dive_datasets', 'massive_study_identifiers']
-
-        # Get dois from associated_dois
-        associated_dois = [entry['doi_value']
-                           for entry in study.get('associated_dois', [])]
-
-        # Remove the old dois from the old doi slots
-        for slot_name in removal_slots:
-            study[slot_name] = [doi for doi in study.get(
-                slot_name, []) if doi not in associated_dois]
-
-            # Remove old doi slots if values are empty
-            if not study[slot_name]:
-                del study[slot_name]
-            else:
-                logger.error(
-                    f'ERROR: Unexpected value in {slot_name} of {study["id"]} skipping slot deletion')
-
-        # Remove associated_dois if empty (no dois were moved over and the slot is unnecessary)
-        if not study['associated_dois']:
-            del study['associated_dois']
-
-        return study
-
-
 @click.command()
 @click_log.simple_verbosity_option(logger)
 @click.option("--schema-path", default='nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml', required=True, type=str,
@@ -429,12 +100,22 @@ def main(schema_path, input_path, output_path, salvage_prefix, migrator_name):
 
     for current_name in migrator_name:
         try:
-            migrator_class = globals()[current_name]
+            # Import the module whose name matches the specified migrator name (but with a lowercase `migrator_`).
+            # Reference: https://docs.python.org/3/library/importlib.html#importlib.import_module
+            migrator_module_name = current_name.replace("Migrator_", "migrator_", 1)
+            migrator_module = importlib.import_module(f".{migrator_module_name}", package="nmdc_schema.migrators")
+
+            # Get the class (defined in that module) whose name matches the specified migrator name.
+            # Reference: https://docs.python.org/3/library/inspect.html#inspect.isclass
+            migrator_class = getattr(migrator_module, current_name)
+            if not inspect.isclass(migrator_class):
+                raise TypeError
+
+            # Append that class to the list of migrator classes.
             migrators.append(migrator_class)
-            logger.info(f"Will perform {current_name} migration")
-        except KeyError:
-            logger.error(
-                f"ERROR: {current_name} is not a valid migrator class name")
+            logger.info(f"Will use migrator: {current_name}")
+        except (KeyError, ImportError, AttributeError, TypeError) as exception:
+            logger.error(f"ERROR: {current_name} is not a valid migrator class name. {exception}.")
             continue
 
     if len(migrators) == 0:
@@ -466,7 +147,7 @@ def main(schema_path, input_path, output_path, salvage_prefix, migrator_name):
 
     logger.info(curie_slots)
 
-    curie_migrator = MigratorBase()
+    curie_migrator = CurieMigrator()
     curie_migrator.forced_prefix = salvage_prefix
 
     # iterate over collections, applying CURIe fixes
@@ -487,7 +168,8 @@ def main(schema_path, input_path, output_path, salvage_prefix, migrator_name):
             # apply them—in order—to each document within this collection.
             transformers = migrator.get_transformers_for(collection_name=tdk)
             if len(transformers) > 0:
-                logger.info(f"Starting {tdk}-specific transformations with {type(migrator)}")
+                migrator_class_name = current_migrator.__name__
+                logger.info(f"Starting {tdk}-specific transformations using {migrator_class_name}")
                 for document in tdv:
                     for transformer in transformers:
                         transformer(document)  # modifies the document in place
