@@ -72,10 +72,8 @@ class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
         #              a list of strings.
         #
         original_name = study["name"]  # preserve the original value
-        # create a new key, whose value is an empty list of names
-        study["names"] = []
-        # add the original value to that list
-        study["names"].append(original_name)
+        study["names"] = []  # create a new key, whose value is an empty list of names
+        study["names"].append(original_name)  # add the original value to that list
         del study["name"]  # delete the obsolete key
 
         # Return the transformed dictionary.
