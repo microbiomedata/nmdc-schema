@@ -38,4 +38,4 @@ Here's how you can create a new migrator:
    - Add the transformation functions to the agenda
    > TODO: Replace this step with more detailed instructions; possibly enough that we can replace the current example
    > migrator module with one that lacks tutorial comments and is more ready-to-populate.
-3. Add the migrator module to the list of modules in the `import` statement in `__init__.py`.
+3. Done.
