@@ -1,18 +1,14 @@
-import logging
 from .migrator_base import MigratorBase
 from .helpers import load_yaml_asset
-
-
-logger = logging.getLogger(__name__)
 
 
 class Migrator_from_8_1_to_9_0(MigratorBase):
     """previously: Migrates data from schema 8.1.0 to 9.0.0"""
 
-    def __init__(self) -> None:
+    def __init__(self, *args, **kwargs) -> None:
         """Invokes parent constructor and populates collection-to-transformations map."""
 
-        super().__init__()
+        super().__init__(*args, **kwargs)
 
         # Populate the "collection-to-transformers" map for this specific migration.
         self.agenda = dict(
@@ -102,7 +98,7 @@ class Migrator_from_8_1_to_9_0(MigratorBase):
             if not study[slot_name]:
                 del study[slot_name]
             else:
-                logger.error(
+                self.logger.error(
                     f'ERROR: Unexpected value in {slot_name} of {study["id"]} skipping slot deletion')
 
         # Remove associated_dois if empty (no dois were moved over and the slot is unnecessary)

@@ -1,8 +1,4 @@
-import logging
 from .migrator_base import MigratorBase
-
-
-logger = logging.getLogger(__name__)
 
 
 class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
@@ -14,7 +10,7 @@ class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
               to serve as a template for production "migrator" classes.
     """
 
-    def __init__(self) -> None:
+    def __init__(self, *args, **kwargs) -> None:
         """
         TUTORIAL: This is the "constructor" function of the class.
                   As is true about the "constructor" function of any class,
@@ -35,8 +31,9 @@ class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
                   populate its "agenda."
         """
 
-        # Invoke the base class's "constructor" function.
-        super().__init__()
+        # Invoke the base class's "constructor" function, passing/forwarding to it
+        # all arguments that were passed to the current function.
+        super().__init__(*args, **kwargs)
 
         # Populate the "collection-to-transformers" map for this specific migration.
         self.agenda = dict(
@@ -63,7 +60,7 @@ class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
         """
 
         # optional log message
-        logger.info(f"Transforming study having id: {study['id']}")
+        self.logger.info(f"Transforming study having id: {study['id']}")
 
         # Transform the dictionary.
         #

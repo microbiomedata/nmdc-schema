@@ -159,7 +159,7 @@ def main(schema_path, input_path, output_path, salvage_prefix, migrator_name):
 
     # iterate over migrators
     for current_migrator in migrators:
-        migrator = current_migrator()
+        migrator = current_migrator(logger=logger)
         migrator.forced_prefix = salvage_prefix
 
         # iterate over collections, applying migration-specific transformations

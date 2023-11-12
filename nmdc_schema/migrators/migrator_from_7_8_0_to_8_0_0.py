@@ -1,18 +1,14 @@
 from typing import List
-import logging
 from .migrator_base import MigratorBase
-
-
-logger = logging.getLogger(__name__)
 
 
 class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
     """Migrates data from schema 7.8.0 to 8.0.0"""
 
-    def __init__(self) -> None:
+    def __init__(self, *args, **kwargs) -> None:
         """Invokes parent constructor and populates collection-to-transformations map."""
 
-        super().__init__()
+        super().__init__(*args, **kwargs)
 
         # Populate the "collection-to-transformers" map for this specific migration.
         self.agenda = dict(
@@ -23,7 +19,7 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
         )
 
     def rename_sample_mass_field(self, extraction: dict) -> dict:
-        logger.info(f"Starting migration of {extraction['id']}")
+        self.logger.info(f"Starting migration of {extraction['id']}")
         if "sample_mass" in extraction:
             extraction["input_mass"] = extraction.pop("sample_mass")
         return extraction
@@ -38,7 +34,7 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
 
         standardized_identifiers = []
         for identifier in identifiers:
-            logger.info(f"Original identifier: {identifier}")
+            self.logger.info(f"Original identifier: {identifier}")
             curie_parts = identifier.split(":")
             curie_prefix = curie_parts[0]  # everything before the first colon
             # everything after the first colon, assuming there are no more colons
