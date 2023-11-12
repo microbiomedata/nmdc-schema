@@ -6,8 +6,6 @@ class MigratorBase:
     """Base class containing properties and methods related to migrating data between schema versions."""
 
     def __init__(self, logger=None):
-        self.forced_prefix = None
-
         # If a logger was specified, use it; otherwise, initialize one and use that.
         self.logger = getLogger(__name__) if logger is None else logger
 
