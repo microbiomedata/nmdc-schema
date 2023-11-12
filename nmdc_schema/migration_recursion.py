@@ -13,7 +13,7 @@ click_log.basic_config(logger)
 
 # todo: log before and after states of migration
 
-curie_pattern = r'^[a-zA-Z_][a-zA-Z0-9_-]*:[a-zA-Z0-9_][a-zA-Z0-9_.-]*$'
+CURIE_PATTERN = r'^[a-zA-Z_][a-zA-Z0-9_-]*:[a-zA-Z0-9_][a-zA-Z0-9_.-]*$'
 
 
 class CurieMigrator:
@@ -36,7 +36,7 @@ class CurieMigrator:
             pass
             # logger.info("curie_string contains newline characters")
         else:
-            match = re.match(curie_pattern, curie_string)
+            match = re.match(CURIE_PATTERN, curie_string)
             return match is not None
 
     def normalize_curie(self, curie_string):

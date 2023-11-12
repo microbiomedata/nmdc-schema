@@ -2,8 +2,7 @@ import re
 from .migrator_base import MigratorBase
 
 
-# TODO: Capitalize the names of this constant, per: https://peps.python.org/pep-0008/#constants
-doi_url_pattern = r"^https?:\/\/[a-zA-Z\.]+\/10\."
+DOI_URL_PATTERN = r"^https?:\/\/[a-zA-Z\.]+\/10\."
 
 
 class Migrator_from_7_7_2_to_7_8_0(MigratorBase):
@@ -22,7 +21,7 @@ class Migrator_from_7_7_2_to_7_8_0(MigratorBase):
     def replace_doi_field_with_award_dois_list_field(self, study: dict) -> dict:
         self.logger.info(f"Starting migration of {study['id']}")
         if "doi" in study:
-            match = re.search(doi_url_pattern, study["doi"]["has_raw_value"])
+            match = re.search(DOI_URL_PATTERN, study["doi"]["has_raw_value"])
             if match:
                 start_index = match.end()
                 as_curie = f"doi:10.{study['doi']['has_raw_value'][start_index:]}"
