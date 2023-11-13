@@ -1597,9 +1597,11 @@ classes:
       - container_size
       - volume
       - filtration_category #to be defined
+      # - used
+      # - pressure
     slot_usage:
       volume:
-        description: The volume of subsample.
+        description: The volume of sample filtered.
 
 #
 # remove conditioning class
@@ -2266,6 +2268,7 @@ enums:
       - ORCID:0000-0002-8683-0050 #Montana Smith
     permissible_values:
       V-bottom conical tube:
+      PTFE 96-well filter plate:
 
   ConditioningSolventEnum:
     description: The solvents that may be used in processing metabolomic samples.
