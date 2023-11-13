@@ -1594,70 +1594,49 @@ classes:
       - separation_method
       - container_size
       - volume
-      - filtration_category #to be defined
+      - filtration_category
       # - used
       # - pressure
     slot_usage:
       volume:
         description: The volume of sample filtered.
 
-#
-# remove conditioning class
-#
-  ConditioningValue:
-    description: >-
-      Holds information relating to a conditioning process. This class is used for filtration
-      activity. Holds the solvent, concentration, container, and volume
-    contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-8683-0050 #Montana Smith
-      - ORCID:0000-0001-9076-6066 #Mark Miller
-      - ORCID:0009-0008-4013-7737 #James Tessmer
-    slots:
-      - conditioning_solvent
-      - concentration
-      - volume
-    slot_usage:
-      volume:
-        description: The volume of solution.
+  #PhaseSeparationProcess:
+  #  description: >-
+  #    The process by which a single solid (liquid) phase separates into two or more new phases.
+  #  contributors:
+  #    - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+  #    - ORCID:0000-0002-8683-0050 #Montana Smith
+  #    - ORCID:0000-0001-9076-6066 #Mark Miller
+  #    - ORCID:0009-0008-4013-7737 #James Tessmer
+  #  is_a: PlannedProcess
+  #  slots:
+  #    - material_component_separation
+  #    - analyte_volume
+  #    - duration
+  #    - value
+  #    - modifier
+  #    - material
+  #    - solvent
+  #    - volume
+  #    - contained_in
+  #    - container_size
+  #    - temperature
+  #  slot_usage:
+  #    volume:
+  #      description: The volume of subsample.
 
-
-  PhaseSeparationProcess:
-    description: >-
-      The process by which a single solid (liquid) phase separates into two or more new phases.
-    contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-8683-0050 #Montana Smith
-      - ORCID:0000-0001-9076-6066 #Mark Miller
-      - ORCID:0009-0008-4013-7737 #James Tessmer
-    is_a: PlannedProcess
-    slots:
-      - material_component_separation
-      - analyte_volume
-      - duration
-      - value
-      - modifier
-      - material
-      - solvent
-      - volume
-      - contained_in
-      - container_size
-      - temperature
-    slot_usage:
-      volume:
-        description: The volume of subsample.
-
-  ModifierValue:
-    description: >-
-      The modification being done to a sample during phase separation.
-    contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-8683-0050 #Montana Smith
-      - ORCID:0000-0001-9076-6066 #Mark Miller
-      - ORCID:0009-0008-4013-7737 #James Tessmer
-    slots:
-      - modifier_substance
-      - concentration
+  #ModifierValue:
+  #  description: >-
+  #    The modification being done to a sample during phase separation.
+  #  contributors:
+  #    - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+  #    - ORCID:0000-0002-8683-0050 #Montana Smith
+  #    - ORCID:0000-0001-9076-6066 #Mark Miller
+  #    - ORCID:0009-0008-4013-7737 #James Tessmer
+  #  slots:
+  #    - modifier_substance
+  #    - concentration
 
   #
   # End of outlined classes
@@ -3007,7 +2986,7 @@ slots:
   separation_method:
     range: ContainerTypeEnum
     description: The method that was used to separate a substance from a solution or mixture.
-  conditioning_type:
+  filtration_category:
     range: string
     description: The type of conditioning applied to a filter, device, etc.
 
@@ -3030,9 +3009,9 @@ slots:
     description: The duration of an activity.
   value:
     range: QuantityValue
-  modifier:
-    range: ModifierValue
-    description: A modifier to a phase separation
+  #modifier:
+  #  range: ModifierValue
+  #  description: A modifier to a phase separation
   material:
     range: string
     description: Material for a phase separation
