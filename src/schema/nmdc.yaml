@@ -1564,7 +1564,7 @@ classes:
     is_a: PlannedProcess
     slots:
       - container_size
-      - container_type
+      - contained_in
       - temperature
       - volume
     slot_usage:
@@ -1578,6 +1578,8 @@ classes:
   FiltrationProcess:
     description: >-
       The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by forcing a carrier gas or liquid through a porous medium.
+    related_mappings:
+      - CHMO:0001640
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
@@ -1585,18 +1587,21 @@ classes:
       - ORCID:0009-0008-4013-7737 #James Tessmer
     is_a: PlannedProcess
     slots:
-      - container_type
-      - filter
-      - material_pore_size
-      - conditioning
-      - analyte_volume
+      - contained_in
+      - filter_material
+      - filter_pore_size
+      - conditionings
       - separation_method
       - container_size
       - volume
+      - filtration_category #to be defined
     slot_usage:
       volume:
         description: The volume of subsample.
 
+#
+# remove conditioning class
+#
   ConditioningValue:
     description: >-
       Holds information relating to a conditioning process. This class is used for filtration
@@ -1607,15 +1612,12 @@ classes:
       - ORCID:0000-0001-9076-6066 #Mark Miller
       - ORCID:0009-0008-4013-7737 #James Tessmer
     slots:
-      - conditioning_type
-      - solvent
+      - conditioning_solvent
       - concentration
       - volume
-      - container_type
-      - container_size
     slot_usage:
       volume:
-        description: The volume of subsample.
+        description: The volume of solution.
 
 
   PhaseSeparationProcess:
@@ -1636,7 +1638,7 @@ classes:
       - material
       - solvent
       - volume
-      - container_type
+      - contained_in
       - container_size
       - temperature
     slot_usage:
@@ -2248,6 +2250,25 @@ enums:
       - ORCID:0000-0002-8683-0050 #Montana Smith
     permissible_values:
       V-bottom conical tube:
+
+  ConditioningSolventEnum:
+    description: The solvents that may be used in processing metabolomic samples.
+    permissible_values:
+      #Deionized Water:
+      Methanol:
+      Sterile water:
+      #chloroform:
+      #ammonium bicarbonate buffer:
+      #methoxyamine:
+      #MeOH/H2O:
+      #MeOH:
+      #Potassium sulfate:
+      #ethanol-free chloroform:
+      #Milli-Q H2O: ->  Sterile water
+      #ultrapure water:
+      #MSTFA:
+      #cloridic acid:
+      #Water:
 
 slots:
 
@@ -2937,7 +2958,7 @@ slots:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
 
-  container_type:
+  contained_in:
     range: ContainerTypeEnum
     description: >-
       A type of container. i.e. test tube, falcon tube, etc.
@@ -2964,14 +2985,16 @@ slots:
 #
 # Outlined slots for 11/10
 #
-  filter:
-    description: "A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained. Filters are made with a variety of materials: cellulose and derivatives, glass fibre, ceramic, synthetic plastics and fibres. Filters may be naturally porous or be made so by mechanical or other means. Membrane/ceramic filters are prepared with highly controlled pore size in a sheet of suitable material such as polyfluoroethylene, polycarbonate or cellulose esters. Nylon mesh is sometimes used for reinforcement. The pores constitute 80–85% of the filter volume commonly and several pore sizes are available for air sampling (0.45−0.8 μm are commonly employed)."
+  filter_material:
+    description: "A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained."
+    comments:
+      - "Filters are made with a variety of materials: cellulose and derivatives, glass fibre, ceramic, synthetic plastics and fibres. Filters may be naturally porous or be made so by mechanical or other means. Membrane/ceramic filters are prepared with highly controlled pore size in a sheet of suitable material such as polyfluoroethylene, polycarbonate or cellulose esters. Nylon mesh is sometimes used for reinforcement. The pores constitute 80–85% of the filter volume commonly and several pore sizes are available for air sampling (0.45−0.8 μm are commonly employed)."
     range: string
-  material_pore_size:
+  filter_pore_size:
     range: QuantityValue
     description: "A quantitative or qualitative measurement of the physical dimensions of the pores in a material."
-  conditioning:
-    range: ConditioningValue
+  conditionings:
+    range: string
     description: "Preliminary treatment of either phase with a suitable solution of the other phase (in the absence of main extractable solute(s)) so that when the subsequent equilibration is carried out changes in the (volume) phase ratio or in the concentrations of other components are minimized."
     multivalued: true
   analyte_volume:
@@ -2984,10 +3007,15 @@ slots:
   conditioning_type:
     range: string
     description: The type of conditioning applied to a filter, device, etc.
-  solvent:
-    range: SolventEnum
+
+
+  conditioning_solvent:
+    range: ConditioningSolventEnum
     description: A solvent used in conditioning
     multivalued: true
+    list_elements_ordered: true
+
+
   concentration:
     range: QuantityValue
     description: The concentration of a substance used in an activity
