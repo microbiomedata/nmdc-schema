@@ -16,7 +16,6 @@ notes:
 imports:
   - core
 
-
 prefixes:
   COG: "https://bioregistry.io/cog:"
   EC: "https://bioregistry.io/eccode:"
@@ -86,6 +85,14 @@ classes:
       A pathway is a sequence of steps/reactions carried out by an organism or community of organisms
     slots:
       - has_part
+
+    slot_usage:
+      has_part:
+        range: Reaction
+        required: true
+        description: >-
+          A pathway can be broken down to a series of reaction step
+
     id_prefixes:
       - KEGG_PATHWAY
       - COG
@@ -238,10 +245,7 @@ slots:
       - biolink:end_interbase_coordinate
   feature_type:
     description: "TODO: Yuri to write"
-  has_part:
-    range: Reaction
-    multivalued: true
-    description: A pathway can be broken down to a series of reaction step
+
   is_balanced:
     range: boolean
   is_diastereoselective:
