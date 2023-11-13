@@ -1,0 +1,4 @@
+filter_material: Whatman paper
+filter_pore_size:
+  has_numeric_value: 20
+  has_unit: um

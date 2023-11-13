@@ -1,0 +1,71 @@
+id: https://w3id.org/nmdc/filtration
+name: NMDC-Filtration
+
+comments:
+  - which of these slots will be searchable in the DataPortal?
+  - which of these slots will be introspected by downstream processes?
+  - are there any other use cases for including a slot?
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  nmdc: https://w3id.org/nmdc/
+
+imports:
+  - linkml:types
+
+default_prefix: nmdc
+default_range: string
+
+classes:
+  Solution:
+    class_uri: nmdc:Solution
+    slots:
+      - has_part
+      - designated_class
+    slot_usage:
+      has_part:
+        range: SolutionComponentEnum
+
+  Filter:
+    class_uri: nmdc:Filter
+    slots:
+      - filter_material
+      - filter_pore_size
+      - designated_class
+
+  FilterConditioning:
+    class_uri: nmdc:FilterConditioning
+    is_a: PlannedProcess
+    slots:
+      - has_input
+      - designated_class
+    slot_usage:
+      has_input:
+        any_of:
+          - range: Solution
+          - range: Filter
+
+  Filtration:
+    class_uri: nmdc:Filtration
+    is_a: PlannedProcess
+    slot_usage:
+      has_part:
+        range: FilterConditioning
+
+slots:
+  filter_material:
+    range: FilterMaterialEnum
+  filter_pore_size:
+    range: QuantityValue
+
+enums:
+  SolutionComponentEnum:
+    permissible_values:
+      - water
+      - methanol
+      - 100 mM potassium sulfate
+  FilterMaterialEnum:
+    permissible_values:
+      - nitrocellulose
+      - Whatman paper
+      - PTFE
