@@ -1,0 +1,46 @@
+id: nmdc:fp-1
+has_input: 
+  - nmdc:biosample-1 #This is an example biosample ID and does not represent a real biosample
+  - nmdc:processed-sample-2
+has_output:
+  - nmdc:5
+container_type:
+  - PTFE 96-well filter plate
+container_size:
+  has_numeric_value: 0.02
+  has_unit: µm
+filter: ""
+material_pore_size: ""
+conditioning:
+  - conditioning_type: pre-condition
+  - solvent: MeOH
+  - solvent: Milli-Q H2O
+  - concentration: ""
+  - volume: ""
+  - container_type: ""
+  - container_size: ""
+analyte_volume: ""
+separation_method: ""
+volume: ""
+
+id: nmdc:fp-2
+has_input: 
+  - nmdc:processed-sample-3
+has_output:
+  - nmdc:7
+container_type: gas
+container_size:
+  has_numeric_value: 9
+  has_unit: psi
+filter: CEREX System 96 processor
+material_pore_size: ""
+conditioning: 
+  - conditioning_type:
+  - solvent: MeOH
+  - concentration: ""
+  - volume: ""
+  - container_type: ""
+  - container_size: ""
+analyte_volume: ""
+separation_method: 
+volume: ""
