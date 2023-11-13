@@ -1,0 +1,30 @@
+id: nmdc:psp-1
+has_input: 
+  - nmdc:biosample-1 #This is an example biosample ID and does not represent a real biosample
+  - nmdc:processed-sample-2
+has_outputs:
+  - nmdc:6
+material_component_separation:
+  - evaporation
+analyte_volume:
+mass:
+  numeric_value: 10
+  unit: g
+duration:
+  numeric_value: 24
+  unit: hours
+used:
+  - drying oven
+value:
+modifier:
+material:
+solvent:
+volume:
+container_type:
+  - weighing tin
+container_size:
+  numeric_value: unknown
+  unit: unknown
+temperature:
+  numeric_value: 100
+  unit: C
