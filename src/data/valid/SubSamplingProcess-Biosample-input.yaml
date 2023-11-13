@@ -1,7 +1,8 @@
+id: nmdc:ssp-1
 has_input: 
-  - nmdc:1
-  - nmdc:2
-has_outputs:
+  - nmdc:biosample-1 #This is an example biosample ID and does not represent a real biosample
+  - nmdc:processed-sample-2
+has_output:
   - nmdc:3
 container_type:
   - Falcon Tube
@@ -14,6 +15,6 @@ volume:
 temperature:
   has_numeric_value: 20
   has_unit: C
-input_mass:
+mass:
   has_numeric_value: 10
   has_unit: g
