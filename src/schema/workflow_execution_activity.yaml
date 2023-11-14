@@ -45,6 +45,19 @@ classes:
       - part_of
       - type
       - version
+    rules:
+      - title: quality_control_report required if has_output is <= 1
+        description: >-
+          If WorkflowExecutionActivity has only one value or less for the has_output slot, then the
+          quality_control_report slot must have a status of fail.
+        preconditions:
+          slot_conditions:
+            has_output:
+              maxiumum_cardinality: 1
+        postconditions:
+          slot_conditions:
+            quality_control_report:
+              status: fail
 
     slot_usage:
       started_at_time:
