@@ -1,0 +1,15 @@
+id: generic:123
+designated_class: nmdc:Filtration
+has_part:
+  - designated_class: nmdc:FilterConditioning
+    filter_input:
+      designated_class: nmdc:Filter
+      filter_material: Whatman paper
+      filter_pore_size:
+        has_numeric_value: 20
+        has_unit: um
+    solution_input:
+      designated_class: nmdc:Solution
+      has_part:
+        - water
+        - 100 mM potassium sulfate

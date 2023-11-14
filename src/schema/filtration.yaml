@@ -35,24 +35,31 @@ classes:
 
   FilterConditioning:
     class_uri: nmdc:FilterConditioning
-    is_a: PlannedProcess
+    #    is_a: PlannedProcess
     slots:
-      - has_input
+      - filter_input
+      - solution_input
       - designated_class
-    slot_usage:
-      has_input:
-        any_of:
-          - range: Solution
-          - range: Filter
+  #    slot_usage:
+  #      has_input:
+  #        any_of:
+  #          - range: Solution
+  #          - range: Filter
 
   Filtration:
     class_uri: nmdc:Filtration
     is_a: PlannedProcess
+    slots:
+      - has_part
     slot_usage:
       has_part:
         range: FilterConditioning
 
 slots:
+  filter_input:
+    range: Filter
+  solution_input:
+    range: Solution
   filter_material:
     range: FilterMaterialEnum
   filter_pore_size:
