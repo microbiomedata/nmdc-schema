@@ -1,4 +1,4 @@
-from .migrator_base import MigratorBase
+from nmdc_schema.migrators.migrator_base import MigratorBase
 
 
 class Migrator_from_8_0_to_8_1(MigratorBase):

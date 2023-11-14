@@ -1,4 +1,4 @@
-from .migrator_base import MigratorBase
+from nmdc_schema.migrators.migrator_base import MigratorBase
 
 
 class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):

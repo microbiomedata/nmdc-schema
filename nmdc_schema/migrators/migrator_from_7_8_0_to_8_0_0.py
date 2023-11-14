@@ -1,5 +1,5 @@
 from typing import List
-from .migrator_base import MigratorBase
+from nmdc_schema.migrators.migrator_base import MigratorBase
 
 
 class Migrator_from_7_8_0_to_8_0_0(MigratorBase):

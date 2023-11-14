@@ -1,5 +1,5 @@
-from .migrator_base import MigratorBase
-from .helpers import load_yaml_asset
+from nmdc_schema.migrators.migrator_base import MigratorBase
+from nmdc_schema.migrators.helpers import load_yaml_asset
 
 
 class Migrator_from_8_1_to_9_0(MigratorBase):

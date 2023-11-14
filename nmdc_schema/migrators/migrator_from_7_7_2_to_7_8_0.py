@@ -1,5 +1,5 @@
 import re
-from .migrator_base import MigratorBase
+from nmdc_schema.migrators.migrator_base import MigratorBase
 
 
 DOI_URL_PATTERN = r"^https?:\/\/[a-zA-Z\.]+\/10\."
