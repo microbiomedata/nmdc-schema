@@ -27,7 +27,7 @@ Here's how you can create a new migrator:
 
 1. Create a new migrator module based upon the example one.
    > In this example, I'll create a migrator that can be used to migrate data from schema version `1.2.3` to schema
-   version `1.2.4`.
+   > version `1.2.4`.
    ```shell
    # Run from the same directory as this `README.md` file:
    cp migrator_from_A_B_C_to_X_Y_Z.py migrator_from_1_2_3_to_1_2_4.py
