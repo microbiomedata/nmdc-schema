@@ -19,7 +19,7 @@ default_range: string
 classes:
 
   Activity:
-    description: "a provence-generating activity"
+    description: "a provenance-generating activity"
     slots:
       - id
       - name
