@@ -88,10 +88,11 @@ def load_yaml_file(filename):
 @click.option("--salvage-prefix", required=True, type=str,
               help="A prefix, defined in the schema, to force for each value that the schema indicates is a CURIE but that has no prefix")
 @click.option("--migrator-name", type=str, multiple=True,
-              help="The name of a migrator class (i.e. a class that inherits from `MigratorBase`) that you want to use "
-                   "to migrate data.\n\nThose classes are defined in `nmdc_schema/migrators/` and their names begin "
-                   "with `Migrator_`. If you specify this option multiple times, the specified classes will be used in "
-                   "the order specified.")
+              help="The name of a migrator class that you want to use to migrate data. If you specify this option "
+                   "multiple times, the specified migrator classes will be used in the order specified.\n\n"
+                   "A migrator class is a class that inherits from `MigratorBase`. "
+                   "Migrator classes are defined in `nmdc_schema/migrators/` and their names begin with capital "
+                   "`Migrator_` (as opposed to lowercase `migrator_`, which refers to a module).")
 def main(schema_path, input_path, output_path, salvage_prefix, migrator_name):
     """
     Generates a data file that conforms to a different schema version than the input data file does.
