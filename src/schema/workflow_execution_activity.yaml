@@ -54,7 +54,7 @@ classes:
         preconditions:
           slot_conditions:
             has_output:
-              maxiumum_cardinality: 1
+              value_presence: ABSENT
         postconditions:
           slot_conditions:
             quality_control_report:
