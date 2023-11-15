@@ -1,15 +1,30 @@
 id: generic:123
 designated_class: nmdc:Filtration
+pressure_applied:
+  has_numeric_value: 1
+  has_unit: bar
 has_part:
   - designated_class: nmdc:FilterConditioning
+    pressure_applied:
+      has_numeric_value: 3
+      has_unit: bar
     filter_input:
       designated_class: nmdc:Filter
       filter_material: Whatman paper
       filter_pore_size:
         has_numeric_value: 20
         has_unit: um
-    solution_input:
-      designated_class: nmdc:Solution
-      has_part:
-        - water
-        - 100 mM potassium sulfate
+    solution_inputs:
+      - designated_class: nmdc:Solution
+        has_part:
+          - water
+          - 100 mM potassium sulfate
+        volume:
+          has_numeric_value: 100
+          has_unit: mL
+      - designated_class: nmdc:Solution
+        has_part:
+          - methanol
+        volume:
+          has_numeric_value: 50
+          has_unit: mL

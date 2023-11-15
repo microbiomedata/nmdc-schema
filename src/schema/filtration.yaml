@@ -22,9 +22,14 @@ classes:
     slots:
       - has_part
       - designated_class
+      - volume
     slot_usage:
       has_part:
         range: SolutionComponentEnum
+      volume:
+        description: The volume of the solution that was used in some process
+    comments:
+      - has_part is a multivalued slot, despite it's singular name
 
   Filter:
     class_uri: nmdc:Filter
@@ -32,14 +37,20 @@ classes:
       - filter_material
       - filter_pore_size
       - designated_class
+    comments:
+      - this is like a MaterialEntity without an id
 
   FilterConditioning:
     class_uri: nmdc:FilterConditioning
-    #    is_a: PlannedProcess
     slots:
       - filter_input
-      - solution_input
+      - solution_inputs
       - designated_class
+      - pressure_applied
+    comments:
+      - this is like a PlannedProcess without an id
+      - could limit slot growth by allowing this any of range on has_input
+      - Solution.volume may not be worth capturing for filter conditioning
   #    slot_usage:
   #      has_input:
   #        any_of:
@@ -51,18 +62,31 @@ classes:
     is_a: PlannedProcess
     slots:
       - has_part
+      - pressure_applied
     slot_usage:
       has_part:
         range: FilterConditioning
+    comments:
+      - has_part is a multivalued slot, despite it's singular name
 
 slots:
   filter_input:
+    description: The filter that was used in some process
+    comments:
+      - not to be confused with MIXS:0000412 or MIXS:0000096 ?
     range: Filter
-  solution_input:
+    inlined: true
+  solution_inputs:
+    description: The solution(s) that were used in some process
     range: Solution
+    multivalued: true
+    list_elements_ordered: true
+    inlined_as_list: true
   filter_material:
     range: FilterMaterialEnum
   filter_pore_size:
+    range: QuantityValue
+  pressure_applied:
     range: QuantityValue
 
 enums:
@@ -71,8 +95,13 @@ enums:
       - water
       - methanol
       - 100 mM potassium sulfate
+    comments:
+      - needs PV meanings
+      - do we assume that, if all components are only in the style <concentration/substance>, that the remainder of the solution is some kind of water?
   FilterMaterialEnum:
     permissible_values:
       - nitrocellulose
       - Whatman paper
       - PTFE
+    comments:
+      - needs PV meanings
