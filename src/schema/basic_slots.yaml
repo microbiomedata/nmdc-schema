@@ -130,6 +130,30 @@ slots:
   biomaterial_purity:
     range: QuantityValue
 
+  failure_what:
+    domain: QualityControlReport
+    range: FailureEnum
+    description: >-
+      Provides a summary about what caused a lab or workflow process to fail 
+      (ie Low read count from a sequencer, malformed fastq files, etc)
+
+  failure_where:
+    domain: QualityControlReport
+    range: 
+      - PlannedProcess
+      - WorkflowExecutionActivity
+    description: >- 
+      Describes the nmdc schema class that corresonds to where the failure occurred. 
+      Most commonly this would be the same as Class that generated the results. 
+      If the assembly size was too small to proceed to annotation failure_where would be MetagenomeAssembly.
+
+  comment:
+    domain: QualityControlReport
+    range: string
+    description: >-
+      Slot to store additional comments about laboratory or workflow output. For workflow output
+      it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).
+
   instrument_name:
     description: >-
       The name of the instrument that was used for processing the sample.
