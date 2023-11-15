@@ -130,15 +130,19 @@ slots:
   biomaterial_purity:
     range: QuantityValue
 
-  failure_what:
+  failure_categorization:
     domain: QualityControlReport
+    multivalued: true    
+ 
+  failure_what:
+    domain: FailureCategorization
     range: FailureEnum
     description: >-
       Provides a summary about what caused a lab or workflow process to fail 
       (ie Low read count from a sequencer, malformed fastq files, etc)
 
   failure_where:
-    domain: QualityControlReport
+    domain: FailureCategorization
     range: 
       - PlannedProcess
       - WorkflowExecutionActivity
