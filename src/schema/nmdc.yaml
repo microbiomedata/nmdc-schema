@@ -1613,6 +1613,7 @@ classes:
       - target_gene
       - target_subfragment
       - type
+      - quality_control_report
 
     slot_usage:
       id:
