@@ -57,6 +57,26 @@ class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
               --> As part of creating a new "migration" class, you will
                   typically implement one or more "transformation" functions.
                   You will also add them to the "agenda" of the class.
+
+        TUTORIAL: The remaining part of this comment consists of several "doctests".
+                  You can read more about doctests in the official Python documentation:
+                  https://docs.python.org/3/library/doctest.html
+
+                  Each doctest consists of (a) a snippet of Python code that calls this
+                  function, followed on the next line by (b) whatever the author of the
+                  test expects this function to return, if anything.
+
+                  People can then read and run those doctests in order to learn about
+                  what this function does / how this function behaves.
+
+              --> As part of implementing a "transformation" function, you will
+                  typically write a few doctests in the docstring of that function.
+
+        >>> mig = Migrator_from_A_B_C_to_X_Y_Z()  # creates a class instance on which we can call this method (function)
+        >>> mig.allow_multiple_names({'id': 123, 'name': 'My project'})  # test: transfers existing name to `names` list
+        {'id': 123, 'names': ['My project']}
+        >>> mig.allow_multiple_names({'id': 123, 'name': 'My project', 'foo': 'bar'})  # test: preserves other keys
+        {'id': 123, 'foo': 'bar', 'names': ['My project']}
         """
 
         # optional log message
