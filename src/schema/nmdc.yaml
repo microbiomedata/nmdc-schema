@@ -2224,7 +2224,7 @@ enums:
     comments:
       - See especially the resourceTypeGeneral section of the DataCite PDF, on pp48-53 as of 2023-07-19
 
-  ContainerTypeEnum:
+  ContainedInEnum:
     description: The permitted types of containers used in processing metabolomic samples.
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
@@ -2941,7 +2941,7 @@ slots:
       - ORCID:0000-0002-8683-0050 #Montana Smith
 
   contained_in:
-    range: ContainerTypeEnum
+    range: ContainedInEnum
     description: >-
       A type of container. i.e. test tube, falcon tube, etc.
     contributors:
@@ -2979,12 +2979,12 @@ slots:
     range: string
     description: "Preliminary treatment of either phase with a suitable solution of the other phase (in the absence of main extractable solute(s)) so that when the subsequent equilibration is carried out changes in the (volume) phase ratio or in the concentrations of other components are minimized."
     multivalued: true
-  analyte_volume:
-    range: QuantityValue
-    description: >-
-      The volume of an analyte used, stored, or prepared.
+  #analyte_volume:
+  #  range: QuantityValue
+  #  description: >-
+  #    The volume of an analyte used, stored, or prepared.
   separation_method:
-    range: ContainerTypeEnum
+    range: ContainedInEnum
     description: The method that was used to separate a substance from a solution or mixture.
   filtration_category:
     range: string
