@@ -34,4 +34,5 @@ jobs:
       - run: tdb2.tdbquery  --loc=tdbcontent --query=assets/sparql/tdb-graph-list.rq
       - uses: actions/upload-artifact@v3
         with:
+          name: mongo_as_nmdc_database_cuire_repaired.ttl
           path: local/mongo_as_nmdc_database_cuire_repaired.ttl
