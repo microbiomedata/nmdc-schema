@@ -32,3 +32,6 @@ jobs:
       - run: tdb2.tdbloader --loc=tdbcontent --graph=mongodb://mongo-loadbalancer.nmdc.production.svc.spin.nersc.gov:27017 local/mongo_as_nmdc_database_cuire_repaired.ttl
       - run: tdb2.tdbquery  --loc=tdbcontent --query=assets/sparql/tdb-test.rq
       - run: tdb2.tdbquery  --loc=tdbcontent --query=assets/sparql/tdb-graph-list.rq
+      - uses: actions/upload-artifact@v3
+        with:
+          path: local/mongo_as_nmdc_database_cuire_repaired.ttl
