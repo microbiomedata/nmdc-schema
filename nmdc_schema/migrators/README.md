@@ -33,9 +33,56 @@ Here's how you can create a new migrator:
    cp migrator_from_A_B_C_to_X_Y_Z.py migrator_from_1_2_3_to_1_2_4.py
    ```
 2. Customize the migrator module according to the instructions in the example migrator module.
-   - Update the class name (to `Migrator_from_1_2_3_to_1_2_4`)
-   - Implement the transformation functions (ensure each one accepts and returns a Python dictionary)
-   - Add the transformation functions to the agenda
-   > TODO: Replace this step with more detailed instructions; possibly enough that we can replace the current example
-   > migrator module with one that lacks tutorial comments and is more ready-to-populate.
+    - Update the class name:
+      ```diff
+      - class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
+      + class Migrator_from_1_2_3_to_1_2_4(MigratorBase):
+      ```
+    - Remove the definition of the _example_ "transformation" function:
+      ```diff
+      - def allow_multiple_names(self, study: dict) -> dict:
+      -     ...
+      -
+      -     # Return the transformed dictionary.
+      -     return study
+      ```
+    - Remove the _example_ "transformation" function from the agenda:
+      ```diff
+        self.agenda = dict(
+      -     study_set=[self.allow_multiple_names],
+        )      
+      ```
+    - Define the "transformation" function(s) that are part of this migration. Ensure each "transformation" function:
+        - **Accepts** a Python `dict`
+            - For example:
+                ```diff
+                + def add_name(self, person: dict) -> dict:
+                ```
+        - Has a **docstring** that summarizes what the function does (optional)
+            - For example:
+              ```diff
+                """
+              + Adds a `name` key and sets its value to "Anonymous".
+              ```
+        - Has at least one **[doctest](https://docs.python.org/3/library/doctest.html)** that demonstrates what the function does (optional)
+            - For example:
+              ```diff
+              + >>> migrator = Migrator_from_1_2_3_to_1_2_4()
+              + >>> migrator.add_name({'id': 123})
+              + {'id': 123, 'name': 'Anonymous'}
+                """
+              ```
+        - **Returns** a Python `dict`
+            - For example:
+              ```diff
+              + return person
+              ```
+    - Add the "transformation" function(s) to the agenda:
+        - For example:
+          ```diff
+            self.agenda = dict(
+          +     person_set=[self.add_name, self.convert_age_into_years],
+          +     lab_set=[self.add_country_code]
+            )
+          ```
 3. Done.
