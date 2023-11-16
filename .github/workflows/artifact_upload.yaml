@@ -15,3 +15,8 @@ jobs:
       - name: Install library
         run: poetry install --no-interaction
       - run: make squeaky-clean all test validate-filtered-request-all validate-polymorphic
+      - run: date > date.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          name: date file
+          path: date.txt
