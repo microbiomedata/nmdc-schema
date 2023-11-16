@@ -81,8 +81,7 @@ Here's how you can create a new migrator:
         - For example:
           ```diff
             self.agenda = dict(
-          +     person_set=[self.add_name, self.convert_age_into_years],
-          +     lab_set=[self.add_country_code]
+          +     person_set=[self.add_name],
             )
           ```
 3. Done.
