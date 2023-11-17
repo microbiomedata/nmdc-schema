@@ -1,0 +1,12 @@
+### TO BE EDITED ###
+#id: nmdc:fp-2
+#has_input: 
+#  - nmdc:processed-sample-3
+#has_output:
+#  - nmdc:7
+#separation_method: gas
+#filtration_category: pressure
+#used: CEREX System 96 processor
+#pressure:
+#  has_numeric_value: 9
+#  has_unit: psi
