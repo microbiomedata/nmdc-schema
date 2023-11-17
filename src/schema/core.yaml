@@ -63,6 +63,15 @@ types:
       - qud:Unit
       - UO:0000000
 
+enums:
+  DeviceEnum:
+    permissible_values:
+      Orbital Shaker:
+      Thermomixer:
+      Vortex:
+      Agitation plunger:
+      Drying oven:
+
 classes:
 
   NamedThing:
@@ -73,6 +82,48 @@ classes:
       - name
       - description
       - alternative_identifiers
+
+  InstrumentMixin:
+    abstract: true
+    aliases:
+      - device
+    exact_mappings:
+      - OBI:0000485
+    slots:
+      - vendor
+      - model
+      - name
+    slot_usage:
+      name:
+        range: DeviceEnum
+    todos:
+      add a distinction between preparative instruments (like mixers) vs data generating instruments (like a Lc/MS platform)
+
+
+  DataGeneratingInstrument:
+    description: An identified thing that is capable of generating scientific data
+    comments:
+      - Likely a capital investment. One would want to say "I used this serial number"
+    todos:
+      - add examples, like a Thermo Electron Orbitrap
+    is_a: NamedThing
+    mixins:
+      - InstrumentMixin
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+
+  AnonymousInstrument:
+    description: a tool, device or supplies-like thing that is used in a research setting but does not have a meaningful identifier
+    comments:
+      - this is more likely to be a low cost, interchangeable or even disposable item
+      - one would talk about the model number or broad category
+    mixins:
+      - InstrumentMixin
+
 
   MaterialEntity:
     abstract: true
@@ -90,7 +141,7 @@ classes:
       - dna_absorb1
       - dna_concentration
       - external_database_identifiers
-      - nucleic_acid_concentration
+    #      - nucleic_acid_concentration
     slot_usage:
       id:
         required: true
@@ -160,12 +211,12 @@ classes:
       type:
         description: An optional string that specified the type of object.
 
-  InstrumentValue:
-    is_a: AttributeValue
-    slots:
-      - has_unit
-      - has_numeric_value
-      - instrument_name
+  #  InstrumentValue:
+  #    is_a: AttributeValue
+  #    slots:
+  #      - has_unit
+  #      - has_numeric_value
+  #      - instrument_name
 
 
   QuantityValue:
@@ -249,20 +300,20 @@ classes:
       - total_bases
       - type
 
-  Instrument:
-    is_a: NamedThing
-    aliases:
-      - device
-    description: >-
-      A material entity that is designed to perform a function in a scientific investigation, but is not a reagent[OBI].
-    exact_mappings:
-      - OBI:0000485
-    slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
+  #  Instrument:
+  #    is_a: NamedThing
+  #    aliases:
+  #      - device
+  #    description: >-
+  #      A material entity that is designed to perform a function in a scientific investigation, but is not a reagent[OBI].
+  #    exact_mappings:
+  #      - OBI:0000485
+  #    slot_usage:
+  #      id:
+  #        required: true
+  #        structured_pattern:
+  #          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+  #          interpolated: true
 
   MetaboliteQuantification:
     description: This is used to link a metabolomics analysis workflow to a specific metabolite
