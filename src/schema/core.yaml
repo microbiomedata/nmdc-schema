@@ -63,6 +63,15 @@ types:
       - qud:Unit
       - UO:0000000
 
+enums:
+  DeviceEnum:
+    permissible_values:
+      Orbital Shaker:
+      Thermomixer:
+      Vortex:
+      Agitation plunger:
+      Drying oven:
+
 classes:
 
   NamedThing:
@@ -83,11 +92,20 @@ classes:
     slots:
       - vendor
       - model
+      - name
+    slot_usage:
+      name:
+        range: DeviceEnum
     todos:
       add a distinction between preparative instruments (like mixers) vs data generating instruments (like a Lc/MS platform)
 
 
-  NamedInstrument:
+  DataGeneratingInstrument:
+    description: An identified thing that is capable of generating scientific data
+    comments:
+      - Likely a capital investment. One would want to say "I used this serial number"
+    todos:
+      - add examples, like a Thermo Electron Orbitrap
     is_a: NamedThing
     mixins:
       - InstrumentMixin
@@ -99,6 +117,10 @@ classes:
           interpolated: true
 
   AnonymousInstrument:
+    description: a tool, device or supplies-like thing that is used in a research setting but does not have a meaningful identifier
+    comments:
+      - this is more likely to be a low cost, interchangeable or even disposable item
+      - one would talk about the model number or broad category
     mixins:
       - InstrumentMixin
 
