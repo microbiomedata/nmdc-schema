@@ -1600,8 +1600,7 @@ classes:
         description: The volume of sample filtered.
       instrument_used:
         range: anonymousinstrument #double check after pulling
-      is_pressurized:
-        range: boolean
+      
 
 
 
@@ -2988,3 +2987,6 @@ slots:
   modifier_substance:
     range: string
     description: The type of modification being done
+  is_pressurized:
+        range: boolean
+        description: Whether or not pressure was applied to a thing or process.
