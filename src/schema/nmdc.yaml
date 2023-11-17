@@ -1683,7 +1683,7 @@ classes:
     class_uri: prov:Association
 
 enums:
-InstrumentModelEnum:
+  InstrumentModelEnum:
     permissible_values:
       Orbitrap:
       VortexGenie2:
