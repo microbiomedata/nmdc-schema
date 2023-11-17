@@ -1573,10 +1573,6 @@ classes:
       volume:
         description: The volume of subsample.
 
-  #
-  # Below classes set up for work on Friday 11/10
-  # Outlines of FiltrationProcess and PhaseSeparationProcess, slots, and supporting classes
-  #
   FiltrationProcess:
     description: >-
       The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by forcing a carrier gas or liquid through a porous medium.
@@ -1603,46 +1599,7 @@ classes:
       volume:
         description: The volume of sample filtered.
 
-  #PhaseSeparationProcess:
-  #  description: >-
-  #    The process by which a single solid (liquid) phase separates into two or more new phases.
-  #  contributors:
-  #    - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-  #    - ORCID:0000-0002-8683-0050 #Montana Smith
-  #    - ORCID:0000-0001-9076-6066 #Mark Miller
-  #    - ORCID:0009-0008-4013-7737 #James Tessmer
-  #  is_a: PlannedProcess
-  #  slots:
-  #    - material_component_separation
-  #    - analyte_volume
-  #    - duration
-  #    - value
-  #    - modifier
-  #    - material
-  #    - solvent
-  #    - volume
-  #    - contained_in
-  #    - container_size
-  #    - temperature
-  #  slot_usage:
-  #    volume:
-  #      description: The volume of subsample.
 
-  #ModifierValue:
-  #  description: >-
-  #    The modification being done to a sample during phase separation.
-  #  contributors:
-  #    - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-  #    - ORCID:0000-0002-8683-0050 #Montana Smith
-  #    - ORCID:0000-0001-9076-6066 #Mark Miller
-  #    - ORCID:0009-0008-4013-7737 #James Tessmer
-  #  slots:
-  #    - modifier_substance
-  #    - concentration
-
-  #
-  # End of outlined classes
-  #
 
   OmicsProcessing:
     aliases:
@@ -2985,9 +2942,6 @@ slots:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
 
-#
-# Outlined slots for 11/10
-#
   filter_material:
     description: "A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained."
     comments:
@@ -3000,10 +2954,6 @@ slots:
     range: string
     description: "Preliminary treatment of either phase with a suitable solution of the other phase (in the absence of main extractable solute(s)) so that when the subsequent equilibration is carried out changes in the (volume) phase ratio or in the concentrations of other components are minimized."
     multivalued: true
-  #analyte_volume:
-  #  range: QuantityValue
-  #  description: >-
-  #    The volume of an analyte used, stored, or prepared.
   separation_method:
     range: ContainedInEnum
     description: The method that was used to separate a substance from a solution or mixture.
@@ -3030,9 +2980,6 @@ slots:
     description: The duration of an activity.
   value:
     range: QuantityValue
-  #modifier:
-  #  range: ModifierValue
-  #  description: A modifier to a phase separation
   material:
     range: string
     description: Material for a phase separation
