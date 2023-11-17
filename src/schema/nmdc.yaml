@@ -1593,8 +1593,8 @@ classes:
       - container_size
       - volume
       - filtration_category
-      # - used
-      # - pressure
+      - instrument_used
+      - is_pressurized
     slot_usage:
       volume:
         description: The volume of sample filtered.
