@@ -1599,7 +1599,7 @@ classes:
       volume:
         description: The volume of sample filtered.
       instrument_used:
-        range: anonymousinstrument #double check after pulling
+        range: AnonymousInstrument
       
 
 
