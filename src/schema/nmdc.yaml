@@ -2229,25 +2229,6 @@ enums:
       #cloridic acid:
       #Water:
 
-  ConditioningSolventEnum:
-    description: The solvents that may be used in processing metabolomic samples.
-    permissible_values:
-      #Deionized Water:
-      Methanol:
-      Sterile water:
-      #chloroform:
-      #ammonium bicarbonate buffer:
-      #methoxyamine:
-      #MeOH/H2O:
-      #MeOH:
-      #Potassium sulfate:
-      #ethanol-free chloroform:
-      #Milli-Q H2O: ->  Sterile water
-      #ultrapure water:
-      #MSTFA:
-      #cloridic acid:
-      #Water:
-
 slots:
   model:
     range: InstrumentModelEnum
