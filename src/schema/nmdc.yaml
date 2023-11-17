@@ -2877,13 +2877,15 @@ slots:
 
   bulk_elect_conductivity:
     comments:
-      - Compatible with EMSL metadata
+      - Provide the value output of the field instrument.
     description: 
-      Electrical conductivity is a measure of the bulk soil ability to carry electric 
-      current, which is mostly dictated by the chemistry of and amount of soil water. 
-      Provide the value output of the field instrument.
+      Electrical conductivity is a measure of the ability to carry electric 
+      current, which is mostly dictated by the chemistry of and amount of water. 
     title: bulk electrical conductivity
     examples:
-      - value: 0.017 mS/cm
-    is_a: attribute
+      value:  
+        has_raw_value: 0.017 mS/cm
+        has_numeric_value: 0.017
+        has_unit: mS/cm
+      description: The conductivity measurement was 0.017 millisiemens per centimeter.
     range: QuantityValue
