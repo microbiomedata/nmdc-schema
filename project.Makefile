@@ -79,7 +79,11 @@ local/mixs_regen/slots_associated_with_biosample_omics_processing.tsv
 
 local/mixs_regen/import_slots_regardless_gen.tsv: \
 local/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv
-	$(RUN) generate-import-slots-regardless --input_file $< --output_file $@
+	$(RUN) generate-import-slots-regardless \
+		--input_file $< \
+		--mixs-schema-url "https://raw.githubusercontent.com/microbiomedata/mixs/1da849346a80b717810a02d7c8ed74a22bcd84de/model/schema/mixs.yaml" \
+		--output_file $@ \
+		--slots-tsv assets/mixs_slots_used_in_schema.tsv
 
 local/mixs_regen/mixs_subset.yaml: local/mixs_regen/import_slots_regardless_gen.tsv
 	$(RUN) do_shuttle \
