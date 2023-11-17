@@ -29,7 +29,7 @@ types:
     description: >-
       A CURIE representing an external identifier
     see_also:
-      - https://microbiomedata.github.io/nmdc-schema/identifiers.html
+      - https://microbiomedata.github.io/nmdc-schema/identifiers/
     pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
 
 slots:
