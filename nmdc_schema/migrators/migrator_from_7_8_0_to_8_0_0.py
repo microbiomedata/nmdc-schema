@@ -43,14 +43,14 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
         ['gold:prefix_was_uppercase']
         >>> m.standardize_letter_casing_of_gold_identifiers(['gold:prefix_was_lowercase'])
         ['gold:prefix_was_lowercase']
-
-        Note: If the identifier contains more than one colon, everything after the second
-              colon will be discarded.
-
         >>> m.standardize_letter_casing_of_gold_identifiers(['Gold:prefix_remains_mixed_case'])
         ['Gold:prefix_remains_mixed_case']
-        >>> m.standardize_letter_casing_of_gold_identifiers(['GOLD:truncates_identifier:at_second_colon'])
-        ['gold:truncates_identifier']
+
+        Note: If the identifier contains more than one colon, everything after and including
+              the second colon will be discarded.
+
+        >>> m.standardize_letter_casing_of_gold_identifiers(['GOLD:preserves_this:but_not_this'])
+        ['gold:preserves_this']
         """
 
         standardized_identifiers = []
