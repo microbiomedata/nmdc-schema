@@ -19,17 +19,38 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
         )
 
     def rename_sample_mass_field(self, extraction: dict) -> dict:
+        r"""
+        Renames the `sample_mass` field to `input_mass`.
+
+        >>> m = Migrator_from_7_8_0_to_8_0_0()
+        >>> m.rename_sample_mass_field({'id': 123})  # no `sample_mass` field
+        {'id': 123}
+        >>> m.rename_sample_mass_field({'id': 123, 'sample_mass': 456})  # test: renames field and preserves value
+        {'id': 123, 'input_mass': 456}
+        """
+
         self.logger.info(f"Starting migration of {extraction['id']}")
         if "sample_mass" in extraction:
             extraction["input_mass"] = extraction.pop("sample_mass")
         return extraction
 
     def standardize_letter_casing_of_gold_identifiers(self, identifiers: List[str]) -> List[str]:
-        """
+        r"""
         Replaces the prefix `GOLD:` with `gold:` in the list of identifiers.
+
+        >>> m = Migrator_from_7_8_0_to_8_0_0()
+        >>> m.standardize_letter_casing_of_gold_identifiers(['GOLD:prefix_was_uppercase'])
+        ['gold:prefix_was_uppercase']
+        >>> m.standardize_letter_casing_of_gold_identifiers(['gold:prefix_was_lowercase'])
+        ['gold:prefix_was_lowercase']
 
         Note: If the identifier contains more than one colon, everything after the second
               colon will be discarded.
+
+        >>> m.standardize_letter_casing_of_gold_identifiers(['Gold:prefix_remains_mixed_case'])
+        ['Gold:prefix_remains_mixed_case']
+        >>> m.standardize_letter_casing_of_gold_identifiers(['GOLD:truncates_identifier:at_second_colon'])
+        ['gold:truncates_identifier']
         """
 
         standardized_identifiers = []
@@ -52,6 +73,18 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
         return standardized_identifiers
 
     def standardize_letter_casing_of_gold_biosample_identifiers(self, biosample: dict) -> dict:
+        r"""
+        Converts uppercase "GOLD:" prefixes in `gold_biosample_identifiers` values into lowercase "gold:".
+
+        >>> m = Migrator_from_7_8_0_to_8_0_0()
+        >>> m.standardize_letter_casing_of_gold_biosample_identifiers({'id': 123})
+        {'id': 123, 'gold_biosample_identifiers': []}
+        >>> m.standardize_letter_casing_of_gold_biosample_identifiers(
+        ...     {'id': 123, 'gold_biosample_identifiers': ['GOLD:foo', 'gold:bar']}
+        ... )
+        {'id': 123, 'gold_biosample_identifiers': ['gold:foo', 'gold:bar']}
+        """
+
         field_name = "gold_biosample_identifiers"
         if field_name in biosample and biosample[field_name]:
             biosample[field_name] = self.standardize_letter_casing_of_gold_identifiers(biosample[field_name])
@@ -60,6 +93,18 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
         return biosample
 
     def standardize_letter_casing_of_gold_sequencing_project_identifiers(self, omics_processing: dict) -> dict:
+        r"""
+        Converts uppercase "GOLD:" prefixes in `gold_sequencing_project_identifiers` values into lowercase "gold:".
+
+        >>> m = Migrator_from_7_8_0_to_8_0_0()
+        >>> m.standardize_letter_casing_of_gold_sequencing_project_identifiers({'id': 123})
+        {'id': 123, 'gold_sequencing_project_identifiers': []}
+        >>> m.standardize_letter_casing_of_gold_sequencing_project_identifiers(
+        ...     {'id': 123, 'gold_sequencing_project_identifiers': ['GOLD:foo', 'gold:bar']}
+        ... )
+        {'id': 123, 'gold_sequencing_project_identifiers': ['gold:foo', 'gold:bar']}
+        """
+
         field_name = "gold_sequencing_project_identifiers"
         if field_name in omics_processing and omics_processing[field_name]:
             omics_processing[field_name] = self.standardize_letter_casing_of_gold_identifiers(omics_processing[field_name])
@@ -68,6 +113,18 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
         return omics_processing
 
     def standardize_letter_casing_of_gold_study_identifier(self, study: dict) -> dict:
+        r"""
+        Converts uppercase "GOLD:" prefixes in `gold_study_identifiers` values into lowercase "gold:".
+
+        >>> m = Migrator_from_7_8_0_to_8_0_0()
+        >>> m.standardize_letter_casing_of_gold_study_identifier({'id': 123})
+        {'id': 123, 'gold_study_identifiers': []}
+        >>> m.standardize_letter_casing_of_gold_study_identifier(
+        ...     {'id': 123, 'gold_study_identifiers': ['GOLD:foo', 'gold:bar']}
+        ... )
+        {'id': 123, 'gold_study_identifiers': ['gold:foo', 'gold:bar']}
+        """
+
         field_name = "gold_study_identifiers"
         if field_name in study and study[field_name]:
             study[field_name] = self.standardize_letter_casing_of_gold_identifiers(study[field_name])
