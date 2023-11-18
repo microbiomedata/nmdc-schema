@@ -74,7 +74,7 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
 
     def standardize_letter_casing_of_gold_biosample_identifiers(self, biosample: dict) -> dict:
         r"""
-        Converts uppercase "GOLD:" prefixes in `gold_biosample_identifiers` values into lowercase "gold:".
+        Converts uppercase "GOLD:" prefixes into lowercase "gold:" prefixes, in `gold_biosample_identifiers` values.
 
         >>> m = Migrator_from_7_8_0_to_8_0_0()
         >>> m.standardize_letter_casing_of_gold_biosample_identifiers({'id': 123})
