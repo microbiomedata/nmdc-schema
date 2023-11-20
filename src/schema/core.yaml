@@ -674,6 +674,7 @@ slots:
   websites:
     range: string
     multivalued: true
+    pattern: "^https:\/\/(?!.*doi).*$"
     description: A list of websites that are associated with the entity.
 
   highest_similarity_score:
