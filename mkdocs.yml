@@ -10,15 +10,11 @@ plugins:
   - search
   - mermaid2
 nav:
-  #  - Home: home.md
   - About: about.md
-  - Home: home.md
-  - NMDC Schema: index.md
+  - Identifiers in NMDC: identifiers.md
   - NMDC Metadata Standards Documentation: Metadata_Documentation_Overview.md
   - NMDC Schema Validation: schema-validation.md
-  - Identifiers in NMDC: identifiers.md
-  - Table of Identifier Typecodes for each Class: typecode_table.md
-  - Credits: credits.md
+  - NMDC Schema: index.md
 
 site_url: https://microbiomedata.github.io/nmdc-schema
 repo_url: https://github.com/microbiomedata/nmdc-schema
