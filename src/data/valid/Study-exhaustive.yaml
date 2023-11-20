@@ -38,6 +38,9 @@ associated_dois:
   - doi_value: doi:10.1126/science.1234545
     doi_provider: jgi
     doi_category: award_doi
+  - doi:value: doi:10.48321/D1Z60Q
+    doi_category: data_management_plan_doi
+    doi_provider: gsc
 title: Sample Exhaustive Biosample instance. Although all of these values should pass
   validation, that does not mean that any Biosample of any type would necessarily
   have this particular combination of values.
