@@ -2,7 +2,7 @@
 
 When deprecating schema elements, it is a two step process:
 
-1. For one release cycle, the schema will include deprecation annotations to the element's definition and commenting out any usages of the slot (e.g. in a class, domain, range, etc) including a deprecation date (e.g. `# doi_awards deprecated on 11/12/2023` in a class's usage)
+1. For one release cycle, the schema will include deprecation annotations to the element's definition and commenting out any usages of the slot (e.g. in a class, domain, range, etc) including a deprecation date that conforms to iso8601/international dates (e.g. `# doi_awards deprecated on 2023-11-12` in a class's usage)
 2. Prior to a new release, fully removing the element from the schema including all commented out portions of the element in addition to the element itself. 
 
 
