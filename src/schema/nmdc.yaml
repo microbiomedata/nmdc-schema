@@ -2159,7 +2159,7 @@ enums:
           - GSC
           - Genomic Standards Consortium
         title: GSC
-        
+
 
   DoiCategoryEnum:
     permissible_values:
@@ -2782,6 +2782,7 @@ slots:
           doi_category: publication_doi
         - doi: doi:10.48321/D1Z60Q
           doi_category: data_management_plan_doi
+          doi_provider: gsc
       description: Provides a list of two DOIs; specifically, an EMSL award DOI and a publication DOI.
 
   doi_value:
