@@ -136,7 +136,7 @@ slots:
  
   failure_what:
     domain: FailureCategorization
-    range: FailureEnum
+    range: FailureWhatEnum
     description: >-
       Provides a summary about what caused a lab or workflow process to fail 
       (ie Low read count from a sequencer, malformed fastq files, etc)
