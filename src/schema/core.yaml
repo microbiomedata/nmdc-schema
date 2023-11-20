@@ -676,7 +676,7 @@ slots:
     multivalued: true
     pattern: "^https:\/\/(?!.*doi).*$"
     description: A list of websites that are associated with the entity.
-    comment: DOIs should be included as websites. Instead, use the associated_dois slot.
+    comments: DOIs should be included as websites. Instead, use the associated_dois slot.
 
   highest_similarity_score:
     todos:
