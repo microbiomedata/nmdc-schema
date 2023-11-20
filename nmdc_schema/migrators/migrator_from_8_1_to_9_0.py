@@ -24,7 +24,7 @@ class Migrator_from_8_1_to_9_0(MigratorBase):
         >>> m = Migrator_from_8_1_to_9_0()
         >>> m.process_doi({'id': 123}, [{'id': 123, 'doi': 'a', 'doi_prov': 'b'}], 'c')  # `id` matches
         {'id': 123, 'associated_dois': [{'doi_value': 'a', 'doi_category': 'c', 'doi_provider': 'b'}]}
-        >>> m.process_doi({'id': 555}, [{'id': 123, 'doi': 'a', 'doi_prov': 'b'}], 'c')  # `id` does not match
+        >>> m.process_doi({'id': 123}, [{'id': 555, 'doi': 'a', 'doi_prov': 'b'}], 'c')  # `id` does not match
         {'id': 123}
         >>> m.process_doi(
         ...     {'id': 123, 'associated_dois': [{'doi_value': 'x', 'doi_category': 'y', 'doi_provider': 'z'}]},
