@@ -227,7 +227,7 @@ site-clean: clean
 	rm -rf nmdc_schema/*.tsv
 	rm -rf nmdc_schema/*.yaml
 
-squeaky-clean: clean OmicsProcessing-clean accepting-legacy-ids-clean examples-clean mongodb-clean rdf-clean shuttle-clean site-clean # does not include mixs-yaml-clean
+squeaky-clean: clean OmicsProcessing-clean accepting-legacy-ids-clean examples-clean rdf-clean shuttle-clean site-clean # does not include mixs-yaml-clean
 
 project/nmdc_schema_merged.yaml:
 	$(RUN) gen-linkml \

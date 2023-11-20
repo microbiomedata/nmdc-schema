@@ -8,7 +8,7 @@ from nmdc_schema.get_nmdc_view import ViewGetter
 
 import logging
 
-from nmdc_schema.get_mixs_slots import MIxSSlotsGetter
+# from nmdc_schema.get_mixs_slots import MIxSSlotsGetter
 
 logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger(__name__)

@@ -12,6 +12,6 @@ def do_test():
                        term=OntologyClass(id='ENVO:00010483', name='freshwater environment')),
                    env_local_scale=ControlledIdentifiedTermValue(
                        term=OntologyClass(id='ENVO:00010483', name='freshwater environment')),
-                   )
+                   ),
 
     print(yaml_dumper.dumps(bs))
