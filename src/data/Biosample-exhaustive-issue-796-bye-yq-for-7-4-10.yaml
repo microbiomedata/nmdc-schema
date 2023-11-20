@@ -195,8 +195,8 @@ redox_potential:
   has_raw_value: 300 millivolt
 salinity:
   has_raw_value: 25 practical salinity unit
-salinity_meth:
-  has_raw_value: PMID:22895776
+#salinity_meth:
+#  has_raw_value: PMID:22895776
 samp_mat_process:
   has_raw_value: filtering of seawater
 samp_store_dur:
@@ -304,7 +304,7 @@ light_regm:
 phosphate:
   has_raw_value: 0.7 micromole per liter
 
-samp_collec_method: swabbing
+#samp_collec_method: swabbing
 samp_size:
   has_raw_value: 5 liters
 source_mat_id:

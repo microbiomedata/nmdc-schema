@@ -28,10 +28,10 @@ default_range: string
 
 
 subsets:
-  environment: { }
-  investigation: { }
-  nucleic acid sequence source: { }
-  sequencing: { }
+#  environment: { }
+#  investigation: { }
+#  nucleic acid sequence source: { }
+#  sequencing: { }
 
 types:
 

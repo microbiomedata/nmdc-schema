@@ -43,8 +43,8 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-linkml = ">=1.5.0, <1.6.2"
-linkml-runtime = ">=1.5.0, <1.6.3"
+linkml = "^1.6.3"
+linkml-runtime = "^1.6.2"
 python = "^3.9"
 click-log = "^0.4.0"
 ruamel-yaml = "^0.18.5"
@@ -107,9 +107,6 @@ build-datafile-from-api-requests = "nmdc_schema.build_datafile_from_api_requests
 class-sparql = "nmdc_schema.class_sparql:main"
 fetch-nmdc-schema = "nmdc_schema.nmdc_data:get_nmdc_jsonschema"
 generate-import-slots-regardless = "nmdc_schema.generate_import_slots_regardless:main"
-get-mixs-slots-matching-slot-list = "nmdc_schema.get_mixs_slots_matching_slot_list:main"
-get-mixs-slots-used-in-schema = "nmdc_schema.get_mixs_slots_used_in_schema:main" # see nmdc_schema/generate_import_slots_regardless.py
-get-slots-from-class = "nmdc_schema.get_slots_from_class:main" # see tests/test_getters.py
 migration-recursion = 'nmdc_schema.migration_recursion:main'
 nmdc-data = "nmdc_schema.nmdc_data:cli"
 nmdc-version = "nmdc_schema.nmdc_version:cli"

@@ -274,8 +274,8 @@ redox_potential:
   has_raw_value: 300 millivolt
 salinity:
   has_raw_value: 25 practical salinity unit
-salinity_meth:
-  has_raw_value: PMID:22895776
+#salinity_meth:
+#  has_raw_value: PMID:22895776
 samp_mat_process:
   has_raw_value: filtering of seawater
 samp_store_dur:
@@ -377,7 +377,7 @@ phosphate:
 
 #samp_collec_method:
 #  has_raw_value: swabbing
-samp_collec_method: swabbing
+#samp_collec_method: swabbing
 samp_size:
   has_raw_value: 5 liters
 source_mat_id:
@@ -563,8 +563,8 @@ host_diet:
   - has_raw_value: xxx
 host_dry_mass:
   has_raw_value: xxx
-host_family_relation:
-  - xxx
+#host_family_relation:
+#  - xxx
 host_genotype:
   has_raw_value: xxx
 host_growth_cond:
@@ -841,7 +841,7 @@ root_med_suppl:
 salt_regm:
   - has_raw_value: xxx
 samp_capt_status: other
-samp_collec_device: xxx
+#samp_collec_device: xxx
 
 samp_collect_point: well
 samp_dis_stage: dissemination
@@ -914,8 +914,8 @@ sludge_retent_time:
   has_raw_value: xxx
 
 soil_horizon: O horizon
-soil_text_measure:
-  has_raw_value: xxx
+#soil_text_measure:
+#  has_raw_value: xxx
 soil_texture_meth: xxx
 
 solar_irradiance:

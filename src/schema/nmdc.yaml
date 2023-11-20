@@ -25,6 +25,7 @@ imports:
   - external_identifiers
   - linkml:types
   - mixs
+  - mixs_legacy
   - portal/emsl
   - portal/jgi_metagenomics
   - portal/jgi_metatranscriptomics
@@ -544,7 +545,7 @@ classes:
       - collection_date
       - conduc
       - cool_syst_id
-      - core field
+      #      - core field
       - crop_rotation
       - cult_root_med
       - cur_land_use
@@ -593,7 +594,7 @@ classes:
       - env_local_scale
       - env_medium
       - env_package
-      - environment field
+      #      - environment field
       - escalator
       - ethylbenzene
       - exp_duct
@@ -636,9 +637,9 @@ classes:
       - growth_hormone_regm
       - hall_count
       - handidness
-      - has numeric value
-      - has raw value
-      - has unit
+      #      - has numeric value
+      #      - has raw value
+      #      - has unit
       - hc_produced
       - hcr
       - hcr_fw_salinity
@@ -663,7 +664,7 @@ classes:
       - host_common_name
       - host_diet
       - host_dry_mass
-      - host_family_relation
+      #      - host_family_relation
       - host_genotype
       - host_growth_cond
       - host_height
@@ -688,7 +689,7 @@ classes:
       - inorg_particles
       - inside_lux
       - int_wall_cond
-      - investigation field
+      #      - investigation field
       - iw_bt_date_well
       - iwf
       - last_clean
@@ -725,7 +726,7 @@ classes:
       - non_min_nutr_regm
       - nucl_acid_amp
       - nucl_acid_ext
-      - nucleic acid sequence source field
+      #      - nucleic acid sequence source field
       - number_pets
       - number_plants
       - number_resident
@@ -813,11 +814,11 @@ classes:
       - root_med_solid
       - root_med_suppl
       - salinity
-      - salinity_meth
+      #      - salinity_meth
       - salt_regm
       - samp_capt_status
-      - samp_collec_device
-      - samp_collec_method
+      - samp_collec_device # todo legacy
+      - samp_collec_method # todo legacy
       - samp_collect_point
       - samp_dis_stage
       - samp_floor
@@ -851,7 +852,7 @@ classes:
       - sediment_type
       - seq_meth
       - seq_quality_check
-      - sequencing field
+      #      - sequencing field
       - sewage_type
       - shad_dev_water_mold
       - shading_device_cond
@@ -868,7 +869,7 @@ classes:
       - sludge_retent_time
       - sodium
       - soil_horizon
-      - soil_text_measure
+      #      - soil_text_measure
       - soil_texture_meth
       - soil_type
       - soil_type_meth
@@ -1008,7 +1009,7 @@ classes:
       - light_regm
       #      - micro_biomass_meth
       - phosphate
-      - samp_collec_method
+      #      - samp_collec_method
       - samp_size
       #      - soil_text_measure
       #      - soil_texture_meth
@@ -1101,8 +1102,8 @@ classes:
         examples:
           value: 100
 
-      oxy_stat_samp:
-        range: oxy_stat_samp_enum
+      #      oxy_stat_samp:
+      #        range: oxy_stat_samp_enum
 
       id:
         required: true
@@ -1324,9 +1325,9 @@ classes:
           - value: 5 mg N/ L
         todos:
           - check description. How are they different?
-      salinity_meth:
-        examples:
-          - value: https://doi.org/10.1007/978-1-61779-986-0_28
+      #      salinity_meth:
+      #        examples:
+      #          - value: https://doi.org/10.1007/978-1-61779-986-0_28
       sieving:
         comments:
           - Describe how samples were composited or sieved.
