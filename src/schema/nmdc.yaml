@@ -1566,7 +1566,7 @@ classes:
     is_a: PlannedProcess
     slots:
       - container_size
-      - container_type
+      - contained_in
       - temperature
       - volume
       - mass
@@ -1596,7 +1596,7 @@ classes:
       - Homogeneity may be considered to have been achieved in a practical sense when the sampling error of the processed portion is negligible compared to the total error of the measurement system.
     slots:
       - duration
-      - used
+      - instrument_used
     slot_usage:
       has_input:
         any_of:
@@ -1605,16 +1605,8 @@ classes:
       has_output:
         range: ProcessedSample
         description: The mixed sample.
-
-  PreparativeInstrument:
-    description: A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.
-    aliases:
-      - LabDevice # OBI:0000968
-    exact_mappings:
-      - OBI:0000968
-    slots:
-      - description
-      - device_type
+      instrument_used:
+        range: AnonymousInstrument
 
   OmicsProcessing:
     aliases:
@@ -2212,7 +2204,7 @@ enums:
     comments:
       - See especially the resourceTypeGeneral section of the DataCite PDF, on pp48-53 as of 2023-07-19
 
-  ContainerTypeEnum:
+  ContainedInEnum:
     description: The permitted types of containers used in processing metabolomic samples.
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
@@ -2221,16 +2213,16 @@ enums:
       V-bottom conical tube:
       Falcon Tube:
       Auto sampler vial:
-      Glass insert vial
+      Glass insert vial:
   
-  DeviceTypeEnum:
-    description: The devices permissible for use in processing metabolomic samples.
-    permissible_values:
-      Orbital Shaker:
-      Thermomixer:
-      Vortex:
-      Agitation plunger:
-      Drying oven:
+ # DeviceTypeEnum:
+ #   description: The devices permissible for use in processing metabolomic samples.
+ #   permissible_values:
+ ##     Orbital Shaker:
+  #    Thermomixer:
+  #    Vortex:
+  #    Agitation plunger:
+  #    Drying oven:
 
 slots:
 
@@ -2314,7 +2306,7 @@ slots:
     description: A physical quality that inheres in a bearer by virtue of the proportion of the bearer's amount of matter.
     exact_mappings:
       - PATO:0000125
-    range: Any
+    range: QuantityValue
 
   input_mass:
     title: sample mass used
@@ -2932,8 +2924,8 @@ slots:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
 
-  container_type:
-    range: ContainerTypeEnum
+  contained_in:
+    range: ContainedInEnum
     description: >-
       A type of container. i.e. test tube, falcon tube, etc.
     contributors:
@@ -2956,10 +2948,6 @@ slots:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
 
-  mixing:
-    range: PreparativeInstrument
-    description: The lab device used for a mixing action in an activity
-
   duration: # or could be a ISO8601 perisod string
     range: QuantityValue
     description: The elapsed time of an activity.
@@ -2968,6 +2956,3 @@ slots:
           has_numeric_value: 2
           has_unit: hours
     
-  device_type:
-    range: DeviceTypeEnum
-    description: The type of device being used for an activity
