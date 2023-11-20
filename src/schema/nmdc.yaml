@@ -2154,6 +2154,12 @@ enums:
           - MassIVE
           - Mass Spectrometry Virtual Environment
         title: MassIVE
+      gsc:
+        aliases:
+          - GSC
+          - Genomic Standards Consortium
+        title: GSC
+        
 
   DoiCategoryEnum:
     permissible_values:
