@@ -131,18 +131,15 @@ slots:
     range: QuantityValue
 
   failure_categorization:
-    domain: QualityControlReport
     multivalued: true    
  
   failure_what:
-    domain: FailureCategorization
     range: FailureWhatEnum
     description: >-
       Provides a summary about what caused a lab or workflow process to fail 
       (ie Low read count from a sequencer, malformed fastq files, etc)
 
   failure_where:
-    domain: FailureCategorization
     range: 
       - PlannedProcess
       - WorkflowExecutionActivity
@@ -152,7 +149,6 @@ slots:
       If the assembly size was too small to proceed to annotation failure_where would be MetagenomeAssembly.
 
   comment:
-    domain: QualityControlReport
     range: string
     description: >-
       Slot to store additional comments about laboratory or workflow output. For workflow output
