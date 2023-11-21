@@ -14,7 +14,7 @@ class Migrator_from_8_1_to_9_0(MigratorBase):
             study_set=[self.move_doi_from_websites],
         )
 
-    def move_doi_from_websites(study: dict):
+    def move_doi_from_websites(self, study: dict):
 
         doi_updates = load_yaml_asset('migrator_from_9_1_to_9_2/websites_dois.yaml')
 
