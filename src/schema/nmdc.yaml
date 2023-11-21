@@ -245,7 +245,14 @@ classes:
     slots:
       - status
       - name
+      - failure_categorization
+      - comment
 
+  FailureCategorization:
+    slots:
+      - failure_what
+      - failure_where
+      
   LibraryPreparation:
     class_uri: nmdc:LibraryPreparation
     aliases:
