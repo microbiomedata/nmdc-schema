@@ -2162,7 +2162,18 @@ enums:
       - ORCID:0000-0002-8683-0050 #Montana Smith
     permissible_values:
       V-bottom conical tube:
-
+  
+  FailureWhatEnum:
+    description: The permitted values for describing where a failure occured during processing in the lab during analysis workflows.
+    permissible_values:
+      Low read count:
+        description: Number of output reads is not sufficent to continue to the next analysis step.
+      Malformed data:
+        description: Workflow failure reading input or writing the output file(s).
+      Assembly size too small:
+        description: The size of the metagenome or metatranscriptome assembly is too small to proceed to the next analysis workflow.
+      No data generated:
+        description: A process ran but did not produce any output. Ie binning ran but did not produce any medium or high quality bins.
 slots:
 
   designated_class:
