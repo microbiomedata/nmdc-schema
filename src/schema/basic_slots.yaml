@@ -142,8 +142,7 @@ slots:
 
   failure_where:
     range: 
-      - PlannedProcess
-      - WorkflowExecutionActivity
+      - FailureWhereEnum
     description: >- 
       Describes the nmdc schema class that corresonds to where the failure occurred. 
       Most commonly this would be the same as Class that generated the results. 
