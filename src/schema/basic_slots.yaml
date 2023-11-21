@@ -131,6 +131,7 @@ slots:
     range: QuantityValue
 
   failure_categorization:
+    range: FailureCategorization
     multivalued: true    
  
   failure_what:
