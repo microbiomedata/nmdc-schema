@@ -6,9 +6,9 @@ read_qc_analysis_activity_set:
      #cv for what the failure was
      #since there can be multivalued and what/where should be paired we need this structure
     failure_categorization:
-      - failure_what: Malformed data
+      - - failure_what: Malformed data
       #in what PlannedProcess or Activity Class did the failure occur
-        failure_where: ReadQcAnalysisActivity
+        - failure_where: ReadQcAnalysisActivity
     comment: Failure during call-stage to interleave fastq files
   type: nmdc:ReadQcAnalysisActivity
   started_at_time: 2023-08-29T19:41:47.365957+00:00
