@@ -2185,7 +2185,7 @@ enums:
         description: A lab process or analysis workflow has failed in a way that has not been captured by the avaliable values yet. Please use slot 'comment' to specify details.
 
   FailureWhereEnum:
-    description: The permitted values for describing what lab or analysis workflow step failed. 
+    description: The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred. 
     permissible_values:
       Omics_Processing:
         description: A failure has occurred in omics processing, a lab process.
@@ -2202,9 +2202,12 @@ enums:
       Mags_Analysis_Activity:
         description: A failure has occurred in binning, a workflow process to generate metagenome-assembled genomes (MAGS).
       Read_Qc_Analysis_Activity:
-        description: A failure has occuring in read qc, a workflow process.
+        description: A failure has occurred in read qc, a workflow process.
       Read_Based_Taxonomy_Analysis_Activity:
-        description: 
+        description: A failure has occurred in reads based taxonomy, a workflow process.
+      Metagenome_Annotation_Activity:
+        description: A failure has occurred in annotation, a workflow process.
+      
 slots:
 
   designated_class:
