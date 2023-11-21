@@ -1,4 +1,3 @@
-websites_dois:
 - doi_website: 'https://doi.org/10.25982/109073.30/1895615'
   doi_cat: 'dataset_doi'
   doi_prov: 'kbase'
