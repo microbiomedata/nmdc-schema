@@ -1567,7 +1567,6 @@ classes:
     slots:
       - container_size
       - contained_in
-      - contained_in
       - temperature
       - volume
       - mass
@@ -2257,6 +2256,14 @@ enums:
       - ORCID:0000-0002-8683-0050 #Montana Smith
     permissible_values:
       V-bottom conical tube:
+
+  SeparationMethodEnum:
+    description: The tool/substance used to separate or filter a solution or mixture.
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-8683-0050 #Montana Smith
+    permissible_values:
+      PTFE 96-well filter plate:
 
 slots:
   model:
@@ -2959,14 +2966,6 @@ slots:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
 
-  container_type:
-    range: ContainerTypeEnum
-    description: >-
-      A type of container. i.e. test tube, falcon tube, etc.
-    contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-8683-0050 #Montana Smith
-
   volume:
     range: QuantityValue
     description: The volume of a substance.
@@ -3008,9 +3007,6 @@ slots:
   material_component_separation:
     range: string
     description: "A material processing in which components of an input material become segregated in space"
-  duration:
-    range: QuantityValue
-    description: The elapsed length of time for an activity.
   value:
     range: QuantityValue
   modifier_substance:
@@ -3026,4 +3022,8 @@ slots:
       - value: 
           has_numeric_value: 2
           has_unit: hours
+          
+  contained_in:
+    range: ContainerCategoryEnum
+    description: A type of container. i.e. test tube, falcon tube, etc.
     
