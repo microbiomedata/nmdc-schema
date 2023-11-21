@@ -2179,8 +2179,10 @@ enums:
         description: Workflow failure reading input or writing the output file(s).
       Assembly size too small:
         description: The size of the metagenome or metatranscriptome assembly is too small to proceed to the next analysis workflow.
-      No data generated:
+      No valid data generated:
         description: A process ran but did not produce any output. Ie binning ran but did not produce any medium or high quality bins.
+      Other:
+        description: A lab process or analysis workflow has failed in a way that has not been captured by the avaliable values yet. Please use slot 'comment' to specify details.
 slots:
 
   designated_class:
