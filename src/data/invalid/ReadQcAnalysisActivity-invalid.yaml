@@ -32,7 +32,7 @@ read_qc_analysis_activity_set:
     failure_categorization:
       - failure_what: Malformed data
       #in what PlannedProcess or Activity Class did the failure occur
-        failure_where: ReadQcAnalysisActivity
+        failure_where: Read_Qc_Analysis_Activity
     comment: Failure during call-stage to interleave fastq files
   type: nmdc:ReadQcAnalysisActivity
   started_at_time: 2023-08-29T19:41:47.365957+00:00
