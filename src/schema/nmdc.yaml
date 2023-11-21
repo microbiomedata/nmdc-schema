@@ -1567,6 +1567,7 @@ classes:
     slots:
       - container_size
       - contained_in
+      - contained_in
       - temperature
       - volume
       - mass
@@ -1607,6 +1608,34 @@ classes:
         description: The mixed sample.
       instrument_used:
         range: AnonymousInstrument
+
+  FiltrationProcess:
+    description: >-
+      The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by forcing a carrier gas or liquid through a porous medium.
+    related_mappings:
+      - CHMO:0001640
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-8683-0050 #Montana Smith
+      - ORCID:0000-0001-9076-6066 #Mark Miller
+      - ORCID:0009-0008-4013-7737 #James Tessmer
+    is_a: PlannedProcess
+    slots:
+      - filter_material
+      - filter_pore_size
+      - conditionings
+      - separation_method
+      - container_size
+      - volume
+      - filtration_category
+      - instrument_used
+      - is_pressurized
+    slot_usage:
+      volume:
+        description: The volume of sample filtered.
+      instrument_used:
+        range: AnonymousInstrument
+      
 
   OmicsProcessing:
     aliases:
@@ -2189,6 +2218,21 @@ enums:
           - MassIVE
           - Mass Spectrometry Virtual Environment
         title: MassIVE
+      gsc:
+        aliases:
+          - GSC
+          - Genomic Standards Consortium
+        title: GSC
+      zenodo:
+        aliases:
+          - Zenodo
+        title: Zenodo
+      edi:
+        aliases:
+          - EDI
+          - Environmental Data Initiative 
+        title: EDI
+        meaning: https://ror.org/0330j0z60
 
   DoiCategoryEnum:
     permissible_values:
@@ -2198,39 +2242,27 @@ enums:
         description: A type of DOI that resolves to generated data.
       publication_doi:
         description: A type of DOI that resolves to a publication.
+      data_management_plan_doi:
+        description: A type of DOI that resolves to a data management plan.
     see_also:
       - https://schema.datacite.org/meta/kernel-4.4/doc/DataCite-MetadataKernel_v4.4.pdf
       - https://api.crossref.org/types
     comments:
       - See especially the resourceTypeGeneral section of the DataCite PDF, on pp48-53 as of 2023-07-19
 
-  ContainedInEnum:
+  ContainerCategoryEnum:
     description: The permitted types of containers used in processing metabolomic samples.
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
     permissible_values:
       V-bottom conical tube:
-      Falcon Tube:
-      Auto sampler vial:
-      Glass insert vial:
-  
- # DeviceTypeEnum:
- #   description: The devices permissible for use in processing metabolomic samples.
- #   permissible_values:
- ##     Orbital Shaker:
-  #    Thermomixer:
-  #    Vortex:
-  #    Agitation plunger:
-  #    Drying oven:
 
 slots:
-
   model:
     range: InstrumentModelEnum
   vendor:
     range: InstrumentVendorEnum
-
   designated_class:
     range: uriorcurie
     designates_type: true
@@ -2826,6 +2858,9 @@ slots:
           doi_category: award_doi
         - doi: doi:10.1101/2022.12.12.520098
           doi_category: publication_doi
+        - doi: doi:10.48321/D1Z60Q
+          doi_category: data_management_plan_doi
+          doi_provider: gsc
       description: Provides a list of two DOIs; specifically, an EMSL award DOI and a publication DOI.
 
   doi_value:
@@ -2924,8 +2959,8 @@ slots:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
 
-  contained_in:
-    range: ContainedInEnum
+  container_type:
+    range: ContainerTypeEnum
     description: >-
       A type of container. i.e. test tube, falcon tube, etc.
     contributors:
@@ -2948,6 +2983,42 @@ slots:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
 
+  filter_material:
+    description: "A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained."
+    comments:
+      - "Filters are made with a variety of materials: cellulose and derivatives, glass fibre, ceramic, synthetic plastics and fibres. Filters may be naturally porous or be made so by mechanical or other means. Membrane/ceramic filters are prepared with highly controlled pore size in a sheet of suitable material such as polyfluoroethylene, polycarbonate or cellulose esters. Nylon mesh is sometimes used for reinforcement. The pores constitute 80–85% of the filter volume commonly and several pore sizes are available for air sampling (0.45−0.8 μm are commonly employed)."
+    range: string
+  filter_pore_size:
+    range: QuantityValue
+    description: "A quantitative or qualitative measurement of the physical dimensions of the pores in a material."
+  conditionings:
+    range: string
+    description: "Preliminary treatment of either phase with a suitable solution of the other phase (in the absence of main extractable solute(s)) so that when the subsequent equilibration is carried out changes in the (volume) phase ratio or in the concentrations of other components are minimized."
+    multivalued: true
+    list_elements_ordered: true
+  separation_method:
+    range: SeparationMethodEnum
+    description: The method that was used to separate a substance from a solution or mixture.
+  filtration_category:
+    range: string
+    description: The type of conditioning applied to a filter, device, etc.
+  concentration:
+    range: QuantityValue
+    description: The concentration of a substance used in an activity
+  material_component_separation:
+    range: string
+    description: "A material processing in which components of an input material become segregated in space"
+  duration:
+    range: QuantityValue
+    description: The elapsed length of time for an activity.
+  value:
+    range: QuantityValue
+  modifier_substance:
+    range: string
+    description: The type of modification being done
+  is_pressurized:
+        range: boolean
+        description: Whether or not pressure was applied to a thing or process.
   duration: # or could be a ISO8601 perisod string
     range: QuantityValue
     description: The elapsed time of an activity.

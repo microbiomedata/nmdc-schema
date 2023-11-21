@@ -122,12 +122,14 @@ slots:
       - add date string validation pattern
 
   instrument_used:
+    description: The device or tool that performed or aided in performing a process.
     comments:
       - not to be confused with 'used' which currently has a string range
     todos:
       - annotate me!
       - should include the union of named and anonymous instruments, either with any_of or by future inheritance
     range: AnonymousInstrument
+    multivalued: true
 
   protocol_link:
     range: Protocol
