@@ -11,5 +11,8 @@ volume:
 temperature:
   has_numeric_value: 25
   has_unit: C
+mass:
+  has_numeric_value: 30
+  has_unit: g
 has_output:
   - nmdc:procsm-11-05g48p90
