@@ -674,7 +674,7 @@ slots:
   websites:
     range: string
     multivalued: true
-    pattern: "https?://(?!.*doi\.org).*$"
+    pattern: "https?:\/\/(?!.*doi\.org).*$"
     description: A list of websites that are associated with the entity.
     comments: DOIs should be included as websites. Instead, use the associated_dois slot.
 
