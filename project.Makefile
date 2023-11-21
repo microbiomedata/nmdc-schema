@@ -568,3 +568,9 @@ validate-polymorphic:
 	$(RUN) linkml-validate \
 		--include-range-class-descendants \
 		--schema src/schema/nmdc.yaml src/data/polymorphic-valid/Database-polymorphic-planned-process-set.yaml
+
+.PHONY: migration-doctests
+
+# Runs all doctests defined within the migrator modules.
+migration-doctests:
+	$(RUN) python -m doctest -v nmdc_schema/migrators/*.py

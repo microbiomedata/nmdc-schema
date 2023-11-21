@@ -77,12 +77,12 @@ slots:
     multivalued: true
     range: ReactionActivity
     inlined_as_list: true
-  dissolution_aided_by:
-    title: dissolution aided by
-    aliases:
-      - shaker
-    range: LabDevice
-    inlined: true
+#  dissolution_aided_by:
+#    title: dissolution aided by
+#    aliases:
+#      - shaker
+#    range: LabDevice
+#    inlined: true
   dissolution_reagent:
     title: dissolution reagent
     aliases:
@@ -135,7 +135,7 @@ slots:
   #  title: container size
   #  range: QuantityValue
   #  inlined: true
-  #container_type:
+  #contained_in:
   #  title: container type
   #  range: ContainerTypeEnum
   amount_collected:
@@ -151,12 +151,13 @@ slots:
     title: sampling method
     range: SamplingMethodEnum
 
-  reaction_aided_by:
-    title: reaction aided by
-    aliases:
-      - shaker
-    range: LabDevice
-    inlined: true
+#  reaction_aided_by:
+#    title: reaction aided by
+#    aliases:
+#      - shaker
+#    range: LabDevice
+#    inlined: true
+
   reaction_temperature:
   reaction_time:
     range: QuantityValue
@@ -169,7 +170,7 @@ classes:
     aliases:
       - dissolution-activity
     slots:
-      - dissolution_aided_by
+#      - dissolution_aided_by
       - dissolution_reagent
       - dissolution_volume
       - dissolved_in
@@ -183,18 +184,20 @@ classes:
         examples:
           - value: somextract:7
     class_uri: CHMO:0002773
-  LabDevice:
-    title: Lab device
-    slots:
-      - device_type
-      - activity_speed
-      - activity_temperature
-      - activity_time
+
+#  LabDevice:
+#    title: Lab device
+#    slots:
+#      - device_type
+#      - activity_speed
+#      - activity_temperature
+#      - activity_time
+
   MaterialContainer:
     title: Material container
     slots:
       - container_size
-      - container_type
+      - contained_in
   MaterialSample:
     title: Material sample
     aliases:
@@ -244,7 +247,7 @@ classes:
     slots:
       - material_input
       - material_output
-      - reaction_aided_by
+#      - reaction_aided_by
       - reaction_temperature
       - reaction_time
     slot_usage:
