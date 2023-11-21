@@ -2183,6 +2183,28 @@ enums:
         description: A process ran but did not produce any output. Ie binning ran but did not produce any medium or high quality bins.
       Other:
         description: A lab process or analysis workflow has failed in a way that has not been captured by the avaliable values yet. Please use slot 'comment' to specify details.
+
+  FailureWhereEnum:
+    description: The permitted values for describing what lab or analysis workflow step failed. 
+    permissible_values:
+      Omics_Processing:
+        description: A failure has occurred in omics processing, a lab process.
+      Pooling:
+        description: A failure has occurred in pooling, a lab process.
+      Extraction: 
+        description: A failure has occurred in extraction, a lab process.
+      Library_Preparation:
+        description: A failure has occurred in library preparation, a lab process.
+      Metagenome_Assembly:
+        description: A failure has occurred in metagenome assembly, a workflow process.
+      Metatranscriptome_Activity:
+        description: A failure has occurred in metatranscriptome analysis, a workflow process.
+      Mags_Analysis_Activity:
+        description: A failure has occurred in binning, a workflow process to generate metagenome-assembled genomes (MAGS).
+      Read_Qc_Analysis_Activity:
+        description: A failure has occuring in read qc, a workflow process.
+      Read_Based_Taxonomy_Analysis_Activity:
+        description: 
 slots:
 
   designated_class:
