@@ -1585,7 +1585,7 @@ classes:
 
   MixingProcess:
     description: >
-      The combining of components, particles or layers into a more homogeneous state. 
+      The combining of components, particles or layers into a more homogeneous state.
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
