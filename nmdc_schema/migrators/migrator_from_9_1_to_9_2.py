@@ -20,8 +20,10 @@ class Migrator_from_9_1_to_9_2(MigratorBase):
         Removes the doi website values from the `websites slot.
         
         >>> m = Migrator_from_9_1_to_9_2()
-        >>> m.move_doi_from_websites({'id': 123, 'websites': ['a', 'b/doi.org/10.23'], 'associated_dois': [{'doi_value': 'j', 'doi_provider': 'k', 'doi_category': 'i'}]})
-        {'id': 123, 'websites': ['a'], 'associated_dois': [{'doi_value': 'j', 'doi_provider': 'k', 'doi_category': 'i'}, {'doi_value': 'doi:10.23', 'doi_category': 'x', 'doi_provider': 'y'}]}"""
+        >>> m.move_doi_from_websites({'id': 123, 'websites': ['a', 'b/doi.org/10.23'], 'associated_dois': 
+        ...     [{'doi_value': 'j', 'doi_provider': 'k', 'doi_category': 'i'}]})
+        {'id': 123, 'websites': ['a'], 'associated_dois': [{'doi_value': 'j', 'doi_provider': 'k', 
+            'doi_category': 'i'}, {'doi_value': 'doi:10.23', 'doi_category': 'x', 'doi_provider': 'y'}]}"""
 
         doi_updates = load_yaml_asset('migrator_from_9_1_to_9_2/websites_dois.yaml')
 
