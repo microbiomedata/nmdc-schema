@@ -562,13 +562,6 @@ assets/filtered-api-requests/filtered-request-validation-log.txt: nmdc_schema/nm
 assets/filtered-api-requests/filtered-request-result.yaml
 	- $(RUN) linkml-validate --schema $^ > $@
 
-.PHONY: validate-polymorphic
-
-validate-polymorphic:
-	$(RUN) linkml-validate \
-		--include-range-class-descendants \
-		--schema src/schema/nmdc.yaml src/data/polymorphic-valid/Database-polymorphic-planned-process-set.yaml
-
 .PHONY: migration-doctests
 
 # Runs all doctests defined within the migrator modules.
