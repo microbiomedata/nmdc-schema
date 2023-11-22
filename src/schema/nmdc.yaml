@@ -431,6 +431,7 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
+      - host_disease_stat
       - neon_biosample_identifiers
       - host_taxid
       - embargoed
