@@ -1,8 +1,8 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.helpers import load_yaml_asset
 
-class Migrator_from_8_1_to_9_0(MigratorBase):
-    """previously: Migrates data from schema 8.1.0 to 9.0.0"""
+class Migrator_from_9_1_to_9_2(MigratorBase):
+    """previously: Migrates data from schema 9.1.0 to 9.2.0"""
 
     def __init__(self, *args, **kwargs) -> None:
         """Invokes parent constructor and populates collection-to-transformations map."""
@@ -30,7 +30,7 @@ class Migrator_from_8_1_to_9_0(MigratorBase):
                             'doi_category': doi_update['doi_cat'],
                             'doi_provider': doi_update['doi_prov']
                         }
-                        
+
                         study.setdefault('associated_dois', []).append(new_doi)
             
             # remove doi websites from websites slot
