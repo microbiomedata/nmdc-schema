@@ -1,6 +1,5 @@
 ## Add your own custom Makefile targets here
 
-#RIOT=~/apache-jena/bin/riot
 JENA_PATH=~/apache-jena/bin/
 RUN=poetry run
 
@@ -464,9 +463,6 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--skip-collection-check \
 
 
-#		--migrator-name Migrator_from_8_0_to_8_1 \
-#		--migrator-name Migrator_from_8_1_to_9_0
-
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) migration-recursion \
@@ -524,24 +520,6 @@ OmicsProcessing.tsv: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
 		--target-class-name $(firstword $(subst ., ,$(lastword $(subst /, ,$@)))) \
 		--target-p-o-constraint "dcterms:isPartOf nmdc:sty-11-34xj1150"
 
-#tdb-steps:
-##	# clean up tdbcontent
-##	$(JENA_PATH)/tdb2.tdbloader \
-##		--loc=tdbcontent \
-##		--graph=https://w3id.org/nmdc/nmdc project/owl/nmdc.owl.ttl
-##	$(JENA_PATH)/tdb2.tdbloader \
-##		--loc=tdbcontent \
-##		--graph=mongodb://mongo-loadbalancer.nmdc.production.svc.spin.nersc.gov:27017 local/research_study_injected_for_Gs0114663_cuire_repaired.ttl
-##	$(JENA_PATH)/tdb2.tdbquery \
-##		--loc=tdbcontent \
-##		--query=assets/sparql/tdb-test.rq
-##	$(JENA_PATH)/tdb2.tdbquery \
-##		--loc=tdbcontent \
-##		--query=assets/sparql/tdb-graph-list.rq
-##	$(JENA_PATH)/tdb2.tdbquery \
-##		--loc=tdbcontent \
-##		--query=assets/sparql/Gs0114663-construct.rq
-
 validate-filtered-request-all: validate-filtered-request-clean assets/filtered-api-requests/filtered-request-validation-log.txt
 
 .PHONY: validate-filtered-request-all validate-filtered-request-clean
@@ -561,13 +539,6 @@ assets/filtered-api-requests/filtered-request-result.yaml:
 assets/filtered-api-requests/filtered-request-validation-log.txt: nmdc_schema/nmdc_materialized_patterns.yaml \
 assets/filtered-api-requests/filtered-request-result.yaml
 	- $(RUN) linkml-validate --schema $^ > $@
-
-.PHONY: validate-polymorphic
-
-validate-polymorphic:
-	$(RUN) linkml-validate \
-		--include-range-class-descendants \
-		--schema src/schema/nmdc.yaml src/data/polymorphic-valid/Database-polymorphic-planned-process-set.yaml
 
 .PHONY: migration-doctests
 
