@@ -2,7 +2,7 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.helpers import load_yaml_asset
 
 class Migrator_from_9_1_to_9_2(MigratorBase):
-    """previously: Migrates data from schema 9.1.0 to 9.2.0"""
+    """Migrates data from schema 9.1.0 to 9.2.0"""
 
     def __init__(self, *args, **kwargs) -> None:
         """Invokes parent constructor and populates collection-to-transformations map."""
@@ -15,28 +15,32 @@ class Migrator_from_9_1_to_9_2(MigratorBase):
         )
 
     def move_doi_from_websites(self, study: dict):
+        r"""
+        Transforms `websites` values that are dois into curies and moves them into the `associated_dois slot
+        Removes the doi website values from the `websites slot.
+        
+        >>> m = Migrator_from_9_1_to_9_2()
+        >>> m.move_doi_from_websites({'id': 123, 'websites': ['a', 'b/doi.org/10.23'], 'associated_dois': [{'doi_value': 'j', 'doi_provider': 'k', 'doi_category': 'i'}]}, [{'doi_website': 'b/doi.org/10.23', 'doi_cat': 'x', 'doi_prov': 'y'}])
+        {'id': 123, 'websites': ['a'], 'associated_dois': [{'doi_value': 'j', 'doi_provider': 'k', 'doi_category': 'i'}, {'doi_value': 'doi:10.23', 'doi_category': 'x', 'doi_provider': 'y'}]}"""
 
         doi_updates = load_yaml_asset('migrator_from_9_1_to_9_2/websites_dois.yaml')
 
-        # transform websites into doi curies and add to associated_dois slot
+         # transform websites into doi curies and add to associated_dois slot
         if 'websites' in study:
             websites = study['websites']
-            for site in websites:
-                for doi_update in doi_updates:
-                    if site == doi_update['doi_website']:
-                        doi_value = 'doi:' + site[site.find('10'):]
-                        new_doi = {
-                            'doi_value': doi_value,
-                            'doi_category': doi_update['doi_cat'],
-                            'doi_provider': doi_update['doi_prov']
-                        }
+            for doi_update in doi_updates:
+                if doi_update['doi_website'] in websites:
+                    doi_value = 'doi:' + doi_update['doi_website'][doi_update['doi_website'].find('10'):]
+                    new_doi = {
+                        'doi_value': doi_value,
+                        'doi_category': doi_update['doi_cat'],
+                        'doi_provider': doi_update['doi_prov']
+                    }
+                    study.setdefault('associated_dois', []).append(new_doi)
 
-                        study.setdefault('associated_dois', []).append(new_doi)
-            
-            # remove doi websites from websites slot
-            for update in doi_updates:
-                if update['doi_website'] in websites:
-                    websites.remove(update['doi_website'])
+                    # remove doi website from websites slot
+                    websites.remove(doi_update['doi_website'])
+        
 
         return study
 
