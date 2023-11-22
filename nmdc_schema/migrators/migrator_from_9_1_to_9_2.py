@@ -43,7 +43,6 @@ class Migrator_from_9_1_to_9_2(MigratorBase):
                     # remove doi website from websites slot
                     websites.remove(doi_update['doi_website'])
         
-
         return study
 
     
