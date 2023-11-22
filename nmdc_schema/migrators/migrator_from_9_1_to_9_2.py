@@ -30,7 +30,7 @@ class Migrator_from_8_1_to_9_0(MigratorBase):
                             'doi_category': doi_update['doi_cat'],
                             'doi_provider': doi_update['doi_prov']
                         }
-                        print(new_doi)
+                        
                         study.setdefault('associated_dois', []).append(new_doi)
             
             # remove doi websites from websites slot
