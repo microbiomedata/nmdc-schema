@@ -4,12 +4,15 @@ has_input:
 container_size:
   has_numeric_value: 50
   has_unit: mL
-container_type: V-bottom conical tube
+contained_in: V-bottom conical tube
 volume:
   has_numeric_value: 20
   has_unit: mL
 temperature:
   has_numeric_value: 25
   has_unit: C
+mass:
+  has_numeric_value: 30
+  has_unit: g
 has_output:
   - nmdc:procsm-11-05g48p90

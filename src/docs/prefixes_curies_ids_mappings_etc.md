@@ -173,12 +173,23 @@ RDF'  (canonical_prefixes)
 warning Schema maps prefix 'rdfs' to namespace 'http://www.w3.org/2000/01/rdf-schema#' instead of using prefix 'RDFS'  (
 canonical_prefixes)
 
-----
+## Typecodes
+
+Not only does NMDC require the use of the `nmdc` prefix in the primary identifier for data instances, 
+but we also define a pattern that the local portion of the `id`s must follow. 
+For example, an example `id` from the `NamedThing` class is 'nmdc:mgmag-00-x012.1_7_c1'.
+The text that comes immediately after the `nmdc` prefix and colon, and before the first hyphen is the typecode, `mgmag` in this case.
+Typecodes must correspond 1:1 to a class in the NMDC schema. The typecodes currently in use are available from the
+nmdc-runtime API: https://api.microbiomedata.org/nmdcschema/typecodes
+
+The typecodes for each class are auto-discovered each time the nmdc-runtime API is restarted, 
+and the API is restarted each time it is bound to a new version of the nmdc-schem.
+
+We do not currently have any criteria for good typecodes, other than they are ideally between 3 and 6 characters in length.
 
 ## unresolved
 
 * may need to reassert identifier, range and or unique for subclasses
-* rdflib = "^6.2.0" # some LinkML components are not compatible with rdflib 7+ yet
 * still getting anyurl typed string statement objects in RDF. I added a workaround in anyuri-strings-to-iris
 * make better use of id prefixes?
 
@@ -193,16 +204,12 @@ canonical_prefixes)
 
 * gen-prefix-map 
   * doesn't merge
-  * emits JSON content into a file with teh .yaml extension by default
+  * emits JSON content into a file with the .yaml extension by default
 
 * doesn't look like all the emit_prefixes are making it into the OWL output
 
 * two graphdb endpoints: http://3.236.215.220:7200/sparql (switch to port 80) and https://graphdb-dev.microbiomedata.org/
 * configure graphdb visual graph for showing blank nodes ?
-
-## unrelated
-
-* `make squeaky-clean` does not include `mixs-yaml-clean`, so that `mixs.yaml` isn't unnecessarily regenerated
 * MAM audit DOIs, websites, urls, and other uriorcurie values
 
 

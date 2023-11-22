@@ -95,6 +95,7 @@ prefixes:
   edam.data: "http://edamontology.org/data_"
   OBI: http://purl.obolibrary.org/obo/OBI_
   ORCID: https://orcid.org/
+  bioproject: "https://identifiers.org/bioproject:"
 
 
 default_prefix: nmdc
@@ -430,6 +431,7 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
+      - host_disease_stat
       - neon_biosample_identifiers
       - host_taxid
       - embargoed
@@ -1547,8 +1549,8 @@ classes:
   SubSamplingProcess:
     description: >
       Separating a sample aliquot from the starting material for downstream activity.
-    see_also:
-      - http://purl.obolibrary.org/obo/OBI_0000744
+    related_mappings:
+      - OBI:0000744
     todos:
       - add intermediate class between PlannedProcess and this (MaterialProcessing potentially)
       - Montana to visit slot descriptions
@@ -1566,12 +1568,75 @@ classes:
     is_a: PlannedProcess
     slots:
       - container_size
-      - container_type
+      - contained_in
       - temperature
       - volume
+      - mass
     slot_usage:
       volume:
-        description: The volume of subsample.
+        description: The output volume of the SubSampling Process.
+      mass:
+        description: The output mass of the SubSampling Process.
+      has_input:
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+      has_output:
+        range: ProcessedSample
+        description: The subsample.
+
+  MixingProcess:
+    description: >
+      The combining of components, particles or layers into a more homogeneous state.
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-8683-0050 #Montana Smith
+    is_a: PlannedProcess
+    comments:
+      - The mixing may be achieved manually or mechanically by shifting the material with stirrers or pumps or by revolving or shaking the container. 
+      - The process must not permit segregation of particles of different size or properties. 
+      - Homogeneity may be considered to have been achieved in a practical sense when the sampling error of the processed portion is negligible compared to the total error of the measurement system.
+    slots:
+      - duration
+      - instrument_used
+    slot_usage:
+      has_input:
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+      has_output:
+        range: ProcessedSample
+        description: The mixed sample.
+      instrument_used:
+        range: AnonymousInstrument
+
+  FiltrationProcess:
+    description: >-
+      The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by forcing a carrier gas or liquid through a porous medium.
+    related_mappings:
+      - CHMO:0001640
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-8683-0050 #Montana Smith
+      - ORCID:0000-0001-9076-6066 #Mark Miller
+      - ORCID:0009-0008-4013-7737 #James Tessmer
+    is_a: PlannedProcess
+    slots:
+      - filter_material
+      - filter_pore_size
+      - conditionings
+      - separation_method
+      - container_size
+      - volume
+      - filtration_category
+      - instrument_used
+      - is_pressurized
+    slot_usage:
+      volume:
+        description: The volume of sample filtered.
+      instrument_used:
+        range: AnonymousInstrument
+      
 
   OmicsProcessing:
     aliases:
@@ -1651,6 +1716,20 @@ classes:
     class_uri: prov:Association
 
 enums:
+  InstrumentModelEnum:
+    permissible_values:
+      Orbitrap:
+      VortexGenie2:
+      PIPETMAN F144059M:
+
+  InstrumentVendorEnum:
+    permissible_values:
+      ThermoFisher:
+      VWR:
+      PerkinElmer:
+      Gilson:
+      ScientificIndustries:
+
   StatusEnum:
     permissible_values:
       pass: { }
@@ -2140,6 +2219,21 @@ enums:
           - MassIVE
           - Mass Spectrometry Virtual Environment
         title: MassIVE
+      gsc:
+        aliases:
+          - GSC
+          - Genomic Standards Consortium
+        title: GSC
+      zenodo:
+        aliases:
+          - Zenodo
+        title: Zenodo
+      edi:
+        aliases:
+          - EDI
+          - Environmental Data Initiative 
+        title: EDI
+        meaning: https://ror.org/0330j0z60
 
   DoiCategoryEnum:
     permissible_values:
@@ -2149,13 +2243,15 @@ enums:
         description: A type of DOI that resolves to generated data.
       publication_doi:
         description: A type of DOI that resolves to a publication.
+      data_management_plan_doi:
+        description: A type of DOI that resolves to a data management plan.
     see_also:
       - https://schema.datacite.org/meta/kernel-4.4/doc/DataCite-MetadataKernel_v4.4.pdf
       - https://api.crossref.org/types
     comments:
       - See especially the resourceTypeGeneral section of the DataCite PDF, on pp48-53 as of 2023-07-19
 
-  ContainerTypeEnum:
+  ContainerCategoryEnum:
     description: The permitted types of containers used in processing metabolomic samples.
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
@@ -2163,8 +2259,19 @@ enums:
     permissible_values:
       V-bottom conical tube:
 
-slots:
+  SeparationMethodEnum:
+    description: The tool/substance used to separate or filter a solution or mixture.
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-8683-0050 #Montana Smith
+    permissible_values:
+      PTFE 96-well filter plate:
 
+slots:
+  model:
+    range: InstrumentModelEnum
+  vendor:
+    range: InstrumentVendorEnum
   designated_class:
     range: uriorcurie
     designates_type: true
@@ -2234,6 +2341,13 @@ slots:
     range: integer
     exact_mappings:
       - OBI:0002475
+  
+  mass: 
+    title: mass
+    description: A physical quality that inheres in a bearer by virtue of the proportion of the bearer's amount of matter.
+    exact_mappings:
+      - PATO:0000125
+    range: QuantityValue
 
   input_mass:
     title: sample mass used
@@ -2753,6 +2867,9 @@ slots:
           doi_category: award_doi
         - doi: doi:10.1101/2022.12.12.520098
           doi_category: publication_doi
+        - doi: doi:10.48321/D1Z60Q
+          doi_category: data_management_plan_doi
+          doi_provider: gsc
       description: Provides a list of two DOIs; specifically, an EMSL award DOI and a publication DOI.
 
   doi_value:
@@ -2851,14 +2968,6 @@ slots:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
 
-  container_type:
-    range: ContainerTypeEnum
-    description: >-
-      A type of container. i.e. test tube, falcon tube, etc.
-    contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-8683-0050 #Montana Smith
-
   volume:
     range: QuantityValue
     description: The volume of a substance.
@@ -2889,3 +2998,49 @@ slots:
         has_unit: mS/cm
       description: The conductivity measurement was 0.017 millisiemens per centimeter.
     range: QuantityValue
+
+
+  filter_material:
+    description: "A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained."
+    comments:
+      - "Filters are made with a variety of materials: cellulose and derivatives, glass fibre, ceramic, synthetic plastics and fibres. Filters may be naturally porous or be made so by mechanical or other means. Membrane/ceramic filters are prepared with highly controlled pore size in a sheet of suitable material such as polyfluoroethylene, polycarbonate or cellulose esters. Nylon mesh is sometimes used for reinforcement. The pores constitute 80–85% of the filter volume commonly and several pore sizes are available for air sampling (0.45−0.8 μm are commonly employed)."
+    range: string
+  filter_pore_size:
+    range: QuantityValue
+    description: "A quantitative or qualitative measurement of the physical dimensions of the pores in a material."
+  conditionings:
+    range: string
+    description: "Preliminary treatment of either phase with a suitable solution of the other phase (in the absence of main extractable solute(s)) so that when the subsequent equilibration is carried out changes in the (volume) phase ratio or in the concentrations of other components are minimized."
+    multivalued: true
+    list_elements_ordered: true
+  separation_method:
+    range: SeparationMethodEnum
+    description: The method that was used to separate a substance from a solution or mixture.
+  filtration_category:
+    range: string
+    description: The type of conditioning applied to a filter, device, etc.
+  concentration:
+    range: QuantityValue
+    description: The concentration of a substance used in an activity
+  material_component_separation:
+    range: string
+    description: "A material processing in which components of an input material become segregated in space"
+  value:
+    range: QuantityValue
+  modifier_substance:
+    range: string
+    description: The type of modification being done
+  is_pressurized:
+        range: boolean
+        description: Whether or not pressure was applied to a thing or process.
+  duration: # or could be a ISO8601 perisod string
+    range: QuantityValue
+    description: The elapsed time of an activity.
+    examples:
+      - value: 
+          has_numeric_value: 2
+          has_unit: hours
+          
+  contained_in:
+    range: ContainerCategoryEnum
+    description: A type of container. i.e. test tube, falcon tube, etc.

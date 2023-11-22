@@ -27,9 +27,24 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
 ]
 
+# Tell Poetry which Python packages we want it to include in the build it creates.
+#
+# Note: This will allow consumers of the PyPI package to import things from not only `nmdc_schema`,
+#       but also from `nmdc_schema.migrators`.
+#
+#       The [Poetry docs](https://python-poetry.org/docs/basic-usage/) say:
+#       > "Poetry assumes your package contains a package with the same name as `tool.poetry.name`
+#       > located in the root of your project. If this is not the case, populate `tool.poetry.packages`
+#       > to specify your packages and their locations."
+#
+packages = [
+    { include = "nmdc_schema" }, # this is the package Poetry would have included by default
+    { include = "migrators", from = "nmdc_schema" },
+]
+
 [tool.poetry.dependencies]
-linkml = "^1.5.0"
-linkml-runtime = "^1.5.0"
+linkml = "^1.6.3"
+linkml-runtime = "^1.6.2"
 python = "^3.9"
 click-log = "^0.4.0"
 ruamel-yaml = "^0.18.5"
@@ -45,6 +60,7 @@ gen-pop-linkml2sheets = "^0.1.8" # for generate_and_populate_template, deprecate
 mkdocs = "^1.4.2"
 mkdocs-material = "^9.0.12"
 mkdocs-mermaid2-plugin = "^0.6.0"
+mkdocs-redirects = "^1.2.1"
 oaklib = "0.5.6"
 pymongo = "^4.3.3"
 python-dotenv = "^0.21.0"

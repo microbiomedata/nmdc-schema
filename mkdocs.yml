@@ -9,16 +9,20 @@ theme:
 plugins:
   - search
   - mermaid2
+  - redirects:  # reference: https://github.com/mkdocs/mkdocs-redirects
+      redirect_maps:
+        'home.md': 'index.md'  # redirects "/home" to "/"
+markdown_extensions:
+  - pymdownx.magiclink
 nav:
-  #  - Home: home.md
   - About: about.md
-  - Home: home.md
-  - NMDC Schema: index.md
+  - Identifiers in NMDC: identifiers.md
+  - Identifiers, CURIes, Prefixes, etc.: prefixes_curies_ids_mappings_etc.md
   - NMDC Metadata Standards Documentation: Metadata_Documentation_Overview.md
   - NMDC Schema Validation: schema-validation.md
-  - Identifiers in NMDC: identifiers.md
-  - Table of Identifier Typecodes for each Class: typecode_table.md
-  - Credits: credits.md
+  - NMDC Schema: index.md
+  - NMDC Style and Collaboration Guide: nmdc-schema-style-and-collaboration-guide.md
+  - Schema element deprecation guide: schema_element_deprecation_guide.md
 
 site_url: https://microbiomedata.github.io/nmdc-schema
 repo_url: https://github.com/microbiomedata/nmdc-schema
