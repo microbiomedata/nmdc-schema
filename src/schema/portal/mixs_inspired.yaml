@@ -19,6 +19,19 @@ default_prefix: nmdc
 default_range: string
 
 slots:
+  host_disease_stat:
+    description: List of diseases with which the host has been diagnosed; can include
+      multiple diagnoses. The value of the field depends on host; for humans the terms
+      should be chosen from the DO (Human Disease Ontology) at https://www.disease-ontology.org,
+      non-human host diseases are free text
+    notes:
+      - MAM 2023-11-27... hard-copying the definition for this true MIxS term into this
+        "MIxS inspired" file so that the build completes while waiting to merge PR in see_also
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/pull/1386
+    title: host disease status
+    slot_uri: MIXS:0000031
+
   collection_date_inc:
     description: Date the incubation was harvested/collected/ended. Only relevant
       for incubation samples.
