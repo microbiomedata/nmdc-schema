@@ -149,7 +149,7 @@ classes:
       - metaproteomic_analysis_id
       - gene_function_id
       - count
-      - best_protein
+      - is_best_protein
   FunctionalAnnotationAggMember:
     slots:
       - metagenome_annotation_id
