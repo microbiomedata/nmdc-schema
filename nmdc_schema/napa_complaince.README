@@ -1,6 +1,0 @@
-#install notes
-
-#for generating tokens needed to run
-pip install python-dotenv
-#use pip or conda to install pymong
-pip install pymongo
