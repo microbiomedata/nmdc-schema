@@ -504,6 +504,10 @@
                     "$ref": "#/$defs/TextValue",
                     "description": "A physical structure that is a body or assemblage of bodies in space to form a system capable of supporting loads"
                 },
+                "bulk_elect_conductivity": {
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "Electrical conductivity is a measure of the ability to carry electric current, which is mostly dictated by the chemistry of and amount of water."
+                },
                 "calcium": {
                     "$ref": "#/$defs/QuantityValue",
                     "description": "Concentration of calcium in the sample"
@@ -1241,6 +1245,10 @@
                         "$ref": "#/$defs/TextValue"
                     },
                     "type": "array"
+                },
+                "host_disease_stat": {
+                    "$ref": "#/$defs/TextValue",
+                    "description": "List of diseases with which the host has been diagnosed; can include multiple diagnoses. The value of the field depends on host; for humans the terms should be chosen from the DO (Human Disease Ontology) at https://www.disease-ontology.org, non-human host diseases are free text"
                 },
                 "host_dry_mass": {
                     "$ref": "#/$defs/QuantityValue",
@@ -3421,7 +3429,11 @@
                 },
                 "collecting_biosamples_from_site_set": {
                     "items": {
-                        "$ref": "#/$defs/CollectingBiosamplesFromSite"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/CollectingBiosamplesFromSite"
+                            }
+                        ]
                     },
                     "type": "array"
                 },
@@ -3441,7 +3453,11 @@
                 "extraction_set": {
                     "description": "This property links a database object to the set of extractions within it.",
                     "items": {
-                        "$ref": "#/$defs/Extraction"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/Extraction"
+                            }
+                        ]
                     },
                     "type": "array"
                 },
@@ -3474,7 +3490,11 @@
                 "library_preparation_set": {
                     "description": "This property links a database object to the set of DNA extractions within it.",
                     "items": {
-                        "$ref": "#/$defs/LibraryPreparation"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/LibraryPreparation"
+                            }
+                        ]
                     },
                     "type": "array"
                 },
@@ -3549,7 +3569,11 @@
                 "omics_processing_set": {
                     "description": "This property links a database object to the set of omics processings within it.",
                     "items": {
-                        "$ref": "#/$defs/OmicsProcessing"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/OmicsProcessing"
+                            }
+                        ]
                     },
                     "type": "array"
                 },
@@ -3590,7 +3614,11 @@
                 },
                 "pooling_set": {
                     "items": {
-                        "$ref": "#/$defs/Pooling"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/Pooling"
+                            }
+                        ]
                     },
                     "type": "array"
                 },
@@ -8372,7 +8400,11 @@
         },
         "collecting_biosamples_from_site_set": {
             "items": {
-                "$ref": "#/$defs/CollectingBiosamplesFromSite"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/CollectingBiosamplesFromSite"
+                    }
+                ]
             },
             "type": "array"
         },
@@ -8392,7 +8424,11 @@
         "extraction_set": {
             "description": "This property links a database object to the set of extractions within it.",
             "items": {
-                "$ref": "#/$defs/Extraction"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/Extraction"
+                    }
+                ]
             },
             "type": "array"
         },
@@ -8425,7 +8461,11 @@
         "library_preparation_set": {
             "description": "This property links a database object to the set of DNA extractions within it.",
             "items": {
-                "$ref": "#/$defs/LibraryPreparation"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/LibraryPreparation"
+                    }
+                ]
             },
             "type": "array"
         },
@@ -8500,7 +8540,11 @@
         "omics_processing_set": {
             "description": "This property links a database object to the set of omics processings within it.",
             "items": {
-                "$ref": "#/$defs/OmicsProcessing"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/OmicsProcessing"
+                    }
+                ]
             },
             "type": "array"
         },
@@ -8541,7 +8585,11 @@
         },
         "pooling_set": {
             "items": {
-                "$ref": "#/$defs/Pooling"
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/Pooling"
+                    }
+                ]
             },
             "type": "array"
         },
