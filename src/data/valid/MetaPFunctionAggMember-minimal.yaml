@@ -1,4 +1,5 @@
 metaproteomic_analysis_id: nmdc:wfmp-11-12ab
 gene_function_id: KEGG.ORTHOLOGY:K02358
 count: 17
-best_protein: true
+is_best_protein: 
+  has_boolean_value: true
