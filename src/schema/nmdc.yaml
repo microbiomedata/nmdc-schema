@@ -150,12 +150,28 @@ classes:
       - gene_function_id
       - count
       - is_best_protein
+    slot_usage:
+      metaproteomic_analysis_id:
+        required: true
+      gene_function_id:
+        required: true
+      count:
+        required: true
+      is_best_protein:
+        required: true
+        
   FunctionalAnnotationAggMember:
     slots:
       - metagenome_annotation_id
       - gene_function_id
       - count
-
+    slot_usage:
+      metagenome_annotation_id:
+        true
+      gene_function_id:
+        true
+      count:
+        true
   Database:
     tree_root: true
     aliases:
