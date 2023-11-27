@@ -58,6 +58,7 @@ prefixes:
   NCBITaxon: "http://purl.obolibrary.org/obo/NCBITaxon_"
   NCIT: "http://purl.obolibrary.org/obo/NCIT_"
   PANTHER.FAMILY: "https://bioregistry.io/panther.family:" # https://bioregistry.io/panther.family:PTHR12345
+  PATO: "http://purl.obolibrary.org/obo/PATO_"
   PFAM: "https://bioregistry.io/pfam:" # https://bioregistry.io/pfam:PF11779
   PO: "http://purl.obolibrary.org/obo/PO_"
   PR: "http://purl.obolibrary.org/obo/PR_"
