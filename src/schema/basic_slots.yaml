@@ -133,7 +133,11 @@ slots:
     range: InstrumentValue
   biomaterial_purity:
     range: QuantityValue
-
+  
+  is_best_protein:
+    description: Slot to store a boolean value. If populated with a  value of true the gene function is the best protein hit, if false it is not the best protein hit.
+    range: BooleanValue
+    
   instrument_name:
     description: >-
       The name of the instrument that was used for processing the sample.
