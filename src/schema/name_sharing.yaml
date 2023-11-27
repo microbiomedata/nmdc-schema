@@ -1,0 +1,33 @@
+id: https://w3id.org/nmdc/name_sharing
+name: name_sharing
+title: Name sharing test module for the NMDC Schema
+
+imports:
+  - linkml:types
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  nmdc: https://w3id.org/nmdc/
+
+default_prefix: nmdc
+default_range: string
+
+classes:
+  SharedName:
+    slots:
+      - test_slot1
+      - test_slot2
+      - test_slot3
+
+slots:
+  test_slot1:
+    range: TestEnum
+  test_slot2: { }
+  test_slot3: { }
+
+enums:
+  TestEnum:
+    permissible_values:
+      - test_value1
+      - test_value2
+      - test_value3

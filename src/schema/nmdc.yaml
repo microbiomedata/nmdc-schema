@@ -32,6 +32,7 @@ imports:
   - portal/sample_id
   - sample_prep
   - workflow_execution_activity
+  - name_sharing
 
 
 prefixes:
@@ -1593,8 +1594,8 @@ classes:
       - ORCID:0000-0002-8683-0050 #Montana Smith
     is_a: PlannedProcess
     comments:
-      - The mixing may be achieved manually or mechanically by shifting the material with stirrers or pumps or by revolving or shaking the container. 
-      - The process must not permit segregation of particles of different size or properties. 
+      - The mixing may be achieved manually or mechanically by shifting the material with stirrers or pumps or by revolving or shaking the container.
+      - The process must not permit segregation of particles of different size or properties.
       - Homogeneity may be considered to have been achieved in a practical sense when the sampling error of the processed portion is negligible compared to the total error of the measurement system.
     slots:
       - duration
@@ -1636,7 +1637,7 @@ classes:
         description: The volume of sample filtered.
       instrument_used:
         range: AnonymousInstrument
-      
+
 
   OmicsProcessing:
     aliases:
@@ -2231,7 +2232,7 @@ enums:
       edi:
         aliases:
           - EDI
-          - Environmental Data Initiative 
+          - Environmental Data Initiative
         title: EDI
         meaning: https://ror.org/0330j0z60
 
@@ -2342,7 +2343,7 @@ slots:
     exact_mappings:
       - OBI:0002475
   
-  mass: 
+  mass:
     title: mass
     description: A physical quality that inheres in a bearer by virtue of the proportion of the bearer's amount of matter.
     exact_mappings:
@@ -2987,12 +2988,12 @@ slots:
   bulk_elect_conductivity:
     comments:
       - Provide the value output of the field instrument.
-    description: 
-      Electrical conductivity is a measure of the ability to carry electric 
-      current, which is mostly dictated by the chemistry of and amount of water. 
+    description:
+      Electrical conductivity is a measure of the ability to carry electric
+      current, which is mostly dictated by the chemistry of and amount of water.
     title: bulk electrical conductivity
     examples:
-      value:  
+      value:
         has_raw_value: 0.017 mS/cm
         has_numeric_value: 0.017
         has_unit: mS/cm
@@ -3031,16 +3032,16 @@ slots:
     range: string
     description: The type of modification being done
   is_pressurized:
-        range: boolean
-        description: Whether or not pressure was applied to a thing or process.
+    range: boolean
+    description: Whether or not pressure was applied to a thing or process.
   duration: # or could be a ISO8601 perisod string
     range: QuantityValue
     description: The elapsed time of an activity.
     examples:
-      - value: 
+      - value:
           has_numeric_value: 2
           has_unit: hours
-          
+
   contained_in:
     range: ContainerCategoryEnum
     description: A type of container. i.e. test tube, falcon tube, etc.
