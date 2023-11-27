@@ -431,6 +431,7 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
+      - host_disease_stat
       - neon_biosample_identifiers
       - host_taxid
       - embargoed
@@ -1082,6 +1083,7 @@ classes:
       - sample_link
 
       ## EMSL slots
+      - bulk_elect_conductivity
 
       ## bioscales slots
       - zinc
@@ -1585,7 +1587,7 @@ classes:
 
   MixingProcess:
     description: >
-      The combining of components, particles or layers into a more homogeneous state. 
+      The combining of components, particles or layers into a more homogeneous state.
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
@@ -2982,6 +2984,22 @@ slots:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
 
+  bulk_elect_conductivity:
+    comments:
+      - Provide the value output of the field instrument.
+    description: 
+      Electrical conductivity is a measure of the ability to carry electric 
+      current, which is mostly dictated by the chemistry of and amount of water. 
+    title: bulk electrical conductivity
+    examples:
+      value:  
+        has_raw_value: 0.017 mS/cm
+        has_numeric_value: 0.017
+        has_unit: mS/cm
+      description: The conductivity measurement was 0.017 millisiemens per centimeter.
+    range: QuantityValue
+
+
   filter_material:
     description: "A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained."
     comments:
@@ -3026,4 +3044,3 @@ slots:
   contained_in:
     range: ContainerCategoryEnum
     description: A type of container. i.e. test tube, falcon tube, etc.
-    
