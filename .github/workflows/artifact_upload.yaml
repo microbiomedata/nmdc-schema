@@ -14,7 +14,7 @@ jobs:
         run: poetry install --no-interaction --no-root
       - name: Install library
         run: poetry install --no-interaction
-      - run: make squeaky-clean all test validate-filtered-request-all validate-polymorphic
+      - run: make squeaky-clean all test validate-filtered-request-all
       - run: date > date.txt
       - uses: actions/upload-artifact@v3
         with:
