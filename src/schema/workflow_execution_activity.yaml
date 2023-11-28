@@ -24,6 +24,7 @@ subsets:
       Subset consisting of just the workflow execution activities
 
 classes:
+
   WorkflowExecutionActivity:
     aliases:
       - analysis
@@ -45,6 +46,21 @@ classes:
       - part_of
       - type
       - version
+    #      - quality_control_report
+
+    #    rules:
+    #      - title: quality_control_report status is fail if has_output is missing
+    #        description: >-
+    #          If the WorkflowExecutionActivity has_output slot is not specified or is an empty list, then the
+    #          quality_control_report slot must have a status of fail.
+    #        preconditions:
+    #          slot_conditions:
+    #            has_output:
+    #              value_presence: ABSENT
+    #        postconditions:
+    #          slot_conditions:
+    #            quality_control_report:
+    #              status: fail
 
     slot_usage:
       started_at_time:

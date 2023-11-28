@@ -141,17 +141,40 @@ slots:
   biomaterial_purity:
     range: QuantityValue
 
+  #  failure_categorization:
+  #    range: FailureCategorization
+  #    multivalued: true
+  #
+  #  failure_what:
+  #    range: FailureWhatEnum
+  #    description: >-
+  #      Provides a summary about what caused a lab or workflow process to fail
+  #      (ie Low read count from a sequencer, malformed fastq files, etc)
+  #
+  #  failure_where:
+  #    range: FailureWhereEnum
+  #    description: >-
+  #      Describes the nmdc schema class that corresonds to where the failure occurred.
+  #      Most commonly this would be the same as Class that generated the results.
+  #      If the assembly size was too small to proceed to annotation failure_where would be MetagenomeAssembly.
+  #
+  #  comment:
+  #    range: string
+  #    description: >-
+  #      Slot to store additional comments about laboratory or workflow output. For workflow output
+  #      it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).
+
   instrument_name:
     description: >-
       The name of the instrument that was used for processing the sample.
-#    range: instrument_name_enum
+  #    range: instrument_name_enum
 
   has_part:
     domain: NamedThing
     range: NamedThing
     multivalued: true
     comments:
-    - originally limited to "A pathway can be broken down to a series of reaction step"
+      - originally limited to "A pathway can be broken down to a series of reaction step"
 
 #enums:
 #  instrument_name_enum:
