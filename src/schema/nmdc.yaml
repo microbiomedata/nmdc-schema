@@ -2282,25 +2282,25 @@ enums:
   FailureWhereEnum:
     description: The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred. 
     permissible_values:
-      Omics_Processing:
+      OmicsProcessing:
         description: A failure has occurred in omics processing, a lab process.
       Pooling:
         description: A failure has occurred in pooling, a lab process.
       Extraction: 
         description: A failure has occurred in extraction, a lab process.
-      Library_Preparation:
+      LibraryPreparation:
         description: A failure has occurred in library preparation, a lab process.
-      Metagenome_Assembly:
+      MetagenomeAssembly:
         description: A failure has occurred in metagenome assembly, a workflow process.
-      Metatranscriptome_Activity:
+      MetatranscriptomeActivity:
         description: A failure has occurred in metatranscriptome analysis, a workflow process.
-      Mags_Analysis_Activity:
+      MagsAnalysisActivity:
         description: A failure has occurred in binning, a workflow process to generate metagenome-assembled genomes (MAGS).
-      Read_Qc_Analysis_Activity:
+      ReadQcAnalysisActivity:
         description: A failure has occurred in read qc, a workflow process.
-      Read_Based_Taxonomy_Analysis_Activity:
+      ReadBasedTaxonomyAnalysisActivity:
         description: A failure has occurred in reads based taxonomy, a workflow process.
-      Metagenome_Annotation_Activity:
+      MetagenomeAnnotationActivity:
         description: A failure has occurred in annotation, a workflow process.
       
   SeparationMethodEnum:
