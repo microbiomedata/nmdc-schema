@@ -1,0 +1,73 @@
+id: https://w3id.org/nmdc/rules_test
+name: rules_test
+title: NMDC Schema rules test
+
+imports:
+  - linkml:types
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  nmdc: https://w3id.org/nmdc/
+
+default_prefix: nmdc
+default_range: string
+
+classes:
+  Pet:
+    slots:
+      - genus
+      - personality
+      - moniker
+      - lives_with
+    rules:
+      - title: dogs are not aloof
+        preconditions:
+          slot_conditions:
+            genus:
+              equals_string: Canis
+        postconditions:
+          slot_conditions:
+            personality:
+              equals_string: friendly
+      - title: friendly pets must be dogs
+        preconditions:
+          slot_conditions:
+            personality:
+              equals_string: friendly
+        postconditions:
+          slot_conditions:
+            genus:
+              equals_string: Canis
+  Family:
+    slots:
+      - family_name
+      - primary_caretaker
+      - state
+
+slots:
+  genus:
+    range: GenusEnum
+  personality:
+    range: PersonalityEnum
+  moniker:
+    range: string
+  lives_with:
+    range: Family
+  family_name:
+    range: string
+  primary_caretaker:
+    range: string
+  state:
+    range: string
+
+enums:
+  GenusEnum:
+    permissible_values:
+      - Felis
+      - Canis
+      - Ursa
+  PersonalityEnum:
+    permissible_values:
+      - friendly
+      - aloof
+      - violent
