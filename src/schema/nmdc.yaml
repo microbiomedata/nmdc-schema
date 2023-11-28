@@ -32,6 +32,7 @@ imports:
   - portal/sample_id
   - sample_prep
   - workflow_execution_activity
+  - rules_test
 
 
 prefixes:
