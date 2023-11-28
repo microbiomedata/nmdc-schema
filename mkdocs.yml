@@ -12,6 +12,8 @@ plugins:
   - redirects:  # reference: https://github.com/mkdocs/mkdocs-redirects
       redirect_maps:
         'home.md': 'index.md'  # redirects "/home" to "/"
+markdown_extensions:
+  - pymdownx.magiclink
 nav:
   - About: about.md
   - Identifiers in NMDC: identifiers.md
