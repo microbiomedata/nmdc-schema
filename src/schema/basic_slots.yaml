@@ -134,35 +134,36 @@ slots:
   protocol_link:
     range: Protocol
 
-
   #  nucleic_acid_concentration:
   #    range: InstrumentValue
 
   biomaterial_purity:
     range: QuantityValue
 
-  #  failure_categorization:
-  #    range: FailureCategorization
-  #    multivalued: true
-  #
-  #  failure_what:
-  #    range: FailureWhatEnum
-  #    description: >-
-  #      Provides a summary about what caused a lab or workflow process to fail
-  #      (ie Low read count from a sequencer, malformed fastq files, etc)
-  #
-  #  failure_where:
-  #    range: FailureWhereEnum
-  #    description: >-
-  #      Describes the nmdc schema class that corresonds to where the failure occurred.
-  #      Most commonly this would be the same as Class that generated the results.
-  #      If the assembly size was too small to proceed to annotation failure_where would be MetagenomeAssembly.
-  #
-  #  comment:
-  #    range: string
-  #    description: >-
-  #      Slot to store additional comments about laboratory or workflow output. For workflow output
-  #      it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).
+  failure_categorization:
+    range: FailureCategorization
+    multivalued: true
+
+  failure_what:
+    #      range: FailureWhatEnum
+    range: string
+    description: >-
+      Provides a summary about what caused a lab or workflow process to fail
+      (ie Low read count from a sequencer, malformed fastq files, etc)
+
+  failure_where:
+    #    range: FailureWhereEnum
+    range: string
+    description: >-
+      Describes the nmdc schema class that corresonds to where the failure occurred.
+      Most commonly this would be the same as Class that generated the results.
+      If the assembly size was too small to proceed to annotation failure_where would be MetagenomeAssembly.
+
+  qc_comment:
+    range: string
+    description: >-
+      Slot to store additional comments about laboratory or workflow output. For workflow output
+      it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).
 
   instrument_name:
     description: >-

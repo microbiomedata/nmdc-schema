@@ -46,7 +46,7 @@ classes:
       - part_of
       - type
       - version
-    #      - quality_control_report
+      - quality_control_report
 
     #    rules:
     #      - title: quality_control_report status is fail if has_output is missing

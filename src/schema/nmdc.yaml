@@ -225,7 +225,7 @@ classes:
       - extraction_target
       - processing_institution
       - protocol_link
-      #      - quality_control_report
+      - quality_control_report
       - input_mass
     slot_usage:
       has_input:
@@ -243,17 +243,17 @@ classes:
       - url
       - name
 
-  #  QualityControlReport:
-  #    slots:
-  #      - status
-  #      - name
-  #      - failure_categorization
-  #      - comment
-  #
-  #  FailureCategorization:
-  #    slots:
-  #      - failure_what
-  #      - failure_where
+  QualityControlReport:
+    slots:
+      - status
+      - name
+      - failure_categorization
+      - qc_comment
+
+  FailureCategorization:
+    slots:
+      - failure_what
+      - failure_where
 
   LibraryPreparation:
     class_uri: nmdc:LibraryPreparation
@@ -1687,7 +1687,7 @@ classes:
       - target_gene
       - target_subfragment
       - type
-    #      - quality_control_report
+      - quality_control_report
 
     slot_usage:
       id:
@@ -2379,10 +2379,8 @@ slots:
   extraction_target:
     range: ExtractionTargetEnum
 
-  #  quality_control_report:
-  #    #    range: integer
-  #    range: QualityControlReport
-  #  # structure
+  quality_control_report:
+    range: QualityControlReport
 
   pcr_cycles:
     range: integer
