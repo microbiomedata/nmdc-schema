@@ -21,9 +21,6 @@ read_qc_analysis_activity_set:
     has_input:
       - nmdc:dobj-11-1k62bt83
       - nmdc:dobj-11-e8hs8y25
-    #update has_output slot to be optional if quality_control_report.status=fail
-    has_output:
-      - nmdc:dobj-11-REMOVE-MY-WHOLE-HAS-OUPUT
 
   #valid passing data
   - id: nmdc:wfrqc-11-hemh0a88.1
