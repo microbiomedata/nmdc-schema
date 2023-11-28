@@ -2268,43 +2268,43 @@ enums:
     permissible_values:
       V-bottom conical tube:
 
-  #  FailureWhatEnum:
-  #    description: The permitted values for describing where a failure occured during processing in the lab during analysis workflows.
-  #    permissible_values:
-  #      Low read count:
-  #        description: Number of output reads is not sufficent to continue to the next analysis step.
-  #      Malformed data:
-  #        description: Workflow failure reading input or writing the output file(s).
-  #      Assembly size too small:
-  #        description: The size of the metagenome or metatranscriptome assembly is too small to proceed to the next analysis workflow.
-  #      No valid data generated:
-  #        description: A process ran but did not produce any output. Ie binning ran but did not produce any medium or high quality bins.
-  #      Other:
-  #        description: A lab process or analysis workflow has failed in a way that has not been captured by the avaliable values yet. Please use slot 'comment' to specify details.
-  #
-  #  FailureWhereEnum:
-  #    description: The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.
-  #    permissible_values:
-  #      Omics_Processing:
-  #        description: A failure has occurred in omics processing, a lab process.
-  #      Pooling:
-  #        description: A failure has occurred in pooling, a lab process.
-  #      Extraction:
-  #        description: A failure has occurred in extraction, a lab process.
-  #      Library_Preparation:
-  #        description: A failure has occurred in library preparation, a lab process.
-  #      Metagenome_Assembly:
-  #        description: A failure has occurred in metagenome assembly, a workflow process.
-  #      Metatranscriptome_Activity:
-  #        description: A failure has occurred in metatranscriptome analysis, a workflow process.
-  #      Mags_Analysis_Activity:
-  #        description: A failure has occurred in binning, a workflow process to generate metagenome-assembled genomes (MAGS).
-  #      Read_Qc_Analysis_Activity:
-  #        description: A failure has occurred in read qc, a workflow process.
-  #      Read_Based_Taxonomy_Analysis_Activity:
-  #        description: A failure has occurred in reads based taxonomy, a workflow process.
-  #      Metagenome_Annotation_Activity:
-  #        description: A failure has occurred in annotation, a workflow process.
+  FailureWhatEnum:
+    description: The permitted values for describing where a failure occured during processing in the lab during analysis workflows.
+    permissible_values:
+      Low read count:
+        description: Number of output reads is not sufficent to continue to the next analysis step.
+      Malformed data:
+        description: Workflow failure reading input or writing the output file(s).
+      Assembly size too small:
+        description: The size of the metagenome or metatranscriptome assembly is too small to proceed to the next analysis workflow.
+      No valid data generated:
+        description: A process ran but did not produce any output. Ie binning ran but did not produce any medium or high quality bins.
+      Other:
+        description: A lab process or analysis workflow has failed in a way that has not been captured by the avaliable values yet. Please use slot 'comment' to specify details.
+
+  FailureWhereEnum:
+    description: The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.
+    permissible_values:
+      Omics_Processing:
+        description: A failure has occurred in omics processing, a lab process.
+      Pooling:
+        description: A failure has occurred in pooling, a lab process.
+      Extraction:
+        description: A failure has occurred in extraction, a lab process.
+      Library_Preparation:
+        description: A failure has occurred in library preparation, a lab process.
+      Metagenome_Assembly:
+        description: A failure has occurred in metagenome assembly, a workflow process.
+      Metatranscriptome_Activity:
+        description: A failure has occurred in metatranscriptome analysis, a workflow process.
+      Mags_Analysis_Activity:
+        description: A failure has occurred in binning, a workflow process to generate metagenome-assembled genomes (MAGS).
+      Read_Qc_Analysis_Activity:
+        description: A failure has occurred in read qc, a workflow process.
+      Read_Based_Taxonomy_Analysis_Activity:
+        description: A failure has occurred in reads based taxonomy, a workflow process.
+      Metagenome_Annotation_Activity:
+        description: A failure has occurred in annotation, a workflow process.
 
   SeparationMethodEnum:
     description: The tool/substance used to separate or filter a solution or mixture.

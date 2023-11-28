@@ -145,15 +145,15 @@ slots:
     multivalued: true
 
   failure_what:
-    #      range: FailureWhatEnum
-    range: string
+    range: FailureWhatEnum
+    #    range: string
     description: >-
       Provides a summary about what caused a lab or workflow process to fail
       (ie Low read count from a sequencer, malformed fastq files, etc)
 
   failure_where:
-    #    range: FailureWhereEnum
-    range: string
+    range: FailureWhereEnum
+    #    range: string
     description: >-
       Describes the nmdc schema class that corresonds to where the failure occurred.
       Most commonly this would be the same as Class that generated the results.
