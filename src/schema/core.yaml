@@ -142,7 +142,6 @@ classes:
       - dna_absorb1
       - dna_concentration
       - external_database_identifiers
-    #      - nucleic_acid_concentration
     slot_usage:
       id:
         required: true

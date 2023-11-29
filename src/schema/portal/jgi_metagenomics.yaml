@@ -75,8 +75,6 @@ slots:
     slot_group: JGI-Metagenomics
     recommended: true
   dna_concentration:
-    see_also:
-      nmdc:nucleic_acid_concentration
     title: DNA concentration in ng/ul
     comments:
       - Units must be in ng/uL. Enter the numerical part only. Must be calculated using
