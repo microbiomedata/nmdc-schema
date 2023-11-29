@@ -675,7 +675,9 @@ slots:
   websites:
     range: string
     multivalued: true
+    pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
     description: A list of websites that are associated with the entity.
+    comments: DOIs should not be included as websites. Instead, use the associated_dois slot.
 
   highest_similarity_score:
     todos:
