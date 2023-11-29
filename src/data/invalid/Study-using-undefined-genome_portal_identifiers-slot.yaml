@@ -1,5 +1,5 @@
 id: nmdc:sty-11-ab
-jgi_genome_portal_identifiers:
+jgi_genome_portal_identifiers: # this slot is not defined
  - https://genome.jgi.doe.gov/portal/BioDefcarcycling/BioDefcarcycling.info.html
 # maybe "other data links" instead?
 # could be links to raw data or analysis results
