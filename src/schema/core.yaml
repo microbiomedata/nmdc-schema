@@ -212,14 +212,6 @@ classes:
       type:
         description: An optional string that specified the type of object.
 
-  #  InstrumentValue:
-  #    is_a: AttributeValue
-  #    slots:
-  #      - has_unit
-  #      - has_numeric_value
-  #      - instrument_name
-
-
   QuantityValue:
     is_a: AttributeValue
     description: A simple quantity, e.g. 2cm
@@ -300,21 +292,6 @@ classes:
       - number_of_contig
       - total_bases
       - type
-
-  #  Instrument:
-  #    is_a: NamedThing
-  #    aliases:
-  #      - device
-  #    description: >-
-  #      A material entity that is designed to perform a function in a scientific investigation, but is not a reagent[OBI].
-  #    exact_mappings:
-  #      - OBI:0000485
-  #    slot_usage:
-  #      id:
-  #        required: true
-  #        structured_pattern:
-  #          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-  #          interpolated: true
 
   MetaboliteQuantification:
     description: This is used to link a metabolomics analysis workflow to a specific metabolite
