@@ -97,8 +97,6 @@ slots:
     slot_group: JGI-Metatranscriptomics
     recommended: true
   rna_concentration:
-    see_also:
-      nmdc:nucleic_acid_concentration
     title: RNA concentration in ng/ul
     comments:
       - Units must be in ng/uL. Enter the numerical part only. Must be calculated using

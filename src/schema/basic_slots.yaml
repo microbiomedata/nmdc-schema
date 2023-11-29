@@ -134,10 +134,6 @@ slots:
   protocol_link:
     range: Protocol
 
-
-  #  nucleic_acid_concentration:
-  #    range: InstrumentValue
-
   biomaterial_purity:
     range: QuantityValue
 
