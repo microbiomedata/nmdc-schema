@@ -1129,8 +1129,6 @@ classes:
           - is "to" acceptable? Is there a better way to request that be written?
           - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot # what does no longer matching an IRI mean?
         annotations:
-          expected_value mean
-        annotations:
           expected_value: date string
         range: string
         pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$
