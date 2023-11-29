@@ -33,14 +33,113 @@ subsets:
     description: A combination of a checklist and a package
     from_schema: http://w3id.org/mixs/terms
 enums:
-  sr_kerog_type_enum:
+  rel_samp_loc_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      Type I: {}
-      Type II: {}
-      Type III: {}
-      Type IV: {}
+      edge of car: {}
+      center of car: {}
+      under a seat: {}
+  window_horiz_pos_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      left: {}
+      middle: {}
+      right: {}
+  ext_window_orient_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      north: {}
+      south: {}
+      east: {}
+      west: {}
+      northeast: {}
+      southeast: {}
+      southwest: {}
+      northwest: {}
+  vis_media_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      photos: {}
+      videos: {}
+      commonly of the building: {}
+      site context (adjacent buildings, vegetation, terrain, streets): {}
+      interiors: {}
+      equipment: {}
+      3D scans: {}
+  build_docs_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      building information model: {}
+      commissioning report: {}
+      complaint logs: {}
+      contract administration: {}
+      cost estimate: {}
+      janitorial schedules or logs: {}
+      maintenance plans: {}
+      schedule: {}
+      sections: {}
+      shop drawings: {}
+      submittals: {}
+      ventilation system: {}
+      windows: {}
+  room_type_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      attic: {}
+      bathroom: {}
+      closet: {}
+      conference room: {}
+      elevator: {}
+      examining room: {}
+      hallway: {}
+      kitchen: {}
+      mail room: {}
+      private office: {}
+      open office: {}
+      stairwell: {}
+      ',restroom': {}
+      lobby: {}
+      vestibule: {}
+      mechanical or electrical room: {}
+      data center: {}
+      laboratory_wet: {}
+      laboratory_dry: {}
+      gymnasium: {}
+      natatorium: {}
+      auditorium: {}
+      lockers: {}
+      cafe: {}
+      warehouse: {}
+  building_setting_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      urban: {}
+      suburban: {}
+      exurban: {}
+      rural: {}
+  train_stat_loc_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      south station above ground: {}
+      south station underground: {}
+      south station amtrak: {}
+      forest hills: {}
+      riverside: {}
+  samp_subtype_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      oil phase: {}
+      water phase: {}
+      biofilm: {}
+      not applicable: {}
       other: {}
+  season_use_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      Spring: {}
+      Summer: {}
+      Fall: {}
+      Winter: {}
   mech_struc_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
@@ -53,93 +152,15 @@ enums:
       train: {}
       car: {}
       bus: {}
-  filter_type_enum:
+  door_move_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      particulate air filter: {}
-      chemical air filter: {}
-      low-MERV pleated media: {}
-      HEPA: {}
-      electrostatic: {}
-      gas-phase or ultraviolet air treatments: {}
-  oxy_stat_samp_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      aerobic: {}
-      anaerobic: {}
-      other: {}
-  window_type_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      single-hung sash window: {}
-      horizontal sash window: {}
-      fixed window: {}
-  arch_struc_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      building: {}
-      shed: {}
-      home: {}
-  ceil_finish_mat_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      drywall: {}
-      mineral fibre: {}
-      tiles: {}
-      PVC: {}
-      plasterboard: {}
-      metal: {}
-      fiberglass: {}
-      stucco: {}
-      mineral wool/calcium silicate: {}
-      wood: {}
-  quad_pos_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      North side: {}
-      West side: {}
-      South side: {}
-      East side: {}
-  hcr_geol_age_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      Archean: {}
-      Cambrian: {}
-      Carboniferous: {}
-      Cenozoic: {}
-      Cretaceous: {}
-      Devonian: {}
-      Jurassic: {}
-      Mesozoic: {}
-      Neogene: {}
-      Ordovician: {}
-      Paleogene: {}
-      Paleozoic: {}
-      Permian: {}
-      Precambrian: {}
-      Proterozoic: {}
-      Silurian: {}
-      Triassic: {}
-      other: {}
-  occup_document_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      automated count: {}
-      estimate: {}
-      manual count: {}
-      videos: {}
-  plant_growth_med_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      other artificial liquid medium: {}
-      other artificial solid medium: {}
-      peat moss: {}
-      perlite: {}
-      pumice: {}
-      sand: {}
-      soil: {}
-      vermiculite: {}
-      water: {}
+      collapsible: {}
+      folding: {}
+      revolving: {}
+      rolling shutter: {}
+      sliding: {}
+      swinging: {}
   ceil_cond_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
@@ -148,38 +169,36 @@ enums:
       needs repair: {}
       damaged: {}
       rupture: {}
-  gender_restroom_enum:
+  samp_dis_stage_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      all gender: {}
-      female: {}
-      gender neurtral: {}
-      male: {}
-      male and female: {}
-      unisex: {}
-  vis_media_enum:
+      dissemination: {}
+      growth and reproduction: {}
+      infection: {}
+      inoculation: {}
+      penetration: {}
+      other: {}
+  door_comp_type_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      photos: {}
-      videos: {}
-      commonly of the building: {}
-      site context (adjacent buildings, vegetation, terrain, streets): {}
-      interiors: {}
-      equipment: {}
-      3D scans: {}
-  door_type_wood_enum:
+      metal covered: {}
+      revolving: {}
+      sliding: {}
+      telescopic: {}
+  window_vert_pos_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      bettened and ledged: {}
-      battened: {}
-      ledged and braced: {}
-      ledged and framed: {}
-      ledged, braced and frame: {}
-      framed and paneled: {}
-      glashed or sash: {}
-      flush: {}
-      louvered: {}
-      wire gauged: {}
+      bottom: {}
+      middle: {}
+      top: {}
+      low: {}
+      high: {}
+  train_line_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      red: {}
+      green: {}
+      orange: {}
   fao_class_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
@@ -209,133 +228,6 @@ enums:
       Solonetz: {}
       Vertisols: {}
       Yermosols: {}
-  soil_horizon_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      O horizon: {}
-      A horizon: {}
-      E horizon: {}
-      B horizon: {}
-      C horizon: {}
-      R layer: {}
-      Permafrost: {}
-      M horizon: {}
-  specific_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      operation: {}
-      as built: {}
-      construction: {}
-      bid: {}
-      design: {}
-      photos: {}
-  tidal_stage_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      low tide: {}
-      ebb tide: {}
-      flood tide: {}
-      high tide: {}
-  int_wall_cond_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      new: {}
-      visible wear: {}
-      needs repair: {}
-      damaged: {}
-      rupture: {}
-  heat_cool_type_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      radiant system: {}
-      heat pump: {}
-      forced air system: {}
-      steam forced heat: {}
-      wood stove: {}
-  drainage_class_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      very poorly: {}
-      poorly: {}
-      somewhat poorly: {}
-      moderately well: {}
-      well: {}
-      excessively drained: {}
-  wall_const_type_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      frame construction: {}
-      joisted masonry: {}
-      light noncombustible: {}
-      masonry noncombustible: {}
-      modified fire resistive: {}
-      fire resistive: {}
-  samp_weather_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      clear sky: {}
-      cloudy: {}
-      foggy: {}
-      hail: {}
-      rain: {}
-      snow: {}
-      sleet: {}
-      sunny: {}
-      windy: {}
-  train_line_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      red: {}
-      green: {}
-      orange: {}
-  ceil_type_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      cathedral: {}
-      dropped: {}
-      concave: {}
-      barrel-shaped: {}
-      coffered: {}
-      cove: {}
-      stretched: {}
-  samp_dis_stage_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      dissemination: {}
-      growth and reproduction: {}
-      infection: {}
-      inoculation: {}
-      penetration: {}
-      other: {}
-  samp_md_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      DF: {}
-      RT: {}
-      KB: {}
-      MSL: {}
-      other: {}
-  door_comp_type_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      metal covered: {}
-      revolving: {}
-      sliding: {}
-      telescopic: {}
-  window_loc_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      north: {}
-      south: {}
-      east: {}
-      west: {}
-  door_loc_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      north: {}
-      south: {}
-      east: {}
-      west: {}
   water_feat_type_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
@@ -344,11 +236,33 @@ enums:
       standing feature: {}
       stream: {}
       waterfall: {}
-  ceil_texture_enum:
+  wall_finish_mat_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      plaster: {}
+      gypsum plaster: {}
+      veneer plaster: {}
+      gypsum board: {}
+      tile: {}
+      terrazzo: {}
+      stone facing: {}
+      acoustical treatment: {}
+      wood: {}
+      metal: {}
+      masonry: {}
+  sediment_type_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      biogenous: {}
+      cosmogenous: {}
+      hydrogenous: {}
+      lithogenous: {}
+  wall_texture_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       crows feet: {}
       crows-foot stomp: {}
+      '': {}
       double skip: {}
       hawk and trowel: {}
       knockdown: {}
@@ -360,29 +274,113 @@ enums:
       smooth: {}
       stomp knockdown: {}
       swirl: {}
-  growth_habit_enum:
+  samp_capt_status_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      erect: {}
-      semi-erect: {}
-      spreading: {}
-      prostrate: {}
-  shading_device_type_enum:
+      active surveillance in response to an outbreak: {}
+      active surveillance not initiated by an outbreak: {}
+      farm sample: {}
+      market sample: {}
+      other: {}
+  door_type_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      bahama shutters: {}
-      exterior roll blind: {}
-      gambrel awning: {}
-      hood awning: {}
-      porchroller awning: {}
-      sarasota shutters: {}
-      slatted aluminum: {}
-      solid aluminum awning: {}
-      sun screen: {}
-      tree: {}
-      trellis: {}
-      venetian awning: {}
-  room_type_enum:
+      composite: {}
+      metal: {}
+      wooden: {}
+  samp_floor_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      1st floor: {}
+      2nd floor: {}
+      basement: {}
+      lobby: {}
+  floor_water_mold_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      mold odor: {}
+      wet floor: {}
+      water stains: {}
+      wall discoloration: {}
+      floor discoloration: {}
+      ceiling discoloration: {}
+      peeling paint or wallpaper: {}
+      bulging walls: {}
+      condensation: {}
+  door_loc_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      north: {}
+      south: {}
+      east: {}
+      west: {}
+  biol_stat_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      wild: {}
+      natural: {}
+      semi-natural: {}
+      inbred line: {}
+      breeder's line: {}
+      hybrid: {}
+      clonal selection: {}
+      mutant: {}
+  wall_surf_treatment_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      painted: {}
+      wall paper: {}
+      no treatment: {}
+      paneling: {}
+      stucco: {}
+      fabric: {}
+  biotic_relationship_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      free living: {}
+      parasite: {}
+      commensal: {}
+      symbiont: {}
+  door_cond_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      damaged: {}
+      needs repair: {}
+      new: {}
+      rupture: {}
+      visible wear: {}
+  floor_struc_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      balcony: {}
+      floating floor: {}
+      glass floor: {}
+      raised floor: {}
+      sprung floor: {}
+      wood-framed: {}
+      concrete: {}
+  organism_count_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      ATP: {}
+      MPN: {}
+      other: {}
+  heat_deliv_loc_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      north: {}
+      south: {}
+      east: {}
+      west: {}
+  heat_cool_type_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      radiant system: {}
+      heat pump: {}
+      forced air system: {}
+      steam forced heat: {}
+      wood stove: {}
+  room_connected_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       attic: {}
@@ -394,175 +392,9 @@ enums:
       hallway: {}
       kitchen: {}
       mail room: {}
-      private office: {}
-      open office: {}
+      office: {}
       stairwell: {}
-      ',restroom': {}
-      lobby: {}
-      vestibule: {}
-      mechanical or electrical room: {}
-      data center: {}
-      laboratory_wet: {}
-      laboratory_dry: {}
-      gymnasium: {}
-      natatorium: {}
-      auditorium: {}
-      lockers: {}
-      cafe: {}
-      warehouse: {}
-  light_type_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      natural light: {}
-      electric light: {}
-      desk lamp: {}
-      flourescent lights: {}
-      none: {}
-  build_docs_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      building information model: {}
-      commissioning report: {}
-      complaint logs: {}
-      contract administration: {}
-      cost estimate: {}
-      janitorial schedules or logs: {}
-      maintenance plans: {}
-      schedule: {}
-      sections: {}
-      shop drawings: {}
-      submittals: {}
-      ventilation system: {}
-      windows: {}
-  window_vert_pos_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      bottom: {}
-      middle: {}
-      top: {}
-      low: {}
-      high: {}
-  samp_collect_point_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      well: {}
-      test well: {}
-      drilling rig: {}
-      wellhead: {}
-      separator: {}
-      storage tank: {}
-      other: {}
-  train_stop_loc_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      end: {}
-      mid: {}
-      downtown: {}
-  door_cond_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      damaged: {}
-      needs repair: {}
-      new: {}
-      rupture: {}
-      visible wear: {}
-  room_condt_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      new: {}
-      visible wear: {}
-      needs repair: {}
-      damaged: {}
-      rupture: {}
-      visible signs of mold/mildew: {}
-  door_type_metal_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      collapsible: {}
-      corrugated steel: {}
-      hollow: {}
-      rolling shutters: {}
-      steel plate: {}
-  tillage_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      drill: {}
-      cutting disc: {}
-      ridge till: {}
-      strip tillage: {}
-      zonal tillage: {}
-      chisel: {}
-      tined: {}
-      mouldboard: {}
-      disc plough: {}
-  sr_lithology_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      Clastic: {}
-      Carbonate: {}
-      Coal: {}
-      Biosilicieous: {}
-      other: {}
-  door_move_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      collapsible: {}
-      folding: {}
-      revolving: {}
-      rolling shutter: {}
-      sliding: {}
-      swinging: {}
-  window_cover_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      blinds: {}
-      curtains: {}
-      none: {}
-  lithology_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      Basement: {}
-      Chalk: {}
-      Chert: {}
-      Coal: {}
-      Conglomerate: {}
-      Diatomite: {}
-      Dolomite: {}
-      Limestone: {}
-      Sandstone: {}
-      Shale: {}
-      Siltstone: {}
-      Volcanic: {}
-      other: {}
-  samp_floor_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      1st floor: {}
-      2nd floor: {}
-      basement: {}
-      lobby: {}
-  door_direct_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      inward: {}
-      outward: {}
-      sideways: {}
-  heat_deliv_loc_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      north: {}
-      south: {}
-      east: {}
-      west: {}
-  sr_dep_env_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      Lacustine: {}
-      Fluvioldeltaic: {}
-      Fluviomarine: {}
-      Marine: {}
-      other: {}
-  sr_geol_age_enum:
+  hcr_geol_age_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       Archean: {}
@@ -583,52 +415,145 @@ enums:
       Silurian: {}
       Triassic: {}
       other: {}
-  ext_wall_orient_enum:
+  samp_md_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      north: {}
-      south: {}
-      east: {}
-      west: {}
-      northeast: {}
-      southeast: {}
-      southwest: {}
-      northwest: {}
-  floor_water_mold_enum:
+      DF: {}
+      RT: {}
+      KB: {}
+      MSL: {}
+      other: {}
+  room_samp_pos_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      mold odor: {}
-      wet floor: {}
-      water stains: {}
-      wall discoloration: {}
-      floor discoloration: {}
-      ceiling discoloration: {}
-      peeling paint or wallpaper: {}
-      bulging walls: {}
-      condensation: {}
-  window_cond_enum:
+      north corner: {}
+      south corner: {}
+      west corner: {}
+      east corner: {}
+      northeast corner: {}
+      northwest corner: {}
+      southeast corner: {}
+      southwest corner: {}
+      center: {}
+  profile_position_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      damaged: {}
-      needs repair: {}
+      summit: {}
+      shoulder: {}
+      backslope: {}
+      footslope: {}
+      toeslope: {}
+  quad_pos_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      North side: {}
+      West side: {}
+      South side: {}
+      East side: {}
+  indoor_space_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      bedroom: {}
+      office: {}
+      bathroom: {}
+      foyer: {}
+      kitchen: {}
+      locker room: {}
+      hallway: {}
+      elevator: {}
+  window_type_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      single-hung sash window: {}
+      horizontal sash window: {}
+      fixed window: {}
+  floor_cond_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
       new: {}
-      rupture: {}
       visible wear: {}
-  shading_device_cond_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      damaged: {}
       needs repair: {}
-      new: {}
+      damaged: {}
       rupture: {}
-      visible wear: {}
-  wall_loc_enum:
+  occup_document_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      north: {}
-      south: {}
-      east: {}
-      west: {}
+      automated count: {}
+      estimate: {}
+      manual count: {}
+      videos: {}
+  room_condt_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      new: {}
+      visible wear: {}
+      needs repair: {}
+      damaged: {}
+      rupture: {}
+      visible signs of mold/mildew: {}
+  specific_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      operation: {}
+      as built: {}
+      construction: {}
+      bid: {}
+      design: {}
+      photos: {}
+  build_occup_type_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      office: {}
+      market: {}
+      restaurant: {}
+      residence: {}
+      school: {}
+      residential: {}
+      commercial: {}
+      low rise: {}
+      high rise: {}
+      wood framed: {}
+      health care: {}
+      airport: {}
+      sports complex: {}
+  freq_clean_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      Daily: {}
+      Weekly: {}
+      Monthly: {}
+      Quarterly: {}
+      Annually: {}
+      other: {}
+  samp_weather_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      clear sky: {}
+      cloudy: {}
+      foggy: {}
+      hail: {}
+      rain: {}
+      snow: {}
+      sleet: {}
+      sunny: {}
+      windy: {}
+  hcr_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      Oil Reservoir: {}
+      Gas Reservoir: {}
+      Oil Sand: {}
+      Coalbed: {}
+      Shale: {}
+      Tight Oil Reservoir: {}
+      Tight Gas Reservoir: {}
+      other: {}
+  door_direct_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      inward: {}
+      outward: {}
+      sideways: {}
   door_mat_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
@@ -642,44 +567,19 @@ enums:
       vinyl: {}
       wood: {}
       wood/plastic composite: {}
-  plant_sex_enum:
+  window_mat_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      Androdioecious: {}
-      Androecious: {}
-      Androgynous: {}
-      Androgynomonoecious: {}
-      Andromonoecious: {}
-      Bisexual: {}
-      Dichogamous: {}
-      Diclinous: {}
-      Dioecious: {}
-      Gynodioecious: {}
-      Gynoecious: {}
-      Gynomonoecious: {}
-      Hermaphroditic: {}
-      Imperfect: {}
-      Monoclinous: {}
-      Monoecious: {}
-      Perfect: {}
-      Polygamodioecious: {}
-      Polygamomonoecious: {}
-      Polygamous: {}
-      Protandrous: {}
-      Protogynous: {}
-      Subandroecious: {}
-      Subdioecious: {}
-      Subgynoecious: {}
-      Synoecious: {}
-      Trimonoecious: {}
-      Trioecious: {}
-      Unisexual: {}
-  wall_texture_enum:
+      clad: {}
+      fiberglass: {}
+      metal: {}
+      vinyl: {}
+      wood: {}
+  ceil_texture_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       crows feet: {}
       crows-foot stomp: {}
-      '': {}
       double skip: {}
       hawk and trowel: {}
       knockdown: {}
@@ -691,246 +591,14 @@ enums:
       smooth: {}
       stomp knockdown: {}
       swirl: {}
-  surf_material_enum:
+  sr_kerog_type_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      adobe: {}
-      carpet: {}
-      cinder blocks: {}
-      concrete: {}
-      hay bales: {}
-      glass: {}
-      metal: {}
-      paint: {}
-      plastic: {}
-      stainless steel: {}
-      stone: {}
-      stucco: {}
-      tile: {}
-      vinyl: {}
-      wood: {}
-  biotic_relationship_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      free living: {}
-      parasite: {}
-      commensal: {}
-      symbiont: {}
-  samp_subtype_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      oil phase: {}
-      water phase: {}
-      biofilm: {}
-      not applicable: {}
+      Type I: {}
+      Type II: {}
+      Type III: {}
+      Type IV: {}
       other: {}
-  hcr_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      Oil Reservoir: {}
-      Gas Reservoir: {}
-      Oil Sand: {}
-      Coalbed: {}
-      Shale: {}
-      Tight Oil Reservoir: {}
-      Tight Gas Reservoir: {}
-      other: {}
-  wall_finish_mat_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      plaster: {}
-      gypsum plaster: {}
-      veneer plaster: {}
-      gypsum board: {}
-      tile: {}
-      terrazzo: {}
-      stone facing: {}
-      acoustical treatment: {}
-      wood: {}
-      metal: {}
-      masonry: {}
-  season_use_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      Spring: {}
-      Summer: {}
-      Fall: {}
-      Winter: {}
-  floor_struc_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      balcony: {}
-      floating floor: {}
-      glass floor: {}
-      raised floor: {}
-      sprung floor: {}
-      wood-framed: {}
-      concrete: {}
-  depos_env_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      Continental - Alluvial: {}
-      Continental - Aeolian: {}
-      Continental - Fluvial: {}
-      Continental - Lacustrine: {}
-      Transitional - Deltaic: {}
-      Transitional - Tidal: {}
-      Transitional - Lagoonal: {}
-      Transitional - Beach: {}
-      Transitional - Lake: {}
-      Marine - Shallow: {}
-      Marine - Deep: {}
-      Marine - Reef: {}
-      Other - Evaporite: {}
-      Other - Glacial: {}
-      Other - Volcanic: {}
-      other: {}
-  room_loc_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      corner room: {}
-      interior room: {}
-      exterior wall: {}
-  profile_position_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      summit: {}
-      shoulder: {}
-      backslope: {}
-      footslope: {}
-      toeslope: {}
-  indoor_space_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      bedroom: {}
-      office: {}
-      bathroom: {}
-      foyer: {}
-      kitchen: {}
-      locker room: {}
-      hallway: {}
-      elevator: {}
-  samp_capt_status_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      active surveillance in response to an outbreak: {}
-      active surveillance not initiated by an outbreak: {}
-      farm sample: {}
-      market sample: {}
-      other: {}
-  furniture_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      cabinet: {}
-      chair: {}
-      desks: {}
-  hc_produced_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      Oil: {}
-      Gas-Condensate: {}
-      Gas: {}
-      Bitumen: {}
-      Coalbed Methane: {}
-      other: {}
-  biol_stat_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      wild: {}
-      natural: {}
-      semi-natural: {}
-      inbred line: {}
-      breeder's line: {}
-      hybrid: {}
-      clonal selection: {}
-      mutant: {}
-  window_mat_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      clad: {}
-      fiberglass: {}
-      metal: {}
-      vinyl: {}
-      wood: {}
-  room_samp_pos_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      north corner: {}
-      south corner: {}
-      west corner: {}
-      east corner: {}
-      northeast corner: {}
-      northwest corner: {}
-      southeast corner: {}
-      southwest corner: {}
-      center: {}
-  surf_air_cont_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      dust: {}
-      organic matter: {}
-      particulate matter: {}
-      volatile organic compounds: {}
-      biological contaminants: {}
-      radon: {}
-      nutrients: {}
-      biocides: {}
-  door_type_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      composite: {}
-      metal: {}
-      wooden: {}
-  organism_count_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      ATP: {}
-      MPN: {}
-      other: {}
-  sediment_type_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      biogenous: {}
-      cosmogenous: {}
-      hydrogenous: {}
-      lithogenous: {}
-  substructure_type_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      crawlspace: {}
-      slab on grade: {}
-      basement: {}
-  indoor_surf_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      cabinet: {}
-      ceiling: {}
-      counter top: {}
-      door: {}
-      shelving: {}
-      vent cover: {}
-      window: {}
-      wall: {}
-  wall_surf_treatment_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      painted: {}
-      wall paper: {}
-      no treatment: {}
-      paneling: {}
-      stucco: {}
-      fabric: {}
-  drawings_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      operation: {}
-      as built: {}
-      construction: {}
-      bid: {}
-      design: {}
-      building navigation map: {}
-      diagram: {}
-      sketch: {}
   floor_finish_mat_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
@@ -952,7 +620,192 @@ enums:
       clear finish: {}
       paint: {}
       none or unfinished: {}
-  floor_cond_enum:
+  soil_horizon_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      O horizon: {}
+      A horizon: {}
+      E horizon: {}
+      B horizon: {}
+      C horizon: {}
+      R layer: {}
+      Permafrost: {}
+      M horizon: {}
+  drainage_class_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      very poorly: {}
+      poorly: {}
+      somewhat poorly: {}
+      moderately well: {}
+      well: {}
+      excessively drained: {}
+  growth_habit_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      erect: {}
+      semi-erect: {}
+      spreading: {}
+      prostrate: {}
+  sr_lithology_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      Clastic: {}
+      Carbonate: {}
+      Coal: {}
+      Biosilicieous: {}
+      other: {}
+  drawings_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      operation: {}
+      as built: {}
+      construction: {}
+      bid: {}
+      design: {}
+      building navigation map: {}
+      diagram: {}
+      sketch: {}
+  tillage_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      drill: {}
+      cutting disc: {}
+      ridge till: {}
+      strip tillage: {}
+      zonal tillage: {}
+      chisel: {}
+      tined: {}
+      mouldboard: {}
+      disc plough: {}
+  shading_device_cond_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      damaged: {}
+      needs repair: {}
+      new: {}
+      rupture: {}
+      visible wear: {}
+  oxy_stat_samp_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      aerobic: {}
+      anaerobic: {}
+      other: {}
+  depos_env_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      Continental - Alluvial: {}
+      Continental - Aeolian: {}
+      Continental - Fluvial: {}
+      Continental - Lacustrine: {}
+      Transitional - Deltaic: {}
+      Transitional - Tidal: {}
+      Transitional - Lagoonal: {}
+      Transitional - Beach: {}
+      Transitional - Lake: {}
+      Marine - Shallow: {}
+      Marine - Deep: {}
+      Marine - Reef: {}
+      Other - Evaporite: {}
+      Other - Glacial: {}
+      Other - Volcanic: {}
+      other: {}
+  ceil_finish_mat_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      drywall: {}
+      mineral fibre: {}
+      tiles: {}
+      PVC: {}
+      plasterboard: {}
+      metal: {}
+      fiberglass: {}
+      stucco: {}
+      mineral wool/calcium silicate: {}
+      wood: {}
+  weekday_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      Monday: {}
+      Tuesday: {}
+      Wednesday: {}
+      Thursday: {}
+      Friday: {}
+      Saturday: {}
+      Sunday: {}
+  host_sex_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      female: {}
+      hermaphrodite: {}
+      male: {}
+      neuter: {}
+  samp_collect_point_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      well: {}
+      test well: {}
+      drilling rig: {}
+      wellhead: {}
+      separator: {}
+      storage tank: {}
+      other: {}
+  wall_loc_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      north: {}
+      south: {}
+      east: {}
+      west: {}
+  window_cover_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      blinds: {}
+      curtains: {}
+      none: {}
+  handidness_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      ambidexterity: {}
+      left handedness: {}
+      mixed-handedness: {}
+      right handedness: {}
+  window_cond_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      damaged: {}
+      needs repair: {}
+      new: {}
+      rupture: {}
+      visible wear: {}
+  arch_struc_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      building: {}
+      shed: {}
+      home: {}
+  window_loc_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      north: {}
+      south: {}
+      east: {}
+      west: {}
+  door_type_wood_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      bettened and ledged: {}
+      battened: {}
+      ledged and braced: {}
+      ledged and framed: {}
+      ledged, braced and frame: {}
+      framed and paneled: {}
+      glashed or sash: {}
+      flush: {}
+      louvered: {}
+      wire gauged: {}
+  int_wall_cond_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
       new: {}
@@ -960,6 +813,85 @@ enums:
       needs repair: {}
       damaged: {}
       rupture: {}
+  indoor_surf_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      cabinet: {}
+      ceiling: {}
+      counter top: {}
+      door: {}
+      shelving: {}
+      vent cover: {}
+      window: {}
+      wall: {}
+  furniture_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      cabinet: {}
+      chair: {}
+      desks: {}
+  ceil_type_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      cathedral: {}
+      dropped: {}
+      concave: {}
+      barrel-shaped: {}
+      coffered: {}
+      cove: {}
+      stretched: {}
+  tidal_stage_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      low tide: {}
+      ebb tide: {}
+      flood tide: {}
+      high tide: {}
+  sr_dep_env_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      Lacustine: {}
+      Fluvioldeltaic: {}
+      Fluviomarine: {}
+      Marine: {}
+      other: {}
+  room_loc_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      corner room: {}
+      interior room: {}
+      exterior wall: {}
+  light_type_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      natural light: {}
+      electric light: {}
+      desk lamp: {}
+      flourescent lights: {}
+      none: {}
+  plant_growth_med_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      other artificial liquid medium: {}
+      other artificial solid medium: {}
+      peat moss: {}
+      perlite: {}
+      pumice: {}
+      sand: {}
+      soil: {}
+      vermiculite: {}
+      water: {}
+  ext_wall_orient_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      north: {}
+      south: {}
+      east: {}
+      west: {}
+      northeast: {}
+      southeast: {}
+      southwest: {}
+      northwest: {}
   cur_land_use_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
@@ -1086,107 +1018,175 @@ enums:
           originally: vine crops (grapes)
         examples:
           - value: grapes
-  window_horiz_pos_enum:
+  gender_restroom_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      left: {}
-      middle: {}
-      right: {}
-  rel_samp_loc_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      edge of car: {}
-      center of car: {}
-      under a seat: {}
-  room_connected_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      attic: {}
-      bathroom: {}
-      closet: {}
-      conference room: {}
-      elevator: {}
-      examining room: {}
-      hallway: {}
-      kitchen: {}
-      mail room: {}
-      office: {}
-      stairwell: {}
-  freq_clean_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      Daily: {}
-      Weekly: {}
-      Monthly: {}
-      Quarterly: {}
-      Annually: {}
-      other: {}
-  building_setting_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      urban: {}
-      suburban: {}
-      exurban: {}
-      rural: {}
-  ext_window_orient_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      north: {}
-      south: {}
-      east: {}
-      west: {}
-      northeast: {}
-      southeast: {}
-      southwest: {}
-      northwest: {}
-  handidness_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
-      ambidexterity: {}
-      left handedness: {}
-      mixed-handedness: {}
-      right handedness: {}
-  host_sex_enum:
-    from_schema: http://w3id.org/mixs/terms
-    permissible_values:
+      all gender: {}
       female: {}
-      hermaphrodite: {}
+      gender neurtral: {}
       male: {}
-      neuter: {}
-  build_occup_type_enum:
+      male and female: {}
+      unisex: {}
+  sr_geol_age_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      office: {}
-      market: {}
-      restaurant: {}
-      residence: {}
-      school: {}
-      residential: {}
-      commercial: {}
-      low rise: {}
-      high rise: {}
-      wood framed: {}
-      health care: {}
-      airport: {}
-      sports complex: {}
-  weekday_enum:
+      Archean: {}
+      Cambrian: {}
+      Carboniferous: {}
+      Cenozoic: {}
+      Cretaceous: {}
+      Devonian: {}
+      Jurassic: {}
+      Mesozoic: {}
+      Neogene: {}
+      Ordovician: {}
+      Paleogene: {}
+      Paleozoic: {}
+      Permian: {}
+      Precambrian: {}
+      Proterozoic: {}
+      Silurian: {}
+      Triassic: {}
+      other: {}
+  shading_device_type_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      Monday: {}
-      Tuesday: {}
-      Wednesday: {}
-      Thursday: {}
-      Friday: {}
-      Saturday: {}
-      Sunday: {}
-  train_stat_loc_enum:
+      bahama shutters: {}
+      exterior roll blind: {}
+      gambrel awning: {}
+      hood awning: {}
+      porchroller awning: {}
+      sarasota shutters: {}
+      slatted aluminum: {}
+      solid aluminum awning: {}
+      sun screen: {}
+      tree: {}
+      trellis: {}
+      venetian awning: {}
+  surf_material_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
-      south station above ground: {}
-      south station underground: {}
-      south station amtrak: {}
-      forest hills: {}
-      riverside: {}
+      adobe: {}
+      carpet: {}
+      cinder blocks: {}
+      concrete: {}
+      hay bales: {}
+      glass: {}
+      metal: {}
+      paint: {}
+      plastic: {}
+      stainless steel: {}
+      stone: {}
+      stucco: {}
+      tile: {}
+      vinyl: {}
+      wood: {}
+  filter_type_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      particulate air filter: {}
+      chemical air filter: {}
+      low-MERV pleated media: {}
+      HEPA: {}
+      electrostatic: {}
+      gas-phase or ultraviolet air treatments: {}
+  door_type_metal_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      collapsible: {}
+      corrugated steel: {}
+      hollow: {}
+      rolling shutters: {}
+      steel plate: {}
+  substructure_type_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      crawlspace: {}
+      slab on grade: {}
+      basement: {}
+  lithology_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      Basement: {}
+      Chalk: {}
+      Chert: {}
+      Coal: {}
+      Conglomerate: {}
+      Diatomite: {}
+      Dolomite: {}
+      Limestone: {}
+      Sandstone: {}
+      Shale: {}
+      Siltstone: {}
+      Volcanic: {}
+      other: {}
+  plant_sex_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      Androdioecious: {}
+      Androecious: {}
+      Androgynous: {}
+      Androgynomonoecious: {}
+      Andromonoecious: {}
+      Bisexual: {}
+      Dichogamous: {}
+      Diclinous: {}
+      Dioecious: {}
+      Gynodioecious: {}
+      Gynoecious: {}
+      Gynomonoecious: {}
+      Hermaphroditic: {}
+      Imperfect: {}
+      Monoclinous: {}
+      Monoecious: {}
+      Perfect: {}
+      Polygamodioecious: {}
+      Polygamomonoecious: {}
+      Polygamous: {}
+      Protandrous: {}
+      Protogynous: {}
+      Subandroecious: {}
+      Subdioecious: {}
+      Subgynoecious: {}
+      Synoecious: {}
+      Trimonoecious: {}
+      Trioecious: {}
+      Unisexual: {}
+  surf_air_cont_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      dust: {}
+      organic matter: {}
+      particulate matter: {}
+      volatile organic compounds: {}
+      biological contaminants: {}
+      radon: {}
+      nutrients: {}
+      biocides: {}
+  wall_const_type_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      frame construction: {}
+      joisted masonry: {}
+      light noncombustible: {}
+      masonry noncombustible: {}
+      modified fire resistive: {}
+      fire resistive: {}
+  hc_produced_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      Oil: {}
+      Gas-Condensate: {}
+      Gas: {}
+      Bitumen: {}
+      Coalbed Methane: {}
+      other: {}
+  train_stop_loc_enum:
+    from_schema: http://w3id.org/mixs/terms
+    permissible_values:
+      end: {}
+      mid: {}
+      downtown: {}
 slots:
   abs_air_humidity:
     annotations:
@@ -11229,20 +11229,20 @@ slots:
     slot_uri: MIXS:0000156
     multivalued: false
     range: QuantityValue
-  has raw value:
-    from_schema: http://w3id.org/mixs/ranges
-    string_serialization: '{has numeric value} {has unit}'
-    owner: QuantityValue
+  investigation field:
+    description: field describing aspect of the investigation/study to which the sample belongs
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
   nucleic acid sequence source field:
+    from_schema: http://w3id.org/mixs/terms
+    abstract: true
+  environment field:
+    description: field describing environmental aspect of a sample
     from_schema: http://w3id.org/mixs/terms
     abstract: true
   sequencing field:
     from_schema: http://w3id.org/mixs/terms
     abstract: true
-  has numeric value:
-    from_schema: http://w3id.org/mixs/ranges
-    owner: QuantityValue
-    range: double
   core field:
     description: basic fields
     from_schema: http://w3id.org/mixs/terms
@@ -11251,12 +11251,12 @@ slots:
     description: Example "m"
     from_schema: http://w3id.org/mixs/ranges
     owner: QuantityValue
-  environment field:
-    description: field describing environmental aspect of a sample
-    from_schema: http://w3id.org/mixs/terms
-    abstract: true
-  investigation field:
-    description: field describing aspect of the investigation/study to which the sample belongs
-    from_schema: http://w3id.org/mixs/terms
-    abstract: true
+  has raw value:
+    from_schema: http://w3id.org/mixs/ranges
+    string_serialization: '{has numeric value} {has unit}'
+    owner: QuantityValue
+  has numeric value:
+    from_schema: http://w3id.org/mixs/ranges
+    owner: QuantityValue
+    range: double
 source_file: assets/other_mixs_yaml_files/mixs_template.yaml
