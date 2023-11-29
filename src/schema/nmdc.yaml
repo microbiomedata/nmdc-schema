@@ -247,6 +247,7 @@ classes:
     aliases:
       - LibraryConstruction
     is_a: BiosampleProcessing
+    slots:
       - library_preparation_kit
       - library_type
       - pcr_cycles
@@ -1181,7 +1182,7 @@ classes:
           - value: 27%
         todos:
           - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
-          - Example & validation. Can we make rules that 27% & 27 % & 0.27 will validate?
+          - Example & validation. Can we configure things so that 27% & 27 % & 0.27 will validate?
           - I think it's weird the way GSC writes the title. I recommend this change. Thoughts?
             I would argue this isn't an extreme unusual property. It's just a biogeochemical measurement.
       al_sat_meth:
@@ -1230,7 +1231,7 @@ classes:
           - value: mercury 0.09 ug/g; chromium 0.03 ug/g
         todos:
           - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
-          - Example & validation. Can we make rules that 27% & 27 % & 0.27 will validate?
+          - Example & validation. Can we configure things so that 27% & 27 % & 0.27 will validate?
           - I think it's weird the way GSC writes the title. I recommend this change. Thoughts? I would argue this isn't an extreme unusual property. It's just a biogeochemical measurement.
       heavy_metals_meth:
         title: heavy metals method/ extreme unusual properties
