@@ -3429,11 +3429,7 @@
                 },
                 "collecting_biosamples_from_site_set": {
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/CollectingBiosamplesFromSite"
-                            }
-                        ]
+                        "$ref": "#/$defs/CollectingBiosamplesFromSite"
                     },
                     "type": "array"
                 },
@@ -3453,11 +3449,7 @@
                 "extraction_set": {
                     "description": "This property links a database object to the set of extractions within it.",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/Extraction"
-                            }
-                        ]
+                        "$ref": "#/$defs/Extraction"
                     },
                     "type": "array"
                 },
@@ -3490,11 +3482,7 @@
                 "library_preparation_set": {
                     "description": "This property links a database object to the set of DNA extractions within it.",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/LibraryPreparation"
-                            }
-                        ]
+                        "$ref": "#/$defs/LibraryPreparation"
                     },
                     "type": "array"
                 },
@@ -3569,11 +3557,7 @@
                 "omics_processing_set": {
                     "description": "This property links a database object to the set of omics processings within it.",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/OmicsProcessing"
-                            }
-                        ]
+                        "$ref": "#/$defs/OmicsProcessing"
                     },
                     "type": "array"
                 },
@@ -3614,11 +3598,7 @@
                 },
                 "pooling_set": {
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/Pooling"
-                            }
-                        ]
+                        "$ref": "#/$defs/Pooling"
                     },
                     "type": "array"
                 },
@@ -6663,6 +6643,7 @@
                 "websites": {
                     "description": "A list of websites that are associated with the entity.",
                     "items": {
+                        "pattern": "^[Hh][Tt][Tt][Pp][Ss]?:\\/\\/(?!.*[Dd][Oo][Ii]\\.[Oo][Rr][Gg]).*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7833,6 +7814,7 @@
                 "websites": {
                     "description": "A list of websites that are associated with the entity.",
                     "items": {
+                        "pattern": "^[Hh][Tt][Tt][Pp][Ss]?:\\/\\/(?!.*[Dd][Oo][Ii]\\.[Oo][Rr][Gg]).*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -8400,11 +8382,7 @@
         },
         "collecting_biosamples_from_site_set": {
             "items": {
-                "anyOf": [
-                    {
-                        "$ref": "#/$defs/CollectingBiosamplesFromSite"
-                    }
-                ]
+                "$ref": "#/$defs/CollectingBiosamplesFromSite"
             },
             "type": "array"
         },
@@ -8424,11 +8402,7 @@
         "extraction_set": {
             "description": "This property links a database object to the set of extractions within it.",
             "items": {
-                "anyOf": [
-                    {
-                        "$ref": "#/$defs/Extraction"
-                    }
-                ]
+                "$ref": "#/$defs/Extraction"
             },
             "type": "array"
         },
@@ -8461,11 +8435,7 @@
         "library_preparation_set": {
             "description": "This property links a database object to the set of DNA extractions within it.",
             "items": {
-                "anyOf": [
-                    {
-                        "$ref": "#/$defs/LibraryPreparation"
-                    }
-                ]
+                "$ref": "#/$defs/LibraryPreparation"
             },
             "type": "array"
         },
@@ -8540,11 +8510,7 @@
         "omics_processing_set": {
             "description": "This property links a database object to the set of omics processings within it.",
             "items": {
-                "anyOf": [
-                    {
-                        "$ref": "#/$defs/OmicsProcessing"
-                    }
-                ]
+                "$ref": "#/$defs/OmicsProcessing"
             },
             "type": "array"
         },
@@ -8585,11 +8551,7 @@
         },
         "pooling_set": {
             "items": {
-                "anyOf": [
-                    {
-                        "$ref": "#/$defs/Pooling"
-                    }
-                ]
+                "$ref": "#/$defs/Pooling"
             },
             "type": "array"
         },
@@ -8630,5 +8592,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "v9.1.0"
+    "version": "v9.2.0"
 }
