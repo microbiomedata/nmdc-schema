@@ -30,7 +30,6 @@ imports:
   - portal/jgi_metatranscriptomics
   - portal/mixs_inspired
   - portal/sample_id
-  - sample_prep
   - workflow_execution_activity
 
 
@@ -164,21 +163,21 @@ classes:
       to other objects of interest. For MongoDB, the lists of objects that Database
       slots point to correspond to **collections**.
     slots:
-      - planned_process_set
-      - functional_annotation_agg
+      #      - dissolving_activity_set
+      #      - material_sample_set
+      #      - material_sampling_activity_set
+      #      - reaction_activity_set
       - activity_set
       - biosample_set
       - collecting_biosamples_from_site_set
       - data_object_set
-      - dissolving_activity_set
       - extraction_set
       - field_research_site_set
+      - functional_annotation_agg
       - functional_annotation_set
       - genome_feature_set
       - library_preparation_set
       - mags_activity_set
-      - material_sample_set
-      - material_sampling_activity_set
       - metabolomics_analysis_activity_set
       - metagenome_annotation_activity_set
       - metagenome_assembly_set
@@ -187,9 +186,9 @@ classes:
       - metatranscriptome_activity_set
       - nom_analysis_activity_set
       - omics_processing_set
+      - planned_process_set
       - pooling_set
       - processed_sample_set
-      - reaction_activity_set
       - read_based_taxonomy_analysis_activity_set
       - read_qc_analysis_activity_set
       - study_set
