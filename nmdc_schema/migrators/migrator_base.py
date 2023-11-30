@@ -5,6 +5,9 @@ from logging import getLogger
 class MigratorBase:
     """Base class containing properties and methods related to migrating data between schema versions."""
 
+    __from_version: str = ""
+    __to_version: str = ""
+
     def __init__(self, logger=None):
         # If a logger was specified, use it; otherwise, initialize one and use that.
         self.logger = getLogger(__name__) if logger is None else logger
@@ -21,6 +24,14 @@ class MigratorBase:
         #       of the migration-specific classes (i.e. the classes that inherit from this base class).
         #
         self.agenda: Dict[str, List[callable]] = dict()
+
+    def get_from_version(self) -> str:
+        """Returns the schema version this class migrates data from."""
+        return self.__from_version
+
+    def get_to_version(self) -> str:
+        """Returns the schema version this class migrates data to."""
+        return self.__to_version
 
     def get_transformers_for(self, collection_name: str) -> List[callable]:
         """Returns the list of transformers defined for the specified collection."""

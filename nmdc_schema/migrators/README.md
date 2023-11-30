@@ -17,8 +17,8 @@ This directory contains the following things:
 - `helpers.py` - general-purpose functions used by the classes
 - `migrator_base.py` - definition of the `MigratorBase` class
     - That class is agnostic to schema versions
-- `migrator_from_A_B_C_to_X_Y_Z.py` - definition of the `Migrator_from_A_B_C_to_X_Y_Z` class
-    - That class is used to migrate data from schema version `A.B.C` to schema version `X.Y.Z`
+- `migrator_from_A_B_C_to_X_Y_Z.py` - definition of an example `Migrator` class
+    - That class is specific to a pair of schema versions (i.e. it migrates data from schema version `A.B.C` to schema version `X.Y.Z`)
 - Other `migrator_*.py` modules (they are analogous to `migrator_from_A_B_C_to_X_Y_Z.py`)
 
 ## Creating a migrator
@@ -33,10 +33,12 @@ Here's how you can create a new migrator:
    cp migrator_from_A_B_C_to_X_Y_Z.py migrator_from_1_2_3_to_1_2_4.py
    ```
 2. Customize the migrator module according to the instructions in the example migrator module.
-    - Update the class name:
+    - Update the `__to_version` and `__from_version` strings:
       ```diff
-      - class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
-      + class Migrator_from_1_2_3_to_1_2_4(MigratorBase):
+      - __from_version = "A.B.C"
+      - __to_version = "X.Y.Z"
+      + __from_version = "1.2.3"
+      + __to_version = "1.2.4"
       ```
     - Remove the definition of the _example_ "transformation" function:
       ```diff
@@ -67,7 +69,7 @@ Here's how you can create a new migrator:
         - Has at least one **[doctest](https://docs.python.org/3/library/doctest.html)** that demonstrates what the function does (optional)
             - For example:
               ```diff
-              + >>> migrator = Migrator_from_1_2_3_to_1_2_4()
+              + >>> migrator = Migrator()
               + >>> migrator.add_name({'id': 123})
               + {'id': 123, 'name': 'Anonymous'}
                 """
