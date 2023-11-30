@@ -3,9 +3,18 @@ from logging import getLogger
 
 
 class MigratorBase:
-    """Base class containing properties and methods related to migrating data between schema versions."""
+    """Base class containing properties and methods related to migrating data between two schema versions."""
 
+    # The schema version from which this class migrates data.
+    #
+    # Note: This string is empty here. It will be populated within the migration-specific classes.
+    #
     __from_version: str = ""
+
+    # The schema version to which this class migrates data.
+    #
+    # Note: This string is empty here. It will be populated within the migration-specific classes.
+    #
     __to_version: str = ""
 
     def __init__(self, logger=None):
