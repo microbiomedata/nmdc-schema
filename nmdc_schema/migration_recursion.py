@@ -166,21 +166,21 @@ def main(schema_path, input_path, output_path, salvage_prefix, migrator_name):
         migrator = current_migrator(logger=logger)
 
         # iterate over collections, applying migration-specific transformations
-        for tdk, tdv in total_dict.items():
+        for collection_name, documents in total_dict.items():
             # If the migration specifies any transformers for this collection,
             # apply them—in order—to each document within this collection.
-            transformers = migrator.get_transformers_for(collection_name=tdk)
+            transformers = migrator.get_transformers_for(collection_name=collection_name)
             if len(transformers) > 0:
                 migrator_class_name = current_migrator.__name__
-                logger.info(f"Starting {tdk}-specific transformations using {migrator_class_name}")
-                for i, document in enumerate(tdv):
+                logger.info(f"Starting {collection_name}-specific transformations using {migrator_class_name}")
+                for i, document in enumerate(documents):
 
                     # Apply the transformation(s).
                     for transformer in transformers:
                         document = transformer(document)
 
                     # Update the collection so it contains the transformed document.
-                    tdv[i] = document
+                    documents[i] = document
 
     # all migrations complete. save data.
     logger.info(f"Saving migrated data to {output_path}")
