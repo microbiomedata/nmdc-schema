@@ -15,10 +15,10 @@ class Migrator(MigratorBase):
               "migrator" class was designed to migrate data between.
               
               -->  As part of creating a new "migrator" class, you will
-                   populate its `__from_version` and `__to_version` strings.
+                   populate its `_from_version` and `_to_version` strings.
     """
-    __from_version = "A.B.C"
-    __to_version = "X.Y.Z"
+    _from_version = "A.B.C"
+    _to_version = "X.Y.Z"
 
     def __init__(self, *args, **kwargs) -> None:
         """
@@ -46,7 +46,7 @@ class Migrator(MigratorBase):
         super().__init__(*args, **kwargs)
 
         # Populate the "collection-to-transformers" map for this specific migration.
-        self.agenda = dict(
+        self._agenda = dict(
             study_set=[self.allow_multiple_names],
         )
 

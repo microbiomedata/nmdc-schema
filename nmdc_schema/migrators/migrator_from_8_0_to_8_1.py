@@ -4,8 +4,8 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 class Migrator(MigratorBase):
     """Migrates data between two schema versions."""
 
-    __from_version = "8.0"
-    __to_version = "8.1"
+    _from_version = "8.0"
+    _to_version = "8.1"
 
     def __init__(self, *args, **kwargs) -> None:
         """Invokes parent constructor and populates collection-to-transformations map."""
@@ -13,7 +13,7 @@ class Migrator(MigratorBase):
         super().__init__(*args, **kwargs)
 
         # Populate the "collection-to-transformers" map for this specific migration.
-        self.agenda = dict(
+        self._agenda = dict(
             study_set=[self.force_research_study_study_category],
         )
 

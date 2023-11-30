@@ -8,8 +8,8 @@ DOI_URL_PATTERN = r"^https?:\/\/[a-zA-Z\.]+\/10\."
 class Migrator(MigratorBase):
     """Migrates data between two schema versions."""
 
-    __from_version = "7.7.2"
-    __to_version = "7.8.0"
+    _from_version = "7.7.2"
+    _to_version = "7.8.0"
 
     def __init__(self, *args, **kwargs) -> None:
         """Invokes parent constructor and populates collection-to-transformations map."""
@@ -17,7 +17,7 @@ class Migrator(MigratorBase):
         super().__init__(*args, **kwargs)
 
         # Populate the "collection-to-transformers" map for this specific migration.
-        self.agenda = dict(
+        self._agenda = dict(
             study_set=[self.replace_doi_field_with_award_dois_list_field],
         )
 

@@ -33,12 +33,12 @@ Here's how you can create a new migrator:
    cp migrator_from_A_B_C_to_X_Y_Z.py migrator_from_1_2_3_to_1_2_4.py
    ```
 2. Customize the migrator module according to the instructions in the example migrator module.
-    - Update the `__to_version` and `__from_version` strings:
+    - Update the `_to_version` and `_from_version` strings:
       ```diff
-      - __from_version = "A.B.C"
-      - __to_version = "X.Y.Z"
-      + __from_version = "1.2.3"
-      + __to_version = "1.2.4"
+      - _from_version = "A.B.C"
+      - _to_version = "X.Y.Z"
+      + _from_version = "1.2.3"
+      + _to_version = "1.2.4"
       ```
     - Remove the definition of the _example_ "transformation" function:
       ```diff
@@ -50,7 +50,7 @@ Here's how you can create a new migrator:
       ```
     - Remove the _example_ "transformation" function from the agenda:
       ```diff
-        self.agenda = dict(
+        self._agenda = dict(
       -     study_set=[self.allow_multiple_names],
         )      
       ```
@@ -82,7 +82,7 @@ Here's how you can create a new migrator:
     - Add the "transformation" function(s) to the agenda:
         - For example:
           ```diff
-            self.agenda = dict(
+            self._agenda = dict(
           +     person_set=[self.add_name],
             )
           ```

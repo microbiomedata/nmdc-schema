@@ -5,8 +5,8 @@ from nmdc_schema.migrators.helpers import load_yaml_asset
 class Migrator(MigratorBase):
     """Migrates data between two schema versions."""
 
-    __from_version = "9.1"
-    __to_version = "9.2"
+    _from_version = "9.1"
+    _to_version = "9.2"
 
     def __init__(self, *args, **kwargs) -> None:
         """Invokes parent constructor and populates collection-to-transformations map."""
@@ -14,7 +14,7 @@ class Migrator(MigratorBase):
         super().__init__(*args, **kwargs)
 
         # Populate the "collection-to-transformers" map for this specific migration.
-        self.agenda = dict(
+        self._agenda = dict(
             study_set=[self.move_doi_from_websites],
         )
 

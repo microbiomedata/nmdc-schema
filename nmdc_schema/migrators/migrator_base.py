@@ -9,13 +9,13 @@ class MigratorBase:
     #
     # Note: This string is empty here. It will be populated within the migration-specific classes.
     #
-    __from_version: str = ""
+    _from_version: str = ""
 
     # The schema version to which this class migrates data.
     #
     # Note: This string is empty here. It will be populated within the migration-specific classes.
     #
-    __to_version: str = ""
+    _to_version: str = ""
 
     def __init__(self, logger=None):
         # If a logger was specified, use it; otherwise, initialize one and use that.
@@ -32,16 +32,16 @@ class MigratorBase:
         # Note: This dictionary is empty here. It will be populated within the "constructor" functions
         #       of the migration-specific classes (i.e. the classes that inherit from this base class).
         #
-        self.agenda: Dict[str, List[callable]] = dict()
+        self._agenda: Dict[str, List[callable]] = dict()
 
     def get_from_version(self) -> str:
         """Returns the schema version this class migrates data from."""
-        return self.__from_version
+        return self._from_version
 
     def get_to_version(self) -> str:
         """Returns the schema version this class migrates data to."""
-        return self.__to_version
+        return self._to_version
 
     def get_transformers_for(self, collection_name: str) -> List[callable]:
         """Returns the list of transformers defined for the specified collection."""
-        return self.agenda.get(collection_name, [])
+        return self._agenda.get(collection_name, [])
