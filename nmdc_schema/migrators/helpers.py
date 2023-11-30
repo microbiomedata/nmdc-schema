@@ -26,7 +26,7 @@ def get_migrator_module_names() -> List[str]:
 
 def get_migrator_to(destination_version: str) -> Optional[Type[MigratorBase]]:
     """
-    Returns the first migrator class that migrates data to the specified schema version.
+    Returns a migrator class, if any, that migrates data to the specified schema version.
     """
 
     matching_migrator_class = None
