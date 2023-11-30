@@ -34,13 +34,15 @@ class MigratorBase:
         #
         self._agenda: Dict[str, List[callable]] = dict()
 
-    def get_from_version(self) -> str:
+    @classmethod
+    def get_origin_version(cls) -> str:
         """Returns the schema version this class migrates data from."""
-        return self._from_version
+        return cls._from_version
 
-    def get_to_version(self) -> str:
+    @classmethod
+    def get_destination_version(cls) -> str:
         """Returns the schema version this class migrates data to."""
-        return self._to_version
+        return cls._to_version
 
     def get_transformers_for(self, collection_name: str) -> List[callable]:
         """Returns the list of transformers defined for the specified collection."""
