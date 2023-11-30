@@ -173,9 +173,14 @@ def main(schema_path, input_path, output_path, salvage_prefix, migrator_name):
             if len(transformers) > 0:
                 migrator_class_name = current_migrator.__name__
                 logger.info(f"Starting {tdk}-specific transformations using {migrator_class_name}")
-                for document in tdv:
+                for i, document in enumerate(tdv):
+
+                    # Apply the transformation(s).
                     for transformer in transformers:
-                        transformer(document)  # modifies the document in place
+                        document = transformer(document)
+
+                    # Update the collection so it contains the transformed document.
+                    tdv[i] = document
 
     # all migrations complete. save data.
     logger.info(f"Saving migrated data to {output_path}")
