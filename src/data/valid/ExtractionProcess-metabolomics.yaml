@@ -12,9 +12,9 @@ instrument_used: "orbital shaker"
 duration:
   has_numeric_value: 2
   has_unit: "hours"
-# speed:
-#   numeric_value: 800
-#   unit: "RPM"
+speed:
+  numeric_value: 800
+  unit: "RPM"
 contanied_in: "falcon tube"
 container_size:
   has_numeric_value: "50"

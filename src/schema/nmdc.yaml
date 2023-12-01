@@ -214,6 +214,50 @@ classes:
           syntax: "{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
+  Extraction:
+    class_uri: nmdc:Extraction
+    is_a: PlannedProcess # from core.yaml
+    description: A material separation in which a desired component of an input material is separated from the remainder.
+    exact_mappings:
+      - OBI:0302884
+    slots:
+      - extraction_method
+      - extraction_target
+      - quality_control_report
+      - input_mass
+      - contained_in
+      - container_size
+      - extractant
+      - concentration
+      - instrument_used
+      - duration
+      - speed
+      - sample_volume
+      - volume
+
+    slot_usage:
+      has_input:
+        required: true
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+      has_output:
+        required: true
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+      instrument_used:
+        range: AnonymousInstrument
+      volume:
+        description: The volume of the solvent/solute being used, not the input.
+
+  QualityControlReport:
+    slots:
+      - status
+      - name
+      
   LibraryPreparation:
     class_uri: nmdc:LibraryPreparation
     aliases:
@@ -1603,50 +1647,6 @@ classes:
         description: The volume of sample filtered.
       instrument_used:
         range: AnonymousInstrument
-
-  ExtractionProcess:
-    # class_uri: nmdc:Extraction
-    is_a: SampleProcessing # from core.yaml
-    description: A material separation in which a desired component of an input material is separated from the remainder.
-    exact_mappings:
-      - OBI:0302884
-    slots:
-      - extraction_method
-      - extraction_target
-      - quality_control_report
-      - input_mass
-      - contained_in
-      - container_size
-      - extractant
-      - concentration
-      - instrument_used
-      - duration
-      - sample_volume
-      - volume
-      - solute
-
-    slot_usage:
-      has_input:
-        required: true
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
-      has_output:
-        required: true
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
-      instrument_used:
-        range: AnonymousInstrument
-      volume:
-        description: The volume of the solvent/solute being used, not the input.
-
-  QualityControlReport:
-    slots:
-      - status
-      - name
 
   OmicsProcessing:
     aliases:
@@ -3083,6 +3083,3 @@ slots:
   sample_volume:
     range: QuantityValue
     description: The volume of the input sample.
-  solute: #double check the range on this
-    range: string
-    description: The solute in an extraction
