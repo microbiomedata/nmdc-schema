@@ -53,7 +53,7 @@ slots:
       MAM removed designates_type and rdf:type slot uri 2022-11-30
     range: string
     description: >-
-      An optional string that specifies the type object. 
+      An optional string that specifies the type object.
       This is used to allow for searches for different kinds of objects.
     examples:
       - value: nmdc:Biosample
@@ -144,14 +144,14 @@ slots:
   instrument_name:
     description: >-
       The name of the instrument that was used for processing the sample.
-#    range: instrument_name_enum
+  #    range: instrument_name_enum
 
   has_part:
     domain: NamedThing
     range: NamedThing
     multivalued: true
     comments:
-    - originally limited to "A pathway can be broken down to a series of reaction step"
+      - originally limited to "A pathway can be broken down to a series of reaction step"
 
 #enums:
 #  instrument_name_enum:
