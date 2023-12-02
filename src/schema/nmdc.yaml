@@ -225,15 +225,10 @@ classes:
       - extraction_target
       - quality_control_report
       - input_mass
-      - contained_in
-      - container_size
+      - input_volume
       - extractant
       - concentration
-      - instrument_used
-      - duration
-      - speed
-      - sample_volume
-      - volume
+      - extractant_volume
 
     slot_usage:
       has_input:
@@ -3080,6 +3075,6 @@ slots:
   concentration:
     range: QuantityValue
     description: The concentration of a substance used in a process
-  sample_volume:
+  input_volume:
     range: QuantityValue
     description: The volume of the input sample.
