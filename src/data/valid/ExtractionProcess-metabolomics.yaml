@@ -2,20 +2,6 @@ id: "nmdc:ome-7"
 has_input: "nmdc:ome-6"
 has_output: "nmdc:ome-8"
 extractant: "deionized water"
-volume:
-  numeric_value: "30"
-  unit: "mL"
 concentration:
   numeric_value: "0.2"
   unit: "g/mL"
-instrument_used: "orbital shaker"
-duration:
-  has_numeric_value: 2
-  has_unit: "hours"
-speed:
-  numeric_value: 800
-  unit: "RPM"
-contanied_in: "falcon tube"
-container_size:
-  has_numeric_value: "50"
-  has_unit: "mL"

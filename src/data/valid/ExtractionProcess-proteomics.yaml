@@ -1,0 +1,7 @@
+id: "nmdc:fasp-38"
+has_input: "nmdc:fasp-37"
+has_output: "nmdc:ome-39"
+extractant: "trypsin in ammonium bicarbonate"
+concentration:
+  numeric_value: "0.05"
+  unit: "μg/μL"

@@ -225,10 +225,8 @@ classes:
       - extraction_target
       - quality_control_report
       - input_mass
-      - input_volume
       - extractant
       - concentration
-      - extractant_volume
 
     slot_usage:
       has_input:
@@ -2292,6 +2290,7 @@ enums:
       MSTFA:
       cloridic acid:
       Water:
+      trypsin in ammonium bicarbonate:
 
 slots:
   model:
