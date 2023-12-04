@@ -44,19 +44,7 @@ enums:
     permissible_values:
       weighing:
         title: Weighing
-  SolventEnum:
-    title: Solvent enumeration
-    permissible_values:
-      deionized_water:
-        title: Deionized water
-        broad_mappings:
-          - CHEBI:15377
-      methanol:
-        title: Methanol
-        meaning: CHEBI:17790
-      chloroform:
-        title: Chloroform
-        meaning: CHEBI:35255
+
 slots:
   dissolving_activity_set:
     title: dissolving activity set

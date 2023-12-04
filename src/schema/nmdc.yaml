@@ -2357,8 +2357,7 @@ slots:
   extraction_target:
     range: ExtractionTargetEnum
 
-  quality_control_report:input_massmas
-    #    range: integer
+  quality_control_report:
     range: QualityControlReport
   # structure
 
@@ -3044,9 +3043,6 @@ slots:
   filtration_category:
     range: string
     description: The type of conditioning applied to a filter, device, etc.
-  concentration:
-    range: QuantityValue
-    description: The concentration of a substance used in an activity
   material_component_separation:
     range: string
     description: "A material processing in which components of an input material become segregated in space"
