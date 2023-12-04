@@ -227,7 +227,6 @@ classes:
       - input_mass
       - extractant
       - concentration
-
     slot_usage:
       has_input:
         required: true
@@ -245,6 +244,11 @@ classes:
         range: AnonymousInstrument
       volume:
         description: The volume of the solvent/solute being used, not the input.
+
+  Protocol:
+    slots:
+      - url
+      - name
 
   QualityControlReport:
     slots:
