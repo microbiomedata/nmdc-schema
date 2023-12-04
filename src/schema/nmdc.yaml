@@ -243,7 +243,30 @@ classes:
       instrument_used:
         range: AnonymousInstrument
       volume:
-        description: The volume of the solvent/solute being used, not the input.
+        description: The volume of the solvent/solute being used, not the input.      
+
+  # Solvent:
+  #   description:
+  #     A material that is used to dissolve a solute.
+  #   slots:
+  #     - name
+  #     - concentration
+  #     - concentration_unit
+  #     - ph
+  #     - ph_unit
+  #     - volume
+  #     - volume_unit
+
+  SolutionComponent:
+    slots:
+      - compound
+      - concentration
+
+  Solution:
+    slots:
+      - has_solution_component
+
+  
 
   Protocol:
     slots:
@@ -2295,6 +2318,12 @@ enums:
       cloridic acid:
       Water:
       trypsin in ammonium bicarbonate:
+  
+  CompoundEnum:
+    permissible_values:
+      trypsin:
+      ammonium bicarbonate:
+    
 
 slots:
   model:
@@ -3069,7 +3098,7 @@ slots:
     range: ContainerCategoryEnum
     description: A type of container. i.e. test tube, falcon tube, etc.
   extractant:
-    range: SolventEnum
+    range: Solution
     description: "The active component(s) primarily responsible for transfer of a solute from one phase to the other."
   concentration:
     range: QuantityValue
@@ -3077,3 +3106,12 @@ slots:
   input_volume:
     range: QuantityValue
     description: The volume of the input sample.
+  has_solution_component:
+    range: SolutionComponent
+    domain: Solution
+    multivalued: true
+    inlined_as_list: true
+  compound:
+    range: CompondEnum
+    description: "A substance dissolved in another substance, known as a solvent."
+    
