@@ -1095,27 +1095,27 @@ classes:
       #          - Please use https://www.advancedconverter.com/map-tools/find-altitude-by-coordinates, if needed, to help estimate the elevation based on latitude and longitude coordinates.
       #        examples:
       #          value: 100
-      #
+
       #      oxy_stat_samp:
       #        range: oxy_stat_samp_enum
-      #
-      #      id:
-      #        required: true
-      #        description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
-      #        structured_pattern:
-      #          syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-      #          interpolated: true
-      #
-      #      gold_biosample_identifiers:
-      #        description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
-      #        comments: This is the ID provided by GOLD that starts with 'GB'
-      #        annotations:
-      #          display_hint: Provide the GOLD biosample IDs associated with this biosample.
-      #        range: uriorcurie
-      #
-      #      alternative_identifiers:
-      #        description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
-      #
+
+      id:
+        required: true
+        description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+
+            #      gold_biosample_identifiers:
+            #        description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
+          #        comments: This is the ID provided by GOLD that starts with 'GB'
+          #        annotations:
+          #          display_hint: Provide the GOLD biosample IDs associated with this biosample.
+          #        range: uriorcurie
+
+      alternative_identifiers:
+        description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
+
       #      lat_lon:
       #        todos:
       #          - This is currently a required field but it's not clear if this
@@ -1358,11 +1358,11 @@ classes:
   #          - value: UUID:24f1467a-40f4-11ed-b878-0242ac120002
   #        todos:
   #          - Currently, the comments say to use UUIDs. However, if we implement assigning NMDC identifiers with the minter we dont need to require a GUID. It can be an optional field to fill out only if they already have a resolvable ID.
-  #
-  #    exact_mappings:
-  #      - OBI:0000747
-  #      - NCIT:C43412
-  #      - http://purl.obolibrary.org/obo/FBcv_0003024
+
+    exact_mappings:
+      - OBI:0000747
+      - NCIT:C43412
+      - http://purl.obolibrary.org/obo/FBcv_0003024
 
   Doi:
     aliases:
@@ -1455,52 +1455,51 @@ classes:
       - type
       - websites
 
-    #    slot_usage:
-    #      id:
-    #        required: true
-    #        structured_pattern:
-    #          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-    #          interpolated: true
-    #
-    #      name:
-    #        annotations:
-    #          display_hint: Provide a name for the study your samples will belong with.
-    #      websites:
-    #        annotations:
-    #          display_hint:
-    #            Link to the Principal Investigator's research lab webpage
-    #            or the study webpage associated with this collection of samples.
-    #            Multiple links can be provided.
-    #      description:
-    #        description: A brief, link-free summary of a Study
-    #        annotations:
-    #          display_hint: Provide a brief description of your study.
-    #        comments: Include links in other Study slots, such as websites or dois.
-    #      notes:
-    #        annotations:
-    #          display_hint: Add any additional notes or comments about this study.
-    #      alternative_identifiers:
-    #        description: Unique identifier for a study submitted to additional resources. Matches that which has been submitted to NMDC
-    #      alternative_names:
-    #        annotations:
-    #          display_hint:
-    #            Project, study, or sample set names the are also associated with this submission
-    #            or other names / identifiers for this study.
-    #      related_identifiers:
-    #        description: Unique identifier for a study submitted to additional resources. Similar, but not necessarily identical to that which has been submitted to NMDC
-    #      insdc_bioproject_identifiers:
-    #        description: Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.
-    #        annotations:
-    #          display_hint: Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title.
-    #      #      emsl_project_identifier:
-    #      #        description: The EMSL project ID that relates to the NMDC submitted study
-    #      #      emsl_proposal_doi:
-    #      #        description: The DOI for the EMSL awarded study that relates to the NMDC submitted study
-    #      part_of:
-    #        description: Links a study or consortium to a parent (or umbrella) study or consortium.
-    #        comments:
-    #          - Value is the id of the umbrella study or consortium.
-    #        range: Study
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+      name:
+        annotations:
+          display_hint: Provide a name for the study your samples will belong with.
+      websites:
+        annotations:
+          display_hint:
+            Link to the Principal Investigator's research lab webpage
+            or the study webpage associated with this collection of samples.
+            Multiple links can be provided.
+      description:
+        description: A brief, link-free summary of a Study
+        annotations:
+          display_hint: Provide a brief description of your study.
+        comments: Include links in other Study slots, such as websites or dois.
+      notes:
+        annotations:
+          display_hint: Add any additional notes or comments about this study.
+      alternative_identifiers:
+        description: Unique identifier for a study submitted to additional resources. Matches that which has been submitted to NMDC
+      alternative_names:
+        annotations:
+          display_hint:
+            Project, study, or sample set names the are also associated with this submission
+            or other names / identifiers for this study.
+      related_identifiers:
+        description: Unique identifier for a study submitted to additional resources. Similar, but not necessarily identical to that which has been submitted to NMDC
+      insdc_bioproject_identifiers:
+        description: Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.
+        annotations:
+          display_hint: Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title.
+      #      emsl_project_identifier:
+      #        description: The EMSL project ID that relates to the NMDC submitted study
+      #      emsl_proposal_doi:
+      #        description: The DOI for the EMSL awarded study that relates to the NMDC submitted study
+      part_of:
+        description: Links a study or consortium to a parent (or umbrella) study or consortium.
+        comments:
+          - Value is the id of the umbrella study or consortium.
+        range: Study
     exact_mappings:
       - OBI:0000066
       - SIO:000747
@@ -1677,23 +1676,23 @@ classes:
       - OBI:0000070
       - ISA:Assay
 
-  #    slot_usage:
-  #      id:
-  #        required: true
-  #        structured_pattern:
-  #          syntax: "{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-  #          interpolated: true
-  #      has_input:
-  #        required: true
-  #        pattern: "^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$"
-  #        comments:
-  #          - pattern should allow typecode for Biosample and ProcessedSample
-  #      part_of:
-  #        range: Study
-  #        pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
-  #      has_output:
-  #        range: DataObject
-  #        pattern: "^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted DataObject structured_pattern
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+      has_input:
+        required: true
+        #        pattern: "^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$"
+        comments:
+          - pattern should allow typecode for Biosample and ProcessedSample
+      part_of:
+        range: Study
+      #        pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
+      has_output:
+        range: DataObject
+      #        pattern: "^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted DataObject structured_pattern
 
 
   CreditAssociation:

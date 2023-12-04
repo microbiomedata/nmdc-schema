@@ -19,6 +19,7 @@ default_range: string
 
 slots:
   id:
+    domain: NamedThing
     required: true
     identifier: true
     range: uriorcurie
