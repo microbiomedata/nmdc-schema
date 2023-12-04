@@ -6,9 +6,6 @@ description: >-
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
-todos:
-  - "## section delimiters should be subsets"
-
 imports:
   - basic_slots
 

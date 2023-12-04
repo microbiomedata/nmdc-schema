@@ -292,7 +292,6 @@ classes:
       - has_peptide_quantifications
     slot_usage:
       used:
-        # range: Instrument
         description: The instrument used to collect the data used in the analysis
       id:
         required: true
@@ -309,7 +308,6 @@ classes:
     slot_usage:
       used:
         range: string
-        #        range: Instrument
         description: The instrument used to collect the data used in the analysis
       id:
         required: true
@@ -324,6 +322,7 @@ slots:
     abstract: true
 
   has_peptide_quantifications:
+    domain: MetaproteomicsAnalysisActivity
     range: PeptideQuantification
     multivalued: true
 
@@ -493,6 +492,7 @@ slots:
     abstract: true
 
   mags_list:
+    domain: MagsAnalysisActivity
     range: MagBin
     multivalued: true
 
@@ -551,6 +551,7 @@ slots:
       A reference to a file that holds calibration information.
 
   has_metabolite_quantifications:
+    domain: MetabolomicsAnalysisActivity
     range: MetaboliteQuantification
     multivalued: true
 
