@@ -1639,6 +1639,23 @@ classes:
         range: AnonymousInstrument
 
 
+PhaseSeparationProcess:
+  description:
+    The process of using a selective partitioning of the analyte or interferent between two immiscible phases.
+  contributors:
+    - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+    - ORCID:0000-0002-1368-8217 #Yuri Corilo
+  is_a: PlannedProcess
+  slots:
+    - mobile_phase
+    - stationary_phase
+    - temperature
+  slot_usage:
+      has_input:
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+
   OmicsProcessing:
     aliases:
       - omics assay
@@ -2267,6 +2284,35 @@ enums:
       - ORCID:0000-0002-8683-0050 #Montana Smith
     permissible_values:
       PTFE 96-well filter plate:
+  
+  SolidPhaseEnum:
+    description: The type of solid phase used in a solid phase extraction process.
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+    permissible_values:
+      C18:
+      C8:
+      C4:
+      C2:
+      C1:
+      C30:
+      C60:
+      CNT:
+      CN:
+      Diol:
+      HILIC:
+      NH2:
+      Phenyl:
+      PS-DVB:
+      SAX:
+      SCX:
+      Silica:
+      WCX:
+      WAX:
+      ZIC-HILIC:
+      ZIC-pHILIC:
+      ZIC-cHILIC:
+      ZIC-pHILIC:
 
 slots:
   model:
@@ -3041,7 +3087,15 @@ slots:
       - value:
           has_numeric_value: 2
           has_unit: hours
-
   contained_in:
     range: ContainerCategoryEnum
     description: A type of container. i.e. test tube, falcon tube, etc.
+  mobile_phase:
+    range: Solution
+    description: The solution that moves through a chromatography column.
+    multivalued: true
+    list_elements_ordered: true
+  stationary_phase:
+    range: SolidPhaseEnum
+    description: The solid phase that is used in chromatography.
+
