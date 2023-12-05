@@ -2282,15 +2282,15 @@ enums:
   FailureWhatEnum:
     description: The permitted values for describing where a failure occurred during processing in the lab during analysis workflows.
     permissible_values:
-      Low read count:
+      low_read_count:
         description: Number of output reads is not sufficient to continue to the next analysis step.
-      Malformed data:
+      malformed_data:
         description: Workflow failure reading input or writing the output file(s).
-      Assembly size too small:
+      assembly_size_too_small:
         description: The size of the metagenome or metatranscriptome assembly is too small to proceed to the next analysis workflow.
-      No valid data generated:
+      no_valid_data_generated:
         description: A process ran but did not produce any output. Ie binning ran but did not produce any medium or high quality bins.
-      Other:
+      other:
         description: A lab process or analysis workflow has failed in a way that has not been captured by the available values yet. Please use slot 'qc_comment' to specify details.
 
   FailureWhereEnum:
