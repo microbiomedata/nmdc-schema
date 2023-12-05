@@ -182,6 +182,7 @@ classes:
 slots:
 
   chemical:
+    domain: ReactionParticipant
     description: from reaction participant class
     range: ChemicalEntity
 
@@ -190,6 +191,7 @@ slots:
     range: integer
 
   subject:
+    domain: FunctionalAnnotation
     range: GeneProduct
 
   has_function:
@@ -230,6 +232,7 @@ slots:
   direction:
     description: One of l->r, r->l, bidirectional, neutral
   encodes:
+    domain: GenomeFeature
     range: GeneProduct
     description: >-
       The gene product encoded by this feature.
@@ -258,6 +261,7 @@ slots:
   is_transport:
     range: boolean
   left_participants:
+    domain: Reaction
     is_a: has_participants
     multivalued: true
     range: ReactionParticipant
@@ -270,6 +274,7 @@ slots:
     exact_mappings:
       - biolink:phase
   right_participants:
+    domain: Reaction
     is_a: has_participants
     multivalued: true
     range: ReactionParticipant

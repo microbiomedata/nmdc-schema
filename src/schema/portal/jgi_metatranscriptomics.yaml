@@ -36,6 +36,7 @@ enums:
 
 slots:
   dnase_rna:
+    domain: Biosample
     title: DNase treated
     comments:
       - Note DNase treatment is required for all RNA samples.
@@ -114,6 +115,7 @@ slots:
     minimum_value: 0
     maximum_value: 1000
   rna_cont_type:
+    domain: Biosample
     description: Tube or plate (96-well)
     title: RNA container type
     examples:
@@ -197,6 +199,7 @@ slots:
     slot_group: JGI-Metatranscriptomics
     recommended: true
   rna_sample_format:
+    domain: Biosample
     description: Solution in which the RNA sample has been suspended
     title: RNA sample format
     examples:

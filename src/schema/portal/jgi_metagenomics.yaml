@@ -92,6 +92,7 @@ slots:
     minimum_value: 0
     maximum_value: 2000
   dna_cont_type:
+    domain: Biosample
     description: Tube or plate (96-well)
     title: DNA container type
     examples:
@@ -129,6 +130,7 @@ slots:
     slot_group: JGI-Metagenomics
     recommended: true
   dna_dnase:
+    domain: Biosample
     title: DNase treatment DNA
     comments:
       - Note DNase treatment is required for all RNA samples.
@@ -190,6 +192,7 @@ slots:
     slot_group: JGI-Metagenomics
     recommended: true
   dna_sample_format:
+    domain: Biosample
     description: Solution in which the DNA sample has been suspended
     title: DNA sample format
     examples:

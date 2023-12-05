@@ -73,6 +73,7 @@ slots:
     comments:
       - This field is only required when completing metadata for samples being submitted to EMSL for analyses.
   sample_type:
+    domain: Biosample
     description: Type of sample being submitted
     title: sample type
     comments:

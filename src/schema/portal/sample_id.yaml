@@ -32,6 +32,7 @@ enums:
 
 slots:
   analysis_type:
+    domain: Biosample
     description: Select all the data types associated or available for this biosample
     title: analysis/data type
     examples:

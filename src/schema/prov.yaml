@@ -19,7 +19,7 @@ default_range: string
 classes:
 
   Activity:
-    description: Something that occurs over a period of time and acts upon or with entities; 
+    description: Something that occurs over a period of time and acts upon or with entities;
       it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.
     slots:
       - id
@@ -62,18 +62,19 @@ slots:
       - prov:endedAtTime
 
   was_informed_by:
+    domain: Activity
     range: Activity
     mappings:
       - prov:wasInformedBy
 
   was_generated_by:
+    domain: NamedThing
     range: Activity
     mappings:
       - prov:wasGeneratedBy
 
   used:
     domain: Activity
-    # some Instrument slot usages, but those require a CURIE, not a bare string
     # this is being used more like instrument_name
     mappings:
       - prov:used
