@@ -222,7 +222,7 @@ classes:
     exact_mappings:
       - OBI:0302884
     slots:
-      - concentration
+      #      - concentration
       - extractant
       - extraction_method
       - extraction_target
@@ -2276,26 +2276,26 @@ enums:
     permissible_values:
       PTFE 96-well filter plate:
   
-  SolventEnum:
-    description: The solvents that may be used in processing metabolomic samples.
-    permissible_values:
-      deionized Water:
-      methanol:
-      chloroform:
-      ammonium bicarbonate buffer:
-      methoxyamine:
-      MeOH/H2O:
-      MeOH:
-      Potassium sulfate:
-      ethanol-free chloroform:
-      bray extract solution:
-      olsen extract solution:
-      Milli-Q H2O:
-      ultrapure water:
-      MSTFA:
-      cloridic acid:
-      Water:
-      trypsin in ammonium bicarbonate:
+  #  SolventEnum:
+  #    description: The solvents that may be used in processing metabolomic samples.
+  #    permissible_values:
+  #      deionized Water:
+  #      methanol:
+  #      chloroform:
+  #      ammonium bicarbonate buffer:
+  #      methoxyamine:
+  #      MeOH/H2O:
+  #      MeOH:
+  #      Potassium sulfate:
+  #      ethanol-free chloroform:
+  #      bray extract solution:
+  #      olsen extract solution:
+  #      Milli-Q H2O:
+  #      ultrapure water:
+  #      MSTFA:
+  #      cloridic acid:
+  #      Water:
+  #      trypsin in ammonium bicarbonate:
   
   CompoundEnum:
     permissible_values:
