@@ -7,7 +7,7 @@ read_qc_analysis_activity_set:
         #cv for what the failure was
       #since there can be multivalued and what/where should be paired we need this structure
       failure_categorization:
-        - failure_what: Malformed data
+        - failure_what: malformed_data
           #in what PlannedProcess or Activity Class did the failure occur, range is FailureWhereEnum
           failure_where: ReadQcAnalysisActivity
       qc_comment: Failure during call-stage to interleave fastq files
@@ -51,7 +51,7 @@ read_qc_analysis_activity_set:
         #cv for what the failure was
       #since there can be multivalued and what/where should be paired we need this structure
       failure_categorization:
-        - failure_what: Low read count
+        - failure_what: low_read_count
           #in what PlannedProcess or Activity Class did the failure occur
           failure_where: ReadQcAnalysisActivity
       qc_comment: Failure during call-stage to interleave fastq files
