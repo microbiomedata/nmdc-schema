@@ -253,6 +253,7 @@ classes:
   Solution:
     slots:
       - has_solution_components
+      - volume
 
   Protocol:
     slots:
@@ -1646,23 +1647,6 @@ classes:
     slot_usage:
       volume:
         description: The volume of sample filtered.
-        
-PhaseSeparationProcess:
-  description:
-    The process of using a selective partitioning of the analyte or interferent between two immiscible phases.
-  contributors:
-    - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-    - ORCID:0000-0002-1368-8217 #Yuri Corilo
-  is_a: PlannedProcess
-  slots:
-    - mobile_phase
-    - stationary_phase
-    - temperature
-  slot_usage:
-      has_input:
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
 
 PhaseSeparationProcess:
   description:
@@ -3163,10 +3147,9 @@ slots:
     range: CompoundEnum
     description: A substance that consists of more than one atom or ion. Includes solvents and solutes. Can be combined into solutions.
     required: true
-    
   mobile_phase:
     range: Solution
-    description: The solution that moves through a chromatography column.
+    description: The solution(s) that moves through a chromatography column.
     multivalued: true
     list_elements_ordered: true
   stationary_phase:
