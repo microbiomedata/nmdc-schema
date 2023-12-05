@@ -12,7 +12,7 @@ extraction_set:
     has_output:
       - generic:xxx
     #range for processing_institution should be processing_institution_enum
-    processing_institution: Battelle
+    #processing_institution: Battelle
     #updating protocol info to be nested
     protocol_link:
       name: BMI_dnaExtractionSOP_v7

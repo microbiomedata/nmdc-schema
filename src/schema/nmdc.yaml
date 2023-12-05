@@ -30,7 +30,7 @@ imports:
   - portal/jgi_metatranscriptomics
   - portal/mixs_inspired
   - portal/sample_id
-  - sample_prep
+  #  - sample_prep
   - workflow_execution_activity
 
 
@@ -164,21 +164,21 @@ classes:
       to other objects of interest. For MongoDB, the lists of objects that Database
       slots point to correspond to **collections**.
     slots:
-      - planned_process_set
-      - functional_annotation_agg
+      #      - dissolving_activity_set
+      #      - material_sample_set
+      #      - material_sampling_activity_set
+      #      - reaction_activity_set
       - activity_set
       - biosample_set
       - collecting_biosamples_from_site_set
       - data_object_set
-      - dissolving_activity_set
       - extraction_set
       - field_research_site_set
+      - functional_annotation_agg
       - functional_annotation_set
       - genome_feature_set
       - library_preparation_set
       - mags_activity_set
-      - material_sample_set
-      - material_sampling_activity_set
       - metabolomics_analysis_activity_set
       - metagenome_annotation_activity_set
       - metagenome_assembly_set
@@ -187,12 +187,13 @@ classes:
       - metatranscriptome_activity_set
       - nom_analysis_activity_set
       - omics_processing_set
+      - planned_process_set
       - pooling_set
       - processed_sample_set
-      - reaction_activity_set
       - read_based_taxonomy_analysis_activity_set
       - read_qc_analysis_activity_set
       - study_set
+
 
 
   Pooling:
@@ -216,20 +217,24 @@ classes:
 
   Extraction:
     class_uri: nmdc:Extraction
-    is_a: BiosampleProcessing # from core.yaml
+    is_a: PlannedProcess # from core.yaml
     description: A material separation in which a desired component of an input material is separated from the remainder.
     exact_mappings:
       - OBI:0302884
     slots:
+      #      - concentration
+      - extractant
       - extraction_method
       - extraction_target
-      - processing_institution
-      - protocol_link
-      - quality_control_report
       - input_mass
+      - quality_control_report
+      - volume
     slot_usage:
       has_input:
         required: true
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
       has_output:
         required: true
       id:
@@ -237,6 +242,17 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+      volume:
+        description: The volume of the solvent/solute being used, not the input.
+
+  SolutionComponent:
+    slots:
+      - compound
+      - concentration
+
+  Solution:
+    slots:
+      - has_solution_components
 
   Protocol:
     slots:
@@ -257,7 +273,6 @@ classes:
       - library_preparation_kit
       - library_type
       - pcr_cycles
-      - processing_institution
     close_mappings:
       - OBI:0000711
     comments:
@@ -1599,7 +1614,6 @@ classes:
       - Homogeneity may be considered to have been achieved in a practical sense when the sampling error of the processed portion is negligible compared to the total error of the measurement system.
     slots:
       - duration
-      - instrument_used
     slot_usage:
       has_input:
         any_of:
@@ -1608,8 +1622,6 @@ classes:
       has_output:
         range: ProcessedSample
         description: The mixed sample.
-      instrument_used:
-        range: AnonymousInstrument
 
   FiltrationProcess:
     description: >-
@@ -1623,21 +1635,17 @@ classes:
       - ORCID:0009-0008-4013-7737 #James Tessmer
     is_a: PlannedProcess
     slots:
+      - conditionings
+      - container_size
       - filter_material
       - filter_pore_size
-      - conditionings
-      - separation_method
-      - container_size
-      - volume
       - filtration_category
-      - instrument_used
       - is_pressurized
+      - separation_method
+      - volume
     slot_usage:
       volume:
         description: The volume of sample filtered.
-      instrument_used:
-        range: AnonymousInstrument
-
 
   OmicsProcessing:
     aliases:
@@ -2137,7 +2145,6 @@ enums:
       - credit enums come from https://casrai.org/credit/
   processing_institution_enum:
     notes:
-      - This will become the range of processing_institution.omics processing
       - use ROR meanings like https://ror.org/0168r3w48 for UCSD
     from_schema: NMDC_enums_roundtrip
     permissible_values:
@@ -2262,6 +2269,7 @@ enums:
       - ORCID:0000-0002-8683-0050 #Montana Smith
     permissible_values:
       V-bottom conical tube:
+      falcon tube:
 
   SeparationMethodEnum:
     description: The tool/substance used to separate or filter a solution or mixture.
@@ -2270,6 +2278,35 @@ enums:
       - ORCID:0000-0002-8683-0050 #Montana Smith
     permissible_values:
       PTFE 96-well filter plate:
+  
+  #  SolventEnum:
+  #    description: The solvents that may be used in processing metabolomic samples.
+  #    permissible_values:
+  #      deionized Water:
+  #      methanol:
+  #      chloroform:
+  #      ammonium bicarbonate buffer:
+  #      methoxyamine:
+  #      MeOH/H2O:
+  #      MeOH:
+  #      Potassium sulfate:
+  #      ethanol-free chloroform:
+  #      bray extract solution:
+  #      olsen extract solution:
+  #      Milli-Q H2O:
+  #      ultrapure water:
+  #      MSTFA:
+  #      cloridic acid:
+  #      Water:
+  #      trypsin in ammonium bicarbonate:
+  
+  CompoundEnum:
+    permissible_values:
+      ammonium bicarbonate:
+      deionized water:
+      methanol:
+      trypsin:
+
 
 slots:
   model:
@@ -2337,7 +2374,6 @@ slots:
     range: ExtractionTargetEnum
 
   quality_control_report:
-    #    range: integer
     range: QualityControlReport
   # structure
 
@@ -3023,9 +3059,6 @@ slots:
   filtration_category:
     range: string
     description: The type of conditioning applied to a filter, device, etc.
-  concentration:
-    range: QuantityValue
-    description: The concentration of a substance used in an activity
   material_component_separation:
     range: string
     description: "A material processing in which components of an input material become segregated in space"
@@ -3044,7 +3077,27 @@ slots:
       - value:
           has_numeric_value: 2
           has_unit: hours
-
   contained_in:
     range: ContainerCategoryEnum
     description: A type of container. i.e. test tube, falcon tube, etc.
+  extractant:
+    range: Solution
+    description: "The active component(s) primarily responsible for transfer of a solute from one phase to the other."
+  concentration:
+    range: QuantityValue
+    description: The concentration of a substance used in a process
+  input_volume:
+    range: QuantityValue
+    description: The volume of the input sample.
+  has_solution_components:
+    range: SolutionComponent
+    domain: Solution
+    multivalued: true
+    inlined_as_list: true
+    required: true
+    minimum_cardinality: 1
+  compound:
+    range: CompoundEnum
+    description: A substance that consists of more than one atom or ion. Includes solvents and solutes. Can be combined into solutions.
+    required: true
+    

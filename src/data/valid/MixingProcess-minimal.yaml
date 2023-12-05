@@ -1,5 +1,5 @@
 id: nmdc:mp-1
-has_input: 
+has_input:
   - nmdc:biosample-1 #This is an example biosample ID and does not represent a real biosample
   - nmdc:processed-sample-2
 has_output:
@@ -7,6 +7,5 @@ has_output:
 duration:
   has_numeric_value: 2
   has_unit: hours
-instrument_used:
-  - name:
-      Orbital Shaker
+instrument_name:
+  Orbital Shaker
