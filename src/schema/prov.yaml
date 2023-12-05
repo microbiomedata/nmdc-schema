@@ -73,7 +73,5 @@ slots:
 
   used:
     domain: Activity
-    # some Instrument slot usages, but those require a CURIE, not a bare string
-    # this is being used more like instrument_name
     mappings:
       - prov:used

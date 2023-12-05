@@ -30,7 +30,7 @@ imports:
   - portal/jgi_metatranscriptomics
   - portal/mixs_inspired
   - portal/sample_id
-  - sample_prep
+  #  - sample_prep
   - workflow_execution_activity
 
 
@@ -164,21 +164,21 @@ classes:
       to other objects of interest. For MongoDB, the lists of objects that Database
       slots point to correspond to **collections**.
     slots:
-      - planned_process_set
-      - functional_annotation_agg
+      #      - dissolving_activity_set
+      #      - material_sample_set
+      #      - material_sampling_activity_set
+      #      - reaction_activity_set
       - activity_set
       - biosample_set
       - collecting_biosamples_from_site_set
       - data_object_set
-      - dissolving_activity_set
       - extraction_set
       - field_research_site_set
+      - functional_annotation_agg
       - functional_annotation_set
       - genome_feature_set
       - library_preparation_set
       - mags_activity_set
-      - material_sample_set
-      - material_sampling_activity_set
       - metabolomics_analysis_activity_set
       - metagenome_annotation_activity_set
       - metagenome_assembly_set
@@ -187,12 +187,13 @@ classes:
       - metatranscriptome_activity_set
       - nom_analysis_activity_set
       - omics_processing_set
+      - planned_process_set
       - pooling_set
       - processed_sample_set
-      - reaction_activity_set
       - read_based_taxonomy_analysis_activity_set
       - read_qc_analysis_activity_set
       - study_set
+
 
 
   Pooling:
@@ -221,12 +222,13 @@ classes:
     exact_mappings:
       - OBI:0302884
     slots:
+      - concentration
+      - extractant
       - extraction_method
       - extraction_target
-      - quality_control_report
       - input_mass
-      - extractant
-      - concentration
+      - quality_control_report
+      - volume
     slot_usage:
       has_input:
         required: true
@@ -240,22 +242,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-      instrument_used:
-        range: AnonymousInstrument
       volume:
-        description: The volume of the solvent/solute being used, not the input.      
-
-  # Solvent:
-  #   description:
-  #     A material that is used to dissolve a solute.
-  #   slots:
-  #     - name
-  #     - concentration
-  #     - concentration_unit
-  #     - ph
-  #     - ph_unit
-  #     - volume
-  #     - volume_unit
+        description: The volume of the solvent/solute being used, not the input.
 
   SolutionComponent:
     slots:
@@ -264,9 +252,7 @@ classes:
 
   Solution:
     slots:
-      - has_solution_component
-
-  
+      - has_solution_components
 
   Protocol:
     slots:
@@ -277,7 +263,7 @@ classes:
     slots:
       - status
       - name
-      
+
   LibraryPreparation:
     class_uri: nmdc:LibraryPreparation
     aliases:
@@ -287,7 +273,6 @@ classes:
       - library_preparation_kit
       - library_type
       - pcr_cycles
-      - processing_institution
     close_mappings:
       - OBI:0000711
     comments:
@@ -1629,7 +1614,6 @@ classes:
       - Homogeneity may be considered to have been achieved in a practical sense when the sampling error of the processed portion is negligible compared to the total error of the measurement system.
     slots:
       - duration
-      - instrument_used
     slot_usage:
       has_input:
         any_of:
@@ -1638,8 +1622,6 @@ classes:
       has_output:
         range: ProcessedSample
         description: The mixed sample.
-      instrument_used:
-        range: AnonymousInstrument
 
   FiltrationProcess:
     description: >-
@@ -1653,20 +1635,17 @@ classes:
       - ORCID:0009-0008-4013-7737 #James Tessmer
     is_a: PlannedProcess
     slots:
+      - conditionings
+      - container_size
       - filter_material
       - filter_pore_size
-      - conditionings
-      - separation_method
-      - container_size
-      - volume
       - filtration_category
-      - instrument_used
       - is_pressurized
+      - separation_method
+      - volume
     slot_usage:
       volume:
         description: The volume of sample filtered.
-      instrument_used:
-        range: AnonymousInstrument
 
   OmicsProcessing:
     aliases:
@@ -2163,7 +2142,6 @@ enums:
       - credit enums come from https://casrai.org/credit/
   processing_institution_enum:
     notes:
-      - This will become the range of processing_institution.omics processing
       - use ROR meanings like https://ror.org/0168r3w48 for UCSD
     from_schema: NMDC_enums_roundtrip
     permissible_values:
@@ -2321,9 +2299,11 @@ enums:
   
   CompoundEnum:
     permissible_values:
-      trypsin:
       ammonium bicarbonate:
-    
+      deionized water:
+      methanol:
+      trypsin:
+
 
 slots:
   model:
@@ -3106,12 +3086,15 @@ slots:
   input_volume:
     range: QuantityValue
     description: The volume of the input sample.
-  has_solution_component:
+  has_solution_components:
     range: SolutionComponent
     domain: Solution
     multivalued: true
     inlined_as_list: true
+    required: true
+    minimum_cardinality: 1
   compound:
-    range: CompondEnum
-    description: "A substance dissolved in another substance, known as a solvent."
+    range: CompoundEnum
+    description: A substance that consists of more than one atom or ion. Includes solvents and solutes. Can be combined into solutions.
+    required: true
     
