@@ -5,22 +5,22 @@ has_output:
   - nmdc:procsm-11-05g48p90
   - nmdc:procsm-11-05g48p91
 stationary_phase: "CN"
-mobile_phase: # make multivalued
-  - has_solution_components:
-      - compound: methanol
-    volume:
+mobile_phase:
+  - volume:
       has_numeric_value: 700
       has_unit: mL
-  #- has_solution_components:
-  #    - compound: chloridic acid
-  #      concentration:
-  #        has_numeric_value: 10
-  #        has_unit: mM
-  #  volume:
-  #    has_numeric_value: 700
-  #    has_unit: mL
-  #- has_solution_components:
-  #    - compound: water 
-  #  volume:
-  #    has_numeric_value: 1000
-  #    has_unit: mL  
+    has_solution_components:
+      - compound: methanol
+  - volume:
+      has_numeric_value: 700
+      has_unit: mL
+    has_solution_components:
+      - compound: chloridic acid
+        concentration:
+          has_numeric_value: 10
+          has_unit: mM 
+  - volume:
+      has_numeric_value: 1000
+      has_unit: mL  
+    has_solution_components:
+      - compound: water
