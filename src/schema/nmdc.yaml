@@ -1100,6 +1100,7 @@ classes:
 
       ## EMSL slots
       - bulk_elect_conductivity
+      - infiltrations
 
       ## bioscales slots
       - zinc
