@@ -167,6 +167,10 @@ classes:
       - protocol_link
       - start_date
       - instrument_name # or "used" ?
+      - qc_status
+      - qc_comment
+      - qc_failure_what
+      - qc_failure_where
     slot_usage:
       designated_class:
         comments:
