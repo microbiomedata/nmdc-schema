@@ -167,11 +167,11 @@ classes:
       - count
     slot_usage:
       metagenome_annotation_id:
-        true
+        required: true
       gene_function_id:
-        true
+        required: true
       count:
-        true
+        required: true
   Database:
     tree_root: true
     aliases:
