@@ -46,7 +46,10 @@ classes:
       - part_of
       - type
       - version
-      - quality_control_report
+      - qc_status
+      - qc_comment
+      - qc_failure_what
+      - qc_failure_where
 
 
     slot_usage:
