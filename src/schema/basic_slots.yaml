@@ -136,7 +136,7 @@ slots:
   
   is_best_protein:
     description: Slot to store a boolean value. If populated with a  value of true the gene function is the best protein hit, if false it is not the best protein hit.
-    range: Boolean
+    range: boolean
     
   instrument_name:
     description: >-
