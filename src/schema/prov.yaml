@@ -19,7 +19,8 @@ default_range: string
 classes:
 
   Activity:
-    description: "a provence-generating activity"
+    description: Something that occurs over a period of time and acts upon or with entities; 
+      it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.
     slots:
       - id
       - name
@@ -27,6 +28,8 @@ classes:
       - ended_at_time
       - was_informed_by
       - used
+    comments:
+      - to be replaced with PlannedProcess in the monterey-schema
     notes:
       - removed was_associated_with because we are trying to avoid instantiating id-less Agents
     mappings:
@@ -70,7 +73,5 @@ slots:
 
   used:
     domain: Activity
-    # some Instrument slot usages, but those require a CURIE, not a bare string
-    # this is being used more like instrument_name
     mappings:
       - prov:used

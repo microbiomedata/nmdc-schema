@@ -19,16 +19,6 @@ default_prefix: nmdc
 default_range: string
 
 enums:
-  #  dna_cont_type_enum:
-  #    from_schema: https://example.com/nmdc_dh
-  #    permissible_values:
-  #      plate:
-  #      tube:
-  #  dna_dnase_enum:
-  #    from_schema: https://example.com/nmdc_dh
-  #    permissible_values:
-  #      'no':
-  #      'yes':
   dna_sample_format_enum:
     from_schema: https://example.com/nmdc_dh
     permissible_values:

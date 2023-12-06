@@ -12,7 +12,7 @@ imports:
 prefixes:
   KEGG.COMPOUND: "https://bioregistry.io/kegg.compound:"
   SIO: http://semanticscience.org/resource/SIO_
-  UniProtKB: "https://bioregistry.io/uniprot:" # https://bioregistry.io/uniprot:P0DP23
+  UniProtKB: "https://bioregistry.io/uniprot:"
   biolink: https://w3id.org/biolink/vocab/
   dcterms: http://purl.org/dc/terms/
   linkml: https://w3id.org/linkml/
@@ -21,6 +21,7 @@ prefixes:
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   schema: http://schema.org/
   wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
+  OBI: http://purl.obolibrary.org/obo/OBI_
 
 default_prefix: nmdc
 default_range: string
@@ -31,7 +32,6 @@ subsets:
   investigation: { }
   nucleic acid sequence source: { }
   sequencing: { }
-  #  soil: { }
 
 types:
 
@@ -63,6 +63,16 @@ types:
       - qud:Unit
       - UO:0000000
 
+enums:
+  DeviceEnum:
+    permissible_values:
+      Orbital Shaker:
+      Thermomixer:
+      Vortex:
+      Agitation plunger:
+      Drying oven:
+      CEREX System 96 processor:
+
 classes:
 
   NamedThing:
@@ -73,6 +83,28 @@ classes:
       - name
       - description
       - alternative_identifiers
+
+  #  DataGeneratingInstrument:
+  #    slots:
+  #      - model
+  #      - name # range: DeviceEnum ? # see also "used" and "instrument_name"
+  #      - vendor
+  #    aliases:
+  #      - device
+  #    description: An identified thing that is capable of generating scientific data
+  #    comments:
+  #      - Likely a capital investment. One would want to say "I used this serial number"
+  #    todos:
+  #      - add examples, like a Thermo Electron Orbitrap
+  #    is_a: NamedThing
+  #    slot_usage:
+  #      id:
+  #        required: true
+  #        structured_pattern:
+  #          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+  #          interpolated: true
+  #    exact_mappings:
+  #      - OBI:0000485
 
   MaterialEntity:
     abstract: true
@@ -90,7 +122,7 @@ classes:
       - dna_absorb1
       - dna_concentration
       - external_database_identifiers
-      - nucleic_acid_concentration
+    #      - nucleic_acid_concentration
     slot_usage:
       id:
         required: true
@@ -127,17 +159,18 @@ classes:
     is_a: NamedThing
     title: Planned Process
     slots:
+      - designated_class
       - end_date
       - has_input
       - has_output
+      - processing_institution
       - protocol_link
       - start_date
-      - designated_class
+      - instrument_name # or "used" ?
     slot_usage:
       designated_class:
         comments:
           - required on all instances in a polymorphic Database slot like planned_process_set
-      # - participating_agent
 
   OntologyClass:
     is_a: NamedThing
@@ -160,14 +193,6 @@ classes:
     slot_usage:
       type:
         description: An optional string that specified the type of object.
-
-  InstrumentValue:
-    is_a: AttributeValue
-    slots:
-      - has_unit
-      - has_numeric_value
-      - instrument_name
-
 
   QuantityValue:
     is_a: AttributeValue
@@ -249,21 +274,6 @@ classes:
       - number_of_contig
       - total_bases
       - type
-
-  Instrument:
-    is_a: NamedThing
-    aliases:
-      - device
-    description: >-
-      A material entity that is designed to perform a function in a scientific investigation, but is not a reagent[OBI].
-    exact_mappings:
-      - OBI:0000485
-    slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
 
   MetaboliteQuantification:
     description: This is used to link a metabolomics analysis workflow to a specific metabolite
@@ -624,15 +634,9 @@ slots:
   websites:
     range: string
     multivalued: true
+    pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
     description: A list of websites that are associated with the entity.
-
-  publications:
-    range: string
-    multivalued: true
-    description: >-
-      A list of publications that are associated with the entity.
-      The publications SHOULD be given using an identifier, such as a DOI or Pubmed ID, if possible.
-    deprecated_element_has_exact_replacement: nmdc:publication_dois
+    comments: DOIs should not be included as websites. Instead, use the associated_dois slot.
 
   highest_similarity_score:
     todos:

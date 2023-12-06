@@ -123,14 +123,11 @@ slots:
 
   protocol_link:
     range: Protocol
-    #    range: integer
-    # see also relevant_protocol string slot # this name avoids case-insensitive clash with Protocol class
 
 
-  # some parent properties for biosamples, which will be subtyped in multiples modules
+  #  nucleic_acid_concentration:
+  #    range: InstrumentValue
 
-  nucleic_acid_concentration:
-    range: InstrumentValue
   biomaterial_purity:
     range: QuantityValue
   
@@ -141,7 +138,14 @@ slots:
   instrument_name:
     description: >-
       The name of the instrument that was used for processing the sample.
-#    range: instrument_name_enum
+#    add this and write migration # range: instrument_name_enum
+
+  has_part:
+    domain: NamedThing
+    range: NamedThing
+    multivalued: true
+    comments:
+    - originally limited to "A pathway can be broken down to a series of reaction step"
 
 #enums:
 #  instrument_name_enum:

@@ -24,7 +24,7 @@ jobs:
       #      - run: ./robot convert --input project/owl/nmdc.owl.ttl --output project/owl/nmdc.ofn
       #      - run: ls -l project/owl/nmdc.ofn
       - uses: foooomio/setup-jena@v2
-      - run: make squeaky-clean all test validate-filtered-request-all validate-polymorphic
+      - run: make squeaky-clean all test validate-filtered-request-all
       - run: touch local/.env # create empty .env file
       - run: make make-rdf
       #      - run: make validate-Gs0114663-study-biosample-ids
@@ -32,3 +32,6 @@ jobs:
       - run: tdb2.tdbloader --loc=tdbcontent --graph=mongodb://mongo-loadbalancer.nmdc.production.svc.spin.nersc.gov:27017 local/mongo_as_nmdc_database_cuire_repaired.ttl
       - run: tdb2.tdbquery  --loc=tdbcontent --query=assets/sparql/tdb-test.rq
       - run: tdb2.tdbquery  --loc=tdbcontent --query=assets/sparql/tdb-graph-list.rq
+      - uses: actions/upload-artifact@v3
+        with:
+          path: local/mongo_as_nmdc_database_cuire_repaired.ttl

@@ -16,17 +16,16 @@ notes:
 imports:
   - core
 
-
 prefixes:
-  COG: "https://bioregistry.io/cog:" # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  COG: "https://bioregistry.io/cog:"
   EC: "https://bioregistry.io/eccode:"
-  GO: http://purl.obolibrary.org/obo/GO_ # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
-  KEGG.ORTHOLOGY: "https://bioregistry.io/kegg.orthology:"  # https://bioregistry.io/kegg.orthology:K00001
-  KEGG.REACTION: "https://bioregistry.io/kegg.reaction:" # https://bioregistry.io/kegg.reaction:R00100
-  KEGG_PATHWAY: "https://bioregistry.io/kegg.pathway:" # https://bioregistry.io/kegg.pathway:rsk00410
-  MetaCyc: "https://bioregistry.io/metacyc.compound:" # https://bioregistry.io/metacyc.compound:CPD-10330
-  RHEA: "https://bioregistry.io/rhea:" # https://bioregistry.io/rhea:12345
-  SEED: "https://bioregistry.io/seed:" # https://bioregistry.io/seed:Biotin_biosynthesis
+  GO: http://purl.obolibrary.org/obo/GO_
+  KEGG.ORTHOLOGY: "https://bioregistry.io/kegg.orthology:"
+  KEGG.REACTION: "https://bioregistry.io/kegg.reaction:"
+  KEGG_PATHWAY: "https://bioregistry.io/kegg.pathway:"
+  MetaCyc: "https://bioregistry.io/metacyc.compound:"
+  RHEA: "https://bioregistry.io/rhea:"
+  SEED: "https://bioregistry.io/seed:"
 
   biolink: https://w3id.org/biolink/vocab/
   linkml: https://w3id.org/linkml/
@@ -86,6 +85,14 @@ classes:
       A pathway is a sequence of steps/reactions carried out by an organism or community of organisms
     slots:
       - has_part
+
+    slot_usage:
+      has_part:
+        range: Reaction
+        required: true
+        description: >-
+          A pathway can be broken down to a series of reaction step
+
     id_prefixes:
       - KEGG_PATHWAY
       - COG
@@ -169,7 +176,6 @@ classes:
         description: provenance for the annotation.
         notes: To be consistent with the rest of the NMDC schema we use the PROV annotation model, rather than GPAD
         range: MetagenomeAnnotationActivity
-    #        required: true
     narrow_mappings:
       - biolink:GeneToGoTermAssociation
 
@@ -239,10 +245,7 @@ slots:
       - biolink:end_interbase_coordinate
   feature_type:
     description: "TODO: Yuri to write"
-  has_part:
-    range: Reaction
-    multivalued: true
-    description: A pathway can be broken down to a series of reaction step
+
   is_balanced:
     range: boolean
   is_diastereoselective:

@@ -38,6 +38,9 @@ associated_dois:
   - doi_value: doi:10.1126/science.1234545
     doi_provider: jgi
     doi_category: award_doi
+  - doi_value: doi:10.48321/D1Z60Q
+    doi_category: data_management_plan_doi
+    doi_provider: gsc
 title: Sample Exhaustive Biosample instance. Although all of these values should pass
   validation, that does not mean that any Biosample of any type would necessarily
   have this particular combination of values.
@@ -77,7 +80,7 @@ has_credit_associations:
     applied_roles:
       - Supervision
       - Conceptualization
-    applied_role: Funding acquisition
+      - Funding acquisition
     type: any string
   - applies_to_person:
       name: Tanja Davidsen
@@ -96,5 +99,5 @@ study_image:
     description: Photo of Craig Venter Institute, La Jolla, California
     display_order: '2'
 study_category: research_study
-part_of: 
+part_of:
   - nmdc:sty-11-34xj1157

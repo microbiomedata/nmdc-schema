@@ -84,7 +84,7 @@ create-data-harmonizer:
 	npm init data-harmonizer $(SOURCE_SCHEMA_PATH)
 
 all: site
-site: clean site-clean gen-project gendoc nmdc_schema/gold-to-mixs.sssom.tsv
+site: clean site-clean gen-project gendoc migration-doctests nmdc_schema/gold-to-mixs.sssom.tsv
 # may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy
 
 %.yaml: gen-project
@@ -162,6 +162,8 @@ gendoc: $(DOCDIR)
 	cp $(SRC)/docs/*md $(DOCDIR) ; \
 	cp -r $(SRC)/docs/images $(DOCDIR) ; \
 	$(RUN) gen-doc -d $(DOCDIR) --template-directory $(SRC)/$(TEMPLATEDIR) $(SOURCE_SCHEMA_PATH)
+	mkdir -p $(DOCDIR)/javascripts
+	$(RUN) cp $(SRC)/scripts/javascripts/* $(DOCDIR)/javascripts/
 
 testdoc: gendoc serve
 

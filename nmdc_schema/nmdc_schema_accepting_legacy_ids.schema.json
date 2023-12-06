@@ -2,7 +2,7 @@
     "$defs": {
         "Activity": {
             "additionalProperties": false,
-            "description": "a provence-generating activity",
+            "description": "Something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.",
             "properties": {
                 "ended_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
@@ -76,6 +76,24 @@
                 "id"
             ],
             "title": "AnalyticalSample",
+            "type": "object"
+        },
+        "AnonymousInstrument": {
+            "additionalProperties": false,
+            "description": "a tool, device or supplies-like thing that is used in a research setting but does not have a meaningful identifier",
+            "properties": {
+                "model": {
+                    "$ref": "#/$defs/InstrumentModelEnum"
+                },
+                "name": {
+                    "$ref": "#/$defs/DeviceEnum",
+                    "description": "A human readable label for an entity"
+                },
+                "vendor": {
+                    "$ref": "#/$defs/InstrumentVendorEnum"
+                }
+            },
+            "title": "AnonymousInstrument",
             "type": "object"
         },
         "ArchStrucEnum": {
@@ -485,6 +503,10 @@
                 "built_struc_type": {
                     "$ref": "#/$defs/TextValue",
                     "description": "A physical structure that is a body or assemblage of bodies in space to form a system capable of supporting loads"
+                },
+                "bulk_elect_conductivity": {
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "Electrical conductivity is a measure of the ability to carry electric current, which is mostly dictated by the chemistry of and amount of water."
                 },
                 "calcium": {
                     "$ref": "#/$defs/QuantityValue",
@@ -1223,6 +1245,10 @@
                         "$ref": "#/$defs/TextValue"
                     },
                     "type": "array"
+                },
+                "host_disease_stat": {
+                    "$ref": "#/$defs/TextValue",
+                    "description": "List of diseases with which the host has been diagnosed; can include multiple diagnoses. The value of the field depends on host; for humans the terms should be chosen from the DO (Human Disease Ontology) at https://www.disease-ontology.org, non-human host diseases are free text"
                 },
                 "host_dry_mass": {
                     "$ref": "#/$defs/QuantityValue",
@@ -3146,12 +3172,12 @@
             "title": "CollectingBiosamplesFromSite",
             "type": "object"
         },
-        "ContainerTypeEnum": {
+        "ContainerCategoryEnum": {
             "description": "The permitted types of containers used in processing metabolomic samples.",
             "enum": [
                 "V-bottom conical tube"
             ],
-            "title": "ContainerTypeEnum",
+            "title": "ContainerCategoryEnum",
             "type": "string"
         },
         "ControlledIdentifiedTermValue": {
@@ -3199,9 +3225,6 @@
             "additionalProperties": false,
             "description": "This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role (https://casrai.org/credit/) and for a person value Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0",
             "properties": {
-                "applied_role": {
-                    "$ref": "#/$defs/CreditEnum"
-                },
                 "applied_roles": {
                     "items": {
                         "$ref": "#/$defs/CreditEnum"
@@ -3288,6 +3311,44 @@
             "title": "CurLandUseEnum",
             "type": "string"
         },
+        "DataGeneratingInstrument": {
+            "additionalProperties": false,
+            "description": "An identified thing that is capable of generating scientific data",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
+                    "type": "string"
+                },
+                "model": {
+                    "$ref": "#/$defs/InstrumentModelEnum"
+                },
+                "name": {
+                    "$ref": "#/$defs/DeviceEnum",
+                    "description": "A human readable label for an entity"
+                },
+                "vendor": {
+                    "$ref": "#/$defs/InstrumentVendorEnum"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "DataGeneratingInstrument",
+            "type": "object"
+        },
         "DataObject": {
             "additionalProperties": false,
             "description": "An object that primarily consists of symbols that represent information.   Files, records, and omics data are examples of data objects.",
@@ -3368,11 +3429,7 @@
                 },
                 "collecting_biosamples_from_site_set": {
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/CollectingBiosamplesFromSite"
-                            }
-                        ]
+                        "$ref": "#/$defs/CollectingBiosamplesFromSite"
                     },
                     "type": "array"
                 },
@@ -3392,11 +3449,7 @@
                 "extraction_set": {
                     "description": "This property links a database object to the set of extractions within it.",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/Extraction"
-                            }
-                        ]
+                        "$ref": "#/$defs/Extraction"
                     },
                     "type": "array"
                 },
@@ -3429,11 +3482,7 @@
                 "library_preparation_set": {
                     "description": "This property links a database object to the set of DNA extractions within it.",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/LibraryPreparation"
-                            }
-                        ]
+                        "$ref": "#/$defs/LibraryPreparation"
                     },
                     "type": "array"
                 },
@@ -3508,11 +3557,7 @@
                 "omics_processing_set": {
                     "description": "This property links a database object to the set of omics processings within it.",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/OmicsProcessing"
-                            }
-                        ]
+                        "$ref": "#/$defs/OmicsProcessing"
                     },
                     "type": "array"
                 },
@@ -3528,6 +3573,12 @@
                             },
                             {
                                 "$ref": "#/$defs/SubSamplingProcess"
+                            },
+                            {
+                                "$ref": "#/$defs/MixingProcess"
+                            },
+                            {
+                                "$ref": "#/$defs/FiltrationProcess"
                             },
                             {
                                 "$ref": "#/$defs/OmicsProcessing"
@@ -3547,11 +3598,7 @@
                 },
                 "pooling_set": {
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/Pooling"
-                            }
-                        ]
+                        "$ref": "#/$defs/Pooling"
                     },
                     "type": "array"
                 },
@@ -3616,6 +3663,19 @@
             "title": "DeposEnvEnum",
             "type": "string"
         },
+        "DeviceEnum": {
+            "description": "",
+            "enum": [
+                "Orbital Shaker",
+                "Thermomixer",
+                "Vortex",
+                "Agitation plunger",
+                "Drying oven",
+                "CEREX System 96 processor"
+            ],
+            "title": "DeviceEnum",
+            "type": "string"
+        },
         "DeviceTypeEnum": {
             "description": "",
             "enum": [
@@ -3629,9 +3689,6 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "dissolution_aided_by": {
-                    "$ref": "#/$defs/LabDevice"
-                },
                 "dissolution_reagent": {
                     "$ref": "#/$defs/SolventEnum"
                 },
@@ -3725,7 +3782,8 @@
             "enum": [
                 "award_doi",
                 "dataset_doi",
-                "publication_doi"
+                "publication_doi",
+                "data_management_plan_doi"
             ],
             "title": "DoiCategoryEnum",
             "type": "string"
@@ -3738,7 +3796,10 @@
                 "kbase",
                 "osti",
                 "ess_dive",
-                "massive"
+                "massive",
+                "gsc",
+                "zenodo",
+                "edi"
             ],
             "title": "DoiProviderEnum",
             "type": "string"
@@ -4226,6 +4287,111 @@
             "title": "FilterTypeEnum",
             "type": "string"
         },
+        "FiltrationProcess": {
+            "additionalProperties": false,
+            "description": "The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by forcing a carrier gas or liquid through a porous medium.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "conditionings": {
+                    "description": "Preliminary treatment of either phase with a suitable solution of the other phase (in the absence of main extractable solute(s)) so that when the subsequent equilibration is carried out changes in the (volume) phase ratio or in the concentrations of other components are minimized.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "container_size": {
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "The volume of the container an analyte is stored in or an activity takes place in"
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": "string"
+                },
+                "designated_class": {
+                    "enum": [
+                        "nmdc:FiltrationProcess"
+                    ],
+                    "type": "string"
+                },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": "string"
+                },
+                "filter_material": {
+                    "description": "A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained.",
+                    "type": "string"
+                },
+                "filter_pore_size": {
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "A quantitative or qualitative measurement of the physical dimensions of the pores in a material."
+                },
+                "filtration_category": {
+                    "description": "The type of conditioning applied to a filter, device, etc.",
+                    "type": "string"
+                },
+                "has_input": {
+                    "description": "An input to a process.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_output": {
+                    "description": "An output biosample to a processing step",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "instrument_used": {
+                    "description": "The device or tool that performed or aided in performing a process.",
+                    "items": {
+                        "$ref": "#/$defs/AnonymousInstrument"
+                    },
+                    "type": "array"
+                },
+                "is_pressurized": {
+                    "description": "Whether or not pressure was applied to a thing or process.",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": "string"
+                },
+                "protocol_link": {
+                    "$ref": "#/$defs/Protocol"
+                },
+                "separation_method": {
+                    "$ref": "#/$defs/SeparationMethodEnum",
+                    "description": "The method that was used to separate a substance from a solution or mixture."
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": "string"
+                },
+                "volume": {
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "The volume of sample filtered."
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "FiltrationProcess",
+            "type": "object"
+        },
         "FloorCondEnum": {
             "description": "",
             "enum": [
@@ -4638,64 +4804,27 @@
             "title": "IndoorSurfEnum",
             "type": "string"
         },
-        "Instrument": {
-            "additionalProperties": false,
-            "description": "A material entity that is designed to perform a function in a scientific investigation, but is not a reagent[OBI].",
-            "properties": {
-                "alternative_identifiers": {
-                    "description": "A list of alternative identifiers for the entity.",
-                    "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "description": {
-                    "description": "a human-readable description of a thing",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "A human readable label for an entity",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id"
-            ],
-            "title": "Instrument",
-            "type": "object"
-        },
-        "InstrumentValue": {
-            "additionalProperties": false,
+        "InstrumentModelEnum": {
             "description": "",
-            "properties": {
-                "has_numeric_value": {
-                    "description": "Links a quantity value to a number",
-                    "type": "number"
-                },
-                "has_raw_value": {
-                    "description": "The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"",
-                    "type": "string"
-                },
-                "has_unit": {
-                    "description": "Links a QuantityValue to a unit",
-                    "type": "string"
-                },
-                "instrument_name": {
-                    "description": "The name of the instrument that was used for processing the sample.",
-                    "type": "string"
-                },
-                "was_generated_by": {
-                    "type": "string"
-                }
-            },
-            "title": "InstrumentValue",
-            "type": "object"
+            "enum": [
+                "Orbitrap",
+                "VortexGenie2",
+                "PIPETMAN F144059M"
+            ],
+            "title": "InstrumentModelEnum",
+            "type": "string"
+        },
+        "InstrumentVendorEnum": {
+            "description": "",
+            "enum": [
+                "ThermoFisher",
+                "VWR",
+                "PerkinElmer",
+                "Gilson",
+                "ScientificIndustries"
+            ],
+            "title": "InstrumentVendorEnum",
+            "type": "string"
         },
         "IntWallCondEnum": {
             "description": "",
@@ -4736,26 +4865,6 @@
             ],
             "title": "JgiContTypeEnum",
             "type": "string"
-        },
-        "LabDevice": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "activity_speed": {
-                    "$ref": "#/$defs/QuantityValue"
-                },
-                "activity_temperature": {
-                    "$ref": "#/$defs/QuantityValue"
-                },
-                "activity_time": {
-                    "$ref": "#/$defs/QuantityValue"
-                },
-                "device_type": {
-                    "$ref": "#/$defs/DeviceTypeEnum"
-                }
-            },
-            "title": "LabDevice",
-            "type": "object"
         },
         "LibraryPreparation": {
             "additionalProperties": false,
@@ -5045,13 +5154,13 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
+                "contained_in": {
+                    "$ref": "#/$defs/ContainerCategoryEnum",
+                    "description": "A type of container. i.e. test tube, falcon tube, etc."
+                },
                 "container_size": {
                     "$ref": "#/$defs/QuantityValue",
                     "description": "The volume of the container an analyte is stored in or an activity takes place in"
-                },
-                "container_type": {
-                    "$ref": "#/$defs/ContainerTypeEnum",
-                    "description": "A type of container. i.e. test tube, falcon tube, etc."
                 }
             },
             "title": "MaterialContainer",
@@ -6005,6 +6114,88 @@
             "title": "MetatranscriptomeAssembly",
             "type": "object"
         },
+        "MixingProcess": {
+            "additionalProperties": false,
+            "description": "The combining of components, particles or layers into a more homogeneous state.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": "string"
+                },
+                "designated_class": {
+                    "enum": [
+                        "nmdc:MixingProcess"
+                    ],
+                    "type": "string"
+                },
+                "duration": {
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "The elapsed time of an activity."
+                },
+                "end_date": {
+                    "description": "The date on which any process or activity was ended",
+                    "type": "string"
+                },
+                "has_input": {
+                    "description": "An input to a process.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_output": {
+                    "description": "The mixed sample.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "instrument_used": {
+                    "description": "The device or tool that performed or aided in performing a process.",
+                    "items": {
+                        "$ref": "#/$defs/AnonymousInstrument"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": "string"
+                },
+                "protocol_link": {
+                    "$ref": "#/$defs/Protocol"
+                },
+                "start_date": {
+                    "description": "The date on which any process or activity was started",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "MixingProcess",
+            "type": "object"
+        },
         "NomAnalysisActivity": {
             "additionalProperties": false,
             "description": "",
@@ -6382,6 +6573,7 @@
                 }
             },
             "required": [
+                "has_part",
                 "id"
             ],
             "title": "Pathway",
@@ -6451,6 +6643,7 @@
                 "websites": {
                     "description": "A list of websites that are associated with the entity.",
                     "items": {
+                        "pattern": "^[Hh][Tt][Tt][Pp][Ss]?:\\/\\/(?!.*[Dd][Oo][Ii]\\.[Oo][Rr][Gg]).*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6621,9 +6814,6 @@
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": "string"
-                },
-                "nucleic_acid_concentration": {
-                    "$ref": "#/$defs/InstrumentValue"
                 }
             },
             "required": [
@@ -6836,9 +7026,6 @@
                 },
                 "material_output": {
                     "type": "string"
-                },
-                "reaction_aided_by": {
-                    "$ref": "#/$defs/LabDevice"
                 },
                 "reaction_temperature": {
                     "type": "string"
@@ -7287,6 +7474,14 @@
             "title": "SedimentTypeEnum",
             "type": "string"
         },
+        "SeparationMethodEnum": {
+            "description": "The tool/substance used to separate or filter a solution or mixture.",
+            "enum": [
+                "PTFE 96-well filter plate"
+            ],
+            "title": "SeparationMethodEnum",
+            "type": "string"
+        },
         "ShadingDeviceCondEnum": {
             "description": "",
             "enum": [
@@ -7486,6 +7681,14 @@
                     "description": "Ecosystem types represent things having common characteristics within the Ecosystem Category. These common characteristics based grouping is still broad but specific to the characteristics of a given environment. Ecosystem type is in position 3/5 in a GOLD path.",
                     "type": "string"
                 },
+                "emsl_project_identifiers": {
+                    "description": "an identifier that links to an EMSL user facility project",
+                    "items": {
+                        "pattern": "^emsl\\.project:[0-9]{5}$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "funding_sources": {
                     "description": "A list of organizations, along with the award numbers, that underwrite financial support for projects of  a particular type. Typically, they process applications and award funds to the chosen qualified  applicants.",
                     "items": {
@@ -7611,6 +7814,7 @@
                 "websites": {
                     "description": "A list of websites that are associated with the entity.",
                     "items": {
+                        "pattern": "^[Hh][Tt][Tt][Pp][Ss]?:\\/\\/(?!.*[Dd][Oo][Ii]\\.[Oo][Rr][Gg]).*$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7644,13 +7848,13 @@
                     },
                     "type": "array"
                 },
+                "contained_in": {
+                    "$ref": "#/$defs/ContainerCategoryEnum",
+                    "description": "A type of container. i.e. test tube, falcon tube, etc."
+                },
                 "container_size": {
                     "$ref": "#/$defs/QuantityValue",
                     "description": "The volume of the container an analyte is stored in or an activity takes place in"
-                },
-                "container_type": {
-                    "$ref": "#/$defs/ContainerTypeEnum",
-                    "description": "A type of container. i.e. test tube, falcon tube, etc."
                 },
                 "description": {
                     "description": "a human-readable description of a thing",
@@ -7669,12 +7873,20 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ],
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "has_output": {
-                    "description": "An output biosample to a processing step",
+                    "description": "The subsample.",
                     "items": {
                         "type": "string"
                     },
@@ -7684,6 +7896,10 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
+                },
+                "mass": {
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "The output mass of the SubSampling Process."
                 },
                 "name": {
                     "description": "A human readable label for an entity",
@@ -7702,7 +7918,7 @@
                 },
                 "volume": {
                     "$ref": "#/$defs/QuantityValue",
-                    "description": "The volume of subsample."
+                    "description": "The output volume of the SubSampling Process."
                 }
             },
             "required": [
@@ -8166,11 +8382,7 @@
         },
         "collecting_biosamples_from_site_set": {
             "items": {
-                "anyOf": [
-                    {
-                        "$ref": "#/$defs/CollectingBiosamplesFromSite"
-                    }
-                ]
+                "$ref": "#/$defs/CollectingBiosamplesFromSite"
             },
             "type": "array"
         },
@@ -8190,11 +8402,7 @@
         "extraction_set": {
             "description": "This property links a database object to the set of extractions within it.",
             "items": {
-                "anyOf": [
-                    {
-                        "$ref": "#/$defs/Extraction"
-                    }
-                ]
+                "$ref": "#/$defs/Extraction"
             },
             "type": "array"
         },
@@ -8227,11 +8435,7 @@
         "library_preparation_set": {
             "description": "This property links a database object to the set of DNA extractions within it.",
             "items": {
-                "anyOf": [
-                    {
-                        "$ref": "#/$defs/LibraryPreparation"
-                    }
-                ]
+                "$ref": "#/$defs/LibraryPreparation"
             },
             "type": "array"
         },
@@ -8306,11 +8510,7 @@
         "omics_processing_set": {
             "description": "This property links a database object to the set of omics processings within it.",
             "items": {
-                "anyOf": [
-                    {
-                        "$ref": "#/$defs/OmicsProcessing"
-                    }
-                ]
+                "$ref": "#/$defs/OmicsProcessing"
             },
             "type": "array"
         },
@@ -8326,6 +8526,12 @@
                     },
                     {
                         "$ref": "#/$defs/SubSamplingProcess"
+                    },
+                    {
+                        "$ref": "#/$defs/MixingProcess"
+                    },
+                    {
+                        "$ref": "#/$defs/FiltrationProcess"
                     },
                     {
                         "$ref": "#/$defs/OmicsProcessing"
@@ -8345,11 +8551,7 @@
         },
         "pooling_set": {
             "items": {
-                "anyOf": [
-                    {
-                        "$ref": "#/$defs/Pooling"
-                    }
-                ]
+                "$ref": "#/$defs/Pooling"
             },
             "type": "array"
         },
@@ -8390,5 +8592,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "v9.1.0"
+    "version": "v9.2.0"
 }
