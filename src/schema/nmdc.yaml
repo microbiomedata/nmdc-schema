@@ -3142,7 +3142,7 @@ slots:
     domain: Solution
     multivalued: true
     inlined_as_list: true
-    required: true
+    #required: true
     minimum_cardinality: 1
   compound:
     range: CompoundEnum
