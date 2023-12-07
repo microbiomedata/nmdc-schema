@@ -5,7 +5,7 @@ from linkml.validators.jsonschemavalidator import JsonSchemaDataValidator
 from linkml_runtime.dumpers import yaml_dumper
 from linkml_runtime.loaders import yaml_loader
 
-from nmdc_schema.nmdc import SolutionComponent, QuantityValue, Solution, Extraction, PhaseSeparationProcess
+from nmdc_schema.nmdc import SolutionComponent, QuantityValue, Solution, Extraction, ChromatographySeparationProcess
 
 ROOT = os.path.join(os.path.dirname(__file__), '..')
 SCHEMA_DIR = os.path.join(ROOT, "src", "schema")
@@ -76,7 +76,7 @@ extractant:
         from_yaml_string = yaml_loader.load(source=extr_yaml_string, target_class=Extraction)
 
 
-class TestPhaseSeparation(unittest.TestCase):
+class TestChromatographySeparationProcess(unittest.TestCase):
 
     def test_phase_separation(self):
         # validator = JsonSchemaDataValidator(SCHEMA_FILE)  # it takes a long time to construct this
@@ -103,7 +103,7 @@ class TestPhaseSeparation(unittest.TestCase):
             ),
         )
 
-        ps1 = PhaseSeparationProcess(
+        ps1 = ChromatographySeparationProcess(
             id="nmdc:ILLEGAL_ID_VAL",
             mobile_phase=sol1,
             stationary_phase="C8",

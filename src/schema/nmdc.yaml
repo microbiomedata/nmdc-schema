@@ -1646,7 +1646,7 @@ classes:
       volume:
         description: The volume of sample filtered.
 
-  PhaseSeparationProcess:
+  ChromatographySeparationProcess:
     description:
       The process of using a selective partitioning of the analyte or interferent between two immiscible phases.
     contributors:
@@ -2326,7 +2326,7 @@ enums:
       water:
 
   
-  SolidPhaseEnum:
+  StationaryPhaseEnum:
     description: The type of solid phase used in a solid phase extraction process.
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
@@ -3152,6 +3152,6 @@ slots:
     multivalued: true
     list_elements_ordered: true
   stationary_phase:
-    range: SolidPhaseEnum
-    description: The solid phase that is used in chromatography.
+    range: StationaryPhaseEnum
+    description: The material the stationary phase is comprised of used in chromatography.
 
