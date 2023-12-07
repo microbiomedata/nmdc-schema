@@ -72,6 +72,10 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+      qc_failure_what:
+        multivalued: true
+      qc_failure_where:
+        multivalued: true
 
   MetagenomeAssembly:
     description: A workflow execution activity that converts sequencing reads into an assembled metagenome.
