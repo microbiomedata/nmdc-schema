@@ -2323,6 +2323,8 @@ enums:
       methanol:
       trypsin:
       chloridic acid:
+        aliases:
+          - hydrochloric acid
       water:
 
   
