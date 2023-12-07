@@ -1658,10 +1658,10 @@ classes:
       - stationary_phase
       - temperature
     slot_usage:
-        has_input:
-          any_of:
-            - range: Biosample
-            - range: ProcessedSample
+      has_input:
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
 
   OmicsProcessing:
     aliases:
@@ -2120,7 +2120,7 @@ enums:
 
       LC-DDA-MS/MS Raw Data:
         description: Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
-        
+
   credit enum:
     permissible_values:
       Conceptualization:
@@ -3140,7 +3140,7 @@ slots:
     domain: Solution
     multivalued: true
     inlined_as_list: true
-    #required: true
+    required: true
     minimum_cardinality: 1
   compound:
     range: CompoundEnum
@@ -3151,6 +3151,7 @@ slots:
     description: The solution(s) that moves through a chromatography column.
     multivalued: true
     list_elements_ordered: true
+    inlined_as_list: true
   stationary_phase:
     range: StationaryPhaseEnum
     description: The material the stationary phase is comprised of used in chromatography.
