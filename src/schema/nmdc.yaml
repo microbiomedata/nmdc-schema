@@ -222,13 +222,11 @@ classes:
     exact_mappings:
       - OBI:0302884
     slots:
-      #      - concentration
       - extractant
       - extraction_method
       - extraction_target
       - input_mass
       - quality_control_report
-      - volume
     slot_usage:
       has_input:
         required: true
