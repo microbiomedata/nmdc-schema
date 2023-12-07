@@ -227,7 +227,6 @@ classes:
       - extraction_method
       - extraction_target
       - input_mass
-      - quality_control_report
       - volume
     slot_usage:
       has_input:
@@ -259,17 +258,7 @@ classes:
       - url
       - name
 
-  QualityControlReport:
-    slots:
-      - status
-      - name
-      - failure_categorization
-      - qc_comment
 
-  FailureCategorization:
-    slots:
-      - failure_what
-      - failure_where
 
   LibraryPreparation:
     class_uri: nmdc:LibraryPreparation
@@ -1695,7 +1684,6 @@ classes:
       - target_gene
       - target_subfragment
       - type
-      - quality_control_report
 
     slot_usage:
       id:
@@ -2402,7 +2390,8 @@ slots:
     range: integer
   sample_collection_month:
 
-  status:
+  qc_status:
+    description: Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)
     range: StatusEnum
 
   library_preparation_kit:
@@ -2418,9 +2407,6 @@ slots:
   extraction_method: { }
   extraction_target:
     range: ExtractionTargetEnum
-
-  quality_control_report:
-    range: QualityControlReport
 
   pcr_cycles:
     range: integer
