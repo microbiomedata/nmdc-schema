@@ -410,7 +410,7 @@ classes:
       - biospecimen
     description: >-
       Biological source material which can be characterized by an experiment.
-    todos:
+    notes:
       - could add GOLD and EBI's biosample definitions to the alt_descriptions?
     alt_descriptions:
       embl.ena:
@@ -1128,7 +1128,6 @@ classes:
           - value: 1871-10-01 to 1871-10-31
         todos:
           - is "to" acceptable? Is there a better way to request that be written?
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot # what does no longer matching an IRI mean?
         annotations:
           expected_value: date string
         range: string
@@ -1144,7 +1143,6 @@ classes:
         todos:
           - is "to" acceptable? Is there a better way to request that be written?
           - What about if the "day" isn't known? Is this ok?
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
         range: string
       extreme_event:
         examples:
@@ -1152,8 +1150,6 @@ classes:
         annotations:
           expected_value: date, string
         range: string
-        todos:
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
       slope_aspect:
         examples:
           - value: 35
@@ -1163,8 +1159,6 @@ classes:
         description:
           The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees).
           This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.
-        todos:
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
       slope_gradient:
         examples:
           - value: 10%
@@ -1175,13 +1169,12 @@ classes:
       al_sat:
         title: aluminum saturation/ extreme unusual properties
         description: The relative abundance of aluminum in the sample
-        comments:
+        notes:
           - Aluminum saturation is the percentage of the CEC occupies by aluminum. Like all cations,
             aluminum held by the cation exchange complex is in equilibrium with aluminum in the soil solution.
         examples:
           - value: 27%
         todos:
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
           - Example & validation. Can we configure things so that 27% & 27 % & 0.27 will validate?
           - I think it's weird the way GSC writes the title. I recommend this change. Thoughts?
             I would argue this isn't an extreme unusual property. It's just a biogeochemical measurement.
@@ -1192,13 +1185,10 @@ classes:
         examples:
           - value: https://doi.org/10.1371/journal.pone.0176357
         todos:
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
           - I think it's weird the way GSC writes the title. I recommend this change. Thoughts?
       annual_precpt:
         examples:
           - value: 8.94 inch
-        todos:
-          - This is no longer matching the listed IRI from GSC, added example. When NMDC has its own slots, map this to the MIxS slot
       cur_vegetation:
         description:
           Vegetation classification from one or more standard classification
@@ -1211,7 +1201,6 @@ classes:
           - value: forest
           - value: Bauhinia variegata
         todos:
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
           - Recommend changing this from text value to some king of ontology?
       cur_vegetation_meth:
         comments:
@@ -1219,7 +1208,6 @@ classes:
         examples:
           - value: https://doi.org/10.1111/j.1654-109X.2011.01154.x
         todos:
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
           - I'm not sure this is a DOI, PMID, or URI. Should pool the community and find out how they accomplish this if provided.
       heavy_metals:
         title: heavy metals/ extreme unusual properties
@@ -1230,7 +1218,6 @@ classes:
           - value: mercury 0.09 micrograms per gram
           - value: mercury 0.09 ug/g; chromium 0.03 ug/g
         todos:
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
           - Example & validation. Can we configure things so that 27% & 27 % & 0.27 will validate?
           - I think it's weird the way GSC writes the title. I recommend this change. Thoughts? I would argue this isn't an extreme unusual property. It's just a biogeochemical measurement.
       heavy_metals_meth:
@@ -1242,8 +1229,6 @@ classes:
         examples:
           - value: https://doi.org/10.3390/ijms9040434
           - value: mercury https://doi.org/10.1007/BF01056090; chromium https://doi.org/10.1007/s00216-006-0322-8
-        todos:
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
       season_precpt:
         title: average seasonal precipitation
         comments:
@@ -1255,7 +1240,6 @@ classes:
         notes:
           - mean and average are the same thing, but it seems like bad practice to not be consistent. Changed mean to average
         todos:
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
           - check validation & examples. always mm? so value only? Or value + unit
       water_cont_soil_meth:
         comments:
@@ -1281,7 +1265,6 @@ classes:
         todos:
           - value in preferred unit is too limiting. need to change this
           - check and correct validation so examples are accepted
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
           - how to manage multiple water content methods?
       ph_meth:
         examples:
@@ -1488,6 +1471,8 @@ classes:
         description: Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.
         annotations:
           display_hint: Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title.
+      # emsl_project_identifier:
+      #  description: The EMSL project ID that relates to the NMDC submitted study
       part_of:
         description: Links a study or consortium to a parent (or umbrella) study or consortium.
         comments:
