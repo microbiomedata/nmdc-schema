@@ -175,6 +175,10 @@ classes:
       designated_class:
         comments:
           - required on all instances in a polymorphic Database slot like planned_process_set
+      qc_failure_what:
+        multivalued: true
+      qc_failure_where:
+        multivalued: true
 
   OntologyClass:
     is_a: NamedThing
