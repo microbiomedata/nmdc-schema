@@ -1,0 +1,8 @@
+has_solution_components:
+  - compound: water
+    concentration:
+      has_unit: abc
+      has_numeric_value: 123
+volume:
+  has_numeric_value: 10
+  has_unit: def
