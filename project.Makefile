@@ -258,10 +258,10 @@ local/mixs_regen/mixs_subset_modified_inj_land_use.yaml: assets/other_mixs_yaml_
 		'select(fileIndex==1).enums.cur_land_use_enum = select(fileIndex==0).enums.cur_land_use_enum | select(fileIndex==1)' \
 		$^ | cat > $@
 
-mixs-deepdiff: src/schema/mixs.yaml
-	mv src/schema/mixs.yaml.bak src/schema/mixs.bak.yaml
-	$(RUN) deep diff src/schema/mixs.bak.yaml $^
-	mv src/schema/mixs.bak.yaml src/schema/mixs.yaml.bak
+#mixs-deepdiff: src/schema/mixs.yaml
+#	mv src/schema/mixs.yaml.bak src/schema/mixs.bak.yaml
+#	$(RUN) deep diff src/schema/mixs.bak.yaml $^
+#	mv src/schema/mixs.bak.yaml src/schema/mixs.yaml.bak
 
 project/nmdc_schema_generated.yaml: $(SOURCE_SCHEMA_PATH)
 	# the need for this may be eliminated by adding mandatory pattern materialization to gen-json-schema
@@ -279,7 +279,7 @@ examples/output: project/nmdc_schema_generated.yaml
 		--counter-example-input-directory src/data/invalid \
 		--output-directory $@ > $@/README.md
 
-#local/usage_template.tsv: src/schema/nmdc.yaml
+#local/usage_template.tsv: src/schema/nmdc.yaml # rewrite to use schemasheets linkml2schemasheets-template
 #	mkdir -p $(@D)
 #	$(RUN) generate_and_populate_template \
 #		 --base-class slot_definition \
