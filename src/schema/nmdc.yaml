@@ -20,7 +20,6 @@ version: v9.2.0 # GH uses same version string # pyproject.toml says "9.2.0"
 imports:
   - annotation
   - core
-  - external_identifiers
   - linkml:types
   - mixs
   - portal/emsl
@@ -28,8 +27,9 @@ imports:
   - portal/jgi_metatranscriptomics
   - portal/mixs_inspired
   - portal/sample_id
-  #  - sample_prep
   - workflow_execution_activity
+#  - external_identifiers
+#  - sample_prep
 
 
 prefixes:
@@ -2145,37 +2145,7 @@ enums:
         meaning: EFO:0001741
     comments:
       - credit enums come from https://casrai.org/credit/
-  processing_institution_enum:
-    notes:
-      - use ROR meanings like https://ror.org/0168r3w48 for UCSD
-    from_schema: NMDC_enums_roundtrip
-    permissible_values:
-      UCSD:
-        title: University of California, San Diego
-        meaning: https://ror.org/0168r3w48
 
-      JGI:
-        title: Joint Genome Institute
-        meaning: https://ror.org/04xm1d337
-
-      EMSL:
-        title: Environmental Molecular Sciences Laboratory
-        meaning: https://ror.org/04rc0xn13
-        aliases:
-          - Environmental Molecular Science Laboratory
-          - Environmental Molecular Sciences Lab
-
-      Battelle:
-        title: Battelle Memorial Institute
-        meaning: https://ror.org/01h5tnr73
-
-      ANL:
-        title: Argonne National Laboratory
-        meaning: https://ror.org/05gvnxz63
-      
-      UCD_Genome_Center:
-        title: University of California, Davis Genome Center
-        meaning: https://genomecenter.ucdavis.edu/
 
   StudyCategoryEnum:
     permissible_values:
@@ -2347,16 +2317,6 @@ slots:
     range: InstrumentModelEnum
   vendor:
     range: InstrumentVendorEnum
-  designated_class:
-    range: uriorcurie
-    designates_type: true
-    notes:
-      - MAM prefers to use this functionality in a `type` class and to eliminate '...type...' from the names
-        of any NMDC-owned elements
-      - this would be required on all instances in a polymorphic Database slot, like planned_process_set
-    see_also:
-      - https://github.com/microbiomedata/nmdc-schema/issues/1048
-      - https://github.com/microbiomedata/nmdc-schema/issues/1233
 
   metagenome_annotation_id:
     domain: FunctionalAnnotationAggMember
@@ -3042,10 +3002,6 @@ slots:
 
   biogas_retention_time:
     range: string
-  processing_institution:
-    domain: PlannedProcess
-    range: processing_institution_enum
-    description: The organization that processed the sample.
 
   completion_date:
     range: string
