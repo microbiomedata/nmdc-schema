@@ -2104,7 +2104,7 @@ enums:
 
       LC-DDA-MS/MS Raw Data:
         description: Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
-        
+
   credit enum:
     permissible_values:
       Conceptualization:
@@ -2326,12 +2326,14 @@ slots:
 
   #  for FunctionalAnnotationAggMember:
   metagenome_annotation_id:
+    domain: FunctionalAnnotationAggMember
     range: WorkflowExecutionActivity
   gene_function_id:
     range: uriorcurie
   count:
     range: integer
   functional_annotation_agg:
+    domain: Database
     range: FunctionalAnnotationAggMember
     multivalued: true
     inlined: true
@@ -2357,6 +2359,7 @@ slots:
   sample_collection_month:
 
   status:
+    domain: QualityControlReport
     range: StatusEnum
 
   library_preparation_kit:
@@ -2369,11 +2372,15 @@ slots:
   #  extraction_date: # replacing with start_ and end_date
   #    #    range: date
   #    range: string
-  extraction_method: { }
+  extraction_method:
+    domain: Extraction
+    range: string
   extraction_target:
+    domain: Extraction
     range: ExtractionTargetEnum
 
   quality_control_report:
+    domain: PlannedProcess
     range: QualityControlReport
   # structure
 
@@ -2398,12 +2405,14 @@ slots:
     exact_mappings:
       - MS:1000004
     #      - AFO:/result#AFR_0001982 # reconsidering use of AFO mappings in https://github.com/microbiomedata/nmdc-schema/issues/1113
+    domain: PlannedProcess
     range: QuantityValue
 
   library_type:
     title: library type
     examples:
       - value: DNA
+    domain: LibraryPreparation
     range: LibraryTypeEnum
 
   zinc:
@@ -2578,6 +2587,7 @@ slots:
   etl_software_version:
     description: from database class
   related_identifiers:
+    domain: Study
     title: Related Identifiers
     description: Identifiers assigned to a thing that is similar to that which is represented in NMDC. Related identifier are not an identical match and may have some variation.
 
@@ -2650,11 +2660,12 @@ slots:
   #    slot_uri: prov:agent
   study_category:
     description: The type of research initiative
+    domain: Study
     range: StudyCategoryEnum
     required: true
 
   object_set:
-    domain: Database
+    domain: Database # not inherited byt mixin users
     inlined_as_list: true
     mixin: true
     multivalued: true
@@ -2663,6 +2674,7 @@ slots:
       This is necessary in a json document to provide context for a list, and to allow
       for a single json object that combines multiple object types
   planned_process_set:
+    domain: Database # not inherited byt mixin users
     mixins:
       - object_set
     range: PlannedProcess
@@ -2672,120 +2684,143 @@ slots:
     comments:
       - PlannedProcess instances aggregated by this slot will require the designated_class slot
   biosample_set:
+    domain: Database # not inherited byt mixin users
     mixins: object_set
     range: Biosample
     description:
       This property links a database object to the set of samples within
       it.
   study_set:
+    domain: Database # not inherited byt mixin users
     mixins: object_set
     range: Study
     description:
       This property links a database object to the set of studies within
       it.
   field_research_site_set:
+    domain: Database # not inherited byt mixin users
     mixins: object_set
     range: FieldResearchSite
   collecting_biosamples_from_site_set:
+    domain: Database # not inherited byt mixin users
     mixins: object_set
     range: CollectingBiosamplesFromSite
   data_object_set:
+    domain: Database # not inherited byt mixin users
     mixins: object_set
     range: DataObject
     description:
       This property links a database object to the set of data objects
       within it.
   genome_feature_set:
+    domain: Database # not inherited byt mixin users
     mixins: object_set
     range: GenomeFeature
     description: This property links a database object to the set of all features
   functional_annotation_set:
+    domain: Database # not inherited byt mixin users
     mixins: object_set
     range: FunctionalAnnotation
     description:
       This property links a database object to the set of all functional
       annotations
   activity_set:
+    domain: Database # not inherited byt mixin users
     mixins: object_set
     range: WorkflowExecutionActivity
     description: This property links a database object to the set of workflow activities.
   mags_activity_set:
+    domain: Database # not inherited byt mixin users
     mixins: object_set
     range: MagsAnalysisActivity
     description:
       This property links a database object to the set of MAGs analysis
       activities.
   metabolomics_analysis_activity_set:
+    domain: Database # not inherited byt mixin users
     mixins: object_set
     range: MetabolomicsAnalysisActivity
     description:
       This property links a database object to the set of metabolomics
       analysis activities.
   metaproteomics_analysis_activity_set:
+    domain: Database # not inherited byt mixin users
     mixins: object_set
     range: MetaproteomicsAnalysisActivity
     description:
       This property links a database object to the set of metaproteomics
       analysis activities.
   metagenome_annotation_activity_set:
+    domain: Database # not inherited byt mixin users
     mixins: object_set
     range: MetagenomeAnnotationActivity
     description:
       This property links a database object to the set of metagenome annotation
       activities.
   metagenome_assembly_set:
+    domain: Database # not inherited byt mixin users
     mixins: object_set
     range: MetagenomeAssembly
     description:
       This property links a database object to the set of metagenome assembly
       activities.
   metagenome_sequencing_activity_set:
+    domain: Database # not inherited byt mixin users
     mixins: object_set
     range: MetagenomeSequencingActivity
     description:
       This property links a database object to the set of metagenome sequencing
       activities.
   metatranscriptome_activity_set:
+    domain: Database # not inherited byt mixin users
     mixins: object_set
     range: MetatranscriptomeActivity
     description:
       This property links a database object to the set of metatranscriptome
       analysis activities.
   read_qc_analysis_activity_set:
+    domain: Database # not inherited byt mixin users
     mixins: object_set
     range: ReadQcAnalysisActivity
     description:
       This property links a database object to the set of read QC analysis
       activities.
   read_based_taxonomy_analysis_activity_set:
+    domain: Database # not inherited byt mixin users
     mixins: object_set
     range: ReadBasedTaxonomyAnalysisActivity
     description: >-
       This property links a database object to the set of read based analysis activities.
   nom_analysis_activity_set:
+    domain: Database # not inherited byt mixin users
     mixins: object_set
     range: NomAnalysisActivity
     description:
       This property links a database object to the set of natural organic
       matter (NOM) analysis activities.
   omics_processing_set:
+    domain: Database # not inherited byt mixin users
     mixins: object_set
     range: OmicsProcessing
     description:
       This property links a database object to the set of omics processings
       within it.
   pooling_set:
+    domain: Database # not inherited byt mixin users
     mixins: object_set
     range: Pooling
   processed_sample_set:
+    domain: Database # not inherited byt mixin users
     mixins: object_set
     range: ProcessedSample
     description: This property links a database object to the set of processed samples within it.
   extraction_set:
+    domain: Database # not inherited byt mixin users
     mixins: object_set
     range: Extraction
     description: This property links a database object to the set of extractions within it.
   library_preparation_set:
+    domain: Database # not inherited byt mixin users
     aliases:
       - library_construction_set
     mixins: object_set
@@ -2793,6 +2828,7 @@ slots:
     description: This property links a database object to the set of DNA extractions within it.
 
   omics_type:
+    domain: OmicsProcessing
     range: ControlledTermValue
     description: The type of omics data
     examples:
@@ -2801,6 +2837,7 @@ slots:
     notes:
       - "was the range string at one point? the values in MongoDB don't look like NMDC classes"
   data_object_type:
+    domain: DataObject
     range: file type enum
     description: The type of file represented by the data object.
     examples:
@@ -2995,6 +3032,7 @@ slots:
   biogas_retention_time:
     range: string
   processing_institution:
+    domain: PlannedProcess
     range: processing_institution_enum
     description: The organization that processed the sample.
 
@@ -3008,7 +3046,8 @@ slots:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
 
-  volume:
+  volume: # see also input_volume
+    domain: PlannedProcess
     range: QuantityValue
     description: The volume of a substance.
     contributors:
@@ -3046,6 +3085,7 @@ slots:
       - "Filters are made with a variety of materials: cellulose and derivatives, glass fibre, ceramic, synthetic plastics and fibres. Filters may be naturally porous or be made so by mechanical or other means. Membrane/ceramic filters are prepared with highly controlled pore size in a sheet of suitable material such as polyfluoroethylene, polycarbonate or cellulose esters. Nylon mesh is sometimes used for reinforcement. The pores constitute 80–85% of the filter volume commonly and several pore sizes are available for air sampling (0.45−0.8 μm are commonly employed)."
     range: string
   filter_pore_size:
+    domain: FiltrationProcess
     range: QuantityValue
     description: "A quantitative or qualitative measurement of the physical dimensions of the pores in a material."
   conditionings:
@@ -3054,6 +3094,7 @@ slots:
     multivalued: true
     list_elements_ordered: true
   separation_method:
+    domain: FiltrationProcess
     range: SeparationMethodEnum
     description: The method that was used to separate a substance from a solution or mixture.
   filtration_category:
@@ -3070,7 +3111,8 @@ slots:
   is_pressurized:
     range: boolean
     description: Whether or not pressure was applied to a thing or process.
-  duration: # or could be a ISO8601 perisod string
+  duration: # or could be a ISO8601 period string
+    domain: PlannedProcess
     range: QuantityValue
     description: The elapsed time of an activity.
     examples:
@@ -3081,12 +3123,15 @@ slots:
     range: ContainerCategoryEnum
     description: A type of container. i.e. test tube, falcon tube, etc.
   extractant:
+    domain: Extraction
     range: Solution
     description: "The active component(s) primarily responsible for transfer of a solute from one phase to the other."
   concentration:
+    domain: SolutionComponent
     range: QuantityValue
     description: The concentration of a substance used in a process
-  input_volume:
+  input_volume: # see also `volume`
+    domain: PlannedProcess
     range: QuantityValue
     description: The volume of the input sample.
   has_solution_components:
@@ -3097,6 +3142,7 @@ slots:
     required: true
     minimum_cardinality: 1
   compound:
+    domain: SolutionComponent
     range: CompoundEnum
     description: A substance that consists of more than one atom or ion. Includes solvents and solutes. Can be combined into solutions.
     required: true

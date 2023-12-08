@@ -415,9 +415,13 @@ classes:
 
 slots:
   total_bases:
+    domain: MagBin
+    range: integer # MAM 2023-12-08
     todos:
       - this slot needs some basic textual annotations and constraints
   members_id:
+    domain: MagBin
+    range: string
     todos:
       - this slot needs some basic textual annotations and constraints
   bin_name:
@@ -481,6 +485,7 @@ slots:
     description: Links a QuantityValue to a unit
     aliases:
       - scale
+    domain: QuantityValue
     range: unit
     mappings:
       - qud:unit
@@ -489,6 +494,7 @@ slots:
   has_numeric_value:
     description: Links a quantity value to a number
     multivalued: false
+    domain: QuantityValue
     range: float
     mappings:
       - qud:quantityValue
@@ -496,10 +502,12 @@ slots:
   
   has_minimum_numeric_value:
     is_a: has_numeric_value
+    domain: QuantityValue
     description: The minimum value part, expressed as number, of the quantity value when the value covers a range.
 
   has_maximum_numeric_value:
     is_a: has_numeric_value
+    domain: QuantityValue
     description: The maximum value part, expressed as number, of the quantity value when the value covers a range.
   
   has_boolean_value:
@@ -583,6 +591,8 @@ slots:
     description: Links a resource to another resource that either logically or physically includes it.
   
   execution_resource:
+    domain: Activity
+    range: string
     is_a: attribute
     examples:
       - value: NERSC-Cori
@@ -594,7 +604,9 @@ slots:
       - See issue 207 - this clashes with the mixs field
   
   display_order:
-    is_a: attribute
+    #    is_a: attribute
+    domain: ImageValue
+    range: integer
     description: When rendering information, this attribute to specify the order in which the information should be rendered.
 
   git_url:
@@ -605,6 +617,7 @@ slots:
 
   file_size_bytes:
     is_a: attribute
+    domain: DataObject
     range: bytes
     description: Size of the file in bytes
   
@@ -645,6 +658,7 @@ slots:
 
   metabolite_quantified:
     description: the specific metabolite identifier
+    domain: MetaboliteQuantification
     range: ChemicalEntity
 
   all_proteins:

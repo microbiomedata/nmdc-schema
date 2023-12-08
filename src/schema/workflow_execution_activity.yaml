@@ -322,6 +322,7 @@ slots:
     abstract: true
 
   has_peptide_quantifications:
+    domain: MetaproteomicsAnalysisActivity
     range: PeptideQuantification
     multivalued: true
 
@@ -491,6 +492,7 @@ slots:
     abstract: true
 
   mags_list:
+    domain: MagsAnalysisActivity
     range: MagBin
     multivalued: true
 
@@ -549,7 +551,10 @@ slots:
       A reference to a file that holds calibration information.
 
   has_metabolite_quantifications:
+    domain: MetabolomicsAnalysisActivity
     range: MetaboliteQuantification
     multivalued: true
 
-  version: { }
+  version:
+    domain: Activity
+    range: string
