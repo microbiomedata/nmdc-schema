@@ -244,11 +244,22 @@ classes:
         description: The volume of the solvent/solute being used, not the input.
 
   SolutionComponent:
+    description: One constituent of a solution
     slots:
       - compound
       - concentration
 
   Solution:
+    description: A mixture that is homogeneous, made up of two or more scattered molecular aggregates, one playing the role of solute and the other playing the role of solvent.
+    aliases:
+      - mixture
+      - solvent
+    comments:
+      - We acknowledge that users of the nmdc-schema may instantiate Solution with only a single component which goes against the letter of the description.
+      - The solution class may be used to instantiate a single component in the has_solution_components slot
+    notes:
+      - TODO review the description, possibly more descriptive modeling to allow solvent to be used
+      - TODO consider making a "Fluid" class
     slots:
       - has_solution_components
       - volume
@@ -1646,7 +1657,7 @@ classes:
       volume:
         description: The volume of sample filtered.
 
-  ChromatographySeparationProcess:
+  ChromatographicSeparationProcess:
     description:
       The process of using a selective partitioning of the analyte or interferent between two immiscible phases.
     contributors:
@@ -1654,7 +1665,7 @@ classes:
       - ORCID:0000-0002-1368-8217 #Yuri Corilo
     is_a: PlannedProcess
     slots:
-      - mobile_phase
+      - ordered_mobile_phase
       - stationary_phase
       - temperature
     slot_usage:
@@ -3136,12 +3147,14 @@ slots:
     range: QuantityValue
     description: The volume of the input sample.
   has_solution_components:
+    description: Relationship from a Solution to one or more constituent solution components
     range: SolutionComponent
     domain: Solution
     multivalued: true
     inlined_as_list: true
     #required: true
     minimum_cardinality: 1
+    #list example
   compound:
     range: CompoundEnum
     description: A substance that consists of more than one atom or ion. Includes solvents and solutes. Can be combined into solutions.
