@@ -258,10 +258,10 @@ local/mixs_regen/mixs_subset_modified_inj_land_use.yaml: assets/other_mixs_yaml_
 		'select(fileIndex==1).enums.cur_land_use_enum = select(fileIndex==0).enums.cur_land_use_enum | select(fileIndex==1)' \
 		$^ | cat > $@
 
-mixs-deepdiff: src/schema/mixs.yaml
-	mv src/schema/mixs.yaml.bak src/schema/mixs.bak.yaml
-	$(RUN) deep diff src/schema/mixs.bak.yaml $^
-	mv src/schema/mixs.bak.yaml src/schema/mixs.yaml.bak
+#mixs-deepdiff: src/schema/mixs.yaml
+#	mv src/schema/mixs.yaml.bak src/schema/mixs.bak.yaml
+#	$(RUN) deep diff src/schema/mixs.bak.yaml $^
+#	mv src/schema/mixs.bak.yaml src/schema/mixs.yaml.bak
 
 project/nmdc_schema_generated.yaml: $(SOURCE_SCHEMA_PATH)
 	# the need for this may be eliminated by adding mandatory pattern materialization to gen-json-schema
@@ -279,16 +279,16 @@ examples/output: project/nmdc_schema_generated.yaml
 		--counter-example-input-directory src/data/invalid \
 		--output-directory $@ > $@/README.md
 
-local/usage_template.tsv: src/schema/nmdc.yaml
-	mkdir -p $(@D)
-	$(RUN) generate_and_populate_template \
-		 --base-class slot_definition \
-		 --columns-to-insert class \
-		 --destination-template $@ \
-		 --meta-model-excel-file local/meta.xlsx \
-		 --meta-path https://raw.githubusercontent.com/linkml/linkml-model/main/linkml_model/model/schema/meta.yaml \
- 		 --columns-to-insert slot \
-		 --source-schema-path $<
+#local/usage_template.tsv: src/schema/nmdc.yaml # rewrite to use schemasheets linkml2schemasheets-template
+#	mkdir -p $(@D)
+#	$(RUN) generate_and_populate_template \
+#		 --base-class slot_definition \
+#		 --columns-to-insert class \
+#		 --destination-template $@ \
+#		 --meta-model-excel-file local/meta.xlsx \
+#		 --meta-path https://raw.githubusercontent.com/linkml/linkml-model/main/linkml_model/model/schema/meta.yaml \
+# 		 --columns-to-insert slot \
+#		 --source-schema-path $<
 
 examples/output/Biosample-exhasutive_report.yaml: src/data/valid/Biosample-exhasutive.yaml
 	poetry run exhaustion-check \
@@ -427,7 +427,30 @@ make-rdf: rdf-clean local/mongo_as_nmdc_database_validation.log local/mongo_as_n
 
 # todo also notes about large collections: functional_annotation_agg and metaproteomics_analysis_activity_set
 
+ #		--selected-collections data_object_set \
+ #		--selected-collections extraction_set \
+ #		--selected-collections field_research_site_set \
+ #		--selected-collections library_preparation_set \
+ #		--selected-collections mags_activity_set \
+ #		--selected-collections metabolomics_analysis_activity_set \
+ #		--selected-collections metagenome_annotation_activity_set \
+ #		--selected-collections metagenome_assembly_set \
+ #		--selected-collections metagenome_sequencing_activity_set  \
+ #		--selected-collections metaproteomics_analysis_activity_set \
+ #		--selected-collections metatranscriptome_activity_set \
+ #		--selected-collections nom_analysis_activity_set \
+ #		--selected-collections omics_processing_set \
+ #		--selected-collections pooling_set \
+ #		--selected-collections processed_sample_set \
+ #		--selected-collections read_based_taxonomy_analysis_activity_set \
+ #		--selected-collections read_qc_analysis_activity_set \
 
+## can't handle empty selected-collections yet
+## https://github.com/microbiomedata/nmdc-schema/issues/1485
+ #		--selected-collections activity_set \
+ #		--selected-collections collecting_biosamples_from_site_set \
+ #		--selected-collections material_sample_set \
+ #		--selected-collections planned_process_set \
 
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
@@ -442,25 +465,9 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--output-yaml $@ \
 		--page-size 200000 \
 		--schema-file src/schema/nmdc.yaml \
-		--selected-collections data_object_set \
 		--selected-collections biosample_set \
-		--selected-collections extraction_set \
-		--selected-collections field_research_site_set \
-		--selected-collections library_preparation_set \
-		--selected-collections mags_activity_set \
-		--selected-collections metabolomics_analysis_activity_set \
-		--selected-collections metagenome_annotation_activity_set \
-		--selected-collections metagenome_assembly_set \
-		--selected-collections metagenome_sequencing_activity_set  \
-		--selected-collections metatranscriptome_activity_set \
-		--selected-collections nom_analysis_activity_set \
-		--selected-collections omics_processing_set \
-		--selected-collections pooling_set \
-		--selected-collections processed_sample_set \
-		--selected-collections read_based_taxonomy_analysis_activity_set \
-		--selected-collections read_qc_analysis_activity_set \
 		--selected-collections study_set \
-		--skip-collection-check \
+		--skip-collection-check
 
 
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml

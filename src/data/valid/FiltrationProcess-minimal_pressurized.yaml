@@ -1,5 +1,5 @@
 id: nmdc:fp-2
-has_input: 
+has_input:
   - nmdc:processed-sample-3
 has_output:
   - nmdc:7
@@ -7,6 +7,5 @@ conditionings:
   - Methanol
   - Sterile water #Milli-Q
 filtration_category: pressure
-instrument_used: 
-  - name: CEREX System 96 processor
+instrument_name: CEREX System 96 processor
 is_pressurized: true
