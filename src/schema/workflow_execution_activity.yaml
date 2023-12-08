@@ -53,7 +53,7 @@ classes:
     rules:
       - title: qc_status_pass_has_output_required
         description: >-
-          If qc_status has a value of fail, then the has_output slot is not required.
+          If qc_status has a value of pass, then the has_output slot is required.
         preconditions:
           slot_conditions:
             qc_status:
