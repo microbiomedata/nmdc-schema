@@ -18,6 +18,11 @@ default_prefix: nmdc
 default_range: string
 
 slots:
+  extraction_target:
+    rank: 1000
+    domain_of:
+      - Extraction
+    range: ExtractionTargetEnum
   id:
     required: true
     identifier: true
