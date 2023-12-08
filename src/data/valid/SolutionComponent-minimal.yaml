@@ -1,4 +1,4 @@
-compound: water
+compound: methanol
 concentration:
-  has_unit: abc
-  has_numeric_value: 123
+  has_unit: mM
+  has_numeric_value: 10

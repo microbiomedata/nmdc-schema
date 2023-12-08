@@ -7,18 +7,18 @@ has_output:
 stationary_phase: "CN"
 mobile_phase:
   - has_solution_components:
-      - compound: water
-        concentration:
-          has_unit: abc
-          has_numeric_value: 123
       - compound: methanol
         concentration:
-          has_unit: jkl
-          has_numeric_value: 789
+          has_unit: mM
+          has_numeric_value: 10
+      - compound: chloridic acid
+        concentration:
+          has_unit: mM
+          has_numeric_value: 15
       - compound: trypsin
         concentration:
-          has_unit: ghi
-          has_numeric_value: 456
+          has_unit: mM
+          has_numeric_value: 20
     volume:
-      has_numeric_value: 10
-      has_unit: def
+      has_numeric_value: 500
+      has_unit: mL

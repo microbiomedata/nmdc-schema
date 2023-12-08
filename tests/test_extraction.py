@@ -90,7 +90,7 @@ class TestChromatographySeparationProcess(unittest.TestCase):
         # validator.validate_object(qv2, target_class=QuantityValue)
 
         component2 = SolutionComponent(
-            compound="deionized water",
+            compound="methanol",
             concentration=qv2
         )
         # validator.validate_object(component2, target_class=SolutionComponent)
