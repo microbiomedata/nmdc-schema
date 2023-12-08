@@ -8,7 +8,6 @@ notes:
   - "should type be required for WorkflowExecutionActivity ?  What would the range be ?"
 
 imports:
-  - external_identifiers
   - core
 
 prefixes:

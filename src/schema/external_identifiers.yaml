@@ -21,32 +21,7 @@ prefixes:
 default_prefix: nmdc
 default_range: string
 
-types:
-
-  external_identifier:
-    typeof: uriorcurie
-    uri: xsd:anyURI # isn't that inherited from typeof: uriorcurie? WARNING:root:No datatype specified for : external identifier, using plain Literal
-    description: >-
-      A CURIE representing an external identifier
-    see_also:
-      - https://microbiomedata.github.io/nmdc-schema/identifiers/
-    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
-
 slots:
-
-  external_database_identifiers:
-    abstract: true
-    description: Link to corresponding identifier in external database
-    is_a: alternative_identifiers
-    multivalued: true
-    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
-    range: external_identifier
-    comments:
-      - The value of this field is always a registered CURIE
-    notes:
-      - "had tried ranges of external identifier and string"
-    close_mappings:
-      - skos:closeMatch
 
   img_identifiers:
     title: IMG Identifiers
