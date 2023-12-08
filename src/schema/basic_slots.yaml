@@ -21,6 +21,7 @@ slots:
   id:
     required: true
     identifier: true
+#    domain: NamedThing
     range: uriorcurie
     description: >-
       A unique identifier for a thing.
@@ -122,6 +123,7 @@ slots:
       - add date string validation pattern
 
   protocol_link:
+    domain: PlannedProcess
     range: Protocol
 
 
@@ -129,9 +131,11 @@ slots:
   #    range: InstrumentValue
 
   biomaterial_purity:
+    domain: ProcessedSample
     range: QuantityValue
 
   instrument_name:
+    domain: PlannedProcess
     description: >-
       The name of the instrument that was used for processing the sample.
 #    add this and write migration # range: instrument_name_enum
