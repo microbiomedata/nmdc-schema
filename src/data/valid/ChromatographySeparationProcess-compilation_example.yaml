@@ -6,19 +6,19 @@ has_output:
   - nmdc:procsm-11-05g48p91
 stationary_phase: "CN"
 mobile_phase:
-  has_solution_components:
-    - compound: methanol
-      concentration:
-        has_unit: mM
-        has_numeric_value: 10
-    - compound: chloridic acid
-      concentration:
-        has_unit: mM
-        has_numeric_value: 15
-    - compound: trypsin
-      concentration:
-        has_unit: mM
-        has_numeric_value: 20
-  volume:
-    has_numeric_value: 500
-    has_unit: mL
+  - has_solution_components:
+      - compound: methanol
+        concentration:
+          has_unit: mM
+          has_numeric_value: 10
+      - compound: chloridic acid
+        concentration:
+          has_unit: mM
+          has_numeric_value: 15
+      - compound: trypsin
+        concentration:
+          has_unit: mM
+          has_numeric_value: 20
+    volume:
+      has_numeric_value: 500
+      has_unit: mL
