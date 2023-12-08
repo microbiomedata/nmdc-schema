@@ -50,8 +50,32 @@ classes:
       - qc_comment
       - qc_failure_what
       - qc_failure_where
-
-
+    rules:
+      - title: qc_status_pass_has_output_required
+        description: >-
+          If qc_status has a value of fail, then the has_output slot is not required.
+        preconditions:
+          slot_conditions:
+            qc_status:
+              equals_string: pass
+        postconditions:
+          slot_conditions:
+            has_output:
+              required: true
+      # - title: qc_status_pass_qc_where_what_slots_not_specified
+      #   description: >-
+      #     If qc_status has a value of pass, then the qc_failure_what and qc_failure_where slots should not be specified.
+      #   preconditions:
+      #     slot_conditions:
+      #       qc_status:
+      #         equals_string: pass
+      #   postconditions:
+      #     slot_conditions:
+      #       qc_failure_what:
+      #         value_presence: ABSENT
+      #       qc_failure_where:
+      #         value_presence: ABSENT
+          
     slot_usage:
       started_at_time:
         required: true
@@ -61,8 +85,8 @@ classes:
         required: true
       has_input:
         required: true
-      has_output:
-        required: true
+      # has_output:
+      #   required: true
       execution_resource:
         required: true
       type:
