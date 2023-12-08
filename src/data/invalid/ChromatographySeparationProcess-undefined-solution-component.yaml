@@ -5,7 +5,7 @@ has_output:
   - nmdc:procsm-11-05g48p90
   - nmdc:procsm-11-05g48p91
 stationary_phase: "CN"
-mobile_phase:
+ordered_mobile_phases:
   - volume:
       has_numeric_value: 700
       has_unit: mL

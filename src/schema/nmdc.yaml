@@ -1665,7 +1665,7 @@ classes:
       - ORCID:0000-0002-1368-8217 #Yuri Corilo
     is_a: PlannedProcess
     slots:
-      - ordered_mobile_phase
+      - ordered_mobile_phases
       - stationary_phase
       - temperature
     slot_usage:
@@ -3161,7 +3161,7 @@ slots:
     range: CompoundEnum
     description: A substance that consists of more than one atom or ion. Includes solvents and solutes. Can be combined into solutions.
     required: true
-  ordered_mobile_phase:
+  ordered_mobile_phases:
     range: Solution
     description: The solution(s) that moves through a chromatography column.
     multivalued: true

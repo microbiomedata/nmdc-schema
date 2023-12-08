@@ -105,7 +105,7 @@ class TestChromatographySeparationProcess(unittest.TestCase):
 
         ps1 = ChromatographicSeparationProcess(
             id="nmdc:ILLEGAL_ID_VAL",
-            ordered_mobile_phase=sol1,
+            ordered_mobile_phases=sol1,
             stationary_phase="C8",
         )
 
