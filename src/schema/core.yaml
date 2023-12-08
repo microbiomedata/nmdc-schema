@@ -464,17 +464,17 @@ slots:
     range: language code
     description: Should use ISO 639-1 code e.g. "en", "fr"
 
-  attribute:
-    aliases:
-      - field
-      - property
-      - template field
-      - key
-      - characteristic
-    abstract: true
-    description: >-
-      A attribute of a biosample. Examples: depth, habitat, material.
-      For NMDC, attributes SHOULD be mapped to terms within a MIxS template
+#  attribute:
+#    aliases:
+#      - field
+#      - property
+#      - template field
+#      - key
+#      - characteristic
+#    abstract: true
+#    description: >-
+#      A attribute of a biosample. Examples: depth, habitat, material.
+#      For NMDC, attributes SHOULD be mapped to terms within a MIxS template
 
   has_raw_value:
     description: The value that was specified for an annotation in raw form, i.e. a string. E.g. "2 cm" or "2-4 cm"
@@ -594,12 +594,12 @@ slots:
   execution_resource:
     domain: Activity
     range: string
-    is_a: attribute
+#    is_a: attribute
     examples:
       - value: NERSC-Cori
 
   url:
-    is_a: attribute
+#    is_a: attribute
     range: string
     notes:
       - See issue 207 - this clashes with the mixs field
@@ -611,19 +611,19 @@ slots:
     description: When rendering information, this attribute to specify the order in which the information should be rendered.
 
   git_url:
-    is_a: attribute
+#    is_a: attribute
     range: string
     examples:
       - value: "https://github.com/microbiomedata/mg_annotation/releases/tag/0.1"
 
   file_size_bytes:
-    is_a: attribute
+#    is_a: attribute
     domain: DataObject
     range: bytes
     description: Size of the file in bytes
   
   md5_checksum:
-    is_a: attribute
+#    is_a: attribute
     range: string
     description: MD5 checksum of file (pre-compressed)
 
