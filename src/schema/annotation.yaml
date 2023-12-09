@@ -181,6 +181,11 @@ classes:
 
 slots:
 
+  has_part:
+    domain: Pathway
+    range: Reaction
+    multivalued: true
+
   chemical:
     description: from reaction participant class
     domain: ReactionParticipant
