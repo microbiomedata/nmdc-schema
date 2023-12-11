@@ -6,12 +6,12 @@ has_output:
   - nmdc:procsm-11-05g48p91
 stationary_phase: "CN"
 ordered_mobile_phases:
-  - has_solution_components:
-      - compound: methanol
+  - has_constituents:
+      - name: methanol
         concentration:
           has_unit: mM
           has_numeric_value: 10
-      - compound: chloridic acid
+      - name: chloridic acid
         concentration:
           has_unit: mM
           has_numeric_value: 15

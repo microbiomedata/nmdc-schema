@@ -9,18 +9,18 @@ ordered_mobile_phases:
   - volume:
       has_numeric_value: 700
       has_unit: mL
-    has_solution_components:
-      - compound: MeOH
+    has_constituents:
+      - name: MeOH
   - volume:
       has_numeric_value: 700
       has_unit: mL
-    has_solution_components:
-      - compound: chloridic acid
+    has_constituents:
+      - name: chloridic acid
         concentration:
           has_numeric_value: 10
           has_unit: mM
   - volume:
       has_numeric_value: 1000
       has_unit: mL
-    has_solution_components:
-      - compound: water
+    has_constituents:
+      - name: water
