@@ -119,6 +119,10 @@ how to deploy a test version of the schema documentation. This requires some bas
  - Anyone who is involved in writing migrations or otherwise checking data from MongoDB against the schema should be comfortable running make `make-rdf`.
  - The main [Makefile](Makefile) should in general not be edited. Instead, edits should be made to [project.Makefile](project.Makefile) (advanced contributors only)
 
+### Recording Decisions
+
+- Use the [NMDC ADR Log](https://github.com/microbiomedata/NMDC_documentation/tree/main/decisions)
+
 ### Making Releases
 
 TODO: Add to this section later
