@@ -7,44 +7,44 @@ from typing import List
 from json import dumps
 
 from dotenv import load_dotenv
-import pymongo
-from pymongo import MongoClient
-from pymongo.errors import ConnectionFailure
+import nmdc_schema.nmdc as nmdc
 import oauthlib
-import requests_oauthlib
+from pymongo import MongoClient
 
+import requests_oauthlib
 from linkml_runtime.dumpers import json_dumper
 import yaml
-import nmdc_schema.nmdc as nmdc
 
-
-envfile_path = "../../.env.client"
+envfile_path = "nmdc_mongo.env"
 
 load_dotenv(envfile_path)
 #nersc ssh tunnel required to connect to mongo
-#ssh -L 37020:mongo-loadbalancer.nmdc-napa.production.svc.spin.nersc.org:27017 -o ServerAliveInterval=60 {YOUR_NERSC_USERNAME}@dtn01.nersc.gov
+#ssh -L 37020:mongo-loadbalancer.nmdc-napa.production.svc.spin.nersc.org:27017 -o ServerAliveInterval=60 corilo@perlmutter.nersc.gov
 
-napa_mongo_pw = os.environ.get('MONGO_NAPA_PW') or "safeguard-wipe-scanner-78"
+napa_mongo_pw = os.environ.get('MONGO_NAPA_PW') or 'safeguard-wipe-scanner-78'
 #print("napa_mongo_pw:", os.environ['MONGO_NAPA_PW'])
-print(napa_mongo_pw)
-napa_mongo='mongodb://root:'+napa_mongo_pw+'@mongo-loadbalancer.nmdc-napa.production.svc.spin.nersc.org:27017/?authSource=admin'
+pprint(napa_mongo_pw)
+#napa_mongo='mongodb://root:'+napa_mongo_pw+'@mongo-loadbalancer.nmdc-napa.production.svc.spin.nersc.org:27017/?authSource=admin'
+napa_mongo='mongodb://root:'+napa_mongo_pw+'@localhost:37020/?authSource=admin'
+
 #connection = MongoClient()
 #db = connection.napa_mongo
-print(napa_mongo)
+pprint(napa_mongo)
 
 #connect to mongo
-client = MongoClient(napa_mongo)
+client = MongoClient(napa_mongo, directConnection=True)
+
+#list database names
+for db in client.list_database_names():
+   pprint("db name: {} ".format(db))
 
 #set mongo database name to nmdc'
 mydb =client['nmdc']
 
-#list database names
-#for db in client.list_database_names():
-#   print(db)
-
 #list collections
-#for coll in mydb.list_collection_names():
-#    print(coll)
+for coll in mydb.list_collection_names():
+    pprint("collection name: {} ".format(coll))
+
 
 # omicsProcessing update, has_output --> raw data 
 # omicsProcessing update, alternative_identifier --> nom_analysis_activity.was_informed_by
@@ -54,6 +54,8 @@ mydb =client['nmdc']
 # nom_analysis_activity --> replace ids
 # nom_analysis_activity --> was_informed_by -- id from alternative indetifier omics Processing
 # dataObject --> replace id, and add alternative identifier, emsl:60592345
+
+
 @dataclass
 class NMDC_Mint:
     
@@ -132,7 +134,7 @@ def update_omics_processing(nom_new_id, new_data_product_id, new_raw_file_id, ra
     
     get_parent_omics_processing ={ "has_output" : nom_activities_doc["has_input"] }
 
-    '''always going to be one omics processing''' 
+    #always going to be one omics processing
     for omics_processing_doc in omics_processing_set.find(get_parent_omics_processing):   
 
         omics_processing_update = { "$set": { "has_output": [new_raw_file_id]} }    
@@ -172,6 +174,7 @@ def mint_nmdc_id(type:NMDC_Types, how_many:int = 1) -> List[str]:
     return list_ids
     
 def get_raw_data_object(file_path:Path, was_generated_by:str,
+
                 data_object_type:str, description:str) -> nmdc.DataObject:
     
     nmdc_id = mint_nmdc_id({'id': NMDC_Types.DataObject})[0]
@@ -190,3 +193,166 @@ def get_raw_data_object(file_path:Path, was_generated_by:str,
     data_object = nmdc.DataObject(**data_dict)
 
     return data_object
+
+
+'''
+from dataclasses import dataclass
+from datetime import datetime, timezone
+import hashlib
+from pathlib import Path
+import json
+import os
+from pprint import pprint
+import secrets
+import time
+
+from dotenv import load_dotenv
+import requests
+
+import pymongo
+from pymongo import MongoClient
+from pymongo.errors import ConnectionFailure
+
+from linkml_runtime.dumpers import json_dumper
+import nmdc_schema.nmdc as nmdc
+
+envfile_path = "../../.env.client"
+
+load_dotenv(envfile_path)
+
+@dataclass
+class DataObject:
+    nom_raw_data_object_type:str = "Direct Infusion FT ICR-MS Raw Data"
+    nom_raw_data_object_description:str = "Raw 21T Direct Infusion Data"
+    nom_dp_data_object_type:str = "FT ICR-MS Analysis Results"
+    nom_dp_data_object_description:str = "EnviroMS FT ICR-MS natural organic matter workflow molecular formula assignment output details"
+
+@dataclass
+class NMDC_Types: 
+    
+    BioSample:str = "nmdc:Biosample"
+    OmicsProcessing:str = "nmdc:OmicsProcessing"
+    NomAnalysisActivity:str = "nmdc:NomAnalysisActivity"
+    DataObject:str = "nmdc:DataObject"
+    
+def get_raw_data_object(file_path:Path, was_generated_by:str,
+                data_object_type:str, description:str) -> nmdc.DataObject:
+    
+    nmdc_id = mint_nmdc_id({'id': NMDC_Types.DataObject})[0]
+
+    data_dict = {
+                'id': nmdc_id,
+                "name": file_path.name,
+                "file_size_bytes": file_path.stat().st_size,
+                "md5_checksum": hashlib.md5(file_path.open('rb').read()).hexdigest(),
+                "was_generated_by": was_generated_by, #omics processing id
+                "data_object_type": data_object_type,
+                "description": description,
+                "type": "nmdc:DataObject"
+                } 
+    
+    data_object = nmdc.DataObject(**data_dict)
+
+    return data_object
+
+
+#nersc ssh tunnel required to connect to mongo
+#ssh -L 37020:mongo-loadbalancer.nmdc-napa.production.svc.spin.nersc.org:27017 -o ServerAliveInterval=60 {YOUR_NERSC_USERNAME}@dtn01.nersc.gov
+
+napa_mongo_pw = os.environ.get('MONGO_NAPA_PW') or "safeguard-wipe-scanner-78"
+#print("napa_mongo_pw:", os.environ['MONGO_NAPA_PW'])
+print(napa_mongo_pw)
+napa_mongo='mongodb://root:'+napa_mongo_pw+'@mongo-loadbalancer.nmdc-napa.production.svc.spin.nersc.org:27017/?authSource=admin'
+#connection = MongoClient()
+#db = connection.napa_mongo
+print(napa_mongo)
+
+#connect to mongo
+client = MongoClient(napa_mongo)
+
+#set mongo database name to nmdc'
+mydb =client['nmdc']
+
+#list database names
+#for db in client.list_database_names():
+#   print(db)
+
+#list collections
+#for coll in mydb.list_collection_names():
+#    print(coll)
+
+# omicsProcessing update, has_output --> raw data 
+# omicsProcessing update, alternative_identifier --> nom_analysis_activity.was_informed_by
+
+# nom_analysis_activity --> has_input (new raw file or update ID) 
+# nom_analysis_activity --> has_output (data product file, update ID)
+# nom_analysis_activity --> replace ids
+# nom_analysis_activity --> was_informed_by -- id from alternative indetifier omics Processing
+# dataObject --> replace id, and add alternative identifier, emsl:60592345
+def update_data_products(nom_activities_doc, new_raw_file_id:str, 
+                         new_data_product_id:str, omics_prcessing_id:str, raw_file_path:Path=None):
+   
+  raw_file_id = nom_activities_doc.has_input[0]
+
+  dataproduct_id = nom_activities_doc.has_input[0]
+
+  data_object_set = mydb['data_object_set']
+
+  get_raw_file_data_object = { "id" : raw_file_id }
+  get_data_product_data_object = { "id" : dataproduct_id }
+
+  raw_object_docs = [raw_objectdata_doc for raw_objectdata_doc in data_object_set.find(get_raw_file_data_object)] 
+
+  if raw_object_docs:
+     
+     raw_object_update = { "$set": { "id": new_raw_file_id, 'alternative_identifier': [omics_prcessing_id]} }    
+     
+     data_object_set.update_one(raw_object_docs[0], raw_object_update )
+
+  else:
+     
+     new_raw_data_object = get_raw_data_object(raw_file_path,
+                                    was_generated_by=omics_prcessing_id, 
+                                    data_object_type =DataObject.nom_raw_data_object_type,
+                                    description =DataObject.nom_raw_data_object_description)
+
+     data_object_set.insert_one(new_raw_data_object)
+     
+  for data_product_objectdata_doc in data_object_set.find(get_data_product_data_object):
+      
+      data_product_object_update = { "$set": { "id": new_data_product_id}}
+
+      data_object_set.update_one(data_product_objectdata_doc, data_product_object_update )
+
+def update_omics_processing(nom_new_id, new_data_product_id, new_raw_file_id):
+
+  omics_processing_set = mydb['omics_processing_set']
+
+  nom_activities_set = mydb['nom_analysis_activity_set']
+  
+  get_old_activities={ "id" : {"$regex":"^emsl" } }
+  
+  for nom_activities_doc in nom_activities_set.find(get_old_activities):
+    
+    get_parent_omics_processing ={ "has_output" : nom_activities_doc["has_input"] }
+
+    always going to be one omics processing
+    for omics_processing_doc in omics_processing_set.find(get_parent_omics_processing):   
+
+        omics_processing_update = { "$set": { "has_output": [new_raw_file_id]} }    
+
+        omics_processing_set.update_one(omics_processing_doc, omics_processing_update)
+
+        new_omics_id = omics_processing_doc['id']
+
+        nom_activity_update = { "$set": { "id": nom_new_id , "has_output":[new_data_product_id],
+                                "has_input":[new_raw_file_id], "was_informed_by": [new_omics_id]} }
+    
+        nom_activities_set.update_one(nom_activities_doc, nom_activity_update)
+
+
+omics_processing_set = mydb['omics_processing_set']
+nom_activities_set = mydb['nom_analysis_activity_set']
+nom_activities = mydb['nom_analysis_activity_set']
+
+'''
