@@ -275,6 +275,7 @@ classes:
       - library_preparation_kit
       - library_type
       - pcr_cycles
+      - nucl_acid_amp
     close_mappings:
       - OBI:0000711
     comments:
