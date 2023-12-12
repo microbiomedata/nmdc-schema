@@ -159,7 +159,7 @@ classes:
           syntax: "{id_nmdc_prefix}:dgns-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
   MassSpectrometry:
-    description: Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio and relative abundanc
+    description: Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio and relative abundance.
     is_a: DataGeneration
     abstract: true
     exact_mappings: CHMO:0000470
@@ -1793,16 +1793,16 @@ classes:
 enums:
   AcquisitionCategoryEnum:
     permissible_values:
-      Full_Scan:
+      full_scan:
         aliases:
          - MS
-      Tandem_MassSpec:
+      tandem_mass_spectrum:
         aliases:
           -MSn
   ResolutionCategoryEnum:
     permissible_values:
-      High: { }
-      Low: { }
+      high: { }
+      low: { }
   InstrumentModelEnum:
     permissible_values:
       Orbitrap:
