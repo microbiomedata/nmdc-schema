@@ -61,7 +61,7 @@ study_set:
         doi_provider: osti
     type: nmdc:Study
     study_category: research_study
-omics_processing_set:
+data_generation_set:
   - id: nmdc:omprc-99-9XUVVF
     alternative_identifiers:
       - gold:Gp0225767

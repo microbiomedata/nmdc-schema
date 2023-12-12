@@ -143,7 +143,7 @@
       "type": "nmdc:DataObject"
     }
   ],
-  "omics_processing_set": [
+  "data_generation_set": [
     {
       "id": "nmdc:omprc-11-s9xj2r24",
       "name": "Test NEON data",

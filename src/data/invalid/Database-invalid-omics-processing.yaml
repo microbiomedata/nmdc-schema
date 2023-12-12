@@ -1,4 +1,4 @@
-omics_processing_set:
+data_generation_set:
   - id: nmdc:omprc-99-zUCd5N
     alternative_identifiers:
       - gold:Gp0108335

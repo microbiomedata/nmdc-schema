@@ -90,7 +90,7 @@ data_object_set:
   data_object_type: Filtered Sequencing Reads
   url: https://data.microbiomedata.org/data/1472_51293/qa/1472_51293.filtered.fastq.gz
   type: nmdc:DataObject
-omics_processing_set:
+data_generation_set:
 - id: nmdc:omprc-11-s9xj2r24
   name: Test NEON data
   has_input:
