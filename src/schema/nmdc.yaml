@@ -1649,6 +1649,24 @@ classes:
           - range: Biosample
           - range: ProcessedSample
 
+  ReactionProcess:
+    description: >
+      A process that results in a chemical reaction.
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-1368-8217 #Yuri Corilo
+    is_a: PlannedProcess
+    slots:
+      - has_reagents
+      - temperature
+    comments:
+      - The values of both has_reagents slot and has_input slot are considered the reagents of a chemical process.
+    slot_usage:
+      has_input:
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+
   OmicsProcessing:
     aliases:
       - omics assay
@@ -3129,4 +3147,9 @@ slots:
     domain: ChromatographicSeparationProcess
     range: StationaryPhaseEnum
     description: The material the stationary phase is comprised of used in chromatography.
-
+  has_reagents:
+    domain: ReactionProcess
+    range: ChemicalEntity
+    description: The reagents used in a chemical reaction.
+    multivalued: true
+    inlined_as_list: true
