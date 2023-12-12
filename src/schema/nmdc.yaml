@@ -166,7 +166,7 @@ classes:
     aliases:
       - Liquid Chromatography mass spectrometry
       - LC-MS
-    exact_mapping:
+    exact_mappings:
       - CHMO:0000524
   LcMsMs:
     description: A DataGeneration in which liquid chromatography with tandem mass spectrometry data is generated.
@@ -175,7 +175,7 @@ classes:
      - Liquid Chromatography with tandem mass spectrometry
      - LC-MS-MS
      - LC-MS/MS
-    exact_mapping:
+    exact_mappings:
      - CHMO:0000701
   GcMs:
     description: A DataGeneration in which gas chromatography-mass spectrometry data is generated.
@@ -183,7 +183,7 @@ classes:
     aliases:
       - Gas Chromatography mass spectrometry
       - GC-MS
-    exact_mapping:
+    exact_mappings:
      - CHMO:0000497
   GcMsMs:
     description: A DataGeneration in which gas chromatography with tandem mass spectrometry data is generated.
@@ -192,7 +192,7 @@ classes:
       - Gas Chromatography with tandem mass spectrometry 
       - GC-MS MS 
       - GS-MS/MS
-    exact_mapping:
+    exact_mappings:
       - CHMO:0002862
       
   FunctionalAnnotationAggMember:
