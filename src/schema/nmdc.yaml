@@ -1546,15 +1546,12 @@ classes:
       Separating a sample aliquot from the starting material for downstream activity.
     related_mappings:
       - OBI:0000744
-    todos:
-      - add intermediate class between PlannedProcess and this (MaterialProcessing potentially)
-      - Montana to visit slot descriptions
-      - add 'has_output' usage for processed sample - James
     notes:
       - A subsample may be (a) a portion of the sample obtained by selection or division;
         (b) an individual unit of the lot taken as part of the sample; (c) the final unit of multistage sampling.
         The term 'subsample' is used either in the sense of a 'sample of a sample' or as a synonym for 'unit'.
         In practice, the meaning is usually apparent from the context or is defined.
+      - TODO - Montana to visit slot descriptions
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
@@ -1568,6 +1565,11 @@ classes:
       - volume
       - mass
     slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
       volume:
         description: The output volume of the SubSampling Process.
       mass:
@@ -1592,6 +1594,11 @@ classes:
     slots:
       - duration
     slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
       has_output:
         range: ProcessedSample
         description: The mixed sample.
@@ -1617,6 +1624,11 @@ classes:
       - separation_method
       - volume
     slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
       volume:
         description: The volume of sample filtered.
 
@@ -1631,6 +1643,12 @@ classes:
       - ordered_mobile_phases
       - stationary_phase
       - temperature
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
 
   DataGeneration:
     aliases:
