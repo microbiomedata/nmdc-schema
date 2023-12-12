@@ -255,7 +255,7 @@ classes:
 
   Pooling:
     class_uri: nmdc:Pooling
-    is_a: BiosampleProcessing
+    is_a: MaterialProcessing
     description: physical combination of several instances of like material.
     slots:
     exact_mappings:
@@ -274,7 +274,7 @@ classes:
 
   Extraction:
     class_uri: nmdc:Extraction
-    is_a: PlannedProcess # from core.yaml
+    is_a: MaterialProcessing
     description: A material separation in which a desired component of an input material is separated from the remainder.
     exact_mappings:
       - OBI:0302884
@@ -285,11 +285,6 @@ classes:
       - input_mass
       - quality_control_report
     slot_usage:
-      has_input:
-        required: true
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
       has_output:
         required: true
       id:
@@ -335,7 +330,7 @@ classes:
     class_uri: nmdc:LibraryPreparation
     aliases:
       - LibraryConstruction
-    is_a: BiosampleProcessing
+    is_a: MaterialProcessing
     slots:
       - library_preparation_kit
       - library_type
@@ -345,8 +340,6 @@ classes:
     comments:
       - OBI:0000711 specifies a DNA input (but not ONLY a DNA input)
     slot_usage:
-      has_input:
-        required: true
       has_output:
         required: true
       id:
@@ -1584,24 +1577,27 @@ classes:
       - "sample mgnify link https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757"
       - "GOLD, insdc.srs and mgnify are reasonable prefixes for alternative study identifiers, but no longer for the Study.id"
 
-  BiosampleProcessing:
-    aliases:
-      - material processing
+  MaterialProcessing:
     is_a: PlannedProcess
     description:
-      A process that takes one or more biosamples as inputs and generates
-      one or more biosamples as outputs. An example of an output includes samples cultivated from another
-      sample.
+      A process that takes one or more samples as inputs and generates
+      one or more samples as outputs. 
     slots:
       - has_input
+    notes: 
+      - This class is a replacement for BiosampleProcessing.
     slot_usage:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:bsmprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:matprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
       has_input:
-        range: Biosample
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+      has_output:
+        range: ProcessedSample
     broad_mappings:
       - OBI:0000094
 
@@ -1610,21 +1606,18 @@ classes:
       Separating a sample aliquot from the starting material for downstream activity.
     related_mappings:
       - OBI:0000744
-    todos:
-      - add intermediate class between PlannedProcess and this (MaterialProcessing potentially)
-      - Montana to visit slot descriptions
-      - add 'has_output' usage for processed sample - James
     notes:
       - A subsample may be (a) a portion of the sample obtained by selection or division;
         (b) an individual unit of the lot taken as part of the sample; (c) the final unit of multistage sampling.
         The term 'subsample' is used either in the sense of a 'sample of a sample' or as a synonym for 'unit'.
         In practice, the meaning is usually apparent from the context or is defined.
+      - TODO - Montana to visit slot descriptions
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
       - ORCID:0000-0001-9076-6066 #Mark Miller
       - ORCID:0009-0008-4013-7737 #James Tessmer
-    is_a: PlannedProcess
+    is_a: MaterialProcessing
     slots:
       - container_size
       - contained_in
@@ -1632,14 +1625,15 @@ classes:
       - volume
       - mass
     slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
       volume:
         description: The output volume of the SubSampling Process.
       mass:
         description: The output mass of the SubSampling Process.
-      has_input:
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
       has_output:
         range: ProcessedSample
         description: The subsample.
@@ -1650,7 +1644,7 @@ classes:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
-    is_a: PlannedProcess
+    is_a: MaterialProcessing
     comments:
       - The mixing may be achieved manually or mechanically by shifting the material with stirrers or pumps
         or by revolving or shaking the container.
@@ -1660,10 +1654,11 @@ classes:
     slots:
       - duration
     slot_usage:
-      has_input:
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
       has_output:
         range: ProcessedSample
         description: The mixed sample.
@@ -1678,7 +1673,7 @@ classes:
       - ORCID:0000-0002-8683-0050 #Montana Smith
       - ORCID:0000-0001-9076-6066 #Mark Miller
       - ORCID:0009-0008-4013-7737 #James Tessmer
-    is_a: PlannedProcess
+    is_a: MaterialProcessing
     slots:
       - conditionings
       - container_size
@@ -1689,6 +1684,11 @@ classes:
       - separation_method
       - volume
     slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
       volume:
         description: The volume of sample filtered.
 
@@ -1698,16 +1698,17 @@ classes:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-1368-8217 #Yuri Corilo
-    is_a: PlannedProcess
+    is_a: MaterialProcessing
     slots:
       - ordered_mobile_phases
       - stationary_phase
       - temperature
     slot_usage:
-      has_input:
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
 
   DataGeneration:
     aliases:
@@ -1726,6 +1727,7 @@ classes:
         An experiment contains information about a sequencing experiment including
         library and instrument details.
     slots:
+      - analyte_category
       - add_date
       - chimera_check
       - gold_sequencing_project_identifiers
@@ -1738,7 +1740,7 @@ classes:
       - ncbi_project_name
       - nucl_acid_amp
       - nucl_acid_ext
-      - omics_type
+      #      - omics_type
       - part_of
       - pcr_cond
       - pcr_primers
@@ -1755,7 +1757,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:datgen-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
       has_input:
         required: true
@@ -1803,6 +1805,25 @@ enums:
     permissible_values:
       high: { }
       low: { }
+  AnalyteCategoryEnum:
+    permissible_values:
+      metagenome:
+        aliases:
+          - metaG
+      metatranscriptome:
+        aliases:
+          - metaT
+      metaproteome:
+        aliases:
+          - metaP
+      metabolome:
+        aliases:
+          - metaB
+      lipidome: { }
+      nom:
+        aliases:
+          - natural organic matter
+
   InstrumentModelEnum:
     permissible_values:
       Orbitrap:
@@ -2390,6 +2411,12 @@ enums:
       ZIC-cHILIC:
 
 slots:
+
+  analyte_category:
+    required: true
+    description: >
+      The type of analyte(s) that were measured in the data generation process
+    range: AnalyteCategoryEnum
   model:
     range: InstrumentModelEnum
   vendor:
@@ -2877,6 +2904,7 @@ slots:
     description: This property links a database object to the set of DNA extractions within it.
 
   omics_type:
+    deprecated_element_has_exact_replacement: analyte_category
     domain: DataGeneration
     range: ControlledTermValue
     description: The type of omics data
