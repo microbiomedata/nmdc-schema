@@ -1545,6 +1545,30 @@ classes:
     broad_mappings:
       - OBI:0000094
 
+  MaterialProcessing:
+    is_a: PlannedProcess
+    description:
+      A process that takes one or more samples as inputs and generates
+      one or more samples as outputs. 
+    slots:
+      - has_input
+    notes: 
+      - This class is a replacement for BiosampleProcessing.
+    comments:
+      - An example of an output includes samples cultivated from another sample.
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:bsmprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+      has_input:
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+    broad_mappings:
+      - OBI:0000094
+      
   SubSamplingProcess:
     description: >
       Separating a sample aliquot from the starting material for downstream activity.
