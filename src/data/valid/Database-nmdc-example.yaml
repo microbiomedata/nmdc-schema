@@ -63,6 +63,7 @@ study_set:
     study_category: research_study
 data_generation_set:
   - id: nmdc:omprc-99-9XUVVF
+    analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0225767
     name: Forest soil microbial communities from Barre Woods Harvard Forest LTER site,
@@ -78,13 +79,12 @@ data_generation_set:
       - nmdc:dobj-00-90125
     ncbi_project_name: Forest soil microbial communities from Barre Woods Harvard Forest
       LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O
-    omics_type:
-      has_raw_value: Metagenome
     part_of:
       - nmdc:sty-00-31415
     processing_institution: JGI
     type: nmdc:OmicsProcessing
   - id: nmdc:omprc-99-dk9vgI
+    analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0208560
     name: Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG
@@ -97,13 +97,12 @@ data_generation_set:
       - nmdc:dobj-00-pizza
     ncbi_project_name: Permafrost microbial communities from Stordalen Mire, Sweden
       - 611E1M metaG
-    omics_type:
-      has_raw_value: Metagenome
     part_of:
       - nmdc:sty-00-8675309
     processing_institution: JGI
     type: nmdc:OmicsProcessing
   - id: nmdc:omprc-99-MVW1FV
+    analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0306221
     name: Rhizosphere microbial communities from Carex aquatilis grown in University
@@ -118,8 +117,6 @@ data_generation_set:
       - nmdc:dobj-00-mobydick
     ncbi_project_name: Rhizosphere microbial communities from Carex aquatilis grown
       in University of Washington, Seatle, WA, United States - 4-1-23 metaG
-    omics_type:
-      has_raw_value: Metagenome
     part_of:
       - nmdc:sty-00-avacado
     processing_institution: JGI

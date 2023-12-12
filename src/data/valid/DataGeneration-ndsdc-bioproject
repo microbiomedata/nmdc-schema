@@ -1,4 +1,5 @@
 id: nmdc:omprc-11-pf500b03
+analyte_category: metagenome
 gold_sequencing_project_identifiers:
   - gold:Gp0704888
 name: Thawing permafrost microbial communities from the Arctic, studying carbon
@@ -13,8 +14,6 @@ ncbi_project_name: Thawing permafrost microbial communities from the Arctic, stu
   carbon transformations - Permafrost 712P3D
 insdc_bioproject_identifiers:
   - bioproject:PRJNA1029144
-omics_type:
-  has_raw_value: Metagenome
 part_of:
   - nmdc:sty-00-555xxx
 processing_institution: JGI

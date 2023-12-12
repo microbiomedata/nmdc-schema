@@ -92,6 +92,7 @@ data_object_set:
   type: nmdc:DataObject
 data_generation_set:
 - id: nmdc:omprc-11-s9xj2r24
+  analyte_category: metagenome
   name: Test NEON data
   has_input:
   - nmdc:procsm-99-xyz3
@@ -99,8 +100,6 @@ data_generation_set:
   - nmdc:dobj-12-jdhk9537
   - nmdc:dobj-12-yx0tfp52
   instrument_name: Illumina NovaSeq S4
-  omics_type:
-    has_raw_value: Metagenome
   part_of:
   - nmdc:sty-11-34xj1150
   processing_institution: Battelle

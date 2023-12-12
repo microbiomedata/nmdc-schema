@@ -1,5 +1,6 @@
 data_generation_set:
   - id: nmdc:omprc-99-zUCd5N
+    analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0108335
     name: Thawing permafrost microbial communities from the Arctic, studying carbon
@@ -12,13 +13,12 @@ data_generation_set:
       - nmdc:dobj-00-9n9n9n
     ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
       carbon transformations - Permafrost 712P3D
-    omics_type:
-      has_raw_value: Metagenome
     part_of:
       - nmdc:sty-00-555xxx
     processing_institution: JGI
     type: nmdc:OmicsProcessing
   - id: nmdc:omprc-99-gKlQlF
+    analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0108340
     name: Thawing permafrost microbial communities from the Arctic, studying carbon
@@ -31,13 +31,12 @@ data_generation_set:
       - nmdc:dobj-00-zzzbrxzzz
     ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
       carbon transformations - Permafrost 612S3M
-    omics_type:
-      has_raw_value: Metagenome
     part_of:
       - nmdc:sty-00-555xxx
     processing_institution: JGI
     type: nmdc:OmicsProcessing
   - id: nmdc:omprc-99-5kgIJR
+    analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0108341
     name: Thawing permafrost microbial communities from the Arctic, studying carbon
@@ -50,8 +49,6 @@ data_generation_set:
       - nmdc:dobj-00-thx1198
     ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
       carbon transformations - Permafrost 712S3S
-    omics_type:
-      has_raw_value: Metagenome
     part_of:
       - nmdc:sty-00-555xxx
     processing_institution: JGI

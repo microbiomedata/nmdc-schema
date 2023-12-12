@@ -155,9 +155,7 @@
         "nmdc:dobj-12-yx0tfp52"
       ],
       "instrument_name": "Illumina NovaSeq S4",
-      "omics_type": {
-        "has_raw_value": "Metagenome"
-      },
+      "analyte_category":  "metagenome",
       "part_of": [
         "nmdc:sty-11-34xj1150"
       ],
