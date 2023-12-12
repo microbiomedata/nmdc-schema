@@ -31,8 +31,8 @@ biosample_set:
       has_raw_value: ENVO:00005792
       term:
         id: ENVO:00005792
-omics_processing_set:
-  - id: nmdc:omprc-99-zUCd5N
+data_generation_set:
+  - id: nmdc:datgen-99-zUCd5N
     alternative_identifiers:
       - gold:Gp0108335
     name: a process in which a biosample was sequenced?

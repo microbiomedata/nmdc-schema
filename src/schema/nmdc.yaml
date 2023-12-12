@@ -183,7 +183,7 @@ classes:
       - metaproteomics_analysis_activity_set
       - metatranscriptome_activity_set
       - nom_analysis_activity_set
-      - omics_processing_set
+      - data_generation_set
       - planned_process_set
       - pooling_set
       - processed_sample_set
@@ -1674,8 +1674,10 @@ classes:
           syntax: "{id_nmdc_prefix}:reacp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-  OmicsProcessing:
+DateGeneration:
     aliases:
+      - OmicsProcessing
+      - assay
       - omics assay
       - sequencing project
       - experiment
@@ -1718,7 +1720,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:datgen-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
       has_input:
         required: true
@@ -2448,7 +2450,7 @@ slots:
     title: zinc
     examples:
       - value: 2.5 mg/kg
-#    is_a: attribute
+    #    is_a: attribute
     range: QuantityValue
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
@@ -2465,7 +2467,7 @@ slots:
       - value: 24.7 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-#    is_a: attribute
+    #    is_a: attribute
     range: QuantityValue
 
   ammonium_nitrogen:
@@ -2482,7 +2484,7 @@ slots:
       - value: 2.3 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-#    is_a: attribute
+    #    is_a: attribute
     range: QuantityValue
 
   nitrate_nitrogen:
@@ -2501,7 +2503,7 @@ slots:
       - value: 0.29 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-#    is_a: attribute
+    #    is_a: attribute
     range: QuantityValue
 
   nitrite_nitrogen:
@@ -2518,7 +2520,7 @@ slots:
       - value: 1.2 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-#    is_a: attribute
+    #    is_a: attribute
     range: QuantityValue
 
   lbc_thirty:
@@ -2539,7 +2541,7 @@ slots:
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
       - https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF
-#    is_a: attribute
+    #    is_a: attribute
     range: QuantityValue
 
   lbceq:
@@ -2558,7 +2560,7 @@ slots:
       - value: 1575 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-#    is_a: attribute
+    #    is_a: attribute
     range: QuantityValue
 
   env_package:
@@ -2574,7 +2576,7 @@ slots:
       subtables and can be reported
     in_subset:
       - mixs extension
-#    is_a: attribute
+    #    is_a: attribute
     range: TextValue
   #      pattern: '[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon
   #        resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc
@@ -2804,10 +2806,10 @@ slots:
     description:
       This property links a database object to the set of natural organic
       matter (NOM) analysis activities.
-  omics_processing_set:
+  data_generation_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: OmicsProcessing
+    range: DataGeneration
     description:
       This property links a database object to the set of omics processings
       within it.
@@ -2834,7 +2836,7 @@ slots:
     description: This property links a database object to the set of DNA extractions within it.
 
   omics_type:
-    domain: OmicsProcessing
+    domain: DataGeneration
     range: ControlledTermValue
     description: The type of omics data
     examples:
@@ -2858,7 +2860,7 @@ slots:
 
   ## GOLD PATHS
   gold_path_field:
-#    is_a: attribute
+    #    is_a: attribute
     range: string
     abstract: true
     description: >-
@@ -2928,7 +2930,7 @@ slots:
   principal_investigator:
     aliases:
       - PI
-#    is_a: attribute
+    #    is_a: attribute
     range: PersonValue
     description: Principal Investigator who led the study and/or generated the dataset.
 

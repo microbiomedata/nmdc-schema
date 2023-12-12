@@ -90,8 +90,8 @@ data_object_set:
   data_object_type: Filtered Sequencing Reads
   url: https://data.microbiomedata.org/data/1472_51293/qa/1472_51293.filtered.fastq.gz
   type: nmdc:DataObject
-omics_processing_set:
-- id: nmdc:omprc-11-s9xj2r24
+data_generation_set:
+- id: nmdc:datgen-11-s9xj2r24
   name: Test NEON data
   has_input:
   - nmdc:procsm-99-xyz3
@@ -110,7 +110,7 @@ read_qc_analysis_activity_set:
   name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74 '
   started_at_time: '2023-03-23T17:17:05.111689+00:00'
   ended_at_time: '2023-03-23T17:17:05.111725+00:00'
-  was_informed_by: nmdc:omprc-11-s9xj2r24
+  was_informed_by: nmdc:datgen-11-s9xj2r24
   execution_resource: NERSC-Cori
   git_url: https://github.com/microbiomedata/ReadsQC
   has_input:
