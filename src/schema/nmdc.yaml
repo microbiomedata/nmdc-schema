@@ -185,7 +185,7 @@ classes:
       - GC-MS
     exact_mapping:
      - CHMO:0000497
-   GcMsMs:
+  GcMsMs:
     description: A DataGeneration in which gas chromatography with tandem mass spectrometry data is generated.
     is_a: DataGeneration
     aliases:
