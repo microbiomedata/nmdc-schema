@@ -164,7 +164,7 @@ classes:
     abstract: true
     exact_mappings: CHMO:0000470
     slots:
-      - aquisition_category
+      - acquisition_category
       - resolution_category
   DirectInfusionMassSpectrometry:
     description: A DataGeneration in which direct infusion mass spectrometry data is generated
@@ -1791,6 +1791,18 @@ classes:
       - https://casrai.org/credit/
 
 enums:
+  AcquisitionCategoryEnum:
+    permissible_values:
+      Full_Scan:
+        alias:
+         - MS
+      Tandem_MassSpec:
+        alias:
+          -MSn
+  ResolutionCategoryEnum:
+    permissible_values:
+      High: { }
+      Low: { }
   InstrumentModelEnum:
     permissible_values:
       Orbitrap:
