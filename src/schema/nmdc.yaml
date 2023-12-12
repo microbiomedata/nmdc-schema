@@ -94,6 +94,9 @@ prefixes:
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   skos: http://www.w3.org/2004/02/skos/core#
   xsd: http://www.w3.org/2001/XMLSchema#
+  CHMO: "http://purl.obolibrary.org/obo/CHMO_"
+  wikidata: "http://www.wikidata.org/entity/"
+  my_emsl: "https://release.my.emsl.pnnl.gov/released_data/"
 
 
 default_prefix: nmdc
