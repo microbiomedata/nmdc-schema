@@ -1797,7 +1797,7 @@ enums:
         aliases:
          - MS
       Tandem_MassSpec:
-        alias:
+        aliases:
           -MSn
   ResolutionCategoryEnum:
     permissible_values:
