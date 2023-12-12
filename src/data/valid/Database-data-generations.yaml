@@ -17,7 +17,7 @@ data_generation_set:
       - nmdc:sty-00-555xxx
     processing_institution: JGI
     type: nmdc:OmicsProcessing
-  - id: nmdc:omprc-99-gKlQlF
+  - id: nmdc:datgen-99-gKlQlF
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0108340
