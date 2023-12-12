@@ -161,47 +161,14 @@ classes:
   MassSpectrometry:
     description: Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio and relative abundance.
     is_a: DataGeneration
-    abstract: true
     exact_mappings: CHMO:0000470
     slots:
       - acquisition_category
       - resolution_category
-  DirectInfusionMassSpectrometry:
-    description: A DataGeneration in which direct infusion mass spectrometry data is generated
-    is_a: MassSpectrometry
-    aliases:
-      - DI-MS
-      - Direct Infusion Mass Spectrometry
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:dgdims-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
-  LiquidChromatographyMassSpectrometry: 
-    description: A DataGeneration in which liquid chromatography-mass spectrometry data is generated.
-    is_a: MassSpectrometry
-    aliases:
-      - Liquid Chromatography mass spectrometry
-      - LC-MS
-    exact_mappings:
-      - CHMO:0000524
-    slot_usage:
-      id:
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:dglcms-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
-  GasChromatographyMassSpectrometry:
-    description: A DataGeneration in which gas chromatography-mass spectrometry data is generated.
-    is_a: MassSpectrometry
-    aliases:
-      - Gas Chromatography mass spectrometry
-      - GC-MS
-    exact_mappings:
-     - CHMO:0000497
-    slot_usage:
-      id:
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:dggcms-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:dgms-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
       
   FunctionalAnnotationAggMember:
