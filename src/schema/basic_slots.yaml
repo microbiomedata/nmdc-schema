@@ -32,7 +32,7 @@ slots:
     domain: MassSpectrometry
     range: AcquisitionCategoryEnum
     description: Captures which type of aquisition category was on a mass spectrometry run.
-    comments: DDA vs DIA
+    comments: MS vs MSn
   resolution_category:
     domain: MassSpectrometry
     range: ResolutionCategoryEnum
