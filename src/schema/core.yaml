@@ -73,11 +73,6 @@ enums:
       Agitation plunger:
       Drying oven:
       CEREX System 96 processor:
-  SampleStateEnum:
-    permissible_values:
-      solid:
-      liquid:
-      gas:
 
 classes:
 
@@ -329,7 +324,6 @@ classes:
       - inchi
       - inchi_key
       - smiles
-      - sample_state_information
 
     see_also:
       - https://bioconductor.org/packages/devel/data/annotation/vignettes/metaboliteIDmapping/inst/doc/metaboliteIDmapping.html
@@ -715,8 +709,3 @@ slots:
       A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.
     multivalued: true
     range: string
-  sample_state_information:
-    description: >-
-      The chemical phase of a pure sample, or the state of a mixed sample
-    multivalued: true
-    range: SampleStateEnum

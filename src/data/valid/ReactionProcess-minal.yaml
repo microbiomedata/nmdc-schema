@@ -1,0 +1,21 @@
+id: nmdc:reacp-19-789
+has_input:
+  - "nmdc:fasp-37"
+has_output:
+  - "nmdc:ome-39"
+has_reagents:
+  - chemical_formula: CH3OH
+    inchi_key: OKKJLVBELUTLKV-UHFFFAOYSA-N
+    sample_state_information: liquid
+    volume: 
+      has_numeric_value: 120
+      has_unit: mL
+    concentration:
+      has_unit: mM
+      has_numeric_value: 10
+temperature:
+  has_numeric_value: 25
+  has_unit: celsius
+duration:
+  has_numeric_value: 1
+  has_unit: hour

@@ -256,6 +256,28 @@ classes:
       - has_solution_components
       - volume
 
+  ChemicalReagent:
+    aliases:
+    - metabolite
+    - chemical substance
+    - chemical compound
+    - chemical
+    - reagent
+    - reactant
+  description: >-
+    An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs.
+    There may be different terms for distinct acid-base forms, protonation states
+  comments:
+    - we will not assign an nmdc id pattern or typecode to this class.
+  slots:
+    - chemical_formula
+    - inchi_key
+    - sample_state_information
+    - mass
+    - volume
+    - concentration
+
+
   Protocol:
     slots:
       - url
@@ -1638,17 +1660,19 @@ classes:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-1368-8217 #Yuri Corilo
-    is_a: PlannedProcess
+    is_a: MaterialProcess
     slots:
       - has_reagents
       - temperature
+      - duration
     comments:
       - The values of both has_reagents slot and has_input slot are considered the reagents of a chemical process.
     slot_usage:
-      has_input:
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:reacp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
 
   OmicsProcessing:
     aliases:
@@ -2315,6 +2339,12 @@ enums:
       ZIC-HILIC:
       ZIC-pHILIC:
       ZIC-cHILIC:
+
+  SampleStateEnum:
+    permissible_values:
+      solid:
+      liquid:
+      gas:
 
 slots:
   model:
@@ -3132,7 +3162,11 @@ slots:
     description: The material the stationary phase is comprised of used in chromatography.
   has_reagents:
     domain: ReactionProcess
-    range: ChemicalEntity
+    range:  ChemicalReagent
     description: The reagents used in a chemical reaction.
     multivalued: true
     inlined_as_list: true
+  sample_state_information:
+    description: >-
+      The chemical phase of a pure sample, or the state of a mixed sample
+    range: SampleStateEnum
