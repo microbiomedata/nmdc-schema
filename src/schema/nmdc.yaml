@@ -149,7 +149,7 @@ classes:
     is_a: DataGeneration
     comments: For example data generated from an Illumina or Pacific Biosciences instrument.  
     slots: 
-      - gold_sequencing_project_identifiers	
+      - gold_sequencing_project_identifiers
       - seq_meth
       - ncbi_project_name
       - insdc_bioproject_identifiers
