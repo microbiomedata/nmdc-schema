@@ -1,5 +1,5 @@
-has_constituents:
-  - name: methanol
+has_solution_components:
+  - compound: methanol
     concentration:
       has_unit: mM
       has_numeric_value: 10

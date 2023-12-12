@@ -1,13 +1,13 @@
-has_constituents:
-  - name: methanol
+has_solution_components:
+  - compound: methanol
     concentration:
       has_unit: mM
       has_numeric_value: 10
-  - name: chloridic acid
+  - compound: chloridic acid
     concentration:
       has_unit: mM
       has_numeric_value: 15
-  - name: trypsin
+  - compound: trypsin
     concentration:
       has_unit: mM
       has_numeric_value: 20

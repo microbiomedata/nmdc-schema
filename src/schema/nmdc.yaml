@@ -240,35 +240,26 @@ classes:
       volume:
         description: The volume of the solvent/solute being used, not the input.
 
-  ConstituentOfFluid:
-    description: One constituent of a fluid. For Fluids that consist of one single constituent,
-      the constituent must be a fluid. Fluids with more than one constituent may also contain
-      non-fluid constituents, such as solids in a colloid or a solution
+  SolutionComponent:
+    description: One constituent of a solution
     slots:
-      - name
+      - compound
       - concentration
-    slot_usage:
-      name:
-        domain: ConstituentOfFluid
-        range: ConstituentEnum
-        description: The name of the constituent
-        required: true
 
-  Fluid:
-    description: Material that may continuously move and deform (flow) under an applied shear stress, or external force
+  Solution:
+    description: A mixture that is homogeneous, made up of two or more scattered molecular aggregates, one playing the role of solute and the other playing the role of solvent.
     aliases:
-      - gas
-      - liquid
-      - fluid mixture
-      - solution
+      - mixture
       - solvent
     comments:
-      - The fluid class may be instantiated with a single constituent as long as that constituent is fluid
+      - We acknowledge that users of the nmdc-schema may instantiate Solution with only a single component which goes against the letter of the description.
+      - The solution class may be used to instantiate a single component in the has_solution_components slot
+    notes:
+      - TODO review the description, possibly more descriptive modeling to allow solvent to be used
+      - TODO consider making a "Fluid" class
     slots:
-      - has_constituents
+      - has_solution_components
       - volume
-    exact_mappings:
-      - wikidata:Q102205
 
   Protocol:
     slots:
@@ -2284,7 +2275,7 @@ enums:
   #      Water:
   #      trypsin in ammonium bicarbonate:
   
-  ConstituentEnum:
+  CompoundEnum:
     permissible_values:
       ammonium bicarbonate:
       deionized water:
@@ -2426,7 +2417,7 @@ slots:
     title: zinc
     examples:
       - value: 2.5 mg/kg
-    #    is_a: attribute
+#    is_a: attribute
     range: QuantityValue
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
@@ -2443,7 +2434,7 @@ slots:
       - value: 24.7 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    #    is_a: attribute
+#    is_a: attribute
     range: QuantityValue
 
   ammonium_nitrogen:
@@ -2460,7 +2451,7 @@ slots:
       - value: 2.3 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    #    is_a: attribute
+#    is_a: attribute
     range: QuantityValue
 
   nitrate_nitrogen:
@@ -2479,7 +2470,7 @@ slots:
       - value: 0.29 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    #    is_a: attribute
+#    is_a: attribute
     range: QuantityValue
 
   nitrite_nitrogen:
@@ -2496,7 +2487,7 @@ slots:
       - value: 1.2 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    #    is_a: attribute
+#    is_a: attribute
     range: QuantityValue
 
   lbc_thirty:
@@ -2517,7 +2508,7 @@ slots:
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
       - https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF
-    #    is_a: attribute
+#    is_a: attribute
     range: QuantityValue
 
   lbceq:
@@ -2536,7 +2527,7 @@ slots:
       - value: 1575 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    #    is_a: attribute
+#    is_a: attribute
     range: QuantityValue
 
   env_package:
@@ -2552,7 +2543,7 @@ slots:
       subtables and can be reported
     in_subset:
       - mixs extension
-    #    is_a: attribute
+#    is_a: attribute
     range: TextValue
   #      pattern: '[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon
   #        resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc
@@ -2836,7 +2827,7 @@ slots:
 
   ## GOLD PATHS
   gold_path_field:
-    #    is_a: attribute
+#    is_a: attribute
     range: string
     abstract: true
     description: >-
@@ -2906,7 +2897,7 @@ slots:
   principal_investigator:
     aliases:
       - PI
-    #    is_a: attribute
+#    is_a: attribute
     range: PersonValue
     description: Principal Investigator who led the study and/or generated the dataset.
 
@@ -3103,33 +3094,33 @@ slots:
     description: A type of container. i.e. test tube, falcon tube, etc.
   extractant:
     domain: Extraction
-    range: Fluid
+    range: Solution
     description: "The active component(s) primarily responsible for transfer of a solute from one phase to the other."
   concentration:
-    domain: ConstituentOfFluid
+    domain: SolutionComponent
     range: QuantityValue
     description: The concentration of a substance used in a process
   input_volume: # see also `volume`
     domain: PlannedProcess
     range: QuantityValue
     description: The volume of the input sample.
-  has_constituents:
-    description: Relationship from a Fluid to one or more constituent of that fluid
-    range: ConstituentOfFluid
-    domain: Fluid
+  has_solution_components:
+    description: Relationship from a Solution to one or more constituent solution components
+    range: SolutionComponent
+    domain: Solution
     multivalued: true
     inlined_as_list: true
     required: true
     minimum_cardinality: 1
     #list example
   compound:
-    domain: ConstituentOfFluid
-    range: ConstituentEnum
+    domain: SolutionComponent
+    range: CompoundEnum
     description: A substance that consists of more than one atom or ion. Includes solvents and solutes. Can be combined into solutions.
     required: true
   ordered_mobile_phases:
     domain: ChromatographicSeparationProcess
-    range: Fluid
+    range: Solution
     description: The solution(s) that moves through a chromatography column.
     multivalued: true
     list_elements_ordered: true

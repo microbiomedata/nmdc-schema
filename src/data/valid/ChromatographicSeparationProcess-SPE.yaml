@@ -9,18 +9,18 @@ ordered_mobile_phases:
   - volume:
       has_numeric_value: 700
       has_unit: mL
-    has_constituents:
-      - name: methanol
+    has_solution_components:
+      - compound: methanol
   - volume:
       has_numeric_value: 700
       has_unit: mL
-    has_constituents:
-      - name: chloridic acid
+    has_solution_components:
+      - compound: chloridic acid
         concentration:
           has_numeric_value: 10
           has_unit: mM 
   - volume:
       has_numeric_value: 1000
       has_unit: mL  
-    has_constituents:
-      - name: water
+    has_solution_components:
+      - compound: water
