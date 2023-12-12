@@ -2343,6 +2343,8 @@ slots:
 
   library_preparation_kit:
     range: string
+
+ ## WHY ARE THESE COMMENTED OUT?
   #    exact_mappings:
   #      - GENEPIO:0001450
   #  processed_date: # can we move this or infer this from the date of some other process?
@@ -2351,9 +2353,17 @@ slots:
   #  extraction_date: # replacing with start_ and end_date
   #    #    range: date
   #    range: string
+
   extraction_method:
     domain: Extraction
     range: ExtractionTargetEnum
+    description: Any procedure used to separate parts of a sample.
+    notes:
+      - todos, confirm definition based on an existing too specific definition "Any procedure used to purify nucleic acids (DNA or RNA) from a biological sample"
+      - todos, remove nucl_acid_ext from OmicsProcessing (DataGeneration)
+    narrow_mappings:
+      - NCIT:C177560
+      - MIXS:0000037
 
   quality_control_report:
     domain: PlannedProcess
