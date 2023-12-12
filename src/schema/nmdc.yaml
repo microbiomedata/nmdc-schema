@@ -1794,7 +1794,7 @@ enums:
   AcquisitionCategoryEnum:
     permissible_values:
       Full_Scan:
-        alias:
+        aliases:
          - MS
       Tandem_MassSpec:
         alias:
