@@ -1524,27 +1524,6 @@ classes:
       - "sample mgnify link https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757"
       - "GOLD, insdc.srs and mgnify are reasonable prefixes for alternative study identifiers, but no longer for the Study.id"
 
-  BiosampleProcessing:
-    aliases:
-      - material processing
-    is_a: PlannedProcess
-    description:
-      A process that takes one or more biosamples as inputs and generates
-      one or more biosamples as outputs. An example of an output includes samples cultivated from another
-      sample.
-    slots:
-      - has_input
-    slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:bsmprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
-      has_input:
-        range: Biosample
-    broad_mappings:
-      - OBI:0000094
-
   MaterialProcessing:
     is_a: PlannedProcess
     description:
@@ -1568,7 +1547,7 @@ classes:
           - range: ProcessedSample
     broad_mappings:
       - OBI:0000094
-      
+
   SubSamplingProcess:
     description: >
       Separating a sample aliquot from the starting material for downstream activity.
