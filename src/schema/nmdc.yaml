@@ -195,7 +195,7 @@ classes:
 
   Pooling:
     class_uri: nmdc:Pooling
-    is_a: BiosampleProcessing
+    is_a: MaterialProcessing
     description: physical combination of several instances of like material.
     slots:
     exact_mappings:
@@ -275,7 +275,7 @@ classes:
     class_uri: nmdc:LibraryPreparation
     aliases:
       - LibraryConstruction
-    is_a: BiosampleProcessing
+    is_a: MaterialProcessing
     slots:
       - library_preparation_kit
       - library_type
@@ -285,8 +285,6 @@ classes:
     comments:
       - OBI:0000711 specifies a DNA input (but not ONLY a DNA input)
     slot_usage:
-      has_input:
-        required: true
       has_output:
         required: true
       id:
@@ -1567,7 +1565,7 @@ classes:
       - ORCID:0000-0002-8683-0050 #Montana Smith
       - ORCID:0000-0001-9076-6066 #Mark Miller
       - ORCID:0009-0008-4013-7737 #James Tessmer
-    is_a: PlannedProcess
+    is_a: MaterialProcessing
     slots:
       - container_size
       - contained_in
@@ -1579,10 +1577,6 @@ classes:
         description: The output volume of the SubSampling Process.
       mass:
         description: The output mass of the SubSampling Process.
-      has_input:
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
       has_output:
         range: ProcessedSample
         description: The subsample.
@@ -1593,7 +1587,7 @@ classes:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
-    is_a: PlannedProcess
+    is_a: MaterialProcessing
     comments:
       - The mixing may be achieved manually or mechanically by shifting the material with stirrers or pumps
         or by revolving or shaking the container.
@@ -1603,10 +1597,6 @@ classes:
     slots:
       - duration
     slot_usage:
-      has_input:
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
       has_output:
         range: ProcessedSample
         description: The mixed sample.
@@ -1621,7 +1611,7 @@ classes:
       - ORCID:0000-0002-8683-0050 #Montana Smith
       - ORCID:0000-0001-9076-6066 #Mark Miller
       - ORCID:0009-0008-4013-7737 #James Tessmer
-    is_a: PlannedProcess
+    is_a: MaterialProcessing
     slots:
       - conditionings
       - container_size
@@ -1641,16 +1631,11 @@ classes:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-1368-8217 #Yuri Corilo
-    is_a: PlannedProcess
+    is_a: MaterialProcessing
     slots:
       - ordered_mobile_phases
       - stationary_phase
       - temperature
-    slot_usage:
-      has_input:
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
 
   OmicsProcessing:
     aliases:
