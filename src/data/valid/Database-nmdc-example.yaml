@@ -62,7 +62,7 @@ study_set:
     type: nmdc:Study
     study_category: research_study
 data_generation_set:
-  - id: nmdc:omprc-99-9XUVVF
+  - id: nmdc:datgen-99-9XUVVF
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0225767
@@ -83,7 +83,7 @@ data_generation_set:
       - nmdc:sty-00-31415
     processing_institution: JGI
     type: nmdc:OmicsProcessing
-  - id: nmdc:omprc-99-dk9vgI
+  - id: nmdc:datgen-99-dk9vgI
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0208560
@@ -101,7 +101,7 @@ data_generation_set:
       - nmdc:sty-00-8675309
     processing_institution: JGI
     type: nmdc:OmicsProcessing
-  - id: nmdc:omprc-99-MVW1FV
+  - id: nmdc:datgen-99-MVW1FV
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0306221

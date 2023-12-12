@@ -1,5 +1,5 @@
 data_generation_set:
-  - id: nmdc:omprc-99-zUCd5N
+  - id: nmdc:datgen-99-zUCd5N
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0108335
@@ -17,7 +17,7 @@ data_generation_set:
       - nmdc:sty-00-555xxx
     processing_institution: JGI
     type: nmdc:OmicsProcessing
-  - id: nmdc:omprc-99-gKlQlF
+  - id: nmdc:datgen-99-gKlQlF
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0108340
@@ -35,7 +35,7 @@ data_generation_set:
       - nmdc:sty-00-555xxx
     processing_institution: JGI
     type: nmdc:OmicsProcessing
-  - id: nmdc:omprc-99-5kgIJR
+  - id: nmdc:datgen-99-5kgIJR
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0108341
