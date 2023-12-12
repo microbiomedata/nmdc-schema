@@ -276,6 +276,7 @@ classes:
       - library_type
       - pcr_cycles
       - nucl_acid_amp
+      - pcr_cond
     close_mappings:
       - OBI:0000711
     comments:
@@ -288,6 +289,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+      pcr_cond:
+        description: Description of reaction conditions and components of polymerase chain reaction performed during library preparation
 
   FieldResearchSite:
     aliases:
