@@ -214,7 +214,7 @@ classes:
 
   Extraction:
     class_uri: nmdc:Extraction
-    is_a: PlannedProcess # from core.yaml
+    is_a: MaterialProcessing
     description: A material separation in which a desired component of an input material is separated from the remainder.
     exact_mappings:
       - OBI:0302884
@@ -225,11 +225,6 @@ classes:
       - input_mass
       - quality_control_report
     slot_usage:
-      has_input:
-        required: true
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
       has_output:
         required: true
       id:
