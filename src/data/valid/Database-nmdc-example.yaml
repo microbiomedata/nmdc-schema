@@ -62,7 +62,7 @@ study_set:
     type: nmdc:Study
     study_category: research_study
 data_generation_set:
-  - id: nmdc:omprc-99-9XUVVF
+  - id: nmdc:datgen-99-9XUVVF
     alternative_identifiers:
       - gold:Gp0225767
     name: Forest soil microbial communities from Barre Woods Harvard Forest LTER site,
@@ -84,7 +84,7 @@ data_generation_set:
       - nmdc:sty-00-31415
     processing_institution: JGI
     type: nmdc:OmicsProcessing
-  - id: nmdc:omprc-99-dk9vgI
+  - id: nmdc:datgen-99-dk9vgI
     alternative_identifiers:
       - gold:Gp0208560
     name: Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG
@@ -103,7 +103,7 @@ data_generation_set:
       - nmdc:sty-00-8675309
     processing_institution: JGI
     type: nmdc:OmicsProcessing
-  - id: nmdc:omprc-99-MVW1FV
+  - id: nmdc:datgen-99-MVW1FV
     alternative_identifiers:
       - gold:Gp0306221
     name: Rhizosphere microbial communities from Carex aquatilis grown in University

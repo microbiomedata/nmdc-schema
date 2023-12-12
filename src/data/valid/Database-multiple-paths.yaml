@@ -32,7 +32,7 @@ biosample_set:
       term:
         id: ENVO:00005792
 data_generation_set:
-  - id: nmdc:omprc-99-zUCd5N
+  - id: nmdc:datgen-99-zUCd5N
     alternative_identifiers:
       - gold:Gp0108335
     name: a process in which a biosample was sequenced?

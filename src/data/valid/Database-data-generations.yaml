@@ -1,5 +1,5 @@
 data_generation_set:
-  - id: nmdc:omprc-99-zUCd5N
+  - id: nmdc:datgen-99-zUCd5N
     alternative_identifiers:
       - gold:Gp0108335
     name: Thawing permafrost microbial communities from the Arctic, studying carbon
@@ -18,7 +18,7 @@ data_generation_set:
       - nmdc:sty-00-555xxx
     processing_institution: JGI
     type: nmdc:OmicsProcessing
-  - id: nmdc:omprc-99-gKlQlF
+  - id: nmdc:datgen-99-gKlQlF
     alternative_identifiers:
       - gold:Gp0108340
     name: Thawing permafrost microbial communities from the Arctic, studying carbon
@@ -37,7 +37,7 @@ data_generation_set:
       - nmdc:sty-00-555xxx
     processing_institution: JGI
     type: nmdc:OmicsProcessing
-  - id: nmdc:omprc-99-5kgIJR
+  - id: nmdc:datgen-99-5kgIJR
     alternative_identifiers:
       - gold:Gp0108341
     name: Thawing permafrost microbial communities from the Arctic, studying carbon
