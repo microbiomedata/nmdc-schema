@@ -277,6 +277,7 @@ classes:
       - pcr_cycles
       - nucl_acid_amp
       - pcr_cond
+      - pcr_primers
     close_mappings:
       - OBI:0000711
     comments:
