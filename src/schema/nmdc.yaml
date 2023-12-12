@@ -1526,8 +1526,6 @@ classes:
       - has_input
     notes: 
       - This class is a replacement for BiosampleProcessing.
-    comments:
-      - An example of an output includes samples cultivated from another sample.
     slot_usage:
       id:
         required: true
@@ -1538,6 +1536,8 @@ classes:
         any_of:
           - range: Biosample
           - range: ProcessedSample
+      has_output:
+        range: ProcessedSample
     broad_mappings:
       - OBI:0000094
 
