@@ -144,6 +144,48 @@ subsets:
 
 classes:
 
+  NucleotideSequencing:
+    description: A DataGeneration class for generating sequencing data. (ie from an Illumina or Pacific Biosciences instrument).  
+    is_a: DataGeneration
+    slots: 
+      - gold_sequencing_project_identifiers	
+      - seq_meth
+      - ncbi_project_name
+      - insdc_bioproject_identifiers
+      - insdc_experiment_identifiers
+  DiMs:
+    description: A DataGeneration class for generating direct infusion mass spectrometry data.
+    is_a: DataGeneration
+    aliases:
+      - DI-MS
+      - Direct Infusion Mass Spectrometry
+  LcMs: 
+    description: A DataGeneration class for generating liquid chromatography-mass spectrometry data.
+    is_a: DataGeneration
+    aliases:
+      - Liquid Chromatography mass spectrometry
+      - LC-MS
+  LcMsMs:
+    description: A DataGeneration class for generating liquid chromatography with tandem mass spectrometry data.
+    is_a: DataGeneration
+    aliases:
+     - Liquid Chromatography with tandem mass spectrometry
+     - LC-MS-MS
+     - LC-MS/MS
+  GcMs:
+    description: A DataGeneration class for generating gas chromatography-mass spectrometry data.
+    is_a: DataGeneration
+    aliases:
+      - Gas Chromatography mass spectrometry
+      - GC-MS    
+   GcMsMs:
+    description: A DataGeneration class for generating gas chromatography with tandem mass spectrometry data.
+    is_a: DataGeneration
+    aliases:
+      - Gas Chromatography with tandem mass spectrometry 
+      - GC-MS MS 
+      - GS-MS/MS
+      
   FunctionalAnnotationAggMember:
     slots:
       - metagenome_annotation_id
