@@ -1667,6 +1667,7 @@ classes:
         An experiment contains information about a sequencing experiment including
         library and instrument details.
     slots:
+      - analyte_category
       - add_date
       - chimera_check
       - gold_sequencing_project_identifiers
@@ -1679,7 +1680,7 @@ classes:
       - ncbi_project_name
       - nucl_acid_amp
       - nucl_acid_ext
-      - omics_type
+      #      - omics_type
       - part_of
       - pcr_cond
       - pcr_primers
@@ -1732,6 +1733,26 @@ classes:
       - https://casrai.org/credit/
 
 enums:
+
+  AnalyteCategoryEnum:
+    permissible_values:
+      metagenome:
+        aliases:
+          - metaG
+      metatranscriptome:
+        aliases:
+          - metaT
+      metaproteome:
+        aliases:
+          - metaP
+      metabolome:
+        aliases:
+          - metaB
+      lipidome: { }
+      nom:
+        aliases:
+          - natural organic matter
+
   InstrumentModelEnum:
     permissible_values:
       Orbitrap:
@@ -2319,6 +2340,12 @@ enums:
       ZIC-cHILIC:
 
 slots:
+
+  analyte_category:
+    required: true
+    description: >
+      The type of analyte(s) that were measured in the data generation process
+    range: AnalyteCategoryEnum
   model:
     range: InstrumentModelEnum
   vendor:
@@ -2806,6 +2833,7 @@ slots:
     description: This property links a database object to the set of DNA extractions within it.
 
   omics_type:
+    deprecated_element_has_exact_replacement: analyte_category
     domain: DataGeneration
     range: ControlledTermValue
     description: The type of omics data
