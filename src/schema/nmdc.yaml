@@ -158,9 +158,17 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:dgns-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-  DiMs:
-    description: A DataGeneration in which direct infusion mass spectrometry data is generated
+  MassSpectrometry:
+    description: Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio and relative abundanc
     is_a: DataGeneration
+    abstract: true
+    exact_mappings: CHMO:0000470
+    slots:
+      - aquisition_category
+      - resolution_category
+  DirectInfusionMassSpectrometry:
+    description: A DataGeneration in which direct infusion mass spectrometry data is generated
+    is_a: MassSpectrometry
     aliases:
       - DI-MS
       - Direct Infusion Mass Spectrometry
@@ -169,9 +177,9 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:dgdims-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-  LcMs: 
+  LiquidChromatographyMassSpectrometry: 
     description: A DataGeneration in which liquid chromatography-mass spectrometry data is generated.
-    is_a: DataGeneration
+    is_a: MassSpectrometry
     aliases:
       - Liquid Chromatography mass spectrometry
       - LC-MS
@@ -182,9 +190,9 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:dglcms-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-  GcMs:
+  GasChromatographyMassSpectrometry:
     description: A DataGeneration in which gas chromatography-mass spectrometry data is generated.
-    is_a: DataGeneration
+    is_a: MassSpectrometry
     aliases:
       - Gas Chromatography mass spectrometry
       - GC-MS
