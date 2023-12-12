@@ -258,24 +258,24 @@ classes:
 
   ChemicalReagent:
     aliases:
-    - metabolite
-    - chemical substance
-    - chemical compound
-    - chemical
-    - reagent
-    - reactant
-  description: >-
-    An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs.
-    There may be different terms for distinct acid-base forms, protonation states
-  comments:
-    - we will not assign an nmdc id pattern or typecode to this class.
-  slots:
-    - chemical_formula
-    - inchi_key
-    - sample_state_information
-    - mass
-    - volume
-    - concentration
+      - metabolite
+      - chemical substance
+      - chemical compound
+      - chemical
+      - reagent
+      - reactant
+    description: >-
+      An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs.
+      There may be different terms for distinct acid-base forms, protonation states
+    comments:
+      - we will not assign an nmdc id pattern or typecode to this class.
+    slots:
+      - chemical_formula
+      - inchi_key
+      - sample_state_information
+      - mass
+      - volume
+      - concentration
 
 
   Protocol:
@@ -1660,7 +1660,7 @@ classes:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-1368-8217 #Yuri Corilo
-    is_a: MaterialProcess
+    is_a: MaterialProcessing
     slots:
       - has_reagents
       - temperature
