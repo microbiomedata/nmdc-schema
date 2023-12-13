@@ -27,8 +27,7 @@ classes:
     aliases:
       - analysis
     comments:
-      - Each instance of this (and all other) activities is  a distinct run with start and stop times, potentially with different inputs and outputs
-    is_a: Activity
+      - Each instance of this (and all other) subclasses of WorkflowExecution is a distinct run with start and stop times, potentially with different inputs and outputs
     in_subset:
       - workflow subset
     description: >-
@@ -37,6 +36,12 @@ classes:
       embl.ena: >-
         An analysis contains secondary analysis results derived from sequence reads (e.g. a genome assembly)
     slots:
+      - id
+      - name
+      - started_at_time
+      - ended_at_time
+      - was_informed_by
+      - used
       - execution_resource
       - git_url
       - has_input
@@ -555,5 +560,5 @@ slots:
     multivalued: true
 
   version:
-    domain: Activity
+    domain: WorkflowExecutionActivity
     range: string

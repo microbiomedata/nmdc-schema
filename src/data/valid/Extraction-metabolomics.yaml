@@ -1,8 +1,8 @@
 id: "nmdc:extrp-71-r2pk"
 has_input:
-  - "nmdc:ome-6"
+  - "nmdc:bsm-6"
 has_output:
-  - "nmdc:ome-8"
+  - "nmdc:psm-8"
 extractant: # range: Solution... multivalued? (no) -> has_solution_component
   has_solution_components:
     - compound: deionized water

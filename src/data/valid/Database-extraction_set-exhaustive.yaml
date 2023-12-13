@@ -14,9 +14,9 @@ extraction_set:
     #range for processing_institution should be processing_institution_enum
     #processing_institution: Battelle
     #updating protocol info to be nested
-    protocol_link:
-      name: BMI_dnaExtractionSOP_v7
-      url: https://data.neonscience.org/documents/10179/2431540/BMI_dnaExtractionSOP_v7/61204962-bb01-a0b9-3354-ccdaab5132c3
+    #protocol_link:
+    #  name: BMI_dnaExtractionSOP_v7
+    #  url: https://data.neonscience.org/documents/10179/2431540/BMI_dnaExtractionSOP_v7/61204962-bb01-a0b9-3354-ccdaab5132c3
     #extraction_date http://purl.obolibrary.org/obo/OBI_0003081
     # extraction_date: "2019-11-08"
     start_date: "2019-11-08"
