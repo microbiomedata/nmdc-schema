@@ -160,18 +160,17 @@ classes:
     is_a: NamedThing
     title: Planned Process
     slots:
-      - designated_class
-      - end_date
       - has_input
       - has_output
+      - instrument_name # or "used" ?
       - processing_institution
       - protocol_link
       - start_date
-      - instrument_name # or "used" ?
+      - end_date
+      - type
     slot_usage:
-      designated_class:
-        comments:
-          - required on all instances in a polymorphic Database slot like planned_process_set
+      type:
+        required: true
 
   OntologyClass:
     is_a: NamedThing

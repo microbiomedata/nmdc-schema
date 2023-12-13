@@ -2686,8 +2686,6 @@ slots:
     description:
       This property links a database object to the set of planned processes
       within it.
-    comments:
-      - PlannedProcess instances aggregated by this slot will require the designated_class slot
   biosample_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
