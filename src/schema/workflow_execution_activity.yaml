@@ -27,7 +27,7 @@ classes:
     aliases:
       - analysis
     comments:
-      - Each instance of this (and all other) activities is  a distinct run with start and stop times, potentially with different inputs and outputs
+      - Each instance of this (and all other) subclasses of WorkflowExecution is a distinct run with start and stop times, potentially with different inputs and outputs
     in_subset:
       - workflow subset
     description: >-
