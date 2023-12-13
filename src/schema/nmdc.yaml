@@ -1557,9 +1557,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-      has_process_parts:
-        any_of:
-          - range: MaterialProcessing
 
   MaterialProcessing:
     is_a: PlannedProcess
