@@ -1823,12 +1823,12 @@ enums:
         aliases:
           - APCI
   
-  MassSpectrumCollectionMode:
+  MassSpectrumCollectionModeEnum:
     permissible_values:
       profile: {}
       centroid: {}
 
-  PolarityMode:
+  PolarityModeEnum:
     permissible_values:
       positive: {}
       negative: {}
