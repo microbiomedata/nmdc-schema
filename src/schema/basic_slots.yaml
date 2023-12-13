@@ -31,7 +31,7 @@ slots:
   acquisition_category: 
     domain: MassSpectrometry
     range: AcquisitionCategoryEnum
-    description: Captures which type of aquisition category was on a mass spectrometry run.
+    description: Captures which type of acquisition category was on a mass spectrometry run.
     comments: MS vs MSn
   resolution_category:
     domain: MassSpectrometry
