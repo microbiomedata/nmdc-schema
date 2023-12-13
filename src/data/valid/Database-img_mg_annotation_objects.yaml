@@ -1,4 +1,4 @@
-activity_set:
+workflow_execution_set:
 - has_input:
   - nmdc:b4b798cc9e7e9253ae8256a8237fd371
   git_url: https://img.jgi.doe.gov
