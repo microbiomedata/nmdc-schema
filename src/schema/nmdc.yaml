@@ -2407,16 +2407,17 @@ enums:
   ProtocolCategoryEnum:
     description: The possible protocols that may be followed for an assay.
     permissible_values:
-      - MPLEx
-      - Derivatization
-      - Filter Clean Up
-      - Organic Matter Extraction
-      - Solid Phase Extraction
-      - Phosphorus Extraction
-      - pH Measurement
-      - Respiration Measurement
-      - Texture Measurement
-      - DNA extraction
+      MPLEx:
+      Derivatization:
+      Filter Clean Up:
+      Organic Matter Extraction:
+      Solid Phase Extraction:
+      Phosphorus Extraction:
+      pH Measurement:
+      Respiration Measurement:
+      Texture Measurement:
+      DNA extraction:
+      phenol/chloroform extraction: { }
 
 slots:
 
