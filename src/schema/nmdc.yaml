@@ -1791,35 +1791,36 @@ enums:
   
   MassAnalyzerEnum:
     permissible_values:
-      TOF:
+      time_of_flight:
         aliases:
-          - Time Of Flight
-      Quad:
+          - TOF
+      quadruppole:
         aliases:
-          - Quadrupole
+          - Quad
       Orbitrap:
-      ICR:
+      ion_cyclotron_resonance:
         aliases:
-          - Ion Cyclotron Resonance
-      IT:
+          - ICR
+      ion_trap:
         aliases:
+          - LTQ 
           - Ion Trap
           - Paul Trap
   
   IonizationSourceEnum:
     permissible_values:
-      ESI:
+      electrospray_ionization:
         aliases:
-          - Electrospray ionization
-      MALDI:
+          - ESI
+      matrix_assisted_laser_desorption_ionization:
         aliases:
-          - Matrix Assisted Laser Desorption Ionization
-      APPI:
+          - MALDI
+      athmospheric_pressure_photo_ionization:
         aliases:
-          - Athmospheric Pressure Photo Ionization
-      APCI:
+          - APPI
+      athmospheric_pressure_chemical_ionization:
         aliases:
-          - Athmospheric Pressure Chemical Ionization
+          - APCI
   
   MassSpectrumCollectionMode:
     permissible_values:
