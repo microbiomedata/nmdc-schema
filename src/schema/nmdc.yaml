@@ -2767,11 +2767,6 @@ slots:
     description:
       This property links a database object to the set of all functional
       annotations
-  activity_set:
-    domain: Database # not inherited byt mixin users
-    mixins: object_set
-    range: WorkflowExecutionActivity
-    description: This property links a database object to the set of workflow activities.
   mags_activity_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
