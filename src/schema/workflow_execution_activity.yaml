@@ -25,12 +25,13 @@ subsets:
 classes:
   WorkflowChain:
     description: >-
-      A workflow chain is a sequence of workflow execution activities that are related to each other in some way.
+      A workflow chain is a sequence of workflow execution activities that 
+      analyse the output of DataGeneration.
     slots:
       - id
       - type
-      - analyte_category
-      - part_of
+      - analysis_category
+      - analyses_data_from
 
     slot_usage:
       id:
@@ -38,13 +39,21 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfch-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-      part_of:
+      type:
+        required: true
+      analysis_category:
         required: true
         description: >-
-          The DataGeneration that this WorkflowChain is part of
+          The category of analysis performed
+        range: analysis_type_enum
+      analyses_data_from:
+        required: true
+        description: >-
+          The DataGeneration that this WorkflowChain analyses data from
         range: DataGeneration
         comments: >-
-          The value of this slot is a reference to a DataGeneration that this WorkflowChain is part of
+          The value of this slot is a reference to a DataGeneration 
+          that this WorkflowChain is analysing data from
   
 
   WorkflowExecutionActivity:
@@ -343,8 +352,24 @@ classes:
           syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
+enums:
+  analysis_type_enum:
+    from_schema: https://example.com/nmdc_dh
+    permissible_values:
+      metabolomics: { }
+      metagenomics: { }
+      metaproteomics: { }
+      metatranscriptomics: { }
+      natural organic matter: { }
 
 slots:
+  analysis_type:
+    description: The category of analysis performed
+    examples:
+      - value: metagenomics
+    see_also:
+      - MIxS:investigation_type
+    range: analysis_type_enum
 
   metagenome_assembly_parameter:
     abstract: true
