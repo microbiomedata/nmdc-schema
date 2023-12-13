@@ -28,6 +28,10 @@ types:
     pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
 
 slots:
+  instrument_used:
+    range: Instrument
+    mutlivalued: true
+    description: What instrument was used during DataGeneration or MaterialProcessing.
   acquisition_category: 
     domain: MassSpectrometry
     range: AcquisitionCategoryEnum
