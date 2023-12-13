@@ -1,4 +1,4 @@
 id: nmdc:wfch-11-ab
 type: nmdc:WorkflowChain
-analysis_category: metagenome
+analysis_category: metagenomics
 analyzes_data_from: nmdc:datgen-11-ab
