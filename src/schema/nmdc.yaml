@@ -3153,13 +3153,11 @@ slots:
 
   has_process_parts:
     domain: ProtocolExecution
-    any_of:
-      - range: PlannedProcess
+    range: PlannedProcess
     description: A list of process parts that make up a protocol.
     required: true
     multivalued: true
     list_elements_ordered: true
-    inlined_as_list: true
 
   filter_material:
     description: "A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained."
