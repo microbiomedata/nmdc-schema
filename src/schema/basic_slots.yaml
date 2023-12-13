@@ -115,8 +115,6 @@ slots:
     range: ExtractionTargetEnum
     notes:
       - todos, remove nucl_acid_ext from OmicsProcessing (DataGeneration)
-      - todos, remove phenol/chloroform extraction from ExtractionTargetEnum. Is this used anywhere?
-      - todos, deprecate extraction_method from nmdc.yaml
     narrow_mappings:
       - NCIT:C177560
       - MIXS:0000037

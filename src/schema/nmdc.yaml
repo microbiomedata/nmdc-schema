@@ -247,7 +247,6 @@ classes:
       - OBI:0302884
     slots:
       - extractant
-      - extraction_method
       - extraction_target
       - input_mass
       - quality_control_report
@@ -2467,12 +2466,6 @@ slots:
   #  extraction_date: # replacing with start_ and end_date
   #    #    range: date
   #    range: string
-
-  extraction_method:
-    domain: Extraction
-    range: ExtractionTargetEnum
-    notes:
-      - todos, deprecate this once protocol_link on ProtocolExecution is complete
 
   quality_control_report:
     domain: PlannedProcess
