@@ -31,7 +31,7 @@ classes:
       - id
       - type
       - analysis_category
-      - analyses_data_from
+      - analyzes_data_from
 
     slot_usage:
       id:
@@ -46,10 +46,10 @@ classes:
         description: >-
           The category of analysis performed
         range: analysis_type_enum
-      analyses_data_from:
+      analyzes_data_from:
         required: true
         description: >-
-          The DataGeneration that this WorkflowChain analyses data from
+          The DataGeneration that this WorkflowChain analyzes data from
         range: DataGeneration
         comments: >-
           The value of this slot is a reference to a DataGeneration 
