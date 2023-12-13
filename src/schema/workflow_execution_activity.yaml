@@ -24,7 +24,7 @@ subsets:
 
 classes:
   WorkflowChain:
-    is_a: NamedThing
+    is_a: PlannedProcess
     description: >-
       A workflow chain is a sequence of workflow execution activities that 
       analyse the output of DataGeneration.
