@@ -32,13 +32,11 @@ slots:
     domain: MassSpectrometry
     range: AcquisitionCategoryEnum
     description: Captures which type of acquisition category was on a mass spectrometry run.
-    comments: MS vs MSn
   acquisition_strategy: 
     domain: MassSpectrometry
     range: AcquisitionStrategyEnum
     description: Captures which type of acquisition strategy was on a tandem mass spectrometry run.
-    comments: DIA vs DDA
-  resolution_category:
+    resolution_category:
     domain: MassSpectrometry
     range: ResolutionCategoryEnum
     description: Captures the resolution of the  mass spectrometry run. 
@@ -54,7 +52,6 @@ slots:
     domain: MassSpectrometry
     range: MassSpectrumCollectionModeEnum
     description: Captures the type of mass spectrum data aquired
-    comments: Profile vs Centroid
   polarity_mode:
     domain: MassSpectrometry
     range: PolarityModeEnum
