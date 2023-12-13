@@ -144,6 +144,33 @@ subsets:
 
 classes:
 
+  NucleotideSequencing:
+    description: A DataGeneration in which the sequence of DNA or RNA molecules is generated. 
+    is_a: DataGeneration
+    comments: For example data generated from an Illumina or Pacific Biosciences instrument.  
+    slots: 
+      - gold_sequencing_project_identifiers
+      - seq_meth
+      - ncbi_project_name
+      - insdc_bioproject_identifiers
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:dgns-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+  MassSpectrometry:
+    description: Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio and relative abundance.
+    is_a: DataGeneration
+    exact_mappings: CHMO:0000470
+    slots:
+      - acquisition_category
+      - resolution_category
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:dgms-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+      
   FunctionalAnnotationAggMember:
     slots:
       - metagenome_annotation_id
@@ -1741,7 +1768,18 @@ classes:
       - https://casrai.org/credit/
 
 enums:
-
+  AcquisitionCategoryEnum:
+    permissible_values:
+      full_scan:
+        aliases:
+         - MS
+      tandem_mass_spectrum:
+        aliases:
+          -MSn
+  ResolutionCategoryEnum:
+    permissible_values:
+      high: { }
+      low: { }
   AnalyteCategoryEnum:
     permissible_values:
       metagenome:
