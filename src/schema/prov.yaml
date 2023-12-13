@@ -18,29 +18,6 @@ default_range: string
 
 classes:
 
-  Activity:
-    description: Something that occurs over a period of time and acts upon or with entities; 
-      it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.
-    slots:
-      - id
-      - name
-      - started_at_time
-      - ended_at_time
-      - was_informed_by
-      - used
-    comments:
-      - to be replaced with PlannedProcess in the monterey-schema
-    notes:
-      - removed was_associated_with because we are trying to avoid instantiating id-less Agents
-    mappings:
-      - prov:Activity
-    slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:act-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
-
 slots:
 
   started_at_time:
