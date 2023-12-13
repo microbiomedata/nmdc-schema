@@ -52,6 +52,7 @@ mags_activity_set:
         num_5s: 0
         num_23s: 0
         num_t_rna: 1
+    part_of: nmdc:wfch-99-dlsfk
   - id: nmdc:wfmag-99-VOgM5i
     name: MAGs activiity 1781_86089
     was_informed_by: gold:Gp0115664
@@ -105,3 +106,4 @@ mags_activity_set:
         num_5s: 0
         num_23s: 0
         num_t_rna: 7
+    part_of: nmdc:wfch-99-dlsfk
