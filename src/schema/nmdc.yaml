@@ -1521,7 +1521,7 @@ classes:
     is_a: PlannedProcess
     description: A PlannedProces that has PlannedProcess parts. Can be used to represent the case of someone following a Protocol.
     slots:
-      - has_part
+      - has_process_parts
       - protocol_execution_category
       - protocol_link
 
@@ -2351,18 +2351,15 @@ enums:
     description: The possible protocols that may be followed for an assay.
     permissible_values:
       - MPLEx
-      - Comprehensive
       - Derivatization
-      - FilterCleanUp
-      - GravimetricWaterContent
-      - MicrobialBiomass
-      - OrganicMatterExtraction
-      - OrganicMatterSpe
-      - PbrayExtraction
-      - pH
-      - PolsenExtraction
-      - Respiration
-      - Texture
+      - Filter Clean Up
+      - Organic Matter Extraction
+      - Solid Phase Extraction
+      - Phosphorus Extraction
+      - pH Measurement
+      - Respiration Measurement
+      - Texture Measurement
+      - DNA extraction
 
 slots:
 
@@ -3108,6 +3105,15 @@ slots:
     domain: ProtocolExecution
     range: ProtocolCategoryEnum
     required: true
+
+  has_process_parts:
+    domain: ProtocolExecution
+    range: MaterialProcessing
+    description: A list of process parts that make up a protocol.
+    required: true
+    multivalued: true
+    list_elements_ordered: true
+    inlined_as_list: true
 
   filter_material:
     description: "A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained."
