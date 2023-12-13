@@ -1550,7 +1550,6 @@ classes:
     slots:
       - has_process_parts
       - protocol_execution_category
-      - protocol_link
     slot_usage:
       id:
         required: true
@@ -2394,17 +2393,17 @@ enums:
   ProtocolCategoryEnum:
     description: The possible protocols that may be followed for an assay.
     permissible_values:
-      MPLEx:
-      Derivatization:
-      Filter Clean Up:
-      Organic Matter Extraction:
-      Solid Phase Extraction:
-      Phosphorus Extraction:
-      pH Measurement:
-      Respiration Measurement:
-      Texture Measurement:
-      DNA extraction:
-      phenol/chloroform extraction: { }
+      mplex:
+      derivatization:
+      filter_clean_up:
+      organic_matter_extraction:
+      solid_phase_extraction:
+      phosphorus_extraction:
+      ph_measurement:
+      respiration_measurement:
+      texture_measurement:
+      dna_extraction:
+      phenol_chloroform_extraction: { }
 
 slots:
 
