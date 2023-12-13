@@ -96,6 +96,7 @@ classes:
         description: >-
           The WorkflowChain that this WorkflowExecution is part of
         range: WorkflowChain
+        multivalued: false
       type:
         required: true
       id:
@@ -353,7 +354,7 @@ classes:
           interpolated: true
 
 enums:
-  analysis_type_enum:
+  analysis_category_enum:
     from_schema: https://example.com/nmdc_dh
     permissible_values:
       metabolomics: { }
@@ -363,13 +364,21 @@ enums:
       natural organic matter: { }
 
 slots:
-  analysis_type:
+  analysis_category:
     description: The category of analysis performed
     examples:
       - value: metagenomics
     see_also:
       - MIxS:investigation_type
-    range: analysis_type_enum
+    range: analysis_category_enum
+
+  analyzes_data_from:
+    description: >-
+      The DataGeneration that this WorkflowChain analyzes data from
+    range: DataGeneration
+    comments: >-
+      The value of this slot is a reference to a DataGeneration 
+      that this WorkflowChain is analysing data from
 
   metagenome_assembly_parameter:
     abstract: true
