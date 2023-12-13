@@ -192,7 +192,6 @@ classes:
       #      - material_sample_set
       #      - material_sampling_activity_set
       #      - reaction_activity_set
-      - activity_set
       - biosample_set
       - collecting_biosamples_from_site_set
       - data_object_set
@@ -217,8 +216,7 @@ classes:
       - read_based_taxonomy_analysis_activity_set
       - read_qc_analysis_activity_set
       - study_set
-
-
+      - workflow_execution_set
 
   Pooling:
     class_uri: nmdc:Pooling
@@ -2796,7 +2794,7 @@ slots:
     description:
       This property links a database object to the set of all functional
       annotations
-  activity_set:
+  workflow_execution_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
     range: WorkflowExecutionActivity
