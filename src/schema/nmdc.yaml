@@ -192,7 +192,6 @@ classes:
       #      - material_sample_set
       #      - material_sampling_activity_set
       #      - reaction_activity_set
-      - activity_set
       - biosample_set
       - collecting_biosamples_from_site_set
       - data_object_set
