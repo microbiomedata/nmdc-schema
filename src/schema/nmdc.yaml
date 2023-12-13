@@ -1632,6 +1632,13 @@ classes:
       - stationary_phase
       - temperature
 
+  DataGeneration:
+    description: >-
+      The process of generating data from a biosample or organism.
+    comments:
+      - This class is a replacement for OmicsProcessing.
+      - NOTE: This class is only a place holder for now.  It will be updated as we get more information.
+
   OmicsProcessing:
     aliases:
       - omics assay
