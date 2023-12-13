@@ -245,7 +245,6 @@ classes:
       - OBI:0302884
     slots:
       - extractant
-      - extraction_method
       - extraction_target
       - input_mass
       - quality_control_report
@@ -2459,6 +2458,8 @@ slots:
 
   library_preparation_kit:
     range: string
+
+ ## WHY ARE THESE COMMENTED OUT?
   #    exact_mappings:
   #      - GENEPIO:0001450
   #  processed_date: # can we move this or infer this from the date of some other process?
@@ -2467,9 +2468,6 @@ slots:
   #  extraction_date: # replacing with start_ and end_date
   #    #    range: date
   #    range: string
-  extraction_method:
-    domain: Extraction
-    range: ExtractionTargetEnum
 
   quality_control_report:
     domain: PlannedProcess
