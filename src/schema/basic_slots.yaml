@@ -28,6 +28,14 @@ types:
     pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
 
 slots:
+  direct_infusion_category:
+    domain: DirectInfusionProcess
+    range: DirectInfusionEnum
+    description: the category in which a processed sample is introduced into the mass spectrometer without chromatographic separation
+  eluent_introduction:
+    domain: MassSpectrometry
+    range: FluidHandling
+    description: the process that defines how a processed sample is introduced into the mass spectrometer, for instance, liquid chromatography or direct infusion through a syringe
   acquisition_category: 
     domain: MassSpectrometry
     range: AcquisitionCategoryEnum

@@ -158,17 +158,29 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:dgns-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+
+  FluidHandling: 
+    description: the process that defines how a processed sample is introduced into the mass spectrometer
+    abstract: true 
+
+  DirectInfusionProcess:
+    description: the process that defines how a processed sample is introduced into the mass spectrometer witout previous chromatographic separation
+    is_a: FluidHandiling
+    slots:
+      - direct_infusion_category
+
   MassSpectrometry:
     description: Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio and relative abundance.
     is_a: DataGeneration
     exact_mappings: CHMO:0000470
     slots:
+      - eluent_introduction
       - acquisition_category
       - acquisition_strategy
       - resolution_category
       - mass_analyzer
       - ionization_source
-      - mass_spectrum_mode
+      - mass_spectrum_collection_mode
       - polarity_mode
 
     slot_usage:
@@ -1766,6 +1778,13 @@ classes:
       - https://casrai.org/credit/
 
 enums:
+  
+  DirectInfusionEnum:
+    permissible_values:
+      direct_infusion:
+        aliases:
+         - DI
+      autosampler: {}
   
   AcquisitionCategoryEnum:
     permissible_values:
