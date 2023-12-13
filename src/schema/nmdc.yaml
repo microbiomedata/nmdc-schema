@@ -572,7 +572,6 @@ classes:
       - chem_oxygen_dem
       - chem_treat_method
       - chem_treatment
-      - chimera_check
       - chloride
       - chlorophyll
       - climate_environment
@@ -1712,7 +1711,6 @@ classes:
     slots:
       - analyte_category
       - add_date
-      - chimera_check
       - gold_sequencing_project_identifiers
       - has_input
       - has_output
