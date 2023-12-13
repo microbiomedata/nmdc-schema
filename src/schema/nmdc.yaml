@@ -169,7 +169,7 @@ classes:
       - resolution_category
       - mass_analyzer
       - ionization_source
-      - mass_spectrum_mode
+      - mass_spectrum_collection_mode
       - polarity_mode
 
     slot_usage:
