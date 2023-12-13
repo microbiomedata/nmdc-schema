@@ -37,6 +37,12 @@ classes:
       embl.ena: >-
         An analysis contains secondary analysis results derived from sequence reads (e.g. a genome assembly)
     slots:
+      - id
+      - name
+      - started_at_time
+      - ended_at_time
+      - was_informed_by
+      - used
       - execution_resource
       - git_url
       - has_input
