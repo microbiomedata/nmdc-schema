@@ -31,35 +31,35 @@ slots:
   acquisition_category: 
     domain: MassSpectrometry
     range: AcquisitionCategoryEnum
-    description: Captures which type of acquisition category was on a mass spectrometry run.
+    description: whether only survey or tandem mass spectra are part of the experiment 
   acquisition_strategy: 
     domain: MassSpectrometry
     range: AcquisitionStrategyEnum
-    description: Captures which type of acquisition strategy was on a tandem mass spectrometry run.
+    description: whether spectra are dependent on or independent of any other spectra during the experiment
     resolution_category:
     domain: MassSpectrometry
     range: ResolutionCategoryEnum
-    description: Captures the resolution of the  mass spectrometry run. 
+    description: whether mass spectra are collected at higher than unity resolution
   mass_analyzer:
     domain: MassSpectrometry
     range: MassAnalyzerEnum
-    description: Captures the primary mass analyzer used on the mass spectrometry run. 
+    description: which kind of mass analyzer is used during the spectra colleciton
   ionization_source:
     domain: MassSpectrometry
     range: IonizationSourceEnum
-    description: Captures the ionization source used on the mass spectrometry run. 
+    description: which kind of ionization source is used to introduce analyted into a mass spectrometer 
   mass_spectrum_collection_mode:
     domain: MassSpectrometry
     range: MassSpectrumCollectionModeEnum
-    description: Captures the type of mass spectrum data aquired
+    description: whether mass spectra are centroided during colleciton
   polarity_mode:
     domain: MassSpectrometry
     range: PolarityModeEnum
-    description: The polarity of which ions are generated and detected on a mass spectrum run
+    description: the polarity of which ions are generated and detected
   processing_institution:
     domain: PlannedProcess
     range: processing_institution_enum
-    description: The organization that processed the sample.
+    description: the institution that generated the mass spectrometry data
   designated_class:
     range: uriorcurie
     designates_type: true
