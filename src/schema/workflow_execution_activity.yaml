@@ -24,6 +24,7 @@ subsets:
 
 classes:
   WorkflowExecutionActivity:
+    is_a: PlannedProcess
     aliases:
       - analysis
     comments:
