@@ -161,7 +161,8 @@ classes:
   MassSpectrometry:
     description: Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio and relative abundance.
     is_a: DataGeneration
-    exact_mappings: CHMO:0000470
+    exact_mappings: 
+      - CHMO:0000470
     slots:
       - acquisition_category
       - acquisition_strategy
