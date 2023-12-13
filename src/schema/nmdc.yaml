@@ -1551,6 +1551,22 @@ classes:
       - has_process_parts
       - protocol_execution_category
       - protocol_link
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+      has_process_parts:
+        any_of:
+          - range: SubSamplingProcess
+          - range: MixingProcess
+          - range: FiltrationProcess
+          - range: ChromatographicSeparationProcess
+          - range: LibraryPreparation
+          - range: Pooling
+          - range: Extraction
+
 
   MaterialProcessing:
     is_a: PlannedProcess
