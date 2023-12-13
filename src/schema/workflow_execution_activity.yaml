@@ -28,7 +28,7 @@ classes:
     description: >-
       A workflow chain is a collection of Workflow Execution(s) that 
       analyse the output of DataGeneration.
-    comment: >-
+    comments: >-
       The sequence of Workflow Execution(s) can be inferred from the has_input and has_output slots of the Workflow Execution(s)
     slots:
       - id
