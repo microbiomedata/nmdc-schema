@@ -216,8 +216,7 @@ classes:
       - read_based_taxonomy_analysis_activity_set
       - read_qc_analysis_activity_set
       - study_set
-
-
+      - workflow_execution_set
 
   Pooling:
     class_uri: nmdc:Pooling
