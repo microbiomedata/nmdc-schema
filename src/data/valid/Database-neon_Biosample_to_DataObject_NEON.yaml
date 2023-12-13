@@ -106,8 +106,8 @@ data_generation_set:
     type: nmdc:OmicsProcessing
 workflow_chain_set:
   - id: nmdc:wfch-11-ab
-    analysis_category: metagenomics
-    analyzes_data_from: nmdc:datgen-11-s9xj2r24
+    analyte_category: metagenome
+    was_informed_by: nmdc:datgen-11-s9xj2r24
     type: nmdc:WorkflowChain
 read_qc_analysis_activity_set:
   - id: nmdc:wfrqc-12-63da5n74
