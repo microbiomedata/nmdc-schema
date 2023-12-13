@@ -165,7 +165,6 @@ classes:
       - has_input
       - has_output
       - processing_institution
-      - protocol_link
       - start_date
       - instrument_name # or "used" ?
     slot_usage:
