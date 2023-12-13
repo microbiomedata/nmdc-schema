@@ -17,6 +17,6 @@ extraction_set:
       has_unit: gram 
     quality_control_report:
       status: pass
-    extraction_method: phenol/chloroform extraction
+    extraction_method: RNA
     extraction_target: DNA
     
