@@ -1547,6 +1547,8 @@ classes:
   ProtocolExecution:
     is_a: PlannedProcess
     description: A PlannedProces that has PlannedProcess parts. Can be used to represent the case of someone following a Protocol.
+    notes: 
+      - TODO - has_process_parts range is redundant, but fails without extra range statements. This should be resolved to have just MaterialProcessing range.
     slots:
       - has_process_parts
       - protocol_execution_category
@@ -1559,6 +1561,7 @@ classes:
           interpolated: true
       has_process_parts:
         any_of:
+          - range: MaterialProcessing
           - range: SubSamplingProcess
           - range: MixingProcess
           - range: FiltrationProcess
@@ -3162,7 +3165,7 @@ slots:
 
   has_process_parts:
     domain: ProtocolExecution
-    range: MaterialProcessing
+    range: PlannedProcess
     description: A list of process parts that make up a protocol.
     required: true
     multivalued: true
