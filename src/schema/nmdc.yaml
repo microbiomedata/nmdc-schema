@@ -144,6 +144,33 @@ subsets:
 
 classes:
 
+  NucleotideSequencing:
+    description: A DataGeneration in which the sequence of DNA or RNA molecules is generated. 
+    is_a: DataGeneration
+    comments: For example data generated from an Illumina or Pacific Biosciences instrument.  
+    slots: 
+      - gold_sequencing_project_identifiers
+      - seq_meth
+      - ncbi_project_name
+      - insdc_bioproject_identifiers
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:dgns-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+  MassSpectrometry:
+    description: Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio and relative abundance.
+    is_a: DataGeneration
+    exact_mappings: CHMO:0000470
+    slots:
+      - acquisition_category
+      - resolution_category
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:dgms-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+      
   FunctionalAnnotationAggMember:
     slots:
       - metagenome_annotation_id
@@ -183,7 +210,7 @@ classes:
       - metaproteomics_analysis_activity_set
       - metatranscriptome_activity_set
       - nom_analysis_activity_set
-      - omics_processing_set
+      - data_generation_set
       - planned_process_set
       - pooling_set
       - processed_sample_set
@@ -1546,15 +1573,12 @@ classes:
       Separating a sample aliquot from the starting material for downstream activity.
     related_mappings:
       - OBI:0000744
-    todos:
-      - add intermediate class between PlannedProcess and this (MaterialProcessing potentially)
-      - Montana to visit slot descriptions
-      - add 'has_output' usage for processed sample - James
     notes:
       - A subsample may be (a) a portion of the sample obtained by selection or division;
         (b) an individual unit of the lot taken as part of the sample; (c) the final unit of multistage sampling.
         The term 'subsample' is used either in the sense of a 'sample of a sample' or as a synonym for 'unit'.
         In practice, the meaning is usually apparent from the context or is defined.
+      - TODO - Montana to visit slot descriptions
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
@@ -1568,6 +1592,11 @@ classes:
       - volume
       - mass
     slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
       volume:
         description: The output volume of the SubSampling Process.
       mass:
@@ -1592,6 +1621,11 @@ classes:
     slots:
       - duration
     slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
       has_output:
         range: ProcessedSample
         description: The mixed sample.
@@ -1617,6 +1651,11 @@ classes:
       - separation_method
       - volume
     slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
       volume:
         description: The volume of sample filtered.
 
@@ -1631,16 +1670,17 @@ classes:
       - ordered_mobile_phases
       - stationary_phase
       - temperature
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
 
   DataGeneration:
-    description: >-
-      The process of generating data from a biosample or organism.
-    comments:
-      - This class is a replacement for OmicsProcessing.
-      - NOTE: This class is only a place holder for now.  It will be updated as we get more information.
-
-  OmicsProcessing:
     aliases:
+      - OmicsProcessing
+      - assay
       - omics assay
       - sequencing project
       - experiment
@@ -1654,6 +1694,7 @@ classes:
         An experiment contains information about a sequencing experiment including
         library and instrument details.
     slots:
+      - analyte_category
       - add_date
       - chimera_check
       - gold_sequencing_project_identifiers
@@ -1666,7 +1707,7 @@ classes:
       - ncbi_project_name
       - nucl_acid_amp
       - nucl_acid_ext
-      - omics_type
+      #      - omics_type
       - part_of
       - pcr_cond
       - pcr_primers
@@ -1683,7 +1724,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:datgen-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
       has_input:
         required: true
@@ -1719,6 +1760,37 @@ classes:
       - https://casrai.org/credit/
 
 enums:
+  AcquisitionCategoryEnum:
+    permissible_values:
+      full_scan:
+        aliases:
+         - MS
+      tandem_mass_spectrum:
+        aliases:
+          -MSn
+  ResolutionCategoryEnum:
+    permissible_values:
+      high: { }
+      low: { }
+  AnalyteCategoryEnum:
+    permissible_values:
+      metagenome:
+        aliases:
+          - metaG
+      metatranscriptome:
+        aliases:
+          - metaT
+      metaproteome:
+        aliases:
+          - metaP
+      metabolome:
+        aliases:
+          - metaB
+      lipidome: { }
+      nom:
+        aliases:
+          - natural organic matter
+
   InstrumentModelEnum:
     permissible_values:
       Orbitrap:
@@ -2306,6 +2378,12 @@ enums:
       ZIC-cHILIC:
 
 slots:
+
+  analyte_category:
+    required: true
+    description: >
+      The type of analyte(s) that were measured in the data generation process
+    range: AnalyteCategoryEnum
   model:
     range: InstrumentModelEnum
   vendor:
@@ -2407,7 +2485,7 @@ slots:
     title: zinc
     examples:
       - value: 2.5 mg/kg
-#    is_a: attribute
+    #    is_a: attribute
     range: QuantityValue
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
@@ -2424,7 +2502,7 @@ slots:
       - value: 24.7 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-#    is_a: attribute
+    #    is_a: attribute
     range: QuantityValue
 
   ammonium_nitrogen:
@@ -2441,7 +2519,7 @@ slots:
       - value: 2.3 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-#    is_a: attribute
+    #    is_a: attribute
     range: QuantityValue
 
   nitrate_nitrogen:
@@ -2460,7 +2538,7 @@ slots:
       - value: 0.29 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-#    is_a: attribute
+    #    is_a: attribute
     range: QuantityValue
 
   nitrite_nitrogen:
@@ -2477,7 +2555,7 @@ slots:
       - value: 1.2 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-#    is_a: attribute
+    #    is_a: attribute
     range: QuantityValue
 
   lbc_thirty:
@@ -2498,7 +2576,7 @@ slots:
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
       - https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF
-#    is_a: attribute
+    #    is_a: attribute
     range: QuantityValue
 
   lbceq:
@@ -2517,7 +2595,7 @@ slots:
       - value: 1575 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-#    is_a: attribute
+    #    is_a: attribute
     range: QuantityValue
 
   env_package:
@@ -2533,7 +2611,7 @@ slots:
       subtables and can be reported
     in_subset:
       - mixs extension
-#    is_a: attribute
+    #    is_a: attribute
     range: TextValue
   #      pattern: '[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon
   #        resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc
@@ -2763,10 +2841,10 @@ slots:
     description:
       This property links a database object to the set of natural organic
       matter (NOM) analysis activities.
-  omics_processing_set:
+  data_generation_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: OmicsProcessing
+    range: DataGeneration
     description:
       This property links a database object to the set of omics processings
       within it.
@@ -2793,7 +2871,8 @@ slots:
     description: This property links a database object to the set of DNA extractions within it.
 
   omics_type:
-    domain: OmicsProcessing
+    deprecated_element_has_exact_replacement: analyte_category
+    domain: DataGeneration
     range: ControlledTermValue
     description: The type of omics data
     examples:
@@ -2817,7 +2896,7 @@ slots:
 
   ## GOLD PATHS
   gold_path_field:
-#    is_a: attribute
+    #    is_a: attribute
     range: string
     abstract: true
     description: >-
@@ -2887,7 +2966,7 @@ slots:
   principal_investigator:
     aliases:
       - PI
-#    is_a: attribute
+    #    is_a: attribute
     range: PersonValue
     description: Principal Investigator who led the study and/or generated the dataset.
 
