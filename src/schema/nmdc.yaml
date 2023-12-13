@@ -164,7 +164,13 @@ classes:
     exact_mappings: CHMO:0000470
     slots:
       - acquisition_category
+      - acquisition_strategy
       - resolution_category
+      - mass_analyzer
+      - ionization_source
+      - mass_spectrum_mode
+      - polarity_mode
+
     slot_usage:
       id:
         structured_pattern:
@@ -1760,6 +1766,7 @@ classes:
       - https://casrai.org/credit/
 
 enums:
+  
   AcquisitionCategoryEnum:
     permissible_values:
       full_scan:
@@ -1768,10 +1775,62 @@ enums:
       tandem_mass_spectrum:
         aliases:
           -MSn
+  AcquisitionStrategyEnum:
+    permissible_values:
+      data_independent_acquisition:
+        aliases:
+         - DIA
+      data_dependent_acquisition:
+        aliases:
+          -DDA
+  
   ResolutionCategoryEnum:
     permissible_values:
       high: { }
       low: { }
+  
+  MassAnalyzerEnum:
+    permissible_values:
+      TOF:
+        aliases:
+          - Time Of Flight
+      Quad:
+        aliases:
+          - Quadrupole
+      Orbitrap:
+      ICR:
+        aliases:
+          - Ion Cyclotron Resonance
+      IT:
+        aliases:
+          - Ion Trap
+          - Paul Trap
+  
+  IonizationSourceEnum:
+    permissible_values:
+      ESI:
+        aliases:
+          - Electrospray ionization
+      MALDI:
+        aliases:
+          - Matrix Assisted Laser Desorption Ionization
+      APPI:
+        aliases:
+          - Athmospheric Pressure Photo Ionization
+      APCI:
+        aliases:
+          - Athmospheric Pressure Chemical Ionization
+  
+  MassSpectrumCollectionMode:
+    permissible_values:
+      profile: {}
+      centroid: {}
+
+  PolarityMode:
+    permissible_values:
+      positive: {}
+      negative: {}
+
   AnalyteCategoryEnum:
     permissible_values:
       metagenome:
