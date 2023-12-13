@@ -28,6 +28,15 @@ types:
     pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
 
 slots:
+  acquisition_category: 
+    domain: MassSpectrometry
+    range: AcquisitionCategoryEnum
+    description: Captures which type of acquisition category was on a mass spectrometry run.
+    comments: MS vs MSn
+  resolution_category:
+    domain: MassSpectrometry
+    range: ResolutionCategoryEnum
+    description: Captures the resolution of the  mass spectrometry run. 
   processing_institution:
     domain: PlannedProcess
     range: processing_institution_enum
