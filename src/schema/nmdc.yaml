@@ -1517,6 +1517,14 @@ classes:
       - "sample mgnify link https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757"
       - "GOLD, insdc.srs and mgnify are reasonable prefixes for alternative study identifiers, but no longer for the Study.id"
 
+  ProtocolExecution:
+    is_a: PlannedProcess
+    description: A PlannedProces that has PlannedProcess parts. Can be used to represent the case of someone following a Protocol.
+    slots:
+      - has_part
+      - protocol_execution_category
+      - protocol_link
+
   MaterialProcessing:
     is_a: PlannedProcess
     description:
@@ -2339,6 +2347,23 @@ enums:
       ZIC-pHILIC:
       ZIC-cHILIC:
 
+  ProtocolCategoryEnum:
+    description: The possible protocols that may be followed for an assay.
+    permissible_values:
+      - MPLEx
+      - Comprehensive
+      - Derivatization
+      - FilterCleanUp
+      - GravimetricWaterContent
+      - MicrobialBiomass
+      - OrganicMatterExtraction
+      - OrganicMatterSpe
+      - PbrayExtraction
+      - pH
+      - PolsenExtraction
+      - Respiration
+      - Texture
+
 slots:
 
   analyte_category:
@@ -3079,6 +3104,10 @@ slots:
       description: The conductivity measurement was 0.017 millisiemens per centimeter.
     range: QuantityValue
 
+  protocol_execution_category:
+    domain: ProtocolExecution
+    range: ProtocolCategoryEnum
+    required: true
 
   filter_material:
     description: "A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained."
