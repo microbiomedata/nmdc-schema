@@ -143,7 +143,17 @@ subsets:
       - Assignment of the data_portal_subset is incomplete in the schema.
 
 classes:
-
+  Instrument:
+    description:
+    is_a: NamedThing
+    slots:
+      - vendor
+      - model
+    aliases:
+      - device
+    exact_mappings:
+     - OBI:0000968
+     
   NucleotideSequencing:
     description: A DataGeneration in which the sequence of DNA or RNA molecules is generated. 
     is_a: DataGeneration
@@ -1567,6 +1577,7 @@ classes:
       one or more samples as outputs. 
     slots:
       - has_input
+      - instrument_used
     notes: 
       - This class is a replacement for BiosampleProcessing.
     slot_usage:
@@ -1718,7 +1729,6 @@ classes:
       - has_output
       - insdc_bioproject_identifiers
       - insdc_experiment_identifiers
-      - instrument_name
       - mod_date
       - ncbi_project_name
       - nucl_acid_amp
@@ -1735,6 +1745,7 @@ classes:
       - target_gene
       - target_subfragment
       - type
+      - instrument_used
 
     slot_usage:
       id:
