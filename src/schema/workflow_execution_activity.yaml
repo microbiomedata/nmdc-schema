@@ -44,9 +44,6 @@ classes:
         required: true
       analysis_category:
         required: true
-        description: >-
-          The category of analysis performed
-        range: analysis_type_enum
       analyzes_data_from:
         required: true
         description: >-
