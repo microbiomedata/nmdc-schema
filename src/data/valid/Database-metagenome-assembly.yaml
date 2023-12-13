@@ -2,6 +2,7 @@ metagenome_assembly_set:
   - id: nmdc:wfmgas-99-B7Vogx
     name: Metagenome assembly 1472_51277
     was_informed_by: gold:Gp0061273
+    part_of: nmdc:wfch-11-ab
     started_at_time: '2020-03-24T00:00:00+00:00'
     ended_at_time: '2020-03-25T00:00:00+00:00'
     type: nmdc:MetagenomeAssembly
