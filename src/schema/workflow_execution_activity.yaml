@@ -560,5 +560,5 @@ slots:
     multivalued: true
 
   version:
-    domain: Activity
+    domain: WorkflowExecutionActivity
     range: string
