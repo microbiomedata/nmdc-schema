@@ -3515,7 +3515,7 @@ slots:
   metagenome_annotation_id:
     name: metagenome_annotation_id
     from_schema: https://w3id.org/nmdc/nmdc
-    range: WorkflowExecutionActivity
+    range: WorkflowExecution
   gene_function_id:
     name: gene_function_id
     from_schema: https://w3id.org/nmdc/nmdc
@@ -4009,7 +4009,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    range: WorkflowExecutionActivity
+    range: WorkflowExecution
   mags_activity_set:
     name: mags_activity_set
     description: This property links a database object to the set of MAGs analysis
@@ -19599,8 +19599,8 @@ classes:
     - applied_roles
     - type
     class_uri: prov:Association
-  WorkflowExecutionActivity:
-    name: WorkflowExecutionActivity
+  WorkflowExecution:
+    name: WorkflowExecution
     description: Represents an instance of an execution of a particular workflow
     alt_descriptions:
       embl.ena:
@@ -19663,7 +19663,7 @@ classes:
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
     - type
     - asm_score
@@ -19707,7 +19707,7 @@ classes:
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
     - asm_score
     - scaffolds
@@ -19752,7 +19752,7 @@ classes:
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
     - type
     - gold_analysis_project_identifiers
@@ -19769,7 +19769,7 @@ classes:
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
     - type
     - gold_analysis_project_identifiers
@@ -19788,7 +19788,7 @@ classes:
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
     - type
     slot_usage:
@@ -19807,7 +19807,7 @@ classes:
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
     - type
     - input_contig_num
@@ -19832,7 +19832,7 @@ classes:
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slot_usage:
       id:
         name: id
@@ -19851,7 +19851,7 @@ classes:
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
     - type
     - input_read_count
@@ -19877,7 +19877,7 @@ classes:
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
     - type
     slot_usage:
@@ -19893,7 +19893,7 @@ classes:
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
     - has_calibration
     - has_metabolite_quantifications
@@ -19910,7 +19910,7 @@ classes:
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
     - has_peptide_quantifications
     slot_usage:
@@ -19929,7 +19929,7 @@ classes:
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
     - has_calibration
     slot_usage:

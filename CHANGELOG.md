@@ -110,7 +110,7 @@ An exampl would be when the global definition of a slot uses an enumeration `ran
 - Structural schema changes:
     - addition of class `FunctionalAnnotationAggMember`, `Database` slot `functional_annotation_agg`
       and `FunctionalAnnotationAggMember`
-      slots `metagenome_annotation_id`, `WorkflowExecutionActivity`, `gene_function_id` and `count`.
+      slots `metagenome_annotation_id`, `WorkflowExecution`, `gene_function_id` and `count`.
         - `count` sure is a vague slot name
         - example data:
             - `src/data/valid/FunctionalAnnotationAggMember-minimal.yaml`

@@ -374,7 +374,7 @@ class Database(YAMLRoot):
 
     planned_process_set: Optional[Union[Dict[Union[str, PlannedProcessId], Union[dict, "PlannedProcess"]], List[Union[dict, "PlannedProcess"]]]] = empty_dict()
     functional_annotation_agg: Optional[Union[Union[dict, FunctionalAnnotationAggMember], List[Union[dict, FunctionalAnnotationAggMember]]]] = empty_list()
-    activity_set: Optional[Union[Dict[Union[str, WorkflowExecutionActivityId], Union[dict, "WorkflowExecutionActivity"]], List[Union[dict, "WorkflowExecutionActivity"]]]] = empty_dict()
+    activity_set: Optional[Union[Dict[Union[str, WorkflowExecutionActivityId], Union[dict, "WorkflowExecution"]], List[Union[dict, "WorkflowExecution"]]]] = empty_dict()
     biosample_set: Optional[Union[Dict[Union[str, BiosampleId], Union[dict, "Biosample"]], List[Union[dict, "Biosample"]]]] = empty_dict()
     collecting_biosamples_from_site_set: Optional[Union[Dict[Union[str, CollectingBiosamplesFromSiteId], Union[dict, "CollectingBiosamplesFromSite"]], List[Union[dict, "CollectingBiosamplesFromSite"]]]] = empty_dict()
     data_object_set: Optional[Union[Dict[Union[str, DataObjectId], Union[dict, "DataObject"]], List[Union[dict, "DataObject"]]]] = empty_dict()
@@ -409,7 +409,7 @@ class Database(YAMLRoot):
             self.functional_annotation_agg = [self.functional_annotation_agg] if self.functional_annotation_agg is not None else []
         self.functional_annotation_agg = [v if isinstance(v, FunctionalAnnotationAggMember) else FunctionalAnnotationAggMember(**as_dict(v)) for v in self.functional_annotation_agg]
 
-        self._normalize_inlined_as_list(slot_name="activity_set", slot_type=WorkflowExecutionActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="activity_set", slot_type=WorkflowExecution, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="biosample_set", slot_type=Biosample, key_name="id", keyed=True)
 
@@ -5282,16 +5282,16 @@ class Activity(YAMLRoot):
 
 
 @dataclass
-class WorkflowExecutionActivity(Activity):
+class WorkflowExecution(Activity):
     """
     Represents an instance of an execution of a particular workflow
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMDC["WorkflowExecutionActivity"]
-    class_class_curie: ClassVar[str] = "nmdc:WorkflowExecutionActivity"
-    class_name: ClassVar[str] = "WorkflowExecutionActivity"
-    class_model_uri: ClassVar[URIRef] = NMDC.WorkflowExecutionActivity
+    class_class_uri: ClassVar[URIRef] = NMDC["WorkflowExecution"]
+    class_class_curie: ClassVar[str] = "nmdc:WorkflowExecution"
+    class_name: ClassVar[str] = "WorkflowExecution"
+    class_model_uri: ClassVar[URIRef] = NMDC.WorkflowExecution
 
     id: Union[str, WorkflowExecutionActivityId] = None
     execution_resource: str = None
@@ -5358,7 +5358,7 @@ class WorkflowExecutionActivity(Activity):
 
 
 @dataclass
-class MetagenomeAssembly(WorkflowExecutionActivity):
+class MetagenomeAssembly(WorkflowExecution):
     """
     A workflow execution activity that converts sequencing reads into an assembled metagenome.
     """
@@ -5503,7 +5503,7 @@ class MetagenomeAssembly(WorkflowExecutionActivity):
 
 
 @dataclass
-class MetatranscriptomeAssembly(WorkflowExecutionActivity):
+class MetatranscriptomeAssembly(WorkflowExecution):
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["MetatranscriptomeAssembly"]
@@ -5642,7 +5642,7 @@ class MetatranscriptomeAssembly(WorkflowExecutionActivity):
 
 
 @dataclass
-class MetagenomeAnnotationActivity(WorkflowExecutionActivity):
+class MetagenomeAnnotationActivity(WorkflowExecution):
     """
     A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
     """
@@ -5680,7 +5680,7 @@ class MetagenomeAnnotationActivity(WorkflowExecutionActivity):
 
 
 @dataclass
-class MetatranscriptomeAnnotationActivity(WorkflowExecutionActivity):
+class MetatranscriptomeAnnotationActivity(WorkflowExecution):
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["MetatranscriptomeAnnotationActivity"]
@@ -5715,7 +5715,7 @@ class MetatranscriptomeAnnotationActivity(WorkflowExecutionActivity):
 
 
 @dataclass
-class MetatranscriptomeActivity(WorkflowExecutionActivity):
+class MetatranscriptomeActivity(WorkflowExecution):
     """
     A metatranscriptome activity that e.g. pools assembly and annotation activity.
     """
@@ -5748,7 +5748,7 @@ class MetatranscriptomeActivity(WorkflowExecutionActivity):
 
 
 @dataclass
-class MagsAnalysisActivity(WorkflowExecutionActivity):
+class MagsAnalysisActivity(WorkflowExecution):
     """
     A workflow execution activity that uses computational binning tools to group assembled contigs into genomes
     """
@@ -5806,7 +5806,7 @@ class MagsAnalysisActivity(WorkflowExecutionActivity):
 
 
 @dataclass
-class MetagenomeSequencingActivity(WorkflowExecutionActivity):
+class MetagenomeSequencingActivity(WorkflowExecution):
     """
     Initial sequencing activity that precedes any analysis. This activity has output(s) that are the raw sequencing
     data.
@@ -5837,7 +5837,7 @@ class MetagenomeSequencingActivity(WorkflowExecutionActivity):
 
 
 @dataclass
-class ReadQcAnalysisActivity(WorkflowExecutionActivity):
+class ReadQcAnalysisActivity(WorkflowExecution):
     """
     A workflow execution activity that performs quality control on raw Illumina reads including quality trimming,
     artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant
@@ -5900,7 +5900,7 @@ class ReadQcAnalysisActivity(WorkflowExecutionActivity):
 
 
 @dataclass
-class ReadBasedTaxonomyAnalysisActivity(WorkflowExecutionActivity):
+class ReadBasedTaxonomyAnalysisActivity(WorkflowExecution):
     """
     A workflow execution activity that performs taxonomy classification using sequencing reads
     """
@@ -5933,7 +5933,7 @@ class ReadBasedTaxonomyAnalysisActivity(WorkflowExecutionActivity):
 
 
 @dataclass
-class MetabolomicsAnalysisActivity(WorkflowExecutionActivity):
+class MetabolomicsAnalysisActivity(WorkflowExecution):
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["MetabolomicsAnalysisActivity"]
@@ -5969,7 +5969,7 @@ class MetabolomicsAnalysisActivity(WorkflowExecutionActivity):
 
 
 @dataclass
-class MetaproteomicsAnalysisActivity(WorkflowExecutionActivity):
+class MetaproteomicsAnalysisActivity(WorkflowExecution):
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["MetaproteomicsAnalysisActivity"]
@@ -6005,7 +6005,7 @@ class MetaproteomicsAnalysisActivity(WorkflowExecutionActivity):
 
 
 @dataclass
-class NomAnalysisActivity(WorkflowExecutionActivity):
+class NomAnalysisActivity(WorkflowExecution):
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["NomAnalysisActivity"]
@@ -8842,7 +8842,7 @@ slots.functional_annotation_set = Slot(uri=NMDC.functional_annotation_set, name=
                    model_uri=NMDC.functional_annotation_set, domain=Database, range=Optional[Union[Union[dict, "FunctionalAnnotation"], List[Union[dict, "FunctionalAnnotation"]]]])
 
 slots.activity_set = Slot(uri=NMDC.activity_set, name="activity_set", curie=NMDC.curie('activity_set'),
-                   model_uri=NMDC.activity_set, domain=Database, range=Optional[Union[Dict[Union[str, WorkflowExecutionActivityId], Union[dict, "WorkflowExecutionActivity"]], List[Union[dict, "WorkflowExecutionActivity"]]]])
+                   model_uri=NMDC.activity_set, domain=Database, range=Optional[Union[Dict[Union[str, WorkflowExecutionActivityId], Union[dict, "WorkflowExecution"]], List[Union[dict, "WorkflowExecution"]]]])
 
 slots.mags_activity_set = Slot(uri=NMDC.mags_activity_set, name="mags_activity_set", curie=NMDC.curie('mags_activity_set'),
                    model_uri=NMDC.mags_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, MagsAnalysisActivityId], Union[dict, "MagsAnalysisActivity"]], List[Union[dict, "MagsAnalysisActivity"]]]])
@@ -11713,30 +11713,30 @@ slots.ReactionActivity_reaction_time = Slot(uri=NMDC.reaction_time, name="Reacti
                    model_uri=NMDC.ReactionActivity_reaction_time, domain=ReactionActivity, range=Optional[Union[dict, QuantityValue]])
 
 slots.WorkflowExecutionActivity_started_at_time = Slot(uri=NMDC.started_at_time, name="WorkflowExecutionActivity_started_at_time", curie=NMDC.curie('started_at_time'),
-                   model_uri=NMDC.WorkflowExecutionActivity_started_at_time, domain=WorkflowExecutionActivity, range=str, mappings = [PROV["startedAtTime"]],
+                   model_uri=NMDC.WorkflowExecutionActivity_started_at_time, domain=WorkflowExecution, range=str, mappings = [PROV["startedAtTime"]],
                    pattern=re.compile(r'^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$'))
 
 slots.WorkflowExecutionActivity_ended_at_time = Slot(uri=NMDC.ended_at_time, name="WorkflowExecutionActivity_ended_at_time", curie=NMDC.curie('ended_at_time'),
-                   model_uri=NMDC.WorkflowExecutionActivity_ended_at_time, domain=WorkflowExecutionActivity, range=str, mappings = [PROV["endedAtTime"]],
+                   model_uri=NMDC.WorkflowExecutionActivity_ended_at_time, domain=WorkflowExecution, range=str, mappings = [PROV["endedAtTime"]],
                    pattern=re.compile(r'^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$'))
 
 slots.WorkflowExecutionActivity_git_url = Slot(uri=NMDC.git_url, name="WorkflowExecutionActivity_git_url", curie=NMDC.curie('git_url'),
-                   model_uri=NMDC.WorkflowExecutionActivity_git_url, domain=WorkflowExecutionActivity, range=str)
+                   model_uri=NMDC.WorkflowExecutionActivity_git_url, domain=WorkflowExecution, range=str)
 
 slots.WorkflowExecutionActivity_has_input = Slot(uri=NMDC.has_input, name="WorkflowExecutionActivity_has_input", curie=NMDC.curie('has_input'),
-                   model_uri=NMDC.WorkflowExecutionActivity_has_input, domain=WorkflowExecutionActivity, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
+                   model_uri=NMDC.WorkflowExecutionActivity_has_input, domain=WorkflowExecution, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
 
 slots.WorkflowExecutionActivity_has_output = Slot(uri=NMDC.has_output, name="WorkflowExecutionActivity_has_output", curie=NMDC.curie('has_output'),
-                   model_uri=NMDC.WorkflowExecutionActivity_has_output, domain=WorkflowExecutionActivity, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
+                   model_uri=NMDC.WorkflowExecutionActivity_has_output, domain=WorkflowExecution, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
 
 slots.WorkflowExecutionActivity_execution_resource = Slot(uri=NMDC.execution_resource, name="WorkflowExecutionActivity_execution_resource", curie=NMDC.curie('execution_resource'),
-                   model_uri=NMDC.WorkflowExecutionActivity_execution_resource, domain=WorkflowExecutionActivity, range=str)
+                   model_uri=NMDC.WorkflowExecutionActivity_execution_resource, domain=WorkflowExecution, range=str)
 
 slots.WorkflowExecutionActivity_type = Slot(uri=NMDC.type, name="WorkflowExecutionActivity_type", curie=NMDC.curie('type'),
-                   model_uri=NMDC.WorkflowExecutionActivity_type, domain=WorkflowExecutionActivity, range=str)
+                   model_uri=NMDC.WorkflowExecutionActivity_type, domain=WorkflowExecution, range=str)
 
 slots.WorkflowExecutionActivity_id = Slot(uri=NMDC.id, name="WorkflowExecutionActivity_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.WorkflowExecutionActivity_id, domain=WorkflowExecutionActivity, range=Union[str, WorkflowExecutionActivityId],
+                   model_uri=NMDC.WorkflowExecutionActivity_id, domain=WorkflowExecution, range=Union[str, WorkflowExecutionActivityId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.MetagenomeAssembly_id = Slot(uri=NMDC.id, name="MetagenomeAssembly_id", curie=NMDC.curie('id'),

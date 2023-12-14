@@ -4,12 +4,12 @@ ended_at_time: '2021-09-15T10:13:20+00:00'
 was_informed_by: nmdc:a1
 part_of: nmdc:wfch-11-ab
 execution_resource: NERSC cori
-git_url: https://example.org/WorkflowExecutionActivity
+git_url: https://example.org/WorkflowExecution
 has_input:
 - nmdc:i1
 - nmdc:i2
 has_output:
 - nmdc:o1
 - nmdc:o2
-type: WorkflowExecutionActivity
+type: WorkflowExecution
 has_calibration: calibration with 0.01% phosphoric acid

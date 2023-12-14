@@ -2423,7 +2423,7 @@ slots:
 
   metagenome_annotation_id:
     domain: FunctionalAnnotationAggMember
-    range: WorkflowExecutionActivity
+    range: WorkflowExecution
   gene_function_id:
     range: uriorcurie
   count:
@@ -2801,7 +2801,7 @@ slots:
   workflow_execution_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: WorkflowExecutionActivity
+    range: WorkflowExecution
     description: This property links a database object to the set of workflow activities.
   mags_activity_set:
     domain: Database # not inherited byt mixin users

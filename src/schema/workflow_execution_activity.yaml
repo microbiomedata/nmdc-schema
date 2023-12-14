@@ -5,7 +5,7 @@ title: Workflow Execution Activities module for NMDC Schema
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 notes:
-  - "should type be required for WorkflowExecutionActivity ?  What would the range be ?"
+  - "should type be required for WorkflowExecution ?  What would the range be ?"
 
 imports:
   - core
@@ -57,7 +57,7 @@ classes:
           output data and the metadata of the Data Generation.
   
 
-  WorkflowExecutionActivity:
+  WorkflowExecution:
     is_a: PlannedProcess
     aliases:
       - analysis
@@ -116,7 +116,7 @@ classes:
     description: A workflow execution activity that converts sequencing reads into an assembled metagenome.
     comments:
       - instances of this class may use a de novo assembly strategy in most or all cases relevant to NMDC
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     in_subset:
       - workflow subset
     slots:
@@ -157,7 +157,7 @@ classes:
           interpolated: true
 
   MetatranscriptomeAssembly:
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     in_subset:
       - workflow subset
     slots:
@@ -198,7 +198,7 @@ classes:
 
   MetagenomeAnnotationActivity:
     description: A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
       - type
       - gold_analysis_project_identifiers
@@ -212,7 +212,7 @@ classes:
           interpolated: true
 
   MetatranscriptomeAnnotationActivity:
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
       - type
       - gold_analysis_project_identifiers
@@ -226,7 +226,7 @@ classes:
           interpolated: true
 
   MetatranscriptomeActivity:
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     description: >-
       A metatranscriptome activity that e.g. pools assembly and annotation activity.
     in_subset:
@@ -244,7 +244,7 @@ classes:
   MagsAnalysisActivity:
     description: A workflow execution activity that uses computational binning tools to group assembled contigs into genomes
     title: Metagenome-Assembled Genome analysis activity
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     in_subset:
       - workflow subset
     slots:
@@ -266,7 +266,7 @@ classes:
   MetagenomeSequencingActivity:
     description: Initial sequencing activity that precedes any analysis.  This activity has output(s) that are the raw sequencing data.
     title: Metagenome sequencing activity
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     in_subset:
       - workflow subset
     slot_usage:
@@ -280,7 +280,7 @@ classes:
   ReadQcAnalysisActivity:
     description: A workflow execution activity that performs quality control on raw Illumina reads including quality trimming, artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant removal
     title: Read quality control analysis activity
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     in_subset:
       - workflow subset
     slots:
@@ -302,7 +302,7 @@ classes:
   ReadBasedTaxonomyAnalysisActivity:
     description: A workflow execution activity that performs taxonomy classification using sequencing reads
     title: Read based analysis activity
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     in_subset:
       - workflow subset
     slots:
@@ -316,7 +316,7 @@ classes:
 
 
   MetabolomicsAnalysisActivity:
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     in_subset:
       - workflow subset
     slots:
@@ -330,7 +330,7 @@ classes:
           interpolated: true
 
   MetaproteomicsAnalysisActivity:
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     in_subset:
       - workflow subset
     slots:
@@ -345,7 +345,7 @@ classes:
           interpolated: true
 
   NomAnalysisActivity:
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     in_subset:
       - workflow subset
     slots:
@@ -600,5 +600,5 @@ slots:
     multivalued: true
 
   version:
-    domain: WorkflowExecutionActivity
+    domain: WorkflowExecution
     range: string

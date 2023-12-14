@@ -493,7 +493,7 @@ nmdc:MetatranscriptomeAnnotationActivity a owl:Class,
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:gold_analysis_project_identifiers ],
-        nmdc:WorkflowExecutionActivity ;
+        nmdc:WorkflowExecution ;
     skos:inScheme nmdc:workflow_execution_activity .
 
 nmdc:MetatranscriptomeAssembly a owl:Class,
@@ -762,7 +762,7 @@ nmdc:MetatranscriptomeAssembly a owl:Class,
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
             owl:onProperty nmdc:num_input_reads ],
-        nmdc:WorkflowExecutionActivity ;
+        nmdc:WorkflowExecution ;
     skos:inScheme nmdc:workflow_execution_activity .
 
 nmdc:OrthologyGroup a owl:Class,
@@ -1209,7 +1209,7 @@ nmdc:Database a owl:Class,
             owl:minCardinality 0 ;
             owl:onProperty nmdc:nom_analysis_activity_set ],
         [ a owl:Restriction ;
-            owl:allValuesFrom nmdc:WorkflowExecutionActivity ;
+            owl:allValuesFrom nmdc:WorkflowExecution ;
             owl:onProperty nmdc:activity_set ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
@@ -4414,7 +4414,7 @@ nmdc:FunctionalAnnotationAggMember a owl:Class,
             owl:allValuesFrom linkml:Integer ;
             owl:onProperty nmdc:count ],
         [ a owl:Restriction ;
-            owl:allValuesFrom nmdc:WorkflowExecutionActivity ;
+            owl:allValuesFrom nmdc:WorkflowExecution ;
             owl:onProperty nmdc:metagenome_annotation_id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
@@ -5397,7 +5397,7 @@ nmdc:MagsAnalysisActivity a owl:Class,
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Integer ;
             owl:onProperty nmdc:too_short_contig_num ],
-        nmdc:WorkflowExecutionActivity ;
+        nmdc:WorkflowExecution ;
     skos:definition "A workflow execution activity that uses computational binning tools to group assembled contigs into genomes" ;
     skos:inScheme nmdc:workflow_execution_activity .
 
@@ -5550,7 +5550,7 @@ nmdc:MetabolomicsAnalysisActivity a owl:Class,
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:has_calibration ],
-        nmdc:WorkflowExecutionActivity ;
+        nmdc:WorkflowExecution ;
     skos:inScheme nmdc:workflow_execution_activity .
 
 nmdc:MetagenomeAssembly a owl:Class,
@@ -5828,7 +5828,7 @@ nmdc:MetagenomeAssembly a owl:Class,
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:gc_std ],
-        nmdc:WorkflowExecutionActivity ;
+        nmdc:WorkflowExecution ;
     skos:definition "A workflow execution activity that converts sequencing reads into an assembled metagenome." ;
     skos:inScheme nmdc:workflow_execution_activity ;
     skos:note "instances of this class may use a de novo assembly strategy in most or all cases relevant to NMDC" .
@@ -5846,7 +5846,7 @@ nmdc:MetagenomeSequencingActivity a owl:Class,
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:id ],
-        nmdc:WorkflowExecutionActivity ;
+        nmdc:WorkflowExecution ;
     skos:definition "Initial sequencing activity that precedes any analysis.  This activity has output(s) that are the raw sequencing data." ;
     skos:inScheme nmdc:workflow_execution_activity .
 
@@ -5877,7 +5877,7 @@ nmdc:MetaproteomicsAnalysisActivity a owl:Class,
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:has_peptide_quantifications ],
-        nmdc:WorkflowExecutionActivity ;
+        nmdc:WorkflowExecution ;
     skos:inScheme nmdc:workflow_execution_activity .
 
 nmdc:MetatranscriptomeActivity a owl:Class,
@@ -5901,7 +5901,7 @@ nmdc:MetatranscriptomeActivity a owl:Class,
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:id ],
-        nmdc:WorkflowExecutionActivity ;
+        nmdc:WorkflowExecution ;
     skos:definition "A metatranscriptome activity that e.g. pools assembly and annotation activity." ;
     skos:inScheme nmdc:workflow_execution_activity .
 
@@ -5975,7 +5975,7 @@ nmdc:NomAnalysisActivity a owl:Class,
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:used ],
-        nmdc:WorkflowExecutionActivity ;
+        nmdc:WorkflowExecution ;
     skos:inScheme nmdc:workflow_execution_activity .
 
 <https://w3id.org/nmdc/OccupDocumentEnum#automated+count> a owl:Class,
@@ -6408,7 +6408,7 @@ nmdc:ReadBasedTaxonomyAnalysisActivity a owl:Class,
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:type ],
-        nmdc:WorkflowExecutionActivity ;
+        nmdc:WorkflowExecution ;
     skos:definition "A workflow execution activity that performs taxonomy classification using sequencing reads" ;
     skos:inScheme nmdc:workflow_execution_activity .
 
@@ -6497,7 +6497,7 @@ nmdc:ReadQcAnalysisActivity a owl:Class,
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc:id ],
-        nmdc:WorkflowExecutionActivity ;
+        nmdc:WorkflowExecution ;
     skos:definition "A workflow execution activity that performs quality control on raw Illumina reads including quality trimming, artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant removal" ;
     skos:inScheme nmdc:workflow_execution_activity .
 
@@ -13395,7 +13395,7 @@ nmdc:MetagenomeAnnotationActivity a owl:Class,
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:gold_analysis_project_identifiers ],
-        nmdc:WorkflowExecutionActivity ;
+        nmdc:WorkflowExecution ;
     skos:definition "A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs" ;
     skos:inScheme nmdc:workflow_execution_activity .
 
@@ -13425,7 +13425,7 @@ nmdc:Protocol a owl:Class,
 nmdc:activity_set a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "activity_set" ;
-    rdfs:range nmdc:WorkflowExecutionActivity ;
+    rdfs:range nmdc:WorkflowExecution ;
     rdfs:subPropertyOf nmdc:object_set ;
     skos:definition "This property links a database object to the set of workflow activities." ;
     skos:inScheme nmdc:nmdc .
@@ -14444,7 +14444,7 @@ nmdc:metagenome_annotation_activity_set a owl:ObjectProperty,
 nmdc:metagenome_annotation_id a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "metagenome_annotation_id" ;
-    rdfs:range nmdc:WorkflowExecutionActivity ;
+    rdfs:range nmdc:WorkflowExecution ;
     skos:inScheme nmdc:nmdc .
 
 nmdc:metagenome_assembly_set a owl:ObjectProperty,
@@ -23921,9 +23921,9 @@ nmdc:WeekdayEnum a owl:Class,
         <https://w3id.org/nmdc/WeekdayEnum#Tuesday>,
         <https://w3id.org/nmdc/WeekdayEnum#Wednesday> .
 
-nmdc:WorkflowExecutionActivity a owl:Class,
+nmdc:WorkflowExecution a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "WorkflowExecutionActivity" ;
+    rdfs:label "WorkflowExecution" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:started_at_time ],

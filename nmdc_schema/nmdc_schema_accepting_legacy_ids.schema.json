@@ -3416,7 +3416,7 @@
                 "activity_set": {
                     "description": "This property links a database object to the set of workflow activities.",
                     "items": {
-                        "$ref": "#/$defs/WorkflowExecutionActivity"
+                        "$ref": "#/$defs/WorkflowExecution"
                     },
                     "type": "array"
                 },
@@ -8275,7 +8275,7 @@
             "title": "WindowVertPosEnum",
             "type": "string"
         },
-        "WorkflowExecutionActivity": {
+        "WorkflowExecution": {
             "additionalProperties": false,
             "description": "Represents an instance of an execution of a particular workflow",
             "properties": {
@@ -8347,7 +8347,7 @@
                 "started_at_time",
                 "ended_at_time"
             ],
-            "title": "WorkflowExecutionActivity",
+            "title": "WorkflowExecution",
             "type": "object"
         },
         "YesNoEnum": {
@@ -8369,7 +8369,7 @@
         "activity_set": {
             "description": "This property links a database object to the set of workflow activities.",
             "items": {
-                "$ref": "#/$defs/WorkflowExecutionActivity"
+                "$ref": "#/$defs/WorkflowExecution"
             },
             "type": "array"
         },
