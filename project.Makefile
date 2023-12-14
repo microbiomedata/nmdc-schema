@@ -433,7 +433,7 @@ make-rdf: rdf-clean local/mongo_as_nmdc_database_validation.log local/mongo_as_n
 # 		--selected-collections library_preparation_set \
 # 		--selected-collections mags_set \
 # 		--selected-collections metabolomics_analysis_set \
-# 		--selected-collections metagenome_annotation_activity_set \
+# 		--selected-collections metagenome_annotation_set \
 # 		--selected-collections metagenome_assembly_set \
 # 		--selected-collections metagenome_sequencing_activity_set  \
 # 		--selected-collections metaproteomics_analysis_activity_set \
@@ -476,7 +476,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
  		--selected-collections library_preparation_set \
  		--selected-collections mags_set \
  		--selected-collections metabolomics_analysis_set \
- 		--selected-collections metagenome_annotation_activity_set \
+ 		--selected-collections metagenome_annotation_set \
  		--selected-collections metagenome_assembly_set \
  		--selected-collections metagenome_sequencing_activity_set  \
  		--selected-collections metaproteomics_analysis_activity_set \

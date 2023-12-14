@@ -88,7 +88,7 @@ slot2coll = {
     'data_object_set': 'data_object_set',
     'mags_set': 'mags_set',
     'metabolomics_analysis_set': 'metabolomics_analysis_set',
-    'metagenome_annotation_activity_set': 'metagenome_annotation_activity_set',
+    'metagenome_annotation_set': 'metagenome_annotation_set',
     'metagenome_assembly_set': 'metagenome_assembly_set',
     'metaproteomics_analysis_activity_set': 'metaproteomics_analysis_activity_set',
     'metatranscriptome_activity_set': 'metatranscriptome_activity_set',

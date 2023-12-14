@@ -3512,7 +3512,7 @@
                     },
                     "type": "array"
                 },
-                "metagenome_annotation_activity_set": {
+                "metagenome_annotation_set": {
                     "description": "This property links a database object to the set of metagenome annotation activities.",
                     "items": {
                         "$ref": "#/$defs/MetagenomeAnnotation"
@@ -8465,7 +8465,7 @@
             },
             "type": "array"
         },
-        "metagenome_annotation_activity_set": {
+        "metagenome_annotation_set": {
             "description": "This property links a database object to the set of metagenome annotation activities.",
             "items": {
                 "$ref": "#/$defs/MetagenomeAnnotation"

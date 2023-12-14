@@ -1135,7 +1135,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:metaproteomics_analysis_activity_set ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty nmdc:metagenome_annotation_activity_set ],
+            owl:onProperty nmdc:metagenome_annotation_set ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:read_based_taxonomy_analysis_activity_set ],
@@ -1165,7 +1165,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:processed_sample_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom nmdc:MetagenomeAnnotation ;
-            owl:onProperty nmdc:metagenome_annotation_activity_set ],
+            owl:onProperty nmdc:metagenome_annotation_set ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:metabolomics_analysis_set ],
@@ -1300,7 +1300,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:functional_annotation_set ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:metagenome_annotation_activity_set ] ;
+            owl:onProperty nmdc:metagenome_annotation_set ] ;
     skos:altLabel "NMDC metadata object" ;
     skos:definition "An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest. For MongoDB, the lists of objects that Database slots point to correspond to **collections**." ;
     skos:inScheme nmdc:nmdc .
@@ -14433,9 +14433,9 @@ nmdc:metabolomics_analysis_set a owl:ObjectProperty,
     skos:definition "This property links a database object to the set of metabolomics analysis activities." ;
     skos:inScheme nmdc:nmdc .
 
-nmdc:metagenome_annotation_activity_set a owl:ObjectProperty,
+nmdc:metagenome_annotation_set a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "metagenome_annotation_activity_set" ;
+    rdfs:label "metagenome_annotation_set" ;
     rdfs:range nmdc:MetagenomeAnnotation ;
     rdfs:subPropertyOf nmdc:object_set ;
     skos:definition "This property links a database object to the set of metagenome annotation activities." ;
