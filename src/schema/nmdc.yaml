@@ -1478,7 +1478,6 @@ classes:
       - part_of
       - principal_investigator
       - related_identifiers
-      #- relevant_protocols
       - protocol_link
       - specific_ecosystem
       - study_image
@@ -2704,9 +2703,6 @@ slots:
     multivalued: true
     inlined: true
     description: Links a study to one or more images.
-  #relevant_protocols:
-  #  multivalued: true
-  #  range: string
   funding_sources:
     multivalued: true
     range: string
