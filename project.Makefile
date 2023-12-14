@@ -381,8 +381,8 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml: src/schema/nmdc.yaml
 	yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.has_input.pattern) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.has_output.pattern) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "ReadBasedTaxonomyAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "ReadBasedTaxonomyAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "ReadBasedTaxonomyAnalysis") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "ReadBasedTaxonomyAnalysis") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "ReadQcAnalysis") | .slot_usage.id.pattern) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "ReadQcAnalysis") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "Study") | .slot_usage.id.pattern) = ".*"' $@

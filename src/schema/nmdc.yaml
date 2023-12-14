@@ -2862,7 +2862,7 @@ slots:
   read_based_taxonomy_analysis_activity_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: ReadBasedTaxonomyAnalysisActivity
+    range: ReadBasedTaxonomyAnalysis
     description: >-
       This property links a database object to the set of read based analysis activities.
   nom_analysis_activity_set:

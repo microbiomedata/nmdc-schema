@@ -3618,7 +3618,7 @@
                 "read_based_taxonomy_analysis_activity_set": {
                     "description": "This property links a database object to the set of read based analysis activities.",
                     "items": {
-                        "$ref": "#/$defs/ReadBasedTaxonomyAnalysisActivity"
+                        "$ref": "#/$defs/ReadBasedTaxonomyAnalysis"
                     },
                     "type": "array"
                 },
@@ -7053,7 +7053,7 @@
             "title": "ReactionParticipant",
             "type": "object"
         },
-        "ReadBasedTaxonomyAnalysisActivity": {
+        "ReadBasedTaxonomyAnalysis": {
             "additionalProperties": false,
             "description": "A workflow execution activity that performs taxonomy classification using sequencing reads",
             "properties": {
@@ -7125,7 +7125,7 @@
                 "started_at_time",
                 "ended_at_time"
             ],
-            "title": "ReadBasedTaxonomyAnalysisActivity",
+            "title": "ReadBasedTaxonomyAnalysis",
             "type": "object"
         },
         "ReadQcAnalysis": {
@@ -8571,7 +8571,7 @@
         "read_based_taxonomy_analysis_activity_set": {
             "description": "This property links a database object to the set of read based analysis activities.",
             "items": {
-                "$ref": "#/$defs/ReadBasedTaxonomyAnalysisActivity"
+                "$ref": "#/$defs/ReadBasedTaxonomyAnalysis"
             },
             "type": "array"
         },

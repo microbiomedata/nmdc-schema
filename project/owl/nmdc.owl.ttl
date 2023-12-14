@@ -1293,7 +1293,7 @@ nmdc:Database a owl:Class,
             owl:allValuesFrom nmdc:DissolvingActivity ;
             owl:onProperty nmdc:dissolving_activity_set ],
         [ a owl:Restriction ;
-            owl:allValuesFrom nmdc:ReadBasedTaxonomyAnalysisActivity ;
+            owl:allValuesFrom nmdc:ReadBasedTaxonomyAnalysis ;
             owl:onProperty nmdc:read_based_taxonomy_analysis_activity_set ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
@@ -6386,9 +6386,9 @@ nmdc:ReactionActivity a owl:Class,
     skos:altLabel "reaction-activity" ;
     skos:inScheme nmdc:sample_prep .
 
-nmdc:ReadBasedTaxonomyAnalysisActivity a owl:Class,
+nmdc:ReadBasedTaxonomyAnalysis a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "ReadBasedTaxonomyAnalysisActivity" ;
+    rdfs:label "ReadBasedTaxonomyAnalysis" ;
     dcterms:title "Read based analysis activity" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minCardinality 1 ;
@@ -14854,7 +14854,7 @@ nmdc:reaction_time a owl:ObjectProperty,
 nmdc:read_based_taxonomy_analysis_activity_set a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "read_based_taxonomy_analysis_activity_set" ;
-    rdfs:range nmdc:ReadBasedTaxonomyAnalysisActivity ;
+    rdfs:range nmdc:ReadBasedTaxonomyAnalysis ;
     rdfs:subPropertyOf nmdc:object_set ;
     skos:definition "This property links a database object to the set of read based analysis activities." ;
     skos:inScheme nmdc:nmdc .

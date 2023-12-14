@@ -4081,7 +4081,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    range: ReadBasedTaxonomyAnalysisActivity
+    range: ReadBasedTaxonomyAnalysis
   nom_analysis_activity_set:
     name: nom_analysis_activity_set
     description: This property links a database object to the set of natural organic
@@ -19869,8 +19869,8 @@ classes:
         structured_pattern:
           syntax: .*
           interpolated: true
-  ReadBasedTaxonomyAnalysisActivity:
-    name: ReadBasedTaxonomyAnalysisActivity
+  ReadBasedTaxonomyAnalysis:
+    name: ReadBasedTaxonomyAnalysis
     description: A workflow execution activity that performs taxonomy classification
       using sequencing reads
     title: Read based analysis activity
