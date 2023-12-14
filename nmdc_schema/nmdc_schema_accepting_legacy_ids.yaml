@@ -4057,7 +4057,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    range: MetagenomeSequencingActivity
+    range: MetagenomeSequencing
   metatranscriptome_activity_set:
     name: metatranscriptome_activity_set
     description: This property links a database object to the set of metatranscriptome
@@ -19824,8 +19824,8 @@ classes:
         structured_pattern:
           syntax: .*
           interpolated: true
-  MetagenomeSequencingActivity:
-    name: MetagenomeSequencingActivity
+  MetagenomeSequencing:
+    name: MetagenomeSequencing
     description: Initial sequencing activity that precedes any analysis.  This activity
       has output(s) that are the raw sequencing data.
     title: Metagenome sequencing activity

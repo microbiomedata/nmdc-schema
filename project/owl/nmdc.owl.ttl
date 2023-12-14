@@ -1257,7 +1257,7 @@ nmdc:Database a owl:Class,
             owl:minCardinality 0 ;
             owl:onProperty nmdc:processed_sample_set ],
         [ a owl:Restriction ;
-            owl:allValuesFrom nmdc:MetagenomeSequencingActivity ;
+            owl:allValuesFrom nmdc:MetagenomeSequencing ;
             owl:onProperty nmdc:metagenome_sequencing_activity_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom nmdc:MetabolomicsAnalysisActivity ;
@@ -5833,9 +5833,9 @@ nmdc:MetagenomeAssembly a owl:Class,
     skos:inScheme nmdc:workflow_execution_activity ;
     skos:note "instances of this class may use a de novo assembly strategy in most or all cases relevant to NMDC" .
 
-nmdc:MetagenomeSequencingActivity a owl:Class,
+nmdc:MetagenomeSequencing a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "MetagenomeSequencingActivity" ;
+    rdfs:label "MetagenomeSequencing" ;
     dcterms:title "Metagenome sequencing activity" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
@@ -14458,7 +14458,7 @@ nmdc:metagenome_assembly_set a owl:ObjectProperty,
 nmdc:metagenome_sequencing_activity_set a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "metagenome_sequencing_activity_set" ;
-    rdfs:range nmdc:MetagenomeSequencingActivity ;
+    rdfs:range nmdc:MetagenomeSequencing ;
     rdfs:subPropertyOf nmdc:object_set ;
     skos:definition "This property links a database object to the set of metagenome sequencing activities." ;
     skos:inScheme nmdc:nmdc .

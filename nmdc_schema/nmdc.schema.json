@@ -3529,7 +3529,7 @@
                 "metagenome_sequencing_activity_set": {
                     "description": "This property links a database object to the set of metagenome sequencing activities.",
                     "items": {
-                        "$ref": "#/$defs/MetagenomeSequencingActivity"
+                        "$ref": "#/$defs/MetagenomeSequencing"
                     },
                     "type": "array"
                 },
@@ -5612,7 +5612,7 @@
             "title": "MetagenomeAssembly",
             "type": "object"
         },
-        "MetagenomeSequencingActivity": {
+        "MetagenomeSequencing": {
             "additionalProperties": false,
             "description": "Initial sequencing activity that precedes any analysis.  This activity has output(s) that are the raw sequencing data.",
             "properties": {
@@ -5684,7 +5684,7 @@
                 "started_at_time",
                 "ended_at_time"
             ],
-            "title": "MetagenomeSequencingActivity",
+            "title": "MetagenomeSequencing",
             "type": "object"
         },
         "MetaproteomicsAnalysisActivity": {
@@ -8482,7 +8482,7 @@
         "metagenome_sequencing_activity_set": {
             "description": "This property links a database object to the set of metagenome sequencing activities.",
             "items": {
-                "$ref": "#/$defs/MetagenomeSequencingActivity"
+                "$ref": "#/$defs/MetagenomeSequencing"
             },
             "type": "array"
         },

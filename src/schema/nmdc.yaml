@@ -2841,7 +2841,7 @@ slots:
   metagenome_sequencing_activity_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: MetagenomeSequencingActivity
+    range: MetagenomeSequencing
     description:
       This property links a database object to the set of metagenome sequencing
       activities.

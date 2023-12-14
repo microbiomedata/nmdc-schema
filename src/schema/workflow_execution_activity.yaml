@@ -263,7 +263,7 @@ classes:
           interpolated: true
 
 
-  MetagenomeSequencingActivity:
+  MetagenomeSequencing:
     description: Initial sequencing activity that precedes any analysis.  This activity has output(s) that are the raw sequencing data.
     title: Metagenome sequencing activity
     is_a: WorkflowExecution
