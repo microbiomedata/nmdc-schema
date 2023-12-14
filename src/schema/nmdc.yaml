@@ -2523,7 +2523,7 @@ enums:
 
   EnzymeEnum:
     description: Molecules that catalyze a chemical reaction. They are usually proteins, although catalytic RNA and DNA molecules have been identified.
-    direct_mappings:
+    see_also:
       - http://purl.obolibrary.org/obo/NCIT_C16554
     permissible_values:
       trypsin:
