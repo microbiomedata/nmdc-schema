@@ -4026,8 +4026,8 @@ slots:
     mixins:
     - object_set
     range: MetabolomicsAnalysis
-  metaproteomics_analysis_activity_set:
-    name: metaproteomics_analysis_activity_set
+  metaproteomics_analysis_set:
+    name: metaproteomics_analysis_set
     description: This property links a database object to the set of metaproteomics
       analysis activities.
     from_schema: https://w3id.org/nmdc/nmdc
@@ -17919,7 +17919,7 @@ classes:
     - metagenome_annotation_set
     - metagenome_assembly_set
     - metagenome_sequencing_set
-    - metaproteomics_analysis_activity_set
+    - metaproteomics_analysis_set
     - metatranscriptome_activity_set
     - nom_analysis_activity_set
     - omics_processing_set

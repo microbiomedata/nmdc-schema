@@ -544,7 +544,7 @@ class Database(YAMLRoot):
     metagenome_annotation_set: Optional[Union[Dict[Union[str, MetagenomeAnnotationActivityId], Union[dict, "MetagenomeAnnotation"]], List[Union[dict, "MetagenomeAnnotation"]]]] = empty_dict()
     metagenome_assembly_set: Optional[Union[Dict[Union[str, MetagenomeAssemblyId], Union[dict, "MetagenomeAssembly"]], List[Union[dict, "MetagenomeAssembly"]]]] = empty_dict()
     metagenome_sequencing_set: Optional[Union[Dict[Union[str, MetagenomeSequencingActivityId], Union[dict, "MetagenomeSequencing"]], List[Union[dict, "MetagenomeSequencing"]]]] = empty_dict()
-    metaproteomics_analysis_activity_set: Optional[Union[Dict[Union[str, MetaproteomicsAnalysisActivityId], Union[dict, "MetaproteomicsAnalysis"]], List[Union[dict, "MetaproteomicsAnalysis"]]]] = empty_dict()
+    metaproteomics_analysis_set: Optional[Union[Dict[Union[str, MetaproteomicsAnalysisActivityId], Union[dict, "MetaproteomicsAnalysis"]], List[Union[dict, "MetaproteomicsAnalysis"]]]] = empty_dict()
     metatranscriptome_activity_set: Optional[Union[Dict[Union[str, MetatranscriptomeActivityId], Union[dict, "MetatranscriptomeAnalysis"]], List[Union[dict, "MetatranscriptomeAnalysis"]]]] = empty_dict()
     nom_analysis_activity_set: Optional[Union[Dict[Union[str, NomAnalysisActivityId], Union[dict, "NomAnalysis"]], List[Union[dict, "NomAnalysis"]]]] = empty_dict()
     omics_processing_set: Optional[Union[Dict[Union[str, OmicsProcessingId], Union[dict, "OmicsProcessing"]], List[Union[dict, "OmicsProcessing"]]]] = empty_dict()
@@ -604,7 +604,7 @@ class Database(YAMLRoot):
 
         self._normalize_inlined_as_list(slot_name="metagenome_sequencing_set", slot_type=MetagenomeSequencing, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="metaproteomics_analysis_activity_set", slot_type=MetaproteomicsAnalysis, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="metaproteomics_analysis_set", slot_type=MetaproteomicsAnalysis, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="metatranscriptome_activity_set", slot_type=MetatranscriptomeAnalysis, key_name="id", keyed=True)
 
@@ -9003,8 +9003,8 @@ slots.mags_set = Slot(uri=NMDC.mags_set, name="mags_set", curie=NMDC.curie('mags
 slots.metabolomics_analysis_set = Slot(uri=NMDC.metabolomics_analysis_set, name="metabolomics_analysis_set", curie=NMDC.curie('metabolomics_analysis_set'),
                    model_uri=NMDC.metabolomics_analysis_set, domain=Database, range=Optional[Union[Dict[Union[str, MetabolomicsAnalysisActivityId], Union[dict, "MetabolomicsAnalysis"]], List[Union[dict, "MetabolomicsAnalysis"]]]])
 
-slots.metaproteomics_analysis_activity_set = Slot(uri=NMDC.metaproteomics_analysis_activity_set, name="metaproteomics_analysis_activity_set", curie=NMDC.curie('metaproteomics_analysis_activity_set'),
-                   model_uri=NMDC.metaproteomics_analysis_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, MetaproteomicsAnalysisActivityId], Union[dict, "MetaproteomicsAnalysis"]], List[Union[dict, "MetaproteomicsAnalysis"]]]])
+slots.metaproteomics_analysis_set = Slot(uri=NMDC.metaproteomics_analysis_set, name="metaproteomics_analysis_set", curie=NMDC.curie('metaproteomics_analysis_set'),
+                   model_uri=NMDC.metaproteomics_analysis_set, domain=Database, range=Optional[Union[Dict[Union[str, MetaproteomicsAnalysisActivityId], Union[dict, "MetaproteomicsAnalysis"]], List[Union[dict, "MetaproteomicsAnalysis"]]]])
 
 slots.metagenome_annotation_set = Slot(uri=NMDC.metagenome_annotation_set, name="metagenome_annotation_set", curie=NMDC.curie('metagenome_annotation_set'),
                    model_uri=NMDC.metagenome_annotation_set, domain=Database, range=Optional[Union[Dict[Union[str, MetagenomeAnnotationActivityId], Union[dict, "MetagenomeAnnotation"]], List[Union[dict, "MetagenomeAnnotation"]]]])

@@ -1132,7 +1132,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:metagenome_assembly_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom nmdc:MetaproteomicsAnalysis ;
-            owl:onProperty nmdc:metaproteomics_analysis_activity_set ],
+            owl:onProperty nmdc:metaproteomics_analysis_set ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:metagenome_annotation_set ],
@@ -1171,7 +1171,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:metabolomics_analysis_set ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:metaproteomics_analysis_activity_set ],
+            owl:onProperty nmdc:metaproteomics_analysis_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom nmdc:ReactionActivity ;
             owl:onProperty nmdc:reaction_activity_set ],
@@ -1234,7 +1234,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:field_research_site_set ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty nmdc:metaproteomics_analysis_activity_set ],
+            owl:onProperty nmdc:metaproteomics_analysis_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom nmdc:ReadQcAnalysis ;
             owl:onProperty nmdc:read_qc_analysis_activity_set ],
@@ -14463,9 +14463,9 @@ nmdc:metagenome_sequencing_set a owl:ObjectProperty,
     skos:definition "This property links a database object to the set of metagenome sequencing activities." ;
     skos:inScheme nmdc:nmdc .
 
-nmdc:metaproteomics_analysis_activity_set a owl:ObjectProperty,
+nmdc:metaproteomics_analysis_set a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "metaproteomics_analysis_activity_set" ;
+    rdfs:label "metaproteomics_analysis_set" ;
     rdfs:range nmdc:MetaproteomicsAnalysis ;
     rdfs:subPropertyOf nmdc:object_set ;
     skos:definition "This property links a database object to the set of metaproteomics analysis activities." ;

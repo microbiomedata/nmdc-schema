@@ -476,7 +476,7 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
                 return curie
             return None
 
-        if non_nmdc_id_fixes and selected_collection == 'metaproteomics_analysis_activity_set':
+        if non_nmdc_id_fixes and selected_collection == 'metaproteomics_analysis_set':
             for doc in doc_list:
                 if 'has_peptide_quantifications' in doc:
                     repaired_pqs = []

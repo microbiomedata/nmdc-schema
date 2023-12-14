@@ -1823,7 +1823,7 @@
       "metagenome_sequencing_set": {
          "@type": "@id"
       },
-      "metaproteomics_analysis_activity_set": {
+      "metaproteomics_analysis_set": {
          "@type": "@id"
       },
       "metatranscriptome_activity_set": {

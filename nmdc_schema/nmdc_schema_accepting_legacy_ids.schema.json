@@ -3533,7 +3533,7 @@
                     },
                     "type": "array"
                 },
-                "metaproteomics_analysis_activity_set": {
+                "metaproteomics_analysis_set": {
                     "description": "This property links a database object to the set of metaproteomics analysis activities.",
                     "items": {
                         "$ref": "#/$defs/MetaproteomicsAnalysis"
@@ -8486,7 +8486,7 @@
             },
             "type": "array"
         },
-        "metaproteomics_analysis_activity_set": {
+        "metaproteomics_analysis_set": {
             "description": "This property links a database object to the set of metaproteomics analysis activities.",
             "items": {
                 "$ref": "#/$defs/MetaproteomicsAnalysis"

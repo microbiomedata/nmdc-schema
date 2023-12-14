@@ -85,7 +85,7 @@ An exampl would be when the global definition of a slot uses an enumeration `ran
 - New `make-rdf` meta target dumps MongoDB in the shape of an NMDC Database instance, makes migrations (including `doi`
   migration and CURIe coercion), linkml-validation, conversion to RDF/TTL and casting anyURI-typed strings to real
   CURIes
-    - skips functional_annotation_agg and metaproteomics_analysis_activity_set by default
+    - skips functional_annotation_agg and metaproteomics_analysis_set by default
     - `dois` migrations can be performed in one `Study`
       with `nmdc_schema.migration_recursion:migrate_studies_7_7_2_to_7_8_0`
 - New `accepting-legacy-ids-all` meta target for validating MongoDB data that includes legacy `id`s
