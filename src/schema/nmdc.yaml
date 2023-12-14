@@ -1936,6 +1936,34 @@ enums:
         aliases:
           - natural organic matter
 
+  ExecutionResourceEnum:
+    see_also:
+      - nmdc:DoiProviderEnum
+      - nmdc:ProcessingInstitutionEnum
+      - nmdc:ExecutionResourceEnum
+    permissible_values:
+      NERSC-Cori:
+        description: NERSC Cori supercomputer
+        aliases:
+          - Cori
+      NERSC-Perlmutter:
+        description: NERSC Perlmutter supercomputer
+        aliases:
+          - Perlmutter
+          - Saul
+      EMSL:
+        description: Environmental Molecular Sciences Laboratory
+      EMSL-RZR:
+        description: Environmental Molecular Sciences Laboratory RZR cluster
+        aliases:
+          - RZR
+      JGI:
+        description: Joint Genome Institute
+      LANL-B-div:
+        description: LANL Bioscience Division
+        aliases:
+          - B-div
+
   InstrumentModelEnum:
     permissible_values:
       Orbitrap:
@@ -2375,7 +2403,10 @@ enums:
           - NCIT:C61538
 
   DoiProviderEnum:
-    see_also: nmdc:ProcessingInstitutionEnum
+    see_also:
+      - nmdc:DoiProviderEnum
+      - nmdc:ProcessingInstitutionEnum
+      - nmdc:ExecutionResourceEnum
     permissible_values:
       emsl:
         aliases:

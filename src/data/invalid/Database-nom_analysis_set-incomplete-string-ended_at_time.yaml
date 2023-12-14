@@ -1,6 +1,6 @@
 nom_analysis_set:
   - id: nmdc:wfnom-99-abcdefg
-    execution_resource: xxx
+    execution_resource: EMSL-RZR
     git_url: xxx
     has_input:
       - nmdc:1

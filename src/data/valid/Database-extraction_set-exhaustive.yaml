@@ -11,7 +11,7 @@ extraction_set:
     #cardinality of outputs should be 1-many, may want to fractionate samples or keep supernatant
     has_output:
       - generic:xxx
-    #range for processing_institution should be processing_institution_enum
+    #range for processing_institution should be ProcessingInstitutionEnum
     #processing_institution: Battelle
     #updating protocol info to be nested
     #protocol_link:

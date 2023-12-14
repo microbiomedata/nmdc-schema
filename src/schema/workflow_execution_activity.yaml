@@ -98,6 +98,7 @@ classes:
         required: true
       execution_resource:
         required: true
+        range: ExecutionResourceEnum
       part_of:
         required: true
         description: >-

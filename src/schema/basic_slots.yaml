@@ -66,7 +66,7 @@ slots:
     description: the polarity of which ions are generated and detected
   processing_institution:
     domain: PlannedProcess
-    range: processing_institution_enum
+    range: ProcessingInstitutionEnum
     description: the organization that processed the sample, generated the data, or processed the data
   designated_class:
     range: uriorcurie
@@ -269,7 +269,7 @@ slots:
   #    add this and write migration # range: instrument_name_enum
 
 enums:
-  processing_institution_enum:
+  ProcessingInstitutionEnum:
     notes:
       - use ROR meanings like https://ror.org/0168r3w48 for UCSD
     from_schema: NMDC_enums_roundtrip

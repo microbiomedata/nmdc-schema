@@ -6,7 +6,7 @@ mags_set:
     started_at_time: '2021-01-10T00:00:00+00:00'
     ended_at_time: '2021-01-10T00:00:00+00:00'
     type: nmdc:MAGsAnalysisActivity
-    execution_resource: NERSC - Cori
+    execution_resource: NERSC-Cori
     git_url: https://img.jgi.doe.gov
     has_input:
       - nmdc:0a3d00715d01ad7b8f3aee59b674dfe9
@@ -61,7 +61,7 @@ mags_set:
     started_at_time: '2021-01-10T00:00:00+00:00'
     ended_at_time: '2021-01-10T00:00:00+00:00'
     type: nmdc:MAGsAnalysisActivity
-    execution_resource: NERSC - Cori
+    execution_resource: NERSC-Cori
     git_url: https://img.jgi.doe.gov
     has_input:
       - nmdc:b78f599c21fb31b00d3f8a3c56daeb88
