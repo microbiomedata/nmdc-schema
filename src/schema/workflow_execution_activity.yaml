@@ -76,7 +76,6 @@ classes:
       - started_at_time
       - ended_at_time
       - was_informed_by
-      - used
       - execution_resource
       - git_url
       - has_input
@@ -337,8 +336,6 @@ classes:
     slots:
       - has_peptide_quantifications
     slot_usage:
-      used:
-        description: The instrument used to collect the data used in the analysis
       id:
         required: true
         structured_pattern:
@@ -352,9 +349,6 @@ classes:
     slots:
       - has_calibration
     slot_usage:
-      used:
-        range: string
-        description: The instrument used to collect the data used in the analysis
       id:
         required: true
         structured_pattern:
