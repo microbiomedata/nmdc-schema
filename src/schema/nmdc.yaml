@@ -1815,10 +1815,13 @@ enums:
       time_of_flight:
         aliases:
           - TOF
-      quadruppole:
+      quadrupole:
         aliases:
           - Quad
+          - Q
       Orbitrap:
+        aliases:
+          - Orbi
       ion_cyclotron_resonance:
         aliases:
           - ICR
