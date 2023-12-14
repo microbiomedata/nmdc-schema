@@ -592,7 +592,7 @@ slots:
     description: Links a resource to another resource that either logically or physically includes it.
   
   execution_resource:
-    domain: Activity
+    domain: WorkflowExecutionActivity
     range: string
 #    is_a: attribute
     examples:
