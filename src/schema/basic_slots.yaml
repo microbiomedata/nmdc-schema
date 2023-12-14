@@ -28,19 +28,46 @@ types:
     pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
 
 slots:
+  direct_infusion_category:
+    domain: DirectInfusionProcess
+    range: DirectInfusionEnum
+    description: used when a processed sample is introduced into a mass spectrometer without chromatographic separation
+  eluent_introduction:
+    domain: MassSpectrometry
+    range: FluidHandling
+    description: how a processed sample is introduced into a mass spectrometer, for example liquid chromatography or direct infusion through a syringe
   acquisition_category: 
     domain: MassSpectrometry
     range: AcquisitionCategoryEnum
-    description: Captures which type of acquisition category was on a mass spectrometry run.
-    comments: MS vs MSn
+    description: whether only survey or tandem mass spectra are part of the experiment 
+  acquisition_strategy: 
+    domain: MassSpectrometry
+    range: AcquisitionStrategyEnum
+    description: whether spectra are dependent on or independent of any other spectra during the experiment
   resolution_category:
     domain: MassSpectrometry
     range: ResolutionCategoryEnum
-    description: Captures the resolution of the  mass spectrometry run. 
+    description: whether mass spectra are collected at higher than unity resolution
+  mass_analyzer:
+    domain: MassSpectrometry
+    range: MassAnalyzerEnum
+    description: which kind of mass analyzer is used during the spectra colleciton
+  ionization_source:
+    domain: MassSpectrometry
+    range: IonizationSourceEnum
+    description: which kind of ionization source is used to introduce analytes into a mass spectrometer 
+  mass_spectrum_collection_mode:
+    domain: MassSpectrometry
+    range: MassSpectrumCollectionModeEnum
+    description: whether mass spectra are centroided during collection
+  polarity_mode:
+    domain: MassSpectrometry
+    range: PolarityModeEnum
+    description: the polarity of which ions are generated and detected
   processing_institution:
     domain: PlannedProcess
     range: ProcessingInstitutionEnum
-    description: The organization that processed the sample.
+    description: the organization that processed the sample, generated the data, or processed the data
   designated_class:
     range: uriorcurie
     designates_type: true

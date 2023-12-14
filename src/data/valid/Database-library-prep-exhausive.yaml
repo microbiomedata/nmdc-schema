@@ -25,7 +25,7 @@ library_preparation_set:
     pcr_cycles: 0
     library_type: DNA
 
-  #rna library not strictly required for NEON but rna_seq_type needed for MetatranscriptomeAnnotationActivity
+  #rna library not strictly required for NEON but rna_seq_type needed for MetatranscriptomeAnnotation
   - id: nmdc:libprp-99-xxx1
     name: RNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1
     description: RNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP XX

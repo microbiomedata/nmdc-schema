@@ -3515,7 +3515,7 @@ slots:
   metagenome_annotation_id:
     name: metagenome_annotation_id
     from_schema: https://w3id.org/nmdc/nmdc
-    range: WorkflowExecutionActivity
+    range: WorkflowExecution
   gene_function_id:
     name: gene_function_id
     from_schema: https://w3id.org/nmdc/nmdc
@@ -4009,39 +4009,39 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    range: WorkflowExecutionActivity
-  mags_activity_set:
-    name: mags_activity_set
+    range: WorkflowExecution
+  mags_set:
+    name: mags_set
     description: This property links a database object to the set of MAGs analysis
       activities.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    range: MagsAnalysisActivity
-  metabolomics_analysis_activity_set:
-    name: metabolomics_analysis_activity_set
+    range: MagsAnalysis
+  metabolomics_analysis_set:
+    name: metabolomics_analysis_set
     description: This property links a database object to the set of metabolomics
       analysis activities.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    range: MetabolomicsAnalysisActivity
-  metaproteomics_analysis_activity_set:
-    name: metaproteomics_analysis_activity_set
+    range: MetabolomicsAnalysis
+  metaproteomics_analysis_set:
+    name: metaproteomics_analysis_set
     description: This property links a database object to the set of metaproteomics
       analysis activities.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    range: MetaproteomicsAnalysisActivity
-  metagenome_annotation_activity_set:
-    name: metagenome_annotation_activity_set
+    range: MetaproteomicsAnalysis
+  metagenome_annotation_set:
+    name: metagenome_annotation_set
     description: This property links a database object to the set of metagenome annotation
       activities.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    range: MetagenomeAnnotationActivity
+    range: MetagenomeAnnotation
   metagenome_assembly_set:
     name: metagenome_assembly_set
     description: This property links a database object to the set of metagenome assembly
@@ -4050,46 +4050,46 @@ slots:
     mixins:
     - object_set
     range: MetagenomeAssembly
-  metagenome_sequencing_activity_set:
-    name: metagenome_sequencing_activity_set
+  metagenome_sequencing_set:
+    name: metagenome_sequencing_set
     description: This property links a database object to the set of metagenome sequencing
       activities.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    range: MetagenomeSequencingActivity
-  metatranscriptome_activity_set:
-    name: metatranscriptome_activity_set
+    range: MetagenomeSequencing
+  metatranscriptome_analysis_set:
+    name: metatranscriptome_analysis_set
     description: This property links a database object to the set of metatranscriptome
       analysis activities.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    range: MetatranscriptomeActivity
-  read_qc_analysis_activity_set:
-    name: read_qc_analysis_activity_set
+    range: MetatranscriptomeAnalysis
+  read_qc_analysis_set:
+    name: read_qc_analysis_set
     description: This property links a database object to the set of read QC analysis
       activities.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    range: ReadQcAnalysisActivity
-  read_based_taxonomy_analysis_activity_set:
-    name: read_based_taxonomy_analysis_activity_set
+    range: ReadQcAnalysis
+  read_based_taxonomy_analysis_set:
+    name: read_based_taxonomy_analysis_set
     description: This property links a database object to the set of read based analysis
       activities.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    range: ReadBasedTaxonomyAnalysisActivity
-  nom_analysis_activity_set:
-    name: nom_analysis_activity_set
+    range: ReadBasedTaxonomyAnalysis
+  nom_analysis_set:
+    name: nom_analysis_set
     description: This property links a database object to the set of natural organic
       matter (NOM) analysis activities.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    range: NomAnalysisActivity
+    range: NomAnalysis
   omics_processing_set:
     name: omics_processing_set
     description: This property links a database object to the set of omics processings
@@ -5512,7 +5512,7 @@ slots:
     - value: gnps.task:4b848c342a4f4abc871bdf8a09a60807
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
-    - https://microbiomedata.github.io/nmdc-schema/MetabolomicsAnalysisActivity/
+    - https://microbiomedata.github.io/nmdc-schema/MetabolomicsAnalysis/
     is_a: study_identifiers
     mixins:
     - gnps_identifiers
@@ -17912,22 +17912,22 @@ classes:
     - functional_annotation_set
     - genome_feature_set
     - library_preparation_set
-    - mags_activity_set
+    - mags_set
     - material_sample_set
     - material_sampling_activity_set
-    - metabolomics_analysis_activity_set
-    - metagenome_annotation_activity_set
+    - metabolomics_analysis_set
+    - metagenome_annotation_set
     - metagenome_assembly_set
-    - metagenome_sequencing_activity_set
-    - metaproteomics_analysis_activity_set
-    - metatranscriptome_activity_set
-    - nom_analysis_activity_set
+    - metagenome_sequencing_set
+    - metaproteomics_analysis_set
+    - metatranscriptome_analysis_set
+    - nom_analysis_set
     - omics_processing_set
     - pooling_set
     - processed_sample_set
     - reaction_activity_set
-    - read_based_taxonomy_analysis_activity_set
-    - read_qc_analysis_activity_set
+    - read_based_taxonomy_analysis_set
+    - read_qc_analysis_set
     - study_set
     tree_root: true
   Pooling:
@@ -19599,8 +19599,8 @@ classes:
     - applied_roles
     - type
     class_uri: prov:Association
-  WorkflowExecutionActivity:
-    name: WorkflowExecutionActivity
+  WorkflowExecution:
+    name: WorkflowExecution
     description: Represents an instance of an execution of a particular workflow
     alt_descriptions:
       embl.ena:
@@ -19663,7 +19663,7 @@ classes:
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
     - type
     - asm_score
@@ -19707,7 +19707,7 @@ classes:
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
     - asm_score
     - scaffolds
@@ -19745,14 +19745,14 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-  MetagenomeAnnotationActivity:
-    name: MetagenomeAnnotationActivity
+  MetagenomeAnnotation:
+    name: MetagenomeAnnotation
     description: A workflow execution activity that provides functional and structural
       annotation of assembled metagenome contigs
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
     - type
     - gold_analysis_project_identifiers
@@ -19764,12 +19764,12 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-  MetatranscriptomeAnnotationActivity:
-    name: MetatranscriptomeAnnotationActivity
+  MetatranscriptomeAnnotation:
+    name: MetatranscriptomeAnnotation
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
     - type
     - gold_analysis_project_identifiers
@@ -19781,14 +19781,14 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-  MetatranscriptomeActivity:
-    name: MetatranscriptomeActivity
+  MetatranscriptomeAnalysis:
+    name: MetatranscriptomeAnalysis
     description: A metatranscriptome activity that e.g. pools assembly and annotation
       activity.
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
     - type
     slot_usage:
@@ -19799,15 +19799,15 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-  MagsAnalysisActivity:
-    name: MagsAnalysisActivity
+  MagsAnalysis:
+    name: MagsAnalysis
     description: A workflow execution activity that uses computational binning tools
       to group assembled contigs into genomes
     title: Metagenome-Assembled Genome analysis activity
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
     - type
     - input_contig_num
@@ -19824,15 +19824,15 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-  MetagenomeSequencingActivity:
-    name: MetagenomeSequencingActivity
+  MetagenomeSequencing:
+    name: MetagenomeSequencing
     description: Initial sequencing activity that precedes any analysis.  This activity
       has output(s) that are the raw sequencing data.
     title: Metagenome sequencing activity
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slot_usage:
       id:
         name: id
@@ -19841,8 +19841,8 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-  ReadQcAnalysisActivity:
-    name: ReadQcAnalysisActivity
+  ReadQcAnalysis:
+    name: ReadQcAnalysis
     description: A workflow execution activity that performs quality control on raw
       Illumina reads including quality trimming, artifact removal, linker trimming,
       adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant
@@ -19851,7 +19851,7 @@ classes:
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
     - type
     - input_read_count
@@ -19869,15 +19869,15 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-  ReadBasedTaxonomyAnalysisActivity:
-    name: ReadBasedTaxonomyAnalysisActivity
+  ReadBasedTaxonomyAnalysis:
+    name: ReadBasedTaxonomyAnalysis
     description: A workflow execution activity that performs taxonomy classification
       using sequencing reads
     title: Read based analysis activity
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
     - type
     slot_usage:
@@ -19888,12 +19888,12 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-  MetabolomicsAnalysisActivity:
-    name: MetabolomicsAnalysisActivity
+  MetabolomicsAnalysis:
+    name: MetabolomicsAnalysis
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
     - has_calibration
     - has_metabolite_quantifications
@@ -19905,12 +19905,12 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-  MetaproteomicsAnalysisActivity:
-    name: MetaproteomicsAnalysisActivity
+  MetaproteomicsAnalysis:
+    name: MetaproteomicsAnalysis
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
     - has_peptide_quantifications
     slot_usage:
@@ -19924,12 +19924,12 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-  NomAnalysisActivity:
-    name: NomAnalysisActivity
+  NomAnalysis:
+    name: NomAnalysis
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
     - has_calibration
     slot_usage:
@@ -20639,7 +20639,7 @@ classes:
         notes:
         - To be consistent with the rest of the NMDC schema we use the PROV annotation
           model, rather than GPAD
-        range: MetagenomeAnnotationActivity
+        range: MetagenomeAnnotation
 source_file: src/schema/nmdc.yaml
 settings:
   id_nmdc_prefix:
