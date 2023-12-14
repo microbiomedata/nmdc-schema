@@ -44,7 +44,7 @@ slots:
     domain: MassSpectrometry
     range: AcquisitionStrategyEnum
     description: whether spectra are dependent on or independent of any other spectra during the experiment
-    resolution_category:
+  resolution_category:
     domain: MassSpectrometry
     range: ResolutionCategoryEnum
     description: whether mass spectra are collected at higher than unity resolution
