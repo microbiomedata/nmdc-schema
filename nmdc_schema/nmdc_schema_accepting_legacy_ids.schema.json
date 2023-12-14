@@ -3625,7 +3625,7 @@
                 "read_qc_analysis_activity_set": {
                     "description": "This property links a database object to the set of read QC analysis activities.",
                     "items": {
-                        "$ref": "#/$defs/ReadQcAnalysisActivity"
+                        "$ref": "#/$defs/ReadQcAnalysis"
                     },
                     "type": "array"
                 },
@@ -7128,7 +7128,7 @@
             "title": "ReadBasedTaxonomyAnalysisActivity",
             "type": "object"
         },
-        "ReadQcAnalysisActivity": {
+        "ReadQcAnalysis": {
             "additionalProperties": false,
             "description": "A workflow execution activity that performs quality control on raw Illumina reads including quality trimming, artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant removal",
             "properties": {
@@ -7224,7 +7224,7 @@
                 "started_at_time",
                 "ended_at_time"
             ],
-            "title": "ReadQcAnalysisActivity",
+            "title": "ReadQcAnalysis",
             "type": "object"
         },
         "RelSampLocEnum": {
@@ -8578,7 +8578,7 @@
         "read_qc_analysis_activity_set": {
             "description": "This property links a database object to the set of read QC analysis activities.",
             "items": {
-                "$ref": "#/$defs/ReadQcAnalysisActivity"
+                "$ref": "#/$defs/ReadQcAnalysis"
             },
             "type": "array"
         },

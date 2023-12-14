@@ -2855,7 +2855,7 @@ slots:
   read_qc_analysis_activity_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: ReadQcAnalysisActivity
+    range: ReadQcAnalysis
     description:
       This property links a database object to the set of read QC analysis
       activities.

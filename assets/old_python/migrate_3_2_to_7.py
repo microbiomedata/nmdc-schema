@@ -61,7 +61,7 @@ name_replacements = {
 }
 
 drop = {
-    "ReadQcAnalysisActivity": [
+    "ReadQcAnalysis": [
         "version",
     ]
 }

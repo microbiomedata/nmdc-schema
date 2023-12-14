@@ -552,7 +552,7 @@ class Database(YAMLRoot):
     processed_sample_set: Optional[Union[Dict[Union[str, ProcessedSampleId], Union[dict, "ProcessedSample"]], List[Union[dict, "ProcessedSample"]]]] = empty_dict()
     reaction_activity_set: Optional[Union[Union[dict, "ReactionActivity"], List[Union[dict, "ReactionActivity"]]]] = empty_list()
     read_based_taxonomy_analysis_activity_set: Optional[Union[Dict[Union[str, ReadBasedTaxonomyAnalysisActivityId], Union[dict, "ReadBasedTaxonomyAnalysisActivity"]], List[Union[dict, "ReadBasedTaxonomyAnalysisActivity"]]]] = empty_dict()
-    read_qc_analysis_activity_set: Optional[Union[Dict[Union[str, ReadQcAnalysisActivityId], Union[dict, "ReadQcAnalysisActivity"]], List[Union[dict, "ReadQcAnalysisActivity"]]]] = empty_dict()
+    read_qc_analysis_activity_set: Optional[Union[Dict[Union[str, ReadQcAnalysisActivityId], Union[dict, "ReadQcAnalysis"]], List[Union[dict, "ReadQcAnalysis"]]]] = empty_dict()
     study_set: Optional[Union[Dict[Union[str, StudyId], Union[dict, "Study"]], List[Union[dict, "Study"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -622,7 +622,7 @@ class Database(YAMLRoot):
 
         self._normalize_inlined_as_list(slot_name="read_based_taxonomy_analysis_activity_set", slot_type=ReadBasedTaxonomyAnalysisActivity, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="read_qc_analysis_activity_set", slot_type=ReadQcAnalysisActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="read_qc_analysis_activity_set", slot_type=ReadQcAnalysis, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="study_set", slot_type=Study, key_name="id", keyed=True)
 
@@ -5608,7 +5608,7 @@ class MetagenomeSequencing(WorkflowExecution):
 
 
 @dataclass
-class ReadQcAnalysisActivity(WorkflowExecution):
+class ReadQcAnalysis(WorkflowExecution):
     """
     A workflow execution activity that performs quality control on raw Illumina reads including quality trimming,
     artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant
@@ -5616,10 +5616,10 @@ class ReadQcAnalysisActivity(WorkflowExecution):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMDC["ReadQcAnalysisActivity"]
-    class_class_curie: ClassVar[str] = "nmdc:ReadQcAnalysisActivity"
-    class_name: ClassVar[str] = "ReadQcAnalysisActivity"
-    class_model_uri: ClassVar[URIRef] = NMDC.ReadQcAnalysisActivity
+    class_class_uri: ClassVar[URIRef] = NMDC["ReadQcAnalysis"]
+    class_class_curie: ClassVar[str] = "nmdc:ReadQcAnalysis"
+    class_name: ClassVar[str] = "ReadQcAnalysis"
+    class_model_uri: ClassVar[URIRef] = NMDC.ReadQcAnalysis
 
     id: Union[str, ReadQcAnalysisActivityId] = None
     execution_resource: str = None
@@ -9019,7 +9019,7 @@ slots.metatranscriptome_activity_set = Slot(uri=NMDC.metatranscriptome_activity_
                    model_uri=NMDC.metatranscriptome_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, MetatranscriptomeActivityId], Union[dict, "MetatranscriptomeAnalysis"]], List[Union[dict, "MetatranscriptomeAnalysis"]]]])
 
 slots.read_qc_analysis_activity_set = Slot(uri=NMDC.read_qc_analysis_activity_set, name="read_qc_analysis_activity_set", curie=NMDC.curie('read_qc_analysis_activity_set'),
-                   model_uri=NMDC.read_qc_analysis_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, ReadQcAnalysisActivityId], Union[dict, "ReadQcAnalysisActivity"]], List[Union[dict, "ReadQcAnalysisActivity"]]]])
+                   model_uri=NMDC.read_qc_analysis_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, ReadQcAnalysisActivityId], Union[dict, "ReadQcAnalysis"]], List[Union[dict, "ReadQcAnalysis"]]]])
 
 slots.read_based_taxonomy_analysis_activity_set = Slot(uri=NMDC.read_based_taxonomy_analysis_activity_set, name="read_based_taxonomy_analysis_activity_set", curie=NMDC.curie('read_based_taxonomy_analysis_activity_set'),
                    model_uri=NMDC.read_based_taxonomy_analysis_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, ReadBasedTaxonomyAnalysisActivityId], Union[dict, "ReadBasedTaxonomyAnalysisActivity"]], List[Union[dict, "ReadBasedTaxonomyAnalysisActivity"]]]])
@@ -11806,7 +11806,7 @@ slots.MetagenomeSequencingActivity_id = Slot(uri=NMDC.id, name="MetagenomeSequen
                    pattern=re.compile(r'.*'))
 
 slots.ReadQcAnalysisActivity_id = Slot(uri=NMDC.id, name="ReadQcAnalysisActivity_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.ReadQcAnalysisActivity_id, domain=ReadQcAnalysisActivity, range=Union[str, ReadQcAnalysisActivityId],
+                   model_uri=NMDC.ReadQcAnalysisActivity_id, domain=ReadQcAnalysis, range=Union[str, ReadQcAnalysisActivityId],
                    pattern=re.compile(r'.*'))
 
 slots.ReadBasedTaxonomyAnalysisActivity_id = Slot(uri=NMDC.id, name="ReadBasedTaxonomyAnalysisActivity_id", curie=NMDC.curie('id'),

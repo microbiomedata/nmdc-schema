@@ -4073,7 +4073,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    range: ReadQcAnalysisActivity
+    range: ReadQcAnalysis
   read_based_taxonomy_analysis_activity_set:
     name: read_based_taxonomy_analysis_activity_set
     description: This property links a database object to the set of read based analysis
@@ -19841,8 +19841,8 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-  ReadQcAnalysisActivity:
-    name: ReadQcAnalysisActivity
+  ReadQcAnalysis:
+    name: ReadQcAnalysis
     description: A workflow execution activity that performs quality control on raw
       Illumina reads including quality trimming, artifact removal, linker trimming,
       adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant

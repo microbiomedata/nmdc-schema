@@ -1236,7 +1236,7 @@ nmdc:Database a owl:Class,
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:metaproteomics_analysis_activity_set ],
         [ a owl:Restriction ;
-            owl:allValuesFrom nmdc:ReadQcAnalysisActivity ;
+            owl:allValuesFrom nmdc:ReadQcAnalysis ;
             owl:onProperty nmdc:read_qc_analysis_activity_set ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
@@ -6412,9 +6412,9 @@ nmdc:ReadBasedTaxonomyAnalysisActivity a owl:Class,
     skos:definition "A workflow execution activity that performs taxonomy classification using sequencing reads" ;
     skos:inScheme nmdc:workflow_execution_activity .
 
-nmdc:ReadQcAnalysisActivity a owl:Class,
+nmdc:ReadQcAnalysis a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "ReadQcAnalysisActivity" ;
+    rdfs:label "ReadQcAnalysis" ;
     dcterms:title "Read quality control analysis activity" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minCardinality 0 ;
@@ -14862,7 +14862,7 @@ nmdc:read_based_taxonomy_analysis_activity_set a owl:ObjectProperty,
 nmdc:read_qc_analysis_activity_set a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "read_qc_analysis_activity_set" ;
-    rdfs:range nmdc:ReadQcAnalysisActivity ;
+    rdfs:range nmdc:ReadQcAnalysis ;
     rdfs:subPropertyOf nmdc:object_set ;
     skos:definition "This property links a database object to the set of read QC analysis activities." ;
     skos:inScheme nmdc:nmdc .
