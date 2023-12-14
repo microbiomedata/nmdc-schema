@@ -10,4 +10,3 @@ has_output:
 - nmdc:o1
 - nmdc:o2
 type: WorkflowExecutionActivity
-has_calibration: calibration with 0.01% phosphoric acid

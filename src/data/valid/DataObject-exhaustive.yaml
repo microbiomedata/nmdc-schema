@@ -11,3 +11,6 @@ name: Crispr Terms
 type: "nmdc:DataObject"
 url: http://example.com
 was_generated_by: "nmdc:invalid_id"
+insdc_experiment_identifiers:
+  - insdc.sra:SRX0123456
+  - insdc.sra:ERX0123456

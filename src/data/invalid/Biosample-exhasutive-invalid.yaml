@@ -145,8 +145,8 @@ chem_oxygen_dem:
 chem_treat_method: xxx
 chem_treatment:
   has_raw_value: xxx
-#chimera_check:
- # has_raw_value: xxx
+chimera_check:
+  has_raw_value: xxx
 chloride:
   has_raw_value: 5000 milligram per liter
 chlorophyll:
@@ -391,7 +391,7 @@ dna_concentration: 100
 #dna_cont_well: C2
 dna_container_id: Pond_MT_041618
 dna_dnase: 'yes'
-dna_isolate_meth: DNA
+dna_isolate_meth: phenol/chloroform extraction
 dna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
   (1%)
 dna_project_contact: John Jones
@@ -671,8 +671,8 @@ non_microb_biomass: insect 0.23 ug; plant 1g
 non_microb_biomass_method: https://doi.org/10.1038/s41467-021-26181-3
 non_min_nutr_regm:
   - xxx
-#nucl_acid_amp:
- # has_raw_value: xxx
+nucl_acid_amp:
+  has_raw_value: xxx
 nucl_acid_ext:
   has_raw_value: xxx
 number_pets:
@@ -782,7 +782,7 @@ rna_concentration: 100
 #rna_cont_type: plate
 #rna_cont_well: C2
 rna_container_id: Pond_MT_041618
-rna_isolate_meth: RNA
+rna_isolate_meth: phenol/chloroform extraction
 rna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
   (1%)
 rna_project_contact: John Jones
