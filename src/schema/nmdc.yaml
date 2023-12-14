@@ -440,6 +440,7 @@ classes:
       - was_generated_by
       - url
       - type
+      - insdc_experiment_identifiers
     slot_usage:
       name:
         required: true
