@@ -838,7 +838,6 @@ classes:
       - part_org_carb
       - part_org_nitro
       - particle_class
-      - pcr_cond
       - pcr_primers
       - permeability
       - perturbation
@@ -1809,7 +1808,6 @@ classes:
       #- nucl_acid_ext
       #      - omics_type
       - part_of
-      - pcr_cond
       - pcr_primers
       - principal_investigator
       - processing_institution

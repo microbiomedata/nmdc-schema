@@ -705,8 +705,8 @@ biosample_set:
       has_raw_value: xxx
     particle_class:
       - has_raw_value: xxx
-    pcr_cond:
-      has_raw_value: xxx
+    #pcr_cond:
+     # has_raw_value: xxx
     pcr_primers:
       has_raw_value: xxx
     permeability:
