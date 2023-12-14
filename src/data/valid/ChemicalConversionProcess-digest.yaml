@@ -7,12 +7,13 @@ has_reagents:
   - has_solution_components:
     - compound: deionized_water
     - compound: ammonium_bicarbonate
-      volume:
-        has_numeric_value: 75
-        has_unit: μL
       concentration:
         has_numeric_value: 50
         has_unit: mM
+    volume:
+      has_numeric_value: 75
+      has_unit: μL
+      
 catalyzed_by:
   - has_solution_components:
     - compound: trypsin
