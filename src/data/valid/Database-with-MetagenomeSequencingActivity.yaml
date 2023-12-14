@@ -1,4 +1,4 @@
-metagenome_sequencing_activity_set:
+metagenome_sequencing_set:
   - # id: nmdc:107ade35423143e39dc30b12832ac759
     id: 'nmdc:wfmsa-99-qwertyuiop'
     has_input:

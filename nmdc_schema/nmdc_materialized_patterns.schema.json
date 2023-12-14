@@ -3526,7 +3526,7 @@
                     },
                     "type": "array"
                 },
-                "metagenome_sequencing_activity_set": {
+                "metagenome_sequencing_set": {
                     "description": "This property links a database object to the set of metagenome sequencing activities.",
                     "items": {
                         "$ref": "#/$defs/MetagenomeSequencing"
@@ -8479,7 +8479,7 @@
             },
             "type": "array"
         },
-        "metagenome_sequencing_activity_set": {
+        "metagenome_sequencing_set": {
             "description": "This property links a database object to the set of metagenome sequencing activities.",
             "items": {
                 "$ref": "#/$defs/MetagenomeSequencing"

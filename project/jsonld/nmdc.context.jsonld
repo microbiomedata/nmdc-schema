@@ -1820,7 +1820,7 @@
       "metagenome_assembly_set": {
          "@type": "@id"
       },
-      "metagenome_sequencing_activity_set": {
+      "metagenome_sequencing_set": {
          "@type": "@id"
       },
       "metaproteomics_analysis_activity_set": {

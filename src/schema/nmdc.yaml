@@ -205,7 +205,7 @@ classes:
       - metabolomics_analysis_set
       - metagenome_annotation_set
       - metagenome_assembly_set
-      - metagenome_sequencing_activity_set
+      - metagenome_sequencing_set
       - metaproteomics_analysis_activity_set
       - metatranscriptome_activity_set
       - nom_analysis_activity_set
@@ -2838,7 +2838,7 @@ slots:
     description:
       This property links a database object to the set of metagenome assembly
       activities.
-  metagenome_sequencing_activity_set:
+  metagenome_sequencing_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
     range: MetagenomeSequencing

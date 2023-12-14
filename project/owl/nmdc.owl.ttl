@@ -1066,7 +1066,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:collecting_biosamples_from_site_set ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:metagenome_sequencing_activity_set ],
+            owl:onProperty nmdc:metagenome_sequencing_set ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:read_qc_analysis_activity_set ],
@@ -1147,7 +1147,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:material_sample_set ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty nmdc:metagenome_sequencing_activity_set ],
+            owl:onProperty nmdc:metagenome_sequencing_set ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:functional_annotation_agg ],
@@ -1258,7 +1258,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:processed_sample_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom nmdc:MetagenomeSequencing ;
-            owl:onProperty nmdc:metagenome_sequencing_activity_set ],
+            owl:onProperty nmdc:metagenome_sequencing_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom nmdc:MetabolomicsAnalysis ;
             owl:onProperty nmdc:metabolomics_analysis_set ],
@@ -14455,9 +14455,9 @@ nmdc:metagenome_assembly_set a owl:ObjectProperty,
     skos:definition "This property links a database object to the set of metagenome assembly activities." ;
     skos:inScheme nmdc:nmdc .
 
-nmdc:metagenome_sequencing_activity_set a owl:ObjectProperty,
+nmdc:metagenome_sequencing_set a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "metagenome_sequencing_activity_set" ;
+    rdfs:label "metagenome_sequencing_set" ;
     rdfs:range nmdc:MetagenomeSequencing ;
     rdfs:subPropertyOf nmdc:object_set ;
     skos:definition "This property links a database object to the set of metagenome sequencing activities." ;
