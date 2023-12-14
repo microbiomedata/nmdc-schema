@@ -154,7 +154,9 @@
         "nmdc:dobj-12-jdhk9537",
         "nmdc:dobj-12-yx0tfp52"
       ],
-      "instrument_used": "nmdc:inst-12-jdhk9537",
+      "instrument_used": [
+        "nmdc:inst-12-jdhk9537"
+      ],
       "analyte_category":  "metagenome",
       "part_of": [
         "nmdc:sty-11-34xj1150"
