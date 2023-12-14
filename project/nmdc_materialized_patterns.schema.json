@@ -3489,7 +3489,7 @@
                 "mags_activity_set": {
                     "description": "This property links a database object to the set of MAGs analysis activities.",
                     "items": {
-                        "$ref": "#/$defs/MagsAnalysisActivity"
+                        "$ref": "#/$defs/MagsAnalysis"
                     },
                     "type": "array"
                 },
@@ -5054,7 +5054,7 @@
             "title": "MagBin",
             "type": "object"
         },
-        "MagsAnalysisActivity": {
+        "MagsAnalysis": {
             "additionalProperties": false,
             "description": "A workflow execution activity that uses computational binning tools to group assembled contigs into genomes",
             "properties": {
@@ -5147,7 +5147,7 @@
                 "started_at_time",
                 "ended_at_time"
             ],
-            "title": "MagsAnalysisActivity",
+            "title": "MagsAnalysis",
             "type": "object"
         },
         "MaterialContainer": {
@@ -8442,7 +8442,7 @@
         "mags_activity_set": {
             "description": "This property links a database object to the set of MAGs analysis activities.",
             "items": {
-                "$ref": "#/$defs/MagsAnalysisActivity"
+                "$ref": "#/$defs/MagsAnalysis"
             },
             "type": "array"
         },

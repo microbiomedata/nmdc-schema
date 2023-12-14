@@ -41,7 +41,7 @@ name_replacements = {
     "OmicsProcessing": {
         "GOLD_sequencing_project_identifiers": "gold_sequencing_project_identifiers",
     },
-    "MagsAnalysisActivity": {
+    "MagsAnalysis": {
         "num_tRNA": "num_trnanum_t_rna",  # inside of mags_list of MagBin instances,
         "lowDepth_contig_num": "low_depth_contig_num",
     },

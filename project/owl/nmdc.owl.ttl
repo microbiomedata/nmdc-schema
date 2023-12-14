@@ -1275,7 +1275,7 @@ nmdc:Database a owl:Class,
             owl:allValuesFrom nmdc:Study ;
             owl:onProperty nmdc:study_set ],
         [ a owl:Restriction ;
-            owl:allValuesFrom nmdc:MagsAnalysisActivity ;
+            owl:allValuesFrom nmdc:MagsAnalysis ;
             owl:onProperty nmdc:mags_activity_set ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
@@ -5324,9 +5324,9 @@ nmdc:MagBin a owl:Class,
             owl:onProperty nmdc:gtdbtk_genus ] ;
     skos:inScheme nmdc:core .
 
-nmdc:MagsAnalysisActivity a owl:Class,
+nmdc:MagsAnalysis a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "MagsAnalysisActivity" ;
+    rdfs:label "MagsAnalysis" ;
     dcterms:title "Metagenome-Assembled Genome analysis activity" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
@@ -14391,7 +14391,7 @@ nmdc:low_depth_contig_num a owl:ObjectProperty,
 nmdc:mags_activity_set a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "mags_activity_set" ;
-    rdfs:range nmdc:MagsAnalysisActivity ;
+    rdfs:range nmdc:MagsAnalysis ;
     rdfs:subPropertyOf nmdc:object_set ;
     skos:definition "This property links a database object to the set of MAGs analysis activities." ;
     skos:inScheme nmdc:nmdc .

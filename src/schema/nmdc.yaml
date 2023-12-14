@@ -2806,7 +2806,7 @@ slots:
   mags_activity_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: MagsAnalysisActivity
+    range: MagsAnalysis
     description:
       This property links a database object to the set of MAGs analysis
       activities.

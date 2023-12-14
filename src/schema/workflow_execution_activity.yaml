@@ -241,7 +241,7 @@ classes:
           interpolated: true
 
 
-  MagsAnalysisActivity:
+  MagsAnalysis:
     description: A workflow execution activity that uses computational binning tools to group assembled contigs into genomes
     title: Metagenome-Assembled Genome analysis activity
     is_a: WorkflowExecution
@@ -536,7 +536,7 @@ slots:
     abstract: true
 
   mags_list:
-    domain: MagsAnalysisActivity
+    domain: MagsAnalysis
     range: MagBin
     multivalued: true
 
