@@ -92,7 +92,7 @@ slot2coll = {
     'metagenome_assembly_set': 'metagenome_assembly_set',
     'metaproteomics_analysis_set': 'metaproteomics_analysis_set',
     'metatranscriptome_analysis_set': 'metatranscriptome_analysis_set',
-    'nom_analysis_activity_set': 'nom_analysis_activity_set',
+    'nom_analysis_set': 'nom_analysis_set',
     'omics_processing_set': 'omics_processing_set',
     'read_qc_analysis_activity_set': 'read_QC_analysis_activity_set',
     'study_set': 'study_set',

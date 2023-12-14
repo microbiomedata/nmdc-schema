@@ -208,7 +208,7 @@ classes:
       - metagenome_sequencing_set
       - metaproteomics_analysis_set
       - metatranscriptome_analysis_set
-      - nom_analysis_activity_set
+      - nom_analysis_set
       - data_generation_set
       - workflow_chain_set
       - planned_process_set
@@ -2865,7 +2865,7 @@ slots:
     range: ReadBasedTaxonomyAnalysis
     description: >-
       This property links a database object to the set of read based analysis activities.
-  nom_analysis_activity_set:
+  nom_analysis_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
     range: NomAnalysis

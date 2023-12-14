@@ -1,4 +1,4 @@
-nom_analysis_activity_set:
+nom_analysis_set:
   - id: nmdc:wfnom-99-abcdefg
     execution_resource: xxx
     git_url: xxx

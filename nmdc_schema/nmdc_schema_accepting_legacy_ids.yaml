@@ -4082,8 +4082,8 @@ slots:
     mixins:
     - object_set
     range: ReadBasedTaxonomyAnalysis
-  nom_analysis_activity_set:
-    name: nom_analysis_activity_set
+  nom_analysis_set:
+    name: nom_analysis_set
     description: This property links a database object to the set of natural organic
       matter (NOM) analysis activities.
     from_schema: https://w3id.org/nmdc/nmdc
@@ -17921,7 +17921,7 @@ classes:
     - metagenome_sequencing_set
     - metaproteomics_analysis_set
     - metatranscriptome_analysis_set
-    - nom_analysis_activity_set
+    - nom_analysis_set
     - omics_processing_set
     - pooling_set
     - processed_sample_set

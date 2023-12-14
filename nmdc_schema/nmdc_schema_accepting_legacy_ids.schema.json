@@ -3547,7 +3547,7 @@
                     },
                     "type": "array"
                 },
-                "nom_analysis_activity_set": {
+                "nom_analysis_set": {
                     "description": "This property links a database object to the set of natural organic matter (NOM) analysis activities.",
                     "items": {
                         "$ref": "#/$defs/NomAnalysis"
@@ -8500,7 +8500,7 @@
             },
             "type": "array"
         },
-        "nom_analysis_activity_set": {
+        "nom_analysis_set": {
             "description": "This property links a database object to the set of natural organic matter (NOM) analysis activities.",
             "items": {
                 "$ref": "#/$defs/NomAnalysis"

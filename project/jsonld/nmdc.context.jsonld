@@ -1893,7 +1893,7 @@
          "@type": "@id",
          "@id": "MIXS:0000504"
       },
-      "nom_analysis_activity_set": {
+      "nom_analysis_set": {
          "@type": "@id"
       },
       "non_min_nutr_regm": {

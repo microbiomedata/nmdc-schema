@@ -1078,7 +1078,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:functional_annotation_agg ],
         [ a owl:Restriction ;
             owl:allValuesFrom nmdc:NomAnalysis ;
-            owl:onProperty nmdc:nom_analysis_activity_set ],
+            owl:onProperty nmdc:nom_analysis_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom nmdc:Pooling ;
             owl:onProperty nmdc:pooling_set ],
@@ -1207,7 +1207,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:metabolomics_analysis_set ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:nom_analysis_activity_set ],
+            owl:onProperty nmdc:nom_analysis_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom nmdc:WorkflowExecution ;
             owl:onProperty nmdc:activity_set ],
@@ -1240,7 +1240,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:read_qc_analysis_activity_set ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty nmdc:nom_analysis_activity_set ],
+            owl:onProperty nmdc:nom_analysis_set ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:field_research_site_set ],
@@ -14570,9 +14570,9 @@ nmdc:neon_study_identifiers a owl:ObjectProperty,
         nmdc:study_identifiers ;
     skos:inScheme nmdc:external_identifiers .
 
-nmdc:nom_analysis_activity_set a owl:ObjectProperty,
+nmdc:nom_analysis_set a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "nom_analysis_activity_set" ;
+    rdfs:label "nom_analysis_set" ;
     rdfs:range nmdc:NomAnalysis ;
     rdfs:subPropertyOf nmdc:object_set ;
     skos:definition "This property links a database object to the set of natural organic matter (NOM) analysis activities." ;
