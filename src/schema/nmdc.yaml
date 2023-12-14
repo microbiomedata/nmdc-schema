@@ -1702,8 +1702,9 @@ classes:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-1368-8217 #Yuri Corilo
-    is_a: MaterialProcessing
+    is_a: FluidHandling
     slots:
+      - chromatrographic_category
       - ordered_mobile_phases
       - stationary_phase
       - temperature
@@ -2491,6 +2492,18 @@ enums:
       texture_measurement:
       dna_extraction:
       phenol_chloroform_extraction: { }
+
+  ChromatographicCategoryEnum:
+    permissible_values:
+      liquid_chromatography:
+        aliases:
+          - LC
+      gas_chromatography:
+        aliases:
+          - GC
+      solid_phase_extraction:
+        aliases:
+          - SPE
 
 slots:
 
@@ -3332,4 +3345,9 @@ slots:
     domain: ChromatographicSeparationProcess
     range: StationaryPhaseEnum
     description: The material the stationary phase is comprised of used in chromatography.
+  chromatrographic_category:
+    domain: ChromatographicSeparationProcess
+    range: ChromatographicCategoryEnum
+    description: The type of chromatography used in a process.
+
 
