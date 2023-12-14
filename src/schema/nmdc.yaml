@@ -160,6 +160,7 @@ classes:
           interpolated: true
 
   FluidHandling: 
+    is_a: MaterialProcessing
     description: the process that defines how a processed sample is introduced into the mass spectrometer
     abstract: true 
 
