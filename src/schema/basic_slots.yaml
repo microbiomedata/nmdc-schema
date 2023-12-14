@@ -30,7 +30,7 @@ types:
 slots:
   instrument_used:
     range: Instrument
-    mutlivalued: true
+    multivalued: true
     description: What instrument was used during DataGeneration or MaterialProcessing.
   acquisition_category: 
     domain: MassSpectrometry
