@@ -4058,8 +4058,8 @@ slots:
     mixins:
     - object_set
     range: MetagenomeSequencing
-  metatranscriptome_activity_set:
-    name: metatranscriptome_activity_set
+  metatranscriptome_analysis_set:
+    name: metatranscriptome_analysis_set
     description: This property links a database object to the set of metatranscriptome
       analysis activities.
     from_schema: https://w3id.org/nmdc/nmdc
@@ -17920,7 +17920,7 @@ classes:
     - metagenome_assembly_set
     - metagenome_sequencing_set
     - metaproteomics_analysis_set
-    - metatranscriptome_activity_set
+    - metatranscriptome_analysis_set
     - nom_analysis_activity_set
     - omics_processing_set
     - pooling_set

@@ -3540,7 +3540,7 @@
                     },
                     "type": "array"
                 },
-                "metatranscriptome_activity_set": {
+                "metatranscriptome_analysis_set": {
                     "description": "This property links a database object to the set of metatranscriptome analysis activities.",
                     "items": {
                         "$ref": "#/$defs/MetatranscriptomeAnalysis"
@@ -8493,7 +8493,7 @@
             },
             "type": "array"
         },
-        "metatranscriptome_activity_set": {
+        "metatranscriptome_analysis_set": {
             "description": "This property links a database object to the set of metatranscriptome analysis activities.",
             "items": {
                 "$ref": "#/$defs/MetatranscriptomeAnalysis"

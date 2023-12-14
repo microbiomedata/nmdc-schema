@@ -91,7 +91,7 @@ slot2coll = {
     'metagenome_annotation_set': 'metagenome_annotation_set',
     'metagenome_assembly_set': 'metagenome_assembly_set',
     'metaproteomics_analysis_set': 'metaproteomics_analysis_set',
-    'metatranscriptome_activity_set': 'metatranscriptome_activity_set',
+    'metatranscriptome_analysis_set': 'metatranscriptome_analysis_set',
     'nom_analysis_activity_set': 'nom_analysis_activity_set',
     'omics_processing_set': 'omics_processing_set',
     'read_qc_analysis_activity_set': 'read_QC_analysis_activity_set',
@@ -402,7 +402,7 @@ def cli(dotenv_file: str, schema_file: str, max_collection_bytes: int, last_doc_
                     else:
                         logger.warning(f"document {document['id']} has no has_input")
 
-                if collection_name_lc == "metatranscriptome_activity_set":
+                if collection_name_lc == "metatranscriptome_analysis_set":
                     tidy_inputs = [i.strip() for i in document['has_input']]
                     document['has_input'] = tidy_inputs
                     if 'part_of' in document:

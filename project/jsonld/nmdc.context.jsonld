@@ -1826,7 +1826,7 @@
       "metaproteomics_analysis_set": {
          "@type": "@id"
       },
-      "metatranscriptome_activity_set": {
+      "metatranscriptome_analysis_set": {
          "@type": "@id"
       },
       "methane": {

@@ -207,7 +207,7 @@ classes:
       - metagenome_assembly_set
       - metagenome_sequencing_set
       - metaproteomics_analysis_set
-      - metatranscriptome_activity_set
+      - metatranscriptome_analysis_set
       - nom_analysis_activity_set
       - data_generation_set
       - workflow_chain_set
@@ -2845,7 +2845,7 @@ slots:
     description:
       This property links a database object to the set of metagenome sequencing
       activities.
-  metatranscriptome_activity_set:
+  metatranscriptome_analysis_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
     range: MetatranscriptomeAnalysis
