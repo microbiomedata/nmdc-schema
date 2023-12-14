@@ -27,7 +27,7 @@ Versioning for this project is based on [Semantic Versioning](https://semver.org
 ### Fixed
 
 - Remove incorrect description of `lat_lon` slot
-- Remove non-monotonic range override on `used` slot of `MetaproteomicsAnalysisActivity` class.
+- Remove non-monotonic range override on `used` slot of `MetaproteomicsAnalysis` class.
 - make `study_category` slot required.
 
 ### Removed

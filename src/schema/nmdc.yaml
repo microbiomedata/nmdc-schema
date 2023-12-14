@@ -2820,7 +2820,7 @@ slots:
   metaproteomics_analysis_activity_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: MetaproteomicsAnalysisActivity
+    range: MetaproteomicsAnalysis
     description:
       This property links a database object to the set of metaproteomics
       analysis activities.

@@ -4033,7 +4033,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    range: MetaproteomicsAnalysisActivity
+    range: MetaproteomicsAnalysis
   metagenome_annotation_activity_set:
     name: metagenome_annotation_activity_set
     description: This property links a database object to the set of metagenome annotation
@@ -19884,8 +19884,8 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-  MetaproteomicsAnalysisActivity:
-    name: MetaproteomicsAnalysisActivity
+  MetaproteomicsAnalysis:
+    name: MetaproteomicsAnalysis
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/workflow_execution_activity

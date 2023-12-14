@@ -3536,7 +3536,7 @@
                 "metaproteomics_analysis_activity_set": {
                     "description": "This property links a database object to the set of metaproteomics analysis activities.",
                     "items": {
-                        "$ref": "#/$defs/MetaproteomicsAnalysisActivity"
+                        "$ref": "#/$defs/MetaproteomicsAnalysis"
                     },
                     "type": "array"
                 },
@@ -5687,7 +5687,7 @@
             "title": "MetagenomeSequencing",
             "type": "object"
         },
-        "MetaproteomicsAnalysisActivity": {
+        "MetaproteomicsAnalysis": {
             "additionalProperties": false,
             "description": "",
             "properties": {
@@ -5766,7 +5766,7 @@
                 "started_at_time",
                 "ended_at_time"
             ],
-            "title": "MetaproteomicsAnalysisActivity",
+            "title": "MetaproteomicsAnalysis",
             "type": "object"
         },
         "MetatranscriptomeAnalysis": {
@@ -8489,7 +8489,7 @@
         "metaproteomics_analysis_activity_set": {
             "description": "This property links a database object to the set of metaproteomics analysis activities.",
             "items": {
-                "$ref": "#/$defs/MetaproteomicsAnalysisActivity"
+                "$ref": "#/$defs/MetaproteomicsAnalysis"
             },
             "type": "array"
         },

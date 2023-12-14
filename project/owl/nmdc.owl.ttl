@@ -1131,7 +1131,7 @@ nmdc:Database a owl:Class,
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:metagenome_assembly_set ],
         [ a owl:Restriction ;
-            owl:allValuesFrom nmdc:MetaproteomicsAnalysisActivity ;
+            owl:allValuesFrom nmdc:MetaproteomicsAnalysis ;
             owl:onProperty nmdc:metaproteomics_analysis_activity_set ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
@@ -5850,9 +5850,9 @@ nmdc:MetagenomeSequencing a owl:Class,
     skos:definition "Initial sequencing activity that precedes any analysis.  This activity has output(s) that are the raw sequencing data." ;
     skos:inScheme nmdc:workflow_execution_activity .
 
-nmdc:MetaproteomicsAnalysisActivity a owl:Class,
+nmdc:MetaproteomicsAnalysis a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "MetaproteomicsAnalysisActivity" ;
+    rdfs:label "MetaproteomicsAnalysis" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:id ],
@@ -14466,7 +14466,7 @@ nmdc:metagenome_sequencing_activity_set a owl:ObjectProperty,
 nmdc:metaproteomics_analysis_activity_set a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "metaproteomics_analysis_activity_set" ;
-    rdfs:range nmdc:MetaproteomicsAnalysisActivity ;
+    rdfs:range nmdc:MetaproteomicsAnalysis ;
     rdfs:subPropertyOf nmdc:object_set ;
     skos:definition "This property links a database object to the set of metaproteomics analysis activities." ;
     skos:inScheme nmdc:nmdc .

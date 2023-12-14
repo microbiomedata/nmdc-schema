@@ -329,7 +329,7 @@ classes:
           syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-  MetaproteomicsAnalysisActivity:
+  MetaproteomicsAnalysis:
     is_a: WorkflowExecution
     in_subset:
       - workflow subset
@@ -366,7 +366,7 @@ slots:
     abstract: true
 
   has_peptide_quantifications:
-    domain: MetaproteomicsAnalysisActivity
+    domain: MetaproteomicsAnalysis
     range: PeptideQuantification
     multivalued: true
 
