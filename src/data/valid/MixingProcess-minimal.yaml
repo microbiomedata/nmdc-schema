@@ -7,4 +7,5 @@ has_output:
 duration:
   has_numeric_value: 2
   has_unit: hours
-instrument_used: nmdc:inst-12-124
+instrument_used: 
+  - nmdc:inst-12-124
