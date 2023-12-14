@@ -301,6 +301,26 @@ classes:
       - has_solution_components
       - volume
 
+  LaboratoryReagent:
+    aliases:
+      - chemical substance
+      - chemical compound
+      - chemical
+      - reagent
+      - reactant
+    description: >-
+       A substance used in a chemical reaction to detect, measure, examine, or produce other substances.
+    slots:
+      - chemical_formula
+      - inchi_key
+      - sample_state_information
+      - mass
+      - volume
+      - concentration
+    see_also:
+      - CHEBI:33893
+
+
   Protocol:
     slots:
       - url
@@ -1716,6 +1736,28 @@ classes:
           syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
+  ChemicalConversionProcess:
+    description: >
+      A process that results in the interconversion of chemical species by a reaction to transform the reagents into products.
+    see_also:
+      - C01033
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-1368-8217 #Yuri Corilo
+    is_a: MaterialProcessing
+    slots:
+      - has_reagents
+      - temperature
+      - duration
+    comments:
+      - The values of both has_reagents slot and has_input slot are considered the reagents of a chemical process.
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+
   DataGeneration:
     aliases:
       - OmicsProcessing
@@ -2479,6 +2521,12 @@ enums:
       ZIC-pHILIC:
       ZIC-cHILIC:
 
+  SampleStateEnum:
+    permissible_values:
+      solid:
+      liquid:
+      gas:
+      
   ProtocolCategoryEnum:
     description: The possible protocols that may be followed for an assay.
     permissible_values:
@@ -3348,4 +3396,14 @@ slots:
     range: ChromatographicCategoryEnum
     description: The type of chromatography used in a process.
 
-
+  has_reagents:
+    domain: ChemicalConversionProcess
+    range:  LaboratoryReagent
+    description: The reagents used in a chemical reaction.
+    multivalued: true
+    inlined_as_list: true
+  sample_state_information:
+    domain: ChemicalConversionProcess
+    description: >-
+      The chemical phase of a pure sample, or the state of a mixed sample
+    range: SampleStateEnum
