@@ -1986,9 +1986,63 @@ enums:
 
   InstrumentModelEnum:
     permissible_values:
-      orbitrap:
+      exploris_240:
         aliases:
-          - Orbitrap
+          - Orbitrap Exploris 240
+      
+      exploris_480:
+        aliases:
+          - Orbitrap Exploris 480
+
+      ltq_orbitrap_velos:
+        aliases:
+          - LTQ Orbitrap Velos
+          - LTQ Orbitrap Velos ETD
+          - Velos
+
+      orbitrap_fusion_lumos:
+        aliases:
+          - Orbitrap Fusion Lumos
+          - Fusion
+
+      orbitrap_eclipse_tribid:
+        aliases:
+          - Orbitrap Eclipse Tribid
+          - Eclipse
+
+      orbitrap_q_exactive:
+        aliases:
+          - Orbitrap Q-Exactive HF
+          - Orbitrap Q-Exactive HF-X
+      
+      solarix_7T:
+        aliases:
+          - 7T Solarix 
+          - 7T FT-ICR MS 
+          - 7T MRMS
+      
+      solarix_12T:
+        aliases:
+          - 12T Solarix 
+          - 12T FT-ICR MS 
+          - 12T MRMS
+
+      solarix_15T:
+        aliases:
+          - 15T Solarix 
+          - 15T FT-ICR MS 
+          - 15T MRMS
+          
+      agilent_8890A:
+        aliases:
+          - 8890A GC-MS  
+          - Agilent GC MS
+
+      agilent_7980A:
+        aliases:
+          - 7980A GC-MS  
+          - Agilent GC MS
+
       vortex_genie_2:
         aliases:
           - VortexGenie2
@@ -1998,6 +2052,20 @@ enums:
 
   InstrumentVendorEnum:
     permissible_values:
+      
+      waters:
+        aliases:
+        - Waters Corporation
+
+      agilent:
+        aliases:
+        - Agilent Technologies
+      
+      bruker:
+        aliases:
+        - Bruker Corporation
+        - Bruker Daltonics
+
       thermo_fisher:
         aliases:
           - ThermoFisher
