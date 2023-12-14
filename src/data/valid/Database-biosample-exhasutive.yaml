@@ -673,8 +673,8 @@ biosample_set:
       - xxx
     #nucl_acid_amp:
      # has_raw_value: xxx
-    nucl_acid_ext:
-      has_raw_value: xxx
+    #nucl_acid_ext:
+     # has_raw_value: xxx
     number_pets:
       has_raw_value: xxx
     number_plants:
