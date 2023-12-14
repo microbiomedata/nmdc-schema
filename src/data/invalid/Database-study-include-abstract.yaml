@@ -53,9 +53,9 @@ study_set:
       - doi_value: doi:10.25585/1488209
         doi_category: publication_doi
     type: any string
-    relevant_protocols:
-      - any string 1
-      - any string 2
+    #relevant_protocols:
+    #  - any string 1
+    #  - any string 2
     funding_sources:
       - any string 1
       - any string 2
