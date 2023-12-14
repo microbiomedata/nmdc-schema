@@ -232,6 +232,7 @@ classes:
       - read_qc_analysis_activity_set
       - study_set
       - workflow_execution_set
+      - instrument_set
 
   Pooling:
     class_uri: nmdc:Pooling
@@ -2929,6 +2930,12 @@ slots:
     mixins: object_set
     range: LibraryPreparation
     description: This property links a database object to the set of DNA extractions within it.
+  instrument_set:
+    domain: Database # not inherited byt mixin users
+    mixins: object_set
+    range: Instrument
+    description: This property links a database object to the set of instruments within it.
+
 
   omics_type:
     deprecated_element_has_exact_replacement: analyte_category
