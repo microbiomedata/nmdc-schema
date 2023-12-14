@@ -320,7 +320,6 @@ classes:
     see_also:
       - CHEBI:33893
 
-
   Protocol:
     slots:
       - url
@@ -1747,6 +1746,7 @@ classes:
     is_a: MaterialProcessing
     slots:
       - has_reagents
+      - catalyzed_by
       - temperature
       - duration
     comments:
@@ -2510,19 +2510,30 @@ enums:
   #      MSTFA:
   #      cloridic acid:
   #      Water:
-  #      trypsin in ammonium bicarbonate:
   
   CompoundEnum:
     permissible_values:
       ammonium_bicarbonate:
       deionized_water:
       methanol:
-      trypsin:
       hydrochloric_acid:
         aliases:
           - chloridic_acid
       water:
 
+  EnzymeEnum:
+    description: Molecules that catalyze a chemical reaction. They are usually proteins, although catalytic RNA and DNA molecules have been identified.
+    direct_mappings:
+      - http://purl.obolibrary.org/obo/NCIT_C16554
+    permissible_values:
+      trypsin:
+      Chymotrypsin: 
+      Lys-C:
+      Lys-N:
+      Glu-C:
+      Arg-C:
+      Asp-N:
+      alphaLP:
   
   StationaryPhaseEnum:
     description: The type of stationary phase used in a solid phase extraction process.
@@ -3408,7 +3419,9 @@ slots:
     #list example
   compound:
     domain: SolutionComponent
-    range: CompoundEnum
+    any_of:
+      - range: CompoundEnum
+      - range: EnzymeEnum
     description: A substance that consists of more than one atom or ion. Includes solvents and solutes. Can be combined into solutions.
     required: true
   ordered_mobile_phases:
@@ -3429,7 +3442,9 @@ slots:
 
   has_reagents:
     domain: ChemicalConversionProcess
-    range:  LaboratoryReagent
+    any_of:
+      - range: LaboratoryReagent
+      - range: Solution
     description: The reagents used in a chemical reaction.
     multivalued: true
     inlined_as_list: true
@@ -3438,3 +3453,9 @@ slots:
     description: >-
       The chemical phase of a pure sample, or the state of a mixed sample
     range: SampleStateEnum
+  catalyzed_by:
+    domain: ChemicalConversionProcess
+    range: Solution
+    description: The catalyst used to increase the rate of a chemical reaction.
+    multivalued: true
+    inlined_as_list: true
