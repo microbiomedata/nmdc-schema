@@ -39,7 +39,7 @@ slots:
     description: Captures the resolution of the  mass spectrometry run. 
   processing_institution:
     domain: PlannedProcess
-    range: processing_institution_enum
+    range: ProcessingInstitutionEnum
     description: The organization that processed the sample.
   designated_class:
     range: uriorcurie
@@ -242,7 +242,7 @@ slots:
   #    add this and write migration # range: instrument_name_enum
 
 enums:
-  processing_institution_enum:
+  ProcessingInstitutionEnum:
     notes:
       - use ROR meanings like https://ror.org/0168r3w48 for UCSD
     from_schema: NMDC_enums_roundtrip

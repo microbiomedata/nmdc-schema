@@ -33,7 +33,7 @@ library_preparation_set:
       - generic:xxy
     has_output:
       - generic:xxz
-    #range for processing_institution should be processing_institution_enum
+    #range for processing_institution should be ProcessingInstitutionEnum
     processing_institution: Battelle
     #    #updating protocol info to be nested
     #    protocol:

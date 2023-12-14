@@ -1809,6 +1809,10 @@ enums:
           - natural organic matter
 
   ExecutionResourceEnum:
+    see_also:
+      - nmdc:DoiProviderEnum
+      - nmdc:ProcessingInstitutionEnum
+      - nmdc:ExecutionResourceEnum
     permissible_values:
       NERSC-Cori:
         description: NERSC Cori supercomputer
@@ -2271,7 +2275,10 @@ enums:
           - NCIT:C61538
 
   DoiProviderEnum:
-    see_also: nmdc:ProcessingInstitutionEnum
+    see_also:
+      - nmdc:DoiProviderEnum
+      - nmdc:ProcessingInstitutionEnum
+      - nmdc:ExecutionResourceEnum
     permissible_values:
       emsl:
         aliases:
