@@ -31,6 +31,7 @@ extraction_set:
       status: pass
     #leaving as extraction_method to make the model generic, other option considered was 'Nucleic Acid Extraction Method' http://purl.obolibrary.org/obo/NCIT_C177560
     # extraction_method: phenol/chloroform extraction # instantiate in ProtocolExtraction class
+
     #extraction_type should have range of dna_extraction_enum with possible values of 'DNA extraction', 'RNA extraction', 'protein extraction'
     #http://purl.obolibrary.org/obo/OBI_0000257
     extraction_target: DNA
