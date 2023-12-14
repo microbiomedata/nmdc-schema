@@ -145,10 +145,10 @@ subsets:
 classes:
 
   NucleotideSequencing:
-    description: A DataGeneration in which the sequence of DNA or RNA molecules is generated. 
+    description: A DataGeneration in which the sequence of DNA or RNA molecules is generated.
     is_a: DataGeneration
-    comments: For example data generated from an Illumina or Pacific Biosciences instrument.  
-    slots: 
+    comments: For example data generated from an Illumina or Pacific Biosciences instrument.
+    slots:
       - gold_sequencing_project_identifiers
       - seq_meth
       - ncbi_project_name
@@ -170,7 +170,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:dgms-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-      
+
   FunctionalAnnotationAggMember:
     slots:
       - metagenome_annotation_id
@@ -1559,16 +1559,16 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-        
+
 
   MaterialProcessing:
     is_a: PlannedProcess
     description:
       A process that takes one or more samples as inputs and generates
-      one or more samples as outputs. 
+      one or more samples as outputs.
     slots:
       - has_input
-    notes: 
+    notes:
       - This class is a replacement for BiosampleProcessing.
     slot_usage:
       id:
@@ -1713,7 +1713,7 @@ classes:
     slots:
       - analyte_category
       - add_date
-      - chimera_check
+      #      - chimera_check # commenting this out because the current dynamic MIxS generation only interrogates Biosample and the retired OmicsProcessing
       - gold_sequencing_project_identifiers
       - has_input
       - has_output
@@ -1781,7 +1781,7 @@ enums:
     permissible_values:
       full_scan:
         aliases:
-         - MS
+          - MS
       tandem_mass_spectrum:
         aliases:
           -MSn
@@ -2462,7 +2462,7 @@ slots:
   library_preparation_kit:
     range: string
 
- ## WHY ARE THESE COMMENTED OUT?
+  ## WHY ARE THESE COMMENTED OUT?
   #    exact_mappings:
   #      - GENEPIO:0001450
   #  processed_date: # can we move this or infer this from the date of some other process?
