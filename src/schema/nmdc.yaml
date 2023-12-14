@@ -1825,17 +1825,31 @@ enums:
 
   InstrumentModelEnum:
     permissible_values:
-      Orbitrap:
-      VortexGenie2:
-      PIPETMAN F144059M:
+      orbitrap:
+        aliases:
+          - Orbitrap
+      vortex_genie_2:
+        aliases:
+          - VortexGenie2
+      novaseq:
+        aliases:
+          - NovaSeq
 
   InstrumentVendorEnum:
     permissible_values:
-      ThermoFisher:
-      VWR:
-      PerkinElmer:
-      Gilson:
-      ScientificIndustries:
+      thermo_fisher:
+        aliases:
+          - ThermoFisher 
+          - Thermo Fisher Scientific 
+      vwr:
+      perkin_elmer:
+      gilson:
+      scientific_industries:
+      illumina:
+        aliases:
+          - Illumina
+        exact_mappings:
+          - BAO:0200000
 
   StatusEnum:
     permissible_values:
