@@ -155,7 +155,7 @@
         "nmdc:dobj-12-yx0tfp52"
       ],
       "instrument_name": "Illumina NovaSeq S4",
-      "analyte_category":  "metagenome",
+      "analyte_category": "metagenome",
       "part_of": [
         "nmdc:sty-11-34xj1150"
       ],
@@ -163,7 +163,7 @@
       "type": "nmdc:OmicsProcessing"
     }
   ],
-  "read_qc_analysis_activity_set": [
+  "read_qc_analysis_set": [
     {
       "id": "nmdc:wfrqc-12-63da5n74",
       "name": "TEST Read QC Activity for nmdc:wfrqc-12-63da5n74 ",
