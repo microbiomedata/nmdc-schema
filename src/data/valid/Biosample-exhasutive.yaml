@@ -671,8 +671,8 @@ non_microb_biomass: insect 0.23 ug; plant 1g
 non_microb_biomass_method: https://doi.org/10.1038/s41467-021-26181-3
 non_min_nutr_regm:
   - xxx
-nucl_acid_amp:
-  has_raw_value: xxx
+#nucl_acid_amp:
+ # has_raw_value: xxx
 nucl_acid_ext:
   has_raw_value: xxx
 number_pets:
