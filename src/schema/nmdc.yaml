@@ -240,8 +240,8 @@ classes:
       - instrument_set
 
   Instrument:
-    description:
-    is_a: NamedThing
+    description: A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.
+    is_a: MaterialEntity
     slots:
       - vendor
       - model
