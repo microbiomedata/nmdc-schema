@@ -239,11 +239,6 @@ slots:
     domain: ProcessedSample
     range: QuantityValue
 
-  instrument_name:
-    domain: PlannedProcess
-    description: >-
-      The name of the instrument that was used for processing the sample.
-  #    add this and write migration # range: instrument_name_enum
 
 enums:
   processing_institution_enum:
