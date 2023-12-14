@@ -99,7 +99,8 @@ data_generation_set:
     has_output:
       - nmdc:dobj-12-jdhk9537
       - nmdc:dobj-12-yx0tfp52
-    instrument_name: Illumina NovaSeq S4
+    instrument_used: 
+      - nmdc:inst-12-yx0tfp52
     part_of:
       - nmdc:sty-11-34xj1150
     processing_institution: Battelle
