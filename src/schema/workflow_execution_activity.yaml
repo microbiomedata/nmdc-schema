@@ -30,7 +30,10 @@ classes:
       analyse the output of DataGeneration.
     comments: >-
       The sequence of Workflow Execution(s) can be inferred from the has_input and has_output slots of the Workflow Execution(s)
-
+    slots:
+      - type
+      - analyte_category
+      - was_informed_by
     slot_usage:
       id:
         required: true
@@ -350,6 +353,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+
+slots:
 
   metagenome_assembly_parameter:
     abstract: true
