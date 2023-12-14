@@ -1,4 +1,4 @@
-id: nmdc:reacp-19-789
+id: nmdc:chcpr-19-789
 has_input:
   - "nmdc:fasp-37"
 has_output:
@@ -15,7 +15,7 @@ has_reagents:
       has_numeric_value: 10
 temperature:
   has_numeric_value: 25
-  has_unit: celsius
+  has_unit: Cel
 duration:
   has_numeric_value: 1
-  has_unit: hour
+  has_unit: h

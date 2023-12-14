@@ -289,8 +289,6 @@ classes:
       - reactant
     description: >-
        A substance used in a chemical reaction to detect, measure, examine, or produce other substances.
-    comments:
-      - we will not assign an nmdc id pattern or typecode to this class.
     slots:
       - chemical_formula
       - inchi_key
@@ -1734,7 +1732,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:reacp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
   DataGeneration:
@@ -3297,6 +3295,7 @@ slots:
     multivalued: true
     inlined_as_list: true
   sample_state_information:
+    domain: ChemicalConversionProcess
     description: >-
       The chemical phase of a pure sample, or the state of a mixed sample
     range: SampleStateEnum
