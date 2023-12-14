@@ -14,10 +14,11 @@ has_reagents:
         has_numeric_value: 50
         has_unit: mM
 catalyzed_by:
-  - compound: trypsin
-    concentration:
-        has_numeric_value: 0.05
-        has_unit: μg/μL
+  - has_solution_components:
+    - compound: trypsin
+      concentration:
+          has_numeric_value: 0.05
+          has_unit: μg/μL
 temperature:
   has_numeric_value: 37
   has_unit: Cel
