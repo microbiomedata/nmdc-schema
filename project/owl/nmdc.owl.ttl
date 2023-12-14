@@ -461,9 +461,9 @@ nmdc:IntegerValue a owl:Class,
     skos:definition "A value that is an integer" ;
     skos:inScheme nmdc:core .
 
-nmdc:MetatranscriptomeAnnotationActivity a owl:Class,
+nmdc:MetatranscriptomeAnnotation a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "MetatranscriptomeAnnotationActivity" ;
+    rdfs:label "MetatranscriptomeAnnotation" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:id ],

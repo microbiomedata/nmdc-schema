@@ -211,7 +211,7 @@ classes:
           syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-  MetatranscriptomeAnnotationActivity:
+  MetatranscriptomeAnnotation:
     is_a: WorkflowExecution
     slots:
       - type

@@ -5451,13 +5451,13 @@ class MetagenomeAnnotation(WorkflowExecution):
 
 
 @dataclass
-class MetatranscriptomeAnnotationActivity(WorkflowExecution):
+class MetatranscriptomeAnnotation(WorkflowExecution):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMDC["MetatranscriptomeAnnotationActivity"]
-    class_class_curie: ClassVar[str] = "nmdc:MetatranscriptomeAnnotationActivity"
-    class_name: ClassVar[str] = "MetatranscriptomeAnnotationActivity"
-    class_model_uri: ClassVar[URIRef] = NMDC.MetatranscriptomeAnnotationActivity
+    class_class_uri: ClassVar[URIRef] = NMDC["MetatranscriptomeAnnotation"]
+    class_class_curie: ClassVar[str] = "nmdc:MetatranscriptomeAnnotation"
+    class_name: ClassVar[str] = "MetatranscriptomeAnnotation"
+    class_model_uri: ClassVar[URIRef] = NMDC.MetatranscriptomeAnnotation
 
     id: Union[str, MetatranscriptomeAnnotationActivityId] = None
     execution_resource: str = None
@@ -11790,7 +11790,7 @@ slots.MetagenomeAnnotationActivity_id = Slot(uri=NMDC.id, name="MetagenomeAnnota
                    pattern=re.compile(r'.*'))
 
 slots.MetatranscriptomeAnnotationActivity_id = Slot(uri=NMDC.id, name="MetatranscriptomeAnnotationActivity_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.MetatranscriptomeAnnotationActivity_id, domain=MetatranscriptomeAnnotationActivity, range=Union[str, MetatranscriptomeAnnotationActivityId],
+                   model_uri=NMDC.MetatranscriptomeAnnotationActivity_id, domain=MetatranscriptomeAnnotation, range=Union[str, MetatranscriptomeAnnotationActivityId],
                    pattern=re.compile(r'.*'))
 
 slots.MetatranscriptomeActivity_id = Slot(uri=NMDC.id, name="MetatranscriptomeActivity_id", curie=NMDC.curie('id'),

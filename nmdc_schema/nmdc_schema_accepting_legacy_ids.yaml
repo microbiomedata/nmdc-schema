@@ -19764,8 +19764,8 @@ classes:
         structured_pattern:
           syntax: .*
           interpolated: true
-  MetatranscriptomeAnnotationActivity:
-    name: MetatranscriptomeAnnotationActivity
+  MetatranscriptomeAnnotation:
+    name: MetatranscriptomeAnnotation
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc

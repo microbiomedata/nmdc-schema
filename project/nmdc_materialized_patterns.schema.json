@@ -5844,7 +5844,7 @@
             "title": "MetatranscriptomeActivity",
             "type": "object"
         },
-        "MetatranscriptomeAnnotationActivity": {
+        "MetatranscriptomeAnnotation": {
             "additionalProperties": false,
             "description": "",
             "properties": {
@@ -5924,7 +5924,7 @@
                 "started_at_time",
                 "ended_at_time"
             ],
-            "title": "MetatranscriptomeAnnotationActivity",
+            "title": "MetatranscriptomeAnnotation",
             "type": "object"
         },
         "MetatranscriptomeAssembly": {
