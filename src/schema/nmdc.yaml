@@ -1775,6 +1775,22 @@ classes:
           syntax: "{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
+  DissolvingProcess:
+    description: >
+      Write new description
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-1368-8217 #Yuri Corilo
+    is_a: MaterialProcessing
+    slots:
+      - id #temporary, remove when adding real slots. Doens't pass if no slots are listend under slots:
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+
   DataGeneration:
     aliases:
       - OmicsProcessing
