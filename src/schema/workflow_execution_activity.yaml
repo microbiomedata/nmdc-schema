@@ -586,12 +586,11 @@ slots:
     range: float
     description: >-
       TODO      
-
+  
   has_calibration:
-    domain: MassSpectrometry
-    range: string
-    description: >-
-      A reference to a file that holds calibration information.
+    domain: ChromatographicSeparationProcess
+    range: DataObject
+    description: A intrument data that is used to calibrate retention time or to calculate rentention idex
 
   has_metabolite_quantifications:
     domain: MetabolomicsAnalysis
