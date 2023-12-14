@@ -210,6 +210,7 @@ classes:
       - metatranscriptome_activity_set
       - nom_analysis_activity_set
       - data_generation_set
+      - workflow_chain_set
       - planned_process_set
       - pooling_set
       - processed_sample_set
@@ -2413,7 +2414,8 @@ slots:
   analyte_category:
     required: true
     description: >
-      The type of analyte(s) that were measured in the data generation process
+      The type of analyte(s) that were measured in the data generation process and analyzed
+        in the Workflow Chain
     range: AnalyteCategoryEnum
   model:
     range: InstrumentModelEnum
@@ -2877,6 +2879,13 @@ slots:
     range: DataGeneration
     description:
       This property links a database object to the set of omics processings
+      within it.
+  workflow_chain_set:
+    domain: Database # not inherited byt mixin users
+    mixins: object_set
+    range: WorkflowChain
+    description:
+      This property links a database object to the set of workflow chains
       within it.
   pooling_set:
     domain: Database # not inherited byt mixin users
