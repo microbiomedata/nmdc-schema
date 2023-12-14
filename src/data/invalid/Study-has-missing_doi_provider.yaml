@@ -50,9 +50,9 @@ associated_dois:
   - doi_value: doi:10.25585/1488209
     doi_category: dataset_doi
 type: any string
-relevant_protocols:
-  - any string 1
-  - any string 2
+protocol_link:
+  - name: any string 1
+  - name: any string 2
 funding_sources:
   - This is an example of a funding source with too long of a description. Funding sources should be no more than 150 characters. Any longer is unnecessary and excessive. I't's very very very very very very very very very long.
   - any string 2
