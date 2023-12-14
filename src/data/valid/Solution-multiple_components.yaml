@@ -3,7 +3,7 @@ has_solution_components:
     concentration:
       has_unit: mM
       has_numeric_value: 10
-  - compound: chloridic acid
+  - compound: hydrochloric_acid
     concentration:
       has_unit: mM
       has_numeric_value: 15

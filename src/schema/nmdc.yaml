@@ -2406,8 +2406,8 @@ enums:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
     permissible_values:
-      V-bottom conical tube:
-      falcon tube:
+      v-bottom_conical_tube:
+      falcon_tube:
 
   SeparationMethodEnum:
     description: The tool/substance used to separate or filter a solution or mixture.
@@ -2415,7 +2415,7 @@ enums:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
     permissible_values:
-      PTFE 96-well filter plate:
+      ptfe_96_well_filter_plate:
   
   #  SolventEnum:
   #    description: The solvents that may be used in processing metabolomic samples.
@@ -2440,13 +2440,13 @@ enums:
   
   CompoundEnum:
     permissible_values:
-      ammonium bicarbonate:
-      deionized water:
+      ammonium_bicarbonate:
+      deionized_water:
       methanol:
       trypsin:
-      chloridic acid:
+      hydrochloric_acid:
         aliases:
-          - hydrochloric acid
+          - chloridic_acid
       water:
 
   
