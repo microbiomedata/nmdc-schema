@@ -201,7 +201,7 @@ classes:
       - functional_annotation_set
       - genome_feature_set
       - library_preparation_set
-      - mags_activity_set
+      - mags_set
       - metabolomics_analysis_activity_set
       - metagenome_annotation_activity_set
       - metagenome_assembly_set
@@ -2803,7 +2803,7 @@ slots:
     mixins: object_set
     range: WorkflowExecution
     description: This property links a database object to the set of workflow activities.
-  mags_activity_set:
+  mags_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
     range: MagsAnalysis

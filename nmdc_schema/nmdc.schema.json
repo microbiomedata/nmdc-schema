@@ -3486,7 +3486,7 @@
                     },
                     "type": "array"
                 },
-                "mags_activity_set": {
+                "mags_set": {
                     "description": "This property links a database object to the set of MAGs analysis activities.",
                     "items": {
                         "$ref": "#/$defs/MagsAnalysis"
@@ -8439,7 +8439,7 @@
             },
             "type": "array"
         },
-        "mags_activity_set": {
+        "mags_set": {
             "description": "This property links a database object to the set of MAGs analysis activities.",
             "items": {
                 "$ref": "#/$defs/MagsAnalysis"

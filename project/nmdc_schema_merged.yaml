@@ -4010,8 +4010,8 @@ slots:
     mixins:
     - object_set
     range: WorkflowExecution
-  mags_activity_set:
-    name: mags_activity_set
+  mags_set:
+    name: mags_set
     description: This property links a database object to the set of MAGs analysis
       activities.
     from_schema: https://w3id.org/nmdc/nmdc
@@ -17912,7 +17912,7 @@ classes:
     - functional_annotation_set
     - genome_feature_set
     - library_preparation_set
-    - mags_activity_set
+    - mags_set
     - material_sample_set
     - material_sampling_activity_set
     - metabolomics_analysis_activity_set

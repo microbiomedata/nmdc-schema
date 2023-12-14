@@ -1756,7 +1756,7 @@
          "@type": "@id",
          "@id": "MIXS:0000431"
       },
-      "mags_activity_set": {
+      "mags_set": {
          "@type": "@id"
       },
       "mags_list": {

@@ -1177,7 +1177,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:reaction_activity_set ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty nmdc:mags_activity_set ],
+            owl:onProperty nmdc:mags_set ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:collecting_biosamples_from_site_set ],
@@ -1186,7 +1186,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:pooling_set ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:mags_activity_set ],
+            owl:onProperty nmdc:mags_set ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:study_set ],
@@ -1276,7 +1276,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:study_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom nmdc:MagsAnalysis ;
-            owl:onProperty nmdc:mags_activity_set ],
+            owl:onProperty nmdc:mags_set ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:metatranscriptome_activity_set ],
@@ -14388,9 +14388,9 @@ nmdc:low_depth_contig_num a owl:ObjectProperty,
     rdfs:range linkml:Integer ;
     skos:inScheme nmdc:workflow_execution_activity .
 
-nmdc:mags_activity_set a owl:ObjectProperty,
+nmdc:mags_set a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "mags_activity_set" ;
+    rdfs:label "mags_set" ;
     rdfs:range nmdc:MagsAnalysis ;
     rdfs:subPropertyOf nmdc:object_set ;
     skos:definition "This property links a database object to the set of MAGs analysis activities." ;

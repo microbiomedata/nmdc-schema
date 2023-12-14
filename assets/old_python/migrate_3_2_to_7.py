@@ -86,7 +86,7 @@ slot2coll = {
     'activity_set': 'activity_set',
     'biosample_set': 'biosample_set',
     'data_object_set': 'data_object_set',
-    'mags_activity_set': 'mags_activity_set',
+    'mags_set': 'mags_set',
     'metabolomics_analysis_activity_set': 'metabolomics_analysis_activity_set',
     'metagenome_annotation_activity_set': 'metagenome_annotation_activity_set',
     'metagenome_assembly_set': 'metagenome_assembly_set',
@@ -309,7 +309,7 @@ def cli(dotenv_file: str, schema_file: str, max_collection_bytes: int, last_doc_
                     logger.warning(f"no id in document: {document}")
                     document['id'] = f"nmdc:{document['md5_checksum']}"
 
-                if collection_name_lc == "mags_activity_set" and 'mags_list' in document and document['mags_list']:
+                if collection_name_lc == "mags_set" and 'mags_list' in document and document['mags_list']:
                     for i in document['mags_list']:
                         if 'num_tRNA' in i:
                             i['num_t_rna'] = i['num_tRNA']
