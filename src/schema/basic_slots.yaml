@@ -31,11 +31,11 @@ slots:
   direct_infusion_category:
     domain: DirectInfusionProcess
     range: DirectInfusionEnum
-    description: the category in which a processed sample is introduced into the mass spectrometer without chromatographic separation
+    description: used when a processed sample is introduced into a mass spectrometer without chromatographic separation
   eluent_introduction:
     domain: MassSpectrometry
     range: FluidHandling
-    description: the process that defines how a processed sample is introduced into the mass spectrometer, for instance, liquid chromatography or direct infusion through a syringe
+    description: how a processed sample is introduced into a mass spectrometer, for example liquid chromatography or direct infusion through a syringe
   acquisition_category: 
     domain: MassSpectrometry
     range: AcquisitionCategoryEnum
@@ -55,11 +55,11 @@ slots:
   ionization_source:
     domain: MassSpectrometry
     range: IonizationSourceEnum
-    description: which kind of ionization source is used to introduce analyted into a mass spectrometer 
+    description: which kind of ionization source is used to introduce analytes into a mass spectrometer 
   mass_spectrum_collection_mode:
     domain: MassSpectrometry
     range: MassSpectrumCollectionModeEnum
-    description: whether mass spectra are centroided during colleciton
+    description: whether mass spectra are centroided during collection
   polarity_mode:
     domain: MassSpectrometry
     range: PolarityModeEnum
