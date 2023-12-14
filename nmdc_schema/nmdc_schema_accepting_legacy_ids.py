@@ -546,7 +546,7 @@ class Database(YAMLRoot):
     metagenome_sequencing_activity_set: Optional[Union[Dict[Union[str, MetagenomeSequencingActivityId], Union[dict, "MetagenomeSequencing"]], List[Union[dict, "MetagenomeSequencing"]]]] = empty_dict()
     metaproteomics_analysis_activity_set: Optional[Union[Dict[Union[str, MetaproteomicsAnalysisActivityId], Union[dict, "MetaproteomicsAnalysis"]], List[Union[dict, "MetaproteomicsAnalysis"]]]] = empty_dict()
     metatranscriptome_activity_set: Optional[Union[Dict[Union[str, MetatranscriptomeActivityId], Union[dict, "MetatranscriptomeAnalysis"]], List[Union[dict, "MetatranscriptomeAnalysis"]]]] = empty_dict()
-    nom_analysis_activity_set: Optional[Union[Dict[Union[str, NomAnalysisActivityId], Union[dict, "NomAnalysisActivity"]], List[Union[dict, "NomAnalysisActivity"]]]] = empty_dict()
+    nom_analysis_activity_set: Optional[Union[Dict[Union[str, NomAnalysisActivityId], Union[dict, "NomAnalysis"]], List[Union[dict, "NomAnalysis"]]]] = empty_dict()
     omics_processing_set: Optional[Union[Dict[Union[str, OmicsProcessingId], Union[dict, "OmicsProcessing"]], List[Union[dict, "OmicsProcessing"]]]] = empty_dict()
     pooling_set: Optional[Union[Dict[Union[str, PoolingId], Union[dict, "Pooling"]], List[Union[dict, "Pooling"]]]] = empty_dict()
     processed_sample_set: Optional[Union[Dict[Union[str, ProcessedSampleId], Union[dict, "ProcessedSample"]], List[Union[dict, "ProcessedSample"]]]] = empty_dict()
@@ -608,7 +608,7 @@ class Database(YAMLRoot):
 
         self._normalize_inlined_as_list(slot_name="metatranscriptome_activity_set", slot_type=MetatranscriptomeAnalysis, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="nom_analysis_activity_set", slot_type=NomAnalysisActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="nom_analysis_activity_set", slot_type=NomAnalysis, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="omics_processing_set", slot_type=OmicsProcessing, key_name="id", keyed=True)
 
@@ -5776,13 +5776,13 @@ class MetaproteomicsAnalysis(WorkflowExecution):
 
 
 @dataclass
-class NomAnalysisActivity(WorkflowExecution):
+class NomAnalysis(WorkflowExecution):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMDC["NomAnalysisActivity"]
-    class_class_curie: ClassVar[str] = "nmdc:NomAnalysisActivity"
-    class_name: ClassVar[str] = "NomAnalysisActivity"
-    class_model_uri: ClassVar[URIRef] = NMDC.NomAnalysisActivity
+    class_class_uri: ClassVar[URIRef] = NMDC["NomAnalysis"]
+    class_class_curie: ClassVar[str] = "nmdc:NomAnalysis"
+    class_name: ClassVar[str] = "NomAnalysis"
+    class_model_uri: ClassVar[URIRef] = NMDC.NomAnalysis
 
     id: Union[str, NomAnalysisActivityId] = None
     execution_resource: str = None
@@ -9025,7 +9025,7 @@ slots.read_based_taxonomy_analysis_activity_set = Slot(uri=NMDC.read_based_taxon
                    model_uri=NMDC.read_based_taxonomy_analysis_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, ReadBasedTaxonomyAnalysisActivityId], Union[dict, "ReadBasedTaxonomyAnalysis"]], List[Union[dict, "ReadBasedTaxonomyAnalysis"]]]])
 
 slots.nom_analysis_activity_set = Slot(uri=NMDC.nom_analysis_activity_set, name="nom_analysis_activity_set", curie=NMDC.curie('nom_analysis_activity_set'),
-                   model_uri=NMDC.nom_analysis_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, NomAnalysisActivityId], Union[dict, "NomAnalysisActivity"]], List[Union[dict, "NomAnalysisActivity"]]]])
+                   model_uri=NMDC.nom_analysis_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, NomAnalysisActivityId], Union[dict, "NomAnalysis"]], List[Union[dict, "NomAnalysis"]]]])
 
 slots.omics_processing_set = Slot(uri=NMDC.omics_processing_set, name="omics_processing_set", curie=NMDC.curie('omics_processing_set'),
                    model_uri=NMDC.omics_processing_set, domain=Database, range=Optional[Union[Dict[Union[str, OmicsProcessingId], Union[dict, "OmicsProcessing"]], List[Union[dict, "OmicsProcessing"]]]])
@@ -11825,10 +11825,10 @@ slots.MetaproteomicsAnalysisActivity_id = Slot(uri=NMDC.id, name="Metaproteomics
                    pattern=re.compile(r'.*'))
 
 slots.NomAnalysisActivity_used = Slot(uri=NMDC.used, name="NomAnalysisActivity_used", curie=NMDC.curie('used'),
-                   model_uri=NMDC.NomAnalysisActivity_used, domain=NomAnalysisActivity, range=Optional[str], mappings = [PROV["used"]])
+                   model_uri=NMDC.NomAnalysisActivity_used, domain=NomAnalysis, range=Optional[str], mappings = [PROV["used"]])
 
 slots.NomAnalysisActivity_id = Slot(uri=NMDC.id, name="NomAnalysisActivity_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.NomAnalysisActivity_id, domain=NomAnalysisActivity, range=Union[str, NomAnalysisActivityId],
+                   model_uri=NMDC.NomAnalysisActivity_id, domain=NomAnalysis, range=Union[str, NomAnalysisActivityId],
                    pattern=re.compile(r'.*'))
 
 slots.InstrumentMixin_name = Slot(uri=NMDC.name, name="InstrumentMixin_name", curie=NMDC.curie('name'),

@@ -4089,7 +4089,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    range: NomAnalysisActivity
+    range: NomAnalysis
   omics_processing_set:
     name: omics_processing_set
     description: This property links a database object to the set of omics processings
@@ -19924,8 +19924,8 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-  NomAnalysisActivity:
-    name: NomAnalysisActivity
+  NomAnalysis:
+    name: NomAnalysis
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc

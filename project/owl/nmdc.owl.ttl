@@ -1077,7 +1077,7 @@ nmdc:Database a owl:Class,
             owl:allValuesFrom nmdc:FunctionalAnnotationAggMember ;
             owl:onProperty nmdc:functional_annotation_agg ],
         [ a owl:Restriction ;
-            owl:allValuesFrom nmdc:NomAnalysisActivity ;
+            owl:allValuesFrom nmdc:NomAnalysis ;
             owl:onProperty nmdc:nom_analysis_activity_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom nmdc:Pooling ;
@@ -5945,9 +5945,9 @@ nmdc:MixingProcess a owl:Class,
         "The mixing may be achieved manually or mechanically by shifting the material with stirrers or pumps or by revolving or shaking the container.",
         "The process must not permit segregation of particles of different size or properties." .
 
-nmdc:NomAnalysisActivity a owl:Class,
+nmdc:NomAnalysis a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "NomAnalysisActivity" ;
+    rdfs:label "NomAnalysis" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty nmdc:id ],
@@ -14573,7 +14573,7 @@ nmdc:neon_study_identifiers a owl:ObjectProperty,
 nmdc:nom_analysis_activity_set a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "nom_analysis_activity_set" ;
-    rdfs:range nmdc:NomAnalysisActivity ;
+    rdfs:range nmdc:NomAnalysis ;
     rdfs:subPropertyOf nmdc:object_set ;
     skos:definition "This property links a database object to the set of natural organic matter (NOM) analysis activities." ;
     skos:inScheme nmdc:nmdc .

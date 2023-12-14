@@ -344,7 +344,7 @@ classes:
           syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-  NomAnalysisActivity:
+  NomAnalysis:
     is_a: WorkflowExecution
     in_subset:
       - workflow subset

@@ -3550,7 +3550,7 @@
                 "nom_analysis_activity_set": {
                     "description": "This property links a database object to the set of natural organic matter (NOM) analysis activities.",
                     "items": {
-                        "$ref": "#/$defs/NomAnalysisActivity"
+                        "$ref": "#/$defs/NomAnalysis"
                     },
                     "type": "array"
                 },
@@ -6196,7 +6196,7 @@
             "title": "MixingProcess",
             "type": "object"
         },
-        "NomAnalysisActivity": {
+        "NomAnalysis": {
             "additionalProperties": false,
             "description": "",
             "properties": {
@@ -6273,7 +6273,7 @@
                 "started_at_time",
                 "ended_at_time"
             ],
-            "title": "NomAnalysisActivity",
+            "title": "NomAnalysis",
             "type": "object"
         },
         "OccupDocumentEnum": {
@@ -8503,7 +8503,7 @@
         "nom_analysis_activity_set": {
             "description": "This property links a database object to the set of natural organic matter (NOM) analysis activities.",
             "items": {
-                "$ref": "#/$defs/NomAnalysisActivity"
+                "$ref": "#/$defs/NomAnalysis"
             },
             "type": "array"
         },

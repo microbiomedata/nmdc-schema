@@ -2868,7 +2868,7 @@ slots:
   nom_analysis_activity_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: NomAnalysisActivity
+    range: NomAnalysis
     description:
       This property links a database object to the set of natural organic
       matter (NOM) analysis activities.
