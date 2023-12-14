@@ -67,7 +67,7 @@ slots:
   processing_institution:
     domain: PlannedProcess
     range: processing_institution_enum
-    description: the institution that generated the mass spectrometry data
+    description: the organization that processed the sample, generated the data, or processed the data
   designated_class:
     range: uriorcurie
     designates_type: true
