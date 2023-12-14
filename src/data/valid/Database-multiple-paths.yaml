@@ -48,4 +48,4 @@ data_generation_set:
     part_of:
       - nmdc:sty-00-555xxx
     processing_institution: JGI
-    type: nmdc:OmicsProcessing
+    # type: nmdc:OmicsProcessing

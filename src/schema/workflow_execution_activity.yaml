@@ -42,7 +42,7 @@ classes:
       - has_input
       - has_output
       - part_of
-      - type
+      # - type
       - version
 
     slot_usage:
@@ -58,8 +58,8 @@ classes:
         required: true
       execution_resource:
         required: true
-      type:
-        required: true
+#      type:
+#        required: true
       id:
         required: true
         structured_pattern:
@@ -74,7 +74,7 @@ classes:
     in_subset:
       - workflow subset
     slots:
-      - type
+      # - type
       - asm_score
       - scaffolds
       - scaf_logsum
@@ -154,7 +154,7 @@ classes:
     description: A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
     is_a: WorkflowExecutionActivity
     slots:
-      - type
+      # - type
       - gold_analysis_project_identifiers
     in_subset:
       - workflow subset
@@ -168,7 +168,7 @@ classes:
   MetatranscriptomeAnnotationActivity:
     is_a: WorkflowExecutionActivity
     slots:
-      - type
+      # - type
       - gold_analysis_project_identifiers
     in_subset:
       - workflow subset
@@ -186,7 +186,7 @@ classes:
     in_subset:
       - workflow subset
     slots:
-      - type
+      # - type
     slot_usage:
       id:
         required: true
@@ -202,7 +202,7 @@ classes:
     in_subset:
       - workflow subset
     slots:
-      - type
+      # - type
       - input_contig_num
       - binned_contig_num
       - too_short_contig_num
@@ -238,7 +238,7 @@ classes:
     in_subset:
       - workflow subset
     slots:
-      - type
+      # - type
       - input_read_count
       - input_base_count
       - output_read_count
@@ -260,7 +260,7 @@ classes:
     in_subset:
       - workflow subset
     slots:
-      - type
+      # - type
     slot_usage:
       id:
         required: true

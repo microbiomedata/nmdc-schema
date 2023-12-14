@@ -54,9 +54,10 @@ class TestExtraction(unittest.TestCase):
 
         print(yaml_dumper.dumps(ex1))
 
+        # type: Extraction
+
         extr_yaml_string = """
 id: nmdc:ILLEGAL_ID_VAL
-designated_class: nmdc:Extraction
 has_input:
 - nmdc:ILLEGAL_ID_VAL
 has_output:

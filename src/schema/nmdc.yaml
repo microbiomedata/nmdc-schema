@@ -352,7 +352,7 @@ classes:
       - compression_type
       - was_generated_by
       - url
-      - type
+      # - type
     slot_usage:
       name:
         required: true
@@ -444,11 +444,11 @@ classes:
       - host_taxid
       - embargoed
       - collected_from
-      - type
+      # - type
       - img_identifiers
       - samp_name
       - biosample_categories
-      - type
+      # - type
       - part_of
 
       ## Identifiers
@@ -1452,7 +1452,7 @@ classes:
       - specific_ecosystem
       - study_image
       - title
-      - type
+      # - type
       - websites
 
     slot_usage:
@@ -1691,7 +1691,7 @@ classes:
       - seq_quality_check
       - target_gene
       - target_subfragment
-      - type
+      # - type
 
     slot_usage:
       id:
@@ -1727,7 +1727,7 @@ classes:
     slots:
       - applies_to_person
       - applied_roles
-      - type
+      # - type
     class_uri: prov:Association
     see_also:
       - https://casrai.org/credit/

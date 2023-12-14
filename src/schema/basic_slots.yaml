@@ -35,7 +35,6 @@ slots:
 
   type:
     range: uriorcurie
-    designates_type: true
     slot_uri: rdf:type
     description: the id of the class that is instantiated by some data
     notes:
@@ -49,6 +48,7 @@ slots:
     examples:
       - value: nmdc:Biosample
       - value: nmdc:Study
+    designates_type: true
 
   external_database_identifiers:
     abstract: true

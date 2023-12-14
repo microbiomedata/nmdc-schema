@@ -77,19 +77,19 @@ data_object_set:
     description: Test R1 data
     data_object_type: Metagenome Raw Read 1
     url: https://storage.neonscience.org/neon-microbial-raw-seq-files/2020/BMI_HY7W2BGXG_mms_R1/BMI_HY7W2BGXG_Plate19S_13WellG10_R1.fastq.gz
-    type: nmdc:DataObject
+    # type: nmdc:DataObject
   - id: nmdc:dobj-12-yx0tfp52
     name: W2BGXG_Plate19S_13WellG10_R2.fastq.gz
     description: Test R2 data
     data_object_type: Metagenome Raw Read 2
     url: https://storage.neonscience.org/neon-microbial-raw-seq-files/2020/BMI_HY7W2BGXG_mms_R2/BMI_HY7W2BGXG_Plate19S_13WellG10_R2.fastq.gz
-    type: nmdc:DataObject
+    # type: nmdc:DataObject
   - id: nmdc:dobj-12-71q7wv80
     name: 1472_51293.filtered.fastq.gz
     description: Test filtered data for NEON
     data_object_type: Filtered Sequencing Reads
     url: https://data.microbiomedata.org/data/1472_51293/qa/1472_51293.filtered.fastq.gz
-    type: nmdc:DataObject
+    # type: nmdc:DataObject
 data_generation_set:
   - id: nmdc:datgen-11-s9xj2r24
     analyte_category: metagenome
@@ -103,7 +103,7 @@ data_generation_set:
     part_of:
       - nmdc:sty-11-34xj1150
     processing_institution: Battelle
-    type: nmdc:OmicsProcessing
+    # type: nmdc:OmicsProcessing
 read_qc_analysis_activity_set:
   - id: nmdc:wfrqc-12-63da5n74
     name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74 '
@@ -118,7 +118,7 @@ read_qc_analysis_activity_set:
     has_output:
       - nmdc:dobj-12-71q7wv80
       - nmdc:dobj-12-y236qp68
-    type: nmdc:ReadQCAnalysisActivity
+    # type: nmdc:ReadQCAnalysisActivity
     part_of:
       - nmdc:wfrqc-11-hcr2by04.1
     version: b1.0.7

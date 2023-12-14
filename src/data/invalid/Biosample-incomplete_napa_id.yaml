@@ -3,7 +3,7 @@ gold_biosample_identifiers:
   - gold:Gb0101224
 name: Lithgow State Coal Mine Calcium nutrients (early)
 description: Bulk Aqueous phase filtered water
-type: nmdc:Biosample
+# type: nmdc:Biosample
 part_of:
   - nmdc:sty-00-abc123
 env_broad_scale:

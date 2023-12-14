@@ -18,6 +18,6 @@ study_set:
       - doi_value: doi:10.25585/1488217
         doi_category: award_doi
         doi_provider: emsl
-    type: nmdc:Study
+    # type: nmdc:Study
     gnps_task_identifiers:
       - "gnps.task:4b848c342a4f4abc871bdf8a09a60807"

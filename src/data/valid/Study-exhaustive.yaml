@@ -59,7 +59,7 @@ objective: This record, an instance of class Study from the nmdc-schema was had 
 websites:
   - https://w3id.org/nmdc
   - https://w3id.org/linkml
-type: any string
+#type: any string
 relevant_protocols:
   - any string 1
   - any string 2
@@ -81,7 +81,7 @@ has_credit_associations:
       - Supervision
       - Conceptualization
       - Funding acquisition
-    type: any string
+    # type: any string
   - applies_to_person:
       name: Tanja Davidsen
     applied_roles:

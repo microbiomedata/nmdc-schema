@@ -1,6 +1,6 @@
 id: nmdc:bsm-99-dtTMNb
 name: Sample Exhaustive Biosample instance. Although all of these values should pass
-  validation, that does not mean that any Biosample of any type would necessarily
+  validation, that does not mean that any Biosample of any # type would necessarily
   have this particular combination of values.
 description: unconstrained text
 alternative_identifiers:
@@ -22,7 +22,7 @@ env_medium:
     id: ENVO:00005792
 embargoed: true
 collected_from: nmdc:unconstrained_site_identifier_string
-type: nmdc:Biosample. change this to require a class name or an enumeration
+# type: nmdc:Biosample. change this to require a class name or an enumeration
 img_identifiers:
   - img.taxon:abc123
 samp_name: see also name
