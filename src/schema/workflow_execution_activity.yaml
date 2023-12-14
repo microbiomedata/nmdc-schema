@@ -319,7 +319,6 @@ classes:
     in_subset:
       - workflow subset
     slots:
-      - has_calibration
       - has_metabolite_quantifications
     slot_usage:
       id:
@@ -345,8 +344,6 @@ classes:
     is_a: WorkflowExecution
     in_subset:
       - workflow subset
-    slots:
-      - has_calibration
     slot_usage:
       id:
         required: true
@@ -582,11 +579,11 @@ slots:
     range: float
     description: >-
       TODO      
-
+  
   has_calibration:
-    range: string
-    description: >-
-      A reference to a file that holds calibration information.
+    domain: ChromatographicSeparationProcess
+    range: DataObject
+    description: A intrument data that is used to calibrate retention time or to calculate rentention idex
 
   has_metabolite_quantifications:
     domain: MetabolomicsAnalysis
