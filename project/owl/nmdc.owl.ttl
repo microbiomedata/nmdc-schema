@@ -1069,7 +1069,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:metagenome_sequencing_set ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:read_qc_analysis_activity_set ],
+            owl:onProperty nmdc:read_qc_analysis_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom nmdc:MaterialSamplingActivity ;
             owl:onProperty nmdc:material_sampling_activity_set ],
@@ -1108,7 +1108,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:omics_processing_set ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty nmdc:read_qc_analysis_activity_set ],
+            owl:onProperty nmdc:read_qc_analysis_set ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:extraction_set ],
@@ -1237,7 +1237,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:metaproteomics_analysis_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom nmdc:ReadQcAnalysis ;
-            owl:onProperty nmdc:read_qc_analysis_activity_set ],
+            owl:onProperty nmdc:read_qc_analysis_set ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:nom_analysis_set ],
@@ -14859,9 +14859,9 @@ nmdc:read_based_taxonomy_analysis_set a owl:ObjectProperty,
     skos:definition "This property links a database object to the set of read based analysis activities." ;
     skos:inScheme nmdc:nmdc .
 
-nmdc:read_qc_analysis_activity_set a owl:ObjectProperty,
+nmdc:read_qc_analysis_set a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "read_qc_analysis_activity_set" ;
+    rdfs:label "read_qc_analysis_set" ;
     rdfs:range nmdc:ReadQcAnalysis ;
     rdfs:subPropertyOf nmdc:object_set ;
     skos:definition "This property links a database object to the set of read QC analysis activities." ;

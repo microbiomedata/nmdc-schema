@@ -4066,8 +4066,8 @@ slots:
     mixins:
     - object_set
     range: MetatranscriptomeAnalysis
-  read_qc_analysis_activity_set:
-    name: read_qc_analysis_activity_set
+  read_qc_analysis_set:
+    name: read_qc_analysis_set
     description: This property links a database object to the set of read QC analysis
       activities.
     from_schema: https://w3id.org/nmdc/nmdc
@@ -17927,7 +17927,7 @@ classes:
     - processed_sample_set
     - reaction_activity_set
     - read_based_taxonomy_analysis_set
-    - read_qc_analysis_activity_set
+    - read_qc_analysis_set
     - study_set
     tree_root: true
   Pooling:

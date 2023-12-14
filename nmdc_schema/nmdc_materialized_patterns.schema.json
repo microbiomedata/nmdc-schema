@@ -3622,7 +3622,7 @@
                     },
                     "type": "array"
                 },
-                "read_qc_analysis_activity_set": {
+                "read_qc_analysis_set": {
                     "description": "This property links a database object to the set of read QC analysis activities.",
                     "items": {
                         "$ref": "#/$defs/ReadQcAnalysis"
@@ -8575,7 +8575,7 @@
             },
             "type": "array"
         },
-        "read_qc_analysis_activity_set": {
+        "read_qc_analysis_set": {
             "description": "This property links a database object to the set of read QC analysis activities.",
             "items": {
                 "$ref": "#/$defs/ReadQcAnalysis"

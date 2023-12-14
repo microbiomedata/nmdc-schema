@@ -443,7 +443,7 @@ make-rdf: rdf-clean local/mongo_as_nmdc_database_validation.log local/mongo_as_n
 # 		--selected-collections pooling_set \
 # 		--selected-collections processed_sample_set \
 # 		--selected-collections read_based_taxonomy_analysis_set \
-# 		--selected-collections read_qc_analysis_activity_set \
+# 		--selected-collections read_qc_analysis_set \
 
 ## can't handle empty selected-collections yet
 ## https://github.com/microbiomedata/nmdc-schema/issues/1485
@@ -486,7 +486,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
  		--selected-collections pooling_set \
  		--selected-collections processed_sample_set \
  		--selected-collections read_based_taxonomy_analysis_set \
- 		--selected-collections read_qc_analysis_activity_set
+ 		--selected-collections read_qc_analysis_set
 
 #		--skip-collection-check
 

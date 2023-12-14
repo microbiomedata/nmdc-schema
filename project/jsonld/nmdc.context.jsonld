@@ -2247,7 +2247,7 @@
       "read_based_taxonomy_analysis_set": {
          "@type": "@id"
       },
-      "read_qc_analysis_activity_set": {
+      "read_qc_analysis_set": {
          "@type": "@id"
       },
       "redox_potential": {

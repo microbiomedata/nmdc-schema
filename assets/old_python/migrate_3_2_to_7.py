@@ -94,7 +94,7 @@ slot2coll = {
     'metatranscriptome_analysis_set': 'metatranscriptome_analysis_set',
     'nom_analysis_set': 'nom_analysis_set',
     'omics_processing_set': 'omics_processing_set',
-    'read_qc_analysis_activity_set': 'read_QC_analysis_activity_set',
+    'read_qc_analysis_set': 'read_QC_analysis_activity_set',
     'study_set': 'study_set',
 }
 
@@ -181,7 +181,7 @@ def route_document_ids(document, routing_table):
 @click.option("--excluded_collection", multiple=True,
               default=[
                   # todo mongodb has a read_QC_analysis_activity_set
-                  "read_qc_analysis_activity_set",
+                  "read_qc_analysis_set",
                   "read_QC_analysis_activity_set",
               ])
 def cli(dotenv_file: str, schema_file: str, max_collection_bytes: int, last_doc_num: int, migrate_partial: bool,
@@ -439,7 +439,7 @@ def cli(dotenv_file: str, schema_file: str, max_collection_bytes: int, last_doc_
                     logger.error(f"no class {collection_name_lc} in nmdc_schema.nmdc")
                     continue
 
-            # KeyError: 'read_qc_analysis_activity_set'
+            # KeyError: 'read_qc_analysis_set'
             if collection_name_lc in database_obj:
                 if len(database_obj[collection_name_lc]) == 0:
                     del database_obj[collection_name_lc]

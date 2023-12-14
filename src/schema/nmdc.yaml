@@ -215,7 +215,7 @@ classes:
       - pooling_set
       - processed_sample_set
       - read_based_taxonomy_analysis_set
-      - read_qc_analysis_activity_set
+      - read_qc_analysis_set
       - study_set
       - workflow_execution_set
 
@@ -2852,7 +2852,7 @@ slots:
     description:
       This property links a database object to the set of metatranscriptome
       analysis activities.
-  read_qc_analysis_activity_set:
+  read_qc_analysis_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
     range: ReadQcAnalysis
