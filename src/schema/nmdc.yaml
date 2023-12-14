@@ -1783,7 +1783,7 @@ classes:
       - ORCID:0000-0002-1368-8217 #Yuri Corilo
     is_a: MaterialProcessing
     slots:
-      - id #temporary, remove when adding real slots. Doens't pass if no slots are listend under slots:
+      - volume #temporary, remove when adding real slots. Doens't pass if no slots are listend under slots:
     slot_usage:
       id:
         required: true
