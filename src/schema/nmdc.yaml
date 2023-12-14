@@ -630,7 +630,7 @@ classes:
       - chem_oxygen_dem
       - chem_treat_method
       - chem_treatment
-      - chimera_check
+      #- chimera_check
       - chloride
       - chlorophyll
       - climate_environment
@@ -816,7 +816,7 @@ classes:
       - nitrite_nitrogen
       - nitro
       - non_min_nutr_regm
-      - nucl_acid_amp
+      #- nucl_acid_amp
       - nucl_acid_ext
       - nucleic acid sequence source field
       - number_pets
@@ -1796,7 +1796,7 @@ classes:
     slots:
       - analyte_category
       - add_date
-      - chimera_check
+      #      - chimera_check # commenting this out because the current dynamic MIxS generation only interrogates Biosample and the retired OmicsProcessing
       - gold_sequencing_project_identifiers
       - has_input
       - has_output
@@ -1804,7 +1804,7 @@ classes:
       - insdc_experiment_identifiers
       - mod_date
       - ncbi_project_name
-      - nucl_acid_amp
+      #- nucl_acid_amp
       - nucl_acid_ext
       #      - omics_type
       - part_of

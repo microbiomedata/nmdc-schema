@@ -65,8 +65,12 @@ local/mixs_regen/slots_associated_with_biosample.tsv:
 local/mixs_regen/slots_associated_with_omics_processing.tsv:
 	yq '.classes.OmicsProcessing.slots.[]' src/schema/nmdc.yaml | sort | cat > $@
 
+local/mixs_regen/slots_associated_with_library_preparation.tsv:
+	yq '.classes.LibraryPreparation.slots.[]' src/schema/nmdc.yaml | sort | cat > $@
+
 local/mixs_regen/slots_associated_with_biosample_omics_processing.tsv: \
 local/mixs_regen/slots_associated_with_biosample.tsv \
+local/mixs_regen/slots_associated_with_library_preparation.tsv \
 local/mixs_regen/slots_associated_with_omics_processing.tsv
 	cat $^ > $@
 
