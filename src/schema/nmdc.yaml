@@ -573,7 +573,7 @@ classes:
       - chem_oxygen_dem
       - chem_treat_method
       - chem_treatment
-      - chimera_check
+      #- chimera_check
       - chloride
       - chlorophyll
       - climate_environment

@@ -145,8 +145,8 @@ chem_oxygen_dem:
 chem_treat_method: xxx
 chem_treatment:
   has_raw_value: xxx
-chimera_check:
-  has_raw_value: xxx
+#chimera_check:
+ # has_raw_value: xxx
 chloride:
   has_raw_value: 5000 milligram per liter
 chlorophyll:
