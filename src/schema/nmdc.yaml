@@ -221,21 +221,21 @@ classes:
       - functional_annotation_set
       - genome_feature_set
       - library_preparation_set
-      - mags_activity_set
-      - metabolomics_analysis_activity_set
-      - metagenome_annotation_activity_set
+      - mags_set
+      - metabolomics_analysis_set
+      - metagenome_annotation_set
       - metagenome_assembly_set
-      - metagenome_sequencing_activity_set
-      - metaproteomics_analysis_activity_set
-      - metatranscriptome_activity_set
-      - nom_analysis_activity_set
+      - metagenome_sequencing_set
+      - metaproteomics_analysis_set
+      - metatranscriptome_analysis_set
+      - nom_analysis_set
       - data_generation_set
       - workflow_chain_set
       - planned_process_set
       - pooling_set
       - processed_sample_set
-      - read_based_taxonomy_analysis_activity_set
-      - read_qc_analysis_activity_set
+      - read_based_taxonomy_analysis_set
+      - read_qc_analysis_set
       - study_set
       - workflow_execution_set
 
@@ -2520,7 +2520,7 @@ slots:
 
   metagenome_annotation_id:
     domain: FunctionalAnnotationAggMember
-    range: WorkflowExecutionActivity
+    range: WorkflowExecution
   gene_function_id:
     range: uriorcurie
   count:
@@ -2898,33 +2898,33 @@ slots:
   workflow_execution_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: WorkflowExecutionActivity
+    range: WorkflowExecution
     description: This property links a database object to the set of workflow activities.
-  mags_activity_set:
+  mags_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: MagsAnalysisActivity
+    range: MagsAnalysis
     description:
       This property links a database object to the set of MAGs analysis
       activities.
-  metabolomics_analysis_activity_set:
+  metabolomics_analysis_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: MetabolomicsAnalysisActivity
+    range: MetabolomicsAnalysis
     description:
       This property links a database object to the set of metabolomics
       analysis activities.
-  metaproteomics_analysis_activity_set:
+  metaproteomics_analysis_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: MetaproteomicsAnalysisActivity
+    range: MetaproteomicsAnalysis
     description:
       This property links a database object to the set of metaproteomics
       analysis activities.
-  metagenome_annotation_activity_set:
+  metagenome_annotation_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: MetagenomeAnnotationActivity
+    range: MetagenomeAnnotation
     description:
       This property links a database object to the set of metagenome annotation
       activities.
@@ -2935,37 +2935,37 @@ slots:
     description:
       This property links a database object to the set of metagenome assembly
       activities.
-  metagenome_sequencing_activity_set:
+  metagenome_sequencing_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: MetagenomeSequencingActivity
+    range: MetagenomeSequencing
     description:
       This property links a database object to the set of metagenome sequencing
       activities.
-  metatranscriptome_activity_set:
+  metatranscriptome_analysis_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: MetatranscriptomeActivity
+    range: MetatranscriptomeAnalysis
     description:
       This property links a database object to the set of metatranscriptome
       analysis activities.
-  read_qc_analysis_activity_set:
+  read_qc_analysis_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: ReadQcAnalysisActivity
+    range: ReadQcAnalysis
     description:
       This property links a database object to the set of read QC analysis
       activities.
-  read_based_taxonomy_analysis_activity_set:
+  read_based_taxonomy_analysis_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: ReadBasedTaxonomyAnalysisActivity
+    range: ReadBasedTaxonomyAnalysis
     description: >-
       This property links a database object to the set of read based analysis activities.
-  nom_analysis_activity_set:
+  nom_analysis_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: NomAnalysisActivity
+    range: NomAnalysis
     description:
       This property links a database object to the set of natural organic
       matter (NOM) analysis activities.
