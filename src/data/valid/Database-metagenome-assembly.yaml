@@ -1,7 +1,6 @@
 metagenome_assembly_set:
   - id: nmdc:wfmgas-99-B7Vogx
     name: Metagenome assembly 1472_51277
-    was_informed_by: gold:Gp0061273
     part_of: nmdc:wfch-11-ab
     started_at_time: '2020-03-24T00:00:00+00:00'
     ended_at_time: '2020-03-25T00:00:00+00:00'
@@ -45,7 +44,6 @@ metagenome_assembly_set:
     num_aligned_reads: 63046103
   - id: nmdc:wfmgas-99-CvgXTq
     name: Metagenome assembly 1472_51278
-    was_informed_by: gold:Gp0061274
     part_of: nmdc:wfch-11-ab
     started_at_time: '2020-03-25T00:00:00+00:00'
     ended_at_time: '2020-03-25T00:00:00+00:00'
@@ -89,7 +87,6 @@ metagenome_assembly_set:
     num_aligned_reads: 95369019
   - id: nmdc:wfmgas-99-L9Z34K
     name: Metagenome assembly 1472_51279
-    was_informed_by: gold:Gp0061275
     part_of: nmdc:wfch-11-ab
     started_at_time: '2020-03-25T00:00:00+00:00'
     ended_at_time: '2020-03-25T00:00:00+00:00'
