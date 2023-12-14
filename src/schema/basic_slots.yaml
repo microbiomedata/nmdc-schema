@@ -28,6 +28,11 @@ types:
     pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
 
 slots:
+
+  instrument_used:
+    range: Instrument
+    multivalued: true
+    description: What instrument was used during DataGeneration or MaterialProcessing.
   direct_infusion_category:
     domain: DirectInfusionProcess
     range: DirectInfusionEnum
@@ -262,11 +267,6 @@ slots:
     domain: ProcessedSample
     range: QuantityValue
 
-  instrument_name:
-    domain: PlannedProcess
-    description: >-
-      The name of the instrument that was used for processing the sample.
-  #    add this and write migration # range: instrument_name_enum
 
 enums:
   ProcessingInstitutionEnum:

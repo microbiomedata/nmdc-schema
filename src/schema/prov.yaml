@@ -51,3 +51,4 @@ slots:
     range: WorkflowExecution
     mappings:
       - prov:wasGeneratedBy
+
