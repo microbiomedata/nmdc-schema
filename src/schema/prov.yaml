@@ -52,7 +52,4 @@ slots:
     mappings:
       - prov:wasGeneratedBy
 
-  used:
-    domain: WorkflowExecutionActivity
-    mappings:
-      - prov:used
+
