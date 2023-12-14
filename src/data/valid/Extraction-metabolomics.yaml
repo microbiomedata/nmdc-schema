@@ -5,7 +5,7 @@ has_output:
   - "nmdc:psm-8"
 extractant: # range: Solution... multivalued? (no) -> has_solution_component
   has_solution_components:
-    - compound: deionized water
+    - compound: deionized_water
     - compound: methanol
       concentration:
         has_numeric_value: 5
