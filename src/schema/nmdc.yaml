@@ -158,13 +158,33 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:dgns-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+
+  FluidHandling: 
+    is_a: MaterialProcessing
+    description: the process that defines how a processed sample is introduced into the mass spectrometer
+    abstract: true 
+
+  DirectInfusionProcess:
+    description: the process that defines how a processed sample is introduced into the mass spectrometer witout previous chromatographic separation
+    is_a: FluidHandling
+    slots:
+      - direct_infusion_category
+
   MassSpectrometry:
     description: Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio and relative abundance.
     is_a: DataGeneration
-    exact_mappings: CHMO:0000470
+    exact_mappings: 
+      - CHMO:0000470
     slots:
+      - eluent_introduction
       - acquisition_category
+      - acquisition_strategy
       - resolution_category
+      - mass_analyzer
+      - ionization_source
+      - mass_spectrum_collection_mode
+      - polarity_mode
+
     slot_usage:
       id:
         structured_pattern:
@@ -1777,6 +1797,14 @@ classes:
       - https://casrai.org/credit/
 
 enums:
+  
+  DirectInfusionEnum:
+    permissible_values:
+      direct_infusion:
+        aliases:
+         - DI
+      autosampler: {}
+  
   AcquisitionCategoryEnum:
     permissible_values:
       full_scan:
@@ -1785,10 +1813,66 @@ enums:
       tandem_mass_spectrum:
         aliases:
           -MSn
+  AcquisitionStrategyEnum:
+    permissible_values:
+      data_independent_acquisition:
+        aliases:
+         - DIA
+      data_dependent_acquisition:
+        aliases:
+          -DDA
+  
   ResolutionCategoryEnum:
     permissible_values:
       high: { }
       low: { }
+  
+  MassAnalyzerEnum:
+    permissible_values:
+      time_of_flight:
+        aliases:
+          - TOF
+      quadrupole:
+        aliases:
+          - Quad
+          - Q
+      Orbitrap:
+        aliases:
+          - Orbi
+      ion_cyclotron_resonance:
+        aliases:
+          - ICR
+      ion_trap:
+        aliases:
+          - LTQ 
+          - Ion Trap
+          - Paul Trap
+  
+  IonizationSourceEnum:
+    permissible_values:
+      electrospray_ionization:
+        aliases:
+          - ESI
+      matrix_assisted_laser_desorption_ionization:
+        aliases:
+          - MALDI
+      athmospheric_pressure_photo_ionization:
+        aliases:
+          - APPI
+      athmospheric_pressure_chemical_ionization:
+        aliases:
+          - APCI
+  
+  MassSpectrumCollectionModeEnum:
+    permissible_values:
+      profile: {}
+      centroid: {}
+
+  PolarityModeEnum:
+    permissible_values:
+      positive: {}
+      negative: {}
+
   AnalyteCategoryEnum:
     permissible_values:
       metagenome:
