@@ -1,6 +1,6 @@
 id: nmdc:wfrqc-99-ABCDEF
 ended_at_time: '2021-09-15T10:13:20+00:00'
-execution_resource: execution_resource1
+execution_resource: NERSC-Perlmutter
 git_url: git_url1
 input_base_count: 300.0
 input_read_bases: 300.0

@@ -63,6 +63,7 @@ classes:
         required: true
       execution_resource:
         required: true
+        range: ExecutionResourceEnum
       type:
         required: true
       id:
