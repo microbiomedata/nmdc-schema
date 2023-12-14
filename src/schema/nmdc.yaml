@@ -173,13 +173,33 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:dgns-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+
+  FluidHandling: 
+    is_a: MaterialProcessing
+    description: the process that defines how a processed sample is introduced into the mass spectrometer
+    abstract: true 
+
+  DirectInfusionProcess:
+    description: the process that defines how a processed sample is introduced into the mass spectrometer witout previous chromatographic separation
+    is_a: FluidHandling
+    slots:
+      - direct_infusion_category
+
   MassSpectrometry:
     description: Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio and relative abundance.
     is_a: DataGeneration
-    exact_mappings: CHMO:0000470
+    exact_mappings: 
+      - CHMO:0000470
     slots:
+      - eluent_introduction
       - acquisition_category
+      - acquisition_strategy
       - resolution_category
+      - mass_analyzer
+      - ionization_source
+      - mass_spectrum_collection_mode
+      - polarity_mode
+
     slot_usage:
       id:
         structured_pattern:
@@ -216,20 +236,21 @@ classes:
       - functional_annotation_set
       - genome_feature_set
       - library_preparation_set
-      - mags_activity_set
-      - metabolomics_analysis_activity_set
-      - metagenome_annotation_activity_set
+      - mags_set
+      - metabolomics_analysis_set
+      - metagenome_annotation_set
       - metagenome_assembly_set
-      - metagenome_sequencing_activity_set
-      - metaproteomics_analysis_activity_set
-      - metatranscriptome_activity_set
-      - nom_analysis_activity_set
+      - metagenome_sequencing_set
+      - metaproteomics_analysis_set
+      - metatranscriptome_analysis_set
+      - nom_analysis_set
       - data_generation_set
+      - workflow_chain_set
       - planned_process_set
       - pooling_set
       - processed_sample_set
-      - read_based_taxonomy_analysis_activity_set
-      - read_qc_analysis_activity_set
+      - read_based_taxonomy_analysis_set
+      - read_qc_analysis_set
       - study_set
       - workflow_execution_set
       - instrument_set
@@ -295,6 +316,26 @@ classes:
     slots:
       - has_solution_components
       - volume
+
+  LaboratoryReagent:
+    aliases:
+      - chemical substance
+      - chemical compound
+      - chemical
+      - reagent
+      - reactant
+    description: >-
+       A substance used in a chemical reaction to detect, measure, examine, or produce other substances.
+    slots:
+      - chemical_formula
+      - inchi_key
+      - sample_state_information
+      - mass
+      - volume
+      - concentration
+    see_also:
+      - CHEBI:33893
+
 
   Protocol:
     slots:
@@ -1493,13 +1534,12 @@ classes:
       - part_of
       - principal_investigator
       - related_identifiers
-      - relevant_protocols
+      - protocol_link
       - specific_ecosystem
       - study_image
       - title
       - type
       - websites
-
     slot_usage:
       id:
         required: true
@@ -1544,6 +1584,8 @@ classes:
         comments:
           - Value is the id of the umbrella study or consortium.
         range: Study
+      protocol_link:
+        multivalued: true
     exact_mappings:
       - OBI:0000066
       - SIO:000747
@@ -1698,8 +1740,9 @@ classes:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-1368-8217 #Yuri Corilo
-    is_a: MaterialProcessing
+    is_a: FluidHandling
     slots:
+      - chromatrographic_category
       - ordered_mobile_phases
       - stationary_phase
       - temperature
@@ -1708,6 +1751,28 @@ classes:
         required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+
+  ChemicalConversionProcess:
+    description: >
+      A process that results in the interconversion of chemical species by a reaction to transform the reagents into products.
+    see_also:
+      - C01033
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-1368-8217 #Yuri Corilo
+    is_a: MaterialProcessing
+    slots:
+      - has_reagents
+      - temperature
+      - duration
+    comments:
+      - The values of both has_reagents slot and has_input slot are considered the reagents of a chemical process.
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
   DataGeneration:
@@ -1793,6 +1858,14 @@ classes:
       - https://casrai.org/credit/
 
 enums:
+  
+  DirectInfusionEnum:
+    permissible_values:
+      direct_infusion:
+        aliases:
+         - DI
+      autosampler: {}
+  
   AcquisitionCategoryEnum:
     permissible_values:
       full_scan:
@@ -1801,10 +1874,66 @@ enums:
       tandem_mass_spectrum:
         aliases:
           -MSn
+  AcquisitionStrategyEnum:
+    permissible_values:
+      data_independent_acquisition:
+        aliases:
+         - DIA
+      data_dependent_acquisition:
+        aliases:
+          -DDA
+  
   ResolutionCategoryEnum:
     permissible_values:
       high: { }
       low: { }
+  
+  MassAnalyzerEnum:
+    permissible_values:
+      time_of_flight:
+        aliases:
+          - TOF
+      quadrupole:
+        aliases:
+          - Quad
+          - Q
+      Orbitrap:
+        aliases:
+          - Orbi
+      ion_cyclotron_resonance:
+        aliases:
+          - ICR
+      ion_trap:
+        aliases:
+          - LTQ 
+          - Ion Trap
+          - Paul Trap
+  
+  IonizationSourceEnum:
+    permissible_values:
+      electrospray_ionization:
+        aliases:
+          - ESI
+      matrix_assisted_laser_desorption_ionization:
+        aliases:
+          - MALDI
+      athmospheric_pressure_photo_ionization:
+        aliases:
+          - APPI
+      athmospheric_pressure_chemical_ionization:
+        aliases:
+          - APCI
+  
+  MassSpectrumCollectionModeEnum:
+    permissible_values:
+      profile: {}
+      centroid: {}
+
+  PolarityModeEnum:
+    permissible_values:
+      positive: {}
+      negative: {}
+
   AnalyteCategoryEnum:
     permissible_values:
       metagenome:
@@ -1823,6 +1952,34 @@ enums:
       nom:
         aliases:
           - natural organic matter
+
+  ExecutionResourceEnum:
+    see_also:
+      - nmdc:DoiProviderEnum
+      - nmdc:ProcessingInstitutionEnum
+      - nmdc:ExecutionResourceEnum
+    permissible_values:
+      NERSC-Cori:
+        description: NERSC Cori supercomputer
+        aliases:
+          - Cori
+      NERSC-Perlmutter:
+        description: NERSC Perlmutter supercomputer
+        aliases:
+          - Perlmutter
+          - Saul
+      EMSL:
+        description: Environmental Molecular Sciences Laboratory
+      EMSL-RZR:
+        description: Environmental Molecular Sciences Laboratory RZR cluster
+        aliases:
+          - RZR
+      JGI:
+        description: Joint Genome Institute
+      LANL-B-div:
+        description: LANL Bioscience Division
+        aliases:
+          - B-div
 
   InstrumentModelEnum:
     permissible_values:
@@ -1871,7 +2028,6 @@ enums:
       RNA: { }
       metabolite: { }
       protein: { }
-      phenol/chloroform extraction: { }
 
   LibraryTypeEnum:
     # start using the right case for enum names
@@ -2278,7 +2434,10 @@ enums:
           - NCIT:C61538
 
   DoiProviderEnum:
-    see_also: nmdc:ProcessingInstitutionEnum
+    see_also:
+      - nmdc:DoiProviderEnum
+      - nmdc:ProcessingInstitutionEnum
+      - nmdc:ExecutionResourceEnum
     permissible_values:
       emsl:
         aliases:
@@ -2352,8 +2511,8 @@ enums:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
     permissible_values:
-      V-bottom conical tube:
-      falcon tube:
+      v-bottom_conical_tube:
+      falcon_tube:
 
   SeparationMethodEnum:
     description: The tool/substance used to separate or filter a solution or mixture.
@@ -2361,7 +2520,7 @@ enums:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
     permissible_values:
-      PTFE 96-well filter plate:
+      ptfe_96_well_filter_plate:
   
   #  SolventEnum:
   #    description: The solvents that may be used in processing metabolomic samples.
@@ -2386,13 +2545,13 @@ enums:
   
   CompoundEnum:
     permissible_values:
-      ammonium bicarbonate:
-      deionized water:
+      ammonium_bicarbonate:
+      deionized_water:
       methanol:
       trypsin:
-      chloridic acid:
+      hydrochloric_acid:
         aliases:
-          - hydrochloric acid
+          - chloridic_acid
       water:
 
   
@@ -2424,6 +2583,12 @@ enums:
       ZIC-pHILIC:
       ZIC-cHILIC:
 
+  SampleStateEnum:
+    permissible_values:
+      solid:
+      liquid:
+      gas:
+      
   ProtocolCategoryEnum:
     description: The possible protocols that may be followed for an assay.
     permissible_values:
@@ -2439,12 +2604,25 @@ enums:
       dna_extraction:
       phenol_chloroform_extraction: { }
 
+  ChromatographicCategoryEnum:
+    permissible_values:
+      liquid_chromatography:
+        aliases:
+          - LC
+      gas_chromatography:
+        aliases:
+          - GC
+      solid_phase_extraction:
+        aliases:
+          - SPE
+
 slots:
 
   analyte_category:
     required: true
     description: >
-      The type of analyte(s) that were measured in the data generation process
+      The type of analyte(s) that were measured in the data generation process and analyzed
+        in the Workflow Chain
     range: AnalyteCategoryEnum
   model:
     range: InstrumentModelEnum
@@ -2453,7 +2631,7 @@ slots:
 
   metagenome_annotation_id:
     domain: FunctionalAnnotationAggMember
-    range: WorkflowExecutionActivity
+    range: WorkflowExecution
   gene_function_id:
     range: uriorcurie
   count:
@@ -2731,9 +2909,6 @@ slots:
     multivalued: true
     inlined: true
     description: Links a study to one or more images.
-  relevant_protocols:
-    multivalued: true
-    range: string
   funding_sources:
     multivalued: true
     range: string
@@ -2831,33 +3006,33 @@ slots:
   workflow_execution_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: WorkflowExecutionActivity
+    range: WorkflowExecution
     description: This property links a database object to the set of workflow activities.
-  mags_activity_set:
+  mags_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: MagsAnalysisActivity
+    range: MagsAnalysis
     description:
       This property links a database object to the set of MAGs analysis
       activities.
-  metabolomics_analysis_activity_set:
+  metabolomics_analysis_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: MetabolomicsAnalysisActivity
+    range: MetabolomicsAnalysis
     description:
       This property links a database object to the set of metabolomics
       analysis activities.
-  metaproteomics_analysis_activity_set:
+  metaproteomics_analysis_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: MetaproteomicsAnalysisActivity
+    range: MetaproteomicsAnalysis
     description:
       This property links a database object to the set of metaproteomics
       analysis activities.
-  metagenome_annotation_activity_set:
+  metagenome_annotation_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: MetagenomeAnnotationActivity
+    range: MetagenomeAnnotation
     description:
       This property links a database object to the set of metagenome annotation
       activities.
@@ -2868,37 +3043,37 @@ slots:
     description:
       This property links a database object to the set of metagenome assembly
       activities.
-  metagenome_sequencing_activity_set:
+  metagenome_sequencing_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: MetagenomeSequencingActivity
+    range: MetagenomeSequencing
     description:
       This property links a database object to the set of metagenome sequencing
       activities.
-  metatranscriptome_activity_set:
+  metatranscriptome_analysis_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: MetatranscriptomeActivity
+    range: MetatranscriptomeAnalysis
     description:
       This property links a database object to the set of metatranscriptome
       analysis activities.
-  read_qc_analysis_activity_set:
+  read_qc_analysis_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: ReadQcAnalysisActivity
+    range: ReadQcAnalysis
     description:
       This property links a database object to the set of read QC analysis
       activities.
-  read_based_taxonomy_analysis_activity_set:
+  read_based_taxonomy_analysis_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: ReadBasedTaxonomyAnalysisActivity
+    range: ReadBasedTaxonomyAnalysis
     description: >-
       This property links a database object to the set of read based analysis activities.
-  nom_analysis_activity_set:
+  nom_analysis_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: NomAnalysisActivity
+    range: NomAnalysis
     description:
       This property links a database object to the set of natural organic
       matter (NOM) analysis activities.
@@ -2908,6 +3083,13 @@ slots:
     range: DataGeneration
     description:
       This property links a database object to the set of omics processings
+      within it.
+  workflow_chain_set:
+    domain: Database # not inherited byt mixin users
+    mixins: object_set
+    range: WorkflowChain
+    description:
+      This property links a database object to the set of workflow chains
       within it.
   pooling_set:
     domain: Database # not inherited byt mixin users
@@ -3277,4 +3459,19 @@ slots:
     domain: ChromatographicSeparationProcess
     range: StationaryPhaseEnum
     description: The material the stationary phase is comprised of used in chromatography.
+  chromatrographic_category:
+    domain: ChromatographicSeparationProcess
+    range: ChromatographicCategoryEnum
+    description: The type of chromatography used in a process.
 
+  has_reagents:
+    domain: ChemicalConversionProcess
+    range:  LaboratoryReagent
+    description: The reagents used in a chemical reaction.
+    multivalued: true
+    inlined_as_list: true
+  sample_state_information:
+    domain: ChemicalConversionProcess
+    description: >-
+      The chemical phase of a pure sample, or the state of a mixed sample
+    range: SampleStateEnum

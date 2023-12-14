@@ -1,6 +1,6 @@
-nom_analysis_activity_set:
+nom_analysis_set:
   - id: nmdc:wfnom-99-abcdefg
-    execution_resource: xxx
+    execution_resource: EMSL-RZR
     git_url: xxx
     has_input:
       - nmdc:1
@@ -9,6 +9,7 @@ nom_analysis_activity_set:
       - nmdc:3
       - nmdc:4
     type: xxx
-    started_at_time: "2018-11-111"
+    started_at_time: "2018-11-13T20:20:39+00:00"
     ended_at_time: "2018-11-13T20:20:39+00:00"
     was_informed_by: nmdc:act-99-abcdefg
+    part_of: nmdc:wfch-99-abcdefg

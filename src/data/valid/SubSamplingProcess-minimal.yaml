@@ -4,7 +4,7 @@ has_input:
 container_size:
   has_numeric_value: 50
   has_unit: mL
-contained_in: V-bottom conical tube
+contained_in: v-bottom_conical_tube
 volume:
   has_numeric_value: 20
   has_unit: mL

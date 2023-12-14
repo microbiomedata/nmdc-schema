@@ -105,12 +105,18 @@ data_generation_set:
       - nmdc:sty-11-34xj1150
     processing_institution: Battelle
     type: nmdc:OmicsProcessing
-read_qc_analysis_activity_set:
+workflow_chain_set:
+  - id: nmdc:wfch-11-ab
+    analyte_category: metagenome
+    was_informed_by: nmdc:datgen-11-s9xj2r24
+    type: nmdc:WorkflowChain
+read_qc_analysis_set:
   - id: nmdc:wfrqc-12-63da5n74
     name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74 '
     started_at_time: '2023-03-23T17:17:05.111689+00:00'
     ended_at_time: '2023-03-23T17:17:05.111725+00:00'
     was_informed_by: nmdc:datgen-11-s9xj2r24
+    part_of: nmdc:wfch-11-ab
     execution_resource: NERSC-Cori
     git_url: https://github.com/microbiomedata/ReadsQC
     has_input:
@@ -120,8 +126,6 @@ read_qc_analysis_activity_set:
       - nmdc:dobj-12-71q7wv80
       - nmdc:dobj-12-y236qp68
     type: nmdc:ReadQCAnalysisActivity
-    part_of:
-      - nmdc:wfrqc-11-hcr2by04.1
     version: b1.0.7
 pooling_set:
   - id: nmdc:poolp-99-abcdef
