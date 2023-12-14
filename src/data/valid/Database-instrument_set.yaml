@@ -4,5 +4,5 @@ instrument_set:
     vendor: illumina
     model: novaseq
   - id: nmdc:inst-12-dtTMN3
-    name: my favorite Orbitrap 
-    model: Orbitrap
+    name: my favorite Orbitrap
+    model: orbitrap
