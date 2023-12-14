@@ -4018,8 +4018,8 @@ slots:
     mixins:
     - object_set
     range: MagsAnalysis
-  metabolomics_analysis_activity_set:
-    name: metabolomics_analysis_activity_set
+  metabolomics_analysis_set:
+    name: metabolomics_analysis_set
     description: This property links a database object to the set of metabolomics
       analysis activities.
     from_schema: https://w3id.org/nmdc/nmdc
@@ -17915,7 +17915,7 @@ classes:
     - mags_set
     - material_sample_set
     - material_sampling_activity_set
-    - metabolomics_analysis_activity_set
+    - metabolomics_analysis_set
     - metagenome_annotation_activity_set
     - metagenome_assembly_set
     - metagenome_sequencing_activity_set

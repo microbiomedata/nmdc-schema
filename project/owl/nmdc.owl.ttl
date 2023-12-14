@@ -1168,7 +1168,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:metagenome_annotation_activity_set ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty nmdc:metabolomics_analysis_activity_set ],
+            owl:onProperty nmdc:metabolomics_analysis_set ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:metaproteomics_analysis_activity_set ],
@@ -1204,7 +1204,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:data_object_set ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:metabolomics_analysis_activity_set ],
+            owl:onProperty nmdc:metabolomics_analysis_set ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:nom_analysis_activity_set ],
@@ -1261,7 +1261,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:metagenome_sequencing_activity_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom nmdc:MetabolomicsAnalysis ;
-            owl:onProperty nmdc:metabolomics_analysis_activity_set ],
+            owl:onProperty nmdc:metabolomics_analysis_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom nmdc:GenomeFeature ;
             owl:onProperty nmdc:genome_feature_set ],
@@ -14425,9 +14425,9 @@ nmdc:metabolite_quantified a owl:ObjectProperty,
     skos:definition "the specific metabolite identifier" ;
     skos:inScheme nmdc:core .
 
-nmdc:metabolomics_analysis_activity_set a owl:ObjectProperty,
+nmdc:metabolomics_analysis_set a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "metabolomics_analysis_activity_set" ;
+    rdfs:label "metabolomics_analysis_set" ;
     rdfs:range nmdc:MetabolomicsAnalysis ;
     rdfs:subPropertyOf nmdc:object_set ;
     skos:definition "This property links a database object to the set of metabolomics analysis activities." ;

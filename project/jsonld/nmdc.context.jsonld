@@ -1808,7 +1808,7 @@
       "metabolite_quantified": {
          "@type": "@id"
       },
-      "metabolomics_analysis_activity_set": {
+      "metabolomics_analysis_set": {
          "@type": "@id"
       },
       "metagenome_annotation_activity_set": {

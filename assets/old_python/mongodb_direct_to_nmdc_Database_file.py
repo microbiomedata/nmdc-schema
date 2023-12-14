@@ -438,7 +438,7 @@ def export_to_yaml(selected_collections, env_file, mongo_db_name, mongo_host, mo
         # REPAIR: metabolite quantification alternative identifiers must use prefix:local CURIEs
         #   these are external terms and don't require referential integrity withing the database
         # why are the objects of nmdc:alternative_identifiers typed like "cas:3685-26-5"^^xsd:anyURI ?
-        if non_nmdc_id_fixes and selected_collection == 'metabolomics_analysis_activity_set':
+        if non_nmdc_id_fixes and selected_collection == 'metabolomics_analysis_set':
             for doc in doc_list:
                 id_val = doc['id']
                 if 'has_metabolite_quantifications' in doc:

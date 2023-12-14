@@ -3505,7 +3505,7 @@
                     },
                     "type": "array"
                 },
-                "metabolomics_analysis_activity_set": {
+                "metabolomics_analysis_set": {
                     "description": "This property links a database object to the set of metabolomics analysis activities.",
                     "items": {
                         "$ref": "#/$defs/MetabolomicsAnalysis"
@@ -8458,7 +8458,7 @@
             },
             "type": "array"
         },
-        "metabolomics_analysis_activity_set": {
+        "metabolomics_analysis_set": {
             "description": "This property links a database object to the set of metabolomics analysis activities.",
             "items": {
                 "$ref": "#/$defs/MetabolomicsAnalysis"

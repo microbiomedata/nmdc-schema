@@ -202,7 +202,7 @@ classes:
       - genome_feature_set
       - library_preparation_set
       - mags_set
-      - metabolomics_analysis_activity_set
+      - metabolomics_analysis_set
       - metagenome_annotation_activity_set
       - metagenome_assembly_set
       - metagenome_sequencing_activity_set
@@ -2810,7 +2810,7 @@ slots:
     description:
       This property links a database object to the set of MAGs analysis
       activities.
-  metabolomics_analysis_activity_set:
+  metabolomics_analysis_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
     range: MetabolomicsAnalysis
