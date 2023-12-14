@@ -143,12 +143,11 @@ subsets:
       - Assignment of the data_portal_subset is incomplete in the schema.
 
 classes:
-
   NucleotideSequencing:
-    description: A DataGeneration in which the sequence of DNA or RNA molecules is generated. 
+    description: A DataGeneration in which the sequence of DNA or RNA molecules is generated.
     is_a: DataGeneration
-    comments: For example data generated from an Illumina or Pacific Biosciences instrument.  
-    slots: 
+    comments: For example data generated from an Illumina or Pacific Biosciences instrument.
+    slots:
       - gold_sequencing_project_identifiers
       - seq_meth
       - ncbi_project_name
@@ -159,10 +158,10 @@ classes:
           syntax: "{id_nmdc_prefix}:dgns-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-  FluidHandling: 
+  FluidHandling:
     is_a: MaterialProcessing
     description: the process that defines how a processed sample is introduced into the mass spectrometer
-    abstract: true 
+    abstract: true
 
   DirectInfusionProcess:
     description: the process that defines how a processed sample is introduced into the mass spectrometer witout previous chromatographic separation
@@ -173,7 +172,7 @@ classes:
   MassSpectrometry:
     description: Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio and relative abundance.
     is_a: DataGeneration
-    exact_mappings: 
+    exact_mappings:
       - CHMO:0000470
     slots:
       - eluent_introduction
@@ -190,7 +189,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:dgms-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-      
+
   FunctionalAnnotationAggMember:
     slots:
       - metagenome_annotation_id
@@ -238,6 +237,23 @@ classes:
       - read_qc_analysis_set
       - study_set
       - workflow_execution_set
+      - instrument_set
+
+  Instrument:
+    description:
+    is_a: NamedThing
+    slots:
+      - vendor
+      - model
+    aliases:
+      - device
+    exact_mappings:
+      - OBI:0000968
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
 
   Pooling:
     class_uri: nmdc:Pooling
@@ -309,7 +325,7 @@ classes:
       - reagent
       - reactant
     description: >-
-       A substance used in a chemical reaction to detect, measure, examine, or produce other substances.
+      A substance used in a chemical reaction to detect, measure, examine, or produce other substances.
     slots:
       - chemical_formula
       - inchi_key
@@ -1599,16 +1615,17 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-        
+
 
   MaterialProcessing:
     is_a: PlannedProcess
     description:
       A process that takes one or more samples as inputs and generates
-      one or more samples as outputs. 
+      one or more samples as outputs.
     slots:
       - has_input
-    notes: 
+      - instrument_used
+    notes:
       - This class is a replacement for BiosampleProcessing.
     slot_usage:
       id:
@@ -1783,7 +1800,6 @@ classes:
       - has_output
       - insdc_bioproject_identifiers
       - insdc_experiment_identifiers
-      - instrument_name
       - mod_date
       - ncbi_project_name
       - nucl_acid_amp
@@ -1800,6 +1816,7 @@ classes:
       - target_gene
       - target_subfragment
       - type
+      - instrument_used
 
     slot_usage:
       id:
@@ -1846,14 +1863,14 @@ enums:
     permissible_values:
       direct_infusion:
         aliases:
-         - DI
-      autosampler: {}
+          - DI
+      autosampler: { }
   
   AcquisitionCategoryEnum:
     permissible_values:
       full_scan:
         aliases:
-         - MS
+          - MS
       tandem_mass_spectrum:
         aliases:
           -MSn
@@ -1861,7 +1878,7 @@ enums:
     permissible_values:
       data_independent_acquisition:
         aliases:
-         - DIA
+          - DIA
       data_dependent_acquisition:
         aliases:
           -DDA
@@ -1888,7 +1905,7 @@ enums:
           - ICR
       ion_trap:
         aliases:
-          - LTQ 
+          - LTQ
           - Ion Trap
           - Paul Trap
   
@@ -1909,13 +1926,13 @@ enums:
   
   MassSpectrumCollectionModeEnum:
     permissible_values:
-      profile: {}
-      centroid: {}
+      profile: { }
+      centroid: { }
 
   PolarityModeEnum:
     permissible_values:
-      positive: {}
-      negative: {}
+      positive: { }
+      negative: { }
 
   AnalyteCategoryEnum:
     permissible_values:
@@ -1966,17 +1983,31 @@ enums:
 
   InstrumentModelEnum:
     permissible_values:
-      Orbitrap:
-      VortexGenie2:
-      PIPETMAN F144059M:
+      orbitrap:
+        aliases:
+          - Orbitrap
+      vortex_genie_2:
+        aliases:
+          - VortexGenie2
+      novaseq:
+        aliases:
+          - NovaSeq
 
   InstrumentVendorEnum:
     permissible_values:
-      ThermoFisher:
-      VWR:
-      PerkinElmer:
-      Gilson:
-      ScientificIndustries:
+      thermo_fisher:
+        aliases:
+          - ThermoFisher
+          - Thermo Fisher Scientific
+      vwr:
+      perkin_elmer:
+      gilson:
+      scientific_industries:
+      illumina:
+        aliases:
+          - Illumina
+        exact_mappings:
+          - BAO:0200000
 
   StatusEnum:
     permissible_values:
@@ -2568,7 +2599,7 @@ enums:
       solid:
       liquid:
       gas:
-      
+
   ProtocolCategoryEnum:
     description: The possible protocols that may be followed for an assay.
     permissible_values:
@@ -2649,7 +2680,7 @@ slots:
   library_preparation_kit:
     range: string
 
- ## WHY ARE THESE COMMENTED OUT?
+  ## WHY ARE THESE COMMENTED OUT?
   #    exact_mappings:
   #      - GENEPIO:0001450
   #  processed_date: # can we move this or infer this from the date of some other process?
@@ -3092,6 +3123,12 @@ slots:
     mixins: object_set
     range: LibraryPreparation
     description: This property links a database object to the set of DNA extractions within it.
+  instrument_set:
+    domain: Database # not inherited byt mixin users
+    mixins: object_set
+    range: Instrument
+    description: This property links a database object to the set of instruments within it.
+
 
   omics_type:
     deprecated_element_has_exact_replacement: analyte_category

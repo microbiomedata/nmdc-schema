@@ -7,5 +7,7 @@ conditionings:
   - Methanol
   - Sterile water #Milli-Q
 filtration_category: pressure
-instrument_name: CEREX System 96 processor
+#instrument_name: CEREX System 96 processor
+instrument_used: 
+  - nmdc:inst-12-125
 is_pressurized: true

@@ -12,5 +12,4 @@ nom_analysis_activity_set:
     type: nmdc:NomAnalysisActivity
     started_at_time: "2018-11-13T20:20:39+00:00"
     ended_at_time: "2018-11-13T20:20:39+00:00"
-    was_informed_by: nmdc:act-99-abcdefg
     used: 12T_FTICR_B

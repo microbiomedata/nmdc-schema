@@ -167,7 +167,6 @@ classes:
       - processing_institution
       - protocol_link
       - start_date
-      - instrument_name # or "used" ?
     slot_usage:
       designated_class:
         comments:
@@ -580,7 +579,7 @@ slots:
     domain: NamedThing
     range: NamedThing
     multivalued: true
-    description: An output biosample to a processing step
+    description: An output from a process.
 
   part_of:
     aliases:
