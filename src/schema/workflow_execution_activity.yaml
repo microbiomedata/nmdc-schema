@@ -583,7 +583,7 @@ slots:
   has_calibration:
     domain: ChromatographicSeparationProcess
     range: DataObject
-    description: A intrument data that is used to calibrate retention time or to calculate rentention idex
+    description: A instrument data that is used to calibrate retention time or to calculate rentention idex
 
   has_metabolite_quantifications:
     domain: MetabolomicsAnalysis
