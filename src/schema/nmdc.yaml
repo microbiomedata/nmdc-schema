@@ -2595,6 +2595,11 @@ enums:
 
 slots:
 
+  data_category: 
+    domain: DataObject
+    range: DataCategoryEnum
+    description: The category of the file, such as instrument data from data generation or processed data from a workflow wxecution.
+
   analyte_category:
     required: true
     description: >
@@ -3099,12 +3104,6 @@ slots:
       - value: metatranscriptome
       - value: metagenome
 
-  data_category: 
-    domain: DataObject
-    range: DataCategoryEnum
-    description: The category of the file, such as instrument data from data generation or processed data from a workflow wxecution.
-    
-          
   data_object_type:
     domain: DataObject
     range: file type enum
