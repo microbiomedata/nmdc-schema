@@ -1479,12 +1479,12 @@ classes:
       - principal_investigator
       - related_identifiers
       #- relevant_protocols
+      - protocol_link
       - specific_ecosystem
       - study_image
       - title
       - type
       - websites
-
     slot_usage:
       id:
         required: true
@@ -1529,6 +1529,8 @@ classes:
         comments:
           - Value is the id of the umbrella study or consortium.
         range: Study
+      protocol_link:
+        multivalued: true
     exact_mappings:
       - OBI:0000066
       - SIO:000747
