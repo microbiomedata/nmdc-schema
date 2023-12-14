@@ -225,7 +225,7 @@ classes:
           syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-  MetatranscriptomeActivity:
+  MetatranscriptomeAnalysis:
     is_a: WorkflowExecution
     description: >-
       A metatranscriptome activity that e.g. pools assembly and annotation activity.

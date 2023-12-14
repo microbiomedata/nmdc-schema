@@ -4065,7 +4065,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    range: MetatranscriptomeActivity
+    range: MetatranscriptomeAnalysis
   read_qc_analysis_activity_set:
     name: read_qc_analysis_activity_set
     description: This property links a database object to the set of read QC analysis
@@ -19781,8 +19781,8 @@ classes:
         structured_pattern:
           syntax: .*
           interpolated: true
-  MetatranscriptomeActivity:
-    name: MetatranscriptomeActivity
+  MetatranscriptomeAnalysis:
+    name: MetatranscriptomeAnalysis
     description: A metatranscriptome activity that e.g. pools assembly and annotation
       activity.
     in_subset:

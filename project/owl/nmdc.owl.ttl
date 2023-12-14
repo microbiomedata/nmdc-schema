@@ -1101,7 +1101,7 @@ nmdc:Database a owl:Class,
             owl:allValuesFrom nmdc:FunctionalAnnotation ;
             owl:onProperty nmdc:functional_annotation_set ],
         [ a owl:Restriction ;
-            owl:allValuesFrom nmdc:MetatranscriptomeActivity ;
+            owl:allValuesFrom nmdc:MetatranscriptomeAnalysis ;
             owl:onProperty nmdc:metatranscriptome_activity_set ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
@@ -5880,9 +5880,9 @@ nmdc:MetaproteomicsAnalysisActivity a owl:Class,
         nmdc:WorkflowExecution ;
     skos:inScheme nmdc:workflow_execution_activity .
 
-nmdc:MetatranscriptomeActivity a owl:Class,
+nmdc:MetatranscriptomeAnalysis a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "MetatranscriptomeActivity" ;
+    rdfs:label "MetatranscriptomeAnalysis" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty nmdc:id ],
@@ -14474,7 +14474,7 @@ nmdc:metaproteomics_analysis_activity_set a owl:ObjectProperty,
 nmdc:metatranscriptome_activity_set a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "metatranscriptome_activity_set" ;
-    rdfs:range nmdc:MetatranscriptomeActivity ;
+    rdfs:range nmdc:MetatranscriptomeAnalysis ;
     rdfs:subPropertyOf nmdc:object_set ;
     skos:definition "This property links a database object to the set of metatranscriptome analysis activities." ;
     skos:inScheme nmdc:nmdc .

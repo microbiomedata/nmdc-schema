@@ -3543,7 +3543,7 @@
                 "metatranscriptome_activity_set": {
                     "description": "This property links a database object to the set of metatranscriptome analysis activities.",
                     "items": {
-                        "$ref": "#/$defs/MetatranscriptomeActivity"
+                        "$ref": "#/$defs/MetatranscriptomeAnalysis"
                     },
                     "type": "array"
                 },
@@ -5769,7 +5769,7 @@
             "title": "MetaproteomicsAnalysisActivity",
             "type": "object"
         },
-        "MetatranscriptomeActivity": {
+        "MetatranscriptomeAnalysis": {
             "additionalProperties": false,
             "description": "A metatranscriptome activity that e.g. pools assembly and annotation activity.",
             "properties": {
@@ -5841,7 +5841,7 @@
                 "started_at_time",
                 "ended_at_time"
             ],
-            "title": "MetatranscriptomeActivity",
+            "title": "MetatranscriptomeAnalysis",
             "type": "object"
         },
         "MetatranscriptomeAnnotation": {
@@ -8496,7 +8496,7 @@
         "metatranscriptome_activity_set": {
             "description": "This property links a database object to the set of metatranscriptome analysis activities.",
             "items": {
-                "$ref": "#/$defs/MetatranscriptomeActivity"
+                "$ref": "#/$defs/MetatranscriptomeAnalysis"
             },
             "type": "array"
         },
