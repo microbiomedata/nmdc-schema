@@ -10,9 +10,8 @@ workflow_execution_set:
   - nmdc:a79973ef9a0c96d13fa19b2725b21d17
   - nmdc:1055b8fab0f63a1e56312813f47897ec
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0153825
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-11-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-v7tNhU
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -27,9 +26,8 @@ workflow_execution_set:
   - nmdc:c09c5f5c4f776e6250cf35003e939729
   - nmdc:fd3023efdffe55105bc192f5b6cb4675
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119849
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-11-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-bzS2v1
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -44,9 +42,8 @@ workflow_execution_set:
   - nmdc:c93e3ebaf3c21c50bb1071d0e07daa48
   - nmdc:6e16b6f3d73dc771eba4c729600c9551
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119850
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-11-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-sXZVjh
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -61,9 +58,8 @@ workflow_execution_set:
   - nmdc:f8219a779a150e71c672dd2bfd695365
   - nmdc:adfd5d1e9ec99ea5917d8b9efdbd9130
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119851
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-12-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-3fBeJp
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -78,9 +74,8 @@ workflow_execution_set:
   - nmdc:18c7f9fe5340509f00326c70c1815e88
   - nmdc:4b43a24ab20530a72e06a8721b2c09db
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119852
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-13-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-F6E55A
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -95,9 +90,8 @@ workflow_execution_set:
   - nmdc:c0c580b59189351b4f4919701e4db0f2
   - nmdc:14e390786d1f1eb60835aca96081ab23
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119853
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-13-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-Zrij2v
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -112,9 +106,8 @@ workflow_execution_set:
   - nmdc:dba970c890226f16b008f8043ca38d9b
   - nmdc:b476e6c11fed4a3254eda4d15a4183c7
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119854
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-14-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-swlzri
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -129,9 +122,8 @@ workflow_execution_set:
   - nmdc:bb8a58ce8c8850f95dc84aa49a7a96f7
   - nmdc:3a05f63e1899f82d11d931adfe69d86a
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119855
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-14-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-k15Id6
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -146,9 +138,8 @@ workflow_execution_set:
   - nmdc:42164be43a9ab6da393c7d48825e289e
   - nmdc:72aaf6784de9aa35be58e12898bff353
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119856
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-15-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-phL8rY
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -163,9 +154,8 @@ workflow_execution_set:
   - nmdc:5a77bb24847fcbf1c3fec6c40aa2ac14
   - nmdc:89ef0619642dead830035ac9389ca802
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119857
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-16-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-rIKnPj
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -180,9 +170,8 @@ workflow_execution_set:
   - nmdc:0b7a5694aefdea2070dd1b21a21a9abb
   - nmdc:43157d8de38b673ce4a4d70ee3a1198c
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119858
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-17-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-NHVre9
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -197,9 +186,8 @@ workflow_execution_set:
   - nmdc:eb09f7f461ad13a47bf5609cdcfc853c
   - nmdc:10128acfa04b42839c133fe298eab941
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119859
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-18-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-n84Tew
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -214,9 +202,8 @@ workflow_execution_set:
   - nmdc:613152955d79f4344828738fb898d679
   - nmdc:959ef4ff2d105052b094138aa09b5c94
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119860
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-19-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-6IBBqL
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -231,9 +218,8 @@ workflow_execution_set:
   - nmdc:1712f2bb1fa749515ce0bf2b34f8b559
   - nmdc:0f06cb228b08e2aee24c65444d0bfc21
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119861
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-20-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-sCL9p6
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -248,9 +234,8 @@ workflow_execution_set:
   - nmdc:19e4e0238ac9c1d07646431ee62fa2d9
   - nmdc:d8e967e38a491678164ab203551aad61
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119862
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-21-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-xtaqhx
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -265,9 +250,8 @@ workflow_execution_set:
   - nmdc:8be139ccce758a8845092122546ff2b3
   - nmdc:46cf62901adcbcb2ca2c890b6dc8e6bd
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119863
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-22-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-cnpEPb
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -282,9 +266,8 @@ workflow_execution_set:
   - nmdc:b803f40f00f0c9988dd5968acd4821cb
   - nmdc:3695d84852c6345c02f5f1c3e3f3a423
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119864
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-23-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-bFWXyt
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -299,9 +282,8 @@ workflow_execution_set:
   - nmdc:73e37fa7c4626d47580d5705cb656383
   - nmdc:9f23cbec97a89ce503564d05b061f37f
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119865
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-24-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-H9y4oj
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -316,9 +298,8 @@ workflow_execution_set:
   - nmdc:2de8312087081f9aeac56c56195a5fc2
   - nmdc:5d1bb402cf5170de632179f2515a224f
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119866
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-25-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-exEkWs
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -333,9 +314,8 @@ workflow_execution_set:
   - nmdc:b20ef196169b86e1498e45194adeff8b
   - nmdc:fd11757a61a2400b5ed8077c62cc97b9
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119867
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-26-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-GzdjHY
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -350,9 +330,8 @@ workflow_execution_set:
   - nmdc:3c788da6e9004cd3ec276d5e44b19548
   - nmdc:804bc97cd8e16289290024ea3a7edbde
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119868
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-27-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-4V6suA
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -367,9 +346,8 @@ workflow_execution_set:
   - nmdc:c46f4c6ee971aff627dcbfc8f1e3a9e8
   - nmdc:431354e60f7a35b67c2f7ec52b955808
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119869
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-28-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-JoTrst
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -384,9 +362,8 @@ workflow_execution_set:
   - nmdc:977d1fc2445d1aecd5f30e0197535af9
   - nmdc:4b204c8e49c59d862209579b79c44545
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119870
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-29-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-WMxKQm
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -401,9 +378,8 @@ workflow_execution_set:
   - nmdc:8c6e1665a12e9478f7f13b9177b08083
   - nmdc:b2f6e385af8cbe49df3044d523da5c82
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0119871
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-30-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-KNca8B
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -418,9 +394,8 @@ workflow_execution_set:
   - nmdc:be62e3b68916c8077955d0b3d3aaf5aa
   - nmdc:feb21db71dc44afceeb88bb725315b42
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127623
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-31-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-dNish1
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -435,9 +410,8 @@ workflow_execution_set:
   - nmdc:075262a23b12fd4da073a973a5b6cf15
   - nmdc:3fb3966095303ea8aa7f27bff3e9db50
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127624
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-32-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-U1umHi
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -452,9 +426,8 @@ workflow_execution_set:
   - nmdc:c6fb34fc2da63a5cc46522279e768db9
   - nmdc:bf23db2dda841d77cf51b7c9120ba503
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127625
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-33-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-Teg8kK
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -469,9 +442,8 @@ workflow_execution_set:
   - nmdc:11741b35b589852f2b652d1f73afb663
   - nmdc:f1b6a4b001b67ec72eb5b5411e1321c9
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127626
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-34-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-qB4hXN
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -486,9 +458,8 @@ workflow_execution_set:
   - nmdc:fec0b3842897bbce9166a628c4c2d7a0
   - nmdc:48ab9737528d088ffde37b733e3f728f
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127627
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-35-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-72JIpi
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -503,9 +474,8 @@ workflow_execution_set:
   - nmdc:ec55b61e1204cde7fe61841179b88b53
   - nmdc:bd55dfd59ed0aa7ea685734c5b7ecbab
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127628
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-36-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-mbF4y1
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -520,9 +490,8 @@ workflow_execution_set:
   - nmdc:9559ebd9a8921ff8ae9f89c2ffcef6f7
   - nmdc:9b3fb3e409e3d3128a8a43cc58d32a95
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127629
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-37-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-ylyhlC
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -537,9 +506,8 @@ workflow_execution_set:
   - nmdc:6bca5ad106b3519416205a82d3a14b16
   - nmdc:f921989651475b06052058126db54de9
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127630
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-38-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-56GrFn
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -554,9 +522,8 @@ workflow_execution_set:
   - nmdc:04c97ac7af06bf37da8f1ffe827e454d
   - nmdc:d57f28027b2d6f82b96f5413bf8c9a59
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127631
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-39-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-i3NwIC
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -571,9 +538,8 @@ workflow_execution_set:
   - nmdc:a89e8af0fc6daf895e7a87f1ff7087f2
   - nmdc:89b895fbf3c13801ddba22ff59bb385a
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127632
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-40-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-GjHwbW
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -588,9 +554,8 @@ workflow_execution_set:
   - nmdc:79fd564d59bf9fe4cfb2c771daa84f29
   - nmdc:b18381667b4e7401e1bb58e8aede5d4a
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127633
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-41-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-wx4FsZ
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -605,9 +570,8 @@ workflow_execution_set:
   - nmdc:3374b8708ae6b77b16cd01ce4f33ee72
   - nmdc:1e286398d6b164538bbdefb9cc8a41e9
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127634
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-42-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-av43Nc
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -622,9 +586,8 @@ workflow_execution_set:
   - nmdc:b2ee2639269e6d665f772fc8c4e31d07
   - nmdc:e1cd02b3a92223d8e30e8d7c90837d9a
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127635
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-43-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-UbQ1cX
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -639,9 +602,8 @@ workflow_execution_set:
   - nmdc:66d9d6751efad0b8019a565488f950a5
   - nmdc:e3b57dff7ca37c0da6b7d4bfb4450d9c
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127636
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-44-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-43gCPe
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -656,9 +618,8 @@ workflow_execution_set:
   - nmdc:c43a6b5a306a8f14aab780d8f1bf9c41
   - nmdc:5f6b287493cde8cf8cb49348a2868aa6
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127637
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-45-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-226YUT
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -673,9 +634,8 @@ workflow_execution_set:
   - nmdc:17993d4fcfa7be4fd4488804d23b67c6
   - nmdc:2ca3e1a0ba8007e86dedbec47e85adba
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127638
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-46-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-QxzAEB
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -690,9 +650,8 @@ workflow_execution_set:
   - nmdc:fccc8283a46f12babeed0b2c7cc4eebd
   - nmdc:d0452fefd4ad4f4cd10c974294bf9058
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127639
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-47-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-JeORrG
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -707,9 +666,8 @@ workflow_execution_set:
   - nmdc:1fbb7302a6ad581085d561e9fd3ed802
   - nmdc:812cf8b77747ff65cfd237158535d310
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127640
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-48-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-UKUKLq
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -724,9 +682,8 @@ workflow_execution_set:
   - nmdc:d10b0c9b0d5e646d09c570eb2e08b793
   - nmdc:a33ac2dc640b7088767a99517f22421f
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127641
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-49-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-QhDga7
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -741,9 +698,8 @@ workflow_execution_set:
   - nmdc:263acdd17bdb9ed72102610070da3d65
   - nmdc:9e55f66e86f57487e23029b90a84c4a4
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127642
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-50-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-i0BJTw
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -758,9 +714,8 @@ workflow_execution_set:
   - nmdc:7434bd60874fc6d05530ee0652a9e18f
   - nmdc:d897fea88896a93843966962f6bbb7be
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127643
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-51-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-CDkOOW
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -775,9 +730,8 @@ workflow_execution_set:
   - nmdc:2c7d55cbee1f35793da90275740d3651
   - nmdc:0973e6d47848f6677ced2a8d463670fa
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127644
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-52-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-DNvmyp
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -792,9 +746,8 @@ workflow_execution_set:
   - nmdc:2ab0820d09b9c331ec56d7d3e20552e6
   - nmdc:06280b3737fbf704d850ac68da190166
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127645
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-53-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-Oxm5LI
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -809,9 +762,8 @@ workflow_execution_set:
   - nmdc:646648c11733f7ab7ea23008729360ce
   - nmdc:94574634e1ccfe241af033259e27df1a
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127646
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-54-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-RiJ5rZ
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -826,9 +778,8 @@ workflow_execution_set:
   - nmdc:ec6d01297279eee2d4c03ecfda9309c9
   - nmdc:a57c9b7f192351676e897b8187cf6641
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127647
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-55-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-3Xgfcz
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -843,9 +794,8 @@ workflow_execution_set:
   - nmdc:d27fabc532b52dec4afa4673f920633a
   - nmdc:863f93ecf208a6e19f17d460d8e1a963
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127648
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-56-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-0gilcH
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -860,9 +810,8 @@ workflow_execution_set:
   - nmdc:56c3ac34fb2f1c2ba7bcd9bd56be731a
   - nmdc:cff0a71781a84c7096ee79b39c3336f8
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127649
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-57-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-3TAfCa
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -877,9 +826,8 @@ workflow_execution_set:
   - nmdc:67dfacdfc27cb6b0ec4787e1a40d9547
   - nmdc:714fb73a8b3011d0b2faea98eda477c3
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127651
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-59-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-Uv1aai
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -894,9 +842,8 @@ workflow_execution_set:
   - nmdc:48bb698de57cd77bf1ddda9004e89c01
   - nmdc:6b39045cb99ca6220e27c4fa960f4dd1
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127652
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-60-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-XcNXLE
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -911,9 +858,8 @@ workflow_execution_set:
   - nmdc:658231efecf9d087ec2a6e9467f4e968
   - nmdc:511ae319ddff2bdcbc3296d951e42d7e
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127653
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-61-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-RGaB6W
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -928,9 +874,8 @@ workflow_execution_set:
   - nmdc:deda4116aac7e262c0edf3358bb8e384
   - nmdc:a9cf54b925e1c5b8c3e0299730f5a464
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127654
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-62-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-z7uO9d
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -945,9 +890,8 @@ workflow_execution_set:
   - nmdc:a31096eb3e473fd0c68d09096bc3fd85
   - nmdc:05e2702ecae6ba0ba0b0898132850b9f
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127655
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-63-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-jz3us6
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -962,9 +906,8 @@ workflow_execution_set:
   - nmdc:2819bbb349ca5bdbf311aeae6ada532b
   - nmdc:0c2ae5a86d4840a0b324d73977170f1e
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0127656
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-64-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-a9m4gL
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -979,9 +922,8 @@ workflow_execution_set:
   - nmdc:fc419491cce16671e828d76083252841
   - nmdc:10117f9500d0dd54655a5d70195f7df5
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0115664
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-64-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-yo16Ew
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -996,9 +938,8 @@ workflow_execution_set:
   - nmdc:51f3c008db6a106ee14e160f35f7d9f3
   - nmdc:dcb8211231f718d57e22f8dea1efc6d0
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0115675
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-65-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-vhVDYB
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1013,9 +954,8 @@ workflow_execution_set:
   - nmdc:d325906b9b82b3bfc2fe8ed7321a828e
   - nmdc:2fba563f11988f4e30d2b4283c3c5487
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0115673
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-66-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-nlSyxA
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1030,9 +970,8 @@ workflow_execution_set:
   - nmdc:c0365d39cb481d6e0f729b587dac10c8
   - nmdc:bfbd1bd1ad70307dd01b699ecc4ffb2a
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0115677
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-67-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-eo5wHj
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1047,9 +986,8 @@ workflow_execution_set:
   - nmdc:78a99f435ce2bdd6cd83ebb807dc0ef3
   - nmdc:ac989404b8a9e07880788cfb061015ba
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0115678
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-68-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-ecPEJ8
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1064,9 +1002,8 @@ workflow_execution_set:
   - nmdc:1b5b79d300bb60afffec76da4cda7f14
   - nmdc:431860b46c896880c1d8d779fb2645ec
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0115665
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-69-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-PTHtcy
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1081,9 +1018,8 @@ workflow_execution_set:
   - nmdc:f5a4336c7ac10e908cfe90a61a991c65
   - nmdc:ad6e88d469fbad7b0684afb933403a6c
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0115671
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-70-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-jwN3cK
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1098,9 +1034,9 @@ workflow_execution_set:
   - nmdc:70c8e0fc6e64b20e99a4c0f783014142
   - nmdc:654201c4699079bdd923dcff52881c07
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0115666
+  execution_resource: NERSC-Cori
+
   part_of: nmdc:wfch-71-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-Cgtoyl
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1115,9 +1051,8 @@ workflow_execution_set:
   - nmdc:6de20d427454895dce6caeb7b9543c11
   - nmdc:9c68523f458ee1f8ec395e1442b1f508
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0115669
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-72-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-EfFMDW
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1132,9 +1067,8 @@ workflow_execution_set:
   - nmdc:acdedd1c48e28e4f4e0d0679cae417f9
   - nmdc:6f236cc8b728333fcf85e4f27873a500
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0115667
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-72-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-0AwQGw
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1149,9 +1083,8 @@ workflow_execution_set:
   - nmdc:5193d8fa7e151b96396afa8d61851af8
   - nmdc:e3b04bb85be48814ca078ee871a9296b
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0115676
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-73-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-CroPRX
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1166,9 +1099,8 @@ workflow_execution_set:
   - nmdc:f97c44951275f8b68fa94ded40fda756
   - nmdc:b4764f173896dcb134d7c94c1ee13ca3
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0115668
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-74-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-HHkLNr
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1183,9 +1115,8 @@ workflow_execution_set:
   - nmdc:754074d3bcade65aba2a6f8236619ab7
   - nmdc:a4b4c623457aa10161d88a9ac4eef522
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0115663
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-75-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-VCC4zi
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1200,9 +1131,8 @@ workflow_execution_set:
   - nmdc:7e531f55eba2bd29d5bb4b1af8417b7c
   - nmdc:f05ecf0db08d716edb7a3f499582a2b7
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0115670
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-76-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-w74cHl
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1217,9 +1147,8 @@ workflow_execution_set:
   - nmdc:b0687d58e2803a41864c9d830977402b
   - nmdc:644d67586f9337bf4d12ff5859d4cd54
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0115672
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-77-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-bSPq9H
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1234,9 +1163,8 @@ workflow_execution_set:
   - nmdc:c70d6973abeb3ee231d3e38c3c5dced4
   - nmdc:17f2fbdeb3f5891c37f2e9e43a40c7b1
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0115674
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-78-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-0UgR6E
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1251,9 +1179,8 @@ workflow_execution_set:
   - nmdc:21f3d777493f87403b60a4a1b3dd2f1b
   - nmdc:b63b42c7892b4a14e5661bca5bfa2419
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0115679
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-79-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-fLwkIr
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1268,9 +1195,8 @@ workflow_execution_set:
   - nmdc:1d25e5266e86688b9e65764a9f181e27
   - nmdc:3725668a447e1c7e7e639376a1017e8f
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321263
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-80-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-aIy9XQ
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1285,9 +1211,8 @@ workflow_execution_set:
   - nmdc:409f86c6fccbe946bc56108427b01108
   - nmdc:e4e0da015bbaafeb9199ad669ae71702
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321264
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-80-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-oWCV5s
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1302,9 +1227,8 @@ workflow_execution_set:
   - nmdc:1de4cc65fa1e329eccf2cc9982b126aa
   - nmdc:b91dc0c20caa465338c63c01e2c1328c
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321265
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-81-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-lEBJxj
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1319,9 +1243,8 @@ workflow_execution_set:
   - nmdc:a98cf4ad6cc56d5a1992c1c5b8027525
   - nmdc:e19fcc4f4eeb2ebaa6deec9f53e1e2d7
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321266
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-82-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-qlz9HX
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1336,9 +1259,8 @@ workflow_execution_set:
   - nmdc:716d26a135a99c9efc8c49d4b294f8e8
   - nmdc:ff9b33e360b07cf16501e4002cceb1a3
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321267
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-83-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-2Qr8Pe
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1353,9 +1275,8 @@ workflow_execution_set:
   - nmdc:313edf6edf574cd30a06f3695c98c0fe
   - nmdc:8ebacf3cb9208f5788c4a664e2bb6155
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321268
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-84-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-vlNUXC
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1370,9 +1291,8 @@ workflow_execution_set:
   - nmdc:8036d9e860e7c6ac63d62389b012cc39
   - nmdc:1eebc50c86e6e560d910b68358c76117
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321269
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-85-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-T4zSdA
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1387,9 +1307,8 @@ workflow_execution_set:
   - nmdc:f76b4199f7c1a19bbec3f8a3c39967c8
   - nmdc:d325fdb48d28bb5e04b261496c897a80
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321270
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-86-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-fPJH8j
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1404,9 +1323,8 @@ workflow_execution_set:
   - nmdc:1492b148b7432379040c78f4b1d84eed
   - nmdc:d5241932493adac238e254fe0ea0b1b3
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321271
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-87-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-vvPofB
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1421,9 +1339,8 @@ workflow_execution_set:
   - nmdc:311a2b8d368d7f20869eb709f6a2fbca
   - nmdc:456ee70f5d3428e1a1326bf3b3a3f45b
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321272
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-88-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-ulEnFz
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1438,9 +1355,8 @@ workflow_execution_set:
   - nmdc:fd5fd05a55dad39734cb7845be8f1455
   - nmdc:f6c682e41266abf2a82301cee11ecc2c
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321273
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-89-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-ltxbNs
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1455,9 +1371,8 @@ workflow_execution_set:
   - nmdc:880903dfa10de6c316ea4b5648c65022
   - nmdc:28399ee3579aabdd7a96181a85a36b08
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321274
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-90-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-eWTU43
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1472,9 +1387,8 @@ workflow_execution_set:
   - nmdc:ad8da930414a7a388eb050a8b6fc089f
   - nmdc:6f23809a438fa0ab8784393345dd9485
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321275
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-91-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-YDynsC
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1489,9 +1403,8 @@ workflow_execution_set:
   - nmdc:cbfb3e7e74bb881dcb516e1d0388a9f7
   - nmdc:6c84c9ba98e6d4420568ccdee2d8f0ba
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321276
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-92-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-tMBif9
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1506,9 +1419,8 @@ workflow_execution_set:
   - nmdc:835275caf77ddcc493b4354cb4d10eab
   - nmdc:7222ad2fb0e606000ea88c4d22595c1b
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321277
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-93-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-XjMQse
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1523,9 +1435,8 @@ workflow_execution_set:
   - nmdc:2cd8a777b2b2f56a47e8f99269c2278e
   - nmdc:36c79ccbf21d3d76d92e670e24ca0321
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321278
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-94-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-henu5l
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1540,9 +1451,8 @@ workflow_execution_set:
   - nmdc:1150c8570758aea8c9b32602ac9df694
   - nmdc:3be5100c3d71a32afbe19ba3bd9648d2
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321279
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-95-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-uw8bXm
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1557,9 +1467,8 @@ workflow_execution_set:
   - nmdc:ca620fc038f51501e1dd5af9bf085231
   - nmdc:20def41369f21c85f890c13663dc7c38
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321280
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-96-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-NPUIdn
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1574,9 +1483,8 @@ workflow_execution_set:
   - nmdc:27eb4ee0689bfa1ed5de639be9dfe4a4
   - nmdc:5adfd50423654d4ee2a7ea1cb047903b
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321281
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-97-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-2Kolge
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1591,9 +1499,8 @@ workflow_execution_set:
   - nmdc:b4785d3de1e96579a0139fd62b46c2b1
   - nmdc:64eb490c848063b2d2ec3a67e25e9fc0
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321282
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-98-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-KIP9Ra
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1608,9 +1515,8 @@ workflow_execution_set:
   - nmdc:371a4bc8b331c5a58f5eae72aa7f2ef2
   - nmdc:dae48dbf003f88ae694fa4461cce315d
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321283
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-99-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-v30BKk
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1625,9 +1531,8 @@ workflow_execution_set:
   - nmdc:73c7f3cc99686ec1e603fa63596b904f
   - nmdc:79216bdd4f78c73571a7eba424e10b4c
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321284
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-100-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-ZIuifm
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1642,9 +1547,8 @@ workflow_execution_set:
   - nmdc:4ce337ca93786854ba56d9869e14f591
   - nmdc:deb40e1f540d8c3d4b50d76104b1a095
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321285
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-101-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-GGDI6V
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1659,9 +1563,8 @@ workflow_execution_set:
   - nmdc:1272bd3b3af9bc77f17cc05e368bc7e0
   - nmdc:5a4038e9f86c14507cb7a280cf311d84
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321286
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-102-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-bKBOWR
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1676,9 +1579,8 @@ workflow_execution_set:
   - nmdc:f831f58e1761dcde174db82a8054d4a2
   - nmdc:d058d233fb8da0fa70bf9306d698c2e1
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321287
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-103-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-0oSxaI
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1693,9 +1595,8 @@ workflow_execution_set:
   - nmdc:c0e0818e6236ece3756233d62402530b
   - nmdc:42abcc0295b474652f5d7e3fd981eaf5
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321288
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-104-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-zwlhtX
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1710,9 +1611,8 @@ workflow_execution_set:
   - nmdc:a1b616853e0d1dcddf8f8c17266a4dab
   - nmdc:e62a9d17906da4a73dd76b04f974d958
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321289
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-105-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-xSa1ZG
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1727,9 +1627,8 @@ workflow_execution_set:
   - nmdc:3617ad6fc98edf20a3b5b9b0bc90b302
   - nmdc:848d1a34aad4d6966b3941735cf380b6
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321290
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-106-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-nnWqhU
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1744,9 +1643,8 @@ workflow_execution_set:
   - nmdc:410f625da0eaebed66a6e8c18b0e53d0
   - nmdc:bf28aaeaf947e64a6fa762f0a2146946
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321291
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-107-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-nIFZZ2
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1761,9 +1659,8 @@ workflow_execution_set:
   - nmdc:23725b4b671305a23b2f9bea1931dd68
   - nmdc:b66392e039cbedc07b2674aa1dba6dac
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321292
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-108-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-yOE0jd
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1778,9 +1675,8 @@ workflow_execution_set:
   - nmdc:92eec5b401629df8c01678ce2717c87b
   - nmdc:7eeac4fe7fa630ac5b85e864f3236f2c
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321293
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-109-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-8LpUgc
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1795,9 +1691,8 @@ workflow_execution_set:
   - nmdc:a77caadf1701b22232ab50ffddce7d26
   - nmdc:6b79f8e01cfeb858655b267f097ffb9c
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321294
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-110-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-vJ2Mxf
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1812,9 +1707,8 @@ workflow_execution_set:
   - nmdc:0aabdc855939a32aa78d16892fb74a31
   - nmdc:8105fb07db3565279cb50332e5fa69e2
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321295
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-111-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-IIrhrj
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1829,9 +1723,8 @@ workflow_execution_set:
   - nmdc:6e7afaa7acf706291e43b65f87c94030
   - nmdc:3ffa7a4a98b5106934e304d22cc2bd65
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321296
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-112-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-eZmaaQ
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1846,9 +1739,8 @@ workflow_execution_set:
   - nmdc:41f5b96405652c89c13226494fc3d472
   - nmdc:69aedbed08dde951f5b5660697731685
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321297
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-112-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-ASXJEJ
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1863,9 +1755,8 @@ workflow_execution_set:
   - nmdc:cef441d37e63c1221a31e8fad178df3e
   - nmdc:cae5e9077fc171a1e33329bab7526ddc
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321298
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-113-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-J1EP4o
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1880,9 +1771,8 @@ workflow_execution_set:
   - nmdc:fdd916457ddcf1bf5daf58de328918c7
   - nmdc:54cc460952c8094aaace3e475ad49170
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321299
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-113-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-fkLvFW
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1897,9 +1787,8 @@ workflow_execution_set:
   - nmdc:60c0ee336af5cc2039c3f7273e00975a
   - nmdc:ed394322e9312dba63b271c7484797a9
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321300
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-114-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-N8UcIX
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1914,9 +1803,8 @@ workflow_execution_set:
   - nmdc:fecf564c2c3f7150ad596624178c8c10
   - nmdc:9cfd08fa7dac9d59c866d32fbcd79e8f
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321301
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-115-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-vqx3jd
   ended_at_time: '2021-01-12T00:00:00+00:00'
@@ -1931,9 +1819,8 @@ workflow_execution_set:
   - nmdc:934ee6e733522628856c63b94e5527a3
   - nmdc:9a583be5f87563056c19eb94042bf19d
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: gold:Gp0321302
+  execution_resource: NERSC-Cori
   part_of: nmdc:wfch-116-ab
-  execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wf-99-HV79Ao
   ended_at_time: '2021-01-12T00:00:00+00:00'

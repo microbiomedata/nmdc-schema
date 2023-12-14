@@ -181,7 +181,7 @@ slots:
       - this could be considered a related identifier, as the metabolomics progress and results aren't a study per se
       - this identifier was registered with bioregistry but not identifiers.org
     see_also:
-      - https://microbiomedata.github.io/nmdc-schema/MetabolomicsAnalysisActivity/
+      - https://microbiomedata.github.io/nmdc-schema/MetabolomicsAnalysis/
     examples:
       - value: gnps.task:4b848c342a4f4abc871bdf8a09a60807
     pattern: "^gnps\\.task:[a-f0-9]+$"

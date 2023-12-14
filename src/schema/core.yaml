@@ -167,7 +167,6 @@ classes:
       - processing_institution
       - protocol_link
       - start_date
-      - instrument_name # or "used" ?
     slot_usage:
       designated_class:
         comments:
@@ -580,7 +579,7 @@ slots:
     domain: NamedThing
     range: NamedThing
     multivalued: true
-    description: An output biosample to a processing step
+    description: An output from a process.
 
   part_of:
     aliases:
@@ -592,7 +591,7 @@ slots:
     description: Links a resource to another resource that either logically or physically includes it.
   
   execution_resource:
-    domain: WorkflowExecutionActivity
+    domain: WorkflowExecution
     range: string
 #    is_a: attribute
     examples:

@@ -391,7 +391,7 @@ biosample_set:
     #dna_cont_well: C2
     dna_container_id: Pond_MT_041618
     dna_dnase: 'yes'
-    dna_isolate_meth: phenol/chloroform extraction
+    dna_isolate_meth: DNA
     dna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
       (1%)
     dna_project_contact: John Jones
@@ -782,7 +782,7 @@ biosample_set:
     #rna_cont_type: plate
     #rna_cont_well: C2
     rna_container_id: Pond_MT_041618
-    rna_isolate_meth: phenol/chloroform extraction
+    rna_isolate_meth: RNA
     rna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
       (1%)
     rna_project_contact: John Jones

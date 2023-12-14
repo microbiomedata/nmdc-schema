@@ -374,7 +374,7 @@ class Database(YAMLRoot):
 
     planned_process_set: Optional[Union[Dict[Union[str, PlannedProcessId], Union[dict, "PlannedProcess"]], List[Union[dict, "PlannedProcess"]]]] = empty_dict()
     functional_annotation_agg: Optional[Union[Union[dict, FunctionalAnnotationAggMember], List[Union[dict, FunctionalAnnotationAggMember]]]] = empty_list()
-    activity_set: Optional[Union[Dict[Union[str, WorkflowExecutionActivityId], Union[dict, "WorkflowExecutionActivity"]], List[Union[dict, "WorkflowExecutionActivity"]]]] = empty_dict()
+    activity_set: Optional[Union[Dict[Union[str, WorkflowExecutionActivityId], Union[dict, "WorkflowExecution"]], List[Union[dict, "WorkflowExecution"]]]] = empty_dict()
     biosample_set: Optional[Union[Dict[Union[str, BiosampleId], Union[dict, "Biosample"]], List[Union[dict, "Biosample"]]]] = empty_dict()
     collecting_biosamples_from_site_set: Optional[Union[Dict[Union[str, CollectingBiosamplesFromSiteId], Union[dict, "CollectingBiosamplesFromSite"]], List[Union[dict, "CollectingBiosamplesFromSite"]]]] = empty_dict()
     data_object_set: Optional[Union[Dict[Union[str, DataObjectId], Union[dict, "DataObject"]], List[Union[dict, "DataObject"]]]] = empty_dict()
@@ -384,22 +384,22 @@ class Database(YAMLRoot):
     functional_annotation_set: Optional[Union[Union[dict, "FunctionalAnnotation"], List[Union[dict, "FunctionalAnnotation"]]]] = empty_list()
     genome_feature_set: Optional[Union[Union[dict, "GenomeFeature"], List[Union[dict, "GenomeFeature"]]]] = empty_list()
     library_preparation_set: Optional[Union[Dict[Union[str, LibraryPreparationId], Union[dict, "LibraryPreparation"]], List[Union[dict, "LibraryPreparation"]]]] = empty_dict()
-    mags_activity_set: Optional[Union[Dict[Union[str, MagsAnalysisActivityId], Union[dict, "MagsAnalysisActivity"]], List[Union[dict, "MagsAnalysisActivity"]]]] = empty_dict()
+    mags_set: Optional[Union[Dict[Union[str, MagsAnalysisActivityId], Union[dict, "MagsAnalysis"]], List[Union[dict, "MagsAnalysis"]]]] = empty_dict()
     material_sample_set: Optional[Union[Dict[Union[str, MaterialSampleId], Union[dict, "MaterialSample"]], List[Union[dict, "MaterialSample"]]]] = empty_dict()
     material_sampling_activity_set: Optional[Union[Union[dict, "MaterialSamplingActivity"], List[Union[dict, "MaterialSamplingActivity"]]]] = empty_list()
-    metabolomics_analysis_activity_set: Optional[Union[Dict[Union[str, MetabolomicsAnalysisActivityId], Union[dict, "MetabolomicsAnalysisActivity"]], List[Union[dict, "MetabolomicsAnalysisActivity"]]]] = empty_dict()
-    metagenome_annotation_activity_set: Optional[Union[Dict[Union[str, MetagenomeAnnotationActivityId], Union[dict, "MetagenomeAnnotationActivity"]], List[Union[dict, "MetagenomeAnnotationActivity"]]]] = empty_dict()
+    metabolomics_analysis_set: Optional[Union[Dict[Union[str, MetabolomicsAnalysisActivityId], Union[dict, "MetabolomicsAnalysis"]], List[Union[dict, "MetabolomicsAnalysis"]]]] = empty_dict()
+    metagenome_annotation_set: Optional[Union[Dict[Union[str, MetagenomeAnnotationActivityId], Union[dict, "MetagenomeAnnotation"]], List[Union[dict, "MetagenomeAnnotation"]]]] = empty_dict()
     metagenome_assembly_set: Optional[Union[Dict[Union[str, MetagenomeAssemblyId], Union[dict, "MetagenomeAssembly"]], List[Union[dict, "MetagenomeAssembly"]]]] = empty_dict()
-    metagenome_sequencing_activity_set: Optional[Union[Dict[Union[str, MetagenomeSequencingActivityId], Union[dict, "MetagenomeSequencingActivity"]], List[Union[dict, "MetagenomeSequencingActivity"]]]] = empty_dict()
-    metaproteomics_analysis_activity_set: Optional[Union[Dict[Union[str, MetaproteomicsAnalysisActivityId], Union[dict, "MetaproteomicsAnalysisActivity"]], List[Union[dict, "MetaproteomicsAnalysisActivity"]]]] = empty_dict()
-    metatranscriptome_activity_set: Optional[Union[Dict[Union[str, MetatranscriptomeActivityId], Union[dict, "MetatranscriptomeActivity"]], List[Union[dict, "MetatranscriptomeActivity"]]]] = empty_dict()
-    nom_analysis_activity_set: Optional[Union[Dict[Union[str, NomAnalysisActivityId], Union[dict, "NomAnalysisActivity"]], List[Union[dict, "NomAnalysisActivity"]]]] = empty_dict()
+    metagenome_sequencing_set: Optional[Union[Dict[Union[str, MetagenomeSequencingActivityId], Union[dict, "MetagenomeSequencing"]], List[Union[dict, "MetagenomeSequencing"]]]] = empty_dict()
+    metaproteomics_analysis_set: Optional[Union[Dict[Union[str, MetaproteomicsAnalysisActivityId], Union[dict, "MetaproteomicsAnalysis"]], List[Union[dict, "MetaproteomicsAnalysis"]]]] = empty_dict()
+    metatranscriptome_analysis_set: Optional[Union[Dict[Union[str, MetatranscriptomeActivityId], Union[dict, "MetatranscriptomeAnalysis"]], List[Union[dict, "MetatranscriptomeAnalysis"]]]] = empty_dict()
+    nom_analysis_set: Optional[Union[Dict[Union[str, NomAnalysisActivityId], Union[dict, "NomAnalysis"]], List[Union[dict, "NomAnalysis"]]]] = empty_dict()
     omics_processing_set: Optional[Union[Dict[Union[str, OmicsProcessingId], Union[dict, "OmicsProcessing"]], List[Union[dict, "OmicsProcessing"]]]] = empty_dict()
     pooling_set: Optional[Union[Dict[Union[str, PoolingId], Union[dict, "Pooling"]], List[Union[dict, "Pooling"]]]] = empty_dict()
     processed_sample_set: Optional[Union[Dict[Union[str, ProcessedSampleId], Union[dict, "ProcessedSample"]], List[Union[dict, "ProcessedSample"]]]] = empty_dict()
     reaction_activity_set: Optional[Union[Union[dict, "ReactionActivity"], List[Union[dict, "ReactionActivity"]]]] = empty_list()
-    read_based_taxonomy_analysis_activity_set: Optional[Union[Dict[Union[str, ReadBasedTaxonomyAnalysisActivityId], Union[dict, "ReadBasedTaxonomyAnalysisActivity"]], List[Union[dict, "ReadBasedTaxonomyAnalysisActivity"]]]] = empty_dict()
-    read_qc_analysis_activity_set: Optional[Union[Dict[Union[str, ReadQcAnalysisActivityId], Union[dict, "ReadQcAnalysisActivity"]], List[Union[dict, "ReadQcAnalysisActivity"]]]] = empty_dict()
+    read_based_taxonomy_analysis_set: Optional[Union[Dict[Union[str, ReadBasedTaxonomyAnalysisActivityId], Union[dict, "ReadBasedTaxonomyAnalysis"]], List[Union[dict, "ReadBasedTaxonomyAnalysis"]]]] = empty_dict()
+    read_qc_analysis_set: Optional[Union[Dict[Union[str, ReadQcAnalysisActivityId], Union[dict, "ReadQcAnalysis"]], List[Union[dict, "ReadQcAnalysis"]]]] = empty_dict()
     study_set: Optional[Union[Dict[Union[str, StudyId], Union[dict, "Study"]], List[Union[dict, "Study"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -409,7 +409,7 @@ class Database(YAMLRoot):
             self.functional_annotation_agg = [self.functional_annotation_agg] if self.functional_annotation_agg is not None else []
         self.functional_annotation_agg = [v if isinstance(v, FunctionalAnnotationAggMember) else FunctionalAnnotationAggMember(**as_dict(v)) for v in self.functional_annotation_agg]
 
-        self._normalize_inlined_as_list(slot_name="activity_set", slot_type=WorkflowExecutionActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="activity_set", slot_type=WorkflowExecution, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="biosample_set", slot_type=Biosample, key_name="id", keyed=True)
 
@@ -435,7 +435,7 @@ class Database(YAMLRoot):
 
         self._normalize_inlined_as_list(slot_name="library_preparation_set", slot_type=LibraryPreparation, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="mags_activity_set", slot_type=MagsAnalysisActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="mags_set", slot_type=MagsAnalysis, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="material_sample_set", slot_type=MaterialSample, key_name="id", keyed=True)
 
@@ -443,19 +443,19 @@ class Database(YAMLRoot):
             self.material_sampling_activity_set = [self.material_sampling_activity_set] if self.material_sampling_activity_set is not None else []
         self.material_sampling_activity_set = [v if isinstance(v, MaterialSamplingActivity) else MaterialSamplingActivity(**as_dict(v)) for v in self.material_sampling_activity_set]
 
-        self._normalize_inlined_as_list(slot_name="metabolomics_analysis_activity_set", slot_type=MetabolomicsAnalysisActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="metabolomics_analysis_set", slot_type=MetabolomicsAnalysis, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="metagenome_annotation_activity_set", slot_type=MetagenomeAnnotationActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="metagenome_annotation_set", slot_type=MetagenomeAnnotation, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="metagenome_assembly_set", slot_type=MetagenomeAssembly, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="metagenome_sequencing_activity_set", slot_type=MetagenomeSequencingActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="metagenome_sequencing_set", slot_type=MetagenomeSequencing, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="metaproteomics_analysis_activity_set", slot_type=MetaproteomicsAnalysisActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="metaproteomics_analysis_set", slot_type=MetaproteomicsAnalysis, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="metatranscriptome_activity_set", slot_type=MetatranscriptomeActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="metatranscriptome_analysis_set", slot_type=MetatranscriptomeAnalysis, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="nom_analysis_activity_set", slot_type=NomAnalysisActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="nom_analysis_set", slot_type=NomAnalysis, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="omics_processing_set", slot_type=OmicsProcessing, key_name="id", keyed=True)
 
@@ -467,9 +467,9 @@ class Database(YAMLRoot):
             self.reaction_activity_set = [self.reaction_activity_set] if self.reaction_activity_set is not None else []
         self.reaction_activity_set = [v if isinstance(v, ReactionActivity) else ReactionActivity(**as_dict(v)) for v in self.reaction_activity_set]
 
-        self._normalize_inlined_as_list(slot_name="read_based_taxonomy_analysis_activity_set", slot_type=ReadBasedTaxonomyAnalysisActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="read_based_taxonomy_analysis_set", slot_type=ReadBasedTaxonomyAnalysis, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="read_qc_analysis_activity_set", slot_type=ReadQcAnalysisActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="read_qc_analysis_set", slot_type=ReadQcAnalysis, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="study_set", slot_type=Study, key_name="id", keyed=True)
 
@@ -5282,16 +5282,16 @@ class Activity(YAMLRoot):
 
 
 @dataclass
-class WorkflowExecutionActivity(Activity):
+class WorkflowExecution(Activity):
     """
     Represents an instance of an execution of a particular workflow
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMDC["WorkflowExecutionActivity"]
-    class_class_curie: ClassVar[str] = "nmdc:WorkflowExecutionActivity"
-    class_name: ClassVar[str] = "WorkflowExecutionActivity"
-    class_model_uri: ClassVar[URIRef] = NMDC.WorkflowExecutionActivity
+    class_class_uri: ClassVar[URIRef] = NMDC["WorkflowExecution"]
+    class_class_curie: ClassVar[str] = "nmdc:WorkflowExecution"
+    class_name: ClassVar[str] = "WorkflowExecution"
+    class_model_uri: ClassVar[URIRef] = NMDC.WorkflowExecution
 
     id: Union[str, WorkflowExecutionActivityId] = None
     execution_resource: str = None
@@ -5358,7 +5358,7 @@ class WorkflowExecutionActivity(Activity):
 
 
 @dataclass
-class MetagenomeAssembly(WorkflowExecutionActivity):
+class MetagenomeAssembly(WorkflowExecution):
     """
     A workflow execution activity that converts sequencing reads into an assembled metagenome.
     """
@@ -5503,7 +5503,7 @@ class MetagenomeAssembly(WorkflowExecutionActivity):
 
 
 @dataclass
-class MetatranscriptomeAssembly(WorkflowExecutionActivity):
+class MetatranscriptomeAssembly(WorkflowExecution):
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["MetatranscriptomeAssembly"]
@@ -5642,16 +5642,16 @@ class MetatranscriptomeAssembly(WorkflowExecutionActivity):
 
 
 @dataclass
-class MetagenomeAnnotationActivity(WorkflowExecutionActivity):
+class MetagenomeAnnotation(WorkflowExecution):
     """
     A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMDC["MetagenomeAnnotationActivity"]
-    class_class_curie: ClassVar[str] = "nmdc:MetagenomeAnnotationActivity"
-    class_name: ClassVar[str] = "MetagenomeAnnotationActivity"
-    class_model_uri: ClassVar[URIRef] = NMDC.MetagenomeAnnotationActivity
+    class_class_uri: ClassVar[URIRef] = NMDC["MetagenomeAnnotation"]
+    class_class_curie: ClassVar[str] = "nmdc:MetagenomeAnnotation"
+    class_name: ClassVar[str] = "MetagenomeAnnotation"
+    class_model_uri: ClassVar[URIRef] = NMDC.MetagenomeAnnotation
 
     id: Union[str, MetagenomeAnnotationActivityId] = None
     execution_resource: str = None
@@ -5680,13 +5680,13 @@ class MetagenomeAnnotationActivity(WorkflowExecutionActivity):
 
 
 @dataclass
-class MetatranscriptomeAnnotationActivity(WorkflowExecutionActivity):
+class MetatranscriptomeAnnotation(WorkflowExecution):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMDC["MetatranscriptomeAnnotationActivity"]
-    class_class_curie: ClassVar[str] = "nmdc:MetatranscriptomeAnnotationActivity"
-    class_name: ClassVar[str] = "MetatranscriptomeAnnotationActivity"
-    class_model_uri: ClassVar[URIRef] = NMDC.MetatranscriptomeAnnotationActivity
+    class_class_uri: ClassVar[URIRef] = NMDC["MetatranscriptomeAnnotation"]
+    class_class_curie: ClassVar[str] = "nmdc:MetatranscriptomeAnnotation"
+    class_name: ClassVar[str] = "MetatranscriptomeAnnotation"
+    class_model_uri: ClassVar[URIRef] = NMDC.MetatranscriptomeAnnotation
 
     id: Union[str, MetatranscriptomeAnnotationActivityId] = None
     execution_resource: str = None
@@ -5715,16 +5715,16 @@ class MetatranscriptomeAnnotationActivity(WorkflowExecutionActivity):
 
 
 @dataclass
-class MetatranscriptomeActivity(WorkflowExecutionActivity):
+class MetatranscriptomeAnalysis(WorkflowExecution):
     """
     A metatranscriptome activity that e.g. pools assembly and annotation activity.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMDC["MetatranscriptomeActivity"]
-    class_class_curie: ClassVar[str] = "nmdc:MetatranscriptomeActivity"
-    class_name: ClassVar[str] = "MetatranscriptomeActivity"
-    class_model_uri: ClassVar[URIRef] = NMDC.MetatranscriptomeActivity
+    class_class_uri: ClassVar[URIRef] = NMDC["MetatranscriptomeAnalysis"]
+    class_class_curie: ClassVar[str] = "nmdc:MetatranscriptomeAnalysis"
+    class_name: ClassVar[str] = "MetatranscriptomeAnalysis"
+    class_model_uri: ClassVar[URIRef] = NMDC.MetatranscriptomeAnalysis
 
     id: Union[str, MetatranscriptomeActivityId] = None
     execution_resource: str = None
@@ -5748,16 +5748,16 @@ class MetatranscriptomeActivity(WorkflowExecutionActivity):
 
 
 @dataclass
-class MagsAnalysisActivity(WorkflowExecutionActivity):
+class MagsAnalysis(WorkflowExecution):
     """
     A workflow execution activity that uses computational binning tools to group assembled contigs into genomes
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMDC["MagsAnalysisActivity"]
-    class_class_curie: ClassVar[str] = "nmdc:MagsAnalysisActivity"
-    class_name: ClassVar[str] = "MagsAnalysisActivity"
-    class_model_uri: ClassVar[URIRef] = NMDC.MagsAnalysisActivity
+    class_class_uri: ClassVar[URIRef] = NMDC["MagsAnalysis"]
+    class_class_curie: ClassVar[str] = "nmdc:MagsAnalysis"
+    class_name: ClassVar[str] = "MagsAnalysis"
+    class_model_uri: ClassVar[URIRef] = NMDC.MagsAnalysis
 
     id: Union[str, MagsAnalysisActivityId] = None
     execution_resource: str = None
@@ -5806,17 +5806,17 @@ class MagsAnalysisActivity(WorkflowExecutionActivity):
 
 
 @dataclass
-class MetagenomeSequencingActivity(WorkflowExecutionActivity):
+class MetagenomeSequencing(WorkflowExecution):
     """
     Initial sequencing activity that precedes any analysis. This activity has output(s) that are the raw sequencing
     data.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMDC["MetagenomeSequencingActivity"]
-    class_class_curie: ClassVar[str] = "nmdc:MetagenomeSequencingActivity"
-    class_name: ClassVar[str] = "MetagenomeSequencingActivity"
-    class_model_uri: ClassVar[URIRef] = NMDC.MetagenomeSequencingActivity
+    class_class_uri: ClassVar[URIRef] = NMDC["MetagenomeSequencing"]
+    class_class_curie: ClassVar[str] = "nmdc:MetagenomeSequencing"
+    class_name: ClassVar[str] = "MetagenomeSequencing"
+    class_model_uri: ClassVar[URIRef] = NMDC.MetagenomeSequencing
 
     id: Union[str, MetagenomeSequencingActivityId] = None
     execution_resource: str = None
@@ -5837,7 +5837,7 @@ class MetagenomeSequencingActivity(WorkflowExecutionActivity):
 
 
 @dataclass
-class ReadQcAnalysisActivity(WorkflowExecutionActivity):
+class ReadQcAnalysis(WorkflowExecution):
     """
     A workflow execution activity that performs quality control on raw Illumina reads including quality trimming,
     artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant
@@ -5845,10 +5845,10 @@ class ReadQcAnalysisActivity(WorkflowExecutionActivity):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMDC["ReadQcAnalysisActivity"]
-    class_class_curie: ClassVar[str] = "nmdc:ReadQcAnalysisActivity"
-    class_name: ClassVar[str] = "ReadQcAnalysisActivity"
-    class_model_uri: ClassVar[URIRef] = NMDC.ReadQcAnalysisActivity
+    class_class_uri: ClassVar[URIRef] = NMDC["ReadQcAnalysis"]
+    class_class_curie: ClassVar[str] = "nmdc:ReadQcAnalysis"
+    class_name: ClassVar[str] = "ReadQcAnalysis"
+    class_model_uri: ClassVar[URIRef] = NMDC.ReadQcAnalysis
 
     id: Union[str, ReadQcAnalysisActivityId] = None
     execution_resource: str = None
@@ -5900,16 +5900,16 @@ class ReadQcAnalysisActivity(WorkflowExecutionActivity):
 
 
 @dataclass
-class ReadBasedTaxonomyAnalysisActivity(WorkflowExecutionActivity):
+class ReadBasedTaxonomyAnalysis(WorkflowExecution):
     """
     A workflow execution activity that performs taxonomy classification using sequencing reads
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMDC["ReadBasedTaxonomyAnalysisActivity"]
-    class_class_curie: ClassVar[str] = "nmdc:ReadBasedTaxonomyAnalysisActivity"
-    class_name: ClassVar[str] = "ReadBasedTaxonomyAnalysisActivity"
-    class_model_uri: ClassVar[URIRef] = NMDC.ReadBasedTaxonomyAnalysisActivity
+    class_class_uri: ClassVar[URIRef] = NMDC["ReadBasedTaxonomyAnalysis"]
+    class_class_curie: ClassVar[str] = "nmdc:ReadBasedTaxonomyAnalysis"
+    class_name: ClassVar[str] = "ReadBasedTaxonomyAnalysis"
+    class_model_uri: ClassVar[URIRef] = NMDC.ReadBasedTaxonomyAnalysis
 
     id: Union[str, ReadBasedTaxonomyAnalysisActivityId] = None
     execution_resource: str = None
@@ -5933,13 +5933,13 @@ class ReadBasedTaxonomyAnalysisActivity(WorkflowExecutionActivity):
 
 
 @dataclass
-class MetabolomicsAnalysisActivity(WorkflowExecutionActivity):
+class MetabolomicsAnalysis(WorkflowExecution):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMDC["MetabolomicsAnalysisActivity"]
-    class_class_curie: ClassVar[str] = "nmdc:MetabolomicsAnalysisActivity"
-    class_name: ClassVar[str] = "MetabolomicsAnalysisActivity"
-    class_model_uri: ClassVar[URIRef] = NMDC.MetabolomicsAnalysisActivity
+    class_class_uri: ClassVar[URIRef] = NMDC["MetabolomicsAnalysis"]
+    class_class_curie: ClassVar[str] = "nmdc:MetabolomicsAnalysis"
+    class_name: ClassVar[str] = "MetabolomicsAnalysis"
+    class_model_uri: ClassVar[URIRef] = NMDC.MetabolomicsAnalysis
 
     id: Union[str, MetabolomicsAnalysisActivityId] = None
     execution_resource: str = None
@@ -5969,13 +5969,13 @@ class MetabolomicsAnalysisActivity(WorkflowExecutionActivity):
 
 
 @dataclass
-class MetaproteomicsAnalysisActivity(WorkflowExecutionActivity):
+class MetaproteomicsAnalysis(WorkflowExecution):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMDC["MetaproteomicsAnalysisActivity"]
-    class_class_curie: ClassVar[str] = "nmdc:MetaproteomicsAnalysisActivity"
-    class_name: ClassVar[str] = "MetaproteomicsAnalysisActivity"
-    class_model_uri: ClassVar[URIRef] = NMDC.MetaproteomicsAnalysisActivity
+    class_class_uri: ClassVar[URIRef] = NMDC["MetaproteomicsAnalysis"]
+    class_class_curie: ClassVar[str] = "nmdc:MetaproteomicsAnalysis"
+    class_name: ClassVar[str] = "MetaproteomicsAnalysis"
+    class_model_uri: ClassVar[URIRef] = NMDC.MetaproteomicsAnalysis
 
     id: Union[str, MetaproteomicsAnalysisActivityId] = None
     execution_resource: str = None
@@ -6005,13 +6005,13 @@ class MetaproteomicsAnalysisActivity(WorkflowExecutionActivity):
 
 
 @dataclass
-class NomAnalysisActivity(WorkflowExecutionActivity):
+class NomAnalysis(WorkflowExecution):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMDC["NomAnalysisActivity"]
-    class_class_curie: ClassVar[str] = "nmdc:NomAnalysisActivity"
-    class_name: ClassVar[str] = "NomAnalysisActivity"
-    class_model_uri: ClassVar[URIRef] = NMDC.NomAnalysisActivity
+    class_class_uri: ClassVar[URIRef] = NMDC["NomAnalysis"]
+    class_class_curie: ClassVar[str] = "nmdc:NomAnalysis"
+    class_name: ClassVar[str] = "NomAnalysis"
+    class_model_uri: ClassVar[URIRef] = NMDC.NomAnalysis
 
     id: Union[str, NomAnalysisActivityId] = None
     execution_resource: str = None
@@ -8842,37 +8842,37 @@ slots.functional_annotation_set = Slot(uri=NMDC.functional_annotation_set, name=
                    model_uri=NMDC.functional_annotation_set, domain=Database, range=Optional[Union[Union[dict, "FunctionalAnnotation"], List[Union[dict, "FunctionalAnnotation"]]]])
 
 slots.activity_set = Slot(uri=NMDC.activity_set, name="activity_set", curie=NMDC.curie('activity_set'),
-                   model_uri=NMDC.activity_set, domain=Database, range=Optional[Union[Dict[Union[str, WorkflowExecutionActivityId], Union[dict, "WorkflowExecutionActivity"]], List[Union[dict, "WorkflowExecutionActivity"]]]])
+                   model_uri=NMDC.activity_set, domain=Database, range=Optional[Union[Dict[Union[str, WorkflowExecutionActivityId], Union[dict, "WorkflowExecution"]], List[Union[dict, "WorkflowExecution"]]]])
 
-slots.mags_activity_set = Slot(uri=NMDC.mags_activity_set, name="mags_activity_set", curie=NMDC.curie('mags_activity_set'),
-                   model_uri=NMDC.mags_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, MagsAnalysisActivityId], Union[dict, "MagsAnalysisActivity"]], List[Union[dict, "MagsAnalysisActivity"]]]])
+slots.mags_set = Slot(uri=NMDC.mags_set, name="mags_set", curie=NMDC.curie('mags_set'),
+                   model_uri=NMDC.mags_set, domain=Database, range=Optional[Union[Dict[Union[str, MagsAnalysisActivityId], Union[dict, "MagsAnalysis"]], List[Union[dict, "MagsAnalysis"]]]])
 
-slots.metabolomics_analysis_activity_set = Slot(uri=NMDC.metabolomics_analysis_activity_set, name="metabolomics_analysis_activity_set", curie=NMDC.curie('metabolomics_analysis_activity_set'),
-                   model_uri=NMDC.metabolomics_analysis_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, MetabolomicsAnalysisActivityId], Union[dict, "MetabolomicsAnalysisActivity"]], List[Union[dict, "MetabolomicsAnalysisActivity"]]]])
+slots.metabolomics_analysis_set = Slot(uri=NMDC.metabolomics_analysis_set, name="metabolomics_analysis_set", curie=NMDC.curie('metabolomics_analysis_set'),
+                   model_uri=NMDC.metabolomics_analysis_set, domain=Database, range=Optional[Union[Dict[Union[str, MetabolomicsAnalysisActivityId], Union[dict, "MetabolomicsAnalysis"]], List[Union[dict, "MetabolomicsAnalysis"]]]])
 
-slots.metaproteomics_analysis_activity_set = Slot(uri=NMDC.metaproteomics_analysis_activity_set, name="metaproteomics_analysis_activity_set", curie=NMDC.curie('metaproteomics_analysis_activity_set'),
-                   model_uri=NMDC.metaproteomics_analysis_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, MetaproteomicsAnalysisActivityId], Union[dict, "MetaproteomicsAnalysisActivity"]], List[Union[dict, "MetaproteomicsAnalysisActivity"]]]])
+slots.metaproteomics_analysis_set = Slot(uri=NMDC.metaproteomics_analysis_set, name="metaproteomics_analysis_set", curie=NMDC.curie('metaproteomics_analysis_set'),
+                   model_uri=NMDC.metaproteomics_analysis_set, domain=Database, range=Optional[Union[Dict[Union[str, MetaproteomicsAnalysisActivityId], Union[dict, "MetaproteomicsAnalysis"]], List[Union[dict, "MetaproteomicsAnalysis"]]]])
 
-slots.metagenome_annotation_activity_set = Slot(uri=NMDC.metagenome_annotation_activity_set, name="metagenome_annotation_activity_set", curie=NMDC.curie('metagenome_annotation_activity_set'),
-                   model_uri=NMDC.metagenome_annotation_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, MetagenomeAnnotationActivityId], Union[dict, "MetagenomeAnnotationActivity"]], List[Union[dict, "MetagenomeAnnotationActivity"]]]])
+slots.metagenome_annotation_set = Slot(uri=NMDC.metagenome_annotation_set, name="metagenome_annotation_set", curie=NMDC.curie('metagenome_annotation_set'),
+                   model_uri=NMDC.metagenome_annotation_set, domain=Database, range=Optional[Union[Dict[Union[str, MetagenomeAnnotationActivityId], Union[dict, "MetagenomeAnnotation"]], List[Union[dict, "MetagenomeAnnotation"]]]])
 
 slots.metagenome_assembly_set = Slot(uri=NMDC.metagenome_assembly_set, name="metagenome_assembly_set", curie=NMDC.curie('metagenome_assembly_set'),
                    model_uri=NMDC.metagenome_assembly_set, domain=Database, range=Optional[Union[Dict[Union[str, MetagenomeAssemblyId], Union[dict, "MetagenomeAssembly"]], List[Union[dict, "MetagenomeAssembly"]]]])
 
-slots.metagenome_sequencing_activity_set = Slot(uri=NMDC.metagenome_sequencing_activity_set, name="metagenome_sequencing_activity_set", curie=NMDC.curie('metagenome_sequencing_activity_set'),
-                   model_uri=NMDC.metagenome_sequencing_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, MetagenomeSequencingActivityId], Union[dict, "MetagenomeSequencingActivity"]], List[Union[dict, "MetagenomeSequencingActivity"]]]])
+slots.metagenome_sequencing_set = Slot(uri=NMDC.metagenome_sequencing_set, name="metagenome_sequencing_set", curie=NMDC.curie('metagenome_sequencing_set'),
+                   model_uri=NMDC.metagenome_sequencing_set, domain=Database, range=Optional[Union[Dict[Union[str, MetagenomeSequencingActivityId], Union[dict, "MetagenomeSequencing"]], List[Union[dict, "MetagenomeSequencing"]]]])
 
-slots.metatranscriptome_activity_set = Slot(uri=NMDC.metatranscriptome_activity_set, name="metatranscriptome_activity_set", curie=NMDC.curie('metatranscriptome_activity_set'),
-                   model_uri=NMDC.metatranscriptome_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, MetatranscriptomeActivityId], Union[dict, "MetatranscriptomeActivity"]], List[Union[dict, "MetatranscriptomeActivity"]]]])
+slots.metatranscriptome_analysis_set = Slot(uri=NMDC.metatranscriptome_analysis_set, name="metatranscriptome_analysis_set", curie=NMDC.curie('metatranscriptome_analysis_set'),
+                   model_uri=NMDC.metatranscriptome_analysis_set, domain=Database, range=Optional[Union[Dict[Union[str, MetatranscriptomeActivityId], Union[dict, "MetatranscriptomeAnalysis"]], List[Union[dict, "MetatranscriptomeAnalysis"]]]])
 
-slots.read_qc_analysis_activity_set = Slot(uri=NMDC.read_qc_analysis_activity_set, name="read_qc_analysis_activity_set", curie=NMDC.curie('read_qc_analysis_activity_set'),
-                   model_uri=NMDC.read_qc_analysis_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, ReadQcAnalysisActivityId], Union[dict, "ReadQcAnalysisActivity"]], List[Union[dict, "ReadQcAnalysisActivity"]]]])
+slots.read_qc_analysis_set = Slot(uri=NMDC.read_qc_analysis_set, name="read_qc_analysis_set", curie=NMDC.curie('read_qc_analysis_set'),
+                   model_uri=NMDC.read_qc_analysis_set, domain=Database, range=Optional[Union[Dict[Union[str, ReadQcAnalysisActivityId], Union[dict, "ReadQcAnalysis"]], List[Union[dict, "ReadQcAnalysis"]]]])
 
-slots.read_based_taxonomy_analysis_activity_set = Slot(uri=NMDC.read_based_taxonomy_analysis_activity_set, name="read_based_taxonomy_analysis_activity_set", curie=NMDC.curie('read_based_taxonomy_analysis_activity_set'),
-                   model_uri=NMDC.read_based_taxonomy_analysis_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, ReadBasedTaxonomyAnalysisActivityId], Union[dict, "ReadBasedTaxonomyAnalysisActivity"]], List[Union[dict, "ReadBasedTaxonomyAnalysisActivity"]]]])
+slots.read_based_taxonomy_analysis_set = Slot(uri=NMDC.read_based_taxonomy_analysis_set, name="read_based_taxonomy_analysis_set", curie=NMDC.curie('read_based_taxonomy_analysis_set'),
+                   model_uri=NMDC.read_based_taxonomy_analysis_set, domain=Database, range=Optional[Union[Dict[Union[str, ReadBasedTaxonomyAnalysisActivityId], Union[dict, "ReadBasedTaxonomyAnalysis"]], List[Union[dict, "ReadBasedTaxonomyAnalysis"]]]])
 
-slots.nom_analysis_activity_set = Slot(uri=NMDC.nom_analysis_activity_set, name="nom_analysis_activity_set", curie=NMDC.curie('nom_analysis_activity_set'),
-                   model_uri=NMDC.nom_analysis_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, NomAnalysisActivityId], Union[dict, "NomAnalysisActivity"]], List[Union[dict, "NomAnalysisActivity"]]]])
+slots.nom_analysis_set = Slot(uri=NMDC.nom_analysis_set, name="nom_analysis_set", curie=NMDC.curie('nom_analysis_set'),
+                   model_uri=NMDC.nom_analysis_set, domain=Database, range=Optional[Union[Dict[Union[str, NomAnalysisActivityId], Union[dict, "NomAnalysis"]], List[Union[dict, "NomAnalysis"]]]])
 
 slots.omics_processing_set = Slot(uri=NMDC.omics_processing_set, name="omics_processing_set", curie=NMDC.curie('omics_processing_set'),
                    model_uri=NMDC.omics_processing_set, domain=Database, range=Optional[Union[Dict[Union[str, OmicsProcessingId], Union[dict, "OmicsProcessing"]], List[Union[dict, "OmicsProcessing"]]]])
@@ -11713,30 +11713,30 @@ slots.ReactionActivity_reaction_time = Slot(uri=NMDC.reaction_time, name="Reacti
                    model_uri=NMDC.ReactionActivity_reaction_time, domain=ReactionActivity, range=Optional[Union[dict, QuantityValue]])
 
 slots.WorkflowExecutionActivity_started_at_time = Slot(uri=NMDC.started_at_time, name="WorkflowExecutionActivity_started_at_time", curie=NMDC.curie('started_at_time'),
-                   model_uri=NMDC.WorkflowExecutionActivity_started_at_time, domain=WorkflowExecutionActivity, range=str, mappings = [PROV["startedAtTime"]],
+                   model_uri=NMDC.WorkflowExecutionActivity_started_at_time, domain=WorkflowExecution, range=str, mappings = [PROV["startedAtTime"]],
                    pattern=re.compile(r'^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$'))
 
 slots.WorkflowExecutionActivity_ended_at_time = Slot(uri=NMDC.ended_at_time, name="WorkflowExecutionActivity_ended_at_time", curie=NMDC.curie('ended_at_time'),
-                   model_uri=NMDC.WorkflowExecutionActivity_ended_at_time, domain=WorkflowExecutionActivity, range=str, mappings = [PROV["endedAtTime"]],
+                   model_uri=NMDC.WorkflowExecutionActivity_ended_at_time, domain=WorkflowExecution, range=str, mappings = [PROV["endedAtTime"]],
                    pattern=re.compile(r'^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$'))
 
 slots.WorkflowExecutionActivity_git_url = Slot(uri=NMDC.git_url, name="WorkflowExecutionActivity_git_url", curie=NMDC.curie('git_url'),
-                   model_uri=NMDC.WorkflowExecutionActivity_git_url, domain=WorkflowExecutionActivity, range=str)
+                   model_uri=NMDC.WorkflowExecutionActivity_git_url, domain=WorkflowExecution, range=str)
 
 slots.WorkflowExecutionActivity_has_input = Slot(uri=NMDC.has_input, name="WorkflowExecutionActivity_has_input", curie=NMDC.curie('has_input'),
-                   model_uri=NMDC.WorkflowExecutionActivity_has_input, domain=WorkflowExecutionActivity, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
+                   model_uri=NMDC.WorkflowExecutionActivity_has_input, domain=WorkflowExecution, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
 
 slots.WorkflowExecutionActivity_has_output = Slot(uri=NMDC.has_output, name="WorkflowExecutionActivity_has_output", curie=NMDC.curie('has_output'),
-                   model_uri=NMDC.WorkflowExecutionActivity_has_output, domain=WorkflowExecutionActivity, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
+                   model_uri=NMDC.WorkflowExecutionActivity_has_output, domain=WorkflowExecution, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
 
 slots.WorkflowExecutionActivity_execution_resource = Slot(uri=NMDC.execution_resource, name="WorkflowExecutionActivity_execution_resource", curie=NMDC.curie('execution_resource'),
-                   model_uri=NMDC.WorkflowExecutionActivity_execution_resource, domain=WorkflowExecutionActivity, range=str)
+                   model_uri=NMDC.WorkflowExecutionActivity_execution_resource, domain=WorkflowExecution, range=str)
 
 slots.WorkflowExecutionActivity_type = Slot(uri=NMDC.type, name="WorkflowExecutionActivity_type", curie=NMDC.curie('type'),
-                   model_uri=NMDC.WorkflowExecutionActivity_type, domain=WorkflowExecutionActivity, range=str)
+                   model_uri=NMDC.WorkflowExecutionActivity_type, domain=WorkflowExecution, range=str)
 
 slots.WorkflowExecutionActivity_id = Slot(uri=NMDC.id, name="WorkflowExecutionActivity_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.WorkflowExecutionActivity_id, domain=WorkflowExecutionActivity, range=Union[str, WorkflowExecutionActivityId],
+                   model_uri=NMDC.WorkflowExecutionActivity_id, domain=WorkflowExecution, range=Union[str, WorkflowExecutionActivityId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.MetagenomeAssembly_id = Slot(uri=NMDC.id, name="MetagenomeAssembly_id", curie=NMDC.curie('id'),
@@ -11748,49 +11748,49 @@ slots.MetatranscriptomeAssembly_id = Slot(uri=NMDC.id, name="MetatranscriptomeAs
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.MetagenomeAnnotationActivity_id = Slot(uri=NMDC.id, name="MetagenomeAnnotationActivity_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.MetagenomeAnnotationActivity_id, domain=MetagenomeAnnotationActivity, range=Union[str, MetagenomeAnnotationActivityId],
+                   model_uri=NMDC.MetagenomeAnnotationActivity_id, domain=MetagenomeAnnotation, range=Union[str, MetagenomeAnnotationActivityId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.MetatranscriptomeAnnotationActivity_id = Slot(uri=NMDC.id, name="MetatranscriptomeAnnotationActivity_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.MetatranscriptomeAnnotationActivity_id, domain=MetatranscriptomeAnnotationActivity, range=Union[str, MetatranscriptomeAnnotationActivityId],
+                   model_uri=NMDC.MetatranscriptomeAnnotationActivity_id, domain=MetatranscriptomeAnnotation, range=Union[str, MetatranscriptomeAnnotationActivityId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.MetatranscriptomeActivity_id = Slot(uri=NMDC.id, name="MetatranscriptomeActivity_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.MetatranscriptomeActivity_id, domain=MetatranscriptomeActivity, range=Union[str, MetatranscriptomeActivityId],
+                   model_uri=NMDC.MetatranscriptomeActivity_id, domain=MetatranscriptomeAnalysis, range=Union[str, MetatranscriptomeActivityId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.MagsAnalysisActivity_id = Slot(uri=NMDC.id, name="MagsAnalysisActivity_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.MagsAnalysisActivity_id, domain=MagsAnalysisActivity, range=Union[str, MagsAnalysisActivityId],
+                   model_uri=NMDC.MagsAnalysisActivity_id, domain=MagsAnalysis, range=Union[str, MagsAnalysisActivityId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.MetagenomeSequencingActivity_id = Slot(uri=NMDC.id, name="MetagenomeSequencingActivity_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.MetagenomeSequencingActivity_id, domain=MetagenomeSequencingActivity, range=Union[str, MetagenomeSequencingActivityId],
+                   model_uri=NMDC.MetagenomeSequencingActivity_id, domain=MetagenomeSequencing, range=Union[str, MetagenomeSequencingActivityId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.ReadQcAnalysisActivity_id = Slot(uri=NMDC.id, name="ReadQcAnalysisActivity_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.ReadQcAnalysisActivity_id, domain=ReadQcAnalysisActivity, range=Union[str, ReadQcAnalysisActivityId],
+                   model_uri=NMDC.ReadQcAnalysisActivity_id, domain=ReadQcAnalysis, range=Union[str, ReadQcAnalysisActivityId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.ReadBasedTaxonomyAnalysisActivity_id = Slot(uri=NMDC.id, name="ReadBasedTaxonomyAnalysisActivity_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.ReadBasedTaxonomyAnalysisActivity_id, domain=ReadBasedTaxonomyAnalysisActivity, range=Union[str, ReadBasedTaxonomyAnalysisActivityId],
+                   model_uri=NMDC.ReadBasedTaxonomyAnalysisActivity_id, domain=ReadBasedTaxonomyAnalysis, range=Union[str, ReadBasedTaxonomyAnalysisActivityId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.MetabolomicsAnalysisActivity_id = Slot(uri=NMDC.id, name="MetabolomicsAnalysisActivity_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.MetabolomicsAnalysisActivity_id, domain=MetabolomicsAnalysisActivity, range=Union[str, MetabolomicsAnalysisActivityId],
+                   model_uri=NMDC.MetabolomicsAnalysisActivity_id, domain=MetabolomicsAnalysis, range=Union[str, MetabolomicsAnalysisActivityId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.MetaproteomicsAnalysisActivity_used = Slot(uri=NMDC.used, name="MetaproteomicsAnalysisActivity_used", curie=NMDC.curie('used'),
-                   model_uri=NMDC.MetaproteomicsAnalysisActivity_used, domain=MetaproteomicsAnalysisActivity, range=Optional[str], mappings = [PROV["used"]])
+                   model_uri=NMDC.MetaproteomicsAnalysisActivity_used, domain=MetaproteomicsAnalysis, range=Optional[str], mappings = [PROV["used"]])
 
 slots.MetaproteomicsAnalysisActivity_id = Slot(uri=NMDC.id, name="MetaproteomicsAnalysisActivity_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.MetaproteomicsAnalysisActivity_id, domain=MetaproteomicsAnalysisActivity, range=Union[str, MetaproteomicsAnalysisActivityId],
+                   model_uri=NMDC.MetaproteomicsAnalysisActivity_id, domain=MetaproteomicsAnalysis, range=Union[str, MetaproteomicsAnalysisActivityId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.NomAnalysisActivity_used = Slot(uri=NMDC.used, name="NomAnalysisActivity_used", curie=NMDC.curie('used'),
-                   model_uri=NMDC.NomAnalysisActivity_used, domain=NomAnalysisActivity, range=Optional[str], mappings = [PROV["used"]])
+                   model_uri=NMDC.NomAnalysisActivity_used, domain=NomAnalysis, range=Optional[str], mappings = [PROV["used"]])
 
 slots.NomAnalysisActivity_id = Slot(uri=NMDC.id, name="NomAnalysisActivity_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.NomAnalysisActivity_id, domain=NomAnalysisActivity, range=Union[str, NomAnalysisActivityId],
+                   model_uri=NMDC.NomAnalysisActivity_id, domain=NomAnalysis, range=Union[str, NomAnalysisActivityId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.Activity_id = Slot(uri=NMDC.id, name="Activity_id", curie=NMDC.curie('id'),

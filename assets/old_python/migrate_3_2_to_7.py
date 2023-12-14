@@ -41,7 +41,7 @@ name_replacements = {
     "OmicsProcessing": {
         "GOLD_sequencing_project_identifiers": "gold_sequencing_project_identifiers",
     },
-    "MagsAnalysisActivity": {
+    "MagsAnalysis": {
         "num_tRNA": "num_trnanum_t_rna",  # inside of mags_list of MagBin instances,
         "lowDepth_contig_num": "low_depth_contig_num",
     },
@@ -61,7 +61,7 @@ name_replacements = {
 }
 
 drop = {
-    "ReadQcAnalysisActivity": [
+    "ReadQcAnalysis": [
         "version",
     ]
 }
@@ -86,15 +86,15 @@ slot2coll = {
     'activity_set': 'activity_set',
     'biosample_set': 'biosample_set',
     'data_object_set': 'data_object_set',
-    'mags_activity_set': 'mags_activity_set',
-    'metabolomics_analysis_activity_set': 'metabolomics_analysis_activity_set',
-    'metagenome_annotation_activity_set': 'metagenome_annotation_activity_set',
+    'mags_set': 'mags_set',
+    'metabolomics_analysis_set': 'metabolomics_analysis_set',
+    'metagenome_annotation_set': 'metagenome_annotation_set',
     'metagenome_assembly_set': 'metagenome_assembly_set',
-    'metaproteomics_analysis_activity_set': 'metaproteomics_analysis_activity_set',
-    'metatranscriptome_activity_set': 'metatranscriptome_activity_set',
-    'nom_analysis_activity_set': 'nom_analysis_activity_set',
+    'metaproteomics_analysis_set': 'metaproteomics_analysis_set',
+    'metatranscriptome_analysis_set': 'metatranscriptome_analysis_set',
+    'nom_analysis_set': 'nom_analysis_set',
     'omics_processing_set': 'omics_processing_set',
-    'read_qc_analysis_activity_set': 'read_QC_analysis_activity_set',
+    'read_qc_analysis_set': 'read_QC_analysis_activity_set',
     'study_set': 'study_set',
 }
 
@@ -181,7 +181,7 @@ def route_document_ids(document, routing_table):
 @click.option("--excluded_collection", multiple=True,
               default=[
                   # todo mongodb has a read_QC_analysis_activity_set
-                  "read_qc_analysis_activity_set",
+                  "read_qc_analysis_set",
                   "read_QC_analysis_activity_set",
               ])
 def cli(dotenv_file: str, schema_file: str, max_collection_bytes: int, last_doc_num: int, migrate_partial: bool,
@@ -309,7 +309,7 @@ def cli(dotenv_file: str, schema_file: str, max_collection_bytes: int, last_doc_
                     logger.warning(f"no id in document: {document}")
                     document['id'] = f"nmdc:{document['md5_checksum']}"
 
-                if collection_name_lc == "mags_activity_set" and 'mags_list' in document and document['mags_list']:
+                if collection_name_lc == "mags_set" and 'mags_list' in document and document['mags_list']:
                     for i in document['mags_list']:
                         if 'num_tRNA' in i:
                             i['num_t_rna'] = i['num_tRNA']
@@ -402,7 +402,7 @@ def cli(dotenv_file: str, schema_file: str, max_collection_bytes: int, last_doc_
                     else:
                         logger.warning(f"document {document['id']} has no has_input")
 
-                if collection_name_lc == "metatranscriptome_activity_set":
+                if collection_name_lc == "metatranscriptome_analysis_set":
                     tidy_inputs = [i.strip() for i in document['has_input']]
                     document['has_input'] = tidy_inputs
                     if 'part_of' in document:
@@ -439,7 +439,7 @@ def cli(dotenv_file: str, schema_file: str, max_collection_bytes: int, last_doc_
                     logger.error(f"no class {collection_name_lc} in nmdc_schema.nmdc")
                     continue
 
-            # KeyError: 'read_qc_analysis_activity_set'
+            # KeyError: 'read_qc_analysis_set'
             if collection_name_lc in database_obj:
                 if len(database_obj[collection_name_lc]) == 0:
                     del database_obj[collection_name_lc]

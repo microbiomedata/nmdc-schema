@@ -1756,7 +1756,7 @@
          "@type": "@id",
          "@id": "MIXS:0000431"
       },
-      "mags_activity_set": {
+      "mags_set": {
          "@type": "@id"
       },
       "mags_list": {
@@ -1808,10 +1808,10 @@
       "metabolite_quantified": {
          "@type": "@id"
       },
-      "metabolomics_analysis_activity_set": {
+      "metabolomics_analysis_set": {
          "@type": "@id"
       },
-      "metagenome_annotation_activity_set": {
+      "metagenome_annotation_set": {
          "@type": "@id"
       },
       "metagenome_annotation_id": {
@@ -1820,13 +1820,13 @@
       "metagenome_assembly_set": {
          "@type": "@id"
       },
-      "metagenome_sequencing_activity_set": {
+      "metagenome_sequencing_set": {
          "@type": "@id"
       },
-      "metaproteomics_analysis_activity_set": {
+      "metaproteomics_analysis_set": {
          "@type": "@id"
       },
-      "metatranscriptome_activity_set": {
+      "metatranscriptome_analysis_set": {
          "@type": "@id"
       },
       "methane": {
@@ -1893,7 +1893,7 @@
          "@type": "@id",
          "@id": "MIXS:0000504"
       },
-      "nom_analysis_activity_set": {
+      "nom_analysis_set": {
          "@type": "@id"
       },
       "non_min_nutr_regm": {
@@ -2244,10 +2244,10 @@
          "@type": "@id",
          "@id": "MIXS:0000350"
       },
-      "read_based_taxonomy_analysis_activity_set": {
+      "read_based_taxonomy_analysis_set": {
          "@type": "@id"
       },
-      "read_qc_analysis_activity_set": {
+      "read_qc_analysis_set": {
          "@type": "@id"
       },
       "redox_potential": {

@@ -3416,7 +3416,7 @@
                 "activity_set": {
                     "description": "This property links a database object to the set of workflow activities.",
                     "items": {
-                        "$ref": "#/$defs/WorkflowExecutionActivity"
+                        "$ref": "#/$defs/WorkflowExecution"
                     },
                     "type": "array"
                 },
@@ -3486,10 +3486,10 @@
                     },
                     "type": "array"
                 },
-                "mags_activity_set": {
+                "mags_set": {
                     "description": "This property links a database object to the set of MAGs analysis activities.",
                     "items": {
-                        "$ref": "#/$defs/MagsAnalysisActivity"
+                        "$ref": "#/$defs/MagsAnalysis"
                     },
                     "type": "array"
                 },
@@ -3505,17 +3505,17 @@
                     },
                     "type": "array"
                 },
-                "metabolomics_analysis_activity_set": {
+                "metabolomics_analysis_set": {
                     "description": "This property links a database object to the set of metabolomics analysis activities.",
                     "items": {
-                        "$ref": "#/$defs/MetabolomicsAnalysisActivity"
+                        "$ref": "#/$defs/MetabolomicsAnalysis"
                     },
                     "type": "array"
                 },
-                "metagenome_annotation_activity_set": {
+                "metagenome_annotation_set": {
                     "description": "This property links a database object to the set of metagenome annotation activities.",
                     "items": {
-                        "$ref": "#/$defs/MetagenomeAnnotationActivity"
+                        "$ref": "#/$defs/MetagenomeAnnotation"
                     },
                     "type": "array"
                 },
@@ -3526,31 +3526,31 @@
                     },
                     "type": "array"
                 },
-                "metagenome_sequencing_activity_set": {
+                "metagenome_sequencing_set": {
                     "description": "This property links a database object to the set of metagenome sequencing activities.",
                     "items": {
-                        "$ref": "#/$defs/MetagenomeSequencingActivity"
+                        "$ref": "#/$defs/MetagenomeSequencing"
                     },
                     "type": "array"
                 },
-                "metaproteomics_analysis_activity_set": {
+                "metaproteomics_analysis_set": {
                     "description": "This property links a database object to the set of metaproteomics analysis activities.",
                     "items": {
-                        "$ref": "#/$defs/MetaproteomicsAnalysisActivity"
+                        "$ref": "#/$defs/MetaproteomicsAnalysis"
                     },
                     "type": "array"
                 },
-                "metatranscriptome_activity_set": {
+                "metatranscriptome_analysis_set": {
                     "description": "This property links a database object to the set of metatranscriptome analysis activities.",
                     "items": {
-                        "$ref": "#/$defs/MetatranscriptomeActivity"
+                        "$ref": "#/$defs/MetatranscriptomeAnalysis"
                     },
                     "type": "array"
                 },
-                "nom_analysis_activity_set": {
+                "nom_analysis_set": {
                     "description": "This property links a database object to the set of natural organic matter (NOM) analysis activities.",
                     "items": {
-                        "$ref": "#/$defs/NomAnalysisActivity"
+                        "$ref": "#/$defs/NomAnalysis"
                     },
                     "type": "array"
                 },
@@ -3615,17 +3615,17 @@
                     },
                     "type": "array"
                 },
-                "read_based_taxonomy_analysis_activity_set": {
+                "read_based_taxonomy_analysis_set": {
                     "description": "This property links a database object to the set of read based analysis activities.",
                     "items": {
-                        "$ref": "#/$defs/ReadBasedTaxonomyAnalysisActivity"
+                        "$ref": "#/$defs/ReadBasedTaxonomyAnalysis"
                     },
                     "type": "array"
                 },
-                "read_qc_analysis_activity_set": {
+                "read_qc_analysis_set": {
                     "description": "This property links a database object to the set of read QC analysis activities.",
                     "items": {
-                        "$ref": "#/$defs/ReadQcAnalysisActivity"
+                        "$ref": "#/$defs/ReadQcAnalysis"
                     },
                     "type": "array"
                 },
@@ -5054,7 +5054,7 @@
             "title": "MagBin",
             "type": "object"
         },
-        "MagsAnalysisActivity": {
+        "MagsAnalysis": {
             "additionalProperties": false,
             "description": "A workflow execution activity that uses computational binning tools to group assembled contigs into genomes",
             "properties": {
@@ -5147,7 +5147,7 @@
                 "started_at_time",
                 "ended_at_time"
             ],
-            "title": "MagsAnalysisActivity",
+            "title": "MagsAnalysis",
             "type": "object"
         },
         "MaterialContainer": {
@@ -5257,7 +5257,7 @@
             "title": "MetaboliteQuantification",
             "type": "object"
         },
-        "MetabolomicsAnalysisActivity": {
+        "MetabolomicsAnalysis": {
             "additionalProperties": false,
             "description": "",
             "properties": {
@@ -5339,10 +5339,10 @@
                 "started_at_time",
                 "ended_at_time"
             ],
-            "title": "MetabolomicsAnalysisActivity",
+            "title": "MetabolomicsAnalysis",
             "type": "object"
         },
-        "MetagenomeAnnotationActivity": {
+        "MetagenomeAnnotation": {
             "additionalProperties": false,
             "description": "A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs",
             "properties": {
@@ -5422,7 +5422,7 @@
                 "started_at_time",
                 "ended_at_time"
             ],
-            "title": "MetagenomeAnnotationActivity",
+            "title": "MetagenomeAnnotation",
             "type": "object"
         },
         "MetagenomeAssembly": {
@@ -5612,7 +5612,7 @@
             "title": "MetagenomeAssembly",
             "type": "object"
         },
-        "MetagenomeSequencingActivity": {
+        "MetagenomeSequencing": {
             "additionalProperties": false,
             "description": "Initial sequencing activity that precedes any analysis.  This activity has output(s) that are the raw sequencing data.",
             "properties": {
@@ -5684,10 +5684,10 @@
                 "started_at_time",
                 "ended_at_time"
             ],
-            "title": "MetagenomeSequencingActivity",
+            "title": "MetagenomeSequencing",
             "type": "object"
         },
-        "MetaproteomicsAnalysisActivity": {
+        "MetaproteomicsAnalysis": {
             "additionalProperties": false,
             "description": "",
             "properties": {
@@ -5766,10 +5766,10 @@
                 "started_at_time",
                 "ended_at_time"
             ],
-            "title": "MetaproteomicsAnalysisActivity",
+            "title": "MetaproteomicsAnalysis",
             "type": "object"
         },
-        "MetatranscriptomeActivity": {
+        "MetatranscriptomeAnalysis": {
             "additionalProperties": false,
             "description": "A metatranscriptome activity that e.g. pools assembly and annotation activity.",
             "properties": {
@@ -5841,10 +5841,10 @@
                 "started_at_time",
                 "ended_at_time"
             ],
-            "title": "MetatranscriptomeActivity",
+            "title": "MetatranscriptomeAnalysis",
             "type": "object"
         },
-        "MetatranscriptomeAnnotationActivity": {
+        "MetatranscriptomeAnnotation": {
             "additionalProperties": false,
             "description": "",
             "properties": {
@@ -5924,7 +5924,7 @@
                 "started_at_time",
                 "ended_at_time"
             ],
-            "title": "MetatranscriptomeAnnotationActivity",
+            "title": "MetatranscriptomeAnnotation",
             "type": "object"
         },
         "MetatranscriptomeAssembly": {
@@ -6196,7 +6196,7 @@
             "title": "MixingProcess",
             "type": "object"
         },
-        "NomAnalysisActivity": {
+        "NomAnalysis": {
             "additionalProperties": false,
             "description": "",
             "properties": {
@@ -6273,7 +6273,7 @@
                 "started_at_time",
                 "ended_at_time"
             ],
-            "title": "NomAnalysisActivity",
+            "title": "NomAnalysis",
             "type": "object"
         },
         "OccupDocumentEnum": {
@@ -7053,7 +7053,7 @@
             "title": "ReactionParticipant",
             "type": "object"
         },
-        "ReadBasedTaxonomyAnalysisActivity": {
+        "ReadBasedTaxonomyAnalysis": {
             "additionalProperties": false,
             "description": "A workflow execution activity that performs taxonomy classification using sequencing reads",
             "properties": {
@@ -7125,10 +7125,10 @@
                 "started_at_time",
                 "ended_at_time"
             ],
-            "title": "ReadBasedTaxonomyAnalysisActivity",
+            "title": "ReadBasedTaxonomyAnalysis",
             "type": "object"
         },
-        "ReadQcAnalysisActivity": {
+        "ReadQcAnalysis": {
             "additionalProperties": false,
             "description": "A workflow execution activity that performs quality control on raw Illumina reads including quality trimming, artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant removal",
             "properties": {
@@ -7224,7 +7224,7 @@
                 "started_at_time",
                 "ended_at_time"
             ],
-            "title": "ReadQcAnalysisActivity",
+            "title": "ReadQcAnalysis",
             "type": "object"
         },
         "RelSampLocEnum": {
@@ -8275,7 +8275,7 @@
             "title": "WindowVertPosEnum",
             "type": "string"
         },
-        "WorkflowExecutionActivity": {
+        "WorkflowExecution": {
             "additionalProperties": false,
             "description": "Represents an instance of an execution of a particular workflow",
             "properties": {
@@ -8347,7 +8347,7 @@
                 "started_at_time",
                 "ended_at_time"
             ],
-            "title": "WorkflowExecutionActivity",
+            "title": "WorkflowExecution",
             "type": "object"
         },
         "YesNoEnum": {
@@ -8369,7 +8369,7 @@
         "activity_set": {
             "description": "This property links a database object to the set of workflow activities.",
             "items": {
-                "$ref": "#/$defs/WorkflowExecutionActivity"
+                "$ref": "#/$defs/WorkflowExecution"
             },
             "type": "array"
         },
@@ -8439,10 +8439,10 @@
             },
             "type": "array"
         },
-        "mags_activity_set": {
+        "mags_set": {
             "description": "This property links a database object to the set of MAGs analysis activities.",
             "items": {
-                "$ref": "#/$defs/MagsAnalysisActivity"
+                "$ref": "#/$defs/MagsAnalysis"
             },
             "type": "array"
         },
@@ -8458,17 +8458,17 @@
             },
             "type": "array"
         },
-        "metabolomics_analysis_activity_set": {
+        "metabolomics_analysis_set": {
             "description": "This property links a database object to the set of metabolomics analysis activities.",
             "items": {
-                "$ref": "#/$defs/MetabolomicsAnalysisActivity"
+                "$ref": "#/$defs/MetabolomicsAnalysis"
             },
             "type": "array"
         },
-        "metagenome_annotation_activity_set": {
+        "metagenome_annotation_set": {
             "description": "This property links a database object to the set of metagenome annotation activities.",
             "items": {
-                "$ref": "#/$defs/MetagenomeAnnotationActivity"
+                "$ref": "#/$defs/MetagenomeAnnotation"
             },
             "type": "array"
         },
@@ -8479,31 +8479,31 @@
             },
             "type": "array"
         },
-        "metagenome_sequencing_activity_set": {
+        "metagenome_sequencing_set": {
             "description": "This property links a database object to the set of metagenome sequencing activities.",
             "items": {
-                "$ref": "#/$defs/MetagenomeSequencingActivity"
+                "$ref": "#/$defs/MetagenomeSequencing"
             },
             "type": "array"
         },
-        "metaproteomics_analysis_activity_set": {
+        "metaproteomics_analysis_set": {
             "description": "This property links a database object to the set of metaproteomics analysis activities.",
             "items": {
-                "$ref": "#/$defs/MetaproteomicsAnalysisActivity"
+                "$ref": "#/$defs/MetaproteomicsAnalysis"
             },
             "type": "array"
         },
-        "metatranscriptome_activity_set": {
+        "metatranscriptome_analysis_set": {
             "description": "This property links a database object to the set of metatranscriptome analysis activities.",
             "items": {
-                "$ref": "#/$defs/MetatranscriptomeActivity"
+                "$ref": "#/$defs/MetatranscriptomeAnalysis"
             },
             "type": "array"
         },
-        "nom_analysis_activity_set": {
+        "nom_analysis_set": {
             "description": "This property links a database object to the set of natural organic matter (NOM) analysis activities.",
             "items": {
-                "$ref": "#/$defs/NomAnalysisActivity"
+                "$ref": "#/$defs/NomAnalysis"
             },
             "type": "array"
         },
@@ -8568,17 +8568,17 @@
             },
             "type": "array"
         },
-        "read_based_taxonomy_analysis_activity_set": {
+        "read_based_taxonomy_analysis_set": {
             "description": "This property links a database object to the set of read based analysis activities.",
             "items": {
-                "$ref": "#/$defs/ReadBasedTaxonomyAnalysisActivity"
+                "$ref": "#/$defs/ReadBasedTaxonomyAnalysis"
             },
             "type": "array"
         },
-        "read_qc_analysis_activity_set": {
+        "read_qc_analysis_set": {
             "description": "This property links a database object to the set of read QC analysis activities.",
             "items": {
-                "$ref": "#/$defs/ReadQcAnalysisActivity"
+                "$ref": "#/$defs/ReadQcAnalysis"
             },
             "type": "array"
         },
