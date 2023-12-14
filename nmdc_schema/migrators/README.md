@@ -32,12 +32,17 @@ Here's how you can create a new migrator:
     ```
     > Alternatively, you can run `$ poetry run python nmdc_schema/migrators/cli/create_migrator.py`.
    
-    When prompted, enter the schema version numbers the migrator will migrate data _from_ and _to_. For example:
+    When prompted, enter the [schema version numbers](../../CHANGELOG.md) the migrator will migrate data _from_ and _to_. For example:
     > ```yaml
     > From schema version: 1.1
     > To schema version: 1.2
     > ```
-    By default, the generated migrator is a "no-op," meaning that it has no operations (i.e. doesn't do anything).
+
+    By default, the generated migrator is a "no-op," meaning that it performs **no** **op**erations (i.e. doesn't do
+    anything).
+
+    > If the corresponding schema changes don't require that any data be migrated, you can skip the steps
+    below. The existence of a "no-op" migrator indicates that no migration is necessary.
 2. Customize the newly-generated migrator.
     - Define the "transformation" function(s) that are part of this migration. Ensure each "transformation" function:
         - **Accepts** a Python `dict`; for example:
