@@ -175,7 +175,7 @@ classes:
       was_generated_by:
         description: provenance for the annotation.
         notes: To be consistent with the rest of the NMDC schema we use the PROV annotation model, rather than GPAD
-        range: MetagenomeAnnotationActivity
+        range: MetagenomeAnnotation
     narrow_mappings:
       - biolink:GeneToGoTermAssociation
 

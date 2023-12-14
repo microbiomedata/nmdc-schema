@@ -1164,7 +1164,7 @@ nmdc:Database a owl:Class,
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:processed_sample_set ],
         [ a owl:Restriction ;
-            owl:allValuesFrom nmdc:MetagenomeAnnotationActivity ;
+            owl:allValuesFrom nmdc:MetagenomeAnnotation ;
             owl:onProperty nmdc:metagenome_annotation_activity_set ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
@@ -4364,7 +4364,7 @@ nmdc:FunctionalAnnotation a owl:Class,
             owl:minCardinality 0 ;
             owl:onProperty nmdc:was_generated_by ],
         [ a owl:Restriction ;
-            owl:allValuesFrom nmdc:MetagenomeAnnotationActivity ;
+            owl:allValuesFrom nmdc:MetagenomeAnnotation ;
             owl:onProperty nmdc:was_generated_by ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
@@ -13363,9 +13363,9 @@ nmdc:MaterialContainer a owl:Class,
             owl:onProperty nmdc:container_size ] ;
     skos:inScheme nmdc:sample_prep .
 
-nmdc:MetagenomeAnnotationActivity a owl:Class,
+nmdc:MetagenomeAnnotation a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "MetagenomeAnnotationActivity" ;
+    rdfs:label "MetagenomeAnnotation" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:id ],
@@ -14436,7 +14436,7 @@ nmdc:metabolomics_analysis_activity_set a owl:ObjectProperty,
 nmdc:metagenome_annotation_activity_set a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "metagenome_annotation_activity_set" ;
-    rdfs:range nmdc:MetagenomeAnnotationActivity ;
+    rdfs:range nmdc:MetagenomeAnnotation ;
     rdfs:subPropertyOf nmdc:object_set ;
     skos:definition "This property links a database object to the set of metagenome annotation activities." ;
     skos:inScheme nmdc:nmdc .

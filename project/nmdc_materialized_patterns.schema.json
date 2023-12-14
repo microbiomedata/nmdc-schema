@@ -3515,7 +3515,7 @@
                 "metagenome_annotation_activity_set": {
                     "description": "This property links a database object to the set of metagenome annotation activities.",
                     "items": {
-                        "$ref": "#/$defs/MetagenomeAnnotationActivity"
+                        "$ref": "#/$defs/MetagenomeAnnotation"
                     },
                     "type": "array"
                 },
@@ -5342,7 +5342,7 @@
             "title": "MetabolomicsAnalysisActivity",
             "type": "object"
         },
-        "MetagenomeAnnotationActivity": {
+        "MetagenomeAnnotation": {
             "additionalProperties": false,
             "description": "A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs",
             "properties": {
@@ -5422,7 +5422,7 @@
                 "started_at_time",
                 "ended_at_time"
             ],
-            "title": "MetagenomeAnnotationActivity",
+            "title": "MetagenomeAnnotation",
             "type": "object"
         },
         "MetagenomeAssembly": {
@@ -8468,7 +8468,7 @@
         "metagenome_annotation_activity_set": {
             "description": "This property links a database object to the set of metagenome annotation activities.",
             "items": {
-                "$ref": "#/$defs/MetagenomeAnnotationActivity"
+                "$ref": "#/$defs/MetagenomeAnnotation"
             },
             "type": "array"
         },

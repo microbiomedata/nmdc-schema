@@ -4041,7 +4041,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    range: MetagenomeAnnotationActivity
+    range: MetagenomeAnnotation
   metagenome_assembly_set:
     name: metagenome_assembly_set
     description: This property links a database object to the set of metagenome assembly
@@ -19732,8 +19732,8 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-  MetagenomeAnnotationActivity:
-    name: MetagenomeAnnotationActivity
+  MetagenomeAnnotation:
+    name: MetagenomeAnnotation
     description: A workflow execution activity that provides functional and structural
       annotation of assembled metagenome contigs
     in_subset:
@@ -20610,7 +20610,7 @@ classes:
         notes:
         - To be consistent with the rest of the NMDC schema we use the PROV annotation
           model, rather than GPAD
-        range: MetagenomeAnnotationActivity
+        range: MetagenomeAnnotation
 source_file: src/schema/nmdc.yaml
 settings:
   id_nmdc_prefix:

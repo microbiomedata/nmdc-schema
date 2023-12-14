@@ -2827,7 +2827,7 @@ slots:
   metagenome_annotation_activity_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: MetagenomeAnnotationActivity
+    range: MetagenomeAnnotation
     description:
       This property links a database object to the set of metagenome annotation
       activities.

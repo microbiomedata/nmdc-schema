@@ -196,7 +196,7 @@ classes:
           syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-  MetagenomeAnnotationActivity:
+  MetagenomeAnnotation:
     description: A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
     is_a: WorkflowExecution
     slots:
