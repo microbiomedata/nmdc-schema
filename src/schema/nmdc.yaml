@@ -256,17 +256,15 @@ classes:
       - has_solution_components
       - volume
 
-  ChemicalReagent:
+  LaboratoryReagent:
     aliases:
-      - metabolite
       - chemical substance
       - chemical compound
       - chemical
       - reagent
       - reactant
     description: >-
-      An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs.
-      There may be different terms for distinct acid-base forms, protonation states
+       A substance used in a chemical reaction to detect, measure, examine, or produce other substances.
     comments:
       - we will not assign an nmdc id pattern or typecode to this class.
     slots:
@@ -276,6 +274,8 @@ classes:
       - mass
       - volume
       - concentration
+    see_also:
+      - CHEBI:33893
 
 
   Protocol:
@@ -1672,9 +1672,11 @@ classes:
           syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-  ReactionProcess:
+  ChemicalConversionProcess:
     description: >
-      A process that results in a chemical reaction.
+      A process that results in the interconversion of chemical species by a reaction to transform the reagents into products.
+    see_also:
+      - C01033
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-1368-8217 #Yuri Corilo
@@ -3181,8 +3183,8 @@ slots:
     range: StationaryPhaseEnum
     description: The material the stationary phase is comprised of used in chromatography.
   has_reagents:
-    domain: ReactionProcess
-    range:  ChemicalReagent
+    domain: ChemicalConversionProcess
+    range:  LaboratoryReagent
     description: The reagents used in a chemical reaction.
     multivalued: true
     inlined_as_list: true
