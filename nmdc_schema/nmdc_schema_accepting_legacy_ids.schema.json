@@ -3508,7 +3508,7 @@
                 "metabolomics_analysis_activity_set": {
                     "description": "This property links a database object to the set of metabolomics analysis activities.",
                     "items": {
-                        "$ref": "#/$defs/MetabolomicsAnalysisActivity"
+                        "$ref": "#/$defs/MetabolomicsAnalysis"
                     },
                     "type": "array"
                 },
@@ -5257,7 +5257,7 @@
             "title": "MetaboliteQuantification",
             "type": "object"
         },
-        "MetabolomicsAnalysisActivity": {
+        "MetabolomicsAnalysis": {
             "additionalProperties": false,
             "description": "",
             "properties": {
@@ -5339,7 +5339,7 @@
                 "started_at_time",
                 "ended_at_time"
             ],
-            "title": "MetabolomicsAnalysisActivity",
+            "title": "MetabolomicsAnalysis",
             "type": "object"
         },
         "MetagenomeAnnotation": {
@@ -8461,7 +8461,7 @@
         "metabolomics_analysis_activity_set": {
             "description": "This property links a database object to the set of metabolomics analysis activities.",
             "items": {
-                "$ref": "#/$defs/MetabolomicsAnalysisActivity"
+                "$ref": "#/$defs/MetabolomicsAnalysis"
             },
             "type": "array"
         },

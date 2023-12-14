@@ -2813,7 +2813,7 @@ slots:
   metabolomics_analysis_activity_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
-    range: MetabolomicsAnalysisActivity
+    range: MetabolomicsAnalysis
     description:
       This property links a database object to the set of metabolomics
       analysis activities.

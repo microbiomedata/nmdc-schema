@@ -1260,7 +1260,7 @@ nmdc:Database a owl:Class,
             owl:allValuesFrom nmdc:MetagenomeSequencing ;
             owl:onProperty nmdc:metagenome_sequencing_activity_set ],
         [ a owl:Restriction ;
-            owl:allValuesFrom nmdc:MetabolomicsAnalysisActivity ;
+            owl:allValuesFrom nmdc:MetabolomicsAnalysis ;
             owl:onProperty nmdc:metabolomics_analysis_activity_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom nmdc:GenomeFeature ;
@@ -5523,9 +5523,9 @@ nmdc:MetaboliteQuantification a owl:Class,
     skos:definition "This is used to link a metabolomics analysis workflow to a specific metabolite" ;
     skos:inScheme nmdc:core .
 
-nmdc:MetabolomicsAnalysisActivity a owl:Class,
+nmdc:MetabolomicsAnalysis a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "MetabolomicsAnalysisActivity" ;
+    rdfs:label "MetabolomicsAnalysis" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:id ],
@@ -14010,7 +14010,7 @@ nmdc:gnps_task_identifiers a owl:ObjectProperty,
     rdfs:range [ a rdfs:Datatype ;
             owl:onDatatype xsd:string ;
             owl:withRestrictions ( [ xsd:pattern "^gnps\\.task:[a-f0-9]+$" ] ) ] ;
-    rdfs:seeAlso <https://microbiomedata.github.io/nmdc-schema/MetabolomicsAnalysisActivity/> ;
+    rdfs:seeAlso <https://microbiomedata.github.io/nmdc-schema/MetabolomicsAnalysis/> ;
     rdfs:subPropertyOf nmdc:gnps_identifiers,
         nmdc:study_identifiers ;
     skos:definition "identifiers that link a NMDC study to a web-based report about metabolomics analysis progress and results" ;
@@ -14428,7 +14428,7 @@ nmdc:metabolite_quantified a owl:ObjectProperty,
 nmdc:metabolomics_analysis_activity_set a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "metabolomics_analysis_activity_set" ;
-    rdfs:range nmdc:MetabolomicsAnalysisActivity ;
+    rdfs:range nmdc:MetabolomicsAnalysis ;
     rdfs:subPropertyOf nmdc:object_set ;
     skos:definition "This property links a database object to the set of metabolomics analysis activities." ;
     skos:inScheme nmdc:nmdc .

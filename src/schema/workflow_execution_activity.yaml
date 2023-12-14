@@ -315,7 +315,7 @@ classes:
           interpolated: true
 
 
-  MetabolomicsAnalysisActivity:
+  MetabolomicsAnalysis:
     is_a: WorkflowExecution
     in_subset:
       - workflow subset
@@ -595,7 +595,7 @@ slots:
       A reference to a file that holds calibration information.
 
   has_metabolite_quantifications:
-    domain: MetabolomicsAnalysisActivity
+    domain: MetabolomicsAnalysis
     range: MetaboliteQuantification
     multivalued: true
 

@@ -4025,7 +4025,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    range: MetabolomicsAnalysisActivity
+    range: MetabolomicsAnalysis
   metaproteomics_analysis_activity_set:
     name: metaproteomics_analysis_activity_set
     description: This property links a database object to the set of metaproteomics
@@ -5512,7 +5512,7 @@ slots:
     - value: gnps.task:4b848c342a4f4abc871bdf8a09a60807
     from_schema: https://w3id.org/nmdc/external_identifiers
     see_also:
-    - https://microbiomedata.github.io/nmdc-schema/MetabolomicsAnalysisActivity/
+    - https://microbiomedata.github.io/nmdc-schema/MetabolomicsAnalysis/
     is_a: study_identifiers
     mixins:
     - gnps_identifiers
@@ -19868,8 +19868,8 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
-  MetabolomicsAnalysisActivity:
-    name: MetabolomicsAnalysisActivity
+  MetabolomicsAnalysis:
+    name: MetabolomicsAnalysis
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/workflow_execution_activity
