@@ -2,6 +2,7 @@ mags_activity_set:
   - id: nmdc:wfmag-99-5MiDJM
     name: MAGs activiity 1781_86101
     was_informed_by: gold:Gp0115663
+    part_of: nmdc:wfch-11-ab
     started_at_time: '2021-01-10T00:00:00+00:00'
     ended_at_time: '2021-01-10T00:00:00+00:00'
     type: nmdc:MAGsAnalysisActivity
@@ -52,9 +53,11 @@ mags_activity_set:
         num_5s: 0
         num_23s: 0
         num_t_rna: 1
+
   - id: nmdc:wfmag-99-VOgM5i
     name: MAGs activiity 1781_86089
     was_informed_by: gold:Gp0115664
+    part_of: nmdc:wfch-12-ab
     started_at_time: '2021-01-10T00:00:00+00:00'
     ended_at_time: '2021-01-10T00:00:00+00:00'
     type: nmdc:MAGsAnalysisActivity
@@ -105,3 +108,4 @@ mags_activity_set:
         num_5s: 0
         num_23s: 0
         num_t_rna: 7
+

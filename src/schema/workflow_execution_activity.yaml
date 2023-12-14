@@ -23,7 +23,42 @@ subsets:
       Subset consisting of just the workflow execution activities
 
 classes:
+  WorkflowChain:
+    is_a: PlannedProcess
+    description: >-
+      A workflow chain is a collection of Workflow Execution(s) that 
+      analyse the output of DataGeneration.
+    comments: >-
+      The sequence of Workflow Execution(s) can be inferred from the has_input and has_output slots of the Workflow Execution(s)
+    slots:
+      - type
+      - analyte_category
+      - was_informed_by
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfch-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+      type:
+        required: true
+      analyte_category:
+        required: true
+        range: AnalyteCategoryEnum
+      was_informed_by:
+        required: true
+        description: >-
+          A Workflow Chain instance was informed by the data and metadata of a of a 
+            Data Generation instance
+        range: DataGeneration
+        comments: >-
+          The value of this slot is a reference to a Data Generation 
+          instance that informed the Workflow Chain instance with its
+          output data and the metadata of the Data Generation.
+  
+
   WorkflowExecutionActivity:
+    is_a: PlannedProcess
     aliases:
       - analysis
     comments:
@@ -64,6 +99,12 @@ classes:
       execution_resource:
         required: true
         range: ExecutionResourceEnum
+      part_of:
+        required: true
+        description: >-
+          The WorkflowChain that this WorkflowExecution is part of
+        range: WorkflowChain
+        multivalued: false
       type:
         required: true
       id:
@@ -319,7 +360,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-
 
 slots:
 
