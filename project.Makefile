@@ -541,8 +541,12 @@ assets/filtered-api-requests/filtered-request-validation-log.txt: nmdc_schema/nm
 assets/filtered-api-requests/filtered-request-result.yaml
 	- $(RUN) linkml-validate --schema $^ > $@
 
-.PHONY: migration-doctests
+.PHONY: migration-doctests migrator
 
 # Runs all doctests defined within the migrator modules.
 migration-doctests:
 	$(RUN) python -m doctest -v nmdc_schema/migrators/*.py
+
+# Generates a migrator skeleton for the specified schema versions.
+migrator:
+	$(RUN) python nmdc_schema/migrators/cli/create_migrator.py
