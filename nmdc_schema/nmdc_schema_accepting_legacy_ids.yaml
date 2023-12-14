@@ -4074,8 +4074,8 @@ slots:
     mixins:
     - object_set
     range: ReadQcAnalysis
-  read_based_taxonomy_analysis_activity_set:
-    name: read_based_taxonomy_analysis_activity_set
+  read_based_taxonomy_analysis_set:
+    name: read_based_taxonomy_analysis_set
     description: This property links a database object to the set of read based analysis
       activities.
     from_schema: https://w3id.org/nmdc/nmdc
@@ -17926,7 +17926,7 @@ classes:
     - pooling_set
     - processed_sample_set
     - reaction_activity_set
-    - read_based_taxonomy_analysis_activity_set
+    - read_based_taxonomy_analysis_set
     - read_qc_analysis_activity_set
     - study_set
     tree_root: true

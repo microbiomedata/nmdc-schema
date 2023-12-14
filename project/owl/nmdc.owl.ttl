@@ -1138,7 +1138,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:metagenome_annotation_set ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nmdc:read_based_taxonomy_analysis_activity_set ],
+            owl:onProperty nmdc:read_based_taxonomy_analysis_set ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc:genome_feature_set ],
@@ -1249,7 +1249,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:biosample_set ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty nmdc:read_based_taxonomy_analysis_activity_set ],
+            owl:onProperty nmdc:read_based_taxonomy_analysis_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom nmdc:DataObject ;
             owl:onProperty nmdc:data_object_set ],
@@ -1294,7 +1294,7 @@ nmdc:Database a owl:Class,
             owl:onProperty nmdc:dissolving_activity_set ],
         [ a owl:Restriction ;
             owl:allValuesFrom nmdc:ReadBasedTaxonomyAnalysis ;
-            owl:onProperty nmdc:read_based_taxonomy_analysis_activity_set ],
+            owl:onProperty nmdc:read_based_taxonomy_analysis_set ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc:functional_annotation_set ],
@@ -14851,9 +14851,9 @@ nmdc:reaction_time a owl:ObjectProperty,
     rdfs:range nmdc:QuantityValue ;
     skos:inScheme nmdc:sample_prep .
 
-nmdc:read_based_taxonomy_analysis_activity_set a owl:ObjectProperty,
+nmdc:read_based_taxonomy_analysis_set a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "read_based_taxonomy_analysis_activity_set" ;
+    rdfs:label "read_based_taxonomy_analysis_set" ;
     rdfs:range nmdc:ReadBasedTaxonomyAnalysis ;
     rdfs:subPropertyOf nmdc:object_set ;
     skos:definition "This property links a database object to the set of read based analysis activities." ;

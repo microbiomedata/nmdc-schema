@@ -2244,7 +2244,7 @@
          "@type": "@id",
          "@id": "MIXS:0000350"
       },
-      "read_based_taxonomy_analysis_activity_set": {
+      "read_based_taxonomy_analysis_set": {
          "@type": "@id"
       },
       "read_qc_analysis_activity_set": {

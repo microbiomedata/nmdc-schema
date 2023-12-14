@@ -3615,7 +3615,7 @@
                     },
                     "type": "array"
                 },
-                "read_based_taxonomy_analysis_activity_set": {
+                "read_based_taxonomy_analysis_set": {
                     "description": "This property links a database object to the set of read based analysis activities.",
                     "items": {
                         "$ref": "#/$defs/ReadBasedTaxonomyAnalysis"
@@ -8568,7 +8568,7 @@
             },
             "type": "array"
         },
-        "read_based_taxonomy_analysis_activity_set": {
+        "read_based_taxonomy_analysis_set": {
             "description": "This property links a database object to the set of read based analysis activities.",
             "items": {
                 "$ref": "#/$defs/ReadBasedTaxonomyAnalysis"

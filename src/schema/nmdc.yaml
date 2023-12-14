@@ -214,7 +214,7 @@ classes:
       - planned_process_set
       - pooling_set
       - processed_sample_set
-      - read_based_taxonomy_analysis_activity_set
+      - read_based_taxonomy_analysis_set
       - read_qc_analysis_activity_set
       - study_set
       - workflow_execution_set
@@ -2859,7 +2859,7 @@ slots:
     description:
       This property links a database object to the set of read QC analysis
       activities.
-  read_based_taxonomy_analysis_activity_set:
+  read_based_taxonomy_analysis_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
     range: ReadBasedTaxonomyAnalysis
