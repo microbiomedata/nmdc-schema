@@ -2,11 +2,10 @@ id: nmdc:sty-11-ab
 name: see also description, title, objective, various alternatives
 description: see also name, title, objective, various alternatives
 study_category: research_study
-related_identifiers:
-  - any string R1
-##emsl_proposal_identifier:
-##  - generic:abc1
-##emsl_proposal_doi: any string
+related_identifiers: any string R1 # either remove related_identifiers from Study or develop it more fully
+##emsl_proposal_identifier: # removed?
+##  - generic:abc1 # removed?
+##emsl_proposal_doi: any string # removed?
 gold_study_identifiers:
   - gold:Gs12345
   - gold:Gs90909
@@ -46,9 +45,9 @@ objective: This record, an instance of class Study from the nmdc-schema was had 
 websites:
   - https://w3id.org/nmdc
   - https://w3id.org/linkml
-#associated_dois:
-#  - doi_value: doi:10.25585/1488209
-#    doi_category: dataset_doi
+associated_dois:
+  - doi_value: doi:10.25585/1488209
+    doi_category: dataset_doi
 ## type: any string # not required yet but will require a class name value like nmdc:Study
 relevant_protocols:
   - any string 1
