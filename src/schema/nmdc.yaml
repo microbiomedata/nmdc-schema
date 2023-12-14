@@ -166,7 +166,7 @@ classes:
 
   DirectInfusionProcess:
     description: the process that defines how a processed sample is introduced into the mass spectrometer witout previous chromatographic separation
-    is_a: FluidHandiling
+    is_a: FluidHandling
     slots:
       - direct_infusion_category
 
