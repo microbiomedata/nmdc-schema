@@ -250,28 +250,28 @@ org_nitro:
 organism_count:
   - has_raw_value: ATP
 oxy_stat_samp: aerobic
-#part_org_carb:
-#  has_raw_value: 1.92 micromole per liter
-#perturbation:
-#  - has_raw_value: antibiotic addition;R2/2018-05-11T14:30Z/2018-05-11T19:30Z/P1H30M
-#petroleum_hydrocarb:
-#  has_raw_value: 0.05 micromole per liter
-#ph: 99.99
-#ph_meth:
-#  has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9040c.pdf
-#phaeopigments:
-#  - has_raw_value: 2.5 milligram per cubic meter
-#phosplipid_fatt_acid:
-#  - has_raw_value: 2.98 milligram per liter
-#pool_dna_extracts:
-#  has_raw_value: yes, 5
-#potassium:
-#  has_raw_value: 463 milligram per liter
-#pressure:
-#  has_raw_value: 50 atmosphere
-#profile_position: summit
-#redox_potential:
-#  has_raw_value: 300 millivolt
+part_org_carb:
+  has_raw_value: 1.92 micromole per liter
+perturbation:
+  - has_raw_value: antibiotic addition;R2/2018-05-11T14:30Z/2018-05-11T19:30Z/P1H30M
+petroleum_hydrocarb:
+  has_raw_value: 0.05 micromole per liter
+ph: 99.99
+ph_meth:
+  has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9040c.pdf
+phaeopigments:
+  - has_raw_value: 2.5 milligram per cubic meter
+phosplipid_fatt_acid:
+  - has_raw_value: 2.98 milligram per liter
+pool_dna_extracts:
+  has_raw_value: yes, 5
+potassium:
+  has_raw_value: 463 milligram per liter
+pressure:
+  has_raw_value: 50 atmosphere
+profile_position: summit
+redox_potential:
+  has_raw_value: 300 millivolt
 #salinity:
 #  has_raw_value: 25 practical salinity unit
 #salinity_meth:
@@ -317,28 +317,26 @@ oxy_stat_samp: aerobic
 #  has_raw_value: 5 micromole per liter
 #sulfide:
 #  has_raw_value: 2 micromole per liter
-#temp:
-#  has_raw_value: 25 degree Celsius
-#tillage:
-#  - chisel
-#tidal_stage: high tide
-#tot_carb:
-#  has_raw_value: MIxS does not provide an example
-#tot_depth_water_col:
-#  has_raw_value: 500 meter
-#tot_diss_nitro:
-#  has_raw_value: 40 microgram per liter
-#tot_org_carb:
-#  has_raw_value: 2%
-#tot_org_c_meth:
-#  has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9060a.pdf
-#tot_nitro_content:
-#  has_raw_value: 35 milligrams Nitrogen per kilogram of soil
-##tot_nitro_cont_meth:
-##  has_raw_value: https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00
-#tot_nitro_cont_meth: https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00
-#tot_phosp:
-#  has_raw_value: 0.03 milligram per liter
+temp:
+  has_raw_value: 25 degree Celsius
+tillage:
+  - chisel
+tidal_stage: high tide
+tot_carb:
+  has_raw_value: MIxS does not provide an example
+tot_depth_water_col:
+  has_raw_value: 500 meter
+tot_diss_nitro:
+  has_raw_value: 40 microgram per liter
+tot_org_carb:
+  has_raw_value: 2%
+tot_org_c_meth:
+  has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9060a.pdf
+tot_nitro_content:
+  has_raw_value: 35 milligrams Nitrogen per kilogram of soil
+tot_nitro_cont_meth: https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00
+tot_phosp:
+  has_raw_value: 0.03 milligram per liter
 
 ecosystem: unconstrained text. should be validated against the controlled vocabulary,
   by the sample's environmental package. would also be nice to align the CV with MIxS
@@ -354,13 +352,13 @@ location: unconstrained text. should we even keep this slot? check if it has bee
   used in MongoDB.
 mod_date: '2023-01-25'
 ncbi_taxonomy_name: soil metagenome
-#proport_woa_temperature: no example from MIxS
-#salinity_category: halotolerant is an example from the schema, but MIxS doesn't provide
-#  this slot any more
-#sample_collection_site: unconstrained text
-#soluble_iron_micromol: MIxS doesn't provide an example
-#subsurface_depth:
-#  has_raw_value: MIxS does not provide an example
+proport_woa_temperature: no example from MIxS
+salinity_category: halotolerant is an example from the schema, but MIxS doesn't provide
+  this slot any more
+sample_collection_site: unconstrained text
+soluble_iron_micromol: MIxS doesn't provide an example
+subsurface_depth:
+  has_raw_value: MIxS does not provide an example
 
 experimental_factor:
   has_raw_value: unconstrained text, unlike the MIxS environmental triad
@@ -372,16 +370,16 @@ humidity_regm:
   - has_raw_value: 25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 light_regm:
   has_raw_value: incandescent light;10 lux;450 nanometer
-#phosphate:
-#  has_raw_value: 0.7 micromole per liter
-#
-##samp_collec_method:
-##  has_raw_value: swabbing
-#samp_collec_method: swabbing
-#samp_size:
-#  has_raw_value: 5 liters
-#source_mat_id:
-#  has_raw_value: MPI012345
+phosphate:
+  has_raw_value: 0.7 micromole per liter
+
+#samp_collec_method:
+#  has_raw_value: swabbing
+samp_collec_method: swabbing
+samp_size:
+  has_raw_value: 5 liters
+source_mat_id:
+  has_raw_value: MPI012345
 
 dna_absorb1: 2.02
 dna_absorb2: 2.02
@@ -681,163 +679,163 @@ mineral_nutr_regm:
 #  has_raw_value: xxx
 #number_resident:
 #  has_raw_value: xxx
-#occup_density_samp:
-#  has_raw_value: xxx
-#occup_document: estimate
-#occup_samp:
-#  has_raw_value: xxx
-#org_carb:
-#  has_raw_value: xxx
-#org_count_qpcr_info: xxx
-#
-#org_nitro_method: https://doi.org/10.1016/0038-0717(85)90144-0
-#org_particles:
-#  - has_raw_value: xxx
-#other_treatment: unconstrained text
-#owc_tvdss:
-#  has_raw_value: xxx
-#oxygen:
-#  has_raw_value: xxx
+occup_density_samp:
+  has_raw_value: xxx
+occup_document: estimate
+occup_samp:
+  has_raw_value: xxx
+org_carb:
+  has_raw_value: xxx
+org_count_qpcr_info: xxx
+
+org_nitro_method: https://doi.org/10.1016/0038-0717(85)90144-0
+org_particles:
+  - has_raw_value: xxx
+other_treatment: unconstrained text
+owc_tvdss:
+  has_raw_value: xxx
+oxygen:
+  has_raw_value: xxx
 part_of:
   - nmdc:sty-00-987654
   - nmdc:sty-00-qwerty
-#part_org_nitro:
-#  has_raw_value: xxx
-#particle_class:
-#  - has_raw_value: xxx
-#pcr_cond:
-#  has_raw_value: xxx
-#pcr_primers:
-#  has_raw_value: xxx
-#permeability:
-#  has_raw_value: xxx
-#
-#pesticide_regm:
-#  - has_raw_value: xxx
-#
-#
-#ph_regm:
-#  - has_raw_value: xxx
-#
-#photon_flux:
-#  has_raw_value: xxx
-#plant_growth_med:
-#  has_raw_value: xxx
-#plant_product:
-#  has_raw_value: xxx
-#plant_sex: Androdioecious
-#plant_struc:
-#  has_raw_value: xxx
-#pollutants:
-#  - has_raw_value: xxx
-#
-#porosity:
-#  has_raw_value: xxx
-#
-#pour_point:
-#  has_raw_value: xxx
-#pre_treatment:
-#  has_raw_value: xxx
-#pres_animal_insect: cat;3
-#
-#prev_land_use_meth: xxx
-#previous_land_use:
-#  has_raw_value: xxx
-#primary_prod:
-#  has_raw_value: xxx
-#primary_treatment:
-#  has_raw_value: xxx
-#prod_rate:
-#  has_raw_value: xxx
-#prod_start_date:
-#  has_raw_value: xxx
-#
-#project_id: no example from MIxS
-#
-#proposal_dna: '504000'
-#proposal_rna: '504000'
-#quad_pos: North side
-#radiation_regm:
-#  - has_raw_value: xxx
-#rainfall_regm:
-#  - has_raw_value: xxx
-#reactor_type:
-#  has_raw_value: xxx
-#
-#rel_air_humidity:
-#  has_raw_value: xxx
-#rel_humidity_out:
-#  has_raw_value: xxx
-#rel_samp_loc: edge of car
-##rel_to_oxygen: aerobe
-#replicate_number: '1'
-#reservoir:
-#  has_raw_value: xxx
-#resins_pc:
-#  has_raw_value: xxx
-#rna_absorb1: 2.02
-#rna_absorb2: 2.02
-#rna_collect_site: untreated pond water
-#rna_concentration: 100
-##rna_cont_type: plate
-##rna_cont_well: C2
-#rna_container_id: Pond_MT_041618
-#rna_isolate_meth: phenol/chloroform extraction
-#rna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
-#  (1%)
-#rna_project_contact: John Jones
-#rna_samp_id: '187654'
-#rna_sample_format: 10 mM Tris-HCl
-#rna_sample_name: JGI_pond_041618
-#rna_seq_project: '1191234'
-#rna_seq_project_name: JGI Pond metagenomics
-#rna_seq_project_pi: Jane Johnson
-#rna_volume: 25
-#room_air_exch_rate:
-#  has_raw_value: xxx
-#room_architec_elem: xxx
-#room_condt: new
-#room_connected: attic
-#room_count:
-#  has_raw_value: xxx
-#room_dim:
-#  has_raw_value: xxx
-#room_door_dist:
-#  has_raw_value: xxx
-#room_door_share:
-#  has_raw_value: xxx
-#room_hallway:
-#  has_raw_value: xxx
-#room_loc: corner room
-#room_moist_dam_hist: 123
-#room_net_area:
-#  has_raw_value: xxx
-#room_occup:
-#  has_raw_value: xxx
-#room_samp_pos: north corner
-#room_type: attic
-#room_vol:
-#  has_raw_value: xxx
-#room_wall_share:
-#  has_raw_value: xxx
-#room_window_count: 123
-#root_cond:
-#  has_raw_value: xxx
-#root_med_carbon:
-#  has_raw_value: xxx
-#root_med_macronutr:
-#  has_raw_value: xxx
-#root_med_micronutr:
-#  has_raw_value: xxx
-#root_med_ph:
-#  has_raw_value: xxx
-#root_med_regl:
-#  has_raw_value: xxx
-#root_med_solid:
-#  has_raw_value: xxx
-#root_med_suppl:
-#  has_raw_value: xxx
-#
+part_org_nitro:
+  has_raw_value: xxx
+particle_class:
+  - has_raw_value: xxx
+pcr_cond:
+  has_raw_value: xxx
+pcr_primers:
+  has_raw_value: xxx
+permeability:
+  has_raw_value: xxx
+
+pesticide_regm:
+  - has_raw_value: xxx
+
+
+ph_regm:
+  - has_raw_value: xxx
+
+photon_flux:
+  has_raw_value: xxx
+plant_growth_med:
+  has_raw_value: xxx
+plant_product:
+  has_raw_value: xxx
+plant_sex: Androdioecious
+plant_struc:
+  has_raw_value: xxx
+pollutants:
+  - has_raw_value: xxx
+
+porosity:
+  has_raw_value: xxx
+
+pour_point:
+  has_raw_value: xxx
+pre_treatment:
+  has_raw_value: xxx
+pres_animal_insect: cat;3
+
+prev_land_use_meth: xxx
+previous_land_use:
+  has_raw_value: xxx
+primary_prod:
+  has_raw_value: xxx
+primary_treatment:
+  has_raw_value: xxx
+prod_rate:
+  has_raw_value: xxx
+prod_start_date:
+  has_raw_value: xxx
+
+project_id: no example from MIxS
+
+proposal_dna: '504000'
+proposal_rna: '504000'
+quad_pos: North side
+radiation_regm:
+  - has_raw_value: xxx
+rainfall_regm:
+  - has_raw_value: xxx
+reactor_type:
+  has_raw_value: xxx
+
+rel_air_humidity:
+  has_raw_value: xxx
+rel_humidity_out:
+  has_raw_value: xxx
+rel_samp_loc: edge of car
+#rel_to_oxygen: aerobe
+replicate_number: '1'
+reservoir:
+  has_raw_value: xxx
+resins_pc:
+  has_raw_value: xxx
+rna_absorb1: 2.02
+rna_absorb2: 2.02
+rna_collect_site: untreated pond water
+rna_concentration: 100
+#rna_cont_type: plate
+#rna_cont_well: C2
+rna_container_id: Pond_MT_041618
+rna_isolate_meth: phenol/chloroform extraction
+rna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
+  (1%)
+rna_project_contact: John Jones
+rna_samp_id: '187654'
+rna_sample_format: 10 mM Tris-HCl
+rna_sample_name: JGI_pond_041618
+rna_seq_project: '1191234'
+rna_seq_project_name: JGI Pond metagenomics
+rna_seq_project_pi: Jane Johnson
+rna_volume: 25
+room_air_exch_rate:
+  has_raw_value: xxx
+room_architec_elem: xxx
+room_condt: new
+room_connected: attic
+room_count:
+  has_raw_value: xxx
+room_dim:
+  has_raw_value: xxx
+room_door_dist:
+  has_raw_value: xxx
+room_door_share:
+  has_raw_value: xxx
+room_hallway:
+  has_raw_value: xxx
+room_loc: corner room
+room_moist_dam_hist: 123
+room_net_area:
+  has_raw_value: xxx
+room_occup:
+  has_raw_value: xxx
+room_samp_pos: north corner
+room_type: attic
+room_vol:
+  has_raw_value: xxx
+room_wall_share:
+  has_raw_value: xxx
+room_window_count: 123
+root_cond:
+  has_raw_value: xxx
+root_med_carbon:
+  has_raw_value: xxx
+root_med_macronutr:
+  has_raw_value: xxx
+root_med_micronutr:
+  has_raw_value: xxx
+root_med_ph:
+  has_raw_value: xxx
+root_med_regl:
+  has_raw_value: xxx
+root_med_solid:
+  has_raw_value: xxx
+root_med_suppl:
+  has_raw_value: xxx
+
 #salt_regm:
 #  - has_raw_value: xxx
 #samp_capt_status: other
@@ -962,122 +960,122 @@ part_of:
 #  has_raw_value: xxx
 #suspend_solids:
 #  - has_raw_value: xxx
-#tan:
-#  has_raw_value: xxx
-#target_gene:
-#  has_raw_value: xxx
-#target_subfragment:
-#  has_raw_value: xxx
-#technical_reps: '2'
-#
-#temp_out:
-#  has_raw_value: xxx
-#tertiary_treatment:
-#  has_raw_value: xxx
-#
-#tiss_cult_growth_med:
-#  has_raw_value: xxx
-#toluene:
-#  has_raw_value: xxx
-#
-#tot_inorg_nitro:
-#  has_raw_value: xxx
-#tot_iron:
-#  has_raw_value: xxx
-#tot_nitro:
-#  has_raw_value: xxx
-#
-#tot_part_carb:
-#  has_raw_value: xxx
-#
-#tot_phosphate:
-#  has_raw_value: xxx
-#tot_sulfur:
-#  has_raw_value: xxx
-#train_line: red
-#train_stat_loc: south station above ground
-#train_stop_loc: end
-#turbidity:
-#  has_raw_value: xxx
-#tvdss_of_hcr_press:
-#  has_raw_value: xxx
-#tvdss_of_hcr_temp:
-#  has_raw_value: xxx
-#typ_occup_density: 123
-## type: nmdc:Biosample. change this to require a class name or an enumeration
-#ventilation_rate:
-#  has_raw_value: xxx
-#ventilation_type:
-#  has_raw_value: xxx
-#vfa:
-#  has_raw_value: xxx
-#vfa_fw:
-#  has_raw_value: xxx
-#vis_media: photos
-#viscosity:
-#  has_raw_value: xxx
-#volatile_org_comp:
-#  - has_raw_value: xxx
-#wall_area:
-#  has_raw_value: xxx
-#wall_const_type: frame construction
-#wall_finish_mat: plaster
-#wall_height:
-#  has_raw_value: xxx
-#wall_loc: north
-#wall_surf_treatment: painted
-#wall_texture: knockdown
-#wall_thermal_mass:
-#  has_raw_value: xxx
-#wall_water_mold:
-#  has_raw_value: xxx
-#wastewater_type:
-#  has_raw_value: xxx
-#water_cont_soil_meth: MIxS doesn't provide an example
-#water_content:
-#  - MIxS doesn't provide an example 1
-#  - MIxS doesn't provide an example 2
-#water_current:
-#  has_raw_value: xxx
-#water_cut:
-#  has_raw_value: xxx
-#water_feat_size:
-#  has_raw_value: xxx
-#water_feat_type: fountain
-#water_prod_rate:
-#  has_raw_value: xxx
-#water_temp_regm:
-#  - has_raw_value: xxx
-#watering_regm:
-#  - has_raw_value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
-#weekday: Monday
-#win:
-#  has_raw_value: xxx
-#wind_direction:
-#  has_raw_value: xxx
-#wind_speed:
-#  has_raw_value: xxx
-#window_cond: damaged
-#window_cover: blinds
-#window_horiz_pos: left
-#window_loc: north
-#window_mat: fiberglass
-#window_open_freq:
-#  has_raw_value: xxx
-#window_size:
-#  has_raw_value: xxx
-#window_status:
-#  has_raw_value: xxx
-#window_type: single-hung sash window
-#window_vert_pos: bottom
-#window_water_mold:
-#  has_raw_value: xxx
-#xylene:
-#  has_raw_value: xxx
-#zinc:
-#  has_raw_value: 2.5 mg/kg
-#host_taxid:
-#  has_raw_value: "NCBITaxon:9606"
-#  term:
-#    id: NCBITaxon:9606
-#
+tan:
+  has_raw_value: xxx
+target_gene:
+  has_raw_value: xxx
+target_subfragment:
+  has_raw_value: xxx
+technical_reps: '2'
+
+temp_out:
+  has_raw_value: xxx
+tertiary_treatment:
+  has_raw_value: xxx
+
+tiss_cult_growth_med:
+  has_raw_value: xxx
+toluene:
+  has_raw_value: xxx
+
+tot_inorg_nitro:
+  has_raw_value: xxx
+tot_iron:
+  has_raw_value: xxx
+tot_nitro:
+  has_raw_value: xxx
+
+tot_part_carb:
+  has_raw_value: xxx
+
+tot_phosphate:
+  has_raw_value: xxx
+tot_sulfur:
+  has_raw_value: xxx
+train_line: red
+train_stat_loc: south station above ground
+train_stop_loc: end
+turbidity:
+  has_raw_value: xxx
+tvdss_of_hcr_press:
+  has_raw_value: xxx
+tvdss_of_hcr_temp:
+  has_raw_value: xxx
+typ_occup_density: 123
+# type: nmdc:Biosample. change this to require a class name or an enumeration
+ventilation_rate:
+  has_raw_value: xxx
+ventilation_type:
+  has_raw_value: xxx
+vfa:
+  has_raw_value: xxx
+vfa_fw:
+  has_raw_value: xxx
+vis_media: photos
+viscosity:
+  has_raw_value: xxx
+volatile_org_comp:
+  - has_raw_value: xxx
+wall_area:
+  has_raw_value: xxx
+wall_const_type: frame construction
+wall_finish_mat: plaster
+wall_height:
+  has_raw_value: xxx
+wall_loc: north
+wall_surf_treatment: painted
+wall_texture: knockdown
+wall_thermal_mass:
+  has_raw_value: xxx
+wall_water_mold:
+  has_raw_value: xxx
+wastewater_type:
+  has_raw_value: xxx
+water_cont_soil_meth: MIxS doesn't provide an example
+water_content:
+  - MIxS doesn't provide an example 1
+  - MIxS doesn't provide an example 2
+water_current:
+  has_raw_value: xxx
+water_cut:
+  has_raw_value: xxx
+water_feat_size:
+  has_raw_value: xxx
+water_feat_type: fountain
+water_prod_rate:
+  has_raw_value: xxx
+water_temp_regm:
+  - has_raw_value: xxx
+watering_regm:
+  - has_raw_value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+weekday: Monday
+win:
+  has_raw_value: xxx
+wind_direction:
+  has_raw_value: xxx
+wind_speed:
+  has_raw_value: xxx
+window_cond: damaged
+window_cover: blinds
+window_horiz_pos: left
+window_loc: north
+window_mat: fiberglass
+window_open_freq:
+  has_raw_value: xxx
+window_size:
+  has_raw_value: xxx
+window_status:
+  has_raw_value: xxx
+window_type: single-hung sash window
+window_vert_pos: bottom
+window_water_mold:
+  has_raw_value: xxx
+xylene:
+  has_raw_value: xxx
+zinc:
+  has_raw_value: 2.5 mg/kg
+host_taxid:
+  has_raw_value: "NCBITaxon:9606"
+  term:
+    id: NCBITaxon:9606
+
