@@ -15,7 +15,7 @@ description: >-
    * the NMDC schema itself, into which the other modules are imported
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: v9.2.0 # GH uses same version string # pyproject.toml says "9.2.0"
+version: v9.3.1 # GH uses same version string # pyproject.toml says "9.2.0"
 
 imports:
   - annotation
@@ -2417,7 +2417,7 @@ slots:
     title: zinc
     examples:
       - value: 2.5 mg/kg
-#    is_a: attribute
+    #    is_a: attribute
     range: QuantityValue
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
@@ -2434,7 +2434,7 @@ slots:
       - value: 24.7 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-#    is_a: attribute
+    #    is_a: attribute
     range: QuantityValue
 
   ammonium_nitrogen:
@@ -2451,7 +2451,7 @@ slots:
       - value: 2.3 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-#    is_a: attribute
+    #    is_a: attribute
     range: QuantityValue
 
   nitrate_nitrogen:
@@ -2470,7 +2470,7 @@ slots:
       - value: 0.29 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-#    is_a: attribute
+    #    is_a: attribute
     range: QuantityValue
 
   nitrite_nitrogen:
@@ -2487,7 +2487,7 @@ slots:
       - value: 1.2 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-#    is_a: attribute
+    #    is_a: attribute
     range: QuantityValue
 
   lbc_thirty:
@@ -2508,7 +2508,7 @@ slots:
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
       - https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF
-#    is_a: attribute
+    #    is_a: attribute
     range: QuantityValue
 
   lbceq:
@@ -2527,7 +2527,7 @@ slots:
       - value: 1575 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-#    is_a: attribute
+    #    is_a: attribute
     range: QuantityValue
 
   env_package:
@@ -2543,7 +2543,7 @@ slots:
       subtables and can be reported
     in_subset:
       - mixs extension
-#    is_a: attribute
+    #    is_a: attribute
     range: TextValue
   #      pattern: '[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon
   #        resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc
@@ -2827,7 +2827,7 @@ slots:
 
   ## GOLD PATHS
   gold_path_field:
-#    is_a: attribute
+    #    is_a: attribute
     range: string
     abstract: true
     description: >-
@@ -2897,7 +2897,7 @@ slots:
   principal_investigator:
     aliases:
       - PI
-#    is_a: attribute
+    #    is_a: attribute
     range: PersonValue
     description: Principal Investigator who led the study and/or generated the dataset.
 
