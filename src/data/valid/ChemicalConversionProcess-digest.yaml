@@ -15,7 +15,7 @@ has_reagents:
         has_numeric_value: 75
         has_unit: μL     
 catalyzed_by:
-  - has_solution_components:
+  has_solution_components:
     - compound: trypsin
       concentration:
           has_numeric_value: 0.05
