@@ -1778,6 +1778,7 @@ classes:
       - ORCID:0000-0002-1368-8217 #Yuri Corilo
     is_a: MaterialProcessing
     slots:
+      - chemical_conversion_category
       - has_reagents
       - temperature
       - duration
@@ -2729,6 +2730,15 @@ enums:
         aliases:
           - SPE
 
+  ChemicalConversionCategoryEnum:
+    permissible_values:
+      addition:
+      substitution:
+      acid_base:
+      reduction_oxidation:
+      combustion:
+      decomposition:
+
 slots:
 
   data_category: 
@@ -3604,4 +3614,8 @@ slots:
     range: CompoundEnum
     description: A substance within a formulation that enhances the solubility of another substance.
     exact_mappings:
-      - NCIT:C176640
+      - NCIT:C176640  
+  chemical_conversion_category:
+    domain: ChemicalConversionProcess
+    range: ChemicalConversionCategoryEnum
+    description: The type of chemical conversion process.
