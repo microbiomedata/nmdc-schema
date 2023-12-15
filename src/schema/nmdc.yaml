@@ -1769,6 +1769,10 @@ classes:
     comments:
       - The values of both has_reagents slot and has_input slot are considered the reagents of a chemical process.
     slot_usage:
+      has_reagents:
+        any_of:
+          - range: LaboratoryReagent
+          - range: Solution
       id:
         required: true
         structured_pattern:
@@ -3479,9 +3483,7 @@ slots:
 
   has_reagents:
     domain: ChemicalConversionProcess
-    any_of:
-      - range: LaboratoryReagent
-      - range: Solution
+    range: LaboratoryReagent
     description: The reagents used in a chemical reaction.
     multivalued: true
     inlined_as_list: true
