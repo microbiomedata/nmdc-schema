@@ -336,7 +336,6 @@ classes:
     see_also:
       - CHEBI:33893
 
-
   Protocol:
     slots:
       - url
@@ -1780,6 +1779,7 @@ classes:
     slots:
       - chemical_conversion_category
       - has_reagents
+      - catalyzed_by
       - temperature
       - duration
     comments:
@@ -1790,6 +1790,13 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+    
+  ReagentsCollection:
+    description: >-
+      A group of Solutions and Laboratory Reagents that are used together.
+    slots:
+      - solutions_used
+      - lab_reagents_used
 
   DissolvingProcess:
     aliases:
@@ -2654,20 +2661,43 @@ enums:
   #      MSTFA:
   #      cloridic acid:
   #      Water:
-  #      trypsin in ammonium bicarbonate:
   
   CompoundEnum:
     permissible_values:
       ammonium_bicarbonate:
       deionized_water:
       methanol:
-      trypsin:
       hydrochloric_acid:
         aliases:
           - chloridic_acid
       water:
       triton_X-100:
 
+  ProteolyticEnzymeEnum:
+    description: Molecules that catalyze a chemical reaction. They are usually proteins, although catalytic RNA and DNA molecules have been identified.
+    see_also:
+      - http://purl.obolibrary.org/obo/NCIT_C16554
+    permissible_values:
+      trypsin:
+      chymotrypsin: 
+      lys_c:
+        aliases:
+          - Lys-C
+      lys_n:
+        aliases:
+          - Lys-N
+      glu_c:
+        aliases:
+          - Glu-C
+      arg_c:
+        aliases:
+          - Arg-C
+      asp_n:
+        aliases:
+          - Asp-N
+      alphalp:
+        aliases:
+          - alphaLP
   
   StationaryPhaseEnum:
     description: The type of stationary phase used in a solid phase extraction process.
@@ -3572,7 +3602,9 @@ slots:
     #list example
   compound:
     domain: SolutionComponent
-    range: CompoundEnum
+    any_of:
+      - range: CompoundEnum
+      - range: ProteolyticEnzymeEnum
     description: A substance that consists of more than one atom or ion. Includes solvents and solutes. Can be combined into solutions.
     required: true
   ordered_mobile_phases:
@@ -3593,15 +3625,33 @@ slots:
 
   has_reagents:
     domain: ChemicalConversionProcess
-    range: LaboratoryReagent
+    range: ReagentsCollection
     description: The reagents used in a chemical reaction.
-    multivalued: true
-    inlined_as_list: true
+    #multivalued: true
+    #inlined_as_list: true
   sample_state_information:
     domain: ChemicalConversionProcess
     description: >-
       The chemical phase of a pure sample, or the state of a mixed sample
     range: SampleStateEnum
+  catalyzed_by:
+    domain: ChemicalConversionProcess
+    range: Solution
+    description: The catalyst used to increase the rate of a chemical reaction.
+    multivalued: true
+    inlined_as_list: true
+  solutions_used:
+    domain: ReagentsCollection
+    range: Solution
+    description: The Solutions that are use together in some process
+    multivalued: true
+    inlined_as_list: true
+  lab_reagents_used:
+    domain: ReagentsCollection
+    range: LaboratoryReagent
+    description: The LaboratoryReagents that are used together in some process
+    multivalued: true
+    inlined_as_list: true
   solvent:
     domain: DissolvingProcess
     range: Solution
