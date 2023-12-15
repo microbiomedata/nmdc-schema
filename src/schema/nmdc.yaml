@@ -2552,19 +2552,31 @@ enums:
           - chloridic_acid
       water:
 
-  EnzymeEnum:
+  ProteolyticEnzymeEnum:
     description: Molecules that catalyze a chemical reaction. They are usually proteins, although catalytic RNA and DNA molecules have been identified.
     see_also:
       - http://purl.obolibrary.org/obo/NCIT_C16554
     permissible_values:
       trypsin:
-      Chymotrypsin: 
-      Lys-C:
-      Lys-N:
-      Glu-C:
-      Arg-C:
-      Asp-N:
-      alphaLP:
+      chymotrypsin: 
+      lys_c:
+        aliases:
+          - Lys-C
+      lys_n:
+        aliases:
+          - Lys-N
+      glu_c:
+        aliases:
+          - Glu-C
+      arg_c:
+        aliases:
+          - Arg-C
+      asp_n:
+        aliases:
+          - Asp-N
+      alphalp:
+        aliases:
+          - alphaLP
   
   StationaryPhaseEnum:
     description: The type of stationary phase used in a solid phase extraction process.
@@ -3458,7 +3470,7 @@ slots:
     domain: SolutionComponent
     any_of:
       - range: CompoundEnum
-      - range: EnzymeEnum
+      - range: ProteolyticEnzymeEnum
     description: A substance that consists of more than one atom or ion. Includes solvents and solutes. Can be combined into solutions.
     required: true
   ordered_mobile_phases:
