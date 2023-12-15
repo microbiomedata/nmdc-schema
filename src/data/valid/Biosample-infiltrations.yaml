@@ -14,4 +14,4 @@ env_medium:
   term:
     id: ENVO:00005792
 infiltrations: 
-  has_raw_value: 00:01:32;00:00:53
+  - 00:01:32;00:00:53
