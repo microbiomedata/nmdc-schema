@@ -854,7 +854,6 @@ classes:
       - plant_sex
       - plant_struc
       - pollutants
-      - pool_dna_extracts
       - porosity
       - potassium
       - pour_point

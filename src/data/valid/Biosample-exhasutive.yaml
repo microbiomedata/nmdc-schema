@@ -263,8 +263,8 @@ phaeopigments:
   - has_raw_value: 2.5 milligram per cubic meter
 phosplipid_fatt_acid:
   - has_raw_value: 2.98 milligram per liter
-pool_dna_extracts:
-  has_raw_value: yes, 5
+#pool_dna_extracts:
+ # has_raw_value: yes, 5
 potassium:
   has_raw_value: 463 milligram per liter
 pressure:
