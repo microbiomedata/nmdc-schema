@@ -1779,14 +1779,21 @@ classes:
           interpolated: true
 
   DissolvingProcess:
+    aliases:
+      - Solubilization
     description: >
-      Write new description
+      A mixing step where a soluble component is mixed with a liquid component.
+    exact_mappings:
+      - AFO:/process#AFP_0000112
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-1368-8217 #Yuri Corilo
     is_a: MaterialProcessing
     slots:
-      - volume #temporary, remove when adding real slots. Doens't pass if no slots are listend under slots:
+      - solvent
+      - solubilizing_agent
+      - duration
+      - temperature
     slot_usage:
       id:
         required: true
@@ -2578,6 +2585,7 @@ enums:
         aliases:
           - chloridic_acid
       water:
+      triton_X-100:
 
   
   StationaryPhaseEnum:
@@ -3442,7 +3450,6 @@ slots:
     range: boolean
     description: Whether or not pressure was applied to a thing or process.
   duration: # or could be a ISO8601 period string
-    domain: PlannedProcess
     range: QuantityValue
     description: The elapsed time of an activity.
     examples:
@@ -3505,3 +3512,16 @@ slots:
     description: >-
       The chemical phase of a pure sample, or the state of a mixed sample
     range: SampleStateEnum
+  solvent:
+    domain: DissolvingProcess
+    range: Solution
+    required: true
+    description: A liquid that can dissolve other substances (solutes) without any change in their chemical composition.
+    exact_mappings:
+      - CHEBI:46787
+  solubilizing_agent:
+    domain: DissolvingProcess
+    range: CompoundEnum
+    description: A substance within a formulation that enhances the solubility of another substance.
+    exact_mappings:
+      - NCIT:C176640
