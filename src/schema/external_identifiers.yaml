@@ -73,6 +73,8 @@ slots:
   jgi_portal_identifiers:
     mixin: true
     description: identifiers for entities according to JGI Portal
+    see_also:
+      - https://data.jgi.doe.gov/
 
   gnps_identifiers:
     mixin: true
@@ -314,6 +316,15 @@ slots:
     description: identifiers for corresponding analysis project in GOLD
     examples:
       - value: https://bioregistry.io/gold:Ga0526289
+
+  jgi_analysis_project_identifiers:
+    is_a: analysis_identifiers
+    mixins:
+      - jgi_portal_identifiers
+    pattern: '^jgi.analysis:[0-9]+$'
+    description: identifiers for corresponding analysis project in JGI Portal
+    examples:
+      - value: jgi.analysis:1000000
 
   insdc_analysis_identifiers:
     is_a: analysis_identifiers
