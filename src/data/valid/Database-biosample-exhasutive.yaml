@@ -290,8 +290,8 @@ biosample_set:
         name: soil metagenome
     samp_store_temp:
       has_raw_value: -80 degree Celsius
-    samp_vol_we_dna_ext:
-      has_raw_value: 1500 milliliter
+    #samp_vol_we_dna_ext:
+     # has_raw_value: 1500 milliliter
     season_temp:
       has_raw_value: 18 degree Celsius
     season_precpt:

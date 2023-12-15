@@ -929,7 +929,6 @@ classes:
       - samp_transport_cond
       - samp_tvdss
       - samp_type
-      - samp_vol_we_dna_ext
       - samp_weather
       - samp_well_name
       - saturates_pc
@@ -1808,7 +1807,6 @@ classes:
       - part_of
       - principal_investigator
       - processing_institution
-      - samp_vol_we_dna_ext
       - seq_meth
       - seq_quality_check
       - target_gene
@@ -2712,6 +2710,8 @@ slots:
       - sample weight
     exact_mappings:
       - MS:1000004
+    narrow_mappings:
+      - MIXS:0000111
     domain: PlannedProcess
     range: QuantityValue
 
